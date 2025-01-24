@@ -1,13 +1,13 @@
-import { classMap } from 'lit/directives/class-map.js';
-import { getWcStorybookHelpers } from '@mariohamann/wc-storybook-helpers';
+import { getWcStorybookHelpers, setWcStorybookHelpersConfig } from 'wc-storybook-helpers';
 import { html, unsafeStatic } from 'lit/static-html.js';
-// @ts-ignore
 import { sentenceCase } from 'change-case';
 import loadCustomElements from './fetch-cem';
-// @ts-ignore
+// @ts-expect-error
 import storyBookPreviewConfig from '../../.storybook/preview.js';
+import type { Parameters, StoryObj } from '@storybook/web-components';
 import type { TemplateResult } from 'lit';
-import { Parameters, StoryObj } from '@storybook/web-components';
+
+setWcStorybookHelpersConfig({ hideArgRef: true, hideScriptTag: true });
 
 type ArgTypesDefinition = 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssProperty';
 
@@ -15,7 +15,7 @@ type ArgTypesDefinition = 'attribute' | 'property' | 'slot' | 'cssPart' | 'cssPr
  * Parameters for the generateScreenshotStory function
  * It accepts either
  */
-type screenshotStoryOptions = {
+interface screenshotStoryOptions {
   /**
    * String or lit template that should be included directly after all stories
    */
@@ -35,7 +35,7 @@ type screenshotStoryOptions = {
    * The style of the drawn container
    */
   styleHeading?: Record<string, string>;
-};
+}
 
 interface AxisDefinition {
   type: ArgTypesDefinition | 'template';
@@ -51,7 +51,7 @@ export interface ConstantDefinition {
   title?: string;
 }
 
-await loadCustomElements();
+loadCustomElements();
 
 /**
  * Returns default arguments, events, and argument types for a given custom element tag.
@@ -89,22 +89,28 @@ export const storybookDefaults = (customElementTag: string): any => {
       privacy?: string;
       name: string;
     }
+
     // Get the properties that are not defined as attributes
     const getProperties = () => {
-      const fieldMembers = (manifest?.members as member[])?.filter(member => member.kind === 'field');
-      const attributeNames = new Set(manifest?.attributes?.map((attr: { fieldName: string }) => attr.fieldName));
-      const result = fieldMembers?.filter(
-        member => !attributeNames.has(member.name) && member?.privacy !== 'private' && member?.privacy !== 'protected'
-      );
-      return result?.map(member => member.name);
+      // Only for Web Components
+      if (manifest.name.startsWith('Sd')) {
+        const fieldMembers = (manifest?.members as member[])?.filter(member => member.kind === 'field');
+        const attributeNames = new Set(manifest?.attributes?.map((attr: { fieldName: string }) => attr.fieldName));
+        const result = fieldMembers?.filter(
+          member => !attributeNames.has(member.name) && member?.privacy !== 'private' && member?.privacy !== 'protected'
+        );
+
+        return result
+          ?.map(member => member.name)
+          ?.reduce((acc: any, property: string) => {
+            // Remove the existing one
+            acc[`${property}-prop`] = { table: { disable: true } };
+            return acc;
+          }, {});
+      }
     };
     return {
       ...argTypes,
-      // Events should show up but not be editable
-      ...manifest?.events?.reduce((acc: any, event: any) => {
-        acc[event.name] = { control: false };
-        return acc;
-      }, {}),
       //
       ...manifest?.members
         ?.filter(
@@ -116,13 +122,7 @@ export const storybookDefaults = (customElementTag: string): any => {
           return acc;
         }, {}),
       // Properties should show up but not be editable
-      ...getProperties()?.reduce((acc: any, property: string) => {
-        // Remove the existing one
-        acc[`${property}-prop`] = { table: { disable: true } };
-        // Add a new one which is not editable
-        acc[property] = { control: false };
-        return acc;
-      }, {})
+      ...getProperties()
     };
   };
 
@@ -170,9 +170,6 @@ export const storybookHelpers = (customElementTag: string) => {
      * @returns {any} - The possible values for the attribute.
      */
     getValuesFromAttribute: (attribute: string): any => {
-      if (!attribute.endsWith('-attr')) {
-        attribute = `${attribute}-attr`;
-      }
       const { argTypes } = storybookDefaults(customElementTag);
       if (argTypes[attribute]?.control?.type === 'boolean') {
         return [true, false];
@@ -188,15 +185,10 @@ export const storybookHelpers = (customElementTag: string) => {
      * @returns {any} - The possible values for the attributes.
      */
     getValuesFromAttributes: (attributes: string[]): any => {
-      return attributes?.map((attribute: string) => {
-        if (!attribute.endsWith('-attr')) {
-          attribute = `${attribute}-attr`;
-        }
-        return {
-          name: attribute,
-          values: storybookHelpers(customElementTag).getValuesFromAttribute(attribute)
-        };
-      });
+      return attributes?.map((attribute: string) => ({
+        name: attribute,
+        values: storybookHelpers(customElementTag).getValuesFromAttribute(attribute)
+      }));
     },
 
     /**
@@ -298,15 +290,17 @@ export const storybookTemplate = (customElementTag: string) => {
     args: any;
   }) => {
     const template = (args: any) => {
-      if (!manifest?.style) {
+      // a) Web Components
+      if (manifest?.name.startsWith('Sd')) {
         return theTemplate(args);
       }
+      // b) CSS Styles
       // Extract class related attributes and transform into an object.
       const classesObj = Object.keys(args)
-        .filter(key => key.endsWith('-attr'))
+        .filter(key => !key.endsWith('-slot'))
         .reduce(
           (acc, key) => {
-            const baseName = key.substring(0, key.length - 5); // Remove '-attr'
+            const baseName = key;
 
             // Check if value is 'true' and set the baseName class accordingly
             if (args[key] === true) {
@@ -337,7 +331,9 @@ export const storybookTemplate = (customElementTag: string) => {
       // Convert classes object to a space-separated string of class names
       const classesAsString = Object.keys(classes)
         .filter(key => classes[key])
-        .join(' ');
+        .map(key => key.replace('-attr', ''))
+        .join(' ')
+        .trim();
 
       if (options?.templateContent) {
         // Replace placeholders in the provided template content
@@ -349,16 +345,18 @@ export const storybookTemplate = (customElementTag: string) => {
       }
 
       // Default rendering using lit-html
-      return html`<div class=${classMap(classes)}>${unsafeStatic(slotContent)}</div>`;
+      return html`<div class=${classesAsString}>${unsafeStatic(slotContent)}</div>`;
     };
 
-    const constantDefinitions = (Array.isArray(constants) ? constants : [constants]).reduce(
-      (acc, curr) => ({
-        ...acc,
-        [`${curr.name}${storybookHelpers(customElementTag).getSuffixFromType(curr.type as any)}`]: curr.value
-      }),
-      {}
-    );
+    const constantDefinitions = (Array.isArray(constants) ? constants : [constants])
+      .filter(constant => constant.type !== 'template')
+      .reduce(
+        (acc, curr) => ({
+          ...acc,
+          [`${curr.name}${storybookHelpers(customElementTag).getSuffixFromType(curr.type as any)}`]: curr.value
+        }),
+        {}
+      );
 
     if (!axis?.x && !axis?.y && !options?.title) {
       return html`${template({
@@ -529,12 +527,14 @@ export const storybookTemplate = (customElementTag: string) => {
                               ...args,
                               ...constantDefinitions,
                               ...(xAxis &&
+                                Object.keys(xAxis).length > 0 &&
                                 xAxis.type !== 'template' && {
                                   [`${xAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(xAxis.type)}`]:
                                     // As the value could be null or empty, we need to check if the property exists
                                     xValue.hasOwnProperty('value') ? xValue.value : xValue
                                 }),
                               ...(yAxis &&
+                                Object.keys(yAxis).length > 0 &&
                                 yAxis.type !== 'template' && {
                                   [`${yAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(yAxis.type)}`]:
                                     // As the value could be null or empty, we need to check if the property exists

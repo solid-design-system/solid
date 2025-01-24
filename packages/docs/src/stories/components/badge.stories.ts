@@ -32,7 +32,7 @@ export default {
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2116-4927&node-type=section&t=5PpAC3TA3kYF7ufX-0'
     }
   },
-  args: overrideArgs([{ type: 'slot', name: 'default', value: '8' }]),
+  args: overrideArgs([{ type: 'slot', name: 'blue', value: '8' }]),
   argTypes,
   decorators: [withActions] as any
 };
@@ -47,19 +47,19 @@ export const Default = {
 /**
  * Use the `variant` attribute to set the badge’s variant:
  *
- * - `default`
- * - `success`
- * - `error`
+ * - `blue`
+ * - `green`
+ * - `red`
  *
- * __Hint:__ Alternative color options like green or red are employed to highlight specific notifications, without implying any semantic meaning.
+ * __Hint:__ Select blue, green, or red notifications depending on the emphasis you desire. Blue notifications integrate smoothly with the overall design, green notifications attract more attention, and red notifications make notifications stand out the most. Don’t associate colour variants with success or error states.
  */
 export const Variant = {
   name: 'Variant',
   render: () => html`
     <div class="flex gap-12">
-      <sd-badge variant="default">8</sd-badge>
-      <sd-badge variant="success">8</sd-badge>
-      <sd-badge variant="error">8</sd-badge>
+      <sd-badge variant="blue">8</sd-badge>
+      <sd-badge variant="green">8</sd-badge>
+      <sd-badge variant="red">8</sd-badge>
     </div>
   `
 };
@@ -93,8 +93,8 @@ export const Inverted = {
   render: () => html`
     <div class="flex gap-12 bg-primary p-4">
       <sd-badge inverted>8</sd-badge>
-      <sd-badge variant="success" inverted>8</sd-badge>
-      <sd-badge variant="error" inverted>8</sd-badge>
+      <sd-badge variant="green" inverted>8</sd-badge>
+      <sd-badge variant="red" inverted>8</sd-badge>
     </div>
   `
 };

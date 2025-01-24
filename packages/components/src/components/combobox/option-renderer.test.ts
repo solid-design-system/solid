@@ -1,4 +1,5 @@
-import { defaultOptionRenderer, highlightOptionRenderer } from './option-renderer.js';
+import '../../../dist/solid-components';
+import { defaultOptionRenderer, highlightOptionRenderer } from './option-renderer';
 import { expect, fixture, html } from '@open-wc/testing';
 import type SdOption from '../option/option.js';
 
@@ -29,7 +30,7 @@ describe('option-renderer', () => {
     });
 
     it('should use <mark> element to highlight the query string', async () => {
-      const option = await fixture<SdOption>(html` <sd-option>Option 1</sd-option> `);
+      const option = await fixture<SdOption>(html`<sd-option>Option 1</sd-option>`);
 
       const query = 'pt';
       expect(option.childNodes[0].textContent).to.equal('Option 1');

@@ -85,8 +85,7 @@ export const Disabled = {
   render: () => html`
     <div class="h-[260px] w-[400px]">
       <sd-combobox>
-        <sd-optgroup disabled>
-          <span slot="label">Section 1</span>
+        <sd-optgroup label="Section 1" disabled>
           <sd-option value="1">Option</sd-option>
           <sd-option value="2">Option</sd-option>
           <sd-option value="3">Option</sd-option>

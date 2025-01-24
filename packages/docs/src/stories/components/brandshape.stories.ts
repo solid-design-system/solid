@@ -70,7 +70,7 @@ export const Default = {
  * - `neutral-100`
  * - `border-primary`: Used on light backgrounds
  * <br>Change the fill color to match the background color
- * - `image`
+ * - `image`: Used to show an image without additional content
  * - `white`: Used on primary, primary-100 and neutral-100 backgrounds
  * - `border-white`: Used on primary background
  */
@@ -92,7 +92,7 @@ export const Variant = {
       </sd-brandshape>
 
       <sd-brandshape variant="image">
-        <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
+        <div class="h-8"></div>
         <img slot="image" src="./placeholders/images/generic.jpg" alt="" />
       </sd-brandshape>
 
@@ -145,7 +145,7 @@ export const ImageTranslateY = {
   name: 'Image Translation',
   render: () => html`
     <sd-brandshape variant="image">
-      <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
+      <div class="h-8"></div>
       <img
         slot="image"
         src="./placeholders/images/architecture.jpg"

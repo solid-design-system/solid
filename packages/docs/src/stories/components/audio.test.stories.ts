@@ -1,5 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { storybookDefaults, storybookTemplate, storybookUtilities } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 import type { ConstantDefinition } from '../../../scripts/storybook/helper';
@@ -14,7 +15,7 @@ export default {
   tags: ['!autodocs'],
   args,
   argTypes,
-  parameters: { ...parameters },
+  parameters: { ...parameters, controls: { disable: true } },
   decorators: [withActions] as any
 };
 
@@ -32,11 +33,6 @@ const transcriptConstant: ConstantDefinition = {
 
 export const Default = {
   name: 'Default',
-  parameters: {
-    controls: {
-      exclude: ['speed']
-    }
-  },
   render: (args: any) => {
     return html`
       <div className="p-0">
@@ -51,20 +47,12 @@ export const Default = {
 
 export const ReversedLayout = {
   name: 'Reversed Layout',
-  parameters: {
-    controls: {
-      exclude: ['speed', 'reversedLayout']
-    }
-  },
   render: () => {
     return html`
       <div class="p-0">
-        ${generateTemplate({
-          args: {
-            reversedLayout: true
-          },
-          constants: [audioConstant, transcriptConstant]
-        })}
+        <sd-audio reversed-layout>
+          ${unsafeHTML(audioConstant.value)} ${unsafeHTML(transcriptConstant.value)}
+        </sd-audio>
       </div>
     `;
   }
@@ -72,11 +60,6 @@ export const ReversedLayout = {
 
 export const Animated = {
   name: 'Animated',
-  parameters: {
-    controls: {
-      exclude: ['animated']
-    }
-  },
   render: () => {
     return html`
       <div class="p-0">
@@ -93,21 +76,12 @@ export const Animated = {
 
 export const AnimatedAndReversed = {
   name: 'Animated and Reversed Layout',
-  parameters: {
-    controls: {
-      exclude: ['animated, reversedLayout']
-    }
-  },
   render: () => {
     return html`
       <div class="p-0">
-        ${generateTemplate({
-          args: {
-            animated: true,
-            reversedLayout: true
-          },
-          constants: [audioConstant, transcriptConstant]
-        })}
+        <sd-audio reversed-layout animated>
+          ${unsafeHTML(audioConstant.value)} ${unsafeHTML(transcriptConstant.value)}
+        </sd-audio>
       </div>
     `;
   }
@@ -115,14 +89,9 @@ export const AnimatedAndReversed = {
 
 export const AnimatedAndInverted = {
   name: 'Animated and Inverted',
-  parameters: {
-    controls: {
-      exclude: ['animated, inverted']
-    }
-  },
   render: () => {
     return html`
-      <div class="bg-primary p-0">
+      <div class="bg-primary p-10">
         ${generateTemplate({
           args: {
             inverted: true,
@@ -137,14 +106,9 @@ export const AnimatedAndInverted = {
 
 export const Inverted = {
   name: 'Inverted',
-  parameters: {
-    controls: {
-      exclude: ['inverted']
-    }
-  },
   render: () => {
     return html`
-      <div class="bg-primary p-0">
+      <div class="bg-primary p-10">
         ${generateTemplate({
           args: {
             inverted: true
@@ -158,17 +122,12 @@ export const Inverted = {
 
 export const HiddenTimestamps = {
   name: 'Hidden Timestamps',
-  parameters: {
-    controls: {
-      exclude: ['hide-timestamps']
-    }
-  },
   render: () => {
     return html`
       <div class="p-0">
         ${generateTemplate({
           args: {
-            hideTimestamps: true
+            'hide-timestamps': true
           },
           constants: [audioConstant, transcriptConstant]
         })}
@@ -179,22 +138,17 @@ export const HiddenTimestamps = {
 
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: { exclude: ['default', 'play-icon', 'pause-icon', 'transcript'] }
-  },
   render: (args: any) => {
     return html`
       ${['default', 'play-icon', 'pause-icon'].map(slot => {
-        let value = `<div slot='${slot}' class="slot slot--border slot--background h-16"></div>`;
+        let value = '';
 
         if (slot === 'default') {
-          value = `<div class="slot slot--border slot--background h-full w-full absolute top-0 left-0" slot=${slot}></div>`;
+          value = `<div class="slot slot--border slot--background h-full w-full absolute top-0 left-0"></div>`;
         } else if (slot === 'play-icon') {
-          value = `<sd-icon class="slot slot--border slot--background h-8 text-white w-8" slot=${slot} library="system" name="start"></sd-icon>`;
+          value = `<sd-icon class="slot slot--border slot--background text-white text-3xl" slot="play-icon" library="system" name="start"></sd-icon>`;
         } else if (slot === 'pause-icon') {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-          args.isPlaying = true;
-          value = `<sd-icon class="slot slot--border slot--background h-8 text-white w-8" slot=${slot} library="system" name="pause"></sd-icon>`;
+          value = `<sd-icon class="slot slot--border slot--background text-white text-3xl" slot="pause-icon" library="system" name="pause"></sd-icon>`;
         }
 
         return generateTemplate({
@@ -227,7 +181,6 @@ export const Slots = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {},
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -258,11 +211,6 @@ export const Parts = {
 
 export const Mouseless = {
   name: 'Mouseless',
-  parameters: {
-    controls: {
-      exclude: ['speed']
-    }
-  },
   render: (args: any) => {
     return html`
       <div class="mouseless p-0 hover:p-0">
@@ -277,11 +225,6 @@ export const Mouseless = {
 
 export const SamplesTeaser = {
   name: 'Samples: sd-audio with sd-teaser',
-  parameters: {
-    controls: {
-      disable: true
-    }
-  },
   render: () => {
     return html`
       <style>
@@ -291,7 +234,7 @@ export const SamplesTeaser = {
       </style>
       <div>
         <div class="px-12 pt-12">
-          <sd-teaser variant="default">
+          <sd-teaser>
             <div slot="media" class="relative">
               <img
                 class="aspect-square object-cover"
@@ -323,11 +266,6 @@ export const SamplesTeaser = {
 
 export const SamplesHeadline = {
   name: 'Samples: sd-audio with sd-headline',
-  parameters: {
-    controls: {
-      disable: true
-    }
-  },
   render: () => {
     return html`
       <style></style>

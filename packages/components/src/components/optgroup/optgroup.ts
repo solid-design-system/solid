@@ -1,14 +1,11 @@
-/* eslint-disable @typescript-eslint/unbound-method */
 import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { html } from 'lit/static-html.js';
 import { property, query } from 'lit/decorators.js';
 import { watch } from '../../internal/watch.js';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SdDivider from '../divider/divider';
 import SolidElement from '../../internal/solid-element';
-import type { CSSResultGroup } from 'lit';
 import type SdOption from '../option/option';
 
 /**
@@ -47,7 +44,6 @@ export default class SdOptgroup extends SolidElement {
       .assignedElements()
       .filter(opt => opt.tagName.toLowerCase() === 'sd-option')
       .forEach((opt: SdOption) => {
-        // eslint-disable-next-line no-param-reassign
         opt.disabled = disabled;
       });
   }
@@ -93,9 +89,8 @@ export default class SdOptgroup extends SolidElement {
       </div>
     `;
   }
-  static styles: CSSResultGroup = [
-    componentStyles,
-    SolidElement.styles,
+  static styles = [
+    ...SolidElement.styles,
     css`
       :host {
         --display-divider: block;

@@ -23,7 +23,8 @@ export default {
   tags: ['!autodocs'],
   component: 'sd-interactive',
   parameters: {
-    ...parameters
+    ...parameters,
+    controls: { disable: true }
   },
   args: overrideArgs([
     { type: 'slot', name: 'default', value: 'Lorem Ipsum' },
@@ -65,7 +66,7 @@ export const Default = {
   name: 'Default',
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<button class="%CLASSES%">%SLOT%</button>' },
+      options: { templateContent: '<button class="%CLASSES%" title="Action name">%SLOT%</button>' },
       args
     });
   }
@@ -77,13 +78,12 @@ export const Default = {
 
 export const Disabled = {
   name: 'Disabled',
-  parameters: { controls: { exclude: ['sd-interactive--disabled', 'sd-interactive--reset'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
         y: [{ type: 'attribute', name: 'sd-interactive--disabled', values: [false, true] }]
       },
-      options: { templateContent: '<button class="%CLASSES%">%SLOT%</button>' },
+      options: { templateContent: '<button class="%CLASSES%" title="Disabled button">%SLOT%</button>' },
       constants: { type: 'attribute', name: 'sd-interactive--disabled', value: true },
       args
     });
@@ -96,14 +96,13 @@ export const Disabled = {
 
 export const Inverted = {
   name: 'Inverted',
-  parameters: { controls: { exclude: ['sd-interactive--inverted', 'sd-interactive--reset'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
         y: [{ type: 'attribute', name: 'sd-interactive--inverted', values: [false, true] }]
       },
       options: {
-        templateContent: '<button class="%CLASSES%">%SLOT%</button>',
+        templateContent: '<button class="%CLASSES%" title="Action name">%SLOT%</button>',
         templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
       },
       constants: { type: 'attribute', name: 'sd-interactive--inverted', value: true },
@@ -118,13 +117,12 @@ export const Inverted = {
 
 export const Reset = {
   name: 'Reset',
-  parameters: { controls: { exclude: ['sd-interactive--reset'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
         y: [{ type: 'attribute', name: 'sd-interactive--reset', values: [false, true] }]
       },
-      options: { templateContent: '<button class="%CLASSES%">%SLOT%</button>' },
+      options: { templateContent: '<button class="%CLASSES%" title="Action name">%SLOT%</button>' },
       constants: { type: 'attribute', name: 'sd-interactive--reset', value: true },
       args
     });
@@ -143,16 +141,18 @@ export const Examples = {
         y: {
           type: 'slot',
           name: 'default',
-          values: ['Text', '<span>Text</span>', '<sd-icon name="system/image"></sd-icon>'].map(content => {
-            return {
-              value: content,
-              title: content.replace('name="system/image"', '...')
-            };
-          }),
+          values: ['Text', '<span>Text</span>', '<sd-icon name="system/image" label="System Image"></sd-icon>'].map(
+            content => {
+              return {
+                value: content,
+                title: content.replace('name="system/image"', '...')
+              };
+            }
+          ),
           title: 'content'
         }
       },
-      options: { templateContent: '<button class="%CLASSES%">%SLOT%</button>' },
+      options: { templateContent: '<button class="%CLASSES%" title="Action name">%SLOT%</button>' },
       args
     });
   }

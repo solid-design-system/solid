@@ -10,6 +10,8 @@ const { generateTemplate } = storybookTemplate('sd-interactive');
 /**
  * Used in interactive elements as a "quartery" button that has no paddings and no background.
  *
+ * __Accessiblity hint__: Use a `title` attribute to provide a hint to the user of what the button does.
+ *
  *  **Related templates**:
  * - [Interactive](?path=/docs/templates-interactive--docs)
  */
@@ -35,7 +37,7 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<button class="%CLASSES%">%SLOT%</button>' },
+      options: { templateContent: '<button class="%CLASSES%" title="Action name">%SLOT%</button>' },
       args
     });
   }
@@ -48,7 +50,9 @@ export const Default = {
 export const Inverted = {
   render: () => html`
     <div class="bg-primary p-4">
-      <button class="sd-interactive sd-interactive--inverted sd-interactive--reset">Inverted</button>
+      <button class="sd-interactive sd-interactive--inverted sd-interactive--reset" title="Action name">
+        Inverted
+      </button>
     </div>
   `
 };
@@ -60,7 +64,11 @@ export const Inverted = {
  */
 
 export const Disabled = {
-  render: () => html` <button class="sd-interactive sd-interactive--disabled sd-interactive--reset">Disabled</button> `
+  render: () => html`
+    <button class="sd-interactive sd-interactive--disabled sd-interactive--reset" title="Disabled button">
+      Disabled
+    </button>
+  `
 };
 
 /**
@@ -92,8 +100,8 @@ export const Reset = {
       }
     </style>
     <div class="flex flex-row gap-8">
-      <button class="sd-interactive">Default</button>
-      <button class="sd-interactive sd-interactive--reset">Reset</button>
+      <button class="sd-interactive" title="Action name">Default</button>
+      <button class="sd-interactive sd-interactive--reset" title="Action name">Reset</button>
     </div>
   `
 };

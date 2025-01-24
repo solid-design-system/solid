@@ -71,7 +71,7 @@ export const Default = {
  * - `primary-100`
  * - `neutral-100`
  * - `gradient-dark`
- * - `gradient-white`
+ * - `gradient-light`
  */
 
 export const Variant = {
@@ -133,14 +133,14 @@ export const Variant = {
         <p class="sd-paragraph sd-paragraph--inverted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </sd-teaser-media>
 
-      <sd-teaser-media variant="gradient-white" class="max-w-[600px]">
+      <sd-teaser-media variant="gradient-light" class="max-w-[600px]">
         <img
           slot="media"
           src="./placeholders/images/architecture.jpg"
           class="aspect-video object-cover"
           alt="Generic alt"
         />
-        <h3 slot="headline">Headline Media Teaser (gradient-white)</h3>
+        <h3 slot="headline">Headline Media Teaser (gradient-light)</h3>
         <p class="sd-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </sd-teaser-media>
     </div>

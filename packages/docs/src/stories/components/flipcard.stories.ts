@@ -63,18 +63,23 @@ export const Default = {
 /**
  * Use the `variant` attribute to set the color variant for front or back:
  *
- * - `empty` (default)
- * - `primary`
+ * - `primary` (default)
  * - `primary-100`
- * - `gradient-light-top`
- * - `gradient-light-bottom`
- * - `gradient-dark-top`
- * - `gradient-dark-bottom`
+ * - `gradient-light`
+ * - `gradient-dark`
  */
 export const Variants = {
   render: () =>
     html` <div class="grid grid-cols-2 gap-8">
-      <sd-flipcard activation="click hover" flip-direction="horizontal" front-variant="primary" back-variant="primary">
+      <sd-flipcard flip-direction="horizontal" front-variant="primary" back-variant="primary">
+        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+      </sd-flipcard>
+      <sd-flipcard flip-direction="horizontal" front-variant="primary-100" back-variant="primary-100">
+        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+      </sd-flipcard>
+      <sd-flipcard flip-direction="horizontal" front-variant="gradient-light" back-variant="gradient-light">
         <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
         <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
         <img
@@ -90,96 +95,7 @@ export const Variants = {
           alt="Generic Alt"
         />
       </sd-flipcard>
-      <sd-flipcard
-        activation="click hover"
-        flip-direction="horizontal"
-        front-variant="primary-100"
-        back-variant="primary-100"
-      >
-        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-        <img
-          slot="media-front"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
-        <img
-          slot="media-back"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
-      </sd-flipcard>
-      <sd-flipcard
-        activation="click hover"
-        flip-direction="horizontal"
-        front-variant="gradient-light-top"
-        back-variant="gradient-light-top"
-      >
-        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-        <img
-          slot="media-front"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
-        <img
-          slot="media-back"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
-      </sd-flipcard>
-      <sd-flipcard
-        activation="click hover"
-        flip-direction="horizontal"
-        front-variant="gradient-light-bottom"
-        back-variant="gradient-light-bottom"
-      >
-        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-        <img
-          slot="media-front"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
-        <img
-          slot="media-back"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
-      </sd-flipcard>
-      <sd-flipcard
-        activation="click hover"
-        flip-direction="horizontal"
-        front-variant="gradient-dark-top"
-        back-variant="gradient-dark-top"
-      >
-        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-        <img
-          slot="media-front"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
-        <img
-          slot="media-back"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
-      </sd-flipcard>
-      <sd-flipcard
-        activation="click hover"
-        flip-direction="horizontal"
-        front-variant="gradient-dark-bottom"
-        back-variant="gradient-dark-bottom"
-      >
+      <sd-flipcard flip-direction="horizontal" front-variant="gradient-dark" back-variant="gradient-dark">
         <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
         <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
         <img
@@ -208,7 +124,6 @@ export const AspectRatios = {
   parameters: { ...parameters, docs: { story: { inline: false, height: '1050px' } } },
   render: () =>
     html` <sd-flipcard
-        activation="click hover"
         flip-direction="horizontal"
         front-variant="primary-100"
         back-variant="primary-100"
@@ -217,21 +132,8 @@ export const AspectRatios = {
       >
         <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
         <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-        <img
-          slot="media-front"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
-        <img
-          slot="media-back"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
       </sd-flipcard>
       <sd-flipcard
-        activation="click hover"
         flip-direction="horizontal"
         front-variant="primary-100"
         back-variant="primary-100"
@@ -239,61 +141,24 @@ export const AspectRatios = {
       >
         <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
         <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-        <img
-          slot="media-front"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
-        <img
-          slot="media-back"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
       </sd-flipcard>`
 };
 
 /**
- * Use the `activation` attribute to determine the activation type of the flipcard:
- * - `click hover` (default)
- * - `click`
+ * Use the `placement` attribute to set the position variant:
+ * - `top`
+ * - `bottom`
  */
-
-export const Activation = {
+export const Placement = {
   render: () =>
     html` <div class="grid grid-cols-2 gap-8">
-      <sd-flipcard activation="click hover" flip-direction="horizontal" front-variant="empty" back-variant="empty">
+      <sd-flipcard flip-direction="horizontal" placement="top">
         <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
         <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-        <img
-          slot="media-front"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
-        <img
-          slot="media-back"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
       </sd-flipcard>
-      <sd-flipcard activation="click" flip-direction="horizontal" front-variant="empty" back-variant="empty">
+      <sd-flipcard flip-direction="horizontal" placement="bottom">
         <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
         <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-        <img
-          slot="media-front"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
-        <img
-          slot="media-back"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
       </sd-flipcard>
     </div>`
 };
@@ -307,37 +172,13 @@ export const Activation = {
 export const flipDirection = {
   render: () =>
     html`<div class="grid grid-cols-2 gap-8">
-      <sd-flipcard activation="click hover" flip-direction="horizontal" front-variant="empty" back-variant="empty">
+      <sd-flipcard flip-direction="horizontal">
         <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
         <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-        <img
-          slot="media-front"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
-        <img
-          slot="media-back"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
       </sd-flipcard>
-      <sd-flipcard activation="click hover" flip-direction="vertical" front-variant="empty" back-variant="empty">
+      <sd-flipcard flip-direction="vertical">
         <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
         <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
-        <img
-          slot="media-front"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
-        <img
-          slot="media-back"
-          class="object-cover h-full w-full"
-          src="./placeholders/images/generic.jpg"
-          alt="Generic Alt"
-        />
       </sd-flipcard>
     </div>`
 };

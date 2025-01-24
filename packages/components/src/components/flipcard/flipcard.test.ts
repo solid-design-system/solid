@@ -1,5 +1,5 @@
+import '../../../dist/solid-components';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
-import { userEvent } from '@storybook/test';
 import sinon from 'sinon';
 import type SdFlipcard from './flipcard';
 
@@ -12,27 +12,10 @@ describe('<sd-flipcard>', () => {
   it('should generate proper defaults', async () => {
     const el = await fixture<SdFlipcard>(html`<sd-flipcard></sd-flipcard>`);
 
-    expect(el.activation).to.equal('click hover');
-    expect(el.frontVariant).to.equal('empty');
-    expect(el.backVariant).to.equal('empty');
-  });
-
-  it('should allow custom activation', async () => {
-    const el = await fixture<SdFlipcard>(html`<sd-flipcard activation="click"></sd-flipcard>`);
-
-    expect(el.activation).to.equal('click');
-  });
-
-  it('should flip on hover', async () => {
-    const el = await fixture<SdFlipcard>(html`<sd-flipcard></sd-flipcard>`);
-
-    expect(el.shadowRoot!.querySelector('.flip-card__side--front')).to.have.class('hover');
-  });
-
-  it('should not flip on hover', async () => {
-    const el = await fixture<SdFlipcard>(html`<sd-flipcard activation="click"></sd-flipcard>`);
-
-    expect(el.shadowRoot!.querySelector('.flip-card__side--front')).to.not.have.class('hover');
+    expect(el.frontVariant).to.equal('primary');
+    expect(el.backVariant).to.equal('primary');
+    expect(el.flipDirection).to.equal('horizontal');
+    expect(el.placement).to.equal('top');
   });
 
   describe('when a flip is triggered', () => {
@@ -44,18 +27,40 @@ describe('<sd-flipcard>', () => {
       el.addEventListener('sd-flip-front', flipFrontHandler);
       el.addEventListener('sd-flip-back', flipBackHandler);
 
-      await userEvent.type(el.shadowRoot!.querySelector('.flip-card__side--front')!, '{return}', {
-        pointerEventsCheck: 0
-      });
+      const front: HTMLButtonElement = el.shadowRoot!.querySelector("[part='front-button']")!;
+      const back: HTMLButtonElement = el.shadowRoot!.querySelector("[part='back-button']")!;
+
+      front.click();
       await waitUntil(() => flipFrontHandler.calledOnce);
 
-      await userEvent.type(el.shadowRoot!.querySelector('.flip-card__side--back')!, '{return}', {
-        pointerEventsCheck: 0
-      });
+      back.click();
       await waitUntil(() => flipBackHandler.calledOnce);
 
       expect(flipFrontHandler).to.have.been.calledOnce;
       expect(flipBackHandler).to.have.been.calledOnce;
+    });
+
+    it('should contain accessibility attributes', async () => {
+      const el = await fixture<SdFlipcard>(html`<sd-flipcard></sd-flipcard>`);
+      const front = el.shadowRoot!.querySelector("[part='front']")!;
+      const back = el.shadowRoot!.querySelector("[part='back']")!;
+
+      expect(front.getAttribute('aria-hidden')).eq('false');
+      expect(front.hasAttribute('inert')).to.be.false;
+      expect(back.getAttribute('aria-hidden')).eq('true');
+      expect(back.hasAttribute('inert')).to.be.true;
+
+      const flipFrontHandler = sinon.spy();
+      const frontButton: HTMLButtonElement = el.shadowRoot!.querySelector("[part='front-button']")!;
+      el.addEventListener('sd-flip-front', flipFrontHandler);
+
+      frontButton.click();
+      await waitUntil(() => flipFrontHandler.calledOnce);
+
+      expect(front.getAttribute('aria-hidden')).eq('true');
+      expect(front.hasAttribute('inert')).to.be.true;
+      expect(back.getAttribute('aria-hidden')).eq('false');
+      expect(back.hasAttribute('inert')).to.be.false;
     });
   });
 });

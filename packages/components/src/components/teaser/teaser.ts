@@ -1,5 +1,5 @@
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { property, query, state } from 'lit/decorators.js';
 import cx from 'classix';
@@ -30,8 +30,13 @@ import type { PropertyValues } from 'lit';
 
 @customElement('sd-teaser')
 export default class SdTeaser extends SolidElement {
-  @property({ reflect: true })
-  variant: 'white' | 'white border-neutral-400' | 'neutral-100' | 'primary' | 'primary-100' = 'white';
+  /** Variant of the teaser */
+  @property({ reflect: true }) variant:
+    | 'white'
+    | 'white border-neutral-400'
+    | 'neutral-100'
+    | 'primary'
+    | 'primary-100' = 'white';
 
   /** Breakpoint where the teaser switches from `vertical` to `horizontal`. `0` is always `horizontal`, `9999` is always `vertical`. */
   @property({ reflect: true, type: Number }) breakpoint = 448;
@@ -106,13 +111,15 @@ export default class SdTeaser extends SolidElement {
         part="base"
       >
         <div
+          part="media"
+          id="media"
+          aria-hidden="true"
           style=${this._orientation === 'horizontal' ? `width: var(--distribution-media, 100%);` : ''}
           class=${cx(
             !inset && this._orientation === 'vertical' && 'mb-4',
             !slots['teaser-has-media'] && 'hidden',
             this.variant === 'white border-neutral-400' && this._orientation === 'vertical' && 'mx-[-1px] mt-[-1px]'
           )}
-          part="media"
         >
           <slot name="media"></slot>
         </div>
@@ -130,18 +137,22 @@ export default class SdTeaser extends SolidElement {
           )}
           part="content"
         >
-          <div part="meta" class=${cx('gap-2 mb-4', !slots['teaser-has-meta'] && 'hidden')}>
-            <slot name="meta"></slot>
+          <div class="flex flex-col-reverse">
+            <div
+              part="headline"
+              class=${cx('text-lg font-bold m-0', this.variant === 'primary' ? 'text-white' : 'text-black')}
+            >
+              <slot name="headline"
+                >Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)</slot
+              >
+            </div>
+
+            <div part="meta" class=${cx('gap-2 mb-4', !slots['teaser-has-meta'] && 'hidden')}>
+              <slot name="meta"></slot>
+            </div>
           </div>
 
-          <div
-            part="headline"
-            class=${cx('text-lg font-bold m-0', this.variant === 'primary' ? 'text-white' : 'text-black')}
-          >
-            <slot name="headline">Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)</slot>
-          </div>
-
-          <div part="main" class=${cx(!slots['teaser-has-default'] && 'hidden')}>
+          <div part="main" class=${cx(!slots['teaser-has-default'] && 'hidden')} aria-labelledby="media">
             <slot></slot>
           </div>
         </div>
@@ -150,7 +161,7 @@ export default class SdTeaser extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block;

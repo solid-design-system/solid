@@ -16,11 +16,6 @@ const videoConstant: ConstantDefinition = {
   value:
     '<video controls id="video-example" class="w-[854px] aspect-video"><source src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.webm" type="video/webm" />Your browser does not support the video tag.</video>'
 };
-const imageConstant: ConstantDefinition = {
-  type: 'slot',
-  name: 'default',
-  value: '<img class="w-[400px] aspect-video object-cover" src="./placeholders/images/union-investment.png" />'
-};
 const posterConstant: ConstantDefinition = {
   type: 'slot',
   name: 'poster',
@@ -39,7 +34,7 @@ export default {
   tags: ['!autodocs'],
   args,
   argTypes,
-  parameters: { ...parameters },
+  parameters: { ...parameters, controls: { disable: true } },
   decorators: [withActions] as any
 };
 
@@ -58,26 +53,6 @@ export const Default = {
       },
       args
     });
-  }
-};
-
-/**
- * `sd-video` with all possible property configurations.
- */
-
-export const PlayingOverlay = {
-  name: 'Playing × Overlay',
-  render: (args: any) => {
-    return html`
-      ${generateTemplate({
-        axis: {
-          x: { type: 'attribute', name: 'playing' },
-          y: { type: 'attribute', name: 'overlay' }
-        },
-        constants: imageConstant,
-        args
-      })}
-    `;
   }
 };
 
@@ -185,11 +160,6 @@ const videoElementScript = html`<script>
 
 export const VideoElement = {
   name: 'Video Element',
-  parameters: {
-    controls: {
-      exclude: ['playing', 'default']
-    }
-  },
   render: (args: any) => {
     return html`
       <div id="sd-video-example" className="p-0">
@@ -209,11 +179,6 @@ export const VideoElement = {
 
 export const Mouseless = {
   name: 'Mouseless',
-  parameters: {
-    controls: {
-      exclude: ['playing', 'default']
-    }
-  },
   render: (args: any) => {
     return html`
       <div id="sd-video-example" class="mouseless p-0 hover:p-0">
@@ -235,4 +200,4 @@ export const Mouseless = {
   }
 };
 
-export const Combination = generateScreenshotStory([Default, PlayingOverlay, VideoElement, Mouseless]);
+export const Combination = generateScreenshotStory([Default, VideoElement, Mouseless]);

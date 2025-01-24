@@ -37,7 +37,7 @@ export const highlightOptionRenderer: OptionRenderer = (option: SdOption, query:
   const exchangedText = optionLabel.replace(new RegExp(query, 'i'), mark.outerHTML);
   const previousContent = clonedOption.innerHTML.slice(0, indexLabel);
   const followingContent = clonedOption.innerHTML.slice(indexLabel + optionLabel.length);
-  // eslint-disable-next-line no-param-reassign
+
   clonedOption.innerHTML = previousContent.concat(exchangedText, followingContent);
   return clonedOption;
 };

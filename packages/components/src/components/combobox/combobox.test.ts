@@ -1,3 +1,4 @@
+import '../../../dist/solid-components';
 import { aTimeout, expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
 import { clickOnElement } from '../../internal/test';
 import { sendKeys } from '@web/test-runner-commands';
@@ -44,11 +45,13 @@ describe('<sd-combobox>', () => {
       </sd-combobox>
     `);
 
+    const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="display-input"]')!;
+
     expect(el.name).to.equal('');
     expect(el.value).to.equal('');
     expect(el.defaultValue).to.equal('');
     expect(el.size).to.equal('lg');
-    expect(el.placeholder).to.equal('Please search and select');
+    expect(input.placeholder).to.equal('Please search and select');
     expect(el.disabled).to.be.false;
     expect(el.clearable).to.be.false;
     expect(el.open).to.be.false;
@@ -101,7 +104,7 @@ describe('<sd-combobox>', () => {
     await clickOnElement(disabledOption);
     await el.updateComplete;
 
-    await expect(el.value).to.deep.equal(['Option']);
+    expect(el.value).to.deep.equal(['Option']);
   });
 
   it('should focus the combobox when clicking on the label', async () => {
@@ -573,7 +576,7 @@ describe('<sd-combobox>', () => {
 
     it('should remove tag and option when tag is focused and backspace is pressed', async () => {
       const el = await fixture<SdSelect>(html`
-        <sd-combobox value="option-1 option-2" multiple useTags>
+        <sd-combobox value="option-1 option-2" multiple>
           <sd-option value="option-1">Option 1</sd-option>
           <sd-option value="option-2">Option 2</sd-option>
           <sd-option value="option-3">Option 3</sd-option>
@@ -604,7 +607,7 @@ describe('<sd-combobox>', () => {
       await clickOnElement(secondOption);
       await el.updateComplete;
 
-      await expect(el.value).to.deep.equal(['option-1', 'option-3', 'option-2']);
+      expect(el.value).to.deep.equal(['option-1', 'option-3', 'option-2']);
     });
 
     it('should work with options that do not have a value', async () => {
@@ -626,6 +629,33 @@ describe('<sd-combobox>', () => {
       await el.updateComplete;
 
       expect(el.value).to.deep.equal(['Option 2', 'Option 3']);
+    });
+
+    it('should emit sd-change and sd-input when the value changes', async () => {
+      const el = await fixture<SdCombobox>(html`
+        <sd-combobox value="option-1" multiple>
+          <sd-option value="option-1">Option 1</sd-option>
+          <sd-option value="option-2">Option 2</sd-option>
+          <sd-option value="option-3">Option 3</sd-option>
+        </sd-combobox>
+      `);
+      const inputHandler = sinon.spy();
+      const changeHandler = sinon.spy();
+
+      el.addEventListener('sd-input', inputHandler);
+      el.addEventListener('sd-change', changeHandler);
+      await el.show();
+      await el.updateComplete;
+      const filteredListbox = el.shadowRoot!.querySelector('[part="filtered-listbox"]')!;
+      const secondOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[1];
+      await clickOnElement(secondOption);
+      await el.updateComplete;
+      const thirdOption = filteredListbox.querySelectorAll<SdOption>('sd-option')[2];
+      await clickOnElement(thirdOption);
+      await el.updateComplete;
+
+      expect(inputHandler).to.have.been.calledTwice;
+      expect(changeHandler).to.have.been.calledTwice;
     });
   });
 
@@ -1176,14 +1206,14 @@ describe('<sd-combobox>', () => {
     const filteredListbox = el.shadowRoot!.querySelector('[part="filtered-listbox"]')!;
     const secondOption = filteredListbox.querySelectorAll('sd-option')[1];
 
-    await expect(secondOption.getTextLabel()).to.equal('Option 2');
+    expect(secondOption.getTextLabel()).to.equal('Option 2');
 
     secondSlottedOption.textContent = 'updated';
     await oneEvent(defaultOptionsSlot, 'slotchange');
     await el.updateComplete;
     const secondUpdatedOption = filteredListbox.querySelectorAll('sd-option')[1];
 
-    await expect(secondUpdatedOption.getTextLabel()).to.equal('updated');
+    expect(secondUpdatedOption.getTextLabel()).to.equal('updated');
   });
   it('should update the filtered list when an option is added dynamically', async () => {
     const el = await fixture<SdCombobox>(html`
@@ -1282,5 +1312,39 @@ describe('<sd-combobox>', () => {
     await el.updateComplete;
 
     expect(el.value).to.equal('Option 2');
+  });
+
+  it('should display translated placeholder if lang attribute is set', async () => {
+    const el = await fixture<SdSelect>(html`
+      <sd-combobox lang="de">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+      </sd-combobox>
+    `);
+
+    const placeholder = el.shadowRoot!.querySelector('[part~="display-input"]')!;
+
+    await el.updateComplete;
+
+    expect(placeholder.getAttribute('placeholder')).to.equal('Bitte suchen und auswählen');
+  });
+
+  it('should display translated amount of selected tags', async () => {
+    const el = await fixture<SdSelect>(html`
+      <sd-combobox lang="de" multiple="" useTags value="option-1 option-2 option-3 option-4">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+        <sd-option value="option-4">Option 4</sd-option>
+        <sd-option value="option-5">Option 5</sd-option>
+      </sd-combobox>
+    `);
+
+    const tags = el.shadowRoot!.querySelector('[part~="tag"]')!;
+
+    await el.updateComplete;
+
+    expect(tags.textContent).to.equal('4 Optionen ausgewählt');
   });
 });

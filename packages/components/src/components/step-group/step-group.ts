@@ -2,7 +2,6 @@ import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { property, query } from 'lit/decorators.js';
 import { watch } from '../../internal/watch.js';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type SdStep from '../step/step';
@@ -127,8 +126,7 @@ export default class SdStepGroup extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply w-max;

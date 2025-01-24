@@ -1,7 +1,6 @@
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { property } from 'lit/decorators.js';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -30,6 +29,7 @@ export default class SdDivider extends SolidElement {
     return html`
       <hr
         part="main"
+        aria-orientation=${this.orientation}
         class=${cx(
           this.inverted ? 'border-primary-400' : 'border-neutral-400',
           this.orientation === 'horizontal' ? 'border-t w-full' : ' border-l h-full'
@@ -39,11 +39,10 @@ export default class SdDivider extends SolidElement {
   }
 
   /**
-   * Inherits Tailwindclasses and includes additional styling.
+   * Inherits global stylesheet including TailwindCSS
    */
   static styles = [
-    componentStyles,
-    SolidElement.styles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply m-0;

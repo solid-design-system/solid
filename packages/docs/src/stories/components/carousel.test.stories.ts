@@ -31,7 +31,7 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters },
+  parameters: { ...parameters, controls: { disable: true } },
   decorators: [
     (story: () => typeof html) => html`
       <style>
@@ -63,7 +63,6 @@ export const Default = {
 
 export const Variant = {
   name: 'Variant',
-  parameters: { controls: { exclude: 'variant' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -80,7 +79,6 @@ export const Variant = {
 
 export const Inverted = {
   name: 'Inverted',
-  parameters: { controls: { exclude: ['inverted', 'variant'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -88,7 +86,6 @@ export const Inverted = {
         y: { type: 'attribute', name: 'inverted' }
       },
       args,
-      constants: [{ type: 'attribute', name: 'autoplay', value: true }],
       options: {
         templateBackgrounds: { alternate: 'y', colors: ['rgb(var(--sd-color-primary, 0 53 142))', 'white'] }
       }
@@ -102,7 +99,6 @@ export const Inverted = {
 
 export const Loop = {
   name: 'Loop',
-  parameters: { controls: { exclude: 'loop' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -114,33 +110,11 @@ export const Loop = {
 };
 
 /**
- * Use the `autoplay` attribute to toggle autoplay.
- */
-
-export const Autoplay = {
-  name: 'Autoplay',
-  parameters: { controls: { exclude: 'autoplay' } },
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'autoplay' }
-      },
-      constants: [
-        { type: 'attribute', name: 'variant', value: 'dot' },
-        { type: 'attribute', name: 'loop', value: 'true' }
-      ],
-      args
-    });
-  }
-};
-
-/**
  * Use the `slides-per-page` attribute to set the number of slides that would be shown at a given time.
  */
 
 export const SlidesPerPage = {
   name: 'Slides Per Page',
-  parameters: { controls: { exclude: 'slides-per-page' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -161,7 +135,6 @@ export const SlidesPerPage = {
 
 export const SlidesPerMove = {
   name: 'Slides Per Move',
-  parameters: { controls: { exclude: 'slides-per-move' } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -189,26 +162,6 @@ export const SlidesPerMove = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: {
-      exclude: [
-        'base',
-        'scroll-container',
-        'controls',
-        'pagination-dot',
-        'pagination-number',
-        'pagination-item',
-        'pagination-item--active',
-        'navigation',
-        'navigation-button',
-        'navigation-button--previous',
-        'navigation-button--next',
-        'autoplay-controls',
-        'variant',
-        'autoplay'
-      ]
-    }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -237,10 +190,7 @@ export const Parts = {
           })
         }
       },
-      constants: [
-        { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
-        { type: 'attribute', name: 'autoplay', value: true }
-      ],
+      constants: [{ type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' }],
       args
     });
   }
@@ -264,12 +214,24 @@ export const Mouseless = {
   }
 };
 
-export const Combination = generateScreenshotStory([
-  Variant,
-  Inverted,
-  Loop,
-  SlidesPerPage,
-  SlidesPerMove,
-  Parts,
-  Mouseless
-]);
+/**
+ * Use the `autoplay` attribute to toggle autoplay.
+ */
+
+export const Autoplay = {
+  name: 'Autoplay',
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: { type: 'attribute', name: 'autoplay' }
+      },
+      constants: [
+        { type: 'attribute', name: 'variant', value: 'dot' },
+        { type: 'attribute', name: 'loop', value: 'true' }
+      ],
+      args
+    });
+  }
+};
+
+export const Combination = generateScreenshotStory([Variant, Inverted, Loop, Parts, Mouseless]);

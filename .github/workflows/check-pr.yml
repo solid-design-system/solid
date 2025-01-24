@@ -5,12 +5,12 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
-    linting-and-formatting:
+    quality-gate:
         name: Verify monorepo
         runs-on: ubuntu-latest
         if: github.event.pull_request.draft == false
         container:
-            image: mcr.microsoft.com/playwright:v1.44.1-jammy
+            image: mcr.microsoft.com/playwright:v1.49.1-noble
         steps:
             - name: Checkout
               uses: actions/checkout@v4
@@ -18,28 +18,25 @@ jobs:
             - name: Install Node.js
               uses: actions/setup-node@v4
               with:
-                  node-version: 18
+                  node-version: 20
 
             - uses: pnpm/action-setup@v2
               name: Install pnpm
               id: pnpm-install
               with:
-                  version: 8.6.2
+                  version: 9.15.0
                   run_install: false
 
             - name: Install dependencies
               run: pnpm i
 
-            - name: verify lint, format and not-components
-              run: pnpm lint.verify && pnpm format.verify && pnpm --recursive --if-present --filter="\!components" verify
-
-            - name: verify components without tests
-              run : cd packages/docs && pnpm ts.verify && pnpm build && echo '✅ Build verified' && node ./scripts/node-optimize-chromatic.cjs && echo '✅ Chromatic optimization verified'
+            - name: Verify everything
+              run: pnpm verify
 
     # Check Chromatic for visual changes after all other checks have passed
     chromatic-deployment-pr:
       name: Verify Chromatic
-      needs: [linting-and-formatting]
+      needs: [quality-gate]
       if: ${{!contains(github.event.pull_request.title, '[skip chromatic]') && !startsWith(github.event.pull_request.title, 'chore(security deps):')}}
       runs-on: ubuntu-latest
       steps:
@@ -48,9 +45,14 @@ jobs:
           uses: actions/checkout@v4
           with:
             fetch-depth: 0 # 👈 Required to retrieve git history
+        - name: Install Node.js
+          uses: actions/setup-node@v4
+          with:
+              node-version: 20
+
         - uses: pnpm/action-setup@v2
           with:
-            version: 8.6.2
+              version: 9.15.0
         # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
         - name: Install dependencies
           run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
@@ -70,32 +72,3 @@ jobs:
             onlyChanged: false
             # We need to manually build storybook with pnpm
             storybookBuildDir: packages/docs/dist/storybook
-
-    quality-gate:
-      name: Test components (do locally if failing)
-      needs: [linting-and-formatting]
-      runs-on: ubuntu-latest
-      if: github.event.pull_request.draft == false
-      container:
-          image: mcr.microsoft.com/playwright:v1.44.1-jammy
-      steps:
-          - name: Checkout
-            uses: actions/checkout@v4
-
-          - name: Install Node.js
-            uses: actions/setup-node@v4
-            with:
-                node-version: 18
-
-          - uses: pnpm/action-setup@v2
-            name: Install pnpm
-            id: pnpm-install
-            with:
-                version: 8.6.2
-                run_install: false
-
-          - name: Install dependencies
-            run: pnpm i
-
-          - name: Components test
-            run: cd packages/components && pnpm test.verify

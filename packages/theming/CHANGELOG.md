@@ -1,5 +1,11 @@
 # @solid-design-system/theming
 
+## 1.1.1
+
+### Patch Changes
+
+- Update dependencies _[`#1787`](https://github.com/solid-design-system/solid/pull/1787) [`c70915b`](https://github.com/solid-design-system/solid/commit/c70915be2135d93f17e9150ea6fcef95f90dd081) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 # [@solid-design-system/theming-v1.1.0](https://github.com/solid-design-system/solid/compare/theming/1.0.2...theming/1.1.0) (2024-11-08)
 
 ### Features
