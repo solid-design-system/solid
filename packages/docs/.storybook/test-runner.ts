@@ -53,6 +53,7 @@ const config: TestRunnerConfig = {
     const [folder, component, screenshot] = context.title.split('/').map(v => v.toLowerCase());
     const file = `${component.replaceAll(' ', '-').replace('sd-', '')}${screenshot ? '.test' : ''}.stories.ts`;
     const path = `./stories/${folder}/${file}`;
+    const browser = `http://localhost:6999/?path=/story/${context.id}`;
 
     const report = violations
       .map(violation =>
@@ -63,6 +64,7 @@ const config: TestRunnerConfig = {
               `${pc.gray(node.html)}\n\n` +
               pc.red(`${violation.help} (${violation.id})\n\n`) +
               `Story: ${pc.blue(path)}\n\n` +
+              `Browser: ${pc.blue(browser)}\n\n` +
               pc.bold(pc.yellow(node.failureSummary)) +
               '\n\n' +
               horizontalLine
@@ -71,7 +73,7 @@ const config: TestRunnerConfig = {
       )
       .join('\n\n');
 
-    return assert.fail(message + horizontalLine + '\n' + report);
+    return assert.fail(context.id + message + horizontalLine + '\n' + report);
   }
 };
 
