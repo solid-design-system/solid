@@ -1,5 +1,18 @@
 # @solid-design-system/components
 
+## 4.0.4
+
+### Patch Changes
+
+- Fix `sd-carousel` focus management: _[`#1802`](https://github.com/solid-design-system/solid/pull/1802) [`77ed0c1`](https://github.com/solid-design-system/solid/commit/77ed0c14422914de6793259ed489eff363254d9e) [@smfonseca](https://github.com/smfonseca)_
+
+  - next button is focused only when user interacts with component.
+  - previous button receives focus when the last slide is reached.
+
+### 📈 Stats
+* Uncompressed: 399 KB (+1 KB / +0%)
+* Gzipped: 94 KB (unchanged)
+
 ## 4.0.3
 
 ### Patch Changes
