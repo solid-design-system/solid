@@ -1,5 +1,19 @@
 # @solid-design-system/docs
 
+## 1.3.5
+
+### Patch Changes
+
+- Fix urls in `docs-codepen-enhancer` so that the correct files are loaded within Codepen editor. _[`#1800`](https://github.com/solid-design-system/solid/pull/1800) [`07fde87`](https://github.com/solid-design-system/solid/commit/07fde874bdf60ea02b9bf489eef34c17635fe455) [@smfonseca](https://github.com/smfonseca)_
+
+  `https://solid-design-system.fe.union-investment.de/components/4.0.1/solid-components.bundle.js` -> `https://solid-design-system.fe.union-investment.de/components/4.0.1/cdn/solid-components.bundle.js`
+
+## 1.3.4
+
+### Patch Changes
+
+- Align storybook font family with brand. _[`#1796`](https://github.com/solid-design-system/solid/pull/1796) [`53bc72f`](https://github.com/solid-design-system/solid/commit/53bc72f3f1b6126f658e63335805f9aefa84b033) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.3.3
 
 ### Patch Changes
