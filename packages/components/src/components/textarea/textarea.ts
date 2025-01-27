@@ -382,8 +382,8 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               part="textarea"
               id="input"
               class=${cx(
-                'flex-grow focus:outline-none bg-transparent placeholder-neutral-700 resize-none',
-                this.disabled && 'cursor-not-allowed',
+                'flex-grow focus:outline-none bg-transparent resize-none',
+                this.disabled ? 'cursor-not-allowed placeholder-neutral-500' : 'placeholder-neutral-700',
                 textSize
               )}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
