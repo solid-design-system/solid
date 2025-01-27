@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.4.0
+
+### Minor Changes
+
+- Add radio button group template. _[`#1779`](https://github.com/solid-design-system/solid/pull/1779) [`9ec07c6`](https://github.com/solid-design-system/solid/commit/9ec07c660c1a28b7b75c75350876324f4c4bab7a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.3.5
 
 ### Patch Changes

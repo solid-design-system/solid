@@ -22,6 +22,7 @@ const { overrideArgs } = storybookHelpers('sd-radio-group');
  * - [sd-radio-button](?path=/docs/components-sd-radio-button--docs)
  *
  * **Related templates**:
+ * - [Radio Button Group](?path=/docs/templates-radio-button-group--docs)
  * - [Tooltip](?path=/docs/templates-tooltip--docs)
  */
 
