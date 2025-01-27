@@ -10,6 +10,7 @@ const { overrideArgs } = storybookHelpers('sd-radio');
  * Used to allow the user to select a single option from a group.
  *
  * **Accessibility Information:**
+ * - Known issue: Error texts are not programmatically linked to the associated form elements using aria-describedby attributes. <!-- Ticket for the issue: https://github.com/solid-design-system/solid/issues/1174 -->
  * - Avoid nesting interactive elements, like links, inside labels.
  *
  *  **Related components**:

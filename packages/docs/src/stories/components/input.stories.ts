@@ -10,6 +10,7 @@ const { overrideArgs } = storybookHelpers('sd-input');
  * Used to allow users to enter text. It can be displayed in several ways, depending on the type.
  *
  * **Accessibility Information:**
+ * - Known issue: the type number currently lacks a delimiter option (punctuation) for separating long numbers. <!-- Ticket for the issue: https://github.com/solid-design-system/solid/issues/1169 -->
  * - The placeholder is an addition, not a replacement for the label. Always provide a visible label.
  * - Do not rely on placeholders alone, except in rare cases like a search widget.
  * - Ensure that focus moves logically between input fields and other form elements. When an input field is focused, it should be clearly indicated.

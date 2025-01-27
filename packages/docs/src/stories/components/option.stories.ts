@@ -10,6 +10,7 @@ const { overrideArgs } = storybookHelpers('sd-option');
  * Used to define selectable items within various form controls such as select.
  *
  * **Accessibility Information:**
+ * - Known issue: Error texts are not programmatically linked to the associated form elements using aria-describedby attributes. <!-- Ticket for the issue: https://github.com/solid-design-system/solid/issues/1174 -->
  * - Use radio buttons instead of selects for a few options. Visible choices are better than hidden ones.
  * - Long option names can be difficult to understand and perceive, so it’s best to keep them concise.
  * - Ensure that the beginning of each option is unique to avoid confusion, especially for screen reader users.

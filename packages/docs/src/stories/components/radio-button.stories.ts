@@ -13,6 +13,7 @@ const { generateTemplate } = storybookTemplate('sd-radio-button');
  * Similar to `sd-radio`, it has to be slotted inside of an `sd-radio-group`. It does not have an invalid state and should always have a pre-selected option (default value).
  *
  * **Accessibility Information:**
+ * - Known issue: Error texts are not programmatically linked to the associated form elements using aria-describedby attributes. <!-- Ticket for the issue: https://github.com/solid-design-system/solid/issues/1174 -->
  * - Use `sd-radio` instead of `sd-radio-button` whenever possible to avoid confusion with regular buttons. If something looks like a button, you expect that you can use it like a button.
  *
  * **Related components:**

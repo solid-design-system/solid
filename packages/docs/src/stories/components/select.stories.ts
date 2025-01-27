@@ -20,6 +20,7 @@ const labelConstant: ConstantDefinition = { type: 'attribute', name: 'label', va
  * Used to choose items from a menu of predefined options.
  *
  * **Accessibility Information:**
+ * - Known issue: currently, options are not always searchable with keyboard when select is open. <!--Ticket for the issue: https://github.com/solid-design-system/solid/issues/1167 -->
  * - To ensure screenreader compatibility, consider including a statement such as "Fields marked with an asterisk (*) are required" at the start of the form.
  * - Be aware that group labels in select components will be neglected by most assistive devices.
  *
