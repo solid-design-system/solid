@@ -2,4 +2,4 @@
 '@solid-design-system/docs': minor
 ---
 
-Implement radio button group template.
+Add radio button group template.
