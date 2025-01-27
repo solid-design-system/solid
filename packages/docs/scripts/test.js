@@ -1,5 +1,6 @@
 import { execSync, spawnSync } from 'child_process';
 import concurrently from 'concurrently';
+import pc from 'picocolors';
 
 const PORT = 6999;
 
@@ -65,32 +66,36 @@ async function previewAndTest() {
   );
 }
 
-if (watch) {
-  const isPortBusy = checkPort(PORT);
+function exit() {
+  process.exit();
+}
 
+process.on('SIGINT', exit);
+process.on('SIGTERM', exit);
+
+const isPortBusy = checkPort(PORT);
+
+if (watch) {
   if (!isPortBusy) {
-    console.log(`Storybook is not running. Please run storybook on a separate terminal by running: pnpm dev`);
-    process.exit(1);
+    console.log(
+      pc.bold(
+        pc.red(
+          `Storybook is not running!\nPlease run storybook on a separate terminal by running: ${pc.white('pnpm dev')}\n`
+        )
+      )
+    );
+    exit();
   }
 
   testWatch();
   process.exit(0);
 }
 
-const isPreviewPortBusy = checkPort(PORT);
-if (isPreviewPortBusy) {
-  console.log(`Preview in ${PORT} is already running. Running tests only...`);
+if (isPortBusy) {
+  console.log(pc.bold(pc.cyan(`Preview in ${PORT} is already running. Running tests only...`)));
   test();
 } else {
-  console.log(`Port ${PORT} is available. Building Storybook, previewing and running tests...`);
+  console.log(pc.bold(pc.cyan(`Port ${PORT} is available. Building Storybook, previewing and running tests...`)));
   build();
   await previewAndTest();
 }
-
-// Handle exit signals
-function handleCleanup() {
-  process.exit();
-}
-
-process.on('SIGINT', handleCleanup);
-process.on('SIGTERM', handleCleanup);
