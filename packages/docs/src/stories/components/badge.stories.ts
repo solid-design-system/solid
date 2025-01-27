@@ -12,8 +12,10 @@ const { generateTemplate } = storybookTemplate('sd-badge');
  * Used to visual indicate a quantity related to a particular element. Often displayed next to an icon or label.
  *
  * **Accessibility Information:**
- * - The variant colors should not be used to convey meaning as they currently do (eg: red for error, green for success). These values will be updated in future releases to ensure they are accessible. //Fixed in feat/sd-badge-variants-naming
- * - If the badge conveys critical information, such as the number of cart items, ensure this information is also presented elsewhere in an accessible text format (e.g., within the cart summary).
+ * - Avoid using badges for purely decorative purposes.
+ * - Make sure the badge is appropriately sized and placed so it does not obscure other important content or controls.
+ * - If the badge communicates critical information, e.g., the number of items in a cart, ensure it's not the only place users can obtain it. For example, in the cart itself, the number should be repeated in text.
+ * - If the badge content changes dynamically (e.g., a notification count), use ”aria-live” to announce these changes to screen reader users.
  *
  * **Related templates**:
  * - [Badge](?path=/docs/templates-badge--docs)
