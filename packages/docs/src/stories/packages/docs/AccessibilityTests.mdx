@@ -7,7 +7,16 @@ import { Meta } from '@storybook/blocks';
 Accessibility (a11y) is an integral part of modern web development,
 ensuring that applications are inclusive and usable by all individuals.
 
-## Using Custom Tags for Accessibility Tests
+## Executing tests
+
+To execute the accessibility tests, the command `pnpm test` must be run.
+In case it is being run without any preview running, the command will `build, preview and run the tests`.
+In case a preview is already running on a separate terminal, the command will just `run the tests`.
+
+`pnpm test.watch` can also be executed, to run the tests in watch mode.
+To do so, storybook has to be running on a separate terminal in dev mode, `pnpm dev`.
+
+## Using custom tags for accessibility tests
 
 Custom tags can be used in Storybook stories for better control and customization of
 accessibility testing. These tags can help you skip tests globally or
@@ -47,20 +56,20 @@ export default {
 
 In this example, only the color-contrast and label rules are skipped during testing.
 
-## Debugging Failing Accessibility Tests
+## Debugging failing accessibility tests
 
 When a test fails, two direct URLs are printed into the console, `story` and `browser`.
 
 - The story url links to the story file which the test is failling.
 - The browser url links to the storybook story on the browser which is failling.
 
-## Open the Failing Test in the Browser
+## Open the failing test in the browser
 
 1. **Local the `browser` URL:** When an a11y test fails, it outputs a URL pointing to the rendered story.
 2. **Copy the `browser` URL:** Copy the URL from the output.
 3. **Open the URL in the browser:** Paste the `browser` URL into your browser to open the story in isolation.
 
-## Resolve Issues
+## Resolve issues
 
 Once the story is loaded:
 
