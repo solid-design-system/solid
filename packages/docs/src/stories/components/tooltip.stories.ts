@@ -195,21 +195,19 @@ export const CustomTrigger = {
     <sd-tooltip size="lg" content="This tooltip is accessible" placement="top" trigger="click" class="custom-tooltip">
       <sd-button class="custom-button">Custom Trigger</sd-button>
     </sd-tooltip>
-    <div aria-live="polite" class="sr-only live-region"></div>
+    <div aria-live="assertive" class="sr-only live-region"></div>
     <script>
-      const button = document.querySelector('.custom-button');
       const liveRegion = document.querySelector('.live-region');
-      const tooltipContent = document.querySelector('.custom-tooltip').getAttribute('content');
+      const tooltip = document.querySelector('.custom-tooltip');
+      const tooltipContent = tooltip.getAttribute('content');
       const tooltipLabel = tooltipContent;
 
-      button.addEventListener('click', () => {
+      tooltip.addEventListener('sd-after-show', event => {
         liveRegion.textContent = tooltipLabel;
+      });
 
-        // we need to remove the label and add it again after a delay so that screen readers can detect the change
+      tooltip.addEventListener('sd-after-hide', event => {
         liveRegion.textContent = '';
-        setTimeout(() => {
-          liveRegion.textContent = tooltipLabel;
-        }, 125);
       });
     </script>
   `
