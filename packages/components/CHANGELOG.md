@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.0.5
+
+### Patch Changes
+
+- Fix missing gradients on `sd-teaser-media` and `sd-flipcard`. _[`#1810`](https://github.com/solid-design-system/solid/pull/1810) [`f10c08c`](https://github.com/solid-design-system/solid/commit/f10c08ce6cc0e40d860a93c50199e2917deef7df) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 4.0.4
 
 ### Patch Changes
@@ -10,8 +16,9 @@
   - previous button receives focus when the last slide is reached.
 
 ### 📈 Stats
-* Uncompressed: 399 KB (+1 KB / +0%)
-* Gzipped: 94 KB (unchanged)
+
+- Uncompressed: 399 KB (+1 KB / +0%)
+- Gzipped: 94 KB (unchanged)
 
 ## 4.0.3
 

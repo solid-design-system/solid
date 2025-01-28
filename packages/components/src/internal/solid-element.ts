@@ -23,6 +23,9 @@ export default class SolidElement extends LitElement {
       @tailwind utilities;
 
       :host {
+        --tw-gradient-from-position: 0%;
+        --tw-gradient-to-position: 100%;
+
         box-sizing: border-box;
       }
 
