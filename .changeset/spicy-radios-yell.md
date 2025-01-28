@@ -1,0 +1,51 @@
+---
+'@solid-design-system/docs': patch
+---
+
+Add accessibility information to the following components:
+- Accordion group
+- Accordion
+- Audio
+- Badge
+- Brandshape
+- Button
+- Carousel item
+- Carousel
+- Checkbox group
+- Checkbox
+- Combobox
+- Dialog
+- Divider
+- Drawer
+- Dropdown
+- Flipcard
+- Header
+- Icon
+- Input
+- Link
+- Map marker
+- Navigation Item
+- Notification
+- Optgroup
+- Option
+- Quickfact
+- Radio button
+- Radio group
+- Radio
+- Scrollable
+- Select
+- Step group
+- Step
+- Switch
+- Tag
+- Teaser media
+- Teaser
+- Textarea
+- Tooltip
+
+Add accessibility information to the following styles:
+- Copyright
+- Footnotes
+- Headline
+- Hidden links
+- Prose
