@@ -12,6 +12,14 @@ const { generateTemplate } = storybookTemplate('sd-icon');
  *
  * Icons can be used to indicate an action or to represent content.
  *
+ * **Accessibility Information:**
+ * - Known issue: Built-in sd-icons currently lack an aria-label or the ability to set it externally. This issue affects the following components:
+ *       - The checkmark for positive validation in sd-radio-group;
+ *       - The +/- buttons inside sd-input (e.g., currency stepper);
+ *       - sd-tooltip when used with sd-input.
+ * <!--Ticket for the issue: https://github.com/solid-design-system/solid/issues/1170 -->
+ * - Always label icons if they are inside a link or button and no text is provided.
+ *
  * **Related templates**:
  * - [Tab Group with Icon and Badge](?path=/docs/templates-tab-group--docs#tab%20group%20with%20icon%20and%20badge)
  *

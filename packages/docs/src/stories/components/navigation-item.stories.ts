@@ -9,6 +9,11 @@ const { generateTemplate } = storybookTemplate('sd-navigation-item');
 /**
  * Used to facilitate seamless page transitions and helps users orient themselves within the application.
  *
+ * **Accessibility Information:**
+ * - Button and link labels should be descriptive yet concise. Descriptive items can result in overly long labels.
+ * - Provide a logical tab order that follows the visual sequence of navigation items and their different levels.
+ * - Use aria-current="page" or aria-current="location" on the active navigation item to communicate the user’s current location.
+ *
  * **Related components**:
  * - [sd-header](?path=/docs/components-sd-header--docs)
  *

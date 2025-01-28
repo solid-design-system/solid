@@ -10,6 +10,11 @@ const { generateTemplate } = storybookTemplate('sd-audio');
 /**
  * Used to play audio files that are part of the page content.
  *
+ * **Accessibility Information:**
+ * - Provide audio descriptions to ensure all users can access the content.
+ * - Ensure all player controls (play, pause, volume, speed...) are operable using only the keyboard.
+ * - Include an audio transcript to support users who are deaf, hard of hearing, or prefer reading at their own pace.
+ *
  * **Related templates**:
  * - [Audio](?path=/docs/templates-audio--docs)
  */

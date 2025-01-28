@@ -9,6 +9,14 @@ const { overrideArgs } = storybookHelpers('sd-radio-group');
 /**
  * Used to group multiple input radio or radio buttons so they function as a single form control.
  *
+ * **Accessibility Information:**
+ * - Keep the label short but descriptive.
+ * - It is required to include the 'boldLabel' attribute to make the label bold.
+ * - To ensure screen-reader compatibility, consider including a statement such as "Fields marked with an asterisk (*) are required" at the start of the form.
+ * - Don’t rely on color alone to express that a form element is invalid. Show an error-text helping people to understand why the element is invalid.
+ * - For an invalid radio-group (since radios always come in groups) an error-text underneath the group is mandatory.
+ * - Ensure radios are easily tappable on touch devices.
+ *
  *  **Related components**:
  * - [sd-radio](?path=/docs/components-sd-radio--docs)
  * - [sd-radio-button](?path=/docs/components-sd-radio-button--docs)
@@ -88,8 +96,6 @@ export const Size = {
 
 /**
  * Use the `label` attribute to add a label on top.
- *
- * **Accessibility Hint**: It is required to include the 'boldLabel' attribute to make the label bold.
  */
 export const Label = {
   name: 'Label',
@@ -130,9 +136,6 @@ export const Orientation = {
 
 /**
  * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
- *
- *
- * **Accessibility Hint:** To ensure screen-reader compatibility, consider including a statement such as "Fields marked with an asterisk (*) are required" at the start of the form.
  */
 
 export const Required = {

@@ -10,7 +10,10 @@ const { generateTemplate } = storybookTemplate('sd-map-marker');
 /**
  * Used to show a location or a cluster of locations on a map.
  *
- * **Accessibility Hint**: if interactive, make sure to provide an accessible name by adding a descriptive text to the `default` slot and visually hide it if needed.
+ * **Accessibility Information:**
+ * - If interactive, make sure to provide an accessible name by adding a descriptive text to the `default` slot and visually hide it if needed.
+ * - Provide keyboard navigation that allows users to tab to markers and activate them via Enter or Space.
+ * - Offer alternative interactions or text-based listings of markers for users who cannot easily manipulate or see the map.
  *
  * **Related templates:**
  * - [Map Marker](?path=/docs/templates-map-marker--docs)

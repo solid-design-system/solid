@@ -11,6 +11,12 @@ const { generateTemplate } = storybookTemplate('sd-badge');
  *
  * Used to visual indicate a quantity related to a particular element. Often displayed next to an icon or label.
  *
+ * **Accessibility Information:**
+ * - Avoid using badges for purely decorative purposes.
+ * - Make sure the badge is appropriately sized and placed so it does not obscure other important content or controls.
+ * - If the badge communicates critical information, e.g., the number of items in a cart, ensure it's not the only place users can obtain it. For example, in the cart itself, the number should be repeated in text.
+ * - If the badge content changes dynamically (e.g., a notification count), use ”aria-live” to announce these changes to screen reader users.
+ *
  * **Related templates**:
  * - [Badge](?path=/docs/templates-badge--docs)
  * - [Tab Group with Badge](?path=/docs/templates-tab-group--docs#tab%20group%20with%20badge)

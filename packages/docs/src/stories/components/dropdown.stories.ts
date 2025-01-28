@@ -10,6 +10,9 @@ const { overrideArgs } = storybookHelpers('sd-dropdown');
 /**
  * Used to display a list of actions or options in a panel when activated.
  *
+ * **Accessibility Information:**
+ * - Ensure the dropdown can be opened, navigated, and closed using the keyboard.
+ *
  * **Related templates:**
  * - [Dropdown](?path=/docs/templates-dropdown--docs)
  */

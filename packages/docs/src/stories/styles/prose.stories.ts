@@ -12,6 +12,10 @@ const html = String.raw;
  * Used as a set of `prose` classes to choose from in a richtext-editor.
  *
  * The set of style classes enables users to create visually engaging and dynamic content by incorporating various text styles, formatting options, and image embeds.
+ *
+ * **Accessibility Information:**
+ * - Screen readers and assistive technologies rely on heading tags. Headings create an outline for the page, similar to a term paper outline or table of contents. As such, it does not make sense to skip heading levels, such as from <h2> to <h4>, going down the page.
+ * - H-tagging within sd-prose is always bound with a certain font size & font style. Layouting flexibility is given when cms-modules are used that utilize sd-headline (which allows h-tagging) in combination with sd-prose.
  */
 
 export default {

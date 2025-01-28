@@ -9,6 +9,11 @@ const { generateTemplate } = storybookTemplate('sd-headline');
 /**
  * Used to display primary or section titles, highlighting key messages to create clear visual hierarchy.
  *
+ * **Accessibility Information:**
+ * - Green accent colour: minium font size of 18.67px needed to meet accessibility criteria.
+ * - It’s important to use sizes consistently and respect the hierarchy in order to ensure accessibility.
+ * - Separating semantics from styles allows developers to use appropriate tags (e.g, h1 to h6 or p) for structure, ensuring consistent design, accessibility, and flexibility across use cases. H-tags are applied in the CMS following semantic headline order.
+ *
  * **Related templates**:
  * - [Headline](?path=/docs/templates-headline--docs)
  * - [Headline with Mark](?path=/docs/templates-mark--docs)

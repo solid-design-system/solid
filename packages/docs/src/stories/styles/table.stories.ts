@@ -12,7 +12,6 @@ const { generateTemplate } = storybookTemplate('sd-table');
  * **Related Components**:
  * - [sd-table-cell](?path=/docs/styles-sd-table-cell--docs)
  *
- *
  * **Related Templates**:
  * - [Table](?path=/docs/templates-table--docs)
  */

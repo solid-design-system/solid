@@ -12,6 +12,9 @@ const html = String.raw;
 /**
  * Used to show links only for keyboard users.
  *
+ * **Accessibility Information:**
+ * - Use “Skip to content” to meet the minimum requirements for WCAG 2.2 Level AA compliance.
+ *
  * **Related components**:
  * - [Dropdown with Navigation Items](?path=/docs/templates-dropdown--docs#dropdown-with-navigation-items)
  */

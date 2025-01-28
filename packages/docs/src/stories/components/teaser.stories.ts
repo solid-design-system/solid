@@ -9,6 +9,9 @@ const { generateTemplate } = storybookTemplate('sd-teaser');
 /**
  * Used to group related subjects in a container, providing a preview of information and linking to further content.
  *
+ * **Accessibility Information:**
+ * - If the image doesn't contribute to the information delivered to the user, don't describe it in the alt attribute and leave it empty.
+ *
  * **Related components**:
  * - [sd-teaser-media](?path=/docs/components-sd-teaser-media--docs)
  *
@@ -135,8 +138,6 @@ export const DefaultAndHeadlineSlot = {
 
 /**
  * Teasers accept a `media` slot to display images or videos.
- *
- * **Accessibility Hint:** If the image doesn't contribute to the information delivered to the user, don't describe it in the alt attribute and leave it empty.
  */
 
 export const MediaSlot = {

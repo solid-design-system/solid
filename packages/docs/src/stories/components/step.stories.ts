@@ -13,6 +13,9 @@ const { generateTemplate } = storybookTemplate('sd-step');
  * Use the `default` slot to set a description for the step. Alternatively, you can use the `description` attribute.
  * Use the `circle-content` slot to add a content-icon in a non-interactive step.
  *
+ * **Accessibility Information:**
+ * - Known issue: The "Waiting" variant has not yet been created, and therefore, compliance with Level AA has not been achieved. <!--Ticket for the issue: https://github.com/solid-design-system/solid/issues/1178 -->
+ *
  * **Related components:**
  * - [sd-step-group](?path=/docs/components-sd-step-group--docs)
  *

@@ -12,6 +12,11 @@ const { generateTemplate } = storybookTemplate('sd-brandshape');
  *
  * Used as a container with brand character that visually emphasizes the content.
  *
+ * **Accessibility Information:**
+ * - Ensure sufficient colour contrast for the content displayed on the brandshape background.
+ * - Verify that users can navigate to and interact with action elements within the brandshape using the keyboard.
+ * - Check that accessibility features are maintained across different breakpoints.
+
  * **Related templates:**
  * - [Brandshape](?path=/story/templates-brandshape--docs)
  *

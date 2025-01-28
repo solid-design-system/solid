@@ -7,6 +7,11 @@ const { generateTemplate } = storybookTemplate('sd-divider');
 
 /**
  * Used to separate content or sections from each other and make the content easier to read for the user.
+ *
+ * **Accessibility Information:**
+ * - Dividers should not interfere with keyboard navigation, allowing users to move through content seamlessly.
+ * - Verify that dividers are visible and distinct in high contrast mode settings, which are often used by users with visual impairments.
+ * - Use the <hr> element for horizontal dividers to ensure they are recognized by assistive technologies. This helps screen readers announce the presence of a divider, providing context to users. For complex layouts, consider adding aria-labels or aria-describedby attributes to provide additional context about the sections being divided.
  */
 
 export default {
