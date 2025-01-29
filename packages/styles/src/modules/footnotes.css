@@ -14,14 +14,16 @@
   }
 
   &:is(ol) {
+    @apply ps-8;
+
     li {
       counter-increment: footnotes;
-      @apply flex gap-2;
+      @apply relative flex;
 
       .sd-footnotes--marker,
       &:has(.sd-footnotes--marker:nth-of-type(2)) {
         &::before {
-          @apply block font-bold leading-normal shrink-0;
+          @apply absolute -left-8 font-bold leading-normal shrink-0;
           content: '[ ' counter(footnotes) ' ]';
           padding-top: 1px;
           font-size: 10px;
@@ -29,9 +31,10 @@
 
         .sd-footnotes--marker {
           counter-increment: footnotes-multiple;
+          @apply mr-1;
 
           &::before {
-            @apply align-super font-bold leading-normal;
+            @apply relative left-0 align-super font-bold leading-normal;
             content: counter(footnotes-multiple, lower-alpha);
           }
         }
@@ -42,6 +45,14 @@
 
         &::after {
           content: none;
+        }
+
+        &:focus-visible {
+          @apply outline-0;
+
+          &::before {
+            @apply outline outline-2 outline-offset-2 outline-primary rounded-default;
+          }
         }
       }
     }
