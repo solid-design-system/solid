@@ -1,5 +1,18 @@
 # @solid-design-system/docs
 
+## 1.4.2
+
+### Patch Changes
+
+- Improved sd-drawer screenshot tests, sd-drawer and sd-header templates a11y: _[`#1743`](https://github.com/solid-design-system/solid/pull/1743) [`722cc99`](https://github.com/solid-design-system/solid/commit/722cc99e032a91bfb1a14a019190ddd0bd1ba790) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add aria-labels to duplicated navigation landmarks in templates
+  - Fix focus style cut off
+  - Fix autofocus story
+  - Replace native input with sd-input in autofocus and mouseless stories
+  - Include a11y hint to add a label
+  - Update stories with button to reopen drawer
+
 ## 1.4.1
 
 ### Patch Changes
