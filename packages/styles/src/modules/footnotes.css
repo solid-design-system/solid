@@ -18,7 +18,7 @@
 
     li {
       counter-increment: footnotes;
-      @apply relative flex;
+      @apply list-none relative;
 
       .sd-footnotes--marker,
       &:has(.sd-footnotes--marker:nth-of-type(2)) {
@@ -30,8 +30,8 @@
         }
 
         .sd-footnotes--marker {
+          @apply inline-block;
           counter-increment: footnotes-multiple;
-          @apply mr-1;
 
           &::before {
             @apply relative left-0 align-super font-bold leading-normal;
@@ -41,7 +41,7 @@
       }
 
       .sd-footnotes--marker {
-        @apply bottom-0;
+        @apply block bottom-0;
 
         &::after {
           content: none;
@@ -64,18 +64,40 @@
 
   &--inverted {
     @apply text-primary-400;
+
+    :target {
+      @apply bg-primary-800;
+    }
+
+    .sd-footnotes--marker::before {
+      @apply text-white !outline-white;
+    }
+
+    &:is(.sd-footnotes--marker) {
+      @apply !text-white !outline-white;
+
+      &:target {
+        @apply bg-primary-800;
+      }
+    }
   }
 
   &--marker {
-    @apply !no-underline font-bold whitespace-nowrap relative bottom-2;
+    @apply inline-block !no-underline font-bold whitespace-nowrap relative bottom-2;
     font-size: x-small;
+
+    &:target {
+      @apply bg-neutral-200;
+    }
 
     &::before {
       content: '[ ';
+      display: inline-block;
     }
 
     &::after {
       content: ' ]';
+      display: inline-block;
     }
 
     &:link,
