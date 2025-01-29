@@ -9,3 +9,4 @@ Improved sd-drawer a11y:
 - Make content area a scrollable region to be accessed by screen readers
 - Add close button to no-header variant
 - Fix aria-labelledby title issue
+- Fix tests
