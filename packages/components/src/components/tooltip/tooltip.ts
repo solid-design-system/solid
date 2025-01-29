@@ -107,6 +107,7 @@ export default class SdTooltip extends SolidElement {
 
   firstUpdated() {
     this.body.hidden = !this.open;
+    this.formatDefaultSlot(this.defaultSlot);
 
     // If the tooltip is visible on init, update its position
     if (this.open) {
@@ -123,6 +124,16 @@ export default class SdTooltip extends SolidElement {
     this.removeEventListener('keydown', this.handleKeyDown);
     this.removeEventListener('mouseover', this.handleMouseOver);
     this.removeEventListener('mouseout', this.handleMouseOut);
+  }
+
+  // removes empty text nodes from the default slot
+  private formatDefaultSlot(slot: HTMLSlotElement) {
+    const nodes = slot.assignedNodes({ flatten: true });
+    nodes.forEach(node => {
+      if (node.nodeType === Node.TEXT_NODE && !node?.textContent?.trim()) {
+        node?.parentNode?.removeChild(node);
+      }
+    });
   }
 
   private handleBlur() {
