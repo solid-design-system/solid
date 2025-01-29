@@ -1,5 +1,25 @@
 # @solid-design-system/components
 
+## 4.0.7
+
+### Patch Changes
+
+- Fixed `sd-navigation-item` broken layout _[`#1743`](https://github.com/solid-design-system/solid/pull/1743) [`722cc99`](https://github.com/solid-design-system/solid/commit/722cc99e032a91bfb1a14a019190ddd0bd1ba790) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  Improved sd-drawer a11y:
+
+  - Fix focus management - the focus will go to close button once the drawer is open
+  - Make content area a scrollable region to be accessed by screen readers
+  - Add close button to no-header variant
+  - Fix aria-labelledby title issue
+  - Fix tests
+
+## 4.0.6
+
+### Patch Changes
+
+- Improve `sd-tooltip` robustness by removing empty text nodes from the default slot which caused the trigger to not render properly. _[`#1798`](https://github.com/solid-design-system/solid/pull/1798) [`fa60adc`](https://github.com/solid-design-system/solid/commit/fa60adc10a0b96654d6bf7380b4fc8e82857caa6) [@smfonseca](https://github.com/smfonseca)_
+
 ## 4.0.5
 
 ### Patch Changes

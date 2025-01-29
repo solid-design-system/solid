@@ -216,4 +216,18 @@ describe('<sd-tooltip>', () => {
     showSpy.restore();
     hideSpy.restore();
   });
+
+  it('removes whitespace nodes from the default slot', async () => {
+    const el = await fixture<SdTooltip>(html`
+      <sd-tooltip content="This is a tooltip">
+        <!-- -->
+        <span>Content</span>
+      </sd-tooltip>
+    `);
+
+    const defaultSlot = el.shadowRoot!.querySelector('slot:not([name])')!;
+    const nodes = (defaultSlot as HTMLSlotElement).assignedNodes({ flatten: true }) as HTMLElement[];
+
+    expect(nodes.length).to.equal(1);
+  });
 });
