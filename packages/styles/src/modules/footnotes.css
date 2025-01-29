@@ -15,28 +15,29 @@
 
   &:is(ol) {
     li {
-      counter-increment: list-item;
+      counter-increment: footnotes;
       @apply flex gap-2;
 
-      &:not(:has(.sd-footnotes--marker))::before,
-      .sd-footnotes--marker::before {
-        @apply block font-bold leading-normal shrink-0;
-        content: '[ ' counter(list-item) ' ]';
-        padding-top: 1px;
-        font-size: 10px;
-      }
-
-      .sd-footnotes--marker-multiple {
-        counter-increment: multiple-marker;
-
+      .sd-footnotes--marker,
+      &:has(.sd-footnotes--marker:nth-of-type(2)) {
         &::before {
-          @apply align-super font-bold leading-normal;
-          content: counter(multiple-marker, lower-alpha);
+          @apply block font-bold leading-normal shrink-0;
+          content: '[ ' counter(footnotes) ' ]';
+          padding-top: 1px;
+          font-size: 10px;
+        }
+
+        .sd-footnotes--marker {
+          counter-increment: footnotes-multiple;
+
+          &::before {
+            @apply align-super font-bold leading-normal;
+            content: counter(footnotes-multiple, lower-alpha);
+          }
         }
       }
 
-      .sd-footnotes--marker,
-      .sd-footnotes--marker-multiple {
+      .sd-footnotes--marker {
         @apply bottom-0;
 
         &::after {
@@ -54,8 +55,7 @@
     @apply text-primary-400;
   }
 
-  &--marker,
-  &--marker-multiple {
+  &--marker {
     @apply !no-underline font-bold whitespace-nowrap relative bottom-2;
     font-size: x-small;
 

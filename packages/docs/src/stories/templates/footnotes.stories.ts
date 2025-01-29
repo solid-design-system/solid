@@ -40,9 +40,9 @@ export const LinkedFootnotes = {
         as a "single source of truth," promoting consistency across all products.
       </li>
       <li id="note_2">
-        <a href="#ref_2a" class="sd-footnotes--marker-multiple"></a>
-        <a href="#ref_2b" class="sd-footnotes--marker-multiple"></a>
-        <a href="#ref_2c" class="sd-footnotes--marker-multiple"></a>
+        <a href="#ref_2a" class="sd-footnotes--marker"></a>
+        <a href="#ref_2b" class="sd-footnotes--marker"></a>
+        <a href="#ref_2c" class="sd-footnotes--marker"></a>
         Component libraries in design systems streamline workflows, boosting efficiency and scalability.
       </li>
       <li id="note_3">
