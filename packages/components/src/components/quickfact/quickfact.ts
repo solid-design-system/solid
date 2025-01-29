@@ -1,6 +1,7 @@
 import '../icon/icon';
-import { css, html } from 'lit';
+import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { property } from 'lit/decorators.js';
 import { setDefaultAnimation } from '../../utilities/animation-registry';
@@ -27,9 +28,13 @@ export default class SdQuickfact extends SdAccordion {
   @property({ type: Boolean, reflect: true }) expandable = false;
 
   render() {
+    const base = this.expandable ? literal`details` : literal`div`;
+    const header = this.expandable ? literal`summary` : literal`div`;
+
+    /* eslint-disable lit/binding-positions, lit/no-invalid-html */
     return html`
-      <div part="base" class="sm:p-6">
-        <header
+      <${base} part="base" class="sm:p-6">
+        <${header}
           part="header"
           id="header"
           class=${cx(
@@ -55,9 +60,9 @@ export default class SdQuickfact extends SdAccordion {
             class=${cx(
               'flex flex-auto items-start text-left text-base leading-normal font-normal sm:leading-tight sm:text-3xl sm:text-center',
               this.expandable ? 'text-primary' : 'text-black cursor-default'
-            )}
-            >${this.summary}</slot
-          >
+            )}>
+            ${this.summary}
+            </slot>
           <span
             part="summary-icon"
             class=${cx(
@@ -71,12 +76,13 @@ export default class SdQuickfact extends SdAccordion {
             <slot name="collapse-icon" class=${cx(!this.open && 'hidden')}>
               <sd-icon library="system" name="chevron-down"></sd-icon> </slot
           ></span>
-        </header>
+        </${header}>
         <div part="content" id="content" class=${cx('overflow-hidden', !this.expandable && 'hidden')}>
           <slot part="content__slot" class="block" role="region" aria-labelledby="header"></slot>
         </div>
-      </div>
+      </${base}>
     `;
+    /* eslint-enable lit/binding-positions, lit/no-invalid-html */
   }
 
   static styles = [

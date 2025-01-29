@@ -185,16 +185,29 @@ export const Hoist = {
     </div>`
 };
 
-/**
- * Use the `default` slot to attach the tooltip to a custom button.
- *
- * **Note:** Currently, this method is not recommended due to issues with passing ID references to the shadow DOM, which can make the tooltip text inaccessible to screen readers. We are actively working on a solution to resolve this limitation.
+ * It is possible to change the tooltip trigger element by defining the new trigger in the default slot.
+ * However, be aware that this affects the accessibility of the component due to the loss of the aria reference to the trigger element which will be located in the shadow DOM.
+ * In this example we provide a solution to this problem by using a live region to announce the tooltip content when the trigger element is clicked.
  */
-export const CustomButtons = {
-  render: () =>
-    html` <div class="flex items-end h-[5em] w-16">
-      <sd-tooltip content="Lorem ipsum" placement="top" size="lg" trigger="click focus">
-        <sd-button>Click to view tooltip</sd-button>
-      </sd-tooltip>
-    </div>`
+export const CustomTrigger = {
+  render: () => html`
+    <sd-tooltip size="lg" content="This tooltip is accessible" placement="top" trigger="click" class="custom-tooltip">
+      <sd-button class="custom-button">Custom Trigger</sd-button>
+    </sd-tooltip>
+    <div aria-live="assertive" class="sr-only live-region"></div>
+    <script>
+      const liveRegion = document.querySelector('.live-region');
+      const tooltip = document.querySelector('.custom-tooltip');
+      const tooltipContent = tooltip.getAttribute('content');
+      const tooltipLabel = tooltipContent;
+
+      tooltip.addEventListener('sd-after-show', event => {
+        liveRegion.textContent = tooltipLabel;
+      });
+
+      tooltip.addEventListener('sd-after-hide', event => {
+        liveRegion.textContent = '';
+      });
+    </script>
+  `
 };

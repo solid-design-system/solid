@@ -5,7 +5,6 @@ import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { HasSlotController } from '../../internal/slot';
-import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { property, query } from 'lit/decorators.js';
@@ -173,6 +172,7 @@ export default class SdDrawer extends SolidElement {
 
       await Promise.all([stopAnimations(this.drawer), stopAnimations(this.overlay)]);
       this.drawer.hidden = false;
+      this.drawer.removeAttribute('inert');
 
       // Set initial focus
       requestAnimationFrame(() => {
@@ -190,6 +190,8 @@ export default class SdDrawer extends SolidElement {
         // Restore the autofocus attribute
         if (autoFocusTarget) {
           autoFocusTarget.setAttribute('autofocus', '');
+        } else {
+          this.closeButton.focus();
         }
       });
 
@@ -236,6 +238,7 @@ export default class SdDrawer extends SolidElement {
       ]);
 
       this.drawer.hidden = true;
+      this.drawer.setAttribute('inert', '');
 
       // Now that the dialog is hidden, restore the overlay and panel for next time
       this.overlay.hidden = false;
@@ -310,7 +313,7 @@ export default class SdDrawer extends SolidElement {
         <div
           part="panel"
           class=${cx(
-            'absolute flex flex-col z-10 max-w-full max-h-full bg-white shadow-lg overflow-auto pointer-events-auto focus:outline-none',
+            'absolute flex flex-col gap-4 z-10 max-w-full max-h-full bg-white shadow-lg overflow-auto pointer-events-auto focus:outline-none',
             {
               end: 'top-0 end-0 bottom-auto start-auto w-[--width] h-full',
               start: 'top-0 end-auto bottom-auto start-0 w-[--width] h-full'
@@ -318,9 +321,7 @@ export default class SdDrawer extends SolidElement {
           )}
           role="dialog"
           aria-modal="true"
-          aria-hidden=${this.open ? 'false' : 'true'}
           aria-label=${this.label}
-          aria-labelledby=${ifDefined(!this.noHeader ? 'title' : undefined)}
           tabindex="0"
         >
           ${!this.noHeader
@@ -345,8 +346,15 @@ export default class SdDrawer extends SolidElement {
                   </div>
                 </header>
               `
-            : ''}
-          <div part="body" class="flex-auto block px-4">
+            : html` <sd-button
+                variant="tertiary"
+                size="lg"
+                part="close-button"
+                @click=${() => this.requestClose('close-button')}
+                class="absolute top-2 right-2"
+                ><sd-icon label=${this.localize.term('close')} name="close" library="system"></sd-icon
+              ></sd-button>`}
+          <div part="body" class="flex-auto block px-4" role="region" tabindex="0">
             <slot></slot>
           </div>
           <footer part="footer" class=${cx(this.hasSlotController.test('footer') ? 'text-left p-4' : 'hidden')}>

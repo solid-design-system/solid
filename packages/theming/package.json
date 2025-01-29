@@ -1,6 +1,6 @@
 {
   "name": "@solid-design-system/theming",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "This package provides a color calculation service for the Solid Design System.",
   "main": "./src/index.js",
   "scripts": {
@@ -31,7 +31,7 @@
   },
   "readme": "README.md",
   "devDependencies": {
-    "typescript": "5.7.2"
+    "typescript": "5.7.3"
   },
   "dependencies": {
     "chroma-js": "^3.1.2"
