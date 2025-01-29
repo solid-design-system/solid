@@ -9,6 +9,9 @@ const { generateTemplate } = storybookTemplate('sd-video');
 /**
  * Used to embed and control videos.
  *
+ * **Accessibility Information:**
+ * - Provide captions or subtitles as support or alternative.
+ *
  * **Related templates**:
  * - [Video](?path=/docs/templates-video--docs)
  */

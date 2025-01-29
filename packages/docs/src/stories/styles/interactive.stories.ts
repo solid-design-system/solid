@@ -10,7 +10,8 @@ const { generateTemplate } = storybookTemplate('sd-interactive');
 /**
  * Used in interactive elements as a "quartery" button that has no paddings and no background.
  *
- * __Accessiblity hint__: Use a `title` attribute to provide a hint to the user of what the button does.
+ * **Accessibility Information:**
+ * - Use a `title` attribute to provide a hint to the user of what the button does.
  *
  *  **Related templates**:
  * - [Interactive](?path=/docs/templates-interactive--docs)
