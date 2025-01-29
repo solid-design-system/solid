@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.4.1
+
+### Patch Changes
+
+- Extend `sd-tooltip` documentation with example on how to use a custom trigger and measures to preserve accessibility. _[`#1798`](https://github.com/solid-design-system/solid/pull/1798) [`fa60adc`](https://github.com/solid-design-system/solid/commit/fa60adc10a0b96654d6bf7380b4fc8e82857caa6) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.4.0
 
 ### Minor Changes

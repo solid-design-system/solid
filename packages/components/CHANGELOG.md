@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.0.6
+
+### Patch Changes
+
+- Improve `sd-tooltip` robustness by removing empty text nodes from the default slot which caused the trigger to not render properly. _[`#1798`](https://github.com/solid-design-system/solid/pull/1798) [`fa60adc`](https://github.com/solid-design-system/solid/commit/fa60adc10a0b96654d6bf7380b4fc8e82857caa6) [@smfonseca](https://github.com/smfonseca)_
+
 ## 4.0.5
 
 ### Patch Changes
