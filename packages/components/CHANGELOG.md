@@ -1,5 +1,57 @@
 # @solid-design-system/components
 
+## 4.0.7
+
+### Patch Changes
+
+- Fixed `sd-navigation-item` broken layout _[`#1743`](https://github.com/solid-design-system/solid/pull/1743) [`722cc99`](https://github.com/solid-design-system/solid/commit/722cc99e032a91bfb1a14a019190ddd0bd1ba790) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  Improved sd-drawer a11y:
+
+  - Fix focus management - the focus will go to close button once the drawer is open
+  - Make content area a scrollable region to be accessed by screen readers
+  - Add close button to no-header variant
+  - Fix aria-labelledby title issue
+  - Fix tests
+
+## 4.0.6
+
+### Patch Changes
+
+- Improve `sd-tooltip` robustness by removing empty text nodes from the default slot which caused the trigger to not render properly. _[`#1798`](https://github.com/solid-design-system/solid/pull/1798) [`fa60adc`](https://github.com/solid-design-system/solid/commit/fa60adc10a0b96654d6bf7380b4fc8e82857caa6) [@smfonseca](https://github.com/smfonseca)_
+
+## 4.0.5
+
+### Patch Changes
+
+- Fix missing gradients on `sd-teaser-media` and `sd-flipcard`. _[`#1810`](https://github.com/solid-design-system/solid/pull/1810) [`f10c08c`](https://github.com/solid-design-system/solid/commit/f10c08ce6cc0e40d860a93c50199e2917deef7df) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.0.4
+
+### Patch Changes
+
+- Fix `sd-carousel` focus management: _[`#1802`](https://github.com/solid-design-system/solid/pull/1802) [`77ed0c1`](https://github.com/solid-design-system/solid/commit/77ed0c14422914de6793259ed489eff363254d9e) [@smfonseca](https://github.com/smfonseca)_
+
+  - next button is focused only when user interacts with component.
+  - previous button receives focus when the last slide is reached.
+
+### 📈 Stats
+
+- Uncompressed: 399 KB (+1 KB / +0%)
+- Gzipped: 94 KB (unchanged)
+
+## 4.0.3
+
+### Patch Changes
+
+- Fixed issue with cherry picking the `sd-select` and `sd-combobox` components which required an empty chunk file. _[`#1805`](https://github.com/solid-design-system/solid/pull/1805) [`74d07fd`](https://github.com/solid-design-system/solid/commit/74d07fd7f7db082e6059469f415ff0cb61e400ef) [@smfonseca](https://github.com/smfonseca)_
+
+## 4.0.2
+
+### Patch Changes
+
+- Make the attribute `maxOptionsTagLabel` of the `sd-select` and `sd-combobox` components reactive to translations. _[`#1801`](https://github.com/solid-design-system/solid/pull/1801) [`3a9da02`](https://github.com/solid-design-system/solid/commit/3a9da021a7ecf201a7f239ec7797061204ad6d75) [@smfonseca](https://github.com/smfonseca)_
+
 ## 4.0.1
 
 ### Patch Changes

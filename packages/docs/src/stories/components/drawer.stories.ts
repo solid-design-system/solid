@@ -8,6 +8,8 @@ const { overrideArgs } = storybookHelpers('sd-drawer');
 /**
  * Used as a panel that slides out from the side of the screen which contains a set of information or actions.
  *
+ * **Accessibility Information:** Always include a label so that screenreaders correctly announce the component.
+ *
  * **Related templates:**
  * - [Drawer](?path=/docs/templates-drawer--docs)
  */
@@ -74,8 +76,9 @@ export const Default = {
 export const Open = {
   name: 'Open',
   render: () => html`
+    <sd-button id="openButton">Open Drawer</sd-button>
     <div style="width: auto; height: 40vh; position: relative;">
-      <sd-drawer open label="example" placement="start">
+      <sd-drawer open label="example" placement="start" id="openDrawer">
         <sd-button slot="header" variant="tertiary">
           <sd-icon slot="icon-left" name="system/arrow-left"></sd-icon>
           Back
@@ -87,6 +90,11 @@ export const Open = {
         </div>
       </sd-drawer>
     </div>
+    <script>
+      document.querySelector('#openButton').addEventListener('click', () => {
+        document.querySelector('#openDrawer').show();
+      });
+    </script>
   `
 };
 
@@ -99,8 +107,9 @@ export const Open = {
 export const Placement = {
   name: 'Placement',
   render: () => html`
+    <sd-button id="placementButton">Open Drawer</sd-button>
     <div style="width: auto; height: 40vh; position: relative;">
-      <sd-drawer open placement="start">
+      <sd-drawer open placement="start" id="placementDrawer">
         <sd-input slot="header" type="search" size="lg" placeholder="Search"></sd-input>
         <div class="slot slot--border slot--text h-full">Default slot</div>
         <div slot="footer" class="flex flex-col w-full gap-4">
@@ -109,6 +118,11 @@ export const Placement = {
         </div>
       </sd-drawer>
     </div>
+    <script>
+      document.querySelector('#placementButton').addEventListener('click', () => {
+        document.querySelector('#placementDrawer').show();
+      });
+    </script>
   `
 };
 
@@ -118,11 +132,17 @@ export const Placement = {
 export const NoHeader = {
   name: 'No Header',
   render: () => html`
+    <sd-button id="noHeaderButton">Open Drawer</sd-button>
     <div style="width: auto; height: 40vh; position: relative;">
-      <sd-drawer open no-header placement="start">
+      <sd-drawer open no-header placement="start" id="noHeaderDrawer">
         <div class="slot slot--border slot--text h-full">Default slot</div>
         <div slot="footer" class="slot slot--border slot--text h-full">Footer slot</div>
       </sd-drawer>
     </div>
+    <script>
+      document.querySelector('#noHeaderButton').addEventListener('click', () => {
+        document.querySelector('#noHeaderDrawer').show();
+      });
+    </script>
   `
 };

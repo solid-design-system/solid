@@ -1,5 +1,38 @@
 # @solid-design-system/docs
 
+## 1.4.2
+
+### Patch Changes
+
+- Improved sd-drawer screenshot tests, sd-drawer and sd-header templates a11y: _[`#1743`](https://github.com/solid-design-system/solid/pull/1743) [`722cc99`](https://github.com/solid-design-system/solid/commit/722cc99e032a91bfb1a14a019190ddd0bd1ba790) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add aria-labels to duplicated navigation landmarks in templates
+  - Fix focus style cut off
+  - Fix autofocus story
+  - Replace native input with sd-input in autofocus and mouseless stories
+  - Include a11y hint to add a label
+  - Update stories with button to reopen drawer
+
+## 1.4.1
+
+### Patch Changes
+
+- Extend `sd-tooltip` documentation with example on how to use a custom trigger and measures to preserve accessibility. _[`#1798`](https://github.com/solid-design-system/solid/pull/1798) [`fa60adc`](https://github.com/solid-design-system/solid/commit/fa60adc10a0b96654d6bf7380b4fc8e82857caa6) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.4.0
+
+### Minor Changes
+
+- Add radio button group template. _[`#1779`](https://github.com/solid-design-system/solid/pull/1779) [`9ec07c6`](https://github.com/solid-design-system/solid/commit/9ec07c660c1a28b7b75c75350876324f4c4bab7a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.3.5
+
+### Patch Changes
+
+- Fix urls in `docs-codepen-enhancer` so that the correct files are loaded within Codepen editor. _[`#1800`](https://github.com/solid-design-system/solid/pull/1800) [`07fde87`](https://github.com/solid-design-system/solid/commit/07fde874bdf60ea02b9bf489eef34c17635fe455) [@smfonseca](https://github.com/smfonseca)_
+
+  `https://solid-design-system.fe.union-investment.de/components/4.0.1/solid-components.bundle.js` -> `https://solid-design-system.fe.union-investment.de/components/4.0.1/cdn/solid-components.bundle.js`
+
 ## 1.3.4
 
 ### Patch Changes
