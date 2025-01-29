@@ -27,7 +27,7 @@ export default () => {
       if (id === 'playwright-version') {
         const pnpmLock = readFileSync(filePath, 'utf8');
 
-        const match = /playwright-core@([^:]+):/.exec(pnpmLock);
+        const match = /playwright-core@([^)]+)\)/.exec(pnpmLock);
 
         if (!match || !match[1]) {
           throw new Error('playwright-core version not found in pnpm-lock.yaml');

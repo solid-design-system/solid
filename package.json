@@ -11,7 +11,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "pnpm --workspace-concurrency=1 --recursive test",
     "prepare": "node .husky/install.mjs",
     "verify": "pnpm format.verify && pnpm lint.verify && pnpm --recursive --if-present --workspace-concurrency=1 verify",
     "fix": "pnpm lint.fix && pnpm format.fix",

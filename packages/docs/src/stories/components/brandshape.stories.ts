@@ -19,7 +19,7 @@ const { generateTemplate } = storybookTemplate('sd-brandshape');
 
 export default {
   title: 'Components/sd-brandshape',
-  tags: ['!dev'],
+  tags: ['!dev', 'skip-a11y'],
   component: 'sd-brandshape',
   parameters: {
     ...parameters,

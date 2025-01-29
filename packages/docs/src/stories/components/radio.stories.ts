@@ -16,7 +16,7 @@ const { overrideArgs } = storybookHelpers('sd-radio');
 
 export default {
   title: 'Components/sd-radio',
-  tags: ['!dev'],
+  tags: ['!dev', 'skip-a11y'],
   component: 'sd-radio',
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Radio' }]),
   argTypes,

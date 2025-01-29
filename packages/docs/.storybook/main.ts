@@ -24,7 +24,8 @@ export default {
     '@geometricpanda/storybook-addon-badges',
     '@storybook/addon-actions',
     '@storybook/addon-interactions',
-    './addons/theme-generator/preset'
+    './addons/theme-generator/preset',
+    '@storybook/addon-a11y'
   ],
   staticDirs: [
     './assets',
