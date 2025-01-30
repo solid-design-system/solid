@@ -1,5 +1,5 @@
 ---
-'@fake-scope/fake-pkg': patch
+'@solid-design-system/components': patch
 ---
 
 fix: make sd-tooltip more accessible:
