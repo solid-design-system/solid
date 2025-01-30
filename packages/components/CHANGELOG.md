@@ -1,5 +1,13 @@
 # @solid-design-system/components
 
+## 4.0.8
+
+### Patch Changes
+
+- Improve sd-radio when checked: _[`#1814`](https://github.com/solid-design-system/solid/pull/1814) [`dd2195f`](https://github.com/solid-design-system/solid/commit/dd2195f65d543900eebefc6d4ae2d0aece79deeb) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Removed the inner border of the green circle to maintain consistency with Figma
+
 ## 4.0.7
 
 ### Patch Changes
