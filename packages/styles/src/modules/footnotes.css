@@ -21,7 +21,8 @@
       @apply list-none relative;
 
       .sd-footnotes--marker,
-      &:has(.sd-footnotes--marker:nth-of-type(2)) {
+      &:has(.sd-footnotes--marker:nth-of-type(2)),
+      &:not(:has(.sd-footnotes--marker)) {
         &::before {
           @apply absolute -left-8 font-bold leading-normal shrink-0;
           content: '[ ' counter(footnotes) ' ]';
