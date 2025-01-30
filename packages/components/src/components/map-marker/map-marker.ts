@@ -103,8 +103,8 @@ export default class SdMapMarker extends SolidElement {
             this.variant === 'place' && !this.notInteractive && 'hover:fill-primary-100',
             {
               cluster: 'fill-primary',
-              main: 'fill-accent *:drop-shadow-md',
-              place: '*:drop-shadow-md'
+              main: 'fill-accent',
+              place: ''
             }[this.variant]
           )}
         >
@@ -150,6 +150,11 @@ export default class SdMapMarker extends SolidElement {
 
       :host([variant='place']) [part='content'] {
         font-size: calc(var(--sd-font-size-3xl, 2rem) * var(--map-marker-scaling, 1));
+      }
+
+      :host([variant='main']) [part='marker'],
+      :host([variant='place']) [part='marker'] {
+        @apply drop-shadow;
       }
     `
   ];
