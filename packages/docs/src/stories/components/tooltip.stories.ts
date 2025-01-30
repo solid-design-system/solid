@@ -59,10 +59,7 @@ export default {
             height: 200px;
           }
 
-          #anchor--components-sd-tooltip--hoist .innerZoomElementWrapper {
-            height: 150px;
-          }
-
+          #anchor--components-sd-tooltip--hoist .innerZoomElementWrapper,
           #anchor--components-sd-tooltip--custom-trigger .innerZoomElementWrapper {
             height: 150px;
           }
