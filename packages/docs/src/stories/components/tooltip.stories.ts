@@ -49,15 +49,9 @@ export default {
           }
 
           #anchor--components-sd-tooltip--size .innerZoomElementWrapper,
-          #anchor--components-sd-tooltip--placement .innerZoomElementWrapper,
           #anchor--components-sd-tooltip--hoist .innerZoomElementWrapper,
           .template-height {
             height: 110px;
-          }
-
-          #anchor--components-sd-tooltip--placement .innerZoomElementWrapper {
-            padding: 50px 0;
-            height: 400px;
           }
 
           #anchor--components-sd-tooltip--trigger .innerZoomElementWrapper {
@@ -66,6 +60,10 @@ export default {
           }
 
           #anchor--components-sd-tooltip--hoist .innerZoomElementWrapper {
+            height: 150px;
+          }
+
+          #anchor--components-sd-tooltip--custom-trigger .innerZoomElementWrapper {
             height: 150px;
           }
         </style>
@@ -94,8 +92,8 @@ export const Default = {
 export const Size = {
   render: () => html`
     <div class="flex items-center gap-12">
-      <sd-tooltip content="Lorem ipsum" placement="bottom" size="lg" trigger="click focus"></sd-tooltip>
-      <sd-tooltip content="Lorem ipsum" placement="bottom" size="sm" trigger="click focus"></sd-tooltip>
+      <sd-tooltip content="Lorem ipsum" placement="bottom-start" size="lg" trigger="click focus"></sd-tooltip>
+      <sd-tooltip content="Lorem ipsum" placement="bottom-start" size="sm" trigger="click focus"></sd-tooltip>
     </div>
   `
 };
@@ -112,8 +110,9 @@ export const Size = {
  */
 
 export const Placement = {
+  // parameters: { ...parameters, docs: { story: { inline: false, height: '800px' } } },
   render: () => html`
-    <div class="grid md:grid-cols-3 gap-24">
+    <div class="grid grid-cols-1 justify-items-center md:grid-cols-3 md:justify-items-start gap-24 p-12">
       <div>
         <sd-tooltip
           content="Top Start Positioning"
@@ -185,13 +184,20 @@ export const Hoist = {
     </div>`
 };
 
+/**
  * It is possible to change the tooltip trigger element by defining the new trigger in the default slot.
  * However, be aware that this affects the accessibility of the component due to the loss of the aria reference to the trigger element which will be located in the shadow DOM.
  * In this example we provide a solution to this problem by using a live region to announce the tooltip content when the trigger element is clicked.
  */
 export const CustomTrigger = {
   render: () => html`
-    <sd-tooltip size="lg" content="This tooltip is accessible" placement="top" trigger="click" class="custom-tooltip">
+    <sd-tooltip
+      size="lg"
+      content="This tooltip is accessible"
+      placement="bottom"
+      trigger="click"
+      class="custom-tooltip"
+    >
       <sd-button class="custom-button">Custom Trigger</sd-button>
     </sd-tooltip>
     <div aria-live="assertive" class="sr-only live-region"></div>
