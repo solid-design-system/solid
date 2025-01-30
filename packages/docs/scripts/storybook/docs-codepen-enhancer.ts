@@ -93,13 +93,13 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
 
         // Docs: https://blog.codepen.io/documentation/prefill/
         const data = {
-          css: `/* See https://solid-design-system.fe.union-investment.de/?path=/docs/packages-components-installation--docs */
+          css: `/* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-components-installation--docs */
 @import url("${urls().components}/solid-components.css");
 
-/* See https://solid-design-system.fe.union-investment.de/?path=/docs/packages-styles-installation--docs */
+/* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-styles-installation--docs */
 @import url("${urls().styles}/solid-styles.css");
 
-/* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-prerequisites--docs */
+/* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-components-installation--docs */
 body {
   font-family:
     'Frutiger Neue',
@@ -169,7 +169,7 @@ body {
           editors: 1110,
           head: '<meta name="viewport" content="width=device-width">',
           html: code.replace(/\n\s*\n/g, '\n'), // Regex removes empty lines
-          js: `/* See https://solid-design-system.fe.union-investment.de/?path=/docs/packages-components-installation--docs */
+          js: `/* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-components-installation--docs */
 import { registerIconLibrary } from "${urls().components}/solid-components.bundle.js";`,
           js_external: '',
           js_module: true,
