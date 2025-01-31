@@ -13,7 +13,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "node .husky/install.mjs",
-    "verify": "pnpm format.verify && pnpm lint.verify && pnpm --recursive --if-present verify",
+    "verify": "pnpm format.verify && pnpm lint.verify && pnpm --recursive --if-present --workspace-concurrency=1 verify",
     "fix": "pnpm lint.fix && pnpm format.fix",
     "lint.fix": "eslint packages --max-warnings 0 --fix",
     "lint.verify": "eslint packages --max-warnings 0 && echo '✅ Linting verified'",
@@ -25,8 +25,8 @@
   "keywords": [],
   "license": "MIT",
   "engines": {
-    "node": ">=16.17.0",
-    "pnpm": ">=8.6.2"
+    "node": ">=20.0.0",
+    "pnpm": ">=9.15.0"
   },
   "lint-staged": {
     "*": [
@@ -34,30 +34,34 @@
     ]
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.10",
-    "@octokit/rest": "^21.0.2",
-    "@typescript-eslint/eslint-plugin": "^7.13.1",
-    "@typescript-eslint/parser": "^7.13.1",
+    "@changesets/cli": "^2.27.11",
+    "@eslint/compat": "^1.2.5",
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.18.0",
+    "@octokit/rest": "^21.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.20.0",
+    "@typescript-eslint/parser": "^8.20.0",
     "changesets-changelog-clean": "^1.3.0",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-chai-expect": "^3.1.0",
-    "eslint-plugin-chai-friendly": "^1.0.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-lit": "^1.14.0",
-    "eslint-plugin-lit-a11y": "^4.1.2",
+    "eslint-plugin-chai-friendly": "^1.0.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-lit": "^1.15.0",
+    "eslint-plugin-lit-a11y": "^4.1.4",
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
-    "eslint-plugin-storybook": "^0.8.0",
-    "eslint-plugin-wc": "^2.1.0",
-    "globby": "^14.0.1",
-    "husky": "^9.0.11",
-    "lint-staged": "^15.2.7",
-    "prettier": "^3.3.2"
+    "eslint-plugin-storybook": "^0.11.2",
+    "eslint-plugin-wc": "^2.2.0",
+    "globals": "^15.14.0",
+    "globby": "^14.0.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.0",
+    "prettier": "^3.4.2"
   },
   "pnpm": {
     "patchedDependencies": {
-      "tailwindcss@3.4.1": "patches/tailwindcss@3.4.1.patch",
-      "wc-storybook-helpers@1.5.3": "patches/wc-storybook-helpers@1.5.3.patch"
+      "tailwindcss@3.4.17": "patches/tailwindcss@3.4.1.patch",
+      "wc-storybook-helpers": "patches/wc-storybook-helpers.patch"
     }
   }
 }

@@ -26,6 +26,7 @@ export default {
   component: 'sd-display',
   parameters: {
     ...parameters,
+    controls: { disable: true },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/2b3TvrfxawUSvpnQEqSowL/Display?type=design&node-id=954-4198&mode=design&t=JogAvP1YEInWjWEF-0'
@@ -55,13 +56,11 @@ export const Default = {
 
 export const Inverted = {
   name: 'Inverted',
-  parameters: { controls: { exclude: ['sd-display--inverted'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
         y: [{ type: 'attribute', name: 'sd-display--inverted', values: [false, true] }]
       },
-      constants: { type: 'attribute', name: 'sd-display--inverted', value: true },
       options: {
         templateBackgrounds: { alternate: 'y', colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))'] }
       },

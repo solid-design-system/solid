@@ -1,14 +1,13 @@
 import '../popup/popup';
 import { animateTo, parseDuration, stopAnimations } from '../../internal/animate';
-import { css, html, unsafeCSS } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { css, html } from 'lit';
+import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
-import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
 import type SdPopup from '../popup/popup';
 
@@ -21,6 +20,7 @@ import type SdPopup from '../popup/popup';
  * @dependency sd-popup
  *
  * @slot - The tooltip's target element. Avoid slotting in more than one element, as subsequent ones will be ignored.
+ * @slot anchor - Slot to change the default trigger icon. The default icon is an info circle.
  * @slot content - The content to render in the tooltip. Alternatively, you can use the `content` attribute.
  *
  * @event sd-show - Emitted when the tooltip begins to show.
@@ -107,6 +107,7 @@ export default class SdTooltip extends SolidElement {
 
   firstUpdated() {
     this.body.hidden = !this.open;
+    this.formatDefaultSlot(this.defaultSlot);
 
     // If the tooltip is visible on init, update its position
     if (this.open) {
@@ -123,6 +124,16 @@ export default class SdTooltip extends SolidElement {
     this.removeEventListener('keydown', this.handleKeyDown);
     this.removeEventListener('mouseover', this.handleMouseOver);
     this.removeEventListener('mouseout', this.handleMouseOut);
+  }
+
+  // removes empty text nodes from the default slot
+  private formatDefaultSlot(slot: HTMLSlotElement) {
+    const nodes = slot.assignedNodes({ flatten: true });
+    nodes.forEach(node => {
+      if (node.nodeType === Node.TEXT_NODE && !node?.textContent?.trim()) {
+        node?.parentNode?.removeChild(node);
+      }
+    });
   }
 
   private handleBlur() {
@@ -281,7 +292,6 @@ export default class SdTooltip extends SolidElement {
             ></sd-icon>
           </button>
         </slot>
-
         <slot
           name="content"
           part="body"
@@ -297,8 +307,7 @@ export default class SdTooltip extends SolidElement {
     `;
   }
   static styles = [
-    SolidElement.styles,
-    unsafeCSS(InteractiveStyles),
+    ...SolidElement.styles,
     css`
       :host {
         --hide-delay: 0ms;

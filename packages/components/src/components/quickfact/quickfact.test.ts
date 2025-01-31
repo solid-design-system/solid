@@ -1,4 +1,4 @@
-import './quickfact';
+import '../../../dist/solid-components';
 import { expect, fixture, html } from '@open-wc/testing';
 import type SdQuickfact from './quickfact';
 

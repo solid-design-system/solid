@@ -1,9 +1,8 @@
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { property } from 'lit/decorators.js';
 import { requestInclude } from './request';
 import { watch } from '../../internal/watch';
-import componentStyles from '../../styles/component.styles';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -73,7 +72,7 @@ export default class SdInclude extends SolidElement {
   }
 
   static styles = [
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block;

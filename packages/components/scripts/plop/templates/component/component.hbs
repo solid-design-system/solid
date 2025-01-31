@@ -1,5 +1,5 @@
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize';
 import {property } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
@@ -38,8 +38,7 @@ export default class {{ properCase tag }} extends SolidElement {
     return html` <slot></slot> `;
   }
 
-  /** Inherits Tailwindclasses and includes additional styling. */
-  static styles = [SolidElement.styles, css``];
+  static styles = [...SolidElement.styles, css``];
 }
 
 declare global {

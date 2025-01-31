@@ -1,12 +1,10 @@
-import { css, unsafeCSS } from 'lit';
+import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { property, query } from 'lit/decorators.js';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -41,7 +39,7 @@ export default class SdNavigationItem extends SolidElement {
   @property({ type: Boolean, reflect: true }) vertical = false;
 
   /** The navigation item's font size. */
-  @property({ reflect: true }) size: 'base' | 'lg' | 'sm' = 'base';
+  @property({ reflect: true }) size: 'md' | 'lg' | 'sm' = 'md';
 
   /** The navigation item's href target. If provided, the navigation item will use an anchor tag otherwise it will use a button tag. The 'children' slot and accordion behavior will be ignored if an 'href' is provided. */
   @property({ reflect: true }) href: string;
@@ -159,7 +157,7 @@ export default class SdNavigationItem extends SolidElement {
         part="base"
         class=${cx(
           'cursor-pointer relative focus-visible:focus-outline',
-          { base: 'text-base', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
+          { md: 'text-base', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
           this.disabled ? 'text-neutral-500 pointer-events-none' : 'text-primary',
           isAccordion ? 'flex flex-col' : 'inline-block w-full',
           this.divider && this.vertical && 'mt-0.25',
@@ -277,7 +275,7 @@ export default class SdNavigationItem extends SolidElement {
         part="details"
         id="navigation-item-details"
         ?open=${this.open}
-        class="relative flex"
+        class="relative"
       >
         ${root}<slot name="children"></slot>
       </details>`;
@@ -292,12 +290,10 @@ export default class SdNavigationItem extends SolidElement {
   }
 
   /**
-   * Inherits Tailwindclasses and includes additional styling.
+   * Inherits global stylesheet including TailwindCSS
    */
   static styles = [
-    componentStyles,
-    SolidElement.styles,
-    unsafeCSS(InteractiveStyles),
+    ...SolidElement.styles,
     css`
       :host {
         @apply inline-block relative box-border;

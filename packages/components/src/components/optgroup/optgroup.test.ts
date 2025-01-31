@@ -1,3 +1,5 @@
+import '../../../dist/solid-components';
+
 import { aTimeout, expect, fixture, html } from '@open-wc/testing';
 
 import type SdOptgroup from './optgroup';

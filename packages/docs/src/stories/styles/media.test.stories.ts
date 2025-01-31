@@ -20,7 +20,8 @@ export default {
   tags: ['!autodocs'],
   component: 'sd-media',
   parameters: {
-    ...parameters
+    ...parameters,
+    controls: { disable: true }
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),
   argTypes
@@ -45,11 +46,6 @@ export const Default = {
 
 export const MediaSample = {
   name: 'Media Sample',
-  parameters: {
-    controls: {
-      disable: true
-    }
-  },
   render: (args: any) => {
     return generateTemplate({
       options: {

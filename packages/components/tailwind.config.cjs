@@ -48,6 +48,22 @@ module.exports = {
       // Add a `third` variant, ie. `third:pb-0`
       addVariant('hover', '&:hover:not([disabled])');
       addVariant('active', '&:active:not([disabled])');
+    }),
+    plugin(({ addComponents, theme: twTheme }) => {
+      addComponents({
+        '.focus-outline': {
+          outlineStyle: 'solid',
+          outlineWidth: twTheme('borderWidth.2'),
+          outlineOffset: twTheme('borderWidth.2'),
+          outlineColor: theme.outlineColor.primary.DEFAULT.replace('<alpha-value>', '1')
+        },
+        '.focus-outline-inverted': {
+          outlineStyle: 'solid',
+          outlineWidth: twTheme('borderWidth.2'),
+          outlineOffset: twTheme('borderWidth.2'),
+          outlineColor: theme.outlineColor.white.replace('<alpha-value>', '1')
+        }
+      });
     })
   ],
   safelist: includeStorybookStories

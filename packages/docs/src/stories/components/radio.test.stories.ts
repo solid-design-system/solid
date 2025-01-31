@@ -17,7 +17,7 @@ export default {
   component: 'sd-radio',
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),
   argTypes,
-  parameters: { ...parameters }
+  parameters: { ...parameters, controls: { disable: true } }
 };
 
 /**
@@ -37,7 +37,6 @@ export const Default = {
 
 export const DisabledAndSize = {
   name: 'Disabled × Size',
-  parameters: { controls: { exclude: ['disabled', 'size', 'default'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -64,7 +63,6 @@ export const DisabledAndSize = {
 
 export const Size = {
   name: 'Size',
-  parameters: { controls: { exclude: ['size'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -81,7 +79,6 @@ export const Size = {
 
 export const Invalid = {
   name: 'Invalid',
-  parameters: { controls: { exclude: ['invalid'] } },
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -101,9 +98,6 @@ export const Invalid = {
  */
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: { exclude: ['base', 'control--unchecked', 'control--checked', 'checked', 'label'] }
-  },
   render: (args: any) => {
     return generateTemplate({
       constants: { type: 'attribute', name: 'value', value: '1' },

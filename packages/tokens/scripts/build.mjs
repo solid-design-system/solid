@@ -1,7 +1,7 @@
+import fs from 'fs';
 import path from 'path';
 import TailwindExportConfig from 'tailwindcss-export-config';
 import theme from '../src/create-theme.cjs';
-import fs from 'fs';
 
 /**
  * Set configs

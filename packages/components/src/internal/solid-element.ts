@@ -1,24 +1,45 @@
 import { LitElement, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
-import tailwind from '../styles/tailwind.css?inline';
-import type { CSSResultGroup } from 'lit';
+
+const css = unsafeCSS;
 
 export default class SolidElement extends LitElement {
-  // Make localization attributes reactive
-  @property() dir: string;
+  /** The element's directionality. */
+  @property() dir: 'ltr' | 'rtl' | 'auto';
+
+  /** The element's language. */
   @property() lang: string;
 
-  /*
-   * 1. Make Tailwind-CSS globally accessible
-   *
-   * This approach seems to be okay facing the following sentence:
-   * "Many modern browsers implement an optimization for <style> tags either cloned from a common
-   * node or hat have identical text, to allow them to share a single backing stylesheet.
-   * With this optimization the performance of external and internal styles should be similar."
-   * (See: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#internal_vs._external_styles)
-   */
+  static styles = [
+    css`
+      /* Import CSS styles once to make them available in every component */
+      @import url('../styles/src/modules/interactive.css');
+      @import url('../styles/src/modules/paragraph.css');
+      @import url('../styles/src/modules/headline.css');
 
-  static styles: CSSResultGroup = unsafeCSS(tailwind);
+      /* TailwindCSS directives have to come after imports */
+      @tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+
+      :host {
+        --tw-gradient-from-position: 0%;
+        --tw-gradient-to-position: 100%;
+
+        box-sizing: border-box;
+      }
+
+      :host *,
+      :host *::before,
+      :host *::after {
+        box-sizing: inherit;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+    `
+  ];
 
   /** Emits a custom event with more convenient defaults. */
   emit(name: string, options?: CustomEventInit) {

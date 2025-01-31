@@ -1,6 +1,6 @@
 import '../icon/icon';
 import { css, html } from 'lit';
-import { customElement } from '../../../src/internal/register-custom-element';
+import { customElement } from '../../internal/register-custom-element';
 import { property, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
@@ -134,7 +134,7 @@ export default class SdRadio extends SolidElement {
                 <span
                   part="checked"
                   class=${cx(
-                    'rounded-full inline-flex text-white border bg-accent h-2.5 w-2.5',
+                    'rounded-full inline-flex text-white bg-accent h-2.5 w-2.5',
                     this.disabled
                       ? 'bg-neutral-500'
                       : this.invalid
@@ -164,7 +164,7 @@ export default class SdRadio extends SolidElement {
    * Inherits Tailwind classes and includes additional styling.
    */
   static styles = [
-    SolidElement.styles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block w-max;

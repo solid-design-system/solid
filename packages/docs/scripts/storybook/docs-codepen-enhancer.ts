@@ -1,12 +1,45 @@
 /* eslint-disable no-param-reassign */
-import { StoryContext } from '@storybook/web-components';
+import type { StoryContext } from '@storybook/web-components';
 
 export default function docsCodepenEnhancer(code: string, storyContext: StoryContext) {
   // We hijack the formatter to keep track of every story's code change
   // and add a button to edit it on CodePen
   const storiesOnDocsPage = document.querySelectorAll(`#anchor--${storyContext.id}`);
-  const packageVersionString = import.meta.env.STORYBOOK_PACKAGE_VERSIONS as string;
-  const packageVersions = JSON.parse(packageVersionString) as Record<string, string>;
+
+  const urls = () => {
+    const baseUrl = 'https://solid-design-system.fe.union-investment.de';
+    const githubBaseUrl = 'https://solid-design-system.github.io/solid';
+    const cdnBaseUrl = 'https://cdn.jsdelivr.net/npm/@solid-design-system';
+
+    if (window.location.href.startsWith(githubBaseUrl)) {
+      const urlParts = window.location.href.split('/');
+      const version = urlParts[urlParts.length - 2];
+
+      if (version === 'next') {
+        return {
+          components: `${cdnBaseUrl}/components@%COMPONENTS-VERSION%/cdn`,
+          styles: `${cdnBaseUrl}/styles@%STYLES-VERSION%/cdn`
+        };
+      }
+
+      if (version === 'main') {
+        return {
+          components: `${baseUrl}/components/%COMPONENTS-VERSION%/cdn`,
+          styles: `${baseUrl}/styles/%STYLES-VERSION%/cdn`
+        };
+      }
+
+      return {
+        components: `${githubBaseUrl}/${version}/components/cdn`,
+        styles: `${githubBaseUrl}/${version}/styles/cdn`
+      };
+    }
+
+    return {
+      components: `${baseUrl}/components/%COMPONENTS-VERSION%/cdn`,
+      styles: `${baseUrl}/styles/%STYLES-VERSION%/cdn`
+    };
+  };
 
   // Unfortunately, the editable story in a docs page has the same ID as the first story.
   storiesOnDocsPage.forEach(story => {
@@ -60,11 +93,13 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
 
         // Docs: https://blog.codepen.io/documentation/prefill/
         const data = {
-          css: `/* See https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/?path=/docs/docs-general-installation--docs */
-@import url("https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/styles/solid-styles.css");
+          css: `/* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-components-installation--docs */
+@import url("${urls().components}/solid-components.css");
 
+/* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-styles-installation--docs */
+@import url("${urls().styles}/solid-styles.css");
 
-/* See https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/?path=/docs/docs-general-prerequisites--docs */
+/* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-components-installation--docs */
 body {
   font-family:
     'Frutiger Neue',
@@ -88,7 +123,7 @@ body {
   font-family: 'Frutiger Neue';
   font-style: normal;
   font-weight: 400;
-  src: url('https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/fonts/FrutigerNeuefuerUIWebW05-Bk.woff2')
+  src: url('https://solid-design-system.fe.union-investment.de/docs/fonts/FrutigerNeuefuerUIWebW05-Bk.woff2')
     format('woff2');
 }
 
@@ -96,7 +131,7 @@ body {
   font-family: 'Frutiger Neue';
   font-style: italic;
   font-weight: 400;
-  src: url('https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/fonts/FrutigerNeuefuerUIWebW05-BkIt.woff2')
+  src: url('https://solid-design-system.fe.union-investment.de/docs/fonts/FrutigerNeuefuerUIWebW05-BkIt.woff2')
     format('woff2');
 }
 
@@ -104,7 +139,7 @@ body {
   font-family: 'Frutiger Neue';
   font-style: normal;
   font-weight: 600;
-  src: url('https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/fonts/FrutigerNeuefuerUIWebW05-Bd.woff2')
+  src: url('https://solid-design-system.fe.union-investment.de/docs/fonts/FrutigerNeuefuerUIWebW05-Bd.woff2')
     format('woff2');
 }
 
@@ -112,7 +147,7 @@ body {
   font-family: 'Frutiger Neue';
   font-style: italic;
   font-weight: 600;
-  src: url('https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/fonts/FrutigerNeuefuerUIWebW05-BdIt.woff2')
+  src: url('https://solid-design-system.fe.union-investment.de/docs/fonts/FrutigerNeuefuerUIWebW05-BdIt.woff2')
     format('woff2');
 }
 
@@ -134,11 +169,8 @@ body {
           editors: 1110,
           head: '<meta name="viewport" content="width=device-width">',
           html: code.replace(/\n\s*\n/g, '\n'), // Regex removes empty lines
-          js: `/* See https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/storybook/?path=/docs/docs-general-installation--docs */
-import "https://solid-design-system.fe.union-investment.de/${packageVersions['@solid-design-system/components']}/components/umd/solid-components.js";
-
-/* Example how to use modules from bundle */
-const { registerIconLibrary } = window['Solid Components'];`,
+          js: `/* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-components-installation--docs */
+import { registerIconLibrary } from "${urls().components}/solid-components.bundle.js";`,
           js_external: '',
           js_module: true,
           js_pre_processor: 'none',

@@ -1,3 +1,4 @@
+import '../../../dist/solid-components';
 import { expect, fixture, html } from '@open-wc/testing';
 import type SdCarouselItem from './carousel-item';
 

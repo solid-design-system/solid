@@ -1,0 +1,107 @@
+/**
+ * Headlines are vital for displaying content hierarchy and to improve accessibility. A headline can be additionally accompanied by an icon. The icon can be displayed on the left side or inline.
+ * @name sd-headline
+ * @status stable
+ * @since 1.16
+ * @variant { 3xl | xl | lg | base } sd-headline--size-... The headline's size.
+ * @boolean sd-headline--inverted Inverts the headline text.
+ * @boolean sd-headline--inline Sets inline behavior. Used exclusively when an sd-icon or other component is present. See usage <a href="#inline">here.</a>
+ */
+
+.sd-headline,
+.sd-prose :is(h1, h2, h3, h4, h5) {
+  @apply flex font-bold text-primary;
+
+  sd-icon {
+    @apply text-[3rem] text-primary shrink-0 sm:mt-2;
+  }
+
+  &.sd-headline,
+  &:is(h1):not(.sd-headline) {
+    @apply text-3xl sm:text-4xl gap-4 leading-tight;
+
+    sd-icon {
+      @apply -mt-1 sm:mt-0;
+    }
+  }
+
+  &.sd-headline--size-3xl,
+  &:is(h2):not(.sd-headline) {
+    @apply text-2xl sm:text-3xl gap-4 leading-tight;
+
+    sd-icon {
+      @apply -mt-1 sm:mt-0;
+    }
+  }
+
+  &.sd-headline--size-xl,
+  &.sd-headline--size-lg,
+  &.sd-headline--size-base,
+  &:is(h3, h4, h5):not(.sd-headline) {
+    @apply text-black gap-2;
+
+    sd-icon {
+      @apply text-[2rem];
+    }
+  }
+
+  &.sd-headline--size-xl,
+  &:is(h3):not(.sd-headline) {
+    @apply text-xl;
+
+    sd-icon {
+      @apply mt-0.5 sm:mt-0.5;
+    }
+  }
+
+  &.sd-headline--size-lg,
+  &.sd-headline--size-base,
+  &:is(h4, h5):not(.sd-headline) {
+    @apply leading-normal;
+  }
+
+  &.sd-headline--size-lg,
+  &:is(h4) {
+    @apply text-lg;
+
+    sd-icon {
+      @apply mt-0 sm:mt-0;
+    }
+  }
+
+  &.sd-headline--size-base,
+  &:is(h5):not(.sd-headline) {
+    @apply text-base;
+
+    sd-icon {
+      @apply -mt-1;
+    }
+
+    mark {
+      @apply text-inherit;
+    }
+  }
+}
+
+.sd-headline--inline {
+  @apply inline-block;
+
+  sd-icon {
+    @apply align-middle mr-2 -mt-1;
+  }
+
+  &:is(.sd-headline--size-xl, .sd-headline--size-lg, .sd-headline--size-base) {
+    sd-icon {
+      @apply mr-0.5;
+    }
+  }
+}
+
+.sd-headline--inverted:not(#_),
+.sd-prose--inverted :is(h1, h2, h3, h4, h5):not(.sd-headline):not(#_) {
+  @apply text-white;
+
+  sd-icon {
+    @apply text-white;
+  }
+}

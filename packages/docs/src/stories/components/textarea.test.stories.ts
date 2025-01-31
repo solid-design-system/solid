@@ -25,6 +25,7 @@ export default {
   },
   parameters: {
     ...parameters,
+    controls: { disable: true },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/07Bzd23A0QSrSWiXy6w2uM/Text-Area?node-id=1010%3A1736&mode=dev'
@@ -75,11 +76,6 @@ export const Placeholders = {
  */
 export const Disabled = {
   name: 'Disabled',
-  parameters: {
-    controls: {
-      exclude: ['disabled']
-    }
-  },
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'label', value: 'Label' },
@@ -102,11 +98,6 @@ export const Disabled = {
  */
 export const Readonly = {
   name: 'Readonly',
-  parameters: {
-    controls: {
-      exclude: ['readonly']
-    }
-  },
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'label', value: 'Label' },
@@ -130,11 +121,6 @@ export const Readonly = {
 
 export const Sizes = {
   name: 'Sizes',
-  parameters: {
-    controls: {
-      exclude: ['size']
-    }
-  },
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'label', value: 'Label' },
@@ -156,11 +142,6 @@ export const Sizes = {
 
 export const StyleOnValid = {
   name: 'Style on valid',
-  parameters: {
-    controls: {
-      exclude: ['style-on-valid']
-    }
-  },
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'valu' },
     { type: 'attribute', name: 'label', value: 'Label' },
@@ -200,11 +181,6 @@ export const StyleOnValid = {
 
 export const Validation = {
   name: 'Validation',
-  parameters: {
-    controls: {
-      include: ['clearable', 'disabled']
-    }
-  },
   render: (args: any) => {
     return html`
       <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
@@ -356,11 +332,6 @@ export const ResponsiveHeight = {
 
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: {
-      exclude: ['label', 'help-text', 'value']
-    }
-  },
   render: (args: any) => {
     return html`
       ${['label', 'help-text'].map(slot =>
@@ -399,11 +370,6 @@ export const Slots = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: {
-      exclude: ['label', 'help-text', 'value']
-    }
-  },
   render: (args: any) => {
     return generateTemplate({
       axis: {

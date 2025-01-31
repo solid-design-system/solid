@@ -36,7 +36,7 @@ class LongPressDirective extends AsyncDirective {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, class-methods-use-this
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   render(_callback: Callbacks): typeof nothing {
     return nothing;
   }

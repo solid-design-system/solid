@@ -82,7 +82,7 @@ export const SampleA = {
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Sustainability</sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Career</sd-navigation-item>
       </nav>
-      <nav slot="footer" class="bg-neutral-100">
+      <nav aria-label="footer" slot="footer" class="bg-neutral-100">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
           Portfolio
@@ -196,7 +196,7 @@ export const SampleA02 = {
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">About us</sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Personal area</sd-navigation-item>
       </nav>
-      <nav slot="footer" class="bg-neutral-100">
+      <nav aria-label="footer" slot="footer" class="bg-neutral-100">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
           Log in
@@ -301,7 +301,7 @@ export const SampleB = {
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">To the point</sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Meeting point</sd-navigation-item>
       </nav>
-      <nav slot="footer" class="bg-neutral-100">
+      <nav aria-label="footer" slot="footer" class="bg-neutral-100">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
           My application

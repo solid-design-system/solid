@@ -1,11 +1,9 @@
-import { css, html, unsafeCSS } from 'lit';
+import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll';
-import componentStyles from '../../styles/component.styles';
 import cx from 'classix';
-import InteractiveStyles from '../../styles/interactive/interactive.css?inline';
 import SolidElement from '../../internal/solid-element';
 import type SdTab from '../tab/tab';
 import type SdTabPanel from '../tab-panel/tab-panel';
@@ -108,7 +106,10 @@ export default class SdTabGroup extends SolidElement {
 
   disconnectedCallback() {
     this.mutationObserver.disconnect();
-    this.resizeObserver.unobserve(this.nav);
+
+    if (this.nav) {
+      this.resizeObserver?.unobserve(this.nav);
+    }
   }
 
   private getAllTabs(options: { includeDisabled: boolean } = { includeDisabled: true }) {
@@ -383,9 +384,7 @@ export default class SdTabGroup extends SolidElement {
   }
 
   static styles = [
-    SolidElement.styles,
-    unsafeCSS(InteractiveStyles),
-    componentStyles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block box-border;

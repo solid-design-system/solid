@@ -36,7 +36,7 @@ export default {
   argTypes,
   parameters: {
     ...parameters,
-    controls: { exclude: ['contained'] }
+    controls: { disable: true }
   }
 };
 
@@ -59,9 +59,6 @@ export const Default = {
  */
 export const ButtonInHeader = {
   name: 'Button in Header',
-  parameters: {
-    controls: { exclude: ['header', 'contained'] }
-  },
   render: (args: any) => {
     return html` <div class="header-with-btn" style="width: auto; height: 95vh; position: relative;">
       <style>
@@ -88,9 +85,6 @@ export const ButtonInHeader = {
  */
 export const NoHeader = {
   name: 'No Header',
-  parameters: {
-    controls: { exclude: ['no-header', 'header', 'contained'] }
-  },
   render: (args: any) => {
     return html` <div style="width: auto; height: 95vh; position: relative;">
       ${generateTemplate({
@@ -112,9 +106,6 @@ export const NoHeader = {
  */
 export const NoFooter = {
   name: 'No Footer',
-  parameters: {
-    controls: { exclude: ['footer', 'contained'] }
-  },
   render: (args: any) => {
     return html` <div style="width: auto; height: 95vh; position: relative;">
       ${generateTemplate({
@@ -136,11 +127,6 @@ export const NoFooter = {
  */
 export const Padding = {
   name: 'Padding',
-  parameters: {
-    controls: {
-      exclude: ['default', 'header', 'footer', 'contained']
-    }
-  },
   render: (args: any) => {
     return html`
       ${['header', 'body', 'footer'].map(part =>
@@ -184,11 +170,6 @@ export const Padding = {
  */
 export const Placement = {
   name: 'Placement',
-  parameters: {
-    controls: {
-      exclude: ['placement', 'contained']
-    }
-  },
   render: (args: any) => {
     return html`
       ${generateTemplate({
@@ -220,36 +201,49 @@ export const Placement = {
  */
 export const Autofocus = {
   name: 'Autofocus',
-  parameters: { controls: { exclude: ['contained', 'default', 'header', 'footer'] } },
   render: (args: any) => {
     return html` <div style="width: auto; height: 95vh; position: relative;">
-      ${generateTemplate({
-        args,
-        constants: [
-          {
-            type: 'slot',
-            name: 'default',
-            value: `<input autofocus placeholder="I will have focus when the drawer is opened" class="mt-3 block w-full rounded-md border-0 py-1.5 px-3 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 placeholder:text-gray-400 focus-visible:focus-outline sm:text-sm sm:leading-6"> </div>`
-          },
-          {
-            type: 'slot',
-            name: 'header',
-            value: `<span slot="header">Drawer</span>`
-          },
-          {
-            type: 'slot',
-            name: 'footer',
-            value: `<span slot="footer">Footer content</span>`
-          }
-        ]
-      })}
-    </div>`;
+        <sd-button id="openDrawer">Open Drawer</sd-button>
+        ${generateTemplate({
+          args,
+          constants: [
+            {
+              type: 'slot',
+              name: 'default',
+              value: `<sd-input
+                        autofocus
+                        label="Autofocus input example"
+                        help-text="This input will be focused when the drawer is opened."
+                        > </sd-input>`
+            },
+            {
+              type: 'slot',
+              name: 'header',
+              value: `<span slot="header">Drawer</span>`
+            },
+            {
+              type: 'slot',
+              name: 'footer',
+              value: `<span slot="footer">Footer content</span>`
+            },
+            {
+              type: 'attribute',
+              name: 'open',
+              value: false
+            }
+          ]
+        })}
+      </div>
+      <script>
+        document.querySelector('#openDrawer').addEventListener('click', () => {
+          document.querySelector('sd-drawer').show();
+        });
+      </script>`;
   }
 };
 
 export const Scrolling = {
   name: 'Scrolling',
-  parameters: { controls: { exclude: ['default', 'contained'] } },
   render: (args: any) => {
     return html` <div style="width: auto; height: 95vh; position: relative;">
       ${generateTemplate({
@@ -268,9 +262,6 @@ export const Scrolling = {
 
 export const Slots = {
   name: 'Slots',
-  parameters: {
-    controls: { exclude: ['default', 'header', 'footer', 'contained'] }
-  },
   render: (args: any) => {
     return html`
       ${['default', 'header', 'footer'].map(slot =>
@@ -313,23 +304,6 @@ export const Slots = {
 
 export const Parts = {
   name: 'Parts',
-  parameters: {
-    controls: {
-      exclude: [
-        'base',
-        'overlay',
-        'panel',
-        'header',
-        'header-content',
-        'title',
-        'close-button',
-        'body',
-        'footer',
-        '--width',
-        'contained'
-      ]
-    }
-  },
   render: (args: any) => {
     return html`
       ${['base', 'overlay', 'panel', 'header', 'title', 'close-button', 'body', 'footer'].map(part =>
@@ -367,7 +341,6 @@ export const Parts = {
 
 export const Mouseless = {
   name: 'Mouseless',
-  parameters: { controls: { exclude: ['default', 'header', 'footer', 'contained', 'no-header'] } },
   render: (args: any) => {
     return html`<div class="mouseless" style="width: auto; height: 95vh; position: relative;">
       ${generateTemplate({
@@ -376,7 +349,9 @@ export const Mouseless = {
           {
             type: 'slot',
             name: 'default',
-            value: `<input autofocus placeholder="Placeholder" class="mt-3 block w-full rounded-md border-0 py-1.5 px-3 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 placeholder:text-gray-400 focus-visible:focus-outline sm:text-sm sm:leading-6"> </div>`
+            value: `<sd-input
+                        label="Mouseless input example"
+                        > </sd-input>`
           },
           {
             type: 'slot',
