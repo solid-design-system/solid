@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.4.3
+
+### Patch Changes
+
+- Fix SDS documentation urls in Codepen editor. _[`#1817`](https://github.com/solid-design-system/solid/pull/1817) [`a3b28c1`](https://github.com/solid-design-system/solid/commit/a3b28c14be5a1742de36ad3b03859b4947decde4) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.4.2
 
 ### Patch Changes
