@@ -2,7 +2,7 @@ import * as esbuild from 'esbuild';
 
 esbuild
   .build({
-    entryPoints: ['src/index.ts'],
+    entryPoints: ['src/index.js'],
     bundle: true,
     minify: true,
     platform: 'node',

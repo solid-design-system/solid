@@ -1,4 +1,4 @@
-import { RuleTester } from '@typescript-eslint/rule-tester';
+import { RuleTester } from 'eslint';
 
 const tester = new RuleTester({
   languageOptions: {

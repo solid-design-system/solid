@@ -6,6 +6,7 @@
     "skipLibCheck": true,
     "declaration": true,
     "resolveJsonModule": true,
+    "esModuleInterop": true,
     "allowJs": true,
     "outDir": "dist",
     "baseUrl": ".",

@@ -1,14 +1,15 @@
 {
-  "name": "@solid-design-system/eslint-plugin",
+  "name": "eslint-plugin-example",
   "description": "Solid Design System: Eslint Custom Rules",
   "version": "1.0.0",
   "type": "module",
   "author": {
     "name": "Union Investment"
   },
-  "main": "dist/index.cjs",
+  "main": "src/index.js",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "build": "node scripts/build.mjs",
@@ -22,17 +23,17 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@types/eslint": "^9.6.1",
     "@types/node": "^22.10.2",
     "@typescript-eslint/rule-tester": "^8.18.0",
     "@typescript-eslint/utils": "^8.18.0",
     "esbuild": "^0.24.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.18.0",
     "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typescript": "5.4.5"
   },
   "peerDependencies": {
-    "eslint": "^8.57.0"
+    "eslint": "^9.18.0"
   }
 }

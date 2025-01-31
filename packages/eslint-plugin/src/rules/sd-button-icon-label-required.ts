@@ -1,5 +1,6 @@
 import { ESLintUtils } from '@typescript-eslint/utils';
 import { JSXElementES } from '../utilities/jsx';
+import type { Rule } from 'eslint';
 import type { TSESTree } from '@typescript-eslint/utils';
 
 const createRule = ESLintUtils.RuleCreator(name => `https://example.com/rule/${name}`);
@@ -51,4 +52,4 @@ export default createRule({
       }
     };
   }
-});
+}) as unknown as Rule.RuleModule;
