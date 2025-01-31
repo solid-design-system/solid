@@ -149,6 +149,7 @@ export default class SdMapMarker extends SolidElement {
       }
 
       :host([variant='place']) [part='content'] {
+        @apply -mt-2;
         font-size: calc(var(--sd-font-size-3xl, 2rem) * var(--map-marker-scaling, 1));
       }
 
