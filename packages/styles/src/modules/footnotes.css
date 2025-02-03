@@ -9,16 +9,74 @@
 .sd-footnotes {
   @apply text-neutral-700 text-sm text-left p-0 my-0;
 
-  &:is(ol) {
-    li {
-      counter-increment: list-item;
-      @apply flex gap-2;
+  :target {
+    @apply bg-neutral-200;
+  }
 
-      &::before {
-        @apply w-5 leading-normal shrink-0;
-        content: counter(list-item);
-        padding-top: 1px;
-        font-size: 10px;
+  &:is(ol) {
+    @apply ps-8;
+
+    li {
+      counter-increment: footnotes;
+      @apply flex list-none relative;
+
+      .sd-footnotes--marker,
+      &:has(.sd-footnotes--marker:nth-of-type(2)),
+      &:not(:has(.sd-footnotes--marker)) {
+        &::before {
+          @apply absolute -left-8 font-bold leading-normal shrink-0;
+          content: '[ ' counter(footnotes) ' ]';
+          padding-top: 1px;
+          font-size: 10px;
+        }
+
+        /* 
+          DEV-NOTE: 
+          This after with content is needed because, since we are using
+          an absolute ::before to show the markers content, safari doesn't
+          consider the marker an interactive element, therefore, it is ignored
+          when using keyboard navigation.
+        */
+        &::after {
+          content: '-';
+          opacity: 0;
+        }
+
+        .sd-footnotes--marker {
+          @apply inline-block;
+          counter-increment: footnotes-multiple;
+
+          &::before {
+            @apply relative left-0 align-super font-bold leading-normal;
+            content: counter(footnotes-multiple, lower-alpha);
+          }
+        }
+      }
+
+      /*
+        DEV-NOTE:
+        This is related to the issue where safari does not consider the marker
+        an interactive element, due to the lack of content inside.
+        Please see DEV-NOTE above.
+      */
+      &:has(.sd-footnotes--marker:nth-of-type(2)) .sd-footnotes--marker {
+        @apply relative left-1;
+
+        &:last-of-type {
+          @apply me-1;
+        }
+      }
+
+      .sd-footnotes--marker {
+        @apply block bottom-0;
+
+        &:focus-visible {
+          @apply outline-0;
+
+          &::before {
+            @apply outline outline-2 outline-offset-2 outline-primary rounded-default;
+          }
+        }
       }
     }
   }
@@ -29,5 +87,49 @@
 
   &--inverted {
     @apply text-primary-400;
+
+    :target {
+      @apply bg-primary-800;
+    }
+
+    .sd-footnotes--marker::before {
+      @apply text-white !outline-white;
+    }
+
+    &:is(.sd-footnotes--marker) {
+      @apply !text-white !outline-white;
+
+      &:target {
+        @apply bg-primary-800;
+      }
+    }
+  }
+
+  &--marker {
+    @apply inline-block !no-underline font-bold whitespace-nowrap relative bottom-2;
+    font-size: x-small;
+
+    &:target {
+      @apply bg-neutral-200;
+    }
+
+    &::before {
+      content: '[ ';
+      display: inline-block;
+    }
+
+    &::after {
+      content: ' ]';
+      display: inline-block;
+    }
+
+    &:link,
+    &:visited {
+      @apply text-primary;
+    }
+
+    &:focus-visible {
+      @apply outline outline-2 outline-offset-2 outline-primary rounded-default;
+    }
   }
 }
