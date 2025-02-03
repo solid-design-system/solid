@@ -1,5 +1,17 @@
 # @solid-design-system/components
 
+## 4.0.9
+
+### Patch Changes
+
+- Fix `sd-map-marker` variants `main`and `place` shadow. The shadow token in use (`shadow-md`) was [removed](https://github.com/solid-design-system/solid/pull/963) and is now replaced with `shadow`. _[`#1818`](https://github.com/solid-design-system/solid/pull/1818) [`adc5ee0`](https://github.com/solid-design-system/solid/commit/adc5ee06300566bd4b22352e178664cfc1458059) [@smfonseca](https://github.com/smfonseca)_
+
+  Improve center alignment of icon in variant `place`.
+
+### 📈 Stats
+* Uncompressed: 400 KB (+1 KB / +0%)
+* Gzipped: 94 KB (unchanged)
+
 ## 4.0.8
 
 ### Patch Changes

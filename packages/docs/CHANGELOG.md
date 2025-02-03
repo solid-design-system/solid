@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.4.4
+
+### Patch Changes
+
+- Update `slot` story to have example slot div vertically centered inside the marker. _[`#1818`](https://github.com/solid-design-system/solid/pull/1818) [`adc5ee0`](https://github.com/solid-design-system/solid/commit/adc5ee06300566bd4b22352e178664cfc1458059) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.4.3
 
 ### Patch Changes
