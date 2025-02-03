@@ -1,4 +1,3 @@
-import { html } from 'lit-html';
 import {
   storybookDefaults,
   storybookHelpers,
