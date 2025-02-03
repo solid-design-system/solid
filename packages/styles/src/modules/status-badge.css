@@ -1,0 +1,39 @@
+/**
+ * Description of the style.
+ * @name sd-status-badge
+ * @status stable
+ * @since 1.0
+ * @variant { sucess | warning | error | info } sd-status-badge--...
+ */
+
+.sd-status-badge {
+  @apply inline-flex items-center justify-center;
+
+  sd-icon {
+    @apply flex rounded-full h-3 w-3 text-white mr-2 p-1;
+  }
+
+  &--success {
+    sd-icon {
+      @apply bg-success;
+    }
+  }
+
+  &--warning {
+    sd-icon {
+      @apply bg-warning;
+    }
+  }
+
+  &--error {
+    sd-icon {
+      @apply bg-error;
+    }
+  }
+
+  &--info {
+    sd-icon {
+      @apply bg-info;
+    }
+  }
+}
