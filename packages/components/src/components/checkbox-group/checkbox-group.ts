@@ -79,6 +79,7 @@ export default class SdCheckboxGroup extends SolidElement {
     const hasLabelSlot = this.hasSlotController.test('label');
     const hasLabel = this.label ? true : hasLabelSlot;
     const defaultSlot = html` <slot @slotchange=${this.syncCheckboxes}></slot> `;
+    const hasTooltip = this.hasSlotController.test('tooltip');
 
     return html`
       <fieldset
@@ -95,18 +96,20 @@ export default class SdCheckboxGroup extends SolidElement {
         role="group"
         aria-labelledby="label"
       >
-        <div class="flex items-center gap-1 mb-2">
-          <label
-            part="form-control-label"
-            id="label"
-            class=${cx('p-0 font-bold leading-normal text-black', hasLabel ? 'flex' : 'hidden')}
-            aria-hidden=${hasLabel ? 'false' : 'true'}
-          >
-            <slot name="label">${this.label}</slot>
-          </label>
+        ${hasLabel || hasTooltip
+          ? html`<div class="flex items-center gap-1 mb-2">
+              <label
+                part="form-control-label"
+                id="label"
+                class=${cx('p-0 font-bold leading-normal text-black', hasLabel ? 'flex' : 'hidden')}
+                aria-hidden=${hasLabel ? 'false' : 'true'}
+              >
+                <slot name="label">${this.label}</slot>
+              </label>
 
-          <slot name="tooltip"></slot>
-        </div>
+              ${hasTooltip ? html`<slot name="tooltip"></slot>` : ''}
+            </div>`
+          : null}
 
         <div
           part="form-control-input"
