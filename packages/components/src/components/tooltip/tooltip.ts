@@ -143,13 +143,13 @@ export default class SdTooltip extends SolidElement {
   }
 
   private handleClick() {
-    if (this.hasTrigger('click')) {
-      if (this.isFocusTriggered) {
-        this.isFocusTriggered = false;
-        // Ignore click event if focus is triggered first
-        return;
-      }
+    if (this.isFocusTriggered) {
+      this.isFocusTriggered = false;
+      // Ignore click event if focus is triggered first
+      return;
+    }
 
+    if (this.hasTrigger('click')) {
       if (this.open) {
         this.hide();
       } else {
@@ -160,8 +160,11 @@ export default class SdTooltip extends SolidElement {
 
   private handleFocus() {
     if (this.hasTrigger('focus')) {
-      this.isFocusTriggered = true;
-      this.show();
+      // Change isFocusTriggered only if the focus action affects the tooltip.
+      if (!this.open) {
+        this.isFocusTriggered = true;
+        this.show();
+      }
     }
   }
 
@@ -283,11 +286,12 @@ export default class SdTooltip extends SolidElement {
         auto-size="vertical"
         arrow-padding="0"
       >
-        <slot slot="anchor" aria-describedby="tooltip" class=${cx(this.size === 'lg' ? 'text-xl' : 'text-base')}>
-          <button class="flex sd-interactive rounded-full">
+        <slot slot="anchor" class=${cx(this.size === 'lg' ? 'text-xl' : 'text-base')}>
+          <button aria-describedby="tooltip" class="flex sd-interactive rounded-full" ?disabled=${this.disabled}>
             <sd-icon
               library="system"
               name="info-circle"
+              label="Tooltip"
               class=${cx(this.disabled && 'sd-interactive--disabled')}
             ></sd-icon>
           </button>
