@@ -1,4 +1,4 @@
-import example from './packages/eslint-plugin/src/index.cjs';
+import example from './packages/eslint-plugin/dist/index.js';
 
 export default [
   {

@@ -1,6 +1,6 @@
 // enforce-foo-bar.js
 
-module.exports = {
+export default {
   meta: {
     type: 'problem',
     docs: {

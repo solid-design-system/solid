@@ -2,12 +2,9 @@ const { RuleTester } = require('eslint');
 const fooBarRule = require('./enforce-foo-bar.cjs');
 
 const ruleTester = new RuleTester({
-  // Must use at least ecmaVersion 2015 because
-  // that's when `const` variables were introduced.
   languageOptions: { ecmaVersion: 2015 }
 });
 
-// Throws error if the tests in ruleTester.run() do not pass
 ruleTester.run(
   'enforce-foo-bar', // rule name
   fooBarRule, // rule code
