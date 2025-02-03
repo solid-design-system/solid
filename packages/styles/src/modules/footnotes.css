@@ -88,7 +88,7 @@
     font-size: x-small;
 
     &:target {
-      @apply bg-neutral-200;
+      @apply focus:outline-none bg-neutral-200;
     }
 
     &::before {
