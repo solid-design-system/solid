@@ -39,7 +39,7 @@ export default function (plop) {
     actions: [
       {
         type: 'add',
-        path: '../../src/modules/{{ tagWithoutPrefix tag }}/{{ tagWithoutPrefix tag }}.css',
+        path: '../../src/modules/{{ tagWithoutPrefix tag }}.css',
         templateFile: 'templates/component/style.hbs'
       },
       {
