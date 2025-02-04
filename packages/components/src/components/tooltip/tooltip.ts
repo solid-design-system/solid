@@ -111,6 +111,7 @@ export default class SdTooltip extends SolidElement {
 
     // If the tooltip is visible on init, update its position
     if (this.open) {
+      this.isFocusTriggered = true;
       this.popup.active = true;
       this.popup.reposition();
     }
@@ -143,6 +144,7 @@ export default class SdTooltip extends SolidElement {
   }
 
   private handleClick() {
+    console.log(this.isFocusTriggered);
     if (this.isFocusTriggered) {
       this.isFocusTriggered = false;
       // Ignore click event if focus is triggered first
@@ -151,8 +153,10 @@ export default class SdTooltip extends SolidElement {
 
     if (this.hasTrigger('click')) {
       if (this.open) {
+        this.blur();
         this.hide();
       } else {
+        this.focus();
         this.show();
       }
     }
@@ -203,7 +207,6 @@ export default class SdTooltip extends SolidElement {
       if (this.disabled) {
         return;
       }
-
       // Show
       this.emit('sd-show');
 
@@ -248,7 +251,6 @@ export default class SdTooltip extends SolidElement {
     if (this.open) {
       return undefined;
     }
-
     this.open = true;
     return waitForEvent(this, 'sd-after-show');
   }
@@ -258,7 +260,6 @@ export default class SdTooltip extends SolidElement {
     if (!this.open) {
       return undefined;
     }
-
     this.open = false;
     return waitForEvent(this, 'sd-after-hide');
   }

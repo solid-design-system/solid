@@ -32,7 +32,13 @@ export const SelectWithTooltip = {
   render: () => html`
     <sd-select class="w-[400px] h-[300px] py-6" size="lg" placement="top" placeholder="Please select" value="">
       <div slot="label">Access role</div>
-      <sd-tooltip slot="tooltip" content="Select the level of access for this user" size="sm" hoist></sd-tooltip>
+      <sd-tooltip
+        slot="tooltip"
+        content="Select the level of access for this user"
+        size="sm"
+        placement="top-start"
+        hoist
+      ></sd-tooltip>
 
       <sd-option value="option-1">Viewer</sd-option>
       <sd-option value="option-2">Editor</sd-option>
