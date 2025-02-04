@@ -7,10 +7,10 @@
  */
 
 .sd-status-badge {
-  @apply inline-flex items-center justify-center;
+  @apply inline-flex items-center;
 
   sd-icon {
-    @apply flex rounded-full h-3 w-3 text-white mr-2 p-1;
+    @apply flex rounded-full h-3 w-3 !text-white mr-2 p-1;
   }
 
   &--success {
