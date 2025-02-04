@@ -9,6 +9,7 @@ export const Test = () => {
         <span>Text</span>
         <span>Text</span>
       </sd-button>
+      <sd-button></sd-button>
     </div>
   );
 };

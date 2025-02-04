@@ -53,11 +53,9 @@ export default [
     languageOptions: {
       parser: sdsParser
     },
-    // Using the eslint-plugin-example plugin defined locally
     plugins: { 'solid-design-system': sdsEslint },
     rules: {
-      'solid-design-system/sd-button-icon-label-required': 'error',
-      'solid-design-system/no-inline-styles': 'error'
+      'solid-design-system/required-sd-icon-label': 'error'
     }
   },
 

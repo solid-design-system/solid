@@ -1,10 +1,10 @@
-import { AST_NODE_TYPES } from '@typescript-eslint/utils';
-import type { TSESTree } from '@typescript-eslint/utils';
+import { NodeTypes } from 'es-html-parser';
+import type { AttributeNode, TagNode, TextNode } from 'es-html-parser';
 
 export class JSXElementES {
-  private _el: TSESTree.JSXElement;
+  private _el: TagNode;
 
-  constructor(element: TSESTree.JSXElement) {
+  constructor(element: TagNode) {
     this._el = element;
   }
 
@@ -13,25 +13,29 @@ export class JSXElementES {
   }
 
   get name() {
-    return this._el.openingElement.name;
+    return this._el.name;
   }
 
   get children() {
     return this._el.children
-      .filter((child): child is TSESTree.JSXElement => child.type === AST_NODE_TYPES.JSXElement)
+      .filter((child): child is TagNode => child.type === NodeTypes.Tag)
       .map(child => new JSXElementES(child));
   }
 
-  get attributes(): TSESTree.JSXAttribute[] {
-    return this._el.openingElement.attributes.filter(
-      attr => attr.type === AST_NODE_TYPES.JSXAttribute && attr.name.type === AST_NODE_TYPES.JSXIdentifier
-    ) as TSESTree.JSXAttribute[];
+  get textContent() {
+    return this._el.children
+      .filter((child): child is TextNode => child.type === NodeTypes.Text)
+      .map(c => c.value.trim())
+      .join(' ')
+      .trim();
+  }
+
+  get attributes(): AttributeNode[] {
+    return this._el.attributes;
   }
 
   is(name: string) {
-    return (
-      this._el.openingElement.name.type === AST_NODE_TYPES.JSXIdentifier && this._el.openingElement.name.name === name
-    );
+    return this._el.name === name;
   }
 
   query(name: string) {
@@ -43,6 +47,6 @@ export class JSXElementES {
   }
 
   hasAttribute(name: string) {
-    return this.attributes.some(attr => attr.name.name === name);
+    return this.attributes.some(attr => attr.key.value === name);
   }
 }

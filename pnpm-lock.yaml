@@ -373,6 +373,9 @@ importers:
       '@typescript-eslint/utils':
         specifier: ^8.18.0
         version: 8.22.0(eslint@9.19.0(jiti@1.21.7))(typescript@5.4.5)
+      es-html-parser:
+        specifier: ^0.0.10
+        version: 0.0.10
       esbuild:
         specifier: ^0.24.0
         version: 0.24.2
@@ -3316,6 +3319,9 @@ packages:
   es-errors@1.3.0:
     resolution: {integrity: sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==}
     engines: {node: '>= 0.4'}
+
+  es-html-parser@0.0.10:
+    resolution: {integrity: sha512-zUBnara4qcXPvxa9/iv44wjw2uEdPU93qa0L6j5sfmSE9ysi3PE7Nlkm/xebm5i+BkS/paa6pIv4nApjg50+Xg==}
 
   es-html-parser@1.0.0-alpha.4:
     resolution: {integrity: sha512-5KUgd64goEPG1ZwP3rf/D+uAbdjyuNon0YY9u1yzR2NkFwa1UwxpsCQkzalAOlQaXAVtP32LGYRW4IAKAwo/sg==}
@@ -10611,6 +10617,8 @@ snapshots:
   es-define-property@1.0.1: {}
 
   es-errors@1.3.0: {}
+
+  es-html-parser@0.0.10: {}
 
   es-html-parser@1.0.0-alpha.4: {}
 
