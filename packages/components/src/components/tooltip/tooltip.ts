@@ -44,8 +44,7 @@ import type SdPopup from '../popup/popup';
 export default class SdTooltip extends SolidElement {
   private hoverTimeout: number;
 
-  // Flag to handle the case where a click event is triggered after a focus event
-  private isFocusTriggered: boolean = false;
+  private interactionType: 'keyboard' | 'mouse' | undefined;
 
   public localize = new LocalizeController(this);
 
@@ -94,6 +93,8 @@ export default class SdTooltip extends SolidElement {
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleMouseOver = this.handleMouseOver.bind(this);
     this.handleMouseOut = this.handleMouseOut.bind(this);
+    document.addEventListener('mousedown', this.handleMouseInteraction);
+    document.addEventListener('keydown', this.handleKeyboardInteraction);
 
     this.updateComplete.then(() => {
       this.addEventListener('blur', this.handleBlur, true);
@@ -111,7 +112,6 @@ export default class SdTooltip extends SolidElement {
 
     // If the tooltip is visible on init, update its position
     if (this.open) {
-      this.isFocusTriggered = true;
       this.popup.active = true;
       this.popup.reposition();
     }
@@ -125,6 +125,8 @@ export default class SdTooltip extends SolidElement {
     this.removeEventListener('keydown', this.handleKeyDown);
     this.removeEventListener('mouseover', this.handleMouseOver);
     this.removeEventListener('mouseout', this.handleMouseOut);
+    document.removeEventListener('mousedown', this.handleMouseInteraction);
+    document.removeEventListener('keydown', this.handleKeyboardInteraction);
   }
 
   // removes empty text nodes from the default slot
@@ -137,6 +139,14 @@ export default class SdTooltip extends SolidElement {
     });
   }
 
+  private handleMouseInteraction = () => {
+    this.interactionType = 'mouse';
+  };
+
+  private handleKeyboardInteraction = () => {
+    this.interactionType = 'keyboard';
+  };
+
   private handleBlur() {
     if (this.hasTrigger('focus')) {
       this.hide();
@@ -144,19 +154,10 @@ export default class SdTooltip extends SolidElement {
   }
 
   private handleClick() {
-    console.log(this.isFocusTriggered);
-    if (this.isFocusTriggered) {
-      this.isFocusTriggered = false;
-      // Ignore click event if focus is triggered first
-      return;
-    }
-
     if (this.hasTrigger('click')) {
       if (this.open) {
-        this.blur();
         this.hide();
       } else {
-        this.focus();
         this.show();
       }
     }
@@ -164,9 +165,7 @@ export default class SdTooltip extends SolidElement {
 
   private handleFocus() {
     if (this.hasTrigger('focus')) {
-      // Change isFocusTriggered only if the focus action affects the tooltip.
-      if (!this.open) {
-        this.isFocusTriggered = true;
+      if (this.interactionType === 'keyboard') {
         this.show();
       }
     }
