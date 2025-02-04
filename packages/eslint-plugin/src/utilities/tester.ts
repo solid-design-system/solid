@@ -1,14 +1,9 @@
 import { RuleTester } from 'eslint';
+import parser from '@html-eslint/parser';
 
 const tester = new RuleTester({
   languageOptions: {
-    parserOptions: {
-      ecmaVersion: 2020,
-      sourceType: 'module',
-      ecmaFeatures: {
-        jsx: true
-      }
-    }
+    parser
   }
 });
 
