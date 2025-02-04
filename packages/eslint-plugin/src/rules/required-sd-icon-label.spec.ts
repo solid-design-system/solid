@@ -1,8 +1,7 @@
+import rule from './required-sd-icon-label';
 import tester from '../utilities/tester';
 
-import rule from './sd-button-icon-label-required';
-
-tester.run('sd-button-icon-label-required', rule, {
+tester.run('required-sd-icon-label', rule, {
   valid: [
     {
       name: 'sd-icon has label',
