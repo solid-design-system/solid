@@ -28,9 +28,6 @@ importers:
       '@eslint/js':
         specifier: ^9.18.0
         version: 9.19.0
-      '@html-eslint/parser':
-        specifier: ^0.34.0
-        version: 0.34.0
       '@octokit/rest':
         specifier: ^21.1.0
         version: 21.1.0
@@ -362,6 +359,10 @@ importers:
         version: 1.5.3(patch_hash=nhx4vpjmjavso2wty7iy66lsmi)(lit@3.2.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   packages/eslint-plugin:
+    dependencies:
+      '@html-eslint/parser':
+        specifier: ^0.34.0
+        version: 0.34.0
     devDependencies:
       '@types/node':
         specifier: ^22.10.2
