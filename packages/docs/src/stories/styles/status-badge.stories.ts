@@ -1,4 +1,5 @@
 import { html } from 'lit-html';
+import '../../../../components/src/solid-components';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
@@ -8,6 +9,11 @@ const { generateTemplate } = storybookTemplate('sd-status-badge');
 
 /**
  * Used as a visual, non-interactive indicator of a status related to a particular element.
+ *
+ * The icons used in this component, should be exclusively from the `sd-status-assets` [icon library](?path=/story/components-sd-icon-default--status-library).
+ *
+ * **Related templates**:
+ * - [Status Badge with Custom Icon](?path=/docs/templates-status-badge--docs)
  */
 
 export default {
