@@ -1,16 +1,18 @@
 import example from './packages/eslint-plugin/dist/index.js';
+import parser from '@html-eslint/parser';
 
 export default [
   {
-    files: ['**/example.js'],
+    files: ['**/*.{html,jsx}'],
     languageOptions: {
-      sourceType: 'commonjs',
-      ecmaVersion: 'latest'
+      parser
     },
     // Using the eslint-plugin-example plugin defined locally
     plugins: { example },
     rules: {
-      'example/enforce-foo-bar': 'error'
+      'example/enforce-foo-bar': 'error',
+      'example/sd-button-icon-label-required': 'error',
+      'example/no-inline-styles': 'error'
     }
   }
 ];

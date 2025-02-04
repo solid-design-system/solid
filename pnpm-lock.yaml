@@ -28,6 +28,9 @@ importers:
       '@eslint/js':
         specifier: ^9.18.0
         version: 9.19.0
+      '@html-eslint/parser':
+        specifier: ^0.34.0
+        version: 0.34.0
       '@octokit/rest':
         specifier: ^21.1.0
         version: 21.1.0
@@ -97,9 +100,6 @@ importers:
       '@shoelace-style/localize':
         specifier: ^3.2.1
         version: 3.2.1
-      '@solid-design-system/eslint-plugin':
-        specifier: workspace:*
-        version: link:../eslint-plugin
       classix:
         specifier: ^2.2.0
         version: 2.2.1
@@ -1097,6 +1097,14 @@ packages:
 
   '@hapi/bourne@3.0.0':
     resolution: {integrity: sha512-Waj1cwPXJDucOib4a3bAISsKJVb15MKi9IvmTI/7ssVEm6sywXGjVJDhl6/umt1pK1ZS7PacXU3A1PmFKHEZ2w==}
+
+  '@html-eslint/parser@0.34.0':
+    resolution: {integrity: sha512-gWwcb0nPEq/wKQY+hvGQwdEJ9DXMKs1GLCqG51FqLTTOY1mtwTYRkjmviJCKFwAnQUkYhRrzolYj1ZF2XsTG6A==}
+    engines: {node: '>=8.10.0'}
+
+  '@html-eslint/template-syntax-parser@0.34.0':
+    resolution: {integrity: sha512-rmIrw3WtYXITA7AI+LgJqUmjLfWMEP2HNyvvdV8YJysdEOFtM0VXOT9hY8b7mV0ZGqPt/g0dWii1j/94omMufQ==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -3307,6 +3315,9 @@ packages:
   es-errors@1.3.0:
     resolution: {integrity: sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==}
     engines: {node: '>= 0.4'}
+
+  es-html-parser@1.0.0-alpha.4:
+    resolution: {integrity: sha512-5KUgd64goEPG1ZwP3rf/D+uAbdjyuNon0YY9u1yzR2NkFwa1UwxpsCQkzalAOlQaXAVtP32LGYRW4IAKAwo/sg==}
 
   es-module-lexer@0.9.3:
     resolution: {integrity: sha512-1HQ2M2sPtxwnvOvT1ZClHyQDiggdNjURWpY2we6aMKCQiUVxTmVs2UYPLIrD84sS+kMdUwfBSylbJPwNnBrnHQ==}
@@ -7680,6 +7691,13 @@ snapshots:
 
   '@hapi/bourne@3.0.0': {}
 
+  '@html-eslint/parser@0.34.0':
+    dependencies:
+      '@html-eslint/template-syntax-parser': 0.34.0
+      es-html-parser: 1.0.0-alpha.4
+
+  '@html-eslint/template-syntax-parser@0.34.0': {}
+
   '@humanfs/core@0.19.1': {}
 
   '@humanfs/node@0.16.6':
@@ -10592,6 +10610,8 @@ snapshots:
   es-define-property@1.0.1: {}
 
   es-errors@1.3.0: {}
+
+  es-html-parser@1.0.0-alpha.4: {}
 
   es-module-lexer@0.9.3: {}
 

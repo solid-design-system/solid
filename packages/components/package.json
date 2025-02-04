@@ -120,9 +120,6 @@
     "typescript": "5.7.3",
     "user-agent-data-types": "^0.4.2"
   },
-  "peerDependencies": {
-    "@solid-design-system/eslint-plugin": "workspace:*"
-  },
   "readme": "README.md",
   "meta": {
     "bundleSizeInKb": {

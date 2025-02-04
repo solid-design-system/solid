@@ -1,5 +1,5 @@
 import { ESLintUtils } from '@typescript-eslint/utils';
-import { JSXElementES } from '../utilities/jsx';
+import { JSXElementES } from '../utilities/jsx.js';
 import type { Rule } from 'eslint';
 import type { TSESTree } from '@typescript-eslint/utils';
 
