@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.5.0
+
+### Minor Changes
+
+- Implemented automated accessibility tests using [@axe-core/playwright](https://www.npmjs.com/package/@axe-core/playwright) _[`#1797`](https://github.com/solid-design-system/solid/pull/1797) [`3dd6256`](https://github.com/solid-design-system/solid/commit/3dd62563f05e2a68caba65438accb10ba91d02e9) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.4.5
 
 ### Patch Changes
