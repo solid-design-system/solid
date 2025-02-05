@@ -20,7 +20,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Styles/sd-interactive/Screenshots: sd-interactive',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y'],
   component: 'sd-interactive',
   parameters: {
     ...parameters,

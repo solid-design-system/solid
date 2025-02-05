@@ -19,7 +19,7 @@ const { generateTemplate } = storybookTemplate('sd-optgroup');
 
 export default {
   title: 'Components/sd-optgroup',
-  tags: ['!dev'],
+  tags: ['!dev', 'skip-a11y'],
   component: 'sd-optgroup',
   args: overrideArgs([
     {

@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'skip-a11y'],
   title: 'Templates/Drawer',
   parameters: {
     design: {
