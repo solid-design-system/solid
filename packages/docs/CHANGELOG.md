@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.4.5
+
+### Patch Changes
+
+- Update broken urls in documentation. _[`#1834`](https://github.com/solid-design-system/solid/pull/1834) [`6ae18a3`](https://github.com/solid-design-system/solid/commit/6ae18a3a1af5dd5948c7c3fd9e6e4ef9bb7474e0) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.4.4
 
 ### Patch Changes

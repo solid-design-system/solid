@@ -870,12 +870,14 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       label: this.hasSlotController.test('label'),
       clearIcon: this.hasSlotController.test('clear-icon'),
       expandIcon: this.hasSlotController.test('expand-icon'),
-      helpText: this.hasSlotController.test('help-text')
+      helpText: this.hasSlotController.test('help-text'),
+      tooltip: this.hasSlotController.test('tooltip')
     };
 
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.disabled;
+    const hasTooltip = !!slots['tooltip'];
 
     // Hierarchy of input states:
     const selectState = this.disabled
@@ -914,19 +916,21 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         )}
       >
         <span class="sr-only" role="alert" aria-live="assertive">${this.deletedTagLabel}</span>
-        <div class="flex items-center gap-1 mb-2">
-          <label
-            id="label"
-            part="form-control-label"
-            class=${hasLabel && 'inline-block'}
-            aria-hidden=${hasLabel ? 'false' : 'true'}
-            @click=${this.handleLabelClick}
-          >
-            <slot name="label">${this.label}</slot>
-          </label>
+        ${hasLabel || hasTooltip
+          ? html`<div class="flex items-center gap-1 mb-2">
+              <label
+                id="label"
+                part="form-control-label"
+                class=${hasLabel && 'inline-block'}
+                aria-hidden=${hasLabel ? 'false' : 'true'}
+                @click=${this.handleLabelClick}
+              >
+                <slot name="label">${this.label}</slot>
+              </label>
 
-          <slot name="tooltip"></slot>
-        </div>
+              ${slots['tooltip'] ? html`<slot name="tooltip"></slot>` : ''}
+            </div>`
+          : null}
 
         <div
           part="form-control-input"
