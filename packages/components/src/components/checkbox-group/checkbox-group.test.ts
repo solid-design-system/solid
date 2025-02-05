@@ -1,6 +1,7 @@
 import '../../../dist/solid-components';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import sinon from 'sinon';
+import type SdCheckboxGroup from './checkbox-group';
 
 describe('when submitting a form', () => {
   it('should submit the correct value when a value is provided', async () => {
@@ -49,5 +50,39 @@ describe('when submitting a form', () => {
     const formData = new FormData(form);
 
     expect(formData.getAll('a')).to.eql(['1', '3']);
+  });
+
+  it('should render label wrapper if label or tooltip are present', async () => {
+    const el = await fixture<SdCheckboxGroup>(html`
+      <sd-checkbox-group label="test">
+        <sd-tooltip
+          slot="tooltip"
+          content="Lorem ipsum"
+          placement="bottom"
+          size="lg"
+          trigger="click focus"
+        ></sd-tooltip>
+      </sd-checkbox-group>
+    `);
+
+    const labelParentElement = el.shadowRoot!.querySelector('[part~="form-control"]');
+    const tooltip = el.shadowRoot!.querySelector('slot[name="tooltip"]')!;
+    const label = el.shadowRoot!.querySelector('#label')!;
+
+    expect(labelParentElement).to.exist;
+    expect(labelParentElement!.contains(label)).to.be.true;
+    expect(labelParentElement!.contains(tooltip)).to.be.true;
+  });
+
+  it('should not render label wrapper if label or tooltip are present', async () => {
+    const el = await fixture<SdCheckboxGroup>(html` <sd-checkbox-group> </sd-checkbox-group> `);
+
+    const labelParentElement = el.shadowRoot!.querySelector('[part~="form-control"]');
+    const tooltip = el.shadowRoot!.querySelector('slot[name="tooltip"]')!;
+    const label = el.shadowRoot!.querySelector('#label')!;
+
+    expect(labelParentElement).to.exist;
+    expect(labelParentElement!.contains(label)).to.be.false;
+    expect(labelParentElement!.contains(tooltip)).to.be.false;
   });
 });
