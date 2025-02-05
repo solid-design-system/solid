@@ -113,6 +113,7 @@ describe('<sd-tooltip>', () => {
     expect(hideHandler).to.have.been.calledOnce;
     expect(afterHideHandler).to.have.been.calledOnce;
     expect(body.hidden).to.be.true;
+    expect(document.activeElement).to.not.equal(el);
   });
 
   it('should hide the tooltip when tooltip is visible and disabled becomes true', async () => {
@@ -135,6 +136,7 @@ describe('<sd-tooltip>', () => {
     expect(hideHandler).to.have.been.calledOnce;
     expect(afterHideHandler).to.have.been.calledOnce;
     expect(body.hidden).to.be.true;
+    expect(document.activeElement).to.not.equal(el);
   });
 
   it('should show when open initially', async () => {
@@ -184,6 +186,7 @@ describe('<sd-tooltip>', () => {
 
     // tooltip is hidden again after clicking the button a second time
     expect(body.hidden).to.be.true;
+    expect(document.activeElement).to.not.equal(el);
   });
 
   it('removes whitespace nodes from the default slot', async () => {
@@ -198,5 +201,63 @@ describe('<sd-tooltip>', () => {
     const nodes = (defaultSlot as HTMLSlotElement).assignedNodes({ flatten: true }) as HTMLElement[];
 
     expect(nodes.length).to.equal(1);
+  });
+
+  it('should toggle the tooltip when focus the trigger', async () => {
+    const el = await fixture<SdTooltip>(html`
+      <sd-tooltip content="This is a tooltip" trigger="focus">
+        <sd-button>Click Me</sd-button>
+      </sd-tooltip>
+    `);
+
+    const button = el.querySelector('sd-button')!;
+    const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
+
+    // tooltip starts hidden
+    expect(body.hidden).to.be.true;
+
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab' }));
+    button.focus();
+    await waitUntil(() => !body.hidden);
+
+    // tooltip is visible after clicking the button
+    expect(body.hidden).to.be.false;
+
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab' }));
+    button.blur();
+    await waitUntil(() => body.hidden);
+
+    // tooltip is hidden again after clicking the button a second time
+    expect(body.hidden).to.be.true;
+    expect(document.activeElement).to.not.equal(el);
+  });
+
+  it('should close tooltip when clicking trigger if it was opened by focus', async () => {
+    const el = await fixture<SdTooltip>(html`
+      <sd-tooltip content="This is a tooltip" trigger="focus">
+        <sd-button>Click Me</sd-button>
+      </sd-tooltip>
+    `);
+
+    const button = el.querySelector('sd-button')!;
+    const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
+
+    // tooltip starts hidden
+    expect(body.hidden).to.be.true;
+
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab' }));
+    button.focus();
+    await waitUntil(() => !body.hidden);
+
+    // tooltip is visible after clicking the button
+    expect(body.hidden).to.be.false;
+
+    button.click();
+    button.blur();
+    await waitUntil(() => body.hidden);
+
+    // tooltip is hidden again after clicking the button a second time
+    expect(body.hidden).to.be.true;
+    expect(document.activeElement).to.not.equal(el);
   });
 });
