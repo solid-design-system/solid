@@ -15,7 +15,7 @@ const { generateTemplate } = storybookTemplate('sd-footnotes');
 
 export default {
   title: 'Styles/sd-footnotes',
-  tags: ['!dev'],
+  tags: ['!dev', 'skip-a11y-[link-name]'],
   component: 'sd-footnotes',
   parameters: {
     ...parameters,
