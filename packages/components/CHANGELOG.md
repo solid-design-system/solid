@@ -1,5 +1,36 @@
 # @solid-design-system/components
 
+## 4.0.10
+
+### Patch Changes
+
+- Conditionally render the label wrapper and slotted tooltip to avoid incorrect markup in the DOM. _[`#1815`](https://github.com/solid-design-system/solid/pull/1815) [`6eceab5`](https://github.com/solid-design-system/solid/commit/6eceab576630c882b148ae0d345a02fb3c640374) [@smfonseca](https://github.com/smfonseca)_
+
+### 📈 Stats
+* Uncompressed: 400 KB (unchanged)
+* Gzipped: 95 KB (+1 KB / +1%)
+
+## 4.0.9
+
+### Patch Changes
+
+- Fix `sd-map-marker` variants `main`and `place` shadow. The shadow token in use (`shadow-md`) was [removed](https://github.com/solid-design-system/solid/pull/963) and is now replaced with `shadow`. _[`#1818`](https://github.com/solid-design-system/solid/pull/1818) [`adc5ee0`](https://github.com/solid-design-system/solid/commit/adc5ee06300566bd4b22352e178664cfc1458059) [@smfonseca](https://github.com/smfonseca)_
+
+  Improve center alignment of icon in variant `place`.
+
+### 📈 Stats
+
+- Uncompressed: 400 KB (+1 KB / +0%)
+- Gzipped: 94 KB (unchanged)
+
+## 4.0.8
+
+### Patch Changes
+
+- Improve sd-radio when checked: _[`#1814`](https://github.com/solid-design-system/solid/pull/1814) [`dd2195f`](https://github.com/solid-design-system/solid/commit/dd2195f65d543900eebefc6d4ae2d0aece79deeb) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Removed the inner border of the green circle to maintain consistency with Figma
+
 ## 4.0.7
 
 ### Patch Changes

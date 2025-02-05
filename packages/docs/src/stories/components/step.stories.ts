@@ -22,7 +22,7 @@ const { generateTemplate } = storybookTemplate('sd-step');
 
 export default {
   title: 'Components/sd-step',
-  tags: ['!dev'],
+  tags: ['!dev', 'skip-a11y'],
   component: 'sd-step',
   args: overrideArgs([
     {
