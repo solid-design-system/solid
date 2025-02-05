@@ -1,7 +1,7 @@
 import { deleteAsync } from 'del';
 import { exec } from 'child_process';
 import { globby } from 'globby';
-import chalk from 'chalk';
+import pc from 'picocolors';
 import chokidar from 'chokidar';
 import copy from 'recursive-copy';
 import esbuild from 'esbuild';
@@ -117,12 +117,12 @@ async function nextTask(label, action) {
   try {
     await action();
     spinner.stop();
-    console.log(`${chalk.green('✔')} ${label}`);
+    console.log(`${pc.green('✔')} ${label}`);
   } catch (err) {
     spinner.stop();
-    console.error(`${chalk.red('✘')} ${err}`);
-    if (err.stdout) console.error(chalk.red(err.stdout));
-    if (err.stderr) console.error(chalk.red(err.stderr));
+    console.error(`${pc.red('✘')} ${err}`);
+    if (err.stdout) console.error(pc.red(err.stdout));
+    if (err.stderr) console.error(pc.red(err.stderr));
     process.exit(1);
   }
 }

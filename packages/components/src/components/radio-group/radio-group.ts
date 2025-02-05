@@ -356,6 +356,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   render() {
     const hasLabelSlot = this.hasSlotController.test('label');
     const hasLabel = this.label ? true : !!hasLabelSlot;
+    const hasTooltipSlot = this.hasSlotController.test('tooltip');
 
     const defaultSlot = html`
       <slot @slotchange=${this.syncRadios} @click=${this.handleRadioClick} @keydown=${this.handleKeyDown}></slot>
@@ -376,19 +377,25 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         role="radiogroup"
         aria-describedby="invalid-message"
       >
-        <div class="flex items-center gap-1 mb-2">
-          <legend
-            part="form-control-label"
-            id="label"
-            class=${cx('p-0 leading-normal text-black text-left', !hasLabel && 'hidden', this.boldLabel && 'font-bold')}
-            @click=${this.focus}
-            aria-hidden=${hasLabel ? 'false' : 'true'}
-          >
-            <slot name="label">${this.label}</slot>
-          </legend>
+        ${hasLabelSlot || hasTooltipSlot
+          ? html`<div class="flex items-center gap-1 mb-2">
+              <legend
+                part="form-control-label"
+                id="label"
+                class=${cx(
+                  'p-0 leading-normal text-black text-left',
+                  !hasLabel && 'hidden',
+                  this.boldLabel && 'font-bold'
+                )}
+                @click=${this.focus}
+                aria-hidden=${hasLabel ? 'false' : 'true'}
+              >
+                <slot name="label">${this.label}</slot>
+              </legend>
 
-          <slot name="tooltip"></slot>
-        </div>
+              ${hasTooltipSlot ? html`<slot name="tooltip"></slot>` : ''}
+            </div>`
+          : null}
 
         <div
           part="form-control-input"

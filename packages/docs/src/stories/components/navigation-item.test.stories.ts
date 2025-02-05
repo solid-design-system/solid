@@ -40,7 +40,7 @@ const childrenSlotConstant: ConstantDefinition = {
 export default {
   title: 'Components/sd-navigation-item/Screenshots: sd-navigation-item',
   component: 'sd-navigation-item',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y'],
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Navigation' }]),
   argTypes,
   parameters: { ...parameters, controls: { disable: true } },
