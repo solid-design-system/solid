@@ -6,14 +6,9 @@
   "author": {
     "name": "Union Investment"
   },
-  "main": "src/index.js",
-  "files": [
-    "dist",
-    "src"
-  ],
-  "scripts": {
-    "build": "node scripts/build.mjs",
-    "test": "jest"
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "keywords": [
     "eslint",
@@ -22,6 +17,18 @@
     "solid-design-system"
   ],
   "license": "MIT",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "jest"
+  },
   "devDependencies": {
     "@types/node": "^22.10.2",
     "@typescript-eslint/rule-tester": "^8.18.0",
