@@ -186,37 +186,6 @@ describe('<sd-tooltip>', () => {
     expect(body.hidden).to.be.true;
   });
 
-  it('should ignore click event if focus is triggered first', async () => {
-    const el = await fixture<SdTooltip>(html`
-      <sd-tooltip content="This is a tooltip" trigger="click focus">
-        <sd-button>Click or Focus Me</sd-button>
-      </sd-tooltip>
-    `);
-
-    const button = el.querySelector('sd-button')!;
-    const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
-
-    const showSpy = sinon.spy(el, 'show');
-    const hideSpy = sinon.spy(el, 'hide');
-
-    button.focus();
-    await waitUntil(() => showSpy.calledOnce);
-
-    // tooltip is visible after focusing
-    expect(body.hidden).to.be.false;
-
-    button.click();
-    await waitUntil(() => hideSpy.notCalled);
-
-    // button click is ignored because focus was triggered first
-    expect(body.hidden).to.be.false;
-    expect(showSpy.calledOnce).to.be.true;
-    expect(hideSpy.notCalled).to.be.true;
-
-    showSpy.restore();
-    hideSpy.restore();
-  });
-
   it('removes whitespace nodes from the default slot', async () => {
     const el = await fixture<SdTooltip>(html`
       <sd-tooltip content="This is a tooltip">

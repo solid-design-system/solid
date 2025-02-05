@@ -260,6 +260,7 @@ export default class SdTooltip extends SolidElement {
       return undefined;
     }
     this.open = false;
+    this.blur();
     return waitForEvent(this, 'sd-after-hide');
   }
 
