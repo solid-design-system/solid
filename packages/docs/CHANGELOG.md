@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.5.1
+
+### Patch Changes
+
+- Fix monospace font-family on show code section. _[`#1833`](https://github.com/solid-design-system/solid/pull/1833) [`01580e2`](https://github.com/solid-design-system/solid/commit/01580e2d0fbfbba33bcb28e72161858ddc0cf4ab) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.5.0
 
 ### Minor Changes
