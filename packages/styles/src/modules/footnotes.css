@@ -17,7 +17,7 @@
     @apply ps-8;
 
     li {
-      counter-increment: footnotes;
+      counter-increment: list-item;
       @apply flex list-none relative;
 
       .sd-footnotes--marker,
@@ -25,7 +25,7 @@
       &:not(:has(.sd-footnotes--marker)) {
         &::before {
           @apply absolute -left-8 font-bold leading-normal shrink-0;
-          content: '[ ' counter(footnotes) ' ]';
+          content: '[ ' counter(list-item) ' ]';
           padding-top: 1px;
           font-size: 10px;
         }

@@ -89,7 +89,7 @@ export const Inverted = {
   render: () => html`
     <div class="sd-container sd-container--variant-primary">
       <ol class="sd-footnotes sd-footnotes--inverted">
-        <li><a href="#asd" class="sd-footnotes--marker"></a>Lorem ipsum dolor sit amet.</li>
+        <li>Lorem ipsum dolor sit amet.</li>
         <li>Sed diam nonumy eirmod tempor invidunt ut labore.</li>
         <li>Dolore magna aliq erat, sed diam voluptua.</li>
       </ol>
