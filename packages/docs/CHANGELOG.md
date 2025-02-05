@@ -1,5 +1,48 @@
 # @solid-design-system/docs
 
+## 1.4.5
+
+### Patch Changes
+
+- Update broken urls in documentation. _[`#1834`](https://github.com/solid-design-system/solid/pull/1834) [`6ae18a3`](https://github.com/solid-design-system/solid/commit/6ae18a3a1af5dd5948c7c3fd9e6e4ef9bb7474e0) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.4.4
+
+### Patch Changes
+
+- Update `slot` story to have example slot div vertically centered inside the marker. _[`#1818`](https://github.com/solid-design-system/solid/pull/1818) [`adc5ee0`](https://github.com/solid-design-system/solid/commit/adc5ee06300566bd4b22352e178664cfc1458059) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.4.3
+
+### Patch Changes
+
+- Fix SDS documentation urls in Codepen editor. _[`#1817`](https://github.com/solid-design-system/solid/pull/1817) [`a3b28c1`](https://github.com/solid-design-system/solid/commit/a3b28c14be5a1742de36ad3b03859b4947decde4) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.4.2
+
+### Patch Changes
+
+- Improved sd-drawer screenshot tests, sd-drawer and sd-header templates a11y: _[`#1743`](https://github.com/solid-design-system/solid/pull/1743) [`722cc99`](https://github.com/solid-design-system/solid/commit/722cc99e032a91bfb1a14a019190ddd0bd1ba790) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add aria-labels to duplicated navigation landmarks in templates
+  - Fix focus style cut off
+  - Fix autofocus story
+  - Replace native input with sd-input in autofocus and mouseless stories
+  - Include a11y hint to add a label
+  - Update stories with button to reopen drawer
+
+## 1.4.1
+
+### Patch Changes
+
+- Extend `sd-tooltip` documentation with example on how to use a custom trigger and measures to preserve accessibility. _[`#1798`](https://github.com/solid-design-system/solid/pull/1798) [`fa60adc`](https://github.com/solid-design-system/solid/commit/fa60adc10a0b96654d6bf7380b4fc8e82857caa6) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.4.0
+
+### Minor Changes
+
+- Add radio button group template. _[`#1779`](https://github.com/solid-design-system/solid/pull/1779) [`9ec07c6`](https://github.com/solid-design-system/solid/commit/9ec07c660c1a28b7b75c75350876324f4c4bab7a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.3.5
 
 ### Patch Changes

@@ -1,5 +1,62 @@
 # @solid-design-system/components
 
+## 4.0.10
+
+### Patch Changes
+
+- Conditionally render the label wrapper and slotted tooltip to avoid incorrect markup in the DOM. _[`#1815`](https://github.com/solid-design-system/solid/pull/1815) [`6eceab5`](https://github.com/solid-design-system/solid/commit/6eceab576630c882b148ae0d345a02fb3c640374) [@smfonseca](https://github.com/smfonseca)_
+
+### 📈 Stats
+* Uncompressed: 400 KB (unchanged)
+* Gzipped: 95 KB (+1 KB / +1%)
+
+## 4.0.9
+
+### Patch Changes
+
+- Fix `sd-map-marker` variants `main`and `place` shadow. The shadow token in use (`shadow-md`) was [removed](https://github.com/solid-design-system/solid/pull/963) and is now replaced with `shadow`. _[`#1818`](https://github.com/solid-design-system/solid/pull/1818) [`adc5ee0`](https://github.com/solid-design-system/solid/commit/adc5ee06300566bd4b22352e178664cfc1458059) [@smfonseca](https://github.com/smfonseca)_
+
+  Improve center alignment of icon in variant `place`.
+
+### 📈 Stats
+
+- Uncompressed: 400 KB (+1 KB / +0%)
+- Gzipped: 94 KB (unchanged)
+
+## 4.0.8
+
+### Patch Changes
+
+- Improve sd-radio when checked: _[`#1814`](https://github.com/solid-design-system/solid/pull/1814) [`dd2195f`](https://github.com/solid-design-system/solid/commit/dd2195f65d543900eebefc6d4ae2d0aece79deeb) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Removed the inner border of the green circle to maintain consistency with Figma
+
+## 4.0.7
+
+### Patch Changes
+
+- Fixed `sd-navigation-item` broken layout _[`#1743`](https://github.com/solid-design-system/solid/pull/1743) [`722cc99`](https://github.com/solid-design-system/solid/commit/722cc99e032a91bfb1a14a019190ddd0bd1ba790) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  Improved sd-drawer a11y:
+
+  - Fix focus management - the focus will go to close button once the drawer is open
+  - Make content area a scrollable region to be accessed by screen readers
+  - Add close button to no-header variant
+  - Fix aria-labelledby title issue
+  - Fix tests
+
+## 4.0.6
+
+### Patch Changes
+
+- Improve `sd-tooltip` robustness by removing empty text nodes from the default slot which caused the trigger to not render properly. _[`#1798`](https://github.com/solid-design-system/solid/pull/1798) [`fa60adc`](https://github.com/solid-design-system/solid/commit/fa60adc10a0b96654d6bf7380b4fc8e82857caa6) [@smfonseca](https://github.com/smfonseca)_
+
+## 4.0.5
+
+### Patch Changes
+
+- Fix missing gradients on `sd-teaser-media` and `sd-flipcard`. _[`#1810`](https://github.com/solid-design-system/solid/pull/1810) [`f10c08c`](https://github.com/solid-design-system/solid/commit/f10c08ce6cc0e40d860a93c50199e2917deef7df) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 4.0.4
 
 ### Patch Changes
@@ -10,8 +67,9 @@
   - previous button receives focus when the last slide is reached.
 
 ### 📈 Stats
-* Uncompressed: 399 KB (+1 KB / +0%)
-* Gzipped: 94 KB (unchanged)
+
+- Uncompressed: 399 KB (+1 KB / +0%)
+- Gzipped: 94 KB (unchanged)
 
 ## 4.0.3
 

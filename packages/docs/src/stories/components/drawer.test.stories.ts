@@ -203,27 +203,42 @@ export const Autofocus = {
   name: 'Autofocus',
   render: (args: any) => {
     return html` <div style="width: auto; height: 95vh; position: relative;">
-      ${generateTemplate({
-        args,
-        constants: [
-          {
-            type: 'slot',
-            name: 'default',
-            value: `<input autofocus placeholder="I will have focus when the drawer is opened" class="mt-3 block w-full rounded-md border-0 py-1.5 px-3 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 placeholder:text-gray-400 focus-visible:focus-outline sm:text-sm sm:leading-6"> </div>`
-          },
-          {
-            type: 'slot',
-            name: 'header',
-            value: `<span slot="header">Drawer</span>`
-          },
-          {
-            type: 'slot',
-            name: 'footer',
-            value: `<span slot="footer">Footer content</span>`
-          }
-        ]
-      })}
-    </div>`;
+        <sd-button id="openDrawer">Open Drawer</sd-button>
+        ${generateTemplate({
+          args,
+          constants: [
+            {
+              type: 'slot',
+              name: 'default',
+              value: `<sd-input
+                        autofocus
+                        label="Autofocus input example"
+                        help-text="This input will be focused when the drawer is opened."
+                        > </sd-input>`
+            },
+            {
+              type: 'slot',
+              name: 'header',
+              value: `<span slot="header">Drawer</span>`
+            },
+            {
+              type: 'slot',
+              name: 'footer',
+              value: `<span slot="footer">Footer content</span>`
+            },
+            {
+              type: 'attribute',
+              name: 'open',
+              value: false
+            }
+          ]
+        })}
+      </div>
+      <script>
+        document.querySelector('#openDrawer').addEventListener('click', () => {
+          document.querySelector('sd-drawer').show();
+        });
+      </script>`;
   }
 };
 
@@ -334,7 +349,9 @@ export const Mouseless = {
           {
             type: 'slot',
             name: 'default',
-            value: `<input autofocus placeholder="Placeholder" class="mt-3 block w-full rounded-md border-0 py-1.5 px-3 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 placeholder:text-gray-400 focus-visible:focus-outline sm:text-sm sm:leading-6"> </div>`
+            value: `<sd-input
+                        label="Mouseless input example"
+                        > </sd-input>`
           },
           {
             type: 'slot',

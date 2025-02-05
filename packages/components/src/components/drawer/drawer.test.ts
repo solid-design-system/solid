@@ -2,6 +2,7 @@ import '../../../dist/solid-components';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
+import type { SdInput } from 'src/solid-components';
 import type SdDrawer from './drawer';
 
 describe('<sd-drawer>', () => {
@@ -118,8 +119,18 @@ describe('<sd-drawer>', () => {
   });
 
   it('should allow initial focus to be set', async () => {
-    const el = await fixture<SdDrawer>(html` <sd-drawer><input /></sd-drawer> `);
-    const input = el.querySelector<HTMLInputElement>('input')!;
+    const el = await fixture<SdDrawer>(html`
+      <sd-drawer>
+        <sd-input
+          label="Autofocus input example"
+          help-text="This input will be focused when the drawer is opened."
+        ></sd-input>
+      </sd-drawer>
+    `);
+
+    const input = el.querySelector<SdInput>('sd-input')!;
+    input.setAttribute('autofocus', 'autofocus');
+
     const initialFocusHandler = sinon.spy((event: InputEvent) => {
       event.preventDefault();
       input.focus();
@@ -135,7 +146,7 @@ describe('<sd-drawer>', () => {
   });
 
   it('should close when pressing Escape', async () => {
-    const el = await fixture<SdDrawer>(html` <sd-drawer open></sd-drawer> `);
+    const el = await fixture<SdDrawer>(html`<sd-drawer open></sd-drawer> `);
     const hideHandler = sinon.spy();
 
     el.addEventListener('sd-hide', hideHandler);
