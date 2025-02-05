@@ -2,7 +2,7 @@
 '@solid-design-system/components': patch
 ---
 
-fix: make sd-tooltip more accessible:
+Make `sd-tooltip` more accessible:
 
 - Fixed tooltip ignoring first click due to focus logic.
 - Provided a label for the icon.
