@@ -299,12 +299,14 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     // Slots
     const slots = {
       label: this.hasSlotController.test('label'),
-      helpText: this.hasSlotController.test('help-text')
+      helpText: this.hasSlotController.test('help-text'),
+      tooltip: this.hasSlotController.test('tooltip')
     };
 
     // States
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
+    const hasTooltip = !!slots['tooltip'];
 
     // Hierarchy of textarea states:
     const textareaState = this.disabled
@@ -333,19 +335,21 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
     return html`
       <div part="form-control" class="flex flex-col h-full text-left">
-        <div class="flex items-center gap-1 mb-2">
-          <label
-            part="form-control-label"
-            id="label"
-            class=${cx(hasLabel ? 'inline-block' : 'hidden', textSize)}
-            for="input"
-            aria-hidden=${hasLabel ? 'false' : 'true'}
-          >
-            <slot name="label">${this.label}</slot>
-          </label>
+        ${hasLabel || hasTooltip
+          ? html`<div class="flex items-center gap-1 mb-2">
+              <label
+                part="form-control-label"
+                id="label"
+                class=${cx(hasLabel ? 'inline-block' : 'hidden', textSize)}
+                for="input"
+                aria-hidden=${hasLabel ? 'false' : 'true'}
+              >
+                <slot name="label">${this.label}</slot>
+              </label>
 
-          <slot name="tooltip"></slot>
-        </div>
+              ${slots['tooltip'] ? html`<slot name="tooltip"></slot>` : ''}
+            </div>`
+          : null}
 
         <div part="form-control-input" class=${cx('relative h-full w-full', this.disabled && 'cursor-not-allowed')}>
           <div

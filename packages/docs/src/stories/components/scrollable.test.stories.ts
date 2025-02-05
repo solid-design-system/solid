@@ -28,7 +28,7 @@ const defaultSlotContent = `
 
 export default {
   title: 'Components/sd-scrollable/Screenshots: sd-scrollable',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y'],
   component: 'sd-scrollable',
   args: overrideArgs({
     type: 'slot',

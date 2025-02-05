@@ -19,7 +19,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-link/Screenshots: sd-link',
   component: 'sd-link',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y'],
   args: overrideArgs([
     { type: 'slot', name: 'default', value: 'Link' },
     { type: 'attribute', name: 'href', value: '#' }

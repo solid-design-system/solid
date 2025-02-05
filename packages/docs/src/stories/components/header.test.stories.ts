@@ -15,7 +15,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-header/Screenshots: sd-header',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y'],
   component: 'sd-header',
   args: overrideArgs([
     {

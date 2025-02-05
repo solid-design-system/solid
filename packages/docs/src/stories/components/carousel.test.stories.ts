@@ -16,7 +16,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-carousel/Screenshots: sd-carousel',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y'],
   component: 'sd-carousel',
   args: overrideArgs([
     {

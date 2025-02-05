@@ -134,7 +134,7 @@ export default class SdRadio extends SolidElement {
                 <span
                   part="checked"
                   class=${cx(
-                    'rounded-full inline-flex text-white border bg-accent h-2.5 w-2.5',
+                    'rounded-full inline-flex text-white bg-accent h-2.5 w-2.5',
                     this.disabled
                       ? 'bg-neutral-500'
                       : this.invalid
