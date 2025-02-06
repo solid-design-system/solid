@@ -18,20 +18,22 @@ export const LinkedFootnotes = {
         consistency across all platforms and teams <a id="ref_1" href="#note_1" class="sd-footnotes--marker">1</a>. By
         providing reusable UI components and guided principles, design systems ensure that designers and developers work
         efficiently without reinventing the wheel. This consistency not only streamlines workflows but also enhances
-        scalability, enabling teams to quickly roll out features that look and feel unified.
+        scalability, enabling teams to quickly roll out features that look and feel unified
+        <a id="ref_2a" href="#note_2" class="sd-footnotes--marker">2</a>.
       </p>
       <p>
         Moreover, design systems empower teams to focus on refining user experience rather than repeatedly tackling
         foundational design challenges. When every component aligns with the brand’s visual language, users benefit from
         a familiar, intuitive interface that fosters trust. This familiarity is especially critical for products with
         diverse user bases, as it allows for seamless navigation and higher satisfaction
-        <a id="ref_2" href="#note_2" class="sd-footnotes--marker">2</a>.
+        <a id="ref_2b" href="#note_2" class="sd-footnotes--marker">2</a>.
       </p>
       <p>
         A solid design system also evolves with changing needs. By integrating regular feedback, teams can keep the
         system adaptable and relevant, meeting both emerging design trends and technological advancements
         <a id="ref_3" href="#note_3" class="sd-footnotes--marker">3</a>. Ultimately, investing in a design system yields
-        long-term returns, ensuring that products are consistent, scalable, and efficient.
+        long-term returns, ensuring that products are consistent, scalable, and efficient
+        <a id="ref_2c" href="#note_2" class="sd-footnotes--marker">2</a>.
       </p>
       <p>
         Furthermore, as companies scale, maintaining design consistency across multiple teams and projects becomes
