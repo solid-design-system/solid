@@ -1,4 +1,4 @@
-import { JSXElementES } from '../utilities/jsx.js';
+import { JSXElementES } from '../../utilities/jsx.js';
 import type { Context } from 'types/rules';
 import type { Rule } from 'eslint';
 import type { TagNode } from 'es-html-parser';

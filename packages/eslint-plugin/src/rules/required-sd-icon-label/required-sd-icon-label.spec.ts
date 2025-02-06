@@ -1,5 +1,5 @@
 import rule from './required-sd-icon-label';
-import tester from '../utilities/tester';
+import tester from '../../utilities/tester';
 
 tester.run('required-sd-icon-label', rule, {
   valid: [

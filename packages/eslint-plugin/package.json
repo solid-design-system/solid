@@ -29,7 +29,8 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "test": "jest",
-    "verify": "pnpm build && echo '✅ Build verified' && pnpm test && echo '✅ Tests verified'"
+    "verify": "pnpm build && echo '✅ Build verified' && pnpm test && echo '✅ Tests verified'",
+    "plop": "plop --plopfile scripts/plop/plopfile.js"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
@@ -40,6 +41,7 @@
     "eslint": "^9.18.0",
     "globby": "^14.0.2",
     "jest": "^29.7.0",
+    "plop": "^4.0.1",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typescript": "5.4.5"
