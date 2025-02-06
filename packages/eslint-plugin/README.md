@@ -4,11 +4,6 @@
 
 This package is a custom ESLint plugin designed to extend linting capabilities in your project. It provides custom ESLint rules to the Solid Design System component library, helping to enforce coding standards and catch potential issues when working with the library.
 
-## Features
-
-- Custom linting rules specific to your project’s needs.
-- Seamless integration with existing ESLint configurations.
-
 ## Installation
 
 ```bash
@@ -23,31 +18,34 @@ yarn add --dev @solid-design-system/eslint-plugin
 
 ## Configuration
 
-1. Add the plugin to your ESLint configuration file:
+### Minimal configuration
 
 ```js
-import sds, { parser as sdsParser } from '@solid-design-system/eslint-plugin';
+import sds from '@solid-design-system/eslint-plugin';
 
 export default [
   {
-    files: ['**/*.{html,jsx}'],
-    languageOptions: {
-      parser: sdsParser
-    },
-    plugins: { 'solid-design-system': sds },
-    rules: {
-      'solid-design-system/rule-name': 'error'
-    }
+    ...sds.configs.recommended,
+    files: ['**/*.{html,jsx}']
   }
 ];
 ```
 
-2. Replace `rule-name` with the specific rule(s) you want to enable. Refer to the [Rules](docs/rules.md).
+### Recommended rules with some customization
 
-3. Run ESLint to see the custom rules in action:
+```js
+import sds from '@solid-design-system/eslint-plugin';
 
-```bash
-npx eslint .
+export default [
+  {
+    ...sds.configs.recommended,
+    files: ['**/*.{html,jsx}'],
+    rules: {
+      ...sds.configs.recommended.rules, // Must be defined. If not, all recommended rules will be lost
+      '@solid-design-system/required-sd-icon-label': 'error'
+    }
+  }
+];
 ```
 
 ## Adding New Rules

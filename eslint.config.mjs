@@ -9,7 +9,7 @@ import js from '@eslint/js';
 import lit from 'eslint-plugin-lit';
 import litA11Y from 'eslint-plugin-lit-a11y';
 import path from 'node:path';
-import sdsEslint, { parser as sdsParser } from '@solid-design-system/eslint-plugin';
+import sds from '@solid-design-system/eslint-plugin';
 import sortImportsEs6Autofix from 'eslint-plugin-sort-imports-es6-autofix';
 import tsParser from '@typescript-eslint/parser';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
@@ -49,14 +49,8 @@ export default [
   },
 
   {
-    files: ['**/*.{html,jsx}'],
-    languageOptions: {
-      parser: sdsParser
-    },
-    plugins: { 'solid-design-system': sdsEslint },
-    rules: {
-      'solid-design-system/required-sd-icon-label': 'error'
-    }
+    ...sds.configs.recommended,
+    files: ['**/*.{html,jsx}']
   },
 
   ...compat.extends(
