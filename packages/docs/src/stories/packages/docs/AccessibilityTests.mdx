@@ -1,0 +1,79 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Packages/Docs/Accessibility Tests" />
+
+# Accessibility Tests
+
+Accessibility (a11y) is an integral part of modern web development,
+ensuring that applications are inclusive and usable by all individuals.
+
+## Executing tests
+
+To execute the accessibility tests, the command `pnpm test` must be run.
+In case it is being run without any preview running, the command will `build, preview and run the tests`.
+In case a preview is already running on a separate terminal, the command will just `run the tests`.
+
+`pnpm test.watch` can also be executed, to run the tests in watch mode.
+To do so, storybook has to be running on a separate terminal in dev mode, `pnpm dev`.
+
+## Using custom tags for accessibility tests
+
+Custom tags can be used in Storybook stories for better control and customization of
+accessibility testing. These tags can help you skip tests globally or
+target specific rules for exceptions. Here's how to use them:
+
+### `skip-a11y`
+
+The `skip-a11y` tag can be added to a story to completely skip all accessibility checks
+for that particular story. This can be useful for drafts or components under development
+that are not yet ready for a11y testing.
+
+**Example:**
+
+```js
+export default {
+  title: 'Components/sd-component',
+  component: 'sd-component',
+  tags: ['skip-a11y']
+};
+```
+
+### skip-a11y-[specific rules]
+
+To skip specific accessibility rules for a story, use the skip-a11y-[rule names] format.
+This can be helpful when certain rules are irrelevant or when addressing an issue is planned for later.
+Rules are set between square brackets and separated by commas.
+
+**Example:**
+
+```js
+export default {
+  title: 'Components/sd-component',
+  component: 'sd-component',
+  tags: ['skip-a11y-[color-contrast, label]']
+};
+```
+
+In this example, only the color-contrast and label rules are skipped during testing.
+
+## Debugging failing accessibility tests
+
+When a test fails, two direct URLs are printed into the console, `story` and `browser`.
+
+- The story url links to the story file which the test is failling.
+- The browser url links to the storybook story on the browser which is failling.
+
+## Open the failing test in the browser
+
+1. **Find the `browser` URL:** When an a11y test fails, it outputs a URL pointing to the rendered story.
+2. **Copy the `browser` URL:** Copy the URL from the output.
+3. **Open the URL in the browser:** Paste the `browser` URL into your browser to open the story in isolation.
+
+## Resolve issues
+
+Once the story is loaded:
+
+- Accessibility violations can be found under the **Accessibility** tab.
+- Review the flagged accessibility violations.
+- Make the necessary adjustments to the component or story.
+- Rerun the tests or refresh the browser to confirm the fixes.

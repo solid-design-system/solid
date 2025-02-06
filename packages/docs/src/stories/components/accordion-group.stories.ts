@@ -21,7 +21,7 @@ const { generateTemplate } = storybookTemplate('sd-accordion-group');
 export default {
   title: 'Components/sd-accordion-group',
   component: 'sd-accordion-group',
-  tags: ['!dev'],
+  tags: ['!dev', 'skip-a11y'],
   args: {
     ...args,
     'default-slot':

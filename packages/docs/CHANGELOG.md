@@ -1,5 +1,23 @@
 # @solid-design-system/docs
 
+## 1.5.1
+
+### Patch Changes
+
+- Fix monospace font-family on show code section. _[`#1833`](https://github.com/solid-design-system/solid/pull/1833) [`01580e2`](https://github.com/solid-design-system/solid/commit/01580e2d0fbfbba33bcb28e72161858ddc0cf4ab) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.5.0
+
+### Minor Changes
+
+- Implemented automated accessibility tests using [@axe-core/playwright](https://www.npmjs.com/package/@axe-core/playwright) _[`#1797`](https://github.com/solid-design-system/solid/pull/1797) [`3dd6256`](https://github.com/solid-design-system/solid/commit/3dd62563f05e2a68caba65438accb10ba91d02e9) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.4.5
+
+### Patch Changes
+
+- Update broken urls in documentation. _[`#1834`](https://github.com/solid-design-system/solid/pull/1834) [`6ae18a3`](https://github.com/solid-design-system/solid/commit/6ae18a3a1af5dd5948c7c3fd9e6e4ef9bb7474e0) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.4.4
 
 ### Patch Changes

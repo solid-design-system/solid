@@ -17,7 +17,7 @@ const { overrideArgs } = storybookHelpers('sd-drawer');
 export default {
   title: 'Components/sd-drawer',
   component: 'sd-drawer',
-  tags: ['!dev'],
+  tags: ['!dev', 'skip-a11y'],
   args: overrideArgs([
     {
       type: 'slot',
