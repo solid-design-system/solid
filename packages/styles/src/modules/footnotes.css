@@ -18,7 +18,7 @@
 
     li {
       counter-increment: list-item;
-      @apply flex list-none relative;
+      @apply list-none relative;
 
       .sd-footnotes--marker,
       &:has(.sd-footnotes--marker:nth-of-type(2)),
@@ -30,16 +30,8 @@
           font-size: 10px;
         }
 
-        /* 
-          DEV-NOTE: 
-          This after with content is needed because, since we are using
-          an absolute ::before to show the markers content, safari doesn't
-          consider the marker an interactive element, therefore, it is ignored
-          when using keyboard navigation.
-        */
         &::after {
-          content: '-';
-          opacity: 0;
+          content: none;
         }
 
         .sd-footnotes--marker {
@@ -50,20 +42,6 @@
             @apply relative left-0 align-super font-bold leading-normal;
             content: counter(footnotes-multiple, lower-alpha);
           }
-        }
-      }
-
-      /*
-        DEV-NOTE:
-        This is related to the issue where safari does not consider the marker
-        an interactive element, due to the lack of content inside.
-        Please see DEV-NOTE above.
-      */
-      &:has(.sd-footnotes--marker:nth-of-type(2)) .sd-footnotes--marker {
-        @apply relative left-1;
-
-        &:last-of-type {
-          @apply me-1;
         }
       }
 
