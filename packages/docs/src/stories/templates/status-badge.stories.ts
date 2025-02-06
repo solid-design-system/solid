@@ -15,6 +15,8 @@ export default {
 
 /**
  * ### Status Badge with Custom Icon
+ *
+ * The icons used in this component, should be exclusively from the `sd-status-assets` [icon library](?path=/story/components-sd-icon-default--status-library).
  */
 export const StatusBadgeWithCustomIcon = {
   render: () => html`
