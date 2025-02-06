@@ -1,5 +1,17 @@
 # @solid-design-system/components
 
+## 4.1.0
+
+### Minor Changes
+
+- Introduce new `sd-status-assets` icon library, to be used exclusively by the `sd-status-badge` style component. _[`#1820`](https://github.com/solid-design-system/solid/pull/1820) [`617d02d`](https://github.com/solid-design-system/solid/commit/617d02d91e0eb3d27f9769e0e72fd76b985d6b33) [@smfonseca](https://github.com/smfonseca)_
+
+  The new icons can be seen [here](https://solid-design-system.fe.union-investment.de/docs/?path=/story/components-sd-icon-default--status-library).
+
+### 📈 Stats
+* Uncompressed: 402 KB (+2 KB / +0%)
+* Gzipped: 95 KB (unchanged)
+
 ## 4.0.10
 
 ### Patch Changes
@@ -7,8 +19,9 @@
 - Conditionally render the label wrapper and slotted tooltip to avoid incorrect markup in the DOM. _[`#1815`](https://github.com/solid-design-system/solid/pull/1815) [`6eceab5`](https://github.com/solid-design-system/solid/commit/6eceab576630c882b148ae0d345a02fb3c640374) [@smfonseca](https://github.com/smfonseca)_
 
 ### 📈 Stats
-* Uncompressed: 400 KB (unchanged)
-* Gzipped: 95 KB (+1 KB / +1%)
+
+- Uncompressed: 400 KB (unchanged)
+- Gzipped: 95 KB (+1 KB / +1%)
 
 ## 4.0.9
 
