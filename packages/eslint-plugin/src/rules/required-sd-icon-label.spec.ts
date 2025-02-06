@@ -48,6 +48,16 @@ tester.run('required-sd-icon-label', rule, {
         </sd-button>
       `,
       errors: [{ messageId: 'missingLabel' }]
+    },
+    {
+      name: 'multiple sd-icon without label',
+      code: `
+        <sd-button>
+          <sd-icon></sd-icon>
+          <sd-icon></sd-icon>
+        </sd-button>
+      `,
+      errors: [{ messageId: 'missingLabel' }]
     }
   ]
 });

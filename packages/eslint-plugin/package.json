@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/eslint-plugin",
-  "description": "Solid Design System: Eslint Custom Rules",
-  "version": "1.0.0",
+  "description": "ESLint custom rules for the Solid Design System component library",
+  "version": "0.0.1",
   "type": "module",
   "author": {
     "name": "Union Investment"
@@ -14,20 +14,22 @@
     "eslint",
     "eslintplugin",
     "eslint-plugin",
-    "solid-design-system"
+    "solid-design-system",
+    "Solid Design System"
   ],
   "license": "MIT",
   "main": "dist/index.js",
   "files": [
     "dist",
-    "src"
+    "README.md"
   ],
   "exports": {
     ".": "./dist/index.js"
   },
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "jest"
+    "test": "jest",
+    "verify": "pnpm build && echo '✅ Build verified' && pnpm test && echo '✅ Tests verified'"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",

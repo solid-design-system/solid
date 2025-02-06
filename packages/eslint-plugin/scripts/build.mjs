@@ -11,7 +11,7 @@ import { globby } from 'globby';
       bundle: false,
       minify: false,
       platform: 'node',
-      target: 'es2018'
+      target: 'esnext'
     })
     .then(() => console.log('✅ Build successful!'))
     .catch(error => console.log('❌', error.message));
