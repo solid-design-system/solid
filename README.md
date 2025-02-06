@@ -47,10 +47,13 @@ These steps will install the necessary dependencies, navigate to the "packages/d
 ### Helpful Commands
 
 ```
+$ pnpm test          // run only tests in repo
 $ pnpm fix           // fix all formatting and linting in repo
 $ pnpm verify        // run tests and builds in repo
 $ cd packages/docs
   && pnpm dev        // start dev server
+  && pnpm test       // run accessibility tests
+  && pnpm test.watch // run accessibility tests in watch mode
 $ cd packages/components
   && pnpm test       // run tests
   && pnpm test.watch // run tests in watch mode

@@ -10,7 +10,18 @@ jobs:
         runs-on: ubuntu-latest
         if: github.event.pull_request.draft == false
         container:
-            image: mcr.microsoft.com/playwright:v1.49.1-noble
+            image: mcr.microsoft.com/playwright:v1.50.0-noble
+        strategy:
+          matrix:
+            package:
+              - packages/components
+              - packages/docs
+              - packages/placeholders
+              - packages/styles
+              - packages/theming
+              - packages/tokens
+              - packages/eslint-plugin
+
         steps:
             - name: Checkout
               uses: actions/checkout@v4
@@ -30,8 +41,11 @@ jobs:
             - name: Install dependencies
               run: pnpm i
 
-            - name: Verify everything
-              run: pnpm verify
+            - name: Verify package
+              run: |
+                echo "Running pnpm verify in ${{ matrix.package }}"
+                cd ${{ matrix.package }}
+                pnpm verify
 
     # Check Chromatic for visual changes after all other checks have passed
     chromatic-deployment-pr:

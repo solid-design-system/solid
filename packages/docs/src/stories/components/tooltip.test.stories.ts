@@ -17,7 +17,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-tooltip/Screenshots: sd-tooltip',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y'],
   component: 'sd-tooltip',
   args: overrideArgs([
     {
@@ -249,8 +249,10 @@ export const Slots = {
 
 export const Mouseless = {
   name: 'Mouseless',
-  render: (args: any) => {
-    return html`<div class="mouseless template-position template-height">${generateTemplate({ args })}</div>`;
+  render: () => {
+    return html`<div class="mouseless template-position template-height">
+      <sd-tooltip content="Lorem ipsum"></sd-tooltip>
+    </div>`;
   },
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const el = canvasElement.querySelector('.mouseless sd-tooltip');

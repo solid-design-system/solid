@@ -1,5 +1,41 @@
 # @solid-design-system/docs
 
+## 1.6.1
+
+### Patch Changes
+
+- Fix storybooks' font in alignment with brand. _[`#1842`](https://github.com/solid-design-system/solid/pull/1842) [`f628a58`](https://github.com/solid-design-system/solid/commit/f628a58eb728a15fe4fd0a026d2b3b1761347966) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.6.0
+
+### Minor Changes
+
+- Add the new style component `sd-status-badge` and a new status icon library (`sd-status-assets`) for exclusive use of this component. _[`#1820`](https://github.com/solid-design-system/solid/pull/1820) [`617d02d`](https://github.com/solid-design-system/solid/commit/617d02d91e0eb3d27f9769e0e72fd76b985d6b33) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.5.1
+
+### Patch Changes
+
+- Fix monospace font-family on show code section. _[`#1833`](https://github.com/solid-design-system/solid/pull/1833) [`01580e2`](https://github.com/solid-design-system/solid/commit/01580e2d0fbfbba33bcb28e72161858ddc0cf4ab) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.5.0
+
+### Minor Changes
+
+- Implemented automated accessibility tests using [@axe-core/playwright](https://www.npmjs.com/package/@axe-core/playwright) _[`#1797`](https://github.com/solid-design-system/solid/pull/1797) [`3dd6256`](https://github.com/solid-design-system/solid/commit/3dd62563f05e2a68caba65438accb10ba91d02e9) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.4.5
+
+### Patch Changes
+
+- Update broken urls in documentation. _[`#1834`](https://github.com/solid-design-system/solid/pull/1834) [`6ae18a3`](https://github.com/solid-design-system/solid/commit/6ae18a3a1af5dd5948c7c3fd9e6e4ef9bb7474e0) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.4.4
+
+### Patch Changes
+
+- Update `slot` story to have example slot div vertically centered inside the marker. _[`#1818`](https://github.com/solid-design-system/solid/pull/1818) [`adc5ee0`](https://github.com/solid-design-system/solid/commit/adc5ee06300566bd4b22352e178664cfc1458059) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.4.3
 
 ### Patch Changes

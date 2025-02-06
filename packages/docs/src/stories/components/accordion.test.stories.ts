@@ -19,7 +19,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-accordion/Screenshots: sd-accordion',
   component: 'sd-accordion',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y'],
   args: overrideArgs([
     { type: 'slot', name: 'default', value: '<div class="slot slot--border slot--text h-16">Default slot</div>' },
     { type: 'attribute', name: 'summary', value: 'Accordion' }
