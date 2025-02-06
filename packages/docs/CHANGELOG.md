@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.6.0
+
+### Minor Changes
+
+- Add the new style component `sd-status-badge` and a new status icon library (`sd-status-assets`) for exclusive use of this component. _[`#1820`](https://github.com/solid-design-system/solid/pull/1820) [`617d02d`](https://github.com/solid-design-system/solid/commit/617d02d91e0eb3d27f9769e0e72fd76b985d6b33) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.5.1
 
 ### Patch Changes
