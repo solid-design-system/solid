@@ -28,6 +28,15 @@ tester.run('required-sd-icon-label', rule, {
           <span>Text</span>
         </sd-button>
       `
+    },
+    {
+      name: 'sd-button with sd-icon without label and text content',
+      code: `
+        <sd-button>
+          <sd-icon></sd-icon>
+          Text
+        </sd-button>
+      `
     }
   ],
   invalid: [

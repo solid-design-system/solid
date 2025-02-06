@@ -25,6 +25,9 @@ The theming package provides a color calculation service for the Solid Design Sy
 **5. Docs**
 The docs package provides documentation for Solid Design System.
 
+**6. Eslint plugin**
+The eslint-plugin package provides custom ESLint rules to the Solid Design System.
+
 ## Quick Start
 
 To get started with the code steps, follow these instructions:
@@ -52,6 +55,8 @@ $ cd packages/components
   && pnpm test       // run tests
   && pnpm test.watch // run tests in watch mode
   && pnpm test.single [test-file-name] // run a specific test file
+$ cd packages/eslint-plugin
+  && pnpm test       // run tests
 ```
 
 ## Contributing
