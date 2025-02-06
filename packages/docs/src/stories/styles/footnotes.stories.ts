@@ -68,7 +68,7 @@ export const Variants = {
   render: () => html`
     <div class="flex flex-col gap-12">
       <ol class="sd-footnotes">
-        <li><a href="#asd" class="sd-footnotes--marker"></a>Lorem ipsum dolor sit amet.</li>
+        <li>Lorem ipsum dolor sit amet.</li>
         <li>Sed diam nonumy eirmod tempor invidunt ut labore.</li>
         <li>Dolore magna aliq erat, sed diam voluptua.</li>
       </ol>
