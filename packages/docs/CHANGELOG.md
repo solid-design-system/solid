@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.6.1
+
+### Patch Changes
+
+- Fix storybooks' font in alignment with brand. _[`#1842`](https://github.com/solid-design-system/solid/pull/1842) [`f628a58`](https://github.com/solid-design-system/solid/commit/f628a58eb728a15fe4fd0a026d2b3b1761347966) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.6.0
 
 ### Minor Changes
