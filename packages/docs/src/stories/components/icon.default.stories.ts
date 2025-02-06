@@ -78,3 +78,34 @@ export const LibraryDefaultSystem = {
       args
     })
 };
+
+export const StatusLibrary = {
+  name: 'sd-status-assets',
+  render: (args: any) =>
+    generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'color'
+        },
+        y: {
+          type: 'attribute',
+          name: 'name',
+          values: [
+            'status-check',
+            'status-exclamation',
+            'status-close',
+            'status-info',
+            'status-clock',
+            'status-minus',
+            'status-questionmark'
+          ]
+        }
+      },
+      constants: [{ type: 'attribute', name: 'library', value: 'sd-status-assets' }],
+      options: {
+        templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+      },
+      args
+    })
+};
