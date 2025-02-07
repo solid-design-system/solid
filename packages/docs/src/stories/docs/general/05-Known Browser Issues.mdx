@@ -7,20 +7,16 @@ import { Meta } from '@storybook/blocks';
 We've identified several browser issues that may affect visual consistency while using Solid Components.
 It's important for developers to be aware of these issues when implementing our components.
 
-## Blurry Placeholder Images in Chrome
+## General
+
+### Blurry Placeholder Images in Chrome
 
 In Chrome, our placeholder images may appear blurry at times. This is not a package issue but Chrome-specific behavior.
 
-## Wobbly Spinner in Safari
+## Components with known browser issues
 
-The 'sd-spinner' component may experience spinner animation issues in Safari, causing them to appear wobbly.
-
-## Footnotes in Safari
-
-When clicking on a `sd-footnotes` reference, a `sd-footnotes--marker` is highlighted. In Safari it also applies the
-`focus-visible` outline, due to browser behaviour.
-
-When using keyboard navigation on Safari v17 or lower, `sd-footnotes--marker` inside `sd-footnotes` are unreachable due to absolute position.
+- [Spinner](/docs/components-sd-spinner--docs)
+- [Footnotes](/docs/styles-sd-footnotes--docs)
 
 ---
 

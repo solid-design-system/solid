@@ -9,6 +9,13 @@ const { generateTemplate } = storybookTemplate('sd-footnotes');
 /**
  * Used to add additional information/sources related to the content.
  *
+ * **Known browser issues:**
+ * - When clicking on a `sd-footnotes` reference, a `sd-footnotes--marker` is highlighted.
+ * In Safari it also applies the `focus-visible` outline, due to browser behaviour.
+ *
+ * - When using keyboard navigation on Safari v17 or lower, `sd-footnotes--marker`
+ * inside `sd-footnotes` are unreachable due to absolute position.
+ *
  * **Related templates**:
  * - [Footnotes](?path=/docs/templates-footnotes--docs)
  */
