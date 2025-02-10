@@ -37,6 +37,9 @@ export default class SdRadio extends SolidElement {
   /** A Boolean attribute which, if present, disables the radio. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  /** A Boolean attribute which, if present, disables the radio. */
+  @property({ type: Boolean, reflect: true, attribute: 'visually-disabled' }) visuallyDisabled = false;
+
   /** The radio's value. When selected, the radio group will receive this value. */
   @property() value: string;
 
@@ -74,7 +77,7 @@ export default class SdRadio extends SolidElement {
   }
 
   private handleClick() {
-    if (!this.disabled) {
+    if (!this.disabled || !this.visuallyDisabled) {
       this.checked = true;
     }
   }
@@ -87,7 +90,7 @@ export default class SdRadio extends SolidElement {
   private setInitialAttributes() {
     this.setAttribute('role', 'radio');
     this.setAttribute('tabindex', '-1');
-    this.setAttribute('aria-disabled', this.disabled ? 'true' : 'false');
+    this.setAttribute('aria-disabled', this.disabled || this.visuallyDisabled ? 'true' : 'false');
   }
 
   @watch('checked')
@@ -96,7 +99,7 @@ export default class SdRadio extends SolidElement {
     this.setAttribute('tabindex', this.checked ? '0' : '-1');
   }
 
-  @watch('disabled', { waitUntilFirstUpdate: true })
+  @watch(['disabled', 'visually-disabled'], { waitUntilFirstUpdate: true })
   handleDisabledChange() {
     this.setAttribute('aria-disabled', this.disabled ? 'true' : 'false');
   }
@@ -120,7 +123,7 @@ export default class SdRadio extends SolidElement {
           part="${`${this.checked ? 'control--checked' : 'control--unchecked'}`}"
           class=${cx(
             'flex-initial shrink-0 relative inline-flex items-center justify-center border rounded-full bg-white h-4 w-4',
-            this.disabled
+            this.disabled || this.visuallyDisabled
               ? 'border-neutral-500'
               : this.invalid
                 ? 'border-error hover:border-error-400 group-hover:border-error-400'
@@ -137,11 +140,13 @@ export default class SdRadio extends SolidElement {
                     'rounded-full inline-flex text-white bg-accent h-2.5 w-2.5',
                     this.disabled
                       ? 'bg-neutral-500'
-                      : this.invalid
-                        ? 'bg-error hover:bg-error-400 group-hover:bg-error-400'
-                        : this.checked
-                          ? 'bg-accent hover:bg-accent-550 group-hover:bg-accent-550'
-                          : 'bg-neutral-800'
+                      : this.visuallyDisabled
+                        ? 'bg-white'
+                        : this.invalid
+                          ? 'bg-error hover:bg-error-400 group-hover:bg-error-400'
+                          : this.checked
+                            ? 'bg-accent hover:bg-accent-550 group-hover:bg-accent-550'
+                            : 'bg-neutral-800'
                   )}
                 ></span>
               `
@@ -152,7 +157,7 @@ export default class SdRadio extends SolidElement {
           part="label"
           class=${cx(
             'ml-2 select-none inline-block',
-            this.disabled ? 'text-neutral-500' : this.invalid ? 'text-error' : 'text-black'
+            this.disabled || this.visuallyDisabled ? 'text-neutral-500' : this.invalid ? 'text-error' : 'text-black'
           )}
         >
         </slot>

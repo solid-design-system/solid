@@ -138,6 +138,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** Disables the input. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  /** Styles the input as if it was disabled and enables aria-disabled */
+  @property({ type: Boolean, reflect: true, attribute: 'visually-disabled' }) visuallyDisabled = false;
+
   /** Makes the input readonly. */
   @property({ type: Boolean, reflect: true }) readonly = false;
 
@@ -459,6 +462,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   }
 
   render() {
+    console.log('render');
     // Slots
     const slots = {
       label: this.hasSlotController.test('label'),
@@ -476,25 +480,28 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     // Hierarchy of input states:
     const inputState = this.disabled
       ? 'disabled'
-      : this.readonly
-        ? 'readonly'
-        : this.hasFocus && this.showInvalidStyle
-          ? 'activeInvalid'
-          : this.hasFocus && this.styleOnValid && this.showValidStyle
-            ? 'activeValid'
-            : this.hasFocus
-              ? 'active'
-              : this.showInvalidStyle
-                ? 'invalid'
-                : this.styleOnValid && this.showValidStyle
-                  ? 'valid'
-                  : 'default';
+      : this.visuallyDisabled
+        ? 'visually-disabled'
+        : this.readonly
+          ? 'readonly'
+          : this.hasFocus && this.showInvalidStyle
+            ? 'activeInvalid'
+            : this.hasFocus && this.styleOnValid && this.showValidStyle
+              ? 'activeValid'
+              : this.hasFocus
+                ? 'active'
+                : this.showInvalidStyle
+                  ? 'invalid'
+                  : this.styleOnValid && this.showValidStyle
+                    ? 'valid'
+                    : 'default';
 
     // Conditional Styles
     const textSize = this.size === 'sm' ? 'text-sm' : 'text-base';
 
     const borderColor = {
       disabled: 'border-neutral-500',
+      'visually-disabled': 'border-neutral-500',
       readonly: 'border-neutral-800',
       activeInvalid: 'border-error border-2',
       activeValid: 'border-success border-2',
@@ -504,7 +511,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       default: 'border-neutral-800'
     }[inputState];
 
-    const iconColor = this.disabled ? 'text-neutral-500' : 'text-primary';
+    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary';
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
     const iconSize = {
       sm: 'text-base',
@@ -514,7 +521,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
     // Render
     return html`
-      <div part="form-control" class=${cx(this.disabled && 'pointer-events-none')}>
+      <div part="form-control" class=${cx((this.disabled || this.visuallyDisabled) && 'pointer-events-none')}>
         <div class="flex items-center gap-1 mb-2">
           <label
             part="form-control-label"
@@ -541,9 +548,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               // Vertical Padding
               this.size === 'lg' ? 'py-2' : 'py-1',
               // States
-              !this.disabled && !this.readonly ? 'hover:bg-neutral-200' : '',
+              !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
-              inputState === 'disabled' ? 'text-neutral-500' : 'text-black'
+              inputState === 'disabled' || inputState === 'visually-disabled' ? 'text-neutral-500' : 'text-black'
             )}
           >
             ${slots['left']
@@ -583,6 +590,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               enterkeyhint=${ifDefined(this.enterkeyhint)}
               inputmode=${ifDefined(this.inputmode)}
               aria-describedby="help-text invalid-message"
+              aria-disabled=${this.visuallyDisabled || this.disabled ? 'true' : 'false'}
               @change=${this.handleChange}
               @input=${this.handleInput}
               @invalid=${this.handleInvalid}

@@ -72,6 +72,9 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   /** Disables the button. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  /** Styles the button as if it was disabled and enables aria-disabled */
+  @property({ type: Boolean, reflect: true, attribute: 'visually-disabled' }) visuallyDisabled = false;
+
   /** Draws the button in a loading state. */
   @property({ type: Boolean, reflect: true }) loading = false;
 
@@ -157,7 +160,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   }
 
   private handleClick(event: MouseEvent) {
-    if (this.disabled || this.loading) {
+    if (this.disabled || this.loading || this.visuallyDisabled) {
       event.preventDefault();
       event.stopPropagation();
       return;
@@ -276,35 +279,41 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         {
           /* variants */
           primary: !this.inverted
-            ? `text-white bg-primary border-transparent
-          hover:text-primary-100 hover:bg-primary-500
-          active:text-primary-200 active:bg-primary-800
+            ? `text-white border-transparent ${
+                this.visuallyDisabled
+                  ? 'bg-neutral-500 hover:bg-neutral-500 hover:bg-neutral-500'
+                  : 'bg-primary hover:bg-primary-500 hover:text-primary-100 active:text-primary-200 active:bg-primary-800'
+              }
           disabled:bg-neutral-500`
-            : `text-primary bg-white border-transparent
-          hover:text-primary-500 hover:bg-primary-100
-          active:text-primary-800 active:bg-primary-200
+            : `border-transparent ${
+                this.visuallyDisabled
+                  ? 'bg-neutral-500 text-white hover:bg-neutral-500 active:bg-neutral-500'
+                  : 'text-primary bg-white hover:text-primary-500 hover:bg-primary-100 active:text-primary-800 active:bg-primary-200'
+              }
           disabled:bg-neutral-600 disabled:text-white`,
           secondary: !this.inverted
-            ? `text-primary border-primary
-          hover:text-primary-500 hover:border-primary-500 hover:bg-primary-100
-          active:text-primary-800 active:border-primary-800 active:bg-primary-200
+            ? `${
+                this.visuallyDisabled
+                  ? 'text-neutral-500 border-neutral-500 hover:text-neutral-500 hover:border-neutral-500 active:text-neutral-500 active:border-neutral-500'
+                  : 'text-primary border-primary hover:text-primary-500 hover:border-primary-500 hover:bg-primary-100 active:text-primary-800 active:border-primary-800 active:bg-primary-200'
+              }
           disabled:text-neutral-500 disabled:border-neutral-500`
-            : `text-white border-white
-          hover:text-primary-100 hover:bg-primary-500 hover:border-primary-100
-          active:text-primary-200 active:bg-primary-800 active:border-primary-200
+            : `${
+                this.visuallyDisabled
+                  ? 'text-neutral-600 border-neutral-600 hover:text-neutral-600 hover:border-neutral-600 active:text-neutral-600 active:border-neutral-600'
+                  : 'text-white border-white hover:text-primary-100 hover:bg-primary-500 hover:border-primary-100 active:text-primary-200 active:bg-primary-800 active:border-primary-200'
+              }
           disabled:text-neutral-600 disabled:border-neutral-600`,
           tertiary: !this.inverted
-            ? `text-primary border-transparent
-          hover:text-primary-500 hover:bg-primary-100
-          active:text-primary-800 active:bg-primary-200
+            ? `border-transparent ${
+                this.visuallyDisabled
+                  ? 'text-neutral-500 hover:text-neutral-500 active:text-neutral-500'
+                  : 'text-primary hover:text-primary-500 hover:bg-primary-100 active:text-primary-800 active:bg-primary-200'
+              }
           disabled:text-neutral-500`
-            : `text-white border-transparent
-          hover:text-primary-100 hover:bg-primary-500
-          active:text-primary-200 active:bg-primary-800
+            : `border-transparent ${this.visuallyDisabled ? 'text-neutral-600 hover:text-neutral-600 active:text-neutral-600' : 'text-white hover:text-primary-100 hover:bg-primary-500 active:text-primary-200 active:bg-primary-800'}
           disabled:text-neutral-600`,
-          cta: `text-white bg-accent-500 border-transparent
-          hover:bg-accent-550
-          active:bg-accent-700
+          cta: `text-white ${this.visuallyDisabled ? 'bg-neutral-500 hover:bg-neutral-500 active:bg-neutral-500' : 'bg-accent-500 border-transparent hover:bg-accent-550 active:bg-accent-700'}
           ${!this.inverted ? 'disabled:bg-neutral-500' : 'disabled:bg-neutral-600'} disabled:text-white`
         }[this.variant]
       )}
@@ -318,7 +327,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         download=${ifDefined(isLink ? this.download : undefined)}
         rel=${ifDefined(isLink && this.target ? 'noreferrer noopener' : undefined)}
         role=${ifDefined(isLink ? undefined : 'button')}
-        aria-disabled=${this.disabled ? 'true' : 'false'}
+        aria-disabled=${this.disabled || this.visuallyDisabled ? 'true' : 'false'}
         aria-labelledby="content"
         tabindex=${this.disabled ? '-1' : '0'}
         @blur=${this.handleBlur}
