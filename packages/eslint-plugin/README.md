@@ -1,4 +1,4 @@
-# @solid-design-sysmte/eslint-plugin
+# @solid-design-system/eslint-plugin
 
 ## Overview
 
