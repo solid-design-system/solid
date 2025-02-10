@@ -51,6 +51,12 @@ describe('<sd-textarea>', () => {
     expect(textarea.disabled).to.be.true;
   });
 
+  it('should have aria-disabled when visually-disabled', async () => {
+    const el = await fixture<SdTextarea>(html`<sd-textarea visually-disabled></sd-textarea>`);
+    const textarea = el.shadowRoot!.querySelector<HTMLTextAreaElement>('textarea')!;
+    expect(textarea.getAttribute('aria-disabled')).to.equal('true');
+  });
+
   it('should focus the textarea when clicking on the label', async () => {
     const el = await fixture<SdTextarea>(html` <sd-textarea label="Name"></sd-textarea> `);
     const label = el.shadowRoot!.querySelector('[part~="form-control-label"]')!;

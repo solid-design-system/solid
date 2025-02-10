@@ -31,6 +31,34 @@ describe('<sd-select>', () => {
     expect(el.displayInput.disabled).to.be.true;
   });
 
+  it('should have aria-disabled when visually-disabled', async () => {
+    const el = await fixture<SdSelect>(html`
+      <sd-select visually-disabled>
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+      </sd-select>
+    `);
+
+    const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="display-input"]')!;
+    expect(displayInput.getAttribute('aria-disabled')).to.equal('true');
+  });
+
+  it('should not open when visually-disabled and clicked', async () => {
+    const el = await fixture<SdSelect>(html`
+      <sd-select visually-disabled>
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+      </sd-select>
+    `);
+
+    await clickOnElement(el);
+    await el.updateComplete;
+
+    expect(el.open).to.be.false;
+  });
+
   it('should show a placeholder when no options are selected', async () => {
     const el = await fixture<SdSelect>(html`
       <sd-select placeholder="Select one">

@@ -77,7 +77,7 @@ export default class SdRadio extends SolidElement {
   }
 
   private handleClick() {
-    if (!this.disabled || !this.visuallyDisabled) {
+    if (!this.disabled && !this.visuallyDisabled) {
       this.checked = true;
     }
   }

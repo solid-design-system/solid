@@ -411,6 +411,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               inputmode=${ifDefined(this.inputmode)}
               aria-describedby="help-text invalid-message"
               aria-invalid=${this.showInvalidStyle}
+              aria-disabled=${this.disabled || this.visuallyDisabled}
               @change=${this.handleChange}
               @input=${this.handleInput}
               @invalid=${this.handleInvalid}

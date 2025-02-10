@@ -930,7 +930,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     this.formControlController.setValidity(this.disabled);
 
     // Close the listbox when the control is disabled
-    if (this.disabled) {
+    if (this.disabled || this.visuallyDisabled) {
       this.open = false;
 
       this.handleOpenChange();

@@ -61,6 +61,13 @@ describe('<sd-input>', () => {
     expect(input.disabled).to.be.true;
   });
 
+  it('should have aria-disabled when visually-disabled', async () => {
+    const el = await fixture<SdInput>(html` <sd-input disabled></sd-input> `);
+    const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+
+    expect(input.getAttribute('aria-disabled')).to.equal('true');
+  });
+
   describe('value methods', () => {
     it('should set the value as a date when using valueAsDate', async () => {
       const el = await fixture<SdInput>(html` <sd-input type="date"></sd-input> `);

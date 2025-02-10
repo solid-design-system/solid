@@ -63,7 +63,7 @@ export default class SdRadioButton extends SolidElement {
   }
 
   private handleClick(e: MouseEvent) {
-    if (this.disabled) {
+    if (this.disabled || this.visuallyDisabled) {
       e.preventDefault();
       e.stopPropagation();
       return;
@@ -79,7 +79,8 @@ export default class SdRadioButton extends SolidElement {
 
   @watch(['disabled', 'visually-disabled'], { waitUntilFirstUpdate: true })
   handleDisabledChange() {
-    this.setAttribute('aria-disabled', this.disabled ? 'true' : 'false');
+    const isDisabled = this.disabled || this.visuallyDisabled;
+    this.setAttribute('aria-disabled', isDisabled ? 'true' : 'false');
   }
 
   /** Sets focus on the radio button. */
@@ -119,7 +120,7 @@ export default class SdRadioButton extends SolidElement {
             hasIconSlot && 'button--has-icon flex gap-2',
             buttonSizeClass
           )}"
-          aria-disabled=${this.disabled}
+          aria-disabled=${this.disabled || this.visuallyDisabled}
           type="button"
           value=${ifDefined(this.value)}
           tabindex="${this.checked ? '0' : '-1'}"
