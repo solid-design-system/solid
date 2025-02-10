@@ -120,6 +120,27 @@ export const Disabled = {
 };
 
 /**
+ * Use the `visually-disabled` attribute to style the component as if it was disabled and enable aria-disabled.
+ *
+ * It will still be reachable by screen readers.
+ */
+export const VisuallyDisabled = {
+  name: 'Visually Disabled',
+  render: () => html`
+    <div class="w-[500px]">
+      <sd-textarea
+        size="lg"
+        label="Label"
+        placeholder="Input text visually disabled"
+        rows="4"
+        spellcheck
+        visually-disabled
+      ></sd-textarea>
+    </div>
+  `
+};
+
+/**
  * Use the `readonly` attribute to render a textarea as readonly.
  *
  * Interaction is enabled, but the textarea cannot be edited.

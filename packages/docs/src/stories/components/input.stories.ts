@@ -106,6 +106,23 @@ export const Disabled = {
 };
 
 /**
+ * Use the `visually-disabled` attribute to style the component as if it was disabled and enable aria-disabled.
+ *
+ * It will still be reachable by screen readers.
+ */
+export const VisuallyDisabled = {
+  render: () =>
+    html`<div class="w-[250px]">
+      <sd-input
+        label="Label"
+        value="Visually Disabled"
+        visually-disabled
+        help-text="This field is disabled until you do something"
+      ></sd-input>
+    </div>`
+};
+
+/**
  * Use the `read-only` attribute to render an input as read only.
  *
  * Interaction is enabled, but the textarea cannot be edited. Events will be fired.

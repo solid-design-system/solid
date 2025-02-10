@@ -68,6 +68,20 @@ export const Disabled = {
 };
 
 /**
+ * Use the `visually-disabled` attribute to style the component as if it was disabled and enable aria-disabled.
+ *
+ * It will still be reachable by screen readers.
+ */
+export const VisuallyDisabled = {
+  name: 'Visually Disabled',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-checkbox visually-disabled>Visually Disabled</sd-checkbox>
+    </div>
+  `
+};
+
+/**
  * Use the `checked` attribute to activate the checkbox.
  */
 export const Checked = {

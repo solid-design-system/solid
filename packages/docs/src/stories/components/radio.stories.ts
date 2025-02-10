@@ -83,6 +83,22 @@ export const Disabled = {
 };
 
 /**
+ * Use the `visually-disabled` attribute to style the component as if it was disabled and enable aria-disabled.
+ *
+ * It will still be reachable by screen readers.
+ */
+export const VisuallyDisabled = {
+  name: 'Visually Disabled',
+  render: () => html`
+    <sd-radio-group label="Visually Disabled Radio in Group" boldLabel value="1">
+      <sd-radio value="1" visually-disabled>Radio 1</sd-radio>
+      <sd-radio value="2" visually-disabled>Radio 2</sd-radio>
+      <sd-radio value="3" visually-disabled>Radio 3</sd-radio>
+    </sd-radio-group>
+  `
+};
+
+/**
  * The component gets “invalid” state when the form is not valid.
  *
  * For an invalid radio-group (since radios always come in groups) an error-text underneath the group is mandatory.
