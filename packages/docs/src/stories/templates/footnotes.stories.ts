@@ -12,7 +12,7 @@ export default {
 export const LinkedFootnotes = {
   render: () => html`
     <div class="sd-prose">
-      <h2 class="sd-headline sd-headline--3xl">Nisi eu excepteur anim esse</h2>
+      <h2 class="sd-headline sd-headline--3xl">The Power of a Solid Design System</h2>
       <p class="sd-paragraph">
         A solid design system is the backbone of a cohesive product, offering a single source of truth that promotes
         consistency across all platforms and teams <a id="ref_1" href="#note_1" class="sd-footnotes--marker">1</a>. By
