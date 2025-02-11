@@ -36,6 +36,13 @@ describe('<sd-link>', () => {
     expect(el).to.exist;
   });
 
+  it('should have aria-disabled when visually-disabled', async () => {
+    const el = await fixture<SdLink>(html` <sd-link visually-disabled></sd-link> `);
+    const input = el.shadowRoot!.querySelector<HTMLInputElement>('a')!;
+
+    expect(input.getAttribute('aria-disabled')).to.equal('true');
+  });
+
   describe('when using methods and href is set', () => {
     it('should emit sd-focus and sd-blur when the link is focused and blurred', async () => {
       const el = await fixture<SdLink>(html` <sd-link href="#">link</sd-link> `);

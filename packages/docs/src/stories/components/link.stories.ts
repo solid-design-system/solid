@@ -145,6 +145,20 @@ export const Disabled = {
 };
 
 /**
+ * Use the `visually-disabled` attribute to style the component as if it was disabled and enable aria-disabled.
+ *
+ * It will still be reachable by screen readers.
+ */
+export const VisuallyDisabled = {
+  name: 'Visually Disabled',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-link visually-disabled>Disabled</sd-link>
+    </div>
+  `
+};
+
+/**
  * Use the `inverted` attribute when displayed on primary background.
  */
 export const Inverted = {
