@@ -62,7 +62,7 @@ describe('<sd-input>', () => {
   });
 
   it('should have aria-disabled when visually-disabled', async () => {
-    const el = await fixture<SdInput>(html` <sd-input disabled></sd-input> `);
+    const el = await fixture<SdInput>(html` <sd-input visually-disabled></sd-input> `);
     const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
 
     expect(input.getAttribute('aria-disabled')).to.equal('true');

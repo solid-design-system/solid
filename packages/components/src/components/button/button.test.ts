@@ -81,9 +81,12 @@ describe('<sd-button>', () => {
     });
   });
 
-  // describe('when visually disabled', () => {
-
-  // });
+  describe('when visually-disabled is set', () => {
+    it('should have aria-disabled set to true', async () => {
+      const el = await fixture<SdButton>(html` <sd-button visually-disabled>Default Slot</sd-button> `);
+      expect(el.shadowRoot!.querySelector('button')!.getAttribute('aria-disabled')).to.be.equal('true');
+    });
+  });
 
   it('should have title if title attribute is set', async () => {
     const el = await fixture<SdButton>(html` <sd-button title="Test"></sd-button> `);
