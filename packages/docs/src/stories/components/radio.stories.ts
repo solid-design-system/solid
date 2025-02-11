@@ -83,9 +83,9 @@ export const Disabled = {
 };
 
 /**
- * Use the `visually-disabled` attribute to style the component as if it was disabled and enable aria-disabled.
+ * Use the `visually-disabled` attribute to style the component as if it was disabled and enable aria-disabled to allow it to be reachable by screen readers.
  *
- * It will still be reachable by screen readers.
+ * When using this attribute, make sure to provide ways to inform the user why the element is disabled and how to enable it. This can be done by using the `help-text` attribute or slot, or with a tooltip. Disabling elements is not recommended for accessibility reasons.
  */
 export const VisuallyDisabled = {
   name: 'Visually Disabled',
