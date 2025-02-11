@@ -207,7 +207,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
         part="base"
         class=${cx(
           'sd-checkbox group flex items-start text-base leading-normal text-black cursor-pointer',
-          this.disabled && 'hover:cursor-not-allowed',
+          (this.disabled || this.visuallyDisabled) && 'hover:cursor-not-allowed',
           {
             /* sizes, fonts */
             sm: 'text-sm',

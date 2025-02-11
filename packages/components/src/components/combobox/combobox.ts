@@ -399,6 +399,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   };
 
   private handleDocumentKeyDown = (event: KeyboardEvent) => {
+    if (this.visuallyDisabled) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
     const target = event.target as HTMLElement;
     const isClearButton = target.closest('.combobox__clear') !== null;
 
@@ -535,6 +541,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   }
 
   private handleLabelClick() {
+    if (this.visuallyDisabled) {
+      return;
+    }
     this.displayInput.focus();
   }
 
@@ -557,11 +566,17 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   }
 
   private handleComboboxMouseDown(event: MouseEvent) {
+    if (this.visuallyDisabled) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
     const path = event.composedPath();
     const isRemovableIndicator = path.some(el => el instanceof HTMLSlotElement && el.name === 'removable-indicator');
 
     // Ignore disabled controls
-    if (this.disabled || isRemovableIndicator || this.visuallyDisabled) {
+    if (this.disabled || isRemovableIndicator) {
       return;
     }
     const toggleListboxOpen = () => (this.open ? this.hide() : this.show());
@@ -572,7 +587,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   }
 
   private handleComboboxKeyDown(event: KeyboardEvent) {
-    if (event.key === 'Tab' || this.visuallyDisabled) {
+    if (event.key === 'Tab') {
       return;
     }
 
@@ -1146,7 +1161,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                   : 'default';
 
     // Conditional Styles
-    const cursorStyles = this.disabled ? 'cursor-not-allowed' : 'cursor-pointer';
+    const cursorStyles = this.disabled || this.visuallyDisabled ? 'cursor-not-allowed' : 'cursor-pointer';
     const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary';
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
     const iconMarginRight = { sm: 'mr-1', md: 'mr-2', lg: 'mr-2' }[this.size];

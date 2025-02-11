@@ -285,6 +285,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   }
 
   private handleInput() {
+    if (this.visuallyDisabled) {
+      this.input.value = this.value;
+      return;
+    }
+
     this.value = this.input.value;
     this.formControlController.updateValidity();
     this.emit('sd-input');
@@ -462,7 +467,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   }
 
   render() {
-    console.log('render');
     // Slots
     const slots = {
       label: this.hasSlotController.test('label'),
@@ -480,28 +484,30 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     // Hierarchy of input states:
     const inputState = this.disabled
       ? 'disabled'
-      : this.visuallyDisabled
-        ? 'visually-disabled'
-        : this.readonly
-          ? 'readonly'
-          : this.hasFocus && this.showInvalidStyle
-            ? 'activeInvalid'
-            : this.hasFocus && this.styleOnValid && this.showValidStyle
-              ? 'activeValid'
-              : this.hasFocus
-                ? 'active'
-                : this.showInvalidStyle
-                  ? 'invalid'
-                  : this.styleOnValid && this.showValidStyle
-                    ? 'valid'
-                    : 'default';
+      : this.visuallyDisabled && !this.hasFocus
+        ? 'visuallyDisabled'
+        : this.visuallyDisabled && this.hasFocus
+          ? 'active'
+          : this.readonly
+            ? 'readonly'
+            : this.hasFocus && this.showInvalidStyle
+              ? 'activeInvalid'
+              : this.hasFocus && this.styleOnValid && this.showValidStyle
+                ? 'activeValid'
+                : this.hasFocus
+                  ? 'active'
+                  : this.showInvalidStyle
+                    ? 'invalid'
+                    : this.styleOnValid && this.showValidStyle
+                      ? 'valid'
+                      : 'default';
 
     // Conditional Styles
     const textSize = this.size === 'sm' ? 'text-sm' : 'text-base';
 
     const borderColor = {
       disabled: 'border-neutral-500',
-      'visually-disabled': 'border-neutral-500',
+      visuallyDisabled: 'border-neutral-500',
       readonly: 'border-neutral-800',
       activeInvalid: 'border-error border-2',
       activeValid: 'border-success border-2',
@@ -521,7 +527,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
     // Render
     return html`
-      <div part="form-control" class=${cx((this.disabled || this.visuallyDisabled) && 'pointer-events-none')}>
+      <div
+        part="form-control"
+        class=${cx(this.disabled && 'pointer-events-none', this.visuallyDisabled && 'cursor-not-allowed')}
+      >
         <div class="flex items-center gap-1 mb-2">
           <label
             part="form-control-label"
@@ -536,7 +545,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           <slot name="tooltip"></slot>
         </div>
 
-        <div part="form-control-input" class="relative w-full">
+        <div part="form-control-input" class=${cx('relative w-full', this.visuallyDisabled && 'cursor-not-allowed')}>
           <div
             part="border"
             class=${cx('absolute w-full h-full pointer-events-none border rounded-default', borderColor)}
@@ -550,7 +559,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               // States
               !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
-              inputState === 'disabled' || inputState === 'visually-disabled' ? 'text-neutral-500' : 'text-black'
+              inputState === 'disabled' || inputState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black'
             )}
           >
             ${slots['left']
@@ -566,7 +575,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               class=${cx(
                 'min-w-0 flex-grow focus:outline-none bg-transparent placeholder-neutral-700',
                 this.size === 'sm' ? 'h-6' : 'h-8',
-                textSize
+                textSize,
+                this.visuallyDisabled && 'cursor-not-allowed'
               )}
               type=${this.type === 'password' && this.passwordVisible ? 'text' : this.type}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
