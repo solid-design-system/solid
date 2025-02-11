@@ -3,4 +3,4 @@
 '@solid-design-system/docs': minor
 ---
 
-Implement jump between footnotes
+Implement bidirectional navigation between footnotes and references.
