@@ -10,9 +10,11 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element.js';
 
 const toastStackDefault = Object.assign(document.createElement('div'), {
+  role: 'region',
   className: 'sd-toast-stack sd-toast-stack--top-right'
 });
 const toastStackBottomCenter = Object.assign(document.createElement('div'), {
+  role: 'region',
   className: 'sd-toast-stack sd-toast-stack--bottom-center'
 });
 
@@ -60,7 +62,10 @@ export default class SdNotification extends SolidElement {
    */
   @property({ type: Boolean, reflect: true }) open = false;
 
-  /** Enables a close button that allows the user to dismiss the notification. */
+  /**
+   * Enables a close button that allows the user to dismiss the notification.
+   * It also allows the user to dismiss the notification using the ESC.
+   */
   @property({ type: Boolean, reflect: true }) closable = false;
 
   /**
@@ -113,6 +118,12 @@ export default class SdNotification extends SolidElement {
 
   private handleCloseClick() {
     this.hide();
+  }
+
+  private handleKeyDown(event: KeyboardEvent) {
+    if (this.closable && event.key === 'Escape') {
+      this.hide();
+    }
   }
 
   @watch('open', { waitUntilFirstUpdate: true })
@@ -212,12 +223,15 @@ export default class SdNotification extends SolidElement {
     return html`
       <div
         part="base"
-        class=${cx('w-full overflow-hidden flex items-stretch relative m-2')}
+        class=${cx('w-full overflow-hidden flex items-stretch relative m-2 focus-visible:focus-outline')}
         role="alert"
+        aria-live="polite"
         id="notification"
+        tabindex="0"
         aria-hidden=${this.open ? 'false' : 'true'}
         @mouseenter=${this.onHover}
         @mouseleave=${this.onHoverEnd}
+        @keydown=${this.handleKeyDown}
       >
         <slot
           name="icon"
