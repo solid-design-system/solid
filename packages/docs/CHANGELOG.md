@@ -1,5 +1,15 @@
 # @solid-design-system/docs
 
+## 1.7.0
+
+### Minor Changes
+
+- Implement bidirectional navigation between footnotes and references. _[`#1813`](https://github.com/solid-design-system/solid/pull/1813) [`a338a64`](https://github.com/solid-design-system/solid/commit/a338a643bd09aa2829bcb5671eb40db9b8c57832) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### Patch Changes
+
+- Update general accessibility docs according to figma _[`#1898`](https://github.com/solid-design-system/solid/pull/1898) [`13c64c9`](https://github.com/solid-design-system/solid/commit/13c64c988068b00a7a46d459b464e203a574aee4) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.6.1
 
 ### Patch Changes
