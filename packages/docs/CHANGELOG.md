@@ -1,5 +1,36 @@
 # @solid-design-system/docs
 
+## 1.7.1
+
+### Patch Changes
+
+- Accessibility tests: _[`#1896`](https://github.com/solid-design-system/solid/pull/1896) [`36904da`](https://github.com/solid-design-system/solid/commit/36904dadac5ac0fe83abac7bc51b7c4a79f5cefc) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Resolved errors during test execution.
+  - Removed unstable `test.watch`.
+
+## 1.7.0
+
+### Minor Changes
+
+- Implement bidirectional navigation between footnotes and references. _[`#1813`](https://github.com/solid-design-system/solid/pull/1813) [`a338a64`](https://github.com/solid-design-system/solid/commit/a338a643bd09aa2829bcb5671eb40db9b8c57832) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### Patch Changes
+
+- Update general accessibility docs according to figma _[`#1898`](https://github.com/solid-design-system/solid/pull/1898) [`13c64c9`](https://github.com/solid-design-system/solid/commit/13c64c988068b00a7a46d459b464e203a574aee4) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.6.1
+
+### Patch Changes
+
+- Fix storybooks' font in alignment with brand. _[`#1842`](https://github.com/solid-design-system/solid/pull/1842) [`f628a58`](https://github.com/solid-design-system/solid/commit/f628a58eb728a15fe4fd0a026d2b3b1761347966) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.6.0
+
+### Minor Changes
+
+- Add the new style component `sd-status-badge` and a new status icon library (`sd-status-assets`) for exclusive use of this component. _[`#1820`](https://github.com/solid-design-system/solid/pull/1820) [`617d02d`](https://github.com/solid-design-system/solid/commit/617d02d91e0eb3d27f9769e0e72fd76b985d6b33) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.5.1
 
 ### Patch Changes

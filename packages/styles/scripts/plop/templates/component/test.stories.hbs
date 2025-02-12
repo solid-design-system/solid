@@ -1,3 +1,4 @@
+import '../../../../components/src/solid-components';
 import {
   storybookDefaults,
   storybookHelpers,

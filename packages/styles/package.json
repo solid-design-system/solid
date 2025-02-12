@@ -43,7 +43,7 @@
     "directory": "packages/styles"
   },
   "type": "module",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "devDependencies": {
     "@mariohamann/tailwindcss-var": "^2.1.0",
     "@semantic-release/changelog": "^6.0.3",
