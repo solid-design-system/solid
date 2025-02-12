@@ -13,9 +13,6 @@ To execute the accessibility tests, the command `pnpm test` must be run.
 In case it is being run without any preview running, the command will `build, preview and run the tests`.
 In case a preview is already running on a separate terminal, the command will just `run the tests`.
 
-`pnpm test.watch` can also be executed, to run the tests in watch mode.
-To do so, storybook has to be running on a separate terminal in dev mode, `pnpm dev`.
-
 ## Using custom tags for accessibility tests
 
 Custom tags can be used in Storybook stories for better control and customization of
@@ -57,6 +54,13 @@ export default {
 In this example, only the color-contrast and label rules are skipped during testing.
 
 ## Debugging failing accessibility tests
+
+When debugging accessibility tests, to achieve a better developer experience,
+it is recommended to check the violations and passes on the `Accessibility tab`.
+To check this tab, open the docs in development mode (`pnpm dev`),
+select a specific story and click on the story "Accessibility" tab.
+
+### Running `pnpm test`
 
 When a test fails, two direct URLs are printed into the console, `story` and `browser`.
 

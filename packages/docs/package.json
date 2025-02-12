@@ -29,7 +29,6 @@
     "verify": "pnpm ts.verify && pnpm build && echo '✅ Build verified' && pnpm test && echo '✅ Tests verified' && vite-node ./scripts/node-optimize-chromatic.cjs && echo '✅ Chromatic optimization verified'",
     "ts.verify": "tsc --noEmit --project ./tsconfig.json && echo '✅ TypeScript verified'",
     "test": "node ./scripts/test.js",
-    "test.watch": "node ./scripts/test.js --watch",
     "build.chromatic": "pnpm build && node ./scripts/node-optimize-chromatic.cjs",
     "chromatic": "npx chromatic -b build.chromatic",
     "build": "pnpm build/components && pnpm build/styles && storybook build --output-dir dist/storybook && vite-node scripts/node-optimize-storybook.js",
