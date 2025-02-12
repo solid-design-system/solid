@@ -2,4 +2,6 @@
 '@solid-design-system/docs': patch
 ---
 
-Fix execution errors on storybook a11y tests
+Accessibility tests:
+- Resolved errors during test execution.
+- Removed unstable `test.watch`.
