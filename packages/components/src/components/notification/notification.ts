@@ -10,11 +10,9 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element.js';
 
 const toastStackDefault = Object.assign(document.createElement('div'), {
-  role: 'region',
   className: 'sd-toast-stack sd-toast-stack--top-right'
 });
 const toastStackBottomCenter = Object.assign(document.createElement('div'), {
-  role: 'region',
   className: 'sd-toast-stack sd-toast-stack--bottom-center'
 });
 
@@ -264,9 +262,9 @@ export default class SdNotification extends SolidElement {
         part="base"
         class=${cx('w-full overflow-hidden flex items-stretch relative m-2 focus-visible:focus-outline')}
         role="alert"
-        aria-live="polite"
         id="notification"
         tabindex="0"
+        aria-labelledby="message"
         aria-hidden=${this.open ? 'false' : 'true'}
         @mouseenter=${this.onHover}
         @mouseleave=${this.onHoverEnd}
@@ -304,7 +302,7 @@ export default class SdNotification extends SolidElement {
             'border-solid border-[1px] border-l-0 border-neutral-400'
           )}
         >
-          <slot part="message" class="block w-full pl-3 py-2" aria-live="polite"></slot>
+          <slot id="message" part="message" class="block w-full pl-3 py-2"></slot>
 
           ${this.closable
             ? html`
