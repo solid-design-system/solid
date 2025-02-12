@@ -2,7 +2,7 @@ import { execSync, spawnSync } from 'child_process';
 import concurrently from 'concurrently';
 import pc from 'picocolors';
 
-const PORT = 6999;
+const PORT = 6998;
 
 const ci = process.env.CI;
 
