@@ -147,51 +147,21 @@ export const Disabled = {
 /**
  * Use the `visually-disabled` attribute to style the component as if it was disabled and enable aria-disabled to allow it to be reachable by screen readers.
  *
- * When using this attribute, make sure to provide ways to inform the user why the element is disabled and how to enable it. This can be done by using the `help-text` attribute or slot, or with a tooltip. Disabling elements is not recommended for accessibility reasons.
+ * When using this attribute, make sure to provide ways to inform the user why the element is disabled and how to enable it. This can be done by using the `help-text` attribute or wrapping the element in a sd-tooltip. Disabling elements is not recommended for accessibility reasons.
  */
 export const VisuallyDisabled = {
   name: 'Visually Disabled',
   render: () => html`
-    <style>
-      .tooltip {
-        position: relative;
-        display: inline-flex;
-        border-bottom: 1px dotted black;
-      }
-
-      .tooltip .tooltiptext {
-        visibility: hidden;
-        display: none;
-        /* width: 120px; */
-        background-color: #00358e;
-        color: #fff;
-        text-align: center;
-        padding: 5px 10px;
-        border-radius: 6px;
-        position: absolute;
-        bottom: 100%;
-        left: 50%;
-        margin-left: -50px;
-        z-index: 1;
-      }
-
-      .tooltip:hover .tooltiptext,
-      sd-link:focus .tooltip .tooltiptext {
-        display: block;
-        visibility: visible;
-      }
-    </style>
-    <div class="flex gap-12">
-      <sd-link
-        href="https://solid-design-system.fe.union-investment.de/docs/"
-        visually-disabled
-        class="visually-disabled-link"
-        aria-labelleby="tooltiptext"
-        ><div class="tooltip">
-          Visually Disabled
-          <span class="tooltiptext">Tooltip text</span>
-        </div></sd-link
-      >
+    <div class="flex gap-12 h-[100px] pt-12">
+      <sd-tooltip content="This link will be enabled after you complete an action" trigger="click focus" size="sm">
+        <sd-link
+          size="sm"
+          href="https://solid-design-system.fe.union-investment.de/docs/"
+          visually-disabled
+          class="visually-disabled-link"
+          >Visually Disabled</sd-link
+        >
+      </sd-tooltip>
     </div>
   `
 };
