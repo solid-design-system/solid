@@ -220,7 +220,7 @@ describe('<sd-tooltip>', () => {
     button.focus();
     await waitUntil(() => !body.hidden);
 
-    // tooltip is visible after clicking the button
+    // tooltip is visible after focusing the button
     expect(body.hidden).to.be.false;
 
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab' }));
