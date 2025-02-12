@@ -52,6 +52,7 @@ export default class SdNotification extends SolidElement {
   public localize = new LocalizeController(this);
 
   @query('[part~="base"]') base: HTMLElement;
+  @query('[part~="close-button"]') close: HTMLElement;
 
   /** The sd-notification's theme. */
   @property({ reflect: true }) variant: 'info' | 'success' | 'error' | 'warning' = 'info';
@@ -83,6 +84,19 @@ export default class SdNotification extends SolidElement {
 
   private remainingDuration = this.duration;
   private startTime = Date.now();
+  private tabDirection: 'forward' | 'backwards' = 'forward';
+  private focused = false;
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.handleFocusIn = this.handleFocusIn.bind(this);
+    document.addEventListener('focusin', this.handleFocusIn);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    document.removeEventListener('focusin', this.handleFocusIn);
+  }
 
   firstUpdated() {
     this.base.hidden = !this.open;
@@ -120,10 +134,35 @@ export default class SdNotification extends SolidElement {
     this.hide();
   }
 
+  private checkFocus() {
+    if (!this.focused || !this.closable) return;
+
+    if (!this.matches(':focus-within')) {
+      const target = this.tabDirection === 'forward' ? this.base : this.close;
+
+      if (typeof target?.focus === 'function') {
+        target.focus({ preventScroll: true });
+      }
+    }
+  }
+
+  private handleFocusIn() {
+    this.focused = true;
+  }
+
   private handleKeyDown(event: KeyboardEvent) {
+    this.tabDirection = 'forward';
+
     if (this.closable && event.key === 'Escape') {
       this.hide();
+      return;
     }
+
+    if (event.key === 'Tab' && event.shiftKey) {
+      this.tabDirection = 'backwards';
+    }
+
+    requestAnimationFrame(() => this.checkFocus());
   }
 
   @watch('open', { waitUntilFirstUpdate: true })
