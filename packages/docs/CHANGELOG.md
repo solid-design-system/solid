@@ -1,5 +1,14 @@
 # @solid-design-system/docs
 
+## 1.7.1
+
+### Patch Changes
+
+- Accessibility tests: _[`#1896`](https://github.com/solid-design-system/solid/pull/1896) [`36904da`](https://github.com/solid-design-system/solid/commit/36904dadac5ac0fe83abac7bc51b7c4a79f5cefc) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Resolved errors during test execution.
+  - Removed unstable `test.watch`.
+
 ## 1.7.0
 
 ### Minor Changes
