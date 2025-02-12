@@ -484,23 +484,21 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     // Hierarchy of input states:
     const inputState = this.disabled
       ? 'disabled'
-      : this.visuallyDisabled && !this.hasFocus
+      : this.visuallyDisabled
         ? 'visuallyDisabled'
-        : this.visuallyDisabled && this.hasFocus
-          ? 'active'
-          : this.readonly
-            ? 'readonly'
-            : this.hasFocus && this.showInvalidStyle
-              ? 'activeInvalid'
-              : this.hasFocus && this.styleOnValid && this.showValidStyle
-                ? 'activeValid'
-                : this.hasFocus
-                  ? 'active'
-                  : this.showInvalidStyle
-                    ? 'invalid'
-                    : this.styleOnValid && this.showValidStyle
-                      ? 'valid'
-                      : 'default';
+        : this.readonly
+          ? 'readonly'
+          : this.hasFocus && this.showInvalidStyle
+            ? 'activeInvalid'
+            : this.hasFocus && this.styleOnValid && this.showValidStyle
+              ? 'activeValid'
+              : this.hasFocus
+                ? 'active'
+                : this.showInvalidStyle
+                  ? 'invalid'
+                  : this.styleOnValid && this.showValidStyle
+                    ? 'valid'
+                    : 'default';
 
     // Conditional Styles
     const textSize = this.size === 'sm' ? 'text-sm' : 'text-base';

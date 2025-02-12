@@ -193,7 +193,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           : this.disabled
             ? 'disabled'
             : this.visuallyDisabled
-              ? 'visually-disabled'
+              ? 'visuallyDisabled'
               : this.showInvalidStyle && this.indeterminate
                 ? 'invalidIndeterminate'
                 : this.showInvalidStyle
@@ -243,9 +243,10 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             ? ' control--indeterminate'
             : ''}"
           class=${cx(
-            `relative flex flex-shrink-0 items-center justify-center border rounded-sm h-4 w-4
-            peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2
-            peer-focus-visible:outline-primary`,
+            `relative flex flex-shrink-0 items-center justify-center border rounded-sm h-4 w-4`,
+            !this.visuallyDisabled
+              ? 'peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary'
+              : '',
             {
               sm: 'mt-[2px]',
               md: 'mt-[3px]',
@@ -255,7 +256,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
               disabledIndeterminate: 'border-neutral-500 bg-neutral-500',
               disabledChecked: 'border-neutral-500 bg-neutral-500',
               disabled: 'border-neutral-500',
-              'visually-disabled': 'border-neutral-500',
+              visuallyDisabled: 'border-neutral-500',
               invalidIndeterminate: 'border-error bg-error group-hover:bg-error-400',
               invalid: 'border-error group-hover:bg-neutral-200',
               filled:
