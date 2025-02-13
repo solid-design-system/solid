@@ -1,6 +1,6 @@
 import { getStoryContext, type TestRunnerConfig } from '@storybook/test-runner';
-import { AxeBuilder } from '@axe-core/playwright';
 import { createHtmlReport } from 'axe-html-reporter';
+import { injectAxe, getViolations, configureAxe } from 'axe-playwright';
 import assert from 'assert';
 import pc from 'picocolors';
 
@@ -14,7 +14,13 @@ const config: TestRunnerConfig = {
   tags: {
     exclude: [SKIP_TESTS]
   },
+  async preVisit(page) {
+    await injectAxe(page);
+  },
   async postVisit(page, context) {
+    // Workaround for https://github.com/dequelabs/axe-core/issues/3426
+    await new Promise(resolve => setTimeout(resolve, 200));
+
     const story = await getStoryContext(page, context);
 
     const ignoredRules = story.tags
@@ -25,13 +31,19 @@ const config: TestRunnerConfig = {
           ?.split(',')
           .map(rule => rule.trim())
       )
-      .filter(Boolean) as string[];
+      .filter(Boolean)
+      .reduce((acc, rule) => {
+        acc[rule!] = { enabled: false };
+        return acc;
+      }, {});
 
-    const { violations } = await new AxeBuilder({ page })
-      .setLegacyMode(true)
-      .include('#storybook-root')
-      .disableRules(ignoredRules)
-      .analyze();
+    await configureAxe(page, {
+      rules: [{ id: 'wcag22aa', enabled: true }]
+    });
+
+    const violations = await getViolations(page, '#storybook-root', {
+      rules: ignoredRules
+    });
 
     const message =
       violations.length === 0
@@ -73,7 +85,7 @@ const config: TestRunnerConfig = {
       )
       .join('\n\n');
 
-    return assert.fail(context.id + message + horizontalLine + '\n' + report);
+    return assert.fail(`${context.id} ${message} ${horizontalLine}\n${report}`);
   }
 };
 
