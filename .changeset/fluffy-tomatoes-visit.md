@@ -17,6 +17,6 @@ By introducing this new attribute, it is possible to display an element as if it
 - sd-checkbox
 - sd-textarea
 
-The components `sd-radio-group` and `sd-checkbox-group` also have a new a `help-text` attribute which allows users to include a description of what is expected.
+The components `sd-radio-group` and `sd-checkbox-group` also have a new `help-text` attribute and slot which allows users to include a description.
 
 A new form template utilizing the `visually-disabled` approach has been created as a suggestion on how to handle forms in a more accessible way.
