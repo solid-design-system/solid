@@ -75,13 +75,8 @@ export const Disabled = {
 export const VisuallyDisabled = {
   name: 'Visually Disabled',
   render: () => html`
-    <div class="w-[250px] h-[200px] pt-12">
-      <sd-tooltip
-        content="This field will be enabled after you complete an action"
-        trigger="click focus"
-        size="sm"
-        placement="top"
-      >
+    <div class="w-[250px] h-[100px] pt-12">
+      <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm" placement="top">
         <sd-checkbox visually-disabled>Visually Disabled</sd-checkbox>
       </sd-tooltip>
     </div>

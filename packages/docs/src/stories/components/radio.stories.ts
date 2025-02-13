@@ -85,15 +85,15 @@ export const Disabled = {
 /**
  * Use the `visually-disabled` attribute to style the component as if it was disabled and enable aria-disabled to allow it to be reachable by screen readers.
  *
- * When using this attribute, make sure to provide ways to inform the user why the element is disabled and how to enable it. This can be done by using the `help-text` attribute or slot, or with a tooltip. Disabling elements is not recommended for accessibility reasons.
+ * When using this attribute, make sure to provide ways to inform the user why the element is disabled and how to enable it. This can be done by using the `help-text` attribute or wrapping the element in a sd-tooltip. Disabling elements is not recommended for accessibility reasons.
  */
 export const VisuallyDisabled = {
   name: 'Visually Disabled',
   render: () => html`
-    <sd-radio-group label="Visually Disabled Radio in Group" boldLabel value="1">
-      <sd-radio value="1" visually-disabled>Radio 1</sd-radio>
-      <sd-radio value="2" visually-disabled>Radio 2</sd-radio>
-      <sd-radio value="3" visually-disabled>Radio 3</sd-radio>
+    <sd-radio-group label="Visually Disabled" boldLabel value="1">
+      <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm">
+        <sd-radio value="1" visually-disabled>Radio 1</sd-radio>
+      </sd-tooltip>
     </sd-radio-group>
   `
 };

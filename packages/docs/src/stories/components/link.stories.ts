@@ -153,9 +153,9 @@ export const VisuallyDisabled = {
   name: 'Visually Disabled',
   render: () => html`
     <div class="flex gap-12 h-[100px] pt-12">
-      <sd-tooltip content="This link will be enabled after you complete an action" trigger="click focus" size="sm">
+      <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm">
         <sd-link
-          size="sm"
+          size="lg"
           href="https://solid-design-system.fe.union-investment.de/docs/"
           visually-disabled
           class="visually-disabled-link"

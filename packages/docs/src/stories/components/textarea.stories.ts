@@ -122,20 +122,22 @@ export const Disabled = {
 /**
  * Use the `visually-disabled` attribute to style the component as if it was disabled and enable aria-disabled to allow it to be reachable by screen readers.
  *
- * When using this attribute, make sure to provide ways to inform the user why the element is disabled and how to enable it. This can be done by using the `help-text` attribute or slot, or with a tooltip. Disabling elements is not recommended for accessibility reasons.
+ * When using this attribute, make sure to provide ways to inform the user why the element is disabled and how to enable it. This can be done by using the `help-text` attribute or wrapping the element in a sd-tooltip. Disabling elements is not recommended for accessibility reasons.
  */
 export const VisuallyDisabled = {
   name: 'Visually Disabled',
   render: () => html`
-    <div class="w-[500px]">
-      <sd-textarea
-        size="lg"
-        label="Label"
-        placeholder="Input text visually disabled"
-        rows="4"
-        spellcheck
-        visually-disabled
-      ></sd-textarea>
+    <div class="w-[500px] mt-12">
+      <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm">
+        <sd-textarea
+          size="lg"
+          label="Label"
+          placeholder="Input text visually disabled"
+          rows="4"
+          spellcheck
+          visually-disabled
+        ></sd-textarea>
+      </sd-tooltip>
     </div>
   `
 };
