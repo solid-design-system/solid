@@ -35,6 +35,7 @@ export const NonInteractiveStepGroup = {
 };
 
 export const NonInteractiveStepGroupWithIcon = {
+  name: 'Non-Interactive Step Group with Icon',
   render: () => html`
     <sd-step-group size="lg" orientation="horizontal" active-step="0" not-interactive>
       <sd-step size="lg" orientation="horizontal" state="default">
