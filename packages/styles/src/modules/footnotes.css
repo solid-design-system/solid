@@ -9,16 +9,52 @@
 .sd-footnotes {
   @apply text-neutral-700 text-sm text-left p-0 my-0;
 
+  :target {
+    @apply bg-neutral-200;
+  }
+
   &:is(ol) {
+    @apply ps-8;
+
     li {
       counter-increment: list-item;
-      @apply flex gap-2;
+      @apply list-none relative;
 
-      &::before {
-        @apply w-5 leading-normal shrink-0;
-        content: counter(list-item);
-        padding-top: 1px;
-        font-size: 10px;
+      .sd-footnotes--marker,
+      &:has(.sd-footnotes--marker:nth-of-type(2)),
+      &:not(:has(.sd-footnotes--marker)) {
+        &::before {
+          @apply absolute -left-8 font-bold leading-normal shrink-0;
+          content: '[ ' counter(list-item) ' ]';
+          padding-top: 1px;
+          font-size: 10px;
+        }
+
+        &::after {
+          content: none;
+        }
+
+        .sd-footnotes--marker {
+          @apply inline-block;
+          counter-increment: footnotes-multiple;
+
+          &::before {
+            @apply relative left-0 align-super font-bold leading-normal;
+            content: counter(footnotes-multiple, lower-alpha);
+          }
+        }
+      }
+
+      .sd-footnotes--marker {
+        @apply block bottom-0;
+
+        &:focus-visible {
+          @apply outline-0;
+
+          &::before {
+            @apply outline outline-2 outline-offset-2 outline-primary rounded-default;
+          }
+        }
       }
     }
   }
@@ -29,5 +65,49 @@
 
   &--inverted {
     @apply text-primary-400;
+
+    :target {
+      @apply bg-primary-800;
+    }
+
+    .sd-footnotes--marker::before {
+      @apply text-white !outline-white;
+    }
+
+    &:is(.sd-footnotes--marker) {
+      @apply !text-white !outline-white;
+
+      &:target {
+        @apply bg-primary-800;
+      }
+    }
+  }
+
+  &--marker {
+    @apply inline-block !no-underline font-bold whitespace-nowrap relative bottom-2;
+    font-size: x-small;
+
+    &:target {
+      @apply bg-neutral-200;
+    }
+
+    &::before {
+      content: '[ ';
+      display: inline-block;
+    }
+
+    &::after {
+      content: ' ]';
+      display: inline-block;
+    }
+
+    &:link,
+    &:visited {
+      @apply text-primary;
+    }
+
+    &:focus-visible {
+      @apply outline outline-2 outline-offset-2 outline-primary rounded-default;
+    }
   }
 }

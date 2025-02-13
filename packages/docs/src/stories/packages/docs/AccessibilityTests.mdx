@@ -13,9 +13,6 @@ To execute the accessibility tests, the command `pnpm test` must be run.
 In case it is being run without any preview running, the command will `build, preview and run the tests`.
 In case a preview is already running on a separate terminal, the command will just `run the tests`.
 
-`pnpm test.watch` can also be executed, to run the tests in watch mode.
-To do so, storybook has to be running on a separate terminal in dev mode, `pnpm dev`.
-
 ## Using custom tags for accessibility tests
 
 Custom tags can be used in Storybook stories for better control and customization of
@@ -58,6 +55,13 @@ In this example, only the color-contrast and label rules are skipped during test
 
 ## Debugging failing accessibility tests
 
+When debugging accessibility tests, to achieve a better developer experience,
+it is recommended to check the violations and passes on the `Accessibility tab`.
+To check this tab, open the docs in development mode (`pnpm dev`),
+select a specific story and click on the story "Accessibility" tab.
+
+### Running `pnpm test`
+
 When a test fails, two direct URLs are printed into the console, `story` and `browser`.
 
 - The story url links to the story file which the test is failling.
@@ -65,9 +69,10 @@ When a test fails, two direct URLs are printed into the console, `story` and `br
 
 ## Open the failing test in the browser
 
-1. **Find the `browser` URL:** When an a11y test fails, it outputs a URL pointing to the rendered story.
-2. **Copy the `browser` URL:** Copy the URL from the output.
-3. **Open the URL in the browser:** Paste the `browser` URL into your browser to open the story in isolation.
+1. Make sure the local development server is running (`pnpm dev`)
+2. **Find the `browser` URL:** When an a11y test fails, it outputs a URL pointing to the rendered story.
+3. **Copy the `browser` URL:** Copy the URL from the output.
+4. **Open the URL in the browser:** Paste the `browser` URL into your browser to open the story in isolation.
 
 ## Resolve issues
 
