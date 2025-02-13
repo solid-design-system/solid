@@ -2,7 +2,7 @@
   "name": "@solid-design-system/docs",
   "description": "This package provides the documentation for the Solid Design System.",
   "homepage": "https://solid-design-system.fe.union-investment.de/docs/",
-  "version": "1.4.4",
+  "version": "1.7.1",
   "author": {
     "name": "Union Investment"
   },
@@ -26,16 +26,18 @@
   "scripts": {
     "dev": "pnpm storybook",
     "storybook": "storybook dev -p 6999",
-    "verify": "pnpm ts.verify && pnpm build && echo '✅ Build verified' && vite-node ./scripts/node-optimize-chromatic.cjs && echo '✅ Chromatic optimization verified'",
+    "verify": "pnpm ts.verify && pnpm build && echo '✅ Build verified' && pnpm test && echo '✅ Tests verified' && vite-node ./scripts/node-optimize-chromatic.cjs && echo '✅ Chromatic optimization verified'",
     "ts.verify": "tsc --noEmit --project ./tsconfig.json && echo '✅ TypeScript verified'",
+    "test": "node ./scripts/test.js",
     "build.chromatic": "pnpm build && node ./scripts/node-optimize-chromatic.cjs",
     "chromatic": "npx chromatic -b build.chromatic",
     "build": "pnpm build/components && pnpm build/styles && storybook build --output-dir dist/storybook && vite-node scripts/node-optimize-storybook.js",
     "build/components": "cd ../components && pnpm build",
     "build/styles": "cd ../styles && pnpm build",
-    "preview": "vite preview"
+    "preview": "http-server dist/storybook --port \"6998\""
   },
   "dependencies": {
+    "@storybook/addon-a11y": "^8.4.7",
     "classix": "^2.2.0",
     "custom-elements-manifest": "^2.1.0",
     "lit": "^3.2.1",
@@ -52,20 +54,26 @@
     "@storybook/addon-mdx-gfm": "^8.5.0",
     "@storybook/addons": "^7.6.17",
     "@storybook/blocks": "^8.5.0",
+    "@storybook/test-runner": "^0.21.0",
     "@storybook/theming": "^8.5.0",
     "@storybook/web-components": "^8.5.0",
     "@storybook/web-components-vite": "^8.5.0",
     "@tarekraafat/autocomplete.js": "^10.2.9",
     "autoprefixer": "^10.4.20",
+    "axe-html-reporter": "^2.2.11",
+    "axe-playwright": "^2.1.0",
     "cem-plugin-vs-code-custom-data-generator": "^1.4.2",
     "change-case": "^5.4.4",
     "chromatic": "^11.24.0",
     "comment-parser": "^1.4.1",
+    "concurrently": "^9.1.2",
     "countup.js": "^2.8.0",
     "cssnano": "^7.0.6",
     "globby": "^14.0.2",
+    "http-server": "^14.1.1",
     "lit-html": "^3.2.1",
     "normalize.css": "^8.0.1",
+    "picocolors": "^1.1.1",
     "postcss": "^8.5.1",
     "postcss-import": "^16.1.0",
     "prettier": "^3.4.2",
@@ -79,6 +87,7 @@
     "vite-node": "^3.0.0",
     "vite-plugin-cem": "^0.8.2",
     "vite-tsconfig-paths": "^5.1.4",
+    "wait-on": "^8.0.1",
     "wc-storybook-helpers": "1.5.3"
   }
 }

@@ -473,13 +473,15 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       helpText: this.hasSlotController.test('help-text'),
       description: this.hasSlotController.test('description'),
       left: this.hasSlotController.test('left'),
-      right: this.hasSlotController.test('right')
+      right: this.hasSlotController.test('right'),
+      tooltip: this.hasSlotController.test('tooltip')
     };
 
     // States
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.readonly && (typeof this.value === 'number' || this.value.length > 0);
+    const hasTooltip = !!slots['tooltip'];
 
     // Hierarchy of input states:
     const inputState = this.disabled
@@ -529,19 +531,21 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         part="form-control"
         class=${cx(this.disabled && 'pointer-events-none', this.visuallyDisabled && 'cursor-not-allowed')}
       >
-        <div class="flex items-center gap-1 mb-2">
-          <label
-            part="form-control-label"
-            id="label"
-            class=${cx(hasLabel ? 'inline-block' : 'hidden', textSize)}
-            for="input"
-            aria-hidden=${hasLabel ? 'false' : 'true'}
-          >
-            <slot name="label">${this.label}</slot>
-          </label>
+        ${hasLabel || hasTooltip
+          ? html`<div class="flex items-center gap-1 mb-2">
+              <label
+                part="form-control-label"
+                id="label"
+                class=${cx(hasLabel ? 'inline-block' : 'hidden', textSize)}
+                for="input"
+                aria-hidden=${hasLabel ? 'false' : 'true'}
+              >
+                <slot name="label">${this.label}</slot>
+              </label>
 
-          <slot name="tooltip"></slot>
-        </div>
+              ${slots['tooltip'] ? html`<slot name="tooltip"></slot>` : ''}
+            </div>`
+          : null}
 
         <div part="form-control-input" class=${cx('relative w-full', this.visuallyDisabled && 'cursor-not-allowed')}>
           <div

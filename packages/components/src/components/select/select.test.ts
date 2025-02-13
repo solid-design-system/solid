@@ -59,6 +59,40 @@ describe('<sd-select>', () => {
     expect(el.open).to.be.false;
   });
 
+  it('should render label wrapper if label or tooltip are present', async () => {
+    const el = await fixture<SdSelect>(html`
+      <sd-select label="test">
+        <sd-tooltip
+          slot="tooltip"
+          content="Lorem ipsum"
+          placement="bottom"
+          size="lg"
+          trigger="click focus"
+        ></sd-tooltip>
+      </sd-select>
+    `);
+
+    const labelParentElement = el.shadowRoot!.querySelector('[part~="form-control"]');
+    const tooltip = el.shadowRoot!.querySelector('slot[name="tooltip"]')!;
+    const label = el.shadowRoot!.querySelector('#label')!;
+
+    expect(labelParentElement).to.exist;
+    expect(labelParentElement!.contains(label)).to.be.true;
+    expect(labelParentElement!.contains(tooltip)).to.be.true;
+  });
+
+  it('should not render label wrapper if label or tooltip are present', async () => {
+    const el = await fixture<SdSelect>(html` <sd-select> </sd-select> `);
+
+    const labelParentElement = el.shadowRoot!.querySelector('[part~="form-control"]');
+    const tooltip = el.shadowRoot!.querySelector('slot[name="tooltip"]')!;
+    const label = el.shadowRoot!.querySelector('#label')!;
+
+    expect(labelParentElement).to.exist;
+    expect(labelParentElement!.contains(label)).to.be.false;
+    expect(labelParentElement!.contains(tooltip)).to.be.false;
+  });
+
   it('should show a placeholder when no options are selected', async () => {
     const el = await fixture<SdSelect>(html`
       <sd-select placeholder="Select one">

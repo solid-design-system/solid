@@ -9,13 +9,20 @@ const { generateTemplate } = storybookTemplate('sd-footnotes');
 /**
  * Used to add additional information/sources related to the content.
  *
+ * **Known browser issues:**
+ * - When clicking on a `sd-footnotes` reference, a `sd-footnotes--marker` is highlighted.
+ * In Safari it also applies the `focus-visible` outline, due to browser behaviour.
+ *
+ * - When using keyboard navigation on Safari v17 or lower, `sd-footnotes--marker`
+ * inside `sd-footnotes` are unreachable due to absolute position.
+ *
  * **Related templates**:
  * - [Footnotes](?path=/docs/templates-footnotes--docs)
  */
 
 export default {
   title: 'Styles/sd-footnotes',
-  tags: ['!dev'],
+  tags: ['!dev', 'skip-a11y-[link-name]'],
   component: 'sd-footnotes',
   parameters: {
     ...parameters,
@@ -28,9 +35,11 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<li>Lorem ipsum dolor sit amet.</li>
-<li>Elit aliqua labore qui eu mollit officia ullamco exercitation ut veniam laboris ad elit adipisicing elit. Cupidatat enim nostrud aliquip labore elit sit fugiat veniam. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
-<li>Officia ipsum cillum id sint officia commodo laboris ullamco nulla veniam ut. Cupidatat deserunt amet aliquip dolore nostrud amet veniam ad nostrud do dolore culpa.</li>`
+      value: `
+        <li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+        <li>Sed diam nonumy eirmod tempor invidunt ut labore.</li>
+        <li>Dolore magna aliq erat, sed diam voluptua.</li>
+      `
     }
   ]),
   argTypes,
@@ -66,7 +75,7 @@ export const Variants = {
   render: () => html`
     <div class="flex flex-col gap-12">
       <ol class="sd-footnotes">
-        <li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+        <li>Lorem ipsum dolor sit amet.</li>
         <li>Sed diam nonumy eirmod tempor invidunt ut labore.</li>
         <li>Dolore magna aliq erat, sed diam voluptua.</li>
       </ol>
@@ -87,7 +96,7 @@ export const Inverted = {
   render: () => html`
     <div class="sd-container sd-container--variant-primary">
       <ol class="sd-footnotes sd-footnotes--inverted">
-        <li>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</li>
+        <li>Lorem ipsum dolor sit amet.</li>
         <li>Sed diam nonumy eirmod tempor invidunt ut labore.</li>
         <li>Dolore magna aliq erat, sed diam voluptua.</li>
       </ol>

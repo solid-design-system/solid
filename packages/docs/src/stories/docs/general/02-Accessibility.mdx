@@ -1,83 +1,103 @@
 import { Meta } from '@storybook/blocks';
+import '../../../../../components/src/components/icon/icon';
+import '../../../../../components/src/components/notification/notification';
 
 <Meta title="Docs/General/Accessibility" />
 
-# Accessibility
+# Accessibility at Union Investment
 
-Union Investment strives to offer digital products and services that are accessible to all, regardless of their abilities/limitations or the technology used. This is an accessibility checklist used by the SDS team when designing and developing new features. It helps us improve the experience for everyone who uses our product and ensures our high standards are met.
+Union Investment strives to offer digital products and services that are accessible to everyone, regardless of ability or the technology they use. As a financial service provider, ensuring accessibility is even more critical.
 
-This is an ongoing process. We will continue to improve accessibility and meet at least the **WCAG 2.1 Level AA guidelines** - also with a view to the Barrier-Free Accessibility Strengthening Act that will come into force from 2025.
+Accessibility is an ongoing priority for us. We are continuously enhancing our accessibility efforts to meet, at a minimum, the WCAG 2.2 Level AA guidelines. In addition, we are preparing for the Barrier-Free Accessibility Strengthening Act, which will come into force in 2025.
 
-## Developing a WCAG-compliant Basis
+[Learn more about Web Content Accessibility Guidelines](https://www.w3.org/WAI/standards-guidelines/wcag/)
 
-We are committed to creating products that are conform to the WCAG 2.1 guidelines, a standard also embraced by the Union Investment brand department. This commitment includes a range of specific practices:
+## Why WCAG 2.2 Level AA Is Important
 
-### Semantic Structure & HTML Usage
+- Inclusion and Equity: By achieving Level AA standards, you make your digital content accessible to people with a wide range of disabilities, promoting inclusivity and equal access to information. This is not only an ethical obligation but also a way to foster equity in the digital landscape.
+- Why Prioritize Accessibility?: Prioritizing accessibility allows you to reach a broader audience, comply with regulations, uphold ethical standards, and enhance usability for all users. Accessible design improves user experience universally, benefitting everyone, regardless of their abilities.
+- Legal Compliance: In many countries, including Germany and across the European Union, WCAG guidelines have been adopted as part of accessibility laws. In Germany, the Barrierefreie-Informationstechnik-Verordnung (BITV), which aligns with WCAG standards, mandates compliance with Level AA for public sector websites and strongly encourages it for private sector websites. Meeting these requirements ensures that your website adheres to both national and EU-level regulations.
 
-- **Native HTML over ARIA labels**: Always use native HTML instead of ARIA labels. This practice ensures that our content is as accessible as possible to a wide range of assistive technologies.
+## Include everybody
 
-- **Semantically Correct Structure**: Implement a semantically correct structure, for example, H1 followed by H2, and P used for text, etc. This helps assistive technologies understand the structure and meaning of our content.
+In many cases, features designed for accessibility benefit everyone. Enhancements like improved user-friendliness, better overall user experience, and support for foreign language speakers can make digital products easier and more enjoyable for all users.
 
-### Screen reader & keyboard controls
+Web accessibility includes all disabilities that can impact a user's ability to access and navigate the internet:
 
-- **Keyboard-Accessible Elements**: All elements should be focusable only with the keyboard, in a desired order and with a visual focus. This assures that our content is accessible to users who rely on keyboard navigation.
+**Permanent:**
 
-- **Preserving ARIA Information**: Do not delete the ARIA information from the solid examples. They ensure correct interpretation by screen readers.
+- auditory impairments (e.g., deafness, partial hearing loss, difficulty understanding spoken language)
+- cognitive impairments (e.g., learning disabilities, memory or attention challenges)
+- neurological impairments (e.g., brain injuries, conditions affecting processing speed or focus)
+- physical impairments (e.g., limited mobility, motor control difficulties)
+- speech impairments (e.g., difficulty with speech production or communication)
+- visual impairments (e.g., blindness, low vision, color blindness)
+- age-related impairments (e.g., vision or hearing decline, cognitive changes)
 
-### Multimedia:
+**Temporary:**
 
-- **Alt text**: Provide alternative text for images, icons, and non-text content.
+Barriers to accessibility are not always permanent. They can also be temporary—for instance, when someone has an eye infection or a cast on their hand.
 
-- **Captions and transcripts**: Always include captions and transcripts for videos and audio content.
+**Situational:**
 
-- **Never auto-play** audio and video without providing pause/play functionalities.
+Situational barriers can occur too, such as trying to view a screen in bright light or watching a video on public transport without headphones.
 
-### Color:
+## Best Practices for a WCAG Compliant Basis
 
-- **Color contrast**: [Verify that color contrast](https://color.a11y.com/) meets the WCAG AA standard.
-- **Color combinations**: Check color combinations for common forms of color blindness.
+<sd-notification variant="error" open>Product teams must ensure that their digital products built on Solid DS remain compliant with these standards.</sd-notification>
 
-## Motion:
+Implementing Solid components into your product is an important first step in making web applications accessible. However, accessibility goes beyond just using these components—it requires careful consideration of context, content order, and semantics. Each time a component is used, it's essential to understand its purpose and ensure it serves the correct, meaningful function in its context.
 
-- **Include CSS prefers-reduced-motion** for all web content.
+**Semantic Structure & HTML Usage**
 
-## Responsiveness
+- Semantically Correct Structure: Implement a clear, logical structure (e.g., H1 for the main heading, followed by H2, and P tags for paragraphs). This helps assistive technologies interpret the meaning and hierarchy of content correctly. It is crucial to create a semantically correct structure to ensure proper navigation and understanding by users with disabilities. Headline sizes and H-Tags are flexible and can be selected according to your preferences, rather than being restricted to specific combinations.
+- Native HTML: Always prioritize native HTML elements over ARIA labels whenever possible. This practice ensures that our content is accessible to a wide range of assistive technologies, improving overall compatibility.
 
-- **Flexible Layouts**: Design fluid layouts that adjust to different screen sizes.
-- **Readable Text**: Maintain text readability without horizontal scrolling on any screen size.
-- **Accessible Touch-Targets**: Ensure touch targets are large enough for easy interaction on touchscreens.
-- **Media Adaptation**: Scale images and other media appropriately for all screen sizes.
+**Keyboard Controls & Screen Readers**
 
-## Additionally, we incorporate the following practices to ensure accessibility:
+- Keyboard Accessibility: Ensure that all interactive elements are focusable with the keyboard, in the correct order, and with a visual focus indicator. This guarantees accessibility for users who rely on keyboard navigation.
+- Screen Readers: Do not remove ARIA attributes from Solid examples. These attributes are vital for ensuring that screen readers can accurately interpret and relay content to users.
 
-- **Mouseless stories** to test and ensure all functionality is accessible without relying on mouse interactions.
+**Multimedia**
 
-- **A11y test cases**.
+- Alt Text: Ensure that all images, icons, and non-text content have descriptive alternative text when they convey information, making the content accessible to users with visual impairments. For purely decorative images, leave the alt text empty. Be sure to distinguish between images that add informational value and those that are purely decorative, which do not require alt descriptions.
+- Captions & Transcripts: Always include captions and transcripts for video and audio content.
+- Control for Auto-play Media: Avoid auto-playing audio or video content. Always provide play/pause options so users can control their media experience.
 
-- **Focus visibility and order** for interactive elements.
+**Color Accessibility**
 
-## Integration into Processes as Definition-of-Done (DOD)
+- Color Contrast: Ensure that color contrast meets WCAG AA standards.
+- Color Combinations: Test and adjust color combinations.
+- Text Color Limitations: The accent color (green) is restricted to the following backgrounds: white, primary, primary-100, and neutral-100 on which green text must meet the minimum size requirement of 18.67px for bold and 24px for book. When inverted on a green background, only white or primary text colors are allowed. For text on a green background, white text must also meet the minimum size requirements of 18.67px for bold and 24px for book.
 
-Accessibility is not an afterthought. It is integrated into our **Definition-of-Done**. This means that no work is considered complete until it meets our accessibility standards.
+[Learn more about accessible color combinations](https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=32432-57625&t=IReJmO0zPVBF5DR9-0)
 
-## The Importance of Web Accessibility
+**Motion**
 
-Web accessibility is essential as it ensures no one is excluded. It makes services user-friendly and accessible to all, a principle especially important for financial service providers who should provide their services to everyone, disability or not. By prioritizing accessibility, we reach a wider audience, adhere to regulations and ethical standards, and provide a better experience for all users.
+- Respect Reduced Motion Preferences: Include the prefers-reduced-motion media query in your CSS for all web content to accommodate users who prefer reduced motion.
 
-## What's New in the Solid Design System
+**Responsiveness**
 
-We have made several changes to our design system to improve accessibility, including the following:
+- Flexible Layouts: Design fluid layouts that adapt seamlessly to various screen sizes, ensuring a consistent and accessible experience across devices.
+- Readable Text: Ensure text remains legible without the need for horizontal scrolling, regardless of screen size or device.
+- Accessible Touch Targets: Make touch targets large enough to allow for easy and accurate interaction on touchscreen devices.
+- Media Adaptation: Scale images and other media appropriately for different screen sizes, ensuring they are accessible and visually consistent on all devices.
 
-- **New approach to accentuation**: Omit using green text and use green only for graphical elements.
+## Accessibility Testing
 
-- **New look and feel**: Active component states use primary as the main color and green for occasional highlight instead of only green previously.
+- Accessibility audits: Conduct regular A11y audits to ensure WCAG compliance and identify and resolve potential barriers for users.
+- Mouseless Testing: Ensure that all functionality is accessible without relying on mouse interactions by conducting mouseless tests.
+- A11y Test Cases: Develop comprehensive accessibility test cases to validate conformance to accessibility standards.
+- Focus Visibility & Order: Verify that the focus state is visible and the tab order for interactive elements is logical and consistent.
 
-- **New functional colors** are used for success and error messages as well as positive and negative (performance) values, notifications and badges. Also for notifications a new yellow color has been introduced as a warning color and a lightblue color as an informative color.
+**Figma Accessibility Tools**
 
-- **Usage limitations for colored text**: Green text and graphical elements can only be used on the following backgrounds: white, primary, primary-100, neutral-100. On these backgrounds green text has a minium font size of 18.67px in bold and 24px in book. When inverted on green background only text colors white and primary can be used. On green background white text has a minimum font size of 18.67px in bold and 24px in book.
+**Contrast:** The “[Contrast](https://www.figma.com/community/plugin/748533339900865323/contrast?fuid=1263848586749601824)” plugin is a free and useful tool that allows you to check specific color combinations for compliance. It can also scan entire pages and evaluate text on transparent overlays over images, ensuring accessibility throughout your design.
 
-- **The CTA-Button** has a specific green background color that is only allowed for this variant.
+**Include:** The "[Include](https://www.figma.com/community/plugin/1208180794570801545/include-accessibility-annotations?fuid=1263848586749601824)" plugin is a free tool that simplifies the creation of accessibility annotations (A11y), making it easier for designers to specify requirements and for developers to understand and implement them. It provides checks for essential accessibility features, such as contrast ratio (AA compliance), text resizing, vision simulation, and responsive reflow.
 
-##
+## What's next
 
-For more information on this refer to development guidelines and best practices specific to accessibility to ensure compliance with WCAG 2.1 AA standards (https://www.w3.org/WAI/standards-guidelines/wcag/).
+We are committed to continuously improving the accessibility of our digital products, staying up to date with evolving guidelines and best practices.
+
+In the following months will be developing accessibility best practices for each component, providing specific guidance on their proper usage to ensure consistency and inclusivity.

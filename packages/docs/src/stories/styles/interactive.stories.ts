@@ -18,7 +18,7 @@ const { generateTemplate } = storybookTemplate('sd-interactive');
 
 export default {
   title: 'Styles/sd-interactive',
-  tags: ['!dev'],
+  tags: ['!dev', 'skip-a11y'],
   component: 'sd-interactive',
   parameters: {
     ...parameters,

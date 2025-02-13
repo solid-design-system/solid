@@ -69,6 +69,40 @@ describe('<sd-textarea>', () => {
     expect(submitHandler).to.have.been.calledOnce;
   });
 
+  it('should render label wrapper if label or tooltip are present', async () => {
+    const el = await fixture<SdTextarea>(html`
+      <sd-textarea label="test">
+        <sd-tooltip
+          slot="tooltip"
+          content="Lorem ipsum"
+          placement="bottom"
+          size="lg"
+          trigger="click focus"
+        ></sd-tooltip>
+      </sd-textarea>
+    `);
+
+    const labelParentElement = el.shadowRoot!.querySelector('[part~="form-control"]');
+    const tooltip = el.shadowRoot!.querySelector('slot[name="tooltip"]')!;
+    const label = el.shadowRoot!.querySelector('#label')!;
+
+    expect(labelParentElement).to.exist;
+    expect(labelParentElement!.contains(label)).to.be.true;
+    expect(labelParentElement!.contains(tooltip)).to.be.true;
+  });
+
+  it('should not render label wrapper if label or tooltip are present', async () => {
+    const el = await fixture<SdTextarea>(html` <sd-textarea> </sd-textarea> `);
+
+    const labelParentElement = el.shadowRoot!.querySelector('[part~="form-control"]');
+    const tooltip = el.shadowRoot!.querySelector('slot[name="tooltip"]')!;
+    const label = el.shadowRoot!.querySelector('#label')!;
+
+    expect(labelParentElement).to.exist;
+    expect(labelParentElement!.contains(label)).to.be.false;
+    expect(labelParentElement!.contains(tooltip)).to.be.false;
+  });
+
   it('should show correct icon when calling reportValidity() with style-on-valid attribute', async () => {
     const input = await fixture<HTMLFormElement>(html` <sd-textarea style-on-valid></sd-textarea> `);
 
