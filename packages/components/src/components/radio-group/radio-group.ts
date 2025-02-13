@@ -27,6 +27,7 @@ import type SdRadioButton from '../../components/radio-button/radio-button';
  * @slot - The default slot where `<sd-radio>` or `<sd-radio-button>` elements are placed.
  * @slot label - The radio group's label. Required for proper accessibility. Alternatively, you can use the `label`
  *  attribute.
+ * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
  * @slot tooltip - An optional tooltip that helps describe the radio-group. Use this slot with the `sd-tooltip` component.
  *
  * @event sd-change - Emitted when the radio group's selected value changes.

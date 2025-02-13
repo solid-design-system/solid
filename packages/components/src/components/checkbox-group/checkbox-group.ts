@@ -18,6 +18,7 @@ import type SdCheckbox from '../checkbox/checkbox';
  * @slot label - The checkbox group's label. Required for proper accessibility. Alternatively, you can use the `label`
  * attribute.
  * @slot tooltip - An optional tooltip that helps describe the checkbox-group. Use this slot with the `sd-tooltip` component.
+ * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
  **/
 
 @customElement('sd-checkbox-group')
