@@ -148,42 +148,42 @@ export const ContactForm = {
   `
 };
 
-export const AccessibleForm = {
+/**
+ * Visually disable form elements by using the attribute `visually-disabled` and wrapping the elements in a `sd-tooltip` to provide information on how to enable them. This approach is recommended for accessibility reasons. Disabling elements, will remove them from the tab order and screen readers will not announce them.
+ */
+export const VisuallyDisabledElementsExample = {
   render: () => html`
     <form class="sd-prose sd-prose--full-width" id="accessible-form">
       <h3 class="sd-headline sd-headline--size-4xl">Contact</h3>
       <div class="flex flex-col gap-6">
-        <sd-select label="Salutation" placeholder="Please Select" name="salutation" required>
-          <sd-option value="ms">Ms.</sd-option>
-          <sd-option value="mrs">Mrs.</sd-option>
-          <sd-option value="miss">Miss</sd-option>
-          <sd-option value="mx">Mx.</sd-option>
-        </sd-select>
         <sd-input name="firstName" type="text" inputmode="text" label="Name" class="name-input"></sd-input>
-        <sd-input
-          class="email-input"
-          name="email"
-          type="email"
-          inputmode="email"
-          label="Email"
-          required
-          autocomplete="email"
-          visually-disabled
-          help-text="This input will be enabled after entering your name."
-        ></sd-input>
         <sd-textarea name="message" label="Message" rows="4" spellcheck></sd-textarea>
         <sd-checkbox-group>
-          <sd-checkbox value="privacy_policy" class="policy-checkbox" required>
+          <sd-checkbox value="privacy_policy" class="policy-checkbox mb-2" required>
             I accept the <sd-link href="javascript:void(0)">Privacy Policy</sd-link>.
           </sd-checkbox>
-          <sd-checkbox value="marketing_emails" class="marketing-checkbox" visually-disabled
-            >I would like to receive marketing emails.</sd-checkbox
+          <sd-tooltip
+            content="Accept Policy Privacy to enable field"
+            trigger="click focus"
+            size="sm"
+            class="checkbox-tooltip"
           >
+            <sd-checkbox value="marketing_emails" class="marketing-checkbox" visually-disabled
+              >I would like to receive marketing emails.</sd-checkbox
+            >
+          </sd-tooltip>
         </sd-checkbox-group>
         <span class="sd-meta sd-meta--size-sm">* Required fields</span>
       </div>
       <div class="flex flex-col gap-4 md:flex-row md:justify-end">
-        <sd-button class="md:order-2 submit-button" type="submit" visually-disabled>Submit registration</sd-button>
+        <sd-tooltip
+          content="Fill in all fields to enable button"
+          trigger="click focus"
+          size="sm"
+          class="button-tooltip"
+        >
+          <sd-button class="md:order-2 submit-button" type="submit" visually-disabled>Submit registration</sd-button>
+        </sd-tooltip>
         <sd-button variant="secondary" class="md:order-1" onclick="alert('Cancelled process')">Cancel</sd-button>
       </div>
     </form>
@@ -197,13 +197,7 @@ export const AccessibleForm = {
         const form = document.getElementById('accessible-form');
         form.onsubmit = event => {
           event.preventDefault();
-          const formData = new FormData(form);
-
-          let formValues = ['Results:'];
-          for (let [key, value] of formData.entries()) {
-            formValues.push(key + ': ' + value);
-          }
-          alert(formValues.join('\\n'));
+          alert('Form submitted');
         };
       });
 
@@ -213,22 +207,25 @@ export const AccessibleForm = {
       const policyCheckbox = form.querySelector('.policy-checkbox');
       const marketingCheckbox = form.querySelector('.marketing-checkbox');
       const submitButton = form.querySelector('.submit-button');
+      const checkboxTooltip = form.querySelector('.checkbox-tooltip');
+      const buttonTooltip = form.querySelector('.button-tooltip');
 
       nameInput.addEventListener('input', () => {
         if (nameInput.value) {
           emailInput.removeAttribute('visually-disabled');
-        } else {
-          emailInput.value = '';
-          emailInput.setAttribute('visually-disabled', '');
         }
       });
 
       policyCheckbox.addEventListener('sd-change', event => {
         if (policyCheckbox.checked) {
+          if (checkboxTooltip && checkboxTooltip.parentNode) {
+            while (checkboxTooltip.firstChild) {
+              checkboxTooltip.parentNode.insertBefore(checkboxTooltip.firstChild, checkboxTooltip);
+            }
+            checkboxTooltip.parentNode.removeChild(checkboxTooltip);
+          }
+
           marketingCheckbox.removeAttribute('visually-disabled');
-        } else {
-          marketingCheckbox.checked = false;
-          marketingCheckbox.setAttribute('visually-disabled', '');
         }
       });
 
@@ -236,9 +233,14 @@ export const AccessibleForm = {
         const requiredFields = form.querySelectorAll('[required]');
         const isValid = Array.from(requiredFields).every(field => field.value && field.checkValidity());
         if (isValid) {
+          if (buttonTooltip && buttonTooltip.parentNode) {
+            while (buttonTooltip.firstChild) {
+              buttonTooltip.parentNode.insertBefore(buttonTooltip.firstChild, buttonTooltip);
+            }
+            buttonTooltip.parentNode.removeChild(buttonTooltip);
+          }
+
           submitButton.removeAttribute('visually-disabled');
-        } else {
-          submitButton.setAttribute('visually-disabled', '');
         }
       });
     </script>
