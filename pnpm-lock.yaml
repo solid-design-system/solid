@@ -6,10 +6,10 @@ settings:
 
 patchedDependencies:
   tailwindcss@3.4.17:
-    hash: cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2
+    hash: wvll6shaj2gjxjxaqwbika4vli
     path: patches/tailwindcss@3.4.1.patch
   wc-storybook-helpers:
-    hash: aaf58f9dbb673ff6acfd241b412118152b03e2574182736051aee80773c13650
+    hash: nhx4vpjmjavso2wty7iy66lsmi
     path: patches/wc-storybook-helpers.patch
 
 importers:
@@ -109,7 +109,7 @@ importers:
         version: 0.10.4
       '@mariohamann/tailwindcss-var':
         specifier: github:mariohamann/tailwindcss-var
-        version: https://codeload.github.com/mariohamann/tailwindcss-var/tar.gz/671cedc8890c64d3a54173513f5cb9d6dea4aaf1(tailwindcss@3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3)))
+        version: https://codeload.github.com/mariohamann/tailwindcss-var/tar.gz/671cedc8890c64d3a54173513f5cb9d6dea4aaf1(tailwindcss@3.4.17(patch_hash=wvll6shaj2gjxjxaqwbika4vli)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3)))
       '@open-wc/testing':
         specifier: ^4.0.0
         version: 4.0.0
@@ -220,7 +220,7 @@ importers:
         version: 19.0.2
       tailwindcss:
         specifier: ^3.4.17
-        version: 3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3))
+        version: 3.4.17(patch_hash=wvll6shaj2gjxjxaqwbika4vli)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3))
       typescript:
         specifier: 5.7.3
         version: 5.7.3
@@ -356,7 +356,7 @@ importers:
         version: 8.5.2(prettier@3.4.2)
       tailwindcss:
         specifier: ^3.4.17
-        version: 3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3))
+        version: 3.4.17(patch_hash=wvll6shaj2gjxjxaqwbika4vli)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3))
       typescript:
         specifier: 5.7.3
         version: 5.7.3
@@ -380,7 +380,7 @@ importers:
         version: 8.0.2
       wc-storybook-helpers:
         specifier: 1.5.3
-        version: 1.5.3(patch_hash=aaf58f9dbb673ff6acfd241b412118152b03e2574182736051aee80773c13650)(lit@3.2.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 1.5.3(patch_hash=nhx4vpjmjavso2wty7iy66lsmi)(lit@3.2.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   packages/placeholders:
     devDependencies:
@@ -392,7 +392,7 @@ importers:
     devDependencies:
       '@mariohamann/tailwindcss-var':
         specifier: ^2.1.0
-        version: 2.1.0(tailwindcss@3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3)))
+        version: 2.1.0(tailwindcss@3.4.17(patch_hash=wvll6shaj2gjxjxaqwbika4vli)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3)))
       '@semantic-release/changelog':
         specifier: ^6.0.3
         version: 6.0.3(semantic-release@24.2.1(typescript@5.7.3))
@@ -446,7 +446,7 @@ importers:
         version: 3.4.2
       tailwindcss:
         specifier: ^3.4.17
-        version: 3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3))
+        version: 3.4.17(patch_hash=wvll6shaj2gjxjxaqwbika4vli)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3))
 
   packages/theming:
     dependencies:
@@ -8941,13 +8941,13 @@ snapshots:
       globby: 11.1.0
       read-yaml-file: 1.1.0
 
-  '@mariohamann/tailwindcss-var@2.1.0(tailwindcss@3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3)))':
+  '@mariohamann/tailwindcss-var@2.1.0(tailwindcss@3.4.17(patch_hash=wvll6shaj2gjxjxaqwbika4vli)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3)))':
     dependencies:
-      tailwindcss: 3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3))
+      tailwindcss: 3.4.17(patch_hash=wvll6shaj2gjxjxaqwbika4vli)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3))
 
-  '@mariohamann/tailwindcss-var@https://codeload.github.com/mariohamann/tailwindcss-var/tar.gz/671cedc8890c64d3a54173513f5cb9d6dea4aaf1(tailwindcss@3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3)))':
+  '@mariohamann/tailwindcss-var@https://codeload.github.com/mariohamann/tailwindcss-var/tar.gz/671cedc8890c64d3a54173513f5cb9d6dea4aaf1(tailwindcss@3.4.17(patch_hash=wvll6shaj2gjxjxaqwbika4vli)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3)))':
     dependencies:
-      tailwindcss: 3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3))
+      tailwindcss: 3.4.17(patch_hash=wvll6shaj2gjxjxaqwbika4vli)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3))
 
   '@mdn/browser-compat-data@4.2.1': {}
 
@@ -15938,12 +15938,12 @@ snapshots:
       chalk: 4.1.2
       fs-extra: 10.1.0
       lodash.reduce: 4.6.0
-      tailwindcss: 3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3))
+      tailwindcss: 3.4.17(patch_hash=wvll6shaj2gjxjxaqwbika4vli)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3))
       yargs: 17.7.2
     transitivePeerDependencies:
       - ts-node
 
-  tailwindcss@3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3)):
+  tailwindcss@3.4.17(patch_hash=wvll6shaj2gjxjxaqwbika4vli)(ts-node@10.9.2(@swc/core@1.10.14)(@types/node@22.12.0)(typescript@5.7.3)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -16498,7 +16498,7 @@ snapshots:
     dependencies:
       makeerror: 1.0.12
 
-  wc-storybook-helpers@1.5.3(patch_hash=aaf58f9dbb673ff6acfd241b412118152b03e2574182736051aee80773c13650)(lit@3.2.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  wc-storybook-helpers@1.5.3(patch_hash=nhx4vpjmjavso2wty7iy66lsmi)(lit@3.2.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       '@storybook/client-api': 6.5.16(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       lit: 3.2.1
