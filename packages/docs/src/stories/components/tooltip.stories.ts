@@ -107,7 +107,6 @@ export const Size = {
  */
 
 export const Placement = {
-  // parameters: { ...parameters, docs: { story: { inline: false, height: '800px' } } },
   render: () => html`
     <div class="grid grid-cols-1 justify-items-center md:grid-cols-3 md:justify-items-start gap-24 p-12">
       <div>
