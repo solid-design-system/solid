@@ -7,6 +7,10 @@ const { generateTemplate } = storybookTemplate('sd-spinner');
 
 /**
  * Used as a visual indicator with a looping animation that shows loading is in process.
+ *
+ * **Known browser issues:**
+ * - The 'sd-spinner' component may experience spinner animation issues in Safari, causing them to appear wobbly.
+ *
  */
 
 export default {
