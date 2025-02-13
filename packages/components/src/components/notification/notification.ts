@@ -10,9 +10,11 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element.js';
 
 const toastStackDefault = Object.assign(document.createElement('div'), {
+  role: 'region',
   className: 'sd-toast-stack sd-toast-stack--top-right'
 });
 const toastStackBottomCenter = Object.assign(document.createElement('div'), {
+  role: 'region',
   className: 'sd-toast-stack sd-toast-stack--bottom-center'
 });
 
@@ -85,8 +87,21 @@ export default class SdNotification extends SolidElement {
   private tabDirection: 'forward' | 'backwards' = 'forward';
   private focused = false;
 
+  get stack(): HTMLElement {
+    return {
+      'top-right': toastStackDefault,
+      'bottom-center': toastStackBottomCenter
+    }[this.toastStack];
+  }
+
   connectedCallback() {
     super.connectedCallback();
+
+    if (!this.stack.parentElement) {
+      document.body.append(this.stack);
+      this.stack.ariaLabel = this.localize.term('notifications');
+    }
+
     this.handleFocusIn = this.handleFocusIn.bind(this);
     document.addEventListener('focusin', this.handleFocusIn);
   }

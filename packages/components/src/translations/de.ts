@@ -20,6 +20,7 @@ const translation: Translation = {
   mute: 'Stummschalten',
   nextSlide: 'Nächste Folie',
   noResults: 'Keine Ergebnisse gefunden',
+  notifications: 'Benachrichtigungen',
   numOptionsSelected: num => {
     if (num === 0) return '';
     return `Optionen ausgewählt (${num})`;
