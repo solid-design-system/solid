@@ -107,12 +107,13 @@ export default class SdRadioButton extends SolidElement {
           class="${cx(
             'relative text-center border rounded-default transition-all ease-in-out duration-100 items-center justify-center focus-visible:focus-outline',
             this.size === 'sm' ? 'text-sm' : 'text-base',
+            this.visuallyDisabled && 'focus-visible:outline-none',
             this.checked && !this.disabled && !this.visuallyDisabled
               ? 'bg-primary border-primary text-white hover:bg-primary-500 hover:border-primary-500'
               : (this.disabled || this.visuallyDisabled) && !this.checked
                 ? 'border-neutral-500 text-neutral-500 hover:cursor-not-allowed'
                 : (this.disabled || this.visuallyDisabled) && this.checked
-                  ? 'bg-neutral-500 border-neutral-500 text-white hover:cursor-not-allowed'
+                  ? 'text-neutral-500 border-neutral-500 hover:cursor-not-allowed '
                   : 'bg-transparent text-primary border-primary hover:bg-primary-100 hover:border-primary-500 hover:text-primary-500 cursor-pointer',
             hasDefaultSlot && 'px-4',
             this.hasFocus && 'focused-class',

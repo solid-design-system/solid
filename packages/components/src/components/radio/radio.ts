@@ -175,7 +175,9 @@ export default class SdRadio extends SolidElement {
         @apply block w-max;
       }
 
-      :host(:focus-visible) {
+      :host(:focus-visible),
+      :host([visually-disabled]:focus-visible) [part='control--checked'],
+      :host([visually-disabled]:focus-visible) [part='control--unchecked'] {
         @apply outline-none;
       }
 

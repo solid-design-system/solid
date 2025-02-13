@@ -185,6 +185,11 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   }
 
   private handleInput() {
+    if (this.visuallyDisabled) {
+      this.textarea.value = this.value;
+      return;
+    }
+
     this.value = this.textarea.value;
     this.formControlController.updateValidity();
     this.emit('sd-input');
@@ -313,14 +318,14 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     const textareaState = this.disabled
       ? 'disabled'
       : this.visuallyDisabled
-        ? 'visually-disabled'
+        ? 'visuallyDisabled'
         : this.readonly
           ? 'readonly'
           : this.hasFocus && this.showInvalidStyle
             ? 'activeInvalid'
             : this.hasFocus && this.styleOnValid && this.showValidStyle
               ? 'activeValid'
-              : this.hasFocus
+              : this.hasFocus && !this.visuallyDisabled
                 ? 'active'
                 : this.showInvalidStyle
                   ? 'invalid'
@@ -359,7 +364,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               'absolute w-full h-full pointer-events-none border rounded-default',
               {
                 disabled: 'border-neutral-500',
-                'visually-disabled': 'border-neutral-500',
+                visuallyDisabled: 'border-neutral-500',
                 readonly: 'border-neutral-800',
                 activeInvalid: 'border-error border-2',
                 activeValid: 'border-success border-2',
@@ -379,9 +384,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                 md: 'textarea-md py-1',
                 lg: 'textarea-lg py-2'
               }[this.size],
-              !this.disabled && !this.readonly ? 'hover:bg-neutral-200' : '',
+              !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
-              textareaState === 'disabled' || textareaState === 'visually-disabled' ? 'text-neutral-500' : 'text-black'
+              textareaState === 'disabled' || textareaState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black'
             )}
           >
             <textarea

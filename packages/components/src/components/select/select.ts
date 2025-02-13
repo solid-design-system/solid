@@ -941,8 +941,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             part="border"
             class=${cx(
               'absolute top-0 w-full h-full pointer-events-none border rounded-default',
-              this.hasHover && 'bg-neutral-200',
-
+              this.hasHover && !this.disabled && !this.visuallyDisabled && 'bg-neutral-200',
               {
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
