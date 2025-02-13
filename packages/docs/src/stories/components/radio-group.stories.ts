@@ -103,6 +103,23 @@ export const Label = {
 };
 
 /**
+ * Use the `help-text` attribute to add a descriptive “help text”. For help texts that contain HTML, use the `help-text` slot instead.
+ */
+export const HelpText = {
+  name: 'Help Text',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-radio-group orientation="vertical" help-text="Help text attribute">
+        <label slot="label">Group Label</label>
+        <sd-radio value="1">Radio 1</sd-radio>
+        <sd-radio value="2">Radio 2</sd-radio>
+        <sd-radio value="3">Radio 3</sd-radio>
+      </sd-radio-group>
+    </div>
+  `
+};
+
+/**
  * Use the `orientation` attribute to set the axis of the radio buttons:
  *
  * - `vertical` (default)

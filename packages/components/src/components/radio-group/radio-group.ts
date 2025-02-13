@@ -84,6 +84,9 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
    */
   @property() label = '';
 
+  /** The element help text. If you need to display HTML, use the `help-text` slot instead. */
+  @property({ attribute: 'help-text' }) helpText = '';
+
   /**
    * Quick way to make the group label bold. Bolding the group label is highly recommended for visual clarity between the label and radio options.
    * It is false by default for consistency among the other form elements which do not use bold labels by default.
@@ -356,6 +359,8 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   render() {
     const hasLabelSlot = this.hasSlotController.test('label');
     const hasLabel = this.label ? true : !!hasLabelSlot;
+    const hasHelpTextSlot = this.hasSlotController.test('help-text');
+    const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
 
     const defaultSlot = html`
       <slot @slotchange=${this.syncRadios} @click=${this.handleRadioClick} @keydown=${this.handleKeyDown}></slot>
@@ -421,6 +426,15 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
             : defaultSlot}
         </div>
       </fieldset>
+      <slot
+        name="help-text"
+        part="form-control-help-text"
+        id="help-text"
+        class=${cx('text-sm text-neutral-700', hasHelpText ? 'block' : 'hidden')}
+        aria-hidden=${!hasHelpText}
+      >
+        ${this.helpText}
+      </slot>
       ${this.formControlController.renderInvalidMessage()}
     `;
   }
