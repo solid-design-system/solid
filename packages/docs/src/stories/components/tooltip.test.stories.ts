@@ -144,71 +144,6 @@ export const Disabled = {
     })
 };
 
-/**
- * In case of having the content longer than the space available, the tooltip can be set to scrollable by overriding the `pointer-events` property to auto. In this case the padding-right should also be adjusted via `sd-tooltip::part(body)`. This behavior is heavily discouraged, but it is available in case of need.
- *
- */
-export const LongContent = {
-  name: 'Long Content',
-  render: () => {
-    return html` <div>
-      <style>
-        sd-tooltip::part(body) {
-          padding-right: 8px;
-        }
-        .long-content {
-          padding-right: 4px;
-        }
-        .long-content::-webkit-scrollbar {
-          width: 4px;
-        }
-
-        .long-content::-webkit-scrollbar-thumb {
-          background-color: transparent; /* make scrollbar transparent */
-          border-radius: 4px;
-        }
-
-        .long-content:hover::-webkit-scrollbar-thumb {
-          background-color: rgba(81, 81, 81, 0.9);
-        }
-      </style>
-      ${generateTemplate({
-        axis: {
-          x: {
-            type: 'slot',
-            name: 'content',
-            values: [
-              {
-                value: `<div class='long-content' slot='content' style='pointer-events:auto; width: 100px;'>Lorem ipsum sic semper dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl. Lorem ipsum sic semper dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliquet nunc, quis aliquam nisl nisl quis nisl. Nulla euismod, nisl quis ultrices aliquam, nunc nisl aliqu et nunc, quis ali qu am nisl nisl quis nisl.</div>`,
-                title: 'long with fixed width'
-              }
-            ]
-          }
-        },
-        args: overrideArgs([
-          {
-            type: 'attribute',
-            name: 'open',
-            value: true
-          },
-          {
-            type: 'attribute',
-            name: 'placement',
-            value: 'bottom'
-          }
-        ]),
-        constants: [
-          {
-            type: 'template',
-            name: 'width',
-            value: '<div class="template-position">%TEMPLATE%</div>'
-          }
-        ]
-      })}
-    </div>`;
-  }
-};
-
 export const Slots = {
   name: 'Slots',
   render: (args: any) => {
@@ -263,4 +198,4 @@ export const Mouseless = {
   }
 };
 
-export const Combination = generateScreenshotStory([Default, Placement, Size, Disabled, LongContent, Slots, Mouseless]);
+export const Combination = generateScreenshotStory([Default, Placement, Size, Disabled, Slots, Mouseless]);
