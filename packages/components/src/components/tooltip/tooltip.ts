@@ -44,8 +44,7 @@ import type SdPopup from '../popup/popup';
 export default class SdTooltip extends SolidElement {
   private hoverTimeout: number;
 
-  // Flag to handle the case where a click event is triggered after a focus event
-  private isFocusTriggered: boolean = false;
+  private interactionType: 'keyboard' | 'mouse' | undefined;
 
   public localize = new LocalizeController(this);
 
@@ -94,6 +93,8 @@ export default class SdTooltip extends SolidElement {
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleMouseOver = this.handleMouseOver.bind(this);
     this.handleMouseOut = this.handleMouseOut.bind(this);
+    document.addEventListener('mousedown', this.handleMouseInteraction);
+    document.addEventListener('keydown', this.handleKeyboardInteraction);
 
     this.updateComplete.then(() => {
       this.addEventListener('blur', this.handleBlur, true);
@@ -124,6 +125,8 @@ export default class SdTooltip extends SolidElement {
     this.removeEventListener('keydown', this.handleKeyDown);
     this.removeEventListener('mouseover', this.handleMouseOver);
     this.removeEventListener('mouseout', this.handleMouseOut);
+    document.removeEventListener('mousedown', this.handleMouseInteraction);
+    document.removeEventListener('keydown', this.handleKeyboardInteraction);
   }
 
   // removes empty text nodes from the default slot
@@ -136,6 +139,14 @@ export default class SdTooltip extends SolidElement {
     });
   }
 
+  private handleMouseInteraction = () => {
+    this.interactionType = 'mouse';
+  };
+
+  private handleKeyboardInteraction = () => {
+    this.interactionType = 'keyboard';
+  };
+
   private handleBlur() {
     if (this.hasTrigger('focus')) {
       this.hide();
@@ -144,12 +155,6 @@ export default class SdTooltip extends SolidElement {
 
   private handleClick() {
     if (this.hasTrigger('click')) {
-      if (this.isFocusTriggered) {
-        this.isFocusTriggered = false;
-        // Ignore click event if focus is triggered first
-        return;
-      }
-
       if (this.open) {
         this.hide();
       } else {
@@ -160,8 +165,9 @@ export default class SdTooltip extends SolidElement {
 
   private handleFocus() {
     if (this.hasTrigger('focus')) {
-      this.isFocusTriggered = true;
-      this.show();
+      if (this.interactionType === 'keyboard') {
+        this.show();
+      }
     }
   }
 
@@ -200,7 +206,6 @@ export default class SdTooltip extends SolidElement {
       if (this.disabled) {
         return;
       }
-
       // Show
       this.emit('sd-show');
 
@@ -245,7 +250,6 @@ export default class SdTooltip extends SolidElement {
     if (this.open) {
       return undefined;
     }
-
     this.open = true;
     return waitForEvent(this, 'sd-after-show');
   }
@@ -255,8 +259,8 @@ export default class SdTooltip extends SolidElement {
     if (!this.open) {
       return undefined;
     }
-
     this.open = false;
+    this.blur();
     return waitForEvent(this, 'sd-after-hide');
   }
 
@@ -283,11 +287,12 @@ export default class SdTooltip extends SolidElement {
         auto-size="vertical"
         arrow-padding="0"
       >
-        <slot slot="anchor" aria-describedby="tooltip" class=${cx(this.size === 'lg' ? 'text-xl' : 'text-base')}>
-          <button class="flex sd-interactive rounded-full">
+        <slot slot="anchor" class=${cx(this.size === 'lg' ? 'text-xl' : 'text-base')}>
+          <button aria-describedby="tooltip" class="flex sd-interactive rounded-full" ?disabled=${this.disabled}>
             <sd-icon
               library="system"
               name="info-circle"
+              label="Tooltip"
               class=${cx(this.disabled && 'sd-interactive--disabled')}
             ></sd-icon>
           </button>
