@@ -1,5 +1,23 @@
 # @solid-design-system/docs
 
+## 1.7.2
+
+### Patch Changes
+
+- Improve docs: _[`#1712`](https://github.com/solid-design-system/solid/pull/1712) [`776c0e4`](https://github.com/solid-design-system/solid/commit/776c0e4579644380b0b169c76373b522ce508edf) [@Vahid1919](https://github.com/Vahid1919)_
+
+  - Improve tooltip placement in the size story
+  - Improve mobile version in the placement story
+
+## 1.7.1
+
+### Patch Changes
+
+- Accessibility tests: _[`#1896`](https://github.com/solid-design-system/solid/pull/1896) [`36904da`](https://github.com/solid-design-system/solid/commit/36904dadac5ac0fe83abac7bc51b7c4a79f5cefc) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Resolved errors during test execution.
+  - Removed unstable `test.watch`.
+
 ## 1.7.0
 
 ### Minor Changes
