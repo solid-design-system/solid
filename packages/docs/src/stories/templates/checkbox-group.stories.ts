@@ -27,3 +27,67 @@ export const Default = {
     </sd-checkbox-group>
   `
 };
+
+/**
+ * Example of a required checkbox group implementation. Can be used to require the user to select one or more checkboxes from a group.
+ *
+ * __Hints:__
+ *
+ * - Add an * to the label to indicate that the checkbox group is required.
+ * - The addition of a `help-text` explaining the requirements to be valid is recommended.
+ * - If the user attempts to submit the form without selecting any checkboxes, an error message should be displayed.
+ *
+ * __Accessibility hint:__ Add the `aria-required` attribute and set it to true to indicate that the checkbox group is required.
+ */
+export const RequiredCheckboxGroup = {
+  render: () => html`
+    <form id="checkbox-group-form">
+      <sd-checkbox-group id="checkbox-group" class="mb-2" aria-required="true">
+        <label slot="label">Required Checkbox Group*</label>
+        <sd-checkbox value="1">Checkbox 1</sd-checkbox>
+        <sd-checkbox value="2">Checkbox 2</sd-checkbox>
+        <sd-checkbox value="3">Checkbox 3</sd-checkbox>
+      </sd-checkbox-group>
+      <p id="error-text" class="text-base text-error hidden mb-2">Error Message</p>
+      <sd-button type="submit">Submit</sd-button>
+    </form>
+    <script type="module">
+      await Promise.all([customElements.whenDefined('sd-button'), customElements.whenDefined('sd-checkbox')]).then(
+        () => {
+          const form = document.getElementById('checkbox-group-form');
+          const checkboxes = form.querySelector('#checkbox-group')?.querySelectorAll('sd-checkbox');
+          const errorMessage = document.getElementById('error-text');
+
+          function handleError() {
+            errorMessage.classList.remove('hidden');
+            checkboxes.forEach(checkbox => checkbox.setCustomValidity(' '));
+          }
+
+          function handleSuccess() {
+            errorMessage.classList.add('hidden');
+            checkboxes.forEach(checkbox => {
+              checkbox.setCustomValidity('');
+              checkbox.reportValidity();
+            });
+          }
+
+          form.onsubmit = event => {
+            event.preventDefault(); // Prevent the default form submission
+            const selectedValues = Array.from(checkboxes).filter(checkbox => checkbox.hasAttribute('checked'));
+
+            if (selectedValues.length === 0) {
+              handleError();
+            } else {
+              // Reset the custom validity message
+              handleSuccess();
+              alert('Login form submitted');
+            }
+            selectedValues = [];
+          };
+
+          checkboxes.forEach(checkbox => checkbox.addEventListener('sd-change', handleSuccess));
+        }
+      );
+    </script>
+  `
+};
