@@ -359,7 +359,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
 
   render() {
     const hasLabelSlot = this.hasSlotController.test('label');
-    const hasLabel = this.label ? true : !!hasLabelSlot;
+    const hasLabel = this.label ? true : hasLabelSlot;
     const hasHelpTextSlot = this.hasSlotController.test('help-text');
     const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
     const hasTooltipSlot = this.hasSlotController.test('tooltip');
@@ -383,14 +383,14 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         role="radiogroup"
         aria-describedby="invalid-message"
       >
-        ${hasLabelSlot || hasTooltipSlot
+        ${hasLabel || hasTooltipSlot
           ? html`<div class="flex items-center gap-1 mb-2">
               <legend
                 part="form-control-label"
                 id="label"
                 class=${cx(
                   'p-0 leading-normal text-black text-left',
-                  !hasLabel && 'hidden',
+                  hasLabel ? 'flex' : 'hidden',
                   this.boldLabel && 'font-bold'
                 )}
                 @click=${this.focus}
