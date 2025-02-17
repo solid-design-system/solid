@@ -100,6 +100,23 @@ export const Checked = {
 };
 
 /**
+ * Test checked and disabled states.
+ */
+
+export const CheckedAndDisabled = {
+  name: 'Checked and Disabled',
+  render: (args: any) => {
+    return generateTemplate({
+      constants: [
+        { type: 'attribute', name: 'checked', value: true },
+        { type: 'attribute', name: 'disabled', value: true }
+      ],
+      args
+    });
+  }
+};
+
+/**
  * Test invalid state inside a form.
  */
 
@@ -160,4 +177,12 @@ export const Parts = {
   }
 };
 
-export const Combination = generateScreenshotStory([Default, Disabled, Required, Checked, Invalid, Parts]);
+export const Combination = generateScreenshotStory([
+  Default,
+  Disabled,
+  Required,
+  Checked,
+  CheckedAndDisabled,
+  Invalid,
+  Parts
+]);
