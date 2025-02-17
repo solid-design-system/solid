@@ -134,7 +134,9 @@ export const ReadOnly = {
 };
 
 /**
- * Use the `help-text` attribute to add a descriptive “help text”. For help texts that contain HTML, use the `help-text` slot instead.
+ * Use the `help-text` attribute to add a descriptive “help text”.
+ *
+ * For help texts that contain HTML, use the `help-text` slot instead.
  */
 
 export const HelpText = {
