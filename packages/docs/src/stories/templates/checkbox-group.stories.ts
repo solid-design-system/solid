@@ -34,8 +34,7 @@ export const Default = {
  * __Hints:__
  *
  * - Add an * to the label to indicate that the checkbox group is required.
- * - The addition of a `help-text` explaining the requirements to be valid is recommended.
- * - If the user attempts to submit the form without selecting any checkboxes, an error message should be displayed.
+ * - An error message should be displayed if the user attempts to submit the form without selecting any checkboxes.
  *
  * __Accessibility hint:__ Add the `aria-required` attribute and set it to true to indicate that the checkbox group is required.
  */
@@ -48,19 +47,24 @@ export const RequiredCheckboxGroup = {
         <sd-checkbox value="2">Checkbox 2</sd-checkbox>
         <sd-checkbox value="3">Checkbox 3</sd-checkbox>
       </sd-checkbox-group>
-      <p id="error-text" class="text-base text-error hidden mb-2">Error Message</p>
+      <p id="error-text" class="text-base text-error hidden mb-2" aria-live="polite">Please fill in this field.</p>
       <sd-button type="submit">Submit</sd-button>
     </form>
     <script type="module">
       await Promise.all([customElements.whenDefined('sd-button'), customElements.whenDefined('sd-checkbox')]).then(
         () => {
           const form = document.getElementById('checkbox-group-form');
-          const checkboxes = form.querySelector('#checkbox-group')?.querySelectorAll('sd-checkbox');
+          const checkboxGroup = form.querySelector('#checkbox-group');
+          const checkboxes = checkboxGroup.querySelectorAll('sd-checkbox');
           const errorMessage = document.getElementById('error-text');
 
           function handleError() {
             errorMessage.classList.remove('hidden');
-            checkboxes.forEach(checkbox => checkbox.setCustomValidity(' '));
+            checkboxes.forEach(checkbox => {
+              checkbox.setCustomValidity('Please fill in this field');
+              checkbox.shadowRoot.querySelector('#invalid-message').classList.add('sr-only');
+            });
+            checkboxGroup.setAttribute('aria-invalid', 'true');
           }
 
           function handleSuccess() {
@@ -82,7 +86,6 @@ export const RequiredCheckboxGroup = {
               handleSuccess();
               alert('Login form submitted');
             }
-            selectedValues = [];
           };
 
           checkboxes.forEach(checkbox => checkbox.addEventListener('sd-change', handleSuccess));
