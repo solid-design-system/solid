@@ -149,9 +149,11 @@ export const ContactForm = {
 };
 
 /**
- * Visually disable form elements by using the attribute `visually-disabled` and wrapping the elements in a `sd-tooltip` to provide information on how to enable them. This approach is recommended for accessibility reasons. Disabling elements, will remove them from the tab order and screen readers will not announce them.
+ * Use the attribute `visually-disabled` to visually disable form elements. Wrap the elements in a `sd-tooltip` to provide information on how to enable them.
+ *
+ * **Accessibility Hint:** This approach is recommended for accessibility reasons. Disabling elements, will remove them from the tab order and screen readers will not announce them.
  */
-export const VisuallyDisabledElementsExample = {
+export const FromWithVisuallyDisabledElements = {
   render: () => html`
     <form class="sd-prose sd-prose--full-width" id="accessible-form">
       <h3 class="sd-headline sd-headline--size-4xl">Contact</h3>
