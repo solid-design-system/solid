@@ -900,7 +900,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   : 'default';
 
     // Conditional Styles
-    const cursorStyles = this.disabled ? 'cursor-not-allowed' : 'cursor-pointer';
+    const cursorStyles = this.disabled || this.visuallyDisabled ? 'cursor-not-allowed' : 'cursor-pointer';
 
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
     const iconSize = {

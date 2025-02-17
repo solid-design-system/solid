@@ -110,7 +110,7 @@ export default class SdRadio extends SolidElement {
         part="base"
         class=${cx(
           'sd-radio group inline-flex items-start items-center text-base leading-normal text-black cursor-pointer align-middle',
-          this.disabled && 'hover:cursor-not-allowed',
+          (this.disabled || this.visuallyDisabled) && 'hover:cursor-not-allowed',
           {
             /* sizes, fonts */
             sm: 'small-size text-sm',
