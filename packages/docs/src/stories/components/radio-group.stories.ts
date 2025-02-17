@@ -15,7 +15,7 @@ const { overrideArgs } = storybookHelpers('sd-radio-group');
  *
  * **Related templates**:
  * - [Radio Button Group](?path=/docs/templates-radio-button-group--docs)
- * - [Tooltip](?path=/docs/templates-tooltip--docs)
+ * - [Radio Group with Tooltip](?path=/docs/templates-tooltip--docs)
  */
 
 export default {
@@ -30,11 +30,6 @@ export default {
     }
   },
   args: overrideArgs([
-    {
-      type: 'slot',
-      name: 'label',
-      value: `<label slot="label">Group Label</label>`
-    },
     {
       type: 'slot',
       name: 'default',

@@ -14,14 +14,13 @@ const { overrideArgs } = storybookHelpers('sd-checkbox-group');
  *
  * **Related templates:**
  * - [Checkbox Group](?path=/docs/templates-checkbox-group--docs)
- * - [Tooltip](?path=/docs/templates-tooltip--docs)
+ * - [Checkbox Group with Tooltip](?path=/docs/templates-tooltip--docs)
  */
 export default {
   title: 'Components/sd-checkbox-group',
   component: 'sd-checkbox-group',
   tags: ['!dev'],
   args: overrideArgs([
-    { type: 'slot', name: 'label', value: `<label slot="label">Group Label</label>` },
     {
       type: 'slot',
       name: 'default',
