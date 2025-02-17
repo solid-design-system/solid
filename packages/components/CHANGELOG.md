@@ -1,5 +1,27 @@
 # @solid-design-system/components
 
+## 4.1.2
+
+### Patch Changes
+
+- Fixed optical missmatch in `checked` and `disabled` state. _[`#1900`](https://github.com/solid-design-system/solid/pull/1900) [`b8f3c8a`](https://github.com/solid-design-system/solid/commit/b8f3c8a6641fb125dd472f5a5cf86c2e4de81ebe) [@smfonseca](https://github.com/smfonseca)_
+
+## 4.1.1
+
+### Patch Changes
+
+- Make `sd-tooltip` more accessible: _[`#1712`](https://github.com/solid-design-system/solid/pull/1712) [`776c0e4`](https://github.com/solid-design-system/solid/commit/776c0e4579644380b0b169c76373b522ce508edf) [@Vahid1919](https://github.com/Vahid1919)_
+
+  - Fixed tooltip ignoring first click due to focus logic.
+  - Provided a label for the icon.
+  - Added `aria-describedby` attribute to the button.
+  - Removed "Long Content" story from screenshot tests.
+
+### 📈 Stats
+
+- Uncompressed: 403 KB (+1 KB / +0%)
+- Gzipped: 95 KB (unchanged)
+
 ## 4.1.0
 
 ### Minor Changes
@@ -9,8 +31,9 @@
   The new icons can be seen [here](https://solid-design-system.fe.union-investment.de/docs/?path=/story/components-sd-icon-default--status-library).
 
 ### 📈 Stats
-* Uncompressed: 402 KB (+2 KB / +0%)
-* Gzipped: 95 KB (unchanged)
+
+- Uncompressed: 402 KB (+2 KB / +0%)
+- Gzipped: 95 KB (unchanged)
 
 ## 4.0.10
 

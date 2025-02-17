@@ -214,7 +214,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
             class=${cx(
               'w-2.5 h-2.5 rounded-full transition-transform ease-in-out duration-200',
               this.disabled && this.checked
-                ? 'bg-white'
+                ? 'bg-white translate-x-2'
                 : this.disabled
                   ? '-translate-x-2 bg-neutral-500'
                   : this.showInvalidStyle
