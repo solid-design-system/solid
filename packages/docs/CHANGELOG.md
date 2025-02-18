@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- Add required checkbox-group template _[`#1910`](https://github.com/solid-design-system/solid/pull/1910) [`b9fe940`](https://github.com/solid-design-system/solid/commit/b9fe940557dd7bdd1fa6d0bfc607de54cee57301) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+- Add checkbox-group template with required fields _[`#1910`](https://github.com/solid-design-system/solid/pull/1910) [`b9fe940`](https://github.com/solid-design-system/solid/commit/b9fe940557dd7bdd1fa6d0bfc607de54cee57301) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
 
 ## 1.7.3
 
