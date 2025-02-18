@@ -79,6 +79,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   /** Disables the textarea. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  /** Styles the textarea as if it was disabled and enables aria-disabled */
+  @property({ type: Boolean, reflect: true, attribute: 'visually-disabled' }) visuallyDisabled = false;
+
   /** Makes the textarea readonly. */
   @property({ type: Boolean, reflect: true }) readonly = false;
 
@@ -182,6 +185,11 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   }
 
   private handleInput() {
+    if (this.visuallyDisabled) {
+      this.textarea.value = this.value;
+      return;
+    }
+
     this.value = this.textarea.value;
     this.formControlController.updateValidity();
     this.emit('sd-input');
@@ -311,19 +319,21 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     // Hierarchy of textarea states:
     const textareaState = this.disabled
       ? 'disabled'
-      : this.readonly
-        ? 'readonly'
-        : this.hasFocus && this.showInvalidStyle
-          ? 'activeInvalid'
-          : this.hasFocus && this.styleOnValid && this.showValidStyle
-            ? 'activeValid'
-            : this.hasFocus
-              ? 'active'
-              : this.showInvalidStyle
-                ? 'invalid'
-                : this.styleOnValid && this.showValidStyle
-                  ? 'valid'
-                  : 'default';
+      : this.visuallyDisabled
+        ? 'visuallyDisabled'
+        : this.readonly
+          ? 'readonly'
+          : this.hasFocus && this.showInvalidStyle
+            ? 'activeInvalid'
+            : this.hasFocus && this.styleOnValid && this.showValidStyle
+              ? 'activeValid'
+              : this.hasFocus && !this.visuallyDisabled
+                ? 'active'
+                : this.showInvalidStyle
+                  ? 'invalid'
+                  : this.styleOnValid && this.showValidStyle
+                    ? 'valid'
+                    : 'default';
 
     // Conditional Styles
     const textSize = this.size === 'sm' ? 'text-sm' : 'text-base';
@@ -358,6 +368,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               'absolute w-full h-full pointer-events-none border rounded-default',
               {
                 disabled: 'border-neutral-500',
+                visuallyDisabled: 'border-neutral-500',
                 readonly: 'border-neutral-800',
                 activeInvalid: 'border-error border-2',
                 activeValid: 'border-success border-2',
@@ -377,9 +388,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                 md: 'textarea-md py-1',
                 lg: 'textarea-lg py-2'
               }[this.size],
-              !this.disabled && !this.readonly ? 'hover:bg-neutral-200' : '',
+              !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
-              textareaState === 'disabled' ? 'text-neutral-500' : 'text-black'
+              textareaState === 'disabled' || textareaState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black'
             )}
           >
             <textarea
@@ -396,6 +407,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               ?disabled=${this.disabled}
               ?readonly=${this.readonly}
               ?required=${this.required}
+              ?visually-disabled=${this.visuallyDisabled}
               placeholder=${ifDefined(this.placeholder)}
               minlength=${ifDefined(this.minlength)}
               maxlength=${ifDefined(this.maxlength)}
@@ -408,6 +420,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               inputmode=${ifDefined(this.inputmode)}
               aria-describedby="help-text invalid-message"
               aria-invalid=${this.showInvalidStyle}
+              aria-disabled=${this.disabled || this.visuallyDisabled}
               @change=${this.handleChange}
               @input=${this.handleInput}
               @invalid=${this.handleInvalid}
@@ -440,7 +453,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           name="help-text"
           part="form-control-help-text"
           id="help-text"
-          class=${cx('text-sm text-neutral-700', hasHelpText ? 'block' : 'hidden')}
+          class=${cx('text-sm text-neutral-700 mt-2', hasHelpText ? 'block' : 'hidden')}
           aria-hidden=${hasHelpText ? 'false' : 'true'}
         >
           ${this.helpText}
@@ -462,6 +475,10 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
       :host([required]) #label::after {
         content: ' *';
+      }
+
+      :host([visually-disabled]) textarea {
+        caret-color: transparent;
       }
 
       .no-scrollbar::-webkit-scrollbar {

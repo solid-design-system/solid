@@ -142,6 +142,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   /** Disables the select control. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  /** Styles the select as if it was disabled and enables aria-disabled */
+  @property({ type: Boolean, reflect: true, attribute: 'visually-disabled' }) visuallyDisabled = false;
+
   /** The select's help text. If you need to display HTML, use the `help-text` slot instead. */
   @property({ attribute: 'help-text' }) helpText = '';
 
@@ -461,7 +464,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     const isRemovableIndicator = path.some(el => el instanceof HTMLSlotElement && el.name === 'removable-indicator');
 
     // Ignore disabled controls and clicks on tags (remove buttons)
-    if (this.disabled || isRemovableIndicator) {
+    if (this.disabled || isRemovableIndicator || this.visuallyDisabled) {
       return;
     }
 
@@ -739,10 +742,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     }
   }
 
-  @watch('disabled', { waitUntilFirstUpdate: true })
+  @watch(['disabled', 'visually-disabled'], { waitUntilFirstUpdate: true })
   handleDisabledChange() {
     // Close the listbox when the control is disabled
-    if (this.disabled) {
+    if (this.disabled || this.visuallyDisabled) {
       this.open = false;
       this.handleOpenChange();
     }
@@ -750,7 +753,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   @watch('open', { waitUntilFirstUpdate: true })
   async handleOpenChange() {
-    if (this.open && !this.disabled) {
+    if (this.open && (!this.disabled || !this.visuallyDisabled)) {
       // Reset the current option
       if (!this.multiple) this.setCurrentOption(this.selectedOptions[0] || this.getFirstOption());
 
@@ -811,7 +814,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   /** Shows the listbox. */
   async show() {
-    if (this.open || this.disabled) {
+    if (this.open || this.disabled || this.visuallyDisabled) {
       this.open = false;
       return undefined;
     }
@@ -882,20 +885,22 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     // Hierarchy of input states:
     const selectState = this.disabled
       ? 'disabled'
-      : this.hasFocus && this.showInvalidStyle
-        ? 'activeInvalid'
-        : this.hasFocus && this.styleOnValid && this.showValidStyle
-          ? 'activeValid'
-          : this.hasFocus || this.open
-            ? 'active'
-            : this.showInvalidStyle
-              ? 'invalid'
-              : this.styleOnValid && this.showValidStyle
-                ? 'valid'
-                : 'default';
+      : this.visuallyDisabled && !this.hasFocus
+        ? 'visuallyDisabled'
+        : this.hasFocus && this.showInvalidStyle
+          ? 'activeInvalid'
+          : this.hasFocus && this.styleOnValid && this.showValidStyle
+            ? 'activeValid'
+            : this.hasFocus || this.open
+              ? 'active'
+              : this.showInvalidStyle
+                ? 'invalid'
+                : this.styleOnValid && this.showValidStyle
+                  ? 'valid'
+                  : 'default';
 
     // Conditional Styles
-    const cursorStyles = this.disabled ? 'cursor-not-allowed' : 'cursor-pointer';
+    const cursorStyles = this.disabled || this.visuallyDisabled ? 'cursor-not-allowed' : 'cursor-pointer';
 
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
     const iconSize = {
@@ -940,9 +945,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             part="border"
             class=${cx(
               'absolute top-0 w-full h-full pointer-events-none border rounded-default',
-              this.hasHover && 'bg-neutral-200',
+              this.hasHover && !this.disabled && !this.visuallyDisabled && 'bg-neutral-200',
               {
                 disabled: 'border-neutral-500',
+                visuallyDisabled: 'border-neutral-500',
                 readonly: 'border-neutral-800',
                 activeInvalid: 'border-error border-2',
                 activeValid: 'border-success border-2',
@@ -1012,7 +1018,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 aria-expanded=${this.open ? 'true' : 'false'}
                 aria-haspopup="listbox"
                 aria-labelledby="label"
-                aria-disabled=${this.disabled ? 'true' : 'false'}
+                aria-disabled=${this.disabled || this.visuallyDisabled ? 'true' : 'false'}
                 aria-invalid=${this.showInvalidStyle}
                 aria-describedby="help-text invalid-message"
                 role="combobox"
@@ -1093,7 +1099,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 class=${cx(
                   'inline-flex ml-2 transition-all',
                   this.open ? 'rotate-180' : 'rotate-0',
-                  this.disabled ? 'text-neutral-500' : 'text-primary',
+                  this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary',
                   iconSize
                 )}
               >
@@ -1125,7 +1131,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         </div>
 
         <div
-          class="text-sm text-neutral-700"
+          class="text-sm text-neutral-700 mt-2"
           part="form-control-help-text"
           id="help-text"
           aria-hidden=${hasHelpText ? 'false' : 'true'}

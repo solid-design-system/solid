@@ -42,6 +42,9 @@ export default class SdLink extends SolidElement {
   /** When not set, the link will render as disabled. */
   @property() href = '';
 
+  /** Styles the link as if it was disabled and enables aria-disabled */
+  @property({ type: Boolean, attribute: 'visually-disabled' }) visuallyDisabled = false;
+
   /** Tells the browser where to open the link. Only used when `href` is present. */
   @property() target: '_blank' | '_parent' | '_self' | '_top';
 
@@ -54,6 +57,13 @@ export default class SdLink extends SolidElement {
 
   private handleFocus() {
     this.emit('sd-focus');
+  }
+
+  private handleClick(e: MouseEvent) {
+    if (this.visuallyDisabled) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
   }
 
   /** Sets focus on the button. */
@@ -77,7 +87,8 @@ export default class SdLink extends SolidElement {
       part="base"
       class=${cx(
         'inline',
-        this.href ? 'cursor-pointer' : '',
+        this.href && !this.visuallyDisabled ? 'cursor-pointer' : '',
+        this.visuallyDisabled ? 'cursor-not-allowed focus-visible:outline-none' : '',
         {
           sm: 'text-sm',
           lg: 'text-base',
@@ -87,18 +98,20 @@ export default class SdLink extends SolidElement {
           disabled: !this.inverted ? 'text-neutral-500' : 'text-neutral-600',
           enabled: !this.inverted
             ? ` text-primary hover:text-primary-500 active:text-primary-800 focus-visible:focus-outline`
-            : `text-white hover:text-primary-200 active:text-primary-400 focus-visible:focus-outline-inverted`
-        }[this.href ? 'enabled' : 'disabled'],
+            : `text-white hover:text-primary-200 active:text-primary-400 focus-visible:focus-outline-inverted`,
+          visuallyDisabled: !this.inverted ? 'text-neutral-500' : 'text-neutral-600'
+        }[this.href && !this.visuallyDisabled ? 'enabled' : this.visuallyDisabled ? 'visuallyDisabled' : 'disabled'],
         this.standalone && 'flex items-start'
       )}
       href=${ifDefined(this.href || undefined)}
       target=${ifDefined(this.target || undefined)}
       download=${ifDefined(this.download)}
       rel=${ifDefined(this.target ? 'noreferrer noopener' : undefined)}
-      aria-disabled=${!this.href ? 'true' : 'false'}
+      aria-disabled=${!this.href || this.visuallyDisabled ? 'true' : 'false'}
       tabindex=${!this.href ? '-1' : '0'}
       @blur=${this.handleBlur}
       @focus=${this.handleFocus}
+      @click=${this.handleClick}
       ><slot
         name="icon-left"
         part="icon-left"

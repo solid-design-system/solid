@@ -59,6 +59,9 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   /** Disables the checkbox. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  /** Styles the checkbox as if it was disabled and enables aria-disabled */
+  @property({ type: Boolean, reflect: true, attribute: 'visually-disabled' }) visuallyDisabled = false;
+
   /** Draws the checkbox in a checked state. */
   @property({ type: Boolean, reflect: true }) checked = false;
 
@@ -95,7 +98,13 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
     this.formControlController.updateValidity();
   }
 
-  private handleClick() {
+  private handleClick(event: MouseEvent) {
+    if (this.visuallyDisabled) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
     this.checked = !this.checked;
     this.indeterminate = false;
     this.emit('sd-change');
@@ -119,11 +128,12 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
     this.emit('sd-focus');
   }
 
-  @watch('disabled', { waitUntilFirstUpdate: true })
+  @watch(['disabled', 'visually-disabled'], { waitUntilFirstUpdate: true })
   handleDisabledChange() {
-    this.setAttribute('aria-disabled', this.disabled ? 'true' : 'false');
+    const isDisabled = this.disabled || this.visuallyDisabled;
+    this.setAttribute('aria-disabled', isDisabled ? 'true' : 'false');
     // Disabled form controls are always valid
-    this.formControlController.setValidity(this.disabled);
+    this.formControlController.setValidity(isDisabled);
   }
 
   @watch(['checked', 'indeterminate'], { waitUntilFirstUpdate: true })
@@ -182,20 +192,22 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           ? 'disabledChecked'
           : this.disabled
             ? 'disabled'
-            : this.showInvalidStyle && this.indeterminate
-              ? 'invalidIndeterminate'
-              : this.showInvalidStyle
-                ? 'invalid'
-                : this.checked || this.indeterminate
-                  ? 'filled'
-                  : 'default';
+            : this.visuallyDisabled
+              ? 'visuallyDisabled'
+              : this.showInvalidStyle && this.indeterminate
+                ? 'invalidIndeterminate'
+                : this.showInvalidStyle
+                  ? 'invalid'
+                  : this.checked || this.indeterminate
+                    ? 'filled'
+                    : 'default';
 
     return html`
       <label
         part="base"
         class=${cx(
           'sd-checkbox group flex items-start text-base leading-normal text-black cursor-pointer',
-          this.disabled && 'hover:cursor-not-allowed',
+          (this.disabled || this.visuallyDisabled) && 'hover:cursor-not-allowed',
           {
             /* sizes, fonts */
             sm: 'text-sm',
@@ -217,6 +229,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           aria-checked=${this.checked ? 'true' : 'false'}
           aria-describedby="invalid-message"
           aria-invalid=${this.showInvalidStyle}
+          aria-disabled=${this.disabled || this.visuallyDisabled ? 'true' : 'false'}
           @click=${this.handleClick}
           @input=${this.handleInput}
           @invalid=${this.handleInvalid}
@@ -230,9 +243,10 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             ? ' control--indeterminate'
             : ''}"
           class=${cx(
-            `relative flex flex-shrink-0 items-center justify-center border rounded-sm h-4 w-4
-            peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2
-            peer-focus-visible:outline-primary`,
+            `relative flex flex-shrink-0 items-center justify-center border rounded-sm h-4 w-4`,
+            !this.visuallyDisabled
+              ? 'peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary'
+              : '',
             {
               sm: 'mt-[2px]',
               md: 'mt-[3px]',
@@ -242,6 +256,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
               disabledIndeterminate: 'border-neutral-500 bg-neutral-500',
               disabledChecked: 'border-neutral-500 bg-neutral-500',
               disabled: 'border-neutral-500',
+              visuallyDisabled: 'border-neutral-500',
               invalidIndeterminate: 'border-error bg-error group-hover:bg-error-400',
               invalid: 'border-error group-hover:bg-neutral-200',
               filled:
@@ -271,7 +286,11 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           id="label"
           class=${cx(
             'select-none inline-block ml-2',
-            this.disabled ? 'text-neutral-500' : this.showInvalidStyle ? 'text-error' : 'text-black'
+            this.disabled || this.visuallyDisabled
+              ? 'text-neutral-500'
+              : this.showInvalidStyle
+                ? 'text-error'
+                : 'text-black'
           )}
         >
           <slot></slot>
