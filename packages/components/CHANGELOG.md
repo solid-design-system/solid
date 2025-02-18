@@ -1,5 +1,20 @@
 # @solid-design-system/components
 
+## 4.1.3
+
+### Patch Changes
+
+- Improve `sd-notification` a11y: _[`#1902`](https://github.com/solid-design-system/solid/pull/1902) [`8d1b364`](https://github.com/solid-design-system/solid/commit/8d1b364f67f000eb58449ddb9431c7e3d13dc083) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Add dismiss using ESC on closable notifications
+  - Add focus trap on closable notifications
+  - Improve notifications stack to behave as a `region`
+  - Add new `notifications` translation
+
+### 📈 Stats
+* Uncompressed: 404 KB (+1 KB / +0%)
+* Gzipped: 96 KB (+1 KB / +1%)
+
 ## 4.1.2
 
 ### Patch Changes
