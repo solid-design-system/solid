@@ -41,14 +41,14 @@ export const Default = {
 export const RequiredCheckboxGroup = {
   render: () => html`
     <form id="checkbox-group-form">
-      <sd-checkbox-group id="checkbox-group" class="mb-2" aria-required="true">
+      <sd-checkbox-group id="checkbox-group" aria-required="true">
         <label slot="label">Required Checkbox Group*</label>
         <sd-checkbox value="1">Checkbox 1</sd-checkbox>
         <sd-checkbox value="2">Checkbox 2</sd-checkbox>
         <sd-checkbox value="3">Checkbox 3</sd-checkbox>
       </sd-checkbox-group>
-      <p id="error-text" class="text-base text-error hidden mb-2" aria-live="polite">Please fill in this field.</p>
-      <sd-button type="submit">Submit</sd-button>
+      <p id="error-text" class="text-base text-error hidden mt-2" aria-live="polite">Please fill in this field.</p>
+      <sd-button type="submit" class="mt-4">Submit</sd-button>
     </form>
     <script type="module">
       await Promise.all([customElements.whenDefined('sd-button'), customElements.whenDefined('sd-checkbox')]).then(
