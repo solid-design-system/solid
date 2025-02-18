@@ -1,8 +1,9 @@
 import '../../../../components/src/solid-components';
-import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
-const { argTypes, args, parameters } = storybookDefaults('sd-pagination');
+const { argTypes, parameters } = storybookDefaults('sd-pagination');
+const { overrideArgs } = storybookHelpers('sd-pagination');
 const { generateTemplate } = storybookTemplate('sd-pagination');
 
 const html = String.raw;
@@ -19,7 +20,6 @@ export default {
   tags: ['!dev'],
   title: 'Styles/sd-pagination',
   component: 'sd-pagination',
-  args,
   argTypes,
   parameters: {
     ...parameters,
@@ -28,6 +28,22 @@ export default {
       url: ''
     }
   },
+  args: overrideArgs({
+    type: 'slot',
+    name: 'default',
+    value: html`
+      <h2>Pagination</h2>
+      <ul>
+        <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
+        <li><a href="/?page=1" aria-current="page">1</a></li>
+        <li><a href="/?page=2">2</a></li>
+        <li><a href="/?page=3">3</a></li>
+        <li><a href="/?page=5">4</a></li>
+        <li><a href="/?page=5">5</a></li>
+        <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
+      </ul>
+    `
+  }),
   decorators: [withActions] as any
 };
 
@@ -35,20 +51,7 @@ export const Default = {
   render: (args: any) => {
     return generateTemplate({
       options: {
-        templateContent: html`
-          <nav class="%CLASSES%">
-            <h2>Pagination</h2>
-            <ul>
-              <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-              <li><a href="/?page=1" aria-current="page">1</a></li>
-              <li><a href="/?page=2">2</a></li>
-              <li><a href="/?page=3">3</a></li>
-              <li><a href="/?page=5">4</a></li>
-              <li><a href="/?page=5">5</a></li>
-              <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
-            </ul>
-          </nav>
-        `
+        templateContent: html`<nav class="%CLASSES%">%SLOT%</nav> `
       },
       args
     });
