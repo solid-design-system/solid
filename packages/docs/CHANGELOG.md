@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.8.1
+
+### Patch Changes
+
+- Add missing solid-components.css styles to stories. _[`#1902`](https://github.com/solid-design-system/solid/pull/1902) [`8d1b364`](https://github.com/solid-design-system/solid/commit/8d1b364f67f000eb58449ddb9431c7e3d13dc083) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.8.0
 
 ### Minor Changes
