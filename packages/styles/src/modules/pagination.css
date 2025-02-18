@@ -1,9 +1,10 @@
 /**
- * Description of the style.
+ * Used to split large content into several pages, allowing users to navigate between them instead of displaying all information on a single page.
  * @name sd-pagination
  * @status stable
  * @since 1.0
- * @boolean sd-pagination--inverted Inverts the style.
+ * @variant { simple } sd-pagination--... The pagination format.
+ * @boolean sd-pagination--inverted Inverts the pagination style.
  */
 
 .sd-pagination {
@@ -166,6 +167,16 @@
       a,
       a[aria-current] {
         @apply text-white focus-visible:focus-outline-inverted;
+      }
+    }
+
+    &.sd-pagination--simple {
+      ul li {
+        @apply before:text-white;
+
+        &:not(:first-child):not(:last-child):nth-last-child(2) a {
+          @apply text-white;
+        }
       }
     }
   }

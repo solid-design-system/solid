@@ -1,16 +1,18 @@
 import '../../../../components/src/solid-components';
-import { html } from 'lit-html';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-pagination');
 const { generateTemplate } = storybookTemplate('sd-pagination');
 
+const html = String.raw;
+
 /**
- * Used to do something cool. (Describe usage of style here.)
+ * Used to split large content into several pages,allowing users to
+ * navigate between them instead of displaying all information on a single page.
  *
  * **Related templates**:
- * - [Link to template](?path=docs/templates-your-template)
+ * - [Pagination](?path=docs/templates-pagination--docs)
  */
 
 export default {
@@ -32,285 +34,125 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({
-      options: { templateContent: '<p class="%CLASSES%">%SLOT%</p>' },
+      options: {
+        templateContent: html`
+          <nav class="%CLASSES%">
+            <h2>Pagination</h2>
+            <ul>
+              <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
+              <li><a href="/?page=1" aria-current="page">1</a></li>
+              <li><a href="/?page=2">2</a></li>
+              <li><a href="/?page=3">3</a></li>
+              <li><a href="/?page=5">4</a></li>
+              <li><a href="/?page=5">5</a></li>
+              <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
+            </ul>
+          </nav>
+        `
+      },
       args
     });
   }
 };
 
 /**
- * Use the `first example` to describe a feature.
+ * Use the `sd-pagination` classes for alternative appearances:
+ *
+ * - Number is the default format
+ * - `sd-pagination--simple`: Simple format
  */
-export const FirstExample = {
+export const Variants = {
   render: () => html`
-  <div>
     <nav class="sd-pagination">
-      <h2>Pagination</h2>
-      <ul>
-        <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-        <li><a href="/?page=1" aria-current="page">1</a></li>
-        <li><a aria-hidden="true"><sd-icon name="system/chevron-right" label="Next"></a></li>
-      </ul>
-    </nav>
-    <nav class="sd-pagination">
-      <h2>Pagination</h2>
+      <h2>Default pagination</h2>
       <ul>
         <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
         <li><a href="/?page=1" aria-current="page">1</a></li>
         <li><a href="/?page=2">2</a></li>
         <li><a href="/?page=3">3</a></li>
-        <li><a href="/?page=5">4</a></li>
+        <li><a href="/?page=4">4</a></li>
         <li><a href="/?page=5">5</a></li>
-        <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
-      </ul>
-    </nav>
-    <nav class="sd-pagination">
-      <h2>Pagination</h2>
-      <ul>
-        <li><a href="/?page=4"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-        <li><a href="/?page=1">1</a></li>
-        <li><a href="/?page=2">2</a></li>
-        <li><a href="/?page=3">3</a></li>
-        <li><a href="/?page=5">4</a></li>
-        <li><a href="/?page=5" aria-current="page">5</a></li>
-        <li><a aria-hidden="true"><sd-icon name="system/chevron-right" label="Next"></a></li>
-      </ul>
-    </nav>
-    <nav class="sd-pagination">
-    <h2>Pagination</h2>
-    <ul>
-      <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-      <li><a href="/?page=1" aria-current="page">1</a></li>
-      <li><a href="/?page=2">2</a></li>
-      <li><a href="/?page=3">3</a></li>
-      <li><a href="/?page=5">4</a></li>
-      <li><a href="/?page=5">5</a></li>
-      <li><a href="/?page=6">6</a></li>
-      <li><a href="/?page=7">7</a></li>
-      <li><a href="/?page=8">8</a></li>
-      <li><a href="/?page=9">9</a></li>
-      <li><a href="/?page=10">10</a></li>
-      <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
-    </ul>
-    </nav>
-    <nav class="sd-pagination">
-      <h2>Pagination</h2>
-      <ul>
-        <li><a href=""><sd-icon name="system/chevron-left" label="Previous"></a></li>
-        <li><a href="/?page=1" >1</a></li>
-        <li><a href="/?page=2">2</a></li>
-        <li><a href="/?page=3">3</a></li>
-        <li><a href="/?page=5">4</a></li>
-        <li><a href="/?page=5" aria-current="page">5</a></li>
         <li><a href="/?page=6">6</a></li>
         <li><a href="/?page=7">7</a></li>
         <li><a href="/?page=8">8</a></li>
         <li><a href="/?page=9">9</a></li>
         <li><a href="/?page=10">10</a></li>
+        <li><a href="/?page=11">11</a></li>
+        <li><a href="/?page=12">12</a></li>
+        <li><a href="/?page=13">13</a></li>
+        <li><a href="/?page=14">14</a></li>
+        <li><a href="/?page=15">15</a></li>
+        <li><a href="/?page=16">16</a></li>
+        <li><a href="/?page=17">17</a></li>
+        <li><a href="/?page=18">18</a></li>
+        <li><a href="/?page=19">19</a></li>
+        <li><a href="/?page=20">20</a></li>
         <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
       </ul>
     </nav>
-    <nav class="sd-pagination">
-      <h2>Pagination</h2>
-      <ul>
-        <li><a href=""><sd-icon name="system/chevron-left" label="Previous"></a></li>
-        <li><a href="/?page=1" >1</a></li>
-        <li><a href="/?page=2">2</a></li>
-        <li><a href="/?page=3">3</a></li>
-        <li><a href="/?page=5">4</a></li>
-        <li><a href="/?page=5">5</a></li>
-        <li><a href="/?page=6">6</a></li>
-        <li><a href="/?page=7">7</a></li>
-        <li><a href="/?page=8">8</a></li>
-        <li><a href="/?page=9">9</a></li>
-        <li><a href="/?page=10" aria-current="page">10</a></li>
-        <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
-      </ul>
-    </nav>
-  </div>
-  `
-};
-
-/**
- * Use the `second example` to describe a feature.
- */
-export const SecondExample = {
-  render: () => html`
-  <nav class="sd-pagination sd-pagination--simple">
-      <h2>Pagination</h2>
-      <ul>
-        <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-        <li><a href="/?page=1" aria-current="page">1</a></li>
-        <li><a aria-hidden="true"><sd-icon name="system/chevron-right" label="Next"></a></li>
-      </ul>
-  </nav>
-  <nav class="sd-pagination sd-pagination--simple">
-      <h2>Pagination</h2>
-      <ul>
-        <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-        <li><a href="/?page=1" aria-current="page">1</a></li>
-        <li><a href="/?page=2">2</a></li>
-        <li><a href="/?page=3">3</a></li>
-        <li><a href="/?page=5">4</a></li>
-        <li><a href="/?page=5">5</a></li>
-        <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
-      </ul>
-  </nav>
-  <nav class="sd-pagination sd-pagination--simple">
-      <h2>Pagination</h2>
-      <ul>
-        <li><a href="/?page=4"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-        <li><a href="/?page=1">1</a></li>
-        <li><a href="/?page=2">2</a></li>
-        <li><a href="/?page=3">3</a></li>
-        <li><a href="/?page=5">4</a></li>
-        <li><a href="/?page=5" aria-current="page">5</a></li>
-        <li><a aria-hidden="true"><sd-icon name="system/chevron-right" label="Next"></a></li>
-      </ul>
-  </nav>
-  <nav class="sd-pagination sd-pagination--simple">
-    <h2>Pagination</h2>
-    <ul>
-      <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-      <li><a href="/?page=1" aria-current="page">1</a></li>
-      <li><a href="/?page=2">2</a></li>
-      <li><a href="/?page=3">3</a></li>
-      <li><a href="/?page=5">4</a></li>
-      <li><a href="/?page=5">5</a></li>
-      <li><a href="/?page=6">6</a></li>
-      <li><a href="/?page=7">7</a></li>
-      <li><a href="/?page=8">8</a></li>
-      <li><a href="/?page=9">9</a></li>
-      <li><a href="/?page=10">10</a></li>
-      <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
-    </ul>
-  </nav>
     <nav class="sd-pagination sd-pagination--simple">
-      <h2>Pagination</h2>
+      <h2>Simple pagination</h2>
       <ul>
-        <li><a href=""><sd-icon name="system/chevron-left" label="Previous"></a></li>
-        <li><a href="/?page=1" >1</a></li>
+        <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
+        <li><a href="/?page=1" aria-current="page">1</a></li>
         <li><a href="/?page=2">2</a></li>
         <li><a href="/?page=3">3</a></li>
-        <li><a href="/?page=5">4</a></li>
-        <li><a href="/?page=5" aria-current="page">5</a></li>
-        <li><a href="/?page=6">6</a></li>
-        <li><a href="/?page=7">7</a></li>
-        <li><a href="/?page=8">8</a></li>
-        <li><a href="/?page=9">9</a></li>
-        <li><a href="/?page=10">10</a></li>
-        <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
-      </ul>
-  </nav>
-  <nav class="sd-pagination sd-pagination--simple">
-      <h2>Pagination</h2>
-      <ul>
-        <li><a href=""><sd-icon name="system/chevron-left" label="Previous"></a></li>
-        <li><a href="/?page=1" >1</a></li>
-        <li><a href="/?page=2">2</a></li>
-        <li><a href="/?page=3">3</a></li>
-        <li><a href="/?page=5">4</a></li>
+        <li><a href="/?page=4">4</a></li>
         <li><a href="/?page=5">5</a></li>
         <li><a href="/?page=6">6</a></li>
         <li><a href="/?page=7">7</a></li>
         <li><a href="/?page=8">8</a></li>
         <li><a href="/?page=9">9</a></li>
-        <li><a href="/?page=10" aria-current="page">10</a></li>
+        <li><a href="/?page=10">10</a></li>
+        <li><a href="/?page=11">11</a></li>
+        <li><a href="/?page=12">12</a></li>
+        <li><a href="/?page=13">13</a></li>
+        <li><a href="/?page=14">14</a></li>
+        <li><a href="/?page=15">15</a></li>
+        <li><a href="/?page=16">16</a></li>
+        <li><a href="/?page=17">17</a></li>
+        <li><a href="/?page=18">18</a></li>
+        <li><a href="/?page=19">19</a></li>
+        <li><a href="/?page=20">20</a></li>
         <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
       </ul>
-  </nav>
+    </nav>
   `
 };
 
 /**
- * Use the `inverted example` to describe a feature.
+ * Use the `sd-pagination--inverted` class when displayed on primary background.
  */
-export const InvertedExample = {
+export const Inverted = {
   render: () => html`
-  <div class="bg-primary p-4">
-    <nav class="sd-pagination sd-pagination--inverted">
-      <h2>Pagination</h2>
-      <ul>
-        <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-        <li><a href="/?page=1" aria-current="page">1</a></li>
-        <li><a aria-hidden="true"><sd-icon name="system/chevron-right" label="Next"></a></li>
-      </ul>
-    </nav>
-    <nav class="sd-pagination sd-pagination--inverted">
-      <h2>Pagination</h2>
-      <ul>
-        <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-        <li><a href="/?page=1" aria-current="page">1</a></li>
-        <li><a href="/?page=2">2</a></li>
-        <li><a href="/?page=3">3</a></li>
-        <li><a href="/?page=5">4</a></li>
-        <li><a href="/?page=5">5</a></li>
-        <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
-      </ul>
-    </nav>
-    <nav class="sd-pagination sd-pagination--inverted">
-      <h2>Pagination</h2>
-      <ul>
-        <li><a href="/?page=4"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-        <li><a href="/?page=1">1</a></li>
-        <li><a href="/?page=2">2</a></li>
-        <li><a href="/?page=3">3</a></li>
-        <li><a href="/?page=5">4</a></li>
-        <li><a href="/?page=5" aria-current="page">5</a></li>
-        <li><a aria-hidden="true"><sd-icon name="system/chevron-right" label="Next"></a></li>
-      </ul>
-    </nav>
-    <nav class="sd-pagination sd-pagination--inverted">
-    <h2>Pagination</h2>
-    <ul>
-      <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-      <li><a href="/?page=1" aria-current="page">1</a></li>
-      <li><a href="/?page=2">2</a></li>
-      <li><a href="/?page=3">3</a></li>
-      <li><a href="/?page=5">4</a></li>
-      <li><a href="/?page=5">5</a></li>
-      <li><a href="/?page=6">6</a></li>
-      <li><a href="/?page=7">7</a></li>
-      <li><a href="/?page=8">8</a></li>
-      <li><a href="/?page=9">9</a></li>
-      <li><a href="/?page=10">10</a></li>
-      <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
-    </ul>
-    </nav>
-    <nav class="sd-pagination sd-pagination--inverted">
-      <h2>Pagination</h2>
-      <ul>
-        <li><a href=""><sd-icon name="system/chevron-left" label="Previous"></a></li>
-        <li><a href="/?page=1" >1</a></li>
-        <li><a href="/?page=2">2</a></li>
-        <li><a href="/?page=3">3</a></li>
-        <li><a href="/?page=5">4</a></li>
-        <li><a href="/?page=5" aria-current="page">5</a></li>
-        <li><a href="/?page=6">6</a></li>
-        <li><a href="/?page=7">7</a></li>
-        <li><a href="/?page=8">8</a></li>
-        <li><a href="/?page=9">9</a></li>
-        <li><a href="/?page=10">10</a></li>
-        <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
-      </ul>
-    </nav>
-    <nav class="sd-pagination sd-pagination--inverted">
-      <h2>Pagination</h2>
-      <ul>
-        <li><a href=""><sd-icon name="system/chevron-left" label="Previous"></a></li>
-        <li><a href="/?page=1" >1</a></li>
-        <li><a href="/?page=2">2</a></li>
-        <li><a href="/?page=3">3</a></li>
-        <li><a href="/?page=5">4</a></li>
-        <li><a href="/?page=5">5</a></li>
-        <li><a href="/?page=6">6</a></li>
-        <li><a href="/?page=7">7</a></li>
-        <li><a href="/?page=8">8</a></li>
-        <li><a href="/?page=9">9</a></li>
-        <li><a href="/?page=10" aria-current="page">10</a></li>
-        <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
-      </ul>
-    </nav>
-  </div>
+    <div class="bg-primary p-4">
+      <nav class="sd-pagination sd-pagination--inverted">
+        <h2>Inverted pagination</h2>
+        <ul>
+          <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
+          <li><a href="/?page=1" aria-current="page">1</a></li>
+          <li><a href="/?page=2">2</a></li>
+          <li><a href="/?page=3">3</a></li>
+          <li><a href="/?page=4">4</a></li>
+          <li><a href="/?page=5">5</a></li>
+          <li><a href="/?page=6">6</a></li>
+          <li><a href="/?page=7">7</a></li>
+          <li><a href="/?page=8">8</a></li>
+          <li><a href="/?page=9">9</a></li>
+          <li><a href="/?page=10">10</a></li>
+          <li><a href="/?page=11">11</a></li>
+          <li><a href="/?page=12">12</a></li>
+          <li><a href="/?page=13">13</a></li>
+          <li><a href="/?page=14">14</a></li>
+          <li><a href="/?page=15">15</a></li>
+          <li><a href="/?page=16">16</a></li>
+          <li><a href="/?page=17">17</a></li>
+          <li><a href="/?page=18">18</a></li>
+          <li><a href="/?page=19">19</a></li>
+          <li><a href="/?page=20">20</a></li>
+          <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
+        </ul>
+      </nav>
+    </div>
   `
 };
