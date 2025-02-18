@@ -24,8 +24,10 @@
     /* Previous and Next */
     li:first-child,
     li:last-child {
+      @apply w-12 h-12;
+
       a {
-        @apply w-12 h-12;
+        @apply w-full h-full;
       }
 
       sd-icon {
@@ -34,15 +36,21 @@
     }
 
     /* Numbers */
-    li:not(:first-child):not(:last-child) {
+    li {
       @apply flex items-center justify-center text-center w-8 h-8;
 
-      a {
-        @apply border-b-2 border-b-transparent w-full h-full;
+      &:not(:first-child):not(:last-child) {
+        a {
+          @apply border-b-2 border-b-transparent w-full h-full;
+
+          &[aria-current] {
+            @apply border-b-accent;
+          }
+        }
       }
 
       a[aria-current] {
-        @apply text-black border-b-2 border-b-accent;
+        @apply text-black;
       }
     }
 
@@ -152,6 +160,13 @@
   }
 
   &--inverted {
-    /* TODO: IMPLEMENT */
+    ul li {
+      @apply after:text-white;
+
+      a,
+      a[aria-current] {
+        @apply text-white focus-visible:focus-outline-inverted;
+      }
+    }
   }
 }
