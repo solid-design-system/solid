@@ -82,7 +82,6 @@ export const RequiredCheckboxGroup = {
             if (selectedValues.length === 0) {
               handleError();
             } else {
-              // Reset the custom validity message
               handleSuccess();
               alert('Login form submitted');
             }
