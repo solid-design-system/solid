@@ -1,5 +1,27 @@
 # @solid-design-system/docs
 
+## 1.10.0
+
+### Minor Changes
+
+- Add `visually-disabled` attribute in form elements for improved accessibility. _[`#1899`](https://github.com/solid-design-system/solid/pull/1899) [`15d4497`](https://github.com/solid-design-system/solid/commit/15d44972b1c3c616dd147245bc837df492d9ec1c) [@smfonseca](https://github.com/smfonseca)_
+
+  By introducing this new attribute, it is possible to display an element as if it is disabled while still keeping it accessible to screen readers. This attribute is currently available on the following components:
+
+  - sd-button
+  - sd-link
+  - sd-input
+  - sd-combobox
+  - sd-select
+  - sd-radio
+  - sd-radio-button
+  - sd-checkbox
+  - sd-textarea
+
+  The components `sd-radio-group` and `sd-checkbox-group` also have a new `help-text` attribute and slot which allows users to include a description.
+
+  A new form template utilizing the `visually-disabled` approach has been created as a suggestion on how to handle forms in a more accessible way.
+
 ## 1.9.0
 
 ### Minor Changes
