@@ -34,7 +34,7 @@
     }
 
     /* Numbers */
-    &:has(li a[aria-current]) li:not(:first-child):not(:last-child) {
+    li:not(:first-child):not(:last-child) {
       @apply flex items-center justify-center text-center w-8 h-8;
 
       a {
@@ -44,73 +44,110 @@
       a[aria-current] {
         @apply text-black border-b-2 border-b-accent;
       }
-
-      /* Number which is not current */
-      &:not(:has(a[aria-current])) {
-        @apply absolute pointer-events-none;
-
-        a {
-          @apply hidden;
-        }
-      }
-
-      /* Apply ellipsis to (n + 2 && n - 1) */
-      &:has(+ li + li a[aria-current]),
-      &:has(a[aria-current]) + li + li:not(:last-child) {
-        @apply !relative !pointer-events-auto after:content-['...'];
-      }
-
-      &:nth-child(2), /* First number */
-      &:nth-last-child(2), /* Last number */
-      &:has(+ li a[aria-current]), /* Previous number */
-      &:has(a[aria-current]) + li /* Next number */ {
-        @apply !relative !pointer-events-auto after:!hidden;
-
-        a {
-          @apply !flex;
-        }
-      }
-
-      /* When current is the first number, the 3rd number should show */
-      &:nth-child(2):has(a[aria-current]) + li + li {
-        @apply !relative !pointer-events-auto after:!hidden;
-
-        a {
-          @apply !flex;
-        }
-
-        & + li {
-          @apply !relative !pointer-events-auto after:content-['...'];
-        }
-      }
-
-      /* When current is the last number, the 3rd number from last should show */
-      &:has(+ li + li a[aria-current]):nth-last-child(4) {
-        @apply !relative !pointer-events-auto after:!hidden;
-
-        a {
-          @apply !flex;
-        }
-      }
-
-      /* When current is the last number, the 4th number from last should be an ellipsis */
-      &:has(+ li + li + li a[aria-current]):nth-last-child(5) {
-        @apply !relative !pointer-events-auto after:content-['...'];
-      }
-    }
-
-    /* When it only has 5 numbers + 2 prev & next buttons */
-    &:has(> li:last-child:nth-child(-n + 7)) li {
-      @apply !relative !pointer-events-auto after:!hidden;
-
-      a {
-        @apply !flex;
-      }
     }
 
     &:has(> li:nth-child(2) a[aria-current]) > li:nth-child(1) a, /* When current is the first page, apply styles to prev button */
     &:has(> li:nth-last-child(2) a[aria-current]) > li:nth-last-child(1) a /* When current is the last page, apply styles to next button */ {
       @apply cursor-not-allowed text-neutral-500;
+    }
+  }
+
+  &:not(.sd-pagination--simple) {
+    ul {
+      /* Numbers */
+      li:not(:first-child):not(:last-child) {
+        /* Number which is not current */
+        &:not(:has(a[aria-current])) {
+          @apply absolute pointer-events-none;
+
+          a {
+            @apply hidden;
+          }
+        }
+
+        /* Apply ellipsis to (n + 2 && n - 1) */
+        &:has(+ li + li a[aria-current]),
+        &:has(a[aria-current]) + li + li:not(:last-child) {
+          @apply !relative !pointer-events-auto after:content-['...'];
+        }
+
+        &:nth-child(2), /* First number */
+        &:nth-last-child(2), /* Last number */
+        &:has(+ li a[aria-current]), /* Previous number */
+        &:has(a[aria-current]) + li /* Next number */ {
+          @apply !relative !pointer-events-auto after:!hidden;
+
+          a {
+            @apply !flex;
+          }
+        }
+
+        /* When current is the first number, the 3rd number should show */
+        &:nth-child(2):has(a[aria-current]) + li + li {
+          @apply !relative !pointer-events-auto after:!hidden;
+
+          a {
+            @apply !flex;
+          }
+
+          & + li {
+            @apply !relative !pointer-events-auto after:content-['...'];
+          }
+        }
+
+        /* When current is the last number, the 3rd number from last should show */
+        &:has(+ li + li a[aria-current]):nth-last-child(4) {
+          @apply !relative !pointer-events-auto after:!hidden;
+
+          a {
+            @apply !flex;
+          }
+        }
+
+        /* When current is the last number, the 4th number from last should be an ellipsis */
+        &:has(+ li + li + li a[aria-current]):nth-last-child(5) {
+          @apply !relative !pointer-events-auto after:content-['...'];
+        }
+      }
+
+      /* When it only has 5 numbers + 2 prev & next buttons */
+      &:has(> li:last-child:nth-child(-n + 7)) li {
+        @apply !relative !pointer-events-auto after:!hidden;
+
+        a {
+          @apply !flex;
+        }
+      }
+    }
+  }
+
+  &--simple {
+    ul {
+      /* Numbers */
+      li:not(:first-child):not(:last-child) {
+        /* Hide numbers except current and last page */
+        &:not(:nth-last-child(2)):not(:has(a[aria-current])) {
+          @apply hidden;
+        }
+
+        &:nth-last-child(2) {
+          &:not(:nth-child(2)) {
+            @apply w-auto before:content-['/'] before:me-2 before:text-xl;
+          }
+
+          a {
+            @apply w-8 border-b-transparent text-primary;
+          }
+
+          a[aria-current] {
+            @apply border-b-accent text-black;
+          }
+        }
+
+        &:nth-last-child(3):has(+ li a[aria-current]) {
+          @apply flex;
+        }
+      }
     }
   }
 
