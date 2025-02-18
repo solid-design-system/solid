@@ -1,5 +1,11 @@
 # @solid-design-system/styles
 
+## 1.2.0
+
+### Minor Changes
+
+- Implement bidirectional navigation between footnotes and references. _[`#1813`](https://github.com/solid-design-system/solid/pull/1813) [`a338a64`](https://github.com/solid-design-system/solid/commit/a338a643bd09aa2829bcb5671eb40db9b8c57832) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.1.0
 
 ### Minor Changes

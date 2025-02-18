@@ -53,7 +53,6 @@ $ pnpm verify        // run tests and builds in repo
 $ cd packages/docs
   && pnpm dev        // start dev server
   && pnpm test       // run accessibility tests
-  && pnpm test.watch // run accessibility tests in watch mode
 $ cd packages/components
   && pnpm test       // run tests
   && pnpm test.watch // run tests in watch mode

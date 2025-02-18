@@ -1,5 +1,39 @@
 # @solid-design-system/docs
 
+## 1.7.3
+
+### Patch Changes
+
+- Fixed optical missmatch in `checked` and `disabled` state. _[`#1900`](https://github.com/solid-design-system/solid/pull/1900) [`b8f3c8a`](https://github.com/solid-design-system/solid/commit/b8f3c8a6641fb125dd472f5a5cf86c2e4de81ebe) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.7.2
+
+### Patch Changes
+
+- Improve docs: _[`#1712`](https://github.com/solid-design-system/solid/pull/1712) [`776c0e4`](https://github.com/solid-design-system/solid/commit/776c0e4579644380b0b169c76373b522ce508edf) [@Vahid1919](https://github.com/Vahid1919)_
+
+  - Improve tooltip placement in the size story
+  - Improve mobile version in the placement story
+
+## 1.7.1
+
+### Patch Changes
+
+- Accessibility tests: _[`#1896`](https://github.com/solid-design-system/solid/pull/1896) [`36904da`](https://github.com/solid-design-system/solid/commit/36904dadac5ac0fe83abac7bc51b7c4a79f5cefc) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Resolved errors during test execution.
+  - Removed unstable `test.watch`.
+
+## 1.7.0
+
+### Minor Changes
+
+- Implement bidirectional navigation between footnotes and references. _[`#1813`](https://github.com/solid-design-system/solid/pull/1813) [`a338a64`](https://github.com/solid-design-system/solid/commit/a338a643bd09aa2829bcb5671eb40db9b8c57832) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### Patch Changes
+
+- Update general accessibility docs according to figma _[`#1898`](https://github.com/solid-design-system/solid/pull/1898) [`13c64c9`](https://github.com/solid-design-system/solid/commit/13c64c988068b00a7a46d459b464e203a574aee4) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.6.1
 
 ### Patch Changes
