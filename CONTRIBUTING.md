@@ -76,8 +76,7 @@
   - Props, events, slots, parts and CSS Custom Properties should be documented in the component's source code using [JSDoc](https://jsdoc.app/). Make sure to include a description, type, and default value for each.
   - Use `.slot` and the additional utility classes classes defined in `packages/components/.storybook/preview-head.html` to mock the slot element used in Figma. These classes are integrated into the Storybook header and should exclusively be used in Storybook. Check out the 'Slot' stories for components like 'sd-dropdown' to see how these classes are used.
 - **Guidelines**:
-  - The simple component (e.g accordion) is shown above the group (e.g accordion-group).
-  - Templates have "resumed name" (e.g. badge instead of Button with Badge).
+  - The template file names have a "shortened name" (e.g., "badge" instead of "Button with Badge").
   - All screenshot tests are into `{component}.test.stories.ts`. Create a combination screenshot story and allow it to be screenshot by Chromatic.
   - All components have an introduction text descriving the functionality starting with "Used to ...", feel free to use descriptions from [shoelace.style](shoelace.style).
   - After the introduction, the `Related components` are listed.
