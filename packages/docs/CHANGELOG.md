@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.9.0
+
+### Minor Changes
+
+- Add new package `eslint-plugin` documentation. _[`#1912`](https://github.com/solid-design-system/solid/pull/1912) [`018277c`](https://github.com/solid-design-system/solid/commit/018277c67e83fd9d4906d3f0c6c3c35c04ad185c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.8.1
 
 ### Patch Changes
