@@ -477,6 +477,10 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
         content: ' *';
       }
 
+      :host([visually-disabled]) textarea {
+        caret-color: transparent;
+      }
+
       .no-scrollbar::-webkit-scrollbar {
         @apply hidden;
       }
