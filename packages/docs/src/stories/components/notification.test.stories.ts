@@ -177,7 +177,7 @@ export const ToastNotification = {
             closable: true,
             variant: variant,
             toastStack: 'top-right',
-            duration: 5000,
+            duration: Infinity,
             innerHTML: 'Lorem ipsum dolor sit amet.'
           });
 
