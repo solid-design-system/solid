@@ -75,6 +75,41 @@
   - Provide stories for props, slots etc. in Storybook
   - Props, events, slots, parts and CSS Custom Properties should be documented in the component's source code using [JSDoc](https://jsdoc.app/). Make sure to include a description, type, and default value for each.
   - Use `.slot` and the additional utility classes classes defined in `packages/components/.storybook/preview-head.html` to mock the slot element used in Figma. These classes are integrated into the Storybook header and should exclusively be used in Storybook. Check out the 'Slot' stories for components like 'sd-dropdown' to see how these classes are used.
+- **Guidelines**:
+  - The simple component (e.g accordion) is shown above the group (e.g accordion-group).
+  - Templates have "resumed name" (e.g. badge instead of Button with Badge).
+  - All screenshot tests are into `{component}.test.stories.ts`. Create a combination screenshot story and allow it to be screenshot by Chromatic.
+  - All components have an introduction text descriving the functionality starting with "Used to ...", feel free to use descriptions from [shoelace.style](shoelace.style).
+  - After the introduction, the `Related components` are listed.
+  - After the `Related components` list, `Related templates` are listed.
+    - Template links in components must point to the mentioned section within the template. If the template have the name of the component link the full template.
+    - The naming of related templates must be Component Only or if pointing to a specific section Component - Component (eg: in sd-select link it to the template select, in sd-tooltip link to the section Select with Tooltip).
+  - For every component's "visual" feature in {component}.stories.ts:
+    - Exists a single story with plain HTML/CSS/JS, that shows the feature.
+    - The samples should help emphasize what is being shown. If we are talking about "Inverted" components shown should have "Inverted" in the text.
+    - In storybook, the 1st sample shows the slots, in Figma slots are only shown if no interactions is required. When interaction is required we use the slots in the next samples.
+    - On the 1st sample we use the component name when possible (eg. Button) instead of (Default).
+    - The story have a legend with one sentence describing the functionallity and what is intended to. (e. g. Use the "open" attribute to ...). Feel free to use texts from Shoelace.
+    - Ensure you add a period at the end of all sentences.
+    - If a bullet list is shown, use a colon in the sentence (e.g., "Use the size attribute to change a button’s size: ").
+      - If variants or options are shown we should use bullet list bellow sample.
+      - In bullet lists, do not use any kind of punctuation marks at the end of the sentence (e.g., lg (default)).
+      - Always use the attribute or classes nomenclature used in code (e.g., instead of "large", use lg).
+      - Always add (default) in front of the default variant/size/etc. (e.g., lg (default)).
+      - If there is no attribute or class for the default use a simple sentence to present the default value (e. g. lg is the default value).
+    - The component's "visual" features are presented in the order:
+      - Default must be in the intro and iteractive
+      - Variants/Open
+      - Size
+      - Label
+      - Orientation
+      - Selected/Checked/Loading/Removable
+      - Disabled
+      - Inverted
+      - Icon/Scrollbars/Hint/Description/Slots
+      - Custom width/padding/styles
+      - Alignments
+      - Required/Invalid (in case required and invalid exist they must be below each other)
 
 ### We Make Migration Easy
 
