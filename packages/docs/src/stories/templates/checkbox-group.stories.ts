@@ -76,7 +76,7 @@ export const RequiredCheckboxGroup = {
           }
 
           form.onsubmit = event => {
-            event.preventDefault(); // Prevent the default form submission
+            event.preventDefault();
             const selectedValues = Array.from(checkboxes).filter(checkbox => checkbox.hasAttribute('checked'));
 
             if (selectedValues.length === 0) {
