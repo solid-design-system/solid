@@ -97,7 +97,7 @@
       - Always add (default) in front of the default variant/size/etc. (e.g., lg (default)).
       - If there is no attribute or class for the default use a simple sentence to present the default value (e. g. lg is the default value).
     - The component's "visual" features are presented in the order:
-      - Default must be in the intro and iteractive
+      - Default must be in the intro and interactive
       - Variants/Open
       - Size
       - Label
