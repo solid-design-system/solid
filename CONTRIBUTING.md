@@ -88,7 +88,7 @@
     - The samples should help emphasize what is being shown. If we are talking about "Inverted" components, it should have "Inverted" in the text.
     - In Storybook, the 1st sample shows the slots. In Figma, slots are only shown if no interaction is required. When interaction is required we use the slots in the next samples.
     - On the 1st sample we use the component name when possible (eg. Button) instead of (Default).
-    - The story have a legend with one sentence describing the functionallity and what is intended to. (e. g. Use the "open" attribute to ...). Feel free to use texts from Shoelace.
+    - The story has a legend with one sentence describing the functionallity and what is intended to. (e. g. Use the "open" attribute to ...). Feel free to use texts from Shoelace.
     - Ensure you add a period at the end of all sentences.
     - If a bullet list is shown, use a colon in the sentence (e.g., "Use the size attribute to change a button’s size: ").
       - If variants or options are shown we should use bullet list bellow sample.
