@@ -85,7 +85,7 @@
     - The naming of related templates must be Component Only or if pointing to a specific section Component - Component (eg: in sd-select link it to the template select, in sd-tooltip link to the section Select with Tooltip).
   - For every component's "visual" feature in {component}.stories.ts:
     - Exists a single story with plain HTML/CSS/JS, that shows the feature.
-    - The samples should help emphasize what is being shown. If we are talking about "Inverted" components shown should have "Inverted" in the text.
+    - The samples should help emphasize what is being shown. If we are talking about "Inverted" components, it should have "Inverted" in the text.
     - In storybook, the 1st sample shows the slots, in Figma slots are only shown if no interactions is required. When interaction is required we use the slots in the next samples.
     - On the 1st sample we use the component name when possible (eg. Button) instead of (Default).
     - The story have a legend with one sentence describing the functionallity and what is intended to. (e. g. Use the "open" attribute to ...). Feel free to use texts from Shoelace.
