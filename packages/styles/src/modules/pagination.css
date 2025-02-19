@@ -40,7 +40,7 @@
     li {
       @apply flex items-center justify-center text-center w-8 h-8;
 
-      &:not(:first-child):not(:last-child) {
+      &:has(a[data-page]) {
         a {
           @apply border-b-2 border-b-transparent w-full h-full;
 
@@ -64,7 +64,7 @@
   &:not(.sd-pagination--simple) {
     ul {
       /* Numbers */
-      li:not(:first-child):not(:last-child) {
+      li:has(a[data-page]) {
         /* Number which is not current */
         &:not(:has(a[aria-current])) {
           @apply absolute pointer-events-none;
@@ -133,7 +133,7 @@
   &--simple {
     ul {
       /* Numbers */
-      li:not(:first-child):not(:last-child) {
+      li:has(a[data-page]) {
         /* Hide numbers except current and last page */
         &:not(:nth-last-child(2)):not(:has(a[aria-current])) {
           @apply hidden;
@@ -174,7 +174,7 @@
       ul li {
         @apply before:text-white;
 
-        &:not(:first-child):not(:last-child):nth-last-child(2) a {
+        &:has(a[data-page]):nth-last-child(2) a {
           @apply text-white;
         }
       }
