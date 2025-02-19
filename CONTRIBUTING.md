@@ -91,7 +91,7 @@
     - The story has a legend with one sentence describing the functionallity and what is intended to. (e. g. Use the "open" attribute to ...). Feel free to use texts from Shoelace.
     - Ensure you add a period at the end of all sentences.
     - If a bullet list is shown, use a colon in the sentence (e.g., "Use the size attribute to change a button’s size: ").
-      - If variants or options are shown we should use bullet list bellow sample.
+      - If variants or options are shown we should list them below.
       - In bullet lists, do not use any kind of punctuation marks at the end of the sentence (e.g., lg (default)).
       - Always use the attribute or classes nomenclature used in code (e.g., instead of "large", use lg).
       - Always add (default) in front of the default variant/size/etc. (e.g., lg (default)).
