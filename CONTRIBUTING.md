@@ -78,7 +78,7 @@
 - **Guidelines**:
   - The template file names have a "shortened name" (e.g., "badge" instead of "Button with Badge").
   - All screenshot tests are into `{component}.test.stories.ts`. Create a combination screenshot story and allow it to be screenshot by Chromatic.
-  - All components have an introduction text descriving the functionality starting with "Used to ...", feel free to use descriptions from [shoelace.style](shoelace.style).
+  - All components have an introduction text describing the functionality starting with "Used to ...", feel free to use descriptions from [shoelace.style](shoelace.style).
   - After the introduction, the `Related components` are listed.
   - After the `Related components` list, `Related templates` are listed.
     - Template links in components must point to the mentioned section within the template. If the template have the name of the component link the full template.
