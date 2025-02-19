@@ -139,22 +139,22 @@
           @apply hidden;
         }
 
+        /* Last page adds the '/' */
         &:nth-last-child(2) {
-          &:not(:nth-child(2)) {
-            @apply w-auto before:content-['/'] before:me-2 before:text-xl;
-          }
+          @apply w-auto before:content-['/'] before:me-2 before:text-xl;
 
           a {
             @apply w-8 border-b-transparent text-primary;
           }
-
-          a[aria-current] {
-            @apply border-b-accent text-black;
-          }
         }
 
-        &:nth-last-child(3):has(+ li a[aria-current]) {
-          @apply flex;
+        /* Last page is also active */
+        &:nth-last-child(2):has(a[aria-current]) {
+          @apply relative ps-10;
+
+          a[aria-current] {
+            @apply after:content-[attr(data-page)] after:absolute after:left-0 after:top-0 after:w-8 after:h-full after:flex after:justify-center after:items-center after:text-black after:border-b-2 after:border-b-accent;
+          }
         }
       }
     }
