@@ -25,9 +25,10 @@ export default {
   tags: ['!autodocs'],
   parameters: {
     ...parameters,
+    controls: { disable: true },
     design: {
       type: 'figma',
-      url: ''
+      url: '' // TODO: URL to figma
     }
   },
   args: overrideArgs([

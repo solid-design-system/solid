@@ -25,7 +25,7 @@ export default {
     ...parameters,
     design: {
       type: 'figma',
-      url: ''
+      url: '' // TODO: URL to figma
     }
   },
   args: overrideArgs({
