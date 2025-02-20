@@ -19,7 +19,11 @@
     @apply flex items-center gap-2;
 
     li a {
-      @apply text-primary flex items-center justify-center focus-visible:focus-outline;
+      @apply text-primary flex items-center justify-center;
+
+      &:focus-visible {
+        @apply outline outline-2 outline-offset-2 outline-primary;
+      }
     }
 
     /* Previous and Next */
@@ -166,7 +170,11 @@
 
       a,
       a[aria-current] {
-        @apply text-white focus-visible:focus-outline-inverted;
+        @apply text-white;
+
+        &:focus-visible {
+          @apply outline-white;
+        }
       }
     }
 
