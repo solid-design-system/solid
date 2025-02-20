@@ -1,5 +1,47 @@
 # @solid-design-system/components
 
+## 4.2.0
+
+### Minor Changes
+
+- Add `visually-disabled` attribute in form elements for improved accessibility. _[`#1899`](https://github.com/solid-design-system/solid/pull/1899) [`15d4497`](https://github.com/solid-design-system/solid/commit/15d44972b1c3c616dd147245bc837df492d9ec1c) [@smfonseca](https://github.com/smfonseca)_
+
+  By introducing this new attribute, it is possible to display an element as if it is disabled while still keeping it accessible to screen readers. This attribute is currently available on the following components:
+
+  - sd-button
+  - sd-link
+  - sd-input
+  - sd-combobox
+  - sd-select
+  - sd-radio
+  - sd-radio-button
+  - sd-checkbox
+  - sd-textarea
+
+  The components `sd-radio-group` and `sd-checkbox-group` also have a new `help-text` attribute and slot which allows users to include a description.
+
+  A new form template utilizing the `visually-disabled` approach has been created as a suggestion on how to handle forms in a more accessible way.
+
+### 📈 Stats
+* Uncompressed: 411 KB (+7 KB / +2%)
+* Gzipped: 97 KB (+1 KB / +1%)
+
+## 4.1.3
+
+### Patch Changes
+
+- Improve `sd-notification` a11y: _[`#1902`](https://github.com/solid-design-system/solid/pull/1902) [`8d1b364`](https://github.com/solid-design-system/solid/commit/8d1b364f67f000eb58449ddb9431c7e3d13dc083) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Add dismiss using ESC on closable notifications
+  - Add focus trap on closable notifications
+  - Improve notifications stack to behave as a `region`
+  - Add new `notifications` translation
+
+### 📈 Stats
+
+- Uncompressed: 404 KB (+1 KB / +0%)
+- Gzipped: 96 KB (+1 KB / +1%)
+
 ## 4.1.2
 
 ### Patch Changes

@@ -1,0 +1,9 @@
+import { Meta } from "@storybook/blocks";
+import Changelog from '../../../../../eslint-plugin/CHANGELOG.md?raw';
+import {ChangelogFormatter} from '../../../Changelog.jsx';
+
+<Meta title="Packages/Eslint Plugin/Changelog" />
+
+<ChangelogFormatter>
+  {Changelog}
+</ChangelogFormatter>

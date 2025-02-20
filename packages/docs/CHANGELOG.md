@@ -1,5 +1,45 @@
 # @solid-design-system/docs
 
+## 1.10.0
+
+### Minor Changes
+
+- Add `visually-disabled` attribute in form elements for improved accessibility. _[`#1899`](https://github.com/solid-design-system/solid/pull/1899) [`15d4497`](https://github.com/solid-design-system/solid/commit/15d44972b1c3c616dd147245bc837df492d9ec1c) [@smfonseca](https://github.com/smfonseca)_
+
+  By introducing this new attribute, it is possible to display an element as if it is disabled while still keeping it accessible to screen readers. This attribute is currently available on the following components:
+
+  - sd-button
+  - sd-link
+  - sd-input
+  - sd-combobox
+  - sd-select
+  - sd-radio
+  - sd-radio-button
+  - sd-checkbox
+  - sd-textarea
+
+  The components `sd-radio-group` and `sd-checkbox-group` also have a new `help-text` attribute and slot which allows users to include a description.
+
+  A new form template utilizing the `visually-disabled` approach has been created as a suggestion on how to handle forms in a more accessible way.
+
+## 1.9.0
+
+### Minor Changes
+
+- Add new package `eslint-plugin` documentation. _[`#1912`](https://github.com/solid-design-system/solid/pull/1912) [`018277c`](https://github.com/solid-design-system/solid/commit/018277c67e83fd9d4906d3f0c6c3c35c04ad185c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.8.1
+
+### Patch Changes
+
+- Add missing solid-components.css styles to stories. _[`#1902`](https://github.com/solid-design-system/solid/pull/1902) [`8d1b364`](https://github.com/solid-design-system/solid/commit/8d1b364f67f000eb58449ddb9431c7e3d13dc083) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.8.0
+
+### Minor Changes
+
+- Add checkbox-group template with required fields _[`#1910`](https://github.com/solid-design-system/solid/pull/1910) [`b9fe940`](https://github.com/solid-design-system/solid/commit/b9fe940557dd7bdd1fa6d0bfc607de54cee57301) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 1.7.3
 
 ### Patch Changes

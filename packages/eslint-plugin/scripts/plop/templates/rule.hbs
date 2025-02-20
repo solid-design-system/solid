@@ -1,0 +1,36 @@
+import { JSXElementES } from '../../utilities/jsx.js';
+import type { Context } from 'types/rules';
+import type { Rule } from 'eslint';
+import type { TagNode } from 'es-html-parser';
+
+const rule = {
+  name: '{{ name }}',
+  meta: {
+    type: 'problem',
+    fixable: 'code',
+    docs: {
+      description: 'Rule description'
+    },
+    messages: {
+      error: 'Error description'
+    },
+    schema: []
+  },
+  create(context: Context) {
+    return {
+      Tag(node: TagNode) {
+        const el = new JSXElementES(node);
+
+        // Implement rule logic here
+        if (!el.is('sd-component')) return;
+
+        context.report({
+          node,
+          messageId: 'error'
+        });
+      }
+    };
+  }
+};
+
+export default rule as unknown as Rule.RuleModule;

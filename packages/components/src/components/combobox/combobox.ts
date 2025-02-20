@@ -162,6 +162,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   /** Disables the combobox control. */
   @property({ reflect: true, type: Boolean }) disabled = false;
 
+  /** Styles the combobox as if it was disabled and enables aria-disabled */
+  @property({ reflect: true, type: Boolean, attribute: 'visually-disabled' }) visuallyDisabled = false;
+
   /** Adds a clear button when the combobox is not empty. */
   @property({ type: Boolean }) clearable = false;
 
@@ -396,6 +399,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   };
 
   private handleDocumentKeyDown = (event: KeyboardEvent) => {
+    if (this.visuallyDisabled) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
     const target = event.target as HTMLElement;
     const isClearButton = target.closest('.combobox__clear') !== null;
 
@@ -532,6 +541,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   }
 
   private handleLabelClick() {
+    if (this.visuallyDisabled) {
+      return;
+    }
     this.displayInput.focus();
   }
 
@@ -554,6 +566,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   }
 
   private handleComboboxMouseDown(event: MouseEvent) {
+    if (this.visuallyDisabled) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
     const path = event.composedPath();
     const isRemovableIndicator = path.some(el => el instanceof HTMLSlotElement && el.name === 'removable-indicator');
 
@@ -921,13 +939,13 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     });
   }
 
-  @watch('disabled', { waitUntilFirstUpdate: true })
+  @watch(['disabled', 'visually-disabled'], { waitUntilFirstUpdate: true })
   handleDisabledChange() {
     // Disabled form controls are always valid
     this.formControlController.setValidity(this.disabled);
 
     // Close the listbox when the control is disabled
-    if (this.disabled) {
+    if (this.disabled || this.visuallyDisabled) {
       this.open = false;
 
       this.handleOpenChange();
@@ -951,7 +969,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   @watch('open', { waitUntilFirstUpdate: true })
   async handleOpenChange() {
-    if (this.open && !this.disabled) {
+    if (this.open && (!this.disabled || !this.visuallyDisabled)) {
       // Show
       this.emit('sd-show');
       this.addOpenListeners();
@@ -989,7 +1007,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   }
 
   async show() {
-    if (this.open || this.disabled) {
+    if (this.open || this.disabled || this.visuallyDisabled) {
       this.open = false;
       return undefined;
     }
@@ -1123,26 +1141,28 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     const hasHelpTextSlot = this.hasSlotController.test('help-text');
     const hasLabel = this.label ? true : !!hasLabelSlot;
     const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
-    const hasClearIcon = this.clearable && !this.disabled;
+    const hasClearIcon = this.clearable && !this.disabled && !this.visuallyDisabled;
 
     // Hierarchy of input states:
     const selectState = this.disabled
       ? 'disabled'
-      : this.hasFocus && this.showInvalidStyle
-        ? 'activeInvalid'
-        : this.hasFocus && this.styleOnValid && this.showValidStyle
-          ? 'activeValid'
-          : this.hasFocus || this.open
-            ? 'active'
-            : this.showInvalidStyle
-              ? 'invalid'
-              : this.styleOnValid && this.showValidStyle
-                ? 'valid'
-                : 'default';
+      : this.visuallyDisabled
+        ? 'visuallyDisabled'
+        : this.hasFocus && this.showInvalidStyle
+          ? 'activeInvalid'
+          : this.hasFocus && this.styleOnValid && this.showValidStyle
+            ? 'activeValid'
+            : this.hasFocus || this.open
+              ? 'active'
+              : this.showInvalidStyle
+                ? 'invalid'
+                : this.styleOnValid && this.showValidStyle
+                  ? 'valid'
+                  : 'default';
 
     // Conditional Styles
-    const cursorStyles = this.disabled ? 'cursor-not-allowed' : 'cursor-pointer';
-    const iconColor = this.disabled ? 'text-neutral-500' : 'text-primary';
+    const cursorStyles = this.disabled || this.visuallyDisabled ? 'cursor-not-allowed' : 'cursor-pointer';
+    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary';
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
     const iconMarginRight = { sm: 'mr-1', md: 'mr-2', lg: 'mr-2' }[this.size];
     const iconSize = {
@@ -1177,9 +1197,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
             part="border"
             class=${cx(
               'absolute top-0 w-full h-full pointer-events-none border rounded-default',
-              this.hasHover && 'bg-neutral-200',
+              this.hasHover && !this.disabled && !this.visuallyDisabled && 'bg-neutral-200',
               {
                 disabled: 'border-neutral-500',
+                visuallyDisabled: 'border-neutral-500',
                 readonly: 'border-neutral-800',
                 activeInvalid: 'border-error border-2',
                 activeValid: 'border-success border-2',
@@ -1261,7 +1282,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 aria-expanded=${this.open}
                 aria-haspopup="listbox"
                 aria-labelledby="label"
-                aria-disabled=${this.disabled}
+                aria-disabled=${this.disabled || this.visuallyDisabled}
                 aria-describedby="help-text invalid-message"
                 aria-invalid="${this.showInvalidStyle}"
                 role="combobox"
@@ -1339,7 +1360,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 part="right"
                 class=${cx(
                   'inline-flex ml-2 leading-[0]',
-                  this.disabled ? 'text-neutral-500' : 'text-primary',
+                  this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary',
                   iconSize
                 )}
               >
@@ -1387,7 +1408,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           </sd-popup>
         </div>
 
-        <div part="form-control-help-text" id="help-text" class="text-sm text-neutral-700" aria-hidden=${!hasHelpText}>
+        <div
+          part="form-control-help-text"
+          id="help-text"
+          class="text-sm text-neutral-700 mt-2"
+          aria-hidden=${!hasHelpText}
+        >
           <slot name="help-text">${this.helpText}</slot>
         </div>
       </div>

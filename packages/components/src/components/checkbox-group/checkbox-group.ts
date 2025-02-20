@@ -18,11 +18,12 @@ import type SdCheckbox from '../checkbox/checkbox';
  * @slot label - The checkbox group's label. Required for proper accessibility. Alternatively, you can use the `label`
  * attribute.
  * @slot tooltip - An optional tooltip that helps describe the checkbox-group. Use this slot with the `sd-tooltip` component.
+ * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
  **/
 
 @customElement('sd-checkbox-group')
 export default class SdCheckboxGroup extends SolidElement {
-  private readonly hasSlotController = new HasSlotController(this, 'label');
+  private readonly hasSlotController = new HasSlotController(this, 'label', 'help-text');
 
   /** The checkbox group's size. This size will be applied to the label, all child checkboxes. */
   @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
@@ -40,6 +41,9 @@ export default class SdCheckboxGroup extends SolidElement {
    * instead.
    */
   @property() label = '';
+
+  /** The element help text. If you need to display HTML, use the `help-text` slot instead. */
+  @property({ attribute: 'help-text' }) helpText = '';
 
   private getAllCheckboxes() {
     return [...this.querySelectorAll<SdCheckbox>('sd-checkbox')];
@@ -78,6 +82,8 @@ export default class SdCheckboxGroup extends SolidElement {
   render() {
     const hasLabelSlot = this.hasSlotController.test('label');
     const hasLabel = this.label ? true : hasLabelSlot;
+    const hasHelpTextSlot = this.hasSlotController.test('help-text');
+    const hasHelpText = this.helpText ? true : hasHelpTextSlot;
     const defaultSlot = html` <slot @slotchange=${this.syncCheckboxes}></slot> `;
     const hasTooltip = this.hasSlotController.test('tooltip');
 
@@ -123,6 +129,15 @@ export default class SdCheckboxGroup extends SolidElement {
           ${defaultSlot}
         </div>
       </fieldset>
+      <slot
+        name="help-text"
+        part="form-control-help-text"
+        id="help-text"
+        class=${cx('text-sm text-neutral-700 mt-2', hasHelpText ? 'block' : 'hidden')}
+        aria-hidden=${!hasHelpText}
+      >
+        ${this.helpText}
+      </slot>
     `;
   }
 

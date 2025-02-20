@@ -10,9 +10,11 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element.js';
 
 const toastStackDefault = Object.assign(document.createElement('div'), {
+  role: 'region',
   className: 'sd-toast-stack sd-toast-stack--top-right'
 });
 const toastStackBottomCenter = Object.assign(document.createElement('div'), {
+  role: 'region',
   className: 'sd-toast-stack sd-toast-stack--bottom-center'
 });
 
@@ -50,6 +52,7 @@ export default class SdNotification extends SolidElement {
   public localize = new LocalizeController(this);
 
   @query('[part~="base"]') base: HTMLElement;
+  @query('[part~="close-button"]') close: HTMLElement;
 
   /** The sd-notification's theme. */
   @property({ reflect: true }) variant: 'info' | 'success' | 'error' | 'warning' = 'info';
@@ -60,7 +63,10 @@ export default class SdNotification extends SolidElement {
    */
   @property({ type: Boolean, reflect: true }) open = false;
 
-  /** Enables a close button that allows the user to dismiss the notification. */
+  /**
+   * Enables a close button that allows the user to dismiss the notification.
+   * It also allows the user to dismiss the notification using the ESC.
+   */
   @property({ type: Boolean, reflect: true }) closable = false;
 
   /**
@@ -78,6 +84,32 @@ export default class SdNotification extends SolidElement {
 
   private remainingDuration = this.duration;
   private startTime = Date.now();
+  private tabDirection: 'forward' | 'backwards' = 'forward';
+  private focused = false;
+
+  get stack(): HTMLElement {
+    return {
+      'top-right': toastStackDefault,
+      'bottom-center': toastStackBottomCenter
+    }[this.toastStack];
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    if (!this.stack.parentElement) {
+      document.body.append(this.stack);
+      this.stack.ariaLabel = this.localize.term('notifications');
+    }
+
+    this.handleFocusIn = this.handleFocusIn.bind(this);
+    document.addEventListener('focusin', this.handleFocusIn);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    document.removeEventListener('focusin', this.handleFocusIn);
+  }
 
   firstUpdated() {
     this.base.hidden = !this.open;
@@ -113,6 +145,37 @@ export default class SdNotification extends SolidElement {
 
   private handleCloseClick() {
     this.hide();
+  }
+
+  private checkFocus() {
+    if (!this.focused || !this.closable) return;
+
+    if (!this.matches(':focus-within')) {
+      const target = this.tabDirection === 'forward' ? this.base : this.close;
+
+      if (typeof target?.focus === 'function') {
+        target.focus({ preventScroll: true });
+      }
+    }
+  }
+
+  private handleFocusIn() {
+    this.focused = true;
+  }
+
+  private handleKeyDown(event: KeyboardEvent) {
+    this.tabDirection = 'forward';
+
+    if (this.closable && event.key === 'Escape') {
+      this.hide();
+      return;
+    }
+
+    if (event.key === 'Tab' && event.shiftKey) {
+      this.tabDirection = 'backwards';
+    }
+
+    requestAnimationFrame(() => this.checkFocus());
   }
 
   @watch('open', { waitUntilFirstUpdate: true })
@@ -212,12 +275,15 @@ export default class SdNotification extends SolidElement {
     return html`
       <div
         part="base"
-        class=${cx('w-full overflow-hidden flex items-stretch relative m-2')}
+        class=${cx('w-full overflow-hidden flex items-stretch relative m-2 focus-visible:focus-outline')}
         role="alert"
         id="notification"
+        tabindex="0"
+        aria-labelledby="message"
         aria-hidden=${this.open ? 'false' : 'true'}
         @mouseenter=${this.onHover}
         @mouseleave=${this.onHoverEnd}
+        @keydown=${this.handleKeyDown}
       >
         <slot
           name="icon"
@@ -251,7 +317,7 @@ export default class SdNotification extends SolidElement {
             'border-solid border-[1px] border-l-0 border-neutral-400'
           )}
         >
-          <slot part="message" class="block w-full pl-3 py-2" aria-live="polite"></slot>
+          <slot id="message" part="message" class="block w-full pl-3 py-2"></slot>
 
           ${this.closable
             ? html`

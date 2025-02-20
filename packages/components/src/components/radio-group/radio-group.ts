@@ -27,6 +27,7 @@ import type SdRadioButton from '../../components/radio-button/radio-button';
  * @slot - The default slot where `<sd-radio>` or `<sd-radio-button>` elements are placed.
  * @slot label - The radio group's label. Required for proper accessibility. Alternatively, you can use the `label`
  *  attribute.
+ * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
  * @slot tooltip - An optional tooltip that helps describe the radio-group. Use this slot with the `sd-tooltip` component.
  *
  * @event sd-change - Emitted when the radio group's selected value changes.
@@ -83,6 +84,9 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
    * instead.
    */
   @property() label = '';
+
+  /** The element help text. If you need to display HTML, use the `help-text` slot instead. */
+  @property({ attribute: 'help-text' }) helpText = '';
 
   /**
    * Quick way to make the group label bold. Bolding the group label is highly recommended for visual clarity between the label and radio options.
@@ -355,7 +359,9 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
 
   render() {
     const hasLabelSlot = this.hasSlotController.test('label');
-    const hasLabel = this.label ? true : !!hasLabelSlot;
+    const hasLabel = this.label ? true : hasLabelSlot;
+    const hasHelpTextSlot = this.hasSlotController.test('help-text');
+    const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
     const hasTooltipSlot = this.hasSlotController.test('tooltip');
 
     const defaultSlot = html`
@@ -377,14 +383,14 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         role="radiogroup"
         aria-describedby="invalid-message"
       >
-        ${hasLabelSlot || hasTooltipSlot
+        ${hasLabel || hasTooltipSlot
           ? html`<div class="flex items-center gap-1 mb-2">
               <legend
                 part="form-control-label"
                 id="label"
                 class=${cx(
                   'p-0 leading-normal text-black text-left',
-                  !hasLabel && 'hidden',
+                  hasLabel ? 'flex' : 'hidden',
                   this.boldLabel && 'font-bold'
                 )}
                 @click=${this.focus}
@@ -428,6 +434,15 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
             : defaultSlot}
         </div>
       </fieldset>
+      <slot
+        name="help-text"
+        part="form-control-help-text"
+        id="help-text"
+        class=${cx('text-sm text-neutral-700 mt-2', hasHelpText ? 'block' : 'hidden')}
+        aria-hidden=${!hasHelpText}
+      >
+        ${this.helpText}
+      </slot>
       ${this.formControlController.renderInvalidMessage()}
     `;
   }
