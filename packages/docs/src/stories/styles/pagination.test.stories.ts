@@ -15,7 +15,7 @@ const { generateScreenshotStory } = storybookUtilities;
 const html = String.raw;
 
 /**
- * Used to split large content into several pages,allowing users to
+ * Used to split large content into several pages, allowing users to
  * navigate between them instead of displaying all information on a single page.
  */
 
