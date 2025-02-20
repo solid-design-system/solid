@@ -265,7 +265,7 @@ export default class SdDialog extends SolidElement {
         <div
           part="panel"
           class=${cx(
-            'flex flex-col z-20 bg-white py-4 sm:py-8 relative gap-6 focus-visible:focus-outline-inverted',
+            'flex flex-col z-20 bg-white py-4 sm:py-8 relative gap-6 focus-visible:focus-outline-inverted overflow-y-auto',
             this.open && 'flex opacity-100'
           )}
           role="dialog"
@@ -335,6 +335,11 @@ export default class SdDialog extends SolidElement {
         :host {
           --width: 335px;
         }
+
+        [part='body'] {
+          min-height: 50px;
+        }
+
         [part='footer'] {
           @apply w-full;
         }
