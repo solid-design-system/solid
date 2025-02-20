@@ -28,7 +28,7 @@ export default {
     controls: { disable: true },
     design: {
       type: 'figma',
-      url: '' // TODO: URL to figma
+      url: 'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/branch/LiEAPa5PkSJyjkyAE9RNsi/Solid-DS-%E2%80%93-Component-Library?node-id=9401-33&p=f&t=A7lFFTs8C5yV9hmi-0'
     }
   },
   args: overrideArgs([
