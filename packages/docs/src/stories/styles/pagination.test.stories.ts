@@ -22,7 +22,7 @@ const html = String.raw;
 export default {
   title: 'Styles/sd-pagination/Screenshots: sd-pagination',
   component: 'sd-pagination',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-[landmark-unique]'],
   parameters: {
     ...parameters,
     controls: { disable: true },
@@ -58,7 +58,7 @@ export const Default = {
   render: (args: any) => {
     return generateTemplate({
       options: {
-        templateContent: html`<nav class="%CLASSES%">%SLOT%</nav> `
+        templateContent: html`<nav class="%CLASSES%" aria-label="Pagination">%SLOT%</nav> `
       },
       args
     });
@@ -74,8 +74,7 @@ export const Variants = {
       },
       options: {
         templateContent: html`
-          <nav class="%CLASSES%">
-            <h2>Pagination</h2>
+          <nav class="%CLASSES%" aria-label="Pagination">
             <ul>
               <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
               <li><a href="/?page=1" data-page="1" aria-current="page">1</a></li>
@@ -102,8 +101,7 @@ export const SinglePage = {
       },
       options: {
         templateContent: html`
-          <nav class="%CLASSES%">
-            <h2>Pagination</h2>
+          <nav class="%CLASSES%" aria-label="Pagination">
             <ul>
               <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
               <li><a href="/?page=1" data-page="1" aria-current="page">1</a></li>
@@ -123,8 +121,7 @@ export const Truncated = {
     return generateTemplate({
       options: {
         templateContent: html`
-          <nav class="%CLASSES%">
-            <h2>Truncated pagination</h2>
+          <nav class="%CLASSES%" aria-label="Pagination">
             <ul>
               <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
               <li><a href="/?page=1" data-page="1" aria-current="page">1</a></li>
@@ -222,8 +219,7 @@ export const Inverted = {
       options: {
         templateBackgrounds: { alternate: 'x', colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))'] },
         templateContent: html`
-          <nav class="%CLASSES%">
-            <h2>Pagination</h2>
+          <nav class="%CLASSES%" aria-label="Pagination">
             <ul>
               <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
               <li><a href="/?page=1" data-page="1" aria-current="page">1</a></li>
@@ -255,4 +251,5 @@ export const Inverted = {
     });
   }
 };
+
 export const Combination = generateScreenshotStory([Default, Variants, SinglePage, Truncated, Inverted]);

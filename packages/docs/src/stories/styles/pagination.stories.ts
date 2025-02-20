@@ -32,7 +32,6 @@ export default {
     type: 'slot',
     name: 'default',
     value: html`
-      <h2>Pagination</h2>
       <ul>
         <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
         <li><a href="/?page=1" data-page="1" aria-current="page">1</a></li>
@@ -51,7 +50,7 @@ export const Default = {
   render: (args: any) => {
     return generateTemplate({
       options: {
-        templateContent: html`<nav class="%CLASSES%">%SLOT%</nav> `
+        templateContent: html`<nav class="%CLASSES%" aria-label="Default pagination">%SLOT%</nav> `
       },
       args
     });
@@ -66,8 +65,7 @@ export const Default = {
  */
 export const Variants = {
   render: () => html`
-    <nav class="sd-pagination">
-      <h2>Default pagination</h2>
+    <nav class="sd-pagination" aria-label="Default variant pagination">
       <ul>
         <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
         <li><a href="/?page=1" data-page="1" aria-current="page">1</a></li>
@@ -93,8 +91,7 @@ export const Variants = {
         <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
       </ul>
     </nav>
-    <nav class="sd-pagination sd-pagination--simple">
-      <h2>Simple pagination</h2>
+    <nav class="sd-pagination sd-pagination--simple" aria-label="Simple variant pagination">
       <ul>
         <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
         <li><a href="/?page=1" data-page="1" aria-current="page">1</a></li>
@@ -129,8 +126,7 @@ export const Variants = {
 export const Inverted = {
   render: () => html`
     <div class="bg-primary p-4">
-      <nav class="sd-pagination sd-pagination--inverted">
-        <h2>Inverted pagination</h2>
+      <nav class="sd-pagination sd-pagination--inverted" aria-label="Inverted pagination">
         <ul>
           <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
           <li><a href="/?page=1" data-page="1" aria-current="page">1</a></li>

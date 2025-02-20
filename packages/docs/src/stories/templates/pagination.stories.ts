@@ -16,8 +16,7 @@ export default {
 export const Default = {
   render: () =>
     html`
-      <nav id="pagination" class="sd-pagination">
-        <h2>Default pagination</h2>
+      <nav id="pagination" class="sd-pagination" aria-label="Default pagination">
         <ul>
           <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Go to previous page"></a></li>
           <li><a href="/?page=1" data-page="1" aria-current="page" aria-label="Page 1">1</a></li>
