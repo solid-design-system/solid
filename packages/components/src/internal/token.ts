@@ -6,7 +6,7 @@ const processors: Record<string, (value: string) => string | number> = {
   duration: (value: string): number => parseFloat(value.replace('s', '')) * 1000
 };
 
-export const token = <T extends keyof typeof TOKENS>(name: string): ReturnType<(typeof processors)[T]> | null => {
+export const token = (name: string): string | number | null => {
   const el = document.createElement('div');
   el.className = name;
   el.style.position = 'absolute';
@@ -20,5 +20,5 @@ export const token = <T extends keyof typeof TOKENS>(name: string): ReturnType<(
   const value = window.getComputedStyle(el).getPropertyValue(property);
   document.body.removeChild(el);
 
-  return processors[entry as T]?.(value) ?? value;
+  return processors[entry]?.(value) ?? value;
 };
