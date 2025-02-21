@@ -106,6 +106,22 @@ export const Disabled = {
 };
 
 /**
+ * Use the `visually-disabled` attribute to style the component as if it was disabled and enable `aria-disabled` to allow it to be reachable by screen readers.
+ *
+ * __Hint:__ When using this attribute, make sure to provide ways to inform the user why the element is disabled and how to enable it. This can be done by using the `help-text` attribute or wrapping the element in a sd-tooltip.
+ *
+ * **Accessibility Hint:** Disabling elements is not recommended for accessibility reasons.
+ */
+export const VisuallyDisabled = {
+  render: () =>
+    html`<div class="w-[250px] h-[200px] pt-12">
+      <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm" placement="top">
+        <sd-input label="Label" value="Visually Disabled" visually-disabled></sd-input>
+      </sd-tooltip>
+    </div>`
+};
+
+/**
  * Use the `read-only` attribute to render an input as read only.
  *
  * Interaction is enabled, but the textarea cannot be edited. Events will be fired.
@@ -118,7 +134,9 @@ export const ReadOnly = {
 };
 
 /**
- * Use the `help-text` attribute to add a descriptive “help text”. For help texts that contain HTML, use the `help-text` slot instead.
+ * Use the `help-text` attribute to add a descriptive “help text”.
+ *
+ * For help texts that contain HTML, use the `help-text` slot instead.
  */
 
 export const HelpText = {

@@ -138,6 +138,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** Disables the input. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  /** Styles the input as if it was disabled and enables aria-disabled */
+  @property({ type: Boolean, reflect: true, attribute: 'visually-disabled' }) visuallyDisabled = false;
+
   /** Makes the input readonly. */
   @property({ type: Boolean, reflect: true }) readonly = false;
 
@@ -282,6 +285,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   }
 
   private handleInput() {
+    if (this.visuallyDisabled) {
+      this.input.value = this.value;
+      return;
+    }
+
     this.value = this.input.value;
     this.formControlController.updateValidity();
     this.emit('sd-input');
@@ -478,25 +486,28 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     // Hierarchy of input states:
     const inputState = this.disabled
       ? 'disabled'
-      : this.readonly
-        ? 'readonly'
-        : this.hasFocus && this.showInvalidStyle
-          ? 'activeInvalid'
-          : this.hasFocus && this.styleOnValid && this.showValidStyle
-            ? 'activeValid'
-            : this.hasFocus
-              ? 'active'
-              : this.showInvalidStyle
-                ? 'invalid'
-                : this.styleOnValid && this.showValidStyle
-                  ? 'valid'
-                  : 'default';
+      : this.visuallyDisabled
+        ? 'visuallyDisabled'
+        : this.readonly
+          ? 'readonly'
+          : this.hasFocus && this.showInvalidStyle
+            ? 'activeInvalid'
+            : this.hasFocus && this.styleOnValid && this.showValidStyle
+              ? 'activeValid'
+              : this.hasFocus
+                ? 'active'
+                : this.showInvalidStyle
+                  ? 'invalid'
+                  : this.styleOnValid && this.showValidStyle
+                    ? 'valid'
+                    : 'default';
 
     // Conditional Styles
     const textSize = this.size === 'sm' ? 'text-sm' : 'text-base';
 
     const borderColor = {
       disabled: 'border-neutral-500',
+      visuallyDisabled: 'border-neutral-500',
       readonly: 'border-neutral-800',
       activeInvalid: 'border-error border-2',
       activeValid: 'border-success border-2',
@@ -506,7 +517,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       default: 'border-neutral-800'
     }[inputState];
 
-    const iconColor = this.disabled ? 'text-neutral-500' : 'text-primary';
+    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary';
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
     const iconSize = {
       sm: 'text-base',
@@ -516,7 +527,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
     // Render
     return html`
-      <div part="form-control" class=${cx(this.disabled && 'pointer-events-none')}>
+      <div
+        part="form-control"
+        class=${cx(this.disabled && 'pointer-events-none', this.visuallyDisabled && 'cursor-not-allowed')}
+      >
         ${hasLabel || hasTooltip
           ? html`<div class="flex items-center gap-1 mb-2">
               <label
@@ -533,7 +547,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
             </div>`
           : null}
 
-        <div part="form-control-input" class="relative w-full">
+        <div part="form-control-input" class=${cx('relative w-full', this.visuallyDisabled && 'cursor-not-allowed')}>
           <div
             part="border"
             class=${cx('absolute w-full h-full pointer-events-none border rounded-default', borderColor)}
@@ -545,9 +559,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               // Vertical Padding
               this.size === 'lg' ? 'py-2' : 'py-1',
               // States
-              !this.disabled && !this.readonly ? 'hover:bg-neutral-200' : '',
+              !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
-              inputState === 'disabled' ? 'text-neutral-500' : 'text-black'
+              inputState === 'disabled' || inputState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black'
             )}
           >
             ${slots['left']
@@ -563,7 +577,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               class=${cx(
                 'min-w-0 flex-grow focus:outline-none bg-transparent placeholder-neutral-700',
                 this.size === 'sm' ? 'h-6' : 'h-8',
-                textSize
+                textSize,
+                this.visuallyDisabled && 'cursor-not-allowed'
               )}
               type=${this.type === 'password' && this.passwordVisible ? 'text' : this.type}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
@@ -587,6 +602,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               enterkeyhint=${ifDefined(this.enterkeyhint)}
               inputmode=${ifDefined(this.inputmode)}
               aria-describedby="help-text invalid-message"
+              aria-disabled=${this.visuallyDisabled || this.disabled ? 'true' : 'false'}
               @change=${this.handleChange}
               @input=${this.handleInput}
               @invalid=${this.handleInvalid}
@@ -742,7 +758,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           name="help-text"
           part="form-control-help-text"
           id="help-text"
-          class=${cx('text-sm text-neutral-700', hasHelpText ? 'block' : 'hidden')}
+          class=${cx('text-sm text-neutral-700 mt-2', hasHelpText ? 'block' : 'hidden')}
           aria-hidden=${!hasHelpText}
         >
           ${this.helpText}
@@ -768,6 +784,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
       :host([required]) #label::after {
         content: ' *';
+      }
+
+      :host([visually-disabled]) input {
+        caret-color: transparent;
       }
 
       details summary::-webkit-details-marker {

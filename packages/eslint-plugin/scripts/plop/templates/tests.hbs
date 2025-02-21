@@ -1,0 +1,18 @@
+import rule from './{{ name }}';
+import tester from '../../utilities/tester';
+
+tester.run('{{ name }}', rule, {
+  valid: [
+    {
+      name: 'default',
+      code: `<div></div>`
+    },
+  ],
+  invalid: [
+    {
+      name: 'default',
+      code: `<div></div>`,
+      errors: [{ messageId: 'error' }]
+    },
+  ]
+});

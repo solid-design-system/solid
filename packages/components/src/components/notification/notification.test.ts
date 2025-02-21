@@ -2,7 +2,7 @@ import '../../../dist/solid-components';
 import { aTimeout, expect, fixture, html, oneEvent } from '@open-wc/testing';
 import { clickOnElement, moveMouseOnElement } from '../../internal/test.js';
 import { queryByTestId } from '../../internal/test/data-testid-helpers.js';
-import { resetMouse } from '@web/test-runner-commands';
+import { resetMouse, sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
 
 import type SdButton from '../button/button.js';
@@ -146,7 +146,7 @@ describe('<sd-notification>', () => {
   });
 
   describe('close button', () => {
-    it('shows a close button if the notification has the closable attribute', () => async () => {
+    it('shows a close button if the notification has the closable attribute', async () => {
       const notification = await fixture<SdNotification>(html`
         <sd-notification open closable>I am a notification</sd-notification>
       `);
@@ -155,13 +155,30 @@ describe('<sd-notification>', () => {
       expect(closeButton).to.be.visible;
     });
 
-    it('clicking the close button closes the notification', () => async () => {
+    it('clicking the close button closes the notification', async () => {
       const notification = await fixture<SdNotification>(html`
         <sd-notification open closable>I am a notification</sd-notification>
       `);
       const closeButton = getCloseButton(notification);
 
       await expectHideAndAfterHideToBeEmittedInCorrectOrder(notification, () => clickOnElement(closeButton!));
+    });
+  });
+
+  describe('using keyboard navigation', () => {
+    it('pressing the Escape button closes the notification', async () => {
+      const notification = await fixture<SdNotification>(html`
+        <sd-notification open closable>I am a notification</sd-notification>
+      `);
+
+      const afterHide = oneEvent(notification, 'sd-after-hide');
+
+      const base = getNotificationContainer(notification);
+      base.focus();
+
+      await sendKeys({ press: 'Escape' });
+      await afterHide;
+      expectNotificationToBeInvisible(notification);
     });
   });
 

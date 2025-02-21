@@ -14,14 +14,13 @@ const { overrideArgs } = storybookHelpers('sd-checkbox-group');
  *
  * **Related templates:**
  * - [Checkbox Group](?path=/docs/templates-checkbox-group--docs)
- * - [Tooltip](?path=/docs/templates-tooltip--docs)
+ * - [Checkbox Group with Tooltip](?path=/docs/templates-tooltip--docs)
  */
 export default {
   title: 'Components/sd-checkbox-group',
   component: 'sd-checkbox-group',
   tags: ['!dev'],
   args: overrideArgs([
-    { type: 'slot', name: 'label', value: `<label slot="label">Group Label</label>` },
     {
       type: 'slot',
       name: 'default',
@@ -108,6 +107,33 @@ export const Label = {
   render: () => html`
     <div class="flex gap-12">
       <sd-checkbox-group orientation="vertical">
+        <label slot="label">Group Label</label>
+        <sd-checkbox value="1">Checkbox 1</sd-checkbox>
+        <sd-checkbox value="2">Checkbox 2</sd-checkbox>
+        <sd-checkbox value="3">Checkbox 3</sd-checkbox>
+      </sd-checkbox-group>
+
+      <sd-checkbox-group orientation="vertical">
+        <sd-tooltip slot="tooltip" content="Checkbox Group" trigger="click" size="sm"></sd-tooltip>
+        <label slot="label">Group Label</label>
+        <sd-checkbox value="1">Checkbox 1</sd-checkbox>
+        <sd-checkbox value="2">Checkbox 2</sd-checkbox>
+        <sd-checkbox value="3">Checkbox 3</sd-checkbox>
+      </sd-checkbox-group>
+    </div>
+  `
+};
+
+/**
+ * Use the `help-text` attribute to add a descriptive “help text”.
+ *
+ * For help texts that contain HTML, use the `help-text` slot instead.
+ */
+export const HelpText = {
+  name: 'Help Text',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-checkbox-group orientation="vertical" help-text="Help text attribute">
         <label slot="label">Group Label</label>
         <sd-checkbox value="1">Checkbox 1</sd-checkbox>
         <sd-checkbox value="2">Checkbox 2</sd-checkbox>

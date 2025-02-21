@@ -40,6 +40,9 @@ export default class SdRadioButton extends SolidElement {
   /** Disables the radio button. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  /** Styles the radio-button as if it was disabled and enables aria-disabled */
+  @property({ type: Boolean, reflect: true, attribute: 'visually-disabled' }) visuallyDisabled = false;
+
   /**
    * @internal The radio button's checked state. This is exposed as an "internal" attribute so we can reflect it, making
    * it easier to style in button groups.
@@ -60,7 +63,7 @@ export default class SdRadioButton extends SolidElement {
   }
 
   private handleClick(e: MouseEvent) {
-    if (this.disabled) {
+    if (this.disabled || this.visuallyDisabled) {
       e.preventDefault();
       e.stopPropagation();
       return;
@@ -74,9 +77,10 @@ export default class SdRadioButton extends SolidElement {
     this.emit('sd-focus');
   }
 
-  @watch('disabled', { waitUntilFirstUpdate: true })
+  @watch(['disabled', 'visually-disabled'], { waitUntilFirstUpdate: true })
   handleDisabledChange() {
-    this.setAttribute('aria-disabled', this.disabled ? 'true' : 'false');
+    const isDisabled = this.disabled || this.visuallyDisabled;
+    this.setAttribute('aria-disabled', isDisabled ? 'true' : 'false');
   }
 
   /** Sets focus on the radio button. */
@@ -103,12 +107,13 @@ export default class SdRadioButton extends SolidElement {
           class="${cx(
             'relative text-center border rounded-default transition-all ease-in-out duration-100 items-center justify-center focus-visible:focus-outline',
             this.size === 'sm' ? 'text-sm' : 'text-base',
-            this.checked && !this.disabled
+            this.visuallyDisabled && 'focus-visible:outline-none',
+            this.checked && !this.disabled && !this.visuallyDisabled
               ? 'bg-primary border-primary text-white hover:bg-primary-500 hover:border-primary-500'
-              : this.disabled && !this.checked
+              : (this.disabled || this.visuallyDisabled) && !this.checked
                 ? 'border-neutral-500 text-neutral-500 hover:cursor-not-allowed'
-                : this.disabled && this.checked
-                  ? 'bg-neutral-500 border-neutral-500 text-white hover:cursor-not-allowed'
+                : (this.disabled || this.visuallyDisabled) && this.checked
+                  ? 'text-neutral-500 border-neutral-500 hover:cursor-not-allowed '
                   : 'bg-transparent text-primary border-primary hover:bg-primary-100 hover:border-primary-500 hover:text-primary-500 cursor-pointer',
             hasDefaultSlot && 'px-4',
             this.hasFocus && 'focused-class',
@@ -116,7 +121,7 @@ export default class SdRadioButton extends SolidElement {
             hasIconSlot && 'button--has-icon flex gap-2',
             buttonSizeClass
           )}"
-          aria-disabled=${this.disabled}
+          aria-disabled=${this.disabled || this.visuallyDisabled}
           type="button"
           value=${ifDefined(this.value)}
           tabindex="${this.checked ? '0' : '-1'}"

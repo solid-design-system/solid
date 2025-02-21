@@ -10,7 +10,7 @@ jobs:
         runs-on: ubuntu-latest
         if: github.event.pull_request.draft == false
         container:
-            image: mcr.microsoft.com/playwright:v1.50.0-noble
+            image: mcr.microsoft.com/playwright:v1.50.1-noble
         strategy:
           matrix:
             package:
@@ -20,6 +20,7 @@ jobs:
               - packages/styles
               - packages/theming
               - packages/tokens
+              - packages/eslint-plugin
 
         steps:
             - name: Checkout

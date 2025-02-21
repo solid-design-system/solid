@@ -23,6 +23,18 @@ describe('<sd-radio>', () => {
     expect(radio.checked).to.be.false;
   });
 
+  it('should not become checked when clicked if visually-disabled', async () => {
+    const radio = await fixture<SdRadio>(html`<sd-radio visually-disabled></sd-radio>`);
+    radio.click();
+    await radio.updateComplete;
+    expect(radio.checked).to.be.false;
+  });
+
+  it('should have aria-disabled when visually-disabled', async () => {
+    const radio = await fixture<SdRadio>(html`<sd-radio visually-disabled></sd-radio>`);
+    expect(radio.getAttribute('aria-disabled')).to.equal('true');
+  });
+
   it('should handle different sizes correctly', async () => {
     const radio = await fixture<SdRadio>(html`<sd-radio size="sm"></sd-radio>`);
     expect(radio.shadowRoot?.querySelector('.text-sm')).to.exist;

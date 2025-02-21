@@ -51,6 +51,20 @@ describe('<sd-checkbox>', () => {
     expect(checkbox.disabled).to.be.true;
   });
 
+  it('should not be checked if clicked when visually-disabled', async () => {
+    const el = await fixture<SdCheckbox>(html`<sd-checkbox visually-disabled></sd-checkbox>`);
+    el.click();
+    await el.updateComplete;
+
+    expect(el.checked).to.be.false;
+  });
+
+  it('should have aria-disabled when visually-disabled', async () => {
+    const el = await fixture<SdCheckbox>(html`<sd-checkbox visually-disabled></sd-checkbox>`);
+    const input = el.shadowRoot!.querySelector('input')!;
+    expect(input.getAttribute('aria-disabled')).to.equal('true');
+  });
+
   it('should be valid by default', async () => {
     const el = await fixture<SdCheckbox>(html` <sd-checkbox></sd-checkbox> `);
     expect(el.checkValidity()).to.be.true;

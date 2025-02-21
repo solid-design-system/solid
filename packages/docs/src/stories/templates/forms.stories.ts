@@ -147,3 +147,104 @@ export const ContactForm = {
     </script>
   `
 };
+
+/**
+ * Use the attribute `visually-disabled` to visually disable form elements. Wrap the elements in a `sd-tooltip` to provide information on how to enable them.
+ *
+ * **Accessibility Hint:** This approach is recommended for accessibility reasons. Disabling elements, will remove them from the tab order and screen readers will not announce them.
+ */
+export const FromWithVisuallyDisabledElements = {
+  render: () => html`
+    <form class="sd-prose sd-prose--full-width" id="accessible-form">
+      <h3 class="sd-headline sd-headline--size-4xl">Contact</h3>
+      <div class="flex flex-col gap-6">
+        <sd-input name="firstName" type="text" inputmode="text" label="Name" class="name-input"></sd-input>
+        <sd-textarea name="message" label="Message" rows="4" spellcheck></sd-textarea>
+        <sd-checkbox-group>
+          <sd-checkbox value="privacy_policy" class="policy-checkbox mb-2" required>
+            I accept the <sd-link href="javascript:void(0)">Privacy Policy</sd-link>.
+          </sd-checkbox>
+          <sd-tooltip
+            content="Accept Policy Privacy to enable field"
+            trigger="click focus"
+            size="sm"
+            class="checkbox-tooltip"
+          >
+            <sd-checkbox value="marketing_emails" class="marketing-checkbox" visually-disabled
+              >I would like to receive marketing emails.</sd-checkbox
+            >
+          </sd-tooltip>
+        </sd-checkbox-group>
+        <span class="sd-meta sd-meta--size-sm">* Required fields</span>
+      </div>
+      <div class="flex flex-col gap-4 md:flex-row md:justify-end">
+        <sd-tooltip
+          content="Fill in all fields to enable button"
+          trigger="click focus"
+          size="sm"
+          class="button-tooltip"
+        >
+          <sd-button class="md:order-2 submit-button" type="submit" visually-disabled>Submit registration</sd-button>
+        </sd-tooltip>
+        <sd-button variant="secondary" class="md:order-1" onclick="alert('Cancelled process')">Cancel</sd-button>
+      </div>
+    </form>
+    <script type="module">
+      await Promise.all([
+        customElements.whenDefined('sd-button'),
+        customElements.whenDefined('sd-checkbox'),
+        customElements.whenDefined('sd-textarea'),
+        customElements.whenDefined('sd-input')
+      ]).then(() => {
+        const form = document.getElementById('accessible-form');
+        form.onsubmit = event => {
+          event.preventDefault();
+          alert('Form submitted');
+        };
+      });
+
+      const form = document.getElementById('accessible-form');
+      const nameInput = form.querySelector('.name-input');
+      const emailInput = form.querySelector('.email-input');
+      const policyCheckbox = form.querySelector('.policy-checkbox');
+      const marketingCheckbox = form.querySelector('.marketing-checkbox');
+      const submitButton = form.querySelector('.submit-button');
+      const checkboxTooltip = form.querySelector('.checkbox-tooltip');
+      const buttonTooltip = form.querySelector('.button-tooltip');
+
+      nameInput.addEventListener('input', () => {
+        if (nameInput.value) {
+          emailInput.removeAttribute('visually-disabled');
+        }
+      });
+
+      policyCheckbox.addEventListener('sd-change', event => {
+        if (policyCheckbox.checked) {
+          if (checkboxTooltip && checkboxTooltip.parentNode) {
+            while (checkboxTooltip.firstChild) {
+              checkboxTooltip.parentNode.insertBefore(checkboxTooltip.firstChild, checkboxTooltip);
+            }
+            checkboxTooltip.parentNode.removeChild(checkboxTooltip);
+          }
+
+          marketingCheckbox.removeAttribute('visually-disabled');
+        }
+      });
+
+      form.addEventListener('input', () => {
+        const requiredFields = form.querySelectorAll('[required]');
+        const isValid = Array.from(requiredFields).every(field => field.value && field.checkValidity());
+        if (isValid) {
+          if (buttonTooltip && buttonTooltip.parentNode) {
+            while (buttonTooltip.firstChild) {
+              buttonTooltip.parentNode.insertBefore(buttonTooltip.firstChild, buttonTooltip);
+            }
+            buttonTooltip.parentNode.removeChild(buttonTooltip);
+          }
+
+          submitButton.removeAttribute('visually-disabled');
+        }
+      });
+    </script>
+  `
+};
