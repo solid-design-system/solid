@@ -345,10 +345,23 @@ const fillColors = getColors('icon-fill', 'fill-color');
 fillColors['accent']['700'] =
   'rgb(var(--sd-color-accent-700, 33 87 37) / <alpha-value>) /* Used for pressed interaction */';
 
+const getDurations = () => {
+  const result = {};
+  Object.entries(tokens['UI Semantic'].duration)
+    .map(([name, value]) => ({ name, ...value }))
+    .forEach(({ name, value, description }) => {
+      const convertedValue = resolveValue(value);
+      result[sanitizeValue(name)] = `var(--sd-duration-${sanitizeValue(name)}, ${convertedValue})${
+        description ? ` /* ${description} */` : ''
+      }`;
+    });
+  return result;
+};
+
 /** @type {import('tailwindcss').Config} */
 const config = {
   theme: {
-    // Checkout https://tailwindcss.com/docs/configuration#core-plugins for a list of core plugins
+    // Checkout https://v3.tailwindcss.com/docs/theme#core-plugins for a list of core plugins
     accentColor: { ...getColors('text', 'text-color') },
     backgroundColor: { ...getColors('background', 'background-color') },
     borderColor: { ...getColors('border', 'border-color') },
@@ -356,6 +369,9 @@ const config = {
     boxShadowColor: { ...getColors('background', 'background-color') },
     caretColor: { ...getColors('text', 'text-color') },
     color: { ...getColors() },
+    extend: {
+      transitionDuration: { ...getDurations() }
+    },
     fill: { ...fillColors },
     fontFamily: {},
     fontSize: { ...getCoreTokensByType('fontSizes', 'font-size') },
