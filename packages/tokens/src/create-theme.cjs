@@ -351,7 +351,7 @@ const getDurations = () => {
     .map(([name, value]) => ({ name, ...value }))
     .forEach(({ name, value, description }) => {
       const convertedValue = resolveValue(value);
-      result[sanitizeValue(name)] = `var(--sd-duration-${sanitizeValue(name)}, ${convertedValue})${
+      result[sanitizeValue(name)] = `var(--sd-duration-${sanitizeValue(name)}, ${convertedValue}ms)${
         description ? ` /* ${description} */` : ''
       }`;
     });
