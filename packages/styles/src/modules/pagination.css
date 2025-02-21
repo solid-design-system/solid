@@ -1,0 +1,191 @@
+/**
+ * Used to split large content into several pages, allowing users to navigate between them instead of displaying all information on a single page.
+ * @name sd-pagination
+ * @status stable
+ * @since 1.0
+ * @variant { simple } sd-pagination--... The pagination format.
+ * @boolean sd-pagination--inverted Inverts the pagination style.
+ */
+
+.sd-pagination {
+  > :not(ul) {
+    position: absolute;
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+  }
+
+  ul {
+    @apply flex items-center gap-2;
+
+    li a {
+      @apply text-primary flex items-center justify-center;
+
+      &:focus-visible {
+        @apply outline outline-2 outline-offset-2 outline-primary;
+      }
+    }
+
+    /* Previous and Next */
+    li:first-child,
+    li:last-child {
+      @apply w-12 h-12;
+
+      a {
+        @apply w-full h-full;
+      }
+
+      sd-icon {
+        @apply w-6 h-6;
+      }
+    }
+
+    /* Numbers */
+    li {
+      @apply flex items-center justify-center text-center w-8 h-8;
+
+      &:has(a[data-page]) {
+        a {
+          @apply border-b-2 border-b-transparent w-full h-full;
+
+          &[aria-current] {
+            @apply border-b-accent;
+          }
+        }
+      }
+
+      a[aria-current] {
+        @apply text-black;
+      }
+    }
+
+    &:has(> li:nth-child(2) a[aria-current]) > li:nth-child(1) a, /* When current is the first page, apply styles to prev button */
+    &:has(> li:nth-last-child(2) a[aria-current]) > li:nth-last-child(1) a /* When current is the last page, apply styles to next button */ {
+      @apply cursor-not-allowed text-neutral-500;
+    }
+  }
+
+  &:not(.sd-pagination--simple) {
+    ul {
+      /* Numbers */
+      li:has(a[data-page]) {
+        /* Number which is not current */
+        &:not(:has(a[aria-current])) {
+          @apply absolute pointer-events-none;
+
+          a {
+            @apply hidden;
+          }
+        }
+
+        /* Apply ellipsis to (n + 2 && n - 1) */
+        &:has(+ li + li a[aria-current]),
+        &:has(a[aria-current]) + li + li:not(:last-child) {
+          @apply !relative !pointer-events-auto after:content-['...'];
+        }
+
+        &:nth-child(2), /* First number */
+        &:nth-last-child(2), /* Last number */
+        &:has(+ li a[aria-current]), /* Previous number */
+        &:has(a[aria-current]) + li /* Next number */ {
+          @apply !relative !pointer-events-auto after:!hidden;
+
+          a {
+            @apply !flex;
+          }
+        }
+
+        /* When current is the first number, the 3rd number should show */
+        &:nth-child(2):has(a[aria-current]) + li + li {
+          @apply !relative !pointer-events-auto after:!hidden;
+
+          a {
+            @apply !flex;
+          }
+
+          & + li {
+            @apply !relative !pointer-events-auto after:content-['...'];
+          }
+        }
+
+        /* When current is the last number, the 3rd number from last should show */
+        &:has(+ li + li a[aria-current]):nth-last-child(4) {
+          @apply !relative !pointer-events-auto after:!hidden;
+
+          a {
+            @apply !flex;
+          }
+        }
+
+        /* When current is the last number, the 4th number from last should be an ellipsis */
+        &:has(+ li + li + li a[aria-current]):nth-last-child(5) {
+          @apply !relative !pointer-events-auto after:content-['...'];
+        }
+      }
+
+      /* When it only has 5 numbers + 2 prev & next buttons */
+      &:has(> li:last-child:nth-child(-n + 7)) li {
+        @apply !relative !pointer-events-auto after:!hidden;
+
+        a {
+          @apply !flex;
+        }
+      }
+    }
+  }
+
+  &--simple {
+    ul {
+      /* Numbers */
+      li:has(a[data-page]) {
+        /* Hide numbers except current and last page */
+        &:not(:nth-last-child(2)):not(:has(a[aria-current])) {
+          @apply hidden;
+        }
+
+        /* Last page adds the '/' */
+        &:nth-last-child(2) {
+          @apply w-auto before:content-['/'] before:me-2 before:text-xl;
+
+          a {
+            @apply w-8 border-b-transparent text-primary;
+          }
+        }
+
+        /* Last page is also active */
+        &:nth-last-child(2):has(a[aria-current]) {
+          @apply relative ps-10;
+
+          a[aria-current] {
+            @apply after:content-[attr(data-page)] after:absolute after:left-0 after:top-0 after:w-8 after:h-full after:flex after:justify-center after:items-center after:text-black after:border-b-2 after:border-b-accent;
+          }
+        }
+      }
+    }
+  }
+
+  &--inverted {
+    ul li {
+      @apply after:text-white;
+
+      a,
+      a[aria-current] {
+        @apply text-white;
+
+        &:focus-visible {
+          @apply outline-white;
+        }
+      }
+    }
+
+    &.sd-pagination--simple {
+      ul li {
+        @apply before:text-white;
+
+        &:has(a[data-page]):nth-last-child(2) a {
+          @apply text-white;
+        }
+      }
+    }
+  }
+}
