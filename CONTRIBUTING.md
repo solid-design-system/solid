@@ -85,7 +85,7 @@
   - For every component's "visual" feature in {component}.stories.ts (Samples):
     - **Description:**
       - For each sample exists a single story with plain HTML/CSS/JS, that shows the feature.
-      - The sample has a legend with one sentence describing the functionality and what is intended to. (e. g. Use the "open" attribute to ...). Feel free to use [shoelace.style](shoelace.style) as inspiration.
+      - The sample has a legend with one sentence describing the functionality and what is intended to. (e. g. Use the "open" attribute to ...). Feel free to use [shoelace](https://shoelace.style) as inspiration.
       - Ensure you add a period at the end of all sentences.
       - If variants or options are shown we should list them below.
         - If a bullet list is shown, use a colon in the sentence (e.g., "Use the size attribute to change a button’s size: ").
