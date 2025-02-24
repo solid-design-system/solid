@@ -65,6 +65,8 @@ export default class SdAudio extends SolidElement {
 
   @state() isMuted: boolean = false;
 
+  @state() isTranscriptOpen: boolean = false;
+
   @state() progress: number = 0;
 
   @query('[part="progress-slider"]') progressSlider: HTMLInputElement;
@@ -85,6 +87,7 @@ export default class SdAudio extends SolidElement {
     this.handleAudioEnd = this.handleAudioEnd.bind(this);
     this.handleAudioProgress = this.handleAudioProgress.bind(this);
     this.handleAudioProgressKeydown = this.handleAudioProgressKeydown.bind(this);
+    this.handleTranscriptDrawer = this.handleTranscriptDrawer.bind(this);
   }
 
   firstUpdated() {
@@ -93,6 +96,7 @@ export default class SdAudio extends SolidElement {
     this.audioElement.addEventListener('timeupdate', this.updateCurrentTime);
     this.audioElement.addEventListener('ended', this.handleAudioEnd);
     this.audioElement.setAttribute('controlsList', 'nodownload');
+    document.addEventListener('sd-after-hide', this.handleTranscriptDrawer);
     this.audioElement.playbackRate = this.speed;
 
     if (this.animated) {
@@ -251,9 +255,14 @@ export default class SdAudio extends SolidElement {
     }
   }
 
+  private handleTranscriptDrawer() {
+    this.isTranscriptOpen = !this.isTranscriptOpen;
+  }
+
   private showTranscript() {
     this.emit('sd-transcript-click');
     this.drawer.open = true;
+    this.handleTranscriptDrawer();
   }
 
   private showTranscriptKeydown(event: KeyboardEvent): void {
@@ -429,16 +438,14 @@ export default class SdAudio extends SolidElement {
                 'mr-6 w-6 h-6 hover:cursor-pointer sd-interactive',
                 this.inverted && 'sd-interactive--inverted'
               )}
+              aria-label=${this.isTranscriptOpen
+                ? this.localize.term('transcriptIsOpen')
+                : this.localize.term('openTranscript')}
               @click=${this.showTranscript}
               @keydown=${this.showTranscriptKeydown}
               tab-index="0"
             >
-              <sd-icon
-                class="w-6 h-6"
-                name="transcript"
-                library="system"
-                label=${this.isMuted ? this.localize.term('unmute') : this.localize.term('mute')}
-              ></sd-icon>
+              <sd-icon class="w-6 h-6" name="transcript" library="system"></sd-icon>
             </button>`
           : null}
 
