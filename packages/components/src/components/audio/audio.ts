@@ -452,7 +452,7 @@ export default class SdAudio extends SolidElement {
         <button
           class=${cx('w-6 h-6 hover:cursor-pointer sd-interactive', this.inverted && 'sd-interactive--inverted')}
           part="volume"
-          aria-label=${this.localize.term('mute')}
+          aria-label=${!this.isMuted ? this.localize.term('mute') : this.localize.term('unmute')}
           tabindex="0"
           @click=${this.toggleMute}
           @keydown=${this.toggleMuteKeydown}
