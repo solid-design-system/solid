@@ -121,7 +121,7 @@ export const Truncated = {
     return generateTemplate({
       options: {
         templateContent: html`
-          <nav class="%CLASSES%" aria-label="Pagination">
+          <nav class="%CLASSES%" aria-label="Pagination with current page 1">
             <ul>
               <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
               <li><a href="/?page=1" data-page="1" aria-current="page">1</a></li>
@@ -147,12 +147,11 @@ export const Truncated = {
               <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
             </ul>
           </nav>
-          <nav class="%CLASSES%">
-            <h2>Truncated at middle pagination</h2>
+          <nav class="%CLASSES%" aria-label="Pagination with current page 2">
             <ul>
-              <li><a href="/?page=9"><sd-icon name="system/chevron-left" label="Previous"></a></li>
+              <li><a href="/?page=1"><sd-icon name="system/chevron-left" label="Previous"></a></li>
               <li><a href="/?page=1" data-page="1">1</a></li>
-              <li><a href="/?page=2" data-page="2">2</a></li>
+              <li><a href="/?page=2" data-page="2" aria-current="page">2</a></li>
               <li><a href="/?page=3" data-page="3">3</a></li>
               <li><a href="/?page=4" data-page="4">4</a></li>
               <li><a href="/?page=5" data-page="5">5</a></li>
@@ -160,7 +159,7 @@ export const Truncated = {
               <li><a href="/?page=7" data-page="7">7</a></li>
               <li><a href="/?page=8" data-page="8">8</a></li>
               <li><a href="/?page=9" data-page="9">9</a></li>
-              <li><a href="/?page=10" data-page="10" aria-current="page">10</a></li>
+              <li><a href="/?page=10" data-page="10">10</a></li>
               <li><a href="/?page=11" data-page="11">11</a></li>
               <li><a href="/?page=12" data-page="12">12</a></li>
               <li><a href="/?page=13" data-page="13">13</a></li>
@@ -171,11 +170,166 @@ export const Truncated = {
               <li><a href="/?page=18" data-page="18">18</a></li>
               <li><a href="/?page=19" data-page="19">19</a></li>
               <li><a href="/?page=20" data-page="20">20</a></li>
-              <li><a href="/?page=11"><sd-icon name="system/chevron-right" label="Next"></a></li>
+              <li><a href="/?page=3"><sd-icon name="system/chevron-right" label="Next"></a></li>
             </ul>
           </nav>
-          <nav class="%CLASSES%">
-            <h2>Truncated at end pagination</h2>
+          <nav class="%CLASSES%" aria-label="Pagination with current page 3">
+            <ul>
+              <li><a href="/?page=2"><sd-icon name="system/chevron-left" label="Previous"></a></li>
+              <li><a href="/?page=1" data-page="1">1</a></li>
+              <li><a href="/?page=2" data-page="2">2</a></li>
+              <li><a href="/?page=3" data-page="3" aria-current="page">3</a></li>
+              <li><a href="/?page=4" data-page="4">4</a></li>
+              <li><a href="/?page=5" data-page="5">5</a></li>
+              <li><a href="/?page=6" data-page="6">6</a></li>
+              <li><a href="/?page=7" data-page="7">7</a></li>
+              <li><a href="/?page=8" data-page="8">8</a></li>
+              <li><a href="/?page=9" data-page="9">9</a></li>
+              <li><a href="/?page=10" data-page="10">10</a></li>
+              <li><a href="/?page=11" data-page="11">11</a></li>
+              <li><a href="/?page=12" data-page="12">12</a></li>
+              <li><a href="/?page=13" data-page="13">13</a></li>
+              <li><a href="/?page=14" data-page="14">14</a></li>
+              <li><a href="/?page=15" data-page="15">15</a></li>
+              <li><a href="/?page=16" data-page="16">16</a></li>
+              <li><a href="/?page=17" data-page="17">17</a></li>
+              <li><a href="/?page=18" data-page="18">18</a></li>
+              <li><a href="/?page=19" data-page="19">19</a></li>
+              <li><a href="/?page=20" data-page="20">20</a></li>
+              <li><a href="/?page=4"><sd-icon name="system/chevron-right" label="Next"></a></li>
+            </ul>
+          </nav>
+          <nav class="%CLASSES%" aria-label="Pagination with current page 4">
+            <ul>
+              <li><a href="/?page=3"><sd-icon name="system/chevron-left" label="Previous"></a></li>
+              <li><a href="/?page=1" data-page="1">1</a></li>
+              <li><a href="/?page=2" data-page="2">2</a></li>
+              <li><a href="/?page=3" data-page="3">3</a></li>
+              <li><a href="/?page=4" data-page="4" aria-current="page">4</a></li>
+              <li><a href="/?page=5" data-page="5">5</a></li>
+              <li><a href="/?page=6" data-page="6">6</a></li>
+              <li><a href="/?page=7" data-page="7">7</a></li>
+              <li><a href="/?page=8" data-page="8">8</a></li>
+              <li><a href="/?page=9" data-page="9">9</a></li>
+              <li><a href="/?page=10" data-page="10">10</a></li>
+              <li><a href="/?page=11" data-page="11">11</a></li>
+              <li><a href="/?page=12" data-page="12">12</a></li>
+              <li><a href="/?page=13" data-page="13">13</a></li>
+              <li><a href="/?page=14" data-page="14">14</a></li>
+              <li><a href="/?page=15" data-page="15">15</a></li>
+              <li><a href="/?page=16" data-page="16">16</a></li>
+              <li><a href="/?page=17" data-page="17">17</a></li>
+              <li><a href="/?page=18" data-page="18">18</a></li>
+              <li><a href="/?page=19" data-page="19">19</a></li>
+              <li><a href="/?page=20" data-page="20">20</a></li>
+              <li><a href="/?page=5"><sd-icon name="system/chevron-right" label="Next"></a></li>
+            </ul>
+          </nav>
+          <nav class="%CLASSES%" aria-label="Pagination with current page 5">
+            <ul>
+              <li><a href="/?page=4"><sd-icon name="system/chevron-left" label="Previous"></a></li>
+              <li><a href="/?page=1" data-page="1">1</a></li>
+              <li><a href="/?page=2" data-page="2">2</a></li>
+              <li><a href="/?page=3" data-page="3">3</a></li>
+              <li><a href="/?page=4" data-page="4">4</a></li>
+              <li><a href="/?page=5" data-page="5" aria-current="page">5</a></li>
+              <li><a href="/?page=6" data-page="6">6</a></li>
+              <li><a href="/?page=7" data-page="7">7</a></li>
+              <li><a href="/?page=8" data-page="8">8</a></li>
+              <li><a href="/?page=9" data-page="9">9</a></li>
+              <li><a href="/?page=10" data-page="10">10</a></li>
+              <li><a href="/?page=11" data-page="11">11</a></li>
+              <li><a href="/?page=12" data-page="12">12</a></li>
+              <li><a href="/?page=13" data-page="13">13</a></li>
+              <li><a href="/?page=14" data-page="14">14</a></li>
+              <li><a href="/?page=15" data-page="15">15</a></li>
+              <li><a href="/?page=16" data-page="16">16</a></li>
+              <li><a href="/?page=17" data-page="17">17</a></li>
+              <li><a href="/?page=18" data-page="18">18</a></li>
+              <li><a href="/?page=19" data-page="19">19</a></li>
+              <li><a href="/?page=20" data-page="20">20</a></li>
+              <li><a href="/?page=6"><sd-icon name="system/chevron-right" label="Next"></a></li>
+            </ul>
+          </nav>
+          <nav class="%CLASSES%" aria-label="Pagination with current page 17">
+            <ul>
+              <li><a href="/?page=16"><sd-icon name="system/chevron-left" label="Previous"></a></li>
+              <li><a href="/?page=1" data-page="1">1</a></li>
+              <li><a href="/?page=2" data-page="2">2</a></li>
+              <li><a href="/?page=3" data-page="3">3</a></li>
+              <li><a href="/?page=4" data-page="4">4</a></li>
+              <li><a href="/?page=5" data-page="5">5</a></li>
+              <li><a href="/?page=6" data-page="6">6</a></li>
+              <li><a href="/?page=7" data-page="7">7</a></li>
+              <li><a href="/?page=8" data-page="8">8</a></li>
+              <li><a href="/?page=9" data-page="9">9</a></li>
+              <li><a href="/?page=10" data-page="10">10</a></li>
+              <li><a href="/?page=11" data-page="11">11</a></li>
+              <li><a href="/?page=12" data-page="12">12</a></li>
+              <li><a href="/?page=13" data-page="13">13</a></li>
+              <li><a href="/?page=14" data-page="14">14</a></li>
+              <li><a href="/?page=15" data-page="15">15</a></li>
+              <li><a href="/?page=16" data-page="16">16</a></li>
+              <li><a href="/?page=17" data-page="17" aria-current="page">17</a></li>
+              <li><a href="/?page=18" data-page="18">18</a></li>
+              <li><a href="/?page=19" data-page="19">19</a></li>
+              <li><a href="/?page=20" data-page="20">20</a></li>
+              <li><a href="/?page=18"><sd-icon name="system/chevron-right" label="Next"></a></li>
+            </ul>
+          </nav>
+          <nav class="%CLASSES%" aria-label="Pagination with current page 18">
+            <ul>
+              <li><a href="/?page=17"><sd-icon name="system/chevron-left" label="Previous"></a></li>
+              <li><a href="/?page=1" data-page="1">1</a></li>
+              <li><a href="/?page=2" data-page="2">2</a></li>
+              <li><a href="/?page=3" data-page="3">3</a></li>
+              <li><a href="/?page=4" data-page="4">4</a></li>
+              <li><a href="/?page=5" data-page="5">5</a></li>
+              <li><a href="/?page=6" data-page="6">6</a></li>
+              <li><a href="/?page=7" data-page="7">7</a></li>
+              <li><a href="/?page=8" data-page="8">8</a></li>
+              <li><a href="/?page=9" data-page="9">9</a></li>
+              <li><a href="/?page=10" data-page="10">10</a></li>
+              <li><a href="/?page=11" data-page="11">11</a></li>
+              <li><a href="/?page=12" data-page="12">12</a></li>
+              <li><a href="/?page=13" data-page="13">13</a></li>
+              <li><a href="/?page=14" data-page="14">14</a></li>
+              <li><a href="/?page=15" data-page="15">15</a></li>
+              <li><a href="/?page=16" data-page="16">16</a></li>
+              <li><a href="/?page=17" data-page="17">17</a></li>
+              <li><a href="/?page=18" data-page="18" aria-current="page">18</a></li>
+              <li><a href="/?page=19" data-page="19">19</a></li>
+              <li><a href="/?page=20" data-page="20">20</a></li>
+              <li><a href="/?page=19"><sd-icon name="system/chevron-right" label="Next"></a></li>
+            </ul>
+          </nav>
+          <nav class="%CLASSES%" aria-label="Pagination with current page 19">
+            <ul>
+              <li><a href="/?page=18"><sd-icon name="system/chevron-left" label="Previous"></a></li>
+              <li><a href="/?page=1" data-page="1">1</a></li>
+              <li><a href="/?page=2" data-page="2">2</a></li>
+              <li><a href="/?page=3" data-page="3">3</a></li>
+              <li><a href="/?page=4" data-page="4">4</a></li>
+              <li><a href="/?page=5" data-page="5">5</a></li>
+              <li><a href="/?page=6" data-page="6">6</a></li>
+              <li><a href="/?page=7" data-page="7">7</a></li>
+              <li><a href="/?page=8" data-page="8">8</a></li>
+              <li><a href="/?page=9" data-page="9">9</a></li>
+              <li><a href="/?page=10" data-page="10">10</a></li>
+              <li><a href="/?page=11" data-page="11">11</a></li>
+              <li><a href="/?page=12" data-page="12">12</a></li>
+              <li><a href="/?page=13" data-page="13">13</a></li>
+              <li><a href="/?page=14" data-page="14">14</a></li>
+              <li><a href="/?page=15" data-page="15">15</a></li>
+              <li><a href="/?page=16" data-page="16">16</a></li>
+              <li><a href="/?page=17" data-page="17">17</a></li>
+              <li><a href="/?page=18" data-page="18">18</a></li>
+              <li><a href="/?page=19" data-page="19" aria-current="page">19</a></li>
+              <li><a href="/?page=20" data-page="20">20</a></li>
+              <li><a href="/?page=20"><sd-icon name="system/chevron-right" label="Next"></a></li>
+            </ul>
+          </nav>
+          <nav class="%CLASSES%" aria-label="Pagination with current page 20">
             <ul>
               <li><a href="/?page=19"><sd-icon name="system/chevron-left" label="Previous"></a></li>
               <li><a href="/?page=1" data-page="1">1</a></li>

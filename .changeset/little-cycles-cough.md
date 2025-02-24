@@ -4,4 +4,4 @@
 
 The `sd-pagination` has arrived! 🎉
 
-This component can be used to split large content into several pages.
+This style can be used to split large content into several pages.
