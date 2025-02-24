@@ -124,16 +124,12 @@ export default class SdAudio extends SolidElement {
     return null;
   }
 
-  private setAudioProgress = () => {
-    this.progressSlider.max = Math.floor(this.audioElement!.duration).toString();
-  };
-
   private updateCurrentTime() {
     if (!this.audioElement) return;
 
     const currentTime = this.audioElement.currentTime;
     this.currentTime = this.formatTime(currentTime);
-    this.progress = Math.floor(currentTime);
+    this.progress = currentTime;
 
     if (this.progressSlider) {
       this.progressSlider.value = this.progress.toString();
@@ -152,7 +148,7 @@ export default class SdAudio extends SolidElement {
     }
 
     this.duration = this.formatTime(this.audioElement.duration);
-    this.setAudioProgress();
+    this.progressSlider.max = this.audioElement.duration.toString();
   }
 
   playAudio() {
