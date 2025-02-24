@@ -28,13 +28,16 @@ export const highlightOptionRenderer: OptionRenderer = (option: SdOption, query:
   clonedOption.selected = option.selected;
 
   const optionLabel = clonedOption.getTextLabel();
-  const queryIndex = optionLabel.toLowerCase().indexOf(query.toLowerCase());
-  const indexLabel = clonedOption.innerHTML.indexOf(optionLabel);
+  const queryRegex = new RegExp(query, 'gi');
 
   const mark = document.createElement('mark');
-  mark.textContent = optionLabel.slice(queryIndex, queryIndex + query.length);
 
-  const exchangedText = optionLabel.replace(new RegExp(query, 'i'), mark.outerHTML);
+  const exchangedText = optionLabel.replace(queryRegex, match => {
+    mark.textContent = match;
+    return mark.outerHTML;
+  });
+
+  const indexLabel = clonedOption.innerHTML.indexOf(optionLabel);
   const previousContent = clonedOption.innerHTML.slice(0, indexLabel);
   const followingContent = clonedOption.innerHTML.slice(indexLabel + optionLabel.length);
 
