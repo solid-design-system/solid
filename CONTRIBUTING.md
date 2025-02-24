@@ -82,9 +82,9 @@
   - **Related Templates:** After the `Related components` list, `Related templates` are listed.
     - If a template for the component exists, provide a link to the template page.
     - If the component is part of another component's template, link directly to the relevant section.
-  - For every component's "visual" feature in {component}.stories.ts (Samples):
-    - **Description:**
-      - For each sample exists a single story with plain HTML/CSS/JS, that shows the feature.
+  - **Samples** (component's "visual" feature in {component}.stories.ts):
+    - For each sample exists a single story with plain HTML/CSS/JS, that shows the feature.
+    - **Sample description:**
       - The sample has a legend with one sentence describing the functionality and what is intended to. (e. g. Use the "open" attribute to ...). Feel free to use [shoelace](https://shoelace.style) as inspiration.
       - Ensure you add a period at the end of all sentences.
       - If variants or options are shown we should list them below.
@@ -92,7 +92,7 @@
         - In bullet lists, do not use any kind of punctuation marks at the end of the sentence (e.g., lg (default)).
       - Always use the attribute or classes nomenclature used in code (e.g., instead of "large", use lg).
       - Always add (default) in front of the default variant/size/etc. (e.g., lg (default)).
-      - If there is no attribute or class for the default use a simple sentence to present the default value (e. g. lg is the default value).
+      - If there is no attribute or class for the default use a simple sentence to present the default value (e.g., lg is the default value).
     - **Sample content:**
       - The samples should help emphasize what is being shown. If we are talking about "Inverted" components, it should have "Inverted" in the text.
       - In Storybook, the 1st sample shows the slots. In Figma, slots are only shown if no interaction is required. When interaction is required we use the slots in the next samples.
