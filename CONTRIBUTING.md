@@ -77,7 +77,7 @@
   - Use `.slot` and the additional utility classes classes defined in `packages/components/.storybook/preview-head.html` to mock the slot element used in Figma. These classes are integrated into the Storybook header and should exclusively be used in Storybook. Check out the 'Slot' stories for components like 'sd-dropdown' to see how these classes are used.
 - **Guidelines**:
   - **Screenshot tests:** All screenshot tests are added in `{component}.test.stories.ts`. Create a combination screenshot story with all tests.
-  - **Description:** All components have an introduction text describing the functionality starting with "Used to ...", feel free to use descriptions from [shoelace.style](shoelace.style) as inspiration.
+  - **Description:** All components have an introduction text describing the functionality starting with "Used to ...", feel free to use descriptions from [shoelace](https://shoelace.style) as inspiration.
   - **Related Components:** After the introduction, the `Related components` are listed.
   - **Related Templates:** After the `Related components` list, `Related templates` are listed.
     - If a template for the component exists, provide a link to the template page.
