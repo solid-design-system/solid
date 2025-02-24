@@ -420,6 +420,7 @@ export default class SdAudio extends SolidElement {
         size="lg"
         @click=${!this.isPlaying ? this.playAudio : this.pauseAudio}
         aria-label="${this.isPlaying ? this.localize.term('pauseAudio') : this.localize.term('playAudio')}"
+        title="${this.isPlaying ? this.localize.term('pauseAudio') : this.localize.term('playAudio')}"
         class="text-3xl"
       >
         ${this.isPlaying
