@@ -441,6 +441,7 @@ export default class SdAudio extends SolidElement {
               @click=${this.showTranscript}
               @keydown=${this.showTranscriptKeydown}
               tab-index="0"
+              part="transcript"
             >
               <sd-icon class="w-6 h-6" name="transcript" library="system"></sd-icon>
             </button>`
