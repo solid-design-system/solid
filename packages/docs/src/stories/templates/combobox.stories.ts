@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-
 import { highlightOptionRenderer } from '../../../../components/src/components/combobox/option-renderer';
 
 const fonds = [
@@ -68,6 +67,50 @@ export const HighlightQuery = {
       </script>
     `;
   }
+};
+
+export const MultipleHighlightQuery = {
+  render: () => html`
+    <div class="h-[260px] w-[400px]">
+      <sd-combobox label="Funds" class="multiple-highlight-combobox" value="g">
+        ${createFondsOptionsHtml()}
+      </sd-combobox>
+    </div>
+    <script type="module">
+      const comboboxes = document.querySelectorAll('.multiple-highlight-combobox');
+
+      const multipleHighlightRender = (option, query) => {
+        if (!query) {
+          return option;
+        }
+
+        const clonedOption = option.cloneNode(true);
+
+        clonedOption.selected = option.selected;
+
+        const optionLabel = clonedOption.getTextLabel();
+        const queryRegex = new RegExp(query, 'gi');
+
+        const mark = document.createElement('mark');
+
+        const exchangedText = optionLabel.replace(queryRegex, match => {
+          mark.textContent = match;
+          return mark.outerHTML;
+        });
+
+        const indexLabel = clonedOption.innerHTML.indexOf(optionLabel);
+        const previousContent = clonedOption.innerHTML.slice(0, indexLabel);
+        const followingContent = clonedOption.innerHTML.slice(indexLabel + optionLabel.length);
+
+        clonedOption.innerHTML = previousContent.concat(exchangedText, followingContent);
+        return clonedOption;
+      };
+
+      comboboxes.forEach(combobox => {
+        combobox.getOption = multipleHighlightRender;
+      });
+    </script>
+  `
 };
 
 /**
