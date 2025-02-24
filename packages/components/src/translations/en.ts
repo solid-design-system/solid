@@ -36,6 +36,7 @@ const translation: Translation = {
   resize: 'Resize',
   scrollToEnd: 'Scroll to end',
   scrollToStart: 'Scroll to start',
+  seekBar: 'Seek bar',
   selectAColorFromTheScreen: 'Select a color from the screen',
   selectDefaultPlaceholder: 'Please select',
   showLess: 'Show less',

@@ -501,6 +501,7 @@ export default class SdAudio extends SolidElement {
             tabindex="0"
             @input=${this.handleAudioProgress}
             @keydown=${this.handleAudioProgressKeydown}
+            aria-label=${this.localize.term('seekBar')}
             part="progress-slider"
             style="background: linear-gradient(to right,
               ${this.inverted
