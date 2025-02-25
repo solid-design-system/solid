@@ -2,7 +2,7 @@
 name: Release Notes Subtask
 about: Template to create a subtask for the release notes in each iteration.
 title: 'docs: 📚 create release notes for iteration #[NUMBER]'
-labels: 'docs, 🎨 figma, 🔧 code, Subtask'
+labels: 'documentation, 🎨 figma, 🔧 code, Subtask'
 assignees: ''
 
 ---
