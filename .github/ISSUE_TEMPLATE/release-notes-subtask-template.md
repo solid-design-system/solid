@@ -12,7 +12,7 @@ In order to publish our release notes by the end of every iteration in MS Teams 
 
 ## ToDos
 - [ ] create the release notes in figma
-- [ ] create an publish the page in our communications repo
+- [ ] create and publish the page in our communications repo
   - [ ] create iteration page
   - [ ] update select filed with new option (latest iteration)
   - [ ] update all solid resources in the repo to the latest version
