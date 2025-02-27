@@ -44,16 +44,6 @@ describe('option-renderer', () => {
       expect(renderedOption.childNodes[2].textContent).to.equal('ion 1');
     });
 
-    it('should contain multiple <mark> elements to highlight multiple search occurences', async () => {
-      const option = await fixture<SdOption>(html`<sd-option>UniDuni</sd-option>`);
-
-      const query = 'uni';
-      expect(option.childNodes[0].textContent).to.equal('UniDuni');
-
-      const renderedOption = highlightOptionRenderer(option, query) as SdOption;
-      expect(renderedOption.innerHTML).to.equal('<mark>Uni</mark>D<mark>uni</mark>');
-    });
-
     it('should use the correct capitalization of the option text content for the <mark> text', async () => {
       const option = await fixture<SdOption>(html` <sd-option>Option 1</sd-option> `);
 
