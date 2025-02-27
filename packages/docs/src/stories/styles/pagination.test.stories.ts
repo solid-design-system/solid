@@ -36,7 +36,6 @@ export default {
       type: 'slot',
       name: 'default',
       value: html`
-      <h2>Pagination</h2>
       <ul>
         <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
         <li><a href="/?page=1" aria-current="page">1</a></li>

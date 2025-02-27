@@ -31,17 +31,7 @@ export default {
   args: overrideArgs({
     type: 'slot',
     name: 'default',
-    value: html`
-      <ul>
-        <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-        <li><a href="/?page=1" aria-current="page">1</a></li>
-        <li><a href="/?page=2">2</a></li>
-        <li><a href="/?page=3">3</a></li>
-        <li><a href="/?page=4">4</a></li>
-        <li><a href="/?page=5">5</a></li>
-        <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
-      </ul>
-    `
+    value: html``
   }),
   decorators: [withActions] as any
 };
@@ -61,7 +51,18 @@ export const Default = {
                   <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
                 </ul>
               </nav>`
-            : html`<nav class="%CLASSES%" aria-label="Default pagination">%SLOT%</nav>`
+            : html`
+              <nav class="%CLASSES%" aria-label="Default pagination">
+                <ul>
+                  <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
+                  <li><a href="/?page=1" aria-current="page">1</a></li>
+                  <li><a href="/?page=2">2</a></li>
+                  <li><a href="/?page=3">3</a></li>
+                  <li><a href="/?page=4">4</a></li>
+                  <li><a href="/?page=5">5</a></li>
+                  <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
+                </ul>
+              </nav>`
       },
       args
     });
