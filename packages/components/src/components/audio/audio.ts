@@ -251,7 +251,7 @@ export default class SdAudio extends SolidElement {
     }
   }
 
-  private handleTranscriptDrawer() {
+  private handleTranscriptDrawerToggle() {
     this.isTranscriptOpen = !this.isTranscriptOpen;
   }
 
