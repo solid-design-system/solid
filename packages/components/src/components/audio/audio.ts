@@ -87,7 +87,7 @@ export default class SdAudio extends SolidElement {
     this.handleAudioEnd = this.handleAudioEnd.bind(this);
     this.handleAudioProgress = this.handleAudioProgress.bind(this);
     this.handleAudioProgressKeydown = this.handleAudioProgressKeydown.bind(this);
-    this.handleTranscriptDrawer = this.handleTranscriptDrawer.bind(this);
+    this.handleTranscriptDrawerToggle = this.handleTranscriptDrawerToggle.bind(this);
   }
 
   firstUpdated() {
@@ -96,7 +96,7 @@ export default class SdAudio extends SolidElement {
     this.audioElement.addEventListener('timeupdate', this.updateCurrentTime);
     this.audioElement.addEventListener('ended', this.handleAudioEnd);
     this.audioElement.setAttribute('controlsList', 'nodownload');
-    document.addEventListener('sd-after-hide', this.handleTranscriptDrawer);
+    document.addEventListener('sd-after-hide', this.handleTranscriptDrawerToggle);
     this.audioElement.playbackRate = this.speed;
 
     if (this.animated) {
@@ -258,7 +258,7 @@ export default class SdAudio extends SolidElement {
   private showTranscript() {
     this.emit('sd-transcript-click');
     this.drawer.open = true;
-    this.handleTranscriptDrawer();
+    this.handleTranscriptDrawerToggle();
   }
 
   private showTranscriptKeydown(event: KeyboardEvent): void {
