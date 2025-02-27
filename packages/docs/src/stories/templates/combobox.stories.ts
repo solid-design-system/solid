@@ -72,12 +72,10 @@ export const HighlightQuery = {
 export const MultipleHighlightQuery = {
   render: () => html`
     <div class="h-[260px] w-[400px]">
-      <sd-combobox label="Funds" class="multiple-highlight-combobox" value="g">
-        ${createFondsOptionsHtml()}
-      </sd-combobox>
+      <sd-combobox label="Funds" class="multiple-highlight-combobox"> ${createFondsOptionsHtml()} </sd-combobox>
     </div>
     <script type="module">
-      const comboboxes = document.querySelectorAll('.multiple-highlight-combobox');
+      const combobox = document.querySelectorAll('.multiple-highlight-combobox');
 
       const multipleHighlightRender = (option, query) => {
         if (!query) {
@@ -106,9 +104,7 @@ export const MultipleHighlightQuery = {
         return clonedOption;
       };
 
-      comboboxes.forEach(combobox => {
-        combobox.getOption = multipleHighlightRender;
-      });
+      combobox.getOption = multipleHighlightRender;
     </script>
   `
 };
