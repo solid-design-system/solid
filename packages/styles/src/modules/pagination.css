@@ -41,7 +41,7 @@
     li {
       @apply flex items-center justify-center text-center w-8 h-8;
 
-      &:has(a[data-page]) {
+      &:not(:has(a sd-icon)) {
         a {
           @apply border-b-2 border-b-transparent w-full h-full;
 
@@ -56,16 +56,16 @@
       }
     }
 
-    &:has(> li:nth-child(2) a[aria-current]) > li:nth-child(1) a, /* When current is the first page, apply styles to prev button */
-    &:has(> li:nth-last-child(2) a[aria-current]) > li:nth-last-child(1) a /* When current is the last page, apply styles to next button */ {
-      @apply cursor-not-allowed text-neutral-500;
+    /* Previous and next arrow when it has no href */
+    li:has(a:not([href]) sd-icon) a {
+      @apply cursor-not-allowed text-neutral-500 hover:text-neutral-500;
     }
   }
 
   &:not(.sd-pagination--simple) {
     ul {
       /* Numbers */
-      li:has(a[data-page]) {
+      li:not(:has(a sd-icon)) {
         /* Number which is not current */
         &:not(:has(a[aria-current])) {
           @apply absolute pointer-events-none;
@@ -133,30 +133,12 @@
 
   &--simple {
     ul {
-      /* Numbers */
-      li:has(a[data-page]) {
-        /* Hide numbers except current and last page */
-        &:not(:nth-last-child(2)):not(:has(a[aria-current])) {
-          @apply hidden;
-        }
+      li:nth-child(2) {
+        @apply relative w-8 border-b-2 border-b-accent me-4 after:content-['/'] after:absolute after:-right-[18px] after:text-xl;
+      }
 
-        /* Last page adds the '/' */
-        &:nth-last-child(2) {
-          @apply w-auto before:content-['/'] before:me-2 before:text-xl;
-
-          a {
-            @apply w-8 border-b-transparent text-primary;
-          }
-        }
-
-        /* Last page is also active */
-        &:nth-last-child(2):has(a[aria-current]) {
-          @apply relative ps-10;
-
-          a[aria-current] {
-            @apply after:content-[attr(data-page)] after:absolute after:left-0 after:top-0 after:w-8 after:h-full after:flex after:justify-center after:items-center after:text-black after:border-b-2 after:border-b-accent;
-          }
-        }
+      li:nth-last-child(2) {
+        @apply border-b-2 border-b-transparent text-primary;
       }
     }
   }
@@ -175,16 +157,8 @@
       }
     }
 
-    &.sd-pagination--simple {
-      ul li {
-        /* The `before::` selector is the slash */
-        @apply before:text-white;
-
-        /* Last page */
-        &:has(a[data-page]):nth-last-child(2) a {
-          @apply text-white;
-        }
-      }
+    &.sd-pagination--simple ul li {
+      @apply text-white after:text-white;
     }
   }
 }
