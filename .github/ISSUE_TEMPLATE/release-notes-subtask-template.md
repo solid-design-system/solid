@@ -15,7 +15,7 @@ In order to publish our release notes by the end of every iteration in MS Teams 
 - [ ] create and publish the page in our communications repo
   - [ ] create iteration page
   - [ ] update select field with new option (latest iteration)
-  - [ ] update all solid resources in the repo to the latest version
+  - [ ] update all solid CDN resources in the repo to the latest version
 - [ ] publish release notes in MS Teams (general channel)
 - [ ] publish release notes in UniVersum
 
