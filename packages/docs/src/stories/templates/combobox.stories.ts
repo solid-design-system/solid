@@ -75,7 +75,7 @@ export const MultipleHighlightQuery = {
       <sd-combobox label="Funds" class="multiple-highlight-combobox"> ${createFondsOptionsHtml()} </sd-combobox>
     </div>
     <script type="module">
-      const combobox = document.querySelectorAll('.multiple-highlight-combobox');
+      const combobox = document.querySelector('.multiple-highlight-combobox');
 
       const multipleHighlightRender = (option, query) => {
         if (!query) {
