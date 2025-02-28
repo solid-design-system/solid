@@ -1,5 +1,18 @@
 # @solid-design-system/components
 
+## 4.2.2
+
+### Patch Changes
+
+- Improved `sd-audio` accessibility and fixed progress bar syncronization. _[`#1921`](https://github.com/solid-design-system/solid/pull/1921) [`8bab0f5`](https://github.com/solid-design-system/solid/commit/8bab0f5a9870850f3dbe15a4a524a37ba88c300c) [@smfonseca](https://github.com/smfonseca)_
+
+  - Correctly set aria attributes in the control buttons.
+  - Used floating-points to more accurately set `currentTime`, `duration` and progress bar calculations.
+
+### 📈 Stats
+* Uncompressed: 412 KB (+1 KB / +0%)
+* Gzipped: 97 KB (unchanged)
+
 ## 4.2.1
 
 ### Patch Changes
