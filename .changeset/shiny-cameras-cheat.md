@@ -1,5 +1,5 @@
 ---
-'@solid-design-system/components': patch
+'@solid-design-system/docs': minor
 ---
 
-Improve highlight option renderer to highlight multiple search occurences.
+Implement highlight option renderer to highlight multiple search occurences on combobox template.
