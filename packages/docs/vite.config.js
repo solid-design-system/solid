@@ -2,6 +2,7 @@ import { replaceCodePlugin as ViteReplaceCodePlugin } from 'vite-plugin-replace'
 import componentsPackageJson from '../components/package.json';
 import customElementConfig from '../components/custom-elements-manifest.config.js';
 import placeholdersPackageJson from '../placeholders/package.json';
+import postcssTokenVariables from '../components/scripts/postcss-token-variables.js';
 import stylesPackageJson from '../styles/package.json';
 import tokensPackageJson from '../tokens/package.json';
 import VitePluginCreateEmptyCemIfNotExisting from './scripts/vite-plugin-create-empty-cem-if-not-existing';
@@ -15,6 +16,11 @@ import VitePluginSolidStyles from './scripts/vite-plugin-solid-styles/index.js';
 // https://vitejs.dev/config/
 export default () => {
   return {
+    css: {
+      postcss: {
+        plugins: [postcssTokenVariables]
+      }
+    },
     plugins: [
       VitePluginFetchIconsFromCdn(),
       VitePluginLitTailwind({
