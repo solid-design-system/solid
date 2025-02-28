@@ -4,10 +4,7 @@
  * to reduce the possibility of collisions.
  */
 
-:root {
-  /* TODO: Dynamically add tokens using postcss */
-  --sd-duration-fast: 150;
-}
+/* postcss:tokens */
 
 .sd-scroll-lock {
   padding-right: var(--sd-scroll-lock-size) !important;
