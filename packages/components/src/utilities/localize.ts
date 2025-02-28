@@ -90,6 +90,7 @@ export interface Translation extends DefaultTranslation {
   noResults: string;
   notifications: string;
   numOptionsSelected: (num: number) => string;
+  openTranscript: string;
   pauseAudio: string;
   playAudio: string;
   playbackSpeed: string;
@@ -100,6 +101,7 @@ export interface Translation extends DefaultTranslation {
   resize: string;
   scrollToEnd: string;
   scrollToStart: string;
+  seekBar: string;
   selectAColorFromTheScreen: string;
   selectDefaultPlaceholder: string;
   showLess: string;
@@ -108,5 +110,6 @@ export interface Translation extends DefaultTranslation {
   slideNum: (slide: number, count: number) => string;
   tagsSelected: string;
   toggleColorFormat: string;
+  transcriptIsOpen: string;
   unmute: string;
 }
