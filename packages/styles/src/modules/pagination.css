@@ -92,40 +92,44 @@
           }
         }
 
-        /* When current is the first number, the 3rd number should show */
-        &:nth-child(2):has(a[aria-current]) + li + li {
-          @apply !relative !pointer-events-auto after:!hidden;
+        /* When one of the first 5 pages is selected */
+        &:nth-child(-n + 5):has(a[aria-current]) {
+          /* Show the first 5 pages forward */
+          & ~ :nth-child(-n + 6) {
+            @apply relative after:hidden;
 
-          a {
-            @apply !flex;
+            a {
+              @apply flex;
+            }
           }
 
-          & + li {
-            @apply !relative !pointer-events-auto after:content-['...'];
-          }
-        }
-
-        /* When current is the last number, the 3rd number from last should show */
-        &:has(+ li + li a[aria-current]):nth-last-child(4) {
-          @apply !relative !pointer-events-auto after:!hidden;
-
-          a {
-            @apply !flex;
+          /* Show ellipsis on the 6th */
+          & ~ :nth-child(6):not(:last-child) + li {
+            @apply relative pointer-events-auto after:content-['...'];
           }
         }
 
-        /* When current is the last number, the 4th number from last should be an ellipsis */
-        &:has(+ li + li + li a[aria-current]):nth-last-child(5) {
-          @apply !relative !pointer-events-auto after:content-['...'];
+        /* When one of the last 5 pages is selected, show the last 5 pages */
+        &:nth-last-child(-n + 6):has(~ :nth-last-child(-n + 5) a[aria-current]) {
+          @apply relative after:hidden;
+
+          a {
+            @apply flex;
+          }
+        }
+
+        /* Show ellipsis on the 6th to last */
+        &:nth-last-child(7):has(~ :nth-last-child(-n + 5) a[aria-current]) {
+          @apply relative pointer-events-auto after:content-['...'];
         }
       }
 
       /* When it only has 5 numbers + 2 prev & next buttons */
-      &:has(> li:last-child:nth-child(-n + 7)) li {
-        @apply !relative !pointer-events-auto after:!hidden;
+      &:has(> li:last-child:nth-child(-n + 9)) li {
+        @apply relative pointer-events-auto after:hidden;
 
         a {
-          @apply !flex;
+          @apply flex;
         }
       }
     }
