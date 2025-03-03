@@ -65,6 +65,8 @@ export default class SdAudio extends SolidElement {
 
   @state() isMuted: boolean = false;
 
+  @state() isTranscriptOpen: boolean = false;
+
   @state() progress: number = 0;
 
   @query('[part="progress-slider"]') progressSlider: HTMLInputElement;
@@ -85,6 +87,7 @@ export default class SdAudio extends SolidElement {
     this.handleAudioEnd = this.handleAudioEnd.bind(this);
     this.handleAudioProgress = this.handleAudioProgress.bind(this);
     this.handleAudioProgressKeydown = this.handleAudioProgressKeydown.bind(this);
+    this.handleTranscriptDrawerToggle = this.handleTranscriptDrawerToggle.bind(this);
   }
 
   firstUpdated() {
@@ -93,6 +96,7 @@ export default class SdAudio extends SolidElement {
     this.audioElement.addEventListener('timeupdate', this.updateCurrentTime);
     this.audioElement.addEventListener('ended', this.handleAudioEnd);
     this.audioElement.setAttribute('controlsList', 'nodownload');
+    document.addEventListener('sd-after-hide', this.handleTranscriptDrawerToggle);
     this.audioElement.playbackRate = this.speed;
 
     if (this.animated) {
@@ -120,16 +124,12 @@ export default class SdAudio extends SolidElement {
     return null;
   }
 
-  private setAudioProgress = () => {
-    this.progressSlider.max = Math.floor(this.audioElement!.duration).toString();
-  };
-
   private updateCurrentTime() {
     if (!this.audioElement) return;
 
     const currentTime = this.audioElement.currentTime;
     this.currentTime = this.formatTime(currentTime);
-    this.progress = Math.floor(currentTime);
+    this.progress = currentTime;
 
     if (this.progressSlider) {
       this.progressSlider.value = this.progress.toString();
@@ -148,7 +148,7 @@ export default class SdAudio extends SolidElement {
     }
 
     this.duration = this.formatTime(this.audioElement.duration);
-    this.setAudioProgress();
+    this.progressSlider.max = this.audioElement.duration.toString();
   }
 
   playAudio() {
@@ -251,9 +251,14 @@ export default class SdAudio extends SolidElement {
     }
   }
 
+  private handleTranscriptDrawerToggle() {
+    this.isTranscriptOpen = !this.isTranscriptOpen;
+  }
+
   private showTranscript() {
     this.emit('sd-transcript-click');
     this.drawer.open = true;
+    this.handleTranscriptDrawerToggle();
   }
 
   private showTranscriptKeydown(event: KeyboardEvent): void {
@@ -415,6 +420,7 @@ export default class SdAudio extends SolidElement {
         size="lg"
         @click=${!this.isPlaying ? this.playAudio : this.pauseAudio}
         aria-label="${this.isPlaying ? this.localize.term('pauseAudio') : this.localize.term('playAudio')}"
+        title="${this.isPlaying ? this.localize.term('pauseAudio') : this.localize.term('playAudio')}"
         class="text-3xl"
       >
         ${this.isPlaying
@@ -429,23 +435,22 @@ export default class SdAudio extends SolidElement {
                 'mr-6 w-6 h-6 hover:cursor-pointer sd-interactive',
                 this.inverted && 'sd-interactive--inverted'
               )}
+              aria-label=${this.isTranscriptOpen
+                ? this.localize.term('transcriptIsOpen')
+                : this.localize.term('openTranscript')}
               @click=${this.showTranscript}
               @keydown=${this.showTranscriptKeydown}
               tab-index="0"
+              part="transcript"
             >
-              <sd-icon
-                class="w-6 h-6"
-                name="transcript"
-                library="system"
-                label=${this.isMuted ? this.localize.term('unmute') : this.localize.term('mute')}
-              ></sd-icon>
+              <sd-icon class="w-6 h-6" name="transcript" library="system"></sd-icon>
             </button>`
           : null}
 
         <button
           class=${cx('w-6 h-6 hover:cursor-pointer sd-interactive', this.inverted && 'sd-interactive--inverted')}
           part="volume"
-          aria-label=${this.localize.term('mute')}
+          aria-label=${!this.isMuted ? this.localize.term('mute') : this.localize.term('unmute')}
           tabindex="0"
           @click=${this.toggleMute}
           @keydown=${this.toggleMuteKeydown}
@@ -498,6 +503,7 @@ export default class SdAudio extends SolidElement {
             tabindex="0"
             @input=${this.handleAudioProgress}
             @keydown=${this.handleAudioProgressKeydown}
+            aria-label=${this.localize.term('seekBar')}
             part="progress-slider"
             style="background: linear-gradient(to right,
               ${this.inverted
