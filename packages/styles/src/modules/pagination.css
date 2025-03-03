@@ -96,7 +96,7 @@
         &:nth-child(-n + 5):has(a[aria-current]) {
           /* Show the first 5 pages forward */
           & ~ :nth-child(-n + 6) {
-            @apply relative after:hidden;
+            @apply relative pointer-events-auto after:hidden;
 
             a {
               @apply flex;
@@ -105,13 +105,13 @@
 
           /* Show ellipsis on the 6th */
           & ~ :nth-child(6):not(:last-child) + li {
-            @apply relative pointer-events-auto after:content-['...'];
+            @apply relative pointer-events-none after:content-['...'];
           }
         }
 
         /* When one of the last 5 pages is selected, show the last 5 pages */
         &:nth-last-child(-n + 6):has(~ :nth-last-child(-n + 5) a[aria-current]) {
-          @apply relative after:hidden;
+          @apply relative pointer-events-auto after:hidden;
 
           a {
             @apply flex;
@@ -120,7 +120,7 @@
 
         /* Show ellipsis on the 6th to last */
         &:nth-last-child(7):has(~ :nth-last-child(-n + 5) a[aria-current]) {
-          @apply relative pointer-events-auto after:content-['...'];
+          @apply relative pointer-events-none after:content-['...'];
         }
       }
 
