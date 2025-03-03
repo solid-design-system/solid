@@ -1,0 +1,87 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as AccordionGroupStories from './accordion-group.stories';
+
+<Meta title="Components/sd-accordion-group/Overview" />
+
+<h1 class="sd-headline">Accordion Group</h1>
+
+Used to group multiple accordions together.
+
+<Canvas of={AccordionGroupStories.Default} />
+
+<div class="flex flex-row gap-8">
+  <div class="flex flex-row gap-4">
+    <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=654-12164&t=4I7yDTh1DssvjyjU-0">Figma Link</sd-link>
+
+    <div class="sd-status-badge sd-status-badge--success m-0">
+      <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+      Available
+    </div>
+
+  </div>
+  <div class="flex flex-row gap-4">
+    <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-sd-accordion-group--docs">Storybook</sd-link>
+
+    <div class="sd-status-badge sd-status-badge--success m-0">
+      <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+      Available
+    </div>
+
+  </div>
+</div>
+
+The following sections cover the use of the group component. See <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2001-2283&t=CRApplu7KVvCKHLb-0">sd-accordion</sd-link> for standalone usage guidelines.
+
+## Common Use Cases
+
+- Organise content into collapsible sections to save space.
+- Display FAQs where each question can be expanded to reveal its answer.
+- Structure lengthy content into manageable expandable sections.
+- Create navigational menus where each section can be expanded to show sub-items, mainly for small viewports.
+
+## Usage Guidelines
+
+### Slots
+
+- Use the ”summary” slot to add text to the header.
+- Use the ”default” slot to add content.
+
+### Content
+
+- Ensure the content is relevant and necessary; avoid including unrelated information.
+- Avoid using collapsible sections for content that needs to be always visible or is critical for immediate user attention.
+
+### Header Summary
+
+- Make sure the header summary clearly describes the content inside.
+- Keep header summaries concise to prevent them from wrapping onto multiple lines.
+
+### Behaviour
+
+- Keep only one section open at a time to prevent information overload, unless multiple open sections are necessary.
+- Avoid nesting collapsible sections within each other to prevent a confusing user experience.
+
+### Expandable vs. Accordion
+
+- The use of sd-accordion is generally recommended over the use of sd-expandable: the former gives the user a quick scan header to decide if the content is relevant to them, offers a cleaner layout and is more accessible as a result.
+
+### Background
+
+- Use light background options such as white, neutral-100, or primary-100.
+
+## Accessibility Information
+
+- Use only for non-critical information. Hiding content can become a potential barrier, making it more challenging for users to access information.
+- Ensure that users can navigate through the accordion headers using the keyboard (e.g., Tab and Enter keys).
+- Use appropriate ARIA roles, such as ”aria-expanded” to indicate the state of the accordion sections or ”aria-live” regions to announce dynamic changes in the accordion content to screen reader users.
+- Use “close-others” attribute to keep only one item from the group open at a time, reducing the amount of information displayed at once and therefore reducing the cognitive load on the user.
+- Visit Solid DS Best Practices for WCAG Compliance to learn more about our accessibilility standards.
+
+## Related Components
+
+[sd-accordion](?path=/docs/components-sd-accordion--docs)
+
+## Related Templates
+
+[Accordion Group](?path=/docs/templates-accordion-group--docs)
