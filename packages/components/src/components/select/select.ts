@@ -885,7 +885,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     // Hierarchy of input states:
     const selectState = this.disabled
       ? 'disabled'
-      : this.visuallyDisabled && !this.hasFocus
+      : this.visuallyDisabled
         ? 'visuallyDisabled'
         : this.hasFocus && this.showInvalidStyle
           ? 'activeInvalid'
