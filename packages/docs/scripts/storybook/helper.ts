@@ -506,7 +506,7 @@ export const storybookTemplate = (customElementTag: string) => {
                             <span><code>${yAxis.title || yAxis.name}</code></span>
                           </th>`
                         : ''}
-                      ${yValue.title || yValue
+                      ${typeof (yValue.title || yValue) === 'boolean' || yValue.title || yValue
                         ? html`<th><code>${yValue.title || yValue}</code></th>`
                         : html`<td></td>`}
                       ${(xAxis?.values || ['']).map((xValue: any) => {
