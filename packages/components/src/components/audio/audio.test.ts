@@ -89,4 +89,21 @@ describe('<sd-audio>', () => {
 
     expect(spy.calledOnce).to.be.true;
   });
+
+  it('should have the correct aria-labels', async () => {
+    const el = await fixture<SdAudio>(html`
+      <sd-audio>
+        <audio src="${base64Audio}"></audio>
+        <div slot="transcript">Transcript</div>
+      </sd-audio>
+    `);
+
+    const transcript = el.shadowRoot!.querySelector('[part="transcript"]')!;
+    const playButton = el.shadowRoot!.querySelector('[part="play-button"]')!;
+    const volumeButton = el.shadowRoot!.querySelector('[part="volume"]')!;
+
+    expect(transcript.getAttribute('aria-label')).to.equal('Open transcript');
+    expect(playButton.getAttribute('aria-label')).to.equal('Play Audio');
+    expect(volumeButton.getAttribute('aria-label')).to.equal('Mute');
+  });
 });

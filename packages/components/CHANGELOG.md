@@ -1,5 +1,29 @@
 # @solid-design-system/components
 
+## 4.2.2
+
+### Patch Changes
+
+- Improved `sd-audio` accessibility and fixed progress bar syncronization. _[`#1921`](https://github.com/solid-design-system/solid/pull/1921) [`8bab0f5`](https://github.com/solid-design-system/solid/commit/8bab0f5a9870850f3dbe15a4a524a37ba88c300c) [@smfonseca](https://github.com/smfonseca)_
+
+  - Correctly set aria attributes in the control buttons.
+  - Used floating-points to more accurately set `currentTime`, `duration` and progress bar calculations.
+
+### 📈 Stats
+* Uncompressed: 412 KB (+1 KB / +0%)
+* Gzipped: 97 KB (unchanged)
+
+## 4.2.1
+
+### Patch Changes
+
+- Fixed the following issues in `sd-dialog`: _[`#1917`](https://github.com/solid-design-system/solid/pull/1917) [`8ff069c`](https://github.com/solid-design-system/solid/commit/8ff069cb9cf99aa3709d618efaa51394821c67d0) [@smfonseca](https://github.com/smfonseca)_
+
+  - Panel max-height is set to 80vh.
+  - On higher zoom levels (e.g. 400%):
+    - Panel body now has a min-height to prevent collapsing.
+    - Added `overflow-y: auto` to the footer to prevent content from overflowing.
+
 ## 4.2.0
 
 ### Minor Changes
@@ -23,8 +47,9 @@
   A new form template utilizing the `visually-disabled` approach has been created as a suggestion on how to handle forms in a more accessible way.
 
 ### 📈 Stats
-* Uncompressed: 411 KB (+7 KB / +2%)
-* Gzipped: 97 KB (+1 KB / +1%)
+
+- Uncompressed: 411 KB (+7 KB / +2%)
+- Gzipped: 97 KB (+1 KB / +1%)
 
 ## 4.1.3
 

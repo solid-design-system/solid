@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/components",
   "description": "Solid Design System: Components",
-  "version": "4.2.0",
+  "version": "4.2.2",
   "homepage": "https://solid-design-system.fe.union-investment.de/docs/",
   "author": "Union Investment",
   "license": "MIT",
@@ -74,7 +74,7 @@
     "@floating-ui/dom": "^1.6.13",
     "@shoelace-style/animations": "^1.2.0",
     "@shoelace-style/localize": "^3.2.1",
-    "classix": "^2.2.0",
+    "classix": "^2.2.2",
     "lit": "^3.2.1"
   },
   "devDependencies": {
@@ -85,9 +85,9 @@
     "@solid-design-system/versioning": "workspace:^",
     "@tarekraafat/autocomplete.js": "^10.2.9",
     "@types/mocha": "^10.0.10",
-    "@types/sinon": "^17.0.3",
-    "@web/dev-server-esbuild": "^1.0.3",
-    "@web/test-runner": "^0.19.0",
+    "@types/sinon": "^17.0.4",
+    "@web/dev-server-esbuild": "^1.0.4",
+    "@web/test-runner": "^0.20.0",
     "@web/test-runner-commands": "^0.9.0",
     "@web/test-runner-playwright": "^0.11.0",
     "autoprefixer": "^10.4.20",
@@ -97,12 +97,12 @@
     "comment-parser": "^1.4.1",
     "concurrently": "^9.1.2",
     "cssnano": "^7.0.6",
-    "custom-element-jet-brains-integration": "^1.6.2",
-    "custom-element-vs-code-integration": "^1.4.1",
+    "custom-element-jet-brains-integration": "^1.7.0",
+    "custom-element-vs-code-integration": "^1.5.0",
     "del": "^8.0.0",
     "esbuild": "^0.25.0",
     "esbuild-plugin-replace": "^1.4.0",
-    "globby": "^14.0.2",
+    "globby": "^14.1.0",
     "gzip-size": "^7.0.0",
     "jsonata": "^2.0.6",
     "lit-html": "^3.2.1",
@@ -111,9 +111,9 @@
     "picocolors": "^1.1.1",
     "playwright": "^1.50.1",
     "plop": "^4.0.1",
-    "postcss": "^8.5.2",
+    "postcss": "^8.5.3",
     "postcss-import": "^16.1.0",
-    "prettier": "^3.5.1",
+    "prettier": "^3.5.2",
     "recursive-copy": "^2.0.14",
     "sinon": "^19.0.2",
     "tailwindcss": "^3.4.17",
@@ -123,7 +123,7 @@
   "readme": "README.md",
   "meta": {
     "bundleSizeInKb": {
-      "uncompressed": 411,
+      "uncompressed": 412,
       "gzip": 97
     }
   }
