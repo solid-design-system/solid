@@ -25,6 +25,7 @@ const translation: Translation = {
     if (num === 0) return '';
     return `Options Selected (${num})`;
   },
+  openTranscript: 'Open transcript',
   pauseAudio: 'Pause Audio',
   playAudio: 'Play Audio',
   playbackSpeed: 'Playback Speed',
@@ -35,6 +36,7 @@ const translation: Translation = {
   resize: 'Resize',
   scrollToEnd: 'Scroll to end',
   scrollToStart: 'Scroll to start',
+  seekBar: 'Seek bar',
   selectAColorFromTheScreen: 'Select a color from the screen',
   selectDefaultPlaceholder: 'Please select',
   showLess: 'Show less',
@@ -43,6 +45,7 @@ const translation: Translation = {
   slideNum: num => `Slide ${num}`,
   tagsSelected: 'Options selected',
   toggleColorFormat: 'Toggle color format',
+  transcriptIsOpen: 'Transcript is open',
   unmute: 'Unmute'
 };
 
