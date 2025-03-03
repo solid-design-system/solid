@@ -1,9 +1,13 @@
 import { replaceCodePlugin as ViteReplaceCodePlugin } from 'vite-plugin-replace';
+import atImportPlugin from 'postcss-import';
+import autoprefixer from 'autoprefixer';
 import componentsPackageJson from '../components/package.json';
 import customElementConfig from '../components/custom-elements-manifest.config.js';
 import placeholdersPackageJson from '../placeholders/package.json';
 import postcssTokenVariables from '../components/scripts/postcss-token-variables.js';
 import stylesPackageJson from '../styles/package.json';
+import tailwindcss from 'tailwindcss';
+import tailwindcssNesting from 'tailwindcss/nesting/index.js';
 import tokensPackageJson from '../tokens/package.json';
 import VitePluginCreateEmptyCemIfNotExisting from './scripts/vite-plugin-create-empty-cem-if-not-existing';
 import VitePluginCustomElementsManifest from 'vite-plugin-cem';
@@ -16,11 +20,6 @@ import VitePluginSolidStyles from './scripts/vite-plugin-solid-styles/index.js';
 // https://vitejs.dev/config/
 export default () => {
   return {
-    css: {
-      postcss: {
-        plugins: [postcssTokenVariables]
-      }
-    },
     plugins: [
       VitePluginFetchIconsFromCdn(),
       VitePluginLitTailwind({
@@ -74,6 +73,17 @@ export default () => {
           }
         ]
       })
-    ]
+    ],
+    css: {
+      postcss: {
+        plugins: [
+          atImportPlugin({ allowDuplicates: false }),
+          tailwindcssNesting,
+          tailwindcss,
+          autoprefixer,
+          postcssTokenVariables
+        ]
+      }
+    }
   };
 };
