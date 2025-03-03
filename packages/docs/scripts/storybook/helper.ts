@@ -416,12 +416,16 @@ export const storybookTemplate = (customElementTag: string) => {
           text-align: center;
           border-bottom: 1px solid #e0e0e0;
         }
+        .story-template thead tr td {
+          white-space: nowrap;
+        }
         .story-template thead th.title {
           background: #e0e0e0;
           text-align: left;
           font-size: 14px;
         }
         .story-template tbody tr th {
+          white-space: nowrap;
           font-weight: normal;
           text-align: center;
         }
