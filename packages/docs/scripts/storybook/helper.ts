@@ -506,7 +506,9 @@ export const storybookTemplate = (customElementTag: string) => {
                             <span><code>${yAxis.title || yAxis.name}</code></span>
                           </th>`
                         : ''}
-                      <th><code>${yValue.title || yValue}</code></th>
+                      ${yValue.title || yValue
+                        ? html`<th><code>${yValue.title || yValue}</code></th>`
+                        : html`<td></td>`}
                       ${(xAxis?.values || ['']).map((xValue: any) => {
                         return html`
                           <td class="template template-x-${xAxis?.values?.indexOf(xValue) || 0 + 1} template-y-${
