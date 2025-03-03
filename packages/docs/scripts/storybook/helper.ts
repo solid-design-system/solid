@@ -401,6 +401,9 @@ export const storybookTemplate = (customElementTag: string) => {
         .story-template td {
           text-align: center;
         }
+        .story-template td:empty {
+          width: 0;
+        }
         .story-template th,
         .story-template td {
           padding: 16px;
