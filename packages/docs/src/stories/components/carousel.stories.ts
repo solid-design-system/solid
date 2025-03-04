@@ -14,7 +14,7 @@ const { generateTemplate } = storybookTemplate('sd-carousel');
  *
  * **Accessibility Hints:**
  * - Chevron buttons are still displayed on touch devices to enable alternative interaction that complies with accessibility requirements.
- * - Add the `aria-role="region"` attribute together with an unique `aria-label` whenever the carousel is an important landmark of the page.
+ * - Add the `role="region"` attribute together with an unique `aria-label` whenever the carousel is an important landmark of the page.
  *
  *
  * **Related Components**:
@@ -114,13 +114,13 @@ export const Inverted = {
     <div class="bg-primary p-8">
       <sd-carousel inverted>
         <sd-carousel-item>
-          <div class="slot slot--border slot--text h-16">Default slot 1</div>
+          <div class="slot slot--border slot--text slot--inverted h-16">Default slot 1</div>
         </sd-carousel-item>
         <sd-carousel-item>
-          <div class="slot slot--border slot--text h-16">Default slot 2</div>
+          <div class="slot slot--border slot--text slot--inverted h-16">Default slot 2</div>
         </sd-carousel-item>
         <sd-carousel-item>
-          <div class="slot slot--border slot--text h-16">Default slot 3</div>
+          <div class="slot slot--border slot--text slot--inverted h-16">Default slot 3</div>
         </sd-carousel-item>
       </sd-carousel>
     </div>
