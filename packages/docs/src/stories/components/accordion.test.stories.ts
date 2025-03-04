@@ -168,8 +168,8 @@ export const Mouseless = {
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const el = canvasElement.querySelector('.mouseless sd-accordion');
-    await waitUntil(() => el?.shadowRoot?.querySelector('header'));
-    await userEvent.type(el!.shadowRoot!.querySelector('header')!, '{space}', { pointerEventsCheck: 0 });
+    await waitUntil(() => el?.shadowRoot?.querySelector('summary'));
+    await userEvent.type(el!.shadowRoot!.querySelector('summary')!, '{space}', { pointerEventsCheck: 0 });
   }
 };
 
