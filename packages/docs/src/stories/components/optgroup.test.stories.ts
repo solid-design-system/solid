@@ -14,7 +14,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-optgroup/Screenshots: sd-optgroup',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-optgroup',
   args: overrideArgs([
     {
@@ -55,7 +55,7 @@ export const Default = {
   },
   render: (args: unknown) => html`
     <div class="h-[260px] w-[400px]">
-      <sd-combobox>
+      <sd-combobox label="Label">
         ${generateTemplate({ args })}
         <sd-optgroup>
           <span slot="label">Section 2</span>
@@ -74,7 +74,7 @@ export const Disabled = {
   name: 'Disabled',
   render: () => html`
     <div class="h-[260px] w-[400px]">
-      <sd-combobox>
+      <sd-combobox label="Label">
         <sd-optgroup label="Section 1" disabled>
           <sd-option value="1">Option</sd-option>
           <sd-option value="2">Option</sd-option>
@@ -113,7 +113,7 @@ export const Slots = {
                       ? `<div class="slot slot--border slot--background"><sd-option >Option 1</sd-option><sd-option >Option 2</sd-option></div>`
                       : `<div slot='${slot}' class="slot slot--border slot--background h-6 ${
                           slot === 'label' || slot === 'help-text' ? 'w-20' : 'w-6'
-                        }"></div>`,
+                        }">${slot === 'label' ? 'Label' : ''}</div>`,
                   title: slot
                 }
               ]

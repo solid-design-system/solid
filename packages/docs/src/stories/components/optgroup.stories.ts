@@ -19,7 +19,7 @@ const { generateTemplate } = storybookTemplate('sd-optgroup');
 
 export default {
   title: 'Components/sd-optgroup',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   component: 'sd-optgroup',
   args: overrideArgs([
     {
@@ -59,7 +59,7 @@ export const Default = {
   },
   render: (args: unknown) => html`
     <div class="h-[260px] w-[400px]">
-      <sd-combobox>
+      <sd-combobox label="Label">
         ${generateTemplate({ args })}
         <sd-optgroup>
           <span slot="label">Section 2</span>
@@ -77,7 +77,7 @@ export const Default = {
 export const Disabled = {
   render: () => html`
     <div class="h-[260px] w-[400px]">
-      <sd-combobox>
+      <sd-combobox label="Label">
         <sd-optgroup label="Section 1" disabled>
           <sd-option value="1">Option</sd-option>
           <sd-option value="2">Option</sd-option>

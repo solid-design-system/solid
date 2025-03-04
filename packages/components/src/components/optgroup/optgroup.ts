@@ -1,6 +1,7 @@
 import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { html } from 'lit/static-html.js';
+import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
 import { watch } from '../../internal/watch.js';
 import cx from 'classix';
@@ -29,6 +30,8 @@ import type SdOption from '../option/option';
 
 @customElement('sd-optgroup')
 export default class SdOptgroup extends SolidElement {
+  private readonly localize = new LocalizeController(this);
+
   static dependencies = {
     'sd-divider': SdDivider
   };
@@ -83,7 +86,7 @@ export default class SdOptgroup extends SolidElement {
             <span>${this.label}</span>
           </slot>
         </div>
-        <div role="group" part="options">
+        <div role="listbox" part="options" aria-label="${this.localize.term('optionsList')}">
           <slot @slotchange=${this.handleDisableOptions}></slot>
         </div>
       </div>
