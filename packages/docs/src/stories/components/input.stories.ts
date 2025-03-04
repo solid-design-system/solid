@@ -16,7 +16,7 @@ const { overrideArgs } = storybookHelpers('sd-input');
  *
  */
 export default {
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   title: 'Components/sd-input',
   component: 'sd-input',
   args: overrideArgs({
@@ -79,7 +79,7 @@ export const Label = {
 export const Placeholder = {
   render: () => html`
     <div class="w-[250px]">
-      <sd-input placeholder="Placeholder example" spellcheck></sd-input>
+      <sd-input placeholder="Placeholder example" label="Label" spellcheck></sd-input>
     </div>
   `
 };
