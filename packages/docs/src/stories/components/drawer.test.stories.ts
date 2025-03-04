@@ -11,7 +11,7 @@ const { overrideArgs } = storybookHelpers('sd-drawer');
 
 export default {
   title: 'Components/sd-drawer/Screenshots: sd-drawer',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-drawer',
 
   args: overrideArgs([
@@ -31,7 +31,8 @@ export default {
       value: `<div slot='footer' class="slot slot--border slot--text h-12">Footer slot</div>`
     },
     { type: 'attribute', name: 'open', value: true },
-    { type: 'attribute', name: 'contained', value: true }
+    { type: 'attribute', name: 'contained', value: true },
+    { type: 'attribute', name: 'label', value: 'Aria Label' }
   ]),
   argTypes,
   parameters: {
