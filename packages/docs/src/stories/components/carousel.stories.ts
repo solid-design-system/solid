@@ -12,7 +12,9 @@ const { generateTemplate } = storybookTemplate('sd-carousel');
  *
  * On touch devices, the slides can be moved by swiping.
  *
- * **Accessibility Hint:** Chevron buttons are still displayed on touch devices to enable alternative interaction that complies with accessibility requirements.
+ * **Accessibility Hints:**
+ * - Chevron buttons are still displayed on touch devices to enable alternative interaction that complies with accessibility requirements.
+ * - Add the `aria-role="region"` attribute together with an unique `aria-label` whenever the carousel is an important landmark of the page.
  *
  *
  * **Related Components**:
@@ -24,7 +26,7 @@ const { generateTemplate } = storybookTemplate('sd-carousel');
 
 export default {
   title: 'Components/sd-carousel',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   component: 'sd-carousel',
   args: overrideArgs([
     {
