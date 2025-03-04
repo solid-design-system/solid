@@ -110,7 +110,7 @@ export const Slots = {
                       : `<div slot='${slot}' class="${cx(
                           'slot slot--border slot--background h-6',
                           slot === 'summary' ? 'w-[100%]' : 'w-6'
-                        )}"></div>`,
+                        )}" aria-label="Default Slot"></div>`,
                   title: slot
                 }
               ]
