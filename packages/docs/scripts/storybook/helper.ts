@@ -446,8 +446,8 @@ export const storybookTemplate = (customElementTag: string) => {
         }
 
         .story-template .template-inverted .slot {
-          color: white;
-          border-color: white;
+          color: #E1D5F6;
+          border-color: #E1D5F6;
         }
 
         ${options?.templateBackground &&
