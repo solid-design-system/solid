@@ -790,6 +790,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         caret-color: transparent;
       }
 
+      :host([visually-disabled]) ::placeholder,
+      :host([disabled]) ::placeholder {
+        @apply text-neutral-500;
+      }
+
       details summary::-webkit-details-marker {
         display: none;
       }

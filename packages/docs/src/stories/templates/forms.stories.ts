@@ -153,7 +153,7 @@ export const ContactForm = {
  *
  * **Accessibility Hint:** This approach is recommended for accessibility reasons. Disabling elements, will remove them from the tab order and screen readers will not announce them.
  */
-export const FromWithVisuallyDisabledElements = {
+export const FormWithVisuallyDisabledElements = {
   render: () => html`
     <form class="sd-prose sd-prose--full-width" id="accessible-form">
       <h3 class="sd-headline sd-headline--size-4xl">Contact</h3>

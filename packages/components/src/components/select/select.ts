@@ -885,7 +885,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     // Hierarchy of input states:
     const selectState = this.disabled
       ? 'disabled'
-      : this.visuallyDisabled && !this.hasFocus
+      : this.visuallyDisabled
         ? 'visuallyDisabled'
         : this.hasFocus && this.showInvalidStyle
           ? 'activeInvalid'
@@ -1155,6 +1155,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
       :host([required]) #label::after {
         content: ' *';
+      }
+
+      :host([visually-disabled]) ::placeholder,
+      :host([disabled]) ::placeholder {
+        @apply text-neutral-500;
       }
 
       [part='listbox'] {

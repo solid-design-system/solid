@@ -1431,6 +1431,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         content: ' *';
       }
 
+      :host([visually-disabled]) ::placeholder,
+      :host([disabled]) ::placeholder {
+        @apply text-neutral-500;
+      }
+
       [part='listbox'] {
         max-height: var(--auto-size-available-height, auto);
       }

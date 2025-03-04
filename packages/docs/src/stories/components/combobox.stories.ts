@@ -231,7 +231,14 @@ export const VisuallyDisabled = {
   render: () => html`
     <div class="w-[400px] h-[200px] pt-12">
       <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm" placement="top">
-        <sd-combobox size="lg" label="Label" placeholder="Disabled" placement="bottom" value="" visually-disabled>
+        <sd-combobox
+          size="lg"
+          label="Label"
+          placeholder="Visually Disabled"
+          placement="bottom"
+          value=""
+          visually-disabled
+        >
           <sd-option value="option-1">Option 1</sd-option>
           <sd-option value="option-2">Option 2</sd-option>
           <sd-option value="option-3">Option 3</sd-option>

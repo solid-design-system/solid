@@ -473,6 +473,11 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
         @apply block h-full;
       }
 
+      :host([visually-disabled]) ::placeholder,
+      :host([disabled]) ::placeholder {
+        @apply text-neutral-500;
+      }
+
       :host([required]) #label::after {
         content: ' *';
       }
