@@ -54,7 +54,7 @@ const createColorOptionsHtml = () => unsafeHTML(createColorOptions().join('\n'))
 
 export default {
   title: 'Components/sd-combobox',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   component: 'sd-combobox',
   args: overrideArgs([
     threeOptionsConstant,
@@ -333,7 +333,7 @@ export const Clearable = {
 export const Icons = {
   render: () => html`
     <div class="w-[400px] h-[400px]">
-      <sd-combobox placeholder="Small" size="sm" clearable>
+      <sd-combobox placeholder="Small" size="sm" clearable label="Label">
         <sd-icon slot="left" name="system/image" aria-hidden="true" color="currentColor"></sd-icon>
         ${createColorOptionsHtml()}
         <button slot="right" aria-label="Search">
@@ -341,7 +341,7 @@ export const Icons = {
         </button>
       </sd-combobox>
       <br />
-      <sd-combobox placeholder="Medium" size="md" clearable>
+      <sd-combobox placeholder="Medium" size="md" clearable label="Label">
         <sd-icon slot="left" name="system/image" aria-hidden="true" color="currentColor"></sd-icon>
         ${createColorOptionsHtml()}
         <button slot="right" aria-label="Search">
@@ -349,7 +349,7 @@ export const Icons = {
         </button>
       </sd-combobox>
       <br />
-      <sd-combobox placeholder="Large" size="lg" clearable>
+      <sd-combobox placeholder="Large" size="lg" clearable label="Label">
         <sd-icon slot="left" name="system/image" aria-hidden="true" color="currentColor"></sd-icon>
         ${createColorOptionsHtml()}
         <button slot="right" aria-label="Search">
