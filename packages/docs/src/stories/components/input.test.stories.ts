@@ -11,7 +11,7 @@ import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 import type SdInput from '../../../../components/src/components/input/input';
 
-const { argTypes, args, parameters } = storybookDefaults('sd-input');
+const { argTypes, parameters } = storybookDefaults('sd-input');
 const { generateTemplate } = storybookTemplate('sd-input');
 const { overrideArgs } = storybookHelpers('sd-input');
 const { generateScreenshotStory } = storybookUtilities;
@@ -19,8 +19,8 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-input/Screenshots: sd-input',
   component: 'sd-input',
-  tags: ['!autodocs', 'skip-a11y'],
-  args,
+  tags: ['!autodocs'],
+  args: overrideArgs([{ type: 'attribute', name: 'label', value: 'Label' }]),
   argTypes: {
     ...argTypes,
     'type-attr': {
@@ -689,9 +689,10 @@ export const Slots = {
               title: 'slot=...',
               values: [
                 {
-                  value: `<div slot='${slot}' class="slot slot--border slot--background h-6 ${
-                    slot === 'label' || slot === 'help-text' ? 'w-20' : 'w-6'
-                  }"></div>`,
+                  value: `<div slot='${slot}'
+                   class="slot slot--border slot--background h-6 ${
+                     slot === 'label' || slot === 'help-text' ? 'w-20' : 'w-6'
+                   }">${slot === 'label' ? 'Label' : ''}</div>`,
                   title: slot
                 }
               ]
@@ -883,7 +884,7 @@ export const Samples = {
               }}
               class="ml-4 scale-[1.714] inline-flex items-center sd-interactive"
             >
-              <sd-icon name="system/minus-circle"></sd-icon>
+              <sd-icon name="system/minus-circle" label="Decrease button"></sd-icon>
             </button>
             <button
               id="stepUpButton"
@@ -897,7 +898,7 @@ export const Samples = {
               }}
               class="ml-4 scale-[1.714] inline-flex items-center sd-interactive"
             >
-              <sd-icon name="system/plus-circle"></sd-icon></button
+              <sd-icon name="system/plus-circle" label="Increase button"></sd-icon></button
           ></span>
         </sd-input>
       </div>

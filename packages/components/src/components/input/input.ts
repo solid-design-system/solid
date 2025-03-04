@@ -679,6 +679,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                       class=${cx(iconColor, iconMarginLeft, iconSize)}
                       library="system"
                       name="magnifying-glass"
+                      label="Search"
                     ></sd-icon>
                   </button>
                 `
