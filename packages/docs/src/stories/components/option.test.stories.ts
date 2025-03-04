@@ -19,7 +19,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-option/Screenshots: sd-option',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-option',
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
   argTypes,
@@ -35,9 +35,12 @@ export const Default = {
   name: 'Default',
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
   render: (args: any) => {
-    return generateTemplate({
-      args
-    });
+    return html` <style>
+        sd-optgroup {
+          --display-divider: none;
+        }
+      </style>
+      <sd-optgroup> ${generateTemplate({ args })} </sd-optgroup>`;
   }
 };
 
@@ -61,7 +64,14 @@ export const DisabledCheckbox = {
           values: [false, true]
         }
       },
-      constants: { type: 'attribute', name: 'disabled', value: true },
+      constants: [
+        { type: 'attribute', name: 'disabled', value: true },
+        {
+          type: 'template',
+          name: 'style',
+          value: '<style>sd-optgroup { --display-divider: none;}</style><sd-optgroup>%TEMPLATE%</sd-optgroup>'
+        }
+      ],
       args
     });
   }
@@ -86,7 +96,14 @@ export const SizeCheckbox = {
           values: [false, true]
         }
       },
-      constants: { type: 'attribute', name: 'checkbox', value: true },
+      constants: [
+        { type: 'attribute', name: 'checkbox', value: true },
+        {
+          type: 'template',
+          name: 'style',
+          value: '<style>sd-optgroup { --display-divider: none;}</style><sd-optgroup>%TEMPLATE%</sd-optgroup>'
+        }
+      ],
       args
     });
   }
@@ -111,7 +128,7 @@ export const Slots = {
                 {
                   value:
                     slot === 'default'
-                      ? `<div class="slot slot--border slot--background h-8 w-[100px]"></div>`
+                      ? `<div class="slot slot--border slot--background h-8 w-[100px]" aria-label="Slot"></div>`
                       : `<div slot='${slot}' class="slot slot--border slot--background h-6 ${
                           slot === 'default' ? 'w-18' : 'w-6'
                         }"></div>`,
@@ -130,6 +147,11 @@ export const Slots = {
               type: 'slot',
               name: 'right',
               value: '<sd-icon slot="right" name="system/image"></sd-icon>'
+            },
+            {
+              type: 'template',
+              name: 'style',
+              value: '<style>sd-optgroup { --display-divider: none;}</style><sd-optgroup>%TEMPLATE%</sd-optgroup>'
             }
           ],
           args
@@ -174,6 +196,11 @@ export const Parts = {
           type: 'slot',
           name: 'right',
           value: '<sd-icon slot="right" name="system/image"></sd-icon>'
+        },
+        {
+          type: 'template',
+          name: 'style',
+          value: '<style>sd-optgroup { --display-divider: none;}</style><sd-optgroup>%TEMPLATE%</sd-optgroup>'
         }
       ],
       args
