@@ -445,6 +445,11 @@ export const storybookTemplate = (customElementTag: string) => {
           white-space: nowrap;
         }
 
+        .story-template .template-inverted .slot {
+          color: white;
+          border-color: white;
+        }
+
         ${options?.templateBackground &&
         `
           .${uuid}.story-template tbody tr.template-row td.template {
@@ -516,7 +521,7 @@ export const storybookTemplate = (customElementTag: string) => {
                         return html`
                           <td class="template template-x-${xAxis?.values?.indexOf(xValue) || 0 + 1} template-y-${
                             yAxis?.values?.indexOf(yValue.value || yValue) || 0 + 1
-                          }">
+                          } ${yAxis?.name === 'inverted' && (yValue.value || yValue) ? 'template-inverted' : ''}">
                           ${
                             (xAxis.type === 'template' &&
                               unsafeStatic((xValue.value || xValue).split('%TEMPLATE%')[0] || '')) ||
