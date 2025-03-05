@@ -4,15 +4,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Lists */
 .sbdocs .sbdocs-content ol {
   @apply !list-decimal;
 }
 
+/* Links */
 .sbdocs.sbdocs-a,
 .sbdocs .sbdocs-content a:not(:has(code)) {
   @apply underline text-primary hover:text-primary-500 active:text-primary-800 transition-colors;
 }
 
+/* Color palettes */
 .sbdocs .docblock-colorpalette {
   div[title],
   > div:first-child {
@@ -20,6 +23,28 @@
   }
 }
 
-.sbdocs .toc-wrapper .toc-list-item.is-active-li a {
-  @apply text-primary;
+/* Right-side headline anchors */
+.sbdocs .toc-wrapper .toc-list-item.is-active-li {
+  @apply before:border-accent;
+
+  a {
+    @apply text-primary;
+  }
+}
+
+/* Tables */
+.sbdocs .sbdocs-content table:not(.sd-table) {
+  tr,
+  td {
+    @apply border-neutral-400;
+  }
+
+  tr:nth-of-type(2n) {
+    @apply bg-neutral-100;
+  }
+}
+
+/* Blockquotes */
+.sbdocs .sbdocs-content blockquote {
+  @apply border-accent;
 }
