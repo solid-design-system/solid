@@ -292,7 +292,7 @@ export default class SdDrawer extends SolidElement {
 
   render() {
     return html`
-      <div
+      <section
         id="drawer"
         part="base"
         class=${cx(
@@ -354,14 +354,14 @@ export default class SdDrawer extends SolidElement {
                 class="absolute top-2 right-2"
                 ><sd-icon label=${this.localize.term('close')} name="close" library="system"></sd-icon
               ></sd-button>`}
-          <div part="body" class="flex-auto block px-4" role="region" tabindex="0">
+          <div part="body" class="flex-auto block px-4" tabindex="0">
             <slot></slot>
           </div>
           <footer part="footer" class=${cx(this.hasSlotController.test('footer') ? 'text-left p-4' : 'hidden')}>
             <slot name="footer"></slot>
           </footer>
         </div>
-      </div>
+      </section>
     `;
   }
 
