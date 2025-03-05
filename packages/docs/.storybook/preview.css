@@ -3,3 +3,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.sbdocs .sbdocs-content ol {
+  @apply !list-decimal;
+}
+
+.sbdocs.sbdocs-a,
+.sbdocs .sbdocs-content a:not(:has(code)) {
+  @apply underline text-primary hover:text-primary-500 active:text-primary-800 transition-colors;
+}
+
+.sbdocs .docblock-colorpalette {
+  div[title],
+  > div:first-child {
+    @apply text-neutral-700;
+  }
+}
+
+.sbdocs .toc-wrapper .toc-list-item.is-active-li a {
+  @apply text-primary;
+}
