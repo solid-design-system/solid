@@ -207,7 +207,6 @@ export const Mouseless = {
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    await waitUntil(() => canvasElement.querySelector('.mouseless sd-carousel'));
     const el = canvasElement.querySelector('.mouseless sd-carousel');
 
     await waitUntil(() => el?.shadowRoot?.querySelector('#scroll-container'));
