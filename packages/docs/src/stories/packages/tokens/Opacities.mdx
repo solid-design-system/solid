@@ -18,21 +18,24 @@ import cx from 'classix';
             </div>
           </td>
           <td>
-            <div class={`flex flex-col w-32 opacity-${token[0]}`}>
-              {[...Array(4)].map((_, rowIndex) => (
+            <div class={`relative flex flex-col`}>
+              {[...Array(12)].map((_, rowIndex) => (
                 <div class="flex w-full" key={rowIndex}>
-                  {[...Array(10)].map((_, cellIndex) => (
+                  {[...Array(30)].map((_, cellIndex) => (
                     <div
-                      class={`flex-1 h-4 ${rowIndex % 2 === cellIndex % 2 ? 'bg-white' : 'bg-primary'}`}
+                      class={`w-1 h-1 ${rowIndex % 2 === cellIndex % 2 ? 'bg-white' : 'bg-neutral-500'}`}
                       key={cellIndex}
                     />
                   ))}
                 </div>
               ))}
+
+              <div class={`bg-neutral-800 w-full h-full absolute inset-0 z-10 opacity-${token[0]}`}/>
             </div>
           </td>
         </tr>
       );
     })}
+
   </tbody>
 </table>
