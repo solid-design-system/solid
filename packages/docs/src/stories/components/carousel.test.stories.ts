@@ -16,7 +16,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-carousel/Screenshots: sd-carousel',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-carousel',
   args: overrideArgs([
     {
@@ -208,8 +208,8 @@ export const Mouseless = {
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const el = canvasElement.querySelector('.mouseless sd-carousel');
-    await waitUntil(() => el?.shadowRoot?.querySelector('#scroll-container'));
 
+    await waitUntil(() => el?.shadowRoot?.querySelector('#scroll-container'));
     el?.shadowRoot?.querySelector<HTMLElement>('#scroll-container')!.focus();
   }
 };

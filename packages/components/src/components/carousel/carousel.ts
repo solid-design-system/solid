@@ -111,8 +111,6 @@ export default class SdCarousel extends SolidElement {
 
   connectedCallback(): void {
     super.connectedCallback();
-    this.setAttribute('role', 'region');
-    this.setAttribute('aria-label', this.localize.term('carousel'));
     ['click', 'keydown'].forEach(event => this.addEventListener(event, this.handleUserInteraction));
 
     const intersectionObserver = new IntersectionObserver(

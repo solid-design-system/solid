@@ -16,7 +16,7 @@ export default {
 export const CarouselWithImages = {
   name: 'Carousel with Images',
   render: () => html`
-    <sd-carousel>
+    <sd-carousel role="region" aria-label="Carousel with images">
       <sd-carousel-item>
         <img
           src="./placeholders/images/architecture.jpg"
@@ -45,7 +45,7 @@ export const CarouselWithImages = {
 export const LoopAndAutoplay = {
   name: 'Loop and Autoplay',
   render: () => html`
-    <sd-carousel loop autoplay>
+    <sd-carousel loop autoplay role="region" aria-label="Carousel in loop and autoplay">
       <sd-carousel-item>
         <img
           src="./placeholders/images/coffeeshop.jpg"
