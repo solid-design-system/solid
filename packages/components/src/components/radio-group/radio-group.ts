@@ -419,6 +419,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
                 id="validation-input"
                 type="text"
                 ?required=${this.required}
+                aria-labelledby="label"
                 tabindex="-1"
                 hidden
                 @invalid=${this.handleInvalid}
