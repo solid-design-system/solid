@@ -53,3 +53,32 @@
   name="twitter:image"
   content="https://solid-design-system.fe.union-investment.de/docs/images/sds-signet_meta.png"
 />
+
+<style>
+  #storybook-explorer-tree .sidebar-item {
+    color: black;
+    border-left: 4px solid transparent;
+  }
+
+  #storybook-explorer-tree .sidebar-item[data-selected='true'] {
+    background: transparent;
+    border-radius: 0;
+    border-color: #2d9d00;
+  }
+
+  #storybook-explorer-tree .sidebar-item:hover,
+  #storybook-explorer-tree .sidebar-item[data-nodetype='group']:hover,
+  #storybook-explorer-tree .sidebar-item[data-selected='true']:hover {
+    --tree-node-background-hover: #e9e9e9;
+    background: #e9e9e9;
+    color: black;
+  }
+
+  #storybook-explorer-tree .sidebar-item[data-nodetype='group']:not(:hover) {
+    background: transparent;
+  }
+
+  #storybook-explorer-tree .sidebar-item a svg {
+    color: #00358e;
+  }
+</style>
