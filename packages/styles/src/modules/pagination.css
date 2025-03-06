@@ -92,9 +92,9 @@
           }
         }
 
-        /* When one of the first 5 pages is selected */
-        &:nth-child(-n + 5):has(a[aria-current]) {
-          /* Show the first 5 pages forward */
+        /* When one of the first 4 pages is selected */
+        &:nth-child(-n + 6):has(a[aria-current]) {
+          /* Show until the 5th page (forward) */
           & ~ :nth-child(-n + 6) {
             @apply relative pointer-events-auto after:hidden;
 
@@ -109,7 +109,26 @@
           }
         }
 
-        /* When one of the last 5 pages is selected, show the last 5 pages */
+        /* When one of the first 4 pages is selected, show until the 5th page (backward) */
+        &:nth-child(-n + 6):has(~ :nth-child(-n + 5) a[aria-current]) {
+          @apply relative pointer-events-auto after:hidden;
+
+          a {
+            @apply flex;
+          }
+        }
+
+        /* When one of the last 4 pages is selected, show the last 4 pages (forward) */
+        &:nth-last-child(-n + 5):has(a[aria-current]) {
+          & ~ :nth-last-child(-n + 5):not(:has(a sd-icon)) {
+            @apply relative pointer-events-auto after:hidden;
+
+            a {
+              @apply flex;
+            }
+          }
+        }
+        /* When one of the last 4 pages is selected, show the last 4 pages (backward) */
         &:nth-last-child(-n + 6):has(~ :nth-last-child(-n + 5) a[aria-current]) {
           @apply relative pointer-events-auto after:hidden;
 

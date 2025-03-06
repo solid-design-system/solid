@@ -27,6 +27,18 @@ export const Default = {
           <li><a href="/?page=6">6</a></li>
           <li><a href="/?page=7">7</a></li>
           <li><a href="/?page=8">8</a></li>
+          <li><a href="/?page=9" >9</a></li>
+          <li><a href="/?page=10">10</a></li>
+          <li><a href="/?page=11">11</a></li>
+          <li><a href="/?page=12">12</a></li>
+          <li><a href="/?page=13">13</a></li>
+          <li><a href="/?page=14">14</a></li>
+          <li><a href="/?page=15">15</a></li>
+          <li><a href="/?page=16">16</a></li>
+          <li><a href="/?page=17">17</a></li>
+          <li><a href="/?page=18">18</a></li>
+          <li><a href="/?page=19">19</a></li>
+          <li><a href="/?page=20">20</a></li>
           <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Go to next page"></a></li>
         </ul>
         <p id="pagination-live" aria-live="polite"></p>
