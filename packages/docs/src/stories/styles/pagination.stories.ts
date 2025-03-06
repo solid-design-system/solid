@@ -13,7 +13,7 @@ const html = String.raw;
  * navigate between them instead of displaying all information on a single page.
  *
  * **Related templates**:
- * - [Pagination](?path=docs/templates-pagination--docs)
+ * - [Pagination](?path=/docs/templates-pagination--docs)
  */
 
 export default {
