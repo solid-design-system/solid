@@ -29,6 +29,7 @@ const translation: Translation = {
   pauseAudio: 'Pause Audio',
   playAudio: 'Play Audio',
   playbackSpeed: 'Playback Speed',
+  playVideo: 'Play Video',
   previousSlide: 'Previous slide',
   progress: 'Progress',
   remove: 'Remove',
