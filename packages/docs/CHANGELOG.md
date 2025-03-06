@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.10.4
+
+### Patch Changes
+
+- Add missing alt attribute on `sd-video` screenshot tests. _[`#1944`](https://github.com/solid-design-system/solid/pull/1944) [`32695f2`](https://github.com/solid-design-system/solid/commit/32695f2580fe301f252195492bedd6aedcf467cf) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.10.3
 
 ### Patch Changes
