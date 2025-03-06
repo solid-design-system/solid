@@ -15,10 +15,15 @@
   @apply underline text-primary hover:text-primary-500 active:text-primary-800 transition-colors;
 }
 
+/* Outline on focus visible */
 .sbdocs.sbdocs-a:focus-visible,
 .sbdocs .sbdocs-content a:focus-visible,
 .sbdocs .toc-list .toc-list-item a:focus-visible {
   @apply outline outline-2 outline-offset-2 outline-primary;
+}
+
+div[data-radix-scroll-area-viewport]:focus-visible {
+  @apply outline -outline-offset-2 outline-2 outline-primary;
 }
 
 /* Color palettes */
