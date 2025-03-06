@@ -15,6 +15,12 @@
   @apply underline text-primary hover:text-primary-500 active:text-primary-800 transition-colors;
 }
 
+.sbdocs.sbdocs-a:focus-visible,
+.sbdocs .sbdocs-content a:focus-visible,
+.sbdocs .toc-list .toc-list-item a:focus-visible {
+  @apply outline outline-2 outline-offset-2 outline-primary;
+}
+
 /* Color palettes */
 .sbdocs .docblock-colorpalette {
   div[title],
@@ -24,6 +30,14 @@
 }
 
 /* Right-side headline anchors */
+.sbdocs.sbdocs-wrapper .toc-wrapper > .toc-list {
+  @apply border-l border-l-neutral-400;
+}
+
+.sbdocs .toc-wrapper .toc-list-item {
+  @apply before:border-transparent before:border-l-[3px];
+}
+
 .sbdocs .toc-wrapper .toc-list-item.is-active-li {
   @apply before:border-accent;
 

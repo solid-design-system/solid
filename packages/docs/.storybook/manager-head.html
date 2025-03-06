@@ -81,4 +81,26 @@
   #storybook-explorer-tree .sidebar-item a svg {
     color: #00358e;
   }
+
+  div[data-testid='tooltip'] button[id^='list-item-']:hover {
+    background: rgba(0, 53, 142, 0.14);
+  }
+
+  .sb-bar button:focus {
+    box-shadow: rgb(0, 53, 142) 0px 0px 0px 1px inset !important;
+  }
+
+  .sb-bar button:hover {
+    color: #00358e !important;
+    background: rgba(0, 53, 142, 0.14) !important;
+  }
+
+  .sb-bar a:focus-visible,
+  .sb-bar button:focus-visible,
+  .sidebar-container a:focus-visible,
+  .sidebar-container button:focus-visible,
+  .sidebar-container .search-field:has(input:focus-visible) {
+    outline: 2px solid #00358e !important;
+    outline-offset: 2px;
+  }
 </style>
