@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.2.3
+
+### Patch Changes
+
+- Fix sd-checkbox `aria-checked` when on the indeterminate state _[`#1930`](https://github.com/solid-design-system/solid/pull/1930) [`6327da1`](https://github.com/solid-design-system/solid/commit/6327da128579d8131da3e10dd714afb216e226e1) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 4.2.2
 
 ### Patch Changes
@@ -10,8 +16,9 @@
   - Used floating-points to more accurately set `currentTime`, `duration` and progress bar calculations.
 
 ### 📈 Stats
-* Uncompressed: 412 KB (+1 KB / +0%)
-* Gzipped: 97 KB (unchanged)
+
+- Uncompressed: 412 KB (+1 KB / +0%)
+- Gzipped: 97 KB (unchanged)
 
 ## 4.2.1
 

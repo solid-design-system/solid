@@ -342,5 +342,12 @@ describe('<sd-checkbox>', () => {
 
       expect(indeterminateIcon).to.be.null;
     });
+
+    it('should contain correct aria-checked', async () => {
+      const el = await fixture<SdCheckbox>(html`<sd-checkbox indeterminate></sd-checkbox>`);
+      const input = el.shadowRoot!.querySelector('input');
+
+      expect(input!.getAttribute('aria-checked')).to.equal('mixed');
+    });
   });
 });

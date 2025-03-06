@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.10.1
+
+### Patch Changes
+
+- Fix `empty table header` a11y issue on multiple axis component templates _[`#1930`](https://github.com/solid-design-system/solid/pull/1930) [`6327da1`](https://github.com/solid-design-system/solid/commit/6327da128579d8131da3e10dd714afb216e226e1) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.10.0
 
 ### Minor Changes
