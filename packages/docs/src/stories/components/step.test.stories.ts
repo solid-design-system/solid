@@ -1,6 +1,7 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import {
+  ConstantDefinition,
   storybookDefaults,
   storybookHelpers,
   storybookTemplate,
@@ -15,9 +16,16 @@ const { overrideArgs } = storybookHelpers('sd-step');
 const { generateTemplate } = storybookTemplate('sd-step');
 const { generateScreenshotStory } = storybookUtilities;
 
+// We need to wrap step into a step-group due to accessibility tests. However, the step-group will change the layout of the step to avoid without failing the accessibility tests, a div with "list" role will be added instead of the sd-step-group.
+const listWrapper: ConstantDefinition = {
+  type: 'template',
+  name: '',
+  value: `<div role="list" class="h-32">%TEMPLATE%</div>`
+};
+
 export default {
   title: 'Components/sd-step/Screenshots: sd-step',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-step',
   args: overrideArgs([
     {
@@ -38,7 +46,7 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return html`${generateTemplate({ args })}`;
+    return html`<div role="list">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -53,7 +61,8 @@ export const Orientation = {
       axis: {
         y: { type: 'attribute', name: 'orientation' }
       },
-      args
+      args,
+      constants: [listWrapper]
     });
   },
   decorators: [
@@ -75,20 +84,24 @@ export const Orientation = {
 export const Description = {
   name: 'Description',
   render: () => {
-    return generateTemplate({
-      args: overrideArgs([
-        {
-          type: 'slot',
-          name: 'default',
-          value: `Lorem ipsum est dolor sit amet`
-        },
-        {
-          type: 'slot',
-          name: 'label',
-          value: `<span slot="label">Step name</span>`
-        }
-      ])
-    });
+    return html`
+      <div role="list">
+        ${generateTemplate({
+          args: overrideArgs([
+            {
+              type: 'slot',
+              name: 'default',
+              value: `Lorem ipsum est dolor sit amet`
+            },
+            {
+              type: 'slot',
+              name: 'label',
+              value: `<span slot="label">Step name</span>`
+            }
+          ])
+        })}
+      </div>
+    `;
   }
 };
 
@@ -99,30 +112,32 @@ export const Description = {
 export const DescriptionAndLabelUsingAttributes = {
   name: 'Description and Label (using attributes)',
   render: () => {
-    return generateTemplate({
-      args: overrideArgs([
-        {
-          type: 'slot',
-          name: 'default',
-          value: ``
-        },
-        {
-          type: 'slot',
-          name: 'label',
-          value: ``
-        },
-        {
-          type: 'attribute',
-          name: 'label',
-          value: `This label was set using the "label" attribute.`
-        },
-        {
-          type: 'attribute',
-          name: 'description',
-          value: `This description was set using "description" attribute.`
-        }
-      ])
-    });
+    return html` <div role="list">
+      ${generateTemplate({
+        args: overrideArgs([
+          {
+            type: 'slot',
+            name: 'default',
+            value: ``
+          },
+          {
+            type: 'slot',
+            name: 'label',
+            value: ``
+          },
+          {
+            type: 'attribute',
+            name: 'label',
+            value: `This label was set using the "label" attribute.`
+          },
+          {
+            type: 'attribute',
+            name: 'description',
+            value: `This description was set using "description" attribute.`
+          }
+        ])
+      })}
+    </div>`;
   }
 };
 
@@ -158,7 +173,8 @@ export const Parts = {
           name: 'label',
           value: `<span slot="label">Step name</span>`
         }
-      ])
+      ]),
+      constants: [listWrapper]
     });
   },
   decorators: [
@@ -215,7 +231,8 @@ export const Slots = {
               name: 'label',
               value: `<span slot="label">Step name</span>`
             }
-          ])
+          ]),
+          constants: [listWrapper]
         })
       )}
     `;
@@ -229,7 +246,7 @@ export const Slots = {
 export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {
-    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
+    return html`<div class="mouseless" role="list">${generateTemplate({ args })}</div>`;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
