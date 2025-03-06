@@ -12,7 +12,7 @@ const { overrideArgs } = storybookHelpers('sd-input');
  * **Related templates**:
  * - [Input](?path=/docs/templates-input--docs)
  * - [Autocomplete](?path=/docs/templates-autocomplete--docs)
- * - [Tooltip](?path=/docs/templates-tooltip--docs)
+ * - [Tooltip with Input](?path=/docs/templates-tooltip--docs&args=open:!true#input%20with%20tooltip)
  *
  */
 export default {
@@ -343,7 +343,7 @@ export const Invalid = {
       <script type="module">
         await Promise.all([customElements.whenDefined('sd-input')]).then(() => {
           const input = document.getElementById('invalid-input');
-          input.setCustomValidity('Error message');
+          input.setCustomValidity('Error text');
           input.reportValidity();
         });
       </script>`

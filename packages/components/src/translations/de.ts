@@ -35,6 +35,7 @@ const translation: Translation = {
   removed: name => `${name} entfernt`,
   resize: 'Größe ändern',
   scrollToEnd: 'Zum Ende scrollen',
+  search: 'Suchen',
   seekBar: 'Bar suchen',
   scrollToStart: 'Zum Anfang scrollen',
   selectAColorFromTheScreen: 'Farbe vom Bildschirm auswählen',

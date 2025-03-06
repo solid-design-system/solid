@@ -256,7 +256,7 @@ export const Sizes = {
 export const StyleOnValid = {
   name: 'Style on Valid',
   args: overrideArgs([
-    { type: 'attribute', name: 'value', value: 'valu' },
+    { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'label', value: 'Label' },
     { type: 'attribute', name: 'help-text', value: 'help-text' },
     { type: 'attribute', name: 'clearable', value: true },

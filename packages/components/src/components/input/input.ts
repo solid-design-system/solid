@@ -614,7 +614,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               ? html`
                   <button
                     part="clear-button"
-                    class=${cx('flex justify-center ', iconMarginLeft)}
+                    class=${cx('flex justify-center', iconMarginLeft)}
                     type="button"
                     aria-label=${this.localize.term('clearEntry')}
                     @click=${this.handleClearClick}
@@ -679,7 +679,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                       class=${cx(iconColor, iconMarginLeft, iconSize)}
                       library="system"
                       name="magnifying-glass"
-                      label="Search"
+                      label=${this.localize.term('search')}
                     ></sd-icon>
                   </button>
                 `
