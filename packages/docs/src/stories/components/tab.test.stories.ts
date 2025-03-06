@@ -1,6 +1,7 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import {
+  ConstantDefinition,
   storybookDefaults,
   storybookHelpers,
   storybookTemplate,
@@ -13,9 +14,16 @@ const { overrideArgs } = storybookHelpers('sd-tab');
 const { generateTemplate } = storybookTemplate('sd-tab');
 const { generateScreenshotStory } = storybookUtilities;
 
+// We wrap the tab list in a div with role="tablist" to ensure that the tab passes the accessibility tests. The tablist role is already present in the sd-tab-group component but avoid using it here since it would require more markup which would make the tests more complicated and we only want to showcase the sd-tab.
+const tabListWrapper: ConstantDefinition = {
+  type: 'template',
+  name: '',
+  value: `<div role="tablist">%TEMPLATE%</div>`
+};
+
 export default {
   title: 'Components/sd-tab/Screenshots: sd-tab',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-tab',
   args: overrideArgs([
     {
@@ -35,8 +43,8 @@ export default {
 
 export const Default = {
   name: 'Default',
-  render: (args: any) => {
-    return html`${generateTemplate({ args })}`;
+  render: () => {
+    return html`<div role="tablist"><sd-tab>Tab</sd-tab></div>`;
   }
 };
 
@@ -51,7 +59,8 @@ export const Active = {
       axis: {
         y: { type: 'attribute', name: 'active', values: [false, true] }
       },
-      args
+      args,
+      constants: [tabListWrapper]
     });
   }
 };
@@ -69,7 +78,7 @@ export const Variant = {
         x: { type: 'attribute', name: 'active', values: [false, true] }
       },
       args,
-      constants: { type: 'attribute', name: 'active', value: true }
+      constants: [tabListWrapper]
     });
   }
 };
@@ -86,7 +95,8 @@ export const Disabled = {
       axis: {
         y: { type: 'attribute', name: 'disabled' }
       },
-      args
+      args,
+      constants: [tabListWrapper]
     });
   }
 };
@@ -117,7 +127,7 @@ export const Parts = {
               type: 'template',
               name: 'width',
               value: `
-                <div style="width: 600px; position: relative;">%TEMPLATE%
+                <div style="width: 600px; position: relative;" role="tablist">%TEMPLATE%
                 </div>
               `
             }
@@ -159,7 +169,7 @@ export const Sample = {
         }
       },
       args,
-      constants: { type: 'attribute', name: 'active', value: true }
+      constants: [{ type: 'attribute', name: 'active', value: true }, tabListWrapper]
     });
   }
 };

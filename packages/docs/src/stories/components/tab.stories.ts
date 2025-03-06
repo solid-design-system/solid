@@ -20,7 +20,7 @@ const { generateTemplate } = storybookTemplate('sd-tab');
 
 export default {
   title: 'Components/sd-tab',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   component: 'sd-tab',
   args: overrideArgs([
     {
@@ -42,7 +42,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html`${generateTemplate({ args })}`;
+    return html`<div role="tablist">${generateTemplate({ args })}</div>`;
   }
 };
 
