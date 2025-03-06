@@ -17,7 +17,7 @@ const { generateTemplate } = storybookTemplate('sd-carousel');
  * - Add the `role="region"` attribute together with an unique `aria-label` whenever the carousel is an important landmark of the page.
  *
  *
- * **Related Components**:
+ * **Related components**:
  * - [sd-carousel-item](?path=/docs/components-sd-carousel-item--docs)
  *
  * **Related templates**:
