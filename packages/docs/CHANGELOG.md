@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.10.2
+
+### Patch Changes
+
+- Fix accessibility violation by including aria attribute in Slots screenshot test story. _[`#1933`](https://github.com/solid-design-system/solid/pull/1933) [`43e4765`](https://github.com/solid-design-system/solid/commit/43e4765788035d84bda1f52d693148e8392389f8) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.10.1
 
 ### Patch Changes
