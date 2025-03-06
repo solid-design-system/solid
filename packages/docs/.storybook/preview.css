@@ -62,3 +62,23 @@
 .sbdocs .sbdocs-content blockquote {
   @apply border-accent;
 }
+
+/* Code */
+.sbdocs .language-css,
+.sbdocs .language-js {
+  .token.property,
+  .token.attr-name {
+    @apply text-error;
+  }
+}
+
+.docblock-source .language-html {
+  .token.attr-name,
+  .token.attr-value.property.css {
+    @apply text-error;
+  }
+}
+
+.sbdocs .token.comment {
+  @apply !text-success;
+}
