@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.10.3
+
+### Patch Changes
+
+- Update `sd-radio`, `sd-radio-group` and `sd-radio-button` screenshots tests and stories with missing labels to fix a11y issues. _[`#1940`](https://github.com/solid-design-system/solid/pull/1940) [`d2d5dcb`](https://github.com/solid-design-system/solid/commit/d2d5dcb9889102d9ad18f8ffcb9cbba389c4088e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.10.2
 
 ### Patch Changes
