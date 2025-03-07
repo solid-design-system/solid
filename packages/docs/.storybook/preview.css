@@ -41,6 +41,10 @@ div[data-radix-scroll-area-viewport]:focus-visible {
 
 .sbdocs .toc-wrapper .toc-list-item {
   @apply before:border-transparent before:border-l-[3px];
+
+  a {
+    @apply text-primary hover:text-primary-500 active:text-primary-800;
+  }
 }
 
 .sbdocs .toc-wrapper .toc-list-item.is-active-li {
