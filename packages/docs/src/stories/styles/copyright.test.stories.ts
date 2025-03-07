@@ -16,7 +16,7 @@ const { generateScreenshotStory } = storybookUtilities;
  */
 export default {
   title: 'Styles/sd-copyright/Screenshots: sd-copyright',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-copyright',
   parameters: {
     ...parameters,
@@ -26,7 +26,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<img src="./placeholders/images/generic.jpg" alt=" " class="aspect-video object-cover"/>`
+      value: `<img src="./placeholders/images/generic.jpg" alt="Generic" class="aspect-video object-cover"/>`
     },
     {
       '--copyright': '© 2024 Solid Design System'
