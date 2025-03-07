@@ -86,7 +86,7 @@ export default class SdOptgroup extends SolidElement {
             <span>${this.label}</span>
           </slot>
         </div>
-        <div role="listbox" part="options" aria-label="${this.localize.term('optionsList')}">
+        <div role="listbox" part="options" aria-label="${this.localize.term('optionGroup')}">
           <slot @slotchange=${this.handleDisableOptions}></slot>
         </div>
       </div>
