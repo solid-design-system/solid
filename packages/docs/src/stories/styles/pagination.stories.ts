@@ -13,7 +13,7 @@ const html = String.raw;
  * navigate between them instead of displaying all information on a single page.
  *
  * **Related templates**:
- * - [Pagination](?path=/docs/templates-pagination--docs)
+ * - [Pagination (interactive)](?path=/docs/templates-pagination--docs)
  */
 
 export default {
@@ -33,10 +33,33 @@ export default {
     name: 'default',
     value: html``
   }),
-  decorators: [withActions] as any
+  decorators: [
+    withActions,
+    (story: any) => {
+      const handlePageClick = (event: MouseEvent) => {
+        event.preventDefault();
+      };
+
+      if (document.querySelector('script[pagination-loaded]')) {
+        return story();
+      }
+
+      const script = document.createElement('script');
+      script.setAttribute('pagination-loaded', 'true');
+      script.type = 'module';
+      script.textContent = `
+        document
+          .querySelectorAll('.sd-pagination a[href]')
+          .forEach(page => page.addEventListener('click', ${handlePageClick}));
+      `;
+      document.body.appendChild(script);
+      return story();
+    }
+  ]
 };
 
 export const Default = {
+  decorators: [],
   render: (args: any) => {
     return generateTemplate({
       options: {
