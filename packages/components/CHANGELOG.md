@@ -1,5 +1,19 @@
 # @solid-design-system/components
 
+## 4.2.5
+
+### Patch Changes
+
+- Localize `sd-video` play button aria-label with new translation named `playVideo`. _[`#1944`](https://github.com/solid-design-system/solid/pull/1944) [`32695f2`](https://github.com/solid-design-system/solid/commit/32695f2580fe301f252195492bedd6aedcf467cf) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Remove unecessary `aria-label` on sd-video wrapper element.
+
+## 4.2.4
+
+### Patch Changes
+
+- Improved `sd-radio-group` a11y by adding the attribute `aria-labelledby` to hidden input. _[`#1940`](https://github.com/solid-design-system/solid/pull/1940) [`d2d5dcb`](https://github.com/solid-design-system/solid/commit/d2d5dcb9889102d9ad18f8ffcb9cbba389c4088e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 4.2.3
 
 ### Patch Changes
