@@ -231,7 +231,7 @@ export default class SdAccordion extends SolidElement {
 
       /** Removes summary marker on Safari */
       [part='header']::-webkit-details-marker {
-        display: none;
+       @apply: hidden;
       }
     `
   ];
