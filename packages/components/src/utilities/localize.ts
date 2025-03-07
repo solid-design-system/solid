@@ -95,6 +95,7 @@ export interface Translation extends DefaultTranslation {
   pauseAudio: string;
   playAudio: string;
   playbackSpeed: string;
+  playVideo: string;
   previousSlide: string;
   progress: string;
   remove: string;

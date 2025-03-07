@@ -30,6 +30,7 @@ const translation: Translation = {
   pauseAudio: 'Audio pausieren',
   playAudio: 'Audio abspielen',
   playbackSpeed: 'Wiedergabe Geschwindigkeit',
+  playVideo: 'Video abspielen',
   previousSlide: 'Vorherige Folie',
   progress: 'Fortschritt',
   remove: 'Entfernen',
