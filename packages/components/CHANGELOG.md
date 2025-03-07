@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.2.6
+
+### Patch Changes
+
+- Removed summary default marker from `sd-accordion` which was being displayed in Safari. _[`#1946`](https://github.com/solid-design-system/solid/pull/1946) [`88ff20e`](https://github.com/solid-design-system/solid/commit/88ff20e092ce72f4eee5fb5019c7e0fb3d47e252) [@smfonseca](https://github.com/smfonseca)_
+
 ## 4.2.5
 
 ### Patch Changes
