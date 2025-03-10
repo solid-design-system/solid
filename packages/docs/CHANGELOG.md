@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.11.1
+
+### Patch Changes
+
+- Added missing labels to `sd-optgroup` screenshot tests and stories to address a11y violations. _[`#1938`](https://github.com/solid-design-system/solid/pull/1938) [`a328df3`](https://github.com/solid-design-system/solid/commit/a328df31e8fcd379100ff5d27859070015ddef68) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.11.0
 
 ### Minor Changes
