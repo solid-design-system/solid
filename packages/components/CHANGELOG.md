@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.2.7
+
+### Patch Changes
+
+- Updated `sd-optgroup` option wrapper role from `group` to `listbox` to align with HTML standards and included a localized `aria-label`. _[`#1938`](https://github.com/solid-design-system/solid/pull/1938) [`a328df3`](https://github.com/solid-design-system/solid/commit/a328df31e8fcd379100ff5d27859070015ddef68) [@smfonseca](https://github.com/smfonseca)_
+
 ## 4.2.6
 
 ### Patch Changes
