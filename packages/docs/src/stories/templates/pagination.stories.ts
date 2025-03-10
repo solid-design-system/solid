@@ -19,7 +19,7 @@ export const Default = {
       <nav id="pagination" class="sd-pagination" aria-label="Pagination">
         <ul>
           <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Go to previous page"></a></li>
-          <li><a href="/?page=1" aria-current="page">1</a></li>
+          <li><a aria-current="page">1</a></li>
           <li><a href="/?page=2">2</a></li>
           <li><a href="/?page=3">3</a></li>
           <li><a href="/?page=4">4</a></li>
@@ -56,9 +56,11 @@ export const Default = {
           const current = pages[state.current - 1];
           pages.forEach((page) => {
             page.removeAttribute('aria-current');
+            page.setAttribute('href', '/?page=' + page.innerHTML);
           });
 
           current.setAttribute('aria-current', 'page');
+          current.removeAttribute('href');
           live.innerHTML = 'Current page: ' + state.current;
 
           const isFirstPage = state.current <= 1;

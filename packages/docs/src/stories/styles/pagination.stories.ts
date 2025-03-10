@@ -80,7 +80,7 @@ export const Default = {
               <nav class="%CLASSES%" aria-label="Default pagination">
                 <ul>
                   <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-                  <li><a href="/?page=1" aria-current="page">1</a></li>
+                  <li><a aria-current="page">1</a></li>
                   <li><a href="/?page=2">2</a></li>
                   <li><a href="/?page=3">3</a></li>
                   <li><a href="/?page=4">4</a></li>
@@ -112,7 +112,7 @@ export const Default = {
 /**
  * Use the `sd-pagination` classes for alternative appearances:
  *
- * - number is the default appearance
+ * - `number` (default)
  * - `simple`
  */
 export const Variants = {
@@ -120,7 +120,7 @@ export const Variants = {
     <nav class="sd-pagination" aria-label="Default variant pagination">
       <ul>
         <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-        <li><a href="/?page=1" aria-current="page">1</a></li>
+        <li><a aria-current="page">1</a></li>
         <li><a href="/?page=2">2</a></li>
         <li><a href="/?page=3">3</a></li>
         <li><a href="/?page=4">4</a></li>
@@ -166,7 +166,7 @@ export const Truncation = {
           <li><a href="/?page=2">2</a></li>
           <li><a href="/?page=3">3</a></li>
           <li><a href="/?page=4">4</a></li>
-          <li><a href="/?page=5" aria-current="page">5</a></li>
+          <li><a aria-current="page">5</a></li>
           <li><a href="/?page=6">6</a></li>
           <li><a href="/?page=7">7</a></li>
           <li><a href="/?page=8">8</a></li>
@@ -197,7 +197,7 @@ export const Inverted = {
       <nav class="sd-pagination sd-pagination--inverted" aria-label="Inverted pagination">
         <ul>
           <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-          <li><a href="/?page=1" aria-current="page">1</a></li>
+          <li><a aria-current="page">1</a></li>
           <li><a href="/?page=2">2</a></li>
           <li><a href="/?page=3">3</a></li>
           <li><a href="/?page=4">4</a></li>
@@ -234,7 +234,7 @@ export const HiddenHeadline = {
         <h4 id="pagination--hidden-headline">Pagination</h4>
         <ul>
           <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-          <li><a href="/?page=1" aria-current="page">1</a></li>
+          <li><a aria-current="page">1</a></li>
           <li><a href="/?page=2">2</a></li>
           <li><a href="/?page=3">3</a></li>
           <li><a href="/?page=4">4</a></li>

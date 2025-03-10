@@ -38,7 +38,7 @@ export default {
       value: html`
       <ul>
         <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-        <li><a href="/?page=1" aria-current="page">1</a></li>
+        <li><a aria-current="page">1</a></li>
         <li><a href="/?page=2">2</a></li>
         <li><a href="/?page=3">3</a></li>
         <li><a href="/?page=4">4</a></li>
@@ -93,7 +93,7 @@ export const SinglePage = {
         <nav class="sd-pagination" aria-label="Single page pagination">
           <ul>
             <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-            <li><a href="/?page=1" aria-current="page">1</a></li>
+            <li><a aria-current="page">1</a></li>
             <li><a aria-hidden="true"><sd-icon name="system/chevron-right" label="Next"></a></li>
           </ul>
         </nav>
@@ -112,7 +112,7 @@ export const Truncated = {
           <nav class="%CLASSES%" aria-label="Pagination with current page 1">
             <ul>
               <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-              <li><a href="/?page=1" aria-current="page">1</a></li>
+              <li><a aria-current="page">1</a></li>
               <li><a href="/?page=2">2</a></li>
               <li><a href="/?page=3">3</a></li>
               <li><a href="/?page=4">4</a></li>
@@ -139,7 +139,7 @@ export const Truncated = {
             <ul>
               <li><a href="/?page=1"><sd-icon name="system/chevron-left" label="Previous"></a></li>
               <li><a href="/?page=1">1</a></li>
-              <li><a href="/?page=2" aria-current="page">2</a></li>
+              <li><a aria-current="page">2</a></li>
               <li><a href="/?page=3">3</a></li>
               <li><a href="/?page=4">4</a></li>
               <li><a href="/?page=5">5</a></li>
@@ -166,7 +166,7 @@ export const Truncated = {
               <li><a href="/?page=2"><sd-icon name="system/chevron-left" label="Previous"></a></li>
               <li><a href="/?page=1">1</a></li>
               <li><a href="/?page=2">2</a></li>
-              <li><a href="/?page=3" aria-current="page">3</a></li>
+              <li><a aria-current="page">3</a></li>
               <li><a href="/?page=4">4</a></li>
               <li><a href="/?page=5">5</a></li>
               <li><a href="/?page=6">6</a></li>
@@ -193,7 +193,7 @@ export const Truncated = {
               <li><a href="/?page=1">1</a></li>
               <li><a href="/?page=2">2</a></li>
               <li><a href="/?page=3">3</a></li>
-              <li><a href="/?page=4" aria-current="page">4</a></li>
+              <li><a aria-current="page">4</a></li>
               <li><a href="/?page=5">5</a></li>
               <li><a href="/?page=6">6</a></li>
               <li><a href="/?page=7">7</a></li>
@@ -220,7 +220,7 @@ export const Truncated = {
               <li><a href="/?page=2">2</a></li>
               <li><a href="/?page=3">3</a></li>
               <li><a href="/?page=4">4</a></li>
-              <li><a href="/?page=5" aria-current="page">5</a></li>
+              <li><a aria-current="page">5</a></li>
               <li><a href="/?page=6">6</a></li>
               <li><a href="/?page=7">7</a></li>
               <li><a href="/?page=8">8</a></li>
@@ -258,7 +258,7 @@ export const Truncated = {
               <li><a href="/?page=14">14</a></li>
               <li><a href="/?page=15">15</a></li>
               <li><a href="/?page=16">16</a></li>
-              <li><a href="/?page=17" aria-current="page">17</a></li>
+              <li><a aria-current="page">17</a></li>
               <li><a href="/?page=18">18</a></li>
               <li><a href="/?page=19">19</a></li>
               <li><a href="/?page=20">20</a></li>
@@ -285,7 +285,7 @@ export const Truncated = {
               <li><a href="/?page=15">15</a></li>
               <li><a href="/?page=16">16</a></li>
               <li><a href="/?page=17">17</a></li>
-              <li><a href="/?page=18" aria-current="page">18</a></li>
+              <li><a aria-current="page">18</a></li>
               <li><a href="/?page=19">19</a></li>
               <li><a href="/?page=20">20</a></li>
               <li><a href="/?page=19"><sd-icon name="system/chevron-right" label="Next"></a></li>
@@ -312,7 +312,7 @@ export const Truncated = {
               <li><a href="/?page=16">16</a></li>
               <li><a href="/?page=17">17</a></li>
               <li><a href="/?page=18">18</a></li>
-              <li><a href="/?page=19" aria-current="page">19</a></li>
+              <li><a aria-current="page">19</a></li>
               <li><a href="/?page=20">20</a></li>
               <li><a href="/?page=20"><sd-icon name="system/chevron-right" label="Next"></a></li>
             </ul>
@@ -339,7 +339,7 @@ export const Truncated = {
               <li><a href="/?page=17">17</a></li>
               <li><a href="/?page=18">18</a></li>
               <li><a href="/?page=19">19</a></li>
-              <li><a href="/?page=20" aria-current="page">20</a></li>
+              <li><a aria-current="page">20</a></li>
               <li><a aria-hidden="true"><sd-icon name="system/chevron-right" label="Next"></a></li>
             </ul>
           </nav>
@@ -359,7 +359,7 @@ export const Inverted = {
       <nav class="sd-pagination sd-pagination--inverted" aria-label="Inverted pagination">
       <ul>
         <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-        <li><a href="/?page=1" aria-current="page">1</a></li>
+        <li><a aria-current="page">1</a></li>
         <li><a href="/?page=2">2</a></li>
         <li><a href="/?page=3">3</a></li>
         <li><a href="/?page=4">4</a></li>
@@ -406,7 +406,7 @@ export const HiddenHeadline = {
             <h4 id="pagination--hidden-headline">Hidden headline pagination</h4>
             <ul>
               <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-              <li><a href="/?page=1" aria-current="page">1</a></li>
+              <li><a aria-current="page">1</a></li>
               <li><a href="/?page=2">2</a></li>
               <li><a href="/?page=3">3</a></li>
               <li><a href="/?page=4">4</a></li>
