@@ -170,6 +170,10 @@
     ul li {
       @apply after:text-white;
 
+      &:has(a:not([href]) sd-icon) a {
+        @apply text-neutral-600 hover:text-neutral-600;
+      }
+
       a,
       a[aria-current] {
         @apply text-white hover:text-primary-200 active:text-primary-400;
