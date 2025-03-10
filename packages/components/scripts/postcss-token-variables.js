@@ -21,10 +21,10 @@ function tokens() {
         });
       });
 
-      root.walkComments(comment => {
-        if (comment.text.trim() === 'postcss:tokens') {
-          comment.before(rootRule);
-          comment.remove();
+      root.walkAtRules(atRule => {
+        if (atRule.name === 'solid' && atRule.params.trim() === 'variables') {
+          atRule.before(rootRule);
+          atRule.remove();
         }
       });
     }
