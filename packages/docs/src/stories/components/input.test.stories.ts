@@ -9,7 +9,6 @@ import {
 import { userEvent } from '@storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
-import type SdInput from '../../../../components/src/components/input/input';
 
 const { argTypes, parameters } = storybookDefaults('sd-input');
 const { generateTemplate } = storybookTemplate('sd-input');
