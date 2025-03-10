@@ -19,7 +19,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-accordion/Screenshots: sd-accordion',
   component: 'sd-accordion',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   args: overrideArgs([
     { type: 'slot', name: 'default', value: '<div class="slot slot--border slot--text h-16">Default slot</div>' },
     { type: 'attribute', name: 'summary', value: 'Accordion' }
@@ -110,7 +110,7 @@ export const Slots = {
                       : `<div slot='${slot}' class="${cx(
                           'slot slot--border slot--background h-6',
                           slot === 'summary' ? 'w-[100%]' : 'w-6'
-                        )}"></div>`,
+                        )}" aria-label="Default Slot"></div>`,
                   title: slot
                 }
               ]
@@ -168,8 +168,8 @@ export const Mouseless = {
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const el = canvasElement.querySelector('.mouseless sd-accordion');
-    await waitUntil(() => el?.shadowRoot?.querySelector('header'));
-    await userEvent.type(el!.shadowRoot!.querySelector('header')!, '{space}', { pointerEventsCheck: 0 });
+    await waitUntil(() => el?.shadowRoot?.querySelector('summary'));
+    await userEvent.type(el!.shadowRoot!.querySelector('summary')!, '{space}', { pointerEventsCheck: 0 });
   }
 };
 

@@ -1,5 +1,35 @@
 # @solid-design-system/docs
 
+## 1.11.0
+
+### Minor Changes
+
+- Implement highlight option renderer to highlight multiple search occurences on combobox template. _[`#1920`](https://github.com/solid-design-system/solid/pull/1920) [`9520101`](https://github.com/solid-design-system/solid/commit/9520101d406c34e600624a269ca707449d40bbb5) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.10.5
+
+### Patch Changes
+
+- Fixed accessibility issue in `sd-badge` template by including missing labels. _[`#1947`](https://github.com/solid-design-system/solid/pull/1947) [`6f0ffbd`](https://github.com/solid-design-system/solid/commit/6f0ffbdd3d50e1c45befee1152eff456ed998a5b) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.10.4
+
+### Patch Changes
+
+- Add missing alt attribute on `sd-video` screenshot tests. _[`#1944`](https://github.com/solid-design-system/solid/pull/1944) [`32695f2`](https://github.com/solid-design-system/solid/commit/32695f2580fe301f252195492bedd6aedcf467cf) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.10.3
+
+### Patch Changes
+
+- Update `sd-radio`, `sd-radio-group` and `sd-radio-button` screenshots tests and stories with missing labels to fix a11y issues. _[`#1940`](https://github.com/solid-design-system/solid/pull/1940) [`d2d5dcb`](https://github.com/solid-design-system/solid/commit/d2d5dcb9889102d9ad18f8ffcb9cbba389c4088e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.10.2
+
+### Patch Changes
+
+- Fix accessibility violation by including aria attribute in Slots screenshot test story. _[`#1933`](https://github.com/solid-design-system/solid/pull/1933) [`43e4765`](https://github.com/solid-design-system/solid/commit/43e4765788035d84bda1f52d693148e8392389f8) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.10.1
 
 ### Patch Changes
