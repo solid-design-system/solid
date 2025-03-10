@@ -29,7 +29,6 @@ export default {
     ...parameters,
     controls: { disable: true },
     a11y: {
-      element: 'body',
       config: {
         rules: [
           {
