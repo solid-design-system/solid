@@ -15,7 +15,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-badge/Screenshots: sd-badge',
   component: 'sd-badge',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   parameters: {
     ...parameters,
     controls: {
