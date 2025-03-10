@@ -82,7 +82,8 @@ export const Variant = {
         y: { type: 'attribute', name: 'variant' },
         x: { type: 'attribute', name: 'active', values: [false, true] }
       },
-      args
+      args,
+      constants: { type: 'attribute', name: 'active', value: true }
     });
   }
 };
