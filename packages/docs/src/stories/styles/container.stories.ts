@@ -12,7 +12,7 @@ const { generateTemplate } = storybookTemplate('sd-container');
 
 export default {
   title: 'Styles/sd-container',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   component: 'sd-container',
   args: overrideArgs({
     type: 'slot',
