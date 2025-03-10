@@ -1,5 +1,25 @@
 # @solid-design-system/components
 
+## 4.2.6
+
+### Patch Changes
+
+- Removed summary default marker from `sd-accordion` which was being displayed in Safari. _[`#1946`](https://github.com/solid-design-system/solid/pull/1946) [`88ff20e`](https://github.com/solid-design-system/solid/commit/88ff20e092ce72f4eee5fb5019c7e0fb3d47e252) [@smfonseca](https://github.com/smfonseca)_
+
+## 4.2.5
+
+### Patch Changes
+
+- Localize `sd–video` play button aria-label with new translation named `playVideo`. _[`#1944`](https://github.com/solid-design-system/solid/pull/1944) [`32695f2`](https://github.com/solid-design-system/solid/commit/32695f2580fe301f252195492bedd6aedcf467cf) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Remove unnecessary `aria-label` on sd-video wrapper element.
+
+## 4.2.4
+
+### Patch Changes
+
+- Improved `sd-radio-group` a11y by adding the attribute `aria-labelledby` to hidden input. _[`#1940`](https://github.com/solid-design-system/solid/pull/1940) [`d2d5dcb`](https://github.com/solid-design-system/solid/commit/d2d5dcb9889102d9ad18f8ffcb9cbba389c4088e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 4.2.3
 
 ### Patch Changes
