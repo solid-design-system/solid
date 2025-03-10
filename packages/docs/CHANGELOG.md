@@ -1,5 +1,23 @@
 # @solid-design-system/docs
 
+## 1.11.1
+
+### Patch Changes
+
+- Added missing labels to `sd-optgroup` screenshot tests and stories to address a11y violations. _[`#1938`](https://github.com/solid-design-system/solid/pull/1938) [`a328df3`](https://github.com/solid-design-system/solid/commit/a328df31e8fcd379100ff5d27859070015ddef68) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.11.0
+
+### Minor Changes
+
+- Implement highlight option renderer to highlight multiple search occurences on combobox template. _[`#1920`](https://github.com/solid-design-system/solid/pull/1920) [`9520101`](https://github.com/solid-design-system/solid/commit/9520101d406c34e600624a269ca707449d40bbb5) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.10.5
+
+### Patch Changes
+
+- Fixed accessibility issue in `sd-badge` template by including missing labels. _[`#1947`](https://github.com/solid-design-system/solid/pull/1947) [`6f0ffbd`](https://github.com/solid-design-system/solid/commit/6f0ffbdd3d50e1c45befee1152eff456ed998a5b) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.10.4
 
 ### Patch Changes

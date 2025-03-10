@@ -26,6 +26,7 @@ const translation: Translation = {
     return `Optionen ausgewählt (${num})`;
   },
   openTranscript: 'Abschrift öffnen',
+  optionGroup: 'Optionsgruppe',
   pauseAudio: 'Audio pausieren',
   playAudio: 'Audio abspielen',
   playbackSpeed: 'Wiedergabe Geschwindigkeit',

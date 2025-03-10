@@ -1,12 +1,24 @@
 # @solid-design-system/components
 
+## 4.2.7
+
+### Patch Changes
+
+- Updated `sd-optgroup` option wrapper role from `group` to `listbox` to align with HTML standards and included a localized `aria-label`. _[`#1938`](https://github.com/solid-design-system/solid/pull/1938) [`a328df3`](https://github.com/solid-design-system/solid/commit/a328df31e8fcd379100ff5d27859070015ddef68) [@smfonseca](https://github.com/smfonseca)_
+
+## 4.2.6
+
+### Patch Changes
+
+- Removed summary default marker from `sd-accordion` which was being displayed in Safari. _[`#1946`](https://github.com/solid-design-system/solid/pull/1946) [`88ff20e`](https://github.com/solid-design-system/solid/commit/88ff20e092ce72f4eee5fb5019c7e0fb3d47e252) [@smfonseca](https://github.com/smfonseca)_
+
 ## 4.2.5
 
 ### Patch Changes
 
-- Localize `sd-video` play button aria-label with new translation named `playVideo`. _[`#1944`](https://github.com/solid-design-system/solid/pull/1944) [`32695f2`](https://github.com/solid-design-system/solid/commit/32695f2580fe301f252195492bedd6aedcf467cf) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Localize `sd–video` play button aria-label with new translation named `playVideo`. _[`#1944`](https://github.com/solid-design-system/solid/pull/1944) [`32695f2`](https://github.com/solid-design-system/solid/commit/32695f2580fe301f252195492bedd6aedcf467cf) [@paulovareiro29](https://github.com/paulovareiro29)_
 
-  Remove unecessary `aria-label` on sd-video wrapper element.
+  Remove unnecessary `aria-label` on sd-video wrapper element.
 
 ## 4.2.4
 
