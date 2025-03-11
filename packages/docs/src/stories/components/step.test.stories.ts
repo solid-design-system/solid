@@ -89,22 +89,20 @@ export const Orientation = {
 export const Description = {
   name: 'Description',
   render: () => {
-    return html`
-      ${generateTemplate({
-        args: overrideArgs([
-          {
-            type: 'slot',
-            name: 'default',
-            value: `Lorem ipsum est dolor sit amet`
-          },
-          {
-            type: 'slot',
-            name: 'label',
-            value: `<span slot="label">Step name</span>`
-          }
-        ])
-      })}
-    `;
+    return generateTemplate({
+      args: overrideArgs([
+        {
+          type: 'slot',
+          name: 'default',
+          value: `Lorem ipsum est dolor sit amet`
+        },
+        {
+          type: 'slot',
+          name: 'label',
+          value: `<span slot="label">Step name</span>`
+        }
+      ])
+    });
   }
 };
 
@@ -115,7 +113,7 @@ export const Description = {
 export const DescriptionAndLabelUsingAttributes = {
   name: 'Description and Label (using attributes)',
   render: () => {
-    return html` ${generateTemplate({
+    return generateTemplate({
       args: overrideArgs([
         {
           type: 'slot',
@@ -138,7 +136,7 @@ export const DescriptionAndLabelUsingAttributes = {
           value: `This description was set using "description" attribute.`
         }
       ])
-    })}`;
+    });
   }
 };
 
