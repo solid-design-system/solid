@@ -54,12 +54,12 @@ const createColorOptionsHtml = () => unsafeHTML(createColorOptions().join('\n'))
 
 export default {
   title: 'Components/sd-combobox',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   component: 'sd-combobox',
   args: overrideArgs([
     threeOptionsConstant,
     labelConstant,
-    { type: 'attribute', name: 'placeholder', value: 'Please search and select' },
+    { type: 'attribute', name: 'placeholder', value: ' ' },
     { type: 'attribute', name: 'max-options-visible', value: 3 },
     { type: 'attribute', name: 'getOption', value: '' }
   ]),
@@ -335,28 +335,13 @@ export const Clearable = {
  *  Use the “left” and “right” slots to add system icons
  *  Show search icon in left either left or right icon slot with the chevron icon (don’t show 2 icons on the right hand side)
  *  Not showing the label here is only fine when showing search-icon.
+ *
  *  __Accessibility hint__: Label can be omitted for search input fields if a button (e.g., aria-label="Search") with a search icon is present.
  */
 export const Icons = {
   render: () => html`
     <div class="w-[400px] h-[400px]">
-      <sd-combobox placeholder="Small" size="sm" clearable>
-        <sd-icon slot="left" name="system/image" aria-hidden="true" color="currentColor"></sd-icon>
-        ${createColorOptionsHtml()}
-        <button slot="right" aria-label="Search">
-          <sd-icon library="system" name="magnifying-glass" aria-hidden="true" color="currentColor"></sd-icon>
-        </button>
-      </sd-combobox>
-      <br />
-      <sd-combobox placeholder="Medium" size="md" clearable>
-        <sd-icon slot="left" name="system/image" aria-hidden="true" color="currentColor"></sd-icon>
-        ${createColorOptionsHtml()}
-        <button slot="right" aria-label="Search">
-          <sd-icon library="system" name="magnifying-glass" aria-hidden="true" color="currentColor"></sd-icon>
-        </button>
-      </sd-combobox>
-      <br />
-      <sd-combobox placeholder="Large" size="lg" clearable>
+      <sd-combobox size="lg" clearable label="Label">
         <sd-icon slot="left" name="system/image" aria-hidden="true" color="currentColor"></sd-icon>
         ${createColorOptionsHtml()}
         <button slot="right" aria-label="Search">
@@ -372,6 +357,7 @@ export const Icons = {
  * To inform your users about their selected options tags are displayed.
  * Use Backspace to remove the last selected option.
  * Use `--tag-max-width` to set the maximum width of the tags and to show an ellipsis, e.g. `<sd-combobox style="--tag-max-width: 40px">`. The default value is `15ch`.
+ *
  * __Hint:__ If you really don't want to show tags, you can hide them with CSS via `::part(tags)`.
  */
 

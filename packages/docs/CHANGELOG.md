@@ -1,5 +1,23 @@
 # @solid-design-system/docs
 
+## 1.12.5
+
+### Patch Changes
+
+- Fixed accessibility violation in `sd-dialog` templates. _[`#1962`](https://github.com/solid-design-system/solid/pull/1962) [`6c3d82a`](https://github.com/solid-design-system/solid/commit/6c3d82a1c81b829f3d07d5b309da8c97ff5b8a3d) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.12.4
+
+### Patch Changes
+
+- Update `sd-combobox` screenshots tests and stories with missing labels to fix a11y issues. _[`#1936`](https://github.com/solid-design-system/solid/pull/1936) [`0c42bc3`](https://github.com/solid-design-system/solid/commit/0c42bc397337c2dd4ecad37bd391feb09c8b1165) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.12.3
+
+### Patch Changes
+
+- Fix `sd-brandshape` slot a11y color-contrast issues _[`#1964`](https://github.com/solid-design-system/solid/pull/1964) [`c0ac3b8`](https://github.com/solid-design-system/solid/commit/c0ac3b84d2ca52af31f824cbec0329e2e563d08e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.12.2
 
 ### Patch Changes
