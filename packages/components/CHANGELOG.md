@@ -1,5 +1,24 @@
 # @solid-design-system/components
 
+## 4.2.8
+
+### Patch Changes
+
+- Adjust styling on form elements: _[`#1931`](https://github.com/solid-design-system/solid/pull/1931) [`82121dc`](https://github.com/solid-design-system/solid/commit/82121dce671e93f9066c1af79c8992090641f861) [@smfonseca](https://github.com/smfonseca)_
+
+  - Placeholder color for `sd-select`, `sd-combobox`, `sd-input` and `sd-textarea` when disabled or visually-disabled.
+  - `sd-select` border color when focused and visually-disabled
+
+### 📈 Stats
+* Uncompressed: 413 KB (+1 KB / +0%)
+* Gzipped: 97 KB (unchanged)
+
+## 4.2.7
+
+### Patch Changes
+
+- Updated `sd-optgroup` option wrapper role from `group` to `listbox` to align with HTML standards and included a localized `aria-label`. _[`#1938`](https://github.com/solid-design-system/solid/pull/1938) [`a328df3`](https://github.com/solid-design-system/solid/commit/a328df31e8fcd379100ff5d27859070015ddef68) [@smfonseca](https://github.com/smfonseca)_
+
 ## 4.2.6
 
 ### Patch Changes

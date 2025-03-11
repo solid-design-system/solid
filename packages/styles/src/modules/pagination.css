@@ -1,0 +1,191 @@
+/**
+ * Used to split large content into several pages, allowing users to navigate between them instead of displaying all information on a single page.
+ * @name sd-pagination
+ * @status stable
+ * @since 1.3
+ * @variant { simple } sd-pagination--... The pagination format.
+ * @boolean sd-pagination--inverted Inverts the pagination style.
+ */
+
+.sd-pagination {
+  > :not(ul) {
+    @apply absolute overflow-hidden h-0.25 w-0.25;
+  }
+
+  ul {
+    @apply flex items-center gap-2;
+
+    li a {
+      @apply text-primary flex items-center justify-center hover:text-primary-500 active:text-primary-800 transition-[color];
+
+      &:focus-visible {
+        @apply outline outline-2 outline-offset-2 outline-primary;
+      }
+    }
+
+    /* Previous and Next */
+    li:first-child,
+    li:last-child {
+      @apply w-12 h-12;
+
+      a {
+        @apply w-full h-full;
+      }
+
+      sd-icon {
+        @apply w-6 h-6;
+      }
+    }
+
+    /* Numbers */
+    li {
+      @apply flex items-center justify-center text-center w-8 h-8;
+
+      &:not(:has(a sd-icon)) {
+        a {
+          @apply border-b-2 border-b-transparent w-full h-full;
+
+          &[aria-current] {
+            @apply border-b-accent;
+          }
+        }
+      }
+
+      a[aria-current] {
+        @apply text-black hover:text-black;
+      }
+    }
+
+    /* Previous and next arrow when it has no href */
+    li:has(a:not([href]) sd-icon) a {
+      @apply cursor-not-allowed text-neutral-500 hover:text-neutral-500;
+    }
+  }
+
+  &:not(.sd-pagination--simple) {
+    ul {
+      /* Numbers */
+      li:not(:has(a sd-icon)) {
+        /* Number which is not current */
+        &:not(:has(a[aria-current])) {
+          @apply absolute pointer-events-none;
+
+          a {
+            @apply hidden;
+          }
+        }
+
+        /* Apply ellipsis to (n + 2 && n - 1) */
+        &:has(+ li + li a[aria-current]),
+        &:has(a[aria-current]) + li + li:not(:last-child) {
+          @apply !relative !pointer-events-auto after:content-['...'];
+        }
+
+        &:nth-child(2), /* First number */
+        &:nth-last-child(2), /* Last number */
+        &:has(+ li a[aria-current]), /* Previous number */
+        &:has(a[aria-current]) + li /* Next number */ {
+          @apply !relative !pointer-events-auto after:!hidden;
+
+          a {
+            @apply !flex;
+          }
+        }
+
+        /* When one of the first 4 pages is selected */
+        &:nth-child(-n + 6):has(a[aria-current]) {
+          /* Show until the 5th page (forward) */
+          & ~ :nth-child(-n + 6) {
+            @apply relative pointer-events-auto after:hidden;
+
+            a {
+              @apply flex;
+            }
+          }
+
+          /* Show ellipsis on the 6th */
+          & ~ :nth-child(6):not(:last-child) + li {
+            @apply relative pointer-events-none after:content-['...'];
+          }
+        }
+
+        /* When one of the first 4 pages is selected, show until the 5th page (backward) */
+        &:nth-child(-n + 6):has(~ :nth-child(-n + 5) a[aria-current]) {
+          @apply relative pointer-events-auto after:hidden;
+
+          a {
+            @apply flex;
+          }
+        }
+
+        /* When one of the last 4 pages is selected, show the last 4 pages (forward) */
+        &:nth-last-child(-n + 5):has(a[aria-current]) {
+          & ~ :nth-last-child(-n + 5):not(:has(a sd-icon)) {
+            @apply relative pointer-events-auto after:hidden;
+
+            a {
+              @apply flex;
+            }
+          }
+        }
+        /* When one of the last 4 pages is selected, show the last 4 pages (backward) */
+        &:nth-last-child(-n + 6):has(~ :nth-last-child(-n + 5) a[aria-current]) {
+          @apply relative pointer-events-auto after:hidden;
+
+          a {
+            @apply flex;
+          }
+        }
+
+        /* Show ellipsis on the 6th to last */
+        &:nth-last-child(7):has(~ :nth-last-child(-n + 5) a[aria-current]) {
+          @apply relative pointer-events-none after:content-['...'];
+        }
+      }
+
+      /* When it only has 5 numbers + 2 prev & next buttons */
+      &:has(> li:last-child:nth-child(-n + 9)) li {
+        @apply relative pointer-events-auto after:hidden;
+
+        a {
+          @apply flex;
+        }
+      }
+    }
+  }
+
+  &--simple {
+    ul {
+      li:nth-child(2) {
+        @apply relative w-8 border-b-2 border-b-accent me-5 after:content-['/'] after:absolute after:-right-[18px] after:scale-y-[1.5];
+      }
+
+      li:nth-last-child(2) {
+        @apply border-b-2 border-b-transparent;
+      }
+    }
+  }
+
+  &--inverted {
+    ul li {
+      @apply after:text-white;
+
+      &:has(a:not([href]) sd-icon) a {
+        @apply text-neutral-600 hover:text-neutral-600;
+      }
+
+      a,
+      a[aria-current] {
+        @apply text-white hover:text-primary-200 active:text-primary-400 hover:text-primary-200;
+
+        &:focus-visible {
+          @apply outline-white;
+        }
+      }
+    }
+
+    &.sd-pagination--simple ul li {
+      @apply text-white after:text-white;
+    }
+  }
+}
