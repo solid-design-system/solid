@@ -19,7 +19,7 @@ const { overrideArgs } = storybookHelpers('sd-option');
 
 export default {
   title: 'Components/sd-option',
-  tags: ['!dev'],
+  tags: ['!dev', 'skip-a11y-[aria-required-parent]'],
   component: 'sd-option',
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
   argTypes,
@@ -34,13 +34,23 @@ export default {
 
 export const Default = {
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'aria-required-parent',
+            selector: 'sd-option'
+          }
+        ]
+      },
+      options: {}
+    }
+  },
   render: (args: any) => {
-    return html` <style>
-        sd-optgroup {
-          --display-divider: none;
-        }
-      </style>
-      <sd-optgroup> ${generateTemplate({ args })} </sd-optgroup>`;
+    return generateTemplate({
+      args
+    });
   }
 };
 

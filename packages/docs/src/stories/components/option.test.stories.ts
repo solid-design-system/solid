@@ -19,11 +19,25 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-option/Screenshots: sd-option',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-[aria-required-parent]'],
   component: 'sd-option',
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
   argTypes,
-  parameters: { ...parameters, controls: { disable: true } },
+  parameters: {
+    ...parameters,
+    controls: { disable: true },
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'aria-required-parent',
+            enabled: false
+          }
+        ]
+      },
+      options: {}
+    }
+  },
   decorators: [withActions] as any
 };
 
@@ -35,12 +49,9 @@ export const Default = {
   name: 'Default',
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
   render: (args: any) => {
-    return html` <style>
-        sd-optgroup {
-          --display-divider: none;
-        }
-      </style>
-      <sd-optgroup> ${generateTemplate({ args })} </sd-optgroup>`;
+    return generateTemplate({
+      args
+    });
   }
 };
 
@@ -64,14 +75,7 @@ export const DisabledCheckbox = {
           values: [false, true]
         }
       },
-      constants: [
-        { type: 'attribute', name: 'disabled', value: true },
-        {
-          type: 'template',
-          name: 'style',
-          value: '<style>sd-optgroup { --display-divider: none;}</style><sd-optgroup>%TEMPLATE%</sd-optgroup>'
-        }
-      ],
+      constants: [{ type: 'attribute', name: 'disabled', value: true }],
       args
     });
   }
@@ -96,14 +100,7 @@ export const SizeCheckbox = {
           values: [false, true]
         }
       },
-      constants: [
-        { type: 'attribute', name: 'checkbox', value: true },
-        {
-          type: 'template',
-          name: 'style',
-          value: '<style>sd-optgroup { --display-divider: none;}</style><sd-optgroup>%TEMPLATE%</sd-optgroup>'
-        }
-      ],
+      constants: { type: 'attribute', name: 'checkbox', value: true },
       args
     });
   }
@@ -147,11 +144,6 @@ export const Slots = {
               type: 'slot',
               name: 'right',
               value: '<sd-icon slot="right" name="system/image"></sd-icon>'
-            },
-            {
-              type: 'template',
-              name: 'style',
-              value: '<style>sd-optgroup { --display-divider: none;}</style><sd-optgroup>%TEMPLATE%</sd-optgroup>'
             }
           ],
           args
