@@ -16,7 +16,7 @@
     @apply flex items-center gap-2;
 
     li a {
-      @apply text-primary flex items-center justify-center hover:text-primary-500 active:text-primary-800 transition-[color];
+      @apply text-primary no-underline flex items-center justify-center hover:text-primary-500 active:text-primary-800 transition-[color];
 
       &:focus-visible {
         @apply outline outline-2 outline-offset-2 outline-primary;

@@ -13,7 +13,7 @@ export default {
   }
 };
 
-export const Default = {
+export const Number = {
   render: () =>
     html`
       <nav id="pagination" class="sd-pagination" aria-label="Pagination">
