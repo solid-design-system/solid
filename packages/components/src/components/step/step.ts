@@ -142,8 +142,8 @@ export default class SdStep extends SolidElement {
             href=${ifDefined(isLink ? this.href : undefined)}
             aria-disabled=${ifDefined(this.disabled || undefined)}
             aria-current=${this.current ? 'step' : undefined}
-            aria-labelledby=${ifDefined('label')}
-            aria-describedby=${ifDefined('description')}
+            aria-labelledby=${this.notInteractive ? undefined : ifDefined('label')}
+            aria-describedby=${this.notInteractive ? undefined : ifDefined('description')}
             class=${cx(
               'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
               this.disabled
