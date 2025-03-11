@@ -103,6 +103,7 @@ export interface Translation extends DefaultTranslation {
   resize: string;
   scrollToEnd: string;
   scrollToStart: string;
+  search: string;
   seekBar: string;
   selectAColorFromTheScreen: string;
   selectDefaultPlaceholder: string;
