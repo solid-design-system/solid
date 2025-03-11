@@ -11,13 +11,13 @@
 
 /* Links */
 .sbdocs.sbdocs-a,
-.sbdocs .sbdocs-content a:not(:has(code)) {
+.sbdocs .sbdocs-content a:not(:has(code)):not(:where(#root-inner *, #storybook-docs *)) {
   @apply underline text-primary hover:text-primary-500 active:text-primary-800 transition-colors;
 }
 
 /* Outline on focus visible */
 .sbdocs.sbdocs-a:focus-visible,
-.sbdocs .sbdocs-content a:focus-visible,
+.sbdocs .sbdocs-content a:not(:where(#root-inner *, #storybook-docs *)):focus-visible,
 .sbdocs .toc-list .toc-list-item a:focus-visible {
   @apply outline outline-2 outline-offset-2 outline-primary;
 }

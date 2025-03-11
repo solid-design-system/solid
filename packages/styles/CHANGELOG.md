@@ -1,5 +1,13 @@
 # @solid-design-system/styles
 
+## 1.3.0
+
+### Minor Changes
+
+- The `sd-pagination` has arrived! 🎉 _[`#1916`](https://github.com/solid-design-system/solid/pull/1916) [`8e97181`](https://github.com/solid-design-system/solid/commit/8e97181cbc913d47fbadc1997cfe75bcaa7a9245) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  This style can be used to split large content into several pages.
+
 ## 1.2.0
 
 ### Minor Changes
