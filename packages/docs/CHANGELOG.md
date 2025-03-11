@@ -1,5 +1,25 @@
 # @solid-design-system/docs
 
+## 1.12.2
+
+### Patch Changes
+
+- Sync `sd-radio-button` and `sd-combobox` visually-disabled examples with Figma and fix typo in story title. _[`#1931`](https://github.com/solid-design-system/solid/pull/1931) [`82121dc`](https://github.com/solid-design-system/solid/commit/82121dce671e93f9066c1af79c8992090641f861) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.12.1
+
+### Patch Changes
+
+- Skipped `color-contrast` rule in accessibility tests for `sd-interactive--disabled`. _[`#1959`](https://github.com/solid-design-system/solid/pull/1959) [`69120c5`](https://github.com/solid-design-system/solid/commit/69120c52e87cb2364eced4df8a9c53795e14dd90) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.12.0
+
+### Minor Changes
+
+- The `sd-pagination` has arrived! 🎉 _[`#1916`](https://github.com/solid-design-system/solid/pull/1916) [`8e97181`](https://github.com/solid-design-system/solid/commit/8e97181cbc913d47fbadc1997cfe75bcaa7a9245) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Add new `sd-pagination` stories and template.
+
 ## 1.11.6
 
 ### Patch Changes

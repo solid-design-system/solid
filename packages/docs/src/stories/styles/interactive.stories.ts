@@ -18,7 +18,7 @@ const { generateTemplate } = storybookTemplate('sd-interactive');
 
 export default {
   title: 'Styles/sd-interactive',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev', 'skip-a11y-[color-contrast]'],
   component: 'sd-interactive',
   parameters: {
     ...parameters,
@@ -64,6 +64,17 @@ export const Inverted = {
  */
 
 export const Disabled = {
+  a11y: {
+    config: {
+      rules: [
+        {
+          id: 'color-contrast',
+          selector: '.sd-interactive--disabled',
+          enabled: false
+        }
+      ]
+    }
+  },
   render: () => html`
     <button class="sd-interactive sd-interactive--disabled sd-interactive--reset" title="Disabled button">
       Disabled
