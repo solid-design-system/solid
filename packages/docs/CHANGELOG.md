@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 1.12.7
+
+### Patch Changes
+
+- Improved `sd-input` accessibility and consistency with other components. _[`#1934`](https://github.com/solid-design-system/solid/pull/1934) [`b8f1d87`](https://github.com/solid-design-system/solid/commit/b8f1d879b7974fe81633d08d66e3605ab9eae139) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add labels to sd-input.
+
 ## 1.12.6
 
 ### Patch Changes
