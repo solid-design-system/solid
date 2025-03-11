@@ -2,4 +2,4 @@
 '@solid-design-system/docs': patch
 ---
 
-Fix a11y violation in `sd-option` screenshot tests by wrapping the element in a `sd-optgroup` and adding a missing aria-label.
+Skipped `aria-required-parent` rule in accessibility tests for `sd-option`. This is already validated in tests for `sd-optgroup` or `sd-select`. Also included a missing `aria-label` attribute.
