@@ -13,7 +13,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * to ensure it becomes accessible to keyboard only users.
  */
 export default {
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   title: 'Templates/Table',
   parameters: {
     chromatic: { disableSnapshot: true }
@@ -1828,7 +1828,7 @@ export const TableFixedLeft = {
         <table class="sd-table sample-table">
           <thead class="sr-only">
             <tr>
-              <th></th>
+              <td></td>
               <th>Job title</th>
               <th>Location</th>
               <th>Job category</th>
@@ -2155,7 +2155,7 @@ export const TableFixedRight = {
               <th>Job category</th>
               <th>Employment type</th>
               <th>Actions</th>
-              <th></th>
+              <td></td>
             </thead>
             <tbody>
               <tr>

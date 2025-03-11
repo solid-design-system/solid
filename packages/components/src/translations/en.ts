@@ -38,6 +38,7 @@ const translation: Translation = {
   resize: 'Resize',
   scrollToEnd: 'Scroll to end',
   scrollToStart: 'Scroll to start',
+  search: 'Search',
   seekBar: 'Seek bar',
   selectAColorFromTheScreen: 'Select a color from the screen',
   selectDefaultPlaceholder: 'Please select',
