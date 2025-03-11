@@ -2,8 +2,8 @@
 '@solid-design-system/components': minor
 ---
 
-Improved `sd-input` accessibility.
+Improved `sd-input type="search"` and accessibility.
 
-- Add a translatable label to the search icon for the `sd-input type="search"`.
 - Make the search button interactive.
-- Trigger 'sd-search' event when search button on `sd-input type="search"` is clicked.
+- Trigger `sd-search` event when search button on `sd-input type="search"` is clicked.
+- Add a translatable label to the search icon for the `sd-input type="search"`.
