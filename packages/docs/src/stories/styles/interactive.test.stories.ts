@@ -20,7 +20,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Styles/sd-interactive/Screenshots: sd-interactive',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs', 'skip-a11y-[color-contrast]'],
   component: 'sd-interactive',
   parameters: {
     ...parameters,
@@ -78,6 +78,19 @@ export const Default = {
 
 export const Disabled = {
   name: 'Disabled',
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            selector: '.sd-interactive--disabled',
+            enabled: false
+          }
+        ]
+      }
+    }
+  },
   render: (args: any) => {
     return generateTemplate({
       axis: {
