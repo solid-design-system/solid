@@ -281,7 +281,7 @@ export const storybookTemplate = (customElementTag: string) => {
       templateRenderer?: (params: {
         attributes: { classes?: string } & Record<string, unknown>;
         template?: string;
-        slot?: string;
+        slots?: Record<string, string>;
       }) => string;
       /**
        * Background colors of the table. This can be used to alternate the background color of the table rows or columns.
@@ -309,10 +309,18 @@ export const storybookTemplate = (customElementTag: string) => {
               .filter(([, value]) => (typeof value === 'boolean' && !value ? false : true))
           );
 
+          const slots = Object.fromEntries(
+            Object.entries(args)
+              .filter(([slot]) => slot.endsWith('-slot'))
+              .map(([slot, value]) => {
+                return [slot.replace('-slot', ''), value];
+              })
+          ) as Record<string, string>;
+
           return unsafeStatic(
             options.templateRenderer({
               attributes,
-              slot: slotContent,
+              slots,
               template: options.templateContent || `<${manifest.tagName} class="%CLASSES%">%SLOT%</${manifest.tagName}>`
             })
           );
@@ -363,7 +371,9 @@ export const storybookTemplate = (customElementTag: string) => {
         return unsafeStatic(
           options.templateRenderer({
             attributes: { classes: classesAsString },
-            slot: slotContent,
+            slots: {
+              default: slotContent
+            },
             template: options.templateContent || '<div class="%CLASSES%">%SLOT%</div>'
           })
         );

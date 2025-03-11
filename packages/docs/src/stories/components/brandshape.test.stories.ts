@@ -19,13 +19,13 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-brandshape/Screenshots: sd-brandshape',
   component: 'sd-brandshape',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   parameters: { ...parameters, controls: { disable: true } },
   args: overrideArgs([
     {
       type: 'slot',
       name: 'default',
-      value: '<div class="slot slot--border slot--text h-8 w-full">Default slot</div>'
+      value: '<div class="slot slot--border slot--text slot--inverted h-8 w-full">Default slot</div>'
     },
     {
       type: 'slot',
@@ -107,6 +107,21 @@ export const Variants = {
             'rgb(var(--sd-color-primary, 0 53 142))',
             'white'
           ]
+        },
+        templateRenderer: ({ attributes, slots }) => {
+          const inverted = ['neutral-100', 'white', 'border-primary'].includes(attributes.variant as string);
+          const slotted = Object.entries(slots ?? {})
+            .map(([, slot]) => slot)
+            .join('\n');
+
+          const attrs = Object.entries(attributes)
+            .map(([attr, value]) => `${attr}='${value}'`)
+            .join(' ');
+
+          return `
+          <sd-brandshape ${attrs}>
+            ${inverted ? slotted.replace(' slot--inverted', '') : slotted}
+          </sd-brandshape>`;
         }
       },
       args,
