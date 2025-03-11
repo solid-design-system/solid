@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.12.3
+
+### Patch Changes
+
+- Fix `sd-brandshape` slot a11y color-contrast issues _[`#1964`](https://github.com/solid-design-system/solid/pull/1964) [`c0ac3b8`](https://github.com/solid-design-system/solid/commit/c0ac3b84d2ca52af31f824cbec0329e2e563d08e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.12.2
 
 ### Patch Changes
