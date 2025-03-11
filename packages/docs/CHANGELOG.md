@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.12.2
+
+### Patch Changes
+
+- Sync `sd-radio-button` and `sd-combobox` visually-disabled examples with Figma and fix typo in story title. _[`#1931`](https://github.com/solid-design-system/solid/pull/1931) [`82121dc`](https://github.com/solid-design-system/solid/commit/82121dce671e93f9066c1af79c8992090641f861) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.12.1
 
 ### Patch Changes
