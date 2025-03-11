@@ -32,7 +32,7 @@ export default {
     },
     { type: 'attribute', name: 'open', value: true },
     { type: 'attribute', name: 'contained', value: true },
-    { type: 'attribute', name: 'label', value: 'Aria Label' }
+    { type: 'attribute', name: 'label', value: 'Label' }
   ]),
   argTypes,
   parameters: {
