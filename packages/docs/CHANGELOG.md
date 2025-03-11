@@ -1,5 +1,19 @@
 # @solid-design-system/docs
 
+## 1.11.6
+
+### Patch Changes
+
+- Skipped `aria-required-parent` rule in accessibility tests for `sd-option`. This is already validated in tests for `sd-optgroup` or `sd-select`. Also included a missing `aria-label` attribute. _[`#1937`](https://github.com/solid-design-system/solid/pull/1937) [`947b5bc`](https://github.com/solid-design-system/solid/commit/947b5bc9483dc475784a5bcb368fd0f0a69474c3) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.11.5
+
+### Patch Changes
+
+- Implement `templateRenderer` on `generateTemplate` options to have better control of how stories are rendered. _[`#1955`](https://github.com/solid-design-system/solid/pull/1955) [`1b03e45`](https://github.com/solid-design-system/solid/commit/1b03e459950d33a7836c0d4524742870f3c5df9a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Fix `sd-container` a11y contrast issues.
+
 ## 1.11.4
 
 ### Patch Changes
