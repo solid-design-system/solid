@@ -16,7 +16,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-step-group/Screenshots: sd-step-group',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-step-group',
   args: overrideArgs([
     {
@@ -39,6 +39,11 @@ export default {
       type: 'attribute',
       name: 'active-step',
       value: `1`
+    },
+    {
+      type: 'attribute',
+      name: 'label',
+      value: 'Aria Label'
     }
   ]),
   argTypes,

@@ -18,7 +18,7 @@ const { generateTemplate } = storybookTemplate('sd-step-group');
  */
 export default {
   title: 'Components/sd-step-group',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   component: 'sd-step-group',
   args: overrideArgs([
     {
@@ -41,6 +41,11 @@ export default {
       type: 'attribute',
       name: 'active-step',
       value: `1`
+    },
+    {
+      type: 'attribute',
+      name: 'label',
+      value: 'Aria Label'
     }
   ]),
   argTypes,
