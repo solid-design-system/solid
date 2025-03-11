@@ -220,26 +220,22 @@ export const VisuallyDisabled = {
   render: () => html`
     <div class="flex gap-12 h-[100px] pt-12">
       <sd-radio-group>
-        <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm">
-          <sd-radio-button value="1" visually-disabled>
-            <sd-icon name="system/image" slot="icon"></sd-icon>
-            Label
-          </sd-radio-button>
-        </sd-tooltip>
+        <sd-radio-button value="1">
+          <sd-icon name="system/image" slot="icon"></sd-icon>
+          Label
+        </sd-radio-button>
 
         <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm">
           <sd-radio-button value="2" visually-disabled>
             <sd-icon name="system/image" slot="icon"></sd-icon>
-            Disabled
+            Visually Disabled
           </sd-radio-button>
         </sd-tooltip>
 
-        <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm">
-          <sd-radio-button value="3" visually-disabled>
-            <sd-icon name="system/image" slot="icon"></sd-icon>
-            Label
-          </sd-radio-button>
-        </sd-tooltip>
+        <sd-radio-button value="3">
+          <sd-icon name="system/image" slot="icon"></sd-icon>
+          Label
+        </sd-radio-button>
       </sd-radio-group>
     </div>
   `
