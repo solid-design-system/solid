@@ -18,7 +18,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Styles/sd-container/Screenshots: sd-container',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-container',
   parameters: {
     ...parameters,
@@ -84,9 +84,15 @@ export const Variants = {
         ]
       },
       options: {
+        templateRenderer: ({ attributes }) => {
+          const inverted = ['sd-container--variant-primary'].some(variant =>
+            attributes.classes?.split(' ').some(c => c === variant)
+          );
+          return `<div class="${attributes.classes}"><div class="slot slot--border slot--text ${inverted ? 'slot--inverted' : ''} h-12">Default slot</div></div>`;
+        },
         templateBackgrounds: {
           alternate: 'y',
-          colors: ['tranparent', 'tranparent', 'tranparent', 'transparent', 'rgb(var(--sd-color-primary, 0 53 142))']
+          colors: ['transparent', 'transparent', 'transparent', 'transparent', 'rgb(var(--sd-color-primary, 0 53 142))']
         }
       },
       args

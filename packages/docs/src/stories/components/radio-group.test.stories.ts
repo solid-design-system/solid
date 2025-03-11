@@ -16,7 +16,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-radio-group/Screenshots: sd-radio-group',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-radio-group',
   parameters: {
     ...parameters,
@@ -220,7 +220,7 @@ export const MouselessWithRadioButtons = {
             type: 'slot',
             name: 'default',
             value:
-              '<sd-radio-button value="1"><sd-icon name="system/image" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="2"><sd-icon name="system/image" slot="icon"></sd-icon></sd-radio-button><sd-radio-button value="3"><sd-icon name="system/image" slot="icon"></sd-radio-button>'
+              '<sd-radio-button value="1"><sd-icon name="system/image" slot="icon" label="Label"></sd-icon></sd-radio-button><sd-radio-button value="2"><sd-icon name="system/image" slot="icon" label="Label"></sd-icon></sd-radio-button><sd-radio-button value="3"><sd-icon name="system/image" slot="icon" label="Label"></sd-radio-button>'
           },
           {
             type: 'attribute',
