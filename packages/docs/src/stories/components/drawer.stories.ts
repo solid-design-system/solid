@@ -36,7 +36,8 @@ export default {
     },
     { type: 'attribute', name: 'open', value: true },
     { type: 'attribute', name: 'contained', value: true },
-    { type: 'attribute', name: 'label', value: 'Label' }
+    { type: 'attribute', name: 'label', value: 'Label' },
+    { type: 'attribute', name: 'id', value: 'default-drawer' }
   ]),
   argTypes,
   parameters: {
@@ -64,10 +65,16 @@ export const Default = {
   name: 'Default',
   render: (args: any) => {
     return html` <div style="width: auto; height: 40vh; position: relative;">
-      ${generateTemplate({
-        args
-      })}
-    </div>`;
+        <sd-button id="open-default-drawer">Open Drawer</sd-button>
+        ${generateTemplate({
+          args
+        })}
+      </div>
+      <script>
+        document.querySelector('#open-default-drawer').addEventListener('click', () => {
+          document.querySelector('#default-drawer').show();
+        });
+      </script>`;
   }
 };
 
