@@ -19,11 +19,25 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-option/Screenshots: sd-option',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs', 'skip-a11y-[aria-required-parent]'],
   component: 'sd-option',
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
   argTypes,
-  parameters: { ...parameters, controls: { disable: true } },
+  parameters: {
+    ...parameters,
+    controls: { disable: true },
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'aria-required-parent',
+            enabled: false
+          }
+        ]
+      },
+      options: {}
+    }
+  },
   decorators: [withActions] as any
 };
 
@@ -111,7 +125,7 @@ export const Slots = {
                 {
                   value:
                     slot === 'default'
-                      ? `<div class="slot slot--border slot--background h-8 w-[100px]"></div>`
+                      ? `<div class="slot slot--border slot--background h-8 w-[100px]" aria-label="Slot"></div>`
                       : `<div slot='${slot}' class="slot slot--border slot--background h-6 ${
                           slot === 'default' ? 'w-18' : 'w-6'
                         }"></div>`,
