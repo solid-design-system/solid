@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 export default {
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   title: 'Templates/Dialog',
   parameters: {
     chromatic: { disableSnapshot: true },
@@ -82,7 +82,7 @@ export const Scrollable = {
       <span slot="headline" class="sd-headline sd-headline--size-3xl">Terms of use</span>
       <sd-scrollable orientation="vertical" step="150" shadows>
         <div class="items-start justify-start h-[300px] lg:h-[454px] space-y-5">
-          <h4 class="sd-headline sd-headline--size-lg">Important notices to our investors</h4>
+          <h3 class="sd-headline sd-headline--size-lg">Important notices to our investors</h3>
           <p class="sd-paragraph">
             By accepting this document, you accept the following restrictions as binding on you:
           </p>
