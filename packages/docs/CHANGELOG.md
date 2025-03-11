@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.12.5
+
+### Patch Changes
+
+- Fixed accessibility violation in `sd-dialog` templates. _[`#1962`](https://github.com/solid-design-system/solid/pull/1962) [`6c3d82a`](https://github.com/solid-design-system/solid/commit/6c3d82a1c81b829f3d07d5b309da8c97ff5b8a3d) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.12.4
 
 ### Patch Changes
