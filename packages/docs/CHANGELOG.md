@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.11.3
+
+### Patch Changes
+
+- Add missing alt attributes on `sd-copyright` stories. _[`#1950`](https://github.com/solid-design-system/solid/pull/1950) [`5ba05c9`](https://github.com/solid-design-system/solid/commit/5ba05c9dbddc985d7ffd4b009aa3d3d35ea1f6a6) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.11.2
 
 ### Patch Changes
