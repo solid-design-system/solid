@@ -1,5 +1,5 @@
 ---
-'@solid-design-system/components': patch
+'@solid-design-system/components': minor
 ---
 
 Improved `sd-input` accessibility.

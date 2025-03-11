@@ -1,6 +1,7 @@
 import '../../../dist/solid-components';
 import { expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
 import { getFormControls, serialize } from '../../utilities/form.js';
+
 import { sendKeys } from '@web/test-runner-commands'; // must come from the same module
 import sinon from 'sinon';
 import type SdInput from './input.js';
@@ -486,6 +487,30 @@ describe('<sd-input>', () => {
       el.setRangeText('hello');
 
       await el.updateComplete;
+    });
+  });
+
+  describe('when type="search"', () => {
+    it('should emit sd-search when the user clicks the search button', async () => {
+      const el = await fixture<SdInput>(html` <sd-input type="search"></sd-input> `);
+      const searchHandler = sinon.spy();
+      const searchButton = el.shadowRoot!.querySelector('button')!;
+
+      el.addEventListener('sd-search', searchHandler);
+
+      searchButton.click();
+      await waitUntil(() => searchHandler.calledOnce);
+
+      expect(searchHandler).to.have.been.calledOnce;
+    });
+
+    it('should translate the search icon aria-label when the lang attribute is set', async () => {
+      const el = await fixture<SdInput>(html` <sd-input lang="de" type="search"></sd-input> `);
+      const searchIcon = el.shadowRoot!.querySelector('button')!.querySelector('sd-icon')!;
+
+      await el.updateComplete;
+
+      expect(searchIcon.getAttribute('aria-label')).to.equal('Suchen');
     });
   });
 
