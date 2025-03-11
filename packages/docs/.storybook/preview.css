@@ -11,7 +11,7 @@
 
 /* Links */
 .sbdocs.sbdocs-a,
-.sbdocs .sbdocs-content a:not(:has(code)) {
+.sbdocs .sbdocs-content a:not(:has(code)):not(:where(#root-inner *)) {
   @apply underline text-primary hover:text-primary-500 active:text-primary-800 transition-colors;
 }
 
