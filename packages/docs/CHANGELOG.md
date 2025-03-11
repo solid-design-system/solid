@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.12.4
+
+### Patch Changes
+
+- Update `sd-combobox` screenshots tests and stories with missing labels to fix a11y issues. _[`#1936`](https://github.com/solid-design-system/solid/pull/1936) [`0c42bc3`](https://github.com/solid-design-system/solid/commit/0c42bc397337c2dd4ecad37bd391feb09c8b1165) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.12.3
 
 ### Patch Changes
