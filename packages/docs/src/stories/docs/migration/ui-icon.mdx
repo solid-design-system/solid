@@ -6,9 +6,9 @@ import { Meta } from '@storybook/blocks';
 
 The new `sd-icon` is designed to replace the `ui-icon`. Instead of mainly providing content via attributes, the `sd-icon` component uses slots to allow for more flexibility and customization.
 
-## ⚙️ Attributes
+## Attributes
 
-### ✨ New Attributes
+### New Attributes
 
 #### [color]
 
@@ -25,7 +25,7 @@ The `src` attribute allows you to fetch and set an icon from any URL.
 
 The `label` attribute offers a way to describe the icon for screen readers.
 
-### 🔀 Updated Attributes
+### Updated Attributes
 
 #### [icon, type, variant]
 
@@ -38,9 +38,9 @@ Ensure your resolver functions correctly. See the examples in the `sd-icon` docu
 
 <hr />
 
-## ✍️ CSS Variables
+## CSS Variables
 
-### ❌ Removed CSS variables
+### Removed CSS variables
 
 The following CSS variables have been removed from the new sd-icon component:
 
@@ -48,12 +48,12 @@ The following CSS variables have been removed from the new sd-icon component:
 
 <hr />
 
-## 💪 Additional Changes
+## Additional Changes
 
-### ℹ️ Independent from `global-resources`
+### Independent from `global-resources`
 
 There is no longer a need to import `global-resources` with the icon-provider + JSONs containing a list of icons. Instead, you implement your own resolver. This change enhances flexibility and performance. Refer to the `sd-icon` documentation for implementation details.
 
-### ℹ️ Flexible Size and Color Handling
+### Flexible Size and Color Handling
 
 The `size` and `color` attributes are inherited from the parent's `font-size` and `(text-)color` properties.
