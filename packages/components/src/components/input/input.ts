@@ -281,9 +281,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   }
 
   private handleSearchClick(event: MouseEvent) {
-    this.value = '';
     this.emit('sd-search');
-
     event.stopPropagation();
   }
 
@@ -683,7 +681,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               : ''}
             ${this.type === 'search'
               ? html`
-                  <button class="flex items-center sd-interactive ml-2" type="button" @click=${this.handleSearchClick}>
+                  <button
+                    class=${cx('flex items-center sd-interactive', iconMarginLeft)}
+                    type="button"
+                    @click=${this.handleSearchClick}
+                  >
                     <sd-icon
                       class=${cx(iconColor, iconSize)}
                       library="system"

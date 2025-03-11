@@ -1,7 +1,6 @@
 import '../../../dist/solid-components';
 import { expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
 import { getFormControls, serialize } from '../../utilities/form.js';
-
 import { sendKeys } from '@web/test-runner-commands'; // must come from the same module
 import sinon from 'sinon';
 import type SdInput from './input.js';
