@@ -1,5 +1,37 @@
 # @solid-design-system/docs
 
+## 1.11.6
+
+### Patch Changes
+
+- Skipped `aria-required-parent` rule in accessibility tests for `sd-option`. This is already validated in tests for `sd-optgroup` or `sd-select`. Also included a missing `aria-label` attribute. _[`#1937`](https://github.com/solid-design-system/solid/pull/1937) [`947b5bc`](https://github.com/solid-design-system/solid/commit/947b5bc9483dc475784a5bcb368fd0f0a69474c3) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.11.5
+
+### Patch Changes
+
+- Implement `templateRenderer` on `generateTemplate` options to have better control of how stories are rendered. _[`#1955`](https://github.com/solid-design-system/solid/pull/1955) [`1b03e45`](https://github.com/solid-design-system/solid/commit/1b03e459950d33a7836c0d4524742870f3c5df9a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Fix `sd-container` a11y contrast issues.
+
+## 1.11.4
+
+### Patch Changes
+
+- Skipped `aria-required-parent` violation in accessibility automatic tests. This test is not relevant in this context since we only want to show the isolated component and not in the context of its real use which would be wrapped in a `sd-tab-group` component. This use case is already validated in other stories like `variant` or `active`. _[`#1945`](https://github.com/solid-design-system/solid/pull/1945) [`7efae4d`](https://github.com/solid-design-system/solid/commit/7efae4d273f771dfe1b6e2aa8ed350fb230de8b4) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.11.3
+
+### Patch Changes
+
+- Add missing alt attributes on `sd-copyright` stories. _[`#1950`](https://github.com/solid-design-system/solid/pull/1950) [`5ba05c9`](https://github.com/solid-design-system/solid/commit/5ba05c9dbddc985d7ffd4b009aa3d3d35ea1f6a6) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.11.2
+
+### Patch Changes
+
+- Improve storybook theme to align with brand and address some accessibility issues. _[`#1941`](https://github.com/solid-design-system/solid/pull/1941) [`49e8de0`](https://github.com/solid-design-system/solid/commit/49e8de066f6d2eb3dc77cc5dbfc50e1a3be66df5) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.11.1
 
 ### Patch Changes
