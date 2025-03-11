@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 4.3.0
+
+### Minor Changes
+
+- Added new functionality to the `sd-input` for type="search" and improved the component accessibility. _[`#1934`](https://github.com/solid-design-system/solid/pull/1934) [`b8f1d87`](https://github.com/solid-design-system/solid/commit/b8f1d879b7974fe81633d08d66e3605ab9eae139) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Search icon button is interactive.
+  - Trigger `sd-search` event when search button on `sd-input type="search"` is clicked.
+  - Added a translatable label to the search icon for the `sd-input type="search"`.
+
 ## 4.2.8
 
 ### Patch Changes
@@ -10,8 +20,9 @@
   - `sd-select` border color when focused and visually-disabled
 
 ### 📈 Stats
-* Uncompressed: 413 KB (+1 KB / +0%)
-* Gzipped: 97 KB (unchanged)
+
+- Uncompressed: 413 KB (+1 KB / +0%)
+- Gzipped: 97 KB (unchanged)
 
 ## 4.2.7
 

@@ -9,9 +9,8 @@ import {
 import { userEvent } from '@storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
-import type SdInput from '../../../../components/src/components/input/input';
 
-const { argTypes, args, parameters } = storybookDefaults('sd-input');
+const { argTypes, parameters } = storybookDefaults('sd-input');
 const { generateTemplate } = storybookTemplate('sd-input');
 const { overrideArgs } = storybookHelpers('sd-input');
 const { generateScreenshotStory } = storybookUtilities;
@@ -19,8 +18,8 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-input/Screenshots: sd-input',
   component: 'sd-input',
-  tags: ['!autodocs', 'skip-a11y'],
-  args,
+  tags: ['!autodocs'],
+  args: overrideArgs([{ type: 'attribute', name: 'label', value: 'Label' }]),
   argTypes: {
     ...argTypes,
     'type-attr': {
@@ -256,7 +255,7 @@ export const Sizes = {
 export const StyleOnValid = {
   name: 'Style on Valid',
   args: overrideArgs([
-    { type: 'attribute', name: 'value', value: 'valu' },
+    { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'label', value: 'Label' },
     { type: 'attribute', name: 'help-text', value: 'help-text' },
     { type: 'attribute', name: 'clearable', value: true },
@@ -405,6 +404,18 @@ export const Types = {
               { type: 'attribute', name: 'name', value: 'url field' },
               { type: 'attribute', name: 'placeholder', value: 'https://www.union-investment.de/' },
               { type: 'attribute', name: 'help-text', value: 'validate with url format' }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'number' },
+              { type: 'attribute', name: 'label', value: 'Spin Buttons' },
+              { type: 'attribute', name: 'min', value: 0 },
+              { type: 'attribute', name: 'max', value: 100 },
+              { type: 'attribute', name: 'spin-buttons', value: 'true' }
             ],
             args
           })}
@@ -689,9 +700,10 @@ export const Slots = {
               title: 'slot=...',
               values: [
                 {
-                  value: `<div slot='${slot}' class="slot slot--border slot--background h-6 ${
-                    slot === 'label' || slot === 'help-text' ? 'w-20' : 'w-6'
-                  }"></div>`,
+                  value: `<div slot='${slot}'
+                   class="slot slot--border slot--background h-6 ${
+                     slot === 'label' || slot === 'help-text' ? 'w-20' : 'w-6'
+                   }">${slot === 'label' ? 'Label' : ''}</div>`,
                   title: slot
                 }
               ]
@@ -851,60 +863,6 @@ export const Mouseless = {
   }
 };
 
-/**
- * Sample implementation of a currency stepper.
- */
-
-export const Samples = {
-  name: 'Sample: Currency Stepper',
-  render: () => {
-    return html`
-      <div class="w-[250px]">
-        <sd-input label="Currency Stepper" id="stepperSampleInput" type="number" min="0"
-          ><span slot="right" class="text-sm inline-flex items-center"
-            ><span class="text-neutral-700">EUR</span>
-            <button
-              disabled
-              id="stepDownButton"
-              @click=${() => {
-                const inputEl: SdInput = document.querySelector('#stepperSampleInput')!;
-                const stepDownButton: HTMLButtonElement = document.querySelector('#stepDownButton')!;
-                const numericValue = parseInt(inputEl.value, 10);
-                const stepDownValue = numericValue - 1;
-
-                if (stepDownValue <= 0) {
-                  stepDownButton.disabled = true;
-                  inputEl.value = '0.00';
-                } else {
-                  inputEl.stepDown();
-                  // Adjust input value to 2 decimals (currency)
-                  inputEl.value = String(parseInt(inputEl.value, 10).toFixed(2));
-                }
-              }}
-              class="ml-4 scale-[1.714] inline-flex items-center sd-interactive"
-            >
-              <sd-icon name="system/minus-circle"></sd-icon>
-            </button>
-            <button
-              id="stepUpButton"
-              @click=${() => {
-                const inputEl: SdInput = document.querySelector('#stepperSampleInput')!;
-                const stepDownButton: HTMLButtonElement = document.querySelector('#stepDownButton')!;
-                stepDownButton.disabled = false;
-                inputEl.stepUp();
-                // Adjust input value to 2 decimals (currency)
-                inputEl.value = String(parseInt(inputEl.value, 10).toFixed(2));
-              }}
-              class="ml-4 scale-[1.714] inline-flex items-center sd-interactive"
-            >
-              <sd-icon name="system/plus-circle"></sd-icon></button
-          ></span>
-        </sd-input>
-      </div>
-    `;
-  }
-};
-
 export const Combination = generateScreenshotStory([
   Default,
   Labels,
@@ -921,6 +879,5 @@ export const Combination = generateScreenshotStory([
   Slots,
   Parts,
   setCustomValidity,
-  Mouseless,
-  Samples
+  Mouseless
 ]);

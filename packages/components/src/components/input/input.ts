@@ -48,6 +48,7 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @event sd-clear - Emitted when the clear button is activated.
  * @event sd-focus - Emitted when the control gains focus.
  * @event sd-input - Emitted when the control receives input.
+ * @event sd-search - Emitted when the search button is activated.
  *
  * @csspart form-control - The form control that wraps the label, input, and help text.
  * @csspart form-control-label - The label's wrapper.
@@ -276,6 +277,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     this.emit('sd-change');
     this.input.focus();
 
+    event.stopPropagation();
+  }
+
+  private handleSearchClick(event: MouseEvent) {
+    this.emit('sd-search');
     event.stopPropagation();
   }
 
@@ -615,7 +621,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               ? html`
                   <button
                     part="clear-button"
-                    class=${cx('flex justify-center ', iconMarginLeft)}
+                    class=${cx('flex justify-center', iconMarginLeft)}
                     type="button"
                     aria-label=${this.localize.term('clearEntry')}
                     @click=${this.handleClearClick}
@@ -675,11 +681,16 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               : ''}
             ${this.type === 'search'
               ? html`
-                  <button class="flex items-center" type="button" tabindex="-1">
+                  <button
+                    class=${cx('flex items-center sd-interactive', iconMarginLeft)}
+                    type="button"
+                    @click=${this.handleSearchClick}
+                  >
                     <sd-icon
-                      class=${cx(iconColor, iconMarginLeft, iconSize)}
+                      class=${cx(iconColor, iconSize)}
                       library="system"
                       name="magnifying-glass"
+                      label=${this.localize.term('search')}
                     ></sd-icon>
                   </button>
                 `
