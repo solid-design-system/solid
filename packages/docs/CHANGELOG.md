@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 1.12.0
+
+### Minor Changes
+
+- The `sd-pagination` has arrived! 🎉 _[`#1916`](https://github.com/solid-design-system/solid/pull/1916) [`8e97181`](https://github.com/solid-design-system/solid/commit/8e97181cbc913d47fbadc1997cfe75bcaa7a9245) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Add new `sd-pagination` stories and template.
+
 ## 1.11.6
 
 ### Patch Changes
