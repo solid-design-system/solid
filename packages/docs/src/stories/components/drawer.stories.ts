@@ -110,8 +110,8 @@ export const Placement = {
   render: () => html`
     <sd-button id="placementButton">Open Drawer</sd-button>
     <div style="width: auto; height: 40vh; position: relative;">
-      <sd-drawer open placement="start" id="placementDrawer">
-        <sd-input slot="header" type="search" size="lg" placeholder="Search"></sd-input>
+      <sd-drawer open placement="start" id="placementDrawer" label="placement drawer">
+        <sd-input slot="header" type="search" size="lg" placeholder="Search" label="Search"></sd-input>
         <div class="slot slot--border slot--text h-full">Default slot</div>
         <div slot="footer" class="flex flex-col w-full gap-4">
           <sd-button variant="primary">Primary Action</sd-button>
@@ -135,7 +135,7 @@ export const NoHeader = {
   render: () => html`
     <sd-button id="noHeaderButton">Open Drawer</sd-button>
     <div style="width: auto; height: 40vh; position: relative;">
-      <sd-drawer open no-header placement="start" id="noHeaderDrawer">
+      <sd-drawer open no-header placement="start" id="noHeaderDrawer" label="no header drawer">
         <div class="slot slot--border slot--text h-full">Default slot</div>
         <div slot="footer" class="slot slot--border slot--text h-full">Footer slot</div>
       </sd-drawer>
