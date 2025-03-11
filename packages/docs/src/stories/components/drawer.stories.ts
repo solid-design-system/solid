@@ -135,7 +135,7 @@ export const NoHeader = {
   render: () => html`
     <sd-button id="noHeaderButton">Open Drawer</sd-button>
     <div style="width: auto; height: 40vh; position: relative;">
-      <sd-drawer open no-header placement="start" id="noHeaderDrawer" label="no header drawer">
+      <sd-drawer open no-header placement="start" id="noHeaderDrawer" label="No header drawer">
         <div class="slot slot--border slot--text h-full">Default slot</div>
         <div slot="footer" class="slot slot--border slot--text h-full">Footer slot</div>
       </sd-drawer>
