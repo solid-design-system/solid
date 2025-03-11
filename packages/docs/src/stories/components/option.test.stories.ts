@@ -75,7 +75,7 @@ export const DisabledCheckbox = {
           values: [false, true]
         }
       },
-      constants: [{ type: 'attribute', name: 'disabled', value: true }],
+      constants: { type: 'attribute', name: 'disabled', value: true },
       args
     });
   }
@@ -188,11 +188,6 @@ export const Parts = {
           type: 'slot',
           name: 'right',
           value: '<sd-icon slot="right" name="system/image"></sd-icon>'
-        },
-        {
-          type: 'template',
-          name: 'style',
-          value: '<style>sd-optgroup { --display-divider: none;}</style><sd-optgroup>%TEMPLATE%</sd-optgroup>'
         }
       ],
       args
