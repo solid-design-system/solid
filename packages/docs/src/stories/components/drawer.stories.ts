@@ -110,7 +110,7 @@ export const Placement = {
   render: () => html`
     <sd-button id="placementButton">Open Drawer</sd-button>
     <div style="width: auto; height: 40vh; position: relative;">
-      <sd-drawer open placement="start" id="placementDrawer" label="placement drawer">
+      <sd-drawer open placement="start" id="placementDrawer" label="Placement drawer">
         <sd-input slot="header" type="search" size="lg" placeholder="Search" label="Search"></sd-input>
         <div class="slot slot--border slot--text h-full">Default slot</div>
         <div slot="footer" class="flex flex-col w-full gap-4">
