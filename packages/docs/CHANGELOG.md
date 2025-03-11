@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 1.11.5
+
+### Patch Changes
+
+- Implement `templateRenderer` on `generateTemplate` options to have better control of how stories are rendered. _[`#1955`](https://github.com/solid-design-system/solid/pull/1955) [`1b03e45`](https://github.com/solid-design-system/solid/commit/1b03e459950d33a7836c0d4524742870f3c5df9a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Fix `sd-container` a11y contrast issues.
+
 ## 1.11.4
 
 ### Patch Changes
