@@ -583,7 +583,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               part="input"
               id="input"
               class=${cx(
-                'min-w-0 flex-grow focus:outline-none bg-transparent placeholder-neutral-700',
+                'min-w-0 flex-grow focus:outline-none bg-transparent',
+                this.visuallyDisabled || this.disabled ? 'placeholder-neutral-500' : 'placeholder-neutral-700',
                 this.size === 'sm' ? 'h-6' : 'h-8',
                 textSize,
                 this.visuallyDisabled && 'cursor-not-allowed'
