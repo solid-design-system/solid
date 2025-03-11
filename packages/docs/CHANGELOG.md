@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.12.6
+
+### Patch Changes
+
+- Fixed accessibility violation in `sd-table` templates. _[`#1963`](https://github.com/solid-design-system/solid/pull/1963) [`aebb0de`](https://github.com/solid-design-system/solid/commit/aebb0de7f2757e8ca82800d6258f745b93812bd4) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.12.5
 
 ### Patch Changes
