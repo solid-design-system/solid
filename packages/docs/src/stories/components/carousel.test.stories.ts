@@ -87,7 +87,18 @@ export const Inverted = {
       },
       args,
       options: {
-        templateBackgrounds: { alternate: 'y', colors: ['rgb(var(--sd-color-primary, 0 53 142))', 'white'] }
+        templateBackgrounds: { alternate: 'y', colors: ['rgb(var(--sd-color-primary, 0 53 142))', 'white'] },
+        templateRenderer: ({ attributes, slot }) => {
+          const attrs = Object.entries(attributes)
+            .map(([attr, value]) => `${attr}='${value}'`)
+            .join(' ');
+
+          return `
+            <sd-carousel ${attrs}>
+              ${attributes.inverted ? slot?.replaceAll('class="slot', 'class="slot slot--inverted') : slot}
+            </sd-carousel>
+          `;
+        }
       }
     });
   }
