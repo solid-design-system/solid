@@ -278,6 +278,11 @@ export const storybookTemplate = (customElementTag: string) => {
        * Background color of the table.
        */
       templateBackground?: string;
+      templateRenderer?: (params: {
+        attributes: { classes?: string } & Record<string, unknown>;
+        template?: string;
+        slot?: string;
+      }) => string;
       /**
        * Background colors of the table. This can be used to alternate the background color of the table rows or columns.
        */
@@ -291,7 +296,28 @@ export const storybookTemplate = (customElementTag: string) => {
   }) => {
     const template = (args: any) => {
       // a) Web Components
+      const slotContent = args['default-slot'] || '';
+
       if (manifest?.name.startsWith('Sd')) {
+        if (options?.templateRenderer) {
+          const attributes = Object.fromEntries(
+            Object.entries(args)
+              .filter(([attr]) => attr.endsWith('-attr'))
+              .map(([attr, value]) => {
+                return [attr.replace('-attr', ''), value];
+              })
+              .filter(([, value]) => (typeof value === 'boolean' && !value ? false : true))
+          );
+
+          return unsafeStatic(
+            options.templateRenderer({
+              attributes,
+              slot: slotContent,
+              template: options.templateContent || `<${manifest.tagName} class="%CLASSES%">%SLOT%</${manifest.tagName}>`
+            })
+          );
+        }
+
         return theTemplate(args);
       }
       // b) CSS Styles
@@ -323,8 +349,6 @@ export const storybookTemplate = (customElementTag: string) => {
           {} as { [key: string]: boolean }
         );
 
-      const slotContent = args['default-slot'] || '';
-
       // Compute the classes object
       const classes = { [customElementTag]: true, ...classesObj };
 
@@ -334,6 +358,16 @@ export const storybookTemplate = (customElementTag: string) => {
         .map(key => key.replace('-attr', ''))
         .join(' ')
         .trim();
+
+      if (options?.templateRenderer) {
+        return unsafeStatic(
+          options.templateRenderer({
+            attributes: { classes: classesAsString },
+            slot: slotContent,
+            template: options.templateContent || '<div class="%CLASSES%">%SLOT%</div>'
+          })
+        );
+      }
 
       if (options?.templateContent) {
         // Replace placeholders in the provided template content
@@ -400,6 +434,9 @@ export const storybookTemplate = (customElementTag: string) => {
         }
         .story-template td {
           text-align: center;
+        }
+        .story-template td:empty {
+          width: 0;
         }
         .story-template th,
         .story-template td {
@@ -506,7 +543,9 @@ export const storybookTemplate = (customElementTag: string) => {
                             <span><code>${yAxis.title || yAxis.name}</code></span>
                           </th>`
                         : ''}
-                      <th><code>${yValue.title || yValue}</code></th>
+                      ${typeof (yValue.title || yValue) === 'boolean' || yValue.title || yValue
+                        ? html`<th><code>${yValue.title || yValue}</code></th>`
+                        : html`<td></td>`}
                       ${(xAxis?.values || ['']).map((xValue: any) => {
                         return html`
                           <td class="template template-x-${xAxis?.values?.indexOf(xValue) || 0 + 1} template-y-${

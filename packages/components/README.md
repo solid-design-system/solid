@@ -7,9 +7,9 @@
 
 Solid Components provide a robust foundation for Union Investment's digital interfaces. Built with three core principles:
 
-1. 🌟 **Consistent & usable**
-2. 🧩 **Flexible & reusable**
-3. 🛠️ **Reliable & maintainable**
+1. **Consistent & usable**
+2. **Flexible & reusable**
+3. **Reliable & maintainable**
 
 Check out the [full documentation](https://solid-design-system.fe.union-investment.de/docs/) for detailed information.
 
