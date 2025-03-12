@@ -39,11 +39,6 @@ export default {
       type: 'attribute',
       name: 'active-step',
       value: `1`
-    },
-    {
-      type: 'attribute',
-      name: 'label',
-      value: 'Aria Label'
     }
   ]),
   argTypes,
@@ -73,7 +68,20 @@ export const Orientation = {
       axis: {
         y: { type: 'attribute', name: 'orientation' }
       },
-      args
+      args,
+      options: {
+        templateRenderer: ({ attributes, slots }) => {
+          const attrs = Object.entries(attributes)
+            .map(([attr, value]) => `${attr}='${value}'`)
+            .join(' ');
+
+          const slotted = Object.entries(slots ?? {})
+            .map(([, slot]) => slot)
+            .join('\n');
+
+          return `<sd-step-group ${attrs} label=${attributes.orientation}>${slotted}</sd-step-group>`;
+        }
+      }
     });
   },
   decorators: [
@@ -101,7 +109,20 @@ export const notInteractive = {
         x: { type: 'attribute', name: 'not-interactive' },
         y: { type: 'attribute', name: 'size' }
       },
-      args
+      args,
+      options: {
+        templateRenderer: ({ attributes, slots }) => {
+          const attrs = Object.entries(attributes)
+            .map(([attr, value]) => `${attr}='${value}'`)
+            .join(' ');
+
+          const slotted = Object.entries(slots ?? {})
+            .map(([, slot]) => slot)
+            .join('\n');
+
+          return `<sd-step-group ${attrs} label="${attributes.size}-${attributes['not-interactive']}">${slotted}</sd-step-group>`;
+        }
+      }
     });
   },
   decorators: [
@@ -121,6 +142,20 @@ export const notInteractive = {
  */
 export const Parts = {
   name: 'Parts',
+  tags: ['skip-a11y-[landmark-unique]'],
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'landmark-unique',
+            selector: '.parts-template',
+            enabled: false
+          }
+        ]
+      }
+    }
+  },
   render: () => {
     return generateTemplate({
       axis: {
@@ -160,6 +195,11 @@ export const Parts = {
           type: 'attribute',
           name: 'active-step',
           value: `1`
+        },
+        {
+          type: 'attribute',
+          name: 'class',
+          value: 'parts-template'
         }
       ])
     });
@@ -289,12 +329,8 @@ export const SampleNotInteractive = {
   }
 };
 
-export const Combination = generateScreenshotStory([
-  Default,
-  Orientation,
-  notInteractive,
-  Parts,
-  Mouseless,
-  SetActiveStep,
-  SampleNotInteractive
-]);
+export const Combination = generateScreenshotStory(
+  [Default, Orientation, notInteractive, Parts, Mouseless, SetActiveStep, SampleNotInteractive],
+  '',
+  ['skip-a11y-[landmark-unique]']
+);

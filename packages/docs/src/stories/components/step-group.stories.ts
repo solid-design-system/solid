@@ -76,7 +76,7 @@ export const Size = {
   name: 'Size',
   render: () => html`
     <div class="flex flex-col space-y-12">
-      <sd-step-group size="lg" orientation="horizontal" active-step="1" class="w-full">
+      <sd-step-group size="lg" orientation="horizontal" active-step="1" class="w-full" label="Size Label">
         <sd-step size="lg" orientation="horizontal" state="default">
           <p slot="label">Step 1</p>
         </sd-step>
@@ -119,7 +119,7 @@ export const Orientation = {
   name: 'Orientation',
   render: () => html`
     <div class="flex flex-col space-y-12">
-      <sd-step-group size="lg" orientation="horizontal" active-step="1" class="w-full">
+      <sd-step-group size="lg" orientation="horizontal" active-step="1" class="w-full" label="Orientation Label">
         <sd-step size="lg" orientation="horizontal" state="default">
           <p slot="label">Step 1</p>
         </sd-step>
