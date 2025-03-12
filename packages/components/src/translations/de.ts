@@ -25,7 +25,7 @@ const translation: Translation = {
     if (num === 0) return '';
     return `Optionen ausgewählt (${num})`;
   },
-  openTranscript: 'Abschrift öffnen',
+  openTranscript: 'Transkript öffnen',
   optionGroup: 'Optionsgruppe',
   pauseAudio: 'Audio pausieren',
   playAudio: 'Audio abspielen',
@@ -38,7 +38,7 @@ const translation: Translation = {
   resize: 'Größe ändern',
   scrollToEnd: 'Zum Ende scrollen',
   search: 'Suchen',
-  seekBar: 'Bar suchen',
+  seekBar: 'Schieberegler für Suche',
   scrollToStart: 'Zum Anfang scrollen',
   selectAColorFromTheScreen: 'Farbe vom Bildschirm auswählen',
   selectDefaultPlaceholder: 'Bitte auswählen',
@@ -48,7 +48,7 @@ const translation: Translation = {
   slideNum: (slide, count) => `Folie ${slide} von ${count}`,
   tagsSelected: 'Optionen ausgewählt',
   toggleColorFormat: 'Farbformat umschalten',
-  transcriptIsOpen: 'Abschrift ist offen',
+  transcriptIsOpen: 'Transkript ist offen',
   unmute: 'Unmute'
 };
 
