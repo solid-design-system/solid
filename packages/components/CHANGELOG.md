@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.4.2
+
+### Patch Changes
+
+- Fix german translations used in the `sd-audio` component. _[`#1987`](https://github.com/solid-design-system/solid/pull/1987) [`d7bfbe3`](https://github.com/solid-design-system/solid/commit/d7bfbe39cf5fa38d1478f1fc7990fe57f377ed81) [@smfonseca](https://github.com/smfonseca)_
+
 ## 4.4.1
 
 ### Patch Changes
