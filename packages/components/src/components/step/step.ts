@@ -159,24 +159,23 @@ export default class SdStep extends SolidElement {
               this.current && 'bg-accent border-none text-white'
             )}
           >
-        <slot
-                    name="circle-content"
-                    class=${cx(
-                      !this.disabled &&
-                        !this.current &&
-                        !this.notInteractive &&
-                        'text-primary group-hover:text-primary-500 group-hover:fill-primary-500',
-                      this.notInteractive && 'text-primary',
-                      this.size === 'lg' ? 'text-lg' : 'text-sm'
-                    )}
-                  >
-
-                  ${
-                    !this.disabled && !this.current && !this.notInteractive
-                      ? html` <sd-icon name="status-check" library="system"></sd-icon>`
-                      : html`${this.index}`
-                  }
-                  </slot>
+            <slot
+              name="circle-content"
+              class=${cx(
+                !this.disabled &&
+                  !this.current &&
+                  !this.notInteractive &&
+                  'text-primary group-hover:text-primary-500 group-hover:fill-primary-500',
+                this.notInteractive && 'text-primary',
+                this.size === 'lg' ? 'text-lg' : 'text-sm'
+              )}
+            >
+              ${
+                !this.disabled && !this.current && !this.notInteractive
+                  ? html` <sd-icon name="status-check" library="system"></sd-icon>`
+                  : html`${this.index}`
+              }
+            </slot>
           </${tag}>
           ${
             this.noTail
@@ -202,7 +201,7 @@ export default class SdStep extends SolidElement {
             <slot name="label">${this.label}</slot>
           </div>
           <div part="description" id="description" class=${cx('sd-paragraph sd-paragraph--size-sm', this.disabled && '!text-neutral-700')}>
-          ${this.description || html`<slot></slot>`}
+            ${this.description || html`<slot></slot>`}
           </div>
         </div>
       </div>
