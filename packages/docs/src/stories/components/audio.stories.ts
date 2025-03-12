@@ -17,7 +17,7 @@ const { generateTemplate } = storybookTemplate('sd-audio');
 export default {
   title: 'Components/sd-audio',
   component: 'sd-audio',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   args,
   argTypes,
   parameters: { ...parameters },

@@ -25,7 +25,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Styles/sd-chip/Screenshots: sd-chip',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-chip',
   parameters: {
     ...parameters,
