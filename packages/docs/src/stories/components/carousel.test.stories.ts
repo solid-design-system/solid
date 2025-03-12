@@ -93,13 +93,9 @@ export const Inverted = {
             .map(([attr, value]) => `${attr}='${value}'`)
             .join(' ');
 
-          const slotted = Object.entries(slots ?? {})
-            .map(([, slot]) => slot)
-            .join('\n');
-
           return `
             <sd-carousel ${attrs}>
-              ${attributes.inverted ? slotted?.replaceAll('class="slot', 'class="slot slot--inverted') : slotted}
+              ${attributes.inverted ? slots?.default?.replaceAll('class="slot', 'class="slot slot--inverted') : slots?.default}
             </sd-carousel>
           `;
         }

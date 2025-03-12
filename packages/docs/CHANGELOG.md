@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.12.9
+
+### Patch Changes
+
+- Fix `sd-carousel` screenshot test regression. _[`#1989`](https://github.com/solid-design-system/solid/pull/1989) [`5e1e882`](https://github.com/solid-design-system/solid/commit/5e1e8824c1e6f9addc47f21f445cfe7e7a67b6bc) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.12.8
 
 ### Patch Changes
