@@ -12,7 +12,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-audio/Screenshots: sd-audio',
   component: 'sd-audio',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   args,
   argTypes,
   parameters: { ...parameters, controls: { disable: true } },
