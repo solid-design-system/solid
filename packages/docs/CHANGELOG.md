@@ -1,5 +1,21 @@
 # @solid-design-system/docs
 
+## 1.12.9
+
+### Patch Changes
+
+- Fix `sd-carousel` screenshot test regression. _[`#1989`](https://github.com/solid-design-system/solid/pull/1989) [`5e1e882`](https://github.com/solid-design-system/solid/commit/5e1e8824c1e6f9addc47f21f445cfe7e7a67b6bc) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.12.8
+
+### Patch Changes
+
+- Improve `sd-carousel` a11y: _[`#1935`](https://github.com/solid-design-system/solid/pull/1935) [`1c54e1c`](https://github.com/solid-design-system/solid/commit/1c54e1ce286f64a7ad7f575918b9952961938646) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Improve template a11y by adding the attributes `role="region"` and `aria-label`.
+  - Add accessibility hint regarding `role="region"` and `aria-label`.
+  - Fix inverted stories slot colors to improve a11y.
+
 ## 1.12.7
 
 ### Patch Changes
