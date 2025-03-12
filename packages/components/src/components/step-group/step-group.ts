@@ -36,6 +36,10 @@ export default class SdStepGroup extends SolidElement {
   /** Determines if the step-group is not interactive. */
   @property({ type: Boolean, reflect: true, attribute: 'not-interactive' }) notInteractive = false;
 
+  /**
+   * A label to use in the step-group. This won't be displayed on the screen, but it will be announced by assistive
+   * devices when interacting with the control and is strongly recommended.
+   */
   @property({ type: String }) label = '';
 
   connectedCallback() {
