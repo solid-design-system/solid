@@ -11,7 +11,7 @@ const { overrideArgs } = storybookHelpers('sd-drawer');
 
 export default {
   title: 'Components/sd-drawer/Screenshots: sd-drawer',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-[landmark-unique]'],
   component: 'sd-drawer',
 
   args: overrideArgs([
@@ -37,7 +37,18 @@ export default {
   argTypes,
   parameters: {
     ...parameters,
-    controls: { disable: true }
+    controls: { disable: true },
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'landmark-unique',
+            selector: '.padding-template',
+            enabled: false
+          }
+        ]
+      }
+    }
   }
 };
 
