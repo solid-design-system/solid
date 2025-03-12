@@ -18,7 +18,7 @@ const { generateTemplate } = storybookTemplate('sd-step-group');
  */
 export default {
   title: 'Components/sd-step-group',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   component: 'sd-step-group',
   args: overrideArgs([
     {
@@ -41,6 +41,11 @@ export default {
       type: 'attribute',
       name: 'active-step',
       value: `1`
+    },
+    {
+      type: 'attribute',
+      name: 'label',
+      value: 'Label'
     }
   ]),
   argTypes,
@@ -71,7 +76,7 @@ export const Size = {
   name: 'Size',
   render: () => html`
     <div class="flex flex-col space-y-12">
-      <sd-step-group size="lg" orientation="horizontal" active-step="1" class="w-full">
+      <sd-step-group size="lg" orientation="horizontal" active-step="1" class="w-full" label="Size Label">
         <sd-step size="lg" orientation="horizontal" state="default">
           <p slot="label">Step 1</p>
         </sd-step>
@@ -114,7 +119,7 @@ export const Orientation = {
   name: 'Orientation',
   render: () => html`
     <div class="flex flex-col space-y-12">
-      <sd-step-group size="lg" orientation="horizontal" active-step="1" class="w-full">
+      <sd-step-group size="lg" orientation="horizontal" active-step="1" class="w-full" label="Orientation Label">
         <sd-step size="lg" orientation="horizontal" state="default">
           <p slot="label">Step 1</p>
         </sd-step>
