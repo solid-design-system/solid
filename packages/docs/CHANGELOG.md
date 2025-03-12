@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.12.15
+
+### Patch Changes
+
+- Fix `sd-map-marker` a11y issues by setting the label attribute. _[`#1991`](https://github.com/solid-design-system/solid/pull/1991) [`6800cd7`](https://github.com/solid-design-system/solid/commit/6800cd77873a3f03e71229a51acfe908c2749f9a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.12.14
 
 ### Patch Changes

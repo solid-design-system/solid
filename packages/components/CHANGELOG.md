@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.5.0
+
+### Minor Changes
+
+- Implement `label` attribute on `sd-map-marker` to improve a11y. _[`#1991`](https://github.com/solid-design-system/solid/pull/1991) [`6800cd7`](https://github.com/solid-design-system/solid/commit/6800cd77873a3f03e71229a51acfe908c2749f9a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 4.4.2
 
 ### Patch Changes
