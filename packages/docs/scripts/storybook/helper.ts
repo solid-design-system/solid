@@ -695,8 +695,7 @@ export const storybookUtilities = {
    */
   generateScreenshotStory: (
     stories: { name: string; render: (args: any) => TemplateResult }[],
-    options: string | screenshotStoryOptions = 'auto',
-    a11yRules: string[] = []
+    options: string | screenshotStoryOptions = 'auto'
   ): StoryObj => {
     const usedOptions = !isNaN(options as number)
       ? ({ heightPx: options } as screenshotStoryOptions)
@@ -708,7 +707,6 @@ export const storybookUtilities = {
       .join(' ');
 
     return {
-      tags: a11yRules,
       parameters: {
         chromatic: {
           ...storyBookPreviewConfig?.parameters?.chromatic,

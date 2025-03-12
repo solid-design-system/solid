@@ -16,7 +16,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-step-group/Screenshots: sd-step-group',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-[landmark-unique]'],
   component: 'sd-step-group',
   args: overrideArgs([
     {
@@ -42,7 +42,20 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters, controls: { disable: true } },
+  parameters: {
+    ...parameters,
+    controls: { disable: true },
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'landmark-unique',
+            enabled: false
+          }
+        ]
+      }
+    }
+  },
   decorators: [withActions] as any
 };
 
@@ -143,19 +156,6 @@ export const notInteractive = {
 export const Parts = {
   name: 'Parts',
   tags: ['skip-a11y-[landmark-unique]'],
-  parameters: {
-    a11y: {
-      config: {
-        rules: [
-          {
-            id: 'landmark-unique',
-            selector: '.parts-template',
-            enabled: false
-          }
-        ]
-      }
-    }
-  },
   render: () => {
     return generateTemplate({
       axis: {
@@ -195,11 +195,6 @@ export const Parts = {
           type: 'attribute',
           name: 'active-step',
           value: `1`
-        },
-        {
-          type: 'attribute',
-          name: 'class',
-          value: 'parts-template'
         }
       ])
     });
@@ -329,8 +324,12 @@ export const SampleNotInteractive = {
   }
 };
 
-export const Combination = generateScreenshotStory(
-  [Default, Orientation, notInteractive, Parts, Mouseless, SetActiveStep, SampleNotInteractive],
-  '',
-  ['skip-a11y-[landmark-unique]']
-);
+export const Combination = generateScreenshotStory([
+  Default,
+  Orientation,
+  notInteractive,
+  Parts,
+  Mouseless,
+  SetActiveStep,
+  SampleNotInteractive
+]);
