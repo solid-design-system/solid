@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.12.16
+
+### Patch Changes
+
+- Fix `sd-dropdown` screenshot tests a11y issue. _[`#1990`](https://github.com/solid-design-system/solid/pull/1990) [`15d594a`](https://github.com/solid-design-system/solid/commit/15d594a94645308f38fb0aa362ea5831a2f925b6) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.12.15
 
 ### Patch Changes
