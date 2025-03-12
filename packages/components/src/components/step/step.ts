@@ -1,5 +1,6 @@
 import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { property } from 'lit/decorators.js';
@@ -33,6 +34,8 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-step')
 export default class SdStep extends SolidElement {
+  private readonly hasSlotController = new HasSlotController(this, 'label', '[default]');
+
   /** The step's size. */
   @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
 
@@ -104,6 +107,10 @@ export default class SdStep extends SolidElement {
   render() {
     const isLink = this.isLink();
     const tag = this.notInteractive ? literal`div` : isLink ? literal`a` : literal`button`;
+    const hasLabelSlot = this.hasSlotController.test('label');
+    const hasLabel = this.label ? true : hasLabelSlot;
+    const hasDefaultSlot = this.hasSlotController.test('[default]');
+    const hasDescription = this.description ? true : hasDefaultSlot;
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
@@ -142,8 +149,8 @@ export default class SdStep extends SolidElement {
             href=${ifDefined(isLink ? this.href : undefined)}
             aria-disabled=${ifDefined(this.disabled || undefined)}
             aria-current=${this.current ? 'step' : undefined}
-            aria-labelledby=${this.notInteractive ? undefined : ifDefined('label')}
-            aria-describedby=${this.notInteractive ? undefined : ifDefined('description')}
+            aria-labelledby=${ifDefined(this.notInteractive || !hasLabel ? undefined : 'label')}
+            aria-describedby=${ifDefined(this.notInteractive || !hasDescription ? undefined : 'description')}
             class=${cx(
               'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
               this.disabled
