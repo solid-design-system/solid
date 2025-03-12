@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 export default {
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   title: 'Templates/Drawer',
   parameters: {
     design: {
@@ -48,7 +48,7 @@ export const Default = {
       }
     </style>
     <sd-button onclick="openDrawer()">Open Drawer</sd-button>
-    <sd-drawer open placement="end">
+    <sd-drawer open placement="end" label="First drawer">
       <sd-button slot="header" variant="tertiary" class="hidden" id="return-button" onclick="handleSecondLevel()">
         <sd-icon name="system/arrow-left" label="return"></sd-icon>
       </sd-button>
