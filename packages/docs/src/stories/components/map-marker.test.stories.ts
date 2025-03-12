@@ -1,17 +1,30 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
-import { storybookDefaults, storybookTemplate, storybookUtilities } from '../../../scripts/storybook/helper';
+import {
+  storybookDefaults,
+  storybookHelpers,
+  storybookTemplate,
+  storybookUtilities
+} from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-map-marker');
 const { generateTemplate } = storybookTemplate('sd-map-marker');
+const { overrideArgs } = storybookHelpers('sd-map-marker');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-map-marker/Screenshots: sd-map-marker',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-map-marker',
   parameters: { ...parameters, controls: { disable: true } },
+  args: overrideArgs([
+    {
+      type: 'attribute',
+      name: 'label',
+      value: 'Label'
+    }
+  ]),
   argTypes,
   decorators: [withActions] as any
 };
@@ -48,6 +61,11 @@ export const VariantCluster = {
           type: 'attribute',
           name: 'variant',
           value: 'cluster'
+        },
+        {
+          type: 'attribute',
+          name: 'label',
+          value: undefined
         }
       ]
     });
@@ -116,17 +134,17 @@ export const Slots = {
   render: () => {
     return html`
       <div class="flex gap-4 items-center">
-        <sd-map-marker variant="place">
+        <sd-map-marker variant="place" label="Label">
           <span class="slot slot--border slot--background">
             <sd-icon name="content/image" color="primary"></sd-icon>
           </span>
         </sd-map-marker>
-        <sd-map-marker variant="place">
+        <sd-map-marker variant="place" label="Label">
           <span class="slot slot--border slot--background">
             <img class="" src="images/logo-unioninvestment-sm.svg" alt="Logo" />
           </span>
         </sd-map-marker>
-        <sd-map-marker variant="cluster">
+        <sd-map-marker variant="cluster" label="Label">
           <span class="slot slot--border slot--background"> 8 </span>
         </sd-map-marker>
       </div>
