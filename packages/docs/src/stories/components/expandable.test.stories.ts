@@ -17,7 +17,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-expandable/Screenshots: sd-expandable',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-expandable',
   args: overrideArgs([
     { type: 'slot', name: 'default', value: '<div class="slot slot--border slot--text h-16">Default slot</div>' }
@@ -75,7 +75,7 @@ export const Slots = {
                   value:
                     slot === 'default'
                       ? `<div class="slot slot--border slot--background slot--text h-full">Default slot</div>`
-                      : `<div slot='${slot}' class="slot slot--border slot--background slot--text h-12"></div>`,
+                      : `<div slot='${slot}' class="slot slot--border slot--background slot--text h-12">${slot}</div>`,
                   title: slot
                 }
               ]
