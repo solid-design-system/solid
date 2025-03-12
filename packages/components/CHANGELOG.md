@@ -1,5 +1,14 @@
 # @solid-design-system/components
 
+## 4.4.1
+
+### Patch Changes
+
+- Improved `sd-drawer` accessibility. _[`#1943`](https://github.com/solid-design-system/solid/pull/1943) [`f1197c5`](https://github.com/solid-design-system/solid/commit/f1197c5a777a2b330b5773eb3deef83bcda8c32e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Make it a section fixing duplicated landmarks issues.
+  - Fix issue with roles at body part.
+
 ## 4.4.0
 
 ### Minor Changes
@@ -13,8 +22,9 @@
   - Apply `aria-labelledby` and `aria-describedby` only when the component is interactive.
 
 ### 📈 Stats
-* Uncompressed: 414 KB (+1 KB / +0%)
-* Gzipped: 97 KB (unchanged)
+
+- Uncompressed: 414 KB (+1 KB / +0%)
+- Gzipped: 97 KB (unchanged)
 
 ## 4.3.1
 

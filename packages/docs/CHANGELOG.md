@@ -1,5 +1,15 @@
 # @solid-design-system/docs
 
+## 1.12.13
+
+### Patch Changes
+
+- Improved `sd-drawer` accessibility. _[`#1943`](https://github.com/solid-design-system/solid/pull/1943) [`f1197c5`](https://github.com/solid-design-system/solid/commit/f1197c5a777a2b330b5773eb3deef83bcda8c32e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add labels to stories.
+
+  Improved slots color contrast by adding a darker shade to the border and text color.
+
 ## 1.12.12
 
 ### Patch Changes
