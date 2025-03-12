@@ -84,4 +84,30 @@ describe('<sd-map-marker>', () => {
       expect(el.shadowRoot!.querySelector('a')).to.exist;
     });
   });
+
+  describe('render correct label', () => {
+    it('when label is set', async () => {
+      const el = await fixture<SdMapMarker>(html` <sd-map-marker label="Label"></sd-map-marker> `);
+
+      const button = el.shadowRoot!.querySelector('[part="base"]');
+      expect(button!.getAttribute('aria-label')).to.eq('Label');
+      expect(button!.getAttribute('aria-labelledby')).to.be.null;
+    });
+
+    it('when label is not set', async () => {
+      const el = await fixture<SdMapMarker>(html` <sd-map-marker></sd-map-marker> `);
+
+      const button = el.shadowRoot!.querySelector('[part="base"]');
+      expect(button!.getAttribute('aria-label')).to.be.null;
+      expect(button!.getAttribute('aria-labelledby')).to.eq('content');
+    });
+
+    it('when is not interactive', async () => {
+      const el = await fixture<SdMapMarker>(html` <sd-map-marker not-interactive label="Label"></sd-map-marker> `);
+
+      const button = el.shadowRoot!.querySelector('[part="base"]');
+      expect(button!.getAttribute('aria-label')).to.be.null;
+      expect(button!.getAttribute('aria-labelledby')).to.be.null;
+    });
+  });
 });
