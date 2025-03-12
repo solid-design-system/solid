@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.12.10
+
+### Patch Changes
+
+- Unskip a11y tests on `sd-accordion-group` and fix mouseless story exception. _[`#1988`](https://github.com/solid-design-system/solid/pull/1988) [`b002021`](https://github.com/solid-design-system/solid/commit/b0020217ca66183bec609c8bf8af783e718fc8c7) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.12.9
 
 ### Patch Changes
