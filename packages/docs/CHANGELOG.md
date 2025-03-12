@@ -1,5 +1,15 @@
 # @solid-design-system/docs
 
+## 1.12.8
+
+### Patch Changes
+
+- Improve `sd-carousel` a11y: _[`#1935`](https://github.com/solid-design-system/solid/pull/1935) [`1c54e1c`](https://github.com/solid-design-system/solid/commit/1c54e1ce286f64a7ad7f575918b9952961938646) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Improve template a11y by adding the attributes `role="region"` and `aria-label`.
+  - Add accessibility hint regarding `role="region"` and `aria-label`.
+  - Fix inverted stories slot colors to improve a11y.
+
 ## 1.12.7
 
 ### Patch Changes

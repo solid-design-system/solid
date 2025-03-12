@@ -1,5 +1,13 @@
 # @solid-design-system/components
 
+## 4.3.1
+
+### Patch Changes
+
+- Removed carousel automatic `role="region"` so users can choose whenever an `sd-carousel` should have it or not. _[`#1935`](https://github.com/solid-design-system/solid/pull/1935) [`1c54e1c`](https://github.com/solid-design-system/solid/commit/1c54e1ce286f64a7ad7f575918b9952961938646) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  For more information on how to use `role="region"`, please refer to the [Carousel template](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/templates-carousel--docs).
+
 ## 4.3.0
 
 ### Minor Changes
