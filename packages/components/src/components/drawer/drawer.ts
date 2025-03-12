@@ -323,7 +323,6 @@ export default class SdDrawer extends SolidElement {
           role="dialog"
           aria-modal="true"
           aria-labelledby="label"
-          aria-describedby="content"
           tabindex="0"
         >
           <p class="sr-only" id="label">${this.label}</p>
@@ -357,7 +356,7 @@ export default class SdDrawer extends SolidElement {
                 class="absolute top-2 right-2"
                 ><sd-icon label=${this.localize.term('close')} name="close" library="system"></sd-icon
               ></sd-button>`}
-          <div id="content" part="body" class="flex-auto block px-4" tabindex="0">
+          <div part="body" class="flex-auto block px-4" tabindex="0">
             <slot></slot>
           </div>
           <footer part="footer" class=${cx(this.hasSlotController.test('footer') ? 'text-left p-4' : 'hidden')}>
