@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.12.12
+
+### Patch Changes
+
+- Add missing `alt` attribute in the `sd-video` default story and unskip a11y tests. _[`#1971`](https://github.com/solid-design-system/solid/pull/1971) [`cb043bf`](https://github.com/solid-design-system/solid/commit/cb043bfb3b3a4dc2af443d78979c44cd00b93995) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.12.11
 
 ### Patch Changes
