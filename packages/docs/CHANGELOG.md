@@ -1,5 +1,17 @@
 # @solid-design-system/docs
 
+## 1.12.11
+
+### Patch Changes
+
+- Improved `sd-step-group` and `sd-step-group template` accessibility. _[`#1966`](https://github.com/solid-design-system/solid/pull/1966) [`c49e5f8`](https://github.com/solid-design-system/solid/commit/c49e5f8bd1999ed26f75551b4d41f7d82da947a6) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add aria label to all stories.
+
+  Improved `sd-step` accessibility.
+
+  - Skipped `aria-required-parent` violation in accessibility automatic tests. This test is not relevant in this context since we only want to show the isolated component and not in the context of its real use which would be wrapped in a `sd-step-group` component.
+
 ## 1.12.10
 
 ### Patch Changes
