@@ -11,7 +11,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-spinner/Screenshots: sd-spinner',
   component: 'sd-spinner',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   args,
   argTypes,
   parameters: { ...parameters, controls: { disable: true } },

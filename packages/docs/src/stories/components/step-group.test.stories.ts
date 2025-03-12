@@ -16,7 +16,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-step-group/Screenshots: sd-step-group',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs', 'skip-a11y-[landmark-unique]'],
   component: 'sd-step-group',
   args: overrideArgs([
     {
@@ -42,7 +42,20 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters, controls: { disable: true } },
+  parameters: {
+    ...parameters,
+    controls: { disable: true },
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'landmark-unique',
+            enabled: false
+          }
+        ]
+      }
+    }
+  },
   decorators: [withActions] as any
 };
 
@@ -68,7 +81,20 @@ export const Orientation = {
       axis: {
         y: { type: 'attribute', name: 'orientation' }
       },
-      args
+      args,
+      options: {
+        templateRenderer: ({ attributes, slots }) => {
+          const attrs = Object.entries(attributes)
+            .map(([attr, value]) => `${attr}='${value}'`)
+            .join(' ');
+
+          const slotted = Object.entries(slots ?? {})
+            .map(([, slot]) => slot)
+            .join('\n');
+
+          return `<sd-step-group ${attrs} label=${attributes.orientation}>${slotted}</sd-step-group>`;
+        }
+      }
     });
   },
   decorators: [
@@ -96,7 +122,20 @@ export const notInteractive = {
         x: { type: 'attribute', name: 'not-interactive' },
         y: { type: 'attribute', name: 'size' }
       },
-      args
+      args,
+      options: {
+        templateRenderer: ({ attributes, slots }) => {
+          const attrs = Object.entries(attributes)
+            .map(([attr, value]) => `${attr}='${value}'`)
+            .join(' ');
+
+          const slotted = Object.entries(slots ?? {})
+            .map(([, slot]) => slot)
+            .join('\n');
+
+          return `<sd-step-group ${attrs} label="${attributes.size}-${attributes['not-interactive']}">${slotted}</sd-step-group>`;
+        }
+      }
     });
   },
   decorators: [
@@ -116,6 +155,7 @@ export const notInteractive = {
  */
 export const Parts = {
   name: 'Parts',
+  tags: ['skip-a11y-[landmark-unique]'],
   render: () => {
     return generateTemplate({
       axis: {

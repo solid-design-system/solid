@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 export default {
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   title: 'Templates/Step Group',
   parameters: {
     chromatic: { disableSnapshot: true },
@@ -18,7 +18,13 @@ export default {
  */
 export const NonInteractiveStepGroup = {
   render: () => html`
-    <sd-step-group size="lg" orientation="horizontal" active-step="0" not-interactive>
+    <sd-step-group
+      label="Non-Interactive Step Group"
+      size="lg"
+      orientation="horizontal"
+      active-step="0"
+      not-interactive
+    >
       <sd-step size="lg" orientation="horizontal" state="default">
         <p slot="label">Make an appointment</p>
       </sd-step>
@@ -37,7 +43,13 @@ export const NonInteractiveStepGroup = {
 export const NonInteractiveStepGroupWithIcon = {
   name: 'Non-Interactive Step Group with Icon',
   render: () => html`
-    <sd-step-group size="lg" orientation="horizontal" active-step="0" not-interactive>
+    <sd-step-group
+      label="Non-Interactive Step Group with Icon"
+      size="lg"
+      orientation="horizontal"
+      active-step="0"
+      not-interactive
+    >
       <sd-step size="lg" orientation="horizontal" state="default">
         <sd-icon slot="circle-content" name="content/calendar" class="h-12 w-12"></sd-icon>
         <p slot="label">1. Make an appointment</p>

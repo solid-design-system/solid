@@ -15,7 +15,7 @@ const { generateTemplate } = storybookTemplate('sd-tooltip');
  */
 export default {
   title: 'Components/sd-tooltip',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   component: 'sd-tooltip',
   args: overrideArgs([
     {

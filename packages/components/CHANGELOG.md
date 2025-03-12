@@ -1,5 +1,21 @@
 # @solid-design-system/components
 
+## 4.4.0
+
+### Minor Changes
+
+- Improved `sd-step-group` accessibility. _[`#1966`](https://github.com/solid-design-system/solid/pull/1966) [`c49e5f8`](https://github.com/solid-design-system/solid/commit/c49e5f8bd1999ed26f75551b4d41f7d82da947a6) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add a `label` attribute to assign an `aria-label` to the component.
+
+  Improved `sd-step` accessibility.
+
+  - Apply `aria-labelledby` and `aria-describedby` only when the component is interactive.
+
+### 📈 Stats
+* Uncompressed: 414 KB (+1 KB / +0%)
+* Gzipped: 97 KB (unchanged)
+
 ## 4.3.1
 
 ### Patch Changes

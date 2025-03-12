@@ -18,7 +18,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-tag/Screenshots: sd-tag',
   component: 'sd-tag',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Tag' }),
   argTypes,
   parameters: { ...parameters, controls: { disable: true } },
