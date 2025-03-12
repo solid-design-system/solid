@@ -45,7 +45,7 @@ export default {
     {
       type: 'attribute',
       name: 'label',
-      value: 'Aria Label'
+      value: 'Label'
     }
   ]),
   argTypes,
