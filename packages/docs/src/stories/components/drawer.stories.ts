@@ -17,7 +17,7 @@ const { overrideArgs } = storybookHelpers('sd-drawer');
 export default {
   title: 'Components/sd-drawer',
   component: 'sd-drawer',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   args: overrideArgs([
     {
       type: 'slot',
@@ -35,7 +35,9 @@ export default {
       value: `<div slot='footer' class="slot slot--border slot--text h-12">Footer slot</div>`
     },
     { type: 'attribute', name: 'open', value: true },
-    { type: 'attribute', name: 'contained', value: true }
+    { type: 'attribute', name: 'contained', value: true },
+    { type: 'attribute', name: 'label', value: 'Label' },
+    { type: 'attribute', name: 'id', value: 'default-drawer' }
   ]),
   argTypes,
   parameters: {
@@ -63,10 +65,16 @@ export const Default = {
   name: 'Default',
   render: (args: any) => {
     return html` <div style="width: auto; height: 40vh; position: relative;">
-      ${generateTemplate({
-        args
-      })}
-    </div>`;
+        <sd-button id="open-default-drawer">Open Drawer</sd-button>
+        ${generateTemplate({
+          args
+        })}
+      </div>
+      <script>
+        document.querySelector('#open-default-drawer').addEventListener('click', () => {
+          document.querySelector('#default-drawer').show();
+        });
+      </script>`;
   }
 };
 
@@ -109,8 +117,8 @@ export const Placement = {
   render: () => html`
     <sd-button id="placementButton">Open Drawer</sd-button>
     <div style="width: auto; height: 40vh; position: relative;">
-      <sd-drawer open placement="start" id="placementDrawer">
-        <sd-input slot="header" type="search" size="lg" placeholder="Search"></sd-input>
+      <sd-drawer open placement="start" id="placementDrawer" label="Placement drawer">
+        <sd-input slot="header" type="search" size="lg" placeholder="Start typing" label="Search"></sd-input>
         <div class="slot slot--border slot--text h-full">Default slot</div>
         <div slot="footer" class="flex flex-col w-full gap-4">
           <sd-button variant="primary">Primary Action</sd-button>
@@ -134,7 +142,7 @@ export const NoHeader = {
   render: () => html`
     <sd-button id="noHeaderButton">Open Drawer</sd-button>
     <div style="width: auto; height: 40vh; position: relative;">
-      <sd-drawer open no-header placement="start" id="noHeaderDrawer">
+      <sd-drawer open no-header placement="start" id="noHeaderDrawer" label="No header drawer">
         <div class="slot slot--border slot--text h-full">Default slot</div>
         <div slot="footer" class="slot slot--border slot--text h-full">Footer slot</div>
       </sd-drawer>
