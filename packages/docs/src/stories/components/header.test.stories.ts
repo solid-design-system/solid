@@ -15,7 +15,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-header/Screenshots: sd-header',
-  tags: ['!autodocs', 'skip-a11y-[landmark-no-duplicate-banner]', 'skip-a11y-[landmark-unique]'],
+  tags: ['!autodocs', 'skip-a11y-[landmark-no-duplicate-banner, landmark-unique]'],
   component: 'sd-header',
   args: overrideArgs([
     {
