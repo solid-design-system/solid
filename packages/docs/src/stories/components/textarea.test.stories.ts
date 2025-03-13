@@ -17,9 +17,9 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-textarea/Screenshots: sd-textarea',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-textarea',
-  args,
+  args: overrideArgs([{ type: 'attribute', name: 'label', value: 'Label' }]),
   argTypes: {
     ...argTypes
   },
@@ -343,9 +343,9 @@ export const Slots = {
               title: 'slot=...',
               values: [
                 {
-                  value: `<div slot='${slot}' class="slot slot--border slot--background h-6 ${
+                  value: `<div slot='${slot}' class="slot slot--border slot--background h-6 slot--text ${
                     slot === 'label' || slot === 'help-text' ? 'w-20' : 'w-6'
-                  }"></div>`,
+                  }">${slot === 'label' ? 'Label' : ''}</div>`,
                   title: slot
                 }
               ]
