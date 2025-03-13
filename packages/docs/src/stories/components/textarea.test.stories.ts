@@ -10,7 +10,7 @@ import { userEvent } from '@storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 import { withActions } from '@storybook/addon-actions/decorator';
 
-const { argTypes, args, parameters } = storybookDefaults('sd-textarea');
+const { argTypes, parameters } = storybookDefaults('sd-textarea');
 const { generateTemplate } = storybookTemplate('sd-textarea');
 const { overrideArgs } = storybookHelpers('sd-textarea');
 const { generateScreenshotStory } = storybookUtilities;
