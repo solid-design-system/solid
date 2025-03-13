@@ -502,7 +502,7 @@ export const storybookTemplate = (customElementTag: string) => {
           };
           return options?.templateBackgrounds?.alternate === 'y'
             ? `
-                .${uuid}.story-template tbody tr.template-row:nth-of-type(${calculateNth(index)}) td.template {
+                .${uuid}.story-template tbody tr.template-row:nth-of-type(${calculateNth(index + 1)}) td.template {
                   background: ${color};
                 }
               `
