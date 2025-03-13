@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.12.18
+
+### Patch Changes
+
+- Fix `sd-textarea` a11y tests by adding missing label in screenshot tests. _[`#2003`](https://github.com/solid-design-system/solid/pull/2003) [`06d0802`](https://github.com/solid-design-system/solid/commit/06d0802d5f42039414caff32ff8f36848904a7c6) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.12.17
 
 ### Patch Changes
