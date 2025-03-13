@@ -56,7 +56,7 @@ const content = html`<h1>Solid Prose</h1>
     It adds a new <code>prose</code> class that you can slap on any block of vanilla HTML content and turn it into a
     beautiful, well-formatted document:
   </p>
-  <pre><code class="language-html">&lt;article class="prose"&gt;
+  <pre tabindex="0"><code class="language-html">&lt;article class="prose"&gt;
   &lt;h1&gt;Garlic bread with cheese: What the science tells us&lt;/h1&gt;
   &lt;p&gt;
     For years parents have espoused the health benefits of eating garlic bread with cheese to their
@@ -696,7 +696,7 @@ export const Inverted = {
   render: (args: { [k: string]: any }) => {
     return generateTemplate({
       axis: {
-        x: [{ type: 'attribute', name: 'sd-prose--inverted', values: [false, true] }]
+        x: [{ type: 'attribute', name: 'sd-prose--inverted', values: [true, false] }]
       },
       options: {
         templateContent: html` <div class="p-4">
