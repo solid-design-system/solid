@@ -230,11 +230,6 @@ export const IconList = {
  */
 export const HorizontalIconList = {
   name: 'Horizontal Icon List',
-  args: overrideArgs({
-    type: 'slot',
-    name: 'default',
-    value: html``
-  }),
   render: (args: any) => {
     return generateTemplate({
       axis: {
