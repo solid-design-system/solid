@@ -498,11 +498,11 @@ export const storybookTemplate = (customElementTag: string) => {
 
         ${options?.templateBackgrounds?.colors.map((color, index) => {
           const calculateNth = (index: number) => {
-            return `${options?.templateBackgrounds?.colors.length}n + ${index}`;
+            return `${options?.templateBackgrounds?.colors.length}n + ${index + 1}`;
           };
           return options?.templateBackgrounds?.alternate === 'y'
             ? `
-                .${uuid}.story-template tbody tr.template-row:nth-of-type(${calculateNth(index + 1)}) td.template {
+                .${uuid}.story-template tbody tr.template-row:nth-of-type(${calculateNth(index)}) td.template {
                   background: ${color};
                 }
               `
@@ -555,7 +555,7 @@ export const storybookTemplate = (customElementTag: string) => {
                         : ''}
                       ${typeof (yValue.title || yValue) === 'boolean' || yValue.title || yValue
                         ? html`<th><code>${yValue.title || yValue}</code></th>`
-                        : html`<td></td>`}
+                        : html`<div></div>`}
                       ${(xAxis?.values || ['']).map((xValue: any) => {
                         return html`
                           <td class="template template-x-${xAxis?.values?.indexOf(xValue) || 0 + 1} template-y-${
