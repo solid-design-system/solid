@@ -1,5 +1,26 @@
 # @solid-design-system/components
 
+## 4.5.0
+
+### Minor Changes
+
+- Implement `label` attribute on `sd-map-marker` to improve a11y. _[`#1991`](https://github.com/solid-design-system/solid/pull/1991) [`6800cd7`](https://github.com/solid-design-system/solid/commit/6800cd77873a3f03e71229a51acfe908c2749f9a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.4.2
+
+### Patch Changes
+
+- Fix german translations used in the `sd-audio` component. _[`#1987`](https://github.com/solid-design-system/solid/pull/1987) [`d7bfbe3`](https://github.com/solid-design-system/solid/commit/d7bfbe39cf5fa38d1478f1fc7990fe57f377ed81) [@smfonseca](https://github.com/smfonseca)_
+
+## 4.4.1
+
+### Patch Changes
+
+- Improved `sd-drawer` accessibility. _[`#1943`](https://github.com/solid-design-system/solid/pull/1943) [`f1197c5`](https://github.com/solid-design-system/solid/commit/f1197c5a777a2b330b5773eb3deef83bcda8c32e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Make it a section fixing duplicated landmarks issues.
+  - Fix issue with roles at body part.
+
 ## 4.4.0
 
 ### Minor Changes
@@ -13,8 +34,9 @@
   - Apply `aria-labelledby` and `aria-describedby` only when the component is interactive.
 
 ### 📈 Stats
-* Uncompressed: 414 KB (+1 KB / +0%)
-* Gzipped: 97 KB (unchanged)
+
+- Uncompressed: 414 KB (+1 KB / +0%)
+- Gzipped: 97 KB (unchanged)
 
 ## 4.3.1
 

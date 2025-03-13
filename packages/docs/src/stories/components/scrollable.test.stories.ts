@@ -28,7 +28,7 @@ const defaultSlotContent = `
 
 export default {
   title: 'Components/sd-scrollable/Screenshots: sd-scrollable',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-scrollable',
   args: overrideArgs({
     type: 'slot',
@@ -104,10 +104,10 @@ export const CustomIcon = {
           <p>Customize the content and attributes as needed.</p>
         </div>
         <div slot="icon-start">
-          <sd-icon name="system/image"></sd-icon>
+          <sd-icon name="system/image" label="Start"></sd-icon>
         </div>
         <div slot="icon-end">
-          <sd-icon name="system/image"></sd-icon>
+          <sd-icon name="system/image" label="End"></sd-icon>
         </div>
       </sd-scrollable>
     `;

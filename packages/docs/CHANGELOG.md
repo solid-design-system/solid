@@ -1,5 +1,33 @@
 # @solid-design-system/docs
 
+## 1.12.16
+
+### Patch Changes
+
+- Fix `sd-dropdown` screenshot tests a11y issue. _[`#1990`](https://github.com/solid-design-system/solid/pull/1990) [`15d594a`](https://github.com/solid-design-system/solid/commit/15d594a94645308f38fb0aa362ea5831a2f925b6) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.12.15
+
+### Patch Changes
+
+- Fix `sd-map-marker` a11y issues by setting the label attribute. _[`#1991`](https://github.com/solid-design-system/solid/pull/1991) [`6800cd7`](https://github.com/solid-design-system/solid/commit/6800cd77873a3f03e71229a51acfe908c2749f9a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.12.14
+
+### Patch Changes
+
+- Unskip a11y tests and add missing label in `custom icon` screenshot test for `sd-scrollable`. _[`#1972`](https://github.com/solid-design-system/solid/pull/1972) [`fbe0cca`](https://github.com/solid-design-system/solid/commit/fbe0cca956658fe9e67fc097e7e801dff7ab1de2) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.12.13
+
+### Patch Changes
+
+- Improved `sd-drawer` accessibility. _[`#1943`](https://github.com/solid-design-system/solid/pull/1943) [`f1197c5`](https://github.com/solid-design-system/solid/commit/f1197c5a777a2b330b5773eb3deef83bcda8c32e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add labels to stories.
+
+  Improved slots color contrast by adding a darker shade to the border and text color.
+
 ## 1.12.12
 
 ### Patch Changes
