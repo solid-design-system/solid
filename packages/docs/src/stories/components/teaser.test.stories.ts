@@ -316,7 +316,7 @@ export const Slots = {
                   value:
                     slot === 'default'
                       ? `<div class="slot slot--border slot--background h-16"></div>`
-                      : `<div slot='${slot}' class="slot slot--border slot--background h-16">${slot}</div>`,
+                      : `<div slot='${slot}' class="slot slot--border slot--background h-16"></div>`,
                   title: slot
                 }
               ]
