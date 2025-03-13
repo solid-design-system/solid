@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.12.17
+
+### Patch Changes
+
+- Unskip a11y test and add missing button name in `slots` screenshot test. _[`#1992`](https://github.com/solid-design-system/solid/pull/1992) [`824b95d`](https://github.com/solid-design-system/solid/commit/824b95d64150f053e180d67a09b44513aacd2477) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.12.16
 
 ### Patch Changes
