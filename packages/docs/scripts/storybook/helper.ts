@@ -315,6 +315,7 @@ export const storybookTemplate = (customElementTag: string) => {
               .map(([slot, value]) => {
                 return [slot.replace('-slot', ''), value];
               })
+              .filter(([slot, value]) => value !== `<span slot="${slot}"></span>`)
           ) as Record<string, string>;
 
           return unsafeStatic(
