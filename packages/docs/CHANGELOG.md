@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.12.19
+
+### Patch Changes
+
+- Fix `sd-quickfact` a11y on screeshot tests and fix mouseless test. _[`#1996`](https://github.com/solid-design-system/solid/pull/1996) [`c14d943`](https://github.com/solid-design-system/solid/commit/c14d9434673905862ef6f9740af55f878183820f) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.12.18
 
 ### Patch Changes
