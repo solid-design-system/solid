@@ -51,7 +51,7 @@ const labelConstant: ConstantDefinition = { type: 'attribute', name: 'label', va
 // Stories
 export default {
   title: 'Components/sd-select/Screenshots: sd-select',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-select',
   args: overrideArgs([
     threeOptionsConstant,
@@ -259,7 +259,7 @@ export const Slots = {
                       ? `<div class="slot slot--border slot--background h-8 w-full"></div>`
                       : `<div slot='${slot}' class="slot slot--border slot--background h-6 ${
                           slot === 'label' || slot === 'help-text' ? 'w-20' : 'w-6'
-                        }"></div>`,
+                        }">${slot === 'label' ? 'Label' : ''}</div>`,
                   title: slot
                 }
               ]
@@ -540,7 +540,7 @@ export const setCustomValidity = {
     return html`
       <!-- block submit and show alert instead -->
       <form id="validationForm" class="flex flex-col gap-2">
-        <sd-select id="custom-input" style-on-valid>
+        <sd-select id="custom-input" style-on-valid label="Label">
           <sd-option value="option-1">Option 1</sd-option>
           <sd-option value="option-2">Option 2</sd-option>
           <sd-option value="option-3">Option 3</sd-option>
