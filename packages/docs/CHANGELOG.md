@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.12.20
+
+### Patch Changes
+
+- Fix `sd-select` a11y tests in screenshot tests by adding missing labels. _[`#2004`](https://github.com/solid-design-system/solid/pull/2004) [`f44f18f`](https://github.com/solid-design-system/solid/commit/f44f18f83266cfadd40a7d69a4cb10804ba6d2a9) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.12.19
 
 ### Patch Changes
