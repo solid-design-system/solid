@@ -17,7 +17,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-expandable/Screenshots: sd-expandable',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-expandable',
   args: overrideArgs([
     { type: 'slot', name: 'default', value: '<div class="slot slot--border slot--text h-16">Default slot</div>' }
@@ -50,7 +50,18 @@ export const Inverted = {
       },
       args,
       options: {
-        templateBackgrounds: { alternate: 'y', colors: ['rgb(var(--sd-color-primary, 0 53 142))', 'white'] }
+        templateBackgrounds: { alternate: 'y', colors: ['rgb(var(--sd-color-primary, 0 53 142))', 'white'] },
+        templateRenderer: ({ attributes, slots }) => {
+          const attrs = Object.entries(attributes)
+            .map(([attr, value]) => `${attr}='${value}'`)
+            .join(' ');
+
+          return `
+            <sd-expandable ${attrs}>
+              ${attributes.inverted ? slots?.default?.replaceAll('class="slot', 'class="slot slot--inverted') : slots?.default}
+            </sd-expandable>
+          `;
+        }
       }
     });
   }
@@ -75,7 +86,7 @@ export const Slots = {
                   value:
                     slot === 'default'
                       ? `<div class="slot slot--border slot--background slot--text h-full">Default slot</div>`
-                      : `<div slot='${slot}' class="slot slot--border slot--background slot--text h-12"></div>`,
+                      : `<div slot='${slot}' class="slot slot--border slot--background slot--text h-12">${slot}</div>`,
                   title: slot
                 }
               ]
@@ -197,7 +208,16 @@ export const Samples = {
       </div>
       <div class="background-sample bg-primary">
         ${generateTemplate({
-          args: { ...args, inverted: true }
+          args: { ...args, inverted: true },
+          options: {
+            templateRenderer: ({ slots }) => {
+              return `
+                <sd-expandable inverted>
+                  ${slots?.default?.replaceAll('class="slot', 'class="slot slot--inverted')}
+                </sd-expandable>
+              `;
+            }
+          }
         })}
       </div>
       <div class="w-full p-4 mb-8 bg-neutral-100 text-left text-[14px] font-bold box-border">Lead Text Example</div>
