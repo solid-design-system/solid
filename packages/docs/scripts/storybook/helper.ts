@@ -498,7 +498,7 @@ export const storybookTemplate = (customElementTag: string) => {
 
         ${options?.templateBackgrounds?.colors.map((color, index) => {
           const calculateNth = (index: number) => {
-            return `${options?.templateBackgrounds?.colors.length}n + ${index + 1}`;
+            return `${options?.templateBackgrounds?.colors.length}n + ${index}`;
           };
           return options?.templateBackgrounds?.alternate === 'y'
             ? `
