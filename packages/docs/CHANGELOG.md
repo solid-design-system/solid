@@ -1,5 +1,29 @@
 # @solid-design-system/docs
 
+## 1.12.20
+
+### Patch Changes
+
+- Fix `sd-select` a11y tests in screenshot tests by adding missing labels. _[`#2004`](https://github.com/solid-design-system/solid/pull/2004) [`f44f18f`](https://github.com/solid-design-system/solid/commit/f44f18f83266cfadd40a7d69a4cb10804ba6d2a9) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.12.19
+
+### Patch Changes
+
+- Fix `sd-quickfact` a11y on screeshot tests and fix mouseless test. _[`#1996`](https://github.com/solid-design-system/solid/pull/1996) [`c14d943`](https://github.com/solid-design-system/solid/commit/c14d9434673905862ef6f9740af55f878183820f) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.12.18
+
+### Patch Changes
+
+- Fix `sd-textarea` a11y tests by adding missing label in screenshot tests. _[`#2003`](https://github.com/solid-design-system/solid/pull/2003) [`06d0802`](https://github.com/solid-design-system/solid/commit/06d0802d5f42039414caff32ff8f36848904a7c6) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.12.17
+
+### Patch Changes
+
+- Unskip a11y test and add missing button name in `slots` screenshot test. _[`#1992`](https://github.com/solid-design-system/solid/pull/1992) [`824b95d`](https://github.com/solid-design-system/solid/commit/824b95d64150f053e180d67a09b44513aacd2477) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.12.16
 
 ### Patch Changes
