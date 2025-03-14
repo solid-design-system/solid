@@ -1,9 +1,10 @@
 ---
 name: Release Notes Subtask
 about: Template to create a subtask for the release notes in each iteration.
-title: 'docs: 📚 create release notes for iteration #[NUMBER]'
+title: 'docs: 📚 create release notes for iteration #'
 labels: 'documentation, 🎨 figma, 🔧 code, Subtask'
 assignees: ''
+type: 'Task'
 
 ---
 
@@ -21,7 +22,7 @@ In order to publish our release notes by the end of every iteration in MS Teams 
 
 ## DoR
 - [x] Item has business value
-- [ ] Item has been estimated by the team
+- [x] Item has been estimated by the team
 - [x] Item is clear and well-defined
 - [x] Item dependencies have been identified
 
