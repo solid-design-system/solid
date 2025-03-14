@@ -186,10 +186,10 @@ export const SampleA = {
             <!-- bottom-right-area start !-->
             <div class="-mr-4 flex items-center">
               <sd-navigation-item>
-                <div class="w-4 h-4 flex items-center"><sd-icon title="Unsere weiteren Auftritte" name="system/website" class="text-xl absolute -ml-[4px]" label="Other locations"></sd-icon></div>
+                <div class="w-4 h-4 flex items-center"><sd-icon name="system/website" class="text-xl absolute -ml-[4px]" label="Other locations"></sd-icon></div>
               </sd-navigation-item>
               <sd-navigation-item>
-                <div class="w-4 h-4 flex items-center"><sd-icon title="Suche" name="system/magnifying-glass" class="text-xl absolute -ml-[4px]" label="Search"></sd-icon></div>
+                <div class="w-4 h-4 flex items-center"><sd-icon name="system/magnifying-glass" class="text-xl absolute -ml-[4px]" label="Search"></sd-icon></div>
               </sd-navigation-item>
               <sd-navigation-item>
                 <div class="flex items-center gap-2"><sd-icon name="system/user" class="text-xl"></sd-icon><span>Mein Depot</span></div>
@@ -313,10 +313,10 @@ export const SampleB = {
             <!-- bottom-right-area start !-->
             <div class="flex items-center">
               <sd-navigation-item>
-                <div class="w-4 h-4 flex items-center"><sd-icon title="Unsere weiteren Auftritte" name="system/website" class="text-xl absolute -ml-[4px]" label="Other Locations"></sd-icon></div>
+                <div class="w-4 h-4 flex items-center"><sd-icon name="system/website" class="text-xl absolute -ml-[4px]" label="Other Locations"></sd-icon></div>
               </sd-navigation-item>
               <sd-navigation-item>
-                <div class="w-4 h-4 flex items-center"><sd-icon title="Suche" name="system/magnifying-glass" class="text-xl absolute -ml-[4px]" label="Search"></sd-icon></div>
+                <div class="w-4 h-4 flex items-center"><sd-icon name="system/magnifying-glass" class="text-xl absolute -ml-[4px]" label="Search"></sd-icon></div>
               </sd-navigation-item>
             <!-- bottom-right-area end !-->
             </div>
