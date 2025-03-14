@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.5.1
+
+### Patch Changes
+
+- Implement `role="group"` on `sd-teaser` to improve a11y. _[`#1997`](https://github.com/solid-design-system/solid/pull/1997) [`1c13853`](https://github.com/solid-design-system/solid/commit/1c138533f7aa444def6c0ae1f0d3cd94bb9492b3) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 4.5.0
 
 ### Minor Changes
