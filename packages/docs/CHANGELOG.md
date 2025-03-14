@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 1.12.21
+
+### Patch Changes
+
+- Fix a11y tests in `sd-header` screenshots tests by adding missing label. _[`#2001`](https://github.com/solid-design-system/solid/pull/2001) [`e58ceba`](https://github.com/solid-design-system/solid/commit/e58ceba94428662ae13ef4e2ef0b3e80977a0d6a) [@smfonseca](https://github.com/smfonseca)_
+
+  In some cases (eg. Combination test) the components are added together in the same context, therefore we skip tests for the following two rules: `landmark-no-duplicate-banner` and `landmark-unique`.
+
 ## 1.12.20
 
 ### Patch Changes
