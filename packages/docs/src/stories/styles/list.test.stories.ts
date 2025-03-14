@@ -27,7 +27,7 @@ const html = String.raw;
 
 export default {
   title: 'Styles/sd-list/Screenshots: sd-list',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-list',
   parameters: {
     ...parameters,
