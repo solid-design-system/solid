@@ -37,7 +37,7 @@ export default {
       url: 'https://www.figma.com/file/DDSyYvf2q99RhiyDjy03s5/List?type=design&node-id=971-4578&mode=design&t=2UZo6NW6ErMA2G5X-0'
     }
   },
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),
+  args: overrideArgs({ type: 'slot', name: 'default', value: '<li>Lorem Ipsum</li>' }),
   argTypes
 };
 
@@ -191,24 +191,6 @@ export const UnorderedList = {
  */
 export const IconList = {
   name: 'Icon List',
-  args: overrideArgs({
-    type: 'slot',
-    name: 'default',
-    value: html`<li>
-        <sd-icon name="content/image"></sd-icon>Lorem Ipsum
-        <ul>
-          <li>
-            <sd-icon name="content/image"></sd-icon>Dolor sit
-            <ul>
-              <li><sd-icon name="content/image"></sd-icon>Amet</li>
-              <li><sd-icon name="content/image"></sd-icon>Ut enim ad minim veniam, quis nostrud exercitation</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li><sd-icon name="content/image"></sd-icon>Lorem Ipsum</li>
-      <li><sd-icon name="content/image"></sd-icon>Lorem Ipsum</li>`
-  }),
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -220,9 +202,23 @@ export const IconList = {
           alternate: 'x',
           colors: ['rgb(var(--sd-color-white, 255 255 255))', 'rgb(var(--sd-color-primary, 0 53 142))']
         },
-        templateContent: html`<ul class="sd-list--icon %CLASSES%">
-          %SLOT%
-        </ul>`
+        templateRenderer: ({ attributes }) =>
+          html`<ul class="sd-list--icon ${attributes.classes}">
+            <li>
+              <sd-icon name="content/image"></sd-icon>Lorem Ipsum
+              <ul>
+                <li>
+                  <sd-icon name="content/image"></sd-icon>Dolor sit
+                  <ul>
+                    <li><sd-icon name="content/image"></sd-icon>Amet</li>
+                    <li><sd-icon name="content/image"></sd-icon>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><sd-icon name="content/image"></sd-icon>Lorem Ipsum</li>
+            <li><sd-icon name="content/image"></sd-icon>Lorem Ipsum</li>
+          </ul>`
       }
     });
   }
@@ -234,13 +230,6 @@ export const IconList = {
  */
 export const HorizontalIconList = {
   name: 'Horizontal Icon List',
-  args: overrideArgs({
-    type: 'slot',
-    name: 'default',
-    value: html`<li><sd-icon name="content/image"></sd-icon>Lorem</li>
-      <li><sd-icon name="content/image"></sd-icon>Lorem</li>
-      <li><sd-icon name="content/image"></sd-icon>Lorem</li>`
-  }),
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -252,9 +241,12 @@ export const HorizontalIconList = {
           alternate: 'x',
           colors: ['rgb(var(--sd-color-white, 255 255 255))', 'rgb(var(--sd-color-primary, 0 53 142))']
         },
-        templateContent: html`<ul class="sd-list--icon sd-list--horizontal %CLASSES%">
-          %SLOT%
-        </ul>`
+        templateRenderer: ({ attributes }) =>
+          html` <ul class="sd-list--icon sd-list--horizontal ${attributes.classes}">
+            <li><sd-icon name="content/image"></sd-icon>Lorem</li>
+            <li><sd-icon name="content/image"></sd-icon>Lorem</li>
+            <li><sd-icon name="content/image"></sd-icon>Lorem</li>
+          </ul>`
       }
     });
   }
