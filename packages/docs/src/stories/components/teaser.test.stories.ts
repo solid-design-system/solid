@@ -15,7 +15,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-teaser/Screenshots: sd-teaser',
   component: 'sd-teaser',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   args: overrideArgs([
     {
       type: 'slot',
@@ -71,7 +71,26 @@ export const VariantAndInset = {
           name: 'orientation',
           value: 'vertical'
         }
-      ]
+      ],
+      options: {
+        templateRenderer: ({ attributes, slots }) => {
+          const attrs = Object.entries(attributes)
+            .map(([attr, value]) => `${attr}='${value}'`)
+            .join(' ');
+
+          const slotted = Object.entries(slots ?? {})
+            .map(([, slot]) => slot)
+            .join('\n');
+
+          const inverted = ['primary'].includes(attributes.variant as string);
+
+          return `
+            <sd-teaser ${attrs}>
+              ${inverted ? slotted?.replaceAll('class="slot', 'class="slot slot--inverted') : slotted}
+            </sd-teaser>
+          `;
+        }
+      }
     });
   }
 };
@@ -313,17 +332,17 @@ export const Slots = {
             {
               type: 'slot',
               name: 'meta',
-              value: `<slot slot='meta'>Teaser's Meta information</slot>`
+              value: `<p slot='meta'>Teaser's Meta information</p>`
             },
             {
               type: 'slot',
               name: 'default',
-              value: `<slot>Teaser's Main content</slot>`
+              value: `<p>Teaser's Main content</p>`
             },
             {
               type: 'slot',
               name: 'headline',
-              value: `<slot slot='headline'>Teaser's Headline</slot>`
+              value: `<h2 slot='headline'>Teaser's Headline</h2>`
             },
             {
               type: 'template',

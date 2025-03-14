@@ -306,7 +306,7 @@ export const storybookTemplate = (customElementTag: string) => {
               .map(([attr, value]) => {
                 return [attr.replace('-attr', ''), value];
               })
-              .filter(([, value]) => (typeof value === 'boolean' && !value ? false : true))
+              .filter(([, value]) => value)
           );
 
           const slots = Object.fromEntries(
@@ -315,6 +315,7 @@ export const storybookTemplate = (customElementTag: string) => {
               .map(([slot, value]) => {
                 return [slot.replace('-slot', ''), value];
               })
+              .filter(([slot, value]) => value !== `<span slot="${slot}"></span>`)
           ) as Record<string, string>;
 
           return unsafeStatic(
@@ -445,9 +446,6 @@ export const storybookTemplate = (customElementTag: string) => {
         .story-template td {
           text-align: center;
         }
-        .story-template td:empty {
-          width: 0;
-        }
         .story-template th,
         .story-template td {
           padding: 16px;
@@ -555,7 +553,7 @@ export const storybookTemplate = (customElementTag: string) => {
                         : ''}
                       ${typeof (yValue.title || yValue) === 'boolean' || yValue.title || yValue
                         ? html`<th><code>${yValue.title || yValue}</code></th>`
-                        : html`<td></td>`}
+                        : html`<th><span class="sr-only">Y axis</span></th>`}
                       ${(xAxis?.values || ['']).map((xValue: any) => {
                         return html`
                           <td class="template template-x-${xAxis?.values?.indexOf(xValue) || 0 + 1} template-y-${

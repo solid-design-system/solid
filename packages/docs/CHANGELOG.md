@@ -1,5 +1,17 @@
 # @solid-design-system/docs
 
+## 1.12.23
+
+### Patch Changes
+
+- Fix `sd-teaser` screenshot tests a11y issues. _[`#1997`](https://github.com/solid-design-system/solid/pull/1997) [`1c13853`](https://github.com/solid-design-system/solid/commit/1c138533f7aa444def6c0ae1f0d3cd94bb9492b3) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.12.22
+
+### Patch Changes
+
+- Fix `sd-list` and `sd-prose` a11y issues. _[`#2005`](https://github.com/solid-design-system/solid/pull/2005) [`b592253`](https://github.com/solid-design-system/solid/commit/b5922538fe376701b1bafc58f9e09f43eaf40361) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.12.21
 
 ### Patch Changes
