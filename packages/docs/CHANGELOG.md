@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.12.22
+
+### Patch Changes
+
+- Fix `sd-list` and `sd-prose` a11y issues. _[`#2005`](https://github.com/solid-design-system/solid/pull/2005) [`b592253`](https://github.com/solid-design-system/solid/commit/b5922538fe376701b1bafc58f9e09f43eaf40361) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.12.21
 
 ### Patch Changes
