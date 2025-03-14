@@ -44,7 +44,7 @@
     "plop": "^4.0.1",
     "ts-jest": "^29.2.6",
     "ts-node": "^10.9.2",
-    "typescript": "5.4.5"
+    "typescript": "5.8.2"
   },
   "peerDependencies": {
     "@html-eslint/parser": "^0.35.0",
