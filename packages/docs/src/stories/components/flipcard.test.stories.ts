@@ -40,9 +40,7 @@ export default {
       value: `<img slot='media-back' class="object-cover h-full w-full" src='./placeholders/images/generic.jpg' alt='Generic'/>`
     }
   ]),
-
   argTypes,
-
   parameters: { ...parameters, controls: { disable: true } },
   decorators: [withActions] as any
 };
@@ -53,7 +51,21 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return generateTemplate({ args });
+    return generateTemplate({
+      args,
+      constants: [
+        {
+          type: 'slot',
+          name: 'front',
+          value: `<p slot="front" class="slot slot--border slot--text slot--inverted h-12 w-full">Front slot</p>`
+        },
+        {
+          type: 'slot',
+          name: 'back',
+          value: `<p slot="back" class="slot slot--border slot--text slot--inverted h-12 w-full">Back slot</p>`
+        }
+      ]
+    });
   }
 };
 
@@ -74,11 +86,35 @@ export const Variants = {
       args,
       constants: [
         {
+          type: 'slot',
+          name: 'back',
+          value: `<p slot="back" class="slot slot--border slot--text slot--inverted h-12 w-full">Back slot</p>`
+        },
+        {
           type: 'template',
           name: 'style',
           value: '<div style="margin-bottom: 40px">%TEMPLATE%</div>'
         }
-      ]
+      ],
+      options: {
+        templateRenderer: ({ attributes, slots }) => {
+          const attrs = Object.entries(attributes)
+            .map(([attr, value]) => `${attr}='${value}'`)
+            .join(' ');
+
+          const slotted = Object.entries(slots ?? {})
+            .map(([, slot]) => slot)
+            .join('\n');
+
+          const inverted = ['primary', 'gradient-dark'].includes(attributes['front-variant'] as string);
+
+          return `
+            <sd-flipcard ${attrs}>
+              ${inverted ? slotted?.replaceAll('class="slot', 'class="slot slot--inverted') : slotted}
+            </sd-flipcard>
+          `;
+        }
+      }
     })
 };
 
@@ -98,6 +134,16 @@ export const flipDirection = {
       },
       args,
       constants: [
+        {
+          type: 'slot',
+          name: 'front',
+          value: `<p slot="front" class="slot slot--border slot--text slot--inverted h-12 w-full">Front slot</p>`
+        },
+        {
+          type: 'slot',
+          name: 'back',
+          value: `<p slot="back" class="slot slot--border slot--text slot--inverted h-12 w-full">Back slot</p>`
+        },
         {
           type: 'template',
           name: 'style',
@@ -123,7 +169,7 @@ export const Slots = {
               title: 'slot=..',
               values: [
                 {
-                  value: `<div slot='${slot}' class="slot slot--border slot--background min-h-12 w-full h-full"></div>`,
+                  value: `<div slot='${slot}' class="slot slot--border slot--background slot--inverted min-h-12 w-full h-full"></div>`,
                   title: slot
                 }
               ]
@@ -145,6 +191,16 @@ export const Slots = {
               type: 'attribute',
               name: 'back-variant',
               value: 'gradient-dark'
+            },
+            {
+              type: 'slot',
+              name: 'front',
+              value: `<p slot="front" class="slot slot--border slot--text slot--inverted h-12 w-full">Front slot</p>`
+            },
+            {
+              type: 'slot',
+              name: 'back',
+              value: `<p slot="back" class="slot slot--border slot--text slot--inverted h-12 w-full">Back slot</p>`
             }
           ]
         });
@@ -219,6 +275,16 @@ export const Parts = {
           type: 'attribute',
           name: 'back-variant',
           value: 'gradient-dark'
+        },
+        {
+          type: 'slot',
+          name: 'front',
+          value: `<p slot="front" class="slot slot--border slot--text slot--inverted h-12 w-full">Front slot</p>`
+        },
+        {
+          type: 'slot',
+          name: 'back',
+          value: `<p slot="back" class="slot slot--border slot--text slot--inverted h-12 w-full">Back slot</p>`
         }
       ]
     });
@@ -232,7 +298,23 @@ export const Parts = {
 export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {
-    return html`<div class="mouseless">${generateTemplate({ args })}</div>`;
+    return html`<div class="mouseless">
+      ${generateTemplate({
+        args,
+        constants: [
+          {
+            type: 'slot',
+            name: 'front',
+            value: `<p slot="front" class="slot slot--border slot--text slot--inverted h-12 w-full">Front slot</p>`
+          },
+          {
+            type: 'slot',
+            name: 'back',
+            value: `<p slot="back" class="slot slot--border slot--text slot--inverted h-12 w-full">Back slot</p>`
+          }
+        ]
+      })}
+    </div>`;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {

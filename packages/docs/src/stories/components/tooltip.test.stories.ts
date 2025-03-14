@@ -159,7 +159,7 @@ export const Slots = {
               title: 'default'
             },
             {
-              value: `<div class="slot slot--border slot--background slot--text" slot='content' style="--slot-content: ''; --slot-height: 22px; --slot-width: 82px;"></div>`,
+              value: `<div class="slot slot--border slot--background slot--text slot--inverted" slot='content' style="--slot-content: ''; --slot-height: 22px; --slot-width: 82px;"></div>`,
               title: 'content'
             }
           ]
