@@ -306,7 +306,7 @@ export const storybookTemplate = (customElementTag: string) => {
               .map(([attr, value]) => {
                 return [attr.replace('-attr', ''), value];
               })
-              .filter(([, value]) => (typeof value === 'boolean' && !value ? false : true))
+              .filter(([, value]) => value)
           );
 
           const slots = Object.fromEntries(
@@ -315,6 +315,7 @@ export const storybookTemplate = (customElementTag: string) => {
               .map(([slot, value]) => {
                 return [slot.replace('-slot', ''), value];
               })
+              .filter(([slot, value]) => value !== `<span slot="${slot}"></span>`)
           ) as Record<string, string>;
 
           return unsafeStatic(

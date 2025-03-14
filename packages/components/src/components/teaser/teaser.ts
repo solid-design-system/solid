@@ -152,7 +152,7 @@ export default class SdTeaser extends SolidElement {
             </div>
           </div>
 
-          <div part="main" class=${cx(!slots['teaser-has-default'] && 'hidden')} aria-labelledby="media">
+          <div part="main" class=${cx(!slots['teaser-has-default'] && 'hidden')} role="group" aria-labelledby="media">
             <slot></slot>
           </div>
         </div>
