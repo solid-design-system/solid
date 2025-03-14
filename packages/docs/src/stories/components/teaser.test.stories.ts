@@ -342,7 +342,7 @@ export const Slots = {
             {
               type: 'slot',
               name: 'headline',
-              value: `<p slot='headline'>Teaser's Headline</p>`
+              value: `<h2 slot='headline'>Teaser's Headline</h2>`
             },
             {
               type: 'template',
