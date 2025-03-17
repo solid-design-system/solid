@@ -1,0 +1,77 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as DropdownStories from './dropdown.stories';
+
+<Meta title="Components/sd-dropdown/Overview" />
+
+  <div className="sb-unstyled">
+    <h1 className="sd-headline">Dropdown</h1>
+
+    <p className="sd-paragraph">Used to display a list of actions or options in a panel when activated.</p>
+
+    <Canvas of={DropdownStories.Default} />
+
+    <div className="flex flex-row gap-8">
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=12835-53192&t=xaDdHn9c2lPz2NiK-4" className="font-bold">Figma Library</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-sd-dropdown--docs" className="font-bold">Storybook</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Common Use Cases</h2>
+
+    <div className="sd-prose">
+      - Provide a list of items in a compact space.
+      - Display additional options or settings related to a specific item.
+      - Enable navigation through different sections or categories.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Usage Guidelines</h2>
+
+    <h3 className="sd-headline sd-headline--size-lg">Behavior</h3>
+
+    <div className="sd-prose mb-6">
+      - Avoid hiding sets of less than 4 items in dropdowns.
+      - Refrain from nesting dropdowns within each other. If nesting is strictly necessary, limit the menu to two layers to prevent complex operation and cognitive load.
+      - Keep the panel near its trigger so users understand its context.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Triggers</h3>
+
+    <div className="sd-prose mb-6">
+      - Maintain consistent styling for dropdown triggers placed at the same level or in the same group; i.e., if a trigger has both text and icon, other triggers on the same level or group should also display text and icon.
+      - Avoid truncating trigger labels if possible.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Panel Items</h3>
+
+    <div className="sd-prose mb-6">
+      - Group related panel items to make them easier to find, especially if there are many. Use a group label and <sd-link href="?path=/docs/components-sd-divider--docs">sd-divider</sd-link> to separate them visually.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Accessibility Information</h2>
+
+    <div className="sd-prose mb-6">
+      - Ensure the dropdown can be opened, navigated, and closed using the keyboard.
+      - Implement a focus lock within the dropdown menu to trap focus. When the menu is triggered via keyboard, the first item should automatically receive focus. When closed, focus should return to the dropdown button.
+      - Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Related Templates</h2>
+
+    [Dropdown](?path=/docs/templates-dropdown--docs)
+
+  </div>

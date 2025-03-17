@@ -1,0 +1,71 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as AudioStories from './audio.stories';
+
+<Meta title="Components/sd-audio/Overview" />
+
+  <div className="sb-unstyled">
+    <h1 className="sd-headline">Audio</h1>
+
+    <p className="sd-paragraph">Used to play audio files that are part of the page content.</p>
+
+    <Canvas of={AudioStories.Default} />
+
+    <div className="flex flex-row gap-8">
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=7413-2018&t=Z1FxSGWkmXG5r5sw-4" className="font-bold">Figma Library</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-sd-audio--docs" className="font-bold">Storybook</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Common Use Cases</h2>
+
+    <div className="sd-prose">
+      - Embed instructional audio to guide users through complex processes or tutorials.
+      - Promote new products, services, or events with audio content.
+      - Enable visually impaired users to access content through audio narration.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Usage Guidelines</h2>
+
+    <h3 className="sd-headline sd-headline--size-lg">Behavior</h3>
+
+    <div className="sd-prose mb-6">
+      - Avoid autoplaying audio as it can be disruptive.
+      - Provide controls to allow users to play and pause.
+      - Use appropriate formats and sizes to optimize loading times and performance.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Background</h3>
+
+    <div className="sd-prose mb-6">
+      - Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Accessibility Information</h2>
+
+    <div className="sd-prose mb-6">
+      - Provide audio descriptions to ensure all users can access the content.
+      - Ensure all player controls (play, pause, volume, speed, etc.) are fully operable using only the keyboard.
+      - Include an audio transcript to support users who are deaf, hard of hearing, or prefer reading at their own pace.
+      - Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Related Templates</h2>
+
+    [Audio](?path=/docs/templates-audio--docs)
+
+  </div>

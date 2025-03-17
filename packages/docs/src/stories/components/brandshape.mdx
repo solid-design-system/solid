@@ -1,0 +1,76 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as BrandshapeStories from './brandshape.stories';
+
+<Meta title="Components/sd-brandshape/Overview" />
+
+  <div className="sb-unstyled">
+    <h1 className="sd-headline">Brandshape</h1>
+
+    <p className="sd-paragraph">Used as a container with brand character that visually emphasizes the content.</p>
+
+    <Canvas of={BrandshapeStories.Default} />
+
+    <div className="flex flex-row gap-8">
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=12833-1774&t=xaDdHn9c2lPz2NiK-4" className="font-bold">Figma Library</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-sd-brandshape--docs" className="font-bold">Storybook</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Common Use Cases</h2>
+
+    <div className="sd-prose">
+      - As a core visual element, it conveys the company’s identity across various media and touchpoints. Visit the <sd-link href="https://cd.union-investment.de/grundlagen/Basiselemente/Markenform#" target="_blank">Corporate-Toolbox</sd-link> to discover further details on its use.
+      - Highlight a headline, create a callout inside an article or provide a container for an action and its context while reinforcing brand recognition.
+      - Use over <sd-link href="?path=/docs/styles-sd-media--docs">sd-media</sd-link> to add visual support to the brandshape’s content
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Usage Guidelines</h2>
+
+    <h3 className="sd-headline sd-headline--size-lg">Slot</h3>
+
+    <div className="sd-prose mb-6">
+      - Use the “default” slot to add content. Ensure this content is meaningful and avoid using brandshape purely for decoration.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Usage</h3>
+
+    <div className="sd-prose mb-6">
+      - Limit the number of brandshapes on a page to maintain their visual impact.
+      - Use transparent variants only when displayed on image backgrounds.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Background</h3>
+
+    <div className="sd-prose mb-6">
+      - Use light background options like white, neutral-100, or primary-100, or use a primary background when inverted.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Accessibility Information</h2>
+
+    <div className="sd-prose mb-6">
+      - Ensure sufficient colour contrast for the content displayed on the brandshape background.
+      - Verify that users can navigate to and interact with action elements within the brandshape using the keyboard.
+      - Check that accessibility features are maintained across different breakpoints.
+      - Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Related Templates</h2>
+
+    [Brandshape](?path=/story/templates-brandshape--docs)
+
+  </div>

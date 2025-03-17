@@ -1,0 +1,88 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as DrawerStories from './drawer.stories';
+
+<Meta title="Components/sd-drawer/Overview" />
+
+  <div className="sb-unstyled">
+    <h1 className="sd-headline">Drawer</h1>
+
+    <p className="sd-paragraph">Used as a panel that slides out from the side of the screen which contains a set of information or actions.</p>
+
+    <Canvas of={DrawerStories.Default} />
+
+    <div className="flex flex-row gap-8">
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=12835-51233&t=xaDdHn9c2lPz2NiK-4" className="font-bold">Figma Library</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-sd-drawer--docs" className="font-bold">Storybook</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Common Use Cases</h2>
+
+    <div className="sd-prose">
+      - Display supplementary information or options without navigating away from the main screen.
+      - Provide contextual help or guidance related to the current screen.
+      - House navigation menus on smaller devices.
+      - Present filter options, forms or settings that users can interact with without losing their place.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Usage Guidelines</h2>
+
+    <h3 className="sd-headline sd-headline--size-lg">Slots</h3>
+
+    <div className="sd-prose mb-6">
+      - Use the ”header” slot to add navigation and/or action elements if desired.
+      - Use the ”default” slot to add main content. The “default” slot is always scrollable. For simplicity, sd-scrollable is integrated into the component as a wrapper for the slot in Figma, but will need to be used in code if desired.
+      - Use the ”footer” slot to add action elements if desired. The “footer” slot is always fixed.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Content</h3>
+
+    <div className="sd-prose mb-6">
+      - Ensure the content is supplementary and does not include critical information that users must see immediately such as notifications or alerts; instead, use <sd-link href="?path=/docs/components-sd-notification--docs">sd-notification</sd-link> or <sd-link href="?path=/docs/components-sd-dialog--docs">sd-dialog</sd-link> for those purposes.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Interaction and Behavior</h3>
+
+    <div className="sd-prose mb-6">
+      - Maintain the state of the content when it is reopened.
+      - Avoid opening automatically without user interaction.
+      - Provide multiple ways to close the interface for easy dismissal, such as a close button or clicking outside of it.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Layout</h3>
+
+    <div className="sd-prose mb-6">
+      - Ensure it does not cover critical content or actions on the main screen.
+      - If using a tertiary action in the header, adjust the left padding to 0px for proper alignment.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Accessibility Information</h2>
+
+    <div className="sd-prose mb-6">
+      - Check that the drawer content is fully visible and readable, even at larger font sizes.
+      - Provide appropriate ARIA roles and properties to indicate the drawer’s state (open or closed) to screen readers.
+      - Ensure focus is managed correctly when the drawer is opened, moving focus to the first interactive element within the drawer.
+      - Allow users to close the drawer using the Escape key, always keeping the close button as well.
+      - Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Related Templates</h2>
+
+    [Drawer](?path=/docs/templates-drawer--docs)
+
+  </div>

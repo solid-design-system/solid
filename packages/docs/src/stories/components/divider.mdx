@@ -1,0 +1,71 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as DividerStories from './divider.stories';
+
+<Meta title="Components/sd-divider/Overview" />
+
+  <div className="sb-unstyled">
+    <h1 className="sd-headline">Divider</h1>
+
+    <p className="sd-paragraph">Used to separate content or sections from each other and make the content easier to read for the user. </p>
+
+    <Canvas of={DividerStories.Default} />
+
+    <div className="flex flex-row gap-8">
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3912-21776&t=xaDdHn9c2lPz2NiK-4" className="font-bold">Figma Library</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-sd-divider--docs" className="font-bold">Storybook</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Common Use Cases</h2>
+
+    <div className="sd-prose">
+      - Separate distinct item groups to help users clearly see and understand how different pieces of content relate to one another.
+      - Provide visual breaks in long pages or forms to improve readability.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Usage Guidelines</h2>
+
+    <h3 className="sd-headline sd-headline--size-lg">Spacing and Consistency</h3>
+
+    <div className="sd-prose mb-6">
+      - Maintain consistent spacing around separators to prevent them from appearing cramped or too distant from the content they divide.
+      - Ensure consistent use to prevent confusion, especially for users relying on assistive technologies.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Whitespace vs. Visual Separators</h3>
+
+    <div className="sd-prose mb-6">
+      - Leverage whitespace effectively as a natural divider, which can offer a clean, easy to read and organised design without additional visual elements.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Background</h3>
+
+    <div className="sd-prose mb-6">
+      - Use light background options like white, neutral-100 or primary-100.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Accessibility Information</h2>
+
+    <div className="sd-prose mb-6">
+      - Dividers should not interfere with keyboard navigation, allowing users to move through content seamlessly.
+      - Verify that dividers are visible and distinct in high contrast mode settings, which are often used by users with visual impairments.
+      - Use the `<hr>` element for horizontal dividers to ensure they are recognized by assistive technologies. This helps screen readers announce the presence of a divider, providing context to users. For complex layouts, consider adding aria-labels or aria-describedby attributes to provide additional context about the sections being divided.
+      - Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+    </div>
+
+  </div>

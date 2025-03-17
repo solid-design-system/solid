@@ -1,0 +1,88 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as ExpandableStories from './expandable.stories';
+
+<Meta title="Components/sd-expandable/Overview" />
+
+  <div className="sb-unstyled">
+    <h1 className="sd-headline">Expandable</h1>
+
+    <p className="sd-paragraph">Used to display a brief summary that expands to reveal additional content.</p>
+
+    <Canvas of={ExpandableStories.Default} />
+
+    <div className="flex flex-row gap-8">
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3912-23078&t=xaDdHn9c2lPz2NiK-4" className="font-bold">Figma Library</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-sd-expandable--docs" className="font-bold">Storybook</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+    </div>
+
+    <p className="sd-paragraph mt-8">
+      Use the ”default” slot to add content.
+    </p>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Common Use Cases</h2>
+
+    <div className="sd-prose">
+      - Display non-essential information that users can choose to read if interested.
+      - Prevent clutter by truncating long text blocks and allowing users to expand them as needed.
+      - Implement in product descriptions to show more details on demand.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Usage Guidelines</h2>
+
+    <h3 className="sd-headline sd-headline--size-lg">Content and Labels</h3>
+
+    <div className="sd-prose mb-6">
+      - Use the ”default” slot to add content.
+      - Use concise labels for the trigger (e.g., “Read more,” “Show more”).
+      - The initial visible text should give a hint about the hidden content.
+      - Ensure the content is supplementary and not critical.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Interaction and Usage </h3>
+
+    <div className="sd-prose mb-6">
+      - Avoid overloading with too much content. If a long text is required, consider other options for displaying it, e.g., triggering a sd-dialog.
+      - Do not nest expandable sections within other expandable sections.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Expandable vs. Accordion</h3>
+
+    <div className="sd-prose mb-6">
+      - The use of sd-accordion is generally recommended over the use of sd-expandable: accordions give the user a quick scan header to decide if the content is relevant to them, offer a cleaner layout and are more accessible as a result.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Background</h3>
+
+    <div className="sd-prose mb-6">
+      - Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Accessibility Information</h2>
+
+    <div className="sd-prose mb-6">
+      - Expandables are intended to be used for text blocks, so no interactive elements would appear when expanding, thus the focus remains on the expandable trigger whether open or closed, adjusting the labelling for each state.
+      - Use ARIA roles such as ”aria-expanded” to indicate the state of the expandable section. Ensure each section has a clear and descriptive label.
+      - Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Related Templates</h2>
+
+    [Expandable](?path=/docs/templates-expandable--docs)
+
+  </div>

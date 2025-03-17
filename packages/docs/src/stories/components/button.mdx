@@ -1,0 +1,106 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as ButtonStories from './button.stories';
+
+<Meta title="Components/sd-button/Overview" />
+
+  <div className="sb-unstyled">
+    <h1 className="sd-headline">Button</h1>
+
+    <p className="sd-paragraph">Used to allow users to perform actions with a single click. </p>
+
+    <Canvas of={ButtonStories.Default} />
+
+    <div className="flex flex-row gap-8">
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3912-16622&t=xaDdHn9c2lPz2NiK-4" className="font-bold">Figma Library</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-sd-button--docs" className="font-bold">Storybook</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Common Use Cases</h2>
+
+    <div className="sd-prose">
+      - Highlight key actions, like "Request information" or "Next step".
+      - Provide supporting actions, like "Learn more", "Explore topic", or "Cancel".
+      - Use for functional actions after user input, such as submitting a form or searching for content.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Usage Guidelines</h2>
+
+    <h3 className="sd-headline sd-headline--size-lg">Function</h3>
+
+    <div className="sd-prose mb-6">
+      - Use to trigger an action or place a link inside it to navigate to other content.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Action Labels</h3>
+
+    <div className="sd-prose mb-6">
+      - Write simple, self-explanatory labels that include both a verb (action) and a noun.
+      - Use text-only labels whenever possible.
+      - Avoid generic labels like "OK" or “Download”. Use “Confirm selection” or “Download Report” instead.
+      - Limit action labels to 1 to 3 words or 15 to 20 characters.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Action Priority</h3>
+
+    <div className="sd-prose mb-6">
+      - Select the appropriate variant for each action based on context and importance.
+      - Avoid displaying more than one Call To Action (CTA) at a time on the screen, especially in the same context (e.g., teaser).
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Icons</h3>
+
+    <div className="sd-prose mb-6">
+      - Add icons to labels only when they clearly support the associated action (e.g., print, email, share), and reserve icon-only buttons for exceptions.
+      - Avoid displaying both left and right icons simultaneously.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Placement and Responsiveness</h3>
+
+    <div className="sd-prose mb-6">
+      - Maintain consistent placement of interactive elements throughout the user interface.
+      - Position the primary action at the top (in vertical layout) or on the right (in horizontal layout) when paired with a secondary option.
+      - Avoid placing two primary actions next to each other; opt for a secondary action instead.
+      - Expand to full width on small devices if applicable.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Background</h3>
+
+    <div className="sd-prose mb-6">
+      - Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Accessibility Information</h2>
+
+    <div className="sd-prose mb-6">
+      - Ensure the button title is contextual. Screen readers will read it aloud, helping users understand the action associated with the button.
+      - Keep button text short. Longer copy is harder to scan and increases cognitive load. Remember that translations may double the length of the text.
+      - Provide always an ARIA label for icon-only buttons.
+      - Avoid disabled buttons. If needed, ensure that they remain in the regular tab order but cannot be activated, allowing screen readers to announce their state and purpose. Use the native disabled attribute or appropriate ARIA attributes (e.g., aria-disabled="true").
+      - Be aware that button’s height may change based on the user’s preferred font size set system-wide.
+      - Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Related Templates</h2>
+
+    <div className="sd-prose">
+      - [Button](?path=/docs/templates-button--docs)
+      - [Button with Badge](?path=/docs/templates-badge--docs#button-with-badge)
+    </div>
+
+  </div>

@@ -1,0 +1,88 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as ComboboxStories from './combobox.stories';
+
+<Meta title="Components/sd-combobox/Overview" />
+
+  <div className="sb-unstyled">
+    <h1 className="sd-headline">Combobox</h1>
+
+    <p className="sd-paragraph">Used to select one or multiple options from a list of options or to enter a search string and choose from a list of suggestions.</p>
+
+    <Canvas of={ComboboxStories.Default} />
+
+    <div className="flex flex-row gap-8">
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=12835-8145&t=xaDdHn9c2lPz2NiK-4" className="font-bold">Figma Library</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-sd-combobox--docs" className="font-bold">Storybook</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Common Use Cases</h2>
+
+    <div className="sd-prose">
+      - Allow users to select one or more options from a potentially large list by typing a search string and filtering suggestions.
+      - Provide an autocomplete feature in forms where specific or complex entries benefit from quick lookup.
+      - Implement in search fields or filter panels when users may not recall the exact option name but can approximate it.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Usage Guidelines</h2>
+
+    <h3 className="sd-headline sd-headline--size-lg">Content and Labels</h3>
+
+    <div className="sd-prose mb-6">
+      - Keep option labels concise so that suggestions are easy to scan and select.
+      - Provide a clear, descriptive placeholder (e.g., “Search or select an option…”) to help users understand they can type and choose from suggestions.
+      - Avoid repeating the same initial word in multiple suggestions to reduce scanning difficulty.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Searching Behavior</h3>
+
+    <div className="sd-prose mb-6">
+      - Filter available options in real time as the user types; highlight or bold matching text to indicate relevance.
+      - Show a message (e.g., “No matches found”) when no options align with the user’s input.
+      - Consider limiting the maximum number of displayed suggestions to avoid overwhelming users.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Background</h3>
+
+    <div className="sd-prose mb-6">
+      - Use light backgrounds such as white, neutral-100, or primary-100 for clarity and consistency across different layouts.
+      - Keep focus styles clearly visible when the user navigates through suggestions with a keyboard or screen reader.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Accessibility Information</h2>
+
+    <div className="sd-prose mb-6">
+      - To ensure screenreader compatibility, consider including a statement such as "Fields marked with an asterisk (*) are required" at the start of the form.
+      - A visible label may be omitted for search input fields within a combobox if an associated button—complete with a clear search icon and an appropriate accessible name (e.g., aria-label="Search")—is provided.
+      - Be aware that group labels will be neglected by most assistive devices.
+      - Avoid disabled comboboxes. If needed, ensure that they remain in the regular tab order but cannot be activated, allowing screen readers to announce their state and purpose. Use the native disabled attribute or appropriate ARIA attributes (e.g., aria-disabled="true").
+      - Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Related Components</h2>
+
+    <div className="sd-prose">
+      - [sd-option](?path=/docs/components-sd-option--docs)
+      - [sd-optgroup](?path=/docs/components-sd-optgroup--docs)
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Related Templates</h2>
+
+    [Combobox](?path=/docs/templates-combobox--docs)
+
+  </div>

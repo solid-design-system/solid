@@ -1,0 +1,100 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as AccordionStories from './accordion.stories';
+
+<Meta title="Components/sd-accordion/Overview" />
+
+  <div className="sb-unstyled">
+    <h1 className="sd-headline">Accordion</h1>
+
+    <p className="sd-paragraph">Used to show a brief summary and expands to display additional content.</p>
+
+    <Canvas of={AccordionStories.Default} />
+
+    <div className="flex flex-row gap-8">
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2001-2292&t=Z1FxSGWkmXG5r5sw-4" className="font-bold">Figma Library</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-sd-accordion--docs" className="font-bold">Storybook</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+    </div>
+
+    <p className="sd-paragraph mt-8">
+      The following sections cover the use of the standalone component. See <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2100-1420&t=Z1FxSGWkmXG5r5sw-0">sd-accordion-group</sd-link> for group usage guidelines.
+    </p>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Common Use Cases</h2>
+
+    <div className="sd-prose">
+      - Revealing additional content, such as a detailed description, specifications, or additional options without overwhelming the user with too much content at once.
+      - Interactive elements like a single FAQ item, where the user can expand to see the answer.
+      - Useful in forms to hide optional sections that the user can expand if needed, keeping the form clean and concise.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Usage Guidelines</h2>
+
+    <h3 className="sd-headline sd-headline--size-lg">Slots</h3>
+
+    <div className="sd-prose mb-6">
+      - Use the ”summary” slot to add text to the header.
+      - Use the ”default” slot to add content.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Header Summary</h3>
+
+    <div className="sd-prose mb-6">
+      - Make sure the header summary clearly describes the content inside.
+      - Keep header summaries concise to prevent them from wrapping onto multiple lines.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Content</h3>
+
+    <div className="sd-prose mb-6">
+      - Ensure the content is focused and necessary. If the information can be splitted into different meaningful units, consider using sd-accordion-group.
+      - Avoid using collapsible sections for information that must always be visible.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Expandable vs. Accordion</h3>
+
+    <div className="sd-prose mb-6">
+      - The use of sd-accordion is generally recommended over the use of <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-sd-expandable--docs">sd-expandable</sd-link>: the former gives the user a quick scan header to decide if the content is relevant to them, offers a cleaner layout and is more accessible as a result.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Background</h3>
+
+    <div className="sd-prose mb-6">
+      - Use light background options like white, neutral-100 or primary-100.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Accessibility Information</h2>
+
+    <div className="sd-prose mb-6">
+      - Use only for non-critical information. Hiding content can become a potential barrier, making content more challenging to discover.
+      - Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Related Components</h2>
+
+    - [sd-accordion-group](?path=/docs/components-sd-accordion-group--docs)
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Related Templates</h2>
+
+    <div className="sd-prose mb-6">
+      - [Badge](?path=/docs/templates-badge--docs)
+      - [Tab Group with Badge](?path=/docs/templates-tab-group--docs#tab%20group%20with%20badge)
+      - [Tab Group with Icon and Badge](?path=/docs/templates-tab-group--docs#tab%20group%20with%20icon%20and%20badge)
+    </div>
+
+  </div>

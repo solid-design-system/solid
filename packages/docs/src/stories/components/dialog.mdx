@@ -1,0 +1,90 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as DialogStories from './dialog.stories';
+
+<Meta title="Components/sd-dialog/Overview" />
+
+  <div className="sb-unstyled">
+    <h1 className="sd-headline">Dialog</h1>
+
+    <p className="sd-paragraph">Used over other content. It requires an interaction from the user before they can return to whatever is underneath. </p>
+
+    <Canvas of={DialogStories.Default} />
+
+    <div className="flex flex-row gap-8">
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=12835-46660&t=xaDdHn9c2lPz2NiK-4" className="font-bold">Figma Library</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-sd-dialog--docs" className="font-bold">Storybook</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Common Use Cases</h2>
+
+    <div className="sd-prose">
+      - Confirm an action which can have significant consequences and explicit user approval or input is needed (e.g. deleting a file)
+      - Present important information that must be seen and acknowledged before proceeding (e.g., session expired and renewed login required).
+      - Require users to enter information or select from multiple options before continuing.
+      - For non-critical content or information that doesn’t require immediate user input, please use sd-notification to avoid workflow disruption.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Usage Guidelines</h2>
+
+    <h3 className="sd-headline sd-headline--size-lg">Slots</h3>
+
+    <div className="sd-prose mb-6">
+      - Use the ”headline” slot to add a headline.
+      - Add main content on the ”default” slot. The “default” slot is always scrollable.
+      - Use the ”footer” slot to add action elements. The “footer” slot is always fixed.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Headline and Content</h3>
+
+    <div className="sd-prose mb-6">
+      - Use clear and concise headlines that describe the purpose.
+      - Avoid displaying content unrelated to the current workflow.
+      - Refrain from using dialogs for complex forms or large amounts of information.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Actions</h3>
+
+    <div className="sd-prose mb-6">
+      - Ensure a clear user journey by using a single primary button for the main action and secondary buttons for less important actions.
+      - Provide an action to close the interaction if a close button is not present in the top-right corner.
+      - Avoid having multiple primary action buttons within the same dialog.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">User Interaction</h3>
+
+    <div className="sd-prose mb-6">
+      - Require users to take an action before they can continue interacting with the rest of the interface.
+      - Provide multiple ways to close the dialog, such as an “X” button, a cancel button, or clicking outside the dialog.
+      - Avoid excessive use of dialogs, as they can be disruptive to the user experience.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Accessibility Information</h2>
+
+    <div className="sd-prose mb-6">
+      - Always include a visible and easily accessible close button within the modal but also enable closing using the Escape key.
+      - Clicking outside the modal to close it might be convenient for some users, but can’t be the only method provided since it’s not accessible for screen reader users.
+      - Move the keyboard focus to the first interactive element within the modal (usually the close button) when the modal opens. Keep the keyboard focus within the modal while it is open, and return focus to the element that triggered the modal when it is closed.
+      - Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Related Templates</h2>
+
+    [Dialog](?path=/docs/templates-dialog--docs)
+
+  </div>

@@ -1,0 +1,82 @@
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as FlipcardStories from './flipcard.stories';
+
+<Meta title="Components/sd-flipcard/Overview" />
+
+  <div className="sb-unstyled">
+    <h1 className="sd-headline">Flipcard</h1>
+
+    <p className="sd-paragraph">Used to display content on one side and reveal additional information when flipped.</p>
+
+    <Canvas of={FlipcardStories.Default} />
+
+    <div className="flex flex-row gap-8">
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=12838-3095&t=xaDdHn9c2lPz2NiK-4" className="font-bold">Figma Library</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+
+      <div className="flex flex-row gap-4 items-center">
+        <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-sd-flipcard--docs" className="font-bold">Storybook</sd-link>
+
+        <div className="sd-status-badge sd-status-badge--success m-0">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+          Available
+        </div>
+      </div>
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Common Use Cases</h2>
+
+    <div className="sd-prose">
+      - Present brief, essential information on the front with additional details on the back.
+      - Highlight key features or benefits of a product or service.
+      - Display before-and-after comparisons.
+      - Showcase testimonials or quotes with more context on the flip side.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Usage Guidelines</h2>
+
+    <h3 className="sd-headline sd-headline--size-lg">Content</h3>
+
+    <div className="sd-prose mb-6">
+      - Keep the front side simple and engaging to encourage users to flip the card.
+      - Do not use for critical information that needs to be immediately visible.
+      - Use with image, text or both content types.
+      - Keep alignment consistent on both sides, i.e. if you have top-aligned content on the front side, the content on the flip side should also be top aligned.
+
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Interaction</h3>
+
+    <div className="sd-prose mb-6">
+      - Avoid having different action items on both sides of the card to keep it simple for the user.
+    </div>
+
+    <h3 className="sd-headline sd-headline--size-lg">Context of Use</h3>
+
+    <div className="sd-prose mb-6">
+      - Avoid using in contexts where users might not understand the flipping interaction.
+      - Avoid using in time-sensitive environments.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Accessibility Information</h2>
+
+    <div className="sd-prose mb-6">
+      - Keep the flip button to make sure the flipping can be activated over keyboard navigation over the Enter or Space keys.
+      - Keep the flip button to make sure the flipping can be activated by tabbing.
+      - Use ARIA roles such as aria-hidden to manage the visibility of the front and back sides. Ensure each side has a clear and descriptive label.
+      - Flipcards should avoid including interactive elements, and the focus would always stay on the flip-trigger after activating it. If the back side contains an interactive element, ensure focus moves to it after triggering the flip. When flipped back, focus should return to the flip trigger.
+      - Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+    </div>
+
+    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Related Templates</h2>
+
+    [Flipcard](?path=/docs/templates-flipcard--docs)
+
+  </div>
