@@ -14,22 +14,12 @@ const html = String.raw;
 
 export default {
   title: 'Styles/sd-prose/Screenshots: sd-prose',
-  tags: ['!autodocs', 'skip-a11y-[scrollable-region-focusable]'],
+  tags: ['!autodocs'],
   component: 'sd-prose',
   parameters: {
     ...parameters,
     controls: { disable: true },
-    docs: { story: { inline: false, height: 'calc(100vh - 400px)' } },
-    a11y: {
-      config: {
-        rules: [
-          {
-            id: 'scrollable-region-focusable',
-            enabled: false
-          }
-        ]
-      }
-    }
+    docs: { story: { inline: false, height: 'calc(100vh - 400px)' } }
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: '' }),
   argTypes
@@ -66,7 +56,7 @@ const content = html`<h1>Solid Prose</h1>
     It adds a new <code>prose</code> class that you can slap on any block of vanilla HTML content and turn it into a
     beautiful, well-formatted document:
   </p>
-  <pre><code class="language-html">&lt;article class="prose"&gt;
+  <pre tabindex="0"><code class="language-html">&lt;article class="prose"&gt;
   &lt;h1&gt;Garlic bread with cheese: What the science tells us&lt;/h1&gt;
   &lt;p&gt;
     For years parents have espoused the health benefits of eating garlic bread with cheese to their
@@ -173,7 +163,7 @@ const content = html`<h1>Solid Prose</h1>
     to make them look okay out of the box, even with no syntax highlighting.
   </p>
   <p>Here's what a default <code>tailwind.config.js</code> file looks like at the time of writing:</p>
-  <pre><code class="language-js">module.exports = {
+  <pre tabindex="0"><code class="language-js">module.exports = {
   purge: [],
   theme: {
     extend: {},
