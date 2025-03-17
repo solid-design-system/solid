@@ -73,7 +73,7 @@ const createColorOptionsHtml = () => unsafeHTML(createColorOptions().join('\n'))
 
 export default {
   title: 'Components/sd-combobox/Screenshots: sd-combobox',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-combobox',
   args: overrideArgs([
     threeOptionsConstant,
@@ -280,9 +280,10 @@ export const Slots = {
                   value:
                     slot === 'default'
                       ? `<sd-option></sd-option>`
-                      : `<div slot='${slot}' class="slot slot--border slot--background h-6 ${
-                          slot === 'label' || slot === 'help-text' ? 'w-20' : 'w-6'
-                        }"></div>`,
+                      : `<div
+                          slot='${slot}'
+                          class="slot slot--border slot--background h-6 ${slot === 'label' || slot === 'help-text' ? 'w-20' : 'w-6'}"
+                      >${slot === 'label' ? 'Label' : ''}</div>`,
                   title: slot
                 }
               ]
@@ -789,7 +790,7 @@ export const setCustomValidity = {
     return html`
       <!-- block submit and show alert instead -->
       <form id="validationForm" class="flex flex-col gap-2">
-        <sd-combobox id="custom-input" style-on-valid>
+        <sd-combobox id="custom-input" style-on-valid label="Label">
           <sd-option value="option-1">Option 1</sd-option>
           <sd-option value="option-2">Option 2</sd-option>
           <sd-option value="option-3">Option 3</sd-option>

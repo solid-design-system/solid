@@ -17,7 +17,7 @@ const { overrideArgs } = storybookHelpers('sd-flipcard');
  */
 export default {
   title: 'Components/sd-flipcard',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   component: 'sd-flipcard',
   args: overrideArgs([
     {

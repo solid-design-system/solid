@@ -41,6 +41,13 @@ export default class SdMapMarker extends SolidElement {
   /** Tells the browser where to open the link. Only used when `href` is present. */
   @property() target: '_blank' | '_parent' | '_self' | '_top';
 
+  /**
+   * Only relevant when map-marker is interactive.
+   * When set, it will be used to announce the name of the map-marker to screenreaders,
+   * otherwise, screenreaders will announce the content inside the default slot.
+   */
+  @property() label: string = '';
+
   private handleBlur() {
     this.emit('sd-blur');
   }
@@ -83,7 +90,8 @@ export default class SdMapMarker extends SolidElement {
         @blur=${this.handleBlur}
         @focus=${this.handleFocus}
         role=${ifDefined(this.notInteractive || isLink ? undefined : 'button')}
-        aria-labelledby=${ifDefined(!this.notInteractive ? 'content' : undefined)}
+        aria-label=${ifDefined(!this.notInteractive && this.label ? this.label : undefined)}
+        aria-labelledby=${ifDefined(!this.notInteractive && !this.label ? 'content' : undefined)}
       >
         <div
           part="marker"

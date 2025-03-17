@@ -16,7 +16,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-carousel/Screenshots: sd-carousel',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-carousel',
   args: overrideArgs([
     {
@@ -87,7 +87,18 @@ export const Inverted = {
       },
       args,
       options: {
-        templateBackgrounds: { alternate: 'y', colors: ['rgb(var(--sd-color-primary, 0 53 142))', 'white'] }
+        templateBackgrounds: { alternate: 'y', colors: ['rgb(var(--sd-color-primary, 0 53 142))', 'white'] },
+        templateRenderer: ({ attributes, slots }) => {
+          const attrs = Object.entries(attributes)
+            .map(([attr, value]) => `${attr}='${value}'`)
+            .join(' ');
+
+          return `
+            <sd-carousel ${attrs}>
+              ${attributes.inverted ? slots?.default?.replaceAll('class="slot', 'class="slot slot--inverted') : slots?.default}
+            </sd-carousel>
+          `;
+        }
       }
     });
   }
@@ -208,8 +219,8 @@ export const Mouseless = {
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const el = canvasElement.querySelector('.mouseless sd-carousel');
-    await waitUntil(() => el?.shadowRoot?.querySelector('#scroll-container'));
 
+    await waitUntil(() => el?.shadowRoot?.querySelector('#scroll-container'));
     el?.shadowRoot?.querySelector<HTMLElement>('#scroll-container')!.focus();
   }
 };

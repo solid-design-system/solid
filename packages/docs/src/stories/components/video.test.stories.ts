@@ -31,7 +31,7 @@ const iconConstant: ConstantDefinition = {
 export default {
   title: 'Components/sd-video/Screenshots: sd-video',
   component: 'sd-video',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   args,
   argTypes,
   parameters: { ...parameters, controls: { disable: true } },
@@ -49,7 +49,8 @@ export const Default = {
       constants: {
         type: 'slot',
         name: 'default',
-        value: '<img class="aspect-video object-cover" src="./placeholders/images/union-investment.png" />'
+        value:
+          '<img class="aspect-video object-cover" src="./placeholders/images/union-investment.png" alt="Video highlighting Union Investment\'s digital transformation through a design system named Solid that enhances accessibility, sustainability, and efficiency." />'
       },
       args
     });

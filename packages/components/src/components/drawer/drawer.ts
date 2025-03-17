@@ -292,13 +292,14 @@ export default class SdDrawer extends SolidElement {
 
   render() {
     return html`
-      <div
+      <section
         id="drawer"
         part="base"
         class=${cx(
           'top-0 start-0 w-full h-full pointer-events-none overflow-hidden',
           this.contained ? 'absolute' : 'fixed'
         )}
+        aria-label=${this.label}
       >
         <div
           part="overlay"
@@ -321,9 +322,10 @@ export default class SdDrawer extends SolidElement {
           )}
           role="dialog"
           aria-modal="true"
-          aria-label=${this.label}
+          aria-labelledby="label"
           tabindex="0"
         >
+          <p class="sr-only" id="label">${this.label}</p>
           ${!this.noHeader
             ? html`
                 <header
@@ -354,14 +356,14 @@ export default class SdDrawer extends SolidElement {
                 class="absolute top-2 right-2"
                 ><sd-icon label=${this.localize.term('close')} name="close" library="system"></sd-icon
               ></sd-button>`}
-          <div part="body" class="flex-auto block px-4" role="region" tabindex="0">
+          <div part="body" class="flex-auto block px-4" tabindex="0">
             <slot></slot>
           </div>
           <footer part="footer" class=${cx(this.hasSlotController.test('footer') ? 'text-left p-4' : 'hidden')}>
             <slot name="footer"></slot>
           </footer>
         </div>
-      </div>
+      </section>
     `;
   }
 

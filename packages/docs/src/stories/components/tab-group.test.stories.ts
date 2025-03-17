@@ -29,7 +29,7 @@ function generateTabsAndPanels(
 
 export default {
   title: 'Components/sd-tab-group/Screenshots: sd-tab-group',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs', 'skip-a11y-[scrollable-region-focusable]'],
   component: 'sd-tab-group',
   args: overrideArgs({
     type: 'slot',
@@ -37,7 +37,19 @@ export default {
     value: generateTabsAndPanels(1, 5)
   }),
   argTypes,
-  parameters: { controls: { disable: true } },
+  parameters: {
+    controls: { disable: true },
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'scrollable-region-focusable',
+            enabled: false
+          }
+        ]
+      }
+    }
+  },
   decorators: [
     (story: () => typeof html) => html`
       <style>

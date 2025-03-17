@@ -91,9 +91,11 @@ export interface Translation extends DefaultTranslation {
   notifications: string;
   numOptionsSelected: (num: number) => string;
   openTranscript: string;
+  optionGroup: string;
   pauseAudio: string;
   playAudio: string;
   playbackSpeed: string;
+  playVideo: string;
   previousSlide: string;
   progress: string;
   remove: string;
@@ -101,6 +103,7 @@ export interface Translation extends DefaultTranslation {
   resize: string;
   scrollToEnd: string;
   scrollToStart: string;
+  search: string;
   seekBar: string;
   selectAColorFromTheScreen: string;
   selectDefaultPlaceholder: string;

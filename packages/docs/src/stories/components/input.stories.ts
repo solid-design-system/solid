@@ -12,11 +12,11 @@ const { overrideArgs } = storybookHelpers('sd-input');
  * **Related templates**:
  * - [Input](?path=/docs/templates-input--docs)
  * - [Autocomplete](?path=/docs/templates-autocomplete--docs)
- * - [Tooltip](?path=/docs/templates-tooltip--docs)
+ * - [Input with Tooltip](?path=/docs/templates-tooltip--docs#input%20with%20tooltip)
  *
  */
 export default {
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   title: 'Components/sd-input',
   component: 'sd-input',
   args: overrideArgs({
@@ -79,7 +79,7 @@ export const Label = {
 export const Placeholder = {
   render: () => html`
     <div class="w-[250px]">
-      <sd-input placeholder="Placeholder example" spellcheck></sd-input>
+      <sd-input placeholder="Placeholder example" label="Label" spellcheck></sd-input>
     </div>
   `
 };
@@ -343,7 +343,7 @@ export const Invalid = {
       <script type="module">
         await Promise.all([customElements.whenDefined('sd-input')]).then(() => {
           const input = document.getElementById('invalid-input');
-          input.setCustomValidity('Error message');
+          input.setCustomValidity('Error text');
           input.reportValidity();
         });
       </script>`

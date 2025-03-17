@@ -17,7 +17,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-step/Screenshots: sd-step',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs', 'skip-a11y-[aria-required-parent]'],
   component: 'sd-step',
   args: overrideArgs([
     {
@@ -27,7 +27,21 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters, controls: { disable: true } },
+  parameters: {
+    ...parameters,
+    controls: { disable: true },
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'aria-required-parent',
+            enabled: false
+          }
+        ]
+      },
+      options: {}
+    }
+  },
   decorators: [withActions] as any
 };
 

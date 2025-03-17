@@ -1,5 +1,249 @@
 # @solid-design-system/docs
 
+## 1.12.24
+
+### Patch Changes
+
+- Unskip remaining a11y tests. _[`#2023`](https://github.com/solid-design-system/solid/pull/2023) [`62d44e4`](https://github.com/solid-design-system/solid/commit/62d44e4b6456a78c1c2dec936eac7dd33cf7b712) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.12.23
+
+### Patch Changes
+
+- Fix `sd-teaser` screenshot tests a11y issues. _[`#1997`](https://github.com/solid-design-system/solid/pull/1997) [`1c13853`](https://github.com/solid-design-system/solid/commit/1c138533f7aa444def6c0ae1f0d3cd94bb9492b3) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.12.22
+
+### Patch Changes
+
+- Fix `sd-list` and `sd-prose` a11y issues. _[`#2005`](https://github.com/solid-design-system/solid/pull/2005) [`b592253`](https://github.com/solid-design-system/solid/commit/b5922538fe376701b1bafc58f9e09f43eaf40361) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.12.21
+
+### Patch Changes
+
+- Fix a11y tests in `sd-header` screenshots tests by adding missing label. _[`#2001`](https://github.com/solid-design-system/solid/pull/2001) [`e58ceba`](https://github.com/solid-design-system/solid/commit/e58ceba94428662ae13ef4e2ef0b3e80977a0d6a) [@smfonseca](https://github.com/smfonseca)_
+
+  In some cases (eg. Combination test) the components are added together in the same context, therefore we skip tests for the following two rules: `landmark-no-duplicate-banner` and `landmark-unique`.
+
+## 1.12.20
+
+### Patch Changes
+
+- Fix `sd-select` a11y tests in screenshot tests by adding missing labels. _[`#2004`](https://github.com/solid-design-system/solid/pull/2004) [`f44f18f`](https://github.com/solid-design-system/solid/commit/f44f18f83266cfadd40a7d69a4cb10804ba6d2a9) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.12.19
+
+### Patch Changes
+
+- Fix `sd-quickfact` a11y on screeshot tests and fix mouseless test. _[`#1996`](https://github.com/solid-design-system/solid/pull/1996) [`c14d943`](https://github.com/solid-design-system/solid/commit/c14d9434673905862ef6f9740af55f878183820f) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.12.18
+
+### Patch Changes
+
+- Fix `sd-textarea` a11y tests by adding missing label in screenshot tests. _[`#2003`](https://github.com/solid-design-system/solid/pull/2003) [`06d0802`](https://github.com/solid-design-system/solid/commit/06d0802d5f42039414caff32ff8f36848904a7c6) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.12.17
+
+### Patch Changes
+
+- Unskip a11y test and add missing button name in `slots` screenshot test. _[`#1992`](https://github.com/solid-design-system/solid/pull/1992) [`824b95d`](https://github.com/solid-design-system/solid/commit/824b95d64150f053e180d67a09b44513aacd2477) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.12.16
+
+### Patch Changes
+
+- Fix `sd-dropdown` screenshot tests a11y issue. _[`#1990`](https://github.com/solid-design-system/solid/pull/1990) [`15d594a`](https://github.com/solid-design-system/solid/commit/15d594a94645308f38fb0aa362ea5831a2f925b6) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.12.15
+
+### Patch Changes
+
+- Fix `sd-map-marker` a11y issues by setting the label attribute. _[`#1991`](https://github.com/solid-design-system/solid/pull/1991) [`6800cd7`](https://github.com/solid-design-system/solid/commit/6800cd77873a3f03e71229a51acfe908c2749f9a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.12.14
+
+### Patch Changes
+
+- Unskip a11y tests and add missing label in `custom icon` screenshot test for `sd-scrollable`. _[`#1972`](https://github.com/solid-design-system/solid/pull/1972) [`fbe0cca`](https://github.com/solid-design-system/solid/commit/fbe0cca956658fe9e67fc097e7e801dff7ab1de2) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.12.13
+
+### Patch Changes
+
+- Improved `sd-drawer` accessibility. _[`#1943`](https://github.com/solid-design-system/solid/pull/1943) [`f1197c5`](https://github.com/solid-design-system/solid/commit/f1197c5a777a2b330b5773eb3deef83bcda8c32e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add labels to stories.
+
+  Improved slots color contrast by adding a darker shade to the border and text color.
+
+## 1.12.12
+
+### Patch Changes
+
+- Add missing `alt` attribute in the `sd-video` default story and unskip a11y tests. _[`#1971`](https://github.com/solid-design-system/solid/pull/1971) [`cb043bf`](https://github.com/solid-design-system/solid/commit/cb043bfb3b3a4dc2af443d78979c44cd00b93995) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.12.11
+
+### Patch Changes
+
+- Improved `sd-step-group` and `sd-step-group template` accessibility. _[`#1966`](https://github.com/solid-design-system/solid/pull/1966) [`c49e5f8`](https://github.com/solid-design-system/solid/commit/c49e5f8bd1999ed26f75551b4d41f7d82da947a6) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add aria label to all stories.
+
+  Improved `sd-step` accessibility.
+
+  - Skipped `aria-required-parent` violation in accessibility automatic tests. This test is not relevant in this context since we only want to show the isolated component and not in the context of its real use which would be wrapped in a `sd-step-group` component.
+
+## 1.12.10
+
+### Patch Changes
+
+- Unskip a11y tests on `sd-accordion-group` and fix mouseless story exception. _[`#1988`](https://github.com/solid-design-system/solid/pull/1988) [`b002021`](https://github.com/solid-design-system/solid/commit/b0020217ca66183bec609c8bf8af783e718fc8c7) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.12.9
+
+### Patch Changes
+
+- Fix `sd-carousel` screenshot test regression. _[`#1989`](https://github.com/solid-design-system/solid/pull/1989) [`5e1e882`](https://github.com/solid-design-system/solid/commit/5e1e8824c1e6f9addc47f21f445cfe7e7a67b6bc) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.12.8
+
+### Patch Changes
+
+- Improve `sd-carousel` a11y: _[`#1935`](https://github.com/solid-design-system/solid/pull/1935) [`1c54e1c`](https://github.com/solid-design-system/solid/commit/1c54e1ce286f64a7ad7f575918b9952961938646) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Improve template a11y by adding the attributes `role="region"` and `aria-label`.
+  - Add accessibility hint regarding `role="region"` and `aria-label`.
+  - Fix inverted stories slot colors to improve a11y.
+
+## 1.12.7
+
+### Patch Changes
+
+- Improved `sd-input` accessibility and consistency with other components. _[`#1934`](https://github.com/solid-design-system/solid/pull/1934) [`b8f1d87`](https://github.com/solid-design-system/solid/commit/b8f1d879b7974fe81633d08d66e3605ab9eae139) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add labels to sd-input.
+
+## 1.12.6
+
+### Patch Changes
+
+- Fixed accessibility violation in `sd-table` templates. _[`#1963`](https://github.com/solid-design-system/solid/pull/1963) [`aebb0de`](https://github.com/solid-design-system/solid/commit/aebb0de7f2757e8ca82800d6258f745b93812bd4) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.12.5
+
+### Patch Changes
+
+- Fixed accessibility violation in `sd-dialog` templates. _[`#1962`](https://github.com/solid-design-system/solid/pull/1962) [`6c3d82a`](https://github.com/solid-design-system/solid/commit/6c3d82a1c81b829f3d07d5b309da8c97ff5b8a3d) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.12.4
+
+### Patch Changes
+
+- Update `sd-combobox` screenshots tests and stories with missing labels to fix a11y issues. _[`#1936`](https://github.com/solid-design-system/solid/pull/1936) [`0c42bc3`](https://github.com/solid-design-system/solid/commit/0c42bc397337c2dd4ecad37bd391feb09c8b1165) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.12.3
+
+### Patch Changes
+
+- Fix `sd-brandshape` slot a11y color-contrast issues _[`#1964`](https://github.com/solid-design-system/solid/pull/1964) [`c0ac3b8`](https://github.com/solid-design-system/solid/commit/c0ac3b84d2ca52af31f824cbec0329e2e563d08e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.12.2
+
+### Patch Changes
+
+- Sync `sd-radio-button` and `sd-combobox` visually-disabled examples with Figma and fix typo in story title. _[`#1931`](https://github.com/solid-design-system/solid/pull/1931) [`82121dc`](https://github.com/solid-design-system/solid/commit/82121dce671e93f9066c1af79c8992090641f861) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.12.1
+
+### Patch Changes
+
+- Skipped `color-contrast` rule in accessibility tests for `sd-interactive--disabled`. _[`#1959`](https://github.com/solid-design-system/solid/pull/1959) [`69120c5`](https://github.com/solid-design-system/solid/commit/69120c52e87cb2364eced4df8a9c53795e14dd90) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.12.0
+
+### Minor Changes
+
+- The `sd-pagination` has arrived! 🎉 _[`#1916`](https://github.com/solid-design-system/solid/pull/1916) [`8e97181`](https://github.com/solid-design-system/solid/commit/8e97181cbc913d47fbadc1997cfe75bcaa7a9245) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Add new `sd-pagination` stories and template.
+
+## 1.11.6
+
+### Patch Changes
+
+- Skipped `aria-required-parent` rule in accessibility tests for `sd-option`. This is already validated in tests for `sd-optgroup` or `sd-select`. Also included a missing `aria-label` attribute. _[`#1937`](https://github.com/solid-design-system/solid/pull/1937) [`947b5bc`](https://github.com/solid-design-system/solid/commit/947b5bc9483dc475784a5bcb368fd0f0a69474c3) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.11.5
+
+### Patch Changes
+
+- Implement `templateRenderer` on `generateTemplate` options to have better control of how stories are rendered. _[`#1955`](https://github.com/solid-design-system/solid/pull/1955) [`1b03e45`](https://github.com/solid-design-system/solid/commit/1b03e459950d33a7836c0d4524742870f3c5df9a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Fix `sd-container` a11y contrast issues.
+
+## 1.11.4
+
+### Patch Changes
+
+- Skipped `aria-required-parent` violation in accessibility automatic tests. This test is not relevant in this context since we only want to show the isolated component and not in the context of its real use which would be wrapped in a `sd-tab-group` component. This use case is already validated in other stories like `variant` or `active`. _[`#1945`](https://github.com/solid-design-system/solid/pull/1945) [`7efae4d`](https://github.com/solid-design-system/solid/commit/7efae4d273f771dfe1b6e2aa8ed350fb230de8b4) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.11.3
+
+### Patch Changes
+
+- Add missing alt attributes on `sd-copyright` stories. _[`#1950`](https://github.com/solid-design-system/solid/pull/1950) [`5ba05c9`](https://github.com/solid-design-system/solid/commit/5ba05c9dbddc985d7ffd4b009aa3d3d35ea1f6a6) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.11.2
+
+### Patch Changes
+
+- Improve storybook theme to align with brand and address some accessibility issues. _[`#1941`](https://github.com/solid-design-system/solid/pull/1941) [`49e8de0`](https://github.com/solid-design-system/solid/commit/49e8de066f6d2eb3dc77cc5dbfc50e1a3be66df5) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.11.1
+
+### Patch Changes
+
+- Added missing labels to `sd-optgroup` screenshot tests and stories to address a11y violations. _[`#1938`](https://github.com/solid-design-system/solid/pull/1938) [`a328df3`](https://github.com/solid-design-system/solid/commit/a328df31e8fcd379100ff5d27859070015ddef68) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.11.0
+
+### Minor Changes
+
+- Implement highlight option renderer to highlight multiple search occurences on combobox template. _[`#1920`](https://github.com/solid-design-system/solid/pull/1920) [`9520101`](https://github.com/solid-design-system/solid/commit/9520101d406c34e600624a269ca707449d40bbb5) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.10.5
+
+### Patch Changes
+
+- Fixed accessibility issue in `sd-badge` template by including missing labels. _[`#1947`](https://github.com/solid-design-system/solid/pull/1947) [`6f0ffbd`](https://github.com/solid-design-system/solid/commit/6f0ffbdd3d50e1c45befee1152eff456ed998a5b) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.10.4
+
+### Patch Changes
+
+- Add missing alt attribute on `sd-video` screenshot tests. _[`#1944`](https://github.com/solid-design-system/solid/pull/1944) [`32695f2`](https://github.com/solid-design-system/solid/commit/32695f2580fe301f252195492bedd6aedcf467cf) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.10.3
+
+### Patch Changes
+
+- Update `sd-radio`, `sd-radio-group` and `sd-radio-button` screenshots tests and stories with missing labels to fix a11y issues. _[`#1940`](https://github.com/solid-design-system/solid/pull/1940) [`d2d5dcb`](https://github.com/solid-design-system/solid/commit/d2d5dcb9889102d9ad18f8ffcb9cbba389c4088e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.10.2
+
+### Patch Changes
+
+- Fix accessibility violation by including aria attribute in Slots screenshot test story. _[`#1933`](https://github.com/solid-design-system/solid/pull/1933) [`43e4765`](https://github.com/solid-design-system/solid/commit/43e4765788035d84bda1f52d693148e8392389f8) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.10.1
+
+### Patch Changes
+
+- Fix `empty table header` a11y issue on multiple axis component templates _[`#1930`](https://github.com/solid-design-system/solid/pull/1930) [`6327da1`](https://github.com/solid-design-system/solid/commit/6327da128579d8131da3e10dd714afb216e226e1) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.10.0
 
 ### Minor Changes

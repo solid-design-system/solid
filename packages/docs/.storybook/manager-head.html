@@ -53,3 +53,66 @@
   name="twitter:image"
   content="https://solid-design-system.fe.union-investment.de/docs/images/sds-signet_meta.png"
 />
+
+<style>
+  :root {
+    --sd-color-primary: #00358e;
+    --sd-color-accent: #2d9d00;
+    --sd-color-neutral-200: #e9e9e9;
+  }
+
+  #storybook-explorer-tree .sidebar-item {
+    color: var(--sd-color-primary);
+    border-left: 4px solid transparent;
+  }
+
+  #storybook-explorer-tree .sidebar-item[data-selected='true'] {
+    background: transparent;
+    border-radius: 0;
+    border-color: var(--sd-color-accent);
+  }
+
+  #storybook-explorer-tree .sidebar-item:hover,
+  #storybook-explorer-tree .sidebar-item[data-nodetype='group']:hover,
+  #storybook-explorer-tree .sidebar-item[data-selected='true']:hover {
+    --tree-node-background-hover: var(--sd-color-neutral-200);
+    background: var(--tree-node-background-hover);
+    color: var(--sd-color-primary);
+  }
+
+  #storybook-explorer-tree .sidebar-item[data-nodetype='component']:not(:hover),
+  #storybook-explorer-tree .sidebar-item[data-nodetype='group']:not(:hover) {
+    background: transparent;
+  }
+
+  #storybook-explorer-tree .sidebar-item a svg,
+  #storybook-explorer-tree .sidebar-item button svg {
+    color: var(--sd-color-primary);
+  }
+
+  div[data-testid='tooltip'] button[id^='list-item-']:hover {
+    background: rgba(from var(--sd-color-primary) r g b / 0.14);
+  }
+
+  .sb-bar button {
+    color: var(--sd-color-primary) !important;
+  }
+
+  .sb-bar button:focus {
+    box-shadow: var(--sd-color-primary) 0px 0px 0px 1px inset !important;
+  }
+
+  .sb-bar button:hover {
+    color: var(--sd-color-primary) !important;
+    background: rgba(from var(--sd-color-primary) r g b / 0.14) !important;
+  }
+
+  .sb-bar a:focus-visible,
+  .sb-bar button:focus-visible,
+  .sidebar-container a:focus-visible,
+  .sidebar-container button:focus-visible,
+  .sidebar-container .search-field:has(input:focus-visible) {
+    outline: 2px solid var(--sd-color-primary) !important;
+    outline-offset: 2px;
+  }
+</style>
