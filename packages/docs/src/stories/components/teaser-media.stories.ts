@@ -163,7 +163,7 @@ export const DefaultMediaAndHeadlineSlot = {
         alt="Generic alt"
       />
       <h3 slot="headline">Headline Media Teaser</h3>
-      <div class="slot slot--border slot--text h-12">Default slot</div>
+      <div class="slot slot--border slot--text slot--inverted h-12">Default slot</div>
     </sd-teaser-media>
   `
 };
@@ -175,7 +175,7 @@ export const DefaultMediaAndHeadlineSlot = {
 export const MetaSlot = {
   render: () => html`
     <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
-      <div slot="meta" class="slot slot--border slot--text h-12">Meta slot</div>
+      <div slot="meta" class="slot slot--border slot--text slot--inverted h-12">Meta slot</div>
       <img
         slot="media"
         src="./placeholders/images/architecture.jpg"
