@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 export default {
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   title: 'Templates/Tooltip',
   parameters: {
     chromatic: { disableSnapshot: true },
