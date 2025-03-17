@@ -14,12 +14,22 @@ const html = String.raw;
 
 export default {
   title: 'Styles/sd-prose/Screenshots: sd-prose',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs', 'skip-a11y-[scrollable-region-focusable]'],
   component: 'sd-prose',
   parameters: {
     ...parameters,
     controls: { disable: true },
-    docs: { story: { inline: false, height: 'calc(100vh - 400px)' } }
+    docs: { story: { inline: false, height: 'calc(100vh - 400px)' } },
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'scrollable-region-focusable',
+            enabled: false
+          }
+        ]
+      }
+    }
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: '' }),
   argTypes
