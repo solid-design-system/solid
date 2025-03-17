@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.12.24
+
+### Patch Changes
+
+- Unskip remaining a11y tests. _[`#2023`](https://github.com/solid-design-system/solid/pull/2023) [`62d44e4`](https://github.com/solid-design-system/solid/commit/62d44e4b6456a78c1c2dec936eac7dd33cf7b712) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.12.23
 
 ### Patch Changes
