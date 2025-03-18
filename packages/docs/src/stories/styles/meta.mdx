@@ -1,0 +1,44 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as MetaStories from './meta.stories';
+
+export const storybookLink = '/?path=/docs/styles-sd-meta--docs';
+export const figmaLibrary = 'LINK';
+export const figmaDocs = 'LINK';
+
+export const content = `
+# Meta
+
+Used to display meta information like file size, date or other.
+
+<DefaultStory />
+
+<DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
+
+## Common Use Cases
+
+- Provide relevant data points about files, media or articles such as file size, upload or publish date, user or author info.
+
+## Usage Guidelines
+
+### Clarity & Consistency
+
+- Use concise, standard formats for common meta elements and implement them consistently across the product.
+- Maintain a logical order—date or time-related information often comes first, followed by file sizes or user details.
+
+### Background and Emphasis
+
+- Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
+- Use Primary-400 to de-emphasize text content
+
+## Accessibility Information
+
+- If meta information includes dates, file sizes, or user details, ensure they are labeled in a way that screen readers can recognize (e.g., “Published on July 10, 2025” rather than “07/10/25”). If a shorter version is needed due to space constraints, ensure the full label is provided over the accessible aria label.
+- Avoid abbreviations or unclear shorthand unless they are commonly understood.
+- Group or label meta items if multiple data points appear together (e.g., file size, date, author) so they’re perceived as related information.
+- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Styles/sd-meta/Overview" />
+
+<OverviewFormatter story={MetaStories.Default}>{content}</OverviewFormatter>

@@ -1,0 +1,69 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as TableCellStories from './table-cell.stories';
+
+export const storybookLink = '/?path=/docs/styles-sd-table-cell--docs';
+export const figmaLibrary = 'LINK';
+export const figmaDocs = 'LINK';
+
+export const content = `
+# Table Cell
+
+Used to organize and structur content, scanning, comparing, and analyzing the data.
+
+<DefaultStory />
+
+<DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
+
+## Related Components
+
+[sd-table](?path=/docs/styles-sd-table--docs)
+
+## Related Templates
+
+[Table](?path=/docs/templates-table--docs)
+
+## Common Use Cases
+
+- Organize, structure, and compare data when building tables.
+- Present tabular content in a scannable, analyzable format for dashboards, reports, or listings.
+
+## Usage Guidelines
+
+### Layout
+
+- Display a top and bottom divider on every table cell; left and right edges remain open by default.
+- Toggle vertical dividers when a clearer column separation is needed (by selecting “divider”).
+- Ensure consistent cell padding to maintain a clean and organized table layout and allow content to "breathe".
+- Consider using alternating row colors (zebra style) to improve readability for larger tables.
+
+### Interaction
+
+- Enable interactive features like sorting and filtering to enhance data exploration.
+- To indicate scrollability, you can use [sd-scrollable](?path=/docs/components-sd-scrollable--docs).
+
+### First Sticky Column
+
+- Create a sticky first column by enabling the “shadow-right” option.
+- Use this feature in wide tables to keep the first column in view while scrolling horizontally.
+
+### Text Styling
+
+- Bold text to create a header cell or emphasize important data.
+- Choose left (default), center, or right alignment as desired.
+
+### Background
+
+- Use with light background options of white, neutral-100 and primary-100.
+
+## Accessibility Information
+
+- Use proper HTML table elements (e.g., <table>, <thead>, <tbody>, <tr>, <th>, <td>) to ensure screen readers can correctly interpret table headers and cell data..
+- Ensure any interactive elements within cells (e.g., sorting or filtering controls) are keyboard accessible and have clear focus indicators.
+- If the table is scrollable, confirm that the scrolling behavior and sticky columns preserve the logical reading order and remain navigable for screen reader users.
+- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Styles/sd-table-cell/Overview" />
+
+<OverviewFormatter story={TableCellStories.Default}>{content}</OverviewFormatter>

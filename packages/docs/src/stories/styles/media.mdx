@@ -1,0 +1,55 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as MediaStories from './media.stories';
+
+export const storybookLink = '/?path=/docs/styles-sd-media--docs';
+export const figmaLibrary = 'LINK';
+export const figmaDocs = 'LINK';
+
+export const content = `
+# Media
+
+Used to display an image or video preview.
+
+<DefaultStory />
+
+<DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
+
+## Related Templates
+
+[Media](?path=/docs/templates-media--docs)
+
+## Common Use Cases
+
+- Display images, illustrations, animations or videos.
+- Use to populate the media slot in [sd-teaser](?path=/docs/components-sd-teaser--docs) or the default slot in [sd-carosel](?path=/docs/components-sd-carosel--docs).
+
+## Usage Guidelines
+
+### Aspect Ratio
+
+- Use the nested sd-aspect-ratio helper component to select from predefined aspect ratios.
+
+### Attribution and Description
+
+- Use the “&--copyright” property to include attribution information if applicable.
+- Use the “&--description” property to add a content caption
+
+### Performance
+
+- Use appropriate formats and compress media files without significant quality loss to optimize loading times and performance.
+- Limit the number of media items on a single page to prevent slowing down page load times.
+
+### Background
+
+- Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
+
+## Accessibility Information
+
+- Provide concise, descriptive alt text for the embedded element; if the media is decorative only, use an empty alt attribute.
+- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Styles/sd-media/Overview" />
+
+<OverviewFormatter story={MediaStories.Default}>{content}</OverviewFormatter>
