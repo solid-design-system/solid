@@ -1,0 +1,92 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as NotificationStories from './notification.stories';
+
+export const storybookLink = '/?path=/docs/components-sd-notification--docs';
+export const figmaLibrary = 'LINK';
+export const figmaDocs = 'LINK';
+
+export const content = `
+# Notification
+
+Used to communicate information or status to users, notifications can be displayed inline or as toast messages, either individually or in stacks.
+
+<DefaultStory />
+
+<DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
+
+## Related Templates
+
+[Notification](?path=/docs/templates-notification--docs)
+
+## Common Use Cases
+
+### Inline Notification
+
+Provide contextual feedback – that needs to be noted – to users through inline notifications that are directly embedded within the content of a page or form.
+
+- Integrated into the area where the user is already focused to avoid disrupting the user's workflow.
+- Provide feedback on user actions, such as errors, warnings, or confirmations  (e.g. "Unable to save changes. Check your internet connection and try again.", "You have unsaved changes. Are you sure you want to leave this page?" or "Payment completed. Thank you for your purchase!")
+- Announce important updates or changes within the application  (e.g. New feature alert! You can now schedule posts directly from the dashboard.", "Maintenance scheduled for January 30th, 2:00 AM - 4:00 AM. The application will be unavailable during this time.")
+- Highlight critical information or display system messages that require user attention (e.g. "System update required. Please restart your application to apply the latest updates." or "Your account has been temporarily suspended due to suspicious activity. Contact support for assistance.")
+- May contain interactive elements such as links and buttons.
+
+### Toast Notification
+
+Provide brief, unobtrusive messages to users through toast notifications that overlay the interface and do not necessarily need attention.
+
+- Take the user's attention temporarily away from their current task by appearing on the screen with animations to ensure they are noticed.
+- Provide feedback on user actions, such as errors, warnings, or confirmations.  (e.g., "Failed to load data", "Your message has been sent", "Your settings have been saved").
+- Announce updates, reminders, or confirmations  (e.g., "Your settings have been saved").
+- May contain interactive elements such as links and buttons.
+- They can serve as supplementary information for content available on other pages (e.g., a toast notification "Item has been added to the cart" alongside a shopping cart page).
+
+## Usage Guidelines
+
+### Content
+
+- Provide clear, actionable information or guidance, avoiding vague or overly technical language.
+- Avoid repeating or paraphrasing the title in the body if both are present.
+- Avoid using non-essential information that can be conveyed through other means.
+
+### Behavior
+
+- Allow users to dismiss notifications if they are not critical.
+- Avoid displaying important information in toast notifications that automatically disappear.
+- If a notification has a set duration, include a duration indicator to show how much time remains before it disappears.
+- Avoid overloading users with too many notifications at once.
+- Use sd-dialog for actions that require immediate user response.
+
+### Placement
+
+- Place notifications in consistent locations across the application.
+- Avoid placing notifications where they can be easily overlooked or ignored.
+
+### Styling
+
+- Use appropriate variant to indicate the semantic meaning (e.g., green for success, red for error, etc.).
+- Keep the text style as default; text can be bolded or linked.
+- Keep the provided icon as it cannot be omitted.
+
+## Accessibility Information
+
+- **Screen Reader Support:** By using these ARIA roles appropriately, you can ensure that all users, including those who rely on screen readers, receive important notifications in a timely and accessible manner. Use ARIA role "alert" for notifications needing immediate attention, like error messages or critical updates. Screen readers announce these immediately, interrupting ongoing speech. Use ARIA role "status" for less urgent notifications, like informational messages. Screen readers announce these without interrupting ongoing speech.
+- **Keyboard Navigation:** Notifications should be reachable and dismissible using keyboard shortcuts. For example, use the “Tab” key to navigate to the notification and “Esc” to dismiss it.
+- **Accessible Focus Order:** Ensure that notifications with actionable items have an accessible focus order.
+- **Visibility Duration:** Important notifications should not disappear automatically. Users should have enough time to read and understand the message. Supplementary information for content available on other pages can disappear automatically.
+
+### Toast Notifications
+
+- Code the toast messages as polite alerts using the ARIA aria-live=”polite” attribute. This will trigger certain assistive devices, such as screenreaders, to announce the content at a convenient moment after the toast appears.
+- Use the “altText” prop on the “Action” to instruct an alternative way of actioning the toast to screen reader users.
+- Hotkey Access: Render toast notifications in an existing landmark region (“notifications”) that can be accessed via a hotkey (e.g. F6). The label can be overridden using the ”aria-label” prop of the ”ToastContainer” element. When the hotkey is pressed, focus should shift to the toast notification area. Landmark regions can be navigated using the keyboard by pressing the F6 key to move forward, and the Shift + F6 key to move backward. After navigating through the notifications, focus should return to the item that was previously focused before the hotkey was used.
+- Trap focus until an action is taken or the notification is dismissed.
+- If multiple toasts are displayed simultaneously, use “event.preventDefault” in the “onClose” prop to dismiss only the oldest one.
+- Ensure that toast notifications remain functional when users adjust the screen size (e.g., zoom to 200%), change the font size, or use the application on mobile devices. It's important to avoid requiring users to scroll horizontally to view the toast notifications.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-notification/Overview" />
+
+<OverviewFormatter story={NotificationStories.Default}>{content}</OverviewFormatter>

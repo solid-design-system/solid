@@ -1,96 +1,64 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
 
 import * as BadgeStories from './badge.stories';
 
+export const storybookLink = '/?path=/docs/components-sd-badge--docs';
+export const figmaLibrary = 'LINK';
+export const figmaDocs = 'LINK';
+
+export const content = `
+# Badge
+
+Used to visual indicate a quantity related to a particular element. Often displayed next to an icon or label.
+
+<DefaultStory />
+
+<DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
+
+## Related Templates
+
+- [Badge](?path=/docs/templates-badge--docs)
+- [Tab Group with Badge](?path=/docs/templates-tab-group--docs#tab%20group%20with%20badge)
+- [Tab Group with Icon and Badge](?path=/docs/templates-tab-group--docs#tab%20group%20with%20icon%20and%20badge)
+
+## Common Use Cases
+
+- Indicate the number of items selected, such as when using a filter.
+- Show the count of newly added items.
+- Display the number of messages received or tasks still pending.
+- Present the quantity of items collected, like those in a shopping cart.
+
+## Usage Guidelines
+
+### Content
+
+- Use only numbers as content and a “+” for overflow, which is set by the application.
+
+### Colour Variants
+
+- Consistently apply one of the provided colour choices for a cohesive look.
+- Use default variants for standard notifications to ensure consistency with the overall design.
+- Select blue, green, or red notifications depending on the emphasis you desire. Blue notifications integrate smoothly with the overall design, green notifications attract more attention, and red notifications make notifications stand out the most. Don’t associate colour variants with success or error states.
+
+### Placement and Formatting
+
+- Place where it preserves relation to the element to which it is assigned, while remaining easy to see.
+- Make sure it doesn’t cover any informative element or text.
+- Refrain from altering the formatting of the number to prevent usability or accessibility issues.
+
+### Background
+
+- Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
+
+## Accessibility Information
+
+- Avoid using badges for purely decorative purposes.
+- Make sure the badge is appropriately sized and placed so it does not obscure other important content or controls.
+- If the badge conveys critical information, such as the number of items in a cart, ensure that this data is also provided in text elsewhere — such as in the cart details — to guarantee accessibility.
+- If the badge content changes dynamically (e.g., a notification count), use ”aria-live” to announce these changes to screen reader users.
+- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
 <Meta title="Components/sd-badge/Overview" />
 
-  <div className="sb-unstyled">
-    <h1 className="sd-headline">Badge</h1>
-
-    <p className="sd-paragraph">Used to visual indicate a quantity related to a particular element. Often displayed next to an icon or label.</p>
-
-    <Canvas of={BadgeStories.Default} />
-
-    <div className="flex flex-row gap-8">
-      <div className="flex flex-row gap-4 items-center">
-        <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3912-2833&t=xaDdHn9c2lPz2NiK-4" className="font-bold">Figma Library</sd-link>
-
-        <div className="sd-status-badge sd-status-badge--success m-0">
-          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
-          Available
-        </div>
-      </div>
-
-      <div className="flex flex-row gap-4 items-center">
-        <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-sd-badge--docs" className="font-bold">Storybook</sd-link>
-
-        <div className="sd-status-badge sd-status-badge--success m-0">
-          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
-          Available
-        </div>
-      </div>
-    </div>
-
-    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Common Use Cases</h2>
-
-    <div className="sd-prose">
-      - Indicate the number of items selected, such as when using a filter.
-      - Show the count of newly added items.
-      - Display the number of messages received or tasks still pending.
-      - Present the quantity of items collected, like those in a shopping cart.
-    </div>
-
-    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Usage Guidelines</h2>
-
-    <h3 className="sd-headline sd-headline--size-lg">Content</h3>
-
-    <div className="sd-prose mb-6">
-      - Use only numbers as content and a “+” for overflow, which is set by the application.
-    </div>
-
-    <h3 className="sd-headline sd-headline--size-lg">Colour Variants</h3>
-
-    <div className="sd-prose mb-6">
-      - Consistently apply one of the provided colour choices for a cohesive look.
-      - Use default variants for standard notifications to ensure consistency with the overall design.
-      - Select blue, green, or red notifications depending on the emphasis you desire. Blue notifications integrate smoothly with the overall design, green notifications attract more attention, and red notifications make notifications stand out the most. Don’t associate colour variants with success or error states.
-
-    </div>
-
-    <h3 className="sd-headline sd-headline--size-lg">Placement and Formatting</h3>
-
-    <div className="sd-prose mb-6">
-      - Place where it preserves relation to the element to which it is assigned, while remaining easy to see.
-      - Make sure it doesn’t cover any informative element or text.
-      - Refrain from altering the formatting of the number to prevent usability or accessibility issues.
-    </div>
-
-    <h3 className="sd-headline sd-headline--size-lg">Background</h3>
-
-    <div className="sd-prose mb-6">
-      - Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
-    </div>
-
-    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Accessibility Information</h2>
-
-    <div className="sd-prose mb-6">
-      - Avoid using badges for purely decorative purposes.
-      - Make sure the badge is appropriately sized and placed so it does not obscure other important content or controls.
-      - If the badge conveys critical information, such as the number of items in a cart, ensure that this data is also provided in text elsewhere—such as in the cart details—to guarantee accessibility.
-      - If the badge content changes dynamically (e.g., a notification count), use ”aria-live” to announce these changes to screen reader users.
-      - Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
-    </div>
-
-    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Related Components</h2>
-
-    - [sd-status-badge](?path=/docs/styles-sd-status-badge--docs)
-
-    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Related Templates</h2>
-
-    <div className="sd-prose mb-6">
-      - [Badge](?path=/docs/templates-badge--docs)
-      - [Tab Group with Badge](?path=/docs/templates-tab-group--docs#tab%20group%20with%20badge)
-      - [Tab Group with Icon and Badge](?path=/docs/templates-tab-group--docs#tab%20group%20with%20icon%20and%20badge)
-    </div>
-
-  </div>
+<OverviewFormatter story={BadgeStories.Default}>{content}</OverviewFormatter>

@@ -1,0 +1,63 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as RadioGroupStories from './radio-group.stories';
+
+export const storybookLink = '/?path=/docs/components-sd-radio-group--docs';
+export const figmaLibrary = 'LINK';
+export const figmaDocs = 'LINK';
+
+export const content = `
+# Radio Group
+
+Used to group multiple input radio or radio buttons so they function as a single form control.
+
+<DefaultStory />
+
+<DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
+
+## Related Components
+
+- [sd-radio](?path=/docs/components-sd-radio--docs)
+- [sd-radio-button](?path=/docs/components-sd-radio-button--docs)
+
+## Related Templates
+
+- [Radio Button Group](?path=/docs/templates-radio-button-group--docs)
+- [Radio Group with Tooltip](?path=/docs/templates-tooltip--docs)
+
+## Common Use Cases
+
+- Present options in forms where only one selection is allowed (e.g., gender selection, payment methods).
+- Provide clear and concise choices in settings or configuration panels.
+- Enable users to make a selection in surveys or questionnaires.
+- Offer options in filter panels where only one filter can be applied at a time.
+
+## Usage Guidelines
+
+### Grouping and Labels
+
+- Group related options together using fieldsets and legends for better context and accessibility.
+- Provide a group label that states the category or describes the actions to take.
+
+### Selection Behavior
+
+- Provide a default selected option; never display options without a default selection.
+- Do not disable all choices in a group; if a selection is not applicable, consider hiding the group instead.
+- Use only when users need to select one option; for multiple selections, use checkboxes instead.
+
+### Background
+
+- Use with light background options such as white, neutral-100, or primary-100.
+
+## Accessibility Information
+
+- Ensure radios are easily tappable on touch devices.
+- A radio group only receives a single tab stop, and its options can be navigated over the arrow keys.
+- Place the error text underneath an invalid radio group, not under the selected element in the group.
+- Avoid disabled radios. If needed, ensure that they remain in the regular tab order but cannot be activated, allowing screen readers to announce their state and purpose. Use the native disabled attribute or appropriate ARIA attributes (e.g., aria-disabled="true").
+- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-radio-group/Overview" />
+
+<OverviewFormatter story={RadioGroupStories.Default}>{content}</OverviewFormatter>

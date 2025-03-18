@@ -1,87 +1,63 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
 
 import * as HeaderStories from './header.stories';
 
+export const storybookLink = '/?path=/docs/components-sd-header--docs';
+export const figmaLibrary = 'LINK';
+export const figmaDocs = 'LINK';
+
+export const content = `
+# Header
+
+Used as a container for the main navigation of a website.
+
+<DefaultStory />
+
+<DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
+
+## Related Components
+
+[sd-navigation-item](?path=/docs/components-sd-navigation-item--docs)
+
+## Related Templates
+
+[Header](?path=/docs/templates-header--docs)
+
+## Common Use Cases
+
+- Display primary navigation links for easy access to different sections of the website.
+- Showcase the company logo prominently to reinforce brand identity.
+- Include links for user account access.
+- Provide a prominent search function to help users quickly find content.
+
+## Usage Guidelines
+
+### Navigation Structure and Content
+
+- Include the logo, main navigation, and, if applicable, sub-brand logos and meta navigation.
+- Use the number of navigation items that best suits the content, always ensuring categories are clearly labeled and mutually exclusive.
+- Regularly update the navigation links to reflect current content and structure.
+
+### Layout
+
+- Place navigation items to the left, the logo at the top left, and meta navigation on the right in wider viewports to keep consistency across products.
+- In smaller viewports, place an expandable menu on the right to host navigation items while keeping the logo consistently on the left across all viewport sizes.
+- Keep the navigation fixed at the top of the website when scrolling back to the top.
+
+### Visual Style and Branding
+
+- Provide clear visual indicators for active or selected navigation items.
+- Refrain from customizing elements in ways that deviate from the brand identity.
+- Include the company logo prominently; do not use a header without the corresponding logo.
+
+## Accessibility Information
+
+- Refrain from injecting non-navigation or unrelated content (like dynamic elements) into the header container to avoid distracting or confusing assistive technology.
+- Provide a unique ID on the header container for skip links, ensuring keyboard users can quickly bypass navigation if desired.
+- When placing a logo in the header, describe its target (e.g., “Union Investment Homepage”), not the image (e.g., "Union Investment Logo").
+- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
 <Meta title="Components/sd-header/Overview" />
 
-  <div className="sb-unstyled">
-    <h1 className="sd-headline">Header</h1>
-
-    <p className="sd-paragraph">Used as a container for the main navigation of a website.</p>
-
-    <Canvas of={HeaderStories.Default} />
-
-    <div className="flex flex-row gap-8">
-      <div className="flex flex-row gap-4 items-center">
-        <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=12838-5567&t=xaDdHn9c2lPz2NiK-4" className="font-bold">Figma Library</sd-link>
-
-        <div className="sd-status-badge sd-status-badge--success m-0">
-          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
-          Available
-        </div>
-      </div>
-
-      <div className="flex flex-row gap-4 items-center">
-        <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-sd-header--docs" className="font-bold">Storybook</sd-link>
-
-        <div className="sd-status-badge sd-status-badge--success m-0">
-          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
-          Available
-        </div>
-      </div>
-    </div>
-
-    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Common Use Cases</h2>
-
-    <div className="sd-prose">
-      - Display primary navigation links for easy access to different sections of the website.
-      - Showcase the company logo prominently to reinforce brand identity.
-      - Include links for user account access.
-      - Provide a prominent search function to help users quickly find content.
-    </div>
-
-    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Usage Guidelines</h2>
-
-    <h3 className="sd-headline sd-headline--size-lg">Navigation Structure and Content</h3>
-
-    <div className="sd-prose mb-6">
-      - Include the logo, main navigation, and, if applicable, sub-brand logos and meta navigation.
-      - Use the number of navigation items that best suits the content, always ensuring categories are clearly labeled and mutually exclusive.
-      - Regularly update the navigation links to reflect current content and structure.
-
-    </div>
-
-    <h3 className="sd-headline sd-headline--size-lg">Layout</h3>
-
-    <div className="sd-prose mb-6">
-      - Place navigation items to the left, the logo at the top left, and meta navigation on the right in wider viewports to keep consistency across products.
-      - In smaller viewports, place an expandable menu on the right to host navigation items while keeping the logo consistently on the left across all viewport sizes.
-      - Keep the navigation fixed at the top of the website when scrolling back to the top.
-    </div>
-
-    <h3 className="sd-headline sd-headline--size-lg">Visual Style and Branding</h3>
-
-    <div className="sd-prose mb-6">
-      - Provide clear visual indicators for active or selected navigation items.
-      - Refrain from customizing elements in ways that deviate from the brand identity.
-      - Include the company logo prominently; do not use a header without the corresponding logo.
-    </div>
-
-    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Accessibility Information</h2>
-
-    <div className="sd-prose mb-6">
-      - Refrain from injecting non-navigation or unrelated content (like dynamic elements) into the header container to avoid distracting or confusing assistive technology.
-      - Provide a unique ID on the header container for skip links, ensuring keyboard users can quickly bypass navigation if desired.
-      - When placing a logo in the header, describe its target (e.g., “Union Investment Homepage”), not the image (e.g., "Union Investment Logo").
-      - Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
-    </div>
-
-    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Related Components</h2>
-
-    [sd-navigation-item](?path=/docs/components-sd-navigation-item--docs)
-
-    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Related Templates</h2>
-
-    [Header](?path=/docs/templates-header--docs)
-
-  </div>
+<OverviewFormatter story={HeaderStories.Default}>{content}</OverviewFormatter>

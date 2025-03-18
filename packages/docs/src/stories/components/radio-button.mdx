@@ -1,0 +1,67 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as RadioButtonStories from './radio-button.stories';
+
+export const storybookLink = '/?path=/docs/components-sd-radio-button--docs';
+export const figmaLibrary = 'LINK';
+export const figmaDocs = 'LINK';
+
+export const content = `
+# Radio Button
+
+Used to switch between different options or views by selecting one option from a group.
+
+<DefaultStory />
+
+<DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
+
+## Related Components
+
+- [sd-radio](?path=/docs/components-sd-radio--docs)
+- [sd-radio-group](?path=/docs/components-sd-radio-group--docs)
+
+## Related Templates
+
+[Radio Button Group](?path=/docs/templates-radio-button-group--docs)
+
+## Common Use Cases
+
+- Select one option from a group where one is already preselected.
+- Switch between groups of settings.
+- Filter views by a parent category.
+
+## Usage Guidelines
+
+### Content
+
+- Include icons to support each option visually if possible.
+- Label each choice clearly.
+
+### Behavior
+
+- Don’t use as input method in forms, for they are not form elements. Use [sd-radio](?path=/docs/components-sd-radio--docs) instead.
+- Slot inside of an [sd-radio-group](?path=/docs/components-sd-radio-group--docs).
+- Use only in groups, as they are designed to allow the user to activate one of several options. To work with a single option, use [sd-checkbox](?path=/docs/components-sd-checkbox--docs) instead.
+- Pre-select always a “default” value; there is no invalid state.
+- Limit the number of options in the group . Users should be able to retain all options available and not be overwhelmed by them.
+
+### Styling
+
+- All radio buttons in the group must be styled similarly, e.g., each one is labelled with both text and icon.
+- Avoid styling options only with icons if they are not common symbols, to prevent ambiguous interpretations.
+
+### Background
+
+- Use with light background options such as white, neutral-100, or primary-100.
+
+## Accessibility Information
+
+- Provide meaningful alternative text for icon-only radio buttons.
+- Communicate the group’s function—such as filtering or view switching—through clear context or labels.
+- Avoid disabled radio buttons. If needed, ensure that they remain in the regular tab order but cannot be activated, allowing screen readers to announce their state and purpose. Use the native disabled attribute or appropriate ARIA attributes (e.g., aria-disabled="true").
+- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-radio-button/Overview" />
+
+<OverviewFormatter story={RadioButtonStories.Default}>{content}</OverviewFormatter>

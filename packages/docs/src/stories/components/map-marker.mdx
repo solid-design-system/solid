@@ -1,0 +1,52 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as MapMarkerStories from './map-marker.stories';
+
+export const storybookLink = '/?path=/docs/components-sd-map-marker--docs';
+export const figmaLibrary = 'LINK';
+export const figmaDocs = 'LINK';
+
+export const content = `
+# Map Marker
+
+Used to show a location or a cluster of locations on a map.
+
+<DefaultStory />
+
+<DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
+
+## Related Templates
+
+[Map Marker](?path=/docs/templates-map-marker--docs)
+
+## Common Use Cases
+
+- Indicate individual locations on a map, such as offices, venues, or other points of interest.
+- Group individual locations into clusters at higher zoom levels, displaying the number of locations in the cluster.
+
+## Usage Guidelines
+
+### Styling and Icons
+
+- Use logos or icons for place pins that can be easily identified.
+- Avoid using overly complex logos or icons that might confuse users.
+- Limit the variety of icons to prevent confusion about the meaning of markers.
+
+### Behavior and Interaction
+
+- Keep the main marker for the current or preset location visible at all times.
+- Ensure that only one main marker is active at any given moment.
+- Use clustering for high-density areas to enhance map readability.
+- Regularly update the marker data to reflect current information.
+
+## Accessibility Information
+
+- If interactive, make sure to provide an accessible name by adding a descriptive text to the ”default” slot and visually hide it if needed.
+- Provide keyboard navigation that allows users to tab to markers and activate them via Enter or Space.
+- Offer alternative interactions or text-based listings of markers for users who cannot easily manipulate or see the map.
+- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-map-marker/Overview" />
+
+<OverviewFormatter story={MapMarkerStories.Default}>{content}</OverviewFormatter>

@@ -1,95 +1,68 @@
-import { Canvas, Meta } from '@storybook/blocks';
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
 
 import * as CarouselStories from './carousel.stories';
 
+export const storybookLink = '/?path=/docs/components-sd-carousel--docs';
+export const figmaLibrary = 'LINK';
+export const figmaDocs = 'LINK';
+
+export const content = `
+# Carousel
+
+Used to display an arbitrary number of content slides along a horizontal axis.
+
+On touch devices, the slides can be moved by swiping.
+
+<DefaultStory />
+
+<DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
+
+## Related Components
+
+[sd-carousel-item](?path=/docs/components-sd-carousel-item--docs)
+
+## Related Templates
+
+[Carousel](?path=/docs/templates-carousel--docs)
+
+## Common Use Cases
+
+- Highlight key features or promotions in a compact, rotating format.
+- Create interactive galleries for users to browse through images or videos.
+- Showcase testimonials or reviews to build credibility and trust.
+
+## Usage Guidelines
+
+### Content and Style
+
+- Ensure consistency in content and style across slides by following a similar layout and type of information.
+
+### Usage and Interaction
+
+- Adapt the "slides per move" attribute to "slides per page" as needed, but keep the total number of available slides in mind: avoid moving more than one slide at a time if there are only a few slides.
+- Refrain from placing critical content in a rotating format, as users may miss it.
+- Enable swipe gestures to move slides on touch devices, while keeping the navigation arrows visible at all times.
+- Avoid enabling autoplay if possible. If necessary, ensure there is an option to stop any automatic movement.
+
+### Background
+
+- Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
+
+## Accessibility Information
+
+- Ensure that users can navigate through the carousel using the keyboard (e.g., Tab and Arrow keys).
+- Navigation arrows are still displayed on touch devices to enable alternative interaction that complies with accessibility requirements.
+- Show the pause/play control at all times.
+- Ensure sufficient contrast between each slide’s content and its background.
+
+### Aria Labels
+
+- Use appropriate ARIA roles, such as ’aria-roledescription="carousel"’and ”aria-live” to indicate the state of the carousel and announce dynamic changes to screen reader users
+- Describe navigation controls and slides using ”aria-label” or ”aria-labelledby”.
+- Add the role="region" attribute together with an unique aria-label whenever the carousel is an important landmark of the page.
+- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
 <Meta title="Components/sd-carousel/Overview" />
 
-  <div className="sb-unstyled">
-    <h1 className="sd-headline">Carousel</h1>
-
-    <p className="sd-paragraph">Used to display an arbitrary number of content slides along a horizontal axis.</p>
-
-    <Canvas of={CarouselStories.Default} />
-
-    <div className="flex flex-row gap-8">
-      <div className="flex flex-row gap-4 items-center">
-        <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=12834-4173&t=xaDdHn9c2lPz2NiK-4" className="font-bold">Figma Library</sd-link>
-
-        <div className="sd-status-badge sd-status-badge--success m-0">
-          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
-          Available
-        </div>
-      </div>
-
-      <div className="flex flex-row gap-4 items-center">
-        <sd-link href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-sd-carousel--docs" className="font-bold">Storybook</sd-link>
-
-        <div className="sd-status-badge sd-status-badge--success m-0">
-          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
-          Available
-        </div>
-      </div>
-    </div>
-
-    <p className="sd-paragraph mt-8">
-      On touch devices, the slides can be moved by swiping.
-    </p>
-
-    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Common Use Cases</h2>
-
-    <div className="sd-prose">
-      - Highlight key features or promotions in a compact, rotating format.
-      - Create interactive galleries for users to browse through images or videos.
-      - Showcase testimonials or reviews to build credibility and trust.
-    </div>
-
-    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Usage Guidelines</h2>
-
-    <h3 className="sd-headline sd-headline--size-lg">Content and Style</h3>
-
-    <div className="sd-prose mb-6">
-      - Ensure consistency in content and style across slides by following a similar layout and type of information.
-    </div>
-
-    <h3 className="sd-headline sd-headline--size-lg">Usage and Interaction</h3>
-
-    <div className="sd-prose mb-6">
-      - Adapt the "slides per move" attribute to "slides per page" as needed, but keep the total number of available slides in mind: avoid moving more than one slide at a time if there are only a few slides.
-      - Refrain from placing critical content in a rotating format, as users may miss it.
-      - Enable swipe gestures to move slides on touch devices, while keeping the navigation arrows visible at all times.
-      - Avoid enabling autoplay if possible. If necessary, ensure there is an option to stop any automatic movement.
-    </div>
-
-    <h3 className="sd-headline sd-headline--size-lg">Background</h3>
-
-    <div className="sd-prose mb-6">
-      - Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
-    </div>
-
-    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Accessibility Information</h2>
-
-    <div className="sd-prose mb-6">
-      - Ensure that users can navigate through the carousel using the keyboard (e.g., Tab and Arrow keys).
-      - Navigation arrows are still displayed on touch devices to enable alternative interaction that complies with accessibility requirements.
-      - Show the pause/play control at all times.
-      - Ensure sufficient contrast between each slide’s content and its background.
-    </div>
-
-    <h3 className="sd-headline sd-headline--size-lg">Aria Labels</h3>
-
-    <div className="sd-prose mb-6">
-      - Use appropriate ARIA roles, such as ’aria-roledescription="carousel"’and ”aria-live” to indicate the state of the carousel and announce dynamic changes to screen reader users
-      - Describe navigation controls and slides using ”aria-label” or ”aria-labelledby”.
-      - Add the role="region" attribute together with an unique aria-label whenever the carousel is an important landmark of the page.
-      - Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
-    </div>
-
-    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Related Components</h2>
-
-    [sd-carousel-item](?path=/docs/components-sd-carousel-item--docs)
-
-    <h2 className="sd-headline sd-headline--size-3xl mb-8 mt-12 text-black">Related Templates</h2>
-
-    [Carousel](?path=/docs/templates-carousel--docs)
-
-  </div>
+<OverviewFormatter story={CarouselStories.Default}>{content}</OverviewFormatter>

@@ -1,0 +1,65 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as NavigationItemStories from './navigation-item.stories';
+
+export const storybookLink = '/?path=/docs/components-sd-navigation-item--docs';
+export const figmaLibrary = 'LINK';
+export const figmaDocs = 'LINK';
+
+export const content = `
+# Navigation Item
+
+Used to facilitate seamless page transitions and help users orient themselves within the application.
+
+<DefaultStory />
+
+<DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
+
+## Related Components
+
+[sd-header](?path=/docs/components-sd-header--docs)
+
+## Related Templates
+
+- [Dropdown with Navigation Items](?path=/docs/templates-dropdown--docs#dropdown-with-navigation-items)
+- [Navigation Item with Badge](?path=/docs/templates-badge--docs#navigation%20item%20with%20badge)
+
+## Common Use Cases
+
+- Populate an [sd-header](?path=/docs/components-sd-header--docs) navigation bar at the top of a page, helping users easily access different sections.
+- Implement navigation items in a sidebar for a more detailed and hierarchical navigation structure.
+
+## Usage Guidelines
+
+### Labels and Icons
+
+- Use clear, concise labels for navigation items.
+- Don’t use icons alone unless they are universally understood.
+- Use icons and labels together to enhance comprehension.
+
+### Text Styles and Descriptions
+
+- The default style is “book”, but text can be bolded if desired.
+- Bold text for current / parent as well as first level navigation.
+- Override with ‘”text.black” for non-clickable second level items.
+- Be consistent in the use of descriptions: Include them for all items at the same level and keep them similar in length.
+
+### Spacing
+
+- Use relaxed for extra spacing on vertical desktop viewports.
+- Use indented for nested navigation items in vertical desktop or mobile viewports and in horizontal mobile menus.
+
+### Background Options
+
+- Use with background options of white, neutral-100, and primary-100.
+
+## Accessibility Information
+
+- Provide a logical tab order that follows the visual sequence of navigation items and their different levels.
+- Use aria-current="page" or aria-current="location" on the active navigation item to communicate the user’s current location.
+- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-navigation-item/Overview" />
+
+<OverviewFormatter story={NavigationItemStories.Default}>{content}</OverviewFormatter>

@@ -1,0 +1,64 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as InputStories from './input.stories';
+
+export const storybookLink = '/?path=/docs/components-sd-input--docs';
+export const figmaLibrary = 'LINK';
+export const figmaDocs = 'LINK';
+
+export const content = `
+# Input
+
+Used to allow users to enter text. It can be displayed in several ways, depending on the type.
+
+<DefaultStory />
+
+<DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
+
+## Related Templates
+
+- [Input](?path=/docs/templates-input--docs)
+- [Autocomplete](?path=/docs/templates-autocomplete--docs)
+- [Input with Tooltip](?path=/docs/templates-tooltip--docs#input%20with%20tooltip)
+
+## Common Use Cases
+
+- Collect user data in forms, including names, emails, dates, and passwords.
+- Allow users to enter numerical values like quantities or prices.
+
+## Usage Guidelines
+
+### Labels and Placeholders
+
+- Use descriptive and concise labels.
+- Avoid using placeholder text as a substitute for labels.
+
+### User Guidance
+
+- Provide instructions within helper text for completing the field, such as password or character count.
+- Offer additional guidance with tooltips or help text when the interpretation of the field could be unclear or ambiguous.
+- Provide placeholder text to guide users on the expected input format.
+
+### Validation and Formatting
+
+- Use dynamic formatting to automatically format user input as they type.
+- Validate user entries in real-time to provide immediate feedback whenever possible.
+- Avoid using fields for actions that require immediate feedback; use buttons instead.
+
+### Input Types
+
+- Use appropriate field types (e.g., “email”, “password”, “number”). For autocomplete functionalities (e.g., search fields) use [sd-combobox](?path=/docs/components-sd-combobox--docs).
+- Use for brief text input only. For longer inputs, such as comments or user feedback, use sd-textarea instead.
+
+## Accessibility Information
+
+- Ensure that focus moves logically between input fields and other form elements. When an input field is focused, it should be clearly indicated.
+- If an input field contains an error, ensure that it is announced by screen readers. Use aria-invalid="true" and aria-describedby to link the input field to the error message.
+- Avoid disabled input fields. If needed, ensure that they remain in the regular tab order but cannot be activated, allowing screen readers to announce their state and purpose. Use the native disabled attribute or appropriate ARIA attributes (e.g., aria-disabled="true").
+- Ensure input fields are usable on all screen sizes. On smaller screens, consider using larger touch targets for input fields.
+- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-input/Overview" />
+
+<OverviewFormatter story={InputStories.Default}>{content}</OverviewFormatter>

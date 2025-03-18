@@ -1,0 +1,32 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as TabPanelStories from './tab-panel.stories';
+
+export const storybookLink = '/?path=/docs/components-sd-tab-panel--docs';
+export const figmaLibrary = 'LINK';
+export const figmaDocs = 'LINK';
+
+export const content = `
+# Tab Panel
+
+Used inside sd-tab-group to display tabbed content.
+
+Tab panels are always used as part of its parent tab group. See [sd-tab-group](?path=/docs/components-sd-tab-group--docs) for use cases, usage guidelines and accessibility information.
+
+<DefaultStory />
+
+<DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
+
+## Related Components
+
+- [sd-tab](?path=/docs/components-sd-tab--docs)
+- [sd-tab-group](?path=/docs/components-sd-tab-group--docs)
+
+## Related Templates
+
+[Tab Group](?path=/docs/templates-tab-group--docs)`;
+
+<Meta title="Components/sd-tab-panel/Overview" />
+
+<OverviewFormatter story={TabPanelStories.Default}>{content}</OverviewFormatter>
