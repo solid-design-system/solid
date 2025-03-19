@@ -61,12 +61,12 @@ export const OverviewFormatter = ({ children, story }) => {
             DocumentationLinks: {
               component: documentationLinks
             },
-            h2: {
+            h3: {
               props: {
                 className: 'sd-headline sd-headline--size-3xl mb-8 mt-12 text-black'
               }
             },
-            h3: {
+            h4: {
               props: {
                 className: 'sd-headline sd-headline--size-lg text-black',
                 style: {
