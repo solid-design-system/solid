@@ -18,44 +18,44 @@ Used over other content. It requires an interaction from the user before they ca
 
 <DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
 
-## Related Templates
+### Related Templates
 
 [Dialog](/?path=/docs/templates-dialog--docs)
 
-## Common Use Cases
+### Common Use Cases
 
 - Confirm an action which can have significant consequences and explicit user approval or input is needed (e.g. deleting a file).
 - Present important information that must be seen and acknowledged before proceeding (e.g., session expired and renewed login required).
 - Require users to enter information or select from multiple options before continuing.
 - For non-critical content or information that doesn’t require immediate user input, please use [sd-notification](/?path=/docs/components-sd-notification--docs) to avoid workflow disruption.
 
-## Usage Guidelines
+### Usage Guidelines
 
-### Slots
+#### Slots
 
 - Use the ”headline” slot to add a headline.
 - Add main content on the ”default” slot. The “default” slot is always scrollable.
 - Use the ”footer” slot to add action elements. The “footer” slot is always fixed.
 
-### Headline and Content
+#### Headline and Content
 
 - Use clear and concise headlines that describe the purpose.
 - Avoid displaying content unrelated to the current workflow.
 - Refrain from using dialogs for complex forms or large amounts of information.
 
-### Actions
+#### Actions
 
 - Ensure a clear user journey by using a single primary button for the main action and secondary buttons for less important actions.
 - Provide an action to close the interaction if a close button is not present in the top-right corner.
 - Avoid having multiple primary action buttons within the same dialog.
 
-### User Interaction
+#### User Interaction
 
 - Require users to take an action before they can continue interacting with the rest of the interface.
 - Provide multiple ways to close the dialog, such as an “X” button, a cancel button, or clicking outside the dialog.
 - Avoid excessive use of dialogs, as they can be disruptive to the user experience.
 
-## Accessibility Information
+### Accessibility Information
 
 - Always include a visible and easily accessible close button within the modal but also enable closing using the Escape key.
 - Clicking outside the modal to close it might be convenient for some users, but can’t be the only method provided since it’s not accessible for screen reader users.

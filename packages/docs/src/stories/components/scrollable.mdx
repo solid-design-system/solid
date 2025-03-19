@@ -18,29 +18,29 @@ Used as a container to create scrollable sections within the user interface.
 
 <DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
 
-## Common Use Cases
+### Common Use Cases
 
 - Present long lists or detailed information that exceeds the visible area.
 
-## Usage Guidelines
+### Usage Guidelines
 
-### Content
+#### Content
 
 - Ensure critical information is not hidden within scrollable areas; users should not have to scroll to find essential content.
 
-### Behavior
+#### Behavior
 
 - Use visual cues like shadows or buttons to indicate scrollable content when simply cutting off hidden content isn't enough.
 - Avoid disabling scrollbars, as they provide essential visual cues for users.
 - Limit the use of scrollable containers; excessive scrolling can be frustrating for users.
 - Prefer vertical scrolling over horizontal scrolling, especially on mobile devices.
 
-### Responsiveness
+#### Responsiveness
 
 - Test whether your scrollable containers adapts well to different screen sizes and orientations.
 - Avoid setting fixed heights for scrollable containers if the content size can vary significantly.
 
-## Accessibility Information
+### Accessibility Information
 
 - Ensure keyboard users can access and scroll within the container making the container focusable (tabindex="0") and allow arrow keys to navigate through the content.
 - Verify that any interactive elements within the scrollable container receive a proper focus highlight and move into the visible frame.

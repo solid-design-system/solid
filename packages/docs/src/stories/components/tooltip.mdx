@@ -18,46 +18,46 @@ Used as a floating and non-actionable text label that explains an element or fun
 
 <DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
 
-## Related Templates
+### Related Templates
 
 [Tooltip](/?path=/docs/templates-tooltip--docs)
 
-## Common Use Cases
+### Common Use Cases
 
 - Provide additional, useful, and non-essential information about form fields.
 - Expand abbreviations or acronyms that might be unfamiliar to users.
 - Offer detailed information about specific data points in charts or graphs.
 - Provide more context for error messages or warnings and anticipate any questions that users may have.
 
-## Usage Guidelines
+### Usage Guidelines
 
-### Trigger Element
+#### Trigger Element
 
 - Use any interactive element as a tooltip trigger by placing it in the provided slot; the default trigger (info-i) can be replaced based on context or preference.
 
-### Content
+#### Content
 
 - Use short, descriptive text; if a longer explanation is required, consider non-interactive means to convey this information.
 - Avoid jargon or highly technical language; aim to solve questions, not trigger more.
 - Do not use for critical or unique information.
 - Do not place links, buttons, or other interactive elements within the content.
 
-### Behavior and Placement
+#### Behavior and Placement
 
 - Place the tooltip where the floating element does not obscure important content related to the subject.
 - Ensure it disappears when the user interacts with other elements.
 - Avoid tootlips being cropped by other elements of the interface; use appropriate placement for this purpose.
 
-### Styling
+#### Styling
 
 - Display a headline by bolding the text if it makes the content easier to understand.
 - Emphasize key information by bolding parts of the text.
 
-### Background
+#### Background
 
 - Use with light background options of white, neutral-100 and primary-100.
 
-## Accessibility Information
+### Accessibility Information
 
 - Avoid placing buttons, links, or other interactive controls inside a tooltip, as it’s designed to be an ephemeral container for supplementary information.
 - On desktop, tooltips open by default on hover over the trigger element, or optionally on click. They close by clicking the trigger again or by moving the pointer away.

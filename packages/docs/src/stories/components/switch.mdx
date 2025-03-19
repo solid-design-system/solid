@@ -18,28 +18,28 @@ Used to give control over a feature or option that can be turned on or off.
 
 <DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
 
-## Common Use Cases
+### Common Use Cases
 
 - Allow users to switch between two states.
 - Use to enable or disable settings, such as turning notifications on or off.
 - Toggle features or functionalities within an application, applying changes immediately.
 
-## Usage Guidelines
+### Usage Guidelines
 
-### Content
+#### Content
 
 - Make sure both the label and action are clear by using appropriate text.
 - Place label text on top of the control, such as in a header, while action text should be placed to the right, next to the control.
 - Use adjectives to describe actions, as they are less ambiguous than verbs.
 - Limit use to binary choices, such as "on/off" or "yes/no."
 
-### Behavior
+#### Behavior
 
 - Use for actions that take effect immediately without requiring additional confirmation.
 - Ensure the visual state accurately reflects its functional state.
 - If it's unclear whether the component is showing a state or an action, use [sd-checkbox](/?path=/docs/components-sd-checkbox--docs) instead.
 
-## Accessibility Information
+### Accessibility Information
 
 - Consider alternatives to switches, as many users may find them confusing.
 - Include aria-checked="true" or aria-checked="false" to indicate the on/off state to assistive technologies.

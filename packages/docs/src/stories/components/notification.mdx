@@ -18,13 +18,13 @@ Used to communicate information or status to users, notifications can be display
 
 <DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
 
-## Related Templates
+### Related Templates
 
 [Notification](/?path=/docs/templates-notification--docs)
 
-## Common Use Cases
+### Common Use Cases
 
-### Inline Notification
+#### Inline Notification
 
 Provide contextual feedback – that needs to be noted – to users through inline notifications that are directly embedded within the content of a page or form.
 
@@ -34,7 +34,7 @@ Provide contextual feedback – that needs to be noted – to users through inli
 - Highlight critical information or display system messages that require user attention (e.g. "System update required. Please restart your application to apply the latest updates." or "Your account has been temporarily suspended due to suspicious activity. Contact support for assistance.")
 - May contain interactive elements such as links and buttons.
 
-### Toast Notification
+#### Toast Notification
 
 Provide brief, unobtrusive messages to users through toast notifications that overlay the interface and do not necessarily need attention.
 
@@ -44,15 +44,15 @@ Provide brief, unobtrusive messages to users through toast notifications that ov
 - May contain interactive elements such as links and buttons.
 - They can serve as supplementary information for content available on other pages (e.g., a toast notification "Item has been added to the cart" alongside a shopping cart page).
 
-## Usage Guidelines
+### Usage Guidelines
 
-### Content
+#### Content
 
 - Provide clear, actionable information or guidance, avoiding vague or overly technical language.
 - Avoid repeating or paraphrasing the title in the body if both are present.
 - Avoid using non-essential information that can be conveyed through other means.
 
-### Behavior
+#### Behavior
 
 - Allow users to dismiss notifications if they are not critical.
 - Avoid displaying important information in toast notifications that automatically disappear.
@@ -60,25 +60,25 @@ Provide brief, unobtrusive messages to users through toast notifications that ov
 - Avoid overloading users with too many notifications at once.
 - Use sd-dialog for actions that require immediate user response.
 
-### Placement
+#### Placement
 
 - Place notifications in consistent locations across the application.
 - Avoid placing notifications where they can be easily overlooked or ignored.
 
-### Styling
+#### Styling
 
 - Use appropriate variant to indicate the semantic meaning (e.g., green for success, red for error, etc.).
 - Keep the text style as default; text can be bolded or linked.
 - Keep the provided icon as it cannot be omitted.
 
-## Accessibility Information
+### Accessibility Information
 
 - **Screen Reader Support:** By using these ARIA roles appropriately, you can ensure that all users, including those who rely on screen readers, receive important notifications in a timely and accessible manner. Use ARIA role "alert" for notifications needing immediate attention, like error messages or critical updates. Screen readers announce these immediately, interrupting ongoing speech. Use ARIA role "status" for less urgent notifications, like informational messages. Screen readers announce these without interrupting ongoing speech.
 - **Keyboard Navigation:** Notifications should be reachable and dismissible using keyboard shortcuts. For example, use the “Tab” key to navigate to the notification and “Esc” to dismiss it.
 - **Accessible Focus Order:** Ensure that notifications with actionable items have an accessible focus order.
 - **Visibility Duration:** Important notifications should not disappear automatically. Users should have enough time to read and understand the message. Supplementary information for content available on other pages can disappear automatically.
 
-### Toast Notifications
+#### Toast Notifications
 
 - Code the toast messages as polite alerts using the ARIA aria-live=”polite” attribute. This will trigger certain assistive devices, such as screenreaders, to announce the content at a convenient moment after the toast appears.
 - Use the “altText” prop on the “Action” to instruct an alternative way of actioning the toast to screen reader users.

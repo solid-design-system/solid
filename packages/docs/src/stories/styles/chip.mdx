@@ -18,33 +18,33 @@ Used as a small, non-interactive label that represents a status, property or met
 
 <DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
 
-## Related Templates
+### Related Templates
 
 [Chip](/?path=/docs/templates-chip--docs)
 
-## Common Use Cases
+### Common Use Cases
 
 - Display selected items or categories within sd-teaser, such as chosen filters, tags, or interests.
 - Indicate attributes of items, such as “New,” “Featured,” or “Verified.”
 - Communicate user roles, like “Moderator” or “Admin”.
 
-## Usage Guidelines
+### Usage Guidelines
 
-### Label and Styling
+#### Label and Styling
 
 - Keep chip text short and easily scannable. Long text disrupts layouts and diminishes the chip’s visual impact.
 - Avoid overuse. Too many chips in one area can create visual clutter.
 - Use the “&--variant” property to apply the color variant that best works on the background, keeping it consistent throughout the product.
 
-### Chips and Flags
+#### Chips and Flags
 
 - sd-chip and [sd-flag](/?path=/docs/styles-sd-flag--docs) can be used for similar purposes. Use them consistently throughout your product and, if both are needed, be sure to define which categories each should be used for (e.g. a chip on an article teaser informs about its subject, the flag about the type of article).
 
-### Chips and Tags
+#### Chips and Tags
 
 - Use only as a non-interactive element; for interactive elements (e.g., a dynamic filter), use [sd-tag](/?path=/docs/styles-sd-tag--docs) instead.
 
-## Accessibility Information
+### Accessibility Information
 
 - Since chips are non-interactive, ensure they are marked in a way that prevents them from receiving focus.
 - If the chip text is already conveyed in the teaser body, consider hiding the chip from screen readers using aria-hidden="true" to prevent repeating the same information.

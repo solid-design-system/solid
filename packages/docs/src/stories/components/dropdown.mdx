@@ -18,34 +18,34 @@ Used to display a list of actions or options in a panel when activated.
 
 <DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
 
-## Related Templates
+### Related Templates
 
 [Dropdown](/?path=/docs/templates-dropdown--docs)
 
-## Common Use Cases
+### Common Use Cases
 
 - Provide a list of items in a compact space.
 - Display additional options or settings related to a specific item.
 - Enable navigation through different sections or categories.
 
-## Usage Guidelines
+### Usage Guidelines
 
-### Behavior
+#### Behavior
 
 - Avoid hiding sets of less than 4 items in dropdowns.
 - Refrain from nesting dropdowns within each other. If nesting is strictly necessary, limit the menu to two layers to prevent complex operation and cognitive load.
 - Keep the panel near its trigger so users understand its context.
 
-### Triggers
+#### Triggers
 
 - Maintain consistent styling for dropdown triggers placed at the same level or in the same group; i.e., if a trigger has both text and icon, other triggers on the same level or group should also display text and icon.
 - Avoid truncating trigger labels if possible.
 
-### Panel Items
+#### Panel Items
 
 - Group related panel items to make them easier to find, especially if there are many. Use a group label and [sd-divider](/?path=/docs/components-sd-divider--docs) to separate them visually.
 
-## Accessibility Information
+### Accessibility Information
 
 - Ensure the dropdown can be opened, navigated, and closed using the keyboard.
 - Implement a focus lock within the dropdown menu to trap focus. When the menu is triggered via keyboard, the first item should automatically receive focus. When closed, focus should return to the dropdown button.

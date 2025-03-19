@@ -20,39 +20,39 @@ Use the ”default” slot to add content.
 
 <DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
 
-## Related Templates
+### Related Templates
 
 [Expandable](/?path=/docs/templates-expandable--docs)
 
-## Common Use Cases
+### Common Use Cases
 
 - Display non-essential information that users can choose to read if interested.
 - Prevent clutter by truncating long text blocks and allowing users to expand them as needed.
 - Implement in product descriptions to show more details on demand.
 
-## Usage Guidelines
+### Usage Guidelines
 
-### Content and Labels
+#### Content and Labels
 
 - Use the ”default” slot to add content.
 - Use concise labels for the trigger (e.g., “Read more,” “Show more”).
 - The initial visible text should give a hint about the hidden content.
 - Ensure the content is supplementary and not critical.
 
-### Interaction and Usage
+#### Interaction and Usage
 
 - Avoid overloading with too much content. If a long text is required, consider other options for displaying it, e.g., triggering a [sd-dialog](/?path=/docs/components-sd-dialog--docs).
 - Do not nest expandable sections within other expandable sections.
 
-### Expandable vs. Accordion
+#### Expandable vs. Accordion
 
 - The use of [sd-accordion](/?path=/docs/components-sd-accordion--docs) is generally recommended over the use of [sd-expandable](/?path=/docs/components-sd-expandable--docs): accordions give the user a quick scan header to decide if the content is relevant to them, offer a cleaner layout and are more accessible as a result.
 
-### Background
+#### Background
 
 - Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
 
-## Accessibility Information
+### Accessibility Information
 
 - Expandables are intended to be used for text blocks, so no interactive elements would appear when expanding, thus the focus remains on the expandable trigger whether open or closed, adjusting the labelling for each state.
 - Use ARIA roles such as ”aria-expanded” to indicate the state of the expandable section. Ensure each section has a clear and descriptive label.

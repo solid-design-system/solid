@@ -18,29 +18,29 @@ Used to switch between different options or views by selecting one option from a
 
 <DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
 
-## Related Components
+### Related Components
 
 - [sd-radio](/?path=/docs/components-sd-radio--docs)
 - [sd-radio-group](/?path=/docs/components-sd-radio-group--docs)
 
-## Related Templates
+### Related Templates
 
 [Radio Button Group](/?path=/docs/templates-radio-button-group--docs)
 
-## Common Use Cases
+### Common Use Cases
 
 - Select one option from a group where one is already preselected.
 - Switch between groups of settings.
 - Filter views by a parent category.
 
-## Usage Guidelines
+### Usage Guidelines
 
-### Content
+#### Content
 
 - Include icons to support each option visually if possible.
 - Label each choice clearly.
 
-### Behavior
+#### Behavior
 
 - Don’t use as input method in forms, for they are not form elements. Use [sd-radio](/?path=/docs/components-sd-radio--docs) instead.
 - Slot inside of an [sd-radio-group](/?path=/docs/components-sd-radio-group--docs).
@@ -48,16 +48,16 @@ Used to switch between different options or views by selecting one option from a
 - Pre-select always a “default” value; there is no invalid state.
 - Limit the number of options in the group. Users should be able to retain all options available and not be overwhelmed by them.
 
-### Styling
+#### Styling
 
 - All radio buttons in the group must be styled similarly, e.g., each one is labelled with both text and icon.
 - Avoid styling options only with icons if they are not common symbols, to prevent ambiguous interpretations.
 
-### Background
+#### Background
 
 - Use with light background options such as white, neutral-100, or primary-100.
 
-## Accessibility Information
+### Accessibility Information
 
 - Provide meaningful alternative text for icon-only radio buttons.
 - Communicate the group’s function—such as filtering or view switching—through clear context or labels.
