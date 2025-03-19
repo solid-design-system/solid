@@ -11,7 +11,7 @@
 /* plop:style */
 @import url('./modules/prose.css');
 
-body {
+:root {
   --tw-blur: ;
   --tw-brightness: ;
   --tw-contrast: ;
