@@ -6,36 +6,42 @@ export const OverviewFormatter = ({ children, story }) => {
   const defaultStoryCanvas = () => <Canvas of={story} />;
   const documentationLinks = ({ children, ...props }) => (
     <div className="flex flex-col md:flex-row gap-8 items-start md:items-center mt-8 mb-8">
-      <div className="flex flex-row gap-4 items-center">
-        <sd-link href={props.storybookLink}>Storybook Docs</sd-link>
+      {props.storybookLink && (
+        <div className="flex flex-row gap-4 items-center">
+          <sd-link href={props.storybookLink}>Storybook Docs</sd-link>
 
-        <div className="sd-status-badge sd-status-badge--success m-0">
-          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
-          Available
+          <div className="sd-status-badge sd-status-badge--success m-0">
+            <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+            Available
+          </div>
         </div>
-      </div>
+      )}
 
-      <div className="flex flex-row gap-4 items-center">
-        <sd-link href={props.figmaLibrary} target="_blank">
-          Figma Library
-        </sd-link>
+      {props.figmaLibrary && (
+        <div className="flex flex-row gap-4 items-center">
+          <sd-link href={props.figmaLibrary} target="_blank">
+            Figma Library
+          </sd-link>
 
-        <div className="sd-status-badge sd-status-badge--success m-0">
-          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
-          Available
+          <div className="sd-status-badge sd-status-badge--success m-0">
+            <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+            Available
+          </div>
         </div>
-      </div>
+      )}
 
-      <div className="flex flex-row gap-4 items-center">
-        <sd-link href={props.figmaDocs} target="_blank">
-          Figma Docs
-        </sd-link>
+      {props.figmaDocs && (
+        <div className="flex flex-row gap-4 items-center">
+          <sd-link href={props.figmaDocs} target="_blank">
+            Figma Docs
+          </sd-link>
 
-        <div className="sd-status-badge sd-status-badge--success m-0">
-          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
-          Available
+          <div className="sd-status-badge sd-status-badge--success m-0">
+            <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+            Available
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 
