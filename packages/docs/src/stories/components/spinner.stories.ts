@@ -1,9 +1,10 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
-import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args, parameters } = storybookDefaults('sd-spinner');
+const { argTypes, parameters } = storybookDefaults('sd-spinner');
 const { generateTemplate } = storybookTemplate('sd-spinner');
+const { overrideArgs } = storybookHelpers('sd-select');
 
 /**
  *
@@ -16,7 +17,7 @@ export default {
   title: 'Components/sd-spinner',
   component: 'sd-spinner',
   tags: ['!dev'],
-  args,
+  args: overrideArgs({ type: 'attribute', name: 'color', value: 'primary' }),
   argTypes,
   parameters: {
     ...parameters,
