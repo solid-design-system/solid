@@ -6,13 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-leadtext');
 const { overrideArgs } = storybookHelpers('sd-leadtext');
 const { generateTemplate } = storybookTemplate('sd-leadtext');
 
-/**
- * Used for text that should be highlighted and a focal point of the page.
- *
- * **Related templates**:
- * - [Leadtext with Mark](?path=/docs/templates-mark--docs)
- */
-
 export default {
   title: 'Styles/sd-leadtext',
   tags: ['!dev'],

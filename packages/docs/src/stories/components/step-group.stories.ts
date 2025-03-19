@@ -7,15 +7,6 @@ const { argTypes, parameters } = storybookDefaults('sd-step-group');
 const { overrideArgs } = storybookHelpers('sd-step-group');
 const { generateTemplate } = storybookTemplate('sd-step-group');
 
-/**
- * Used as navigation bar that guides users through the steps of a process or task.
- *
- * **Related components:**
- * - [sd-step](?path=/docs/components-sd-step--docs)
- *
- * **Related templates:**
- * - [Step Group](?path=/docs/templates-step-group--docs)
- */
 export default {
   title: 'Components/sd-step-group',
   tags: ['!dev'],

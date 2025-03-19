@@ -6,16 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-checkbox-group');
 const { generateTemplate } = storybookTemplate('sd-checkbox-group');
 const { overrideArgs } = storybookHelpers('sd-checkbox-group');
 
-/**
- * Used to select multiple options from a list of options.
- *
- * **Related components:**
- * - [sd-checkbox](?path=/docs/components-sd-checkbox--docs)
- *
- * **Related templates:**
- * - [Checkbox Group](?path=/docs/templates-checkbox-group--docs)
- * - [Checkbox Group with Tooltip](?path=/docs/templates-tooltip--docs)
- */
 export default {
   title: 'Components/sd-checkbox-group',
   component: 'sd-checkbox-group',

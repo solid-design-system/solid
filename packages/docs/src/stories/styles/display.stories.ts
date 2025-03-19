@@ -6,13 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-display');
 const { overrideArgs } = storybookHelpers('sd-display');
 const { generateTemplate } = storybookTemplate('sd-display');
 
-/**
- * Used to provide larger text sizes that are not used as headlines.
- *
- * **Related templates**:
- * - [Display with Mark](?path=/docs/templates-mark--docs)
- */
-
 export default {
   title: 'Styles/sd-display',
   tags: ['!dev'],
