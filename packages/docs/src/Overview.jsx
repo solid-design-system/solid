@@ -76,6 +76,13 @@ export const OverviewFormatter = ({ children, story }) => {
                 }
               }
             },
+            p: {
+              props: {
+                style: {
+                  marginBottom: '12px'
+                }
+              }
+            },
             a: {
               component: links
             }
