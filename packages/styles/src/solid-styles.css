@@ -10,14 +10,3 @@
 @import url('./modules/status-badge.css');
 /* plop:style */
 @import url('./modules/prose.css');
-
-:root {
-  --tw-blur: ;
-  --tw-brightness: ;
-  --tw-contrast: ;
-  --tw-grayscale: ;
-  --tw-hue-rotate: ;
-  --tw-invert: ;
-  --tw-saturate: ;
-  --tw-sepia: ;
-}
