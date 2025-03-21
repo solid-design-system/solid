@@ -1,5 +1,13 @@
 # @solid-design-system/styles
 
+## 1.3.1
+
+### Patch Changes
+
+- Fix `sd-copyright` default shadow. _[`#2025`](https://github.com/solid-design-system/solid/pull/2025) [`28525de`](https://github.com/solid-design-system/solid/commit/28525de175bca22592ade10cca8e6717c37b1080) [@smfonseca](https://github.com/smfonseca)_
+
+  - Added missing variables that prevented the `filter` css effect from rendering the correct shadow.
+
 ## 1.3.0
 
 ### Minor Changes
