@@ -94,7 +94,7 @@ export const HelpText = {
   name: 'Help Text',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio-group orientation="vertical" help-text="Help text attribute">
+      <sd-radio-group orientation="vertical" help-text="Help text">
         <label slot="label">Group Label</label>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>

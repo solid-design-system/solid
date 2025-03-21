@@ -20,7 +20,7 @@ Use the ”default” slot to add content.
 
 <DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
 
-### Related Templates
+#### Related Templates
 
 [Expandable](/?path=/docs/templates-expandable--docs)
 
@@ -55,7 +55,9 @@ Use the ”default” slot to add content.
 ### Accessibility Information
 
 - Expandables are intended to be used for text blocks, so no interactive elements would appear when expanding, thus the focus remains on the expandable trigger whether open or closed, adjusting the labelling for each state.
-- Use ARIA roles such as ”aria-expanded” to indicate the state of the expandable section. Ensure each section has a clear and descriptive label.
+- The expandable component should only hide non-critical content, to ensure users can access essential information without unnecessary interaction.
+- Generic summaries like "show more" should be avoided.
+- Use ARIA roles such as ”aria-expanded” to indicate the state of the expandable section. Ensure each section has a clear and descriptive label.
 - Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
 
 <Meta title="Components/sd-expandable/Overview" />

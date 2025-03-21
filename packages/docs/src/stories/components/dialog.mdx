@@ -14,11 +14,15 @@ export const content = `
 
 Used over other content. It requires an interaction from the user before they can return to whatever is underneath.
 
+- Use the "headline" slot to add a headline. Since the wrapper of the slot is an <code>&lt;h2&gt;</code> by default, the slot should be a generic element (<code>&lt;span&gt;, &lt;div&gt;</code>).
+- Use the "default" slot to add main content. "Default" slot is always scrollable.
+- Use the "footer" slot to add action elements. "Footer" slot is always fixed.
+
 <DefaultStory />
 
 <DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
 
-### Related Templates
+#### Related Templates
 
 [Dialog](/?path=/docs/templates-dialog--docs)
 

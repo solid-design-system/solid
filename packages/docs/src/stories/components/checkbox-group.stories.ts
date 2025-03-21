@@ -95,22 +95,12 @@ export const Orientation = {
 export const Label = {
   name: 'Label',
   render: () => html`
-    <div class="flex gap-12">
-      <sd-checkbox-group orientation="vertical">
-        <label slot="label">Group Label</label>
-        <sd-checkbox value="1">Checkbox 1</sd-checkbox>
-        <sd-checkbox value="2">Checkbox 2</sd-checkbox>
-        <sd-checkbox value="3">Checkbox 3</sd-checkbox>
-      </sd-checkbox-group>
-
-      <sd-checkbox-group orientation="vertical">
-        <sd-tooltip slot="tooltip" content="Checkbox Group" trigger="click" size="sm"></sd-tooltip>
-        <label slot="label">Group Label</label>
-        <sd-checkbox value="1">Checkbox 1</sd-checkbox>
-        <sd-checkbox value="2">Checkbox 2</sd-checkbox>
-        <sd-checkbox value="3">Checkbox 3</sd-checkbox>
-      </sd-checkbox-group>
-    </div>
+    <sd-checkbox-group orientation="vertical">
+      <label slot="label">Group Label</label>
+      <sd-checkbox value="1">Checkbox 1</sd-checkbox>
+      <sd-checkbox value="2">Checkbox 2</sd-checkbox>
+      <sd-checkbox value="3">Checkbox 3</sd-checkbox>
+    </sd-checkbox-group>
   `
 };
 
@@ -123,7 +113,7 @@ export const HelpText = {
   name: 'Help Text',
   render: () => html`
     <div class="flex gap-12">
-      <sd-checkbox-group orientation="vertical" help-text="Help text attribute">
+      <sd-checkbox-group orientation="vertical" help-text="Help text">
         <label slot="label">Group Label</label>
         <sd-checkbox value="1">Checkbox 1</sd-checkbox>
         <sd-checkbox value="2">Checkbox 2</sd-checkbox>
