@@ -91,6 +91,14 @@ export const OverviewFormatter = ({ children, story }) => {
             },
             a: {
               component: links
+            },
+            'sd-notification': {
+              props: {
+                style: {
+                  display: 'flex',
+                  marginTop: '24px'
+                }
+              }
             }
           }
         }}
