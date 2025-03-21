@@ -8,15 +8,28 @@
 
 .sd-list:not(.sd-list--icon),
 .sd-prose > :is(ol, ul) {
-  @apply text-left py-4;
+  list-style-postion: revert;
+  list-style-type: revert;
+  padding: revert;
+
+  ul,
+  ol {
+    all: revert;
+  }
+
+  @apply text-left py-4 pl-4;
 
   li:not(:first-child) {
     @apply mt-3;
   }
 
+  li {
+    @apply pl-[0.5em];
+  }
+
   ol,
   ul {
-    @apply pt-3;
+    @apply pt-[0.75em] pl-[2em];
   }
 
   /* Counter handling for ordered lists. */
@@ -24,7 +37,7 @@
   ol {
     & > li {
       counter-increment: item;
-      &:before {
+      &::marker {
         content: counters(item, '.') '. ';
       }
     }
@@ -43,31 +56,18 @@
     counter-set: item 0;
   }
 
-  /* Styling */
-  li {
-    @apply table;
-    &:before {
-      @apply pr-2 table-cell;
-    }
-  }
-
-  &:is(ul),
-  ul {
-    list-style-type: '';
-  }
-
   &:is(ul):not(.sd-list--icon) > li,
   ul > li {
-    &:before {
-      content: '\2022';
+    &::marker {
+      content: '\2022 ';
     }
     > ul > li {
-      &:before {
-        content: '\002B1D';
+      &::marker {
+        content: '\002B1D ';
       }
       > ul > li {
-        &:before {
-          content: '\2010';
+        &::marker {
+          content: '\2010 ';
         }
       }
     }
