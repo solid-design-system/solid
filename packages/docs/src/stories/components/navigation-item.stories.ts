@@ -6,17 +6,6 @@ const { overrideArgs } = storybookHelpers('sd-navigation-item');
 const { argTypes, parameters } = storybookDefaults('sd-navigation-item');
 const { generateTemplate } = storybookTemplate('sd-navigation-item');
 
-/**
- * Used to facilitate seamless page transitions and helps users orient themselves within the application.
- *
- * **Related components**:
- * - [sd-header](?path=/docs/components-sd-header--docs)
- *
- * **Related templates**:
- * - [Dropdown with Navigation Items](?path=/docs/templates-dropdown--docs#dropdown-with-navigation-items)
- * - [Navigation Item with Badge](?path=/docs/templates-badge--docs#navigation%20item%20with%20badge)
- */
-
 export default {
   tags: ['!dev'],
   title: 'Components/sd-navigation-item',

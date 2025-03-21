@@ -1,0 +1,55 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdBrandshapeStories from './brandshape.stories';
+
+export const storybookLink = '/?path=/docs/components-sd-brandshape--docs';
+export const figmaLibrary =
+  'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=8713-2940&p=f&t=B5mgTBjcWeycmzb6-0';
+export const figmaDocs =
+  'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2059-1578&t=FHAY57BBiERUsSRf-4';
+
+export const content = `
+# Brandshape
+
+Used as a container with brand character that visually emphasizes the content.
+
+<DefaultStory />
+
+<DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
+
+#### Related Templates
+
+[Brandshape](?path=/story/templates-brandshape--docs)
+
+### Common Use Cases
+
+- As a core visual element, it conveys the company’s identity across various media and touchpoints. Visit the [Corporate-Toolbox](https://cd.union-investment.de/grundlagen/Basiselemente/Markenform#) to discover further details on its use.
+- Highlight a headline, create a callout inside an article or provide a container for an action and its context while reinforcing brand recognition.
+- Use over [sd-media](/?path=/docs/styles-sd-media--docs) to add visual support to the brandshape’s content.
+
+### Usage Guidelines
+
+#### Slot
+
+- Use the “default” slot to add content. Ensure this content is meaningful and avoid using brandshape purely for decoration.
+
+#### Usage
+
+- Limit the number of brandshapes on a page to maintain their visual impact.
+- Use transparent variants only when displayed on image backgrounds.
+
+#### Background
+
+- Use light background options like white, neutral-100, or primary-100, or use a primary background when inverted.
+
+### Accessibility Information
+
+- Ensure sufficient colour contrast for the content displayed on the brandshape background.
+- Verify that users can navigate to and interact with action elements within the brandshape using the keyboard.
+- Check that accessibility features are maintained across different breakpoints.
+- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-brandshape/Overview" />
+
+<OverviewFormatter story={SdBrandshapeStories.Default}>{content}</OverviewFormatter>

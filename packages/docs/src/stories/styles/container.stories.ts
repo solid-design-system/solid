@@ -6,10 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-container');
 const { overrideArgs } = storybookHelpers('sd-container');
 const { generateTemplate } = storybookTemplate('sd-container');
 
-/**
- * Used to enclose and highlight specific parts of content on a page.
- */
-
 export default {
   title: 'Styles/sd-container',
   tags: ['!dev'],

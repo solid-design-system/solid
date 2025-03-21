@@ -7,12 +7,6 @@ const { argTypes, parameters } = storybookDefaults('sd-tooltip');
 const { overrideArgs } = storybookHelpers('sd-tooltip');
 const { generateTemplate } = storybookTemplate('sd-tooltip');
 
-/**
- * Used as a floating and non-actionable text label that explains an element or function of the user interface.
- *
- *  **Related templates:**
- * - [Tooltip](?path=/docs/templates-tooltip--docs)
- */
 export default {
   title: 'Components/sd-tooltip',
   tags: ['!dev'],

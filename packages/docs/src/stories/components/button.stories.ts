@@ -7,15 +7,6 @@ const { argTypes, parameters } = storybookDefaults('sd-button');
 const { overrideArgs } = storybookHelpers('sd-button');
 const { generateTemplate } = storybookTemplate('sd-button'); // Replace with your custom element tag
 
-/**
- * Used to allow users to perform actions with a single click.
- *
- * Buttons perform various functions (e.g. download, link) or activate other functions (e.g. filter). All buttons can be displayed with or without an icon. On small devices, the buttons are streched to full width.
- *
- * **Related templates**:
- * - [Button](?path=/docs/templates-button--docs)
- * - [Button with Badge](?path=/docs/templates-badge--docs#button-with-badge)
- */
 export default {
   tags: ['!dev'],
   title: 'Components/sd-button',

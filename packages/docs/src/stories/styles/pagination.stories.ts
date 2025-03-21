@@ -8,16 +8,6 @@ const { generateTemplate } = storybookTemplate('sd-pagination');
 
 const html = String.raw;
 
-/**
- * Used to split large content into several pages, allowing users to
- * navigate between them instead of displaying all information on a single page.
- *
- * Please check our templates to see the interactive component.
- *
- * **Related templates**:
- * - [Pagination (interactive)](?path=/docs/templates-pagination--docs)
- */
-
 export default {
   tags: ['!dev'],
   title: 'Styles/sd-pagination',

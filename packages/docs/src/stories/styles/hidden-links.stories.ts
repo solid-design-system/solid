@@ -9,13 +9,6 @@ const { generateTemplate } = storybookTemplate('sd-hidden-links');
 // HTML helper to get syntax highlighting and formatting in the template string
 const html = String.raw;
 
-/**
- * Used to show links only for keyboard users.
- *
- * **Related components**:
- * - [Dropdown with Navigation Items](?path=/docs/templates-dropdown--docs#dropdown-with-navigation-items)
- */
-
 export default {
   title: 'Styles/sd-hidden-links',
   component: 'sd-hidden-links',

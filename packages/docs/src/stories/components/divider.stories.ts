@@ -5,10 +5,6 @@ import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook
 const { args, argTypes, parameters } = storybookDefaults('sd-divider');
 const { generateTemplate } = storybookTemplate('sd-divider');
 
-/**
- * Used to separate content or sections from each other and make the content easier to read for the user.
- */
-
 export default {
   title: 'Components/sd-divider',
   tags: ['!dev'],
