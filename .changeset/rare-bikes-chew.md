@@ -2,9 +2,9 @@
 '@solid-design-system/docs': minor
 ---
 
-Introduce overview pages for components and styles.
+Introduce overview page for components and styles.
 
-These pages includes information for:
+These pages include information for:
 - Common use cases
 - Usage guidelines
 - Accessibility
