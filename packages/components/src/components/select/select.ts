@@ -296,7 +296,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       event.preventDefault();
       event.stopPropagation();
       this.hide();
-      this.displayInput.focus({ preventScroll: true });
+      this.combobox.focus({ preventScroll: true });
     }
 
     // Handle enter and space. When pressing space, we allow for type to select behaviors so if there's anything in the
@@ -327,7 +327,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
         if (!this.multiple) {
           this.hide();
-          this.displayInput.focus({ preventScroll: true });
+          this.combobox.focus({ preventScroll: true });
         }
       }
 
@@ -456,7 +456,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   }
 
   private handleLabelClick() {
-    this.displayInput.focus();
+    this.combobox.focus();
   }
 
   private handleComboboxMouseDown(event: MouseEvent) {
@@ -469,7 +469,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     }
 
     event.preventDefault();
-    this.displayInput.focus({ preventScroll: true });
+    this.combobox.focus({ preventScroll: true });
     this.open = !this.open;
   }
 
@@ -486,7 +486,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   private clearSelect() {
     this.setSelectedOptions([]);
-    this.displayInput.focus({ preventScroll: true });
+    this.combobox.focus({ preventScroll: true });
 
     // Emit after update
     this.updateComplete.then(() => {
@@ -980,131 +980,137 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               popup:popup__content,
             "
           >
-            <div
-              part="combobox"
-              class=${cx(
-                'relative w-full px-4 flex flex-row items-center rounded-default',
-                this.open && 'shadow',
-                {
-                  sm: 'py-1 min-h-[32px]',
-                  md: 'py-1 min-h-[40px]',
-                  lg: 'py-2 min-h-[48px]'
-                }[this.size]
-              )}
-              slot="anchor"
-              @keydown=${this.handleComboboxKeyDown}
-              @mousedown=${this.handleComboboxMouseDown}
-              @mouseenter=${this.handleMouseEnter}
-              @mouseleave=${this.handleMouseLeave}
-            >
-              <input
-                name=${this.name}
-                form=${this.form}
-                part="display-input"
-                class=${cx(
-                  'appearance-none outline-none flex-grow bg-transparent w-full placeholder-neutral-700',
-                  cursorStyles,
-                  this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : ''
-                )}
-                type="text"
-                .disabled=${this.disabled}
-                placeholder=${this.placeholder || this.localize.term('selectDefaultPlaceholder')}
-                .value=${this.displayLabel}
-                autocomplete="off"
-                spellcheck="false"
-                autocapitalize="off"
-                readonly
-                aria-controls="listbox"
-                aria-expanded=${this.open ? 'true' : 'false'}
-                aria-haspopup="listbox"
-                aria-labelledby="label"
-                aria-disabled=${this.disabled || this.visuallyDisabled ? 'true' : 'false'}
-                aria-invalid=${this.showInvalidStyle}
-                aria-describedby="help-text invalid-message"
-                role="combobox"
-                tabindex="0"
-                @focus=${this.handleFocus}
-                @blur=${this.handleBlur}
-              />
+            <div class="relative w-full" slot="anchor">
+              <div class="absolute top-0 left-0 w-full h-full px-4 flex items-center">
+                <input
+                  name=${this.name}
+                  form=${this.form}
+                  part="display-input"
+                  class=${cx(
+                    'top-0 left-0 appearance-none outline-none flex-grow bg-transparent w-full placeholder-neutral-700',
+                    cursorStyles,
+                    this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : ''
+                  )}
+                  type="text"
+                  .disabled=${this.disabled}
+                  placeholder=${this.placeholder || this.localize.term('selectDefaultPlaceholder')}
+                  .value=${this.displayLabel}
+                  autocomplete="off"
+                  spellcheck="false"
+                  autocapitalize="off"
+                  readonly
+                  aria-controls="listbox"
+                  aria-expanded=${this.open ? 'true' : 'false'}
+                  aria-haspopup="listbox"
+                  aria-labelledby="label"
+                  aria-disabled=${this.disabled || this.visuallyDisabled ? 'true' : 'false'}
+                  aria-invalid=${this.showInvalidStyle}
+                  aria-describedby="help-text invalid-message"
+                  role="combobox"
+                  tabindex="-1"
+                />
 
-              ${this.multiple && this.useTags
-                ? html`<div part="tags" class="flex-grow flex flex-wrap items-center gap-1">${this.tags}</div>`
-                : ''}
+                ${this.multiple && this.useTags
+                  ? html`<div part="tags" class="flex-grow flex flex-wrap items-center gap-1 z-10">${this.tags}</div>`
+                  : ''}
 
-              <div aria-live="polite" id="control-value" class="absolute top-0 left-0 opacity-0 -z-10">
-                ${this.selectedOptions.map(option => option?.getTextLabel()).join(', ')}
+                <div aria-live="polite" id="control-value" class="absolute top-0 left-0 opacity-0 -z-10">
+                  ${this.selectedOptions.map(option => option?.getTextLabel()).join(', ')}
+                </div>
+
+                <input
+                  class=${cx('value-input absolute top-0 left-0 w-full h-full opacity-0 -z-10', cursorStyles)}
+                  type="text"
+                  ?disabled=${this.disabled}
+                  ?required=${this.required}
+                  .value=${Array.isArray(this.value) ? this.value.join(', ') : this.value}
+                  tabindex="-1"
+                  aria-controls="control-value"
+                  aria-hidden="true"
+                  @focus=${() => this.focus()}
+                  @invalid=${this.handleInvalid}
+                />
+                ${hasClearIcon
+                  ? html`
+                      <button
+                        part="clear-button"
+                        class=${cx(
+                          'select__clear flex justify-center',
+                          iconMarginLeft,
+                          this.value.length > 0 ? 'visible' : 'invisible'
+                        )}
+                        type="button"
+                        aria-label=${this.localize.term('clearEntry')}
+                        @mousedown=${this.handleClearMouseDown}
+                        @click=${this.handleClearClick}
+                        tabindex="-1"
+                      >
+                        <slot name="clear-icon">
+                          <sd-icon
+                            class=${cx('text-icon-fill-neutral-800 z-10', iconSize)}
+                            library="system"
+                            name="closing-round"
+                          ></sd-icon>
+                        </slot>
+                      </button>
+                    `
+                  : ''}
+                ${this.showInvalidStyle
+                  ? html`
+                      <sd-icon
+                        part="invalid-icon"
+                        class=${cx(iconMarginLeft, iconSize, 'text-error')}
+                        library="system"
+                        name="risk"
+                      ></sd-icon>
+                    `
+                  : ''}
+                ${this.styleOnValid && this.showValidStyle
+                  ? html`
+                      <sd-icon
+                        part="valid-icon"
+                        class=${cx('flex-shrink-0 text-success', iconMarginLeft, iconSize)}
+                        library="system"
+                        name="status-check"
+                      ></sd-icon>
+                    `
+                  : ''}
+                <slot
+                  name="expand-icon"
+                  part="expand-icon"
+                  class=${cx(
+                    'inline-flex ml-2 transition-all items-center',
+                    this.open ? 'rotate-180' : 'rotate-0',
+                    this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary',
+                    iconSize
+                  )}
+                >
+                  <sd-icon name="chevron-down" part="chevron" library="system" color="currentColor"></sd-icon>
+                </slot>
               </div>
 
-              <input
-                class=${cx('value-input absolute top-0 left-0 w-full h-full opacity-0 -z-10', cursorStyles)}
-                type="text"
-                ?disabled=${this.disabled}
-                ?required=${this.required}
-                .value=${Array.isArray(this.value) ? this.value.join(', ') : this.value}
-                tabindex="-1"
-                aria-controls="control-value"
-                aria-hidden="true"
-                @focus=${() => this.focus()}
-                @invalid=${this.handleInvalid}
-              />
-              ${hasClearIcon
-                ? html`
-                    <button
-                      part="clear-button"
-                      class=${cx(
-                        'select__clear flex justify-center',
-                        iconMarginLeft,
-                        this.value.length > 0 ? 'visible' : 'invisible'
-                      )}
-                      type="button"
-                      aria-label=${this.localize.term('clearEntry')}
-                      @mousedown=${this.handleClearMouseDown}
-                      @click=${this.handleClearClick}
-                      tabindex="-1"
-                    >
-                      <slot name="clear-icon">
-                        <sd-icon
-                          class=${cx('text-icon-fill-neutral-800', iconSize)}
-                          library="system"
-                          name="closing-round"
-                        ></sd-icon>
-                      </slot>
-                    </button>
-                  `
-                : ''}
-              ${this.showInvalidStyle
-                ? html`
-                    <sd-icon
-                      part="invalid-icon"
-                      class=${cx(iconMarginLeft, iconSize, 'text-error')}
-                      library="system"
-                      name="risk"
-                    ></sd-icon>
-                  `
-                : ''}
-              ${this.styleOnValid && this.showValidStyle
-                ? html`
-                    <sd-icon
-                      part="valid-icon"
-                      class=${cx('flex-shrink-0 text-success', iconMarginLeft, iconSize)}
-                      library="system"
-                      name="status-check"
-                    ></sd-icon>
-                  `
-                : ''}
-
-              <slot
-                name="expand-icon"
-                part="expand-icon"
+              <button
+                part="combobox"
                 class=${cx(
-                  'inline-flex ml-2 transition-all',
-                  this.open ? 'rotate-180' : 'rotate-0',
-                  this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary',
-                  iconSize
+                  'relative w-full px-4 flex flex-row items-center rounded-default focus-visible:outline-none',
+                  this.open && 'shadow',
+                  {
+                    sm: 'py-1 min-h-[32px]',
+                    md: 'py-1 min-h-[40px]',
+                    lg: 'py-2 min-h-[48px]'
+                  }[this.size]
                 )}
+                type="button"
+                @keydown=${this.handleComboboxKeyDown}
+                @mousedown=${this.handleComboboxMouseDown}
+                @mouseenter=${this.handleMouseEnter}
+                @mouseleave=${this.handleMouseLeave}
+                @focus=${this.handleFocus}
+                @blur=${this.handleBlur}
+                aria-labelledby="label"
               >
-                <sd-icon name="chevron-down" part="chevron" library="system" color="currentColor"></sd-icon>
-              </slot>
+                <span aria-hidden="true">${this.displayLabel}</span>
+              </button>
             </div>
 
             <div
