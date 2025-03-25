@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.12.25
+
+### Patch Changes
+
+- Fixed code examples for `sd-step` in `sd-step-group` showing state attributes _[`#2081`](https://github.com/solid-design-system/solid/pull/2081) [`09a6d16`](https://github.com/solid-design-system/solid/commit/09a6d16a453ccaacecd1df5365887842e51aa3e1) [@mariohamann](https://github.com/mariohamann)_
+
 ## 1.12.24
 
 ### Patch Changes
