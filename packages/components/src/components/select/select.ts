@@ -212,6 +212,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @property() getTag: (option: SdOption, index: number) => TemplateResult | string | HTMLElement = option => {
     return html`
       <sd-tag
+        class="relative z-10"
         ?disabled=${this.disabled}
         part="tag"
         exportparts="
@@ -223,6 +224,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         removable
         @keydown=${(event: KeyboardEvent) => this.handleTagKeyDown(event, option)}
         @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event, option)}
+        @mouseenter=${this.handleMouseEnter}
+        @mouseleave=${this.handleMouseLeave}
       >
         ${option.getTextLabel()}
       </sd-tag>
@@ -689,6 +692,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       return [
         html`
           <sd-tag
+            class="z-10"
             ?disabled=${this.disabled}
             part="tag"
             exportparts="
@@ -980,8 +984,17 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               popup:popup__content,
             "
           >
-            <div class="relative w-full" slot="anchor">
-              <div class="absolute top-0 left-0 w-full h-full px-4 flex items-center">
+            <div class="relative w-full h-full grid grid-cols-1" slot="anchor">
+              <div
+                class=${cx(
+                  'input-container flex items-center w-full h-full px-4',
+                  {
+                    sm: 'py-1',
+                    md: 'py-1',
+                    lg: 'py-2'
+                  }[this.size]
+                )}
+              >
                 <input
                   name=${this.name}
                   form=${this.form}
@@ -1011,7 +1024,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 />
 
                 ${this.multiple && this.useTags
-                  ? html`<div part="tags" class="flex-grow flex flex-wrap items-center gap-1 z-10">${this.tags}</div>`
+                  ? html`<div part="tags" class="flex-grow flex flex-wrap items-center gap-1">${this.tags}</div>`
                   : ''}
 
                 <div aria-live="polite" id="control-value" class="absolute top-0 left-0 opacity-0 -z-10">
@@ -1095,9 +1108,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   'relative w-full px-4 flex flex-row items-center rounded-default focus-visible:outline-none',
                   this.open && 'shadow',
                   {
-                    sm: 'py-1 min-h-[32px]',
-                    md: 'py-1 min-h-[40px]',
-                    lg: 'py-2 min-h-[48px]'
+                    sm: 'min-h-[32px]',
+                    md: 'min-h-[40px]',
+                    lg: 'min-h-[48px]'
                   }[this.size]
                 )}
                 type="button"
@@ -1108,9 +1121,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 @focus=${this.handleFocus}
                 @blur=${this.handleBlur}
                 aria-labelledby="label"
-              >
-                <span aria-hidden="true">${this.displayLabel}</span>
-              </button>
+              ></button>
             </div>
 
             <div
@@ -1170,6 +1181,12 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
       [part='listbox'] {
         max-height: var(--auto-size-available-height, auto);
+      }
+
+      .input-container,
+      [part='combobox'] {
+        grid-column: 1 / 1;
+        grid-row: 1 / 1;
       }
 
       sd-popup::part(popup) {
