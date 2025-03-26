@@ -515,7 +515,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       }
 
       // Set focus after updating so the value is announced by screen readers
-      this.updateComplete.then(() => this.displayInput.focus({ preventScroll: true }));
+      this.updateComplete.then(() => this.combobox.focus({ preventScroll: true }));
 
       if (this.value !== oldValue) {
         // Emit after updating
@@ -527,7 +527,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
       if (!this.multiple) {
         this.hide();
-        this.displayInput.focus({ preventScroll: true });
+        this.combobox.focus({ preventScroll: true });
       }
     }
   }
@@ -858,12 +858,12 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   /** Sets focus on the control. */
   focus(options?: FocusOptions) {
-    this.displayInput.focus(options);
+    this.combobox.focus(options);
   }
 
   /** Removes focus from the control. */
   blur() {
-    this.displayInput.blur();
+    this.combobox.blur();
   }
 
   render() {
