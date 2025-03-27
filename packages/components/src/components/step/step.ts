@@ -37,10 +37,10 @@ export default class SdStep extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, 'label', '[default]');
 
   /** The step's size. */
-  @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
+  @property({ type: String, reflect: true }) size: 'lg' | 'sm' = 'lg';
 
   /** Determines the orientation of the step. */
-  @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
+  @property({ type: String, reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   /** Sets the step to a disabled state. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -55,16 +55,16 @@ export default class SdStep extends SolidElement {
   @property({ type: Boolean, reflect: true, attribute: 'not-interactive' }) notInteractive = false;
 
   /** The step's label overwriting the `label` slot. Use the `label` slot for complex label content. */
-  @property() label = '';
+  @property({ type: String, reflect: true }) label = '';
 
   /** The step's description overwriting the `description` slot. Use the `description` slot for complex description content. */
-  @property() description = '';
+  @property({ type: String, reflect: true }) description = '';
 
   /** The step's number in a step-group */
   @property({ type: Number, reflect: true, attribute: 'index' }) index = 1;
 
   /** When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`. */
-  @property() href = '';
+  @property({ type: String, reflect: true }) href = '';
 
   connectedCallback() {
     super.connectedCallback();

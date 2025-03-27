@@ -20,16 +20,16 @@ export default class SdInclude extends SolidElement {
    * The location of the HTML file to include. Be sure you trust the content you are including as it will be executed as
    * code and can result in XSS attacks.
    */
-  @property() src: string;
+  @property({ reflect: true }) src: string;
 
   /** The fetch mode to use. */
-  @property() mode: 'cors' | 'no-cors' | 'same-origin' = 'cors';
+  @property({ type: String, reflect: true }) mode: 'cors' | 'no-cors' | 'same-origin' = 'cors';
 
   /**
    * Allows included scripts to be executed. Be sure you trust the content you are including as it will be executed as
    * code and can result in XSS attacks.
    */
-  @property({ attribute: 'allow-scripts', type: Boolean }) allowScripts = false;
+  @property({ attribute: 'allow-scripts', type: Boolean, reflect: true }) allowScripts = false;
 
   private executeScript(script: HTMLScriptElement) {
     // Create a copy of the script and swap it out so the browser executes it

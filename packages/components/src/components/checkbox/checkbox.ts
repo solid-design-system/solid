@@ -45,16 +45,16 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   @query('input[type="checkbox"]') input: HTMLInputElement;
   @query('#invalid-message') invalidMessage: HTMLDivElement;
 
-  @property() title = ''; // make reactive to pass through
+  @property({ type: String, reflect: true }) title = ''; // make reactive to pass through
 
   /** The name of the checkbox, submitted as a name/value pair with form data. */
-  @property() name = '';
+  @property({ type: String, reflect: true }) name = '';
 
   /** The current value of the checkbox, submitted as a name/value pair with form data. */
   @property() value: string;
 
   /** The checkbox's size. */
-  @property({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
+  @property({ type: String, reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
 
   /** Disables the checkbox. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -79,7 +79,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
    * to place the form control outside of a form and associate it with the form that has this `id`. The form must be in
    * the same document or shadow root for this to work.
    */
-  @property({ reflect: true }) form = '';
+  @property({ type: String, reflect: true }) form = '';
 
   /** Makes the checkbox a required field. */
   @property({ type: Boolean, reflect: true }) required = false;

@@ -53,17 +53,22 @@ export default class SdTooltip extends SolidElement {
   @query('sd-popup') popup: SdPopup;
 
   /** Sets the size of the default trigger icon. */
-  @property() size: 'lg' | 'sm' = 'lg';
+  @property({ type: String, reflect: true }) size: 'lg' | 'sm' = 'lg';
 
   /** The tooltip's content. If you need to display HTML, use the `content` slot instead. */
-  @property() content = '';
+  @property({ type: String, reflect: true }) content = '';
 
   /**
    * The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip
    * inside of the viewport.
    */
-  @property({ reflect: true }) placement: 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' =
-    'top';
+  @property({ type: String, reflect: true }) placement:
+    | 'top'
+    | 'top-start'
+    | 'top-end'
+    | 'bottom'
+    | 'bottom-start'
+    | 'bottom-end' = 'top';
 
   /** Disables the tooltip so it won't show when triggered. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -76,14 +81,14 @@ export default class SdTooltip extends SolidElement {
    * options can be passed by separating them with a space. When manual is used, the tooltip must be activated
    * programmatically.
    */
-  @property() trigger = 'click focus';
+  @property({ type: String, reflect: true }) trigger = 'click focus';
 
   /**
    * Enable this option to prevent the tooltip from being clipped when the component is placed inside a container with
    * `overflow: auto|hidden|scroll`. Hoisting uses a fixed positioning strategy that works in many, but not all,
    * scenarios.
    */
-  @property({ type: Boolean }) hoist = false;
+  @property({ type: Boolean, reflect: true }) hoist = false;
 
   connectedCallback() {
     super.connectedCallback();
