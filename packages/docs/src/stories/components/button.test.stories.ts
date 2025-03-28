@@ -209,7 +209,7 @@ export const IconOnly = {
       constants: {
         type: 'slot',
         name: 'default',
-        value: '<sd-icon name="system/image"></sd-icon>'
+        value: '<sd-icon name="system/image" label="Icon Button"></sd-icon>'
       },
       args
     });
