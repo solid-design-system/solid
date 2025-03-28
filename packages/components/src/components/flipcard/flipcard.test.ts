@@ -1,5 +1,6 @@
 import '../../../dist/solid-components';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
+import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
 import type SdFlipcard from './flipcard';
 
@@ -38,6 +39,22 @@ describe('<sd-flipcard>', () => {
 
       expect(flipFrontHandler).to.have.been.calledOnce;
       expect(flipBackHandler).to.have.been.calledOnce;
+    });
+
+    it('should have the the front and back buttons focused when flipping', async () => {
+      const el = await fixture<SdFlipcard>(html`<sd-flipcard></sd-flipcard>`);
+      const frontButton: HTMLButtonElement = el.shadowRoot!.querySelector("[part='front-button']")!;
+      const backButton: HTMLButtonElement = el.shadowRoot!.querySelector("[part='back-button']")!;
+
+      frontButton.focus();
+      await sendKeys({ press: 'Enter' });
+      await el.updateComplete;
+
+      expect(el.shadowRoot!.activeElement).to.equal(backButton);
+
+      await sendKeys({ press: 'Enter' });
+      await el.updateComplete;
+      expect(el.shadowRoot!.activeElement).to.equal(frontButton);
     });
 
     it('should contain accessibility attributes', async () => {
