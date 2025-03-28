@@ -99,11 +99,20 @@ describe('<sd-expandable>', () => {
       </sd-expandable>
     `);
     const toggleButton = el.shadowRoot?.querySelector('button');
+    const detailsElement = el.shadowRoot?.querySelector('[part="details"]');
+
     toggleButton?.click(); // Simulate user clicking the toggle button
 
+    await el.updateComplete;
+
     expect(el.open).to.be.true;
+    expect(detailsElement?.hasAttribute('inert')).to.be.false;
 
     toggleButton?.click(); // Click again to close
+
+    await el.updateComplete;
+
     expect(el.open).to.be.false;
+    expect(detailsElement?.hasAttribute('inert')).to.be.true;
   });
 });
