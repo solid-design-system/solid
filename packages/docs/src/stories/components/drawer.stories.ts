@@ -5,15 +5,6 @@ const { argTypes, parameters } = storybookDefaults('sd-drawer');
 const { generateTemplate } = storybookTemplate('sd-drawer');
 const { overrideArgs } = storybookHelpers('sd-drawer');
 
-/**
- * Used as a panel that slides out from the side of the screen which contains a set of information or actions.
- *
- * **Accessibility Information:** Always include a label so that screenreaders correctly announce the component.
- *
- * **Related templates:**
- * - [Drawer](?path=/docs/templates-drawer--docs)
- */
-
 export default {
   title: 'Components/sd-drawer',
   component: 'sd-drawer',

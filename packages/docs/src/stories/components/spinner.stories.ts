@@ -1,12 +1,12 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
-import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, args, parameters } = storybookDefaults('sd-spinner');
+const { argTypes, parameters } = storybookDefaults('sd-spinner');
 const { generateTemplate } = storybookTemplate('sd-spinner');
+const { overrideArgs } = storybookHelpers('sd-select');
 
 /**
- * Used as a visual indicator with a looping animation that shows loading is in process.
  *
  * **Known browser issues:**
  * - The 'sd-spinner' component may experience spinner animation issues in Safari, causing them to appear wobbly.
@@ -17,7 +17,7 @@ export default {
   title: 'Components/sd-spinner',
   component: 'sd-spinner',
   tags: ['!dev'],
-  args,
+  args: overrideArgs({ type: 'attribute', name: 'color', value: 'primary' }),
   argTypes,
   parameters: {
     ...parameters,

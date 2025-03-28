@@ -6,16 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-list');
 const { overrideArgs } = storybookHelpers('sd-list');
 const { generateTemplate } = storybookTemplate('sd-list');
 
-/**
- * Used to make blocks of text easier to read and to divide information into manageable sections.
- *
- * Text lists can be numbered, have bullet points, or be supplemented by content symbols. Text can be bolded or linked.
- *
- * **Related templates**:
- * - [List](?path=/docs/templates-list--docs)
- * - [Link list](?path=/docs/templates-link--docs#link-list)
- */
-
 export default {
   title: 'Styles/sd-list',
   tags: ['!dev'],

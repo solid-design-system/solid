@@ -6,14 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-media');
 const { overrideArgs } = storybookHelpers('sd-media');
 const { generateTemplate } = storybookTemplate('sd-media');
 
-/**
- * Used to display an image or a video preview.
- *
- * __Hint:__ Use the html `figcaption` element to add a description.
- *
- * **Related templates**:
- * - [Media](?path=/docs/templates-media--docs)
- */
 export default {
   title: 'Styles/sd-media',
   tags: ['!dev'],
