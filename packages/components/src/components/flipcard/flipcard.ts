@@ -46,11 +46,14 @@ import SolidElement from '../../internal/solid-element';
 export default class SdFlipcard extends SolidElement {
   @query('[part="front"]') front: HTMLElement;
   @query('[part="back"]') back: HTMLElement;
+  @query('[part="back-button"]') backButton: HTMLElement;
+  @query('[part="front-button"]') frontButton: HTMLElement;
 
   /**
    * Allows the flipcard to flip vertically or horizontally.
    */
-  @property({ reflect: true, attribute: 'flip-direction' }) flipDirection: 'horizontal' | 'vertical' = 'horizontal';
+  @property({ reflect: true, attribute: 'flip-direction' })
+  flipDirection: 'horizontal' | 'vertical' = 'horizontal';
 
   /**
    * Determines the placement of the contents of the flipcard.
@@ -82,7 +85,7 @@ export default class SdFlipcard extends SolidElement {
      * to enable the browser to have time to remove the `inert` attribute fron the flipcard side.
      */
     setTimeout(() => {
-      this.back.focus();
+      this.backButton.focus();
     });
   }
 
@@ -97,7 +100,7 @@ export default class SdFlipcard extends SolidElement {
      * to enable the browser to have time to remove the `inert` attribute fron the flipcard side.
      */
     setTimeout(() => {
-      this.front.focus();
+      this.frontButton.focus();
     });
   }
 
