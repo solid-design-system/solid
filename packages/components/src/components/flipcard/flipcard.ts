@@ -70,8 +70,32 @@ export default class SdFlipcard extends SolidElement {
 
   @state() activeSide: 'front' | 'back' = 'front';
 
+  private focusableElements: HTMLElement[];
+
   connectedCallback() {
     super.connectedCallback();
+  }
+
+  firstUpdated() {
+    this.focusableElements = this.getBackFocusableElements();
+  }
+
+  private getBackFocusableElements() {
+    const slot = this.shadowRoot?.querySelector('slot[name="back"]');
+    if (slot instanceof HTMLSlotElement) {
+      const assignedNodes = slot.assignedNodes({ flatten: true });
+      const focusableElements: HTMLElement[] = [];
+
+      assignedNodes.forEach(node => {
+        if (node instanceof HTMLElement) {
+          focusableElements.push(
+            ...node.querySelectorAll<HTMLElement>('a, button, [href], [tabindex]:not([tabindex="-1"])')
+          );
+        }
+      });
+      return focusableElements;
+    }
+    return [];
   }
 
   private flipFront() {
@@ -85,7 +109,8 @@ export default class SdFlipcard extends SolidElement {
      * to enable the browser to have time to remove the `inert` attribute fron the flipcard side.
      */
     setTimeout(() => {
-      this.backButton.focus();
+      const elementToFocus = this.focusableElements[0] || this.backButton;
+      elementToFocus.focus();
     });
   }
 
