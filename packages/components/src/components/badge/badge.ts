@@ -73,8 +73,7 @@ export default class SdBadge extends SolidElement {
       }
 
       :host([size='md'])::part(base) {
-        padding-left: 0.25rem;
-        padding-right: 0.25rem;
+        @apply px-1;
       }
 
       :host([size='lg'])::part(base) {
