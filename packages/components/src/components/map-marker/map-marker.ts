@@ -24,10 +24,10 @@ import type { SVGTemplateResult } from 'lit';
 @customElement('sd-map-marker')
 export default class SdMapMarker extends SolidElement {
   /** The map-marker's variant. */
-  @property({ reflect: true }) variant: 'cluster' | 'main' | 'place' = 'main';
+  @property({ type: String, reflect: true }) variant: 'cluster' | 'main' | 'place' = 'main';
 
   /** The map-marker's state. */
-  @property({ reflect: true }) state: 'default' | 'hover' | 'active' = 'default';
+  @property({ type: String, reflect: true }) state: 'default' | 'hover' | 'active' = 'default';
 
   /** The map-marker's is animated when displayed. */
   @property({ type: Boolean, reflect: true }) animated = false;
@@ -36,17 +36,17 @@ export default class SdMapMarker extends SolidElement {
   @property({ type: Boolean, reflect: true, attribute: 'not-interactive' }) notInteractive = false;
 
   /** When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`. */
-  @property() href = '';
+  @property({ type: String, reflect: true }) href = '';
 
   /** Tells the browser where to open the link. Only used when `href` is present. */
-  @property() target: '_blank' | '_parent' | '_self' | '_top';
+  @property({ type: String, reflect: true }) target: '_blank' | '_parent' | '_self' | '_top';
 
   /**
    * Only relevant when map-marker is interactive.
    * When set, it will be used to announce the name of the map-marker to screenreaders,
    * otherwise, screenreaders will announce the content inside the default slot.
    */
-  @property() label: string = '';
+  @property({ reflect: true }) label: string = '';
 
   private handleBlur() {
     this.emit('sd-blur');

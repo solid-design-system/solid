@@ -21,7 +21,7 @@ export default class SdAccordionGroup extends SolidElement {
   @queryAssignedElements({ selector: 'sd-accordion' }) _accordionsInDefaultSlot!: HTMLElement[];
 
   /** Closes other accordions. */
-  @property({ attribute: 'close-others', type: Boolean }) closeOthers = false;
+  @property({ attribute: 'close-others', type: Boolean, reflect: true }) closeOthers = false;
 
   connectedCallback() {
     super.connectedCallback();

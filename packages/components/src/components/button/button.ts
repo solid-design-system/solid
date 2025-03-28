@@ -58,16 +58,16 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   /** @internal */
   @state() protected invalid = false;
 
-  @property() title = ''; // make reactive to pass through
+  @property({ type: String, reflect: true }) title = ''; // make reactive to pass through
 
   /** The button's theme variant. */
-  @property({ reflect: true }) variant: 'primary' | 'secondary' | 'tertiary' | 'cta' = 'primary';
+  @property({ type: String, reflect: true }) variant: 'primary' | 'secondary' | 'tertiary' | 'cta' = 'primary';
 
   /** Inverts the button. */
   @property({ type: Boolean, reflect: true }) inverted = false;
 
   /** The button's size. */
-  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
+  @property({ type: String, reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** Disables the button. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -82,13 +82,13 @@ export default class SdButton extends SolidElement implements SolidFormControl {
    * The type of button. Note that the default value is `button` instead of `submit`, which is opposite of how native
    * `<button>` elements behave. When the type is `submit`, the button will submit the surrounding form.
    */
-  @property() type: 'button' | 'submit' | 'reset' = 'button';
+  @property({ type: String, reflect: true }) type: 'button' | 'submit' | 'reset' = 'button';
 
   /**
    * The name of the button, submitted as a name/value pair with form data, but only when this button is the submitter.
    * This attribute is ignored when `href` is present.
    */
-  @property() name = '';
+  @property({ type: String, reflect: true }) name = '';
 
   /**
    * The value of the button, submitted as a pair with the button's name as part of the form data, but only when this
@@ -97,19 +97,19 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   @property() value = '';
 
   /** When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`. */
-  @property() href = '';
+  @property({ type: String, reflect: true }) href = '';
 
   /** Tells the browser where to open the link. Only used when `href` is present. */
-  @property() target: '_blank' | '_parent' | '_self' | '_top';
+  @property({ type: String, reflect: true }) target: '_blank' | '_parent' | '_self' | '_top';
 
   /** Tells the browser to download the linked file as this filename. Only used when `href` is present. */
-  @property() download?: string;
+  @property({ reflect: true }) download?: string;
 
   /**
    * The "form owner" to associate the button with. If omitted, the closest containing form will be used instead. The
    * value of this attribute must be an id of a form in the same document or shadow root as the button.
    */
-  @property() form: string;
+  @property({ reflect: true }) form: string;
 
   /** Used to override the form owner's `action` attribute. */
   @property({ attribute: 'formaction' }) formAction: string;

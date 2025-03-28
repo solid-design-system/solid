@@ -48,7 +48,7 @@ export default class SdPopup extends SolidElement {
    * The element the popup will be anchored to. If the anchor lives outside of the popup, you can provide its `id` or a
    * reference to it here. If the anchor lives inside the popup, use the `anchor` slot instead.
    */
-  @property() anchor: Element | string;
+  @property({ reflect: true }) anchor: Element | string;
 
   /**
    * Activates the positioning logic and shows the popup. When this attribute is removed, the positioning logic is torn
@@ -60,7 +60,7 @@ export default class SdPopup extends SolidElement {
    * The preferred placement of the popup. Note that the actual placement will vary as configured to keep the
    * panel inside of the viewport.
    */
-  @property({ reflect: true }) placement:
+  @property({ type: String, reflect: true }) placement:
     | 'top'
     | 'top-start'
     | 'top-end'
@@ -78,39 +78,43 @@ export default class SdPopup extends SolidElement {
    * Determines how the popup is positioned. The `absolute` strategy works well in most cases, but if
    * overflow is clipped, using a `fixed` position strategy can often workaround it.
    */
-  @property({ reflect: true }) strategy: 'absolute' | 'fixed' = 'absolute';
+  @property({ type: String, reflect: true }) strategy: 'absolute' | 'fixed' = 'absolute';
 
   /** The distance in pixels from which to offset the panel away from its anchor. */
-  @property({ type: Number }) distance = 0;
+  @property({ type: Number, reflect: true }) distance = 0;
 
   /** The distance in pixels from which to offset the panel along its anchor. */
-  @property({ type: Number }) skidding = 0;
+  @property({ type: Number, reflect: true }) skidding = 0;
 
   /**
    * Attaches an arrow to the popup. The arrow's size and color can be customized using the `--arrow-size` and
    * `--arrow-color` custom properties. For additional customizations, you can also target the arrow using
    * `::part(arrow)` in your stylesheet.
    */
-  @property({ type: Boolean }) arrow = false;
+  @property({ type: Boolean, reflect: true }) arrow = false;
 
   /**
    * The placement of the arrow. The default is `anchor`, which will align the arrow as close to the center of the
    * anchor as possible, considering available space and `arrow-padding`. A value of `start`, `end`, or `center` will
    * align the arrow to the start, end, or center of the popover instead.
    */
-  @property({ attribute: 'arrow-placement' }) arrowPlacement: 'start' | 'end' | 'center' | 'anchor' = 'anchor';
+  @property({ type: String, attribute: 'arrow-placement', reflect: true }) arrowPlacement:
+    | 'start'
+    | 'end'
+    | 'center'
+    | 'anchor' = 'anchor';
 
   /**
    * The amount of padding between the arrow and the edges of the popup. If the popup has a border-radius, for example,
    * this will prevent it from overflowing the corners.
    */
-  @property({ attribute: 'arrow-padding', type: Number }) arrowPadding = 10;
+  @property({ attribute: 'arrow-padding', type: Number, reflect: true }) arrowPadding = 10;
 
   /**
    * When set, placement of the popup will flip to the opposite site to keep it in view. You can use
    * `flipFallbackPlacements` to further configure how the fallback placement is determined.
    */
-  @property({ type: Boolean }) flip = false;
+  @property({ type: Boolean, reflect: true }) flip = false;
 
   /**
    * If the preferred placement doesn't fit, popup will be tested in these fallback placements until one fits. Must be a
@@ -138,7 +142,8 @@ export default class SdPopup extends SolidElement {
    * the popup should be positioned using the best available fit based on available space or as it was initially
    * preferred.
    */
-  @property({ attribute: 'flip-fallback-strategy' }) flipFallbackStrategy: 'best-fit' | 'initial' = 'best-fit';
+  @property({ type: String, attribute: 'flip-fallback-strategy' }) flipFallbackStrategy: 'best-fit' | 'initial' =
+    'best-fit';
 
   /**
    * The flip boundary describes clipping element(s) that overflow will be checked relative to when flipping. By
@@ -164,7 +169,7 @@ export default class SdPopup extends SolidElement {
   @property({ attribute: 'shift-padding', type: Number }) shiftPadding = 0;
 
   /** When set, this will cause the popup to automatically resize itself to prevent it from overflowing. */
-  @property({ attribute: 'auto-size' }) autoSize: 'horizontal' | 'vertical' | 'both';
+  @property({ type: String, attribute: 'auto-size' }) autoSize: 'horizontal' | 'vertical' | 'both';
 
   /** Syncs the popup's width or height to that of the anchor element. */
   @property() sync: 'width' | 'height' | 'both';

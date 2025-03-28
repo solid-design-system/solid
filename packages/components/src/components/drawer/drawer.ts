@@ -80,10 +80,10 @@ export default class SdDrawer extends SolidElement {
    * You should always include a relevant label even when using
    * `no-header`, as it is required for proper accessibility.
    */
-  @property({ attribute: 'label', reflect: true }) label = '';
+  @property({ type: String, attribute: 'label', reflect: true }) label = '';
 
   /** The direction from which the drawer will open. */
-  @property({ reflect: true }) placement: 'end' | 'start' = 'end';
+  @property({ type: String, reflect: true }) placement: 'end' | 'start' = 'end';
 
   /**
    * By default, the drawer slides out of its containing block (the viewport). Contained is a hidden feature used only for testing purposes. Please do not use it in production as it will likely change.
@@ -93,7 +93,7 @@ export default class SdDrawer extends SolidElement {
   /**
    * Removes the header. This will also remove the default close button, so please ensure you provide an easy, accessible way for users to dismiss the drawer.
    */
-  @property({ attribute: 'no-header', type: Boolean }) noHeader = false;
+  @property({ attribute: 'no-header', type: Boolean, reflect: true }) noHeader = false;
 
   firstUpdated() {
     this.drawer.hidden = !this.open;

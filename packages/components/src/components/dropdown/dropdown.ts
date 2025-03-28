@@ -63,7 +63,7 @@ export default class SdDropdown extends SolidElement {
    * The preferred placement of the dropdown panel. Note that the actual placement may vary as needed to keep the panel
    * inside of the viewport.
    */
-  @property({ reflect: true }) placement:
+  @property({ type: String, reflect: true }) placement:
     | 'top'
     | 'top-start'
     | 'top-end'
@@ -90,13 +90,13 @@ export default class SdDropdown extends SolidElement {
    * The dropdown will close when the user interacts outside of this element (e.g. clicking). Useful for composing other
    * components that use a dropdown internally.
    */
-  @property({ attribute: false }) containingElement?: HTMLElement;
+  @property({ type: String, attribute: false, reflect: true }) containingElement?: HTMLElement;
 
   /** The distance in pixels from which to offset the panel away from its trigger. This defaults to `0` for `rounded=false` and to a minimum of `1` for `rounded=true`. */
-  @property({ type: Number }) distance = 0;
+  @property({ type: Number, reflect: true }) distance = 0;
 
   /** The distance in pixels from which to offset the panel along its trigger. */
-  @property({ type: Number }) skidding = 0;
+  @property({ type: Number, reflect: true }) skidding = 0;
 
   /**
    * Indicates whether or not the dropdown should automatically resize its content's width/height regarding the available space on screen.
@@ -112,7 +112,7 @@ export default class SdDropdown extends SolidElement {
    * Enable this option to prevent the panel from being clipped when the component is placed inside a container with
    * `overflow: auto|scroll`. Hoisting uses a fixed positioning strategy that works in many, but not all, scenarios.
    */
-  @property({ type: Boolean }) hoist = false;
+  @property({ type: Boolean, reflect: true }) hoist = false;
 
   connectedCallback() {
     super.connectedCallback();

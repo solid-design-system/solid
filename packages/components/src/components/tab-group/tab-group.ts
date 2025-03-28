@@ -57,7 +57,7 @@ export default class SdTabGroup extends SolidElement {
    * When set to auto, navigating tabs with the arrow keys will instantly show the corresponding tab panel. When set to
    * manual, the tab will receive focus but will not show until the user presses spacebar or enter.
    */
-  @property() activation: 'auto' | 'manual' = 'auto';
+  @property({ type: String, reflect: true }) activation: 'auto' | 'manual' = 'auto';
 
   connectedCallback() {
     const whenAllDefined = Promise.all([

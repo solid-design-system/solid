@@ -28,7 +28,7 @@ export default class SdTag extends SolidElement {
   @query('a, button') tag: HTMLButtonElement | HTMLLinkElement;
 
   /** The tag's size. */
-  @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
+  @property({ type: String, reflect: true }) size: 'lg' | 'sm' = 'lg';
 
   /** Displays the tag in a selected state. */
   @property({ type: Boolean, reflect: true }) selected = false;
@@ -43,13 +43,13 @@ export default class SdTag extends SolidElement {
   @property({ type: Boolean, reflect: true }) disabled = false;
 
   /** When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`. */
-  @property() href = '';
+  @property({ type: String, reflect: true }) href = '';
 
   /** Tells the browser where to open the link. Only used when `href` is present. */
-  @property() target: '_blank' | '_parent' | '_self' | '_top';
+  @property({ type: String, reflect: true }) target: '_blank' | '_parent' | '_self' | '_top';
 
   /** Tells the browser to download the linked file as this filename. Only used when `href` is present. */
-  @property() download?: string;
+  @property({ reflect: true }) download?: string;
 
   private handleBlur() {
     this.emit('sd-blur');

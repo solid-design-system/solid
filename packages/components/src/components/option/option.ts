@@ -50,7 +50,7 @@ export default class SdOption extends SolidElement {
   @state() hasHover = false;
 
   /** The option's size is inherited automatically from the `size` attribute of the parent `sd-select`. */
-  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
+  @property({ type: String, reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** Prefixes a styled checkbox to the option. Enabled automatically in `sd-select` when attribute `checklist` is set to `true`. */
   @property({ type: Boolean, reflect: true }) checkbox = false;
@@ -63,7 +63,7 @@ export default class SdOption extends SolidElement {
    * from other options in the same group. Values may not contain spaces, as spaces are used as delimiters when listing
    * multiple values.
    */
-  @property({ reflect: true }) value = '';
+  @property({ type: String, reflect: true }) value = '';
 
   connectedCallback() {
     super.connectedCallback();

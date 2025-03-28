@@ -55,7 +55,7 @@ export default class SdNotification extends SolidElement {
   @query('[part~="close-button"]') close: HTMLElement;
 
   /** The sd-notification's theme. */
-  @property({ reflect: true }) variant: 'info' | 'success' | 'error' | 'warning' = 'info';
+  @property({ type: String, reflect: true }) variant: 'info' | 'success' | 'error' | 'warning' = 'info';
 
   /**
    * Indicates whether or not sd-notification is open. You can toggle this attribute to show and hide the notification, or you can
@@ -74,13 +74,14 @@ export default class SdNotification extends SolidElement {
    * the notification before it closes (e.g. moves the mouse over it), the timer will restart. Defaults to `Infinity`, meaning
    * the notification will not close on its own.
    */
-  @property({ type: Number }) duration = Infinity;
+  @property({ type: Number, reflect: true }) duration = Infinity;
 
   /** Enables an animation that visualizes the duration of a notification. */
   @property({ type: Boolean, reflect: true, attribute: 'duration-indicator' }) durationIndicator = false;
 
   /** The position of the toasted sd-notification. */
-  @property({ reflect: true, attribute: 'toast-stack' }) toastStack: 'top-right' | 'bottom-center' = 'top-right';
+  @property({ type: String, reflect: true, attribute: 'toast-stack' }) toastStack: 'top-right' | 'bottom-center' =
+    'top-right';
 
   private remainingDuration = this.duration;
   private startTime = Date.now();

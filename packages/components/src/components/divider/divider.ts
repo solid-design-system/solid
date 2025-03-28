@@ -15,7 +15,7 @@ import SolidElement from '../../internal/solid-element';
 @customElement('sd-divider')
 export default class SdDivider extends SolidElement {
   /** Determines the orientation of the divider. */
-  @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
+  @property({ type: String, reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   /** This inverts the divider. */
   @property({ type: Boolean, reflect: true }) inverted = false;

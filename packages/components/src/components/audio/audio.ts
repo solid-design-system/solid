@@ -55,7 +55,7 @@ export default class SdAudio extends SolidElement {
   @property({ type: Boolean, reflect: true }) inverted = false;
 
   /** Sets value of the audio element playback rate */
-  @property({ type: Number }) speed = 1;
+  @property({ type: Number, reflect: true }) speed = 1;
 
   @state() currentTime: string = this.formatTime(0);
 

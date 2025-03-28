@@ -26,7 +26,7 @@ export default class SdCheckboxGroup extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, 'label', 'help-text');
 
   /** The checkbox group's size. This size will be applied to the label, all child checkboxes. */
-  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
+  @property({ type: String, reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /**
    * The orientation property determines the alignment of the component's content or elements. It accepts two possible
@@ -34,16 +34,16 @@ export default class SdCheckboxGroup extends SolidElement {
    * This property allows you to control the visual layout and arrangement of elements within the component, providing
    * flexibility in how the component is displayed based on your specific design needs.
    */
-  @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'vertical';
+  @property({ type: String, reflect: true }) orientation: 'horizontal' | 'vertical' = 'vertical';
 
   /**
    * The checkbox group's label. Required for proper accessibility. If you need to display HTML, use the `label` slot
    * instead.
    */
-  @property() label = '';
+  @property({ type: String, reflect: true }) label = '';
 
   /** The element help text. If you need to display HTML, use the `help-text` slot instead. */
-  @property({ attribute: 'help-text' }) helpText = '';
+  @property({ type: String, attribute: 'help-text', reflect: true }) helpText = '';
 
   private getAllCheckboxes() {
     return [...this.querySelectorAll<SdCheckbox>('sd-checkbox')];

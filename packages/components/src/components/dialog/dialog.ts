@@ -76,7 +76,7 @@ export default class SdDialog extends SolidElement {
   /**
    * The dialog's headline as displayed in the header. If you need to display HTML, use the `headline` slot instead.
    */
-  @property({ reflect: true }) headline = '';
+  @property({ type: String, reflect: true }) headline = '';
 
   /**
    * This will remove the default close button. Please ensure you provide an easy, accessible way for users to dismiss the dialog.

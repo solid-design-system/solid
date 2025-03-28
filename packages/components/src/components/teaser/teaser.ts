@@ -31,7 +31,7 @@ import type { PropertyValues } from 'lit';
 @customElement('sd-teaser')
 export default class SdTeaser extends SolidElement {
   /** Variant of the teaser */
-  @property({ reflect: true }) variant:
+  @property({ type: String, reflect: true }) variant:
     | 'white'
     | 'white border-neutral-400'
     | 'neutral-100'

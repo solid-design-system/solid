@@ -29,7 +29,7 @@ import SolidElement from '../../internal/solid-element';
 @customElement('sd-teaser-media')
 export default class SdTeaserMedia extends SolidElement {
   /** Variant of the teaser */
-  @property({ reflect: true }) variant:
+  @property({ type: String, reflect: true }) variant:
     | 'white'
     | 'neutral-100'
     | 'primary'

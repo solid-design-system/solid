@@ -29,7 +29,7 @@ export default class SdBrandshape extends SolidElement {
   @query('[part=base]') containerElem: HTMLElement;
 
   /** The brandshape's theme variant. */
-  @property({ type: String }) variant:
+  @property({ type: String, reflect: true }) variant:
     | 'neutral-100'
     | 'primary'
     | 'white'
