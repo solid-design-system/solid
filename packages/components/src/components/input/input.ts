@@ -643,28 +643,20 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   <button
                     aria-label=${this.localize.term(this.passwordVisible ? 'hidePassword' : 'showPassword')}
                     part="password-toggle-button"
-                    class="flex items-center"
+                    class=${cx('flex items-center sd-interactive', iconMarginLeft)}
                     type="button"
                     @click=${this.handlePasswordToggle}
-                    tabindex="-1"
+                    aria-pressed=${this.passwordVisible ? 'true' : 'false'}
                   >
                     ${this.passwordVisible
                       ? html`
                           <slot name="show-password-icon"
-                            ><sd-icon
-                              class=${cx(iconColor, iconMarginLeft, iconSize)}
-                              library="system"
-                              name="eye"
-                            ></sd-icon
+                            ><sd-icon class=${cx(iconColor, iconSize)} library="system" name="eye"></sd-icon
                           ></slot>
                         `
                       : html`
                           <slot name="hide-password-icon"
-                            ><sd-icon
-                              class=${cx(iconColor, iconMarginLeft, iconSize)}
-                              library="system"
-                              name="eye-crossed-out"
-                            ></sd-icon
+                            ><sd-icon class=${cx(iconColor, iconSize)} library="system" name="eye-crossed-out"></sd-icon
                           ></slot>
                         `}
                   </button>
