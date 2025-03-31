@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.13.0
+
+### Minor Changes
+
+- Add docs about link usage to sd-button. _[`#2083`](https://github.com/solid-design-system/solid/pull/2083) [`bee2d16`](https://github.com/solid-design-system/solid/commit/bee2d1688026dad731604c908a6b2ddaea899273) [@mariohamann](https://github.com/mariohamann)_
+
 ## 1.12.25
 
 ### Patch Changes
