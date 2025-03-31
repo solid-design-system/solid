@@ -610,6 +610,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               inputmode=${ifDefined(this.inputmode)}
               aria-describedby="help-text invalid-message"
               aria-disabled=${this.visuallyDisabled || this.disabled ? 'true' : 'false'}
+              aria-invalid=${this.showInvalidStyle}
               @change=${this.handleChange}
               @input=${this.handleInput}
               @invalid=${this.handleInvalid}
