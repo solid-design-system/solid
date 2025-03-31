@@ -264,7 +264,6 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         border transition-colors duration-200 ease-in-out rounded-default
         select-none cursor-[inherit]`,
         !this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted',
-        this.visuallyDisabled && 'focus-visible:outline-none',
         this.loading && 'relative cursor-wait',
         (this.disabled || this.visuallyDisabled) && 'cursor-not-allowed',
         slots['icon-only'] && 'px-0 w-varspacing',
