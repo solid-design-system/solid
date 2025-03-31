@@ -90,8 +90,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @query('[part="listbox"]') listbox: HTMLSlotElement;
   @query('#invalid-message') invalidMessage: HTMLDivElement;
 
-  /** @internal*/
-  @state() hasHover = false; // we need this because Safari doesn't honor :hover styles while dragging
   /** When `multiple` is `true` and `useTags` is `false`, the displayLabel sets the text shown in the display input. We use the localized string "Options Selected (#)" by default.
    * @internal
    */
@@ -224,8 +222,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         removable
         @keydown=${(event: KeyboardEvent) => this.handleTagKeyDown(event, option)}
         @sd-remove=${(event: CustomEvent) => this.handleTagRemove(event, option)}
-        @mouseenter=${this.handleMouseEnter}
-        @mouseleave=${this.handleMouseLeave}
       >
         ${option.getTextLabel()}
       </sd-tag>
@@ -717,14 +713,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     this.invalidMessage.textContent = (event.target as HTMLInputElement).validationMessage;
   }
 
-  private handleMouseEnter() {
-    this.hasHover = true;
-  }
-
-  private handleMouseLeave() {
-    this.hasHover = false;
-  }
-
   /** Receives incoming event detail from sd-popup and updates local state for conditional styling. */
   private handleCurrentPlacement(e: CustomEvent<'top' | 'bottom'>) {
     const incomingPlacement = e.detail;
@@ -948,8 +936,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           <div
             part="border"
             class=${cx(
-              'absolute top-0 w-full h-full pointer-events-none border rounded-default',
-              this.hasHover && !this.disabled && !this.visuallyDisabled && 'bg-neutral-200',
+              'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10',
               {
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
@@ -984,7 +971,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               popup:popup__content,
             "
           >
-            <div class="relative w-full h-full grid grid-cols-1" slot="anchor">
+            <div
+              class=${cx(
+                'relative w-full h-full grid grid-cols-1',
+                this.visuallyDisabled || this.disabled ? 'hover:bg-transparent' : 'hover:bg-neutral-200'
+              )}
+              slot="anchor"
+            >
               <div
                 class=${cx(
                   'input-container flex items-center w-full h-full px-4',
@@ -1106,6 +1099,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 part="combobox"
                 class=${cx(
                   'relative w-full px-4 flex flex-row items-center rounded-default focus-visible:outline-none',
+                  cursorStyles,
                   this.open && 'shadow',
                   {
                     sm: 'min-h-[32px]',
@@ -1116,8 +1110,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 type="button"
                 @keydown=${this.handleComboboxKeyDown}
                 @mousedown=${this.handleComboboxMouseDown}
-                @mouseenter=${this.handleMouseEnter}
-                @mouseleave=${this.handleMouseLeave}
                 @focus=${this.handleFocus}
                 @blur=${this.handleBlur}
                 aria-labelledby="label"

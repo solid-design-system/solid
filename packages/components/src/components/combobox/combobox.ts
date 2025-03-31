@@ -107,9 +107,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   @query('#invalid-message') invalidMessage: HTMLDivElement;
 
-  /** @internal*/
-  @state() hasHover = false; // we need this because Safari doesn't honor :hover styles while dragging
-
   @state() private hasFocus = false;
 
   @state() displayInputValue = '';
@@ -898,14 +895,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     this.invalidMessage.textContent = (event.target as HTMLInputElement).validationMessage;
   }
 
-  private handleMouseEnter() {
-    this.hasHover = true;
-  }
-
-  private handleMouseLeave() {
-    this.hasHover = false;
-  }
-
   /** Receives incoming event detail from sd-popup and updates local state for conditional styling. */
   private handleCurrentPlacement(e: CustomEvent<'top' | 'bottom'>) {
     const incomingPlacement = e.detail;
@@ -1196,8 +1185,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           <div
             part="border"
             class=${cx(
-              'absolute top-0 w-full h-full pointer-events-none border rounded-default',
-              this.hasHover && !this.disabled && !this.visuallyDisabled && 'bg-neutral-200',
+              'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10',
               {
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
@@ -1236,6 +1224,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               part="combobox"
               class=${cx(
                 'relative w-full px-4 flex flex-row items-center rounded-default',
+                this.visuallyDisabled || this.disabled ? 'hover:bg-transparent' : 'hover:bg-neutral-200',
                 this.open && 'shadow',
                 {
                   sm: 'py-1 min-h-[32px]',
@@ -1246,8 +1235,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               slot="anchor"
               @keydown=${this.handleComboboxKeyDown}
               @mousedown=${this.handleComboboxMouseDown}
-              @mouseenter=${this.handleMouseEnter}
-              @mouseleave=${this.handleMouseLeave}
             >
               ${slots['left']
                 ? html`<slot
