@@ -60,7 +60,7 @@ export const Size = {
 };
 
 /**
- * - Use the `href` attribute to enable the link.
+ * - Use the `href` attribute to make it a link instead of a button.
  * - Use the `target` attribute to specify where to open the link.
  * - Use the `download` attribute to tell the browser to download the linked file as this filename.
  */
