@@ -1,5 +1,6 @@
 import '../../../dist/solid-components';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
+import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
 import type SdExpandable from './expandable';
 
@@ -114,5 +115,45 @@ describe('<sd-expandable>', () => {
 
     expect(el.open).to.be.false;
     expect(detailsElement?.hasAttribute('inert')).to.be.true;
+  });
+
+  it('should not focus elements inside expandable if not open', async () => {
+    const el = await fixture<SdExpandable>(html`
+      <sd-expandable>
+        <sd-link href="https://solid-design-system.fe.union-investment.de/docs/">Lorem ipsum</sd-link>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.
+        </p>
+      </sd-expandable>
+    `);
+
+    const toggleButton = el.shadowRoot?.querySelector('button');
+    const linkElement = el.querySelector('sd-link');
+
+    // Opens the expandable and tabs to focus the link
+    toggleButton?.focus();
+    await sendKeys({ press: 'Enter' });
+    await el.updateComplete;
+
+    expect(el.open).to.be.true;
+
+    await sendKeys({ press: 'Tab' });
+    await el.updateComplete;
+
+    expect(document.activeElement).to.equal(linkElement);
+
+    // Closes the expandable and checks the link is not focusable
+    toggleButton?.focus();
+    await sendKeys({ press: 'Enter' });
+    await el.updateComplete;
+
+    expect(el.open).to.be.false;
+
+    await sendKeys({ press: 'Tab' });
+    await el.updateComplete;
+
+    expect(document.activeElement).to.not.equal(linkElement);
   });
 });
