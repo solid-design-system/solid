@@ -143,19 +143,19 @@ export const VisuallyDisabled = {
   render: () => {
     return html`
       <div class="flex gap-12 h-[100px] mt-12">
-        <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm" placement="top">
+        <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
           <sd-button variant="primary" visually-disabled>Visually Disabled</sd-button>
         </sd-tooltip>
 
-        <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm" placement="top">
+        <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
           <sd-button variant="secondary" visually-disabled>Visually Disabled</sd-button>
         </sd-tooltip>
 
-        <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm" placement="top">
+        <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
           <sd-button variant="tertiary" visually-disabled>Visually Disabled</sd-button>
         </sd-tooltip>
 
-        <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm" placement="top">
+        <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
           <sd-button variant="cta" visually-disabled>Visually Disabled</sd-button>
         </sd-tooltip>
       </div>

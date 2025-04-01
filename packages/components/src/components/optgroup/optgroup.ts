@@ -59,7 +59,7 @@ export default class SdOptgroup extends SolidElement {
   /**
    * The optgroups label. If you need to display HTML, use the `label` slot instead.
    */
-  @property() label = '';
+  @property({ type: String, reflect: true }) label = '';
 
   @watch('disabled', { waitUntilFirstUpdate: true })
   handleDisabledChange() {
