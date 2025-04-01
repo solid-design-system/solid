@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.13.1
+
+### Patch Changes
+
+- Fix a11y issue in `sd-button` icon only screenshot test by adding missing label. _[`#2089`](https://github.com/solid-design-system/solid/pull/2089) [`c82034a`](https://github.com/solid-design-system/solid/commit/c82034a98469c6a2ccdbc285b45c9a2eafd205b6) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.13.0
 
 ### Minor Changes
