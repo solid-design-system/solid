@@ -1,5 +1,13 @@
 # @solid-design-system/components
 
+## 4.6.0
+
+### Minor Changes
+
+- Improved `sd-select` accessibility by refactoring component to use a button to open the options list. Screenreaders like TalkBack can now correctly interact with the component. _[`#2086`](https://github.com/solid-design-system/solid/pull/2086) [`c295d51`](https://github.com/solid-design-system/solid/commit/c295d51e0fe8530c87f7b5a9cad36bb98f0af4d2) [@smfonseca](https://github.com/smfonseca)_
+
+  Fixed hover styles handling for `sd-select` and `sd-combobox` to be applied with css only instead of Javascript.
+
 ## 4.5.3
 
 ### Patch Changes
