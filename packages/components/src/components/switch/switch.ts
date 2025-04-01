@@ -49,10 +49,10 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
   @state() showInvalidStyle = false;
 
   /** The title of the switch adds a tooltip with title text. */
-  @property() title = ''; // make reactive to pass through
+  @property({ type: String, reflect: true }) title = ''; // make reactive to pass through
 
   /** The name of the switch, submitted as a name/value pair with form data. */
-  @property() name = '';
+  @property({ type: String, reflect: true }) name = '';
 
   /** The current value of the switch, submitted as a name/value pair with form data. */
   @property() value: string;

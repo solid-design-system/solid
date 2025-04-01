@@ -1,5 +1,39 @@
 # @solid-design-system/components
 
+## 4.6.1
+
+### Patch Changes
+
+- Improved `sd-badge` and `sd-button` accessibility when browser minimum font size is defined. _[`#2087`](https://github.com/solid-design-system/solid/pull/2087) [`16e99da`](https://github.com/solid-design-system/solid/commit/16e99dab4886b9656fd7ed64b6e657655d2ec66e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - `sd-badge` padding and font-size readjusted.
+  - Label alignment on `sd-button` (Safari-specific bug).
+
+## 4.6.0
+
+### Minor Changes
+
+- Improved `sd-select` accessibility by refactoring component to use a button to open the options list. Screenreaders like TalkBack can now correctly interact with the component. _[`#2086`](https://github.com/solid-design-system/solid/pull/2086) [`c295d51`](https://github.com/solid-design-system/solid/commit/c295d51e0fe8530c87f7b5a9cad36bb98f0af4d2) [@smfonseca](https://github.com/smfonseca)_
+
+  Fixed hover styles handling for `sd-select` and `sd-combobox` to be applied with css only instead of Javascript.
+
+## 4.5.3
+
+### Patch Changes
+
+- Fixed a11y issue in `sd-expandable`. Swapped `aria-hidden` with `inert` attribute to make sure all content, including interactive elements, is properly hidden when component state is closed. _[`#2090`](https://github.com/solid-design-system/solid/pull/2090) [`e9f8f9d`](https://github.com/solid-design-system/solid/commit/e9f8f9d4942f164ee516c135b28696a305663eae) [@smfonseca](https://github.com/smfonseca)_
+
+## 4.5.2
+
+### Patch Changes
+
+- Update components to reflect selected properties so that they are always displayed in the DOM. This is specifically required when web components are used within React 19 but also to make dx more predictable. _[`#2088`](https://github.com/solid-design-system/solid/pull/2088) [`f95ee43`](https://github.com/solid-design-system/solid/commit/f95ee4374c1947f63f374de897f7a40ac373649f) [@smfonseca](https://github.com/smfonseca)_
+
+### 📈 Stats
+
+- Uncompressed: 416 KB (+2 KB / +0%)
+- Gzipped: 97 KB (unchanged)
+
 ## 4.5.1
 
 ### Patch Changes

@@ -39,16 +39,16 @@ export default class SdNavigationItem extends SolidElement {
   @property({ type: Boolean, reflect: true }) vertical = false;
 
   /** The navigation item's font size. */
-  @property({ reflect: true }) size: 'md' | 'lg' | 'sm' = 'md';
+  @property({ type: String, reflect: true }) size: 'md' | 'lg' | 'sm' = 'md';
 
   /** The navigation item's href target. If provided, the navigation item will use an anchor tag otherwise it will use a button tag. The 'children' slot and accordion behavior will be ignored if an 'href' is provided. */
   @property({ reflect: true }) href: string;
 
   /** Tells the browser where to open the link. Only used when `href` is defined. */
-  @property() target: '_blank' | '_parent' | '_self' | '_top';
+  @property({ type: String, reflect: true }) target: '_blank' | '_parent' | '_self' | '_top';
 
   /** Tells the browser to download the linked file as this filename. Only used when `href` is defined. */
-  @property() download?: string;
+  @property({ reflect: true }) download?: string;
 
   /** Indicates that the navigation item is currently selected. The aria-current attribute is set to "page" on the host if true. */
   @property({ type: Boolean, reflect: true }) current = false;
