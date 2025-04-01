@@ -41,7 +41,7 @@ export default class SdTab extends SolidElement {
   @property({ type: Boolean, reflect: true }) disabled = false;
 
   /** The name of the tab panel this tab is associated with. The panel must be located in the same tab group. */
-  @property({ reflect: true }) panel = '';
+  @property({ type: String, reflect: true }) panel = '';
 
   connectedCallback() {
     super.connectedCallback();

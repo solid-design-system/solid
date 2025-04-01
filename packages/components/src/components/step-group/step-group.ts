@@ -25,10 +25,10 @@ export default class SdStepGroup extends SolidElement {
   @query('[part=body]') body: HTMLSlotElement;
 
   /** The step-groups's size. */
-  @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
+  @property({ type: String, reflect: true }) size: 'lg' | 'sm' = 'lg';
 
   /** Determines the orientation of the step-group. */
-  @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
+  @property({ type: String, reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   /** The active step in the step-group. */
   @property({ type: Number, reflect: true, attribute: 'active-step' }) activeStep = 0;
@@ -40,7 +40,7 @@ export default class SdStepGroup extends SolidElement {
    * A label to use in the step-group. This won't be displayed on the screen, but it will be announced by assistive
    * devices when interacting with the control and is strongly recommended.
    */
-  @property({ type: String }) label = '';
+  @property({ type: String, reflect: true }) label = '';
 
   connectedCallback() {
     super.connectedCallback();

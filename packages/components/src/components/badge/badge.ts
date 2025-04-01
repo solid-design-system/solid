@@ -18,10 +18,10 @@ import SolidElement from '../../internal/solid-element';
 @customElement('sd-badge')
 export default class SdBadge extends SolidElement {
   /** The badge's size. */
-  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
+  @property({ type: String, reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** The badge's variant. */
-  @property({ reflect: true }) variant: 'blue' | 'green' | 'red' = 'blue';
+  @property({ type: String, reflect: true }) variant: 'blue' | 'green' | 'red' = 'blue';
 
   /** Inverts the badge. */
   @property({ type: Boolean, reflect: true }) inverted = false;

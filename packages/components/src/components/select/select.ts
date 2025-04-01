@@ -122,22 +122,22 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @property({ type: Boolean, reflect: true }) open = false;
 
   /** The select's size. */
-  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
+  @property({ type: String, reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /**
    * The preferred placement of the select's menu. Note that the actual placement may vary as needed to keep the listbox
    * inside of the viewport.
    */
-  @property({ reflect: true }) placement: 'top' | 'bottom' = 'bottom';
+  @property({ type: String, reflect: true }) placement: 'top' | 'bottom' = 'bottom';
 
   /** The select's label. If you need to display HTML, use the `label` slot instead. */
-  @property() label = '';
+  @property({ type: String, reflect: true }) label = '';
 
   /** Placeholder text to show as a hint when the select is empty. */
-  @property() placeholder = '';
+  @property({ type: String, reflect: true }) placeholder = '';
 
   /** Label text shown on tag if max-options-visible is reached. */
-  @property({ attribute: 'max-options-tag-label' }) maxOptionsTagLabel = '';
+  @property({ type: String, attribute: 'max-options-tag-label', reflect: true }) maxOptionsTagLabel = '';
 
   /** Disables the select control. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -146,7 +146,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @property({ type: Boolean, reflect: true, attribute: 'visually-disabled' }) visuallyDisabled = false;
 
   /** The select's help text. If you need to display HTML, use the `help-text` slot instead. */
-  @property({ attribute: 'help-text' }) helpText = '';
+  @property({ type: String, attribute: 'help-text', reflect: true }) helpText = '';
 
   /**
    * The actual current placement of the select's menu sourced from `sd-popup`.
@@ -167,7 +167,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
    * The maximum number of selected options to show when `multiple` and `useTags` are `true`. After the maximum, "+n" will be shown to
    * indicate the number of additional items that are selected. Set to 0 to remove the limit.
    */
-  @property({ attribute: 'max-options-visible', type: Number }) maxOptionsVisible = 3;
+  @property({ attribute: 'max-options-visible', type: Number, reflect: true }) maxOptionsVisible = 3;
 
   /**
    * By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you
@@ -177,7 +177,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @property({ reflect: true }) form = '';
 
   /** The name of the select, submitted as a name/value pair with form data. */
-  @property() name = '';
+  @property({ reflect: true }) name = '';
 
   /**
    * The current value of the select, submitted as a name/value pair with form data. When `multiple` is enabled, the
@@ -202,7 +202,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
    * Enable this option to prevent the listbox from being clipped when the component is placed inside a container with
    * `overflow: auto|scroll`. Hoisting uses a fixed positioning strategy that works in many, but not all, scenarios.
    */
-  @property({ type: Boolean }) hoist = false;
+  @property({ type: Boolean, reflect: true }) hoist = false;
 
   /**
    * A function that customizes the tags to be rendered when multiple=true. The first argument is the option, the second
