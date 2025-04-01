@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.5.3
+
+### Patch Changes
+
+- Fixed a11y issue in `sd-expandable`. Swapped `aria-hidden` with `inert` attribute to make sure all content, including interactive elements, is properly hidden when component state is closed. _[`#2090`](https://github.com/solid-design-system/solid/pull/2090) [`e9f8f9d`](https://github.com/solid-design-system/solid/commit/e9f8f9d4942f164ee516c135b28696a305663eae) [@smfonseca](https://github.com/smfonseca)_
+
 ## 4.5.2
 
 ### Patch Changes
@@ -7,8 +13,9 @@
 - Update components to reflect selected properties so that they are always displayed in the DOM. This is specifically required when web components are used within React 19 but also to make dx more predictable. _[`#2088`](https://github.com/solid-design-system/solid/pull/2088) [`f95ee43`](https://github.com/solid-design-system/solid/commit/f95ee4374c1947f63f374de897f7a40ac373649f) [@smfonseca](https://github.com/smfonseca)_
 
 ### 📈 Stats
-* Uncompressed: 416 KB (+2 KB / +0%)
-* Gzipped: 97 KB (unchanged)
+
+- Uncompressed: 416 KB (+2 KB / +0%)
+- Gzipped: 97 KB (unchanged)
 
 ## 4.5.1
 
