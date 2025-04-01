@@ -1,5 +1,14 @@
 # @solid-design-system/components
 
+## 4.6.1
+
+### Patch Changes
+
+- Improved `sd-badge` and `sd-button` accessibility when browser minimum font size is defined. _[`#2087`](https://github.com/solid-design-system/solid/pull/2087) [`16e99da`](https://github.com/solid-design-system/solid/commit/16e99dab4886b9656fd7ed64b6e657655d2ec66e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - `sd-badge` padding and font-size readjusted.
+  - Label alignment on `sd-button` (Safari-specific bug).
+
 ## 4.6.0
 
 ### Minor Changes
