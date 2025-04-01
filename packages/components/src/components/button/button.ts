@@ -347,7 +347,8 @@ export default class SdButton extends SolidElement implements SolidFormControl {
             }[this.size]
         )}></slot>
         <slot part="label" id="content" class=${cx(
-          slots['icon-only'] ? 'flex flex-auto items-center pointer-events-none' : 'inline-block',
+          'inline-flex items-center justify-center',
+          slots['icon-only'] && 'pointer-events-none',
           this.loading && 'invisible'
         )}
         >
