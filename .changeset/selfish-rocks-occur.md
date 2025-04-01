@@ -2,6 +2,7 @@
 '@solid-design-system/components': patch
 ---
 
-Improvements for increased default browser text size:
-- Enhanced `sd-badge` background
-- Fixed label alignment on `sd-button` (Safari-specific bug)
+Improved `sd-badge` and `sd-button` accessibility when browser minimum font size is defined.
+
+- `sd-badge` padding and font-size readjusted.
+- Label alignment on `sd-button` (Safari-specific bug).
