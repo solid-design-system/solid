@@ -646,7 +646,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     class=${cx('flex items-center sd-interactive', iconMarginLeft)}
                     type="button"
                     @click=${this.handlePasswordToggle}
-                    aria-pressed=${this.passwordVisible ? 'true' : 'false'}
                   >
                     ${this.passwordVisible
                       ? html`
