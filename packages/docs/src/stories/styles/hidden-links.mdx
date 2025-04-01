@@ -3,9 +3,11 @@ import { OverviewFormatter } from '../../Overview.jsx';
 
 import * as SdHiddenLinksStories from './hidden-links.stories';
 
-export const storybookLink = '/?path=/docs/styles-sd-hidden-links--docs';
-export const figmaLibrary = '';
-export const figmaDocs = '';
+export const links = {
+  'storybook-docs': '/?path=/docs/styles-sd-hidden-links--docs',
+  'figma-library': '',
+  'figma-docs': ''
+};
 
 export const content = `
 # Hidden Links
@@ -14,7 +16,7 @@ Used to show links only for keyboard users.
 
 <DefaultStory />
 
-<DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
 
 #### Related Templates
 

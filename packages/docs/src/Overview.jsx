@@ -6,21 +6,13 @@ export const OverviewFormatter = ({ children, story }) => {
   const defaultStoryCanvas = () => <Canvas of={story} />;
   const documentationLinks = ({ children, ...props }) => (
     <div className="flex flex-col md:flex-row gap-8 items-start md:items-center mt-8 mb-8">
-      {props.storybookLink && (
-        <div className="flex flex-row gap-4 items-center">
-          <sd-link href={props.storybookLink}>Storybook Docs</sd-link>
-
-          <div className="sd-status-badge sd-status-badge--success m-0">
-            <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
-            Available
-          </div>
-        </div>
-      )}
-
-      {props.figmaLibrary && (
-        <div className="flex flex-row gap-4 items-center">
-          <sd-link href={props.figmaLibrary} target="_blank">
-            Figma Library
+      {Object.entries(JSON.parse(props.links || '{}')).map(([name, link]) => (
+        <div key={name} className="flex flex-row gap-4 items-center">
+          <sd-link href={link}>
+            {name
+              .split('-')
+              .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+              .join(' ')}
           </sd-link>
 
           <div className="sd-status-badge sd-status-badge--success m-0">
@@ -28,20 +20,7 @@ export const OverviewFormatter = ({ children, story }) => {
             Available
           </div>
         </div>
-      )}
-
-      {props.figmaDocs && (
-        <div className="flex flex-row gap-4 items-center">
-          <sd-link href={props.figmaDocs} target="_blank">
-            Figma Docs
-          </sd-link>
-
-          <div className="sd-status-badge sd-status-badge--success m-0">
-            <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
-            Available
-          </div>
-        </div>
-      )}
+      ))}
     </div>
   );
 

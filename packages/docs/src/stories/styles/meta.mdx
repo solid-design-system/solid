@@ -3,11 +3,13 @@ import { OverviewFormatter } from '../../Overview.jsx';
 
 import * as SdMetaStories from './meta.stories';
 
-export const storybookLink = '/?path=/docs/styles-sd-meta--docs';
-export const figmaLibrary =
-  'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=1283-14400&p=f&t=B5mgTBjcWeycmzb6-0';
-export const figmaDocs =
-  'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2314-31827&node-type=canvas&t=ExKWUj3vUoucvcVt-0';
+export const links = {
+  'storybook-docs': '/?path=/docs/styles-sd-meta--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=1283-14400&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2314-31827&node-type=canvas&t=ExKWUj3vUoucvcVt-0'
+};
 
 export const content = `
 # Meta
@@ -16,7 +18,7 @@ Used to display meta information like file size, date or other.
 
 <DefaultStory />
 
-<DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
 
 ### Common Use Cases
 

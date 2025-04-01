@@ -3,9 +3,11 @@ import { OverviewFormatter } from '../../Overview.jsx';
 
 import * as {{ properCase tag }}Stories from './{{ tagWithoutPrefix tag }}.stories';
 
-export const storybookLink = '/?path=/docs/components-{{ tag }}--docs';
-export const figmaLibrary = '';
-export const figmaDocs = '';
+export const links = {
+  'storybook-docs': '/?path=/docs/components-{{ tag }}--docs',
+  'figma-library': '',
+  'figma-docs': ''
+};
 
 export const content = `
 # {{ tagToTitle tag }}
@@ -14,7 +16,7 @@ DESCRIPTION
 
 <DefaultStory />
 
-<DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
 
 #### Related Components
 

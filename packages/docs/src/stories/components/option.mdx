@@ -3,10 +3,12 @@ import { OverviewFormatter } from '../../Overview.jsx';
 
 import * as SdOptionStories from './option.stories';
 
-export const storybookLink = '/?path=/docs/components-sd-option--docs';
-export const figmaLibrary =
-  'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=18060-403&t=1CVYCf1P9vhvItGw-4';
-export const figmaDocs = 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=9809-71199&m';
+export const links = {
+  'storybook-docs': '/?path=/docs/components-sd-option--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=18060-403&t=1CVYCf1P9vhvItGw-4',
+  'figma-docs': 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=9809-71199&m'
+};
 
 export const content = `
 # Option
@@ -15,7 +17,7 @@ Used to define selectable items within various form controls such as select.
 
 <DefaultStory />
 
-<DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
 
 #### Related Components
 

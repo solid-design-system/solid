@@ -3,11 +3,13 @@ import { OverviewFormatter } from '../../Overview.jsx';
 
 import * as SdBadgeStories from './badge.stories';
 
-export const storybookLink = '/?path=/docs/components-sd-badge--docs';
-export const figmaLibrary =
-  'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=4687-24978&t=B5mgTBjcWeycmzb6-0';
-export const figmaDocs =
-  'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2116-4927&t=FHAY57BBiERUsSRf-4';
+export const links = {
+  'storybook-docs': '/?path=/docs/components-sd-badge--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=4687-24978&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2116-4927&t=FHAY57BBiERUsSRf-4'
+};
 
 export const content = `
 # Badge
@@ -16,7 +18,7 @@ Used to visual indicate a quantity related to a particular element. Often displa
 
 <DefaultStory />
 
-<DocumentationLinks storybookLink="${storybookLink}" figmaLibrary="${figmaLibrary}" figmaDocs="${figmaDocs}" />
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
 
 #### Related Components
 
