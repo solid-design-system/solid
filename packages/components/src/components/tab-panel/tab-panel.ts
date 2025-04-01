@@ -25,7 +25,7 @@ export default class SdTabPanel extends SolidElement {
   private readonly componentId = `sd-tab-panel-${this.attrId}`;
 
   /** The tab panel's name. */
-  @property({ reflect: true }) name = '';
+  @property({ type: String, reflect: true }) name = '';
 
   /** When true, the tab panel will be shown. */
   @property({ type: Boolean, reflect: true }) active = false;

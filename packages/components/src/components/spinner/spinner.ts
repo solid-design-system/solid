@@ -15,7 +15,7 @@ import SolidElement from '../../internal/solid-element';
 export default class SdSpinner extends SolidElement {
   /** The color color of the spinner.
    */
-  @property({ reflect: true }) color: 'primary' | 'white' | 'currentColor' = 'currentColor';
+  @property({ type: String, reflect: true }) color: 'primary' | 'white' | 'currentColor' = 'currentColor';
 
   public localize = new LocalizeController(this);
 

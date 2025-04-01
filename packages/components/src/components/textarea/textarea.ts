@@ -53,28 +53,28 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   @state() showInvalidStyle = false;
 
   /** An empty title prevents browser validation tooltips from appearing on hover */
-  @property() title = ''; // make reactive to pass through
+  @property({ type: String, reflect: true }) title = ''; // make reactive to pass through
 
   /** The name of the textarea, submitted as a name/value pair with form data. */
-  @property() name = '';
+  @property({ type: String, reflect: true }) name = '';
 
   /** The current value of the textarea, submitted as a name/value pair with form data. */
   @property() value = '';
 
   /** The textarea's size. */
-  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
+  @property({ type: String, reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** The textarea's label. If you need to display HTML, use the `label` slot instead. */
-  @property() label = '';
+  @property({ type: String, reflect: true }) label = '';
 
   /** The textarea's help text. If you need to display HTML, use the `help-text` slot instead. */
-  @property({ attribute: 'help-text' }) helpText = '';
+  @property({ type: String, attribute: 'help-text', reflect: true }) helpText = '';
 
   /** Placeholder text to show as a hint when the input is empty. */
-  @property() placeholder = '';
+  @property({ type: String, reflect: true }) placeholder = '';
 
   /** The number of rows to display by default. */
-  @property({ type: Number }) rows = 4;
+  @property({ type: Number, reflect: true }) rows = 4;
 
   /** Disables the textarea. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -90,34 +90,47 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
    * to place the form control outside of a form and associate it with the form that has this `id`. The form must be in
    * the same document or shadow root for this to work.
    */
-  @property({ reflect: true }) form = '';
+  @property({ type: String, reflect: true }) form = '';
 
   /** Makes the textarea a required field. */
   @property({ type: Boolean, reflect: true }) required = false;
 
   /** The minimum length of input that will be considered valid. */
-  @property({ type: Number }) minlength: number;
+  @property({ type: Number, reflect: true }) minlength: number;
 
   /** The maximum length of input that will be considered valid. */
-  @property({ type: Number }) maxlength: number;
+  @property({ type: Number, reflect: true }) maxlength: number;
 
   /** Controls whether and how text input is automatically capitalized as it is entered by the user. */
-  @property() autocapitalize: 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters';
+  @property({ type: String, reflect: true }) autocapitalize:
+    | 'off'
+    | 'none'
+    | 'on'
+    | 'sentences'
+    | 'words'
+    | 'characters';
 
   /** Indicates whether the browser's autocorrect feature is on or off. */
-  @property() autocorrect: 'off' | 'on';
+  @property({ type: String, reflect: true }) autocorrect: 'off' | 'on';
 
   /**
    * Specifies what permission the browser has to provide assistance in filling out form field values. Refer to
    * [this page on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) for available values.
    */
-  @property() autocomplete: string;
+  @property({ reflect: true }) autocomplete: string;
 
   /** Indicates that the input should receive focus on page load. */
-  @property({ type: Boolean }) autofocus: boolean;
+  @property({ type: Boolean, reflect: true }) autofocus: boolean;
 
   /** Used to customize the label or icon of the Enter key on virtual keyboards. */
-  @property() enterkeyhint: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+  @property({ type: String, reflect: true }) enterkeyhint:
+    | 'enter'
+    | 'done'
+    | 'go'
+    | 'next'
+    | 'previous'
+    | 'search'
+    | 'send';
 
   /** Shows success styles if the validity of the input is valid. */
   @property({ type: Boolean, reflect: true, attribute: 'style-on-valid' }) styleOnValid = false;
@@ -137,7 +150,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
    * Tells the browser what type of data will be entered by the user, allowing it to display the appropriate virtual
    * keyboard on supportive devices.
    */
-  @property() inputmode: 'none' | 'text';
+  @property({ type: String, reflect: true }) inputmode: 'none' | 'text';
 
   /** The default value of the form control. Primarily used for resetting the form control. */
   @defaultValue() defaultValue = '';

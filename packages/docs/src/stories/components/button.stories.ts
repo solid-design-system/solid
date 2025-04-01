@@ -71,6 +71,25 @@ export const Size = {
 };
 
 /**
+ * - Use the `href` attribute to make it a link instead of a button.
+ * - Use the `target` attribute to specify where to open the link.
+ * - Use the `download` attribute to tell the browser to download the linked file as this filename.
+ */
+
+export const AsLink = {
+  name: 'As link',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-button
+        href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-introduction--docs"
+        >Link</sd-button
+      ><sd-button href="https://union-investment.com" target="_blank">New Window</sd-button
+      ><sd-button href="./placeholders/src/images/collaboration.jpg" download>Download</sd-button>
+    </div>
+  `
+};
+
+/**
  * Use the `loading` attribute to make a button busy. The width will remain the same as before, preventing adjacent elements from moving around.
  */
 
@@ -115,19 +134,19 @@ export const VisuallyDisabled = {
   render: () => {
     return html`
       <div class="flex gap-12 h-[100px] mt-12">
-        <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm" placement="top">
+        <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
           <sd-button variant="primary" visually-disabled>Visually Disabled</sd-button>
         </sd-tooltip>
 
-        <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm" placement="top">
+        <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
           <sd-button variant="secondary" visually-disabled>Visually Disabled</sd-button>
         </sd-tooltip>
 
-        <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm" placement="top">
+        <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
           <sd-button variant="tertiary" visually-disabled>Visually Disabled</sd-button>
         </sd-tooltip>
 
-        <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm" placement="top">
+        <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
           <sd-button variant="cta" visually-disabled>Visually Disabled</sd-button>
         </sd-tooltip>
       </div>

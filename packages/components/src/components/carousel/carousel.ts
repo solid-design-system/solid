@@ -67,7 +67,7 @@ export default class SdCarousel extends SolidElement {
   @property({ type: Boolean, reflect: true }) autoplay = false;
 
   /** Specifies how many slides should be shown at a given time.  */
-  @property({ type: Number, attribute: 'slides-per-page' }) slidesPerPage = 1;
+  @property({ type: Number, attribute: 'slides-per-page', reflect: true }) slidesPerPage = 1;
 
   /**
    * Use `slides-per-move` to set how many slides the carousel advances when scrolling. This is useful when specifying a `slides-per-page` greater than one. By setting `slides-per-move` to the same value as `slides-per-page`, the carousel will advance by one page at a time.<br>
@@ -75,7 +75,7 @@ export default class SdCarousel extends SolidElement {
    * <li> The number of slides should be divisible by the number of `slides-per-page` to maintain consistent scroll behavior.</li>
    * <li>Variations between `slides-per-move` and `slides-per-page` can lead to unexpected scrolling behavior. Keep your intended UX in mind when adjusting these values.</li>
    */
-  @property({ type: Number, attribute: 'slides-per-move' }) slidesPerMove = 1;
+  @property({ type: Number, attribute: 'slides-per-move', reflect: true }) slidesPerMove = 1;
 
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
   @query('.carousel__slides') scrollContainer: HTMLElement;

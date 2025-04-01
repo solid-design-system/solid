@@ -1,5 +1,23 @@
 # @solid-design-system/docs
 
+## 1.13.1
+
+### Patch Changes
+
+- Fix a11y issue in `sd-button` icon only screenshot test by adding missing label. _[`#2089`](https://github.com/solid-design-system/solid/pull/2089) [`c82034a`](https://github.com/solid-design-system/solid/commit/c82034a98469c6a2ccdbc285b45c9a2eafd205b6) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.13.0
+
+### Minor Changes
+
+- Add docs about link usage to sd-button. _[`#2083`](https://github.com/solid-design-system/solid/pull/2083) [`bee2d16`](https://github.com/solid-design-system/solid/commit/bee2d1688026dad731604c908a6b2ddaea899273) [@mariohamann](https://github.com/mariohamann)_
+
+## 1.12.25
+
+### Patch Changes
+
+- Fixed code examples for `sd-step` in `sd-step-group` showing state attributes _[`#2081`](https://github.com/solid-design-system/solid/pull/2081) [`09a6d16`](https://github.com/solid-design-system/solid/commit/09a6d16a453ccaacecd1df5365887842e51aa3e1) [@mariohamann](https://github.com/mariohamann)_
+
 ## 1.12.24
 
 ### Patch Changes

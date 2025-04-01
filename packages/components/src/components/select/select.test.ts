@@ -257,9 +257,10 @@ describe('<sd-select>', () => {
         <sd-option value="option-3">Option 3</sd-option>
       </sd-select>
     `);
+    const button = el.shadowRoot!.querySelector<HTMLSelectElement>('[part="combobox"]')!;
     const displayInput = el.shadowRoot!.querySelector<HTMLSelectElement>('[part="display-input"]')!;
 
-    el.focus();
+    button.focus();
     await sendKeys({ press: 'r' });
     await el.updateComplete;
 
@@ -326,7 +327,7 @@ describe('<sd-select>', () => {
       const select = el.querySelector<SdSelect>('sd-select')!;
       el.requestSubmit();
 
-      expect(select.shadowRoot!.activeElement).to.equal(select.displayInput);
+      expect(select.shadowRoot!.activeElement).to.equal(select.combobox);
     });
 
     it('should receive the correct validation attributes ("states") when valid', async () => {

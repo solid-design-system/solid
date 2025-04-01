@@ -1,5 +1,6 @@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize.js';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
@@ -127,7 +128,7 @@ export default class SdExpandable extends SolidElement {
                 `}
           </div>
         </button>
-        <details part="details" aria-hidden=${!this.open}>
+        <details part="details" ?inert=${ifDefined(!this.open)}>
           <summary part="summary" aria-hidden="true" class="cursor-pointer overflow-hidden list-none">
             <slot name="clone"></slot>
           </summary>
