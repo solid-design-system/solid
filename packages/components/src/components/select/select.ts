@@ -153,7 +153,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @state() currentPlacement = this.placement;
 
   /** Adds a clear button when the select is not empty. */
-  @property({ type: Boolean }) clearable = false;
+  @property({ type: Boolean, reflect: true }) clearable = false;
 
   /** Allows more than one option to be selected. */
   @property({ type: Boolean, reflect: true }) multiple = false;
