@@ -26,6 +26,7 @@ const loadStacks = () => {
 
     stacks[name] = Object.assign(document.createElement('div'), {
       role: 'region',
+      id: `sd-toast-stack--${name}`,
       className: `sd-toast-stack sd-toast-stack--${name}`
     });
   });
