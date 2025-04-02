@@ -282,7 +282,6 @@ export default class SdNotification extends SolidElement {
       <div
         part="base"
         class=${cx('w-full overflow-hidden flex items-stretch relative m-2 focus-visible:focus-outline')}
-        role="alert"
         id="notification"
         tabindex="0"
         aria-labelledby="message"
@@ -323,7 +322,9 @@ export default class SdNotification extends SolidElement {
             'border-solid border-[1px] border-l-0 border-neutral-400'
           )}
         >
-          <slot id="message" part="message" class="block w-full pl-3 py-2"></slot>
+          <div role="alert" class="w-full">
+            <slot id="message" part="message" class="block w-full pl-3 py-2"></slot>
+          </div>
 
           ${this.closable
             ? html`
