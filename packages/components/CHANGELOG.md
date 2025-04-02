@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.6.3
+
+### Patch Changes
+
+- Fix reflecting `clearable` property in `sd-select`. _[`#2098`](https://github.com/solid-design-system/solid/pull/2098) [`ae2b4c8`](https://github.com/solid-design-system/solid/commit/ae2b4c8b658f410e380d754227b592af3d3b221c) [@smfonseca](https://github.com/smfonseca)_
+
 ## 4.6.2
 
 ### Patch Changes
@@ -10,8 +16,9 @@
   - Add `aria-invalid` attribute to semantically communicate invalid state.
 
 ### 📈 Stats
-* Uncompressed: 417 KB (+1 KB / +0%)
-* Gzipped: 97 KB (unchanged)
+
+- Uncompressed: 417 KB (+1 KB / +0%)
+- Gzipped: 97 KB (unchanged)
 
 ## 4.6.1
 
