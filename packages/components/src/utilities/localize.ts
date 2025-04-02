@@ -113,6 +113,7 @@ export interface Translation extends DefaultTranslation {
   slideNum: (slide: number, count: number) => string;
   tagsSelected: string;
   toggleColorFormat: string;
+  toggleSublinks: string;
   transcriptIsOpen: string;
   unmute: string;
 }

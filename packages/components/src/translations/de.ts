@@ -48,6 +48,7 @@ const translation: Translation = {
   slideNum: (slide, count) => `Folie ${slide} von ${count}`,
   tagsSelected: 'Optionen ausgewählt',
   toggleColorFormat: 'Farbformat umschalten',
+  toggleSublinks: 'Unterlinks umschalten',
   transcriptIsOpen: 'Transkript ist offen',
   unmute: 'Unmute'
 };
