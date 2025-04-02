@@ -48,9 +48,10 @@ const translation: Translation = {
   slideNum: num => `Slide ${num}`,
   tagsSelected: 'Options selected',
   toggleColorFormat: 'Toggle color format',
-  toggleSublinks: 'Toggle sublinks',
   transcriptIsOpen: 'Transcript is open',
-  unmute: 'Unmute'
+  unmute: 'Unmute',
+  expandNavigationItem: 'Expand navigation item',
+  collapseNavigationItem: 'Collapse navigation item'
 };
 
 registerTranslation(translation);

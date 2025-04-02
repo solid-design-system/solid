@@ -223,7 +223,9 @@ export default class SdNavigationItem extends SolidElement {
               ? this.separated
                 ? html`<button
                     type="button"
-                    title=${this.localize.term('toggleSublinks')}
+                    title=${this.open
+                      ? this.localize.term('collapseNavigationItem')
+                      : this.localize.term('expandNavigationItem')}
                     class="sd-interactive sd-interactive--reset"
                     @click=${this.handleClickSummary}
                   >
