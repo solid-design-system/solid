@@ -68,7 +68,7 @@ export const Invalid = {
     </form>
     <script type="module">
       // Wait for custom elements to be defined
-      await Promise.all([customElements.whenDefined('sd-switch'), customElements.whenDefined('sd-button')]).then(() => {
+      await Promise.all([customElements.whenDefined('sd-switch')]).then(() => {
         const input = document.getElementById('invalid-switch');
 
         input.click();
