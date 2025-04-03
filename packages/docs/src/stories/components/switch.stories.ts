@@ -69,11 +69,11 @@ export const Invalid = {
     <script type="module">
       // Wait for custom elements to be defined
       await Promise.all([customElements.whenDefined('sd-switch')]).then(() => {
-        const input = document.getElementById('invalid-switch');
+        const sdSwitch = document.getElementById('invalid-switch');
 
-        input.click();
-        input.reportValidity();
-        input.setCustomValidity('error-text');
+        sdSwitch.click();
+        sdSwitch.reportValidity();
+        sdSwitch.setCustomValidity('error-text');
       });
     </script>
   `
