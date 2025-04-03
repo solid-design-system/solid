@@ -6,14 +6,16 @@ const translation: Translation = {
   $name: 'Deutsch',
   $dir: 'ltr',
 
-  autoplay: 'Autoplay',
   audioPlayer: 'Audio-Player',
+  autoplay: 'Autoplay',
   carousel: 'Karussell',
   clearEntry: 'Eingabe löschen',
   close: 'Schließen',
+  collapseNavigationItem: 'Navigationspunkt reduzieren',
   comboboxDefaultPlaceholder: 'Bitte suchen und auswählen',
   copy: 'Kopieren',
   currentValue: 'Aktueller Wert',
+  expandNavigationItem: 'Navigationspunkt erweitern',
   goToSlide: (slide, count) => `Zu Folie ${slide} von ${count} gehen`,
   hidePassword: 'Passwort verbergen',
   loading: 'Wird geladen',
@@ -37,9 +39,9 @@ const translation: Translation = {
   removed: name => `${name} entfernt`,
   resize: 'Größe ändern',
   scrollToEnd: 'Zum Ende scrollen',
+  scrollToStart: 'Zum Anfang scrollen',
   search: 'Suchen',
   seekBar: 'Schieberegler für Suche',
-  scrollToStart: 'Zum Anfang scrollen',
   selectAColorFromTheScreen: 'Farbe vom Bildschirm auswählen',
   selectDefaultPlaceholder: 'Bitte auswählen',
   showLess: 'Weniger anzeigen',
@@ -49,9 +51,7 @@ const translation: Translation = {
   tagsSelected: 'Optionen ausgewählt',
   toggleColorFormat: 'Farbformat umschalten',
   transcriptIsOpen: 'Transkript ist offen',
-  unmute: 'Unmute',
-  expandNavigationItem: 'Navigationspunkt erweitern',
-  collapseNavigationItem: 'Navigationspunkt reduzieren'
+  unmute: 'Unmute'
 };
 
 registerTranslation(translation);

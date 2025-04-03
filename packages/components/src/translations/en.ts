@@ -6,14 +6,16 @@ const translation: Translation = {
   $name: 'English',
   $dir: 'ltr',
 
-  autoplay: 'Autoplay',
   audioPlayer: 'Audio Player',
+  autoplay: 'Autoplay',
+  carousel: 'Carousel',
   clearEntry: 'Clear entry',
   close: 'Close',
+  collapseNavigationItem: 'Collapse navigation item',
   comboboxDefaultPlaceholder: 'Please search and select',
   copy: 'Copy',
-  carousel: 'Carousel',
   currentValue: 'Current value',
+  expandNavigationItem: 'Expand navigation item',
   goToSlide: (slide, count) => `Go to slide ${slide} of ${count}`,
   hidePassword: 'Hide password',
   loading: 'Loading',
@@ -49,9 +51,7 @@ const translation: Translation = {
   tagsSelected: 'Options selected',
   toggleColorFormat: 'Toggle color format',
   transcriptIsOpen: 'Transcript is open',
-  unmute: 'Unmute',
-  expandNavigationItem: 'Expand navigation item',
-  collapseNavigationItem: 'Collapse navigation item'
+  unmute: 'Unmute'
 };
 
 registerTranslation(translation);
