@@ -64,13 +64,17 @@ export const Required = {
 export const Invalid = {
   render: () => html`
     <form id="invalid-form">
-      <sd-switch required id="invalid-switch">Invalid</sd-switch>
+      <sd-switch checked required id="invalid-switch">Invalid</sd-switch>
       <sd-button id="invalid-button" class="hidden" type="submit"></sd-button>
     </form>
     <script type="module">
-      await Promise.all([customElements.whenDefined('sd-switch')]).then(() => {
-        const button = document.getElementById('invalid-button');
-        button.click();
+      // Wait for custom elements to be defined
+      await Promise.all([customElements.whenDefined('sd-switch'), customElements.whenDefined('sd-button')]).then(() => {
+        const input = document.getElementById('invalid-switch');
+
+        input.click();
+        input.reportValidity();
+        input.setCustomValidity('error-text');
       });
     </script>
   `
