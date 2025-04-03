@@ -65,7 +65,6 @@ export const Invalid = {
   render: () => html`
     <form id="invalid-form">
       <sd-switch checked required id="invalid-switch">Invalid</sd-switch>
-      <sd-button id="invalid-button" class="hidden" type="submit"></sd-button>
     </form>
     <script type="module">
       // Wait for custom elements to be defined
