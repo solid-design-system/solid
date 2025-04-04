@@ -74,14 +74,16 @@ export interface Translation extends DefaultTranslation {
   $name: string; // e.g. English, Español
   $dir: 'ltr' | 'rtl';
 
-  autoplay: string;
   audioPlayer: string;
+  autoplay: string;
   carousel: string;
   clearEntry: string;
   close: string;
+  collapseNavigationItem: string;
   comboboxDefaultPlaceholder: string;
   copy: string;
   currentValue: string;
+  expandNavigationItem: string;
   goToSlide: (slide: number, count: number) => string;
   hidePassword: string;
   loading: string;
