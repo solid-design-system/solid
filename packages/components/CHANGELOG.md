@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.6.4
+
+### Patch Changes
+
+- Fix `sd-step` label alignment when `not-interactive` attribute is set and browsers minimum font size is defined. _[`#2103`](https://github.com/solid-design-system/solid/pull/2103) [`18442d9`](https://github.com/solid-design-system/solid/commit/18442d9f3bb775ada64c30c9e206b345b2de0a10) [@smfonseca](https://github.com/smfonseca)_
+
 ## 4.6.3
 
 ### Patch Changes
