@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.13.2
+
+### Patch Changes
+
+- Refactored `sd-switch` invalid state story to prevent focus from being set in the element on page load. _[`#2104`](https://github.com/solid-design-system/solid/pull/2104) [`ad14e89`](https://github.com/solid-design-system/solid/commit/ad14e8927d7cae80152e88b65b4a958dc1a000dc) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.13.1
 
 ### Patch Changes
