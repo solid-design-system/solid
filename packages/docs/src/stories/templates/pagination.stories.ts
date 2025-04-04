@@ -100,6 +100,10 @@ export const Number = {
 
           state.current--;
           update();
+
+          if (state.current === 1) {
+            next.focus();
+          }
         }
 
         const handleNext = (event) => {
@@ -109,6 +113,10 @@ export const Number = {
 
           state.current++;
           update();
+
+          if (state.current === pages.length) {
+            previous.focus();
+          }
         }
 
         pages.forEach((page) => page.addEventListener('click', handlePageClick));
@@ -173,6 +181,10 @@ export const Simple = {
 
           state.current--;
           update();
+          
+          if (state.current === 1) {
+            next.focus();
+          }
         }
 
         const handleNext = (event) => {
@@ -182,6 +194,10 @@ export const Simple = {
 
           state.current++;
           update();
+
+          if (state.current === state.total) {
+            previous.focus();
+          }
         }
 
         previous.addEventListener('click', handlePrevious);
