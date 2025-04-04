@@ -11,6 +11,7 @@ import fs from 'fs/promises';
 import postcss from 'postcss';
 import tailwindcss from 'tailwindcss';
 import tailwindcssNesting from 'tailwindcss/nesting/index.js';
+import theme from './postcss-token-variables.js';
 
 (async () => {
   const lite = process.argv.includes('--lite');
@@ -20,7 +21,8 @@ import tailwindcssNesting from 'tailwindcss/nesting/index.js';
     atImportPlugin({ allowDuplicates: false }),
     tailwindcssNesting,
     tailwindcss,
-    autoprefixer
+    autoprefixer,
+    theme
   ])
     .process(css, { from: undefined })
     .then(result => result.css);
@@ -34,6 +36,7 @@ import tailwindcssNesting from 'tailwindcss/nesting/index.js';
     tailwindcssNesting,
     tailwindcss,
     autoprefixer,
+    theme,
     cssnano
   ])
     .process(css, { from: undefined })
