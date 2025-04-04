@@ -9,14 +9,30 @@ import { watch } from '../../internal/watch.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element.js';
 
-const toastStackDefault = Object.assign(document.createElement('div'), {
-  role: 'region',
-  className: 'sd-toast-stack sd-toast-stack--top-right'
-});
-const toastStackBottomCenter = Object.assign(document.createElement('div'), {
-  role: 'region',
-  className: 'sd-toast-stack sd-toast-stack--bottom-center'
-});
+const stacks: Record<string, HTMLElement | null> = {
+  'top-right': null,
+  'bottom-center': null
+};
+
+const loadStacks = () => {
+  Object.entries(stacks).forEach(([name]) => {
+    const stack: HTMLElement | null = document.querySelector(`#sd-toast-stack--${name}`);
+
+    if (stack) {
+      stack.setAttribute('role', 'region');
+      stacks[name] = stack;
+      return;
+    }
+
+    stacks[name] = Object.assign(document.createElement('div'), {
+      role: 'region',
+      id: `sd-toast-stack--${name}`,
+      className: `sd-toast-stack sd-toast-stack--${name}`
+    });
+  });
+};
+
+loadStacks();
 
 /**
  * @summary Alerts are used to display important messages inline or as toast notifications.
@@ -89,10 +105,7 @@ export default class SdNotification extends SolidElement {
   private focused = false;
 
   get stack(): HTMLElement {
-    return {
-      'top-right': toastStackDefault,
-      'bottom-center': toastStackBottomCenter
-    }[this.toastStack];
+    return stacks[this.toastStack]!;
   }
 
   connectedCallback() {
@@ -241,13 +254,11 @@ export default class SdNotification extends SolidElement {
    */
   async toast() {
     return new Promise<void>(resolve => {
-      const toastStack = this.toastStack === 'bottom-center' ? toastStackBottomCenter : toastStackDefault;
-
-      if (toastStack.parentElement === null) {
-        document.body.append(toastStack);
+      if (this.stack.parentElement === null) {
+        document.body.append(this.stack);
       }
 
-      toastStack.appendChild(this);
+      this.stack.appendChild(this);
 
       // Wait for the toast stack to render
       requestAnimationFrame(() => {
@@ -259,13 +270,8 @@ export default class SdNotification extends SolidElement {
       this.addEventListener(
         'sd-after-hide',
         () => {
-          toastStack.removeChild(this);
+          this.stack.removeChild(this);
           resolve();
-
-          // Remove the toast stack from the DOM when there are no more alerts
-          if (toastStack.querySelector('sd-notification') === null) {
-            toastStack.remove();
-          }
         },
         { once: true }
       );
@@ -277,7 +283,6 @@ export default class SdNotification extends SolidElement {
       <div
         part="base"
         class=${cx('w-full overflow-hidden flex items-stretch relative m-2 focus-visible:focus-outline')}
-        role="alert"
         id="notification"
         tabindex="0"
         aria-labelledby="message"
@@ -318,7 +323,9 @@ export default class SdNotification extends SolidElement {
             'border-solid border-[1px] border-l-0 border-neutral-400'
           )}
         >
-          <slot id="message" part="message" class="block w-full pl-3 py-2"></slot>
+          <div role="alert" class="w-full">
+            <slot id="message" part="message" class="block w-full pl-3 py-2"></slot>
+          </div>
 
           ${this.closable
             ? html`
