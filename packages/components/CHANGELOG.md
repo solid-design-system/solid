@@ -1,5 +1,13 @@
 # @solid-design-system/components
 
+## 4.6.5
+
+### Patch Changes
+
+- Added new translation keys named `expandNavigationItem` and `collapseNavigationItem`. _[`#2099`](https://github.com/solid-design-system/solid/pull/2099) [`f032ebb`](https://github.com/solid-design-system/solid/commit/f032ebb454c2aed3b24cc0beb64299ff4cc36a3a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Improved `sd-navigation-item` toggle details button title.
+
 ## 4.6.4
 
 ### Patch Changes
