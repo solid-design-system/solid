@@ -1,7 +1,7 @@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize';
-import { property, state } from 'lit/decorators.js';
+import { property, query, state } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -40,6 +40,8 @@ import SolidElement from '../../internal/solid-element';
 
 @customElement('sd-scrollable')
 export default class SdScrollable extends SolidElement {
+  @query('#live') live: HTMLDivElement;
+
   public localize = new LocalizeController(this);
 
   /** Defines the scroll orientation */
@@ -169,6 +171,9 @@ export default class SdScrollable extends SolidElement {
     const scrollAmount = direction === 'left' || direction === 'up' ? -this.step : this.step;
     const scrollDirection = direction === 'left' || direction === 'right' ? 'left' : 'top';
 
+    const announcement = this.localize.term('scrolled');
+    this.live.textContent = this.live.textContent === announcement ? `${announcement}\u200B` : announcement;
+
     this.isKeyboardNavigation = event?.pointerType !== 'mouse';
 
     const scrollOptions: ScrollToOptions = {
@@ -203,6 +208,7 @@ export default class SdScrollable extends SolidElement {
         @scroll=${this.updateScrollIndicatorVisibility}
         tabindex="0"
       >
+        <div id="live" role="status" class="sr-only"></div>
         <div part="scroll-content" class="flex-1">
           <slot></slot>
         </div>

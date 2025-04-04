@@ -38,6 +38,7 @@ const translation: Translation = {
   remove: 'Entfernen',
   removed: name => `${name} entfernt`,
   resize: 'Größe ändern',
+  scrolled: 'Gescrollt',
   scrollToEnd: 'Zum Ende scrollen',
   scrollToStart: 'Zum Anfang scrollen',
   search: 'Suchen',
