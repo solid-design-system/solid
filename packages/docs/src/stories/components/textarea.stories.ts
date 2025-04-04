@@ -7,12 +7,6 @@ const { argTypes, args, parameters } = storybookDefaults('sd-textarea');
 const { generateTemplate } = storybookTemplate('sd-textarea');
 const { overrideArgs } = storybookHelpers('sd-textarea');
 
-/**
- * Used to allow users to input and edit multiple lines of text.
- *
- * **Related templates:**
- * - [Textarea with Tooltip](?path=/docs/templates-tooltip--docs)
- */
 export default {
   title: 'Components/sd-textarea',
   tags: ['!dev'],

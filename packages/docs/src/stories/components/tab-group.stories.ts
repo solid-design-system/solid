@@ -19,17 +19,6 @@ function generateTabsAndPanels(
   return result;
 }
 
-/**
- * Used to organize content into a container that shows one section at a time.
- *
- * **Related components:**
- * - [sd-tab](?path=/docs/components-sd-tab--docs)
- * - [sd-tab-panel](?path=/docs/components-sd-tab-panel--docs)
- *
- * **Related templates:**
- * - [Tab Group](?path=/docs/templates-tab-group--docs)
- */
-
 export default {
   title: 'Components/sd-tab-group',
   tags: ['!dev'],
