@@ -82,10 +82,21 @@ Provide brief, unobtrusive messages to users through toast notifications that ov
 
 #### Toast Notifications
 
+<sd-notification variant="warning" open>
+  <p>**Please be aware of the following accessibility requirements:**</p>
+  <ul>
+    <li>Prefer default (inline) notifications over toast notifications.</li>
+    <li>Don’t use toasts for critical information.</li>
+    <li>When the page is zoomed in, toasts may obscure large parts of the screen.</li>
+    <li>Only use interactive elements in toast notifications for additional actions.</li>
+    <li>Consider not using buttons in timed toasts.</li>
+  </ul>
+</sd-notification><br>
+
 - Code the toast messages as polite alerts using the ARIA aria-live=”polite” attribute. This will trigger certain assistive devices, such as screenreaders, to announce the content at a convenient moment after the toast appears.
 - Use the “altText” prop on the “Action” to instruct an alternative way of actioning the toast to screen reader users.
-- Hotkey Access: Render toast notifications in an existing landmark region (“notifications”) that can be accessed via a hotkey (e.g. F6). The label can be overridden using the ”aria-label” prop of the ”ToastContainer” element. When the hotkey is pressed, focus should shift to the toast notification area. Landmark regions can be navigated using the keyboard by pressing the F6 key to move forward, and the Shift + F6 key to move backward. After navigating through the notifications, focus should return to the item that was previously focused before the hotkey was used.
-- Trap focus until an action is taken or the notification is dismissed.
+- Hotkey Access: Toast notifications will use an already existing container from the DOM with the ids "sd-toast-stack--top-right" and "sd-toast-stack--bottom-center". The "aria-label" prop should be set to set proper names to the containers. In case these containers are not present, the sd-notification will take care of creating it with default label "Notifications". Landmark regions can be navigated using the keyboard by pressing the F6 key to move forward, and the Shift + F6 key to move backward.
+- Don't trap focus
 - If multiple toasts are displayed simultaneously, use “event.preventDefault” in the “onClose” prop to dismiss only the oldest one.
 - Ensure that toast notifications remain functional when users adjust the screen size (e.g., zoom to 200%), change the font size, or use the application on mobile devices. It's important to avoid requiring users to scroll horizontally to view the toast notifications.
 
