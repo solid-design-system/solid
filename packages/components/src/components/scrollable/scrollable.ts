@@ -1,5 +1,6 @@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
 import cx from 'classix';
@@ -40,6 +41,8 @@ import SolidElement from '../../internal/solid-element';
 
 @customElement('sd-scrollable')
 export default class SdScrollable extends SolidElement {
+  @query('[part="button-start"]') buttonStart: HTMLDivElement;
+  @query('[part="button-end"]') buttonEnd: HTMLDivElement;
   @query('#live') live: HTMLDivElement;
 
   public localize = new LocalizeController(this);
@@ -150,11 +153,16 @@ export default class SdScrollable extends SolidElement {
       this.dispatchEvent(new CustomEvent('end'));
     }
 
+    (startButton as HTMLElement)?.querySelector('sd-icon')?.setAttribute('label', this.localize.term('scrollToStart'));
+    (endButton as HTMLElement)?.querySelector('sd-icon')?.setAttribute('label', this.localize.term('scrollToEnd'));
+
     if (this.isKeyboardNavigation) {
       if (startButton) {
         (startButton as HTMLElement).hidden = !startEventTriggered;
       }
       if (startButton && startEventTriggered && !(canScrollDown || canScrollRight)) {
+        const label = `${this.localize.term('scrolled')}. ${this.localize.term('scrollToStart')}`;
+        (startButton as HTMLElement).querySelector('sd-icon')?.setAttribute('label', label);
         (startButton as HTMLElement).focus();
       }
 
@@ -162,6 +170,8 @@ export default class SdScrollable extends SolidElement {
         (endButton as HTMLElement).hidden = !endEventTriggered;
       }
       if (endButton && endEventTriggered && !(canScrollUp || canScrollLeft)) {
+        const label = `${this.localize.term('scrolled')}. ${this.localize.term('scrollToEnd')}`;
+        (endButton as HTMLElement).querySelector('sd-icon')?.setAttribute('label', label);
         (endButton as HTMLElement).focus();
       }
     }
@@ -186,6 +196,14 @@ export default class SdScrollable extends SolidElement {
     // Dispatching custom event
     const eventName = `button-${direction}`;
     this.dispatchEvent(new CustomEvent(eventName, { bubbles: true, composed: true }));
+  }
+
+  handleButtonBlur(direction: 'left' | 'right' | 'up' | 'down', e: FocusEvent) {
+    const scrollTo = ['left', 'up'].includes(direction) ? 'start' : 'end';
+    const label = scrollTo === 'start' ? this.localize.term('scrollToStart') : this.localize.term('scrollToEnd');
+
+    const button = e.target as HTMLElement;
+    button.querySelector('sd-icon')?.setAttribute('label', label);
   }
 
   render() {
@@ -217,100 +235,92 @@ export default class SdScrollable extends SolidElement {
         ? html`
             ${this.isScrollHorizontalEnabled
               ? html`
-                  ${this.canScroll.left
-                    ? html`
-                        <div
-                          part="button-left"
-                          class="absolute z-10 flex items-center justify-center top-0 left-0 h-full w-8"
-                        >
-                          <button
-                            part="button-start"
-                            class=${cx(scrollButtonClasses)}
-                            @click=${(e: PointerEvent) => this.handleScroll('left', e)}
-                          >
-                            <slot name="icon-start">
-                              <sd-icon
-                                library="system"
-                                name="chevron-up"
-                                class="rotate-[-90deg]"
-                                label=${this.localize.term('scrollToStart')}
-                              ></sd-icon>
-                            </slot>
-                          </button>
-                        </div>
-                      `
-                    : null}
-                  ${this.canScroll.right
-                    ? html`
-                        <div
-                          part="button-right"
-                          class="absolute z-10 flex items-center justify-center top-0 right-0 h-full w-8"
-                        >
-                          <button
-                            part="button-end"
-                            class=${cx(scrollButtonClasses)}
-                            @click=${(e: PointerEvent) => this.handleScroll('right', e)}
-                          >
-                            <slot name="icon-end">
-                              <sd-icon
-                                library="system"
-                                name="chevron-down"
-                                class="rotate-[-90deg]"
-                                label=${this.localize.term('scrollToEnd')}
-                              ></sd-icon>
-                            </slot>
-                          </button>
-                        </div>
-                      `
-                    : null}
+                  <div
+                    part="button-left"
+                    class="absolute z-10 flex items-center justify-center top-0 left-0 h-full w-8"
+                    hidden=${ifDefined(!this.canScroll.left || undefined)}
+                  >
+                    <button
+                      part="button-start"
+                      class=${cx(scrollButtonClasses)}
+                      @click=${(e: PointerEvent) => this.handleScroll('left', e)}
+                      @blur=${(e: FocusEvent) => this.handleButtonBlur('left', e)}
+                    >
+                      <slot name="icon-start">
+                        <sd-icon
+                          library="system"
+                          name="chevron-up"
+                          class="rotate-[-90deg]"
+                          label=${this.localize.term('scrollToStart')}
+                        ></sd-icon>
+                      </slot>
+                    </button>
+                  </div>
+                  <div
+                    part="button-right"
+                    class="absolute z-10 flex items-center justify-center top-0 right-0 h-full w-8"
+                    hidden=${ifDefined(!this.canScroll.right || undefined)}
+                  >
+                    <button
+                      part="button-end"
+                      class=${cx(scrollButtonClasses)}
+                      @click=${(e: PointerEvent) => this.handleScroll('right', e)}
+                      @blur=${(e: FocusEvent) => this.handleButtonBlur('right', e)}
+                    >
+                      <slot name="icon-end">
+                        <sd-icon
+                          library="system"
+                          name="chevron-down"
+                          class="rotate-[-90deg]"
+                          label=${this.localize.term('scrollToEnd')}
+                        ></sd-icon>
+                      </slot>
+                    </button>
+                  </div>
                 `
               : null}
             ${this.isScrollVerticalEnabled
               ? html`
-                  ${this.canScroll.up
-                    ? html`
-                        <div
-                          part="button-top"
-                          class="absolute z-10 flex items-center justify-center top-0 left-0 w-full h-8"
-                        >
-                          <button
-                            part="button-start"
-                            class=${cx(scrollButtonClasses)}
-                            @click=${(e: PointerEvent) => this.handleScroll('up', e)}
-                          >
-                            <slot name="icon-start">
-                              <sd-icon
-                                library="system"
-                                name="chevron-up"
-                                label=${this.localize.term('scrollToStart')}
-                              ></sd-icon>
-                            </slot>
-                          </button>
-                        </div>
-                      `
-                    : null}
-                  ${this.canScroll.down
-                    ? html`
-                        <div
-                          part="button-bottom"
-                          class="absolute z-10 flex items-center justify-center bottom-0 left-0 w-full h-8"
-                        >
-                          <button
-                            part="button-end"
-                            class=${cx(scrollButtonClasses)}
-                            @click=${(e: PointerEvent) => this.handleScroll('down', e)}
-                          >
-                            <slot name="icon-end">
-                              <sd-icon
-                                library="system"
-                                name="chevron-down"
-                                label=${this.localize.term('scrollToEnd')}
-                              ></sd-icon>
-                            </slot>
-                          </button>
-                        </div>
-                      `
-                    : null}
+                  <div
+                    part="button-top"
+                    class="absolute z-10 flex items-center justify-center top-0 left-0 w-full h-8"
+                    hidden=${ifDefined(!this.canScroll.up || undefined)}
+                  >
+                    <button
+                      part="button-start"
+                      class=${cx(scrollButtonClasses)}
+                      @click=${(e: PointerEvent) => this.handleScroll('up', e)}
+                      @blur=${(e: FocusEvent) => this.handleButtonBlur('up', e)}
+                    >
+                      <slot name="icon-start">
+                        <sd-icon
+                          library="system"
+                          name="chevron-up"
+                          label=${this.localize.term('scrollToStart')}
+                        ></sd-icon>
+                      </slot>
+                    </button>
+                  </div>
+                  <div
+                    part="button-bottom"
+                    class="absolute z-10 flex items-center justify-center bottom-0 left-0 w-full h-8"
+                    hidden=${ifDefined(!this.canScroll.down || undefined)}
+                  >
+                    <button
+                      part="button-end"
+                      class=${cx(scrollButtonClasses)}
+                      @click=${(e: PointerEvent) => this.handleScroll('down', e)}
+                      @blur=${(e: FocusEvent) => this.handleButtonBlur('down', e)}
+                    >
+                      <slot name="icon-end">
+                        <sd-icon
+                          library="system"
+                          name="chevron-down"
+                          label=${this.localize.term('scrollToEnd')}
+                        ></sd-icon>
+                      </slot>
+                    </button>
+                  </div>
                 `
               : null}
           `
