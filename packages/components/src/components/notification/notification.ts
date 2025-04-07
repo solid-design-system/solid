@@ -101,8 +101,6 @@ export default class SdNotification extends SolidElement {
 
   private remainingDuration = this.duration;
   private startTime = Date.now();
-  private tabDirection: 'forward' | 'backwards' = 'forward';
-  private focused = false;
 
   get stack(): HTMLElement {
     return stacks[this.toastStack]!;
@@ -115,14 +113,10 @@ export default class SdNotification extends SolidElement {
       document.body.append(this.stack);
       this.stack.ariaLabel = this.localize.term('notifications');
     }
-
-    this.handleFocusIn = this.handleFocusIn.bind(this);
-    document.addEventListener('focusin', this.handleFocusIn);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    document.removeEventListener('focusin', this.handleFocusIn);
   }
 
   firstUpdated() {
@@ -161,35 +155,10 @@ export default class SdNotification extends SolidElement {
     this.hide();
   }
 
-  private checkFocus() {
-    if (!this.focused || !this.closable) return;
-
-    if (!this.matches(':focus-within')) {
-      const target = this.tabDirection === 'forward' ? this.base : this.close;
-
-      if (typeof target?.focus === 'function') {
-        target.focus({ preventScroll: true });
-      }
-    }
-  }
-
-  private handleFocusIn() {
-    this.focused = true;
-  }
-
   private handleKeyDown(event: KeyboardEvent) {
-    this.tabDirection = 'forward';
-
     if (this.closable && event.key === 'Escape') {
       this.hide();
-      return;
     }
-
-    if (event.key === 'Tab' && event.shiftKey) {
-      this.tabDirection = 'backwards';
-    }
-
-    requestAnimationFrame(() => this.checkFocus());
   }
 
   @watch('open', { waitUntilFirstUpdate: true })
