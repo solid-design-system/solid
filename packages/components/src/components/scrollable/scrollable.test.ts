@@ -216,4 +216,27 @@ describe('<sd-scrollable>', () => {
     startButton!.focus();
     expect(el.shadowRoot!.activeElement).to.equal(startButton);
   });
+
+  it('should announce the scrolling action', async () => {
+    const el = await fixture<SdScrollable>(html`
+      <sd-scrollable style="height: 183px; width: 277px;" buttons orientation="vertical" step="120">
+        <div style="width: 400px; height: 800px;">
+          <p>This is a long scrollable content.</p>
+          <p>It contains multiple paragraphs and lines.</p>
+          <p>The content is intentionally long to trigger scrolling.</p>
+        </div>
+      </sd-scrollable>
+    `);
+
+    const endButton = el.shadowRoot!.querySelector<HTMLButtonElement>('[part="button-end"]');
+    const liveRegion = el.shadowRoot!.querySelector<HTMLButtonElement>('#live');
+
+    expect(endButton).to.exist;
+    expect(liveRegion!.innerText).to.eq('');
+
+    endButton?.click();
+    await el.updateComplete;
+
+    expect(liveRegion!.innerText).to.eq('Scrolled');
+  });
 });
