@@ -36,10 +36,10 @@ jobs:
         id: calc_size
         run: |
           UNCOMPRESSED=$(cd packages/components && node -e "import('./scripts/node-get-sizes.mjs').then(({ getOutputs }) => { console.log(getOutputs().uncompressed.replace('Bundle size (uncompressed): ', '')); });")
-          echo "::set-output name=uncompressed_size::$UNCOMPRESSED"
+          echo "uncompressed_size=$UNCOMPRESSED" >> $GITHUB_OUTPUT
 
           GZIP=$(cd packages/components && node -e "import('./scripts/node-get-sizes.mjs').then(({ getOutputs }) => { console.log(getOutputs().gzip.replace('Bundle size (gzipped): ', '')); });")
-          echo "::set-output name=gzip_size::$GZIP"
+          echo "gzip_size=$GZIP" >> $GITHUB_OUTPUT
 
       - name: Uncompressed
         uses: LouisBrunner/checks-action@v2.0.0
