@@ -41,8 +41,6 @@ import SolidElement from '../../internal/solid-element';
 
 @customElement('sd-scrollable')
 export default class SdScrollable extends SolidElement {
-  @query('[part="button-start"]') buttonStart: HTMLDivElement;
-  @query('[part="button-end"]') buttonEnd: HTMLDivElement;
   @query('#live') live: HTMLDivElement;
 
   public localize = new LocalizeController(this);
