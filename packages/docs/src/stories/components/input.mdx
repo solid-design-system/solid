@@ -40,9 +40,8 @@ Used to allow users to enter text. It can be displayed in several ways, dependin
 
 #### User Guidance
 
-- Provide instructions within helper text for completing the field, such as password or character count.
-- Offer additional guidance with tooltips or help text when the interpretation of the field could be unclear or ambiguous.
-- Provide placeholder text to guide users on the expected input format.
+- Provide instructions within helper text for completing the field, such as password or character count (e.g., “maxlength” and ”minlength”...).
+- Offer additional guidance with tooltips or help text to guide users on the expected input format and prevent unclear or ambiguous interpretation.
 
 #### Validation and Formatting
 
@@ -52,15 +51,18 @@ Used to allow users to enter text. It can be displayed in several ways, dependin
 
 #### Input Types
 
-- Use appropriate field types (e.g., “email”, “password”, “number”). For autocomplete functionalities (e.g., search fields) use [sd-combobox](/?path=/docs/components-sd-combobox--docs).
-- Use for brief text input only. For longer inputs, such as comments or user feedback, use sd-textarea instead.
+- Use appropriate field types for the given purpose (e.g., “email”, “password”, “number”). For custom autocomplete functionalities (e.g., search fields) use [sd-combobox](/?path=/docs/components-sd-combobox--docs).
+- Use for brief text input only. For longer inputs, such as comments or user feedback, use [sd-textarea](/?path=/docs/components-sd-textarea--docs) instead.
 
 ### Accessibility Information
 
-- Ensure that focus moves logically between input fields and other form elements. When an input field is focused, it should be clearly indicated.
-- If an input field contains an error, ensure that it is announced by screen readers. Use aria-invalid="true" and aria-describedby to link the input field to the error message.
+- Ensure that focus moves in sequential order between input fields and other form elements. When an input field is focused, it should be clearly indicated.
 - Avoid disabled input fields. If needed, ensure that they remain in the regular tab order but cannot be activated, allowing screen readers to announce their state and purpose. Use the native disabled attribute or appropriate ARIA attributes (e.g., aria-disabled="true").
 - Ensure input fields are usable on all screen sizes. On smaller screens, consider using larger touch targets for input fields.
+- Placeholder text should offer a hint of what the user should write and must always go together with a label.
+- Prefer keeping the input enabled by default by relying on default values or by validating on submit.
+- If you need to disable an input, use the 'Visually disabled' attribute to keep it in the regular tab order. This allows screen readers to announce its state and purpose. Additionally, consider adding a helpful tooltip.
+- Use “autocomplete” attribute to enable automated browser assistance when filling out forms.
 - Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
 
 <Meta title="Components/sd-input/Overview" />
