@@ -61,10 +61,10 @@ On touch devices, the slides can be moved by swiping.
 
 #### ARIA Labels
 
-- Use appropriate ARIA roles, such as ’aria-roledescription="carousel"’and ”aria-live” to indicate the state of the carousel and announce dynamic changes to screen reader users.
-- Describe navigation controls and slides using ”aria-label” or ”aria-labelledby”.
+- Use appropriate ARIA roles, such as ’aria-roledescription="carousel"’and ”aria-live” to indicate the state of the carousel and announce dynamic changes to screen reader users.
 - Add the role="region" attribute together with an unique aria-label whenever the carousel is an important landmark of the page.
-- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
 
 #### Screen readers misalignments:
 
@@ -175,19 +175,19 @@ In the table below we identified the following issues:
   <div>Legend:</div>
   <div class="sd-status-badge sd-status-badge--success">
     <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
-    Success: Fully functional
+    <span>Success: Fully functional</span>
   </div>
   <div class="sd-status-badge sd-status-badge--warning">
     <sd-icon name="status-exclamation" library="sd-status-assets"></sd-icon>
-    Warning: Partially functional
+    <span>Warning: Partially functional</span>
   </div>
   <div class="sd-status-badge sd-status-badge--error">
     <sd-icon name="status-close" library="sd-status-assets"></sd-icon>
-    Error: Not functional
+    <span>Error: Not functional</span>
   </div>
   <div class="sd-status-badge sd-status-badge--info">
     <sd-icon name="status-info" library="sd-status-assets"></sd-icon>
-    Info: Not tested
+    <span>Info: Not tested</span>
   </div>
 </div>
 `;
