@@ -1,5 +1,17 @@
 # @solid-design-system/docs
 
+## 1.13.3
+
+### Patch Changes
+
+- Improve code examples by removing empty double quotes (`=""`) from boolean attributes. _[`#2102`](https://github.com/solid-design-system/solid/pull/2102) [`993b7dd`](https://github.com/solid-design-system/solid/commit/993b7dd5d5b64d5bc3cd66d1e64068e612933cbd) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.13.2
+
+### Patch Changes
+
+- Refactored `sd-switch` invalid state story to prevent focus from being set in the element on page load. _[`#2104`](https://github.com/solid-design-system/solid/pull/2104) [`ad14e89`](https://github.com/solid-design-system/solid/commit/ad14e8927d7cae80152e88b65b4a958dc1a000dc) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.13.1
 
 ### Patch Changes

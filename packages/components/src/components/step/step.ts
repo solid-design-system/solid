@@ -156,7 +156,13 @@ export default class SdStep extends SolidElement {
               this.disabled
                 ? 'focus-visible:outline-none cursor-not-allowed'
                 : 'focus-visible:focus-outline group-hover:cursor-pointer',
-              this.notInteractive ? (this.size === 'lg' ? 'w-[72px]' : 'w-12') : this.size === 'lg' ? 'w-12' : 'w-8',
+              this.notInteractive
+                ? this.size === 'lg'
+                  ? 'not-interactive-lg'
+                  : 'w-12'
+                : this.size === 'lg'
+                  ? 'w-12'
+                  : 'w-8',
               this.disabled && 'border-neutral-400 text-neutral-700',
               !this.disabled &&
                 !this.current &&
@@ -227,11 +233,15 @@ export default class SdStep extends SolidElement {
       }
 
       .translateLg {
-        transform: translateX(55px);
+        transform: translateX(3.438rem);
       }
 
       .translateSm {
-        transform: translateX(64px);
+        transform: translateX(4rem);
+      }
+
+      .not-interactive-lg {
+        @apply w-[4.5rem];
       }
     `
   ];

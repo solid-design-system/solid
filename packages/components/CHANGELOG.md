@@ -1,5 +1,19 @@
 # @solid-design-system/components
 
+## 4.6.5
+
+### Patch Changes
+
+- Added new translation keys named `expandNavigationItem` and `collapseNavigationItem`. _[`#2099`](https://github.com/solid-design-system/solid/pull/2099) [`f032ebb`](https://github.com/solid-design-system/solid/commit/f032ebb454c2aed3b24cc0beb64299ff4cc36a3a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Improved `sd-navigation-item` toggle details button title.
+
+## 4.6.4
+
+### Patch Changes
+
+- Fix `sd-step` label alignment when `not-interactive` attribute is set and browsers minimum font size is defined. _[`#2103`](https://github.com/solid-design-system/solid/pull/2103) [`18442d9`](https://github.com/solid-design-system/solid/commit/18442d9f3bb775ada64c30c9e206b345b2de0a10) [@smfonseca](https://github.com/smfonseca)_
+
 ## 4.6.3
 
 ### Patch Changes

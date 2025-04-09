@@ -37,13 +37,13 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 9.15.0
+          version: 9.15.9
           run_install: false
 
       - name: Install dependencies
