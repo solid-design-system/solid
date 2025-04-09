@@ -220,9 +220,8 @@ To enhance our review process, we introduced a "Feature-Check-In" meeting. This 
 The meeting adheres to a few straightforward rules:
 
 - The meeting is an **_optional_** tool to enhance PRs and should be utilized only when required, such as for large or complex new features, or a feature where certain questions were left open for implementation.
-- When a developer believes they have completed all they can and the feature is in a "presentable" state, a meeting should be scheduled with the development lead (@mariohamann) AND/OR design lead (@coraliefeil).
 - Unless absolutely necessary, the meeting should not exceed 30 minutes.
-- The outcomes of the meeting MUST be recorded in the ticket description.
+- The outcomes of the meeting SHOULD be recorded in the ticket description.
 - Once the developer has incorporated the feedback/results into the code changes, a PR should be opened for all other team members to review the modifications.
 
 #### Assignees and Reviewers
@@ -243,7 +242,7 @@ _**The reviewer section from GitHub is not used for assigning reviewers. Instead
 
 Assigning reviewers follows a few rules:
 
-1. **Bug Fix or Docs PRs:** The members of the SDS dev-core-team (@solid-design-system/core-development) need to be assigned to the PR.If the changes include any visual updates, at least one designer should also be added as a reviewer. The PR requires a minimum of one approval from both the development team and, if applicable, the design team.
+1. **General PRs:** The members of the SDS dev-core-team (@solid-design-system/core-development) need to be assigned to the PR.If the changes include any visual updates, at least one designer should also be added as a reviewer. The PR requires a minimum of one approval from both the development team and, if applicable, the design team.
 2. **CI/CD PRs:** At least one of the following team members - @yoezlem, @mariohamann, @karlbaumhauer or @smfonseca - must be assigned to the PR. A minimum of one approval from is group is required before merging.
 
 #### Review Comments
