@@ -85,7 +85,7 @@ export default class SdScrollable extends SolidElement {
     this.updateScrollEnabledFlags();
 
     this.resizeObserver = new ResizeObserver(() => {
-      this.updateScrollIndicatorVisibility();
+      this.handleContainerScroll();
     });
 
     this.updateComplete.then(() => {
@@ -106,7 +106,7 @@ export default class SdScrollable extends SolidElement {
     super.updated(changedProperties);
     if (changedProperties.has('orientation') || changedProperties.has('buttons') || changedProperties.has('shadows')) {
       this.updateScrollEnabledFlags();
-      this.updateScrollIndicatorVisibility();
+      this.handleContainerScroll();
     }
   }
 
@@ -116,7 +116,7 @@ export default class SdScrollable extends SolidElement {
     this.isScrollVerticalEnabled = dir === 'vertical' || dir === 'auto';
   }
 
-  updateScrollIndicatorVisibility() {
+  handleContainerScroll() {
     if (!this.container) {
       return;
     }
@@ -150,61 +150,52 @@ export default class SdScrollable extends SolidElement {
     if (endEventTriggered) {
       this.dispatchEvent(new CustomEvent('end'));
     }
-
-    // (startButton as HTMLElement)?.querySelector('sd-icon')?.setAttribute('label', this.localize.term('scrollToStart'));
-    // (endButton as HTMLElement)?.querySelector('sd-icon')?.setAttribute('label', this.localize.term('scrollToEnd'));
-
-    // const label = `${this.localize.term('scrolled')}. ${this.localize.term('scrollToStart')}`;
-    // (startButton as HTMLElement).querySelector('sd-icon')?.setAttribute('label', label);
-
-    // const label = `${this.localize.term('scrolled')}. ${this.localize.term('scrollToEnd')}`;
-    // (endButton as HTMLElement).querySelector('sd-icon')?.setAttribute('label', label);
-  }
-
-  private get scrollPosition() {
-    return {
-      horizontal: this.container.scrollLeft,
-      vertical: this.container.scrollTop
-    };
   }
 
   handleScroll(direction: 'left' | 'right' | 'up' | 'down') {
-    const scrollAmount = ['left', 'up'].includes(direction) ? -this.step : this.step;
-    const scrollDirection = ['left', 'right'].includes(direction) ? 'horizontal' : 'vertical';
-    const scrollTowards = ['left', 'up'].includes(direction) ? 'start' : 'end';
+    const amount = ['left', 'up'].includes(direction) ? -this.step : this.step;
+    const axis = ['left', 'right'].includes(direction) ? 'horizontal' : 'vertical';
+    const towards = ['left', 'up'].includes(direction) ? 'start' : 'end';
 
-    // const announcement = this.localize.term('scrolled');
-    // this.live.textContent = this.live.textContent === announcement ? `${announcement}\u200B` : announcement;
-
-    const scrollOptions: ScrollToOptions = {
-      behavior: 'smooth'
-    };
-    scrollOptions[scrollDirection === 'horizontal' ? 'left' : 'top'] = scrollAmount;
-
-    this.container?.scrollBy(scrollOptions);
+    const scrollKey = axis === 'horizontal' ? 'left' : 'top';
+    this.container?.scrollBy({
+      behavior: 'smooth',
+      [scrollKey]: amount
+    });
 
     const eventName = `button-${direction}`;
     this.dispatchEvent(new CustomEvent(eventName, { bubbles: true, composed: true }));
 
-    const current = this.scrollPosition[scrollDirection];
-    const scrolled = current + scrollAmount;
+    const currentPosition = axis === 'horizontal' ? this.container.scrollLeft : this.container.scrollTop;
+    const updatedPosition = currentPosition + amount;
 
-    if (scrollTowards === 'start' && scrolled <= 0) {
-      const opposite = direction === 'left' ? this.rightButton : this.downButton;
-      opposite?.focus();
+    const limit =
+      axis === 'horizontal'
+        ? this.container.scrollWidth - this.container.clientWidth
+        : this.container.scrollHeight - this.container.clientHeight;
+
+    const reachedStart = towards === 'start' && updatedPosition <= 0;
+    const reachedEnd = towards === 'end' && updatedPosition >= limit - 1;
+
+    if (reachedStart || reachedEnd) {
+      const oppositeButton = {
+        left: this.rightButton,
+        right: this.leftButton,
+        up: this.downButton,
+        down: this.upButton
+      }[direction];
+
+      const label = reachedStart
+        ? `${this.localize.term('scrolled')}. ${this.localize.term('scrollToEnd')}`
+        : `${this.localize.term('scrolled')}. ${this.localize.term('scrollToStart')}`;
+
+      oppositeButton?.querySelector('sd-icon')?.setAttribute('label', label);
+      oppositeButton?.focus();
+      return;
     }
 
-    if (scrollTowards === 'end') {
-      const limit =
-        direction === 'right'
-          ? this.container.scrollWidth - this.container.clientWidth - 1
-          : this.container.scrollHeight - this.container.clientHeight - 1;
-
-      if (scrolled >= limit) {
-        const opposite = direction === 'right' ? this.leftButton : this.upButton;
-        opposite?.focus();
-      }
-    }
+    const announcement = this.localize.term('scrolled');
+    this.live.textContent = this.live.textContent === announcement ? `${announcement}\u200B` : announcement;
   }
 
   handleButtonBlur(direction: 'left' | 'right' | 'up' | 'down', e: FocusEvent) {
@@ -231,7 +222,7 @@ export default class SdScrollable extends SolidElement {
           this.scrollbars ? 'show-scrollbars' : 'hide-scrollbars',
           this.inset ? 'p-4' : ''
         )}
-        @scroll=${this.updateScrollIndicatorVisibility}
+        @scroll=${this.handleContainerScroll}
         tabindex="0"
       >
         <div id="live" role="status" class="sr-only"></div>
