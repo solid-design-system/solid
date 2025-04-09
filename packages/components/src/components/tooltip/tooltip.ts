@@ -265,7 +265,7 @@ export default class SdTooltip extends SolidElement {
       return undefined;
     }
     this.open = false;
-    this.blur();
+    if (this.trigger !== 'click') this.blur();
     return waitForEvent(this, 'sd-after-hide');
   }
 
@@ -293,7 +293,13 @@ export default class SdTooltip extends SolidElement {
         arrow-padding="0"
       >
         <slot slot="anchor" class=${cx(this.size === 'lg' ? 'text-xl' : 'text-base')}>
-          <button aria-describedby="tooltip" class="flex sd-interactive rounded-full" ?disabled=${this.disabled}>
+          <button
+            aria-describedby="tooltip"
+            class="flex sd-interactive rounded-full"
+            ?disabled=${this.disabled}
+            aria-expanded=${this.open}
+            aria-controls="tooltip"
+          >
             <sd-icon
               library="system"
               name="info-circle"
