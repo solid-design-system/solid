@@ -243,8 +243,8 @@ _**The reviewer section from GitHub is not used for assigning reviewers. Instead
 
 Assigning reviewers follows a few rules:
 
-1. **Bug Fix or Docs PRs:** Minimum 1 developer from the SDS dev-core-team (@solid-design-system/core-development) needs to be assigned to the PR. Designers need to be added separately if visual changes are made.
-2. **CI/CD PRs:** Minimum 1 out of @yoezlem, @mariohamann or @karlbaumhauer needs to be assigned to the PR.
+1. **Bug Fix or Docs PRs:** The members of the SDS dev-core-team (@solid-design-system/core-development) need to be assigned to the PR.If the changes include any visual updates, at least one designer should also be added as a reviewer. The PR requires a minimum of one approval from both the development team and, if applicable, the design team.
+2. **CI/CD PRs:** At least one of the following team members - @yoezlem, @mariohamann, @karlbaumhauer or @smfonseca - must be assigned to the PR. A minimum of one approval from is group is required before merging.
 
 #### Review Comments
 
