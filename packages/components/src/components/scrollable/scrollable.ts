@@ -41,6 +41,9 @@ import SolidElement from '../../internal/solid-element';
 
 @customElement('sd-scrollable')
 export default class SdScrollable extends SolidElement {
+  @query('[part="button-start"') startButton: HTMLButtonElement | undefined;
+  @query('[part="button-end"') endButton: HTMLButtonElement | undefined;
+  @query('.scroll-container') container: HTMLDivElement;
   @query('#live') live: HTMLDivElement;
 
   public localize = new LocalizeController(this);
@@ -72,10 +75,8 @@ export default class SdScrollable extends SolidElement {
 
   @state() private isScrollHorizontalEnabled: boolean = false;
   @state() private isScrollVerticalEnabled: boolean = false;
-  @state() private isKeyboardNavigation: boolean = false;
 
   private resizeObserver: ResizeObserver;
-  private scrollContainer: HTMLElement | null = null;
 
   connectedCallback() {
     super.connectedCallback();
@@ -86,17 +87,16 @@ export default class SdScrollable extends SolidElement {
     });
 
     this.updateComplete.then(() => {
-      this.scrollContainer = this.renderRoot.querySelector('.scroll-container');
-      if (this.scrollContainer) {
-        this.resizeObserver.observe(this.scrollContainer);
+      if (this.container) {
+        this.resizeObserver.observe(this.container);
       }
     });
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    if (this.scrollContainer) {
-      this.resizeObserver.unobserve(this.scrollContainer);
+    if (this.container) {
+      this.resizeObserver.unobserve(this.container);
     }
   }
 
@@ -114,33 +114,31 @@ export default class SdScrollable extends SolidElement {
     this.isScrollVerticalEnabled = dir === 'vertical' || dir === 'auto';
   }
 
-  private get container(): HTMLElement | null {
-    return this.renderRoot.querySelector('.scroll-container');
-  }
-
   updateScrollIndicatorVisibility() {
-    const container = this.container;
-    if (!container) {
+    if (!this.container) {
       return;
     }
 
-    const canScrollLeft = this.isScrollHorizontalEnabled && container.scrollLeft > 0;
+    const canScrollLeft = this.isScrollHorizontalEnabled && this.container.scrollLeft > 0;
     const canScrollRight =
-      this.isScrollHorizontalEnabled && container.scrollLeft + container.clientWidth < container.scrollWidth - 1;
-    const canScrollUp = this.isScrollVerticalEnabled && container.scrollTop > 0;
+      this.isScrollHorizontalEnabled &&
+      this.container.scrollLeft + this.container.clientWidth < this.container.scrollWidth - 1;
+    const canScrollUp = this.isScrollVerticalEnabled && this.container.scrollTop > 0;
     const canScrollDown =
-      this.isScrollVerticalEnabled && container.scrollTop + container.clientHeight < container.scrollHeight - 1;
-
-    const startButton = this.renderRoot.querySelector('[part="button-start"]');
-    const endButton = this.renderRoot.querySelector('[part="button-end"]');
+      this.isScrollVerticalEnabled &&
+      this.container.scrollTop + this.container.clientHeight < this.container.scrollHeight - 1;
 
     this.canScroll = {
-      left: this.isKeyboardNavigation ? this.isScrollHorizontalEnabled : canScrollLeft,
-      right: this.isKeyboardNavigation ? this.isScrollHorizontalEnabled : canScrollRight,
-      up: this.isKeyboardNavigation ? this.isScrollVerticalEnabled : canScrollUp,
-      down: this.isKeyboardNavigation ? this.isScrollVerticalEnabled : canScrollDown
+      left: this.isScrollHorizontalEnabled && canScrollLeft,
+      right: this.isScrollHorizontalEnabled && canScrollRight,
+      up: this.isScrollVerticalEnabled && canScrollUp,
+      down: this.isScrollVerticalEnabled && canScrollDown
     };
 
+    /**
+     * FIX: Events are not worked as expected. It will introduce a breaking change.
+     * To be handled on [#2113](https://github.com/solid-design-system/solid/issues/2113)
+     */
     const startEventTriggered = canScrollLeft || canScrollUp;
     const endEventTriggered = canScrollRight || canScrollDown;
 
@@ -151,45 +149,38 @@ export default class SdScrollable extends SolidElement {
       this.dispatchEvent(new CustomEvent('end'));
     }
 
-    (startButton as HTMLElement)?.querySelector('sd-icon')?.setAttribute('label', this.localize.term('scrollToStart'));
-    (endButton as HTMLElement)?.querySelector('sd-icon')?.setAttribute('label', this.localize.term('scrollToEnd'));
+    // (startButton as HTMLElement)?.querySelector('sd-icon')?.setAttribute('label', this.localize.term('scrollToStart'));
+    // (endButton as HTMLElement)?.querySelector('sd-icon')?.setAttribute('label', this.localize.term('scrollToEnd'));
 
-    if (this.isKeyboardNavigation) {
-      if (startButton) {
-        (startButton as HTMLElement).hidden = !startEventTriggered;
-      }
-      if (startButton && startEventTriggered && !(canScrollDown || canScrollRight)) {
-        const label = `${this.localize.term('scrolled')}. ${this.localize.term('scrollToStart')}`;
-        (startButton as HTMLElement).querySelector('sd-icon')?.setAttribute('label', label);
-        (startButton as HTMLElement).focus();
-      }
+    const endReached = !(canScrollDown || canScrollRight);
+    const startReached = !(canScrollUp || canScrollLeft);
 
-      if (endButton) {
-        (endButton as HTMLElement).hidden = !endEventTriggered;
-      }
-      if (endButton && endEventTriggered && !(canScrollUp || canScrollLeft)) {
-        const label = `${this.localize.term('scrolled')}. ${this.localize.term('scrollToEnd')}`;
-        (endButton as HTMLElement).querySelector('sd-icon')?.setAttribute('label', label);
-        (endButton as HTMLElement).focus();
-      }
+    if (this.startButton && endReached && !startReached) {
+      // const label = `${this.localize.term('scrolled')}. ${this.localize.term('scrollToStart')}`;
+      // (startButton as HTMLElement).querySelector('sd-icon')?.setAttribute('label', label);
+      this.startButton.focus();
+    }
+
+    if (this.endButton && startReached && !endReached) {
+      // const label = `${this.localize.term('scrolled')}. ${this.localize.term('scrollToEnd')}`;
+      // (endButton as HTMLElement).querySelector('sd-icon')?.setAttribute('label', label);
+      this.endButton.focus();
     }
   }
 
-  handleScroll(direction: 'left' | 'right' | 'up' | 'down', event?: PointerEvent) {
+  handleScroll(direction: 'left' | 'right' | 'up' | 'down') {
     const scrollAmount = direction === 'left' || direction === 'up' ? -this.step : this.step;
     const scrollDirection = direction === 'left' || direction === 'right' ? 'left' : 'top';
 
-    const announcement = this.localize.term('scrolled');
-    this.live.textContent = this.live.textContent === announcement ? `${announcement}\u200B` : announcement;
-
-    this.isKeyboardNavigation = event?.pointerType !== 'mouse';
+    // const announcement = this.localize.term('scrolled');
+    // this.live.textContent = this.live.textContent === announcement ? `${announcement}\u200B` : announcement;
 
     const scrollOptions: ScrollToOptions = {
       behavior: 'smooth'
     };
     scrollOptions[scrollDirection] = scrollAmount;
 
-    this.scrollContainer?.scrollBy(scrollOptions);
+    this.container?.scrollBy(scrollOptions);
 
     // Dispatching custom event
     const eventName = `button-${direction}`;
@@ -241,7 +232,7 @@ export default class SdScrollable extends SolidElement {
                     <button
                       part="button-start"
                       class=${cx(scrollButtonClasses)}
-                      @click=${(e: PointerEvent) => this.handleScroll('left', e)}
+                      @click=${() => this.handleScroll('left')}
                       @blur=${(e: FocusEvent) => this.handleButtonBlur('left', e)}
                     >
                       <slot name="icon-start">
@@ -262,7 +253,7 @@ export default class SdScrollable extends SolidElement {
                     <button
                       part="button-end"
                       class=${cx(scrollButtonClasses)}
-                      @click=${(e: PointerEvent) => this.handleScroll('right', e)}
+                      @click=${() => this.handleScroll('right')}
                       @blur=${(e: FocusEvent) => this.handleButtonBlur('right', e)}
                     >
                       <slot name="icon-end">
@@ -287,7 +278,7 @@ export default class SdScrollable extends SolidElement {
                     <button
                       part="button-start"
                       class=${cx(scrollButtonClasses)}
-                      @click=${(e: PointerEvent) => this.handleScroll('up', e)}
+                      @click=${() => this.handleScroll('up')}
                       @blur=${(e: FocusEvent) => this.handleButtonBlur('up', e)}
                     >
                       <slot name="icon-start">
@@ -307,7 +298,7 @@ export default class SdScrollable extends SolidElement {
                     <button
                       part="button-end"
                       class=${cx(scrollButtonClasses)}
-                      @click=${(e: PointerEvent) => this.handleScroll('down', e)}
+                      @click=${() => this.handleScroll('down')}
                       @blur=${(e: FocusEvent) => this.handleButtonBlur('down', e)}
                     >
                       <slot name="icon-end">
