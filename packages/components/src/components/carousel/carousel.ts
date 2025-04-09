@@ -256,6 +256,18 @@ export default class SdCarousel extends SolidElement {
     this.requestUpdate();
   };
 
+  private handleFocus() {
+    if (this.autoplay) {
+      this.scrollContainer.setAttribute('aria-live', 'polite');
+    }
+  }
+
+  private handleBlur() {
+    if (this.autoplay) {
+      this.scrollContainer.setAttribute('aria-live', 'off');
+    }
+  }
+
   private unblockAutoplay = (e: MouseEvent, button: HTMLButtonElement) => {
     // When the button is clicked with a mouse, blur the button to resume autoplay.
     if (e.detail) {
@@ -518,10 +530,12 @@ export default class SdCarousel extends SolidElement {
           )}"
           style="--slides-per-page: ${this.slidesPerPage};"
           aria-busy="${scrollController.scrolling ? 'true' : 'false'}"
-          role="status"
+          aria-live=${this.autoplay ? 'off' : 'polite'}
           tabindex="0"
           @keydown=${this.handleKeyDown}
           @scrollend=${this.handleScrollEnd}
+          @focus=${this.handleFocus}
+          @blur=${this.handleBlur}
         >
           <slot></slot>
         </div>
@@ -540,6 +554,8 @@ export default class SdCarousel extends SolidElement {
               aria-label="${this.localize.term('previousSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${prevEnabled ? 'false' : 'true'}"
+              @focus=${this.handleFocus}
+              @blur=${this.handleBlur}
               @click=${prevEnabled
                 ? (e: MouseEvent) => {
                     this.previous();
@@ -632,6 +648,8 @@ export default class SdCarousel extends SolidElement {
               aria-label="${this.localize.term('nextSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${nextEnabled ? 'false' : 'true'}"
+              @focus=${this.handleFocus}
+              @blur=${this.handleBlur}
               @click=${nextEnabled
                 ? (e: MouseEvent) => {
                     this.next();
