@@ -41,8 +41,10 @@ import SolidElement from '../../internal/solid-element';
 
 @customElement('sd-scrollable')
 export default class SdScrollable extends SolidElement {
-  @query('[part="button-start"') startButton: HTMLButtonElement | undefined;
-  @query('[part="button-end"') endButton: HTMLButtonElement | undefined;
+  @query('[part="button-right"] button') rightButton: HTMLButtonElement | undefined;
+  @query('[part="button-left"] button') leftButton: HTMLButtonElement | undefined;
+  @query('[part="button-bottom"] button') downButton: HTMLButtonElement | undefined;
+  @query('[part="button-top"] button') upButton: HTMLButtonElement | undefined;
   @query('.scroll-container') container: HTMLDivElement;
   @query('#live') live: HTMLDivElement;
 
@@ -152,25 +154,24 @@ export default class SdScrollable extends SolidElement {
     // (startButton as HTMLElement)?.querySelector('sd-icon')?.setAttribute('label', this.localize.term('scrollToStart'));
     // (endButton as HTMLElement)?.querySelector('sd-icon')?.setAttribute('label', this.localize.term('scrollToEnd'));
 
-    const endReached = !(canScrollDown || canScrollRight);
-    const startReached = !(canScrollUp || canScrollLeft);
+    // const label = `${this.localize.term('scrolled')}. ${this.localize.term('scrollToStart')}`;
+    // (startButton as HTMLElement).querySelector('sd-icon')?.setAttribute('label', label);
 
-    if (this.startButton && endReached && !startReached) {
-      // const label = `${this.localize.term('scrolled')}. ${this.localize.term('scrollToStart')}`;
-      // (startButton as HTMLElement).querySelector('sd-icon')?.setAttribute('label', label);
-      this.startButton.focus();
-    }
+    // const label = `${this.localize.term('scrolled')}. ${this.localize.term('scrollToEnd')}`;
+    // (endButton as HTMLElement).querySelector('sd-icon')?.setAttribute('label', label);
+  }
 
-    if (this.endButton && startReached && !endReached) {
-      // const label = `${this.localize.term('scrolled')}. ${this.localize.term('scrollToEnd')}`;
-      // (endButton as HTMLElement).querySelector('sd-icon')?.setAttribute('label', label);
-      this.endButton.focus();
-    }
+  private get scrollPosition() {
+    return {
+      horizontal: this.container.scrollLeft,
+      vertical: this.container.scrollTop
+    };
   }
 
   handleScroll(direction: 'left' | 'right' | 'up' | 'down') {
-    const scrollAmount = direction === 'left' || direction === 'up' ? -this.step : this.step;
-    const scrollDirection = direction === 'left' || direction === 'right' ? 'left' : 'top';
+    const scrollAmount = ['left', 'up'].includes(direction) ? -this.step : this.step;
+    const scrollDirection = ['left', 'right'].includes(direction) ? 'horizontal' : 'vertical';
+    const scrollTowards = ['left', 'up'].includes(direction) ? 'start' : 'end';
 
     // const announcement = this.localize.term('scrolled');
     // this.live.textContent = this.live.textContent === announcement ? `${announcement}\u200B` : announcement;
@@ -178,19 +179,37 @@ export default class SdScrollable extends SolidElement {
     const scrollOptions: ScrollToOptions = {
       behavior: 'smooth'
     };
-    scrollOptions[scrollDirection] = scrollAmount;
+    scrollOptions[scrollDirection === 'horizontal' ? 'left' : 'top'] = scrollAmount;
 
     this.container?.scrollBy(scrollOptions);
 
-    // Dispatching custom event
     const eventName = `button-${direction}`;
     this.dispatchEvent(new CustomEvent(eventName, { bubbles: true, composed: true }));
+
+    const current = this.scrollPosition[scrollDirection];
+    const scrolled = current + scrollAmount;
+
+    if (scrollTowards === 'start' && scrolled <= 0) {
+      const opposite = direction === 'left' ? this.rightButton : this.downButton;
+      opposite?.focus();
+    }
+
+    if (scrollTowards === 'end') {
+      const limit =
+        direction === 'right'
+          ? this.container.scrollWidth - this.container.clientWidth - 1
+          : this.container.scrollHeight - this.container.clientHeight - 1;
+
+      if (scrolled >= limit) {
+        const opposite = direction === 'right' ? this.leftButton : this.upButton;
+        opposite?.focus();
+      }
+    }
   }
 
   handleButtonBlur(direction: 'left' | 'right' | 'up' | 'down', e: FocusEvent) {
     const scrollTo = ['left', 'up'].includes(direction) ? 'start' : 'end';
     const label = scrollTo === 'start' ? this.localize.term('scrollToStart') : this.localize.term('scrollToEnd');
-
     const button = e.target as HTMLElement;
     button.querySelector('sd-icon')?.setAttribute('label', label);
   }
@@ -226,12 +245,15 @@ export default class SdScrollable extends SolidElement {
               ? html`
                   <div
                     part="button-left"
-                    class="absolute z-10 flex items-center justify-center top-0 left-0 h-full w-8"
-                    hidden=${ifDefined(!this.canScroll.left || undefined)}
+                    class=${cx(
+                      'absolute z-10 flex items-center justify-center top-0 left-0 h-full w-8',
+                      !this.canScroll.left && 'opacity-0 pointer-events-none'
+                    )}
                   >
                     <button
                       part="button-start"
                       class=${cx(scrollButtonClasses)}
+                      tabindex=${ifDefined(!this.canScroll.left ? -1 : undefined)}
                       @click=${() => this.handleScroll('left')}
                       @blur=${(e: FocusEvent) => this.handleButtonBlur('left', e)}
                     >
@@ -247,12 +269,15 @@ export default class SdScrollable extends SolidElement {
                   </div>
                   <div
                     part="button-right"
-                    class="absolute z-10 flex items-center justify-center top-0 right-0 h-full w-8"
-                    hidden=${ifDefined(!this.canScroll.right || undefined)}
+                    class=${cx(
+                      'absolute z-10 flex items-center justify-center top-0 right-0 h-full w-8',
+                      !this.canScroll.right && 'opacity-0 pointer-events-none'
+                    )}
                   >
                     <button
                       part="button-end"
                       class=${cx(scrollButtonClasses)}
+                      tabindex=${ifDefined(!this.canScroll.right ? -1 : undefined)}
                       @click=${() => this.handleScroll('right')}
                       @blur=${(e: FocusEvent) => this.handleButtonBlur('right', e)}
                     >
@@ -272,12 +297,15 @@ export default class SdScrollable extends SolidElement {
               ? html`
                   <div
                     part="button-top"
-                    class="absolute z-10 flex items-center justify-center top-0 left-0 w-full h-8"
-                    hidden=${ifDefined(!this.canScroll.up || undefined)}
+                    class=${cx(
+                      'absolute z-10 flex items-center justify-center top-0 left-0 w-full h-8',
+                      !this.canScroll.up && 'opacity-0 pointer-events-none'
+                    )}
                   >
                     <button
                       part="button-start"
                       class=${cx(scrollButtonClasses)}
+                      tabindex=${ifDefined(!this.canScroll.up ? -1 : undefined)}
                       @click=${() => this.handleScroll('up')}
                       @blur=${(e: FocusEvent) => this.handleButtonBlur('up', e)}
                     >
@@ -292,12 +320,15 @@ export default class SdScrollable extends SolidElement {
                   </div>
                   <div
                     part="button-bottom"
-                    class="absolute z-10 flex items-center justify-center bottom-0 left-0 w-full h-8"
-                    hidden=${ifDefined(!this.canScroll.down || undefined)}
+                    class=${cx(
+                      'absolute z-10 flex items-center justify-center bottom-0 left-0 w-full h-8',
+                      !this.canScroll.down && 'opacity-0 pointer-events-none'
+                    )}
                   >
                     <button
                       part="button-end"
                       class=${cx(scrollButtonClasses)}
+                      tabindex=${ifDefined(!this.canScroll.down ? -1 : undefined)}
                       @click=${() => this.handleScroll('down')}
                       @blur=${(e: FocusEvent) => this.handleButtonBlur('down', e)}
                     >
