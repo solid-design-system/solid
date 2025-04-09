@@ -9,6 +9,7 @@ const translation: Translation = {
   autoplay: 'Autoplay',
   audioPlayer: 'Audio-Player',
   carousel: 'Karussell',
+  carouselContainer: count => `Karussell hat ${count} folien`,
   clearEntry: 'Eingabe löschen',
   close: 'Schließen',
   comboboxDefaultPlaceholder: 'Bitte suchen und auswählen',

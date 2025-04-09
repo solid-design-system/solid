@@ -8,6 +8,7 @@ const translation: Translation = {
 
   autoplay: 'Autoplay',
   audioPlayer: 'Audio Player',
+  carouselContainer: count => `Carousel has ${count} slides`,
   clearEntry: 'Clear entry',
   close: 'Close',
   comboboxDefaultPlaceholder: 'Please search and select',

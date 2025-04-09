@@ -77,6 +77,7 @@ export interface Translation extends DefaultTranslation {
   autoplay: string;
   audioPlayer: string;
   carousel: string;
+  carouselContainer: (count: number) => string;
   clearEntry: string;
   close: string;
   comboboxDefaultPlaceholder: string;
