@@ -253,6 +253,7 @@ export default class SdScrollable extends SolidElement {
                     <button
                       part="button-start"
                       class=${cx(scrollButtonClasses)}
+                      aria-hidden=${ifDefined(!this.canScroll.left || undefined)}
                       tabindex=${ifDefined(!this.canScroll.left ? -1 : undefined)}
                       @click=${() => this.handleScroll('left')}
                       @blur=${(e: FocusEvent) => this.handleButtonBlur('left', e)}
@@ -277,6 +278,7 @@ export default class SdScrollable extends SolidElement {
                     <button
                       part="button-end"
                       class=${cx(scrollButtonClasses)}
+                      aria-hidden=${ifDefined(!this.canScroll.right || undefined)}
                       tabindex=${ifDefined(!this.canScroll.right ? -1 : undefined)}
                       @click=${() => this.handleScroll('right')}
                       @blur=${(e: FocusEvent) => this.handleButtonBlur('right', e)}
@@ -305,6 +307,7 @@ export default class SdScrollable extends SolidElement {
                     <button
                       part="button-start"
                       class=${cx(scrollButtonClasses)}
+                      aria-hidden=${ifDefined(!this.canScroll.up || undefined)}
                       tabindex=${ifDefined(!this.canScroll.up ? -1 : undefined)}
                       @click=${() => this.handleScroll('up')}
                       @blur=${(e: FocusEvent) => this.handleButtonBlur('up', e)}
@@ -328,6 +331,7 @@ export default class SdScrollable extends SolidElement {
                     <button
                       part="button-end"
                       class=${cx(scrollButtonClasses)}
+                      aria-hidden=${ifDefined(!this.canScroll.down || undefined)}
                       tabindex=${ifDefined(!this.canScroll.down ? -1 : undefined)}
                       @click=${() => this.handleScroll('down')}
                       @blur=${(e: FocusEvent) => this.handleButtonBlur('down', e)}
