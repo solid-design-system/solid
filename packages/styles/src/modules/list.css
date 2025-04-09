@@ -23,22 +23,41 @@
     @apply mt-3;
   }
 
-  li {
-    @apply pl-[0.5em];
+  ul,
+  ol {
+    @apply pt-[0.75em];
   }
 
   ol,
   ul {
-    @apply pt-[0.75em] pl-[2em];
+    @apply pl-[1.4em];
   }
 
-  /* Counter handling for ordered lists. */
-  &:is(ol),
-  ol {
-    & > li {
-      counter-increment: item;
-      &::marker {
-        content: counters(item, '.') '. ';
+  /* 
+   * Safari currently only partially supports the ::marker pseudo class.
+   * Support is limited to color and font-size. Therefore we optimize the numbering only for non-Safari browsers.
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/::marker#browser_compatibility
+   */
+  @supports not (-webkit-hyphens: none) {
+    li {
+      @apply pl-[0.3em];
+    }
+
+    &:is(ol):not(.sd-list--icon),
+    ol {
+      > li > ol {
+        @apply pl-[1.9em];
+        > li {
+          > ol {
+            @apply pl-[2.7em];
+          }
+        }
+      }
+      & > li {
+        counter-increment: item;
+        &::marker {
+          content: counters(item, '.') '. ';
+        }
       }
     }
   }
@@ -56,14 +75,23 @@
     counter-set: item 0;
   }
 
-  &:is(ul):not(.sd-list--icon) > li,
-  ul > li {
-    list-style-type: disc;
-
-    > ul > li {
-      list-style-type: square;
-      > ul > li {
-        list-style-type: '–';
+  &:is(ul):not(.sd-list--icon),
+  ul {
+    @apply pl-[0.5em];
+    > li {
+      @apply pl-[0.75em];
+      list-style-type: '\2022';
+      > ul {
+        @apply pl-[0.3em];
+        > li {
+          list-style-type: '\002B1D';
+          > ul {
+            @apply pl-[0.4em];
+            > li {
+              list-style-type: '\2010';
+            }
+          }
+        }
       }
     }
   }
