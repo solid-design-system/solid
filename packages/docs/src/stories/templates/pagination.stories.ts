@@ -101,6 +101,10 @@ export const Number = {
           state.current--;
           update();
 
+          /** 
+           * NOTE: Due to a11y purposes, when the start or end is reached,
+           * the focus must switch to the oposite button
+           */
           if (state.current === 1) {
             next.focus();
           }
@@ -114,6 +118,10 @@ export const Number = {
           state.current++;
           update();
 
+          /**
+           * NOTE: Due to a11y purposes, when the start or end is reached,
+           * the focus must switch to the oposite button
+           */
           if (state.current === pages.length) {
             previous.focus();
           }
@@ -182,6 +190,10 @@ export const Simple = {
           state.current--;
           update();
           
+          /**
+           * NOTE: Due to a11y purposes, when the start or end is reached,
+           * the focus must switch to the oposite button
+           */ 
           if (state.current === 1) {
             next.focus();
           }
@@ -195,6 +207,10 @@ export const Simple = {
           state.current++;
           update();
 
+          /**
+           * NOTE: Due to a11y purposes, when the start or end is reached,
+           * the focus must switch to the oposite button
+           */
           if (state.current === state.total) {
             previous.focus();
           }
