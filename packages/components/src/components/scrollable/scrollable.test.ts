@@ -211,7 +211,7 @@ describe('<sd-scrollable>', () => {
     `);
 
     const endButton = el.shadowRoot!.querySelector<HTMLButtonElement>('[part="button-end"]');
-    const liveRegion = el.shadowRoot!.querySelector<HTMLButtonElement>('#live');
+    const liveRegion = el.shadowRoot!.querySelector<HTMLButtonElement>('#announcement-container');
 
     expect(endButton).to.exist;
     expect(liveRegion!.innerText).to.eq('');
