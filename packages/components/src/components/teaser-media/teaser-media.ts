@@ -74,6 +74,7 @@ export default class SdTeaserMedia extends SolidElement {
           ></div>
           <div
             class=${cx(
+              'teaser-media-background',
               {
                 white: 'bg-white/[.8] group-hover:bg-white/90',
                 'neutral-100': 'bg-neutral-100/[.8] group-hover:bg-neutral-100/90',
