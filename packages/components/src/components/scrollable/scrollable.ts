@@ -116,6 +116,15 @@ export default class SdScrollable extends SolidElement {
     this.isScrollVerticalEnabled = dir === 'vertical' || dir === 'auto';
   }
 
+  private get scrollButtons() {
+    return {
+      left: this.leftButton,
+      right: this.rightButton,
+      up: this.upButton,
+      down: this.downButton
+    };
+  }
+
   handleContainerScroll() {
     if (!this.container) {
       return;
@@ -152,10 +161,11 @@ export default class SdScrollable extends SolidElement {
     }
   }
 
-  handleScroll(direction: 'left' | 'right' | 'up' | 'down') {
+  handleScroll(direction: 'left' | 'right' | 'up' | 'down', e?: PointerEvent) {
     const amount = ['left', 'up'].includes(direction) ? -this.step : this.step;
     const axis = ['left', 'right'].includes(direction) ? 'horizontal' : 'vertical';
     const towards = ['left', 'up'].includes(direction) ? 'start' : 'end';
+    const isKeyboardTriggered = !['mouse', 'touch'].includes(e?.pointerType ?? '');
 
     const scrollKey = axis === 'horizontal' ? 'left' : 'top';
     this.container?.scrollBy({
@@ -177,25 +187,31 @@ export default class SdScrollable extends SolidElement {
     const reachedStart = towards === 'start' && updatedPosition <= 0;
     const reachedEnd = towards === 'end' && updatedPosition >= limit - 1;
 
-    if (reachedStart || reachedEnd) {
-      const oppositeButton = {
-        left: this.rightButton,
-        right: this.leftButton,
-        up: this.downButton,
-        down: this.upButton
-      }[direction];
-
-      const label = reachedStart
-        ? `${this.localize.term('scrolled')}. ${this.localize.term('scrollToEnd')}`
-        : `${this.localize.term('scrolled')}. ${this.localize.term('scrollToStart')}`;
-
-      oppositeButton?.querySelector('sd-icon')?.setAttribute('label', label);
-      oppositeButton?.focus();
+    if (!(reachedStart || reachedEnd)) {
+      const announcement = this.localize.term('scrolled');
+      this.live.textContent = this.live.textContent === announcement ? `${announcement}\u200B` : announcement;
       return;
     }
 
-    const announcement = this.localize.term('scrolled');
-    this.live.textContent = this.live.textContent === announcement ? `${announcement}\u200B` : announcement;
+    const clickedButton = this.scrollButtons[direction];
+    const oppositeButton = {
+      left: this.rightButton,
+      right: this.leftButton,
+      up: this.downButton,
+      down: this.upButton
+    }[direction];
+
+    const label = reachedStart
+      ? `${this.localize.term('scrolled')}. ${this.localize.term('scrollToEnd')}`
+      : `${this.localize.term('scrolled')}. ${this.localize.term('scrollToStart')}`;
+
+    oppositeButton?.querySelector('sd-icon')?.setAttribute('label', label);
+
+    if (isKeyboardTriggered) {
+      oppositeButton?.focus();
+    } else {
+      clickedButton?.blur();
+    }
   }
 
   handleButtonBlur(direction: 'left' | 'right' | 'up' | 'down', e: FocusEvent) {
@@ -246,7 +262,7 @@ export default class SdScrollable extends SolidElement {
                       class=${cx(scrollButtonClasses)}
                       aria-hidden=${ifDefined(!this.canScroll.left || undefined)}
                       tabindex=${ifDefined(!this.canScroll.left ? -1 : undefined)}
-                      @click=${() => this.handleScroll('left')}
+                      @click=${(e: PointerEvent) => this.handleScroll('left', e)}
                       @blur=${(e: FocusEvent) => this.handleButtonBlur('left', e)}
                     >
                       <slot name="icon-start">
@@ -271,7 +287,7 @@ export default class SdScrollable extends SolidElement {
                       class=${cx(scrollButtonClasses)}
                       aria-hidden=${ifDefined(!this.canScroll.right || undefined)}
                       tabindex=${ifDefined(!this.canScroll.right ? -1 : undefined)}
-                      @click=${() => this.handleScroll('right')}
+                      @click=${(e: PointerEvent) => this.handleScroll('right', e)}
                       @blur=${(e: FocusEvent) => this.handleButtonBlur('right', e)}
                     >
                       <slot name="icon-end">
@@ -300,7 +316,7 @@ export default class SdScrollable extends SolidElement {
                       class=${cx(scrollButtonClasses)}
                       aria-hidden=${ifDefined(!this.canScroll.up || undefined)}
                       tabindex=${ifDefined(!this.canScroll.up ? -1 : undefined)}
-                      @click=${() => this.handleScroll('up')}
+                      @click=${(e: PointerEvent) => this.handleScroll('up', e)}
                       @blur=${(e: FocusEvent) => this.handleButtonBlur('up', e)}
                     >
                       <slot name="icon-start">
@@ -324,7 +340,7 @@ export default class SdScrollable extends SolidElement {
                       class=${cx(scrollButtonClasses)}
                       aria-hidden=${ifDefined(!this.canScroll.down || undefined)}
                       tabindex=${ifDefined(!this.canScroll.down ? -1 : undefined)}
-                      @click=${() => this.handleScroll('down')}
+                      @click=${(e: PointerEvent) => this.handleScroll('down', e)}
                       @blur=${(e: FocusEvent) => this.handleButtonBlur('down', e)}
                     >
                       <slot name="icon-end">
