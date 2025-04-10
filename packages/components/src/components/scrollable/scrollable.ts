@@ -46,7 +46,7 @@ export default class SdScrollable extends SolidElement {
   @query('[part="button-bottom"] button') downButton: HTMLButtonElement | undefined;
   @query('[part="button-top"] button') upButton: HTMLButtonElement | undefined;
   @query('.scroll-container') container: HTMLDivElement;
-  @query('#live') live: HTMLDivElement;
+  @query('#announcement-container') announcementContainer: HTMLDivElement;
 
   public localize = new LocalizeController(this);
 
@@ -147,7 +147,7 @@ export default class SdScrollable extends SolidElement {
     };
 
     /**
-     * FIX: Events are not worked as expected. It will introduce a breaking change.
+     * FIX: Events are not working as expected. It will introduce a breaking change.
      * To be handled on [#2113](https://github.com/solid-design-system/solid/issues/2113)
      */
     const startEventTriggered = canScrollLeft || canScrollUp;
@@ -189,7 +189,8 @@ export default class SdScrollable extends SolidElement {
 
     if (!(reachedStart || reachedEnd)) {
       const announcement = this.localize.term('scrolled');
-      this.live.textContent = this.live.textContent === announcement ? `${announcement}\u200B` : announcement;
+      this.announcementContainer.textContent =
+        this.announcementContainer.textContent === announcement ? `${announcement}\u200B` : announcement;
       return;
     }
 
@@ -231,17 +232,18 @@ export default class SdScrollable extends SolidElement {
         part="base"
         class=${cx(
           'scroll-container flex overflow-hidden flex-1',
-          this.orientation === 'horizontal' &&
-            'scroll-horizontal flex-row whitespace-nowrap items-center overflow-x-scroll overflow-y-hidden',
-          this.orientation === 'vertical' && 'scroll-vertical justify-items-center overflow-y-scroll overflow-x-hidden',
-          this.orientation === 'auto' && 'scroll-auto overflow-auto',
           this.scrollbars ? 'show-scrollbars' : 'hide-scrollbars',
-          this.inset ? 'p-4' : ''
+          this.inset && 'p-4',
+          {
+            horizontal: 'scroll-horizontal flex-row whitespace-nowrap items-center overflow-x-scroll overflow-y-hidden',
+            vertical: 'scroll-vertical justify-items-center overflow-y-scroll overflow-x-hidden',
+            auto: 'scroll-auto overflow-auto'
+          }[this.orientation]
         )}
         @scroll=${this.handleContainerScroll}
         tabindex="0"
       >
-        <div id="live" role="status" class="sr-only"></div>
+        <div id="announcement-container" role="status" class="sr-only"></div>
         <div part="scroll-content" class="flex-1">
           <slot></slot>
         </div>
