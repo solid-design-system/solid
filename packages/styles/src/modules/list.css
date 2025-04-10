@@ -20,8 +20,8 @@
 
   ul,
   ol {
-    @apply pl-[1.4em] pt-[0.75em];
     all: revert;
+    @apply pl-[1.4em] pt-[0.75em];
   }
 
   @supports not (-webkit-hyphens: none) {
