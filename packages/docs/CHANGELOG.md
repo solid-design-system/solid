@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.13.4
+
+### Patch Changes
+
+- Improve `sd-pagination` a11y by moving focus to the other previous/next button when the first/last page is reached. _[`#2107`](https://github.com/solid-design-system/solid/pull/2107) [`4b225e7`](https://github.com/solid-design-system/solid/commit/4b225e71e3382f9eda7a2663cd679bd930ddee52) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.13.3
 
 ### Patch Changes
