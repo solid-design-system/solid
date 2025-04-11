@@ -63,8 +63,9 @@ Used to switch between different options or views by selecting one option from a
 
 - Provide meaningful alternative text for icon-only radio buttons.
 - Communicate the group’s function—such as filtering or view switching—through clear context or labels.
-- Avoid disabled radio buttons. If needed, ensure that they remain in the regular tab order but cannot be activated, allowing screen readers to announce their state and purpose. Use the native disabled attribute or appropriate ARIA attributes (e.g., aria-disabled="true").
-- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+- Disabled elements are excluded from the tab order, making them unannounced by screen readers and difficult to read due to low contrast. To address this, use the 'visually disabled' attribute, which keeps disabled elements focusable, hoverable, and able to display helpful tooltips.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
 
 <Meta title="Components/sd-radio-button/Overview" />
 

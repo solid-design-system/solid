@@ -58,8 +58,9 @@ Used to select one or multiple options from a list of options or to enter a sear
 - To ensure screenreader compatibility, consider including a statement such as "Fields marked with an asterisk (\*) are required" at the start of the form.
 - A visible label may be omitted for search input fields within a combobox if an associated button—complete with a clear search icon and an appropriate accessible name (e.g., aria-label="Search")—is provided.
 - Be aware that group labels will be neglected by most assistive devices.
-- Avoid disabled comboboxes. If needed, ensure that they remain in the regular tab order but cannot be activated, allowing screen readers to announce their state and purpose. Use the native disabled attribute or appropriate ARIA attributes (e.g., aria-disabled="true").
-- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+- Disabled elements are excluded from the tab order, making them unannounced by screen readers and difficult to read due to low contrast. To address this, use the 'visually disabled' attribute, which keeps disabled elements focusable, hoverable, and able to display helpful tooltips.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
 
 <Meta title="Components/sd-combobox/Overview" />
 
