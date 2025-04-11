@@ -2,4 +2,6 @@
 '@solid-design-system/components': patch
 ---
 
-- Add a class to teaser-media background making it accessible from the outside.
+- Improved `sd-teaser` and `sd-teaser-media` accessibility:
+
+- Maintain consistent behavior between hover and focus states.
