@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.13.5
+
+### Patch Changes
+
+- Added missing `sd-input` `aria-label` on forms template. _[`#2119`](https://github.com/solid-design-system/solid/pull/2119) [`59b8c84`](https://github.com/solid-design-system/solid/commit/59b8c840051167c2b55a94d562536934018d9707) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.13.4
 
 ### Patch Changes
