@@ -74,7 +74,7 @@ export default class SdTeaserMedia extends SolidElement {
           ></div>
           <div
             class=${cx(
-              'teaser-media-background',
+              'background',
               {
                 white: 'bg-white/[.8] group-hover:bg-white/90',
                 'neutral-100': 'bg-neutral-100/[.8] group-hover:bg-neutral-100/90',
@@ -131,6 +131,22 @@ export default class SdTeaserMedia extends SolidElement {
 
       ::slotted([slot='headline']) {
         @apply font-bold !m-0 !text-lg;
+      }
+
+      :host([variant='white']) .background:focus-within {
+        @apply bg-white/90;
+      }
+
+      :host([variant='neutral-100']) .background:focus-within {
+        @apply bg-neutral-100/90;
+      }
+
+      :host([variant='primary']) .background:focus-within {
+        @apply bg-primary/90;
+      }
+
+      :host([variant='primary-100']) .background:focus-within {
+        @apply bg-primary-100/90;
       }
     `
   ];
