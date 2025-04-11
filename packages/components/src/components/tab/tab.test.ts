@@ -35,6 +35,13 @@ describe('<sd-tab>', () => {
     expect(base.getAttribute('tabindex')).to.equal('-1');
   });
 
+  describe('when visually-disabled is set', () => {
+    it('should have aria-disabled set to true', async () => {
+      const el = await fixture<SdTab>(html` <sd-tab visually-disabled>Default Slot</sd-button> `);
+      expect(el.getAttribute('aria-disabled')).to.be.equal('true');
+    });
+  });
+
   it('should set active tab by attribute', async () => {
     const el = await fixture<SdTab>(html` <sd-tab active>Test</sd-tab> `);
 

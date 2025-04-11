@@ -115,11 +115,13 @@ export default class SdTabGroup extends SolidElement {
   private getAllTabs(options: { includeDisabled: boolean } = { includeDisabled: true }) {
     const slot = this.shadowRoot!.querySelector<HTMLSlotElement>('slot[name="nav"]')!;
 
-    return [...(slot.assignedElements() as SdTab[])].filter(el => {
-      return options.includeDisabled
-        ? el.tagName.toLowerCase() === 'sd-tab'
-        : el.tagName.toLowerCase() === 'sd-tab' && !el.disabled;
-    });
+    return Array.from(slot.assignedElements())
+      .map(el => (el.tagName.toLocaleLowerCase() === 'sd-tab' ? el : el.querySelector('sd-tab')))
+      .filter((el: SdTab) => {
+        return el && options.includeDisabled
+          ? el.tagName.toLowerCase() === 'sd-tab'
+          : el.tagName.toLowerCase() === 'sd-tab' && !el.disabled;
+      }) as SdTab[];
   }
 
   private getAllPanels() {
@@ -248,7 +250,7 @@ export default class SdTabGroup extends SolidElement {
       ...options
     };
 
-    if (tab !== this.activeTab && !tab.disabled) {
+    if (tab !== this.activeTab && !tab.disabled && !tab.visuallyDisabled) {
       const previousTab = this.activeTab;
       this.activeTab = tab;
 
