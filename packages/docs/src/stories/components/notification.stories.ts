@@ -166,6 +166,9 @@ export const DurationIndicator = {
  * - `top-right` (default)
  * - `bottom-center`
  *
+ * > **Warning:** We are aware of some inconsistency between screen readers when announcing the toast notification.
+ * > We strongly recommend using inline notification instead of toasts.
+ *
  * **Important:** Some screen readers may occasionally ignore live regions that are added to a page after it has already loaded.
  * Therefore, to make sure the toast stack regions are already present on page load, please make sure to render the following:
  *
