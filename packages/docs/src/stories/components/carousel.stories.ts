@@ -7,23 +7,6 @@ const { argTypes, parameters } = storybookDefaults('sd-carousel');
 const { overrideArgs } = storybookHelpers('sd-carousel');
 const { generateTemplate } = storybookTemplate('sd-carousel');
 
-/**
- * Used to display an arbitrary number of content slides along a horizontal axis.
- *
- * On touch devices, the slides can be moved by swiping.
- *
- * **Accessibility Hints:**
- * - Chevron buttons are still displayed on touch devices to enable alternative interaction that complies with accessibility requirements.
- * - Add the `role="region"` attribute together with an unique `aria-label` whenever the carousel is an important landmark of the page.
- *
- *
- * **Related components**:
- * - [sd-carousel-item](?path=/docs/components-sd-carousel-item--docs)
- *
- * **Related templates**:
- * - [Carousel](?path=/docs/templates-carousel--docs)
- */
-
 export default {
   title: 'Components/sd-carousel',
   tags: ['!dev'],

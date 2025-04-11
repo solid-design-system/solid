@@ -8,12 +8,6 @@ const { generateTemplate } = storybookTemplate('sd-prose');
 // HTML helper to get syntax highlighting and formatting in the template string
 const html = String.raw;
 
-/**
- * Used as a set of `prose` classes to choose from in a richtext-editor.
- *
- * The set of style classes enables users to create visually engaging and dynamic content by incorporating various text styles, formatting options, and image embeds.
- */
-
 export default {
   title: 'Styles/sd-prose',
   tags: ['!dev'],

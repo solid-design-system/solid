@@ -6,13 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-chip');
 const { overrideArgs } = storybookHelpers('sd-chip');
 const { generateTemplate } = storybookTemplate('sd-chip');
 
-/**
- * Used as a small, non-interactive label that represents a status, property or meta-data.
- *
- *  **Related templates**:
- * - [Chip](?path=/docs/templates-chip--docs)
- */
-
 export default {
   title: 'Styles/sd-chip',
   component: 'sd-chip',
