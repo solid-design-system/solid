@@ -110,9 +110,9 @@ export const Closable = {
     html` <sd-notification id="closable-example" variant="info" open closable>Lorem ipsum dolor sit</sd-notification>
       <script>
         var closableNotification = document.querySelector('#closable-example');
-        closableNotification.addEventListener('click', () => {
+        closableNotification.addEventListener('sd-after-hide', () => {
           setTimeout(() => {
-            notification.open = true;
+            closableNotification.open = true;
           }, 3000);
         });
       </script>`
@@ -165,6 +165,27 @@ export const DurationIndicator = {
  * Use the `toastStack` attribute to change the position of the toast notifications:
  * - `top-right` (default)
  * - `bottom-center`
+ *
+ * > **Warning:** We are aware of some inconsistency between screen readers when announcing the toast notification.
+ * > We strongly recommend using inline notification instead of toasts.
+ *
+ * **Important:** Some screen readers may occasionally ignore live regions that are added to a page after it has already loaded.
+ * Therefore, to make sure the toast stack regions are already present on page load, please make sure to render the following:
+ *
+ * ```html
+ * <div
+ *   role="region"
+ *   id="sd-toast-stack--top-right"
+ *   class="sd-toast-stack sd-toast-stack--top-right"
+ *   aria-label="Top right notifications"
+ *  ></div>
+ *  <div
+ *   role="region"
+ *   id="sd-toast-stack--bottom-center"
+ *   class="sd-toast-stack sd-toast-stack--bottom-center"
+ *   aria-label="Bottom center notifications"
+ *  ></div>
+ * ```
  *
  * __Hints:__
  * - It requires the use of the `toast` method to work. Click on the `Show code` button to see the JavaScript code responsible for generating the toast notification.

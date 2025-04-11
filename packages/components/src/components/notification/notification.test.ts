@@ -1,7 +1,6 @@
 import '../../../dist/solid-components';
 import { aTimeout, expect, fixture, html, oneEvent } from '@open-wc/testing';
 import { clickOnElement, moveMouseOnElement } from '../../internal/test.js';
-import { queryByTestId } from '../../internal/test/data-testid-helpers.js';
 import { resetMouse, sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
 
@@ -226,57 +225,6 @@ describe('<sd-notification>', () => {
       await aTimeout(0);
 
       expect(toastPromiseResolved).to.be.true;
-    });
-
-    const expectToastStack = () => {
-      const toastStack = getToastStack();
-      expect(toastStack).not.to.be.null;
-    };
-
-    const expectNoToastStack = () => {
-      const toastStack = getToastStack();
-      expect(toastStack).to.be.null;
-    };
-
-    const openToast = async (notification: SdNotification): Promise<void> => {
-      const openPromise = oneEvent(notification, 'sd-after-show');
-      notification.toast();
-      await openPromise;
-    };
-
-    const closeToast = async (notification: SdNotification): Promise<void> => {
-      const closePromise = oneEvent(notification, 'sd-after-hide');
-      const closeButton = getCloseButton(notification);
-      await clickOnElement(closeButton!);
-      await closePromise;
-      await aTimeout(0);
-    };
-
-    it('deletes the toast stack after the last notification is done', async () => {
-      const container = await fixture<HTMLElement>(
-        html`<div>
-          <sd-notification data-testid="notification1" closable>notification 1</sd-notification>
-          <sd-notification data-testid="notification2" closable>notification 2</sd-notification>
-        </div>`
-      );
-
-      const notification1 = queryByTestId<SdNotification>(container, 'notification1');
-      const notification2 = queryByTestId<SdNotification>(container, 'notification2');
-      await openToast(notification1!);
-
-      expectToastStack();
-
-      await openToast(notification2!);
-
-      expectToastStack();
-
-      await closeToast(notification1!);
-
-      expectToastStack();
-
-      await closeToast(notification2!);
-
-      expectNoToastStack();
     });
   });
 
