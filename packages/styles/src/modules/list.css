@@ -8,71 +8,104 @@
 
 .sd-list:not(.sd-list--icon),
 .sd-prose > :is(ol, ul) {
-  @apply text-left py-4;
+  list-style-position: revert;
+  list-style-type: revert;
+  padding: revert;
+
+  @apply text-left py-4 pl-4;
 
   li:not(:first-child) {
     @apply mt-3;
   }
 
-  ol,
-  ul {
-    @apply pt-3;
-  }
-
-  /* Counter handling for ordered lists. */
-  &:is(ol),
+  ul,
   ol {
-    & > li {
-      counter-increment: item;
-      &:before {
-        content: counters(item, '.') '. ';
+    all: revert;
+    @apply pl-[1.4em] pt-[0.75em];
+  }
+
+  @supports not (-webkit-hyphens: none) {
+    /* Safari automatically adds some spacing. This adds it for other browsers. */
+    li {
+      @apply pl-[0.3em];
+    }
+
+    /*
+     * Ordered lists
+     */
+
+    /* 
+   * Safari currently only partially supports the ::marker pseudo class.
+   * Support is limited to color and font-size. Therefore we optimize the numbering only for non-Safari browsers.
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/::marker#browser_compatibility
+   */
+    /* Level 1 */
+    &:is(ol):not(.sd-list--icon) {
+      counter-reset: item;
+      > li {
+        counter-increment: item;
+        &::marker {
+          content: counters(item, '.', decimal) '. ';
+        }
+        /* Level 2 */
+        > ol {
+          @apply pl-[1.9em];
+          counter-reset: subitem;
+          > li {
+            counter-increment: subitem;
+            &::marker {
+              content: counters(item, '.', decimal) '.' counters(subitem, '.', decimal) '. ';
+            }
+            /* Level 3 */
+            > ol {
+              @apply pl-[2.7em];
+              counter-reset: subsubitem;
+              > li {
+                counter-increment: subsubitem;
+                &::marker {
+                  content: counters(item, '.', decimal) '.' counters(subitem, '.', decimal) '.'
+                    counters(subsubitem, '.', decimal) '. ';
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
 
-  /* Add second level */
-  &:is(ol),
-  &:is(ol) > li > ol,
-  ol > li > ol {
-    counter-reset: item;
-  }
+  /*
+   * Unordered lists
+   */
 
-  /* Ordered lists inside unordered lists. */
-  &:is(ul) > li > ol,
-  ul > li > ol {
-    counter-set: item 0;
-  }
-
-  /* Styling */
-  li {
-    @apply table;
-    &:before {
-      @apply pr-2 table-cell;
-    }
-  }
-
-  &:is(ul),
+  /* Level 1 */
+  &:is(ul):not(.sd-list--icon),
   ul {
-    list-style-type: '';
-  }
-
-  &:is(ul):not(.sd-list--icon) > li,
-  ul > li {
-    &:before {
-      content: '\2022';
-    }
-    > ul > li {
-      &:before {
-        content: '\002B1D';
-      }
-      > ul > li {
-        &:before {
-          content: '\2010';
+    @apply pl-[0.5em];
+    > li {
+      @apply pl-[0.75em];
+      list-style-type: '\2022'; /* • */
+      /* Level 2 */
+      > ul {
+        @apply pl-[0.3em];
+        > li {
+          list-style-type: '\002B1D'; /* · */
+          /* Level 3 */
+          > ul {
+            @apply pl-[0.4em];
+            > li {
+              list-style-type: '\2010'; /* - */
+            }
+          }
         }
       }
     }
   }
 }
+
+/*
+  * Icon lists
+  */
 
 .sd-list--icon {
   @apply text-left py-4;
@@ -110,6 +143,10 @@
     }
   }
 }
+
+/*
+ * Inverted
+ */
 
 .sd-list--inverted,
 .sd-prose--inverted > :is(ol, ul) {

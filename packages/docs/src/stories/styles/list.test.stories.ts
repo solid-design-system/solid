@@ -347,10 +347,10 @@ export const MixedLists = {
           <ul>
             <li>
               Dolor sit
-              <ol>
+              <ul>
                 <li>Amet</li>
                 <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-              </ol>
+              </ul>
             </li>
             <li>
               Dolor sit
