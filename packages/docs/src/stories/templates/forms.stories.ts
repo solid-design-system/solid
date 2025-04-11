@@ -68,6 +68,7 @@ export const ContactForm = {
         inputmode="text"
         id="regarding-input"
         class="hidden"
+        aria-label="Regarding"
         name="regardingInput"
         spellcheck
       ></sd-input>
