@@ -757,34 +757,33 @@ export const sortableTable = {
       };
       const icons = document.querySelectorAll('[id*="sortIcon"]');
       const headerCells = document.querySelectorAll('[id*="sortableHeader"]');
-      const statusSpans = document.querySelectorAll('[id*="sortableStatus"]');
+      const announcementContainer = document.querySelector('[id="sortable-announcement"]');
 
       if (icons && headerCells) {
         headerCells.forEach((headerCell, index) => {
           if (!headerData[index].sortable) return;
 
           //Change the sort icon and aria-sort attribute for the clicked column
-          const nextSort = sortingOptions[sortData[column]].nextSort;
+          const { status, nextSort } = sortingOptions[sortData[column]];
           sortTableByColumn(document.querySelector('[id="sortable"]'), column, nextSort === 'descending');
+          announcementContainer!.innerHTML = announcementContainer!.innerHTML === status ? `${status}\u200B` : status;
 
           if (index === column) {
-            const { iconName, ariaSort, status } = sortingOptions[nextSort];
+            const { iconName, ariaSort } = sortingOptions[nextSort];
 
             sortData[index] = nextSort;
             icons[index].setAttribute('name', iconName);
             ariaSort !== undefined
               ? headerCell.setAttribute('aria-sort', ariaSort)
               : headerCell.removeAttribute('aria-sort');
-            statusSpans[index].innerHTML = status;
           }
           //Reset the sort icon and remove the aria-sort attribute for all other columns
           else {
-            const { iconName, status } = sortingOptions['none'];
+            const { iconName } = sortingOptions['none'];
 
             sortData[index] = 'none';
             icons[index].setAttribute('name', iconName);
             headerCell.removeAttribute('aria-sort');
-            statusSpans[index].innerHTML = status;
           }
         });
       }
@@ -829,6 +828,7 @@ export const sortableTable = {
     };
 
     return html`
+      <span id="sortable-announcement" role="status" class="sr-only"></span>
       <table id="sortable" class="sd-table sample-table w-full" .sortData=${sortData}>
         <thead>
           ${(() => {
@@ -840,21 +840,18 @@ export const sortableTable = {
                   aria-sort=${ifDefined(sortData[columnIndex] === 'none' || !header.sortable ? undefined : 'ascending')}
                 >
                   ${header.sortable
-                    ? html` <span class="sr-only" id="sortableStatus-${columnIndex}"
-                          >${sortData[columnIndex] === 'none' ? '' : 'Sorting ascending'}</span
-                        >
-                        <button
-                          class="sd-interactive flex items-center gap-1"
-                          @focus="${() => handleSortButtonFocus(columnIndex)}"
-                          @blur="${() => handleSortButtonBlur(columnIndex)}"
-                          @click="${() => sortTable(columnIndex)}"
-                        >
-                          ${header.label}<sd-icon
-                            id="sortIcon-${columnIndex}"
-                            name=${sortData[columnIndex] === 'none' ? 'system/sort-down' : 'system/sort-down-filled'}
-                            class="text-[12px]"
-                          ></sd-icon>
-                        </button>`
+                    ? html` <button
+                        class="sd-interactive flex items-center gap-1"
+                        @focus="${() => handleSortButtonFocus(columnIndex)}"
+                        @blur="${() => handleSortButtonBlur(columnIndex)}"
+                        @click="${() => sortTable(columnIndex)}"
+                      >
+                        ${header.label}<sd-icon
+                          id="sortIcon-${columnIndex}"
+                          name=${sortData[columnIndex] === 'none' ? 'system/sort-down' : 'system/sort-down-filled'}
+                          class="text-[12px]"
+                        ></sd-icon>
+                      </button>`
                     : header.label}
                 </th>`;
               })}
@@ -1759,31 +1756,31 @@ export const TableFixedBottom = {
         </tbody>
         <tfoot>
           <tr>
-            <th
+            <td
               class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top sd-table-cell--shadow-active"
             >
               Job title
-            </th>
-            <th
+            </td>
+            <td
               class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top sd-table-cell--shadow-active"
             >
               Location
-            </th>
-            <th
+            </td>
+            <td
               class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top sd-table-cell--shadow-active"
             >
               Job category
-            </th>
-            <th
+            </td>
+            <td
               class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top sd-table-cell--shadow-active"
             >
               Employment type
-            </th>
-            <th
+            </td>
+            <td
               class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top sd-table-cell--shadow-active"
             >
               Actions
-            </th>
+            </td>
           </tr>
         </tfoot>
       </table>
