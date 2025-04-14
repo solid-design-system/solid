@@ -332,11 +332,12 @@ export const Clearable = {
 };
 
 /**
- *  Use the “left” and “right” slots to add system icons
- *  Show search icon in left either left or right icon slot with the chevron icon (don’t show 2 icons on the right hand side)
- *  Not showing the label here is only fine when showing search-icon.
+ *  Use the “left” and “right” slots to add system icons.
  *
- *  __Accessibility hint__: Label can be omitted for search input fields if a button (e.g., aria-label="Search") with a search icon is present.
+ *  Show the search icon in either the left slot or right icon slot instead of the chevron icon (don’t show two icons on the right-hand side).
+ *
+ *  __Accessibility hint__: The label can be omitted for search input fields if a button (e.g., aria-label="Search") with a search icon is present.
+ *
  */
 export const Icons = {
   render: () => html`
@@ -344,7 +345,7 @@ export const Icons = {
       <sd-combobox size="lg" clearable label="Label">
         <sd-icon slot="left" name="system/image" aria-hidden="true" color="currentColor"></sd-icon>
         ${createColorOptionsHtml()}
-        <button slot="right" aria-label="Search">
+        <button slot="right" aria-label="Search" class="sd-interactive flex">
           <sd-icon library="system" name="magnifying-glass" aria-hidden="true" color="currentColor"></sd-icon>
         </button>
       </sd-combobox>
