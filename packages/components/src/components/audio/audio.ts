@@ -410,7 +410,7 @@ export default class SdAudio extends SolidElement {
           'playback-speed justify-self-start text-base font-bold hover:cursor-pointer sd-interactive',
           this.inverted && 'sd-interactive--inverted'
         )}
-        aria-label="${this.localize.term('playbackSpeed')}"
+        aria-label="${this.localize.term('playbackSpeed')} (${this.speed}x)"
         @click=${this.togglePlaybackSpeed}
         @keydown=${this.togglePlaybackSpeedKeydown}
         part="playback-speed"
