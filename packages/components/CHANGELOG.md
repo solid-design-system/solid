@@ -1,5 +1,27 @@
 # @solid-design-system/components
 
+## 4.6.7
+
+### Patch Changes
+
+- Improved `sd-scrollable` screen reader announcements when the scroll button is pressed. _[`#2109`](https://github.com/solid-design-system/solid/pull/2109) [`d2a3096`](https://github.com/solid-design-system/solid/commit/d2a3096319ca9f55428d24d8d333daded7227a4e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Fixed focus issue on `sd-scrollable` when both axis buttons are enabled and a scrolling limit is reached.
+
+### 📈 Stats
+* Uncompressed: 419 KB (+2 KB / +0%)
+* Gzipped: 98 KB (+1 KB / +1%)
+
+## 4.6.6
+
+### Patch Changes
+
+- Fix `sd-carousel` a11y issues when set to autoplay. _[`#2117`](https://github.com/solid-design-system/solid/pull/2117) [`079cc6b`](https://github.com/solid-design-system/solid/commit/079cc6bda59dcafa6b7bdf65660d2192d6f2b373) [@smfonseca](https://github.com/smfonseca)_
+
+  - Switch from `role="status"` to `aria-live` for more granular control.
+  - Update `aria-live` when element is focused.
+  - Add localized `aria-label` to `scroll-container`.
+
 ## 4.6.5
 
 ### Patch Changes

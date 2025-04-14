@@ -77,6 +77,7 @@ export interface Translation extends DefaultTranslation {
   audioPlayer: string;
   autoplay: string;
   carousel: string;
+  carouselContainer: (count: number) => string;
   clearEntry: string;
   close: string;
   collapseNavigationItem: string;
@@ -103,6 +104,7 @@ export interface Translation extends DefaultTranslation {
   remove: string;
   removed: (name: string) => string;
   resize: string;
+  scrolled: string;
   scrollToEnd: string;
   scrollToStart: string;
   search: string;
