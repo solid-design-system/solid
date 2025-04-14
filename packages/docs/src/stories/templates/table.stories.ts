@@ -763,28 +763,29 @@ export const sortableTable = {
         headerCells.forEach((headerCell, index) => {
           if (!headerData[index].sortable) return;
 
-          //Change the sort icon and aria-sort attribute for the clicked column
-          const { status, nextSort } = sortingOptions[sortData[column]];
-          sortTableByColumn(document.querySelector('[id="sortable"]'), column, nextSort === 'descending');
-          announcementContainer!.innerHTML = announcementContainer!.innerHTML === status ? `${status}\u200B` : status;
-
-          if (index === column) {
-            const { iconName, ariaSort } = sortingOptions[nextSort];
-
-            sortData[index] = nextSort;
-            icons[index].setAttribute('name', iconName);
-            ariaSort !== undefined
-              ? headerCell.setAttribute('aria-sort', ariaSort)
-              : headerCell.removeAttribute('aria-sort');
-          }
           //Reset the sort icon and remove the aria-sort attribute for all other columns
-          else {
+          if (index !== column) {
             const { iconName } = sortingOptions['none'];
 
             sortData[index] = 'none';
             icons[index].setAttribute('name', iconName);
             headerCell.removeAttribute('aria-sort');
+            return;
           }
+
+          //Change the sort icon and aria-sort attribute for the clicked column
+          const { nextSort } = sortingOptions[sortData[column]];
+          const { status } = sortingOptions[nextSort];
+          sortTableByColumn(document.querySelector('[id="sortable"]'), column, nextSort === 'descending');
+          announcementContainer!.innerHTML = announcementContainer!.innerHTML === status ? `${status}\u200B` : status;
+
+          const { iconName, ariaSort } = sortingOptions[nextSort];
+
+          sortData[index] = nextSort;
+          icons[index].setAttribute('name', iconName);
+          ariaSort !== undefined
+            ? headerCell.setAttribute('aria-sort', ariaSort)
+            : headerCell.removeAttribute('aria-sort');
         });
       }
     };
@@ -817,16 +818,6 @@ export const sortableTable = {
       }
     };
 
-    const handleSortButtonFocus = (column: number) => {
-      const statusSpan = document.querySelector(`[id*="sortableStatus-${column}"]`);
-      statusSpan?.setAttribute('role', 'status');
-    };
-
-    const handleSortButtonBlur = (column: number) => {
-      const statusSpan = document.querySelector(`[id*="sortableStatus-${column}"]`);
-      statusSpan?.removeAttribute('role');
-    };
-
     return html`
       <span id="sortable-announcement" role="status" class="sr-only"></span>
       <table id="sortable" class="sd-table sample-table w-full" .sortData=${sortData}>
@@ -842,8 +833,6 @@ export const sortableTable = {
                   ${header.sortable
                     ? html` <button
                         class="sd-interactive flex items-center gap-1"
-                        @focus="${() => handleSortButtonFocus(columnIndex)}"
-                        @blur="${() => handleSortButtonBlur(columnIndex)}"
                         @click="${() => sortTable(columnIndex)}"
                       >
                         ${header.label}<sd-icon
