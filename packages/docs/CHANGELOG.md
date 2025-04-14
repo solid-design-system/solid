@@ -1,5 +1,17 @@
 # @solid-design-system/docs
 
+## 1.13.6
+
+### Patch Changes
+
+- Added new `sd-scrollable` screenshot test named "Auto Orientation". _[`#2109`](https://github.com/solid-design-system/solid/pull/2109) [`d2a3096`](https://github.com/solid-design-system/solid/commit/d2a3096319ca9f55428d24d8d333daded7227a4e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.13.5
+
+### Patch Changes
+
+- Added missing `sd-input` `aria-label` on forms template. _[`#2119`](https://github.com/solid-design-system/solid/pull/2119) [`59b8c84`](https://github.com/solid-design-system/solid/commit/59b8c840051167c2b55a94d562536934018d9707) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.13.4
 
 ### Patch Changes
