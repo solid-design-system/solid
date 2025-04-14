@@ -307,6 +307,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       // If it's not open, open it
       if (!this.open) {
         this.show();
+        this.setCurrentOption(this.currentOption || this.getFirstOption(), event);
         return;
       }
 
@@ -365,7 +366,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         newIndex = allOptions.length - 1;
       }
 
-      this.setCurrentOption(allOptions[newIndex]);
+      this.setCurrentOption(allOptions[newIndex], event);
     }
 
     // All other "printable" keys trigger type to select
@@ -470,6 +471,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     event.preventDefault();
     this.combobox.focus({ preventScroll: true });
     this.open = !this.open;
+    this.setCurrentOption(this.currentOption || this.getFirstOption(), event);
   }
 
   private handleComboboxKeyDown(event: KeyboardEvent) {
@@ -582,13 +584,17 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   // Sets the current option, which is the option the user is currently interacting with (e.g. via keyboard). Only one
   // option may be "current" at a time.
-  private setCurrentOption(option: SdOption | null) {
+  private setCurrentOption(option: SdOption | null, event?: KeyboardEvent | MouseEvent) {
     const allOptions = this.getAllOptions();
 
     // Clear selection
     allOptions.forEach(el => {
       el.current = false;
       el.tabIndex = -1;
+
+      if (event?.type === 'keydown' || event?.type === 'mousedown') {
+        el.isKeyboardFocus = false;
+      }
     });
 
     // Select the target option
@@ -597,6 +603,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       option.current = true;
       option.tabIndex = 0;
       option.focus();
+    }
+
+    if (option && event?.type === 'keydown') {
+      option.isKeyboardFocus = true;
     }
   }
 

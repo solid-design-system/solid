@@ -688,7 +688,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       const previousIndex = currentIndex - 1;
       newIndex = previousIndex < 0 ? filteredOptions.length - 1 : previousIndex;
     }
-    this.setCurrentOption(filteredOptions[newIndex]);
+    this.setCurrentOption(filteredOptions[newIndex], new KeyboardEvent('keydown'));
     // @ts-expect-error Check later
     scrollIntoView(this.getCurrentOption(), this.listbox, 'vertical', 'auto');
   }
@@ -703,7 +703,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   // Sets the current option, which is the option the user is currently interacting with
   // (e.g. via keyboard). Only one option may be "current" at a time.
-  private setCurrentOption(option: SdOption | null) {
+  private setCurrentOption(option: SdOption | null, event?: KeyboardEvent | MouseEvent) {
     const allFilteredOptions = this.getAllFilteredOptions();
 
     // Clear selection
@@ -712,6 +712,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     allFilteredOptions.forEach(el => {
       el.current = false;
       el.setAttribute('aria-selected', 'false');
+      el.isKeyboardFocus = false;
     });
 
     // Select the target option
@@ -719,6 +720,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       option.current = true;
       option.setAttribute('aria-selected', 'true');
       this.displayInput.setAttribute('aria-activedescendant', option.id);
+    }
+
+    if (option && event?.type === 'keydown') {
+      option.isKeyboardFocus = true;
     }
   }
 
