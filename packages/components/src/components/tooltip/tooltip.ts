@@ -113,7 +113,10 @@ export default class SdTooltip extends SolidElement {
 
   firstUpdated() {
     this.body.hidden = !this.open;
-    this.formatDefaultSlot(this.defaultSlot);
+
+    if (this.hasCustomTrigger) {
+      this.formatDefaultSlot(this.defaultSlot);
+    }
 
     // If the tooltip is visible on init, update its position
     if (this.open) {
@@ -132,6 +135,10 @@ export default class SdTooltip extends SolidElement {
     this.removeEventListener('mouseout', this.handleMouseOut);
     document.removeEventListener('mousedown', this.handleMouseInteraction);
     document.removeEventListener('keydown', this.handleKeyboardInteraction);
+  }
+
+  private get hasCustomTrigger() {
+    return !!this.querySelector('*');
   }
 
   // removes empty text nodes from the default slot
@@ -292,22 +299,23 @@ export default class SdTooltip extends SolidElement {
         auto-size="vertical"
         arrow-padding="0"
       >
-        <slot slot="anchor" class=${cx(this.size === 'lg' ? 'text-xl' : 'text-base')}>
-          <button
-            aria-describedby="tooltip"
-            class="flex sd-interactive rounded-full"
-            ?disabled=${this.disabled}
-            aria-expanded=${this.open}
-            aria-controls="tooltip"
-          >
-            <sd-icon
-              library="system"
-              name="info-circle"
-              label="Tooltip"
-              class=${cx(this.disabled && 'sd-interactive--disabled')}
-            ></sd-icon>
-          </button>
-        </slot>
+        ${this.hasCustomTrigger
+          ? html` <slot slot="anchor"></slot>`
+          : html`<button
+              slot="anchor"
+              aria-describedby="tooltip"
+              class=${cx('flex sd-interactive rounded-full', this.size === 'lg' ? 'text-xl' : 'text-base')}
+              ?disabled=${this.disabled}
+              aria-expanded=${this.open}
+              aria-controls="tooltip"
+            >
+              <sd-icon
+                library="system"
+                name="info-circle"
+                label="Tooltip"
+                class=${cx(this.disabled && 'sd-interactive--disabled')}
+              ></sd-icon>
+            </button>`}
         <slot
           name="content"
           part="body"
