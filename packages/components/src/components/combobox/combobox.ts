@@ -1379,7 +1379,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               @mousedown=${this.preventLoosingFocus}
               @mouseup=${this.handleOptionClick}
             >
-              <div part="filtered-listbox" class="overflow-y-scroll">
+              <div part="filtered-listbox">
                 ${this.filteredOptions.length === 0
                   ? html`<span
                       id="noResults"
