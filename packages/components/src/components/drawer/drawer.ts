@@ -253,8 +253,6 @@ export default class SdDrawer extends SolidElement {
         setTimeout(() => trigger.focus());
       }
 
-      console.log(trigger);
-
       //Add a11y attributes to close button
       closeButtonBase?.setAttribute('aria-expanded', 'false');
 
