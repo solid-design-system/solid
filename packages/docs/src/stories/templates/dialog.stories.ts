@@ -200,3 +200,98 @@ export const Scrollable = {
     </script>
   `
 };
+
+/**
+ *  This shows ways to prevent closing `sd-dialog`. This is useful for instances when data loss will occur.
+ *
+ *  To keep the dialog open in such cases, cancel the `sd-request-close` event. When canceled, the dialog will remain open and pulse briefly to draw the user’s attention to it.
+ *  Use `event.detail.source` to specify a closing trigger.
+ */
+export const PreventClosing = {
+  name: 'Prevent Closing',
+  render: () => {
+    return html`
+      <div style="height: 40vh;">
+        <div class="flex gap-2">
+          <sd-button id="open-dialog">Open Dialog</sd-button>
+          <sd-button id="open-timed-dialog">Open Timed Dialog</sd-button>
+        </div>
+
+        <sd-dialog id="default-dialog">
+          <p class="sd-paragraph">This dialog will not close when you click on the overlay.</p>
+          <span slot="headline" class="sd-headline sd-headline--size-3xl">Dialog</span>
+          <sd-button slot="footer" class="w-full" id="close-button">Close</sd-button>
+        </sd-dialog>
+
+        <script>
+          // Prevent closing the dialog when clicking on the overlay
+          const openDialogButton = document.querySelector('#open-dialog');
+          const defaultDialog = document.querySelector('#default-dialog');
+
+          const closeButton = document.querySelector('#close-button');
+
+          closeButton.addEventListener('click', () => defaultDialog.hide());
+          openDialogButton.addEventListener('click', () => defaultDialog.show());
+
+          defaultDialog.addEventListener('sd-request-close', event => {
+            if (event.detail.source === 'overlay') {
+              event.preventDefault();
+            }
+          });
+        </script>
+
+        <sd-dialog id="timed" headline="Timed Dialog" no-close-button>
+          <div id="countdown">Closable in 5 seconds...</div>
+          <sd-button slot="footer" class="w-full" id="timed-close-button" visually-disabled>
+            Close <span id="close-countdown" class="sr-only">. Closable in 5 seconds...</span>
+          </sd-button>
+        </sd-dialog>
+
+        <script>
+          // Prevent closing the dialog for a certain amount of time
+          const openTimedDialogButton = document.querySelector('#open-timed-dialog');
+          const countdownElement = document.querySelector('#countdown');
+          const closeCountdownElement = document.querySelector('#close-countdown');
+          const timedCloseButton = document.querySelector('#timed-close-button');
+
+          const timedDialog = document.querySelector('#timed');
+          let canCloseTimedDialog = false;
+
+          timedCloseButton.addEventListener('click', () => timedDialog.hide());
+
+          openTimedDialogButton.addEventListener('click', () => {
+            timedCloseButton.visuallyDisabled = true;
+            timedDialog.show();
+            canCloseTimedDialog = false;
+            let counter = 5;
+            countdownElement.textContent = 'Closable in ' + counter + ' seconds...';
+            closeCountdownElement.textContent = '. ' + countdownElement.textContent;
+
+            const interval = setInterval(() => {
+              counter--;
+              /**
+               * NOTE: The closeCountdownElement is not updated every second to avoid
+               * disrupting screen readers when announcing the current text.
+               */
+              countdownElement.textContent = 'Closable in ' + counter + ' seconds...';
+
+              if (counter <= 0) {
+                clearInterval(interval);
+                canCloseTimedDialog = true;
+                timedCloseButton.visuallyDisabled = false;
+                countdownElement.textContent = 'You can now close the dialog.';
+                closeCountdownElement.textContent = '. You can now close the dialog.';
+              }
+            }, 1000);
+          });
+
+          timedDialog.addEventListener('sd-request-close', event => {
+            if (!canCloseTimedDialog) {
+              event.preventDefault();
+            }
+          });
+        </script>
+      </div>
+    `;
+  }
+};
