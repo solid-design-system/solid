@@ -1,3 +1,4 @@
+import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize';
@@ -10,6 +11,8 @@ import SolidElement from '../../internal/solid-element';
  * @documentation https://solid.union-investment.com/[storybook-link]/scrollable
  * @status stable
  * @since 1.0
+ *
+ * @dependency sd-icon
  *
  * @slot - The scrollable's content.
  * @slot icon-start - The scrollable's start icon.

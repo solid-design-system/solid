@@ -1,3 +1,5 @@
+import '../icon/icon';
+import '../tag/tag';
 import { animateTo, stopAnimations } from '../../internal/animate.js';
 import { css, html, type TemplateResult } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
@@ -14,13 +16,11 @@ import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
 import cx from 'classix';
-import SdIcon from '../icon/icon';
-import SdPopup from '../popup/popup';
-import SdTag from '../tag/tag';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 import type SdOptgroup from '../optgroup/optgroup.js';
 import type SdOption from '../option/option';
+import type SdPopup from '../popup/popup';
 
 /**
  * @summary Comboboxes allow you to choose items from a menu of predefined options.
@@ -30,6 +30,7 @@ import type SdOption from '../option/option';
  *
  * @dependency sd-icon
  * @dependency sd-popup
+ * @dependency sd-tag
  *
  * @slot - The listbox options. Must be `<sd-option>` elements.
  *    You can use `<sd-optgroup>`'s to group items visually.
@@ -75,12 +76,6 @@ import type SdOption from '../option/option';
 
 @customElement('sd-combobox')
 export default class SdCombobox extends SolidElement implements SolidFormControl {
-  static dependencies = {
-    'sd-icon': SdIcon,
-    'sd-popup': SdPopup,
-    'sd-tag': SdTag
-  };
-
   private readonly formControlController: FormControlController = new FormControlController(this, {
     assumeInteractionOn: ['sd-blur', 'sd-input']
   });

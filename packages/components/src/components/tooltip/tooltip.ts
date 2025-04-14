@@ -1,4 +1,4 @@
-import '../popup/popup';
+import '../icon/icon';
 import { animateTo, parseDuration, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
@@ -18,6 +18,7 @@ import type SdPopup from '../popup/popup';
  * @since 1.23.0
  *
  * @dependency sd-popup
+ * @dependency sd-icon
  *
  * @slot - The tooltip's target element. Avoid slotting in more than one element, as subsequent ones will be ignored.
  * @slot anchor - Slot to change the default trigger icon. The default icon is an info circle.

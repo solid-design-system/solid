@@ -1,4 +1,3 @@
-import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { property, state } from 'lit/decorators.js';
@@ -10,7 +9,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary A radio allows to select only one value from a set of options. Clicking on an unchecked radio will deselect the other one(s).
  * @documentation https://solid.union-investment.com/[storybook-link]/radio
  * @status stable
- * @since 1.20.0
+ * @since 1.20.0sd-icon
  *
  * @slot - The radio's label.
  *

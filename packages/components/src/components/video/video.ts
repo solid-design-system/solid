@@ -1,3 +1,4 @@
+import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
