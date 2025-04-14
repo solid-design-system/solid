@@ -271,8 +271,15 @@ export default class SdTooltip extends SolidElement {
     if (!this.open) {
       return undefined;
     }
+
     this.open = false;
-    if (this.trigger !== 'click') this.blur();
+
+    if (this.trigger === 'click') {
+      this.focus();
+    } else {
+      this.blur();
+    }
+
     return waitForEvent(this, 'sd-after-hide');
   }
 
