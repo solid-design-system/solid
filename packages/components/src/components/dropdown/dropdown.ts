@@ -90,7 +90,7 @@ export default class SdDropdown extends SolidElement {
    * The dropdown will close when the user interacts outside of this element (e.g. clicking). Useful for composing other
    * components that use a dropdown internally.
    */
-  @property({ type: String, attribute: false, reflect: true }) containingElement?: HTMLElement;
+  @property({ type: Object }) containingElement?: HTMLElement;
 
   /** The distance in pixels from which to offset the panel away from its trigger. This defaults to `0` for `rounded=false` and to a minimum of `1` for `rounded=true`. */
   @property({ type: Number, reflect: true }) distance = 0;
