@@ -104,6 +104,7 @@ export interface Translation extends DefaultTranslation {
   remove: string;
   removed: (name: string) => string;
   resize: string;
+  scrolled: string;
   scrollToEnd: string;
   scrollToStart: string;
   search: string;
