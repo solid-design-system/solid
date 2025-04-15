@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 4.6.9
+
+### Patch Changes
+
+- Improved `sd-audio` `aria-label` by including current speed value on playback speed button. _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+- Adjusted type of `containingElement` property in `sd-dropdown` _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+- Component dependencies are not correctly imported (e.g. `sd-icon` inside `sd-button`) _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+- Make `sd-input` compatible to autofill with passwords _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+- Improved `sd-drawer` and `sd-dialog` focus management by ensuring trigger elements inside shadow DOMs are correctly re-focused when element closes. _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+
 ## 4.6.8
 
 ### Patch Changes
