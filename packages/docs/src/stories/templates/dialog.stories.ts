@@ -42,7 +42,7 @@ export const Default = {
     </style>
 
     <sd-button id="drawer-trigger">Open Dialog</sd-button>
-    <sd-dialog id="dialog" open headline="Hello world">
+    <sd-dialog id="dialog" open>
       <span slot="headline" class="sd-headline sd-headline--size-3xl">Cancel your subscription?</span>
       <p class="sd-paragraph">Your subscription will be canceled immediately. You can resubscribe at any time.</p>
       <div slot="footer" class="flex flex-col-reverse sm:flex-row justify-end w-full gap-2">
