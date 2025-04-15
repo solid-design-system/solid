@@ -311,7 +311,6 @@ export default class SdDrawer extends SolidElement {
             this.contained ? 'absolute' : 'fixed'
           )}
           @click=${() => this.requestClose('overlay')}
-          tabindex="-1"
         ></div>
 
         <div
@@ -325,10 +324,9 @@ export default class SdDrawer extends SolidElement {
           )}
           role="dialog"
           aria-modal="true"
-          aria-labelledby="label"
+          aria-label=${this.label}
           tabindex="0"
         >
-          <p class="sr-only" id="label">${this.label}</p>
           ${!this.noHeader
             ? html`
                 <header
@@ -359,7 +357,12 @@ export default class SdDrawer extends SolidElement {
                 class="absolute top-2 right-2"
                 ><sd-icon label=${this.localize.term('close')} name="close" library="system"></sd-icon
               ></sd-button>`}
-          <div part="body" class="flex-auto block px-4" tabindex="0">
+          <div
+            part="body"
+            class="flex-auto block px-4 focus-visible:focus-outline !-outline-offset-2"
+            aria-label=${this.label}
+            tabindex="0"
+          >
             <slot></slot>
           </div>
           <footer part="footer" class=${cx(this.hasSlotController.test('footer') ? 'text-left p-4' : 'hidden')}>
