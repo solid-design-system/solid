@@ -4,6 +4,7 @@ import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
+import { getDeepActiveElement } from '../../internal/deep-active-element';
 import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
@@ -151,7 +152,9 @@ export default class SdDrawer extends SolidElement {
       // Show
       this.emit('sd-show');
       this.addOpenListeners();
-      this.originalTrigger = document.activeElement as HTMLElement;
+
+      // Check if the original trigger is inside the drawer
+      this.originalTrigger = getDeepActiveElement();
 
       // Lock body scrolling only if the drawer isn't contained
       if (!this.contained) {

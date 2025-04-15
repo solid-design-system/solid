@@ -1,3 +1,4 @@
+import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize';
@@ -14,7 +15,7 @@ import type SdTabPanel from '../tab-panel/tab-panel';
  * @status stable
  * @since 2.6.0
  *
-
+ * @dependency sd-tab
  *
  * @slot - Used for grouping tab panels in the tab group. Must be `<sd-tab-panel>` elements.
  * @slot nav - Used for grouping tabs in the tab group. Must be `<sd-tab>` elements.
