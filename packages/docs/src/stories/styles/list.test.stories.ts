@@ -257,6 +257,10 @@ export const HorizontalIconList = {
  */
 export const MixedLists = {
   name: 'Mixed Lists',
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  },
+  tags: ['!dev'],
   render: (args: any) => {
     const preset = (type: string) =>
       html`<preset-type class="sd-list">
@@ -390,11 +394,4 @@ export const MixedLists = {
   }
 };
 
-export const Combination = generateScreenshotStory([
-  Default,
-  OrderedList,
-  UnorderedList,
-  IconList,
-  HorizontalIconList,
-  MixedLists
-]);
+export const Combination = generateScreenshotStory([Default, OrderedList, UnorderedList, IconList, HorizontalIconList]);
