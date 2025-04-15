@@ -86,7 +86,7 @@ export const Variant = {
         </sd-tab-panel>
         <sd-tab slot="nav" panel="tab-3" variant="container">Container 3</sd-tab>
         <sd-tab-panel name="tab-3">
-          <div>Tab panel 3 -Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+          <div>Tab panel 3 - Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
         </sd-tab-panel>
       </sd-tab-group>
     </div>
