@@ -7,8 +7,8 @@ import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
 import { Wave } from './wave';
 import cx from 'classix';
-import SdDrawer from '../drawer/drawer';
 import SolidElement from '../../internal/solid-element';
+import type SdDrawer from '../drawer/drawer';
 
 /**
  * @summary Used to play audio files that are part of the page content.
