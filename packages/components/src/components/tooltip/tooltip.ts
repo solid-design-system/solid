@@ -8,6 +8,7 @@ import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
+// eslint-disable-next-line
 import SdPopup from '../popup/popup';
 import SolidElement from '../../internal/solid-element';
 

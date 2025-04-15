@@ -1,4 +1,3 @@
-import '../popup/popup';
 import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
@@ -11,11 +10,12 @@ import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
+// eslint-disable-next-line
+import SdPopup from '../popup/popup';
 import type SdButton from '../button/button';
 import type SdMenu from '../../_components/menu/menu'; // This import should be changed as soon as the menu is moved to the components folder
 import type SdMenuItem from '../../_components/menu-item/menu-item'; // This import should be changed as soon as the menu-item is moved to the components folder
 import type SdNavigationItem from '../navigation-item/navigation-item';
-import type SdPopup from '../popup/popup';
 
 /**
  * @summary Dropdowns expose additional content that "drops down" in a panel.

@@ -16,11 +16,12 @@ import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
 import cx from 'classix';
+// eslint-disable-next-line
+import SdPopup from '../popup/popup';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 import type SdOptgroup from '../optgroup/optgroup.js';
 import type SdOption from '../option/option';
-import type SdPopup from '../popup/popup';
 
 /**
  * @summary Comboboxes allow you to choose items from a menu of predefined options.
