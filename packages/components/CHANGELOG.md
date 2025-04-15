@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.6.8
+
+### Patch Changes
+
+- Implemented `visually-disabled` attribute on `sd-tab`. _[`#2126`](https://github.com/solid-design-system/solid/pull/2126) [`41c40fd`](https://github.com/solid-design-system/solid/commit/41c40fdfb3da8b4dbe28a357affe922221f3733d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 4.6.7
 
 ### Patch Changes
@@ -9,8 +15,9 @@
   Fixed focus issue on `sd-scrollable` when both axis buttons are enabled and a scrolling limit is reached.
 
 ### 📈 Stats
-* Uncompressed: 419 KB (+2 KB / +0%)
-* Gzipped: 98 KB (+1 KB / +1%)
+
+- Uncompressed: 419 KB (+2 KB / +0%)
+- Gzipped: 98 KB (+1 KB / +1%)
 
 ## 4.6.6
 

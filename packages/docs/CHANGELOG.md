@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.13.8
+
+### Patch Changes
+
+- Implemented `Visually Disabled` story on `sd-tab.` _[`#2126`](https://github.com/solid-design-system/solid/pull/2126) [`41c40fd`](https://github.com/solid-design-system/solid/commit/41c40fdfb3da8b4dbe28a357affe922221f3733d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.13.7
 
 ### Patch Changes
