@@ -2,4 +2,4 @@
 '@solid-design-system/components': patch
 ---
 
-fix: update aria-label in sd-audio for playback speed to include current speed value
+Improved `sd-audio` `aria-label` by including current speed value on playback speed button.
