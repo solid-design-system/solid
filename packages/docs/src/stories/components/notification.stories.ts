@@ -11,11 +11,6 @@ const { overrideArgs } = storybookHelpers('sd-notification');
 /**
  * Used to communicate important information or status to the user. Notifications can be displayed inline or as a toast / toast stack.
  *
- * > **Warning:** Our accessibility audit in 10/2024 found several problems with the `toast()` method. These are mostly related to the
- * > general concept of toasts, rather than how it is implemented. We will investigate how to improve this in the future. For now,
- * > we strongly recommend using inline notifications instead of toasts. For further information, please refer to our
- * > [GitHub issue](https://github.com/solid-design-system/solid/issues/1482).
- *
  *  **Related templates**:
  * - [Notification](?path=/docs/templates-notification--docs)
  */
@@ -166,8 +161,10 @@ export const DurationIndicator = {
  * - `top-right` (default)
  * - `bottom-center`
  *
- * > **Warning:** We are aware of some inconsistency between screen readers when announcing the toast notification.
- * > We strongly recommend using inline notification instead of toasts.
+ * <sd-notification variant="warning" open>
+ * **Warning:** We are aware of some inconsistency between screen readers when announcing the toast notification.
+ * We strongly recommend using inline notification instead of toasts.
+ * </sd-notification>
  *
  * **Important:** Some screen readers may occasionally ignore live regions that are added to a page after it has already loaded.
  * Therefore, to make sure the toast stack regions are already present on page load, please make sure to render the following:
@@ -190,6 +187,8 @@ export const DurationIndicator = {
  * __Hints:__
  * - It requires the use of the `toast` method to work. Click on the `Show code` button to see the JavaScript code responsible for generating the toast notification.
  * - Click on one of the buttons below to see the corresponding toast notification.
+ *
+ * <h4 class="sd-headline sd-headline--size-lg">Toast placement top right</h4>
  */
 export const ToastNotification = {
   name: 'Toast Notification',
@@ -253,6 +252,9 @@ export const ToastNotification = {
   }
 };
 
+/**
+ * <h4 class="sd-headline sd-headline--size-lg">Toast placement bottom center</h4>
+ */
 export const ToastBottomCenter = {
   name: ' ',
   render: (_args: Record<string, any>) => {
