@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.13.7
+
+### Patch Changes
+
+- Improve table template a11y. _[`#2137`](https://github.com/solid-design-system/solid/pull/2137) [`3dbb5ca`](https://github.com/solid-design-system/solid/commit/3dbb5cad431425333b484068cfbb12db6969db8b) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.13.6
 
 ### Patch Changes
