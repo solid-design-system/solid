@@ -16,8 +16,7 @@ const { generateTemplate } = storybookTemplate('sd-dialog');
  * - Use the `footer` slot to add action elements. <br /> Footer slot is always fixed.
  *
  * **Known browser issues:**
- * - When the headline is set by slot instead of attribute, `aria-labelledby` is used to give an accessible name to the dialog.
- * The `aria-labelledby` is not being announced by VoiceOver in Chrome and Firefox.
+ * - When the headline is set by slot instead of attribute, the dialog name is not being announced by VoiceOver in Chrome and Firefox.
  *
  * **Related templates**:
  * - [Dialog](?path=/docs/templates-dialog--docs)
