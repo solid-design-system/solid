@@ -43,7 +43,7 @@
     "directory": "packages/styles"
   },
   "type": "module",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "devDependencies": {
     "@mariohamann/tailwindcss-var": "^2.1.0",
     "@solid-design-system/versioning": "workspace:^",
