@@ -4,6 +4,7 @@ import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
+import { getDeepActiveElement } from '../../internal/deep-active-element';
 import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
@@ -140,7 +141,7 @@ export default class SdDialog extends SolidElement {
       // Show
       this.emit('sd-show');
       this.addOpenListeners();
-      this.originalTrigger = document.activeElement as HTMLElement;
+      this.originalTrigger = getDeepActiveElement();
       this.modal.activate();
 
       lockBodyScrolling(this);
