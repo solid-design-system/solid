@@ -28,7 +28,7 @@ export default {
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2116-4927&node-type=section&t=5PpAC3TA3kYF7ufX-0'
     }
   },
-  args: overrideArgs([{ type: 'slot', name: 'blue', value: '8' }]),
+  args: overrideArgs([{ type: 'slot', name: 'default', value: '8' }]),
   argTypes,
   decorators: [withActions] as any
 };

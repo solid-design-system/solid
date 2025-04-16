@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.13.9
+
+### Patch Changes
+
+- Fix `sd-badge` default story. _[`#2144`](https://github.com/solid-design-system/solid/pull/2144) [`ee96458`](https://github.com/solid-design-system/solid/commit/ee96458e7a9a2f6101e5e455d2d37d29b6122135) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.13.8
 
 ### Patch Changes
