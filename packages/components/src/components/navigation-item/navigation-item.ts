@@ -1,3 +1,5 @@
+import '../divider/divider';
+import '../icon/icon';
 import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
@@ -14,6 +16,7 @@ import SolidElement from '../../internal/solid-element';
  * @since 1.15.0
  *
  * @dependency sd-divider
+ * @dependency sd-icon
  *
  * @event sd-show - Emitted when the navigation item has has children, no href, and is clicked while HTML details are hidden.
  * @event sd-hide - Emitted when the navigation item has has children, no href, and is clicked while HTML details are shown.

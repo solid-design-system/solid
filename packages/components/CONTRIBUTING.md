@@ -22,6 +22,16 @@ We ensure consistency and try to minimize bundle size by following these rules:
 - Utilize IDs or part selectors for any custom CSS needs.
 - Use `@apply` inside `css` tagged template literals to generate CSS, but do not use arbitrary values like `mt-[var(--spacing-xxl)]` there (!), as this increases the bundle size of the main TailwindCSS file. Add those custom values as plain CSS outside the `@apply` directive
 
+### Importing other components
+
+When you use a component inside another component, you need to import it in the component file to ensure stability with Cherry Picking. E. g. if you use the `sd-icon` component inside your component, you need to import it like this:
+
+```ts
+import '../icon/icon';
+```
+
+Remember to add `@dependency sd-icon` to your JSDoc comment so that the component is included in the documentation (see [Documentation](#documentation)).
+
 ### Reflecting properties
 
 Properties should always be reflected, the exceptions are rich data properties (eg. Array, Object...) or properties that require to be frequently updated (eg. currentDuration in a video).
