@@ -922,7 +922,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           this.open && 'z-50'
         )}
       >
-        <span class="sr-only" role="alert" aria-live="assertive">${this.deletedTagLabel}</span>
+        <span class="sr-only" aria-live="polite">${this.deletedTagLabel}</span>
+
         ${hasLabel || hasTooltip
           ? html`<div class="flex items-center gap-1 mb-2">
               <label
