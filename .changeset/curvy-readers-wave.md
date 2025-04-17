@@ -2,6 +2,7 @@
 '@solid-design-system/docs': patch
 ---
 
-Added preloaded `sd-toast-stacks` to improve consistency within screen readers.
+Improved `sd-notification` a11y:
 
-Added documentation on `sd-notification` about the importance of adding preloaded `sd-toast-stacks`.
+- Added preloaded `sd-toast-stacks` to improve consistency within screen readers.
+- Added documentation about the importance of adding preloaded `sd-toast-stacks`.
