@@ -18,7 +18,8 @@ import SdAccordion from '../accordion/accordion';
  *
  * @csspart icon - The container that wraps the icon.
  *
- * @dependency sd-icon sd-accordion
+ * @dependency sd-icon
+ * @dependency sd-accordion
  */
 @customElement('sd-quickfact')
 export default class SdQuickfact extends SdAccordion {

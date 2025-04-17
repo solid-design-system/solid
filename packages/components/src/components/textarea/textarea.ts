@@ -1,3 +1,4 @@
+import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { defaultValue } from '../../internal/default-value.js';
@@ -19,6 +20,8 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @slot label - The textarea's label. Alternatively, you can use the `label` attribute.
  * @slot help-text - Text that describes how to use the input. Alternatively, you can use the `help-text` attribute.
  * @slot tooltip - An optional tooltip that helps describe the input. Use this slot with the `sd-tooltip` component.
+ *
+ * @dependency sd-icon
  *
  * @event sd-blur - Emitted when the control loses focus.
  * @event sd-change - Emitted when an alteration to the control's value is committed by the user.

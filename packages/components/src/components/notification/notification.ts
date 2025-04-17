@@ -1,3 +1,5 @@
+import '../button/button';
+import '../icon/icon';
 import { animateTo, stopAnimations } from '../../internal/animate.js';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element.js';
@@ -25,6 +27,7 @@ const toastStackBottomCenter = Object.assign(document.createElement('div'), {
  * @since 1.22.0
  *
  * @dependency sd-button
+ * @dependency sd-icon
  *
  * @slot - The sd-notification's main content.
  * @slot icon - An icon to show in the sd-notification. Works best with `<sd-icon>`.

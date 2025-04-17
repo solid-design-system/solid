@@ -74,14 +74,17 @@ export interface Translation extends DefaultTranslation {
   $name: string; // e.g. English, Español
   $dir: 'ltr' | 'rtl';
 
-  autoplay: string;
   audioPlayer: string;
+  autoplay: string;
   carousel: string;
+  carouselContainer: (count: number) => string;
   clearEntry: string;
   close: string;
+  collapseNavigationItem: string;
   comboboxDefaultPlaceholder: string;
   copy: string;
   currentValue: string;
+  expandNavigationItem: string;
   goToSlide: (slide: number, count: number) => string;
   hidePassword: string;
   loading: string;
@@ -101,6 +104,7 @@ export interface Translation extends DefaultTranslation {
   remove: string;
   removed: (name: string) => string;
   resize: string;
+  scrolled: string;
   scrollToEnd: string;
   scrollToStart: string;
   search: string;

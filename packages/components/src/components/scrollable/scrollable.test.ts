@@ -164,26 +164,42 @@ describe('<sd-scrollable>', () => {
 
     expect(endButton).to.exist;
 
-    // initial scroll position
-    let expectedScrollTop = scrollContainer.scrollTop;
+    const initialScrollTop = scrollContainer.scrollTop;
 
     endButton.click();
-    expectedScrollTop += step;
-    scrollContainer.scrollTop = expectedScrollTop;
     await el.updateComplete;
+    await new Promise(resolve => setTimeout(resolve, 500));
 
-    expect(scrollContainer.scrollTop).to.equal(expectedScrollTop);
+    expect(scrollContainer.scrollTop).to.equal(initialScrollTop + step);
 
-    // scrolls another 120px
     endButton.click();
-    expectedScrollTop += step;
-    scrollContainer.scrollTop = expectedScrollTop;
     await el.updateComplete;
+    await new Promise(resolve => setTimeout(resolve, 500));
 
-    expect(scrollContainer.scrollTop).to.equal(expectedScrollTop);
+    expect(scrollContainer.scrollTop).to.equal(initialScrollTop + step * 2);
   });
 
   it('should focus on the start button when end of scroll container is reached', async () => {
+    const el = await fixture<SdScrollable>(html`
+      <sd-scrollable style="height: 183px; width: 277px;" buttons orientation="vertical" step="1000">
+        <div style="width: 400px; height: 800px;">
+          <p>This is a long scrollable content.</p>
+          <p>It contains multiple paragraphs and lines.</p>
+          <p>The content is intentionally long to trigger scrolling.</p>
+        </div>
+      </sd-scrollable>
+    `);
+
+    const endButton: HTMLButtonElement = el.shadowRoot!.querySelector('[part="button-end"]')!;
+    endButton.click();
+    await el.updateComplete;
+    await new Promise(resolve => requestAnimationFrame(resolve));
+
+    const startButton: HTMLButtonElement = el.shadowRoot!.querySelector('[part="button-start"]')!;
+    expect(el.shadowRoot!.activeElement).to.equal(startButton);
+  });
+
+  it('should announce the scrolling action', async () => {
     const el = await fixture<SdScrollable>(html`
       <sd-scrollable style="height: 183px; width: 277px;" buttons orientation="vertical" step="120">
         <div style="width: 400px; height: 800px;">
@@ -194,26 +210,15 @@ describe('<sd-scrollable>', () => {
       </sd-scrollable>
     `);
 
-    const scrollContainer = el.shadowRoot!.querySelector('.scroll-container');
-    expect(scrollContainer).to.exist;
+    const endButton = el.shadowRoot!.querySelector<HTMLButtonElement>('[part="button-end"]');
+    const liveRegion = el.shadowRoot!.querySelector<HTMLButtonElement>('#announcement-container');
 
-    const startEventSpy = sinon.spy();
-    el.addEventListener('start', startEventSpy);
+    expect(endButton).to.exist;
+    expect(liveRegion!.innerText).to.eq('');
 
-    // simulate scroll to the bottom
-    scrollContainer!.scrollTop = scrollContainer!.scrollHeight - scrollContainer!.clientHeight;
-
-    // trigger arrow visibility update
-    el.updateScrollIndicatorVisibility();
-
-    expect(startEventSpy.calledOnce).to.be.true;
+    endButton?.click();
     await el.updateComplete;
 
-    // start button should now exist is the DOM
-    const startButton = el.shadowRoot!.querySelector<HTMLButtonElement>('[part="button-start"]');
-    expect(startButton).to.exist;
-
-    startButton!.focus();
-    expect(el.shadowRoot!.activeElement).to.equal(startButton);
+    expect(liveRegion!.innerText).to.eq('Scrolled');
   });
 });
