@@ -7,6 +7,7 @@ import { filterOnlyOptgroups, getAllOptions, getAssignedElementsForSlot, normali
 import { FormControlController } from '../../internal/form.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry.js';
 import { HasSlotController } from '../../internal/slot.js';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize.js';
 import { property, query, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll.js';
@@ -129,6 +130,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   /** @internal */
   @state() showInvalidStyle = false;
+
+  /** @internal */
+  @state() private deletedTagLabel = '';
 
   /** The name of the combobox, submitted as a name/value pair with form data. */
   @property({ reflect: true }) name = '';
@@ -309,6 +313,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     const renderOption = (option: SdOption) => {
       const queryString = this.displayInput.value;
       const optionHtml = this.getOption(option, queryString);
+      option.tabIndex = 0;
+      option.setAttribute('role', 'option');
+      option.setAttribute('aria-selected', option.selected ? 'true' : 'false');
+
       return html`${typeof optionHtml === 'string' ? unsafeHTML(optionHtml) : optionHtml}`;
     };
 
@@ -568,7 +576,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     if (option && !this.disabled) {
       this.toggleOptionSelection(option, false);
       this.setOrderedSelectedOptions(option);
-      // Emit after updating
+      this.deletedTagLabel = this.localize.term('removed', option.textContent);
+      this.selectedTextLabel = this.deletedTagLabel;
       this.updateComplete.then(() => {
         this.selectionChanged();
         this.emit('sd-input');
@@ -1201,6 +1210,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           <slot name="label">${this.label}</slot>
         </label>
 
+        <span id="announcement-container" aria-live="polite" class="sr-only">${this.deletedTagLabel}</span>
+
         <div part="form-control-input" class="relative w-full bg-white text-black">
           <div
             part="border"
@@ -1406,7 +1417,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
             <div
               id="listbox"
-              role="listbox"
+              role=${ifDefined(!this.multiple ? 'listbox' : undefined)}
               aria-expanded=${this.open}
               aria-multiselectable=${this.multiple}
               aria-labelledby="label"
