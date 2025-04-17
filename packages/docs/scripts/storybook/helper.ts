@@ -640,8 +640,8 @@ export const storybookUtilities = {
       .replace(/<!-- preview-ignore:start -->[\s\S]*?<!-- preview-ignore:end -->/g, '')
       .replace(/\/\/ preview-ignore:start[\s\S]*?\/\/ preview-ignore:end/g, '')
       .replace(/<style>\n<\/style>/g, '')
-      .replace(/<script>\s*component = document\.querySelector\('(.+?)'\);\s*<\/script>/g, '');
-    // return templateInnerHTML;
+      .replace(/<script>\s*component = document\.querySelector\('(.+?)'\);\s*<\/script>/g, '')
+      .replace(/\s*=\s*""/g, '');
     return templateInnerHTML;
   },
 

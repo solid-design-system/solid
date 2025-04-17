@@ -1,3 +1,4 @@
+import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize';
@@ -14,7 +15,7 @@ import type SdTabPanel from '../tab-panel/tab-panel';
  * @status stable
  * @since 2.6.0
  *
-
+ * @dependency sd-tab
  *
  * @slot - Used for grouping tab panels in the tab group. Must be `<sd-tab-panel>` elements.
  * @slot nav - Used for grouping tabs in the tab group. Must be `<sd-tab>` elements.
@@ -115,11 +116,13 @@ export default class SdTabGroup extends SolidElement {
   private getAllTabs(options: { includeDisabled: boolean } = { includeDisabled: true }) {
     const slot = this.shadowRoot!.querySelector<HTMLSlotElement>('slot[name="nav"]')!;
 
-    return [...(slot.assignedElements() as SdTab[])].filter(el => {
-      return options.includeDisabled
-        ? el.tagName.toLowerCase() === 'sd-tab'
-        : el.tagName.toLowerCase() === 'sd-tab' && !el.disabled;
-    });
+    return Array.from(slot.assignedElements())
+      .map(el => (el.tagName.toLocaleLowerCase() === 'sd-tab' ? el : el.querySelector('sd-tab')))
+      .filter((el: SdTab) => {
+        return el && options.includeDisabled
+          ? el.tagName.toLowerCase() === 'sd-tab'
+          : el.tagName.toLowerCase() === 'sd-tab' && !el.disabled;
+      }) as SdTab[];
   }
 
   private getAllPanels() {
@@ -248,7 +251,7 @@ export default class SdTabGroup extends SolidElement {
       ...options
     };
 
-    if (tab !== this.activeTab && !tab.disabled) {
+    if (tab !== this.activeTab && !tab.disabled && !tab.visuallyDisabled) {
       const previousTab = this.activeTab;
       this.activeTab = tab;
 

@@ -1,5 +1,53 @@
 # @solid-design-system/docs
 
+## 1.13.9
+
+### Patch Changes
+
+- Fix `sd-badge` default story. _[`#2144`](https://github.com/solid-design-system/solid/pull/2144) [`ee96458`](https://github.com/solid-design-system/solid/commit/ee96458e7a9a2f6101e5e455d2d37d29b6122135) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.13.8
+
+### Patch Changes
+
+- Implemented `Visually Disabled` story on `sd-tab.` _[`#2126`](https://github.com/solid-design-system/solid/pull/2126) [`41c40fd`](https://github.com/solid-design-system/solid/commit/41c40fdfb3da8b4dbe28a357affe922221f3733d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.13.7
+
+### Patch Changes
+
+- Improve table template a11y. _[`#2137`](https://github.com/solid-design-system/solid/pull/2137) [`3dbb5ca`](https://github.com/solid-design-system/solid/commit/3dbb5cad431425333b484068cfbb12db6969db8b) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.13.6
+
+### Patch Changes
+
+- Added new `sd-scrollable` screenshot test named "Auto Orientation". _[`#2109`](https://github.com/solid-design-system/solid/pull/2109) [`d2a3096`](https://github.com/solid-design-system/solid/commit/d2a3096319ca9f55428d24d8d333daded7227a4e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.13.5
+
+### Patch Changes
+
+- Added missing `sd-input` `aria-label` on forms template. _[`#2119`](https://github.com/solid-design-system/solid/pull/2119) [`59b8c84`](https://github.com/solid-design-system/solid/commit/59b8c840051167c2b55a94d562536934018d9707) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.13.4
+
+### Patch Changes
+
+- Improve `sd-pagination` a11y by moving focus to the other previous/next button when the first/last page is reached. _[`#2107`](https://github.com/solid-design-system/solid/pull/2107) [`4b225e7`](https://github.com/solid-design-system/solid/commit/4b225e71e3382f9eda7a2663cd679bd930ddee52) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.13.3
+
+### Patch Changes
+
+- Improve code examples by removing empty double quotes (`=""`) from boolean attributes. _[`#2102`](https://github.com/solid-design-system/solid/pull/2102) [`993b7dd`](https://github.com/solid-design-system/solid/commit/993b7dd5d5b64d5bc3cd66d1e64068e612933cbd) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.13.2
+
+### Patch Changes
+
+- Refactored `sd-switch` invalid state story to prevent focus from being set in the element on page load. _[`#2104`](https://github.com/solid-design-system/solid/pull/2104) [`ad14e89`](https://github.com/solid-design-system/solid/commit/ad14e8927d7cae80152e88b65b4a958dc1a000dc) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.13.1
 
 ### Patch Changes

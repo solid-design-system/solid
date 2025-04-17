@@ -1,5 +1,11 @@
 # @solid-design-system/styles
 
+## 1.3.2
+
+### Patch Changes
+
+- Make `sd-list` accessible and make it behave closer to design _[`#2114`](https://github.com/solid-design-system/solid/pull/2114) [`8c51bc0`](https://github.com/solid-design-system/solid/commit/8c51bc031f403f6b73692c3ea1bc949c5bcf5b3a) [@mariohamann](https://github.com/mariohamann)_
+
 ## 1.3.1
 
 ### Patch Changes

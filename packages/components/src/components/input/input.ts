@@ -622,7 +622,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               step=${ifDefined(this.step as number)}
               .value=${live(this.value)}
               autocapitalize=${ifDefined(this.type === 'password' ? 'off' : this.autocapitalize)}
-              autocomplete=${ifDefined(this.type === 'password' ? 'off' : this.autocomplete)}
+              autocomplete=${
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                ifDefined(this.autocomplete as any)
+              }
               autocorrect=${ifDefined(this.type === 'password' ? 'off' : this.autocorrect)}
               ?autofocus=${this.autofocus}
               spellcheck=${this.spellcheck}

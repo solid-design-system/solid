@@ -1,5 +1,58 @@
 # @solid-design-system/components
 
+## 4.6.9
+
+### Patch Changes
+
+- Improved `sd-audio` `aria-label` by including current speed value on playback speed button. _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+- Adjusted type of `containingElement` property in `sd-dropdown` _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+- Component dependencies are not correctly imported (e.g. `sd-icon` inside `sd-button`) _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+- Make `sd-input` compatible to autofill with passwords _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+- Improved `sd-drawer` and `sd-dialog` focus management by ensuring trigger elements inside shadow DOMs are correctly re-focused when element closes. _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+
+## 4.6.8
+
+### Patch Changes
+
+- Implemented `visually-disabled` attribute on `sd-tab`. _[`#2126`](https://github.com/solid-design-system/solid/pull/2126) [`41c40fd`](https://github.com/solid-design-system/solid/commit/41c40fdfb3da8b4dbe28a357affe922221f3733d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.6.7
+
+### Patch Changes
+
+- Improved `sd-scrollable` screen reader announcements when the scroll button is pressed. _[`#2109`](https://github.com/solid-design-system/solid/pull/2109) [`d2a3096`](https://github.com/solid-design-system/solid/commit/d2a3096319ca9f55428d24d8d333daded7227a4e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Fixed focus issue on `sd-scrollable` when both axis buttons are enabled and a scrolling limit is reached.
+
+### 📈 Stats
+
+- Uncompressed: 419 KB (+2 KB / +0%)
+- Gzipped: 98 KB (+1 KB / +1%)
+
+## 4.6.6
+
+### Patch Changes
+
+- Fix `sd-carousel` a11y issues when set to autoplay. _[`#2117`](https://github.com/solid-design-system/solid/pull/2117) [`079cc6b`](https://github.com/solid-design-system/solid/commit/079cc6bda59dcafa6b7bdf65660d2192d6f2b373) [@smfonseca](https://github.com/smfonseca)_
+
+  - Switch from `role="status"` to `aria-live` for more granular control.
+  - Update `aria-live` when element is focused.
+  - Add localized `aria-label` to `scroll-container`.
+
+## 4.6.5
+
+### Patch Changes
+
+- Added new translation keys named `expandNavigationItem` and `collapseNavigationItem`. _[`#2099`](https://github.com/solid-design-system/solid/pull/2099) [`f032ebb`](https://github.com/solid-design-system/solid/commit/f032ebb454c2aed3b24cc0beb64299ff4cc36a3a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Improved `sd-navigation-item` toggle details button title.
+
+## 4.6.4
+
+### Patch Changes
+
+- Fix `sd-step` label alignment when `not-interactive` attribute is set and browsers minimum font size is defined. _[`#2103`](https://github.com/solid-design-system/solid/pull/2103) [`18442d9`](https://github.com/solid-design-system/solid/commit/18442d9f3bb775ada64c30c9e206b345b2de0a10) [@smfonseca](https://github.com/smfonseca)_
+
 ## 4.6.3
 
 ### Patch Changes
