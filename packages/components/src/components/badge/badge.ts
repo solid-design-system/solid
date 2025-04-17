@@ -29,7 +29,6 @@ export default class SdBadge extends SolidElement {
   render() {
     return html`
       <span
-        role="status"
         part="base"
         aria-labelledby="content"
         class=${cx(
