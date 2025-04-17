@@ -65,7 +65,8 @@ Used as a flexible container that groups related items and links them to further
 ### Accessibility Information
 
 - Adopt a consistent, semantically correct heading hierarchy to enable quick scanning across multiple teasers on a page. Teaser headings should be the first item in the teaser's DOM structure, introducing a new thematic region and separating the following content from the previous region.
-- Include descriptive alt text for the media slot only if the image adds relevant new information in the context of the teaser. The image description must not repeat the teaser title. If the image is purely decorative, use empty alt text to ensure it’s ignored by assistive technologies.
+- Include descriptive alt text for the media slot only if the image adds relevant new information in the context of the teaser. The image description must not repeat the teaser title.
+- For purely decorative images, ALT-tags should be left empty so that screen readers can bypass them and concentrate on conveying meaningful content.
 - Avoid placing essential information or actions in expandable teaser areas since they are visible on mouse hover.
 - Verify that each link is announced in a way that conveys its unique destination or function to screen readers.
 - Ensure that the background images you choose for each teaser variant provide enough contrast with the text to maintain readability.
