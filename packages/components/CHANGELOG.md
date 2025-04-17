@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.6.10
+
+### Patch Changes
+
+- Improved `sd-drawer` aria labels and focus outline. _[`#2143`](https://github.com/solid-design-system/solid/pull/2143) [`79644ba`](https://github.com/solid-design-system/solid/commit/79644baba6ecba34ac91abd088c814990b6c1b05) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 4.6.9
 
 ### Patch Changes
