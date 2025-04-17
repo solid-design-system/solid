@@ -93,6 +93,7 @@ export interface Translation extends DefaultTranslation {
   noResults: string;
   notifications: string;
   numOptionsSelected: (num: number) => string;
+  open: string;
   openTranscript: string;
   optionGroup: string;
   pauseAudio: string;
