@@ -1,3 +1,4 @@
+import '../icon/icon';
 import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { html, literal } from 'lit/static-html.js';
@@ -12,6 +13,8 @@ import SolidElement from '../../internal/solid-element';
  * @documentation https://solid.union-investment.com/[storybook-link]/tag
  * @status stable
  * @since 1.10
+ *
+ * @dependency sd-icon
  *
  * @slot - The tag's content.
  * @slot removable-indicator - The tag's removability indicator.

@@ -1,5 +1,33 @@
 # @solid-design-system/components
 
+## 4.6.11
+
+### Patch Changes
+
+- Improved `sd-dialog` `aria-label` and `aria-labelledby` attributes to ensure only one is set at a time. _[`#2140`](https://github.com/solid-design-system/solid/pull/2140) [`034046c`](https://github.com/solid-design-system/solid/commit/034046c54cc0455dc159a2c00a683138e34874f7) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.6.10
+
+### Patch Changes
+
+- Improved `sd-drawer` aria labels and focus outline. _[`#2143`](https://github.com/solid-design-system/solid/pull/2143) [`79644ba`](https://github.com/solid-design-system/solid/commit/79644baba6ecba34ac91abd088c814990b6c1b05) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.6.9
+
+### Patch Changes
+
+- Improved `sd-audio` `aria-label` by including current speed value on playback speed button. _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+- Adjusted type of `containingElement` property in `sd-dropdown` _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+- Component dependencies are not correctly imported (e.g. `sd-icon` inside `sd-button`) _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+- Make `sd-input` compatible to autofill with passwords _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+- Improved `sd-drawer` and `sd-dialog` focus management by ensuring trigger elements inside shadow DOMs are correctly re-focused when element closes. _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+
+## 4.6.8
+
+### Patch Changes
+
+- Implemented `visually-disabled` attribute on `sd-tab`. _[`#2126`](https://github.com/solid-design-system/solid/pull/2126) [`41c40fd`](https://github.com/solid-design-system/solid/commit/41c40fdfb3da8b4dbe28a357affe922221f3733d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 4.6.7
 
 ### Patch Changes
@@ -9,8 +37,9 @@
   Fixed focus issue on `sd-scrollable` when both axis buttons are enabled and a scrolling limit is reached.
 
 ### 📈 Stats
-* Uncompressed: 419 KB (+2 KB / +0%)
-* Gzipped: 98 KB (+1 KB / +1%)
+
+- Uncompressed: 419 KB (+2 KB / +0%)
+- Gzipped: 98 KB (+1 KB / +1%)
 
 ## 4.6.6
 

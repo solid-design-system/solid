@@ -59,30 +59,34 @@ export const Variant = {
       <sd-tab-group>
         <sd-tab slot="nav" panel="tab-1" variant="default">Default 1</sd-tab>
         <sd-tab-panel name="tab-1">
-          <div>Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+          <div>
+            Tab panel 1 - Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.
+          </div>
         </sd-tab-panel>
         <sd-tab slot="nav" panel="tab-2" variant="default">Default 2</sd-tab>
         <sd-tab-panel name="tab-2">
-          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+          <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </sd-tab-panel>
         <sd-tab slot="nav" panel="tab-3" variant="default">Default 3</sd-tab>
         <sd-tab-panel name="tab-3">
-          <div>Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+          <div>Tab panel 3 - Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
         </sd-tab-panel>
       </sd-tab-group>
 
       <sd-tab-group>
         <sd-tab slot="nav" panel="tab-1" variant="container">Container 1</sd-tab>
         <sd-tab-panel name="tab-1">
-          <div>Provident inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+          <div>
+            Tab panel 1 - Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.
+          </div>
         </sd-tab-panel>
         <sd-tab slot="nav" panel="tab-2" variant="container">Container 2</sd-tab>
         <sd-tab-panel name="tab-2">
-          <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+          <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </sd-tab-panel>
         <sd-tab slot="nav" panel="tab-3" variant="container">Container 3</sd-tab>
         <sd-tab-panel name="tab-3">
-          <div>Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+          <div>Tab panel 3 - Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
         </sd-tab-panel>
       </sd-tab-group>
     </div>
@@ -97,20 +101,38 @@ export const Variant = {
 
 export const Active = {
   render: () => html`
-    <sd-tab-group activation="auto" id="active">
-      <sd-tab slot="nav" panel="tab-1" variant="default">Tab 1</sd-tab>
-      <sd-tab-panel name="tab-1">
-        Tab panel 1 - Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.
-      </sd-tab-panel>
-      <sd-tab slot="nav" panel="tab-2" variant="default">Tab 2</sd-tab>
-      <sd-tab-panel name="tab-2"> Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. </sd-tab-panel>
-      <sd-tab slot="nav" panel="tab-3" variant="default">Tab 3</sd-tab>
-      <sd-tab-panel name="tab-3">
-        Tab panel 3 - Inventore perspiciatis delectus nisi doloremque soluta inventore.
-      </sd-tab-panel>
-    </sd-tab-group>
+    <div class="grid grid-cols-2 gap-12">
+      <sd-tab-group activation="auto" id="active">
+        <sd-tab slot="nav" panel="tab-1" variant="default">Tab 1</sd-tab>
+        <sd-tab-panel name="tab-1">
+          Tab panel 1 - Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.
+        </sd-tab-panel>
+        <sd-tab slot="nav" panel="tab-2" variant="default">Tab 2</sd-tab>
+        <sd-tab-panel name="tab-2">
+          Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </sd-tab-panel>
+        <sd-tab slot="nav" panel="tab-3" variant="default">Tab 3</sd-tab>
+        <sd-tab-panel name="tab-3">
+          Tab panel 3 - Inventore perspiciatis delectus nisi doloremque soluta inventore.
+        </sd-tab-panel>
+      </sd-tab-group>
+      <sd-tab-group activation="auto" id="active-container">
+        <sd-tab slot="nav" panel="tab-1" variant="container">Tab 1</sd-tab>
+        <sd-tab-panel name="tab-1">
+          Tab panel 1 - Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.
+        </sd-tab-panel>
+        <sd-tab slot="nav" panel="tab-2" variant="container">Tab 2</sd-tab>
+        <sd-tab-panel name="tab-2">
+          Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </sd-tab-panel>
+        <sd-tab slot="nav" panel="tab-3" variant="container">Tab 3</sd-tab>
+        <sd-tab-panel name="tab-3">
+          Tab panel 3 - Inventore perspiciatis delectus nisi doloremque soluta inventore.
+        </sd-tab-panel>
+      </sd-tab-group>
+    </div>
     <script>
-      const tabGroup = document.querySelector('sd-tab-group#active');
+      const tabGroups = document.querySelectorAll('sd-tab-group#active, sd-tab-group#active-container');
       // Wait for controls to be defined before attaching form listeners
       Promise.all([
         customElements.whenDefined('sd-tab-group'),
@@ -119,7 +141,7 @@ export const Active = {
       ]).then(() => {
         setTimeout(() => {
           // To make this more robust and reduce race conditions use setTimeout
-          tabGroup.show('tab-2');
+          tabGroups.forEach(tab => tab.show('tab-2'));
         }, 1);
       });
     </script>
@@ -149,6 +171,36 @@ export const Disabled = {
       </sd-tab-panel>
     </sd-tab-group>
   `
+};
+
+/**
+ * Use the `visually-disabled` attribute to style the component as if it was disabled and enable `aria-disabled` to allow it to be reachable by screen readers.
+ *
+ * __Hint:__ When using this attribute, make sure to provide ways to inform the user why the element is disabled and how to enable it. This can be done by wrapping the element in a sd-tooltip.
+ */
+export const VisuallyDisabled = {
+  render: () => {
+    return html`
+      <sd-tab-group>
+        <sd-tab slot="nav" panel="tab-1" variant="default">Label</sd-tab>
+        <sd-tab-panel name="tab-1">
+          <div>
+            Tab panel 1 - Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.
+          </div>
+        </sd-tab-panel>
+        <sd-tooltip slot="nav" content="Visually Disabled" trigger="hover focus" size="sm" placement="top" hoist>
+          <sd-tab panel="tab-2" variant="default" visually-disabled>Visually Disabled</sd-tab>
+        </sd-tooltip>
+        <sd-tab-panel name="tab-2">
+          <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+        </sd-tab-panel>
+        <sd-tab slot="nav" panel="tab-3" variant="default">Label</sd-tab>
+        <sd-tab-panel name="tab-3">
+          <div>Tab panel 3 - Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
+        </sd-tab-panel>
+      </sd-tab-group>
+    `;
+  }
 };
 
 /**
