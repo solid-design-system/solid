@@ -28,14 +28,14 @@ export default {
       value: `<p class="sd-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus dui vel id. Velit in sed.</p>`
     },
     {
-      type: 'slot',
+      type: 'attribute',
       name: 'headline',
-      value: `<span slot="headline" class="sd-headline sd-headline--size-3xl leading-tight">Lorem Ipsum</span>`
+      value: `Lorem Ipsum`
     },
     {
       type: 'slot',
       name: 'footer',
-      value: `<sd-button slot="footer" class="w-full">Label</sd-button>`
+      value: `<sd-button slot="footer" class="w-full">Button</sd-button>`
     }
   ]),
   argTypes,
@@ -53,33 +53,6 @@ export const Default = {
     return html` <div style="height: 40vh;">
       ${generateTemplate({
         args
-      })}
-    </div>`;
-  }
-};
-
-/**
- *  The dialog's headline as displayed in the header. If you need to display HTML, use the `headline` slot instead.
- */
-
-export const Headline = {
-  name: 'Headline',
-  render: (args: any) => {
-    return html` <div style="height: 40vh;">
-      ${generateTemplate({
-        args,
-        constants: [
-          {
-            type: 'slot',
-            name: 'headline',
-            value: ''
-          },
-          {
-            type: 'attribute',
-            name: 'headline',
-            value: 'This headline is set via the headline attribute'
-          }
-        ]
       })}
     </div>`;
   }
@@ -177,8 +150,8 @@ export const ExtendedFooter = {
             phasellus dui vel id. Velit in sed.
           </p>
           <span slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</span>
-          <sd-button variant="secondary" slot="footer" class="w-full">Label</sd-button>
-          <sd-button slot="footer" class="w-full">Label</sd-button>
+          <sd-button variant="secondary" slot="footer" class="w-full">Button</sd-button>
+          <sd-button slot="footer" class="w-full">Button</sd-button>
         </sd-dialog>
       </div>
     `;
@@ -194,14 +167,14 @@ export const SmallHeadline = {
   render: () => {
     return html`
       <div style="height: 40vh;">
-        <sd-dialog open="" id="small-headline"
-          ><p class="sd-paragraph">
+        <sd-dialog open="" id="small-headline">
+          <p class="sd-paragraph">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
             phasellus dui vel id. Velit in sed.
           </p>
           <span slot="headline" class="font-bold">Lorem Ipsum</span>
-          <sd-button slot="footer" class="w-full">Label</sd-button></sd-dialog
-        >
+          <sd-button slot="footer" class="w-full">Button</sd-button>
+        </sd-dialog>
       </div>
     `;
   }
