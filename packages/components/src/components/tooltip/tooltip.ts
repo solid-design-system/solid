@@ -115,10 +115,7 @@ export default class SdTooltip extends SolidElement {
 
   firstUpdated() {
     this.body.hidden = !this.open;
-
-    if (this.hasCustomTrigger) {
-      this.formatDefaultSlot(this.defaultSlot);
-    }
+    this.formatDefaultSlot(this.defaultSlot);
 
     // If the tooltip is visible on init, update its position
     if (this.open) {
@@ -140,11 +137,14 @@ export default class SdTooltip extends SolidElement {
   }
 
   private get hasCustomTrigger() {
-    return !!this.querySelector('*');
+    return !!this.querySelector('*:not([slot])');
   }
 
   // removes empty text nodes from the default slot
-  private formatDefaultSlot(slot: HTMLSlotElement) {
+  private formatDefaultSlot(slot: HTMLSlotElement | null) {
+    if (!slot) {
+      return;
+    }
     const nodes = slot.assignedNodes({ flatten: true });
     nodes.forEach(node => {
       if (node.nodeType === Node.TEXT_NODE && !node?.textContent?.trim()) {
@@ -276,7 +276,7 @@ export default class SdTooltip extends SolidElement {
 
     this.open = false;
 
-    if (this.trigger === 'click') {
+    if (this.trigger === 'click' || this.trigger === 'click focus') {
       this.focus();
     } else {
       this.blur();
