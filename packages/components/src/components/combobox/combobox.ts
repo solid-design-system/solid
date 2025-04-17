@@ -203,6 +203,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   @property({ type: Boolean, reflect: true }) required = false;
 
   /**
+   * The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults
+   * to `text`.
+   */
+  @property({ type: String, reflect: true }) type: 'search' | 'text' = 'text';
+
+  /**
    * The actual current placement of the select's menu sourced from `sd-popup`.
    * @internal
    */
@@ -396,9 +402,18 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   };
 
   private handleDocumentKeyDown = (event: KeyboardEvent) => {
+    const path = event.composedPath();
+    const isComboboxButton = path.some(
+      el => el instanceof HTMLButtonElement && el.classList.contains('combobox-button')
+    );
+
     if (this.visuallyDisabled) {
       event.preventDefault();
       event.stopPropagation();
+      return;
+    }
+
+    if (isComboboxButton) {
       return;
     }
 
@@ -1356,14 +1371,37 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                   iconSize
                 )}
               >
-                <sd-icon
-                  class=${cx('transition-all', this.open ? 'rotate-180' : 'rotate-0')}
-                  name="chevron-down"
-                  part="chevron"
-                  library="system"
-                  color="currentColor"
-                ></sd-icon>
+                ${this.type !== 'search'
+                  ? html`<sd-icon
+                      class=${cx('transition-all', this.open ? 'rotate-180' : 'rotate-0')}
+                      name="chevron-down"
+                      part="chevron"
+                      library="system"
+                      color="currentColor"
+                      label="Open listbox"
+                    ></sd-icon>`
+                  : ''}
               </slot>
+              ${this.type === 'search'
+                ? html`
+                    <button class=${cx('flex items-center sd-interactive', iconMarginLeft)} type="button">
+                      <sd-icon
+                        class=${cx(iconColor, iconSize)}
+                        library="system"
+                        name="magnifying-glass"
+                        label=${this.localize.term('search')}
+                      ></sd-icon>
+                    </button>
+                  `
+                : html`
+                    <button
+                      class="sd-interactive combobox-button absolute top-2"
+                      @keydown=${this.handleComboboxMouseDown}
+                      type="button"
+                    >
+                      <span class="sr-only">${this.localize.term('open')}</span>
+                    </button>
+                  `}
             </div>
 
             <div
@@ -1426,6 +1464,18 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       :host([visually-disabled]) ::placeholder,
       :host([disabled]) ::placeholder {
         @apply text-neutral-500;
+      }
+
+      :host([size='sm']) .combobox-button {
+        @apply h-4 w-4 right-4;
+      }
+
+      :host([size='md']) .combobox-button {
+        @apply h-6 w-6 right-[.85rem];
+      }
+
+      :host([size='lg']) .combobox-button {
+        @apply h-8 w-8 right-3;
       }
 
       [part='listbox'] {
