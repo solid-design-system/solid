@@ -1,0 +1,67 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdDrawerStories from './drawer.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/components-sd-drawer--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=6646-28792&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2223-8225&t=pFHk5gNX1Hj4l15o-4'
+};
+
+export const content = `
+# Drawer
+
+Used as a panel that slides out from the side of the screen which contains a set of information or actions.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Templates
+
+[Drawer](/?path=/docs/templates-drawer--docs)
+
+### Common Use Cases
+
+- Display supplementary information or options without navigating away from the main screen.
+- Provide contextual help or guidance related to the current screen.
+- House navigation menus on smaller devices.
+- Present filter options, forms or settings that users can interact with without losing their place.
+
+### Usage Guidelines
+
+#### Slots
+
+- Use the ”header” slot to add navigation and/or action elements if desired.
+- Use the ”default” slot to add main content. The “default” slot is always scrollable. For simplicity, sd-scrollable is integrated into the component as a wrapper for the slot in Figma, but will need to be used in code if desired.
+- Use the ”footer” slot to add action elements if desired. The “footer” slot is always fixed.
+
+#### Content
+
+- Ensure the content is supplementary and does not include critical information that users must see immediately such as notifications or alerts; instead, use [sd-notification](/?path=/docs/components-sd-notification--docs) or [sd-dialog](/?path=/docs/components-sd-dialog--docs) for those purposes.
+- Check that the drawer content is fully visible and readable, even at larger font sizes.
+
+#### Interaction and Behavior
+
+- Maintain the state of the content when it is reopened.
+- Avoid opening automatically without user interaction.
+- Provide multiple ways to close the interface for easy dismissal, such as a close button or clicking outside of it.
+
+#### Layout
+
+- Ensure it does not cover critical content or actions on the main screen.
+- If using a tertiary action in the header, adjust the left padding to 0px for proper alignment.
+
+### Accessibility Information
+
+- Always provide a label for the drawer so that screenreaders correctly announce the component.
+- Make sure that the close button is always visible to ensure users are able to close the drawer.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-drawer/Overview" />
+
+<OverviewFormatter story={SdDrawerStories.Default}>{content}</OverviewFormatter>

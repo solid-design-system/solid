@@ -1,0 +1,67 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdComboboxStories from './combobox.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/components-sd-combobox--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=29958-17566&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs': 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=8945-6964&p=f&m'
+};
+
+export const content = `
+# Combobox
+
+Used to select one or multiple options from a list of options or to enter a search string and choose from a list of suggestions.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Components
+
+- [sd-option](/?path=/docs/components-sd-option--docs)
+- [sd-optgroup](/?path=/docs/components-sd-optgroup--docs)
+
+#### Related Templates
+
+[Combobox](/?path=/docs/templates-combobox--docs)
+
+### Common Use Cases
+
+- Allow users to select one or more options from a potentially large list by typing a search string and filtering suggestions.
+- Provide an autocomplete feature in forms where specific or complex entries benefit from quick lookup.
+- Implement in search fields or filter panels when users may not recall the exact option name but can approximate it.
+
+### Usage Guidelines
+
+#### Content and Labels
+
+- Keep option labels concise so that suggestions are easy to scan and select.
+- Provide a clear, descriptive placeholder (e.g., “Search or select an option…”) to help users understand they can type and choose from suggestions.
+- Avoid repeating the same initial word in multiple suggestions to reduce scanning difficulty.
+
+#### Searching Behavior
+
+- Filter available options in real time as the user types; highlight or bold matching text to indicate relevance.
+- Show a message (e.g., “No matches found”) when no options align with the user’s input.
+- Consider limiting the maximum number of displayed suggestions to avoid overwhelming users.
+
+#### Background
+
+- Use light backgrounds such as white, neutral-100, or primary-100 for clarity and consistency across different layouts.
+- Keep focus styles clearly visible when the user navigates through suggestions with a keyboard or screen reader.
+
+### Accessibility Information
+
+- To ensure screenreader compatibility, consider including a statement such as "Fields marked with an asterisk (\*) are required" at the start of the form.
+- A visible label may be omitted for search input fields within a combobox if an associated button—complete with a clear search icon and an appropriate accessible name (e.g., aria-label="Search")—is provided.
+- Be aware that group labels will be neglected by most assistive devices.
+- Use the "visually disabled" attribute to keep disabled elements focusable, hoverable, and able to show tooltips, as they’re otherwise removed from the tab order and inaccessible to screen readers.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-combobox/Overview" />
+
+<OverviewFormatter story={SdComboboxStories.Default}>{content}</OverviewFormatter>

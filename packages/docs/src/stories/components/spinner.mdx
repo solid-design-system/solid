@@ -1,0 +1,63 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdSpinnerStories from './spinner.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/components-sd-spinner--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=1663-16371&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2115-17681&t=pFHk5gNX1Hj4l15o-4'
+};
+
+export const content = `
+# Spinner
+
+Used as a visual indicator with a looping animation that shows loading is in process.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+### Common Use Cases
+
+- Indicate that content is being loaded, such as when fetching data from a server or loading a new page.
+- Show ongoing background processes, like file uploads or data processing tasks.
+- Used within buttons or interactive elements to indicate that an action is being processed.
+- Apply to sections of a page that are loading independently, such as widgets or panels.
+- Display when a form is being submitted to show that the submission is in progress.
+
+### Usage Guidelines
+
+#### Content
+
+- Include a label or message to provide context about what is being loaded, especially if the loading time is long.
+
+#### Behavior and Placement
+
+- Use for processes that take a short amount of time (typically under 4 seconds).
+- Apply within specific sections rather than blocking the entire page, unless absolutely necessary.
+- Place in a consistent location relative to the content it is loading.
+
+#### Styling
+
+- Maintain consistency in size and style; avoid using spinners of varying sizes on the same page.
+
+#### Background
+
+- Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
+
+### Accessibility Information
+
+- Assign role="status" or use a live region (e.g., aria-live="polite") to inform screen reader users of ongoing loading.
+- A spinner shouldn’t itself be focusable or interactive, nor prevent from navigating to other parts of the page while loading continues.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+
+<sd-notification variant="warning" open>**Known browser issues:** The 'sd-spinner' component may experience spinner animation issues in Safari, causing them to appear wobbly.</sd-notification>
+`;
+
+<Meta title="Components/sd-spinner/Overview" />
+
+<OverviewFormatter story={SdSpinnerStories.Default}>{content}</OverviewFormatter>

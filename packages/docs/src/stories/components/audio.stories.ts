@@ -7,13 +7,6 @@ import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 const { argTypes, args, parameters } = storybookDefaults('sd-audio');
 const { generateTemplate } = storybookTemplate('sd-audio');
 
-/**
- * Used to play audio files that are part of the page content.
- *
- * **Related templates**:
- * - [Audio](?path=/docs/templates-audio--docs)
- */
-
 export default {
   title: 'Components/sd-audio',
   component: 'sd-audio',

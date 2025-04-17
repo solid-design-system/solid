@@ -1,0 +1,52 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdLeadtextStories from './leadtext.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/styles-sd-leadtext--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=844-13233&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2314-31824&node-type=canvas&t=ExKWUj3vUoucvcVt-0'
+};
+
+export const content = `
+# Leadtext
+
+Used for text that should be highlighted and a focal point of the page.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Templates
+
+[Leadtext with Mark](/?path=/docs/templates-mark--docs)
+
+### Common Use Cases
+
+- Provide a short, high-impact introduction to the topic or a brief summary at the top of a page or at the beggining of a new section.
+- Draw attention to a critical statement or focal message that sets the tone for the content below.
+
+### Usage Guidelines
+
+#### Content and Emphasis
+
+- Keep leadtext brief for maximum visual impact; if it grows lengthy, break it into blocks to remain scannable.
+- Use leadtext to highlight key information or a standout idea, rather than duplicating a heading.
+
+#### Background
+
+- Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
+
+### Accessibility Information
+
+- Confirm that leadtext is visually distinct from regular text to emphasise its introductory purpose without replacing headings.
+- Avoid using leadtext as a structural heading; maintain proper semantic headings for section organization.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Styles/sd-leadtext/Overview" />
+
+<OverviewFormatter story={SdLeadtextStories.Default}>{content}</OverviewFormatter>

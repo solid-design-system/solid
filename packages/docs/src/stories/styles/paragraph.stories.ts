@@ -6,11 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-paragraph');
 const { overrideArgs } = storybookHelpers('sd-paragraph');
 const { generateTemplate } = storybookTemplate('sd-paragraph');
 
-/**
- * Used to display blocks of text.
- * It uses the base font size and can contain bold and/or link styles.
- */
-
 export default {
   tags: ['!dev'],
   title: 'Styles/sd-paragraph',

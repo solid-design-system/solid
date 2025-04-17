@@ -6,13 +6,6 @@ import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook
 const { argTypes, args, parameters } = storybookDefaults('sd-video');
 const { generateTemplate } = storybookTemplate('sd-video');
 
-/**
- * Used to embed and control videos.
- *
- * **Related templates**:
- * - [Video](?path=/docs/templates-video--docs)
- */
-
 export default {
   tags: ['!dev'],
   title: 'Components/sd-video',

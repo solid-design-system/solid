@@ -7,13 +7,6 @@ const { argTypes, parameters } = storybookDefaults('sd-dropdown');
 const { generateTemplate } = storybookTemplate('sd-dropdown');
 const { overrideArgs } = storybookHelpers('sd-dropdown');
 
-/**
- * Used to display a list of actions or options in a panel when activated.
- *
- * **Related templates:**
- * - [Dropdown](?path=/docs/templates-dropdown--docs)
- */
-
 export default {
   title: 'Components/sd-dropdown',
   component: 'sd-dropdown',

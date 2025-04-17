@@ -7,14 +7,6 @@ const { argTypes, parameters } = storybookDefaults('sd-map-marker');
 const { overrideArgs } = storybookHelpers('sd-map-marker');
 const { generateTemplate } = storybookTemplate('sd-map-marker');
 
-/**
- * Used to show a location or a cluster of locations on a map.
- *
- * **Accessibility Hint**: if interactive, make sure to provide an accessible name by adding a descriptive text to the `default` slot and visually hide it if needed.
- *
- * **Related templates:**
- * - [Map Marker](?path=/docs/templates-map-marker--docs)
- */
 export default {
   title: 'Components/sd-map-marker',
   tags: ['!dev'],

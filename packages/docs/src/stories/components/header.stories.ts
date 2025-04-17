@@ -7,17 +7,6 @@ const { argTypes, parameters } = storybookDefaults('sd-header');
 const { generateTemplate } = storybookTemplate('sd-header');
 const { overrideArgs } = storybookHelpers('sd-header');
 
-/**
- * Used as a container for the main navigation of a website.<br />Appears at the top of all pages of a website or application containing logo and main navigation and if applicable sub-brand logo and meta navigation.
- *
- *  **Related components**
- * - [sd-navigation-item](?path=/docs/components-sd-navigation-item--docs)
- *
- *
- *  **Related templates**
- * - [Header](?path=/docs/templates-header--docs)
- */
-
 export default {
   title: 'Components/sd-header',
   component: 'sd-header',

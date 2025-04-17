@@ -6,18 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-table-cell');
 const { overrideArgs } = storybookHelpers('sd-table-cell');
 const { generateTemplate } = storybookTemplate('sd-table-cell');
 
-/**
- * Used to organize and structure content, scanning, comparing, and analyzing the data.
- *
- * It is designed to be used inside the ”sd-table” component.
- *
- * **Related Components**:
- * - [sd-table](?path=/docs/styles-sd-table--docs)
- *
- * **Related Templates**:
- * - [Table](?path=/docs/templates-table--docs)
- */
-
 export default {
   title: 'Styles/sd-table-cell',
   tags: ['!dev'],

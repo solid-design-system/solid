@@ -1,0 +1,65 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdQuickfactStories from './quickfact.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/components-sd-quickfact--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=1664-16059&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2592-3469&t=pFHk5gNX1Hj4l15o-4'
+};
+
+export const content = `
+# Quickfact
+
+Used to present information in an expandable and more dynamic way.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Templates
+
+[Quickfact](/?path=/docs/templates-quickfact--docs)
+
+### Common Use Cases
+
+- Highlight important statistics or facts within a page to draw attention.
+- Summarize complex data into digestible pieces of information.
+- Emphasize critical points or findings alongside articles or reports.
+- Showcase key benefits or features of a product in promotional materials.
+
+### Usage Guidelines
+
+#### Content
+
+- Focus on one key piece of information per quick fact.
+- Ensure each quick fact can be understood independently, even when part of a group.
+- Avoid using in contexts where detailed explanations are required.
+
+#### Behavior
+
+- Use the expandable attribute for supplementary information that isn’t essential for initial understanding.
+- Limit the number of quick facts on a single page to avoid overwhelming users.
+- Include a single quick fact when needed, even though they are typically presented in groups.
+
+#### Icon and Responsiveness
+
+- Make sure the chosen content icon logically illustrates the key fact you want to communicate.
+- Adapt the style according to screen size (e.g., ≤ 414px width for mobile screens) to maintain responsiveness.
+
+#### Background
+
+- Use light background options such as white, neutral-100, or primary-100.
+
+### Accessibility Information
+
+- Ensure that the summaries are short, concise and unique as they’re used as the label for the button.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-quickfact/Overview" />
+
+<OverviewFormatter story={SdQuickfactStories.Default}>{content}</OverviewFormatter>
