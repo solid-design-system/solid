@@ -35,8 +35,8 @@ Used to allow users to input and edit multiple lines of text.
 #### Content and Guidance
 
 - Inform users whenever minimum or maximum lengths are set; use the field's help text for this.
-- Offer additional guidance or instructions below the field as help text.
-- Avoid using placeholder text if possible; if you do use it, don't include essential information required to complete the field correctly; provide hints or examples of expected inputs.
+- Use placeholder text as an addition to label as it should not include essential information required to complete the field correctly.
+- Use help text to provide hints or examples of expected inputs.
 
 #### Behavior and Interaction
 
@@ -51,10 +51,9 @@ Used to allow users to input and edit multiple lines of text.
 
 ### Accessibility Information
 
-- Ensure keyboard users and screen readers can navigate within the multiline text area, especially if it’s scrollable.
-- Support standard text navigation shortcuts (arrows, Home, End) within the field.
-- Avoid disabled text areas. If needed, ensure that they remain in the regular tab order but cannot be activated, allowing screen readers to announce their state and purpose. Use the native disabled attribute or appropriate ARIA attributes (e.g., aria-disabled="true").
-- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+- Use the "visually disabled" attribute to keep disabled elements focusable, hoverable, and able to show tooltips, as they’re otherwise removed from the tab order and inaccessible to screen readers.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
 
 <Meta title="Components/sd-textarea/Overview" />
 

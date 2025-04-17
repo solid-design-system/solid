@@ -74,7 +74,7 @@ Buttons perform various functions (e.g. download, link) or activate other functi
 - Be aware that button’s height may change based on the user’s preferred font size set system-wide.
 - For icon-only: Include an ARIA label describing its function (e.g., “Expand section”) to ensure the button is accessible to screen readers.
 - Prefer keeping the button enabled by default by relying on default values or by validating on submit.
-- If you need to disable a button, use the 'Visually disabled' attribute to keep it in the regular tab order. This allows screen readers to announce its state and purpose. Additionally, consider adding a helpful tooltip.
+- Use the "visually disabled" attribute to keep disabled elements focusable, hoverable, and able to show tooltips, as they’re otherwise removed from the tab order and inaccessible to screen readers.
 
 Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
 

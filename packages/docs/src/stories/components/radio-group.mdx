@@ -55,11 +55,11 @@ Used to group multiple input radio or radio buttons so they function as a single
 
 ### Accessibility Information
 
+- Ensure that the group label is short and concise as it may be read out when users enter the group.
 - Ensure radios are easily tappable on touch devices.
-- A radio group only receives a single tab stop, and its options can be navigated over the arrow keys.
-- Place the error text underneath an invalid radio group, not under the selected element in the group.
-- Avoid disabled radios. If needed, ensure that they remain in the regular tab order but cannot be activated, allowing screen readers to announce their state and purpose. Use the native disabled attribute or appropriate ARIA attributes (e.g., aria-disabled="true").
-- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+- Use the "visually disabled" attribute to keep disabled elements focusable, hoverable, and able to show tooltips, as they’re otherwise removed from the tab order and inaccessible to screen readers.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
 
 <Meta title="Components/sd-radio-group/Overview" />
 

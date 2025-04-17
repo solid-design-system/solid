@@ -71,6 +71,7 @@ export const StylingOptions = {
     <div class="sd-prose sd-prose--full-width flex flex-col gap-8">
       <h1 class="sd-headline">H1 - Nisi eu excepteur anim esse</h1>
       <h2 class="sd-headline sd-headline--size-3xl">H2 - Nisi eu excepteur anim esse</h2>
+      <sd-divider></sd-divider>
       <h3 class="sd-headline sd-headline--size-xl">H3 - Nisi eu excepteur anim esse</h3>
       <h4 class="sd-headline sd-headline--size-lg">H4 - Nisi eu excepteur anim esse</h4>
       <h5 class="sd-headline sd-headline--size-base">H5 - Nisi eu excepteur anim esse</h5>
