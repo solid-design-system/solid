@@ -310,8 +310,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       const queryString = this.displayInput.value;
       const optionHtml = this.getOption(option, queryString);
       option.tabIndex = 0;
-      option.setAttribute('role', 'option');
-      option.setAttribute('aria-selected', option.selected ? 'true' : 'false');
 
       return html`${typeof optionHtml === 'string' ? unsafeHTML(optionHtml) : optionHtml}`;
     };
