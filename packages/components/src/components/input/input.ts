@@ -513,7 +513,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     // Hierarchy of input states:
     const inputState = this.disabled
       ? 'disabled'
-      : this.visuallyDisabled
+      : this.visuallyDisabled && !this.hasFocus
         ? 'visuallyDisabled'
         : this.readonly
           ? 'readonly'
