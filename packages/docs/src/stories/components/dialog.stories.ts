@@ -7,6 +7,13 @@ const { overrideArgs } = storybookHelpers('sd-dialog');
 const { argTypes, parameters } = storybookDefaults('sd-dialog');
 const { generateTemplate } = storybookTemplate('sd-dialog');
 
+/**
+ *
+ * **Known browser issues:**
+ * - When the headline is set by slot instead of attribute, the dialog name is not being announced by VoiceOver in Chrome and Firefox.
+ *
+ */
+
 export default {
   title: 'Components/sd-dialog',
   component: 'sd-dialog',

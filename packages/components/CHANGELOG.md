@@ -1,5 +1,17 @@
 # @solid-design-system/components
 
+## 4.6.11
+
+### Patch Changes
+
+- Improved `sd-dialog` `aria-label` and `aria-labelledby` attributes to ensure only one is set at a time. _[`#2140`](https://github.com/solid-design-system/solid/pull/2140) [`034046c`](https://github.com/solid-design-system/solid/commit/034046c54cc0455dc159a2c00a683138e34874f7) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.6.10
+
+### Patch Changes
+
+- Improved `sd-drawer` aria labels and focus outline. _[`#2143`](https://github.com/solid-design-system/solid/pull/2143) [`79644ba`](https://github.com/solid-design-system/solid/commit/79644baba6ecba34ac91abd088c814990b6c1b05) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 4.6.9
 
 ### Patch Changes
