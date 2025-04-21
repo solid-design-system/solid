@@ -122,7 +122,7 @@ export const Slots = {
                   value:
                     slot === 'default'
                       ? `<div class="slot slot--background slot--border h-auto w-[108px] text-[8px]"></div>`
-                      : `<div slot="removable-indicator" class="slot slot--background slot--border h-auto w-4 text-[8px]"></div>`
+                      : `<div slot="removable-indicator" class="slot slot--background slot--border h-auto w-4 text-[8px]" aria-label="open"></div>`
                 }
               ]
             }

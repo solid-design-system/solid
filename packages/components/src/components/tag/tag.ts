@@ -90,7 +90,7 @@ export default class SdTag extends SolidElement {
 
   render() {
     const isLink = this.isLink();
-    const tag = isLink ? literal`a` : this.removable ? literal`span` : literal`button`;
+    const tag = isLink ? literal`a` : this.removable ? literal`div` : literal`button`;
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
