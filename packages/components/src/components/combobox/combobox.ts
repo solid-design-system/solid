@@ -572,8 +572,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     if (option && !this.disabled) {
       this.toggleOptionSelection(option, false);
       this.setOrderedSelectedOptions(option);
+      this.deletedTagLabel = '';
       this.deletedTagLabel = this.localize.term('removed', option.textContent);
-      this.selectedTextLabel = this.deletedTagLabel;
       this.updateComplete.then(() => {
         this.selectionChanged();
         this.emit('sd-input');
@@ -1206,7 +1206,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           <slot name="label">${this.label}</slot>
         </label>
 
-        <span id="announcement-container" aria-live="polite" class="sr-only">${this.deletedTagLabel}</span>
+        <span aria-live="polite" class="sr-only">${this.deletedTagLabel}</span>
 
         <div part="form-control-input" class="relative w-full bg-white text-black">
           <div
