@@ -98,6 +98,10 @@ Provide brief, unobtrusive messages to users through toast notifications that ov
 - Hotkey Access: Toast notifications will use an already existing container from the DOM with the ids "sd-toast-stack--top-right" and "sd-toast-stack--bottom-center". The "aria-label" prop should be set to set proper names to the containers. In case these containers are not present, the sd-notification will take care of creating it with default label "Notifications". Landmark regions can be navigated using the keyboard by pressing the F6 key to move forward, and the Shift + F6 key to move backward.
 - Don't trap focus
 
+<sd-notification variant="warning" open>
+  **Known screen readers issues:** Due to inconsistency between screen readers when announcing the toast notification we recommend using inline notification
+</sd-notification><br>
+
 Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
 
 <sd-notification variant="warning" open>**Code-Only Warning:** Our accessibility audit in 10/2024 found several problems with the toast() method. These are mostly related to the general concept of toasts, rather than how it is implemented. We will investigate how to improve this in the future. For now, we strongly recommend using inline notifications instead of toasts. For further information, please refer to our [GitHub issue](https://github.com/solid-design-system/solid/issues/1482).</sd-notification>`;
