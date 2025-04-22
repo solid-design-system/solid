@@ -1,5 +1,14 @@
 # @solid-design-system/docs
 
+## 1.14.1
+
+### Patch Changes
+
+- Update `sd-combobox` documentation: _[`#2154`](https://github.com/solid-design-system/solid/pull/2154) [`bb67377`](https://github.com/solid-design-system/solid/commit/bb673772c5ce0216c229c999604024804c8c0d59) [@smfonseca](https://github.com/smfonseca)_
+
+  - Add new `search` story in `sd-combobox`.
+  - Align search icon in combobox `icons` story and correctly format documentation.
+
 ## 1.14.0
 
 ### Minor Changes
