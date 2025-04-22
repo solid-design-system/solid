@@ -75,10 +75,10 @@ Provide brief, unobtrusive messages to users through toast notifications that ov
 
 ### Accessibility Information
 
-- **Screen Reader Support:** By using these ARIA roles appropriately, you can ensure that all users, including those who rely on screen readers, receive important notifications in a timely and accessible manner. Use ARIA role "alert" for notifications needing immediate attention, like error messages or critical updates. Screen readers announce these immediately, interrupting ongoing speech. Use ARIA role "status" for less urgent notifications, like informational messages. Screen readers announce these without interrupting ongoing speech.
-- **Keyboard Navigation:** Notifications should be reachable and dismissible using keyboard shortcuts. For example, use the “Tab” key to navigate to the notification and “Esc” to dismiss it.
-- **Accessible Focus Order:** Ensure that notifications with actionable items have an accessible focus order.
-- **Visibility Duration:** Important notifications should not disappear automatically. Users should have enough time to read and understand the message. Supplementary information for content available on other pages can disappear automatically.
+- Screen Reader Support: By using these ARIA roles appropriately, you can ensure that all users, including those who rely on screen readers, receive important notifications in a timely and accessible manner. Use ARIA role "alert" for notifications needing immediate attention, like error messages or critical updates. Screen readers announce these immediately, interrupting ongoing speech. Use ARIA role "status" for less urgent notifications, like informational messages. Screen readers announce these without interrupting ongoing speech.
+- Keyboard Navigation: Notifications should be reachable and dismissible using keyboard shortcuts. For example, use the “Tab” key to navigate to the notification and “Esc” to dismiss it.
+- Accessible Focus Order: Ensure that notifications with actionable items have an accessible focus order.
+- Visibility Duration: Important notifications should not disappear automatically. Users should have enough time to read and understand the message. Supplementary information for content available on other pages can disappear automatically.
 
 #### Toast Notifications
 
@@ -96,11 +96,13 @@ Provide brief, unobtrusive messages to users through toast notifications that ov
 
 - Toast messages make use of the role="status" attribute. This will trigger certain assistive devices, such as screen readers, to announce the content at a convenient moment after the toast appears.
 - Hotkey Access: Toast notifications will use an already existing container from the DOM with the ids "sd-toast-stack--top-right" and "sd-toast-stack--bottom-center". The "aria-label" prop should be set to set proper names to the containers. In case these containers are not present, the sd-notification will take care of creating it with default label "Notifications". Landmark regions can be navigated using the keyboard by pressing the F6 key to move forward, and the Shift + F6 key to move backward.
-- Don't trap focus
+- Don't trap focus.
 
-Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+<sd-notification variant="warning" open>
+  **Known screen readers issues:** Due to inconsistency between screen readers when announcing the toast notification we recommend using inline notification
+</sd-notification><br>
 
-<sd-notification variant="warning" open>**Code-Only Warning:** Our accessibility audit in 10/2024 found several problems with the toast() method. These are mostly related to the general concept of toasts, rather than how it is implemented. We will investigate how to improve this in the future. For now, we strongly recommend using inline notifications instead of toasts. For further information, please refer to our [GitHub issue](https://github.com/solid-design-system/solid/issues/1482).</sd-notification>`;
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
 
 <Meta title="Components/sd-notification/Overview" />
 
