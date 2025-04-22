@@ -1,0 +1,74 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdBadgeStories from './badge.stories';
+
+export const links = {
+  'storybook-docs': './?path=/docs/components-sd-badge--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=4687-24978&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2116-4927&t=FHAY57BBiERUsSRf-4'
+};
+
+export const content = `
+# Badge
+
+Used to visual indicate a quantity related to a particular element. Often displayed next to an icon or label.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Components
+
+[sd-status-badge](./?path=/docs/styles-sd-status-badge--docs)
+
+#### Related Templates
+
+- [Badge](./?path=/docs/templates-badge--docs)
+- [Tab Group with Badge](./?path=/docs/templates-tab-group--docs#tab%20group%20with%20badge)
+- [Tab Group with Icon and Badge](./?path=/docs/templates-tab-group--docs#tab%20group%20with%20icon%20and%20badge)
+- [Status Badge](./?path=/docs/templates-status-badge--docs)
+
+### Common Use Cases
+
+- Indicate the number of items selected, such as when using a filter.
+- Show the count of newly added items.
+- Display the number of messages received or tasks still pending.
+- Present the quantity of items collected, like those in a shopping cart.
+
+### Usage Guidelines
+
+#### Content
+
+- Use only numbers as content and a “+” for overflow, which is set by the application.
+
+#### Colour Variants
+
+- Consistently apply one of the provided colour choices for a cohesive look.
+- Use default variants for standard notifications to ensure consistency with the overall design.
+- Select blue, green, or red notifications depending on the emphasis you desire. Blue notifications integrate smoothly with the overall design, green notifications attract more attention, and red notifications make notifications stand out the most. Don’t associate colour variants with success or error states.
+
+#### Placement and Formatting
+
+- Place where it preserves relation to the element to which it is assigned, while remaining easy to see.
+- Make sure it doesn’t cover any informative element or text.
+- Refrain from altering the formatting of the number to prevent usability or accessibility issues.
+
+#### Background
+
+- Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
+
+### Accessibility Information
+
+- Avoid using badges for purely decorative purposes.
+- Make sure the badge is appropriately sized and placed so it does not obscure other important content or controls.
+- If the badge conveys critical information, such as the number of items in a cart, ensure that this data is also provided in text elsewhere — such as in the cart details — to guarantee accessibility.
+- If the badge content changes dynamically (e.g., a notification count), use ”aria-live” to announce these changes to screen reader users.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-badge/Overview" />
+
+<OverviewFormatter story={SdBadgeStories.Default}>{content}</OverviewFormatter>

@@ -1,5 +1,19 @@
 # @solid-design-system/docs
 
+## 1.14.0
+
+### Minor Changes
+
+- Introduce overview page for components and styles. _[`#2024`](https://github.com/solid-design-system/solid/pull/2024) [`6fa86c8`](https://github.com/solid-design-system/solid/commit/6fa86c819208ecc26d9ab1394af81e3467aab191) [@smfonseca](https://github.com/smfonseca)_
+
+  These pages include information for:
+
+  - Common use cases
+  - Usage guidelines
+  - Accessibility
+
+  Docs pages are now used only to document technical information, all other information has now been moved to the "overview" page.
+
 ## 1.13.11
 
 ### Patch Changes

@@ -6,16 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-teaser-media');
 const { overrideArgs } = storybookHelpers('sd-teaser-media');
 const { generateTemplate } = storybookTemplate('sd-teaser-media');
 
-/**
- * Used as a flexible container that groups related items and links them to further content.
- *
- * **Related components**:
- * - [sd-teaser](?path=/docs/components-sd-teaser--docs)
- *
- * **Related templates**:
- * - [Teaser Media](?path=/docs/templates-teaser-media--docs)
- * - [Teaser](?path=/docs/templates-teaser--docs)
- */
 export default {
   tags: ['!dev'],
   title: 'Components/sd-teaser-media',

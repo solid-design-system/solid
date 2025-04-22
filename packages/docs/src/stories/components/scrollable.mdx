@@ -1,0 +1,54 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdScrollableStories from './scrollable.stories';
+
+export const links = {
+  'storybook-docs': './?path=/docs/components-sd-scrollable--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=3692-21759&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2269-30131&t=Nvx00INu8bZ8XVxp-4'
+};
+
+export const content = `
+# Scrollable
+
+Used as a container to create scrollable sections within the user interface.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+### Common Use Cases
+
+- Present long lists or detailed information that exceeds the visible area.
+
+### Usage Guidelines
+
+#### Content
+
+- Ensure critical information is not hidden within scrollable areas; users should not have to scroll to find essential content.
+
+#### Behavior
+
+- Use visual cues like shadows or buttons to indicate scrollable content when simply cutting off hidden content isn't enough.
+- Avoid disabling scrollbars, as they provide essential visual cues for users.
+- Limit the use of scrollable containers; excessive scrolling can be frustrating for users.
+- Prefer vertical scrolling over horizontal scrolling, especially on mobile devices.
+
+#### Responsiveness
+
+- Test whether your scrollable containers adapts well to different screen sizes and orientations.
+- Avoid setting fixed heights for scrollable containers if the content size can vary significantly.
+
+### Accessibility Information
+
+- Ensure keyboard users can access and scroll within the container making the container focusable (tabindex="0") and allow arrow keys to navigate through the content.
+- Verify that any interactive elements within the scrollable container receive a proper focus highlight and move into the visible frame.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-scrollable/Overview" />
+
+<OverviewFormatter story={SdScrollableStories.Default}>{content}</OverviewFormatter>
