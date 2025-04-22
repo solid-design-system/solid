@@ -150,7 +150,6 @@ export default class SdTeaser extends SolidElement {
         <div
           part="media"
           id="media"
-          aria-hidden="true"
           style=${this._orientation === 'horizontal' ? `width: var(--distribution-media, 100%);` : ''}
           class=${cx(
             'order-1',
