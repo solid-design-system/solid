@@ -184,6 +184,9 @@ export const DurationIndicator = {
  * - Click on one of the buttons below to see the corresponding toast notification.
  *
  * <h4 class="sd-headline sd-headline--size-lg">Toast placement top right</h4>
+ *
+ * Use the `data-notification-position` attribute with the value `top-right` to align the toast to the top right.
+ *
  */
 export const ToastNotification = {
   name: 'Toast Notification',
@@ -249,6 +252,8 @@ export const ToastNotification = {
 
 /**
  * <h4 class="sd-headline sd-headline--size-lg">Toast placement bottom center</h4>
+ *
+ * Use the `data-notification-position` attribute with the value `bottom-center` to align the toast to the bottom center.
  */
 export const ToastBottomCenter = {
   name: ' ',
