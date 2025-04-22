@@ -198,11 +198,8 @@ export const CustomTrigger = {
       const tooltipLabel = tooltipContent;
 
       tooltip.addEventListener('sd-after-show', event => {
-        liveRegion.textContent = tooltipLabel;
-      });
-
-      tooltip.addEventListener('sd-after-hide', event => {
-        liveRegion.textContent = '';
+        liveRegion.textContent =
+          liveRegion.textContent === tooltipContent ? tooltipContent + '\\u200B' : tooltipContent;
       });
     </script>
   `
