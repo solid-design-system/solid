@@ -98,7 +98,7 @@ export const Fixed = {
         ],
         args
       })}
-      <div class="bg-neutral-100 p-8" style="margin-top: var(--sd-header-calculated-height)">
+      <div class="bg-neutral-100 p-8 h-[150vh]">
         This element automatically sets its position depending on the height of the header.
       </div>`;
   }
