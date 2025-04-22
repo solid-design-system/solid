@@ -1,0 +1,46 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as {{ properCase tag }}Stories from './{{ tagWithoutPrefix tag }}.stories';
+
+export const storybookLink = '/?path=/docs/styles-{{ tag }}--docs';
+export const figmaLibrary = '';
+export const figmaDocs = '';
+
+export const content = `
+# {{ tagToTitle tag }}
+
+DESCRIPTION
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Components
+
+[]()
+
+#### Related Templates
+
+[]()
+
+### Common Use Cases
+
+-
+
+### Usage Guidelines
+
+#### Slots
+
+-
+
+Add other guidelines here.
+
+### Accessibility Information
+
+-
+- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Styles/{{ tag }}/Overview" />
+
+<OverviewFormatter story={ {{ properCase tag }}Stories.Default}>{content}</OverviewFormatter>

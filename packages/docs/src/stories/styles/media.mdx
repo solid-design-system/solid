@@ -1,0 +1,59 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdMediaStories from './media.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/styles-sd-media--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=1664-16134&p=f&t=B5mgTBjcWeycmzb6-0'
+};
+
+export const content = `
+# Media
+
+Used to display an image or video preview.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Templates
+
+[Media](/?path=/docs/templates-media--docs)
+
+### Common Use Cases
+
+- Display images, illustrations, animations or videos.
+- Use to populate the media slot in [sd-teaser](/?path=/docs/components-sd-teaser--docs) or the default slot in [sd-carousel](/?path=/docs/components-sd-carousel--docs).
+
+### Usage Guidelines
+
+#### Aspect Ratio
+
+- Use the nested [sd-aspect-ratio](https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3646-41470&t=cm2c2fYXSZANLiBp-0) helper component to select from predefined aspect ratios.
+
+#### Attribution and Description
+
+- Use the html <code>figcaption</code> element to add a description.
+
+#### Performance
+
+- Use appropriate formats and compress media files without significant quality loss to optimize loading times and performance.
+- Limit the number of media items on a single page to prevent slowing down page load times.
+
+#### Background
+
+- Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
+
+### Accessibility Information
+
+- Provide concise, descriptive alt text for the embedded element.
+- For purely decorative images, ALT-tags should be left empty so that screen readers can bypass them and concentrate on conveying meaningful content.
+- Compress media to reduce load times, preventing lengthy loading that might hinder access to other page elements.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Styles/sd-media/Overview" />
+
+<OverviewFormatter story={SdMediaStories.Default}>{content}</OverviewFormatter>

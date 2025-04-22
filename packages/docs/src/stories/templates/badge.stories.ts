@@ -17,6 +17,7 @@ export default {
  * Examples of sd-button working with sd-badge:
  */
 export const ButtonWithBadge = {
+  name: 'Button with badge',
   render: () => html`
     <div class="flex flex-col">
       <section class="flex p-8 gap-10 items-center">
@@ -53,7 +54,7 @@ export const ButtonWithBadge = {
           <sd-badge inverted>10</sd-badge>
           Requests
         </sd-button>
-        <sd-button inverted variant="secondary" size="md">
+        <sd-button inverted variant="secondary">
           <sd-icon name="system/rss" slot="icon-left"></sd-icon>
           <sd-badge inverted>+99</sd-badge>
           News
