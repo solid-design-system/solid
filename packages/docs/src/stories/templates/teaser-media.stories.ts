@@ -28,6 +28,7 @@ export const TeaserMediaWithLink = {
   render: () =>
     html` <div class="flex flex-col gap-12">
       <sd-teaser-media variant="gradient-dark">
+        <h3 slot="headline" class="sd-headline sd-headline--inverted">Market turnaround in sight</h3>
         <div slot="media" class="relative">
           <img
             class="w-full aspect-ratio"
@@ -36,11 +37,11 @@ export const TeaserMediaWithLink = {
           />
         </div>
         <div slot="meta" class="meta-info">
-          <span class="meta-info-item">August 2024 | Olaf Janßen</span>
+          <span class="sd-meta sd-meta--pipe sd-meta--inverted">August 2024</span>
+          <span class="sd-meta sd-meta--inverted">Olaf Janßen</span>
         </div>
-        <h6 slot="headline">Market turnaround in sight</h6>
         <div>
-          <p class="sd-paragraph sd-paragraph--inverted mb-4">
+          <p class="sd-paragraph sd-paragraph--inverted mb-4 mt-2">
             After a long wait for good news, real estate investors are now seeing the first signs of a recovery on the
             European commercial real estate markets.
           </p>
@@ -50,13 +51,13 @@ export const TeaserMediaWithLink = {
         </div>
       </sd-teaser-media>
       <sd-teaser-media variant="primary">
+        <h3 slot="headline" class="sd-headline sd-headline--inverted">Your contact person</h3>
         <img
           slot="media"
           class="w-full"
           src="./placeholders/images/collaboration.jpg"
           alt="Two professionals representing accessible customer support."
         />
-        <h3 slot="headline" class="sd-headline sd-headline--inverted">Your contact person</h3>
         <div class="flex flex-col gap-4">
           <p class="sd-paragraph sd-paragraph--inverted">
             If you have any questions or would like to obtain further information, please find your dedicated contact
@@ -67,14 +68,14 @@ export const TeaserMediaWithLink = {
           </div>
         </div>
       </sd-teaser-media>
-      <sd-teaser-media variant="neutral-100">
+      <sd-teaser-media variant="neutral-100" class="teaser-neutral-100">
+        <h3 slot="headline" class="sd-headline sd-headline--size-base">USA or Europe? It depends on the mix</h3>
         <img
           slot="media"
           class="w-full aspect-ratio"
           src="./placeholders/images/skyline.jpg"
           alt="A vibrant city skyline at dusk, symbolizing economic growth and investment opportunities in urban hubs."
         />
-        <h3 slot="headline" class="sd-headline sd-headline--size-base">USA or Europe? It depends on the mix</h3>
         <div class="flex flex-col gap-4">
           <p class="sd-paragraph">
             A positive growth environment, the tech boom and government investment incentives show this: The USA is
@@ -105,6 +106,7 @@ export const TeaserMediaOverrides = {
         }
       </style>
       <sd-teaser-media variant="gradient-dark" class="media-overrides">
+        <h3 slot="headline" class="sd-headline sd-headline--inverted">Gender</h3>
         <div slot="media" class="relative">
           <img
             class="w-full aspect-ratio"
@@ -112,7 +114,6 @@ export const TeaserMediaOverrides = {
             alt="Diverse group of individuals in a casual meeting setting, emphasizing gender equality and collaboration."
           />
         </div>
-        <h3 slot="headline" class="sd-headline sd-headline--inverted">Gender</h3>
         <div slot="expandable">
           <p class="sd-paragraph sd-paragraph--inverted pb-12">We are actively promoting gender equality.</p>
         </div>
@@ -129,15 +130,15 @@ export const TeaserMediaWithCopyright = {
     </style>
     <div class="flex flex-col gap-12">
       <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
-        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="" />
         <h3 slot="headline">Headline Media Teaser</h3>
+        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="" />
         <div class="flex flex-col sd-copyright" style="--copyright: '© Union Investment 2024'">
           <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </div>
       </sd-teaser-media>
       <sd-teaser-media variant="gradient-light" class="max-w-[600px]">
-        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="" />
         <h3 slot="headline">Headline Media Teaser</h3>
+        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="" />
         <div
           class="flex flex-col sd-copyright sd-copyright--color-black gradient-white"
           style="--copyright: '© Union Investment 2024'"

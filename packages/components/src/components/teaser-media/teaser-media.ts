@@ -59,10 +59,6 @@ export default class SdTeaserMedia extends SolidElement {
 
     return html`
       <div class="relative flex flex-col group" part="base">
-        <div class=${cx('mb-4', !slots['teaser-has-media'] && 'hidden')} part="media">
-          <slot name="media"></slot>
-        </div>
-
         <!-- opacity should be replaced with a opacity token from the design system https://github.com/solid-design-system/solid/issues/731 -->
         <div class="absolute flex flex-col justify-end h-full w-full pb-4 ">
           <div
@@ -85,14 +81,15 @@ export default class SdTeaserMedia extends SolidElement {
             )}
           >
             <div class="flex-col text-left p-4" part="content">
-              <div part="meta" class=${cx('gap-2 mb-4', !slots['teaser-has-meta'] && 'hidden')}>
-                <slot name="meta"></slot>
-              </div>
-
-              <div part="headline" class="text-lg font-bold m-0">
-                <slot name="headline"
-                  >Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)</slot
-                >
+              <div class="flex flex-col">
+                <div part="headline" class="text-lg font-bold m-0 order-2">
+                  <slot name="headline"
+                    >Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)</slot
+                  >
+                </div>
+                <div part="meta" class=${cx('gap-2 mb-4 order-1', !slots['teaser-has-meta'] && 'hidden')}>
+                  <slot name="meta"></slot>
+                </div>
               </div>
 
               <div
@@ -113,6 +110,10 @@ export default class SdTeaserMedia extends SolidElement {
             </div>
           </div>
         </div>
+
+        <div class=${cx('mb-4 -z-10', !slots['teaser-has-media'] && 'hidden')} part="media">
+          <slot name="media"></slot>
+        </div>
       </div>
     `;
   }
@@ -130,6 +131,22 @@ export default class SdTeaserMedia extends SolidElement {
 
       ::slotted([slot='headline']) {
         @apply font-bold !m-0 !text-lg;
+      }
+
+      :host([variant='white']) .background:focus-within {
+        @apply bg-white/90;
+      }
+
+      :host([variant='neutral-100']) .background:focus-within {
+        @apply bg-neutral-100/90;
+      }
+
+      :host([variant='primary']) .background:focus-within {
+        @apply bg-primary/90;
+      }
+
+      :host([variant='primary-100']) .background:focus-within {
+        @apply bg-primary-100/90;
       }
     `
   ];
