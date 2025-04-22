@@ -88,7 +88,8 @@ export const StatusBadgeWithCustomIcon = {
   `
 };
 
-export const StatusBadge = {
+export const StatusBadgeWithChip = {
+  name: 'Status Badge with Chip',
   render: () => html`
     <style>
       .data-wrapper {
