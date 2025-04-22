@@ -1,5 +1,5 @@
 ---
-'@solid-design-system/components': minor
+'@solid-design-system/components': patch
 ---
 
 Improved `sd-tooltip` accessibility:
