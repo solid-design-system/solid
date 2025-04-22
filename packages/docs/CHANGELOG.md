@@ -1,5 +1,17 @@
 # @solid-design-system/docs
 
+## 1.15.2
+
+### Patch Changes
+
+- Improved `sd-teaser` and `sd-teaser-media` accessibility: _[`#2120`](https://github.com/solid-design-system/solid/pull/2120) [`ec19bb7`](https://github.com/solid-design-system/solid/commit/ec19bb7b101ced45393850328b534981b6d90c29) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Ensure the headline is the first element in the teaser's DOM structure in all templates.
+  - Improve clickable teaser media:
+    - Whole card is clickable;
+    - Supports nested interactive elements;
+    - Improved screen reader verbosity;
+
 ## 1.15.1
 
 ### Patch Changes

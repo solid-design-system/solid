@@ -1,5 +1,18 @@
 # @solid-design-system/components
 
+## 4.6.15
+
+### Patch Changes
+
+- Improved `sd-teaser` and `sd-teaser-media` accessibility: _[`#2120`](https://github.com/solid-design-system/solid/pull/2120) [`ec19bb7`](https://github.com/solid-design-system/solid/commit/ec19bb7b101ced45393850328b534981b6d90c29) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Maintain consistent behavior between hover and focus states.
+  - Ensure the headline is the first element in the teaser's DOM structure.
+
+### 📈 Stats
+* Uncompressed: 422 KB (+1 KB / +0%)
+* Gzipped: 99 KB (unchanged)
+
 ## 4.6.14
 
 ### Patch Changes
