@@ -1383,7 +1383,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                       part="chevron"
                       library="system"
                       color="currentColor"
-                      label="Open listbox"
+                      label=${this.localize.term('open')}
                     ></sd-icon>`
                   : ''}
               </slot>
