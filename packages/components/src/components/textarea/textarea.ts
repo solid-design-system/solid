@@ -398,7 +398,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           <div
             part="base"
             class=${cx(
-              'textarea h-full px-4 flex items-top rounded-default group',
+              'textarea h-full px-4 flex items-top rounded-default group has-[sd-icon]:pe-12',
               {
                 sm: 'textarea-sm py-1',
                 md: 'textarea-md py-1',
