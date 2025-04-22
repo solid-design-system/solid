@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 1.15.1
+
+### Patch Changes
+
+- Improved `sd-tooltip` accessibility: _[`#2138`](https://github.com/solid-design-system/solid/pull/2138) [`6c61fde`](https://github.com/solid-design-system/solid/commit/6c61fde928d4fb2bf3cfb7355cb58d1f8dc42ec1) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Custom trigger announcement.
+
 ## 1.15.0
 
 ### Minor Changes

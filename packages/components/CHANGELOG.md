@@ -1,5 +1,16 @@
 # @solid-design-system/components
 
+## 4.6.14
+
+### Patch Changes
+
+- Improved `sd-tooltip` accessibility: _[`#2138`](https://github.com/solid-design-system/solid/pull/2138) [`6c61fde`](https://github.com/solid-design-system/solid/commit/6c61fde928d4fb2bf3cfb7355cb58d1f8dc42ec1) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - The button indicates whether it’s open;
+  - Keep focus on the button if trigger is click;
+  - Buttons are now accessible with VoiceOVer in Safari;
+  - Screen readers announce the tooltip content when it becomes visible;
+
 ## 4.6.13
 
 ### Patch Changes
@@ -10,8 +21,9 @@
   - `sd-notification` will now use existing toast stacks if present in the DOM with specific IDs. If not existent, it will be automatically created as a fallback.
 
 ### 📈 Stats
-* Uncompressed: 421 KB (-1 KB / 0%)
-* Gzipped: 99 KB (unchanged)
+
+- Uncompressed: 421 KB (-1 KB / 0%)
+- Gzipped: 99 KB (unchanged)
 
 ## 4.6.12
 
