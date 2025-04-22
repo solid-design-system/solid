@@ -1,5 +1,18 @@
 # @solid-design-system/docs
 
+## 1.15.0
+
+### Minor Changes
+
+- Added a new `sd-status-badge` template to display user profiles with status indicators and a quick edit option. _[`#2156`](https://github.com/solid-design-system/solid/pull/2156) [`abcdfee`](https://github.com/solid-design-system/solid/commit/abcdfeed967405946519e245bf9eb239835e1d18) [@smfonseca](https://github.com/smfonseca)_
+
+### Patch Changes
+
+- Improved `sd-notification` a11y: _[`#2101`](https://github.com/solid-design-system/solid/pull/2101) [`fc8514e`](https://github.com/solid-design-system/solid/commit/fc8514ea809e0ad1869953b7cb08dcffd842294c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Added preloaded `sd-toast-stacks` to improve consistency within screen readers.
+  - Added documentation about the importance of adding preloaded `sd-toast-stacks`.
+
 ## 1.14.1
 
 ### Patch Changes

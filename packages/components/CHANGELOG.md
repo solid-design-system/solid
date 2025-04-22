@@ -1,5 +1,18 @@
 # @solid-design-system/components
 
+## 4.6.13
+
+### Patch Changes
+
+- Improved `sd-notification` accessibility: _[`#2101`](https://github.com/solid-design-system/solid/pull/2101) [`fc8514e`](https://github.com/solid-design-system/solid/commit/fc8514ea809e0ad1869953b7cb08dcffd842294c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Improved consistency on screen reader announcements.
+  - `sd-notification` will now use existing toast stacks if present in the DOM with specific IDs. If not existent, it will be automatically created as a fallback.
+
+### 📈 Stats
+* Uncompressed: 421 KB (-1 KB / 0%)
+* Gzipped: 99 KB (unchanged)
+
 ## 4.6.12
 
 ### Patch Changes
@@ -15,8 +28,9 @@
   - Improve tag removal announcements.
 
 ### 📈 Stats
-* Uncompressed: 422 KB (+3 KB / +1%)
-* Gzipped: 99 KB (+1 KB / +1%)
+
+- Uncompressed: 422 KB (+3 KB / +1%)
+- Gzipped: 99 KB (+1 KB / +1%)
 
 ## 4.6.11
 
