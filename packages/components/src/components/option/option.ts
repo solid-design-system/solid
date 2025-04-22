@@ -136,7 +136,7 @@ export default class SdOption extends SolidElement {
             md: 'text-base py-2',
             lg: 'text-base py-3'
           }[this.size],
-          this.disabled ? 'text-neutral-500 cursor-not-allowed' : 'cursor-pointer',
+          this.disabled ? 'text-neutral-700 cursor-not-allowed' : 'cursor-pointer',
           this.hasHover && !this.disabled ? 'bg-neutral-200' : '',
           this.current && 'bg-neutral-200'
         )}
