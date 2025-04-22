@@ -53,6 +53,11 @@ export default function (plop) {
         templateFile: 'templates/component/test.stories.hbs'
       },
       {
+        type: 'add',
+        path: '../../../docs/src/stories/styles/{{ tagWithoutPrefix tag }}.mdx',
+        templateFile: 'templates/component/overview.hbs'
+      },
+      {
         type: 'modify',
         path: '../../src/solid-styles.css',
         pattern: /\/\* plop:style \*\//,

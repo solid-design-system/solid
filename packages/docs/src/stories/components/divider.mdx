@@ -1,0 +1,52 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdDividerStories from './divider.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/components-sd-divider--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=1720-19577&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2004-3518&t=pFHk5gNX1Hj4l15o-4'
+};
+
+export const content = `
+# Divider
+
+Used to separate content or sections from each other and make the content easier to read for the user.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+### Common Use Cases
+
+- Separate distinct item groups to help users clearly see and understand how different pieces of content relate to one another.
+- Provide visual breaks in long pages or forms to improve readability.
+
+### Usage Guidelines
+
+#### Spacing and Consistency
+
+- Maintain consistent spacing around separators to prevent them from appearing cramped or too distant from the content they divide.
+- Ensure consistent use to prevent confusion, especially for users relying on assistive technologies.
+
+#### Whitespace vs. Visual Separators
+
+- Leverage whitespace effectively as a natural divider, which can offer a clean, easy to read and organised design without additional visual elements.
+
+#### Background
+
+- Use light background options like white, neutral-100 or primary-100.
+
+### Accessibility Information
+
+- Verify that dividers are visible and distinct in high contrast mode settings, which are often used by users with visual impairments.
+- Use to provide clear separation between sections, helping users understand content flow. Screen readers announce dividers, offering context about transitions between sections.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-divider/Overview" />
+
+<OverviewFormatter story={SdDividerStories.Default}>{content}</OverviewFormatter>

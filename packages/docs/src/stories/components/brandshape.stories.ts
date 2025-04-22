@@ -8,15 +8,6 @@ const { argTypes, parameters } = storybookDefaults('sd-brandshape');
 const { overrideArgs } = storybookHelpers('sd-brandshape');
 const { generateTemplate } = storybookTemplate('sd-brandshape');
 
-/**
- *
- * Used as a container with brand character that visually emphasizes the content.
- *
- * **Related templates:**
- * - [Brandshape](?path=/story/templates-brandshape--docs)
- *
- */
-
 export default {
   title: 'Components/sd-brandshape',
   tags: ['!dev'],

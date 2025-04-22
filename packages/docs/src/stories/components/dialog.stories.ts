@@ -9,15 +9,9 @@ const { generateTemplate } = storybookTemplate('sd-dialog');
 
 /**
  *
- * Used over other content. It requires an interaction from the user before they can return to whatever is underneath.
+ * **Known browser issues:**
+ * - When the headline is set by slot instead of attribute, the dialog name is not being announced by VoiceOver in Chrome and Firefox.
  *
- * - Use the `headline` slot to add a headline. <br /> Since the wrapper of the slot is an `h2` by default, the slot should be a generic element (`span`, `div`).
- * - Use the `default` slot to add main content. <br /> Default slot is always scrollable.
- * - Use the `footer` slot to add action elements. <br /> Footer slot is always fixed.
- *
- *
- *  **Related templates**:
- * - [Dialog](?path=/docs/templates-dialog--docs)
  */
 
 export default {

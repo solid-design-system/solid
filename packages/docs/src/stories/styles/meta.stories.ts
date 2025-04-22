@@ -6,10 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-meta');
 const { overrideArgs } = storybookHelpers('sd-meta');
 const { generateTemplate } = storybookTemplate('sd-meta');
 
-/**
- * Used to display meta information like file size, date or other.
- */
-
 export default {
   title: 'Styles/sd-meta',
   tags: ['!dev'],

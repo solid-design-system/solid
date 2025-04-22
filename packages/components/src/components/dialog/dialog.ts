@@ -4,7 +4,9 @@ import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
+import { getDeepActiveElement } from '../../internal/deep-active-element';
 import { HasSlotController } from '../../internal/slot';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { property, query } from 'lit/decorators.js';
@@ -140,7 +142,7 @@ export default class SdDialog extends SolidElement {
       // Show
       this.emit('sd-show');
       this.addOpenListeners();
-      this.originalTrigger = document.activeElement as HTMLElement;
+      this.originalTrigger = getDeepActiveElement();
       this.modal.activate();
 
       lockBodyScrolling(this);
@@ -271,8 +273,8 @@ export default class SdDialog extends SolidElement {
           role="dialog"
           aria-modal="true"
           aria-hidden=${this.open ? 'false' : 'true'}
-          aria-label=${this.headline}
-          aria-labelledby="title"
+          aria-label=${ifDefined(this.headline ? this.headline : undefined)}
+          aria-labelledby=${ifDefined(!this.headline ? 'title' : undefined)}
           tabindex="0"
         >
           <header part="header" class="flex flex-grow-0 flex-shrink-0 basis-auto px-6 sm:px-10">

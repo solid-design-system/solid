@@ -4,6 +4,7 @@ import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
+import { getDeepActiveElement } from '../../internal/deep-active-element';
 import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
@@ -151,7 +152,9 @@ export default class SdDrawer extends SolidElement {
       // Show
       this.emit('sd-show');
       this.addOpenListeners();
-      this.originalTrigger = document.activeElement as HTMLElement;
+
+      // Check if the original trigger is inside the drawer
+      this.originalTrigger = getDeepActiveElement();
 
       // Lock body scrolling only if the drawer isn't contained
       if (!this.contained) {
@@ -308,7 +311,6 @@ export default class SdDrawer extends SolidElement {
             this.contained ? 'absolute' : 'fixed'
           )}
           @click=${() => this.requestClose('overlay')}
-          tabindex="-1"
         ></div>
 
         <div
@@ -322,10 +324,9 @@ export default class SdDrawer extends SolidElement {
           )}
           role="dialog"
           aria-modal="true"
-          aria-labelledby="label"
+          aria-label=${this.label}
           tabindex="0"
         >
-          <p class="sr-only" id="label">${this.label}</p>
           ${!this.noHeader
             ? html`
                 <header
@@ -356,7 +357,7 @@ export default class SdDrawer extends SolidElement {
                 class="absolute top-2 right-2"
                 ><sd-icon label=${this.localize.term('close')} name="close" library="system"></sd-icon
               ></sd-button>`}
-          <div part="body" class="flex-auto block px-4" tabindex="0">
+          <div part="body" class="flex-auto block px-4 focus-visible:focus-outline !-outline-offset-2" tabindex="0">
             <slot></slot>
           </div>
           <footer part="footer" class=${cx(this.hasSlotController.test('footer') ? 'text-left p-4' : 'hidden')}>

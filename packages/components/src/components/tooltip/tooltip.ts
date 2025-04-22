@@ -1,4 +1,4 @@
-import '../popup/popup';
+import '../icon/icon';
 import { animateTo, parseDuration, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
@@ -8,8 +8,9 @@ import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
+// eslint-disable-next-line
+import SdPopup from '../popup/popup';
 import SolidElement from '../../internal/solid-element';
-import type SdPopup from '../popup/popup';
 
 /**
  * @summary Tooltips display additional information based on a specific action.
@@ -18,6 +19,7 @@ import type SdPopup from '../popup/popup';
  * @since 1.23.0
  *
  * @dependency sd-popup
+ * @dependency sd-icon
  *
  * @slot - The tooltip's target element. Avoid slotting in more than one element, as subsequent ones will be ignored.
  * @slot anchor - Slot to change the default trigger icon. The default icon is an info circle.

@@ -8,13 +8,6 @@ const { argTypes, parameters } = storybookDefaults('sd-notification');
 const { generateTemplate } = storybookTemplate('sd-notification');
 const { overrideArgs } = storybookHelpers('sd-notification');
 
-/**
- * Used to communicate important information or status to the user. Notifications can be displayed inline or as a toast / toast stack.
- *
- *  **Related templates**:
- * - [Notification](?path=/docs/templates-notification--docs)
- */
-
 export default {
   title: 'Components/sd-notification',
   tags: ['!dev'],

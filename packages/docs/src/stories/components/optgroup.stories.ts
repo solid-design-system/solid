@@ -6,17 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-optgroup');
 const { overrideArgs } = storybookHelpers('sd-optgroup');
 const { generateTemplate } = storybookTemplate('sd-optgroup');
 
-/**
- * Used to group selectable items within various form controls such as select.
- *
- * **Related Components**:
- * - [sd-combobox](?path=/docs/components-sd-combobox--docs)
- * - [sd-select](?path=/docs/components-sd-select--docs)
- *
- * **Related templates**:
- * - [Autocomplete](?path=/docs/templates-autocomplete--docs)
- */
-
 export default {
   title: 'Components/sd-optgroup',
   tags: ['!dev'],

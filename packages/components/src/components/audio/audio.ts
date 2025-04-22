@@ -1,3 +1,5 @@
+import '../button/button';
+import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
@@ -6,7 +8,8 @@ import { property, query, state } from 'lit/decorators.js';
 import { Wave } from './wave';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-import type SdDrawer from '../drawer/drawer';
+// eslint-disable-next-line
+import SdDrawer from '../drawer/drawer';
 
 /**
  * @summary Used to play audio files that are part of the page content.
@@ -14,6 +17,8 @@ import type SdDrawer from '../drawer/drawer';
  * @since 3.19.0
  *
  * @dependency sd-icon
+ * @dependency sd-button
+ * @dependency sd-drawer
  *
  * @event sd-playback-start - Emitted when the audio playback starts.
  * @event sd-playback-end - Emitted when the audio playback ends.
@@ -405,8 +410,7 @@ export default class SdAudio extends SolidElement {
           'playback-speed justify-self-start text-base font-bold hover:cursor-pointer sd-interactive',
           this.inverted && 'sd-interactive--inverted'
         )}
-        aria-label="${this.localize.term('playbackSpeed')}"
-        tabindex="0"
+        aria-label="${this.localize.term('playbackSpeed')} (${this.speed}x)"
         @click=${this.togglePlaybackSpeed}
         @keydown=${this.togglePlaybackSpeedKeydown}
         part="playback-speed"
@@ -440,7 +444,6 @@ export default class SdAudio extends SolidElement {
                 : this.localize.term('openTranscript')}
               @click=${this.showTranscript}
               @keydown=${this.showTranscriptKeydown}
-              tab-index="0"
               part="transcript"
             >
               <sd-icon class="w-6 h-6" name="transcript" library="system"></sd-icon>
@@ -451,7 +454,6 @@ export default class SdAudio extends SolidElement {
           class=${cx('w-6 h-6 hover:cursor-pointer sd-interactive', this.inverted && 'sd-interactive--inverted')}
           part="volume"
           aria-label=${!this.isMuted ? this.localize.term('mute') : this.localize.term('unmute')}
-          tabindex="0"
           @click=${this.toggleMute}
           @keydown=${this.toggleMuteKeydown}
         >
@@ -500,7 +502,6 @@ export default class SdAudio extends SolidElement {
             max="100"
             step="0.001"
             value=${this.progress}
-            tabindex="0"
             @input=${this.handleAudioProgress}
             @keydown=${this.handleAudioProgressKeydown}
             aria-label=${this.localize.term('seekBar')}
