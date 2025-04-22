@@ -473,6 +473,19 @@ export const StyleOnValid = {
   }
 };
 
+export const Tags = {
+  name: 'Tags',
+  render: () => html`
+    <div class="h-[260px] w-[400px]">
+      <sd-combobox label="Label" multiple value="option-1 option-2">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+      </sd-combobox>
+    </div>
+  `
+};
+
 /**
  * A simple suggestions list shows the user a filtered list.
  */
