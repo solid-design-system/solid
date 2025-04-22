@@ -147,8 +147,11 @@ export const DurationIndicator = {
     >
     <script>
       var durationIndicator = document.querySelector('#duration-indicator');
+      console.log('test', durationIndicator);
       durationIndicator.addEventListener('sd-after-hide', () => {
+        console.log('test2', durationIndicator);
         setTimeout(() => {
+          console.log('test3', durationIndicator);
           durationIndicator.open = true;
         }, 3000);
       });
