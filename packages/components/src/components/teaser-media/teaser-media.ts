@@ -60,10 +60,16 @@ export default class SdTeaserMedia extends SolidElement {
     return html`
       <div class="relative flex flex-col group" part="base">
         <!-- opacity should be replaced with a opacity token from the design system https://github.com/solid-design-system/solid/issues/731 -->
-        <div class="absolute flex flex-col justify-end h-full w-full pb-4 oder-2">
+        <div class="absolute flex flex-col justify-end h-full w-full pb-4 ">
           <div
             class=${cx(
-              'background',
+              'flex-1',
+              this.variant === 'gradient-light' && 'bg-gradient-to-t from-white/[.8] to-60%',
+              this.variant === 'gradient-dark' && 'bg-gradient-to-t from-primary-800/[.6] to-60%'
+            )}
+          ></div>
+          <div
+            class=${cx(
               {
                 white: 'bg-white/[.8] group-hover:bg-white/90',
                 'neutral-100': 'bg-neutral-100/[.8] group-hover:bg-neutral-100/90',
@@ -75,42 +81,37 @@ export default class SdTeaserMedia extends SolidElement {
             )}
           >
             <div class="flex-col text-left p-4" part="content">
-              <div part="headline" class="text-lg font-bold m-0 order-2">
-                <slot name="headline"
-                  >Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)</slot
-                >
-              </div>
-
-              <div part="meta" class=${cx('gap-2 mb-4 order-1', !slots['teaser-has-meta'] && 'hidden')}>
-                <slot name="meta"></slot>
+              <div class="flex flex-col">
+                <div part="headline" class="text-lg font-bold m-0 order-2">
+                  <slot name="headline"
+                    >Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)</slot
+                  >
+                </div>
+                <div part="meta" class=${cx('gap-2 mb-4 order-1', !slots['teaser-has-meta'] && 'hidden')}>
+                  <slot name="meta"></slot>
+                </div>
               </div>
 
               <div
                 class=${cx(
-                  'hidden',
+                  'hidden z-10',
                   slots['teaser-has-expandable'] &&
-                    'h-[0px] z-100 invisible opacity-0 md:[transition:_height_0.2s_linear,opacity_0.1s_linear_0.1s] md:block md:group-hover:h-auto md:group-hover:my-4 md:group-hover:opacity-[100%] md:group-hover:visible'
+                    'h-[0px] invisible opacity-0 md:[transition:_height_0.2s_linear,opacity_0.1s_linear_0.1s] md:block md:group-hover:h-auto md:group-hover:my-4 md:group-hover:opacity-[100%] md:group-hover:visible'
                 )}
                 part="expandable"
                 aria-hidden="true"
               >
-                <slot class="z-1" name="expandable"></slot>
+                <slot name="expandable" class="z-10"></slot>
               </div>
 
               <div part="main" class=${cx(!slots['teaser-has-default'] && 'hidden')}>
                 <slot></slot>
               </div>
             </div>
-            <div
-              class=${cx(
-                'flex-1',
-                this.variant === 'gradient-light' && 'bg-gradient-to-t from-white/[.8] to-60%',
-                this.variant === 'gradient-dark' && 'bg-gradient-to-t from-primary-800/[.6] to-60%'
-              )}
-            ></div>
           </div>
         </div>
-        <div class=${cx('mb-4 oder-1 -z-10', !slots['teaser-has-media'] && 'hidden')} part="media">
+
+        <div class=${cx('mb-4 -z-10', !slots['teaser-has-media'] && 'hidden')} part="media">
           <slot name="media"></slot>
         </div>
       </div>
