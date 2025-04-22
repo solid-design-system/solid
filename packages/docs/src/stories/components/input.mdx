@@ -1,0 +1,71 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdInputStories from './input.stories';
+
+export const links = {
+  'storybook-docs': './?path=/docs/components-sd-input--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=29-78&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2314-12192&node-type=canvas&t=ExKWUj3vUoucvcVt-0'
+};
+
+export const content = `
+# Input
+
+Used to allow users to enter text. It can be displayed in several ways, depending on the type.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Templates
+
+- [Input](./?path=/docs/templates-input--docs)
+- [Input with Autocomplete](./?path=/docs/templates-autocomplete--docs)
+- [Input with Tooltip](./?path=/docs/templates-tooltip--docs#input%20with%20tooltip)
+
+### Common Use Cases
+
+- Collect user data in forms, including names, emails, dates, and passwords.
+- Allow users to enter numerical values like quantities or prices.
+
+### Usage Guidelines
+
+#### Labels and Placeholders
+
+- Use descriptive and concise labels.
+- Avoid using placeholder text as a substitute for labels.
+
+#### User Guidance
+
+- Provide instructions within helper text for completing the field, such as password or character count (e.g., “maxlength” and ”minlength”...).
+- Offer additional guidance with tooltips or help text to guide users on the expected input format and prevent unclear or ambiguous interpretation.
+
+#### Validation and Formatting
+
+- Use dynamic formatting to automatically format user input as they type.
+- Validate user entries in real-time to provide immediate feedback whenever possible.
+- Avoid using fields for actions that require immediate feedback; use buttons instead.
+
+#### Input Types
+
+- Use appropriate field types for the given purpose (e.g., “email”, “password”, “number”). For custom autocomplete functionalities (e.g., search fields) use [sd-combobox](./?path=/docs/components-sd-combobox--docs).
+- Use for brief text input only. For longer inputs, such as comments or user feedback, use [sd-textarea](./?path=/docs/components-sd-textarea--docs) instead.
+
+### Accessibility Information
+
+- Ensure that focus moves in sequential order between input fields and other form elements. When an input field is focused, it should be clearly indicated.
+- Avoid disabled input fields. If needed, ensure that they remain in the regular tab order but cannot be activated, allowing screen readers to announce their state and purpose. Use the native disabled attribute or appropriate ARIA attributes (e.g., aria-disabled="true").
+- Ensure input fields are usable on all screen sizes. On smaller screens, consider using larger touch targets for input fields.
+- Placeholder text should offer a hint of what the user should write and must always go together with a label.
+- Prefer keeping the input enabled by default by relying on default values or by validating on submit.
+- Use the "visually disabled" attribute to keep disabled elements focusable, hoverable, and able to show tooltips, as they’re otherwise removed from the tab order and inaccessible to screen readers.
+- Use “autocomplete” attribute to enable automated browser assistance when filling out forms.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-input/Overview" />
+
+<OverviewFormatter story={SdInputStories.Default}>{content}</OverviewFormatter>

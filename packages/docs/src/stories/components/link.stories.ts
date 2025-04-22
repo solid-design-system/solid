@@ -8,13 +8,6 @@ const { argTypes, parameters } = storybookDefaults('sd-link');
 const { generateTemplate } = storybookTemplate('sd-link');
 const { overrideArgs } = storybookHelpers('sd-link');
 
-/**
- *
- * Used to allow users to navigate to another location or perform actions like e.g. downloading files.
- *
- * **Related templates**:
- * - [Link](?path=/docs/templates-link--docs)
- */
 export default {
   tags: ['!dev'],
   title: 'Components/sd-link',

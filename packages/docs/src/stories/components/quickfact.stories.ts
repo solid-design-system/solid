@@ -8,11 +8,6 @@ const { overrideArgs } = storybookHelpers('sd-quickfact');
 const { generateTemplate } = storybookTemplate('sd-quickfact');
 
 /**
- * Used to present information in an expandable and more dynamic way.
- *
- * **Related templates:**
- * - [Quickfact](?path=/docs/templates-quickfact--docs)
- *
  *
  * **Disclaimer:** Due to a bug with Storybook Controls, the `expandable` attribute controls might not behave as expected. Please refresh the page if you wish to reset the controls.
  *
