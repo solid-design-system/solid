@@ -308,6 +308,7 @@ export default class SdTooltip extends SolidElement {
         auto-size="vertical"
         arrow-padding="0"
       >
+        <!-- Dev note: This condition addresses a Safari limitation where VoiceOver ignores the tooltip if its trigger is placed inside a slot. -->
         ${this.hasCustomTrigger
           ? html` <slot slot="anchor"></slot>`
           : html`<button
