@@ -142,16 +142,13 @@ export const Duration = {
 export const DurationIndicator = {
   name: 'Duration Indicator',
   render: () => html`
-    <sd-notification id="duration-indicator" variant="info" open duration-indicator duration="5000"
-      >Notification will self close after 5 seconds</sd-notification
-    >
+    <sd-notification id="duration-indicator-attribute" variant="info" open duration-indicator duration="5000">
+      Notification will self close after 5 seconds
+    </sd-notification>
     <script>
-      var durationIndicator = document.querySelector('#duration-indicator');
-      console.log('test', durationIndicator);
+      var durationIndicator = document.querySelector('#duration-indicator-attribute');
       durationIndicator.addEventListener('sd-after-hide', () => {
-        console.log('test2', durationIndicator);
         setTimeout(() => {
-          console.log('test3', durationIndicator);
           durationIndicator.open = true;
         }, 3000);
       });
