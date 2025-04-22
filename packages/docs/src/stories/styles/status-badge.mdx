@@ -1,0 +1,62 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdStatusBadgeStories from './status-badge.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/styles-sd-status-badge--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=16050-1113&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2314-31830&node-type=canvas&t=ExKWUj3vUoucvcVt-0'
+};
+
+export const content = `
+# Status Badge
+
+Used as a visual, non-interactive indicator of a status related to a particular element.
+
+The icons used in this component, should be exclusively from the sd-status-assets [icon library](/?path=/story/components-sd-icon-default--status-library).
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Components
+
+[sd-badge](/?path=/docs/components-sd-badge--docs)
+
+#### Related Templates
+
+- [Status Badge](/?path=/docs/templates-status-badge--docs)
+- [Badge](/?path=/docs/templates-badge--docs)
+
+### Common Use Cases
+
+- Provide a quick, non-interactive indicator of an element’s status (e.g., info, success, error, warning).
+- Indicate the current stage or progress of a process or workflow, such as "in progress" or "completed".
+- Show the availability status of resources or personnel, like "online" or "offline."
+- Label items in lists, dashboards, or summaries with clear visual cues.
+
+### Usage Guidelines
+
+#### Variants and Placement
+
+- Match the badge’s color and icon to the wording or message of the associated element so users instantly recognize the status (blue for info, green for success, red for error, yellow for warning).
+- Ensure the badge is clearly visible and doesn’t overlap critical content or interactive elements.
+
+#### Background
+
+- Use light background options like white, neutral-100 or primary-100.
+
+### Accessibility Information
+
+- We recommend to combine a badge with text to reinforce the message.
+- Integrate the status badge’s information into the accessible name or description of the related element to ensure that its meaning is programmatically connected to the item it describes.
+- Make sure that the badge icon is hidden from screen readers, as the information is already conveyed by the badge label.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Styles/sd-status-badge/Overview" />
+
+<OverviewFormatter story={SdStatusBadgeStories.Default}>{content}</OverviewFormatter>

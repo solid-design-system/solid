@@ -1,0 +1,62 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdFlipcardStories from './flipcard.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/components-sd-flipcard--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=655-12357&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2314-11685&node-type=canvas&t=ExKWUj3vUoucvcVt-0'
+};
+
+export const content = `
+# Flipcard
+
+Used to display content on one side and reveal additional information when flipped.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Templates
+
+[Flipcard](/?path=/docs/templates-flipcard--docs)
+
+### Common Use Cases
+
+- Present brief, essential information on the front with additional details on the back.
+- Highlight key features or benefits of a product or service.
+- Display before-and-after comparisons.
+- Showcase testimonials or quotes with more context on the flip side.
+
+### Usage Guidelines
+
+#### Content
+
+- Keep the front side simple and engaging to encourage users to flip the card.
+- Do not use for critical information that needs to be immediately visible.
+- Use with image, text or both content types.
+- Keep alignment consistent on both sides, i.e. if you have top-aligned content on the front side, the content on the flip side should also be top aligned.
+
+#### Interaction
+
+- Ensure action items are placed exclusively on the back of the sd-flipcard with exception for the flip button that should be visible on both sides.
+
+#### Context of Use
+
+- Avoid using in contexts where users might not understand the flipping interaction.
+- Avoid using in time-sensitive environments.
+
+### Accessibility Information
+
+- Use only for non-critical information. Hiding content can become a potential barrier, making it more challenging for users to access information.
+- Keep the flip button to make sure the flipping can be accessed over keyboard navigation.
+- For purely decorative images, ALT-tags should be left empty so that screen readers can bypass them and concentrate on conveying meaningful content.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-flipcard/Overview" />
+
+<OverviewFormatter story={SdFlipcardStories.Default}>{content}</OverviewFormatter>

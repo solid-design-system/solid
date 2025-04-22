@@ -7,15 +7,6 @@ const { argTypes, parameters } = storybookDefaults('sd-interactive');
 const { overrideArgs } = storybookHelpers('sd-interactive');
 const { generateTemplate } = storybookTemplate('sd-interactive');
 
-/**
- * Used in interactive elements as a "quartery" button that has no paddings and no background.
- *
- * __Accessiblity hint__: Use a `title` attribute to provide a hint to the user of what the button does.
- *
- *  **Related templates**:
- * - [Interactive](?path=/docs/templates-interactive--docs)
- */
-
 export default {
   title: 'Styles/sd-interactive',
   tags: ['!dev', 'skip-a11y-[color-contrast]'],

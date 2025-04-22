@@ -1,0 +1,62 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdLinkStories from './link.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/components-sd-link--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=239-1937&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2009-2177&t=pFHk5gNX1Hj4l15o-4'
+};
+
+export const content = `
+# Link
+
+Used to allow users to navigate to another location or perform actions like downloading files.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Templates
+
+[Link](/?path=/docs/templates-link--docs)
+
+### Common Use Cases
+
+- Navigate to other pages or sections within the same page.
+- Link to external websites or resources, such as file downloads.
+- Include links within text blocks for references or citations.
+- Link to emails or phone numbers.
+
+### Usage Guidelines
+
+#### Link Text and Label
+
+- Be specific and use descriptive and concise link text that indicates the destination or action. For example, instead of "Click here for more information", use "Learn more about our services".
+- Avoid generic phrases like "Click here".
+- Display system icons before or after the link label when an action is actively executed as a result, such as opening a new window.
+
+#### Behavior and Interaction
+
+- Do not use links for actions that should be performed by buttons (e.g., submitting forms, triggering modals).
+- Do not open links in new tabs without informing the user.
+- Avoid placing too many links close together to make sure they’re easy to click or tap.
+
+#### Backgrounds
+
+- Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
+
+### Accessibility Information
+
+- Use descriptive link text that clearly conveys its purpose to screen reader users out of context.
+- Avoid having multiple links that point to the same URL within the same context, as this can be confusing for users.
+- Use the "visually disabled" attribute to keep disabled elements focusable, hoverable, and able to show tooltips, as they’re otherwise removed from the tab order and inaccessible to screen readers.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-link/Overview" />
+
+<OverviewFormatter story={SdLinkStories.Default}>{content}</OverviewFormatter>

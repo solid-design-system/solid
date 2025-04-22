@@ -1,0 +1,63 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdCheckboxStories from './checkbox.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/components-sd-checkbox--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=88-1058&t=ggaYbBcfKaQ6uzD7-4',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2216-24471&t=pFHk5gNX1Hj4l15o-4'
+};
+
+export const content = `
+# Checkbox
+
+Used to toggle an option on or off.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Components
+
+[sd-checkbox-group](/?path=/docs/components-sd-checkbox-group--docs)
+
+#### Related Templates
+
+[Checkbox Group](/?path=/docs/templates-checkbox-group--docs)
+
+### Common Use Cases
+
+- Used for selections that don’t immediately activate.
+- Selecting an option like "Agree to Terms and Conditions" before submitting a registration form.
+- Opt-in/Opt-out of notifications or subscriptions.
+- Check [sd-checkbox-group](/?path=/docs/components-sd-checkbox-group--docs) for group use cases and usage guidelines.
+
+### Usage Guidelines
+
+#### Content
+
+- Provide a clear, descriptive label for each selection to avoid confusion.
+- Frame labels positively, such as "Enable notifications" instead of "Disable notifications."
+
+#### Interaction and Usage
+
+- Ensure each selection operates independently unless used for bulk actions.
+- List selections in a logical order, such as alphabetical or numerical.
+- Refrain from using a single checkbox when the action should take effect immediately — use [sd-switch](/?path=/docs/components-sd-switch--docs) instead.
+
+### Accessibility Information
+
+- Checkboxes should always look like checkboxes to meet user’s expectations.
+- Nesting other interactive elements like links inside labels should be avoided.
+- An error-text with a warning icon should be placed underneath an invalid checkbox or, if used in a group, underneath the checkbox group. Error messages should always provide hints for solutions.
+- Use the "visually disabled" attribute to keep disabled elements focusable, hoverable, and able to show tooltips, as they’re otherwise removed from the tab order and inaccessible to screen readers.
+- In Figma use an asterisk with a blank before ( \*) at the end of its label when designing a mandatory checkbox. In code use the “required” boolean.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-checkbox/Overview" />
+
+<OverviewFormatter story={SdCheckboxStories.Default}>{content}</OverviewFormatter>

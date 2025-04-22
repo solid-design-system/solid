@@ -7,19 +7,6 @@ const { argTypes, parameters } = storybookDefaults('sd-step');
 const { overrideArgs } = storybookHelpers('sd-step');
 const { generateTemplate } = storybookTemplate('sd-step');
 
-/**
- * Used to determine a step in a process or task.
- *
- * Use the `default` slot to set a description for the step. Alternatively, you can use the `description` attribute.
- * Use the `circle-content` slot to add a content-icon in a non-interactive step.
- *
- * **Related components:**
- * - [sd-step-group](?path=/docs/components-sd-step-group--docs)
- *
- * **Related templates:**
- * - [Step Group](?path=/docs/templates-step-group--docs)
- */
-
 export default {
   title: 'Components/sd-step',
   tags: ['!dev', 'skip-a11y-[aria-required-parent]'],

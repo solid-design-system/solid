@@ -1,0 +1,61 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdChipStories from './chip.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/styles-sd-chip--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=1664-15969&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2106-26032&node-type=canvas&t=ExKWUj3vUoucvcVt-0'
+};
+
+export const content = `
+# Chip
+
+Used as a small, non-interactive label that represents a status, property or meta-data.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Templates
+
+- [Chip](/?path=/docs/templates-chip--docs)
+- [Teaser with Chip and Flag](/?path=/docs/templates-teaser--docs#teaser-with-chip-and-flag)
+- [Status Badge with Chip](/?path=/docs/templates-status-badge--docs)
+
+### Common Use Cases
+
+- Display selected items or categories within sd-teaser, such as chosen filters, tags, or interests.
+- Indicate attributes of items, such as “New,” “Featured,” or “Verified”.
+- Communicate user roles, like “Moderator” or “Admin”.
+
+### Usage Guidelines
+
+#### Label and Styling
+
+- Keep chip text short and easily scannable. Long text disrupts layouts and diminishes the chip’s visual impact.
+- Avoid overuse. Too many chips in one area can create visual clutter.
+- Use the “&--variant” property to apply the color variant that best works on the background, keeping it consistent throughout the product.
+
+#### Chips and Flags
+
+- sd-chip and [sd-flag](/?path=/docs/styles-sd-flag--docs) can be used for similar purposes. Use them consistently throughout your product and, if both are needed, be sure to define which categories each should be used for (e.g. a chip on an article teaser informs about its subject, the flag about the type of article).
+
+#### Chips and Tags
+
+- Use only as a non-interactive element; for interactive elements (e.g., a dynamic filter), use [sd-tag](/?path=/docs/styles-sd-tag--docs) instead.
+
+### Accessibility Information
+
+- Since chips are non-interactive, ensure they are marked in a way that prevents them from receiving focus.
+- If the chip text is already conveyed in the teaser body, consider hiding the chip from screen readers using aria-hidden="true" to prevent repeating the same information.
+- If the chip adds unique context, it should be part of the teaser’s overall accessible description.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Styles/sd-chip/Overview" />
+
+<OverviewFormatter story={SdChipStories.Default}>{content}</OverviewFormatter>

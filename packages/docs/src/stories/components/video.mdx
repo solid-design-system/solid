@@ -1,0 +1,62 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdVideoStories from './video.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/components-sd-video--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=1664-16133&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs': 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=12785-38790&m'
+};
+
+export const content = `
+# Video
+
+Used to embed and control videos.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Templates
+
+[Video](/?path=/docs/templates-video--docs)
+
+### Common Use Cases
+
+- Promote new products, services, or events.
+- Embed instructional content to guide users through complex processes or tutorials.
+- Display educational clips in e-learning applications.
+
+### Usage Guidelines
+
+#### Content
+
+- Include a description of the content.
+- Use the “poster” slot to display a descriptive image before playback, giving users a preview of the content.
+- Use the “&--copyright” property to display a copyright.
+
+#### Behavior and Interaction
+
+- Provide controls to allow users to play and pause.
+- Avoid autoplaying content with sound, as it can be disruptive; if autoplay is necessary, consider muting the audio.
+- Ensure users have control over playback to prevent unexpected starts.
+
+#### Performance and Loading
+
+- Use appropriate formats and compress video files without significant quality loss to optimize loading times and performance.
+- Limit the number of media items on a single page to prevent slowing down page load times.
+
+### Accessibility Information
+
+- Disable or limit autoplay features. Unsolicited audio can disorient or overwhelm users, particularly screen reader users.
+- Provide captions or subtitles for video content to support users who are deaf or hard of hearing.
+- Offer a transcript (text version) if the video contains spoken dialogue or other critical audio elements.
+- Make status announcements (e.g., “Video paused,” “Video started”) if needed, via aria-live or a similar approach.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-video/Overview" />
+
+<OverviewFormatter story={SdVideoStories.Default}>{content}</OverviewFormatter>

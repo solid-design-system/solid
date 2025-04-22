@@ -1,0 +1,60 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdHiddenLinksStories from './hidden-links.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/styles-sd-hidden-links--docs'
+};
+
+export const content = `
+# Hidden Links
+
+Used to show links only for keyboard users.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Templates
+
+- [Dropdown with Navigation Items](/?path=/docs/templates-dropdown--docs#dropdown-with-navigation-items)
+- [Dropdown with Navigation Items](/http://localhost:6999/?path=/docs/templates-dropdown--docs)
+
+### Common Use Cases
+
+- Provide skip-to-content links for screen readers or keyboard users to bypass repetitive navigation and jump directly to the main content.
+- Boost SEO by creating internal links that help search engines crawl and index content, even if the links aren’t visible to sighted users.
+
+### Usage Guidelines
+
+#### Implementation & Behavior
+
+- Include at least one “Skip to Content” link, visible on first Tab press.
+- Reveal up to three hidden links sequentially as the user tabs through.
+- Use a hidden dropdown if more than three links are needed, auto-focusing the first menu item.
+
+#### Focus & Navigation
+
+- Ensure each hidden link is visible on focus and follows a logical tab order.
+- Dismiss the hidden link or menu once a selection is made or the user tabs away.
+
+#### Labels & Clarity
+
+- Use concise, descriptive labels (e.g., “Skip to Footer”).
+- Avoid creating duplicate or overlapping hidden links that offer the same navigation outcomes.
+
+#### SEO Impact
+
+- Link to relevant content so search engines can still crawl hidden links.
+- Ensure hidden links provide genuine value; empty or misleading links can negatively affect both user experience and SEO.
+
+### Accessibility Information
+
+- Always include a skip link to meet WCAG 2.2 Level AA compliance.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Styles/sd-hidden-links/Overview" />
+
+<OverviewFormatter story={SdHiddenLinksStories.Default}>{content}</OverviewFormatter>
