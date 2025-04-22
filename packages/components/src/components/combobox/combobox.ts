@@ -9,6 +9,7 @@ import { filterOnlyOptgroups, getAllOptions, getAssignedElementsForSlot, normali
 import { FormControlController } from '../../internal/form.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry.js';
 import { HasSlotController } from '../../internal/slot.js';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize.js';
 import { property, query, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll.js';
@@ -126,6 +127,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   /** @internal */
   @state() showInvalidStyle = false;
 
+  /** @internal */
+  @state() private deletedTagLabel = '';
+
   /** The name of the combobox, submitted as a name/value pair with form data. */
   @property({ reflect: true }) name = '';
 
@@ -197,6 +201,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   /** The combobox's required attribute. */
   @property({ type: Boolean, reflect: true }) required = false;
+
+  /**
+   * The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults
+   * to `text`.
+   */
+  @property({ type: String, reflect: true }) type: 'search' | 'text' = 'text';
 
   /**
    * The actual current placement of the select's menu sourced from `sd-popup`.
@@ -299,6 +309,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     const renderOption = (option: SdOption) => {
       const queryString = this.displayInput.value;
       const optionHtml = this.getOption(option, queryString);
+      option.tabIndex = 0;
+
       return html`${typeof optionHtml === 'string' ? unsafeHTML(optionHtml) : optionHtml}`;
     };
 
@@ -392,9 +404,18 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   };
 
   private handleDocumentKeyDown = (event: KeyboardEvent) => {
+    const path = event.composedPath();
+    const isComboboxButton = path.some(
+      el => el instanceof HTMLButtonElement && el.classList.contains('combobox-button')
+    );
+
     if (this.visuallyDisabled) {
       event.preventDefault();
       event.stopPropagation();
+      return;
+    }
+
+    if (isComboboxButton) {
       return;
     }
 
@@ -516,7 +537,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   };
 
   private handleTagKeyDown(event: KeyboardEvent, option: SdOption) {
-    if (event.key === 'Backspace' && this.multiple) {
+    if ((event.key === 'Backspace' || event.key === 'Enter' || event.key === ' ') && this.multiple) {
       event.preventDefault();
       event.stopPropagation();
       this.handleTagRemove(new CustomEvent('sd-remove'), option);
@@ -525,7 +546,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   }
 
   private handleTagMaxOptionsKeyDown(event: KeyboardEvent) {
-    if (event.key === 'Backspace' && this.multiple) {
+    if ((event.key === 'Backspace' || event.key === 'Enter' || event.key === ' ') && this.multiple) {
       event.preventDefault();
       event.stopPropagation();
       this.handleTagRemove(new CustomEvent('sd-remove'), this.selectedOptions[this.selectedOptions.length - 1]);
@@ -549,7 +570,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     if (option && !this.disabled) {
       this.toggleOptionSelection(option, false);
       this.setOrderedSelectedOptions(option);
-      // Emit after updating
+      this.deletedTagLabel = '';
+      this.deletedTagLabel = this.localize.term('removed', option.textContent);
       this.updateComplete.then(() => {
         this.selectionChanged();
         this.emit('sd-input');
@@ -684,7 +706,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       const previousIndex = currentIndex - 1;
       newIndex = previousIndex < 0 ? filteredOptions.length - 1 : previousIndex;
     }
-    this.setCurrentOption(filteredOptions[newIndex]);
+    this.setCurrentOption(filteredOptions[newIndex], new KeyboardEvent('keydown'));
     // @ts-expect-error Check later
     scrollIntoView(this.getCurrentOption(), this.listbox, 'vertical', 'auto');
   }
@@ -699,7 +721,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   // Sets the current option, which is the option the user is currently interacting with
   // (e.g. via keyboard). Only one option may be "current" at a time.
-  private setCurrentOption(option: SdOption | null) {
+  private setCurrentOption(option: SdOption | null, event?: KeyboardEvent | MouseEvent) {
     const allFilteredOptions = this.getAllFilteredOptions();
 
     // Clear selection
@@ -708,6 +730,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     allFilteredOptions.forEach(el => {
       el.current = false;
       el.setAttribute('aria-selected', 'false');
+      el.isKeyboardFocus = false;
     });
 
     // Select the target option
@@ -715,6 +738,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       option.current = true;
       option.setAttribute('aria-selected', 'true');
       this.displayInput.setAttribute('aria-activedescendant', option.id);
+    }
+
+    if (option && event?.type === 'keydown') {
+      option.isKeyboardFocus = true;
     }
   }
 
@@ -1177,6 +1204,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           <slot name="label">${this.label}</slot>
         </label>
 
+        <span aria-live="polite" class="sr-only">${this.deletedTagLabel}</span>
+
         <div part="form-control-input" class="relative w-full bg-white text-black">
           <div
             part="border"
@@ -1347,19 +1376,42 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                   iconSize
                 )}
               >
-                <sd-icon
-                  class=${cx('transition-all', this.open ? 'rotate-180' : 'rotate-0')}
-                  name="chevron-down"
-                  part="chevron"
-                  library="system"
-                  color="currentColor"
-                ></sd-icon>
+                ${this.type !== 'search'
+                  ? html`<sd-icon
+                      class=${cx('transition-all', this.open ? 'rotate-180' : 'rotate-0')}
+                      name="chevron-down"
+                      part="chevron"
+                      library="system"
+                      color="currentColor"
+                      label=${this.localize.term('open')}
+                    ></sd-icon>`
+                  : ''}
               </slot>
+              ${this.type === 'search'
+                ? html`
+                    <button class=${cx('flex items-center sd-interactive', iconMarginLeft)} type="button">
+                      <sd-icon
+                        class=${cx(iconColor, iconSize)}
+                        library="system"
+                        name="magnifying-glass"
+                        label=${this.localize.term('search')}
+                      ></sd-icon>
+                    </button>
+                  `
+                : html`
+                    <button
+                      class="sd-interactive combobox-button absolute top-2"
+                      @keydown=${this.handleComboboxMouseDown}
+                      type="button"
+                    >
+                      <span class="sr-only">${this.localize.term('open')}</span>
+                    </button>
+                  `}
             </div>
 
             <div
               id="listbox"
-              role="listbox"
+              role=${ifDefined(!this.multiple ? 'listbox' : undefined)}
               aria-expanded=${this.open}
               aria-multiselectable=${this.multiple}
               aria-labelledby="label"
@@ -1375,7 +1427,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               @mousedown=${this.preventLoosingFocus}
               @mouseup=${this.handleOptionClick}
             >
-              <div part="filtered-listbox" class="overflow-y-scroll">
+              <div part="filtered-listbox">
                 ${this.filteredOptions.length === 0
                   ? html`<span
                       id="noResults"
@@ -1417,6 +1469,18 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       :host([visually-disabled]) ::placeholder,
       :host([disabled]) ::placeholder {
         @apply text-neutral-500;
+      }
+
+      :host([size='sm']) .combobox-button {
+        @apply h-4 w-4 right-4;
+      }
+
+      :host([size='md']) .combobox-button {
+        @apply h-6 w-6 right-[.85rem];
+      }
+
+      :host([size='lg']) .combobox-button {
+        @apply h-8 w-8 right-3;
       }
 
       [part='listbox'] {
