@@ -1419,6 +1419,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         @apply text-neutral-500;
       }
 
+      :host([visually-disabled]) input {
+        caret-color: transparent;
+      }
+
       [part='listbox'] {
         max-height: var(--auto-size-available-height, auto);
       }
