@@ -554,10 +554,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
     // Render
     return html`
-      <div
-        part="form-control"
-        class=${cx(this.disabled && 'pointer-events-none', this.visuallyDisabled && 'cursor-not-allowed')}
-      >
+      <div part="form-control" class=${cx((this.disabled || this.visuallyDisabled) && 'cursor-not-allowed')}>
         ${hasLabel || hasTooltip
           ? html`<div class="flex items-center gap-1 mb-2">
               <label
@@ -574,7 +571,14 @@ export default class SdInput extends SolidElement implements SolidFormControl {
             </div>`
           : null}
 
-        <div part="form-control-input" class=${cx('relative w-full', this.visuallyDisabled && 'cursor-not-allowed')}>
+        <div
+          part="form-control-input"
+          class=${cx(
+            'relative w-full',
+            this.disabled && 'pointer-events-none',
+            this.visuallyDisabled && 'cursor-not-allowed'
+          )}
+        >
           <div
             part="border"
             class=${cx('absolute w-full h-full pointer-events-none border rounded-default', borderColor)}
@@ -603,10 +607,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               id="input"
               class=${cx(
                 'min-w-0 flex-grow focus:outline-none bg-transparent',
-                this.visuallyDisabled || this.disabled ? 'placeholder-neutral-500' : 'placeholder-neutral-700',
+                this.visuallyDisabled || this.disabled
+                  ? 'placeholder-neutral-500 cursor-not-allowed'
+                  : 'placeholder-neutral-700',
                 this.size === 'sm' ? 'h-6' : 'h-8',
-                textSize,
-                this.visuallyDisabled && 'cursor-not-allowed'
+                textSize
               )}
               type=${this.type === 'password' && this.passwordVisible ? 'text' : this.type}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
