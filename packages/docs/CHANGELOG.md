@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 1.13.11
+
+### Patch Changes
+
+- Added `sd-dialog` new known browser issue. _[`#2140`](https://github.com/solid-design-system/solid/pull/2140) [`034046c`](https://github.com/solid-design-system/solid/commit/034046c54cc0455dc159a2c00a683138e34874f7) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Implemented new `Prevent Closing` story on `sd-dialog` templates.
+
 ## 1.13.10
 
 ### Patch Changes
