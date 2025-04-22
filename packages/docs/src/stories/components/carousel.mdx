@@ -1,0 +1,199 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdCarouselStories from './carousel.stories';
+
+export const links = {
+  'storybook-docs': './?path=/docs/components-sd-carousel--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=3252-22063&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2233-2414&t=pFHk5gNX1Hj4l15o-4'
+};
+
+export const content = `
+# Carousel
+
+Used to display an arbitrary number of content slides along a horizontal axis.
+
+On touch devices, the slides can be moved by swiping.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Components
+
+[sd-carousel-item](./?path=/docs/components-sd-carousel-item--docs)
+
+#### Related Templates
+
+[Carousel](./?path=/docs/templates-carousel--docs)
+
+### Common Use Cases
+
+- Highlight key features or promotions in a compact, rotating format.
+- Create interactive galleries for users to browse through images or videos.
+- Showcase testimonials or reviews to build credibility and trust.
+
+### Usage Guidelines
+
+#### Content and Style
+
+- Ensure consistency in content and style across slides by following a similar layout and type of information.
+
+#### Usage and Interaction
+
+- Adapt the "slides per move" attribute to "slides per page" as needed, but keep the total number of available slides in mind: avoid moving more than one slide at a time if there are only a few slides.
+- Refrain from placing critical content in a rotating format, as users may miss it.
+- Enable swipe gestures to move slides on touch devices, while keeping the navigation arrows visible at all times.
+- Avoid enabling autoplay if possible. If necessary, ensure there is an option to stop any automatic movement.
+- Consider alternatives to carousels whenever possible, as they can be difficult for some users to navigate comfortably. Options such as accordions or tabs, for example, offer a more accessible way to present content.
+
+#### Background
+
+- Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
+
+### Accessibility Information
+
+- Navigation arrows are still displayed on touch devices to enable alternative interaction that complies with accessibility requirements.
+- Always display the pause/play control when the carousel is set to autoplay.
+- Ensure sufficient contrast between each slide’s content and its background.
+
+#### ARIA Labels
+
+- Use appropriate ARIA roles, such as ’aria-roledescription="carousel"’and ”aria-live” to indicate the state of the carousel and announce dynamic changes to screen reader users.
+- Add the role="region" attribute together with an unique aria-label whenever the carousel is an important landmark of the page.
+- For purely decorative images, ALT-tags should be left empty so that screen readers can bypass them and concentrate on conveying meaningful content.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+
+#### Screen readers misalignments:
+
+In the table below we identified the following issues:
+
+- Next/Previous Slide Buttons Announcement when clicking in the next/previous buttons.
+- Play/Pause Button Announcement when clicking in the respective button.
+
+<table class="sd-table w-full mt-3" role="region" tabindex="0" aria-label="Screen readers misalignments">
+  <thead>
+    <tr>
+      <th class="sd-table-cell sd-table-cell--bg-white">
+        <span class="sr-only">Announcements</span>
+      </th>
+      <th class="sd-table-cell sd-table-cell--bg-white text-center font-normal">Next/Previous Slide Buttons</th>
+      <th class="sd-table-cell sd-table-cell--bg-white text-center font-normal">Play/Pause Toggle Buttons</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">Chrome on macOS (VO)</td>
+      <td class="sd-table-cell sd-table-cell--bg-transparent text-center">
+        <div class="sd-status-badge sd-status-badge--error">
+          <sd-icon name="status-close" library="sd-status-assets"></sd-icon>
+        </div>
+      </td>
+      <td class="sd-table-cell sd-table-cell--bg-transparent text-center">
+        <div class="sd-status-badge sd-status-badge--warning">
+          <sd-icon name="status-exclamation" library="sd-status-assets"></sd-icon>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">Chrome on Windows (JAWS)</td>
+      <td class="sd-table-cell sd-table-cell--bg-transparent text-center">
+        <div class="sd-status-badge sd-status-badge--info">
+          <sd-icon name="status-info" library="sd-status-assets"></sd-icon>
+        </div>
+      </td>
+      <td class="sd-table-cell sd-table-cell--bg-transparent text-center">
+        <div class="sd-status-badge sd-status-badge--info">
+          <sd-icon name="status-info" library="sd-status-assets"></sd-icon>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">Chrome on Android (TalkBack)</td>
+      <td class="sd-table-cell sd-table-cell--bg-transparent text-center">
+        <div class="sd-status-badge sd-status-badge--error">
+          <sd-icon name="status-close" library="sd-status-assets"></sd-icon>
+        </div>
+      </td>
+      <td class="sd-table-cell sd-table-cell--bg-transparent text-center">
+        <div class="sd-status-badge sd-status-badge--success">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">Firefox on macOS (VO)</td>
+      <td class="sd-table-cell sd-table-cell--bg-transparent text-center">
+        <div class="sd-status-badge sd-status-badge--success">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+        </div>
+      </td>
+      <td class="sd-table-cell sd-table-cell--bg-transparent text-center">
+        <div class="sd-status-badge sd-status-badge--warning">
+          <sd-icon name="status-exclamation" library="sd-status-assets"></sd-icon>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">Firefox on Windows (NVDA)</td>
+      <td class="sd-table-cell sd-table-cell--bg-transparent text-center">
+        <div class="sd-status-badge sd-status-badge--error">
+          <sd-icon name="status-close" library="sd-status-assets"></sd-icon>
+        </div>
+      </td>
+      <td class="sd-table-cell sd-table-cell--bg-transparent text-center">
+        <div class="sd-status-badge sd-status-badge--success">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="sd-table-cell sd-table-cell--bg-transparent w-1/3">Safari on macOS (VO)</td>
+      <td class="sd-table-cell sd-table-cell--bg-transparent text-center">
+        <div class="sd-status-badge sd-status-badge--success">
+          <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+        </div>
+      </td>
+      <td class="sd-table-cell sd-table-cell--bg-transparent text-center">
+        <div class="sd-status-badge sd-status-badge--error">
+          <sd-icon name="status-close" library="sd-status-assets"></sd-icon>
+        </div>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+<div class="flex flex-col gap-3 mt-4">
+  <div>Legend:</div>
+  <div class="sd-status-badge sd-status-badge--success">
+    <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
+    <span>Success: Fully functional</span>
+  </div>
+  <div class="sd-status-badge sd-status-badge--warning">
+    <sd-icon name="status-exclamation" library="sd-status-assets"></sd-icon>
+    <span>Warning: Partially functional</span>
+  </div>
+  <div class="sd-status-badge sd-status-badge--error">
+    <sd-icon name="status-close" library="sd-status-assets"></sd-icon>
+    <span>Error: Not functional</span>
+  </div>
+  <div class="sd-status-badge sd-status-badge--info">
+    <sd-icon name="status-info" library="sd-status-assets"></sd-icon>
+    <span>Info: Not tested</span>
+  </div>
+</div>
+`;
+
+<Meta title="Components/sd-carousel/Overview" />
+
+<OverviewFormatter story={SdCarouselStories.Default}>{content}</OverviewFormatter>

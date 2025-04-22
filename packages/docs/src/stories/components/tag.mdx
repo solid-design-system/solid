@@ -1,0 +1,56 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdTagStories from './tag.stories';
+
+export const links = {
+  'storybook-docs': './?path=/docs/components-sd-tag--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=679-13601&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2106-20479&t=pFHk5gNX1Hj4l15o-4'
+};
+
+export const content = `
+# Tag
+
+Used to categorise or label content. Can also be used to filter or search for content.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Templates
+
+[Tag](./?path=/docs/templates-tag--docs)
+
+### Common Use Cases
+
+- Label and categorize items to help users filter and find relevant content.
+- Highlight important keywords or attributes associated with an item.
+- Allow users to filter content dynamically by clicking on tags.
+- Display topics or categories associated with an article, post or product.
+
+### Usage Guidelines
+
+#### Labels
+
+- Try to keep a similar text length for all labels, and specially avoid excessively long ones. If necessary, truncate the label and show the full text in a tooltip on hover.
+- Don’t use tags to indicate the status of a task, use [sd-status-badge](./?path=/docs/styles-sd-status-badge--docs) instead.
+
+#### Behavior
+
+- Use the “removable” attribute to include a small close “x” button next to the label.
+- Avoid using a standalone, non-removable tag, as its selected/unselected state could be unclear. Apply the “removable” attribute for those cases.
+
+#### Interactivity
+
+- Tags are interactive elements which trigger an action; to label or categorise items without any interaction use [sd-chip](./?path=/docs/styles-sd-chip--docs) or [sd-flag](./?path=/docs/styles-sd-flag--docs) instead.
+
+### Accessibility Information
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-tag/Overview" />
+
+<OverviewFormatter story={SdTagStories.Default}>{content}</OverviewFormatter>

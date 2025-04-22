@@ -49,6 +49,12 @@ export default class SdOption extends SolidElement {
    */
   @state() hasHover = false;
 
+  /**
+   * the option is focused by a keyboard event
+   * @internal
+   */
+  @state() isKeyboardFocus = false;
+
   /** The option's size is inherited automatically from the `size` attribute of the parent `sd-select`. */
   @property({ type: String, reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
@@ -138,6 +144,7 @@ export default class SdOption extends SolidElement {
           }[this.size],
           this.disabled ? 'text-neutral-700 cursor-not-allowed' : 'cursor-pointer',
           this.hasHover && !this.disabled ? 'bg-neutral-200' : '',
+          this.isKeyboardFocus ? 'focus-outline focus-outline-offset' : '',
           this.current && 'bg-neutral-200'
         )}
         @mouseenter=${this.handleMouseEnter}
@@ -187,6 +194,10 @@ export default class SdOption extends SolidElement {
     css`
       :host {
         @apply block relative w-full !outline-none;
+      }
+
+      .focus-outline-offset {
+        outline-offset: -2px;
       }
     `
   ];

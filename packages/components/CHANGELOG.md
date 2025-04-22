@@ -1,5 +1,37 @@
 # @solid-design-system/components
 
+## 4.6.13
+
+### Patch Changes
+
+- Improved `sd-notification` accessibility: _[`#2101`](https://github.com/solid-design-system/solid/pull/2101) [`fc8514e`](https://github.com/solid-design-system/solid/commit/fc8514ea809e0ad1869953b7cb08dcffd842294c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Improved consistency on screen reader announcements.
+  - `sd-notification` will now use existing toast stacks if present in the DOM with specific IDs. If not existent, it will be automatically created as a fallback.
+
+### 📈 Stats
+* Uncompressed: 421 KB (-1 KB / 0%)
+* Gzipped: 99 KB (unchanged)
+
+## 4.6.12
+
+### Patch Changes
+
+- Improve `sd-select` and `sd-combobox` a11y: _[`#2154`](https://github.com/solid-design-system/solid/pull/2154) [`bb67377`](https://github.com/solid-design-system/solid/commit/bb673772c5ce0216c229c999604024804c8c0d59) [@smfonseca](https://github.com/smfonseca)_
+
+  - Add focus state style to `sd-option`.
+  - Handle option focus inside `sd-select` and `sd-combobox`.
+  - Add invisible button to open `sd-combobox` with TalkBack.
+  - Expand tag removal to include handling with `enter` and `space` keys in addition to `backspace`.
+  - Separate tag text and removable indicator to it's own button to improve the component usability and clarity.
+  - Add translatable label to `sd-tag` removable button.
+  - Improve tag removal announcements.
+
+### 📈 Stats
+
+- Uncompressed: 422 KB (+3 KB / +1%)
+- Gzipped: 99 KB (+1 KB / +1%)
+
 ## 4.6.11
 
 ### Patch Changes

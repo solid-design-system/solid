@@ -6,16 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-checkbox-group');
 const { generateTemplate } = storybookTemplate('sd-checkbox-group');
 const { overrideArgs } = storybookHelpers('sd-checkbox-group');
 
-/**
- * Used to select multiple options from a list of options.
- *
- * **Related components:**
- * - [sd-checkbox](?path=/docs/components-sd-checkbox--docs)
- *
- * **Related templates:**
- * - [Checkbox Group](?path=/docs/templates-checkbox-group--docs)
- * - [Checkbox Group with Tooltip](?path=/docs/templates-tooltip--docs)
- */
 export default {
   title: 'Components/sd-checkbox-group',
   component: 'sd-checkbox-group',
@@ -122,7 +112,7 @@ export const HelpText = {
   name: 'Help Text',
   render: () => html`
     <div class="flex gap-12">
-      <sd-checkbox-group orientation="vertical" help-text="Help text attribute">
+      <sd-checkbox-group orientation="vertical" help-text="Help text">
         <label slot="label">Group Label</label>
         <sd-checkbox value="1">Checkbox 1</sd-checkbox>
         <sd-checkbox value="2">Checkbox 2</sd-checkbox>

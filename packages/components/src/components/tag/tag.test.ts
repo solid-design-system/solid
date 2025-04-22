@@ -75,6 +75,14 @@ describe('<sd-tag>', () => {
       el = await fixture<SdTag>(html`<sd-tag removable>Tag</sd-tag>`);
       await expect(el).to.be.accessible();
     });
+
+    it('should display translated placeholder if lang attribute is set', async () => {
+      el = await fixture<SdTag>(html` <sd-tag lang="de" removable>Tag</sd-tag> `);
+
+      const button = el.shadowRoot!.querySelector('[part="removable-indicator"] sd-icon');
+
+      expect(button?.getAttribute('label')).to.equal('Entfernen');
+    });
   });
 
   describe('when disabled', () => {

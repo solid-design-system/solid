@@ -6,15 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-flipcard');
 const { generateTemplate } = storybookTemplate('sd-flipcard');
 const { overrideArgs } = storybookHelpers('sd-flipcard');
 
-/**
- * Used to display content on one side and reveal additional information when flipped.
- *
- * **Accessibility Hint**:
- * Front flipcards should not contain any action items. If an action is necessary, consider placing it on the back of the card (once flipped) or in a separate area.
- *
- * **Related templates**:
- * - [Flipcard](?path=/docs/templates-flipcard--docs)
- */
 export default {
   title: 'Components/sd-flipcard',
   tags: ['!dev'],

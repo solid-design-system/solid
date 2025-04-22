@@ -7,19 +7,6 @@ const { argTypes, parameters } = storybookDefaults('sd-radio-button');
 const { overrideArgs } = storybookHelpers('sd-radio-button');
 const { generateTemplate } = storybookTemplate('sd-radio-button');
 
-/**
- * Used to switch between different options or views by selecting one option from a group.
- *
- * Similar to `sd-radio`, it has to be slotted inside of an `sd-radio-group`. It does not have an invalid state and should always have a pre-selected option (default value).
- *
- * **Related components:**
- * - [sd-radio](?path=/docs/components-sd-radio--docs)
- * - [sd-radio-group](?path=/docs/components-sd-radio-group--docs)
- *
- * **Related templates:**
- * - [Radio Button Group](?path=/docs/templates-radio-button-group--docs)
- */
-
 export default {
   title: 'Components/sd-radio-button',
   tags: ['!dev'],

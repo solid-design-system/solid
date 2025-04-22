@@ -1,0 +1,70 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdFootnotesStories from './footnotes.stories';
+
+export const links = {
+  'storybook-docs': './?path=/docs/styles-sd-footnotes--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=3763-24329&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2314-31821&node-type=canvas&t=ExKWUj3vUoucvcVt-0'
+};
+
+export const content = `
+# Footnotes
+
+Used to add additional information/sources related to the content.
+
+When clicking on a sd-footnotes reference, a sd-footnotes--marker is highlighted. In Safari it also applies the focus-visible outline, due to browser behaviour.
+
+When using keyboard navigation on Safari v17 or lower, sd-footnotes--marker inside sd-footnotes are unreachable due to absolute position.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Templates
+
+[Footnotes](./?path=/docs/templates-footnotes--docs)
+
+### Common Use Cases
+
+- Provide additional context or clarification for terms, concepts, or data mentioned in the main text.
+- Cite sources and references for quotes, statistics, or research findings, ensuring proper attribution and credibility.
+- Link to related content or further reading.
+
+### Usage Guidelines
+
+#### Content & Labeling
+
+- Keep footnotes concise—use them to offer extra details or citations without cluttering the main content. If a longer explanation is required, consider linking to the source instead.
+- Number each footnote consistently (e.g., [1], [2], [3]) to ensure clarity when multiple notes are present.
+
+#### Return Points
+
+- Use the footnote [number] itself for a direct “back” navigation, allowing users to quickly return to the original reading position.
+- If the same footnote is referenced from multiple places, use the “Multiple” attribute and provide distinct links labeled “a”, “b”, “c” to guide users back to each relevant section.
+
+#### Background
+
+- Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
+
+### Accessibility Information
+
+- Set links to jump between footnote marker and footnote.
+- Include meaningful text for the “back” links (e.g., “Return to content”), to ensure users can quickly navigate to the originating text.
+- Ensure that the footnote markers are included in the document's natural tab order, allowing users to navigate to them using the Tab key.
+- Allow users to navigate between footnotes within the footnote section using the arrow keys.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+
+<sd-notification variant="warning" open>**Known browser issues:**
+
+- When clicking on a "sd-footnotes" reference, a "sd-footnotes--marker" is highlighted.
+- In Safari it also applies the "focus-visible" outline, due to browser behaviour.
+- When using keyboard navigation on Safari v17 or lower, "sd-footnotes--marker" inside "sd-footnotes" are unreachable due to absolute position.</sd-notification>`;
+
+<Meta title="Styles/sd-footnotes/Overview" />
+
+<OverviewFormatter story={SdFootnotesStories.Default}>{content}</OverviewFormatter>
