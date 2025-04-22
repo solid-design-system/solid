@@ -130,7 +130,7 @@ export const VisuallyDisabled = {
   name: 'Visually Disabled',
   render: () => html`
     <div class="w-[500px] mt-12">
-      <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm">
+      <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm">
         <sd-textarea
           size="lg"
           label="Label"

@@ -93,7 +93,7 @@ export const VisuallyDisabled = {
   name: 'Visually Disabled',
   render: () => html`
     <sd-radio-group label="Visually Disabled" boldLabel value="1">
-      <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm">
+      <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm">
         <sd-radio value="1" visually-disabled>Radio 1</sd-radio>
       </sd-tooltip>
     </sd-radio-group>
