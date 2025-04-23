@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 4.6.16
+
+### Patch Changes
+
+- Add focus state to elements with the `visually-disabled` attribute for improved accessibility. _[`#2157`](https://github.com/solid-design-system/solid/pull/2157) [`5c20e76`](https://github.com/solid-design-system/solid/commit/5c20e76b6910a97a2cd83710b8f3614e16622897) [@smfonseca](https://github.com/smfonseca)_
+
+  Update cursor pointer when `sd-input` is disabled.
+
+  Update `sd-option` text color when disabled.
+
 ## 4.6.15
 
 ### Patch Changes
@@ -10,8 +20,9 @@
   - Ensure the headline is the first element in the teaser's DOM structure.
 
 ### 📈 Stats
-* Uncompressed: 422 KB (+1 KB / +0%)
-* Gzipped: 99 KB (unchanged)
+
+- Uncompressed: 422 KB (+1 KB / +0%)
+- Gzipped: 99 KB (unchanged)
 
 ## 4.6.14
 
