@@ -167,7 +167,7 @@ export const FormWithVisuallyDisabledElements = {
           </sd-checkbox>
           <sd-tooltip
             content="Accept Policy Privacy to enable field"
-            trigger="click focus"
+            trigger="hover focus"
             size="sm"
             class="checkbox-tooltip"
           >
@@ -181,7 +181,7 @@ export const FormWithVisuallyDisabledElements = {
       <div class="flex flex-col gap-4 md:flex-row md:justify-end">
         <sd-tooltip
           content="Fill in all fields to enable button"
-          trigger="click focus"
+          trigger="hover focus"
           size="sm"
           class="button-tooltip"
         >

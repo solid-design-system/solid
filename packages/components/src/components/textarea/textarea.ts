@@ -335,7 +335,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     // Hierarchy of textarea states:
     const textareaState = this.disabled
       ? 'disabled'
-      : this.visuallyDisabled
+      : this.visuallyDisabled && !this.hasFocus
         ? 'visuallyDisabled'
         : this.readonly
           ? 'readonly'
@@ -343,7 +343,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
             ? 'activeInvalid'
             : this.hasFocus && this.styleOnValid && this.showValidStyle
               ? 'activeValid'
-              : this.hasFocus && !this.visuallyDisabled
+              : this.hasFocus
                 ? 'active'
                 : this.showInvalidStyle
                   ? 'invalid'

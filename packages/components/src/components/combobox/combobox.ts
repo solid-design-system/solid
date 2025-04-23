@@ -1158,7 +1158,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     // Hierarchy of input states:
     const selectState = this.disabled
       ? 'disabled'
-      : this.visuallyDisabled
+      : this.visuallyDisabled && !this.hasFocus
         ? 'visuallyDisabled'
         : this.hasFocus && this.showInvalidStyle
           ? 'activeInvalid'
@@ -1469,6 +1469,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       :host([visually-disabled]) ::placeholder,
       :host([disabled]) ::placeholder {
         @apply text-neutral-500;
+      }
+
+      :host([visually-disabled]) input {
+        caret-color: transparent;
       }
 
       :host([size='sm']) .combobox-button {
