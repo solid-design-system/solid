@@ -1,0 +1,58 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdDropdownStories from './dropdown.stories';
+
+export const links = {
+  'storybook-docs': './?path=/docs/components-sd-dropdown--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=655-12358&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2357-10911&t=pFHk5gNX1Hj4l15o-4'
+};
+
+export const content = `
+# Dropdown
+
+Used to display a list of actions or options in a panel when activated.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Templates
+
+[Dropdown](./?path=/docs/templates-dropdown--docs)
+
+### Common Use Cases
+
+- Provide a list of items in a compact space.
+- Display additional options or settings related to a specific item.
+- Enable navigation through different sections or categories.
+
+### Usage Guidelines
+
+#### Behavior
+
+- Avoid hiding sets of less than 4 items in dropdowns.
+- Refrain from nesting dropdowns within each other. If nesting is strictly necessary, limit the menu to two layers to prevent complex operation and cognitive load.
+- Keep the panel near its trigger so users understand its context.
+
+#### Triggers
+
+- Maintain consistent styling for dropdown triggers placed at the same level or in the same group; i.e., if a trigger has both text and icon, other triggers on the same level or group should also display text and icon.
+- Avoid truncating trigger labels if possible.
+
+#### Panel Items
+
+- Group related panel items to make them easier to find, especially if there are many. Use a group label and [sd-divider](./?path=/docs/components-sd-divider--docs) to separate them visually.
+
+### Accessibility Information
+
+- Ensure that when the menu is triggered via keyboard, the first item receives focus.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-dropdown/Overview" />
+
+<OverviewFormatter story={SdDropdownStories.Default}>{content}</OverviewFormatter>

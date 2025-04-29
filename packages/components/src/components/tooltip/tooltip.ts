@@ -136,8 +136,15 @@ export default class SdTooltip extends SolidElement {
     document.removeEventListener('keydown', this.handleKeyboardInteraction);
   }
 
+  private get hasCustomTrigger() {
+    return !!this.querySelector('*:not([slot])');
+  }
+
   // removes empty text nodes from the default slot
-  private formatDefaultSlot(slot: HTMLSlotElement) {
+  private formatDefaultSlot(slot: HTMLSlotElement | null) {
+    if (!slot) {
+      return;
+    }
     const nodes = slot.assignedNodes({ flatten: true });
     nodes.forEach(node => {
       if (node.nodeType === Node.TEXT_NODE && !node?.textContent?.trim()) {
@@ -266,8 +273,15 @@ export default class SdTooltip extends SolidElement {
     if (!this.open) {
       return undefined;
     }
+
     this.open = false;
-    this.blur();
+
+    if (this.trigger === 'click' || this.trigger === 'click focus') {
+      this.focus();
+    } else {
+      this.blur();
+    }
+
     return waitForEvent(this, 'sd-after-hide');
   }
 
@@ -294,23 +308,31 @@ export default class SdTooltip extends SolidElement {
         auto-size="vertical"
         arrow-padding="0"
       >
-        <slot slot="anchor" class=${cx(this.size === 'lg' ? 'text-xl' : 'text-base')}>
-          <button aria-describedby="tooltip" class="flex sd-interactive rounded-full" ?disabled=${this.disabled}>
-            <sd-icon
-              library="system"
-              name="info-circle"
-              label="Tooltip"
-              class=${cx(this.disabled && 'sd-interactive--disabled')}
-            ></sd-icon>
-          </button>
-        </slot>
+        <!-- Dev note: This condition addresses a Safari limitation where VoiceOver ignores the tooltip if its trigger is placed inside a slot. -->
+        ${this.hasCustomTrigger
+          ? html` <slot slot="anchor"></slot>`
+          : html`<button
+              slot="anchor"
+              aria-describedby="tooltip"
+              class=${cx('flex sd-interactive rounded-full', this.size === 'lg' ? 'text-xl' : 'text-base')}
+              ?disabled=${this.disabled}
+              aria-expanded=${this.open}
+              aria-controls="tooltip"
+            >
+              <sd-icon
+                library="system"
+                name="info-circle"
+                label="Tooltip"
+                class=${cx(this.disabled && 'sd-interactive--disabled')}
+              ></sd-icon>
+            </button>`}
         <slot
           name="content"
           part="body"
           id="tooltip"
           class=" bg-primary text-white py-3 px-4 block rounded-none text-sm text-left"
           role="tooltip"
-          aria-label="Tooltip"
+          aria-label=${this.content}
           aria-live=${this.open ? 'polite' : 'off'}
         >
           ${this.content}

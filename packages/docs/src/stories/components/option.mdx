@@ -1,0 +1,59 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdOptionStories from './option.stories';
+
+export const links = {
+  'storybook-docs': './?path=/docs/components-sd-option--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=18060-403&t=1CVYCf1P9vhvItGw-4',
+  'figma-docs': 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=9809-71199&m'
+};
+
+export const content = `
+# Option
+
+Used to define selectable items within various form controls such as select.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Components
+
+- [sd-select](./?path=/docs/components-sd-select--docs)
+- [sd-combobox](./?path=/docs/components-sd-combobox--docs)
+
+#### Related Templates
+
+- [Autocomplete](./?path=/docs/templates-autocomplete--docs)
+
+### Common Use Cases
+
+- Provide options in selects or comboboxes.
+- Allow users to select from a list of predefined choices in forms or settings, where they might choose one or more options.
+- Present filter options in searches or data tables.
+
+### Usage Guidelines
+
+#### Content
+
+- Make sure all items in the list are mutually exclusive and unambiguous to help users understand what they are selecting.
+- Provide a default choice where applicable to guide users.
+
+#### Behavior
+
+- Use the “checkbox” variant for multi-select and the “default” variant for single-select choices.
+- Provide a reason or alternative if some choice is disabled.
+
+### Accessibility Information
+
+- Long option names can be difficult to understand and perceive, so it’s best to keep them concise.
+- Ensure that the beginning of each option is unique to avoid confusion, especially for screen reader users.
+- Don’t include headings or interactive elements like links, buttons, or checkboxes within dropdown options.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-option/Overview" />
+
+<OverviewFormatter story={SdOptionStories.Default}>{content}</OverviewFormatter>

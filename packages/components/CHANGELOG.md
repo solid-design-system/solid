@@ -1,5 +1,73 @@
 # @solid-design-system/components
 
+## 4.6.16
+
+### Patch Changes
+
+- Add focus state to elements with the `visually-disabled` attribute for improved accessibility. _[`#2157`](https://github.com/solid-design-system/solid/pull/2157) [`5c20e76`](https://github.com/solid-design-system/solid/commit/5c20e76b6910a97a2cd83710b8f3614e16622897) [@smfonseca](https://github.com/smfonseca)_
+
+  Update cursor pointer when `sd-input` is disabled.
+
+  Update `sd-option` text color when disabled.
+
+## 4.6.15
+
+### Patch Changes
+
+- Improved `sd-teaser` and `sd-teaser-media` accessibility: _[`#2120`](https://github.com/solid-design-system/solid/pull/2120) [`ec19bb7`](https://github.com/solid-design-system/solid/commit/ec19bb7b101ced45393850328b534981b6d90c29) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Maintain consistent behavior between hover and focus states.
+  - Ensure the headline is the first element in the teaser's DOM structure.
+
+### 📈 Stats
+
+- Uncompressed: 422 KB (+1 KB / +0%)
+- Gzipped: 99 KB (unchanged)
+
+## 4.6.14
+
+### Patch Changes
+
+- Improved `sd-tooltip` accessibility: _[`#2138`](https://github.com/solid-design-system/solid/pull/2138) [`6c61fde`](https://github.com/solid-design-system/solid/commit/6c61fde928d4fb2bf3cfb7355cb58d1f8dc42ec1) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - The button indicates whether it’s open;
+  - Keep focus on the button if trigger is click;
+  - Buttons are now accessible with VoiceOVer in Safari;
+  - Screen readers announce the tooltip content when it becomes visible;
+
+## 4.6.13
+
+### Patch Changes
+
+- Improved `sd-notification` accessibility: _[`#2101`](https://github.com/solid-design-system/solid/pull/2101) [`fc8514e`](https://github.com/solid-design-system/solid/commit/fc8514ea809e0ad1869953b7cb08dcffd842294c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Improved consistency on screen reader announcements.
+  - `sd-notification` will now use existing toast stacks if present in the DOM with specific IDs. If not existent, it will be automatically created as a fallback.
+
+### 📈 Stats
+
+- Uncompressed: 421 KB (-1 KB / 0%)
+- Gzipped: 99 KB (unchanged)
+
+## 4.6.12
+
+### Patch Changes
+
+- Improve `sd-select` and `sd-combobox` a11y: _[`#2154`](https://github.com/solid-design-system/solid/pull/2154) [`bb67377`](https://github.com/solid-design-system/solid/commit/bb673772c5ce0216c229c999604024804c8c0d59) [@smfonseca](https://github.com/smfonseca)_
+
+  - Add focus state style to `sd-option`.
+  - Handle option focus inside `sd-select` and `sd-combobox`.
+  - Add invisible button to open `sd-combobox` with TalkBack.
+  - Expand tag removal to include handling with `enter` and `space` keys in addition to `backspace`.
+  - Separate tag text and removable indicator to it's own button to improve the component usability and clarity.
+  - Add translatable label to `sd-tag` removable button.
+  - Improve tag removal announcements.
+
+### 📈 Stats
+
+- Uncompressed: 422 KB (+3 KB / +1%)
+- Gzipped: 99 KB (+1 KB / +1%)
+
 ## 4.6.11
 
 ### Patch Changes

@@ -1,0 +1,53 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdSwitchStories from './switch.stories';
+
+export const links = {
+  'storybook-docs': './?path=/docs/components-sd-switch--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=164-869&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2265-39406&t=pFHk5gNX1Hj4l15o-4'
+};
+
+export const content = `
+# Switch
+
+Used to give control over a feature or option that can be turned on or off.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+### Common Use Cases
+
+- Allow users to switch between two states.
+- Use to enable or disable settings, such as turning notifications on or off.
+- Toggle features or functionalities within an application, applying changes immediately.
+
+### Usage Guidelines
+
+#### Content
+
+- Make sure both the label and action are clear by using appropriate text.
+- Place label text on top of the control, such as in a header, while action text should be placed to the right, next to the control.
+- Use adjectives to describe actions, as they are less ambiguous than verbs.
+- Limit use to binary choices, such as "on/off" or "yes/no".
+
+#### Behavior
+
+- Use for actions that take effect immediately without requiring additional confirmation.
+- Ensure the visual state accurately reflects its functional state.
+- If it's unclear whether the component is showing a state or an action, use [sd-checkbox](./?path=/docs/components-sd-checkbox--docs) instead.
+
+### Accessibility Information
+
+- Consider alternatives to switches, as many users may find them confusing.
+- If the switch triggers dynamic changes (e.g., loading new content), provide a corresponding announcement.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-switch/Overview" />
+
+<OverviewFormatter story={SdSwitchStories.Default}>{content}</OverviewFormatter>

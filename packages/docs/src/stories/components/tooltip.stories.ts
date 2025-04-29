@@ -7,12 +7,6 @@ const { argTypes, parameters } = storybookDefaults('sd-tooltip');
 const { overrideArgs } = storybookHelpers('sd-tooltip');
 const { generateTemplate } = storybookTemplate('sd-tooltip');
 
-/**
- * Used as a floating and non-actionable text label that explains an element or function of the user interface.
- *
- *  **Related templates:**
- * - [Tooltip](?path=/docs/templates-tooltip--docs)
- */
 export default {
   title: 'Components/sd-tooltip',
   tags: ['!dev'],
@@ -204,11 +198,8 @@ export const CustomTrigger = {
       const tooltipLabel = tooltipContent;
 
       tooltip.addEventListener('sd-after-show', event => {
-        liveRegion.textContent = tooltipLabel;
-      });
-
-      tooltip.addEventListener('sd-after-hide', event => {
-        liveRegion.textContent = '';
+        liveRegion.textContent =
+          liveRegion.textContent === tooltipContent ? tooltipContent + '\\u200B' : tooltipContent;
       });
     </script>
   `

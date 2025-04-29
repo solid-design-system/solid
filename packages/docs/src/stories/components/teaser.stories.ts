@@ -6,16 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-teaser');
 const { overrideArgs } = storybookHelpers('sd-teaser');
 const { generateTemplate } = storybookTemplate('sd-teaser');
 
-/**
- * Used to group related subjects in a container, providing a preview of information and linking to further content.
- *
- * **Related components**:
- * - [sd-teaser-media](?path=/docs/components-sd-teaser-media--docs)
- *
- * **Related templates**:
- * - [Teaser](?path=/docs/templates-teaser--docs)
- * - [Teaser Media](?path=/docs/templates-teaser-media--docs)
- */
 export default {
   tags: ['!dev'],
   title: 'Components/sd-teaser',

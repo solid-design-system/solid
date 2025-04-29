@@ -7,12 +7,6 @@ const { argTypes, args, parameters } = storybookDefaults('sd-textarea');
 const { generateTemplate } = storybookTemplate('sd-textarea');
 const { overrideArgs } = storybookHelpers('sd-textarea');
 
-/**
- * Used to allow users to input and edit multiple lines of text.
- *
- * **Related templates:**
- * - [Textarea with Tooltip](?path=/docs/templates-tooltip--docs)
- */
 export default {
   title: 'Components/sd-textarea',
   tags: ['!dev'],
@@ -130,7 +124,7 @@ export const VisuallyDisabled = {
   name: 'Visually Disabled',
   render: () => html`
     <div class="w-[500px] mt-12">
-      <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm">
+      <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm">
         <sd-textarea
           size="lg"
           label="Label"

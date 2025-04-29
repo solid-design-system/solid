@@ -1,5 +1,61 @@
 # @solid-design-system/docs
 
+## 1.15.2
+
+### Patch Changes
+
+- Improved `sd-teaser` and `sd-teaser-media` accessibility: _[`#2120`](https://github.com/solid-design-system/solid/pull/2120) [`ec19bb7`](https://github.com/solid-design-system/solid/commit/ec19bb7b101ced45393850328b534981b6d90c29) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Ensure the headline is the first element in the teaser's DOM structure in all templates.
+  - Improve clickable teaser media:
+    - Whole card is clickable;
+    - Supports nested interactive elements;
+    - Improved screen reader verbosity;
+
+## 1.15.1
+
+### Patch Changes
+
+- Improved `sd-tooltip` accessibility: _[`#2138`](https://github.com/solid-design-system/solid/pull/2138) [`6c61fde`](https://github.com/solid-design-system/solid/commit/6c61fde928d4fb2bf3cfb7355cb58d1f8dc42ec1) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Custom trigger announcement.
+
+## 1.15.0
+
+### Minor Changes
+
+- Added a new `sd-status-badge` template to display user profiles with status indicators and a quick edit option. _[`#2156`](https://github.com/solid-design-system/solid/pull/2156) [`abcdfee`](https://github.com/solid-design-system/solid/commit/abcdfeed967405946519e245bf9eb239835e1d18) [@smfonseca](https://github.com/smfonseca)_
+
+### Patch Changes
+
+- Improved `sd-notification` a11y: _[`#2101`](https://github.com/solid-design-system/solid/pull/2101) [`fc8514e`](https://github.com/solid-design-system/solid/commit/fc8514ea809e0ad1869953b7cb08dcffd842294c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Added preloaded `sd-toast-stacks` to improve consistency within screen readers.
+  - Added documentation about the importance of adding preloaded `sd-toast-stacks`.
+
+## 1.14.1
+
+### Patch Changes
+
+- Update `sd-combobox` documentation: _[`#2154`](https://github.com/solid-design-system/solid/pull/2154) [`bb67377`](https://github.com/solid-design-system/solid/commit/bb673772c5ce0216c229c999604024804c8c0d59) [@smfonseca](https://github.com/smfonseca)_
+
+  - Add new `search` story in `sd-combobox`.
+  - Align search icon in combobox `icons` story and correctly format documentation.
+
+## 1.14.0
+
+### Minor Changes
+
+- Introduce overview page for components and styles. _[`#2024`](https://github.com/solid-design-system/solid/pull/2024) [`6fa86c8`](https://github.com/solid-design-system/solid/commit/6fa86c819208ecc26d9ab1394af81e3467aab191) [@smfonseca](https://github.com/smfonseca)_
+
+  These pages include information for:
+
+  - Common use cases
+  - Usage guidelines
+  - Accessibility
+
+  Docs pages are now used only to document technical information, all other information has now been moved to the "overview" page.
+
 ## 1.13.11
 
 ### Patch Changes

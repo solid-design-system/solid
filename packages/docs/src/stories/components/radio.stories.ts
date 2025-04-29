@@ -6,14 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-radio');
 const { generateTemplate } = storybookTemplate('sd-radio');
 const { overrideArgs } = storybookHelpers('sd-radio');
 
-/**
- * Used to allow the user to select a single option from a group.
- *
- *  **Related components**:
- * - [sd-radio-group](?path=/docs/components-sd-radio-group--docs)
- * - [sd-radio-button](?path=/docs/components-sd-radio-button--docs)
- */
-
 export default {
   title: 'Components/sd-radio',
   tags: ['!dev'],
@@ -93,7 +85,7 @@ export const VisuallyDisabled = {
   name: 'Visually Disabled',
   render: () => html`
     <sd-radio-group label="Visually Disabled" boldLabel value="1">
-      <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm">
+      <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm">
         <sd-radio value="1" visually-disabled>Radio 1</sd-radio>
       </sd-tooltip>
     </sd-radio-group>

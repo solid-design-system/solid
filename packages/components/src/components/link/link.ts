@@ -88,7 +88,7 @@ export default class SdLink extends SolidElement {
       class=${cx(
         'inline',
         this.href && !this.visuallyDisabled ? 'cursor-pointer' : '',
-        this.visuallyDisabled ? 'cursor-not-allowed focus-visible:outline-none' : '',
+        this.visuallyDisabled ? 'cursor-not-allowed focus-visible:focus-outline' : '',
         {
           sm: 'text-sm',
           lg: 'text-base',

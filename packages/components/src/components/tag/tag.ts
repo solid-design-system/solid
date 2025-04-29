@@ -3,6 +3,7 @@ import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
@@ -28,7 +29,9 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-tag')
 export default class SdTag extends SolidElement {
-  @query('a, button') tag: HTMLButtonElement | HTMLLinkElement;
+  private readonly localize = new LocalizeController(this);
+
+  @query('a, button, div') tag: HTMLButtonElement | HTMLLinkElement | HTMLDivElement;
 
   /** The tag's size. */
   @property({ type: String, reflect: true }) size: 'lg' | 'sm' = 'lg';
@@ -87,7 +90,7 @@ export default class SdTag extends SolidElement {
 
   render() {
     const isLink = this.isLink();
-    const tag = isLink ? literal`a` : literal`button`;
+    const tag = isLink ? literal`a` : this.removable ? literal`div` : literal`button`;
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
@@ -100,9 +103,10 @@ export default class SdTag extends SolidElement {
         target=${ifDefined(isLink ? this.target : undefined)}
         download=${ifDefined(isLink ? this.download : undefined)}
         ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
+        aria-labelledby="content"
         aria-disabled=${this.disabled ? 'true' : 'false'}
         aria-pressed=${ifDefined(this.toggleable ? this.selected : undefined)}
-        tabindex=${this.disabled ? '-1' : '0'}
+        tabindex=${this.disabled || this.removable ? '-1' : '0'}
         @blur=${this.handleBlur}
         @focus=${this.handleFocus}
         class=${cx(
@@ -125,23 +129,14 @@ export default class SdTag extends SolidElement {
           this.disabled && !isLink && 'cursor-not-allowed'
         )}
       >
-        <slot part='content'></slot>
+        <slot id="content" part='content'></slot>
         ${
           this.removable
-            ? html` <slot
-                part="removable-indicator"
-                name="removable-indicator"
-                @click=${this.handleRemoveClick}
-                class=${cx(
-                  {
-                    /* sizes, fonts */
-                    lg: 'text-base',
-                    sm: 'text-[12px]'
-                  }[this.size]
-                )}
-              >
-                <sd-icon library="system" name="close" label="remove"></sd-icon>
-              </slot>`
+            ? html` <button class="sd-interactive flex items-center" type="button" @click=${this.handleRemoveClick}>
+                <slot part="removable-indicator" name="removable-indicator">
+                  <sd-icon library="system" name="close" label=${this.localize.term('remove')}></sd-icon>
+                </slot>
+              </button>`
             : ''
         }
       </${tag}>
@@ -155,6 +150,14 @@ export default class SdTag extends SolidElement {
     css`
       :host {
         @apply inline-block;
+      }
+
+      :host([size='lg'])::part(removable-indicator) {
+        @apply text-base;
+      }
+
+      :host([size='sm'])::part(removable-indicator) {
+        @apply text-[0.75rem];
       }
     `
   ];
