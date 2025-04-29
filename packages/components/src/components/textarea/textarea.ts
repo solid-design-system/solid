@@ -413,7 +413,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               part="textarea"
               id="input"
               class=${cx(
-                'px-4 flex-grow focus:outline-none bg-transparent placeholder-neutral-700 resize-none group-has-[sd-icon]:pe-10',
+                'ps-4 flex-grow focus:outline-none bg-transparent placeholder-neutral-700 resize-none group-has-[sd-icon]:pe-8',
                 {
                   sm: 'py-1',
                   md: 'py-1',
@@ -498,6 +498,10 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     css`
       :host {
         @apply block h-full;
+      }
+
+      :host textarea {
+        scrollbar-gutter: stable;
       }
 
       :host([visually-disabled]) ::placeholder,
