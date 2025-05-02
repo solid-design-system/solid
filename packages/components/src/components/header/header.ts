@@ -1,7 +1,7 @@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { debounce } from '../../internal/debounce.js';
-import { property } from 'lit/decorators.js';
+import { property, query } from 'lit/decorators.js';
 import SolidElement from '../../internal/solid-element';
 import type { PropertyValues } from 'lit';
 
@@ -25,47 +25,32 @@ export default class SdHeader extends SolidElement {
   /**  Determines whether the header is fixed or not. If the header is fixed at the top of the page, a shadow is shown underneath. */
   @property({ reflect: true, type: Boolean }) fixed = false;
 
-  private refHeaderElement?: HTMLElement;
+  @query('header') header: HTMLElement;
+
   private resizeObserver?: ResizeObserver;
 
   connectedCallback(): void {
     super.connectedCallback();
-    this.setCalculatedHeightProperty = this.setCalculatedHeightProperty.bind(this);
+    this.updateCalculatedHeight = this.updateCalculatedHeight.bind(this);
     this.addResizeObserver = this.addResizeObserver.bind(this);
   }
 
   firstUpdated(): void {
-    this.toggleHeightCalculation();
-  }
-
-  toggleHeightCalculation(): void {
-    if (this.fixed) {
-      this.setCalculatedHeightProperty();
-      this.addResizeObserver();
-    } else {
-      this.setCalculatedHeightProperty();
-      this.resizeObserver?.disconnect();
-      this.resizeObserver = undefined;
-    }
-  }
-
-  disconnectedCallback(): void {
-    super.disconnectedCallback();
+    this.updateCalculatedHeight();
+    this.addResizeObserver();
   }
 
   updated(changedProperties: PropertyValues): void {
     super.updated(changedProperties);
 
     if (changedProperties.has('fixed')) {
-      this.toggleHeightCalculation();
+      this.updateCalculatedHeight();
     }
   }
 
   @debounce(100)
   private onResize(): void {
-    if (this.fixed) {
-      this.setCalculatedHeightProperty();
-    }
+    this.updateCalculatedHeight();
   }
 
   private addResizeObserver(): void {
@@ -73,17 +58,16 @@ export default class SdHeader extends SolidElement {
       this.onResize();
     });
 
-    if (this.refHeaderElement) {
-      this.resizeObserver.observe(this.refHeaderElement);
+    if (!this.header) {
+      return;
     }
+
+    this.resizeObserver.observe(this.header);
   }
 
-  private setCalculatedHeightProperty(): void {
-    if (this.fixed && this.refHeaderElement) {
-      document.documentElement.style.setProperty(
-        '--sd-header-calculated-height',
-        `${this.refHeaderElement.clientHeight}px`
-      );
+  private updateCalculatedHeight(): void {
+    if (this.fixed && this.header) {
+      document.documentElement.style.setProperty('--sd-header-calculated-height', `${this.header.clientHeight}px`);
     } else {
       document.documentElement.style.removeProperty('--sd-header-calculated-height');
     }
@@ -91,20 +75,12 @@ export default class SdHeader extends SolidElement {
 
   render() {
     return html`
-      <header class="w-full bg-white relative" role="banner" @slotchange=${this.handleSlotChange}>
+      <header class="w-full bg-white relative" role="banner">
         <div part="main" class="relative mx-auto my-0 box-border">
           <slot></slot>
         </div>
       </header>
     `;
-  }
-
-  private handleSlotChange(event: Event): void {
-    const slot = event.target as HTMLSlotElement;
-    if (slot.assignedElements().length > 0) {
-      this.refHeaderElement = event.currentTarget as HTMLElement;
-      this.setCalculatedHeightProperty();
-    }
   }
 
   static styles = [
