@@ -33,6 +33,12 @@ export default class SdHeader extends SolidElement {
     super.connectedCallback();
     this.updateCalculatedHeight = this.updateCalculatedHeight.bind(this);
     this.addResizeObserver = this.addResizeObserver.bind(this);
+    window.addEventListener('resize', this.updateCalculatedHeight);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    window.removeEventListener('resize', this.updateCalculatedHeight);
   }
 
   firstUpdated(): void {
@@ -48,15 +54,8 @@ export default class SdHeader extends SolidElement {
     }
   }
 
-  @debounce(100)
-  private onResize(): void {
-    this.updateCalculatedHeight();
-  }
-
   private addResizeObserver(): void {
-    this.resizeObserver = new ResizeObserver(() => {
-      this.onResize();
-    });
+    this.resizeObserver = new ResizeObserver(this.updateCalculatedHeight);
 
     if (!this.header) {
       return;
@@ -65,8 +64,12 @@ export default class SdHeader extends SolidElement {
     this.resizeObserver.observe(this.header);
   }
 
+  @debounce(100)
   private updateCalculatedHeight(): void {
-    if (this.fixed && this.header) {
+    const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const windowHeightInRem = window.innerHeight / rem;
+
+    if (this.header && this.fixed && windowHeightInRem >= 32) {
       document.documentElement.style.setProperty('--sd-header-calculated-height', `${this.header.clientHeight}px`);
     } else {
       document.documentElement.style.removeProperty('--sd-header-calculated-height');
