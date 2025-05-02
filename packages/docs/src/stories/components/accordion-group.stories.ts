@@ -6,22 +6,10 @@ import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook
 const { argTypes, args, parameters } = storybookDefaults('sd-accordion-group');
 const { generateTemplate } = storybookTemplate('sd-accordion-group');
 
-/**
- *
- * Used to group multiple accordions together.
- *
- * **Related components**:
- * - [sd-accordion](?path=/docs/components-sd-accordion--docs)
- *
- * **Related templates**:
- * - [Accordion Group](?path=/docs/templates-accordion-group--docs)
- *
- */
-
 export default {
   title: 'Components/sd-accordion-group',
   component: 'sd-accordion-group',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   args: {
     ...args,
     'default-slot':

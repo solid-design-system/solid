@@ -1,8 +1,11 @@
+import '../divider/divider';
+import '../icon/icon';
 import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
@@ -13,6 +16,7 @@ import SolidElement from '../../internal/solid-element';
  * @since 1.15.0
  *
  * @dependency sd-divider
+ * @dependency sd-icon
  *
  * @event sd-show - Emitted when the navigation item has has children, no href, and is clicked while HTML details are hidden.
  * @event sd-hide - Emitted when the navigation item has has children, no href, and is clicked while HTML details are shown.
@@ -32,6 +36,7 @@ import SolidElement from '../../internal/solid-element';
 @customElement('sd-navigation-item')
 export default class SdNavigationItem extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'description', 'children');
+  private readonly localize = new LocalizeController(this);
 
   @query('a[part="base"], button[part="base"]') button: HTMLButtonElement | HTMLLinkElement | null;
 
@@ -39,16 +44,16 @@ export default class SdNavigationItem extends SolidElement {
   @property({ type: Boolean, reflect: true }) vertical = false;
 
   /** The navigation item's font size. */
-  @property({ reflect: true }) size: 'md' | 'lg' | 'sm' = 'md';
+  @property({ type: String, reflect: true }) size: 'md' | 'lg' | 'sm' = 'md';
 
   /** The navigation item's href target. If provided, the navigation item will use an anchor tag otherwise it will use a button tag. The 'children' slot and accordion behavior will be ignored if an 'href' is provided. */
   @property({ reflect: true }) href: string;
 
   /** Tells the browser where to open the link. Only used when `href` is defined. */
-  @property() target: '_blank' | '_parent' | '_self' | '_top';
+  @property({ type: String, reflect: true }) target: '_blank' | '_parent' | '_self' | '_top';
 
   /** Tells the browser to download the linked file as this filename. Only used when `href` is defined. */
-  @property() download?: string;
+  @property({ reflect: true }) download?: string;
 
   /** Indicates that the navigation item is currently selected. The aria-current attribute is set to "page" on the host if true. */
   @property({ type: Boolean, reflect: true }) current = false;
@@ -164,7 +169,6 @@ export default class SdNavigationItem extends SolidElement {
           !this.vertical && 'inline-flex items-center',
           !this.separated && 'hover:bg-neutral-200 group transition-all min-h-[48px] px-4'
         )}
-        aria-controls=${ifDefined(isAccordion ? 'navigation-item-details' : undefined)}
         aria-current=${ifDefined(this.current ? 'page' : undefined)}
         aria-disabled=${this.disabled}
         ?disabled=${ifDefined(isButton ? this.disabled : undefined)}
@@ -222,7 +226,9 @@ export default class SdNavigationItem extends SolidElement {
               ? this.separated
                 ? html`<button
                     type="button"
-                    title="toggle-details"
+                    title=${this.open
+                      ? this.localize.term('collapseNavigationItem')
+                      : this.localize.term('expandNavigationItem')}
                     class="sd-interactive sd-interactive--reset"
                     @click=${this.handleClickSummary}
                   >

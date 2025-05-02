@@ -6,20 +6,9 @@ const { argTypes, parameters } = storybookDefaults('sd-optgroup');
 const { overrideArgs } = storybookHelpers('sd-optgroup');
 const { generateTemplate } = storybookTemplate('sd-optgroup');
 
-/**
- * Used to group selectable items within various form controls such as select.
- *
- * **Related Components**:
- * - [sd-combobox](?path=/docs/components-sd-combobox--docs)
- * - [sd-select](?path=/docs/components-sd-select--docs)
- *
- * **Related templates**:
- * - [Autocomplete](?path=/docs/templates-autocomplete--docs)
- */
-
 export default {
   title: 'Components/sd-optgroup',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   component: 'sd-optgroup',
   args: overrideArgs([
     {
@@ -59,7 +48,7 @@ export const Default = {
   },
   render: (args: unknown) => html`
     <div class="h-[260px] w-[400px]">
-      <sd-combobox>
+      <sd-combobox label="Label">
         ${generateTemplate({ args })}
         <sd-optgroup>
           <span slot="label">Section 2</span>
@@ -77,7 +66,7 @@ export const Default = {
 export const Disabled = {
   render: () => html`
     <div class="h-[260px] w-[400px]">
-      <sd-combobox>
+      <sd-combobox label="Label">
         <sd-optgroup label="Section 1" disabled>
           <sd-option value="1">Option</sd-option>
           <sd-option value="2">Option</sd-option>

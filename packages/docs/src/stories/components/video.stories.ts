@@ -6,15 +6,8 @@ import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook
 const { argTypes, args, parameters } = storybookDefaults('sd-video');
 const { generateTemplate } = storybookTemplate('sd-video');
 
-/**
- * Used to embed and control videos.
- *
- * **Related templates**:
- * - [Video](?path=/docs/templates-video--docs)
- */
-
 export default {
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   title: 'Components/sd-video',
   component: 'sd-video',
   args,
@@ -34,7 +27,7 @@ export const Default = {
       constants: {
         type: 'slot',
         name: 'default',
-        value: '<img class="w-[400px] aspect-video object-cover" src="./placeholders/images/generic.jpg" />'
+        value: '<img class="w-[400px] aspect-video object-cover" alt="" src="./placeholders/images/generic.jpg" />'
       },
       args
     });

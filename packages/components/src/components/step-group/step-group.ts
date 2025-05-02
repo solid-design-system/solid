@@ -25,16 +25,22 @@ export default class SdStepGroup extends SolidElement {
   @query('[part=body]') body: HTMLSlotElement;
 
   /** The step-groups's size. */
-  @property({ reflect: true }) size: 'lg' | 'sm' = 'lg';
+  @property({ type: String, reflect: true }) size: 'lg' | 'sm' = 'lg';
 
   /** Determines the orientation of the step-group. */
-  @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
+  @property({ type: String, reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   /** The active step in the step-group. */
   @property({ type: Number, reflect: true, attribute: 'active-step' }) activeStep = 0;
 
   /** Determines if the step-group is not interactive. */
   @property({ type: Boolean, reflect: true, attribute: 'not-interactive' }) notInteractive = false;
+
+  /**
+   * A label to use in the step-group. This won't be displayed on the screen, but it will be announced by assistive
+   * devices when interacting with the control and is strongly recommended.
+   */
+  @property({ type: String, reflect: true }) label = '';
 
   connectedCallback() {
     super.connectedCallback();
@@ -117,7 +123,7 @@ export default class SdStepGroup extends SolidElement {
 
   render() {
     return html`
-      <div role="${!this.notInteractive ? 'navigation' : 'group'}" class="h-full">
+      <div role="${!this.notInteractive ? 'navigation' : 'group'}" class="h-full" aria-label="${this.label}">
         <div role="list" part="base" class=${cx('flex', this.orientation === 'vertical' && 'flex-col h-full')}>
           <slot part="body"></slot>
         </div>

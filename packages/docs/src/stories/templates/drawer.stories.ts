@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 export default {
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   title: 'Templates/Drawer',
   parameters: {
     design: {
@@ -48,12 +48,12 @@ export const Default = {
       }
     </style>
     <sd-button onclick="openDrawer()">Open Drawer</sd-button>
-    <sd-drawer open placement="end">
+    <sd-drawer open placement="end" label="First drawer">
       <sd-button slot="header" variant="tertiary" class="hidden" id="return-button" onclick="handleSecondLevel()">
         <sd-icon name="system/arrow-left" label="return"></sd-icon>
       </sd-button>
       <div class="level-one h-full flex flex-col justify-between">
-        <nav aria-label="nav-level-one">
+        <nav aria-label="Primary">
           <sd-navigation-item vertical><b>Home</b></sd-navigation-item>
           <sd-navigation-item vertical chevron divider onclick="handleSecondLevel()">
             <b>About Us</b>
@@ -63,7 +63,7 @@ export const Default = {
           <sd-navigation-item vertical chevron divider>Sustainability</sd-navigation-item>
           <sd-navigation-item vertical chevron divider>Career</sd-navigation-item>
         </nav>
-        <nav aria-label="footer" slot="footer" class="bg-neutral-100">
+        <nav aria-label="Secondary" slot="footer" class="bg-neutral-100">
           <sd-navigation-item vertical class="flex align-center">
             <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
             My depot
@@ -79,7 +79,7 @@ export const Default = {
         </nav>
       </div>
       <div class="level-two hidden">
-        <nav id="level-two-nav" aria-label="nav-level-two">
+        <nav id="level-two-nav" aria-label="About us">
           <sd-navigation-item vertical id="nav-title" size="lg"><b>About Us</b></sd-navigation-item>
           <sd-navigation-item vertical divider>
             <b>Union Investment for privat customers</b>

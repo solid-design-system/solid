@@ -59,7 +59,7 @@ export default class SdAccordion extends SolidElement {
   @property({ type: Boolean, reflect: true }) open = false;
 
   /** The summary to show in the header. If you need to display HTML, use the `summary` slot instead. */
-  @property() summary: string;
+  @property({ reflect: true }) summary: string;
 
   firstUpdated() {
     this.body.hidden = !this.open;
@@ -227,6 +227,11 @@ export default class SdAccordion extends SolidElement {
     css`
       :host {
         @apply block;
+      }
+
+      /** Removes summary marker on Safari */
+      [part='header']::-webkit-details-marker {
+        @apply hidden;
       }
     `
   ];

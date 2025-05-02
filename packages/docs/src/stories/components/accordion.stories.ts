@@ -7,21 +7,10 @@ const { argTypes, parameters } = storybookDefaults('sd-accordion');
 const { overrideArgs } = storybookHelpers('sd-accordion');
 const { generateTemplate } = storybookTemplate('sd-accordion');
 
-/**
- *
- * Used to show a brief summary and expands to display additional content.
- *
- * **Related components**:
- * - [sd-accordion-group](?path=/docs/components-sd-accordion-group--docs)
- *
- * **Related templates**:
- * - [Accordion Group](?path=/docs/templates-accordion-group--docs)
- */
-
 export default {
   title: 'Components/sd-accordion',
   component: 'sd-accordion',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   args: overrideArgs([
     { type: 'slot', name: 'default', value: '<div class="slot slot--border slot--text h-16">Default slot</div>' },
     { type: 'attribute', name: 'summary', value: 'Accordion' }

@@ -1,3 +1,5 @@
+import '../button/button';
+import '../icon/icon';
 import { animateTo, stopAnimations } from '../../internal/animate.js';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element.js';
@@ -9,14 +11,30 @@ import { watch } from '../../internal/watch.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element.js';
 
-const toastStackDefault = Object.assign(document.createElement('div'), {
-  role: 'region',
-  className: 'sd-toast-stack sd-toast-stack--top-right'
-});
-const toastStackBottomCenter = Object.assign(document.createElement('div'), {
-  role: 'region',
-  className: 'sd-toast-stack sd-toast-stack--bottom-center'
-});
+const stacks: Record<string, HTMLElement | null> = {
+  'top-right': null,
+  'bottom-center': null
+};
+
+const loadStacks = () => {
+  Object.entries(stacks).forEach(([name]) => {
+    const stack: HTMLElement | null = document.querySelector(`#sd-toast-stack--${name}`);
+
+    if (stack) {
+      stack.setAttribute('role', 'region');
+      stacks[name] = stack;
+      return;
+    }
+
+    stacks[name] = Object.assign(document.createElement('div'), {
+      role: 'region',
+      id: `sd-toast-stack--${name}`,
+      className: `sd-toast-stack sd-toast-stack--${name}`
+    });
+  });
+};
+
+loadStacks();
 
 /**
  * @summary Alerts are used to display important messages inline or as toast notifications.
@@ -25,6 +43,7 @@ const toastStackBottomCenter = Object.assign(document.createElement('div'), {
  * @since 1.22.0
  *
  * @dependency sd-button
+ * @dependency sd-icon
  *
  * @slot - The sd-notification's main content.
  * @slot icon - An icon to show in the sd-notification. Works best with `<sd-icon>`.
@@ -55,7 +74,7 @@ export default class SdNotification extends SolidElement {
   @query('[part~="close-button"]') close: HTMLElement;
 
   /** The sd-notification's theme. */
-  @property({ reflect: true }) variant: 'info' | 'success' | 'error' | 'warning' = 'info';
+  @property({ type: String, reflect: true }) variant: 'info' | 'success' | 'error' | 'warning' = 'info';
 
   /**
    * Indicates whether or not sd-notification is open. You can toggle this attribute to show and hide the notification, or you can
@@ -74,24 +93,20 @@ export default class SdNotification extends SolidElement {
    * the notification before it closes (e.g. moves the mouse over it), the timer will restart. Defaults to `Infinity`, meaning
    * the notification will not close on its own.
    */
-  @property({ type: Number }) duration = Infinity;
+  @property({ type: Number, reflect: true }) duration = Infinity;
 
   /** Enables an animation that visualizes the duration of a notification. */
   @property({ type: Boolean, reflect: true, attribute: 'duration-indicator' }) durationIndicator = false;
 
   /** The position of the toasted sd-notification. */
-  @property({ reflect: true, attribute: 'toast-stack' }) toastStack: 'top-right' | 'bottom-center' = 'top-right';
+  @property({ type: String, reflect: true, attribute: 'toast-stack' }) toastStack: 'top-right' | 'bottom-center' =
+    'top-right';
 
   private remainingDuration = this.duration;
   private startTime = Date.now();
-  private tabDirection: 'forward' | 'backwards' = 'forward';
-  private focused = false;
 
   get stack(): HTMLElement {
-    return {
-      'top-right': toastStackDefault,
-      'bottom-center': toastStackBottomCenter
-    }[this.toastStack];
+    return stacks[this.toastStack]!;
   }
 
   connectedCallback() {
@@ -101,14 +116,10 @@ export default class SdNotification extends SolidElement {
       document.body.append(this.stack);
       this.stack.ariaLabel = this.localize.term('notifications');
     }
-
-    this.handleFocusIn = this.handleFocusIn.bind(this);
-    document.addEventListener('focusin', this.handleFocusIn);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    document.removeEventListener('focusin', this.handleFocusIn);
   }
 
   firstUpdated() {
@@ -147,35 +158,10 @@ export default class SdNotification extends SolidElement {
     this.hide();
   }
 
-  private checkFocus() {
-    if (!this.focused || !this.closable) return;
-
-    if (!this.matches(':focus-within')) {
-      const target = this.tabDirection === 'forward' ? this.base : this.close;
-
-      if (typeof target?.focus === 'function') {
-        target.focus({ preventScroll: true });
-      }
-    }
-  }
-
-  private handleFocusIn() {
-    this.focused = true;
-  }
-
   private handleKeyDown(event: KeyboardEvent) {
-    this.tabDirection = 'forward';
-
     if (this.closable && event.key === 'Escape') {
       this.hide();
-      return;
     }
-
-    if (event.key === 'Tab' && event.shiftKey) {
-      this.tabDirection = 'backwards';
-    }
-
-    requestAnimationFrame(() => this.checkFocus());
   }
 
   @watch('open', { waitUntilFirstUpdate: true })
@@ -240,13 +226,11 @@ export default class SdNotification extends SolidElement {
    */
   async toast() {
     return new Promise<void>(resolve => {
-      const toastStack = this.toastStack === 'bottom-center' ? toastStackBottomCenter : toastStackDefault;
-
-      if (toastStack.parentElement === null) {
-        document.body.append(toastStack);
+      if (this.stack.parentElement === null) {
+        document.body.append(this.stack);
       }
 
-      toastStack.appendChild(this);
+      this.stack.appendChild(this);
 
       // Wait for the toast stack to render
       requestAnimationFrame(() => {
@@ -258,13 +242,8 @@ export default class SdNotification extends SolidElement {
       this.addEventListener(
         'sd-after-hide',
         () => {
-          toastStack.removeChild(this);
+          this.stack.removeChild(this);
           resolve();
-
-          // Remove the toast stack from the DOM when there are no more alerts
-          if (toastStack.querySelector('sd-notification') === null) {
-            toastStack.remove();
-          }
         },
         { once: true }
       );
@@ -276,9 +255,9 @@ export default class SdNotification extends SolidElement {
       <div
         part="base"
         class=${cx('w-full overflow-hidden flex items-stretch relative m-2 focus-visible:focus-outline')}
-        role="alert"
         id="notification"
         tabindex="0"
+        role="alert"
         aria-labelledby="message"
         aria-hidden=${this.open ? 'false' : 'true'}
         @mouseenter=${this.onHover}

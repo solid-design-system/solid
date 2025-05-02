@@ -44,6 +44,9 @@ pnpm dev
 
 These steps will install the necessary dependencies, navigate to the "packages/docs" directory, and start the development server. You can now take a look at our existing components or begin working on new ones.
 
+> [!TIP]
+> If you are working on several projects, you can use [Corepack](https://pnpm.io/installation#using-corepack) to manage the pnpm version and [n](https://github.com/tj/n)/[nvm](https://github.com/nvm-sh/nvm) to manage the Node version for each project. This way, you can avoid version conflicts and ensure that you are using the correct version of pnpm for each project.
+
 ### Helpful Commands
 
 ```

@@ -43,23 +43,14 @@ const createColorOptions = () => colors.map(createColorOption);
 
 const createColorOptionsHtml = () => unsafeHTML(createColorOptions().join('\n'));
 
-/**
- * **Related Components**:
- * - [sd-option](?path=/docs/components-sd-option--docs)
- * - [sd-optgroup](?path=/docs/components-sd-optgroup--docs)
- *
- * **Related templates:**
- * - [Combobox](?path=/docs/templates-combobox--docs)
- */
-
 export default {
   title: 'Components/sd-combobox',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   component: 'sd-combobox',
   args: overrideArgs([
     threeOptionsConstant,
     labelConstant,
-    { type: 'attribute', name: 'placeholder', value: 'Please search and select' },
+    { type: 'attribute', name: 'placeholder', value: ' ' },
     { type: 'attribute', name: 'max-options-visible', value: 3 },
     { type: 'attribute', name: 'getOption', value: '' }
   ]),
@@ -230,8 +221,15 @@ export const Disabled = {
 export const VisuallyDisabled = {
   render: () => html`
     <div class="w-[400px] h-[200px] pt-12">
-      <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm" placement="top">
-        <sd-combobox size="lg" label="Label" placeholder="Disabled" placement="bottom" value="" visually-disabled>
+      <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
+        <sd-combobox
+          size="lg"
+          label="Label"
+          placeholder="Visually Disabled"
+          placement="bottom"
+          value=""
+          visually-disabled
+        >
           <sd-option value="option-1">Option 1</sd-option>
           <sd-option value="option-2">Option 2</sd-option>
           <sd-option value="option-3">Option 3</sd-option>
@@ -325,36 +323,38 @@ export const Clearable = {
 };
 
 /**
- *  Use the “left” and “right” slots to add system icons
- *  Show search icon in left either left or right icon slot with the chevron icon (don’t show 2 icons on the right hand side)
- *  Not showing the label here is only fine when showing search-icon.
- *  __Accessibility hint__: Label can be omitted for search input fields if a button (e.g., aria-label="Search") with a search icon is present.
+ *  Use the “left” and “right” slots to add system icons.
+ *
+ *  Show the search icon in either the left slot or right icon slot instead of the chevron icon (don’t show two icons on the right-hand side).
+ *
+ *  __Accessibility hint__: The label can be omitted for search input fields if a button (e.g., aria-label="Search") with a search icon is present.
  */
 export const Icons = {
   render: () => html`
     <div class="w-[400px] h-[400px]">
-      <sd-combobox placeholder="Small" size="sm" clearable>
+      <sd-combobox size="lg" clearable label="Label">
         <sd-icon slot="left" name="system/image" aria-hidden="true" color="currentColor"></sd-icon>
         ${createColorOptionsHtml()}
-        <button slot="right" aria-label="Search">
+        <button slot="right" aria-label="Search" class="sd-interactive flex">
           <sd-icon library="system" name="magnifying-glass" aria-hidden="true" color="currentColor"></sd-icon>
         </button>
       </sd-combobox>
-      <br />
-      <sd-combobox placeholder="Medium" size="md" clearable>
-        <sd-icon slot="left" name="system/image" aria-hidden="true" color="currentColor"></sd-icon>
-        ${createColorOptionsHtml()}
-        <button slot="right" aria-label="Search">
-          <sd-icon library="system" name="magnifying-glass" aria-hidden="true" color="currentColor"></sd-icon>
-        </button>
-      </sd-combobox>
-      <br />
-      <sd-combobox placeholder="Large" size="lg" clearable>
-        <sd-icon slot="left" name="system/image" aria-hidden="true" color="currentColor"></sd-icon>
-        ${createColorOptionsHtml()}
-        <button slot="right" aria-label="Search">
-          <sd-icon library="system" name="magnifying-glass" aria-hidden="true" color="currentColor"></sd-icon>
-        </button>
+    </div>
+  `
+};
+
+/**
+ * Use the `type="search"` to control the type of input the browser renders.
+ */
+export const Search = {
+  render: () => html`
+    <div class="w-[400px] h-[500px]">
+      <sd-combobox size="lg" label="Label" placement="bottom" type="search" value="">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+        <sd-option value="option-4">Option 4</sd-option>
+        <sd-option value="option-5">Option 5</sd-option>
       </sd-combobox>
     </div>
   `
@@ -365,6 +365,7 @@ export const Icons = {
  * To inform your users about their selected options tags are displayed.
  * Use Backspace to remove the last selected option.
  * Use `--tag-max-width` to set the maximum width of the tags and to show an ellipsis, e.g. `<sd-combobox style="--tag-max-width: 40px">`. The default value is `15ch`.
+ *
  * __Hint:__ If you really don't want to show tags, you can hide them with CSS via `::part(tags)`.
  */
 

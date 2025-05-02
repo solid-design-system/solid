@@ -232,7 +232,7 @@ describe('<sd-tooltip>', () => {
     expect(document.activeElement).to.not.equal(el);
   });
 
-  it('should close tooltip when clicking trigger if it was opened by focus', async () => {
+  it('should close tooltip when clicking trigger if it was opened by focus, while keeping the button focused', async () => {
     const el = await fixture<SdTooltip>(html`
       <sd-tooltip content="This is a tooltip" trigger="click focus">
         <sd-button>Click Me</sd-button>
@@ -257,6 +257,7 @@ describe('<sd-tooltip>', () => {
 
     // tooltip is hidden again after clicking the button a second time
     expect(body.hidden).to.be.true;
+    expect(button).to.have.focus;
     expect(document.activeElement).to.not.equal(el);
   });
 });

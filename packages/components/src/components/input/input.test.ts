@@ -489,6 +489,30 @@ describe('<sd-input>', () => {
     });
   });
 
+  describe('when type="search"', () => {
+    it('should emit sd-search when the user clicks the search button', async () => {
+      const el = await fixture<SdInput>(html` <sd-input type="search"></sd-input> `);
+      const searchHandler = sinon.spy();
+      const searchButton = el.shadowRoot!.querySelector('button')!;
+
+      el.addEventListener('sd-search', searchHandler);
+
+      searchButton.click();
+      await waitUntil(() => searchHandler.calledOnce);
+
+      expect(searchHandler).to.have.been.calledOnce;
+    });
+
+    it('should translate the search icon aria-label when the lang attribute is set', async () => {
+      const el = await fixture<SdInput>(html` <sd-input lang="de" type="search"></sd-input> `);
+      const searchIcon = el.shadowRoot!.querySelector('button')!.querySelector('sd-icon')!;
+
+      await el.updateComplete;
+
+      expect(searchIcon.getAttribute('aria-label')).to.equal('Suchen');
+    });
+  });
+
   describe('when type="number"', () => {
     it('should be valid when the value is within the boundary of a step', async () => {
       const el = await fixture<SdInput>(html` <sd-input type="number" step=".5" value="1.5"></sd-input> `);

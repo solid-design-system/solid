@@ -33,24 +33,24 @@
     "plop": "plop --plopfile scripts/plop/plopfile.js"
   },
   "devDependencies": {
-    "@types/node": "^22.13.5",
-    "@typescript-eslint/rule-tester": "^8.25.0",
-    "@typescript-eslint/utils": "^8.25.0",
-    "es-html-parser": "^0.1.0",
-    "esbuild": "^0.25.0",
-    "eslint": "^9.21.0",
+    "@types/node": "^22.13.10",
+    "@typescript-eslint/rule-tester": "^8.26.1",
+    "@typescript-eslint/utils": "^8.26.1",
+    "es-html-parser": "^0.1.1",
+    "esbuild": "^0.25.1",
+    "eslint": "^9.22.0",
     "globby": "^14.1.0",
     "jest": "^29.7.0",
     "plop": "^4.0.1",
     "ts-jest": "^29.2.6",
     "ts-node": "^10.9.2",
-    "typescript": "5.4.5"
+    "typescript": "5.8.2"
   },
   "peerDependencies": {
     "@html-eslint/parser": "^0.35.0",
     "eslint": "^9.18.0"
   },
   "dependencies": {
-    "@html-eslint/parser": "^0.35.0"
+    "@html-eslint/parser": "^0.35.2"
   }
 }

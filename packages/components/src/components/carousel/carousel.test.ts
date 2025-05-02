@@ -17,8 +17,6 @@ describe('<sd-carousel>', () => {
 
     // Assert
     expect(el).to.exist;
-    expect(el).to.have.attribute('role', 'region');
-    expect(el).to.have.attribute('aria-label', 'Carousel');
     expect(el.shadowRoot!.querySelector('.carousel__navigation')).to.exist;
     expect(el.shadowRoot!.querySelector('.carousel__pagination')).to.exist;
     expect(el.shadowRoot!.querySelector('.number')).to.exist;
@@ -36,8 +34,6 @@ describe('<sd-carousel>', () => {
 
     // Assert
     expect(el).to.exist;
-    expect(el).to.have.attribute('role', 'region');
-    expect(el).to.have.attribute('aria-label', 'Carousel');
     expect(el.shadowRoot!.querySelector('.carousel__navigation')).to.exist;
     expect(el.shadowRoot!.querySelector('.carousel__pagination')).to.exist;
     expect(el.shadowRoot!.querySelector('.dot')).to.exist;

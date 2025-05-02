@@ -16,17 +16,6 @@ const threeOptionsConstant: ConstantDefinition = {
 };
 const labelConstant: ConstantDefinition = { type: 'attribute', name: 'label', value: 'Label' };
 
-/**
- * Used to choose items from a menu of predefined options.
- *
- * **Related components:**
- * - [sd-option](?path=/docs/components-sd-option--docs)
- * - [sd-optgroup](?path=/docs/components-sd-optgroup--docs)
- *
- * **Related templates:**
- * - [Select](?path=/docs/templates-select--docs)
- * - [Tooltip](?path=/docs/templates-tooltip--docs)
- */
 export default {
   title: 'Components/sd-select',
   tags: ['!dev'],
@@ -200,7 +189,7 @@ export const Disabled = {
 export const VisuallyDisabled = {
   render: () => html`
     <div class="w-[400px] h-[200px] mt-12">
-      <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm">
+      <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm">
         <sd-select
           size="lg"
           label="Label"

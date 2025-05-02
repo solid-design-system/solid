@@ -165,4 +165,80 @@ describe('<sd-dialog>', () => {
 
     expect(el.open).to.be.false;
   });
+
+  it('should focus trigger element that was focused before after closing', async () => {
+    const el = await fixture<SdDialog>(html`
+      <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+    `);
+
+    const trigger = document.createElement('button');
+    trigger.id = 'trigger';
+    trigger.textContent = 'Trigger';
+    document.body.appendChild(trigger);
+
+    // set event listener to focus trigger
+    trigger.addEventListener('click', () => {
+      el.show();
+    });
+
+    // focus trigger element
+    trigger.focus();
+    expect(document.activeElement).to.equal(trigger);
+
+    // open dialog
+    trigger.click();
+    await waitUntil(() => el.open);
+    expect(el.open).to.be.true;
+
+    // close dialog
+    const overlay = el.shadowRoot!.querySelector<HTMLElement>('[part~="overlay"]')!;
+    overlay.click();
+
+    // wait until dialog is closed
+    await waitUntil(() => !el.open);
+    expect(document.activeElement).to.equal(trigger);
+  });
+
+  it('should focus trigger element inside a web component with Shadow Root that was focused before after closing', async () => {
+    const el = await fixture<SdDialog>(html`
+      <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
+    `);
+    // register a web component with Shadow Root
+    class TestElement extends HTMLElement {
+      constructor() {
+        super();
+        const shadow = this.attachShadow({ mode: 'open' });
+        const trigger = document.createElement('button');
+        trigger.id = 'trigger';
+        trigger.textContent = 'Trigger';
+        shadow.appendChild(trigger);
+      }
+    }
+    customElements.define('test-element', TestElement);
+    const testElement = document.createElement('test-element');
+    document.body.appendChild(testElement);
+    const trigger = testElement.shadowRoot!.querySelector<HTMLElement>('#trigger')!;
+
+    // set event listener to focus trigger
+    trigger.addEventListener('click', () => {
+      el.show();
+    });
+
+    // focus trigger element
+    trigger.focus();
+
+    // open dialog
+    trigger.click();
+    await waitUntil(() => el.open);
+    expect(el.open).to.be.true;
+
+    // close dialog
+    const overlay = el.shadowRoot!.querySelector<HTMLElement>('[part~="overlay"]')!;
+    overlay.click();
+
+    // wait until dialog is closed
+    await waitUntil(() => !el.open);
+    const activeElementInsideTestElement = testElement.shadowRoot!.activeElement;
+    expect(activeElementInsideTestElement).to.equal(trigger);
+  });
 });

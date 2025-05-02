@@ -1,5 +1,27 @@
 # @solid-design-system/styles
 
+## 1.3.2
+
+### Patch Changes
+
+- Make `sd-list` accessible and make it behave closer to design _[`#2114`](https://github.com/solid-design-system/solid/pull/2114) [`8c51bc0`](https://github.com/solid-design-system/solid/commit/8c51bc031f403f6b73692c3ea1bc949c5bcf5b3a) [@mariohamann](https://github.com/mariohamann)_
+
+## 1.3.1
+
+### Patch Changes
+
+- Fix `sd-copyright` default shadow. _[`#2025`](https://github.com/solid-design-system/solid/pull/2025) [`28525de`](https://github.com/solid-design-system/solid/commit/28525de175bca22592ade10cca8e6717c37b1080) [@smfonseca](https://github.com/smfonseca)_
+
+  - Added missing variables that prevented the `filter` css effect from rendering the correct shadow.
+
+## 1.3.0
+
+### Minor Changes
+
+- The `sd-pagination` has arrived! 🎉 _[`#1916`](https://github.com/solid-design-system/solid/pull/1916) [`8e97181`](https://github.com/solid-design-system/solid/commit/8e97181cbc913d47fbadc1997cfe75bcaa7a9245) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  This style can be used to split large content into several pages.
+
 ## 1.2.0
 
 ### Minor Changes

@@ -35,7 +35,7 @@ export default class SdRadioButton extends SolidElement {
   @state() protected hasFocus = false;
 
   /** The radio button's size. */
-  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
+  @property({ type: String, reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** Disables the radio button. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -107,7 +107,6 @@ export default class SdRadioButton extends SolidElement {
           class="${cx(
             'relative text-center border rounded-default transition-all ease-in-out duration-100 items-center justify-center focus-visible:focus-outline',
             this.size === 'sm' ? 'text-sm' : 'text-base',
-            this.visuallyDisabled && 'focus-visible:outline-none',
             this.checked && !this.disabled && !this.visuallyDisabled
               ? 'bg-primary border-primary text-white hover:bg-primary-500 hover:border-primary-500'
               : (this.disabled || this.visuallyDisabled) && !this.checked

@@ -5,20 +5,10 @@ const { argTypes, parameters } = storybookDefaults('sd-checkbox');
 const { generateTemplate } = storybookTemplate('sd-checkbox');
 const { overrideArgs } = storybookHelpers('sd-checkbox');
 
-/**
- * Used to toggle an option on or off.
- *
- * **Related components:**
- * - [sd-checkbox-group](?path=/docs/components-sd-checkbox-group--docs)
- *
- * **Related templates:**
- * - [Checkbox Group](?path=/docs/templates-checkbox-group--docs)
- */
-
 export default {
   title: 'Components/sd-checkbox',
   component: 'sd-checkbox',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Checkbox' }]),
   argTypes,
   parameters: {
@@ -78,7 +68,7 @@ export const VisuallyDisabled = {
   name: 'Visually Disabled',
   render: () => html`
     <div class="w-[250px] h-[100px] pt-12">
-      <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm" placement="top">
+      <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
         <sd-checkbox visually-disabled>Visually Disabled</sd-checkbox>
       </sd-tooltip>
     </div>

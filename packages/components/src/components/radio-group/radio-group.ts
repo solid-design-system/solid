@@ -66,7 +66,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   @state() showInvalidStyle = false;
 
   /** The radio group's size. This size will be applied to the label, all child radios and radio buttons. */
-  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
+  @property({ type: String, reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** Ensures a child radio is checked before allowing the containing form to submit. */
   @property({ type: Boolean, reflect: true }) required = false;
@@ -77,16 +77,16 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
    * This property allows you to control the visual layout and arrangement of elements within the component, providing
    * flexibility in how the component is displayed based on your specific design needs.
    */
-  @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'vertical';
+  @property({ type: String, reflect: true }) orientation: 'horizontal' | 'vertical' = 'vertical';
 
   /**
    * The radio group's label. Required for proper accessibility. If you need to display HTML, use the `label` slot
    * instead.
    */
-  @property() label = '';
+  @property({ type: String, reflect: true }) label = '';
 
   /** The element help text. If you need to display HTML, use the `help-text` slot instead. */
-  @property({ attribute: 'help-text' }) helpText = '';
+  @property({ type: String, attribute: 'help-text', reflect: true }) helpText = '';
 
   /**
    * Quick way to make the group label bold. Bolding the group label is highly recommended for visual clarity between the label and radio options.
@@ -95,17 +95,17 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   @property({ type: Boolean, reflect: true }) boldLabel = false;
 
   /** The name of the radio group, submitted as a name/value pair with form data. */
-  @property() name = 'option';
+  @property({ type: String, reflect: true }) name = 'option';
 
   /** The current value of the radio group, submitted as a name/value pair with form data. */
-  @property({ reflect: true }) value = '';
+  @property() value = '';
 
   /**
    * By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you
    * to place the form control outside of a form and associate it with the form that has this `id`. The form must be in
    * the same document or shadow root for this to work.
    */
-  @property({ reflect: true }) form = '';
+  @property({ type: String, reflect: true }) form = '';
 
   /** Gets the validity state object */
   get validity() {
@@ -419,6 +419,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
                 id="validation-input"
                 type="text"
                 ?required=${this.required}
+                aria-labelledby="label"
                 tabindex="-1"
                 hidden
                 @invalid=${this.handleInvalid}

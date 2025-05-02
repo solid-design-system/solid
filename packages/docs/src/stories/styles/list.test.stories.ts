@@ -27,7 +27,7 @@ const html = String.raw;
 
 export default {
   title: 'Styles/sd-list/Screenshots: sd-list',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-list',
   parameters: {
     ...parameters,
@@ -37,7 +37,7 @@ export default {
       url: 'https://www.figma.com/file/DDSyYvf2q99RhiyDjy03s5/List?type=design&node-id=971-4578&mode=design&t=2UZo6NW6ErMA2G5X-0'
     }
   },
-  args: overrideArgs({ type: 'slot', name: 'default', value: 'Lorem Ipsum' }),
+  args: overrideArgs({ type: 'slot', name: 'default', value: '<li>Lorem Ipsum</li>' }),
   argTypes
 };
 
@@ -73,42 +73,6 @@ export const Default = {
 
 export const OrderedList = {
   name: 'Ordered List',
-  args: overrideArgs({
-    type: 'slot',
-    name: 'default',
-    value: html`<li>
-        Lorem Ipsum
-        <ol>
-          <li>
-            Dolor sit
-            <ol>
-              <li>Amet</li>
-              <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-            </ol>
-          </li>
-          <li>
-            Dolor sit
-            <ol>
-              <li>Amet</li>
-              <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-            </ol>
-          </li>
-        </ol>
-      </li>
-      <li>
-        Lorem Ipsum
-        <ol>
-          <li>
-            Dolor sit
-            <ol>
-              <li>Amet</li>
-              <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-            </ol>
-          </li>
-        </ol>
-      </li>
-      <li>Lorem Ipsum</li>`
-  }),
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -121,7 +85,38 @@ export const OrderedList = {
           colors: ['rgb(var(--sd-color-white, 255 255 255))', 'rgb(var(--sd-color-primary, 0 53 142))']
         },
         templateContent: html`<ol class="%CLASSES%">
-          %SLOT%
+          <li>
+            Lorem Ipsum
+            <ol>
+              <li>
+                Dolor sit
+                <ol>
+                  <li>Amet</li>
+                  <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                </ol>
+              </li>
+              <li>
+                Dolor sit
+                <ol>
+                  <li>Amet</li>
+                  <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                </ol>
+              </li>
+            </ol>
+          </li>
+          <li>
+            Lorem Ipsum
+            <ol>
+              <li>
+                Dolor sit
+                <ol>
+                  <li>Amet</li>
+                  <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                </ol>
+              </li>
+            </ol>
+          </li>
+          <li>Lorem Ipsum</li>
         </ol>`
       }
     });
@@ -130,42 +125,6 @@ export const OrderedList = {
 
 export const UnorderedList = {
   name: 'Unordered List',
-  args: overrideArgs({
-    type: 'slot',
-    name: 'default',
-    value: html`<li>
-        Lorem Ipsum
-        <ul>
-          <li>
-            Dulor sit
-            <ul>
-              <li>Amet</li>
-              <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-            </ul>
-          </li>
-          <li>
-            Dulor sit
-            <ul>
-              <li>Amet</li>
-              <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>
-        Lorem Ipsum
-        <ul>
-          <li>
-            Dulor sit
-            <ul>
-              <li>Amet</li>
-              <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>Lorem Ipsum</li>`
-  }),
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -178,7 +137,38 @@ export const UnorderedList = {
           colors: ['rgb(var(--sd-color-white, 255 255 255))', 'rgb(var(--sd-color-primary, 0 53 142))']
         },
         templateContent: html`<ul class="%CLASSES%">
-          %SLOT%
+          <li>
+            Lorem Ipsum
+            <ul>
+              <li>
+                Dulor sit
+                <ul>
+                  <li>Amet</li>
+                  <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                </ul>
+              </li>
+              <li>
+                Dulor sit
+                <ul>
+                  <li>Amet</li>
+                  <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Lorem Ipsum
+            <ul>
+              <li>
+                Dulor sit
+                <ul>
+                  <li>Amet</li>
+                  <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Lorem Ipsum</li>
         </ul>`
       }
     });
@@ -191,24 +181,6 @@ export const UnorderedList = {
  */
 export const IconList = {
   name: 'Icon List',
-  args: overrideArgs({
-    type: 'slot',
-    name: 'default',
-    value: html`<li>
-        <sd-icon name="content/image"></sd-icon>Lorem Ipsum
-        <ul>
-          <li>
-            <sd-icon name="content/image"></sd-icon>Dolor sit
-            <ul>
-              <li><sd-icon name="content/image"></sd-icon>Amet</li>
-              <li><sd-icon name="content/image"></sd-icon>Ut enim ad minim veniam, quis nostrud exercitation</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li><sd-icon name="content/image"></sd-icon>Lorem Ipsum</li>
-      <li><sd-icon name="content/image"></sd-icon>Lorem Ipsum</li>`
-  }),
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -220,9 +192,23 @@ export const IconList = {
           alternate: 'x',
           colors: ['rgb(var(--sd-color-white, 255 255 255))', 'rgb(var(--sd-color-primary, 0 53 142))']
         },
-        templateContent: html`<ul class="sd-list--icon %CLASSES%">
-          %SLOT%
-        </ul>`
+        templateRenderer: ({ attributes }) =>
+          html`<ul class="sd-list--icon ${attributes.classes}">
+            <li>
+              <sd-icon name="content/image"></sd-icon>Lorem Ipsum
+              <ul>
+                <li>
+                  <sd-icon name="content/image"></sd-icon>Dolor sit
+                  <ul>
+                    <li><sd-icon name="content/image"></sd-icon>Amet</li>
+                    <li><sd-icon name="content/image"></sd-icon>Ut enim ad minim veniam, quis nostrud exercitation</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><sd-icon name="content/image"></sd-icon>Lorem Ipsum</li>
+            <li><sd-icon name="content/image"></sd-icon>Lorem Ipsum</li>
+          </ul>`
       }
     });
   }
@@ -234,13 +220,6 @@ export const IconList = {
  */
 export const HorizontalIconList = {
   name: 'Horizontal Icon List',
-  args: overrideArgs({
-    type: 'slot',
-    name: 'default',
-    value: html`<li><sd-icon name="content/image"></sd-icon>Lorem</li>
-      <li><sd-icon name="content/image"></sd-icon>Lorem</li>
-      <li><sd-icon name="content/image"></sd-icon>Lorem</li>`
-  }),
   render: (args: any) => {
     return generateTemplate({
       axis: {
@@ -252,9 +231,12 @@ export const HorizontalIconList = {
           alternate: 'x',
           colors: ['rgb(var(--sd-color-white, 255 255 255))', 'rgb(var(--sd-color-primary, 0 53 142))']
         },
-        templateContent: html`<ul class="sd-list--icon sd-list--horizontal %CLASSES%">
-          %SLOT%
-        </ul>`
+        templateRenderer: ({ attributes }) =>
+          html` <ul class="sd-list--icon sd-list--horizontal ${attributes.classes}">
+            <li><sd-icon name="content/image"></sd-icon>Lorem</li>
+            <li><sd-icon name="content/image"></sd-icon>Lorem</li>
+            <li><sd-icon name="content/image"></sd-icon>Lorem</li>
+          </ul>`
       }
     });
   }
@@ -265,6 +247,10 @@ export const HorizontalIconList = {
  */
 export const MixedLists = {
   name: 'Mixed Lists',
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  },
+  tags: ['!dev'],
   render: (args: any) => {
     const preset = (type: string) =>
       html`<preset-type class="sd-list">
@@ -355,10 +341,10 @@ export const MixedLists = {
           <ul>
             <li>
               Dolor sit
-              <ol>
+              <ul>
                 <li>Amet</li>
                 <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-              </ol>
+              </ul>
             </li>
             <li>
               Dolor sit
@@ -398,11 +384,4 @@ export const MixedLists = {
   }
 };
 
-export const Combination = generateScreenshotStory([
-  Default,
-  OrderedList,
-  UnorderedList,
-  IconList,
-  HorizontalIconList,
-  MixedLists
-]);
+export const Combination = generateScreenshotStory([Default, OrderedList, UnorderedList, IconList, HorizontalIconList]);

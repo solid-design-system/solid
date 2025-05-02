@@ -6,10 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-switch');
 const { overrideArgs } = storybookHelpers('sd-switch');
 const { generateTemplate } = storybookTemplate('sd-switch');
 
-/**
- * Used to give control over a feature or option that can be turned on or off.
- */
-
 export default {
   tags: ['!dev'],
   title: 'Components/sd-switch',
@@ -64,13 +60,16 @@ export const Required = {
 export const Invalid = {
   render: () => html`
     <form id="invalid-form">
-      <sd-switch required id="invalid-switch">Invalid</sd-switch>
-      <sd-button id="invalid-button" class="hidden" type="submit"></sd-button>
+      <sd-switch checked required id="invalid-switch">Invalid</sd-switch>
     </form>
     <script type="module">
+      // Wait for custom elements to be defined
       await Promise.all([customElements.whenDefined('sd-switch')]).then(() => {
-        const button = document.getElementById('invalid-button');
-        button.click();
+        const sdSwitch = document.getElementById('invalid-switch');
+
+        sdSwitch.click();
+        sdSwitch.reportValidity();
+        sdSwitch.setCustomValidity('error-text');
       });
     </script>
   `

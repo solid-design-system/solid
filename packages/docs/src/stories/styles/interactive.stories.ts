@@ -7,18 +7,9 @@ const { argTypes, parameters } = storybookDefaults('sd-interactive');
 const { overrideArgs } = storybookHelpers('sd-interactive');
 const { generateTemplate } = storybookTemplate('sd-interactive');
 
-/**
- * Used in interactive elements as a "quartery" button that has no paddings and no background.
- *
- * __Accessiblity hint__: Use a `title` attribute to provide a hint to the user of what the button does.
- *
- *  **Related templates**:
- * - [Interactive](?path=/docs/templates-interactive--docs)
- */
-
 export default {
   title: 'Styles/sd-interactive',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev', 'skip-a11y-[color-contrast]'],
   component: 'sd-interactive',
   parameters: {
     ...parameters,
@@ -64,6 +55,17 @@ export const Inverted = {
  */
 
 export const Disabled = {
+  a11y: {
+    config: {
+      rules: [
+        {
+          id: 'color-contrast',
+          selector: '.sd-interactive--disabled',
+          enabled: false
+        }
+      ]
+    }
+  },
   render: () => html`
     <button class="sd-interactive sd-interactive--disabled sd-interactive--reset" title="Disabled button">
       Disabled

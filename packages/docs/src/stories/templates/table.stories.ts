@@ -13,7 +13,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * to ensure it becomes accessible to keyboard only users.
  */
 export default {
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   title: 'Templates/Table',
   parameters: {
     chromatic: { disableSnapshot: true }
@@ -757,35 +757,35 @@ export const sortableTable = {
       };
       const icons = document.querySelectorAll('[id*="sortIcon"]');
       const headerCells = document.querySelectorAll('[id*="sortableHeader"]');
-      const statusSpans = document.querySelectorAll('[id*="sortableStatus"]');
+      const announcementContainer = document.querySelector('[id="sortable-announcement"]');
 
       if (icons && headerCells) {
         headerCells.forEach((headerCell, index) => {
           if (!headerData[index].sortable) return;
 
-          //Change the sort icon and aria-sort attribute for the clicked column
-          const nextSort = sortingOptions[sortData[column]].nextSort;
-          sortTableByColumn(document.querySelector('[id="sortable"]'), column, nextSort === 'descending');
-
-          if (index === column) {
-            const { iconName, ariaSort, status } = sortingOptions[nextSort];
-
-            sortData[index] = nextSort;
-            icons[index].setAttribute('name', iconName);
-            ariaSort !== undefined
-              ? headerCell.setAttribute('aria-sort', ariaSort)
-              : headerCell.removeAttribute('aria-sort');
-            statusSpans[index].innerHTML = status;
-          }
           //Reset the sort icon and remove the aria-sort attribute for all other columns
-          else {
-            const { iconName, status } = sortingOptions['none'];
+          if (index !== column) {
+            const { iconName } = sortingOptions['none'];
 
             sortData[index] = 'none';
             icons[index].setAttribute('name', iconName);
             headerCell.removeAttribute('aria-sort');
-            statusSpans[index].innerHTML = status;
+            return;
           }
+
+          //Change the sort icon and aria-sort attribute for the clicked column
+          const { nextSort } = sortingOptions[sortData[column]];
+          const { status } = sortingOptions[nextSort];
+          sortTableByColumn(document.querySelector('[id="sortable"]'), column, nextSort === 'descending');
+          announcementContainer!.innerHTML = announcementContainer!.innerHTML === status ? `${status}\u200B` : status;
+
+          const { iconName, ariaSort } = sortingOptions[nextSort];
+
+          sortData[index] = nextSort;
+          icons[index].setAttribute('name', iconName);
+          ariaSort !== undefined
+            ? headerCell.setAttribute('aria-sort', ariaSort)
+            : headerCell.removeAttribute('aria-sort');
         });
       }
     };
@@ -818,17 +818,8 @@ export const sortableTable = {
       }
     };
 
-    const handleSortButtonFocus = (column: number) => {
-      const statusSpan = document.querySelector(`[id*="sortableStatus-${column}"]`);
-      statusSpan?.setAttribute('role', 'status');
-    };
-
-    const handleSortButtonBlur = (column: number) => {
-      const statusSpan = document.querySelector(`[id*="sortableStatus-${column}"]`);
-      statusSpan?.removeAttribute('role');
-    };
-
     return html`
+      <span id="sortable-announcement" role="status" class="sr-only"></span>
       <table id="sortable" class="sd-table sample-table w-full" .sortData=${sortData}>
         <thead>
           ${(() => {
@@ -840,21 +831,16 @@ export const sortableTable = {
                   aria-sort=${ifDefined(sortData[columnIndex] === 'none' || !header.sortable ? undefined : 'ascending')}
                 >
                   ${header.sortable
-                    ? html` <span class="sr-only" id="sortableStatus-${columnIndex}"
-                          >${sortData[columnIndex] === 'none' ? '' : 'Sorting ascending'}</span
-                        >
-                        <button
-                          class="sd-interactive flex items-center gap-1"
-                          @focus="${() => handleSortButtonFocus(columnIndex)}"
-                          @blur="${() => handleSortButtonBlur(columnIndex)}"
-                          @click="${() => sortTable(columnIndex)}"
-                        >
-                          ${header.label}<sd-icon
-                            id="sortIcon-${columnIndex}"
-                            name=${sortData[columnIndex] === 'none' ? 'system/sort-down' : 'system/sort-down-filled'}
-                            class="text-[12px]"
-                          ></sd-icon>
-                        </button>`
+                    ? html` <button
+                        class="sd-interactive flex items-center gap-1"
+                        @click="${() => sortTable(columnIndex)}"
+                      >
+                        ${header.label}<sd-icon
+                          id="sortIcon-${columnIndex}"
+                          name=${sortData[columnIndex] === 'none' ? 'system/sort-down' : 'system/sort-down-filled'}
+                          class="text-[12px]"
+                        ></sd-icon>
+                      </button>`
                     : header.label}
                 </th>`;
               })}
@@ -1759,31 +1745,31 @@ export const TableFixedBottom = {
         </tbody>
         <tfoot>
           <tr>
-            <th
+            <td
               class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top sd-table-cell--shadow-active"
             >
               Job title
-            </th>
-            <th
+            </td>
+            <td
               class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top sd-table-cell--shadow-active"
             >
               Location
-            </th>
-            <th
+            </td>
+            <td
               class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top sd-table-cell--shadow-active"
             >
               Job category
-            </th>
-            <th
+            </td>
+            <td
               class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top sd-table-cell--shadow-active"
             >
               Employment type
-            </th>
-            <th
+            </td>
+            <td
               class="sd-table-cell sd-table-cell--bg-white sticky bottom-0 sd-table-cell--shadow-top sd-table-cell--shadow-active"
             >
               Actions
-            </th>
+            </td>
           </tr>
         </tfoot>
       </table>
@@ -1828,7 +1814,7 @@ export const TableFixedLeft = {
         <table class="sd-table sample-table">
           <thead class="sr-only">
             <tr>
-              <th></th>
+              <td></td>
               <th>Job title</th>
               <th>Location</th>
               <th>Job category</th>
@@ -2155,7 +2141,7 @@ export const TableFixedRight = {
               <th>Job category</th>
               <th>Employment type</th>
               <th>Actions</th>
-              <th></th>
+              <td></td>
             </thead>
             <tbody>
               <tr>

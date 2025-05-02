@@ -29,12 +29,12 @@ theme.extend = {
   }
 };
 
-// Check if the script triggered is a Storybook script, e. g. `pnpm build` or `pnpm storybook`
-const includeStorybookStories = process.env.npm_lifecycle_event?.includes('storybook');
+// Check if the script triggered is from the docs package
+const isStorybookPackage = process.env.npm_package_name === '@solid-design-system/docs';
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: includeStorybookStories
+  content: isStorybookPackage
     ? ['./src/**/*.ts', './src/**/*.mdx']
     : [
         './src/components/**/*.ts',
@@ -67,7 +67,7 @@ module.exports = {
       });
     })
   ],
-  safelist: includeStorybookStories
+  safelist: isStorybookPackage
     ? // If we are in Storybook, we need to include more classes to show all the different tokens
       (() => {
         const safeList = [];

@@ -51,6 +51,11 @@ export default function (plop) {
         templateFile: 'templates/component/test.stories.hbs'
       },
       {
+        type: 'add',
+        path: '../../../docs/src/stories/components/{{ tagWithoutPrefix tag }}.mdx',
+        templateFile: 'templates/component/overview.hbs'
+      },
+      {
         type: 'modify',
         path: '../../src/solid-components.ts',
         pattern: /\/\* plop:component \*\//,

@@ -220,12 +220,6 @@ describe('<sd-navigation-item>', () => {
       expect(summary).attribute('aria-current', 'page');
     });
 
-    it('adds aria-controls: "navigation-item-details" to <summary>', async () => {
-      const el = await fixture<SdNavigationItem>(variants.accordion.default);
-      const summary = el.shadowRoot!.querySelector('summary');
-      expect(summary).attribute('aria-controls', 'navigation-item-details');
-    });
-
     // Events
     it('emits "sd-show" event when clicking closed HTML details element summary', async () => {
       const el = await fixture<SdNavigationItem>(variants.accordion.default);

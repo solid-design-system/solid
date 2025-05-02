@@ -220,9 +220,8 @@ To enhance our review process, we introduced a "Feature-Check-In" meeting. This 
 The meeting adheres to a few straightforward rules:
 
 - The meeting is an **_optional_** tool to enhance PRs and should be utilized only when required, such as for large or complex new features, or a feature where certain questions were left open for implementation.
-- When a developer believes they have completed all they can and the feature is in a "presentable" state, a meeting should be scheduled with the development lead (@mariohamann) AND/OR design lead (@coraliefeil).
 - Unless absolutely necessary, the meeting should not exceed 30 minutes.
-- The outcomes of the meeting MUST be recorded in the ticket description.
+- The outcomes of the meeting SHOULD be recorded in the ticket description.
 - Once the developer has incorporated the feedback/results into the code changes, a PR should be opened for all other team members to review the modifications.
 
 #### Assignees and Reviewers
@@ -236,23 +235,25 @@ _**The reviewer section from GitHub is not used for assigning reviewers. Instead
 2. The author of the PR needs to assign the reviewer needed for the PR (according to the rules below)
 3. Reviewers will unassign themselves after they have reviewed the PR
 4. If changes are requested, the author needs to reassign the reviewer after the changes are made and pushed
+5. Assignees should review PRs regularly, ideally at least once per day. This could be done at the start of the day, during free moments, or as part of wrapping up their workday.
+6. If assignees are not reviewing or a PR is urgent, the author of the PR should be proactive and request the assignees for a review directly.
 
 > Note: If UI changes needs to be reviewed in Chromatic, the reviewer need to add a comment to the PR, stating if the changes are approved or new changes are requested. This is mandatory as the Chromatic approval will not send any notifications.
 
 Assigning reviewers follows a few rules:
 
-1. **New Feature PRs:** All current members from the SDS team need to be assigned to the PR (@solid-design-system/current-sds-team).
-2. **Bug Fix or Docs PRs:** Minimum 1 developer from the SDS dev-core-team (@solid-design-system/core-development) needs to be assigned to the PR. Designers need to be added separately if visual changes are made.
-3. **CI/CD PRs:** Minimum 1 out of @yoezlem, @mariohamann or @karlbaumhauer needs to be assigned to the PR.
+1. **General PRs:** The members of the SDS dev-core-team (@solid-design-system/core-development) need to be assigned to the PR.If the changes include any visual updates, at least one designer should also be added as a reviewer. The PR requires a minimum of one approval from both the development team and, if applicable, the design team.
+2. **CI/CD PRs:** At least one of the following team members - @yoezlem, @mariohamann, @karlbaumhauer or @smfonseca - must be assigned to the PR. A minimum of one approval from is group is required before merging.
 
 #### Review Comments
 
 The primary objective of this "rule-set" is to eliminate comments that lack any code-related context, thereby minimizing the workload for the PR author during feedback implementation.
 
 - Developers should restrict their feedback to inline comments during code reviews.
-- Comments pertaining to the UI should be included as inline comments in the relevant file (for instance, "your story is not functioning", should be placed as an inline comment in the review section of the component.stories.ts file).
+- Comments pertaining to the UI should be included as inline comments in the relevant file (for instance, "your story is not functioning", should be placed as an inline comment in the review section of the `component.stories.ts` file).
 - Designers should exclusively use Chromatic for providing feedback on alterations.
 - General comments in the PR should be avoided as much as possible. If they are unavoidable, they should only include process-related information that doesn't require a response (for example, "Completed my UI-review, please re-assign to me once changes have been made").
+- If feedback is not possible through Chromatic or as an inline comment, the reviewer should use "Request Changes" on Github.
 
 #### Changesets
 

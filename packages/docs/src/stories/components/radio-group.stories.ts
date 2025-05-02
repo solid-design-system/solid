@@ -6,22 +6,10 @@ const { argTypes, parameters } = storybookDefaults('sd-radio-group');
 const { generateTemplate } = storybookTemplate('sd-radio-group');
 const { overrideArgs } = storybookHelpers('sd-radio-group');
 
-/**
- * Used to group multiple input radio or radio buttons so they function as a single form control.
- *
- *  **Related components**:
- * - [sd-radio](?path=/docs/components-sd-radio--docs)
- * - [sd-radio-button](?path=/docs/components-sd-radio-button--docs)
- *
- * **Related templates**:
- * - [Radio Button Group](?path=/docs/templates-radio-button-group--docs)
- * - [Radio Group with Tooltip](?path=/docs/templates-tooltip--docs)
- */
-
 export default {
   title: 'Components/sd-radio-group',
   component: 'sd-radio-group',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   parameters: {
     ...parameters,
     design: {
@@ -106,7 +94,7 @@ export const HelpText = {
   name: 'Help Text',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio-group orientation="vertical" help-text="Help text attribute">
+      <sd-radio-group orientation="vertical" help-text="Help text">
         <label slot="label">Group Label</label>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>

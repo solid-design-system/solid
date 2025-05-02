@@ -6,29 +6,20 @@ const { argTypes, parameters } = storybookDefaults('sd-flipcard');
 const { generateTemplate } = storybookTemplate('sd-flipcard');
 const { overrideArgs } = storybookHelpers('sd-flipcard');
 
-/**
- * Used to display content on one side and reveal additional information when flipped.
- *
- * **Accessibility Hint**:
- * Front flipcards should not contain any action items. If an action is necessary, consider placing it on the back of the card (once flipped) or in a separate area.
- *
- * **Related templates**:
- * - [Flipcard](?path=/docs/templates-flipcard--docs)
- */
 export default {
   title: 'Components/sd-flipcard',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   component: 'sd-flipcard',
   args: overrideArgs([
     {
       type: 'slot',
       name: 'front',
-      value: `<p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>`
+      value: `<p slot="front" class="slot slot--border slot--text slot--inverted h-12 w-full">Front slot</p>`
     },
     {
       type: 'slot',
       name: 'back',
-      value: `<p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>`
+      value: `<p slot="back" class="slot slot--border slot--text slot--inverted h-12 w-full">Back slot</p>`
     },
     {
       type: 'slot',
@@ -69,8 +60,8 @@ export const Variants = {
   render: () =>
     html` <div class="grid grid-cols-2 gap-8">
       <sd-flipcard flip-direction="horizontal" front-variant="primary" back-variant="primary">
-        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+        <p slot="front" class="slot slot--border slot--text slot--inverted h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text slot--inverted h-12 w-full">Back slot</p>
       </sd-flipcard>
       <sd-flipcard flip-direction="horizontal" front-variant="primary-100" back-variant="primary-100">
         <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
@@ -93,8 +84,8 @@ export const Variants = {
         />
       </sd-flipcard>
       <sd-flipcard flip-direction="horizontal" front-variant="gradient-dark" back-variant="gradient-dark">
-        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+        <p slot="front" class="slot slot--border slot--text slot--inverted h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text slot--inverted h-12 w-full">Back slot</p>
         <img
           slot="media-front"
           class="object-cover h-full w-full"
@@ -150,12 +141,12 @@ export const Placement = {
   render: () =>
     html` <div class="grid grid-cols-2 gap-8">
       <sd-flipcard flip-direction="horizontal" placement="top">
-        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+        <p slot="front" class="slot slot--border slot--text slot--inverted h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text slot--inverted h-12 w-full">Back slot</p>
       </sd-flipcard>
       <sd-flipcard flip-direction="horizontal" placement="bottom">
-        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+        <p slot="front" class="slot slot--border slot--text slot--inverted h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text slot--inverted h-12 w-full">Back slot</p>
       </sd-flipcard>
     </div>`
 };
@@ -170,12 +161,12 @@ export const flipDirection = {
   render: () =>
     html`<div class="grid grid-cols-2 gap-8">
       <sd-flipcard flip-direction="horizontal">
-        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+        <p slot="front" class="slot slot--border slot--text slot--inverted h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text slot--inverted h-12 w-full">Back slot</p>
       </sd-flipcard>
       <sd-flipcard flip-direction="vertical">
-        <p slot="front" class="slot slot--border slot--text h-12 w-full">Front slot</p>
-        <p slot="back" class="slot slot--border slot--text h-12 w-full">Back slot</p>
+        <p slot="front" class="slot slot--border slot--text slot--inverted h-12 w-full">Front slot</p>
+        <p slot="back" class="slot slot--border slot--text slot--inverted h-12 w-full">Back slot</p>
       </sd-flipcard>
     </div>`
 };

@@ -6,20 +6,9 @@ const { argTypes, parameters } = storybookDefaults('sd-option');
 const { generateTemplate } = storybookTemplate('sd-option');
 const { overrideArgs } = storybookHelpers('sd-option');
 
-/**
- * Used to define selectable items within various form controls such as select.
- *
- * **Related Components**:
- * - [sd-select](?path=/docs/components-sd-select--docs)
- * - [sd-combobox](?path=/docs/components-sd-combobox--docs)
- *
- * **Related templates**:
- * - [Autocomplete](?path=/docs/templates-autocomplete--docs)
- */
-
 export default {
   title: 'Components/sd-option',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev', 'skip-a11y-[aria-required-parent]'],
   component: 'sd-option',
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
   argTypes,
@@ -34,6 +23,19 @@ export default {
 
 export const Default = {
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'aria-required-parent',
+            selector: 'sd-option'
+          }
+        ]
+      },
+      options: {}
+    }
+  },
   render: (args: any) => {
     return generateTemplate({
       args

@@ -4,6 +4,7 @@ import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
+import { getDeepActiveElement } from '../../internal/deep-active-element';
 import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
@@ -80,10 +81,10 @@ export default class SdDrawer extends SolidElement {
    * You should always include a relevant label even when using
    * `no-header`, as it is required for proper accessibility.
    */
-  @property({ attribute: 'label', reflect: true }) label = '';
+  @property({ type: String, attribute: 'label', reflect: true }) label = '';
 
   /** The direction from which the drawer will open. */
-  @property({ reflect: true }) placement: 'end' | 'start' = 'end';
+  @property({ type: String, reflect: true }) placement: 'end' | 'start' = 'end';
 
   /**
    * By default, the drawer slides out of its containing block (the viewport). Contained is a hidden feature used only for testing purposes. Please do not use it in production as it will likely change.
@@ -93,7 +94,7 @@ export default class SdDrawer extends SolidElement {
   /**
    * Removes the header. This will also remove the default close button, so please ensure you provide an easy, accessible way for users to dismiss the drawer.
    */
-  @property({ attribute: 'no-header', type: Boolean }) noHeader = false;
+  @property({ attribute: 'no-header', type: Boolean, reflect: true }) noHeader = false;
 
   firstUpdated() {
     this.drawer.hidden = !this.open;
@@ -151,7 +152,9 @@ export default class SdDrawer extends SolidElement {
       // Show
       this.emit('sd-show');
       this.addOpenListeners();
-      this.originalTrigger = document.activeElement as HTMLElement;
+
+      // Check if the original trigger is inside the drawer
+      this.originalTrigger = getDeepActiveElement();
 
       // Lock body scrolling only if the drawer isn't contained
       if (!this.contained) {
@@ -292,13 +295,14 @@ export default class SdDrawer extends SolidElement {
 
   render() {
     return html`
-      <div
+      <section
         id="drawer"
         part="base"
         class=${cx(
           'top-0 start-0 w-full h-full pointer-events-none overflow-hidden',
           this.contained ? 'absolute' : 'fixed'
         )}
+        aria-label=${this.label}
       >
         <div
           part="overlay"
@@ -307,7 +311,6 @@ export default class SdDrawer extends SolidElement {
             this.contained ? 'absolute' : 'fixed'
           )}
           @click=${() => this.requestClose('overlay')}
-          tabindex="-1"
         ></div>
 
         <div
@@ -354,14 +357,14 @@ export default class SdDrawer extends SolidElement {
                 class="absolute top-2 right-2"
                 ><sd-icon label=${this.localize.term('close')} name="close" library="system"></sd-icon
               ></sd-button>`}
-          <div part="body" class="flex-auto block px-4" role="region" tabindex="0">
+          <div part="body" class="flex-auto block px-4 focus-visible:focus-outline !-outline-offset-2" tabindex="0">
             <slot></slot>
           </div>
           <footer part="footer" class=${cx(this.hasSlotController.test('footer') ? 'text-left p-4' : 'hidden')}>
             <slot name="footer"></slot>
           </footer>
         </div>
-      </div>
+      </section>
     `;
   }
 

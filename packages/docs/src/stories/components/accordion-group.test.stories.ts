@@ -12,7 +12,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-accordion-group/Screenshots: sd-accordion-group',
   component: 'sd-accordion-group',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   args: {
     ...args,
     'default-slot':
@@ -87,8 +87,8 @@ export const Mouseless = {
   },
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
     const el = canvasElement.querySelector('.mouseless sd-accordion');
-    await waitUntil(() => el?.shadowRoot?.querySelector('header'));
-    await userEvent.type(el!.shadowRoot!.querySelector('header')!, '{space}', {
+    await waitUntil(() => el?.shadowRoot?.querySelector('summary'));
+    await userEvent.type(el!.shadowRoot!.querySelector('summary')!, '{space}', {
       pointerEventsCheck: 0
     });
   }

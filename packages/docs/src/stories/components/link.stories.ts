@@ -8,13 +8,6 @@ const { argTypes, parameters } = storybookDefaults('sd-link');
 const { generateTemplate } = storybookTemplate('sd-link');
 const { overrideArgs } = storybookHelpers('sd-link');
 
-/**
- *
- * Used to allow users to navigate to another location or perform actions like e.g. downloading files.
- *
- * **Related templates**:
- * - [Link](?path=/docs/templates-link--docs)
- */
 export default {
   tags: ['!dev'],
   title: 'Components/sd-link',
@@ -60,7 +53,7 @@ export const Size = {
 };
 
 /**
- * - Use the `href` attribute to enable the link.
+ * - Use the `href` attribute to make it a link instead of a button.
  * - Use the `target` attribute to specify where to open the link.
  * - Use the `download` attribute to tell the browser to download the linked file as this filename.
  */
@@ -155,7 +148,7 @@ export const VisuallyDisabled = {
   name: 'Visually Disabled',
   render: () => html`
     <div class="flex gap-12 h-[100px] pt-12">
-      <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm">
+      <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm">
         <sd-link
           size="lg"
           href="https://solid-design-system.fe.union-investment.de/docs/"

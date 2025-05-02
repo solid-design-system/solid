@@ -34,22 +34,22 @@ export default class SdLink extends SolidElement {
   @property({ type: Boolean, reflect: true }) standalone = false;
 
   /** The link's size. */
-  @property({ reflect: true }) size: 'inherit' | 'lg' | 'sm' = 'inherit';
+  @property({ type: String, reflect: true }) size: 'inherit' | 'lg' | 'sm' = 'inherit';
 
   /** Inverts the link. */
   @property({ type: Boolean, reflect: true }) inverted = false;
 
   /** When not set, the link will render as disabled. */
-  @property() href = '';
+  @property({ type: String, reflect: true }) href = '';
 
   /** Styles the link as if it was disabled and enables aria-disabled */
-  @property({ type: Boolean, attribute: 'visually-disabled' }) visuallyDisabled = false;
+  @property({ type: Boolean, attribute: 'visually-disabled', reflect: true }) visuallyDisabled = false;
 
   /** Tells the browser where to open the link. Only used when `href` is present. */
-  @property() target: '_blank' | '_parent' | '_self' | '_top';
+  @property({ type: String, reflect: true }) target: '_blank' | '_parent' | '_self' | '_top';
 
   /** Tells the browser to download the linked file as this filename. Only used when `href` is present. */
-  @property() download?: string;
+  @property({ reflect: true }) download?: string;
 
   private handleBlur() {
     this.emit('sd-blur');
@@ -88,7 +88,7 @@ export default class SdLink extends SolidElement {
       class=${cx(
         'inline',
         this.href && !this.visuallyDisabled ? 'cursor-pointer' : '',
-        this.visuallyDisabled ? 'cursor-not-allowed focus-visible:outline-none' : '',
+        this.visuallyDisabled ? 'cursor-not-allowed focus-visible:focus-outline' : '',
         {
           sm: 'text-sm',
           lg: 'text-base',

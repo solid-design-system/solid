@@ -28,7 +28,7 @@ const defaultSlotContent = `
 
 export default {
   title: 'Components/sd-scrollable/Screenshots: sd-scrollable',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-scrollable',
   args: overrideArgs({
     type: 'slot',
@@ -53,6 +53,44 @@ export const Default = {
   name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
+  }
+};
+
+export const AutoOrientation = {
+  name: 'Auto Orientation',
+  render: (args: any) => {
+    return generateTemplate({
+      args,
+      constants: [
+        { type: 'attribute', name: 'buttons', value: true },
+        { type: 'attribute', name: 'orientation', value: 'auto' }
+      ],
+      options: {
+        templateRenderer: ({ attributes }) => {
+          const attrs = Object.entries(attributes)
+            .map(([attr, value]) => `${attr}='${value}'`)
+            .join(' ');
+
+          return `
+            <sd-scrollable ${attrs}>
+              <div class="slot slot--border slot--text items-start" style="height:max-content; width:max-content; padding: 1rem; justify-content:start;">
+                <p>Scroll and give it a try!</p>
+                <br/>
+                <p>This is a long scrollable content.</p>
+                <p>It contains multiple paragraphs and lines.</p>
+                <p>The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.</p>
+                <p>The scrollable component will display shadows and buttons based on the props.</p>
+                <p>Customize the content and attributes as needed.</p>
+                <p>Here’s another line to keep things flowing.</p>
+                <p>Another one couldn't hurt, right?</p>
+                <p>We’re adding more content to ensure you can scroll in both directions.</p>
+                <p>These lines are here to make the scrollable component more useful for testing.</p>
+              </div>
+            </sd-scrollable>
+          `;
+        }
+      }
+    });
   }
 };
 
@@ -104,10 +142,10 @@ export const CustomIcon = {
           <p>Customize the content and attributes as needed.</p>
         </div>
         <div slot="icon-start">
-          <sd-icon name="system/image"></sd-icon>
+          <sd-icon name="system/image" label="Start"></sd-icon>
         </div>
         <div slot="icon-end">
-          <sd-icon name="system/image"></sd-icon>
+          <sd-icon name="system/image" label="End"></sd-icon>
         </div>
       </sd-scrollable>
     `;

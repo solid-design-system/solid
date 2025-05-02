@@ -68,6 +68,7 @@ export const ContactForm = {
         inputmode="text"
         id="regarding-input"
         class="hidden"
+        aria-label="Regarding"
         name="regardingInput"
         spellcheck
       ></sd-input>
@@ -153,7 +154,7 @@ export const ContactForm = {
  *
  * **Accessibility Hint:** This approach is recommended for accessibility reasons. Disabling elements, will remove them from the tab order and screen readers will not announce them.
  */
-export const FromWithVisuallyDisabledElements = {
+export const FormWithVisuallyDisabledElements = {
   render: () => html`
     <form class="sd-prose sd-prose--full-width" id="accessible-form">
       <h3 class="sd-headline sd-headline--size-4xl">Contact</h3>
@@ -166,7 +167,7 @@ export const FromWithVisuallyDisabledElements = {
           </sd-checkbox>
           <sd-tooltip
             content="Accept Policy Privacy to enable field"
-            trigger="click focus"
+            trigger="hover focus"
             size="sm"
             class="checkbox-tooltip"
           >
@@ -180,7 +181,7 @@ export const FromWithVisuallyDisabledElements = {
       <div class="flex flex-col gap-4 md:flex-row md:justify-end">
         <sd-tooltip
           content="Fill in all fields to enable button"
-          trigger="click focus"
+          trigger="hover focus"
           size="sm"
           class="button-tooltip"
         >

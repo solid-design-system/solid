@@ -1,6 +1,8 @@
+import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
+import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
@@ -25,6 +27,8 @@ import SolidElement from '../../internal/solid-element';
 
 @customElement('sd-video')
 export default class SdVideo extends SolidElement {
+  public localize = new LocalizeController(this);
+
   @query('[part=base]') hostEl: HTMLElement;
 
   /** Set to `true` to hide the play icon. */
@@ -120,10 +124,10 @@ export default class SdVideo extends SolidElement {
 
   render() {
     return html`
-      <div part="base" aria-label="Video Player" class="cursor-pointer">
+      <div part="base" class="cursor-pointer">
         <button
           part="play-button"
-          aria-label="Play video"
+          aria-label=${this.localize.term('playVideo')}
           tabindex="0"
           @click=${this.play}
           @keydown=${this.handleKeydown}

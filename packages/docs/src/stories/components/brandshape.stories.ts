@@ -8,18 +8,9 @@ const { argTypes, parameters } = storybookDefaults('sd-brandshape');
 const { overrideArgs } = storybookHelpers('sd-brandshape');
 const { generateTemplate } = storybookTemplate('sd-brandshape');
 
-/**
- *
- * Used as a container with brand character that visually emphasizes the content.
- *
- * **Related templates:**
- * - [Brandshape](?path=/story/templates-brandshape--docs)
- *
- */
-
 export default {
   title: 'Components/sd-brandshape',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   component: 'sd-brandshape',
   parameters: {
     ...parameters,
@@ -32,7 +23,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: '<div class="slot slot--border slot--text h-8 w-full">Default slot</div>'
+      value: '<div class="slot slot--border slot--text slot--inverted h-8 w-full">Default slot</div>'
     },
     {
       type: 'slot',
@@ -75,7 +66,7 @@ export const Variant = {
   render: () => html`
     <div class="space-y-5">
       <sd-brandshape variant="primary">
-        <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
+        <div class="slot slot--border slot--text slot--inverted h-8 w-full">Default slot</div>
       </sd-brandshape>
 
       <sd-brandshape variant="neutral-100">
@@ -97,7 +88,7 @@ export const Variant = {
         </sd-brandshape>
 
         <sd-brandshape variant="border-white">
-          <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
+          <div class="slot slot--border slot--text slot--inverted h-8 w-full">Default slot</div>
         </sd-brandshape>
       </div>
     </div>
@@ -114,19 +105,19 @@ export const Shapes = {
   render: () => html`
     <div class="space-y-5">
       <sd-brandshape shapes='["top", "middle", "bottom"]'>
-        <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
+        <div class="slot slot--border slot--text slot--inverted h-8 w-full">Default slot</div>
       </sd-brandshape>
 
       <sd-brandshape shapes='["top"]'>
-        <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
+        <div class="slot slot--border slot--text slot--inverted h-8 w-full">Default slot</div>
       </sd-brandshape>
 
       <sd-brandshape shapes='["top", "middle"]'>
-        <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
+        <div class="slot slot--border slot--text slot--inverted h-8 w-full">Default slot</div>
       </sd-brandshape>
 
       <sd-brandshape shapes='["middle", "bottom"]'>
-        <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
+        <div class="slot slot--border slot--text slot--inverted h-8 w-full">Default slot</div>
       </sd-brandshape>
     </div>
   `

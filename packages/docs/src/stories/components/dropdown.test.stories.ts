@@ -17,7 +17,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-dropdown/Screenshots: sd-dropdown',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-dropdown',
   args: overrideArgs([
     {
@@ -151,7 +151,7 @@ export const NoAutoSize = {
           type: 'slot',
           name: 'default',
           value:
-            '<div style="width: 120px;"><div style="height: 110vh; padding: 12px;"><div  class="slot slot--border slot--text slot--background" style="height: 100%; width: auto;">Scroll down<br><br>⬇️</div></div></div>'
+            '<div style="width: 120px;"><div style="height: 110vh; padding: 12px;"><div  class="slot slot--border slot--text slot--background" style="height: 100%; width: auto;" tabindex="0">Scroll down<br><br>⬇️</div></div></div>'
         },
         {
           type: 'attribute',

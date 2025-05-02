@@ -67,7 +67,7 @@ export default class SdCarousel extends SolidElement {
   @property({ type: Boolean, reflect: true }) autoplay = false;
 
   /** Specifies how many slides should be shown at a given time.  */
-  @property({ type: Number, attribute: 'slides-per-page' }) slidesPerPage = 1;
+  @property({ type: Number, attribute: 'slides-per-page', reflect: true }) slidesPerPage = 1;
 
   /**
    * Use `slides-per-move` to set how many slides the carousel advances when scrolling. This is useful when specifying a `slides-per-page` greater than one. By setting `slides-per-move` to the same value as `slides-per-page`, the carousel will advance by one page at a time.<br>
@@ -75,7 +75,7 @@ export default class SdCarousel extends SolidElement {
    * <li> The number of slides should be divisible by the number of `slides-per-page` to maintain consistent scroll behavior.</li>
    * <li>Variations between `slides-per-move` and `slides-per-page` can lead to unexpected scrolling behavior. Keep your intended UX in mind when adjusting these values.</li>
    */
-  @property({ type: Number, attribute: 'slides-per-move' }) slidesPerMove = 1;
+  @property({ type: Number, attribute: 'slides-per-move', reflect: true }) slidesPerMove = 1;
 
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
   @query('.carousel__slides') scrollContainer: HTMLElement;
@@ -111,8 +111,6 @@ export default class SdCarousel extends SolidElement {
 
   connectedCallback(): void {
     super.connectedCallback();
-    this.setAttribute('role', 'region');
-    this.setAttribute('aria-label', this.localize.term('carousel'));
     ['click', 'keydown'].forEach(event => this.addEventListener(event, this.handleUserInteraction));
 
     const intersectionObserver = new IntersectionObserver(
@@ -257,6 +255,18 @@ export default class SdCarousel extends SolidElement {
     }
     this.requestUpdate();
   };
+
+  private handleFocus() {
+    if (this.autoplay) {
+      this.scrollContainer.setAttribute('aria-live', 'polite');
+    }
+  }
+
+  private handleBlur() {
+    if (this.autoplay) {
+      this.scrollContainer.setAttribute('aria-live', 'off');
+    }
+  }
 
   private unblockAutoplay = (e: MouseEvent, button: HTMLButtonElement) => {
     // When the button is clicked with a mouse, blur the button to resume autoplay.
@@ -520,10 +530,13 @@ export default class SdCarousel extends SolidElement {
           )}"
           style="--slides-per-page: ${this.slidesPerPage};"
           aria-busy="${scrollController.scrolling ? 'true' : 'false'}"
-          role="status"
+          aria-label="${this.localize.term('carouselContainer', this.slides.length)}"
+          aria-live=${this.autoplay ? 'off' : 'polite'}
           tabindex="0"
           @keydown=${this.handleKeyDown}
           @scrollend=${this.handleScrollEnd}
+          @focus=${this.handleFocus}
+          @blur=${this.handleBlur}
         >
           <slot></slot>
         </div>
@@ -542,6 +555,8 @@ export default class SdCarousel extends SolidElement {
               aria-label="${this.localize.term('previousSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${prevEnabled ? 'false' : 'true'}"
+              @focus=${this.handleFocus}
+              @blur=${this.handleBlur}
               @click=${prevEnabled
                 ? (e: MouseEvent) => {
                     this.previous();
@@ -634,6 +649,8 @@ export default class SdCarousel extends SolidElement {
               aria-label="${this.localize.term('nextSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${nextEnabled ? 'false' : 'true'}"
+              @focus=${this.handleFocus}
+              @blur=${this.handleBlur}
               @click=${nextEnabled
                 ? (e: MouseEvent) => {
                     this.next();

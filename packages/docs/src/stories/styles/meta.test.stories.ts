@@ -21,7 +21,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Styles/sd-meta/Screenshots: sd-meta',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-meta',
   parameters: {
     ...parameters,

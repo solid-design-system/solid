@@ -7,24 +7,9 @@ const { argTypes, parameters } = storybookDefaults('sd-carousel');
 const { overrideArgs } = storybookHelpers('sd-carousel');
 const { generateTemplate } = storybookTemplate('sd-carousel');
 
-/**
- * Used to display an arbitrary number of content slides along a horizontal axis.
- *
- * On touch devices, the slides can be moved by swiping.
- *
- * **Accessibility Hint:** Chevron buttons are still displayed on touch devices to enable alternative interaction that complies with accessibility requirements.
- *
- *
- * **Related Components**:
- * - [sd-carousel-item](?path=/docs/components-sd-carousel-item--docs)
- *
- * **Related templates**:
- * - [Carousel](?path=/docs/templates-carousel--docs)
- */
-
 export default {
   title: 'Components/sd-carousel',
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   component: 'sd-carousel',
   args: overrideArgs([
     {
@@ -112,13 +97,13 @@ export const Inverted = {
     <div class="bg-primary p-8">
       <sd-carousel inverted>
         <sd-carousel-item>
-          <div class="slot slot--border slot--text h-16">Default slot 1</div>
+          <div class="slot slot--border slot--text slot--inverted h-16">Default slot 1</div>
         </sd-carousel-item>
         <sd-carousel-item>
-          <div class="slot slot--border slot--text h-16">Default slot 2</div>
+          <div class="slot slot--border slot--text slot--inverted h-16">Default slot 2</div>
         </sd-carousel-item>
         <sd-carousel-item>
-          <div class="slot slot--border slot--text h-16">Default slot 3</div>
+          <div class="slot slot--border slot--text slot--inverted h-16">Default slot 3</div>
         </sd-carousel-item>
       </sd-carousel>
     </div>

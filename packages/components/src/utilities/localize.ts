@@ -74,14 +74,17 @@ export interface Translation extends DefaultTranslation {
   $name: string; // e.g. English, Español
   $dir: 'ltr' | 'rtl';
 
-  autoplay: string;
   audioPlayer: string;
+  autoplay: string;
   carousel: string;
+  carouselContainer: (count: number) => string;
   clearEntry: string;
   close: string;
+  collapseNavigationItem: string;
   comboboxDefaultPlaceholder: string;
   copy: string;
   currentValue: string;
+  expandNavigationItem: string;
   goToSlide: (slide: number, count: number) => string;
   hidePassword: string;
   loading: string;
@@ -90,17 +93,22 @@ export interface Translation extends DefaultTranslation {
   noResults: string;
   notifications: string;
   numOptionsSelected: (num: number) => string;
+  open: string;
   openTranscript: string;
+  optionGroup: string;
   pauseAudio: string;
   playAudio: string;
   playbackSpeed: string;
+  playVideo: string;
   previousSlide: string;
   progress: string;
   remove: string;
   removed: (name: string) => string;
   resize: string;
+  scrolled: string;
   scrollToEnd: string;
   scrollToStart: string;
+  search: string;
   seekBar: string;
   selectAColorFromTheScreen: string;
   selectDefaultPlaceholder: string;

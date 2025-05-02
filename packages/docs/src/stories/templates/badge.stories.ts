@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 export default {
-  tags: ['!dev', 'skip-a11y'],
+  tags: ['!dev'],
   title: 'Templates/Badge',
   parameters: {
     chromatic: { disableSnapshot: true },
@@ -17,6 +17,7 @@ export default {
  * Examples of sd-button working with sd-badge:
  */
 export const ButtonWithBadge = {
+  name: 'Button with badge',
   render: () => html`
     <div class="flex flex-col">
       <section class="flex p-8 gap-10 items-center">
@@ -53,7 +54,7 @@ export const ButtonWithBadge = {
           <sd-badge inverted>10</sd-badge>
           Requests
         </sd-button>
-        <sd-button inverted variant="secondary" size="md">
+        <sd-button inverted variant="secondary">
           <sd-icon name="system/rss" slot="icon-left"></sd-icon>
           <sd-badge inverted>+99</sd-badge>
           News
@@ -99,14 +100,14 @@ export const NavigationItemWithBadge = {
           </a>
           <div class="flex">
             <sd-navigation-item class="relative">
-              <sd-icon name="system/bell" class="text-xl"></sd-icon>
+              <sd-icon name="system/bell" class="text-xl" label="Open Notifications"></sd-icon>
               <sd-badge class="absolute top-1 -right-5" size="md">
                 +99
                 <span class="sr-only">Notifications</span>
               </sd-badge>
             </sd-navigation-item>
             <sd-navigation-item>
-              <sd-icon name="system/menu" class="text-xl"></sd-icon>
+              <sd-icon name="system/menu" class="text-xl" label="Open menu"></sd-icon>
             </sd-navigation-item>
           </div>
         </div>

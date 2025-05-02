@@ -18,7 +18,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-button/Screenshots: sd-button',
   component: 'sd-button',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Default' }),
   argTypes,
   parameters: {
@@ -209,7 +209,7 @@ export const IconOnly = {
       constants: {
         type: 'slot',
         name: 'default',
-        value: '<sd-icon name="system/image"></sd-icon>'
+        value: '<sd-icon name="system/image" label="Icon Button"></sd-icon>'
       },
       args
     });

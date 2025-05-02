@@ -7,15 +7,6 @@ const { argTypes, parameters } = storybookDefaults('sd-button');
 const { overrideArgs } = storybookHelpers('sd-button');
 const { generateTemplate } = storybookTemplate('sd-button'); // Replace with your custom element tag
 
-/**
- * Used to allow users to perform actions with a single click.
- *
- * Buttons perform various functions (e.g. download, link) or activate other functions (e.g. filter). All buttons can be displayed with or without an icon. On small devices, the buttons are streched to full width.
- *
- * **Related templates**:
- * - [Button](?path=/docs/templates-button--docs)
- * - [Button with Badge](?path=/docs/templates-badge--docs#button-with-badge)
- */
 export default {
   tags: ['!dev'],
   title: 'Components/sd-button',
@@ -80,6 +71,25 @@ export const Size = {
 };
 
 /**
+ * - Use the `href` attribute to make it a link instead of a button.
+ * - Use the `target` attribute to specify where to open the link.
+ * - Use the `download` attribute to tell the browser to download the linked file as this filename.
+ */
+
+export const AsLink = {
+  name: 'As link',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-button
+        href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-introduction--docs"
+        >Link</sd-button
+      ><sd-button href="https://union-investment.com" target="_blank">New Window</sd-button
+      ><sd-button href="./placeholders/src/images/collaboration.jpg" download>Download</sd-button>
+    </div>
+  `
+};
+
+/**
  * Use the `loading` attribute to make a button busy. The width will remain the same as before, preventing adjacent elements from moving around.
  */
 
@@ -124,19 +134,19 @@ export const VisuallyDisabled = {
   render: () => {
     return html`
       <div class="flex gap-12 h-[100px] mt-12">
-        <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm" placement="top">
+        <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
           <sd-button variant="primary" visually-disabled>Visually Disabled</sd-button>
         </sd-tooltip>
 
-        <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm" placement="top">
+        <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
           <sd-button variant="secondary" visually-disabled>Visually Disabled</sd-button>
         </sd-tooltip>
 
-        <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm" placement="top">
+        <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
           <sd-button variant="tertiary" visually-disabled>Visually Disabled</sd-button>
         </sd-tooltip>
 
-        <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm" placement="top">
+        <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
           <sd-button variant="cta" visually-disabled>Visually Disabled</sd-button>
         </sd-tooltip>
       </div>

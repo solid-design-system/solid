@@ -14,7 +14,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-teaser-media/Screenshots: sd-teaser-media',
-  tags: ['!autodocs', 'skip-a11y'],
+  tags: ['!autodocs'],
   component: 'sd-teaser-media',
   args: overrideArgs([
     {
@@ -72,7 +72,26 @@ export const Variant = {
           value:
             '<img slot="media" class="aspect-video object-cover" src="./placeholders/images/generic.jpg" alt="A skyline of a city by night"/>'
         }
-      ]
+      ],
+      options: {
+        templateRenderer: ({ attributes, slots }) => {
+          const attrs = Object.entries(attributes)
+            .map(([attr, value]) => `${attr}='${value}'`)
+            .join(' ');
+
+          const slotted = Object.entries(slots ?? {})
+            .map(([, slot]) => slot)
+            .join('\n');
+
+          const inverted = ['primary', 'gradient-dark'].includes(attributes.variant as string);
+
+          return `
+            <sd-teaser-media ${attrs}>
+              ${inverted ? slotted?.replaceAll('class="slot', 'class="slot slot--inverted') : slotted}
+            </sd-teaser-media>
+          `;
+        }
+      }
     });
   }
 };

@@ -1,5 +1,300 @@
 # @solid-design-system/components
 
+## 4.6.16
+
+### Patch Changes
+
+- Add focus state to elements with the `visually-disabled` attribute for improved accessibility. _[`#2157`](https://github.com/solid-design-system/solid/pull/2157) [`5c20e76`](https://github.com/solid-design-system/solid/commit/5c20e76b6910a97a2cd83710b8f3614e16622897) [@smfonseca](https://github.com/smfonseca)_
+
+  Update cursor pointer when `sd-input` is disabled.
+
+  Update `sd-option` text color when disabled.
+
+## 4.6.15
+
+### Patch Changes
+
+- Improved `sd-teaser` and `sd-teaser-media` accessibility: _[`#2120`](https://github.com/solid-design-system/solid/pull/2120) [`ec19bb7`](https://github.com/solid-design-system/solid/commit/ec19bb7b101ced45393850328b534981b6d90c29) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Maintain consistent behavior between hover and focus states.
+  - Ensure the headline is the first element in the teaser's DOM structure.
+
+### 📈 Stats
+
+- Uncompressed: 422 KB (+1 KB / +0%)
+- Gzipped: 99 KB (unchanged)
+
+## 4.6.14
+
+### Patch Changes
+
+- Improved `sd-tooltip` accessibility: _[`#2138`](https://github.com/solid-design-system/solid/pull/2138) [`6c61fde`](https://github.com/solid-design-system/solid/commit/6c61fde928d4fb2bf3cfb7355cb58d1f8dc42ec1) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - The button indicates whether it’s open;
+  - Keep focus on the button if trigger is click;
+  - Buttons are now accessible with VoiceOVer in Safari;
+  - Screen readers announce the tooltip content when it becomes visible;
+
+## 4.6.13
+
+### Patch Changes
+
+- Improved `sd-notification` accessibility: _[`#2101`](https://github.com/solid-design-system/solid/pull/2101) [`fc8514e`](https://github.com/solid-design-system/solid/commit/fc8514ea809e0ad1869953b7cb08dcffd842294c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Improved consistency on screen reader announcements.
+  - `sd-notification` will now use existing toast stacks if present in the DOM with specific IDs. If not existent, it will be automatically created as a fallback.
+
+### 📈 Stats
+
+- Uncompressed: 421 KB (-1 KB / 0%)
+- Gzipped: 99 KB (unchanged)
+
+## 4.6.12
+
+### Patch Changes
+
+- Improve `sd-select` and `sd-combobox` a11y: _[`#2154`](https://github.com/solid-design-system/solid/pull/2154) [`bb67377`](https://github.com/solid-design-system/solid/commit/bb673772c5ce0216c229c999604024804c8c0d59) [@smfonseca](https://github.com/smfonseca)_
+
+  - Add focus state style to `sd-option`.
+  - Handle option focus inside `sd-select` and `sd-combobox`.
+  - Add invisible button to open `sd-combobox` with TalkBack.
+  - Expand tag removal to include handling with `enter` and `space` keys in addition to `backspace`.
+  - Separate tag text and removable indicator to it's own button to improve the component usability and clarity.
+  - Add translatable label to `sd-tag` removable button.
+  - Improve tag removal announcements.
+
+### 📈 Stats
+
+- Uncompressed: 422 KB (+3 KB / +1%)
+- Gzipped: 99 KB (+1 KB / +1%)
+
+## 4.6.11
+
+### Patch Changes
+
+- Improved `sd-dialog` `aria-label` and `aria-labelledby` attributes to ensure only one is set at a time. _[`#2140`](https://github.com/solid-design-system/solid/pull/2140) [`034046c`](https://github.com/solid-design-system/solid/commit/034046c54cc0455dc159a2c00a683138e34874f7) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.6.10
+
+### Patch Changes
+
+- Improved `sd-drawer` aria labels and focus outline. _[`#2143`](https://github.com/solid-design-system/solid/pull/2143) [`79644ba`](https://github.com/solid-design-system/solid/commit/79644baba6ecba34ac91abd088c814990b6c1b05) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.6.9
+
+### Patch Changes
+
+- Improved `sd-audio` `aria-label` by including current speed value on playback speed button. _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+- Adjusted type of `containingElement` property in `sd-dropdown` _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+- Component dependencies are not correctly imported (e.g. `sd-icon` inside `sd-button`) _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+- Make `sd-input` compatible to autofill with passwords _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+- Improved `sd-drawer` and `sd-dialog` focus management by ensuring trigger elements inside shadow DOMs are correctly re-focused when element closes. _[`#2136`](https://github.com/solid-design-system/solid/pull/2136) [`2a2dd5d`](https://github.com/solid-design-system/solid/commit/2a2dd5d34a59f6a7270e33963ce0f95a77abf1c4) [@mariohamann](https://github.com/mariohamann)_
+
+## 4.6.8
+
+### Patch Changes
+
+- Implemented `visually-disabled` attribute on `sd-tab`. _[`#2126`](https://github.com/solid-design-system/solid/pull/2126) [`41c40fd`](https://github.com/solid-design-system/solid/commit/41c40fdfb3da8b4dbe28a357affe922221f3733d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.6.7
+
+### Patch Changes
+
+- Improved `sd-scrollable` screen reader announcements when the scroll button is pressed. _[`#2109`](https://github.com/solid-design-system/solid/pull/2109) [`d2a3096`](https://github.com/solid-design-system/solid/commit/d2a3096319ca9f55428d24d8d333daded7227a4e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Fixed focus issue on `sd-scrollable` when both axis buttons are enabled and a scrolling limit is reached.
+
+### 📈 Stats
+
+- Uncompressed: 419 KB (+2 KB / +0%)
+- Gzipped: 98 KB (+1 KB / +1%)
+
+## 4.6.6
+
+### Patch Changes
+
+- Fix `sd-carousel` a11y issues when set to autoplay. _[`#2117`](https://github.com/solid-design-system/solid/pull/2117) [`079cc6b`](https://github.com/solid-design-system/solid/commit/079cc6bda59dcafa6b7bdf65660d2192d6f2b373) [@smfonseca](https://github.com/smfonseca)_
+
+  - Switch from `role="status"` to `aria-live` for more granular control.
+  - Update `aria-live` when element is focused.
+  - Add localized `aria-label` to `scroll-container`.
+
+## 4.6.5
+
+### Patch Changes
+
+- Added new translation keys named `expandNavigationItem` and `collapseNavigationItem`. _[`#2099`](https://github.com/solid-design-system/solid/pull/2099) [`f032ebb`](https://github.com/solid-design-system/solid/commit/f032ebb454c2aed3b24cc0beb64299ff4cc36a3a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Improved `sd-navigation-item` toggle details button title.
+
+## 4.6.4
+
+### Patch Changes
+
+- Fix `sd-step` label alignment when `not-interactive` attribute is set and browsers minimum font size is defined. _[`#2103`](https://github.com/solid-design-system/solid/pull/2103) [`18442d9`](https://github.com/solid-design-system/solid/commit/18442d9f3bb775ada64c30c9e206b345b2de0a10) [@smfonseca](https://github.com/smfonseca)_
+
+## 4.6.3
+
+### Patch Changes
+
+- Fix reflecting `clearable` property in `sd-select`. _[`#2098`](https://github.com/solid-design-system/solid/pull/2098) [`ae2b4c8`](https://github.com/solid-design-system/solid/commit/ae2b4c8b658f410e380d754227b592af3d3b221c) [@smfonseca](https://github.com/smfonseca)_
+
+## 4.6.2
+
+### Patch Changes
+
+- Improve `sd-input` accessibility. _[`#2095`](https://github.com/solid-design-system/solid/pull/2095) [`8ba710d`](https://github.com/solid-design-system/solid/commit/8ba710d292747bdd7dc62104c06da893c37b9d1a) [@smfonseca](https://github.com/smfonseca)_
+
+  - Make shown/ hide password button focusable.
+  - Add `aria-invalid` attribute to semantically communicate invalid state.
+
+### 📈 Stats
+
+- Uncompressed: 417 KB (+1 KB / +0%)
+- Gzipped: 97 KB (unchanged)
+
+## 4.6.1
+
+### Patch Changes
+
+- Improved `sd-badge` and `sd-button` accessibility when browser minimum font size is defined. _[`#2087`](https://github.com/solid-design-system/solid/pull/2087) [`16e99da`](https://github.com/solid-design-system/solid/commit/16e99dab4886b9656fd7ed64b6e657655d2ec66e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - `sd-badge` padding and font-size readjusted.
+  - Label alignment on `sd-button` (Safari-specific bug).
+
+## 4.6.0
+
+### Minor Changes
+
+- Improved `sd-select` accessibility by refactoring component to use a button to open the options list. Screenreaders like TalkBack can now correctly interact with the component. _[`#2086`](https://github.com/solid-design-system/solid/pull/2086) [`c295d51`](https://github.com/solid-design-system/solid/commit/c295d51e0fe8530c87f7b5a9cad36bb98f0af4d2) [@smfonseca](https://github.com/smfonseca)_
+
+  Fixed hover styles handling for `sd-select` and `sd-combobox` to be applied with css only instead of Javascript.
+
+## 4.5.3
+
+### Patch Changes
+
+- Fixed a11y issue in `sd-expandable`. Swapped `aria-hidden` with `inert` attribute to make sure all content, including interactive elements, is properly hidden when component state is closed. _[`#2090`](https://github.com/solid-design-system/solid/pull/2090) [`e9f8f9d`](https://github.com/solid-design-system/solid/commit/e9f8f9d4942f164ee516c135b28696a305663eae) [@smfonseca](https://github.com/smfonseca)_
+
+## 4.5.2
+
+### Patch Changes
+
+- Update components to reflect selected properties so that they are always displayed in the DOM. This is specifically required when web components are used within React 19 but also to make dx more predictable. _[`#2088`](https://github.com/solid-design-system/solid/pull/2088) [`f95ee43`](https://github.com/solid-design-system/solid/commit/f95ee4374c1947f63f374de897f7a40ac373649f) [@smfonseca](https://github.com/smfonseca)_
+
+### 📈 Stats
+
+- Uncompressed: 416 KB (+2 KB / +0%)
+- Gzipped: 97 KB (unchanged)
+
+## 4.5.1
+
+### Patch Changes
+
+- Implement `role="group"` on `sd-teaser` to improve a11y. _[`#1997`](https://github.com/solid-design-system/solid/pull/1997) [`1c13853`](https://github.com/solid-design-system/solid/commit/1c138533f7aa444def6c0ae1f0d3cd94bb9492b3) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.5.0
+
+### Minor Changes
+
+- Implement `label` attribute on `sd-map-marker` to improve a11y. _[`#1991`](https://github.com/solid-design-system/solid/pull/1991) [`6800cd7`](https://github.com/solid-design-system/solid/commit/6800cd77873a3f03e71229a51acfe908c2749f9a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.4.2
+
+### Patch Changes
+
+- Fix german translations used in the `sd-audio` component. _[`#1987`](https://github.com/solid-design-system/solid/pull/1987) [`d7bfbe3`](https://github.com/solid-design-system/solid/commit/d7bfbe39cf5fa38d1478f1fc7990fe57f377ed81) [@smfonseca](https://github.com/smfonseca)_
+
+## 4.4.1
+
+### Patch Changes
+
+- Improved `sd-drawer` accessibility. _[`#1943`](https://github.com/solid-design-system/solid/pull/1943) [`f1197c5`](https://github.com/solid-design-system/solid/commit/f1197c5a777a2b330b5773eb3deef83bcda8c32e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Make it a section fixing duplicated landmarks issues.
+  - Fix issue with roles at body part.
+
+## 4.4.0
+
+### Minor Changes
+
+- Improved `sd-step-group` accessibility. _[`#1966`](https://github.com/solid-design-system/solid/pull/1966) [`c49e5f8`](https://github.com/solid-design-system/solid/commit/c49e5f8bd1999ed26f75551b4d41f7d82da947a6) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add a `label` attribute to assign an `aria-label` to the component.
+
+  Improved `sd-step` accessibility.
+
+  - Apply `aria-labelledby` and `aria-describedby` only when the component is interactive.
+
+### 📈 Stats
+
+- Uncompressed: 414 KB (+1 KB / +0%)
+- Gzipped: 97 KB (unchanged)
+
+## 4.3.1
+
+### Patch Changes
+
+- Removed carousel automatic `role="region"` so users can choose whenever an `sd-carousel` should have it or not. _[`#1935`](https://github.com/solid-design-system/solid/pull/1935) [`1c54e1c`](https://github.com/solid-design-system/solid/commit/1c54e1ce286f64a7ad7f575918b9952961938646) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  For more information on how to use `role="region"`, please refer to the [Carousel template](https://solid-design-system.fe.union-investment.de/docs/?path=/docs/templates-carousel--docs).
+
+## 4.3.0
+
+### Minor Changes
+
+- Added new functionality to the `sd-input` for type="search" and improved the component accessibility. _[`#1934`](https://github.com/solid-design-system/solid/pull/1934) [`b8f1d87`](https://github.com/solid-design-system/solid/commit/b8f1d879b7974fe81633d08d66e3605ab9eae139) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Search icon button is interactive.
+  - Trigger `sd-search` event when search button on `sd-input type="search"` is clicked.
+  - Added a translatable label to the search icon for the `sd-input type="search"`.
+
+## 4.2.8
+
+### Patch Changes
+
+- Adjust styling on form elements: _[`#1931`](https://github.com/solid-design-system/solid/pull/1931) [`82121dc`](https://github.com/solid-design-system/solid/commit/82121dce671e93f9066c1af79c8992090641f861) [@smfonseca](https://github.com/smfonseca)_
+
+  - Placeholder color for `sd-select`, `sd-combobox`, `sd-input` and `sd-textarea` when disabled or visually-disabled.
+  - `sd-select` border color when focused and visually-disabled
+
+### 📈 Stats
+
+- Uncompressed: 413 KB (+1 KB / +0%)
+- Gzipped: 97 KB (unchanged)
+
+## 4.2.7
+
+### Patch Changes
+
+- Updated `sd-optgroup` option wrapper role from `group` to `listbox` to align with HTML standards and included a localized `aria-label`. _[`#1938`](https://github.com/solid-design-system/solid/pull/1938) [`a328df3`](https://github.com/solid-design-system/solid/commit/a328df31e8fcd379100ff5d27859070015ddef68) [@smfonseca](https://github.com/smfonseca)_
+
+## 4.2.6
+
+### Patch Changes
+
+- Removed summary default marker from `sd-accordion` which was being displayed in Safari. _[`#1946`](https://github.com/solid-design-system/solid/pull/1946) [`88ff20e`](https://github.com/solid-design-system/solid/commit/88ff20e092ce72f4eee5fb5019c7e0fb3d47e252) [@smfonseca](https://github.com/smfonseca)_
+
+## 4.2.5
+
+### Patch Changes
+
+- Localize `sd–video` play button aria-label with new translation named `playVideo`. _[`#1944`](https://github.com/solid-design-system/solid/pull/1944) [`32695f2`](https://github.com/solid-design-system/solid/commit/32695f2580fe301f252195492bedd6aedcf467cf) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Remove unnecessary `aria-label` on sd-video wrapper element.
+
+## 4.2.4
+
+### Patch Changes
+
+- Improved `sd-radio-group` a11y by adding the attribute `aria-labelledby` to hidden input. _[`#1940`](https://github.com/solid-design-system/solid/pull/1940) [`d2d5dcb`](https://github.com/solid-design-system/solid/commit/d2d5dcb9889102d9ad18f8ffcb9cbba389c4088e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.2.3
+
+### Patch Changes
+
+- Fix sd-checkbox `aria-checked` when on the indeterminate state _[`#1930`](https://github.com/solid-design-system/solid/pull/1930) [`6327da1`](https://github.com/solid-design-system/solid/commit/6327da128579d8131da3e10dd714afb216e226e1) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 4.2.2
 
 ### Patch Changes
@@ -10,8 +305,9 @@
   - Used floating-points to more accurately set `currentTime`, `duration` and progress bar calculations.
 
 ### 📈 Stats
-* Uncompressed: 412 KB (+1 KB / +0%)
-* Gzipped: 97 KB (unchanged)
+
+- Uncompressed: 412 KB (+1 KB / +0%)
+- Gzipped: 97 KB (unchanged)
 
 ## 4.2.1
 

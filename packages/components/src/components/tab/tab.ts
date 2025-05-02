@@ -40,8 +40,11 @@ export default class SdTab extends SolidElement {
   /** Disables the tab and prevents selection. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  /** Styles the tab as if it was disabled and enables aria-disabled */
+  @property({ type: Boolean, reflect: true, attribute: 'visually-disabled' }) visuallyDisabled = false;
+
   /** The name of the tab panel this tab is associated with. The panel must be located in the same tab group. */
-  @property({ reflect: true }) panel = '';
+  @property({ type: String, reflect: true }) panel = '';
 
   connectedCallback() {
     super.connectedCallback();
@@ -53,9 +56,10 @@ export default class SdTab extends SolidElement {
     this.setAttribute('aria-selected', this.active ? 'true' : 'false');
   }
 
-  @watch('disabled')
+  @watch(['disabled', 'visually-disabled'])
   handleDisabledChange() {
-    this.setAttribute('aria-disabled', this.disabled ? 'true' : 'false');
+    const isDisabled = this.disabled || this.visuallyDisabled;
+    this.setAttribute('aria-disabled', isDisabled ? 'true' : 'false');
   }
 
   /** Sets focus to the tab. */
@@ -80,36 +84,46 @@ export default class SdTab extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'inline-flex min-w-max h-12 px-3 leading-none items-center justify-center whitespace-nowrap select-none cursor-pointer group relative focus-visible:focus-outline outline-2 !-outline-offset-2',
+          'inline-flex justify-center min-w-max items-center h-12 px-3 leading-none select-none cursor-pointer group relative focus-visible:focus-outline outline-2 !-outline-offset-2',
           this.variant === 'container' && ' rounded-[4px_4px_0_0]',
           this.variant === 'container' && this.active && 'tab--active-container-border bg-white',
-          this.disabled ? 'opacity-50 !cursor-not-allowed' : 'hover:bg-neutral-200'
+          this.disabled || this.visuallyDisabled ? '!cursor-not-allowed' : 'hover:bg-neutral-200'
         )}
         tabindex=${!this.active || this.disabled ? '-1' : '0'}
       >
-        <slot
-          name="left"
-          class=${cx(slots.left && 'block pr-2', this.disabled ? 'text-neutral-500' : 'text-primary')}
-        ></slot>
-        <slot class=${cx(this.disabled ? 'text-neutral-500' : 'text-primary')}></slot>
-
         <div
-          part="active-tab-indicator"
-          class=${cx(
-            (!this.active || this.disabled) && 'hidden',
-            'absolute bottom-0 h-1 bg-accent',
-            this.variant === 'default' ? 'w-full' : 'w-3/4 group-hover:w-full transition-all duration-200 ease-in-out'
-          )}
-        ></div>
+          class="${cx(
+            'flex h-full items-center justify-center whitespace-nowrap',
+            this.disabled || (this.visuallyDisabled && 'opacity-50 ')
+          )}"
+        >
+          <slot
+            name="left"
+            class=${cx(
+              slots.left && 'block pr-2',
+              this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary'
+            )}
+          ></slot>
+          <slot class=${cx(this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary')}></slot>
 
-        <div
-          part="hover-bottom-border"
-          class=${cx(
-            !this.active &&
-              !this.disabled &&
-              'absolute w-full h-0.25 bottom-0 border-b border-neutral-400 invisible group-hover:visible'
-          )}
-        ></div>
+          <div
+            part="active-tab-indicator"
+            class=${cx(
+              (!this.active || this.disabled) && 'hidden',
+              'absolute bottom-0 h-1 bg-accent',
+              this.variant === 'default' ? 'w-full' : 'w-3/4 group-hover:w-full transition-all duration-200 ease-in-out'
+            )}
+          ></div>
+
+          <div
+            part="hover-bottom-border"
+            class=${cx(
+              !this.active &&
+                !this.disabled &&
+                'absolute w-full h-0.25 bottom-0 border-b border-neutral-400 invisible group-hover:visible'
+            )}
+          ></div>
+        </div>
       </div>
     `;
   }

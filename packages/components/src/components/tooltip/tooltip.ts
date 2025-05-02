@@ -1,4 +1,4 @@
-import '../popup/popup';
+import '../icon/icon';
 import { animateTo, parseDuration, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
@@ -8,8 +8,9 @@ import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
+// eslint-disable-next-line
+import SdPopup from '../popup/popup';
 import SolidElement from '../../internal/solid-element';
-import type SdPopup from '../popup/popup';
 
 /**
  * @summary Tooltips display additional information based on a specific action.
@@ -18,6 +19,7 @@ import type SdPopup from '../popup/popup';
  * @since 1.23.0
  *
  * @dependency sd-popup
+ * @dependency sd-icon
  *
  * @slot - The tooltip's target element. Avoid slotting in more than one element, as subsequent ones will be ignored.
  * @slot anchor - Slot to change the default trigger icon. The default icon is an info circle.
@@ -53,17 +55,22 @@ export default class SdTooltip extends SolidElement {
   @query('sd-popup') popup: SdPopup;
 
   /** Sets the size of the default trigger icon. */
-  @property() size: 'lg' | 'sm' = 'lg';
+  @property({ type: String, reflect: true }) size: 'lg' | 'sm' = 'lg';
 
   /** The tooltip's content. If you need to display HTML, use the `content` slot instead. */
-  @property() content = '';
+  @property({ type: String, reflect: true }) content = '';
 
   /**
    * The preferred placement of the tooltip. Note that the actual placement may vary as needed to keep the tooltip
    * inside of the viewport.
    */
-  @property({ reflect: true }) placement: 'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' =
-    'top';
+  @property({ type: String, reflect: true }) placement:
+    | 'top'
+    | 'top-start'
+    | 'top-end'
+    | 'bottom'
+    | 'bottom-start'
+    | 'bottom-end' = 'top';
 
   /** Disables the tooltip so it won't show when triggered. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -76,14 +83,14 @@ export default class SdTooltip extends SolidElement {
    * options can be passed by separating them with a space. When manual is used, the tooltip must be activated
    * programmatically.
    */
-  @property() trigger = 'click focus';
+  @property({ type: String, reflect: true }) trigger = 'click focus';
 
   /**
    * Enable this option to prevent the tooltip from being clipped when the component is placed inside a container with
    * `overflow: auto|hidden|scroll`. Hoisting uses a fixed positioning strategy that works in many, but not all,
    * scenarios.
    */
-  @property({ type: Boolean }) hoist = false;
+  @property({ type: Boolean, reflect: true }) hoist = false;
 
   connectedCallback() {
     super.connectedCallback();
@@ -129,8 +136,15 @@ export default class SdTooltip extends SolidElement {
     document.removeEventListener('keydown', this.handleKeyboardInteraction);
   }
 
+  private get hasCustomTrigger() {
+    return !!this.querySelector('*:not([slot])');
+  }
+
   // removes empty text nodes from the default slot
-  private formatDefaultSlot(slot: HTMLSlotElement) {
+  private formatDefaultSlot(slot: HTMLSlotElement | null) {
+    if (!slot) {
+      return;
+    }
     const nodes = slot.assignedNodes({ flatten: true });
     nodes.forEach(node => {
       if (node.nodeType === Node.TEXT_NODE && !node?.textContent?.trim()) {
@@ -259,8 +273,15 @@ export default class SdTooltip extends SolidElement {
     if (!this.open) {
       return undefined;
     }
+
     this.open = false;
-    this.blur();
+
+    if (this.trigger === 'click' || this.trigger === 'click focus') {
+      this.focus();
+    } else {
+      this.blur();
+    }
+
     return waitForEvent(this, 'sd-after-hide');
   }
 
@@ -287,23 +308,31 @@ export default class SdTooltip extends SolidElement {
         auto-size="vertical"
         arrow-padding="0"
       >
-        <slot slot="anchor" class=${cx(this.size === 'lg' ? 'text-xl' : 'text-base')}>
-          <button aria-describedby="tooltip" class="flex sd-interactive rounded-full" ?disabled=${this.disabled}>
-            <sd-icon
-              library="system"
-              name="info-circle"
-              label="Tooltip"
-              class=${cx(this.disabled && 'sd-interactive--disabled')}
-            ></sd-icon>
-          </button>
-        </slot>
+        <!-- Dev note: This condition addresses a Safari limitation where VoiceOver ignores the tooltip if its trigger is placed inside a slot. -->
+        ${this.hasCustomTrigger
+          ? html` <slot slot="anchor"></slot>`
+          : html`<button
+              slot="anchor"
+              aria-describedby="tooltip"
+              class=${cx('flex sd-interactive rounded-full', this.size === 'lg' ? 'text-xl' : 'text-base')}
+              ?disabled=${this.disabled}
+              aria-expanded=${this.open}
+              aria-controls="tooltip"
+            >
+              <sd-icon
+                library="system"
+                name="info-circle"
+                label="Tooltip"
+                class=${cx(this.disabled && 'sd-interactive--disabled')}
+              ></sd-icon>
+            </button>`}
         <slot
           name="content"
           part="body"
           id="tooltip"
           class=" bg-primary text-white py-3 px-4 block rounded-none text-sm text-left"
           role="tooltip"
-          aria-label="Tooltip"
+          aria-label=${this.content}
           aria-live=${this.open ? 'polite' : 'off'}
         >
           ${this.content}

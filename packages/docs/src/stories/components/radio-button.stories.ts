@@ -7,19 +7,6 @@ const { argTypes, parameters } = storybookDefaults('sd-radio-button');
 const { overrideArgs } = storybookHelpers('sd-radio-button');
 const { generateTemplate } = storybookTemplate('sd-radio-button');
 
-/**
- * Used to switch between different options or views by selecting one option from a group.
- *
- * Similar to `sd-radio`, it has to be slotted inside of an `sd-radio-group`. It does not have an invalid state and should always have a pre-selected option (default value).
- *
- * **Related components:**
- * - [sd-radio](?path=/docs/components-sd-radio--docs)
- * - [sd-radio-group](?path=/docs/components-sd-radio-group--docs)
- *
- * **Related templates:**
- * - [Radio Button Group](?path=/docs/templates-radio-button-group--docs)
- */
-
 export default {
   title: 'Components/sd-radio-button',
   tags: ['!dev'],
@@ -220,26 +207,22 @@ export const VisuallyDisabled = {
   render: () => html`
     <div class="flex gap-12 h-[100px] pt-12">
       <sd-radio-group>
-        <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm">
-          <sd-radio-button value="1" visually-disabled>
-            <sd-icon name="system/image" slot="icon"></sd-icon>
-            Label
-          </sd-radio-button>
-        </sd-tooltip>
+        <sd-radio-button value="1">
+          <sd-icon name="system/image" slot="icon"></sd-icon>
+          Label
+        </sd-radio-button>
 
-        <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm">
+        <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm">
           <sd-radio-button value="2" visually-disabled>
             <sd-icon name="system/image" slot="icon"></sd-icon>
-            Disabled
+            Visually Disabled
           </sd-radio-button>
         </sd-tooltip>
 
-        <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm">
-          <sd-radio-button value="3" visually-disabled>
-            <sd-icon name="system/image" slot="icon"></sd-icon>
-            Label
-          </sd-radio-button>
-        </sd-tooltip>
+        <sd-radio-button value="3">
+          <sd-icon name="system/image" slot="icon"></sd-icon>
+          Label
+        </sd-radio-button>
       </sd-radio-group>
     </div>
   `

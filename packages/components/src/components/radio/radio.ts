@@ -1,4 +1,3 @@
-import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { property, state } from 'lit/decorators.js';
@@ -32,7 +31,7 @@ export default class SdRadio extends SolidElement {
   @state() protected hasFocus = false;
 
   /** The radio's size. */
-  @property({ reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
+  @property({ type: String, reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
 
   /** A Boolean attribute which, if present, disables the radio. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -175,9 +174,7 @@ export default class SdRadio extends SolidElement {
         @apply block w-max;
       }
 
-      :host(:focus-visible),
-      :host([visually-disabled]:focus-visible) [part='control--checked'],
-      :host([visually-disabled]:focus-visible) [part='control--unchecked'] {
+      :host(:focus-visible) {
         @apply outline-none;
       }
 
