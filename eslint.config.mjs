@@ -6,13 +6,14 @@ import chaiExpect from 'eslint-plugin-chai-expect';
 import chaiFriendly from 'eslint-plugin-chai-friendly';
 import globals from 'globals';
 import js from '@eslint/js';
+import lit from 'eslint-plugin-lit';
 import litA11Y from 'eslint-plugin-lit-a11y';
 import path from 'node:path';
 import sds from '@solid-design-system/eslint-plugin';
 import sortImportsEs6Autofix from 'eslint-plugin-sort-imports-es6-autofix';
 import tsParser from '@typescript-eslint/parser';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
-import * as wc from 'eslint-plugin-wc';
+import wc from 'eslint-plugin-wc';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -64,6 +65,7 @@ export default [
     plugins: {
       '@typescript-eslint': typescriptEslint,
       wc,
+      lit,
       'lit-a11y': litA11Y,
       'chai-expect': chaiExpect,
       'chai-friendly': chaiFriendly,
