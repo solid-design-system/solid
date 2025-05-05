@@ -259,7 +259,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       <${tag}
       part="base"
       class=${cx(
-        `font-md leading-[calc(var(--tw-varspacing)-2px)] no-underline
+        `group relative z-10 overflow-hidden font-md leading-[calc(var(--tw-varspacing)-2px)] no-underline
         w-full h-varspacing whitespace-nowrap align-middle inline-flex items-stretch justify-center
         border transition-colors duration-200 ease-in-out rounded-default
         select-none cursor-[inherit]`,
@@ -335,6 +335,9 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         @invalid=${this.isButton() ? this.handleInvalid : null}
         @click=${this.handleClick}
       >
+        <div class="w-full h-full absolute -z-10 pointer-events-none">
+          <div class="absolute top-full left-0 bg-error w-full mt-[11%] h-[200%] skew-y-[-11deg] transition-[top] ease-in-out duration-fast group-hover:-top-full"></div>
+        </div>
         <slot name="icon-left" part="icon-left" class=${cx(
           'flex flex-auto items-center pointer-events-none',
           slots['icon-only'] && 'hidden',
