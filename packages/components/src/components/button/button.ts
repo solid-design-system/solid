@@ -282,13 +282,13 @@ export default class SdButton extends SolidElement implements SolidFormControl {
             ? `text-white border-transparent ${
                 this.visuallyDisabled
                   ? 'bg-neutral-500 hover:bg-neutral-500 hover:bg-neutral-500'
-                  : 'bg-primary hover:bg-primary-500 hover:text-primary-100 active:text-primary-200 active:bg-primary-800'
+                  : 'bg-primary hover:border-primary-500 hover:text-primary-100 active:text-primary-200 active:border-primary-800'
               }
           disabled:bg-neutral-500`
             : `border-transparent ${
                 this.visuallyDisabled
                   ? 'bg-neutral-500 text-white hover:bg-neutral-500 active:bg-neutral-500'
-                  : 'text-primary bg-white hover:text-primary-500 hover:bg-primary-100 active:text-primary-800 active:bg-primary-200'
+                  : 'text-primary bg-white hover:text-primary-500 active:text-primary-800'
               }
           disabled:bg-neutral-600 disabled:text-white`,
           secondary: !this.inverted
@@ -301,19 +301,19 @@ export default class SdButton extends SolidElement implements SolidFormControl {
             : `${
                 this.visuallyDisabled
                   ? 'text-neutral-600 border-neutral-600 hover:text-neutral-600 hover:border-neutral-600 active:text-neutral-600 active:border-neutral-600'
-                  : 'text-white border-white hover:text-primary-100 hover:bg-primary-500 hover:border-primary-100 active:text-primary-200 active:bg-primary-800 active:border-primary-200'
+                  : 'text-white border-white hover:text-primary-100 hover:border-primary-100 active:text-primary-200'
               }
           disabled:text-neutral-600 disabled:border-neutral-600`,
           tertiary: !this.inverted
             ? `border-transparent ${
                 this.visuallyDisabled
                   ? 'text-neutral-500 hover:text-neutral-500 active:text-neutral-500'
-                  : 'text-primary hover:text-primary-500 hover:bg-primary-100 active:text-primary-800 active:bg-primary-200'
+                  : 'text-primary hover:text-primary-500 active:text-primary-800'
               }
           disabled:text-neutral-500`
-            : `border-transparent ${this.visuallyDisabled ? 'text-neutral-600 hover:text-neutral-600 active:text-neutral-600' : 'text-white hover:text-primary-100 hover:bg-primary-500 active:text-primary-200 active:bg-primary-800'}
+            : `border-transparent ${this.visuallyDisabled ? 'text-neutral-600 hover:text-neutral-600 active:text-neutral-600' : 'text-white hover:text-primary-100 active:text-primary-200'}
           disabled:text-neutral-600`,
-          cta: `text-white ${this.visuallyDisabled ? 'bg-neutral-500 hover:bg-neutral-500 active:bg-neutral-500' : 'bg-accent-500 border-transparent hover:bg-accent-550 active:bg-accent-700'}
+          cta: `text-white ${this.visuallyDisabled ? 'bg-neutral-500 hover:bg-neutral-500 active:bg-neutral-500' : 'bg-accent-500 border-accent-500 hover:border-accent-550 active:border-accent-700'}
           ${!this.inverted ? 'disabled:bg-neutral-500' : 'disabled:bg-neutral-600'} disabled:text-white`
         }[this.variant]
       )}
@@ -335,8 +335,25 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         @invalid=${this.isButton() ? this.handleInvalid : null}
         @click=${this.handleClick}
       >
-        <div class="w-full h-full absolute -z-10 pointer-events-none">
-          <div class="absolute top-full left-0 bg-error w-full mt-[11%] h-[200%] skew-y-[-11deg] transition-[top] ease-in-out duration-fast group-hover:-top-full"></div>
+        <div class=${cx(
+          'absolute -inset-0.25 -z-10 pointer-events-none',
+          (this.disabled || this.visuallyDisabled) && 'hidden'
+        )}>
+          <div class=${cx(
+            'absolute top-full left-0 w-full h-[200%] mt-[11%] skew-y-[-11deg] transition-all ease-in-out duration-fast group-hover:-top-full',
+            {
+              primary: !this.inverted
+                ? 'bg-primary-500 group-active:bg-primary-800'
+                : 'bg-primary-100 group-active:bg-primary-200',
+              secondary: !this.inverted
+                ? 'bg-primary-100 group-active:bg-primary-200'
+                : 'bg-primary-500 group-active:bg-primary-800',
+              tertiary: !this.inverted
+                ? 'bg-primary-100 group-active:bg-primary-200'
+                : 'bg-primary-500 group-active:bg-primary-800',
+              cta: 'bg-accent-550 group-active:bg-accent-700'
+            }[this.variant]
+          )}></div>
         </div>
         <slot name="icon-left" part="icon-left" class=${cx(
           'flex flex-auto items-center pointer-events-none',
