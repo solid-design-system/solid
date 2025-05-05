@@ -313,7 +313,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
           disabled:text-neutral-500`
             : `border-transparent ${this.visuallyDisabled ? 'text-neutral-600 hover:text-neutral-600 active:text-neutral-600' : 'text-white hover:text-primary-100 active:text-primary-200'}
           disabled:text-neutral-600`,
-          cta: `text-white ${this.visuallyDisabled ? 'bg-neutral-500 hover:bg-neutral-500 active:bg-neutral-500' : 'bg-accent-500 border-accent-500 hover:border-accent-550 active:border-accent-700'}
+          cta: `text-white ${this.visuallyDisabled ? 'bg-neutral-500 hover:bg-neutral-500 active:bg-neutral-500' : 'bg-accent-500 border-transparent hover:border-accent-550 active:border-accent-700'}
           ${!this.inverted ? 'disabled:bg-neutral-500' : 'disabled:bg-neutral-600'} disabled:text-white`
         }[this.variant]
       )}
