@@ -5,7 +5,7 @@ import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
-import { token } from 'src/internal/token';
+import { token } from '../../internal/token';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
