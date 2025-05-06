@@ -81,10 +81,11 @@ export const Removable = {
     <script type="module">
       const tag = document.querySelector('#tags-removable');
 
-      tag.addEventListener('sd-remove', event => {
-        const tag = event.target;
-        tag.style.opacity = '0';
-        setTimeout(() => (tag.style.opacity = '1'), 2000);
+      tag.addEventListener('sd-after-remove', event => {
+        setTimeout(() => {
+          event.target.style.opacity = '1';
+          event.target.hidden = false;
+        }, 2000);
       });
     </script>
   `
