@@ -311,6 +311,28 @@ export const setCustomValidity = {
   }
 };
 
+export const Scrollable = {
+  name: 'Scrollable',
+  render: () => {
+    return html`
+      <sd-textarea id="scrollable-textarea" label="Label" style-on-valid style="max-width: 350px;"></sd-textarea>
+    `;
+  },
+
+  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
+    const els = canvasElement.querySelectorAll('sd-textarea');
+
+    for (const el of els) {
+      await waitUntil(() => el?.shadowRoot?.querySelector('textarea'));
+      el.value = new Array(100).fill('lorem ipsum dolor sit amet').join(' ');
+      await userEvent.type(el.shadowRoot!.querySelector('textarea')!, 'e');
+    }
+
+    // tab to next element to loose focus
+    await userEvent.tab();
+  }
+};
+
 /**
  * This shows sd-textarea takes the full height of the parent container.
  */
