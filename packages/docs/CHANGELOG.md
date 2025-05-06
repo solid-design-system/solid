@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.16.0
+
+### Minor Changes
+
+- Moved docs-related guidelines to the docs package. _[`#2185`](https://github.com/solid-design-system/solid/pull/2185) [`ce439d0`](https://github.com/solid-design-system/solid/commit/ce439d0c00e2a1f8c236fa32f138adc16672a3d3) [@mariohamann](https://github.com/mariohamann)_
+
 ## 1.15.2
 
 ### Patch Changes
