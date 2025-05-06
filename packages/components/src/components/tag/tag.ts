@@ -5,9 +5,9 @@ import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
+import { token } from 'src/internal/token';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-import { token } from 'src/internal/token';
 
 /**
  * @summary Tags are used as labels to organize things or to indicate a selection.
