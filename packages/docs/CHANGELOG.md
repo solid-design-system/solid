@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.16.1
+
+### Patch Changes
+
+- Implemented new `sd-textarea` screenshot test named `Scrollable`. _[`#2159`](https://github.com/solid-design-system/solid/pull/2159) [`fbf93a5`](https://github.com/solid-design-system/solid/commit/fbf93a5c0a535ee598c23aa8670923ccddcae623) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.16.0
 
 ### Minor Changes
