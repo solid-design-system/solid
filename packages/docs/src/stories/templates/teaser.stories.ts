@@ -88,9 +88,7 @@ export const ClickableTeaser = {
             manager, Union Investment is facing up to the challenges associated with combating climate change and the
             sustainable restructuring of the economy.
           </p>
-          <sd-link href="https://solid-design-system.fe.union-investment.de/docs/" class="relative z-10">
-            Read more about our climate strategy
-          </sd-link>
+          <sd-link href="https://solid-design-system.fe.union-investment.de/docs/" class="relative z-10">Read more about our climate strategy</sd-link>
           <sd-button href="https://union-investment.com" target="_blank" class="mt-5">
             <sd-icon name="system/download" slot="icon-left"></sd-icon>
             Download climate strategy report
