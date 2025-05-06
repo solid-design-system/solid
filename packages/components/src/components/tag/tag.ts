@@ -23,6 +23,7 @@ import SolidElement from '../../internal/solid-element';
  * @event sd-blur - Emitted when the tag loses focus.
  * @event sd-focus - Emitted when the tag gains focus.
  * @event sd-remove - Emitted when the remove button is activated.
+ * @event sd-after-remove - Emitted after the tag is removed and all animations are complete.
  *
  * @csspart base - The component's base wrapper.
  * @csspart content - The tag's content.
