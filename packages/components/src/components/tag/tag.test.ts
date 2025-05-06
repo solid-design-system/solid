@@ -83,6 +83,21 @@ describe('<sd-tag>', () => {
 
       expect(button?.getAttribute('label')).to.equal('Entfernen');
     });
+
+    it('should emit a sd-remove and sd-after-remove event', async () => {
+      el = await fixture<SdTag>(html`<sd-tag removable>Tag</sd-tag>`);
+      const handleRemove = sinon.spy();
+      const handleAfterRemove = sinon.spy();
+      el.addEventListener('sd-remove', handleRemove);
+      el.addEventListener('sd-after-remove', handleAfterRemove);
+
+      const button: HTMLButtonElement = el.shadowRoot!.querySelector('button:has([part="removable-indicator"])')!;
+      button.click();
+
+      await waitUntil(() => handleRemove.calledOnce && handleAfterRemove.calledOnce);
+      expect(handleRemove).have.been.called;
+      expect(handleAfterRemove).have.been.called;
+    });
   });
 
   describe('when disabled', () => {
