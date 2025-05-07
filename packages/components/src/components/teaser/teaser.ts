@@ -1,10 +1,11 @@
-import { css, html } from 'lit';
+import { css, html, nothing } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { property, query, state } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { PropertyValues } from 'lit';
+
 /**
  * @summary Teasers group information into flexible containers so users can browse a collection of related items and actions.
  * @documentation https://solid.union-investment.com/[storybook-link]/teaser
@@ -43,6 +44,10 @@ export default class SdTeaser extends SolidElement {
 
   /** The teaser's inner padding. This is always set in `white border-neutral-400`. */
   @property({ type: Boolean, reflect: true }) inset = false;
+
+  /** Position of the meta text. Can be positioned above(top) or below(bottom) the headline. Defaults to top. */
+  @property({ type: String, attribute: 'meta-slot-position', reflect: true }) metaSlotPosition: 'top' | 'bottom' =
+    'top';
 
   @query('[part="base"]') teaser: HTMLElement;
 
@@ -111,6 +116,20 @@ export default class SdTeaser extends SolidElement {
         part="base"
       >
         <div
+          part="media"
+          id="media"
+          style=${this._orientation === 'horizontal' ? `width: var(--distribution-media, 100%);` : ''}
+          class=${cx(
+            'order-1',
+            !inset && this._orientation === 'vertical' && 'mb-4',
+            !slots['teaser-has-media'] && 'hidden',
+            this.variant === 'white border-neutral-400' && this._orientation === 'vertical' && 'mx-[-1px] mt-[-1px]'
+          )}
+        >
+          <slot name="media"></slot>
+        </div>
+
+        <div
           style=${this._orientation === 'horizontal'
             ? `width: var(--distribution-content, 100%); ${
                 inset ? 'width: var(--distribution-content, calc(100% - 2rem));' : ''
@@ -123,42 +142,37 @@ export default class SdTeaser extends SolidElement {
           )}
           part="content"
         >
-          <div class="flex flex-col-reverse">
+          <div class="flex flex-col">
+            ${this.metaSlotPosition === 'top'
+              ? html` <div part="meta" class=${cx('gap-2 mb-4', !slots['teaser-has-meta'] && 'hidden')}>
+                  <slot name="meta"></slot>
+                </div>`
+              : nothing}
+
             <div
               part="headline"
               class=${cx('text-lg font-bold m-0', this.variant === 'primary' ? 'text-white' : 'text-black')}
             >
-              <slot name="headline"
-                >Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)</slot
-              >
+              <slot name="headline">
+                Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)
+              </slot>
             </div>
 
-            <div part="meta" class=${cx('gap-2 mb-4', !slots['teaser-has-meta'] && 'hidden')}>
-              <slot name="meta"></slot>
+            ${this.metaSlotPosition === 'bottom'
+              ? html` <div part="meta" class=${cx('gap-2 mt-4 mb-4', !slots['teaser-has-meta'] && 'hidden')}>
+                  <slot name="meta"></slot>
+                </div>`
+              : nothing}
+
+            <div
+              part="main"
+              class=${cx(!slots['teaser-has-default'] && 'hidden')}
+              role="group"
+              aria-labelledby="headline"
+            >
+              <slot></slot>
             </div>
           </div>
-
-          <div
-            part="main"
-            class=${cx(!slots['teaser-has-default'] && 'hidden')}
-            role="group"
-            aria-labelledby="headline"
-          >
-            <slot></slot>
-          </div>
-        </div>
-        <div
-          part="media"
-          id="media"
-          style=${this._orientation === 'horizontal' ? `width: var(--distribution-media, 100%);` : ''}
-          class=${cx(
-            'order-1',
-            !inset && this._orientation === 'vertical' && 'mb-4',
-            !slots['teaser-has-media'] && 'hidden',
-            this.variant === 'white border-neutral-400' && this._orientation === 'vertical' && 'mx-[-1px] mt-[-1px]'
-          )}
-        >
-          <slot name="media"></slot>
         </div>
       </div>
     `;
