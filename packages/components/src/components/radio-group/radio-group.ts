@@ -1,3 +1,4 @@
+import '../button-group/button-group';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import {
@@ -10,10 +11,10 @@ import { HasSlotController } from '../../internal/slot';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
-import SdButtonGroup from '../button-group/button-group';
 import SdRadio from '../../components/radio/radio';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
+import type SdButtonGroup from '../button-group/button-group';
 import type SdRadioButton from '../../components/radio-button/radio-button';
 
 /**
