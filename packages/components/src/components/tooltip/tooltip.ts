@@ -1,4 +1,5 @@
 import '../icon/icon';
+import '../popup/popup';
 import { animateTo, parseDuration, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
@@ -8,9 +9,8 @@ import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
-// eslint-disable-next-line
-import SdPopup from '../popup/popup';
 import SolidElement from '../../internal/solid-element';
+import type SdPopup from '../popup/popup';
 
 /**
  * @summary Tooltips display additional information based on a specific action.
