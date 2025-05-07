@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.16.2
+
+### Patch Changes
+
+- Update company details in imprint (name, managing director, tax ID) _[`#2201`](https://github.com/solid-design-system/solid/pull/2201) [`870bc51`](https://github.com/solid-design-system/solid/commit/870bc51283016f1ae2478c61ba6972974c60fb14) [@yoezlem](https://github.com/yoezlem)_
+
 ## 1.16.1
 
 ### Patch Changes
