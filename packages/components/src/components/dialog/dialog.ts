@@ -10,6 +10,7 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { property, query } from 'lit/decorators.js';
+import { token } from '../../internal/token';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
@@ -352,18 +353,18 @@ export default class SdDialog extends SolidElement {
 
 setDefaultAnimation('dialog.show', {
   keyframes: [
-    { opacity: 0, scale: 0.8 },
-    { opacity: 1, scale: 1 }
+    { opacity: 0, transform: 'translate(-50%, 100%)' },
+    { opacity: 1, transform: 'translate(0, 0)' }
   ],
-  options: { duration: 250, easing: 'ease' }
+  options: { duration: (token('sd-duration-medium') as number) || 300, easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('dialog.hide', {
   keyframes: [
-    { opacity: 1, scale: 1 },
-    { opacity: 0, scale: 0.8 }
+    { opacity: 1, transform: 'translate(0, 0)' },
+    { opacity: 0, transform: 'translate(50%, -100%)' }
   ],
-  options: { duration: 250, easing: 'ease' }
+  options: { duration: (token('sd-duration-fast') as number) || 150, easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('dialog.denyClose', {
@@ -373,12 +374,12 @@ setDefaultAnimation('dialog.denyClose', {
 
 setDefaultAnimation('dialog.overlay.show', {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  options: { duration: 250 }
+  options: { duration: (token('sd-duration-medium') as number) || 300, easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('dialog.overlay.hide', {
   keyframes: [{ opacity: 1 }, { opacity: 0 }],
-  options: { duration: 250 }
+  options: { duration: (token('sd-duration-fast') as number) || 150, easing: 'ease-in-out' }
 });
 
 declare global {
