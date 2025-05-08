@@ -6,6 +6,7 @@ import { getTabbableBoundary } from '../../internal/tabbable';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll';
+import { token } from '../../internal/token';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
@@ -435,7 +436,6 @@ export default class SdDropdown extends SolidElement {
         shift
         auto-size="vertical"
         auto-size-padding="10"
-        ?active=${this.open}
       >
         <slot
           name="trigger"
@@ -451,8 +451,8 @@ export default class SdDropdown extends SolidElement {
         <slot
           part="panel"
           class=${cx(
-            'shadow bg-white',
-            this.open ? 'block pointer-events-auto' : 'pointer-events-none',
+            'shadow bg-white block',
+            this.open ? 'pointer-events-auto' : 'pointer-events-none',
             this.rounded && 'rounded-md'
           )}
           aria-hidden=${this.open ? 'false' : 'true'}
@@ -504,19 +504,13 @@ export default class SdDropdown extends SolidElement {
 }
 
 setDefaultAnimation('dropdown.show', {
-  keyframes: [
-    { opacity: 0, scale: 0.9 },
-    { opacity: 1, scale: 1 }
-  ],
-  options: { duration: 100, easing: 'ease' }
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+  options: { duration: token('sd-duration-medium') as number, easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('dropdown.hide', {
-  keyframes: [
-    { opacity: 1, scale: 1 },
-    { opacity: 0, scale: 0.9 }
-  ],
-  options: { duration: 100, easing: 'ease' }
+  keyframes: [{ opacity: 1 }, { opacity: 0 }],
+  options: { duration: token('sd-duration-fast') as number, easing: 'ease-in-out' }
 });
 
 declare global {

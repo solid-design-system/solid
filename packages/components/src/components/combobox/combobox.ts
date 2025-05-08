@@ -13,6 +13,7 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize.js';
 import { property, query, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll.js';
+import { token } from '../../internal/token';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
@@ -1210,7 +1211,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           <div
             part="border"
             class=${cx(
-              'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10',
+              'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10 transition-[colors,border-width] duration-medium ease-in-out',
               {
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
@@ -1250,7 +1251,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               class=${cx(
                 'relative w-full px-4 flex flex-row items-center rounded-default',
                 this.visuallyDisabled || this.disabled ? 'hover:bg-transparent' : 'hover:bg-neutral-200',
-                this.open && 'shadow',
+                this.open && 'shadow transition-shadow duration-medium ease-in-out',
                 {
                   sm: 'py-1 min-h-[32px]',
                   md: 'py-1 min-h-[40px]',
@@ -1378,7 +1379,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               >
                 ${this.type !== 'search'
                   ? html`<sd-icon
-                      class=${cx('transition-all', this.open ? 'rotate-180' : 'rotate-0')}
+                      class=${cx(
+                        'transition-transform duration-medium ease-in-out',
+                        this.open ? 'rotate-180' : 'rotate-0'
+                      )}
                       name="chevron-down"
                       part="chevron"
                       library="system"
@@ -1418,7 +1422,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               part="listbox"
               class=${cx(
                 'bg-white px-2 py-3 relative border-primary overflow-y-auto',
-                this.open && 'shadow',
+                this.open && 'shadow transition-shadow duration-medium ease-in-out',
                 this.currentPlacement === 'bottom'
                   ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
                   : 'border-r-2 border-t-2 border-l-2 rounded-tr-default rounded-tl-default'
@@ -1524,19 +1528,13 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 }
 
 setDefaultAnimation('combobox.show', {
-  keyframes: [
-    { opacity: 0, scale: 0.9 },
-    { opacity: 1, scale: 1 }
-  ],
-  options: { duration: 100, easing: 'ease' }
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+  options: { duration: token('sd-duration-medium') as number, easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('combobox.hide', {
-  keyframes: [
-    { opacity: 1, scale: 1 },
-    { opacity: 0, scale: 0.9 }
-  ],
-  options: { duration: 100, easing: 'ease' }
+  keyframes: [{ opacity: 1 }, { opacity: 0 }],
+  options: { duration: token('sd-duration-fast') as number, easing: 'ease-in-out' }
 });
 
 declare global {
