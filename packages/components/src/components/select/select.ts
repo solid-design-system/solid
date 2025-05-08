@@ -1212,14 +1212,16 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   ];
 }
 
-setDefaultAnimation('select.show', {
-  keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  options: { duration: (token('sd-duration-medium') as number) || 300, easing: 'ease-in-out' }
-});
+requestAnimationFrame(() => {
+  setDefaultAnimation('select.show', {
+    keyframes: [{ opacity: 0 }, { opacity: 1 }],
+    options: { duration: (token('sd-duration-medium') as number) || 300, easing: 'ease-in-out' }
+  });
 
-setDefaultAnimation('select.hide', {
-  keyframes: [{ opacity: 1 }, { opacity: 0 }],
-  options: { duration: (token('sd-duration-fast') as number) || 150, easing: 'ease-in-out' }
+  setDefaultAnimation('select.hide', {
+    keyframes: [{ opacity: 1 }, { opacity: 0 }],
+    options: { duration: (token('sd-duration-fast') as number) || 150, easing: 'ease-in-out' }
+  });
 });
 
 declare global {
