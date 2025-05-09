@@ -259,7 +259,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       <${tag}
       part="base"
       class=${cx(
-        `font-md leading-[calc(var(--tw-varspacing)-2px)] no-underline
+        `group relative z-10 overflow-hidden font-md leading-[calc(var(--tw-varspacing)-2px)] no-underline
         w-full h-varspacing whitespace-nowrap align-middle inline-flex items-stretch justify-center
         border transition-colors duration-200 ease-in-out rounded-default
         select-none cursor-[inherit]`,
@@ -282,13 +282,13 @@ export default class SdButton extends SolidElement implements SolidFormControl {
             ? `text-white border-transparent ${
                 this.visuallyDisabled
                   ? 'bg-neutral-500 hover:bg-neutral-500 hover:bg-neutral-500'
-                  : 'bg-primary hover:bg-primary-500 hover:text-primary-100 active:text-primary-200 active:bg-primary-800'
+                  : 'bg-primary hover:border-primary-500 hover:text-primary-100 active:text-primary-200 active:border-primary-800'
               }
           disabled:bg-neutral-500`
             : `border-transparent ${
                 this.visuallyDisabled
                   ? 'bg-neutral-500 text-white hover:bg-neutral-500 active:bg-neutral-500'
-                  : 'text-primary bg-white hover:text-primary-500 hover:bg-primary-100 active:text-primary-800 active:bg-primary-200'
+                  : 'text-primary bg-white hover:text-primary-500 active:text-primary-800'
               }
           disabled:bg-neutral-600 disabled:text-white`,
           secondary: !this.inverted
@@ -301,19 +301,19 @@ export default class SdButton extends SolidElement implements SolidFormControl {
             : `${
                 this.visuallyDisabled
                   ? 'text-neutral-600 border-neutral-600 hover:text-neutral-600 hover:border-neutral-600 active:text-neutral-600 active:border-neutral-600'
-                  : 'text-white border-white hover:text-primary-100 hover:bg-primary-500 hover:border-primary-100 active:text-primary-200 active:bg-primary-800 active:border-primary-200'
+                  : 'text-white border-white hover:text-primary-100 hover:border-primary-100 active:text-primary-200'
               }
           disabled:text-neutral-600 disabled:border-neutral-600`,
           tertiary: !this.inverted
             ? `border-transparent ${
                 this.visuallyDisabled
                   ? 'text-neutral-500 hover:text-neutral-500 active:text-neutral-500'
-                  : 'text-primary hover:text-primary-500 hover:bg-primary-100 active:text-primary-800 active:bg-primary-200'
+                  : 'text-primary hover:text-primary-500 active:text-primary-800'
               }
           disabled:text-neutral-500`
-            : `border-transparent ${this.visuallyDisabled ? 'text-neutral-600 hover:text-neutral-600 active:text-neutral-600' : 'text-white hover:text-primary-100 hover:bg-primary-500 active:text-primary-200 active:bg-primary-800'}
+            : `border-transparent ${this.visuallyDisabled ? 'text-neutral-600 hover:text-neutral-600 active:text-neutral-600' : 'text-white hover:text-primary-100 active:text-primary-200'}
           disabled:text-neutral-600`,
-          cta: `text-white ${this.visuallyDisabled ? 'bg-neutral-500 hover:bg-neutral-500 active:bg-neutral-500' : 'bg-accent-500 border-transparent hover:bg-accent-550 active:bg-accent-700'}
+          cta: `text-white ${this.visuallyDisabled ? 'bg-neutral-500 hover:bg-neutral-500 active:bg-neutral-500' : 'bg-accent-500 border-transparent hover:border-accent-550 active:border-accent-700'}
           ${!this.inverted ? 'disabled:bg-neutral-500' : 'disabled:bg-neutral-600'} disabled:text-white`
         }[this.variant]
       )}
@@ -335,6 +335,42 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         @invalid=${this.isButton() ? this.handleInvalid : null}
         @click=${this.handleClick}
       >
+        <div class=${cx(
+          'absolute -inset-0.25 -z-10 pointer-events-none h-full transition-all duration-fast translate-y-full group-hover:translate-y-0 group-hover:mt-[-22%] mt-[11%]',
+          (this.disabled || this.visuallyDisabled) && 'hidden'
+        )}>
+          <div class=${cx(
+            'absolute right-0 min-w-full min-h-full aspect-square skew-y-[-11deg] mt-[11%]',
+            {
+              primary: !this.inverted
+                ? 'bg-primary-500 group-active:bg-primary-800'
+                : 'bg-primary-100 group-active:bg-primary-200',
+              secondary: !this.inverted
+                ? 'bg-primary-100 group-active:bg-primary-200'
+                : 'bg-primary-500 group-active:bg-primary-800',
+              tertiary: !this.inverted
+                ? 'bg-primary-100 group-active:bg-primary-200'
+                : 'bg-primary-500 group-active:bg-primary-800',
+              cta: 'bg-accent-550 group-active:bg-accent-700'
+            }[this.variant]
+          )}></div>
+          <div class=${cx(
+            'absolute w-full h-full mt-[22%]',
+            {
+              primary: !this.inverted
+                ? 'bg-primary-500 group-active:bg-primary-800'
+                : 'bg-primary-100 group-active:bg-primary-200',
+              secondary: !this.inverted
+                ? 'bg-primary-100 group-active:bg-primary-200'
+                : 'bg-primary-500 group-active:bg-primary-800',
+              tertiary: !this.inverted
+                ? 'bg-primary-100 group-active:bg-primary-200'
+                : 'bg-primary-500 group-active:bg-primary-800',
+              cta: 'bg-accent-550 group-active:bg-accent-700'
+            }[this.variant]
+          )}></div>
+        </div>
+
         <slot name="icon-left" part="icon-left" class=${cx(
           'flex flex-auto items-center pointer-events-none',
           slots['icon-only'] && 'hidden',
