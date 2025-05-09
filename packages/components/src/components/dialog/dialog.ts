@@ -90,6 +90,10 @@ export default class SdDialog extends SolidElement {
     super.connectedCallback();
     this.handleDocumentKeyDown = this.handleDocumentKeyDown.bind(this);
     this.modal = new Modal(this);
+    this.updatePrefersReducedMotion();
+    window
+      .matchMedia('(prefers-reduced-motion: reduce)')
+      .addEventListener('change', this.updatePrefersReducedMotion.bind(this));
   }
 
   firstUpdated() {
@@ -105,6 +109,15 @@ export default class SdDialog extends SolidElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     unlockBodyScrolling(this);
+    window
+      .matchMedia('(prefers-reduced-motion: reduce)')
+      .removeEventListener('change', this.updatePrefersReducedMotion.bind(this));
+  }
+
+  private prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  private updatePrefersReducedMotion() {
+    this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
   private requestClose(source: 'close-button' | 'keyboard' | 'overlay') {
@@ -181,7 +194,9 @@ export default class SdDialog extends SolidElement {
         }
       });
 
-      const panelAnimation = getAnimation(this, 'dialog.show', { dir: this.localize.dir() });
+      const panelAnimation = this.prefersReducedMotion
+        ? getAnimation(this, 'dialog.showReducedMotion', { dir: this.localize.dir() })
+        : getAnimation(this, 'dialog.show', { dir: this.localize.dir() });
       const overlayAnimation = getAnimation(this, 'dialog.overlay.show', { dir: this.localize.dir() });
       await Promise.all([
         animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options),
@@ -196,7 +211,9 @@ export default class SdDialog extends SolidElement {
       this.modal.deactivate();
 
       await Promise.all([stopAnimations(this.dialog), stopAnimations(this.overlay)]);
-      const panelAnimation = getAnimation(this, 'dialog.hide', { dir: this.localize.dir() });
+      const panelAnimation = this.prefersReducedMotion
+        ? getAnimation(this, 'dialog.hideReducedMotion', { dir: this.localize.dir() })
+        : getAnimation(this, 'dialog.hide', { dir: this.localize.dir() });
       const overlayAnimation = getAnimation(this, 'dialog.overlay.hide', { dir: this.localize.dir() });
 
       // Animate the overlay and the panel at the same time. Because animation durations might be different, we need to
@@ -359,12 +376,22 @@ setDefaultAnimation('dialog.show', {
   options: { duration: (token('sd-duration-medium') as number) || 300, easing: 'ease-in-out' }
 });
 
+setDefaultAnimation('dialog.showReducedMotion', {
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+  options: { duration: (token('sd-duration-medium') as number) || 300, easing: 'ease-in-out', reducedMotion: 'allow' }
+});
+
 setDefaultAnimation('dialog.hide', {
   keyframes: [
     { opacity: 1, transform: 'translate(0, 0)' },
     { opacity: 0, transform: 'translate(50%, -100%)' }
   ],
   options: { duration: (token('sd-duration-fast') as number) || 150, easing: 'ease-in-out' }
+});
+
+setDefaultAnimation('dialog.hideReducedMotion', {
+  keyframes: [{ opacity: 1 }, { opacity: 0 }],
+  options: { duration: (token('sd-duration-fast') as number) || 150, easing: 'ease-in-out', reducedMotion: 'allow' }
 });
 
 setDefaultAnimation('dialog.denyClose', {
@@ -379,7 +406,7 @@ setDefaultAnimation('dialog.overlay.show', {
 
 setDefaultAnimation('dialog.overlay.hide', {
   keyframes: [{ opacity: 1 }, { opacity: 0 }],
-  options: { duration: (token('sd-duration-fast') as number) || 150, easing: 'ease-in-out' }
+  options: { duration: (token('sd-duration-fast') as number) || 150, easing: 'ease-in-out', reducedMotion: 'allow' }
 });
 
 declare global {
