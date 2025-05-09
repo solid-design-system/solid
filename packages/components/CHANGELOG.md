@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 4.6.17
+
+### Patch Changes
+
+- Fixed text getting cut-off by valid/invalid icon on `sd-textarea`. _[`#2159`](https://github.com/solid-design-system/solid/pull/2159) [`fbf93a5`](https://github.com/solid-design-system/solid/commit/fbf93a5c0a535ee598c23aa8670923ccddcae623) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+* Uncompressed: 421 KB (-1 KB / 0%)
+* Gzipped: 99 KB (unchanged)
+
 ## 4.6.16
 
 ### Patch Changes
