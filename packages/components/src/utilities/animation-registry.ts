@@ -1,7 +1,11 @@
+interface ExtendedKeyframeAnimationOptions extends KeyframeAnimationOptions {
+  reducedMotion?: 'allow';
+}
+
 export interface ElementAnimation {
   keyframes: Keyframe[];
   rtlKeyframes?: Keyframe[];
-  options?: KeyframeAnimationOptions;
+  options?: ExtendedKeyframeAnimationOptions;
 }
 
 export interface ElementAnimationMap {
