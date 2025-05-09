@@ -5,6 +5,7 @@ const theme = require('../tokens/src/create-theme.cjs');
 theme.fill.neutral[100] = theme.backgroundColor.neutral[100].replace('/*', '/* Only needed for brandshape –');
 
 theme.extend = {
+  ...theme.extend,
   keyframes: {
     grow: {
       '0%': { width: '0%' },
