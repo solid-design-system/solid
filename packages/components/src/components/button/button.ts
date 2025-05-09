@@ -336,11 +336,26 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         @click=${this.handleClick}
       >
         <div class=${cx(
-          'absolute -inset-0.25 -z-10 pointer-events-none',
+          'absolute -inset-0.25 -z-10 pointer-events-none h-full transition-all duration-fast translate-y-full group-hover:translate-y-0 group-hover:mt-[-22%] mt-[11%]',
           (this.disabled || this.visuallyDisabled) && 'hidden'
         )}>
           <div class=${cx(
-            'absolute top-full left-0 w-full h-[200%] mt-[11%] skew-y-[-11deg] transition-all ease-in-out duration-fast group-hover:-top-full',
+            'absolute right-0 min-w-full min-h-full aspect-square skew-y-[-11deg] mt-[11%]',
+            {
+              primary: !this.inverted
+                ? 'bg-primary-500 group-active:bg-primary-800'
+                : 'bg-primary-100 group-active:bg-primary-200',
+              secondary: !this.inverted
+                ? 'bg-primary-100 group-active:bg-primary-200'
+                : 'bg-primary-500 group-active:bg-primary-800',
+              tertiary: !this.inverted
+                ? 'bg-primary-100 group-active:bg-primary-200'
+                : 'bg-primary-500 group-active:bg-primary-800',
+              cta: 'bg-accent-550 group-active:bg-accent-700'
+            }[this.variant]
+          )}></div>
+          <div class=${cx(
+            'absolute w-full h-full mt-[22%]',
             {
               primary: !this.inverted
                 ? 'bg-primary-500 group-active:bg-primary-800'
@@ -355,6 +370,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
             }[this.variant]
           )}></div>
         </div>
+
         <slot name="icon-left" part="icon-left" class=${cx(
           'flex flex-auto items-center pointer-events-none',
           slots['icon-only'] && 'hidden',
