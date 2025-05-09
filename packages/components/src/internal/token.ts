@@ -11,7 +11,5 @@ export const token = (name: string): string | number | null => {
   if (!entry || !property) return null;
 
   const value = getComputedStyle(document.documentElement).getPropertyValue(`--${name}`);
-  console.log('root =>', document.documentElement);
-  console.log(`Token: ${name} => ${value}`);
   return processors[property]?.(value) ?? value;
 };
