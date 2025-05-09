@@ -5,6 +5,7 @@ import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
+import { token } from '../../internal/token';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -22,6 +23,7 @@ import SolidElement from '../../internal/solid-element';
  * @event sd-blur - Emitted when the tag loses focus.
  * @event sd-focus - Emitted when the tag gains focus.
  * @event sd-remove - Emitted when the remove button is activated.
+ * @event sd-after-remove - Emitted after the tag is removed and all animations are complete.
  *
  * @csspart base - The component's base wrapper.
  * @csspart content - The tag's content.
@@ -65,8 +67,18 @@ export default class SdTag extends SolidElement {
     this.emit('sd-focus');
   }
 
-  private handleRemoveClick() {
-    this.emit('sd-remove');
+  private async handleRemove() {
+    const sdRemove = this.emit('sd-remove', { cancelable: true });
+
+    if (sdRemove.defaultPrevented) {
+      return;
+    }
+
+    this.style.opacity = '0';
+    await new Promise(resolve => setTimeout(resolve, token('sd-duration-fast') as number));
+    this.hidden = true;
+
+    this.emit('sd-after-remove');
   }
 
   private isLink() {
@@ -111,7 +123,7 @@ export default class SdTag extends SolidElement {
         @focus=${this.handleFocus}
         class=${cx(
           /* basic styles of the wrapper */
-          'inline-flex border box-border rounded-full items-center leading-none whitespace-nowrap focus-visible:focus-outline',
+          'inline-flex border box-border rounded-full items-center leading-none whitespace-nowrap transition-colors duration-fast ease-in-out focus-visible:focus-outline',
           {
             /* sizes, fonts */
             lg: 'h-8 text-base gap-2',
@@ -132,7 +144,7 @@ export default class SdTag extends SolidElement {
         <slot id="content" part='content'></slot>
         ${
           this.removable
-            ? html` <button class="sd-interactive flex items-center" type="button" @click=${this.handleRemoveClick}>
+            ? html` <button class="sd-interactive flex items-center" type="button" @click=${this.handleRemove}>
                 <slot part="removable-indicator" name="removable-indicator">
                   <sd-icon library="system" name="close" label=${this.localize.term('remove')}></sd-icon>
                 </slot>
@@ -149,7 +161,7 @@ export default class SdTag extends SolidElement {
     ...SolidElement.styles,
     css`
       :host {
-        @apply inline-block;
+        @apply inline-block transition-opacity duration-fast ease-in-out;
       }
 
       :host([size='lg'])::part(removable-indicator) {
