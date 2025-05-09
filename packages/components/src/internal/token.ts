@@ -3,7 +3,7 @@ const TOKENS = {
 } as const;
 
 const processors: Record<string, (value: string) => string | number> = {
-  duration: (value: string): number => parseFloat(value)
+  duration: (value: string): number => (value.endsWith('ms') ? parseFloat(value) : parseFloat(value) * 1000)
 };
 
 export const token = (name: string): string | number | null => {
