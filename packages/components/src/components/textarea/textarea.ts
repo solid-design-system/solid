@@ -353,10 +353,10 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
     // Conditional Styles
     const textSize = this.size === 'sm' ? 'text-sm' : 'text-base';
-    const iconSizeMarginLeft = {
-      sm: 'text-base ml-1',
-      md: 'text-lg ml-2',
-      lg: 'text-xl ml-2'
+    const iconSize = {
+      sm: 'text-base top-1',
+      md: 'text-lg top-2',
+      lg: 'text-xl top-2'
     }[this.size];
 
     return html`
@@ -398,11 +398,11 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           <div
             part="base"
             class=${cx(
-              'textarea h-full px-4 flex items-top rounded-default group',
+              'textarea h-full flex items-top rounded-default group',
               {
-                sm: 'textarea-sm py-1',
-                md: 'textarea-md py-1',
-                lg: 'textarea-lg py-2'
+                sm: 'textarea-sm',
+                md: 'textarea-md',
+                lg: 'textarea-lg'
               }[this.size],
               !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
@@ -413,7 +413,12 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               part="textarea"
               id="input"
               class=${cx(
-                'flex-grow focus:outline-none bg-transparent placeholder-neutral-700 resize-none',
+                'ps-4 flex-grow focus:outline-none bg-transparent placeholder-neutral-700 resize-none group-has-[sd-icon]:pe-8',
+                {
+                  sm: 'py-1',
+                  md: 'py-1',
+                  lg: 'py-2'
+                }[this.size],
                 this.disabled && 'cursor-not-allowed',
                 textSize
               )}
@@ -446,7 +451,10 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
             ${this.showInvalidStyle
               ? html`
                   <sd-icon
-                    class=${cx('text-error absolute right-4 bg-white group-hover:bg-neutral-200', iconSizeMarginLeft)}
+                    class=${cx(
+                      'text-error absolute right-4 bg-white pointer-events-none group-hover:bg-neutral-200',
+                      iconSize
+                    )}
                     library="system"
                     name="risk"
                     part="invalid-icon"
@@ -456,7 +464,10 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
             ${this.styleOnValid && this.showValidStyle
               ? html`
                   <sd-icon
-                    class=${cx('text-success absolute right-4 bg-white group-hover:bg-neutral-200', iconSizeMarginLeft)}
+                    class=${cx(
+                      'text-success absolute right-4 bg-white pointer-events-none group-hover:bg-neutral-200',
+                      iconSize
+                    )}
                     library="system"
                     name="status-check"
                     part="valid-icon"
@@ -487,6 +498,10 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     css`
       :host {
         @apply block h-full;
+      }
+
+      :host textarea {
+        scrollbar-gutter: stable;
       }
 
       :host([visually-disabled]) ::placeholder,

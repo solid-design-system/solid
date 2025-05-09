@@ -1,5 +1,23 @@
 # @solid-design-system/docs
 
+## 1.16.2
+
+### Patch Changes
+
+- Update company details in imprint (name, managing director, tax ID) _[`#2201`](https://github.com/solid-design-system/solid/pull/2201) [`870bc51`](https://github.com/solid-design-system/solid/commit/870bc51283016f1ae2478c61ba6972974c60fb14) [@yoezlem](https://github.com/yoezlem)_
+
+## 1.16.1
+
+### Patch Changes
+
+- Implemented new `sd-textarea` screenshot test named `Scrollable`. _[`#2159`](https://github.com/solid-design-system/solid/pull/2159) [`fbf93a5`](https://github.com/solid-design-system/solid/commit/fbf93a5c0a535ee598c23aa8670923ccddcae623) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.16.0
+
+### Minor Changes
+
+- Moved docs-related guidelines to the docs package. _[`#2185`](https://github.com/solid-design-system/solid/pull/2185) [`ce439d0`](https://github.com/solid-design-system/solid/commit/ce439d0c00e2a1f8c236fa32f138adc16672a3d3) [@mariohamann](https://github.com/mariohamann)_
+
 ## 1.15.2
 
 ### Patch Changes
