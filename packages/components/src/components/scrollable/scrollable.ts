@@ -133,35 +133,28 @@ export default class SdScrollable extends SolidElement {
       return;
     }
 
-    const canScrollLeft = this.isScrollHorizontalEnabled && this.container.scrollLeft > 0;
-    const canScrollRight =
-      this.isScrollHorizontalEnabled &&
-      this.container.scrollLeft + this.container.clientWidth < this.container.scrollWidth - 1;
-    const canScrollUp = this.isScrollVerticalEnabled && this.container.scrollTop > 0;
-    const canScrollDown =
-      this.isScrollVerticalEnabled &&
-      this.container.scrollTop + this.container.clientHeight < this.container.scrollHeight - 1;
+    const canScrollLeft = this.container.scrollLeft > 0;
+    const canScrollRight = this.container.scrollLeft + this.container.clientWidth < this.container.scrollWidth - 1;
+    const canScrollUp = this.container.scrollTop > 0;
+    const canScrollDown = this.container.scrollTop + this.container.clientHeight < this.container.scrollHeight - 1;
 
-    this.canScroll = {
+    const couldScroll = this.canScroll;
+    const canScroll = {
       left: this.isScrollHorizontalEnabled && canScrollLeft,
       right: this.isScrollHorizontalEnabled && canScrollRight,
       up: this.isScrollVerticalEnabled && canScrollUp,
       down: this.isScrollVerticalEnabled && canScrollDown
     };
 
-    /**
-     * FIX: Events are not working as expected. It will introduce a breaking change.
-     * To be handled on [#2113](https://github.com/solid-design-system/solid/issues/2113)
-     */
-    const startEventTriggered = canScrollLeft || canScrollUp;
-    const endEventTriggered = canScrollRight || canScrollDown;
-
-    if (startEventTriggered) {
+    if ((couldScroll.left && !canScroll.left) || (couldScroll.up && !canScroll.up)) {
       this.dispatchEvent(new CustomEvent('start'));
     }
-    if (endEventTriggered) {
+
+    if ((couldScroll.right && !canScroll.right) || (couldScroll.down && !canScroll.down)) {
       this.dispatchEvent(new CustomEvent('end'));
     }
+
+    this.canScroll = canScroll;
   }
 
   handleScroll(direction: 'left' | 'right' | 'up' | 'down', e?: PointerEvent) {
