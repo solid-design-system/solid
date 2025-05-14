@@ -10,6 +10,6 @@ export const token = (name: string): string | number | null => {
   const [entry, property] = Object.entries(TOKENS).find(([key]) => name.startsWith(key)) || [];
   if (!entry || !property) return null;
 
-  const value = window.getComputedStyle(document.documentElement).getPropertyValue(`--${name}`);
+  const value = getComputedStyle(document.documentElement).getPropertyValue(`--${name}`);
   return processors[property]?.(value) ?? value;
 };
