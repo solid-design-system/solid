@@ -220,6 +220,10 @@ The primary objective of this "rule-set" is to eliminate comments that lack any 
 - General comments in the PR should be avoided as much as possible. If they are unavoidable, they should only include process-related information that doesn't require a response (for example, "Completed my UI-review, please re-assign to me once changes have been made").
 - If feedback is not possible through Chromatic or as an inline comment, the reviewer should use "Request Changes" on Github.
 
+#### Pull Request Status
+
+In cases a pull request is open but it still is being worked on, the pull request should have its status as `In progress` instead of `In review`. Ideally it should also be set as a `Draft Pull Request`.
+
 #### Changesets
 
 We use [Changesets](https://changesets-docs.vercel.app/en) in our release process, so the pull request title has no influence in the versioning. Still, we recommend following these guidelines when writing them to keep consistency. Therefore use one of the following prefixes in your commit messages (`feat`, `fix`, `perf`, `docs`, `chore`, `ci`).
