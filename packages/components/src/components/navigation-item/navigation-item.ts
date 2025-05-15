@@ -235,7 +235,7 @@ export default class SdNavigationItem extends SolidElement {
                     <sd-icon
                       name="chevron-down"
                       part="chevron"
-                      library="system"
+                      library="internal"
                       color="currentColor"
                       class=${cx(
                         'mr-4 h-6 w-6 transition-all',
@@ -246,7 +246,7 @@ export default class SdNavigationItem extends SolidElement {
                 : html` <sd-icon
                     name="chevron-down"
                     part="chevron"
-                    library="system"
+                    library="internal"
                     color="currentColor"
                     class=${cx(
                       'h-6 w-6 ml-2 transition-all',
