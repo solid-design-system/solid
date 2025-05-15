@@ -8,18 +8,6 @@ const { argTypes, parameters } = storybookDefaults('sd-notification');
 const { generateTemplate } = storybookTemplate('sd-notification');
 const { overrideArgs } = storybookHelpers('sd-notification');
 
-/**
- * Used to communicate important information or status to the user. Notifications can be displayed inline or as a toast / toast stack.
- *
- * > **Warning:** Our accessibility audit in 10/2024 found several problems with the `toast()` method. These are mostly related to the
- * > general concept of toasts, rather than how it is implemented. We will investigate how to improve this in the future. For now,
- * > we strongly recommend using inline notifications instead of toasts. For further information, please refer to our
- * > [GitHub issue](https://github.com/solid-design-system/solid/issues/1482).
- *
- *  **Related templates**:
- * - [Notification](?path=/docs/templates-notification--docs)
- */
-
 export default {
   title: 'Components/sd-notification',
   tags: ['!dev'],
@@ -110,9 +98,9 @@ export const Closable = {
     html` <sd-notification id="closable-example" variant="info" open closable>Lorem ipsum dolor sit</sd-notification>
       <script>
         var closableNotification = document.querySelector('#closable-example');
-        closableNotification.addEventListener('click', () => {
+        closableNotification.addEventListener('sd-after-hide', () => {
           setTimeout(() => {
-            notification.open = true;
+            closableNotification.open = true;
           }, 3000);
         });
       </script>`
@@ -147,11 +135,11 @@ export const Duration = {
 export const DurationIndicator = {
   name: 'Duration Indicator',
   render: () => html`
-    <sd-notification id="duration-indicator" variant="info" open duration-indicator duration="5000"
-      >Notification will self close after 5 seconds</sd-notification
-    >
+    <sd-notification id="duration-indicator-attribute" variant="info" open duration-indicator duration="5000">
+      Notification will self close after 5 seconds
+    </sd-notification>
     <script>
-      var durationIndicator = document.querySelector('#duration-indicator');
+      var durationIndicator = document.querySelector('#duration-indicator-attribute');
       durationIndicator.addEventListener('sd-after-hide', () => {
         setTimeout(() => {
           durationIndicator.open = true;
@@ -166,9 +154,32 @@ export const DurationIndicator = {
  * - `top-right` (default)
  * - `bottom-center`
  *
+ * **Important:** Some screen readers may occasionally ignore live regions that are added to a page after it has already loaded.
+ * Therefore, to make sure the toast stack regions are already present on page load, please make sure to render the following:
+ *
+ * ```html
+ * <div
+ *   role="region"
+ *   id="sd-toast-stack--top-right"
+ *   class="sd-toast-stack sd-toast-stack--top-right"
+ *   aria-label="Top right notifications"
+ *  ></div>
+ *  <div
+ *   role="region"
+ *   id="sd-toast-stack--bottom-center"
+ *   class="sd-toast-stack sd-toast-stack--bottom-center"
+ *   aria-label="Bottom center notifications"
+ *  ></div>
+ * ```
+ *
  * __Hints:__
  * - It requires the use of the `toast` method to work. Click on the `Show code` button to see the JavaScript code responsible for generating the toast notification.
  * - Click on one of the buttons below to see the corresponding toast notification.
+ *
+ * <h4 class="sd-headline sd-headline--size-lg">Toast placement top right</h4>
+ *
+ * Use the `data-notification-position` attribute with the value `top-right` to align the toast to the top right.
+ *
  */
 export const ToastNotification = {
   name: 'Toast Notification',
@@ -232,6 +243,11 @@ export const ToastNotification = {
   }
 };
 
+/**
+ * <h4 class="sd-headline sd-headline--size-lg">Toast placement bottom center</h4>
+ *
+ * Use the `data-notification-position` attribute with the value `bottom-center` to align the toast to the bottom center.
+ */
 export const ToastBottomCenter = {
   name: ' ',
   render: (_args: Record<string, any>) => {

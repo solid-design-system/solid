@@ -1,0 +1,57 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdMapMarkerStories from './map-marker.stories';
+
+export const links = {
+  'storybook-docs': './?path=/docs/components-sd-map-marker--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=4803-25242&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2544-17459&t=pFHk5gNX1Hj4l15o-4'
+};
+
+export const content = `
+# Map Marker
+
+Used to show a location or a cluster of locations on a map.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Templates
+
+[Map Marker](./?path=/docs/templates-map-marker--docs)
+
+### Common Use Cases
+
+- Indicate individual locations on a map, such as offices, venues, or other points of interest.
+- Group individual locations into clusters at higher zoom levels, displaying the number of locations in the cluster.
+
+### Usage Guidelines
+
+#### Styling and Icons
+
+- Use logos or icons for place pins that can be easily identified.
+- Avoid using overly complex logos or icons that might confuse users.
+- Limit the variety of icons to prevent confusion about the meaning of markers.
+
+#### Behavior and Interaction
+
+- Keep the main marker for the current or preset location visible at all times.
+- Ensure that only one main marker is active at any given moment.
+- Use clustering for high-density areas to enhance map readability.
+- Regularly update the marker data to reflect current information.
+
+### Accessibility Information
+
+- If interactive, provide an accessible name by adding a descriptive text to the ”default” slot and visually hide it if needed.
+- Offer alternative interactions or text-based listings of markers for users who cannot easily manipulate or see the map.
+- For purely decorative images, ALT-tags should be left empty so that screen readers can bypass them and concentrate on conveying meaningful content.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-map-marker/Overview" />
+
+<OverviewFormatter story={SdMapMarkerStories.Default}>{content}</OverviewFormatter>

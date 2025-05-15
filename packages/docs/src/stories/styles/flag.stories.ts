@@ -6,13 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-flag');
 const { overrideArgs } = storybookHelpers('sd-flag');
 const { generateTemplate } = storybookTemplate('sd-flag');
 
-/**
- * Used as a small, non-interactive label that represents a category.
- *
- * **Related templates**:
- * - [Flag](?path=/docs/templates-flag--docs)
- */
-
 export default {
   title: 'Styles/sd-flag',
   tags: ['!dev'],

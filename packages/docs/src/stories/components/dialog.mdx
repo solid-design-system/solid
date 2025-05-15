@@ -1,0 +1,75 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdDialogStories from './dialog.stories';
+
+export const links = {
+  'storybook-docs': './?path=/docs/components-sd-dialog--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=1559-15353&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2216-42723&t=pFHk5gNX1Hj4l15o-4'
+};
+
+export const content = `
+# Dialog
+
+Used over other content. It requires an interaction from the user before they can return to whatever is underneath.
+
+- Use the "headline" slot to add a headline. Since the wrapper of the slot is an <code>&lt;h2&gt;</code> by default, the slot should be a generic element (<code>&lt;span&gt;, &lt;div&gt;</code>).
+- Use the "default" slot to add main content. "Default" slot is always scrollable.
+- Use the "footer" slot to add action elements. "Footer" slot is always fixed.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Templates
+
+[Dialog](./?path=/docs/templates-dialog--docs)
+
+### Common Use Cases
+
+- Confirm an action which can have significant consequences and explicit user approval or input is needed (e.g. deleting a file).
+- Present important information that must be seen and acknowledged before proceeding (e.g., session expired and renewed login required).
+- Require users to enter information or select from multiple options before continuing.
+- For non-critical content or information that doesn’t require immediate user input, please use [sd-notification](./?path=/docs/components-sd-notification--docs) to avoid workflow disruption.
+
+### Usage Guidelines
+
+#### Slots
+
+- Use the ”headline” slot to add a headline.
+- Add main content on the ”default” slot. The “default” slot is always scrollable.
+- Use the ”footer” slot to add action elements. The “footer” slot is always fixed.
+
+#### Headline and Content
+
+- Use clear and concise headlines that describe the purpose.
+- Avoid displaying content unrelated to the current workflow.
+- Refrain from using dialogs for complex forms or large amounts of information.
+
+#### Actions
+
+- Ensure a clear user journey by using a single primary button for the main action and secondary buttons for less important actions.
+- Provide an action to close the interaction if a close button is not present in the top-right corner.
+- Avoid having multiple primary action buttons within the same dialog.
+
+#### User Interaction
+
+- Require users to take an action before they can continue interacting with the rest of the interface.
+- Provide multiple ways to close the dialog, such as an “X” button, a cancel button, or clicking outside the dialog.
+- Avoid excessive use of dialogs, as they can be disruptive to the user experience.
+
+### Accessibility Information
+
+- Always provide a headline for the dialog.
+- Always include a visible and easily accessible close button within the modal.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+
+<sd-notification variant="warning" open>**Known browser issues:** When the headline is set by slot instead of attribute, the dialog name is not being announced by VoiceOver in Chrome and Firefox.</sd-notification>`;
+
+<Meta title="Components/sd-dialog/Overview" />
+
+<OverviewFormatter story={SdDialogStories.Default}>{content}</OverviewFormatter>

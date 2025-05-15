@@ -1,0 +1,38 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdRadioStories from './radio.stories';
+
+export const links = {
+  'storybook-docs': './?path=/docs/components-sd-radio--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=88-670&t=urKl4Lo3Qv05LdBD-4',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2213-9389&t=Nvx00INu8bZ8XVxp-4'
+};
+
+export const content = `
+# Radio
+
+Used to allow the user to select a single option from a group.
+
+Radios are always used as part of a group. See [sd-radio-group](./?path=/docs/components-sd-radio-group--docs) for use cases, usage guidelines and accessibility information.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Templates
+
+- [sd-radio-group](./?path=/docs/components-sd-radio-group--docs)
+- [sd-radio-button](./?path=/docs/components-sd-radio-button--docs)
+
+### Accessibility Information
+
+- Use the "visually disabled" attribute to keep disabled elements focusable, hoverable, and able to show tooltips, as they’re otherwise removed from the tab order and inaccessible to screen readers.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-radio/Overview" />
+
+<OverviewFormatter story={SdRadioStories.Default}>{content}</OverviewFormatter>

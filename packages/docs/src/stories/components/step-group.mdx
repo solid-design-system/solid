@@ -1,0 +1,71 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdStepGroupStories from './step-group.stories';
+
+export const links = {
+  'storybook-docs': './?path=/docs/components-sd-step-group--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=29686-5066&t=dqUeMkGMUcuu6OfL-4',
+  'figma-docs': 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=12380-3417&m'
+};
+
+export const content = `
+# Step Group
+
+Used as navigation bar that guides users through the steps of a process or task.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Components
+
+[sd-step](./?path=/docs/components-sd-step--docs)
+
+#### Related Templates
+
+[Step Group](./?path=/docs/templates-step-group--docs)
+
+### Common Use Cases
+
+- Break complex data input tasks, such as filling out forms, into smaller, manageable steps to reduce cognitive strain and improve the user experience.
+- Guide users through workflows that require completion of tasks in a specific order.
+- Divide surveys or questionnaires into steps to make navigation, review, and completion easier and more intuitive.
+
+### Usage Guidelines
+
+#### Content
+
+- Ensure each section has a clear and concise label that describes the task or content.
+- Keep each section manageable; avoid overloading it with too much information or too many tasks.
+
+#### User Guidance
+
+- Make it clear to users that they are navigating a multistep process.
+- Indicate the user’s current position and provide feedback on completed steps to help track progress.
+- Provide clear error messages and guidance if users need to correct information before proceeding.
+
+#### Navigation
+
+- Arrange sections in a logical, sequential order to guide users, commonly from left to right.
+- Maintain consistent navigation for all steps to avoid user errors; include an option to return to previous steps.
+- Prevent users from skipping sections unless it is absolutely necessary and clearly indicated.
+
+#### Layout and Responsiveness
+
+- Use a consistent layout design across all steps to ensure a cohesive experience.
+- Use vertical or horizontal orientations, depending on what suits the process and viewport best.
+- Be aware that choosing a horizontal layout may cause layout issues, such as overflow on small viewports or when the page is zoomed in; consider this when deciding between horizontal and vertical layouts.
+
+#### Background
+
+- Use light background options such as white, neutral-100, or primary-100.
+
+### Accessibility Information
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-step-group/Overview" />
+
+<OverviewFormatter story={SdStepGroupStories.Default}>{content}</OverviewFormatter>
