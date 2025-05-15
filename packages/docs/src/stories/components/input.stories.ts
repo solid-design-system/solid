@@ -6,15 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-input');
 const { generateTemplate } = storybookTemplate('sd-input');
 const { overrideArgs } = storybookHelpers('sd-input');
 
-/**
- * Used to allow users to enter text. It can be displayed in several ways, depending on the type.
- *
- * **Related templates**:
- * - [Input](?path=/docs/templates-input--docs)
- * - [Autocomplete](?path=/docs/templates-autocomplete--docs)
- * - [Input with Tooltip](?path=/docs/templates-tooltip--docs#input%20with%20tooltip)
- *
- */
 export default {
   tags: ['!dev'],
   title: 'Components/sd-input',
@@ -115,7 +106,7 @@ export const Disabled = {
 export const VisuallyDisabled = {
   render: () =>
     html`<div class="w-[250px] h-[200px] pt-12">
-      <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm" placement="top">
+      <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
         <sd-input label="Label" value="Visually Disabled" visually-disabled></sd-input>
       </sd-tooltip>
     </div>`

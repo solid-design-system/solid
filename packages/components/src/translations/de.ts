@@ -28,6 +28,7 @@ const translation: Translation = {
     if (num === 0) return '';
     return `Optionen ausgewählt (${num})`;
   },
+  open: 'Öffnen',
   openTranscript: 'Transkript öffnen',
   optionGroup: 'Optionsgruppe',
   pauseAudio: 'Audio pausieren',

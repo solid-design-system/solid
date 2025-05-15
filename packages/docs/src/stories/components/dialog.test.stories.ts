@@ -28,14 +28,14 @@ export default {
       value: `<p class="sd-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie phasellus dui vel id. Velit in sed.</p>`
     },
     {
-      type: 'slot',
+      type: 'attribute',
       name: 'headline',
-      value: `<span slot="headline" class="sd-headline sd-headline--size-3xl leading-tight">Lorem Ipsum</span>`
+      value: `Lorem Ipsum`
     },
     {
       type: 'slot',
       name: 'footer',
-      value: `<sd-button slot="footer" class="w-full">Label</sd-button>`
+      value: `<sd-button slot="footer" class="w-full">Button</sd-button>`
     }
   ]),
   argTypes,
@@ -53,33 +53,6 @@ export const Default = {
     return html` <div style="height: 40vh;">
       ${generateTemplate({
         args
-      })}
-    </div>`;
-  }
-};
-
-/**
- *  The dialog's headline as displayed in the header. If you need to display HTML, use the `headline` slot instead.
- */
-
-export const Headline = {
-  name: 'Headline',
-  render: (args: any) => {
-    return html` <div style="height: 40vh;">
-      ${generateTemplate({
-        args,
-        constants: [
-          {
-            type: 'slot',
-            name: 'headline',
-            value: ''
-          },
-          {
-            type: 'attribute',
-            name: 'headline',
-            value: 'This headline is set via the headline attribute'
-          }
-        ]
       })}
     </div>`;
   }
@@ -177,8 +150,8 @@ export const ExtendedFooter = {
             phasellus dui vel id. Velit in sed.
           </p>
           <span slot="headline" class="sd-headline sd-headline--size-3xl">Lorem Ipsum</span>
-          <sd-button variant="secondary" slot="footer" class="w-full">Label</sd-button>
-          <sd-button slot="footer" class="w-full">Label</sd-button>
+          <sd-button variant="secondary" slot="footer" class="w-full">Button</sd-button>
+          <sd-button slot="footer" class="w-full">Button</sd-button>
         </sd-dialog>
       </div>
     `;
@@ -194,100 +167,14 @@ export const SmallHeadline = {
   render: () => {
     return html`
       <div style="height: 40vh;">
-        <sd-dialog open="" id="small-headline"
-          ><p class="sd-paragraph">
+        <sd-dialog open="" id="small-headline">
+          <p class="sd-paragraph">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
             phasellus dui vel id. Velit in sed.
           </p>
           <span slot="headline" class="font-bold">Lorem Ipsum</span>
-          <sd-button slot="footer" class="w-full">Label</sd-button></sd-dialog
-        >
-      </div>
-    `;
-  }
-};
-
-/**
- *  This shows ways to prevent closing `sd-dialog`. This is useful for instances when data loss will occur.
- *
- *  To keep the dialog open in such cases, cancel the `sd-request-close` event. When canceled, the dialog will remain open and pulse briefly to draw the user’s attention to it.
- *  Use `event.detail.source` to specify a closing trigger.
- */
-
-export const PreventClosing = {
-  name: 'Sample: Preventing Closing',
-  render: () => {
-    return html`
-      <div style="height: 40vh;">
-        <div class="flex gap-2">
-          <sd-button id="open-dialog">Open Dialog</sd-button>
-          <sd-button id="open-timed-dialog">Open Timed Dialog</sd-button>
-        </div>
-
-        <sd-dialog id="default-dialog"
-          ><p class="sd-paragraph">This dialog will not close when you click on the overlay.</p>
-          <span slot="headline" class="sd-headline sd-headline--size-3xl">Dialog</span>
-          <sd-button slot="footer" class="w-full" id="close-button">Close</sd-button></sd-dialog
-        >
-
-        <script>
-          // Prevent closing the dialog when clicking on the overlay
-          const openDialogButton = document.querySelector('#open-dialog');
-          const defaultDialog = document.querySelector('#default-dialog');
-
-          const closeButton = document.querySelector('#close-button');
-
-          closeButton.addEventListener('click', () => defaultDialog.hide());
-          openDialogButton.addEventListener('click', () => defaultDialog.show());
-
-          defaultDialog.addEventListener('sd-request-close', event => {
-            if (event.detail.source === 'overlay') {
-              event.preventDefault();
-            }
-          });
-        </script>
-
-        <sd-dialog id="timed" headline="Timed Dialog" no-close-button>
-          <div id="countdown">Closable in 5 seconds...</div>
-          <sd-button slot="footer" class="w-full" id="timed-close-button" disabled>Close</sd-button>
+          <sd-button slot="footer" class="w-full">Button</sd-button>
         </sd-dialog>
-
-        <script>
-          // Prevent closing the dialog for a certain amount of time
-          const openTimedDialogButton = document.querySelector('#open-timed-dialog');
-          const countdownElement = document.querySelector('#countdown');
-          const timedCloseButton = document.querySelector('#timed-close-button');
-
-          const timedDialog = document.querySelector('#timed');
-          let canCloseTimedDialog = false;
-
-          timedCloseButton.addEventListener('click', () => timedDialog.hide());
-
-          openTimedDialogButton.addEventListener('click', () => {
-            timedCloseButton.disabled = true;
-            timedDialog.show();
-            canCloseTimedDialog = false;
-            let counter = 5;
-            countdownElement.textContent = 'Closable in ' + counter + ' seconds...';
-
-            const interval = setInterval(() => {
-              counter--;
-              countdownElement.textContent = 'Closable in ' + counter + ' seconds...';
-              if (counter <= 0) {
-                clearInterval(interval);
-                canCloseTimedDialog = true;
-                timedCloseButton.disabled = false;
-                countdownElement.textContent = 'You can now close the dialog.';
-              }
-            }, 1000);
-          });
-
-          timedDialog.addEventListener('sd-request-close', event => {
-            if (!canCloseTimedDialog) {
-              event.preventDefault();
-            }
-          });
-        </script>
       </div>
     `;
   }

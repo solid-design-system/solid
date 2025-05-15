@@ -1,0 +1,53 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdDisplayStories from './display.stories';
+
+export const links = {
+  'storybook-docs': './?path=/docs/styles-sd-display--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=955-14018&p=f&t=B5mgTBjcWeycmzb6-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2314-31705&node-type=canvas&t=ExKWUj3vUoucvcVt-0'
+};
+
+export const content = `
+# Display
+
+Used to provide larger text sizes that are not used as headlines.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Templates
+
+[Display with Mark](./?path=/docs/templates-mark--docs)
+
+### Common Use Cases
+
+- Provide an oversized introductory line without displacing the headline’s structural role.
+- Present short marketing slogans, taglines, or key promotional messages.
+
+### Usage Guidelines
+
+#### Hierarchy and Content
+
+- Don’t use display text to replace actual headings, which remain the primary tools for structuring and labeling content.
+- Keep display text short—often a line or two—so that large formatting remains readable and doesn’t overwhelm the layout.
+
+#### Background and Styling
+
+- Use with light background options of white, neutral-100 and primary-100 or if inverted with background primary.
+- Make use of the different sizes for a versatile styling of text elements.
+
+### Accessibility Information
+
+- Verify that the heading hierarchy is logical and consistent throughout the page for better accessibility.
+- Retain proper heading tags (<code>&lt;h1&gt;, &lt;h2&gt;</code>) for page structure. Large display text should not replace actual headings to ensure screen readers can navigate content effectively.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Styles/sd-display/Overview" />
+
+<OverviewFormatter story={SdDisplayStories.Default}>{content}</OverviewFormatter>

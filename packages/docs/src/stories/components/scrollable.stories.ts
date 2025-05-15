@@ -19,10 +19,6 @@ const defaultSlotContent = `
   </div>
 `;
 
-/**
- * Used as a container to create scrollable sections within the user interface.
- */
-
 export default {
   title: 'Components/sd-scrollable',
   tags: ['!dev'],

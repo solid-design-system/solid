@@ -302,6 +302,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       // If it's not open, open it
       if (!this.open) {
         this.show();
+        this.setCurrentOption(this.currentOption || this.getFirstOption(), event);
         return;
       }
 
@@ -360,7 +361,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         newIndex = allOptions.length - 1;
       }
 
-      this.setCurrentOption(allOptions[newIndex]);
+      this.setCurrentOption(allOptions[newIndex], event);
     }
 
     // All other "printable" keys trigger type to select
@@ -413,7 +414,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   };
 
   private handleTagKeyDown(event: KeyboardEvent, option: SdOption) {
-    if (event.key === 'Backspace' && this.multiple) {
+    if ((event.key === 'Backspace' || event.key === 'Enter' || event.key === ' ') && this.multiple) {
       event.preventDefault();
       event.stopPropagation();
       const tagParent = (event.currentTarget as HTMLElement)?.parentElement;
@@ -434,7 +435,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   }
 
   private handleTagMaxOptionsKeyDown(event: KeyboardEvent) {
-    if (event.key === 'Backspace' && this.multiple) {
+    if ((event.key === 'Backspace' || event.key === 'Enter') && this.multiple) {
       event.preventDefault();
       event.stopPropagation();
       this.handleTagRemove(new CustomEvent('sd-remove'), this.selectedOptions[this.selectedOptions.length - 1]);
@@ -465,6 +466,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     event.preventDefault();
     this.combobox.focus({ preventScroll: true });
     this.open = !this.open;
+    this.setCurrentOption(this.currentOption || this.getFirstOption(), event);
   }
 
   private handleComboboxKeyDown(event: KeyboardEvent) {
@@ -577,13 +579,17 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
   // Sets the current option, which is the option the user is currently interacting with (e.g. via keyboard). Only one
   // option may be "current" at a time.
-  private setCurrentOption(option: SdOption | null) {
+  private setCurrentOption(option: SdOption | null, event?: KeyboardEvent | MouseEvent) {
     const allOptions = this.getAllOptions();
 
     // Clear selection
     allOptions.forEach(el => {
       el.current = false;
       el.tabIndex = -1;
+
+      if (event?.type === 'keydown' || event?.type === 'mousedown') {
+        el.isKeyboardFocus = false;
+      }
     });
 
     // Select the target option
@@ -592,6 +598,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       option.current = true;
       option.tabIndex = 0;
       option.focus();
+    }
+
+    if (option && event?.type === 'keydown') {
+      option.isKeyboardFocus = true;
     }
   }
 
@@ -872,7 +882,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     // Hierarchy of input states:
     const selectState = this.disabled
       ? 'disabled'
-      : this.visuallyDisabled
+      : this.visuallyDisabled && !this.hasFocus
         ? 'visuallyDisabled'
         : this.hasFocus && this.showInvalidStyle
           ? 'activeInvalid'
@@ -907,7 +917,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           this.open && 'z-50'
         )}
       >
-        <span class="sr-only" role="alert" aria-live="assertive">${this.deletedTagLabel}</span>
+        <span class="sr-only" aria-live="polite">${this.deletedTagLabel}</span>
+
         ${hasLabel || hasTooltip
           ? html`<div class="flex items-center gap-1 mb-2">
               <label

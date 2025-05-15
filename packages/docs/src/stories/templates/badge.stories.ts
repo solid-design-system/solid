@@ -17,6 +17,7 @@ export default {
  * Examples of sd-button working with sd-badge:
  */
 export const ButtonWithBadge = {
+  name: 'Button with badge',
   render: () => html`
     <div class="flex flex-col">
       <section class="flex p-8 gap-10 items-center">

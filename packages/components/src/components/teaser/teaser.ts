@@ -111,27 +111,13 @@ export default class SdTeaser extends SolidElement {
         part="base"
       >
         <div
-          part="media"
-          id="media"
-          aria-hidden="true"
-          style=${this._orientation === 'horizontal' ? `width: var(--distribution-media, 100%);` : ''}
-          class=${cx(
-            !inset && this._orientation === 'vertical' && 'mb-4',
-            !slots['teaser-has-media'] && 'hidden',
-            this.variant === 'white border-neutral-400' && this._orientation === 'vertical' && 'mx-[-1px] mt-[-1px]'
-          )}
-        >
-          <slot name="media"></slot>
-        </div>
-
-        <div
           style=${this._orientation === 'horizontal'
             ? `width: var(--distribution-content, 100%); ${
                 inset ? 'width: var(--distribution-content, calc(100% - 2rem));' : ''
               }`
             : ''}
           class=${cx(
-            'flex flex-col text-left',
+            'flex flex-col text-left order-2',
             this._orientation === 'horizontal' && `flex flex-col`,
             this._orientation === 'vertical' && inset && 'm-4'
           )}
@@ -152,9 +138,27 @@ export default class SdTeaser extends SolidElement {
             </div>
           </div>
 
-          <div part="main" class=${cx(!slots['teaser-has-default'] && 'hidden')} role="group" aria-labelledby="media">
+          <div
+            part="main"
+            class=${cx(!slots['teaser-has-default'] && 'hidden')}
+            role="group"
+            aria-labelledby="headline"
+          >
             <slot></slot>
           </div>
+        </div>
+        <div
+          part="media"
+          id="media"
+          style=${this._orientation === 'horizontal' ? `width: var(--distribution-media, 100%);` : ''}
+          class=${cx(
+            'order-1',
+            !inset && this._orientation === 'vertical' && 'mb-4',
+            !slots['teaser-has-media'] && 'hidden',
+            this.variant === 'white border-neutral-400' && this._orientation === 'vertical' && 'mx-[-1px] mt-[-1px]'
+          )}
+        >
+          <slot name="media"></slot>
         </div>
       </div>
     `;
