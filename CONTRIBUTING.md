@@ -75,41 +75,6 @@
   - Provide stories for props, slots etc. in Storybook
   - Props, events, slots, parts and CSS Custom Properties should be documented in the component's source code using [JSDoc](https://jsdoc.app/). Make sure to include a description, type, and default value for each.
   - Use `.slot` and the additional utility classes classes defined in `packages/components/.storybook/preview-head.html` to mock the slot element used in Figma. These classes are integrated into the Storybook header and should exclusively be used in Storybook. Check out the 'Slot' stories for components like 'sd-dropdown' to see how these classes are used.
-- **Guidelines**:
-  - **Screenshot tests:** All screenshot tests are added in `{component}.test.stories.ts`. Create a combination screenshot story with all tests.
-  - **Description:** All components have an introduction text describing the functionality starting with "Used to ...", feel free to use descriptions from [shoelace](https://shoelace.style) as inspiration.
-  - **Related Components:** After the introduction, the `Related components` are listed.
-  - **Related Templates:** After the `Related components` list, `Related templates` are listed.
-    - If a template for the component exists, provide a link to the template page (e.g., Badge).
-    - If the component is part of another component's template, link directly to the relevant section and name it accordingly (e.g., Tab with Badge).
-  - **Samples** (component's "visual" feature in {component}.stories.ts):
-    - For each sample exists a single story with plain HTML/CSS/JS, that shows the feature.
-    - Sample description:
-      - The sample has a legend with one sentence describing the functionality and what is intended to. (e. g. Use the "open" attribute to ...). Feel free to use [shoelace](https://shoelace.style) as inspiration.
-      - Ensure you add a period at the end of all sentences (with exception of bullets).
-      - If variants or options are shown we should list them below.
-        - If a bullet list is shown, use a colon in the sentence (e.g., "Use the size attribute to change a button’s size: ").
-        - In bullet lists, do not use any kind of punctuation marks at the end of the sentence (e.g., lg (default)).
-      - Always use the attribute or classes nomenclature used in code (e.g., instead of "large", use lg).
-      - Always add (default) in front of the default variant/size/etc. (e.g., lg (default)).
-      - If there is no attribute or class for the default use a simple sentence to present the default value (e.g., lg is the default value).
-    - Sample content:
-      - The samples should help emphasize what is being shown. If we are talking about "Inverted" components, it should have "Inverted" in the text.
-      - In Storybook, the 1st sample shows the slots. In Figma, slots are only shown if no interaction is required. When interaction is required we use the slots in the next samples.
-      - On the 1st sample we use the component name when possible (eg. Button) instead of (Default).
-    - Samples order:
-      - Default must be in the intro and interactive
-      - Variants/Open
-      - Size
-      - Label
-      - Orientation
-      - Selected/Checked/Loading/Removable
-      - Disabled
-      - Inverted
-      - Icon/Scrollbars/Hint/Description/Slots
-      - Custom width/padding/styles
-      - Alignments
-      - Required/Invalid (in case required and invalid exist they must be below each other)
 
 ### We Make Migration Easy
 
@@ -254,6 +219,10 @@ The primary objective of this "rule-set" is to eliminate comments that lack any 
 - Designers should exclusively use Chromatic for providing feedback on alterations.
 - General comments in the PR should be avoided as much as possible. If they are unavoidable, they should only include process-related information that doesn't require a response (for example, "Completed my UI-review, please re-assign to me once changes have been made").
 - If feedback is not possible through Chromatic or as an inline comment, the reviewer should use "Request Changes" on Github.
+
+#### Pull Request Status
+
+In cases a pull request is open but it still is being worked on, the pull request should have its status as `In progress` instead of `In review`. Ideally it should also be set as a `Draft Pull Request`.
 
 #### Changesets
 

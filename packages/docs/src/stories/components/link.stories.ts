@@ -148,7 +148,7 @@ export const VisuallyDisabled = {
   name: 'Visually Disabled',
   render: () => html`
     <div class="flex gap-12 h-[100px] pt-12">
-      <sd-tooltip content="Visually Disabled" trigger="click focus" size="sm">
+      <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm">
         <sd-link
           size="lg"
           href="https://solid-design-system.fe.union-investment.de/docs/"

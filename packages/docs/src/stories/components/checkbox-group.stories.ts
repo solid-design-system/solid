@@ -12,6 +12,11 @@ export default {
   tags: ['!dev'],
   args: overrideArgs([
     {
+      type: 'attribute',
+      name: 'label',
+      value: 'Group Label'
+    },
+    {
       type: 'slot',
       name: 'default',
       value: `<sd-checkbox name="checkbox" value="1">Checkbox 1</sd-checkbox><sd-checkbox name="checkbox" value="2">Checkbox 2</sd-checkbox><sd-checkbox name="checkbox" value="3">Checkbox 3</sd-checkbox>`
@@ -44,19 +49,13 @@ export const Size = {
   name: 'Size',
   render: () => html`
     <div class="flex gap-12">
-      <sd-checkbox-group size="lg">
+      <sd-checkbox-group size="lg" label="Group Label">
         <sd-checkbox value="1">Checkbox 1</sd-checkbox>
         <sd-checkbox value="2">Checkbox 2</sd-checkbox>
         <sd-checkbox value="3">Checkbox 3</sd-checkbox>
       </sd-checkbox-group>
 
-      <sd-checkbox-group size="md">
-        <sd-checkbox value="1">Checkbox 1</sd-checkbox>
-        <sd-checkbox value="2">Checkbox 2</sd-checkbox>
-        <sd-checkbox value="3">Checkbox 3</sd-checkbox>
-      </sd-checkbox-group>
-
-      <sd-checkbox-group size="sm">
+      <sd-checkbox-group size="sm" label="Group Label">
         <sd-checkbox value="1">Checkbox 1</sd-checkbox>
         <sd-checkbox value="2">Checkbox 2</sd-checkbox>
         <sd-checkbox value="3">Checkbox 3</sd-checkbox>
@@ -75,12 +74,12 @@ export const Orientation = {
   name: 'Orientation',
   render: () => html`
     <div class="flex gap-12">
-      <sd-checkbox-group orientation="vertical">
+      <sd-checkbox-group orientation="vertical" label="Group Label">
         <sd-checkbox value="1">Checkbox 1</sd-checkbox>
         <sd-checkbox value="2">Checkbox 2</sd-checkbox>
         <sd-checkbox value="3">Checkbox 3</sd-checkbox>
       </sd-checkbox-group>
-      <sd-checkbox-group orientation="horizontal">
+      <sd-checkbox-group orientation="horizontal" label="Group Label">
         <sd-checkbox value="1">Checkbox 1</sd-checkbox>
         <sd-checkbox value="2">Checkbox 2</sd-checkbox>
         <sd-checkbox value="3">Checkbox 3</sd-checkbox>

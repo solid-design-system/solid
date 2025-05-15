@@ -1,5 +1,50 @@
 # @solid-design-system/components
 
+## 4.6.17
+
+### Patch Changes
+
+- Fixed text getting cut-off by valid/invalid icon on `sd-textarea`. _[`#2159`](https://github.com/solid-design-system/solid/pull/2159) [`fbf93a5`](https://github.com/solid-design-system/solid/commit/fbf93a5c0a535ee598c23aa8670923ccddcae623) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+* Uncompressed: 421 KB (-1 KB / 0%)
+* Gzipped: 99 KB (unchanged)
+
+## 4.6.16
+
+### Patch Changes
+
+- Add focus state to elements with the `visually-disabled` attribute for improved accessibility. _[`#2157`](https://github.com/solid-design-system/solid/pull/2157) [`5c20e76`](https://github.com/solid-design-system/solid/commit/5c20e76b6910a97a2cd83710b8f3614e16622897) [@smfonseca](https://github.com/smfonseca)_
+
+  Update cursor pointer when `sd-input` is disabled.
+
+  Update `sd-option` text color when disabled.
+
+## 4.6.15
+
+### Patch Changes
+
+- Improved `sd-teaser` and `sd-teaser-media` accessibility: _[`#2120`](https://github.com/solid-design-system/solid/pull/2120) [`ec19bb7`](https://github.com/solid-design-system/solid/commit/ec19bb7b101ced45393850328b534981b6d90c29) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Maintain consistent behavior between hover and focus states.
+  - Ensure the headline is the first element in the teaser's DOM structure.
+
+### 📈 Stats
+
+- Uncompressed: 422 KB (+1 KB / +0%)
+- Gzipped: 99 KB (unchanged)
+
+## 4.6.14
+
+### Patch Changes
+
+- Improved `sd-tooltip` accessibility: _[`#2138`](https://github.com/solid-design-system/solid/pull/2138) [`6c61fde`](https://github.com/solid-design-system/solid/commit/6c61fde928d4fb2bf3cfb7355cb58d1f8dc42ec1) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - The button indicates whether it’s open;
+  - Keep focus on the button if trigger is click;
+  - Buttons are now accessible with VoiceOVer in Safari;
+  - Screen readers announce the tooltip content when it becomes visible;
+
 ## 4.6.13
 
 ### Patch Changes
@@ -10,8 +55,9 @@
   - `sd-notification` will now use existing toast stacks if present in the DOM with specific IDs. If not existent, it will be automatically created as a fallback.
 
 ### 📈 Stats
-* Uncompressed: 421 KB (-1 KB / 0%)
-* Gzipped: 99 KB (unchanged)
+
+- Uncompressed: 421 KB (-1 KB / 0%)
+- Gzipped: 99 KB (unchanged)
 
 ## 4.6.12
 
