@@ -186,7 +186,7 @@ export default class SdStep extends SolidElement {
             >
               ${
                 !this.disabled && !this.current && !this.notInteractive
-                  ? html` <sd-icon name="status-check" library="system"></sd-icon>`
+                  ? html` <sd-icon name="status-check" library="internal"></sd-icon>`
                   : html`${this.index}`
               }
             </slot>

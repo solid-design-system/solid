@@ -344,7 +344,7 @@ export default class SdDrawer extends SolidElement {
                       part="close-button"
                       @click=${() => this.requestClose('close-button')}
                     >
-                      <sd-icon label=${this.localize.term('close')} name="close" library="system"></sd-icon>
+                      <sd-icon label=${this.localize.term('close')} name="close" library="internal"></sd-icon>
                     </sd-button>
                   </div>
                 </header>
@@ -355,7 +355,7 @@ export default class SdDrawer extends SolidElement {
                 part="close-button"
                 @click=${() => this.requestClose('close-button')}
                 class="absolute top-2 right-2"
-                ><sd-icon label=${this.localize.term('close')} name="close" library="system"></sd-icon
+                ><sd-icon label=${this.localize.term('close')} name="close" library="internal"></sd-icon
               ></sd-button>`}
           <div part="body" class="flex-auto block px-4 focus-visible:focus-outline !-outline-offset-2" tabindex="0">
             <slot></slot>

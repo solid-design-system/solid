@@ -134,7 +134,7 @@ export default class SdTag extends SolidElement {
           this.removable
             ? html` <button class="sd-interactive flex items-center" type="button" @click=${this.handleRemoveClick}>
                 <slot part="removable-indicator" name="removable-indicator">
-                  <sd-icon library="system" name="close" label=${this.localize.term('remove')}></sd-icon>
+                  <sd-icon library="internal" name="close" label=${this.localize.term('remove')}></sd-icon>
                 </slot>
               </button>`
             : ''

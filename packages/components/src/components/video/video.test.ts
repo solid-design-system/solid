@@ -9,7 +9,7 @@ const defaultSlot = html`<video controls>
   Your browser does not support the video tag.
 </video>`;
 const posterSlot = html`<img slot="poster" alt="A generic placeholder video" src="" />`;
-const playIconSlot = html`<sd-icon library="system" name="start" color="primary"></sd-icon>`;
+const playIconSlot = html`<sd-icon library="internal" name="start" color="primary"></sd-icon>`;
 const variants = {
   default: html`<sd-video>${defaultSlot}</sd-video>`,
   playIcon: html`<sd-video>${defaultSlot}${playIconSlot}</sd-video>`,

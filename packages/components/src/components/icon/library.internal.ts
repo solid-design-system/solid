@@ -96,8 +96,8 @@ export const icons = {
   reload: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path d="M3.697 10.447 5.03 11.78c.1-4.76 3.717-8.447 8.303-8.447a8.667 8.667 0 0 1 0 17.334 1 1 0 0 1 0-2 6.667 6.667 0 0 0 0-13.334C9.8 5.333 7.126 8.076 7 11.753l1.333-1.307a1 1 0 0 1 1.414 1.417l-3.023 3.023a.996.996 0 0 1-1.416 0l-3.023-3.023a1.002 1.002 0 0 1 1.417-1.417l-.005.001Z"/></svg>`
 };
 
-const systemLibrary: IconLibrary = {
-  name: 'system',
+const internalLibrary: IconLibrary = {
+  name: 'internal',
   resolver: (name: keyof typeof icons) => {
     if (name in icons) {
       return `data:image/svg+xml,${encodeURIComponent(icons[name])}`;
@@ -107,4 +107,4 @@ const systemLibrary: IconLibrary = {
   mutator: svg => svg.setAttribute('fill', 'currentColor')
 };
 
-export default systemLibrary;
+export default internalLibrary;
