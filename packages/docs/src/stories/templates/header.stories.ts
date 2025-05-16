@@ -185,7 +185,7 @@ export const SampleA02 = {
       </div>
     </sd-header>
     <sd-drawer id="sample-a02-drawer" placement="end">
-      <nav>
+      <nav class="-m-4">
         <sd-navigation-item vertical current href="javascript:void(0)">
           <b>Home</b>
         </sd-navigation-item>
@@ -196,7 +196,7 @@ export const SampleA02 = {
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">About us</sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Personal area</sd-navigation-item>
       </nav>
-      <nav aria-label="footer" slot="footer" class="bg-neutral-100">
+      <nav aria-label="footer" slot="footer" class="bg-neutral-100 -m-4">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
           Log in
@@ -292,7 +292,7 @@ export const SampleB = {
       </div>
     </sd-header>
     <sd-drawer id="sample-b-drawer" placement="end">
-      <nav>
+      <nav class="-m-4">
         <sd-navigation-item vertical current href="javascript:void(0)">
           <b>Home</b>
         </sd-navigation-item>
@@ -301,7 +301,7 @@ export const SampleB = {
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">To the point</sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Meeting point</sd-navigation-item>
       </nav>
-      <nav aria-label="footer" slot="footer" class="bg-neutral-100">
+      <nav aria-label="footer" slot="footer" class="bg-neutral-100 -m-4">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
           My application
