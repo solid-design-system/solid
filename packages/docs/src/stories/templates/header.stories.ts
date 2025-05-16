@@ -16,23 +16,6 @@ export const SampleA = {
   name: 'Header Sample A-01',
   render: () => html`
     <style>
-      sd-navigation-item::part(content) {
-        display: flex;
-        align-items: center;
-      }
-
-      sd-drawer::part(panel) {
-        border-top: 2px solid #e9e9e9;
-        border-right: 2px solid #e9e9e9;
-      }
-
-      sd-drawer::part(overlay) {
-        background-color: #e9e9e9;
-      }
-      sd-drawer::part(body) {
-        padding: 4px 0;
-      }
-
       #anchor--templates-header--sample-a .innerZoomElementWrapper,
       #anchor--templates-header--sample-a-02 .innerZoomElementWrapper,
       #anchor--templates-header--sample-b .innerZoomElementWrapper {
@@ -90,31 +73,29 @@ export const SampleA = {
       </div>
     </sd-header>
     <sd-drawer id="sample-a-drawer" placement="end">
-      <div class="level-one h-full flex flex-col justify-between">
-        <nav>
-          <sd-navigation-item vertical current href="javascript:void(0)">
-            <b>Home</b>
-          </sd-navigation-item>
-          <sd-navigation-item vertical chevron divider href="javascript:void(0)">About Us</sd-navigation-item>
-          <sd-navigation-item vertical chevron divider href="javascript:void(0)">Markets</sd-navigation-item>
-          <sd-navigation-item vertical chevron divider href="javascript:void(0)">Sustainability</sd-navigation-item>
-          <sd-navigation-item vertical chevron divider href="javascript:void(0)">Career</sd-navigation-item>
-        </nav>
-        <nav aria-label="footer" slot="footer" class="bg-neutral-100">
-          <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
-            <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
-            Portfolio
-          </sd-navigation-item>
-          <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-            <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
-            Application
-          </sd-navigation-item>
-          <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-            <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
-            Our further appearances
-          </sd-navigation-item>
-        </nav>
-      </div>
+      <nav class="-m-4">
+        <sd-navigation-item vertical current href="javascript:void(0)">
+          <b>Home</b>
+        </sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">About Us</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Markets</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Sustainability</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Career</sd-navigation-item>
+      </nav>
+      <nav aria-label="footer" slot="footer" class="bg-neutral-100 -m-4">
+        <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
+          <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
+          Portfolio
+        </sd-navigation-item>
+        <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
+          <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
+          Application
+        </sd-navigation-item>
+        <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
+          <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
+          Our further appearances
+        </sd-navigation-item>
+      </nav>
     </sd-drawer>
     <script type="module">
       await Promise.all([
