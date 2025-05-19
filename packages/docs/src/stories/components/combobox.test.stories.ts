@@ -125,11 +125,11 @@ export const SizeMultiple = {
   name: 'Size x Multiple',
   parameters: {
     controls: {
-      exclude: ['open-attr']
+      exclude: ['open']
     }
   },
-  render: (args: { 'open-attr'?: string }) => {
-    delete args['open-attr'];
+  render: (args: { open?: string }) => {
+    delete args['open'];
 
     return html`<div class="h-[340px] w-[700px]">
       ${generateTemplate({
