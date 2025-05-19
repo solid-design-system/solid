@@ -73,7 +73,7 @@ export const SampleA = {
       </div>
     </sd-header>
     <sd-drawer id="sample-a-drawer" placement="end">
-      <nav class="-m-4">
+      <nav class="-mx-4">
         <sd-navigation-item vertical current href="javascript:void(0)">
           <b>Home</b>
         </sd-navigation-item>
@@ -185,7 +185,7 @@ export const SampleA02 = {
       </div>
     </sd-header>
     <sd-drawer id="sample-a02-drawer" placement="end">
-      <nav class="-m-4">
+      <nav class="-mx-4">
         <sd-navigation-item vertical current href="javascript:void(0)">
           <b>Home</b>
         </sd-navigation-item>
@@ -292,7 +292,7 @@ export const SampleB = {
       </div>
     </sd-header>
     <sd-drawer id="sample-b-drawer" placement="end">
-      <nav class="-m-4">
+      <nav class="-mx-4">
         <sd-navigation-item vertical current href="javascript:void(0)">
           <b>Home</b>
         </sd-navigation-item>

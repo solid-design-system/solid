@@ -216,9 +216,9 @@ export default class SdNavigationItem extends SolidElement {
                     target=${ifDefined(isLink ? this.target : undefined)}
                     download=${ifDefined(isLink ? this.download : undefined)}
                   >
-                    <slot part="content"></slot>
+                    <slot part="content" class="inline-flex"></slot>
                   </a>`
-                : html`<slot part="content"></slot>`
+                : html`<slot part="content" class="inline-flex"></slot>`
             }
           </span>
           ${
