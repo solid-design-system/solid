@@ -2,4 +2,4 @@
 '@solid-design-system/docs': patch
 ---
 
-Changed the color of the read only input text
+Updated the input read-only story to use `value` instead of `placeholder`.
