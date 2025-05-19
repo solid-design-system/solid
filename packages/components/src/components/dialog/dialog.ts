@@ -90,10 +90,6 @@ export default class SdDialog extends SolidElement {
     super.connectedCallback();
     this.handleDocumentKeyDown = this.handleDocumentKeyDown.bind(this);
     this.modal = new Modal(this);
-    this.updatePrefersReducedMotion();
-    window
-      .matchMedia('(prefers-reduced-motion: reduce)')
-      .addEventListener('change', this.updatePrefersReducedMotion.bind(this));
   }
 
   firstUpdated() {
@@ -109,15 +105,10 @@ export default class SdDialog extends SolidElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     unlockBodyScrolling(this);
-    window
-      .matchMedia('(prefers-reduced-motion: reduce)')
-      .removeEventListener('change', this.updatePrefersReducedMotion.bind(this));
   }
 
-  private prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  private updatePrefersReducedMotion() {
-    this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  private get prefersReducedMotion() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
   private requestClose(source: 'close-button' | 'keyboard' | 'overlay') {
@@ -401,7 +392,7 @@ setDefaultAnimation('dialog.denyClose', {
 
 setDefaultAnimation('dialog.overlay.show', {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  options: { duration: (token('sd-duration-medium') as number) || 300, easing: 'ease-in-out' }
+  options: { duration: (token('sd-duration-medium') as number) || 300, easing: 'ease-in-out', reducedMotion: 'allow' }
 });
 
 setDefaultAnimation('dialog.overlay.hide', {
