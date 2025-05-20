@@ -10,6 +10,7 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { property, query } from 'lit/decorators.js';
+import { token } from '../../internal/token';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
@@ -106,6 +107,10 @@ export default class SdDialog extends SolidElement {
     unlockBodyScrolling(this);
   }
 
+  private get prefersReducedMotion() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
   private requestClose(source: 'close-button' | 'keyboard' | 'overlay') {
     const sdRequestClose = this.emit('sd-request-close', {
       cancelable: true,
@@ -180,7 +185,9 @@ export default class SdDialog extends SolidElement {
         }
       });
 
-      const panelAnimation = getAnimation(this, 'dialog.show', { dir: this.localize.dir() });
+      const panelAnimation = this.prefersReducedMotion
+        ? getAnimation(this, 'dialog.showReducedMotion', { dir: this.localize.dir() })
+        : getAnimation(this, 'dialog.show', { dir: this.localize.dir() });
       const overlayAnimation = getAnimation(this, 'dialog.overlay.show', { dir: this.localize.dir() });
       await Promise.all([
         animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options),
@@ -195,7 +202,9 @@ export default class SdDialog extends SolidElement {
       this.modal.deactivate();
 
       await Promise.all([stopAnimations(this.dialog), stopAnimations(this.overlay)]);
-      const panelAnimation = getAnimation(this, 'dialog.hide', { dir: this.localize.dir() });
+      const panelAnimation = this.prefersReducedMotion
+        ? getAnimation(this, 'dialog.hideReducedMotion', { dir: this.localize.dir() })
+        : getAnimation(this, 'dialog.hide', { dir: this.localize.dir() });
       const overlayAnimation = getAnimation(this, 'dialog.overlay.hide', { dir: this.localize.dir() });
 
       // Animate the overlay and the panel at the same time. Because animation durations might be different, we need to
@@ -352,18 +361,28 @@ export default class SdDialog extends SolidElement {
 
 setDefaultAnimation('dialog.show', {
   keyframes: [
-    { opacity: 0, scale: 0.8 },
-    { opacity: 1, scale: 1 }
+    { opacity: 0, transform: 'translate(-50%, 100%)' },
+    { opacity: 1, transform: 'translate(0, 0)' }
   ],
-  options: { duration: 250, easing: 'ease' }
+  options: { duration: (token('sd-duration-medium') as number) || 300, easing: 'ease-in-out' }
+});
+
+setDefaultAnimation('dialog.showReducedMotion', {
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+  options: { duration: (token('sd-duration-medium') as number) || 300, easing: 'ease-in-out', reducedMotion: 'allow' }
 });
 
 setDefaultAnimation('dialog.hide', {
   keyframes: [
-    { opacity: 1, scale: 1 },
-    { opacity: 0, scale: 0.8 }
+    { opacity: 1, transform: 'translate(0, 0)' },
+    { opacity: 0, transform: 'translate(50%, -100%)' }
   ],
-  options: { duration: 250, easing: 'ease' }
+  options: { duration: (token('sd-duration-fast') as number) || 150, easing: 'ease-in-out' }
+});
+
+setDefaultAnimation('dialog.hideReducedMotion', {
+  keyframes: [{ opacity: 1 }, { opacity: 0 }],
+  options: { duration: (token('sd-duration-fast') as number) || 150, easing: 'ease-in-out', reducedMotion: 'allow' }
 });
 
 setDefaultAnimation('dialog.denyClose', {
@@ -373,12 +392,12 @@ setDefaultAnimation('dialog.denyClose', {
 
 setDefaultAnimation('dialog.overlay.show', {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  options: { duration: 250 }
+  options: { duration: (token('sd-duration-medium') as number) || 300, easing: 'ease-in-out', reducedMotion: 'allow' }
 });
 
 setDefaultAnimation('dialog.overlay.hide', {
   keyframes: [{ opacity: 1 }, { opacity: 0 }],
-  options: { duration: 250 }
+  options: { duration: (token('sd-duration-fast') as number) || 150, easing: 'ease-in-out', reducedMotion: 'allow' }
 });
 
 declare global {
