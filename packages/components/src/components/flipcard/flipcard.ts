@@ -205,7 +205,7 @@ export default class SdFlipcard extends SolidElement {
             @click=${this.flipFront}
             @keydown=${this.handleFrontKeydown}
           >
-            <sd-icon library="system" name="reload" label="Flip to Back"></sd-icon>
+            <sd-icon library="_internal" name="reload" label="Flip to Back"></sd-icon>
           </sd-button>
         </div>
 
@@ -298,7 +298,7 @@ export default class SdFlipcard extends SolidElement {
             @click=${this.flipBack}
             @keydown=${this.handleBackKeydown}
           >
-            <sd-icon library="system" name="reload" label="Flip to Front"></sd-icon>
+            <sd-icon library="_internal" name="reload" label="Flip to Front"></sd-icon>
           </sd-button>
         </div>
       </div>

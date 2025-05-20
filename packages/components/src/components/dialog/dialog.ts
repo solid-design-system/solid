@@ -298,7 +298,7 @@ export default class SdDialog extends SolidElement {
                     <sd-icon
                       label=${this.localize.term('close')}
                       name="close"
-                      library="system"
+                      library="_internal"
                       color="currentColor"
                     ></sd-icon>
                   </sd-button>
