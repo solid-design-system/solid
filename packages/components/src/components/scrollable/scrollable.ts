@@ -138,7 +138,7 @@ export default class SdScrollable extends SolidElement {
     const canScrollUp = this.container.scrollTop > 0;
     const canScrollDown = this.container.scrollTop + this.container.clientHeight < this.container.scrollHeight - 1;
 
-    const couldScroll = this.canScroll;
+    const previousScrollState = this.canScroll;
     const canScroll = {
       left: this.isScrollHorizontalEnabled && canScrollLeft,
       right: this.isScrollHorizontalEnabled && canScrollRight,
@@ -146,11 +146,16 @@ export default class SdScrollable extends SolidElement {
       down: this.isScrollVerticalEnabled && canScrollDown
     };
 
-    if ((couldScroll.left && !canScroll.left) || (couldScroll.up && !canScroll.up)) {
+    const hasReachedLeft = previousScrollState.left && !canScroll.left;
+    const hasReachedUp = previousScrollState.up && !canScroll.up;
+    const hasReachedRight = previousScrollState.right && !canScroll.right;
+    const hasReachedDown = previousScrollState.down && !canScroll.down;
+
+    if (hasReachedLeft || hasReachedUp) {
       this.dispatchEvent(new CustomEvent('start'));
     }
 
-    if ((couldScroll.right && !canScroll.right) || (couldScroll.down && !canScroll.down)) {
+    if (hasReachedRight || hasReachedDown) {
       this.dispatchEvent(new CustomEvent('end'));
     }
 
