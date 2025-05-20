@@ -67,7 +67,9 @@ Used to visual indicate a quantity related to a particular element. Often displa
 - If the badge conveys critical information, such as the number of items in a cart, ensure that this data is also provided in text elsewhere — such as in the cart details — to guarantee accessibility.
 - If the badge content changes dynamically (e.g., a notification count), use ”aria-live” to announce these changes to screen reader users.
 
-Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+
+<sd-notification variant="warning" open>**Known browser issues:** When the **sd-badge** with **role="status"** is placed inside a **sd-button**, Safari is not announcing any update and, in cases where there is multiple elements inside the **sd-badge**, Firefox is only announcing the content of the element that has updates.</sd-notification>`;
 
 <Meta title="Components/sd-badge/Overview" />
 
