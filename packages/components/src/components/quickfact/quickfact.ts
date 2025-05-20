@@ -1,3 +1,4 @@
+import '../accordion/accordion';
 import '../icon/icon';
 import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
@@ -6,7 +7,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { property } from 'lit/decorators.js';
 import { setDefaultAnimation } from '../../utilities/animation-registry';
 import cx from 'classix';
-import SdAccordion from '../accordion/accordion';
+import type SdAccordion from '../accordion/accordion';
 
 /**
  * @summary Accordion shows a brief summary and expands to show additional content.
