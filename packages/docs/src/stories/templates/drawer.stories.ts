@@ -29,36 +29,53 @@ export default {
 export const Default = {
   name: 'Tablet Navigation',
   render: () => html`
-    <style></style>
+    <style>
+      sd-navigation-item::part(content) {
+        display: flex;
+        align-items: center;
+      }
+      sd-drawer::part(panel) {
+        border-top: 2px solid #e9e9e9;
+        border-right: 2px solid #e9e9e9;
+      }
+      sd-drawer::part(overlay) {
+        background-color: #051530;
+      }
+      sd-drawer::part(body) {
+        padding: 4px 0;
+      }
+    </style>
     <sd-button onclick="openDrawer()">Open Drawer</sd-button>
     <sd-drawer open placement="end" label="First drawer">
       <sd-button slot="header" variant="tertiary" class="hidden" id="return-button" onclick="handleSecondLevel()">
         <sd-icon name="system/arrow-left" label="return"></sd-icon>
       </sd-button>
-      <nav aria-label="Primary" class="-m-4">
-        <sd-navigation-item vertical>Home</sd-navigation-item>
-        <sd-navigation-item vertical current chevron divider onclick="handleSecondLevel()">
-          <b>About Us</b>
-        </sd-navigation-item>
-        <sd-navigation-item vertical chevron divider>Markets</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider>Press service</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider>Sustainability</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider>Career</sd-navigation-item>
-      </nav>
-      <nav aria-label="Secondary" slot="footer" class="bg-neutral-100 -m-4">
-        <sd-navigation-item vertical class="flex align-center">
-          <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
-          My depot
-        </sd-navigation-item>
-        <sd-navigation-item vertical divider class="flex align-center">
-          <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
-          My application
-        </sd-navigation-item>
-        <sd-navigation-item vertical divider class="flex align-center">
-          <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
-          Our further appearances
-        </sd-navigation-item>
-      </nav>
+      <div class="level-one h-full flex flex-col justify-between">
+        <nav aria-label="Primary">
+          <sd-navigation-item vertical>Home</sd-navigation-item>
+          <sd-navigation-item vertical current chevron divider onclick="handleSecondLevel()">
+            <b>About Us</b>
+          </sd-navigation-item>
+          <sd-navigation-item vertical chevron divider>Markets</sd-navigation-item>
+          <sd-navigation-item vertical chevron divider>Press service</sd-navigation-item>
+          <sd-navigation-item vertical chevron divider>Sustainability</sd-navigation-item>
+          <sd-navigation-item vertical chevron divider>Career</sd-navigation-item>
+        </nav>
+        <nav aria-label="Secondary" slot="footer" class="bg-neutral-100">
+          <sd-navigation-item vertical class="flex align-center">
+            <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
+            My depot
+          </sd-navigation-item>
+          <sd-navigation-item vertical divider class="flex align-center">
+            <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
+            My application
+          </sd-navigation-item>
+          <sd-navigation-item vertical divider class="flex align-center">
+            <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
+            Our further appearances
+          </sd-navigation-item>
+        </nav>
+      </div>
       <div class="level-two hidden">
         <nav id="level-two-nav" aria-label="About us">
           <sd-navigation-item vertical id="nav-title" size="lg"><b>About Us</b></sd-navigation-item>
