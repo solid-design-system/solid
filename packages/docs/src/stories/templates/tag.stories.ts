@@ -93,7 +93,8 @@ export const removableFilterTagGroup = {
     <script type="module">
       const filters = document.querySelector('#removable-tag-filters');
 
-      filters.addEventListener('sd-after-remove', event => {
+      filters.querySelectorAll('sd-tag').forEach(tag => tag.addEventListener('sd-remove', () => tag.hide()));
+      filters.addEventListener('sd-after-hide', event => {
         const tags = Array.from(filters.querySelectorAll('sd-tag'));
 
         if (tags.some(tag => !tag.hidden)) {

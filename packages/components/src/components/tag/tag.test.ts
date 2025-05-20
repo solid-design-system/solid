@@ -84,19 +84,16 @@ describe('<sd-tag>', () => {
       expect(button?.getAttribute('label')).to.equal('Entfernen');
     });
 
-    it('should emit a sd-remove and sd-after-remove event', async () => {
+    it('should emit a sd-remove event', async () => {
       el = await fixture<SdTag>(html`<sd-tag removable>Tag</sd-tag>`);
       const handleRemove = sinon.spy();
-      const handleAfterRemove = sinon.spy();
       el.addEventListener('sd-remove', handleRemove);
-      el.addEventListener('sd-after-remove', handleAfterRemove);
 
       const button: HTMLButtonElement = el.shadowRoot!.querySelector('button:has([part="removable-indicator"])')!;
       button.click();
 
-      await waitUntil(() => handleRemove.calledOnce && handleAfterRemove.calledOnce);
+      await waitUntil(() => handleRemove.calledOnce);
       expect(handleRemove).have.been.called;
-      expect(handleAfterRemove).have.been.called;
     });
   });
 
@@ -188,6 +185,23 @@ describe('<sd-tag>', () => {
       await waitUntil(() => clickHandler.calledOnce);
 
       expect(clickHandler).to.have.been.calledOnce;
+    });
+  });
+
+  describe('when triggering the hide method', () => {
+    it('should emit sd-hide, sd-after-hide and be hidden', async () => {
+      el = await fixture<SdTag>(html`<sd-tag removable>Tag</sd-tag>`);
+      const handleHide = sinon.spy();
+      const handleAfterHide = sinon.spy();
+      el.addEventListener('sd-hide', handleHide);
+      el.addEventListener('sd-after-hide', handleAfterHide);
+
+      el.hide();
+
+      await waitUntil(() => handleHide.calledOnce && handleAfterHide.calledOnce);
+      expect(handleHide).have.been.called;
+      expect(handleAfterHide).have.been.called;
+      expect(el.hasAttribute('hidden')).to.be.true;
     });
   });
 });
