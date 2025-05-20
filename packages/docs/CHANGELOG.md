@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.16.3
+
+### Patch Changes
+
+- Updated the input read-only story to use `value` instead of `placeholder`. _[`#2213`](https://github.com/solid-design-system/solid/pull/2213) [`fc961c6`](https://github.com/solid-design-system/solid/commit/fc961c683103254054940dad8ef0d1bac48c4ea1) [@balco0110](https://github.com/balco0110)_
+
 ## 1.16.2
 
 ### Patch Changes

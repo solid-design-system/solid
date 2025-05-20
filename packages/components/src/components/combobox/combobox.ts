@@ -1339,7 +1339,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                     >
                       <slot name="clear-icon">
                         <sd-icon
-                          class=${cx('text-icon-fill-neutral-800', iconSize)}
+                          class=${cx('text-neutral-700', iconSize)}
                           name="closing-round"
                           library="_internal"
                         ></sd-icon>
