@@ -428,8 +428,8 @@ export default class SdAudio extends SolidElement {
         class="text-3xl"
       >
         ${this.isPlaying
-          ? html` <slot name="pause-icon"><sd-icon class="text-3xl" name="pause" library="internal"></sd-icon></slot>`
-          : html` <slot name="play-icon"><sd-icon class="text-3xl" name="start" library="internal"></sd-icon></slot>`}
+          ? html` <slot name="pause-icon"><sd-icon class="text-3xl" name="pause" library="_internal"></sd-icon></slot>`
+          : html` <slot name="play-icon"><sd-icon class="text-3xl" name="start" library="_internal"></sd-icon></slot>`}
       </sd-button>
 
       <div class="flex items-center justify-self-end">
@@ -446,7 +446,7 @@ export default class SdAudio extends SolidElement {
               @keydown=${this.showTranscriptKeydown}
               part="transcript"
             >
-              <sd-icon class="w-6 h-6" name="transcript" library="internal"></sd-icon>
+              <sd-icon class="w-6 h-6" name="transcript" library="_internal"></sd-icon>
             </button>`
           : null}
 
@@ -457,7 +457,7 @@ export default class SdAudio extends SolidElement {
           @click=${this.toggleMute}
           @keydown=${this.toggleMuteKeydown}
         >
-          <sd-icon class="w-6 h-6" name=${this.isMuted ? 'mute' : 'volume'} library="internal"></sd-icon>
+          <sd-icon class="w-6 h-6" name=${this.isMuted ? 'mute' : 'volume'} library="_internal"></sd-icon>
         </button>
       </div>
     </div>`;

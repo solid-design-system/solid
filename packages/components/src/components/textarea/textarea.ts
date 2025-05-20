@@ -455,7 +455,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                       'text-error absolute right-4 bg-white pointer-events-none group-hover:bg-neutral-200',
                       iconSize
                     )}
-                    library="internal"
+                    library="_internal"
                     name="risk"
                     part="invalid-icon"
                   ></sd-icon>
@@ -468,7 +468,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                       'text-success absolute right-4 bg-white pointer-events-none group-hover:bg-neutral-200',
                       iconSize
                     )}
-                    library="internal"
+                    library="_internal"
                     name="status-check"
                     part="valid-icon"
                   ></sd-icon>

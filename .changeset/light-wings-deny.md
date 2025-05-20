@@ -3,4 +3,4 @@
 '@solid-design-system/docs': patch
 ---
 
-Renamed internal icons to `internal` instead of `system`.
+Renamed internal icons to `_internal` instead of `system`.

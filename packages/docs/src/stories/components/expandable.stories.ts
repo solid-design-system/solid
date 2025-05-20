@@ -39,10 +39,10 @@ export const Open = {
   render: () => {
     return html`<div class="flex flex-col gap-12">
       <sd-expandable>
-        <sd-icon slot="toggle-open" class="mr-2 text-xl" library="internal" name="chevron-up"></sd-icon>
+        <sd-icon slot="toggle-open" class="mr-2 text-xl" library="_internal" name="chevron-up"></sd-icon>
         <span slot="toggle-open"> Collapse: Learn more about our commitment to diversity </span>
 
-        <sd-icon slot="toggle-closed" class="mr-2 text-xl" library="internal" name="chevron-down"></sd-icon>
+        <sd-icon slot="toggle-closed" class="mr-2 text-xl" library="_internal" name="chevron-down"></sd-icon>
         <span slot="toggle-closed"> Expand: Learn more about our commitment to diversity </span>
 
         <div class="sd-prose sd-prose--full-width">
@@ -69,10 +69,10 @@ export const Open = {
         </div>
       </sd-expandable>
       <sd-expandable open>
-        <sd-icon slot="toggle-open" class="mr-2 text-xl" library="internal" name="chevron-up"></sd-icon>
+        <sd-icon slot="toggle-open" class="mr-2 text-xl" library="_internal" name="chevron-up"></sd-icon>
         <span slot="toggle-open"> Collapse: Learn more about our commitment to diversity </span>
 
-        <sd-icon slot="toggle-closed" class="mr-2 text-xl" library="internal" name="chevron-down"></sd-icon>
+        <sd-icon slot="toggle-closed" class="mr-2 text-xl" library="_internal" name="chevron-down"></sd-icon>
         <span slot="toggle-closed"> Expand: Learn more about our commitment to diversity </span>
 
         <div class="sd-prose sd-prose--full-width">
@@ -109,10 +109,10 @@ export const Inverted = {
   render: () => {
     return html`<div class="bg-primary p-8">
       <sd-expandable inverted>
-        <sd-icon slot="toggle-open" class="mr-2 text-xl" library="internal" name="chevron-up"></sd-icon>
+        <sd-icon slot="toggle-open" class="mr-2 text-xl" library="_internal" name="chevron-up"></sd-icon>
         <span slot="toggle-open"> Collapse: Learn more about our commitment to diversity </span>
 
-        <sd-icon slot="toggle-closed" class="mr-2 text-xl" library="internal" name="chevron-down"></sd-icon>
+        <sd-icon slot="toggle-closed" class="mr-2 text-xl" library="_internal" name="chevron-down"></sd-icon>
         <span slot="toggle-closed"> Expand: Learn more about our commitment to diversity </span>
 
         <div class="sd-prose sd-prose--full-width sd-prose--inverted">
@@ -153,10 +153,10 @@ export const Gradient = {
         <sd-expandable
           style="--gradient-color-start: rgb(var(--sd-color-neutral-100, 246 246 246) / 0);--gradient-color-end: rgb(var(--sd-color-neutral-100, 246 246 246) / 1)"
         >
-          <sd-icon slot="toggle-open" class="mr-2 text-xl" library="internal" name="chevron-up"></sd-icon>
+          <sd-icon slot="toggle-open" class="mr-2 text-xl" library="_internal" name="chevron-up"></sd-icon>
           <span slot="toggle-open"> Collapse: Learn more about our commitment to diversity </span>
 
-          <sd-icon slot="toggle-closed" class="mr-2 text-xl" library="internal" name="chevron-down"></sd-icon>
+          <sd-icon slot="toggle-closed" class="mr-2 text-xl" library="_internal" name="chevron-down"></sd-icon>
           <span slot="toggle-closed"> Expand: Learn more about our commitment to diversity </span>
 
           <div class="sd-prose sd-prose--full-width">
@@ -188,10 +188,10 @@ export const Gradient = {
         <sd-expandable
           style="--gradient-color-start: rgb(var(--sd-color-primary-100, 236 240 249) / 0);--gradient-color-end: rgb(var(--sd-color-primary-100, 236 240 249) / 1)"
         >
-          <sd-icon slot="toggle-open" class="mr-2 text-xl" library="internal" name="chevron-up"></sd-icon>
+          <sd-icon slot="toggle-open" class="mr-2 text-xl" library="_internal" name="chevron-up"></sd-icon>
           <span slot="toggle-open"> Collapse: Learn more about our commitment to diversity </span>
 
-          <sd-icon slot="toggle-closed" class="mr-2 text-xl" library="internal" name="chevron-down"></sd-icon>
+          <sd-icon slot="toggle-closed" class="mr-2 text-xl" library="_internal" name="chevron-down"></sd-icon>
           <span slot="toggle-closed"> Expand: Learn more about our commitment to diversity </span>
 
           <div class="sd-prose sd-prose--full-width">

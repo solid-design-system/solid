@@ -58,7 +58,7 @@ describe('<sd-icon>', () => {
     });
 
     it('renders pre-loaded system icons and emits sd-load event', async () => {
-      const el = await fixture<SdIcon>(html` <sd-icon library="internal"></sd-icon> `);
+      const el = await fixture<SdIcon>(html` <sd-icon library="_internal"></sd-icon> `);
       const listener = oneEvent(el, 'sd-load');
 
       el.name = 'chevron-down';
@@ -70,12 +70,12 @@ describe('<sd-icon>', () => {
     });
 
     it('the icon is accessible', async () => {
-      const el = await fixture<SdIcon>(html` <sd-icon library="internal" name="check"></sd-icon> `);
+      const el = await fixture<SdIcon>(html` <sd-icon library="_internal" name="check"></sd-icon> `);
       await expect(el).to.be.accessible();
     });
 
     it('the icon has the correct default aria attributes', async () => {
-      const el = await fixture<SdIcon>(html` <sd-icon library="internal" name="check"></sd-icon> `);
+      const el = await fixture<SdIcon>(html` <sd-icon library="_internal" name="check"></sd-icon> `);
 
       expect(el.getAttribute('role')).to.be.null;
       expect(el.getAttribute('aria-label')).to.be.null;
@@ -87,7 +87,7 @@ describe('<sd-icon>', () => {
     it('the icon has the correct default aria attributes', async () => {
       const fakeLabel = 'a label';
       const el = await fixture<SdIcon>(html`
-        <sd-icon label="${fakeLabel}" library="internal" name="check"></sd-icon>
+        <sd-icon label="${fakeLabel}" library="_internal" name="check"></sd-icon>
       `);
 
       expect(el.getAttribute('role')).to.equal('img');

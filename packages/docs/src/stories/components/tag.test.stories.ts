@@ -169,7 +169,7 @@ export const Parts = {
           type: 'slot',
           name: 'removable-indicator',
           value:
-            '<sd-icon slot="removable-indicator" library="internal" name="close" label="remove" class="removable-indicator">'
+            '<sd-icon slot="removable-indicator" library="_internal" name="close" label="remove" class="removable-indicator">'
         },
         { type: 'attribute', name: 'removable', value: 'true' },
         { type: 'attribute', name: 'size', value: 'lg' }

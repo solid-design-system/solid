@@ -172,7 +172,7 @@ export default class SdOption extends SolidElement {
                     <sd-icon
                       part="checked-icon"
                       class="text-white w-3 h-3"
-                      library="internal"
+                      library="_internal"
                       name="status-check"
                     ></sd-icon>
                   `

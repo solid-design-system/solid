@@ -145,7 +145,7 @@ export default class SdVideo extends SolidElement {
             )}
           >
             <slot name="play-icon" part="play-icon" class=${cx(this.isBelowBreakpoint ? 'text-[2rem]' : 'text-[4rem]')}>
-              <sd-icon id="default-play-icon" library="internal" name="start"></sd-icon>
+              <sd-icon id="default-play-icon" library="_internal" name="start"></sd-icon>
             </slot>
           </div>
         </button>

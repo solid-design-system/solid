@@ -268,7 +268,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
                 <sd-icon
                   part="checked-icon"
                   class="text-white w-3 h-3"
-                  library="internal"
+                  library="_internal"
                   name="status-check"
                 ></sd-icon>
               `
@@ -278,7 +278,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
                 <sd-icon
                   part="indeterminate-icon"
                   class="text-white w-3 h-3"
-                  library="internal"
+                  library="_internal"
                   name="status-minus"
                 ></sd-icon>
               `

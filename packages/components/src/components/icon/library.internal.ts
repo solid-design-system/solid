@@ -97,7 +97,7 @@ export const icons = {
 };
 
 const internalLibrary: IconLibrary = {
-  name: 'internal',
+  name: '_internal',
   resolver: (name: keyof typeof icons) => {
     if (name in icons) {
       return `data:image/svg+xml,${encodeURIComponent(icons[name])}`;
