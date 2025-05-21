@@ -133,35 +133,33 @@ export default class SdScrollable extends SolidElement {
       return;
     }
 
-    const canScrollLeft = this.isScrollHorizontalEnabled && this.container.scrollLeft > 0;
-    const canScrollRight =
-      this.isScrollHorizontalEnabled &&
-      this.container.scrollLeft + this.container.clientWidth < this.container.scrollWidth - 1;
-    const canScrollUp = this.isScrollVerticalEnabled && this.container.scrollTop > 0;
-    const canScrollDown =
-      this.isScrollVerticalEnabled &&
-      this.container.scrollTop + this.container.clientHeight < this.container.scrollHeight - 1;
+    const canScrollLeft = this.container.scrollLeft > 0;
+    const canScrollRight = this.container.scrollLeft + this.container.clientWidth < this.container.scrollWidth - 1;
+    const canScrollUp = this.container.scrollTop > 0;
+    const canScrollDown = this.container.scrollTop + this.container.clientHeight < this.container.scrollHeight - 1;
 
-    this.canScroll = {
+    const previousScrollState = this.canScroll;
+    const canScroll = {
       left: this.isScrollHorizontalEnabled && canScrollLeft,
       right: this.isScrollHorizontalEnabled && canScrollRight,
       up: this.isScrollVerticalEnabled && canScrollUp,
       down: this.isScrollVerticalEnabled && canScrollDown
     };
 
-    /**
-     * FIX: Events are not working as expected. It will introduce a breaking change.
-     * To be handled on [#2113](https://github.com/solid-design-system/solid/issues/2113)
-     */
-    const startEventTriggered = canScrollLeft || canScrollUp;
-    const endEventTriggered = canScrollRight || canScrollDown;
+    const hasReachedLeft = previousScrollState.left && !canScroll.left;
+    const hasReachedUp = previousScrollState.up && !canScroll.up;
+    const hasReachedRight = previousScrollState.right && !canScroll.right;
+    const hasReachedDown = previousScrollState.down && !canScroll.down;
 
-    if (startEventTriggered) {
+    if (hasReachedLeft || hasReachedUp) {
       this.dispatchEvent(new CustomEvent('start'));
     }
-    if (endEventTriggered) {
+
+    if (hasReachedRight || hasReachedDown) {
       this.dispatchEvent(new CustomEvent('end'));
     }
+
+    this.canScroll = canScroll;
   }
 
   handleScroll(direction: 'left' | 'right' | 'up' | 'down', e?: PointerEvent) {
