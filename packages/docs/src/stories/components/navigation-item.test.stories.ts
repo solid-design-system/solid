@@ -339,7 +339,7 @@ export const Parts = {
           ].map(part => {
             return {
               title: part,
-              value: `<style>#part-${part} sd-navigation-item::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
+              value: `<style>#part-${part} sd-navigation-item::part(${part}){transform: none; opacity: 1; outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
             };
           })
         }
