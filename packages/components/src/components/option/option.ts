@@ -152,7 +152,7 @@ export default class SdOption extends SolidElement {
       >
         <span
           class=${cx(
-            'absolute w-full left-0 top-0 pointer-events-none transition-all duration-fast ease-in-out border-l-4 h-[calc(100%-8px)]',
+            'absolute w-full left-0 top-0 pointer-events-none transition-[height,top] duration-fast ease-in-out border-l-4 h-[calc(100%-8px)]',
             this.selected && !this.checkbox ? 'border-accent' : 'border-transparent',
             this.disabled && 'border-neutral-500 top-1',
             !this.disabled && this.hasHover ? 'h-full top-0' : 'top-1'
