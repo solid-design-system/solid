@@ -138,7 +138,12 @@ export default class SdTag extends SolidElement {
           }[this.size],
           /* colors */
           !this.selected
-            ? 'border-primary text-primary hover:border-primary-500 hover:bg-neutral-100 hover:text-primary-500  disabled:border-neutral-500 disabled:text-neutral-500'
+            ? cx(
+                'border-primary text-primary disabled:border-neutral-500 disabled:text-neutral-500',
+                !this.removable
+                  ? 'hover:border-primary-500 hover:bg-neutral-100 hover:text-primary-500'
+                  : 'has-[button:hover]:border-primary-500 has-[button:hover]:bg-neutral-100 has-[button:hover]:text-primary-500'
+              )
             : 'bg-primary border-primary text-white hover:bg-primary-500 hover:border-primary-500 disabled:bg-neutral-500 disabled:border-neutral-500',
           this.disabled && !isLink && 'cursor-not-allowed'
         )}
