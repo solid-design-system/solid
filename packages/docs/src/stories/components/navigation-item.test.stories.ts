@@ -59,15 +59,18 @@ export const Default = {
 };
 
 /**
- * The `sd-navigation-item` using bold text.
+ * The `sd-navigation-item` in the current state and different variants
  */
 
-export const Bold = {
-  name: 'Bold',
+export const Current = {
+  name: 'Variant x Current',
   render: (args: any) =>
     generateTemplate({
       args,
-      axis: { x: { type: 'slot', name: 'default', values: ['Navigation', '<b>Navigation</b>'] } }
+      axis: {
+        x: { type: 'attribute', name: 'vertical' },
+        y: { type: 'attribute', name: 'current' }
+      }
     })
 };
 
@@ -429,7 +432,7 @@ export const Mouseless = {
 
 export const Combination = generateScreenshotStory([
   Default,
-  Bold,
+  Current,
   Variants,
   Disabled,
   Parts,
