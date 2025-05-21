@@ -136,7 +136,7 @@ export default class SdOption extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'px-4 flex items-center w-full transition-all duration-fast ease-in-out text-left text-base relative text-black',
+          'px-4 flex items-center w-full transition-colors duration-fast ease-in-out text-left text-base relative text-black',
           {
             sm: 'text-sm py-1',
             md: 'text-base py-2',

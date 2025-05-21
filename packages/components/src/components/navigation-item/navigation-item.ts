@@ -335,8 +335,7 @@ export default class SdNavigationItem extends SolidElement {
           height var(--sd-duration-fast) ease-in-out,
           left var(--sd-duration-fast) ease-in-out,
           top var(--sd-duration-fast) ease-in-out,
-          opacity 0s,
-          transform var(--sd-duration-fast) ease-in-out 0s;
+          transform var(--sd-duration-fast) ease-in-out;
       }
     `
   ];
