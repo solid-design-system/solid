@@ -140,22 +140,22 @@ export const SampleA02 = {
         </div>
         <div class="-mr-4 lg:flex hidden items-center">
           <sd-navigation-item href="javascript:void(0)">
-            <div class="w-4 h-4 flex items-center">
+            <div class="w-6 h-6 flex items-center pl-1">
               <sd-icon name="system/filter-empty" label="Search filter" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
-            <div class="w-4 h-4 flex items-center">
+            <div class="w-6 h-6 flex items-center pl-1">
               <sd-icon name="system/globe" label="Language" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
-            <div class="w-4 h-4 flex items-center">
+            <div class="w-6 h-6 flex items-center pl-1">
               <sd-icon name="system/website" label="News" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item onclick="alert('This could open a search bar')">
-            <div class="w-4 h-4 flex items-center">
+            <div class="w-6 h-6 flex items-center pl-1">
               <sd-icon name="system/magnifying-glass" label="Search" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
@@ -278,12 +278,12 @@ export const SampleB = {
         <!-- bottom-right-area start !-->
         <div class="flex items-center">
           <sd-navigation-item href="javascript:void(0)">
-            <div class="w-4 h-4 flex items-center">
+            <div class="w-6 h-6 flex items-center pl-1">
               <sd-icon name="system/website" label="News" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item onclick="alert('This could open a search bar')">
-            <div class="w-4 h-4 flex items-center">
+            <div class="w-6 h-6 flex items-center pl-1">
               <sd-icon name="system/magnifying-glass" label="Search" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
