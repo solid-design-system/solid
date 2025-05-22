@@ -13,7 +13,6 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize.js';
 import { property, query, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll.js';
-import { token } from '../../internal/token';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
@@ -1529,12 +1528,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
 setDefaultAnimation('combobox.show', {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  options: { duration: (token('sd-duration-medium') as number) || 300, easing: 'ease-in-out' }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('combobox.hide', {
   keyframes: [{ opacity: 1 }, { opacity: 0 }],
-  options: { duration: (token('sd-duration-fast') as number) || 150, easing: 'ease-in-out' }
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
 });
 
 declare global {
