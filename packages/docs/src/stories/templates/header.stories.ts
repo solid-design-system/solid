@@ -12,6 +12,7 @@ export default {
   title: 'Templates/Header'
 };
 /** **Accessibility hint:** aria-expanded and aria-controls must be set for accessibility purpose. */
+
 export const SampleA = {
   name: 'Header Sample A-01',
   render: () => html`
@@ -49,12 +50,12 @@ export const SampleA = {
         <!-- bottom-right-area start !-->
         <div class="-mr-4 flex items-center">
           <sd-navigation-item href="javascript:void(0)">
-            <div class="w-4 h-4 flex items-center">
+            <div class="w-6 h-6 flex items-center pl-1" vertical>
               <sd-icon name="system/website" label="News" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item onclick="alert('This could open a search bar')">
-            <div class="w-4 h-4 flex items-center">
+            <div class="w-6 h-6 flex items-center pl-1">
               <sd-icon name="system/magnifying-glass" label="Search" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
@@ -73,7 +74,7 @@ export const SampleA = {
       </div>
     </sd-header>
     <sd-drawer id="sample-a-drawer" placement="end">
-      <nav>
+      <nav class="-mx-4">
         <sd-navigation-item vertical current href="javascript:void(0)">
           <b>Home</b>
         </sd-navigation-item>
@@ -82,7 +83,7 @@ export const SampleA = {
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Sustainability</sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Career</sd-navigation-item>
       </nav>
-      <nav aria-label="footer" slot="footer" class="bg-neutral-100">
+      <nav aria-label="footer" slot="footer" class="bg-neutral-100 -m-4">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
           Portfolio
@@ -140,22 +141,22 @@ export const SampleA02 = {
         </div>
         <div class="-mr-4 lg:flex hidden items-center">
           <sd-navigation-item href="javascript:void(0)">
-            <div class="w-4 h-4 flex items-center">
+            <div class="w-6 h-6 flex items-center pl-1">
               <sd-icon name="system/filter-empty" label="Search filter" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
-            <div class="w-4 h-4 flex items-center">
+            <div class="w-6 h-6 flex items-center pl-1">
               <sd-icon name="system/globe" label="Language" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
-            <div class="w-4 h-4 flex items-center">
+            <div class="w-6 h-6 flex items-center pl-1">
               <sd-icon name="system/website" label="News" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item onclick="alert('This could open a search bar')">
-            <div class="w-4 h-4 flex items-center">
+            <div class="w-6 h-6 flex items-center pl-1">
               <sd-icon name="system/magnifying-glass" label="Search" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
@@ -185,7 +186,7 @@ export const SampleA02 = {
       </div>
     </sd-header>
     <sd-drawer id="sample-a02-drawer" placement="end">
-      <nav>
+      <nav class="-mx-4">
         <sd-navigation-item vertical current href="javascript:void(0)">
           <b>Home</b>
         </sd-navigation-item>
@@ -196,7 +197,7 @@ export const SampleA02 = {
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">About us</sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Personal area</sd-navigation-item>
       </nav>
-      <nav aria-label="footer" slot="footer" class="bg-neutral-100">
+      <nav aria-label="footer" slot="footer" class="bg-neutral-100 -m-4">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
           Log in
@@ -278,12 +279,12 @@ export const SampleB = {
         <!-- bottom-right-area start !-->
         <div class="flex items-center">
           <sd-navigation-item href="javascript:void(0)">
-            <div class="w-4 h-4 flex items-center">
+            <div class="w-6 h-6 flex items-center pl-1">
               <sd-icon name="system/website" label="News" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
           <sd-navigation-item onclick="alert('This could open a search bar')">
-            <div class="w-4 h-4 flex items-center">
+            <div class="w-6 h-6 flex items-center pl-1">
               <sd-icon name="system/magnifying-glass" label="Search" class="text-xl absolute -ml-1"></sd-icon>
             </div>
           </sd-navigation-item>
@@ -292,7 +293,7 @@ export const SampleB = {
       </div>
     </sd-header>
     <sd-drawer id="sample-b-drawer" placement="end">
-      <nav>
+      <nav class="-mx-4">
         <sd-navigation-item vertical current href="javascript:void(0)">
           <b>Home</b>
         </sd-navigation-item>
@@ -301,7 +302,7 @@ export const SampleB = {
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">To the point</sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Meeting point</sd-navigation-item>
       </nav>
-      <nav aria-label="footer" slot="footer" class="bg-neutral-100">
+      <nav aria-label="footer" slot="footer" class="bg-neutral-100 -m-4">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
           My application

@@ -34,12 +34,10 @@ export const Default = {
         display: flex;
         align-items: center;
       }
-
       sd-drawer::part(panel) {
         border-top: 2px solid #e9e9e9;
         border-right: 2px solid #e9e9e9;
       }
-
       sd-drawer::part(overlay) {
         background-color: #051530;
       }
@@ -54,8 +52,8 @@ export const Default = {
       </sd-button>
       <div class="level-one h-full flex flex-col justify-between">
         <nav aria-label="Primary">
-          <sd-navigation-item vertical><b>Home</b></sd-navigation-item>
-          <sd-navigation-item vertical chevron divider onclick="handleSecondLevel()">
+          <sd-navigation-item vertical>Home</sd-navigation-item>
+          <sd-navigation-item vertical current chevron divider onclick="handleSecondLevel()">
             <b>About Us</b>
           </sd-navigation-item>
           <sd-navigation-item vertical chevron divider>Markets</sd-navigation-item>
