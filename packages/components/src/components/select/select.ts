@@ -943,7 +943,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           <div
             part="border"
             class=${cx(
-              'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10 transition-[colors,border-width] duration-fast ease-in-out',
+              'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10 transition-border duration-medium ease-in-out',
               {
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
@@ -980,7 +980,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           >
             <div
               class=${cx(
-                'relative w-full h-full grid grid-cols-1',
+                'relative w-full h-full grid grid-cols-1 rounded-default transition-colors hover:duration-fast ease-in-out',
                 this.visuallyDisabled || this.disabled ? 'hover:bg-transparent' : 'hover:bg-neutral-200'
               )}
               slot="anchor"
@@ -1092,7 +1092,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   name="expand-icon"
                   part="expand-icon"
                   class=${cx(
-                    'inline-flex ml-2 transition-all items-center transition-transform duration-medium ease-in-out',
+                    'inline-flex ml-2 items-center transition-transform duration-medium ease-in-out',
                     this.open ? 'rotate-180' : 'rotate-0',
                     this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary',
                     iconSize
@@ -1219,7 +1219,7 @@ setDefaultAnimation('select.show', {
 
 setDefaultAnimation('select.hide', {
   keyframes: [{ opacity: 1 }, { opacity: 0 }],
-  options: { duration: (token('sd-duration-fast') as number) || 150, easing: 'ease-in-out' }
+  options: { duration: (token('sd-duration-medium') as number) || 300, easing: 'ease-in-out' }
 });
 declare global {
   interface HTMLElementTagNameMap {
