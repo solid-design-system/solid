@@ -2,4 +2,4 @@
 '@solid-design-system/docs': patch
 ---
 
-Implemented interactive `sd-navigation-item` on header templates.
+Implemented interactive `sd-navigation-item` on header and dropdown templates.
