@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.6.18
+
+### Patch Changes
+
+- Updated the color of the clearable icon in sd-select, sd-input, sd-combobox _[`#2216`](https://github.com/solid-design-system/solid/pull/2216) [`5f507c3`](https://github.com/solid-design-system/solid/commit/5f507c367d25fc0f2bc830e3d0d964dd1740b1fd) [@balco0110](https://github.com/balco0110)_
+
 ## 4.6.17
 
 ### Patch Changes
@@ -7,8 +13,9 @@
 - Fixed text getting cut-off by valid/invalid icon on `sd-textarea`. _[`#2159`](https://github.com/solid-design-system/solid/pull/2159) [`fbf93a5`](https://github.com/solid-design-system/solid/commit/fbf93a5c0a535ee598c23aa8670923ccddcae623) [@paulovareiro29](https://github.com/paulovareiro29)_
 
 ### 📈 Stats
-* Uncompressed: 421 KB (-1 KB / 0%)
-* Gzipped: 99 KB (unchanged)
+
+- Uncompressed: 421 KB (-1 KB / 0%)
+- Gzipped: 99 KB (unchanged)
 
 ## 4.6.16
 
