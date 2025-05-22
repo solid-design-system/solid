@@ -153,7 +153,7 @@ export default class SdNavigationItem extends SolidElement {
       children: this.hasSlotController.test('children')
     };
 
-    const horizontalPaddingBottom = this.vertical ? 'pb-3' : 'pb-2';
+    const horizontalPaddingY = this.vertical ? 'py-3' : 'py-2';
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
@@ -167,7 +167,7 @@ export default class SdNavigationItem extends SolidElement {
           isAccordion ? 'flex flex-col' : 'inline-block w-full',
           this.divider && this.vertical && 'mt-0.25',
           !this.vertical && 'inline-flex items-center',
-          !this.separated && 'hover:bg-neutral-200 group transition-all min-h-[48px] px-4'
+          !this.separated && 'hover:bg-neutral-200 group transition-all min-h-[48px] px-3'
         )}
         aria-current=${ifDefined(this.current ? 'page' : undefined)}
         aria-disabled=${this.disabled}
@@ -191,9 +191,9 @@ export default class SdNavigationItem extends SolidElement {
         <span
         part="content-area"
         class=${cx(
-          'relative pt-3 inline-flex justify-between items-center',
+          'relative inline-flex justify-between items-center',
           isAccordion ? 'grow' : 'w-full',
-          slots['description'] || this.separated ? 'pb-1' : horizontalPaddingBottom,
+          slots['description'] || this.separated ? 'pt-3 pb-1' : horizontalPaddingY,
           this.calculatePaddingX
         )}>
           ${
@@ -238,7 +238,7 @@ export default class SdNavigationItem extends SolidElement {
                       library="system"
                       color="currentColor"
                       class=${cx(
-                        'mr-4 h-6 w-6 transition-all',
+                        'm-4 h-6 w-6 transition-all',
                         isAccordion || this.separated ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]'
                       )}
                     ></sd-icon>
@@ -265,7 +265,7 @@ export default class SdNavigationItem extends SolidElement {
                   'inline-block text-sm text-left text-black',
                   isAccordion || this.separated ? 'grow' : 'w-full',
                   this.separated ? 'px-4' : this.calculatePaddingX,
-                  horizontalPaddingBottom
+                  horizontalPaddingY
                 )}
               ></slot>`
             : ''
