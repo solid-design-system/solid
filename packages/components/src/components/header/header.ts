@@ -101,8 +101,7 @@ export default class SdHeader extends SolidElement {
             @apply fixed w-full left-0 top-0;
 
             &::after {
-              content: '';
-              @apply absolute left-0 right-0 top-full h-2;
+              @apply content-[''] absolute left-0 right-0 top-full h-2;
               background: var(
                 --gradient-vertical-black-40-transparent,
                 linear-gradient(0deg, #18181800 50%, #18181866 100%)
