@@ -11,7 +11,13 @@ export default {
   },
   title: 'Templates/Header'
 };
-/** **Accessibility hint:** aria-expanded and aria-controls must be set for accessibility purpose. */
+/**
+ * **Accessibility hint:** aria-expanded and aria-controls must be set for accessibility purpose.
+ *
+ * **Code-only:**
+ * When consuming sd-header please ensure that there are no margins applied on the left, right, and bottom of the dropdown.
+ * The top margin of the dropdown should be kept otherwise the first navigation item is cut.
+ */
 export const SampleA = {
   name: 'Header Sample A-01',
   render: () => html`
