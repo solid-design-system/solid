@@ -4,7 +4,7 @@ import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
-import { token } from 'src/internal/token';
+import { token } from '../../internal/token';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
