@@ -5,7 +5,6 @@ import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
-import { token } from '../../internal/token';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -96,7 +95,7 @@ export default class SdTag extends SolidElement {
     this.emit('sd-hide');
 
     this.style.opacity = '0';
-    await new Promise(resolve => setTimeout(resolve, token('sd-duration-fast') as number));
+    await new Promise(resolve => setTimeout(resolve, this.token('sd-duration-fast', 150)));
     this.hidden = true;
 
     this.emit('sd-after-hide');
