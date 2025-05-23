@@ -1,5 +1,13 @@
 # @solid-design-system/components
 
+## 4.7.1
+
+### Patch Changes
+
+- Fixed `sd-button` motion design on sd-audio. _[`#2230`](https://github.com/solid-design-system/solid/pull/2230) [`283d350`](https://github.com/solid-design-system/solid/commit/283d350e49bdd673be0d0a3b4e650a07386468c9) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Implemented new part `motion-wrapper` to `sd-button`.
+
 ## 4.7.0
 
 ### Minor Changes
@@ -28,8 +36,9 @@
   - Implement new `sd-hide` and `sd-after-hide` events, which are triggered by the `hide` method.
 
 ### 📈 Stats
-* Uncompressed: 427 KB (+6 KB / +1%)
-* Gzipped: 100 KB (+1 KB / +1%)
+
+- Uncompressed: 427 KB (+6 KB / +1%)
+- Gzipped: 100 KB (+1 KB / +1%)
 
 ## 4.6.18
 
