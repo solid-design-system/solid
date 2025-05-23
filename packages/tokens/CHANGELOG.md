@@ -1,5 +1,13 @@
 # @solid-design-system/tokens
 
+## 5.2.0
+
+### Minor Changes
+
+- Implemented new motion design `duration-*` tokens. _[`#1901`](https://github.com/solid-design-system/solid/pull/1901) [`05854b6`](https://github.com/solid-design-system/solid/commit/05854b6ca0e0594a26a5d3f70b15baa1cd3b4033) [@MartaPintoTeixeira](https://github.com/MartaPintoTeixeira)_
+
+  Implemented new token `border-accent-700`.
+
 ## 5.1.0
 
 ### Minor Changes
