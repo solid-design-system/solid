@@ -16,7 +16,9 @@ Implemented `sd-combobox` motion design.
 
 Implemented `sd-dropdown` motion design.
 
-Implemented `sd-select` motion design..
+Implemented `sd-select` motion design.
+
+Implemented `sd-carousel` motion design on the dots and arrows.
 
 Implemented `sd-tag` motion design:
 - Implement new `hide` method to visually hide the `sd-tag`.
