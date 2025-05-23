@@ -136,7 +136,7 @@ export default class SdOption extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'px-4 flex items-center w-full transition-all text-left text-base relative text-black',
+          'px-4 flex items-center w-full transition-colors duration-fast ease-in-out text-left text-base relative text-black',
           {
             sm: 'text-sm py-1',
             md: 'text-base py-2',
@@ -152,7 +152,7 @@ export default class SdOption extends SolidElement {
       >
         <span
           class=${cx(
-            'absolute w-full left-0 top-0 pointer-events-none transition-all duration-150 border-l-4 h-[calc(100%-8px)]',
+            'absolute w-full left-0 top-0 pointer-events-none transition-[height,top] duration-fast ease-in-out border-l-4 h-[calc(100%-8px)]',
             this.selected && !this.checkbox ? 'border-accent' : 'border-transparent',
             this.disabled && 'border-neutral-500 top-1',
             !this.disabled && this.hasHover ? 'h-full top-0' : 'top-1'
