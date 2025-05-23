@@ -6,7 +6,6 @@ import { getTabbableBoundary } from '../../internal/tabbable';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll';
-import { token } from '../../internal/token';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
@@ -505,12 +504,12 @@ export default class SdDropdown extends SolidElement {
 
 setDefaultAnimation('dropdown.show', {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  options: { duration: (token('sd-duration-medium') as number) || 300, easing: 'ease-in-out' }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('dropdown.hide', {
   keyframes: [{ opacity: 1 }, { opacity: 0 }],
-  options: { duration: (token('sd-duration-fast') as number) || 150, easing: 'ease-in-out' }
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
 });
 
 declare global {

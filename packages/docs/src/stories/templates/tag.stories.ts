@@ -84,10 +84,31 @@ export const filterTagGroupRisk = {
 
 export const removableFilterTagGroup = {
   render: () => html`
-    <sd-tag removable>Filter 1</sd-tag>
-    <sd-tag removable>Filter 2</sd-tag>
-    <sd-tag removable>Filter 3</sd-tag>
-    <sd-tag removable>Filter 4</sd-tag>
+    <div id="removable-tag-filters">
+      <sd-tag removable>Filter 1</sd-tag>
+      <sd-tag removable>Filter 2</sd-tag>
+      <sd-tag removable>Filter 3</sd-tag>
+      <sd-tag removable>Filter 4</sd-tag>
+    </div>
+    <script type="module">
+      const filters = document.querySelector('#removable-tag-filters');
+
+      filters.querySelectorAll('sd-tag').forEach(tag => tag.addEventListener('sd-remove', () => tag.hide()));
+      filters.addEventListener('sd-after-hide', event => {
+        const tags = Array.from(filters.querySelectorAll('sd-tag'));
+
+        if (tags.some(tag => !tag.hidden)) {
+          return;
+        }
+
+        setTimeout(() => {
+          tags.forEach(tag => {
+            tag.style.opacity = '1';
+            tag.hidden = false;
+          });
+        }, 1000);
+      });
+    </script>
   `
 };
 

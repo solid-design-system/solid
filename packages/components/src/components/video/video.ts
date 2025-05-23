@@ -4,7 +4,6 @@ import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
-import { token } from '../../internal/token';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -62,7 +61,7 @@ export default class SdVideo extends SolidElement {
     if (!(this.poster instanceof HTMLImageElement)) return;
 
     this.poster.style.opacity = '0';
-    await new Promise(resolve => setTimeout(resolve, token('sd-duration-medium') as number));
+    await new Promise(resolve => setTimeout(resolve, this.token('sd-duration-medium', 300)));
     this.poster.style.display = 'none';
   }
 
