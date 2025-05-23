@@ -23,6 +23,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart base - The component's base wrapper.
  * @csspart play-button - The `<button>` element wrapper around the play-icon slot (full screen to field all click events).
  * @csspart play-button-bg - The `<div>` element wrapper around the play-button that defines the circular background.
+ * @csspart poster-wrapper - The `<div>` element wrapper around the poster slot.
  */
 
 @customElement('sd-video')
@@ -55,18 +56,13 @@ export default class SdVideo extends SolidElement {
     return this.querySelector('video');
   }
 
-  /** Fade out poster after initial play. */
-  private fadeoutPoster(): void {
-    if (this.poster instanceof HTMLImageElement) {
-      this.poster.style.opacity = '0';
-    }
-  }
-
   /** Hide poster after initial play & fadeout. */
-  private hidePoster() {
-    if (this.poster instanceof HTMLImageElement) {
-      this.poster.style.display = 'none';
-    }
+  private async hidePoster() {
+    if (!(this.poster instanceof HTMLImageElement)) return;
+
+    this.poster.style.opacity = '0';
+    await new Promise(resolve => setTimeout(resolve, this.token('sd-duration-medium', 300)));
+    this.poster.style.display = 'none';
   }
 
   private setVideoInert(inert?: boolean): void {
@@ -82,7 +78,7 @@ export default class SdVideo extends SolidElement {
     this.emit('sd-play');
     this.playing = true;
     this.video?.play();
-    this.fadeoutPoster();
+    this.hidePoster();
     this.setVideoInert(false);
   }
 
@@ -150,7 +146,9 @@ export default class SdVideo extends SolidElement {
           </div>
         </button>
         ${this.hasSlotController.test('poster')
-          ? html`<slot name="poster" role="presentation" @transitionend=${this.hidePoster}></slot>`
+          ? html` <div part="poster-wrapper" class="absolute left-0 top-0 w-full z-10 overflow-hidden">
+              <slot name="poster" role="presentation"> </slot>
+            </div>`
           : null}
         <slot></slot>
       </div>
@@ -166,16 +164,16 @@ export default class SdVideo extends SolidElement {
 
       ::slotted([slot='poster']),
       .play-pause-transition {
-        @apply transition-opacity ease-in-out duration-300;
-      }
-
-      ::slotted([slot='poster']) {
-        @apply absolute left-0 top-0 w-full z-10;
+        @apply transition-[opacity,transform] ease-in-out duration-medium scale-100;
       }
 
       #default-play-icon,
       ::slotted([slot='play-icon']) {
         @apply absolute left-1/2 top-1/2 transform !-translate-x-1/2 !-translate-y-1/2;
+      }
+
+      :has([part='play-button']:hover) ::slotted([slot='poster']) {
+        @apply !scale-110;
       }
     `
   ];
