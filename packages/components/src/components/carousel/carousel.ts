@@ -604,7 +604,7 @@ export default class SdCarousel extends SolidElement {
                         >
                           <span
                             class=${cx(
-                              'h-4 w-4 block border hover:border-primary-500 rounded-full transition-colors duration-fast ease-in-out',
+                              'h-4 w-4 block border hover:border-primary-500 rounded-full transition-colors duration-slow hover:duration-fast ease-in-out',
                               this.inverted ? 'border-white hover:border-primary-500' : 'border-primary',
                               isActive && 'bg-accent border-none',
                               isActive ? (this.inverted ? 'hover:bg-accent-300' : 'hover:bg-accent-550') : ''
