@@ -427,7 +427,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     ...SolidElement.styles,
     css`
       :host {
-        @apply inline-block cursor-pointer w-auto relative;
+        @apply z-[0] inline-block cursor-pointer w-auto relative;
       }
 
       sd-spinner {
