@@ -10,7 +10,6 @@ import { HasSlotController } from '../../internal/slot.js';
 import { LocalizeController } from '../../utilities/localize.js';
 import { property, query, queryAssignedElements, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll.js';
-import { token } from '../../internal/token';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
@@ -1060,7 +1059,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                       >
                         <slot name="clear-icon">
                           <sd-icon
-                            class=${cx('text-icon-fill-neutral-800 z-10', iconSize)}
+                            class=${cx('text-neutral-700 z-10', iconSize)}
                             library="system"
                             name="closing-round"
                           ></sd-icon>
@@ -1214,12 +1213,12 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
 setDefaultAnimation('select.show', {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  options: { duration: (token('sd-duration-medium') as number) || 300, easing: 'ease-in-out' }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('select.hide', {
   keyframes: [{ opacity: 1 }, { opacity: 0 }],
-  options: { duration: (token('sd-duration-medium') as number) || 300, easing: 'ease-in-out' }
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
 });
 declare global {
   interface HTMLElementTagNameMap {

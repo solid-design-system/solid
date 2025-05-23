@@ -1,5 +1,23 @@
 # @solid-design-system/docs
 
+## 1.16.4
+
+### Patch Changes
+
+- Updated `sd-tag` stories to support the new `hide` method, `sd-hide` and `sd-after-hide` events. _[`#1901`](https://github.com/solid-design-system/solid/pull/1901) [`05854b6`](https://github.com/solid-design-system/solid/commit/05854b6ca0e0594a26a5d3f70b15baa1cd3b4033) [@MartaPintoTeixeira](https://github.com/MartaPintoTeixeira)_
+
+  Updated `sd-select` template placeholder capitalization.
+
+  Implemented interactive `sd-navigation-item` on header and dropdown templates.
+
+  Implemented support to retrieve token values from CSS.
+
+## 1.16.3
+
+### Patch Changes
+
+- Updated the input read-only story to use `value` instead of `placeholder`. _[`#2213`](https://github.com/solid-design-system/solid/pull/2213) [`fc961c6`](https://github.com/solid-design-system/solid/commit/fc961c683103254054940dad8ef0d1bac48c4ea1) [@balco0110](https://github.com/balco0110)_
+
 ## 1.16.2
 
 ### Patch Changes
