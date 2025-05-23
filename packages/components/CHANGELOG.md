@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.7.2
+
+### Patch Changes
+
+- Fixed `sd-button` z-index. _[`#2234`](https://github.com/solid-design-system/solid/pull/2234) [`4f27be7`](https://github.com/solid-design-system/solid/commit/4f27be79ee38a98a07e5f141ac926ff01a392713) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 4.7.1
 
 ### Patch Changes
