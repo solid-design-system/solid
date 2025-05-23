@@ -942,7 +942,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           <div
             part="border"
             class=${cx(
-              'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10 transition-border duration-medium ease-in-out',
+              'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10 transition-[border] duration-medium ease-in-out',
               {
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
