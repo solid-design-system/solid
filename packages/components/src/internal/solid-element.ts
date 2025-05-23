@@ -1,7 +1,12 @@
+import { cssVar, parseDuration } from './animate';
 import { LitElement, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 
 const css = unsafeCSS;
+
+const tokenProcessors: Record<string, (value: string) => string | number> = {
+  'sd-duration': (value: string): number => parseDuration(value)
+};
 
 export default class SolidElement extends LitElement {
   /** The element's directionality. */
@@ -54,6 +59,12 @@ export default class SolidElement extends LitElement {
     this.dispatchEvent(event);
 
     return event;
+  }
+
+  /** Retrieves the value of a css variable token. */
+  token<T>(name: string, fallback: T): T {
+    const value = cssVar(`var(--${name})`, this);
+    return (tokenProcessors[name]?.(value) as T) ?? fallback;
   }
 }
 

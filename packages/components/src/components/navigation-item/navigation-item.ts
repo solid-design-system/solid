@@ -164,10 +164,11 @@ export default class SdNavigationItem extends SolidElement {
           'cursor-pointer relative focus-visible:focus-outline',
           { md: 'text-base', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
           this.disabled ? 'text-neutral-500 pointer-events-none' : 'text-primary',
+          this.current && 'font-bold',
           isAccordion ? 'flex flex-col' : 'inline-block w-full',
           this.divider && this.vertical && 'mt-0.25',
           !this.vertical && 'inline-flex items-center',
-          !this.separated && 'hover:bg-neutral-200 group transition-all min-h-[48px] px-4'
+          !this.separated && 'hover:bg-neutral-200 group transition-colors duration-fast ease-in-out min-h-[48px] px-4'
         )}
         aria-current=${ifDefined(this.current ? 'page' : undefined)}
         aria-disabled=${this.disabled}
@@ -183,9 +184,10 @@ export default class SdNavigationItem extends SolidElement {
         <div
         part="current-indicator"
         class=${cx(
-          'absolute left-0 pointer-events-none transition-all duration-150',
-          this.vertical ? 'w-1 h-[calc(100%-16px)] top-2 group-hover:h-full group-hover:top-0' : 'h-1 w-full bottom-0',
-          this.current ? 'bg-accent' : 'bg-transparent',
+          'absolute bg-accent left-0 pointer-events-none',
+          this.vertical
+            ? 'w-1 h-[calc(100%-16px)] top-2 group-hover:h-full group-hover:top-0'
+            : 'h-1 w-[calc(100%-16px)] bottom-0 left-2 group-hover:w-full group-hover:left-0',
           this.disabled && 'bg-neutral-500'
         )}></div>
         <span
@@ -209,7 +211,7 @@ export default class SdNavigationItem extends SolidElement {
               this.separated
                 ? html`<a
                     class=${cx(
-                      'mr-4 w-full inline-flex items-center pl-4 cursor-pointer relative focus-visible:focus-outline hover:bg-neutral-200 group transition-all min-h-[48px]',
+                      'mr-4 w-full inline-flex items-center pl-4 cursor-pointer relative focus-visible:focus-outline hover:bg-neutral-200 group transition-colors duration-fast ease-in-out min-h-[48px]',
                       !slots['description'] && 'py-4'
                     )}
                     href=${ifDefined(isLink ? this.href : undefined)}
@@ -311,6 +313,29 @@ export default class SdNavigationItem extends SolidElement {
 
       details summary::-webkit-details-marker {
         @apply hidden;
+      }
+
+      [part='current-indicator'] {
+        @apply scale-0 opacity-0 duration-fast;
+
+        transition:
+          width var(--sd-duration-fast) ease-in-out,
+          height var(--sd-duration-fast) ease-in-out,
+          left var(--sd-duration-fast) ease-in-out,
+          top var(--sd-duration-fast) ease-in-out,
+          opacity var(--sd-duration-fast) ease-in-out,
+          transform var(--sd-duration-fast) ease-in-out var(--sd-duration-fast);
+      }
+
+      :host([current]) [part='current-indicator'] {
+        @apply opacity-100 scale-100;
+
+        transition:
+          width var(--sd-duration-fast) ease-in-out,
+          height var(--sd-duration-fast) ease-in-out,
+          left var(--sd-duration-fast) ease-in-out,
+          top var(--sd-duration-fast) ease-in-out,
+          transform var(--sd-duration-fast) ease-in-out;
       }
     `
   ];

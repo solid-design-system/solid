@@ -10,7 +10,6 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { property, query } from 'lit/decorators.js';
-import { token } from '../../internal/token';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
@@ -364,12 +363,12 @@ setDefaultAnimation('dialog.show', {
     { opacity: 0, transform: 'translate(-50%, 100%)' },
     { opacity: 1, transform: 'translate(0, 0)' }
   ],
-  options: { duration: (token('sd-duration-medium') as number) || 300, easing: 'ease-in-out' }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('dialog.showReducedMotion', {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  options: { duration: (token('sd-duration-medium') as number) || 300, easing: 'ease-in-out', reducedMotion: 'allow' }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out', reducedMotion: 'allow' }
 });
 
 setDefaultAnimation('dialog.hide', {
@@ -377,12 +376,12 @@ setDefaultAnimation('dialog.hide', {
     { opacity: 1, transform: 'translate(0, 0)' },
     { opacity: 0, transform: 'translate(50%, -100%)' }
   ],
-  options: { duration: (token('sd-duration-fast') as number) || 150, easing: 'ease-in-out' }
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('dialog.hideReducedMotion', {
   keyframes: [{ opacity: 1 }, { opacity: 0 }],
-  options: { duration: (token('sd-duration-fast') as number) || 150, easing: 'ease-in-out', reducedMotion: 'allow' }
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out', reducedMotion: 'allow' }
 });
 
 setDefaultAnimation('dialog.denyClose', {
@@ -392,12 +391,12 @@ setDefaultAnimation('dialog.denyClose', {
 
 setDefaultAnimation('dialog.overlay.show', {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  options: { duration: (token('sd-duration-medium') as number) || 300, easing: 'ease-in-out', reducedMotion: 'allow' }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out', reducedMotion: 'allow' }
 });
 
 setDefaultAnimation('dialog.overlay.hide', {
   keyframes: [{ opacity: 1 }, { opacity: 0 }],
-  options: { duration: (token('sd-duration-fast') as number) || 150, easing: 'ease-in-out', reducedMotion: 'allow' }
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out', reducedMotion: 'allow' }
 });
 
 declare global {

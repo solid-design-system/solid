@@ -120,7 +120,7 @@ export const VisuallyDisabled = {
 export const ReadOnly = {
   render: () =>
     html`<div class="w-[250px]">
-      <sd-input label="Label" placeholder="Read only example" readonly></sd-input>
+      <sd-input label="Label" value="Read only example" readonly></sd-input>
     </div>`
 };
 

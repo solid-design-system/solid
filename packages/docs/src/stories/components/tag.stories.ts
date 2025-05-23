@@ -70,21 +70,26 @@ export const Selected = {
 
 /**
  * Use the `removable` attribute to include the removability indicator.
+ *
+ * __Hint:__ Combine the `sd-remove` event and `hide` method to visually hide the tag
+ * when the removable button is triggered.
  */
 
 export const Removable = {
   render: () => html`
-    <div id="tags-removable" class="flex gap-12">
-      <sd-tag size="lg" removable>Removable</sd-tag>
+    <div class="flex gap-12">
+      <sd-tag id="removable-tag" size="lg" removable>Removable</sd-tag>
     </div>
 
     <script type="module">
-      const tag = document.querySelector('#tags-removable');
+      const tag = document.querySelector('#removable-tag');
 
-      tag.addEventListener('sd-remove', event => {
-        const tag = event.target;
-        tag.style.opacity = '0';
-        setTimeout(() => (tag.style.opacity = '1'), 2000);
+      tag.addEventListener('sd-remove', event => tag.hide());
+      tag.addEventListener('sd-after-hide', event => {
+        setTimeout(() => {
+          event.target.style.opacity = '1';
+          event.target.hidden = false;
+        }, 2000);
       });
     </script>
   `

@@ -5,6 +5,15 @@ interface ExtendedKeyframeAnimationOptions extends KeyframeAnimationOptions {
   reducedMotion?: 'allow';
 }
 
+export function cssVar(expression: string, el: HTMLElement): string {
+  const match = /var\((--[\w-]+)(?:,\s*([^)]+))?\)/.exec(expression);
+  if (!match) return expression;
+
+  const [, variable, fallback] = match;
+  const value = getComputedStyle(el).getPropertyValue(variable).trim();
+  return value || fallback || '';
+}
+
 export function animateTo(el: HTMLElement, keyframes: Keyframe[], options?: ExtendedKeyframeAnimationOptions) {
   return new Promise(resolve => {
     if (options?.duration === Infinity) {
@@ -12,9 +21,11 @@ export function animateTo(el: HTMLElement, keyframes: Keyframe[], options?: Exte
     }
 
     const reducedMotion = prefersReducedMotion();
+    const duration =
+      typeof options!.duration === 'string' ? parseDuration(cssVar(options!.duration, el)) : options!.duration;
     const animation = el.animate(keyframes, {
       ...options,
-      duration: reducedMotion && options?.reducedMotion !== 'allow' ? 0 : options!.duration
+      duration: reducedMotion && options?.reducedMotion !== 'allow' ? 0 : duration
     });
 
     animation.addEventListener('cancel', resolve, { once: true });
