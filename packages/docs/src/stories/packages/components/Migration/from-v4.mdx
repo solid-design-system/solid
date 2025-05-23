@@ -1,0 +1,95 @@
+import { Meta } from '@storybook/blocks';
+import '../../../../../../components/src/components/tab-group/tab-group';
+import '../../../../../../components/src/components/tab/tab';
+import '../../../../../../components/src/components/tab-panel/tab-panel';
+
+<Meta title="Packages/Components/Migration/from v4" />
+
+# Migration from v4
+
+## Component updates
+
+### `<sd-icon>`
+
+Internal icons library have been renamed from `system` to `_internal`.
+
+**Before:**
+
+```html
+<sd-icon library="system" name="chevron-down"></sd-icon>
+```
+
+**After:**
+
+```html
+<sd-icon library="_internal" name="chevron-down"></sd-icon>
+```
+
+### `<sd-scrollable>`
+
+The `start` and `end` events were being emitted incorrectly.
+
+**Before:**
+
+- `start` event was emitted when there was available scrolling space in the `start` direction
+- `end` event was emitted when there was available scrolling space in the `end` direction
+
+**After:**
+
+- `start` event is emitted when the `start` is reached.
+- `end` event is emitted when the `end` is reached.
+
+### `<sd-header>`
+
+The `sd-header` component now automatically creates a space below itself when the fixed attribute is present. This prevents content from being overlapped without requiring manual margin or padding.
+
+**Before:**
+
+An offset had to be implemented manually using the `--sd-header-calculated-height` variable.
+
+```html
+<sd-header fixed>
+  <!-- Your content -->
+</sd-header>
+<main style="margin-top: var(--sd-header-calculated-height);">
+  <!-- Your content -->
+</main>
+```
+
+**After:**
+
+Offset can be removed, as the header creates the space automatically.
+
+```html
+<sd-header fixed>
+  <!-- Your content -->
+</sd-header>
+<main>
+  <!-- Your content -->
+</main>
+```
+
+### `<sd-badge>`
+
+Removed `role="status"` internal attribute to provide more accessibility flexibility.
+In cases where it is necessary, it needs to be implemented manually.
+
+**Before:**
+
+```html
+<!-- This would automatically announced when updated. -->
+<sd-badge variant="green" size="md">
+  <span>5</span>
+  <span class="sr-only">Notifications</span>
+</sd-badge>
+```
+
+**After**
+
+```html
+<!-- `role="status"` needs to be implemented where needed. -->
+<sd-badge variant="green" size="md" role="status">
+  <span>5</span>
+  <span class="sr-only">Notifications</span>
+</sd-badge>
+```

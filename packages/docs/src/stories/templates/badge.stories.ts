@@ -119,7 +119,7 @@ export const NavigationItemWithBadge = {
 export const InteractiveIncrement = {
   name: 'Interactive Increment',
   render: () =>
-    html` <section class="flex flex-col items-start">
+    html` <section class="flex gap-12 items-center">
         <sd-button variant="tertiary" size="md">
           <sd-icon name="system/bell"></sd-icon>
           <sd-badge class="mt-2.5 mr-2.5" variant="green" size="md" role="status">
