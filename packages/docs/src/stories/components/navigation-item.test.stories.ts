@@ -59,15 +59,18 @@ export const Default = {
 };
 
 /**
- * The `sd-navigation-item` using bold text.
+ * The `sd-navigation-item` in the current state and different variants
  */
 
-export const Bold = {
-  name: 'Bold',
+export const Current = {
+  name: 'Variant x Current',
   render: (args: any) =>
     generateTemplate({
       args,
-      axis: { x: { type: 'slot', name: 'default', values: ['Navigation', '<b>Navigation</b>'] } }
+      axis: {
+        x: { type: 'attribute', name: 'vertical' },
+        y: { type: 'attribute', name: 'current' }
+      }
     })
 };
 
@@ -339,7 +342,7 @@ export const Parts = {
           ].map(part => {
             return {
               title: part,
-              value: `<style>#part-${part} sd-navigation-item::part(${part}){outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
+              value: `<style>#part-${part} sd-navigation-item::part(${part}){transform: none; opacity: 1; outline: solid 2px red}</style><div id="part-${part}">%TEMPLATE%</div>`
             };
           })
         }
@@ -429,7 +432,7 @@ export const Mouseless = {
 
 export const Combination = generateScreenshotStory([
   Default,
-  Bold,
+  Current,
   Variants,
   Disabled,
   Parts,
