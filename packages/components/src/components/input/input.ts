@@ -509,7 +509,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.readonly && (typeof this.value === 'number' || this.value.length > 0);
     const hasTooltip = !!slots['tooltip'];
-
     // Hierarchy of input states:
     const inputState = this.disabled
       ? 'disabled'
@@ -551,7 +550,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       md: 'text-lg',
       lg: 'text-xl'
     }[this.size];
-
     // Render
     return html`
       <div part="form-control" class=${cx((this.disabled || this.visuallyDisabled) && 'cursor-not-allowed')}>
@@ -581,12 +579,15 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         >
           <div
             part="border"
-            class=${cx('absolute w-full h-full pointer-events-none border rounded-default', borderColor)}
+            class=${cx(
+              'absolute w-full h-full pointer-events-none border rounded-default transition-[border] ease-in-out duration-medium hover:duration-fast',
+              borderColor
+            )}
           ></div>
           <div
             part="base"
             class=${cx(
-              'px-4 flex flex-row items-center rounded-default transition-all',
+              'px-4 flex flex-row items-center rounded-default transition-colors ease-in-out duration-medium hover:duration-fast',
               // Vertical Padding
               this.size === 'lg' ? 'py-2' : 'py-1',
               // States
