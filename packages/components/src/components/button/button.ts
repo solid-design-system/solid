@@ -33,6 +33,8 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @csspart icon-left - The container that wraps the left icon area.
  * @csspart label - The button's label.
  * @csspart icon-right - The container that wraps the right icon area.
+ * @csspart motion-wrapper - The container that wraps the motion animation.
+ * 
  */
 @customElement('sd-button')
 export default class SdButton extends SolidElement implements SolidFormControl {
@@ -335,7 +337,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         @invalid=${this.isButton() ? this.handleInvalid : null}
         @click=${this.handleClick}
       >
-        <div class=${cx(
+        <div part="motion-wrapper" class=${cx(
           'absolute inset-0 rounded-default -z-10 overflow-hidden pointer-events-none ',
           (this.disabled || this.visuallyDisabled) && 'hidden'
         )}>
