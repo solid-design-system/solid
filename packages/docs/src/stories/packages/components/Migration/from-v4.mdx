@@ -71,13 +71,14 @@ Offset can be removed, as the header creates the space automatically.
 
 ### `<sd-badge>`
 
-Removed `role="status"` internal attribute to provide more accessibility flexibility.
-In cases where it is necessary, it needs to be implemented manually.
+The `role="status"` internal attribute has been removed to give developers more control over accessibility semantics.
+This change ensures that badges are no longer automatically treated as live regions, which may not always be the intended behaviour.
 
 **Before:**
 
+Badge updates were always announced:
+
 ```html
-<!-- This would automatically announced when updated. -->
 <sd-badge variant="green" size="md">
   <span>5</span>
   <span class="sr-only">Notifications</span>
@@ -86,8 +87,9 @@ In cases where it is necessary, it needs to be implemented manually.
 
 **After**
 
+Now, if you want the badge to be announced, add `role="status"` manually:
+
 ```html
-<!-- `role="status"` needs to be implemented where needed. -->
 <sd-badge variant="green" size="md" role="status">
   <span>5</span>
   <span class="sr-only">Notifications</span>
