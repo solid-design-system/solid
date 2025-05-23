@@ -1,5 +1,5 @@
 import '../../../../components/src/solid-components';
-import { icons } from '../../../../components/src/components/icon/library.system';
+import { icons } from '../../../../components/src/components/icon/library.internal';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 

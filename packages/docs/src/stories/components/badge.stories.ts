@@ -7,6 +7,15 @@ const { argTypes, parameters } = storybookDefaults('sd-badge');
 const { overrideArgs } = storybookHelpers('sd-badge');
 const { generateTemplate } = storybookTemplate('sd-badge');
 
+/**
+ *
+ * **Known browser issues:**
+ * - When the `sd-badge` with `role="status"` is placed inside a `sd-button`, Safari is not announcing any update
+ * and, in cases where there is multiple elements inside the `sd-badge`, Firefox is only announcing the content
+ * of the element that has updates.
+ *
+ */
+
 export default {
   title: 'Components/sd-badge',
   component: 'sd-badge',

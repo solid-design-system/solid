@@ -336,7 +336,7 @@ export const Icons = {
         <sd-icon slot="left" name="system/image" aria-hidden="true" color="currentColor"></sd-icon>
         ${createColorOptionsHtml()}
         <button slot="right" aria-label="Search" class="sd-interactive flex">
-          <sd-icon library="system" name="magnifying-glass" aria-hidden="true" color="currentColor"></sd-icon>
+          <sd-icon name="system/magnifying-glass" aria-hidden="true" color="currentColor"></sd-icon>
         </button>
       </sd-combobox>
     </div>

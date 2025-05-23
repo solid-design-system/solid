@@ -98,7 +98,7 @@ export const Fixed = {
         ],
         args
       })}
-      <div class="bg-neutral-100 p-8" style="margin-top: var(--sd-header-calculated-height)">
+      <div class="bg-neutral-100 p-8 h-[150vh]">
         This element automatically sets its position depending on the height of the header.
       </div>`;
   }
@@ -108,32 +108,21 @@ export const Fixed = {
 export const SampleA = {
   name: 'Sample A',
   render: (args: any) => {
-    return html`<div style="height: 100px; --sd-header-inner-max-width: 1456px;">
+    return html`<div style="--sd-header-inner-max-width: 1456px;">
       <style>
         :root {
           --sd-header-padding: 8px 16px;
-        }
-
-        sd-header {
-          height: 64px;
-          max-height: 140px;
         }
 
         @media (min-width: 376px) {
           :root {
             --sd-header-padding: 24px;
           }
-          sd-header {
-            height: 96px;
-          }
         }
 
         @media (min-width: 1025px) {
           :root {
             --sd-header-padding: 24px 32px 0 32px;
-          }
-          sd-header {
-            height: 140px;
           }
         }
 
@@ -235,26 +224,15 @@ export const SampleB = {
           --sd-header-padding: 8px 16px;
         }
 
-        sd-header {
-          height: 64px;
-          max-height: 140px;
-        }
-
         @media (min-width: 376px) {
           :root {
             --sd-header-padding: 24px;
-          }
-          sd-header {
-            height: 96px;
           }
         }
 
         @media (min-width: 1025px) {
           :root {
             --sd-header-padding: 24px 32px 0 32px;
-          }
-          sd-header {
-            height: 140px;
           }
         }
 

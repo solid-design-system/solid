@@ -1060,7 +1060,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                         <slot name="clear-icon">
                           <sd-icon
                             class=${cx('text-neutral-700 z-10', iconSize)}
-                            library="system"
+                            library="_internal"
                             name="closing-round"
                           ></sd-icon>
                         </slot>
@@ -1072,7 +1072,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                       <sd-icon
                         part="invalid-icon"
                         class=${cx(iconMarginLeft, iconSize, 'text-error')}
-                        library="system"
+                        library="_internal"
                         name="risk"
                       ></sd-icon>
                     `
@@ -1082,7 +1082,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                       <sd-icon
                         part="valid-icon"
                         class=${cx('flex-shrink-0 text-success', iconMarginLeft, iconSize)}
-                        library="system"
+                        library="_internal"
                         name="status-check"
                       ></sd-icon>
                     `
@@ -1097,7 +1097,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                     iconSize
                   )}
                 >
-                  <sd-icon name="chevron-down" part="chevron" library="system" color="currentColor"></sd-icon>
+                  <sd-icon name="chevron-down" part="chevron" library="_internal" color="currentColor"></sd-icon>
                 </slot>
               </div>
 

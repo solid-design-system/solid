@@ -107,7 +107,7 @@ describe('<sd-scrollable>', () => {
     expect(buttonDownHandler).to.have.been.calledOnce;
   });
 
-  it('should emit end event when scrolled to the end', async () => {
+  it('should emit end and start events when scrolled to the edges', async () => {
     const el = await fixture<SdScrollable>(html`
       <sd-scrollable style="height: 183px; width: 277px;">
         <div style="width: 400px; height: 300px;">
@@ -122,11 +122,23 @@ describe('<sd-scrollable>', () => {
 
     const scrollContainer = el.shadowRoot!.querySelector<HTMLElement>('.scroll-container')!;
     const endHandler = sinon.spy();
+    const startHandler = sinon.spy();
 
     el.addEventListener('end', endHandler);
-    scrollContainer.dispatchEvent(new CustomEvent('scroll', { detail: { scrollLeft: scrollContainer.scrollWidth } }));
+    el.addEventListener('start', startHandler);
+
+    scrollContainer.scrollLeft = scrollContainer.scrollWidth;
+    scrollContainer.dispatchEvent(new CustomEvent('scroll'));
+
+    await el.updateComplete;
+
+    scrollContainer.scrollLeft = 0;
+    scrollContainer.dispatchEvent(new CustomEvent('scroll'));
+
+    await el.updateComplete;
 
     expect(endHandler).to.have.been.calledOnce;
+    expect(startHandler).to.have.been.calledOnce;
   });
 
   it('should apply inset padding when inset attribute is set', async () => {

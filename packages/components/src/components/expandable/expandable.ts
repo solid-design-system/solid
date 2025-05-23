@@ -117,13 +117,13 @@ export default class SdExpandable extends SolidElement {
             ${this.open
               ? html`
                   <slot name="toggle-open">
-                    <sd-icon class="mr-2 text-xl" library="system" name="chevron-up"></sd-icon>
+                    <sd-icon class="mr-2 text-xl" library="_internal" name="chevron-up"></sd-icon>
                     ${this.localize.term('showLess')}
                   </slot>
                 `
               : html`
                   <slot name="toggle-closed">
-                    <sd-icon class="mr-2 text-xl" library="system" name="chevron-down"></sd-icon>
+                    <sd-icon class="mr-2 text-xl" library="_internal" name="chevron-down"></sd-icon>
                     ${this.localize.term('showMore')}
                   </slot>
                 `}

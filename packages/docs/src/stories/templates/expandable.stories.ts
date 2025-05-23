@@ -25,10 +25,10 @@ export const TextStyles = {
   render: () =>
     html`<div class="flex flex-col gap-4">
       <sd-expandable class="sd-leadtext">
-        <sd-icon slot="toggle-open" class="mr-2 text-xl" library="system" name="chevron-up"></sd-icon>
+        <sd-icon slot="toggle-open" class="mr-2 text-xl" library="_internal" name="chevron-up"></sd-icon>
         <span slot="toggle-open"> Collapse global economic insights </span>
 
-        <sd-icon slot="toggle-closed" class="mr-2 text-xl" library="system" name="chevron-down"></sd-icon>
+        <sd-icon slot="toggle-closed" class="mr-2 text-xl" library="_internal" name="chevron-down"></sd-icon>
         <span slot="toggle-closed"> Expand for global economic insights </span>
         <p>
           Global economic growth continues to be an important support factor for the capital markets. The US economy in
@@ -45,10 +45,10 @@ export const TextStyles = {
         <sd-expandable
           style="--gradient-color-start: rgba(246, 246, 246, 0);--gradient-color-end: rgba(246, 246, 246, 1)"
         >
-          <sd-icon slot="toggle-open" class="mr-2 text-xl" library="system" name="chevron-up"></sd-icon>
+          <sd-icon slot="toggle-open" class="mr-2 text-xl" library="_internal" name="chevron-up"></sd-icon>
           <span slot="toggle-open"> Collapse global economic insights </span>
 
-          <sd-icon slot="toggle-closed" class="mr-2 text-xl" library="system" name="chevron-down"></sd-icon>
+          <sd-icon slot="toggle-closed" class="mr-2 text-xl" library="_internal" name="chevron-down"></sd-icon>
           <span slot="toggle-closed"> Expand for global economic insights </span>
 
           <div class="sd-prose sd-prose--full-width">

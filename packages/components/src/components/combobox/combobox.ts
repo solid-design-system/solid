@@ -1341,7 +1341,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                         <sd-icon
                           class=${cx('text-neutral-700', iconSize)}
                           name="closing-round"
-                          library="system"
+                          library="_internal"
                         ></sd-icon>
                       </slot>
                     </button>
@@ -1352,7 +1352,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                     <sd-icon
                       part="invalid-icon"
                       class=${cx(iconMarginLeft, iconSize, 'text-error')}
-                      library="system"
+                      library="_internal"
                       name="risk"
                     ></sd-icon>
                   `
@@ -1362,7 +1362,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                     <sd-icon
                       part="valid-icon"
                       class=${cx('flex-shrink-0 text-success', iconMarginLeft, iconSize)}
-                      library="system"
+                      library="_internal"
                       name="status-check"
                     ></sd-icon>
                   `
@@ -1384,7 +1384,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                       )}
                       name="chevron-down"
                       part="chevron"
-                      library="system"
+                      library="_internal"
                       color="currentColor"
                       label=${this.localize.term('open')}
                     ></sd-icon>`
@@ -1395,7 +1395,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                     <button class=${cx('flex items-center sd-interactive', iconMarginLeft)} type="button">
                       <sd-icon
                         class=${cx(iconColor, iconSize)}
-                        library="system"
+                        library="_internal"
                         name="magnifying-glass"
                         label=${this.localize.term('search')}
                       ></sd-icon>
