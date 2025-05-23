@@ -25,7 +25,10 @@ export default {
 
 /**
  * ### Tablet Navigation
+ *
+ * When consuming sd-header please ensure that there are no margins applied on the left, right and bottom of the dropdown. The top margin of the dropdown should be kept otherwise the first navigation item is cutted.
  */
+
 export const Default = {
   name: 'Tablet Navigation',
   render: () => html`
