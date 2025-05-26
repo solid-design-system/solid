@@ -237,13 +237,13 @@ export default class SdExpandable extends SolidElement {
 }
 
 setDefaultAnimation('expandable.show', {
-  keyframes: [{ height: '90px' }, { height: 'auto' }],
-  options: { duration: 300, easing: 'ease' }
+  keyframes: [{ height: 'var(--component-expandable-max-block-size, 90px)' }, { height: 'auto' }],
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease' }
 });
 
 setDefaultAnimation('expandable.hide', {
-  keyframes: [{ height: 'auto' }, { height: '90px' }],
-  options: { duration: 300, easing: 'ease' }
+  keyframes: [{ height: 'auto' }, { height: 'var(--component-expandable-max-block-size, 90px)' }],
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease' }
 });
 
 declare global {

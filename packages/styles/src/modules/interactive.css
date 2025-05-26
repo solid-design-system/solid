@@ -15,7 +15,7 @@
     outline: revert;
   }
 
-  @apply cursor-pointer text-primary hover:text-primary-500 active:text-primary-800 transition-colors underline;
+  @apply cursor-pointer text-primary hover:text-primary-500 active:text-primary-800 transition-colors duration-fast ease-in-out underline;
 
   &:is(.sd-interactive) {
     @apply no-underline;
