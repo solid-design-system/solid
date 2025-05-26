@@ -1,6 +1,8 @@
 import '../icon/icon';
+import { animateTo, shimKeyframesHeightAuto, stopAnimations } from 'src/internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { getAnimation, setDefaultAnimation } from 'src/utilities/animation-registry';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize.js';
 import { property, query } from 'lit/decorators.js';
@@ -41,6 +43,7 @@ import SolidElement from '../../internal/solid-element';
 export default class SdExpandable extends SolidElement {
   @query('.content-preview') contentPreview: HTMLElement;
   @query('details') details: HTMLDetailsElement;
+  @query('[part="content"]') body: HTMLElement;
 
   /**
    * Used to check whether the component is expanded or not.
@@ -64,20 +67,35 @@ export default class SdExpandable extends SolidElement {
   }
 
   @watch('open', { waitUntilFirstUpdate: true })
-  onOpenChange() {
+  async onOpenChange() {
+    this.body.classList.add('transitioning');
+
     if (this.open) {
       this.emit('sd-show');
+
+      await stopAnimations(this.body);
+      const { keyframes, options } = getAnimation(this, 'expandable.show', { dir: this.localize.dir() });
+      await animateTo(this.body, shimKeyframesHeightAuto(keyframes, this.body.scrollHeight), options);
+      this.body.style.height = 'auto';
+
       this.updateComplete.then(() => {
         this.emit('sd-after-show');
       });
     } else {
       this.emit('sd-hide');
+
+      await stopAnimations(this.body);
+      const { keyframes, options } = getAnimation(this, 'expandable.hide', { dir: this.localize.dir() });
+      await animateTo(this.body, shimKeyframesHeightAuto(keyframes, this.body.scrollHeight), options);
+      this.body.style.height = 'auto';
+
       this.updateComplete.then(() => {
         this.emit('sd-after-hide');
       });
     }
 
     this.details.setAttribute('open', this.open.toString());
+    this.body.classList.remove('transitioning');
   }
 
   /** Opens the expandable */
@@ -195,7 +213,8 @@ export default class SdExpandable extends SolidElement {
         max-block-size: var(--component-expandable-max-block-size);
       }
 
-      :host([open]) .content {
+      :host([open]) .content,
+      :host:has(.transitioning) .content {
         max-block-size: var(--max-height-pixel, 1000vh);
       }
 
@@ -216,6 +235,16 @@ export default class SdExpandable extends SolidElement {
     `
   ];
 }
+
+setDefaultAnimation('expandable.show', {
+  keyframes: [{ height: '90px' }, { height: 'auto' }],
+  options: { duration: 300, easing: 'ease' }
+});
+
+setDefaultAnimation('expandable.hide', {
+  keyframes: [{ height: 'auto' }, { height: '90px' }],
+  options: { duration: 300, easing: 'ease' }
+});
 
 declare global {
   interface HTMLElementTagNameMap {
