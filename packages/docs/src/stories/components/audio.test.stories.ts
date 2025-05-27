@@ -146,9 +146,9 @@ export const Slots = {
         if (slot === 'default') {
           value = `<div class="slot slot--border slot--background h-full w-full absolute top-0 left-0"></div>`;
         } else if (slot === 'play-icon') {
-          value = `<sd-icon class="slot slot--border slot--background text-white text-3xl" slot="play-icon" library="system" name="start"></sd-icon>`;
+          value = `<sd-icon class="slot slot--border slot--background text-white text-3xl" slot="play-icon" library="_internal" name="start"></sd-icon>`;
         } else if (slot === 'pause-icon') {
-          value = `<sd-icon class="slot slot--border slot--background text-white text-3xl" slot="pause-icon" library="system" name="pause"></sd-icon>`;
+          value = `<sd-icon class="slot slot--border slot--background text-white text-3xl" slot="pause-icon" library="_internal" name="pause"></sd-icon>`;
         }
 
         return generateTemplate({

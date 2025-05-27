@@ -320,7 +320,7 @@ export default class SdTooltip extends SolidElement {
               aria-controls="tooltip"
             >
               <sd-icon
-                library="system"
+                library="_internal"
                 name="info-circle"
                 label="Tooltip"
                 class=${cx(this.disabled && 'sd-interactive--disabled')}
