@@ -71,10 +71,8 @@ export const AsLink = {
 export const Current = {
   render: () =>
     html`<div class="flex flex-col gap-6">
-      <sd-navigation-item class="w-[174px]" current
-        ><span class="font-bold pb-1 pl-1">Current Horizontal</span></sd-navigation-item
-      >
-      <sd-navigation-item vertical current><span class="font-bold">Current Vertical</span></sd-navigation-item>
+      <sd-navigation-item class="w-[174px]" current>Current Horizontal</sd-navigation-item>
+      <sd-navigation-item vertical current>Current Vertical</sd-navigation-item>
     </div>`
 };
 

@@ -67,22 +67,22 @@ export const Default = {
         </nav>
         <nav aria-label="Secondary" slot="footer" class="bg-neutral-100">
           <sd-navigation-item vertical class="flex align-center">
-            <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
+            <sd-icon name="system/user" class="text-xl mr-2"></sd-icon>
             My depot
           </sd-navigation-item>
           <sd-navigation-item vertical divider class="flex align-center">
-            <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
+            <sd-icon name="system/lock-locked" class="text-xl mr-2"></sd-icon>
             My application
           </sd-navigation-item>
           <sd-navigation-item vertical divider class="flex align-center">
-            <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
+            <sd-icon name="system/website" class="text-xl mr-2"></sd-icon>
             Our further appearances
           </sd-navigation-item>
         </nav>
       </div>
       <div class="level-two hidden">
         <nav id="level-two-nav" aria-label="About us">
-          <sd-navigation-item vertical id="nav-title" size="lg"><b>About Us</b></sd-navigation-item>
+          <sd-navigation-item vertical id="nav-title" size="lg">About Us</sd-navigation-item>
           <sd-navigation-item vertical divider>
             <b>Union Investment for privat customers</b>
             <p slot="description" class="sd-paragraph sd-paragraph--size-sm max-w-[238px]">

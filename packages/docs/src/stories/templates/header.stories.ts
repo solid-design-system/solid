@@ -53,24 +53,16 @@ export const SampleA = {
         <!-- bottom-right-area start !-->
         <div class="-mr-4 flex items-center">
           <sd-navigation-item href="javascript:void(0)">
-            <div class="w-6 h-6 flex items-center pl-1" vertical>
-              <sd-icon name="system/website" label="News" class="text-xl absolute -ml-1"></sd-icon>
-            </div>
+            <sd-icon name="system/website" label="News" class="text-xl -m-1"></sd-icon>
           </sd-navigation-item>
           <sd-navigation-item onclick="alert('This could open a search bar')">
-            <div class="w-6 h-6 flex items-center pl-1">
-              <sd-icon name="system/magnifying-glass" label="Search" class="text-xl absolute -ml-1"></sd-icon>
-            </div>
+            <sd-icon name="system/magnifying-glass" label="Search" class="text-xl -m-1"></sd-icon>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
-            <div class="flex items-center gap-2">
-              <sd-icon name="system/user" class="text-xl"></sd-icon><span>Portfolio</span>
-            </div>
+            <sd-icon name="system/user" class="text-xl mr-2"></sd-icon><span>Portfolio</span>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
-            <div class="flex items-center gap-2">
-              <sd-icon name="system/lock-locked" class="text-xl"></sd-icon><span>Application</span>
-            </div>
+            <sd-icon name="system/lock-locked" class="text-xl mr-2"></sd-icon><span>Application</span>
           </sd-navigation-item>
           <!-- bottom-right-area end !-->
         </div>
@@ -88,15 +80,15 @@ export const SampleA = {
       </nav>
       <nav aria-label="footer" slot="footer" class="bg-neutral-100 -m-4">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
+          <sd-icon name="system/user" class="text-xl mr-2"></sd-icon>
           Portfolio
         </sd-navigation-item>
         <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
+          <sd-icon name="system/lock-locked" class="text-xl mr-2"></sd-icon>
           Application
         </sd-navigation-item>
         <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
+          <sd-icon name="system/website" class="text-xl mr-2"></sd-icon>
           Our further appearances
         </sd-navigation-item>
       </nav>
@@ -167,29 +159,19 @@ export const SampleA02 = {
         </div>
         <div class="-mr-4 lg:flex hidden items-center">
           <sd-navigation-item href="javascript:void(0)">
-            <div class="w-6 h-6 flex items-center pl-1">
-              <sd-icon name="system/filter-empty" label="Search filter" class="text-xl absolute -ml-1"></sd-icon>
-            </div>
+            <sd-icon name="system/filter-empty" label="Search filter" class="text-xl -mx-1"></sd-icon>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
-            <div class="w-6 h-6 flex items-center pl-1">
-              <sd-icon name="system/globe" label="Language" class="text-xl absolute -ml-1"></sd-icon>
-            </div>
+            <sd-icon name="system/globe" label="Language" class="text-xl -mx-1"></sd-icon>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
-            <div class="w-6 h-6 flex items-center pl-1">
-              <sd-icon name="system/website" label="News" class="text-xl absolute -ml-1"></sd-icon>
-            </div>
+            <sd-icon name="system/website" label="News" class="text-xl -mx-1"></sd-icon>
           </sd-navigation-item>
           <sd-navigation-item onclick="alert('This could open a search bar')">
-            <div class="w-6 h-6 flex items-center pl-1">
-              <sd-icon name="system/magnifying-glass" label="Search" class="text-xl absolute -ml-1"></sd-icon>
-            </div>
+            <sd-icon name="system/magnifying-glass" label="Search" class="text-xl -mx-1"></sd-icon>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
-            <div class="flex items-center gap-2">
-              <sd-icon name="system/user" class="text-xl"></sd-icon><span>Login</span>
-            </div>
+            <sd-icon name="system/user" class="text-xl mr-2"></sd-icon><span>Login</span>
           </sd-navigation-item>
         </div>
         <!-- top-right-area end !-->
@@ -225,15 +207,15 @@ export const SampleA02 = {
       </nav>
       <nav aria-label="footer" slot="footer" class="bg-neutral-100 -m-4">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
+          <sd-icon name="system/user" class="text-xl mx-1"></sd-icon>
           Log in
         </sd-navigation-item>
         <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/globe" class="h-6 w-6 mr-2"></sd-icon>
+          <sd-icon name="system/globe" class="text-xl mx-1"></sd-icon>
           Language
         </sd-navigation-item>
         <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
+          <sd-icon name="system/website" class="text-xl mx-1"></sd-icon>
           Our further appearances
         </sd-navigation-item>
       </nav>
@@ -328,14 +310,10 @@ export const SampleB = {
         <!-- bottom-right-area start !-->
         <div class="flex items-center">
           <sd-navigation-item href="javascript:void(0)">
-            <div class="w-6 h-6 flex items-center pl-1">
-              <sd-icon name="system/website" label="News" class="text-xl absolute -ml-1"></sd-icon>
-            </div>
+            <sd-icon name="system/website" label="News" class="text-xl -mx-1"></sd-icon>
           </sd-navigation-item>
           <sd-navigation-item onclick="alert('This could open a search bar')">
-            <div class="w-6 h-6 flex items-center pl-1">
-              <sd-icon name="system/magnifying-glass" label="Search" class="text-xl absolute -ml-1"></sd-icon>
-            </div>
+            <sd-icon name="system/magnifying-glass" label="Search" class="text-xl -mx-1"></sd-icon>
           </sd-navigation-item>
           <!-- bottom-right-area end !-->
         </div>
