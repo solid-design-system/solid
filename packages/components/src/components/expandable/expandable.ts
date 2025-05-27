@@ -22,6 +22,8 @@ import SolidElement from '../../internal/solid-element';
  * @slot - Content of the expandable
  * @slot toggle-open - Content of the toggle button when the expandable is open
  * @slot toggle-closed - Content of the toggle button when the expandable is closed
+ * @slot expand-icon - The icon of the toggle button when the expandable is closed
+ * @slot collapse-icon - The icon of the toggle button when the expandable is open
  *
  * @event sd-show - Emitted when the expandable opens.
  * @event sd-after-show - Emitted after the expandable opens and all animations are complete.
@@ -31,6 +33,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart base - The component's base wrapper.
  * @csspart content - The content of the expandable.
  * @csspart toggle - The toggle button of the expandable.
+ * @csspart toggle-icon - The wrapper of the toggle icons.
  * @csspart summary - The summary of the expandable.
  * @csspart details - The details element of the expandable.
  *
@@ -132,19 +135,22 @@ export default class SdExpandable extends SolidElement {
           aria-expanded=${this.open}
         >
           <div class=${cx('h-full justify-center w-full text-base flex items-center toggle')}>
-            ${this.open
-              ? html`
-                  <slot name="toggle-open">
-                    <sd-icon class="mr-2 text-xl" library="system" name="chevron-up"></sd-icon>
-                    ${this.localize.term('showLess')}
-                  </slot>
-                `
-              : html`
-                  <slot name="toggle-closed">
-                    <sd-icon class="mr-2 text-xl" library="system" name="chevron-down"></sd-icon>
-                    ${this.localize.term('showMore')}
-                  </slot>
-                `}
+            <span
+              part="toggle-icon"
+              class=${cx(
+                'flex items-center mr-2 transition-transform duration-medium ease-in-out',
+                this.open && 'rotate-180'
+              )}
+            >
+              <slot name="expand-icon" class=${cx(this.open && 'hidden')}>
+                <sd-icon library="system" name="chevron-down" class="text-xl"></sd-icon>
+              </slot>
+              <slot name="collapse-icon" class=${cx(!this.open && 'hidden')}>
+                <sd-icon library="system" name="chevron-down" class="text-xl"></sd-icon>
+              </slot>
+            </span>
+            <slot name="toggle-open" class=${cx(this.open && 'hidden')}> ${this.localize.term('showLess')} </slot>
+            <slot name="toggle-closed" class=${cx(!this.open && 'hidden')}> ${this.localize.term('showMore')} </slot>
           </div>
         </button>
         <details part="details" ?inert=${ifDefined(!this.open)}>
@@ -238,12 +244,12 @@ export default class SdExpandable extends SolidElement {
 
 setDefaultAnimation('expandable.show', {
   keyframes: [{ height: 'var(--component-expandable-max-block-size, 90px)' }, { height: 'auto' }],
-  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease' }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('expandable.hide', {
   keyframes: [{ height: 'auto' }, { height: 'var(--component-expandable-max-block-size, 90px)' }],
-  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease' }
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
 });
 
 declare global {
