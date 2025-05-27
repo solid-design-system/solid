@@ -449,18 +449,18 @@ setDefaultAnimation('drawer.hideEnd', {
 // Deny close
 setDefaultAnimation('drawer.denyClose', {
   keyframes: [{ scale: 1 }, { scale: 1.01 }, { scale: 1 }],
-  options: { duration: 'var(--sd-duration-medium, 300)' }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
 });
 
 // Overlay
 setDefaultAnimation('drawer.overlay.show', {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  options: { duration: 'var(--sd-duration-medium, 300)' }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('drawer.overlay.hide', {
   keyframes: [{ opacity: 1 }, { opacity: 0 }],
-  options: { duration: 'var(--sd-duration-medium, 300)' }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
 });
 
 declare global {
