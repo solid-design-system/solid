@@ -1,5 +1,67 @@
 # @solid-design-system/components
 
+## 4.8.0
+
+### Minor Changes
+
+- Added motion design to `sd-input`. _[`#2227`](https://github.com/solid-design-system/solid/pull/2227) [`b98f363`](https://github.com/solid-design-system/solid/commit/b98f363041f200dc9f9d280932179052ef0b1d49) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+* Uncompressed: 428 KB (+1 KB / +0%)
+* Gzipped: 100 KB (unchanged)
+
+## 4.7.2
+
+### Patch Changes
+
+- Fixed `sd-button` z-index. _[`#2234`](https://github.com/solid-design-system/solid/pull/2234) [`4f27be7`](https://github.com/solid-design-system/solid/commit/4f27be79ee38a98a07e5f141ac926ff01a392713) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.7.1
+
+### Patch Changes
+
+- Fixed `sd-button` motion design on sd-audio. _[`#2230`](https://github.com/solid-design-system/solid/pull/2230) [`283d350`](https://github.com/solid-design-system/solid/commit/283d350e49bdd673be0d0a3b4e650a07386468c9) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Implemented new part `motion-wrapper` to `sd-button`.
+
+## 4.7.0
+
+### Minor Changes
+
+- Implement internal function to retrieve token values from CSS. _[`#1901`](https://github.com/solid-design-system/solid/pull/1901) [`05854b6`](https://github.com/solid-design-system/solid/commit/05854b6ca0e0594a26a5d3f70b15baa1cd3b4033) [@MartaPintoTeixeira](https://github.com/MartaPintoTeixeira)_
+
+  Implemented `sd-dialog` motion design.
+
+  Implemented `sd-button` motion design.
+
+  Implemented `sd-navigation-item` motion design.
+
+  Implemented `sd-option` motion design.
+
+  Implemented `sd-combobox` motion design.
+
+  Implemented `sd-dropdown` motion design.
+
+  Implemented `sd-select` motion design.
+
+  Implemented `sd-carousel` motion design on the dots and arrows.
+
+  Implemented `sd-tag` motion design:
+
+  - Implement new `hide` method to visually hide the `sd-tag`.
+  - Implement new `sd-hide` and `sd-after-hide` events, which are triggered by the `hide` method.
+
+### 📈 Stats
+
+- Uncompressed: 427 KB (+6 KB / +1%)
+- Gzipped: 100 KB (+1 KB / +1%)
+
+## 4.6.18
+
+### Patch Changes
+
+- Updated the color of the clearable icon in sd-select, sd-input, sd-combobox _[`#2216`](https://github.com/solid-design-system/solid/pull/2216) [`5f507c3`](https://github.com/solid-design-system/solid/commit/5f507c367d25fc0f2bc830e3d0d964dd1740b1fd) [@balco0110](https://github.com/balco0110)_
+
 ## 4.6.17
 
 ### Patch Changes
@@ -7,8 +69,9 @@
 - Fixed text getting cut-off by valid/invalid icon on `sd-textarea`. _[`#2159`](https://github.com/solid-design-system/solid/pull/2159) [`fbf93a5`](https://github.com/solid-design-system/solid/commit/fbf93a5c0a535ee598c23aa8670923ccddcae623) [@paulovareiro29](https://github.com/paulovareiro29)_
 
 ### 📈 Stats
-* Uncompressed: 421 KB (-1 KB / 0%)
-* Gzipped: 99 KB (unchanged)
+
+- Uncompressed: 421 KB (-1 KB / 0%)
+- Gzipped: 99 KB (unchanged)
 
 ## 4.6.16
 

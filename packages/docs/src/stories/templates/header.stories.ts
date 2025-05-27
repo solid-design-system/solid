@@ -26,7 +26,7 @@ export const SampleA = {
         height: 900px;
       }
     </style>
-    <sd-header fixed>
+    <sd-header id="sample-a-header" fixed>
       <div class="flex justify-between items-center">
         <!-- top-left-area start !-->
         <a class="flex flex-shrink" href="#">
@@ -102,6 +102,29 @@ export const SampleA = {
       </nav>
     </sd-drawer>
     <script type="module">
+      await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
+        const header = document.getElementById('sample-a-header');
+        const drawer = document.getElementById('sample-a-drawer');
+        const navigationItems = [
+          ...header.querySelectorAll('sd-navigation-item'),
+          ...drawer.querySelectorAll('sd-navigation-item')
+        ];
+
+        const handleNavigationItemClick = e => {
+          navigationItems.forEach(item => item.removeAttribute('current'));
+
+          const target = e.target.closest('sd-navigation-item');
+          target.setAttribute('current', '');
+        };
+
+        navigationItems.forEach(item => {
+          if (!item.hasAttribute('href')) return;
+
+          item.addEventListener('click', handleNavigationItemClick);
+        });
+      });
+    </script>
+    <script type="module">
       await Promise.all([
         customElements.whenDefined('sd-navigation-item'),
         customElements.whenDefined('sd-drawer')
@@ -129,7 +152,7 @@ export const SampleA = {
 export const SampleA02 = {
   name: 'Header Sample A-02',
   render: () => html`
-    <sd-header fixed>
+    <sd-header id="sample-a02-header" fixed>
       <div class="flex justify-between items-center">
         <!-- top-left-area start !-->
         <a class="flex flex-shrink" href="#">
@@ -216,6 +239,29 @@ export const SampleA02 = {
       </nav>
     </sd-drawer>
     <script type="module">
+      await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
+        const header = document.getElementById('sample-a02-header');
+        const drawer = document.getElementById('sample-a02-drawer');
+        const navigationItems = [
+          ...header.querySelectorAll('sd-navigation-item'),
+          ...drawer.querySelectorAll('sd-navigation-item')
+        ];
+
+        const handleNavigationItemClick = e => {
+          navigationItems.forEach(item => item.removeAttribute('current'));
+
+          const target = e.target.closest('sd-navigation-item');
+          target.setAttribute('current', '');
+        };
+
+        navigationItems.forEach(item => {
+          if (!item.hasAttribute('href')) return;
+
+          item.addEventListener('click', handleNavigationItemClick);
+        });
+      });
+    </script>
+    <script type="module">
       await Promise.all([
         customElements.whenDefined('sd-navigation-item'),
         customElements.whenDefined('sd-drawer')
@@ -243,7 +289,7 @@ export const SampleA02 = {
 export const SampleB = {
   name: 'Header Sample B',
   render: () => html`
-    <sd-header fixed>
+    <sd-header id="sample-b-header" fixed>
       <div class="flex justify-between items-center">
         <!-- top-left-area start !-->
         <a class="flex flex-shrink" href="#">
@@ -316,6 +362,29 @@ export const SampleB = {
         </sd-navigation-item>
       </nav>
     </sd-drawer>
+    <script type="module">
+      await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
+        const header = document.getElementById('sample-b-header');
+        const drawer = document.getElementById('sample-b-drawer');
+        const navigationItems = [
+          ...header.querySelectorAll('sd-navigation-item'),
+          ...drawer.querySelectorAll('sd-navigation-item')
+        ];
+
+        const handleNavigationItemClick = e => {
+          navigationItems.forEach(item => item.removeAttribute('current'));
+
+          const target = e.target.closest('sd-navigation-item');
+          target.setAttribute('current', '');
+        };
+
+        navigationItems.forEach(item => {
+          if (!item.hasAttribute('href')) return;
+
+          item.addEventListener('click', handleNavigationItemClick);
+        });
+      });
+    </script>
     <script type="module">
       await Promise.all([
         customElements.whenDefined('sd-navigation-item'),

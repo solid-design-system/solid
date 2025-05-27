@@ -4,6 +4,8 @@
  * to reduce the possibility of collisions.
  */
 
+@solid variables;
+
 .sd-scroll-lock {
   padding-right: var(--sd-scroll-lock-size) !important;
   overflow: hidden !important;
