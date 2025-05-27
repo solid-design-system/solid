@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.8.1
+
+### Patch Changes
+
+- Fix `sd-button` slot `icon-left` alignment on full width buttons. _[`#2244`](https://github.com/solid-design-system/solid/pull/2244) [`643ae18`](https://github.com/solid-design-system/solid/commit/643ae187c6772e3721140ad4cebb8d8e96855540) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 4.8.0
 
 ### Minor Changes
@@ -7,8 +13,9 @@
 - Added motion design to `sd-input`. _[`#2227`](https://github.com/solid-design-system/solid/pull/2227) [`b98f363`](https://github.com/solid-design-system/solid/commit/b98f363041f200dc9f9d280932179052ef0b1d49) [@balco0110](https://github.com/balco0110)_
 
 ### 📈 Stats
-* Uncompressed: 428 KB (+1 KB / +0%)
-* Gzipped: 100 KB (unchanged)
+
+- Uncompressed: 428 KB (+1 KB / +0%)
+- Gzipped: 100 KB (unchanged)
 
 ## 4.7.2
 

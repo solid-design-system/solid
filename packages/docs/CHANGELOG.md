@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.16.5
+
+### Patch Changes
+
+- Implement new screenshot test `Full Width` on `sd-button`. _[`#2244`](https://github.com/solid-design-system/solid/pull/2244) [`643ae18`](https://github.com/solid-design-system/solid/commit/643ae187c6772e3721140ad4cebb8d8e96855540) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.16.4
 
 ### Patch Changes
