@@ -1,8 +1,8 @@
 import '../icon/icon';
-import { animateTo, shimKeyframesHeightAuto, stopAnimations } from 'src/internal/animate';
+import { animateTo, shimKeyframesHeightAuto, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
-import { getAnimation, setDefaultAnimation } from 'src/utilities/animation-registry';
+import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize.js';
 import { property, query } from 'lit/decorators.js';
