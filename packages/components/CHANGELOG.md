@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.8.2
+
+### Patch Changes
+
+- Update `sd-select` and `sd-combobox` animations. _[`#2224`](https://github.com/solid-design-system/solid/pull/2224) [`039ab9a`](https://github.com/solid-design-system/solid/commit/039ab9a6a9e3dc3cfdf16d67353f92fc18c25db2) [@smfonseca](https://github.com/smfonseca)_
+
 ## 4.8.1
 
 ### Patch Changes
