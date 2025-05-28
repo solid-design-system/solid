@@ -406,7 +406,7 @@ setDefaultAnimation('drawer.showStart', {
     { opacity: 0, translate: '100%' },
     { opacity: 1, translate: '0' }
   ],
-  options: { duration: 250, easing: 'ease' }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('drawer.hideStart', {
@@ -418,7 +418,7 @@ setDefaultAnimation('drawer.hideStart', {
     { opacity: 1, translate: '0' },
     { opacity: 0, translate: '100%' }
   ],
-  options: { duration: 250, easing: 'ease' }
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
 });
 
 // End
@@ -431,7 +431,7 @@ setDefaultAnimation('drawer.showEnd', {
     { opacity: 0, translate: '-100%' },
     { opacity: 1, translate: '0' }
   ],
-  options: { duration: 250, easing: 'ease' }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('drawer.hideEnd', {
@@ -443,24 +443,24 @@ setDefaultAnimation('drawer.hideEnd', {
     { opacity: 1, translate: '0' },
     { opacity: 0, translate: '-100%' }
   ],
-  options: { duration: 250, easing: 'ease' }
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
 });
 
 // Deny close
 setDefaultAnimation('drawer.denyClose', {
   keyframes: [{ scale: 1 }, { scale: 1.01 }, { scale: 1 }],
-  options: { duration: 250 }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
 });
 
 // Overlay
 setDefaultAnimation('drawer.overlay.show', {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  options: { duration: 250 }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('drawer.overlay.hide', {
   keyframes: [{ opacity: 1 }, { opacity: 0 }],
-  options: { duration: 250 }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
 });
 
 declare global {
