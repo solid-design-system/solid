@@ -95,3 +95,38 @@ Now, if you want the badge to be announced, add `role="status"` manually:
   <span class="sr-only">Notifications</span>
 </sd-badge>
 ```
+
+### `<sd-expandable>`
+
+Separated the icon and content slots from the `toggle` button to provide more flexibility and to enable implementing motion design.
+
+- Added `expand-icon` and `collapse-icon` slots.
+- Added `toggle-icon` css part.
+
+**Before:**
+
+Icon was slotted together with the text content.
+
+```html
+<sd-expandable>
+  <sd-icon slot="toggle-open" class="mr-2 text-xl" library="_internal" name="chevron-up"></sd-icon>
+  <span slot="toggle-open"> <!-- Collapse --> </span>
+
+  <sd-icon slot="toggle-closed" class="mr-2 text-xl" library="_internal" name="chevron-down"></sd-icon>
+  <span slot="toggle-closed"> <!-- Expand --> </span>
+</sd-expandable>
+```
+
+**After**
+
+Now, the icon has separate slots.
+
+```html
+<sd-expandable>
+  <sd-icon slot="expand-icon" class="mr-2 text-xl" library="_internal" name="chevron-down"></sd-icon>
+  <span slot="toggle-closed"> <!-- Expand --> </span>
+
+  <sd-icon slot="collapse-icon" class="mr-2 text-xl" library="_internal" name="chevron-down"></sd-icon>
+  <span slot="toggle-open"> <!-- Collapse --> </span>
+</sd-expandable>
+```

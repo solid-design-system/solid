@@ -1,6 +1,8 @@
 import '../icon/icon';
+import { animateTo, shimKeyframesHeightAuto, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize.js';
 import { property, query } from 'lit/decorators.js';
@@ -20,6 +22,8 @@ import SolidElement from '../../internal/solid-element';
  * @slot - Content of the expandable
  * @slot toggle-open - Content of the toggle button when the expandable is open
  * @slot toggle-closed - Content of the toggle button when the expandable is closed
+ * @slot expand-icon - The icon of the toggle button when the expandable is closed
+ * @slot collapse-icon - The icon of the toggle button when the expandable is open
  *
  * @event sd-show - Emitted when the expandable opens.
  * @event sd-after-show - Emitted after the expandable opens and all animations are complete.
@@ -29,6 +33,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart base - The component's base wrapper.
  * @csspart content - The content of the expandable.
  * @csspart toggle - The toggle button of the expandable.
+ * @csspart toggle-icon - The wrapper of the toggle icons.
  * @csspart summary - The summary of the expandable.
  * @csspart details - The details element of the expandable.
  *
@@ -41,6 +46,7 @@ import SolidElement from '../../internal/solid-element';
 export default class SdExpandable extends SolidElement {
   @query('.content-preview') contentPreview: HTMLElement;
   @query('details') details: HTMLDetailsElement;
+  @query('[part="content"]') body: HTMLElement;
 
   /**
    * Used to check whether the component is expanded or not.
@@ -64,20 +70,35 @@ export default class SdExpandable extends SolidElement {
   }
 
   @watch('open', { waitUntilFirstUpdate: true })
-  onOpenChange() {
+  async onOpenChange() {
+    this.body.classList.add('transitioning');
+
     if (this.open) {
       this.emit('sd-show');
+
+      await stopAnimations(this.body);
+      const { keyframes, options } = getAnimation(this, 'expandable.show', { dir: this.localize.dir() });
+      await animateTo(this.body, shimKeyframesHeightAuto(keyframes, this.body.scrollHeight), options);
+      this.body.style.height = 'auto';
+
       this.updateComplete.then(() => {
         this.emit('sd-after-show');
       });
     } else {
       this.emit('sd-hide');
+
+      await stopAnimations(this.body);
+      const { keyframes, options } = getAnimation(this, 'expandable.hide', { dir: this.localize.dir() });
+      await animateTo(this.body, shimKeyframesHeightAuto(keyframes, this.body.scrollHeight), options);
+      this.body.style.height = 'auto';
+
       this.updateComplete.then(() => {
         this.emit('sd-after-hide');
       });
     }
 
     this.details.setAttribute('open', this.open.toString());
+    this.body.classList.remove('transitioning');
   }
 
   /** Opens the expandable */
@@ -114,19 +135,22 @@ export default class SdExpandable extends SolidElement {
           aria-expanded=${this.open}
         >
           <div class=${cx('h-full justify-center w-full text-base flex items-center toggle')}>
-            ${this.open
-              ? html`
-                  <slot name="toggle-open">
-                    <sd-icon class="mr-2 text-xl" library="_internal" name="chevron-up"></sd-icon>
-                    ${this.localize.term('showLess')}
-                  </slot>
-                `
-              : html`
-                  <slot name="toggle-closed">
-                    <sd-icon class="mr-2 text-xl" library="_internal" name="chevron-down"></sd-icon>
-                    ${this.localize.term('showMore')}
-                  </slot>
-                `}
+            <span
+              part="toggle-icon"
+              class=${cx(
+                'flex items-center mr-2 transition-transform duration-medium ease-in-out',
+                this.open && 'rotate-180'
+              )}
+            >
+              <slot name="expand-icon" class=${cx(this.open && 'hidden')}>
+                <sd-icon library="_internal" name="chevron-down" class="text-xl"></sd-icon>
+              </slot>
+              <slot name="collapse-icon" class=${cx(!this.open && 'hidden')}>
+                <sd-icon library="_internal" name="chevron-down" class="text-xl"></sd-icon>
+              </slot>
+            </span>
+            <slot name="toggle-closed" class=${cx(this.open && 'hidden')}> ${this.localize.term('showMore')} </slot>
+            <slot name="toggle-open" class=${cx(!this.open && 'hidden')}> ${this.localize.term('showLess')} </slot>
           </div>
         </button>
         <details part="details" ?inert=${ifDefined(!this.open)}>
@@ -195,27 +219,42 @@ export default class SdExpandable extends SolidElement {
         max-block-size: var(--component-expandable-max-block-size);
       }
 
-      :host([open]) .content {
+      :host([open]) .content,
+      :host:has(.transitioning) .content {
         max-block-size: var(--max-height-pixel, 1000vh);
       }
 
-      :host(:not([open])) .content::after {
-        @apply absolute bottom-0 left-0 block w-full;
+      .content::after {
+        @apply absolute bottom-0 left-0 block w-full opacity-0 transition-opacity duration-medium ease-in-out;
         content: ' ';
 
         height: var(--gradient-height);
         background: linear-gradient(180deg, var(--gradient));
       }
 
-      :host([inverted]:not([open])) .content::after {
+      :host([inverted]) .content::after {
         background: var(
           --gradient-vertical-transparent-primary,
           linear-gradient(180deg, rgba(0, 53, 142, 0) 0%, rgba(0, 53, 142, 1) 80%, rgba(0, 53, 142, 1) 100%)
         );
       }
+
+      :host(:not([open])) .content::after {
+        @apply opacity-100;
+      }
     `
   ];
 }
+
+setDefaultAnimation('expandable.show', {
+  keyframes: [{ height: 'var(--component-expandable-max-block-size, 90px)' }, { height: 'auto' }],
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
+});
+
+setDefaultAnimation('expandable.hide', {
+  keyframes: [{ height: 'auto' }, { height: 'var(--component-expandable-max-block-size, 90px)' }],
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
+});
 
 declare global {
   interface HTMLElementTagNameMap {

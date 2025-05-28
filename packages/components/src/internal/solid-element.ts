@@ -64,7 +64,12 @@ export default class SolidElement extends LitElement {
   /** Retrieves the value of a css variable token. */
   token<T>(name: string, fallback: T): T {
     const value = cssVar(`var(--${name})`, this);
-    return (tokenProcessors[name]?.(value) as T) ?? fallback;
+
+    if (value === null) {
+      return fallback;
+    }
+
+    return (tokenProcessors[name]?.(value) as T) ?? (value as T) ?? fallback;
   }
 }
 

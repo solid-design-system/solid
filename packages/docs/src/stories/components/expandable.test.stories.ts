@@ -74,7 +74,7 @@ export const Slots = {
   name: 'Slots',
   render: (args: any) => {
     return html`
-      ${['default', 'toggle-open', 'toggle-closed'].map(slot =>
+      ${['default', 'expand-icon', 'collapse-icon', 'toggle-open', 'toggle-closed'].map(slot =>
         generateTemplate({
           axis: {
             x: {
@@ -100,7 +100,7 @@ export const Slots = {
 };
 
 /**
- * Use the `content`, `toggle`, `summary` and `details` parts to style the expandable.
+ * Use the `base`, `content`, `toggle`, `toggle-icon`, `summary` and `details` parts to style the expandable.
  */
 export const Parts = {
   name: 'Parts',
@@ -110,7 +110,7 @@ export const Parts = {
         y: {
           type: 'template',
           name: 'sd-expandable::part(...){outline: solid 2px red}',
-          values: ['content', 'toggle', 'summary', 'details'].map(part => {
+          values: ['base', 'content', 'toggle', 'toggle-icon', 'summary', 'details'].map(part => {
             return {
               title: part,
               value: `<style>#part-${part} sd-expandable::part(${part}){outline: solid 2px red; outline-offset: -2px;}</style><div id="part-${part}">%TEMPLATE%</div>`
