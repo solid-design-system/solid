@@ -42,6 +42,7 @@ export const Default = {
 
       sd-drawer::part(overlay) {
         background-color: #051530;
+        opacity: 0.9;
       }
       sd-drawer::part(body) {
         padding: 4px 0;

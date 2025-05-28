@@ -564,6 +564,10 @@ export default class SdAudio extends SolidElement {
         @apply rounded-full h-16 w-16 flex items-center justify-center;
       }
 
+      sd-button::part(motion-wrapper) {
+        @apply rounded-full;
+      }
+
       sd-button::part(label) {
         @apply flex flex-grow-0 items-center;
       }
