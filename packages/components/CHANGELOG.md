@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 4.11.0
+
+### Minor Changes
+
+- Add `sd-switch` motion design and fix border hover style. _[`#2222`](https://github.com/solid-design-system/solid/pull/2222) [`67a6886`](https://github.com/solid-design-system/solid/commit/67a6886cafc1a345fcd1158d6b13b6726003ef9e) [@smfonseca](https://github.com/smfonseca)_
+
+### 📈 Stats
+* Uncompressed: 429 KB (+1 KB / +0%)
+* Gzipped: 100 KB (unchanged)
+
 ## 4.10.0
 
 ### Minor Changes
