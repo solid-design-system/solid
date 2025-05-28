@@ -1,5 +1,11 @@
 # @solid-design-system/styles
 
+## 1.3.3
+
+### Patch Changes
+
+- Fix styles on `sd-pagination` arrow icons when using versioned `sd-icon` component. _[`#2251`](https://github.com/solid-design-system/solid/pull/2251) [`f086b08`](https://github.com/solid-design-system/solid/commit/f086b084171a2bb300f0607e93a334f6d843ec92) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.3.2
 
 ### Patch Changes

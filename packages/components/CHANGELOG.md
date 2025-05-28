@@ -1,5 +1,23 @@
 # @solid-design-system/components
 
+## 4.10.0
+
+### Minor Changes
+
+- Add motion design to `sd-drawer`. _[`#2245`](https://github.com/solid-design-system/solid/pull/2245) [`992fc38`](https://github.com/solid-design-system/solid/commit/992fc385bb3d0a467a7f7832fcf3b3f5ac1704b1) [@balco0110](https://github.com/balco0110)_
+
+## 4.9.0
+
+### Minor Changes
+
+- Implemented `sd-video` motion design. _[`#2221`](https://github.com/solid-design-system/solid/pull/2221) [`64b0678`](https://github.com/solid-design-system/solid/commit/64b06782fab8349959fb479dead41fdb7cf8ce14) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.8.2
+
+### Patch Changes
+
+- Update `sd-select` and `sd-combobox` animations. _[`#2224`](https://github.com/solid-design-system/solid/pull/2224) [`039ab9a`](https://github.com/solid-design-system/solid/commit/039ab9a6a9e3dc3cfdf16d67353f92fc18c25db2) [@smfonseca](https://github.com/smfonseca)_
+
 ## 4.8.1
 
 ### Patch Changes
