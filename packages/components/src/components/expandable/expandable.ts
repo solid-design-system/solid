@@ -224,19 +224,23 @@ export default class SdExpandable extends SolidElement {
         max-block-size: var(--max-height-pixel, 1000vh);
       }
 
-      :host(:not([open])) .content::after {
-        @apply absolute bottom-0 left-0 block w-full;
+      .content::after {
+        @apply absolute bottom-0 left-0 block w-full opacity-0 transition-opacity duration-medium ease-in-out;
         content: ' ';
 
         height: var(--gradient-height);
         background: linear-gradient(180deg, var(--gradient));
       }
 
-      :host([inverted]:not([open])) .content::after {
+      :host([inverted]) .content::after {
         background: var(
           --gradient-vertical-transparent-primary,
           linear-gradient(180deg, rgba(0, 53, 142, 0) 0%, rgba(0, 53, 142, 1) 80%, rgba(0, 53, 142, 1) 100%)
         );
+      }
+
+      :host(:not([open])) .content::after {
+        @apply opacity-100;
       }
     `
   ];
