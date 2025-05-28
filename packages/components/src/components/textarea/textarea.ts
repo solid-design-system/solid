@@ -451,10 +451,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
             ${this.showInvalidStyle
               ? html`
                   <sd-icon
-                    class=${cx(
-                      'text-error absolute right-4 bg-white pointer-events-none group-hover:bg-neutral-200',
-                      iconSize
-                    )}
+                    class=${cx('text-error absolute right-4 pointer-events-none', iconSize)}
                     library="system"
                     name="risk"
                     part="invalid-icon"
@@ -464,10 +461,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
             ${this.styleOnValid && this.showValidStyle
               ? html`
                   <sd-icon
-                    class=${cx(
-                      'text-success absolute right-4 bg-white pointer-events-none group-hover:bg-neutral-200',
-                      iconSize
-                    )}
+                    class=${cx('text-success absolute right-4 pointer-events-none', iconSize)}
                     library="system"
                     name="status-check"
                     part="valid-icon"
