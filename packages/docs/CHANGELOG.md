@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 1.16.6
+
+### Patch Changes
+
+- Updated `sd-expandable` stories to support latest changes. _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Renamed internal icons to `_internal` instead of `system`. _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Improved `sd-badge` templates accessibility. _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.16.5
 
 ### Patch Changes

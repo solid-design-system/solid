@@ -1,5 +1,30 @@
 # @solid-design-system/components
 
+## 5.0.0
+
+### Major Changes
+
+- Renamed internal icons to `_internal` instead of `system`. _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Fixed `sd-scrollable` `start` and `end` events. _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - (before): `start` event was emitted when there was available scrolling space in the `start` direction ---> (after): `start` event is emitted when the `start` is reached.
+  - (before): `end` event was emitted when there was available scrolling space in the `end` direction ---> (after): `end` event is emitted when the `end` is reached.
+
+- Separated the icon and text slots from the `toggle` button on the `sd-expandable` component. _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Implemented `sd-expandable` motion design.
+
+- Removed `role="status"` from `sd-badge` to provide more a11y flexibility. _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Improved `sd-header` component: _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Improved `--sd-header-calculated-height` property calculation.
+  - Added padding to the `sd-header` element when it has the `fixed` attribute, to prevent the following siblings from being overlapped by the header.
+  - Improved accessibility by removing the `position: fixed` at a certain minimum viewport height, to ensure it doesn't cover much of the screen.
+
+### 📈 Stats
+* Uncompressed: 430 KB (+1 KB / +0%)
+* Gzipped: 101 KB (+1 KB / +1%)
+
 ## 4.12.0
 
 ### Minor Changes
