@@ -381,7 +381,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           <div
             part="border"
             class=${cx(
-              'absolute w-full h-full pointer-events-none border rounded-default',
+              'absolute w-full h-full pointer-events-none border rounded-default transition-[border] duration-medium ease-in-out',
               {
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
@@ -398,7 +398,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           <div
             part="base"
             class=${cx(
-              'textarea h-full flex items-top rounded-default group',
+              'textarea h-full flex items-top rounded-default group transition-colors duration-medium hover:duration-fast ease-in-out',
               {
                 sm: 'textarea-sm',
                 md: 'textarea-md',
@@ -451,10 +451,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
             ${this.showInvalidStyle
               ? html`
                   <sd-icon
-                    class=${cx(
-                      'text-error absolute right-4 bg-white pointer-events-none group-hover:bg-neutral-200',
-                      iconSize
-                    )}
+                    class=${cx('text-error absolute right-4 pointer-events-none', iconSize)}
                     library="_internal"
                     name="risk"
                     part="invalid-icon"
@@ -464,10 +461,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
             ${this.styleOnValid && this.showValidStyle
               ? html`
                   <sd-icon
-                    class=${cx(
-                      'text-success absolute right-4 bg-white pointer-events-none group-hover:bg-neutral-200',
-                      iconSize
-                    )}
+                    class=${cx('text-success absolute right-4 pointer-events-none', iconSize)}
                     library="_internal"
                     name="status-check"
                     part="valid-icon"
