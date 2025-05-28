@@ -72,10 +72,10 @@ export default class SdQuickfact extends SdAccordion {
               !this.expandable && 'hidden'
             )}
             ><slot name="expand-icon" class=${cx(this.open && 'hidden')}>
-              <sd-icon library="system" name="chevron-down"></sd-icon>
+              <sd-icon library="_internal" name="chevron-down"></sd-icon>
             </slot>
             <slot name="collapse-icon" class=${cx(!this.open && 'hidden')}>
-              <sd-icon library="system" name="chevron-down"></sd-icon> </slot
+              <sd-icon library="_internal" name="chevron-down"></sd-icon> </slot
           ></span>
         </${header}>
         <div part="content" id="content" class=${cx('overflow-hidden', !this.expandable && 'hidden')}>

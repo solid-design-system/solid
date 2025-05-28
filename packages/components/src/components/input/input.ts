@@ -661,7 +661,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     <slot name="clear-icon">
                       <sd-icon
                         class=${cx('text-neutral-700', iconSize)}
-                        library="system"
+                        library="_internal"
                         name="closing-round"
                       ></sd-icon>
                     </slot>
@@ -680,12 +680,16 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     ${this.passwordVisible
                       ? html`
                           <slot name="show-password-icon"
-                            ><sd-icon class=${cx(iconColor, iconSize)} library="system" name="eye"></sd-icon
+                            ><sd-icon class=${cx(iconColor, iconSize)} library="_internal" name="eye"></sd-icon
                           ></slot>
                         `
                       : html`
                           <slot name="hide-password-icon"
-                            ><sd-icon class=${cx(iconColor, iconSize)} library="system" name="eye-crossed-out"></sd-icon
+                            ><sd-icon
+                              class=${cx(iconColor, iconSize)}
+                              library="_internal"
+                              name="eye-crossed-out"
+                            ></sd-icon
                           ></slot>
                         `}
                   </button>
@@ -693,12 +697,16 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               : ''}
             ${(this.type === 'date' || this.type === 'datetime-local') && !isFirefox
               ? html`
-                  <sd-icon class=${cx(iconColor, iconMarginLeft, iconSize)} library="system" name="calendar"></sd-icon>
+                  <sd-icon
+                    class=${cx(iconColor, iconMarginLeft, iconSize)}
+                    library="_internal"
+                    name="calendar"
+                  ></sd-icon>
                 `
               : ''}
             ${this.type === 'time'
               ? html`
-                  <sd-icon class=${cx(iconColor, iconMarginLeft, iconSize)} library="system" name="clock"></sd-icon>
+                  <sd-icon class=${cx(iconColor, iconMarginLeft, iconSize)} library="_internal" name="clock"></sd-icon>
                 `
               : ''}
             ${this.type === 'search'
@@ -710,7 +718,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   >
                     <sd-icon
                       class=${cx(iconColor, iconSize)}
-                      library="system"
+                      library="_internal"
                       name="magnifying-glass"
                       label=${this.localize.term('search')}
                     ></sd-icon>
@@ -722,7 +730,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   <sd-icon
                     part="invalid-icon"
                     class=${cx('text-error', iconMarginLeft, iconSize)}
-                    library="system"
+                    library="_internal"
                     name="risk"
                   ></sd-icon>
                 `
@@ -731,7 +739,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               ? html`
                   <sd-icon
                     class=${cx('text-success flex-shrink-0', iconMarginLeft, iconSize)}
-                    library="system"
+                    library="_internal"
                     name="status-check"
                     part="valid-icon"
                   ></sd-icon>

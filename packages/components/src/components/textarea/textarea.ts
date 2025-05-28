@@ -452,7 +452,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               ? html`
                   <sd-icon
                     class=${cx('text-error absolute right-4 pointer-events-none', iconSize)}
-                    library="system"
+                    library="_internal"
                     name="risk"
                     part="invalid-icon"
                   ></sd-icon>
@@ -462,7 +462,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               ? html`
                   <sd-icon
                     class=${cx('text-success absolute right-4 pointer-events-none', iconSize)}
-                    library="system"
+                    library="_internal"
                     name="status-check"
                     part="valid-icon"
                   ></sd-icon>
