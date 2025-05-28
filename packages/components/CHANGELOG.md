@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.10.0
+
+### Minor Changes
+
+- Add motion design to `sd-drawer`. _[`#2245`](https://github.com/solid-design-system/solid/pull/2245) [`992fc38`](https://github.com/solid-design-system/solid/commit/992fc385bb3d0a467a7f7832fcf3b3f5ac1704b1) [@balco0110](https://github.com/balco0110)_
+
 ## 4.9.0
 
 ### Minor Changes
