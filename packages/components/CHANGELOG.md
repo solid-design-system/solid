@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 4.9.0
+
+### Minor Changes
+
+- Implemented `sd-video` motion design. _[`#2221`](https://github.com/solid-design-system/solid/pull/2221) [`64b0678`](https://github.com/solid-design-system/solid/commit/64b06782fab8349959fb479dead41fdb7cf8ce14) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 4.8.2
 
 ### Patch Changes
