@@ -149,8 +149,8 @@ export default class SdExpandable extends SolidElement {
                 <sd-icon library="_internal" name="chevron-down" class="text-xl"></sd-icon>
               </slot>
             </span>
-            <slot name="toggle-open" class=${cx(this.open && 'hidden')}> ${this.localize.term('showLess')} </slot>
-            <slot name="toggle-closed" class=${cx(!this.open && 'hidden')}> ${this.localize.term('showMore')} </slot>
+            <slot name="toggle-closed" class=${cx(this.open && 'hidden')}> ${this.localize.term('showMore')} </slot>
+            <slot name="toggle-open" class=${cx(!this.open && 'hidden')}> ${this.localize.term('showLess')} </slot>
           </div>
         </button>
         <details part="details" ?inert=${ifDefined(!this.open)}>
