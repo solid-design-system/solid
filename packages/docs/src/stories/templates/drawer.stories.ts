@@ -58,7 +58,7 @@ export const Default = {
         <nav aria-label="Primary">
           <sd-navigation-item vertical>Home</sd-navigation-item>
           <sd-navigation-item vertical current chevron divider onclick="handleSecondLevel()">
-            <b>About Us</b>
+            About Us
           </sd-navigation-item>
           <sd-navigation-item vertical chevron divider>Markets</sd-navigation-item>
           <sd-navigation-item vertical chevron divider>Press service</sd-navigation-item>
@@ -84,7 +84,7 @@ export const Default = {
         <nav id="level-two-nav" aria-label="About us">
           <sd-navigation-item vertical id="nav-title" size="lg">About Us</sd-navigation-item>
           <sd-navigation-item vertical divider>
-            <b>Union Investment for privat customers</b>
+            Union Investment for privat customers
             <p slot="description" class="sd-paragraph sd-paragraph--size-sm max-w-[238px]">
               Find out more about us and what we stand for
             </p>
