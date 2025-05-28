@@ -1,5 +1,54 @@
 # @solid-design-system/components
 
+## 4.10.0
+
+### Minor Changes
+
+- Add motion design to `sd-drawer`. _[`#2245`](https://github.com/solid-design-system/solid/pull/2245) [`992fc38`](https://github.com/solid-design-system/solid/commit/992fc385bb3d0a467a7f7832fcf3b3f5ac1704b1) [@balco0110](https://github.com/balco0110)_
+
+## 4.9.0
+
+### Minor Changes
+
+- Implemented `sd-video` motion design. _[`#2221`](https://github.com/solid-design-system/solid/pull/2221) [`64b0678`](https://github.com/solid-design-system/solid/commit/64b06782fab8349959fb479dead41fdb7cf8ce14) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.8.2
+
+### Patch Changes
+
+- Update `sd-select` and `sd-combobox` animations. _[`#2224`](https://github.com/solid-design-system/solid/pull/2224) [`039ab9a`](https://github.com/solid-design-system/solid/commit/039ab9a6a9e3dc3cfdf16d67353f92fc18c25db2) [@smfonseca](https://github.com/smfonseca)_
+
+## 4.8.1
+
+### Patch Changes
+
+- Fix `sd-button` slot `icon-left` alignment on full width buttons. _[`#2244`](https://github.com/solid-design-system/solid/pull/2244) [`643ae18`](https://github.com/solid-design-system/solid/commit/643ae187c6772e3721140ad4cebb8d8e96855540) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.8.0
+
+### Minor Changes
+
+- Added motion design to `sd-input`. _[`#2227`](https://github.com/solid-design-system/solid/pull/2227) [`b98f363`](https://github.com/solid-design-system/solid/commit/b98f363041f200dc9f9d280932179052ef0b1d49) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+
+- Uncompressed: 428 KB (+1 KB / +0%)
+- Gzipped: 100 KB (unchanged)
+
+## 4.7.2
+
+### Patch Changes
+
+- Fixed `sd-button` z-index. _[`#2234`](https://github.com/solid-design-system/solid/pull/2234) [`4f27be7`](https://github.com/solid-design-system/solid/commit/4f27be79ee38a98a07e5f141ac926ff01a392713) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.7.1
+
+### Patch Changes
+
+- Fixed `sd-button` motion design on sd-audio. _[`#2230`](https://github.com/solid-design-system/solid/pull/2230) [`283d350`](https://github.com/solid-design-system/solid/commit/283d350e49bdd673be0d0a3b4e650a07386468c9) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Implemented new part `motion-wrapper` to `sd-button`.
+
 ## 4.7.0
 
 ### Minor Changes
@@ -28,8 +77,9 @@
   - Implement new `sd-hide` and `sd-after-hide` events, which are triggered by the `hide` method.
 
 ### 📈 Stats
-* Uncompressed: 427 KB (+6 KB / +1%)
-* Gzipped: 100 KB (+1 KB / +1%)
+
+- Uncompressed: 427 KB (+6 KB / +1%)
+- Gzipped: 100 KB (+1 KB / +1%)
 
 ## 4.6.18
 

@@ -1210,7 +1210,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           <div
             part="border"
             class=${cx(
-              'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10 transition-[colors,border-width] duration-fast ease-in-out',
+              'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10 transition-[border] duration-medium ease-in-out',
               {
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
@@ -1248,7 +1248,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
             <div
               part="combobox"
               class=${cx(
-                'relative w-full px-4 flex flex-row items-center rounded-default',
+                'relative w-full px-4 flex flex-row items-center rounded-default transition-colors hover:duration-fast ease-in-out',
                 this.visuallyDisabled || this.disabled ? 'hover:bg-transparent' : 'hover:bg-neutral-200',
                 this.open && 'shadow transition-shadow duration-medium ease-in-out',
                 {
