@@ -22,6 +22,8 @@ import SolidElement from '../../internal/solid-element';
  * @event sd-blur - Emitted when the tag loses focus.
  * @event sd-focus - Emitted when the tag gains focus.
  * @event sd-remove - Emitted when the remove button is activated.
+ * @event sd-hide - Emitted when the hide method is triggered.
+ * @event sd-after-hide - Emitted after the tag is hidden and all animations are complete.
  *
  * @csspart base - The component's base wrapper.
  * @csspart content - The tag's content.
@@ -65,7 +67,7 @@ export default class SdTag extends SolidElement {
     this.emit('sd-focus');
   }
 
-  private handleRemoveClick() {
+  private handleRemove() {
     this.emit('sd-remove');
   }
 
@@ -86,6 +88,17 @@ export default class SdTag extends SolidElement {
   /** Removes focus from the tag. */
   blur() {
     this.tag.blur();
+  }
+
+  /** Visually hides the tag */
+  public async hide() {
+    this.emit('sd-hide');
+
+    this.style.opacity = '0';
+    await new Promise(resolve => setTimeout(resolve, this.token('sd-duration-fast', 150)));
+    this.hidden = true;
+
+    this.emit('sd-after-hide');
   }
 
   render() {
@@ -111,7 +124,7 @@ export default class SdTag extends SolidElement {
         @focus=${this.handleFocus}
         class=${cx(
           /* basic styles of the wrapper */
-          'inline-flex border box-border rounded-full items-center leading-none whitespace-nowrap focus-visible:focus-outline',
+          'inline-flex border box-border rounded-full items-center leading-none whitespace-nowrap transition-colors duration-fast ease-in-out focus-visible:focus-outline',
           {
             /* sizes, fonts */
             lg: 'h-8 text-base gap-2',
@@ -124,7 +137,12 @@ export default class SdTag extends SolidElement {
           }[this.size],
           /* colors */
           !this.selected
-            ? 'border-primary text-primary hover:border-primary-500 hover:bg-neutral-100 hover:text-primary-500  disabled:border-neutral-500 disabled:text-neutral-500'
+            ? cx(
+                'border-primary text-primary disabled:border-neutral-500 disabled:text-neutral-500',
+                !this.removable
+                  ? 'hover:border-primary-500 hover:bg-neutral-100 hover:text-primary-500'
+                  : 'has-[button:hover]:border-primary-500 has-[button:hover]:bg-neutral-100 has-[button:hover]:text-primary-500'
+              )
             : 'bg-primary border-primary text-white hover:bg-primary-500 hover:border-primary-500 disabled:bg-neutral-500 disabled:border-neutral-500',
           this.disabled && !isLink && 'cursor-not-allowed'
         )}
@@ -132,7 +150,7 @@ export default class SdTag extends SolidElement {
         <slot id="content" part='content'></slot>
         ${
           this.removable
-            ? html` <button class="sd-interactive flex items-center" type="button" @click=${this.handleRemoveClick}>
+            ? html` <button class="sd-interactive flex items-center" type="button" @click=${this.handleRemove}>
                 <slot part="removable-indicator" name="removable-indicator">
                   <sd-icon library="_internal" name="close" label=${this.localize.term('remove')}></sd-icon>
                 </slot>
@@ -149,7 +167,7 @@ export default class SdTag extends SolidElement {
     ...SolidElement.styles,
     css`
       :host {
-        @apply inline-block;
+        @apply inline-block transition-opacity duration-fast ease-in-out;
       }
 
       :host([size='lg'])::part(removable-indicator) {

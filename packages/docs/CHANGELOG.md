@@ -1,5 +1,23 @@
 # @solid-design-system/docs
 
+## 1.16.5
+
+### Patch Changes
+
+- Implement new screenshot test `Full Width` on `sd-button`. _[`#2244`](https://github.com/solid-design-system/solid/pull/2244) [`643ae18`](https://github.com/solid-design-system/solid/commit/643ae187c6772e3721140ad4cebb8d8e96855540) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.16.4
+
+### Patch Changes
+
+- Updated `sd-tag` stories to support the new `hide` method, `sd-hide` and `sd-after-hide` events. _[`#1901`](https://github.com/solid-design-system/solid/pull/1901) [`05854b6`](https://github.com/solid-design-system/solid/commit/05854b6ca0e0594a26a5d3f70b15baa1cd3b4033) [@MartaPintoTeixeira](https://github.com/MartaPintoTeixeira)_
+
+  Updated `sd-select` template placeholder capitalization.
+
+  Implemented interactive `sd-navigation-item` on header and dropdown templates.
+
+  Implemented support to retrieve token values from CSS.
+
 ## 1.16.3
 
 ### Patch Changes
