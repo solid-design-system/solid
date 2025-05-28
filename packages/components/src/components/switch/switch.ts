@@ -202,7 +202,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
               : this.disabled
                 ? 'border-neutral-500'
                 : this.showInvalidStyle
-                  ? 'border-error hover:border-error-400 bg-error hover:bg-error-400'
+                  ? 'border-error hover:border-error-400 bg-error hover:bg-error-400 group-hover:bg-error-400'
                   : this.checked
                     ? 'border-accent hover:bg-accent-550 bg-accent hover:border-accent-550 group-hover:bg-accent-550'
                     : 'border-neutral-800 bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
