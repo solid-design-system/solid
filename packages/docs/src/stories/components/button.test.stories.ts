@@ -143,6 +143,39 @@ export const Disabled = {
   }
 };
 
+export const FullWidth = {
+  name: 'Full Width',
+  render: (args: any) =>
+    generateTemplate({
+      axis: {
+        x: {
+          type: 'slot',
+          name: 'icon-right',
+          values: [
+            { value: '', title: '-' },
+            {
+              value: '<sd-icon name="system/image" slot="icon-right"></sd-icon>',
+              title: 'system/image'
+            }
+          ]
+        },
+        y: {
+          type: 'slot',
+          name: 'icon-left',
+          values: [
+            { value: '', title: '-' },
+            {
+              value: '<sd-icon name="system/image" slot="icon-left"></sd-icon>',
+              title: 'system/image'
+            }
+          ]
+        }
+      },
+      args,
+      constants: { type: 'attribute', name: 'style', value: 'width: 300px;' }
+    })
+};
+
 export const IconSlots = {
   name: 'Icon Slots',
   render: (args: any) => {
