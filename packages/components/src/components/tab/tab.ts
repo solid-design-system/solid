@@ -1,6 +1,9 @@
+import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { HasSlotController } from '../../internal/slot';
+import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
@@ -28,8 +31,10 @@ export default class SdTab extends SolidElement {
   private readonly attrId = ++id;
   private readonly componentId = `sd-tab-${this.attrId}`;
   private readonly hasSlotController = new HasSlotController(this, 'left');
+  public localize = new LocalizeController(this);
 
   @query('[part=base]') tab: HTMLElement;
+  @query('[part=active-tab-indicator]') currentIndicator: HTMLElement;
 
   /** When set to container, a border appears around the current tab and tab-panel. */
   @property({ type: String, reflect: true }) variant: 'default' | 'container' = 'default';
@@ -52,8 +57,15 @@ export default class SdTab extends SolidElement {
   }
 
   @watch('active')
-  handleActiveChange() {
-    this.setAttribute('aria-selected', this.active ? 'true' : 'false');
+  async handleActiveChange() {
+    if (this.variant === 'container' && this.active) {
+      await stopAnimations(this.tab);
+
+      const animation = getAnimation(this, 'containerTab.active', { dir: this.localize.dir() });
+      await animateTo(this.tab, animation.keyframes, animation.options);
+    }
+
+    return this.setAttribute('aria-selected', this.active ? 'true' : 'false');
   }
 
   @watch(['disabled', 'visually-disabled'])
@@ -84,7 +96,7 @@ export default class SdTab extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'inline-flex justify-center min-w-max items-center h-12 px-3 leading-none select-none cursor-pointer group relative focus-visible:focus-outline outline-2 !-outline-offset-2',
+          'inline-flex justify-center min-w-max items-center h-12 px-3 leading-none select-none cursor-pointer group relative focus-visible:focus-outline outline-2 !-outline-offset-2 transition-[colors,border] duration-medium hover:duration-fast ease-in-out',
           this.variant === 'container' && ' rounded-[4px_4px_0_0]',
           this.variant === 'container' && this.active && 'tab--active-container-border bg-white',
           this.disabled || this.visuallyDisabled ? '!cursor-not-allowed' : 'hover:bg-neutral-200'
@@ -109,9 +121,11 @@ export default class SdTab extends SolidElement {
           <div
             part="active-tab-indicator"
             class=${cx(
-              (!this.active || this.disabled) && 'hidden',
               'absolute bottom-0 h-1 bg-accent',
-              this.variant === 'default' ? 'w-full' : 'w-3/4 group-hover:w-full transition-all duration-200 ease-in-out'
+              (!this.active || this.disabled) && 'hidden',
+              this.variant === 'default'
+                ? 'w-full'
+                : 'w-3/4 group-hover:w-full transition-[width] duration-fast ease-in-out'
             )}
           ></div>
 
@@ -144,6 +158,11 @@ export default class SdTab extends SolidElement {
     `
   ];
 }
+
+setDefaultAnimation('containerTab.active', {
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
+});
 
 declare global {
   interface HTMLElementTagNameMap {
