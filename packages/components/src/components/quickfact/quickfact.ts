@@ -67,7 +67,7 @@ export default class SdQuickfact extends SdAccordion {
           <span
             part="summary-icon"
             class=${cx(
-              'flex flex-grow-0 flex-shrink-0 flex-auto self-start sm:self-center transition-all ease-in-out duration-300 text-xl sm:text-4xl sm:mt-2',
+              'flex flex-grow-0 flex-shrink-0 flex-auto self-start sm:self-center transition-all ease-in-out duration-medium text-xl sm:text-4xl sm:mt-2',
               this.open && 'rotate-180',
               !this.expandable && 'hidden'
             )}
@@ -113,19 +113,13 @@ export default class SdQuickfact extends SdAccordion {
 }
 
 setDefaultAnimation('quickfact.show', {
-  keyframes: [
-    { height: '0', opacity: '0' },
-    { height: 'auto', opacity: '1' }
-  ],
-  options: { duration: 300, easing: 'ease' }
+  keyframes: [{ height: '0' }, { height: 'auto' }],
+  options: { duration: 'var(--sd-duration-medium, 300ms)', easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('quickfact.hide', {
-  keyframes: [
-    { height: 'auto', opacity: '1' },
-    { height: '0', opacity: '0' }
-  ],
-  options: { duration: 300, easing: 'ease' }
+  keyframes: [{ height: 'auto' }, { height: '0' }],
+  options: { duration: 'var(--sd-duration-medium, 300ms)', easing: 'ease-in-out' }
 });
 
 declare global {
