@@ -1,11 +1,11 @@
-import { css, svg } from 'lit';
+import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { html, literal } from 'lit/static-html.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { property } from 'lit/decorators.js';
+import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-import type { SVGTemplateResult } from 'lit';
 
 /**
  * @summary A marker identifies a location on google map
@@ -61,20 +61,27 @@ export default class SdMapMarker extends SolidElement {
   }
 
   /** @internal */
-  readonly marker: { [key in 'cluster' | 'main' | 'place']: SVGTemplateResult } = {
-    cluster: svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-      <circle cx="25" cy="25" opacity="1" r="20" />
-      <circle cx="25" cy="25" opacity=".3" r="25" />
-    </svg>`,
-    main: svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 75"><path d="M51 49A29 29 0 0 0 30 0 29 29 0 0 0 9 49l21 22 21-22Z"/><circle cx="30" cy="28" r="10" fill="#fff"/></svg>`,
-    place: svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 75">
-      <path fill-rule="evenodd" d="M51 49A29 29 0 0 0 30 0 29 29 0 0 0 9 49l21 22 21-22Z" clip-rule="evenodd" />
-    </svg>`
+  readonly marker: { [key in 'cluster' | 'main' | 'place']: string } = {
+    cluster: `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+        <circle cx="25" cy="25" opacity="1" r="20" />
+      </svg>`,
+    main: `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 75">
+        <path d="M51 49A29 29 0 0 0 30 0 29 29 0 0 0 9 49l21 22 21-22Z"/>
+      </svg> `,
+    place: `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 75">
+        <path fill-rule="evenodd" d="M51 49A29 29 0 0 0 30 0 29 29 0 0 0 9 49l21 22 21-22Z" clip-rule="evenodd" />
+      </svg>`
   };
 
   render() {
     const isLink = this.isLink();
     const tag = this.notInteractive ? literal`div` : isLink ? literal`a` : literal`button`;
+
+    const marker = unsafeSVG(this.marker[this.variant]);
+    const mask = `url("data:image/svg+xml;utf8,${encodeURIComponent(this.marker[this.variant]).replace(/#/g, '%23')}")`;
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
@@ -82,8 +89,8 @@ export default class SdMapMarker extends SolidElement {
       <${tag}
         part="base"
         class=${cx(
-          'flex justify-center',
-          !this.notInteractive && 'focus:outline focus:outline-2 focus:outline-primary focus:outline-offset-2'
+          'relative flex justify-center',
+          !this.notInteractive && 'group focus:outline focus:outline-2 focus:outline-primary focus:outline-offset-2'
         )}
         href=${ifDefined(isLink ? this.href : undefined)}
         target=${ifDefined(isLink ? this.target : undefined)}
@@ -96,27 +103,51 @@ export default class SdMapMarker extends SolidElement {
         <div
           part="marker"
           class=${cx(
-            'inline-flex',
+            'relative inline-flex',
             this.animated && (this.variant === 'main' || this.variant === 'place') && 'animate-bounce-once',
             this.variant === 'cluster' && this.state === 'hover' && 'scale-110 fill-primary-500',
             this.variant === 'cluster' &&
               !this.notInteractive &&
-              'transition-all duration-200 ease-in-out hover:scale-110 hover:fill-primary-500',
-            this.variant === 'main' && this.state === 'hover' && 'fill-accent-550',
-            this.variant === 'main' && this.state === 'active' && 'fill-accent-700',
-            this.variant === 'main' && !this.notInteractive && 'hover:fill-accent-550 active:fill-accent-700',
-            this.variant === 'place' && this.state === 'default' && 'fill-white',
-            this.variant === 'place' && this.state === 'hover' && 'fill-primary-100',
-            this.variant === 'place' && this.state === 'active' && 'fill-primary-200',
-            this.variant === 'place' && !this.notInteractive && 'hover:fill-primary-100',
+              'transition-transform duration-fast ease-in-out hover:scale-110',
             {
               cluster: 'fill-primary',
               main: 'fill-accent',
-              place: ''
+              place: 'fill-white'
             }[this.variant]
           )}
         >
-          ${this.marker[this.variant]}
+          <div
+            id="motion-wrapper"
+            class="absolute inset-0 overflow-hidden pointer-events-none"
+            style="
+              mask-image: ${mask};
+              -webkit-mask-image: ${mask};
+            ">
+            <div class=${cx(
+              'absolute inset-0 transition-transform ease-in-out duration-fast translate-y-full group-hover:translate-y-0 group-active:translate-y-0',
+              ['hover', 'active'].includes(this.state) && '!translate-y-0',
+              {
+                cluster: 'bg-primary-500',
+                main: this.state === 'active' ? 'bg-accent-700' : 'bg-accent-550',
+                place: this.state === 'active' ? 'bg-primary-200' : 'bg-primary-100'
+              }[this.variant]
+            )}></div>
+            ${this.variant === 'main' ? html`<div id="marker-circle" class="absolute rounded-full bg-white"></div>` : ''}
+            </div>
+
+          ${marker}
+
+            ${
+              this.variant === 'cluster'
+                ? html`<div
+                    id="cluster-border"
+                    class=${cx(
+                      'absolute inset-0 bg-primary opacity-30 rounded-full',
+                      this.state === 'hover' && 'bg-primary-500'
+                    )}
+                  ></div>`
+                : ''
+            }
         </div>
         <div
           id="content"
@@ -137,6 +168,15 @@ export default class SdMapMarker extends SolidElement {
     css`
       :host {
         display: block;
+      }
+
+      #motion-wrapper {
+        mask-repeat: no-repeat;
+        -webkit-mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-position: center;
+        mask-size: contain;
+        -webkit-mask-size: contain;
       }
 
       :host([variant='cluster']) [part='base'],
@@ -164,6 +204,14 @@ export default class SdMapMarker extends SolidElement {
       :host([variant='main']) [part='marker'],
       :host([variant='place']) [part='marker'] {
         @apply drop-shadow;
+      }
+
+      :host([variant='main']) #marker-circle {
+        width: calc(var(--sd-spacing-4, 1rem) * var(--map-marker-scaling, 1));
+        height: calc(var(--sd-spacing-4, 1rem) * var(--map-marker-scaling, 1));
+        left: calc(var(--sd-spacing-4, 1rem) * var(--map-marker-scaling, 1));
+        right: calc(var(--sd-spacing-4, 1rem) * var(--map-marker-scaling, 1));
+        top: calc(var(--sd-spacing-4, 1rem) * var(--map-marker-scaling, 1));
       }
     `
   ];
