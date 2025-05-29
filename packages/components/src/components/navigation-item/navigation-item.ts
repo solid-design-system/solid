@@ -153,7 +153,7 @@ export default class SdNavigationItem extends SolidElement {
       children: this.hasSlotController.test('children')
     };
 
-    const horizontalPaddingY = this.vertical ? 'py-3' : 'py-2';
+    const horizontalPadding = this.vertical ? 'py-3' : 'pb-2';
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
@@ -195,7 +195,8 @@ export default class SdNavigationItem extends SolidElement {
         class=${cx(
           'relative inline-flex justify-between items-center',
           isAccordion ? 'grow' : 'w-full',
-          slots['description'] || this.separated ? 'pt-3 pb-1' : horizontalPaddingY,
+          slots['description'] && 'pt-3',
+          slots['description'] || this.separated ? 'pb-1' : horizontalPadding,
           this.calculatePaddingX
         )}>
           ${
@@ -264,10 +265,9 @@ export default class SdNavigationItem extends SolidElement {
                 name="description"
                 part="description"
                 class=${cx(
-                  'inline-block text-sm text-left text-black',
+                  'inline-block text-sm text-left text-black pb-3',
                   isAccordion || this.separated ? 'grow' : 'w-full',
-                  this.separated ? 'px-4' : this.calculatePaddingX,
-                  horizontalPaddingY
+                  this.separated ? 'px-4' : this.calculatePaddingX
                 )}
               ></slot>`
             : ''
