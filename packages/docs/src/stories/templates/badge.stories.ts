@@ -101,7 +101,7 @@ export const NavigationItemWithBadge = {
           <div class="flex">
             <sd-navigation-item class="relative">
               <sd-icon name="system/bell" class="text-xl" label="Open Notifications"></sd-icon>
-              <sd-badge class="absolute top-1 -right-5" size="md">
+              <sd-badge class="absolute -top-2 -right-5" size="md">
                 +99
                 <span class="sr-only">Notifications</span>
               </sd-badge>
