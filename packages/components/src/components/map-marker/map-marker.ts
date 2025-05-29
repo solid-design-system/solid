@@ -19,6 +19,11 @@ import SolidElement from '../../internal/solid-element';
  * @event sd-blur - Emitted when the map marker loses focus.
  * @event sd-focus - Emitted when the map marker is focused.
  *
+ * @csspart base - The components' base wrapper.
+ * @csspart marker - The markers' svg wrapper.
+ * @csspart content - The container that wraps the default slot.
+ * @csspart motion-wrapper - The container that wraps the motion animation.
+ *
  * @cssproperty --map-marker-scaling - Scale the marker size.
  */
 @customElement('sd-map-marker')
@@ -118,6 +123,7 @@ export default class SdMapMarker extends SolidElement {
         >
           <div
             id="motion-wrapper"
+            part="motion-wrapper"
             class="absolute inset-0 overflow-hidden pointer-events-none"
             style="
               mask-image: ${mask};
@@ -125,15 +131,20 @@ export default class SdMapMarker extends SolidElement {
             ">
             <div class=${cx(
               'absolute inset-0 transition-transform ease-in-out duration-fast translate-y-full group-hover:translate-y-0 group-active:translate-y-0',
-              ['hover', 'active'].includes(this.state) && '!translate-y-0',
-              {
-                cluster: 'bg-primary-500',
-                main: this.state === 'active' ? 'bg-accent-700' : 'bg-accent-550',
-                place: this.state === 'active' ? 'bg-primary-200' : 'bg-primary-100'
-              }[this.variant]
-            )}></div>
-            ${this.variant === 'main' ? html`<div id="marker-circle" class="absolute rounded-full bg-white"></div>` : ''}
+              ['hover', 'active'].includes(this.state) && '!translate-y-0'
+            )}>
+              <div class=${cx(
+                'min-w-full min-h-full skew-y-[11deg]',
+                {
+                  cluster: 'bg-primary-500',
+                  main: this.state === 'active' ? 'bg-accent-700' : 'bg-accent-550',
+                  place: this.state === 'active' ? 'bg-primary-200' : 'bg-primary-100'
+                }[this.variant]
+              )}></div>
             </div>
+
+            ${this.variant === 'main' ? html`<div id="marker-circle" class="absolute rounded-full bg-white"></div>` : ''}
+          </div>
 
           ${marker}
 
