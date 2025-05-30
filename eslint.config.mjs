@@ -64,8 +64,6 @@ export default [
   {
     plugins: {
       '@typescript-eslint': typescriptEslint,
-      wc,
-      lit,
       'lit-a11y': litA11Y,
       'chai-expect': chaiExpect,
       'chai-friendly': chaiFriendly,
