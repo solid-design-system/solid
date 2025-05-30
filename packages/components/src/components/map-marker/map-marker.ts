@@ -93,10 +93,7 @@ export default class SdMapMarker extends SolidElement {
     return html`
       <${tag}
         part="base"
-        class=${cx(
-          'relative flex justify-center',
-          !this.notInteractive && 'group focus:outline focus:outline-2 focus:outline-primary focus:outline-offset-2'
-        )}
+        class=${cx('relative flex justify-center', !this.notInteractive && 'group focus-visible:focus-outline')}
         href=${ifDefined(isLink ? this.href : undefined)}
         target=${ifDefined(isLink ? this.target : undefined)}
         @blur=${this.handleBlur}
@@ -137,8 +134,8 @@ export default class SdMapMarker extends SolidElement {
                 'min-w-full min-h-full skew-y-[11deg]',
                 {
                   cluster: 'bg-primary-500',
-                  main: this.state === 'active' ? 'bg-accent-700' : 'bg-accent-550',
-                  place: this.state === 'active' ? 'bg-primary-200' : 'bg-primary-100'
+                  main: this.state === 'active' ? 'bg-accent-700' : 'bg-accent-550 group-active:bg-accent-700',
+                  place: this.state === 'active' ? 'bg-primary-200' : 'bg-primary-100 group-active:bg-primary-200'
                 }[this.variant]
               )}></div>
             </div>
