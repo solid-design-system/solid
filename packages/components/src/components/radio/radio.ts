@@ -127,29 +127,26 @@ export default class SdRadio extends SolidElement {
               : this.invalid
                 ? 'border-error hover:border-error-400 group-hover:border-error-400'
                 : this.checked
-                  ? 'border-accent hover:border-accent-550 group-hover:border-accent-550'
-                  : 'border-neutral-800 hover:bg-neutral-200 group-hover:bg-neutral-200'
+                  ? 'border-accent duration-fast ease-in-out hover:border-accent-550 group-hover:border-accent-550'
+                  : 'border-neutral-800 duration-fast ease-in-out hover:bg-neutral-200 group-hover:bg-neutral-200'
           )}
         >
-          ${this.checked
-            ? html`
-                <span
-                  part="checked"
-                  class=${cx(
-                    'rounded-full inline-flex text-white bg-accent h-2.5 w-2.5',
-                    this.disabled
-                      ? 'bg-neutral-500'
-                      : this.visuallyDisabled
-                        ? 'bg-white'
-                        : this.invalid
-                          ? 'bg-error hover:bg-error-400 group-hover:bg-error-400'
-                          : this.checked
-                            ? 'bg-accent hover:bg-accent-550 group-hover:bg-accent-550'
-                            : 'bg-neutral-800'
-                  )}
-                ></span>
-              `
-            : ''}
+          <span
+            part="checked"
+            class=${cx(
+              'rounded-full inline-flex text-white bg-accent h-2.5 w-2.5 transform transition-transform duration-medium ease-in-out',
+              this.checked ? 'scale-100' : 'scale-0',
+              this.disabled
+                ? 'bg-neutral-500'
+                : this.visuallyDisabled
+                  ? 'bg-white'
+                  : this.invalid
+                    ? 'bg-error hover:bg-error-400 group-hover:bg-error-400'
+                    : this.checked
+                      ? 'bg-accent duration-fast ease-in-out hover:bg-accent-550 group-hover:bg-accent-550'
+                      : 'bg-neutral-800'
+            )}
+          ></span>
         </span>
 
         <slot
