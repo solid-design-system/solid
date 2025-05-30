@@ -25,7 +25,7 @@
 }
 
 .sd-toast-stack {
-  sd-notification::part(base) {
+  sd-notification::part(wrapper) {
     @apply shadow;
   }
 
