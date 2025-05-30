@@ -25,7 +25,10 @@ export default {
 
 /**
  * ### Tablet Navigation
+ *
+ * When consuming sd-header please ensure that there are no margins applied on the left, right and bottom of the dropdown. The top margin of the dropdown should be kept otherwise the first navigation item is cutted.
  */
+
 export const Default = {
   name: 'Tablet Navigation',
   render: () => html`
@@ -34,12 +37,10 @@ export const Default = {
         display: flex;
         align-items: center;
       }
-
       sd-drawer::part(panel) {
         border-top: 2px solid #e9e9e9;
         border-right: 2px solid #e9e9e9;
       }
-
       sd-drawer::part(overlay) {
         background-color: #051530;
         opacity: 0.9;
@@ -55,9 +56,9 @@ export const Default = {
       </sd-button>
       <div class="level-one h-full flex flex-col justify-between">
         <nav aria-label="Primary">
-          <sd-navigation-item vertical><b>Home</b></sd-navigation-item>
-          <sd-navigation-item vertical chevron divider onclick="handleSecondLevel()">
-            <b>About Us</b>
+          <sd-navigation-item vertical>Home</sd-navigation-item>
+          <sd-navigation-item vertical current chevron divider onclick="handleSecondLevel()">
+            About Us
           </sd-navigation-item>
           <sd-navigation-item vertical chevron divider>Markets</sd-navigation-item>
           <sd-navigation-item vertical chevron divider>Press service</sd-navigation-item>
@@ -66,24 +67,24 @@ export const Default = {
         </nav>
         <nav aria-label="Secondary" slot="footer" class="bg-neutral-100">
           <sd-navigation-item vertical class="flex align-center">
-            <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
+            <sd-icon name="system/user" class="text-xl mr-2"></sd-icon>
             My depot
           </sd-navigation-item>
           <sd-navigation-item vertical divider class="flex align-center">
-            <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
+            <sd-icon name="system/lock-locked" class="text-xl mr-2"></sd-icon>
             My application
           </sd-navigation-item>
           <sd-navigation-item vertical divider class="flex align-center">
-            <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
+            <sd-icon name="system/website" class="text-xl mr-2"></sd-icon>
             Our further appearances
           </sd-navigation-item>
         </nav>
       </div>
       <div class="level-two hidden">
         <nav id="level-two-nav" aria-label="About us">
-          <sd-navigation-item vertical id="nav-title" size="lg"><b>About Us</b></sd-navigation-item>
+          <sd-navigation-item vertical id="nav-title" size="lg">About Us</sd-navigation-item>
           <sd-navigation-item vertical divider>
-            <b>Union Investment for privat customers</b>
+            Union Investment for privat customers
             <p slot="description" class="sd-paragraph sd-paragraph--size-sm max-w-[238px]">
               Find out more about us and what we stand for
             </p>
