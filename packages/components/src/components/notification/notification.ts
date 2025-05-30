@@ -1,9 +1,10 @@
 import '../button/button';
 import '../icon/icon';
-import { animateTo, stopAnimations } from '../../internal/animate.js';
+import { animateTo, shimKeyframesHeightAuto, stopAnimations } from '../../internal/animate.js';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry.js';
+import { kebabToCamelCase, uppercaseFirstLetter } from '../../internal/string';
 import { LocalizeController } from '../../utilities/localize.js';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event.js';
@@ -54,6 +55,7 @@ loadStacks();
  * @event sd-after-hide - Emitted after the notification closes and all animations are complete.
  *
  * @csspart base - The component's base wrapper.
+ * @csspart wrapper - The container that wraps all the notification elements.
  * @csspart icon - The container that wraps the optional icon.
  * @csspart content - The container that wraps the notifications's main content and the close button.
  * @csspart message - The container that wraps the notifications's main content.
@@ -71,6 +73,7 @@ export default class SdNotification extends SolidElement {
   public localize = new LocalizeController(this);
 
   @query('[part~="base"]') base: HTMLElement;
+  @query('[part~="wrapper"]') wrapper: HTMLElement;
   @query('[part~="close-button"]') close: HTMLElement;
 
   /** The sd-notification's theme. */
@@ -123,7 +126,7 @@ export default class SdNotification extends SolidElement {
   }
 
   firstUpdated() {
-    this.base.hidden = !this.open;
+    this.wrapper.hidden = !this.open;
   }
 
   private startAutoHide() {
@@ -173,10 +176,24 @@ export default class SdNotification extends SolidElement {
       if (this.duration < Infinity) {
         this.startAutoHide();
       }
-      await stopAnimations(this.base);
-      this.base.hidden = false;
-      const { keyframes, options } = getAnimation(this, 'notification.show', { dir: this.localize.dir() });
-      await animateTo(this.base, keyframes, options);
+
+      await Promise.all([stopAnimations(this.base), stopAnimations(this.wrapper)]);
+      this.wrapper.hidden = false;
+
+      const baseAnimation = getAnimation(this, 'notification.show', { dir: this.localize.dir() });
+      const wrapperAnimation = getAnimation(
+        this,
+        `notification.wrapper.show${uppercaseFirstLetter(kebabToCamelCase(this.toastStack))}`,
+        { dir: this.localize.dir() }
+      );
+      await Promise.all([
+        animateTo(
+          this.base,
+          shimKeyframesHeightAuto(baseAnimation.keyframes, this.base.scrollHeight),
+          baseAnimation.options
+        ),
+        animateTo(this.wrapper, wrapperAnimation.keyframes, wrapperAnimation.options)
+      ]);
 
       this.emit('sd-after-show');
     } else {
@@ -185,10 +202,22 @@ export default class SdNotification extends SolidElement {
 
       clearTimeout(this.autoHideTimeout);
 
-      await stopAnimations(this.base);
-      const { keyframes, options } = getAnimation(this, 'notification.hide', { dir: this.localize.dir() });
-      await animateTo(this.base, keyframes, options);
-      this.base.hidden = true;
+      await Promise.all([stopAnimations(this.base), stopAnimations(this.wrapper)]);
+      const baseAnimation = getAnimation(this, 'notification.hide', { dir: this.localize.dir() });
+      const wrapperAnimation = getAnimation(
+        this,
+        `notification.wrapper.hide${uppercaseFirstLetter(kebabToCamelCase(this.toastStack))}`,
+        { dir: this.localize.dir() }
+      );
+      await Promise.all([
+        animateTo(
+          this.base,
+          shimKeyframesHeightAuto(baseAnimation.keyframes, this.base.scrollHeight),
+          baseAnimation.options
+        ),
+        animateTo(this.wrapper, wrapperAnimation.keyframes, wrapperAnimation.options)
+      ]);
+      this.wrapper.hidden = true;
 
       this.emit('sd-after-hide');
     }
@@ -254,7 +283,7 @@ export default class SdNotification extends SolidElement {
     return html`
       <div
         part="base"
-        class=${cx('w-full overflow-hidden flex items-stretch relative m-2 focus-visible:focus-outline')}
+        class=${cx('w-full flex items-stretch m-2 focus-visible:focus-outline')}
         id="notification"
         tabindex="0"
         role="alert"
@@ -264,74 +293,76 @@ export default class SdNotification extends SolidElement {
         @mouseleave=${this.onHoverEnd}
         @keydown=${this.handleKeyDown}
       >
-        <slot
-          name="icon"
-          part="icon"
-          class=${cx(
-            'min-w-min flex items-center px-3 justify-center',
-            {
-              info: 'bg-info',
-              success: 'bg-success',
-              warning: 'bg-warning',
-              error: 'bg-error'
-            }[this.variant]
-          )}
-        >
-          <sd-icon
-            name=${{
-              info: 'info-circle',
-              success: 'confirm-circle',
-              warning: 'exclamation-circle',
-              error: 'warning'
-            }[this.variant] || ''}
-            library="_internal"
-            class="h-6 w-6 text-white"
-          ></sd-icon>
-        </slot>
+        <div part="wrapper" class=${cx('w-full h-fit overflow-hidden flex items-stretch relative')}>
+          <slot
+            name="icon"
+            part="icon"
+            class=${cx(
+              'min-w-min flex items-center px-3 justify-center',
+              {
+                info: 'bg-info',
+                success: 'bg-success',
+                warning: 'bg-warning',
+                error: 'bg-error'
+              }[this.variant]
+            )}
+          >
+            <sd-icon
+              name=${{
+                info: 'info-circle',
+                success: 'confirm-circle',
+                warning: 'exclamation-circle',
+                error: 'warning'
+              }[this.variant] || ''}
+              library="_internal"
+              class="h-6 w-6 text-white"
+            ></sd-icon>
+          </slot>
 
-        <div
-          part="content"
-          class=${cx(
-            'h-full w-full p-1 gap-2 flex items-center justify-stretch bg-white',
-            'border-solid border-[1px] border-l-0 border-neutral-400'
-          )}
-        >
-          <slot id="message" part="message" class="block w-full pl-3 py-2"></slot>
+          <div
+            part="content"
+            class=${cx(
+              'h-full w-full p-1 gap-2 flex items-center justify-stretch bg-white',
+              'border-solid border-[1px] border-l-0 border-neutral-400'
+            )}
+          >
+            <slot id="message" part="message" class="block w-full pl-3 py-2"></slot>
 
-          ${this.closable
+            ${this.closable
+              ? html`
+                  <sd-button
+                    size="md"
+                    variant="tertiary"
+                    part="close-button"
+                    class="ml-auto flex flex-[0_0_auto] items-stretch"
+                    @click=${this.handleCloseClick}
+                  >
+                    <sd-icon
+                      label=${this.localize.term('close')}
+                      name="close"
+                      library="_internal"
+                      color="currentColor"
+                    ></sd-icon>
+                  </sd-button>
+                `
+              : ''}
+          </div>
+
+          ${this.durationIndicator
             ? html`
-                <sd-button
-                  size="md"
-                  variant="tertiary"
-                  part="close-button"
-                  class="ml-auto flex flex-[0_0_auto] items-stretch"
-                  @click=${this.handleCloseClick}
-                >
-                  <sd-icon
-                    label=${this.localize.term('close')}
-                    name="close"
-                    library="_internal"
-                    color="currentColor"
-                  ></sd-icon>
-                </sd-button>
+                <div
+                  part="duration-indicator__elapsed"
+                  id="duration-indicator__elapsed"
+                  style=${`animation-duration: ${this.duration}ms`}
+                  class=${cx(`absolute w-0 h-[2px] bottom-0 bg-primary z-10 animate-grow`)}
+                ></div>
+                <div
+                  part="duration-indicator__total"
+                  class="w-full h-[2px] bottom-0 absolute border border-neutral-400"
+                ></div>
               `
             : ''}
         </div>
-
-        ${this.durationIndicator
-          ? html`
-              <div
-                part="duration-indicator__elapsed"
-                id="duration-indicator__elapsed"
-                style=${`animation-duration: ${this.duration}ms`}
-                class=${cx(`absolute w-0 h-[2px] bottom-0 bg-primary z-10 animate-grow`)}
-              ></div>
-              <div
-                part="duration-indicator__total"
-                class="w-full h-[2px] bottom-0 absolute border border-neutral-400"
-              ></div>
-            `
-          : ''}
       </div>
     `;
   }
@@ -355,18 +386,28 @@ export default class SdNotification extends SolidElement {
 
 setDefaultAnimation('notification.show', {
   keyframes: [
-    { opacity: 0, scale: 0.8 },
-    { opacity: 1, scale: 1 }
+    { opacity: 0, height: 0 },
+    { opacity: 1, height: 'auto' }
   ],
-  options: { duration: 250, easing: 'ease' }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('notification.hide', {
   keyframes: [
-    { opacity: 1, scale: 1 },
-    { opacity: 0, scale: 0.8 }
+    { opacity: 1, height: 'auto' },
+    { opacity: 0, height: 0 }
   ],
-  options: { duration: 250, easing: 'ease' }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
+});
+
+setDefaultAnimation('notification.wrapper.showTopRight', {
+  keyframes: [{ bottom: '32px' }, { bottom: '0' }],
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
+});
+
+setDefaultAnimation('notification.wrapper.hideTopRight', {
+  keyframes: [{ bottom: '0' }, { bottom: '32px' }],
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
 });
 
 declare global {
