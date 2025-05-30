@@ -397,7 +397,7 @@ setDefaultAnimation('notification.hide', {
     { opacity: 1, height: 'auto' },
     { opacity: 0, height: 0 }
   ],
-  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('notification.wrapper.showTopRight', {
@@ -407,7 +407,7 @@ setDefaultAnimation('notification.wrapper.showTopRight', {
 
 setDefaultAnimation('notification.wrapper.hideTopRight', {
   keyframes: [{ bottom: '0' }, { bottom: '32px' }],
-  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
 });
 
 declare global {
