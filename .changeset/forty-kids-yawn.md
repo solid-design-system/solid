@@ -2,4 +2,4 @@
 '@solid-design-system/components': patch
 ---
 
-Aligned the icons in the navigation-item
+Aligned the icons in the `sd-navigation-item`
