@@ -1,5 +1,59 @@
 # @solid-design-system/components
 
+## 5.0.0
+
+### Major Changes
+
+- Renamed internal icons to `_internal` instead of `system`. _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Fixed `sd-scrollable` `start` and `end` events. _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - (before): `start` event was emitted when there was available scrolling space in the `start` direction ---> (after): `start` event is emitted when the `start` is reached.
+  - (before): `end` event was emitted when there was available scrolling space in the `end` direction ---> (after): `end` event is emitted when the `end` is reached.
+
+- Separated the icon and text slots from the `toggle` button on the `sd-expandable` component. _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Implemented `sd-expandable` motion design.
+
+- Removed `role="status"` from `sd-badge` to provide more a11y flexibility. _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Improved `sd-header` component: _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Improved `--sd-header-calculated-height` property calculation.
+  - Added padding to the `sd-header` element when it has the `fixed` attribute, to prevent the following siblings from being overlapped by the header.
+  - Improved accessibility by removing the `position: fixed` at a certain minimum viewport height, to ensure it doesn't cover much of the screen.
+
+### 📈 Stats
+* Uncompressed: 430 KB (+1 KB / +0%)
+* Gzipped: 101 KB (+1 KB / +1%)
+
+## 4.12.0
+
+### Minor Changes
+
+- Add `sd-textarea` motion design and fix validation icons style. _[`#2223`](https://github.com/solid-design-system/solid/pull/2223) [`c5a5cff`](https://github.com/solid-design-system/solid/commit/c5a5cff81e88fffd8c9cdfe787007c2e3628c60b) [@smfonseca](https://github.com/smfonseca)_
+
+## 4.11.0
+
+### Minor Changes
+
+- Add `sd-switch` motion design and fix border hover style. _[`#2222`](https://github.com/solid-design-system/solid/pull/2222) [`67a6886`](https://github.com/solid-design-system/solid/commit/67a6886cafc1a345fcd1158d6b13b6726003ef9e) [@smfonseca](https://github.com/smfonseca)_
+
+### 📈 Stats
+
+- Uncompressed: 429 KB (+1 KB / +0%)
+- Gzipped: 100 KB (unchanged)
+
+## 4.10.0
+
+### Minor Changes
+
+- Add motion design to `sd-drawer`. _[`#2245`](https://github.com/solid-design-system/solid/pull/2245) [`992fc38`](https://github.com/solid-design-system/solid/commit/992fc385bb3d0a467a7f7832fcf3b3f5ac1704b1) [@balco0110](https://github.com/balco0110)_
+
+## 4.9.0
+
+### Minor Changes
+
+- Implemented `sd-video` motion design. _[`#2221`](https://github.com/solid-design-system/solid/pull/2221) [`64b0678`](https://github.com/solid-design-system/solid/commit/64b06782fab8349959fb479dead41fdb7cf8ce14) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 4.8.2
 
 ### Patch Changes

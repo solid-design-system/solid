@@ -16,7 +16,7 @@
     @apply flex items-center gap-2;
 
     li a {
-      @apply text-primary flex items-center justify-center hover:text-primary-500 active:text-primary-800 transition-[color];
+      @apply no-underline text-primary flex items-center justify-center hover:text-primary-500 active:text-primary-800 transition-[color];
 
       &:focus-visible {
         @apply outline outline-2 outline-offset-2 outline-primary;
@@ -26,14 +26,10 @@
     /* Previous and Next */
     li:first-child,
     li:last-child {
-      @apply w-12 h-12;
+      @apply text-xl w-12 h-12;
 
       a {
         @apply w-full h-full;
-      }
-
-      sd-icon {
-        @apply w-6 h-6;
       }
     }
 
@@ -41,7 +37,7 @@
     li {
       @apply flex items-center justify-center text-center w-8 h-8;
 
-      &:not(:has(a sd-icon)) {
+      &:not(:first-child):not(:last-child) {
         a {
           @apply border-b-2 border-b-transparent w-full h-full;
 
@@ -57,7 +53,8 @@
     }
 
     /* Previous and next arrow when it has no href */
-    li:has(a:not([href]) sd-icon) a {
+    li:first-child:has(a:not([href])) a,
+    li:last-child:has(a:not([href])) a {
       @apply cursor-not-allowed text-neutral-500 hover:text-neutral-500;
     }
   }
@@ -65,7 +62,7 @@
   &:not(.sd-pagination--simple) {
     ul {
       /* Numbers */
-      li:not(:has(a sd-icon)) {
+      li:not(:first-child):not(:last-child) {
         /* Number which is not current */
         &:not(:has(a[aria-current])) {
           @apply absolute pointer-events-none;
@@ -120,7 +117,7 @@
 
         /* When one of the last 4 pages is selected, show the last 4 pages (forward) */
         &:nth-last-child(-n + 5):has(a[aria-current]) {
-          & ~ :nth-last-child(-n + 5):not(:has(a sd-icon)) {
+          & ~ :nth-last-child(-n + 5):not(:first-child):not(:last-child) {
             @apply relative pointer-events-auto after:hidden;
 
             a {
@@ -170,13 +167,14 @@
     ul li {
       @apply after:text-white;
 
-      &:has(a:not([href]) sd-icon) a {
+      &:first-child:has(a:not([href])) a,
+      &:last-child:has(a:not([href])) a {
         @apply text-neutral-600 hover:text-neutral-600;
       }
 
       a,
       a[aria-current] {
-        @apply text-white hover:text-primary-200 active:text-primary-400 hover:text-primary-200;
+        @apply text-white hover:text-primary-200 active:text-primary-400;
 
         &:focus-visible {
           @apply outline-white;

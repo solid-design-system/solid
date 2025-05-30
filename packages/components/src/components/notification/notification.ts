@@ -284,7 +284,7 @@ export default class SdNotification extends SolidElement {
               warning: 'exclamation-circle',
               error: 'warning'
             }[this.variant] || ''}
-            library="system"
+            library="_internal"
             class="h-6 w-6 text-white"
           ></sd-icon>
         </slot>
@@ -310,7 +310,7 @@ export default class SdNotification extends SolidElement {
                   <sd-icon
                     label=${this.localize.term('close')}
                     name="close"
-                    library="system"
+                    library="_internal"
                     color="currentColor"
                   ></sd-icon>
                 </sd-button>

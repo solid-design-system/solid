@@ -567,7 +567,7 @@ export default class SdCarousel extends SolidElement {
               <slot name="previous-icon">
                 <sd-icon
                   class=${cx('h-6 w-6 rotate-90 grid place-items-center')}
-                  library="system"
+                  library="_internal"
                   name="${isLtr ? 'chevron-down' : 'chevron-up'}"
                 ></sd-icon>
               </slot>
@@ -661,7 +661,7 @@ export default class SdCarousel extends SolidElement {
               <slot name="next-icon">
                 <sd-icon
                   class=${cx('h-6 w-6 rotate-90 grid place-items-center')}
-                  library="system"
+                  library="_internal"
                   name="${isLtr ? 'chevron-up' : 'chevron-down'}"
                 ></sd-icon>
               </slot>
@@ -685,11 +685,11 @@ export default class SdCarousel extends SolidElement {
             }}
           >
             <slot name="autoplay-start" class=${cx(!this.pausedAutoplay ? 'hidden' : '')}>
-              <sd-icon class="h-6 w-6 grid place-items-center" library="system" name="start"></sd-icon>
+              <sd-icon class="h-6 w-6 grid place-items-center" library="_internal" name="start"></sd-icon>
             </slot>
 
             <slot name="autoplay-pause" class=${cx(this.pausedAutoplay ? 'hidden' : '')}>
-              <sd-icon class="h-6 w-6 grid place-items-center" library="system" name="pause"></sd-icon>
+              <sd-icon class="h-6 w-6 grid place-items-center" library="_internal" name="pause"></sd-icon>
             </slot>
           </button>
         </div>
