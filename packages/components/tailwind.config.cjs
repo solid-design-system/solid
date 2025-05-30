@@ -13,19 +13,13 @@ theme.extend = {
     },
     'bounce-once': {
       '0%': { transform: 'translateY(0)' },
-      '15%': { transform: 'translateY(-9px)' },
-      '25%': { transform: 'translateY(-12px)' },
-      '40%': { transform: 'translateY(-4px)' },
-      '50%': { transform: 'translateY(0)' },
-      '65%': { transform: 'translateY(-4px)' },
-      '75%': { transform: 'translateY(-6px)' },
-      '90%': { transform: 'translateY(-2px)' },
+      '50%': { transform: 'translateY(-18px)' },
       '100%': { transform: 'translateY(0)' }
     }
   },
   animation: {
     grow: 'grow linear',
-    'bounce-once': 'bounce-once 0.6s ease-in-out'
+    'bounce-once': 'bounce-once var(--sd-duration-medium, 300ms) ease-in-out'
   }
 };
 
