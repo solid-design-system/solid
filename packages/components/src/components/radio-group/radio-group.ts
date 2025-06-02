@@ -1,3 +1,4 @@
+import '../button-group/button-group';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import {
@@ -10,7 +11,6 @@ import { HasSlotController } from '../../internal/slot';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
-import SdButtonGroup from '../button-group/button-group';
 import SdRadio from '../../components/radio/radio';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
@@ -43,8 +43,6 @@ import type SdRadioButton from '../../components/radio-button/radio-button';
 
 @customElement('sd-radio-group')
 export default class SdRadioGroup extends SolidElement implements SolidFormControl {
-  static dependencies = { 'sd-button-group': SdButtonGroup };
-
   protected readonly formControlController: FormControlController = new FormControlController(this);
   private readonly hasSlotController = new HasSlotController(this, 'label', 'error-text');
   private customValidityMessage = '';
