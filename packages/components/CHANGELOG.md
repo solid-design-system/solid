@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 5.2.2
+
+### Patch Changes
+
+- Adjusted `sd-quickfact` motion design values. _[`#2255`](https://github.com/solid-design-system/solid/pull/2255) [`c73c76c`](https://github.com/solid-design-system/solid/commit/c73c76cabed3374db1d1766d4cf1e7b3fd4195b7) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+* Uncompressed: 432 KB (+1 KB / +0%)
+* Gzipped: 101 KB (unchanged)
+
 ## 5.2.1
 
 ### Patch Changes
@@ -7,8 +17,9 @@
 - Fixed components imports (eg. `sd-drawer`, `sd-popup`) _[`#2202`](https://github.com/solid-design-system/solid/pull/2202) [`003a058`](https://github.com/solid-design-system/solid/commit/003a0581708cc927d3d9259d81ae7089af13bd72) [@mariohamann](https://github.com/mariohamann)_
 
 ### 📈 Stats
-* Uncompressed: 431 KB (-1 KB / 0%)
-* Gzipped: 101 KB (unchanged)
+
+- Uncompressed: 431 KB (-1 KB / 0%)
+- Gzipped: 101 KB (unchanged)
 
 ## 5.2.0
 
