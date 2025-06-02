@@ -386,19 +386,13 @@ export default class SdTooltip extends SolidElement {
 }
 
 setDefaultAnimation('tooltip.show', {
-  keyframes: [
-    { opacity: 0, scale: 0.8 },
-    { opacity: 1, scale: 1 }
-  ],
-  options: { duration: 150, easing: 'ease' }
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('tooltip.hide', {
-  keyframes: [
-    { opacity: 1, scale: 1 },
-    { opacity: 0, scale: 0.8 }
-  ],
-  options: { duration: 150, easing: 'ease' }
+  keyframes: [{ opacity: 1 }, { opacity: 0 }],
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
 });
 
 declare global {
