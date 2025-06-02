@@ -1,5 +1,11 @@
 # @solid-design-system/styles
 
+## 1.4.1
+
+### Patch Changes
+
+- Fixed issue with package version to correctly publish package in NPM. _[`#2258`](https://github.com/solid-design-system/solid/pull/2258) [`afd4811`](https://github.com/solid-design-system/solid/commit/afd481190d771171b1872798e9d00cf0919ee80a) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.4.0
 
 ### Minor Changes
