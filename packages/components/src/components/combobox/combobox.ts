@@ -1210,7 +1210,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           <div
             part="border"
             class=${cx(
-              'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10',
+              'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10 transition-[border] duration-medium ease-in-out',
               {
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
@@ -1248,9 +1248,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
             <div
               part="combobox"
               class=${cx(
-                'relative w-full px-4 flex flex-row items-center rounded-default',
+                'relative w-full px-4 flex flex-row items-center rounded-default transition-colors hover:duration-fast ease-in-out',
                 this.visuallyDisabled || this.disabled ? 'hover:bg-transparent' : 'hover:bg-neutral-200',
-                this.open && 'shadow',
+                this.open && 'shadow transition-shadow duration-medium ease-in-out',
                 {
                   sm: 'py-1 min-h-[32px]',
                   md: 'py-1 min-h-[40px]',
@@ -1339,9 +1339,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                     >
                       <slot name="clear-icon">
                         <sd-icon
-                          class=${cx('text-icon-fill-neutral-800', iconSize)}
+                          class=${cx('text-neutral-700', iconSize)}
                           name="closing-round"
-                          library="system"
+                          library="_internal"
                         ></sd-icon>
                       </slot>
                     </button>
@@ -1352,7 +1352,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                     <sd-icon
                       part="invalid-icon"
                       class=${cx(iconMarginLeft, iconSize, 'text-error')}
-                      library="system"
+                      library="_internal"
                       name="risk"
                     ></sd-icon>
                   `
@@ -1362,7 +1362,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                     <sd-icon
                       part="valid-icon"
                       class=${cx('flex-shrink-0 text-success', iconMarginLeft, iconSize)}
-                      library="system"
+                      library="_internal"
                       name="status-check"
                     ></sd-icon>
                   `
@@ -1378,10 +1378,13 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               >
                 ${this.type !== 'search'
                   ? html`<sd-icon
-                      class=${cx('transition-all', this.open ? 'rotate-180' : 'rotate-0')}
+                      class=${cx(
+                        'transition-transform duration-medium ease-in-out',
+                        this.open ? 'rotate-180' : 'rotate-0'
+                      )}
                       name="chevron-down"
                       part="chevron"
-                      library="system"
+                      library="_internal"
                       color="currentColor"
                       label=${this.localize.term('open')}
                     ></sd-icon>`
@@ -1392,7 +1395,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                     <button class=${cx('flex items-center sd-interactive', iconMarginLeft)} type="button">
                       <sd-icon
                         class=${cx(iconColor, iconSize)}
-                        library="system"
+                        library="_internal"
                         name="magnifying-glass"
                         label=${this.localize.term('search')}
                       ></sd-icon>
@@ -1418,7 +1421,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               part="listbox"
               class=${cx(
                 'bg-white px-2 py-3 relative border-primary overflow-y-auto',
-                this.open && 'shadow',
+                this.open && 'shadow transition-shadow duration-medium ease-in-out',
                 this.currentPlacement === 'bottom'
                   ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
                   : 'border-r-2 border-t-2 border-l-2 rounded-tr-default rounded-tl-default'
@@ -1524,19 +1527,13 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 }
 
 setDefaultAnimation('combobox.show', {
-  keyframes: [
-    { opacity: 0, scale: 0.9 },
-    { opacity: 1, scale: 1 }
-  ],
-  options: { duration: 100, easing: 'ease' }
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('combobox.hide', {
-  keyframes: [
-    { opacity: 1, scale: 1 },
-    { opacity: 0, scale: 0.9 }
-  ],
-  options: { duration: 100, easing: 'ease' }
+  keyframes: [{ opacity: 1 }, { opacity: 0 }],
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
 });
 
 declare global {

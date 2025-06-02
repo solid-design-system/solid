@@ -113,7 +113,7 @@ export default class SdMenuItem extends SolidElement {
     })}
       >
         <span part="checked-icon" class="menu-item__check">
-          <sd-icon name="check" library="system" aria-hidden="true"></sd-icon>
+          <sd-icon name="check" library="_internal" aria-hidden="true"></sd-icon>
         </span>
 
         <slot name="prefix" part="prefix" class="menu-item__prefix"></slot>
@@ -123,7 +123,7 @@ export default class SdMenuItem extends SolidElement {
         <slot name="suffix" part="suffix" class="menu-item__suffix"></slot>
 
         <span class="menu-item__chevron">
-          <sd-icon name="chevron-right" library="system" aria-hidden="true"></sd-icon>
+          <sd-icon name="chevron-right" library="_internal" aria-hidden="true"></sd-icon>
         </span>
       </div>
     `;

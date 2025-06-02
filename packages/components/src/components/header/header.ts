@@ -1,7 +1,7 @@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { debounce } from '../../internal/debounce.js';
-import { property } from 'lit/decorators.js';
+import { property, query } from 'lit/decorators.js';
 import SolidElement from '../../internal/solid-element';
 import type { PropertyValues } from 'lit';
 
@@ -25,65 +25,52 @@ export default class SdHeader extends SolidElement {
   /**  Determines whether the header is fixed or not. If the header is fixed at the top of the page, a shadow is shown underneath. */
   @property({ reflect: true, type: Boolean }) fixed = false;
 
-  private refHeaderElement?: HTMLElement;
+  @query('header') header: HTMLElement;
+
   private resizeObserver?: ResizeObserver;
 
   connectedCallback(): void {
     super.connectedCallback();
-    this.setCalculatedHeightProperty = this.setCalculatedHeightProperty.bind(this);
+    this.updateCalculatedHeight = this.updateCalculatedHeight.bind(this);
     this.addResizeObserver = this.addResizeObserver.bind(this);
+    window.addEventListener('resize', this.updateCalculatedHeight);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    window.removeEventListener('resize', this.updateCalculatedHeight);
   }
 
   firstUpdated(): void {
-    this.toggleHeightCalculation();
-  }
-
-  toggleHeightCalculation(): void {
-    if (this.fixed) {
-      this.setCalculatedHeightProperty();
-      this.addResizeObserver();
-    } else {
-      this.setCalculatedHeightProperty();
-      this.resizeObserver?.disconnect();
-      this.resizeObserver = undefined;
-    }
-  }
-
-  disconnectedCallback(): void {
-    super.disconnectedCallback();
+    this.updateCalculatedHeight();
+    this.addResizeObserver();
   }
 
   updated(changedProperties: PropertyValues): void {
     super.updated(changedProperties);
 
     if (changedProperties.has('fixed')) {
-      this.toggleHeightCalculation();
-    }
-  }
-
-  @debounce(100)
-  private onResize(): void {
-    if (this.fixed) {
-      this.setCalculatedHeightProperty();
+      this.updateCalculatedHeight();
     }
   }
 
   private addResizeObserver(): void {
-    this.resizeObserver = new ResizeObserver(() => {
-      this.onResize();
-    });
+    this.resizeObserver = new ResizeObserver(this.updateCalculatedHeight);
 
-    if (this.refHeaderElement) {
-      this.resizeObserver.observe(this.refHeaderElement);
+    if (!this.header) {
+      return;
     }
+
+    this.resizeObserver.observe(this.header);
   }
 
-  private setCalculatedHeightProperty(): void {
-    if (this.fixed && this.refHeaderElement) {
-      document.documentElement.style.setProperty(
-        '--sd-header-calculated-height',
-        `${this.refHeaderElement.clientHeight}px`
-      );
+  @debounce(100)
+  private updateCalculatedHeight(): void {
+    const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const windowHeightInRem = window.innerHeight / rem;
+
+    if (this.header && this.fixed && windowHeightInRem >= 32) {
+      document.documentElement.style.setProperty('--sd-header-calculated-height', `${this.header.clientHeight}px`);
     } else {
       document.documentElement.style.removeProperty('--sd-header-calculated-height');
     }
@@ -91,20 +78,12 @@ export default class SdHeader extends SolidElement {
 
   render() {
     return html`
-      <header class="w-full bg-white relative" role="banner" @slotchange=${this.handleSlotChange}>
+      <header class="w-full bg-white relative" role="banner">
         <div part="main" class="relative mx-auto my-0 box-border">
           <slot></slot>
         </div>
       </header>
     `;
-  }
-
-  private handleSlotChange(event: Event): void {
-    const slot = event.target as HTMLSlotElement;
-    if (slot.assignedElements().length > 0) {
-      this.refHeaderElement = event.currentTarget as HTMLElement;
-      this.setCalculatedHeightProperty();
-    }
   }
 
   static styles = [
@@ -113,15 +92,22 @@ export default class SdHeader extends SolidElement {
       :host {
         @apply block;
       }
-      :host([fixed]) {
-        @apply fixed w-full left-0 top-0;
-        header::after {
-          content: '';
-          @apply absolute left-0 right-0 top-full h-2;
-          background: var(
-            --gradient-vertical-black-40-transparent,
-            linear-gradient(0deg, #18181800 50%, #18181866 100%)
-          );
+
+      @media (min-height: 32rem) {
+        :host([fixed]) {
+          padding-bottom: var(--sd-header-calculated-height);
+
+          header {
+            @apply fixed w-full left-0 top-0;
+
+            &::after {
+              @apply content-[''] absolute left-0 right-0 top-full h-2;
+              background: var(
+                --gradient-vertical-black-40-transparent,
+                linear-gradient(0deg, #18181800 50%, #18181866 100%)
+              );
+            }
+          }
         }
       }
 

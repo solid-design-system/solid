@@ -1,5 +1,25 @@
 # @solid-design-system/styles
 
+## 1.4.1
+
+### Patch Changes
+
+- Fixed issue with package version to correctly publish package in NPM. _[`#2258`](https://github.com/solid-design-system/solid/pull/2258) [`afd4811`](https://github.com/solid-design-system/solid/commit/afd481190d771171b1872798e9d00cf0919ee80a) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.4.0
+
+### Minor Changes
+
+> **Note:** This version is currently unpublished on NPM and cannot be used. All changes introduced here, are available on version 1.4.1
+
+- Adjusted `sd-interactive` transition duration values. _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.3.3
+
+### Patch Changes
+
+- Fix styles on `sd-pagination` arrow icons when using versioned `sd-icon` component. _[`#2251`](https://github.com/solid-design-system/solid/pull/2251) [`f086b08`](https://github.com/solid-design-system/solid/commit/f086b084171a2bb300f0607e93a334f6d843ec92) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.3.2
 
 ### Patch Changes

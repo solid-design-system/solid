@@ -943,7 +943,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           <div
             part="border"
             class=${cx(
-              'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10',
+              'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10 transition-[border] duration-medium ease-in-out',
               {
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
@@ -980,7 +980,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           >
             <div
               class=${cx(
-                'relative w-full h-full grid grid-cols-1',
+                'relative w-full h-full grid grid-cols-1 rounded-default transition-colors hover:duration-fast ease-in-out',
                 this.visuallyDisabled || this.disabled ? 'hover:bg-transparent' : 'hover:bg-neutral-200'
               )}
               slot="anchor"
@@ -1060,8 +1060,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                       >
                         <slot name="clear-icon">
                           <sd-icon
-                            class=${cx('text-icon-fill-neutral-800 z-10', iconSize)}
-                            library="system"
+                            class=${cx('text-neutral-700 z-10', iconSize)}
+                            library="_internal"
                             name="closing-round"
                           ></sd-icon>
                         </slot>
@@ -1073,7 +1073,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                       <sd-icon
                         part="invalid-icon"
                         class=${cx(iconMarginLeft, iconSize, 'text-error')}
-                        library="system"
+                        library="_internal"
                         name="risk"
                       ></sd-icon>
                     `
@@ -1083,7 +1083,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                       <sd-icon
                         part="valid-icon"
                         class=${cx('flex-shrink-0 text-success', iconMarginLeft, iconSize)}
-                        library="system"
+                        library="_internal"
                         name="status-check"
                       ></sd-icon>
                     `
@@ -1092,13 +1092,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   name="expand-icon"
                   part="expand-icon"
                   class=${cx(
-                    'inline-flex ml-2 transition-all items-center',
+                    'inline-flex ml-2 items-center transition-transform duration-medium ease-in-out',
                     this.open ? 'rotate-180' : 'rotate-0',
                     this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary',
                     iconSize
                   )}
                 >
-                  <sd-icon name="chevron-down" part="chevron" library="system" color="currentColor"></sd-icon>
+                  <sd-icon name="chevron-down" part="chevron" library="_internal" color="currentColor"></sd-icon>
                 </slot>
               </div>
 
@@ -1107,7 +1107,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 class=${cx(
                   'relative w-full px-4 flex flex-row items-center rounded-default focus-visible:outline-none',
                   cursorStyles,
-                  this.open && 'shadow',
+                  this.open && 'shadow transition-shadow duration-medium ease-in-out',
                   {
                     sm: 'min-h-[32px]',
                     md: 'min-h-[40px]',
@@ -1132,7 +1132,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               part="listbox"
               class=${cx(
                 'bg-white px-2 py-3 relative border-primary overflow-y-auto',
-                this.open && 'shadow',
+                this.open && 'shadow transition-shadow duration-medium ease-in-out',
                 this.currentPlacement === 'bottom'
                   ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
                   : 'border-r-2 border-t-2 border-l-2 rounded-tr-default rounded-tl-default'
@@ -1213,21 +1213,14 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 }
 
 setDefaultAnimation('select.show', {
-  keyframes: [
-    { opacity: 0, scale: 0.9 },
-    { opacity: 1, scale: 1 }
-  ],
-  options: { duration: 100, easing: 'ease' }
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('select.hide', {
-  keyframes: [
-    { opacity: 1, scale: 1 },
-    { opacity: 0, scale: 0.9 }
-  ],
-  options: { duration: 100, easing: 'ease' }
+  keyframes: [{ opacity: 1 }, { opacity: 0 }],
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
 });
-
 declare global {
   interface HTMLElementTagNameMap {
     'sd-select': SdSelect;

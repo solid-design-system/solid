@@ -548,7 +548,7 @@ export default class SdCarousel extends SolidElement {
               id="carousel__navigation-button--previous"
               ?disabled=${!prevEnabled ? true : false}
               class=${cx(
-                '!mr-6 !rounded-sm sd-interactive',
+                '!mr-6 !rounded-sm sd-interactive transition-colors duration-fast ease-in-out',
                 !prevEnabled && 'sd-interactive--disabled',
                 this.inverted ? 'sd-interactive--inverted' : 'sd-interactive--reset'
               )}
@@ -567,7 +567,7 @@ export default class SdCarousel extends SolidElement {
               <slot name="previous-icon">
                 <sd-icon
                   class=${cx('h-6 w-6 rotate-90 grid place-items-center')}
-                  library="system"
+                  library="_internal"
                   name="${isLtr ? 'chevron-down' : 'chevron-up'}"
                 ></sd-icon>
               </slot>
@@ -604,7 +604,7 @@ export default class SdCarousel extends SolidElement {
                         >
                           <span
                             class=${cx(
-                              'h-4 w-4 block border hover:border-primary-500 rounded-full',
+                              'h-4 w-4 block border hover:border-primary-500 rounded-full transition-colors duration-slow hover:duration-fast ease-in-out',
                               this.inverted ? 'border-white hover:border-primary-500' : 'border-primary',
                               isActive && 'bg-accent border-none',
                               isActive ? (this.inverted ? 'hover:bg-accent-300' : 'hover:bg-accent-550') : ''
@@ -642,7 +642,7 @@ export default class SdCarousel extends SolidElement {
               id="carousel__navigation-button--next"
               ?disabled=${!nextEnabled ? true : false}
               class=${cx(
-                '!ml-6 !rounded-sm sd-interactive ',
+                '!ml-6 !rounded-sm sd-interactive transition-colors duration-fast ease-in-out',
                 !nextEnabled && 'sd-interactive--disabled',
                 this.inverted ? 'sd-interactive--inverted' : 'sd-interactive--reset'
               )}
@@ -661,7 +661,7 @@ export default class SdCarousel extends SolidElement {
               <slot name="next-icon">
                 <sd-icon
                   class=${cx('h-6 w-6 rotate-90 grid place-items-center')}
-                  library="system"
+                  library="_internal"
                   name="${isLtr ? 'chevron-up' : 'chevron-down'}"
                 ></sd-icon>
               </slot>
@@ -685,11 +685,11 @@ export default class SdCarousel extends SolidElement {
             }}
           >
             <slot name="autoplay-start" class=${cx(!this.pausedAutoplay ? 'hidden' : '')}>
-              <sd-icon class="h-6 w-6 grid place-items-center" library="system" name="start"></sd-icon>
+              <sd-icon class="h-6 w-6 grid place-items-center" library="_internal" name="start"></sd-icon>
             </slot>
 
             <slot name="autoplay-pause" class=${cx(this.pausedAutoplay ? 'hidden' : '')}>
-              <sd-icon class="h-6 w-6 grid place-items-center" library="system" name="pause"></sd-icon>
+              <sd-icon class="h-6 w-6 grid place-items-center" library="_internal" name="pause"></sd-icon>
             </slot>
           </button>
         </div>

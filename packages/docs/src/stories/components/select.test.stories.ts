@@ -99,8 +99,8 @@ export const Default = {
 
 export const SizeMultiple = {
   name: 'Size x Multiple',
-  render: (args: { 'open-attr'?: string }) => {
-    delete args['open-attr'];
+  render: (args: { open?: string }) => {
+    delete args['open'];
 
     return html`<div class="h-[340px]">
       ${generateTemplate({

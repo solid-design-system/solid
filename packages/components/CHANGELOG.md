@@ -1,5 +1,162 @@
 # @solid-design-system/components
 
+## 5.2.0
+
+### Minor Changes
+
+- Implemented `sd-scrollable` motion design. _[`#2254`](https://github.com/solid-design-system/solid/pull/2254) [`91d1c32`](https://github.com/solid-design-system/solid/commit/91d1c32f31ca2d96171933879fb7e2595bacf9b5) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+* Uncompressed: 432 KB (+1 KB / +0%)
+* Gzipped: 101 KB (unchanged)
+
+## 5.1.0
+
+### Minor Changes
+
+- Implemented `sd-map-marker` motion design. _[`#2253`](https://github.com/solid-design-system/solid/pull/2253) [`f079703`](https://github.com/solid-design-system/solid/commit/f07970394af4857b3dc26c737759831cf9f6676c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+
+- Uncompressed: 431 KB (+1 KB / +0%)
+- Gzipped: 101 KB (unchanged)
+
+## 5.0.1
+
+### Patch Changes
+
+- Adjusted `sd-tooltip` motion design values. _[`#2260`](https://github.com/solid-design-system/solid/pull/2260) [`f745474`](https://github.com/solid-design-system/solid/commit/f745474c86bc6a23fa5455d97efeddc4010ec763) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 5.0.0
+
+### Major Changes
+
+- Renamed internal icons to `_internal` instead of `system`. _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Fixed `sd-scrollable` `start` and `end` events. _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - (before): `start` event was emitted when there was available scrolling space in the `start` direction ---> (after): `start` event is emitted when the `start` is reached.
+  - (before): `end` event was emitted when there was available scrolling space in the `end` direction ---> (after): `end` event is emitted when the `end` is reached.
+
+- Separated the icon and text slots from the `toggle` button on the `sd-expandable` component. _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Implemented `sd-expandable` motion design.
+
+- Removed `role="status"` from `sd-badge` to provide more a11y flexibility. _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Improved `sd-header` component: _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Improved `--sd-header-calculated-height` property calculation.
+  - Added padding to the `sd-header` element when it has the `fixed` attribute, to prevent the following siblings from being overlapped by the header.
+  - Improved accessibility by removing the `position: fixed` at a certain minimum viewport height, to ensure it doesn't cover much of the screen.
+
+### 📈 Stats
+
+- Uncompressed: 430 KB (+1 KB / +0%)
+- Gzipped: 101 KB (+1 KB / +1%)
+
+## 4.12.0
+
+### Minor Changes
+
+- Add `sd-textarea` motion design and fix validation icons style. _[`#2223`](https://github.com/solid-design-system/solid/pull/2223) [`c5a5cff`](https://github.com/solid-design-system/solid/commit/c5a5cff81e88fffd8c9cdfe787007c2e3628c60b) [@smfonseca](https://github.com/smfonseca)_
+
+## 4.11.0
+
+### Minor Changes
+
+- Add `sd-switch` motion design and fix border hover style. _[`#2222`](https://github.com/solid-design-system/solid/pull/2222) [`67a6886`](https://github.com/solid-design-system/solid/commit/67a6886cafc1a345fcd1158d6b13b6726003ef9e) [@smfonseca](https://github.com/smfonseca)_
+
+### 📈 Stats
+
+- Uncompressed: 429 KB (+1 KB / +0%)
+- Gzipped: 100 KB (unchanged)
+
+## 4.10.0
+
+### Minor Changes
+
+- Add motion design to `sd-drawer`. _[`#2245`](https://github.com/solid-design-system/solid/pull/2245) [`992fc38`](https://github.com/solid-design-system/solid/commit/992fc385bb3d0a467a7f7832fcf3b3f5ac1704b1) [@balco0110](https://github.com/balco0110)_
+
+## 4.9.0
+
+### Minor Changes
+
+- Implemented `sd-video` motion design. _[`#2221`](https://github.com/solid-design-system/solid/pull/2221) [`64b0678`](https://github.com/solid-design-system/solid/commit/64b06782fab8349959fb479dead41fdb7cf8ce14) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.8.2
+
+### Patch Changes
+
+- Update `sd-select` and `sd-combobox` animations. _[`#2224`](https://github.com/solid-design-system/solid/pull/2224) [`039ab9a`](https://github.com/solid-design-system/solid/commit/039ab9a6a9e3dc3cfdf16d67353f92fc18c25db2) [@smfonseca](https://github.com/smfonseca)_
+
+## 4.8.1
+
+### Patch Changes
+
+- Fix `sd-button` slot `icon-left` alignment on full width buttons. _[`#2244`](https://github.com/solid-design-system/solid/pull/2244) [`643ae18`](https://github.com/solid-design-system/solid/commit/643ae187c6772e3721140ad4cebb8d8e96855540) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.8.0
+
+### Minor Changes
+
+- Added motion design to `sd-input`. _[`#2227`](https://github.com/solid-design-system/solid/pull/2227) [`b98f363`](https://github.com/solid-design-system/solid/commit/b98f363041f200dc9f9d280932179052ef0b1d49) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+
+- Uncompressed: 428 KB (+1 KB / +0%)
+- Gzipped: 100 KB (unchanged)
+
+## 4.7.2
+
+### Patch Changes
+
+- Fixed `sd-button` z-index. _[`#2234`](https://github.com/solid-design-system/solid/pull/2234) [`4f27be7`](https://github.com/solid-design-system/solid/commit/4f27be79ee38a98a07e5f141ac926ff01a392713) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 4.7.1
+
+### Patch Changes
+
+- Fixed `sd-button` motion design on sd-audio. _[`#2230`](https://github.com/solid-design-system/solid/pull/2230) [`283d350`](https://github.com/solid-design-system/solid/commit/283d350e49bdd673be0d0a3b4e650a07386468c9) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Implemented new part `motion-wrapper` to `sd-button`.
+
+## 4.7.0
+
+### Minor Changes
+
+- Implement internal function to retrieve token values from CSS. _[`#1901`](https://github.com/solid-design-system/solid/pull/1901) [`05854b6`](https://github.com/solid-design-system/solid/commit/05854b6ca0e0594a26a5d3f70b15baa1cd3b4033) [@MartaPintoTeixeira](https://github.com/MartaPintoTeixeira)_
+
+  Implemented `sd-dialog` motion design.
+
+  Implemented `sd-button` motion design.
+
+  Implemented `sd-navigation-item` motion design.
+
+  Implemented `sd-option` motion design.
+
+  Implemented `sd-combobox` motion design.
+
+  Implemented `sd-dropdown` motion design.
+
+  Implemented `sd-select` motion design.
+
+  Implemented `sd-carousel` motion design on the dots and arrows.
+
+  Implemented `sd-tag` motion design:
+
+  - Implement new `hide` method to visually hide the `sd-tag`.
+  - Implement new `sd-hide` and `sd-after-hide` events, which are triggered by the `hide` method.
+
+### 📈 Stats
+
+- Uncompressed: 427 KB (+6 KB / +1%)
+- Gzipped: 100 KB (+1 KB / +1%)
+
+## 4.6.18
+
+### Patch Changes
+
+- Updated the color of the clearable icon in sd-select, sd-input, sd-combobox _[`#2216`](https://github.com/solid-design-system/solid/pull/2216) [`5f507c3`](https://github.com/solid-design-system/solid/commit/5f507c367d25fc0f2bc830e3d0d964dd1740b1fd) [@balco0110](https://github.com/balco0110)_
+
 ## 4.6.17
 
 ### Patch Changes
@@ -7,8 +164,9 @@
 - Fixed text getting cut-off by valid/invalid icon on `sd-textarea`. _[`#2159`](https://github.com/solid-design-system/solid/pull/2159) [`fbf93a5`](https://github.com/solid-design-system/solid/commit/fbf93a5c0a535ee598c23aa8670923ccddcae623) [@paulovareiro29](https://github.com/paulovareiro29)_
 
 ### 📈 Stats
-* Uncompressed: 421 KB (-1 KB / 0%)
-* Gzipped: 99 KB (unchanged)
+
+- Uncompressed: 421 KB (-1 KB / 0%)
+- Gzipped: 99 KB (unchanged)
 
 ## 4.6.16
 

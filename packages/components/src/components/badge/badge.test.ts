@@ -9,12 +9,6 @@ describe('<sd-badge>', () => {
   let el: SdBadge;
 
   describe('when provided no parameters', () => {
-    it('should pass accessibility tests with a role of status on the base part.', async () => {
-      el = await fixture<SdBadge>(html` <sd-badge>Badge</sd-badge> `);
-      expect(el.shadowRoot!.querySelector('[part~="base"]')!.getAttribute('role')).to.eq('status');
-      await expect(el).to.be.accessible();
-    });
-
     it('should have the aria-labelledby attribute set correctly', async () => {
       el = await fixture<SdBadge>(html` <sd-badge>Badge</sd-badge> `);
       expect(el.shadowRoot!.querySelector('[part~="base"]')!.getAttribute('aria-labelledby')).to.eq('content');
