@@ -186,7 +186,7 @@ export default class SdAccordion extends SolidElement {
           part="header"
           id="header"
           class=${cx(
-            'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus-visible:focus-outline text-primary relative group transition-colors ease-in-out duration-medium hover:duration-fast hover:bg-neutral-200 border-neutral-400'
+            'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus-visible:focus-outline text-primary relative group transition-colors ease-in-out duration-medium hover:duration-fast hover:bg-neutral-200'
           )}
           aria-expanded=${this.open ? 'true' : 'false'}
           aria-controls="content"
