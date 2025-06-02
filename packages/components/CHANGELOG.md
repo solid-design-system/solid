@@ -1,5 +1,37 @@
 # @solid-design-system/components
 
+## 5.2.1
+
+### Patch Changes
+
+- Fixed components imports (eg. `sd-drawer`, `sd-popup`) _[`#2202`](https://github.com/solid-design-system/solid/pull/2202) [`003a058`](https://github.com/solid-design-system/solid/commit/003a0581708cc927d3d9259d81ae7089af13bd72) [@mariohamann](https://github.com/mariohamann)_
+
+### 📈 Stats
+* Uncompressed: 431 KB (-1 KB / 0%)
+* Gzipped: 101 KB (unchanged)
+
+## 5.2.0
+
+### Minor Changes
+
+- Implemented `sd-scrollable` motion design. _[`#2254`](https://github.com/solid-design-system/solid/pull/2254) [`91d1c32`](https://github.com/solid-design-system/solid/commit/91d1c32f31ca2d96171933879fb7e2595bacf9b5) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+
+- Uncompressed: 432 KB (+1 KB / +0%)
+- Gzipped: 101 KB (unchanged)
+
+## 5.1.0
+
+### Minor Changes
+
+- Implemented `sd-map-marker` motion design. _[`#2253`](https://github.com/solid-design-system/solid/pull/2253) [`f079703`](https://github.com/solid-design-system/solid/commit/f07970394af4857b3dc26c737759831cf9f6676c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+
+- Uncompressed: 431 KB (+1 KB / +0%)
+- Gzipped: 101 KB (unchanged)
+
 ## 5.0.1
 
 ### Patch Changes
