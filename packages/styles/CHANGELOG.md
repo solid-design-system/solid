@@ -4,6 +4,8 @@
 
 ### Minor Changes
 
+> **Note:** This version is currently unpublished on NPM and cannot be used. All changes introduced here, are available on version 1.4.1
+
 - Adjusted `sd-interactive` transition duration values. _[`#2217`](https://github.com/solid-design-system/solid/pull/2217) [`ac48614`](https://github.com/solid-design-system/solid/commit/ac486145c19c83f646ad16a9dddde35a6e90a6eb) [@paulovareiro29](https://github.com/paulovareiro29)_
 
 ## 1.3.3
