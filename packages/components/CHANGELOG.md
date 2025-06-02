@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.0.1
+
+### Patch Changes
+
+- Adjusted `sd-tooltip` motion design values. _[`#2260`](https://github.com/solid-design-system/solid/pull/2260) [`f745474`](https://github.com/solid-design-system/solid/commit/f745474c86bc6a23fa5455d97efeddc4010ec763) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.0.0
 
 ### Major Changes
@@ -22,8 +28,9 @@
   - Improved accessibility by removing the `position: fixed` at a certain minimum viewport height, to ensure it doesn't cover much of the screen.
 
 ### 📈 Stats
-* Uncompressed: 430 KB (+1 KB / +0%)
-* Gzipped: 101 KB (+1 KB / +1%)
+
+- Uncompressed: 430 KB (+1 KB / +0%)
+- Gzipped: 101 KB (+1 KB / +1%)
 
 ## 4.12.0
 
