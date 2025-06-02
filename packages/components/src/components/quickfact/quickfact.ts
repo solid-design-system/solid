@@ -67,7 +67,7 @@ export default class SdQuickfact extends SdAccordion {
           <span
             part="summary-icon"
             class=${cx(
-              'flex flex-grow-0 flex-shrink-0 flex-auto self-start sm:self-center transition-transform ease-in-out duration-medium text-xl sm:text-4xl sm:mt-2',
+              'flex flex-grow-0 flex-shrink-0 flex-auto self-start sm:self-center transition-[transform,colors] ease-in-out duration-medium text-xl sm:text-4xl sm:mt-2',
               this.open && 'rotate-180',
               !this.expandable && 'hidden'
             )}
@@ -101,6 +101,14 @@ export default class SdQuickfact extends SdAccordion {
 
       [part='icon'] {
         font-size: var(--sd-spacing-12, 3rem);
+      }
+
+      [part='header']:hover [part='summary-icon'] {
+        @apply text-primary-500;
+      }
+
+      [part='header']:active [part='summary-icon'] {
+        @apply text-primary-800;
       }
 
       @media (min-width: 640px) {
