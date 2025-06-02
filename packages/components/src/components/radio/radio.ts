@@ -127,7 +127,7 @@ export default class SdRadio extends SolidElement {
               : this.invalid
                 ? 'border-error hover:border-error-400 group-hover:border-error-400'
                 : this.checked
-                  ? 'border-accent duration-fast ease-in-out hover:border-accent-550 group-hover:border-accent-550'
+                  ? 'border-accent duration-fast hover:border-accent-550 group-hover:border-accent-550'
                   : 'border-neutral-800 duration-fast ease-in-out hover:bg-neutral-200 group-hover:bg-neutral-200'
           )}
         >
