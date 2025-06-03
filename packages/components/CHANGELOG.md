@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 5.3.0
+
+### Minor Changes
+
+- Implemented `sd-accordion` motion design. _[`#2257`](https://github.com/solid-design-system/solid/pull/2257) [`cfefc0b`](https://github.com/solid-design-system/solid/commit/cfefc0ba18924eca18b281f6b3bbc6c66cd754dc) [@balco0110](https://github.com/balco0110)_
+
+### Patch Changes
+
+- Aligned the icons in the `sd-navigation-item` _[`#2210`](https://github.com/solid-design-system/solid/pull/2210) [`d8bc555`](https://github.com/solid-design-system/solid/commit/d8bc555c8d8e361802ce0d4d97f976b761518a87) [@balco0110](https://github.com/balco0110)_
+
 ## 5.2.2
 
 ### Patch Changes
@@ -7,8 +17,9 @@
 - Adjusted `sd-quickfact` motion design values. _[`#2255`](https://github.com/solid-design-system/solid/pull/2255) [`c73c76c`](https://github.com/solid-design-system/solid/commit/c73c76cabed3374db1d1766d4cf1e7b3fd4195b7) [@paulovareiro29](https://github.com/paulovareiro29)_
 
 ### 📈 Stats
-* Uncompressed: 432 KB (+1 KB / +0%)
-* Gzipped: 101 KB (unchanged)
+
+- Uncompressed: 432 KB (+1 KB / +0%)
+- Gzipped: 101 KB (unchanged)
 
 ## 5.2.1
 
