@@ -153,7 +153,7 @@ export default class SdNavigationItem extends SolidElement {
       children: this.hasSlotController.test('children')
     };
 
-    const horizontalPaddingBottom = this.vertical ? 'pb-3' : 'pb-2';
+    const horizontalPadding = this.vertical ? 'py-3' : 'py-2';
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
@@ -193,9 +193,10 @@ export default class SdNavigationItem extends SolidElement {
         <span
         part="content-area"
         class=${cx(
-          'relative pt-3 inline-flex justify-between items-center',
+          'relative inline-flex justify-between items-center',
           isAccordion ? 'grow' : 'w-full',
-          slots['description'] || this.separated ? 'pb-1' : horizontalPaddingBottom,
+          slots['description'] && 'pt-3',
+          slots['description'] || this.separated ? 'pb-1' : horizontalPadding,
           this.calculatePaddingX
         )}>
           ${
@@ -218,9 +219,9 @@ export default class SdNavigationItem extends SolidElement {
                     target=${ifDefined(isLink ? this.target : undefined)}
                     download=${ifDefined(isLink ? this.download : undefined)}
                   >
-                    <slot part="content" class="inline"></slot>
+                    <slot part="content" class="inline-flex"></slot>
                   </a>`
-                : html`<slot part="content" class="inline"></slot>`
+                : html`<slot part="content" class="inline-flex"></slot>`
             }
           </span>
           ${
@@ -240,7 +241,7 @@ export default class SdNavigationItem extends SolidElement {
                       library="_internal"
                       color="currentColor"
                       class=${cx(
-                        'mr-4 h-6 w-6 transition-all',
+                        'm-4 h-6 w-6 transition-all',
                         isAccordion || this.separated ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]'
                       )}
                     ></sd-icon>
@@ -264,10 +265,9 @@ export default class SdNavigationItem extends SolidElement {
                 name="description"
                 part="description"
                 class=${cx(
-                  'inline-block text-sm text-left text-black',
+                  'inline-block text-sm text-left text-black pb-3',
                   isAccordion || this.separated ? 'grow' : 'w-full',
-                  this.separated ? 'px-4' : this.calculatePaddingX,
-                  horizontalPaddingBottom
+                  this.separated ? 'px-4' : this.calculatePaddingX
                 )}
               ></slot>`
             : ''
