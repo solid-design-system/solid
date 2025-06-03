@@ -3,6 +3,7 @@ import { AutoplayController } from './autoplay-controller.js';
 import { clamp } from '../../internal/math.js';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { FadeController } from './fade-controller.js';
 import { LocalizeController } from '../../utilities/localize.js';
 import { map } from 'lit/directives/map.js';
 import { prefersReducedMotion } from '../../internal/animate.js';
@@ -66,6 +67,9 @@ export default class SdCarousel extends SolidElement {
   /** When set, the slides will scroll automatically when the user is not interacting with them.  */
   @property({ type: Boolean, reflect: true }) autoplay = false;
 
+  /** When set, slides will fade between each other instead of scrolling. */
+  @property({ type: Boolean, reflect: true }) fade = false;
+
   /** Specifies how many slides should be shown at a given time.  */
   @property({ type: Number, attribute: 'slides-per-page', reflect: true }) slidesPerPage = 1;
 
@@ -108,6 +112,7 @@ export default class SdCarousel extends SolidElement {
   public localize = new LocalizeController(this);
   private mutationObserver: MutationObserver;
   private userInteracted = false;
+  private fadeController = new FadeController(this);
 
   connectedCallback(): void {
     super.connectedCallback();
@@ -143,12 +148,21 @@ export default class SdCarousel extends SolidElement {
     this.intersectionObserver.disconnect();
     this.mutationObserver.disconnect();
     ['click', 'keydown'].forEach(event => this.removeEventListener(event, this.handleUserInteraction));
+
+    if (this.fade) {
+      this.fadeController.disable();
+    }
   }
 
-  protected firstUpdated(): void {
+  protected async firstUpdated(): Promise<void> {
     this.initializeSlides();
     this.mutationObserver = new MutationObserver(this.handleSlotChange);
     this.mutationObserver.observe(this, { childList: true, subtree: false });
+
+    if (this.fade) {
+      await this.updateComplete;
+      this.fadeController.enable();
+    }
   }
 
   public getPageCount(totalSlides: number, slidesPerPage: number, slidesPerMove: number) {
@@ -175,7 +189,7 @@ export default class SdCarousel extends SolidElement {
     this.userInteracted = true;
   };
 
-  private getSlides({ excludeClones = true }: { excludeClones?: boolean } = {}) {
+  public getSlides({ excludeClones = true }: { excludeClones?: boolean } = {}) {
     return [...this.slides].filter(slide => !excludeClones || !slide.hasAttribute('data-clone'));
   }
 
@@ -222,6 +236,10 @@ export default class SdCarousel extends SolidElement {
   }
 
   private handleScrollEnd() {
+    if (this.fade) {
+      return;
+    }
+
     const slides = this.getSlides();
     const entries = [...this.intersectionObserverEntries.values()];
 
@@ -300,6 +318,15 @@ export default class SdCarousel extends SolidElement {
     }
   }
 
+  @watch('fade', { waitUntilFirstUpdate: true })
+  handleFadeChange() {
+    if (this.fade) {
+      this.fadeController.enable();
+    } else {
+      this.fadeController.disable();
+    }
+  }
+
   @watch('loop', { waitUntilFirstUpdate: true })
   @watch('slidesPerPage', { waitUntilFirstUpdate: true })
   initializeSlides() {
@@ -321,7 +348,7 @@ export default class SdCarousel extends SolidElement {
       }
     });
 
-    if (this.loop) {
+    if (this.loop && !this.fade) {
       // Creates clones to be placed before and after the original elements to simulate infinite scrolling
       const slidesPerPage = this.slidesPerPage;
       const lastSlides = slides.slice(-slidesPerPage);
@@ -345,17 +372,29 @@ export default class SdCarousel extends SolidElement {
     });
 
     // Because the DOM may be changed, restore the scroll position to the active slide
-    this.goToSlide(this.activeSlide, 'auto');
+    if (this.fade) {
+      this.updateComplete.then(() => {
+        this.fadeController.enable();
+      });
+    }
+
+    // Because the DOM may be changed, restore the scroll position to the active slide
+    if (!this.fade) {
+      this.goToSlide(this.activeSlide, 'auto');
+    }
   }
 
   @watch('activeSlide')
   handleSlideChange() {
     const slides = this.getSlides();
 
-    // Update slides classes
     slides.forEach((slide, i) => {
       slide.classList.toggle('--is-active', i === this.activeSlide);
     });
+
+    if (this.fade) {
+      this.fadeController.updateActiveSlide(this.activeSlide);
+    }
 
     // Calculate current page only once
     const newCurrentPage = this.getCurrentPage(slides.length, this.activeSlide, this.slidesPerPage, this.slidesPerMove);
@@ -387,6 +426,10 @@ export default class SdCarousel extends SolidElement {
 
   @watch('slidesPerMove')
   handleSlidesPerMoveChange() {
+    if (this.fade) {
+      return;
+    }
+
     const slides = this.getSlides({ excludeClones: false });
 
     const slidesPerMove = this.slidesPerMove;
@@ -414,6 +457,14 @@ export default class SdCarousel extends SolidElement {
    * @param behavior - The behavior used for scrolling.
    */
   previous(behavior: ScrollBehavior = 'smooth') {
+    if (this.fade) {
+      const previousIndex = this.loop
+        ? (this.activeSlide - 1 + this.getSlides().length) % this.getSlides().length
+        : Math.max(0, this.activeSlide - 1);
+      this.goToSlide(previousIndex);
+      return;
+    }
+
     let previousIndex = this.activeSlide || this.activeSlide - this.slidesPerMove;
     let canSnap = false;
 
@@ -435,6 +486,14 @@ export default class SdCarousel extends SolidElement {
    * @param behavior - The behavior used for scrolling.
    */
   next(behavior: ScrollBehavior = 'smooth') {
+    if (this.fade) {
+      const nextIndex = this.loop
+        ? (this.activeSlide + 1) % this.getSlides().length
+        : Math.min(this.getSlides().length - 1, this.activeSlide + 1);
+      this.goToSlide(nextIndex);
+      return;
+    }
+
     if (this.currentPage + 1 <= this.getPageCount(this.getSlides().length, this.slidesPerPage, this.slidesPerMove)) {
       this.goToSlide(this.activeSlide + this.slidesPerMove, behavior);
     } else {
@@ -445,6 +504,11 @@ export default class SdCarousel extends SolidElement {
   }
 
   nextTillFirst(behavior: ScrollBehavior = 'smooth') {
+    if (this.fade) {
+      this.goToSlide(0);
+      return;
+    }
+
     while (this.activeSlide !== 0) {
       this.goToSlide(this.activeSlide + 1, behavior);
     }
@@ -464,7 +528,7 @@ export default class SdCarousel extends SolidElement {
    * @param behavior - The behavior used for scrolling.
    */
   goToSlide(index: number, behavior: ScrollBehavior = 'smooth') {
-    const { slidesPerPage, loop, scrollContainer } = this;
+    const { slidesPerPage, loop, scrollContainer, fade } = this;
 
     const slides = this.getSlides();
     const slidesWithClones = this.getSlides({ excludeClones: false });
@@ -475,13 +539,16 @@ export default class SdCarousel extends SolidElement {
     const newActiveSlide = (index + slides.length) % slides.length;
     this.activeSlide = newActiveSlide;
 
+    if (fade) {
+      return;
+    }
+
     // Get the index of the next slide. For looping carousel it adds `slidesPerPage`
     // to normalize the starting index in order to ignore the first nth clones.
     const nextSlideIndex = clamp(index + (loop ? slidesPerPage : 0), 0, slidesWithClones.length + 1);
     const nextSlide = slidesWithClones[nextSlideIndex];
 
     const scrollContainerRect = scrollContainer.getBoundingClientRect();
-
     const nextSlideRect = nextSlide.getBoundingClientRect();
 
     scrollContainer.scrollTo({
@@ -522,11 +589,11 @@ export default class SdCarousel extends SolidElement {
           id="scroll-container"
           part="scroll-container"
           class="${cx(
-            `carousel__slides mb-6
-            grid max-h-full w-full items-center justify-items-center overflow-auto`,
+            `carousel__slides mb-6 max-h-full w-full items-center justify-items-center`,
             this.inverted ? 'focus-visible:focus-outline-inverted' : 'focus-visible:focus-outline',
-            `overscroll-x-contain grid-flow-col auto-rows-[100%]
-            snap-x snap-mandatory overflow-y-hidden`
+            this.fade
+              ? 'relative overflow-hidden'
+              : `grid overflow-auto overscroll-x-contain grid-flow-col auto-rows-[100%] snap-x snap-mandatory overflow-y-hidden`
           )}"
           style="--slides-per-page: ${this.slidesPerPage};"
           aria-busy="${scrollController.scrolling ? 'true' : 'false'}"
@@ -728,6 +795,15 @@ export default class SdCarousel extends SolidElement {
         &::-webkit-scrollbar {
           @apply hidden;
         }
+      }
+
+      :host([fade]) {
+        --carousel-height: auto;
+      }
+
+      :host([fade]) .carousel__slides {
+        @apply block relative overflow-hidden;
+        height: var(--carousel-height);
       }
 
       @media (prefers-reduced-motion) {
