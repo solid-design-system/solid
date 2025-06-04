@@ -378,6 +378,7 @@ export default class SdCarousel extends SolidElement {
     }
 
     if (!this.fade) {
+      // Because the DOM may be changed, restore the scroll position to the active slide
       this.goToSlide(this.activeSlide, 'auto');
     }
   }
