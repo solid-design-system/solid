@@ -371,14 +371,12 @@ export default class SdCarousel extends SolidElement {
       intersectionObserver.observe(slide);
     });
 
-    // Because the DOM may be changed, restore the scroll position to the active slide
     if (this.fade) {
       this.updateComplete.then(() => {
         this.fadeController.enable();
       });
     }
 
-    // Because the DOM may be changed, restore the scroll position to the active slide
     if (!this.fade) {
       this.goToSlide(this.activeSlide, 'auto');
     }
