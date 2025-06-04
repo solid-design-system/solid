@@ -264,14 +264,31 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             }[checkboxState]
           )}
         >
+          <div class=${cx('absolute h-3 transition-[width] right-0.25 duration-medium', this.checked ? 'w-0' : 'w-3')}>
+            <div
+              class=${cx(
+                'w-full h-full transition-colors duration-medium ease-in-out group-hover:duration-fast',
+                {
+                  disabledIndeterminate: 'bg-neutral-500',
+                  disabledChecked: ' bg-neutral-500',
+                  disabled: '',
+                  visuallyDisabled: '',
+                  invalidIndeterminate: ' bg-error group-hover:bg-error-400',
+                  invalid: 'group-hover:bg-neutral-200',
+                  filled: 'bg-accent group-hover:bg-accent-550',
+                  default: 'hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
+                }[checkboxState]
+              )}
+            ></div>
+          </div>
           ${this.checked
             ? html`
-                <svg viewBox="0 0 12 13" fill="none" class="w-3 h-3 ">
-                  <path
-                    d="m9.947 1.138-.005.008-.001.003-5.56 8.34-2.434-2.447-.004-.004a.648.648 0 0 0-1.093.475c0 .172.066.328.175.444l.003.004 3 2.999c.117.117.28.19.46.19h.065c.2-.021.37-.13.475-.286l.005-.008.001-.002 5.994-8.992a.65.65 0 0 0-.18-.902l-.007-.005-.002-.002a.65.65 0 0 0-.892.185Z"
-                    class=${cx('check-path text-white', this.checked && 'animate-draw')}
-                  />
-                </svg>
+                <sd-icon
+                  part="checked-icon"
+                  class="text-white w-3 h-3"
+                  library="_internal"
+                  name="status-check"
+                ></sd-icon>
               `
             : ''}
           ${!this.checked && this.indeterminate
@@ -320,22 +337,6 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
 
       :host([required]) #label::after {
         content: ' *';
-      }
-
-      .check-path {
-        fill: currentColor;
-        stroke: none;
-        clip-path: inset(0 100% 0 0);
-      }
-
-      .animate-draw {
-        animation: drawFill 300ms ease-in-out forwards;
-      }
-
-      @keyframes drawFill {
-        to {
-          clip-path: inset(0 0 0 0);
-        }
       }
     `
   ];
