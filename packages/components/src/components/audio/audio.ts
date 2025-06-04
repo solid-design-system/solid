@@ -1,4 +1,5 @@
 import '../button/button';
+import '../drawer/drawer';
 import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
@@ -8,8 +9,7 @@ import { property, query, state } from 'lit/decorators.js';
 import { Wave } from './wave';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-// eslint-disable-next-line
-import SdDrawer from '../drawer/drawer';
+import type SdDrawer from '../drawer/drawer';
 
 /**
  * @summary Used to play audio files that are part of the page content.

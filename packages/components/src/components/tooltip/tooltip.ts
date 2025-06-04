@@ -1,4 +1,5 @@
 import '../icon/icon';
+import '../popup/popup';
 import { animateTo, parseDuration, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
@@ -8,9 +9,8 @@ import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
-// eslint-disable-next-line
-import SdPopup from '../popup/popup';
 import SolidElement from '../../internal/solid-element';
+import type SdPopup from '../popup/popup';
 
 /**
  * @summary Tooltips display additional information based on a specific action.
@@ -386,19 +386,13 @@ export default class SdTooltip extends SolidElement {
 }
 
 setDefaultAnimation('tooltip.show', {
-  keyframes: [
-    { opacity: 0, scale: 0.8 },
-    { opacity: 1, scale: 1 }
-  ],
-  options: { duration: 150, easing: 'ease' }
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('tooltip.hide', {
-  keyframes: [
-    { opacity: 1, scale: 1 },
-    { opacity: 0, scale: 0.8 }
-  ],
-  options: { duration: 150, easing: 'ease' }
+  keyframes: [{ opacity: 1 }, { opacity: 0 }],
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
 });
 
 declare global {
