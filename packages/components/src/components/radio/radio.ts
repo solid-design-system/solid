@@ -121,20 +121,20 @@ export default class SdRadio extends SolidElement {
         <span
           part="${`${this.checked ? 'control--checked' : 'control--unchecked'}`}"
           class=${cx(
-            'flex-initial shrink-0 relative inline-flex items-center justify-center border rounded-full bg-white h-4 w-4',
+            'flex-initial shrink-0 relative inline-flex items-center justify-center border rounded-full bg-white h-4 w-4 duration-fast easy-in-out',
             this.disabled || this.visuallyDisabled
               ? 'border-neutral-500'
               : this.invalid
                 ? 'border-error hover:border-error-400 group-hover:border-error-400'
                 : this.checked
-                  ? 'border-accent duration-fast hover:border-accent-550 group-hover:border-accent-550'
-                  : 'border-neutral-800 duration-fast ease-in-out hover:bg-neutral-200 group-hover:bg-neutral-200'
+                  ? 'border-accent hover:border-accent-550 group-hover:border-accent-550'
+                  : 'border-neutral-800 hover:bg-neutral-200 group-hover:bg-neutral-200'
           )}
         >
           <span
             part="checked"
             class=${cx(
-              'rounded-full inline-flex text-white bg-accent h-2.5 w-2.5 transform transition-transform duration-medium ease-in-out',
+              'rounded-full inline-flex text-white bg-accent h-2.5 w-2.5 transform transition-[transform, colors] duration-medium ease-in-out',
               this.checked ? 'scale-100' : 'scale-0',
               this.disabled
                 ? 'bg-neutral-500'
@@ -143,7 +143,7 @@ export default class SdRadio extends SolidElement {
                   : this.invalid
                     ? 'bg-error hover:bg-error-400 group-hover:bg-error-400'
                     : this.checked
-                      ? 'bg-accent duration-fast ease-in-out hover:bg-accent-550 group-hover:bg-accent-550'
+                      ? 'bg-accent hover:bg-accent-550 group-hover:bg-accent-550'
                       : 'bg-neutral-800'
             )}
           ></span>
