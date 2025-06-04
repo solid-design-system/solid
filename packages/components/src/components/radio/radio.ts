@@ -121,7 +121,7 @@ export default class SdRadio extends SolidElement {
         <span
           part="${`${this.checked ? 'control--checked' : 'control--unchecked'}`}"
           class=${cx(
-            'flex-initial shrink-0 relative inline-flex items-center justify-center border rounded-full bg-white h-4 w-4 duration-fast easy-in-out',
+            'flex-initial shrink-0 relative inline-flex items-center justify-center border rounded-full bg-white h-4 w-4 duration-fast ease-in-out',
             this.disabled || this.visuallyDisabled
               ? 'border-neutral-500'
               : this.invalid
