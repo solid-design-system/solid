@@ -226,7 +226,8 @@ export default class SdScrollable extends SolidElement {
   render() {
     const scrollButtonClasses =
       'relative p-0 border-0 bg-transparent cursor-pointer w-5 h-5 flex items-center justify-center sd-interactive rounded-md flex text-lg';
-    const scrollShadowClasses = 'scroll-shadow absolute z-10 pointer-events-none';
+    const scrollShadowClasses =
+      'scroll-shadow absolute z-10 pointer-events-none transition-opacity duration-medium ease-in-out';
 
     return html`
       <div
@@ -256,7 +257,7 @@ export default class SdScrollable extends SolidElement {
                   <div
                     part="button-left"
                     class=${cx(
-                      'absolute z-10 flex items-center justify-center top-0 left-0 h-full w-8',
+                      'absolute z-10 flex items-center justify-center top-0 left-0 h-full w-8 transition-opacity duration-medium ease-in-out',
                       !this.canScroll.left && 'opacity-0 pointer-events-none'
                     )}
                   >
@@ -281,7 +282,7 @@ export default class SdScrollable extends SolidElement {
                   <div
                     part="button-right"
                     class=${cx(
-                      'absolute z-10 flex items-center justify-center top-0 right-0 h-full w-8',
+                      'absolute z-10 flex items-center justify-center top-0 right-0 h-full w-8 transition-opacity duration-medium ease-in-out',
                       !this.canScroll.right && 'opacity-0 pointer-events-none'
                     )}
                   >
@@ -310,7 +311,7 @@ export default class SdScrollable extends SolidElement {
                   <div
                     part="button-top"
                     class=${cx(
-                      'absolute z-10 flex items-center justify-center top-0 left-0 w-full h-8',
+                      'absolute z-10 flex items-center justify-center top-0 left-0 w-full h-8 transition-opacity duration-medium ease-in-out',
                       !this.canScroll.up && 'opacity-0 pointer-events-none'
                     )}
                   >
@@ -334,7 +335,7 @@ export default class SdScrollable extends SolidElement {
                   <div
                     part="button-bottom"
                     class=${cx(
-                      'absolute z-10 flex items-center justify-center bottom-0 left-0 w-full h-8',
+                      'absolute z-10 flex items-center justify-center bottom-0 left-0 w-full h-8 transition-opacity duration-medium ease-in-out',
                       !this.canScroll.down && 'opacity-0 pointer-events-none'
                     )}
                   >
@@ -363,31 +364,42 @@ export default class SdScrollable extends SolidElement {
         ? html`
             ${this.isScrollHorizontalEnabled
               ? html`
-                  ${this.canScroll.left
-                    ? html`<div
-                        part="shadow-left"
-                        class="${scrollShadowClasses} left top-0 left-0 w-[6px] h-full"
-                      ></div>`
-                    : null}
-                  ${this.canScroll.right
-                    ? html`<div
-                        part="shadow-right"
-                        class="${scrollShadowClasses} right top-0 right-0 w-[6px] h-full"
-                      ></div>`
-                    : null}
+                  <div
+                    part="shadow-left"
+                    class=${cx(
+                      'left top-0 left-0 w-[6px] h-full',
+                      scrollShadowClasses,
+                      this.canScroll.left ? 'opacity-100' : 'opacity-0'
+                    )}
+                  ></div>
+                  <div
+                    part="shadow-right"
+                    class=${cx(
+                      'right top-0 right-0 w-[6px] h-full',
+                      scrollShadowClasses,
+                      this.canScroll.right ? 'opacity-100' : 'opacity-0'
+                    )}
+                  ></div>
                 `
               : null}
             ${this.isScrollVerticalEnabled
               ? html`
-                  ${this.canScroll.up
-                    ? html`<div part="shadow-top" class="${scrollShadowClasses} top top-0 left-0 w-full h-[6px]"></div>`
-                    : null}
-                  ${this.canScroll.down
-                    ? html`<div
-                        part="shadow-bottom"
-                        class="${scrollShadowClasses} bottom bottom-0 left-0 w-full h-[6px]"
-                      ></div>`
-                    : null}
+                  <div
+                    part="shadow-top"
+                    class=${cx(
+                      'top top-0 left-0 w-full h-[6px]',
+                      scrollShadowClasses,
+                      this.canScroll.up ? 'opacity-100' : 'opacity-0'
+                    )}
+                  ></div>
+                  <div
+                    part="shadow-bottom"
+                    class=${cx(
+                      'bottom bottom-0 left-0 w-full h-[6px]',
+                      scrollShadowClasses,
+                      this.canScroll.down ? 'opacity-100' : 'opacity-0'
+                    )}
+                  ></div>
                 `
               : null}
           `

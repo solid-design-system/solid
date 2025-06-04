@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.16.7
+
+### Patch Changes
+
+- Aligned icons on header template _[`#2210`](https://github.com/solid-design-system/solid/pull/2210) [`d8bc555`](https://github.com/solid-design-system/solid/commit/d8bc555c8d8e361802ce0d4d97f976b761518a87) [@balco0110](https://github.com/balco0110)_
+
 ## 1.16.6
 
 ### Patch Changes
