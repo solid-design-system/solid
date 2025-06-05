@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 5.4.0
+
+### Minor Changes
+
+- Implemented `sd-checkbox` motion design. _[`#2262`](https://github.com/solid-design-system/solid/pull/2262) [`58f1c1f`](https://github.com/solid-design-system/solid/commit/58f1c1fdb9db018b458232f10c6236e94e608526) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+* Uncompressed: 433 KB (+1 KB / +0%)
+* Gzipped: 101 KB (unchanged)
+
 ## 5.3.0
 
 ### Minor Changes
