@@ -121,11 +121,8 @@ export default class SdTab extends SolidElement {
           <div
             part="active-tab-indicator"
             class=${cx(
-              'absolute bottom-0 h-1 bg-accent',
-              (!this.active || this.disabled) && 'hidden',
-              this.variant === 'default'
-                ? 'w-full'
-                : 'w-3/4 group-hover:w-full transition-[width] duration-fast ease-in-out'
+              'absolute bottom-0 h-1 bg-accent w-3/4 group-hover:w-full transition-[width] duration-fast ease-in-out',
+              (!this.active || this.disabled || this.variant === 'default') && 'hidden'
             )}
           ></div>
 
