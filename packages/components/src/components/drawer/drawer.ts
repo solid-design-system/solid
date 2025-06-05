@@ -177,6 +177,19 @@ export default class SdDrawer extends SolidElement {
       this.drawer.hidden = false;
       this.drawer.removeAttribute('inert');
 
+      const panelAnimation = getAnimation(this, `drawer.show${uppercaseFirstLetter(this.placement)}`, {
+        dir: this.localize.dir()
+      });
+      const overlayAnimation = getAnimation(this, 'drawer.overlay.show', { dir: this.localize.dir() });
+      await Promise.all([
+        animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options),
+        animateTo(this.overlay, overlayAnimation.keyframes, overlayAnimation.options)
+      ]);
+
+      //Update ARIA attributes to close button
+      closeButtonBase?.setAttribute('aria-controls', 'drawer');
+      closeButtonBase?.setAttribute('aria-expanded', 'true');
+
       // Set initial focus
       requestAnimationFrame(() => {
         const sdInitialFocus = this.emit('sd-initial-focus', { cancelable: true });
@@ -197,19 +210,6 @@ export default class SdDrawer extends SolidElement {
           this.closeButton.focus();
         }
       });
-
-      const panelAnimation = getAnimation(this, `drawer.show${uppercaseFirstLetter(this.placement)}`, {
-        dir: this.localize.dir()
-      });
-      const overlayAnimation = getAnimation(this, 'drawer.overlay.show', { dir: this.localize.dir() });
-      await Promise.all([
-        animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options),
-        animateTo(this.overlay, overlayAnimation.keyframes, overlayAnimation.options)
-      ]);
-
-      //Update ARIA attributes to close button
-      closeButtonBase?.setAttribute('aria-controls', 'drawer');
-      closeButtonBase?.setAttribute('aria-expanded', 'true');
 
       this.emit('sd-after-show');
     } else {
