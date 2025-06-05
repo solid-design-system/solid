@@ -186,7 +186,7 @@ export default class SdAccordion extends SolidElement {
           part="header"
           id="header"
           class=${cx(
-            'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus-visible:focus-outline text-primary hover:bg-neutral-200 relative group'
+            'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus-visible:focus-outline text-primary relative group transition-colors ease-in-out duration-fast hover:bg-neutral-200'
           )}
           aria-expanded=${this.open ? 'true' : 'false'}
           aria-controls="content"
@@ -198,14 +198,14 @@ export default class SdAccordion extends SolidElement {
             part="summary-border"
             class=${cx(
               !this.open && 'opacity-0',
-              'w-1 bg-accent absolute left-0 transition-all h-[calc(100%-16px)] group-hover:h-full'
+              'w-1 bg-accent absolute left-0 transition-height duration-fast ease-in-out h-[calc(100%-16px)] group-hover:h-full'
             )}
           ></div>
           <slot name="summary" part="summary" class="flex flex-auto items-center text-left">${this.summary}</slot>
           <span
             part="summary-icon"
             class=${cx(
-              'flex flex-grow-0 flex-shrink-0 flex-auto items-center transition-all ease-in-out duration-300 text-xl',
+              'flex flex-grow-0 flex-shrink-0 flex-auto items-center transition-all ease-in-out duration-medium text-xl',
               this.open && 'rotate-180'
             )}
             ><slot name="expand-icon" class=${cx(this.open && 'hidden')}>
@@ -242,7 +242,7 @@ setDefaultAnimation('accordion.show', {
     { height: '0', opacity: '0' },
     { height: 'auto', opacity: '1' }
   ],
-  options: { duration: 300, easing: 'ease' }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
 });
 
 setDefaultAnimation('accordion.hide', {
@@ -250,7 +250,7 @@ setDefaultAnimation('accordion.hide', {
     { height: 'auto', opacity: '1' },
     { height: '0', opacity: '0' }
   ],
-  options: { duration: 300, easing: 'ease' }
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
 });
 
 declare global {

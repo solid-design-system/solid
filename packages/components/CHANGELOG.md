@@ -1,5 +1,75 @@
 # @solid-design-system/components
 
+## 5.4.0
+
+### Minor Changes
+
+- Implemented `sd-checkbox` motion design. _[`#2262`](https://github.com/solid-design-system/solid/pull/2262) [`58f1c1f`](https://github.com/solid-design-system/solid/commit/58f1c1fdb9db018b458232f10c6236e94e608526) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+* Uncompressed: 433 KB (+1 KB / +0%)
+* Gzipped: 101 KB (unchanged)
+
+## 5.3.0
+
+### Minor Changes
+
+- Implemented `sd-accordion` motion design. _[`#2257`](https://github.com/solid-design-system/solid/pull/2257) [`cfefc0b`](https://github.com/solid-design-system/solid/commit/cfefc0ba18924eca18b281f6b3bbc6c66cd754dc) [@balco0110](https://github.com/balco0110)_
+
+### Patch Changes
+
+- Aligned the icons in the `sd-navigation-item` _[`#2210`](https://github.com/solid-design-system/solid/pull/2210) [`d8bc555`](https://github.com/solid-design-system/solid/commit/d8bc555c8d8e361802ce0d4d97f976b761518a87) [@balco0110](https://github.com/balco0110)_
+
+## 5.2.2
+
+### Patch Changes
+
+- Adjusted `sd-quickfact` motion design values. _[`#2255`](https://github.com/solid-design-system/solid/pull/2255) [`c73c76c`](https://github.com/solid-design-system/solid/commit/c73c76cabed3374db1d1766d4cf1e7b3fd4195b7) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+
+- Uncompressed: 432 KB (+1 KB / +0%)
+- Gzipped: 101 KB (unchanged)
+
+## 5.2.1
+
+### Patch Changes
+
+- Fixed components imports (eg. `sd-drawer`, `sd-popup`) _[`#2202`](https://github.com/solid-design-system/solid/pull/2202) [`003a058`](https://github.com/solid-design-system/solid/commit/003a0581708cc927d3d9259d81ae7089af13bd72) [@mariohamann](https://github.com/mariohamann)_
+
+### 📈 Stats
+
+- Uncompressed: 431 KB (-1 KB / 0%)
+- Gzipped: 101 KB (unchanged)
+
+## 5.2.0
+
+### Minor Changes
+
+- Implemented `sd-scrollable` motion design. _[`#2254`](https://github.com/solid-design-system/solid/pull/2254) [`91d1c32`](https://github.com/solid-design-system/solid/commit/91d1c32f31ca2d96171933879fb7e2595bacf9b5) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+
+- Uncompressed: 432 KB (+1 KB / +0%)
+- Gzipped: 101 KB (unchanged)
+
+## 5.1.0
+
+### Minor Changes
+
+- Implemented `sd-map-marker` motion design. _[`#2253`](https://github.com/solid-design-system/solid/pull/2253) [`f079703`](https://github.com/solid-design-system/solid/commit/f07970394af4857b3dc26c737759831cf9f6676c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+
+- Uncompressed: 431 KB (+1 KB / +0%)
+- Gzipped: 101 KB (unchanged)
+
+## 5.0.1
+
+### Patch Changes
+
+- Adjusted `sd-tooltip` motion design values. _[`#2260`](https://github.com/solid-design-system/solid/pull/2260) [`f745474`](https://github.com/solid-design-system/solid/commit/f745474c86bc6a23fa5455d97efeddc4010ec763) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.0.0
 
 ### Major Changes
@@ -22,8 +92,9 @@
   - Improved accessibility by removing the `position: fixed` at a certain minimum viewport height, to ensure it doesn't cover much of the screen.
 
 ### 📈 Stats
-* Uncompressed: 430 KB (+1 KB / +0%)
-* Gzipped: 101 KB (+1 KB / +1%)
+
+- Uncompressed: 430 KB (+1 KB / +0%)
+- Gzipped: 101 KB (+1 KB / +1%)
 
 ## 4.12.0
 

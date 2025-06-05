@@ -1,3 +1,4 @@
+import '../divider/divider';
 import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { html } from 'lit/static-html.js';
@@ -5,7 +6,6 @@ import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
 import { watch } from '../../internal/watch.js';
 import cx from 'classix';
-import SdDivider from '../divider/divider';
 import SolidElement from '../../internal/solid-element';
 import type SdOption from '../option/option';
 
@@ -31,10 +31,6 @@ import type SdOption from '../option/option';
 @customElement('sd-optgroup')
 export default class SdOptgroup extends SolidElement {
   private readonly localize = new LocalizeController(this);
-
-  static dependencies = {
-    'sd-divider': SdDivider
-  };
 
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
 
