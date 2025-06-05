@@ -90,7 +90,7 @@ export default class SdHeader extends SolidElement {
     ...SolidElement.styles,
     css`
       :host {
-        @apply block;
+        @apply block relative z-header;
       }
 
       @media (min-height: 32rem) {
