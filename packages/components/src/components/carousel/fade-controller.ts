@@ -67,24 +67,40 @@ export class FadeController {
 
     const slides = this.carousel.getSlides();
     slides.forEach((slide, index) => {
-      this.applyFadeStyles(slide, index === activeIndex);
+      if (index === activeIndex) {
+        this.show(slide);
+      } else {
+        this.hide(slide);
+      }
     });
   }
 
-  private applyFadeStyles(slide: Element, isActive: boolean) {
+  show(slide: Element) {
+    if (!this.isEnabled) {
+      return;
+    }
+
     const classList = slide.classList;
 
     classList.remove(...this.getAllFadeClasses());
-    classList.add(...this.fadeClasses.base);
+    classList.add(...this.fadeClasses.base, ...this.fadeClasses.active);
 
-    if (isActive) {
-      classList.add(...this.fadeClasses.active);
-    } else {
-      classList.add(...this.fadeClasses.inactive);
+    slide.removeAttribute('inert');
+    slide.setAttribute('aria-hidden', 'false');
+  }
+
+  hide(slide: Element) {
+    if (!this.isEnabled) {
+      return;
     }
 
-    slide.toggleAttribute('inert', !isActive);
-    slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+    const classList = slide.classList;
+
+    classList.remove(...this.getAllFadeClasses());
+    classList.add(...this.fadeClasses.base, ...this.fadeClasses.inactive);
+
+    slide.toggleAttribute('inert', true);
+    slide.setAttribute('aria-hidden', 'true');
   }
 
   private removeFadeStyles() {
