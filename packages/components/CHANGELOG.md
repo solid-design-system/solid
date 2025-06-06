@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 5.4.2
+
+### Patch Changes
+
+- Added motion design to `sd-radio`. _[`#2261`](https://github.com/solid-design-system/solid/pull/2261) [`c71a58c`](https://github.com/solid-design-system/solid/commit/c71a58c7490a2f9ad2bc04fee0fb6c9c67bdd7a5) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+### 📈 Stats
+* Uncompressed: 433 KB (unchanged)
+* Gzipped: 102 KB (+1 KB / +1%)
+
 ## 5.4.1
 
 ### Patch Changes
