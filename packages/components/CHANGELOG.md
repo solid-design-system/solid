@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.4.4
+
+### Patch Changes
+
+- Fixed `sd-drawer` show animation flickering when positioned to the end. _[`#2274`](https://github.com/solid-design-system/solid/pull/2274) [`f0dfe79`](https://github.com/solid-design-system/solid/commit/f0dfe791b444d7f8c7759edceffe922cea70f138) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.4.3
 
 ### Patch Changes
