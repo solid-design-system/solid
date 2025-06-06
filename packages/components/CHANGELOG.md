@@ -1,5 +1,12 @@
 # @solid-design-system/components
 
+## 5.4.3
+
+### Patch Changes
+
+- Fixed problem with token processor which was returning the unprocessed value. _[`#2277`](https://github.com/solid-design-system/solid/pull/2277) [`de325b7`](https://github.com/solid-design-system/solid/commit/de325b7d29bfcc1cddcac5915370dffa4211eeb3) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Adjusted `sd-map-marker` motion design angle. _[`#2271`](https://github.com/solid-design-system/solid/pull/2271) [`896a632`](https://github.com/solid-design-system/solid/commit/896a63235232c3d7c23999f7d0305c2b1bcd474d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.4.2
 
 ### Patch Changes
@@ -7,8 +14,9 @@
 - Added motion design to `sd-radio`. _[`#2261`](https://github.com/solid-design-system/solid/pull/2261) [`c71a58c`](https://github.com/solid-design-system/solid/commit/c71a58c7490a2f9ad2bc04fee0fb6c9c67bdd7a5) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
 
 ### 📈 Stats
-* Uncompressed: 433 KB (unchanged)
-* Gzipped: 102 KB (+1 KB / +1%)
+
+- Uncompressed: 433 KB (unchanged)
+- Gzipped: 102 KB (+1 KB / +1%)
 
 ## 5.4.1
 
