@@ -47,6 +47,8 @@ export default class SdTabGroup extends SolidElement {
   @query('[part=base]') tabGroup: HTMLElement;
   @query('[part=body]') body: HTMLSlotElement;
   @query('[part=scroll-container]') nav: HTMLElement;
+  @query('#indicator') private indicator!: HTMLElement;
+  @query('[part="tabs"]') private tabsContainer!: HTMLElement;
 
   /** @internal */
   @state() hasScrollControls = false;
@@ -310,15 +312,10 @@ export default class SdTabGroup extends SolidElement {
     await this.updateComplete;
 
     const currentTab = this.activeTab;
-    const indicator = this.renderRoot.querySelector<HTMLElement>('#indicator');
-    const tabsContainer = this.renderRoot.querySelector<HTMLElement>('[part="tabs"]');
+    const indicator = this.indicator;
+    const tabsContainer = this.tabsContainer;
 
-    if (!currentTab || !indicator || !tabsContainer) return;
-
-    if (currentTab.variant === 'container') {
-      indicator.style.display = 'none';
-      return;
-    }
+    if (!currentTab || !indicator || !tabsContainer || currentTab.variant === 'container') return;
 
     const tabRect = currentTab.getBoundingClientRect();
     const containerRect = tabsContainer.getBoundingClientRect();
@@ -376,11 +373,13 @@ export default class SdTabGroup extends SolidElement {
           <div part="scroll-container" class="flex overflow-x-auto focus-visible:focus-outline !outline-offset-0">
             <div part="tabs" class=${cx('flex flex-auto relative flex-row')} role="tablist">
               <div part="separation" class="border-neutral-400 absolute w-full h-0.25 bottom-0 border-b"></div>
-              <div
-                part="active-tab-indicator"
-                id="indicator"
-                class="absolute h-1 bg-accent bottom-0 transition-all duration-medium ease-in-out z-10"
-              ></div>
+              ${this.activeTab?.variant !== 'container'
+                ? html` <div
+                    part="active-tab-indicator"
+                    id="indicator"
+                    class="absolute h-1 bg-accent bottom-0 transition-[transform,width] duration-medium ease-in-out z-10"
+                  ></div>`
+                : ''}
 
               <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
             </div>

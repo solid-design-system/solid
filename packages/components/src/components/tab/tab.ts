@@ -118,13 +118,17 @@ export default class SdTab extends SolidElement {
           ></slot>
           <slot class=${cx(this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary')}></slot>
 
-          <div
-            part="active-tab-indicator"
-            class=${cx(
-              'absolute bottom-0 h-1 bg-accent w-3/4 group-hover:w-full transition-[width] duration-fast ease-in-out',
-              (!this.active || this.disabled || this.variant === 'default') && 'hidden'
-            )}
-          ></div>
+          ${this.variant === 'container'
+            ? html`
+                <div
+                  part="active-tab-indicator"
+                  class=${cx(
+                    'absolute bottom-0 h-1 bg-accent w-3/4 group-hover:w-full transition-[width] duration-fast ease-in-out',
+                    (!this.active || this.disabled) && 'hidden'
+                  )}
+                ></div>
+              `
+            : ''}
 
           <div
             part="hover-bottom-border"
