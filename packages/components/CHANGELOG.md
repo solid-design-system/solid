@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 5.5.0
+
+### Minor Changes
+
+- Implemented `sd-notification` motion design. _[`#2265`](https://github.com/solid-design-system/solid/pull/2265) [`96df171`](https://github.com/solid-design-system/solid/commit/96df171ff9d85b3c4a6c872833161ea8044e23b1) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+* Uncompressed: 434 KB (+1 KB / +0%)
+* Gzipped: 102 KB (unchanged)
+
 ## 5.4.4
 
 ### Patch Changes
