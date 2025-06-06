@@ -1,0 +1,48 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdBreadcrumbItemStories from './breadcrumb-item.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/components-sd-breadcrumb-item--docs',
+  'figma-library': '',
+  'figma-docs': ''
+};
+
+export const content = `
+# Breadcrumb Item
+
+DESCRIPTION
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Components
+
+[]()
+
+#### Related Templates
+
+[]()
+
+### Common Use Cases
+
+-
+
+### Usage Guidelines
+
+#### TITLE
+
+-
+
+Add other guidelines here.
+
+### Accessibility Information
+
+-
+- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-breadcrumb-item/Overview" />
+
+<OverviewFormatter story={SdBreadcrumbItemStories.Default}>{content}</OverviewFormatter>
