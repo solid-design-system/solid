@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 5.6.0
+
+### Minor Changes
+
+- Added new fade effect transition to the `sd-carousel`. When the `fade` attribute is set, the carousel will use the fade transition for a smooth effect. If the attribute is not applied, the default slide transition will remain in use. _[`#2270`](https://github.com/solid-design-system/solid/pull/2270) [`99ed5c1`](https://github.com/solid-design-system/solid/commit/99ed5c12c34dfa15fb80c15e65b0751a473acd9e) [@smfonseca](https://github.com/smfonseca)_
+
+### 📈 Stats
+* Uncompressed: 438 KB (+4 KB / +1%)
+* Gzipped: 103 KB (+1 KB / +1%)
+
 ## 5.5.0
 
 ### Minor Changes
@@ -7,8 +17,9 @@
 - Implemented `sd-notification` motion design. _[`#2265`](https://github.com/solid-design-system/solid/pull/2265) [`96df171`](https://github.com/solid-design-system/solid/commit/96df171ff9d85b3c4a6c872833161ea8044e23b1) [@paulovareiro29](https://github.com/paulovareiro29)_
 
 ### 📈 Stats
-* Uncompressed: 434 KB (+1 KB / +0%)
-* Gzipped: 102 KB (unchanged)
+
+- Uncompressed: 434 KB (+1 KB / +0%)
+- Gzipped: 102 KB (unchanged)
 
 ## 5.4.4
 

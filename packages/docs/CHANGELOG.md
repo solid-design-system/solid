@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.17.0
+
+### Minor Changes
+
+- Added information about the new `fade` attribute that enables a fade effect transition in the `sd-carousel`. Also updated the `Carousel with images` template to showcase the fade effect. _[`#2270`](https://github.com/solid-design-system/solid/pull/2270) [`99ed5c1`](https://github.com/solid-design-system/solid/commit/99ed5c12c34dfa15fb80c15e65b0751a473acd9e) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.16.8
 
 ### Patch Changes
