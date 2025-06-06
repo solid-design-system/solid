@@ -69,7 +69,8 @@ export default class SolidElement extends LitElement {
       return fallback;
     }
 
-    return (tokenProcessors[name]?.(value) as T) ?? (value as T) ?? fallback;
+    const processor = Object.keys(tokenProcessors).find(token => name.startsWith(token));
+    return (tokenProcessors[processor ?? name]?.(value) as T) ?? (value as T) ?? fallback;
   }
 }
 
