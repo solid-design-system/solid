@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.16.8
+
+### Patch Changes
+
+- Updated description of `orientation` attribute in the `sd-list` style component. _[`#2279`](https://github.com/solid-design-system/solid/pull/2279) [`8714fd9`](https://github.com/solid-design-system/solid/commit/8714fd94ea6d031ea399ce82c9ce41ea93dfc478) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.16.7
 
 ### Patch Changes
