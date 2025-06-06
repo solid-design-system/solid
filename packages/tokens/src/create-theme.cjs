@@ -300,6 +300,7 @@ const getZIndices = () => {
     40: '40',
     50: '50',
     auto: 'auto',
+    header: 'var(--sd-z-index-header, 600)',
     drawer: 'var(--sd-z-index-drawer, 700)',
     dialog: 'var(--sd-z-index-dialog, 800)',
     dropdown: 'var(--sd-z-index-dropdown, 900)',
