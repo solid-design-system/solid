@@ -1,5 +1,32 @@
 # @solid-design-system/components
 
+## 5.4.2
+
+### Patch Changes
+
+- Added motion design to `sd-radio`. _[`#2261`](https://github.com/solid-design-system/solid/pull/2261) [`c71a58c`](https://github.com/solid-design-system/solid/commit/c71a58c7490a2f9ad2bc04fee0fb6c9c67bdd7a5) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+### 📈 Stats
+* Uncompressed: 433 KB (unchanged)
+* Gzipped: 102 KB (+1 KB / +1%)
+
+## 5.4.1
+
+### Patch Changes
+
+- Implemented z-index on `sd-header` component to prevent other components overlapping it. _[`#2275`](https://github.com/solid-design-system/solid/pull/2275) [`03ba826`](https://github.com/solid-design-system/solid/commit/03ba82696bc01c764d3f210db3d71720a4b232a0) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 5.4.0
+
+### Minor Changes
+
+- Implemented `sd-checkbox` motion design. _[`#2262`](https://github.com/solid-design-system/solid/pull/2262) [`58f1c1f`](https://github.com/solid-design-system/solid/commit/58f1c1fdb9db018b458232f10c6236e94e608526) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+
+- Uncompressed: 433 KB (+1 KB / +0%)
+- Gzipped: 101 KB (unchanged)
+
 ## 5.3.0
 
 ### Minor Changes

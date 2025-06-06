@@ -243,7 +243,8 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             ? ' control--indeterminate'
             : ''}"
           class=${cx(
-            `relative flex flex-shrink-0 items-center justify-center border rounded-sm h-4 w-4`,
+            'relative flex flex-shrink-0 items-center justify-center border rounded-sm h-4 w-4',
+            'transition-colors ease-in-out duration-medium group-hover:duration-fast',
             'peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary',
             {
               sm: 'mt-[2px]',
@@ -263,6 +264,23 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             }[checkboxState]
           )}
         >
+          <div class=${cx('absolute h-3 transition-[width] right-0.25 duration-medium', this.checked ? 'w-0' : 'w-3')}>
+            <div
+              class=${cx(
+                'w-full h-full transition-colors duration-medium ease-in-out group-hover:duration-fast',
+                {
+                  disabledIndeterminate: 'bg-neutral-500',
+                  disabledChecked: ' bg-neutral-500',
+                  disabled: '',
+                  visuallyDisabled: '',
+                  invalidIndeterminate: ' bg-error group-hover:bg-error-400',
+                  invalid: 'group-hover:bg-neutral-200',
+                  filled: 'bg-accent group-hover:bg-accent-550',
+                  default: 'hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
+                }[checkboxState]
+              )}
+            ></div>
+          </div>
           ${this.checked
             ? html`
                 <sd-icon
