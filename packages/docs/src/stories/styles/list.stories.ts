@@ -146,7 +146,7 @@ export const Levels = {
 };
 
 /**
- * Use the `sd-list--horizontal` class to set the axis of the list displaying content icons to horizontal.
+ * Use the `sd-list--horizontal` class to set the axis of the list displaying content icons to horizontal. Please be aware that this option is only available for the icon variant.
  */
 export const Orientation = {
   render: () =>
