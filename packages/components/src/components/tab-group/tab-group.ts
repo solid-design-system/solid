@@ -47,6 +47,8 @@ export default class SdTabGroup extends SolidElement {
   @query('[part=base]') tabGroup: HTMLElement;
   @query('[part=body]') body: HTMLSlotElement;
   @query('[part=scroll-container]') nav: HTMLElement;
+  @query('#indicator') private indicator!: HTMLElement;
+  @query('[part="tabs"]') private tabsContainer!: HTMLElement;
 
   /** @internal */
   @state() hasScrollControls = false;
@@ -70,6 +72,7 @@ export default class SdTabGroup extends SolidElement {
 
     this.resizeObserver = new ResizeObserver(() => {
       this.updateScrollControls();
+      this.repositionIndicator();
     });
 
     this.mutationObserver = new MutationObserver(mutations => {
@@ -258,6 +261,7 @@ export default class SdTabGroup extends SolidElement {
       // Sync active tab and panel
       this.tabs.map(el => (el.active = el === this.activeTab));
       this.panels.map(el => (el.active = el.name === this.activeTab?.panel));
+      this.repositionIndicator();
 
       scrollIntoView(this.activeTab, this.nav, 'horizontal', options.scrollBehavior);
 
@@ -286,6 +290,7 @@ export default class SdTabGroup extends SolidElement {
   private syncTabsAndPanels() {
     this.tabs = this.getAllTabs({ includeDisabled: false });
     this.panels = this.getAllPanels();
+    this.repositionIndicator();
 
     this.panels.forEach(panel => {
       panel.tabIndex = 0;
@@ -301,6 +306,25 @@ export default class SdTabGroup extends SolidElement {
 
   private updateScrollControls() {
     this.hasScrollControls = this.nav.scrollWidth > this.nav.clientWidth;
+  }
+
+  private async repositionIndicator() {
+    await this.updateComplete;
+
+    const currentTab = this.activeTab;
+    const indicator = this.indicator;
+    const tabsContainer = this.tabsContainer;
+
+    if (!currentTab || !indicator || !tabsContainer || currentTab.variant === 'container') return;
+
+    const tabRect = currentTab.getBoundingClientRect();
+    const containerRect = tabsContainer.getBoundingClientRect();
+
+    const offsetX = tabRect.left - containerRect.left;
+    const width = currentTab.offsetWidth;
+
+    indicator.style.width = `${width}px`;
+    indicator.style.transform = `translateX(${offsetX}px)`;
   }
 
   /** Shows the specified tab panel. */
@@ -348,7 +372,15 @@ export default class SdTabGroup extends SolidElement {
 
           <div part="scroll-container" class="flex overflow-x-auto focus-visible:focus-outline !outline-offset-0">
             <div part="tabs" class=${cx('flex flex-auto relative flex-row')} role="tablist">
-              <div part="separation" class="w-full border-[0.25px] border-neutral-400 absolute bottom-0"></div>
+              <div part="separation" class="border-neutral-400 absolute w-full h-0.25 bottom-0 border-b"></div>
+              ${this.activeTab?.variant !== 'container'
+                ? html` <div
+                    part="active-tab-indicator"
+                    id="indicator"
+                    class="absolute h-1 bg-accent bottom-0 transition-[transform,width] duration-medium ease-in-out z-10"
+                  ></div>`
+                : ''}
+
               <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
             </div>
           </div>
