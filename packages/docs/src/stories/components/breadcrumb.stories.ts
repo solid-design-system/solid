@@ -1,5 +1,4 @@
 import '../../../../components/src/solid-components';
-import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
@@ -43,11 +42,4 @@ export const Default = {
   render: (args: any) => {
     return generateTemplate({ args });
   }
-};
-
-/**
- * Use the `first example` to describe a feature.
- */
-export const FirstExample = {
-  render: () => html` <sd-breadcrumb> This is your first example. </sd-breadcrumb> `
 };

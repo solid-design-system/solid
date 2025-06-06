@@ -32,11 +32,8 @@ export default class SdBreadcrumbItem extends SolidElement {
   /** Tells the browser where to open the link. Only used when `href` is present. */
   @property({ type: String, reflect: true }) target: '_blank' | '_parent' | '_self' | '_top';
 
-  /** The `rel` attribute to use on the link. Only used when `href` is set. */
-  @property() rel = 'noreferrer noopener';
-
   render() {
-    return html`<div part="base" class="inline-flex items-center text-neutral-400">
+    return html`<div part="base" class="inline-flex items-center text-neutral-400 text-nowrap">
       <sd-link href=${this.href} target=${this.target}>
         <slot name="icon-left" slot="icon-left"></slot>
         <slot></slot>
