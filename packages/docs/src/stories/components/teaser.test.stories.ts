@@ -296,6 +296,44 @@ export const Headline = {
   }
 };
 
+export const ReversedLayoutAndOrientation = {
+  name: 'Reversed layout x Orientation',
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'breakpoint',
+          values: [
+            {
+              value: '0',
+              title: 'breakpoint = 0'
+            },
+            {
+              value: '9999',
+              title: 'breakpoint = 9999'
+            }
+          ]
+        },
+        y: { type: 'attribute', name: 'reversed-layout' }
+      },
+      args,
+      constants: [
+        {
+          type: 'template',
+          name: 'style',
+          value: '<div style="margin-bottom: 40px;">%TEMPLATE%</div>'
+        },
+        {
+          type: 'attribute',
+          name: 'variant',
+          value: 'neutral-100'
+        }
+      ]
+    });
+  }
+};
+
 /**
  * Use the 'default', 'media', 'meta' and 'headline' slots to add content to the teaser. Please use h1-h6 tags for the headline slot.
  */
@@ -393,6 +431,7 @@ export const Parts = {
     });
   }
 };
+
 export const Combination = generateScreenshotStory([
   Default,
   VariantAndInset,
@@ -401,6 +440,7 @@ export const Combination = generateScreenshotStory([
   DistributionRatio,
   Breakpoint,
   Headline,
+  ReversedLayoutAndOrientation,
   Slots,
   Parts
 ]);

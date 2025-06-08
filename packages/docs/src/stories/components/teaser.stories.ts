@@ -213,6 +213,24 @@ export const Breakpoint = {
   `
 };
 
+/** Use the `reversed-layout` attribute to invert the horizontal variant position.
+ *
+ * **Hint**: Only works with horizontal teasers (`breakpoint`=`0`).
+ */
+export const ReversedLayout = {
+  render: () => html`
+    <sd-teaser reversed-layout>
+      <h3 slot="headline">Lorem ipsum sic semper</h3>
+      <img slot="media" src="./placeholders/images/architecture.jpg" alt="" style="width:100%; height: auto;" />
+      <p>
+        Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
+        reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
+        sunt nulla incididunt.
+      </p>
+    </sd-teaser>
+  `
+};
+
 /**
  * Use the `--distribution-media` and `--distribution-content` CSS properties to adjust the teaser's layout.
  */

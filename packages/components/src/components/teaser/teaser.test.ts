@@ -9,6 +9,7 @@ describe('<sd-teaser>', () => {
     expect(el.variant).to.equal('white');
     expect(el.breakpoint).to.equal(448);
     expect(el.inset).to.equal(false);
+    expect(el.reversedLayout).to.equal(false);
   });
 
   it('renders assigned values correctly', async () => {
@@ -173,6 +174,7 @@ describe('<sd-teaser>', () => {
       });
     });
   });
+
   it('keeps inset property as false after changing variant', async () => {
     const el = await fixture<SdTeaser>(html`<sd-teaser variant="white border-neutral-400"></sd-teaser>`);
 
@@ -183,5 +185,39 @@ describe('<sd-teaser>', () => {
 
     expect(el.variant).to.equal('neutral-100');
     expect(el.inset).to.equal(false); // The inset should be false after the variant change
+  });
+
+  describe('reversed layout', () => {
+    it('works properly in horizontal mode', async () => {
+      const el = await fixture<SdTeaser>(html`
+        <sd-teaser reversed-layout>
+          <div slot="media">Media</div>
+          <div slot="headline">Headline</div>
+          Content
+        </sd-teaser>
+      `);
+
+      el._orientation = 'horizontal';
+      await el.updateComplete;
+
+      const media = el.shadowRoot!.querySelector('#media')!;
+      expect(media.classList.contains('order-2')).to.be.true;
+    });
+
+    it('is not applied if the orientation is vertical', async () => {
+      const el = await fixture<SdTeaser>(html`
+        <sd-teaser reversed-layout>
+          <div slot="media">Media</div>
+          <div slot="headline">Headline</div>
+          Content
+        </sd-teaser>
+      `);
+
+      el._orientation = 'vertical';
+      await el.updateComplete;
+
+      const media = el.shadowRoot!.querySelector('#media')!;
+      expect(media.classList.contains('order-2')).to.be.false;
+    });
   });
 });

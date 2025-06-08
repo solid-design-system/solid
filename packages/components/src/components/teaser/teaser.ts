@@ -44,6 +44,9 @@ export default class SdTeaser extends SolidElement {
   /** The teaser's inner padding. This is always set in `white border-neutral-400`. */
   @property({ type: Boolean, reflect: true }) inset = false;
 
+  /** Reverses the layout in horizontal variant */
+  @property({ type: Boolean, reflect: true, attribute: 'reversed-layout' }) reversedLayout = false;
+
   @query('[part="base"]') teaser: HTMLElement;
 
   /** @internal */
@@ -147,6 +150,7 @@ export default class SdTeaser extends SolidElement {
             <slot></slot>
           </div>
         </div>
+
         <div
           part="media"
           id="media"
@@ -155,8 +159,10 @@ export default class SdTeaser extends SolidElement {
             'order-1',
             !inset && this._orientation === 'vertical' && 'mb-4',
             !slots['teaser-has-media'] && 'hidden',
-            this.variant === 'white border-neutral-400' && this._orientation === 'vertical' && 'mx-[-1px] mt-[-1px]'
+            this.variant === 'white border-neutral-400' && this._orientation === 'vertical' && 'mx-[-1px] mt-[-1px]',
+            this._orientation !== 'vertical' && this.reversedLayout && 'order-2'
           )}
+          ${console.log(this.reversedLayout)}
         >
           <slot name="media"></slot>
         </div>
