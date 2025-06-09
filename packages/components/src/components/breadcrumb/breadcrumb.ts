@@ -32,6 +32,7 @@ export default class SdBreadcrumb extends SolidElement {
 
   @query('[part="base"]') base: HTMLElement;
   @query('[part="truncated"]') truncated: HTMLElement;
+  @query('[part="truncated-dropdown"]') dropdown: HTMLElement;
 
   @query('slot') defaultSlot: HTMLSlotElement;
 
@@ -59,14 +60,17 @@ export default class SdBreadcrumb extends SolidElement {
       this.cacheItemPositions();
     }
 
+    this.dropdown.innerHTML = '';
     this.isTruncated = false;
     let sum = 0;
 
     for (const [index, item] of Array.from(this.items).reverse().entries()) {
       const width = parseFloat(`${item.dataset.size ?? item.getBoundingClientRect().width}`);
+      item.hidden = false;
 
       if (this.isTruncated) {
-        item.setAttribute('slot', 'truncated');
+        this.dropdown.appendChild(item.cloneNode(true));
+        item.hidden = true;
         continue;
       }
 
@@ -76,12 +80,11 @@ export default class SdBreadcrumb extends SolidElement {
       }
 
       this.isTruncated = sum + width + truncatedWidth > parentWidth;
-
       if (this.isTruncated) {
-        item.setAttribute('slot', 'truncated');
+        this.dropdown.appendChild(item.cloneNode(true));
+        item.hidden = true;
       } else {
         sum += width;
-        item.removeAttribute('slot');
       }
     }
   }
@@ -98,16 +101,19 @@ export default class SdBreadcrumb extends SolidElement {
   }
 
   render() {
+    /* eslint-disable lit-a11y/list */
     return html` <nav part="base" class="flex items-center pb-1">
       <sd-dropdown part="truncated" class=${cx(!this.isTruncated && 'absolute opacity-0 pointer-events-none')}>
         <button slot="trigger" class="flex sd-interactive">[...]</button>
 
-        <div class="flex flex-col gap-4 px-2 py-3">
-          <slot name="truncated"></slot>
-        </div>
+        <ol part="truncated-dropdown" class="flex flex-col gap-4 px-2 py-3"></ol>
       </sd-dropdown>
-      <slot></slot>
+
+      <ol class="flex items-center">
+        <slot></slot>
+      </ol>
     </nav>`;
+    /* eslint-enable lit-a11y/list */
   }
 
   static styles = [

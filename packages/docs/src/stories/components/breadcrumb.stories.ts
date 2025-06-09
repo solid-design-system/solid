@@ -31,7 +31,7 @@ export default {
       value: `
         <sd-breadcrumb-item href="#">Breadcrumb item</sd-breadcrumb-item>
         <sd-breadcrumb-item href="#">Breadcrumb item</sd-breadcrumb-item>
-        <sd-breadcrumb-item>Current breadcrumb item</sd-breadcrumb-item>
+        <sd-breadcrumb-item current>Current breadcrumb item</sd-breadcrumb-item>
       `
     }
   ]),

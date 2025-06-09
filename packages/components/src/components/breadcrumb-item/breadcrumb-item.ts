@@ -1,7 +1,9 @@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
-import { property } from 'lit/decorators.js';
+import { property, query } from 'lit/decorators.js';
+import { watch } from 'src/internal/watch';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -26,20 +28,40 @@ import SolidElement from '../../internal/solid-element';
 export default class SdBreadcrumbItem extends SolidElement {
   public localize = new LocalizeController(this);
 
+  @query('[part="link"]') link: HTMLElement;
+
   /** When not set, the breadcrumb will render as disabled. */
   @property({ type: String, reflect: true }) href = '';
 
   /** Tells the browser where to open the link. Only used when `href` is present. */
   @property({ type: String, reflect: true }) target: '_blank' | '_parent' | '_self' | '_top';
 
+  /** When set, the attribute `aria-current="page"` will be applied */
+  @property({ type: Boolean, reflect: true }) current = false;
+
+  @watch('current')
+  handleCurrentChange() {
+    if (!this.link || !this.current) return;
+    this.link.shadowRoot?.querySelector('a')?.setAttribute('aria-current', 'page');
+  }
+
+  firstUpdated() {
+    requestAnimationFrame(() => this.handleCurrentChange());
+  }
+
   render() {
-    return html`<div part="base" class="inline-flex items-center text-neutral-400 text-nowrap">
-      <sd-link href=${this.href} target=${this.target}>
+    return html`<li part="base" class="inline-flex items-center text-neutral-400 text-nowrap">
+      <sd-link
+        part="link"
+        href=${this.href}
+        target=${this.target}
+        aria-current=${ifDefined(this.current ? 'page' : undefined)}
+      >
         <slot name="icon-left" slot="icon-left"></slot>
         <slot></slot>
         <slot name="icon-right" slot="icon-right"></slot>
       </sd-link>
-    </div>`;
+    </li>`;
   }
 
   static styles = [
