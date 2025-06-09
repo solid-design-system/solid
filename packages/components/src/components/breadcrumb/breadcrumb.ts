@@ -36,7 +36,7 @@ export default class SdBreadcrumb extends SolidElement {
   @query('slot') defaultSlot: HTMLSlotElement;
 
   @state() itemPositionsCached: boolean = false;
-  @state() truncatedItemsCount: number = 0;
+  @state() isTruncated: boolean = false;
 
   private get items() {
     return this.querySelectorAll('sd-breadcrumb-item');
@@ -59,28 +59,31 @@ export default class SdBreadcrumb extends SolidElement {
       this.cacheItemPositions();
     }
 
+    this.isTruncated = false;
     let sum = 0;
-    this.truncatedItemsCount = 0;
 
-    Array.from(this.items)
-      .reverse()
-      .forEach((item, index) => {
-        const width = parseFloat(item.dataset.size ?? `${item.getBoundingClientRect().width}`);
+    for (const [index, item] of Array.from(this.items).reverse().entries()) {
+      const width = parseFloat(`${item.dataset.size ?? item.getBoundingClientRect().width}`);
 
-        if (index === 0) {
-          sum += width;
-          return;
-        }
+      if (this.isTruncated) {
+        item.setAttribute('slot', 'truncated');
+        continue;
+      }
 
-        const isOverflowing = sum + width + truncatedWidth > parentWidth;
-        if (isOverflowing) {
-          this.truncatedItemsCount++;
-          item.setAttribute('slot', 'truncated');
-        } else {
-          sum += width;
-          item.removeAttribute('slot');
-        }
-      });
+      if (index === 0) {
+        sum += width;
+        continue;
+      }
+
+      this.isTruncated = sum + width + truncatedWidth > parentWidth;
+
+      if (this.isTruncated) {
+        item.setAttribute('slot', 'truncated');
+      } else {
+        sum += width;
+        item.removeAttribute('slot');
+      }
+    }
   }
 
   connectedCallback(): void {
@@ -95,11 +98,11 @@ export default class SdBreadcrumb extends SolidElement {
   }
 
   render() {
-    return html` <nav part="base" class="flex items-center">
-      <sd-dropdown part="truncated" class=${cx(this.truncatedItemsCount === 0 && 'hidden')}>
+    return html` <nav part="base" class="flex items-center pb-1">
+      <sd-dropdown part="truncated" class=${cx(!this.isTruncated && 'absolute opacity-0 pointer-events-none')}>
         <button slot="trigger" class="flex sd-interactive">[...]</button>
 
-        <div>
+        <div class="flex flex-col gap-4 px-2 py-3">
           <slot name="truncated"></slot>
         </div>
       </sd-dropdown>
@@ -116,7 +119,7 @@ export default class SdBreadcrumb extends SolidElement {
       }
 
       sd-dropdown,
-      ::slotted(sd-breadcrumb-item:not(:last-of-type)) {
+      ::slotted(sd-breadcrumb-item:not(:last-of-type):not([slot])) {
         @apply flex items-center after:inline-block after:w-1 after:h-1 after:mx-2 after:rounded-full after:bg-neutral-300;
       }
     `
