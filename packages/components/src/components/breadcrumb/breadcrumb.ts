@@ -37,6 +37,9 @@ export default class SdBreadcrumb extends SolidElement {
   /** Inverts the breadcrumb. */
   @property({ type: Boolean, reflect: true }) inverted = false;
 
+  /** The breadcrumbs' label. Required for proper accessibility. */
+  @property({ type: String, reflect: true }) label = 'Breadcrumbs';
+
   @state() itemPositionsCached: boolean = false;
   @state() isTruncated: boolean = false;
 
@@ -118,11 +121,14 @@ export default class SdBreadcrumb extends SolidElement {
 
   render() {
     /* eslint-disable lit-a11y/list */
-    return html` <nav part="base" class="flex items-center pb-1">
+    return html` <nav part="base" class="flex items-center pb-1" aria-label=${this.label}>
       <sd-dropdown part="truncated" class=${cx(!this.isTruncated && 'absolute opacity-0 pointer-events-none')}>
         <button
           slot="trigger"
           tabindex=${this.isTruncated ? '0' : '-1'}
+          aria-label=${this.localize.term('truncatedBreadcrumbs')}
+          aria-expanded="false"
+          aria-haspopup="true"
           class=${cx('flex sd-interactive', this.inverted && 'sd-interactive--inverted')}
         >
           [...]
