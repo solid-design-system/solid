@@ -1,7 +1,8 @@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize';
-import { query } from 'lit/decorators.js';
+import { query, state } from 'lit/decorators.js';
+import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -30,38 +31,56 @@ export default class SdBreadcrumb extends SolidElement {
   private resizeObserver: ResizeObserver;
 
   @query('[part="base"]') base: HTMLElement;
+  @query('[part="truncated"]') truncated: HTMLElement;
+
   @query('slot') defaultSlot: HTMLSlotElement;
+
+  @state() itemPositionsCached: boolean = false;
+  @state() truncatedItemsCount: number = 0;
 
   private get items() {
     return this.querySelectorAll('sd-breadcrumb-item');
   }
 
+  private cacheItemPositions() {
+    this.items.forEach(item => {
+      const { width } = item.getBoundingClientRect();
+      item.dataset.size = `${width}`;
+    });
+
+    this.itemPositionsCached = true;
+  }
+
   private handleTruncation() {
-    const { width: maxWidth } = this.base.getBoundingClientRect();
+    const { width: parentWidth } = this.base.getBoundingClientRect();
+    const { width: truncatedWidth } = this.truncated.getBoundingClientRect();
+
+    if (!this.itemPositionsCached) {
+      this.cacheItemPositions();
+    }
 
     let sum = 0;
+    this.truncatedItemsCount = 0;
+
     Array.from(this.items)
       .reverse()
       .forEach((item, index) => {
-        const { width } = item.getBoundingClientRect();
+        const width = parseFloat(item.dataset.size ?? `${item.getBoundingClientRect().width}`);
 
         if (index === 0) {
           sum += width;
           return;
         }
 
-        const overflow = sum + width > maxWidth;
-        item.style.position = overflow ? 'absolute' : 'relative';
-        item.style.visibility = overflow ? 'hidden' : 'visible';
-
-        if (!overflow) {
+        const isOverflowing = sum + width + truncatedWidth > parentWidth;
+        if (isOverflowing) {
+          this.truncatedItemsCount++;
+          item.setAttribute('slot', 'truncated');
+        } else {
           sum += width;
+          item.removeAttribute('slot');
         }
       });
-  }
-
-  private handleSlotChange() {
-    this.handleTruncation();
   }
 
   connectedCallback(): void {
@@ -77,7 +96,14 @@ export default class SdBreadcrumb extends SolidElement {
 
   render() {
     return html` <nav part="base" class="flex items-center">
-      <slot @slotchange=${this.handleSlotChange}></slot>
+      <sd-dropdown part="truncated" class=${cx(this.truncatedItemsCount === 0 && 'hidden')}>
+        <button slot="trigger" class="flex sd-interactive">[...]</button>
+
+        <div>
+          <slot name="truncated"></slot>
+        </div>
+      </sd-dropdown>
+      <slot></slot>
     </nav>`;
   }
 
@@ -89,8 +115,9 @@ export default class SdBreadcrumb extends SolidElement {
         @apply block relative;
       }
 
+      sd-dropdown,
       ::slotted(sd-breadcrumb-item:not(:last-of-type)) {
-        @apply after:inline-block after:w-1 after:h-1 after:mx-2 after:rounded-full after:bg-neutral-300;
+        @apply flex items-center after:inline-block after:w-1 after:h-1 after:mx-2 after:rounded-full after:bg-neutral-300;
       }
     `
   ];

@@ -16,7 +16,7 @@ const { generateTemplate } = storybookTemplate('{{ tag }}');
 export default {
   title: 'Components/{{ tag }}/Screenshots: {{ tag }}',
   component: '{{ tag }}',
-  tags: ['!dev'],
+  tags: ['!autodocs'],
   parameters: {
     ...parameters,
     design: {
@@ -26,11 +26,9 @@ export default {
   },
   args: overrideArgs([{}]),
   argTypes,
-  decorators: [withActions] as any
 };
 
 export const Default = {
-  name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }

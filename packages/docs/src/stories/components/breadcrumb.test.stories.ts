@@ -1,6 +1,5 @@
 import '../../../../components/src/solid-components';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-breadcrumb');
 const { overrideArgs } = storybookHelpers('sd-breadcrumb');
@@ -15,7 +14,7 @@ const { generateTemplate } = storybookTemplate('sd-breadcrumb');
 export default {
   title: 'Components/sd-breadcrumb/Screenshots: sd-breadcrumb',
   component: 'sd-breadcrumb',
-  tags: ['!dev'],
+  tags: ['!autodocs'],
   parameters: {
     ...parameters,
     design: {
@@ -23,13 +22,21 @@ export default {
       url: ''
     }
   },
-  args: overrideArgs([]),
-  argTypes,
-  decorators: [withActions] as any
+  args: overrideArgs([
+    {
+      type: 'slot',
+      name: 'default',
+      value: `
+        <sd-breadcrumb-item href="#">Breadcrumb item</sd-breadcrumb-item>
+        <sd-breadcrumb-item href="#">Breadcrumb item</sd-breadcrumb-item>
+        <sd-breadcrumb-item>Current breadcrumb item</sd-breadcrumb-item>
+      `
+    }
+  ]),
+  argTypes
 };
 
 export const Default = {
-  name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
