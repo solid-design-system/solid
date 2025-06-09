@@ -39,6 +39,9 @@ export default class SdBreadcrumbItem extends SolidElement {
   /** When set, the attribute `aria-current="page"` will be applied */
   @property({ type: Boolean, reflect: true }) current = false;
 
+  /** Inverts the breadcrumb item. */
+  @property({ type: Boolean, reflect: true }) inverted = false;
+
   @watch('current')
   handleCurrentChange() {
     if (!this.link || !this.current) return;
@@ -55,6 +58,7 @@ export default class SdBreadcrumbItem extends SolidElement {
         part="link"
         href=${this.href}
         target=${this.target}
+        inverted=${ifDefined(this.inverted ? true : undefined)}
         aria-current=${ifDefined(this.current ? 'page' : undefined)}
       >
         <slot name="icon-left" slot="icon-left"></slot>

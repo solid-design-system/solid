@@ -1,3 +1,4 @@
+import { html } from 'lit-html';
 import '../../../../components/src/solid-components';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
@@ -41,5 +42,20 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({ args });
+  }
+};
+
+export const Inverted = {
+  render: (args: any) => {
+    return html`
+      <div class="bg-primary p-10">
+        ${generateTemplate({
+          args: {
+            ...args,
+            inverted: true
+          }
+        })}
+      </div>
+    `;
   }
 };

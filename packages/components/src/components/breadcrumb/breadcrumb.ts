@@ -1,7 +1,8 @@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize';
-import { query, state } from 'lit/decorators.js';
+import { property, query, state } from 'lit/decorators.js';
+import { watch } from '../../internal/watch';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -25,16 +26,16 @@ import SolidElement from '../../internal/solid-element';
 export default class SdBreadcrumb extends SolidElement {
   public localize = new LocalizeController(this);
 
-  /**
-   * Internal resize observer
-   */
+  /** Internal resize observer */
   private resizeObserver: ResizeObserver;
 
   @query('[part="base"]') base: HTMLElement;
   @query('[part="truncated"]') truncated: HTMLElement;
   @query('[part="truncated-dropdown"]') dropdown: HTMLElement;
-
   @query('slot') defaultSlot: HTMLSlotElement;
+
+  /** Inverts the breadcrumb. */
+  @property({ type: Boolean, reflect: true }) inverted = false;
 
   @state() itemPositionsCached: boolean = false;
   @state() isTruncated: boolean = false;
@@ -69,7 +70,9 @@ export default class SdBreadcrumb extends SolidElement {
       item.hidden = false;
 
       if (this.isTruncated) {
-        this.dropdown.appendChild(item.cloneNode(true));
+        const cloned = item.cloneNode(true);
+        (cloned as HTMLElement).removeAttribute('inverted');
+        this.dropdown.appendChild(cloned);
         item.hidden = true;
         continue;
       }
@@ -81,12 +84,25 @@ export default class SdBreadcrumb extends SolidElement {
 
       this.isTruncated = sum + width + truncatedWidth > parentWidth;
       if (this.isTruncated) {
-        this.dropdown.appendChild(item.cloneNode(true));
+        const cloned = item.cloneNode(true);
+        (cloned as HTMLElement).removeAttribute('inverted');
+        this.dropdown.appendChild(cloned);
         item.hidden = true;
       } else {
         sum += width;
       }
     }
+  }
+
+  @watch('inverted')
+  handleInvertedChange() {
+    this.items.forEach(item => {
+      if (this.inverted) {
+        item.setAttribute('inverted', '');
+      } else {
+        item.removeAttribute('inverted');
+      }
+    });
   }
 
   connectedCallback(): void {
@@ -104,7 +120,13 @@ export default class SdBreadcrumb extends SolidElement {
     /* eslint-disable lit-a11y/list */
     return html` <nav part="base" class="flex items-center pb-1">
       <sd-dropdown part="truncated" class=${cx(!this.isTruncated && 'absolute opacity-0 pointer-events-none')}>
-        <button slot="trigger" class="flex sd-interactive">[...]</button>
+        <button
+          slot="trigger"
+          tabindex=${this.isTruncated ? '0' : '-1'}
+          class=${cx('flex sd-interactive', this.inverted && 'sd-interactive--inverted')}
+        >
+          [...]
+        </button>
 
         <ol part="truncated-dropdown" class="flex flex-col gap-4 px-2 py-3"></ol>
       </sd-dropdown>
