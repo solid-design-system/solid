@@ -319,9 +319,13 @@ export default class SdTabGroup extends SolidElement {
 
     const tabRect = currentTab.getBoundingClientRect();
     const containerRect = tabsContainer.getBoundingClientRect();
+    const isCentered = this.id === 'centered';
 
-    const offsetX = tabRect.left - containerRect.left;
+    const containerCenter = containerRect.left + containerRect.width / 2;
+    const tabCenter = tabRect.left + tabRect.width / 2;
+
     const width = currentTab.offsetWidth;
+    const offsetX = isCentered ? tabCenter - containerCenter : tabRect.left - containerRect.left;
 
     indicator.style.width = `${width}px`;
     indicator.style.transform = `translateX(${offsetX}px)`;
