@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 5.3.0
+
+### Minor Changes
+
+- Implemented new theme token `z-header`. _[`#2275`](https://github.com/solid-design-system/solid/pull/2275) [`03ba826`](https://github.com/solid-design-system/solid/commit/03ba82696bc01c764d3f210db3d71720a4b232a0) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.2.0
 
 ### Minor Changes
