@@ -245,4 +245,24 @@ export const Autoplay = {
   }
 };
 
-export const Combination = generateScreenshotStory([Variant, Inverted, Loop, Parts, Mouseless]);
+/**
+ * Use the `fade` attribute to toggle fade effect.
+ */
+
+export const Fade = {
+  name: 'Fade',
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: { type: 'attribute', name: 'fade' }
+      },
+      constants: [
+        { type: 'attribute', name: 'variant', value: 'dot' },
+        { type: 'attribute', name: 'loop', value: 'true' }
+      ],
+      args
+    });
+  }
+};
+
+export const Combination = generateScreenshotStory([Variant, Inverted, Loop, Parts, Mouseless, Fade]);

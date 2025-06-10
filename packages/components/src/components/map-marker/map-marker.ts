@@ -131,7 +131,7 @@ export default class SdMapMarker extends SolidElement {
               ['hover', 'active'].includes(this.state) && '!translate-y-0'
             )}>
               <div class=${cx(
-                'min-w-full min-h-full skew-y-[11deg]',
+                'min-w-full min-h-full skew-y-[-11deg]',
                 {
                   cluster: 'bg-primary-500',
                   main: this.state === 'active' ? 'bg-accent-700' : 'bg-accent-550 group-active:bg-accent-700',
