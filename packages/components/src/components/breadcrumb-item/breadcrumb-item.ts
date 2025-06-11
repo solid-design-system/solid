@@ -60,10 +60,17 @@ export default class SdBreadcrumbItem extends SolidElement {
         target=${this.target}
         inverted=${ifDefined(this.inverted ? true : undefined)}
         aria-current=${ifDefined(this.current ? 'page' : undefined)}
+        standalone
       >
-        <slot name="icon-left" slot="icon-left"></slot>
+        <div slot="icon-left" class="flex items-center">
+          <slot name="icon-left"></slot>
+        </div>
+
         <slot></slot>
-        <slot name="icon-right" slot="icon-right"></slot>
+
+        <div slot="icon-right" class="flex items-center">
+          <slot name="icon-right"></slot>
+        </div>
       </sd-link>
     </li>`;
   }
@@ -73,6 +80,15 @@ export default class SdBreadcrumbItem extends SolidElement {
     css`
       :host {
         @apply inline-flex items-center;
+      }
+
+      sd-link::part(base) {
+        @apply items-center;
+      }
+
+      sd-link::part(icon-left),
+      sd-link::part(icon-right) {
+        @apply mr-0 ml-0;
       }
     `
   ];

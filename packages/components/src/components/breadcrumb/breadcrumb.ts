@@ -57,6 +57,8 @@ export default class SdBreadcrumb extends SolidElement {
   }
 
   private handleTruncation() {
+    if (document.documentElement.clientWidth <= 1024) return;
+
     const { width: parentWidth } = this.base.getBoundingClientRect();
     const { width: truncatedWidth } = this.truncated.getBoundingClientRect();
 
@@ -108,6 +110,16 @@ export default class SdBreadcrumb extends SolidElement {
     });
   }
 
+  handleSlotChange() {
+    const icon = document.createElement('sd-icon');
+    icon.setAttribute('slot', 'icon-left');
+    icon.setAttribute('library', '_internal');
+    icon.setAttribute('name', 'chevron-left');
+    icon.setAttribute('class', 'text-base me-1 lg:hidden');
+
+    Array.from(this.items).at(-2)?.appendChild(icon);
+  }
+
   connectedCallback(): void {
     super.connectedCallback();
     this.resizeObserver = new ResizeObserver(() => this.handleTruncation());
@@ -138,7 +150,7 @@ export default class SdBreadcrumb extends SolidElement {
       </sd-dropdown>
 
       <ol class="flex items-center">
-        <slot></slot>
+        <slot @slotchange=${this.handleSlotChange}></slot>
       </ol>
     </nav>`;
     /* eslint-enable lit-a11y/list */
@@ -154,11 +166,16 @@ export default class SdBreadcrumb extends SolidElement {
 
       sd-dropdown,
       ::slotted(sd-breadcrumb-item:not(:last-of-type)) {
-        @apply flex items-center after:inline-block after:w-1 after:h-1 after:mx-2 after:rounded-full after:bg-neutral-300;
+        @apply after:hidden lg:after:inline-block after:w-1 after:h-1 after:mx-2 after:rounded-full after:bg-neutral-300;
       }
 
       ::slotted(sd-breadcrumb-item:nth-last-child(2)) {
-        @apply after:bg-accent;
+        @apply flex lg:after:bg-accent;
+      }
+
+      sd-dropdown,
+      ::slotted(sd-breadcrumb-item) {
+        @apply hidden lg:flex items-center;
       }
     `
   ];
