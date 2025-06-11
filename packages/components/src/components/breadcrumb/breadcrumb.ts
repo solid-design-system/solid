@@ -7,20 +7,21 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Short summary of the component's intended use.
+ * @summary A responsive breadcrumb navigation components used to visualize a page's location
+ * within the site's hierarchy and provide easy navigation to previous sections.
  * @status experimental
  * @since 1.0
  *
- * @dependency sd-example
+ * @dependency sd-dropdown
+ * @dependency sd-icon
  *
- * @event sd-event-name - Emitted as an example.
- *
- * @slot - The default slot.
- * @slot example - An example slot.
+ * @slot - `<sd-breadcrumb-item> elements to display in the breadcrumb.`
  *
  * @csspart base - The component's base wrapper.
+ * @csspart list - The list containing the slotted elements.
+ * @csspart truncated - The truncated wrapper.
+ * @csspart truncated-dropdown - The truncated dropdown containing the truncated breadcrumbs.
  *
- * @cssproperty --example - An example CSS custom property.
  */
 @customElement('sd-breadcrumb')
 export default class SdBreadcrumb extends SolidElement {
@@ -149,7 +150,7 @@ export default class SdBreadcrumb extends SolidElement {
         <ol part="truncated-dropdown" class="flex flex-col gap-4 px-2 py-3"></ol>
       </sd-dropdown>
 
-      <ol class="flex items-center">
+      <ol part="list" class="flex items-center">
         <slot @slotchange=${this.handleSlotChange}></slot>
       </ol>
     </nav>`;

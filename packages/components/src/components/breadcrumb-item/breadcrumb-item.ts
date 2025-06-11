@@ -7,22 +7,19 @@ import { watch } from 'src/internal/watch';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Short summary of the component's intended use.
+ * @summary An individual breadcrumb item for use exclusively within the `sd-breadcrumb`.
  * @status experimental
  * @since 1.0
  *
- * @dependency sd-example
+ * @dependency sd-link
  *
- * @event sd-event-name - Emitted as an example.
- *
- * @slot - The default slot.
- * @slot separator - The separator to use for the breadcrumb item. This will only change the separator for this item. If
- * you want to change it for all items in the group, set the separator on `<sd-breadcrumb>` instead.
+ * @slot - The breadcrumb label.
+ * @slot icon-left - The icon to display on the left side of the breadcrumb.
+ * @slot icon-right - The icon to display on the right side of the breadcrumb.
  *
  * @csspart base - The component's base wrapper.
- * @csspart separator - The container that wraps the separator.
+ * @csspart link - The inner `sd-link` component.
  *
- * @cssproperty --example - An example CSS custom property.
  */
 @customElement('sd-breadcrumb-item')
 export default class SdBreadcrumbItem extends SolidElement {
@@ -84,6 +81,10 @@ export default class SdBreadcrumbItem extends SolidElement {
 
       sd-link::part(base) {
         @apply items-center;
+      }
+
+      :host([current]) sd-link::part(label) {
+        @apply no-underline;
       }
 
       sd-link::part(icon-left),
