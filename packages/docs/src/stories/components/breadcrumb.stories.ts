@@ -8,10 +8,7 @@ const { overrideArgs } = storybookHelpers('sd-breadcrumb-item');
 const { generateTemplate } = storybookTemplate('sd-breadcrumb');
 
 /**
- * Used to do something cool. (Describe usage of component here.)
- *
- * **Related templates**:
- * - [Link to template](?path=docs/templates-your-template)
+ * Used to visualize a page's location within the site's hierarchy and provide easy navigation to previous sections.
  */
 export default {
   tags: ['!dev'],
@@ -22,7 +19,7 @@ export default {
     ...parameters,
     design: {
       type: 'figma',
-      url: ''
+      url: 'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/branch/79bDuD6NL6ssJHLwBJCpdy/Solid-DS-%E2%80%93-Component-Library?node-id=38860-1316&t=J6mvYDg507RR7LeU-0'
     }
   },
   args: overrideArgs([
@@ -30,9 +27,9 @@ export default {
       type: 'slot',
       name: 'default',
       value: `
-        <sd-breadcrumb-item href="#">Breadcrumb item</sd-breadcrumb-item>
-        <sd-breadcrumb-item href="#">Breadcrumb item</sd-breadcrumb-item>
-        <sd-breadcrumb-item current>Current breadcrumb item</sd-breadcrumb-item>
+        <sd-breadcrumb-item href="#">First level</sd-breadcrumb-item>
+        <sd-breadcrumb-item href="#">Second level</sd-breadcrumb-item>
+        <sd-breadcrumb-item current>Current</sd-breadcrumb-item>
       `
     }
   ]),

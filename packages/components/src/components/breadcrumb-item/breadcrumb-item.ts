@@ -53,7 +53,7 @@ export default class SdBreadcrumbItem extends SolidElement {
     return html`<li part="base" class="inline-flex items-center text-neutral-400 text-nowrap">
       <sd-link
         part="link"
-        href=${this.href}
+        href=${ifDefined(!this.current ? this.href : undefined)}
         target=${this.target}
         inverted=${ifDefined(this.inverted ? true : undefined)}
         aria-current=${ifDefined(this.current ? 'page' : undefined)}

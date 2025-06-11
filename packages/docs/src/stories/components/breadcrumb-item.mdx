@@ -12,36 +12,32 @@ export const links = {
 export const content = `
 # Breadcrumb Item
 
-DESCRIPTION
+Used to visualize a page's location within the site's hierarchy and provide easy navigation to previous sections.
 
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
 
-#### Related Components
-
-[]()
-
-#### Related Templates
-
-[]()
-
 ### Common Use Cases
 
--
+- Populate an <sd-link href="/?path=/docs/components-sd-breadcrumb--docs">sd-breadcrumb navigation</sd-link>, helping users easily access different pages.
 
 ### Usage Guidelines
 
-#### TITLE
+#### Content and Labeling
 
--
+- Use clear and descriptive labels that accurately represent each page or section in the navigation path.
 
-Add other guidelines here.
+#### Background
+
+- Use light background options like white, neutral-100 or primary-100.
+- Dynamically update breadcrumbs and announce changes with aria-live for screen readers.
 
 ### Accessibility Information
 
--
-- Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+- Dynamically update breadcrumbs and announce changes with aria-live for screen readers.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
 
 <Meta title="Components/sd-breadcrumb-item/Overview" />
 

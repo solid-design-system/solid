@@ -8,10 +8,7 @@ const { overrideArgs } = storybookHelpers('sd-breadcrumb-item');
 const { generateTemplate } = storybookTemplate('sd-breadcrumb-item');
 
 /**
- * Used to do something cool. (Describe usage of component here.)
- *
- * **Related templates**:
- * - [Link to template](?path=docs/templates-your-template)
+ * Used to visualize a page's location within the site's hierarchy and provide easy navigation to previous sections.
  */
 export default {
   tags: ['!dev'],
@@ -30,11 +27,10 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: 'Breadcrumb item'
+      value: 'First level page'
     },
     { type: 'attribute', name: 'href', value: '#' }
-  ]),
-  decorators: [withActions] as any
+  ])
 };
 
 export const Default = {
@@ -44,8 +40,10 @@ export const Default = {
 };
 
 /**
- * Use the `first example` to describe a feature.
+ * Use the `current` attribute for the last breadcrumb-item.
  */
-export const FirstExample = {
-  render: () => html` <sd-breadcrumb-item href="#"> This is your first example. </sd-breadcrumb-item> `
+export const Current = {
+  render: (args: any) => {
+    return generateTemplate({ args, constants: { type: 'attribute', name: 'current', value: true } });
+  }
 };
