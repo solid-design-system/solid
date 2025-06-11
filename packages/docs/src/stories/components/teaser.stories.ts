@@ -215,7 +215,7 @@ export const Breakpoint = {
 
 /** Use the `reversed-layout` attribute to invert the horizontal variant position.
  *
- * **Hint**: Only works with horizontal teasers (`breakpoint`=`0`).
+ * **Hint**: Only works with horizontal teasers.
  */
 export const ReversedLayout = {
   render: () => html`
