@@ -3,7 +3,7 @@ import { customElement } from '../../internal/register-custom-element';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
-import { watch } from 'src/internal/watch';
+import { watch } from '../../internal/watch';
 import SolidElement from '../../internal/solid-element';
 
 /**
