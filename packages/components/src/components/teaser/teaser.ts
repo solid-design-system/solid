@@ -162,7 +162,6 @@ export default class SdTeaser extends SolidElement {
             this.variant === 'white border-neutral-400' && this._orientation === 'vertical' && 'mx-[-1px] mt-[-1px]',
             this._orientation !== 'vertical' && this.reversedLayout && 'order-2'
           )}
-          ${console.log(this.reversedLayout)}
         >
           <slot name="media"></slot>
         </div>
