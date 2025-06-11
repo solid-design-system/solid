@@ -1,7 +1,5 @@
 import '../../../../components/src/solid-components';
-import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-breadcrumb-item');
 const { overrideArgs } = storybookHelpers('sd-breadcrumb-item');
