@@ -18,14 +18,13 @@ import SolidElement from '../../internal/solid-element';
  * @slot icon-right - The icon to display on the right side of the breadcrumb.
  *
  * @csspart base - The component's base wrapper.
- * @csspart link - The inner `sd-link` component.
  *
  */
 @customElement('sd-breadcrumb-item')
 export default class SdBreadcrumbItem extends SolidElement {
   public localize = new LocalizeController(this);
 
-  @query('[part="link"]') link: HTMLElement;
+  @query('[part="base"]') base: HTMLElement;
 
   /** When not set, the breadcrumb will render as disabled. */
   @property({ type: String, reflect: true }) href = '';
@@ -38,32 +37,40 @@ export default class SdBreadcrumbItem extends SolidElement {
 
   @watch('current')
   handleCurrentChange() {
-    if (!this.link || !this.current) return;
-    this.link.shadowRoot?.querySelector('a')?.setAttribute('aria-current', 'page');
+    if (!this.base || !this.current) return;
+    this.base.shadowRoot?.querySelector('a')?.setAttribute('aria-current', 'page');
   }
 
-  firstUpdated() {
+  connectedCallback(): void {
     if (!this.hasAttribute('role')) {
       this.setAttribute('role', 'listitem');
     }
 
+    super.connectedCallback();
+  }
+
+  firstUpdated() {
     requestAnimationFrame(() => this.handleCurrentChange());
   }
 
   render() {
-    return html`<div part="base" class="inline-flex items-center text-neutral-400 text-nowrap">
-      <sd-link part="link" href=${ifDefined(!this.current ? this.href : undefined)} target=${this.target} standalone>
-        <div slot="icon-left" class="flex items-center">
-          <slot name="icon-left"></slot>
-        </div>
+    return html` <sd-link
+      part="base"
+      href=${ifDefined(!this.current ? this.href : undefined)}
+      target=${this.target}
+      standalone
+      class="text-nowrap"
+    >
+      <div slot="icon-left" class="flex items-center">
+        <slot name="icon-left"></slot>
+      </div>
 
-        <slot></slot>
+      <slot></slot>
 
-        <div slot="icon-right" class="flex items-center">
-          <slot name="icon-right"></slot>
-        </div>
-      </sd-link>
-    </div>`;
+      <div slot="icon-right" class="flex items-center">
+        <slot name="icon-right"></slot>
+      </div>
+    </sd-link>`;
   }
 
   static styles = [
