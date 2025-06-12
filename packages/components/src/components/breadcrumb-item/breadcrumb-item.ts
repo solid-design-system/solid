@@ -84,13 +84,17 @@ export default class SdBreadcrumbItem extends SolidElement {
         @apply items-center;
       }
 
-      :host([current]) sd-link::part(label) {
-        @apply no-underline;
-      }
-
       sd-link::part(icon-left),
       sd-link::part(icon-right) {
         @apply mr-0 ml-0;
+      }
+
+      :host([current]) sd-link::part(base) {
+        @apply text-neutral-700;
+      }
+
+      :host([current]) sd-link::part(label) {
+        @apply no-underline;
       }
     `
   ];
