@@ -36,9 +36,6 @@ export default class SdBreadcrumbItem extends SolidElement {
   /** When set, the attribute `aria-current="page"` will be applied */
   @property({ type: Boolean, reflect: true }) current = false;
 
-  /** Inverts the breadcrumb item. */
-  @property({ type: Boolean, reflect: true }) inverted = false;
-
   @watch('current')
   handleCurrentChange() {
     if (!this.link || !this.current) return;
@@ -46,19 +43,16 @@ export default class SdBreadcrumbItem extends SolidElement {
   }
 
   firstUpdated() {
+    if (!this.hasAttribute('role')) {
+      this.setAttribute('role', 'listitem');
+    }
+
     requestAnimationFrame(() => this.handleCurrentChange());
   }
 
   render() {
-    return html`<li part="base" class="inline-flex items-center text-neutral-400 text-nowrap">
-      <sd-link
-        part="link"
-        href=${ifDefined(!this.current ? this.href : undefined)}
-        target=${this.target}
-        inverted=${ifDefined(this.inverted ? true : undefined)}
-        aria-current=${ifDefined(this.current ? 'page' : undefined)}
-        standalone
-      >
+    return html`<div part="base" class="inline-flex items-center text-neutral-400 text-nowrap">
+      <sd-link part="link" href=${ifDefined(!this.current ? this.href : undefined)} target=${this.target} standalone>
         <div slot="icon-left" class="flex items-center">
           <slot name="icon-left"></slot>
         </div>
@@ -69,7 +63,7 @@ export default class SdBreadcrumbItem extends SolidElement {
           <slot name="icon-right"></slot>
         </div>
       </sd-link>
-    </li>`;
+    </div>`;
   }
 
   static styles = [

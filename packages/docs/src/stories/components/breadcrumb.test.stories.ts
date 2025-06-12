@@ -45,22 +45,6 @@ export const Truncated = {
   }
 };
 
-export const Inverted = {
-  render: (args: any) => {
-    return html`<div class="bg-primary p-2">
-      ${generateTemplate({ args, constants: { type: 'attribute', name: 'inverted', value: true } })}
-    </div>`;
-  }
-};
-
-export const TruncatedXInverted = {
-  render: (args: any) => {
-    return html`<div class="bg-primary p-2" style="width: 300px;">
-      ${generateTemplate({ args, constants: { type: 'attribute', name: 'inverted', value: true } })}
-    </div>`;
-  }
-};
-
 export const Mobile = {
   parameters: {
     viewport: { defaultViewport: 'mobile1' }

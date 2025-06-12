@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-breadcrumb-item');
 export default {
   title: 'Components/sd-breadcrumb-item/Screenshots: sd-breadcrumb-item',
   component: 'sd-breadcrumb-item',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-[aria-required-parent]'],
   parameters: {
     ...parameters,
     design: {

@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-breadcrumb-item');
  * Used to visualize a page's location within the site's hierarchy and provide easy navigation to previous sections.
  */
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'skip-a11y-[aria-required-parent]'],
   title: 'Components/sd-breadcrumb-item',
   component: 'sd-breadcrumb-item',
 

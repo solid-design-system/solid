@@ -2,7 +2,6 @@ import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
-import { watch } from '../../internal/watch';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
@@ -15,7 +14,7 @@ import SolidElement from '../../internal/solid-element';
  * @dependency sd-dropdown
  * @dependency sd-icon
  *
- * @slot - `<sd-breadcrumb-item> elements to display in the breadcrumb.`
+ * @slot - `sd-breadcrumb-item` elements to display in the breadcrumb.
  *
  * @csspart base - The component's base wrapper.
  * @csspart list - The list containing the slotted elements.
@@ -34,9 +33,6 @@ export default class SdBreadcrumb extends SolidElement {
   @query('[part="truncated"]') truncated: HTMLElement;
   @query('[part="truncated-dropdown"]') dropdown: HTMLElement;
   @query('slot') defaultSlot: HTMLSlotElement;
-
-  /** Inverts the breadcrumb. */
-  @property({ type: Boolean, reflect: true }) inverted = false;
 
   /** The breadcrumbs' label. Required for proper accessibility. */
   @property({ type: String, reflect: true }) label = 'Breadcrumbs';
@@ -77,7 +73,6 @@ export default class SdBreadcrumb extends SolidElement {
 
       if (this.isTruncated) {
         const cloned = item.cloneNode(true);
-        (cloned as HTMLElement).removeAttribute('inverted');
         this.dropdown.appendChild(cloned);
         item.hidden = true;
         continue;
@@ -91,7 +86,6 @@ export default class SdBreadcrumb extends SolidElement {
       this.isTruncated = sum + width + truncatedWidth > parentWidth;
       if (this.isTruncated) {
         const cloned = item.cloneNode(true);
-        (cloned as HTMLElement).removeAttribute('inverted');
         this.dropdown.appendChild(cloned);
         item.hidden = true;
       } else {
@@ -100,18 +94,7 @@ export default class SdBreadcrumb extends SolidElement {
     }
   }
 
-  @watch('inverted')
-  handleInvertedChange() {
-    this.items.forEach(item => {
-      if (this.inverted) {
-        item.setAttribute('inverted', '');
-      } else {
-        item.removeAttribute('inverted');
-      }
-    });
-  }
-
-  handleSlotChange() {
+  handleMobileChevron() {
     const icon = document.createElement('sd-icon');
     icon.setAttribute('slot', 'icon-left');
     icon.setAttribute('library', '_internal');
@@ -119,6 +102,10 @@ export default class SdBreadcrumb extends SolidElement {
     icon.setAttribute('class', 'text-base me-1 lg:hidden');
 
     Array.from(this.items).at(-2)?.appendChild(icon);
+  }
+
+  handleSlotChange() {
+    this.handleMobileChevron();
   }
 
   connectedCallback(): void {
@@ -142,7 +129,7 @@ export default class SdBreadcrumb extends SolidElement {
           aria-label=${this.localize.term('truncatedBreadcrumbs')}
           aria-expanded="false"
           aria-haspopup="true"
-          class=${cx('flex sd-interactive', this.inverted && 'sd-interactive--inverted')}
+          class="flex sd-interactive"
         >
           [...]
         </button>
