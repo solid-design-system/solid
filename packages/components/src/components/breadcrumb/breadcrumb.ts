@@ -73,12 +73,12 @@ export default class SdBreadcrumb extends SolidElement {
 
       if (this.isTruncated) {
         const cloned = item.cloneNode(true);
-        this.dropdown.appendChild(cloned);
+        this.dropdown.prepend(cloned);
         item.hidden = true;
         continue;
       }
 
-      if (index === 0) {
+      if (index === 0 || index === 1) {
         sum += width;
         continue;
       }
@@ -86,7 +86,7 @@ export default class SdBreadcrumb extends SolidElement {
       this.isTruncated = sum + width + truncatedWidth > parentWidth;
       if (this.isTruncated) {
         const cloned = item.cloneNode(true);
-        this.dropdown.appendChild(cloned);
+        this.dropdown.prepend(cloned);
         item.hidden = true;
       } else {
         sum += width;

@@ -1,4 +1,5 @@
 import '../../../../components/src/solid-components';
+import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
@@ -38,5 +39,33 @@ export default {
 export const Default = {
   render: (args: any) => {
     return generateTemplate({ args });
+  }
+};
+
+/**
+ * Whenever the breadcrumb has no available space it automatically truncates.
+ *
+ * Disclaimer: When window size is lower than 1024px the breadcrumb assumes the mobile view and only the second to last breadcrumb item appears.
+ */
+export const Truncated = {
+  render: (args: any) => {
+    return html`<div style="width: 200px; height: 200px;">
+      ${generateTemplate({
+        args,
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value: `
+                <sd-breadcrumb-item href="#">First level</sd-breadcrumb-item>
+                <sd-breadcrumb-item href="#">Second level</sd-breadcrumb-item>
+                <sd-breadcrumb-item href="#">Third level</sd-breadcrumb-item>
+                <sd-breadcrumb-item href="#">Forth level</sd-breadcrumb-item>
+                <sd-breadcrumb-item current>Current</sd-breadcrumb-item>
+              `
+          }
+        ]
+      })}
+    </div>`;
   }
 };
