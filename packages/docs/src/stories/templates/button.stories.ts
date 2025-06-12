@@ -19,25 +19,34 @@ export default {
 export const ButtonGroupHorizontal = {
   render: () => html`
     <div class="flex flex-col gap-12">
-      <div class="flex flex-row gap-8">
-        <sd-button variant="secondary">Secondary Action</sd-button>
-        <sd-button variant="primary">Primary Action</sd-button>
+      <div class="flex flex-row gap-4 py-12">
+        <sd-button variant="secondary">Maybe later</sd-button>
+        <sd-button variant="primary">Cancel subscription</sd-button>
       </div>
-      <div class="flex flex-row gap-8">
-        <sd-button variant="secondary">Secondary Action</sd-button>
-        <sd-button variant="secondary">Secondary Action</sd-button>
-        <sd-button variant="primary">Primary Action</sd-button>
-      </div>
-      <div class="flex flex-row gap-8">
-        <sd-button variant="tertiary">Tertiary Action</sd-button>
-        <sd-button variant="secondary">Secondary Action</sd-button>
-        <sd-button variant="primary">Primary Action</sd-button>
-      </div>
-      <div class="flex flex-row gap-8">
-        <sd-button variant="secondary">
-          <sd-icon name="system/more-functions" label="Icon only"></sd-icon>
+
+      <div class="flex flex-row gap-4 py-12">
+        <sd-button variant="secondary"
+          ><sd-icon name="system/log-out" slot="icon-left"></sd-icon>Exit portal
         </sd-button>
-        <sd-button variant="primary">Primary Action</sd-button>
+        <sd-button variant="secondary"
+          ><sd-icon name="system/download" slot="icon-left"></sd-icon>Download PDF</sd-button
+        >
+        <sd-button variant="primary">Accept terms of use</sd-button>
+      </div>
+
+      <div class="flex flex-row gap-4 py-12">
+        <sd-button variant="secondary" size="sm">
+         <sd-icon name="system/download" slot="icon-left"></sd-icon>PIF</sd-icon>
+        </sd-button>
+        <sd-button variant="secondary" size="sm">
+          <sd-icon name="system/eye-open" slot="icon-left"></sd-icon>Add to watchlist
+        </sd-button>
+        <sd-button variant="secondary" size="sm">
+          <sd-icon name="system/table" slot="icon-left"></sd-icon>Compare funds
+        </sd-button>
+        <sd-button variant="tertiary" size="sm">
+          <sd-icon name="system/more-functions" slot="icon-left"></sd-icon>More actions
+        </sd-button>
       </div>
     </div>
   `
@@ -49,18 +58,22 @@ export const ButtonGroupHorizontal = {
 export const ButtonGroupVertical = {
   render: () => html`
     <div class="flex flex-col gap-4" style="width: 208px">
-      <sd-button variant="primary">Primary Action</sd-button>
-      <sd-button variant="secondary">Secondary Action</sd-button>
-      <sd-button variant="tertiary">Tertiary Action</sd-button>
+      <sd-button variant="primary">Start investment</sd-button>
+      <sd-button variant="secondary"
+        ><sd-icon name="system/download" slot="icon-left"></sd-icon>Download report</sd-button
+      >
+      <sd-button variant="secondary">
+        <sd-icon name="system/eye-open" slot="icon-left"></sd-icon>Add to watchlist</sd-button
+      >
     </div>
   `
 };
 
 export const ButtonGroupVerticalFullWidth = {
   render: () => html`
-    <div class="flex flex-col gap-4">
-      <sd-button variant="primary">Primary Action Full width</sd-button>
-      <sd-button variant="secondary">Secondary Action Full width</sd-button>
+    <div class="flex flex-col gap-4" style="width: 375px">
+      <sd-button variant="primary">Start investment</sd-button>
+      <sd-button variant="secondary">Learn about funds</sd-button>
     </div>
   `
 };
