@@ -9,6 +9,7 @@ describe('<sd-teaser>', () => {
     expect(el.variant).to.equal('white');
     expect(el.breakpoint).to.equal(448);
     expect(el.inset).to.equal(false);
+    expect(el.reversedLayout).to.equal(false);
   });
 
   it('renders assigned values correctly', async () => {
@@ -173,6 +174,7 @@ describe('<sd-teaser>', () => {
       });
     });
   });
+
   it('keeps inset property as false after changing variant', async () => {
     const el = await fixture<SdTeaser>(html`<sd-teaser variant="white border-neutral-400"></sd-teaser>`);
 
