@@ -18,13 +18,13 @@ export default {
  */
 export const ButtonGroupHorizontal = {
   render: () => html`
-    <div class="flex flex-col gap-12">
-      <div class="flex flex-row gap-4 py-12">
+    <div class="flex flex-col gap-8">
+      <div class="flex flex-row gap-4 py-6">
         <sd-button variant="secondary">Maybe later</sd-button>
         <sd-button variant="primary">Cancel subscription</sd-button>
       </div>
 
-      <div class="flex flex-row gap-4 py-12">
+      <div class="flex flex-row gap-2 py-6">
         <sd-button variant="secondary"
           ><sd-icon name="system/log-out" slot="icon-left"></sd-icon>Exit portal
         </sd-button>
@@ -34,7 +34,7 @@ export const ButtonGroupHorizontal = {
         <sd-button variant="primary">Accept terms of use</sd-button>
       </div>
 
-      <div class="flex flex-row gap-4 py-12">
+      <div class="flex flex-row gap-2 py-6">
         <sd-button variant="secondary" size="sm">
          <sd-icon name="system/download" slot="icon-left"></sd-icon>PIF</sd-icon>
         </sd-button>
@@ -89,11 +89,12 @@ export const ButtonGroupVerticalFullWidth = {
  * by also making them more inclusive and providing a way out for customers.
  *
  * **Suggestion:**
- * - Use `aria-disabled` attribute and tooltip.
+ * - Use `visually-disabled` attribute and tooltip.
  */
 export const InclusiveDisabledButtonWithTooltip = {
   render: () => html`
     <div class="flex flex-col gap-4 w-[500px]">
+      <p class="text-neutral-700 text-sm">Fields marked with * are required.</p>
       <sd-textarea
         id="message-textarea"
         label="Your message *"
@@ -106,6 +107,7 @@ export const InclusiveDisabledButtonWithTooltip = {
           trigger="hover focus"
           size="sm"
           placement="top"
+          style="--max-width:136px"
         >
           <sd-button id="disabled-button" variant="primary" visually-disabled>Send</sd-button>
         </sd-tooltip>
