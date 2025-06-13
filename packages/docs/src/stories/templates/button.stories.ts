@@ -57,7 +57,7 @@ export const ButtonGroupHorizontal = {
  */
 export const ButtonGroupVertical = {
   render: () => html`
-    <div class="flex flex-col gap-4" style="width: 208px">
+    <div class="flex flex-col gap-4 w-[208px]">
       <sd-button variant="primary">Start investment</sd-button>
       <sd-button variant="secondary"
         ><sd-icon name="system/download" slot="icon-left"></sd-icon>Download report</sd-button
@@ -71,9 +71,69 @@ export const ButtonGroupVertical = {
 
 export const ButtonGroupVerticalFullWidth = {
   render: () => html`
-    <div class="flex flex-col gap-4" style="width: 375px">
+    <div class="flex flex-col gap-4 w-[375px]">
       <sd-button variant="primary">Start investment</sd-button>
       <sd-button variant="secondary">Learn about funds</sd-button>
     </div>
+  `
+};
+/**
+ *
+ * **Accessibility:**
+ * - Move away from disabling buttons if possible.
+ * - Rely on default values to keep the button enabled by default.
+ * - Prefer validating on submit and guide users directly to errors with sensible error messages.
+ * - Use live validation only for fields like email or password to meet specific formatting requirements in real-time.
+ *
+ * If you need to use disabled buttons, consider ways to make them focusable and useful
+ * by also making them more inclusive and providing a way out for customers.
+ *
+ * **Suggestion:**
+ * - Use `aria-disabled` attribute and tooltip.
+ */
+export const InclusiveDisabledButtonWithTooltip = {
+  render: () => html`
+    <div class="flex flex-col gap-4 w-[500px]">
+      <sd-textarea
+        id="message-textarea"
+        label="Your message *"
+        placeholder="What can we help you with today?"
+      ></sd-textarea>
+      <div class="flex justify-end">
+        <sd-tooltip
+          id="tooltip"
+          content="Enter a message to enable the button."
+          trigger="hover focus"
+          size="sm"
+          placement="top"
+        >
+          <sd-button id="disabled-button" variant="primary" visually-disabled>Send</sd-button>
+        </sd-tooltip>
+      </div>
+    </div>
+
+    <script type="module">
+      await Promise.all([customElements.whenDefined('sd-textarea'), customElements.whenDefined('sd-button')]);
+
+      const button = document.getElementById('disabled-button');
+      const textarea = document.getElementById('message-textarea');
+      const tooltip = document.getElementById('tooltip');
+
+      const updateButtonState = () => {
+        const hasContent = textarea.value.trim().length > 0;
+
+        if (hasContent) {
+          button.removeAttribute('visually-disabled');
+          tooltip.setAttribute('disabled', '');
+        } else {
+          button.setAttribute('visually-disabled', '');
+          tooltip.removeAttribute('disabled');
+        }
+      };
+
+      updateButtonState();
+
+      textarea.addEventListener('input', updateButtonState);
+    </script>
   `
 };
