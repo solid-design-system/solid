@@ -918,7 +918,7 @@ describe('<sd-carousel>', () => {
       `);
 
       await el.updateComplete;
-      await aTimeout(0);
+      await aTimeout(100);
 
       const slides = Array.from(el.querySelectorAll('sd-carousel-item'));
 
