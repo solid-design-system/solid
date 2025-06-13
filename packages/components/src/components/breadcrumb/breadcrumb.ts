@@ -154,7 +154,7 @@ export default class SdBreadcrumb extends SolidElement {
 
       sd-dropdown,
       ::slotted(sd-breadcrumb-item:not(:last-of-type)) {
-        @apply after:hidden lg:after:inline-block after:w-1 after:h-1 after:mx-2 after:rounded-full after:bg-neutral-300;
+        @apply after:hidden lg:after:inline-block after:w-1 after:h-1 after:mx-2 after:rounded-full after:bg-neutral-400;
       }
 
       ::slotted(sd-breadcrumb-item:nth-last-child(2)) {
