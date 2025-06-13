@@ -119,5 +119,6 @@ export interface Translation extends DefaultTranslation {
   tagsSelected: string;
   toggleColorFormat: string;
   transcriptIsOpen: string;
+  truncatedBreadcrumbs: string;
   unmute: string;
 }
