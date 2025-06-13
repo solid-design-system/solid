@@ -221,7 +221,7 @@ export const ReversedLayout = {
   render: () => html`
     <sd-teaser reversed-layout>
       <h3 slot="headline">Lorem ipsum sic semper</h3>
-      <img slot="media" src="./placeholders/images/architecture.jpg" alt="" style="width:100%; height: auto;" />
+      <img slot="media" src="./placeholders/images/architecture.jpg" alt="" class="w-full h-auto" />
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
         reprehenderit aliquip officia in minim. Eu ipsum pariatur dolor. Do ex in cupidatat anim aliqua sint voluptate
