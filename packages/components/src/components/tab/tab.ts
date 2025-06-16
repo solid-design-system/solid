@@ -65,7 +65,7 @@ export default class SdTab extends SolidElement {
       await animateTo(this.tab, animation.keyframes, animation.options);
     }
 
-    return this.setAttribute('aria-selected', this.active ? 'true' : 'false');
+   this.setAttribute('aria-selected', this.active ? 'true' : 'false');
   }
 
   @watch(['disabled', 'visually-disabled'])
