@@ -217,10 +217,10 @@ export const Breakpoint = {
  *
  * **Hint**: Only works with horizontal teasers.
  */
-export const ReversedLayout = {
+export const Reverse = {
   render: () => html`
     <sd-teaser reversed-layout>
-      <h3 slot="headline">Lorem ipsum sic semper</h3>
+      <h3 slot="headline">Horizontal</h3>
       <img slot="media" src="./placeholders/images/architecture.jpg" alt="" class="w-full h-auto" />
       <p>
         Quis ut ex cupidatat proident cillum ullamco ea aute ad laborum aliqua incididunt sint ipsum. Elit enim
@@ -237,7 +237,7 @@ export const ReversedLayout = {
 
 export const Distribution = {
   render: () => html`
-    <sd-teaser style="--distribution-media: 30%; --distribution-content: 70%;">
+    <sd-teaser style="--distribution-media: 20%; --distribution-content: 80%;">
       <h3 slot="headline">Lorem ipsum sic semper</h3>
       <img slot="media" src="./placeholders/images/architecture.jpg" alt="" style="width:100%; height: auto;" />
       <p>
