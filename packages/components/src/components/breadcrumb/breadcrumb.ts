@@ -6,10 +6,10 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary A responsive breadcrumb navigation components used to visualize a page's location
+ * @summary A responsive breadcrumb navigation component used to visualize a page's location
  * within the site's hierarchy and provide easy navigation to previous sections.
  * @status experimental
- * @since 1.0
+ * @since 5.7
  *
  * @dependency sd-dropdown
  * @dependency sd-icon
@@ -134,7 +134,7 @@ export default class SdBreadcrumb extends SolidElement {
           [...]
         </button>
 
-        <ol part="truncated-dropdown" class="flex flex-col gap-4 px-2 py-3"></ol>
+        <ol part="truncated-dropdown" class="flex flex-col gap-4 px-2 py-3 min-w-40"></ol>
       </sd-dropdown>
 
       <ol part="list" class="flex items-center">

@@ -42,6 +42,16 @@ export const Default = {
  */
 export const Current = {
   render: (args: any) => {
-    return generateTemplate({ args, constants: { type: 'attribute', name: 'current', value: true } });
+    return generateTemplate({
+      args,
+      constants: [
+        { type: 'attribute', name: 'current', value: true },
+        {
+          type: 'slot',
+          name: 'default',
+          value: 'Current'
+        }
+      ]
+    });
   }
 };

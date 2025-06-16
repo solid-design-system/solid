@@ -25,7 +25,6 @@ export default {
         <sd-breadcrumb-item href="#">First level</sd-breadcrumb-item>
         <sd-breadcrumb-item href="#">Second level</sd-breadcrumb-item>
         <sd-breadcrumb-item href="#">Third level</sd-breadcrumb-item>
-        <sd-breadcrumb-item href="#">Forth level</sd-breadcrumb-item>
         <sd-breadcrumb-item current>Current</sd-breadcrumb-item>
       `
     }
