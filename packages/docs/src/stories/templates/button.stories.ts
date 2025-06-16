@@ -92,6 +92,7 @@ export const ButtonGroupVerticalFullWidth = {
  * - Use `visually-disabled` attribute and tooltip.
  */
 export const InclusiveDisabledButtonWithTooltip = {
+  name: 'Inclusive Disabled Button with Tooltip',
   render: () => html`
     <div class="flex flex-col gap-4 w-[500px]">
       <p class="text-neutral-700 text-sm">Fields marked with * are required.</p>
