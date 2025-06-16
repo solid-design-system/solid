@@ -47,7 +47,7 @@ export default class SdTabGroup extends SolidElement {
   @query('[part=base]') tabGroup: HTMLElement;
   @query('[part=body]') body: HTMLSlotElement;
   @query('[part=scroll-container]') nav: HTMLElement;
-  @query('#indicator') private indicator!: HTMLElement;
+  @query('[part=active-tab-indicator]') indicator: HTMLElement | null;
   @query('[part="tabs"]') private tabsContainer!: HTMLElement;
 
   /** @internal */
