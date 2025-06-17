@@ -16,7 +16,7 @@ export default {
 export const CarouselWithImages = {
   name: 'Carousel with Images',
   render: () => html`
-    <sd-carousel role="region" aria-label="Carousel with images">
+    <sd-carousel role="region" aria-label="Carousel with images" fade>
       <sd-carousel-item>
         <img
           src="./placeholders/images/architecture.jpg"

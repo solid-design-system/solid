@@ -906,4 +906,66 @@ describe('<sd-carousel>', () => {
       expect(secondDot).to.not.have.focus;
     });
   });
+
+  describe('fade controller', () => {
+    it('should apply fade styles to active and inactive slides', async () => {
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel fade>
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
+
+      await el.updateComplete;
+      await aTimeout(100);
+
+      const slides = Array.from(el.querySelectorAll('sd-carousel-item'));
+
+      const activeSlide = slides.find(slide => slide.classList.contains('opacity-100'));
+      const inactiveSlides = slides.filter(slide => slide.classList.contains('opacity-0'));
+
+      expect(activeSlide).to.exist;
+      expect(activeSlide).to.have.class('opacity-100');
+      expect(activeSlide).to.have.class('z-[1]');
+      inactiveSlides.forEach(slide => {
+        expect(slide).to.have.class('opacity-0');
+        expect(slide).to.have.class('z-0');
+      });
+    });
+
+    it('should update the active slide when the active index changes', async () => {
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel fade>
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
+
+      // initial active slide is the first one
+      expect(el.activeSlide).to.equal(0);
+      await el.updateComplete;
+      await aTimeout(0);
+
+      // update the active slide to the second one
+      el.activeSlide = 1;
+      await el.updateComplete;
+      await aTimeout(0);
+      await aTimeout(0);
+
+      const slides = Array.from(el.querySelectorAll('sd-carousel-item'));
+      const activeSlide = slides.find(slide => slide.classList.contains('opacity-100'));
+      const inactiveSlides = slides.filter(slide => slide.classList.contains('opacity-0'));
+
+      expect(activeSlide).to.exist;
+      expect(activeSlide).to.have.text('Node 2');
+      expect(activeSlide).to.have.class('opacity-100');
+      expect(activeSlide).to.have.class('z-[1]');
+      inactiveSlides.forEach(slide => {
+        expect(slide).to.have.class('opacity-0');
+        expect(slide).to.have.class('z-0');
+      });
+    });
+  });
 });

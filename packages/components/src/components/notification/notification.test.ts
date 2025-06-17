@@ -7,25 +7,21 @@ import sinon from 'sinon';
 import type SdButton from '../button/button.js';
 import type SdNotification from './notification.js';
 
-const getNotificationContainer = (notification: SdNotification): HTMLElement => {
-  return notification.shadowRoot!.querySelector<HTMLElement>('[part="base"]')!;
-};
-
 const getIconSlot = (notification: SdNotification): HTMLElement => {
   return notification.shadowRoot!.querySelector<HTMLElement>('[part="icon"]')!;
 };
 
 const expectNotificationToBeVisible = (notification: SdNotification): void => {
-  const notificationContainer = getNotificationContainer(notification);
-  const style = window.getComputedStyle(notificationContainer);
+  const wrapper = notification.shadowRoot!.querySelector<HTMLElement>('[part="wrapper"]');
+  const style = window.getComputedStyle(wrapper!);
   expect(style.display).not.to.equal('none');
   expect(style.visibility).not.to.equal('hidden');
   expect(style.visibility).not.to.equal('collapse');
 };
 
 const expectNotificationToBeInvisible = (notification: SdNotification): void => {
-  const notifictionContainer = getNotificationContainer(notification);
-  const style = window.getComputedStyle(notifictionContainer);
+  const wrapper = notification.shadowRoot!.querySelector<HTMLElement>('[part="wrapper"]');
+  const style = window.getComputedStyle(wrapper!);
   expect(style.display, 'notification should be invisible').to.equal('none');
 };
 
@@ -172,7 +168,7 @@ describe('<sd-notification>', () => {
 
       const afterHide = oneEvent(notification, 'sd-after-hide');
 
-      const base = getNotificationContainer(notification);
+      const base = notification.shadowRoot!.querySelector<HTMLElement>('[part="base"]')!;
       base.focus();
 
       await sendKeys({ press: 'Escape' });
