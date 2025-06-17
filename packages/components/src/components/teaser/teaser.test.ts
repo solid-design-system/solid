@@ -1,5 +1,6 @@
 import '../../../dist/solid-components';
 import { expect, fixture, html } from '@open-wc/testing';
+import { setViewport } from '@web/test-runner-commands';
 import type SdTeaser from './teaser';
 
 describe('<sd-teaser>', () => {
@@ -185,5 +186,22 @@ describe('<sd-teaser>', () => {
 
     expect(el.variant).to.equal('neutral-100');
     expect(el.inset).to.equal(false); // The inset should be false after the variant change
+  });
+
+  describe('reversed layout', () => {
+    it('reversed layout not apply if vertical', async () => {
+      const el = await fixture<SdTeaser>(
+        html` <sd-teaser reversed-layout>
+          <div slot="media">Media</div>
+          <div slot="headline">Headline</div>
+          Content
+        </sd-teaser>`
+      );
+      expect(el.reversedLayout).to.be.true;
+      await setViewport({ width: 375, height: 200 });
+
+      const media = el.shadowRoot!.querySelector('#media')!;
+      expect(media.classList.contains('order-2')).to.be.false;
+    });
   });
 });
