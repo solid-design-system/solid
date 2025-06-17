@@ -98,7 +98,7 @@ export const Orientation = {
       <sd-radio-group name="radio-group" orientation="horizontal" value="1" label="Group Label" boldLabel>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
-        <sd-radio value="3">Radio label text</sd-radio>
+        <sd-radio value="3">Radio 3</sd-radio>
       </sd-radio-group>
     </div>
   `
