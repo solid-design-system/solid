@@ -1,7 +1,5 @@
-import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
-import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
@@ -57,15 +55,8 @@ export default class SdTab extends SolidElement {
   }
 
   @watch('active')
-  async handleActiveChange() {
-    if (this.variant === 'container' && this.active) {
-      await stopAnimations(this.tab);
-
-      const animation = getAnimation(this, 'containerTab.active', { dir: this.localize.dir() });
-      await animateTo(this.tab, animation.keyframes, animation.options);
-    }
-
-   this.setAttribute('aria-selected', this.active ? 'true' : 'false');
+  handleActiveChange() {
+    this.setAttribute('aria-selected', this.active ? 'true' : 'false');
   }
 
   @watch(['disabled', 'visually-disabled'])
@@ -98,6 +89,7 @@ export default class SdTab extends SolidElement {
         class=${cx(
           'inline-flex justify-center min-w-max items-center h-12 px-3 leading-none select-none cursor-pointer group relative focus-visible:focus-outline outline-2 !-outline-offset-2 transition-[colors,border] duration-medium hover:duration-fast ease-in-out',
           this.variant === 'container' && ' rounded-[4px_4px_0_0]',
+          this.variant === 'container' && 'tab-container-border bg-white',
           this.variant === 'container' && this.active && 'tab--active-container-border bg-white',
           this.disabled || this.visuallyDisabled ? '!cursor-not-allowed' : 'hover:bg-neutral-200'
         )}
@@ -133,9 +125,7 @@ export default class SdTab extends SolidElement {
           <div
             part="hover-bottom-border"
             class=${cx(
-              !this.active &&
-                !this.disabled &&
-                'absolute w-full h-0.25 bottom-0 border-b border-neutral-400 invisible group-hover:visible'
+              !this.active && !this.disabled && 'absolute w-full h-0.25 bottom-0 border-b border-neutral-400 '
             )}
           ></div>
         </div>
@@ -150,20 +140,22 @@ export default class SdTab extends SolidElement {
         @apply box-border block;
       }
 
+      .tab-container-border::after {
+        content: '';
+        @apply absolute w-full h-full border border-transparent;
+        border-bottom: none;
+        border-radius: 4px 4px 0 0;
+      }
+
       .tab--active-container-border::after {
         content: '';
-        @apply absolute w-full h-full border border-neutral-400;
+        @apply absolute w-full h-full border border-neutral-400 transition-[border] duration-fast ease-in-out;
         border-bottom: none;
         border-radius: 4px 4px 0 0;
       }
     `
   ];
 }
-
-setDefaultAnimation('containerTab.active', {
-  keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
-});
 
 declare global {
   interface HTMLElementTagNameMap {
