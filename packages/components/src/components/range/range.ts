@@ -1,4 +1,4 @@
-import { arraysDiffer, getNormalizedValueFromClientX } from './utils';
+import { arraysDiffer, getNormalizedValueFromClientX, numericSort } from './utils';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { defaultValue } from '../../internal/default-value';
@@ -59,8 +59,6 @@ export default class SdRange extends SolidElement implements SolidFormControl {
   /** The range's help text. If you need to display HTML, use the help-text slot instead. */
   @property({ attribute: 'help-text' }) helpText = '';
 
-  @property({ type: String, reflect: true }) variant: 'default' | 'reverse' | 'offset' | 'offset-reversed' = 'default';
-
   /** The minimum acceptable value of the range. */
   @property({ type: Number, reflect: true }) min = 0;
 
@@ -79,11 +77,24 @@ export default class SdRange extends SolidElement implements SolidFormControl {
   /** The current values of the input (in ascending order) as a string of space separated values */
   @property({ type: String })
   set value(value: string | null) {
-    this._value = value ? value.split(' ').map(Number) : [];
+    this._value = value ? value.split(' ').map(Number).sort(numericSort) : [];
   }
 
   get value() {
-    return this._value.slice().join(' ');
+    return this._value.slice().sort(numericSort).join(' ');
+  }
+
+  /** Gets or sets the current values of the range as an array of numbers */
+  set valueAsArray(value: readonly number[] | null) {
+    const oldValue = this._value;
+    this._value = Array.isArray(value) ? value.slice().sort(numericSort) : value || [];
+    if (arraysDiffer(oldValue, this._value)) {
+      this.requestUpdate('value', oldValue.join(' '));
+    }
+  }
+
+  get valueAsArray() {
+    return [...this._value].sort(numericSort);
   }
 
   private _value: readonly number[] = [0];
@@ -91,6 +102,12 @@ export default class SdRange extends SolidElement implements SolidFormControl {
   private _rangeValues = new Map<number, number>();
 
   private _lastChangeValue: number[] = [];
+
+  private _hasFocus = false;
+
+  get rtl() {
+    return this.localize.dir() === 'rtl';
+  }
 
   constructor() {
     super();
@@ -178,7 +195,13 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     this.formControlController.updateValidity();
   }
 
-  private updateTooltip(thumb: HTMLDivElement) {}
+  private updateTooltip(thumb: HTMLDivElement) {
+    const rangeId = +thumb.dataset.rangeId!;
+    if (!this._rangeValues.has(rangeId)) return;
+    const value = this._rangeValues.get(rangeId)!;
+    const tooltip = thumb.parentElement as SdTooltip;
+    tooltip.content = this.tooltipFormatter(value);
+  }
 
   private updateActiveTrack() {
     const { activeTrack } = this;
@@ -205,7 +228,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     }
 
     // The render order of the thumbs is not guaranteed to be the same as the value order.
-    const sortedValues = this._value.slice();
+    const sortedValues = this._value.slice().sort(numericSort);
 
     // Multi thumb: Place the active track between the first and last thumb
     const start = (100 * (sortedValues[0] - this.min)) / (this.max - this.min);
@@ -223,7 +246,38 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     this.updateTooltip(thumb);
   }
 
-  private handleInvalid() {}
+  /**
+   * Get the boundaries of a given thumb
+   * @param thumb The thumb element that was moved
+   * @param value The current value of a thumb
+   * @returns An object containing information about the current boundaries
+   */
+  private movementBoundariesForThumb(thumb: HTMLDivElement, value: number) {
+    // If we are in restrict mode, we should not move the thumb
+    // if it is smaller than the previous thumb or larger than the next thumb
+    const values = this.valueAsArray!;
+    const thumbs = Array.from(this.thumbs);
+    const thumbIndex = thumbs.indexOf(thumb);
+
+    // Get the previous and next thumb and see what are our valid ranges
+    const prevValue = values[thumbIndex - 1] || this.min;
+    const nextValue = values[thumbIndex + 1] || this.max;
+
+    const isRestricted = value < prevValue || value > nextValue;
+    const finalValue = Math.max(prevValue, Math.min(nextValue, value));
+
+    return {
+      finalValue,
+      isRestricted,
+      nextValue,
+      prevValue
+    };
+  }
+
+  private handleInvalid(event: Event) {
+    this.formControlController.setValidity(false);
+    this.formControlController.emitInvalidEvent(event);
+  }
 
   private onClickTrack(event: PointerEvent, focusThumb = true) {
     if (this.disabled) return;
@@ -268,12 +322,9 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       this.emit('syn-change');
     }
 
-    // #595: Redispatch the original event to start dragging the thumb
-    // whenever the user clicked on the track.
-    // The check for focusThumb makes sure this does not happen when clicking on the track items
-    const newEvt = new PointerEvent('pointerdown', event);
+    const newEvent = new PointerEvent('pointerdown', event);
     if (focusThumb) {
-      if (thumb.dispatchEvent(newEvt)) {
+      if (thumb.dispatchEvent(newEvent)) {
         this.updateTooltip(thumb);
       }
     }
@@ -316,9 +367,9 @@ export default class SdRange extends SolidElement implements SolidFormControl {
 
     const pos = getNormalizedValueFromClientX(this.inputWrapper, event.clientX);
     const unit = this.step / (this.max - this.min);
-    const value = this.min + this.step * Math.round(pos / unit);
+    let value = this.min + this.step * Math.round(pos / unit);
 
-    const moveEvent = this.emit('sd-move', {
+    const sdMove = this.emit('sd-move', {
       cancelable: true,
       detail: {
         element: thumb,
@@ -326,20 +377,17 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       }
     });
 
-    if (moveEvent.defaultPrevented) {
+    if (sdMove.defaultPrevented) {
       return;
     }
 
-    // if (this.restrictMovement) {
-    //   const movementData = this.#movementBoundariesForThumb(thumb, value);
-    //   if (movementData.isRestricted) {
-    //     value = movementData.finalValue;
-    //     // Make sure the thumb has the highest z-index of all thumbs
-    //     thumb.style.zIndex = (3 + this.thumbs.length).toFixed(0);
-    //   } else {
-    //     thumb.style.zIndex = '3';
-    //   }
-    // }
+    const movementData = this.movementBoundariesForThumb(thumb, value);
+    if (movementData.isRestricted) {
+      value = movementData.finalValue;
+      thumb.style.zIndex = (3 + this.thumbs.length).toFixed(0);
+    } else {
+      thumb.style.zIndex = '3';
+    }
 
     this._rangeValues.set(rangeId, value);
     this.moveThumb(thumb, value);
@@ -367,6 +415,101 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     }
 
     // await (thumb.parentElement as SynTooltip).hide();
+  }
+
+  private onKeyPress(event: KeyboardEvent) {
+    const thumb = event.target as HTMLDivElement;
+    const rangeId = +thumb.dataset.rangeId!;
+
+    const currentValue = this._rangeValues.get(rangeId);
+    if (currentValue === undefined) return;
+
+    let value = currentValue;
+
+    switch (event.key) {
+      case 'ArrowUp':
+      case 'Up':
+        value = Math.min(currentValue + this.step, this.max);
+        break;
+      case 'ArrowDown':
+      case 'Down':
+        value = Math.max(currentValue - this.step, this.min);
+        break;
+      case 'ArrowLeft':
+      case 'Left':
+        value = this.rtl ? Math.min(currentValue + this.step, this.max) : Math.max(currentValue - this.step, this.min);
+        break;
+      case 'ArrowRight':
+      case 'Right':
+        value = this.rtl ? Math.max(currentValue - this.step, this.min) : Math.min(currentValue + this.step, this.max);
+        break;
+      case 'PageUp':
+        value = Math.min(currentValue + (this.max - this.min) / 5, this.max);
+        break;
+      case 'PageDown':
+        value = Math.max(currentValue - (this.max - this.min) / 5, this.min);
+        break;
+      case 'Home':
+        value = this.min;
+        break;
+      case 'End':
+        value = this.max;
+        break;
+      default:
+        return;
+    }
+
+    if (value !== currentValue) {
+      // Make sure the user is able to intercept movement
+      const sdMove = this.emit('sd-move', {
+        cancelable: true,
+        detail: {
+          element: thumb,
+          value
+        }
+      });
+
+      if (sdMove.defaultPrevented) {
+        return;
+      }
+
+      const movementData = this.movementBoundariesForThumb(thumb, value);
+      if (movementData.isRestricted) {
+        value = movementData.finalValue;
+      }
+
+      this.moveThumb(thumb, value);
+
+      this._rangeValues.set(rangeId, value);
+      this._value = Array.from(this._rangeValues.values());
+
+      this.updateActiveTrack();
+      this.updateTooltip(thumb);
+
+      this._lastChangeValue = Array.from(this._value);
+      this.emit('sd-input');
+      this.emit('sd-change');
+    }
+
+    event.stopPropagation();
+    event.preventDefault();
+  }
+
+  private onBlur(event: FocusEvent) {
+    if (event.relatedTarget && this.shadowRoot?.contains(event.relatedTarget as Node)) return;
+    this.emit('sd-blur');
+    this._hasFocus = false;
+  }
+
+  private onFocusThumb(event: FocusEvent) {
+    if (this.disabled) return;
+    if (!this._hasFocus) {
+      this._hasFocus = true;
+      this.emit('sd-focus');
+    }
+    const thumb = event.target as HTMLDivElement;
+    if (!thumb?.dataset?.rangeId) return;
+    this.updateTooltip(thumb);
   }
 
   private renderThumbs(hasLabel: boolean) {
@@ -400,25 +543,29 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       }
 
       return html`
-        <div
-          aria-disabled=${ifDefined(this.disabled ? 'true' : undefined)}
-          aria-labelledby=${ariaLabeledBy}
-          aria-label=${ariaLabel}
-          aria-valuemax="${this.max}"
-          aria-valuemin="${this.min}"
-          aria-valuenow="${value}"
-          aria-valuetext="${this.tooltipFormatter(value)}"
-          data-range-id="${rangeId}"
-          id=${id}
-          part="thumb"
-          role="slider"
-          tabindex="${this.disabled ? -1 : 0}"
-          @pointerdown=${this.onClickThumb}
-          @pointermove=${this.onDragThumb}
-          @pointerup=${this.onReleaseThumb}
-          @pointercancel=${this.onReleaseThumb}
-          @pointerleave=${this.onReleaseThumb}
-        ></div>
+        <sd-tooltip hoist trigger="click hover focus" disabled=${ifDefined(this.disabled ? true : undefined)}>
+          <div
+            id=${id}
+            part="thumb"
+            role="slider"
+            tabindex="${this.disabled ? -1 : 0}"
+            aria-disabled=${ifDefined(this.disabled ? 'true' : undefined)}
+            aria-labelledby=${ariaLabeledBy}
+            aria-label=${ariaLabel}
+            aria-valuemax="${this.max}"
+            aria-valuemin="${this.min}"
+            aria-valuenow="${value}"
+            aria-valuetext="${this.tooltipFormatter(value)}"
+            data-range-id="${rangeId}"
+            @pointerdown=${this.onClickThumb}
+            @pointermove=${this.onDragThumb}
+            @pointerup=${this.onReleaseThumb}
+            @pointercancel=${this.onReleaseThumb}
+            @pointerleave=${this.onReleaseThumb}
+            @keydown=${this.onKeyPress}
+            @focus=${this.onFocusThumb}
+          ></div>
+        </sd-tooltip>
       `;
     });
   }
@@ -432,7 +579,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     const hasLabel = !!(this.label || slots['label']);
     const hasHelpText = !!(this.helpText || slots['helpText']);
 
-    return html`<div part="form-control">
+    return html`<div part="form-control" @focusout=${this.onBlur}>
       ${hasLabel
         ? html`<div class="flex items-center gap-1 mb-2">
             <label
@@ -441,6 +588,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
               part="form-control-label"
               aria-hidden=${hasLabel ? 'false' : 'true'}
               class=${cx(hasLabel ? 'inline-block' : 'hidden')}
+              @click=${this.focus}
             >
               <slot name="label">${this.label}</slot>
             </label>
@@ -459,7 +607,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
           >
             <div part="track-click-helper"></div>
             <div part="track" class="bg-neutral-500"></div>
-            <div part="active-track" class="bg-primary h-1 absolute top-0"></div>
+            <div part="active-track"></div>
           </div>
 
           ${this.renderThumbs(hasLabel)}
@@ -505,7 +653,10 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       }
 
       [part='active-track'] {
+        @apply bg-primary absolute top-0;
+
         height: var(--track-height);
+        margin: 0 calc(var(--half-thumb-size) * -1);
       }
 
       [part='track-click-helper'] {
@@ -515,10 +666,17 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       }
 
       [part='thumb'] {
-        @apply bg-primary cursor-pointer rounded-full absolute top-0 after:-inset-2 hover:cursor-grab;
+        @apply bg-primary cursor-pointer rounded-full absolute top-0 after:-inset-2 hover:cursor-grab focus-visible:focus-outline;
 
         height: var(--full-thumb-size);
         width: var(--full-thumb-size);
+      }
+
+      :host([disabled]) {
+        [part='thumb'],
+        [part='active-track'] {
+          @apply bg-neutral-500;
+        }
       }
     `
   ];
