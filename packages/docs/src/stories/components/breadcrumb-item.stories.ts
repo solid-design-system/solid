@@ -18,7 +18,7 @@ export default {
     ...parameters,
     design: {
       type: 'figma',
-      url: ''
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=15550-5257&t=ODEg7n9EI3PRszyz-0'
     }
   },
   args: overrideArgs([
