@@ -1,5 +1,17 @@
 # @solid-design-system/components
 
+## 5.8.0
+
+### Minor Changes
+
+- The `sd-breadcrumb` and `sd-breadcrumb-item` have arrived! 🎉 _[`#2288`](https://github.com/solid-design-system/solid/pull/2288) [`9a224c7`](https://github.com/solid-design-system/solid/commit/9a224c77ce047c8966ee6f3c7be54cbf7c161020) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - It can be used to visualize a page's location within the site's hierarchy and provide easy navigation to previous sections.
+
+### 📈 Stats
+* Uncompressed: 444 KB (+6 KB / +1%)
+* Gzipped: 104 KB (+1 KB / +1%)
+
 ## 5.7.0
 
 ### Minor Changes

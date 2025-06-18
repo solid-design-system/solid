@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 1.19.0
+
+### Minor Changes
+
+- The `sd-breadcrumb` and `sd-breadcrumb-item` have arrived! 🎉 _[`#2288`](https://github.com/solid-design-system/solid/pull/2288) [`9a224c7`](https://github.com/solid-design-system/solid/commit/9a224c77ce047c8966ee6f3c7be54cbf7c161020) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Added new `sd-breadcrumb` and `sd-breadcrumb-item` docs.
+
 ## 1.18.0
 
 ### Minor Changes

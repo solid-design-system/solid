@@ -2,7 +2,9 @@ import '../popup/popup';
 import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { deepClosestElement } from '../../internal/deep-closest-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
+import { getDeepActiveElement } from '../../internal/deep-active-element';
 import { getTabbableBoundary } from '../../internal/tabbable';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
@@ -224,20 +226,14 @@ export default class SdDropdown extends SolidElement {
       // If the dropdown is used within a shadow DOM, we need to obtain the activeElement within that shadowRoot,
       // otherwise `document.activeElement` will only return the name of the parent shadow DOM element.
 
-      // Quick fix for nested shadow roots https://github.com/solid-design-system/solid/issues/648
       // Test case will be added https://github.com/solid-design-system/solid/issues/747
       setTimeout(() => {
-        const activeElement =
-          document.activeElement?.shadowRoot?.activeElement?.shadowRoot?.activeElement?.getRootNode() instanceof
-          ShadowRoot
-            ? document.activeElement?.shadowRoot?.activeElement?.shadowRoot?.activeElement
-            : this.containingElement?.getRootNode() instanceof ShadowRoot
-              ? document.activeElement?.shadowRoot?.activeElement
-              : document.activeElement;
+        const activeElement = getDeepActiveElement();
 
         if (
+          !activeElement ||
           !this.containingElement ||
-          activeElement?.closest(this.containingElement.tagName.toLowerCase()) !== this.containingElement
+          deepClosestElement(activeElement, this.containingElement.tagName.toLowerCase()) !== this.containingElement
         ) {
           this.hide();
         }
