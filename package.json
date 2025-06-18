@@ -22,7 +22,7 @@
     "format.fix": "prettier --write --log-level warn .",
     "changeset": "changeset"
   },
-  "lib": "es2021",
+  "lib": "es2022",
   "keywords": [],
   "license": "MIT",
   "engines": {
