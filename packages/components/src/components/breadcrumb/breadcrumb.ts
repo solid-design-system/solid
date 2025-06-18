@@ -104,7 +104,7 @@ export default class SdBreadcrumb extends SolidElement {
     icon.setAttribute('name', 'chevron-left');
     icon.setAttribute('class', 'text-base me-1 lg:hidden');
 
-    Array.from(this.items).at(-2)?.appendChild(icon);
+    Array.from(this.items).at(-2)?.shadowRoot?.querySelector('sd-link')?.appendChild(icon);
   }
 
   handleSlotChange() {
@@ -149,7 +149,6 @@ export default class SdBreadcrumb extends SolidElement {
 
   static styles = [
     ...SolidElement.styles,
-    // TODO: Replace bg-neutral-300 by bg-neutral-400;
     css`
       :host {
         @apply block relative;

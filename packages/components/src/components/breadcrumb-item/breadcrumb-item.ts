@@ -14,8 +14,6 @@ import SolidElement from '../../internal/solid-element';
  * @dependency sd-link
  *
  * @slot - The breadcrumb label.
- * @slot icon-left - The icon to display on the left side of the breadcrumb.
- * @slot icon-right - The icon to display on the right side of the breadcrumb.
  *
  * @csspart base - The component's base wrapper.
  *
@@ -61,15 +59,7 @@ export default class SdBreadcrumbItem extends SolidElement {
       standalone
       class="text-nowrap"
     >
-      <div slot="icon-left" class="flex items-center">
-        <slot name="icon-left"></slot>
-      </div>
-
       <slot></slot>
-
-      <div slot="icon-right" class="flex items-center">
-        <slot name="icon-right"></slot>
-      </div>
     </sd-link>`;
   }
 
@@ -84,9 +74,12 @@ export default class SdBreadcrumbItem extends SolidElement {
         @apply items-center;
       }
 
-      sd-link::part(icon-left),
-      sd-link::part(icon-right) {
-        @apply mr-0 ml-0;
+      sd-link::part(icon-left) {
+        @apply mr-0 inline-flex;
+      }
+
+      sd-link sd-icon {
+        @apply m-0;
       }
 
       :host([current]) sd-link::part(base) {
