@@ -26,18 +26,21 @@ import SolidElement from '../../internal/solid-element';
 export default class SdBreadcrumb extends SolidElement {
   public localize = new LocalizeController(this);
 
-  /** Internal resize observer */
   private resizeObserver: ResizeObserver;
 
   @query('[part="base"]') base: HTMLElement;
+
   @query('[part="truncated"]') truncated: HTMLElement;
+
   @query('[part="truncated-dropdown"]') dropdown: HTMLElement;
+
   @query('slot') defaultSlot: HTMLSlotElement;
 
   /** The breadcrumbs' label. Required for proper accessibility. */
   @property({ type: String, reflect: true }) label = 'Breadcrumbs';
 
   @state() itemPositionsCached: boolean = false;
+
   @state() isTruncated: boolean = false;
 
   private get items() {
