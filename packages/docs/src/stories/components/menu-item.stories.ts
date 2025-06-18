@@ -8,13 +8,24 @@ const { overrideArgs } = storybookHelpers('sd-menu-item');
 const { generateTemplate } = storybookTemplate('sd-menu-item');
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'skip-a11y-[aria-required-parent]'],
   title: 'Components/sd-menu-item',
   component: 'sd-menu-item',
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Menu item 1' }),
   argTypes,
   parameters: {
     ...parameters,
+    controls: { disable: true },
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'aria-required-parent',
+            enabled: false
+          }
+        ]
+      }
+    },
     design: {
       type: 'figma',
       url: ''

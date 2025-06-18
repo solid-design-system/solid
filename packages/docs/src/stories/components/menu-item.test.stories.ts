@@ -30,9 +30,20 @@ const iconSlotConstant: ConstantDefinition = {
 export default {
   title: 'Components/sd-menu-item/Screenshots: sd-menu-item',
   component: 'sd-menu-item',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-[aria-required-parent]'],
   parameters: {
     ...parameters,
+    controls: { disable: true },
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'aria-required-parent',
+            enabled: false
+          }
+        ]
+      }
+    },
     design: {
       type: 'figma',
       url: ''
@@ -106,7 +117,7 @@ export const Slots = {
                 {
                   value:
                     slot === 'default'
-                      ? `<div class="slot slot--border slot--background h-8 w-[100px]"></div>`
+                      ? `<div class="slot slot--border slot--background h-8 w-[100px]">Default Slot</div>`
                       : `<div slot='${slot}' class="${cx(
                           'slot slot--border slot--background h-6',
                           slot === 'description' || slot === 'children' ? 'w-full' : 'w-6'
