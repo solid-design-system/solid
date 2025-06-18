@@ -48,6 +48,7 @@ export { default as SdTextarea } from './components/textarea/textarea.js';
 export { default as SdTooltip } from './components/tooltip/tooltip.js';
 export { default as SdVideo } from './components/video/video.js';
 export { default as SdRange } from './components/range/range.js';
+export { default as SdRangeTick } from './components/range-tick/range-tick.js';
 /* plop:component */
 
 // Utilities

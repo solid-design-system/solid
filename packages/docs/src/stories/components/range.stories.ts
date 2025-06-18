@@ -31,7 +31,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html` <div style="height: 80px;">${generateTemplate({ args })}</div>`;
+    return html` <div class="h-20">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -41,8 +41,78 @@ export const Default = {
  */
 export const Label = {
   render: (args: any) => {
-    return html` <div style="height: 80px;">
+    return html` <div class="h-20">
       ${generateTemplate({ args, constants: [{ type: 'attribute', name: 'label', value: 'Label' }] })}
+    </div>`;
+  }
+};
+
+/**
+ * Use the `scale-ticks` slot to insert ticks and use the sd-range-tick `subtick` attribute to change it’s appearance.
+ */
+export const Ticks = {
+  render: (args: any) => {
+    return html` <div class="flex flex-col gap-12">
+      ${generateTemplate({
+        args,
+        constants: [
+          { type: 'attribute', name: 'label', value: 'Label' },
+          { type: 'attribute', name: 'min', value: '0' },
+          { type: 'attribute', name: 'max', value: '9' },
+          { type: 'attribute', name: 'value', value: '3' },
+          {
+            type: 'slot',
+            name: 'default',
+            value: `
+              <div slot="scale-ticks">
+                <sd-range-tick>0</sd-range-tick>
+                <sd-range-tick>1</sd-range-tick>
+                <sd-range-tick>2</sd-range-tick>
+                <sd-range-tick>3</sd-range-tick>
+                <sd-range-tick>4</sd-range-tick>
+                <sd-range-tick>5</sd-range-tick>
+                <sd-range-tick>6</sd-range-tick>
+                <sd-range-tick>7</sd-range-tick>
+                <sd-range-tick>8</sd-range-tick>
+                <sd-range-tick>9</sd-range-tick>
+              </div>
+            `
+          }
+        ]
+      })}
+      ${generateTemplate({
+        args,
+        constants: [
+          { type: 'attribute', name: 'label', value: 'Label' },
+          { type: 'attribute', name: 'min', value: '0' },
+          { type: 'attribute', name: 'max', value: '9' },
+          { type: 'attribute', name: 'value', value: '3' },
+          {
+            type: 'slot',
+            name: 'default',
+            value: `
+              <div slot="scale-ticks">
+                <sd-range-tick>0</sd-range-tick>
+                <sd-range-tick subtick></sd-range-tick>
+                <sd-range-tick subtick></sd-range-tick>
+                <sd-range-tick>3</sd-range-tick>
+                <sd-range-tick subtick></sd-range-tick>
+                <sd-range-tick subtick></sd-range-tick>
+                <sd-range-tick>6</sd-range-tick>
+                <sd-range-tick subtick></sd-range-tick>
+                <sd-range-tick subtick></sd-range-tick>
+                <sd-range-tick>9</sd-range-tick>
+              </div>
+            `
+          }
+        ]
+      })}
+      <style>
+        [slot='scale-ticks'] {
+          display: flex;
+          justify-content: space-between;
+        }
+      </style>
     </div>`;
   }
 };
@@ -52,7 +122,7 @@ export const Label = {
  */
 export const HelpText = {
   render: (args: any) => {
-    return html` <div style="height: 80px;">
+    return html` <div class="h-20">
       ${generateTemplate({
         args,
         constants: [
@@ -69,7 +139,7 @@ export const HelpText = {
  */
 export const Disabled = {
   render: (args: any) => {
-    return html` <div style="height: 80px;">
+    return html` <div class="h-20">
       ${generateTemplate({
         args,
         constants: [
@@ -89,7 +159,7 @@ export const Disabled = {
 export const MinMaxStep = {
   name: 'Min, Max and Step',
   render: (args: any) => {
-    return html` <div style="height: 80px;">
+    return html` <div class="h-20">
       ${generateTemplate({
         args,
         constants: [

@@ -612,8 +612,8 @@ export default class SdRange extends SolidElement implements SolidFormControl {
 
           ${this.renderThumbs(hasLabel)}
 
-          <div class="ticks" part="ticks" @pointerdown=${this.onClickTrackItem} role="presentation">
-            <slot name="ticks"></slot>
+          <div class="-mt-[10px]" part="scale-ticks" @pointerdown=${this.onClickTrackItem} role="presentation">
+            <slot name="scale-ticks"></slot>
           </div>
         </div>
       </div>
