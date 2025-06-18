@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 export default {
-  tags: ['!dev', 'autodocs'],
+  tags: ['!dev'],
   title: 'Templates/Button',
   parameters: {
     chromatic: { disableSnapshot: true },
