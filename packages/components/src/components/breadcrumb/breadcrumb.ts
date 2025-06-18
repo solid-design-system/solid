@@ -37,7 +37,7 @@ export default class SdBreadcrumb extends SolidElement {
   @query('slot') defaultSlot: HTMLSlotElement;
 
   /** The breadcrumbs' label. Required for proper accessibility. */
-  @property({ type: String, reflect: true }) label = 'Breadcrumbs';
+  @property({ type: String, reflect: true }) label = '';
 
   @state() itemPositionsCached: boolean = false;
 

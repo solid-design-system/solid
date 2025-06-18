@@ -19,6 +19,11 @@ export default {
   },
   args: overrideArgs([
     {
+      type: 'attribute',
+      name: 'label',
+      value: 'Breadcrumbs'
+    },
+    {
       type: 'slot',
       name: 'default',
       value: `
