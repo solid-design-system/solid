@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.18.0
+
+### Minor Changes
+
+- - Implement `reversed-layout` attribute for the `sd-teaser`. _[`#2283`](https://github.com/solid-design-system/solid/pull/2283) [`e65a94a`](https://github.com/solid-design-system/solid/commit/e65a94a7120525d73c40f58ad565911a81cff97b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 1.17.0
 
 ### Minor Changes
