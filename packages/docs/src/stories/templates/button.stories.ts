@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Templates/Button',
   parameters: {
     chromatic: { disableSnapshot: true },
@@ -23,20 +23,18 @@ export const ButtonGroupHorizontal = {
         <sd-button variant="secondary">Maybe later</sd-button>
         <sd-button variant="primary">Cancel subscription</sd-button>
       </div>
-
       <div class="flex flex-row gap-2 py-6">
-        <sd-button variant="secondary"
-          ><sd-icon name="system/log-out" slot="icon-left"></sd-icon>Exit portal
+        <sd-button variant="secondary">
+          <sd-icon name="system/log-out" slot="icon-left"></sd-icon>Exit portal
         </sd-button>
-        <sd-button variant="secondary"
-          ><sd-icon name="system/download" slot="icon-left"></sd-icon>Download PDF</sd-button
-        >
+        <sd-button variant="secondary">
+          <sd-icon name="system/download" slot="icon-left"></sd-icon>Download PDF
+        </sd-button>
         <sd-button variant="primary">Accept terms of use</sd-button>
       </div>
-
       <div class="flex flex-row gap-2 py-6">
         <sd-button variant="secondary" size="sm">
-         <sd-icon name="system/download" slot="icon-left"></sd-icon>PIF</sd-icon>
+          <sd-icon name="system/download" slot="icon-left"></sd-icon>PIF
         </sd-button>
         <sd-button variant="secondary" size="sm">
           <sd-icon name="system/eye-open" slot="icon-left"></sd-icon>Add to watchlist
@@ -59,12 +57,12 @@ export const ButtonGroupVertical = {
   render: () => html`
     <div class="flex flex-col gap-4 w-[208px]">
       <sd-button variant="primary">Start investment</sd-button>
-      <sd-button variant="secondary"
-        ><sd-icon name="system/download" slot="icon-left"></sd-icon>Download report</sd-button
-      >
       <sd-button variant="secondary">
-        <sd-icon name="system/eye-open" slot="icon-left"></sd-icon>Add to watchlist</sd-button
-      >
+        <sd-icon name="system/download" slot="icon-left"></sd-icon>Download report
+      </sd-button>
+      <sd-button variant="secondary">
+        <sd-icon name="system/eye-open" slot="icon-left"></sd-icon>Add to watchlist
+      </sd-button>
     </div>
   `
 };
@@ -125,13 +123,8 @@ export const InclusiveDisabledButtonWithTooltip = {
       const updateButtonState = () => {
         const hasContent = textarea.value.trim().length > 0;
 
-        if (hasContent) {
-          button.removeAttribute('visually-disabled');
-          tooltip.setAttribute('disabled', '');
-        } else {
-          button.setAttribute('visually-disabled', '');
-          tooltip.removeAttribute('disabled');
-        }
+        button.toggleAttribute('visually-disabled', !hasContent);
+        tooltip.toggleAttribute('disabled', hasContent);
       };
 
       updateButtonState();
