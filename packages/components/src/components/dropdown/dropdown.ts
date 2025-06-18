@@ -12,9 +12,9 @@ import { watch } from '../../internal/watch';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type SdButton from '../button/button';
-import type SdMenu from '../../_components/menu/menu';
-import type SdMenuItem from '../../_components/menu-item/menu-item'; // This import should be changed as soon as the menu is moved to the components folder
-import type SdNavigationItem from '../navigation-item/navigation-item'; // This import should be changed as soon as the menu-item is moved to the components folder
+import type SdMenu from '../../components/menu/menu';
+import type SdMenuItem from '../../components/menu-item/menu-item';
+import type SdNavigationItem from '../navigation-item/navigation-item';
 import type SdPopup from '../popup/popup';
 
 /**
