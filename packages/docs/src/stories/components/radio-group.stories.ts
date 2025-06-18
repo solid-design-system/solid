@@ -89,13 +89,13 @@ export const Orientation = {
   name: 'Orientation',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio-group name="radio-group" orientation="vertical" value="1" label="Group Label" boldLabel>
+      <sd-radio-group name="radio-group" orientation="vertical" value="1" label="Group Label " boldLabel>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
       </sd-radio-group>
 
-      <sd-radio-group name="radio-group" orientation="horizontal" value="1" label="Group Label" boldLabel>
+      <sd-radio-group name="radio-group" orientation="horizontal" value="1" label="Group Label " boldLabel>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
@@ -115,7 +115,7 @@ export const Required = {
   name: 'Required',
   render: () => html`
     <form id="required-form" class="flex flex-col gap-8">
-      <sd-radio-group name="radio-group" required label="Required Group" boldlabel>
+      <sd-radio-group name="radio-group" required label="Required Group " boldlabel>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
@@ -152,7 +152,7 @@ export const HelpText = {
   name: 'Help Text',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio-group orientation="vertical" help-text="Help text attribute" label="Group Label" required boldlabel>
+      <sd-radio-group orientation="vertical" help-text="Help text attribute" label="Group Label " required boldlabel>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
@@ -168,7 +168,7 @@ export const HelpText = {
 export const Disabled = {
   name: 'Disabled',
   render: () => html`
-      <sd-radio-group name="radio-group" label="Disabled Group" required boldLabel>
+      <sd-radio-group name="radio-group" label="Disabled Group " required boldLabel>
         <sd-radio value="1" disabled>Radio 1</sd-radio>
         <sd-radio value="2" disabled>Radio 2</sd-radio>
         <sd-radio value="3" disabled>Radio 3</sd-radio>
@@ -187,7 +187,7 @@ export const Invalid = {
   name: 'Invalid',
   render: () => html`
     <form id="invalid-form" class="flex flex-col gap-8">
-      <sd-radio-group name="radio-group" id="invalid-radio" label="Invalid Group" required boldlabel>
+      <sd-radio-group name="radio-group" id="invalid-radio" label="Invalid Group " required boldlabel>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
