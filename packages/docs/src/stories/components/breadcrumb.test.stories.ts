@@ -53,7 +53,18 @@ export const Default = {
 export const Truncated = {
   name: 'Truncated',
   render: (args: any) => {
-    return html`<div style="width: 100px;">${generateTemplate({ args })}</div>`;
+    return html`<div style="width: 100px;">
+      ${generateTemplate({
+        args,
+        constants: [
+          {
+            type: 'attribute',
+            name: 'label',
+            value: 'Truncated breadcrumbs'
+          }
+        ]
+      })}
+    </div>`;
   }
 };
 
