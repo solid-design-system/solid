@@ -9,7 +9,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary A responsive breadcrumb navigation component used to visualize a page's location
  * within the site's hierarchy and provide easy navigation to previous sections.
  * @status experimental
- * @since 5.7
+ * @since 5.8
  *
  * @dependency sd-dropdown
  * @dependency sd-icon

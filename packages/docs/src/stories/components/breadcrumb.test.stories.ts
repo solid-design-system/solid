@@ -1,10 +1,16 @@
 import { html } from 'lit-html';
 import '../../../../components/src/solid-components';
-import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import {
+  storybookDefaults,
+  storybookHelpers,
+  storybookTemplate,
+  storybookUtilities
+} from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-breadcrumb');
 const { overrideArgs } = storybookHelpers('sd-breadcrumb');
 const { generateTemplate } = storybookTemplate('sd-breadcrumb');
+const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-breadcrumb/Screenshots: sd-breadcrumb',
@@ -38,18 +44,21 @@ export default {
 };
 
 export const Default = {
+  name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
 };
 
 export const Truncated = {
+  name: 'Truncated',
   render: (args: any) => {
     return html`<div style="width: 100px;">${generateTemplate({ args })}</div>`;
   }
 };
 
 export const Mobile = {
+  name: 'Mobile',
   parameters: {
     viewport: { defaultViewport: 'mobile1' }
   },
@@ -57,3 +66,5 @@ export const Mobile = {
     return generateTemplate({ args });
   }
 };
+
+export const Combination = generateScreenshotStory([Default, Truncated]);
