@@ -9,7 +9,7 @@ import SolidElement from '../../internal/solid-element';
 /**
  * @summary An individual breadcrumb item for use exclusively within the `sd-breadcrumb`.
  * @status experimental
- * @since 5.7
+ * @since 5.8
  *
  * @dependency sd-link
  *
