@@ -71,6 +71,9 @@ export default class SdRange extends SolidElement implements SolidFormControl {
   /** Disables the range. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  /** Disables the range. */
+  @property({ attribute: 'no-track-bar', type: Boolean, reflect: true }) noTrackBar = false;
+
   /** The default value of the form control. Primarily used for resetting the form control. */
   @defaultValue() defaultValue = '';
 
@@ -596,7 +599,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
         : null}
 
       <div part="base" class="inline-flex w-full">
-        <div part="input-wrapper" class="relative flex-1 mx-2">
+        <div part="input-wrapper" class="relative flex-1 mx-2 mb-3">
           <input id="input" tabindex="-1" hidden @invalid=${this.handleInvalid} />
 
           <div
@@ -607,7 +610,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
           >
             <div part="track-click-helper"></div>
             <div part="track" class="bg-neutral-500"></div>
-            <div part="active-track"></div>
+            <div part="active-track" hidden=${ifDefined(this.noTrackBar ? true : undefined)}></div>
           </div>
 
           ${this.renderThumbs(hasLabel)}

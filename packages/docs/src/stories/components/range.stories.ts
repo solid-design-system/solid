@@ -31,7 +31,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html` <div class="h-20">${generateTemplate({ args })}</div>`;
+    return html` <div class="min-h-20">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -41,7 +41,7 @@ export const Default = {
  */
 export const Label = {
   render: (args: any) => {
-    return html` <div class="h-20">
+    return html` <div class="min-h-20">
       ${generateTemplate({ args, constants: [{ type: 'attribute', name: 'label', value: 'Label' }] })}
     </div>`;
   }
@@ -52,7 +52,7 @@ export const Label = {
  */
 export const DoubleKnob = {
   render: (args: any) => {
-    return html` <div class="h-20">
+    return html` <div class="min-h-20">
       ${generateTemplate({
         args,
         constants: [
@@ -70,7 +70,7 @@ export const DoubleKnob = {
 export const TrackBar = {
   name: 'Track-bar',
   render: (args: any) => {
-    return html` <div class="h-20">
+    return html` <div class="min-h-20">
       ${generateTemplate({
         args,
         constants: [
@@ -158,7 +158,7 @@ export const Ticks = {
  */
 export const Tooltip = {
   render: (args: any) => {
-    return html` <div class="h-20">
+    return html` <div class="min-h-20">
       ${generateTemplate({
         args,
         constants: [
@@ -175,7 +175,7 @@ export const Tooltip = {
  */
 export const HelpText = {
   render: (args: any) => {
-    return html` <div class="h-20">
+    return html` <div class="min-h-20">
       ${generateTemplate({
         args,
         constants: [
@@ -192,7 +192,7 @@ export const HelpText = {
  */
 export const Disabled = {
   render: (args: any) => {
-    return html` <div class="h-20">
+    return html` <div class="min-h-20">
       ${generateTemplate({
         args,
         constants: [
@@ -210,7 +210,7 @@ export const Disabled = {
  */
 export const VisuallyDisabled = {
   render: (args: any) => {
-    return html` <div class="h-20">
+    return html` <div class="min-h-20">
       ${generateTemplate({
         args,
         constants: [
@@ -230,7 +230,7 @@ export const VisuallyDisabled = {
 export const MinMaxStep = {
   name: 'Min, Max and Step',
   render: (args: any) => {
-    return html` <div class="h-20">
+    return html` <div class="min-h-20">
       ${generateTemplate({
         args,
         constants: [
@@ -238,6 +238,43 @@ export const MinMaxStep = {
           { type: 'attribute', name: 'min', value: '0' },
           { type: 'attribute', name: 'max', value: '200' },
           { type: 'attribute', name: 'step', value: '25' }
+        ]
+      })}
+    </div>`;
+  }
+};
+
+/**
+ * Use the custom property `--track-active-offset` to customize the initial offset of the active `track-bar`.
+ */
+export const CustomOffset = {
+  render: (args: any) => {
+    return html` <div class="flex flex-col gap-12">
+      ${generateTemplate({
+        args,
+        constants: [
+          { type: 'attribute', name: 'label', value: 'Label' },
+          { type: 'attribute', name: 'value', value: '33' }
+        ]
+      })}
+      ${generateTemplate({
+        args,
+        constants: [
+          { type: 'attribute', name: 'label', value: 'Label' },
+          { type: 'attribute', name: 'min', value: '-100' },
+          { type: 'attribute', name: 'max', value: '0' },
+          { type: 'attribute', name: 'value', value: '-33' },
+          { type: 'attribute', name: 'style', value: '--track-active-offset: 100%;' }
+        ]
+      })}
+      ${generateTemplate({
+        args,
+        constants: [
+          { type: 'attribute', name: 'label', value: 'Label' },
+          { type: 'attribute', name: 'min', value: '-50' },
+          { type: 'attribute', name: 'max', value: '50' },
+          { type: 'attribute', name: 'value', value: '40' },
+          { type: 'attribute', name: 'style', value: '--track-active-offset: 50%;' }
         ]
       })}
     </div>`;
