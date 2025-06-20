@@ -484,7 +484,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
       }
 
       :host([required]) #label::after {
-        content: ' *';
+        content: '\00a0*';
       }
     `
   ];
