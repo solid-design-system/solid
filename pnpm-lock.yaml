@@ -62,8 +62,8 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1(eslint@9.29.0(jiti@1.21.7))
       eslint-plugin-lit-a11y:
-        specifier: ^4.1.4
-        version: 4.1.4(eslint@9.29.0(jiti@1.21.7))
+        specifier: ^5.0.1
+        version: 5.0.1(eslint@9.29.0(jiti@1.21.7))
       eslint-plugin-sort-imports-es6-autofix:
         specifier: ^0.6.0
         version: 0.6.0(eslint@9.29.0(jiti@1.21.7))
@@ -3919,14 +3919,8 @@ packages:
       '@typescript-eslint/parser':
         optional: true
 
-  eslint-plugin-lit-a11y@4.1.4:
-    resolution: {integrity: sha512-u39vE1KNOzO99Nrz51oVGY0Iauzf59l9tZgBluE/cU1l86X9/peBMQHUAeGC536dlV4acFYj5yq/VLPsalvnzA==}
-    peerDependencies:
-      eslint: '>= 5'
-
-  eslint-plugin-lit@1.15.0:
-    resolution: {integrity: sha512-Yhr2MYNz6Ln8megKcX503aVZQln8wsywCG49g0heiJ/Qr5UjkE4pGr4Usez2anNcc7NvlvHbQWMYwWcgH3XRKA==}
-    engines: {node: '>= 12'}
+  eslint-plugin-lit-a11y@5.0.1:
+    resolution: {integrity: sha512-fZb7HJ26ieFwDmhkTxq7dj9D7NZ9otAJa3YMFtLyQmivTSbMjBM7gk+znMXtOuMqOHPqvGrhlSgBIaz37VOqRA==}
     peerDependencies:
       eslint: '>= 5'
 
@@ -6493,10 +6487,6 @@ packages:
 
   require-main-filename@2.0.0:
     resolution: {integrity: sha512-NKN5kMDylKuldxYLSUfrbo5Tuzh4hd+2E8NPPX02mZtn1VuREQToYe/ZdlJy+J3uCpfaiGF05e7B8W0iXbQHmg==}
-
-  requireindex@1.2.0:
-    resolution: {integrity: sha512-L9jEkOi3ASd9PYit2cwRfyppc9NoABujTP8/5gFcbERmo5jUoAKovIC3fsF17pkTnGsrByysqX+Kxd2OTNI1ww==}
-    engines: {node: '>=0.10.5'}
 
   requires-port@1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
@@ -11639,7 +11629,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-plugin-lit-a11y@4.1.4(eslint@9.29.0(jiti@1.21.7)):
+  eslint-plugin-lit-a11y@5.0.1(eslint@9.29.0(jiti@1.21.7)):
     dependencies:
       '@thepassle/axobject-query': 4.0.0
       aria-query: 5.3.2
@@ -11647,19 +11637,11 @@ snapshots:
       dom5: 3.0.1
       emoji-regex: 10.4.0
       eslint: 9.29.0(jiti@1.21.7)
-      eslint-plugin-lit: 1.15.0(eslint@9.29.0(jiti@1.21.7))
+      eslint-plugin-lit: 2.1.1(eslint@9.29.0(jiti@1.21.7))
       eslint-rule-extender: 0.0.1
       language-tags: 1.0.9
       parse5: 7.3.0
       parse5-htmlparser2-tree-adapter: 6.0.1
-      requireindex: 1.2.0
-
-  eslint-plugin-lit@1.15.0(eslint@9.29.0(jiti@1.21.7)):
-    dependencies:
-      eslint: 9.29.0(jiti@1.21.7)
-      parse5: 6.0.1
-      parse5-htmlparser2-tree-adapter: 6.0.1
-      requireindex: 1.2.0
 
   eslint-plugin-lit@2.1.1(eslint@9.29.0(jiti@1.21.7)):
     dependencies:
@@ -14999,8 +14981,6 @@ snapshots:
   require-directory@2.1.1: {}
 
   require-main-filename@2.0.0: {}
-
-  requireindex@1.2.0: {}
 
   requires-port@1.0.0: {}
 
