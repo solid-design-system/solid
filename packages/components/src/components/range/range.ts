@@ -534,7 +534,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
 
       const id = `thumb-${rangeId}`;
 
-      const ariaLabel = '';
+      let ariaLabel = '';
       let ariaLabeledBy = '';
 
       if (!isMultiple) {
@@ -542,13 +542,13 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       } else {
         ariaLabeledBy = hasLabel ? `label aria-label-hidden ${id}` : `aria-label-hidden ${id}`;
 
-        // if (index === 0) {
-        //   ariaLabel = `${this.localize.term('rangeMin')} (${this.tooltipFormatter(value)})`;
-        // } else if (index === this._value.length - 1) {
-        //   ariaLabel = `${this.localize.term('rangeMax')} (${this.tooltipFormatter(value)})`;
-        // } else {
-        //   ariaLabel = this.tooltipFormatter(value);
-        // }
+        if (index === 0) {
+          ariaLabel = `${this.localize.term('minimum')} (${this.tooltipFormatter(value)})`;
+        } else if (index === this._value.length - 1) {
+          ariaLabel = `${this.localize.term('maximum')} (${this.tooltipFormatter(value)})`;
+        } else {
+          ariaLabel = this.tooltipFormatter(value);
+        }
       }
 
       return html`
@@ -597,7 +597,6 @@ export default class SdRange extends SolidElement implements SolidFormControl {
         ? html`<div class="flex items-center gap-1">
             <label
               id="label"
-              for="input"
               part="form-control-label"
               aria-hidden=${hasLabel ? 'false' : 'true'}
               class=${cx(hasLabel ? 'inline-block' : 'hidden')}
@@ -607,6 +606,8 @@ export default class SdRange extends SolidElement implements SolidFormControl {
             </label>
           </div>`
         : null}
+
+      <label id="aria-label-hidden" class="sr-only"> (${this._value.map(this.tooltipFormatter).join(' - ')}) </label>
 
       <div
         part="base"

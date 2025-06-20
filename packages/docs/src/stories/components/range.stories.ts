@@ -25,7 +25,10 @@ export default {
       url: ''
     }
   },
-  args: overrideArgs([{ type: 'attribute', name: 'value', value: '25' }]),
+  args: overrideArgs([
+    { type: 'attribute', name: 'label', value: 'Label' },
+    { type: 'attribute', name: 'value', value: '25' }
+  ]),
   decorators: [withActions] as any
 };
 
@@ -41,9 +44,7 @@ export const Default = {
  */
 export const Label = {
   render: (args: any) => {
-    return html` <div class="min-h-20">
-      ${generateTemplate({ args, constants: [{ type: 'attribute', name: 'label', value: 'Label' }] })}
-    </div>`;
+    return html` <div class="min-h-20">${generateTemplate({ args })}</div>`;
   }
 };
 
