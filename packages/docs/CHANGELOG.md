@@ -1,5 +1,25 @@
 # @solid-design-system/docs
 
+## 1.20.0
+
+### Minor Changes
+
+- Updated `sd-button` templates to provide a more realistic feel with real content _[`#2289`](https://github.com/solid-design-system/solid/pull/2289) [`fb0692d`](https://github.com/solid-design-system/solid/commit/fb0692d8c086f000943063e28b7d6a5a5e471996) [@balco0110](https://github.com/balco0110)_
+
+## 1.19.0
+
+### Minor Changes
+
+- The `sd-breadcrumb` and `sd-breadcrumb-item` have arrived! 🎉 _[`#2288`](https://github.com/solid-design-system/solid/pull/2288) [`9a224c7`](https://github.com/solid-design-system/solid/commit/9a224c77ce047c8966ee6f3c7be54cbf7c161020) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Added new `sd-breadcrumb` and `sd-breadcrumb-item` docs.
+
+## 1.18.0
+
+### Minor Changes
+
+- - Implement `reversed-layout` attribute for the `sd-teaser`. _[`#2283`](https://github.com/solid-design-system/solid/pull/2283) [`e65a94a`](https://github.com/solid-design-system/solid/commit/e65a94a7120525d73c40f58ad565911a81cff97b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 1.17.0
 
 ### Minor Changes

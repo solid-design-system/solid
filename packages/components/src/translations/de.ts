@@ -54,6 +54,7 @@ const translation: Translation = {
   tagsSelected: 'Optionen ausgewählt',
   toggleColorFormat: 'Farbformat umschalten',
   transcriptIsOpen: 'Transkript ist offen',
+  truncatedBreadcrumbs: 'Verkürzter Navigationspfad',
   unmute: 'Unmute'
 };
 

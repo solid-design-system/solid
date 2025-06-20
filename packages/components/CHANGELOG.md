@@ -1,5 +1,23 @@
 # @solid-design-system/components
 
+## 5.8.0
+
+### Minor Changes
+
+- The `sd-breadcrumb` and `sd-breadcrumb-item` have arrived! 🎉 _[`#2288`](https://github.com/solid-design-system/solid/pull/2288) [`9a224c7`](https://github.com/solid-design-system/solid/commit/9a224c77ce047c8966ee6f3c7be54cbf7c161020) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - It can be used to visualize a page's location within the site's hierarchy and provide easy navigation to previous sections.
+
+### 📈 Stats
+* Uncompressed: 444 KB (+6 KB / +1%)
+* Gzipped: 104 KB (+1 KB / +1%)
+
+## 5.7.0
+
+### Minor Changes
+
+- - Implement `reversed-layout` attribute for the `sd-teaser`. _[`#2283`](https://github.com/solid-design-system/solid/pull/2283) [`e65a94a`](https://github.com/solid-design-system/solid/commit/e65a94a7120525d73c40f58ad565911a81cff97b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 5.6.0
 
 ### Minor Changes
@@ -7,8 +25,9 @@
 - Added new fade effect transition to the `sd-carousel`. When the `fade` attribute is set, the carousel will use the fade transition for a smooth effect. If the attribute is not applied, the default slide transition will remain in use. _[`#2270`](https://github.com/solid-design-system/solid/pull/2270) [`99ed5c1`](https://github.com/solid-design-system/solid/commit/99ed5c12c34dfa15fb80c15e65b0751a473acd9e) [@smfonseca](https://github.com/smfonseca)_
 
 ### 📈 Stats
-* Uncompressed: 438 KB (+4 KB / +1%)
-* Gzipped: 103 KB (+1 KB / +1%)
+
+- Uncompressed: 438 KB (+4 KB / +1%)
+- Gzipped: 103 KB (+1 KB / +1%)
 
 ## 5.5.0
 
