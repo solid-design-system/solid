@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 5.4.0
+
+### Minor Changes
+
+- Added new token `bg-neutral-400` to be used on the breadcrumbs separator. _[`#2288`](https://github.com/solid-design-system/solid/pull/2288) [`9a224c7`](https://github.com/solid-design-system/solid/commit/9a224c77ce047c8966ee6f3c7be54cbf7c161020) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.3.0
 
 ### Minor Changes

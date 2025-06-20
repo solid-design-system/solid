@@ -1,0 +1,50 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdBreadcrumbItemStories from './breadcrumb-item.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/components-sd-breadcrumb-item--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=6646-28793&p=f&t=jUG1KxdADFRgvTzv-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=15550-5257&t=xZeI50k4O0CnwRwc-4'
+};
+
+export const content = `
+# Breadcrumb Item
+
+Used to visualize a page's location within the site's hierarchy and provide easy navigation to previous sections.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Components
+
+[sd-breadcrumb](./?path=/docs/components-sd-breadcrumb--docs)
+
+### Common Use Cases
+
+- Populate an <sd-link href="/?path=/docs/components-sd-breadcrumb--docs">sd-breadcrumb</sd-link> navigation helping users easily access different pages.
+
+### Usage Guidelines
+
+#### Content and Labeling
+
+- Use clear and descriptive labels that accurately represent each page or section in the navigation path.
+
+#### Background
+
+- Use light background options like white, neutral-100 or primary-100.
+
+### Accessibility Information
+
+- Dynamically update breadcrumbs and announce changes with aria-live for screen readers.
+- Provide clear labels for breadcrumb items to ensure screen readers convey the navigation path effectively.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-breadcrumb-item/Overview" />
+
+<OverviewFormatter story={SdBreadcrumbItemStories.Default}>{content}</OverviewFormatter>
