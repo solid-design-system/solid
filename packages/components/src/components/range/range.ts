@@ -71,6 +71,9 @@ export default class SdRange extends SolidElement implements SolidFormControl {
   /** Disables the range. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  /** Disables the range visually. */
+  @property({ attribute: 'visually-disabled', type: Boolean, reflect: true }) visuallyDisabled = false;
+
   /** Disables the active track bar. */
   @property({ attribute: 'no-track-bar', type: Boolean, reflect: true }) noTrackBar = false;
 
@@ -286,7 +289,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
   }
 
   private onClickTrack(event: PointerEvent, focusThumb = true) {
-    if (this.disabled) return;
+    if (this.disabled || this.visuallyDisabled) return;
     const { clientX } = event;
 
     const thumbs = Array.from(this.thumbs);
@@ -345,7 +348,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
   }
 
   private async onClickThumb(event: PointerEvent) {
-    if (this.disabled) return;
+    if (this.disabled || this.visuallyDisabled) return;
 
     const thumb = event.target as HTMLDivElement;
     this.updateTooltip(thumb);
@@ -362,7 +365,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
   }
 
   private onDragThumb(event: PointerEvent) {
-    if (this.disabled) return;
+    if (this.disabled || this.visuallyDisabled) return;
 
     const thumb = event.target as HTMLDivElement;
     const rangeId = +thumb.dataset.rangeId!;
@@ -508,7 +511,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
   }
 
   private onFocusThumb(event: FocusEvent) {
-    if (this.disabled) return;
+    if (this.disabled || this.visuallyDisabled) return;
     if (!this._hasFocus) {
       this._hasFocus = true;
       this.emit('sd-focus');
@@ -549,13 +552,17 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       }
 
       return html`
-        <sd-tooltip hoist trigger="focus" disabled=${ifDefined(this.disabled || this.noTooltip ? true : undefined)}>
+        <sd-tooltip
+          hoist
+          trigger="focus"
+          disabled=${ifDefined(this.disabled || this.visuallyDisabled || this.noTooltip ? true : undefined)}
+        >
           <div
             id=${id}
             part="thumb"
             role="slider"
-            tabindex="${this.disabled ? -1 : 0}"
-            aria-disabled=${ifDefined(this.disabled ? 'true' : undefined)}
+            tabindex="${this.disabled || this.visuallyDisabled ? -1 : 0}"
+            aria-disabled=${ifDefined(this.disabled || this.visuallyDisabled ? 'true' : undefined)}
             aria-labelledby=${ariaLabeledBy}
             aria-label=${ariaLabel}
             aria-valuemax="${this.max}"
@@ -601,7 +608,11 @@ export default class SdRange extends SolidElement implements SolidFormControl {
           </div>`
         : null}
 
-      <div part="base" class="inline-flex w-full">
+      <div
+        part="base"
+        class=${cx('inline-flex w-full', this.visuallyDisabled && 'focus-visible:focus-outline')}
+        tabindex=${ifDefined(this.visuallyDisabled ? '0' : undefined)}
+      >
         <div part="input-wrapper" class="relative flex-1 mx-2 mb-3">
           <input id="input" tabindex="-1" hidden @invalid=${this.handleInvalid} />
 
@@ -676,10 +687,11 @@ export default class SdRange extends SolidElement implements SolidFormControl {
         width: var(--full-thumb-size);
       }
 
-      :host([disabled]) {
+      :host([disabled]),
+      :host([visually-disabled]) {
         [part='thumb'],
         [part='active-track'] {
-          @apply bg-neutral-500;
+          @apply bg-neutral-500 outline-none;
         }
       }
     `

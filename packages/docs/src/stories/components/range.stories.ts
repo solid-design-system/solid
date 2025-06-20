@@ -210,14 +210,23 @@ export const Disabled = {
  */
 export const VisuallyDisabled = {
   render: (args: any) => {
-    return html` <div class="min-h-20">
-      ${generateTemplate({
-        args,
-        constants: [
-          { type: 'attribute', name: 'visually-disabled', value: true },
-          { type: 'attribute', name: 'help-text', value: 'Help text' }
-        ]
-      })}
+    return html` <div class="min-h-40 pt-20">
+      <sd-tooltip id="visually-disabled-tooltip" placement="top-start" hoist>
+        <p slot="content">Visually disabled</p>
+        ${generateTemplate({
+          args,
+          constants: [
+            { type: 'attribute', name: 'label', value: 'Label' },
+            { type: 'attribute', name: 'visually-disabled', value: true },
+            { type: 'attribute', name: 'help-text', value: 'Help text' }
+          ]
+        })}
+      </sd-tooltip>
+      <style>
+        #visually-disabled-tooltip::part(base__arrow) {
+          left: 4px !important;
+        }
+      </style>
     </div>`;
   }
 };
