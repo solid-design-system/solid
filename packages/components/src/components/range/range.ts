@@ -344,7 +344,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     this.onClickTrack(event, false);
   }
 
-  private onClickThumb(event: PointerEvent) {
+  private async onClickThumb(event: PointerEvent) {
     if (this.disabled) return;
 
     const thumb = event.target as HTMLDivElement;
@@ -358,7 +358,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     thumb.setPointerCapture(event.pointerId);
     thumb.classList.add('grabbed');
 
-    // await (thumb.parentElement as SdTooltip).show();
+    await (thumb.parentElement as SdTooltip).show();
   }
 
   private onDragThumb(event: PointerEvent) {
@@ -407,7 +407,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     }
   }
 
-  private onReleaseThumb(event: PointerEvent) {
+  private async onReleaseThumb(event: PointerEvent) {
     const thumb = event.target as HTMLDivElement;
     if (!thumb.dataset.pointerId || event.pointerId !== +thumb.dataset.pointerId) return;
 
@@ -420,7 +420,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       this.emit('sd-change');
     }
 
-    // await (thumb.parentElement as SynTooltip).hide();
+    await (thumb.parentElement as SdTooltip).hide();
   }
 
   private onKeyPress(event: KeyboardEvent) {
@@ -549,11 +549,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       }
 
       return html`
-        <sd-tooltip
-          hoist
-          trigger="click hover focus"
-          disabled=${ifDefined(this.disabled || this.noTooltip ? true : undefined)}
-        >
+        <sd-tooltip hoist trigger="focus" disabled=${ifDefined(this.disabled || this.noTooltip ? true : undefined)}>
           <div
             id=${id}
             part="thumb"
