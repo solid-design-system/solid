@@ -56,7 +56,6 @@ export default [
     'plugin:wc/recommended',
     'plugin:wc/best-practice',
     'plugin:lit/recommended',
-    'plugin:lit-a11y/recommended',
     'prettier'
   ),
   {
@@ -138,6 +137,7 @@ export default [
       'one-var': ['warn', 'never'],
       'operator-assignment': 'warn',
       'prefer-arrow-callback': 'warn',
+      ...litA11Y.configs.recommended.rules,
 
       'no-restricted-imports': [
         'warn',
