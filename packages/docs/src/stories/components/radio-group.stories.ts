@@ -114,13 +114,8 @@ export const Orientation = {
 export const Required = {
   name: 'Required',
   render: () => html`
-    <style>
-      sd-radio-group[required] label::after {
-        margin-left: 4px;
-      }
-    </style>
     <form id="required-form" class="flex flex-col gap-8">
-      <sd-radio-group name="radio-group" label="Required Group" boldlabel required>
+      <sd-radio-group name="radio-group" boldlabel label="Required Group" required>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
@@ -157,7 +152,7 @@ export const HelpText = {
   name: 'Help Text',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio-group orientation="vertical" help-text="Help text attribute" label="Group Label" required boldlabel>
+      <sd-radio-group orientation="vertical" help-text="Help text attribute" boldlabel label="Group Label" required>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
@@ -173,7 +168,7 @@ export const HelpText = {
 export const Disabled = {
   name: 'Disabled',
   render: () => html`
-      <sd-radio-group name="radio-group" label="Disabled Group" boldLabel required>
+      <sd-radio-group name="radio-group" boldLabel label="Disabled Group" required>
         <sd-radio value="1" disabled>Radio 1</sd-radio>
         <sd-radio value="2" disabled>Radio 2</sd-radio>
         <sd-radio value="3" disabled>Radio 3</sd-radio>
@@ -192,7 +187,7 @@ export const Invalid = {
   name: 'Invalid',
   render: () => html`
     <form id="invalid-form" class="flex flex-col gap-8">
-      <sd-radio-group name="radio-group" id="invalid-radio" label="Invalid Group" boldlabel required>
+      <sd-radio-group name="radio-group" id="invalid-radio" boldlabel label="Invalid Group" required>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
