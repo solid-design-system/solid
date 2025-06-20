@@ -71,8 +71,11 @@ export default class SdRange extends SolidElement implements SolidFormControl {
   /** Disables the range. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
-  /** Disables the range. */
+  /** Disables the active track bar. */
   @property({ attribute: 'no-track-bar', type: Boolean, reflect: true }) noTrackBar = false;
+
+  /** Disables the thumbs tooltip. */
+  @property({ attribute: 'no-tooltip', type: Boolean, reflect: true }) noTooltip = false;
 
   /** The default value of the form control. Primarily used for resetting the form control. */
   @defaultValue() defaultValue = '';
@@ -546,7 +549,11 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       }
 
       return html`
-        <sd-tooltip hoist trigger="click hover focus" disabled=${ifDefined(this.disabled ? true : undefined)}>
+        <sd-tooltip
+          hoist
+          trigger="click hover focus"
+          disabled=${ifDefined(this.disabled || this.noTooltip ? true : undefined)}
+        >
           <div
             id=${id}
             part="thumb"
