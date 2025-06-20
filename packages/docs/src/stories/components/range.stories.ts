@@ -48,6 +48,41 @@ export const Label = {
 };
 
 /**
+ * Use the `value` attribute with multiple numbers separated by a space to achieve double-knobs.
+ */
+export const DoubleKnob = {
+  render: (args: any) => {
+    return html` <div class="h-20">
+      ${generateTemplate({
+        args,
+        constants: [
+          { type: 'attribute', name: 'label', value: 'Label' },
+          { type: 'attribute', name: 'value', value: '33 66' }
+        ]
+      })}
+    </div>`;
+  }
+};
+
+/**
+ * Use the `no-track-bar` attribute to hide the track bar. By default, the trackbar appears.
+ */
+export const TrackBar = {
+  name: 'Track-bar',
+  render: (args: any) => {
+    return html` <div class="h-20">
+      ${generateTemplate({
+        args,
+        constants: [
+          { type: 'attribute', name: 'label', value: 'Label' },
+          { type: 'attribute', name: 'no-track-bar', value: true }
+        ]
+      })}
+    </div>`;
+  }
+};
+
+/**
  * Use the `scale-ticks` slot to insert ticks and use the sd-range-tick `subtick` attribute to change it’s appearance.
  */
 export const Ticks = {
@@ -118,6 +153,24 @@ export const Ticks = {
 };
 
 /**
+ * Use the “no-tooltip” attribute to disable the tooltip when interacting with the knob.
+ * By default, the tooltip appears on click or drag, positioned above the knob for clear visibility.
+ */
+export const Tooltip = {
+  render: (args: any) => {
+    return html` <div class="h-20">
+      ${generateTemplate({
+        args,
+        constants: [
+          { type: 'attribute', name: 'label', value: 'Label' },
+          { type: 'attribute', name: 'no-tooltip', value: true }
+        ]
+      })}
+    </div>`;
+  }
+};
+
+/**
  * Use the `help-text` slot or attribute to provide additional context or instructions.
  */
 export const HelpText = {
@@ -145,6 +198,24 @@ export const Disabled = {
         constants: [
           { type: 'attribute', name: 'label', value: 'Disabled' },
           { type: 'attribute', name: 'disabled', value: true }
+        ]
+      })}
+    </div>`;
+  }
+};
+
+/**
+ * When using this attribute, make sure to provide ways to inform the user why the element is disabled and how to enable it.
+ * This can be done by using the `help-text` attribute or wrapping the element in a sd-tooltip.
+ */
+export const VisuallyDisabled = {
+  render: (args: any) => {
+    return html` <div class="h-20">
+      ${generateTemplate({
+        args,
+        constants: [
+          { type: 'attribute', name: 'visually-disabled', value: true },
+          { type: 'attribute', name: 'help-text', value: 'Help text' }
         ]
       })}
     </div>`;

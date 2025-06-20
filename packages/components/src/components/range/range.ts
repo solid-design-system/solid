@@ -579,9 +579,9 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     const hasLabel = !!(this.label || slots['label']);
     const hasHelpText = !!(this.helpText || slots['helpText']);
 
-    return html`<div part="form-control" @focusout=${this.onBlur}>
+    return html`<div part="form-control" @focusout=${this.onBlur} class="flex flex-col">
       ${hasLabel
-        ? html`<div class="flex items-center gap-1 mb-2">
+        ? html`<div class="flex items-center gap-1">
             <label
               id="label"
               for="input"
@@ -596,7 +596,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
         : null}
 
       <div part="base" class="inline-flex w-full">
-        <div part="input-wrapper" class="relative flex-1">
+        <div part="input-wrapper" class="relative flex-1 mx-2">
           <input id="input" tabindex="-1" hidden @invalid=${this.handleInvalid} />
 
           <div
@@ -637,7 +637,6 @@ export default class SdRange extends SolidElement implements SolidFormControl {
         --thumb-size: 16px;
         --track-height: 4px;
         --full-thumb-size: var(--thumb-size);
-        --track-hit-area-size: 16px;
 
         /*
         * There are multiple places where we need the half width of the thumb
@@ -649,20 +648,19 @@ export default class SdRange extends SolidElement implements SolidFormControl {
 
       [part='track'] {
         height: var(--track-height);
-        margin: calc((var(--full-thumb-size) - var(--track-height)) / 2) calc(var(--half-thumb-size) * -1);
+        margin: calc((var(--full-thumb-size) - var(--track-height)) / 2) 0;
       }
 
       [part='active-track'] {
         @apply bg-primary absolute top-0;
 
         height: var(--track-height);
-        margin: 0 calc(var(--half-thumb-size) * -1);
       }
 
       [part='track-click-helper'] {
         @apply absolute;
 
-        inset: calc(var(--track-hit-area-size) * -1) calc(var(--half-thumb-size) * -1);
+        inset: calc(var(--half-thumb-size) * -1) 0;
       }
 
       [part='thumb'] {
