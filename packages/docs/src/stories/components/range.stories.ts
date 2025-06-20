@@ -56,10 +56,7 @@ export const DoubleKnob = {
     return html` <div class="min-h-20">
       ${generateTemplate({
         args,
-        constants: [
-          { type: 'attribute', name: 'label', value: 'Label' },
-          { type: 'attribute', name: 'value', value: '33 66' }
-        ]
+        constants: [{ type: 'attribute', name: 'value', value: '33 66' }]
       })}
     </div>`;
   }
@@ -74,10 +71,7 @@ export const TrackBar = {
     return html` <div class="min-h-20">
       ${generateTemplate({
         args,
-        constants: [
-          { type: 'attribute', name: 'label', value: 'Label' },
-          { type: 'attribute', name: 'no-track-bar', value: true }
-        ]
+        constants: [{ type: 'attribute', name: 'no-track-bar', value: true }]
       })}
     </div>`;
   }
@@ -92,7 +86,6 @@ export const Ticks = {
       ${generateTemplate({
         args,
         constants: [
-          { type: 'attribute', name: 'label', value: 'Label' },
           { type: 'attribute', name: 'min', value: '0' },
           { type: 'attribute', name: 'max', value: '9' },
           { type: 'attribute', name: 'value', value: '3' },
@@ -162,10 +155,7 @@ export const Tooltip = {
     return html` <div class="min-h-20">
       ${generateTemplate({
         args,
-        constants: [
-          { type: 'attribute', name: 'label', value: 'Label' },
-          { type: 'attribute', name: 'no-tooltip', value: true }
-        ]
+        constants: [{ type: 'attribute', name: 'no-tooltip', value: true }]
       })}
     </div>`;
   }
@@ -179,10 +169,7 @@ export const HelpText = {
     return html` <div class="min-h-20">
       ${generateTemplate({
         args,
-        constants: [
-          { type: 'attribute', name: 'label', value: 'Label' },
-          { type: 'attribute', name: 'help-text', value: 'Help text' }
-        ]
+        constants: [{ type: 'attribute', name: 'help-text', value: 'Help text' }]
       })}
     </div>`;
   }
@@ -217,7 +204,6 @@ export const VisuallyDisabled = {
         ${generateTemplate({
           args,
           constants: [
-            { type: 'attribute', name: 'label', value: 'Label' },
             { type: 'attribute', name: 'visually-disabled', value: true },
             { type: 'attribute', name: 'help-text', value: 'Help text' }
           ]
@@ -244,7 +230,6 @@ export const MinMaxStep = {
       ${generateTemplate({
         args,
         constants: [
-          { type: 'attribute', name: 'label', value: 'Label' },
           { type: 'attribute', name: 'min', value: '0' },
           { type: 'attribute', name: 'max', value: '200' },
           { type: 'attribute', name: 'step', value: '25' }
@@ -262,15 +247,11 @@ export const CustomOffset = {
     return html` <div class="flex flex-col gap-12">
       ${generateTemplate({
         args,
-        constants: [
-          { type: 'attribute', name: 'label', value: 'Label' },
-          { type: 'attribute', name: 'value', value: '33' }
-        ]
+        constants: [{ type: 'attribute', name: 'value', value: '33' }]
       })}
       ${generateTemplate({
         args,
         constants: [
-          { type: 'attribute', name: 'label', value: 'Label' },
           { type: 'attribute', name: 'min', value: '-100' },
           { type: 'attribute', name: 'max', value: '0' },
           { type: 'attribute', name: 'value', value: '-33' },
@@ -280,7 +261,6 @@ export const CustomOffset = {
       ${generateTemplate({
         args,
         constants: [
-          { type: 'attribute', name: 'label', value: 'Label' },
           { type: 'attribute', name: 'min', value: '-50' },
           { type: 'attribute', name: 'max', value: '50' },
           { type: 'attribute', name: 'value', value: '40' },

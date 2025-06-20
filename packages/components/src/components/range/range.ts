@@ -636,6 +636,8 @@ export default class SdRange extends SolidElement implements SolidFormControl {
         </div>
       </div>
 
+      <slot></slot>
+
       <slot
         name="help-text"
         part="form-control-help-text"
