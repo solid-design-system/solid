@@ -37,5 +37,5 @@
     ]
   },
   "include": ["src/**/*", "vite.config.*ts"],
-  "exclude": ["src/_components/**", "custom-elements-manifest.config.js"]
+  "exclude": ["custom-elements-manifest.config.js"]
 }
