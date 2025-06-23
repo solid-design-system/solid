@@ -1,5 +1,5 @@
-import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { property } from 'lit/decorators.js';
 import cx from 'classix';
@@ -39,7 +39,7 @@ export default class SdRangeTick extends SolidElement {
     </div>`;
   }
 
-  static styles = [...SolidElement.styles, css``];
+  static styles = SolidElement.styles;
 }
 
 declare global {

@@ -327,8 +327,8 @@ export default class SdRange extends SolidElement implements SolidFormControl {
 
     if (arraysDiffer(prevValue, this._value)) {
       this._lastChangeValue = Array.from(this._value);
-      this.emit('syn-input');
-      this.emit('syn-change');
+      this.emit('sd-input');
+      this.emit('sd-change');
     }
 
     const newEvent = new PointerEvent('pointerdown', event);
