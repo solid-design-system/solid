@@ -257,6 +257,7 @@ export default class SdDialog extends SolidElement {
   }
 
   render() {
+    /* eslint-disable lit-a11y/click-events-have-key-events */
     return html`
       <div
         part="base"
@@ -323,6 +324,7 @@ export default class SdDialog extends SolidElement {
         </div>
       </div>
     `;
+    /* eslint-enable lit-a11y/click-events-have-key-events */
   }
 
   static styles = [

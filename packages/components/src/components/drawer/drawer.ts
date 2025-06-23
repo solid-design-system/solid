@@ -294,6 +294,7 @@ export default class SdDrawer extends SolidElement {
   }
 
   render() {
+    /* eslint-disable lit-a11y/click-events-have-key-events */
     return html`
       <section
         id="drawer"
@@ -366,6 +367,7 @@ export default class SdDrawer extends SolidElement {
         </div>
       </section>
     `;
+    /* eslint-enable lit-a11y/click-events-have-key-events */
   }
 
   static styles = [
