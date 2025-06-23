@@ -1,9 +1,9 @@
 import { arraysDiffer, getNormalizedValueFromClientX, numericSort } from './utils';
-import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { defaultValue } from '../../internal/default-value';
 import { FormControlController } from '../../internal/form';
 import { HasSlotController } from '../../internal/slot';
+import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query, queryAll } from 'lit/decorators.js';
@@ -14,20 +14,37 @@ import type { SdTooltip } from 'src/solid-components';
 import type { SolidFormControl } from '../../internal/solid-element';
 
 /**
- * @summary Short summary of the component's intended use.
+ * @summary Used to allow users to select a single or multiple values within a defined range using a slider.
  * @status experimental
- * @since 1.0
+ * @since 5.9
  *
  * @dependency sd-tooltip
  *
- * @event sd-event-name - Emitted as an example.
+ * @event sd-blur - Emitted when the control loses focus.
+ * @event sd-change - Emitted when an alteration to the control's value is committed by the user.
+ * @event sd-focus - Emitted when the control gains focus.
+ * @event sd-input - Emitted when the control receives input.
+ * @event sd-move - Emitted when the user moves a thumb, either via touch or keyboard.
+ * Use `Event.preventDefault()` to prevent movement.
  *
  * @slot - The default slot.
- * @slot example - An example slot.
+ * @slot help-text - Text that describes how to use the range. Alternatively, you can use the `help-text` attribute.
+ * @slot label - The range's label. Alternatively, you can use the `label` attribute.
+ * @slot scale-ticks - Used to display tick marks at specific intervals along the range.
  *
+ * @csspart form-control - The form control that wraps the label, input, and help text.
+ * @csspart form-control-label - The label's wrapper.
+ * @csspart form-control-help-text - The help text's wrapper.
  * @csspart base - The component's base wrapper.
+ * @csspart input-wrapper - The container that wraps the input track and ticks.
+ * @csspart track-wrapper - The wrapper for the track.
+ * @csspart track - The inactive track.
+ * @csspart active-track - The active track.
+ * @csspart track-click-helper - The element that increases the track clickable area.
+ * @csspart thumb - The thumb(s) that the user can drag to change the range.
+ * @csspart scale-ticks - The container that wraps the tick marks.
  *
- * @cssproperty --example - An example CSS custom property.
+ * @cssproperty --track-active-offset - The point of origin of the active track, starting at the left side of the range.
  */
 @customElement('sd-range')
 export default class SdRange extends SolidElement implements SolidFormControl {
@@ -251,7 +268,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     thumb.setAttribute('aria-valuenow', value.toString());
     thumb.setAttribute('aria-valuetext', this.tooltipFormatter(value));
     const pos = (value - this.min) / (this.max - this.min);
-    thumb.style.insetInlineStart = `calc(${100 * pos}% - var(--half-thumb-size))`;
+    thumb.style.insetInlineStart = `calc(${100 * pos}% - 8px)`;
     this.updateTooltip(thumb);
   }
 
@@ -577,6 +594,10 @@ export default class SdRange extends SolidElement implements SolidFormControl {
             @pointerleave=${this.onReleaseThumb}
             @keydown=${this.onKeyPress}
             @focus=${this.onFocusThumb}
+            class=${cx(
+              'bg-primary cursor-pointer rounded-full absolute top-0 size-4 after:-inset-2 hover:cursor-grab focus-visible:focus-outline',
+              (this.disabled || this.visuallyDisabled) && 'bg-neutral-500 outline-none'
+            )}
           ></div>
         </sd-tooltip>
       `;
@@ -623,9 +644,16 @@ export default class SdRange extends SolidElement implements SolidFormControl {
             @pointerdown=${this.onClickTrack}
             class="relative cursor-pointer"
           >
-            <div part="track-click-helper"></div>
-            <div part="track" class="bg-neutral-500"></div>
-            <div part="active-track" hidden=${ifDefined(this.noTrackBar ? true : undefined)}></div>
+            <div part="track-click-helper" class="absolute -inset-y-2 inset-x-0"></div>
+            <div part="track" class="bg-neutral-500 h-1 my-[6px]"></div>
+            <div
+              part="active-track"
+              hidden=${ifDefined(this.noTrackBar ? true : undefined)}
+              class=${cx(
+                'bg-primary absolute top-0 h-1',
+                (this.disabled || this.visuallyDisabled) && 'bg-neutral-500 outline-none'
+              )}
+            ></div>
           </div>
 
           ${this.renderThumbs(hasLabel)}
@@ -650,55 +678,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     </div>`;
   }
 
-  static styles = [
-    ...SolidElement.styles,
-    css`
-      :host {
-        --thumb-size: 16px;
-        --track-height: 4px;
-        --full-thumb-size: var(--thumb-size);
-
-        /*
-        * There are multiple places where we need the half width of the thumb
-        * This is needed for example to position the knob on the track or
-        * provide the spacing to the left and right for the track to make it stand "over"
-        */
-        --half-thumb-size: calc(var(--full-thumb-size) / 2);
-      }
-
-      [part='track'] {
-        height: var(--track-height);
-        margin: calc((var(--full-thumb-size) - var(--track-height)) / 2) 0;
-      }
-
-      [part='active-track'] {
-        @apply bg-primary absolute top-0;
-
-        height: var(--track-height);
-      }
-
-      [part='track-click-helper'] {
-        @apply absolute;
-
-        inset: calc(var(--half-thumb-size) * -1) 0;
-      }
-
-      [part='thumb'] {
-        @apply bg-primary cursor-pointer rounded-full absolute top-0 after:-inset-2 hover:cursor-grab focus-visible:focus-outline;
-
-        height: var(--full-thumb-size);
-        width: var(--full-thumb-size);
-      }
-
-      :host([disabled]),
-      :host([visually-disabled]) {
-        [part='thumb'],
-        [part='active-track'] {
-          @apply bg-neutral-500 outline-none;
-        }
-      }
-    `
-  ];
+  static styles = SolidElement.styles;
 }
 
 declare global {

@@ -6,20 +6,16 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Short summary of the component's intended use.
+ * @summary Ticks visually improve positioning on range sliders.
  * @status experimental
- * @since 1.0
+ * @since 5.9
  *
- * @dependency sd-example
- *
- * @event sd-event-name - Emitted as an example.
- *
- * @slot - The default slot.
- * @slot example - An example slot.
+ * @slot - The tick's label
  *
  * @csspart base - The component's base wrapper.
+ * @csspart label - The component's label.
+ * @csspart line - The component's tick line.
  *
- * @cssproperty --example - An example CSS custom property.
  */
 @customElement('sd-range-tick')
 export default class SdRangeTick extends SolidElement {
