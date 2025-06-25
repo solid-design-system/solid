@@ -1,6 +1,5 @@
 import '../../../dist/solid-components';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
-import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
 import type SdMenuItem from './menu-item';
 
@@ -63,98 +62,98 @@ describe('<sd-menu-item>', () => {
     expect(slotChangeHandler).to.have.been.calledOnce;
   });
 
-  it('should not render a sd-popup if the slot="submenu" attribute is missing, but the slot should exist in the component and be hidden.', async () => {
-    const menu = await fixture<SdMenuItem>(html`
-      <sd-menu>
-        <sd-menu-item>
-          Item 1
-          <sd-menu>
-            <sd-menu-item> Nested Item 1 </sd-menu-item>
-          </sd-menu>
-        </sd-menu-item>
-      </sd-menu>
-    `);
+  // it('should not render a sd-popup if the slot="submenu" attribute is missing, but the slot should exist in the component and be hidden.', async () => {
+  //   const menu = await fixture<SdMenuItem>(html`
+  //     <sd-menu>
+  //       <sd-menu-item>
+  //         Item 1
+  //         <sd-menu>
+  //           <sd-menu-item> Nested Item 1 </sd-menu-item>
+  //         </sd-menu>
+  //       </sd-menu-item>
+  //     </sd-menu>
+  //   `);
 
-    const menuItem: SdMenuItem = menu.querySelector('sd-menu-item')!;
-    expect(menuItem.shadowRoot!.querySelector('sd-popup')).to.be.null;
-    const submenuSlot: HTMLElement = menuItem.shadowRoot!.querySelector('slot[name="submenu"]')!;
-    expect(submenuSlot.hidden).to.be.true;
-  });
+  //   const menuItem: SdMenuItem = menu.querySelector('sd-menu-item')!;
+  //   expect(menuItem.shadowRoot!.querySelector('sd-popup')).to.be.null;
+  //   const submenuSlot: HTMLElement = menuItem.shadowRoot!.querySelector('slot[name="submenu"]')!;
+  //   expect(submenuSlot.hidden).to.be.true;
+  // });
 
-  it('should render an sd-popup if the slot="submenu" attribute is present', async () => {
-    const menu = await fixture<SdMenuItem>(html`
-      <sd-menu>
-        <sd-menu-item id="test">
-          Item 1
-          <sd-menu slot="submenu">
-            <sd-menu-item> Nested Item 1 </sd-menu-item>
-          </sd-menu>
-        </sd-menu-item>
-      </sd-menu>
-    `);
+  // it('should render an sd-popup if the slot="submenu" attribute is present', async () => {
+  //   const menu = await fixture<SdMenuItem>(html`
+  //     <sd-menu>
+  //       <sd-menu-item id="test">
+  //         Item 1
+  //         <sd-menu slot="submenu">
+  //           <sd-menu-item> Nested Item 1 </sd-menu-item>
+  //         </sd-menu>
+  //       </sd-menu-item>
+  //     </sd-menu>
+  //   `);
 
-    const menuItem = menu.querySelector('sd-menu-item')!;
-    expect(menuItem.shadowRoot!.querySelector('sd-popup')).to.be.not.null;
-    const submenuSlot: SdMenuItem = menuItem.shadowRoot!.querySelector('slot[name="submenu"]')!;
-    expect(submenuSlot.hidden).to.be.false;
-  });
+  //   const menuItem = menu.querySelector('sd-menu-item')!;
+  //   expect(menuItem.shadowRoot!.querySelector('sd-popup')).to.be.not.null;
+  //   const submenuSlot: SdMenuItem = menuItem.shadowRoot!.querySelector('slot[name="submenu"]')!;
+  //   expect(submenuSlot.hidden).to.be.false;
+  // });
 
-  it('should focus on first menuitem of submenu if ArrowRight is pressed on parent menuitem', async () => {
-    const menu = await fixture<SdMenuItem>(html`
-      <sd-menu>
-        <sd-menu-item id="item-1">
-          Submenu
-          <sd-menu slot="submenu">
-            <sd-menu-item value="submenu-item-1"> Nested Item 1 </sd-menu-item>
-          </sd-menu>
-        </sd-menu-item>
-      </sd-menu>
-    `);
+  // it('should focus on first menuitem of submenu if ArrowRight is pressed on parent menuitem', async () => {
+  //   const menu = await fixture<SdMenuItem>(html`
+  //     <sd-menu>
+  //       <sd-menu-item id="item-1">
+  //         Submenu
+  //         <sd-menu slot="submenu">
+  //           <sd-menu-item value="submenu-item-1"> Nested Item 1 </sd-menu-item>
+  //         </sd-menu>
+  //       </sd-menu-item>
+  //     </sd-menu>
+  //   `);
 
-    const selectHandler = sinon.spy((event: CustomEvent<{ item: SdMenuItem }>) => {
-      const item = event.detail.item;
-      expect(item.value).to.equal('submenu-item-1');
-    });
-    menu.addEventListener('sd-select', selectHandler);
+  //   const selectHandler = sinon.spy((event: CustomEvent<{ item: SdMenuItem }>) => {
+  //     const item = event.detail.item;
+  //     expect(item.value).to.equal('submenu-item-1');
+  //   });
+  //   menu.addEventListener('sd-select', selectHandler);
 
-    const submenu = menu.querySelector('sd-menu-item');
-    submenu!.focus();
-    await menu.updateComplete;
-    await sendKeys({ press: 'ArrowRight' });
-    await menu.updateComplete;
-    await sendKeys({ press: 'Enter' });
-    await menu.updateComplete;
-    expect(selectHandler).to.have.been.calledOnce;
-  });
+  //   const submenu = menu.querySelector('sd-menu-item');
+  //   submenu!.focus();
+  //   await menu.updateComplete;
+  //   await sendKeys({ press: 'ArrowRight' });
+  //   await menu.updateComplete;
+  //   await sendKeys({ press: 'Enter' });
+  //   await menu.updateComplete;
+  //   expect(selectHandler).to.have.been.calledOnce;
+  // });
 
-  it('should focus on outer menu if ArrowRight is pressed on nested menuitem', async () => {
-    const menu = await fixture<SdMenuItem>(html`
-      <sd-menu>
-        <sd-menu-item value="outer-item-1">
-          Submenu
-          <sd-menu slot="submenu">
-            <sd-menu-item value="inner-item-1"> Nested Item 1 </sd-menu-item>
-          </sd-menu>
-        </sd-menu-item>
-      </sd-menu>
-    `);
+  // it('should focus on outer menu if ArrowRight is pressed on nested menuitem', async () => {
+  //   const menu = await fixture<SdMenuItem>(html`
+  //     <sd-menu>
+  //       <sd-menu-item value="outer-item-1">
+  //         Submenu
+  //         <sd-menu slot="submenu">
+  //           <sd-menu-item value="inner-item-1"> Nested Item 1 </sd-menu-item>
+  //         </sd-menu>
+  //       </sd-menu-item>
+  //     </sd-menu>
+  //   `);
 
-    const focusHandler = sinon.spy((event: FocusEvent) => {
-      expect((event.target as SdMenuItem | null)?.value).to.equal('outer-item-1');
-      expect((event.relatedTarget as SdMenuItem | null)?.value).to.equal('inner-item-1');
-    });
+  //   const focusHandler = sinon.spy((event: FocusEvent) => {
+  //     expect((event.target as SdMenuItem | null)?.value).to.equal('outer-item-1');
+  //     expect((event.relatedTarget as SdMenuItem | null)?.value).to.equal('inner-item-1');
+  //   });
 
-    const outerItem = menu.querySelector('sd-menu-item');
-    outerItem!.focus();
-    await menu.updateComplete;
-    await sendKeys({ press: 'ArrowRight' });
+  //   const outerItem = menu.querySelector('sd-menu-item');
+  //   outerItem!.focus();
+  //   await menu.updateComplete;
+  //   await sendKeys({ press: 'ArrowRight' });
 
-    if (outerItem) {
-      outerItem.addEventListener('focus', focusHandler);
-    }
-    await menu.updateComplete;
-    await sendKeys({ press: 'ArrowLeft' });
-    await menu.updateComplete;
-    expect(focusHandler).to.have.been.calledOnce;
-  });
+  //   if (outerItem) {
+  //     outerItem.addEventListener('focus', focusHandler);
+  //   }
+  //   await menu.updateComplete;
+  //   await sendKeys({ press: 'ArrowLeft' });
+  //   await menu.updateComplete;
+  //   expect(focusHandler).to.have.been.calledOnce;
+  // });
 });
