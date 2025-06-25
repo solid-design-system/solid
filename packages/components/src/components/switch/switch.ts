@@ -18,6 +18,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  *
  *
  * @slot - The switch's label.
+ * @slot tooltip - An optional tooltip that helps describe the switch. Use this slot with the `sd-tooltip` component.
  *
  * @event sd-blur - Emitted when the switch loses focus.
  * @event sd-change - Emitted when the checked state changes.
@@ -162,80 +163,83 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
 
   render() {
     return html`
-      <label
-        part="base"
-        class=${cx(
-          'group flex items-center text-base leading-normal text-black cursor-pointer',
-          this.disabled && 'hover:cursor-not-allowed'
-        )}
-      >
-        <input
-          id="input"
-          class="peer absolute opacity-0 p-0 m-0 pointer-events-none"
-          type="checkbox"
-          role="switch"
-          title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
-          name=${this.name}
-          value=${ifDefined(this.value)}
-          .checked=${live(this.checked)}
-          .disabled=${this.disabled}
-          .required=${this.required}
-          aria-checked=${this.checked ? 'true' : 'false'}
-          aria-invalid=${this.showInvalidStyle}
-          aria-describedby="invalid-message"
-          @click=${this.handleClick}
-          @input=${this.handleInput}
-          @invalid=${this.handleInvalid}
-          @blur=${this.handleBlur}
-          @focus=${this.handleFocus}
-        />
-
-        <span
-          id="control"
-          part="control ${this.checked ? ' control--checked' : 'control--unchecked'}"
+      <div class="flex flex-row items-center gap-2">
+        <label
+          part="base"
           class=${cx(
-            `relative flex flex-initial items-center justify-center border rounded-full h-4 w-8 transition-colors ease duration-100
+            'group flex items-center text-base leading-normal text-black cursor-pointer',
+            this.disabled && 'hover:cursor-not-allowed'
+          )}
+        >
+          <input
+            id="input"
+            class="peer absolute opacity-0 p-0 m-0 pointer-events-none"
+            type="checkbox"
+            role="switch"
+            title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
+            name=${this.name}
+            value=${ifDefined(this.value)}
+            .checked=${live(this.checked)}
+            .disabled=${this.disabled}
+            .required=${this.required}
+            aria-checked=${this.checked ? 'true' : 'false'}
+            aria-invalid=${this.showInvalidStyle}
+            aria-describedby="invalid-message"
+            @click=${this.handleClick}
+            @input=${this.handleInput}
+            @invalid=${this.handleInvalid}
+            @blur=${this.handleBlur}
+            @focus=${this.handleFocus}
+          />
+
+          <span
+            id="control"
+            part="control ${this.checked ? ' control--checked' : 'control--unchecked'}"
+            class=${cx(
+              `relative flex flex-initial items-center justify-center border rounded-full h-4 w-8 transition-colors ease duration-100
             peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2
             peer-focus-visible:outline-primary transition-colors ease-in-out duration-medium hover:duration-fast`,
-            this.disabled && this.checked
-              ? 'border-neutral-500 bg-neutral-500'
-              : this.disabled
-                ? 'border-neutral-500'
-                : this.showInvalidStyle
-                  ? 'border-error hover:border-error-400 bg-error hover:bg-error-400 group-hover:bg-error-400'
-                  : this.checked
-                    ? 'border-accent hover:bg-accent-550 bg-accent hover:border-accent-550 group-hover:bg-accent-550'
-                    : 'border-neutral-800 bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
-          )}
-        >
-          <span
-            id="thumb"
-            part="thumb"
-            class=${cx(
-              'w-2.5 h-2.5 rounded-full transition[transform,colors] ease-in-out duration-medium',
               this.disabled && this.checked
-                ? 'bg-white translate-x-2'
+                ? 'border-neutral-500 bg-neutral-500'
                 : this.disabled
-                  ? '-translate-x-2 bg-neutral-500'
+                  ? 'border-neutral-500'
                   : this.showInvalidStyle
-                    ? 'bg-white -translate-x-2'
+                    ? 'border-error hover:border-error-400 bg-error hover:bg-error-400 group-hover:bg-error-400'
                     : this.checked
-                      ? 'translate-x-2 bg-white'
-                      : 'bg-neutral-800 -translate-x-2'
+                      ? 'border-accent hover:bg-accent-550 bg-accent hover:border-accent-550 group-hover:bg-accent-550'
+                      : 'border-neutral-800 bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
             )}
-          ></span>
-        </span>
-        <span
-          part="label"
-          id="label"
-          class=${cx(
-            'select-none inline-block ml-2',
-            this.disabled ? 'text-neutral-500' : this.showInvalidStyle ? 'text-error' : 'text-black'
-          )}
-        >
-          <slot></slot>
-        </span>
-      </label>
+          >
+            <span
+              id="thumb"
+              part="thumb"
+              class=${cx(
+                'w-2.5 h-2.5 rounded-full transition[transform,colors] ease-in-out duration-medium',
+                this.disabled && this.checked
+                  ? 'bg-white translate-x-2'
+                  : this.disabled
+                    ? '-translate-x-2 bg-neutral-500'
+                    : this.showInvalidStyle
+                      ? 'bg-white -translate-x-2'
+                      : this.checked
+                        ? 'translate-x-2 bg-white'
+                        : 'bg-neutral-800 -translate-x-2'
+              )}
+            ></span>
+          </span>
+          <span
+            part="label"
+            id="label"
+            class=${cx(
+              'select-none inline-block ml-2',
+              this.disabled ? 'text-neutral-500' : this.showInvalidStyle ? 'text-error' : 'text-black'
+            )}
+          >
+            <slot></slot>
+          </span>
+        </label>
+        <slot name="tooltip"></slot>
+      </div>
       ${this.formControlController.renderInvalidMessage()}
     `;
   }
