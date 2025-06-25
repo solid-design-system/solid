@@ -133,7 +133,7 @@ export const Panel: React.FC<PanelProps> = props => {
             onClick={() => {
               updateGlobals({ [PARAM_KEY]: !isActive });
             }}
-            variant={isActive}
+            variant={isActive ? 'solid' : 'outline'}
           >
             {isActive ? '🟢 Disable Theme' : '⚪️ Enable Theme'}
           </Button>
