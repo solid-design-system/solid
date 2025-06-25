@@ -10,7 +10,7 @@ import { property, query, queryAll } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { PropertyValues } from 'lit';
-import type { SdTooltip } from 'src/solid-components';
+import type { SdTooltip } from '../../solid-components';
 import type { SolidFormControl } from '../../internal/solid-element';
 
 /**
