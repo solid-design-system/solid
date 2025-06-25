@@ -112,9 +112,11 @@ export const Mobile = {
   },
   parameters: {
     viewport: {
-      viewports: INITIAL_VIEWPORTS,
-      defaultViewport: 'iphone6'
+      options: INITIAL_VIEWPORTS
     }
+  },
+  globals: {
+    viewport: { value: 'iphone6' }
   }
 };
 
