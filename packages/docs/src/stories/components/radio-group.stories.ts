@@ -65,7 +65,7 @@ export const Size = {
 /**
  * Use the `label` attribute to add a label on top.
  *
- * **Accessibility Hint**: It is required to include the 'boldLabel' attribute to make the label bold.
+ * **Accessibility Hint**: It is required to include the `boldLabel` attribute to make the label bold.
  */
 export const Label = {
   name: 'Label',
