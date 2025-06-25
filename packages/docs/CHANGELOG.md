@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.20.0
+
+### Minor Changes
+
+- Updated `sd-button` templates to provide a more realistic feel with real content _[`#2289`](https://github.com/solid-design-system/solid/pull/2289) [`fb0692d`](https://github.com/solid-design-system/solid/commit/fb0692d8c086f000943063e28b7d6a5a5e471996) [@balco0110](https://github.com/balco0110)_
+
 ## 1.19.0
 
 ### Minor Changes
