@@ -64,6 +64,7 @@ export const parameters = {
   docs: {
     story: { inline: true },
     toc: true,
+    codePanel: true,
     source: {
       transform: (code, storyContent) => {
         let output = code;

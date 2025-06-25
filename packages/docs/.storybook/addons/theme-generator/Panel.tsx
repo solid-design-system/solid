@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { AddonPanel, Form } from '@storybook/components';
+import { AddonPanel, Form } from 'storybook/internal/components';
 import { PARAM_KEY, PANEL_DEFAULTS } from './constants';
-import { useGlobals } from '@storybook/manager-api';
+import { useGlobals } from 'storybook/manager-api';
 import theme from '../../../../tokens/src/create-theme.cjs';
 import { calculateColorsAsCss } from '@solid-design-system/theming';
 
@@ -133,7 +133,7 @@ export const Panel: React.FC<PanelProps> = props => {
             onClick={() => {
               updateGlobals({ [PARAM_KEY]: !isActive });
             }}
-            primary={isActive}
+            variant={isActive}
           >
             {isActive ? '🟢 Disable Theme' : '⚪️ Enable Theme'}
           </Button>

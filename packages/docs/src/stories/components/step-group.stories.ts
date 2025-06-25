@@ -1,7 +1,7 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
+import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-step-group');
 const { overrideArgs } = storybookHelpers('sd-step-group');
@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-step-group');
 
 export default {
   title: 'Components/sd-step-group',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-step-group',
   args: overrideArgs([
     {

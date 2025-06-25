@@ -1,7 +1,7 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
+import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-textarea');
 const { generateTemplate } = storybookTemplate('sd-textarea');
@@ -9,7 +9,7 @@ const { overrideArgs } = storybookHelpers('sd-textarea');
 
 export default {
   title: 'Components/sd-textarea',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-textarea',
   args,
   argTypes: {
