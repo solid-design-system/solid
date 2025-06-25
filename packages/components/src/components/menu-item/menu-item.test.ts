@@ -62,41 +62,41 @@ describe('<sd-menu-item>', () => {
     expect(slotChangeHandler).to.have.been.calledOnce;
   });
 
-  // it('should not render a sd-popup if the slot="submenu" attribute is missing, but the slot should exist in the component and be hidden.', async () => {
-  //   const menu = await fixture<SdMenuItem>(html`
-  //     <sd-menu>
-  //       <sd-menu-item>
-  //         Item 1
-  //         <sd-menu>
-  //           <sd-menu-item> Nested Item 1 </sd-menu-item>
-  //         </sd-menu>
-  //       </sd-menu-item>
-  //     </sd-menu>
-  //   `);
+  it('should not render a sd-popup if the slot="submenu" attribute is missing, but the slot should exist in the component and be hidden.', async () => {
+    const menu = await fixture<SdMenuItem>(html`
+      <sd-menu>
+        <sd-menu-item>
+          Item 1
+          <sd-menu>
+            <sd-menu-item> Nested Item 1 </sd-menu-item>
+          </sd-menu>
+        </sd-menu-item>
+      </sd-menu>
+    `);
 
-  //   const menuItem: SdMenuItem = menu.querySelector('sd-menu-item')!;
-  //   expect(menuItem.shadowRoot!.querySelector('sd-popup')).to.be.null;
-  //   const submenuSlot: HTMLElement = menuItem.shadowRoot!.querySelector('slot[name="submenu"]')!;
-  //   expect(submenuSlot.hidden).to.be.true;
-  // });
+    const menuItem: SdMenuItem = menu.querySelector('sd-menu-item')!;
+    expect(menuItem.shadowRoot!.querySelector('sd-popup')).to.be.null;
+    const submenuSlot: HTMLElement = menuItem.shadowRoot!.querySelector('slot[name="submenu"]')!;
+    expect(submenuSlot.hidden).to.be.true;
+  });
 
-  // it('should render an sd-popup if the slot="submenu" attribute is present', async () => {
-  //   const menu = await fixture<SdMenuItem>(html`
-  //     <sd-menu>
-  //       <sd-menu-item id="test">
-  //         Item 1
-  //         <sd-menu slot="submenu">
-  //           <sd-menu-item> Nested Item 1 </sd-menu-item>
-  //         </sd-menu>
-  //       </sd-menu-item>
-  //     </sd-menu>
-  //   `);
+  it('should render an sd-popup if the slot="submenu" attribute is present', async () => {
+    const menu = await fixture<SdMenuItem>(html`
+      <sd-menu>
+        <sd-menu-item id="test">
+          Item 1
+          <sd-menu slot="submenu">
+            <sd-menu-item> Nested Item 1 </sd-menu-item>
+          </sd-menu>
+        </sd-menu-item>
+      </sd-menu>
+    `);
 
-  //   const menuItem = menu.querySelector('sd-menu-item')!;
-  //   expect(menuItem.shadowRoot!.querySelector('sd-popup')).to.be.not.null;
-  //   const submenuSlot: SdMenuItem = menuItem.shadowRoot!.querySelector('slot[name="submenu"]')!;
-  //   expect(submenuSlot.hidden).to.be.false;
-  // });
+    const menuItem = menu.querySelector('sd-menu-item')!;
+    expect(menuItem.shadowRoot!.querySelector('sd-popup')).to.be.not.null;
+    const submenuSlot: SdMenuItem = menuItem.shadowRoot!.querySelector('slot[name="submenu"]')!;
+    expect(submenuSlot.hidden).to.be.false;
+  });
 
   // it('should focus on first menuitem of submenu if ArrowRight is pressed on parent menuitem', async () => {
   //   const menu = await fixture<SdMenuItem>(html`
