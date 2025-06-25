@@ -1,5 +1,4 @@
 import '../../../../components/src/solid-components';
-import { html } from 'lit-html';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
 
@@ -7,10 +6,10 @@ const { argTypes, args, parameters } = storybookDefaults('sd-range-tick');
 const { generateTemplate } = storybookTemplate('sd-range-tick');
 
 /**
- * Used to do something cool. (Describe usage of component here.)
+ * Used to represent a tick within a sd-range.
  *
  * **Related templates**:
- * - [Link to template](?path=docs/templates-your-template)
+ * - [Range](./?path=/docs/templates-range--docs)
  */
 export default {
   tags: ['!dev'],
@@ -30,6 +29,15 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return generateTemplate({ args });
+    return generateTemplate({ args, constants: [{ type: 'slot', name: 'default', value: '50' }] });
+  }
+};
+
+/**
+ * Use the `subtick` attribute to render a tick for finer scale readings
+ */
+export const Subtick = {
+  render: (args: any) => {
+    return generateTemplate({ args, constants: [{ type: 'attribute', name: 'subtick', value: true }] });
   }
 };

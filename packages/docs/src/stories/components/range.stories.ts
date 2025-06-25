@@ -7,12 +7,6 @@ const { argTypes, parameters } = storybookDefaults('sd-range');
 const { generateTemplate } = storybookTemplate('sd-range');
 const { overrideArgs } = storybookHelpers('sd-range');
 
-/**
- * Used to do something cool. (Describe usage of component here.)
- *
- * **Related templates**:
- * - [Link to template](?path=docs/templates-your-template)
- */
 export default {
   tags: ['!dev'],
   title: 'Components/sd-range',
