@@ -126,7 +126,7 @@ export default class SdMenu extends SolidElement {
   /** @internal Gets all slotted menu items, ignoring dividers, headers, and other elements. */
   getAllItems() {
     return [...this.defaultSlot.assignedElements({ flatten: true })].filter((el: HTMLElement) => {
-      if (el.inert || !this.isMenuItem(el)) {
+      if (!this.isMenuItem(el)) {
         return false;
       }
       return true;

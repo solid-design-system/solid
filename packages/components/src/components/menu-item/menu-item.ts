@@ -198,10 +198,6 @@ export default class SdMenuItem extends SolidElement {
         @apply block;
       }
 
-      :host([inert]) {
-        @applly hidden;
-      }
-
       :host(:focus-visible) {
         @apply outline-none;
       }
