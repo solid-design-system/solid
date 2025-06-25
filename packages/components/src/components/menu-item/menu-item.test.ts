@@ -1,6 +1,5 @@
 import '../../../dist/solid-components';
-import { expect, fixture, waitUntil } from '@open-wc/testing';
-import { html } from 'lit';
+import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
 import type SdMenuItem from './menu-item';
