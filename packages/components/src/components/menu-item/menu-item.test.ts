@@ -1,5 +1,6 @@
 import '../../../dist/solid-components';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
+import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
 import type SdMenuItem from './menu-item';
 
@@ -98,33 +99,33 @@ describe('<sd-menu-item>', () => {
     expect(submenuSlot.hidden).to.be.false;
   });
 
-  // it('should focus on first menuitem of submenu if ArrowRight is pressed on parent menuitem', async () => {
-  //   const menu = await fixture<SdMenuItem>(html`
-  //     <sd-menu>
-  //       <sd-menu-item id="item-1">
-  //         Submenu
-  //         <sd-menu slot="submenu">
-  //           <sd-menu-item value="submenu-item-1"> Nested Item 1 </sd-menu-item>
-  //         </sd-menu>
-  //       </sd-menu-item>
-  //     </sd-menu>
-  //   `);
+  it('should focus on first menuitem of submenu if ArrowRight is pressed on parent menuitem', async () => {
+    const menu = await fixture<SdMenuItem>(html`
+      <sd-menu>
+        <sd-menu-item id="item-1">
+          Submenu
+          <sd-menu slot="submenu">
+            <sd-menu-item value="submenu-item-1"> Nested Item 1 </sd-menu-item>
+          </sd-menu>
+        </sd-menu-item>
+      </sd-menu>
+    `);
 
-  //   const selectHandler = sinon.spy((event: CustomEvent<{ item: SdMenuItem }>) => {
-  //     const item = event.detail.item;
-  //     expect(item.value).to.equal('submenu-item-1');
-  //   });
-  //   menu.addEventListener('sd-select', selectHandler);
+    const selectHandler = sinon.spy((event: CustomEvent<{ item: SdMenuItem }>) => {
+      const item = event.detail.item;
+      expect(item.value).to.equal('submenu-item-1');
+    });
+    menu.addEventListener('sd-select', selectHandler);
 
-  //   const submenu = menu.querySelector('sd-menu-item');
-  //   submenu!.focus();
-  //   await menu.updateComplete;
-  //   await sendKeys({ press: 'ArrowRight' });
-  //   await menu.updateComplete;
-  //   await sendKeys({ press: 'Enter' });
-  //   await menu.updateComplete;
-  //   expect(selectHandler).to.have.been.calledOnce;
-  // });
+    const submenu = menu.querySelector('sd-menu-item');
+    submenu!.focus();
+    await menu.updateComplete;
+    await sendKeys({ press: 'ArrowRight' });
+    await menu.updateComplete;
+    await sendKeys({ press: 'Enter' });
+    await menu.updateComplete;
+    expect(selectHandler).to.have.been.calledOnce;
+  });
 
   // it('should focus on outer menu if ArrowRight is pressed on nested menuitem', async () => {
   //   const menu = await fixture<SdMenuItem>(html`
