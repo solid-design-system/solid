@@ -265,7 +265,7 @@ export default class SdNavigationItem extends SolidElement {
                 name="description"
                 part="description"
                 class=${cx(
-                  'inline-block text-sm text-left text-black pb-3',
+                  'inline-block text-sm text-left font-normal text-black pb-3',
                   isAccordion || this.separated ? 'grow' : 'w-full',
                   this.separated ? 'px-4' : this.calculatePaddingX
                 )}
