@@ -6,7 +6,7 @@ import { html } from 'lit-html';
  * For the green accent color in the mark, ensure a minimum font size of 18.67 pixels when bolded and 24 pixels when in regular weight.
  */
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Templates/Mark',
   parameters: {
     chromatic: { disableSnapshot: true },

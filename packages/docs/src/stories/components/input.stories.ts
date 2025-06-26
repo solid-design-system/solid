@@ -7,7 +7,7 @@ const { generateTemplate } = storybookTemplate('sd-input');
 const { overrideArgs } = storybookHelpers('sd-input');
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Components/sd-input',
   component: 'sd-input',
   args: overrideArgs({

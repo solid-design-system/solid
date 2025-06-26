@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-headline');
 
 export default {
   title: 'Styles/sd-headline',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-headline',
   parameters: {
     ...parameters,

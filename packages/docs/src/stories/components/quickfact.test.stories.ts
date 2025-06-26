@@ -2,14 +2,14 @@
 import '../../../../components/src/solid-components';
 import '../../../../components/src/components/quickfact/quickfact';
 import { html } from 'lit-html';
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { INITIAL_VIEWPORTS } from 'storybook/viewport';
 import {
   storybookDefaults,
   storybookHelpers,
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
+import { userEvent } from 'storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 import cx from 'classix';
 
@@ -112,9 +112,11 @@ export const Mobile = {
   },
   parameters: {
     viewport: {
-      viewports: INITIAL_VIEWPORTS,
-      defaultViewport: 'iphone6'
+      options: INITIAL_VIEWPORTS
     }
+  },
+  globals: {
+    viewport: { value: 'iphone6' }
   }
 };
 

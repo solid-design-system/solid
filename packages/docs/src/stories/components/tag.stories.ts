@@ -7,7 +7,7 @@ const { generateTemplate } = storybookTemplate('sd-tag');
 const { overrideArgs } = storybookHelpers('sd-tag');
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Components/sd-tag',
   component: 'sd-tag',
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Tag' }),

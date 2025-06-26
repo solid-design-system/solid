@@ -1,5 +1,5 @@
 import React from 'react';
-import { Markdown, Canvas } from '@storybook/blocks';
+import { Markdown, Canvas } from '@storybook/addon-docs/blocks';
 
 export const OverviewFormatter = ({ children, story }) => {
   const links = ({ children, ...props }) => <sd-link {...props}>{children}</sd-link>;

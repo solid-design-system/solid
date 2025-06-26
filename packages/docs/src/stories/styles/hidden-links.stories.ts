@@ -12,7 +12,7 @@ const html = String.raw;
 export default {
   title: 'Styles/sd-hidden-links',
   component: 'sd-hidden-links',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   parameters: {
     ...parameters,
     chromatic: {

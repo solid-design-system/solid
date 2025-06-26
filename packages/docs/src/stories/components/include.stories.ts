@@ -1,6 +1,6 @@
 import '../../../../components/src/solid-components';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
+import { withActions } from 'storybook/actions/decorator';
 
 const { overrideArgs } = storybookHelpers('sd-include');
 const { argTypes, args, parameters } = storybookDefaults('sd-include');

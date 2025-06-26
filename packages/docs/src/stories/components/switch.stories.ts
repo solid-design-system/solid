@@ -7,7 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-switch');
 const { generateTemplate } = storybookTemplate('sd-switch');
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Components/sd-switch',
   component: 'sd-switch',
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Switch' }]),

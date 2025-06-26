@@ -6,7 +6,7 @@ import { html } from 'lit-html';
  */
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Templates/Accordion Group',
   parameters: {
     chromatic: { disableSnapshot: true },

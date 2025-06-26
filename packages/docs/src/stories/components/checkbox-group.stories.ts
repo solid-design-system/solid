@@ -9,7 +9,7 @@ const { overrideArgs } = storybookHelpers('sd-checkbox-group');
 export default {
   title: 'Components/sd-checkbox-group',
   component: 'sd-checkbox-group',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   args: overrideArgs([
     {
       type: 'attribute',

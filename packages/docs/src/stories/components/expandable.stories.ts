@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-expandable');
 export default {
   title: 'Components/sd-expandable',
   component: 'sd-expandable',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   args: overrideArgs([
     { type: 'slot', name: 'default', value: '<div class="slot slot--border slot--text h-16">Default slot</div>' }
   ]),

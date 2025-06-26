@@ -10,7 +10,7 @@ const { overrideArgs } = storybookHelpers('sd-notification');
 
 export default {
   title: 'Components/sd-notification',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-notification',
   args: overrideArgs([
     {

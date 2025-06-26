@@ -19,13 +19,9 @@ export default {
   ],
   addons: [
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-mdx-gfm',
-    '@geometricpanda/storybook-addon-badges',
-    '@storybook/addon-actions',
-    '@storybook/addon-interactions',
     './addons/theme-generator/preset',
-    '@storybook/addon-a11y'
+    '@storybook/addon-a11y',
+    '@storybook/addon-docs'
   ],
   staticDirs: [
     './assets',
@@ -74,7 +70,8 @@ export default {
     return config;
   },
   docs: {
-    docs: true,
-    autodocs: true
-  }
+    docs: true
+  },
+
+  viewportStoryGlobals: true
 };

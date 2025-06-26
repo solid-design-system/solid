@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-list');
 
 export default {
   title: 'Styles/sd-list',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-list',
   parameters: {
     ...parameters,

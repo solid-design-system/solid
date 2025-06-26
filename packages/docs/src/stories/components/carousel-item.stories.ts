@@ -16,7 +16,7 @@ const { generateTemplate } = storybookTemplate('sd-carousel-item');
 
 export default {
   title: 'Components/sd-carousel-item',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-carousel-item',
   args: overrideArgs([
     {

@@ -77,7 +77,7 @@ import { setupAutocomplete as solidAutocomplete } from '../../../../components/s
  */
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Templates/Autocomplete',
   parameters: {
     docs: { story: { inline: false, height: '400px' } },

@@ -18,7 +18,7 @@ const labelConstant: ConstantDefinition = { type: 'attribute', name: 'label', va
 
 export default {
   title: 'Components/sd-select',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-select',
   args: overrideArgs([
     threeOptionsConstant,

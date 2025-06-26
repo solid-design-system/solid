@@ -1,7 +1,7 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
+import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-map-marker');
 const { overrideArgs } = storybookHelpers('sd-map-marker');
@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-map-marker');
 
 export default {
   title: 'Components/sd-map-marker',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-map-marker',
   args: overrideArgs([{ type: 'slot', name: 'default', value: '<div class="sr-only">Pinned Location</div>' }]),
   parameters: {

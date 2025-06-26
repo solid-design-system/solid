@@ -1,4 +1,4 @@
-import { addons, types } from '@storybook/manager-api';
+import { addons, types } from 'storybook/manager-api';
 import { ADDON_ID as BUG_HINT, TOOL_ID } from './bug-hint/constants';
 import { ADDON_ID as THEME_GENERATOR, PANEL_ID } from './theme-generator/constants';
 import { Panel } from './theme-generator/Panel';

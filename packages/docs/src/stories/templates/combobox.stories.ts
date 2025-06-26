@@ -18,7 +18,7 @@ const createFondsOptions = () => fonds.map(createFondsOption);
 const createFondsOptionsHtml = () => unsafeHTML(createFondsOptions().join('\n'));
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Templates/Combobox',
   parameters: {
     chromatic: { disableSnapshot: true },

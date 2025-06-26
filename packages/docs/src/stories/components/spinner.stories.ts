@@ -16,7 +16,7 @@ const { overrideArgs } = storybookHelpers('sd-select');
 export default {
   title: 'Components/sd-spinner',
   component: 'sd-spinner',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   args: overrideArgs({ type: 'attribute', name: 'color', value: 'primary' }),
   argTypes,
   parameters: {

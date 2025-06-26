@@ -5,7 +5,7 @@ import { html } from 'lit-html';
  * Example on how to use flipcard component.
  */
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Templates/Flipcard',
   parameters: {
     chromatic: { disableSnapshot: true },

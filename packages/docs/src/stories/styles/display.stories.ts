@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-display');
 
 export default {
   title: 'Styles/sd-display',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-display',
   parameters: {
     ...parameters,

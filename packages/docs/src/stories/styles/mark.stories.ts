@@ -16,7 +16,7 @@ const { generateTemplate } = storybookTemplate('sd-mark');
 
 export default {
   title: 'Styles/sd-mark',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-mark',
   parameters: {
     parameters

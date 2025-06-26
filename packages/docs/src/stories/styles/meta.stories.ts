@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-meta');
 
 export default {
   title: 'Styles/sd-meta',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-meta',
   parameters: {
     ...parameters,

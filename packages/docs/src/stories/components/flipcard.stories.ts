@@ -8,7 +8,7 @@ const { overrideArgs } = storybookHelpers('sd-flipcard');
 
 export default {
   title: 'Components/sd-flipcard',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-flipcard',
   args: overrideArgs([
     {
