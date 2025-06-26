@@ -95,7 +95,7 @@ export default class SdHeader extends SolidElement {
 
       @media (min-height: 32rem) {
         :host([fixed]) {
-          padding-bottom: var(--sd-header-calculated-height);
+          padding-bottom: var(--sd-header-calculated-height) !important;
 
           header {
             @apply fixed w-full left-0 top-0;
