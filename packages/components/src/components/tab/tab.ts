@@ -87,11 +87,14 @@ export default class SdTab extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'inline-flex justify-center min-w-max items-center h-12 px-3 leading-none select-none cursor-pointer group relative focus-visible:focus-outline outline-2 !-outline-offset-2 transition-[colors,border] duration-medium hover:duration-fast ease-in-out',
+          'inline-flex justify-center min-w-max items-center h-12 px-3 leading-none select-none cursor-pointer group relative',
+          'focus-visible:focus-outline outline-2 !-outline-offset-2 ',
+          'transition-[colors,border-color] duration-medium hover:duration-fast ease-in-out',
           this.variant === 'container' && ' rounded-[4px_4px_0_0]',
           this.variant === 'container' && 'tab-container-border bg-white',
           this.variant === 'container' && this.active && 'tab--active-container-border bg-white',
-          this.disabled || this.visuallyDisabled ? '!cursor-not-allowed' : 'hover:bg-neutral-200'
+          this.disabled || this.visuallyDisabled ? '!cursor-not-allowed' : 'hover:bg-neutral-200',
+          this.active && 'z-20'
         )}
         tabindex=${!this.active || this.disabled ? '-1' : '0'}
       >
@@ -125,7 +128,9 @@ export default class SdTab extends SolidElement {
           <div
             part="hover-bottom-border"
             class=${cx(
-              !this.active && !this.disabled && 'absolute w-full h-0.25 bottom-0 border-b border-neutral-400 '
+              !this.active &&
+                !this.disabled &&
+                'absolute w-full h-0.25 bottom-0 border-b border-neutral-400 invisible group-hover:visible'
             )}
           ></div>
         </div>

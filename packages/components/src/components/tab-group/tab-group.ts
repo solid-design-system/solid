@@ -376,15 +376,14 @@ export default class SdTabGroup extends SolidElement {
 
           <div part="scroll-container" class="flex overflow-x-auto focus-visible:focus-outline !outline-offset-0">
             <div part="tabs" class=${cx('flex flex-auto relative flex-row')} role="tablist">
-              <div part="separation" class="border-neutral-400 absolute w-full h-0.25 bottom-0 border-b"></div>
               ${this.activeTab?.variant !== 'container'
                 ? html` <div
                     part="active-tab-indicator"
                     id="indicator"
-                    class="absolute h-1 bg-accent bottom-0 transition-[transform,width] duration-medium ease-in-out z-10"
+                    class="absolute h-1 bg-accent bottom-0 transition-[transform,width] duration-medium ease-in-out z-30"
                   ></div>`
                 : ''}
-
+              <div part="separation" class="border-neutral-400 absolute w-full h-0.25 bottom-0 border-b z-10"></div>
               <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
             </div>
           </div>
