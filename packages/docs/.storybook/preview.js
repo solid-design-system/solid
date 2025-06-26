@@ -35,26 +35,16 @@ export const preview = {
       }
     },
     backgrounds: {
-      default: 'white',
-      values: [
-        {
-          name: 'white',
-          value: '#fff'
-        },
-        {
-          name: 'primary',
-          value: 'rgb(var(--sd-color-primary, 0 53 142))'
-        },
-        {
-          name: 'primary-100',
-          value: 'rgb(var(--sd-color-primary-100, 236 240 249))'
-        },
-        {
-          name: 'neutral-200',
-          value: 'rgb(var(--sd-color-neutral-200, 242 242 242))'
-        }
-      ]
+      options: {
+        white: { name: 'white', value: '#fff' },
+        primary: { name: 'primary', value: 'rgb(var(--sd-color-primary-100, 0,53,142))' },
+        primary100: { name: 'primary-100', value: 'rgb(var(--sd-color-primary-100, 236 240 249))' },
+        neutral200: { name: 'neutral-200', value: 'rgb(var(--sd-color-neutral-100, 233 233 233))' }
+      }
     }
+  },
+  initialGlobals: {
+    backgrounds: { value: 'white' }
   }
 };
 
@@ -87,24 +77,15 @@ export const parameters = {
     }
   },
   backgrounds: {
-    default: 'white',
-    values: [
-      {
-        name: 'white',
-        value: '#fff'
-      },
-      {
-        name: 'primary',
-        value: 'rgb(var(--sd-color-primary, 0 53 142))'
-      },
-      {
-        name: 'primary-100',
-        value: 'rgb(var(--sd-color-primary-100, 236 240 249))'
-      },
-      {
-        name: 'neutral-200',
-        value: 'rgb(var(--sd-color-neutral-200, 242 242 242))'
-      }
-    ]
+    options: {
+      white: { name: 'white', value: '#fff' },
+      primary: { name: 'primary', value: 'rgb(var(--sd-color-primary, 0 53 142))' },
+      black: { name: 'black', value: '#000000' },
+      primary100: { name: 'primary-100', value: 'rgb(var(--sd-color-primary-100, 236 240 249))' },
+      neutral200: { name: 'neutral-200', value: 'rgb(var(--sd-color-neutral-200, 242 242 242))' }
+    }
+  },
+  initialGlobals: {
+    backgrounds: { value: 'white' }
   }
 };
