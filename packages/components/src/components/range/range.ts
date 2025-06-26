@@ -595,8 +595,10 @@ export default class SdRange extends SolidElement implements SolidFormControl {
             @keydown=${this.onKeyPress}
             @focus=${this.onFocusThumb}
             class=${cx(
-              'bg-primary cursor-pointer rounded-full absolute top-0 size-4 after:-inset-2 hover:cursor-grab focus-visible:focus-outline',
-              (this.disabled || this.visuallyDisabled) && 'bg-neutral-500 outline-none'
+              'rounded-full absolute top-0 size-4 hover:cursor-grab after:-inset-2',
+              this.disabled || this.visuallyDisabled
+                ? 'bg-neutral-500 outline-none'
+                : 'bg-primary cursor-pointer focus-visible:focus-outline'
             )}
           ></div>
         </sd-tooltip>
@@ -650,8 +652,8 @@ export default class SdRange extends SolidElement implements SolidFormControl {
               part="active-track"
               hidden=${ifDefined(this.noTrackBar ? true : undefined)}
               class=${cx(
-                'bg-primary absolute top-0 h-1',
-                (this.disabled || this.visuallyDisabled) && 'bg-neutral-500 outline-none'
+                'absolute top-0 h-1',
+                this.disabled || this.visuallyDisabled ? 'bg-neutral-500' : 'bg-primary'
               )}
             ></div>
           </div>
