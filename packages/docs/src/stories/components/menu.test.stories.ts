@@ -7,6 +7,7 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
+import { userEvent } from '@storybook/test';
 
 const { argTypes, parameters } = storybookDefaults('sd-menu');
 const { overrideArgs } = storybookHelpers('sd-menu');
@@ -105,6 +106,13 @@ export const Submenu = {
         </sd-menu-item>
       </sd-menu>
     `;
+  },
+  play: async ({ canvas }: { canvas: any }) => {
+    const submenu = canvas.getByText('Menu Item 3', {
+      selector: 'sd-menu-item'
+    });
+
+    await userEvent.hover(submenu);
   }
 };
 
