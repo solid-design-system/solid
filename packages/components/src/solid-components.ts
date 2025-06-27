@@ -1,8 +1,8 @@
 // Components
 export { default as SdAccordion } from './components/accordion/accordion.js';
 export { default as SdAccordionGroup } from './components/accordion-group/accordion-group.js';
-export { default as SdAudio } from './components/audio/audio.js';
 export { default as SdAnimation } from './components/animation/animation.js';
+export { default as SdAudio } from './components/audio/audio.js';
 export { default as SdBadge } from './components/badge/badge.js';
 export { default as SdBrandshape } from './components/brandshape/brandshape.js';
 export { default as SdButton } from './components/button/button.js';
@@ -23,10 +23,12 @@ export { default as SdInclude } from './components/include/include.js';
 export { default as SdInput } from './components/input/input.js';
 export { default as SdLink } from './components/link/link.js';
 export { default as SdMapMarker } from './components/map-marker/map-marker.js';
+export { default as SdMenu } from './components/menu/menu.js';
+export { default as SdMenuItem } from './components/menu-item/menu-item.js';
 export { default as SdNavigationItem } from './components/navigation-item/navigation-item.js';
 export { default as SdNotification } from './components/notification/notification.js';
-export { default as SdOption } from './components/option/option.js';
 export { default as SdOptgroup } from './components/optgroup/optgroup.js';
+export { default as SdOption } from './components/option/option.js';
 export { default as SdPopup } from './components/popup/popup.js';
 export { default as SdQuickfact } from './components/quickfact/quickfact.js';
 export { default as SdRadio } from './components/radio/radio.js';

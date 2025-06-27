@@ -1,26 +1,28 @@
+import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
-import { html } from 'lit';
-import {query } from 'lit/decorators.js';
+import { LocalizeController } from '../../utilities/localize';
+import { query } from 'lit/decorators.js';
 import SolidElement from '../../internal/solid-element';
-import styles from './menu.styles';
 import type SdMenuItem from '../menu-item/menu-item';
-export interface MenuSelectEventDetail {
-  item: SdMenuItem;
-}
 
 /**
- * @summary Menus provide a list of options for the user to choose from.
- * @documentation https://solid.union-investment.com/[storybook-link]/menu
- * @status stable
- * @since 1.0
+ * @summary Used as a list of choices to the user, such as a set of actions or functions.
+ * @status experimental
+ * @since 5.9.0
  *
- * @slot - The menu's content, including menu items, menu labels, and dividers.
+ * @dependency sd-menu-item
+ * @dependency sd-divider
+ * @dependency sd-icon
+ * @dependency sd-dropdown
  *
- * @event {{ item: SdMenuItem }} sd-select - Emitted when a menu item is selected.
+ * @event sd-select - Emitted when a menu item is selected.
+ *
+ * @slot - The menu's content.
+ *
  */
 @customElement('sd-menu')
 export default class SdMenu extends SolidElement {
-  static styles = [...SolidElement.styles, styles];
+  public localize = new LocalizeController(this);
 
   @query('slot') defaultSlot: HTMLSlotElement;
 
@@ -29,24 +31,22 @@ export default class SdMenu extends SolidElement {
     this.setAttribute('role', 'menu');
   }
 
-  private getAllItems() {
-    return [...this.defaultSlot.assignedElements({ flatten: true })].filter((el: HTMLElement) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-      if ((el as any).inert || !this.isMenuItem(el)) {
-        return false;
-      }
-
-      return true;
-    }) as SdMenuItem[];
-  }
-
   private handleClick(event: MouseEvent) {
-    const target = event.target as HTMLElement;
-    const item = target.closest('sd-menu-item');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    if (!item || item.disabled || item.inert) {
-      return;
-    }
+    const menuItemTypes = ['menuitem', 'menuitemcheckbox'];
+
+    const composedPath = event.composedPath();
+    const target = composedPath.find((el: Element) => menuItemTypes.includes(el?.getAttribute?.('role') || ''));
+
+    if (!target) return;
+
+    const closestMenu = composedPath.find((el: Element) => el?.getAttribute?.('role') === 'menu');
+    const clickHasSubmenu = closestMenu !== this;
+
+    // Make sure we're the menu thats supposed to be handling the click event.
+    if (clickHasSubmenu) return;
+
+    // This isn't true. But we use it for TypeScript checks below.
+    const item = target as SdMenuItem;
 
     if (item.type === 'checkbox') {
       item.checked = !item.checked;
@@ -56,44 +56,51 @@ export default class SdMenu extends SolidElement {
   }
 
   private handleKeyDown(event: KeyboardEvent) {
-    // Make a selection when pressing enter
-    if (event.key === 'Enter') {
+    // Make a selection when pressing enter or space
+    if (event.key === 'Enter' || event.key === ' ') {
       const item = this.getCurrentItem();
       event.preventDefault();
+      event.stopPropagation();
 
       // Simulate a click to support @click handlers on menu items that also work with the keyboard
       item?.click();
     }
 
-    // Prevent scrolling when space is pressed
-    if (event.key === ' ') {
-      event.preventDefault();
-    }
-
     // Move the selection when pressing down or up
-    if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) {
+    else if (['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) {
       const items = this.getAllItems();
       const activeItem = this.getCurrentItem();
       let index = activeItem ? items.indexOf(activeItem) : 0;
 
       if (items.length > 0) {
         event.preventDefault();
+        event.stopPropagation();
+
+        const move = (start: number, step: number) => {
+          let i = start;
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          for (const _ of items) {
+            i = (i + step + items.length) % items.length;
+            if (!items[i].disabled) return i;
+          }
+          return start;
+        };
 
         if (event.key === 'ArrowDown') {
-          index++;
+          index = move(index, 1);
         } else if (event.key === 'ArrowUp') {
-          index--;
+          index = move(index, -1);
         } else if (event.key === 'Home') {
-          index = 0;
+          index = items.findIndex(item => !item.disabled);
+          if (index === -1) index = 0;
         } else if (event.key === 'End') {
           index = items.length - 1;
-        }
-
-        if (index < 0) {
-          index = items.length - 1;
-        }
-        if (index > items.length - 1) {
-          index = 0;
+          for (let i = items.length - 1; i >= 0; i--) {
+            if (!items[i].disabled) {
+              index = i;
+              break;
+            }
+          }
         }
 
         this.setCurrentItem(items[index]);
@@ -126,6 +133,16 @@ export default class SdMenu extends SolidElement {
     );
   }
 
+  /** @internal Gets all slotted menu items, ignoring dividers, headers, and other elements. */
+  getAllItems() {
+    return [...this.defaultSlot.assignedElements({ flatten: true })].filter((el: HTMLElement) => {
+      if (!this.isMenuItem(el)) {
+        return false;
+      }
+      return true;
+    }) as SdMenuItem[];
+  }
+
   /**
    * @internal Gets the current menu item, which is the menu item that has `tabindex="0"` within the roving tab index.
    * The menu item may or may not have focus, but for keyboard interaction purposes it's considered the "active" item.
@@ -148,15 +165,26 @@ export default class SdMenu extends SolidElement {
   }
 
   render() {
-    return html`
-      <slot
-        @slotchange=${this.handleSlotChange}
-        @click=${this.handleClick}
-        @keydown=${this.handleKeyDown}
-        @mousedown=${this.handleMouseDown}
-      ></slot>
-    `;
+    return html`<slot
+      @slotchange=${this.handleSlotChange}
+      @click=${this.handleClick}
+      @keydown=${this.handleKeyDown}
+      @mousedown=${this.handleMouseDown}
+    ></slot>`;
   }
+
+  static styles = [
+    ...SolidElement.styles,
+    css`
+      :host {
+        @apply block relative !shadow overflow-auto rounded-md py-3 px-2 overscroll-auto;
+      }
+
+      ::slotted(sd-divider) {
+        @apply py-3;
+      }
+    `
+  ];
 }
 
 declare global {
