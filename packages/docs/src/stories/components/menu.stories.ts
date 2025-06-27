@@ -37,6 +37,8 @@ export default {
     withActions,
     (story: any) =>
       html`<style>
+          .innerZoomElementWrapper #story--components-sd-menu--default,
+          #anchor--components-sd-menu--default .innerZoomElementWrapper,
           #anchor--components-sd-menu--icon .innerZoomElementWrapper,
           #anchor--components-sd-menu--checkmark .innerZoomElementWrapper,
           #anchor--components-sd-menu--submenu .innerZoomElementWrapper,
@@ -51,10 +53,13 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html` <div style="width: 160px;">
-      ${generateTemplate({
-        args
-      })}
+    return html`<div class="flex justify-center">
+      <sd-dropdown distance="4" open>
+        <sd-button variant="secondary" slot="trigger"> Menu </sd-button>
+        ${generateTemplate({
+          args
+        })}
+      </sd-dropdown>
     </div>`;
   }
 };
@@ -64,22 +69,22 @@ export const Default = {
  */
 export const Icon = {
   render: () => html`
-    <sd-dropdown>
+    <sd-dropdown distance="4">
       <sd-button variant="secondary" slot="trigger">
         <sd-icon name="system/more-functions" label="Icon only"></sd-icon>
       </sd-button>
       <sd-menu>
         <sd-menu-item>
           <sd-icon name="system/image" slot="icon-indent"></sd-icon>
-          Menu Item 1
+          Menu item 1
         </sd-menu-item>
         <sd-menu-item>
           <sd-icon name="system/image" slot="icon-indent"></sd-icon>
-          Menu Item 2
+          Menu item 2
         </sd-menu-item>
         <sd-menu-item>
           <sd-icon name="system/image" slot="icon-indent"></sd-icon>
-          Menu Item 3
+          Menu item 3
         </sd-menu-item>
       </sd-menu>
     </sd-dropdown>
@@ -91,11 +96,13 @@ export const Icon = {
  */
 export const Checkmark = {
   render: () => html`
-    <sd-menu class="w-[160px]">
-      <sd-menu-item type="checkbox" checked>Menu Item 1</sd-menu-item>
-      <sd-menu-item type="checkbox" checked>Menu Item 2</sd-menu-item>
-      <sd-menu-item type="checkbox">Menu Item 3</sd-menu-item>
-    </sd-menu>
+    <div class="w-[180px]">
+      <sd-menu>
+        <sd-menu-item type="checkbox" checked>Menu item 1</sd-menu-item>
+        <sd-menu-item type="checkbox" checked>Menu item 2</sd-menu-item>
+        <sd-menu-item type="checkbox">Menu item 3</sd-menu-item>
+      </sd-menu>
+    </div>
   `
 };
 
@@ -104,16 +111,16 @@ export const Checkmark = {
  */
 export const Submenu = {
   render: () => html`
-    <sd-dropdown>
+    <sd-dropdown distance="4">
       <sd-navigation-item slot="trigger" vertical>Menu</sd-navigation-item>
       <sd-menu>
-        <sd-menu-item>Menu Item 1</sd-menu-item>
-        <sd-menu-item>Menu Item 2</sd-menu-item>
+        <sd-menu-item>Menu item 1</sd-menu-item>
+        <sd-menu-item>Menu item 2</sd-menu-item>
         <sd-menu-item>
-          Menu Item 3
+          Menu item 3
           <sd-menu slot="submenu">
-            <sd-menu-item value="find">Sub Menu Item 1</sd-menu-item>
-            <sd-menu-item value="find-previous">Sub Menu Item 2</sd-menu-item>
+            <sd-menu-item value="find">Submenu item 1</sd-menu-item>
+            <sd-menu-item value="find-previous">Submenu item 2</sd-menu-item>
           </sd-menu>
         </sd-menu-item>
       </sd-menu>
@@ -126,20 +133,20 @@ export const Submenu = {
  */
 export const Grouping = {
   render: () => html`
-    <sd-dropdown>
+    <sd-dropdown distance="4">
       <sd-button variant="secondary" slot="trigger">
         Menu
         <sd-icon library="_internal" name="chevron-down" slot="icon-right"></sd-icon>
       </sd-button>
       <sd-menu>
-        <sd-menu-item>Menu Item 1</sd-menu-item>
-        <sd-menu-item>Menu Item 2</sd-menu-item>
-        <sd-menu-item>Menu Item 3</sd-menu-item>
-        <sd-menu-item>Menu Item 4</sd-menu-item>
-        <sd-menu-item>Menu Item 5</sd-menu-item>
+        <sd-menu-item>Menu item 1</sd-menu-item>
+        <sd-menu-item>Menu item 2</sd-menu-item>
+        <sd-menu-item>Menu item 3</sd-menu-item>
+        <sd-menu-item>Menu item 4</sd-menu-item>
+        <sd-menu-item>Menu item 5</sd-menu-item>
         <sd-divider></sd-divider>
-        <sd-menu-item>Menu Item 6</sd-menu-item>
-        <sd-menu-item>Menu Item 7</sd-menu-item>
+        <sd-menu-item>Menu item 6</sd-menu-item>
+        <sd-menu-item>Menu item 7</sd-menu-item>
       </sd-menu>
     </sd-dropdown>
   `
@@ -150,11 +157,11 @@ export const Grouping = {
  */
 export const Disabled = {
   render: () => html`
-    <sd-dropdown>
+    <sd-dropdown distance="4">
       <sd-button variant="secondary" slot="trigger">Menu</sd-button>
       <sd-menu>
         <sd-menu-item disabled>Disabled menu item 1</sd-menu-item>
-        <sd-menu-item>Menu Item 2</sd-menu-item>
+        <sd-menu-item>Menu item 2</sd-menu-item>
         <sd-menu-item disabled>Disabled menu item 3</sd-menu-item>
       </sd-menu>
     </sd-dropdown>

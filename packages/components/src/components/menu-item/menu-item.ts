@@ -164,7 +164,7 @@ export default class SdMenuItem extends SolidElement {
               this.checked ? 'visible' : 'invisible'
             )}
           >
-            <sd-icon name="status-check" library="_internal" aria-hidden="true"></sd-icon>
+            <sd-icon name="status-check" library="sd-status-assets" aria-hidden="true"></sd-icon>
           </span>`
         : ''}
       ${slots.iconIndent
