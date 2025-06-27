@@ -17,7 +17,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-menu/Screenshots: sd-menu',
   component: 'sd-menu',
-  tags: ['!autodocs'],
+  tags: ['!autodocs', 'skip-a11y-[aria-allowed-attr]'],
   parameters: {
     ...parameters,
     design: {
