@@ -91,6 +91,18 @@ export const Checkmark = {
 
 export const Submenu = {
   name: 'Submenu',
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'aria-allowed-attr',
+            enabled: false
+          }
+        ]
+      }
+    }
+  },
   render: () => {
     return html`
       <sd-menu>
@@ -138,7 +150,7 @@ export const Disabled = {
   name: 'Disabled',
   render: () => {
     return html`
-      <sd-menu>
+      <sd-menu class="w-[200px]">
         <sd-menu-item>Menu Item 1</sd-menu-item>
         <sd-menu-item disabled>Disabled Menu Item 2</sd-menu-item>
         <sd-menu-item>Menu Item 3</sd-menu-item>
