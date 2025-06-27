@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import icon from '../../../../components/src/components/icon/icon';
 
 const { argTypes, parameters } = storybookDefaults('sd-radio-group');
 const { generateTemplate } = storybookTemplate('sd-radio-group');
