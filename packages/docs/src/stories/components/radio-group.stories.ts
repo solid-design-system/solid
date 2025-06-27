@@ -192,7 +192,7 @@ export const Invalid = {
       await Promise.all([customElements.whenDefined('sd-radio-group'), customElements.whenDefined('sd-button')]).then(
         () => {
           const input = document.getElementById('invalid-radio');
-          input.setCustomValidity('⚠️ Please fill in this field.');
+          input.setCustomValidity('Please fill in this field.');
           input.reportValidity();
         }
       );
