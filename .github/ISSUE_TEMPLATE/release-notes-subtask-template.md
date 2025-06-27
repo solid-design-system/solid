@@ -24,7 +24,3 @@ In order to publish our release notes by the end of every iteration in MS Teams 
 - [ ] Item has been estimated by the team
 - [x] Item is clear and well-defined
 - [x] Item dependencies have been identified
-
-## DoD
-- [ ] Documentation has been created/updated (if applicable)
-- [ ] Implementation works successfully on `feature` branch

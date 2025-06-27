@@ -20,7 +20,3 @@ As a [PERSONA] of the Solid Design System, I would like to [REQUIRE], as well as
 - [ ] Item has been estimated by the team
 - [ ] Item is clear and well-defined
 - [ ] Item dependencies have been identified
-
-## DoD
-- [ ] Documentation has been created/updated (if applicable)
-- [ ] Implementation works successfully on `feature` branch
