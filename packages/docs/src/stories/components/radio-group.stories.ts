@@ -21,7 +21,7 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<sd-radio-group name="large-radio-group" size="lg" value="1" label="Group Label" boldLabel> 
+      value: `<sd-radio-group name="large-radio-group" size="lg" value="1" label="Group label" boldLabel> 
                 <sd-radio value="1">Radio 1</sd-radio>
                 <sd-radio value="2">Radio 2</sd-radio>
                 <sd-radio value="3">Radio 3</sd-radio>
@@ -51,13 +51,13 @@ export const Size = {
   name: 'Size',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio-group name="large-radio-group" size="lg" value="1" label="Group Label" boldLabel>
+      <sd-radio-group name="large-radio-group" size="lg" value="1" label="Group label" boldLabel>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
       </sd-radio-group>
 
-      <sd-radio-group name="small-radio-group" size="sm" value="1" label="Group Label" boldLabel>
+      <sd-radio-group name="small-radio-group" size="sm" value="1" label="Group label" boldLabel>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
@@ -74,7 +74,7 @@ export const Size = {
 export const Label = {
   name: 'Label',
   render: () => html`
-    <sd-radio-group name="radio-group" value="1" label="Group Label" boldLabel>
+    <sd-radio-group name="radio-group" value="1" label="Group label" boldLabel>
       <sd-radio value="1">Radio 1</sd-radio>
       <sd-radio value="2">Radio 2</sd-radio>
       <sd-radio value="3">Radio 3</sd-radio>
@@ -93,13 +93,13 @@ export const Orientation = {
   name: 'Orientation',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio-group name="radio-group" orientation="vertical" value="1" label="Group Label" boldLabel>
+      <sd-radio-group name="radio-group" orientation="vertical" value="1" label="Group label" boldLabel>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
       </sd-radio-group>
 
-      <sd-radio-group name="radio-group" orientation="horizontal" value="1" label="Group Label" boldLabel>
+      <sd-radio-group name="radio-group" orientation="horizontal" value="1" label="Group label" boldLabel>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
