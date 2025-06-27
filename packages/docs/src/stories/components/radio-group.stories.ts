@@ -1,6 +1,7 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import icon from '../../../../components/src/components/icon/icon';
 
 const { argTypes, parameters } = storybookDefaults('sd-radio-group');
 const { generateTemplate } = storybookTemplate('sd-radio-group');
@@ -21,7 +22,11 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<sd-radio value="1">Radio 1</sd-radio><sd-radio value="2">Radio 2</sd-radio><sd-radio value="3">Radio 3</sd-radio>`
+      value: `<sd-radio-group name="large-radio-group" size="lg" value="1" label="Group Label" boldLabel> 
+                <sd-radio value="1">Radio 1</sd-radio>
+                <sd-radio value="2">Radio 2</sd-radio>
+                <sd-radio value="3">Radio 3</sd-radio>
+              </sd-radio-group>`
     },
     { type: 'attribute', name: 'name', value: 'radio-group' },
     { type: 'attribute', name: 'value', value: '1' },
@@ -115,31 +120,12 @@ export const Required = {
   name: 'Required',
   render: () => html`
     <form id="required-form" class="flex flex-col gap-8">
-      <sd-radio-group name="radio-group" boldlabel label="Required Group" required>
+      <sd-radio-group name="radio-group" value="1" boldlabel label="Required Group" required>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
       </sd-radio-group>
-
-      <div class="flex gap-2">
-        <sd-button class="w-min" type="submit">Submit</sd-button>
-        <sd-button class="w-min" type="reset" variant="secondary">Reset</sd-button>
-      </div>
     </form>
-
-    <script type="module">
-      // Wait for custom elements to be defined
-      await Promise.all([customElements.whenDefined('sd-radio-group'), customElements.whenDefined('sd-button')]).then(
-        () => {
-          const form = document.getElementById('required-form');
-
-          form.addEventListener('submit', event => {
-            event.preventDefault();
-            alert('This field is valid!');
-          });
-        }
-      );
-    </script>
   `
 };
 
@@ -152,7 +138,14 @@ export const HelpText = {
   name: 'Help Text',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio-group orientation="vertical" help-text="Help text attribute" boldlabel label="Group Label" required>
+      <sd-radio-group
+        orientation="vertical"
+        value="1"
+        help-text="Help text attribute"
+        boldlabel
+        label="Group Label"
+        required
+      >
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
@@ -199,6 +192,7 @@ export const Invalid = {
       await Promise.all([customElements.whenDefined('sd-radio-group'), customElements.whenDefined('sd-button')]).then(
         () => {
           const input = document.getElementById('invalid-radio');
+          input.setCustomValidity('⚠️ Please fill in this field.');
           input.reportValidity();
         }
       );
