@@ -76,21 +76,31 @@ export default class SdMenu extends SolidElement {
         event.preventDefault();
         event.stopPropagation();
 
+        const move = (start: number, step: number) => {
+          let i = start;
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          for (const _ of items) {
+            i = (i + step + items.length) % items.length;
+            if (!items[i].disabled) return i;
+          }
+          return start;
+        };
+
         if (event.key === 'ArrowDown') {
-          index++;
+          index = move(index, 1);
         } else if (event.key === 'ArrowUp') {
-          index--;
+          index = move(index, -1);
         } else if (event.key === 'Home') {
-          index = 0;
+          index = items.findIndex(item => !item.disabled);
+          if (index === -1) index = 0;
         } else if (event.key === 'End') {
           index = items.length - 1;
-        }
-
-        if (index < 0) {
-          index = items.length - 1;
-        }
-        if (index > items.length - 1) {
-          index = 0;
+          for (let i = items.length - 1; i >= 0; i--) {
+            if (!items[i].disabled) {
+              index = i;
+              break;
+            }
+          }
         }
 
         this.setCurrentItem(items[index]);

@@ -112,6 +112,7 @@ export default class SdMenuItem extends SolidElement {
   @watch('disabled')
   handleDisabledChange() {
     this.setAttribute('aria-disabled', this.disabled ? 'true' : 'false');
+    this.setAttribute('tabindex', this.disabled ? '-1' : '0');
   }
 
   @watch('type')
