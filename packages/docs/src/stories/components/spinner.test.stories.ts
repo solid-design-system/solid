@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 storybookUtilities;
 import { storybookDefaults, storybookTemplate, storybookUtilities } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
+import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-spinner');
 const { generateTemplate } = storybookTemplate('sd-spinner');

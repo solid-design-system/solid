@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { storybookDefaults, storybookTemplate, storybookUtilities } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
+import { withActions } from 'storybook/actions/decorator';
 import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-audio');

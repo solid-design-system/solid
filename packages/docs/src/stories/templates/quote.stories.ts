@@ -6,7 +6,7 @@ import { html } from 'lit-html';
  * Use the `<blockquote>` HTML element for block quotes and the `<q>` HTML element for short inline quotes.
  */
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Templates/Quote',
   parameters: {
     chromatic: { disableSnapshot: true },

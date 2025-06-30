@@ -250,7 +250,7 @@ export const MixedLists = {
   parameters: {
     chromatic: { disableSnapshot: true }
   },
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   render: (args: any) => {
     const preset = (type: string) =>
       html`<preset-type class="sd-list">

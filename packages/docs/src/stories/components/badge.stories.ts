@@ -1,7 +1,7 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
+import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-badge');
 const { overrideArgs } = storybookHelpers('sd-badge');
@@ -19,7 +19,7 @@ const { generateTemplate } = storybookTemplate('sd-badge');
 export default {
   title: 'Components/sd-badge',
   component: 'sd-badge',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   parameters: {
     ...parameters,
     design: {

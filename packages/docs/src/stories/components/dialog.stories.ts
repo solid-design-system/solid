@@ -1,7 +1,7 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
+import { withActions } from 'storybook/actions/decorator';
 
 const { overrideArgs } = storybookHelpers('sd-dialog');
 const { argTypes, parameters } = storybookDefaults('sd-dialog');
@@ -17,7 +17,7 @@ const { generateTemplate } = storybookTemplate('sd-dialog');
 export default {
   title: 'Components/sd-dialog',
   component: 'sd-dialog',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   args: overrideArgs([
     {
       type: 'attribute',
