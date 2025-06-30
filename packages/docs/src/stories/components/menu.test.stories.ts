@@ -7,7 +7,6 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 import { withActions } from '@storybook/addon-actions/decorator';
-import { userEvent } from '@storybook/test';
 
 const { argTypes, parameters } = storybookDefaults('sd-menu');
 const { overrideArgs } = storybookHelpers('sd-menu');
