@@ -8,7 +8,6 @@ import {
 } from '../../../scripts/storybook/helper';
 import { userEvent } from 'storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-tag');
 const { generateTemplate } = storybookTemplate('sd-tag');
@@ -21,8 +20,7 @@ export default {
   tags: ['!autodocs'],
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Tag' }),
   argTypes,
-  parameters: { ...parameters, controls: { disable: true } },
-  decorators: [withActions] as any
+  parameters: { ...parameters, controls: { disable: true } }
 };
 
 /**

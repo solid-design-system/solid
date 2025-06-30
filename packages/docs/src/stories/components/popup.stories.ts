@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-popup');
 const { generateTemplate } = storybookTemplate('sd-popup');
@@ -34,8 +33,7 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters },
-  decorators: [withActions] as any
+  parameters: { ...parameters }
 };
 
 /**

@@ -2,7 +2,6 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from 'storybook/actions/decorator';
 
 const { overrideArgs } = storybookHelpers('sd-dialog');
 const { argTypes, parameters } = storybookDefaults('sd-dialog');
@@ -39,8 +38,7 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters, controls: { disable: true } },
-  decorators: [withActions] as any
+  parameters: { ...parameters, controls: { disable: true } }
 };
 
 /**

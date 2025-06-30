@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, args, parameters } = storybookDefaults('{{ tag }}');
 const { generateTemplate } = storybookTemplate('{{ tag }}');
@@ -25,7 +24,6 @@ export default {
       url: ''
     }
   },
-  decorators: [withActions] as any
 };
 
 export const Default = {

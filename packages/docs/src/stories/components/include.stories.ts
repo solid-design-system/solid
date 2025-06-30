@@ -1,6 +1,5 @@
 import '../../../../components/src/solid-components';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from 'storybook/actions/decorator';
 
 const { overrideArgs } = storybookHelpers('sd-include');
 const { argTypes, args, parameters } = storybookDefaults('sd-include');
@@ -52,8 +51,7 @@ export default {
   component: 'sd-include',
   args: overrideArgs([{ type: 'attribute', name: 'src', value: 'https://union-investment.de/lorem-ipsum' }], args),
   argTypes,
-  parameters: { ...parameters },
-  decorators: [withActions] as any
+  parameters: { ...parameters }
 };
 
 /**
