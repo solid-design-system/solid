@@ -12,7 +12,7 @@ const { generateTemplate } = storybookTemplate('sd-menu');
  */
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Components/sd-menu',
   component: 'sd-menu',
   args: overrideArgs([
