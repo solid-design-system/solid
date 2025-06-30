@@ -108,7 +108,7 @@ export const Submenu = {
       <sd-menu>
         <sd-menu-item>Menu Item 1</sd-menu-item>
         <sd-menu-item>Menu Item 2</sd-menu-item>
-        <sd-menu-item>
+        <sd-menu-item id="submenu-trigger">
           Menu Item 3
           <sd-menu slot="submenu">
             <sd-menu-item>Submenu Item 1</sd-menu-item>
@@ -117,16 +117,11 @@ export const Submenu = {
           </sd-menu>
         </sd-menu-item>
       </sd-menu>
+      <script type="module">
+        const submenu = document.querySelector('#submenu-trigger').shadowRoot.querySelector('sd-popup');
+        submenu.setAttribute('active', '');
+      </script>
     `;
-  },
-  play: async ({ canvas }: { canvas: any }) => {
-    const submenu = canvas.getByText('Menu Item 3', {
-      selector: 'sd-menu-item'
-    });
-
-    await userEvent.hover(submenu);
-
-    await new Promise(resolve => setTimeout(resolve, 500));
   }
 };
 
