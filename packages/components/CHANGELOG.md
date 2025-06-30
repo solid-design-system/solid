@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.8.1
+
+### Patch Changes
+
+- Fixed `sd-header` padding-bottom being overritten by style resets. _[`#2307`](https://github.com/solid-design-system/solid/pull/2307) [`2146817`](https://github.com/solid-design-system/solid/commit/2146817fe16da79d84a96a34574911b08ee4016e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.8.0
 
 ### Minor Changes
@@ -9,8 +15,9 @@
   - It can be used to visualize a page's location within the site's hierarchy and provide easy navigation to previous sections.
 
 ### 📈 Stats
-* Uncompressed: 444 KB (+6 KB / +1%)
-* Gzipped: 104 KB (+1 KB / +1%)
+
+- Uncompressed: 444 KB (+6 KB / +1%)
+- Gzipped: 104 KB (+1 KB / +1%)
 
 ## 5.7.0
 
