@@ -5,7 +5,6 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('{{ tag }}');
 const { overrideArgs } = storybookHelpers('{{ tag }}');
@@ -31,7 +30,6 @@ export default {
   },
   args: overrideArgs([{}]),
   argTypes,
-  decorators: [withActions] as any
 };
 
 export const Default = {

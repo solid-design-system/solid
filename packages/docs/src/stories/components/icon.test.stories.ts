@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { icons } from '../../../../components/src/components/icon/library.internal';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-icon');
 const { overrideArgs } = storybookHelpers('sd-icon');
@@ -12,8 +11,7 @@ export default {
   component: 'sd-icon',
   args: overrideArgs([{ name: 'name', type: 'attribute', value: 'union-investment/content/image' }], args),
   argTypes,
-  parameters: { ...parameters, controls: { disable: true } },
-  decorators: [withActions] as any
+  parameters: { ...parameters, controls: { disable: true } }
 };
 
 export const Default = {

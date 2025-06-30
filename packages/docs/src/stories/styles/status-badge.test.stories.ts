@@ -5,7 +5,6 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-status-badge');
 const { overrideArgs } = storybookHelpers('sd-status-badge');
@@ -39,8 +38,7 @@ export default {
     },
     { type: 'attribute', name: 'class', value: 'sd-status-badge--success' }
   ]),
-  argTypes,
-  decorators: [withActions] as any
+  argTypes
 };
 
 export const Default = {

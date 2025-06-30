@@ -1,8 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
-storybookUtilities;
 import { storybookDefaults, storybookTemplate, storybookUtilities } from '../../../scripts/storybook/helper';
-import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-spinner');
 const { generateTemplate } = storybookTemplate('sd-spinner');
@@ -14,8 +12,7 @@ export default {
   tags: ['!autodocs'],
   args,
   argTypes,
-  parameters: { ...parameters, controls: { disable: true } },
-  decorators: [withActions] as any
+  parameters: { ...parameters, controls: { disable: true } }
 };
 
 /**
