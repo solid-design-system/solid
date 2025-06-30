@@ -233,7 +233,7 @@ export default class SdMenuItem extends SolidElement {
       }
 
       sd-popup::part(popup) {
-        @apply shadow z-dropdown bg-white;
+        @apply z-dropdown bg-white;
         margin-left: var(--submenu-offset);
       }
 

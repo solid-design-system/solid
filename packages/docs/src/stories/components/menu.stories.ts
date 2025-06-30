@@ -54,8 +54,11 @@ export default {
 export const Default = {
   render: (args: any) => {
     return html`<div class="flex justify-center">
-      <sd-dropdown distance="4" open>
-        <sd-button variant="secondary" slot="trigger"> Menu </sd-button>
+      <sd-dropdown distance="4" rounded open>
+        <sd-button variant="secondary" slot="trigger">
+          Menu
+          <sd-icon library="_internal" name="chevron-down" slot="icon-right"></sd-icon>
+        </sd-button>
         ${generateTemplate({
           args
         })}
@@ -69,7 +72,7 @@ export const Default = {
  */
 export const Icon = {
   render: () => html`
-    <sd-dropdown distance="4">
+    <sd-dropdown distance="4" rounded>
       <sd-button variant="secondary" slot="trigger">
         <sd-icon name="system/more-functions" label="Icon only"></sd-icon>
       </sd-button>
@@ -111,7 +114,7 @@ export const Checkmark = {
  */
 export const Submenu = {
   render: () => html`
-    <sd-dropdown distance="4">
+    <sd-dropdown distance="4" rounded>
       <sd-navigation-item slot="trigger" vertical>Menu</sd-navigation-item>
       <sd-menu>
         <sd-menu-item>Menu item 1</sd-menu-item>
@@ -133,7 +136,7 @@ export const Submenu = {
  */
 export const Grouping = {
   render: () => html`
-    <sd-dropdown distance="4">
+    <sd-dropdown distance="4" rounded>
       <sd-button variant="secondary" slot="trigger">
         Menu
         <sd-icon library="_internal" name="chevron-down" slot="icon-right"></sd-icon>
@@ -157,7 +160,7 @@ export const Grouping = {
  */
 export const Disabled = {
   render: () => html`
-    <sd-dropdown distance="4">
+    <sd-dropdown distance="4" rounded>
       <sd-button variant="secondary" slot="trigger">Menu</sd-button>
       <sd-menu>
         <sd-menu-item disabled>Disabled menu item 1</sd-menu-item>

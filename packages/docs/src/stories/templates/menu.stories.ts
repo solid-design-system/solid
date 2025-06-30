@@ -26,7 +26,7 @@ export default {
 export const MenuWithCheckmarks = {
   name: 'Menu with Checkmarks, Grouping and Submenu',
   render: () => html`
-    <sd-dropdown distance="4" open>
+    <sd-dropdown distance="4" rounded open>
       <sd-button variant="secondary" slot="trigger">
         Menu
         <sd-icon library="_internal" name="chevron-down" slot="icon-right"></sd-icon>
@@ -41,17 +41,17 @@ export const MenuWithCheckmarks = {
         <sd-menu-item>
           Menu item
           <sd-menu slot="submenu">
-            <sd-menu-item type="checkbox">Menu item</sd-menu-item>
-            <sd-menu-item type="checkbox" checked>Menu item</sd-menu-item>
-            <sd-menu-item type="checkbox">Menu item</sd-menu-item>
+            <sd-menu-item type="checkbox">Submenu item</sd-menu-item>
+            <sd-menu-item type="checkbox" checked>Submenu item</sd-menu-item>
+            <sd-menu-item type="checkbox">Submenu item</sd-menu-item>
           </sd-menu>
         </sd-menu-item>
         <sd-menu-item>
           Menu item
           <sd-menu slot="submenu">
-            <sd-menu-item type="checkbox">Menu item</sd-menu-item>
-            <sd-menu-item type="checkbox">Menu item</sd-menu-item>
-            <sd-menu-item type="checkbox">Menu item</sd-menu-item>
+            <sd-menu-item type="checkbox">Submenu item</sd-menu-item>
+            <sd-menu-item type="checkbox">Submenu item</sd-menu-item>
+            <sd-menu-item type="checkbox">Submenu item</sd-menu-item>
           </sd-menu>
         </sd-menu-item>
       </sd-menu>
@@ -62,7 +62,7 @@ export const MenuWithCheckmarks = {
 export const MenuWithCheckmarksAndIcons = {
   name: 'Menu with Checkmarks and Icons',
   render: () => html`
-    <sd-dropdown distance="4" open>
+    <sd-dropdown distance="4" rounded open>
       <sd-button variant="secondary" slot="trigger">
         <sd-icon name="system/more-functions" label="Icon only"></sd-icon>
       </sd-button>
