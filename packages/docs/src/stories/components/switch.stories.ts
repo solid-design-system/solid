@@ -69,7 +69,7 @@ export const Invalid = {
 
         sdSwitch.click();
         sdSwitch.reportValidity();
-        sdSwitch.setCustomValidity('error-text');
+        sdSwitch.setCustomValidity('Error-text');
       });
     </script>
   `
