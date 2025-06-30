@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-table-cell');
 
 export default {
   title: 'Styles/sd-table-cell',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-table-cell',
   parameters: {
     ...parameters,

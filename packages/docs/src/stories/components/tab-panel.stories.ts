@@ -1,7 +1,7 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
+import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-tab-panel');
 const { overrideArgs } = storybookHelpers('sd-tab-panel');
@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-tab-panel');
 
 export default {
   title: 'Components/sd-tab-panel',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-tab-panel',
   args: overrideArgs([
     {

@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-flag');
 
 export default {
   title: 'Styles/sd-flag',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-flag',
   parameters: {
     ...parameters,
