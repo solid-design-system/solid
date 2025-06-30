@@ -68,13 +68,13 @@ export default class SdRange extends SolidElement implements SolidFormControl {
   @property({ attribute: false }) tooltipFormatter: (value: number) => string;
 
   /** The name of the range, submitted as a name/value pair with form data. */
-  @property() name = '';
+  @property({ type: String, reflect: true }) name = '';
 
   /** The range's label. If you need to display HTML, use the `label` slot instead. */
-  @property() label = '';
+  @property({ type: String, reflect: true }) label = '';
 
   /** The range's help text. If you need to display HTML, use the help-text slot instead. */
-  @property({ attribute: 'help-text' }) helpText = '';
+  @property({ attribute: 'help-text', reflect: true }) helpText = '';
 
   /** The minimum acceptable value of the range. */
   @property({ type: Number, reflect: true }) min = 0;
@@ -83,7 +83,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
   @property({ type: Number, reflect: true }) max = 100;
 
   /** The interval at which the range will increase and decrease. */
-  @property({ type: Number }) step = 1;
+  @property({ type: Number, reflect: true }) step = 1;
 
   /** Disables the range. */
   @property({ type: Boolean, reflect: true }) disabled = false;
