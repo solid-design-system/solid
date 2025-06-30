@@ -66,7 +66,7 @@ export const Size = {
 export const Disabled = {
   name: 'Disabled',
   render: () => html`
-    <sd-radio-group label="Disabled Radio in Group" boldLabel value="1">
+    <sd-radio-group label="Disabled radio in group" boldLabel value="1">
       <sd-radio value="1">Radio 1</sd-radio>
       <sd-radio value="2" disabled>Radio 2</sd-radio>
       <sd-radio value="3">Radio 3</sd-radio>
@@ -84,8 +84,8 @@ export const Disabled = {
 export const VisuallyDisabled = {
   name: 'Visually Disabled',
   render: () => html`
-    <sd-radio-group label="Visually Disabled" boldLabel value="1">
-      <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm">
+    <sd-radio-group label="Visually disabled" boldLabel value="1">
+      <sd-tooltip content="Visually disabled" trigger="hover focus" size="sm">
         <sd-radio value="1" visually-disabled>Radio 1</sd-radio>
       </sd-tooltip>
     </sd-radio-group>

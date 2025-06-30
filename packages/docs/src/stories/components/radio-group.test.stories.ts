@@ -30,7 +30,7 @@ export default {
     {
       type: 'slot',
       name: 'label',
-      value: `<label slot="label">Group Label</label>`
+      value: `<label slot="label">Group label</label>`
     },
     {
       type: 'slot',
