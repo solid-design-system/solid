@@ -34,9 +34,7 @@ export const SampleA01 = {
         <div class="relative flex justify-between">
           <div class="flex -ms-4">
             <sd-dropdown>
-              <sd-navigation-item href="javascript:void(0)" class="font-bold" slot="trigger">
-                Funds & Depot
-              </sd-navigation-item>
+              <sd-navigation-item class="font-bold" slot="trigger"> Funds & Depot </sd-navigation-item>
 
               <div class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
                 <div>
@@ -82,9 +80,7 @@ export const SampleA01 = {
             <sd-navigation-item href="javascript:void(0)" class="font-bold">Savings</sd-navigation-item>
 
             <sd-dropdown>
-              <sd-navigation-item href="javascript:void(0)" class="font-bold" slot="trigger">
-                Investing
-              </sd-navigation-item>
+              <sd-navigation-item class="font-bold" slot="trigger"> Investing </sd-navigation-item>
               <div class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
                 <div>
                   <sd-navigation-item vertical>
@@ -125,9 +121,7 @@ export const SampleA01 = {
             </sd-dropdown>
 
             <sd-dropdown>
-              <sd-navigation-item href="javascript:void(0)" class="font-bold" slot="trigger">
-                Our Services
-              </sd-navigation-item>
+              <sd-navigation-item class="font-bold" slot="trigger"> Our Services </sd-navigation-item>
               <div class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
                 <div>
                   <sd-navigation-item vertical class="font-bold"> Investing at a glance </sd-navigation-item>
@@ -171,11 +165,41 @@ export const SampleA01 = {
           left: 0;
           width: 100%;
         }
+
+        sd-navigation-item[slot='trigger'][current] {
+          background: rgb(246 246 246);
+        }
       </style>
 
       <script type="module">
         const dropdowns = document.querySelectorAll('sd-dropdown');
-        const items = document.querySelectorAll('sd-dropdown > sd-navigation-item[slot="trigger"]');
+        const items = document.querySelectorAll('sd-navigation-item');
+
+        const getPreviousSibling = (el, tag) => {
+          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, {
+            acceptNode: node => (node.tagName === tag.toUpperCase() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP)
+          });
+
+          let lastValid = null;
+          let current;
+
+          while ((current = walker.nextNode())) {
+            if (current === el) break;
+            lastValid = current;
+          }
+
+          return lastValid;
+        };
+
+        const getNextSibling = (el, tag) => {
+          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, {
+            acceptNode: node => (node.tagName === tag.toUpperCase() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP)
+          });
+
+          walker.currentNode = el;
+          let next = walker.nextNode();
+          return next;
+        };
 
         function handleDropdownShow(event, dropdown) {
           const item = dropdown.querySelector('sd-navigation-item[slot="trigger"]');
@@ -197,6 +221,39 @@ export const SampleA01 = {
           item.closest('sd-dropdown').show();
         }
 
+        function handleItemArrowDown(item) {
+          const parent = item.closest('sd-dropdown');
+          const next = getNextSibling(item, 'sd-navigation-item');
+
+          if (parent?.contains(next)) {
+            parent?.show();
+          } else {
+            parent?.hide();
+          }
+          setTimeout(() => next?.focus(), 0);
+        }
+
+        function handleItemArrowUp(item) {
+          const parent = item.closest('sd-dropdown');
+          const previous = getPreviousSibling(item, 'sd-navigation-item');
+
+          if (parent?.contains(previous)) {
+            parent?.show();
+          } else {
+            parent?.hide();
+            previous?.closest('sd-dropdown')?.show();
+          }
+          setTimeout(() => previous?.focus(), 0);
+        }
+
+        function handleItemKeydown(event, item) {
+          if (event.key === 'ArrowDown') {
+            handleItemArrowDown(item);
+          } else if (event.key === 'ArrowUp') {
+            handleItemArrowUp(item);
+          }
+        }
+
         dropdowns.forEach(dropdown => {
           dropdown.addEventListener('sd-show', e => handleDropdownShow(e, dropdown));
           dropdown.addEventListener('sd-hide', e => handleDropdownHide(e, dropdown));
@@ -204,7 +261,10 @@ export const SampleA01 = {
         });
 
         items.forEach(item => {
-          item.addEventListener('pointerover', e => handleItemPointerOver(e, item));
+          if (item.getAttribute('slot') === 'trigger') {
+            item.addEventListener('pointerover', e => handleItemPointerOver(e, item));
+          }
+          item.addEventListener('keydown', e => handleItemKeydown(e, item));
         });
       </script>
     `;

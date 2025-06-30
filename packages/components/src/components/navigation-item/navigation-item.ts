@@ -140,6 +140,14 @@ export default class SdNavigationItem extends SolidElement {
     return literal`button`;
   }
 
+  public focus() {
+    this.button?.focus();
+  }
+
+  public blur() {
+    this.button?.blur();
+  }
+
   render() {
     const tag = this.tag;
     const isLink = this.isLink;
@@ -221,7 +229,7 @@ export default class SdNavigationItem extends SolidElement {
                   >
                     <slot part="content" class="inline-flex"></slot>
                   </a>`
-                : html`<slot part="content" class="inline-flex"></slot>`
+                : html`<slot part="content" class="inline-flex text-start"></slot>`
             }
           </span>
           ${
