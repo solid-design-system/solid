@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-media');
 
 export default {
   title: 'Styles/sd-media',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-media',
   parameters: {
     ...parameters,

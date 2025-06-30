@@ -11,7 +11,7 @@ import {
 import { highlightOptionRenderer } from '../../../../components/src/components/combobox/option-renderer';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { userEvent } from '@storybook/test';
+import { userEvent } from 'storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 import type SdCombobox from '../../../../components/src/components/combobox/combobox';
 const { argTypes, parameters } = storybookDefaults('sd-combobox');
