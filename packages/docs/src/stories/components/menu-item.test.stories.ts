@@ -6,7 +6,7 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
+import { withActions } from 'storybook/actions/decorator';
 import cx from 'classix';
 import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 
