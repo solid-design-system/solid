@@ -88,6 +88,8 @@ export interface Translation extends DefaultTranslation {
   goToSlide: (slide: number, count: number) => string;
   hidePassword: string;
   loading: string;
+  maximum: string;
+  minimum: string;
   mute: string;
   nextSlide: string;
   noResults: string;
