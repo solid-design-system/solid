@@ -26,12 +26,18 @@ export const SampleA01 = {
         }
       </style>
 
-      <sd-header fixed style="--sd-header-padding: 24px 48px 0;">
-        <a class="inline-flex mb-3 sd-interactive" href="#">
-          <img class="h-8 md:h-12 lg:h-14" src="images/logo-unioninvestment-lg.svg" alt="Union Investment Homepage" />
-        </a>
+      <sd-header fixed style="--sd-header-padding: 12px 48px 0;">
+        <div class="flex justify-between items-center my-0 pb-3 lg:pb-0 lg:my-3">
+          <a class="inline-flex sd-interactive" href="#">
+            <img class="h-8 md:h-12 lg:h-14" src="images/logo-unioninvestment-lg.svg" alt="Union Investment Homepage" />
+          </a>
 
-        <div class="relative flex justify-between">
+          <sd-navigation-item id="open-menu-sample-a01" class="flex lg:hidden">
+            <sd-icon name="system/menu" label="Open navigation" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
+          </sd-navigation-item>
+        </div>
+
+        <div class="hidden lg:flex relative justify-between">
           <div class="flex -ms-4">
             <sd-dropdown>
               <sd-navigation-item class="font-bold" slot="trigger"> Funds & Depot </sd-navigation-item>
@@ -160,6 +166,219 @@ export const SampleA01 = {
         </div>
       </sd-header>
 
+      <sd-drawer id="sample-a01-drawer" placement="end" no-header class="group relative block">
+        <nav class="-mx-4 pt-20 pb-1 transition-transform duration-medium group-data-[submenu-open]:-translate-x-full">
+          <ul>
+            <li><sd-navigation-item vertical href="javascript:void(0)" class="font-bold"> Home </sd-navigation-item></li>
+            <li>
+              <sd-navigation-item vertical current chevron divider class="font-bold"> Funds & Depot </sd-navigation-item>
+              <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
+                <sd-button variant="tertiary" class="ms-2 my-2">
+                  <sd-icon name="system/arrow-left" label="Close Funds & Depot submenu"></sd-icon>
+                </sd-button>
+                <div class="mt-4">
+                  <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary"> Funds & Depot </p>
+                  <ul>
+                    <li>
+                      <sd-navigation-item vertical current divider>
+                        Funds & Depot Overview
+                        <p slot="description">
+                          Everything you need to know about our funds and the UnionDepot
+                        </p>
+                      </sd-navigation-item>
+                    </li>
+                    <li>
+                      <sd-navigation-item vertical>
+                        <span class="font-bold">Find Funds</span>
+                        <p slot="description">Get to our funds quickly</p>
+                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">Top funds</sd-navigation-item>
+                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">Fund prices</sd-navigation-item>
+                      </sd-navigation-item>
+                    </li>
+                    <li>
+                      <sd-navigation-item vertical>
+                        <span class="font-bold">Understanding Funds</span>
+                        <p slot="description">Funds explained simply and understandably for you</p>
+                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">Sustainability-related disclosures</sd-navigation-item>
+                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">Lexicon</sd-navigation-item>
+                      </sd-navigation-item>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li>
+              <sd-navigation-item vertical chevron divider class="font-bold"> About Us </sd-navigation-item>
+              <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
+                <sd-button variant="tertiary" class="ms-2 my-2">
+                  <sd-icon name="system/arrow-left" label="Close About Us submenu"></sd-icon>
+                </sd-button>
+                <div class="mt-4">
+                  <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary"> About us </p>
+
+                  <ul>
+                    <li>
+                      <sd-navigation-item vertical divider class="font-bold">
+                        Union Investment at a glance
+                        <p slot="description"> Partnership is the basis of our actions. </p>
+                      </sd-navigation-item>
+                    </li>
+                    <li>
+                      <sd-navigation-item vertical>
+                        <span class="font-bold"> Union Investment for private clients </span>
+                        <p slot="description"> Learn more about us and what we stand for </p>
+                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)"> Investor protection </sd-navigation-item>
+                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)"> Award </sd-navigation-item>
+                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)"> Our management </sd-navigation-item>
+                      </sd-navigation-item>
+                    </li>
+                    <li>
+                      <sd-navigation-item vertical class="font-bold">
+                        Sustainability at Union Investment
+                        <p slot="description"> Learn about our values, principles, and commitment to sustainability. </p>
+                      </sd-navigation-item>
+                    </li>
+                    <li>
+                       <sd-navigation-item vertical>
+                        <span class="font-bold"> Union Investment Group </span>
+                        <p slot="description"> Find out more about Union Investment as a group of companies </p>
+                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)"> Cooperative Financial Group </sd-navigation-item>
+                      </sd-navigation-item>
+                    </li>
+                  </ul>
+
+                  <sd-divider class="my-6 mx-4"></sd-divider>
+                  <p class="sd-headline sd-headline--size-base mx-4 mb-6"> Not a private customer? Discover more solutions for every need </p>
+
+                  <ul>
+                    <li>
+                      <sd-navigation-item vertical class="font-bold">
+                        Institutional Clients
+                        <p slot="description"> Solutions for professional investors. </p>
+                      </sd-navigation-item>
+                    </li>
+                    <li>
+                      <sd-navigation-item vertical class="font-bold">
+                        Real Estate Customers
+                        <p slot="description"> Investing - Renting - Investing </p>
+                      </sd-navigation-item>
+                    </li>
+                    <li>
+                      <sd-navigation-item vertical class="font-bold">
+                        Journalists
+                        <p slot="description"> Press releases and contacts can be found here </p>
+                      </sd-navigation-item>
+                    </li>
+                    <li>
+                      <sd-navigation-item vertical class="font-bold">
+                        Career
+                        <p slot="description"> Where professionals are people - insights into our working world and job offers </p>
+                      </sd-navigation-item>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li><sd-navigation-item vertical href="javascript:void(0)" divider class="font-bold"> Saving </sd-navigation-item></li>
+            <li>
+              <sd-navigation-item vertical chevron divider class="font-bold"> Investing </sd-navigation-item>
+              <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
+                <sd-button variant="tertiary" class="ms-2 my-2">
+                  <sd-icon name="system/arrow-left" label="Close Investing submenu"></sd-icon>
+                </sd-button>
+                <div class="mt-4">
+                  <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary"> Investing </p>
+
+                  <ul>
+                    <li>
+                      <sd-navigation-item vertical divider>
+                        <span class="font-bold"> Investing at a glance </span>
+                        <p slot="description"> Quickly access our funds </p>
+                      </sd-navigation-item>
+                    </li>
+                    <li>
+                      <sd-navigation-item vertical>
+                        <span class="font-bold"> Structuring your assets </span>
+                        <p slot="description"> Benefit from modern solutions for your assets </p>
+                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)"> Private Funds </sd-navigation-item>
+                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)"> UniDistribution Fund </sd-navigation-item>
+                      </sd-navigation-item>
+                    </li>
+                    <li>
+                      <sd-navigation-item vertical>
+                        <span class="font-bold"> Investing money according to ESG </span>
+                        <p slot="description"> Shaping the future responsibly with your investments </p>
+                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)"> Funds with a sustainability strategy </sd-navigation-item>
+                      </sd-navigation-item>
+                    </li>
+                    <li>
+                      <sd-navigation-item vertical>
+                        <span class="font-bold"> Calculators </span>
+                        <p slot="description"> Manage your funds flexibly with UnionDepot </p>
+                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)"> Investment planner </sd-navigation-item>
+                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)"> Wealth planner </sd-navigation-item>
+                      </sd-navigation-item>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li>
+              <sd-navigation-item vertical chevron divider class="font-bold"> Our Services </sd-navigation-item>
+              <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
+                <sd-button variant="tertiary" class="ms-2 my-2">
+                  <sd-icon name="system/arrow-left" label="Close Our Services submenu"></sd-icon>
+                </sd-button>
+                <div class="mt-4">
+                  <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary"> Our Services </p>
+
+                  <ul>
+                    <li>
+                      <sd-navigation-item vertical divider class="font-bold"> Services at a glance </sd-navigation-item>
+                    </li>
+                    <li>
+                      <sd-navigation-item vertical class="font-bold"> Current news </sd-navigation-item>
+                    </li>
+                    <li>
+                      <sd-navigation-item vertical class="font-bold"> Subscription </sd-navigation-item>
+                    </li>
+                    <li>
+                      <sd-navigation-item vertical class="font-bold"> Our calculators </sd-navigation-item>
+                    </li>
+                    <li>
+                      <sd-navigation-item vertical class="font-bold"> Contact </sd-navigation-item>
+                    </li>
+                    <li>
+                      <sd-navigation-item vertical class="font-bold"> Forms and Downloads </sd-navigation-item>
+                    </li>
+                    <li>
+                      <sd-navigation-item vertical class="font-bold"> Media </sd-navigation-item>
+                    </li>
+                    <li>
+                      <sd-navigation-item vertical class="font-bold"> Frequently Asked Questions </sd-navigation-item>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <nav aria-label="footer" slot="footer" class="bg-neutral-100 -mx-4 -mb-4 transition-transform duration-medium group-data-[submenu-open]:-translate-x-full"">
+          <sd-navigation-item vertical href="javascript:void(0)" class="flex align-center">
+            <sd-icon name="system/user" class="text-xl mr-2"></sd-icon>
+            Portfolio
+          </sd-navigation-item>
+          <sd-navigation-item vertical divider href="javascript:void(0)" class="flex align-center">
+            <sd-icon name="system/lock-locked" class="text-xl mr-2"></sd-icon>
+            Application
+          </sd-navigation-item>
+          <sd-navigation-item vertical divider href="javascript:void(0)" class="flex align-center">
+            <sd-icon name="system/website" class="text-xl mr-2"></sd-icon>
+            Our further appearances
+          </sd-navigation-item>
+        </nav>
+      </sd-drawer>
+
       <style>
         sd-dropdown:has(sd-navigation-item[slot='trigger'])::part(base__popup) {
           left: 0;
@@ -169,11 +388,83 @@ export const SampleA01 = {
         sd-navigation-item[slot='trigger'][current] {
           background: rgb(246 246 246);
         }
+
+        sd-drawer::part(panel) {
+          overflow: hidden;
+        }
+
+        sd-navigation-item + div[data-submenu]:not([data-active-submenu]) {
+          pointer-events: none;
+          opacity: 0;
+        }
       </style>
 
+      <!-- Mobile drawer Logic -->
       <script type="module">
-        const dropdowns = document.querySelectorAll('sd-dropdown');
-        const items = document.querySelectorAll('sd-navigation-item');
+        const drawer = document.getElementById('sample-a01-drawer');
+        const drawerTrigger = document.getElementById('open-menu-sample-a01');
+        const innerTrigger = drawerTrigger.shadowRoot.querySelector('button');
+
+        innerTrigger.setAttribute('aria-controls', 'sample-a01-drawer');
+        innerTrigger.setAttribute('aria-expanded', 'false');
+        drawerTrigger.addEventListener('click', () => drawer.show());
+        drawer.addEventListener('sd-hide', () => innerTrigger.setAttribute('aria-expanded', 'false'));
+        drawer.addEventListener('sd-show', () => innerTrigger.setAttribute('aria-expanded', 'true'));
+      </script>
+
+      <!-- Mobile navigation Logic -->
+      <script type="module">
+        const drawer = document.getElementById('sample-a01-drawer');
+        const items = document.querySelectorAll('sd-drawer sd-navigation-item');
+        const submenus = document.querySelectorAll('sd-drawer sd-navigation-item + div');
+        const backButtons = document.querySelectorAll('sd-drawer sd-navigation-item + div > sd-button');
+
+        function handleOpenSubmenuChanged() {
+          submenus.forEach(menu => {
+            if (menu.hasAttribute('data-active-submenu')) {
+              menu.removeAttribute('inert');
+            } else {
+              menu.setAttribute('inert', '');
+            }
+          });
+        }
+
+        function handleItemClick(event, item) {
+          const submenu = item.nextElementSibling;
+          if (!submenu) return;
+
+          drawer.setAttribute('data-submenu-open', true);
+          submenus.forEach(menu => menu.removeAttribute('data-active-submenu'));
+          submenu.setAttribute('data-active-submenu', '');
+          setTimeout(() => submenu.querySelector('sd-button').focus(), drawer.token('sd-duration-medium'));
+        }
+
+        function handleBackClick(event, button) {
+          const submenu = button.closest('[data-active-submenu]');
+          const item = submenu.previousElementSibling;
+
+          item.focus();
+          submenu.removeAttribute('data-active-submenu');
+          drawer.removeAttribute('data-submenu-open');
+        }
+
+        const observer = new MutationObserver(handleOpenSubmenuChanged);
+        observer.observe(drawer, { attributes: true, attributeFilter: ['data-submenu-open'] });
+        handleOpenSubmenuChanged();
+
+        items.forEach((item) => {
+          item.addEventListener('click', e => handleItemClick(e, item));
+        });
+
+        backButtons.forEach((button) => {
+          button.addEventListener('click', e => handleBackClick(e, button));
+        })
+      </script>
+
+      <!-- Desktop navigation logic -->
+      <script type="module">
+        const dropdowns = document.querySelectorAll('sd-header sd-dropdown');
+        const items = document.querySelectorAll('sd-header sd-navigation-item');
 
         const getPreviousSibling = (el, tag) => {
           const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, {
