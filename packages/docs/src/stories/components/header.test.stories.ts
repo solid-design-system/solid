@@ -6,7 +6,6 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-header');
 const { generateTemplate } = storybookTemplate('sd-header');
@@ -50,7 +49,6 @@ export default {
     }
   },
   decorators: [
-    withActions,
     (story: any) =>
       html`<style>
           body.sb-show-main.sb-main-padded {
@@ -200,8 +198,8 @@ export const SampleA = {
 export const SampleAMd = {
   ...SampleA,
   name: '↳ Tablet',
-  parameters: {
-    viewport: { defaultViewport: 'tablet' }
+  globals: {
+    viewport: { value: 'tablet' }
   }
 };
 
@@ -209,8 +207,8 @@ export const SampleAMd = {
 export const SampleASm = {
   ...SampleA,
   name: '↳ Small mobile',
-  parameters: {
-    viewport: { defaultViewport: 'mobile1' }
+  globals: {
+    viewport: { value: 'mobile1' }
   }
 };
 
@@ -310,8 +308,8 @@ export const SampleB = {
 export const SampleBMd = {
   ...SampleB,
   name: '↳ Tablet',
-  parameters: {
-    viewport: { defaultViewport: 'tablet' }
+  globals: {
+    viewport: { value: 'tablet' }
   }
 };
 
@@ -319,8 +317,8 @@ export const SampleBMd = {
 export const SmallViewportSample2 = {
   ...SampleB,
   name: '↳ Small mobile',
-  parameters: {
-    viewport: { defaultViewport: 'mobile1' }
+  globals: {
+    viewport: { value: 'mobile1' }
   }
 };
 

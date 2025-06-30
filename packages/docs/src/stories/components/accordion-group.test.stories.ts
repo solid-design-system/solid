@@ -2,7 +2,7 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookTemplate, storybookUtilities } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
+import { userEvent } from 'storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-accordion-group');

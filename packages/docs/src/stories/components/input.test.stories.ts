@@ -6,9 +6,8 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
+import { userEvent } from 'storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-input');
 const { generateTemplate } = storybookTemplate('sd-input');
@@ -63,8 +62,7 @@ export default {
       type: 'figma',
       url: 'https://www.figma.com/file/xSIeTnyfW2T21Uw5JgdZOg/Input?node-id=0%3A1&mode=dev'
     }
-  },
-  decorators: [withActions] as any
+  }
 };
 
 /**

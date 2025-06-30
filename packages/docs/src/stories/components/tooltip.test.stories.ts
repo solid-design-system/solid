@@ -6,9 +6,8 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
+import { userEvent } from 'storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-tooltip');
 const { overrideArgs } = storybookHelpers('sd-tooltip');
@@ -34,7 +33,6 @@ export default {
   argTypes,
   parameters: { ...parameters, controls: { disable: true } },
   decorators: [
-    withActions,
     (story: any) =>
       html` <style>
           .template-position {
