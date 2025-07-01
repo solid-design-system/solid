@@ -1,6 +1,5 @@
 import '../../../../components/src/solid-components';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-pagination');
 const { overrideArgs } = storybookHelpers('sd-pagination');
@@ -26,7 +25,6 @@ export default {
     value: html``
   }),
   decorators: [
-    withActions,
     (story: any) => {
       const handlePageClick = (event: MouseEvent) => {
         event.preventDefault();

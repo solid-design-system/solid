@@ -9,7 +9,6 @@ import {
 } from '../../../scripts/storybook/helper';
 import { userEvent } from 'storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes } = storybookDefaults('sd-link');
 const { generateTemplate } = storybookTemplate('sd-link');
@@ -25,8 +24,7 @@ export default {
     { type: 'attribute', name: 'href', value: '#' }
   ]),
   argTypes,
-  parameters: { controls: { disable: true } },
-  decorators: [withActions] as any
+  parameters: { controls: { disable: true } }
 };
 
 export const Default = {

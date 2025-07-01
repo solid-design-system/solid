@@ -5,7 +5,6 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-pagination');
 const { overrideArgs } = storybookHelpers('sd-pagination');
@@ -48,8 +47,7 @@ export default {
     `
     }
   ]),
-  argTypes,
-  decorators: [withActions] as any
+  argTypes
 };
 
 export const Default = {
@@ -401,7 +399,7 @@ export const HiddenHeadline = {
   render: (args: any) =>
     generateTemplate({
       options: {
-        templateContent: html` 
+        templateContent: html`
           <nav class="sd-pagination" aria-labelledby="pagination--hidden-headline">
             <h4 id="pagination--hidden-headline">Hidden headline pagination</h4>
             <ul>
