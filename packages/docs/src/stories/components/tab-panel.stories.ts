@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-tab-panel');
 const { overrideArgs } = storybookHelpers('sd-tab-panel');
@@ -9,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-tab-panel');
 
 export default {
   title: 'Components/sd-tab-panel',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-tab-panel',
   args: overrideArgs([
     {
@@ -35,8 +34,7 @@ export default {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3239-10447&node-type=section&t=5PpAC3TA3kYF7ufX-0'
     }
-  },
-  decorators: [withActions] as any
+  }
 };
 
 export const Default = {

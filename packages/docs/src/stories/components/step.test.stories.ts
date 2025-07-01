@@ -6,9 +6,8 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
+import { userEvent } from 'storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-step');
 const { overrideArgs } = storybookHelpers('sd-step');
@@ -41,8 +40,7 @@ export default {
       },
       options: {}
     }
-  },
-  decorators: [withActions] as any
+  }
 };
 
 /**

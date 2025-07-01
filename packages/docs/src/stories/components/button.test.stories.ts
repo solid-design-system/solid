@@ -7,9 +7,8 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
+import { userEvent } from 'storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from '@storybook/addon-actions/decorator';
 const { argTypes, parameters } = storybookDefaults('sd-button');
 const { overrideArgs } = storybookHelpers('sd-button');
 const { generateTemplate } = storybookTemplate('sd-button'); // Replace with your custom element tag
@@ -24,8 +23,7 @@ export default {
   parameters: {
     ...parameters,
     controls: { disable: true }
-  },
-  decorators: [withActions] as any
+  }
 };
 
 export const Default = {

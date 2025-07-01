@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-scrollable');
 const { overrideArgs } = storybookHelpers('sd-scrollable');
@@ -21,7 +20,7 @@ const defaultSlotContent = `
 
 export default {
   title: 'Components/sd-scrollable',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-scrollable',
   args: overrideArgs({
     type: 'slot',
@@ -37,7 +36,6 @@ export default {
     }
   },
   decorators: [
-    withActions,
     (story: any) =>
       html`<style>
           sd-scrollable {

@@ -7,7 +7,6 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from '@storybook/addon-actions/decorator';
 import cx from 'classix';
 import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 
@@ -43,8 +42,7 @@ export default {
   tags: ['!autodocs'],
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Navigation' }]),
   argTypes,
-  parameters: { ...parameters, controls: { disable: true } },
-  decorators: [withActions] as any
+  parameters: { ...parameters, controls: { disable: true } }
 };
 
 /**

@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-breadcrumb');
 const { overrideArgs } = storybookHelpers('sd-breadcrumb');
@@ -11,7 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-breadcrumb');
  * Used to visualize a page's location within the site's hierarchy and provide easy navigation to previous sections.
  */
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Components/sd-breadcrumb',
   component: 'sd-breadcrumb',
   argTypes,
@@ -37,8 +36,7 @@ export default {
         <sd-breadcrumb-item current>Current</sd-breadcrumb-item>
       `
     }
-  ]),
-  decorators: [withActions] as any
+  ])
 };
 
 export const Default = {

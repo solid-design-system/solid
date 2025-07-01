@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-chip');
 export default {
   title: 'Styles/sd-chip',
   component: 'sd-chip',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Chip' }),
   parameters: {
     ...parameters,
