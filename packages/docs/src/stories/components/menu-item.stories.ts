@@ -47,7 +47,7 @@ export const iconIndent = {
   render: () => html`
     <sd-menu-item>
       Menu item 1
-      <sd-icon name="union-investment/system/image" slot="icon-indent"></sd-icon>
+      <sd-icon name="system/image" slot="icon-indent"></sd-icon>
     </sd-menu-item>
   `
 };

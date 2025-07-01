@@ -6,7 +6,6 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { withActions } from 'storybook/actions/decorator';
 import cx from 'classix';
 import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 
@@ -24,7 +23,7 @@ const defaultSlotConstant: ConstantDefinition = {
 const iconSlotConstant: ConstantDefinition = {
   type: 'slot',
   name: 'icon-indent',
-  value: `<sd-icon name="union-investment/content/image" slot="icon-indent"></sd-icon>`
+  value: `<sd-icon name="system/image" slot="icon-indent"></sd-icon>`
 };
 
 export default {
@@ -50,8 +49,7 @@ export default {
     }
   },
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Menu item 1' }),
-  argTypes,
-  decorators: [withActions] as any
+  argTypes
 };
 
 export const Default = {
@@ -117,7 +115,7 @@ export const Slots = {
                 {
                   value:
                     slot === 'default'
-                      ? `<div class="slot slot--border slot--background h-8 w-[100px]">Default Slot</div>`
+                      ? `<div class="slot slot--border slot--background h-8 w-[100px]">Slot</div>`
                       : `<div slot='${slot}' class="${cx(
                           'slot slot--border slot--background h-6',
                           slot === 'description' || slot === 'children' ? 'w-full' : 'w-6'
