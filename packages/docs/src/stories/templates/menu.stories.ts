@@ -3,7 +3,7 @@ import { html } from 'lit-html';
 
 export default {
   title: 'Templates/Menu',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   parameters: {
     chromatic: { disableSnapshot: true }
   },
