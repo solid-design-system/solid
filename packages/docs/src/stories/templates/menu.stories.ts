@@ -26,7 +26,7 @@ export default {
 export const MenuWithCheckmarks = {
   name: 'Menu with Checkmarks, Grouping and Submenu',
   render: () => html`
-    <sd-dropdown distance="4" rounded open>
+    <sd-dropdown distance="4" rounded stay-open-on-select>
       <sd-button variant="secondary" slot="trigger">
         Menu
         <sd-icon library="_internal" name="chevron-down" slot="icon-right"></sd-icon>
@@ -62,7 +62,7 @@ export const MenuWithCheckmarks = {
 export const MenuWithCheckmarksAndIcons = {
   name: 'Menu with Checkmarks and Icons',
   render: () => html`
-    <sd-dropdown distance="4" rounded open>
+    <sd-dropdown distance="4" rounded open stay-open-on-select>
       <sd-button variant="secondary" slot="trigger">
         <sd-icon name="system/more-functions" label="Icon only"></sd-icon>
       </sd-button>

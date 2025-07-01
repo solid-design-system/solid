@@ -174,7 +174,10 @@ export class SubmenuController implements ReactiveController {
       event.target instanceof Element &&
       (event.target.tagName === 'sd-menu-item' || event.target.role?.startsWith('menuitem'))
     ) {
-      this.disableSubmenu();
+      const type = event.target.getAttribute('type');
+      if (type !== 'checkbox') {
+        this.disableSubmenu();
+      }
     }
   };
 
