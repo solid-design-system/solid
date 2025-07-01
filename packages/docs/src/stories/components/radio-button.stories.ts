@@ -104,15 +104,15 @@ export const Checked = {
       <sd-radio-group value="1">
         <sd-radio-button value="1">
           <sd-icon name="system/image" slot="icon"></sd-icon>
-          Checked
+          Label
         </sd-radio-button>
         <sd-radio-button value="2">
           <sd-icon name="system/image" slot="icon"></sd-icon>
-          Checked
+          Label
         </sd-radio-button>
         <sd-radio-button value="3">
           <sd-icon name="system/image" slot="icon"></sd-icon>
-          Checked
+          Label
         </sd-radio-button>
       </sd-radio-group>
     </div>
@@ -213,7 +213,7 @@ export const VisuallyDisabled = {
         <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm">
           <sd-radio-button value="2" visually-disabled>
             <sd-icon name="system/image" slot="icon"></sd-icon>
-            Visually Disabled
+            Visually disabled
           </sd-radio-button>
         </sd-tooltip>
 
