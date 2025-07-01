@@ -626,7 +626,36 @@ export const MegaMenu = {
         }
       </style>
 
-      <!-- Mobile drawer Logic -->
+      <!-- Helper methods -->
+      <script>
+        function getPreviousSibling(el, tag) {
+          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, {
+            acceptNode: node => (node.tagName === tag.toUpperCase() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP)
+          });
+
+          let lastValid = null;
+          let current;
+
+          while ((current = walker.nextNode())) {
+            if (current === el) break;
+            lastValid = current;
+          }
+
+          return lastValid;
+        }
+
+        function getNextSibling(el, tag) {
+          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, {
+            acceptNode: node => (node.tagName === tag.toUpperCase() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP)
+          });
+
+          walker.currentNode = el;
+          let next = walker.nextNode();
+          return next;
+        }
+      </script>
+
+      <!-- Mobile drawer logic -->
       <script type="module">
         const drawer = document.getElementById('mega-menu-drawer');
         const drawerTrigger = document.getElementById('open-menu-mega-menu');
@@ -639,7 +668,7 @@ export const MegaMenu = {
         drawer.addEventListener('sd-show', () => innerTrigger.setAttribute('aria-expanded', 'true'));
       </script>
 
-      <!-- Mobile navigation Logic -->
+      <!-- Mobile navigation logic -->
       <script type="module">
         const drawer = document.getElementById('mega-menu-drawer');
         const items = document.querySelectorAll('sd-drawer sd-navigation-item');
@@ -740,32 +769,6 @@ export const MegaMenu = {
           }
         }
 
-        function getPreviousSibling(el, tag) {
-          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, {
-            acceptNode: node => (node.tagName === tag.toUpperCase() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP)
-          });
-
-          let lastValid = null;
-          let current;
-
-          while ((current = walker.nextNode())) {
-            if (current === el) break;
-            lastValid = current;
-          }
-
-          return lastValid;
-        }
-
-        function getNextSibling(el, tag) {
-          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, {
-            acceptNode: node => (node.tagName === tag.toUpperCase() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP)
-          });
-
-          walker.currentNode = el;
-          let next = walker.nextNode();
-          return next;
-        }
-
         async function handleItemArrowDown(item) {
           const next = getNextSibling(item, 'sd-navigation-item');
           const submenu = next.closest('[data-submenu]');
@@ -847,32 +850,6 @@ export const MegaMenu = {
       <script type="module">
         const dropdowns = document.querySelectorAll('sd-header sd-dropdown');
         const items = document.querySelectorAll('sd-header sd-navigation-item');
-
-        function getPreviousSibling(el, tag) {
-          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, {
-            acceptNode: node => (node.tagName === tag.toUpperCase() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP)
-          });
-
-          let lastValid = null;
-          let current;
-
-          while ((current = walker.nextNode())) {
-            if (current === el) break;
-            lastValid = current;
-          }
-
-          return lastValid;
-        }
-
-        function getNextSibling(el, tag) {
-          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, {
-            acceptNode: node => (node.tagName === tag.toUpperCase() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP)
-          });
-
-          walker.currentNode = el;
-          let next = walker.nextNode();
-          return next;
-        }
 
         function handleDropdownShow(event, dropdown) {
           const item = dropdown.querySelector('sd-navigation-item[slot="trigger"]');
