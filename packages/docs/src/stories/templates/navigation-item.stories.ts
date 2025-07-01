@@ -13,9 +13,6 @@ export default {
   }
 };
 
-/**
- * This option has clickable navigation items, with and without descriptions, and highlights the current page for easy navigation.
- */
 export const MegaMenu = {
   name: 'Mega Menu',
   render: () => {
@@ -840,7 +837,11 @@ export const MegaMenu = {
         function handleItemClick(event, item) {
           if (!item.hasAttribute('href')) return;
 
-          items.forEach(item => item.removeAttribute('current'));
+          items.forEach(item => {
+            if (item.getAttribute('slot') === 'trigger') return;
+            item.removeAttribute('current');
+          });
+
           item.setAttribute('current', '');
         }
 
