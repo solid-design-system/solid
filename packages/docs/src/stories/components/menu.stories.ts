@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookHelpers, storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-menu');
 const { overrideArgs } = storybookHelpers('sd-menu');
@@ -20,9 +19,9 @@ export default {
       type: 'slot',
       name: 'default',
       value: `
-        <sd-menu-item>Menu Item 1</sd-menu-item>
-        <sd-menu-item>Menu Item 2</sd-menu-item>
-        <sd-menu-item>Menu Item 3</sd-menu-item>`
+        <sd-menu-item>Menu item 1</sd-menu-item>
+        <sd-menu-item>Menu item 2</sd-menu-item>
+        <sd-menu-item>Menu item 3</sd-menu-item>`
     }
   ]),
   argTypes,
@@ -34,7 +33,6 @@ export default {
     }
   },
   decorators: [
-    withActions,
     (story: any) =>
       html`<style>
           .innerZoomElementWrapper #story--components-sd-menu--default,

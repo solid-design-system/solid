@@ -53,7 +53,7 @@ export const iconIndent = {
 };
 
 /**
- * Set the `type`` attribute to ”checkbox” to create a menu item that will toggle on and off when selected. You can use the `checked` attribute to set the initial state.
+ * Set the `type` attribute to ”checkbox” to create a menu item that will toggle on and off when selected. You can use the `checked` attribute to set the initial state.
  */
 export const Checkmark = {
   render: () => html` <sd-menu-item type="checkbox" checked> Menu item 1 </sd-menu-item> `

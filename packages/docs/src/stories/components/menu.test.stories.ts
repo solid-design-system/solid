@@ -6,7 +6,6 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-menu');
 const { overrideArgs } = storybookHelpers('sd-menu');
@@ -29,14 +28,13 @@ export default {
       type: 'slot',
       name: 'default',
       value: `
-        <sd-menu-item>Menu Item 1</sd-menu-item>
-        <sd-menu-item>Menu Item 2</sd-menu-item>
-        <sd-menu-item>Menu Item 3</sd-menu-item>`
+        <sd-menu-item>Menu item 1</sd-menu-item>
+        <sd-menu-item>Menu item 2</sd-menu-item>
+        <sd-menu-item>Menu item 3</sd-menu-item>`
     }
   ]),
   argTypes,
   decorators: [
-    withActions,
     (story: any) =>
       html`<style>
           sd-menu {
@@ -59,16 +57,16 @@ export const IconIndent = {
     return html`
       <sd-menu>
         <sd-menu-item>
-          <sd-icon name="union-investment/content/image" slot="icon-indent"></sd-icon>
-          Menu Item 1
+          <sd-icon name="system/image" slot="icon-indent"></sd-icon>
+          Menu item 1
         </sd-menu-item>
         <sd-menu-item>
-          <sd-icon name="union-investment/content/image" slot="icon-indent"></sd-icon>
-          Menu Item 2
+          <sd-icon name="system/image" slot="icon-indent"></sd-icon>
+          Menu item 2
         </sd-menu-item>
         <sd-menu-item>
-          <sd-icon name="union-investment/content/image" slot="icon-indent"></sd-icon>
-          Menu Item 3
+          <sd-icon name="system/image" slot="icon-indent"></sd-icon>
+          Menu item 3
         </sd-menu-item>
       </sd-menu>
     `;
@@ -80,9 +78,9 @@ export const Checkmark = {
   render: () => {
     return html`
       <sd-menu>
-        <sd-menu-item type="checkbox" checked>Menu Item 1</sd-menu-item>
-        <sd-menu-item type="checkbox" checked>Menu Item 2</sd-menu-item>
-        <sd-menu-item type="checkbox">Menu Item 3</sd-menu-item>
+        <sd-menu-item type="checkbox" checked>Menu item 1</sd-menu-item>
+        <sd-menu-item type="checkbox" checked>Menu item 2</sd-menu-item>
+        <sd-menu-item type="checkbox">Menu item 3</sd-menu-item>
       </sd-menu>
     `;
   }
@@ -105,14 +103,14 @@ export const Submenu = {
   render: () => {
     return html`
       <sd-menu>
-        <sd-menu-item>Menu Item 1</sd-menu-item>
-        <sd-menu-item>Menu Item 2</sd-menu-item>
+        <sd-menu-item>Menu item 1</sd-menu-item>
+        <sd-menu-item>Menu item 2</sd-menu-item>
         <sd-menu-item id="submenu-trigger">
-          Menu Item 3
+          Menu item 3
           <sd-menu slot="submenu">
-            <sd-menu-item>Submenu Item 1</sd-menu-item>
-            <sd-menu-item>Submenu Item 2</sd-menu-item>
-            <sd-menu-item>Submenu Item 3</sd-menu-item>
+            <sd-menu-item>Submenu item 1</sd-menu-item>
+            <sd-menu-item>Submenu item 2</sd-menu-item>
+            <sd-menu-item>Submenu item 3</sd-menu-item>
           </sd-menu>
         </sd-menu-item>
       </sd-menu>
@@ -129,14 +127,14 @@ export const Grouping = {
   render: () => {
     return html`
       <sd-menu>
-        <sd-menu-item>Menu Item 1</sd-menu-item>
-        <sd-menu-item>Menu Item 2</sd-menu-item>
+        <sd-menu-item>Menu item 1</sd-menu-item>
+        <sd-menu-item>Menu item 2</sd-menu-item>
         <sd-divider></sd-divider>
-        <sd-menu-item>Menu Item 3</sd-menu-item>
-        <sd-menu-item>Menu Item 4</sd-menu-item>
+        <sd-menu-item>Menu item 3</sd-menu-item>
+        <sd-menu-item>Menu item 4</sd-menu-item>
         <sd-divider></sd-divider>
-        <sd-menu-item>Menu Item 5</sd-menu-item>
-        <sd-menu-item>Menu Item 6</sd-menu-item>
+        <sd-menu-item>Menu item 5</sd-menu-item>
+        <sd-menu-item>Menu item 6</sd-menu-item>
       </sd-menu>
     `;
   }
@@ -147,9 +145,9 @@ export const Disabled = {
   render: () => {
     return html`
       <sd-menu class="w-[200px]">
-        <sd-menu-item>Menu Item 1</sd-menu-item>
-        <sd-menu-item disabled>Disabled Menu Item 2</sd-menu-item>
-        <sd-menu-item>Menu Item 3</sd-menu-item>
+        <sd-menu-item>Menu item 1</sd-menu-item>
+        <sd-menu-item disabled>Disabled menu item 2</sd-menu-item>
+        <sd-menu-item>Menu item 3</sd-menu-item>
       </sd-menu>
     `;
   }
