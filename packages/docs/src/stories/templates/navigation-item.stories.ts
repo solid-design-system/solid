@@ -646,6 +646,21 @@ export const MegaMenu = {
         const submenus = document.querySelectorAll('sd-drawer sd-navigation-item + div');
         const backButtons = document.querySelectorAll('sd-drawer sd-navigation-item + div > sd-button');
 
+        function closeSubmenu() {
+          submenus.forEach(menu => menu.removeAttribute('data-active-submenu'));
+          drawer.removeAttribute('data-submenu-open');
+        }
+
+        function openSubmenu(submenu) {
+          closeSubmenu();
+          submenu.setAttribute('data-active-submenu', '');
+          drawer.setAttribute('data-submenu-open', '');
+        }
+
+        function isSubmenuActive() {
+          return drawer.hasAttribute('data-submenu-open');
+        }
+
         function handleOpenSubmenuChanged() {
           submenus.forEach(menu => {
             if (menu.hasAttribute('data-active-submenu')) {
@@ -677,9 +692,7 @@ export const MegaMenu = {
           const submenu = item.nextElementSibling;
           if (!submenu) return;
 
-          drawer.setAttribute('data-submenu-open', '');
-          submenus.forEach(menu => menu.removeAttribute('data-active-submenu'));
-          submenu.setAttribute('data-active-submenu', '');
+          openSubmenu(submenu);
           setTimeout(() => submenu.querySelector('sd-button').focus(), drawer.token('sd-duration-medium'));
         }
 
@@ -688,12 +701,14 @@ export const MegaMenu = {
           const item = submenu.previousElementSibling;
 
           item.focus();
-          submenu.removeAttribute('data-active-submenu');
-          drawer.removeAttribute('data-submenu-open');
+          closeSubmenu();
         }
 
         function handleSubmenuKeydown(event, submenu) {
-          if (event.key !== 'Tab') return;
+          const movingFoward = (event.key === 'Tab' && !event.shiftKey) || event.key === 'ArrowDown';
+          const movingBackwards = (event.key === 'Tab' && event.shiftKey) || event.key === 'ArrowUp';
+
+          if (!movingFoward && !movingBackwards) return;
 
           const focusableSelectors = ['sd-navigation-item', 'sd-button'];
 
@@ -713,14 +728,91 @@ export const MegaMenu = {
           const first = focusableElements[0];
           const last = focusableElements[focusableElements.length - 1];
 
-          if (event.shiftKey && document.activeElement === first) {
+          if (movingBackwards && document.activeElement === first) {
             event.preventDefault();
             last.focus();
+            return;
           }
 
-          if (!event.shiftKey && document.activeElement === last) {
+          if (movingFoward && document.activeElement === last) {
             event.preventDefault();
             first.focus();
+          }
+        }
+
+        function getPreviousSibling(el, tag) {
+          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, {
+            acceptNode: node => (node.tagName === tag.toUpperCase() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP)
+          });
+
+          let lastValid = null;
+          let current;
+
+          while ((current = walker.nextNode())) {
+            if (current === el) break;
+            lastValid = current;
+          }
+
+          return lastValid;
+        }
+
+        function getNextSibling(el, tag) {
+          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, {
+            acceptNode: node => (node.tagName === tag.toUpperCase() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP)
+          });
+
+          walker.currentNode = el;
+          let next = walker.nextNode();
+          return next;
+        }
+
+        async function handleItemArrowDown(item) {
+          const next = getNextSibling(item, 'sd-navigation-item');
+          const submenu = next.closest('[data-submenu]');
+
+          if (!submenu && isSubmenuActive()) {
+            closeSubmenu();
+            setTimeout(() => next?.focus(), 0);
+            return;
+          }
+
+          if (submenu && !isSubmenuActive()) {
+            openSubmenu(submenu);
+            setTimeout(() => next?.focus(), next.token('sd-duration-medium'));
+            return;
+          }
+
+          next.parentElement.closest('sd-navigation-item')?.setAttribute('open', '');
+          setTimeout(() => next?.focus(), 0);
+        }
+
+        function handleItemArrowUp(item) {
+          const previous = getPreviousSibling(item, 'sd-navigation-item');
+          const submenu = previous.closest('[data-submenu]');
+
+          if (!submenu && isSubmenuActive()) {
+            closeSubmenu();
+            setTimeout(() => previous?.focus(), 0);
+            return;
+          }
+
+          if (submenu && !isSubmenuActive()) {
+            openSubmenu(submenu);
+            setTimeout(() => previous?.focus(), previous.token('sd-duration-medium'));
+            return;
+          }
+
+          previous.parentElement.closest('sd-navigation-item')?.setAttribute('open', '');
+          setTimeout(() => previous?.focus(), 0);
+        }
+
+        function handleItemKeydown(event, item) {
+          event.stopPropagation();
+
+          if (event.key === 'ArrowDown') {
+            handleItemArrowDown(item);
+          } else if (event.key === 'ArrowUp') {
+            handleItemArrowUp(item);
           }
         }
 
@@ -737,6 +829,7 @@ export const MegaMenu = {
 
         items.forEach(item => {
           item.addEventListener('click', e => handleItemClick(e, item));
+          item.addEventListener('keydown', e => handleItemKeydown(e, item));
         });
 
         submenus.forEach(submenu => {
