@@ -53,17 +53,15 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html`<div class="flex justify-center">
-      <sd-dropdown distance="4" rounded open>
-        <sd-button variant="secondary" slot="trigger">
-          Menu
-          <sd-icon library="_internal" name="chevron-down" slot="icon-right"></sd-icon>
-        </sd-button>
-        ${generateTemplate({
-          args
-        })}
-      </sd-dropdown>
-    </div>`;
+    return html` <sd-dropdown distance="4" rounded open>
+      <sd-button variant="secondary" slot="trigger">
+        Menu
+        <sd-icon library="_internal" name="chevron-down" slot="icon-right"></sd-icon>
+      </sd-button>
+      ${generateTemplate({
+        args
+      })}
+    </sd-dropdown>`;
   }
 };
 
