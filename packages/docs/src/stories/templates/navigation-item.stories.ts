@@ -16,12 +16,12 @@ export default {
 /**
  * This option has clickable navigation items, with and without descriptions, and highlights the current page for easy navigation.
  */
-export const SampleA01 = {
-  name: 'Mega Menu Sample A-01',
+export const MegaMenu = {
+  name: 'Mega Menu',
   render: () => {
     return html`
       <style>
-        #anchor--templates-navigation-item--sample-a-01 .innerZoomElementWrapper {
+        #anchor--templates-navigation-item--mega-menu .innerZoomElementWrapper {
           height: 900px;
         }
       </style>
@@ -32,7 +32,7 @@ export const SampleA01 = {
             <img class="h-8 md:h-12 lg:h-14" src="images/logo-unioninvestment-lg.svg" alt="Union Investment Homepage" />
           </a>
 
-          <sd-navigation-item id="open-menu-sample-a01" class="flex lg:hidden">
+          <sd-navigation-item id="open-menu-mega-menu" class="flex lg:hidden">
             <sd-icon name="system/menu" label="Open navigation" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
           </sd-navigation-item>
         </div>
@@ -333,7 +333,7 @@ export const SampleA01 = {
         </nav>
       </sd-header>
 
-      <sd-drawer id="sample-a01-drawer" placement="end" no-header class="group relative block">
+      <sd-drawer id="mega-menu-drawer" placement="end" no-header class="group relative block">
         <nav class="-mx-4 pt-20 pb-1 transition-transform duration-medium group-data-[submenu-open]:-translate-x-full">
           <ul>
             <li>
@@ -631,11 +631,11 @@ export const SampleA01 = {
 
       <!-- Mobile drawer Logic -->
       <script type="module">
-        const drawer = document.getElementById('sample-a01-drawer');
-        const drawerTrigger = document.getElementById('open-menu-sample-a01');
+        const drawer = document.getElementById('mega-menu-drawer');
+        const drawerTrigger = document.getElementById('open-menu-mega-menu');
         const innerTrigger = drawerTrigger.shadowRoot.querySelector('button');
 
-        innerTrigger.setAttribute('aria-controls', 'sample-a01-drawer');
+        innerTrigger.setAttribute('aria-controls', 'mega-menu-drawer');
         innerTrigger.setAttribute('aria-expanded', 'false');
         drawerTrigger.addEventListener('click', () => drawer.show());
         drawer.addEventListener('sd-hide', () => innerTrigger.setAttribute('aria-expanded', 'false'));
@@ -644,7 +644,7 @@ export const SampleA01 = {
 
       <!-- Mobile navigation Logic -->
       <script type="module">
-        const drawer = document.getElementById('sample-a01-drawer');
+        const drawer = document.getElementById('mega-menu-drawer');
         const items = document.querySelectorAll('sd-drawer sd-navigation-item');
         const submenus = document.querySelectorAll('sd-drawer sd-navigation-item + div');
         const backButtons = document.querySelectorAll('sd-drawer sd-navigation-item + div > sd-button');
