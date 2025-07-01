@@ -12,12 +12,6 @@ const { overrideArgs } = storybookHelpers('sd-range');
 const { generateTemplate } = storybookTemplate('sd-range');
 const { generateScreenshotStory } = storybookUtilities;
 
-/**
- *
- * Component description.
- *
- */
-
 export default {
   title: 'Components/sd-range/Screenshots: sd-range',
   component: 'sd-range',
