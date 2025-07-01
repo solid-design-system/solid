@@ -1,16 +1,9 @@
 import '../../../../components/src/solid-components';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-range-tick');
 const { generateTemplate } = storybookTemplate('sd-range-tick');
 
-/**
- * Used to represent a tick within a sd-range.
- *
- * **Related templates**:
- * - [Range](./?path=/docs/templates-range--docs)
- */
 export default {
   tags: ['!dev'],
   title: 'Components/sd-range-tick',
@@ -23,8 +16,7 @@ export default {
       type: 'figma',
       url: ''
     }
-  },
-  decorators: [withActions] as any
+  }
 };
 
 export const Default = {

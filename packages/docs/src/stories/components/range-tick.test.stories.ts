@@ -5,7 +5,6 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-range-tick');
 const { overrideArgs } = storybookHelpers('sd-range-tick');
@@ -24,8 +23,7 @@ export default {
     }
   },
   args: overrideArgs([]),
-  argTypes,
-  decorators: [withActions] as any
+  argTypes
 };
 
 export const Default = {

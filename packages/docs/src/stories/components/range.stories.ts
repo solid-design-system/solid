@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-range');
 const { generateTemplate } = storybookTemplate('sd-range');
@@ -22,8 +21,7 @@ export default {
   args: overrideArgs([
     { type: 'attribute', name: 'label', value: 'Label' },
     { type: 'attribute', name: 'value', value: '25' }
-  ]),
-  decorators: [withActions] as any
+  ])
 };
 
 export const Default = {
