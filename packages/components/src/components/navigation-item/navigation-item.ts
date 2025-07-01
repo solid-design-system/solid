@@ -141,6 +141,7 @@ export default class SdNavigationItem extends SolidElement {
   }
 
   public focus() {
+    if (this.disabled) return;
     this.button?.focus();
   }
 
