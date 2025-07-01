@@ -7,7 +7,7 @@ const { generateTemplate } = storybookTemplate('sd-range');
 const { overrideArgs } = storybookHelpers('sd-range');
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Components/sd-range',
   component: 'sd-range',
   argTypes,

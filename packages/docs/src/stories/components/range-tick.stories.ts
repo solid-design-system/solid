@@ -5,7 +5,7 @@ const { argTypes, args, parameters } = storybookDefaults('sd-range-tick');
 const { generateTemplate } = storybookTemplate('sd-range-tick');
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Components/sd-range-tick',
   component: 'sd-range-tick',
   args,
