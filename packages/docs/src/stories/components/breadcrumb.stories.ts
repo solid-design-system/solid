@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-breadcrumb');
 const { overrideArgs } = storybookHelpers('sd-breadcrumb');
@@ -37,8 +36,7 @@ export default {
         <sd-breadcrumb-item current>Current</sd-breadcrumb-item>
       `
     }
-  ]),
-  decorators: [withActions] as any
+  ])
 };
 
 export const Default = {

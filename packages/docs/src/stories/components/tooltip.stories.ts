@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-tooltip');
 const { overrideArgs } = storybookHelpers('sd-tooltip');
@@ -32,7 +31,6 @@ export default {
     }
   },
   decorators: [
-    withActions,
     (story: any) =>
       html` <style>
           .template-position {

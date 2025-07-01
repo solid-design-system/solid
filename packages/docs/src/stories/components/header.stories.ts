@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-header');
 const { generateTemplate } = storybookTemplate('sd-header');
@@ -28,7 +27,6 @@ export default {
     }
   },
   decorators: [
-    withActions,
     (story: any) =>
       html`<style>
           body.sb-show-main.sb-main-padded {

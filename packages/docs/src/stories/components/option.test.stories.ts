@@ -6,7 +6,6 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-option');
 const { generateTemplate } = storybookTemplate('sd-option');
@@ -37,8 +36,7 @@ export default {
       },
       options: {}
     }
-  },
-  decorators: [withActions] as any
+  }
 };
 
 /**

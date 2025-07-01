@@ -8,7 +8,6 @@ import {
 } from '../../../scripts/storybook/helper';
 import { userEvent } from 'storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-textarea');
 const { generateTemplate } = storybookTemplate('sd-textarea');
@@ -30,8 +29,7 @@ export default {
       type: 'figma',
       url: 'https://www.figma.com/file/07Bzd23A0QSrSWiXy6w2uM/Text-Area?node-id=1010%3A1736&mode=dev'
     }
-  },
-  decorators: [withActions] as any
+  }
 };
 
 /**

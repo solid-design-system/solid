@@ -6,7 +6,6 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-map-marker');
 const { generateTemplate } = storybookTemplate('sd-map-marker');
@@ -25,8 +24,7 @@ export default {
       value: 'Label'
     }
   ]),
-  argTypes,
-  decorators: [withActions] as any
+  argTypes
 };
 
 /**

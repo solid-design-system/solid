@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-badge');
 const { overrideArgs } = storybookHelpers('sd-badge');
@@ -28,8 +27,7 @@ export default {
     }
   },
   args: overrideArgs([{ type: 'slot', name: 'default', value: '8' }]),
-  argTypes,
-  decorators: [withActions] as any
+  argTypes
 };
 
 export const Default = {

@@ -6,7 +6,6 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { withActions } from 'storybook/actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-tab');
 const { overrideArgs } = storybookHelpers('sd-tab');
@@ -39,8 +38,7 @@ export default {
       },
       options: {}
     }
-  },
-  decorators: [withActions] as any
+  }
 };
 
 /**
