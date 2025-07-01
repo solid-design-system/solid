@@ -293,7 +293,7 @@ export default class SdDropdown extends SolidElement {
 
     if (menu) {
       const menuItems = menu.defaultSlot.assignedElements({ flatten: true }) as SdMenuItem[];
-      const firstMenuItem = menuItems[0];
+      const firstMenuItem = menuItems.find(item => !item.disabled) || menuItems[0];
       const lastMenuItem = menuItems[menuItems.length - 1];
 
       // When up/down is pressed, we make the assumption that the user is familiar with the menu and plans to make a
