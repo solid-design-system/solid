@@ -10,7 +10,7 @@ const { generateTemplate } = storybookTemplate('sd-brandshape');
 
 export default {
   title: 'Components/sd-brandshape',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-brandshape',
   parameters: {
     ...parameters,
