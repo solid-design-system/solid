@@ -15,8 +15,8 @@ export default {
 
 export const InterestCalculator = {
   render: () =>
-    html`<div class="sd-container">
-        <p class="sd-headline sd-headline--size-xl justify-center mb-3">
+    html`<div class="sd-container flex flex-col justify-center">
+        <p class="sd-headline sd-headline--size-xl justify-center mb-3 inline text-center">
           Your final amount with <span class="interest-percentage">0%</span> return
         </p>
         <p class="sd-headline sd-headline--size-3xl justify-center"><span class="final-amount">13,000.00</span> EUR</p>
@@ -48,8 +48,7 @@ export const InterestCalculator = {
             <span class="final-amount">13,000.00</span> euros. Try out how you can increase your final amount with a
             higher rate of return.
           </p>
-          <!-- TODO: Replace by correct icon -->
-          <sd-icon name="content/house-percent" class="text-[48px] text-primary"></sd-icon>
+          <sd-icon name="content/hourglass" class="text-[48px] min-w-12 min-h-12 text-primary"></sd-icon>
         </div>
       </div>
       <script type="module">

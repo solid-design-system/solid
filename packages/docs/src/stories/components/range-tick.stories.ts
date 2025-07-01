@@ -34,9 +34,11 @@ export const Default = {
 };
 
 /**
- * Use the `subtick` attribute to render a tick for finer scale readings
+ * Use the `subtick` attribute to render a tick for finer scale readings:
+ * - default: standard tick marks for main scale intervals
+ * - subtick: additional smaller tick marks between main ticks for more precise visual granularity
  */
-export const Subtick = {
+export const Ticks = {
   render: (args: any) => {
     return generateTemplate({ args, constants: [{ type: 'attribute', name: 'subtick', value: true }] });
   }
