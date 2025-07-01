@@ -88,10 +88,8 @@ export default class SdTab extends SolidElement {
         part="base"
         class=${cx(
           'inline-flex justify-center min-w-max items-center h-12 px-3 leading-none select-none cursor-pointer group relative',
-          'focus-visible:focus-outline outline-2 !-outline-offset-2 ',
-          'transition-border duration-1000 ease-in-out',
-          this.variant === 'container' && ' rounded-[4px_4px_0_0]',
-          this.variant === 'container' && 'tab-container-border bg-white',
+          'focus-visible:focus-outline outline-2 !-outline-offset-2 transition-all duration-fast ease-in-out',
+          this.variant === 'container' && 'tab-container-border bg-white rounded-[4px_4px_0_0]',
           this.variant === 'container' && this.active && 'tab--active-container-border bg-white',
           this.disabled || this.visuallyDisabled ? '!cursor-not-allowed' : 'hover:bg-neutral-200',
           this.active && 'z-20'
@@ -124,13 +122,12 @@ export default class SdTab extends SolidElement {
                 ></div>
               `
             : ''}
-
           <div
             part="hover-bottom-border"
             class=${cx(
               !this.active &&
                 !this.disabled &&
-                'absolute w-full h-0.25 bottom-0 border-b border-neutral-400 invisible group-hover:visible'
+                'absolute bottom-0 left-0 w-full border border-transparent group-hover:border-b-neutral-400 transition-[border] duration-fast ease-in-out'
             )}
           ></div>
         </div>
@@ -142,19 +139,19 @@ export default class SdTab extends SolidElement {
     ...SolidElement.styles,
     css`
       :host {
-        @apply box-border block;
+        @apply box-border inline-block;
+      }
+
+      :host(:hover)::part(hover-bottom-border) {
+        @apply border-b-neutral-400;
       }
 
       .tab-container-border::after {
-        content: '';
-        @apply absolute w-full h-full border border-transparent;
-        border-bottom: none;
-        border-radius: 4px 4px 0 0;
+        @apply absolute w-full h-full border border-transparent content-[''];
       }
 
       .tab--active-container-border::after {
-        content: '';
-        @apply absolute w-full h-full border border-neutral-400 transition-[border] duration-fast ease-in-out;
+        @apply absolute w-full h-full border border-neutral-400 content-[''] transition-[border] duration-fast ease-in-out;
         border-bottom: none;
         border-radius: 4px 4px 0 0;
       }
