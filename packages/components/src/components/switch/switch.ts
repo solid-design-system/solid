@@ -2,6 +2,7 @@ import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { defaultValue } from '../../internal/default-value';
 import { FormControlController } from '../../internal/form';
+import { HasSlotController } from '../../internal/slot';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { live } from 'lit/directives/live.js';
 import { property, query, state } from 'lit/decorators.js';
@@ -34,6 +35,8 @@ import type { SolidFormControl } from '../../internal/solid-element';
  */
 @customElement('sd-switch')
 export default class SdSwitch extends SolidElement implements SolidFormControl {
+  private readonly hasSlotController = new HasSlotController(this, 'tooltip');
+
   private readonly formControlController: FormControlController = new FormControlController(this, {
     value: (control: SdSwitch) => (control.checked ? control.value || 'on' : undefined),
     defaultValue: (control: SdSwitch) => control.defaultChecked,
@@ -238,7 +241,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
             <slot></slot>
           </span>
         </label>
-        <slot name="tooltip"></slot>
+        ${this.hasSlotController.test('tooltip') ? html` <slot name="tooltip"></slot>` : null}
       </div>
       ${this.formControlController.renderInvalidMessage()}
     `;
