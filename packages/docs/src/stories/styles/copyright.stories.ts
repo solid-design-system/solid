@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-copyright');
 
 export default {
   title: 'Styles/sd-copyright',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-copyright',
   parameters: {
     ...parameters,

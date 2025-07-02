@@ -7,7 +7,7 @@ const { generateTemplate } = storybookTemplate('sd-divider');
 
 export default {
   title: 'Components/sd-divider',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-divider',
   args,
   argTypes,

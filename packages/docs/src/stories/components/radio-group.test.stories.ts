@@ -6,7 +6,7 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
+import { userEvent } from 'storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 
 const { argTypes, parameters } = storybookDefaults('sd-radio-group');
@@ -30,7 +30,7 @@ export default {
     {
       type: 'slot',
       name: 'label',
-      value: `<label slot="label">Group Label</label>`
+      value: `<label slot="label">Group label</label>`
     },
     {
       type: 'slot',

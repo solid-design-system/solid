@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-step-group');
 const { overrideArgs } = storybookHelpers('sd-step-group');
@@ -9,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-step-group');
 
 export default {
   title: 'Components/sd-step-group',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-step-group',
   args: overrideArgs([
     {
@@ -46,8 +45,7 @@ export default {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3274-23489&node-type=section&t=5PpAC3TA3kYF7ufX-0'
     }
-  },
-  decorators: [withActions] as any
+  }
 };
 
 export const Default = {

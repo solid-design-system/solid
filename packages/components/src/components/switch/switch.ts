@@ -202,7 +202,9 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
               : this.disabled
                 ? 'border-neutral-500'
                 : this.showInvalidStyle
-                  ? 'border-error hover:border-error-400 bg-error hover:bg-error-400 group-hover:bg-error-400'
+                  ? this.checked
+                    ? 'border-error bg-error hover:bg-error-400 hover:border-error-400 group-hover:bg-error-400'
+                    : 'border-error bg-white hover:border-error-400 hover:bg-white group-hover:border-error-400 group-hover:bg-white'
                   : this.checked
                     ? 'border-accent hover:bg-accent-550 bg-accent hover:border-accent-550 group-hover:bg-accent-550'
                     : 'border-neutral-800 bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
@@ -218,9 +220,11 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
                 : this.disabled
                   ? '-translate-x-2 bg-neutral-500'
                   : this.showInvalidStyle
-                    ? 'bg-white -translate-x-2'
+                    ? this.checked
+                      ? 'bg-white translate-x-2'
+                      : 'bg-error -translate-x-2 hover:bg-error-400 hover:border-error-400 group-hover:border-error-400 group-hover:bg-error-400'
                     : this.checked
-                      ? 'translate-x-2 bg-white'
+                      ? 'bg-white translate-x-2'
                       : 'bg-neutral-800 -translate-x-2'
             )}
           ></span>

@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Templates/Link',
   parameters: {
     design: {
@@ -53,7 +53,7 @@ export const LinkList = {
           href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-introduction--docs"
           size="lg"
         >
-          Sustainable Investments
+          Sustainable investments
         </sd-link>
       </li>
       <li>

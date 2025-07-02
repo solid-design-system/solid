@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-map-marker');
 const { overrideArgs } = storybookHelpers('sd-map-marker');
@@ -9,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-map-marker');
 
 export default {
   title: 'Components/sd-map-marker',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-map-marker',
   args: overrideArgs([{ type: 'slot', name: 'default', value: '<div class="sr-only">Pinned Location</div>' }]),
   parameters: {
@@ -19,8 +18,7 @@ export default {
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2544-17460&node-type=FRAME&m=dev'
     }
   },
-  argTypes,
-  decorators: [withActions] as any
+  argTypes
 };
 
 export const Default = {

@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-dropdown');
 const { generateTemplate } = storybookTemplate('sd-dropdown');
@@ -10,7 +9,7 @@ const { overrideArgs } = storybookHelpers('sd-dropdown');
 export default {
   title: 'Components/sd-dropdown',
   component: 'sd-dropdown',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   args: overrideArgs([
     {
       type: 'slot',
@@ -37,7 +36,6 @@ export default {
     }
   },
   decorators: [
-    withActions,
     (story: any) =>
       html`<style>
           sd-dropdown:not([rounded]) sd-button::part(base),

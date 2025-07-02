@@ -1,7 +1,6 @@
 import { html } from 'lit-html';
 import '../../../../components/src/solid-components';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-status-badge');
 const { overrideArgs } = storybookHelpers('sd-status-badge');
@@ -9,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-status-badge');
 
 export default {
   title: 'Styles/sd-status-badge',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-status-badge',
   args: overrideArgs([
     {
@@ -27,8 +26,7 @@ export default {
       type: 'figma',
       url: 'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=18391-37775&t=LaSTkqB8MKXGCZbc-0'
     }
-  },
-  decorators: [withActions] as any
+  }
 };
 
 export const Default = {
