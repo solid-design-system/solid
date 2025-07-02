@@ -5,7 +5,7 @@ import { html } from 'lit';
 
 export default {
   title: 'Templates/Notification',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {

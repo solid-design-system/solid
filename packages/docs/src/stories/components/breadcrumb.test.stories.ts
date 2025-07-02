@@ -70,8 +70,8 @@ export const Truncated = {
 
 export const Mobile = {
   name: 'Mobile',
-  parameters: {
-    viewport: { defaultViewport: 'mobile1' }
+  globals: {
+    viewport: { value: 'mobile1' }
   },
   render: (args: any) => {
     return generateTemplate({ args });
