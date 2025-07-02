@@ -28,7 +28,7 @@ export const Default = {
         <sd-option value="option-1">Global</sd-option>
         <sd-option value="option-2">Europe</sd-option>
       </sd-select>
-      <sd-select style label="Recommended investment horizon" placeholder="Please Select" max-options-visible="3">
+      <sd-select label="Recommended investment horizon" placeholder="Please Select" max-options-visible="3">
         <sd-option value="option-1">Short-term (1-3 years)</sd-option>
         <sd-option value="option-2">Medium-term (3-5 years)</sd-option>
         <sd-option value="option-3">Long-term (5+ years)</sd-option>
