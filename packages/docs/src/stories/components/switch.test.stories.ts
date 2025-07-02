@@ -177,6 +177,40 @@ export const Parts = {
   }
 };
 
+export const Slots = {
+  name: 'Slots',
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: {
+          type: 'slot',
+          name: 'default',
+          title: 'slot=...',
+          values: [
+            {
+              value: `<div class="slot slot--border slot--background slot--text" style="--slot-content: ''; --slot-height: 24px; --slot-width: 24px;">Default Slot</div>`,
+              title: 'default'
+            },
+            {
+              value: `
+                <div>Label</div>
+                <div
+                  class="slot slot--border slot--background slot--text"
+                  slot="tooltip"
+                  style="--slot-content: ''; --slot-height: 22px; --slot-width: 82px;"
+                >
+                  Tooltip Slot
+                </div>`,
+              title: 'tooltip'
+            }
+          ]
+        }
+      },
+      args
+    });
+  }
+};
+
 export const Combination = generateScreenshotStory([
   Default,
   Disabled,
