@@ -675,24 +675,30 @@ export const MegaMenu = {
         const submenus = document.querySelectorAll('sd-drawer sd-navigation-item + div');
         const backButtons = document.querySelectorAll('sd-drawer sd-navigation-item + div > sd-button');
 
-        function closeSubmenu() {
-          submenus.forEach(menu => menu.removeAttribute('data-active-submenu'));
-          drawer.removeAttribute('data-submenu-open');
+        const ATTR_SUBMENU_OPEN = 'data-submenu-open';
+        const ATTR_ACTIVE_SUBMENU = 'data-active-submenu';
+
+        const isSubmenuTrigger = item =>
+          !!item.nextElementSibling?.hasAttribute('data-submenu') && !item.closest('[data-submenu]');
+
+        const isSubmenuOpen = () => drawer.hasAttribute(ATTR_SUBMENU_OPEN);
+
+        const getParentSubmenu = item => item?.closest('[data-submenu]');
+
+        function closeOpenSubmenu() {
+          submenus.forEach(menu => menu.removeAttribute(ATTR_ACTIVE_SUBMENU));
+          drawer.removeAttribute(ATTR_SUBMENU_OPEN);
         }
 
         function openSubmenu(submenu) {
-          closeSubmenu();
-          submenu.setAttribute('data-active-submenu', '');
-          drawer.setAttribute('data-submenu-open', '');
-        }
-
-        function isSubmenuActive() {
-          return drawer.hasAttribute('data-submenu-open');
+          closeOpenSubmenu();
+          submenu.setAttribute(ATTR_ACTIVE_SUBMENU, '');
+          drawer.setAttribute(ATTR_SUBMENU_OPEN, '');
         }
 
         function handleOpenSubmenuChanged() {
           submenus.forEach(menu => {
-            if (menu.hasAttribute('data-active-submenu')) {
+            if (menu.hasAttribute(ATTR_ACTIVE_SUBMENU)) {
               menu.removeAttribute('inert');
             } else {
               menu.setAttribute('inert', '');
@@ -700,58 +706,55 @@ export const MegaMenu = {
           });
         }
 
-        function handleItemClick(event, item) {
-          if (item.hasAttribute('href')) {
-            items.forEach(item => item.removeAttribute('current'));
-            item.setAttribute('current', '');
+        function onItemClick(event, item) {
+          if (event.target !== item) return;
 
-            submenus.forEach(menu => {
-              if (!menu.contains(item)) return;
-
-              const previous = menu.previousElementSibling;
-
-              if (previous.tagName === 'SD-NAVIGATION-ITEM') {
-                previous.setAttribute('current', '');
-              }
-            });
-
+          if (isSubmenuTrigger(item)) {
+            handleSubmenuTriggerClick(item);
             return;
           }
 
-          const submenu = item.nextElementSibling;
+          items.forEach(item => item.removeAttribute('current'));
+          item.setAttribute('current', '');
+
+          submenus.forEach(menu => {
+            if (!menu.contains(item)) return;
+
+            const previous = menu.previousElementSibling;
+
+            if (previous.tagName === 'SD-NAVIGATION-ITEM') {
+              previous.setAttribute('current', '');
+            }
+          });
+
+          return;
+        }
+
+        function onBackClick() {
+          const submenu = getParentSubmenu(document.activeElement);
+
+          closeOpenSubmenu();
           if (!submenu) return;
 
-          openSubmenu(submenu);
-          setTimeout(() => submenu.querySelector('sd-button').focus(), drawer.token('sd-duration-medium'));
-        }
-
-        function handleBackClick(event, button) {
-          const submenu = button.closest('[data-active-submenu]');
           const item = submenu.previousElementSibling;
-
           item.focus();
-          closeSubmenu();
         }
 
-        function handleSubmenuKeydown(event, submenu) {
-          const movingFoward = (event.key === 'Tab' && !event.shiftKey) || event.key === 'ArrowDown';
-          const movingBackwards = (event.key === 'Tab' && event.shiftKey) || event.key === 'ArrowUp';
+        function onSubmenuKeydown(event, submenu) {
+          if (event.key !== 'Tab') return;
 
-          if (!movingFoward && !movingBackwards) return;
-
-          const focusableSelectors = ['sd-navigation-item', 'sd-button'];
+          const movingBackwards = event.shiftKey;
+          const movingFoward = !movingBackwards;
 
           const focusableElements = Array.from(
-            Array.from(submenu.querySelectorAll(focusableSelectors.join(','))).filter(el => {
-              if (
-                el.tagName === 'SD-NAVIGATION-ITEM' &&
-                el.parentElement.tagName === 'SD-NAVIGATION-ITEM' &&
-                !el.parentElement.hasAttribute('open')
-              ) {
-                return false;
-              }
-              return true;
-            })
+            Array.from(submenu.querySelectorAll(['sd-navigation-item', 'sd-button'].join(','))).filter(
+              el =>
+                !(
+                  el.tagName === 'SD-NAVIGATION-ITEM' &&
+                  el.parentElement.tagName === 'SD-NAVIGATION-ITEM' &&
+                  !el.parentElement.hasAttribute('open')
+                )
+            )
           );
 
           const first = focusableElements[0];
@@ -769,81 +772,96 @@ export const MegaMenu = {
           }
         }
 
-        async function handleItemArrowDown(item) {
-          const next = getNextSibling(item, 'sd-navigation-item');
-          const submenu = next.closest('[data-submenu]');
+        function focusNextItem(item) {
+          const submenu = getParentSubmenu(item);
+          const isMainItem = !submenu;
+          let next = getNextSibling(item, 'sd-navigation-item');
 
-          if (!submenu && isSubmenuActive()) {
-            closeSubmenu();
-            setTimeout(() => next?.focus(), 0);
-            return;
-          }
+          if (!next) return;
+          if (!isMainItem && !submenu.contains(next)) return;
 
-          if (submenu && !isSubmenuActive()) {
-            openSubmenu(submenu);
-            setTimeout(() => next?.focus(), next.token('sd-duration-medium'));
-            return;
+          if (isMainItem) {
+            while (true) {
+              if (!getParentSubmenu(next)) break;
+              next = getNextSibling(next, 'sd-navigation-item');
+            }
           }
 
           next.parentElement.closest('sd-navigation-item')?.setAttribute('open', '');
           setTimeout(() => next?.focus(), 0);
         }
 
-        function handleItemArrowUp(item) {
-          const previous = getPreviousSibling(item, 'sd-navigation-item');
-          const submenu = previous.closest('[data-submenu]');
+        function focusPreviousItem(item) {
+          const submenu = getParentSubmenu(item);
+          const isMainItem = !submenu;
+          let previous = getPreviousSibling(item, 'sd-navigation-item');
 
-          if (!submenu && isSubmenuActive()) {
-            closeSubmenu();
-            setTimeout(() => previous?.focus(), 0);
-            return;
-          }
+          if (!previous) return;
+          if (!isMainItem && !submenu.contains(previous)) return;
 
-          if (submenu && !isSubmenuActive()) {
-            openSubmenu(submenu);
-            setTimeout(() => previous?.focus(), previous.token('sd-duration-medium'));
-            return;
+          if (isMainItem) {
+            while (true) {
+              if (!getParentSubmenu(previous)) break;
+              previous = getPreviousSibling(previous, 'sd-navigation-item');
+            }
           }
 
           previous.parentElement.closest('sd-navigation-item')?.setAttribute('open', '');
           setTimeout(() => previous?.focus(), 0);
         }
 
-        function handleItemKeydown(event, item) {
-          event.stopPropagation();
+        function handleSubmenuTriggerClick(item) {
+          if (!isSubmenuTrigger(item)) return;
 
-          if (event.key === 'ArrowDown') {
-            handleItemArrowDown(item);
-          } else if (event.key === 'ArrowUp') {
-            handleItemArrowUp(item);
+          const submenu = item.nextElementSibling;
+          if (!submenu) return;
+
+          openSubmenu(submenu);
+          setTimeout(() => submenu.querySelector('sd-navigation-item').focus(), drawer.token('sd-duration-medium'));
+        }
+
+        function onItemKeydown(event, item) {
+          if (event.target !== item) return;
+
+          switch (event.key) {
+            case 'ArrowDown':
+              focusNextItem(item);
+              break;
+            case 'ArrowUp':
+              focusPreviousItem(item);
+              break;
+            case 'ArrowRight':
+              handleSubmenuTriggerClick(item);
+              break;
+            case 'ArrowLeft':
+              onBackClick();
+              break;
           }
         }
 
-        function handleDrawerHide(event, drawer) {
+        function onDrawerHide(event, drawer) {
           if (event.target !== drawer) return;
-
-          drawer.removeAttribute('data-submenu-open');
-          submenus.forEach(submenu => submenu.removeAttribute('data-active-submenu'));
+          closeOpenSubmenu();
         }
 
         const observer = new MutationObserver(handleOpenSubmenuChanged);
-        observer.observe(drawer, { attributes: true, attributeFilter: ['data-submenu-open'] });
+        observer.observe(drawer, { attributes: true, attributeFilter: [ATTR_SUBMENU_OPEN] });
         handleOpenSubmenuChanged();
 
         items.forEach(item => {
-          item.addEventListener('click', e => handleItemClick(e, item));
-          item.addEventListener('keydown', e => handleItemKeydown(e, item));
+          item.addEventListener('click', e => onItemClick(e, item));
+          item.addEventListener('keydown', e => onItemKeydown(e, item));
         });
 
         submenus.forEach(submenu => {
-          submenu.addEventListener('keydown', e => handleSubmenuKeydown(e, submenu));
+          submenu.addEventListener('keydown', e => onSubmenuKeydown(e, submenu));
         });
 
         backButtons.forEach(button => {
-          button.addEventListener('click', e => handleBackClick(e, button));
+          button.addEventListener('click', e => onBackClick(e, button));
         });
 
-        drawer.addEventListener('sd-hide', e => handleDrawerHide(e, drawer));
+        drawer.addEventListener('sd-hide', e => onDrawerHide(e, drawer));
       </script>
 
       <!-- Desktop navigation logic -->
@@ -855,7 +873,7 @@ export const MegaMenu = {
         const getDropdownTrigger = dropdown => dropdown.querySelector('sd-navigation-item[slot="trigger"]');
         const getParentDropdown = item => item?.closest('sd-dropdown');
 
-        function focusNextNavigationItem(item) {
+        function focusNextItem(item) {
           const parent = getParentDropdown(item);
           const next = getNextSibling(item, 'sd-navigation-item');
 
@@ -867,7 +885,7 @@ export const MegaMenu = {
           setTimeout(() => next?.focus(), 0);
         }
 
-        function focusPreviousNavigationItem(item) {
+        function focusPreviousItem(item) {
           const parent = getParentDropdown(item);
           const previous = getPreviousSibling(item, 'sd-navigation-item');
 
@@ -880,7 +898,7 @@ export const MegaMenu = {
           setTimeout(() => previous?.focus(), 0);
         }
 
-        function focusNextMainNavigationItem(item) {
+        function focusNextMainItem(item) {
           const parent = getParentDropdown(item);
 
           let next = item;
@@ -893,7 +911,7 @@ export const MegaMenu = {
           setTimeout(() => next?.focus(), 0);
         }
 
-        function focusPreviousMainNavigationItem(item) {
+        function focusPreviousMainItem(item) {
           const parent = getParentDropdown(item);
 
           let previous = item;
@@ -938,23 +956,23 @@ export const MegaMenu = {
 
           switch (event.key) {
             case 'ArrowDown':
-              focusNextNavigationItem(item);
+              focusNextItem(item);
               break;
             case 'ArrowRight':
               if (isMainItem) {
-                focusNextMainNavigationItem(item);
+                focusNextMainItem(item);
               } else {
-                focusNextNavigationItem(item);
+                focusNextItem(item);
               }
               break;
             case 'ArrowUp':
-              focusPreviousNavigationItem(item);
+              focusPreviousItem(item);
               break;
             case 'ArrowLeft':
               if (isMainItem) {
-                focusPreviousMainNavigationItem(item);
+                focusPreviousMainItem(item);
               } else {
-                focusPreviousNavigationItem(item);
+                focusPreviousItem(item);
               }
               break;
           }
