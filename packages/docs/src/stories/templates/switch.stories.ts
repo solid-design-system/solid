@@ -35,11 +35,19 @@ export const Default = {
       </sd-select>
       <sd-switch>
         With sustainability strategy (47)
-        <sd-tooltip slot="tooltip" size="sm" content="Lorem ipsum"></sd-tooltip>
+        <sd-tooltip
+          slot="tooltip"
+          size="sm"
+          content="Show products that follow specific products that follow specific environmental (ESG) criteria."
+        ></sd-tooltip>
       </sd-switch>
       <sd-switch>
         Eligible for savings plan (162)
-        <sd-tooltip slot="tooltip" size="sm" content="Lorem ipsum"></sd-tooltip>
+        <sd-tooltip
+          slot="tooltip"
+          size="sm"
+          content="Show products that are eligible for recurring saving plans."
+        ></sd-tooltip>
       </sd-switch>
     </div>
   `
