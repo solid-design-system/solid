@@ -6,8 +6,6 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { userEvent } from 'storybook/test';
-import { waitUntil } from '@open-wc/testing-helpers';
 
 const { argTypes, parameters } = storybookDefaults('sd-switch');
 const { generateTemplate } = storybookTemplate('sd-switch');
@@ -119,24 +117,34 @@ export const CheckedAndDisabled = {
 /**
  * Test invalid state inside a form.
  */
-
 export const Invalid = {
   name: 'Invalid',
   render: (args: any) => {
     return html`
-      <form>
+      <form id="invalid-form">
         ${generateTemplate({
-          args,
-          constants: [{ type: 'attribute', name: 'required', value: true }]
+          axis: {
+            x: {
+              type: 'attribute',
+              name: 'checked',
+              values: [true, false]
+            }
+          },
+          constants: { type: 'attribute', name: 'required', value: true },
+          args
         })}
-        <sd-button style="margin-top: 16px" type="submit">Submit</sd-button>
       </form>
+      <script type="module">
+        await customElements.whenDefined('sd-switch');
+        const switches = document.querySelectorAll('#invalid-form sd-switch');
+        switches.forEach((sdSwitch, index) => {
+          sdSwitch.id = 'invalid-switch-' + index;
+          sdSwitch.click();
+          sdSwitch.reportValidity();
+          sdSwitch.setCustomValidity('Error text');
+        });
+      </script>
     `;
-  },
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('sd-button');
-    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
-    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
   }
 };
 
