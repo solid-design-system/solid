@@ -851,28 +851,12 @@ export const MegaMenu = {
         const dropdowns = document.querySelectorAll('sd-header sd-dropdown');
         const items = document.querySelectorAll('sd-header sd-navigation-item');
 
-        function handleDropdownShow(event, dropdown) {
-          const item = dropdown.querySelector('sd-navigation-item[slot="trigger"]');
-          item.setAttribute('current', true);
-        }
+        const isDropdownTrigger = item => item.getAttribute('slot') === 'trigger';
+        const getDropdownTrigger = dropdown => dropdown.querySelector('sd-navigation-item[slot="trigger"]');
+        const getParentDropdown = item => item?.closest('sd-dropdown');
 
-        function handleDropdownHide(event, dropdown) {
-          const item = dropdown.querySelector('sd-navigation-item[slot="trigger"]');
-          item.removeAttribute('current');
-        }
-
-        function handleDropdownPointerOut(event, dropdown) {
-          if (event.pointerType !== 'mouse' || dropdown.contains(event.relatedTarget)) return;
-          dropdown.hide();
-        }
-
-        function handleItemPointerOver(event, item) {
-          if (event.pointerType !== 'mouse') return;
-          item.closest('sd-dropdown').show();
-        }
-
-        function handleItemArrowDown(item) {
-          const parent = item.closest('sd-dropdown');
+        function focusNextNavigationItem(item) {
+          const parent = getParentDropdown(item);
           const next = getNextSibling(item, 'sd-navigation-item');
 
           if (parent?.contains(next)) {
@@ -883,32 +867,104 @@ export const MegaMenu = {
           setTimeout(() => next?.focus(), 0);
         }
 
-        function handleItemArrowUp(item) {
-          const parent = item.closest('sd-dropdown');
+        function focusPreviousNavigationItem(item) {
+          const parent = getParentDropdown(item);
           const previous = getPreviousSibling(item, 'sd-navigation-item');
 
           if (parent?.contains(previous)) {
             parent?.show();
           } else {
             parent?.hide();
-            previous?.closest('sd-dropdown')?.show();
+            getParentDropdown(previous)?.show();
           }
           setTimeout(() => previous?.focus(), 0);
         }
 
-        function handleItemKeydown(event, item) {
-          if (event.key === 'ArrowDown') {
-            handleItemArrowDown(item);
-          } else if (event.key === 'ArrowUp') {
-            handleItemArrowUp(item);
+        function focusNextMainNavigationItem(item) {
+          const parent = getParentDropdown(item);
+
+          let next = item;
+          while (true) {
+            next = getNextSibling(next, 'sd-navigation-item');
+            if (!parent || !parent?.contains(next)) break;
+          }
+
+          parent?.hide();
+          setTimeout(() => next?.focus(), 0);
+        }
+
+        function focusPreviousMainNavigationItem(item) {
+          const parent = getParentDropdown(item);
+
+          let previous = item;
+          while (true) {
+            previous = getPreviousSibling(previous, 'sd-navigation-item');
+
+            if (!parent || !parent?.contains(previous)) {
+              const dropdown = getParentDropdown(previous);
+
+              if (!!dropdown) {
+                previous = getDropdownTrigger(dropdown);
+              }
+
+              break;
+            }
+          }
+
+          parent?.hide();
+          setTimeout(() => previous?.focus(), 0);
+        }
+
+        function onDropdownShow(event, dropdown) {
+          getDropdownTrigger(dropdown).setAttribute('current', '');
+        }
+
+        function onDropdownHide(event, dropdown) {
+          getDropdownTrigger(dropdown).removeAttribute('current');
+        }
+
+        function onDropdownPointerOut(event, dropdown) {
+          if (event.pointerType !== 'mouse' || dropdown.contains(event.relatedTarget)) return;
+          dropdown.hide();
+        }
+
+        function onItemPointerOver(event, item) {
+          if (event.pointerType !== 'mouse') return;
+          getParentDropdown(item).show();
+        }
+
+        function onItemKeydown(event, item) {
+          const isMainItem = !getParentDropdown(item) || isDropdownTrigger(item);
+
+          switch (event.key) {
+            case 'ArrowDown':
+              focusNextNavigationItem(item);
+              break;
+            case 'ArrowRight':
+              if (isMainItem) {
+                focusNextMainNavigationItem(item);
+              } else {
+                focusNextNavigationItem(item);
+              }
+              break;
+            case 'ArrowUp':
+              focusPreviousNavigationItem(item);
+              break;
+            case 'ArrowLeft':
+              if (isMainItem) {
+                focusPreviousMainNavigationItem(item);
+              } else {
+                focusPreviousNavigationItem(item);
+              }
+              break;
           }
         }
 
-        function handleItemClick(event, item) {
+        function onItemClick(_, item) {
           if (!item.hasAttribute('href')) return;
 
           items.forEach(item => {
-            if (item.getAttribute('slot') === 'trigger') return;
+            if (isDropdownTrigger(item)) return;
             item.removeAttribute('current');
           });
 
@@ -916,17 +972,17 @@ export const MegaMenu = {
         }
 
         dropdowns.forEach(dropdown => {
-          dropdown.addEventListener('sd-show', e => handleDropdownShow(e, dropdown));
-          dropdown.addEventListener('sd-hide', e => handleDropdownHide(e, dropdown));
-          dropdown.addEventListener('pointerout', e => handleDropdownPointerOut(e, dropdown));
+          dropdown.addEventListener('sd-show', e => onDropdownShow(e, dropdown));
+          dropdown.addEventListener('sd-hide', e => onDropdownHide(e, dropdown));
+          dropdown.addEventListener('pointerout', e => onDropdownPointerOut(e, dropdown));
         });
 
         items.forEach(item => {
-          if (item.getAttribute('slot') === 'trigger') {
-            item.addEventListener('pointerover', e => handleItemPointerOver(e, item));
+          if (isDropdownTrigger(item)) {
+            item.addEventListener('pointerover', e => onItemPointerOver(e, item));
           }
-          item.addEventListener('keydown', e => handleItemKeydown(e, item));
-          item.addEventListener('click', e => handleItemClick(e, item));
+          item.addEventListener('keydown', e => onItemKeydown(e, item));
+          item.addEventListener('click', e => onItemClick(e, item));
         });
       </script>
     `;
