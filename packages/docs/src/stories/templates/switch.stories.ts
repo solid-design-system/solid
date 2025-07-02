@@ -20,7 +20,7 @@ export const Default = {
   name: 'Switch with Tooltip',
   render: () => html`
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <sd-select style label="Investment product type" placeholder="Please Select" max-options-visible="2">
+      <sd-select label="Investment product type" placeholder="Please Select" max-options-visible="2">
         <sd-option value="option-1">Equity fund</sd-option>
         <sd-option value="option-2">Bond fund</sd-option>
       </sd-select>
