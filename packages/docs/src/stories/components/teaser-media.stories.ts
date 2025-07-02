@@ -7,7 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-teaser-media');
 const { generateTemplate } = storybookTemplate('sd-teaser-media');
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Components/sd-teaser-media',
   component: 'sd-teaser-media',
   args: overrideArgs([

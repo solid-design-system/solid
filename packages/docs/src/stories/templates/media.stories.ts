@@ -3,7 +3,7 @@ import { html } from 'lit-html';
 
 export default {
   title: 'Templates/Media',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   parameters: {
     chromatic: { disableSnapshot: true }
   }

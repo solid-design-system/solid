@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Templates/Checkbox Group',
   parameters: {
     design: {
@@ -20,7 +20,7 @@ export default {
 export const Default = {
   render: () => html`
     <sd-checkbox-group size="lg">
-      <label slot="label">Checkbox Group Label</label>
+      <label slot="label">Checkbox group label</label>
       <sd-checkbox value="1" checked>Checkbox 1</sd-checkbox>
       <sd-checkbox value="2" checked>Checkbox 2</sd-checkbox>
       <sd-checkbox value="3">Checkbox 3</sd-checkbox>
@@ -42,7 +42,7 @@ export const RequiredCheckboxGroup = {
   render: () => html`
     <form id="checkbox-group-form">
       <sd-checkbox-group id="checkbox-group" aria-required="true">
-        <label slot="label">Required Checkbox Group*</label>
+        <label slot="label">Required checkbox group*</label>
         <sd-checkbox value="1">Checkbox 1</sd-checkbox>
         <sd-checkbox value="2">Checkbox 2</sd-checkbox>
         <sd-checkbox value="3">Checkbox 3</sd-checkbox>

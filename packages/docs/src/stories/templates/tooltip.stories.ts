@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Templates/Tooltip',
   parameters: {
     chromatic: { disableSnapshot: true },
@@ -64,12 +64,12 @@ export const RadioGroupWithTooltip = {
   name: 'Radio Group with Tooltip',
   render: () => html`
     <sd-radio-group class="w-[400px] py-6" boldLabel>
-      <div slot="label">Choose your Subscription Plan</div>
+      <div slot="label">Choose your subscription plan</div>
       <sd-tooltip slot="tooltip" content="Select the plan that best meets your needs" size="sm"></sd-tooltip>
 
-      <sd-radio value="basic">Basic Plan</sd-radio>
-      <sd-radio value="standard">Standard Plan</sd-radio>
-      <sd-radio value="premium">Premium Plan</sd-radio>
+      <sd-radio value="basic">Basic plan</sd-radio>
+      <sd-radio value="standard">Standard plan</sd-radio>
+      <sd-radio value="premium">Premium plan</sd-radio>
     </sd-radio-group>
   `
 };
@@ -78,12 +78,12 @@ export const CheckboxGroupWithTooltip = {
   name: 'Checkbox Group with Tooltip',
   render: () => html`
     <sd-checkbox-group class="w-[400px] py-6">
-      <div slot="label">Select your Interests</div>
+      <div slot="label">Select your interests</div>
       <sd-tooltip slot="tooltip" content="Choose all that apply to you" size="sm"></sd-tooltip>
 
-      <sd-checkbox value="newsletters">Subscribe to our Newsletters</sd-checkbox>
-      <sd-checkbox value="promotions">Receive our Promotions</sd-checkbox>
-      <sd-checkbox value="updates">Get our Product Updates</sd-checkbox>
+      <sd-checkbox value="newsletters">Subscribe to our newsletters</sd-checkbox>
+      <sd-checkbox value="promotions">Receive our promotions</sd-checkbox>
+      <sd-checkbox value="updates">Get our product updates</sd-checkbox>
     </sd-checkbox-group>
   `
 };
