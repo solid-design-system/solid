@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.8.3
+
+### Patch Changes
+
+- Implemented the style for invalid sample in `sd-switch` according to Figma _[`#2315`](https://github.com/solid-design-system/solid/pull/2315) [`1923e35`](https://github.com/solid-design-system/solid/commit/1923e3506841930afc1281f837185fb7b41424d4) [@balco0110](https://github.com/balco0110)_
+
 ## 5.8.2
 
 ### Patch Changes
