@@ -601,8 +601,8 @@ export const MegaMenu = {
 
       <style>
         sd-dropdown:has(sd-navigation-item[slot='trigger'])::part(base__popup) {
-          left: 0;
-          width: 100%;
+          left: -16px;
+          width: calc(100% + 16px);
         }
 
         sd-dropdown[open] sd-navigation-item[slot='trigger'][current] {
