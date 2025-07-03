@@ -38,7 +38,7 @@ export const Default = {
         <sd-tooltip
           slot="tooltip"
           size="sm"
-          content="Show products that follow specific products that follow specific environmental (ESG) criteria."
+          content="Show products that follow specific environmental (ESG) criteria."
         ></sd-tooltip>
       </sd-switch>
       <sd-switch>
