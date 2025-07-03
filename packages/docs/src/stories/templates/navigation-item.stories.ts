@@ -678,6 +678,8 @@ export const MegaMenu = {
         const ATTR_SUBMENU_OPEN = 'data-submenu-open';
         const ATTR_ACTIVE_SUBMENU = 'data-active-submenu';
 
+        const isGroupedItem = item => !!item.querySelector('sd-navigation-item');
+
         const isSubmenuTrigger = item =>
           !!item.nextElementSibling?.hasAttribute('data-submenu') && !item.closest('[data-submenu]');
 
@@ -787,7 +789,12 @@ export const MegaMenu = {
             }
           }
 
-          next.parentElement.closest('sd-navigation-item')?.setAttribute('open', '');
+          const nextParentItem = next.parentElement.closest('sd-navigation-item');
+          if (nextParentItem && !nextParentItem.hasAttribute('open')) {
+            focusNextItem(next);
+            return;
+          }
+
           setTimeout(() => next?.focus(), 0);
         }
 
@@ -806,13 +813,16 @@ export const MegaMenu = {
             }
           }
 
-          previous.parentElement.closest('sd-navigation-item')?.setAttribute('open', '');
+          const previousParentItem = previous.parentElement.closest('sd-navigation-item');
+          if (previousParentItem && !previousParentItem.hasAttribute('open')) {
+            focusPreviousItem(previous);
+            return;
+          }
+
           setTimeout(() => previous?.focus(), 0);
         }
 
         function handleSubmenuTriggerClick(item) {
-          if (!isSubmenuTrigger(item)) return;
-
           const submenu = item.nextElementSibling;
           if (!submenu) return;
 
@@ -831,10 +841,24 @@ export const MegaMenu = {
               focusPreviousItem(item);
               break;
             case 'ArrowRight':
-              handleSubmenuTriggerClick(item);
+              if (isSubmenuTrigger(item)) {
+                handleSubmenuTriggerClick(item);
+                return;
+              }
+
+              if (isGroupedItem(item)) {
+                item.setAttribute('open', '');
+              }
               break;
             case 'ArrowLeft':
-              onBackClick();
+              if (isGroupedItem(item) && item.hasAttribute('open')) {
+                item.removeAttribute('open');
+                return;
+              }
+
+              if (isSubmenuOpen()) {
+                onBackClick();
+              }
               break;
           }
         }
