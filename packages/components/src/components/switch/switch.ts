@@ -196,25 +196,25 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
           />
 
           <span
-          id="control"
-          part="control ${this.checked ? ' control--checked' : 'control--unchecked'}"
-          class=${cx(
-            `relative flex flex-initial items-center justify-center border rounded-full h-4 w-8 transition-colors ease duration-100
+            id="control"
+            part="control ${this.checked ? ' control--checked' : 'control--unchecked'}"
+            class=${cx(
+              `relative flex flex-initial items-center justify-center border rounded-full h-4 w-8 transition-colors ease duration-100
             peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2
             peer-focus-visible:outline-primary transition-colors ease-in-out duration-medium hover:duration-fast`,
-            this.disabled && this.checked
-              ? 'border-neutral-500 bg-neutral-500'
-              : this.disabled
-                ? 'border-neutral-500'
-                : this.showInvalidStyle
-                  ? this.checked
-                    ? 'border-error bg-error hover:bg-error-400 hover:border-error-400 group-hover:bg-error-400'
-                    : 'border-error bg-white hover:border-error-400 hover:bg-white group-hover:border-error-400 group-hover:bg-white'
-                  : this.checked
-                    ? 'border-accent hover:bg-accent-550 bg-accent hover:border-accent-550 group-hover:bg-accent-550'
-                    : 'border-neutral-800 bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
-          )}
-        >
+              this.disabled && this.checked
+                ? 'border-neutral-500 bg-neutral-500'
+                : this.disabled
+                  ? 'border-neutral-500'
+                  : this.showInvalidStyle
+                    ? this.checked
+                      ? 'border-error bg-error hover:bg-error-400 hover:border-error-400 group-hover:bg-error-400'
+                      : 'border-error bg-white hover:border-error-400 hover:bg-white group-hover:border-error-400 group-hover:bg-white'
+                    : this.checked
+                      ? 'border-accent hover:bg-accent-550 bg-accent hover:border-accent-550 group-hover:bg-accent-550'
+                      : 'border-neutral-800 bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
+            )}
+          >
             <span
               id="thumb"
               part="thumb"
@@ -225,9 +225,11 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
                   : this.disabled
                     ? '-translate-x-2 bg-neutral-500'
                     : this.showInvalidStyle
-                      ? 'bg-white -translate-x-2'
+                      ? this.checked
+                        ? 'bg-white translate-x-2'
+                        : 'bg-error -translate-x-2 hover:bg-error-400 hover:border-error-400 group-hover:border-error-400 group-hover:bg-error-400'
                       : this.checked
-                        ? 'translate-x-2 bg-white'
+                        ? 'bg-white translate-x-2'
                         : 'bg-neutral-800 -translate-x-2'
               )}
             ></span>
