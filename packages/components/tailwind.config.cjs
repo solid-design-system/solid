@@ -7,6 +7,18 @@ theme.fill.neutral[100] = theme.backgroundColor.neutral[100].replace('/*', '/* O
 theme.extend = {
   ...theme.extend,
   keyframes: {
+    'loader-color-primary': {
+      '0%, 100%': { color: 'var(--sd-color-primary, #00358E)' },
+      '50%': { color: 'var(--sd-color-primary, #00358E)', opacity: '20%' }
+    },
+    'loader-color-white': {
+      '0%, 100%': { color: 'var(--sd-color-white, #FFFFFF)' },
+      '50%': { color: 'var(--sd-color-white, #FFFFFF)', opacity: '20%' }
+    },
+    'loader-color-current': {
+      '0%, 100%': { color: 'currentColor' },
+      '50%': { color: 'currentColor', opacity: '20%' }
+    },
     grow: {
       '0%': { width: '0%' },
       '100%': { width: '100%' }
@@ -15,11 +27,18 @@ theme.extend = {
       '0%': { transform: 'translateY(0)' },
       '50%': { transform: 'translateY(-18px)' },
       '100%': { transform: 'translateY(0)' }
+    },
+    wave: {
+      '0%, 60%, 100%': { transform: 'initial' },
+      '30%': { transform: 'translateY(-5px)' }
     }
   },
   animation: {
+    'bounce-once': 'bounce-once var(--sd-duration-medium, 300ms) ease-in-out',
     grow: 'grow linear',
-    'bounce-once': 'bounce-once var(--sd-duration-medium, 300ms) ease-in-out'
+    'loader-primary': 'wave 1s infinite, loader-color-primary 2s infinite',
+    'loader-white': 'wave 1s infinite, loader-color-white 2s infinite',
+    'loader-current': 'wave 1s infinite, loader-color-current 2s infinite'
   }
 };
 
