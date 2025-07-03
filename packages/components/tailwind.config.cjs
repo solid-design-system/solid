@@ -36,9 +36,9 @@ theme.extend = {
   animation: {
     'bounce-once': 'bounce-once var(--sd-duration-medium, 300ms) ease-in-out',
     grow: 'grow linear',
-    'loader-primary': 'wave 1s infinite, loader-color-primary 2s infinite',
-    'loader-white': 'wave 1s infinite, loader-color-white 2s infinite',
-    'loader-current': 'wave 1s infinite, loader-color-current 2s infinite'
+    'loader-primary': 'wave 1.5s infinite, loader-color-primary 3s infinite',
+    'loader-white': 'wave 1.5s infinite, loader-color-white 3s infinite',
+    'loader-current': 'wave 1.5s infinite, loader-color-current 3s infinite'
   }
 };
 
