@@ -127,7 +127,7 @@ export default class SdTab extends SolidElement {
             class=${cx(
               !this.active &&
                 !this.disabled &&
-                'absolute bottom-0 left-0 w-full border border-transparent group-hover:border-b-neutral-400 transition-[border] duration-fast ease-in-out'
+                'absolute bottom-0 left-0 w-full h-0.25 border-b border-transparent group-hover:border-b-neutral-400 transition-[border] duration-fast ease-in-out'
             )}
           ></div>
         </div>
@@ -151,7 +151,7 @@ export default class SdTab extends SolidElement {
       }
 
       .tab--active-container-border::after {
-        @apply absolute w-full h-full border border-neutral-400 content-[''] transition-[border] duration-fast ease-in-out;
+        @apply absolute w-full h-full border border-neutral-400 content-[''] transition-[border] duration-medium ease-in-out;
         border-bottom: none;
         border-radius: 4px 4px 0 0;
       }
