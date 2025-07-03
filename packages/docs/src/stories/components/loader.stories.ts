@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-loader');
 const { generateTemplate } = storybookTemplate('sd-loader');
@@ -19,8 +18,7 @@ export default {
       type: 'figma',
       url: ''
     }
-  },
-  decorators: [withActions] as any
+  }
 };
 
 export const Default = {
