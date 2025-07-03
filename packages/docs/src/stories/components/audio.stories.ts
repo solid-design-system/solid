@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-audio');
@@ -10,11 +9,10 @@ const { generateTemplate } = storybookTemplate('sd-audio');
 export default {
   title: 'Components/sd-audio',
   component: 'sd-audio',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   args,
   argTypes,
-  parameters: { ...parameters },
-  decorators: [withActions] as any
+  parameters: { ...parameters }
 };
 
 const audioConstant: ConstantDefinition = {

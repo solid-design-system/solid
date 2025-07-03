@@ -7,7 +7,6 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-scrollable');
 const { overrideArgs } = storybookHelpers('sd-scrollable');
@@ -38,7 +37,6 @@ export default {
   argTypes,
   parameters: { ...parameters, controls: { disable: true } },
   decorators: [
-    withActions,
     (story: any) =>
       html`<style>
           sd-scrollable {

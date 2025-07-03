@@ -388,7 +388,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
                 id="label"
                 class=${cx(
                   'p-0 leading-normal text-black text-left',
-                  hasLabel ? 'flex' : 'hidden',
+                  hasLabel ? 'inline-block' : 'hidden',
                   this.boldLabel && 'font-bold'
                 )}
                 @click=${this.focus}

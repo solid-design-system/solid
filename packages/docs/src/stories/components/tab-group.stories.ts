@@ -21,7 +21,7 @@ function generateTabsAndPanels(
 
 export default {
   title: 'Components/sd-tab-group',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-tab-group',
   args: overrideArgs({
     type: 'slot',

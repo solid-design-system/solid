@@ -6,7 +6,7 @@ import { html } from 'lit-html';
  */
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Templates/Accordion Group',
   parameters: {
     chromatic: { disableSnapshot: true },
@@ -22,7 +22,7 @@ export const Default = {
   render: () => html`
     <div class="bg-white p-8">
       <sd-accordion-group>
-        <sd-accordion summary="Shareholder Structure">
+        <sd-accordion summary="Shareholder structure">
           <figure class="sd-media">
             <img
               class="w-full aspect-ratio"
@@ -73,7 +73,7 @@ export const NeutralBackground = {
   render: () => html`
     <div class="bg-neutral-100 p-8">
       <sd-accordion-group>
-        <sd-accordion summary="Shareholder Structure">
+        <sd-accordion summary="Shareholder structure">
           <figure class="sd-media">
             <img
               class="w-full aspect-ratio"
@@ -124,7 +124,7 @@ export const PrimaryBackground = {
   render: () => html`
     <div class="bg-primary-100 p-8">
       <sd-accordion-group>
-        <sd-accordion summary="Shareholder Structure">
+        <sd-accordion summary="Shareholder structure">
           <figure class="sd-media">
             <img
               class="w-full aspect-ratio"

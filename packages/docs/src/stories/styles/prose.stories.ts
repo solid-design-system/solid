@@ -10,7 +10,7 @@ const html = String.raw;
 
 export default {
   title: 'Styles/sd-prose',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-prose',
   parameters: {
     ...parameters,

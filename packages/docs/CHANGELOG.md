@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.20.1
+
+### Patch Changes
+
+- Updated the sample for `checked`, `help text` and `invalid` in `sd-radio-button-group` according to Figma. _[`#2273`](https://github.com/solid-design-system/solid/pull/2273) [`6701124`](https://github.com/solid-design-system/solid/commit/6701124ce70e65968802b795e5d616219d772fb0) [@balco0110](https://github.com/balco0110)_
+
 ## 1.20.0
 
 ### Minor Changes

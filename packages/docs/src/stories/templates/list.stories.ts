@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Templates/List',
   parameters: {
     chromatic: { disableSnapshot: true },
@@ -20,17 +20,17 @@ export const ListWithBoldedText = {
   render: () =>
     html`<ul class="sd-list">
       <li>
-        <b>Unordered Bold list</b>
+        <b>Unordered bold list</b>
         <ul>
           <li>
-            Unordered Normal list
+            Unordered normal list
             <ul>
-              <li>Unordered Normal list</li>
+              <li>Unordered normal list</li>
             </ul>
           </li>
         </ul>
       </li>
-      <li><b>Unordered Bold list</b></li>
-      <li><b>Unordered Bold list</b></li>
+      <li><b>Unordered bold list</b></li>
+      <li><b>Unordered bold list</b></li>
     </ul>`
 };

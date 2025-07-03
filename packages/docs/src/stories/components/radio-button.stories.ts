@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-radio-button');
 const { overrideArgs } = storybookHelpers('sd-radio-button');
@@ -9,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-radio-button');
 
 export default {
   title: 'Components/sd-radio-button',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-radio-button',
   args: overrideArgs([
     {
@@ -25,8 +24,7 @@ export default {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2269-23138&node-type=section&t=5PpAC3TA3kYF7ufX-0'
     }
-  },
-  decorators: [withActions] as any
+  }
 };
 
 export const Default = {
@@ -106,15 +104,15 @@ export const Checked = {
       <sd-radio-group value="1">
         <sd-radio-button value="1">
           <sd-icon name="system/image" slot="icon"></sd-icon>
-          Checked
+          Label
         </sd-radio-button>
         <sd-radio-button value="2">
           <sd-icon name="system/image" slot="icon"></sd-icon>
-          Checked
+          Label
         </sd-radio-button>
         <sd-radio-button value="3">
           <sd-icon name="system/image" slot="icon"></sd-icon>
-          Checked
+          Label
         </sd-radio-button>
       </sd-radio-group>
     </div>
@@ -215,7 +213,7 @@ export const VisuallyDisabled = {
         <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm">
           <sd-radio-button value="2" visually-disabled>
             <sd-icon name="system/image" slot="icon"></sd-icon>
-            Visually Disabled
+            Visually disabled
           </sd-radio-button>
         </sd-tooltip>
 

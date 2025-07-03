@@ -7,7 +7,7 @@ const { argTypes, parameters } = storybookDefaults('sd-navigation-item');
 const { generateTemplate } = storybookTemplate('sd-navigation-item');
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Components/sd-navigation-item',
   component: 'sd-navigation-item',
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Navigation' }]),
