@@ -116,7 +116,8 @@ export const Parts = {
                 <div style="width: 600px; position: relative;">%TEMPLATE%
                 </div>
               `
-            }
+            },
+            { type: 'attribute', name: 'variant', value: 'container' }
           ],
           args
         })
