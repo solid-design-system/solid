@@ -38,7 +38,7 @@ export const MegaMenu = {
           <ul class="flex -ms-4">
             <li>
               <sd-dropdown>
-                <sd-navigation-item class="font-bold" slot="trigger"> Funds & Depot </sd-navigation-item>
+                <sd-navigation-item slot="trigger" current class="font-bold"> Funds & Depot </sd-navigation-item>
 
                 <ul class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
                   <li>
@@ -605,7 +605,7 @@ export const MegaMenu = {
           width: 100%;
         }
 
-        sd-navigation-item[slot='trigger'][current] {
+        sd-dropdown[open] sd-navigation-item[slot='trigger'][current] {
           background: rgb(246 246 246);
         }
 
@@ -894,7 +894,7 @@ export const MegaMenu = {
         const items = document.querySelectorAll('sd-header sd-navigation-item');
 
         const isDropdownTrigger = item => item.getAttribute('slot') === 'trigger';
-        const getDropdownTrigger = dropdown => dropdown.querySelector('sd-navigation-item[slot="trigger"]');
+        const getDropdownTrigger = dropdown => dropdown?.querySelector('sd-navigation-item[slot="trigger"]');
         const getParentDropdown = item => item?.closest('sd-dropdown');
 
         function focusNextItem(item) {
@@ -962,6 +962,9 @@ export const MegaMenu = {
         }
 
         function onDropdownHide(event, dropdown) {
+          const hasActiveItem = dropdown.querySelector('sd-navigation-item[current]:not([slot="trigger"])');
+          if (hasActiveItem) return;
+
           getDropdownTrigger(dropdown).removeAttribute('current');
         }
 
@@ -1005,12 +1008,11 @@ export const MegaMenu = {
         function onItemClick(_, item) {
           if (!item.hasAttribute('href')) return;
 
-          items.forEach(item => {
-            if (isDropdownTrigger(item)) return;
-            item.removeAttribute('current');
-          });
-
+          items.forEach(item => item.removeAttribute('current'));
           item.setAttribute('current', '');
+
+          const dropdown = getParentDropdown(item);
+          getDropdownTrigger(dropdown)?.setAttribute('current', '');
         }
 
         dropdowns.forEach(dropdown => {
