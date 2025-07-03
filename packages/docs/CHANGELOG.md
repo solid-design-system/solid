@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.20.2
+
+### Patch Changes
+
+- Fix missing components and styles docs. _[`#2323`](https://github.com/solid-design-system/solid/pull/2323) [`d945956`](https://github.com/solid-design-system/solid/commit/d945956798d4c145d962e82cf302e388e6ac7ef8) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.20.1
 
 ### Patch Changes
