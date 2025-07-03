@@ -38,7 +38,7 @@ export default class SdNavigationItem extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'description', 'children');
   private readonly localize = new LocalizeController(this);
 
-  @query('a[part="base"], button[part="base"]') button: HTMLButtonElement | HTMLLinkElement | null;
+  @query('[part="base"]') button: HTMLButtonElement | HTMLLinkElement | null;
 
   /** The navigation item's orientation. If false, properties below this point are not used. */
   @property({ type: Boolean, reflect: true }) vertical = false;
@@ -140,6 +140,15 @@ export default class SdNavigationItem extends SolidElement {
     return literal`button`;
   }
 
+  public focus() {
+    if (this.disabled) return;
+    this.button?.focus();
+  }
+
+  public blur() {
+    this.button?.blur();
+  }
+
   render() {
     const tag = this.tag;
     const isLink = this.isLink;
@@ -221,7 +230,7 @@ export default class SdNavigationItem extends SolidElement {
                   >
                     <slot part="content" class="inline-flex"></slot>
                   </a>`
-                : html`<slot part="content" class="inline-flex"></slot>`
+                : html`<slot part="content" class="inline-flex text-start"></slot>`
             }
           </span>
           ${
@@ -265,7 +274,7 @@ export default class SdNavigationItem extends SolidElement {
                 name="description"
                 part="description"
                 class=${cx(
-                  'inline-block text-sm text-left text-black pb-3',
+                  'inline-block text-sm text-left font-normal text-black pb-3',
                   isAccordion || this.separated ? 'grow' : 'w-full',
                   this.separated ? 'px-4' : this.calculatePaddingX
                 )}
