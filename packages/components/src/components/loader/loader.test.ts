@@ -11,8 +11,8 @@ describe('<sd-loader>', () => {
 
     it('should have a role of "status".', async () => {
       const loader = await fixture<SdLoader>(html` <sd-loader></sd-loader> `);
-      const loaderWrapper = loader.shadowRoot?.querySelector('.flex');
-      expect(loaderWrapper).have.attribute('role', 'progressbar');
+      const svg = loader.shadowRoot!.querySelector('svg')!;
+      expect(svg).have.attribute('role', 'progressbar');
     });
   });
 });

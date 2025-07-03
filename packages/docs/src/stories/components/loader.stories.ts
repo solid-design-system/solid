@@ -54,14 +54,14 @@ export const Variants = {
  */
 export const Size = {
   render: () =>
-    html`<div class="flex flex-row gap-12">
-      <div style="font-size: inherit">
-        <sd-loader color="primary"></sd-loader>
-      </div>
-      <div style="font-size: 1rem">
+    html` <div class="flex gap-12">
+      <div style="font-size: 4rem">
         <sd-loader color="primary"></sd-loader>
       </div>
       <div style="font-size: 2rem">
+        <sd-loader color="primary"></sd-loader>
+      </div>
+      <div style="font-size: inherit">
         <sd-loader color="primary"></sd-loader>
       </div>
     </div>`
