@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-tab');
 
 export default {
   title: 'Components/sd-tab',
-  tags: ['!dev', 'skip-a11y-[aria-required-parent]'],
+  tags: ['!dev', 'skip-a11y-[aria-required-parent]', 'autodocs'],
   component: 'sd-tab',
   args: overrideArgs([
     {
