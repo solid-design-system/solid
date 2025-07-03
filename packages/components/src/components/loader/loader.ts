@@ -20,26 +20,56 @@ export default class SdLoader extends SolidElement {
 
   render() {
     return html`
-      <div class="flex" role="progressbar" aria-label=${this.localize.term('loading')}>
-        ${[0, 1, 2].map(
-          i => html`
-            <sd-icon
-              part="dot"
-              class=${cx(
-                'dot rounded-full',
-                i < 2 ? 'mr-[6px]' : 'mr-0',
-                {
-                  primary: 'text-primary animate-loader-primary',
-                  white: 'text-white animate-loader-white',
-                  currentColor: 'animate-loader-current'
-                }[this.color]
-              )}
-              library="_internal"
-              name="circle"
-            ></sd-icon>
-          `
-        )}
-      </div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        role="progressbar"
+        aria-label=${this.localize.term('loading')}
+      >
+        <circle
+          class=${cx(
+            'dot',
+            {
+              primary: 'text-primary animate-loader-primary',
+              white: 'text-white animate-loader-white',
+              currentColor: 'animate-loader-current'
+            }[this.color]
+          )}
+          cx="20"
+          cy="12"
+          r="2"
+          fill="currentColor"
+        />
+        <circle
+          class=${cx(
+            'dot',
+            {
+              primary: 'text-primary animate-loader-primary',
+              white: 'text-white animate-loader-white',
+              currentColor: 'animate-loader-current'
+            }[this.color]
+          )}
+          cx="12"
+          cy="12"
+          r="2"
+          fill="currentColor"
+        />
+        <circle
+          class=${cx(
+            'dot',
+            {
+              primary: 'text-primary animate-loader-primary',
+              white: 'text-white animate-loader-white',
+              currentColor: 'animate-loader-current'
+            }[this.color]
+          )}
+          cx="4"
+          cy="12"
+          r="2"
+          fill="currentColor"
+        />
+      </svg>
     `;
   }
 
@@ -50,21 +80,22 @@ export default class SdLoader extends SolidElement {
     ...SolidElement.styles,
     css`
       :host {
-        .dot {
-          width: 0.25em;
-          height: 0.25em;
+        @apply inline-block;
+        width: 1em;
+        height: 1em;
+      }
 
-          &:nth-child(1) {
-            animation-delay: 0.4s;
-          }
+      .dot {
+        &:nth-child(3) {
+          animation-delay: 0.4s;
+        }
 
-          &:nth-child(2) {
-            animation-delay: 0.6s;
-          }
+        &:nth-child(2) {
+          animation-delay: 0.6s;
+        }
 
-          &:nth-child(3) {
-            animation-delay: 0.8s;
-          }
+        &:nth-child(1) {
+          animation-delay: 0.8s;
         }
       }
     `
