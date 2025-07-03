@@ -2,7 +2,7 @@ import { html } from 'lit-html';
 import '../../../../components/src/solid-components';
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Templates/Navigation Item',
   parameters: {
     chromatic: { disableSnapshot: true },
