@@ -8,7 +8,7 @@ const { overrideArgs } = storybookHelpers('sd-option');
 
 export default {
   title: 'Components/sd-option',
-  tags: ['!dev', 'skip-a11y-[aria-required-parent]'],
+  tags: ['!dev', 'autodocs', 'skip-a11y-[aria-required-parent]'],
   component: 'sd-option',
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
   argTypes,
