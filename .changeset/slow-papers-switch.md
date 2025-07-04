@@ -3,4 +3,4 @@
 '@solid-design-system/docs': patch
 ---
 
-fix: render content for `tooltip` with bolded text template
+Fixed render content for `tooltip` with bolded text template
