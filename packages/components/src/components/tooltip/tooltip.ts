@@ -4,6 +4,7 @@ import { animateTo, parseDuration, stopAnimations } from '../../internal/animate
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
+import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
@@ -49,6 +50,7 @@ export default class SdTooltip extends SolidElement {
   private interactionType: 'keyboard' | 'mouse' | undefined;
 
   public localize = new LocalizeController(this);
+  private readonly hasSlotController = new HasSlotController(this, '[default]', 'content');
 
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
   @query('#tooltip') body: HTMLElement;
@@ -137,7 +139,7 @@ export default class SdTooltip extends SolidElement {
   }
 
   private get hasCustomTrigger() {
-    return !!this.querySelector('*:not([slot])');
+    return this.hasSlotController.test('[default]');
   }
 
   // removes empty text nodes from the default slot

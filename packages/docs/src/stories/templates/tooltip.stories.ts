@@ -91,13 +91,13 @@ export const CheckboxGroupWithTooltip = {
 export const TooltipWithBoldedText = {
   name: 'Tooltip with Bolded Text',
   render: () => html`
-    <div class="h-40 flex items-center pl-20">
-      <sd-tooltip placement="top-start"
-        ><span slot="content" class="sd-prose sd-prose--inverted"
-          ><h5>Guidelines</h5>
-          Document design standards and usage</span
-        ></sd-tooltip
-      >
+    <div class="h-[150px] flex items-center">
+      <sd-tooltip placement="top-start" size="sm">
+        <div slot="content">
+          <p class="sd-headline sd-headline--size-base sd-headline--inverted">Guidelines</p>
+          <p class="sd-paragraph sd-paragraph--size-sm sd-paragraph--inverted">Document design standards and usage</p>
+        </div>
+      </sd-tooltip>
     </div>
   `
 };
