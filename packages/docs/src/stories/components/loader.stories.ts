@@ -23,7 +23,9 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return generateTemplate({ args });
+    return html` <div class="text-xl">
+      <sd-loader color="primary"></sd-loader>
+    </div>`;
   }
 };
 
@@ -36,13 +38,13 @@ export const Default = {
 export const Variants = {
   render: () => html`
     <div class="flex gap-12">
-      <div class="inline-flex p-4">
+      <div class="inline-flex p-12 text-xl">
         <sd-loader color="currentColor"></sd-loader>
       </div>
-      <div class="inline-flex p-4">
+      <div class="inline-flex p-12 text-xl">
         <sd-loader color="primary"></sd-loader>
       </div>
-      <div class="inline-flex bg-primary p-4">
+      <div class="inline-flex bg-primary p-12 text-xl">
         <sd-loader color="white"></sd-loader>
       </div>
     </div>
@@ -54,7 +56,7 @@ export const Variants = {
  */
 export const Size = {
   render: () =>
-    html` <div class="flex gap-12">
+    html` <div class="flex gap-12 items-center">
       <div style="font-size: 4rem">
         <sd-loader color="primary"></sd-loader>
       </div>
