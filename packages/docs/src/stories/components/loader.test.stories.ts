@@ -50,6 +50,9 @@ export const Variants = {
         y: { type: 'attribute', name: 'color' }
       },
       options: {
+        templateRenderer: ({ attributes }) => {
+          return `<div class="flex"><sd-loader color=${attributes.color}></sd-loader></div>`;
+        },
         templateBackgrounds: {
           alternate: 'y',
           colors: ['', 'rgb(var(--sd-color-primary, 0 53 142))', '#F6F6F6']
