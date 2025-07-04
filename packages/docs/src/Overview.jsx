@@ -15,9 +15,9 @@ export const OverviewFormatter = ({ children, story }) => {
               .join(' ')}
           </sd-link>
 
-          <div className="sd-status-badge sd-status-badge--success m-0">
-            <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
-            Available
+          <div className={`m-0 sd-status-badge ${link ? `sd-status-badge--success` : `sd-status-badge--error`}`}>
+            <sd-icon name={link ? 'status-check' : 'status-close'} library="sd-status-assets"></sd-icon>
+            {link ? 'Available' : 'Not Available'}
           </div>
         </div>
       ))}
