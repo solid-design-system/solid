@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-step');
 
 export default {
   title: 'Components/sd-step',
-  tags: ['!dev', 'skip-a11y-[aria-required-parent]'],
+  tags: ['!dev', 'autodocs', 'skip-a11y-[aria-required-parent]'],
   component: 'sd-step',
   args: overrideArgs([
     {
