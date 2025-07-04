@@ -29,7 +29,7 @@ export default {
     ...parameters,
     design: {
       type: 'figma',
-      url: ''
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Solid-DS-%E2%80%93-Component-Docs?node-id=15967-5252&t=ZM8naV6M5izZj27w-0'
     }
   },
   decorators: [
