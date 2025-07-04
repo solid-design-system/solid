@@ -20,6 +20,8 @@ const translation: Translation = {
   goToSlide: (slide, count) => `Go to slide ${slide} of ${count}`,
   hidePassword: 'Hide password',
   loading: 'Loading',
+  maximum: 'Maximum',
+  minimum: 'Minimum',
   mute: 'Mute',
   nextSlide: 'Next slide',
   noResults: 'No results found',

@@ -1,0 +1,33 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdRangeTickStories from './range-tick.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/components-sd-range-tick--docs',
+  'figma-library':
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=38643-1935&p=f&t=geVMHRGtODUfMEfv-0',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Solid-DS-%E2%80%93-Component-Docs?node-id=15911-3947&t=8iWCIgBhk0cwDsb7-0'
+};
+
+export const content = `
+# Range Tick
+
+Used to represent a tick within a sd-range.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Components
+
+[sd-range](./?path=/docs/components-sd-range--docs)
+
+#### Related Templates
+
+[Range](./?path=/docs/templates-range--docs)`;
+
+<Meta title="Components/sd-range-tick/Overview" />
+
+<OverviewFormatter story={SdRangeTickStories.Default}>{content}</OverviewFormatter>
