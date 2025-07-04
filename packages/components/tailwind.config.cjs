@@ -29,16 +29,16 @@ theme.extend = {
       '100%': { transform: 'translateY(0)' }
     },
     wave: {
-      '0%, 60%, 100%': { transform: 'initial' },
-      '30%': { transform: 'translateY(-5px)' }
+      '0%, 40%, 100%': { transform: 'initial' },
+      '20%': { transform: 'translateY(-4px)' }
     }
   },
   animation: {
     'bounce-once': 'bounce-once var(--sd-duration-medium, 300ms) ease-in-out',
     grow: 'grow linear',
-    'loader-primary': 'wave 1.5s infinite, loader-color-primary 3s infinite',
-    'loader-white': 'wave 1.5s infinite, loader-color-white 3s infinite',
-    'loader-current': 'wave 1.5s infinite, loader-color-current 3s infinite'
+    'loader-primary': 'wave 1.3s infinite, loader-color-primary 2.6s infinite',
+    'loader-white': 'wave 1.3s infinite, loader-color-white 2.6s infinite',
+    'loader-current': 'wave 1.3s infinite, loader-color-current 2.6s infinite'
   }
 };
 

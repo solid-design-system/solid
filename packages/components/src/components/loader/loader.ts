@@ -86,16 +86,12 @@ export default class SdLoader extends SolidElement {
       }
 
       .dot {
-        &:nth-child(3) {
-          animation-delay: 0.4s;
-        }
-
         &:nth-child(2) {
-          animation-delay: 0.6s;
+          animation-delay: 0.1s;
         }
 
         &:nth-child(1) {
-          animation-delay: 0.8s;
+          animation-delay: 0.2s;
         }
       }
     `
