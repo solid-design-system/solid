@@ -72,10 +72,6 @@ div[data-radix-scroll-area-viewport]:focus-visible {
   @apply border-accent;
 }
 
-.sbdocs .sbdocs-content blockquote[type='warning'] {
-  @apply border-warning;
-}
-
 /* Code */
 .sbdocs .language-css,
 .sbdocs .language-js {

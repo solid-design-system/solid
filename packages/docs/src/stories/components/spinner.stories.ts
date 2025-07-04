@@ -8,11 +8,7 @@ const { overrideArgs } = storybookHelpers('sd-select');
 
 /**
  *
- * <blockquote type="warning">
-    <p>
-      The `sd-spinner` will be deprecated in the future. Please use the `sd-loader` component instead.
-    </p>
-  </blockquote>
+ * <sd-notification variant="warning" open class="mb-4">**Warning:** The \`sd-spinner\` will be deprecated in the future. Please use the \`sd-loader\` component instead.</sd-notification>
  *
  * **Known browser issues:**
  * - The 'sd-spinner' component may experience spinner animation issues in Safari, causing them to appear wobbly.
