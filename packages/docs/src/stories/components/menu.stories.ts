@@ -91,7 +91,9 @@ export const Icon = {
 };
 
 /**
- * Set the `type` attribute to `checkbox` to create a menu item that will toggle on and off when selected. You can use the `checked` attribute to set the initial state.
+ * Use the `type` attribute with the value `checkbox` to create a menu item that will toggle on and off when selected.
+ *
+ * **Hint:** use the `checked` attribute to set the initial state.
  */
 export const Checkmark = {
   render: () => html`
