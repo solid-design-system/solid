@@ -16,7 +16,7 @@ export default {
   title: 'Components/sd-switch/Screenshots: sd-switch',
   component: 'sd-switch',
   tags: ['!autodocs'],
-  args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),
+  args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default slot' }]),
   argTypes,
   parameters: {
     ...parameters,
@@ -171,13 +171,47 @@ export const Parts = {
 
                 <div id="part-${part}">${
                   part.includes('control--checked')
-                    ? '<sd-switch checked>Default Slot</sd-switch>'
-                    : '<sd-switch>Default Slot</sd-switch>'
+                    ? '<sd-switch checked>Default slot</sd-switch>'
+                    : '<sd-switch>Default slot</sd-switch>'
                 }</div>
                 <div class="hidden">%TEMPLATE%</div>
               `
             };
           })
+        }
+      },
+      args
+    });
+  }
+};
+
+export const slots = {
+  name: 'slots',
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: {
+          type: 'slot',
+          name: 'default',
+          title: 'slot=...',
+          values: [
+            {
+              value: `<div class="slot slot--border slot--background slot--text" style="--slot-content: ''; --slot-height: 24px; --slot-width: 24px;">Default slot</div>`,
+              title: 'default'
+            },
+            {
+              value: `
+                <div>Label</div>
+                <div
+                  class="slot slot--border slot--background slot--text"
+                  slot="tooltip"
+                  style="--slot-content: ''; --slot-height: 22px; --slot-width: 82px;"
+                >
+                  Tooltip slot
+                </div>`,
+              title: 'tooltip'
+            }
+          ]
         }
       },
       args
@@ -192,5 +226,6 @@ export const Combination = generateScreenshotStory([
   Checked,
   CheckedAndDisabled,
   Invalid,
+  slots,
   Parts
 ]);
