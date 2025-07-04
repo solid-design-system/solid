@@ -31,8 +31,9 @@ export const Default = {
 };
 
 /**
- * Use the `label` slot or  attribute to define a descriptive label for the range component, helping users understand its purpose.
- * The label is mandatory to ensure accessibility compliance and provide context for screen readers.
+ * Use the `label` attribute to give the range element an accessible label.
+ *
+ * For labels that contain HTML, use the `label` slot instead.
  */
 export const Label = {
   render: (args: any) => {
@@ -55,7 +56,7 @@ export const DoubleKnob = {
 };
 
 /**
- * Use the `no-track-bar` attribute to hide the track bar. By default, the trackbar appears.
+ * Use the `no-track-bar` attribute to hide the track bar.
  */
 export const TrackBar = {
   name: 'Track-bar',
@@ -139,7 +140,7 @@ export const Ticks = {
 };
 
 /**
- * Use the “no-tooltip” attribute to disable the tooltip when interacting with the knob.
+ * Use the `no-tooltip` attribute to disable the tooltip when interacting with the knob.
  * By default, the tooltip appears on click or drag, positioned above the knob for clear visibility.
  */
 export const Tooltip = {
@@ -154,7 +155,9 @@ export const Tooltip = {
 };
 
 /**
- * Use the `help-text` slot or attribute to provide additional context or instructions.
+ * Use the `help-text` attribute to provide additional context or instructions.
+ *
+ * For help texts that contain HTML, use the `help-text` slot instead.
  */
 export const HelpText = {
   render: (args: any) => {
@@ -185,8 +188,11 @@ export const Disabled = {
 };
 
 /**
- * When using this attribute, make sure to provide ways to inform the user why the element is disabled and how to enable it.
- * This can be done by using the `help-text` attribute or wrapping the element in a sd-tooltip.
+ * Use the `visually-disabled` attribute to style the component as if it was disabled and enable `aria-disabled` to allow it to be reachable by screen readers.
+ *
+ * **Hint:** When using this attribute, make sure to provide ways to inform the user why the element is disabled and how to enable it. This can be done by using the `help-text` attribute or wrapping the element in a sd-tooltip.
+ *
+ * **Accessibility Hint:** Disabling elements is not recommended for accessibility reasons.
  */
 export const VisuallyDisabled = {
   render: (args: any) => {

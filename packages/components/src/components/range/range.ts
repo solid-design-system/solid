@@ -637,7 +637,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
         class=${cx('inline-flex w-full', this.visuallyDisabled && 'focus-visible:focus-outline')}
         tabindex=${ifDefined(this.visuallyDisabled ? '0' : undefined)}
       >
-        <div part="input-wrapper" class="relative flex-1 mx-2 mb-3">
+        <div part="input-wrapper" class="relative flex-1 mx-2 mb-[10px]">
           <input id="input" tabindex="-1" hidden @invalid=${this.handleInvalid} />
 
           <div

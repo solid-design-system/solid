@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit';
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Templates/Range',
   parameters: {
     chromatic: { disableSnapshot: true },
