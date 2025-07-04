@@ -1,9 +1,8 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
-import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers } from '../../../scripts/storybook/helper';
 
 const { argTypes, parameters } = storybookDefaults('sd-loader');
-const { generateTemplate } = storybookTemplate('sd-loader');
 const { overrideArgs } = storybookHelpers('sd-loader');
 
 export default {
@@ -22,7 +21,7 @@ export default {
 };
 
 export const Default = {
-  render: (args: any) => {
+  render: () => {
     return html` <div class="text-xl">
       <sd-loader color="primary"></sd-loader>
     </div>`;
