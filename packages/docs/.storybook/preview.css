@@ -12,7 +12,7 @@
 /* Links */
 .sbdocs.sbdocs-a,
 .sbdocs .sbdocs-content a:not(:has(code)):not(:where(#root-inner *, #storybook-docs *)) {
-  @apply underline text-primary hover:text-primary-500 active:text-primary-800 transition-colors;
+  @apply underline transition-colors text-primary hover:text-primary-500 active:text-primary-800;
 }
 
 /* Outline on focus visible */
