@@ -94,7 +94,7 @@ export const TooltipWithBoldedText = {
     <div class="h-[150px] flex items-center">
       <sd-tooltip placement="top-start" size="sm">
         <div slot="content">
-          <p class="sd-headline sd-headline--size-base sd-headline--inverted">Guidelines</p>
+          <h5 class="sd-headline sd-headline--size-base sd-headline--inverted">Guidelines</h5>
           <p class="sd-paragraph sd-paragraph--size-sm sd-paragraph--inverted">Document design standards and usage</p>
         </div>
       </sd-tooltip>
