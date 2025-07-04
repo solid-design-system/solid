@@ -18,6 +18,7 @@ const { generateTemplate } = storybookTemplate('sd-icon');
 
 export default {
   title: 'Components/sd-icon',
+  tags: ['autodocs'],
   component: 'sd-icon',
   args: overrideArgs([{ name: 'name', type: 'attribute', value: 'union-investment/content/image' }], args),
   argTypes,
