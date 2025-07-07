@@ -15,7 +15,7 @@ export default {
     ...parameters,
     design: {
       type: 'figma',
-      url: ''
+      url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Solid-DS-%E2%80%93-Component-Docs?node-id=15949-2913&p=f&m=dev'
     }
   }
 };
