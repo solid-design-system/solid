@@ -43,7 +43,7 @@ export const Variants = {
         <sd-button variant="primary">Primary</sd-button>
         <sd-button variant="secondary">Secondary</sd-button>
         <sd-button variant="tertiary">Tertiary</sd-button>
-        <sd-button variant="cta">Call To Action</sd-button>
+        <sd-button variant="cta">Call to action</sd-button>
       </div>
     `;
   }
@@ -81,7 +81,7 @@ export const AsLink = {
       <sd-button
         href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-introduction--docs"
         >Link</sd-button
-      ><sd-button href="https://union-investment.com" target="_blank">New Window</sd-button
+      ><sd-button href="https://union-investment.com" target="_blank">New window</sd-button
       ><sd-button href="./placeholders/src/images/collaboration.jpg" download>Download</sd-button>
     </div>
   `
@@ -133,19 +133,19 @@ export const VisuallyDisabled = {
     return html`
       <div class="flex gap-12 h-[100px] mt-12">
         <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
-          <sd-button variant="primary" visually-disabled>Visually Disabled</sd-button>
+          <sd-button variant="primary" visually-disabled>Visually disabled</sd-button>
         </sd-tooltip>
 
         <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
-          <sd-button variant="secondary" visually-disabled>Visually Disabled</sd-button>
+          <sd-button variant="secondary" visually-disabled>Visually disabled</sd-button>
         </sd-tooltip>
 
         <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
-          <sd-button variant="tertiary" visually-disabled>Visually Disabled</sd-button>
+          <sd-button variant="tertiary" visually-disabled>Visually disabled</sd-button>
         </sd-tooltip>
 
         <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
-          <sd-button variant="cta" visually-disabled>Visually Disabled</sd-button>
+          <sd-button variant="cta" visually-disabled>Visually disabled</sd-button>
         </sd-tooltip>
       </div>
     `;
@@ -167,16 +167,8 @@ export const Inverted = {
       </div>
     `;
   },
-  parameters: {
-    backgrounds: {
-      default: 'primary',
-      values: [
-        {
-          name: 'primary',
-          value: 'rgb(var(--sd-color-primary, 0 53 142))'
-        }
-      ]
-    }
+  globals: {
+    backgrounds: { value: 'primary' }
   }
 };
 
