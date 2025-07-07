@@ -1,5 +1,5 @@
 ---
-'@solid-design-system/docs': patch
+'@solid-design-system/docs': minor
 ---
 
 - Create `switch` template
