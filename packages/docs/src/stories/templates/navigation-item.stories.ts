@@ -13,12 +13,12 @@ export default {
   }
 };
 
-export const MegaMenu = {
-  name: 'Mega Menu',
+export const HorizontalMegaMenu = {
+  name: 'Horizontal Mega Menu',
   render: () => {
     return html`
       <style>
-        #anchor--templates-navigation-item--mega-menu .innerZoomElementWrapper {
+        #anchor--templates-navigation-item--horizontal-mega-menu .innerZoomElementWrapper {
           height: 900px;
         }
       </style>
@@ -1027,6 +1027,472 @@ export const MegaMenu = {
           }
           item.addEventListener('keydown', e => onItemKeydown(e, item));
           item.addEventListener('click', e => onItemClick(e, item));
+        });
+      </script>
+    `;
+  }
+};
+
+export const VerticalMegaMenu = {
+  name: 'Vertical Mega Menu',
+  render: () => {
+    return html`
+      <style>
+        .sb-main-padded {
+          padding: 0 !important;
+        }
+
+        #anchor--templates-navigation-item--vertical-mega-menu .innerZoomElementWrapper {
+          height: 100vh;
+        }
+      </style>
+      <div class="min-h-screen grid grid-cols-[auto_1fr] grid-rows-[auto_1fr]">
+        <sd-header fixed style="--sd-header-padding: 24px 48px" class="col-span-2">
+          <div class="flex justify-between items-center">
+            <a class="inline-flex sd-interactive" href="#">
+              <img class="h-8 md:h-12" src="images/logo-unioninvestment-lg.svg" alt="Union Investment Homepage" />
+            </a>
+
+            <nav class="mega-menu-nav">
+              <ul class="flex">
+                <sd-navigation-item id="open-menu-mega-menu-vertical" class="lg:hidden">
+                  <sd-icon name="system/menu" label="Open navigation" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
+                </sd-navigation-item>
+
+                <sd-navigation-item class="hidden lg:inline">
+                  <sd-icon name="system/phone" label="Client Service" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
+                </sd-navigation-item>
+
+                <sd-navigation-item class="hidden lg:inline">
+                  <sd-icon name="system/shopping-cart" label="Cart" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
+                </sd-navigation-item>
+
+                <sd-navigation-item class="hidden lg:inline">
+                  <sd-icon name="system/user" label="Account" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
+                </sd-navigation-item>
+              </ul>
+            </nav>
+          </div>
+        </sd-header>
+
+        <aside class="w-[272px] border-r border-r-neutral-400 hidden flex-col overflow-hidden lg:flex">
+          <nav
+            aria-label="Main"
+            class="mega-menu-nav group relative flex-1 py-4 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
+          >
+            <ul>
+              <li>
+                <sd-navigation-item href="javascript:void(0)" indented vertical current>Start</sd-navigation-item>
+              </li>
+              <li>
+                <sd-navigation-item href="javascript:void(0)" indented vertical>Investment news</sd-navigation-item>
+              </li>
+              <li>
+                <sd-navigation-item indented vertical chevron>Investment funds</sd-navigation-item>
+                <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
+                  <sd-button variant="tertiary" class="mx-4 my-2">
+                    <sd-icon slot="icon-left" name="system/arrow-left" label="Close Investment funds submenu"></sd-icon>
+                    <span>Back</span>
+                  </sd-button>
+
+                  <sd-divider class="mx-4 mb-2"></sd-divider>
+
+                  <div>
+                    <p class="sd-headline sd-headline--size-lg mx-4 px-4 py-3 !text-primary">Investment funds</p>
+                    <ul>
+                      <li>
+                        <sd-navigation-item indented vertical>
+                          <span class="font-bold">Fund information</span>
+                          <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                            Fund type
+                          </sd-navigation-item>
+                          <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                            Performance history
+                          </sd-navigation-item>
+                          <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                            My fund data
+                          </sd-navigation-item>
+                          <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                            Find funds
+                          </sd-navigation-item>
+                        </sd-navigation-item>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <sd-navigation-item href="javascript:void(0)" indented vertical>Management</sd-navigation-item>
+              </li>
+              <li>
+                <sd-navigation-item href="javascript:void(0)" indented vertical>Market Analysis</sd-navigation-item>
+              </li>
+              <li>
+                <sd-navigation-item href="javascript:void(0)" indented vertical>Qualification</sd-navigation-item>
+              </li>
+              <li>
+                <sd-navigation-item href="javascript:void(0)" indented vertical>Consulting support</sd-navigation-item>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="px-8 pb-6">
+            <sd-divider class="mb-6"></sd-divider>
+            <sd-button href="javascript:void(0)" class="w-full mb-4">Document upload</sd-button>
+            <sd-button variant="secondary" href="javascript:void(0)" class="w-full">Bank order</sd-button>
+          </div>
+        </aside>
+
+        <sd-drawer id="mega-menu-drawer-vertical" placement="end" no-header class="group relative block">
+          <div class="flex flex-col h-full">
+            <nav
+              aria-label="Main"
+              class="mega-menu-nav group relative flex-1 -mx-4 pt-20 pb-4 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
+            >
+              <ul>
+                <li>
+                  <sd-navigation-item href="javascript:void(0)" vertical current>Start</sd-navigation-item>
+                </li>
+                <li>
+                  <sd-navigation-item href="javascript:void(0)" divider vertical>Investment news</sd-navigation-item>
+                </li>
+                <li>
+                  <sd-navigation-item divider vertical chevron>Investment funds</sd-navigation-item>
+                  <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
+                    <sd-button variant="tertiary" class="mx-4 my-2">
+                      <sd-icon
+                        slot="icon-left"
+                        name="system/arrow-left"
+                        label="Close Investment funds submenu"
+                      ></sd-icon>
+                      <span>Back</span>
+                    </sd-button>
+
+                    <div>
+                      <p class="sd-headline sd-headline--size-lg px-4 py-3 !text-primary">Investment funds</p>
+                      <ul>
+                        <li>
+                          <sd-navigation-item divider vertical>
+                            <span class="font-bold">Fund information</span>
+                            <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                              Fund type
+                            </sd-navigation-item>
+                            <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                              Performance history
+                            </sd-navigation-item>
+                            <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                              My fund data
+                            </sd-navigation-item>
+                            <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                              Find funds
+                            </sd-navigation-item>
+                          </sd-navigation-item>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <sd-navigation-item href="javascript:void(0)" divider vertical>Management</sd-navigation-item>
+                </li>
+                <li>
+                  <sd-navigation-item href="javascript:void(0)" divider vertical>Market Analysis</sd-navigation-item>
+                </li>
+                <li>
+                  <sd-navigation-item href="javascript:void(0)" divider vertical>Qualification</sd-navigation-item>
+                </li>
+                <li>
+                  <sd-navigation-item href="javascript:void(0)" divider vertical>
+                    Consulting support
+                  </sd-navigation-item>
+                </li>
+              </ul>
+            </nav>
+
+            <div class="-mx-4 py-2 bg-neutral-100">
+              <nav class="mega-menu-nav">
+                <ul>
+                  <li><sd-navigation-item href="javascript:void(0)" vertical> Client Service </sd-navigation-item></li>
+                  <li><sd-navigation-item href="javascript:void(0)" divider vertical> Cart </sd-navigation-item></li>
+                  <li><sd-navigation-item href="javascript:void(0)" divider vertical> Account </sd-navigation-item></li>
+                </ul>
+              </nav>
+            </div>
+
+            <div class="py-6">
+              <sd-button href="javascript:void(0)" class="w-full mb-4">Document upload</sd-button>
+              <sd-button variant="secondary" href="javascript:void(0)" class="w-full">Bank order</sd-button>
+            </div>
+          </div>
+        </sd-drawer>
+      </div>
+
+      <style>
+        sd-navigation-item + div[data-submenu]:not([data-active-submenu]) {
+          pointer-events: none;
+          opacity: 0;
+        }
+      </style>
+
+      <!-- Helper methods -->
+      <script>
+        function getPreviousSibling(el, tag) {
+          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, {
+            acceptNode: node => (node.tagName === tag.toUpperCase() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP)
+          });
+
+          let lastValid = null;
+          let current;
+
+          while ((current = walker.nextNode())) {
+            if (current === el) break;
+            lastValid = current;
+          }
+
+          return lastValid;
+        }
+
+        function getNextSibling(el, tag) {
+          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, {
+            acceptNode: node => (node.tagName === tag.toUpperCase() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP)
+          });
+
+          walker.currentNode = el;
+          let next = walker.nextNode();
+          return next;
+        }
+      </script>
+
+      <!-- Mobile drawer logic -->
+      <script type="module">
+        const drawer = document.getElementById('mega-menu-drawer-vertical');
+        const drawerTrigger = document.getElementById('open-menu-mega-menu-vertical');
+        const innerTrigger = drawerTrigger.shadowRoot.querySelector('button');
+
+        innerTrigger.setAttribute('aria-controls', 'mega-menu-drawer-vertical');
+        innerTrigger.setAttribute('aria-expanded', 'false');
+        drawerTrigger.addEventListener('click', () => drawer.show());
+        drawer.addEventListener('sd-hide', () => innerTrigger.setAttribute('aria-expanded', 'false'));
+        drawer.addEventListener('sd-show', () => innerTrigger.setAttribute('aria-expanded', 'true'));
+      </script>
+
+      <script type="module">
+        const drawer = document.getElementById('mega-menu-drawer-vertical');
+        const containers = document.querySelectorAll('.mega-menu-nav');
+        const items = document.querySelectorAll('.mega-menu-nav sd-navigation-item');
+        const submenus = document.querySelectorAll('.mega-menu-nav sd-navigation-item + div');
+        const backButtons = document.querySelectorAll('.mega-menu-nav sd-navigation-item + div > sd-button');
+
+        const ATTR_SUBMENU_OPEN = 'data-submenu-open';
+        const ATTR_ACTIVE_SUBMENU = 'data-active-submenu';
+
+        const isGroupedItem = item => !!item.querySelector('sd-navigation-item');
+
+        const isSubmenuTrigger = item =>
+          !!item.nextElementSibling?.hasAttribute('data-submenu') && !item.closest('[data-submenu]');
+
+        const isSubmenuOpen = item => getParentContainer(item)?.hasAttribute(ATTR_SUBMENU_OPEN);
+
+        const getParentSubmenu = item => item?.closest('[data-submenu]');
+
+        const getParentContainer = element => element.closest('.mega-menu-nav');
+
+        function closeOpenSubmenu() {
+          submenus.forEach(menu => {
+            menu.removeAttribute(ATTR_ACTIVE_SUBMENU);
+            getParentContainer(menu)?.removeAttribute(ATTR_SUBMENU_OPEN);
+          });
+        }
+
+        function openSubmenu(submenu) {
+          closeOpenSubmenu();
+          submenu.setAttribute(ATTR_ACTIVE_SUBMENU, '');
+          getParentContainer(submenu)?.setAttribute(ATTR_SUBMENU_OPEN, '');
+        }
+
+        function handleOpenSubmenuChanged() {
+          submenus.forEach(menu => {
+            if (menu.hasAttribute(ATTR_ACTIVE_SUBMENU)) {
+              menu.removeAttribute('inert');
+            } else {
+              menu.setAttribute('inert', '');
+            }
+          });
+        }
+
+        function onItemClick(event, item) {
+          if (event.target !== item) return;
+
+          if (isSubmenuTrigger(item)) {
+            handleSubmenuTriggerClick(item);
+            return;
+          }
+
+          items.forEach(item => item.removeAttribute('current'));
+          item.setAttribute('current', '');
+
+          submenus.forEach(menu => {
+            if (!menu.contains(item)) return;
+
+            const previous = menu.previousElementSibling;
+
+            if (previous.tagName === 'SD-NAVIGATION-ITEM') {
+              previous.setAttribute('current', '');
+            }
+          });
+
+          return;
+        }
+
+        function onBackClick() {
+          const submenu = getParentSubmenu(document.activeElement);
+
+          closeOpenSubmenu();
+          if (!submenu) return;
+
+          const item = submenu.previousElementSibling;
+          item.focus();
+        }
+
+        function onSubmenuKeydown(event, submenu) {
+          if (event.key !== 'Tab') return;
+
+          const movingBackwards = event.shiftKey;
+          const movingFoward = !movingBackwards;
+
+          const focusableElements = Array.from(
+            Array.from(submenu.querySelectorAll(['sd-navigation-item', 'sd-button'].join(','))).filter(
+              el =>
+                !(
+                  el.tagName === 'SD-NAVIGATION-ITEM' &&
+                  el.parentElement.tagName === 'SD-NAVIGATION-ITEM' &&
+                  !el.parentElement.hasAttribute('open')
+                )
+            )
+          );
+
+          const first = focusableElements[0];
+          const last = focusableElements[focusableElements.length - 1];
+
+          if (movingBackwards && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+            return;
+          }
+
+          if (movingFoward && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        }
+
+        function focusNextItem(item) {
+          const submenu = getParentSubmenu(item);
+          const isMainItem = !submenu;
+          let next = getNextSibling(item, 'sd-navigation-item');
+
+          if (!next) return;
+          if (!isMainItem && !submenu.contains(next)) return;
+
+          if (isMainItem) {
+            while (true) {
+              if (!getParentSubmenu(next)) break;
+              next = getNextSibling(next, 'sd-navigation-item');
+            }
+          }
+
+          const nextParentItem = next.parentElement.closest('sd-navigation-item');
+          if (nextParentItem && !nextParentItem.hasAttribute('open')) {
+            focusNextItem(next);
+            return;
+          }
+
+          setTimeout(() => next?.focus(), 0);
+        }
+
+        function focusPreviousItem(item) {
+          const submenu = getParentSubmenu(item);
+          const isMainItem = !submenu;
+          let previous = getPreviousSibling(item, 'sd-navigation-item');
+
+          if (!previous) return;
+          if (!isMainItem && !submenu.contains(previous)) return;
+
+          if (isMainItem) {
+            while (true) {
+              if (!getParentSubmenu(previous)) break;
+              previous = getPreviousSibling(previous, 'sd-navigation-item');
+            }
+          }
+
+          const previousParentItem = previous.parentElement.closest('sd-navigation-item');
+          if (previousParentItem && !previousParentItem.hasAttribute('open')) {
+            focusPreviousItem(previous);
+            return;
+          }
+
+          setTimeout(() => previous?.focus(), 0);
+        }
+
+        function handleSubmenuTriggerClick(item) {
+          const submenu = item.nextElementSibling;
+          if (!submenu) return;
+
+          openSubmenu(submenu);
+          setTimeout(() => submenu.querySelector('sd-navigation-item').focus(), item.token('sd-duration-medium'));
+        }
+
+        function onItemKeydown(event, item) {
+          if (event.target !== item) return;
+
+          switch (event.key) {
+            case 'ArrowDown':
+              focusNextItem(item);
+              break;
+            case 'ArrowUp':
+              focusPreviousItem(item);
+              break;
+            case 'ArrowRight':
+              if (isSubmenuTrigger(item)) {
+                handleSubmenuTriggerClick(item);
+                return;
+              }
+
+              if (isGroupedItem(item)) {
+                item.setAttribute('open', '');
+              }
+              break;
+            case 'ArrowLeft':
+              if (isGroupedItem(item) && item.hasAttribute('open')) {
+                item.removeAttribute('open');
+                return;
+              }
+
+              if (isSubmenuOpen(item)) {
+                onBackClick();
+              }
+              break;
+          }
+        }
+
+        const observer = new MutationObserver(handleOpenSubmenuChanged);
+
+        containers.forEach(container =>
+          observer.observe(container, { attributes: true, attributeFilter: [ATTR_SUBMENU_OPEN] })
+        );
+        handleOpenSubmenuChanged();
+
+        items.forEach(item => {
+          item.addEventListener('click', e => onItemClick(e, item));
+          item.addEventListener('keydown', e => onItemKeydown(e, item));
+        });
+
+        submenus.forEach(submenu => {
+          submenu.addEventListener('keydown', e => onSubmenuKeydown(e, submenu));
+        });
+
+        backButtons.forEach(button => {
+          button.addEventListener('click', e => onBackClick(e, button));
         });
       </script>
     `;
