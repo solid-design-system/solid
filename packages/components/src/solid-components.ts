@@ -26,6 +26,8 @@ export { default as SdInput } from './components/input/input.js';
 export { default as SdLink } from './components/link/link.js';
 export { default as SdLoader } from './components/loader/loader.js';
 export { default as SdMapMarker } from './components/map-marker/map-marker.js';
+export { default as SdMenu } from './components/menu/menu.js';
+export { default as SdMenuItem } from './components/menu-item/menu-item.js';
 export { default as SdNavigationItem } from './components/navigation-item/navigation-item.js';
 export { default as SdNotification } from './components/notification/notification.js';
 export { default as SdOptgroup } from './components/optgroup/optgroup.js';

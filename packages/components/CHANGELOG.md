@@ -1,5 +1,28 @@
 # @solid-design-system/components
 
+## 5.9.0
+
+### Minor Changes
+
+- The `sd-menu` and `sd-menu-item` have arrived. 🎉 _[`#2297`](https://github.com/solid-design-system/solid/pull/2297) [`b2485fe`](https://github.com/solid-design-system/solid/commit/b2485fe1fcf7ee7897fd4e9d2fc48db06fe7c390) [@smfonseca](https://github.com/smfonseca)_
+
+  It can be used as a list of choices to the user, such as a set of actions or functions.
+
+### 📈 Stats
+* Uncompressed: 459 KB (+14 KB / +3%)
+* Gzipped: 108 KB (+4 KB / +4%)
+
+## 5.8.4
+
+### Patch Changes
+
+- Updated internal `transcript` svg icon to the latest version. _[`#2316`](https://github.com/solid-design-system/solid/pull/2316) [`4c56920`](https://github.com/solid-design-system/solid/commit/4c56920a1ed10f5e0e675a47f6ec5b990ddba622) [@smfonseca](https://github.com/smfonseca)_
+
+### 📈 Stats
+
+- Uncompressed: 445 KB (+1 KB / +0%)
+- Gzipped: 104 KB (unchanged)
+
 ## 5.8.3
 
 ### Patch Changes
