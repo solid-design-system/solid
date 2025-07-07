@@ -64,11 +64,6 @@ export const icons = {
         <path fill="currentColor" d="m9.947 1.138-.005.008-.001.003-5.56 8.34-2.434-2.447-.004-.004a.648.648 0 0 0-1.093.475c0 .172.066.328.175.444l.003.004 3 2.999c.117.117.28.19.46.19h.065c.2-.021.37-.13.475-.286l.005-.008.001-.002 5.994-8.992a.65.65 0 0 0-.18-.902l-.007-.005-.002-.002a.65.65 0 0 0-.892.185Z"/>
     </svg>
   `,
-  loader: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-    <circle cx="20" cy="12" r="2" fill="currentColor"/>
-    <circle cx="12" cy="12" r="2" fill="currentColor"/>
-    <circle cx="4" cy="12" r="2" fill="currentColor"/>
-  </svg>`,
   'status-minus': `
     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
       <path d="M10 5.375H2C1.65496 5.375 1.375 5.65496 1.375 6C1.375 6.34504 1.65496 6.625 2 6.625H10C10.345 6.625 10.625 6.34504 10.625 6C10.625 5.65496 10.345 5.375 10 5.375Z" fill="currentColor"/>
