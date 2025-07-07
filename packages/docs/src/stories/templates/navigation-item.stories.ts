@@ -1269,6 +1269,7 @@ export const VerticalMegaMenu = {
             this.trigger = this.el.previousElementSibling;
             this.el.setAttribute('inert', '');
             this.el.querySelector('sd-button').addEventListener('click', () => this.back());
+            this.el.addEventListener('keydown', e => this.onKeyDown(e));
           }
 
           isActive() {
@@ -1300,6 +1301,43 @@ export const VerticalMegaMenu = {
           back() {
             this.close();
             this.focusTrigger();
+          }
+
+          getTabbableBoundary() {
+            return Array.from(
+              Array.from(this.el.querySelectorAll(['sd-navigation-item', 'sd-button'].join(','))).filter(
+                el =>
+                  !(
+                    el.tagName === 'SD-NAVIGATION-ITEM' &&
+                    el.parentElement.tagName === 'SD-NAVIGATION-ITEM' &&
+                    !el.parentElement.hasAttribute('open')
+                  )
+              )
+            );
+          }
+
+          onKeyDown(event) {
+            if (event.key !== 'Tab') return;
+
+            const movingBackwards = event.shiftKey;
+            const movingForward = !movingBackwards;
+
+            const focusableElements = this.getTabbableBoundary();
+
+            const start = focusableElements[0];
+            const end = focusableElements[focusableElements.length - 1];
+
+            if (movingBackwards && document.activeElement === start) {
+              event.preventDefault();
+              end.focus();
+              return;
+            }
+
+            if (movingForward && document.activeElement === end) {
+              event.preventDefault();
+              start.focus();
+              return;
+            }
           }
         }
 
