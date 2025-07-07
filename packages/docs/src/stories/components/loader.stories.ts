@@ -36,11 +36,11 @@ export const Default = {
  */
 export const Variants = {
   render: () => html`
-    <div class="flex gap-12">
-      <div class="inline-flex p-12 text-xl">
+    <div class="flex items-center gap-12">
+      <div class="inline-flex text-xl">
         <sd-loader color="currentColor"></sd-loader>
       </div>
-      <div class="inline-flex p-12 text-xl">
+      <div class="inline-flex text-xl">
         <sd-loader color="primary"></sd-loader>
       </div>
       <div class="inline-flex bg-primary p-12 text-xl">
