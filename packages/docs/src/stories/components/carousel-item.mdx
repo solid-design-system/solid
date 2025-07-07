@@ -1,0 +1,42 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdCarouselItemStories from './carousel-item.stories';
+
+export const links = {
+  'storybook-docs': './?path=/docs/components-sd-carousel-item--docs',
+  'figma-library': '',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2233-2414&t=pFHk5gNX1Hj4l15o-4'
+};
+
+export const content = `
+# Carousel Item
+
+Used to represent a slide within a carousel.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Components
+
+[sd-carousel](./?path=/docs/components-sd-carousel--docs)
+
+#### Related Templates
+
+[Carousel](./?path=/docs/templates-carousel--docs)
+
+### Common Use Cases
+
+- Used within sd-carousel to represent a slide.
+
+### Usage Guidelines
+
+#### Content and Style
+
+- Ensure consistency in content and style across slides by following a similar layout and type of information.`;
+
+<Meta title="Components/sd-carousel-item/Overview" />
+
+<OverviewFormatter story={SdCarouselItemStories.Default}>{content}</OverviewFormatter>
