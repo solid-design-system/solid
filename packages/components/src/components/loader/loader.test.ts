@@ -9,7 +9,7 @@ describe('<sd-loader>', () => {
       await expect(loader).to.be.accessible();
     });
 
-    it('should have a role of "status".', async () => {
+    it('should have a role of "progressbar".', async () => {
       const loader = await fixture<SdLoader>(html` <sd-loader></sd-loader> `);
       const svg = loader.shadowRoot!.querySelector('svg')!;
       expect(svg).have.attribute('role', 'progressbar');
