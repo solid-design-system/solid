@@ -676,6 +676,12 @@ export const HorizontalMegaMenu = {
             return this.el.hasAttribute('data-active-submenu');
           }
 
+          hasActiveItem() {
+            return Array.from(this.el.querySelectorAll('sd-navigation-item:not([slot="trigger"]')).some(item =>
+              item.hasAttribute('current')
+            );
+          }
+
           reset() {
             this._reset?.();
             this.el.removeAttribute('data-active-submenu');
@@ -689,7 +695,9 @@ export const HorizontalMegaMenu = {
 
             this._open();
             this.el.setAttribute('data-active-submenu', '');
+            this.trigger.setAttribute('current', '');
             this.focusWithin();
+
             this.emit('sd-mega-menu-submenu-open', { source: this });
           }
 
@@ -698,8 +706,13 @@ export const HorizontalMegaMenu = {
               throw new Error('Must implement _close method!');
             }
 
-            this.el.removeAttribute('data-active-submenu');
             this._close();
+            this.el.removeAttribute('data-active-submenu');
+
+            if (!this.hasActiveItem()) {
+              this.trigger.removeAttribute('current');
+            }
+
             this.emit('sd-mega-menu-submenu-close', { source: this });
           }
 
@@ -767,6 +780,10 @@ export const HorizontalMegaMenu = {
             }
 
             this._init();
+
+            if (this.el.querySelector('sd-navigation-item[slot="children"]')) {
+              this.isGroupItem = true;
+            }
           }
 
           focus() {
@@ -779,11 +796,17 @@ export const HorizontalMegaMenu = {
               return;
             }
 
-            if (!this._click) {
-              throw new Error('Must implement the _click method!');
+            if (this.isGroupItem) {
+              if (this.el.open) {
+                this.el.removeAttribute('open');
+              } else {
+                this.el.setAttribute('open', '');
+              }
+
+              return;
             }
 
-            this._click();
+            this._click?.();
             this.emit('sd-mega-menu-item-click', { source: this });
           }
 
@@ -898,6 +921,7 @@ export const HorizontalMegaMenu = {
           constructor(element) {
             super(element);
             this.el.addEventListener('pointerout', e => this.onPointerOut(e));
+            this.el.addEventListener('sd-hide', e => this.close());
           }
 
           _init() {
@@ -1025,10 +1049,6 @@ export const HorizontalMegaMenu = {
 
         class MegaMenuVerticalItem extends MegaMenuItemBase {
           _init() {
-            if (this.el.querySelector('sd-navigation-item[slot="children"]')) {
-              this.isGroupItem = true;
-            }
-
             if (this.el.nextElementSibling?.matches('[data-submenu]')) {
               this.isSubmenuTrigger = true;
               this.submenu = new MegaMenuVerticalSubmenu(this.el.nextElementSibling);
@@ -1036,16 +1056,6 @@ export const HorizontalMegaMenu = {
 
             if (this.el.closest('[data-submenu]')) {
               this.parent = new MegaMenuVerticalSubmenu(this.el.closest('[data-submenu]'));
-            }
-          }
-
-          _click() {
-            if (this.isGroupItem) {
-              if (this.el.open) {
-                this.el.removeAttribute('open');
-              } else {
-                this.el.setAttribute('open', '');
-              }
             }
           }
         }
