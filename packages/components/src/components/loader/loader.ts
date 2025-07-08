@@ -9,7 +9,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Loaders are used to show the progress of an indeterminate operation.
  * @documentation https://solid.union-investment.com/[storybook-link]/loader
  * @status stable
- * @since 5.10
+ * @since 5.11
  */
 @customElement('sd-loader')
 export default class SdLoader extends SolidElement {
