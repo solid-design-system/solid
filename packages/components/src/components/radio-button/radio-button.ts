@@ -105,15 +105,15 @@ export default class SdRadioButton extends SolidElement {
           role="radio"
           aria-checked="${this.checked}"
           class="${cx(
-            'relative text-center border rounded-default transition-all ease-in-out duration-100 items-center justify-center focus-visible:focus-outline',
+            'relative text-center rounded-full transition-all ease-in-out duration-100 items-center justify-center focus-visible:focus-outline',
             this.size === 'sm' ? 'text-sm' : 'text-base',
             this.checked && !this.disabled && !this.visuallyDisabled
-              ? 'bg-primary border-primary text-white hover:bg-primary-500 hover:border-primary-500'
+              ? 'bg-primary text-white hover:bg-primary-500'
               : (this.disabled || this.visuallyDisabled) && !this.checked
-                ? 'border-neutral-500 text-neutral-500 hover:cursor-not-allowed'
+                ? 'text-neutral-500 hover:cursor-not-allowed'
                 : (this.disabled || this.visuallyDisabled) && this.checked
-                  ? 'text-neutral-500 border-neutral-500 hover:cursor-not-allowed '
-                  : 'bg-transparent text-primary border-primary hover:bg-primary-100 hover:border-primary-500 hover:text-primary-500 cursor-pointer',
+                  ? 'text-neutral-500 hover:cursor-not-allowed '
+                  : 'bg-transparent text-primary border-primary hover:bg-primary-100 hover:text-primary-500 cursor-pointer',
             hasDefaultSlot && 'px-4',
             this.hasFocus && 'focused-class',
             hasDefaultSlot && 'button--has-label',
@@ -185,32 +185,28 @@ export default class SdRadioButton extends SolidElement {
         @apply h-8 w-8;
       }
 
-      :host(.sd-button-group__button--first:not(.sd-button-group__button--last)) button {
-        @apply rounded-r-none;
-      }
-
-      :host(.sd-button-group__button--inner) button {
-        @apply rounded-none;
-      }
-
-      :host(.sd-button-group__button--last:not(.sd-button-group__button--first)) button {
-        @apply rounded-l-none;
+      /* All except the first */
+      :host([size='lg'].sd-button-group__button:not(.sd-button-group__button--first)) {
+        @apply -ml-3;
       }
 
       /* All except the first */
-      :host(.sd-button-group__button:not(.sd-button-group__button--first)) {
-        margin-inline-start: -1px;
+      :host([size='md'].sd-button-group__button:not(.sd-button-group__button--first)) {
+        @apply -ml-2;
       }
 
-      /* Bump hovered, focused, and checked buttons up so their focus ring isn't clipped */
+      /* All except the first */
+      :host([size='sm'].sd-button-group__button:not(.sd-button-group__button--first)) {
+        @apply -ml-1;
+      }
+
       :host(.sd-button-group__button--hover) {
-        @apply z-10;
+        @apply z-20;
       }
 
-      /* Focus and checked are always on top */
       :host(.sd-button-group__button--focus),
       :host(.sd-button-group__button[checked]) {
-        @apply z-20;
+        @apply z-10;
       }
     `
   ];
