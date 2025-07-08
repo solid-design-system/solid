@@ -25,7 +25,6 @@ export const simpleTable = {
     <table
       id="simple"
       class="sd-table sample-table w-full focus-visible:focus-outline"
-      role="region"
       tabindex="0"
       aria-label="Simple table"
     >
@@ -255,7 +254,6 @@ export const simpleTableVerticalDividers = {
     <table
       id="dividers"
       class="sd-table sample-table w-full focus-visible:focus-outline"
-      role="region"
       tabindex="0"
       aria-label="Simple Table with Vertical Dividers"
     >
@@ -489,7 +487,6 @@ export const simpleTableAlternatingColors = {
     <table
       id="alternating"
       class="sd-table sample-table w-full focus-visible:focus-outline"
-      role="region"
       tabindex="0"
       aria-label="Simple Table with Alternating Colors"
     >
@@ -1182,7 +1179,6 @@ export const advancedTables = {
       <table
         id="vertical-scrollable-table"
         class="sd-table sample-table h-[200px] overflow-y-scroll block focus-visible:focus-outline"
-        role="region"
         tabindex="0"
         aria-label="Table with Fixed Top Header Row and Shadow"
       >
@@ -1483,7 +1479,6 @@ export const TableFixedBottom = {
       <table
         id="vertical-scrollable-table-2"
         class="sd-table sample-table h-[200px] block overflow-y-scroll focus-visible:focus-outline"
-        role="region"
         tabindex="0"
         aria-label="Table with Fixed Bottom Header Row and Shadow"
       >
@@ -1807,7 +1802,6 @@ export const TableFixedLeft = {
       <div
         id="horizontal-scrollable-table"
         class="overflow-x-scroll overflow-y-visible w-[600px] focus-visible:focus-outline"
-        role="region"
         tabindex="0"
         aria-label="Table with Fixed Left Header Column and Shadow"
       >
@@ -2130,7 +2124,6 @@ export const TableFixedRight = {
         <div
           id="horizontal-scrollable-table-2"
           class="overflow-x-scroll overflow-y-visible w-[600px] focus-visible:focus-outline"
-          role="region"
           tabindex="0"
           aria-label="Table with Fixed Right Header Column and Shadow"
         >
