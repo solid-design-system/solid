@@ -5,9 +5,9 @@ export const OverviewFormatter = ({ children, story }) => {
   const links = ({ children, ...props }) => <sd-link {...props}>{children}</sd-link>;
   const defaultStoryCanvas = () => <Canvas of={story} />;
   const documentationLinks = ({ children, ...props }) => (
-    <div className="flex flex-col md:flex-row gap-8 items-start md:items-center mt-8 mb-8">
+    <div className="flex flex-col items-start gap-8 mt-8 mb-8 md:flex-row md:items-center">
       {Object.entries(JSON.parse(props.links || '{}')).map(([name, link]) => (
-        <div key={name} className="flex flex-row gap-4 items-center">
+        <div key={name} className="flex flex-row items-center gap-4">
           <sd-link href={link}>
             {name
               .split('-')
@@ -15,9 +15,9 @@ export const OverviewFormatter = ({ children, story }) => {
               .join(' ')}
           </sd-link>
 
-          <div className={`m-0 sd-status-badge ${link ? `sd-status-badge--success` : `sd-status-badge--error`}`}>
-            <sd-icon name={link ? 'status-check' : 'status-close'} library="sd-status-assets"></sd-icon>
-            {link ? 'Available' : 'Not Available'}
+          <div className={`m-0 sd-status-badge ${link ? `sd-status-badge--success` : `sd-status-badge--warning`}`}>
+            <sd-icon name={link ? 'status-check' : 'status-exclamation'} library="sd-status-assets"></sd-icon>
+            {link ? 'Available' : 'Currently unavailable'}
           </div>
         </div>
       ))}
