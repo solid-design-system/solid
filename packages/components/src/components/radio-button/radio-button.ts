@@ -113,7 +113,7 @@ export default class SdRadioButton extends SolidElement {
                 ? 'text-neutral-500 hover:cursor-not-allowed'
                 : (this.disabled || this.visuallyDisabled) && this.checked
                   ? 'text-neutral-500 hover:cursor-not-allowed '
-                  : 'bg-transparent text-primary border-primary hover:bg-primary-100 hover:text-primary-500 cursor-pointer',
+                  : 'bg-transparent text-primary border-primary hover:text-primary-500 cursor-pointer',
             hasDefaultSlot && 'px-4',
             this.hasFocus && 'focused-class',
             hasDefaultSlot && 'button--has-label',
