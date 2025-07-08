@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.10.0
+
+### Minor Changes
+
+- - Add tooltip slot to `sd-switch`; _[`#2319`](https://github.com/solid-design-system/solid/pull/2319) [`5d20c51`](https://github.com/solid-design-system/solid/commit/5d20c51b9e0b15be47cfd60e24bb179cef42bf27) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 5.9.0
 
 ### Minor Changes
@@ -9,8 +15,9 @@
   It can be used as a list of choices to the user, such as a set of actions or functions.
 
 ### 📈 Stats
-* Uncompressed: 459 KB (+14 KB / +3%)
-* Gzipped: 108 KB (+4 KB / +4%)
+
+- Uncompressed: 459 KB (+14 KB / +3%)
+- Gzipped: 108 KB (+4 KB / +4%)
 
 ## 5.8.4
 
