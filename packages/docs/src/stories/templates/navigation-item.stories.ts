@@ -331,7 +331,9 @@ export const HorizontalMegaMenu = {
       </sd-header>
 
       <sd-drawer id="mega-menu-drawer" placement="end" no-header class="group relative block">
-        <nav class="-mx-4 pt-20 pb-1 transition-transform duration-medium group-data-[submenu-open]:-translate-x-full">
+        <nav
+          class="mega-menu-nav -mx-4 pt-20 pb-1 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
+        >
           <ul>
             <li>
               <sd-navigation-item vertical href="javascript:void(0)" class="font-bold"> Home </sd-navigation-item>
@@ -670,222 +672,289 @@ export const HorizontalMegaMenu = {
 
       <!-- Mobile navigation logic -->
       <script type="module">
-        const drawer = document.getElementById('mega-menu-drawer');
-        const items = document.querySelectorAll('sd-drawer sd-navigation-item');
-        const submenus = document.querySelectorAll('sd-drawer sd-navigation-item + div');
-        const backButtons = document.querySelectorAll('sd-drawer sd-navigation-item + div > sd-button');
+        class MegaMenuElement {
+          constructor(element) {
+            this.el = element;
+          }
 
-        const ATTR_SUBMENU_OPEN = 'data-submenu-open';
-        const ATTR_ACTIVE_SUBMENU = 'data-active-submenu';
-
-        const isGroupedItem = item => !!item.querySelector('sd-navigation-item');
-
-        const isSubmenuTrigger = item =>
-          !!item.nextElementSibling?.hasAttribute('data-submenu') && !item.closest('[data-submenu]');
-
-        const isSubmenuOpen = () => drawer.hasAttribute(ATTR_SUBMENU_OPEN);
-
-        const getParentSubmenu = item => item?.closest('[data-submenu]');
-
-        function closeOpenSubmenu() {
-          submenus.forEach(menu => menu.removeAttribute(ATTR_ACTIVE_SUBMENU));
-          drawer.removeAttribute(ATTR_SUBMENU_OPEN);
+          emit(name, detail) {
+            this.el.dispatchEvent(
+              new CustomEvent(name, {
+                bubbles: true,
+                detail
+              })
+            );
+          }
         }
 
-        function openSubmenu(submenu) {
-          closeOpenSubmenu();
-          submenu.setAttribute(ATTR_ACTIVE_SUBMENU, '');
-          drawer.setAttribute(ATTR_SUBMENU_OPEN, '');
+        class MegaMenuSubmenu extends MegaMenuElement {
+          constructor(element) {
+            super(element);
+
+            this.el = element;
+            this.trigger = this.el.previousElementSibling;
+            this.el.setAttribute('inert', '');
+            this.el.querySelector('sd-button').addEventListener('click', () => this.back());
+            this.el.addEventListener('keydown', e => this.onKeyDown(e));
+          }
+
+          isActive() {
+            return this.el.hasAttribute('data-active-submenu');
+          }
+
+          reset() {
+            this.el.removeAttribute('data-active-submenu');
+            this.el.setAttribute('inert', '');
+            this.el.querySelectorAll('sd-navigation-item').forEach(item => item.removeAttribute('open'));
+          }
+
+          open() {
+            this.el.setAttribute('data-active-submenu', '');
+            this.el.removeAttribute('inert');
+            this.focusWithin();
+            this.emit('sd-mega-menu-submenu-open', { source: this });
+          }
+
+          close() {
+            this.el.removeAttribute('data-active-submenu');
+            this.el.setAttribute('inert', '');
+            this.emit('sd-mega-menu-submenu-close', { source: this });
+          }
+
+          focusWithin() {
+            const firstNavigationItem = this.el.querySelector('sd-navigation-item');
+            setTimeout(() => firstNavigationItem?.focus(), firstNavigationItem?.token('sd-duration-medium'));
+          }
+
+          focusTrigger() {
+            setTimeout(() => this.trigger.focus(), this.trigger.token('sd-duration-medium'));
+          }
+
+          back() {
+            this.close();
+            this.focusTrigger();
+          }
+
+          getTabbableBoundary() {
+            return Array.from(
+              Array.from(this.el.querySelectorAll(['sd-navigation-item', 'sd-button'].join(','))).filter(
+                el =>
+                  !(
+                    el.tagName === 'SD-NAVIGATION-ITEM' &&
+                    el.parentElement.tagName === 'SD-NAVIGATION-ITEM' &&
+                    !el.parentElement.hasAttribute('open')
+                  )
+              )
+            );
+          }
+
+          onKeyDown(event) {
+            if (event.key !== 'Tab') return;
+
+            const movingBackwards = event.shiftKey;
+            const movingForward = !movingBackwards;
+
+            const focusableElements = this.getTabbableBoundary();
+
+            const start = focusableElements[0];
+            const end = focusableElements[focusableElements.length - 1];
+
+            if (movingBackwards && document.activeElement === start) {
+              event.preventDefault();
+              end.focus();
+              return;
+            }
+
+            if (movingForward && document.activeElement === end) {
+              event.preventDefault();
+              start.focus();
+              return;
+            }
+          }
         }
 
-        function handleOpenSubmenuChanged() {
-          submenus.forEach(menu => {
-            if (menu.hasAttribute(ATTR_ACTIVE_SUBMENU)) {
-              menu.removeAttribute('inert');
+        class MegaMenuItem extends MegaMenuElement {
+          constructor(element) {
+            super(element);
+
+            this.el = element;
+            this.el.addEventListener('click', e => this.onClick(e));
+
+            if (this.el.querySelector('sd-navigation-item[slot="children"]')) {
+              this.isGroupItem = true;
+            }
+
+            if (this.el.nextElementSibling?.matches('[data-submenu]')) {
+              this.isSubmenuTrigger = true;
+              this.submenu = new MegaMenuSubmenu(this.el.nextElementSibling);
+            }
+
+            if (this.el.closest('[data-submenu]')) {
+              this.parent = new MegaMenuSubmenu(this.el.closest('[data-submenu]'));
+            }
+          }
+
+          focus() {
+            this.el.focus();
+          }
+
+          click() {
+            if (this.isSubmenuTrigger) {
+              this.submenu.open();
+              return;
+            }
+
+            if (this.isGroupItem) {
+              if (this.el.open) {
+                this.el.removeAttribute('open');
+              } else {
+                this.el.setAttribute('open', '');
+              }
+            }
+
+            this.emit('sd-mega-menu-item-click', { source: this });
+          }
+
+          setCurrent(current) {
+            if (current) {
+              this.el.setAttribute('current', '');
             } else {
-              menu.setAttribute('inert', '');
+              this.el.removeAttribute('current');
             }
-          });
-        }
-
-        function onItemClick(event, item) {
-          if (event.target !== item) return;
-
-          if (isSubmenuTrigger(item)) {
-            handleSubmenuTriggerClick(item);
-            return;
           }
 
-          items.forEach(item => item.removeAttribute('current'));
-          item.setAttribute('current', '');
-
-          submenus.forEach(menu => {
-            if (!menu.contains(item)) return;
-
-            const previous = menu.previousElementSibling;
-
-            if (previous.tagName === 'SD-NAVIGATION-ITEM') {
-              previous.setAttribute('current', '');
-            }
-          });
-
-          return;
-        }
-
-        function onBackClick() {
-          const submenu = getParentSubmenu(document.activeElement);
-
-          closeOpenSubmenu();
-          if (!submenu) return;
-
-          const item = submenu.previousElementSibling;
-          item.focus();
-        }
-
-        function onSubmenuKeydown(event, submenu) {
-          if (event.key !== 'Tab') return;
-
-          const movingBackwards = event.shiftKey;
-          const movingFoward = !movingBackwards;
-
-          const focusableElements = Array.from(
-            Array.from(submenu.querySelectorAll(['sd-navigation-item', 'sd-button'].join(','))).filter(
-              el =>
-                !(
-                  el.tagName === 'SD-NAVIGATION-ITEM' &&
-                  el.parentElement.tagName === 'SD-NAVIGATION-ITEM' &&
-                  !el.parentElement.hasAttribute('open')
-                )
-            )
-          );
-
-          const first = focusableElements[0];
-          const last = focusableElements[focusableElements.length - 1];
-
-          if (movingBackwards && document.activeElement === first) {
-            event.preventDefault();
-            last.focus();
-            return;
-          }
-
-          if (movingFoward && document.activeElement === last) {
-            event.preventDefault();
-            first.focus();
+          onClick(event) {
+            if (event.target !== this.el) return;
+            this.click();
           }
         }
 
-        function focusNextItem(item) {
-          const submenu = getParentSubmenu(item);
-          const isMainItem = !submenu;
-          let next = getNextSibling(item, 'sd-navigation-item');
+        class MobileMegaMenu {
+          constructor(element) {
+            this.el = element;
+            this.items = Array.from(element.querySelectorAll('sd-navigation-item')).map(item => new MegaMenuItem(item));
+            this.focusController = new MegaMenuFocusController(this);
 
-          if (!next) return;
-          if (!isMainItem && !submenu.contains(next)) return;
+            this.el.addEventListener('sd-mega-menu-item-click', e => this.onItemClick(e));
+            this.el.addEventListener('sd-mega-menu-submenu-open', e => this.onSubmenuOpen(e));
+            this.el.addEventListener('sd-mega-menu-submenu-close', e => this.onSubmenuClose(e));
+          }
 
-          if (isMainItem) {
+          reset() {
+            this.el.removeAttribute('data-submenu-open');
+            this.items.forEach(item => item.submenu?.reset());
+          }
+
+          onItemClick(e) {
+            this.items.forEach(item => {
+              item.setCurrent(item.el === e.target || item.submenu?.el.contains(e.target));
+            });
+          }
+
+          onSubmenuOpen(e) {
+            this.el.setAttribute('data-submenu-open', '');
+          }
+
+          onSubmenuClose(e) {
+            this.reset();
+          }
+        }
+
+        class MegaMenuFocusController {
+          constructor(menu) {
+            this.menu = menu;
+            this.menu.el.addEventListener('keydown', e => this.onKeydown(e));
+          }
+
+          focusNext(item) {
+            let index = this.menu.items.findIndex(_item => _item.el === item.el);
+            let next = this.menu.items[index + 1];
+
             while (true) {
-              if (!getParentSubmenu(next)) break;
-              next = getNextSibling(next, 'sd-navigation-item');
+              if (!next) break;
+
+              if (item.parent && item.parent.el !== next.parent?.el) return;
+
+              if (next.parent && !next.parent.isActive()) {
+                index++;
+                next = this.menu.items[index + 1];
+                continue;
+              }
+
+              if (
+                next.el.parentElement.closest('sd-navigation-item') &&
+                !next.el.parentElement.closest('sd-navigation-item').hasAttribute('open')
+              ) {
+                index++;
+                next = this.menu.items[index + 1];
+                continue;
+              }
+
+              break;
             }
+
+            next?.focus();
           }
 
-          const nextParentItem = next.parentElement.closest('sd-navigation-item');
-          if (nextParentItem && !nextParentItem.hasAttribute('open')) {
-            focusNextItem(next);
-            return;
-          }
+          focusPrevious(item) {
+            let index = this.menu.items.findIndex(_item => _item.el === item.el);
+            let previous = this.menu.items[index - 1];
 
-          setTimeout(() => next?.focus(), 0);
-        }
-
-        function focusPreviousItem(item) {
-          const submenu = getParentSubmenu(item);
-          const isMainItem = !submenu;
-          let previous = getPreviousSibling(item, 'sd-navigation-item');
-
-          if (!previous) return;
-          if (!isMainItem && !submenu.contains(previous)) return;
-
-          if (isMainItem) {
             while (true) {
-              if (!getParentSubmenu(previous)) break;
-              previous = getPreviousSibling(previous, 'sd-navigation-item');
+              if (!previous) break;
+
+              if (item.parent && item.parent.el !== previous.parent?.el) return;
+
+              if (previous.parent && !previous.parent.isActive()) {
+                index--;
+                previous = this.menu.items[index - 1];
+                continue;
+              }
+
+              if (
+                previous.el.parentElement.closest('sd-navigation-item') &&
+                !previous.el.parentElement.closest('sd-navigation-item').hasAttribute('open')
+              ) {
+                index--;
+                previous = this.menu.items[index - 1];
+                continue;
+              }
+
+              break;
+            }
+
+            previous?.focus();
+          }
+
+          onKeydown(e) {
+            const item = this.menu.items.find(item => item.el === e.target);
+
+            switch (e.key) {
+              case 'ArrowDown':
+                this.focusNext(item);
+                break;
+              case 'ArrowUp':
+                this.focusPrevious(item);
+                break;
+              case 'ArrowRight':
+                if (item.isSubmenuTrigger || item.isGroupItem) {
+                  item.click();
+                }
+                break;
+              case 'ArrowLeft':
+                item.parent?.back();
+                break;
             }
           }
+        }
 
-          const previousParentItem = previous.parentElement.closest('sd-navigation-item');
-          if (previousParentItem && !previousParentItem.hasAttribute('open')) {
-            focusPreviousItem(previous);
-            return;
+        document.querySelectorAll('.mega-menu-nav').forEach(container => {
+          const megamenu = new MobileMegaMenu(container);
+
+          if (container.closest('sd-drawer')) {
+            container.closest('sd-drawer').addEventListener('sd-hide', () => megamenu.reset());
           }
-
-          setTimeout(() => previous?.focus(), 0);
-        }
-
-        function handleSubmenuTriggerClick(item) {
-          const submenu = item.nextElementSibling;
-          if (!submenu) return;
-
-          openSubmenu(submenu);
-          setTimeout(() => submenu.querySelector('sd-navigation-item').focus(), drawer.token('sd-duration-medium'));
-        }
-
-        function onItemKeydown(event, item) {
-          if (event.target !== item) return;
-
-          switch (event.key) {
-            case 'ArrowDown':
-              focusNextItem(item);
-              break;
-            case 'ArrowUp':
-              focusPreviousItem(item);
-              break;
-            case 'ArrowRight':
-              if (isSubmenuTrigger(item)) {
-                handleSubmenuTriggerClick(item);
-                return;
-              }
-
-              if (isGroupedItem(item)) {
-                item.setAttribute('open', '');
-              }
-              break;
-            case 'ArrowLeft':
-              if (isGroupedItem(item) && item.hasAttribute('open')) {
-                item.removeAttribute('open');
-                return;
-              }
-
-              if (isSubmenuOpen()) {
-                onBackClick();
-              }
-              break;
-          }
-        }
-
-        function onDrawerHide(event, drawer) {
-          if (event.target !== drawer) return;
-          closeOpenSubmenu();
-        }
-
-        const observer = new MutationObserver(handleOpenSubmenuChanged);
-        observer.observe(drawer, { attributes: true, attributeFilter: [ATTR_SUBMENU_OPEN] });
-        handleOpenSubmenuChanged();
-
-        items.forEach(item => {
-          item.addEventListener('click', e => onItemClick(e, item));
-          item.addEventListener('keydown', e => onItemKeydown(e, item));
         });
-
-        submenus.forEach(submenu => {
-          submenu.addEventListener('keydown', e => onSubmenuKeydown(e, submenu));
-        });
-
-        backButtons.forEach(button => {
-          button.addEventListener('click', e => onBackClick(e, button));
-        });
-
-        drawer.addEventListener('sd-hide', e => onDrawerHide(e, drawer));
       </script>
 
       <!-- Desktop navigation logic -->
@@ -1276,6 +1345,12 @@ export const VerticalMegaMenu = {
             return this.el.hasAttribute('data-active-submenu');
           }
 
+          reset() {
+            this.el.removeAttribute('data-active-submenu');
+            this.el.setAttribute('inert', '');
+            this.el.querySelectorAll('sd-navigation-item').forEach(item => item.removeAttribute('open'));
+          }
+
           open() {
             this.el.setAttribute('data-active-submenu', '');
             this.el.removeAttribute('inert');
@@ -1408,6 +1483,11 @@ export const VerticalMegaMenu = {
             this.el.addEventListener('sd-mega-menu-submenu-close', e => this.onSubmenuClose(e));
           }
 
+          reset() {
+            this.el.removeAttribute('data-submenu-open');
+            this.items.forEach(item => item.submenu?.reset());
+          }
+
           onItemClick(e) {
             this.items.forEach(item => {
               item.setCurrent(item.el === e.target || item.submenu?.el.contains(e.target));
@@ -1419,7 +1499,7 @@ export const VerticalMegaMenu = {
           }
 
           onSubmenuClose(e) {
-            this.el.removeAttribute('data-submenu-open');
+            this.reset();
           }
         }
 
@@ -1433,13 +1513,27 @@ export const VerticalMegaMenu = {
             let index = this.menu.items.findIndex(_item => _item.el === item.el);
             let next = this.menu.items[index + 1];
 
-            if (item.parent && item.parent?.el !== next.parent?.el) return;
-
             while (true) {
-              if (!next || !next.parent || next.parent.isActive()) break;
+              if (!next) break;
 
-              index++;
-              next = this.menu.items[index + 1];
+              if (item.parent && item.parent.el !== next.parent?.el) return;
+
+              if (next.parent && !next.parent.isActive()) {
+                index++;
+                next = this.menu.items[index + 1];
+                continue;
+              }
+
+              if (
+                next.el.parentElement.closest('sd-navigation-item') &&
+                !next.el.parentElement.closest('sd-navigation-item').hasAttribute('open')
+              ) {
+                index++;
+                next = this.menu.items[index + 1];
+                continue;
+              }
+
+              break;
             }
 
             next?.focus();
@@ -1449,13 +1543,27 @@ export const VerticalMegaMenu = {
             let index = this.menu.items.findIndex(_item => _item.el === item.el);
             let previous = this.menu.items[index - 1];
 
-            if (item.parent && item.parent?.el !== previous.parent?.el) return;
-
             while (true) {
-              if (!previous || !previous.parent || previous.parent.isActive()) break;
+              if (!previous) break;
 
-              index--;
-              previous = this.menu.items[index - 1];
+              if (item.parent && item.parent.el !== previous.parent?.el) return;
+
+              if (previous.parent && !previous.parent.isActive()) {
+                index--;
+                previous = this.menu.items[index - 1];
+                continue;
+              }
+
+              if (
+                previous.el.parentElement.closest('sd-navigation-item') &&
+                !previous.el.parentElement.closest('sd-navigation-item').hasAttribute('open')
+              ) {
+                index--;
+                previous = this.menu.items[index - 1];
+                continue;
+              }
+
+              break;
             }
 
             previous?.focus();
@@ -1483,7 +1591,13 @@ export const VerticalMegaMenu = {
           }
         }
 
-        document.querySelectorAll('.mega-menu-nav').forEach(container => new MobileMegaMenu(container));
+        document.querySelectorAll('.mega-menu-nav').forEach(container => {
+          const megamenu = new MobileMegaMenu(container);
+
+          if (container.closest('sd-drawer')) {
+            container.closest('sd-drawer').addEventListener('sd-hide', () => megamenu.reset());
+          }
+        });
       </script>
     `;
   }
