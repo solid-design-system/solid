@@ -4,7 +4,7 @@ import { playwrightLauncher } from '@web/test-runner-playwright';
 
 export default {
   rootDir: '.',
-  files: ['src/**/*.test.ts', '!src/_components/**/*'], // "default" group
+  files: ['src/**/*.test.ts'], // "default" group
   concurrentBrowsers: 3,
   nodeResolve: {
     exportConditions: ['production', 'default']
