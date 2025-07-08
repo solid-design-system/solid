@@ -115,10 +115,7 @@ export default class SdTab extends SolidElement {
             ? html`
                 <div
                   part="active-tab-indicator"
-                  class=${cx(
-                    'absolute bottom-0 h-1 bg-accent w-3/4 group-hover:w-full transition-[width] duration-fast ease-in-out',
-                    (!this.active || this.disabled) && 'hidden'
-                  )}
+                  class=${cx('absolute bottom-0 h-1 bg-accent w-3/4 bottom-0 group-hover:w-full')}
                 ></div>
               `
             : ''}
@@ -154,6 +151,23 @@ export default class SdTab extends SolidElement {
         @apply absolute w-full h-full border border-neutral-400 content-[''] transition-[border] duration-medium ease-in-out;
         border-bottom: none;
         border-radius: 4px 4px 0 0;
+      }
+
+      [part='active-tab-indicator'] {
+        @apply scale-0 opacity-0 duration-fast;
+
+        transition:
+          width var(--sd-duration-fast) ease-in-out,
+          opacity var(--sd-duration-fast) ease-in-out,
+          transform var(--sd-duration-fast) ease-in-out var(--sd-duration-fast);
+      }
+
+      :host([active]) [part='active-tab-indicator'] {
+        @apply opacity-100 scale-100;
+
+        transition:
+          width var(--sd-duration-fast) ease-in-out,
+          transform var(--sd-duration-fast) ease-in-out;
       }
     `
   ];
