@@ -114,7 +114,12 @@ export default class SdRadioButton extends SolidElement {
                 : (this.disabled || this.visuallyDisabled) && this.checked
                   ? 'text-neutral-500 hover:cursor-not-allowed '
                   : 'bg-transparent text-primary border-primary hover:text-primary-500 cursor-pointer',
-            hasDefaultSlot && 'px-4',
+            hasDefaultSlot &&
+              {
+                sm: 'px-3',
+                md: 'px-4',
+                lg: 'px-5'
+              }[this.size],
             this.hasFocus && 'focused-class',
             hasDefaultSlot && 'button--has-label',
             hasIconSlot && 'button--has-icon flex gap-2',
@@ -166,7 +171,7 @@ export default class SdRadioButton extends SolidElement {
       }
 
       .lg-no-label {
-        @apply h-12 w-12;
+        @apply h-12 px-5;
       }
 
       .md-label {
@@ -174,7 +179,7 @@ export default class SdRadioButton extends SolidElement {
       }
 
       .md-no-label {
-        @apply h-10 w-10;
+        @apply h-10 px-4;
       }
 
       .sm-label {
@@ -182,7 +187,7 @@ export default class SdRadioButton extends SolidElement {
       }
 
       .sm-no-label {
-        @apply h-8 w-8;
+        @apply h-8 px-3;
       }
 
       /* All except the first */
