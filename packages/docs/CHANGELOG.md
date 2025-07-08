@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.22.1
+
+### Patch Changes
+
+- Fixed render content for `tooltip` with bolded text template _[`#2327`](https://github.com/solid-design-system/solid/pull/2327) [`1dfe777`](https://github.com/solid-design-system/solid/commit/1dfe777224c5f139065a809c426aefc81da43d92) [@balco0110](https://github.com/balco0110)_
+
 ## 1.22.0
 
 ### Minor Changes
