@@ -7,6 +7,15 @@ theme.fill.neutral[100] = theme.backgroundColor.neutral[100].replace('/*', '/* O
 theme.extend = {
   ...theme.extend,
   keyframes: {
+    'bounce-once': {
+      '0%': { transform: 'translateY(0)' },
+      '50%': { transform: 'translateY(-18px)' },
+      '100%': { transform: 'translateY(0)' }
+    },
+    grow: {
+      '0%': { width: '0%' },
+      '100%': { width: '100%' }
+    },
     'loader-color-primary': {
       '0%, 100%': { color: 'var(--sd-color-primary, #00358E)' },
       '50%': { color: 'var(--sd-color-primary, #00358E)', opacity: '20%' }
@@ -18,15 +27,6 @@ theme.extend = {
     'loader-color-current': {
       '0%, 100%': { color: 'currentColor' },
       '50%': { color: 'currentColor', opacity: '20%' }
-    },
-    grow: {
-      '0%': { width: '0%' },
-      '100%': { width: '100%' }
-    },
-    'bounce-once': {
-      '0%': { transform: 'translateY(0)' },
-      '50%': { transform: 'translateY(-18px)' },
-      '100%': { transform: 'translateY(0)' }
     },
     wave: {
       '0%, 40%, 100%': { transform: 'initial' },
