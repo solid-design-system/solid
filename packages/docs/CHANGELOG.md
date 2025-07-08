@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 1.22.0
+
+### Minor Changes
+
+- - Create `switch` template _[`#2319`](https://github.com/solid-design-system/solid/pull/2319) [`5d20c51`](https://github.com/solid-design-system/solid/commit/5d20c51b9e0b15be47cfd60e24bb179cef42bf27) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add `Switch with Tooltip` story to `switch` template
+
 ## 1.21.0
 
 ### Minor Changes
