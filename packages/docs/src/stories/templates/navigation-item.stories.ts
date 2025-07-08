@@ -617,8 +617,6 @@ export const HorizontalMegaMenu = {
         }
       </style>
 
-      <script src="/scripts/mega-menu.js"></script>
-
       <!-- Mobile drawer logic -->
       <script type="module">
         const drawer = document.getElementById('mega-menu-drawer-horizontal');
@@ -632,6 +630,11 @@ export const HorizontalMegaMenu = {
         drawer.addEventListener('sd-show', () => innerTrigger.setAttribute('aria-expanded', 'true'));
       </script>
 
+      <!--
+        The mega-menu.js script can be found here:
+        https://github.com/solid-design-system/solid/blob/main/packages/docs/.storybook/assets/scripts/mega-menu.js
+      -->
+      <script src="/scripts/mega-menu.js"></script>
       <script type="module">
         document.querySelectorAll('.mega-menu-nav--horizontal').forEach(container => {
           const megamenu = new MegaMenu(container, MegaMenuHorizontalItem);
@@ -863,8 +866,11 @@ export const VerticalMegaMenu = {
         drawer.addEventListener('sd-show', () => innerTrigger.setAttribute('aria-expanded', 'true'));
       </script>
 
+      <!--
+        The mega-menu script can be found here:
+        https://github.com/solid-design-system/solid/blob/main/packages/docs/.storybook/assets/scripts/mega-menu.js
+      -->
       <script src="/scripts/mega-menu.js"></script>
-
       <script type="module">
         document.querySelectorAll('.mega-menu-nav').forEach(container => {
           const megamenu = new MegaMenu(container, MegaMenuVerticalItem);
