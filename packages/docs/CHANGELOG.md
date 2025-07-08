@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.22.2
+
+### Patch Changes
+
+- Fixed table template a11y issue with `role="region"`. _[`#2346`](https://github.com/solid-design-system/solid/pull/2346) [`4ae574a`](https://github.com/solid-design-system/solid/commit/4ae574ab375a5557fd3f63896d12de613a92134d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.22.1
 
 ### Patch Changes
