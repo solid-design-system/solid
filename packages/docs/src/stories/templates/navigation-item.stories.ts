@@ -330,11 +330,11 @@ export const HorizontalMegaMenu = {
         </nav>
       </sd-header>
 
-      <sd-drawer id="mega-menu-drawer" placement="end" no-header class="group relative block">
+      <sd-drawer id="mega-menu-drawer-horizontal" placement="end" no-header class="group relative block">
         <nav
-          class="mega-menu-nav -mx-4 pt-20 pb-1 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
+          class="mega-menu-nav flex flex-col -mx-4 h-full pt-20 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
         >
-          <ul>
+          <ul class="flex-1">
             <li>
               <sd-navigation-item vertical href="javascript:void(0)" class="font-bold"> Home </sd-navigation-item>
             </li>
@@ -580,24 +580,20 @@ export const HorizontalMegaMenu = {
               </div>
             </li>
           </ul>
-        </nav>
-        <nav
-          aria-label="footer"
-          slot="footer"
-          class="bg-neutral-100 -mx-4 -mb-4 transition-transform duration-medium group-data-[submenu-open]:-translate-x-full"
-        >
-          <sd-navigation-item vertical href="javascript:void(0)" class="flex align-center">
-            <sd-icon name="system/user" class="text-xl mr-2"></sd-icon>
-            Portfolio
-          </sd-navigation-item>
-          <sd-navigation-item vertical divider href="javascript:void(0)" class="flex align-center">
-            <sd-icon name="system/lock-locked" class="text-xl mr-2"></sd-icon>
-            Application
-          </sd-navigation-item>
-          <sd-navigation-item vertical divider href="javascript:void(0)" class="flex align-center">
-            <sd-icon name="system/website" class="text-xl mr-2"></sd-icon>
-            Our further appearances
-          </sd-navigation-item>
+          <div slot="footer" class="bg-neutral-100">
+            <sd-navigation-item vertical href="javascript:void(0)" class="flex align-center">
+              <sd-icon name="system/user" class="text-xl mr-2"></sd-icon>
+              Portfolio
+            </sd-navigation-item>
+            <sd-navigation-item vertical divider href="javascript:void(0)" class="flex align-center">
+              <sd-icon name="system/lock-locked" class="text-xl mr-2"></sd-icon>
+              Application
+            </sd-navigation-item>
+            <sd-navigation-item vertical divider href="javascript:void(0)" class="flex align-center">
+              <sd-icon name="system/website" class="text-xl mr-2"></sd-icon>
+              Our further appearances
+            </sd-navigation-item>
+          </div>
         </nav>
       </sd-drawer>
 
@@ -615,55 +611,19 @@ export const HorizontalMegaMenu = {
           overflow: hidden;
         }
 
-        sd-drawer[data-submenu-open]::part(footer) {
-          pointer-events: none;
-          position: absolute;
-          padding: 0;
-          opacity: 0;
-        }
-
         sd-navigation-item + div[data-submenu]:not([data-active-submenu]) {
           pointer-events: none;
           opacity: 0;
         }
       </style>
 
-      <!-- Helper methods -->
-      <script>
-        function getPreviousSibling(el, tag) {
-          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, {
-            acceptNode: node => (node.tagName === tag.toUpperCase() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP)
-          });
-
-          let lastValid = null;
-          let current;
-
-          while ((current = walker.nextNode())) {
-            if (current === el) break;
-            lastValid = current;
-          }
-
-          return lastValid;
-        }
-
-        function getNextSibling(el, tag) {
-          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, {
-            acceptNode: node => (node.tagName === tag.toUpperCase() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP)
-          });
-
-          walker.currentNode = el;
-          let next = walker.nextNode();
-          return next;
-        }
-      </script>
-
       <!-- Mobile drawer logic -->
       <script type="module">
-        const drawer = document.getElementById('mega-menu-drawer');
+        const drawer = document.getElementById('mega-menu-drawer-horizontal');
         const drawerTrigger = document.getElementById('open-menu-mega-menu');
         const innerTrigger = drawerTrigger.shadowRoot.querySelector('button');
 
-        innerTrigger.setAttribute('aria-controls', 'mega-menu-drawer');
+        innerTrigger.setAttribute('aria-controls', 'mega-menu-drawer-horizontal');
         innerTrigger.setAttribute('aria-expanded', 'false');
         drawerTrigger.addEventListener('click', () => drawer.show());
         drawer.addEventListener('sd-hide', () => innerTrigger.setAttribute('aria-expanded', 'false'));
@@ -965,6 +925,32 @@ export const HorizontalMegaMenu = {
         const isDropdownTrigger = item => item.getAttribute('slot') === 'trigger';
         const getDropdownTrigger = dropdown => dropdown?.querySelector('sd-navigation-item[slot="trigger"]');
         const getParentDropdown = item => item?.closest('sd-dropdown');
+
+        function getPreviousSibling(el, tag) {
+          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, {
+            acceptNode: node => (node.tagName === tag.toUpperCase() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP)
+          });
+
+          let lastValid = null;
+          let current;
+
+          while ((current = walker.nextNode())) {
+            if (current === el) break;
+            lastValid = current;
+          }
+
+          return lastValid;
+        }
+
+        function getNextSibling(el, tag) {
+          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, {
+            acceptNode: node => (node.tagName === tag.toUpperCase() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP)
+          });
+
+          walker.currentNode = el;
+          let next = walker.nextNode();
+          return next;
+        }
 
         function focusNextItem(item) {
           const parent = getParentDropdown(item);
