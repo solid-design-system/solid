@@ -34,7 +34,7 @@ export const HorizontalMegaMenu = {
           </sd-navigation-item>
         </div>
 
-        <nav aria-label="Main" class="hidden lg:flex relative justify-between">
+        <nav aria-label="Main" class="mega-menu-nav--horizontal hidden lg:flex relative justify-between">
           <ul class="flex -ms-4">
             <li>
               <sd-dropdown>
@@ -789,7 +789,7 @@ export const HorizontalMegaMenu = {
           }
         }
 
-        class MobileMegaMenu {
+        class VerticalMegaMenu {
           constructor(element) {
             this.el = element;
             this.items = Array.from(element.querySelectorAll('sd-navigation-item')).map(item => new MegaMenuItem(item));
@@ -909,7 +909,7 @@ export const HorizontalMegaMenu = {
         }
 
         document.querySelectorAll('.mega-menu-nav').forEach(container => {
-          const megamenu = new MobileMegaMenu(container);
+          const megamenu = new VerticalMegaMenu(container);
 
           if (container.closest('sd-drawer')) {
             container.closest('sd-drawer').addEventListener('sd-hide', () => megamenu.reset());
@@ -917,8 +917,234 @@ export const HorizontalMegaMenu = {
         });
       </script>
 
+      <script>
+        class MegaMenuElement {
+          constructor(element) {
+            this.el = element;
+          }
+
+          emit(name, detail) {
+            this.el.dispatchEvent(
+              new CustomEvent(name, {
+                bubbles: true,
+                detail
+              })
+            );
+          }
+        }
+
+        class MegaMenuSubmenu extends MegaMenuElement {
+          constructor(element) {
+            super(element);
+
+            this.el = element;
+            this.trigger = this.el.querySelector('[slot="trigger"]');
+            this.el.addEventListener('pointerout', e => this.onPointerOut(e));
+          }
+
+          isActive() {
+            return this.el.hasAttribute('data-active-submenu');
+          }
+
+          reset() {
+            this.el.removeAttribute('data-active-submenu');
+            this.el.querySelectorAll('sd-navigation-item').forEach(item => item.removeAttribute('open'));
+          }
+
+          open() {
+            this.el.setAttribute('data-active-submenu', '');
+            this.el.show();
+            this.focusWithin();
+            this.emit('sd-mega-menu-submenu-open', { source: this });
+          }
+
+          close() {
+            this.el.removeAttribute('data-active-submenu');
+            this.el.hide();
+            this.emit('sd-mega-menu-submenu-close', { source: this });
+          }
+
+          focusWithin() {
+            const firstNavigationItem = this.el.querySelector('sd-navigation-item:not([slot="trigger"])');
+            setTimeout(() => firstNavigationItem?.focus());
+          }
+
+          focusTrigger() {
+            setTimeout(() => this.trigger.focus());
+          }
+
+          back() {
+            this.close();
+            this.focusTrigger();
+          }
+
+          onPointerOut(event) {
+            if (event.pointerType !== 'mouse' || this.el.contains(event.relatedTarget)) return;
+            this.close();
+          }
+        }
+
+        class MegaMenuItem extends MegaMenuElement {
+          constructor(element) {
+            super(element);
+
+            this.el = element;
+            this.el.addEventListener('click', e => this.onClick(e));
+
+            if (this.el.closest('sd-dropdown') && this.el.getAttribute('slot') === 'trigger') {
+              this.isSubmenuTrigger = true;
+              this.submenu = new MegaMenuSubmenu(this.el.closest('sd-dropdown'));
+              this.el.addEventListener('pointerover', () => this.click());
+            }
+
+            if (this.el.closest('sd-dropdown')) {
+              this.parent = new MegaMenuSubmenu(this.el.closest('sd-dropdown'));
+            }
+          }
+
+          focus() {
+            this.el.focus();
+          }
+
+          click() {
+            if (this.isSubmenuTrigger) {
+              this.submenu.open();
+              return;
+            }
+
+            this.emit('sd-mega-menu-item-click', { source: this });
+          }
+
+          setCurrent(current) {
+            if (current) {
+              this.el.setAttribute('current', '');
+            } else {
+              this.el.removeAttribute('current');
+            }
+          }
+
+          onClick(event) {
+            if (event.target !== this.el) return;
+            this.click();
+          }
+        }
+
+        class HorizontalMegaMenu {
+          constructor(element) {
+            this.el = element;
+            this.items = Array.from(element.querySelectorAll('sd-navigation-item')).map(item => new MegaMenuItem(item));
+            this.focusController = new MegaMenuFocusController(this);
+
+            this.el.addEventListener('sd-mega-menu-item-click', e => this.onItemClick(e));
+            this.el.addEventListener('sd-mega-menu-submenu-open', e => this.onSubmenuOpen(e));
+            this.el.addEventListener('sd-mega-menu-submenu-close', e => this.onSubmenuClose(e));
+          }
+
+          reset() {
+            this.el.removeAttribute('data-submenu-open');
+            this.items.forEach(item => item.submenu?.reset());
+          }
+
+          onItemClick(e) {
+            this.items.forEach(item => {
+              item.setCurrent(item.el === e.target || item.submenu?.el.contains(e.target));
+            });
+          }
+
+          onSubmenuOpen(e) {
+            this.el.setAttribute('data-submenu-open', '');
+          }
+
+          onSubmenuClose(e) {
+            this.reset();
+          }
+        }
+
+        class MegaMenuFocusController {
+          constructor(menu) {
+            this.menu = menu;
+            this.menu.el.addEventListener('keydown', e => this.onKeydown(e));
+          }
+
+          focusNext(item) {
+            let index = this.menu.items.findIndex(_item => _item.el === item.el);
+            let next = this.menu.items[index + 1];
+
+            while (true) {
+              if (!next) break;
+
+              if (item.parent && !item.isSubmenuTrigger && item.parent.el !== next.parent?.el) return;
+
+              if (next.parent && !next.isSubmenuTrigger && !next.parent.isActive()) {
+                index++;
+                next = this.menu.items[index + 1];
+                continue;
+              }
+
+              break;
+            }
+
+            if (item.parent && item.parent.el !== next?.parent?.el) {
+              item.parent?.close();
+            }
+
+            next?.focus();
+          }
+
+          focusPrevious(item) {
+            let index = this.menu.items.findIndex(_item => _item.el === item.el);
+            let previous = this.menu.items[index - 1];
+
+            while (true) {
+              if (!previous) break;
+
+              if (previous.parent && previous.isSubmenuTrigger && previous.parent.el === item.parent?.el) return;
+
+              if (previous.parent && !previous.isSubmenuTrigger && !previous.parent.isActive()) {
+                index--;
+                previous = this.menu.items[index - 1];
+                continue;
+              }
+
+              break;
+            }
+
+            if (item.parent && item.parent.el !== previous?.parent?.el) {
+              item.parent?.close();
+            }
+
+            previous?.focus();
+          }
+
+          onKeydown(e) {
+            const item = this.menu.items.find(item => item.el === e.target);
+
+            switch (e.key) {
+              case 'ArrowDown':
+                if (item.isSubmenuTrigger) {
+                  item.click();
+                }
+                break;
+              case 'ArrowUp':
+                item.parent?.back();
+                break;
+              case 'ArrowRight':
+                this.focusNext(item);
+                break;
+              case 'ArrowLeft':
+                this.focusPrevious(item);
+                break;
+            }
+          }
+        }
+
+        document.querySelectorAll('.mega-menu-nav--horizontal').forEach(container => {
+          const megamenu = new HorizontalMegaMenu(container);
+        });
+      </script>
+
       <!-- Desktop navigation logic -->
-      <script type="module">
+      <!--script type="module">
         const dropdowns = document.querySelectorAll('sd-header sd-dropdown');
         const items = document.querySelectorAll('sd-header sd-navigation-item');
 
@@ -1083,7 +1309,7 @@ export const HorizontalMegaMenu = {
           item.addEventListener('keydown', e => onItemKeydown(e, item));
           item.addEventListener('click', e => onItemClick(e, item));
         });
-      </script>
+      </script-->
     `;
   }
 };
@@ -1458,7 +1684,7 @@ export const VerticalMegaMenu = {
           }
         }
 
-        class MobileMegaMenu {
+        class VerticalMegaMenu {
           constructor(element) {
             this.el = element;
             this.items = Array.from(element.querySelectorAll('sd-navigation-item')).map(item => new MegaMenuItem(item));
@@ -1578,7 +1804,7 @@ export const VerticalMegaMenu = {
         }
 
         document.querySelectorAll('.mega-menu-nav').forEach(container => {
-          const megamenu = new MobileMegaMenu(container);
+          const megamenu = new VerticalMegaMenu(container);
 
           if (container.closest('sd-drawer')) {
             container.closest('sd-drawer').addEventListener('sd-hide', () => megamenu.reset());
