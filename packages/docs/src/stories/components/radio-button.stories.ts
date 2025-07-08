@@ -14,7 +14,12 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: 'Radio Button'
+      value: `<sd-icon name="system/image" slot="icon"></sd-icon>Radio Button`
+    },
+    {
+      type: 'attribute',
+      name: 'checked',
+      value: true
     }
   ]),
   argTypes,
@@ -210,7 +215,7 @@ export const VisuallyDisabled = {
           Label
         </sd-radio-button>
 
-        <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm">
+        <sd-tooltip content="Visually disabled" trigger="hover focus" size="sm">
           <sd-radio-button value="2" visually-disabled>
             <sd-icon name="system/image" slot="icon"></sd-icon>
             Visually disabled
