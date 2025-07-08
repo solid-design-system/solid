@@ -35,7 +35,6 @@ export default [
       'packages/components/dist-versioned',
       'packages/components/examples',
       'packages/components/scripts',
-      'packages/components/src/_components',
       'packages/components/src/react',
       'packages/docs/custom-elements-manifest.config.ts',
       'packages/docs/.storybook',

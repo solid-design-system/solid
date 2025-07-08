@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 1.21.0
+
+### Minor Changes
+
+- The `sd-menu` and `sd-menu-item` have arrived. 🎉 _[`#2297`](https://github.com/solid-design-system/solid/pull/2297) [`b2485fe`](https://github.com/solid-design-system/solid/commit/b2485fe1fcf7ee7897fd4e9d2fc48db06fe7c390) [@smfonseca](https://github.com/smfonseca)_
+
+  - Added documentation with usage guidelines, best practices and accessibility hints.
+
 ## 1.20.2
 
 ### Patch Changes
