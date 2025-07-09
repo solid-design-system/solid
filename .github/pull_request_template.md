@@ -6,6 +6,7 @@
 <!-- *PR notes: Irrelevant elements should be removed.* -->
 - [ ] Documentation is created/updated
 - [ ] Migration Guide is created/updated
+<!-- *PR notes: If this PR includes a BREAKING CHANGE, a migration guide is needed to explain how users can migrate between versions. * -->
 - [ ] E2E tests (features, a11y, bug fixes) are created/updated
 <!-- *If this PR includes a bug fix, an E2E test is necessary to verify the change. If the fix is purely visual, ensuring it is captured within our chromatic screenshot tests is sufficient.* -->
 - [ ] Stories (features, a11y) are created/updated
