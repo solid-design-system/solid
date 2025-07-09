@@ -153,6 +153,11 @@ if (typeof window.MegaMenu === 'undefined') {
       }
     }
 
+    onClick(event) {
+      if (event.target.closest('sd-navigation-item') !== this.el) return;
+      this.click();
+    }
+
     focus() {
       this.el.focus();
     }
@@ -183,11 +188,6 @@ if (typeof window.MegaMenu === 'undefined') {
       } else {
         this.el.removeAttribute('current');
       }
-    }
-
-    onClick(event) {
-      if (event.target !== this.el) return;
-      this.click();
     }
   }
 
