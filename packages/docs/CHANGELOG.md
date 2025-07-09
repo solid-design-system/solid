@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 1.23.0
+
+### Minor Changes
+
+- The `sd-range` and `sd-range-tick` have arrived! 🎉 _[`#2306`](https://github.com/solid-design-system/solid/pull/2306) [`6aba9bd`](https://github.com/solid-design-system/solid/commit/6aba9bd348b999fa6677de99488df234bc119de2) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Used to allow users to select a single or multiple values within a defined range using a slider.
+
 ## 1.22.2
 
 ### Patch Changes
