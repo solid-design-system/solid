@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-tab');
 
 export default {
   title: 'Components/sd-tab',
-  tags: ['!dev', 'skip-a11y-[aria-required-parent]', 'autodocs'],
+  tags: ['!dev', 'autodocs', 'skip-a11y-[aria-required-parent]'],
   component: 'sd-tab',
   args: overrideArgs([
     {
@@ -90,29 +90,29 @@ export const Active = {
   render: () => html`
     <div class="grid grid-cols-2 gap-12">
       <sd-tab-group activation="auto" id="active">
-        <sd-tab slot="nav" panel="tab-1" variant="default">Tab 1</sd-tab>
+        <sd-tab slot="nav" panel="tab-1" variant="default">Default 1</sd-tab>
         <sd-tab-panel name="tab-1">
           Tab panel 1 - Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.
         </sd-tab-panel>
-        <sd-tab slot="nav" panel="tab-2" variant="default">Tab 2</sd-tab>
+        <sd-tab slot="nav" panel="tab-2" variant="default">Default 2</sd-tab>
         <sd-tab-panel name="tab-2">
           Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </sd-tab-panel>
-        <sd-tab slot="nav" panel="tab-3" variant="default">Tab 3</sd-tab>
+        <sd-tab slot="nav" panel="tab-3" variant="default">Default 3</sd-tab>
         <sd-tab-panel name="tab-3">
           Tab panel 3 - Inventore perspiciatis delectus nisi doloremque soluta inventore.
         </sd-tab-panel>
       </sd-tab-group>
       <sd-tab-group activation="auto" id="active-container">
-        <sd-tab slot="nav" panel="tab-1" variant="container">Tab 1</sd-tab>
+        <sd-tab slot="nav" panel="tab-1" variant="container">Container 1</sd-tab>
         <sd-tab-panel name="tab-1">
           Tab panel 1 - Provident illo neque vel ex. Inventore perspiciatis delectus nisi doloremque soluta inventore.
         </sd-tab-panel>
-        <sd-tab slot="nav" panel="tab-2" variant="container">Tab 2</sd-tab>
+        <sd-tab slot="nav" panel="tab-2" variant="container">Container 2</sd-tab>
         <sd-tab-panel name="tab-2">
           Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </sd-tab-panel>
-        <sd-tab slot="nav" panel="tab-3" variant="container">Tab 3</sd-tab>
+        <sd-tab slot="nav" panel="tab-3" variant="container">Container 3</sd-tab>
         <sd-tab-panel name="tab-3">
           Tab panel 3 - Inventore perspiciatis delectus nisi doloremque soluta inventore.
         </sd-tab-panel>
@@ -176,7 +176,7 @@ export const VisuallyDisabled = {
           </div>
         </sd-tab-panel>
         <sd-tooltip slot="nav" content="Visually Disabled" trigger="hover focus" size="sm" placement="top" hoist>
-          <sd-tab panel="tab-2" variant="default" visually-disabled>Visually Disabled</sd-tab>
+          <sd-tab panel="tab-2" variant="default" visually-disabled>Visually disabled</sd-tab>
         </sd-tooltip>
         <sd-tab-panel name="tab-2">
           <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
@@ -199,7 +199,7 @@ export const Icon = {
     <sd-tab-group>
       <sd-tab slot="nav" panel="tab-1">
         <sd-icon slot="left" name="system/image"></sd-icon>
-        Label
+        Label 1
       </sd-tab>
       <sd-tab-panel name="tab-1">
         <div>
@@ -208,14 +208,14 @@ export const Icon = {
       </sd-tab-panel>
       <sd-tab slot="nav" panel="tab-2">
         <sd-icon slot="left" name="system/image"></sd-icon>
-        Label
+        Label 2
       </sd-tab>
       <sd-tab-panel name="tab-2">
         <div>Tab panel 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
       </sd-tab-panel>
       <sd-tab slot="nav" panel="tab-3">
         <sd-icon slot="left" name="system/image"></sd-icon>
-        Label
+        Label 3
       </sd-tab>
       <sd-tab-panel name="tab-3">
         <div>Tab panel 3 - Inventore perspiciatis delectus nisi doloremque soluta inventore.</div>
