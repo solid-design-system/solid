@@ -31,26 +31,44 @@ fs.readdir(directoryPath, (err, files) => {
         process.exit(1);
       }
 
-      // Check if file contains the string to replace
-      if (data.includes('.animate-spin{animation:spin 1s linear infinite}')) {
-        // Replace and write the new content to file
-        const result = data.replace(
-          // If other animations are needed, please think about
-          // e. g. adding "animation-duration: 0 !important" here
-          '.animate-spin{animation:spin 1s linear infinite}',
-          '.animate-spin{animation: 1s linear 5.0s infinite spin}'
-        );
+      const animations = [
+        '.animate-spin{animation:spin 1s linear infinite}',
+        '.animate-loader-current{animation:wave 1.3s infinite,loader-color-current 2.6s infinite}',
+        '.animate-loader-white{animation:wave 1.3s infinite,loader-color-white 2.6s infinite}',
+        '.animate-loader-primary{animation:wave 1.3s infinite,loader-color-primary 2.6s infinite}'
+      ];
 
+      // Map of original animation to replacement
+      const replacements = {
+        '.animate-spin{animation:spin 1s linear infinite}': '.animate-spin{animation: 1s linear 5.0s infinite spin}',
+        '.animate-loader-current{animation:wave 1.3s infinite,loader-color-current 2.6s infinite}':
+          '.animate-loader-current{animation:wave 0s infinite,loader-color-current 0s infinite}',
+        '.animate-loader-white{animation:wave 1.3s infinite,loader-color-white 2.6s infinite}':
+          '.animate-loader-white{animation:wave 0s infinite,loader-color-white 0s infinite}',
+        '.animate-loader-primary{animation:wave 1.3s infinite,loader-color-primary 2.6s infinite}':
+          '.animate-loader-primary{animation:wave 0s infinite,loader-color-primary 0s infinite}'
+      };
+
+      let found = false;
+      let result = data;
+
+      animations.forEach(anim => {
+        if (result.includes(anim)) {
+          found = true;
+          result = result.replace(new RegExp(anim.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), replacements[anim]);
+        }
+      });
+
+      if (found) {
         fs.writeFile(filePath, result, 'utf8', err => {
           if (err) {
             console.error('Failed to write file:', err);
             process.exit(1);
           }
-
           console.log(`Successfully updated: ${filePath}`);
         });
       } else {
-        console.error('File does not contain the required string.');
+        console.error('File does not contain any of the required animation strings.');
       }
     });
   } else if (matchedFiles.length > 1) {

@@ -1,5 +1,29 @@
 # @solid-design-system/docs
 
+## 1.24.1
+
+### Patch Changes
+
+- Fixed missing footnotes templates. _[`#2349`](https://github.com/solid-design-system/solid/pull/2349) [`fc196a3`](https://github.com/solid-design-system/solid/commit/fc196a36bcfa2e7849cac3595f41a8e798ff0a86) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.24.0
+
+### Minor Changes
+
+- The `sd-loader` has arrived! 🎉 _[`#2324`](https://github.com/solid-design-system/solid/pull/2324) [`48c1a2e`](https://github.com/solid-design-system/solid/commit/48c1a2e91b9ba1eca1383b92725c7d0c3dfcae67) [@smfonseca](https://github.com/smfonseca)_
+
+  It is a visual indicator that shows loading is in process.
+
+  - This component will replace the `sd-spinner` which will be **deprecated** in the near future.
+
+## 1.23.0
+
+### Minor Changes
+
+- The `sd-range` and `sd-range-tick` have arrived! 🎉 _[`#2306`](https://github.com/solid-design-system/solid/pull/2306) [`6aba9bd`](https://github.com/solid-design-system/solid/commit/6aba9bd348b999fa6677de99488df234bc119de2) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Used to allow users to select a single or multiple values within a defined range using a slider.
+
 ## 1.22.2
 
 ### Patch Changes

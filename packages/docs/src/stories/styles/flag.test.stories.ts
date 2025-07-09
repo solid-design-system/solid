@@ -61,10 +61,8 @@ export const Variants = {
 
 export const FlagSamples = {
   name: 'Samples',
-  parameters: {
-    backgrounds: {
-      default: 'white'
-    }
+  globals: {
+    backgrounds: { value: 'white' }
   },
   render: () => {
     return html`
