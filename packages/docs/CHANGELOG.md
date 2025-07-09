@@ -1,5 +1,33 @@
 # @solid-design-system/docs
 
+## 1.22.2
+
+### Patch Changes
+
+- Fixed table template a11y issue with `role="region"`. _[`#2346`](https://github.com/solid-design-system/solid/pull/2346) [`4ae574a`](https://github.com/solid-design-system/solid/commit/4ae574ab375a5557fd3f63896d12de613a92134d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.22.1
+
+### Patch Changes
+
+- Fixed render content for `tooltip` with bolded text template _[`#2327`](https://github.com/solid-design-system/solid/pull/2327) [`1dfe777`](https://github.com/solid-design-system/solid/commit/1dfe777224c5f139065a809c426aefc81da43d92) [@balco0110](https://github.com/balco0110)_
+
+## 1.22.0
+
+### Minor Changes
+
+- - Create `switch` template _[`#2319`](https://github.com/solid-design-system/solid/pull/2319) [`5d20c51`](https://github.com/solid-design-system/solid/commit/5d20c51b9e0b15be47cfd60e24bb179cef42bf27) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add `Switch with Tooltip` story to `switch` template
+
+## 1.21.0
+
+### Minor Changes
+
+- The `sd-menu` and `sd-menu-item` have arrived. 🎉 _[`#2297`](https://github.com/solid-design-system/solid/pull/2297) [`b2485fe`](https://github.com/solid-design-system/solid/commit/b2485fe1fcf7ee7897fd4e9d2fc48db06fe7c390) [@smfonseca](https://github.com/smfonseca)_
+
+  - Added documentation with usage guidelines, best practices and accessibility hints.
+
 ## 1.20.2
 
 ### Patch Changes
