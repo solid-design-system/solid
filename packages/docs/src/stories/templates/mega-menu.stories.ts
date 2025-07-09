@@ -3,7 +3,7 @@ import '../../../../components/src/solid-components';
 
 export default {
   tags: ['!dev', 'autodocs'],
-  title: 'Templates/Navigation Item',
+  title: 'Templates/Mega Menu',
   parameters: {
     chromatic: { disableSnapshot: true },
     design: {
@@ -22,13 +22,13 @@ export default {
  *
  * **Mega Menu Sample A-04 (can be seen when you mouse hover "About Us"):**  This option has clickable navigation items, with and without descriptions, and highlights the current page for easy navigation and it also includes a headline, a divider and cross-links for special target groups.
  */
-export const HorizontalMegaMenu = {
+export const Horizontal = {
   name: 'Horizontal Navigation - Desktop (open on hover) and Mobile',
   render: () => {
     return html`
       <!-- Storybook specific styles - DO NOT COPY -->
       <style>
-        #anchor--templates-navigation-item--horizontal-mega-menu .innerZoomElementWrapper {
+        #anchor--templates-mega-menu--horizontal .innerZoomElementWrapper {
           height: 900px;
         }
       </style>
@@ -663,7 +663,7 @@ export const HorizontalMegaMenu = {
   }
 };
 
-export const VerticalMegaMenu = {
+export const Vertical = {
   name: 'Vertical Navigation',
   render: () => {
     return html`
@@ -673,11 +673,11 @@ export const VerticalMegaMenu = {
           padding: 0 !important;
         }
 
-        #anchor--templates-navigation-item--vertical-mega-menu .innerZoomElementWrapper {
+        #anchor--templates-mega-menu--vertical .innerZoomElementWrapper {
           height: 100vh;
         }
 
-        #anchor--templates-navigation-item--vertical-mega-menu .innerZoomElementWrapper > * {
+        #anchor--templates-mega-menu--vertical .innerZoomElementWrapper > * {
           border: 0 !important;
         }
 
