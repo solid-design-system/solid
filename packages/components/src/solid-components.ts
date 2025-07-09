@@ -5,6 +5,8 @@ export { default as SdAnimation } from './components/animation/animation.js';
 export { default as SdAudio } from './components/audio/audio.js';
 export { default as SdBadge } from './components/badge/badge.js';
 export { default as SdBrandshape } from './components/brandshape/brandshape.js';
+export { default as SdBreadcrumb } from './components/breadcrumb/breadcrumb.js';
+export { default as SdBreadcrumbItem } from './components/breadcrumb-item/breadcrumb-item.js';
 export { default as SdButton } from './components/button/button.js';
 export { default as SdCarousel } from './components/carousel/carousel.js';
 export { default as SdCarouselItem } from './components/carousel-item/carousel-item.js';
@@ -34,6 +36,8 @@ export { default as SdQuickfact } from './components/quickfact/quickfact.js';
 export { default as SdRadio } from './components/radio/radio.js';
 export { default as SdRadioButton } from './components/radio-button/radio-button.js';
 export { default as SdRadioGroup } from './components/radio-group/radio-group.js';
+export { default as SdRange } from './components/range/range.js';
+export { default as SdRangeTick } from './components/range-tick/range-tick.js';
 export { default as SdScrollable } from './components/scrollable/scrollable.js';
 export { default as SdSelect } from './components/select/select.js';
 export { default as SdSpinner } from './components/spinner/spinner.js';
@@ -49,8 +53,6 @@ export { default as SdTeaserMedia } from './components/teaser-media/teaser-media
 export { default as SdTextarea } from './components/textarea/textarea.js';
 export { default as SdTooltip } from './components/tooltip/tooltip.js';
 export { default as SdVideo } from './components/video/video.js';
-export { default as SdBreadcrumb } from './components/breadcrumb/breadcrumb.js';
-export { default as SdBreadcrumbItem } from './components/breadcrumb-item/breadcrumb-item.js';
 /* plop:component */
 
 // Utilities
