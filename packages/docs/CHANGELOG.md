@@ -1,5 +1,15 @@
 # @solid-design-system/docs
 
+## 1.24.0
+
+### Minor Changes
+
+- The `sd-loader` has arrived! 🎉 _[`#2324`](https://github.com/solid-design-system/solid/pull/2324) [`48c1a2e`](https://github.com/solid-design-system/solid/commit/48c1a2e91b9ba1eca1383b92725c7d0c3dfcae67) [@smfonseca](https://github.com/smfonseca)_
+
+  It is a visual indicator that shows loading is in process.
+
+  - This component will replace the `sd-spinner` which will be **deprecated** in the near future.
+
 ## 1.23.0
 
 ### Minor Changes
