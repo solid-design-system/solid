@@ -13,10 +13,20 @@ export default {
   }
 };
 
+/**
+ * **Mega Menu Sample A-01 (can be seen when you mouse hover "Funds & Depot"):** This option has clickable navigation items, with and without descriptions, and highlights the current page for easy navigation.
+ *
+ * **Mega Menu Sample A-02 (can be seen when you mouse hover "Investing"):** This option has a mix of clickable and non clickable navigation items with description which help creating an intro for the clickable navigation items. It also highlights the current page for easy navigation.
+ *
+ * **Mega Menu Sample A-03 (can be seen when you mouse hover "Our Services"):** This option has non clickable navigation without description which helps grouping the clickable navigation items. It also highlights the current page for easy navigation.
+ *
+ * **Mega Menu Sample A-04 (can be seen when you mouse hover "About Us"):**  This option has clickable navigation items, with and without descriptions, and highlights the current page for easy navigation and it also includes a headline, a divider and cross-links for special target groups.
+ */
 export const HorizontalMegaMenu = {
-  name: 'Horizontal Mega Menu',
+  name: 'Horizontal Navigation - Desktop (open on hover) and Mobile',
   render: () => {
     return html`
+      <!-- Storybook specific styles - DO NOT COPY -->
       <style>
         #anchor--templates-navigation-item--horizontal-mega-menu .innerZoomElementWrapper {
           height: 900px;
@@ -115,10 +125,10 @@ export const HorizontalMegaMenu = {
                   </li>
 
                   <li>
-                    <sd-navigation-item vertical href="javascript:void(0)">
-                      <span class="font-bold text-black"> Union Investment for private clients </span>
-                      <p slot="description">Learn more about us and what we stand for</p>
-                    </sd-navigation-item>
+                    <div class="px-4 py-3">
+                      <p class="font-bold">Union Investment for private clients</p>
+                      <p class="text-sm">Learn more about us and what we stand for</p>
+                    </div>
 
                     <ul>
                       <li>
@@ -137,16 +147,16 @@ export const HorizontalMegaMenu = {
 
                   <li>
                     <sd-navigation-item vertical href="javascript:void(0)">
-                      <span class="font-bold text-black"> Sustainability at Union Investment </span>
+                      <span class="font-bold"> Sustainability at Union Investment </span>
                       <p slot="description">Learn about our values, principles, and commitment to sustainability.</p>
                     </sd-navigation-item>
                   </li>
 
                   <li>
-                    <sd-navigation-item vertical href="javascript:void(0)">
-                      <span class="font-bold text-black"> Union Investment Group </span>
-                      <p slot="description">Find out more about Union Investment as a group of companies</p>
-                    </sd-navigation-item>
+                    <div class="px-4 py-3">
+                      <p class="font-bold">Union Investment Group</p>
+                      <p class="text-sm">Find out more about Union Investment as a group of companies</p>
+                    </div>
 
                     <ul>
                       <li>
@@ -211,10 +221,10 @@ export const HorizontalMegaMenu = {
                   </li>
 
                   <li>
-                    <sd-navigation-item vertical href="javascript:void(0)">
-                      <span class="font-bold text-black">Structuring your assets</span>
-                      <p slot="description">Benefit from modern solutions for your assets</p>
-                    </sd-navigation-item>
+                    <div class="px-4 py-3">
+                      <p class="font-bold">Structuring your assets</p>
+                      <p class="text-sm">Benefit from modern solutions for your assets</p>
+                    </div>
 
                     <ul>
                       <li>
@@ -229,10 +239,10 @@ export const HorizontalMegaMenu = {
                   </li>
 
                   <li>
-                    <sd-navigation-item vertical href="javascript:void(0)">
-                      <span class="font-bold text-black">Investing money according to ESG </span>
-                      <p slot="description">Shaping the future responsibly with your investments</p>
-                    </sd-navigation-item>
+                    <div class="px-4 py-3">
+                      <p class="font-bold">Investing money according to ESG</p>
+                      <p class="text-sm">Shaping the future responsibly with your investments</p>
+                    </div>
 
                     <ul>
                       <li>
@@ -244,11 +254,10 @@ export const HorizontalMegaMenu = {
                   </li>
 
                   <li>
-                    <sd-navigation-item vertical href="javascript:void(0)">
-                      <span class="font-bold text-black">Calculators</span>
-                      <p slot="description">Manage your funds flexibly with UnionDepot</p>
-                    </sd-navigation-item>
-
+                    <div class="px-4 py-3">
+                      <p class="font-bold">Calculators</p>
+                      <p class="text-sm">Manage your funds flexibly with UnionDepot</p>
+                    </div>
                     <ul>
                       <li>
                         <sd-navigation-item vertical href="javascript:void(0)"> Investment planner </sd-navigation-item>
@@ -655,9 +664,10 @@ export const HorizontalMegaMenu = {
 };
 
 export const VerticalMegaMenu = {
-  name: 'Vertical Mega Menu',
+  name: 'Vertical Navigation',
   render: () => {
     return html`
+      <!-- Storybook specific styles - DO NOT COPY -->
       <style>
         .sb-main-padded {
           padding: 0 !important;
@@ -666,9 +676,17 @@ export const VerticalMegaMenu = {
         #anchor--templates-navigation-item--vertical-mega-menu .innerZoomElementWrapper {
           height: 100vh;
         }
+
+        #anchor--templates-navigation-item--vertical-mega-menu .innerZoomElementWrapper > * {
+          border: 0 !important;
+        }
+
+        sd-header {
+          --sd-header-calculated-height: 96px;
+        }
       </style>
       <div class="min-h-screen grid grid-cols-[auto_1fr] grid-rows-[auto_1fr]">
-        <sd-header fixed style="--sd-header-padding: 24px 48px" class="col-span-2">
+        <sd-header fixed style="--sd-header-padding: 24px 48px;" class="col-span-2">
           <div class="flex justify-between items-center">
             <a class="inline-flex sd-interactive" href="#">
               <img class="h-8 md:h-12" src="images/logo-unioninvestment-lg.svg" alt="Union Investment Homepage" />
