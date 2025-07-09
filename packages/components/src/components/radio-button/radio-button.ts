@@ -197,7 +197,7 @@ export default class SdRadioButton extends SolidElement {
 
       /* All except the first */
       :host([size='md'].sd-button-group__button:not(.sd-button-group__button--first)) {
-        @apply -ml-2;
+        @apply -ms-2;
       }
 
       /* All except the first */
