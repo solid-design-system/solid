@@ -47,7 +47,7 @@ export const HorizontalMegaMenu = {
         <nav aria-label="Main" class="mega-menu-nav--horizontal hidden lg:flex relative justify-between">
           <ul class="flex -ms-4">
             <li>
-              <sd-dropdown>
+              <sd-dropdown no-flip>
                 <sd-navigation-item slot="trigger" current class="font-bold"> Funds & Depot </sd-navigation-item>
 
                 <ul class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
@@ -113,7 +113,7 @@ export const HorizontalMegaMenu = {
               </sd-dropdown>
             </li>
             <li>
-              <sd-dropdown>
+              <sd-dropdown no-flip>
                 <sd-navigation-item slot="trigger" class="font-bold"> About Us </sd-navigation-item>
 
                 <ul class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
@@ -210,7 +210,7 @@ export const HorizontalMegaMenu = {
               <sd-navigation-item href="javascript:void(0)" class="font-bold">Savings</sd-navigation-item>
             </li>
             <li>
-              <sd-dropdown>
+              <sd-dropdown no-flip>
                 <sd-navigation-item slot="trigger" class="font-bold"> Investing </sd-navigation-item>
                 <ul class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
                   <li>
@@ -271,7 +271,7 @@ export const HorizontalMegaMenu = {
               </sd-dropdown>
             </li>
             <li>
-              <sd-dropdown>
+              <sd-dropdown no-flip>
                 <sd-navigation-item class="font-bold" slot="trigger"> Our Services </sd-navigation-item>
                 <ul class="grid grid-cols-4 justify-between gap-x-6 px-6 py-8">
                   <li>
