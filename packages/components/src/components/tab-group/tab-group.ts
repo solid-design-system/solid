@@ -169,18 +169,20 @@ export default class SdTabGroup extends SolidElement {
     // Scroll tab into view when tabbing forward
     if (['Tab'].includes(event.key)) {
       const index = this.tabs.indexOf(this.getActiveTab()!);
+      const nextTab = this.tabs[index + 1];
 
-      if (tab !== null) {
-        scrollIntoView(this.tabs[index + 1], this.nav, 'horizontal');
+      if (tab !== null && nextTab) {
+        scrollIntoView(nextTab, this.nav, 'horizontal');
       }
     }
 
     // Scroll tab into view when tabbing backward
     if (['Shift', 'Tab'].includes(event.key)) {
       const index = this.tabs.indexOf(this.getActiveTab()!);
+      const previousTab = this.tabs[index - 1];
 
-      if (tab !== null) {
-        scrollIntoView(this.tabs[index - 1], this.nav, 'horizontal');
+      if (tab !== null && previousTab) {
+        scrollIntoView(previousTab, this.nav, 'horizontal');
       }
     }
 
