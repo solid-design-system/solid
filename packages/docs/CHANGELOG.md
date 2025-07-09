@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.24.2
+
+### Patch Changes
+
+- Added screenshot test for `sd-tab-group` with links inside the `sd-tab-panel`. _[`#2350`](https://github.com/solid-design-system/solid/pull/2350) [`5ef9005`](https://github.com/solid-design-system/solid/commit/5ef90053097b1c4b940037e1f79a17b3680fcca4) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.24.1
 
 ### Patch Changes
