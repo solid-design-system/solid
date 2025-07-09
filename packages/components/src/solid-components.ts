@@ -37,6 +37,8 @@ export { default as SdQuickfact } from './components/quickfact/quickfact.js';
 export { default as SdRadio } from './components/radio/radio.js';
 export { default as SdRadioButton } from './components/radio-button/radio-button.js';
 export { default as SdRadioGroup } from './components/radio-group/radio-group.js';
+export { default as SdRange } from './components/range/range.js';
+export { default as SdRangeTick } from './components/range-tick/range-tick.js';
 export { default as SdScrollable } from './components/scrollable/scrollable.js';
 export { default as SdSelect } from './components/select/select.js';
 export { default as SdSpinner } from './components/spinner/spinner.js';

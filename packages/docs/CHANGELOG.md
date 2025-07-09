@@ -1,5 +1,19 @@
 # @solid-design-system/docs
 
+## 1.23.0
+
+### Minor Changes
+
+- The `sd-range` and `sd-range-tick` have arrived! 🎉 _[`#2306`](https://github.com/solid-design-system/solid/pull/2306) [`6aba9bd`](https://github.com/solid-design-system/solid/commit/6aba9bd348b999fa6677de99488df234bc119de2) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  - Used to allow users to select a single or multiple values within a defined range using a slider.
+
+## 1.22.2
+
+### Patch Changes
+
+- Fixed table template a11y issue with `role="region"`. _[`#2346`](https://github.com/solid-design-system/solid/pull/2346) [`4ae574a`](https://github.com/solid-design-system/solid/commit/4ae574ab375a5557fd3f63896d12de613a92134d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.22.1
 
 ### Patch Changes
