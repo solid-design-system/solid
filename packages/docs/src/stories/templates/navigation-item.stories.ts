@@ -698,17 +698,21 @@ export const VerticalMegaMenu = {
 
             <nav class="mega-menu-nav hidden lg:inline">
               <ul class="flex">
-                <sd-navigation-item>
-                  <sd-icon name="system/phone" label="Client Service" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
-                </sd-navigation-item>
-
-                <sd-navigation-item>
-                  <sd-icon name="system/shopping-cart" label="Cart" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
-                </sd-navigation-item>
-
-                <sd-navigation-item>
-                  <sd-icon name="system/user" label="Account" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
-                </sd-navigation-item>
+                <li>
+                  <sd-navigation-item>
+                    <sd-icon name="system/phone" label="Client Service" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
+                  </sd-navigation-item>
+                </li>
+                <li>
+                  <sd-navigation-item>
+                    <sd-icon name="system/shopping-cart" label="Cart" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
+                  </sd-navigation-item>
+                </li>
+                <li>
+                  <sd-navigation-item>
+                    <sd-icon name="system/user" label="Account" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
+                  </sd-navigation-item>
+                </li>
               </ul>
             </nav>
           </div>
