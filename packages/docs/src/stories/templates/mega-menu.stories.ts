@@ -643,7 +643,7 @@ export const Horizontal = {
         The mega-menu.js script can be found here:
         https://github.com/solid-design-system/solid/blob/main/packages/docs/.storybook/assets/scripts/mega-menu.js
       -->
-      <script src="/scripts/mega-menu.js"></script>
+      <script src="./scripts/mega-menu.js"></script>
       <script type="module">
         document.querySelectorAll('.mega-menu-nav--horizontal').forEach(container => {
           const megamenu = new MegaMenu(container, MegaMenuHorizontalItem);
@@ -892,7 +892,7 @@ export const Vertical = {
         The mega-menu script can be found here:
         https://github.com/solid-design-system/solid/blob/main/packages/docs/.storybook/assets/scripts/mega-menu.js
       -->
-      <script src="/scripts/mega-menu.js"></script>
+      <script src="./scripts/mega-menu.js"></script>
       <script type="module">
         document.querySelectorAll('.mega-menu-nav').forEach(container => {
           const megamenu = new MegaMenu(container, MegaMenuVerticalItem);
