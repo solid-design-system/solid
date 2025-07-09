@@ -37,9 +37,9 @@ describe('<sd-button>', () => {
       expect(el.shadowRoot!.querySelector('a')).not.to.exist;
     });
 
-    it('should not have a spinner present', async () => {
+    it('should not have a loader present', async () => {
       const el = await fixture<SdButton>(html` <sd-button>Default Slot</sd-button> `);
-      expect(el.shadowRoot!.querySelector('sd-spinner')).not.to.exist;
+      expect(el.shadowRoot!.querySelector('sd-loader')).not.to.exist;
     });
   });
 
@@ -94,9 +94,9 @@ describe('<sd-button>', () => {
   });
 
   describe('when loading', () => {
-    it('should have a spinner present', async () => {
+    it('should have a loader present', async () => {
       const el = await fixture<SdButton>(html` <sd-button loading>Default Slot</sd-button> `);
-      expect(el.shadowRoot!.querySelector('sd-spinner')).to.exist;
+      expect(el.shadowRoot!.querySelector('sd-loader')).to.exist;
     });
   });
 
