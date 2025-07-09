@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.24.1
+
+### Patch Changes
+
+- Fixed missing footnotes templates. _[`#2349`](https://github.com/solid-design-system/solid/pull/2349) [`fc196a3`](https://github.com/solid-design-system/solid/commit/fc196a36bcfa2e7849cac3595f41a8e798ff0a86) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.24.0
 
 ### Minor Changes
