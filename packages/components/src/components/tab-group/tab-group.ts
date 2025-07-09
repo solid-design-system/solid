@@ -404,8 +404,11 @@ export default class SdTabGroup extends SolidElement {
       }
 
       ::slotted(sd-tab-panel) {
-        @apply focus-within:focus-outline;
         --padding: 1rem 0;
+      }
+
+      ::slotted(sd-tab-panel:focus-visible) {
+        @apply focus-outline;
       }
     `
   ];
