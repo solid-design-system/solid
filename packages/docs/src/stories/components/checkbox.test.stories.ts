@@ -91,7 +91,7 @@ export const Size = {
 };
 
 export const MultipleLines = {
-  name: 'Multiple Lines',
+  name: 'Multiple lines',
   render: () => {
     return generateTemplate({
       axis: {
@@ -101,7 +101,7 @@ export const MultipleLines = {
           values: ['lg', 'sm']
         }
       },
-      args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot<br />Second Line' }])
+      args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default slot<br />Second line' }])
     });
   }
 };
