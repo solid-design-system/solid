@@ -123,10 +123,10 @@ export const Horizontal = {
                     </li>
 
                     <li>
-                      <sd-navigation-item vertical href="javascript:void(0)">
-                        <span class="font-bold"> Union Investment for private clients </span>
-                        <p slot="description">Learn more about us and what we stand for</p>
-                      </sd-navigation-item>
+                      <div class="px-4 py-3">
+                        <p class="font-bold">Union Investment for private clients</p>
+                        <p class="text-sm">Learn more about us and what we stand for</p>
+                      </div>
 
                       <ul>
                         <li>
