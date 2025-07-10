@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 1.24.4
+
+### Patch Changes
+
+- - Sync `sd-tab` samples with figma _[`#2256`](https://github.com/solid-design-system/solid/pull/2256) [`6f9d3fa`](https://github.com/solid-design-system/solid/commit/6f9d3fa42e95fbe3a13dcf89c499294facb25052) [@smfonseca](https://github.com/smfonseca)_
+
+  - `sd-tab` screenshot tests update
+
 ## 1.24.3
 
 ### Patch Changes

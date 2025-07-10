@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 5.13.1
+
+### Patch Changes
+
+- - Add motion design to sd-tab _[`#2256`](https://github.com/solid-design-system/solid/pull/2256) [`6f9d3fa`](https://github.com/solid-design-system/solid/commit/6f9d3fa42e95fbe3a13dcf89c499294facb25052) [@smfonseca](https://github.com/smfonseca)_
+
+### 📈 Stats
+* Uncompressed: 476 KB (+3 KB / +1%)
+* Gzipped: 112 KB (+1 KB / +1%)
+
 ## 5.13.0
 
 ### Minor Changes
