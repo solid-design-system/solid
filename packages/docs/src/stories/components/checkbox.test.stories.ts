@@ -17,7 +17,7 @@ export default {
   title: 'Components/sd-checkbox/Screenshots: sd-checkbox',
   tags: ['!autodocs'],
   component: 'sd-checkbox',
-  args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default Slot' }]),
+  args: overrideArgs([{ type: 'slot', name: 'default', value: 'Default slot' }]),
   argTypes,
   parameters: {
     ...parameters,
@@ -261,17 +261,17 @@ export const Parts = {
 const checkboxTemplate = (part: string) => {
   switch (part) {
     case 'control--checked':
-      return `<sd-checkbox checked>Default Slot</sd-checkbox>`;
+      return `<sd-checkbox checked>Default slot</sd-checkbox>`;
     case 'checked-icon':
-      return `<sd-checkbox checked>Default Slot</sd-checkbox>`;
+      return `<sd-checkbox checked>Default slot</sd-checkbox>`;
     case 'control--indeterminate':
-      return `<sd-checkbox indeterminate>Default Slot</sd-checkbox>`;
+      return `<sd-checkbox indeterminate>Default slot</sd-checkbox>`;
     case 'indeterminate-icon':
-      return `<sd-checkbox indeterminate>Default Slot</sd-checkbox>`;
+      return `<sd-checkbox indeterminate>Default slot</sd-checkbox>`;
     case 'form-control-error-text':
-      return `<sd-checkbox error-text="Error message" invalid>Default Slot</sd-checkbox>`;
+      return `<sd-checkbox error-text="Error message" invalid>Default slot</sd-checkbox>`;
     default:
-      return `<sd-checkbox>Default Slot</sd-checkbox>`;
+      return `<sd-checkbox>Default slot</sd-checkbox>`;
   }
 };
 
