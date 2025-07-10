@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.13.0
+
+### Minor Changes
+
+- Introduced new `sd-radio-button` pill shape styling. The `sd-radio-group` when containing `sd-radio-button` inside was also updated to enable the new style. _[`#2344`](https://github.com/solid-design-system/solid/pull/2344) [`496be2c`](https://github.com/solid-design-system/solid/commit/496be2cc87c25a9aa68bc4cd1966da8c5c2cd834) [@smfonseca](https://github.com/smfonseca)_
+
 ## 5.12.2
 
 ### Patch Changes
