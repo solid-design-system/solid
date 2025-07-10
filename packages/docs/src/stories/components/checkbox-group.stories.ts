@@ -14,7 +14,7 @@ export default {
     {
       type: 'attribute',
       name: 'label',
-      value: 'Group Label'
+      value: 'Group label'
     },
     {
       type: 'slot',
@@ -49,13 +49,13 @@ export const Size = {
   name: 'Size',
   render: () => html`
     <div class="flex gap-12">
-      <sd-checkbox-group size="lg" label="Group Label">
+      <sd-checkbox-group size="lg" label="Group label">
         <sd-checkbox value="1">Checkbox 1</sd-checkbox>
         <sd-checkbox value="2">Checkbox 2</sd-checkbox>
         <sd-checkbox value="3">Checkbox 3</sd-checkbox>
       </sd-checkbox-group>
 
-      <sd-checkbox-group size="sm" label="Group Label">
+      <sd-checkbox-group size="sm" label="Group label">
         <sd-checkbox value="1">Checkbox 1</sd-checkbox>
         <sd-checkbox value="2">Checkbox 2</sd-checkbox>
         <sd-checkbox value="3">Checkbox 3</sd-checkbox>
@@ -74,12 +74,12 @@ export const Orientation = {
   name: 'Orientation',
   render: () => html`
     <div class="flex gap-12">
-      <sd-checkbox-group orientation="vertical" label="Group Label">
+      <sd-checkbox-group orientation="vertical" label="Group label">
         <sd-checkbox value="1">Checkbox 1</sd-checkbox>
         <sd-checkbox value="2">Checkbox 2</sd-checkbox>
         <sd-checkbox value="3">Checkbox 3</sd-checkbox>
       </sd-checkbox-group>
-      <sd-checkbox-group orientation="horizontal" label="Group Label">
+      <sd-checkbox-group orientation="horizontal" label="Group label">
         <sd-checkbox value="1">Checkbox 1</sd-checkbox>
         <sd-checkbox value="2">Checkbox 2</sd-checkbox>
         <sd-checkbox value="3">Checkbox 3</sd-checkbox>
@@ -95,7 +95,7 @@ export const Label = {
   name: 'Label',
   render: () => html`
     <sd-checkbox-group orientation="vertical">
-      <label slot="label">Group Label</label>
+      <label slot="label">Group label</label>
       <sd-checkbox value="1">Checkbox 1</sd-checkbox>
       <sd-checkbox value="2">Checkbox 2</sd-checkbox>
       <sd-checkbox value="3">Checkbox 3</sd-checkbox>
@@ -113,7 +113,7 @@ export const HelpText = {
   render: () => html`
     <div class="flex gap-12">
       <sd-checkbox-group orientation="vertical" help-text="Help text">
-        <label slot="label">Group Label</label>
+        <label slot="label">Group label</label>
         <sd-checkbox value="1">Checkbox 1</sd-checkbox>
         <sd-checkbox value="2">Checkbox 2</sd-checkbox>
         <sd-checkbox value="3">Checkbox 3</sd-checkbox>

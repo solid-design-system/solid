@@ -1,5 +1,17 @@
 # @solid-design-system/docs
 
+## 1.24.2
+
+### Patch Changes
+
+- Added screenshot test for `sd-tab-group` with links inside the `sd-tab-panel`. _[`#2350`](https://github.com/solid-design-system/solid/pull/2350) [`5ef9005`](https://github.com/solid-design-system/solid/commit/5ef90053097b1c4b940037e1f79a17b3680fcca4) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.24.1
+
+### Patch Changes
+
+- Fixed missing footnotes templates. _[`#2349`](https://github.com/solid-design-system/solid/pull/2349) [`fc196a3`](https://github.com/solid-design-system/solid/commit/fc196a36bcfa2e7849cac3595f41a8e798ff0a86) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.24.0
 
 ### Minor Changes
