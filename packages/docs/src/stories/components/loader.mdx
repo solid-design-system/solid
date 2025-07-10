@@ -1,26 +1,28 @@
 import { Meta, Canvas } from '@storybook/addon-docs/blocks';
 import { OverviewFormatter } from '../../Overview.jsx';
 
-import * as SdSpinnerStories from './spinner.stories';
+import * as SdLoaderStories from './loader.stories';
 
 export const links = {
-  'storybook-docs': './?path=/docs/components-sd-spinner--docs',
+  'storybook-docs': '/?path=/docs/components-sd-loader--docs',
   'figma-library':
-    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=1663-16371&p=f&t=B5mgTBjcWeycmzb6-0',
+    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=1663-16371&p=f&m=dev',
   'figma-docs':
-    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2115-17681&t=pFHk5gNX1Hj4l15o-4'
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Solid-DS-%E2%80%93-Component-Docs?node-id=15949-2913&p=f&m=dev'
 };
 
 export const content = `
-# Spinner
+# Loader
 
-<sd-notification variant="warning" open class="mb-4">**Warning:** The \`sd-spinner\` will be deprecated in the future. Please use the \`sd-loader\` component instead.</sd-notification>
-
-Used as a visual indicator with a looping animation that shows loading is in process.
+Used as a visual indicator with an animation that shows loading is in process.
 
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Components
+
+[sd-button](./?path=/docs/components-sd-button--docs#loading)
 
 ### Common Use Cases
 
@@ -44,7 +46,7 @@ Used as a visual indicator with a looping animation that shows loading is in pro
 
 #### Styling
 
-- Maintain consistency in size and style; avoid using spinners of varying sizes on the same page.
+- Maintain consistency in size and style; avoid using loaders of varying sizes on the same page.
 
 #### Background
 
@@ -53,13 +55,10 @@ Used as a visual indicator with a looping animation that shows loading is in pro
 ### Accessibility Information
 
 - Assign role="status" or use a live region (e.g., aria-live="polite") to inform screen reader users of ongoing loading.
-- A spinner shouldn’t itself be focusable or interactive, nor prevent from navigating to other parts of the page while loading continues.
+- A loader shouldn’t itself be focusable or interactive, nor prevent from navigating to other parts of the page while loading continues.
 
-Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
 
-<sd-notification variant="warning" open>**Known browser issues:** The 'sd-spinner' component may experience spinner animation issues in Safari, causing them to appear wobbly.</sd-notification>
-`;
+<Meta title="Components/sd-loader/Overview" />
 
-<Meta title="Components/sd-spinner/Overview" />
-
-<OverviewFormatter story={SdSpinnerStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdLoaderStories.Default}>{content}</OverviewFormatter>

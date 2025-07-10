@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 export default {
-  tags: ['!dev', 'skip-a11y-[link-name]'],
+  tags: ['!dev', 'autodocs', 'skip-a11y-[link-name]'],
   title: 'Templates/Footnotes',
   parameters: {
     chromatic: { disableSnapshot: true }

@@ -207,10 +207,8 @@ export const Parts = {
 
 export const Samples = {
   name: 'Samples: Teaser-Media',
-  parameters: {
-    backgrounds: {
-      default: 'white'
-    }
+  globals: {
+    backgrounds: { value: 'white' }
   },
   render: () => {
     return html`
