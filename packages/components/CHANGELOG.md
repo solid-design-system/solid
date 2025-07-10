@@ -1,5 +1,14 @@
 # @solid-design-system/components
 
+## 5.12.1
+
+### Patch Changes
+
+- Fixed the following issues in the `sd-tab-group` component: _[`#2350`](https://github.com/solid-design-system/solid/pull/2350) [`5ef9005`](https://github.com/solid-design-system/solid/commit/5ef90053097b1c4b940037e1f79a17b3680fcca4) [@smfonseca](https://github.com/smfonseca)_
+
+  - `sd-tab-panel` focus was always visible even when tabbing into other child elements. Now it will move the focus to the correct elements.
+  - `sd-tab-group` logic to scroll into view the next and previous tab was breaking when on the first or last tab element. Added another validation to prevent it.
+
 ## 5.12.0
 
 ### Minor Changes
@@ -11,8 +20,9 @@
   - This component will replace the `sd-spinner` which will be **deprecated** in the near future.
 
 ### 📈 Stats
-* Uncompressed: 473 KB (+1 KB / +0%)
-* Gzipped: 111 KB (unchanged)
+
+- Uncompressed: 473 KB (+1 KB / +0%)
+- Gzipped: 111 KB (unchanged)
 
 ## 5.11.0
 
