@@ -44,535 +44,239 @@ export const Horizontal = {
           </sd-navigation-item>
         </div>
 
-        <nav aria-label="Main" class="mega-menu-nav--horizontal hidden lg:flex relative justify-between">
-          <ul class="flex -ms-4">
-            <li>
-              <sd-dropdown no-flip>
-                <sd-navigation-item slot="trigger" current class="font-bold"> Funds & Depot </sd-navigation-item>
+        <div class="mega-menu-nav--horizontal hidden lg:flex relative justify-between">
+          <nav aria-label="Main">
+            <ul class="flex -ms-4">
+              <li>
+                <sd-dropdown no-flip>
+                  <sd-navigation-item slot="trigger" current class="font-bold"> Funds & Depot </sd-navigation-item>
 
-                <ul class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
-                  <li>
-                    <sd-navigation-item vertical current href="javascript:void(0)">
-                      <span class="font-bold">Funds & Depot Overview</span>
-                      <p slot="description">Everything you need to know about our funds and the UnionDepot</p>
-                    </sd-navigation-item>
-                  </li>
-
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)">
-                      <span class="font-bold">Find Funds</span>
-                      <p slot="description">Get to our funds quickly</p>
-                    </sd-navigation-item>
-
-                    <ul>
-                      <li>
-                        <sd-navigation-item vertical href="javascript:void(0)"> Top funds </sd-navigation-item>
-                      </li>
-                      <li>
-                        <sd-navigation-item vertical href="javascript:void(0)"> Fund prices </sd-navigation-item>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)">
-                      <span class="font-bold">Understanding Funds</span>
-                      <p slot="description">Funds explained simply and understandably for you</p>
-                    </sd-navigation-item>
-
-                    <ul>
-                      <li>
-                        <sd-navigation-item vertical href="javascript:void(0)">
-                          Sustainability-related disclosures
-                        </sd-navigation-item>
-                      </li>
-                      <li>
-                        <sd-navigation-item vertical href="javascript:void(0)"> Lexicon </sd-navigation-item>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)">
-                      <span class="font-bold">UnionDepot</span>
-                      <p slot="description">Manage your funds flexibly with UnionDepot</p>
-                    </sd-navigation-item>
-
-                    <ul>
-                      <li>
-                        <sd-navigation-item vertical href="javascript:void(0)">
-                          UnionDepot in Online Banking
-                        </sd-navigation-item>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </sd-dropdown>
-            </li>
-            <li>
-              <sd-dropdown no-flip>
-                <sd-navigation-item slot="trigger" class="font-bold"> About Us </sd-navigation-item>
-
-                <ul class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)">
-                      <span class="font-bold">Union Investment at a glance</span>
-                      <p slot="description">Partnership is the basis of our actions.</p>
-                    </sd-navigation-item>
-                  </li>
-
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)">
-                      <span class="font-bold"> Union Investment for private clients </span>
-                      <p slot="description">Learn more about us and what we stand for</p>
-                    </sd-navigation-item>
-
-                    <ul>
-                      <li>
-                        <sd-navigation-item vertical href="javascript:void(0)">
-                          Investor protection
-                        </sd-navigation-item>
-                      </li>
-                      <li>
-                        <sd-navigation-item vertical href="javascript:void(0)"> Award </sd-navigation-item>
-                      </li>
-                      <li>
-                        <sd-navigation-item vertical href="javascript:void(0)"> Our management </sd-navigation-item>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)">
-                      <span class="font-bold"> Sustainability at Union Investment </span>
-                      <p slot="description">Learn about our values, principles, and commitment to sustainability.</p>
-                    </sd-navigation-item>
-                  </li>
-
-                  <li>
-                    <div class="px-4 py-3">
-                      <p class="font-bold">Union Investment Group</p>
-                      <p class="text-sm">Find out more about Union Investment as a group of companies</p>
-                    </div>
-
-                    <ul>
-                      <li>
-                        <sd-navigation-item vertical href="javascript:void(0)">
-                          Cooperative Financial Group
-                        </sd-navigation-item>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-
-                <sd-divider class="px-4 m-6"></sd-divider>
-                <p class="sd-headline sd-headline--size-base px-4 mx-6">
-                  Not a private customer? Discover more solutions for every need
-                </p>
-
-                <ul class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)">
-                      <span class="font-bold"> Institutional Clients </span>
-                      <p slot="description">Solutions for professional investors.</p>
-                    </sd-navigation-item>
-                  </li>
-
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)">
-                      <span class="font-bold"> Real Estate Customers </span>
-                      <p slot="description">Investing - Renting - Investing</p>
-                    </sd-navigation-item>
-                  </li>
-
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)">
-                      <span class="font-bold"> Journalists </span>
-                      <p slot="description">Press releases and contacts can be found here</p>
-                    </sd-navigation-item>
-                  </li>
-
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)">
-                      <span class="font-bold"> Career </span>
-                      <p slot="description">
-                        Where professionals are people - insights into our working world and job offers
-                      </p>
-                    </sd-navigation-item>
-                  </li>
-                </ul>
-              </sd-dropdown>
-            </li>
-            <li>
-              <sd-navigation-item href="javascript:void(0)" class="font-bold">Savings</sd-navigation-item>
-            </li>
-            <li>
-              <sd-dropdown no-flip>
-                <sd-navigation-item slot="trigger" class="font-bold"> Investing </sd-navigation-item>
-                <ul class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)">
-                      <span class="font-bold">Investing at a glance</span>
-                      <p slot="description">Investing money – with flexible solutions from Union Investment</p>
-                    </sd-navigation-item>
-                  </li>
-
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)">
-                      <span class="font-bold"> Structuring your assets </span>
-                      <p slot="description">Benefit from modern solutions for your assets</p>
-                    </sd-navigation-item>
-
-                    <ul>
-                      <li>
-                        <sd-navigation-item vertical href="javascript:void(0)"> Private Funds </sd-navigation-item>
-                      </li>
-                      <li>
-                        <sd-navigation-item vertical href="javascript:void(0)">
-                          UniDistribution Fund
-                        </sd-navigation-item>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li>
-                    <div class="px-4 py-3">
-                      <p class="font-bold">Investing money according to ESG</p>
-                      <p class="text-sm">Shaping the future responsibly with your investments</p>
-                    </div>
-
-                    <ul>
-                      <li>
-                        <sd-navigation-item vertical href="javascript:void(0)">
-                          Funds with a sustainability strategy
-                        </sd-navigation-item>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li>
-                    <div class="px-4 py-3">
-                      <p class="font-bold">Calculators</p>
-                      <p class="text-sm">Manage your funds flexibly with UnionDepot</p>
-                    </div>
-                    <ul>
-                      <li>
-                        <sd-navigation-item vertical href="javascript:void(0)"> Investment planner </sd-navigation-item>
-                      </li>
-                      <li>
-                        <sd-navigation-item vertical href="javascript:void(0)"> Wealth planner </sd-navigation-item>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </sd-dropdown>
-            </li>
-            <li>
-              <sd-dropdown no-flip>
-                <sd-navigation-item class="font-bold" slot="trigger"> Our Services </sd-navigation-item>
-                <ul class="grid grid-cols-4 justify-between gap-x-6 px-6 py-8">
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                      Investing at a glance
-                    </sd-navigation-item>
-                  </li>
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                      Current news
-                    </sd-navigation-item>
-                  </li>
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                      Subscription
-                    </sd-navigation-item>
-                  </li>
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                      Our calculators
-                    </sd-navigation-item>
-                  </li>
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                      Contact
-                    </sd-navigation-item>
-                  </li>
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                      Forms and Downloads
-                    </sd-navigation-item>
-                  </li>
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                      Media
-                    </sd-navigation-item>
-                  </li>
-                  <li>
-                    <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                      Frequently asked questions
-                    </sd-navigation-item>
-                  </li>
-                </ul>
-              </sd-dropdown>
-            </li>
-          </ul>
-          <ul class="flex">
-            <li>
-              <sd-navigation-item href="javascript:void(0)">
-                <sd-icon name="system/user" class="text-xl mr-2"></sd-icon>
-                <span>Login</span>
-              </sd-navigation-item>
-            </li>
-            <li>
-              <sd-navigation-item href="javascript:void(0)">
-                <sd-icon name="system/website" class="text-xl" label="Website"></sd-icon>
-              </sd-navigation-item>
-            </li>
-            <li>
-              <sd-navigation-item href="javascript:void(0)">
-                <sd-icon name="system/magnifying-glass" class="text-xl" label="Search"></sd-icon>
-              </sd-navigation-item>
-            </li>
-          </ul>
-        </nav>
-      </sd-header>
-
-      <sd-drawer id="mega-menu-drawer-horizontal" placement="end" no-header class="group relative block">
-        <nav
-          class="mega-menu-nav flex flex-col -mx-4 h-full pt-20 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
-        >
-          <ul class="flex-1">
-            <li>
-              <sd-navigation-item vertical href="javascript:void(0)" class="font-bold"> Home </sd-navigation-item>
-            </li>
-            <li>
-              <sd-navigation-item vertical current chevron divider class="font-bold">
-                Funds & Depot
-              </sd-navigation-item>
-              <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
-                <sd-button variant="tertiary" class="ms-2 my-2">
-                  <sd-icon name="system/arrow-left" label="Close Funds & Depot submenu"></sd-icon>
-                </sd-button>
-                <div class="mt-4">
-                  <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary">Funds & Depot</p>
-                  <ul>
+                  <ul class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
                     <li>
-                      <sd-navigation-item vertical current divider href="javascript:void(0)">
-                        <span class="font-bold"> Funds & Depot Overview </span>
+                      <sd-navigation-item vertical current href="javascript:void(0)">
+                        <span class="font-bold">Funds & Depot Overview</span>
                         <p slot="description">Everything you need to know about our funds and the UnionDepot</p>
                       </sd-navigation-item>
                     </li>
+
                     <li>
                       <sd-navigation-item vertical href="javascript:void(0)">
                         <span class="font-bold">Find Funds</span>
                         <p slot="description">Get to our funds quickly</p>
                       </sd-navigation-item>
+
                       <ul>
                         <li>
-                          <sd-navigation-item vertical indented href="javascript:void(0)">
-                            Top funds
-                          </sd-navigation-item>
+                          <sd-navigation-item vertical href="javascript:void(0)"> Top funds </sd-navigation-item>
                         </li>
                         <li>
-                          <sd-navigation-item vertical indented href="javascript:void(0)">
-                            Fund prices
-                          </sd-navigation-item>
+                          <sd-navigation-item vertical href="javascript:void(0)"> Fund prices </sd-navigation-item>
                         </li>
                       </ul>
                     </li>
+
                     <li>
                       <sd-navigation-item vertical href="javascript:void(0)">
                         <span class="font-bold">Understanding Funds</span>
                         <p slot="description">Funds explained simply and understandably for you</p>
                       </sd-navigation-item>
+
                       <ul>
                         <li>
-                          <sd-navigation-item vertical indented href="javascript:void(0)">
+                          <sd-navigation-item vertical href="javascript:void(0)">
                             Sustainability-related disclosures
                           </sd-navigation-item>
                         </li>
                         <li>
-                          <sd-navigation-item vertical indented href="javascript:void(0)"> Lexicon </sd-navigation-item>
+                          <sd-navigation-item vertical href="javascript:void(0)"> Lexicon </sd-navigation-item>
                         </li>
                       </ul>
                     </li>
+
                     <li>
                       <sd-navigation-item vertical href="javascript:void(0)">
-                        <span class="font-bold"> UnionDepot </span>
+                        <span class="font-bold">UnionDepot</span>
                         <p slot="description">Manage your funds flexibly with UnionDepot</p>
                       </sd-navigation-item>
+
                       <ul>
                         <li>
-                          <sd-navigation-item vertical indented href="javascript:void(0)">
+                          <sd-navigation-item vertical href="javascript:void(0)">
                             UnionDepot in Online Banking
                           </sd-navigation-item>
                         </li>
                       </ul>
                     </li>
                   </ul>
-                </div>
-              </div>
-            </li>
-            <li>
-              <sd-navigation-item vertical chevron divider class="font-bold"> About Us </sd-navigation-item>
-              <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
-                <sd-button variant="tertiary" class="ms-2 my-2">
-                  <sd-icon name="system/arrow-left" label="Close About Us submenu"></sd-icon>
-                </sd-button>
-                <div class="mt-4">
-                  <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary">About us</p>
+                </sd-dropdown>
+              </li>
+              <li>
+                <sd-dropdown no-flip>
+                  <sd-navigation-item slot="trigger" class="font-bold"> About Us </sd-navigation-item>
 
-                  <ul>
+                  <ul class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
                     <li>
-                      <sd-navigation-item vertical divider href="javascript:void(0)" class="font-bold">
-                        Union Investment at a glance
+                      <sd-navigation-item vertical href="javascript:void(0)">
+                        <span class="font-bold">Union Investment at a glance</span>
                         <p slot="description">Partnership is the basis of our actions.</p>
                       </sd-navigation-item>
                     </li>
+
                     <li>
-                      <sd-navigation-item vertical>
+                      <sd-navigation-item vertical href="javascript:void(0)">
                         <span class="font-bold"> Union Investment for private clients </span>
                         <p slot="description">Learn more about us and what we stand for</p>
-                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
-                          Investor protection
-                        </sd-navigation-item>
-                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
-                          Award
-                        </sd-navigation-item>
-                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
-                          Our management
-                        </sd-navigation-item>
                       </sd-navigation-item>
+
+                      <ul>
+                        <li>
+                          <sd-navigation-item vertical href="javascript:void(0)">
+                            Investor protection
+                          </sd-navigation-item>
+                        </li>
+                        <li>
+                          <sd-navigation-item vertical href="javascript:void(0)"> Award </sd-navigation-item>
+                        </li>
+                        <li>
+                          <sd-navigation-item vertical href="javascript:void(0)"> Our management </sd-navigation-item>
+                        </li>
+                      </ul>
                     </li>
+
                     <li>
-                      <sd-navigation-item vertical class="font-bold" href="javascript:void(0)">
-                        Sustainability at Union Investment
+                      <sd-navigation-item vertical href="javascript:void(0)">
+                        <span class="font-bold"> Sustainability at Union Investment </span>
                         <p slot="description">Learn about our values, principles, and commitment to sustainability.</p>
                       </sd-navigation-item>
                     </li>
+
                     <li>
-                      <sd-navigation-item vertical>
-                        <span class="font-bold"> Union Investment Group </span>
-                        <p slot="description">Find out more about Union Investment as a group of companies</p>
-                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
-                          Cooperative Financial Group
-                        </sd-navigation-item>
-                      </sd-navigation-item>
+                      <div class="px-4 py-3">
+                        <p class="font-bold">Union Investment Group</p>
+                        <p class="text-sm">Find out more about Union Investment as a group of companies</p>
+                      </div>
+
+                      <ul>
+                        <li>
+                          <sd-navigation-item vertical href="javascript:void(0)">
+                            Cooperative Financial Group
+                          </sd-navigation-item>
+                        </li>
+                      </ul>
                     </li>
                   </ul>
 
-                  <sd-divider class="my-6 mx-4"></sd-divider>
-                  <p class="sd-headline sd-headline--size-base mx-4 mb-6">
+                  <sd-divider class="px-4 m-6"></sd-divider>
+                  <p class="sd-headline sd-headline--size-base px-4 mx-6">
                     Not a private customer? Discover more solutions for every need
                   </p>
 
-                  <ul>
+                  <ul class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
                     <li>
-                      <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                        Institutional Clients
+                      <sd-navigation-item vertical href="javascript:void(0)">
+                        <span class="font-bold"> Institutional Clients </span>
                         <p slot="description">Solutions for professional investors.</p>
                       </sd-navigation-item>
                     </li>
+
                     <li>
-                      <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                        Real Estate Customers
+                      <sd-navigation-item vertical href="javascript:void(0)">
+                        <span class="font-bold"> Real Estate Customers </span>
                         <p slot="description">Investing - Renting - Investing</p>
                       </sd-navigation-item>
                     </li>
+
                     <li>
-                      <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                        Journalists
+                      <sd-navigation-item vertical href="javascript:void(0)">
+                        <span class="font-bold"> Journalists </span>
                         <p slot="description">Press releases and contacts can be found here</p>
                       </sd-navigation-item>
                     </li>
+
                     <li>
-                      <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                        Career
+                      <sd-navigation-item vertical href="javascript:void(0)">
+                        <span class="font-bold"> Career </span>
                         <p slot="description">
                           Where professionals are people - insights into our working world and job offers
                         </p>
                       </sd-navigation-item>
                     </li>
                   </ul>
-                </div>
-              </div>
-            </li>
-            <li>
-              <sd-navigation-item vertical divider href="javascript:void(0)" class="font-bold">
-                Saving
-              </sd-navigation-item>
-            </li>
-            <li>
-              <sd-navigation-item vertical chevron divider class="font-bold"> Investing </sd-navigation-item>
-              <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
-                <sd-button variant="tertiary" class="ms-2 my-2">
-                  <sd-icon name="system/arrow-left" label="Close Investing submenu"></sd-icon>
-                </sd-button>
-                <div class="mt-4">
-                  <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary">Investing</p>
-
-                  <ul>
+                </sd-dropdown>
+              </li>
+              <li>
+                <sd-navigation-item href="javascript:void(0)" class="font-bold">Savings</sd-navigation-item>
+              </li>
+              <li>
+                <sd-dropdown no-flip>
+                  <sd-navigation-item slot="trigger" class="font-bold"> Investing </sd-navigation-item>
+                  <ul class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
                     <li>
-                      <sd-navigation-item vertical divider href="javascript:void(0)">
-                        <span class="font-bold"> Investing at a glance </span>
-                        <p slot="description">Quickly access our funds</p>
+                      <sd-navigation-item vertical href="javascript:void(0)">
+                        <span class="font-bold">Investing at a glance</span>
+                        <p slot="description">Investing money – with flexible solutions from Union Investment</p>
                       </sd-navigation-item>
                     </li>
+
                     <li>
                       <sd-navigation-item vertical href="javascript:void(0)">
                         <span class="font-bold"> Structuring your assets </span>
                         <p slot="description">Benefit from modern solutions for your assets</p>
                       </sd-navigation-item>
+
                       <ul>
                         <li>
-                          <sd-navigation-item vertical indented href="javascript:void(0)">
-                            Private Funds
-                          </sd-navigation-item>
+                          <sd-navigation-item vertical href="javascript:void(0)"> Private Funds </sd-navigation-item>
                         </li>
                         <li>
-                          <sd-navigation-item vertical indented href="javascript:void(0)">
+                          <sd-navigation-item vertical href="javascript:void(0)">
                             UniDistribution Fund
                           </sd-navigation-item>
                         </li>
                       </ul>
                     </li>
+
                     <li>
-                      <sd-navigation-item vertical>
-                        <span class="font-bold"> Investing money according to ESG </span>
-                        <p slot="description">Shaping the future responsibly with your investments</p>
-                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
-                          Funds with a sustainability strategy
-                        </sd-navigation-item>
-                      </sd-navigation-item>
+                      <div class="px-4 py-3">
+                        <p class="font-bold">Investing money according to ESG</p>
+                        <p class="text-sm">Shaping the future responsibly with your investments</p>
+                      </div>
+
+                      <ul>
+                        <li>
+                          <sd-navigation-item vertical href="javascript:void(0)">
+                            Funds with a sustainability strategy
+                          </sd-navigation-item>
+                        </li>
+                      </ul>
                     </li>
+
                     <li>
-                      <sd-navigation-item vertical>
-                        <span class="font-bold"> Calculators </span>
-                        <p slot="description">Manage your funds flexibly with UnionDepot</p>
-                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
-                          Investment planner
-                        </sd-navigation-item>
-                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
-                          Wealth planner
-                        </sd-navigation-item>
-                      </sd-navigation-item>
+                      <div class="px-4 py-3">
+                        <p class="font-bold">Calculators</p>
+                        <p class="text-sm">Manage your funds flexibly with UnionDepot</p>
+                      </div>
+                      <ul>
+                        <li>
+                          <sd-navigation-item vertical href="javascript:void(0)">
+                            Investment planner
+                          </sd-navigation-item>
+                        </li>
+                        <li>
+                          <sd-navigation-item vertical href="javascript:void(0)"> Wealth planner </sd-navigation-item>
+                        </li>
+                      </ul>
                     </li>
                   </ul>
-                </div>
-              </div>
-            </li>
-            <li>
-              <sd-navigation-item vertical chevron divider class="font-bold"> Our Services </sd-navigation-item>
-              <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
-                <sd-button variant="tertiary" class="ms-2 my-2">
-                  <sd-icon name="system/arrow-left" label="Close Our Services submenu"></sd-icon>
-                </sd-button>
-                <div class="mt-4">
-                  <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary">Our Services</p>
-
-                  <ul>
+                </sd-dropdown>
+              </li>
+              <li>
+                <sd-dropdown no-flip>
+                  <sd-navigation-item class="font-bold" slot="trigger"> Our Services </sd-navigation-item>
+                  <ul class="grid grid-cols-4 justify-between gap-x-6 px-6 py-8">
                     <li>
-                      <sd-navigation-item vertical divider href="javascript:void(0)" class="font-bold">
-                        Services at a glance
+                      <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
+                        Investing at a glance
                       </sd-navigation-item>
                     </li>
                     <li>
@@ -607,29 +311,345 @@ export const Horizontal = {
                     </li>
                     <li>
                       <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                        Frequently Asked Questions
+                        Frequently asked questions
                       </sd-navigation-item>
                     </li>
                   </ul>
+                </sd-dropdown>
+              </li>
+            </ul>
+          </nav>
+          <nav aria-label="Secondary navigation">
+            <ul class="flex">
+              <li>
+                <sd-navigation-item href="javascript:void(0)">
+                  <sd-icon name="system/user" class="text-xl mr-2"></sd-icon>
+                  <span>Login</span>
+                </sd-navigation-item>
+              </li>
+              <li>
+                <sd-navigation-item href="javascript:void(0)">
+                  <sd-icon name="system/website" class="text-xl" label="Website"></sd-icon>
+                </sd-navigation-item>
+              </li>
+              <li>
+                <sd-navigation-item href="javascript:void(0)">
+                  <sd-icon name="system/magnifying-glass" class="text-xl" label="Search"></sd-icon>
+                </sd-navigation-item>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </sd-header>
+
+      <sd-drawer id="mega-menu-drawer-horizontal" placement="end" no-header class="group relative block">
+        <div
+          class="mega-menu-nav flex flex-col -mx-4 h-full pt-20 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
+        >
+          <nav aria-label="Main navigation" class="flex-1 flex flex-col justify-between">
+            <ul class="flex-1">
+              <li>
+                <sd-navigation-item vertical href="javascript:void(0)" class="font-bold"> Home </sd-navigation-item>
+              </li>
+              <li>
+                <sd-navigation-item vertical current chevron divider class="font-bold">
+                  Funds & Depot
+                </sd-navigation-item>
+                <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
+                  <sd-button variant="tertiary" class="ms-2 my-2">
+                    <sd-icon name="system/arrow-left" label="Close Funds & Depot submenu"></sd-icon>
+                  </sd-button>
+                  <div class="mt-4">
+                    <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary">Funds & Depot</p>
+                    <ul>
+                      <li>
+                        <sd-navigation-item vertical current divider href="javascript:void(0)">
+                          <span class="font-bold"> Funds & Depot Overview </span>
+                          <p slot="description">Everything you need to know about our funds and the UnionDepot</p>
+                        </sd-navigation-item>
+                      </li>
+                      <li>
+                        <sd-navigation-item vertical href="javascript:void(0)">
+                          <span class="font-bold">Find Funds</span>
+                          <p slot="description">Get to our funds quickly</p>
+                        </sd-navigation-item>
+                        <ul>
+                          <li>
+                            <sd-navigation-item vertical indented href="javascript:void(0)">
+                              Top funds
+                            </sd-navigation-item>
+                          </li>
+                          <li>
+                            <sd-navigation-item vertical indented href="javascript:void(0)">
+                              Fund prices
+                            </sd-navigation-item>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <sd-navigation-item vertical href="javascript:void(0)">
+                          <span class="font-bold">Understanding Funds</span>
+                          <p slot="description">Funds explained simply and understandably for you</p>
+                        </sd-navigation-item>
+                        <ul>
+                          <li>
+                            <sd-navigation-item vertical indented href="javascript:void(0)">
+                              Sustainability-related disclosures
+                            </sd-navigation-item>
+                          </li>
+                          <li>
+                            <sd-navigation-item vertical indented href="javascript:void(0)">
+                              Lexicon
+                            </sd-navigation-item>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <sd-navigation-item vertical href="javascript:void(0)">
+                          <span class="font-bold"> UnionDepot </span>
+                          <p slot="description">Manage your funds flexibly with UnionDepot</p>
+                        </sd-navigation-item>
+                        <ul>
+                          <li>
+                            <sd-navigation-item vertical indented href="javascript:void(0)">
+                              UnionDepot in Online Banking
+                            </sd-navigation-item>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            </li>
-          </ul>
-          <div slot="footer" class="bg-neutral-100">
-            <sd-navigation-item vertical href="javascript:void(0)" class="flex align-center">
-              <sd-icon name="system/user" class="text-xl mr-2"></sd-icon>
-              Portfolio
-            </sd-navigation-item>
-            <sd-navigation-item vertical divider href="javascript:void(0)" class="flex align-center">
-              <sd-icon name="system/lock-locked" class="text-xl mr-2"></sd-icon>
-              Application
-            </sd-navigation-item>
-            <sd-navigation-item vertical divider href="javascript:void(0)" class="flex align-center">
-              <sd-icon name="system/website" class="text-xl mr-2"></sd-icon>
-              Our further appearances
-            </sd-navigation-item>
-          </div>
-        </nav>
+              </li>
+              <li>
+                <sd-navigation-item vertical chevron divider class="font-bold"> About Us </sd-navigation-item>
+                <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
+                  <sd-button variant="tertiary" class="ms-2 my-2">
+                    <sd-icon name="system/arrow-left" label="Close About Us submenu"></sd-icon>
+                  </sd-button>
+                  <div class="mt-4">
+                    <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary">About us</p>
+
+                    <ul>
+                      <li>
+                        <sd-navigation-item vertical divider href="javascript:void(0)" class="font-bold">
+                          Union Investment at a glance
+                          <p slot="description">Partnership is the basis of our actions.</p>
+                        </sd-navigation-item>
+                      </li>
+                      <li>
+                        <sd-navigation-item vertical>
+                          <span class="font-bold"> Union Investment for private clients </span>
+                          <p slot="description">Learn more about us and what we stand for</p>
+                          <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                            Investor protection
+                          </sd-navigation-item>
+                          <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                            Award
+                          </sd-navigation-item>
+                          <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                            Our management
+                          </sd-navigation-item>
+                        </sd-navigation-item>
+                      </li>
+                      <li>
+                        <sd-navigation-item vertical class="font-bold" href="javascript:void(0)">
+                          Sustainability at Union Investment
+                          <p slot="description">
+                            Learn about our values, principles, and commitment to sustainability.
+                          </p>
+                        </sd-navigation-item>
+                      </li>
+                      <li>
+                        <sd-navigation-item vertical>
+                          <span class="font-bold"> Union Investment Group </span>
+                          <p slot="description">Find out more about Union Investment as a group of companies</p>
+                          <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                            Cooperative Financial Group
+                          </sd-navigation-item>
+                        </sd-navigation-item>
+                      </li>
+                    </ul>
+
+                    <sd-divider class="my-6 mx-4"></sd-divider>
+                    <p class="sd-headline sd-headline--size-base mx-4 mb-6">
+                      Not a private customer? Discover more solutions for every need
+                    </p>
+
+                    <ul>
+                      <li>
+                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
+                          Institutional Clients
+                          <p slot="description">Solutions for professional investors.</p>
+                        </sd-navigation-item>
+                      </li>
+                      <li>
+                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
+                          Real Estate Customers
+                          <p slot="description">Investing - Renting - Investing</p>
+                        </sd-navigation-item>
+                      </li>
+                      <li>
+                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
+                          Journalists
+                          <p slot="description">Press releases and contacts can be found here</p>
+                        </sd-navigation-item>
+                      </li>
+                      <li>
+                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
+                          Career
+                          <p slot="description">
+                            Where professionals are people - insights into our working world and job offers
+                          </p>
+                        </sd-navigation-item>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <sd-navigation-item vertical divider href="javascript:void(0)" class="font-bold">
+                  Saving
+                </sd-navigation-item>
+              </li>
+              <li>
+                <sd-navigation-item vertical chevron divider class="font-bold"> Investing </sd-navigation-item>
+                <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
+                  <sd-button variant="tertiary" class="ms-2 my-2">
+                    <sd-icon name="system/arrow-left" label="Close Investing submenu"></sd-icon>
+                  </sd-button>
+                  <div class="mt-4">
+                    <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary">Investing</p>
+
+                    <ul>
+                      <li>
+                        <sd-navigation-item vertical divider href="javascript:void(0)">
+                          <span class="font-bold"> Investing at a glance </span>
+                          <p slot="description">Quickly access our funds</p>
+                        </sd-navigation-item>
+                      </li>
+                      <li>
+                        <sd-navigation-item vertical href="javascript:void(0)">
+                          <span class="font-bold"> Structuring your assets </span>
+                          <p slot="description">Benefit from modern solutions for your assets</p>
+                        </sd-navigation-item>
+                        <ul>
+                          <li>
+                            <sd-navigation-item vertical indented href="javascript:void(0)">
+                              Private Funds
+                            </sd-navigation-item>
+                          </li>
+                          <li>
+                            <sd-navigation-item vertical indented href="javascript:void(0)">
+                              UniDistribution Fund
+                            </sd-navigation-item>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <sd-navigation-item vertical>
+                          <span class="font-bold"> Investing money according to ESG </span>
+                          <p slot="description">Shaping the future responsibly with your investments</p>
+                          <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                            Funds with a sustainability strategy
+                          </sd-navigation-item>
+                        </sd-navigation-item>
+                      </li>
+                      <li>
+                        <sd-navigation-item vertical>
+                          <span class="font-bold"> Calculators </span>
+                          <p slot="description">Manage your funds flexibly with UnionDepot</p>
+                          <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                            Investment planner
+                          </sd-navigation-item>
+                          <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                            Wealth planner
+                          </sd-navigation-item>
+                        </sd-navigation-item>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <sd-navigation-item vertical chevron divider class="font-bold"> Our Services </sd-navigation-item>
+                <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
+                  <sd-button variant="tertiary" class="ms-2 my-2">
+                    <sd-icon name="system/arrow-left" label="Close Our Services submenu"></sd-icon>
+                  </sd-button>
+                  <div class="mt-4">
+                    <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary">Our Services</p>
+
+                    <ul>
+                      <li>
+                        <sd-navigation-item vertical divider href="javascript:void(0)" class="font-bold">
+                          Services at a glance
+                        </sd-navigation-item>
+                      </li>
+                      <li>
+                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
+                          Current news
+                        </sd-navigation-item>
+                      </li>
+                      <li>
+                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
+                          Subscription
+                        </sd-navigation-item>
+                      </li>
+                      <li>
+                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
+                          Our calculators
+                        </sd-navigation-item>
+                      </li>
+                      <li>
+                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
+                          Contact
+                        </sd-navigation-item>
+                      </li>
+                      <li>
+                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
+                          Forms and Downloads
+                        </sd-navigation-item>
+                      </li>
+                      <li>
+                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
+                          Media
+                        </sd-navigation-item>
+                      </li>
+                      <li>
+                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
+                          Frequently Asked Questions
+                        </sd-navigation-item>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <nav aria-label="Secondary navigation" slot="footer" class="bg-neutral-100">
+            <ul>
+              <li>
+                <sd-navigation-item vertical href="javascript:void(0)" class="flex align-center">
+                  <sd-icon name="system/user" class="text-xl mr-2"></sd-icon>
+                  Portfolio
+                </sd-navigation-item>
+              </li>
+              <li>
+                <sd-navigation-item vertical divider href="javascript:void(0)" class="flex align-center">
+                  <sd-icon name="system/lock-locked" class="text-xl mr-2"></sd-icon>
+                  Application
+                </sd-navigation-item>
+              </li>
+              <li>
+                <sd-navigation-item vertical divider href="javascript:void(0)" class="flex align-center">
+                  <sd-icon name="system/website" class="text-xl mr-2"></sd-icon>
+                  Our further appearances
+                </sd-navigation-item>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </sd-drawer>
 
       <style>
@@ -726,7 +746,7 @@ export const Vertical = {
               <sd-icon name="system/menu" label="Open navigation" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
             </sd-navigation-item>
 
-            <nav class="mega-menu-nav hidden lg:inline">
+            <nav aria-label="Secondary navigation" class="mega-menu-nav hidden lg:inline">
               <ul class="flex">
                 <li>
                   <sd-navigation-item>
@@ -748,9 +768,9 @@ export const Vertical = {
           </div>
         </sd-header>
 
-        <aside class="w-[272px] border-r border-r-neutral-400 hidden flex-col overflow-hidden lg:flex">
+        <div class="w-[272px] border-r border-r-neutral-400 hidden flex-col overflow-hidden lg:flex">
           <nav
-            aria-label="Main"
+            aria-label="Main navigation"
             class="mega-menu-nav group relative flex-1 py-4 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
           >
             <ul>
@@ -814,7 +834,7 @@ export const Vertical = {
             <sd-button href="javascript:void(0)" class="w-full mb-4">Document upload</sd-button>
             <sd-button variant="secondary" href="javascript:void(0)" class="w-full">Bank order</sd-button>
           </div>
-        </aside>
+        </div>
 
         <sd-drawer id="mega-menu-drawer-vertical" placement="end" no-header class="group relative block">
           <div class="flex flex-col h-full -mx-4 overflow-hidden">
