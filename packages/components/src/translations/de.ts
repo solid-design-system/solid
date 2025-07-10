@@ -20,6 +20,8 @@ const translation: Translation = {
   goToSlide: (slide, count) => `Zu Folie ${slide} von ${count} gehen`,
   hidePassword: 'Passwort verbergen',
   loading: 'Wird geladen',
+  maximum: 'Höchstwert',
+  minimum: 'Minimum',
   mute: 'Stummschalten',
   nextSlide: 'Nächste Folie',
   noResults: 'Keine Ergebnisse gefunden',

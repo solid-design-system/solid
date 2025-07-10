@@ -1,4 +1,4 @@
-import '../spinner/spinner';
+import '../loader/loader';
 import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { FormControlController, validValidityState } from '../../internal/form';
@@ -18,7 +18,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @since 1.0
  *
  * @dependency sd-icon
- * @dependency sd-spinner
+ * @dependency sd-loader
  *
  * @event sd-blur - Emitted when the button loses focus.
  * @event sd-focus - Emitted when the button gains focus.
@@ -409,9 +409,9 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         </slot>
       ${
         this.loading
-          ? html`<sd-spinner
+          ? html`<sd-loader
               class="${cx('absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2')}"
-            ></sd-spinner>`
+            ></sd-loader>`
           : ''
       }
       </${tag}>
@@ -430,11 +430,6 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         @apply z-[0] inline-block cursor-pointer w-auto relative;
       }
 
-      sd-spinner {
-        --indicator-color: currentColor;
-        --track-color: var(--tw-varcolor-200);
-      }
-
       /*
     * Badges:
     * Slotted badges are positioned absolutely in the top right corner of the button.
@@ -449,7 +444,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
        */
 
       ::slotted(sd-icon),
-      sd-spinner {
+      sd-loader {
         font-size: calc(var(--tw-varspacing) / 2);
       }
     `
