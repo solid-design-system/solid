@@ -209,7 +209,7 @@ export const VisuallyDisabled = {
   name: 'Visually Disabled',
   render: () => html`
     <div class="flex gap-12 h-[100px] pt-12">
-      <sd-radio-group>
+      <sd-radio-group value="1">
         <sd-radio-button value="1">
           <sd-icon name="system/image" slot="icon"></sd-icon>
           Label
