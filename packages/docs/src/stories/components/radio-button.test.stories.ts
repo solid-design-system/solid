@@ -25,6 +25,11 @@ export default {
       type: 'slot',
       name: 'icon',
       value: '<sd-icon name="system/image" slot="icon" label="Label"></sd-icon>'
+    },
+    {
+      type: 'attribute',
+      name: 'checked',
+      value: true
     }
   ]),
   argTypes,
@@ -130,7 +135,7 @@ export const DisabledAndChecked = {
         </sd-radio-button>
         <sd-radio-button checked disabled showLabel>
           <sd-icon name="system/image" slot="icon"></sd-icon>
-          <slot class="whitespace-nowrap">Disabled and Checked</slot>
+          <slot class="whitespace-nowrap">Disabled and checked</slot>
         </sd-radio-button>
       </div>
     `;

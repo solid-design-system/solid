@@ -426,7 +426,12 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
           </div>
           ${this.hasButtonGroup
             ? html`
-                <sd-button-group part="button-group" exportparts="base:button-group__base" role="presentation">
+                <sd-button-group
+                  class="border border-primary rounded-full"
+                  part="button-group"
+                  exportparts="base:button-group__base"
+                  role="presentation"
+                >
                   ${defaultSlot}
                 </sd-button-group>
               `
@@ -485,6 +490,10 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
 
       :host([required]) #label::after {
         content: ' *';
+      }
+
+      :host:has(sd-button-group) {
+        @apply inline-flex;
       }
     `
   ];

@@ -15,7 +15,7 @@ export default {
 
 export const Default = {
   render: () => html`
-    <sd-radio-group name="radio-group">
+    <sd-radio-group name="radio-group" value="list">
       <sd-radio-button value="list">
         <sd-icon slot="icon" name="system/list"></sd-icon>
         List
