@@ -231,6 +231,7 @@ export const Simple = {
 };
 
 export const SimpleWithButtons = {
+  name: 'Simple with buttons',
   render: () => html`
     <nav id="simple-pagination-with-buttons" class="sd-pagination sd-pagination--simple" aria-label="Simple pagination">
       <ul>
@@ -304,8 +305,8 @@ export const SimpleWithButtons = {
   `
 };
 
-export const TruncatedWithButtons = {
-  name: 'Truncated with buttons',
+export const NumberWithButtons = {
+  name: 'Number with buttons',
   render: () => html`
     <nav id="pagination-with-buttons" class="sd-pagination sd-pagination--with-buttons" aria-label="Pagination">
       <ul class="buttons">
