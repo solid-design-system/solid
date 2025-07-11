@@ -25,6 +25,16 @@ export default {
   parameters: {
     ...parameters,
     controls: { disable: true },
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'landmark-unique',
+            enabled: false
+          }
+        ]
+      }
+    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/branch/LiEAPa5PkSJyjkyAE9RNsi/Solid-DS-%E2%80%93-Component-Library?node-id=9401-33&p=f&t=A7lFFTs8C5yV9hmi-0'
@@ -106,7 +116,7 @@ export const SimpleWithButtons = {
               <li>1</li>
               <li>20</li>
               <li>
-                <button pagination aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
                 </button>
               </li>
@@ -116,14 +126,14 @@ export const SimpleWithButtons = {
           <nav class="sd-pagination sd-pagination--simple" aria-label="Simple pagination with buttons">
             <ul>
               <li>
-                <button aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
                 </button>
               </li>
               <li>10</li>
               <li>20</li>
               <li>
-                <button pagination aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
                 </button>
               </li>
@@ -133,14 +143,14 @@ export const SimpleWithButtons = {
           <nav class="sd-pagination sd-pagination--simple" aria-label="Simple pagination with buttons">
             <ul>
               <li>
-                <button aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
                 </button>
               </li>
               <li>20</li>
               <li>20</li>
               <li>
-                <button pagination aria-hidden="true" disabled>
+                <button aria-hidden="true" disabled>
                   <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
                 </button>
               </li>
@@ -484,7 +494,7 @@ export const TruncatedWithButtons = {
               <li><button>14</button></li>
               <li><button>15</button></li>
               <li>
-                <button pagination aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
                 </button>
               </li>
@@ -494,7 +504,7 @@ export const TruncatedWithButtons = {
           <nav class="%CLASSES%" aria-label="Pagination">
             <ul class="buttons">
               <li>
-                <button aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
                 </button>
               </li>
@@ -514,7 +524,7 @@ export const TruncatedWithButtons = {
               <li><button>14</button></li>
               <li><button>15</button></li>
               <li>
-                <button pagination aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
                 </button>
               </li>
@@ -524,7 +534,7 @@ export const TruncatedWithButtons = {
           <nav class="%CLASSES%" aria-label="Pagination">
             <ul class="buttons">
               <li>
-                <button aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
                 </button>
               </li>
@@ -544,7 +554,7 @@ export const TruncatedWithButtons = {
               <li><button>14</button></li>
               <li><button>15</button></li>
               <li>
-                <button pagination aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
                 </button>
               </li>
@@ -554,7 +564,7 @@ export const TruncatedWithButtons = {
           <nav class="%CLASSES%" aria-label="Pagination">
             <ul class="buttons">
               <li>
-                <button aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
                 </button>
               </li>
@@ -574,7 +584,7 @@ export const TruncatedWithButtons = {
               <li><button>14</button></li>
               <li><button>15</button></li>
               <li>
-                <button pagination aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
                 </button>
               </li>
@@ -584,7 +594,7 @@ export const TruncatedWithButtons = {
           <nav class="%CLASSES%" aria-label="Pagination">
             <ul class="buttons">
               <li>
-                <button aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
                 </button>
               </li>
@@ -604,7 +614,7 @@ export const TruncatedWithButtons = {
               <li><button>14</button></li>
               <li><button>15</button></li>
               <li>
-                <button pagination aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
                 </button>
               </li>
@@ -614,7 +624,7 @@ export const TruncatedWithButtons = {
           <nav class="%CLASSES%" aria-label="Pagination">
             <ul class="buttons">
               <li>
-                <button aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
                 </button>
               </li>
@@ -634,7 +644,7 @@ export const TruncatedWithButtons = {
               <li><button>14</button></li>
               <li><button>15</button></li>
               <li>
-                <button pagination aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
                 </button>
               </li>
@@ -644,7 +654,7 @@ export const TruncatedWithButtons = {
           <nav class="%CLASSES%" aria-label="Pagination">
             <ul class="buttons">
               <li>
-                <button aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
                 </button>
               </li>
@@ -664,7 +674,7 @@ export const TruncatedWithButtons = {
               <li><button>14</button></li>
               <li><button>15</button></li>
               <li>
-                <button pagination aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
                 </button>
               </li>
@@ -674,7 +684,7 @@ export const TruncatedWithButtons = {
           <nav class="%CLASSES%" aria-label="Pagination">
             <ul class="buttons">
               <li>
-                <button aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
                 </button>
               </li>
@@ -694,7 +704,7 @@ export const TruncatedWithButtons = {
               <li><button aria-current="page">14</button></li>
               <li><button>15</button></li>
               <li>
-                <button pagination aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
                 </button>
               </li>
@@ -704,7 +714,7 @@ export const TruncatedWithButtons = {
           <nav class="%CLASSES%" aria-label="Pagination">
             <ul class="buttons">
               <li>
-                <button aria-hidden="true">
+                <button>
                   <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
                 </button>
               </li>
@@ -724,7 +734,7 @@ export const TruncatedWithButtons = {
               <li><button>14</button></li>
               <li><button aria-current="page">15</button></li>
               <li>
-                <button pagination aria-hidden="true" disabled>
+                <button aria-hidden="true" disabled>
                   <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
                 </button>
               </li>

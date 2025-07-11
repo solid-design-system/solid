@@ -236,14 +236,14 @@ export const SimpleWithButtons = {
     <nav id="simple-pagination-with-buttons" class="sd-pagination sd-pagination--simple" aria-label="Simple pagination">
       <ul>
         <li>
-          <button aria-hidden="true">
+          <button aria-hidden="true" disabled>
             <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
           </button>
         </li>
         <li>1</li>
         <li>20</li>
         <li>
-          <button pagination aria-hidden="true">
+          <button>
             <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
           </button>
         </li>
@@ -311,7 +311,7 @@ export const NumberWithButtons = {
     <nav id="pagination-with-buttons" class="sd-pagination sd-pagination--with-buttons" aria-label="Pagination">
       <ul class="buttons">
         <li>
-          <button aria-hidden="true">
+          <button aria-hidden="true" disabled>
             <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
           </button>
         </li>
@@ -331,7 +331,7 @@ export const NumberWithButtons = {
         <li><button>14</button></li>
         <li><button>15</button></li>
         <li>
-          <button pagination aria-hidden="true">
+          <button>
             <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
           </button>
         </li>
@@ -349,10 +349,12 @@ export const NumberWithButtons = {
         // Remove aria-current from all page buttons
         pages.forEach(page => {
           page.removeAttribute('aria-current');
+          page.removeAttribute('tabindex');
         });
         // Set aria-current on the current page button
         const currentPageButton = pages[state.current - 1];
         currentPageButton.setAttribute('aria-current', 'page');
+        currentPageButton.setAttribute('tabindex', '-1');
         currentPageButton.blur();
         live.innerHTML = 'Current page: ' + state.current;
         const isFirstPage = state.current <= 1;
