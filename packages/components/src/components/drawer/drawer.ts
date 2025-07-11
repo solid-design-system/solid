@@ -338,7 +338,7 @@ export default class SdDrawer extends SolidElement {
                   <div part="title">
                     <slot name="header" part="title" class="flex-auto text-xl m-0" id="title"> </slot>
                   </div>
-                  <div class="shrink-0 flex flex-wrap justify-end gap-1 ml-4 absolute top-2 right-2">
+                  <div class="shrink-0 flex flex-wrap justify-end gap-1 ml-4 absolute top-2 end-2">
                     <sd-button
                       variant="tertiary"
                       size="lg"
