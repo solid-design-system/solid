@@ -191,12 +191,16 @@
       @apply after:text-white;
 
       &:first-child:has(a:not([href])) a,
-      &:last-child:has(a:not([href])) a {
+      &:last-child:has(a:not([href])) a,
+      &:first-child:has(button[disabled]) button,
+      &:last-child:has(button[disabled]) button {
         @apply text-neutral-600 hover:text-neutral-600;
       }
 
       a,
-      a[aria-current] {
+      a[aria-current],
+      button,
+      button[aria-current] {
         @apply text-white hover:text-primary-200 active:text-primary-400;
 
         &:focus-visible {
