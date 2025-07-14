@@ -309,7 +309,7 @@ export const NumberWithButtons = {
   name: 'Number with buttons',
   render: () => html`
     <nav id="pagination-with-buttons" class="sd-pagination sd-pagination--with-buttons" aria-label="Pagination">
-      <ul class="buttons">
+      <ul>
         <li>
           <button aria-hidden="true" disabled>
             <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>

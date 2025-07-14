@@ -155,7 +155,6 @@ export const SimpleWithButtons = {
                 </button>
               </li>
             </ul>
-            <p id="simple-pagination-with-buttons-live" aria-live="polite"></p>
           </nav>
         `
       },
@@ -501,7 +500,7 @@ export const TruncatedWithButtons = {
             </ul>
           </nav>
           <nav class="%CLASSES%" aria-label="Pagination">
-            <ul class="buttons">
+            <ul>
               <li>
                 <button>
                   <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
@@ -528,10 +527,9 @@ export const TruncatedWithButtons = {
                 </button>
               </li>
             </ul>
-            <p id="pagination-live" aria-live="polite"></p>
           </nav>
           <nav class="%CLASSES%" aria-label="Pagination">
-            <ul class="buttons">
+            <ul>
               <li>
                 <button>
                   <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
@@ -558,10 +556,9 @@ export const TruncatedWithButtons = {
                 </button>
               </li>
             </ul>
-            <p id="pagination-live" aria-live="polite"></p>
           </nav>
           <nav class="%CLASSES%" aria-label="Pagination">
-            <ul class="buttons">
+            <ul>
               <li>
                 <button>
                   <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
@@ -588,10 +585,9 @@ export const TruncatedWithButtons = {
                 </button>
               </li>
             </ul>
-            <p id="pagination-live" aria-live="polite"></p>
           </nav>
           <nav class="%CLASSES%" aria-label="Pagination">
-            <ul class="buttons">
+            <ul>
               <li>
                 <button>
                   <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
@@ -618,10 +614,9 @@ export const TruncatedWithButtons = {
                 </button>
               </li>
             </ul>
-            <p id="pagination-live" aria-live="polite"></p>
           </nav>
           <nav class="%CLASSES%" aria-label="Pagination">
-            <ul class="buttons">
+            <ul>
               <li>
                 <button>
                   <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
@@ -648,10 +643,9 @@ export const TruncatedWithButtons = {
                 </button>
               </li>
             </ul>
-            <p id="pagination-live" aria-live="polite"></p>
           </nav>
           <nav class="%CLASSES%" aria-label="Pagination">
-            <ul class="buttons">
+            <ul>
               <li>
                 <button>
                   <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
@@ -678,10 +672,9 @@ export const TruncatedWithButtons = {
                 </button>
               </li>
             </ul>
-            <p id="pagination-live" aria-live="polite"></p>
           </nav>
           <nav class="%CLASSES%" aria-label="Pagination">
-            <ul class="buttons">
+            <ul>
               <li>
                 <button>
                   <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
@@ -708,10 +701,9 @@ export const TruncatedWithButtons = {
                 </button>
               </li>
             </ul>
-            <p id="pagination-live" aria-live="polite"></p>
           </nav>
           <nav class="%CLASSES%" aria-label="Pagination">
-            <ul class="buttons">
+            <ul>
               <li>
                 <button>
                   <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
@@ -738,7 +730,6 @@ export const TruncatedWithButtons = {
                 </button>
               </li>
             </ul>
-            <p id="pagination-live" aria-live="polite"></p>
           </nav>
         `
       },
