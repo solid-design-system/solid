@@ -1,0 +1,49 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdMarkStories from './mark.stories';
+
+export const links = {
+  'storybook-docs': './?path=/docs/styles-sd-mark--docs',
+  'figma-library': '',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2314-31825&node-type=canvas&t=ExKWUj3vUoucvcVt-0'
+};
+
+export const content = `
+# Mark
+
+Used to highlight text sections in the accent color.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Templates
+
+[Mark](./?path=/docs/templates-mark--docs)
+
+### Common Use Cases
+
+- To highlight text sections in a headline or displays.
+
+### Usage Guidelines
+
+#### Styling
+
+- The font weight of the mark is defined by the headline/display styling used.
+- Only use the styling for short text sections or combinations of words.
+
+#### Background Color
+
+- Use light background options like white, neutral-100, or primary-100, or use a primary background when inverted.
+
+### Accessibility Information
+
+- For the green accent color in the mark, ensure a minimum font size of 18.67 pixels when bolded and 24 pixels when in regular weight.
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Styles/sd-mark/Overview" />
+
+<OverviewFormatter story={SdMarkStories.Default}>{content}</OverviewFormatter>
