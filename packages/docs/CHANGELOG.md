@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.24.5
+
+### Patch Changes
+
+- Update introduction page to align with Figma _[`#2353`](https://github.com/solid-design-system/solid/pull/2353) [`ac317c2`](https://github.com/solid-design-system/solid/commit/ac317c2a3ae9aca4e966cd53b002e0217e9b05c1) [@karlbaumhauer](https://github.com/karlbaumhauer)_
+
 ## 1.24.4
 
 ### Patch Changes
