@@ -1,5 +1,12 @@
 # @solid-design-system/styles
 
+## 1.5.0
+
+### Minor Changes
+
+- Extended `sd-pagination` style component to support the use of the `button` element. _[`#2352`](https://github.com/solid-design-system/solid/pull/2352) [`1e0338c`](https://github.com/solid-design-system/solid/commit/1e0338c1e125b0d5625d7411f81ca345c2161bd6) [@smfonseca](https://github.com/smfonseca)_
+  - Included screenshot tests for new functionality.
+
 ## 1.4.1
 
 ### Patch Changes
@@ -31,7 +38,6 @@
 ### Patch Changes
 
 - Fix `sd-copyright` default shadow. _[`#2025`](https://github.com/solid-design-system/solid/pull/2025) [`28525de`](https://github.com/solid-design-system/solid/commit/28525de175bca22592ade10cca8e6717c37b1080) [@smfonseca](https://github.com/smfonseca)_
-
   - Added missing variables that prevented the `filter` css effect from rendering the correct shadow.
 
 ## 1.3.0
@@ -55,7 +61,6 @@
 - Add new `sd-status-badge` style component. _[`#1820`](https://github.com/solid-design-system/solid/pull/1820) [`617d02d`](https://github.com/solid-design-system/solid/commit/617d02d91e0eb3d27f9769e0e72fd76b985d6b33) [@smfonseca](https://github.com/smfonseca)_
 
   This component can be used with the following variants:
-
   - `sd-status-badge--success`
   - `sd-status-badge--warning`
   - `sd-status-badge--error`
