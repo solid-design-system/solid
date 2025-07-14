@@ -2,4 +2,8 @@
 '@solid-design-system/docs': minor
 ---
 
-Add `sd-carousel-item` overview page.
+Add overview pages for:
+
+- `sd-carousel-item`
+- `sd-mark`
+- `sd-table`
