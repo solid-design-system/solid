@@ -1,5 +1,12 @@
 # @solid-design-system/docs
 
+## 1.25.0
+
+### Minor Changes
+
+- Extended `sd-pagination` style component to support the use of the `button` element. _[`#2352`](https://github.com/solid-design-system/solid/pull/2352) [`1e0338c`](https://github.com/solid-design-system/solid/commit/1e0338c1e125b0d5625d7411f81ca345c2161bd6) [@smfonseca](https://github.com/smfonseca)_
+  - Included screenshot tests for new functionality.
+
 ## 1.24.5
 
 ### Patch Changes
