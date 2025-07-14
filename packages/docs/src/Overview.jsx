@@ -16,9 +16,9 @@ export const OverviewFormatter = ({ children, story }) => {
           <div key={name} className="flex flex-row items-center gap-4">
             {link ? <sd-link href={link}>{linkName}</sd-link> : <p>{linkName}</p>}
 
-            <div className={`m-0 sd-status-badge ${link ? `sd-status-badge--success` : `sd-status-badge--warning`}`}>
-              <sd-icon name={link ? 'status-check' : 'status-exclamation'} library="sd-status-assets"></sd-icon>
-              {link ? 'Available' : 'Currently unavailable'}
+            <div className={`m-0 sd-status-badge ${link ? `sd-status-badge--success` : `sd-status-badge--info`}`}>
+              <sd-icon name={link ? 'status-check' : 'status-info'} library="sd-status-assets"></sd-icon>
+              {link ? 'Available' : 'Does not apply'}
             </div>
           </div>
         );
