@@ -6,17 +6,6 @@ const { argTypes, parameters } = storybookDefaults('sd-table');
 const { overrideArgs } = storybookHelpers('sd-table');
 const { generateTemplate } = storybookTemplate('sd-table');
 
-/**
- * Used to reset the styles of a table to predefined values. To style table cells use the `sd-table-cell` component.
- *
- * **Related Components**:
- * - [sd-table-cell](?path=/docs/styles-sd-table-cell--docs)
- *
- *
- * **Related Templates**:
- * - [Table](?path=/docs/templates-table--docs)
- */
-
 export default {
   title: 'Styles/sd-table',
   tags: ['!dev', 'autodocs'],
