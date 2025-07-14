@@ -499,7 +499,6 @@ export const TruncatedWithButtons = {
                 </button>
               </li>
             </ul>
-            <p id="pagination-live" aria-live="polite"></p>
           </nav>
           <nav class="%CLASSES%" aria-label="Pagination">
             <ul class="buttons">
