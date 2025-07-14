@@ -6,6 +6,10 @@
 
 - Fixed `sd-drawer` close button position when `dir="rtl"` is set. _[`#2359`](https://github.com/solid-design-system/solid/pull/2359) [`8cfdf70`](https://github.com/solid-design-system/solid/commit/8cfdf70f4644744f18f469a3091931d2876fe8ed) [@paulovareiro29](https://github.com/paulovareiro29)_
 
+### 📈 Stats
+* Uncompressed: 475 KB (-1 KB / 0%)
+* Gzipped: 112 KB (unchanged)
+
 ## 5.13.1
 
 ### Patch Changes
