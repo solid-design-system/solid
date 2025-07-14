@@ -472,7 +472,7 @@ export const TruncatedWithButtons = {
       options: {
         templateContent: html`
           <nav class="%CLASSES%" aria-label="Pagination">
-            <ul class="buttons">
+            <ul>
               <li>
                 <button aria-hidden="true" disabled>
                   <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
