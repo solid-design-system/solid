@@ -247,6 +247,57 @@ export const IconOnly = {
   }
 };
 
+export const Multiline = {
+  name: 'Multiline',
+  render: (args: any) => {
+    return html`<div class="flex flex-col gap-2 max-w-[150px]">
+      ${generateTemplate({
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+          }
+        ],
+        args
+      })}
+      ${generateTemplate({
+        constants: [
+          {
+            type: 'slot',
+            name: 'icon-left',
+            value: '<sd-icon slot="icon-left" name="system/image" label="Multiline left icon"></sd-icon>'
+          },
+          {
+            type: 'slot',
+            name: 'default',
+            value:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+          }
+        ],
+        args
+      })}
+      ${generateTemplate({
+        constants: [
+          {
+            type: 'slot',
+            name: 'icon-right',
+            value: '<sd-icon slot="icon-left" name="system/image" label="Multiline left icon"></sd-icon>'
+          },
+          {
+            type: 'slot',
+            name: 'default',
+            value:
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+          }
+        ],
+        args
+      })}
+    </div>`;
+  }
+};
+
 export const Parts = {
   name: 'Parts (Debug)',
   render: (args: any) => {
@@ -303,6 +354,7 @@ export const Combination = generateScreenshotStory([
   Disabled,
   IconSlots,
   IconOnly,
+  Multiline,
   Parts,
   Mouseless
 ]);
