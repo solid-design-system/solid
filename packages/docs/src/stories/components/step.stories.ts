@@ -90,7 +90,19 @@ export const Orientation = {
     </div>
   `
 };
-
+/**
+ * Use the `horizontal-inline` attribute to activate the inline option of the horizontal orientation.
+ */
+export const HorizontalInline = {
+  name: 'Horizontal Inline',
+  render: () => html`
+    <div class="w-[255px]">
+      <sd-step orientation="horizontal" horizontal-inline description="Description lorem ipsum sic semper">
+        <span slot="label">Horizontal inline</span>
+      </sd-step>
+    </div>
+  `
+};
 /**
  * Use the `current` attribute to set a step as the current step.
  */
@@ -184,24 +196,42 @@ export const Icon = {
   `
 };
 
-/**
- * Use the `default` slot to set a description for the step. Alternatively, you can use the `description` attribute.
- */
-
-export const Description = {
-  name: 'Description',
+export const Label = {
+  name: 'Label',
   render: () => html`
     <div class="w-min">
-      <sd-step>
-        <span slot="label">Step name</span>
-        <p class="sd-paragraph">Description lorem ipsum sic semper</p>
-      </sd-step>
+      <sd-step label="Label"></sd-step>
     </div>
   `
 };
 
 /**
- * Use the `description` and `label` attributes to set the respective text on the step. These are used as alternatives to using the `default` and `label` slots.
+ *  Use the ”default” slot to add a description to the step. Alternatively, you can use the description attribute.
+ */
+
+export const Description = {
+  name: 'Description',
+  render: () => html`
+    <div class="h-32 mb-16 w-[200px]">
+      <sd-step orientation="vertical" label="Step name" description="Description lorem ipsum sic semper"></sd-step>
+    </div>
+    <div class="mb-16 w-[255px]">
+      <sd-step
+        orientation="horizontal"
+        horizontal-inline
+        label="Step name"
+        description="Description lorem ipsum sic semper"
+      >
+      </sd-step>
+    </div>
+    <div class="w-[293px]">
+      <sd-step orientation="horizontal" label="Step name" description="Description lorem ipsum sic semper"></sd-step>
+    </div>
+  `
+};
+
+/**
+ * Use the ”description” and ”label” attributes to set the respective text on the step. These are used as alternatives to using the ”default” and ”label” slots.
  */
 
 export const DescriptionAndLabelUsingAttributes = {
