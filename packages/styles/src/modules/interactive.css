@@ -29,6 +29,10 @@
   &[disabled],
   &[href=''] {
     @apply cursor-not-allowed text-neutral-500 hover:text-neutral-500 active:text-neutral-500;
+
+    &.sd-interactive--inverted {
+      @apply text-neutral-600 hover:text-neutral-600 active:text-neutral-600;
+    }
   }
 }
 
