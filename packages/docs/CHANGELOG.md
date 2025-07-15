@@ -1,5 +1,16 @@
 # @solid-design-system/docs
 
+## 1.26.0
+
+### Minor Changes
+
+- Add overview pages for: _[`#2337`](https://github.com/solid-design-system/solid/pull/2337) [`4e642ad`](https://github.com/solid-design-system/solid/commit/4e642ad01318d58043d61a1216c0d64ef6cb3cf5) [@smfonseca](https://github.com/smfonseca)_
+  - `sd-carousel-item`
+  - `sd-mark`
+  - `sd-table`
+
+  Update Solid DS Best Practices for WCAG Compliance link in all overview pages.
+
 ## 1.25.0
 
 ### Minor Changes
