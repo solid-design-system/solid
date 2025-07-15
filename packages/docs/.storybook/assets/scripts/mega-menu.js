@@ -56,7 +56,7 @@ if (typeof window.MegaMenu === 'undefined') {
       this.el.querySelectorAll('sd-navigation-item').forEach(item => item.removeAttribute('open'));
     }
 
-    open() {
+    open(focusWithin = true) {
       if (!this._open) {
         throw new Error('Must implement _open method!');
       }
@@ -64,7 +64,10 @@ if (typeof window.MegaMenu === 'undefined') {
       this._open();
       this.el.setAttribute('data-active-submenu', '');
       this.trigger.setAttribute('current', '');
-      this.focusWithin();
+
+      if (focusWithin) {
+        this.focusWithin();
+      }
 
       this.emit('sd-mega-menu-submenu-open', { source: this });
     }
@@ -162,9 +165,9 @@ if (typeof window.MegaMenu === 'undefined') {
       this.el.focus();
     }
 
-    click() {
+    click(focusWithin = true) {
       if (this.isSubmenuTrigger) {
-        this.submenu.open();
+        this.submenu.open(focusWithin);
         return;
       }
 
@@ -314,7 +317,7 @@ if (typeof window.MegaMenu === 'undefined') {
       if (this.el.closest('sd-dropdown') && this.el.getAttribute('slot') === 'trigger') {
         this.isSubmenuTrigger = true;
         this.submenu = new MegaMenuHorizontalSubmenu(this.el.closest('sd-dropdown'));
-        this.el.addEventListener('pointerover', () => this.click());
+        this.el.addEventListener('pointerover', () => this.click(false));
       }
 
       if (this.el.closest('sd-dropdown')) {
