@@ -4,16 +4,6 @@ const { argTypes, parameters } = storybookDefaults('sd-carousel-item');
 const { overrideArgs } = storybookHelpers('sd-carousel-item');
 const { generateTemplate } = storybookTemplate('sd-carousel-item');
 
-/**
- * Used to represent a slide within a carousel.
- *
- * **Related components**:
- * - [sd-carousel](?path=/docs/components-sd-carousel--docs)
- *
- * **Related templates**:
- * - [Carousel](?path=/docs/templates-carousel--docs)
- */
-
 export default {
   title: 'Components/sd-carousel-item',
   tags: ['!dev', 'autodocs'],
@@ -34,10 +24,6 @@ export default {
     }
   }
 };
-
-/**
- * This shows sd-carousel-item in its default state.
- */
 
 export const Default = {
   render: (args: any) => {
