@@ -78,7 +78,7 @@ export const Disabled = {
         class="sd-interactive sd-interactive--inverted sd-interactive--disabled sd-interactive--reset"
         title="Disabled inverted button"
       >
-        Inverted
+        Disabled
       </button>
     </div>
   `
