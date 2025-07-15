@@ -92,14 +92,29 @@ export const Disabled = {
     }
   },
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: [{ type: 'attribute', name: 'sd-interactive--disabled', values: [false, true] }]
-      },
-      options: { templateContent: '<button class="%CLASSES%" title="Disabled button">%SLOT%</button>' },
-      constants: { type: 'attribute', name: 'sd-interactive--disabled', value: true },
-      args
-    });
+    return html`
+      ${generateTemplate({
+        axis: {
+          y: [{ type: 'attribute', name: 'sd-interactive--disabled', values: [false, true] }]
+        },
+        options: {
+          templateContent: '<div class="p-4"><button class="%CLASSES%" title="Disabled button">%SLOT%</button></div>'
+        },
+        constants: { type: 'attribute', name: 'sd-interactive--disabled', value: true },
+        args
+      })}
+      ${generateTemplate({
+        axis: {
+          y: [{ type: 'attribute', name: 'sd-interactive--disabled', values: [false, true] }]
+        },
+        options: {
+          templateContent:
+            '<div class="bg-primary p-4"><button class="%CLASSES%" title="Disabled button">%SLOT%</button></div>'
+        },
+        constants: { type: 'attribute', name: 'sd-interactive--inverted', value: true },
+        args
+      })}
+    `;
   }
 };
 

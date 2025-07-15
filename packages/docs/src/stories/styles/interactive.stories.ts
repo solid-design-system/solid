@@ -67,20 +67,9 @@ export const Disabled = {
     }
   },
   render: () => html`
-    <div class="p-4">
-      <button class="sd-interactive sd-interactive--disabled sd-interactive--reset" title="Disabled button">
-        Disabled
-      </button>
-    </div>
-
-    <div class="bg-primary p-4">
-      <button
-        class="sd-interactive sd-interactive--inverted sd-interactive--disabled sd-interactive--reset"
-        title="Disabled inverted button"
-      >
-        Disabled
-      </button>
-    </div>
+    <button class="sd-interactive sd-interactive--disabled sd-interactive--reset" title="Disabled button">
+      Disabled
+    </button>
   `
 };
 
