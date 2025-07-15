@@ -15,6 +15,12 @@
   ul {
     @apply flex items-center gap-2;
 
+    li button {
+      all: unset;
+
+      @apply border-2 border-transparent border-solid hover:cursor-pointer;
+    }
+
     li a,
     li button {
       @apply no-underline text-primary flex items-center justify-center hover:text-primary-500 active:text-primary-800 transition-[color];
@@ -178,6 +184,8 @@
     ul {
       li:nth-child(2) {
         @apply relative w-8 border-b-2 border-b-accent me-5 after:content-['/'] after:absolute after:-right-[18px] after:scale-y-[1.5];
+
+        border-bottom-style: solid;
       }
 
       li:nth-last-child(2) {
