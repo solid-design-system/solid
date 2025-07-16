@@ -250,46 +250,36 @@ export const IconOnly = {
 export const Multiline = {
   name: 'Multiline',
   render: (args: any) => {
-    return html`<div class="flex flex-col gap-2 max-w-[150px]">
+    return html`<div class="flex flex-col gap-2 max-w-md">
       ${generateTemplate({
-        constants: [
-          {
-            type: 'slot',
-            name: 'default',
-            value:
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-          }
-        ],
-        args
-      })}
-      ${generateTemplate({
-        constants: [
-          {
-            type: 'slot',
-            name: 'icon-left',
-            value: '<sd-icon slot="icon-left" name="system/image" label="Multiline left icon"></sd-icon>'
-          },
-          {
-            type: 'slot',
-            name: 'default',
-            value:
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-          }
-        ],
-        args
-      })}
-      ${generateTemplate({
-        constants: [
-          {
+        axis: {
+          x: [{ type: 'attribute', name: 'size', values: ['sm', 'md', 'lg'] }],
+          y: {
             type: 'slot',
             name: 'icon-right',
-            value: '<sd-icon slot="icon-left" name="system/image" label="Multiline left icon"></sd-icon>'
-          },
+            values: [
+              { value: '', title: '-' },
+              {
+                value: '<sd-icon name="system/image" slot="icon-right"></sd-icon>',
+                title: 'icon-right'
+              },
+              {
+                value: '<sd-icon name="system/image" slot="icon-left"></sd-icon>',
+                title: 'icon-left'
+              },
+              {
+                value:
+                  '<sd-icon name="system/image" slot="icon-right"></sd-icon><sd-icon name="system/image" slot="icon-left"></sd-icon>',
+                title: 'both'
+              }
+            ]
+          }
+        },
+        constants: [
           {
             type: 'slot',
             name: 'default',
-            value:
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+            value: 'Lorem ipsum dolor sit amet.'
           }
         ],
         args
