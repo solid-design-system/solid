@@ -188,7 +188,7 @@ export const ActiveStep = {
 /**
  * Use the `not-interactive` attribute to create a non-interactive step group.
  */
-export const notInteractive = {
+export const NotInteractive = {
   name: 'Not Interactive',
   render: () => html`
     <sd-step-group size="lg" orientation="horizontal" active-step="0" not-interactive>

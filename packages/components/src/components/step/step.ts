@@ -119,7 +119,7 @@ export default class SdStep extends SolidElement {
 
     const circleAndTailContainerClasses = cx(
       'flex shrink-0 gap-2',
-      this.noTail,
+      this.noTail && !isHorizontalInline && 'w-max',
       this.orientation === 'horizontal' ? 'flex-row' : 'flex-col items-stretch',
       isHorizontalInline && 'items-start',
       this.orientation === 'horizontal' && !this.horizontalInline
@@ -226,19 +226,13 @@ export default class SdStep extends SolidElement {
                             `
                       }
                     </div>
-                    ${
-                      this.description
-                        ? html`
-                            <div
-                              part="description"
-                              id="description"
-                              class=${cx('sd-paragraph sd-paragraph--size-sm', this.disabled && '!text-neutral-700')}
-                            >
-                              ${this.description || html`<slot></slot>`}
-                            </div>
-                          `
-                        : ''
-                    }
+                    <div
+                      part="description"
+                      id="description"
+                      class=${cx('sd-paragraph sd-paragraph--size-sm whitespace-break-spaces', this.disabled && '!text-neutral-700')}
+                    >
+                    ${this.description || html`<slot></slot>`}
+                    </div>
                   </div>
                 </div>
                 `

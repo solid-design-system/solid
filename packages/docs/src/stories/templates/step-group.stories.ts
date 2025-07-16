@@ -106,7 +106,7 @@ export const NonInteractiveStepGroupWithIcon = {
           description="Get advice from our partner banks and find the right plan for you."
         >
           <sd-icon slot="circle-content" name="content/calendar" class="h-8 w-8"></sd-icon>
-          <p slot="label">Make an appointment</p>
+          <p slot="label">Book appointment</p>
         </sd-step>
 
         <sd-step
@@ -117,7 +117,7 @@ export const NonInteractiveStepGroupWithIcon = {
           description="Choose the right fund for your plan from a wide range of funds."
         >
           <sd-icon slot="circle-content" name="content/chess-piece" class="h-8 w-8"></sd-icon>
-          <p slot="label">Select funds for savings plan</p>
+          <p slot="label">Select fund</p>
         </sd-step>
 
         <sd-step
@@ -128,7 +128,7 @@ export const NonInteractiveStepGroupWithIcon = {
           description="Open your own securities account together with your bank advisor."
         >
           <sd-icon slot="circle-content" name="content/certificate" class="h-8 w-8"></sd-icon>
-          <p slot="label">Open a securities account</p>
+          <p slot="label">Securitiy account</p>
         </sd-step>
       </sd-step-group>
     </div>
