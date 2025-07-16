@@ -30,7 +30,8 @@
     "build": "node scripts/build.mjs",
     "test": "jest",
     "verify": "pnpm build && echo '✅ Build verified' && pnpm test && echo '✅ Tests verified'",
-    "plop": "plop --plopfile scripts/plop/plopfile.js"
+    "plop": "plop --plopfile scripts/plop/plopfile.js",
+    "postversion": "pnpm build"
   },
   "devDependencies": {
     "@types/node": "^24.0.10",
