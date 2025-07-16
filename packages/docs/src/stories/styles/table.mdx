@@ -1,20 +1,19 @@
 import { Meta, Canvas } from '@storybook/addon-docs/blocks';
 import { OverviewFormatter } from '../../Overview.jsx';
 
-import * as SdTableCellStories from './table-cell.stories';
+import * as SdTableStories from './table.stories';
 
 export const links = {
-  'storybook-docs': './?path=/docs/styles-sd-table-cell--docs',
-  'figma-library':
-    'https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=3738-22115&p=f&t=B5mgTBjcWeycmzb6-0',
+  'storybook-docs': './?path=/docs/styles-sd-table--docs',
+  'figma-library': '',
   'figma-docs':
-    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2314-31831&node-type=canvas&t=ExKWUj3vUoucvcVt-0'
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Solid-DS-%E2%80%93-Component-Docs?node-id=16250-1458&t=5gYi2BMBH14xT4nA-4'
 };
 
 export const content = `
-# Table Cell
+# Table
 
-Used to organize and structure content, scanning, comparing, and analyzing the data, it is designed to be used inside the "sd-table" component.
+Used to reset the styles of a table to predefined values. To style table cells use the sd-table-cell component.
 
 <DefaultStory />
 
@@ -22,7 +21,7 @@ Used to organize and structure content, scanning, comparing, and analyzing the d
 
 #### Related Components
 
-[sd-table](./?path=/docs/styles-sd-table--docs)
+[sd-table-cell](./?path=/docs/styles-sd-table-cell--docs)
 
 #### Related Templates
 
@@ -30,17 +29,10 @@ Used to organize and structure content, scanning, comparing, and analyzing the d
 
 ### Common Use Cases
 
-- Organize, structure, and compare data when building tables.
+- Organize, structure, and compare data.
 - Present tabular content in a scannable, analyzable format for dashboards, reports, or listings.
 
 ### Usage Guidelines
-
-#### Layout
-
-- Display a top and bottom divider on every table cell; left and right edges remain open by default.
-- Toggle vertical dividers when a clearer column separation is needed (by selecting “divider”).
-- Ensure consistent cell padding to maintain a clean and organized table layout and allow content to "breathe".
-- Consider using alternating row colors (zebra style) to improve readability for larger tables.
 
 #### Interaction
 
@@ -52,15 +44,6 @@ Used to organize and structure content, scanning, comparing, and analyzing the d
 - Create a sticky first column by enabling the “shadow-right” option.
 - Use this feature in wide tables to keep the first column in view while scrolling horizontally.
 
-#### Text Styling
-
-- Bold text to create a header cell or emphasize important data.
-- Choose left (default), center, or right alignment as desired.
-
-#### Background
-
-- Use with light background options of white, neutral-100 and primary-100.
-
 ### Accessibility Information
 
 - Use proper HTML table elements (e.g., <code>&lt;table&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code>) to ensure screen readers can correctly interpret table headers and cell data.
@@ -70,6 +53,6 @@ Used to organize and structure content, scanning, comparing, and analyzing the d
 
 Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=38262-58412&t=1qhfYXrbNhSCYCzZ-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
 
-<Meta title="Styles/sd-table-cell/Overview" />
+<Meta title="Styles/sd-table/Overview" />
 
-<OverviewFormatter story={SdTableCellStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdTableStories.Default}>{content}</OverviewFormatter>

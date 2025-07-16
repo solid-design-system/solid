@@ -40,5 +40,5 @@ export const HeadlineWithMark = {
 
 export const DisplayWithMark = {
   name: 'Display with Mark',
-  render: () => html` <p class="sd-display">Lorem <mark class="sd-mark">ipsum</mark></p> `
+  render: () => html` <p class="sd-display"><mark class="sd-mark">Union Investment</mark> at a glance</p> `
 };
