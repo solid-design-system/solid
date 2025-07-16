@@ -1,5 +1,11 @@
 # @solid-design-system/styles
 
+## 1.5.1
+
+### Patch Changes
+
+- Reset button default styles from `sd-pagination`. _[`#2363`](https://github.com/solid-design-system/solid/pull/2363) [`b5c9913`](https://github.com/solid-design-system/solid/commit/b5c9913d112b54498c0379ecb081ee1f1f5e82d0) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.5.0
 
 ### Minor Changes
