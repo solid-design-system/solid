@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/eslint-plugin",
   "description": "ESLint custom rules for the Solid Design System component library",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "author": {
     "name": "Union Investment"
@@ -30,7 +30,8 @@
     "build": "node scripts/build.mjs",
     "test": "jest",
     "verify": "pnpm build && echo '✅ Build verified' && pnpm test && echo '✅ Tests verified'",
-    "plop": "plop --plopfile scripts/plop/plopfile.js"
+    "plop": "plop --plopfile scripts/plop/plopfile.js",
+    "postversion": "pnpm build"
   },
   "devDependencies": {
     "@types/node": "^24.0.10",

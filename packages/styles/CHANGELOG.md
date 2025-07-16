@@ -1,5 +1,11 @@
 # @solid-design-system/styles
 
+## 1.5.2
+
+### Patch Changes
+
+- Fixed `sd-interactive` disabled color to align with design. _[`#2361`](https://github.com/solid-design-system/solid/pull/2361) [`9e512b6`](https://github.com/solid-design-system/solid/commit/9e512b646d0959585d4d294658c880125cfeeafc) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.5.1
 
 ### Patch Changes
