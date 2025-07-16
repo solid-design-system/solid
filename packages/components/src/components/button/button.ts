@@ -255,13 +255,15 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       'icon-only': this._iconsInDefaultSlot.length > 0
     };
 
+    const hasBorder = this.variant === 'secondary';
+
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
     return html`
       <${tag}
       part="base"
       class=${cx(
-        `group relative z-10 font-md no-underline border border-
+        `group relative z-10 font-md no-underline
         w-full align-middle inline-flex items-stretch justify-center
         transition-colors duration-fast ease-in-out rounded-default
         select-none cursor-[inherit]`,
@@ -274,9 +276,9 @@ export default class SdButton extends SolidElement implements SolidFormControl {
          * */
         {
           /* sizes, fonts */
-          sm: 'text-sm varspacing-8 py-[0.281rem] px-[0.938rem]',
-          md: 'text-base varspacing-10 py-[0.438rem] px-[0.938rem]',
-          lg: 'text-base varspacing-12 py-[0.688rem] px-[0.938rem]'
+          sm: `text-sm varspacing-8 ${hasBorder ? 'py-[0.281rem] px-[0.938rem]' : 'py-[0.344rem] px-4'}`,
+          md: `text-base varspacing-10 ${hasBorder ? 'py-[0.438rem] px-[0.938rem]' : 'py-2 px-4'}`,
+          lg: `text-base varspacing-12 ${hasBorder ? 'py-[0.688rem] px-[0.938rem]' : 'py-3 px-4'}`
         }[this.size],
         {
           /* variants */
