@@ -238,6 +238,25 @@ export const Chevron = {
   }
 };
 
+export const Separated = {
+  name: 'Separated',
+  render: (args: any) => {
+    return html`${generateTemplate({
+      args,
+      axis: {
+        y: [{ type: 'attribute', name: 'separated', values: [true, false] }],
+        x: [{ type: 'attribute', name: 'href', values: ['#', ''] }]
+      },
+      constants: [
+        { type: 'attribute', name: 'vertical', value: true },
+        defaultSlotConstant,
+        descriptionSlotConstant,
+        childrenSlotConstant
+      ]
+    })} `;
+  }
+};
+
 /**
  * When `indented` is true, padding is added to the left side.  When `relaxed` is true, padding is added to both sides.
  */

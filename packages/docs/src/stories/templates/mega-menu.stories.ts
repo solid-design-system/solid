@@ -369,53 +369,55 @@ export const Horizontal = {
                         </sd-navigation-item>
                       </li>
                       <li>
-                        <sd-navigation-item vertical href="javascript:void(0)">
+                        <sd-navigation-item vertical separated href="javascript:void(0)">
                           <span class="font-bold">Find Funds</span>
                           <p slot="description">Get to our funds quickly</p>
+                          <ul slot="children">
+                            <li>
+                              <sd-navigation-item vertical indented href="javascript:void(0)">
+                                Top funds
+                              </sd-navigation-item>
+                            </li>
+                            <li>
+                              <sd-navigation-item vertical indented href="javascript:void(0)">
+                                Fund prices
+                              </sd-navigation-item>
+                            </li>
+                          </ul>
                         </sd-navigation-item>
-                        <ul>
-                          <li>
-                            <sd-navigation-item vertical indented href="javascript:void(0)">
-                              Top funds
-                            </sd-navigation-item>
-                          </li>
-                          <li>
-                            <sd-navigation-item vertical indented href="javascript:void(0)">
-                              Fund prices
-                            </sd-navigation-item>
-                          </li>
-                        </ul>
                       </li>
                       <li>
-                        <sd-navigation-item vertical href="javascript:void(0)">
+                        <sd-navigation-item vertical separated href="javascript:void(0)">
                           <span class="font-bold">Understanding Funds</span>
                           <p slot="description">Funds explained simply and understandably for you</p>
+
+                          <ul slot="children">
+                            <li>
+                              <sd-navigation-item vertical indented href="javascript:void(0)">
+                                Sustainability-related disclosures
+                              </sd-navigation-item>
+                            </li>
+                            <li>
+                              <sd-navigation-item vertical indented href="javascript:void(0)">
+                                Lexicon
+                              </sd-navigation-item>
+                            </li>
+                          </ul>
                         </sd-navigation-item>
-                        <ul>
-                          <li>
-                            <sd-navigation-item vertical indented href="javascript:void(0)">
-                              Sustainability-related disclosures
-                            </sd-navigation-item>
-                          </li>
-                          <li>
-                            <sd-navigation-item vertical indented href="javascript:void(0)">
-                              Lexicon
-                            </sd-navigation-item>
-                          </li>
-                        </ul>
                       </li>
                       <li>
-                        <sd-navigation-item vertical href="javascript:void(0)">
+                        <sd-navigation-item vertical separated href="javascript:void(0)">
                           <span class="font-bold"> UnionDepot </span>
                           <p slot="description">Manage your funds flexibly with UnionDepot</p>
+
+                          <ul slot="children">
+                            <li>
+                              <sd-navigation-item vertical indented href="javascript:void(0)">
+                                UnionDepot in Online Banking
+                              </sd-navigation-item>
+                            </li>
+                          </ul>
                         </sd-navigation-item>
-                        <ul>
-                          <li>
-                            <sd-navigation-item vertical indented href="javascript:void(0)">
-                              UnionDepot in Online Banking
-                            </sd-navigation-item>
-                          </li>
-                        </ul>
                       </li>
                     </ul>
                   </div>
