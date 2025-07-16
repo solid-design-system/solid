@@ -55,14 +55,9 @@ export const ButtonGroupHorizontal = {
  */
 export const ButtonGroupVertical = {
   render: () => html`
-    <div class="flex flex-col gap-4 w-[208px]">
-      <sd-button variant="primary">Start investment</sd-button>
-      <sd-button variant="secondary">
-        <sd-icon name="system/download" slot="icon-left"></sd-icon>Download report
-      </sd-button>
-      <sd-button variant="secondary">
-        <sd-icon name="system/eye-open" slot="icon-left"></sd-icon>Add to watchlist
-      </sd-button>
+    <div class="flex flex-col gap-4 w-[190px]">
+      <sd-button variant="primary" size="sm">Open your first investment account</sd-button>
+      <sd-button variant="secondary" size="sm"> Get personalized advice from our experts </sd-button>
     </div>
   `
 };
