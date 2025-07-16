@@ -151,7 +151,7 @@ if (typeof window.MegaMenu === 'undefined') {
 
       this._init();
 
-      if (this.el.querySelector('sd-navigation-item[slot="children"]')) {
+      if (this.el.querySelector('[slot="children"]')) {
         this.isGroupItem = true;
       }
     }
