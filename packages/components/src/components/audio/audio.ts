@@ -265,7 +265,9 @@ export default class SdAudio extends SolidElement {
   }
 
   private handleMouseUp() {
-    this.audioElement?.play();
+    if (this.isPlaying) {
+      this.audioElement?.play();
+    }
   }
 
   private showTranscript() {
