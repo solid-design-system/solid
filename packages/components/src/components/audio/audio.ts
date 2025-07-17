@@ -447,13 +447,10 @@ export default class SdAudio extends SolidElement {
           : html` <slot name="play-icon"><sd-icon class="text-xl" name="start" library="_internal"></sd-icon></slot>`}
       </sd-button>
 
-      <div class="flex items-center justify-self-end">
+      <div class="flex items-center gap-6 justify-self-end">
         ${this.hasSlotController.test('transcript')
           ? html`<button
-              class=${cx(
-                'mr-6 w-6 h-6 hover:cursor-pointer sd-interactive',
-                this.inverted && 'sd-interactive--inverted'
-              )}
+              class=${cx('w-6 h-6 hover:cursor-pointer sd-interactive', this.inverted && 'sd-interactive--inverted')}
               aria-label=${this.isTranscriptOpen
                 ? this.localize.term('transcriptIsOpen')
                 : this.localize.term('openTranscript')}
