@@ -1,9 +1,9 @@
 import { arraysDiffer, getNormalizedValueFromClientX, numericSort } from './utils';
+import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { defaultValue } from '../../internal/default-value';
 import { FormControlController } from '../../internal/form';
 import { HasSlotController } from '../../internal/slot';
-import { html } from 'lit';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query, queryAll } from 'lit/decorators.js';
@@ -680,7 +680,16 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     </div>`;
   }
 
-  static styles = SolidElement.styles;
+  static styles = [
+    ...SolidElement.styles,
+    css`
+      [part='base'] {
+        /* Prevent misbehavior in mobile by disabling native touch */
+        touch-action: none;
+        -webkit-touch-callout: none;
+      }
+    `
+  ];
 }
 
 declare global {
