@@ -87,7 +87,7 @@ export default class SdNavigationItem extends SolidElement {
   }
 
   private get isAccordion(): boolean {
-    return !this.href && this.hasSlotController.test('children');
+    return !this.separated && !this.href && this.hasSlotController.test('children');
   }
 
   private handleClickButton(event: MouseEvent) {
@@ -172,14 +172,13 @@ export default class SdNavigationItem extends SolidElement {
       <${tag}
         part="base"
         class=${cx(
-          'cursor-pointer relative focus-visible:focus-outline',
+          'flex items-center cursor-pointer relative focus-visible:focus-outline group px-4 hover:bg-neutral-200 transition-colors duration-fast ease-in-out min-h-[48px]',
           { md: 'text-base', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
           this.disabled ? 'text-neutral-500 pointer-events-none' : 'text-primary',
           this.current && 'font-bold',
-          isAccordion ? 'flex items-start' : 'inline-block w-full',
+          !isAccordion && 'w-full',
           this.divider && this.vertical && 'mt-0.25',
-          !this.vertical && 'inline-flex items-center',
-          'group px-4 hover:bg-neutral-200 transition-colors duration-fast ease-in-out min-h-[48px]'
+          !this.vertical && 'inline-flex items-center'
         )}
         aria-current=${ifDefined(this.current ? 'page' : undefined)}
         aria-disabled=${this.disabled}
@@ -200,14 +199,14 @@ export default class SdNavigationItem extends SolidElement {
             : 'h-1 w-[calc(100%-16px)] bottom-0 left-2 group-hover:w-full group-hover:left-0',
           this.disabled && 'bg-neutral-500'
         )}></div>
-        <div class='inline-flex flex-col w-full'>
+        <div class='inline-flex flex-col gap-1 w-full h-full'>
           <span
           part="content-area"
           class=${cx(
             'relative inline-flex justify-between items-center',
             isAccordion ? 'grow' : 'w-full',
             slots['description'] && 'pt-3',
-            slots['description'] || this.separated ? 'pb-1' : horizontalPadding,
+            !slots['description'] && !this.separated && horizontalPadding,
             this.calculatePaddingX
           )}>
             ${
