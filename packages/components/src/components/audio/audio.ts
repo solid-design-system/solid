@@ -260,11 +260,11 @@ export default class SdAudio extends SolidElement {
     this.isTranscriptOpen = !this.isTranscriptOpen;
   }
 
-  private handleMouseDown() {
+  private handleThumbGrab() {
     this.audioElement?.pause();
   }
 
-  private handleMouseUp() {
+  private handleThumbRelease() {
     if (this.isPlaying) {
       this.audioElement?.play();
     }
@@ -512,8 +512,10 @@ export default class SdAudio extends SolidElement {
             max="100"
             step="0.001"
             value=${this.progress}
-            @mousedown=${this.handleMouseDown}
-            @mouseup=${this.handleMouseUp}
+            @mousedown=${this.handleThumbGrab}
+            @touchstart=${this.handleThumbGrab}
+            @mouseup=${this.handleThumbRelease}
+            @touchend=${this.handleThumbRelease}
             @input=${this.handleAudioProgress}
             @keydown=${this.handleAudioProgressKeydown}
             aria-label=${this.localize.term('seekBar')}
