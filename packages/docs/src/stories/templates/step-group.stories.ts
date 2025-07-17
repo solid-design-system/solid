@@ -76,11 +76,11 @@ export const NonInteractiveStepGroup = {
         </sd-step>
 
         <sd-step size="lg" orientation="horizontal" disabled>
-          <span slot="label">Open a new account test</span>
+          <span slot="label">Open a new account</span>
         </sd-step>
 
         <sd-step size="lg" orientation="horizontal" disabled>
-          <span slot="label">Provide documents test step</span>
+          <span slot="label">Provide documents</span>
         </sd-step>
       </sd-step-group>
     </div>
