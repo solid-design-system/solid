@@ -10,6 +10,7 @@ import { Wave } from './wave';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type SdDrawer from '../drawer/drawer';
+import type SdRange from '../range/range';
 
 /**
  * @summary Used to play audio files that are part of the page content.
@@ -74,7 +75,7 @@ export default class SdAudio extends SolidElement {
 
   @state() progress: number = 0;
 
-  @query('[part="progress-slider"]') progressSlider: HTMLInputElement;
+  @query('[part="progress-slider"]') progressSlider: SdRange;
 
   @query('[part="audio-player"]') audioPlayerContainer: HTMLElement;
 
@@ -103,6 +104,7 @@ export default class SdAudio extends SolidElement {
     this.audioElement.setAttribute('controlsList', 'nodownload');
     document.addEventListener('sd-after-hide', this.handleTranscriptDrawerToggle);
     this.audioElement.playbackRate = this.speed;
+    this.progressSlider.tooltipFormatter = value => this.localize.term('seconds', Number(value).toFixed(0));
 
     if (this.animated) {
       this.initAnimation();
@@ -153,7 +155,7 @@ export default class SdAudio extends SolidElement {
     }
 
     this.duration = this.formatTime(this.audioElement.duration);
-    this.progressSlider.max = this.audioElement.duration.toString();
+    this.progressSlider.max = this.audioElement.duration;
   }
 
   playAudio() {
@@ -229,9 +231,14 @@ export default class SdAudio extends SolidElement {
   }
 
   private formatTime(time: number) {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    const minutes = Math.floor(time / 60)
+      .toString()
+      .padStart(2, '0');
+    const seconds = Math.floor(time % 60)
+      .toString()
+      .padStart(2, '0');
+
+    return `${minutes}:${seconds}`;
   }
 
   private handleAudioProgress() {
@@ -404,14 +411,12 @@ export default class SdAudio extends SolidElement {
   }
 
   render() {
-    const progressPercentage = this.audioElement ? (this.progress / this.audioElement.duration) * 100 : 0;
-
     const renderAudioControls = html`<div
       class=${cx(
         'controls grid grid-cols-3 justify-items-center items-center',
+        this.reversedLayout ? 'mt-2' : 'mb-2',
         !this.animated && 'relative',
-        this.animated && !this.reversedLayout && 'absolute -top-4 left-0 w-full',
-        this.reversedLayout ? 'mt-2' : 'mb-2'
+        this.animated && !this.reversedLayout && 'absolute -top-4 left-0 w-full'
       )}
       part="audio-controls"
     >
@@ -435,11 +440,11 @@ export default class SdAudio extends SolidElement {
         @click=${!this.isPlaying ? this.playAudio : this.pauseAudio}
         aria-label="${this.isPlaying ? this.localize.term('pauseAudio') : this.localize.term('playAudio')}"
         title="${this.isPlaying ? this.localize.term('pauseAudio') : this.localize.term('playAudio')}"
-        class="text-3xl"
+        class="mb-4"
       >
         ${this.isPlaying
-          ? html` <slot name="pause-icon"><sd-icon class="text-3xl" name="pause" library="_internal"></sd-icon></slot>`
-          : html` <slot name="play-icon"><sd-icon class="text-3xl" name="start" library="_internal"></sd-icon></slot>`}
+          ? html` <slot name="pause-icon"><sd-icon class="text-xl" name="pause" library="_internal"></sd-icon></slot>`
+          : html` <slot name="play-icon"><sd-icon class="text-xl" name="start" library="_internal"></sd-icon></slot>`}
       </sd-button>
 
       <div class="flex items-center justify-self-end">
@@ -472,21 +477,17 @@ export default class SdAudio extends SolidElement {
       </div>
     </div>`;
 
-    const renderTimestamps = html`<div
+    const renderTimestamps = html` <div
       class=${cx(
-        'w-full flex justify-between',
-        this.reversedLayout ? 'mb-2' : 'mt-2',
-        this.animated && this.reversedLayout && 'absolute bottom-0 left-0 mb-2',
-        this.animated && !this.reversedLayout && 'mt-2'
+        'w-full flex justify-between px-2',
+        this.animated && this.reversedLayout && 'absolute bottom-0 left-0 mb-4'
       )}
       part="timestamps"
     >
-      <div class=${cx('current-time text-sm', this.inverted ? 'text-primary-400' : 'text-neutral-700')}>
+      <div class=${cx('current-time text-sm', this.inverted ? 'text-primary-400' : 'text-black')}>
         ${this.currentTime}
       </div>
-      <div class=${cx('current-time text-sm', this.inverted ? 'text-primary-400' : 'text-neutral-700')}>
-        ${this.duration}
-      </div>
+      <div class=${cx('current-time text-sm', this.inverted ? 'text-primary-400' : 'text-black')}>${this.duration}</div>
     </div>`;
 
     return html`
@@ -501,35 +502,23 @@ export default class SdAudio extends SolidElement {
 
         <div class="relative">
           ${this.animated && !this.reversedLayout ? html`${renderAudioControls}` : null}
-          ${this.animated ? html`<canvas class="w-full h-16"></canvas>` : null}
+          ${this.animated ? html`<canvas class="w-full h-16 -mb-2 mx-2"></canvas>` : null}
           ${!this.hideTimestamps && this.animated && this.reversedLayout ? renderTimestamps : null}
-          <input
-            class=${cx(
-              'progress-slider bg-primary appearance-none w-full cursor-pointer outline-none h-1 flex items-center sd-interactive',
-              this.inverted && 'sd-interactive--inverted'
-            )}
-            type="range"
+
+          <sd-range
+            part="progress-slider"
+            no-tooltip
+            min="0"
             max="100"
             step="0.001"
-            value=${this.progress}
+            aria-label=${this.localize.term('seekBar')}
             @mousedown=${this.handleThumbGrab}
             @touchstart=${this.handleThumbGrab}
             @mouseup=${this.handleThumbRelease}
             @touchend=${this.handleThumbRelease}
-            @input=${this.handleAudioProgress}
+            @sd-input=${this.handleAudioProgress}
             @keydown=${this.handleAudioProgressKeydown}
-            aria-label=${this.localize.term('seekBar')}
-            part="progress-slider"
-            style="background: linear-gradient(to right,
-              ${this.inverted
-              ? 'rgb(var(--sd-color-white, 255 255 255) / 1)'
-              : 'rgb(var(--sd-color-primary, 0 53 142) / 1)'} ${progressPercentage}%,
-              ${this.animated
-              ? 'transparent'
-              : this.inverted
-                ? 'rgb(var(--sd-color-primary-400, 153 171 208) / 1)'
-                : 'rgb(var(--sd-color-grey-400, 195 195 195) / 1)'} ${progressPercentage}%)"
-          />
+          ></sd-range>
         </div>
 
         ${this.hasSlotController.test('transcript')
@@ -545,37 +534,8 @@ export default class SdAudio extends SolidElement {
   static styles = [
     ...SolidElement.styles,
     css`
-      .progress-slider:focus-visible {
-        @apply outline-none;
-      }
-
-      .progress-slider::-webkit-slider-thumb {
-        background-color: currentColor;
-      }
-
-      .progress-slider::-webkit-slider-thumb {
-        @apply appearance-none h-4 w-4 rounded-full border-none transition duration-200 ease-in-out;
-      }
-
-      .progress-slider:focus-visible::-webkit-slider-thumb {
-        @apply outline outline-offset-2;
-      }
-
-      /** Firefox */
-      .progress-slider::-moz-range-thumb {
-        background-color: currentColor;
-      }
-
-      .progress-slider::-moz-range-thumb {
-        @apply appearance-none h-4 w-4 rounded-full border-none transition duration-200 ease-in-out;
-      }
-
-      .progress-slider:focus-visible::-moz-range-thumb {
-        @apply outline outline-offset-2;
-      }
-
       sd-button::part(base) {
-        @apply rounded-full h-16 w-16 flex items-center justify-center;
+        @apply rounded-full h-12 w-12 flex items-center justify-center;
       }
 
       sd-button::part(motion-wrapper) {
@@ -584,6 +544,23 @@ export default class SdAudio extends SolidElement {
 
       sd-button::part(label) {
         @apply flex flex-grow-0 items-center;
+      }
+
+      :host([inverted]) sd-range::part(thumb) {
+        @apply bg-white outline-white;
+      }
+
+      :host([animated]) sd-range::part(track) {
+        @apply bg-transparent;
+      }
+
+      :host([inverted]:not([animated])) sd-range::part(track) {
+        /* TODO: Replace by bg-primary-400 */
+        @apply bg-primary-300;
+      }
+
+      :host([inverted]:not([animated])) sd-range::part(active-track) {
+        @apply bg-white;
       }
     `
   ];

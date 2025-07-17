@@ -517,7 +517,6 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       this.emit('sd-change');
     }
 
-    event.stopPropagation();
     event.preventDefault();
   }
 
