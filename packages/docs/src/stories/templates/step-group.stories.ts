@@ -14,7 +14,7 @@ export default {
 };
 
 /**
- * Example of how to set the active step in a step group.
+ * Example of how to set the horizontal inline step in a step group.
  */
 export const HorizontalInlineWithLabelStepGroup = {
   name: 'Step Group Horizontal Inline with Label for Current Step Only',
@@ -76,11 +76,11 @@ export const NonInteractiveStepGroup = {
         </sd-step>
 
         <sd-step size="lg" orientation="horizontal" disabled>
-          <span slot="label">Open a new account</span>
+          <span slot="label">Open a new account test</span>
         </sd-step>
 
         <sd-step size="lg" orientation="horizontal" disabled>
-          <span slot="label">Provide documents</span>
+          <span slot="label">Provide documents test step</span>
         </sd-step>
       </sd-step-group>
     </div>
@@ -98,37 +98,22 @@ export const NonInteractiveStepGroupWithIcon = {
         active-step="0"
         not-interactive
       >
-        <sd-step
-          size="sm"
-          orientation="horizontal"
-          horizontal-inline
-          state="default"
-          description="Get advice from our partner banks and find the right plan for you."
-        >
+        <sd-step size="sm" orientation="horizontal" horizontal-inline state="default">
           <sd-icon slot="circle-content" name="content/calendar" class="h-8 w-8"></sd-icon>
-          <p slot="label">Book appointment</p>
+          <span slot="label">Book appointment</span>
+          <p class="sd-paragraph">Get advice from our partner banks and find the right plan for you.</p>
         </sd-step>
 
-        <sd-step
-          size="sm"
-          orientation="horizontal"
-          horizontal-inline
-          state="current"
-          description="Choose the right fund for your plan from a wide range of funds."
-        >
+        <sd-step size="sm" orientation="horizontal" horizontal-inline state="current">
           <sd-icon slot="circle-content" name="content/chess-piece" class="h-8 w-8"></sd-icon>
-          <p slot="label">Select fund</p>
+          <span slot="label">Select fund</span>
+          <p class="sd-paragraph">Choose the right fund for your plan from a wide range of funds.</p>
         </sd-step>
 
-        <sd-step
-          size="sm"
-          orientation="horizontal"
-          horizontal-inline
-          state="disabled"
-          description="Open your own securities account together with your bank advisor."
-        >
+        <sd-step size="sm" orientation="horizontal" horizontal-inline state="disabled">
           <sd-icon slot="circle-content" name="content/certificate" class="h-8 w-8"></sd-icon>
-          <p slot="label">Securitiy account</p>
+          <span slot="label">Securitiy account</span>
+          <p class="sd-paragraph">Open your own securities account together with your bank advisor.</p>
         </sd-step>
       </sd-step-group>
     </div>

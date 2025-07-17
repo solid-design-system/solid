@@ -97,7 +97,7 @@ export const HorizontalInline = {
   name: 'Horizontal Inline',
   render: () => html`
     <div class="w-[255px]">
-      <sd-step orientation="horizontal" horizontal-inline description="Description lorem ipsum sic semper">
+      <sd-step orientation="horizontal" horizontal-inline>
         <span slot="label">Horizontal inline</span>
       </sd-step>
     </div>

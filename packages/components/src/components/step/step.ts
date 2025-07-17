@@ -229,7 +229,7 @@ export default class SdStep extends SolidElement {
                     <div
                       part="description"
                       id="description"
-                      class=${cx('sd-paragraph sd-paragraph--size-sm whitespace-break-spaces', this.disabled && '!text-neutral-700')}
+                      class=${cx('sd-paragraph sd-paragraph--size-sm break-words w-40', this.disabled && '!text-neutral-700')}
                     >
                     ${this.description || html`<slot></slot>`}
                     </div>
