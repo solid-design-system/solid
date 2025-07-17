@@ -178,7 +178,7 @@ export const IconSlots = {
   name: 'Icon Slots',
   render: (args: any) => {
     return html`
-      ${['sm', 'md', 'lg'].map(size =>
+      ${['lg', 'md', 'sm'].map(size =>
         // We have to compare different types of icons: "square", "wide" and "tall" ones.
         generateTemplate({
           axis: {
@@ -253,7 +253,7 @@ export const Multiline = {
     return html`<div class="flex flex-col gap-2 max-w-md">
       ${generateTemplate({
         axis: {
-          x: [{ type: 'attribute', name: 'size', values: ['sm', 'md', 'lg'] }],
+          x: [{ type: 'attribute', name: 'size', values: ['lg', 'md', 'sm'] }],
           y: {
             type: 'slot',
             name: 'icon-right',
