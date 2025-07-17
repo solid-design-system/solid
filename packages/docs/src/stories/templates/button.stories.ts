@@ -62,11 +62,19 @@ export const ButtonGroupVertical = {
   `
 };
 
+/**
+ * Primary action is stacked on top.
+ */
 export const ButtonGroupVerticalFullWidth = {
   render: () => html`
     <div class="flex flex-col gap-4 w-[375px]">
       <sd-button variant="primary">Start investment</sd-button>
-      <sd-button variant="secondary">Learn about funds</sd-button>
+      <sd-button variant="secondary">
+        <sd-icon name="system/download" slot="icon-left"></sd-icon> Download report
+      </sd-button>
+      <sd-button variant="tertiary">
+        <sd-icon name="system/eye-open" slot="icon-left"></sd-icon> Add to watchlist
+      </sd-button>
     </div>
   `
 };
