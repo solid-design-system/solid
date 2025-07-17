@@ -1,0 +1,46 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdCarouselItemStories from './carousel-item.stories';
+
+export const links = {
+  'storybook-docs': './?path=/docs/components-sd-carousel-item--docs',
+  'figma-library': '',
+  'figma-docs':
+    'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Solid-DS-%E2%80%93-Component-Docs?node-id=15874-2726&t=5gYi2BMBH14xT4nA-4'
+};
+
+export const content = `
+# Carousel Item
+
+Used within sd-carousel to represent a slide.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Components
+
+[sd-carousel](./?path=/docs/components-sd-carousel--docs)
+
+#### Related Templates
+
+[Carousel](./?path=/docs/templates-carousel--docs)
+
+### Common Use Cases
+
+- Used within sd-carousel to represent a slide that could take a shape of an image or video, a quote among other options.
+
+### Usage Guidelines
+
+#### Content and Style
+
+- Ensure consistency in content and style across slides by following a similar layout and type of information.
+
+### Accessibility Information
+
+Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=38262-58412&t=1qhfYXrbNhSCYCzZ-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-carousel-item/Overview" />
+
+<OverviewFormatter story={SdCarouselItemStories.Default}>{content}</OverviewFormatter>
