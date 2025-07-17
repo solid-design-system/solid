@@ -508,7 +508,7 @@ export default class SdAudio extends SolidElement {
             min="0"
             max="100"
             step="0.001"
-            aria-label=${this.localize.term('seekBar')}
+            label=${this.localize.term('seekBar')}
             @mousedown=${this.handleThumbGrab}
             @touchstart=${this.handleThumbGrab}
             @mouseup=${this.handleThumbRelease}
@@ -541,6 +541,10 @@ export default class SdAudio extends SolidElement {
 
       sd-button::part(label) {
         @apply flex flex-grow-0 items-center;
+      }
+
+      sd-range::part(form-control-label) {
+        @apply hidden;
       }
 
       :host([inverted]) sd-range::part(thumb) {
