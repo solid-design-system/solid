@@ -18,7 +18,11 @@
     li button {
       all: unset;
 
-      @apply border-2 border-transparent border-solid hover:cursor-pointer;
+      @apply border-0 border-transparent border-solid hover:cursor-pointer;
+    }
+
+    li:has(button) {
+      @apply h-[30px];
     }
 
     li a,
