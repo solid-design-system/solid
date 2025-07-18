@@ -47,6 +47,7 @@ const translation: Translation = {
   scrollToStart: 'Zum Anfang scrollen',
   search: 'Suchen',
   seekBar: 'Schieberegler für Suche',
+  seconds: time => `${time} Sekunden`,
   selectAColorFromTheScreen: 'Farbe vom Bildschirm auswählen',
   selectDefaultPlaceholder: 'Bitte auswählen',
   showLess: 'Weniger anzeigen',

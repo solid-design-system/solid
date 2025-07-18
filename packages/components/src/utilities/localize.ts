@@ -112,6 +112,7 @@ export interface Translation extends DefaultTranslation {
   scrollToStart: string;
   search: string;
   seekBar: string;
+  seconds: (time: number) => string;
   selectAColorFromTheScreen: string;
   selectDefaultPlaceholder: string;
   showLess: string;

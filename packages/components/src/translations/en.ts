@@ -47,6 +47,7 @@ const translation: Translation = {
   scrollToStart: 'Scroll to start',
   search: 'Search',
   seekBar: 'Seek bar',
+  seconds: time => `${time} seconds`,
   selectAColorFromTheScreen: 'Select a color from the screen',
   selectDefaultPlaceholder: 'Please select',
   showLess: 'Show less',
