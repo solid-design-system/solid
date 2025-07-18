@@ -105,9 +105,7 @@ export default class SdCarousel extends SolidElement {
 
   private autoplayController = new AutoplayController(this, () => this.next());
   private scrollController = new ScrollController(this);
-  private readonly slides = Array.from(this.getElementsByTagName('sd-carousel-item')).filter(
-    el => !el.hasAttribute('data-clone')
-  );
+  private readonly slides = this.getElementsByTagName('sd-carousel-item');
   private intersectionObserver: IntersectionObserver; // determines which slide is displayed
   // A map containing the state of all the slides
   private readonly intersectionObserverEntries = new Map<Element, IntersectionObserverEntry>();
@@ -598,7 +596,10 @@ export default class SdCarousel extends SolidElement {
           )}"
           style="--slides-per-page: ${this.slidesPerPage};"
           aria-busy="${scrollController.scrolling ? 'true' : 'false'}"
-          aria-label="${this.localize.term('carouselContainer', this.slides.length)}"
+          aria-label="${this.localize.term(
+            'carouselContainer',
+            Array.from(this.slides).filter(el => !el.hasAttribute('data-clone')).length
+          )}"
           aria-live=${this.autoplay ? 'off' : 'polite'}
           tabindex="0"
           @keydown=${this.handleKeyDown}
