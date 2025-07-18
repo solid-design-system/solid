@@ -51,7 +51,7 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return html`<div style="height:250px">${generateTemplate({ args })}</div>`;
+    return html`<div>${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -142,6 +142,30 @@ export const Orientation = {
 };
 
 /**
+ * Use the `horizontal-inline` attribute to activate the inline option of the horizontal orientation.
+ */
+export const HorizontalInline = {
+  name: 'Horizontal Inline',
+  render: () => html`
+    <div class="pl-4">
+      <sd-step-group size="lg" orientation="horizontal" active-step="1" class="w-full" label="Orientation Label">
+        <sd-step size="lg" orientation="horizontal" horizontal-inline>
+          <p slot="label">Step 1</p>
+        </sd-step>
+
+        <sd-step size="lg" orientation="horizontal" horizontal-inline current>
+          <p slot="label">Step 2</p>
+        </sd-step>
+
+        <sd-step size="lg" orientation="horizontal" horizontal-inline disabled>
+          <p slot="label">Step 3</p>
+        </sd-step>
+      </sd-step-group>
+    </div>
+  `
+};
+
+/**
  * Use the `active-step` attribute to set the current step.
  */
 export const ActiveStep = {
@@ -166,7 +190,7 @@ export const ActiveStep = {
 /**
  * Use the `not-interactive` attribute to create a non-interactive step group.
  */
-export const notInteractive = {
+export const NotInteractive = {
   name: 'Not Interactive',
   render: () => html`
     <sd-step-group size="lg" orientation="horizontal" active-step="0" not-interactive>
