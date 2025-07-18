@@ -105,7 +105,9 @@ export default class SdCarousel extends SolidElement {
 
   private autoplayController = new AutoplayController(this, () => this.next());
   private scrollController = new ScrollController(this);
-  private readonly slides = this.getElementsByTagName('sd-carousel-item');
+  private readonly slides = Array.from(this.getElementsByTagName('sd-carousel-item')).filter(
+    el => !el.hasAttribute('data-clone')
+  );
   private intersectionObserver: IntersectionObserver; // determines which slide is displayed
   // A map containing the state of all the slides
   private readonly intersectionObserverEntries = new Map<Element, IntersectionObserverEntry>();
