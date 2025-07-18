@@ -94,6 +94,35 @@ export const Simple = {
               </li>
             </ul>
           </nav>
+          <nav class="sd-pagination sd-pagination--simple" aria-label="Simple pagination">
+            <ul>
+              <li>
+                <a href="/?page=9"><sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon></a>
+              </li>
+              <li>10</li>
+              <li>20</li>
+              <li>
+                <a href="/?page=11"><sd-icon name="system/chevron-right" label="Go to next page"></sd-icon></a>
+              </li>
+            </ul>
+            <p id="simple-pagination-with-buttons-live" aria-live="polite"></p>
+          </nav>
+          <nav class="sd-pagination sd-pagination--simple" aria-label="Simple pagination">
+            <ul>
+              <li>
+                <a href="/?page=19">
+                  <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
+                </a>
+              </li>
+              <li>20</li>
+              <li>20</li>
+              <li>
+                <a aria-hidden="true" disabled>
+                  <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
+                </a>
+              </li>
+            </ul>
+          </nav>
         `
       },
       args
@@ -492,6 +521,11 @@ export const TruncatedWithButtons = {
               <li><button>13</button></li>
               <li><button>14</button></li>
               <li><button>15</button></li>
+              <li><button>16</button></li>
+              <li><button>17</button></li>
+              <li><button>18</button></li>
+              <li><button>19</button></li>
+              <li><button>20</button></li>
               <li>
                 <button>
                   <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
@@ -521,6 +555,11 @@ export const TruncatedWithButtons = {
               <li><button>13</button></li>
               <li><button>14</button></li>
               <li><button>15</button></li>
+              <li><button>16</button></li>
+              <li><button>17</button></li>
+              <li><button>18</button></li>
+              <li><button>19</button></li>
+              <li><button>20</button></li>
               <li>
                 <button>
                   <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
@@ -550,6 +589,11 @@ export const TruncatedWithButtons = {
               <li><button>13</button></li>
               <li><button>14</button></li>
               <li><button>15</button></li>
+              <li><button>16</button></li>
+              <li><button>17</button></li>
+              <li><button>18</button></li>
+              <li><button>19</button></li>
+              <li><button>20</button></li>
               <li>
                 <button>
                   <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
@@ -579,6 +623,11 @@ export const TruncatedWithButtons = {
               <li><button>13</button></li>
               <li><button>14</button></li>
               <li><button>15</button></li>
+              <li><button>16</button></li>
+              <li><button>17</button></li>
+              <li><button>18</button></li>
+              <li><button>19</button></li>
+              <li><button>20</button></li>
               <li>
                 <button>
                   <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
@@ -608,93 +657,11 @@ export const TruncatedWithButtons = {
               <li><button>13</button></li>
               <li><button>14</button></li>
               <li><button>15</button></li>
-              <li>
-                <button>
-                  <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
-                </button>
-              </li>
-            </ul>
-          </nav>
-          <nav class="%CLASSES%" aria-label="Pagination">
-            <ul>
-              <li>
-                <button>
-                  <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
-                </button>
-              </li>
-              <li><button>1</button></li>
-              <li><button>2</button></li>
-              <li><button>3</button></li>
-              <li><button>4</button></li>
-              <li><button>5</button></li>
-              <li><button>6</button></li>
-              <li><button>7</button></li>
-              <li><button>8</button></li>
-              <li><button>9</button></li>
-              <li><button>10</button></li>
-              <li><button>11</button></li>
-              <li><button aria-current="page">12</button></li>
-              <li><button>13</button></li>
-              <li><button>14</button></li>
-              <li><button>15</button></li>
-              <li>
-                <button>
-                  <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
-                </button>
-              </li>
-            </ul>
-          </nav>
-          <nav class="%CLASSES%" aria-label="Pagination">
-            <ul>
-              <li>
-                <button>
-                  <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
-                </button>
-              </li>
-              <li><button>1</button></li>
-              <li><button>2</button></li>
-              <li><button>3</button></li>
-              <li><button>4</button></li>
-              <li><button>5</button></li>
-              <li><button>6</button></li>
-              <li><button>7</button></li>
-              <li><button>8</button></li>
-              <li><button>9</button></li>
-              <li><button>10</button></li>
-              <li><button>11</button></li>
-              <li><button>12</button></li>
-              <li><button aria-current="page">13</button></li>
-              <li><button>14</button></li>
-              <li><button>15</button></li>
-              <li>
-                <button>
-                  <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
-                </button>
-              </li>
-            </ul>
-          </nav>
-          <nav class="%CLASSES%" aria-label="Pagination">
-            <ul>
-              <li>
-                <button>
-                  <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
-                </button>
-              </li>
-              <li><button>1</button></li>
-              <li><button>2</button></li>
-              <li><button>3</button></li>
-              <li><button>4</button></li>
-              <li><button>5</button></li>
-              <li><button>6</button></li>
-              <li><button>7</button></li>
-              <li><button>8</button></li>
-              <li><button>9</button></li>
-              <li><button>10</button></li>
-              <li><button>11</button></li>
-              <li><button>12</button></li>
-              <li><button>13</button></li>
-              <li><button aria-current="page">14</button></li>
-              <li><button>15</button></li>
+              <li><button>16</button></li>
+              <li><button>17</button></li>
+              <li><button>18</button></li>
+              <li><button>19</button></li>
+              <li><button>20</button></li>
               <li>
                 <button>
                   <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
@@ -723,7 +690,114 @@ export const TruncatedWithButtons = {
               <li><button>12</button></li>
               <li><button>13</button></li>
               <li><button>14</button></li>
-              <li><button aria-current="page">15</button></li>
+              <li><button>15</button></li>
+              <li><button>16</button></li>
+              <li><button aria-current="page">17</button></li>
+              <li><button>18</button></li>
+              <li><button>19</button></li>
+              <li><button>20</button></li>
+              <li>
+                <button>
+                  <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
+                </button>
+              </li>
+            </ul>
+          </nav>
+          <nav class="%CLASSES%" aria-label="Pagination">
+            <ul>
+              <li>
+                <button>
+                  <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
+                </button>
+              </li>
+              <li><button>1</button></li>
+              <li><button>2</button></li>
+              <li><button>3</button></li>
+              <li><button>4</button></li>
+              <li><button>5</button></li>
+              <li><button>6</button></li>
+              <li><button>7</button></li>
+              <li><button>8</button></li>
+              <li><button>9</button></li>
+              <li><button>10</button></li>
+              <li><button>11</button></li>
+              <li><button>12</button></li>
+              <li><button>13</button></li>
+              <li><button>14</button></li>
+              <li><button>15</button></li>
+              <li><button>16</button></li>
+              <li><button>17</button></li>
+              <li><button aria-current="page">18</button></li>
+              <li><button>19</button></li>
+              <li><button>20</button></li>
+              <li>
+                <button>
+                  <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
+                </button>
+              </li>
+            </ul>
+          </nav>
+          <nav class="%CLASSES%" aria-label="Pagination">
+            <ul>
+              <li>
+                <button>
+                  <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
+                </button>
+              </li>
+              <li><button>1</button></li>
+              <li><button>2</button></li>
+              <li><button>3</button></li>
+              <li><button>4</button></li>
+              <li><button>5</button></li>
+              <li><button>6</button></li>
+              <li><button>7</button></li>
+              <li><button>8</button></li>
+              <li><button>9</button></li>
+              <li><button>10</button></li>
+              <li><button>11</button></li>
+              <li><button>12</button></li>
+              <li><button>13</button></li>
+              <li><button>14</button></li>
+              <li><button>15</button></li>
+              <li><button>16</button></li>
+              <li><button>17</button></li>
+              <li><button>18</button></li>
+              <li><button aria-current="page">19</button></li>
+              <li><button>20</button></li>
+              <li>
+                <button>
+                  <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
+                </button>
+              </li>
+            </ul>
+          </nav>
+          <nav class="%CLASSES%" aria-label="Pagination">
+            <ul>
+              <li>
+                <button>
+                  <sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon>
+                </button>
+              </li>
+              <li><button>1</button></li>
+              <li><button>2</button></li>
+              <li><button>3</button></li>
+              <li><button>4</button></li>
+              <li><button>5</button></li>
+              <li><button>6</button></li>
+              <li><button>7</button></li>
+              <li><button>8</button></li>
+              <li><button>9</button></li>
+              <li><button>10</button></li>
+              <li><button>11</button></li>
+              <li><button>12</button></li>
+              <li><button>13</button></li>
+              <li><button>14</button></li>
+              <li><button>15</button></li>
+              <li><button>16</button></li>
+              <li><button>17</button></li>
+              <li><button>18</button></li>
+              <li><button>19</button></li>
+              <li><button aria-current="page">20</button></li>
               <li>
                 <button aria-hidden="true" disabled>
                   <sd-icon name="system/chevron-right" label="Go to next page"></sd-icon>
