@@ -158,6 +158,7 @@ if (typeof window.MegaMenu === 'undefined') {
 
     onClick(event) {
       if (event.target.closest('sd-navigation-item') !== this.el) return;
+      if (event.pointerType === 'touch' && this.isSubmenuTrigger && event.target.closest('sd-dropdown')) return;
       this.click();
     }
 
@@ -171,7 +172,7 @@ if (typeof window.MegaMenu === 'undefined') {
         return;
       }
 
-      if (this.isGroupItem) {
+      if (this.isGroupItem && !this.el.separated) {
         if (this.el.open) {
           this.el.removeAttribute('open');
         } else {
@@ -317,7 +318,10 @@ if (typeof window.MegaMenu === 'undefined') {
       if (this.el.closest('sd-dropdown') && this.el.getAttribute('slot') === 'trigger') {
         this.isSubmenuTrigger = true;
         this.submenu = new MegaMenuHorizontalSubmenu(this.el.closest('sd-dropdown'));
-        this.el.addEventListener('pointerover', () => this.click(false));
+        this.el.addEventListener('pointerover', e => {
+          if (e.pointerType === 'touch') return;
+          this.click(false);
+        });
       }
 
       if (this.el.closest('sd-dropdown')) {

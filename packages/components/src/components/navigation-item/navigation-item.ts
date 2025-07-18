@@ -199,7 +199,7 @@ export default class SdNavigationItem extends SolidElement {
             : 'h-1 w-[calc(100%-16px)] bottom-0 left-2 group-hover:w-full group-hover:left-0',
           this.disabled && 'bg-neutral-500'
         )}></div>
-        <div class='inline-flex flex-col gap-1 w-full h-full'>
+        <div class='inline-flex flex-col justify-center gap-1 w-full h-full'>
           <span
           part="content-area"
           class=${cx(
@@ -265,7 +265,7 @@ export default class SdNavigationItem extends SolidElement {
                 title=${this.open
                   ? this.localize.term('collapseNavigationItem')
                   : this.localize.term('expandNavigationItem')}
-                class="sd-interactive sd-interactive--reset"
+                class="sd-interactive sd-interactive--reset -mt-1"
                 @click=${this.handleClickSummary}
               >
                 <sd-icon
