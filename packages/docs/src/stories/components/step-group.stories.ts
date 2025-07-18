@@ -51,7 +51,7 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return html`<div style="height:250px">${generateTemplate({ args })}</div>`;
+    return html`<div>${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -147,19 +147,21 @@ export const Orientation = {
 export const HorizontalInline = {
   name: 'Horizontal Inline',
   render: () => html`
-    <sd-step-group size="lg" orientation="horizontal" active-step="1" class="w-full" label="Orientation Label">
-      <sd-step size="lg" orientation="horizontal" horizontal-inline>
-        <p slot="label">Step 1</p>
-      </sd-step>
+    <div class="pl-4">
+      <sd-step-group size="lg" orientation="horizontal" active-step="1" class="w-full" label="Orientation Label">
+        <sd-step size="lg" orientation="horizontal" horizontal-inline>
+          <p slot="label">Step 1</p>
+        </sd-step>
 
-      <sd-step size="lg" orientation="horizontal" horizontal-inline current>
-        <p slot="label">Step 2</p>
-      </sd-step>
+        <sd-step size="lg" orientation="horizontal" horizontal-inline current>
+          <p slot="label">Step 2</p>
+        </sd-step>
 
-      <sd-step size="lg" orientation="horizontal" horizontal-inline disabled>
-        <p slot="label">Step 3</p>
-      </sd-step>
-    </sd-step-group>
+        <sd-step size="lg" orientation="horizontal" horizontal-inline disabled>
+          <p slot="label">Step 3</p>
+        </sd-step>
+      </sd-step-group>
+    </div>
   `
 };
 
