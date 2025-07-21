@@ -1,6 +1,7 @@
 import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll';
@@ -56,6 +57,11 @@ export default class SdTabGroup extends SolidElement {
   /** @internal */
   @state() variant = 'default';
 
+  @state() private canScroll: Record<'left' | 'right', boolean> = {
+    left: false,
+    right: false
+  };
+
   /**
    * When set to auto, navigating tabs with the arrow keys will instantly show the corresponding tab panel. When set to
    * manual, the tab will receive focus but will not show until the user presses spacebar or enter.
@@ -92,6 +98,8 @@ export default class SdTabGroup extends SolidElement {
       this.syncTabsAndPanels();
       this.mutationObserver.observe(this, { attributes: true, childList: true, subtree: true });
       this.resizeObserver.observe(this.nav);
+      this.handleScroll();
+      this.nav.addEventListener('scroll', () => this.handleScroll());
 
       // Wait for tabs and tab panels to be registered
       whenAllDefined.then(() => {
@@ -228,6 +236,13 @@ export default class SdTabGroup extends SolidElement {
     }
   }
 
+  private handleScroll() {
+    this.canScroll = {
+      left: this.nav.scrollLeft > 0,
+      right: this.nav.scrollLeft + this.nav.clientWidth < this.nav.scrollWidth - 1
+    };
+  }
+
   private handleScrollToStart() {
     this.nav.scroll({
       left:
@@ -360,6 +375,7 @@ export default class SdTabGroup extends SolidElement {
                   exportparts="base:scroll-button__base"
                   tabindex="-1"
                   aria-hidden="true"
+                  disabled=${ifDefined(!this.canScroll.left || undefined)}
                   class=${cx(
                     'sd-interactive flex items-center justify-center absolute top-0 bottom-0 left-0 !outline-offset-0 border-b border-neutral-400 z-10',
                     this.localize.dir() === 'rtl' && 'left-auto right-0'
@@ -397,6 +413,7 @@ export default class SdTabGroup extends SolidElement {
                   exportparts="base:scroll-button__base"
                   tabindex="-1"
                   aria-hidden="true"
+                  disabled=${ifDefined(!this.canScroll.right || undefined)}
                   class=${cx(
                     'sd-interactive flex items-center justify-center absolute top-0 bottom-0 right-0 !outline-offset-0 border-b border-neutral-400 z-10',
                     this.localize.dir() === 'rtl' && 'right-auto left-0'
