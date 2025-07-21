@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.13.4
+
+### Patch Changes
+
+- Updated `lit` directive import to fix issue with creation of empty chunks during the build process. _[`#2382`](https://github.com/solid-design-system/solid/pull/2382) [`cdcf427`](https://github.com/solid-design-system/solid/commit/cdcf427e6a03fc95f4e1c07684fd9501a4d4bb78) [@smfonseca](https://github.com/smfonseca)_
+
 ## 5.13.3
 
 ### Patch Changes
