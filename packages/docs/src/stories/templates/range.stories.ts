@@ -56,6 +56,7 @@ export const InterestCalculator = {
     </div>
     <script type="module">
       const settings = {
+        initialReturns: 1.5,
         initialDeposit: 1000,
         monthlyContribution: 100,
         years: 10,
@@ -108,12 +109,13 @@ export const InterestCalculator = {
         });
       };
 
-      updateInterest(0);
-      updateSavedAmount(calculateReturns(0));
-      updateFinalAmount(calculateReturns(0));
+      updateInterest(settings.initialReturns);
+      updateSavedAmount(calculateReturns(settings.initialReturns));
+      updateFinalAmount(calculateReturns(settings.initialReturns));
 
       await Promise.all([customElements.whenDefined('sd-range')]).then(() => {
         const range = document.querySelector('sd-range');
+        range.value = settings.initialReturns.toString();
         range.tooltipFormatter = value => value + '%';
 
         range.addEventListener('sd-input', () => {
