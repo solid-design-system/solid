@@ -184,6 +184,27 @@ describe('<sd-tab-group>', () => {
       expect(isElementVisibleFromOverflow(tabGroup, firstTab!)).to.be.false;
       expect(isElementVisibleFromOverflow(tabGroup, lastTab!)).to.be.true;
     });
+
+    it('navigation buttons are disabled on scroll limits', async () => {
+      const tabGroup = await fixture<SdTabGroup>(html`<sd-tab-group> ${generateTabs(20)} </sd-tab-group>`);
+      await waitForScrollButtonsToBeRendered(tabGroup);
+
+      const startButton = tabGroup.shadowRoot?.querySelector('[part="scroll-button--start"]');
+      const endButton = tabGroup.shadowRoot?.querySelector('[part="scroll-button--end"]');
+
+      expect(startButton?.hasAttribute('disabled')).to.be.true;
+      expect(endButton?.hasAttribute('disabled')).to.be.false;
+
+      const nav = tabGroup.shadowRoot!.querySelector<HTMLElement>('[part="scroll-container"]')!;
+      nav.scrollLeft = nav.scrollWidth;
+      nav.dispatchEvent(new CustomEvent('scroll'));
+
+      await tabGroup.updateComplete;
+
+      expect(nav.scrollLeft + nav.clientWidth).to.equal(nav.scrollWidth);
+      expect(startButton?.hasAttribute('disabled')).to.be.false;
+      expect(endButton?.hasAttribute('disabled')).to.be.true;
+    });
   });
 
   describe('tab selection', () => {
