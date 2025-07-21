@@ -548,6 +548,10 @@ export default class SdAudio extends SolidElement {
         @apply hidden;
       }
 
+      sd-range::part(track) {
+        @apply bg-neutral-400;
+      }
+
       :host([inverted]) sd-range::part(thumb) {
         @apply bg-white outline-white;
       }
