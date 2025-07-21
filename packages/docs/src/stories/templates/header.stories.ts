@@ -51,7 +51,7 @@ export const SampleA = {
         </div>
         <!-- bottom-left-area end !-->
         <!-- bottom-right-area start !-->
-        <div class="-mr-4 flex items-center">
+        <div class="flex items-center">
           <sd-navigation-item href="javascript:void(0)">
             <sd-icon name="system/website" label="News" class="text-xl -m-1"></sd-icon>
           </sd-navigation-item>
@@ -80,15 +80,15 @@ export const SampleA = {
       </nav>
       <nav aria-label="footer" slot="footer" class="bg-neutral-100 -m-4">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/user" class="text-xl mr-2"></sd-icon>
+          <sd-icon name="system/user" class="text-xl"></sd-icon>
           Portfolio
         </sd-navigation-item>
         <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/lock-locked" class="text-xl mr-2"></sd-icon>
+          <sd-icon name="system/lock-locked" class="text-xl"></sd-icon>
           Application
         </sd-navigation-item>
         <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/website" class="text-xl mr-2"></sd-icon>
+          <sd-icon name="system/website" class="text-xl"></sd-icon>
           Our further appearances
         </sd-navigation-item>
       </nav>
@@ -207,15 +207,15 @@ export const SampleA02 = {
       </nav>
       <nav aria-label="footer" slot="footer" class="bg-neutral-100 -m-4">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/user" class="text-xl mx-1"></sd-icon>
+          <sd-icon name="system/user" class="text-xl"></sd-icon>
           Log in
         </sd-navigation-item>
         <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/globe" class="text-xl mx-1"></sd-icon>
+          <sd-icon name="system/globe" class="text-xl"></sd-icon>
           Language
         </sd-navigation-item>
         <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/website" class="text-xl mx-1"></sd-icon>
+          <sd-icon name="system/website" class="text-xl"></sd-icon>
           Our further appearances
         </sd-navigation-item>
       </nav>
@@ -331,11 +331,11 @@ export const SampleB = {
       </nav>
       <nav aria-label="footer" slot="footer" class="bg-neutral-100 -m-4">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
+          <sd-icon name="system/lock-locked" class="text-xl"></sd-icon>
           My application
         </sd-navigation-item>
         <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
+          <sd-icon name="system/website" class="text-xl"></sd-icon>
           Our further appearances
         </sd-navigation-item>
       </nav>
