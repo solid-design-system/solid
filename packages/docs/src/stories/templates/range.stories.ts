@@ -81,14 +81,15 @@ export const InterestCalculator = {
         const monthlyRate = rate / 12;
 
         if (monthlyRate === 0) {
-          return (initialDeposit + monthlyContribution * months).toFixed(2);
+          const total = initialDeposit + monthlyContribution * months;
+          return Math.ceil(total);
         }
 
         const futureValueInitial = initialDeposit * Math.pow(1 + monthlyRate, months);
         const futureValueMonthly = monthlyContribution * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
 
         const total = futureValueInitial + futureValueMonthly;
-        return total.toFixed(2);
+        return Math.ceil(total);
       };
 
       const updateInterest = value => {
