@@ -1,5 +1,18 @@
 # @solid-design-system/docs
 
+## 1.26.3
+
+### Patch Changes
+
+- Updated icon libraries. _[`#2385`](https://github.com/solid-design-system/solid/pull/2385) [`2b57a70`](https://github.com/solid-design-system/solid/commit/2b57a707fb9d9ef60c313fd457ddfa6fb1db69b4) [@smfonseca](https://github.com/smfonseca)_
+  - Added `internal-lib` story to showcase `_internal` icon library.
+  - Added `Library: _internal` screenshot test.
+  - Added `status-assets` story to showcase `sd-status-assets` icon library.
+  - Added `Library: sd-status-assets` screenshot test.
+  - Updated docs page with reference to `_internal` and `sd-status-assets` libraries.
+
+- Update migration guide `from v4` with more information regarding the internal icon library renaming. _[`#2385`](https://github.com/solid-design-system/solid/pull/2385) [`2b57a70`](https://github.com/solid-design-system/solid/commit/2b57a707fb9d9ef60c313fd457ddfa6fb1db69b4) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.26.2
 
 ### Patch Changes
