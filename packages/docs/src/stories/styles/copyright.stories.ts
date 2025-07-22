@@ -47,7 +47,7 @@ export const Default = {
 };
 
 /**
- * Use the `sd-copyright` class for alternative appearances:
+ * Use the `&--color-*` class for alternative appearances:
  *
  * - white is the default color
  * - `sd-copyright--color-black`
@@ -60,7 +60,9 @@ export const Variants = {
 };
 
 /**
- * Use the `sd-copyright--no-shadow` class to remove the shadow.
+ * Use the `&--no-shadow` class to remove the shadow.
+ *
+ * The property `&--color-black` automaticaly removes the shadow.
  */
 export const NoShadow = {
   render: () =>
@@ -70,7 +72,7 @@ export const NoShadow = {
 };
 
 /**
- * Use the `sd-copyright` classes to set  the axis of a copyright:
+ * Use the `sd-copyright--orientation-*` classes to set  the axis of a copyright:
  *
  * - horizontal is the default orientation
  * - `sd-copyright--orientation-vertical`
@@ -92,7 +94,7 @@ export const Orientation = {
 };
 
 /**
- * Use the `sd-copyright` class to set the copyright placement:
+ * Use the `sd-copyright--placement-*` class to set the copyright placement:
  *
  * - bottom is the default placement
  * - `sd-copyright--placement-top`
