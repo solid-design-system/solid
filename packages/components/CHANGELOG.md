@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 5.13.5
+
+### Patch Changes
+
+- Adjusted inverted `sd-expandable` to fit to the theming when overriding `--gradient-color-start` and `--gradient-color-end`. _[`#2383`](https://github.com/solid-design-system/solid/pull/2383) [`1644c11`](https://github.com/solid-design-system/solid/commit/1644c11f86512597a007387dad30face81ac0288) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+* Uncompressed: 477 KB (+1 KB / +0%)
+* Gzipped: 112 KB (unchanged)
+
 ## 5.13.4
 
 ### Patch Changes
