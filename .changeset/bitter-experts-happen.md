@@ -2,8 +2,10 @@
 '@solid-design-system/docs': patch
 ---
 
-Updated icon libraries screenshot tests.
+Updated icon libraries.
 
-- Renamed test `Libray: system` to `Library: internal`.
-- Updated library name from `system` to `_internal`.
-- Added screenshot test `Library: status assets`.
+- Added `internal-lib` story to showcase `_internal` icon library.
+- Added `Library: _internal` screenshot test.
+- Added `status-assets` story to showcase `sd-status-assets` icon library.
+- Added `Library: sd-status-assets` screenshot test.
+- Updated docs page with reference to `_internal` and `sd-status-assets` libraries.
