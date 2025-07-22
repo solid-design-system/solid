@@ -210,31 +210,33 @@ export default class SdStep extends SolidElement {
                       >
                         <slot name="label">${this.label}</slot>
                       </div>
-                      ${
-                        this.noTail
-                          ? ''
-                          : html`
-                              <div
-                                part="tail"
-                                class=${cx(
-                                  'border-t w-full mr-2 mt-3',
-                                  !this.disabled && !this.current && !this.notInteractive
-                                    ? 'border-primary'
-                                    : 'border-neutral-400'
-                                )}
-                              ></div>
-                            `
-                      }
+
+                      ${this.noTail
+                        ? html`<div class="flex-1"></div>`
+                        : html`
+                            <div
+                              part="tail"
+                              class=${cx(
+                                'border-t flex-1 mr-2 mt-3',
+                                !this.disabled && !this.current && !this.notInteractive
+                                  ? 'border-primary'
+                                  : 'border-neutral-400'
+                              )}
+                            ></div>
+                          `}
                     </div>
                     <div
                       part="description"
                       id="description"
-                      class=${cx('sd-paragraph sd-paragraph--size-sm break-words w-40', this.disabled && '!text-neutral-700')}
+                      class=${cx(
+                        'sd-paragraph sd-paragraph--size-sm break-words',
+                        hasDescription ? 'flex-1 pr-4' : 'w-0 h-0 overflow-hidden',
+                        this.disabled && '!text-neutral-700'
+                      )}
                     >
-                    ${this.description || html`<slot></slot>`}
+                      ${hasDescription ? this.description || html`<slot></slot>` : ''}
                     </div>
                   </div>
-                </div>
                 `
               : this.noTail
                 ? ''
@@ -300,6 +302,14 @@ export default class SdStep extends SolidElement {
 
       :host([no-tail]) {
         @apply flex-grow-0;
+      }
+
+      :host([horizontal-inline]) {
+        @apply flex-1 min-w-0;
+      }
+
+      :host([horizontal-inline][no-tail]) {
+        @apply flex-1;
       }
 
       .translateLg {

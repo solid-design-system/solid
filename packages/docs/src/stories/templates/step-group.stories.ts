@@ -17,45 +17,33 @@ export default {
  * Example of how to set the horizontal inline step in a step group.
  */
 export const HorizontalInlineWithLabelStepGroup = {
-  name: 'Step Group Horizontal Inline with Label for Current Step Only',
+  name: 'Step Group Horizontal Inline with Label for current step only',
   render: () => html`
-    <div class="h-32 gap-16 w-[375px]">
+    <div class="h-32 gap-16 w-[500px]">
       <sd-step-group size="sm" orientation="horizontal" active-step="0" class="w-full" label="Account">
-        <sd-step size="sm" orientation="horizontal" horizontal-inline current>
+        <sd-step orientation="horizontal" horizontal-inline current>
           <span slot="label">Account</span>
         </sd-step>
-        <sd-step size="sm" orientation="horizontal" horizontal-inline disabled>
-          <span slot="label">Shipping</span>
-        </sd-step>
-        <sd-step size="sm" orientation="horizontal" horizontal-inline disabled>
-          <span slot="label">Payment</span>
-        </sd-step>
+        <sd-step size="sm" orientation="horizontal" horizontal-inline disabled> </sd-step>
+        <sd-step size="sm" orientation="horizontal" horizontal-inline disabled> </sd-step>
       </sd-step-group>
     </div>
 
-    <div class="h-32 gap-16 w-[375px]">
+    <div class="h-32 gap-16 w-[500px]">
       <sd-step-group size="sm" orientation="horizontal" active-step="1" class="w-full" label="Payment">
-        <sd-step size="sm" orientation="horizontal" horizontal-inline>
-          <span slot="label">Account</span>
-        </sd-step>
-        <sd-step size="sm" orientation="horizontal" horizontal-inline current>
+        <sd-step orientation="horizontal" horizontal-inline> </sd-step>
+        <sd-step orientation="horizontal" horizontal-inline current>
           <span slot="label">Payment</span>
         </sd-step>
-        <sd-step size="sm" orientation="horizontal" horizontal-inline disabled>
-          <span slot="label">Confirmation</span>
-        </sd-step>
+        <sd-step orientation="horizontal" horizontal-inline disabled> </sd-step>
       </sd-step-group>
     </div>
 
-    <div class="h-32 gap-16 w-[375px]">
+    <div class="h-32 gap-16 w-[350px]">
       <sd-step-group size="sm" orientation="horizontal" active-step="2" class="w-full" label="Confirmation">
-        <sd-step size="sm" orientation="horizontal" horizontal-inline>
-          <span slot="label">Shipping</span>
-        </sd-step>
-        <sd-step size="sm" orientation="horizontal" horizontal-inline>
-          <span slot="label">Payment</span>
-        </sd-step>
-        <sd-step size="sm" orientation="horizontal" horizontal-inline current>
+        <sd-step orientation="horizontal" horizontal-inline> </sd-step>
+        <sd-step orientation="horizontal" horizontal-inline> </sd-step>
+        <sd-step orientation="horizontal" horizontal-inline current>
           <span slot="label">Confirmation</span>
         </sd-step>
       </sd-step-group>
@@ -99,7 +87,7 @@ export const NonInteractiveStepGroup = {
 export const NonInteractiveStepGroupWithIcon = {
   name: 'Non-Interactive Step Group with Icon',
   render: () => html`
-    <div class="">
+    <div class="w-[900px]">
       <sd-step-group
         label="Non-Interactive Step Group with Icon"
         size="sm"
