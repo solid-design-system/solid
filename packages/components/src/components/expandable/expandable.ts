@@ -233,8 +233,9 @@ export default class SdExpandable extends SolidElement {
       }
 
       :host([inverted]) {
-        --gradient-color-start: rgba(0, 53, 142, 0);
-        --gradient-color-end: rgba(0, 53, 142, 1);
+        --color-primary-rgb: 0, 53, 142;
+        --gradient-color-start: rgba(var(--color-primary-rgb), 0);
+        --gradient-color-end: rgba(var(--color-primary-rgb), 1);
       }
 
       :host([inverted]) .content::after {
