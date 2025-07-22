@@ -1,5 +1,17 @@
 # @solid-design-system/components
 
+## 5.13.4
+
+### Patch Changes
+
+- Updated `lit` directive import to fix issue with creation of empty chunks during the build process. _[`#2382`](https://github.com/solid-design-system/solid/pull/2382) [`cdcf427`](https://github.com/solid-design-system/solid/commit/cdcf427e6a03fc95f4e1c07684fd9501a4d4bb78) [@smfonseca](https://github.com/smfonseca)_
+
+## 5.13.3
+
+### Patch Changes
+
+- Fixed an a11y issue in `sd-carousel` where cloned slides where incorrectly included in the total slide count. _[`#2375`](https://github.com/solid-design-system/solid/pull/2375) [`64453ef`](https://github.com/solid-design-system/solid/commit/64453efaf4649e22405163b0518c9df1faa75908) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.13.2
 
 ### Patch Changes
@@ -7,12 +19,14 @@
 - Fixed `sd-drawer` close button position when `dir="rtl"` is set. _[`#2359`](https://github.com/solid-design-system/solid/pull/2359) [`8cfdf70`](https://github.com/solid-design-system/solid/commit/8cfdf70f4644744f18f469a3091931d2876fe8ed) [@paulovareiro29](https://github.com/paulovareiro29)_
 
 ### 📈 Stats
-* Uncompressed: 475 KB (-1 KB / 0%)
-* Gzipped: 112 KB (unchanged)
+
+- Uncompressed: 475 KB (-1 KB / 0%)
+- Gzipped: 112 KB (unchanged)
 
 ### 📈 Stats
-* Uncompressed: 476 KB (+1 KB / +0%)
-* Gzipped: 112 KB (unchanged)
+
+- Uncompressed: 476 KB (+1 KB / +0%)
+- Gzipped: 112 KB (unchanged)
 
 ## 5.13.1
 

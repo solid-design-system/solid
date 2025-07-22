@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.26.2
+
+### Patch Changes
+
+- Fixed an issue where the `sd-tab` `active` story would not show the current tab correctly after navigating through storybook. _[`#2384`](https://github.com/solid-design-system/solid/pull/2384) [`cbe0e16`](https://github.com/solid-design-system/solid/commit/cbe0e16de7296eeec08a8ca87f2c1812160abeb3) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.26.1
 
 ### Patch Changes
