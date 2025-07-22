@@ -13,98 +13,6 @@ export default {
   }
 };
 
-export const Simple = {
-  name: 'Pagination Simple',
-  render: () => html`
-    <nav id="simple-pagination" class="sd-pagination sd-pagination--simple" aria-label="Simple pagination">
-      <ul>
-        <li>
-          <a aria-hidden="true"><sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon></a>
-        </li>
-        <li>1</li>
-        <li>20</li>
-        <li>
-          <a href="/?page=2"><sd-icon name="system/chevron-right" label="Go to next page"></sd-icon></a>
-        </li>
-      </ul>
-      <p id="simple-pagination-live" aria-live="polite"></p>
-    </nav>
-    <script type="module">
-      const pagination = document.querySelector('#simple-pagination');
-      const live = pagination.querySelector('#simple-pagination-live');
-      const state = { total: 20, current: 1 };
-
-      const [current, total] = pagination.querySelectorAll('ul > li:not(:has(a))');
-      const previous = pagination.querySelector('ul > li:first-child a:has(sd-icon)');
-      const next = pagination.querySelector('ul > li:last-child a:has(sd-icon)');
-
-      const update = () => {
-        current.innerHTML = state.current;
-        total.innerHTML = state.total;
-        live.innerHTML = 'Current page: ' + state.current;
-
-        const isFirstPage = state.current <= 1;
-        const isLastPage = state.current >= state.total;
-
-        previous.href = '/?page=' + (state.current - 1);
-        previous.removeAttribute('aria-hidden');
-
-        if (isFirstPage) {
-          previous.removeAttribute('href');
-          previous.setAttribute('aria-hidden', 'true');
-        }
-
-        next.href = '/?page=' + (state.current + 1);
-        next.removeAttribute('aria-hidden');
-
-        if (isLastPage) {
-          next.removeAttribute('href');
-          next.setAttribute('aria-hidden', 'true');
-        }
-      };
-
-      const handlePrevious = event => {
-        event.preventDefault();
-
-        if (state.current <= 1) return;
-
-        state.current--;
-        update();
-
-        /**
-         * NOTE: Due to a11y purposes, when the start or end is reached,
-         * the focus must switch to the oposite button
-         */
-        if (state.current === 1) {
-          next.focus();
-        }
-      };
-
-      const handleNext = event => {
-        event.preventDefault();
-
-        if (state.current >= state.total) return;
-
-        state.current++;
-        update();
-
-        /**
-         * NOTE: Due to a11y purposes, when the start or end is reached,
-         * the focus must switch to the oposite button
-         */
-        if (state.current === state.total) {
-          previous.focus();
-        }
-      };
-
-      previous.addEventListener('click', handlePrevious);
-      next.addEventListener('click', handleNext);
-
-      update();
-    </script>
-  `
-};
-
 export const Number = {
   name: 'Pagination Number',
   render: () => html`
@@ -341,6 +249,98 @@ export const NumberWithButtons = {
       pages.forEach(page => page.addEventListener('click', handlePageClick));
       previous.addEventListener('click', handlePrevious);
       next.addEventListener('click', handleNext);
+      update();
+    </script>
+  `
+};
+
+export const Simple = {
+  name: 'Pagination Simple',
+  render: () => html`
+    <nav id="simple-pagination" class="sd-pagination sd-pagination--simple" aria-label="Simple pagination">
+      <ul>
+        <li>
+          <a aria-hidden="true"><sd-icon name="system/chevron-left" label="Go to previous page"></sd-icon></a>
+        </li>
+        <li>1</li>
+        <li>20</li>
+        <li>
+          <a href="/?page=2"><sd-icon name="system/chevron-right" label="Go to next page"></sd-icon></a>
+        </li>
+      </ul>
+      <p id="simple-pagination-live" aria-live="polite"></p>
+    </nav>
+    <script type="module">
+      const pagination = document.querySelector('#simple-pagination');
+      const live = pagination.querySelector('#simple-pagination-live');
+      const state = { total: 20, current: 1 };
+
+      const [current, total] = pagination.querySelectorAll('ul > li:not(:has(a))');
+      const previous = pagination.querySelector('ul > li:first-child a:has(sd-icon)');
+      const next = pagination.querySelector('ul > li:last-child a:has(sd-icon)');
+
+      const update = () => {
+        current.innerHTML = state.current;
+        total.innerHTML = state.total;
+        live.innerHTML = 'Current page: ' + state.current;
+
+        const isFirstPage = state.current <= 1;
+        const isLastPage = state.current >= state.total;
+
+        previous.href = '/?page=' + (state.current - 1);
+        previous.removeAttribute('aria-hidden');
+
+        if (isFirstPage) {
+          previous.removeAttribute('href');
+          previous.setAttribute('aria-hidden', 'true');
+        }
+
+        next.href = '/?page=' + (state.current + 1);
+        next.removeAttribute('aria-hidden');
+
+        if (isLastPage) {
+          next.removeAttribute('href');
+          next.setAttribute('aria-hidden', 'true');
+        }
+      };
+
+      const handlePrevious = event => {
+        event.preventDefault();
+
+        if (state.current <= 1) return;
+
+        state.current--;
+        update();
+
+        /**
+         * NOTE: Due to a11y purposes, when the start or end is reached,
+         * the focus must switch to the oposite button
+         */
+        if (state.current === 1) {
+          next.focus();
+        }
+      };
+
+      const handleNext = event => {
+        event.preventDefault();
+
+        if (state.current >= state.total) return;
+
+        state.current++;
+        update();
+
+        /**
+         * NOTE: Due to a11y purposes, when the start or end is reached,
+         * the focus must switch to the oposite button
+         */
+        if (state.current === state.total) {
+          previous.focus();
+        }
+      };
+
+      previous.addEventListener('click', handlePrevious);
+      next.addEventListener('click', handleNext);
+
       update();
     </script>
   `
