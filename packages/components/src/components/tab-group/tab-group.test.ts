@@ -189,17 +189,19 @@ describe('<sd-tab-group>', () => {
       const tabGroup = await fixture<SdTabGroup>(html`<sd-tab-group> ${generateTabs(20)} </sd-tab-group>`);
       await waitForScrollButtonsToBeRendered(tabGroup);
 
-      const startButton = tabGroup.shadowRoot?.querySelector('[part="scroll-button--start"]');
-      const endButton = tabGroup.shadowRoot?.querySelector('[part="scroll-button--end"]');
+      const startButton = tabGroup.shadowRoot!.querySelector('[part="scroll-button--start"]')!;
+      const endButton = tabGroup.shadowRoot!.querySelector('[part="scroll-button--end"]')!;
 
-      expect(startButton?.hasAttribute('disabled')).to.be.true;
-      expect(endButton?.hasAttribute('disabled')).to.be.false;
+      await aTimeout(30);
+
+      expect(startButton.hasAttribute('disabled')).to.be.true;
+      expect(endButton.hasAttribute('disabled')).to.be.false;
 
       const nav = tabGroup.shadowRoot!.querySelector<HTMLElement>('[part="scroll-container"]')!;
       nav.scrollLeft = nav.scrollWidth;
       nav.dispatchEvent(new CustomEvent('scroll'));
 
-      await tabGroup.updateComplete;
+      await aTimeout(30);
 
       expect(nav.scrollLeft + nav.clientWidth).to.equal(nav.scrollWidth);
       expect(startButton?.hasAttribute('disabled')).to.be.false;
