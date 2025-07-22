@@ -1,6 +1,7 @@
 import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { debounce } from '../../internal/debounce';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
@@ -236,6 +237,7 @@ export default class SdTabGroup extends SolidElement {
     }
   }
 
+  @debounce(20)
   private handleScroll() {
     this.canScroll = {
       left: this.nav.scrollLeft > 0,
