@@ -13,9 +13,6 @@ export default {
   }
 };
 
-/**
- * Primary action is displayed on the right-hand side.
- */
 export const ButtonGroupHorizontal = {
   render: () => html`
     <div class="flex flex-col gap-8">
@@ -54,6 +51,7 @@ export const ButtonGroupHorizontal = {
  * Primary action is stacked on top.
  */
 export const ButtonGroupVertical = {
+  name: 'Button Group Vertical displayed in two lines',
   render: () => html`
     <div class="flex flex-col gap-4 w-[190px]">
       <sd-button variant="primary" size="sm">Open your first investment account</sd-button>
