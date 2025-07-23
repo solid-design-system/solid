@@ -100,6 +100,9 @@ export const NonInteractiveStepGroup = {
   `
 };
 
+/**
+ * Example of how to set the horizontal inline step with description in a step group.
+ */
 export const NonInteractiveStepGroupWithIcon = {
   name: 'Non-Interactive Step Group with Icon',
   render: () => html`
