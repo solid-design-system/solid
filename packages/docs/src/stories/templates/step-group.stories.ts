@@ -19,34 +19,67 @@ export default {
 export const HorizontalInlineWithLabelStepGroup = {
   name: 'Step Group Horizontal Inline with Label for current step only',
   render: () => html`
+    <style>
+      #hide-label sd-step:not([current])::part(label) {
+        position: absolute;
+        visibility: hidden;
+        width: 1px;
+        height: 1px;
+        pointer-events: none;
+      }
+    </style>
     <div class="h-32 gap-16 w-[500px]">
-      <sd-step-group size="sm" orientation="horizontal" active-step="0" class="w-full" label="Account">
+     <sd-step-group
+          size="sm"
+          orientation="horizontal"
+          active-step="0"
+          class="w-full"
+          label="Confirmation"
+          id="hide-label"
+        >
         <sd-step orientation="horizontal" horizontal-inline current>
           <span slot="label">Account</span>
         </sd-step>
-        <sd-step size="sm" orientation="horizontal" horizontal-inline disabled> </sd-step>
-        <sd-step size="sm" orientation="horizontal" horizontal-inline disabled> </sd-step>
+        <sd-step size="sm" orientation="horizontal" horizontal-inline disabled>
+        </sd-step>
+        <sd-step size="sm" orientation="horizontal" horizontal-inline disabled>
+        </sd-step>
       </sd-step-group>
     </div>
 
     <div class="h-32 gap-16 w-[500px]">
-      <sd-step-group size="sm" orientation="horizontal" active-step="1" class="w-full" label="Payment">
+     <sd-step-group
+          size="sm"
+          orientation="horizontal"
+          active-step="2"
+          class="w-full"
+          label="Confirmation"
+          id="hide-label"
+        >
         <sd-step orientation="horizontal" horizontal-inline> </sd-step>
         <sd-step orientation="horizontal" horizontal-inline current>
           <span slot="label">Payment</span>
         </sd-step>
-        <sd-step orientation="horizontal" horizontal-inline disabled> </sd-step>
+        <sd-step orientation="horizontal" horizontal-inline disabled></sd-step>
       </sd-step-group>
     </div>
 
-    <div class="h-32 gap-16 w-[350px]">
-      <sd-step-group size="sm" orientation="horizontal" active-step="2" class="w-full" label="Confirmation">
-        <sd-step orientation="horizontal" horizontal-inline> </sd-step>
-        <sd-step orientation="horizontal" horizontal-inline> </sd-step>
-        <sd-step orientation="horizontal" horizontal-inline current>
-          <span slot="label">Confirmation</span>
-        </sd-step>
-      </sd-step-group>
+      <div class="h-32 gap-16 w-[350px]">
+        <sd-step-group
+          size="sm"
+          orientation="horizontal"
+          active-step="3"
+          class="w-full"
+          label="Confirmation"
+          id="hide-label"
+        >
+          <sd-step orientation="horizontal" horizontal-inline title="Step 1" id="step1"> </sd-step>
+          <sd-step orientation="horizontal" horizontal-inline title="Step 2" id="step2"> </sd-step>
+          <sd-step orientation="horizontal" horizontal-inline current id="step3">
+            <span slot="label">Confirmation</span>
+          </sd-step>
+        </sd-step-group>
+      </div>
     </div>
   `
 };

@@ -178,17 +178,21 @@ export default class SdStep extends SolidElement {
             <slot
               name="circle-content"
               class=${cx(
+                'text-lg',
                 !this.disabled &&
                   !this.current &&
                   !this.notInteractive &&
                   'text-primary hover:text-primary-500 hover:fill-primary-500',
-                this.notInteractive && 'text-primary',
-                this.size === 'lg' ? 'text-lg' : 'text-sm'
+                this.notInteractive && 'text-primary'
               )}
             >
               ${
                 !this.disabled && !this.current && !this.notInteractive
-                  ? html` <sd-icon name="status-check" library="_internal"></sd-icon>`
+                  ? html` <sd-icon
+                      name="status-check"
+                      library="_internal"
+                      class="${cx(this.size === 'sm' && 'text-sm')}"
+                    ></sd-icon>`
                   : html`${this.index}`
               }
             </slot>
@@ -198,19 +202,28 @@ export default class SdStep extends SolidElement {
             isHorizontalInline
               ? html`
                   <div class=${cx('flex flex-col gap-1 flex-1')}>
-                    <div class=${cx('flex w-full', hasLabel && 'gap-2', this.size === 'sm' ? 'mt-1' : 'mt-3')}>
-                      <div
-                        part="label"
-                        id="label"
-                        class=${cx(
-                          '!font-bold sd-paragraph whitespace-nowrap',
-                          this.disabled && '!text-neutral-700',
-                          !this.disabled && !this.current && !this.notInteractive ? '!text-primary' : 'text-black'
-                        )}
-                      >
-                        <slot name="label">${this.label}</slot>
-                      </div>
-
+                    <div
+                      class=${cx(
+                        'flex w-full',
+                        hasLabel && 'gap-2',
+                        this.size === 'sm' && !hasDescription ? 'mt-1' : 'mt-3'
+                      )}
+                    >
+                      ${hasLabel
+                        ? html`
+                            <div
+                              part="label"
+                              id="label"
+                              class=${cx(
+                                '!font-bold sd-paragraph whitespace-nowrap',
+                                this.disabled && '!text-neutral-700',
+                                !this.disabled && !this.current && !this.notInteractive ? '!text-primary' : 'text-black'
+                              )}
+                            >
+                              <slot name="label">${this.label}</slot>
+                            </div>
+                          `
+                        : ''}
                       ${this.noTail
                         ? html`<div class="flex-1"></div>`
                         : html`
