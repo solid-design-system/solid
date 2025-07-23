@@ -413,7 +413,7 @@ export default class SdAudio extends SolidElement {
   render() {
     const renderAudioControls = html`<div
       class=${cx(
-        'controls grid grid-cols-3 justify-items-center items-center mx-2',
+        'controls grid grid-cols-3 justify-items-center items-center',
         this.reversedLayout ? 'mt-2' : 'mb-2',
         !this.animated && 'relative',
         this.animated && !this.reversedLayout && 'absolute -top-4 left-0 w-full'
@@ -476,7 +476,7 @@ export default class SdAudio extends SolidElement {
 
     const renderTimestamps = html` <div
       class=${cx(
-        'w-full flex justify-between px-2',
+        'w-full flex justify-between',
         this.reversedLayout ? 'mb-0.5' : 'mt-0.5',
         this.animated && this.reversedLayout && 'absolute bottom-0 left-0 !mb-4'
       )}
@@ -500,7 +500,7 @@ export default class SdAudio extends SolidElement {
 
         <div class="relative">
           ${this.animated && !this.reversedLayout ? html`${renderAudioControls}` : null}
-          ${this.animated ? html`<canvas class="w-full h-16 -mb-2 mx-2"></canvas>` : null}
+          ${this.animated ? html`<canvas class="w-full h-16 -mb-2"></canvas>` : null}
           ${!this.hideTimestamps && this.animated && this.reversedLayout ? renderTimestamps : null}
 
           <sd-range

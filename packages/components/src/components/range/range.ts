@@ -643,7 +643,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
             part="track-wrapper"
             role="presentation"
             @pointerdown=${this.onClickTrack}
-            class="relative cursor-pointer"
+            class="relative cursor-pointer -mx-2"
           >
             <div part="track-click-helper" class="absolute -inset-y-2 inset-x-0"></div>
             <div part="track" class="bg-neutral-500 h-1 my-[6px]"></div>
