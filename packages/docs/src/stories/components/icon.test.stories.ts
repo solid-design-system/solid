@@ -1,5 +1,6 @@
 import '../../../../components/src/solid-components';
 import { icons } from '../../../../components/src/components/icon/library.internal';
+import { icons as statusIcons } from '../../../../components/src/components/icon/library.status';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-icon');
@@ -46,8 +47,8 @@ export const LibraryDefault = {
     })
 };
 
-export const LibrarySystem = {
-  name: 'Library: system',
+export const LibraryInternal = {
+  name: 'Library: internal',
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -62,8 +63,34 @@ export const LibrarySystem = {
         }
       },
       constants: [
-        { type: 'attribute', name: 'library', value: 'system' },
+        { type: 'attribute', name: 'library', value: '_internal' },
         { type: 'attribute', name: 'name', value: 'check' }
+      ],
+      options: {
+        templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+      },
+      args
+    })
+};
+
+export const StatusLibrary = {
+  name: 'Library: status assets',
+  render: (args: any) =>
+    generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'color'
+        },
+        y: {
+          type: 'attribute',
+          name: 'name',
+          values: Object.keys(statusIcons)
+        }
+      },
+      constants: [
+        { type: 'attribute', name: 'library', value: 'sd-status-assets' },
+        { type: 'attribute', name: 'name', value: 'status-questionmark' }
       ],
       options: {
         templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
