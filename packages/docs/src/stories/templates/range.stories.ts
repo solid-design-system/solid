@@ -111,7 +111,7 @@ export const InterestCalculator = {
       };
 
       updateInterest(settings.initialReturns);
-      updateSavedAmount(calculateReturns(settings.initialReturns));
+      updateSavedAmount(calculateReturns(0));
       updateFinalAmount(calculateReturns(settings.initialReturns));
 
       await Promise.all([customElements.whenDefined('sd-range')]).then(() => {
