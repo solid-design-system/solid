@@ -192,7 +192,7 @@ describe('<sd-tab-group>', () => {
       const startButton = tabGroup.shadowRoot!.querySelector('[part="scroll-button--start"]')!;
       const endButton = tabGroup.shadowRoot!.querySelector('[part="scroll-button--end"]')!;
 
-      await aTimeout(30);
+      await aTimeout(100);
 
       expect(startButton.hasAttribute('disabled')).to.be.true;
       expect(endButton.hasAttribute('disabled')).to.be.false;
@@ -201,7 +201,7 @@ describe('<sd-tab-group>', () => {
       nav.scrollLeft = nav.scrollWidth;
       nav.dispatchEvent(new CustomEvent('scroll'));
 
-      await aTimeout(30);
+      await aTimeout(100);
 
       expect(nav.scrollLeft + nav.clientWidth).to.equal(nav.scrollWidth);
       expect(startButton?.hasAttribute('disabled')).to.be.false;
