@@ -1,10 +1,10 @@
 import type { IconLibrary } from './library';
 
 //
-// System icons are a separate library to ensure they're always available, regardless of how the default icon library is
+// Internal icons are a separate library to ensure they're always available, regardless of how the default icon library is
 // configured or if its icons resolve properly.
 //
-// All Solid components must use the system library instead of the default library.
+// All Solid components must use the internal library instead of the default library.
 // For visual consistency, they are a subset of Union Investment's official icons.
 //
 export const icons = {

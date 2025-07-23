@@ -1,5 +1,28 @@
 # @solid-design-system/components
 
+## 5.13.7
+
+### Patch Changes
+
+- Added missing accessible name on the `sd-radio-button` component. _[`#2387`](https://github.com/solid-design-system/solid/pull/2387) [`9882a5b`](https://github.com/solid-design-system/solid/commit/9882a5b4d96b8b5711ce038d76c53c92987ba0e9) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 5.13.6
+
+### Patch Changes
+
+- Implemented automatic disabling of `sd-tab-group` navigation buttons when scroll reaches the edges. _[`#2379`](https://github.com/solid-design-system/solid/pull/2379) [`f43230e`](https://github.com/solid-design-system/solid/commit/f43230e238d79e043d5194c66ae37edc94120e84) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 5.13.5
+
+### Patch Changes
+
+- Adjusted inverted `sd-expandable` to fit to the theming when overriding `--gradient-color-start` and `--gradient-color-end`. _[`#2383`](https://github.com/solid-design-system/solid/pull/2383) [`1644c11`](https://github.com/solid-design-system/solid/commit/1644c11f86512597a007387dad30face81ac0288) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+
+- Uncompressed: 477 KB (+1 KB / +0%)
+- Gzipped: 112 KB (unchanged)
+
 ## 5.13.4
 
 ### Patch Changes
