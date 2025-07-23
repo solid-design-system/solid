@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.13.7
+
+### Patch Changes
+
+- Added missing accessible name on the `sd-radio-button` component. _[`#2387`](https://github.com/solid-design-system/solid/pull/2387) [`9882a5b`](https://github.com/solid-design-system/solid/commit/9882a5b4d96b8b5711ce038d76c53c92987ba0e9) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.13.6
 
 ### Patch Changes
