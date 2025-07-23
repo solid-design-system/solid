@@ -380,6 +380,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         )}
         role="radiogroup"
         aria-describedby="invalid-message"
+        aria-labelledby="label"
       >
         ${hasLabel || hasTooltipSlot
           ? html`<div class="flex items-center gap-1 mb-2">

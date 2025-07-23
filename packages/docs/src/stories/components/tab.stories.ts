@@ -82,10 +82,7 @@ export const Variant = {
 
 /**
  * Use the `active` attribute to toggle the active state.
- *
- * __Hint:__ Due to a Storybook issue, the first tab may be displayed as active. In this case, please reload the page.
  */
-
 export const Active = {
   render: () => html`
     <div class="grid grid-cols-2 gap-12">
@@ -118,7 +115,7 @@ export const Active = {
         </sd-tab-panel>
       </sd-tab-group>
     </div>
-    <script>
+    <script type="module">
       const tabGroups = document.querySelectorAll('sd-tab-group#active, sd-tab-group#active-container');
       // Wait for controls to be defined before attaching form listeners
       Promise.all([

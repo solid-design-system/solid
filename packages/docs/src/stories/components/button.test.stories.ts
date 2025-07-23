@@ -178,7 +178,7 @@ export const IconSlots = {
   name: 'Icon Slots',
   render: (args: any) => {
     return html`
-      ${['sm', 'md', 'lg'].map(size =>
+      ${['lg', 'md', 'sm'].map(size =>
         // We have to compare different types of icons: "square", "wide" and "tall" ones.
         generateTemplate({
           axis: {
@@ -247,6 +247,47 @@ export const IconOnly = {
   }
 };
 
+export const Multiline = {
+  name: 'Multiline',
+  render: (args: any) => {
+    return html`<div class="flex flex-col gap-2 max-w-md">
+      ${generateTemplate({
+        axis: {
+          x: [{ type: 'attribute', name: 'size', values: ['lg', 'md', 'sm'] }],
+          y: {
+            type: 'slot',
+            name: 'icon-right',
+            values: [
+              { value: '', title: '-' },
+              {
+                value: '<sd-icon name="system/image" slot="icon-right"></sd-icon>',
+                title: 'icon-right'
+              },
+              {
+                value: '<sd-icon name="system/image" slot="icon-left"></sd-icon>',
+                title: 'icon-left'
+              },
+              {
+                value:
+                  '<sd-icon name="system/image" slot="icon-right"></sd-icon><sd-icon name="system/image" slot="icon-left"></sd-icon>',
+                title: 'both'
+              }
+            ]
+          }
+        },
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value: 'Lorem ipsum dolor sit amet.'
+          }
+        ],
+        args
+      })}
+    </div>`;
+  }
+};
+
 export const Parts = {
   name: 'Parts (Debug)',
   render: (args: any) => {
@@ -303,6 +344,7 @@ export const Combination = generateScreenshotStory([
   Disabled,
   IconSlots,
   IconOnly,
+  Multiline,
   Parts,
   Mouseless
 ]);
