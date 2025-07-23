@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 1.26.5
+
+### Patch Changes
+
+- Added new `Multiline` `sd-button` screenshot test. _[`#2362`](https://github.com/solid-design-system/solid/pull/2362) [`b5d9a60`](https://github.com/solid-design-system/solid/commit/b5d9a60c50a97193b57f4208e6d23af31c556f5d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Updated `Button` template according to figma.
+
 ## 1.26.4
 
 ### Patch Changes
