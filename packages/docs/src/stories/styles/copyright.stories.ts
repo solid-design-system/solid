@@ -54,8 +54,13 @@ export const Default = {
  */
 export const Variants = {
   render: () =>
-    html` <div class="sd-copyright sd-copyright--color-black max-w-xl" style="--copyright: '© Union Investment 2024';">
-      <div class="sd-container sd-container--variant-border-neutral-400 h-full"></div>
+    html` <div class="flex">
+      <div class="sd-copyright flex-1" style="--copyright: '© Union Investment 2024';">
+        <div class="sd-container sd-container--variant-primary h-full"></div>
+      </div>
+      <div class="sd-copyright sd-copyright--color-black flex-1" style="--copyright: '© Union Investment 2024';">
+        <div class="sd-container sd-container--variant-border-neutral-400 h-full"></div>
+      </div>
     </div>`
 };
 
@@ -66,8 +71,8 @@ export const Variants = {
  */
 export const NoShadow = {
   render: () =>
-    html` <div class="sd-copyright sd-copyright--no-shadow max-w-xl" style="--copyright: '© Union Investment 2024';">
-      <div class="sd-container sd-container--variant-primary"></div>
+    html` <div class="sd-copyright sd-copyright--color-black" style="--copyright: '© Union Investment 2024';">
+      <div class="sd-container sd-container--variant-border-neutral-400"></div>
     </div>`
 };
 
@@ -99,7 +104,6 @@ export const Orientation = {
  * - bottom is the default placement
  * - `sd-copyright--placement-top`
  *
- * **Accessibility Hint:** To ensure accessibility use the top placement when display in a video.
  */
 export const Placement = {
   render: () =>
