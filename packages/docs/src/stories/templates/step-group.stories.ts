@@ -29,57 +29,40 @@ export const HorizontalInlineWithLabelStepGroup = {
       }
     </style>
     <div class="h-32 gap-16 w-[500px]">
-     <sd-step-group
-          size="sm"
-          orientation="horizontal"
-          active-step="0"
-          class="w-full"
-          label="Confirmation"
-          id="hide-label"
-        >
+      <sd-step-group size="sm" orientation="horizontal" active-step="0" class="w-full" label="Account" id="hide-label">
         <sd-step orientation="horizontal" horizontal-inline current>
           <span slot="label">Account</span>
         </sd-step>
-        <sd-step size="sm" orientation="horizontal" horizontal-inline disabled>
-        </sd-step>
-        <sd-step size="sm" orientation="horizontal" horizontal-inline disabled>
-        </sd-step>
+        <sd-step orientation="horizontal" horizontal-inline label="Step 2"></sd-step>
+        <sd-step orientation="horizontal" horizontal-inline label="Step 3"></sd-step>
       </sd-step-group>
     </div>
 
     <div class="h-32 gap-16 w-[500px]">
-     <sd-step-group
-          size="sm"
-          orientation="horizontal"
-          active-step="2"
-          class="w-full"
-          label="Confirmation"
-          id="hide-label"
-        >
-        <sd-step orientation="horizontal" horizontal-inline> </sd-step>
+      <sd-step-group size="sm" orientation="horizontal" active-step="1" class="w-full" label="Payment" id="hide-label">
+        <sd-step orientation="horizontal" horizontal-inline label="Step 1"></sd-step>
         <sd-step orientation="horizontal" horizontal-inline current>
           <span slot="label">Payment</span>
         </sd-step>
-        <sd-step orientation="horizontal" horizontal-inline disabled></sd-step>
+        <sd-step orientation="horizontal" horizontal-inline label="Step 3"></sd-step>
       </sd-step-group>
     </div>
 
-      <div class="h-32 gap-16 w-[350px]">
-        <sd-step-group
-          size="sm"
-          orientation="horizontal"
-          active-step="3"
-          class="w-full"
-          label="Confirmation"
-          id="hide-label"
-        >
-          <sd-step orientation="horizontal" horizontal-inline title="Step 1" id="step1"> </sd-step>
-          <sd-step orientation="horizontal" horizontal-inline title="Step 2" id="step2"> </sd-step>
-          <sd-step orientation="horizontal" horizontal-inline current id="step3">
-            <span slot="label">Confirmation</span>
-          </sd-step>
-        </sd-step-group>
-      </div>
+    <div class="h-32 gap-16 w-[350px]">
+      <sd-step-group
+        size="sm"
+        orientation="horizontal"
+        active-step="2"
+        class="w-full"
+        label="Confirmation"
+        id="hide-label"
+      >
+        <sd-step orientation="horizontal" horizontal-inline label="Step 1"></sd-step>
+        <sd-step orientation="horizontal" horizontal-inline label="Step 2"></sd-step>
+        <sd-step orientation="horizontal" horizontal-inline current>
+          <span slot="label">Confirmation</span>
+        </sd-step>
+      </sd-step-group>
     </div>
   `
 };
@@ -142,7 +125,7 @@ export const NonInteractiveStepGroupWithIcon = {
 
         <sd-step size="sm" orientation="horizontal" horizontal-inline state="disabled">
           <sd-icon slot="circle-content" name="content/certificate" class="h-8 w-8"></sd-icon>
-          <span slot="label">Securitiy account</span>
+          <span slot="label">Security account</span>
           <p class="sd-paragraph">Open your own securities account together with your bank advisor.</p>
         </sd-step>
       </sd-step-group>
