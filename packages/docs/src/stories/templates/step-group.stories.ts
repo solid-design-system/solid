@@ -14,7 +14,7 @@ export default {
 };
 
 /**
- * Example of how to set the horizontal inline step in a step group.
+ * Example of how to set the horizontal inline step with label only in a step group.
  */
 export const HorizontalInlineWithLabelStepGroup = {
   name: 'Step Group Horizontal Inline with Label for current step only',
