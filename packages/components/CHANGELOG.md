@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 5.13.8
+
+### Patch Changes
+
+- Added support for multiline text on `sd-button`. _[`#2362`](https://github.com/solid-design-system/solid/pull/2362) [`b5d9a60`](https://github.com/solid-design-system/solid/commit/b5d9a60c50a97193b57f4208e6d23af31c556f5d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+* Uncompressed: 478 KB (+1 KB / +0%)
+* Gzipped: 112 KB (unchanged)
+
 ## 5.13.7
 
 ### Patch Changes
