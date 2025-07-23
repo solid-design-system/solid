@@ -970,7 +970,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             placement=${this.placement}
             strategy=${this.hoist ? 'fixed' : 'absolute'}
             flip
-            shift
             sync="width"
             auto-size="vertical"
             auto-size-padding="10"
