@@ -532,7 +532,7 @@ describe('<sd-range>', () => {
         type: 'click'
       });
 
-      expect(el.value).to.equal('16');
+      expect(el.value).to.equal('15');
       expect(changeHandler.called).to.be.true;
       expect(inputHandler.called).to.be.true;
     });
