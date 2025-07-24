@@ -597,7 +597,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
               'rounded-full absolute top-0 size-4 hover:cursor-grab after:-inset-2',
               this.disabled || this.visuallyDisabled
                 ? 'bg-neutral-500 outline-none'
-                : 'bg-primary cursor-pointer focus-visible:focus-outline'
+                : 'bg-primary hover:bg-primary-500 cursor-pointer focus-visible:focus-outline'
             )}
           ></div>
         </sd-tooltip>
@@ -646,7 +646,10 @@ export default class SdRange extends SolidElement implements SolidFormControl {
             class="relative cursor-pointer -mx-2"
           >
             <div part="track-click-helper" class="absolute -inset-y-2 inset-x-0"></div>
-            <div part="track" class="bg-neutral-500 h-1 my-[6px]"></div>
+            <div
+              part="track"
+              class=${cx('h-1 my-[6px]', this.disabled || this.visuallyDisabled ? 'bg-neutral-500' : 'bg-neutral-400')}
+            ></div>
             <div
               part="active-track"
               hidden=${ifDefined(this.noTrackBar ? true : undefined)}
@@ -686,6 +689,10 @@ export default class SdRange extends SolidElement implements SolidFormControl {
         /* Prevent misbehavior in mobile by disabling native touch */
         touch-action: none;
         -webkit-touch-callout: none;
+      }
+
+      [part='thumb'].grabbed {
+        @apply !bg-primary-800;
       }
     `
   ];
