@@ -13,9 +13,6 @@ export default {
   }
 };
 
-/**
- * Primary action is displayed on the right-hand side.
- */
 export const ButtonGroupHorizontal = {
   render: () => html`
     <div class="flex flex-col gap-8">
@@ -54,24 +51,28 @@ export const ButtonGroupHorizontal = {
  * Primary action is stacked on top.
  */
 export const ButtonGroupVertical = {
+  name: 'Button Group Vertical displayed in two lines',
   render: () => html`
-    <div class="flex flex-col gap-4 w-[208px]">
-      <sd-button variant="primary">Start investment</sd-button>
-      <sd-button variant="secondary">
-        <sd-icon name="system/download" slot="icon-left"></sd-icon>Download report
-      </sd-button>
-      <sd-button variant="secondary">
-        <sd-icon name="system/eye-open" slot="icon-left"></sd-icon>Add to watchlist
-      </sd-button>
+    <div class="flex flex-col gap-4 w-[190px]">
+      <sd-button variant="primary" size="sm">Open your first investment account</sd-button>
+      <sd-button variant="secondary" size="sm"> Get personalized advice from our experts </sd-button>
     </div>
   `
 };
 
+/**
+ * Primary action is stacked on top.
+ */
 export const ButtonGroupVerticalFullWidth = {
   render: () => html`
     <div class="flex flex-col gap-4 w-[375px]">
       <sd-button variant="primary">Start investment</sd-button>
-      <sd-button variant="secondary">Learn about funds</sd-button>
+      <sd-button variant="secondary">
+        <sd-icon name="system/download" slot="icon-left"></sd-icon> Download report
+      </sd-button>
+      <sd-button variant="tertiary">
+        <sd-icon name="system/eye-open" slot="icon-left"></sd-icon> Add to watchlist
+      </sd-button>
     </div>
   `
 };

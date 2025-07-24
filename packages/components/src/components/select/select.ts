@@ -11,7 +11,7 @@ import { HasSlotController } from '../../internal/slot.js';
 import { LocalizeController } from '../../utilities/localize.js';
 import { property, query, queryAssignedElements, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll.js';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
 import cx from 'classix';
@@ -86,10 +86,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @query('[part="listbox"]') listbox: HTMLSlotElement;
   @query('#invalid-message') invalidMessage: HTMLDivElement;
 
-  /** When `multiple` is `true` and `useTags` is `false`, the displayLabel sets the text shown in the display input. We use the localized string "Options Selected (#)" by default.
-   * @internal
-   */
-  @state() private displayLabel = '';
   /** @internal */
   @state() private deletedTagLabel = '';
   /** @internal */
@@ -643,6 +639,22 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     }
   }
 
+  /**
+   * When `multiple` is `true` and `useTags` is `false`, the displayLabel sets the text shown in the display input.
+   * We use the localized string "Options Selected (#)" by default.
+   */
+  private get displayLabel() {
+    if (this.multiple) {
+      if (this.useTags || this.value.length === 0) {
+        return '';
+      } else {
+        return this.localize.term('numOptionsSelected', this.selectedOptions.length);
+      }
+    } else {
+      return this.selectedOptions[0]?.getTextLabel() ?? '';
+    }
+  }
+
   // This method must be called whenever the selection changes. It will update the selected options cache, the current
   // value, and the display value
   private selectionChanged(option?: SdOption) {
@@ -660,16 +672,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     // Update the value and display label
     if (this.multiple) {
       this.value = this.selectedOptions.map(el => el.value);
-
-      if (this.useTags || this.value.length === 0) {
-        // When no items are selected, keep the value empty so the placeholder shows
-        this.displayLabel = '';
-      } else {
-        this.displayLabel = this.localize.term('numOptionsSelected', this.selectedOptions.length);
-      }
     } else {
       this.value = this.selectedOptions[0]?.value ?? '';
-      this.displayLabel = this.selectedOptions[0]?.getTextLabel() ?? '';
     }
 
     // Update validity
@@ -970,7 +974,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             placement=${this.placement}
             strategy=${this.hoist ? 'fixed' : 'absolute'}
             flip
-            shift
             sync="width"
             auto-size="vertical"
             auto-size-padding="10"

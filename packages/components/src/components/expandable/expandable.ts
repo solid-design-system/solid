@@ -189,11 +189,11 @@ export default class SdExpandable extends SolidElement {
     ...SolidElement.styles,
     css`
       :host {
-        --gradient-color-start: rgba(255, 255, 255, 0);
-        --gradient-color-end: rgba(255, 255, 255, 1);
         --component-expandable-max-block-size: 90px;
         --gradient-height: 24px;
-        --gradient: var(--gradient-color-start) 0%, var(--gradient-color-end) 80%, var(--gradient-color-end) 100%;
+        --gradient:
+          var(--gradient-color-start, rgba(255, 255, 255, 0)) 0%, var(--gradient-color-end, rgba(255, 255, 255, 1)) 80%,
+          var(--gradient-color-end, rgba(255, 255, 255, 1)) 100%;
 
         @apply inline-block relative w-full;
       }
@@ -232,11 +232,14 @@ export default class SdExpandable extends SolidElement {
         background: linear-gradient(180deg, var(--gradient));
       }
 
+      :host([inverted]) {
+        --color-primary-rgb: 0, 53, 142;
+        --gradient-color-start: rgba(var(--color-primary-rgb), 0);
+        --gradient-color-end: rgba(var(--color-primary-rgb), 1);
+      }
+
       :host([inverted]) .content::after {
-        background: var(
-          --gradient-vertical-transparent-primary,
-          linear-gradient(180deg, rgba(0, 53, 142, 0) 0%, rgba(0, 53, 142, 1) 80%, rgba(0, 53, 142, 1) 100%)
-        );
+        background: var(--gradient-vertical-transparent-primary, linear-gradient(180deg, var(--gradient)));
       }
 
       :host(:not([open])) .content::after {
