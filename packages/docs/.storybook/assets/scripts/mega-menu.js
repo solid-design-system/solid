@@ -19,7 +19,7 @@ if (typeof window.MegaMenu === 'undefined') {
       element,
       options = {
         focusTimeout: undefined,
-        focusTrap: false
+        shouldInert: false
       }
     ) {
       super(element);
@@ -36,8 +36,6 @@ if (typeof window.MegaMenu === 'undefined') {
       if (!this.trigger) {
         throw new Error('Trigger must be initialized on the _init method!');
       }
-
-      this.el.addEventListener('keydown', e => this.onKeyDown(e));
     }
 
     isActive() {
@@ -112,29 +110,6 @@ if (typeof window.MegaMenu === 'undefined') {
             )
         )
       );
-    }
-
-    onKeyDown(event) {
-      if (!this.options.focusTrap || event.key !== 'Tab') return;
-
-      const movingBackwards = event.shiftKey;
-      const movingForward = !movingBackwards;
-
-      const focusableElements = this.getTabbableBoundary();
-
-      const start = focusableElements[0];
-      const end = focusableElements[focusableElements.length - 1];
-
-      if (movingBackwards && document.activeElement === start) {
-        event.preventDefault();
-        end.focus();
-        return;
-      }
-
-      if (movingForward && document.activeElement === end) {
-        event.preventDefault();
-        start.focus();
-      }
     }
   }
 
@@ -269,7 +244,10 @@ if (typeof window.MegaMenu === 'undefined') {
 
     reset() {
       this.el.removeAttribute('data-submenu-open');
-      this.items.forEach(item => item.submenu?.reset());
+      this.items.forEach(item => {
+        item.el.removeAttribute('inert');
+        item.submenu?.reset();
+      });
     }
 
     onItemClick(e) {
@@ -278,7 +256,20 @@ if (typeof window.MegaMenu === 'undefined') {
       });
     }
 
-    onSubmenuOpen() {
+    onSubmenuOpen(e) {
+      const submenu = e.detail.source;
+      if (submenu.options.shouldInert) {
+        this.items.forEach(item => {
+          if (item.submenu && item.submenu !== submenu) {
+            submenu.el.setAttribute('inert', '');
+          }
+
+          if (item.parent?.el !== submenu.el) {
+            item.el.setAttribute('inert', '');
+          }
+        });
+      }
+
       this.el.setAttribute('data-submenu-open', '');
     }
 
@@ -399,7 +390,7 @@ if (typeof window.MegaMenu === 'undefined') {
   // Vertical Mega Menu (Mobile)
   class MegaMenuVerticalSubmenu extends MegaMenuSubmenuBase {
     constructor(element) {
-      super(element, { focusTimeout: 300, focusTrap: true });
+      super(element, { focusTimeout: 300, shouldInert: true });
     }
 
     _init() {
