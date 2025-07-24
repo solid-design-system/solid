@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 5.6.0
+
+### Minor Changes
+
+- Added new token `primary-400` to be used on the inverted audio bar. _[`#2371`](https://github.com/solid-design-system/solid/pull/2371) [`1b472bd`](https://github.com/solid-design-system/solid/commit/1b472bd3fd4a42134b7f0ebc018826a6a18e5ef6) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.5.0
 
 ### Minor Changes
