@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.26.6
+
+### Patch Changes
+
+- Added a disclaimer to the `Range` template. _[`#2381`](https://github.com/solid-design-system/solid/pull/2381) [`be17a92`](https://github.com/solid-design-system/solid/commit/be17a92a1dc4b1b68171bef4c0d30367034db0d2) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.26.5
 
 ### Patch Changes
