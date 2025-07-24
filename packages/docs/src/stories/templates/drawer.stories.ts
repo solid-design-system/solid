@@ -82,7 +82,7 @@ export const Default = {
       </div>
       <div class="level-two hidden">
         <nav id="level-two-nav" aria-label="About us">
-          <sd-navigation-item vertical id="nav-title" size="lg">About Us</sd-navigation-item>
+          <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary">About Us</p>
           <sd-navigation-item vertical divider>
             Union Investment for privat customers
             <p slot="description" class="sd-paragraph sd-paragraph--size-sm max-w-[238px]">
@@ -122,6 +122,28 @@ export const Default = {
       function openDrawer() {
         document.querySelector('sd-drawer').show();
       }
+
+      function hasCurrentChild(item) {
+        return !!item.querySelector('sd-navigation-item[current]');
+      }
+
+      document.querySelectorAll('sd-navigation-item:has([slot="children"])').forEach(item => {
+        if (hasCurrentChild(item)) {
+          item.setAttribute('current', '');
+        }
+
+        item.addEventListener('sd-show', () => {
+          if (hasCurrentChild(item)) {
+            item.removeAttribute('current');
+          }
+        });
+
+        item.addEventListener('sd-hide', () => {
+          if (hasCurrentChild(item)) {
+            item.setAttribute('current', '');
+          }
+        });
+      });
     </script>
   `
 };
