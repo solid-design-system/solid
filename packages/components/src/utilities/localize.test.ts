@@ -23,9 +23,9 @@ describe('<sd-carousel>', () => {
 
   it('should apply custom localization from data-attribute', async () => {
     const select = await fixture<SdSelect>(html`
-      <sd-select lang="de" value="option-1" clearable data-custom-localization='{"clearEntry": "Reset!!"}'
-        ><sd-option value="option-1">Option 1</sd-option></sd-select
-      >
+      <sd-select lang="de" value="option-1" clearable data-custom-localization='{"clearEntry": "Reset!!"}'>
+        <sd-option value="option-1">Option 1</sd-option>
+      </sd-select>
     `);
     expect(select.shadowRoot!.querySelector('button[part="clear-button"]')!.getAttribute('aria-label')).to.equal(
       'Reset!!'
@@ -34,9 +34,9 @@ describe('<sd-carousel>', () => {
 
   it('should reactively apply custom localization from data-attribute', async () => {
     const select = await fixture<SdSelect>(html`
-      <sd-select lang="de" value="option-1" clearable data-custom-localization='{"clearEntry": "Reset!!"}'
-        ><sd-option value="option-1">Option 1</sd-option></sd-select
-      >
+      <sd-select lang="de" value="option-1" clearable data-custom-localization='{"clearEntry": "Reset!!"}'>
+        <sd-option value="option-1">Option 1</sd-option>
+      </sd-select>
     `);
 
     select.setAttribute('data-custom-localization', '{"clearEntry": "Updated!!"}');
@@ -48,7 +48,7 @@ describe('<sd-carousel>', () => {
 
   it('should apply custom localization from setCustomLocalization', async () => {
     const select = await fixture<SdSelect>(html`
-      <sd-select value="option-1" clearable><sd-option value="option-1">Option 1</sd-option></sd-select>
+      <sd-select value="option-1" clearable> <sd-option value="option-1">Option 1</sd-option></sd-select>
     `);
     select.localize.setCustomLocalization({ clearEntry: 'Reset me!!' });
     await waitUntil(
@@ -77,23 +77,16 @@ describe('<sd-carousel>', () => {
     `);
 
     select.localize.setCustomLocalization({
+      selectDefaultPlaceholder: 'Please select an option',
       numOptionsSelected: num => {
         if (num === 0) return '';
         return `Funds selected (${num})`;
       }
     });
 
-    // force component to update before changing the value
     await select.updateComplete;
 
-    // change the value to trigger the localization update
-    select.value = 'option-1';
-
-    // await for the DOM to be updated and localization to apply
-    await waitUntil(() => {
-      return select.shadowRoot!.querySelector('input')!.value === 'Funds selected (1)';
-    }, 'Expected value to be "Funds selected (1)"');
-
-    expect(select.shadowRoot!.querySelector('input')!.value).to.equal('Funds selected (1)');
+    expect(select.shadowRoot!.querySelector('input')!.placeholder).to.equal('Please select an option');
+    expect(select.shadowRoot!.querySelector('input')!.value).to.equal('Funds selected (2)');
   });
 });
