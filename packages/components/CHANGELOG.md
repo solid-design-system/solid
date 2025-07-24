@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 5.13.10
+
+### Patch Changes
+
+- Improved `sd-select` by making the display label reactive to localization changes. _[`#2390`](https://github.com/solid-design-system/solid/pull/2390) [`f63ec88`](https://github.com/solid-design-system/solid/commit/f63ec884a5b0613a24c19dfd2257a513cf595619) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+* Uncompressed: 477 KB (-1 KB / 0%)
+* Gzipped: 112 KB (unchanged)
+
 ## 5.13.9
 
 ### Patch Changes
