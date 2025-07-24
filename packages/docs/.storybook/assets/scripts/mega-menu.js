@@ -260,14 +260,14 @@ if (typeof window.MegaMenu === 'undefined') {
       const submenu = e.detail.source;
       if (submenu.options.shouldInert) {
         this.items.forEach(item => {
-          if (item.submenu && item.submenu !== submenu) {
-            submenu.el.setAttribute('inert', '');
-          }
+          item.submenu?.el.setAttribute('inert', '');
 
           if (item.parent?.el !== submenu.el) {
             item.el.setAttribute('inert', '');
           }
         });
+
+        submenu.el.removeAttribute('inert');
       }
 
       this.el.setAttribute('data-submenu-open', '');
