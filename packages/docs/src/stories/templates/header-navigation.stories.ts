@@ -321,7 +321,7 @@ export const Horizontal = {
               </li>
             </ul>
           </nav>
-          <nav aria-label="Secondary navigation">
+          <nav aria-label="Service">
             <ul class="flex">
               <li>
                 <sd-navigation-item href="javascript:void(0)">
@@ -348,7 +348,7 @@ export const Horizontal = {
         <div
           class="mega-menu-nav flex flex-col -mx-4 h-full pt-20 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
         >
-          <nav aria-label="Main navigation" class="flex-1 flex flex-col justify-between">
+          <nav aria-label="Main" class="flex-1 flex flex-col justify-between">
             <ul class="flex-1">
               <li>
                 <sd-navigation-item vertical href="javascript:void(0)" class="font-bold"> Home </sd-navigation-item>
@@ -631,7 +631,7 @@ export const Horizontal = {
               </li>
             </ul>
           </nav>
-          <nav aria-label="Secondary navigation" slot="footer" class="bg-neutral-100">
+          <nav aria-label="Service" slot="footer" class="bg-neutral-100">
             <ul>
               <li>
                 <sd-navigation-item vertical href="javascript:void(0)" class="flex align-center">
@@ -782,7 +782,7 @@ export const SampleA = {
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Sustainability</sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Career</sd-navigation-item>
       </nav>
-      <nav aria-label="footer" slot="footer" class="bg-neutral-100 -m-4">
+      <nav aria-label="Service" slot="footer" class="bg-neutral-100 -m-4">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/user" class="text-xl mr-2"></sd-icon>
           Portfolio
@@ -881,7 +881,7 @@ export const Vertical = {
               <sd-icon name="system/menu" label="Open navigation" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
             </sd-navigation-item>
 
-            <nav aria-label="Secondary navigation" class="mega-menu-nav hidden lg:inline">
+            <nav aria-label="Service" class="mega-menu-nav hidden lg:inline">
               <ul class="flex">
                 <li>
                   <sd-navigation-item>
@@ -905,7 +905,7 @@ export const Vertical = {
 
         <div class="w-[272px] border-r border-r-neutral-400 hidden flex-col overflow-hidden lg:flex">
           <nav
-            aria-label="Main navigation"
+            aria-label="Main"
             class="mega-menu-nav group relative flex-1 py-4 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
           >
             <ul>
@@ -964,11 +964,11 @@ export const Vertical = {
             </ul>
           </nav>
 
-          <div class="px-8 pb-6">
+          <nav aria-label="Actions" class="px-8 pb-6">
             <sd-divider class="mb-6"></sd-divider>
             <sd-button href="javascript:void(0)" class="w-full mb-4">Document upload</sd-button>
             <sd-button variant="secondary" href="javascript:void(0)" class="w-full">Bank order</sd-button>
-          </div>
+          </nav>
         </div>
 
         <sd-drawer id="mega-menu-drawer-vertical" placement="end" no-header class="group relative block">
@@ -1045,10 +1045,10 @@ export const Vertical = {
               </div>
             </nav>
 
-            <div class="px-4 py-6">
+            <nav aria-label="Actions" class="px-4 py-6">
               <sd-button href="javascript:void(0)" class="w-full mb-4">Document upload</sd-button>
               <sd-button variant="secondary" href="javascript:void(0)" class="w-full">Bank order</sd-button>
-            </div>
+            </nav>
           </div>
         </sd-drawer>
       </div>
@@ -1163,7 +1163,7 @@ export const SampleA02 = {
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">About us</sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Personal area</sd-navigation-item>
       </nav>
-      <nav aria-label="footer" slot="footer" class="bg-neutral-100 -m-4">
+      <nav aria-label="Footer" slot="footer" class="bg-neutral-100 -m-4">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/user" class="text-xl mx-1"></sd-icon>
           Log in
@@ -1285,7 +1285,7 @@ export const SampleB = {
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">To the point</sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Meeting point</sd-navigation-item>
       </nav>
-      <nav aria-label="footer" slot="footer" class="bg-neutral-100 -m-4">
+      <nav aria-label="Footer" slot="footer" class="bg-neutral-100 -m-4">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
           My application
