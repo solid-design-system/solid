@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.13.12
+
+### Patch Changes
+
+- Improved `title` attribute documentation on multiple form components. _[`#2393`](https://github.com/solid-design-system/solid/pull/2393) [`97fb154`](https://github.com/solid-design-system/solid/commit/97fb1545fda26c8584250ce0650b9f0c04136874) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.13.11
 
 ### Patch Changes
