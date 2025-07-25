@@ -674,7 +674,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
         name="help-text"
         part="form-control-help-text"
         id="help-text"
-        class=${cx('text-sm text-neutral-700 mt-2', hasHelpText ? 'block' : 'hidden')}
+        class=${cx('text-sm text-neutral-700 mt-1', hasHelpText ? 'block' : 'hidden')}
         aria-hidden=${!hasHelpText}
       >
         ${this.helpText}

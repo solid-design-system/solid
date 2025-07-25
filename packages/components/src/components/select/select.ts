@@ -1150,7 +1150,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         </div>
 
         <div
-          class="text-sm text-neutral-700 mt-2"
+          class="text-sm text-neutral-700 mt-1"
           part="form-control-help-text"
           id="help-text"
           aria-hidden=${hasHelpText ? 'false' : 'true'}
