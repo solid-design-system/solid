@@ -47,30 +47,37 @@ export const Default = {
 };
 
 /**
- * Use the `sd-copyright` class for alternative appearances:
+ * Use the `&--color-*` class for alternative appearances:
  *
  * - white is the default color
  * - `sd-copyright--color-black`
  */
 export const Variants = {
   render: () =>
-    html` <div class="sd-copyright sd-copyright--color-black max-w-xl" style="--copyright: '© Union Investment 2024';">
-      <div class="sd-container sd-container--variant-border-neutral-400 h-full"></div>
+    html` <div class="flex">
+      <div class="sd-copyright flex-1" style="--copyright: '© Union Investment 2024';">
+        <div class="sd-container sd-container--variant-primary h-full"></div>
+      </div>
+      <div class="sd-copyright sd-copyright--color-black flex-1" style="--copyright: '© Union Investment 2024';">
+        <div class="sd-container sd-container--variant-border-neutral-400 h-full"></div>
+      </div>
     </div>`
 };
 
 /**
- * Use the `sd-copyright--no-shadow` class to remove the shadow.
+ * Use the `&--no-shadow` class to remove the shadow.
+ *
+ * The property `&--color-black` automaticaly removes the shadow.
  */
 export const NoShadow = {
   render: () =>
-    html` <div class="sd-copyright sd-copyright--no-shadow max-w-xl" style="--copyright: '© Union Investment 2024';">
-      <div class="sd-container sd-container--variant-primary"></div>
+    html` <div class="sd-copyright sd-copyright--color-black" style="--copyright: '© Union Investment 2024';">
+      <div class="sd-container sd-container--variant-border-neutral-400"></div>
     </div>`
 };
 
 /**
- * Use the `sd-copyright` classes to set  the axis of a copyright:
+ * Use the `sd-copyright--orientation-*` classes to set  the axis of a copyright:
  *
  * - horizontal is the default orientation
  * - `sd-copyright--orientation-vertical`
@@ -92,12 +99,11 @@ export const Orientation = {
 };
 
 /**
- * Use the `sd-copyright` class to set the copyright placement:
+ * Use the `sd-copyright--placement-*` class to set the copyright placement:
  *
  * - bottom is the default placement
  * - `sd-copyright--placement-top`
  *
- * **Accessibility Hint:** To ensure accessibility use the top placement when display in a video.
  */
 export const Placement = {
   render: () =>
