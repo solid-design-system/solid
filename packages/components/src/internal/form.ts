@@ -334,7 +334,7 @@ export class FormControlController implements ReactiveController {
   renderInvalidMessage() {
     return html`<div
       id="invalid-message"
-      class="text-error text-sm mt-2 text-left"
+      class="text-error text-sm mt-1 text-left"
       part="invalid-message"
       aria-live="polite"
       ?hidden=${!this.host.showInvalidStyle}
