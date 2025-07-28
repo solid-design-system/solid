@@ -70,7 +70,7 @@ export const Inverted = {
           alt="A generic placeholder jpg"
           class="aspect-video object-cover"
         />
-        <figcaption>Inverted description</figcaption>
+        <figcaption>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula</figcaption>
       </figure>
     </div>
   `
