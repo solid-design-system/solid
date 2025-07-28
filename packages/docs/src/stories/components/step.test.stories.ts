@@ -280,6 +280,7 @@ export const Mouseless = {
 export const Combination = generateScreenshotStory([
   Default,
   Orientation,
+  HorizontalInline,
   Description,
   DescriptionAndLabelUsingAttributes,
   Parts,

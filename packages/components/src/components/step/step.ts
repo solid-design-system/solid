@@ -277,7 +277,7 @@ export default class SdStep extends SolidElement {
                     'mt-4 break-words flex flex-col gap-2',
                     this.orientation === 'horizontal' ? 'text-center w-40' : 'text-left',
                     this.disabled && '!text-neutral-700',
-                    this.notInteractive ? 'ml-3' : 'mr-4'
+                    this.notInteractive ? 'ml-2' : 'mr-4'
                   )}
                 >
                   <div
