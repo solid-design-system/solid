@@ -1,9 +1,9 @@
 import { arraysDiffer, getNormalizedValueFromClientX, numericSort } from './utils';
+import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { defaultValue } from '../../internal/default-value';
 import { FormControlController } from '../../internal/form';
 import { HasSlotController } from '../../internal/slot';
-import { html } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query, queryAll } from 'lit/decorators.js';
@@ -517,7 +517,6 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       this.emit('sd-change');
     }
 
-    event.stopPropagation();
     event.preventDefault();
   }
 
@@ -598,7 +597,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
               'rounded-full absolute top-0 size-4 hover:cursor-grab after:-inset-2',
               this.disabled || this.visuallyDisabled
                 ? 'bg-neutral-500 outline-none'
-                : 'bg-primary cursor-pointer focus-visible:focus-outline'
+                : 'bg-primary hover:bg-primary-500 cursor-pointer focus-visible:focus-outline'
             )}
           ></div>
         </sd-tooltip>
@@ -644,10 +643,13 @@ export default class SdRange extends SolidElement implements SolidFormControl {
             part="track-wrapper"
             role="presentation"
             @pointerdown=${this.onClickTrack}
-            class="relative cursor-pointer"
+            class="relative cursor-pointer -mx-2"
           >
             <div part="track-click-helper" class="absolute -inset-y-2 inset-x-0"></div>
-            <div part="track" class="bg-neutral-500 h-1 my-[6px]"></div>
+            <div
+              part="track"
+              class=${cx('h-1 my-[6px]', this.disabled || this.visuallyDisabled ? 'bg-neutral-500' : 'bg-neutral-400')}
+            ></div>
             <div
               part="active-track"
               hidden=${ifDefined(this.noTrackBar ? true : undefined)}
@@ -680,7 +682,20 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     </div>`;
   }
 
-  static styles = SolidElement.styles;
+  static styles = [
+    ...SolidElement.styles,
+    css`
+      [part='base'] {
+        /* Prevent misbehavior in mobile by disabling native touch */
+        touch-action: none;
+        -webkit-touch-callout: none;
+      }
+
+      [part='thumb'].grabbed {
+        @apply !bg-primary-800;
+      }
+    `
+  ];
 }
 
 declare global {

@@ -45,6 +45,9 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   @query('input[type="checkbox"]') input: HTMLInputElement;
   @query('#invalid-message') invalidMessage: HTMLDivElement;
 
+  /**
+   * The `title` attribute specifies extra information about an element most often as a default browser tooltip text when the mouse moves over the element.
+   */
   @property({ type: String, reflect: true }) title = ''; // make reactive to pass through
 
   /** The name of the checkbox, submitted as a name/value pair with form data. */
