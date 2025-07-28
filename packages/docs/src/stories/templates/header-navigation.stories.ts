@@ -344,7 +344,13 @@ export const Horizontal = {
         </div>
       </sd-header>
 
-      <sd-drawer id="mega-menu-drawer-horizontal" placement="end" no-header class="group relative block">
+      <sd-drawer
+        id="mega-menu-drawer-horizontal"
+        placement="end"
+        label="Navigation drawer menu"
+        no-header
+        class="group relative block"
+      >
         <div
           class="mega-menu-nav flex flex-col -mx-4 h-full pt-20 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
         >
@@ -656,6 +662,10 @@ export const Horizontal = {
         </div>
       </sd-drawer>
 
+      <main>
+        <h1>Funds & Depot</h1>
+      </main>
+
       <style>
         sd-dropdown:has(sd-navigation-item[slot='trigger'])::part(base__popup) {
           left: -16px;
@@ -775,7 +785,7 @@ export const SampleA = {
       </div>
     </sd-header>
     <sd-drawer id="sample-a-drawer" placement="end" class="relative block">
-      <nav class="-mx-4">
+      <nav aria-label="Main" class="-mx-4">
         <sd-navigation-item vertical current href="javascript:void(0)"> Home </sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">About Us</sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Markets</sd-navigation-item>
@@ -903,7 +913,7 @@ export const Vertical = {
           </div>
         </sd-header>
 
-        <div class="w-[272px] border-r border-r-neutral-400 hidden flex-col overflow-hidden lg:flex">
+        <div class="w-[272px] border-r border-r-neutral-400 hidden flex-col overflow-x-hidden lg:flex">
           <nav
             aria-label="Main"
             class="mega-menu-nav group relative flex-1 py-4 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
@@ -964,15 +974,26 @@ export const Vertical = {
             </ul>
           </nav>
 
-          <nav aria-label="Actions" class="px-8 pb-6">
-            <sd-divider class="mb-6"></sd-divider>
+          <sd-divider class="mx-8" aria-hidden="true"></sd-divider>
+
+          <nav aria-label="Actions" class="px-8 py-6">
             <sd-button href="javascript:void(0)" class="w-full mb-4">Document upload</sd-button>
             <sd-button variant="secondary" href="javascript:void(0)" class="w-full">Bank order</sd-button>
           </nav>
         </div>
 
-        <sd-drawer id="mega-menu-drawer-vertical" placement="end" no-header class="group relative block">
-          <div class="flex flex-col h-full -mx-4 overflow-hidden">
+        <main class="px-4">
+          <h1>Start</h1>
+        </main>
+
+        <sd-drawer
+          id="mega-menu-drawer-vertical"
+          placement="end"
+          label="Navigation drawer menu"
+          no-header
+          class="group relative block"
+        >
+          <div class="flex flex-col h-full -mx-4 overflow-x-hidden">
             <nav
               aria-label="Main"
               class="mega-menu-nav group relative flex flex-col justify-between flex-1 pt-20 pb-4 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
@@ -1154,7 +1175,7 @@ export const SampleA02 = {
       </div>
     </sd-header>
     <sd-drawer id="sample-a02-drawer" placement="end" class="relative block">
-      <nav class="-mx-4">
+      <nav aria-label="Main" class="-mx-4">
         <sd-navigation-item vertical current href="javascript:void(0)"> Home </sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Competencies</sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Capital Markets</sd-navigation-item>
@@ -1278,7 +1299,7 @@ export const SampleB = {
       </div>
     </sd-header>
     <sd-drawer id="sample-b-drawer" placement="end" class="relative block">
-      <nav class="-mx-4">
+      <nav aria-label="Main" class="-mx-4">
         <sd-navigation-item vertical current href="javascript:void(0)"> Home </sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Starting point</sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Point of view</sd-navigation-item>
@@ -1296,6 +1317,7 @@ export const SampleB = {
         </sd-navigation-item>
       </nav>
     </sd-drawer>
+
     <script type="module">
       await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
         const header = document.getElementById('sample-b-header');

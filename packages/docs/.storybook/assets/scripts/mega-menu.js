@@ -62,6 +62,7 @@ if (typeof window.MegaMenu === 'undefined') {
       this._open();
       this.el.setAttribute('data-active-submenu', '');
       this.trigger.setAttribute('current', '');
+      this.trigger.shadowRoot.querySelector('[part="base"]').setAttribute('aria-expanded', 'true');
 
       if (focusWithin) {
         this.focusWithin();
@@ -77,6 +78,7 @@ if (typeof window.MegaMenu === 'undefined') {
 
       this._close();
       this.el.removeAttribute('data-active-submenu');
+      this.trigger.shadowRoot.querySelector('[part="base"]').setAttribute('aria-expanded', 'false');
 
       if (!this.hasActiveItem()) {
         this.trigger.removeAttribute('current');
@@ -119,12 +121,18 @@ if (typeof window.MegaMenu === 'undefined') {
 
       this.el = element;
       this.el.addEventListener('click', e => this.onClick(e));
+      this.base = this.el.shadowRoot.querySelector('[part="base"]');
 
       if (!this._init) {
         throw new Error('Must implement _init method!');
       }
 
       this._init();
+
+      if (this.isSubmenuTrigger) {
+        this.base.setAttribute('aria-haspopup', 'true');
+        this.base.setAttribute('aria-expanded', 'false');
+      }
 
       if (this.el.querySelector('[slot="children"]')) {
         this.isGroupItem = true;
