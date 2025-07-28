@@ -196,6 +196,9 @@ export const Icon = {
   `
 };
 
+/**
+ * Use the `label` attribute to hide or show the step label.
+ */
 export const Label = {
   name: 'Label',
   render: () => html`

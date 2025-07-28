@@ -137,7 +137,7 @@ export default class SdStep extends SolidElement {
         ? 'focus-visible:outline-none cursor-not-allowed'
         : 'focus-visible:focus-outline hover:cursor-pointer',
       this.notInteractive ? (this.size === 'lg' ? 'not-interactive-lg' : 'w-12') : this.size === 'lg' ? 'w-12' : 'w-8',
-      this.disabled && 'border-neutral-400 text-neutral-700',
+      this.disabled && 'border-neutral-400 text-neutral-500',
       !this.disabled &&
         !this.current &&
         !this.notInteractive &&
@@ -216,7 +216,7 @@ export default class SdStep extends SolidElement {
                               id="label"
                               class=${cx(
                                 '!font-bold sd-paragraph whitespace-nowrap',
-                                this.disabled && '!text-neutral-700',
+                                this.disabled && '!text-neutral-500',
                                 !this.disabled && !this.current && !this.notInteractive ? '!text-primary' : 'text-black'
                               )}
                             >
@@ -244,7 +244,7 @@ export default class SdStep extends SolidElement {
                       class=${cx(
                         'sd-paragraph sd-paragraph--size-sm break-words',
                         hasDescription ? 'flex-1 pr-4' : 'w-0 h-0 overflow-hidden',
-                        this.disabled && '!text-neutral-700'
+                        this.disabled && '!text-neutral-500'
                       )}
                     >
                       ${hasDescription ? this.description || html`<slot></slot>` : ''}
@@ -276,7 +276,7 @@ export default class SdStep extends SolidElement {
                   class=${cx(
                     'mt-4 break-words flex flex-col gap-2',
                     this.orientation === 'horizontal' ? 'text-center w-40' : 'text-left',
-                    this.disabled && '!text-neutral-700',
+                    this.disabled && '!text-neutral-500',
                     this.notInteractive ? 'ml-2' : 'mr-4'
                   )}
                 >
@@ -285,7 +285,7 @@ export default class SdStep extends SolidElement {
                     id="label"
                     class=${cx(
                       '!font-bold sd-paragraph',
-                      this.disabled && '!text-neutral-700',
+                      this.disabled && '!text-neutral-500',
                       !this.disabled && !this.current && !this.notInteractive ? '!text-primary' : 'text-black'
                     )}
                   >
@@ -294,7 +294,7 @@ export default class SdStep extends SolidElement {
                   <div
                     part="description"
                     id="description"
-                    class=${cx('sd-paragraph sd-paragraph--size-sm', this.disabled && '!text-neutral-700')}
+                    class=${cx('sd-paragraph sd-paragraph--size-sm', this.disabled && '!text-neutral-500')}
                   >
                     ${this.description || html`<slot></slot>`}
                   </div>
