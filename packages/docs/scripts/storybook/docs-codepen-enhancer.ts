@@ -18,26 +18,30 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
       if (version === 'next') {
         return {
           components: `${cdnBaseUrl}/components@%COMPONENTS-VERSION%/cdn`,
-          styles: `${cdnBaseUrl}/styles@%STYLES-VERSION%/cdn`
+          styles: `${cdnBaseUrl}/styles@%STYLES-VERSION%/cdn`,
+          placeholders: `${cdnBaseUrl}/placeholders@%PLACEHOLDERS-VERSION%/src`
         };
       }
 
       if (version === 'main') {
         return {
           components: `${baseUrl}/components/%COMPONENTS-VERSION%/cdn`,
-          styles: `${baseUrl}/styles/%STYLES-VERSION%/cdn`
+          styles: `${baseUrl}/styles/%STYLES-VERSION%/cdn`,
+          placeholders: `${cdnBaseUrl}/placeholders@%PLACEHOLDERS-VERSION%/src`
         };
       }
 
       return {
         components: `${githubBaseUrl}/${version}/components/cdn`,
-        styles: `${githubBaseUrl}/${version}/styles/cdn`
+        styles: `${githubBaseUrl}/${version}/styles/cdn`,
+        placeholders: `${cdnBaseUrl}/placeholders@%PLACEHOLDERS-VERSION%/src`
       };
     }
 
     return {
       components: `${baseUrl}/components/%COMPONENTS-VERSION%/cdn`,
-      styles: `${baseUrl}/styles/%STYLES-VERSION%/cdn`
+      styles: `${baseUrl}/styles/%STYLES-VERSION%/cdn`,
+      placeholders: `${cdnBaseUrl}/placeholders@%PLACEHOLDERS-VERSION%/src`
     };
   };
 
@@ -167,8 +171,8 @@ body {
           css_external: '',
           description: '',
           editors: 1110,
-          head: '<meta name="viewport" content="width=device-width">',
-          html: code.replace(/\n\s*\n/g, '\n'), // Regex removes empty lines
+          head: '<meta name="viewport" content="width=device-width"><script src="https://cdn.tailwindcss.com"></script>',
+          html: code.replace(/\n\s*\n/g, '\n').replaceAll('./placeholders', `${urls().placeholders}`), // Regex removes empty lines and replaces placeholders
           js: `/* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-components-installation--docs */
 import { registerIconLibrary } from "${urls().components}/solid-components.bundle.js";`,
           js_external: '',
