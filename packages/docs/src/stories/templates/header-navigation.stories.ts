@@ -657,6 +657,10 @@ export const Horizontal = {
       </main>
 
       <style>
+        [data-submenu][inert] {
+          display: none;
+        }
+
         sd-dropdown:has(sd-navigation-item[slot='trigger'])::part(base__popup) {
           left: -16px;
           width: calc(100% + 16px);
@@ -1064,6 +1068,10 @@ export const Vertical = {
       </div>
 
       <style>
+        [data-submenu][inert] {
+          display: none;
+        }
+
         sd-navigation-item + div[data-submenu]:not([data-active-submenu]) {
           pointer-events: none;
           opacity: 0;
