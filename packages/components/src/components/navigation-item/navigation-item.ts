@@ -182,6 +182,8 @@ export default class SdNavigationItem extends SolidElement {
         )}
         aria-current=${ifDefined(this.current ? 'page' : undefined)}
         aria-disabled=${this.disabled}
+        aria-labelledby="content"
+        aria-describedby="description"
         ?disabled=${ifDefined(isButton ? this.disabled : undefined)}
         href=${ifDefined(isLink ? this.href : undefined)}
         target=${ifDefined(isLink ? this.target : undefined)}
@@ -217,7 +219,7 @@ export default class SdNavigationItem extends SolidElement {
                   ></sd-divider>`
                 : ''
             }
-            <span part="content-container" class="inline-flex items-center flex-auto">
+            <span id="content" part="content-container" class="inline-flex items-center flex-auto">
               <slot part="content" class="inline-flex text-start"></slot>
             </span>
             ${
@@ -239,6 +241,7 @@ export default class SdNavigationItem extends SolidElement {
           ${
             slots['description'] && this.vertical
               ? html`<slot
+                  id="description"
                   name="description"
                   part="description"
                   class=${cx(
