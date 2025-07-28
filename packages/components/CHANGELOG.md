@@ -1,5 +1,30 @@
 # @solid-design-system/components
 
+## 5.13.13
+
+### Patch Changes
+
+- Disallowed attribute `removable` when `sd-tag` has a href. _[`#2402`](https://github.com/solid-design-system/solid/pull/2402) [`593a7ca`](https://github.com/solid-design-system/solid/commit/593a7ca9323d08bc690dee938d56428a6f93b8eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 5.13.12
+
+### Patch Changes
+
+- Improved `title` attribute documentation on multiple form components. _[`#2393`](https://github.com/solid-design-system/solid/pull/2393) [`97fb154`](https://github.com/solid-design-system/solid/commit/97fb1545fda26c8584250ce0650b9f0c04136874) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 5.13.11
+
+### Patch Changes
+
+- Improved the `sd-audio` by: _[`#2371`](https://github.com/solid-design-system/solid/pull/2371) [`1b472bd`](https://github.com/solid-design-system/solid/commit/1b472bd3fd4a42134b7f0ebc018826a6a18e5ef6) [@paulovareiro29](https://github.com/paulovareiro29)_
+  - Replacing the seekbar slider by the new `sd-range` component.
+  - Implementing visual updates to match figma.
+  - Fixing an issue where dragging the slider was not updating the audio current time.
+
+  Adjusted `sd-range` colors to correctly match figma.
+
+  Added a new translation named `seconds`.
+
 ## 5.13.10
 
 ### Patch Changes
@@ -7,8 +32,9 @@
 - Improved `sd-select` by making the display label reactive to localization changes. _[`#2390`](https://github.com/solid-design-system/solid/pull/2390) [`f63ec88`](https://github.com/solid-design-system/solid/commit/f63ec884a5b0613a24c19dfd2257a513cf595619) [@paulovareiro29](https://github.com/paulovareiro29)_
 
 ### 📈 Stats
-* Uncompressed: 477 KB (-1 KB / 0%)
-* Gzipped: 112 KB (unchanged)
+
+- Uncompressed: 477 KB (-1 KB / 0%)
+- Gzipped: 112 KB (unchanged)
 
 ## 5.13.9
 
