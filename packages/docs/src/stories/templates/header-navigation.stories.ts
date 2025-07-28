@@ -348,11 +348,13 @@ export const Horizontal = {
         id="mega-menu-drawer-horizontal"
         placement="end"
         label="Navigation drawer menu"
-        no-header
         class="group relative block"
       >
+        <sd-button slot="header" variant="tertiary" class="mega-menu-nav-horizontal--close">
+          <sd-icon name="system/arrow-left" label="Close submenu"></sd-icon>
+        </sd-button>
         <div
-          class="mega-menu-nav flex flex-col -mx-4 h-full pt-20 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
+          class="mega-menu-nav flex flex-col -mx-4 h-full pt-1 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
         >
           <nav aria-label="Main" class="flex-1 flex flex-col justify-between">
             <ul class="flex-1">
@@ -364,10 +366,7 @@ export const Horizontal = {
                   Funds & Depot
                 </sd-navigation-item>
                 <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
-                  <sd-button variant="tertiary" class="ms-2 my-2">
-                    <sd-icon name="system/arrow-left" label="Close Funds & Depot submenu"></sd-icon>
-                  </sd-button>
-                  <div class="mt-4">
+                  <div>
                     <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary">Funds & Depot</p>
                     <ul>
                       <li>
@@ -434,10 +433,7 @@ export const Horizontal = {
               <li>
                 <sd-navigation-item vertical chevron divider class="font-bold"> About Us </sd-navigation-item>
                 <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
-                  <sd-button variant="tertiary" class="ms-2 my-2">
-                    <sd-icon name="system/arrow-left" label="Close About Us submenu"></sd-icon>
-                  </sd-button>
-                  <div class="mt-4">
+                  <div>
                     <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary">About us</p>
 
                     <ul>
@@ -525,10 +521,7 @@ export const Horizontal = {
               <li>
                 <sd-navigation-item vertical chevron divider class="font-bold"> Investing </sd-navigation-item>
                 <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
-                  <sd-button variant="tertiary" class="ms-2 my-2">
-                    <sd-icon name="system/arrow-left" label="Close Investing submenu"></sd-icon>
-                  </sd-button>
-                  <div class="mt-4">
+                  <div>
                     <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary">Investing</p>
 
                     <ul>
@@ -584,10 +577,7 @@ export const Horizontal = {
               <li>
                 <sd-navigation-item vertical chevron divider class="font-bold"> Our Services </sd-navigation-item>
                 <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
-                  <sd-button variant="tertiary" class="ms-2 my-2">
-                    <sd-icon name="system/arrow-left" label="Close Our Services submenu"></sd-icon>
-                  </sd-button>
-                  <div class="mt-4">
+                  <div>
                     <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary">Our Services</p>
 
                     <ul>
@@ -711,7 +701,11 @@ export const Horizontal = {
         });
 
         document.querySelectorAll('.mega-menu-nav').forEach(container => {
-          const megamenu = new MegaMenu(container, MegaMenuVerticalItem);
+          const megamenu = new MegaMenu(container, MegaMenuVerticalItem, {
+            backButton: document
+              .getElementById('mega-menu-drawer-horizontal')
+              .querySelector('.mega-menu-nav-horizontal--close')
+          });
           megamenu.focusController = new VerticalFocusController(megamenu);
 
           const drawer = container.closest('sd-drawer');
@@ -990,13 +984,17 @@ export const Vertical = {
           id="mega-menu-drawer-vertical"
           placement="end"
           label="Navigation drawer menu"
-          no-header
           class="group relative block"
         >
+          <sd-button slot="header" variant="tertiary" class="mega-menu-nav-vertical--close">
+            <sd-icon slot="icon-left" name="system/arrow-left" label="Close submenu"></sd-icon>
+            <span>Back</span>
+          </sd-button>
+
           <div class="flex flex-col h-full -mx-4 overflow-x-hidden">
             <nav
               aria-label="Main"
-              class="mega-menu-nav group relative flex flex-col justify-between flex-1 pt-20 pb-4 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
+              class="mega-menu-nav group relative flex flex-col justify-between flex-1 pt-1 pb-4 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
             >
               <ul>
                 <li>
@@ -1008,15 +1006,6 @@ export const Vertical = {
                 <li>
                   <sd-navigation-item divider vertical chevron>Investment funds</sd-navigation-item>
                   <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
-                    <sd-button variant="tertiary" class="mx-4 my-2">
-                      <sd-icon
-                        slot="icon-left"
-                        name="system/arrow-left"
-                        label="Close Investment funds submenu"
-                      ></sd-icon>
-                      <span>Back</span>
-                    </sd-button>
-
                     <div>
                       <p class="sd-headline sd-headline--size-lg px-4 py-3 !text-primary">Investment funds</p>
                       <ul>
@@ -1106,7 +1095,11 @@ export const Vertical = {
       <script src="./scripts/mega-menu.js"></script>
       <script type="module">
         document.querySelectorAll('.mega-menu-nav').forEach(container => {
-          const megamenu = new MegaMenu(container, MegaMenuVerticalItem);
+          const megamenu = new MegaMenu(container, MegaMenuVerticalItem, {
+            backButton: document
+              .getElementById('mega-menu-drawer-vertical')
+              .querySelector('.mega-menu-nav-vertical--close')
+          });
           megamenu.focusController = new VerticalFocusController(megamenu);
 
           const drawer = container.closest('sd-drawer');

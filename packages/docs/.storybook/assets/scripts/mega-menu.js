@@ -235,7 +235,13 @@ if (typeof window.MegaMenu === 'undefined') {
   }
 
   class MegaMenu extends MegaMenuElement {
-    constructor(element, ItemClass) {
+    constructor(
+      element,
+      ItemClass,
+      options = {
+        backButton: null
+      }
+    ) {
       super(element);
 
       if (!ItemClass) {
@@ -244,6 +250,10 @@ if (typeof window.MegaMenu === 'undefined') {
 
       this.el = element;
       this.items = Array.from(element.querySelectorAll('sd-navigation-item')).map(item => new ItemClass(item));
+
+      this.options = options;
+      this.options.backButton?.addEventListener('click', () => this.handleBackButton());
+      this.options.backButton?.setAttribute('hidden', '');
 
       this.el.addEventListener('sd-mega-menu-item-click', e => this.onItemClick(e));
       this.el.addEventListener('sd-mega-menu-submenu-open', e => this.onSubmenuOpen(e));
@@ -264,6 +274,14 @@ if (typeof window.MegaMenu === 'undefined') {
       });
     }
 
+    handleBackButton() {
+      this.items.forEach(item => {
+        if (item.submenu && item.submenu.isActive()) {
+          item.submenu.back();
+        }
+      });
+    }
+
     onSubmenuOpen(e) {
       const submenu = e.detail.source;
       if (submenu.options.shouldInert) {
@@ -278,10 +296,12 @@ if (typeof window.MegaMenu === 'undefined') {
         submenu.el.removeAttribute('inert');
       }
 
+      this.options.backButton?.removeAttribute('hidden');
       this.el.setAttribute('data-submenu-open', '');
     }
 
     onSubmenuClose() {
+      this.options.backButton?.setAttribute('hidden', '');
       this.reset();
     }
   }
@@ -404,7 +424,7 @@ if (typeof window.MegaMenu === 'undefined') {
     _init() {
       this.trigger = this.el.previousElementSibling;
       this.el.setAttribute('inert', '');
-      this.el.querySelector('sd-button').addEventListener('click', () => this.back());
+      this.el.querySelector('sd-button')?.addEventListener('click', () => this.back());
     }
 
     _reset() {

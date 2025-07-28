@@ -333,7 +333,7 @@ export default class SdDrawer extends SolidElement {
                 <header
                   part="header"
                   class="flex justify-between py-2 px-4 items-center flex-shrink-0"
-                  style="min-height: 56px;"
+                  style="min-height: 64px;"
                 >
                   <div part="title">
                     <slot name="header" part="title" class="flex-auto text-xl m-0" id="title"> </slot>
