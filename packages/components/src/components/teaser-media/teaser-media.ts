@@ -130,7 +130,7 @@ export default class SdTeaserMedia extends SolidElement {
       }
 
       ::slotted([slot='headline']) {
-        @apply font-bold !m-0 !text-lg;
+        @apply font-bold;
       }
 
       :host([variant='white']) .background:focus-within {
