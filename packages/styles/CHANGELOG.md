@@ -1,5 +1,11 @@
 # @solid-design-system/styles
 
+## 1.5.3
+
+### Patch Changes
+
+- Fixed small visual issues with `sd-pagination` using buttons. _[`#2376`](https://github.com/solid-design-system/solid/pull/2376) [`ef0096e`](https://github.com/solid-design-system/solid/commit/ef0096ea8f2118a41faca0c6055ad017af0fea4e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.5.2
 
 ### Patch Changes

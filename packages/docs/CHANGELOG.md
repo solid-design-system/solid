@@ -1,5 +1,44 @@
 # @solid-design-system/docs
 
+## 1.26.6
+
+### Patch Changes
+
+- Added a disclaimer to the `Range` template. _[`#2381`](https://github.com/solid-design-system/solid/pull/2381) [`be17a92`](https://github.com/solid-design-system/solid/commit/be17a92a1dc4b1b68171bef4c0d30367034db0d2) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.26.5
+
+### Patch Changes
+
+- Added new `Multiline` `sd-button` screenshot test. _[`#2362`](https://github.com/solid-design-system/solid/pull/2362) [`b5d9a60`](https://github.com/solid-design-system/solid/commit/b5d9a60c50a97193b57f4208e6d23af31c556f5d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Updated `Button` template according to figma.
+
+## 1.26.4
+
+### Patch Changes
+
+- Added more screenshot test cases to `sd-pagination`. _[`#2376`](https://github.com/solid-design-system/solid/pull/2376) [`ef0096e`](https://github.com/solid-design-system/solid/commit/ef0096ea8f2118a41faca0c6055ad017af0fea4e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.26.3
+
+### Patch Changes
+
+- Updated icon libraries. _[`#2385`](https://github.com/solid-design-system/solid/pull/2385) [`2b57a70`](https://github.com/solid-design-system/solid/commit/2b57a707fb9d9ef60c313fd457ddfa6fb1db69b4) [@smfonseca](https://github.com/smfonseca)_
+  - Added `internal-lib` story to showcase `_internal` icon library.
+  - Added `Library: _internal` screenshot test.
+  - Added `status-assets` story to showcase `sd-status-assets` icon library.
+  - Added `Library: sd-status-assets` screenshot test.
+  - Updated docs page with reference to `_internal` and `sd-status-assets` libraries.
+
+- Update migration guide `from v4` with more information regarding the internal icon library renaming. _[`#2385`](https://github.com/solid-design-system/solid/pull/2385) [`2b57a70`](https://github.com/solid-design-system/solid/commit/2b57a707fb9d9ef60c313fd457ddfa6fb1db69b4) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.26.2
+
+### Patch Changes
+
+- Fixed an issue where the `sd-tab` `active` story would not show the current tab correctly after navigating through storybook. _[`#2384`](https://github.com/solid-design-system/solid/pull/2384) [`cbe0e16`](https://github.com/solid-design-system/solid/commit/cbe0e16de7296eeec08a8ca87f2c1812160abeb3) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.26.1
 
 ### Patch Changes

@@ -1,10 +1,10 @@
 import type { IconLibrary } from './library';
 
 //
-// System icons are a separate library to ensure they're always available, regardless of how the default icon library is
+// Internal icons are a separate library to ensure they're always available, regardless of how the default icon library is
 // configured or if its icons resolve properly.
 //
-// All Solid components must use the system library instead of the default library.
+// All Solid components must use the internal library instead of the default library.
 // For visual consistency, they are a subset of Union Investment's official icons.
 //
 export const icons = {
@@ -95,8 +95,8 @@ export const icons = {
   'magnifying-glass': `
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.707 20.293l-6.967-6.96c-0.046-0.046-0.096-0.087-0.15-0.124l-0.004-0.002c0.882-1.162 1.413-2.632 1.413-4.227 0-3.881-3.146-7.027-7.027-7.027s-7.027 3.146-7.027 7.027c0 3.881 3.146 7.027 7.027 7.027 1.594 0 3.065-0.531 4.244-1.426l-0.017 0.013c0.039 0.057 0.081 0.107 0.127 0.153l6.967 6.967c0.181 0.181 0.431 0.292 0.707 0.292s0.526-0.112 0.707-0.292v0c0.183-0.181 0.296-0.432 0.296-0.71s-0.113-0.529-0.296-0.71l-0-0zM9 14c-2.761 0-5-2.239-5-5s2.239-5 5-5c2.761 0 5 2.239 5 5v0c0 2.761-2.239 5-5 5v0z"></path></svg>`,
   transcript: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-    <path fill="currentColor" d="M15 20H1a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1h9a1 1 0 0 1 .707.293l5 5c.186.187.293.444.293.707v13a1 1 0 0 1-1 1ZM2 18h12V6.413L9.587 2H2v16Z"/>
-    <path fill="currentColor" d="M15 8H9a1 1 0 0 1-1-1V1a1 1 0 1 1 2 0v5h5a1 1 0 1 1 0 2Zm-3 4H4a1 1 0 1 1 0-2h8a1 1 0 1 1 0 2Zm-2 4H4a1 1 0 1 1 0-2h6a1 1 0 1 1 0 2Z"/>
+    <path fill="currentColor" d="M19 22H5a1 1 0 0 1-1-1V3c0-.6.4-1 1-1h9c.3 0 .5.1.7.3l5 5c.2.2.3.4.3.7v13c0 .6-.4 1-1 1ZM6 20h12V8.4L13.6 4H6v16Z"/>
+    <path fill="currentColor" d="M19 10h-6a1 1 0 0 1-1-1V3a1 1 0 1 1 2 0v5h5a1 1 0 1 1 0 2Zm-3 4H8a1 1 0 1 1 0-2h8a1 1 0 1 1 0 2Zm-2 4H8a1 1 0 1 1 0-2h6a1 1 0 1 1 0 2Z"/>
   </svg>`,
   mute: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
   <path d="M10.717 4.077a.997.997 0 0 0-1.09.217L5.92 8.001H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.92l3.707 3.707a.997.997 0 0 0 .707.293h.007a.953.953 0 0 0 .382-.079l-.006.002c.365-.154.617-.509.617-.923v-14a1 1 0 0 0-.61-.921l-.007-.002v-.001ZM4 10h1.333v4H4v-4Zm5.333 6.587-2-2V9.414l2-2v9.173Zm12.374-8.96a1 1 0 0 0-1.414 0l-2.96 2.96-2.96-2.96a1 1 0 0 0-1.413 1.414l-.001-.001 2.96 2.96-2.96 2.96a1 1 0 0 0 1.414 1.414l2.96-2.96 2.96 2.96a1 1 0 0 0 1.414-1.414L18.747 12l2.96-2.96a1 1 0 0 0 0-1.414v.001Z"/></svg>`,

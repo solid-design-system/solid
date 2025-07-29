@@ -52,7 +52,9 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
    */
   @state() showInvalidStyle = false;
 
-  /** The title of the switch adds a tooltip with title text. */
+  /**
+   * The `title` attribute specifies extra information about an element most often as a default browser tooltip text when the mouse moves over the element.
+   */
   @property({ type: String, reflect: true }) title = ''; // make reactive to pass through
 
   /** The name of the switch, submitted as a name/value pair with form data. */

@@ -1,5 +1,81 @@
 # @solid-design-system/components
 
+## 5.13.13
+
+### Patch Changes
+
+- Disallowed attribute `removable` when `sd-tag` has a href. _[`#2402`](https://github.com/solid-design-system/solid/pull/2402) [`593a7ca`](https://github.com/solid-design-system/solid/commit/593a7ca9323d08bc690dee938d56428a6f93b8eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 5.13.12
+
+### Patch Changes
+
+- Improved `title` attribute documentation on multiple form components. _[`#2393`](https://github.com/solid-design-system/solid/pull/2393) [`97fb154`](https://github.com/solid-design-system/solid/commit/97fb1545fda26c8584250ce0650b9f0c04136874) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 5.13.11
+
+### Patch Changes
+
+- Improved the `sd-audio` by: _[`#2371`](https://github.com/solid-design-system/solid/pull/2371) [`1b472bd`](https://github.com/solid-design-system/solid/commit/1b472bd3fd4a42134b7f0ebc018826a6a18e5ef6) [@paulovareiro29](https://github.com/paulovareiro29)_
+  - Replacing the seekbar slider by the new `sd-range` component.
+  - Implementing visual updates to match figma.
+  - Fixing an issue where dragging the slider was not updating the audio current time.
+
+  Adjusted `sd-range` colors to correctly match figma.
+
+  Added a new translation named `seconds`.
+
+## 5.13.10
+
+### Patch Changes
+
+- Improved `sd-select` by making the display label reactive to localization changes. _[`#2390`](https://github.com/solid-design-system/solid/pull/2390) [`f63ec88`](https://github.com/solid-design-system/solid/commit/f63ec884a5b0613a24c19dfd2257a513cf595619) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+
+- Uncompressed: 477 KB (-1 KB / 0%)
+- Gzipped: 112 KB (unchanged)
+
+## 5.13.9
+
+### Patch Changes
+
+- Fixed an issue on `sd-select` where the popup would shift when there was a horizontal scroll. _[`#2391`](https://github.com/solid-design-system/solid/pull/2391) [`610cb8c`](https://github.com/solid-design-system/solid/commit/610cb8cd86c7ace0afd19dca0ddf1e487603128e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 5.13.8
+
+### Patch Changes
+
+- Added support for multiline text on `sd-button`. _[`#2362`](https://github.com/solid-design-system/solid/pull/2362) [`b5d9a60`](https://github.com/solid-design-system/solid/commit/b5d9a60c50a97193b57f4208e6d23af31c556f5d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+
+- Uncompressed: 478 KB (+1 KB / +0%)
+- Gzipped: 112 KB (unchanged)
+
+## 5.13.7
+
+### Patch Changes
+
+- Added missing accessible name on the `sd-radio-button` component. _[`#2387`](https://github.com/solid-design-system/solid/pull/2387) [`9882a5b`](https://github.com/solid-design-system/solid/commit/9882a5b4d96b8b5711ce038d76c53c92987ba0e9) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 5.13.6
+
+### Patch Changes
+
+- Implemented automatic disabling of `sd-tab-group` navigation buttons when scroll reaches the edges. _[`#2379`](https://github.com/solid-design-system/solid/pull/2379) [`f43230e`](https://github.com/solid-design-system/solid/commit/f43230e238d79e043d5194c66ae37edc94120e84) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 5.13.5
+
+### Patch Changes
+
+- Adjusted inverted `sd-expandable` to fit to the theming when overriding `--gradient-color-start` and `--gradient-color-end`. _[`#2383`](https://github.com/solid-design-system/solid/pull/2383) [`1644c11`](https://github.com/solid-design-system/solid/commit/1644c11f86512597a007387dad30face81ac0288) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+
+- Uncompressed: 477 KB (+1 KB / +0%)
+- Gzipped: 112 KB (unchanged)
+
 ## 5.13.4
 
 ### Patch Changes
