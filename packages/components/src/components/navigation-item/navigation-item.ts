@@ -175,7 +175,6 @@ export default class SdNavigationItem extends SolidElement {
     };
 
     const horizontalPadding = this.vertical ? 'py-3' : 'py-2';
-    const basePadding = isIconOnly && !this.vertical ? 'p-3' : `${!this.separated ? 'px-4' : ''} ${horizontalPadding}`;
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
@@ -190,8 +189,8 @@ export default class SdNavigationItem extends SolidElement {
           isAccordion ? 'flex flex-col' : 'inline-block w-full',
           this.divider && this.vertical && 'mt-0.25',
           !this.vertical && 'inline-flex items-center',
-          !this.separated &&
-            `hover:bg-neutral-200 group transition-colors duration-fast ease-in-out min-h-[48px] ${basePadding}`,
+          !this.separated && 'hover:bg-neutral-200 group transition-colors duration-fast ease-in-out min-h-[48px]',
+          !this.separated && (isIconOnly && !this.vertical ? 'p-3' : 'px-4'),
           isIconOnly && !this.vertical && 'justify-center aspect-square w-12'
         )}
         aria-current=${ifDefined(this.current ? 'page' : undefined)}
@@ -220,8 +219,8 @@ export default class SdNavigationItem extends SolidElement {
           'relative inline-flex justify-between items-center',
           isAccordion ? 'grow' : 'w-full',
           slots['description'] && 'pt-3',
-          slots['description'] || this.separated ? 'pb-1' : !isIconOnly ? horizontalPadding : '',
-          !isIconOnly && this.calculatePaddingX
+          slots['description'] || this.separated ? 'pb-1' : horizontalPadding,
+          this.calculatePaddingX
         )}>
           ${
             this.divider && this.vertical
