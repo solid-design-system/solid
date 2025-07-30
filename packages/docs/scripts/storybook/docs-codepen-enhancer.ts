@@ -27,21 +27,21 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
         return {
           components: `${baseUrl}/components/%COMPONENTS-VERSION%/cdn`,
           styles: `${baseUrl}/styles/%STYLES-VERSION%/cdn`,
-          placeholders: `${cdnBaseUrl}/placeholders@%PLACEHOLDERS-VERSION%/src`
+          placeholders: `${baseUrl}/docs/placeholders`
         };
       }
 
       return {
         components: `${githubBaseUrl}/${version}/components/cdn`,
         styles: `${githubBaseUrl}/${version}/styles/cdn`,
-        placeholders: `${cdnBaseUrl}/placeholders@%PLACEHOLDERS-VERSION%/src`
+        placeholders: `${githubBaseUrl}/${version}/placeholders`
       };
     }
 
     return {
       components: `${baseUrl}/components/%COMPONENTS-VERSION%/cdn`,
       styles: `${baseUrl}/styles/%STYLES-VERSION%/cdn`,
-      placeholders: `${cdnBaseUrl}/placeholders@%PLACEHOLDERS-VERSION%/src`
+      placeholders: `${baseUrl}/docs/placeholders`
     };
   };
 
