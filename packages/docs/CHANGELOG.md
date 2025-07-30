@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.26.7
+
+### Patch Changes
+
+- Optimized `sd-media` documentation and template. _[`#2404`](https://github.com/solid-design-system/solid/pull/2404) [`6b1b045`](https://github.com/solid-design-system/solid/commit/6b1b0459b96d985b7c27b3d8f351b9ac0940098a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.26.6
 
 ### Patch Changes
