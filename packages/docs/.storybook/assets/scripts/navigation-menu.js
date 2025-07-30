@@ -1,5 +1,5 @@
-if (typeof window.MegaMenu === 'undefined') {
-  class MegaMenuElement {
+if (typeof window.NavigationMenu === 'undefined') {
+  class NavigationMenuElement {
     constructor(element) {
       this.el = element;
     }
@@ -14,7 +14,7 @@ if (typeof window.MegaMenu === 'undefined') {
     }
   }
 
-  class MegaMenuSubmenuBase extends MegaMenuElement {
+  class NavigationMenuSubmenuBase extends NavigationMenuElement {
     constructor(
       element,
       options = {
@@ -71,7 +71,7 @@ if (typeof window.MegaMenu === 'undefined') {
         this.focusWithin();
       }
 
-      this.emit('sd-mega-menu-submenu-open', { source: this });
+      this.emit('sd-navigation-submenu-open', { source: this });
     }
 
     close() {
@@ -87,12 +87,12 @@ if (typeof window.MegaMenu === 'undefined') {
         this.trigger.removeAttribute('current');
       }
 
-      this.emit('sd-mega-menu-submenu-close', { source: this });
+      this.emit('sd-navigation-submenu-close', { source: this });
     }
 
     focusWithin() {
-      const firstNavigationItem = this.el.querySelector('sd-navigation-item:not([slot="trigger"])');
-      setTimeout(() => firstNavigationItem?.focus(), this.options.focusTimeout || 0);
+      const firstNavigationMenuItem = this.el.querySelector('sd-navigation-item:not([slot="trigger"])');
+      setTimeout(() => firstNavigationMenuItem?.focus(), this.options.focusTimeout || 0);
     }
 
     focusTrigger() {
@@ -118,7 +118,7 @@ if (typeof window.MegaMenu === 'undefined') {
     }
   }
 
-  class MegaMenuItemBase extends MegaMenuElement {
+  class NavigationMenuItemBase extends NavigationMenuElement {
     constructor(element) {
       super(element);
 
@@ -174,7 +174,7 @@ if (typeof window.MegaMenu === 'undefined') {
       }
 
       this._click?.();
-      this.emit('sd-mega-menu-item-click', { source: this });
+      this.emit('sd-navigation-item-click', { source: this });
     }
 
     setCurrent(current) {
@@ -186,7 +186,7 @@ if (typeof window.MegaMenu === 'undefined') {
     }
   }
 
-  class MegaMenuFocusControllerBase {
+  class NavigationMenuFocusControllerBase {
     constructor(menu, options = { direction: 'horizontal' }) {
       this.menu = menu;
       this.options = options;
@@ -242,7 +242,7 @@ if (typeof window.MegaMenu === 'undefined') {
     }
   }
 
-  class MegaMenu extends MegaMenuElement {
+  class NavigationMenu extends NavigationMenuElement {
     constructor(
       element,
       ItemClass,
@@ -264,9 +264,9 @@ if (typeof window.MegaMenu === 'undefined') {
       this.options.backButton?.addEventListener('click', () => this.handleBackButton());
       this.options.backButton?.setAttribute('hidden', '');
 
-      this.el.addEventListener('sd-mega-menu-item-click', e => this.onItemClick(e));
-      this.el.addEventListener('sd-mega-menu-submenu-open', e => this.onSubmenuOpen(e));
-      this.el.addEventListener('sd-mega-menu-submenu-close', e => this.onSubmenuClose(e));
+      this.el.addEventListener('sd-navigation-item-click', e => this.onItemClick(e));
+      this.el.addEventListener('sd-navigation-submenu-open', e => this.onSubmenuOpen(e));
+      this.el.addEventListener('sd-navigation-submenu-close', e => this.onSubmenuClose(e));
     }
 
     reset() {
@@ -330,7 +330,7 @@ if (typeof window.MegaMenu === 'undefined') {
   }
 
   // Horizontal Mega Menu (Desktop)
-  class MegaMenuHorizontalSubmenu extends MegaMenuSubmenuBase {
+  class NavigationMenuHorizontalSubmenu extends NavigationMenuSubmenuBase {
     constructor(element) {
       super(element);
       this.el.addEventListener('pointerout', e => this.onPointerOut(e));
@@ -355,11 +355,11 @@ if (typeof window.MegaMenu === 'undefined') {
     }
   }
 
-  class MegaMenuHorizontalItem extends MegaMenuItemBase {
+  class NavigationMenuHorizontalItem extends NavigationMenuItemBase {
     _init() {
       if (this.el.closest('sd-dropdown') && this.el.getAttribute('slot') === 'trigger') {
         this.isSubmenuTrigger = true;
-        this.submenu = new MegaMenuHorizontalSubmenu(this.el.closest('sd-dropdown'));
+        this.submenu = new NavigationMenuHorizontalSubmenu(this.el.closest('sd-dropdown'));
         this.el.addEventListener('pointerover', e => {
           if (e.pointerType === 'touch') return;
           this.click(false);
@@ -367,7 +367,7 @@ if (typeof window.MegaMenu === 'undefined') {
       }
 
       if (this.el.closest('sd-dropdown')) {
-        this.parent = new MegaMenuHorizontalSubmenu(this.el.closest('sd-dropdown'));
+        this.parent = new NavigationMenuHorizontalSubmenu(this.el.closest('sd-dropdown'));
       }
     }
 
@@ -382,7 +382,7 @@ if (typeof window.MegaMenu === 'undefined') {
     }
   }
 
-  class HorizontalFocusController extends MegaMenuFocusControllerBase {
+  class HorizontalFocusController extends NavigationMenuFocusControllerBase {
     constructor(menu) {
       super(menu, { direction: 'horizontal' });
     }
@@ -439,7 +439,7 @@ if (typeof window.MegaMenu === 'undefined') {
   }
 
   // Vertical Mega Menu (Mobile)
-  class MegaMenuVerticalSubmenu extends MegaMenuSubmenuBase {
+  class NavigationMenuVerticalSubmenu extends NavigationMenuSubmenuBase {
     constructor(element) {
       super(element, { focusTimeout: 300, shouldInert: true });
     }
@@ -463,20 +463,20 @@ if (typeof window.MegaMenu === 'undefined') {
     }
   }
 
-  class MegaMenuVerticalItem extends MegaMenuItemBase {
+  class NavigationMenuVerticalItem extends NavigationMenuItemBase {
     _init() {
       if (this.el.nextElementSibling?.matches('[data-submenu]')) {
         this.isSubmenuTrigger = true;
-        this.submenu = new MegaMenuVerticalSubmenu(this.el.nextElementSibling);
+        this.submenu = new NavigationMenuVerticalSubmenu(this.el.nextElementSibling);
       }
 
       if (this.el.closest('[data-submenu]')) {
-        this.parent = new MegaMenuVerticalSubmenu(this.el.closest('[data-submenu]'));
+        this.parent = new NavigationMenuVerticalSubmenu(this.el.closest('[data-submenu]'));
       }
     }
   }
 
-  class VerticalFocusController extends MegaMenuFocusControllerBase {
+  class VerticalFocusController extends NavigationMenuFocusControllerBase {
     constructor(menu) {
       super(menu, { direction: 'vertical' });
     }
@@ -542,9 +542,9 @@ if (typeof window.MegaMenu === 'undefined') {
     }
   }
 
-  window.MegaMenu = MegaMenu;
-  window.MegaMenuHorizontalItem = MegaMenuHorizontalItem;
+  window.NavigationMenu = NavigationMenu;
+  window.NavigationMenuHorizontalItem = NavigationMenuHorizontalItem;
   window.HorizontalFocusController = HorizontalFocusController;
-  window.MegaMenuVerticalItem = MegaMenuVerticalItem;
+  window.NavigationMenuVerticalItem = NavigationMenuVerticalItem;
   window.VerticalFocusController = VerticalFocusController;
 }

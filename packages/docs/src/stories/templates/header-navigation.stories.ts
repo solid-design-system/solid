@@ -41,12 +41,12 @@ export const Horizontal = {
             <img class="h-8 md:h-12 lg:h-14" src="images/logo-unioninvestment-lg.svg" alt="Union Investment Homepage" />
           </a>
 
-          <sd-navigation-item id="open-menu-mega-menu" class="flex lg:hidden">
+          <sd-navigation-item id="open-menu-navigation" class="flex lg:hidden">
             <sd-icon name="system/menu" label="Open navigation" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
           </sd-navigation-item>
         </div>
 
-        <div class="mega-menu-nav--horizontal hidden lg:flex relative justify-between">
+        <div class="navigation-nav--horizontal hidden lg:flex relative justify-between">
           <nav aria-label="Main">
             <ul class="flex -ms-4">
               <li>
@@ -345,16 +345,16 @@ export const Horizontal = {
       </sd-header>
 
       <sd-drawer
-        id="mega-menu-drawer-horizontal"
+        id="navigation-drawer-horizontal"
         placement="end"
         label="Navigation drawer menu"
         class="group relative block"
       >
-        <sd-button slot="header" variant="tertiary" class="mega-menu-nav-horizontal--close">
+        <sd-button slot="header" variant="tertiary" class="navigation-nav-horizontal--close">
           <sd-icon name="system/arrow-left" label="Close submenu"></sd-icon>
         </sd-button>
         <div
-          class="mega-menu-nav flex flex-col -mx-4 h-full pt-1 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
+          class="navigation-nav flex flex-col -mx-4 h-full pt-1 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
         >
           <nav aria-label="Main" class="flex-1 flex flex-col justify-between">
             <ul class="flex-1">
@@ -673,11 +673,11 @@ export const Horizontal = {
 
       <!-- Mobile drawer logic -->
       <script type="module">
-        const drawer = document.getElementById('mega-menu-drawer-horizontal');
-        const drawerTrigger = document.getElementById('open-menu-mega-menu');
+        const drawer = document.getElementById('navigation-drawer-horizontal');
+        const drawerTrigger = document.getElementById('open-menu-navigation');
         const innerTrigger = drawerTrigger.shadowRoot.querySelector('button');
 
-        innerTrigger.setAttribute('aria-controls', 'mega-menu-drawer-horizontal');
+        innerTrigger.setAttribute('aria-controls', 'navigation-drawer-horizontal');
         innerTrigger.setAttribute('aria-expanded', 'false');
         drawerTrigger.addEventListener('click', () => drawer.show());
         drawer.addEventListener('sd-hide', () => innerTrigger.setAttribute('aria-expanded', 'false'));
@@ -685,10 +685,10 @@ export const Horizontal = {
       </script>
 
       <!--
-        The mega-menu.js script can be found here:
-        https://github.com/solid-design-system/solid/blob/main/packages/docs/.storybook/assets/scripts/mega-menu.js
+        The navigation-menu.js script can be found here:
+        https://github.com/solid-design-system/solid/blob/main/packages/docs/.storybook/assets/scripts/navigation-menu.js
       -->
-      <script src="./scripts/mega-menu.js"></script>
+      <script src="./scripts/navigation-menu.js"></script>
       <script type="module">
         const getNavigationItemTitle = item =>
           item.shadowRoot
@@ -703,8 +703,8 @@ export const Horizontal = {
               return acc;
             }, '');
 
-        document.querySelectorAll('.mega-menu-nav--horizontal').forEach(container => {
-          const megamenu = new MegaMenu(container, MegaMenuHorizontalItem, {
+        document.querySelectorAll('.navigation-nav--horizontal').forEach(container => {
+          const megamenu = new NavigationMenu(container, NavigationMenuHorizontalItem, {
             currentOnTrigger: true
           });
           megamenu.focusController = new HorizontalFocusController(megamenu);
@@ -714,11 +714,11 @@ export const Horizontal = {
           });
         });
 
-        document.querySelectorAll('.mega-menu-nav').forEach(container => {
-          const megamenu = new MegaMenu(container, MegaMenuVerticalItem, {
+        document.querySelectorAll('.navigation-nav').forEach(container => {
+          const megamenu = new NavigationMenu(container, NavigationMenuVerticalItem, {
             backButton: document
-              .getElementById('mega-menu-drawer-horizontal')
-              .querySelector('.mega-menu-nav-horizontal--close')
+              .getElementById('navigation-drawer-horizontal')
+              .querySelector('.navigation-nav-horizontal--close')
           });
           megamenu.focusController = new VerticalFocusController(megamenu);
 
@@ -899,11 +899,11 @@ export const Vertical = {
               <img class="h-8 md:h-12" src="images/logo-unioninvestment-lg.svg" alt="Union Investment Homepage" />
             </a>
 
-            <sd-navigation-item id="open-menu-mega-menu-vertical" class="lg:hidden">
+            <sd-navigation-item id="open-menu-navigation-vertical" class="lg:hidden">
               <sd-icon name="system/menu" label="Open navigation" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
             </sd-navigation-item>
 
-            <nav aria-label="Service" class="mega-menu-nav hidden lg:inline">
+            <nav aria-label="Service" class="navigation-nav hidden lg:inline">
               <ul class="flex">
                 <li>
                   <sd-navigation-item>
@@ -928,7 +928,7 @@ export const Vertical = {
         <div class="w-[272px] border-r border-r-neutral-400 hidden flex-col overflow-x-hidden lg:flex">
           <nav
             aria-label="Main"
-            class="mega-menu-nav group relative flex-1 py-4 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
+            class="navigation-nav group relative flex-1 py-4 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
           >
             <ul>
               <li>
@@ -999,12 +999,12 @@ export const Vertical = {
         </main>
 
         <sd-drawer
-          id="mega-menu-drawer-vertical"
+          id="navigation-drawer-vertical"
           placement="end"
           label="Navigation drawer menu"
           class="group relative block"
         >
-          <sd-button slot="header" variant="tertiary" class="mega-menu-nav-vertical--close">
+          <sd-button slot="header" variant="tertiary" class="navigation-nav-vertical--close">
             <sd-icon slot="icon-left" name="system/arrow-left" label="Close submenu"></sd-icon>
             <span>Back</span>
           </sd-button>
@@ -1012,7 +1012,7 @@ export const Vertical = {
           <div class="flex flex-col h-full -mx-4 overflow-x-hidden">
             <nav
               aria-label="Main"
-              class="mega-menu-nav group relative flex flex-col justify-between flex-1 pt-1 pb-4 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
+              class="navigation-nav group relative flex flex-col justify-between flex-1 pt-1 pb-4 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
             >
               <ul>
                 <li>
@@ -1104,11 +1104,11 @@ export const Vertical = {
 
       <!-- Mobile drawer logic -->
       <script type="module">
-        const drawer = document.getElementById('mega-menu-drawer-vertical');
-        const drawerTrigger = document.getElementById('open-menu-mega-menu-vertical');
+        const drawer = document.getElementById('navigation-drawer-vertical');
+        const drawerTrigger = document.getElementById('open-menu-navigation-vertical');
         const innerTrigger = drawerTrigger.shadowRoot.querySelector('button');
 
-        innerTrigger.setAttribute('aria-controls', 'mega-menu-drawer-vertical');
+        innerTrigger.setAttribute('aria-controls', 'navigation-drawer-vertical');
         innerTrigger.setAttribute('aria-expanded', 'false');
         drawerTrigger.addEventListener('click', () => drawer.show());
         drawer.addEventListener('sd-hide', () => innerTrigger.setAttribute('aria-expanded', 'false'));
@@ -1116,10 +1116,10 @@ export const Vertical = {
       </script>
 
       <!--
-        The mega-menu script can be found here:
-        https://github.com/solid-design-system/solid/blob/main/packages/docs/.storybook/assets/scripts/mega-menu.js
+        The navigation-menu script can be found here:
+        https://github.com/solid-design-system/solid/blob/main/packages/docs/.storybook/assets/scripts/navigation-menu.js
       -->
-      <script src="./scripts/mega-menu.js"></script>
+      <script src="./scripts/navigation-menu.js"></script>
       <script type="module">
         const getNavigationItemTitle = item =>
           item.shadowRoot
@@ -1134,11 +1134,11 @@ export const Vertical = {
               return acc;
             }, '');
 
-        document.querySelectorAll('.mega-menu-nav').forEach(container => {
-          const megamenu = new MegaMenu(container, MegaMenuVerticalItem, {
+        document.querySelectorAll('.navigation-nav').forEach(container => {
+          const megamenu = new NavigationMenu(container, NavigationMenuVerticalItem, {
             backButton: document
-              .getElementById('mega-menu-drawer-vertical')
-              .querySelector('.mega-menu-nav-vertical--close')
+              .getElementById('navigation-drawer-vertical')
+              .querySelector('.navigation-nav-vertical--close')
           });
           megamenu.focusController = new VerticalFocusController(megamenu);
 
