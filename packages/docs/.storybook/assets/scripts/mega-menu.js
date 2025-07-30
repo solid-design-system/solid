@@ -51,7 +51,10 @@ if (typeof window.MegaMenu === 'undefined') {
     reset() {
       this._reset?.();
       this.el.removeAttribute('data-active-submenu');
-      this.el.querySelectorAll('sd-navigation-item').forEach(item => item.removeAttribute('open'));
+      this.el.querySelectorAll('sd-navigation-item').forEach(item => {
+        if (item.querySelector('sd-navigation-item[current]')) return;
+        item.removeAttribute('open');
+      });
     }
 
     open(focusWithin = true) {
@@ -61,7 +64,7 @@ if (typeof window.MegaMenu === 'undefined') {
 
       this._open();
       this.el.setAttribute('data-active-submenu', '');
-      this.trigger.setAttribute('current', '');
+      // this.trigger.setAttribute('current', '');
       this.trigger.shadowRoot.querySelector('[part="base"]').setAttribute('aria-expanded', 'true');
 
       if (focusWithin) {
@@ -134,8 +137,13 @@ if (typeof window.MegaMenu === 'undefined') {
         this.base.setAttribute('aria-expanded', 'false');
       }
 
-      if (this.el.querySelector('[slot="children"]')) {
+      const hasChildren = !!this.el.querySelector('[slot="children"]');
+      if (hasChildren) {
         this.isGroupItem = true;
+      }
+
+      if (hasChildren && this.el.querySelector('sd-navigation-item[current]')) {
+        this.el.setAttribute('open', '');
       }
     }
 
@@ -239,7 +247,8 @@ if (typeof window.MegaMenu === 'undefined') {
       element,
       ItemClass,
       options = {
-        backButton: null
+        backButton: null,
+        currentOnTrigger: false
       }
     ) {
       super(element);
@@ -270,8 +279,12 @@ if (typeof window.MegaMenu === 'undefined') {
 
     onItemClick(e) {
       this.items.forEach(item => {
-        item.setCurrent(item.el === e.target || item.submenu?.el.contains(e.target));
+        const isTarget = item.el === e.target;
+        const isCurrent = this.options.currentOnTrigger ? isTarget || !!item.submenu?.el.contains(e.target) : isTarget;
+        item.setCurrent(isCurrent);
       });
+
+      this.publish('item-click', e.target);
     }
 
     handleBackButton() {
@@ -303,6 +316,16 @@ if (typeof window.MegaMenu === 'undefined') {
     onSubmenuClose() {
       this.options.backButton?.setAttribute('hidden', '');
       this.reset();
+    }
+
+    subscribe(event, callback) {
+      if (typeof event !== 'string' || typeof callback !== 'function') return;
+      this.observers = { ...(this.observers || {}), [event]: [...(this.observers?.[event] || []), callback] };
+    }
+
+    publish(event, ...args) {
+      if (!Array.isArray(this.observers?.[event])) return;
+      this.observers[event].forEach(callback => callback(...args));
     }
   }
 

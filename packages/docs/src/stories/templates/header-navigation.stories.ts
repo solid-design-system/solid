@@ -51,11 +51,11 @@ export const Horizontal = {
             <ul class="flex -ms-4">
               <li>
                 <sd-dropdown no-flip>
-                  <sd-navigation-item slot="trigger" current class="font-bold"> Funds & Depot </sd-navigation-item>
+                  <sd-navigation-item slot="trigger" class="font-bold"> Funds & Depot </sd-navigation-item>
 
                   <ul class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
                     <li>
-                      <sd-navigation-item vertical current href="javascript:void(0)">
+                      <sd-navigation-item vertical href="javascript:void(0)">
                         <span class="font-bold">Funds & Depot Overview</span>
                         <p slot="description">Everything you need to know about our funds and the UnionDepot</p>
                       </sd-navigation-item>
@@ -359,25 +359,23 @@ export const Horizontal = {
           <nav aria-label="Main" class="flex-1 flex flex-col justify-between">
             <ul class="flex-1">
               <li>
-                <sd-navigation-item vertical href="javascript:void(0)" class="font-bold"> Home </sd-navigation-item>
+                <sd-navigation-item vertical href="javascript:void(0)" current> Home page </sd-navigation-item>
               </li>
               <li>
-                <sd-navigation-item vertical current chevron divider class="font-bold">
-                  Funds & Depot
-                </sd-navigation-item>
+                <sd-navigation-item vertical chevron divider> Funds & Depot </sd-navigation-item>
                 <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
                   <div>
                     <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary">Funds & Depot</p>
                     <ul>
                       <li>
-                        <sd-navigation-item vertical current divider href="javascript:void(0)">
-                          <span class="font-bold"> Funds & Depot Overview </span>
+                        <sd-navigation-item vertical divider href="javascript:void(0)">
+                          <span> Funds & Depot Overview </span>
                           <p slot="description">Everything you need to know about our funds and the UnionDepot</p>
                         </sd-navigation-item>
                       </li>
                       <li>
                         <sd-navigation-item vertical separated href="javascript:void(0)">
-                          <span class="font-bold">Find Funds</span>
+                          <span>Find Funds</span>
                           <p slot="description">Get to our funds quickly</p>
                           <ul slot="children">
                             <li>
@@ -395,7 +393,7 @@ export const Horizontal = {
                       </li>
                       <li>
                         <sd-navigation-item vertical separated href="javascript:void(0)">
-                          <span class="font-bold">Understanding Funds</span>
+                          <span>Understanding Funds</span>
                           <p slot="description">Funds explained simply and understandably for you</p>
 
                           <ul slot="children">
@@ -414,7 +412,7 @@ export const Horizontal = {
                       </li>
                       <li>
                         <sd-navigation-item vertical separated href="javascript:void(0)">
-                          <span class="font-bold"> UnionDepot </span>
+                          <span> UnionDepot </span>
                           <p slot="description">Manage your funds flexibly with UnionDepot</p>
 
                           <ul slot="children">
@@ -431,21 +429,21 @@ export const Horizontal = {
                 </div>
               </li>
               <li>
-                <sd-navigation-item vertical chevron divider class="font-bold"> About Us </sd-navigation-item>
+                <sd-navigation-item vertical chevron divider> About Us </sd-navigation-item>
                 <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
                   <div>
                     <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary">About us</p>
 
                     <ul>
                       <li>
-                        <sd-navigation-item vertical divider href="javascript:void(0)" class="font-bold">
+                        <sd-navigation-item vertical divider href="javascript:void(0)">
                           Union Investment at a glance
                           <p slot="description">Partnership is the basis of our actions.</p>
                         </sd-navigation-item>
                       </li>
                       <li>
                         <sd-navigation-item vertical>
-                          <span class="font-bold"> Union Investment for private clients </span>
+                          <span> Union Investment for private clients </span>
                           <p slot="description">Learn more about us and what we stand for</p>
                           <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
                             Investor protection
@@ -459,7 +457,7 @@ export const Horizontal = {
                         </sd-navigation-item>
                       </li>
                       <li>
-                        <sd-navigation-item vertical class="font-bold" href="javascript:void(0)">
+                        <sd-navigation-item vertical href="javascript:void(0)">
                           Sustainability at Union Investment
                           <p slot="description">
                             Learn about our values, principles, and commitment to sustainability.
@@ -468,7 +466,7 @@ export const Horizontal = {
                       </li>
                       <li>
                         <sd-navigation-item vertical>
-                          <span class="font-bold"> Union Investment Group </span>
+                          <span> Union Investment Group </span>
                           <p slot="description">Find out more about Union Investment as a group of companies</p>
                           <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
                             Cooperative Financial Group
@@ -484,25 +482,25 @@ export const Horizontal = {
 
                     <ul>
                       <li>
-                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
+                        <sd-navigation-item vertical href="javascript:void(0)">
                           Institutional Clients
                           <p slot="description">Solutions for professional investors.</p>
                         </sd-navigation-item>
                       </li>
                       <li>
-                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
+                        <sd-navigation-item vertical href="javascript:void(0)">
                           Real Estate Customers
                           <p slot="description">Investing - Renting - Investing</p>
                         </sd-navigation-item>
                       </li>
                       <li>
-                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
+                        <sd-navigation-item vertical href="javascript:void(0)">
                           Journalists
                           <p slot="description">Press releases and contacts can be found here</p>
                         </sd-navigation-item>
                       </li>
                       <li>
-                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
+                        <sd-navigation-item vertical href="javascript:void(0)">
                           Career
                           <p slot="description">
                             Where professionals are people - insights into our working world and job offers
@@ -514,12 +512,10 @@ export const Horizontal = {
                 </div>
               </li>
               <li>
-                <sd-navigation-item vertical divider href="javascript:void(0)" class="font-bold">
-                  Saving
-                </sd-navigation-item>
+                <sd-navigation-item vertical divider href="javascript:void(0)"> Saving </sd-navigation-item>
               </li>
               <li>
-                <sd-navigation-item vertical chevron divider class="font-bold"> Investing </sd-navigation-item>
+                <sd-navigation-item vertical chevron divider> Investing </sd-navigation-item>
                 <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
                   <div>
                     <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary">Investing</p>
@@ -527,13 +523,13 @@ export const Horizontal = {
                     <ul>
                       <li>
                         <sd-navigation-item vertical divider href="javascript:void(0)">
-                          <span class="font-bold"> Investing at a glance </span>
+                          <span> Investing at a glance </span>
                           <p slot="description">Quickly access our funds</p>
                         </sd-navigation-item>
                       </li>
                       <li>
                         <sd-navigation-item vertical href="javascript:void(0)">
-                          <span class="font-bold"> Structuring your assets </span>
+                          <span> Structuring your assets </span>
                           <p slot="description">Benefit from modern solutions for your assets</p>
                         </sd-navigation-item>
                         <ul>
@@ -551,7 +547,7 @@ export const Horizontal = {
                       </li>
                       <li>
                         <sd-navigation-item vertical>
-                          <span class="font-bold"> Investing money according to ESG </span>
+                          <span> Investing money according to ESG </span>
                           <p slot="description">Shaping the future responsibly with your investments</p>
                           <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
                             Funds with a sustainability strategy
@@ -560,7 +556,7 @@ export const Horizontal = {
                       </li>
                       <li>
                         <sd-navigation-item vertical>
-                          <span class="font-bold"> Calculators </span>
+                          <span> Calculators </span>
                           <p slot="description">Manage your funds flexibly with UnionDepot</p>
                           <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
                             Investment planner
@@ -575,49 +571,39 @@ export const Horizontal = {
                 </div>
               </li>
               <li>
-                <sd-navigation-item vertical chevron divider class="font-bold"> Our Services </sd-navigation-item>
+                <sd-navigation-item vertical chevron divider> Our Services </sd-navigation-item>
                 <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
                   <div>
                     <p class="sd-headline sd-headline--size-lg mx-4 py-3 !text-primary">Our Services</p>
 
                     <ul>
                       <li>
-                        <sd-navigation-item vertical divider href="javascript:void(0)" class="font-bold">
+                        <sd-navigation-item vertical divider href="javascript:void(0)">
                           Services at a glance
                         </sd-navigation-item>
                       </li>
                       <li>
-                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                          Current news
-                        </sd-navigation-item>
+                        <sd-navigation-item vertical href="javascript:void(0)"> Current news </sd-navigation-item>
                       </li>
                       <li>
-                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                          Subscription
-                        </sd-navigation-item>
+                        <sd-navigation-item vertical href="javascript:void(0)"> Subscription </sd-navigation-item>
                       </li>
                       <li>
-                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                          Our calculators
-                        </sd-navigation-item>
+                        <sd-navigation-item vertical href="javascript:void(0)"> Our calculators </sd-navigation-item>
                       </li>
                       <li>
-                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                          Contact
-                        </sd-navigation-item>
+                        <sd-navigation-item vertical href="javascript:void(0)"> Contact </sd-navigation-item>
                       </li>
                       <li>
-                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
+                        <sd-navigation-item vertical href="javascript:void(0)">
                           Forms and Downloads
                         </sd-navigation-item>
                       </li>
                       <li>
-                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                          Media
-                        </sd-navigation-item>
+                        <sd-navigation-item vertical href="javascript:void(0)"> Media </sd-navigation-item>
                       </li>
                       <li>
-                        <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
+                        <sd-navigation-item vertical href="javascript:void(0)">
                           Frequently Asked Questions
                         </sd-navigation-item>
                       </li>
@@ -653,12 +639,17 @@ export const Horizontal = {
       </sd-drawer>
 
       <main>
-        <h1>Funds & Depot</h1>
+        <h1 id="page-title--horizontal">Home page</h1>
       </main>
 
       <style>
         [data-submenu][inert] {
           display: none;
+        }
+
+        sd-navigation-item:has([slot='children']):has(sd-navigation-item[current])::part(content),
+        sd-navigation-item:has(+ [data-submenu] sd-navigation-item[current])::part(content) {
+          font-weight: bold;
         }
 
         sd-dropdown:has(sd-navigation-item[slot='trigger'])::part(base__popup) {
@@ -699,9 +690,28 @@ export const Horizontal = {
       -->
       <script src="./scripts/mega-menu.js"></script>
       <script type="module">
+        const getNavigationItemTitle = item =>
+          item.shadowRoot
+            .querySelector('[part="content"]')
+            .assignedNodes({ flatten: true })
+            .reduce((acc, node) => {
+              if (node.nodeType === Node.ELEMENT_NODE) {
+                return acc + node.innerText;
+              } else if (node.nodeType === Node.TEXT_NODE) {
+                return acc + node.textContent;
+              }
+              return acc;
+            }, '');
+
         document.querySelectorAll('.mega-menu-nav--horizontal').forEach(container => {
-          const megamenu = new MegaMenu(container, MegaMenuHorizontalItem);
+          const megamenu = new MegaMenu(container, MegaMenuHorizontalItem, {
+            currentOnTrigger: true
+          });
           megamenu.focusController = new HorizontalFocusController(megamenu);
+
+          megamenu.subscribe('item-click', item => {
+            document.getElementById('page-title--horizontal').innerHTML = getNavigationItemTitle(item);
+          });
         });
 
         document.querySelectorAll('.mega-menu-nav').forEach(container => {
@@ -711,6 +721,10 @@ export const Horizontal = {
               .querySelector('.mega-menu-nav-horizontal--close')
           });
           megamenu.focusController = new VerticalFocusController(megamenu);
+
+          megamenu.subscribe('item-click', item => {
+            document.getElementById('page-title--horizontal').innerHTML = getNavigationItemTitle(item);
+          });
 
           const drawer = container.closest('sd-drawer');
           if (drawer) {
@@ -918,7 +932,7 @@ export const Vertical = {
           >
             <ul>
               <li>
-                <sd-navigation-item href="javascript:void(0)" indented vertical current>Start</sd-navigation-item>
+                <sd-navigation-item href="javascript:void(0)" indented vertical current>Home</sd-navigation-item>
               </li>
               <li>
                 <sd-navigation-item href="javascript:void(0)" indented vertical>Investment news</sd-navigation-item>
@@ -981,7 +995,7 @@ export const Vertical = {
         </div>
 
         <main class="px-4">
-          <h1>Start</h1>
+          <h1 id="page-title--vertical">Home</h1>
         </main>
 
         <sd-drawer
@@ -1002,7 +1016,7 @@ export const Vertical = {
             >
               <ul>
                 <li>
-                  <sd-navigation-item href="javascript:void(0)" vertical current>Start</sd-navigation-item>
+                  <sd-navigation-item href="javascript:void(0)" vertical current>Home</sd-navigation-item>
                 </li>
                 <li>
                   <sd-navigation-item href="javascript:void(0)" divider vertical>Investment news</sd-navigation-item>
@@ -1072,6 +1086,11 @@ export const Vertical = {
           display: none;
         }
 
+        sd-navigation-item:has([slot='children']):has(sd-navigation-item[current])::part(content),
+        sd-navigation-item:has(+ [data-submenu] sd-navigation-item[current])::part(content) {
+          font-weight: bold;
+        }
+
         sd-navigation-item + div[data-submenu]:not([data-active-submenu]) {
           pointer-events: none;
           opacity: 0;
@@ -1102,6 +1121,19 @@ export const Vertical = {
       -->
       <script src="./scripts/mega-menu.js"></script>
       <script type="module">
+        const getNavigationItemTitle = item =>
+          item.shadowRoot
+            .querySelector('[part="content"]')
+            .assignedNodes({ flatten: true })
+            .reduce((acc, node) => {
+              if (node.nodeType === Node.ELEMENT_NODE) {
+                return acc + node.innerText;
+              } else if (node.nodeType === Node.TEXT_NODE) {
+                return acc + node.textContent;
+              }
+              return acc;
+            }, '');
+
         document.querySelectorAll('.mega-menu-nav').forEach(container => {
           const megamenu = new MegaMenu(container, MegaMenuVerticalItem, {
             backButton: document
@@ -1109,6 +1141,10 @@ export const Vertical = {
               .querySelector('.mega-menu-nav-vertical--close')
           });
           megamenu.focusController = new VerticalFocusController(megamenu);
+
+          megamenu.subscribe('item-click', item => {
+            document.getElementById('page-title--vertical').innerHTML = getNavigationItemTitle(item);
+          });
 
           const drawer = container.closest('sd-drawer');
           if (drawer) {
