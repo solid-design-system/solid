@@ -83,7 +83,7 @@ export default class SdTeaserMedia extends SolidElement {
             <div class="flex-col text-left p-4" part="content">
               <div class="flex flex-col">
                 <div part="headline" class="text-lg font-bold m-0 order-2">
-                  <slot name="headline"
+                  <slot name="headline" class="@apply font-bold !m-0 !text-lg;"
                     >Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)</slot
                   >
                 </div>
@@ -127,10 +127,6 @@ export default class SdTeaserMedia extends SolidElement {
 
       ::slotted(*) {
         @apply m-0;
-      }
-
-      ::slotted([slot='headline']) {
-        @apply font-bold;
       }
 
       :host([variant='white']) .background:focus-within {
