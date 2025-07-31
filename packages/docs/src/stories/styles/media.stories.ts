@@ -42,6 +42,22 @@ export const Default = {
 };
 
 /**
+ * Use the html `figcaption` element to add a description.
+ */
+export const Description = {
+  render: () => html`
+    <figure class="sd-media p-4">
+      <img
+        src="./placeholders/images/architecture.jpg"
+        alt="A generic placeholder jpg"
+        class="aspect-video object-cover"
+      />
+      <figcaption>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula</figcaption>
+    </figure>
+  `
+};
+
+/**
  * Use the `sd-media--inverted` class when displayed on primary background.
  */
 
@@ -54,7 +70,7 @@ export const Inverted = {
           alt="A generic placeholder jpg"
           class="aspect-video object-cover"
         />
-        <figcaption>Inverted description</figcaption>
+        <figcaption>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula</figcaption>
       </figure>
     </div>
   `
