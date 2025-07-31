@@ -91,20 +91,23 @@ export default class SdNavigationItem extends SolidElement {
     return !this.href && this.hasSlotController.test('children');
   }
 
-  private checkIfIconOnly(): boolean {
+  private get isIconOnly(): boolean {
     if (!this.defaultSlot) return false;
 
     const nodes = this.defaultSlot.assignedNodes({ flatten: true });
+
     return (
       nodes.length > 0 &&
       nodes.every(node => {
         if (node.nodeType === Node.TEXT_NODE) {
           return !node.textContent?.trim();
         }
+
         if (node.nodeType === Node.ELEMENT_NODE) {
           const element = node as Element;
           return element.tagName.toLowerCase() === 'sd-icon';
         }
+
         return false;
       })
     );
@@ -165,7 +168,7 @@ export default class SdNavigationItem extends SolidElement {
     const isLink = this.isLink;
     const isButton = this.isButton;
     const isAccordion = this.isAccordion;
-    const isIconOnly = this.checkIfIconOnly();
+    const isIconOnly = this.isIconOnly;
 
     const slots = {
       label: this.hasSlotController.test('[default]'),
