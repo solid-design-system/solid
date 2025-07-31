@@ -104,9 +104,9 @@ export const Default = {
 };
 
 /**
- * Use the `sd-pagination` classes for alternative appearances:
+ * Use the `sd-pagination--*` classes for alternative appearances:
  *
- * - `number` (default)
+ * - number is the default appearance
  * - `simple`
  */
 export const Variants = {
@@ -197,7 +197,7 @@ export const Truncation = {
 };
 
 /**
- * Use the `inverted` attribute when displayed on primary background.
+ * Use the `sd-pagination--inverted` attribute when displayed on primary background.
  */
 export const Inverted = {
   render: () => html`

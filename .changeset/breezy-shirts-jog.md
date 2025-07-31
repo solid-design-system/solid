@@ -2,4 +2,4 @@
 '@solid-design-system/docs': patch
 ---
 
-Improved `sd-copyright` documentation to better explain the `no-shadow` attribute.
+Improved all style classes documentation so the user can better visualise which modifier classes are available.

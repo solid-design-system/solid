@@ -47,7 +47,7 @@ export const Default = {
 };
 
 /**
- * Use the `&--color-*` class for alternative appearances:
+ * Use the `sd-copyright--color-*` class for alternative appearances:
  *
  * - white is the default color
  * - `sd-copyright--color-black`
@@ -65,9 +65,9 @@ export const Variants = {
 };
 
 /**
- * Use the `&--no-shadow` class to remove the shadow.
+ * Use the `sd-copyright--no-shadow` class to remove the shadow.
  *
- * The property `&--color-black` automaticaly removes the shadow.
+ * The property `sd-copyright--color-black` automaticaly removes the shadow.
  */
 export const NoShadow = {
   render: () =>

@@ -39,7 +39,7 @@ export const Default = {
 };
 
 /**
- * Use the `sd-status-badge` classes for alternative appearances:
+ * Use the `sd-status-badge--*` classes for alternative appearances:
  * - `sd-status-badge--success`
  * - `sd-status-badge--warning`
  * - `sd-status-badge--error`
