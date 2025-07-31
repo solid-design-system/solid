@@ -5,7 +5,7 @@ import * as TailwindConfiguration from '../../.storybook/solid-tw-config.json';
 const tailwindConfig = `<script>
   tailwind.config = {
     theme: {
-      extend: ${JSON.stringify(TailwindConfiguration, null, 8)}
+      extend: ${TailwindConfiguration ? JSON.stringify(TailwindConfiguration, null, 8) : '{}'}
     }
   }
 </script>`;
