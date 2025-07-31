@@ -11,6 +11,7 @@ import tailwindcssNesting from 'tailwindcss/nesting/index.js';
 import tokensPackageJson from '../tokens/package.json';
 import VitePluginCreateEmptyCemIfNotExisting from './scripts/vite-plugin-create-empty-cem-if-not-existing';
 import VitePluginCustomElementsManifest from 'vite-plugin-cem';
+import vitePluginExtractTailwindTheme from './scripts/vite-plugin-extract-tailwind-theme.js';
 import VitePluginFetchIconsFromCdn from './scripts/vite-plugin-fetch-icons-from-cdn';
 import VitePluginGetPlaywrightVersion from './scripts/vite-plugin-get-playwright-version';
 import VitePluginGetTailwindTheme from './scripts/vite-plugin-get-tailwind-theme';
@@ -36,6 +37,7 @@ export default () => {
       VitePluginGetPlaywrightVersion(),
       VitePluginGetTailwindTheme(),
       VitePluginCreateEmptyCemIfNotExisting(),
+      vitePluginExtractTailwindTheme(),
       VitePluginCustomElementsManifest({
         ...customElementConfig,
         files: ['../components/src/**/!(*.stories|*.spec|*.test|*.style).ts'],
