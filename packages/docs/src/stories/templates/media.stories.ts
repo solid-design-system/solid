@@ -10,22 +10,6 @@ export default {
 };
 
 /**
- * Use the html `figcaption` element to add a description.
- */
-export const Description = {
-  render: () => html`
-    <figure class="sd-media p-4">
-      <img
-        src="./placeholders/images/architecture.jpg"
-        alt="A generic placeholder jpg"
-        class="aspect-video object-cover"
-      />
-      <figcaption>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula</figcaption>
-    </figure>
-  `
-};
-
-/**
  * `Copyright` can be shown at the bottom of the default slot.
  */
 
