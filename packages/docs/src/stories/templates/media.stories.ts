@@ -16,7 +16,7 @@ export default {
 export const Copyright = {
   render: () => html`
     <figure class="sd-media p-4">
-      <div class="sd-copyright" style="--copyright: '© Union Investment 2024'">
+      <div class="sd-copyright" style="--copyright: '© Union Investment 2025'">
         <img
           src="./placeholders/images/architecture.jpg"
           alt="A generic placeholder jpg"

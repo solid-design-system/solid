@@ -31,7 +31,7 @@ export const Default = {
 };
 
 /**
- * Use the `&--size-*` classes for alternative appearances.
+ * Use the `sd-display--size-*` classes for alternative appearances.
  * - `sd-display` (default)
  * - `sd-display--size-3xl`
  * - `sd-display--size-xl`
