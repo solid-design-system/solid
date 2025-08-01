@@ -45,12 +45,15 @@
   },
   "devDependencies": {
     "@open-wc/testing-helpers": "^3.0.1",
+    "@playwright/test": "^1.54.2",
     "@rollup/pluginutils": "^5.2.0",
     "@solid-design-system/theming": "workspace:*",
+    "@storybook/addon-docs": "^9.0.15",
     "@storybook/addon-links": "^9.0.15",
     "@storybook/test-runner": "^0.23.0",
     "@storybook/web-components-vite": "^9.0.15",
     "@tarekraafat/autocomplete.js": "^10.2.9",
+    "@types/node": "^24.0.10",
     "autoprefixer": "^10.4.21",
     "axe-html-reporter": "^2.2.11",
     "axe-playwright": "^2.1.0",
@@ -79,7 +82,6 @@
     "vite-plugin-cem": "^0.8.2",
     "vite-tsconfig-paths": "^5.1.4",
     "wait-on": "^8.0.3",
-    "wc-storybook-helpers": "1.5.3",
-    "@storybook/addon-docs": "^9.0.15"
+    "wc-storybook-helpers": "1.5.3"
   }
 }

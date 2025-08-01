@@ -4,14 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  tailwindcss@3.4.17:
-    hash: cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2
-    path: patches/tailwindcss@3.4.1.patch
-  wc-storybook-helpers:
-    hash: 4c6e82d07661a53d7daebec7dd842590a6dbeecda03c83d466a808c346d32a67
-    path: patches/wc-storybook-helpers.patch
-
 importers:
 
   .:
@@ -112,7 +104,7 @@ importers:
         version: 0.10.4
       '@mariohamann/tailwindcss-var':
         specifier: github:mariohamann/tailwindcss-var
-        version: https://codeload.github.com/mariohamann/tailwindcss-var/tar.gz/671cedc8890c64d3a54173513f5cb9d6dea4aaf1(tailwindcss@3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3)))
+        version: https://codeload.github.com/mariohamann/tailwindcss-var/tar.gz/671cedc8890c64d3a54173513f5cb9d6dea4aaf1(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3)))
       '@open-wc/testing':
         specifier: ^4.0.0
         version: 4.0.0
@@ -202,7 +194,7 @@ importers:
         version: 1.1.1
       playwright:
         specifier: ^1.53.2
-        version: 1.53.2
+        version: 1.54.2
       plop:
         specifier: ^4.0.1
         version: 4.0.1
@@ -223,7 +215,7 @@ importers:
         version: 21.0.0
       tailwindcss:
         specifier: ^3.4.17
-        version: 3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3))
+        version: 3.4.17(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3))
       typescript:
         specifier: 5.8.3
         version: 5.8.3
@@ -252,6 +244,9 @@ importers:
       '@open-wc/testing-helpers':
         specifier: ^3.0.1
         version: 3.0.1
+      '@playwright/test':
+        specifier: ^1.54.2
+        version: 1.54.2
       '@rollup/pluginutils':
         specifier: ^5.2.0
         version: 5.2.0(rollup@4.43.0)
@@ -273,6 +268,9 @@ importers:
       '@tarekraafat/autocomplete.js':
         specifier: ^10.2.9
         version: 10.2.9
+      '@types/node':
+        specifier: ^24.0.10
+        version: 24.0.10
       autoprefixer:
         specifier: ^10.4.21
         version: 10.4.21(postcss@8.5.6)
@@ -281,7 +279,7 @@ importers:
         version: 2.2.11(axe-core@4.10.3)
       axe-playwright:
         specifier: ^2.1.0
-        version: 2.1.0(playwright@1.53.2)
+        version: 2.1.0(playwright@1.54.2)
       change-case:
         specifier: ^5.4.4
         version: 5.4.4
@@ -335,7 +333,7 @@ importers:
         version: 9.0.15(@testing-library/dom@10.4.0)(prettier@3.6.2)
       tailwindcss:
         specifier: ^3.4.17
-        version: 3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3))
+        version: 3.4.17(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3))
       typescript:
         specifier: 5.8.3
         version: 5.8.3
@@ -359,7 +357,7 @@ importers:
         version: 8.0.3
       wc-storybook-helpers:
         specifier: 1.5.3
-        version: 1.5.3(patch_hash=4c6e82d07661a53d7daebec7dd842590a6dbeecda03c83d466a808c346d32a67)(lit@3.3.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 1.5.3(lit@3.3.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
 
   packages/eslint-plugin:
     dependencies:
@@ -414,7 +412,7 @@ importers:
     devDependencies:
       '@mariohamann/tailwindcss-var':
         specifier: ^2.1.0
-        version: 2.1.0(tailwindcss@3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3)))
+        version: 2.1.0(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3)))
       '@solid-design-system/versioning':
         specifier: workspace:^
         version: link:../versioning
@@ -459,7 +457,7 @@ importers:
         version: 3.6.2
       tailwindcss:
         specifier: ^3.4.17
-        version: 3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3))
+        version: 3.4.17(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3))
 
   packages/theming:
     dependencies:
@@ -1440,6 +1438,11 @@ packages:
   '@pkgr/core@0.2.7':
     resolution: {integrity: sha512-YLT9Zo3oNPJoBjBc4q8G2mjU4tqIbf5CEOORbUUr48dCD9q3umJ3IPlVqOqDakPfd2HuwccBaqlGhN4Gmr5OWg==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
+
+  '@playwright/test@1.54.2':
+    resolution: {integrity: sha512-A+znathYxPf+72riFd1r1ovOLqsIIB0jKIoPjyK2kqEIe30/6jF6BC7QNluHuwUmsD2tv1XZVugN8GqfTMOxsA==}
+    engines: {node: '>=18'}
+    hasBin: true
 
   '@prettier/sync@0.5.5':
     resolution: {integrity: sha512-6BMtNr7aQhyNcGzmumkL0tgr1YQGfm9d7ZdmRpWqWuqpc9vZBind4xMe5NMiRECOhjuSiWHfBWLBnXkpeE90bw==}
@@ -5515,8 +5518,18 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
+  playwright-core@1.54.2:
+    resolution: {integrity: sha512-n5r4HFbMmWsB4twG7tJLDN9gmBUeSPcsBZiWSE4DnYz9mJMAFqr2ID7+eGC9kpEnxExJ1epttwR59LEWCk8mtA==}
+    engines: {node: '>=18'}
+    hasBin: true
+
   playwright@1.53.2:
     resolution: {integrity: sha512-6K/qQxVFuVQhRQhFsVZ9fGeatxirtrpPgxzBYWyZLEXJzqYwuL4fuNmfOfD5et1tJE4GScKyPNeLhZeRwuTU3A==}
+    engines: {node: '>=18'}
+    hasBin: true
+
+  playwright@1.54.2:
+    resolution: {integrity: sha512-Hu/BMoA1NAdRUuulyvQC0pEqZ4vQbGfn8f7wPXcnqQmM+zct9UliKxsIkLNmz/ku7LElUNqmaiv1TG/aL5ACsw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -7996,13 +8009,13 @@ snapshots:
       globby: 11.1.0
       read-yaml-file: 1.1.0
 
-  '@mariohamann/tailwindcss-var@2.1.0(tailwindcss@3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3)))':
+  '@mariohamann/tailwindcss-var@2.1.0(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3)))':
     dependencies:
-      tailwindcss: 3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3))
+      tailwindcss: 3.4.17(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3))
 
-  '@mariohamann/tailwindcss-var@https://codeload.github.com/mariohamann/tailwindcss-var/tar.gz/671cedc8890c64d3a54173513f5cb9d6dea4aaf1(tailwindcss@3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3)))':
+  '@mariohamann/tailwindcss-var@https://codeload.github.com/mariohamann/tailwindcss-var/tar.gz/671cedc8890c64d3a54173513f5cb9d6dea4aaf1(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3)))':
     dependencies:
-      tailwindcss: 3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3))
+      tailwindcss: 3.4.17(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3))
 
   '@mdn/browser-compat-data@4.2.1': {}
 
@@ -8132,6 +8145,10 @@ snapshots:
     optional: true
 
   '@pkgr/core@0.2.7': {}
+
+  '@playwright/test@1.54.2':
+    dependencies:
+      playwright: 1.54.2
 
   '@prettier/sync@0.5.5(prettier@3.6.2)':
     dependencies:
@@ -9204,7 +9221,7 @@ snapshots:
     dependencies:
       '@web/test-runner-core': 0.13.4
       '@web/test-runner-coverage-v8': 0.8.0
-      playwright: 1.53.2
+      playwright: 1.54.2
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -9436,14 +9453,14 @@ snapshots:
       axe-core: 4.10.3
       mustache: 4.2.0
 
-  axe-playwright@2.1.0(playwright@1.53.2):
+  axe-playwright@2.1.0(playwright@1.54.2):
     dependencies:
       '@types/junit-report-builder': 3.0.2
       axe-core: 4.10.3
       axe-html-reporter: 2.2.11(axe-core@4.10.3)
       junit-report-builder: 5.1.1
       picocolors: 1.1.1
-      playwright: 1.53.2
+      playwright: 1.54.2
 
   axios@1.10.0:
     dependencies:
@@ -13144,9 +13161,17 @@ snapshots:
 
   playwright-core@1.53.2: {}
 
+  playwright-core@1.54.2: {}
+
   playwright@1.53.2:
     dependencies:
       playwright-core: 1.53.2
+    optionalDependencies:
+      fsevents: 2.3.2
+
+  playwright@1.54.2:
+    dependencies:
+      playwright-core: 1.54.2
     optionalDependencies:
       fsevents: 2.3.2
 
@@ -14077,12 +14102,12 @@ snapshots:
       chalk: 4.1.2
       fs-extra: 10.1.0
       lodash.reduce: 4.6.0
-      tailwindcss: 3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3))
+      tailwindcss: 3.4.17(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3))
       yargs: 17.7.2
     transitivePeerDependencies:
       - ts-node
 
-  tailwindcss@3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3)):
+  tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.0.10)(typescript@5.8.3)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -14528,7 +14553,7 @@ snapshots:
     dependencies:
       makeerror: 1.0.12
 
-  wc-storybook-helpers@1.5.3(patch_hash=4c6e82d07661a53d7daebec7dd842590a6dbeecda03c83d466a808c346d32a67)(lit@3.3.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  wc-storybook-helpers@1.5.3(lit@3.3.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       '@storybook/client-api': 6.5.16(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       lit: 3.3.0
