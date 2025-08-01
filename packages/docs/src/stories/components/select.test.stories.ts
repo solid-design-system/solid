@@ -56,7 +56,7 @@ export default {
   args: overrideArgs([
     threeOptionsConstant,
     labelConstant,
-    { type: 'attribute', name: 'placeholder', value: 'Please Select' },
+    { type: 'attribute', name: 'placeholder', value: 'Please select' },
     { type: 'attribute', name: 'max-options-visible', value: 3 }
   ]),
   argTypes: {
@@ -220,14 +220,14 @@ export const ValidInvalid = {
  */
 
 export const BorderVisibility = {
-  name: 'Border Visibility',
+  name: 'Border visibility',
   render: () => {
     return html`<div class="h-[150px] w-[420px]">
       ${generateTemplate({
         args: overrideArgs([
           twentyOptionsConstant,
           labelConstant,
-          { type: 'attribute', name: 'placeholder', value: 'Please Select' },
+          { type: 'attribute', name: 'placeholder', value: 'Please select' },
           { type: 'attribute', name: 'max-options-visible', value: 3 }
         ])
       })}
@@ -350,7 +350,7 @@ export const Parts = {
  */
 
 export const StyleOnValid = {
-  name: 'Style on Valid',
+  name: 'Style on valid',
   render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
@@ -412,7 +412,7 @@ export const Mouseless = {
           twoOptionsConstant,
           multipleConstant,
           { type: 'attribute', name: 'useTags', value: true },
-          { type: 'attribute', name: 'label', value: 'Multiple w/ Tags' }
+          { type: 'attribute', name: 'label', value: 'Multiple w/ tags' }
         ],
         args
       })}
@@ -431,7 +431,7 @@ export const Mouseless = {
  */
 
 export const SampleGroupingOptions = {
-  name: 'Sample: Grouping Options',
+  name: 'Sample: Grouping options',
   render: (args: any) => {
     return html`<div class="h-[290px] w-[420px]">
       ${generateTemplate({
@@ -481,7 +481,7 @@ export const SampleForm = {
           ${generateTemplate({
             constants: [
               ...sharedConstants,
-              { type: 'attribute', name: 'label', value: 'Required Multiple' },
+              { type: 'attribute', name: 'label', value: 'Required multiple' },
               { type: 'attribute', name: 'name', value: 'required multiple field' },
               multipleConstant
             ],
@@ -492,7 +492,7 @@ export const SampleForm = {
           ${generateTemplate({
             constants: [
               ...sharedConstants,
-              { type: 'attribute', name: 'label', value: 'Required Multiple w/ Tags' },
+              { type: 'attribute', name: 'label', value: 'Required multiple w/ tags' },
               { type: 'attribute', name: 'name', value: 'required multiple tags field' },
               multipleConstant,
               { type: 'attribute', name: 'useTags', value: true }
@@ -597,7 +597,7 @@ export const setCustomValidity = {
  */
 
 export const SolidForm = {
-  name: 'Sample: Solid Form',
+  name: 'Sample: Solid form',
   render: () => {
     return html`
       <form action="" method="get" id="testForm" name="testForm" class="">
