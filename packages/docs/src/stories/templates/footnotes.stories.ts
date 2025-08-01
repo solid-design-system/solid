@@ -12,7 +12,7 @@ export default {
 export const LinkedFootnotes = {
   render: () => html`
     <div class="sd-prose">
-      <!-- Dev-note: The <a> elements have been wrapped in <span> elements due to a issue in safari
+      <!-- Dev-note: The <a> elements have been wrapped in <span> elements due to an issue in safari
       where using the mouse to navigate between footnotes would trigger the focus-outline. -->
 
       <h2 class="sd-headline sd-headline--3xl">The Power of a Solid Design System</h2>
