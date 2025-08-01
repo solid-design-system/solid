@@ -67,7 +67,7 @@ export const Variants = {
 /**
  * Use the `sd-copyright--no-shadow` class to remove the shadow.
  *
- * The property `sd-copyright--color-black` automaticaly removes the shadow.
+ * __Hint:__ the class `sd-copyright--color-black` automaticaly removes the shadow.
  */
 export const NoShadow = {
   render: () =>
