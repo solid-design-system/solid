@@ -45,7 +45,7 @@ const twentyOptionsConstant: ConstantDefinition = {
 
 const clearableConstant: ConstantDefinition = { type: 'attribute', name: 'clearable', value: true };
 const multipleConstant: ConstantDefinition = { type: 'attribute', name: 'multiple', value: true };
-const helpTextConstant: ConstantDefinition = { type: 'attribute', name: 'help-text', value: 'help-text' };
+const helpTextConstant: ConstantDefinition = { type: 'attribute', name: 'help-text', value: 'Help-text' };
 const labelConstant: ConstantDefinition = { type: 'attribute', name: 'label', value: 'Label' };
 
 // Stories

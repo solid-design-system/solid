@@ -182,7 +182,7 @@ export const Disabled = {
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' }
+    { type: 'attribute', name: 'help-text', value: 'Help-text' }
   ]),
   render: (args: any) => {
     return html`
@@ -205,7 +205,7 @@ export const Readonly = {
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' }
+    { type: 'attribute', name: 'help-text', value: 'Help-text' }
   ]),
   render: (args: any) => {
     return html`
@@ -228,7 +228,7 @@ export const Sizes = {
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' },
+    { type: 'attribute', name: 'help-text', value: 'Help-text' },
     { type: 'attribute', name: 'clearable', value: true },
     {
       type: 'slot',
@@ -255,7 +255,7 @@ export const StyleOnValid = {
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' },
+    { type: 'attribute', name: 'help-text', value: 'Help-text' },
     { type: 'attribute', name: 'clearable', value: true },
     {
       type: 'slot',
@@ -712,7 +712,7 @@ export const Slots = {
             { type: 'attribute', name: 'clearable', value: true },
             { type: 'attribute', name: 'value', value: 'Value' },
             { type: 'attribute', name: 'label', value: 'Label' },
-            { type: 'attribute', name: 'help-text', value: 'help-text' },
+            { type: 'attribute', name: 'help-text', value: 'Help-text' },
             {
               type: 'slot',
               name: 'left',
@@ -766,7 +766,7 @@ export const Parts = {
         { type: 'attribute', name: 'clearable', value: true },
         { type: 'attribute', name: 'value', value: 'Value' },
         { type: 'attribute', name: 'label', value: 'Label' },
-        { type: 'attribute', name: 'help-text', value: 'help-text' },
+        { type: 'attribute', name: 'help-text', value: 'Help-text' },
         {
           type: 'slot',
           name: 'left',
