@@ -69,7 +69,7 @@ index 2cf57666c31e7b572cbd10a6bc10f334b0376429..da6a2fb3969bf07b17abbf5ed13e1fb1
  function isObject(type) {
      return (type.includes("array") ||
 diff --git a/dist/html-templates.js b/dist/html-templates.js
-index 31b37aeec6a863600bba6d29009bb429f8828a71..4970faee98ef7a7416eb521c61d15e6e9dcbd72f 100644
+index 31b37aeec6a863600bba6d29009bb429f8828a71..408e7813da2a49271ef566448650e83849b5c7ef 100644
 --- a/dist/html-templates.js
 +++ b/dist/html-templates.js
 @@ -1,5 +1,5 @@
@@ -79,7 +79,7 @@ index 31b37aeec6a863600bba6d29009bb429f8828a71..4970faee98ef7a7416eb521c61d15e6e
  import { html, unsafeStatic } from "lit/static-html.js";
  import { getAttributesAndProperties, getCssParts, getCssProperties, getSlots, } from "./cem-utilities.js";
  let argObserver;
-@@ -24,8 +24,8 @@ export function getTemplate(component, args, slot, argTypes) {
+@@ -24,14 +24,18 @@ export function getTemplate(component, args, slot, argTypes) {
          argObserver = undefined;
          lastTagName = component?.tagName;
      }
@@ -90,7 +90,18 @@ index 31b37aeec6a863600bba6d29009bb429f8828a71..4970faee98ef7a7416eb521c61d15e6e
      const slotsTemplate = getSlotsTemplate(component, args);
      const cssPropertiesTemplate = getCssPropTemplate(component, args);
      syncControls(component);
-@@ -50,12 +50,10 @@ ${options.hideScriptTag
++    const parsedOperators = {
++        ...operators,
++        ...Object.fromEntries(Object.entries(operators).map(([key, value]) => ([key.startsWith('?') ? key : `.${key}`, value])))
++    };
+     return html `${getStyleTemplate(component, args)}
+ <${unsafeStatic(component.tagName)} 
+-  ${spread(operators)}
++  ${spread(parsedOperators)}
+   ${cssPropertiesTemplate}
+   >
+     ${slotsTemplate}${slot || ""}
+@@ -50,12 +54,10 @@ ${options.hideScriptTag
   * @returns styles in a tagged template literal
   */
  export function getStyleTemplate(component, args) {
@@ -107,7 +118,19 @@ index 31b37aeec6a863600bba6d29009bb429f8828a71..4970faee98ef7a7416eb521c61d15e6e
  }
  /**
   * Gets a formatted object with the component's attributes and properties formatted to be used as operators in the template
-@@ -91,13 +89,15 @@ function getTemplateOperators(component, args, argTypes) {
+@@ -76,10 +78,7 @@ function getTemplateOperators(component, args, argTypes) {
+         const attrName = attr.name;
+         const attrValue = args[key];
+         const prop = attr.control.type === "boolean" ? `?${attrName}` : attrName;
+-        if (attrValue !== attributes[key].defaultValue ||
+-            options.renderDefaultAttributeValues) {
+-            attrOperators[prop] = attrValue === "false" ? false : attrValue;
+-        }
++        attrOperators[prop] = attrValue === "false" ? false : attrValue;
+     });
+     Object.keys(args)
+         .filter((key) => attributes[key]?.table?.category === "properties")
+@@ -91,13 +90,14 @@ function getTemplateOperators(component, args, argTypes) {
          propOperators[`.${key}`] = propValue;
      });
      Object.keys(args)
@@ -125,7 +148,6 @@ index 31b37aeec6a863600bba6d29009bb429f8828a71..4970faee98ef7a7416eb521c61d15e6e
 +                additionalAttrs[k] = args[key];
 +            }
 +        });
-+
      return { attrOperators, propOperators, additionalAttrs };
  }
  /**

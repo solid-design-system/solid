@@ -303,9 +303,7 @@ export const storybookTemplate = (customElementTag: string) => {
           const attributes = Object.fromEntries(
             Object.entries(args)
               .filter(([attr]) => attr.endsWith('-attr'))
-              .map(([attr, value]) => {
-                return [attr.replace('-attr', ''), value];
-              })
+              .map(([attr, value]) => [attr.replace('-attr', ''), value])
               .filter(([, value]) => value)
           );
 
@@ -327,7 +325,25 @@ export const storybookTemplate = (customElementTag: string) => {
           );
         }
 
-        return theTemplate(args);
+        const attributes = Object.fromEntries(
+          Object.entries(args)
+            .filter(([attr]) => !attr.endsWith('-part') && !attr.endsWith('-slot') && !attr.startsWith('on'))
+            .filter(([, value]) => value)
+            .map(([attr, value]) => {
+              if (attr.includes('-attr') && !!args[attr.replace('-attr', '')]) {
+                return ['', undefined];
+              }
+
+              if (value && !attr.includes('-attr') && !!args[`${attr}-attr`]) {
+                return [`${attr}-attr`, value];
+              }
+
+              return [attr, value];
+            })
+            .filter(([attr]) => !!attr)
+        );
+
+        return theTemplate({ ...args, ...attributes });
       }
       // b) CSS Styles
       // Extract class related attributes and transform into an object.
