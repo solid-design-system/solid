@@ -12,6 +12,9 @@ export default {
 export const LinkedFootnotes = {
   render: () => html`
     <div class="sd-prose">
+      <!-- Dev-note: The <a> elements have been wrapped in <span> elements due to a issue in safari
+      where using the mouse to navigate between footnotes would trigger the focus-outline. -->
+
       <h2 class="sd-headline sd-headline--3xl">The Power of a Solid Design System</h2>
       <p class="sd-paragraph">
         A solid design system is the backbone of a cohesive product, offering a single source of truth that promotes
