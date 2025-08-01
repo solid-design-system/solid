@@ -299,16 +299,24 @@ export const storybookTemplate = (customElementTag: string) => {
       const slotContent = args['default-slot'] || '';
 
       if (manifest?.name.startsWith('Sd')) {
-        if (options?.templateRenderer) {
-          const attributes = Object.fromEntries(
-            Object.entries(args)
-              .filter(([attr]) => attr.endsWith('-attr'))
-              .map(([attr, value]) => {
-                return [attr.replace('-attr', ''), value];
-              })
-              .filter(([, value]) => value)
-          );
+        const attributes = Object.fromEntries(
+          Object.entries(args)
+            .filter(([attr]) => !attr.endsWith('-part') && !attr.endsWith('-slot') && !attr.startsWith('on'))
+            .filter(([, value]) => value)
+            .map(([attr, value]) => {
+              if (attr.includes('-attr') && !!args[attr.replace('-attr', '')]) {
+                return ['', undefined];
+              }
 
+              if (value && !attr.includes('-attr') && !!args[`${attr}-attr`]) {
+                return [`${attr}-attr`, value];
+              }
+
+              return [attr, value];
+            })
+        );
+
+        if (options?.templateRenderer) {
           const slots = Object.fromEntries(
             Object.entries(args)
               .filter(([slot]) => slot.endsWith('-slot'))
@@ -327,7 +335,7 @@ export const storybookTemplate = (customElementTag: string) => {
           );
         }
 
-        return theTemplate(args);
+        return theTemplate({ ...args, ...attributes });
       }
       // b) CSS Styles
       // Extract class related attributes and transform into an object.
