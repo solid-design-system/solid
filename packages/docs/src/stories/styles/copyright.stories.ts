@@ -24,7 +24,7 @@ export default {
       value: `<img src="./placeholders/images/generic.jpg" alt="" class="aspect-video object-cover"/>`
     },
     {
-      '--copyright': '© Union Investment 2024'
+      '--copyright': '© Union Investment 2025'
     }
   ),
   argTypes
@@ -55,10 +55,10 @@ export const Default = {
 export const Variants = {
   render: () =>
     html` <div class="flex">
-      <div class="sd-copyright flex-1" style="--copyright: '© Union Investment 2024';">
+      <div class="sd-copyright flex-1" style="--copyright: '© Union Investment 2025';">
         <div class="sd-container sd-container--variant-primary h-full"></div>
       </div>
-      <div class="sd-copyright sd-copyright--color-black flex-1" style="--copyright: '© Union Investment 2024';">
+      <div class="sd-copyright sd-copyright--color-black flex-1" style="--copyright: '© Union Investment 2025';">
         <div class="sd-container sd-container--variant-border-neutral-400 h-full"></div>
       </div>
     </div>`
@@ -72,10 +72,10 @@ export const Variants = {
 export const NoShadow = {
   render: () =>
     html` <div class="flex">
-      <div class="sd-copyright sd-copyright--no-shadow flex-1" style="--copyright: '© Union Investment 2024';">
+      <div class="sd-copyright sd-copyright--no-shadow flex-1" style="--copyright: '© Union Investment 2025';">
         <div class="sd-container sd-container--variant-primary h-full"></div>
       </div>
-      <div class="sd-copyright sd-copyright--color-black flex-1" style="--copyright: '© Union Investment 2024';">
+      <div class="sd-copyright sd-copyright--color-black flex-1" style="--copyright: '© Union Investment 2025';">
         <div class="sd-container sd-container--variant-border-neutral-400 h-full"></div>
       </div>
     </div>`
@@ -90,13 +90,13 @@ export const NoShadow = {
 export const Orientation = {
   render: () =>
     html`<div class="grid grid-cols-2 gap-4">
-      <div class="sd-copyright max-w-xl" style="--copyright: '© Union Investment 2024';">
+      <div class="sd-copyright max-w-xl" style="--copyright: '© Union Investment 2025';">
         <img src="./placeholders/images/generic.jpg" alt="" class="aspect-video object-cover" />
       </div>
 
       <div
         class="sd-copyright sd-copyright--orientation-vertical max-w-xl"
-        style="--copyright: '© Union Investment 2024';"
+        style="--copyright: '© Union Investment 2025';"
       >
         <img src="./placeholders/images/generic.jpg" alt="" class="aspect-video object-cover" />
       </div>
@@ -118,11 +118,11 @@ export const Placement = {
         }
       </style>
       <div class="grid grid-cols-2 gap-4">
-        <div class="sd-copyright max-w-xl" style="--copyright: '© Union Investment 2024';">
+        <div class="sd-copyright max-w-xl" style="--copyright: '© Union Investment 2025';">
           <img src="./placeholders/images/generic.jpg" alt="" class="aspect-video object-cover h-full" />
         </div>
 
-        <div class="sd-copyright sd-copyright--placement-top max-w-xl" style="--copyright: '© Union Investment 2024';">
+        <div class="sd-copyright sd-copyright--placement-top max-w-xl" style="--copyright: '© Union Investment 2025';">
           <img src="./placeholders/images/generic.jpg" alt="" class="aspect-video object-cover h-full" />
         </div>
       </div>`
