@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 1.26.8
+
+### Patch Changes
+
+- Improved use of solid components in Codepen environment: _[`#2407`](https://github.com/solid-design-system/solid/pull/2407) [`9280957`](https://github.com/solid-design-system/solid/commit/928095786bd6eaca704c1a6a07f7e3f602e3265e) [@smfonseca](https://github.com/smfonseca)_
+  - Images, videos and audio files from the `placeholders` package are correctly imported.
+  - Solid Tailwind configuration is available allowing the correct display of component and the use of different variables.
+
 ## 1.26.7
 
 ### Patch Changes
