@@ -122,8 +122,11 @@ export const Placement = {
           <img src="./placeholders/images/generic.jpg" alt="" class="aspect-video object-cover h-full" />
         </div>
 
-        <div class="sd-copyright sd-copyright--placement-top max-w-xl" style="--copyright: '© Union Investment 2025';">
-          <img src="./placeholders/images/generic.jpg" alt="" class="aspect-video object-cover h-full" />
-        </div>
+        <sd-video
+          class="sd-copyright sd-copyright--placement-top max-w-xl"
+          style="--copyright: '© Union Investment 2025';"
+        >
+          <img class="aspect-video object-cover" alt src="./placeholders/images/generic.jpg" />
+        </sd-video>
       </div>`
 };
