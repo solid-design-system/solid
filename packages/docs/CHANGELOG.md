@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 1.26.9
+
+### Patch Changes
+
+- Added support for `<a>` inside `sd-footnotes--marker`. _[`#2421`](https://github.com/solid-design-system/solid/pull/2421) [`515a2b1`](https://github.com/solid-design-system/solid/commit/515a2b1168af2cc7c91469942220f7e520637bb3) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Removed `sd-footnotes` safari known issue.
+
 ## 1.26.8
 
 ### Patch Changes
