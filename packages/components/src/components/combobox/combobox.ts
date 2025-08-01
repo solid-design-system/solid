@@ -1449,7 +1449,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         <div
           part="form-control-help-text"
           id="help-text"
-          class="text-sm text-neutral-700 mt-2"
+          class="text-sm text-neutral-700 mt-1"
           aria-hidden=${!hasHelpText}
         >
           <slot name="help-text">${this.helpText}</slot>

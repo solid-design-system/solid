@@ -157,7 +157,7 @@ export const Placement = {
 export const Label = {
   render: () => html`
     <div class="flex gap-12 h-[500px]">
-      <sd-combobox size="lg" label="Label Attribute" placement="bottom" value="">
+      <sd-combobox size="lg" label="Label attribute" placement="bottom" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -166,7 +166,7 @@ export const Label = {
       </sd-combobox>
 
       <sd-combobox size="lg" placement="bottom" value="">
-        <div slot="label" class="text-lg">Label Slot</div>
+        <div slot="label" class="text-lg">Label slot</div>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -225,7 +225,7 @@ export const VisuallyDisabled = {
         <sd-combobox
           size="lg"
           label="Label"
-          placeholder="Visually Disabled"
+          placeholder="Visually disabled"
           placement="bottom"
           value=""
           visually-disabled
@@ -249,7 +249,7 @@ export const VisuallyDisabled = {
 export const HelpText = {
   render: () => html`
     <div class="flex gap-12 h-[500px]">
-      <sd-combobox size="lg" label="Label" placement="bottom" value="" help-text="Help text Attribute">
+      <sd-combobox size="lg" label="Label" placement="bottom" value="" help-text="Help text attribute">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -258,7 +258,7 @@ export const HelpText = {
       </sd-combobox>
 
       <sd-combobox size="lg" label="Label" placement="bottom" value="">
-        <div slot="help-text" class="text-lg">Help text Slot</div>
+        <div slot="help-text" class="text-lg">Help text slot</div>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -299,7 +299,7 @@ export const SuggestionContainerHeight = {
           max-height: 100px;
         }
       </style>
-      <sd-combobox label="Preferred Color" id="max-height" value="g"> ${createColorOptionsHtml()} </sd-combobox>
+      <sd-combobox label="Preferred color" id="max-height" value="g"> ${createColorOptionsHtml()} </sd-combobox>
     </div>
   `
 };
@@ -553,7 +553,7 @@ export const AsyncOptions = {
 export const CustomFilter = {
   render: () => html`
     <div class="w-[400px] h-[500px]">
-      <sd-combobox label="Custom Filter" class="filter-combobox"> ${createColorOptionsHtml()} </sd-combobox>
+      <sd-combobox label="Custom filter" class="filter-combobox"> ${createColorOptionsHtml()} </sd-combobox>
     </div>
     <script type="module">
       const comboboxes = document.querySelectorAll('.filter-combobox');

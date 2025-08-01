@@ -56,9 +56,9 @@ export const Size = {
 export const Label = {
   render: () => html`
     <div class="flex flex-row gap-12 items-baseline">
-      <sd-input label="Label Attribute" spellcheck></sd-input>
+      <sd-input label="Label attribute" spellcheck></sd-input>
       <sd-input spellcheck>
-        <div slot="label" class="text-lg">Label Slot</div>
+        <div slot="label" class="text-lg">Label slot</div>
       </sd-input>
     </div>
   `
@@ -106,8 +106,8 @@ export const Disabled = {
 export const VisuallyDisabled = {
   render: () =>
     html`<div class="w-[250px] h-[200px] pt-12">
-      <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
-        <sd-input label="Label" value="Visually Disabled" visually-disabled></sd-input>
+      <sd-tooltip content="Visually disabled" trigger="hover focus" size="sm" placement="top">
+        <sd-input label="Label" value="Visually disabled" visually-disabled></sd-input>
       </sd-tooltip>
     </div>`
 };
@@ -180,7 +180,7 @@ export const Icon = {
 export const TogglePassword = {
   render: () =>
     html`<div class="w-[250px]">
-      <sd-input type="password" label="Toggle Password" password-toggle spellcheck></sd-input>
+      <sd-input type="password" label="Toggle password" password-toggle spellcheck></sd-input>
     </div>`
 };
 
@@ -194,7 +194,7 @@ export const Type = {
       <sd-input
         type="text"
         placeholder="Lorem ipsum"
-        label="Text (Default)"
+        label="Text (default)"
         help-text="Default type"
         spellcheck
       ></sd-input>
@@ -217,7 +217,7 @@ export const Type = {
 
       <sd-input
         type="datetime-local"
-        label="Date Time"
+        label="Date time"
         value="2025-03-01T10:30"
         help-text="Value is restricted to datetime format"
         spellcheck
@@ -402,7 +402,7 @@ export const SpinButtons = {
   render: () => html`
     <div class="w-[250px]">
       <sd-input
-        label="Spin Buttons"
+        label="Spin buttons"
         type="number"
         min="0"
         max="100"

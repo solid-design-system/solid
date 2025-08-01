@@ -64,7 +64,7 @@ describe('<sd-carousel>', () => {
         <sd-option value="option-3">Option 3</sd-option>
       </sd-select>
     `);
-    expect(select.shadowRoot!.querySelector('input')!.value).to.equal('Options Selected (2)');
+    expect(select.shadowRoot!.querySelector('input')!.value).to.equal('Options selected (2)');
   });
 
   it('should apply custom localization with a function', async () => {

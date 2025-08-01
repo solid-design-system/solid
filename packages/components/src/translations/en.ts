@@ -28,7 +28,7 @@ const translation: Translation = {
   notifications: 'Notifications',
   numOptionsSelected: num => {
     if (num === 0) return '';
-    return `Options Selected (${num})`;
+    return `Options selected (${num})`;
   },
   open: 'Open',
   openTranscript: 'Open transcript',
