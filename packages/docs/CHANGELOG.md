@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.26.10
+
+### Patch Changes
+
+- Improved all style classes documentation so the user can better visualise which modifier classes are available. _[`#2386`](https://github.com/solid-design-system/solid/pull/2386) [`6ce01e4`](https://github.com/solid-design-system/solid/commit/6ce01e4d9c758cf1e181565fbe10c7010c0df002) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.26.9
 
 ### Patch Changes
