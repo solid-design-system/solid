@@ -23,7 +23,7 @@ export default {
           <p slot="label">Step 2</p>
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" disabled>
+        <sd-step size="lg" orientation="horizontal" waiting>
           <p slot="label">Step 3</p>
         </sd-step>`
     },
@@ -51,7 +51,7 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return html`<div style="height:250px">${generateTemplate({ args })}</div>`;
+    return html`<div>${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -74,7 +74,7 @@ export const Size = {
           <p slot="label">Step 2</p>
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" disabled>
+        <sd-step size="lg" orientation="horizontal" waiting>
           <p slot="label">Step 3</p>
         </sd-step>
       </sd-step-group>
@@ -88,7 +88,7 @@ export const Size = {
           <p slot="label">Step 2</p>
         </sd-step>
 
-        <sd-step size="sm" orientation="horizontal" disabled>
+        <sd-step size="sm" orientation="horizontal" waiting>
           <p slot="label">Step 3</p>
         </sd-step>
       </sd-step-group>
@@ -117,7 +117,7 @@ export const Orientation = {
           <p slot="label">Step 2</p>
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" disabled>
+        <sd-step size="lg" orientation="horizontal" waiting>
           <p slot="label">Step 3</p>
         </sd-step>
       </sd-step-group>
@@ -132,11 +132,35 @@ export const Orientation = {
             <p slot="label">Step 2</p>
           </sd-step>
 
-          <sd-step size="lg" orientation="vertical" disabled>
+          <sd-step size="lg" orientation="vertical" waiting>
             <p slot="label">Step 3</p>
           </sd-step>
         </sd-step-group>
       </div>
+    </div>
+  `
+};
+
+/**
+ * Use the `horizontal-inline` attribute to activate the inline option of the horizontal orientation.
+ */
+export const HorizontalInline = {
+  name: 'Horizontal Inline',
+  render: () => html`
+    <div class="pl-4">
+      <sd-step-group size="lg" orientation="horizontal" active-step="1" class="w-full" label="Orientation Label">
+        <sd-step size="lg" orientation="horizontal" horizontal-inline>
+          <p slot="label">Step 1</p>
+        </sd-step>
+
+        <sd-step size="lg" orientation="horizontal" horizontal-inline current>
+          <p slot="label">Step 2</p>
+        </sd-step>
+
+        <sd-step size="lg" orientation="horizontal" horizontal-inline waiting>
+          <p slot="label">Step 3</p>
+        </sd-step>
+      </sd-step-group>
     </div>
   `
 };
@@ -156,7 +180,7 @@ export const ActiveStep = {
         <p slot="label">Step 2</p>
       </sd-step>
 
-      <sd-step size="lg" orientation="horizontal" disabled>
+      <sd-step size="lg" orientation="horizontal" waiting>
         <p slot="label">Step 3</p>
       </sd-step>
     </sd-step-group>
@@ -166,20 +190,20 @@ export const ActiveStep = {
 /**
  * Use the `not-interactive` attribute to create a non-interactive step group.
  */
-export const notInteractive = {
+export const NotInteractive = {
   name: 'Not Interactive',
   render: () => html`
     <sd-step-group size="lg" orientation="horizontal" active-step="0" not-interactive>
       <sd-step size="lg" orientation="horizontal">
-        <div slot="label">Label</div>
+        <div slot="label">Step 1</div>
       </sd-step>
 
       <sd-step size="lg" orientation="horizontal" current>
-        <span slot="label">Label</span>
+        <span slot="label">Step 2</span>
       </sd-step>
 
-      <sd-step size="lg" orientation="horizontal" disabled>
-        <span slot="label">Label</span>
+      <sd-step size="lg" orientation="horizontal" waiting>
+        <span slot="label">Step 3</span>
       </sd-step>
     </sd-step-group>
   `
@@ -194,17 +218,17 @@ export const Icon = {
     <sd-step-group size="lg" orientation="horizontal" active-step="0" not-interactive>
       <sd-step size="lg" orientation="horizontal" not-interactive>
         <sd-icon slot="circle-content" name="content/image" class="h-12 w-12"></sd-icon>
-        <div slot="label">Label</div>
+        <div slot="label">Step 1</div>
       </sd-step>
 
       <sd-step size="lg" orientation="horizontal" not-interactive>
         <sd-icon slot="circle-content" name="content/image" class="h-12 w-12"></sd-icon>
-        <div slot="label">Label</div>
+        <div slot="label">Step 2</div>
       </sd-step>
 
       <sd-step size="lg" orientation="horizontal" not-interactive>
         <sd-icon slot="circle-content" name="content/image" class="h-12 w-12"></sd-icon>
-        <div slot="label">Label</div>
+        <div slot="label">Step 3</div>
       </sd-step>
     </sd-step-group>
   `
