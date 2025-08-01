@@ -299,24 +299,14 @@ export const storybookTemplate = (customElementTag: string) => {
       const slotContent = args['default-slot'] || '';
 
       if (manifest?.name.startsWith('Sd')) {
-        const attributes = Object.fromEntries(
-          Object.entries(args)
-            .filter(([attr]) => !attr.endsWith('-part') && !attr.endsWith('-slot') && !attr.startsWith('on'))
-            .filter(([, value]) => value)
-            .map(([attr, value]) => {
-              if (attr.includes('-attr') && !!args[attr.replace('-attr', '')]) {
-                return ['', undefined];
-              }
-
-              if (value && !attr.includes('-attr') && !!args[`${attr}-attr`]) {
-                return [`${attr}-attr`, value];
-              }
-
-              return [attr, value];
-            })
-        );
-
         if (options?.templateRenderer) {
+          const attributes = Object.fromEntries(
+            Object.entries(args)
+              .filter(([attr]) => attr.endsWith('-attr'))
+              .map(([attr, value]) => [attr.replace('-attr', ''), value])
+              .filter(([, value]) => value)
+          );
+
           const slots = Object.fromEntries(
             Object.entries(args)
               .filter(([slot]) => slot.endsWith('-slot'))
@@ -334,6 +324,24 @@ export const storybookTemplate = (customElementTag: string) => {
             })
           );
         }
+
+        const attributes = Object.fromEntries(
+          Object.entries(args)
+            .filter(([attr]) => !attr.endsWith('-part') && !attr.endsWith('-slot') && !attr.startsWith('on'))
+            .filter(([, value]) => value)
+            .map(([attr, value]) => {
+              if (attr.includes('-attr') && !!args[attr.replace('-attr', '')]) {
+                return ['', undefined];
+              }
+
+              if (value && !attr.includes('-attr') && !!args[`${attr}-attr`]) {
+                return [`${attr}-attr`, value];
+              }
+
+              return [attr, value];
+            })
+            .filter(([attr]) => !!attr)
+        );
 
         return theTemplate({ ...args, ...attributes });
       }
