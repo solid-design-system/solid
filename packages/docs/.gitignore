@@ -28,4 +28,4 @@ public
 
 axe-reports
 
-.storybook/solid-tw-config.json
+**/solid-tw-config.json
