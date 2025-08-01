@@ -30,7 +30,7 @@ export default {
           <p slot="label">Exercitation ullamco laboris</p>
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" state="disabled">
+        <sd-step size="lg" orientation="horizontal" state="waiting">
           <p slot="label">Reprehenderit qui in e name</p>
         </sd-step>`
     },
@@ -184,7 +184,7 @@ export const Parts = {
               Lorem ipsum est dolor sit amet
             </sd-step>
 
-            <sd-step size="lg" orientation="horizontal" state="disabled">
+            <sd-step size="lg" orientation="horizontal" state="waiting">
               <p slot="label">Reprehenderit qui in e name</p>
               Lorem ipsum est dolor sit amet
             </sd-step>`

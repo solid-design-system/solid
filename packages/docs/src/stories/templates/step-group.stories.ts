@@ -33,8 +33,8 @@ export const HorizontalInlineWithLabelStepGroup = {
         <sd-step orientation="horizontal" horizontal-inline current>
           <span slot="label">Account</span>
         </sd-step>
-        <sd-step orientation="horizontal" horizontal-inline label="Step 2"></sd-step>
-        <sd-step orientation="horizontal" horizontal-inline label="Step 3"></sd-step>
+        <sd-step waiting orientation="horizontal" horizontal-inline label="Step 2"></sd-step>
+        <sd-step orientation="horizontal" waiting horizontal-inline label="Step 3"></sd-step>
       </sd-step-group>
     </div>
 
@@ -44,7 +44,7 @@ export const HorizontalInlineWithLabelStepGroup = {
         <sd-step orientation="horizontal" horizontal-inline current>
           <span slot="label">Payment</span>
         </sd-step>
-        <sd-step orientation="horizontal" horizontal-inline label="Step 3"></sd-step>
+        <sd-step orientation="horizontal" waiting horizontal-inline label="Step 3"></sd-step>
       </sd-step-group>
     </div>
 

@@ -119,6 +119,21 @@ export const Current = {
 };
 
 /**
+ * Use the `waiting` attribute to set the step as a future step.
+ */
+
+export const Waiting = {
+  name: 'Waiting',
+  render: () => html`
+    <div class="w-min">
+      <sd-step waiting>
+        <span slot="label">Waiting</span>
+      </sd-step>
+    </div>
+  `
+};
+
+/**
  * Use the `disabled` attribute to disable a step.
  */
 

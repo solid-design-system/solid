@@ -46,6 +46,9 @@ export default class SdStep extends SolidElement {
   /** Enables the horizontal inline variant for more compact layout. */
   @property({ type: Boolean, reflect: true, attribute: 'horizontal-inline' }) horizontalInline = false;
 
+  /** Sets the step to a waiting state. */
+  @property({ type: Boolean, reflect: true }) waiting = false;
+
   /** Sets the step to a disabled state. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
@@ -98,6 +101,18 @@ export default class SdStep extends SolidElement {
     if (this.disabled) {
       this.current = false;
     }
+    const waitingAttr = this.getAttribute('waiting');
+    if (waitingAttr === null) {
+      this.waiting = false;
+    }
+  }
+
+  @watch('waiting')
+  handleWaitingChange() {
+    if (this.waiting) {
+      this.current = false;
+      this.disabled = false;
+    }
   }
 
   @watch('notInteractive')
@@ -105,12 +120,13 @@ export default class SdStep extends SolidElement {
     if (this.notInteractive) {
       this.current = false;
       this.disabled = false;
+      this.waiting = false;
     }
   }
 
   render() {
     const isLink = this.isLink();
-    const tag = this.notInteractive ? literal`div` : isLink ? literal`a` : literal`button`;
+    const tag = this.notInteractive || this.waiting ? literal`div` : isLink ? literal`a` : literal`button`;
     const hasLabelSlot = this.hasSlotController.test('label');
     const hasLabel = this.label ? true : hasLabelSlot;
     const hasDefaultSlot = this.hasSlotController.test('[default]');
@@ -133,14 +149,16 @@ export default class SdStep extends SolidElement {
 
     const circleButtonClasses = cx(
       'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
-      this.disabled
+      this.disabled || this.waiting
         ? 'focus-visible:outline-none cursor-not-allowed'
         : 'focus-visible:focus-outline hover:cursor-pointer',
       this.notInteractive ? (this.size === 'lg' ? 'not-interactive-lg' : 'w-12') : this.size === 'lg' ? 'w-12' : 'w-8',
       this.disabled && 'border-neutral-500 text-neutral-500',
+      this.waiting && 'border-neutral-400 text-neutral-700',
       !this.disabled &&
         !this.current &&
         !this.notInteractive &&
+        !this.waiting &&
         'border-primary hover:bg-primary-100 hover:border-primary-500',
       this.notInteractive && 'border-neutral-400',
       this.current && 'bg-accent border-none text-white'
@@ -157,7 +175,7 @@ export default class SdStep extends SolidElement {
           this.orientation === 'horizontal'
             ? 'flex-col w-full'
             : 'flex-row gap-4 items-stretch h-full w-full overflow-hidden',
-          !this.disabled && !this.current && !this.notInteractive && 'group'
+          !this.disabled && !this.current && !this.notInteractive && !this.waiting && 'group'
         )}
         @focus=${this.handleFocus}
         @blur=${this.handleBlur}
@@ -169,10 +187,10 @@ export default class SdStep extends SolidElement {
           <${tag}
             part="circle"
             href=${ifDefined(isLink ? this.href : undefined)}
-            aria-disabled=${ifDefined(this.disabled || undefined)}
+            aria-disabled=${ifDefined(this.disabled || this.waiting || undefined)}
             aria-current=${this.current ? 'step' : undefined}
-            aria-labelledby=${ifDefined(this.notInteractive || !hasLabel ? undefined : 'label')}
-            aria-describedby=${ifDefined(this.notInteractive || !hasDescription ? undefined : 'description')}
+            aria-labelledby=${ifDefined(this.notInteractive || this.waiting || !hasLabel ? undefined : 'label')}
+            aria-describedby=${ifDefined(this.notInteractive || this.waiting || !hasDescription ? undefined : 'description')}
             class=${circleButtonClasses}
           >
             <slot
@@ -182,12 +200,13 @@ export default class SdStep extends SolidElement {
                 !this.disabled &&
                   !this.current &&
                   !this.notInteractive &&
+                  !this.waiting &&
                   'text-primary hover:text-primary-500 hover:fill-primary-500',
                 this.notInteractive && 'text-primary'
               )}
             >
               ${
-                !this.disabled && !this.current && !this.notInteractive
+                !this.disabled && !this.current && !this.notInteractive && !this.waiting
                   ? html` <sd-icon
                       name="status-check"
                       library="_internal"
@@ -217,7 +236,10 @@ export default class SdStep extends SolidElement {
                               class=${cx(
                                 '!font-bold sd-paragraph whitespace-nowrap',
                                 this.disabled && '!text-neutral-500',
-                                !this.disabled && !this.current && !this.notInteractive ? '!text-primary' : 'text-black'
+                                this.waiting && '!text-neutral-700',
+                                !this.disabled && !this.current && !this.notInteractive && !this.waiting
+                                  ? '!text-primary'
+                                  : 'text-black'
                               )}
                             >
                               <slot name="label">${this.label}</slot>
@@ -231,7 +253,7 @@ export default class SdStep extends SolidElement {
                               part="tail"
                               class=${cx(
                                 'border-t flex-1 mr-2 mt-3',
-                                !this.disabled && !this.current && !this.notInteractive
+                                !this.disabled && !this.current && !this.notInteractive && !this.waiting
                                   ? 'border-primary'
                                   : 'border-neutral-500'
                               )}
@@ -244,7 +266,8 @@ export default class SdStep extends SolidElement {
                       class=${cx(
                         'sd-paragraph sd-paragraph--size-sm break-words',
                         hasDescription ? 'flex-1 pr-4' : 'w-0 h-0 overflow-hidden',
-                        this.disabled && '!text-neutral-700'
+                        this.disabled && '!text-neutral-700',
+                        this.waiting && '!text-neutral-700'
                       )}
                     >
                       ${hasDescription ? this.description || html`<slot></slot>` : ''}
@@ -260,7 +283,7 @@ export default class SdStep extends SolidElement {
                         this.orientation === 'horizontal'
                           ? 'border-t w-full my-auto mr-2'
                           : 'border-l flex-grow flex-shrink-0 basis-auto h-full w-[1px] mx-auto',
-                        !this.disabled && !this.current && !this.notInteractive
+                        !this.disabled && !this.current && !this.notInteractive && !this.waiting
                           ? 'border-primary'
                           : 'border-neutral-400'
                       )}
@@ -277,6 +300,7 @@ export default class SdStep extends SolidElement {
                     'mt-4 break-words flex flex-col gap-2',
                     this.orientation === 'horizontal' ? 'text-center w-40' : 'text-left',
                     this.disabled && '!text-neutral-500',
+                    this.waiting && '!text-neutral-700',
                     this.notInteractive ? 'ml-2' : 'mr-4'
                   )}
                 >
@@ -286,7 +310,10 @@ export default class SdStep extends SolidElement {
                     class=${cx(
                       '!font-bold sd-paragraph',
                       this.disabled && '!text-neutral-500',
-                      !this.disabled && !this.current && !this.notInteractive ? '!text-primary' : 'text-black'
+                      this.waiting && '!text-neutral-700',
+                      !this.disabled && !this.current && !this.notInteractive && !this.waiting
+                        ? '!text-primary'
+                        : 'text-black'
                     )}
                   >
                     <slot name="label">${this.label}</slot>
@@ -294,7 +321,11 @@ export default class SdStep extends SolidElement {
                   <div
                     part="description"
                     id="description"
-                    class=${cx('sd-paragraph sd-paragraph--size-sm', this.disabled && '!text-neutral-700')}
+                    class=${cx(
+                      'sd-paragraph sd-paragraph--size-sm',
+                      this.disabled && '!text-neutral-700',
+                      this.waiting && '!text-neutral-700'
+                    )}
                   >
                     ${this.description || html`<slot></slot>`}
                   </div>

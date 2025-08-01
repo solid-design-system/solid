@@ -23,7 +23,7 @@ export default {
           <p slot="label">Step 2</p>
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" disabled>
+        <sd-step size="lg" orientation="horizontal" waiting>
           <p slot="label">Step 3</p>
         </sd-step>`
     },
@@ -74,7 +74,7 @@ export const Size = {
           <p slot="label">Step 2</p>
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" disabled>
+        <sd-step size="lg" orientation="horizontal" waiting>
           <p slot="label">Step 3</p>
         </sd-step>
       </sd-step-group>
@@ -88,7 +88,7 @@ export const Size = {
           <p slot="label">Step 2</p>
         </sd-step>
 
-        <sd-step size="sm" orientation="horizontal" disabled>
+        <sd-step size="sm" orientation="horizontal" waiting>
           <p slot="label">Step 3</p>
         </sd-step>
       </sd-step-group>
@@ -117,7 +117,7 @@ export const Orientation = {
           <p slot="label">Step 2</p>
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" disabled>
+        <sd-step size="lg" orientation="horizontal" waiting>
           <p slot="label">Step 3</p>
         </sd-step>
       </sd-step-group>
@@ -132,7 +132,7 @@ export const Orientation = {
             <p slot="label">Step 2</p>
           </sd-step>
 
-          <sd-step size="lg" orientation="vertical" disabled>
+          <sd-step size="lg" orientation="vertical" waiting>
             <p slot="label">Step 3</p>
           </sd-step>
         </sd-step-group>
@@ -157,7 +157,7 @@ export const HorizontalInline = {
           <p slot="label">Step 2</p>
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" horizontal-inline disabled>
+        <sd-step size="lg" orientation="horizontal" horizontal-inline waiting>
           <p slot="label">Step 3</p>
         </sd-step>
       </sd-step-group>
@@ -180,7 +180,7 @@ export const ActiveStep = {
         <p slot="label">Step 2</p>
       </sd-step>
 
-      <sd-step size="lg" orientation="horizontal" disabled>
+      <sd-step size="lg" orientation="horizontal" waiting>
         <p slot="label">Step 3</p>
       </sd-step>
     </sd-step-group>
@@ -202,7 +202,7 @@ export const NotInteractive = {
         <span slot="label">Step 2</span>
       </sd-step>
 
-      <sd-step size="lg" orientation="horizontal" disabled>
+      <sd-step size="lg" orientation="horizontal" waiting>
         <span slot="label">Step 3</span>
       </sd-step>
     </sd-step-group>
