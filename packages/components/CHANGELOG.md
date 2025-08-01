@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.13.13
+
+### Patch Changes
+
+- Disallowed attribute `removable` when `sd-tag` has a href. _[`#2402`](https://github.com/solid-design-system/solid/pull/2402) [`593a7ca`](https://github.com/solid-design-system/solid/commit/593a7ca9323d08bc690dee938d56428a6f93b8eb) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.13.12
 
 ### Patch Changes
