@@ -316,7 +316,7 @@ describe('<sd-navigation-item>', () => {
   describe('when given a value for the "children" slot, an "href" property and "separate" property is true', () => {
     it('renders an accordion with a link simultaneously', async () => {
       const el = await fixture<SdNavigationItem>(
-        html`<sd-navigation-item separated href="#" vertical chevron>Navigation</sd-navigation-item>`
+        html`<sd-navigation-item separated href="#" vertical chevron>Navigation ${childrenSlot}</sd-navigation-item>`
       );
 
       expect(el).to.exist;
@@ -328,9 +328,9 @@ describe('<sd-navigation-item>', () => {
 
     it('renders an open accordion with children slot and a link simultaneously', async () => {
       const el = await fixture<SdNavigationItem>(
-        html`<sd-navigation-item separated href="#" vertical chevron open
-          >Navigation${childrenSlot}</sd-navigation-item
-        >`
+        html`<sd-navigation-item separated href="#" vertical chevron open>
+          Navigation ${childrenSlot}
+        </sd-navigation-item>`
       );
 
       expect(el).to.exist;
