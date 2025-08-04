@@ -36,7 +36,7 @@ export const Default = {
 };
 
 /**
- * Use the `sd-paragraph` classes for alternative appearances:
+ * Use the `sd-paragraph--size-*` classes for alternative appearances:
  *
  * - lg is the default size
  * - `sd-paragraph--size-sm`
