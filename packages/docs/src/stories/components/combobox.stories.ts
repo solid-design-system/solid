@@ -81,6 +81,10 @@ export default {
  */
 export const Default = {
   render: (args: any) => {
+    delete args['filter'];
+    delete args['getOption'];
+    delete args['getOption-attr'];
+
     return html`<div class="h-[260px] w-[400px]">${generateTemplate({ args })}</div>`;
   }
 };

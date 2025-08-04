@@ -435,8 +435,11 @@ export const StyleOnValid = {
       exclude: ['open-attr']
     }
   },
-  render: (args: { 'open-attr'?: string }) => {
+  render: (args: any) => {
     delete args['open-attr'];
+    delete args['filter'];
+    delete args['getOption'];
+    delete args['getOption-attr'];
 
     return html`<div class="h-[340px]">
       ${generateTemplate({
