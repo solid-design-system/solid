@@ -1,5 +1,33 @@
 # @solid-design-system/docs
 
+## 1.26.10
+
+### Patch Changes
+
+- Improved all style classes documentation so the user can better visualise which modifier classes are available. _[`#2386`](https://github.com/solid-design-system/solid/pull/2386) [`6ce01e4`](https://github.com/solid-design-system/solid/commit/6ce01e4d9c758cf1e181565fbe10c7010c0df002) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.26.9
+
+### Patch Changes
+
+- Added support for `<a>` inside `sd-footnotes--marker`. _[`#2421`](https://github.com/solid-design-system/solid/pull/2421) [`515a2b1`](https://github.com/solid-design-system/solid/commit/515a2b1168af2cc7c91469942220f7e520637bb3) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Removed `sd-footnotes` safari known issue.
+
+## 1.26.8
+
+### Patch Changes
+
+- Improved use of solid components in Codepen environment: _[`#2407`](https://github.com/solid-design-system/solid/pull/2407) [`9280957`](https://github.com/solid-design-system/solid/commit/928095786bd6eaca704c1a6a07f7e3f602e3265e) [@smfonseca](https://github.com/smfonseca)_
+  - Images, videos and audio files from the `placeholders` package are correctly imported.
+  - Solid Tailwind configuration is available allowing the correct display of component and the use of different variables.
+
+## 1.26.7
+
+### Patch Changes
+
+- Optimized `sd-media` documentation and template. _[`#2404`](https://github.com/solid-design-system/solid/pull/2404) [`6b1b045`](https://github.com/solid-design-system/solid/commit/6b1b0459b96d985b7c27b3d8f351b9ac0940098a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.26.6
 
 ### Patch Changes
