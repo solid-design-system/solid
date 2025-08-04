@@ -201,8 +201,11 @@ export const ValidInvalid = {
       exclude: ['label', 'open-attr', 'required', 'default', 'useTags', 'multiple', 'max-options-visible']
     }
   },
-  render: (args: { 'open-attr'?: string }) => {
+  render: (args: any) => {
     delete args['open-attr'];
+    delete args['filter'];
+    delete args['getOption'];
+    delete args['getOption-attr'];
 
     return html`<form class="h-[260px] w-full flex gap-4">
       ${generateTemplate({
