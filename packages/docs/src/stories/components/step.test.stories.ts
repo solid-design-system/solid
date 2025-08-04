@@ -111,6 +111,52 @@ export const HorizontalInline = {
 };
 
 /**
+ * Use the `waiting` attribute to set the step as a future step.
+ */
+export const Waiting = {
+  name: 'Waiting',
+  render: () => {
+    return generateTemplate({
+      args: overrideArgs([
+        {
+          type: 'slot',
+          name: 'label',
+          value: `<span slot="label">Step name</span>`
+        },
+        {
+          type: 'attribute',
+          name: 'waiting',
+          value: true
+        }
+      ])
+    });
+  }
+};
+
+/**
+ * Use the `disabled` attribute to disable a step.
+ */
+export const Disabled = {
+  name: 'Disabled',
+  render: () => {
+    return generateTemplate({
+      args: overrideArgs([
+        {
+          type: 'slot',
+          name: 'label',
+          value: `<span slot="label">Step name</span>`
+        },
+        {
+          type: 'attribute',
+          name: 'disabled',
+          value: true
+        }
+      ])
+    });
+  }
+};
+
+/**
  * Use the `default` slot to set a description for the step. Alternatively, you can use the `description` attribute.
  */
 
@@ -281,6 +327,8 @@ export const Combination = generateScreenshotStory([
   Default,
   Orientation,
   HorizontalInline,
+  Waiting,
+  Disabled,
   Description,
   DescriptionAndLabelUsingAttributes,
   Parts,
