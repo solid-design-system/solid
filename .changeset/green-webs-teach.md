@@ -2,4 +2,4 @@
 '@solid-design-system/components': patch
 ---
 
-fixed the padding in the navigation-items for icons
+Fixed `sd-navigation-item` padding when it is icon only.
