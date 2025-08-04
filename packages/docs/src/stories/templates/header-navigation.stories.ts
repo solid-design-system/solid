@@ -638,9 +638,7 @@ export const Horizontal = {
         </div>
       </sd-drawer>
 
-      <main>
-        <h1 id="page-title--horizontal">Home page</h1>
-      </main>
+      <main></main>
 
       <style>
         [data-submenu][inert] {
@@ -708,10 +706,6 @@ export const Horizontal = {
             currentOnTrigger: true
           });
           megamenu.focusController = new HorizontalFocusController(megamenu);
-
-          megamenu.subscribe('item-click', item => {
-            document.getElementById('page-title--horizontal').innerHTML = getNavigationItemTitle(item);
-          });
         });
 
         document.querySelectorAll('.navigation-nav').forEach(container => {
@@ -721,10 +715,6 @@ export const Horizontal = {
               .querySelector('.navigation-nav-horizontal--close')
           });
           megamenu.focusController = new VerticalFocusController(megamenu);
-
-          megamenu.subscribe('item-click', item => {
-            document.getElementById('page-title--horizontal').innerHTML = getNavigationItemTitle(item);
-          });
 
           const drawer = container.closest('sd-drawer');
           if (drawer) {
@@ -994,9 +984,7 @@ export const Vertical = {
           </nav>
         </div>
 
-        <main class="px-4">
-          <h1 id="page-title--vertical">Home</h1>
-        </main>
+        <main class="px-4"></main>
 
         <sd-drawer
           id="navigation-drawer-vertical"
@@ -1141,10 +1129,6 @@ export const Vertical = {
               .querySelector('.navigation-nav-vertical--close')
           });
           megamenu.focusController = new VerticalFocusController(megamenu);
-
-          megamenu.subscribe('item-click', item => {
-            document.getElementById('page-title--vertical').innerHTML = getNavigationItemTitle(item);
-          });
 
           const drawer = container.closest('sd-drawer');
           if (drawer) {

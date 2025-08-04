@@ -283,8 +283,6 @@ if (typeof window.NavigationMenu === 'undefined') {
         const isCurrent = this.options.currentOnTrigger ? isTarget || !!item.submenu?.el.contains(e.target) : isTarget;
         item.setCurrent(isCurrent);
       });
-
-      this.publish('item-click', e.target);
     }
 
     handleBackButton() {
@@ -316,16 +314,6 @@ if (typeof window.NavigationMenu === 'undefined') {
     onSubmenuClose() {
       this.options.backButton?.setAttribute('hidden', '');
       this.reset();
-    }
-
-    subscribe(event, callback) {
-      if (typeof event !== 'string' || typeof callback !== 'function') return;
-      this.observers = { ...(this.observers || {}), [event]: [...(this.observers?.[event] || []), callback] };
-    }
-
-    publish(event, ...args) {
-      if (!Array.isArray(this.observers?.[event])) return;
-      this.observers[event].forEach(callback => callback(...args));
     }
   }
 
