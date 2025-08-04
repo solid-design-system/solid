@@ -204,4 +204,12 @@ describe('<sd-tag>', () => {
       expect(el.hasAttribute('hidden')).to.be.true;
     });
   });
+
+  describe('should ignore the removable attribute', () => {
+    it('when it has an href', async () => {
+      el = await fixture<SdTag>(html`<sd-tag removable href="#">Tag</sd-tag>`);
+      const removable = el.shadowRoot!.querySelector('[part="removable-indicator"]');
+      expect(removable).to.not.exist;
+    });
+  });
 });

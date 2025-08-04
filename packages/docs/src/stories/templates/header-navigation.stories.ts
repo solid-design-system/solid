@@ -42,7 +42,7 @@ export const Horizontal = {
           </a>
 
           <sd-navigation-item id="open-menu-navigation" class="flex lg:hidden">
-            <sd-icon name="system/menu" label="Open navigation" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
+            <sd-icon name="system/menu" label="Open navigation" class="text-xl"></sd-icon>
           </sd-navigation-item>
         </div>
 
@@ -776,7 +776,7 @@ export const SampleA = {
         <!-- top-right-area start !-->
         <div class="flex lg:hidden">
           <sd-navigation-item id="open-menu-sample-a">
-            <sd-icon name="system/menu" label="Open navigation" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
+            <sd-icon name="system/menu" label="Open navigation" class="text-xl"></sd-icon>
           </sd-navigation-item>
         </div>
         <!-- top-right-area end !-->
@@ -792,11 +792,11 @@ export const SampleA = {
         <!-- bottom-left-area end !-->
         <!-- bottom-right-area start !-->
         <div class="-mr-4 flex items-center">
-          <sd-navigation-item href="javascript:void(0)">
-            <sd-icon name="system/website" label="News" class="text-xl -m-1"></sd-icon>
+          <sd-navigation-item href="javascript:void(0)" size="sm">
+            <sd-icon name="system/website" label="News" class="text-xl"></sd-icon>
           </sd-navigation-item>
-          <sd-navigation-item onclick="alert('This could open a search bar')">
-            <sd-icon name="system/magnifying-glass" label="Search" class="text-xl -m-1"></sd-icon>
+          <sd-navigation-item onclick="alert('This could open a search bar')" size="sm">
+            <sd-icon name="system/magnifying-glass" label="Search" class="text-xl"></sd-icon>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
             <sd-icon name="system/user" class="text-xl mr-2"></sd-icon><span>My account</span>
@@ -937,24 +937,24 @@ export const Vertical = {
             </a>
 
             <sd-navigation-item id="open-menu-navigation-vertical" class="lg:hidden">
-              <sd-icon name="system/menu" label="Open navigation" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
+              <sd-icon name="system/menu" label="Open navigation" class="text-xl"></sd-icon>
             </sd-navigation-item>
 
             <nav aria-label="Service" class="navigation-nav hidden lg:inline">
               <ul class="flex">
                 <li>
                   <sd-navigation-item>
-                    <sd-icon name="system/phone" label="Client Service" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
+                    <sd-icon name="system/phone" label="Client Service" class="text-xl"></sd-icon>
                   </sd-navigation-item>
                 </li>
                 <li>
                   <sd-navigation-item>
-                    <sd-icon name="system/shopping-cart" label="Cart" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
+                    <sd-icon name="system/shopping-cart" label="Cart" class="text-xl"></sd-icon>
                   </sd-navigation-item>
                 </li>
                 <li>
                   <sd-navigation-item>
-                    <sd-icon name="system/user" label="Account" class="text-xl -my-[1.5px] -mx-1"></sd-icon>
+                    <sd-icon name="system/user" label="Account" class="text-xl"></sd-icon>
                   </sd-navigation-item>
                 </li>
               </ul>
@@ -988,18 +988,18 @@ export const Vertical = {
                     <p class="sd-headline sd-headline--size-lg mx-4 px-4 py-3 !text-primary">Investment funds</p>
                     <ul>
                       <li>
-                        <sd-navigation-item indented vertical>
+                        <sd-navigation-item relaxed vertical>
                           <span>Fund information</span>
-                          <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                          <sd-navigation-item slot="children" vertical indented relaxed href="javascript:void(0)">
                             Fund type
                           </sd-navigation-item>
-                          <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                          <sd-navigation-item slot="children" vertical indented relaxed href="javascript:void(0)">
                             Performance history
                           </sd-navigation-item>
-                          <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                          <sd-navigation-item slot="children" vertical indented relaxed href="javascript:void(0)">
                             My fund data
                           </sd-navigation-item>
-                          <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                          <sd-navigation-item slot="children" vertical indented relaxed href="javascript:void(0)">
                             Find funds
                           </sd-navigation-item>
                         </sd-navigation-item>
@@ -1225,21 +1225,21 @@ export const SampleA02 = {
         <!-- top-right-area start !-->
         <div class="flex lg:hidden">
           <sd-navigation-item id="open-menu-sample-a-02">
-            <sd-icon name="system/menu" label="Open navigation" class="text-xl  -my-[1.5px] -mx-1"></sd-icon>
+            <sd-icon name="system/menu" label="Open navigation" class="text-xl "></sd-icon>
           </sd-navigation-item>
         </div>
         <div class="-mr-4 lg:flex hidden items-center">
           <sd-navigation-item href="javascript:void(0)">
-            <sd-icon name="system/filter-empty" label="Search filter" class="text-xl -mx-1"></sd-icon>
+            <sd-icon name="system/filter-empty" label="Search filter" class="text-xl"></sd-icon>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
-            <sd-icon name="system/globe" label="Language" class="text-xl -mx-1"></sd-icon>
+            <sd-icon name="system/globe" label="Language" class="text-xl"></sd-icon>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
-            <sd-icon name="system/website" label="News" class="text-xl -mx-1"></sd-icon>
+            <sd-icon name="system/website" label="News" class="text-xl"></sd-icon>
           </sd-navigation-item>
           <sd-navigation-item onclick="alert('This could open a search bar')">
-            <sd-icon name="system/magnifying-glass" label="Search" class="text-xl -mx-1"></sd-icon>
+            <sd-icon name="system/magnifying-glass" label="Search" class="text-xl"></sd-icon>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
             <sd-icon name="system/user" class="text-xl mr-2"></sd-icon><span>Sign in</span>
@@ -1386,7 +1386,7 @@ export const SampleB = {
           </div>
           <div class="flex lg:hidden">
             <sd-navigation-item id="open-menu-sample-b">
-              <sd-icon name="system/menu" label="Open navigation" class="text-xl  -my-[1.5px] -mx-1"></sd-icon>
+              <sd-icon name="system/menu" label="Open navigation" class="text-xl "></sd-icon>
             </sd-navigation-item>
           </div>
         </div>
@@ -1404,10 +1404,10 @@ export const SampleB = {
         <!-- bottom-right-area start !-->
         <div class="flex items-center">
           <sd-navigation-item href="javascript:void(0)">
-            <sd-icon name="system/website" label="News" class="text-xl -mx-1"></sd-icon>
+            <sd-icon name="system/website" label="News" class="text-xl"></sd-icon>
           </sd-navigation-item>
           <sd-navigation-item onclick="alert('This could open a search bar')">
-            <sd-icon name="system/magnifying-glass" label="Search" class="text-xl -mx-1"></sd-icon>
+            <sd-icon name="system/magnifying-glass" label="Search" class="text-xl"></sd-icon>
           </sd-navigation-item>
           <!-- bottom-right-area end !-->
         </div>

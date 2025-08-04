@@ -28,7 +28,7 @@ const translation: Translation = {
   notifications: 'Notifications',
   numOptionsSelected: num => {
     if (num === 0) return '';
-    return `Options Selected (${num})`;
+    return `Options selected (${num})`;
   },
   open: 'Open',
   openTranscript: 'Open transcript',
@@ -47,6 +47,7 @@ const translation: Translation = {
   scrollToStart: 'Scroll to start',
   search: 'Search',
   seekBar: 'Seek bar',
+  seconds: time => `${time} seconds`,
   selectAColorFromTheScreen: 'Select a color from the screen',
   selectDefaultPlaceholder: 'Please select',
   showLess: 'Show less',

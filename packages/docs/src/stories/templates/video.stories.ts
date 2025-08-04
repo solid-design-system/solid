@@ -16,29 +16,31 @@ export default {
 export const VideoWithDescription = {
   name: 'Video with Description',
   render: () => html`
-    <sd-video class="sd-media">
-      <video controls class="aspect-video">
-        <source src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.webm" type="video/webm" />
-        <track
-          label="English"
-          kind="subtitles"
-          srclang="en"
-          src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.vtt"
-          default
+    <figure class="sd-media">
+      <sd-video>
+        <video controls class="aspect-video">
+          <source src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.webm" type="video/webm" />
+          <track
+            label="English"
+            kind="subtitles"
+            srclang="en"
+            src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.vtt"
+            default
+          />
+          Your browser does not support the video tag.
+        </video>
+        <img
+          slot="poster"
+          alt="Video highlighting Union Investment's digital transformation through a design system named Solid that enhances accessibility, sustainability, and efficiency."
+          class="aspect-video cover"
+          src="./placeholders/images/union-investment.png"
         />
-        Your browser does not support the video tag.
-      </video>
-      <img
-        slot="poster"
-        alt="Video highlighting Union Investment's digital transformation through a design system named Solid that enhances accessibility, sustainability, and efficiency."
-        class="aspect-video cover"
-        src="./placeholders/images/union-investment.png"
-      />
+      </sd-video>
       <figcaption class="mt-4">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
         dolore magna aliquyam erat, sed diam voluptua.
       </figcaption>
-    </sd-video>
+    </figure>
   `
 };
 
@@ -50,7 +52,7 @@ export const VideoWithCopyright = {
         z-index: 10;
       }
     </style>
-    <div class="sd-copyright sd-copyright--placement-top" style="--copyright:'© Union Investment 2024'">
+    <div class="sd-copyright sd-copyright--placement-top" style="--copyright:'© Union Investment 2025'">
       <sd-video>
         <video controls class="aspect-video">
           <source src="./placeholders/videos/sds-placeholder-video/sds-placeholder-video.webm" type="video/webm" />

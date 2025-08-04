@@ -38,7 +38,8 @@ export default class SdNavigationItem extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'description', 'children');
   private readonly localize = new LocalizeController(this);
 
-  @query('[part="base"]') button: HTMLButtonElement | HTMLLinkElement | null;
+  @query('a[part="base"], button[part="base"]') button: HTMLButtonElement | HTMLLinkElement | null;
+  @query('slot:not([name])') defaultSlot: HTMLSlotElement;
 
   /** The navigation item's orientation. If false, properties below this point are not used. */
   @property({ type: Boolean, reflect: true }) vertical = false;
@@ -88,6 +89,28 @@ export default class SdNavigationItem extends SolidElement {
 
   private get isAccordion(): boolean {
     return !this.separated && !this.href && this.hasSlotController.test('children');
+  }
+
+  private get isIconOnly(): boolean {
+    if (!this.defaultSlot) return false;
+
+    const nodes = this.defaultSlot.assignedNodes({ flatten: true });
+
+    return (
+      nodes.length > 0 &&
+      nodes.every(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          return !node.textContent?.trim();
+        }
+
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          const element = node as Element;
+          return element.tagName.toLowerCase() === 'sd-icon';
+        }
+
+        return false;
+      })
+    );
   }
 
   private handleClickButton(event: MouseEvent) {
@@ -156,6 +179,7 @@ export default class SdNavigationItem extends SolidElement {
     const isLink = this.isLink;
     const isButton = this.isButton;
     const isAccordion = this.isAccordion;
+    const isIconOnly = this.isIconOnly;
 
     const slots = {
       label: this.hasSlotController.test('[default]'),
@@ -172,13 +196,15 @@ export default class SdNavigationItem extends SolidElement {
       <${tag}
         part="base"
         class=${cx(
-          'flex items-center cursor-pointer relative focus-visible:focus-outline group px-4 hover:bg-neutral-200 transition-colors duration-fast ease-in-out min-h-[48px]',
+          'flex items-center cursor-pointer relative focus-visible:focus-outline group hover:bg-neutral-200 transition-colors duration-fast ease-in-out min-h-[48px]',
           { md: 'text-base', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
           this.disabled ? 'text-neutral-500 pointer-events-none' : 'text-primary',
           this.current && 'font-bold',
           !isAccordion && 'w-full',
           this.divider && this.vertical && 'mt-0.25',
-          !this.vertical && 'inline-flex items-center'
+          !this.vertical && 'inline-flex items-center',
+          !this.separated && 'hover:bg-neutral-200 group transition-colors duration-fast ease-in-out min-h-[48px]',
+          isIconOnly ? 'justify-center aspect-square p-3' : 'px-4'
         )}
         aria-current=${ifDefined(this.current ? 'page' : undefined)}
         aria-disabled=${this.disabled}
