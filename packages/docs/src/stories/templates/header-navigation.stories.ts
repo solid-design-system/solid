@@ -35,8 +35,8 @@ export const Horizontal = {
         }
       </style>
 
-      <sd-header fixed style="--sd-header-padding: 12px 48px 0;">
-        <div class="flex justify-between items-center my-0 pb-3 lg:pb-0 lg:my-3">
+      <sd-header id="horizontal" fixed>
+        <div class="flex justify-between items-center my-0 lg:my-3">
           <a class="inline-flex sd-interactive" href="#">
             <img class="h-8 md:h-12 lg:h-14" src="images/logo-unioninvestment-lg.svg" alt="Union Investment Homepage" />
           </a>
@@ -170,10 +170,10 @@ export const Horizontal = {
 
                   <sd-divider class="px-4 m-6"></sd-divider>
                   <p class="sd-headline sd-headline--size-base px-4 mx-6">
-                    Not a private customer? Discover more solutions for every need
+                    Not a private customer? Discover more solutions for your needs
                   </p>
 
-                  <ul class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
+                  <ul class="grid grid-cols-2 justify-between gap-x-6 px-6 py-8">
                     <li>
                       <sd-navigation-item vertical href="javascript:void(0)">
                         <span class="font-bold"> Institutional Clients </span>
@@ -215,7 +215,7 @@ export const Horizontal = {
                   <ul class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
                     <li>
                       <sd-navigation-item vertical href="javascript:void(0)">
-                        <span class="font-bold">Investing at a glance</span>
+                        <span class="font-bold">Services at a glance</span>
                         <p slot="description">Investing money – with flexible solutions from Union Investment</p>
                       </sd-navigation-item>
                     </li>
@@ -278,7 +278,7 @@ export const Horizontal = {
                   <ul class="grid grid-cols-4 justify-between gap-x-6 px-6 py-8">
                     <li>
                       <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                        Investing at a glance
+                        Services at a glance
                       </sd-navigation-item>
                     </li>
                     <li>
@@ -477,7 +477,7 @@ export const Horizontal = {
 
                     <sd-divider class="my-6 mx-4"></sd-divider>
                     <p class="sd-headline sd-headline--size-base mx-4 mb-6">
-                      Not a private customer? Discover more solutions for every need
+                      Not a private customer? Discover more solutions for your needs
                     </p>
 
                     <ul>
@@ -523,7 +523,7 @@ export const Horizontal = {
                     <ul>
                       <li>
                         <sd-navigation-item vertical divider href="javascript:void(0)">
-                          <span> Investing at a glance </span>
+                          <span> Services at a glance </span>
                           <p slot="description">Quickly access our funds</p>
                         </sd-navigation-item>
                       </li>
@@ -641,6 +641,28 @@ export const Horizontal = {
       <main></main>
 
       <style>
+        sd-header#horizontal {
+          --sd-header-padding: 8px 16px;
+        }
+
+        @media (min-width: 376px) {
+          sd-header#horizontal {
+            --sd-header-padding: 24px;
+          }
+        }
+
+        @media (min-width: 1025px) {
+          sd-header#horizontal {
+            --sd-header-padding: 24px 32px 0 32px;
+          }
+        }
+
+        @media (min-width: 1440px) {
+          sd-header#horizontal {
+            --sd-header-padding: 24px 48px 0 48px;
+          }
+        }
+
         [data-submenu][inert] {
           display: none;
         }
@@ -764,8 +786,8 @@ export const SampleA = {
         <div class="-ml-4">
           <sd-navigation-item href="javascript:void(0)" class="font-bold">About Us</sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)" class="font-bold">Markets</sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)" class="font-bold">Press Service</sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)" class="font-bold">Sustainability</sd-navigation-item>
-          <sd-navigation-item href="javascript:void(0)" class="font-bold">Career</sd-navigation-item>
         </div>
         <!-- bottom-left-area end !-->
         <!-- bottom-right-area start !-->
@@ -777,10 +799,10 @@ export const SampleA = {
             <sd-icon name="system/magnifying-glass" label="Search" class="text-xl -m-1"></sd-icon>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
-            <sd-icon name="system/user" class="text-xl mr-2"></sd-icon><span>Portfolio</span>
+            <sd-icon name="system/user" class="text-xl mr-2"></sd-icon><span>My account</span>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
-            <sd-icon name="system/lock-locked" class="text-xl mr-2"></sd-icon><span>Application</span>
+            <sd-icon name="system/lock-locked" class="text-xl mr-2"></sd-icon><span>My application</span>
           </sd-navigation-item>
           <!-- bottom-right-area end !-->
         </div>
@@ -791,17 +813,17 @@ export const SampleA = {
         <sd-navigation-item vertical current href="javascript:void(0)"> Home </sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">About Us</sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Markets</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Press Service</sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Sustainability</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Career</sd-navigation-item>
       </nav>
       <nav aria-label="Service" slot="footer" class="bg-neutral-100 -m-4">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/user" class="text-xl mr-2"></sd-icon>
-          Portfolio
+          My account
         </sd-navigation-item>
         <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/lock-locked" class="text-xl mr-2"></sd-icon>
-          Application
+          My application
         </sd-navigation-item>
         <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/website" class="text-xl mr-2"></sd-icon>
@@ -809,6 +831,31 @@ export const SampleA = {
         </sd-navigation-item>
       </nav>
     </sd-drawer>
+
+    <style>
+      sd-header#sample-a-header {
+        --sd-header-padding: 8px 16px;
+      }
+
+      @media (min-width: 376px) {
+        sd-header#sample-a-header {
+          --sd-header-padding: 24px;
+        }
+      }
+
+      @media (min-width: 1025px) {
+        sd-header#sample-a-header {
+          --sd-header-padding: 24px 32px 0 32px;
+        }
+      }
+
+      @media (min-width: 1440px) {
+        sd-header#sample-a-header {
+          --sd-header-padding: 24px 48px 0 48px;
+        }
+      }
+    </style>
+
     <script type="module">
       await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
         const header = document.getElementById('sample-a-header');
@@ -883,7 +930,7 @@ export const Vertical = {
         }
       </style>
       <div class="min-h-screen grid grid-cols-[auto_1fr] grid-rows-[auto_1fr]">
-        <sd-header fixed style="--sd-header-padding: 24px 48px;" class="col-span-2">
+        <sd-header id="vertical" fixed class="col-span-2">
           <div class="flex justify-between items-center">
             <a class="inline-flex sd-interactive" href="#">
               <img class="h-8 md:h-12" src="images/logo-unioninvestment-lg.svg" alt="Union Investment Homepage" />
@@ -1070,6 +1117,28 @@ export const Vertical = {
       </div>
 
       <style>
+        sd-header#vertical {
+          --sd-header-padding: 8px 16px;
+        }
+
+        @media (min-width: 376px) {
+          sd-header#vertical {
+            --sd-header-padding: 24px;
+          }
+        }
+
+        @media (min-width: 1025px) {
+          sd-header#vertical {
+            --sd-header-padding: 24px 32px;
+          }
+        }
+
+        @media (min-width: 1440px) {
+          sd-header#vertical {
+            --sd-header-padding: 24px 48px;
+          }
+        }
+
         [data-submenu][inert] {
           display: none;
         }
@@ -1173,7 +1242,7 @@ export const SampleA02 = {
             <sd-icon name="system/magnifying-glass" label="Search" class="text-xl -mx-1"></sd-icon>
           </sd-navigation-item>
           <sd-navigation-item href="javascript:void(0)">
-            <sd-icon name="system/user" class="text-xl mr-2"></sd-icon><span>Login</span>
+            <sd-icon name="system/user" class="text-xl mr-2"></sd-icon><span>Sign in</span>
           </sd-navigation-item>
         </div>
         <!-- top-right-area end !-->
@@ -1208,7 +1277,7 @@ export const SampleA02 = {
       <nav aria-label="Footer" slot="footer" class="bg-neutral-100 -m-4">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/user" class="text-xl mx-1"></sd-icon>
-          Log in
+          Sign in
         </sd-navigation-item>
         <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
           <sd-icon name="system/globe" class="text-xl mx-1"></sd-icon>
@@ -1220,6 +1289,31 @@ export const SampleA02 = {
         </sd-navigation-item>
       </nav>
     </sd-drawer>
+
+    <style>
+      sd-header#sample-a02-header {
+        --sd-header-padding: 8px 16px;
+      }
+
+      @media (min-width: 376px) {
+        sd-header#sample-a02-header {
+          --sd-header-padding: 24px;
+        }
+      }
+
+      @media (min-width: 1025px) {
+        sd-header#sample-a02-header {
+          --sd-header-padding: 24px 32px 0 32px;
+        }
+      }
+
+      @media (min-width: 1440px) {
+        sd-header#sample-a02-header {
+          --sd-header-padding: 24px 48px 0 48px;
+        }
+      }
+    </style>
+
     <script type="module">
       await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
         const header = document.getElementById('sample-a02-header');
@@ -1301,8 +1395,8 @@ export const SampleB = {
       <div class="hidden lg:flex items-end pt-3 justify-between">
         <!-- bottom-left-area start !-->
         <div class="-ml-4">
-          <sd-navigation-item class="font-bold" href="javascript:void(0)">Starting point</sd-navigation-item>
-          <sd-navigation-item class="font-bold" href="javascript:void(0)">Point of view</sd-navigation-item>
+          <sd-navigation-item class="font-bold" href="javascript:void(0)">Home</sd-navigation-item>
+          <sd-navigation-item class="font-bold" href="javascript:void(0)">Perspective</sd-navigation-item>
           <sd-navigation-item class="font-bold" href="javascript:void(0)">To the point</sd-navigation-item>
           <sd-navigation-item class="font-bold" href="javascript:void(0)">Meeting point</sd-navigation-item>
         </div>
@@ -1322,8 +1416,7 @@ export const SampleB = {
     <sd-drawer id="sample-b-drawer" placement="end" class="relative block">
       <nav aria-label="Main" class="-mx-4">
         <sd-navigation-item vertical current href="javascript:void(0)"> Home </sd-navigation-item>
-        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Starting point</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Point of view</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Perspective</sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">To the point</sd-navigation-item>
         <sd-navigation-item vertical chevron divider href="javascript:void(0)">Meeting point</sd-navigation-item>
       </nav>
@@ -1338,6 +1431,30 @@ export const SampleB = {
         </sd-navigation-item>
       </nav>
     </sd-drawer>
+
+    <style>
+      sd-header#sample-b-header {
+        --sd-header-padding: 8px 16px;
+      }
+
+      @media (min-width: 376px) {
+        sd-header#sample-b-header {
+          --sd-header-padding: 24px;
+        }
+      }
+
+      @media (min-width: 1025px) {
+        sd-header#sample-b-header {
+          --sd-header-padding: 24px 32px 0 32px;
+        }
+      }
+
+      @media (min-width: 1440px) {
+        sd-header#sample-b-header {
+          --sd-header-padding: 24px 48px 0 48px;
+        }
+      }
+    </style>
 
     <script type="module">
       await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
