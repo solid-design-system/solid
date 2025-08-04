@@ -144,8 +144,8 @@ export const Default = {
         opacity: 0;
       }
 
-      sd-navigation-item:has([slot='children'])[open] span,
-      sd-navigation-item:has([slot='children'][current]) span {
+      sd-navigation-item:has([slot='children'])[open] span:not([slot='description']),
+      sd-navigation-item:has([slot='children'][current]) span:not([slot='description']) {
         font-weight: bold;
       }
     </style>
