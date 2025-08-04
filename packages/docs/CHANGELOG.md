@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.26.11
+
+### Patch Changes
+
+- Adjusted form components stories casing. _[`#2403`](https://github.com/solid-design-system/solid/pull/2403) [`364eafa`](https://github.com/solid-design-system/solid/commit/364eafad92827a95ed1522741c990a1a1fdeaced) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.26.10
 
 ### Patch Changes

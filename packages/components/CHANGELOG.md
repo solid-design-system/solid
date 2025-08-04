@@ -1,5 +1,18 @@
 # @solid-design-system/components
 
+## 5.13.14
+
+### Patch Changes
+
+- Fixed `numOptionsSelected` translation letter casing used on the `sd-select`. _[`#2403`](https://github.com/solid-design-system/solid/pull/2403) [`364eafa`](https://github.com/solid-design-system/solid/commit/364eafad92827a95ed1522741c990a1a1fdeaced) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Adjusted the `help-text` top margin on:
+  - `sd-combobox`
+  - `sd-input`
+  - `sd-range`
+  - `sd-select`
+  - `sd-textarea`
+
 ## 5.13.13
 
 ### Patch Changes
