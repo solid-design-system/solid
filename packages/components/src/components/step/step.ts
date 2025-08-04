@@ -93,6 +93,7 @@ export default class SdStep extends SolidElement {
   handleCurrentChange() {
     if (this.current) {
       this.disabled = false;
+      this.waiting = false;
     }
   }
 
@@ -100,9 +101,6 @@ export default class SdStep extends SolidElement {
   handleDisabledChange() {
     if (this.disabled) {
       this.current = false;
-    }
-    const waitingAttr = this.getAttribute('waiting');
-    if (waitingAttr === null) {
       this.waiting = false;
     }
   }
@@ -149,9 +147,11 @@ export default class SdStep extends SolidElement {
 
     const circleButtonClasses = cx(
       'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
-      this.disabled || this.waiting
+      this.disabled
         ? 'focus-visible:outline-none cursor-not-allowed'
-        : 'focus-visible:focus-outline hover:cursor-pointer',
+        : !this.notInteractive && !this.waiting
+          ? 'focus-visible:focus-outline hover:cursor-pointer'
+          : '',
       this.notInteractive ? (this.size === 'lg' ? 'not-interactive-lg' : 'w-12') : this.size === 'lg' ? 'w-12' : 'w-8',
       this.disabled && 'border-neutral-500 text-neutral-500',
       this.waiting && 'border-neutral-400 text-neutral-700',
@@ -266,8 +266,7 @@ export default class SdStep extends SolidElement {
                       class=${cx(
                         'sd-paragraph sd-paragraph--size-sm break-words',
                         hasDescription ? 'flex-1 pr-4' : 'w-0 h-0 overflow-hidden',
-                        this.disabled && '!text-neutral-700',
-                        this.waiting && '!text-neutral-700'
+                        (this.disabled || this.waiting) && '!text-neutral-700'
                       )}
                     >
                       ${hasDescription ? this.description || html`<slot></slot>` : ''}

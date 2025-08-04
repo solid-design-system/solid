@@ -22,11 +22,11 @@ export default {
       type: 'slot',
       name: 'default',
       value: `
-        <sd-step size="lg" orientation="horizontal" state="default">
+        <sd-step size="lg" orientation="horizontal">
           <p slot="label">Lorem ipsum dolor sit</p>
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" state="current">
+        <sd-step size="lg" orientation="horizontal" current>
           <p slot="label">Exercitation ullamco laboris</p>
         </sd-step>
 
