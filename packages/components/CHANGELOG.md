@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.13.15
+
+### Patch Changes
+
+- Fixed `sd-navigation-item` padding when it is icon only. _[`#2380`](https://github.com/solid-design-system/solid/pull/2380) [`d1f3fb7`](https://github.com/solid-design-system/solid/commit/d1f3fb7ef5c47e7978e3e20f78cb11b4bbdf0f09) [@balco0110](https://github.com/balco0110)_
+
 ## 5.13.14
 
 ### Patch Changes
