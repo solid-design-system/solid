@@ -1,5 +1,34 @@
 # @solid-design-system/components
 
+## 5.14.0
+
+### Minor Changes
+
+- Implemented `waiting` attribute and `horizontal-inline` variant on `sd-step` _[`#2364`](https://github.com/solid-design-system/solid/pull/2364) [`b6d6768`](https://github.com/solid-design-system/solid/commit/b6d6768f99dffceb06356a519e9d74ee5490e5aa) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+* Uncompressed: 479 KB (+2 KB / +0%)
+* Gzipped: 112 KB (unchanged)
+
+## 5.13.15
+
+### Patch Changes
+
+- Fixed `sd-navigation-item` padding when it is icon only. _[`#2380`](https://github.com/solid-design-system/solid/pull/2380) [`d1f3fb7`](https://github.com/solid-design-system/solid/commit/d1f3fb7ef5c47e7978e3e20f78cb11b4bbdf0f09) [@balco0110](https://github.com/balco0110)_
+
+## 5.13.14
+
+### Patch Changes
+
+- Fixed `numOptionsSelected` translation letter casing used on the `sd-select`. _[`#2403`](https://github.com/solid-design-system/solid/pull/2403) [`364eafa`](https://github.com/solid-design-system/solid/commit/364eafad92827a95ed1522741c990a1a1fdeaced) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Adjusted the `help-text` top margin on:
+  - `sd-combobox`
+  - `sd-input`
+  - `sd-range`
+  - `sd-select`
+  - `sd-textarea`
+
 ## 5.13.13
 
 ### Patch Changes

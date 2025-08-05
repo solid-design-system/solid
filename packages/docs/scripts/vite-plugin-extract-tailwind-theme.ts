@@ -58,7 +58,7 @@ const vitePluginExtractTailwindTheme = (): Plugin => {
 
         let theme = docsTailwindConfiguration?.theme || {};
         const sanitizedTheme = sanitizeThemeValues(theme);
-        const outputPath = path.resolve(__dirname, '../.storybook/solid-tw-config.json');
+        const outputPath = path.resolve(__dirname, '../.storybook/solid-tw-configuration.json');
         const outputDir = path.dirname(outputPath);
 
         if (!fs.existsSync(outputDir)) {

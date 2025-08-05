@@ -102,7 +102,7 @@ export default class SdStepGroup extends SolidElement {
         if (i === index) {
           step.current = true;
         } else if (i > index) {
-          step.disabled = true;
+          step.waiting = true;
         } else {
           step.current = false;
         }

@@ -22,15 +22,15 @@ export default {
       type: 'slot',
       name: 'default',
       value: `
-        <sd-step size="lg" orientation="horizontal" state="default">
+        <sd-step size="lg" orientation="horizontal">
           <p slot="label">Lorem ipsum dolor sit</p>
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" state="current">
+        <sd-step size="lg" orientation="horizontal" current>
           <p slot="label">Exercitation ullamco laboris</p>
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal" state="disabled">
+        <sd-step size="lg" orientation="horizontal" waiting>
           <p slot="label">Reprehenderit qui in e name</p>
         </sd-step>`
     },
@@ -184,7 +184,7 @@ export const Parts = {
               Lorem ipsum est dolor sit amet
             </sd-step>
 
-            <sd-step size="lg" orientation="horizontal" state="disabled">
+            <sd-step size="lg" orientation="horizontal" waiting>
               <p slot="label">Reprehenderit qui in e name</p>
               Lorem ipsum est dolor sit amet
             </sd-step>`
@@ -234,11 +234,11 @@ export const SetActiveStep = {
           <p slot="label">Lorem ipsum dolor sit</p>
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal">
+        <sd-step size="lg" orientation="horizontal" waiting>
           <p slot="label">Exercitation ullamco laboris</p>
         </sd-step>
 
-        <sd-step size="lg" orientation="horizontal">
+        <sd-step size="lg" orientation="horizontal" waiting>
           <p slot="label">Reprehenderit qui in e name</p>
         </sd-step>
       </sd-step-group>
