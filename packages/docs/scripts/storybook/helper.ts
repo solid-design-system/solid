@@ -1,4 +1,5 @@
 import { getWcStorybookHelpers, setWcStorybookHelpersConfig } from 'wc-storybook-helpers';
+import { getAttributesAndProperties } from 'wc-storybook-helpers/dist/cem-utilities';
 import { html, unsafeStatic } from 'lit/static-html.js';
 import { sentenceCase } from 'change-case';
 import loadCustomElements from './fetch-cem';
@@ -330,11 +331,34 @@ export const storybookTemplate = (customElementTag: string) => {
             .filter(([attr]) => !attr.endsWith('-part') && !attr.endsWith('-slot') && !attr.startsWith('on'))
             .filter(([, value]) => value)
             .map(([attr, value]) => {
-              if (attr.includes('-attr') && !!args[attr.replace('-attr', '')]) {
+              const argValue = args[attr];
+              const defaultValue = defaultArgs[attr];
+
+              /*
+                An attribute can be named with its own name or `%name%-attr`.
+                If a attribute is `%name%-attr`, then its value, if existent, it should override the original one.
+              */
+              const isOverriddenAttribute = attr.includes('-attr');
+              const originalValue = args[attr.replace('-attr', '')];
+              if (isOverriddenAttribute && !!originalValue) {
                 return ['', undefined];
               }
 
-              if (value && !attr.includes('-attr') && !!args[`${attr}-attr`]) {
+              /*
+                If the original attribute has a default value, and the `%name%-attr` has a different value
+                then `%name%-attr` should override it.
+              */
+              const isDefaultValue = !isOverriddenAttribute && defaultValue === argValue;
+              const overridenValue = args[`${attr}-attr`];
+              if (isDefaultValue && argValue !== overridenValue) {
+                return [attr, overridenValue];
+              }
+
+              /*
+                If the current attribute we are checking is the original, and there is an override,
+                it should be overriden.
+              */
+              if (value && !isOverriddenAttribute && !!overridenValue) {
                 return [`${attr}-attr`, value];
               }
 
