@@ -48,7 +48,7 @@ const twentyOptionsConstant: ConstantDefinition = {
 
 const clearableConstant: ConstantDefinition = { type: 'attribute', name: 'clearable', value: true };
 const multipleConstant: ConstantDefinition = { type: 'attribute', name: 'multiple', value: true };
-const helpTextConstant: ConstantDefinition = { type: 'attribute', name: 'help-text', value: 'help-text' };
+const helpTextConstant: ConstantDefinition = { type: 'attribute', name: 'help-text', value: 'Help-text' };
 const labelConstant: ConstantDefinition = { type: 'attribute', name: 'label', value: 'Label' };
 
 const colors = [
@@ -241,7 +241,7 @@ export const ValidInvalid = {
  * This shows sd-combobox has the borders visible even when there is limited vertical space.
  */
 export const BorderVisibility = {
-  name: 'Border Visibility',
+  name: 'Border visibility',
   render: () => {
     return html`<div class="h-[150px] w-[420px]">
       ${generateTemplate({
@@ -432,7 +432,7 @@ export const Focus = {
  */
 
 export const StyleOnValid = {
-  name: 'Style on Valid',
+  name: 'Style on valid',
   parameters: {
     controls: {
       exclude: ['open-attr']
@@ -496,12 +496,12 @@ export const Tags = {
  * A simple suggestions list shows the user a filtered list.
  */
 export const SimpleSuggests = {
-  name: 'Simple Suggests',
+  name: 'Simple suggests',
   render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
     return html`
       <div class="h-[260px] w-[400px]">
-        <sd-combobox label="Preferred Color"> ${createColorOptionsHtml()} </sd-combobox>
+        <sd-combobox label="Preferred color"> ${createColorOptionsHtml()} </sd-combobox>
       </div>
     `;
   },
@@ -607,7 +607,7 @@ export const Mouseless = {
           twoOptionsConstant,
           multipleConstant,
           { type: 'attribute', name: 'useTags', value: true },
-          { type: 'attribute', name: 'label', value: 'Multiple w/ Tags' }
+          { type: 'attribute', name: 'label', value: 'Multiple w/ tags' }
         ],
         args
       })}
@@ -626,7 +626,7 @@ export const Mouseless = {
  */
 
 export const SampleGroupingOptions = {
-  name: 'Sample: Grouping Options and Sizes',
+  name: 'Sample: Grouping options and sizes',
   render: (args: any) => {
     return generateTemplate({
       options: {
@@ -688,7 +688,7 @@ export const SampleForm = {
           ${generateTemplate({
             constants: [
               ...sharedConstants,
-              { type: 'attribute', name: 'label', value: 'Required Multiple' },
+              { type: 'attribute', name: 'label', value: 'Required multiple' },
               { type: 'attribute', name: 'name', value: 'required multiple field' },
               multipleConstant
             ],
@@ -699,7 +699,7 @@ export const SampleForm = {
           ${generateTemplate({
             constants: [
               ...sharedConstants,
-              { type: 'attribute', name: 'label', value: 'Required Multiple w/ Tags' },
+              { type: 'attribute', name: 'label', value: 'Required multiple w/ tags' },
               { type: 'attribute', name: 'name', value: 'required multiple tags field' },
               multipleConstant,
               { type: 'attribute', name: 'useTags', value: true }
@@ -740,7 +740,7 @@ export const SampleForm = {
  */
 
 export const SolidForm = {
-  name: 'Sample: Solid Form',
+  name: 'Sample: Solid form',
   parameters: {
     controls: {
       include: []
@@ -801,7 +801,7 @@ export const SolidForm = {
  */
 
 export const setCustomValidity = {
-  name: 'Set Custom Validity',
+  name: 'Set custom validity',
   parameters: {
     chromatic: { disableSnapshot: true }
   },

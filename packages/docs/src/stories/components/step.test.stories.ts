@@ -80,6 +80,82 @@ export const Orientation = {
   ]
 };
 
+export const HorizontalInline = {
+  name: 'Horizontal Inline',
+  render: () => {
+    return generateTemplate({
+      args: overrideArgs([
+        {
+          type: 'slot',
+          name: 'default',
+          value: `Lorem ipsum est dolor sit amet`
+        },
+        {
+          type: 'slot',
+          name: 'label',
+          value: `<span slot="label">Step name</span>`
+        },
+        {
+          type: 'attribute',
+          name: 'description',
+          value: `This description was set using "description" attribute.`
+        },
+        {
+          type: 'attribute',
+          name: 'horizontal-inline',
+          value: true
+        }
+      ])
+    });
+  }
+};
+
+/**
+ * Use the `waiting` attribute to set the step as a future step.
+ */
+export const Waiting = {
+  name: 'Waiting',
+  render: () => {
+    return generateTemplate({
+      args: overrideArgs([
+        {
+          type: 'slot',
+          name: 'label',
+          value: `<span slot="label">Step name</span>`
+        },
+        {
+          type: 'attribute',
+          name: 'waiting',
+          value: true
+        }
+      ])
+    });
+  }
+};
+
+/**
+ * Use the `disabled` attribute to disable a step.
+ */
+export const Disabled = {
+  name: 'Disabled',
+  render: () => {
+    return generateTemplate({
+      args: overrideArgs([
+        {
+          type: 'slot',
+          name: 'label',
+          value: `<span slot="label">Step name</span>`
+        },
+        {
+          type: 'attribute',
+          name: 'disabled',
+          value: true
+        }
+      ])
+    });
+  }
+};
+
 /**
  * Use the `default` slot to set a description for the step. Alternatively, you can use the `description` attribute.
  */
@@ -127,11 +203,6 @@ export const DescriptionAndLabelUsingAttributes = {
           type: 'attribute',
           name: 'label',
           value: `This label was set using the "label" attribute.`
-        },
-        {
-          type: 'attribute',
-          name: 'description',
-          value: `This description was set using "description" attribute.`
         }
       ])
     });
@@ -255,6 +326,9 @@ export const Mouseless = {
 export const Combination = generateScreenshotStory([
   Default,
   Orientation,
+  HorizontalInline,
+  Waiting,
+  Disabled,
   Description,
   DescriptionAndLabelUsingAttributes,
   Parts,

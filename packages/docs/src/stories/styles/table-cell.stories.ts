@@ -36,9 +36,9 @@ export const Default = {
 };
 
 /**
- * Use the `sd-table-cell` classes for alternative appearances:
+ * Use the `sd-table-cell--bg-*` classes for alternative appearances:
  *
- * - `sd-table-cell--bg-transparent` (default)
+ * - transparent is the default background
  * - `sd-table-cell--bg-white`
  * - `sd-table-cell--bg-primary-100`
  * - `sd-table-cell--bg-neutral-100`
@@ -51,7 +51,7 @@ export const Variants = {
         <table class="sd-table">
           <tbody>
             <tr class="relative">
-              <td class="sd-table-cell sd-table-cell--bg-transparent">Transparent</td>
+              <td class="sd-table-cell">Transparent</td>
             </tr>
           </tbody>
         </table>
@@ -108,7 +108,7 @@ export const Divider = {
 };
 
 /**
- * Use the `sd-table-cell` classes to add a shadow to columns or rows when the table is scrollable with sticky headers:
+ * Use the `sd-table-cell--shadow-*` classes to add a shadow to columns or rows when the table is scrollable with sticky headers:
  *
  * - `sd-table-cell--shadow-right`
  * - `sd-table-cell--shadow-left`
