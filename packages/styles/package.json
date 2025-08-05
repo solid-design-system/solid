@@ -50,7 +50,7 @@
     "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
     "autoprefixer": "^10.4.21",
     "command-line-args": "^6.0.1",
-    "cssnano": "^7.0.6",
+    "cssnano": "^7.1.0",
     "del": "^8.0.0",
     "globby": "^14.1.0",
     "ora": "^8.2.0",
