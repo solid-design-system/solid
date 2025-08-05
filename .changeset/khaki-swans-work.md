@@ -3,4 +3,5 @@
 '@solid-design-system/docs': minor
 ---
 
-Implemented `waiting` attribute on `sd-step`
+Implemented `waiting` attribute and horizontal-inline variant on `sd-step`
+
