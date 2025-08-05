@@ -1,5 +1,5 @@
 diff --git a/dist/cem-utilities.js b/dist/cem-utilities.js
-index 2cf57666c31e7b572cbd10a6bc10f334b0376429..5afac39e0c918d088f27a8bf2fc0df7b141172cf 100644
+index 2cf57666c31e7b572cbd10a6bc10f334b0376429..5dbfa90fc0457ed74d4289fbd4837049e5f62155 100644
 --- a/dist/cem-utilities.js
 +++ b/dist/cem-utilities.js
 @@ -12,8 +12,10 @@ export function getAttributesAndProperties(component, enabled = true) {
@@ -8,7 +8,7 @@ index 2cf57666c31e7b572cbd10a6bc10f334b0376429..5afac39e0c918d088f27a8bf2fc0df7b
          }
 -        const attribute = component.attributes?.find((x) => member.name === x.fieldName);
 -        const propName = member.name;
-+        const attribute = component.attributes?.find((x) => member.name === x.attribute || member.name === x.fieldName);
++        const attribute = component.attributes?.find((x) => member.name === x.attribute || member.name === x.name);
 +      const propName = member.attribute
 +        ? `${member.attribute}-attr`
 +        : `${member.name}-prop`;

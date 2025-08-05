@@ -9,7 +9,7 @@ patchedDependencies:
     hash: cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2
     path: patches/tailwindcss@3.4.1.patch
   wc-storybook-helpers:
-    hash: 5b54dde1272274e327d02364d28aad6c1692a1a4db0076b5b26596ad2212123f
+    hash: 88bdce0252d8007bd93a6ea93c6cb27d236fcf7c296cf140462a3d5976ab54b7
     path: patches/wc-storybook-helpers.patch
 
 importers:
@@ -359,7 +359,7 @@ importers:
         version: 8.0.3
       wc-storybook-helpers:
         specifier: 1.5.3
-        version: 1.5.3(patch_hash=5b54dde1272274e327d02364d28aad6c1692a1a4db0076b5b26596ad2212123f)(lit@3.3.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 1.5.3(patch_hash=88bdce0252d8007bd93a6ea93c6cb27d236fcf7c296cf140462a3d5976ab54b7)(lit@3.3.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
 
   packages/eslint-plugin:
     dependencies:
@@ -14528,7 +14528,7 @@ snapshots:
     dependencies:
       makeerror: 1.0.12
 
-  wc-storybook-helpers@1.5.3(patch_hash=5b54dde1272274e327d02364d28aad6c1692a1a4db0076b5b26596ad2212123f)(lit@3.3.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  wc-storybook-helpers@1.5.3(patch_hash=88bdce0252d8007bd93a6ea93c6cb27d236fcf7c296cf140462a3d5976ab54b7)(lit@3.3.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       '@storybook/client-api': 6.5.16(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       lit: 3.3.0
