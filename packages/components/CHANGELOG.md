@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 5.14.0
+
+### Minor Changes
+
+- Implemented `waiting` attribute and `horizontal-inline` variant on `sd-step` _[`#2364`](https://github.com/solid-design-system/solid/pull/2364) [`b6d6768`](https://github.com/solid-design-system/solid/commit/b6d6768f99dffceb06356a519e9d74ee5490e5aa) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+* Uncompressed: 479 KB (+2 KB / +0%)
+* Gzipped: 112 KB (unchanged)
+
 ## 5.13.15
 
 ### Patch Changes
