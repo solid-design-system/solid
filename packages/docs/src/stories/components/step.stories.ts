@@ -252,7 +252,7 @@ export const Description = {
 };
 
 /**
- * Use the ”description” and ”label” attributes to set the respective text on the step. These are used as alternatives to using the ”default” and ”label” slots.
+ * Use the `description` and `label` attributes to set the respective text on the step. These are used as alternatives to using the `default` and `label` slots.
  */
 
 export const DescriptionAndLabelUsingAttributes = {
