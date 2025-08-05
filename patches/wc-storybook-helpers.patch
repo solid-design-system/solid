@@ -1,5 +1,5 @@
 diff --git a/dist/cem-utilities.js b/dist/cem-utilities.js
-index 2cf57666c31e7b572cbd10a6bc10f334b0376429..ac4b6e10c652a492a5c8e42f7a102246f1873dc1 100644
+index 2cf57666c31e7b572cbd10a6bc10f334b0376429..5afac39e0c918d088f27a8bf2fc0df7b141172cf 100644
 --- a/dist/cem-utilities.js
 +++ b/dist/cem-utilities.js
 @@ -12,8 +12,10 @@ export function getAttributesAndProperties(component, enabled = true) {
@@ -15,11 +15,12 @@ index 2cf57666c31e7b572cbd10a6bc10f334b0376429..ac4b6e10c652a492a5c8e42f7a102246
          properties[propName] = {
              name: propName,
              table: {
-@@ -31,6 +33,11 @@ export function getAttributesAndProperties(component, enabled = true) {
+@@ -31,6 +33,12 @@ export function getAttributesAndProperties(component, enabled = true) {
              : member?.type?.text;
          const propType = cleanUpType(type);
          const defaultValue = removeQuoteWrappers(member.default);
 +
++        console.log('component', component)
 +        console.log('attribute', attribute)
 +        console.log('member', member)
 +        console.log('---------------------')
@@ -27,7 +28,7 @@ index 2cf57666c31e7b572cbd10a6bc10f334b0376429..ac4b6e10c652a492a5c8e42f7a102246
          properties[name] = {
              name: name,
              description: getDescription(member.description, propName, member.deprecated),
-@@ -39,7 +46,7 @@ export function getAttributesAndProperties(component, enabled = true) {
+@@ -39,7 +47,7 @@ export function getAttributesAndProperties(component, enabled = true) {
                  type: getControl(propType, attribute !== undefined),
              } : false,
              table: {
@@ -36,7 +37,7 @@ index 2cf57666c31e7b572cbd10a6bc10f334b0376429..ac4b6e10c652a492a5c8e42f7a102246
                  defaultValue: {
                      summary: defaultValue,
                  },
-@@ -148,6 +155,8 @@ export function getCssParts(component, enabled = true) {
+@@ -148,6 +156,8 @@ export function getCssParts(component, enabled = true) {
          parts[`${part.name}-part`] = {
              name: part.name,
              description: getDescription(part.description, enabled ? `${part.name}-part` : ""),
@@ -45,7 +46,7 @@ index 2cf57666c31e7b572cbd10a6bc10f334b0376429..ac4b6e10c652a492a5c8e42f7a102246
              control: enabled ? "text" : false,
              table: {
                  category: "css shadow parts",
-@@ -167,8 +176,12 @@ export function getSlots(component, enabled = true) {
+@@ -167,8 +177,12 @@ export function getSlots(component, enabled = true) {
          };
          const slotName = slot.name || "default";
          slots[`${slotName}-slot`] = {
@@ -59,7 +60,7 @@ index 2cf57666c31e7b572cbd10a6bc10f334b0376429..ac4b6e10c652a492a5c8e42f7a102246
              control: enabled ? "text" : false,
              table: {
                  category: "slots",
-@@ -217,14 +230,18 @@ function getControl(type, isAttribute = false) {
+@@ -217,14 +231,18 @@ function getControl(type, isAttribute = false) {
      if (hasType(options, "boolean")) {
          return "boolean";
      }
