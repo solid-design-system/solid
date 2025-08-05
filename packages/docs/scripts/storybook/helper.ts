@@ -1,5 +1,4 @@
 import { getWcStorybookHelpers, setWcStorybookHelpersConfig } from 'wc-storybook-helpers';
-import { getAttributesAndProperties } from 'wc-storybook-helpers/dist/cem-utilities';
 import { html, unsafeStatic } from 'lit/static-html.js';
 import { sentenceCase } from 'change-case';
 import loadCustomElements from './fetch-cem';
