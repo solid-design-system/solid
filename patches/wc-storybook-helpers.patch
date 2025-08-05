@@ -69,7 +69,7 @@ index 2cf57666c31e7b572cbd10a6bc10f334b0376429..da6a2fb3969bf07b17abbf5ed13e1fb1
  function isObject(type) {
      return (type.includes("array") ||
 diff --git a/dist/html-templates.js b/dist/html-templates.js
-index 31b37aeec6a863600bba6d29009bb429f8828a71..b0408d242197441c39d6de3a6cdb4fbc80644ac5 100644
+index 31b37aeec6a863600bba6d29009bb429f8828a71..72bbcbf93bb842c3ed1033c5c290420f766ea28f 100644
 --- a/dist/html-templates.js
 +++ b/dist/html-templates.js
 @@ -1,5 +1,5 @@
@@ -118,15 +118,16 @@ index 31b37aeec6a863600bba6d29009bb429f8828a71..b0408d242197441c39d6de3a6cdb4fbc
  }
  /**
   * Gets a formatted object with the component's attributes and properties formatted to be used as operators in the template
-@@ -68,6 +70,7 @@ function getTemplateOperators(component, args, argTypes) {
+@@ -68,6 +70,8 @@ function getTemplateOperators(component, args, argTypes) {
      const attrOperators = {};
      const propOperators = {};
      const additionalAttrs = {};
 +
++    console.log('all attributes', attributes)
      Object.keys(attributes).forEach((key) => {
          const attr = attributes[key];
          if (attr?.table?.category !== "attributes") {
-@@ -76,10 +79,7 @@ function getTemplateOperators(component, args, argTypes) {
+@@ -76,10 +80,7 @@ function getTemplateOperators(component, args, argTypes) {
          const attrName = attr.name;
          const attrValue = args[key];
          const prop = attr.control.type === "boolean" ? `?${attrName}` : attrName;
@@ -138,7 +139,7 @@ index 31b37aeec6a863600bba6d29009bb429f8828a71..b0408d242197441c39d6de3a6cdb4fbc
      });
      Object.keys(args)
          .filter((key) => attributes[key]?.table?.category === "properties")
-@@ -91,13 +91,16 @@ function getTemplateOperators(component, args, argTypes) {
+@@ -91,13 +92,16 @@ function getTemplateOperators(component, args, argTypes) {
          propOperators[`.${key}`] = propValue;
      });
      Object.keys(args)
@@ -157,11 +158,11 @@ index 31b37aeec6a863600bba6d29009bb429f8828a71..b0408d242197441c39d6de3a6cdb4fbc
 +            }
 +        });
 +
-+    console.log(attrOperators);
++    console.log('filtered attributes', attrOperators);
      return { attrOperators, propOperators, additionalAttrs };
  }
  /**
-@@ -127,24 +130,30 @@ function getCssPropTemplate(component, args) {
+@@ -127,24 +131,30 @@ function getCssPropTemplate(component, args) {
   * @returns formatted string with CSS shadow parts and their styles
   */
  function getCssPartsTemplate(component, args) {
@@ -208,7 +209,7 @@ index 31b37aeec6a863600bba6d29009bb429f8828a71..b0408d242197441c39d6de3a6cdb4fbc
  /**
   * Gets the template used to render the component's slots in Storybook
   * @param component component object from the Custom Elements Manifest
-@@ -152,24 +161,25 @@ function getCssPartsTemplate(component, args) {
+@@ -152,24 +162,25 @@ function getCssPartsTemplate(component, args) {
   * @returns formatted string with slots and their values
   */
  function getSlotsTemplate(component, args) {
