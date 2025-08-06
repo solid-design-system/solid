@@ -204,6 +204,10 @@ export const storybookHelpers = (customElementTag: string) => {
       for (const override of overridesArray) {
         const suffix = storybookHelpers(customElementTag).getSuffixFromType(override.type as any);
         args[`${override.name}${suffix}`] = override.value;
+
+        if (typeof override.value === 'boolean') {
+          args[`${override.name}`] = override.value;
+        }
       }
 
       return args;
@@ -328,7 +332,6 @@ export const storybookTemplate = (customElementTag: string) => {
         const attributes = Object.fromEntries(
           Object.entries(args)
             .filter(([attr]) => !attr.endsWith('-part') && !attr.endsWith('-slot') && !attr.startsWith('on'))
-            .filter(([, value]) => value)
             .map(([attr, value]) => {
               const argValue = args[attr];
               const defaultValue = defaultArgs[attr];
@@ -339,7 +342,7 @@ export const storybookTemplate = (customElementTag: string) => {
               */
               const isOverriddenAttribute = attr.includes('-attr');
               const originalValue = args[attr.replace('-attr', '')];
-              if (isOverriddenAttribute && !!originalValue) {
+              if (isOverriddenAttribute && (!!originalValue || typeof originalValue === 'boolean')) {
                 return ['', undefined];
               }
 
@@ -349,7 +352,7 @@ export const storybookTemplate = (customElementTag: string) => {
               */
               const isDefaultValue = !isOverriddenAttribute && defaultValue === argValue;
               const overridenValue = args[`${attr}-attr`];
-              if (isDefaultValue && argValue !== overridenValue) {
+              if (isDefaultValue && argValue !== overridenValue && typeof argValue !== 'boolean') {
                 return [attr, overridenValue];
               }
 
