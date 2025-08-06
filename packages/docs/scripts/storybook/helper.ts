@@ -357,11 +357,12 @@ export const storybookTemplate = (customElementTag: string) => {
                 If the current attribute we are checking is the original, and there is an override,
                 it should be overriden.
               */
+              const _value = typeof originalValue === 'number' ? parseFloat(value as string) : value;
               if (value && !isOverriddenAttribute && !!overridenValue) {
-                return [`${attr}-attr`, value];
+                return [`${attr}-attr`, _value];
               }
 
-              return [attr, value];
+              return [attr, _value];
             })
             .filter(([attr]) => !!attr)
         );
