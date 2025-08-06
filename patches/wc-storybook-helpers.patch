@@ -77,7 +77,7 @@ index 2cf57666c31e7b572cbd10a6bc10f334b0376429..3da98ab93e2330a8a5d19177255d355f
  function isObject(type) {
      return (type.includes("array") ||
 diff --git a/dist/html-templates.js b/dist/html-templates.js
-index 31b37aeec6a863600bba6d29009bb429f8828a71..b73a832d470471c3041e34539a40498d3a242646 100644
+index 31b37aeec6a863600bba6d29009bb429f8828a71..faa60881c7e7c027689077090687d2a0206cbae5 100644
 --- a/dist/html-templates.js
 +++ b/dist/html-templates.js
 @@ -1,5 +1,5 @@
@@ -87,7 +87,7 @@ index 31b37aeec6a863600bba6d29009bb429f8828a71..b73a832d470471c3041e34539a40498d
  import { html, unsafeStatic } from "lit/static-html.js";
  import { getAttributesAndProperties, getCssParts, getCssProperties, getSlots, } from "./cem-utilities.js";
  let argObserver;
-@@ -24,14 +24,18 @@ export function getTemplate(component, args, slot, argTypes) {
+@@ -24,8 +24,8 @@ export function getTemplate(component, args, slot, argTypes) {
          argObserver = undefined;
          lastTagName = component?.tagName;
      }
@@ -98,18 +98,7 @@ index 31b37aeec6a863600bba6d29009bb429f8828a71..b73a832d470471c3041e34539a40498d
      const slotsTemplate = getSlotsTemplate(component, args);
      const cssPropertiesTemplate = getCssPropTemplate(component, args);
      syncControls(component);
-+    const parsedOperators = {
-+        ...operators,
-+        ...Object.fromEntries(Object.entries(operators).map(([key, value]) => ([key.startsWith('?') ? key : `.${key}`, value])))
-+    };
-     return html `${getStyleTemplate(component, args)}
- <${unsafeStatic(component.tagName)} 
--  ${spread(operators)}
-+  ${spread(parsedOperators)}
-   ${cssPropertiesTemplate}
-   >
-     ${slotsTemplate}${slot || ""}
-@@ -50,12 +54,10 @@ ${options.hideScriptTag
+@@ -50,12 +50,10 @@ ${options.hideScriptTag
   * @returns styles in a tagged template literal
   */
  export function getStyleTemplate(component, args) {
@@ -126,7 +115,7 @@ index 31b37aeec6a863600bba6d29009bb429f8828a71..b73a832d470471c3041e34539a40498d
  }
  /**
   * Gets a formatted object with the component's attributes and properties formatted to be used as operators in the template
-@@ -68,6 +70,7 @@ function getTemplateOperators(component, args, argTypes) {
+@@ -68,6 +66,7 @@ function getTemplateOperators(component, args, argTypes) {
      const attrOperators = {};
      const propOperators = {};
      const additionalAttrs = {};
@@ -134,7 +123,7 @@ index 31b37aeec6a863600bba6d29009bb429f8828a71..b73a832d470471c3041e34539a40498d
      Object.keys(attributes).forEach((key) => {
          const attr = attributes[key];
          if (attr?.table?.category !== "attributes") {
-@@ -76,10 +79,7 @@ function getTemplateOperators(component, args, argTypes) {
+@@ -76,10 +75,7 @@ function getTemplateOperators(component, args, argTypes) {
          const attrName = attr.name;
          const attrValue = args[key];
          const prop = attr.control.type === "boolean" ? `?${attrName}` : attrName;
@@ -146,7 +135,7 @@ index 31b37aeec6a863600bba6d29009bb429f8828a71..b73a832d470471c3041e34539a40498d
      });
      Object.keys(args)
          .filter((key) => attributes[key]?.table?.category === "properties")
-@@ -91,13 +91,15 @@ function getTemplateOperators(component, args, argTypes) {
+@@ -91,13 +87,15 @@ function getTemplateOperators(component, args, argTypes) {
          propOperators[`.${key}`] = propValue;
      });
      Object.keys(args)
@@ -168,7 +157,7 @@ index 31b37aeec6a863600bba6d29009bb429f8828a71..b73a832d470471c3041e34539a40498d
      return { attrOperators, propOperators, additionalAttrs };
  }
  /**
-@@ -127,24 +129,30 @@ function getCssPropTemplate(component, args) {
+@@ -127,24 +125,30 @@ function getCssPropTemplate(component, args) {
   * @returns formatted string with CSS shadow parts and their styles
   */
  function getCssPartsTemplate(component, args) {
@@ -215,7 +204,7 @@ index 31b37aeec6a863600bba6d29009bb429f8828a71..b73a832d470471c3041e34539a40498d
  /**
   * Gets the template used to render the component's slots in Storybook
   * @param component component object from the Custom Elements Manifest
-@@ -152,24 +160,25 @@ function getCssPartsTemplate(component, args) {
+@@ -152,24 +156,25 @@ function getCssPartsTemplate(component, args) {
   * @returns formatted string with slots and their values
   */
  function getSlotsTemplate(component, args) {
