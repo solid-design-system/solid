@@ -372,7 +372,6 @@ export const Parts = {
 
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'useTags' },
         y: {
           type: 'template',
           name: 'sd-combobox::part(...){outline: solid 2px red}',

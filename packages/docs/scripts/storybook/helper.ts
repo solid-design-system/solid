@@ -367,7 +367,11 @@ export const storybookTemplate = (customElementTag: string) => {
             .filter(([attr]) => !!attr)
         );
 
-        return theTemplate({ ...args, ...attributes });
+        const partsAndSlots = Object.fromEntries(
+          Object.entries(args).filter(([attr]) => attr.endsWith('-part') || attr.endsWith('-slot'))
+        );
+
+        return theTemplate({ ...partsAndSlots, ...attributes });
       }
       // b) CSS Styles
       // Extract class related attributes and transform into an object.
