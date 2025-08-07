@@ -16,13 +16,14 @@ export default {
 /**
  * Horizontal Navigation - Desktop (open on hover) and Mobile
  *
- * **Header Navigation Template 1 (can be seen when you mouse hover "Funds & Depot"):** This option has clickable navigation items, with and without descriptions, and highlights the current page for easy navigation.
+ * **Funds & Depot**: A list of clickable items with and without description.
  *
- * **Header Navigation Template 2 (can be seen when you mouse hover "Investing"):** This option has a mix of clickable and non clickable navigation items, with and without descriptions, which help creating an intro for the clickable navigation items. It also highlights the current page for easy navigation.
+ * **Investing**: A list of clickable and non-clickable items, with description to introduce the sub-levels.
  *
- * **Header Navigation Template 3 (can be seen when you mouse hover "Our Services"):** This option has non clickable navigation without description which helps grouping the clickable navigation items. It also highlights the current page for easy navigation.
+ * **Our Services**: A list of clickable items without description.
  *
- * **Header Navigation Template 4 (can be seen when you mouse hover "About Us"):** This option has a mix of clickable and non clickable navigation items, with and without descriptions, and highlights the current page for easy navigation and it also includes a headline, a divider and cross-links for special target groups.
+ * **About Us**: A mix of the templates above with different column options and a divider followed by a headline and cross-links for special target groups.
+ *
  */
 export const Horizontal = {
   name: 'Header Variant A-01 with different Header Navigation Templates',
