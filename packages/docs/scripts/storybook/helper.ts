@@ -626,14 +626,16 @@ export const storybookTemplate = (customElementTag: string) => {
                                 xAxis.type !== 'template' && {
                                   [`${xAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(xAxis.type)}`]:
                                     // As the value could be null or empty, we need to check if the property exists
-                                    xValue.hasOwnProperty('value') ? xValue.value : xValue
+                                    xValue.hasOwnProperty('value') ? xValue.value : xValue,
+                                  [`${xAxis.name}`]: xValue.hasOwnProperty('value') ? xValue.value : xValue
                                 }),
                               ...(yAxis &&
                                 Object.keys(yAxis).length > 0 &&
                                 yAxis.type !== 'template' && {
                                   [`${yAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(yAxis.type)}`]:
                                     // As the value could be null or empty, we need to check if the property exists
-                                    yValue.hasOwnProperty('value') ? yValue.value : yValue
+                                    yValue.hasOwnProperty('value') ? yValue.value : yValue,
+                                  [`${yAxis.name}`]: yValue.hasOwnProperty('value') ? yValue.value : yValue
                                 })
                             })}
                           ${
