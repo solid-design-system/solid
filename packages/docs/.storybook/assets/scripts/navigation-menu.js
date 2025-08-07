@@ -64,7 +64,6 @@ if (typeof window.NavigationMenu === 'undefined') {
 
       this._open();
       this.el.setAttribute('data-active-submenu', '');
-      // this.trigger.setAttribute('current', '');
       this.trigger.shadowRoot.querySelector('[part="base"]').setAttribute('aria-expanded', 'true');
 
       if (focusWithin) {
