@@ -445,7 +445,8 @@ export const storybookTemplate = (customElementTag: string) => {
       .reduce(
         (acc, curr) => ({
           ...acc,
-          [`${curr.name}${storybookHelpers(customElementTag).getSuffixFromType(curr.type as any)}`]: curr.value
+          [`${curr.name}${storybookHelpers(customElementTag).getSuffixFromType(curr.type as any)}`]: curr.value,
+          [`${curr.name}`]: curr.value
         }),
         {}
       );
