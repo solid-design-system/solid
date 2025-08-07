@@ -1,5 +1,21 @@
 # @solid-design-system/components
 
+## 5.15.0
+
+### Minor Changes
+
+- Increased `sd-drawer` close button `z-index` when using attribute `no-header` to prevent it being overlapped by the content. _[`#2318`](https://github.com/solid-design-system/solid/pull/2318) [`11300b4`](https://github.com/solid-design-system/solid/commit/11300b42a379e8f13ac4316b8824126c61891281) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Exported new CSS part on `sd-dropdown` named `base__popup`, which targets the internal `sd-popup` `popup` part.
+
+  Implemented `focus` and `blur` methods on `sd-navigation-item`.
+
+  Improved `sd-navigation-item` accessibility by separating the content and description into `aria-labelledby` and `aria-describedby` respectively.
+
+### 📈 Stats
+* Uncompressed: 479 KB (unchanged)
+* Gzipped: 113 KB (+1 KB / +1%)
+
 ## 5.14.0
 
 ### Minor Changes
@@ -7,8 +23,9 @@
 - Implemented `waiting` attribute and `horizontal-inline` variant on `sd-step` _[`#2364`](https://github.com/solid-design-system/solid/pull/2364) [`b6d6768`](https://github.com/solid-design-system/solid/commit/b6d6768f99dffceb06356a519e9d74ee5490e5aa) [@balco0110](https://github.com/balco0110)_
 
 ### 📈 Stats
-* Uncompressed: 479 KB (+2 KB / +0%)
-* Gzipped: 112 KB (unchanged)
+
+- Uncompressed: 479 KB (+2 KB / +0%)
+- Gzipped: 112 KB (unchanged)
 
 ## 5.13.15
 

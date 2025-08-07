@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.28.0
+
+### Minor Changes
+
+- Implemented a new `sd-navigation-item` template showcasing a `mega menu`. _[`#2318`](https://github.com/solid-design-system/solid/pull/2318) [`11300b4`](https://github.com/solid-design-system/solid/commit/11300b42a379e8f13ac4316b8824126c61891281) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.27.0
 
 ### Minor Changes
