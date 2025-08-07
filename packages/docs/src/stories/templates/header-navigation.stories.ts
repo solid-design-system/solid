@@ -677,7 +677,7 @@ export const Horizontal = {
           width: calc(100% + 16px);
         }
 
-        sd-dropdown[open] sd-navigation-item[slot='trigger'][current] {
+        sd-dropdown[open] sd-navigation-item[slot='trigger'] {
           background: rgb(246 246 246);
         }
 
