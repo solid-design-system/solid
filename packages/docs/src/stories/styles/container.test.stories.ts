@@ -144,7 +144,6 @@ export const TrianglePosition = {
   name: 'Sample: Triangle Position',
   render: (args: any) => {
     return html` ${generateTemplate({
-      constants: [{ type: 'attribute', name: 'sd-container--variant-...', value: 'primary' }],
       axis: {
         y: [
           {
