@@ -229,8 +229,14 @@ if (typeof window.NavigationMenu === 'undefined') {
             this.focusPrevious(item);
             break;
           case 'ArrowRight':
-            if (item.isSubmenuTrigger || item.isGroupItem) {
+            if (item.isSubmenuTrigger || (item.isGroupItem && !item.el.separated)) {
               item.click();
+            } else if (item.isGroupItem && item.el.separated) {
+              if (item.el.hasAttribute('open')) {
+                item.el.removeAttribute('open');
+              } else {
+                item.el.setAttribute('open', '');
+              }
             }
             break;
           case 'ArrowLeft':
