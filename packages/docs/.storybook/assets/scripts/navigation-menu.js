@@ -163,12 +163,7 @@ if (typeof window.NavigationMenu === 'undefined') {
       }
 
       if (this.isGroupItem && !this.el.separated) {
-        if (this.el.open) {
-          this.el.removeAttribute('open');
-        } else {
-          this.el.setAttribute('open', '');
-        }
-
+        this.el.toggleAttribute('open');
         return;
       }
 
@@ -229,8 +224,10 @@ if (typeof window.NavigationMenu === 'undefined') {
             this.focusPrevious(item);
             break;
           case 'ArrowRight':
-            if (item.isSubmenuTrigger || item.isGroupItem) {
+            if (item.isSubmenuTrigger || (item.isGroupItem && !item.el.separated)) {
               item.click();
+            } else if (item.isGroupItem && item.el.separated) {
+              item.el.toggleAttribute('open');
             }
             break;
           case 'ArrowLeft':
@@ -360,11 +357,7 @@ if (typeof window.NavigationMenu === 'undefined') {
 
     _click() {
       if (this.isGroupItem) {
-        if (this.el.open) {
-          this.el.removeAttribute('open');
-        } else {
-          this.el.setAttribute('open', '');
-        }
+        this.el.toggleAttribute('open');
       }
     }
   }

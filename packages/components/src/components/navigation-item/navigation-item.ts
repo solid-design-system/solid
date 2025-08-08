@@ -38,7 +38,7 @@ export default class SdNavigationItem extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, '[default]', 'description', 'children');
   private readonly localize = new LocalizeController(this);
 
-  @query('a[part="base"], button[part="base"]') button: HTMLButtonElement | HTMLLinkElement | null;
+  @query('[part="base"]') button: HTMLButtonElement | HTMLLinkElement | null;
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
 
   /** The navigation item's orientation. If false, properties below this point are not used. */
