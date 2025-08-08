@@ -163,12 +163,7 @@ if (typeof window.NavigationMenu === 'undefined') {
       }
 
       if (this.isGroupItem && !this.el.separated) {
-        if (this.el.open) {
-          this.el.removeAttribute('open');
-        } else {
-          this.el.setAttribute('open', '');
-        }
-
+        this.el.toggleAttribute('open');
         return;
       }
 
@@ -232,11 +227,7 @@ if (typeof window.NavigationMenu === 'undefined') {
             if (item.isSubmenuTrigger || (item.isGroupItem && !item.el.separated)) {
               item.click();
             } else if (item.isGroupItem && item.el.separated) {
-              if (item.el.hasAttribute('open')) {
-                item.el.removeAttribute('open');
-              } else {
-                item.el.setAttribute('open', '');
-              }
+              item.el.toggleAttribute('open');
             }
             break;
           case 'ArrowLeft':
@@ -366,11 +357,7 @@ if (typeof window.NavigationMenu === 'undefined') {
 
     _click() {
       if (this.isGroupItem) {
-        if (this.el.open) {
-          this.el.removeAttribute('open');
-        } else {
-          this.el.setAttribute('open', '');
-        }
+        this.el.toggleAttribute('open');
       }
     }
   }
