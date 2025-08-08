@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.15.1
+
+### Patch Changes
+
+- Fixed an issue on `sd-navigation-item` where it was not properly finding the `part="base"` when it had slotted children. _[`#2454`](https://github.com/solid-design-system/solid/pull/2454) [`038a16a`](https://github.com/solid-design-system/solid/commit/038a16ada52e11bd92f7a621947104c96e71bd54) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.15.0
 
 ### Minor Changes
@@ -13,8 +19,9 @@
   Improved `sd-navigation-item` accessibility by separating the content and description into `aria-labelledby` and `aria-describedby` respectively.
 
 ### 📈 Stats
-* Uncompressed: 479 KB (unchanged)
-* Gzipped: 113 KB (+1 KB / +1%)
+
+- Uncompressed: 479 KB (unchanged)
+- Gzipped: 113 KB (+1 KB / +1%)
 
 ## 5.14.0
 

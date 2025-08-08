@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.28.2
+
+### Patch Changes
+
+- Fixed a small keyboard navigation issue within the `Header Navigation` template. _[`#2454`](https://github.com/solid-design-system/solid/pull/2454) [`038a16a`](https://github.com/solid-design-system/solid/commit/038a16ada52e11bd92f7a621947104c96e71bd54) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.28.1
 
 ### Patch Changes
