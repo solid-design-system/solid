@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.28.1
+
+### Patch Changes
+
+- Fixed a small layout issue on the `Button` template. _[`#2448`](https://github.com/solid-design-system/solid/pull/2448) [`8025cd2`](https://github.com/solid-design-system/solid/commit/8025cd2a1e738aa7f26eb752147417af720a2399) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.28.0
 
 ### Minor Changes
