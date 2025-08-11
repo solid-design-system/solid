@@ -353,7 +353,7 @@ export const storybookTemplate = (customElementTag: string) => {
               const isDefaultValue = !isOverriddenAttribute && defaultValue === argValue;
               const overridenValue = args[`${attr}-attr`];
               if (isDefaultValue && argValue !== overridenValue && typeof argValue !== 'boolean') {
-                return [attr, overridenValue];
+                return [attr, overridenValue ?? argValue];
               }
 
               /*
