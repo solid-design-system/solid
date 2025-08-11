@@ -1,0 +1,4 @@
+@import 'tailwindcss';
+@source './src';
+
+/* TODO: Generate theme from figma variables */

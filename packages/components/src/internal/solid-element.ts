@@ -2,6 +2,8 @@ import { cssVar, parseDuration } from './animate';
 import { LitElement, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 
+import style from '../../tailwind.css?inline';
+
 const css = unsafeCSS;
 
 const tokenProcessors: Record<string, (value: string) => string | number> = {
@@ -22,11 +24,6 @@ export default class SolidElement extends LitElement {
       @import url('../styles/src/modules/paragraph.css');
       @import url('../styles/src/modules/headline.css');
 
-      /* TailwindCSS directives have to come after imports */
-      @tailwind base;
-      @tailwind components;
-      @tailwind utilities;
-
       :host {
         --tw-gradient-from-position: 0%;
         --tw-gradient-to-position: 100%;
@@ -43,7 +40,9 @@ export default class SolidElement extends LitElement {
       [hidden] {
         display: none !important;
       }
-    `
+    `,
+    /* TailwindCSS directives have to come after imports */
+    css(style)
   ];
 
   /** Emits a custom event with more convenient defaults. */

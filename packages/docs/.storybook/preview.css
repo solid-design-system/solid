@@ -1,22 +1,18 @@
 @import url('../../components/src/solid-components.css');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+/* TODO: Uncomment code */
 /* Lists */
-.sbdocs .sbdocs-content ol {
+/* .sbdocs .sbdocs-content ol {
   @apply !list-decimal;
-}
+} */
 
 /* Links */
-.sbdocs.sbdocs-a,
+/* .sbdocs.sbdocs-a,
 .sbdocs .sbdocs-content a:not(:has(code)):not(:where(#root-inner *, #storybook-docs *)) {
   @apply underline transition-colors text-primary hover:text-primary-500 active:text-primary-800;
-}
+} */
 
 /* Outline on focus visible */
-.sbdocs.sbdocs-a:focus-visible,
+/* .sbdocs.sbdocs-a:focus-visible,
 .sbdocs .sbdocs-content a:not(:where(#root-inner *, #storybook-docs *)):focus-visible,
 .sbdocs .toc-list .toc-list-item a:focus-visible {
   @apply outline outline-2 outline-offset-2 outline-primary;
@@ -24,18 +20,18 @@
 
 div[data-radix-scroll-area-viewport]:focus-visible {
   @apply outline -outline-offset-2 outline-2 outline-primary;
-}
+} */
 
 /* Color palettes */
-.sbdocs .docblock-colorpalette {
+/* .sbdocs .docblock-colorpalette {
   div[title],
   > div:first-child {
     @apply text-neutral-700;
   }
-}
+} */
 
 /* Right-side headline anchors */
-.sbdocs.sbdocs-wrapper .toc-wrapper > .toc-list {
+/* .sbdocs.sbdocs-wrapper .toc-wrapper > .toc-list {
   @apply border-l border-l-neutral-400;
 }
 
@@ -53,10 +49,10 @@ div[data-radix-scroll-area-viewport]:focus-visible {
   a {
     @apply text-primary;
   }
-}
+} */
 
 /* Tables */
-.sbdocs .sbdocs-content table:not(.sd-table) {
+/* .sbdocs .sbdocs-content table:not(.sd-table) {
   tr,
   td {
     @apply border-neutral-400;
@@ -65,15 +61,15 @@ div[data-radix-scroll-area-viewport]:focus-visible {
   tr:nth-of-type(2n) {
     @apply bg-neutral-100;
   }
-}
+} */
 
 /* Blockquotes */
-.sbdocs .sbdocs-content blockquote {
+/* .sbdocs .sbdocs-content blockquote {
   @apply border-accent;
-}
+} */
 
 /* Code */
-.sbdocs .language-css,
+/* .sbdocs .language-css,
 .sbdocs .language-js {
   .token.property,
   .token.attr-name {
@@ -90,4 +86,4 @@ div[data-radix-scroll-area-viewport]:focus-visible {
 
 .sbdocs .token.comment {
   @apply !text-success;
-}
+} */

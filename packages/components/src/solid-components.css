@@ -6,7 +6,8 @@
 
 @solid variables;
 
-.sd-scroll-lock {
+/* TODO: Uncomment code */
+/* .sd-scroll-lock {
   padding-right: var(--sd-scroll-lock-size) !important;
   overflow: hidden !important;
 }
@@ -32,4 +33,4 @@
   sd-notification::part(content) {
     @apply border-white;
   }
-}
+} */
