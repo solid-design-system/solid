@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.15.2
+
+### Patch Changes
+
+- Fixed `sd-checkbox` animation to correctly display the `indeterminate` state icon. _[`#2455`](https://github.com/solid-design-system/solid/pull/2455) [`cf0f7e2`](https://github.com/solid-design-system/solid/commit/cf0f7e2e09c10f1b64d048b0ffe9912ef7a14beb) [@smfonseca](https://github.com/smfonseca)_
+
 ## 5.15.1
 
 ### Patch Changes
