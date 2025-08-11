@@ -1,5 +1,23 @@
 # @solid-design-system/docs
 
+## 1.28.2
+
+### Patch Changes
+
+- Fixed a small keyboard navigation issue within the `Header Navigation` template. _[`#2454`](https://github.com/solid-design-system/solid/pull/2454) [`038a16a`](https://github.com/solid-design-system/solid/commit/038a16ada52e11bd92f7a621947104c96e71bd54) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.28.1
+
+### Patch Changes
+
+- Fixed a small layout issue on the `Button` template. _[`#2448`](https://github.com/solid-design-system/solid/pull/2448) [`8025cd2`](https://github.com/solid-design-system/solid/commit/8025cd2a1e738aa7f26eb752147417af720a2399) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.28.0
+
+### Minor Changes
+
+- Implemented a new `sd-navigation-item` template showcasing a `mega menu`. _[`#2318`](https://github.com/solid-design-system/solid/pull/2318) [`11300b4`](https://github.com/solid-design-system/solid/commit/11300b42a379e8f13ac4316b8824126c61891281) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.27.0
 
 ### Minor Changes

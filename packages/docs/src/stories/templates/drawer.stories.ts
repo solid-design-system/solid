@@ -45,83 +45,157 @@ export const Default = {
         background-color: #051530;
         opacity: 0.9;
       }
-      sd-drawer::part(body) {
-        padding: 4px 0;
-      }
     </style>
-    <sd-button onclick="openDrawer()">Open Drawer</sd-button>
-    <sd-drawer open placement="end" label="First drawer">
-      <sd-button slot="header" variant="tertiary" class="hidden" id="return-button" onclick="handleSecondLevel()">
-        <sd-icon name="system/arrow-left" label="return"></sd-icon>
+    <sd-button id="open-menu-navigation">Open Drawer</sd-button>
+
+    <sd-drawer open id="navigation-drawer" placement="end" label="Navigation drawer menu" class="group relative block">
+      <sd-button slot="header" variant="tertiary" class="navigation-nav--close">
+        <sd-icon name="system/arrow-left" label="Close submenu"></sd-icon>
       </sd-button>
-      <div class="level-one h-full flex flex-col justify-between">
-        <nav aria-label="Primary">
-          <sd-navigation-item vertical>Home</sd-navigation-item>
-          <sd-navigation-item vertical current chevron divider onclick="handleSecondLevel()">
-            About Us
-          </sd-navigation-item>
-          <sd-navigation-item vertical chevron divider>Markets</sd-navigation-item>
-          <sd-navigation-item vertical chevron divider>Press service</sd-navigation-item>
-          <sd-navigation-item vertical chevron divider>Sustainability</sd-navigation-item>
-          <sd-navigation-item vertical chevron divider>Career</sd-navigation-item>
-        </nav>
-        <nav aria-label="Secondary" slot="footer" class="bg-neutral-100">
-          <sd-navigation-item vertical class="flex align-center">
-            <sd-icon name="system/user" class="text-xl mr-2"></sd-icon>
-            My depot
-          </sd-navigation-item>
-          <sd-navigation-item vertical divider class="flex align-center">
-            <sd-icon name="system/lock-locked" class="text-xl mr-2"></sd-icon>
-            My application
-          </sd-navigation-item>
-          <sd-navigation-item vertical divider class="flex align-center">
-            <sd-icon name="system/website" class="text-xl mr-2"></sd-icon>
-            Our further appearances
-          </sd-navigation-item>
-        </nav>
-      </div>
-      <div class="level-two hidden">
-        <nav id="level-two-nav" aria-label="About us">
-          <sd-navigation-item vertical id="nav-title" size="lg">About Us</sd-navigation-item>
-          <sd-navigation-item vertical divider>
-            Union Investment for privat customers
-            <p slot="description" class="sd-paragraph sd-paragraph--size-sm max-w-[238px]">
-              Find out more about us and what we stand for
-            </p>
-            <div slot="children">
-              <sd-navigation-item vertical indented current> Investor protection </sd-navigation-item>
-              <sd-navigation-item vertical indented> Distinction </sd-navigation-item>
-              <sd-navigation-item vertical indented> Our Management </sd-navigation-item>
-            </div>
-          </sd-navigation-item>
-          <sd-navigation-item vertical>
-            Sustainability at Union Investment
-            <div slot="children">
-              <sd-navigation-item vertical indented> Investor protection </sd-navigation-item>
-              <sd-navigation-item vertical indented> Distinction </sd-navigation-item>
-              <sd-navigation-item vertical indented> Our Management </sd-navigation-item>
-            </div>
-          </sd-navigation-item>
-          <sd-navigation-item vertical>
-            Union Investment Group
-            <div slot="children">
-              <sd-navigation-item vertical indented> Investor protection </sd-navigation-item>
-              <sd-navigation-item vertical indented> Distinction </sd-navigation-item>
-              <sd-navigation-item vertical indented> Our Management </sd-navigation-item>
-            </div>
-          </sd-navigation-item>
+
+      <div class="flex flex-col h-full -mx-4 overflow-x-hidden">
+        <nav
+          aria-label="Main"
+          class="navigation-nav group relative flex flex-col justify-between flex-1 pt-1 transition-transform duration-medium data-[submenu-open]:-translate-x-full"
+        >
+          <ul>
+            <li>
+              <sd-navigation-item href="javascript:void(0)" vertical current>Home</sd-navigation-item>
+            </li>
+            <li>
+              <sd-navigation-item divider vertical chevron>About Us</sd-navigation-item>
+              <div data-submenu class="absolute top-0 right-0 w-full translate-x-full">
+                <div>
+                  <p class="sd-headline sd-headline--size-lg px-4 py-3 !text-primary">About Us</p>
+                  <ul>
+                    <li>
+                      <sd-navigation-item divider vertical>
+                        <span>Union Investment for privat customers</span>
+                        <span slot="description">Find out more about us and what we stand for</span>
+                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                          Investor protection
+                        </sd-navigation-item>
+                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                          Distinction
+                        </sd-navigation-item>
+                        <sd-navigation-item slot="children" vertical indented href="javascript:void(0)">
+                          Our Management
+                        </sd-navigation-item>
+                      </sd-navigation-item>
+                      <sd-navigation-item vertical> Sustainability at Union Investment </sd-navigation-item>
+                      <sd-navigation-item vertical> Union Investment Group </sd-navigation-item>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li>
+              <sd-navigation-item href="javascript:void(0)" divider vertical>Markets</sd-navigation-item>
+            </li>
+            <li>
+              <sd-navigation-item href="javascript:void(0)" divider vertical>Press service</sd-navigation-item>
+            </li>
+            <li>
+              <sd-navigation-item href="javascript:void(0)" divider vertical>Sustainability</sd-navigation-item>
+            </li>
+            <li>
+              <sd-navigation-item href="javascript:void(0)" divider vertical>Career</sd-navigation-item>
+            </li>
+          </ul>
+
+          <div class="py-2 bg-neutral-100">
+            <ul>
+              <li>
+                <sd-navigation-item href="javascript:void(0)" vertical>
+                  <sd-icon name="system/user" class="text-xl mr-2"></sd-icon>
+                  My depot
+                </sd-navigation-item>
+              </li>
+              <li>
+                <sd-navigation-item href="javascript:void(0)" divider vertical>
+                  <sd-icon name="system/lock-locked" class="text-xl mr-2"></sd-icon>
+                  My application
+                </sd-navigation-item>
+              </li>
+              <li>
+                <sd-navigation-item href="javascript:void(0)" divider vertical>
+                  <sd-icon name="system/website" class="text-xl mr-2"></sd-icon>
+                  Our further appearances
+                </sd-navigation-item>
+              </li>
+            </ul>
+          </div>
         </nav>
       </div>
     </sd-drawer>
-    <script>
-      function handleSecondLevel() {
-        document.querySelector('.level-one').classList.toggle('hidden');
-        document.querySelector('.level-two').classList.toggle('hidden');
-        document.querySelector('#return-button').classList.toggle('hidden');
+
+    <style>
+      [data-submenu][inert] {
+        display: none;
       }
-      function openDrawer() {
-        document.querySelector('sd-drawer').show();
+
+      sd-navigation-item:has([slot='children']):has(sd-navigation-item[current])::part(content),
+      sd-navigation-item:has(+ [data-submenu] sd-navigation-item[current])::part(content) {
+        font-weight: bold;
       }
+
+      sd-navigation-item + div[data-submenu]:not([data-active-submenu]) {
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      sd-navigation-item:has([slot='children'])[open] span:not([slot='description']),
+      sd-navigation-item:has([slot='children'][current]) span:not([slot='description']) {
+        font-weight: bold;
+      }
+    </style>
+
+    <!-- Mobile drawer logic -->
+    <script type="module">
+      const drawer = document.getElementById('navigation-drawer');
+      const drawerTrigger = document.getElementById('open-menu-navigation');
+      const innerTrigger = drawerTrigger.shadowRoot.querySelector('button');
+
+      innerTrigger.setAttribute('aria-controls', 'navigation-drawer');
+      innerTrigger.setAttribute('aria-expanded', 'false');
+      drawerTrigger.addEventListener('click', () => drawer.show());
+      drawer.addEventListener('sd-hide', () => innerTrigger.setAttribute('aria-expanded', 'false'));
+      drawer.addEventListener('sd-show', () => innerTrigger.setAttribute('aria-expanded', 'true'));
+    </script>
+
+    <!--
+        The navigation-menu script can be found here:
+        https://github.com/solid-design-system/solid/blob/main/packages/docs/.storybook/assets/scripts/navigation-menu.js
+      -->
+    <script src="./scripts/navigation-menu.js"></script>
+    <script type="module">
+      const getNavigationItemTitle = item =>
+        item.shadowRoot
+          .querySelector('[part="content"]')
+          .assignedNodes({ flatten: true })
+          .reduce((acc, node) => {
+            if (node.nodeType === Node.ELEMENT_NODE) {
+              return acc + node.innerText;
+            } else if (node.nodeType === Node.TEXT_NODE) {
+              return acc + node.textContent;
+            }
+            return acc;
+          }, '');
+
+      document.querySelectorAll('.navigation-nav').forEach(container => {
+        const megamenu = new NavigationMenu(container, NavigationMenuVerticalItem, {
+          backButton: document.getElementById('navigation-drawer').querySelector('.navigation-nav--close')
+        });
+        megamenu.focusController = new VerticalFocusController(megamenu);
+
+        const drawer = container.closest('sd-drawer');
+        if (drawer) {
+          drawer.addEventListener('sd-hide', e => {
+            if (e.target !== drawer) return;
+            megamenu.reset();
+          });
+        }
+      });
     </script>
   `
 };

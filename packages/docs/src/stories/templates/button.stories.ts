@@ -17,7 +17,7 @@ export const ButtonGroupHorizontal = {
   render: () => html`
     <div class="flex flex-col gap-8">
       <div class="flex flex-row gap-4 py-6">
-        <sd-button variant="secondary"><sd-icon name="system/user"></sd-icon>Maybe later</sd-button>
+        <sd-button variant="secondary">Maybe later</sd-button>
         <sd-button variant="primary">Cancel subscription</sd-button>
       </div>
       <div class="flex flex-row gap-2 py-6">
