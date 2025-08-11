@@ -247,7 +247,7 @@ export default class SdStep extends SolidElement {
                           `
                         : ''}
                       ${this.noTail
-                        ? html`<div class="flex-1"></div>`
+                        ? ''
                         : html`
                             <div
                               part="tail"
@@ -352,7 +352,21 @@ export default class SdStep extends SolidElement {
       }
 
       :host([horizontal-inline][no-tail]) {
-        @apply flex-1;
+        @apply flex-initial;
+      }
+
+      :host([horizontal-inline]:last-of-type) {
+        @apply flex-none;
+        max-width: 200px;
+      }
+
+      :host([horizontal-inline]:last-of-type) [part='tail'] {
+        display: none;
+      }
+
+      :host([horizontal-inline]:last-of-type) [part='description'] {
+        @apply break-words pr-0;
+        max-width: 190px;
       }
 
       .translateLg {
