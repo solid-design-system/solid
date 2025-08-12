@@ -1,0 +1,1023 @@
+{
+  "blue": {
+    "100": {
+      "type": "color",
+      "value": "#ecf0f9"
+    },
+    "200": {
+      "type": "color",
+      "value": "#e0e9f3"
+    },
+    "300": {
+      "type": "color",
+      "value": "#c8d5e7"
+    },
+    "400": {
+      "type": "color",
+      "value": "#99abd0"
+    },
+    "500": {
+      "type": "color",
+      "value": "#466daf"
+    },
+    "600": {
+      "type": "color",
+      "value": "#00358e"
+    },
+    "700": {
+      "type": "color",
+      "value": "#132e6e"
+    },
+    "750": {
+      "type": "color",
+      "value": "#0a204a"
+    },
+    "800": {
+      "type": "color",
+      "value": "#051530"
+    },
+    "900": {
+      "type": "color",
+      "value": "#020920"
+    },
+    "default": {
+      "description": "blue-default",
+      "type": "color",
+      "value": "{blue.600}"
+    }
+  },
+  "green": {
+    "100": {
+      "type": "color",
+      "value": "#b6dfaa"
+    },
+    "200": {
+      "type": "color",
+      "value": "#8ed082"
+    },
+    "300": {
+      "type": "color",
+      "value": "#6cc254"
+    },
+    "400": {
+      "type": "color",
+      "value": "#2d9d00"
+    },
+    "500": {
+      "type": "color",
+      "value": "#25880e"
+    },
+    "550": {
+      "type": "color",
+      "value": "#367b28"
+    },
+    "600": {
+      "type": "color",
+      "value": "#316f24"
+    },
+    "700": {
+      "type": "color",
+      "value": "#215725"
+    },
+    "800": {
+      "type": "color",
+      "value": "#19411b"
+    },
+    "default": {
+      "description": "green-default",
+      "type": "color",
+      "value": "{green.400}"
+    }
+  },
+  "grey": {
+    "100": {
+      "type": "color",
+      "value": "#f6f6f6"
+    },
+    "200": {
+      "type": "color",
+      "value": "#e9e9e9"
+    },
+    "300": {
+      "type": "color",
+      "value": "#dadada"
+    },
+    "400": {
+      "description": "grey-400",
+      "type": "color",
+      "value": "#c3c3c3"
+    },
+    "500": {
+      "type": "color",
+      "value": "#aeaeae"
+    },
+    "600": {
+      "description": "grey-600",
+      "type": "color",
+      "value": "#888888"
+    },
+    "700": {
+      "type": "color",
+      "value": "#686868"
+    },
+    "800": {
+      "type": "color",
+      "value": "#515151"
+    }
+  },
+  "teal": {
+    "100": {
+      "type": "color",
+      "value": "#bde0e0"
+    },
+    "200": {
+      "type": "color",
+      "value": "#a0d2d1"
+    },
+    "300": {
+      "type": "color",
+      "value": "#72b8bc"
+    },
+    "400": {
+      "type": "color",
+      "value": "#3ca4a4"
+    },
+    "500": {
+      "type": "color",
+      "value": "#008d92"
+    },
+    "600": {
+      "type": "color",
+      "value": "#236e6d"
+    },
+    "700": {
+      "type": "color",
+      "value": "#215d5c"
+    },
+    "800": {
+      "type": "color",
+      "value": "#194547"
+    }
+  },
+  "yellow": {
+    "100": {
+      "type": "color",
+      "value": "#ffeaa5"
+    },
+    "200": {
+      "type": "color",
+      "value": "#ffe07a"
+    },
+    "300": {
+      "type": "color",
+      "value": "#fed210"
+    },
+    "400": {
+      "type": "color",
+      "value": "#e9be33"
+    },
+    "500": {
+      "type": "color",
+      "value": "#d6ad31"
+    },
+    "600": {
+      "type": "color",
+      "value": "#c89712"
+    },
+    "650": {
+      "type": "color",
+      "value": "#bb8d20"
+    },
+    "700": {
+      "type": "color",
+      "value": "#ab812e"
+    },
+    "800": {
+      "type": "color",
+      "value": "#8d6927"
+    }
+  },
+  "lightblue": {
+    "100": {
+      "type": "color",
+      "value": "#c7e6f8"
+    },
+    "200": {
+      "type": "color",
+      "value": "#a2d7f6"
+    },
+    "300": {
+      "type": "color",
+      "value": "#73c3f0"
+    },
+    "400": {
+      "type": "color",
+      "value": "#42aeec"
+    },
+    "500": {
+      "type": "color",
+      "value": "#1582d5"
+    },
+    "600": {
+      "type": "color",
+      "value": "#1a6cac"
+    },
+    "700": {
+      "type": "color",
+      "value": "#1e5c8d"
+    },
+    "800": {
+      "type": "color",
+      "value": "#21486d"
+    }
+  },
+  "violet": {
+    "100": {
+      "type": "color",
+      "value": "#f0eafb"
+    },
+    "200": {
+      "type": "color",
+      "value": "#e1d5f6"
+    },
+    "300": {
+      "type": "color",
+      "value": "#ccb6f1"
+    },
+    "400": {
+      "type": "color",
+      "value": "#b48ee7"
+    },
+    "500": {
+      "type": "color",
+      "value": "#9768de"
+    },
+    "600": {
+      "type": "color",
+      "value": "#873fd5"
+    },
+    "700": {
+      "type": "color",
+      "value": "#62359b"
+    },
+    "800": {
+      "type": "color",
+      "value": "#421e6c"
+    }
+  },
+  "lightgreen": {
+    "100": {
+      "type": "color",
+      "value": "#e9eec1"
+    },
+    "200": {
+      "type": "color",
+      "value": "#d4e08d"
+    },
+    "300": {
+      "type": "color",
+      "value": "#bad71c"
+    },
+    "400": {
+      "type": "color",
+      "value": "#9fb638"
+    },
+    "500": {
+      "type": "color",
+      "value": "#8aa33d"
+    },
+    "600": {
+      "type": "color",
+      "value": "#74903e"
+    },
+    "700": {
+      "type": "color",
+      "value": "#597540"
+    },
+    "800": {
+      "type": "color",
+      "value": "#445d3a"
+    }
+  },
+  "red": {
+    "250": {
+      "type": "color",
+      "value": "#ea586b"
+    },
+    "300": {
+      "type": "color",
+      "value": "#cc1937"
+    },
+    "400": {
+      "type": "color",
+      "value": "#ac1938"
+    },
+    "500": {
+      "type": "color",
+      "value": "#7d142d"
+    }
+  },
+  "cerulean": {
+    "description": "low value fluctuation",
+    "type": "color",
+    "value": "#017dc3"
+  },
+  "emerald": {
+    "description": "moderate value fluctuation",
+    "type": "color",
+    "value": "#00a593"
+  },
+  "lemon": {
+    "description": "increased value fluctuation",
+    "type": "color",
+    "value": "#fff000"
+  },
+  "orange": {
+    "description": "high value fluctuation",
+    "type": "color",
+    "value": "#fa9b1e"
+  },
+  "brightred": {
+    "description": "very high value fluctuation",
+    "type": "color",
+    "value": "#ff0000"
+  },
+  "white": {
+    "description": "white",
+    "type": "color",
+    "value": "#ffffff"
+  },
+  "black": {
+    "description": "black",
+    "type": "color",
+    "value": "#181818"
+  },
+  "*background-transparent": {
+    "neutral-100|80": {
+      "description": "Used for teaser",
+      "type": "color",
+      "value": "rgba(10, 32, 74, 0.80)"
+    },
+    "neutral-100|90": {
+      "description": "Used for teaser",
+      "type": "color",
+      "value": "rgba(10, 32, 74, 0.90)"
+    },
+    "primary-100|80": {
+      "description": "Used for teaser",
+      "type": "color",
+      "value": "rgba(10, 32, 74, 0.80)"
+    },
+    "primary-100|90": {
+      "description": "Used for teaser",
+      "type": "color",
+      "value": "rgba(10, 32, 74, 0.90)"
+    },
+    "primary-800|90": {
+      "description": "Used for overlays",
+      "type": "color",
+      "value": "rgba(5, 21, 48, 0.90)"
+    },
+    "primary|10": {
+      "description": "Used for audio (wave animation)",
+      "type": "color",
+      "value": "rgba(0, 53, 142, 0.10)"
+    },
+    "primary|30": {
+      "description": "Used for map-marker",
+      "type": "color",
+      "value": "rgba(0, 53, 142, 0.30)"
+    },
+    "primary|80": {
+      "description": "Used for teaser",
+      "type": "color",
+      "value": "rgba(0, 53, 142, 0.80)"
+    },
+    "primary|90": {
+      "description": "Used for teaser",
+      "type": "color",
+      "value": "rgba(0, 53, 142, 0.90)"
+    },
+    "white|20": {
+      "description": "Used for audio (wave animation inverted)",
+      "type": "color",
+      "value": "rgba(255, 255, 255, 0.20)"
+    },
+    "white|80": {
+      "description": "Used for teaser",
+      "type": "color",
+      "value": "rgba(0, 53, 142, 0.80)"
+    },
+    "white|90": {
+      "description": "Used for teaser, audio (wave animation)\n",
+      "type": "color",
+      "value": "rgba(0, 53, 142, 0.90)"
+    }
+  },
+  "background": {
+    "accent": {
+      "description": "Used for checkbox, switch",
+      "type": "color",
+      "value": "{green.default}"
+    },
+    "accent-300": {
+      "description": "Used for inverted hover interaction",
+      "type": "color",
+      "value": "{green.300}"
+    },
+    "accent-500": {
+      "description": "Used for cta background",
+      "type": "color",
+      "value": "{green.500}"
+    },
+    "accent-550": {
+      "description": "Used for hover interaction",
+      "type": "color",
+      "value": "{green.500}"
+    },
+    "accent-700": {
+      "description": "Used for pressed interaction",
+      "type": "color",
+      "value": "{green.700}"
+    },
+    "error": {
+      "description": "Used for notification, status-badge",
+      "type": "color",
+      "value": "{red.250}"
+    },
+    "error-400": {
+      "description": "Used for hover interaction invalid form elements",
+      "type": "color",
+      "value": "{red.300}"
+    },
+    "info": {
+      "description": "Used for notification, status-badge",
+      "type": "color",
+      "value": "{lightblue.500}"
+    },
+    "neutral-100": {
+      "description": "Additional background color (dark mode)",
+      "type": "color",
+      "value": "{blue.750}"
+    },
+    "neutral-200": {
+      "description": "Used for hover interaction (dark mode)",
+      "type": "color",
+      "value": "{blue.700}"
+    },
+    "neutral-300": {
+      "description": "Used for flag ",
+      "type": "color",
+      "value": "{blue.600}"
+    },
+    "neutral-400": {
+      "description": "Used for flag ",
+      "type": "color",
+      "value": "{blue.500}"
+    },
+    "neutral-500": {
+      "description": "Used for disabled state ",
+      "type": "color",
+      "value": "{grey.600}"
+    },
+    "neutral-600": {
+      "description": "Used for inverted disabled state ",
+      "type": "color",
+      "value": "{grey.600}"
+    },
+    "neutral-800": {
+      "description": "Used for badge",
+      "type": "color",
+      "value": "{grey.800}"
+    },
+    "primary": {
+      "description": "Inverted background color (light mode)\nUsed for button",
+      "type": "color",
+      "value": "{white}"
+    },
+    "primary-100": {
+      "description": "Additional background color (dark mode)",
+      "type": "color",
+      "value": "{blue.750}"
+    },
+    "primary-200": {
+      "description": "Additional background color (dark mode) on primary-750",
+      "type": "color",
+      "value": "{blue.700}"
+    },
+    "primary-300": {
+      "description": "Used for chip background (dark mode)",
+      "type": "color",
+      "value": "{blue.default}"
+    },
+    "primary-500": {
+      "description": "Used for hover interaction, badge",
+      "type": "color",
+      "value": "{blue.500}"
+    },
+    "primary-800": {
+      "description": "Used for pressed interaction (dark mode)",
+      "type": "color",
+      "value": "{blue.200}"
+    },
+    "primary-800-alternative": {
+      "description": "Used for background elevated in inverted (i.e.:footnote target)",
+      "type": "color",
+      "value": "{blue.800}"
+    },
+    "primary-alternative": {
+      "description": "Used for background that remains the same in darkmode",
+      "type": "color",
+      "value": "{blue.default}"
+    },
+    "success": {
+      "description": "Used for notification, status-badge",
+      "type": "color",
+      "value": "{green.300}"
+    },
+    "warning": {
+      "description": "Used for notification, status-badge",
+      "type": "color",
+      "value": "{yellow.650}"
+    },
+    "white": {
+      "description": "Default background color (dark mode)",
+      "type": "color",
+      "value": "{blue.900}"
+    },
+    "white-alternative": {
+      "description": "Used when element changes to primary in dark mode:\n-Header",
+      "type": "color",
+      "value": "{blue.default}"
+    }
+  },
+  "border": {
+    "accent": {
+      "description": "Used to highlight active/selected elements\n",
+      "type": "color",
+      "value": "{green.default}"
+    },
+    "accent-550": {
+      "description": "Used for hover interaction",
+      "type": "color",
+      "value": "{green.500}"
+    },
+    "error": {
+      "description": "Used for invalid form fields",
+      "type": "color",
+      "value": "{red.250}"
+    },
+    "error-400": {
+      "description": "Used for hover interaction invalid form elements",
+      "type": "color",
+      "value": "{red.300}"
+    },
+    "neutral-400": {
+      "description": "Default border color. \nUsed for divider, teaser, container, table cell, ... ",
+      "type": "color",
+      "value": "{blue.400}"
+    },
+    "neutral-500": {
+      "description": "Used for disabled state",
+      "type": "color",
+      "value": "{grey.500}"
+    },
+    "neutral-600": {
+      "description": "Used for inverted disabled state",
+      "type": "color",
+      "value": "{grey.600}"
+    },
+    "neutral-800": {
+      "description": "Used for form fields, switch, radio, checkbox",
+      "type": "color",
+      "value": "{white}"
+    },
+    "null": {
+      "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+      "type": "color",
+      "value": "{white}"
+    },
+    "primary": {
+      "description": "Used for buttons, select field, focus state",
+      "type": "color",
+      "value": "{white}"
+    },
+    "primary-100": {
+      "description": "Used for inverted hover interaction",
+      "type": "color",
+      "value": "{blue.100}"
+    },
+    "primary-200": {
+      "description": "Used for inverted pressed interaction",
+      "type": "color",
+      "value": "{blue.200}"
+    },
+    "primary-400": {
+      "description": "Used for inverted dividers",
+      "type": "color",
+      "value": "{blue.400}"
+    },
+    "primary-500": {
+      "description": "Used for hover interaction (dark mode)",
+      "type": "color",
+      "value": "{blue.100}"
+    },
+    "primary-800": {
+      "description": "Used for pressed interaction",
+      "type": "color",
+      "value": "{blue.200}"
+    },
+    "success": {
+      "description": "Used for valid form fields\n",
+      "type": "color",
+      "value": "{green.300}"
+    },
+    "white": {
+      "description": "Used for buttons, inverted focus state",
+      "type": "color",
+      "value": "{white}"
+    }
+  },
+  "brandshape": {
+    "background": {
+      "neutral-100": {
+        "type": "color",
+        "value": "rgba(255, 255, 255, 0.00)"
+      },
+      "white": {
+        "type": "color",
+        "value": "rgba(255, 255, 255, 0.00)"
+      }
+    },
+    "border": {
+      "null": {
+        "description": "Used to add border that is only visible in dark mode",
+        "type": "color",
+        "value": "{white}"
+      }
+    }
+  },
+  "button": {
+    "background": {
+      "primary": {
+        "description": "Used for pressed interaction",
+        "type": "color",
+        "value": "{white}"
+      },
+      "primary-100": {
+        "description": "Additional background color (light mode)",
+        "type": "color",
+        "value": "{blue.700}"
+      },
+      "primary-100-alternative": {
+        "description": "Additional background color (light mode)",
+        "type": "color",
+        "value": "{blue.100}"
+      },
+      "primary-200": {
+        "description": "Additional background color (light mode) on primary-100",
+        "type": "color",
+        "value": "{blue.500}"
+      },
+      "primary-200-alternative": {
+        "description": "Additional background color (light mode) on primary-100",
+        "type": "color",
+        "value": "{blue.200}"
+      },
+      "primary-500": {
+        "description": "Used for hover interaction, badge",
+        "type": "color",
+        "value": "{blue.100}"
+      },
+      "primary-500-alternative": {
+        "description": "Used for hover interaction, badge",
+        "type": "color",
+        "value": "{blue.500}"
+      },
+      "primary-800": {
+        "description": "Used for pressed interaction",
+        "type": "color",
+        "value": "{blue.200}"
+      },
+      "primary-800-alternative": {
+        "description": "Used for pressed interaction",
+        "type": "color",
+        "value": "{blue.800}"
+      },
+      "white": {
+        "description": "Default background color (light mode) Used for inverted button",
+        "type": "color",
+        "value": "{white}"
+      }
+    },
+    "border": {
+      "primary": {
+        "description": "Used for buttons, select field, focus state",
+        "type": "color",
+        "value": "{white}"
+      },
+      "primary-500": {
+        "description": "Used for hover interaction",
+        "type": "color",
+        "value": "{blue.100}"
+      },
+      "primary-800": {
+        "description": "Used for pressed interaction",
+        "type": "color",
+        "value": "{blue.200}"
+      }
+    },
+    "icon-fill": {
+      "primary": {
+        "description": "Default icon color ",
+        "type": "color",
+        "value": "{white}"
+      },
+      "primary-100": {
+        "description": "Used for inverted hover interaction",
+        "type": "color",
+        "value": "{blue.500}"
+      },
+      "primary-200": {
+        "description": "Used for inverted pressed interaction",
+        "type": "color",
+        "value": "{blue.700}"
+      },
+      "primary-500": {
+        "description": "Used for hover interaction",
+        "type": "color",
+        "value": "{blue.100}"
+      },
+      "primary-500-alternative": {
+        "description": "Used for hover interaction",
+        "type": "color",
+        "value": "{blue.500}"
+      },
+      "primary-800": {
+        "description": "Used for pressed interaction",
+        "type": "color",
+        "value": "{white}"
+      },
+      "primary-800-alternative": {
+        "description": "Used for pressed interaction",
+        "type": "color",
+        "value": "{blue.800}"
+      },
+      "primary-alternative": {
+        "description": "Default icon color ",
+        "type": "color",
+        "value": "{blue.default}"
+      },
+      "white": {
+        "description": "Inverted icon color",
+        "type": "color",
+        "value": "{blue.default}"
+      }
+    },
+    "text": {
+      "primary": {
+        "description": "Primary brand color for text",
+        "type": "color",
+        "value": "{white}"
+      },
+      "primary-100": {
+        "description": "Used for inverted hover interaction button label",
+        "type": "color",
+        "value": "{blue.500}"
+      },
+      "primary-200": {
+        "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+        "type": "color",
+        "value": "{blue.700}"
+      },
+      "primary-500": {
+        "description": "Used for hover interaction",
+        "type": "color",
+        "value": "{blue.100}"
+      },
+      "primary-500-alternative": {
+        "description": "Used for hover interaction",
+        "type": "color",
+        "value": "{blue.500}"
+      },
+      "primary-800": {
+        "description": "Used for pressed interaction",
+        "type": "color",
+        "value": "{white}"
+      },
+      "primary-800-alternative": {
+        "description": "Used for pressed interaction",
+        "type": "color",
+        "value": "{blue.800}"
+      },
+      "primary-alternative": {
+        "description": "Primary brand color for text",
+        "type": "color",
+        "value": "{blue.default}"
+      },
+      "white": {
+        "description": "Inverted text color",
+        "type": "color",
+        "value": "{blue.default}"
+      }
+    }
+  },
+  "icon-fill": {
+    "accent": {
+      "description": "Used for active / selected elements",
+      "type": "color",
+      "value": "{green.default}"
+    },
+    "accent-550": {
+      "description": "Used for hover interaction",
+      "type": "color",
+      "value": "{green.500}"
+    },
+    "error": {
+      "description": "Used for error messages, invalid states",
+      "type": "color",
+      "value": "{red.250}"
+    },
+    "error-400": {
+      "description": "Used for hover interaction invalid form elements\n",
+      "type": "color",
+      "value": "{red.400}"
+    },
+    "neutral-500": {
+      "description": "Used for disabled state",
+      "type": "color",
+      "value": "{grey.600}"
+    },
+    "neutral-600": {
+      "description": "Used for inverted disabled state",
+      "type": "color",
+      "value": "{grey.600}"
+    },
+    "neutral-800": {
+      "description": "Used for switch, clearable (dark mode)",
+      "type": "color",
+      "value": "{white}"
+    },
+    "primary": {
+      "description": "Default icon color ",
+      "type": "color",
+      "value": "{white}"
+    },
+    "primary-100": {
+      "description": "Used for inverted hover interaction",
+      "type": "color",
+      "value": "{blue.100}"
+    },
+    "primary-200": {
+      "description": "Used for inverted pressed interaction",
+      "type": "color",
+      "value": "{blue.200}"
+    },
+    "primary-400": {
+      "description": "Used for inverted pressed interaction in text link",
+      "type": "color",
+      "value": "{blue.400}"
+    },
+    "primary-500": {
+      "description": "Used for hover interaction",
+      "type": "color",
+      "value": "{blue.100}"
+    },
+    "primary-800": {
+      "description": "Used for pressed interaction",
+      "type": "color",
+      "value": "{blue.400}"
+    },
+    "risk-high": {
+      "description": "Exclusively for marking fonds",
+      "type": "color",
+      "value": "{orange}"
+    },
+    "risk-increased": {
+      "description": "Exclusively for marking fonds",
+      "type": "color",
+      "value": "{lemon}"
+    },
+    "risk-low": {
+      "description": "Exclusively for marking fonds",
+      "type": "color",
+      "value": "{cerulean}"
+    },
+    "risk-moderate": {
+      "description": "Exclusively for marking fonds",
+      "type": "color",
+      "value": "{emerald}"
+    },
+    "risk-veryhigh": {
+      "description": "Exclusively for marking fonds",
+      "type": "color",
+      "value": "{brightred}"
+    },
+    "success": {
+      "description": "Used for success messages, valid states",
+      "type": "color",
+      "value": "{green.300}"
+    },
+    "white": {
+      "description": "Inverted icon color",
+      "type": "color",
+      "value": "{blue.default}"
+    },
+    "white-alternative": {
+      "description": "Inverted icon color",
+      "type": "color",
+      "value": "{white}"
+    }
+  },
+  "selection-control": {
+    "border": {
+      "neutral-800": {
+        "description": "Used for form fields, checkbox, toggle, radio",
+        "type": "color",
+        "value": "{blue.200}"
+      }
+    }
+  },
+  "text": {
+    "accent": {
+      "description": "Used for inverted hover interaction button label",
+      "type": "color",
+      "value": "{green.default}"
+    },
+    "black": {
+      "description": "Default text color",
+      "type": "color",
+      "value": "{white}"
+    },
+    "black-alternative": {
+      "description": "Default text color in light mode and unchanged in dark mode",
+      "type": "color",
+      "value": "{black}"
+    },
+    "error": {
+      "description": "Used to display negative performance values",
+      "type": "color",
+      "value": "{red.250}"
+    },
+    "neutral-500": {
+      "description": "Used for disabled state",
+      "type": "color",
+      "value": "{grey.600}"
+    },
+    "neutral-600": {
+      "description": "Used for inverted disabled state",
+      "type": "color",
+      "value": "{grey.600}"
+    },
+    "neutral-700": {
+      "description": "Additional text color, Breadcrumb item current (dark mode)",
+      "type": "color",
+      "value": "{blue.400}"
+    },
+    "primary": {
+      "description": "Primary brand color for text",
+      "type": "color",
+      "value": "{white}"
+    },
+    "primary-100": {
+      "description": "Used for inverted hover interaction button label",
+      "type": "color",
+      "value": "{blue.100}"
+    },
+    "primary-200": {
+      "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+      "type": "color",
+      "value": "{blue.200}"
+    },
+    "primary-400": {
+      "description": "Additional text inverted color\nUsed for inverted pressed interaction text link",
+      "type": "color",
+      "value": "{blue.400}"
+    },
+    "primary-500": {
+      "description": "Used for hover interaction (dark mode)",
+      "type": "color",
+      "value": "{blue.200}"
+    },
+    "primary-800": {
+      "description": "Used for pressed interaction",
+      "type": "color",
+      "value": "{blue.400}"
+    },
+    "success": {
+      "description": "Used to display positive performance values",
+      "type": "color",
+      "value": "{green.300}"
+    },
+    "white": {
+      "description": "Inverted text color",
+      "type": "color",
+      "value": "{blue.default}"
+    },
+    "white-alternative": {
+      "description": "Inverted text color (on dark background) and unchanged in dark mode",
+      "type": "color",
+      "value": "{white}"
+    }
+  }
+}

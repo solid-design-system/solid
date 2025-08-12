@@ -266,7 +266,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       <${tag}
       part="base"
       class=${cx(
-        `group relative z-10 font-md no-underline
+        `fill-primary group relative z-10 font-md no-underline
         w-full align-middle inline-flex items-stretch justify-center
         transition-colors duration-fast ease-in-out rounded-default
         select-none cursor-[inherit]`,
