@@ -204,6 +204,10 @@ export const storybookHelpers = (customElementTag: string) => {
       for (const override of overridesArray) {
         const suffix = storybookHelpers(customElementTag).getSuffixFromType(override.type as any);
         args[`${override.name}${suffix}`] = override.value;
+
+        if (typeof override.value === 'boolean') {
+          args[`${override.name}`] = override.value;
+        }
       }
 
       return args;
@@ -303,9 +307,7 @@ export const storybookTemplate = (customElementTag: string) => {
           const attributes = Object.fromEntries(
             Object.entries(args)
               .filter(([attr]) => attr.endsWith('-attr'))
-              .map(([attr, value]) => {
-                return [attr.replace('-attr', ''), value];
-              })
+              .map(([attr, value]) => [attr.replace('-attr', ''), value])
               .filter(([, value]) => value)
           );
 
@@ -327,7 +329,52 @@ export const storybookTemplate = (customElementTag: string) => {
           );
         }
 
-        return theTemplate(args);
+        const attributes = Object.fromEntries(
+          Object.entries(args)
+            .filter(([attr]) => !attr.endsWith('-part') && !attr.endsWith('-slot') && !attr.startsWith('on'))
+            .map(([attr, value]) => {
+              const argValue = args[attr];
+              const defaultValue = defaultArgs[attr];
+
+              /*
+                An attribute can be named with its own name or `%name%-attr`.
+                If a attribute is `%name%-attr`, then its value, if existent, it should override the original one.
+              */
+              const isOverriddenAttribute = attr.includes('-attr');
+              const originalValue = args[attr.replace('-attr', '')];
+              if (isOverriddenAttribute && (!!originalValue || typeof originalValue === 'boolean')) {
+                return ['', undefined];
+              }
+
+              /*
+                If the original attribute has a default value, and the `%name%-attr` has a different value
+                then `%name%-attr` should override it.
+              */
+              const isDefaultValue = !isOverriddenAttribute && defaultValue === argValue;
+              const overridenValue = args[`${attr}-attr`];
+              if (isDefaultValue && argValue !== overridenValue && typeof argValue !== 'boolean') {
+                return [attr, overridenValue ?? argValue];
+              }
+
+              /*
+                If the current attribute we are checking is the original, and there is an override,
+                it should be overriden.
+              */
+              const _value = typeof originalValue === 'number' ? parseFloat(value as string) : value;
+              if (value && !isOverriddenAttribute && !!overridenValue) {
+                return [`${attr}-attr`, _value];
+              }
+
+              return [attr, _value];
+            })
+            .filter(([attr]) => !!attr)
+        );
+
+        const partsAndSlots = Object.fromEntries(
+          Object.entries(args).filter(([attr]) => attr.endsWith('-part') || attr.endsWith('-slot'))
+        );
+
+        return theTemplate({ ...partsAndSlots, ...attributes });
       }
       // b) CSS Styles
       // Extract class related attributes and transform into an object.
@@ -395,13 +442,14 @@ export const storybookTemplate = (customElementTag: string) => {
 
     const constantDefinitions = (Array.isArray(constants) ? constants : [constants])
       .filter(constant => constant.type !== 'template')
-      .reduce(
-        (acc, curr) => ({
+      .reduce((acc, curr) => {
+        const suffix = storybookHelpers(customElementTag).getSuffixFromType(curr.type as any);
+        return {
           ...acc,
-          [`${curr.name}${storybookHelpers(customElementTag).getSuffixFromType(curr.type as any)}`]: curr.value
-        }),
-        {}
-      );
+          [`${curr.name}${suffix}`]: curr.value,
+          ...(suffix.endsWith('-slot') ? {} : { [`${curr.name}`]: curr.value })
+        };
+      }, {});
 
     if (!axis?.x && !axis?.y && !options?.title) {
       return html`${template({
@@ -578,14 +626,20 @@ export const storybookTemplate = (customElementTag: string) => {
                                 xAxis.type !== 'template' && {
                                   [`${xAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(xAxis.type)}`]:
                                     // As the value could be null or empty, we need to check if the property exists
-                                    xValue.hasOwnProperty('value') ? xValue.value : xValue
+                                    xValue.hasOwnProperty('value') ? xValue.value : xValue,
+                                  ...(storybookHelpers(customElementTag).getSuffixFromType(xAxis.type).endsWith('-slot')
+                                    ? {}
+                                    : { [`${xAxis.name}`]: xValue.hasOwnProperty('value') ? xValue.value : xValue })
                                 }),
                               ...(yAxis &&
                                 Object.keys(yAxis).length > 0 &&
                                 yAxis.type !== 'template' && {
                                   [`${yAxis.name}${storybookHelpers(customElementTag).getSuffixFromType(yAxis.type)}`]:
                                     // As the value could be null or empty, we need to check if the property exists
-                                    yValue.hasOwnProperty('value') ? yValue.value : yValue
+                                    yValue.hasOwnProperty('value') ? yValue.value : yValue,
+                                  ...(storybookHelpers(customElementTag).getSuffixFromType(yAxis.type).endsWith('-slot')
+                                    ? {}
+                                    : { [`${yAxis.name}`]: yValue.hasOwnProperty('value') ? yValue.value : yValue })
                                 })
                             })}
                           ${

@@ -257,14 +257,14 @@ export const Parts = {
 };
 
 /**
- * Use the 'default', 'label', 'index', 'circle-content' slots to add content to the step..
+ * Use the 'default', 'label', 'circle-content' slots to add content to the step..
  */
 
 export const Slots = {
   name: 'Slots',
   render: () => {
     return html`
-      ${['default', 'label', 'index', 'circle-content'].map(slot =>
+      ${['default', 'label', 'circle-content'].map(slot =>
         generateTemplate({
           axis: {
             y: {

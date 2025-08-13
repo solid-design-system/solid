@@ -8,6 +8,23 @@ const { argTypes, parameters } = storybookDefaults('sd-brandshape');
 const { overrideArgs } = storybookHelpers('sd-brandshape');
 const { generateTemplate } = storybookTemplate('sd-brandshape');
 
+function getShapeCombinations(arr: string[]) {
+  const result = [];
+
+  for (let i = 1; i < 1 << arr.length; i++) {
+    const combo = [];
+    for (let j = 0; j < arr.length; j++) {
+      if (i & (1 << j)) {
+        combo.push(`"${arr[j]}"`);
+      }
+    }
+    result.push(`[${combo.join(', ')}]`);
+  }
+  return result;
+}
+
+const shapes = getShapeCombinations(JSON.parse(argTypes['shapes'].defaultValue.replace(/'/g, '"')));
+
 export default {
   title: 'Components/sd-brandshape',
   tags: ['!dev', 'autodocs'],
@@ -34,10 +51,9 @@ export default {
   ]),
   argTypes: {
     ...argTypes,
-    'shapes-attr': {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      ...argTypes['shapes-attr'],
-      control: 'text'
+    shapes: {
+      ...argTypes['shapes'],
+      options: shapes
     }
   }
 };
