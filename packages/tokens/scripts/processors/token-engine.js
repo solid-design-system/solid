@@ -1,5 +1,3 @@
-// import { ColorTokenProcessor } from './token-processors/color.js';
-// import { SpacingTokenProcessor } from './token-processors/spacing.js';
 // import { UtilityTokenProcessor } from './token-processors/utility.js';
 // import { TypographyTokenProcessor } from './token-processors/typography.js';
 // import { ShadowTokenProcessor } from './token-processors/shadow.js';
@@ -10,6 +8,7 @@
 // import { BaseTokenProcessor } from './token-processors/base.js';
 
 import { ColorTokenProcessor } from './token-processors/color.js';
+import { SpacingTokenProcessor } from './token-processors/spacing.js';
 
 /**
  * Token processing engine that orchestrates all token processors
@@ -26,7 +25,7 @@ export class TokenProcessingEngine {
    */
   registerDefaultProcessors() {
     this.registerProcessor('color', new ColorTokenProcessor(this.config.getAll()));
-    // this.registerProcessor('spacing', new SpacingTokenProcessor(this.config.getAll()));
+    this.registerProcessor('spacing', new SpacingTokenProcessor(this.config.getAll()));
     // this.registerProcessor('utility', new UtilityTokenProcessor(this.config.getAll()));
     // this.registerProcessor('typography', new TypographyTokenProcessor(this.config.getAll()));
     // this.registerProcessor('shadow', new ShadowTokenProcessor(this.config.getAll()));

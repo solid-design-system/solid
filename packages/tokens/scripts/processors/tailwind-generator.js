@@ -18,7 +18,8 @@ export class TailwindCSSGenerator {
       this.generateImport(),
       this.generateTheme(processedTokens),
       this.generateLayers(processedTokens),
-      this.generateUtilities(processedTokens.utilities)
+      this.generateUtilities(processedTokens.utilities),
+      this.generateVarspacing()
     ].filter(Boolean);
 
     return parts.join('\n\n') + '\n';
@@ -71,6 +72,13 @@ export class TailwindCSSGenerator {
    */
   generateUtilities(utilities) {
     return utilities.length > 0 ? this.css.join(utilities, '\n\n') : null;
+  }
+
+  /**
+   * Generate varspacing utilities
+   */
+  generateVarspacing() {
+    return this.css.utility('varspacing-*', this.css.property('--tw-varspacing', '--value(--spacing-*)'));
   }
 
   /**
