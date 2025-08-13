@@ -20,19 +20,6 @@ const config = {
   buildPath: './dist/'
 };
 
-// /**
-//  * @type {{ author: Record<string, string>, name: string, version: string }} data
-//  */
-
-// const data = JSON.parse(readFileSync('./package.json', 'utf-8'));
-// const { author, name, version } = data;
-
-// // Sets up custom file header
-// StyleDictionary.registerFileHeader({
-//   fileHeader: (defaultMsg = []) => [`${name} version ${version}`, `${author.name}`, ...defaultMsg],
-//   name: 'sd/header'
-// });
-
 const availableThemes = [
   {
     input: 'ui-semantic-light.json',
@@ -73,10 +60,6 @@ const cssRuns = availableThemes.map(async ({ input, theme }) => {
           'ts/color/css/hexrgba',
           'ts/color/modifiers',
           'shadow/css/shorthand'
-
-          // 'syn/add-fallback-fonts',
-          // 'syn/add-missing-quotes-for-strings',
-          // 'syn/convert-letter-spacing-to-normal'
         ]
       }
     },

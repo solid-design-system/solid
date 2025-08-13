@@ -70,7 +70,7 @@ export class TokenProcessingEngine {
     const processors = this.getProcessors();
 
     for (const token of dictionary.allTokens) {
-      if (!token || typeof token.type !== 'string') continue;
+      if (!token || typeof token.type !== 'string' || token.key.startsWith('{core.')) continue;
 
       // Find the first processor that can handle this token
       const processor = processors.find(p => p.canProcess(token));

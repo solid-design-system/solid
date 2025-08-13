@@ -3,6 +3,7 @@ import {
   figmaVariables,
   formatColor,
   getTypeForFloatVariable,
+  legacyTokens,
   resolveAlias,
   setNestedProperty
 } from './helpers.js';
@@ -116,6 +117,33 @@ const getVariableAvailableThemes = variable => {
   return collection.modes.map(mode => ({ id: mode.modeId, name: mode.name }));
 };
 
+const getLegacyTokens = () => {
+  const core = legacyTokens['UI Core'];
+  const tokens = Object.fromEntries(
+    Object.entries(legacyTokens['UI Semantic']).filter(
+      ([key]) => !['background', 'icon-fill', 'border', '*background-transparent', 'text'].includes(key)
+    )
+  );
+
+  return { core, tokens };
+};
+
+function prefixReferences(obj) {
+  if (typeof obj === 'string') {
+    return obj.replace(/\{(?!core\.)/g, '{core.');
+  }
+
+  if (Array.isArray(obj)) {
+    return obj.map(prefixReferences);
+  }
+
+  if (obj && typeof obj === 'object') {
+    return Object.fromEntries(Object.entries(obj).map(([key, value]) => [key, prefixReferences(value)]));
+  }
+
+  return obj;
+}
+
 // --- Main Transformation ---
 const transformFigmaVariables = () => {
   /** @type {Record<string, any>} */
@@ -151,14 +179,18 @@ const transformFigmaVariables = () => {
   });
 
   const core = transformed['Core'];
+  const { core: coreLegacy, tokens: legacy } = getLegacyTokens();
 
   Object.entries(transformed).forEach(([modeName, modeData]) => {
     if (modeName === 'Core') return;
 
+    const coreTokens = prefixReferences({ ...coreLegacy, ...core });
+    const tokens = prefixReferences({ ...legacy, ...sort(modeData) });
+
     const sanitizedModeName = modeName.toLowerCase().replace(/\s+/g, '-');
     const outputPath = path.join(OUTPUT_DIR, `${sanitizedModeName}.json`);
     createDirectory(OUTPUT_DIR);
-    writeFileSync(outputPath, JSON.stringify({ ...core, ...sort(modeData) }, null, 2));
+    writeFileSync(outputPath, JSON.stringify({ core: coreTokens, ...tokens }, null, 2));
   });
 };
 

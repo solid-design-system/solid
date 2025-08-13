@@ -1,10 +1,13 @@
 import { existsSync, mkdirSync } from 'fs';
 import variablesJson from '../../src/figma-variables/variableTokens.json' with { type: 'json' };
+import legacyTokensJson from '../../src/tokens.json' with { type: 'json' };
 
 /**
  * The fetching result of the Figma API for local variables.
  */
 export const figmaVariables = variablesJson;
+
+export const legacyTokens = legacyTokensJson;
 
 /**
  * Create a directory if it does not exist.
