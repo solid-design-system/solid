@@ -38,7 +38,7 @@ export default class SdBrandshape extends SolidElement {
     | 'image' = 'primary';
 
   /** Defines which shapes of the brandshape should be displayed. */
-  @property({ type: Array, reflect: true }) shapes: ('top' | 'middle' | 'bottom')[] = ['top', 'middle', 'bottom'];
+  @property({ type: Array }) shapes: ('top' | 'middle' | 'bottom')[] = ['top', 'middle', 'bottom'];
 
   /** @internal */
   @state() componentBreakpoint: Breakpoints = 0;
@@ -195,7 +195,6 @@ export default class SdBrandshape extends SolidElement {
   }
 
   private renderShapes(): TemplateResult {
-    console.log(this.shapes);
     return html`
       ${this.shapes.includes('top') ? this.renderTopBrandshape() : ''}
       ${this.shapes.includes('middle') ? this.renderMiddleBrandshape() : ''}
