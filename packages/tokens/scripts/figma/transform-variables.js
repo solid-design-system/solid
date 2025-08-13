@@ -125,6 +125,17 @@ const getLegacyTokens = () => {
     )
   );
 
+  /** Manually add spacing tokens */
+  tokens.spacing = {
+    ...tokens.spacing,
+    0: { value: '0px', type: 'spacing', description: 'No spacing (manually added)' },
+    auto: {
+      value: 'auto',
+      type: 'spacing',
+      description: 'Automatic spacing (manually added)'
+    }
+  };
+
   return { core, tokens };
 };
 

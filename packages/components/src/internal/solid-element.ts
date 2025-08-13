@@ -2,6 +2,7 @@ import { cssVar, parseDuration } from './animate';
 import { LitElement, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 
+// @ts-expect-error Typescript doesn't like importing .css files directly
 import style from '../../tailwind.css?inline';
 
 const css = unsafeCSS;
@@ -19,12 +20,17 @@ export default class SolidElement extends LitElement {
 
   static styles = [
     css`
+      @reference './components/tailwind.css';
+
       /* Import CSS styles once to make them available in every component */
       @import url('../styles/src/modules/interactive.css');
       @import url('../styles/src/modules/paragraph.css');
       @import url('../styles/src/modules/headline.css');
 
       :host {
+        --tw-translate-x: 0;
+        --tw-translate-y: 0;
+        --tw-border-style: solid;
         --tw-gradient-from-position: 0%;
         --tw-gradient-to-position: 100%;
 

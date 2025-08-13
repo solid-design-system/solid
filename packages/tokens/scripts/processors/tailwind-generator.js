@@ -19,7 +19,7 @@ export class TailwindCSSGenerator {
       this.generateTheme(processedTokens),
       this.generateLayers(processedTokens),
       this.generateUtilities(processedTokens.utilities),
-      this.generateVarspacing()
+      this.generateExtras()
     ].filter(Boolean);
 
     return parts.join('\n\n') + '\n';
@@ -75,10 +75,30 @@ export class TailwindCSSGenerator {
   }
 
   /**
-   * Generate varspacing utilities
+   * Generate extra utilities
    */
-  generateVarspacing() {
-    return this.css.utility('varspacing-*', this.css.property('--tw-varspacing', '--value(--spacing-*)'));
+  generateExtras() {
+    return this.generateUtilities([
+      this.css.utility('varspacing-*', this.css.property('--tw-varspacing', '--value(--spacing-*)')),
+      this.css.utility(
+        'focus-outline',
+        this.css.join([
+          this.css.property('outline-style', 'solid'),
+          this.css.property('outline-offset', '2px'),
+          this.css.property('outline-width', '2px'),
+          this.css.property('outline-color', 'var(--background-color-primary)')
+        ])
+      ),
+      this.css.utility(
+        'focus-outline-inverted',
+        this.css.join([
+          this.css.property('outline-style', 'solid'),
+          this.css.property('outline-offset', '2px'),
+          this.css.property('outline-width', '2px'),
+          this.css.property('outline-color', 'var(--background-color-white)')
+        ])
+      )
+    ]);
   }
 
   /**
