@@ -3,11 +3,13 @@
  * of the rules in this stylesheet should target component tags or HTML tags, and all classes *must* start with ".sd-"
  * to reduce the possibility of collisions.
  */
+@import 'tailwindcss';
+@reference '../../components/tailwind.css';
 
 @solid variables;
 
 /* TODO: Uncomment code */
-/* .sd-scroll-lock {
+.sd-scroll-lock {
   padding-right: var(--sd-scroll-lock-size) !important;
   overflow: hidden !important;
 }
@@ -33,4 +35,4 @@
   sd-notification::part(content) {
     @apply border-white;
   }
-} */
+}
