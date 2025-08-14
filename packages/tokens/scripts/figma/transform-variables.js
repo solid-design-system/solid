@@ -152,6 +152,34 @@ const getLegacyTokens = () => {
     tooltip: { value: 'var(--sd-z-index-tooltip, 1000)', type: 'utility' }
   };
 
+  tokens.risk = {
+    low: {
+      value: 'rgb(var(--sd-color-risk-low, 1 125 195))',
+      type: 'color',
+      description: 'Exclusively for marking fonds'
+    },
+    moderate: {
+      value: 'rgb(var(--sd-color-risk-moderate, 0 165 147))',
+      type: 'color',
+      description: 'Exclusively for marking fonds'
+    },
+    increased: {
+      value: 'rgb(var(--sd-color-risk-increased, 255 240 0))',
+      type: 'color',
+      description: 'Exclusively for marking fonds'
+    },
+    high: {
+      value: 'rgb(var(--sd-color-risk-high, 250 155 30))',
+      type: 'color',
+      description: 'Exclusively for marking fonds'
+    },
+    veryhigh: {
+      value: 'rgb(var(--sd-color-risk-veryhigh, 255 0 0))',
+      type: 'color',
+      description: 'Exclusively for marking fonds'
+    }
+  };
+
   return { core, tokens };
 };
 
