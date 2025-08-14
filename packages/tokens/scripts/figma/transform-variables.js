@@ -180,6 +180,21 @@ const getLegacyTokens = () => {
     }
   };
 
+  tokens.aspect = {
+    video: { value: '16 / 9', type: 'spacing' },
+    square: { value: '1 / 1', type: 'spacing' },
+    '6/5': { value: '6 / 5', type: 'spacing' },
+    '5/4': { value: '5 / 4', type: 'spacing' },
+    '4/3': { value: '4 / 3', type: 'spacing' },
+    '3/2': { value: '3 / 2', type: 'spacing' },
+    '16/10': { value: '16 / 10', type: 'spacing' },
+    'golden-ratio': { value: '1.6180339887498948482 / 1', type: 'spacing' },
+    '2/1': { value: '2 / 1', type: 'spacing' },
+    '21/9': { value: '21 / 9', type: 'spacing' },
+    '3/4': { value: '3 / 4', type: 'spacing' },
+    '4/5': { value: '4 / 5', type: 'spacing' }
+  };
+
   return { core, tokens };
 };
 
