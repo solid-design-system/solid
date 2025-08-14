@@ -1,0 +1,67 @@
+name: Sync Figma variables to tokens
+
+on:
+  workflow_dispatch:
+    inputs:
+      figma_file_id:
+        description: "Figma file/branch id (main file key or a branch file key)"
+        required: true
+        default: ${{ vars.FIGMA_FILE_ID }}
+      branch_name:
+        description: "Branch name to create for the PR"
+        required: true
+        default: "feat/update-tokens-from-figma"
+      pull_request_name:
+        description: "Pull Request title"
+        required: true
+        default: "feat: ✨ Update tokens from Figma"
+
+jobs:
+  sync-figma-to-tokens:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install dependencies
+        # Playwright download is skipped because some deps pull it in; keep if you saw that in the PR
+        run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
+
+      - name: Sync variables in Figma file to tokens
+        run: pnpm -C ./packages/tokens fetch:figma && pnpm -C ./packages/tokens build:figma
+        env:
+          FIGMA_FILE_ID: ${{ github.event.inputs.figma_file_id }}
+          # Keep this exact name — some Figma tooling expects FIGMA_TOKEN
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+
+      - name: Run tests for new tokens
+        run: pnpm -C ./packages/tokens build && pnpm -C ./packages/tokens compare
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: Update variables and styles from Figma
+          title: ${{ github.event.inputs.pull_request_name }}
+          body: |
+            Update tokens from Figma for figma file/branch id: ${{ github.event.inputs.figma_file_id }}
+          branch: ${{ github.event.inputs.branch_name }}
+          # Optional: set reviewers or remove this block
+          # reviewers: |
+          #   teammate1
+          #   teammate2
