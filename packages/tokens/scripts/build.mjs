@@ -1,7 +1,12 @@
 import { createTailwindV4Plugin } from './processors/index.js';
+import { FigmaClient } from './figma/index.js';
 import { OUTPUT_DIR } from './config.js';
 import { register } from '@tokens-studio/sd-transforms';
 import StyleDictionary from 'style-dictionary';
+import variables from '../src/figma-variables/variableTokens.json' with { type: 'json' };
+
+const figma = new FigmaClient(variables);
+figma.process().save();
 
 await register(StyleDictionary);
 
