@@ -195,6 +195,10 @@ const getLegacyTokens = () => {
     '4/5': { value: '4 / 5', type: 'spacing' }
   };
 
+  tokens.duration = {
+    ...Object.fromEntries(Object.entries(tokens.duration).map(([key, value]) => [key, { ...value, type: 'duration' }]))
+  };
+
   return { core, tokens };
 };
 
