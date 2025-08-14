@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       figma_file_id:
-        description: "Figma file/branch id (main file key or a branch file key)"
+        description: "Figma file/branch id (main file key or branch key)"
         required: false
-        default: ""   # leave empty; we fallback to secret below
+        default: ""
 
 jobs:
   sync-figma-to-tokens:
@@ -33,10 +33,18 @@ jobs:
       - name: Install dependencies
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
 
+      - name: Determine FIGMA_FILE_ID
+        id: set-figma-id
+        run: |
+          if [ -n "${{ github.event.inputs.figma_file_id }}" ]; then
+            echo "FIGMA_FILE_ID=${{ github.event.inputs.figma_file_id }}" >> $GITHUB_ENV
+          else
+            echo "FIGMA_FILE_ID=${{ secrets.FIGMA_FILE_ID }}" >> $GITHUB_ENV
+          fi
+
       - name: Sync variables in Figma file to tokens
         env:
-          # Use the input if provided; otherwise fallback to the secret
-          FIGMA_FILE_ID: ${{ github.event.inputs.figma_file_id != '' && github.event.inputs.figma_file_id || secrets.FIGMA_FILE_ID }}
+          FIGMA_FILE_ID: ${{ env.FIGMA_FILE_ID }}
           FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
         run: pnpm -C ./packages/tokens fetch:figma && pnpm -C ./packages/tokens build:figma
 
@@ -49,5 +57,5 @@ jobs:
           commit-message: Update variables and styles from Figma
           title: ${{ github.event.inputs.pull_request_name || 'feat: ✨ Update tokens from Figma' }}
           body: |
-            Update tokens from Figma for file/branch id: ${{ github.event.inputs.figma_file_id != '' && github.event.inputs.figma_file_id || secrets.FIGMA_FILE_ID }}
+            Update tokens from Figma for file/branch id: ${{ env.FIGMA_FILE_ID }}
           branch: ${{ github.event.inputs.branch_name || 'feat/update-tokens-from-figma' }}
