@@ -30,7 +30,7 @@ export class BaseTokenProcessor {
    * Normalize token name by removing prefixes and converting to kebab-case
    */
   normalizeTokenName(name) {
-    return name.replace(/^sd\./, '').replace(/\./g, '-');
+    return name.replace(/^sd\./, '').replace(/\./g, '-').replace('\b', '');
   }
 
   /**
@@ -78,7 +78,7 @@ export class BaseTokenProcessor {
     }
 
     return {
-      finalPath,
+      finalPath: finalPath.map(path => path.replace('\b', '')),
       variant,
       isTheme,
       originalPath

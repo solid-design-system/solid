@@ -14,12 +14,13 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
       aspect: 'aspect',
       sizing: 'sizing',
       rounded: 'radius',
-      'border-width': 'border-width'
+      'border-width': 'border-width',
+      opacity: 'opacity'
     };
   }
 
   canProcess(token) {
-    if (!['dimension', 'sizing', 'spacing'].includes(token.type)) {
+    if (!['dimension', 'sizing', 'spacing', ...Object.keys(this.specialPrefixes)].includes(token.type)) {
       return false;
     }
 
