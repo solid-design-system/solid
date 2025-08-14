@@ -8,7 +8,6 @@
 
 @solid variables;
 
-/* TODO: Uncomment code */
 .sd-scroll-lock {
   padding-right: var(--sd-scroll-lock-size) !important;
   overflow: hidden !important;

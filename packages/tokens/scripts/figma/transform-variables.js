@@ -136,6 +136,22 @@ const getLegacyTokens = () => {
     }
   };
 
+  /** Manually add z-index tokens */
+  tokens['z-'] = {
+    10: { value: '10', type: 'utility' },
+    20: { value: '20', type: 'utility' },
+    30: { value: '30', type: 'utility' },
+    40: { value: '40', type: 'utility' },
+    50: { value: '50', type: 'utility' },
+    auto: { value: 'auto', type: 'utility' },
+    header: { value: 'var(--sd-z-index-header, 600)', type: 'utility' },
+    drawer: { value: 'var(--sd-z-index-drawer, 700)', type: 'utility' },
+    dialog: { value: 'var(--sd-z-index-dialog, 800)', type: 'utility' },
+    dropdown: { value: 'var(--sd-z-index-dropdown, 900)', type: 'utility' },
+    'alert-group': { value: 'var(--sd-z-index-alert-group, 950)', type: 'utility' },
+    tooltip: { value: 'var(--sd-z-index-tooltip, 1000)', type: 'utility' }
+  };
+
   return { core, tokens };
 };
 
