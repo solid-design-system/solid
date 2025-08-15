@@ -1,10 +1,17 @@
 name: Sync Figma variables to tokens
-
 on:
   workflow_dispatch:
     inputs:
       figma_file_id:
         description: "Figma file/branch id (main file key or branch key)"
+        required: false
+        default: ""
+      pull_request_name:
+        description: "Pull request title"
+        required: false
+        default: ""
+      branch_name:
+        description: "Branch name for the PR"
         required: false
         default: ""
 
@@ -20,19 +27,19 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-
+         
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-
+       
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: "pnpm"
-
+         
       - name: Install dependencies
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
-
+       
       - name: Determine FIGMA_FILE_ID
         id: set-figma-id
         run: |
@@ -41,21 +48,20 @@ jobs:
           else
             echo "FIGMA_FILE_ID=${{ secrets.FIGMA_FILE_ID }}" >> $GITHUB_ENV
           fi
-
+         
       - name: Sync variables in Figma file to tokens
         env:
           FIGMA_FILE_ID: ${{ env.FIGMA_FILE_ID }}
           FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
         run: pnpm -C ./packages/tokens fetch:figma && pnpm -C ./packages/tokens build:figma
-
+       
       - name: Run tests for new tokens
         run: pnpm -C ./packages/tokens build && pnpm -C ./packages/tokens compare
-
+       
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
           commit-message: Update variables and styles from Figma
           title: "${{ github.event.inputs.pull_request_name || 'feat: Update tokens from Figma' }}"
-          body: |
-            Update tokens from Figma for file/branch id: ${{ env.FIGMA_FILE_ID }}
+          body: "Update tokens from Figma for file/branch id: ${{ env.FIGMA_FILE_ID }}"
           branch: ${{ github.event.inputs.branch_name || 'feat/update-tokens-from-figma' }}
