@@ -55,7 +55,7 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           commit-message: Update variables and styles from Figma
-          title: ${{ github.event.inputs.pull_request_name || 'feat: ✨ Update tokens from Figma' }}
+          title: "${{ github.event.inputs.pull_request_name || 'feat: Update tokens from Figma' }}"
           body: |
             Update tokens from Figma for file/branch id: ${{ env.FIGMA_FILE_ID }}
           branch: ${{ github.event.inputs.branch_name || 'feat/update-tokens-from-figma' }}
