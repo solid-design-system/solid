@@ -59,13 +59,8 @@ jobs:
         run: pnpm -C ./packages/tokens build
 
       - name: Commit changes if any
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "feat: ✨ Update tokens from Figma" 
-            git push
-          fi
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "feat: ✨ Update tokens from Figma"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
