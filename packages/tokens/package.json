@@ -13,7 +13,6 @@
     "verify": "pnpm build",
     "postversion": "pnpm build",
     "fetch:figma": "node ./scripts/figma/fetch-variables.js",
-    "build:figma": "node ./scripts/figma/transform-tokens.js",
     "compare": "node -e \"console.log('compare OK')\""
   },
   "files": [
