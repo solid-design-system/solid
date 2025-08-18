@@ -32,9 +32,12 @@ export class ShadowTokenProcessor extends BaseTokenProcessor {
       shadowValue = value;
     }
 
+    const name = path.join('-');
+    shadowValue = this.getOverrideFormat({ name, value: shadowValue });
+
     return {
       type: 'shadow',
-      name: `--${path.join('-')}`,
+      name: `--${name}`,
       value: shadowValue,
       variant,
       isTheme

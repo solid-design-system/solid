@@ -17,6 +17,13 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
       'border-width': 'border-width',
       opacity: 'opacity'
     };
+
+    this.specialOverrides = {
+      spacing: 'spacing',
+      sizing: 'spacing',
+      opacity: 'opacity',
+      radius: 'border-radius'
+    };
   }
 
   canProcess(token) {
@@ -55,11 +62,15 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
     // Special handling for aspect ratio tokens - preserve original string value
     let processedValue = value;
     if (prefix === 'aspect') {
-      // For aspect ratios, use the original $value to preserve ratio format
+      // For aspect ratios, use the original value to preserve ratio format
       processedValue = token.original?.value || token.value || value;
     }
 
-    const name = path.join('-');
+    const name = path.join('-').replace(',', '.');
+
+    if (this.specialOverrides[prefix]) {
+      processedValue = this.getOverrideFormat({ prefix: this.specialOverrides[prefix], name, value: processedValue });
+    }
 
     if (prefix === 'spacing' && name === '1') {
       return {
@@ -73,7 +84,7 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
 
     return {
       type: 'spacing',
-      name: `--${prefix}-${name.replace(',', '.')}`,
+      name: `--${prefix}-${name}`,
       value: processedValue,
       variant,
       isTheme

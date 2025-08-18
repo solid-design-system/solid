@@ -13,17 +13,17 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
   }
 
   process(token) {
-    const value = this.getTokenValue(token);
-
     // Use global theme processing logic
     const { finalPath, variant, isTheme } = this.processTokenPath(token);
 
     // Convert final path to kebab-case for CSS variable name
-    const kebabPath = this.pathToKebabCase(finalPath);
+    const path = this.pathToKebabCase(finalPath);
+    const name = this.getName(path.join('-'));
+    const value = this.getOverrideFormat({ prefix: 'color', name: path.at(-1), value: this.getTokenValue(token) });
 
     return {
       type: 'color',
-      name: `--${this.getName(kebabPath.join('-'))}`,
+      name: `--${name}`,
       value,
       variant,
       isTheme

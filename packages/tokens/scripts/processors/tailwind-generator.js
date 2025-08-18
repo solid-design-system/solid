@@ -100,14 +100,4 @@ export class TailwindCSSGenerator {
       )
     ]);
   }
-
-  /**
-   * Fallback method to create theme selector string
-   */
-  // getThemeSelector(variant) {
-  //   const themeSelectorType = this.config.themeSelectorType || this.config.themeSelector || 'data';
-  //   const themeSelectorProperty = this.config.themeSelectorProperty || 'theme';
-
-  //   return themeSelectorType === 'class' ? `.${variant}` : `[data-${themeSelectorProperty}="${variant}"]`;
-  // }
 }

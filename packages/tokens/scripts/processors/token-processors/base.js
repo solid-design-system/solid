@@ -132,4 +132,18 @@ export class BaseTokenProcessor {
   pathToKebabCase(path) {
     return path.map(p => toKebabCase(p));
   }
+
+  /**
+   * Returns the variable value as a var with possibility to override
+   */
+  getOverrideFormat({ prefix, name, value }) {
+    const fallback = ['--sd-'];
+
+    if (prefix) {
+      fallback.push(`${prefix}-`);
+    }
+
+    fallback.push(`${name}, ${value}`);
+    return `var(${fallback.join('')})`;
+  }
 }
