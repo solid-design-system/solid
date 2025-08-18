@@ -87,6 +87,8 @@ export const DEFAULT_CONFIG = {
   componentLayer: 'components',
   includeImport: true,
   importPath: 'tailwindcss',
+  includeSource: true,
+  sourcePath: './src',
 
   // Legacy token type mappings (for backward compatibility)
   tokenTypeMap: {

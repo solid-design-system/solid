@@ -42,6 +42,10 @@ export class CSSBuilder {
     return `@import '${path}';`;
   }
 
+  source(path) {
+    return `@source '${path}';`;
+  }
+
   /**
    * Create a @theme directive
    */
