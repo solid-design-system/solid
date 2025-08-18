@@ -35,7 +35,9 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "tailwindcss-export-config": "^4.1.0"
+    "tailwindcss-export-config": "^4.1.0",
+    "@tamtamchik/json-deep-sort": "^1.0.0",
+    "@figma/rest-api-spec": "^1.0.0"
   },
   "readme": "README.md"
 }
