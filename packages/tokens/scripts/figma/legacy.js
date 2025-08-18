@@ -3,7 +3,32 @@ import legacy from '../../src/tokens.json' with { type: 'json' };
 
 export class FigmaLegacyTokens {
   constructor() {
-    this.legacy = legacy;
+    this.legacy = this.#sanitize(legacy);
+  }
+
+  #sanitize(value) {
+    if (!value) return value;
+
+    if (typeof value === 'string') {
+      ['\t', '\b', '\u001d'].forEach(ch => {
+        value = value.split(ch).join('');
+      });
+      return value;
+    }
+
+    if (Array.isArray(value)) {
+      return value.map(v => this.#sanitize(v));
+    }
+
+    if (typeof value === 'object') {
+      const out = Array.isArray(value) ? [] : {};
+      for (const [k, v] of Object.entries(value)) {
+        out[this.#sanitize(k)] = this.#sanitize(v);
+      }
+      return out;
+    }
+
+    return value;
   }
 
   #getCore() {
