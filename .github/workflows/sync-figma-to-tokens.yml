@@ -5,8 +5,8 @@ on:
     inputs:
       figma_file_id:
         description: "This can either be a branch_id or the id for the main figma file"
-        required: true
-        default: ${{ vars.FIGMA_FILE_ID }} # This is the main file id for your Design System
+        required: false
+        default: "VTztxQ5pWG7ARg8hCX6PfR"  # Hardcoded for testing
       branch_name:
         description: "The name for the branch, which should be created for the pull request"
         required: true
@@ -15,6 +15,11 @@ on:
         description: "The name for the pull request. If not provided, a default name will be used."
         required: true
         default: "feat: ✨ Update tokens from Figma"
+  push:
+    branches:
+      - main
+      - develop
+      - feat/**
 
 jobs:
   sync-figma-to-tokens:
@@ -61,7 +66,6 @@ jobs:
           body: |
             Update tokens from Figma for figma branch id ${{ github.event.inputs.figma_file_id }}
           branch: ${{ github.event.inputs.branch_name }}
-          # Add your reviewers here:
           # reviewers: |
-          #   your-teammate1
-          #   your-teammate2
+          #   kirchsuSICKAG
+          #   schilchSICKAG
