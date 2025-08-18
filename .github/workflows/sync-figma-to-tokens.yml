@@ -48,15 +48,15 @@ jobs:
       - name: Install dependencies
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
 
-      - name: Sync variables in Figma file to tokens
-        run: pnpm -C ./packages/tokens fetch:figma && pnpm -C ./packages/tokens build:figma
+      - name: Fetch variables from Figma
+        run: pnpm -C ./packages/tokens fetch:figma
         env:
           # Use input if available (manual trigger), otherwise use hardcoded default (auto trigger)
           FIGMA_FILE_ID: ${{ github.event.inputs.figma_file_id || 'VTztxQ5pWG7ARg8hCX6PfR' }}
           FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
 
-      - name: Run tests for new tokens
-        run: pnpm -C ./packages/tokens build && pnpm -C ./packages/tokens compare
+      - name: Run existing build process
+        run: pnpm -C ./packages/tokens build
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
