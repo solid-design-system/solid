@@ -58,16 +58,14 @@ jobs:
       - name: Run existing build process
         run: pnpm -C ./packages/tokens build
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
-        with:
-          commit-message: "${{ github.event.inputs.pull_request_name || 'feat: ✨ Update tokens from Figma' }}"
-          title: "${{ github.event.inputs.pull_request_name || 'feat: ✨ Update tokens from Figma' }}"
-          body: |
-            Update tokens from Figma for figma branch id ${{ github.event.inputs.figma_file_id || 'VTztxQ5pWG7ARg8hCX6PfR' }}
-          branch: "${{ github.event.inputs.branch_name || 'feat/update-tokens-from-figma' }}"
-          reviewers: |
-            smfonseca
-            mariohamann
-            auroraVasconcelos
-            paulovareiro29
+      - name: Commit changes if any
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "feat: ✨ Update tokens from Figma" 
+            git push
+          fi
