@@ -64,7 +64,7 @@ jobs:
           commit-message: "${{ github.event.inputs.pull_request_name || 'feat: ✨ Update tokens from Figma' }}"
           title: "${{ github.event.inputs.pull_request_name || 'feat: ✨ Update tokens from Figma' }}"
           body: |
-            Update tokens from Figma for figma branch id ${{ github.event.inputs.figma_file_id || 'VTztxQ5pWG7ARg8hCX6PfR' }}
+            Update tokens from Figma for figma branch id ${{ github.event.inputs.figma_file_id || 'dBb3Zm5i3EL3mC1VPUWiBe' }}
           branch: "${{ github.event.inputs.branch_name || 'feat/update-tokens-from-figma' }}"
           reviewers: |
             smfonseca
