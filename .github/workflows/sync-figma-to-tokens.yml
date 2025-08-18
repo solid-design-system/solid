@@ -51,8 +51,8 @@ jobs:
       - name: Sync variables in Figma file to tokens
         run: pnpm -C ./packages/tokens fetch:figma && pnpm -C ./packages/tokens build:figma
         env:
-          FIGMA_FILE_ID: ${{ github.event.inputs.figma_file_id }}
-          # We need this exact naming of the FIGMA_TOKEN environment variable
+          # Use input if available (manual trigger), otherwise use hardcoded default (auto trigger)
+          FIGMA_FILE_ID: ${{ github.event.inputs.figma_file_id || 'VTztxQ5pWG7ARg8hCX6PfR' }}
           FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
 
       - name: Run tests for new tokens
@@ -61,11 +61,13 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
-          commit-message: Update variables and styles from Figma
-          title: ${{ github.event.inputs.pull_request_name }}
+          commit-message: "${{ github.event.inputs.pull_request_name || 'feat: ✨ Update tokens from Figma' }}"
+          title: "${{ github.event.inputs.pull_request_name || 'feat: ✨ Update tokens from Figma' }}"
           body: |
-            Update tokens from Figma for figma branch id ${{ github.event.inputs.figma_file_id }}
-          branch: ${{ github.event.inputs.branch_name }}
-          # reviewers: |
-          #   kirchsuSICKAG
-          #   schilchSICKAG
+            Update tokens from Figma for figma branch id ${{ github.event.inputs.figma_file_id || 'VTztxQ5pWG7ARg8hCX6PfR' }}
+          branch: "${{ github.event.inputs.branch_name || 'feat/update-tokens-from-figma' }}"
+          reviewers: |
+            smfonseca
+            mariohamann
+            auroraVasconcelos
+            paulovareiro29
