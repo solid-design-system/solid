@@ -16,7 +16,7 @@ export function toKebabCase(str) {
  * Normalize token name by removing prefixes and converting to kebab-case
  */
 export function normalizeTokenName(name) {
-  return name.replace(/^sd\./, '').replace(/\./g, '-').replace('\b', '');
+  return name.replace(/^sd\./, '').replace(/\./g, '-');
 }
 
 /**
@@ -24,7 +24,7 @@ export function normalizeTokenName(name) {
  */
 export function getTokenValue(token) {
   const { value } = token;
-  return typeof value === 'string' ? token.value.replace('\b', '') : token.value;
+  return typeof value === 'string' ? token.value : token.value;
 }
 
 /**

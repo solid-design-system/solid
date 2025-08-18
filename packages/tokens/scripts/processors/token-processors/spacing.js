@@ -59,9 +59,21 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
       processedValue = token.original?.value || token.value || value;
     }
 
+    const name = path.join('-');
+
+    if (prefix === 'spacing' && name === '1') {
+      return {
+        type: 'spacing',
+        name: `--${prefix}`,
+        value: processedValue,
+        variant,
+        isTheme
+      };
+    }
+
     return {
       type: 'spacing',
-      name: `--${prefix}-${path.join('-')}`,
+      name: `--${prefix}-${name.replace(',', '.')}`,
       value: processedValue,
       variant,
       isTheme
