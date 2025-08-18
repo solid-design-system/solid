@@ -4,16 +4,16 @@ on:
   workflow_dispatch:
     inputs:
       figma_file_id:
-        description: "Figma file/branch id (leave blank to use secret FIGMA_FILE_ID)"
-        required: false
+        description: "This can either be a branch_id or the id for the main Figma file"
+        required: true
         default: ""
       branch_name:
-        description: "Branch name to create for the PR"
-        required: false
+        description: "The branch to create for the PR"
+        required: true
         default: "feat/update-tokens-from-figma"
       pull_request_name:
-        description: "Pull Request title"
-        required: false
+        description: "Title for the pull request"
+        required: true
         default: "feat: ✨ Update tokens from Figma"
 
 jobs:
@@ -37,29 +37,28 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm
+          cache: "pnpm"
 
       - name: Install dependencies
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm install
 
-      # Pick input if provided; otherwise fall back to secret FIGMA_FILE_ID
-      - name: Resolve FIGMA_FILE_ID
+      # Resolve FIGMA_FILE_ID from workflow input or repo variable
+      - name: Resolve Figma file ID
         run: |
           if [ -n "${{ github.event.inputs.figma_file_id }}" ]; then
             echo "FIGMA_FILE_ID=${{ github.event.inputs.figma_file_id }}" >> $GITHUB_ENV
           else
-            echo "FIGMA_FILE_ID=${{ secrets.FIGMA_FILE_ID }}" >> $GITHUB_ENV
+            echo "FIGMA_FILE_ID=${{ vars.FIGMA_FILE_ID }}" >> $GITHUB_ENV
           fi
-          echo "PR_BRANCH=${{ github.event.inputs.branch_name }}" >> $GITHUB_ENV
-          echo "PR_TITLE=${{ github.event.inputs.pull_request_name }}" >> $GITHUB_ENV
+        shell: bash
 
       - name: Sync variables in Figma file to tokens
-        env:
-          FIGMA_FILE_ID: ${{ env.FIGMA_FILE_ID }}
-          FIGMA_TOKEN:   ${{ secrets.FIGMA_TOKEN }}
         run: |
           pnpm -C packages/tokens run fetch:figma
           pnpm -C packages/tokens run build:figma
+        env:
+          FIGMA_FILE_ID: ${{ env.FIGMA_FILE_ID }}
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
 
       - name: Run tests for new tokens
         run: |
@@ -70,7 +69,7 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           commit-message: Update variables and styles from Figma
-          title: ${{ env.PR_TITLE }}
+          title: ${{ github.event.inputs.pull_request_name }}
           body: |
-            Update tokens from Figma for file/branch id: ${{ env.FIGMA_FILE_ID }}
-          branch: ${{ env.PR_BRANCH }}
+            Update tokens from Figma for figma file/branch id: ${{ env.FIGMA_FILE_ID }}
+          branch: ${{ github.event.inputs.branch_name }}
