@@ -1,13 +1,5 @@
-/**
- * @typedef {import('@figma/rest-api-spec').GetLocalVariablesResponse} GetLocalVariablesResponse
- * @typedef {import('@figma/rest-api-spec').GetLocalVariablesResponse['meta']} VariablesAndCollections
- * @typedef {VariablesAndCollections['variables']} Variables
- * @typedef {VariablesAndCollections['variableCollections']} VariableCollections
- */
-
 import { existsSync, mkdirSync, rmSync, writeFileSync } from 'fs';
 import { join } from 'path';
-import { sort } from '@tamtamchik/json-deep-sort';
 
 // Inline the paths instead of using a config file
 const FIGMA_VARIABLES_DIR = './src/figma-variables';
@@ -35,8 +27,6 @@ const getApiConfig = () => {
 
 /**
  * Filters out hidden variable collections and their associated variables
- * @param {VariableCollections} variableCollections - Variable collections object
- * @param {Variables} variables - Variables object
  */
 const filterHiddenCollections = (variableCollections, variables) => {
   // Filter out variable collections that are hidden from publishing
@@ -58,7 +48,6 @@ const filterHiddenCollections = (variableCollections, variables) => {
 
 /**
  * Validates the API response
- * @param {GetLocalVariablesResponse} variablesResponse - The API response
  */
 const validateApiResponse = variablesResponse => {
   if (variablesResponse.error || !variablesResponse.meta) {
@@ -89,7 +78,7 @@ const fetchFigmaVariables = async () => {
 
   const variablesFetch = await fetch(`https://api.figma.com/v1/files/${branchId}/variables/local`, { headers });
 
-  const response = /** @type {GetLocalVariablesResponse} */ (await variablesFetch.json());
+  const response = await variablesFetch.json();
 
   validateApiResponse(response);
 
@@ -106,7 +95,7 @@ const fetchFigmaVariables = async () => {
     `✅ Filtered data: ${Object.keys(filteredData.variableCollections).length} collections, ${Object.keys(filteredData.variables).length} variables`
   );
 
-  writeFileSync(FIGMA_FETCHED_VARIABLES_PATH, JSON.stringify(sort(filteredData), null, 2));
+  writeFileSync(FIGMA_FETCHED_VARIABLES_PATH, JSON.stringify(filteredData, null, 2));
 
   console.log(`💾 Saved variables to: ${FIGMA_FETCHED_VARIABLES_PATH}`);
 };
