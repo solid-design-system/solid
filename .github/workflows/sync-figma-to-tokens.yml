@@ -6,7 +6,7 @@ on:
       figma_file_id:
         description: "This can either be a branch_id or the id for the main figma file"
         required: true
-        default: ${{ vars.FIGMA_FILE_ID }} # This is the main file id for your Design System
+        default: "VTztxQ5pWG7ARg8hCX6PfR" # This is the main file id for your Design System
       branch_name:
         description: "The name for the branch, which should be created for the pull request"
         required: true
