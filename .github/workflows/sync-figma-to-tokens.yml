@@ -6,7 +6,7 @@ on:
       figma_file_id:
         description: "This can either be a branch_id or the id for the main figma file"
         required: false
-        default: "dBb3Zm5i3EL3mC1VPUWiBe"  # Hardcoded for testing
+        default: ${{ vars.FIGMA_FILE_ID }}  # This is the main file id
       branch_name:
         description: "The name for the branch, which should be created for the pull request"
         required: true
