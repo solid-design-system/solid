@@ -6,7 +6,7 @@ on:
       figma_file_id:
         description: "This can either be a branch_id or the id for the main Figma file"
         required: false
-        default: "" # leave empty; we'll coalesce at runtime
+        default: ""
       branch_name:
         description: "The name for the branch, which should be created for the pull request"
         required: true
