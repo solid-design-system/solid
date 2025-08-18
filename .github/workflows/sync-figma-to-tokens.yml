@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       figma_file_id:
-        description: "This can either be a branch_id or the id for the main figma file"
+        description: "This can either be a branch_id or the id for the main Figma file"
         required: false
-        default: "dBb3Zm5i3EL3mC1VPUWiBe"  # Hardcoded for testing
+        default: "" # leave empty; we'll coalesce at runtime
       branch_name:
         description: "The name for the branch, which should be created for the pull request"
         required: true
@@ -25,16 +25,21 @@ jobs:
   sync-figma-to-tokens:
     runs-on: ubuntu-latest
     permissions:
-      # Need to be able to create new branches and commits
       contents: write
       pull-requests: write
+
+    # Compute a single FIGMA_FILE_ID that works for both triggers:
+    # 1) use manual input if provided
+    # 2) else use repo variable FIGMA_FILE_ID
+    # 3) else use your hardcoded fallback
+    env:
+      FIGMA_FILE_ID: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.figma_file_id != '') && github.event.inputs.figma_file_id || vars.FIGMA_FILE_ID || 'dBb3Zm5i3EL3mC1VPUWiBe' }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -43,7 +48,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: "pnpm"
+          cache: pnpm
 
       - name: Install dependencies
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
@@ -51,8 +56,7 @@ jobs:
       - name: Fetch variables from Figma
         run: pnpm -C ./packages/tokens fetch:figma
         env:
-          # Use input if available (manual trigger), otherwise use hardcoded default (auto trigger)
-          FIGMA_FILE_ID: ${{ github.event.inputs.figma_file_id || 'dBb3Zm5i3EL3mC1VPUWiBe' }}
+          FIGMA_FILE_ID: ${{ env.FIGMA_FILE_ID }}
           FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
 
       - name: Run existing build process
