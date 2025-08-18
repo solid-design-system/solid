@@ -11,8 +11,8 @@
     "build": "node scripts/build.mjs && echo '✅ Build verified'",
     "verify": "pnpm build",
     "postversion": "pnpm build",
-    "fetch:figma": "node ./scripts/figma/fetch-variables.mjs",
-    "build:figma": "node ./scripts/figma/transform-tokens.mjs",
+    "fetch:figma": "node --input-type=module ./scripts/figma/fetch-variables.js",
+    "build:figma": "node --input-type=module ./scripts/figma/transform-tokens.js",
     "compare": "node -e \"console.log('compare OK')\""
   },
   "files": [
