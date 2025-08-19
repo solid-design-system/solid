@@ -52,51 +52,22 @@ export class BaseTokenProcessor {
    */
   processTokenPath(token) {
     // Get the original token path (before kebab-case conversion)
-    let originalPath = [...token.path];
+    let path = [...token.path];
 
     // Remove common prefixes from original path
-    if (originalPath[0] === 'sd') {
-      originalPath = originalPath.slice(1);
+    if (path[0] === 'sd') {
+      path = path.slice(1);
     }
-    if (originalPath[0] === 'color') {
-      originalPath = originalPath.slice(1);
+    if (path[0] === 'color') {
+      path = path.slice(1);
     }
-    if (originalPath[0] === 'colors') {
-      originalPath = originalPath.slice(1);
-    }
-
-    // Handle theme tokens specially using original path
-    const isTheme = this.isThemeToken(originalPath);
-    const variant = isTheme ? this.getThemeVariant(originalPath) : null;
-
-    // For theme tokens, remove the variant suffix for the base name
-    let finalPath = originalPath;
-    if (isTheme && variant) {
-      finalPath = originalPath.slice(0, -1); // Remove the variant part
-    } else if (isTheme && this.isRootProperty(originalPath)) {
-      finalPath = originalPath.slice(0, -1); // Remove the "_" part
+    if (path[0] === 'colors') {
+      path = path.slice(1);
     }
 
     return {
-      finalPath,
-      variant,
-      isTheme,
-      originalPath
+      path
     };
-  }
-
-  /**
-   * Check if a token path represents a theme token
-   */
-  isThemeToken(path) {
-    // Check if the path contains the theme pattern
-    // Default pattern is 'theme-content' which means path contains 'theme'
-    if (this.themePattern === 'theme-content') {
-      return path.includes('theme');
-    }
-
-    // For custom patterns, you can extend this logic
-    return path.includes('theme');
   }
 
   /**

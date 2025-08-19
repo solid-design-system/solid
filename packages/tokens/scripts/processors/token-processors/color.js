@@ -13,56 +13,55 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
   }
 
   process(token) {
-    // Use global theme processing logic
-    const { finalPath, variant, isTheme } = this.processTokenPath(token);
-
-    // Convert final path to kebab-case for CSS variable name
-    const path = this.pathToKebabCase(finalPath);
-    const name = this.getName(path.join('-'));
+    const path = this.pathToKebabCase(this.processTokenPath(token).path);
     const value = this.getOverrideFormat({ prefix: 'color', name: path.at(-1), value: this.getTokenValue(token) });
+    const { type, name, properties } = this.getTokenInfo(path.join('-'), value);
 
     return {
-      type: 'color',
-      name: `--${name}`,
+      type,
+      name,
       value,
-      variant,
-      isTheme
+      properties
     };
   }
 
-  getName(token) {
+  getTokenInfo(token, value) {
     if (token.startsWith('background')) {
-      return token.replace('background', 'background-color');
+      return { type: 'color', name: `--${token.replace('background', 'background-color')}` };
     }
 
     if (token.startsWith('text')) {
-      return token.replace('text', 'text-color');
+      return { type: 'color', name: `--${token.replace('text', 'text-color')}` };
     }
 
     if (token.startsWith('border')) {
-      return token.replace('border', 'border-color');
+      return { type: 'color', name: `--${token.replace('border', 'border-color')}` };
     }
 
     if (token.startsWith('icon-fill')) {
-      return token.replace('icon-fill', 'fill');
+      return { type: 'color', name: `--${token.replace('icon-fill', 'fill')}` };
     }
 
     if (token.includes('background')) {
-      return `background-color-${token}`;
+      return { type: 'utility', name: token, properties: `@utility ${token} {\n  background-color: ${value};\n}` };
     }
 
     if (token.includes('text')) {
-      return `text-color-${token}`;
+      return { type: 'utility', name: token, properties: `@utility ${token} {\n  color: ${value};\n}` };
     }
 
     if (token.includes('border')) {
-      return `border-color-${token}`;
+      return { type: 'utility', name: token, properties: `@utility ${token} {\n  border-color: ${value};\n}` };
     }
 
     if (token.includes('icon-fill')) {
-      return `fill-${token}`;
+      return { type: 'utility', name: token, properties: `@utility ${token} {\n  fill: ${value};\n}` };
     }
 
-    return `color-${token}`;
+    if (token.includes('gradient')) {
+      return { type: 'utility', name: token, properties: `@utility ${token} {\n  background-image: ${value};\n}` };
+    }
+
+    return { type: 'color', name: `--color-${token}` };
   }
 }

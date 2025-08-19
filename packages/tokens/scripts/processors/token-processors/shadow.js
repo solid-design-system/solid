@@ -15,12 +15,7 @@ export class ShadowTokenProcessor extends BaseTokenProcessor {
 
   process(token) {
     const value = this.getTokenValue(token);
-
-    // Use global theme processing logic
-    const { finalPath, variant, isTheme } = this.processTokenPath(token);
-
-    // Convert to kebab-case
-    const path = this.pathToKebabCase(finalPath);
+    const path = this.pathToKebabCase(this.processTokenPath(token).path);
 
     // Handle both single shadow objects and arrays of shadows
     let shadowValue;
@@ -38,9 +33,7 @@ export class ShadowTokenProcessor extends BaseTokenProcessor {
     return {
       type: 'shadow',
       name: `--${name}`,
-      value: shadowValue,
-      variant,
-      isTheme
+      value: shadowValue
     };
   }
 

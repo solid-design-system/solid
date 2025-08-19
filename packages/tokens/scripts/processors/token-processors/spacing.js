@@ -37,11 +37,7 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
   process(token) {
     const value = this.getTokenValue(token);
 
-    // Use global theme processing logic
-    const { finalPath, variant, isTheme } = this.processTokenPath(token);
-
-    // Convert to kebab-case
-    let path = this.pathToKebabCase(finalPath);
+    let path = this.pathToKebabCase(this.processTokenPath(token).path);
 
     // Determine the appropriate prefix based on the first path segment
     let prefix = this.defaultPrefix;
@@ -76,18 +72,14 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
       return {
         type: 'spacing',
         name: `--${prefix}`,
-        value: processedValue,
-        variant,
-        isTheme
+        value: processedValue
       };
     }
 
     return {
       type: 'spacing',
       name: `--${prefix}-${name}`,
-      value: processedValue,
-      variant,
-      isTheme
+      value: processedValue
     };
   }
 }
