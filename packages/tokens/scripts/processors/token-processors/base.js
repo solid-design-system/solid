@@ -66,7 +66,7 @@ export class BaseTokenProcessor {
     }
 
     return {
-      path
+      path: path.map(p => p.replaceAll('*', '').replaceAll('|', '-'))
     };
   }
 

@@ -7,7 +7,6 @@
     "registry": "https://registry.npmjs.org/"
   },
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
     "verify": "pnpm build && echo '✅ Build verified'",

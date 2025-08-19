@@ -145,6 +145,10 @@ async function runBuild() {
     });
   }
 
+  await nextTask('Generating tailwind theme', () => {
+    return execPromise(`node scripts/generate-theme.js`, { stdio: 'inherit' });
+  });
+
   await nextTask('Generating Utility CSS', () => {
     const args = lite ? '--lite' : '';
     return execPromise(`node scripts/make-css.js ${args}`, { stdio: 'inherit' });

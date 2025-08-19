@@ -3,27 +3,6 @@
 @source './src';
 
 @theme {
-  --color-gradient-vertical-white-transparent: var(--sd-color-vertical-white-transparent, linear-gradient(0deg, rgba(255, 255, 255, 0) 5%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%));
-  --color-gradient-vertical-black|40-transparent: var(--sd-color-vertical-black|40-transparent, linear-gradient(0deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%));
-  --color-gradient-vertical-transparent-black|40: var(--sd-color-vertical-transparent-black|40, linear-gradient(180deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%));
-  --color-gradient-vertical-black|10-transparent: var(--sd-color-vertical-black|10-transparent, linear-gradient(180deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.1) 100%));
-  --color-gradient-vertical-transparent-black|10: var(--sd-color-vertical-transparent-black|10, linear-gradient(0deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.1) 100%));
-  --color-gradient-vertical-transparent-white|60: var(--sd-color-vertical-transparent-white|60, linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 100%));
-  --color-gradient-vertical-white|60-transparent: var(--sd-color-vertical-white|60-transparent, linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%));
-  --color-gradient-vertical-white|60-white|75: var(--sd-color-vertical-white|60-white|75, linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.75) 100%));
-  --color-gradient-vertical-white|75-white|60: var(--sd-color-vertical-white|75-white|60, linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.6) 100%));
-  --color-gradient-vertical-transparent-primary-800|60: var(--sd-color-vertical-transparent-primary-800|60, linear-gradient(180deg, rgba(5, 21, 48, 0) 0%, rgba(5, 21, 48, 0.6) 100%));
-  --color-gradient-vertical-primary-800|60-transparent: var(--sd-color-vertical-primary-800|60-transparent, linear-gradient(180deg, rgba(5, 21, 48, 0.6) 0%, rgba(5, 21, 48, 0) 100%));
-  --color-gradient-vertical-primary-800|60-primary-800|75: var(--sd-color-vertical-primary-800|60-primary-800|75, linear-gradient(180deg, rgba(5, 21, 48, 0.6) 0%, rgba(5, 21, 48, 0.75) 100%));
-  --color-gradient-vertical-primary-800|75-primary-800|60: var(--sd-color-vertical-primary-800|75-primary-800|60, linear-gradient(180deg, rgba(5, 21, 48, 0.75) 0%, rgba(5, 21, 48, 0.6) 100%));
-  --color-gradient-vertical-transparent-white|80-white: var(--sd-color-vertical-transparent-white|80-white, linear-gradient(180deg, rgba(255, 255, 255, 0) 5%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 1) 100%));
-  --color-gradient-vertical-white-white|80-transparent: var(--sd-color-vertical-white-white|80-transparent, linear-gradient(0deg, rgba(255, 255, 255, 0) 5%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 1) 100%));
-  --color-gradient-horizontal-white-white|80-transparent: var(--sd-color-horizontal-white-white|80-transparent, linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 65%, rgba(255, 255, 255, 1) 100%));
-  --color-gradient-horizontal-transparent-white|80-white: var(--sd-color-horizontal-transparent-white|80-white, linear-gradient(90deg, rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 1) 100%));
-  --color-gradient-horizontal-black|10-transparent: var(--sd-color-horizontal-black|10-transparent, linear-gradient(270deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.1) 100%));
-  --color-gradient-horizontal-transparent-black|10: var(--sd-color-horizontal-transparent-black|10, linear-gradient(90deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.1) 100%));
-  --color-gradient-horizontal-transparent-black|40: var(--sd-color-horizontal-transparent-black|40, linear-gradient(270deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%));
-  --color-gradient-horizontal-black|40-transparent: var(--sd-color-horizontal-black|40-transparent, linear-gradient(90deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%));
   --shadow: var(--sd-shadow, 0 1px 3px 0 rgba(81, 81, 81, 0.75));
   --shadow-sm: var(--sd-shadow-sm, 0.5px 0.5px 1.5px 0 rgba(81, 81, 81, 1));
   --transition-duration-fast: var(--sd-duration-fast, 150ms);
@@ -100,18 +79,18 @@
   --background-color-warning: var(--sd-color-warning, #bb8d20);
   --background-color-primary-800-alternative: var(--sd-color-primary-800-alternative, #051530);
   --background-color-neutral-400: var(--sd-color-neutral-400, #c3c3c3);
-  --background-color-*background-transparent-primary-100|80: var(--sd-color-primary-100|80, rgba(236, 240, 249, 0.8));
-  --background-color-*background-transparent-primary-100|90: var(--sd-color-primary-100|90, rgba(236, 240, 249, 0.9));
-  --background-color-*background-transparent-neutral-100|80: var(--sd-color-neutral-100|80, rgba(246, 246, 246, 0.8));
-  --background-color-*background-transparent-neutral-100|90: var(--sd-color-neutral-100|90, rgba(246, 246, 246, 0.9));
-  --background-color-*background-transparent-white|90: var(--sd-color-white|90, rgba(255, 255, 255, 0.9));
-  --background-color-*background-transparent-white|80: var(--sd-color-white|80, rgba(255, 255, 255, 0.8));
-  --background-color-*background-transparent-primary|10: var(--sd-color-primary|10, rgba(0, 53, 142, 0.1));
-  --background-color-*background-transparent-primary|30: var(--sd-color-primary|30, rgba(0, 53, 142, 0.3));
-  --background-color-*background-transparent-primary|80: var(--sd-color-primary|80, rgba(0, 53, 142, 0.8));
-  --background-color-*background-transparent-primary|90: var(--sd-color-primary|90, rgba(0, 53, 142, 0.9));
-  --background-color-*background-transparent-white|20: var(--sd-color-white|20, rgba(255, 255, 255, 0.2));
-  --background-color-*background-transparent-primary-800|90: var(--sd-color-primary-800|90, rgba(5, 21, 48, 0.9));
+  --background-color-transparent-primary-100-80: var(--sd-color-primary-100-80, rgba(236, 240, 249, 0.8));
+  --background-color-transparent-primary-100-90: var(--sd-color-primary-100-90, rgba(236, 240, 249, 0.9));
+  --background-color-transparent-neutral-100-80: var(--sd-color-neutral-100-80, rgba(246, 246, 246, 0.8));
+  --background-color-transparent-neutral-100-90: var(--sd-color-neutral-100-90, rgba(246, 246, 246, 0.9));
+  --background-color-transparent-white-90: var(--sd-color-white-90, rgba(255, 255, 255, 0.9));
+  --background-color-transparent-white-80: var(--sd-color-white-80, rgba(255, 255, 255, 0.8));
+  --background-color-transparent-primary-10: var(--sd-color-primary-10, rgba(0, 53, 142, 0.1));
+  --background-color-transparent-primary-30: var(--sd-color-primary-30, rgba(0, 53, 142, 0.3));
+  --background-color-transparent-primary-80: var(--sd-color-primary-80, rgba(0, 53, 142, 0.8));
+  --background-color-transparent-primary-90: var(--sd-color-primary-90, rgba(0, 53, 142, 0.9));
+  --background-color-transparent-white-20: var(--sd-color-white-20, rgba(255, 255, 255, 0.2));
+  --background-color-transparent-primary-800-90: var(--sd-color-primary-800-90, rgba(5, 21, 48, 0.9));
   --text-color-primary: var(--sd-color-primary, #00358e);
   --text-color-white: var(--sd-color-white, #ffffff);
   --text-color-black: var(--sd-color-black, #181818);
@@ -128,41 +107,6 @@
   --text-color-accent: var(--sd-color-accent, #2d9d00);
   --text-color-primary-100: var(--sd-color-primary-100, #ecf0f9);
   --text-color-neutral-600: var(--sd-color-neutral-600, #888888);
-  --fill-button-icon-fill-primary: var(--sd-color-primary, #00358e);
-  --fill-button-icon-fill-white: var(--sd-color-white, #ffffff);
-  --fill-button-icon-fill-primary-100: var(--sd-color-primary-100, #ecf0f9);
-  --fill-button-icon-fill-primary-200: var(--sd-color-primary-200, #e0e9f3);
-  --fill-button-icon-fill-primary-500: var(--sd-color-primary-500, #466daf);
-  --fill-button-icon-fill-primary-800: var(--sd-color-primary-800, #051530);
-  --fill-button-icon-fill-primary-alternative: var(--sd-color-primary-alternative, #00358e);
-  --fill-button-icon-fill-primary-500-alternative: var(--sd-color-primary-500-alternative, #466daf);
-  --fill-button-icon-fill-primary-800-alternative: var(--sd-color-primary-800-alternative, #051530);
-  --border-color-button-border-primary: var(--sd-color-primary, #00358e);
-  --border-color-button-border-primary-500: var(--sd-color-primary-500, #466daf);
-  --border-color-button-border-primary-800: var(--sd-color-primary-800, #051530);
-  --text-color-button-text-primary: var(--sd-color-primary, #00358e);
-  --text-color-button-text-white: var(--sd-color-white, #ffffff);
-  --text-color-button-text-primary-100: var(--sd-color-primary-100, #ecf0f9);
-  --text-color-button-text-primary-200: var(--sd-color-primary-200, #e0e9f3);
-  --text-color-button-text-primary-500: var(--sd-color-primary-500, #466daf);
-  --text-color-button-text-primary-800: var(--sd-color-primary-800, #051530);
-  --text-color-button-text-primary-alternative: var(--sd-color-primary-alternative, #00358e);
-  --text-color-button-text-primary-500-alternative: var(--sd-color-primary-500-alternative, #466daf);
-  --text-color-button-text-primary-800-alternative: var(--sd-color-primary-800-alternative, #051530);
-  --background-color-button-background-primary: var(--sd-color-primary, #00358e);
-  --background-color-button-background-white: var(--sd-color-white, #ffffff);
-  --background-color-button-background-primary-100: var(--sd-color-primary-100, #ecf0f9);
-  --background-color-button-background-primary-200: var(--sd-color-primary-200, #e0e9f3);
-  --background-color-button-background-primary-500: var(--sd-color-primary-500, #466daf);
-  --background-color-button-background-primary-800: var(--sd-color-primary-800, #051530);
-  --background-color-button-background-primary-100-alternative: var(--sd-color-primary-100-alternative, #ecf0f9);
-  --background-color-button-background-primary-200-alternative: var(--sd-color-primary-200-alternative, #e0e9f3);
-  --background-color-button-background-primary-500-alternative: var(--sd-color-primary-500-alternative, #466daf);
-  --background-color-button-background-primary-800-alternative: var(--sd-color-primary-800-alternative, #051530);
-  --border-color-selection-control-border-neutral-800: var(--sd-color-neutral-800, #515151);
-  --border-color-brandshape-border-null: var(--sd-color-null, rgba(255, 255, 255, 0));
-  --background-color-brandshape-background-neutral-100: var(--sd-color-neutral-100, #f6f6f6);
-  --background-color-brandshape-background-white: var(--sd-color-white, #ffffff);
   --spacing-0: var(--sd-spacing-0, 0px);
   --spacing: var(--sd-spacing-1, 0.25rem);
   --spacing-2: var(--sd-spacing-2, 0.5rem);
@@ -231,6 +175,90 @@
   --aspect-4/5: 4 / 5;
 }
 
+@utility gradient-vertical-white-transparent {
+  background-image: var(--sd-color-vertical-white-transparent, linear-gradient(0deg, rgba(255, 255, 255, 0) 5%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%));
+}
+
+@utility gradient-vertical-black-40-transparent {
+  background-image: var(--sd-color-vertical-black-40-transparent, linear-gradient(0deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%));
+}
+
+@utility gradient-vertical-transparent-black-40 {
+  background-image: var(--sd-color-vertical-transparent-black-40, linear-gradient(180deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%));
+}
+
+@utility gradient-vertical-black-10-transparent {
+  background-image: var(--sd-color-vertical-black-10-transparent, linear-gradient(180deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.1) 100%));
+}
+
+@utility gradient-vertical-transparent-black-10 {
+  background-image: var(--sd-color-vertical-transparent-black-10, linear-gradient(0deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.1) 100%));
+}
+
+@utility gradient-vertical-transparent-white-60 {
+  background-image: var(--sd-color-vertical-transparent-white-60, linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 100%));
+}
+
+@utility gradient-vertical-white-60-transparent {
+  background-image: var(--sd-color-vertical-white-60-transparent, linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%));
+}
+
+@utility gradient-vertical-white-60-white-75 {
+  background-image: var(--sd-color-vertical-white-60-white-75, linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.75) 100%));
+}
+
+@utility gradient-vertical-white-75-white-60 {
+  background-image: var(--sd-color-vertical-white-75-white-60, linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.6) 100%));
+}
+
+@utility gradient-vertical-transparent-primary-800-60 {
+  background-image: var(--sd-color-vertical-transparent-primary-800-60, linear-gradient(180deg, rgba(5, 21, 48, 0) 0%, rgba(5, 21, 48, 0.6) 100%));
+}
+
+@utility gradient-vertical-primary-800-60-transparent {
+  background-image: var(--sd-color-vertical-primary-800-60-transparent, linear-gradient(180deg, rgba(5, 21, 48, 0.6) 0%, rgba(5, 21, 48, 0) 100%));
+}
+
+@utility gradient-vertical-primary-800-60-primary-800-75 {
+  background-image: var(--sd-color-vertical-primary-800-60-primary-800-75, linear-gradient(180deg, rgba(5, 21, 48, 0.6) 0%, rgba(5, 21, 48, 0.75) 100%));
+}
+
+@utility gradient-vertical-primary-800-75-primary-800-60 {
+  background-image: var(--sd-color-vertical-primary-800-75-primary-800-60, linear-gradient(180deg, rgba(5, 21, 48, 0.75) 0%, rgba(5, 21, 48, 0.6) 100%));
+}
+
+@utility gradient-vertical-transparent-white-80-white {
+  background-image: var(--sd-color-vertical-transparent-white-80-white, linear-gradient(180deg, rgba(255, 255, 255, 0) 5%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 1) 100%));
+}
+
+@utility gradient-vertical-white-white-80-transparent {
+  background-image: var(--sd-color-vertical-white-white-80-transparent, linear-gradient(0deg, rgba(255, 255, 255, 0) 5%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 1) 100%));
+}
+
+@utility gradient-horizontal-white-white-80-transparent {
+  background-image: var(--sd-color-horizontal-white-white-80-transparent, linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 65%, rgba(255, 255, 255, 1) 100%));
+}
+
+@utility gradient-horizontal-transparent-white-80-white {
+  background-image: var(--sd-color-horizontal-transparent-white-80-white, linear-gradient(90deg, rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 1) 100%));
+}
+
+@utility gradient-horizontal-black-10-transparent {
+  background-image: var(--sd-color-horizontal-black-10-transparent, linear-gradient(270deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.1) 100%));
+}
+
+@utility gradient-horizontal-transparent-black-10 {
+  background-image: var(--sd-color-horizontal-transparent-black-10, linear-gradient(90deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.1) 100%));
+}
+
+@utility gradient-horizontal-transparent-black-40 {
+  background-image: var(--sd-color-horizontal-transparent-black-40, linear-gradient(270deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%));
+}
+
+@utility gradient-horizontal-black-40-transparent {
+  background-image: var(--sd-color-horizontal-black-40-transparent, linear-gradient(90deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%));
+}
+
 @utility z-10 {
   z-index: 10;
 }
@@ -277,6 +305,146 @@
 
 @utility z-tooltip {
   z-index: var(--sd-z-index-tooltip, 1000);
+}
+
+@utility button-icon-fill-primary {
+  fill: var(--sd-color-primary, #00358e);
+}
+
+@utility button-icon-fill-white {
+  fill: var(--sd-color-white, #ffffff);
+}
+
+@utility button-icon-fill-primary-100 {
+  fill: var(--sd-color-primary-100, #ecf0f9);
+}
+
+@utility button-icon-fill-primary-200 {
+  fill: var(--sd-color-primary-200, #e0e9f3);
+}
+
+@utility button-icon-fill-primary-500 {
+  fill: var(--sd-color-primary-500, #466daf);
+}
+
+@utility button-icon-fill-primary-800 {
+  fill: var(--sd-color-primary-800, #051530);
+}
+
+@utility button-icon-fill-primary-alternative {
+  fill: var(--sd-color-primary-alternative, #00358e);
+}
+
+@utility button-icon-fill-primary-500-alternative {
+  fill: var(--sd-color-primary-500-alternative, #466daf);
+}
+
+@utility button-icon-fill-primary-800-alternative {
+  fill: var(--sd-color-primary-800-alternative, #051530);
+}
+
+@utility button-border-primary {
+  border-color: var(--sd-color-primary, #00358e);
+}
+
+@utility button-border-primary-500 {
+  border-color: var(--sd-color-primary-500, #466daf);
+}
+
+@utility button-border-primary-800 {
+  border-color: var(--sd-color-primary-800, #051530);
+}
+
+@utility button-text-primary {
+  color: var(--sd-color-primary, #00358e);
+}
+
+@utility button-text-white {
+  color: var(--sd-color-white, #ffffff);
+}
+
+@utility button-text-primary-100 {
+  color: var(--sd-color-primary-100, #ecf0f9);
+}
+
+@utility button-text-primary-200 {
+  color: var(--sd-color-primary-200, #e0e9f3);
+}
+
+@utility button-text-primary-500 {
+  color: var(--sd-color-primary-500, #466daf);
+}
+
+@utility button-text-primary-800 {
+  color: var(--sd-color-primary-800, #051530);
+}
+
+@utility button-text-primary-alternative {
+  color: var(--sd-color-primary-alternative, #00358e);
+}
+
+@utility button-text-primary-500-alternative {
+  color: var(--sd-color-primary-500-alternative, #466daf);
+}
+
+@utility button-text-primary-800-alternative {
+  color: var(--sd-color-primary-800-alternative, #051530);
+}
+
+@utility button-background-primary {
+  background-color: var(--sd-color-primary, #00358e);
+}
+
+@utility button-background-white {
+  background-color: var(--sd-color-white, #ffffff);
+}
+
+@utility button-background-primary-100 {
+  background-color: var(--sd-color-primary-100, #ecf0f9);
+}
+
+@utility button-background-primary-200 {
+  background-color: var(--sd-color-primary-200, #e0e9f3);
+}
+
+@utility button-background-primary-500 {
+  background-color: var(--sd-color-primary-500, #466daf);
+}
+
+@utility button-background-primary-800 {
+  background-color: var(--sd-color-primary-800, #051530);
+}
+
+@utility button-background-primary-100-alternative {
+  background-color: var(--sd-color-primary-100-alternative, #ecf0f9);
+}
+
+@utility button-background-primary-200-alternative {
+  background-color: var(--sd-color-primary-200-alternative, #e0e9f3);
+}
+
+@utility button-background-primary-500-alternative {
+  background-color: var(--sd-color-primary-500-alternative, #466daf);
+}
+
+@utility button-background-primary-800-alternative {
+  background-color: var(--sd-color-primary-800-alternative, #051530);
+}
+
+@utility selection-control-border-neutral-800 {
+  border-color: var(--sd-color-neutral-800, #515151);
+}
+
+@utility brandshape-border-null {
+  border-color: var(--sd-color-null, rgba(255, 255, 255, 0));
+}
+
+@utility brandshape-background-neutral-100 {
+  background-color: var(--sd-color-neutral-100, #f6f6f6);
+}
+
+@utility brandshape-background-white {
+  background-color: var(--sd-color-white, #ffffff);
 }
 
 @utility varspacing-* {

@@ -1,6 +1,6 @@
 const resolveValue = require('./lib/resolve-value.js');
 const sanitizeValue = require('./lib/sanitize-value.js');
-const tokens = require('../tokens.json');
+const tokens = require('./tokens.json');
 
 const getToken = token => {
   const result = {};
