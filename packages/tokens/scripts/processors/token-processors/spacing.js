@@ -62,6 +62,11 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
       processedValue = token.original?.value || token.value || value;
     }
 
+    if (prefix === 'opacity') {
+      // Opacity needs to be in percentage so it doesn't break tailwinds color-mix.
+      processedValue = `${(processedValue * 100).toFixed(0)}%`;
+    }
+
     const name = path.join('-').replace(',', '.');
 
     if (this.specialOverrides[prefix]) {

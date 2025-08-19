@@ -21,9 +21,11 @@ export async function processCssTags(source) {
   while ((match = cssTagRegex.exec(source)) !== null) {
     const [fullMatch, cssContent] = match;
 
+    const css = `@reference './components/tailwind.css'; ${cssContent}`;
+
     try {
       const result = await postcss([atImportPlugin({ allowDuplicates: false }), tailwindcss, autoprefixer, cssnano])
-        .process(cssContent, { from: undefined })
+        .process(css, { from: undefined })
         .then(result => result.css);
 
       source = source.replace(

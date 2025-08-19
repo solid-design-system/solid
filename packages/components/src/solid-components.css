@@ -4,7 +4,6 @@
  * to reduce the possibility of collisions.
  */
 @import 'tailwindcss';
-@reference '../../components/tailwind.css';
 
 @solid variables;
 

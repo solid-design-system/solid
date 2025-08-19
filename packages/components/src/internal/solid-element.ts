@@ -20,8 +20,6 @@ export default class SolidElement extends LitElement {
 
   static styles = [
     css`
-      @reference './components/tailwind.css';
-
       /* Import CSS styles once to make them available in every component */
       @import url('../styles/src/modules/interactive.css');
       @import url('../styles/src/modules/paragraph.css');
