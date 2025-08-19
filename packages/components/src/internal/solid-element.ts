@@ -28,6 +28,7 @@ export default class SolidElement extends LitElement {
       @tailwind utilities;
 
       :host {
+        --tw-content: '';
         --tw-gradient-from-position: 0%;
         --tw-gradient-to-position: 100%;
 

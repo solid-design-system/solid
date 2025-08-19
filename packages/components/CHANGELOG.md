@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.15.3
+
+### Patch Changes
+
+- Added missing tailwind variable `--tw-content` to components. _[`#2465`](https://github.com/solid-design-system/solid/pull/2465) [`1b970bc`](https://github.com/solid-design-system/solid/commit/1b970bc9fd42ae6649468a89552df9f39653246c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.15.2
 
 ### Patch Changes
