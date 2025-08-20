@@ -1,8 +1,6 @@
 @import url('../../components/src/solid-components.css');
+@import url('../../styles/src/solid-styles.css');
 
-/* @import 'tailwindcss'; */
-
-/* TODO: Uncomment code */
 /* Lists */
 .sbdocs .sbdocs-content ol {
   @apply !list-decimal;

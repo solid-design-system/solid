@@ -6,16 +6,14 @@ import autoprefixer from 'autoprefixer';
 import commandLineArgs from 'command-line-args';
 import cssnano from 'cssnano';
 import postcss from 'postcss';
-import tailwindConfig from '../tailwind.config.cjs';
-import tailwindcss from 'tailwindcss';
-import tailwindCssNesting from '@tailwindcss/nesting';
+import tailwindcss from '@tailwindcss/postcss';
 
 const { outdir } = commandLineArgs({ name: 'outdir', type: String });
 
 const runner = postcss(
   outdir === 'dist'
-    ? [atImportPlugin(), tailwindCssNesting(), tailwindcss(tailwindConfig), autoprefixer()]
-    : [atImportPlugin(), tailwindCssNesting(), tailwindcss(tailwindConfig), autoprefixer(), cssnano]
+    ? [atImportPlugin(), tailwindcss, autoprefixer()]
+    : [atImportPlugin(), tailwindcss, autoprefixer(), cssnano]
 );
 
 const files = await globby('./src/**/*.css');
