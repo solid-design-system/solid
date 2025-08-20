@@ -26,11 +26,53 @@ export default class SolidElement extends LitElement {
       @import url('../styles/src/modules/headline.css');
 
       :host {
+        /* Add default tailwind variables that get lost during compilation */
+        --tw-blur: initial;
+        --tw-border-style: solid;
+        --tw-brightness: initial;
+        --tw-contrast: initial;
+        --tw-divide-y-reverse: 0;
+        --tw-drop-shadow: initial;
+        --tw-duration: initial;
+        --tw-ease: initial;
+        --tw-font-weight: initial;
+        --tw-gradient-from-position: 0%;
+        --tw-gradient-from: #0000;
+        --tw-gradient-position: initial;
+        --tw-gradient-stops: initial;
+        --tw-gradient-to-position: 100%;
+        --tw-gradient-to: #0000;
+        --tw-gradient-via-position: 50%;
+        --tw-gradient-via-stops: initial;
+        --tw-gradient-via: #0000;
+        --tw-grayscale: initial;
+        --tw-hue-rotate: initial;
+        --tw-inset-ring-color: initial;
+        --tw-inset-ring-shadow: 0 0 #0000;
+        --tw-inset-shadow-color: initial;
+        --tw-inset-shadow: 0 0 #0000;
+        --tw-invert: initial;
+        --tw-opacity: initial;
+        --tw-ring-color: initial;
+        --tw-ring-inset: initial;
+        --tw-ring-offset-color: #fff;
+        --tw-ring-offset-shadow: 0 0 #0000;
+        --tw-ring-offset-width: 0px;
+        --tw-ring-shadow: 0 0 #0000;
+        --tw-rotate-x: rotateX(0);
+        --tw-rotate-y: rotateY(0);
+        --tw-rotate-z: rotateZ(0);
+        --tw-saturate: initial;
+        --tw-sepia: initial;
+        --tw-shadow-color: initial;
+        --tw-shadow: 0 0 #0000;
+        --tw-skew-x: skewX(0);
+        --tw-skew-y: skewY(0);
+        --tw-space-x-reverse: 0;
+        --tw-tracking: initial;
         --tw-translate-x: 0;
         --tw-translate-y: 0;
-        --tw-border-style: solid;
-        --tw-gradient-from-position: 0%;
-        --tw-gradient-to-position: 100%;
+        --tw-translate-z: 0;
 
         box-sizing: border-box;
       }
