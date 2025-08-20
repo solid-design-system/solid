@@ -4,4 +4,4 @@
 
 Improve sd-dialog:
 
-- Prevent unexpected scrolling behavior.
+- Prevent unexpected scrolling behaviour.
