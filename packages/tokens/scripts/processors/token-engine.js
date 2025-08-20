@@ -60,7 +60,6 @@ export class TokenProcessingEngine {
         '--outline-color-primary: var(--sd-color-primary, red);',
         '--outline-color-error: var(--sd-color-primary, red);'
       ],
-      themeVars: new Map(),
       utilities: [],
       spacing: [],
       compositions: [],
@@ -109,61 +108,31 @@ export class TokenProcessingEngine {
     switch (processed.type) {
       case 'color': {
         const varString = `${processed.name}: ${processed.value};`;
-        if (processed.variant) {
-          const arr = result.themeVars.get(processed.variant) || [];
-          arr.push(varString);
-          result.themeVars.set(processed.variant, arr);
-        } else {
-          result.baseVars.push(varString);
-        }
+        result.baseVars.push(varString);
         break;
       }
 
       case 'spacing': {
         const spacingVarString = `${processed.name}: ${processed.value};`;
-        if (processed.variant) {
-          const arr = result.themeVars.get(processed.variant) || [];
-          arr.push(spacingVarString);
-          result.themeVars.set(processed.variant, arr);
-        } else {
-          result.spacing.push(spacingVarString);
-        }
+        result.spacing.push(spacingVarString);
         break;
       }
 
       case 'typography': {
         const typographyVarString = `${processed.name}: ${processed.value};`;
-        if (processed.variant) {
-          const arr = result.themeVars.get(processed.variant) || [];
-          arr.push(typographyVarString);
-          result.themeVars.set(processed.variant, arr);
-        } else {
-          result.baseVars.push(typographyVarString);
-        }
+        result.baseVars.push(typographyVarString);
         break;
       }
 
       case 'shadow': {
         const shadowVarString = `${processed.name}: ${processed.value};`;
-        if (processed.variant) {
-          const arr = result.themeVars.get(processed.variant) || [];
-          arr.push(shadowVarString);
-          result.themeVars.set(processed.variant, arr);
-        } else {
-          result.baseVars.push(shadowVarString);
-        }
+        result.baseVars.push(shadowVarString);
         break;
       }
 
       case 'animation': {
         const animationVarString = `${processed.name}: ${processed.value};`;
-        if (processed.variant) {
-          const arr = result.themeVars.get(processed.variant) || [];
-          arr.push(animationVarString);
-          result.themeVars.set(processed.variant, arr);
-        } else {
-          result.baseVars.push(animationVarString);
-        }
+        result.baseVars.push(animationVarString);
         break;
       }
 
@@ -192,13 +161,7 @@ export class TokenProcessingEngine {
 
       case 'number': {
         const numberVarString = `${processed.name}: ${processed.value};`;
-        if (processed.variant) {
-          const arr = result.themeVars.get(processed.variant) || [];
-          arr.push(numberVarString);
-          result.themeVars.set(processed.variant, arr);
-        } else {
-          result.baseVars.push(numberVarString);
-        }
+        result.baseVars.push(numberVarString);
         break;
       }
 

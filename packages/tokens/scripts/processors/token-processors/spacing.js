@@ -7,7 +7,7 @@ import { toKebabCase } from './utils.js';
 export class SpacingTokenProcessor extends BaseTokenProcessor {
   constructor(options = {}) {
     super(options);
-    this.defaultPrefix = options.spacingPrefix || 'spacing';
+    this.defaultPrefix = 'spacing';
 
     // Define special prefixes for specific token categories
     this.specialPrefixes = {

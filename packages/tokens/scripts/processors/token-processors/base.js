@@ -7,7 +7,6 @@ export class BaseTokenProcessor {
   constructor(options = {}) {
     this.options = options;
     this.rootPropertyName = options.rootPropertyName || '_';
-    this.themePattern = options.themePattern || 'theme-content';
   }
 
   /**
@@ -68,33 +67,6 @@ export class BaseTokenProcessor {
     return {
       path: path.map(p => p.replaceAll('*', '').replaceAll('|', '-'))
     };
-  }
-
-  /**
-   * Check if the last part of the path is the root property
-   */
-  isRootProperty(path) {
-    return path[path.length - 1] === this.rootPropertyName;
-  }
-
-  /**
-   * Get the theme variant from a token path
-   */
-  getThemeVariant(path) {
-    if (!this.isThemeToken(path)) {
-      return null;
-    }
-
-    const lastPart = path[path.length - 1];
-
-    // If the last part is the root property name (usually '_'), this is the default theme
-    if (lastPart === this.rootPropertyName) {
-      return null;
-    }
-
-    // For theme tokens, if the last part is not the root property,
-    // then it's a theme variant (e.g., 'dark', 'light', etc.)
-    return lastPart || null;
   }
 
   /**

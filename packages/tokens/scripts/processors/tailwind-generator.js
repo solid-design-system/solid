@@ -17,8 +17,8 @@ export class TailwindCSSGenerator {
     const parts = [
       this.generateImport(),
       this.generateSource(),
+      this.generateCustomVariants(),
       this.generateTheme(processedTokens),
-      this.generateLayers(processedTokens),
       this.generateUtilities(processedTokens.utilities),
       this.generateExtras()
     ].filter(Boolean);
@@ -41,38 +41,23 @@ export class TailwindCSSGenerator {
   }
 
   /**
+   * Generate custom variants
+   */
+  generateCustomVariants() {
+    const variants = Object.entries(this.config.customVariants).map(([variant, selector]) =>
+      this.css.customVariant(variant, selector)
+    );
+
+    return this.css.join(variants, '\n');
+  }
+
+  /**
    * Generate @theme directive
    */
   generateTheme(processedTokens) {
     const themeVars = [...processedTokens.baseVars, ...processedTokens.spacing];
 
     return this.css.theme(this.css.join(themeVars, '\n'));
-  }
-
-  /**
-   * Generate @layer directives
-   */
-  generateLayers(processedTokens) {
-    const layers = [];
-
-    // Base layer for theme variants
-    if (processedTokens.themeVars.size > 0) {
-      const themeRules = Array.from(processedTokens.themeVars.entries()).map(([variant, vars]) => {
-        const selector = this.configObj.getThemeSelector
-          ? this.configObj.getThemeSelector(variant)
-          : this.getThemeSelector(variant);
-        return this.css.rule(selector, this.css.join(vars, '\n'));
-      });
-
-      layers.push(this.css.layer('base', this.css.join(themeRules, '\n\n')));
-    }
-
-    // Components layer
-    if (this.config.createComponentClasses && processedTokens.components.length > 0) {
-      layers.push(this.css.layer(this.config.componentLayer, this.css.join(processedTokens.components, '\n\n')));
-    }
-
-    return layers.length > 0 ? this.css.join(layers, '\n\n') : null;
   }
 
   /**

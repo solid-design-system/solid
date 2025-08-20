@@ -54,6 +54,13 @@ export class CSSBuilder {
   }
 
   /**
+   * Create a @custom-variant directive
+   */
+  customVariant(name, selector) {
+    return `@custom-variant ${name} (${selector});`;
+  }
+
+  /**
    * Create a @layer directive
    */
   layer(name, content) {
