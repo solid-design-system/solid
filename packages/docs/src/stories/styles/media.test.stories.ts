@@ -51,7 +51,7 @@ export const MediaSample = {
       options: {
         templateContent: `
           <figure class="%CLASSES% max-w-xl p-4">
-            <div class="sd-copyright" style="--copyright: '© Union Investment 2024';">
+            <div class="sd-copyright" style="--copyright: '© Union Investment 2025';">
               <img src="./placeholders/images/generic.jpg" alt="A generic placeholder jpg" class="aspect-video object-cover"/>
             </div>
             <figcaption>%SLOT%</figcaption>

@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import type { StoryContext } from '@storybook/web-components';
-import * as TailwindConfiguration from '../../.storybook/solid-tw-config.json';
+import TailwindConfiguration from '../../.storybook/solid-tw-configuration.json';
 
 const tailwindConfig = `<script>
   tailwind.config = {

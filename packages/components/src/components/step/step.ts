@@ -19,7 +19,6 @@ import SolidElement from '../../internal/solid-element';
  *
  * @slot - The step's description.
  * @slot label - The step's label.
- * @slot index - The step's index.
  * @slot circle-content - The content inside a step circle. This could be an icon or a number.
  *
  * @event sd-blur - Emitted when the button loses focus.
@@ -42,6 +41,12 @@ export default class SdStep extends SolidElement {
 
   /** Determines the orientation of the step. */
   @property({ type: String, reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
+
+  /** Enables the horizontal inline variant for more compact layout. */
+  @property({ type: Boolean, reflect: true, attribute: 'horizontal-inline' }) horizontalInline = false;
+
+  /** Sets the step to a waiting state. */
+  @property({ type: Boolean, reflect: true }) waiting = false;
 
   /** Sets the step to a disabled state. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -87,6 +92,7 @@ export default class SdStep extends SolidElement {
   handleCurrentChange() {
     if (this.current) {
       this.disabled = false;
+      this.waiting = false;
     }
   }
 
@@ -94,6 +100,15 @@ export default class SdStep extends SolidElement {
   handleDisabledChange() {
     if (this.disabled) {
       this.current = false;
+      this.waiting = false;
+    }
+  }
+
+  @watch('waiting')
+  handleWaitingChange() {
+    if (this.waiting) {
+      this.current = false;
+      this.disabled = false;
     }
   }
 
@@ -102,16 +117,51 @@ export default class SdStep extends SolidElement {
     if (this.notInteractive) {
       this.current = false;
       this.disabled = false;
+      this.waiting = false;
     }
   }
 
   render() {
     const isLink = this.isLink();
-    const tag = this.notInteractive ? literal`div` : isLink ? literal`a` : literal`button`;
+    const tag = this.notInteractive || this.waiting ? literal`div` : isLink ? literal`a` : literal`button`;
     const hasLabelSlot = this.hasSlotController.test('label');
     const hasLabel = this.label ? true : hasLabelSlot;
     const hasDefaultSlot = this.hasSlotController.test('[default]');
     const hasDescription = this.description ? true : hasDefaultSlot;
+    const isHorizontalInline = this.horizontalInline && this.orientation === 'horizontal';
+
+    const circleAndTailContainerClasses = cx(
+      'flex shrink-0 gap-2',
+      this.noTail && !isHorizontalInline && 'w-max',
+      this.orientation === 'horizontal' ? 'flex-row' : 'flex-col items-stretch',
+      isHorizontalInline && 'items-start',
+      this.orientation === 'horizontal' && !this.horizontalInline
+        ? this.size === 'lg'
+          ? 'translateLg'
+          : 'translateSm'
+        : this.size === 'lg'
+          ? 'mt-1'
+          : 'mt-3'
+    );
+
+    const circleButtonClasses = cx(
+      'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
+      this.disabled
+        ? 'focus-visible:outline-none cursor-not-allowed'
+        : !this.notInteractive && !this.waiting
+          ? 'focus-visible:focus-outline hover:cursor-pointer'
+          : '',
+      this.notInteractive ? (this.size === 'lg' ? 'not-interactive-lg' : 'w-12') : this.size === 'lg' ? 'w-12' : 'w-8',
+      this.disabled && 'border-neutral-500 text-neutral-500',
+      this.waiting && 'border-neutral-400 text-neutral-700',
+      !this.disabled &&
+        !this.current &&
+        !this.notInteractive &&
+        !this.waiting &&
+        'border-primary hover:bg-primary-100 hover:border-primary-500',
+      this.notInteractive && 'border-neutral-400',
+      this.current && 'bg-accent border-none text-white'
+    );
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
@@ -123,101 +173,164 @@ export default class SdStep extends SolidElement {
           'flex pt-1',
           this.orientation === 'horizontal'
             ? 'flex-col w-full'
-            : 'flex-row gap-4 items-stretch h-full w-min overflow-hidden',
-          !this.disabled && !this.current && !this.notInteractive && 'group'
+            : 'flex-row gap-4 items-stretch h-full w-full overflow-hidden',
+          !this.disabled && !this.current && !this.notInteractive && !this.waiting && 'group'
         )}
         @focus=${this.handleFocus}
         @blur=${this.handleBlur}
       >
         <div
           part="circle-and-tail-container"
-          class=${cx(
-            'flex shrink-0 gap-2',
-            this.noTail && 'w-max',
-            this.orientation === 'horizontal' ? 'flex-row' : 'flex-col items-stretch',
-            this.orientation === 'horizontal'
-              ? this.size === 'lg'
-                ? 'translateLg'
-                : 'translateSm'
-              : this.size === 'lg'
-                ? 'mt-1'
-                : 'mt-3'
-          )}
+          class=${circleAndTailContainerClasses}
         >
-
           <${tag}
             part="circle"
             href=${ifDefined(isLink ? this.href : undefined)}
-            aria-disabled=${ifDefined(this.disabled || undefined)}
+            aria-disabled=${ifDefined(this.disabled || this.waiting || undefined)}
             aria-current=${this.current ? 'step' : undefined}
-            aria-labelledby=${ifDefined(this.notInteractive || !hasLabel ? undefined : 'label')}
-            aria-describedby=${ifDefined(this.notInteractive || !hasDescription ? undefined : 'description')}
-            class=${cx(
-              'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
-              this.disabled
-                ? 'focus-visible:outline-none cursor-not-allowed'
-                : 'focus-visible:focus-outline group-hover:cursor-pointer',
-              this.notInteractive
-                ? this.size === 'lg'
-                  ? 'not-interactive-lg'
-                  : 'w-12'
-                : this.size === 'lg'
-                  ? 'w-12'
-                  : 'w-8',
-              this.disabled && 'border-neutral-400 text-neutral-700',
-              !this.disabled &&
-                !this.current &&
-                !this.notInteractive &&
-                'border-primary group-hover:bg-primary-100 group-hover:border-primary-500',
-              this.notInteractive && 'border-neutral-400',
-              this.current && 'bg-accent border-none text-white'
-            )}
+            aria-labelledby=${ifDefined(this.notInteractive || this.waiting || !hasLabel ? undefined : 'label')}
+            aria-describedby=${ifDefined(this.notInteractive || this.waiting || !hasDescription ? undefined : 'description')}
+            class=${circleButtonClasses}
           >
             <slot
               name="circle-content"
               class=${cx(
+                'text-lg',
                 !this.disabled &&
                   !this.current &&
                   !this.notInteractive &&
-                  'text-primary group-hover:text-primary-500 group-hover:fill-primary-500',
-                this.notInteractive && 'text-primary',
-                this.size === 'lg' ? 'text-lg' : 'text-sm'
+                  !this.waiting &&
+                  'text-primary hover:text-primary-500 hover:fill-primary-500',
+                this.notInteractive && 'text-primary'
               )}
             >
               ${
-                !this.disabled && !this.current && !this.notInteractive
-                  ? html` <sd-icon name="status-check" library="_internal"></sd-icon>`
+                !this.disabled && !this.current && !this.notInteractive && !this.waiting
+                  ? html` <sd-icon
+                      name="status-check"
+                      library="_internal"
+                      class="${cx(this.size === 'sm' && 'text-sm')}"
+                    ></sd-icon>`
                   : html`${this.index}`
               }
             </slot>
           </${tag}>
+
           ${
-            this.noTail
-              ? ''
-              : html`
-                  <div
-                    part="tail"
-                    class=${cx(
-                      this.orientation === 'horizontal'
-                        ? 'border-t w-full my-auto mr-2'
-                        : 'border-l flex-grow flex-shrink-0 basis-auto h-full w-[1px] mx-auto',
-                      !this.disabled && !this.current && !this.notInteractive
-                        ? ' border-primary group-hover:border-primary-500'
-                        : 'border-neutral-400'
-                    )}
-                  ></div>
+            isHorizontalInline
+              ? html`
+                  <div class=${cx('flex flex-col gap-1 flex-1')}>
+                    <div
+                      class=${cx(
+                        'flex w-full',
+                        hasLabel && 'gap-2',
+                        this.size === 'sm' && !hasDescription ? 'mt-1' : 'mt-3'
+                      )}
+                    >
+                      ${hasLabel
+                        ? html`
+                            <div
+                              part="label"
+                              id="label"
+                              class=${cx(
+                                '!font-bold sd-paragraph whitespace-nowrap',
+                                this.disabled && '!text-neutral-500',
+                                this.waiting && '!text-neutral-700',
+                                !this.disabled && !this.current && !this.notInteractive && !this.waiting
+                                  ? '!text-primary'
+                                  : 'text-black'
+                              )}
+                            >
+                              <slot name="label">${this.label}</slot>
+                            </div>
+                          `
+                        : ''}
+                      ${this.noTail
+                        ? html`<div class="flex-1"></div>`
+                        : html`
+                            <div
+                              part="tail"
+                              class=${cx(
+                                'border-t flex-1 mr-2 mt-3',
+                                !this.disabled && !this.current && !this.notInteractive && !this.waiting
+                                  ? 'border-primary'
+                                  : 'border-neutral-500'
+                              )}
+                            ></div>
+                          `}
+                    </div>
+                    <div
+                      part="description"
+                      id="description"
+                      class=${cx(
+                        'sd-paragraph sd-paragraph--size-sm break-words',
+                        hasDescription ? 'flex-1 pr-4' : 'w-0 h-0 overflow-hidden',
+                        (this.disabled || this.waiting) && '!text-neutral-700'
+                      )}
+                    >
+                      ${hasDescription ? this.description || html`<slot></slot>` : ''}
+                    </div>
+                  </div>
                 `
+              : this.noTail
+                ? ''
+                : html`
+                    <div
+                      part="tail"
+                      class=${cx(
+                        this.orientation === 'horizontal'
+                          ? 'border-t w-full my-auto mr-2'
+                          : 'border-l flex-grow flex-shrink-0 basis-auto h-full w-[1px] mx-auto',
+                        !this.disabled && !this.current && !this.notInteractive && !this.waiting
+                          ? 'border-primary'
+                          : 'border-neutral-400'
+                      )}
+                    ></div>
+                  `
           }
         </div>
-
-        <div part="text-container" class=${cx('mt-4 break-words flex flex-col gap-2', this.orientation === 'horizontal' ? 'text-center w-40' : 'w-max text-left', this.disabled && '!text-neutral-700', this.notInteractive ? 'ml-3' : 'mr-4')}>
-          <div part="label" id="label" class=${cx('!font-bold sd-paragraph', this.disabled && '!text-neutral-700', !this.disabled && !this.current && !this.notInteractive ? '!text-primary group-hover:!text-primary-500 group-hover:cursor-pointer' : 'text-black')}>
-            <slot name="label">${this.label}</slot>
-          </div>
-          <div part="description" id="description" class=${cx('sd-paragraph sd-paragraph--size-sm', this.disabled && '!text-neutral-700')}>
-            ${this.description || html`<slot></slot>`}
-          </div>
-        </div>
+        ${
+          !isHorizontalInline
+            ? html`
+                <div
+                  part="text-container"
+                  class=${cx(
+                    'mt-4 break-words flex flex-col gap-2',
+                    this.orientation === 'horizontal' ? 'text-center w-40' : 'text-left',
+                    this.disabled && '!text-neutral-500',
+                    this.waiting && '!text-neutral-700',
+                    this.notInteractive ? 'ml-2' : 'mr-4'
+                  )}
+                >
+                  <div
+                    part="label"
+                    id="label"
+                    class=${cx(
+                      '!font-bold sd-paragraph',
+                      this.disabled && '!text-neutral-500',
+                      this.waiting && '!text-neutral-700',
+                      !this.disabled && !this.current && !this.notInteractive && !this.waiting
+                        ? '!text-primary'
+                        : 'text-black'
+                    )}
+                  >
+                    <slot name="label">${this.label}</slot>
+                  </div>
+                  <div
+                    part="description"
+                    id="description"
+                    class=${cx(
+                      'sd-paragraph sd-paragraph--size-sm',
+                      this.disabled && '!text-neutral-700',
+                      this.waiting && '!text-neutral-700'
+                    )}
+                  >
+                    ${this.description || html`<slot></slot>`}
+                  </div>
+                </div>
+              `
+            : ''
+        }
       </div>
     `;
   }
@@ -231,6 +344,14 @@ export default class SdStep extends SolidElement {
 
       :host([no-tail]) {
         @apply flex-grow-0;
+      }
+
+      :host([horizontal-inline]) {
+        @apply flex-1 min-w-0;
+      }
+
+      :host([horizontal-inline][no-tail]) {
+        @apply flex-1;
       }
 
       .translateLg {

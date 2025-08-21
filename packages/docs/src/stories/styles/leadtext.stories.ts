@@ -36,8 +36,8 @@ export const Default = {
 };
 
 /**
- * Use the `sd-leadtext` classes for alternative appearances:
- * -  xl is the default leadtext size
+ * Use the `sd-leadtext--size-*` classes for alternative appearances:
+ * -  xl is the default size
  * - `sd-leadtext--size-lg`
  */
 

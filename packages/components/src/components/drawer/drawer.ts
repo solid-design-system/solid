@@ -333,7 +333,7 @@ export default class SdDrawer extends SolidElement {
                 <header
                   part="header"
                   class="flex justify-between py-2 px-4 items-center flex-shrink-0"
-                  style="min-height: 56px;"
+                  style="min-height: 64px;"
                 >
                   <div part="title">
                     <slot name="header" part="title" class="flex-auto text-xl m-0" id="title"> </slot>
@@ -355,7 +355,7 @@ export default class SdDrawer extends SolidElement {
                 size="lg"
                 part="close-button"
                 @click=${() => this.requestClose('close-button')}
-                class="absolute top-2 end-2"
+                class="absolute top-2 end-2 z-10"
                 ><sd-icon label=${this.localize.term('close')} name="close" library="_internal"></sd-icon
               ></sd-button>`}
           <div part="body" class="flex-auto block px-4 focus-visible:focus-outline !-outline-offset-2" tabindex="0">

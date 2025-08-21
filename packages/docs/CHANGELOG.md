@@ -1,5 +1,56 @@
 # @solid-design-system/docs
 
+## 1.28.3
+
+### Patch Changes
+
+- Fixed usability issues of the Storybook controls on the components default story. _[`4ed1261`](https://github.com/solid-design-system/solid/commit/4ed12613e723c76a71542e6944ed4d4de11d5ce1) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.28.2
+
+### Patch Changes
+
+- Fixed a small keyboard navigation issue within the `Header Navigation` template. _[`#2454`](https://github.com/solid-design-system/solid/pull/2454) [`038a16a`](https://github.com/solid-design-system/solid/commit/038a16ada52e11bd92f7a621947104c96e71bd54) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.28.1
+
+### Patch Changes
+
+- Fixed a small layout issue on the `Button` template. _[`#2448`](https://github.com/solid-design-system/solid/pull/2448) [`8025cd2`](https://github.com/solid-design-system/solid/commit/8025cd2a1e738aa7f26eb752147417af720a2399) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.28.0
+
+### Minor Changes
+
+- Implemented a new `sd-navigation-item` template showcasing a `mega menu`. _[`#2318`](https://github.com/solid-design-system/solid/pull/2318) [`11300b4`](https://github.com/solid-design-system/solid/commit/11300b42a379e8f13ac4316b8824126c61891281) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.27.0
+
+### Minor Changes
+
+- Implemented `waiting` attribute and `horizontal-inline` variant on `sd-step` _[`#2364`](https://github.com/solid-design-system/solid/pull/2364) [`b6d6768`](https://github.com/solid-design-system/solid/commit/b6d6768f99dffceb06356a519e9d74ee5490e5aa) [@balco0110](https://github.com/balco0110)_
+- Updated the docs for `sd-step` and `sd-step-group` and `Step Group` template. _[`#2364`](https://github.com/solid-design-system/solid/pull/2364) [`b6d6768`](https://github.com/solid-design-system/solid/commit/b6d6768f99dffceb06356a519e9d74ee5490e5aa) [@balco0110](https://github.com/balco0110)_
+
+## 1.26.11
+
+### Patch Changes
+
+- Adjusted form components stories casing. _[`#2403`](https://github.com/solid-design-system/solid/pull/2403) [`364eafa`](https://github.com/solid-design-system/solid/commit/364eafad92827a95ed1522741c990a1a1fdeaced) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.26.10
+
+### Patch Changes
+
+- Improved all style classes documentation so the user can better visualise which modifier classes are available. _[`#2386`](https://github.com/solid-design-system/solid/pull/2386) [`6ce01e4`](https://github.com/solid-design-system/solid/commit/6ce01e4d9c758cf1e181565fbe10c7010c0df002) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.26.9
+
+### Patch Changes
+
+- Added support for `<a>` inside `sd-footnotes--marker`. _[`#2421`](https://github.com/solid-design-system/solid/pull/2421) [`515a2b1`](https://github.com/solid-design-system/solid/commit/515a2b1168af2cc7c91469942220f7e520637bb3) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Removed `sd-footnotes` safari known issue.
+
 ## 1.26.8
 
 ### Patch Changes
