@@ -1,12 +1,16 @@
-@import url('./modules/chip.css');
-@import url('./modules/container.css');
-@import url('./modules/copyright.css');
-@import url('./modules/flag.css');
-@import url('./modules/footnotes.css');
-@import url('./modules/hidden-links.css');
-@import url('./modules/mark.css');
-@import url('./modules/meta.css');
-@import url('./modules/pagination.css');
-@import url('./modules/status-badge.css');
+@import 'tailwindcss';
+
+@import './modules/chip.css';
+@import './modules/container.css';
+@import './modules/copyright.css';
+@import './modules/flag.css';
+@import './modules/footnotes.css';
+@import './modules/hidden-links.css';
+@import './modules/mark.css';
+@import './modules/meta.css';
+@import './modules/pagination.css';
+@import './modules/status-badge.css';
 /* plop:style */
-@import url('./modules/prose.css');
+@import './modules/prose.css';
+
+@reference '../../components/tailwind.css';

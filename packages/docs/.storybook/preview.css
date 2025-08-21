@@ -1,8 +1,5 @@
 @import url('../../components/src/solid-components.css');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('../../styles/src/solid-styles.css');
 
 /* Lists */
 .sbdocs .sbdocs-content ol {

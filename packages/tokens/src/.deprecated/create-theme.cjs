@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return, no-shadow, no-prototype-builtins, no-unused-vars, no-bitwise */
-const tokens = require('./tokens.json');
+const tokens = require('../tokens.json');
 
 const hexToRgb = hex => {
   const hexCharacters = 'a-f\\d';

@@ -1,0 +1,123 @@
+import { prefixReferences } from './utils.js';
+import legacy from '../../src/tokens.json' with { type: 'json' };
+
+export class FigmaLegacyTokens {
+  constructor() {
+    this.legacy = this.#sanitize(legacy);
+  }
+
+  #sanitize(value) {
+    if (!value) return value;
+
+    if (typeof value === 'string') {
+      ['\t', '\b', '\u001d'].forEach(ch => {
+        value = value.split(ch).join('');
+      });
+      return value;
+    }
+
+    if (Array.isArray(value)) {
+      return value.map(v => this.#sanitize(v));
+    }
+
+    if (typeof value === 'object') {
+      const out = Array.isArray(value) ? [] : {};
+      for (const [k, v] of Object.entries(value)) {
+        out[this.#sanitize(k)] = this.#sanitize(v);
+      }
+      return out;
+    }
+
+    return value;
+  }
+
+  #getCore() {
+    return this.legacy['UI Core'];
+  }
+
+  #getTokens() {
+    const nonLegacy = ['background', 'icon-fill', 'border', '*background-transparent', 'text'];
+    return Object.fromEntries(Object.entries(this.legacy['UI Semantic']).filter(([key]) => !nonLegacy.includes(key)));
+  }
+
+  get() {
+    const core = this.#getCore();
+    const tokens = this.#getTokens();
+
+    tokens.spacing = {
+      ...tokens.spacing,
+      0: { value: '0px', type: 'spacing', description: 'No spacing (manually added)' },
+      auto: {
+        value: 'auto',
+        type: 'spacing',
+        description: 'Automatic spacing (manually added)'
+      }
+    };
+
+    tokens['z-'] = {
+      10: { value: '10', type: 'utility' },
+      20: { value: '20', type: 'utility' },
+      30: { value: '30', type: 'utility' },
+      40: { value: '40', type: 'utility' },
+      50: { value: '50', type: 'utility' },
+      auto: { value: 'auto', type: 'utility' },
+      header: { value: 'var(--sd-z-index-header, 600)', type: 'utility' },
+      drawer: { value: 'var(--sd-z-index-drawer, 700)', type: 'utility' },
+      dialog: { value: 'var(--sd-z-index-dialog, 800)', type: 'utility' },
+      dropdown: { value: 'var(--sd-z-index-dropdown, 900)', type: 'utility' },
+      'alert-group': { value: 'var(--sd-z-index-alert-group, 950)', type: 'utility' },
+      tooltip: { value: 'var(--sd-z-index-tooltip, 1000)', type: 'utility' }
+    };
+
+    tokens.risk = {
+      low: {
+        value: 'rgb(var(--sd-color-risk-low, 1 125 195))',
+        type: 'color',
+        description: 'Exclusively for marking fonds'
+      },
+      moderate: {
+        value: 'rgb(var(--sd-color-risk-moderate, 0 165 147))',
+        type: 'color',
+        description: 'Exclusively for marking fonds'
+      },
+      increased: {
+        value: 'rgb(var(--sd-color-risk-increased, 255 240 0))',
+        type: 'color',
+        description: 'Exclusively for marking fonds'
+      },
+      high: {
+        value: 'rgb(var(--sd-color-risk-high, 250 155 30))',
+        type: 'color',
+        description: 'Exclusively for marking fonds'
+      },
+      veryhigh: {
+        value: 'rgb(var(--sd-color-risk-veryhigh, 255 0 0))',
+        type: 'color',
+        description: 'Exclusively for marking fonds'
+      }
+    };
+
+    tokens.aspect = {
+      video: { value: '16 / 9', type: 'spacing' },
+      square: { value: '1 / 1', type: 'spacing' },
+      '6/5': { value: '6 / 5', type: 'spacing' },
+      '5/4': { value: '5 / 4', type: 'spacing' },
+      '4/3': { value: '4 / 3', type: 'spacing' },
+      '3/2': { value: '3 / 2', type: 'spacing' },
+      '16/10': { value: '16 / 10', type: 'spacing' },
+      'golden-ratio': { value: '1.6180339887498948482 / 1', type: 'spacing' },
+      '2/1': { value: '2 / 1', type: 'spacing' },
+      '21/9': { value: '21 / 9', type: 'spacing' },
+      '3/4': { value: '3 / 4', type: 'spacing' },
+      '4/5': { value: '4 / 5', type: 'spacing' }
+    };
+
+    tokens.duration = {
+      ...Object.fromEntries(
+        Object.entries(tokens.duration).map(([key, value]) => [key, { ...value, type: 'duration' }])
+      )
+    };
+
+    return { core, tokens: prefixReferences(tokens) };
+  }
+}

@@ -9,21 +9,14 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import fs from 'fs/promises';
 import postcss from 'postcss';
-import tailwindcss from 'tailwindcss';
-import tailwindcssNesting from 'tailwindcss/nesting/index.js';
+import tailwindcss from '@tailwindcss/postcss';
 import theme from './postcss-token-variables.js';
 
 (async () => {
   const lite = process.argv.includes('--lite');
   const css = await fs.readFile('./src/solid-components.css', 'utf8');
 
-  const result = await postcss([
-    atImportPlugin({ allowDuplicates: false }),
-    tailwindcssNesting,
-    tailwindcss,
-    autoprefixer,
-    theme
-  ])
+  const result = await postcss([atImportPlugin({ allowDuplicates: false }), tailwindcss, autoprefixer, theme])
     .process(css, { from: undefined })
     .then(result => result.css);
 
@@ -33,7 +26,6 @@ import theme from './postcss-token-variables.js';
 
   const minifiedResult = await postcss([
     atImportPlugin({ allowDuplicates: false }),
-    tailwindcssNesting,
     tailwindcss,
     autoprefixer,
     theme,

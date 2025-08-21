@@ -1,6 +1,8 @@
 import { cssVar, parseDuration } from './animate';
 import { LitElement, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
+// @ts-expect-error Typescript doesn't like importing .css files directly
+import style from './solid-element.css?inline';
 
 const css = unsafeCSS;
 
@@ -15,36 +17,7 @@ export default class SolidElement extends LitElement {
   /** The element's language. */
   @property() lang: string;
 
-  static styles = [
-    css`
-      /* Import CSS styles once to make them available in every component */
-      @import url('../styles/src/modules/interactive.css');
-      @import url('../styles/src/modules/paragraph.css');
-      @import url('../styles/src/modules/headline.css');
-
-      /* TailwindCSS directives have to come after imports */
-      @tailwind base;
-      @tailwind components;
-      @tailwind utilities;
-
-      :host {
-        --tw-gradient-from-position: 0%;
-        --tw-gradient-to-position: 100%;
-
-        box-sizing: border-box;
-      }
-
-      :host *,
-      :host *::before,
-      :host *::after {
-        box-sizing: inherit;
-      }
-
-      [hidden] {
-        display: none !important;
-      }
-    `
-  ];
+  static styles = [css(style)];
 
   /** Emits a custom event with more convenient defaults. */
   emit(name: string, options?: CustomEventInit) {

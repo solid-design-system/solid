@@ -133,6 +133,8 @@ export default class SdIcon extends SolidElement {
   static styles = [
     ...SolidElement.styles,
     css`
+      @reference './components/tailwind.css';
+
       :host {
         width: 1em;
         height: 1em;

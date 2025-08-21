@@ -4,8 +4,7 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import fs from 'fs/promises';
 import postcss from 'postcss';
-import tailwindcss from 'tailwindcss';
-import tailwindcssNesting from 'tailwindcss/nesting/index.js';
+import tailwindcss from '@tailwindcss/postcss';
 
 /**
  * Escapes tailwind special characters in a string and wraps it in a CSS template literal.
@@ -22,15 +21,11 @@ export async function processCssTags(source) {
   while ((match = cssTagRegex.exec(source)) !== null) {
     const [fullMatch, cssContent] = match;
 
+    const css = `@reference './components/tailwind.css'; ${cssContent}`;
+
     try {
-      const result = await postcss([
-        atImportPlugin({ allowDuplicates: false }),
-        tailwindcssNesting,
-        tailwindcss,
-        autoprefixer,
-        cssnano
-      ])
-        .process(cssContent, { from: undefined })
+      const result = await postcss([atImportPlugin({ allowDuplicates: false }), tailwindcss, autoprefixer, cssnano])
+        .process(css, { from: undefined })
         .then(result => result.css);
 
       source = source.replace(

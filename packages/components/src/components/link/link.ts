@@ -86,7 +86,7 @@ export default class SdLink extends SolidElement {
     return html`<a
       part="base"
       class=${cx(
-        'inline',
+        this.standalone ? 'flex items-start' : 'inline',
         this.href && !this.visuallyDisabled ? 'cursor-pointer' : '',
         this.visuallyDisabled ? 'cursor-not-allowed focus-visible:focus-outline' : '',
         {
@@ -100,8 +100,7 @@ export default class SdLink extends SolidElement {
             ? ` text-primary hover:text-primary-500 active:text-primary-800 focus-visible:focus-outline`
             : `text-white hover:text-primary-200 active:text-primary-400 focus-visible:focus-outline-inverted`,
           visuallyDisabled: !this.inverted ? 'text-neutral-500' : 'text-neutral-600'
-        }[this.href && !this.visuallyDisabled ? 'enabled' : this.visuallyDisabled ? 'visuallyDisabled' : 'disabled'],
-        this.standalone && 'flex items-start'
+        }[this.href && !this.visuallyDisabled ? 'enabled' : this.visuallyDisabled ? 'visuallyDisabled' : 'disabled']
       )}
       href=${ifDefined(this.href || undefined)}
       target=${ifDefined(this.target || undefined)}
