@@ -321,8 +321,7 @@ export default class SdStep extends SolidElement {
                     id="description"
                     class=${cx(
                       'sd-paragraph sd-paragraph--size-sm',
-                      this.disabled && 'text-neutral-700',
-                      this.waiting && 'text-neutral-700'
+                      (this.disabled || this.waiting) && 'text-neutral-700'
                     )}
                   >
                     ${this.description || html`<slot></slot>`}
