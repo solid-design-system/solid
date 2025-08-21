@@ -1,4 +1,3 @@
-// import { TypographyTokenProcessor } from './token-processors/typography.js';
 // import { ComponentTokenProcessor } from './token-processors/component.js';
 // import { NumberTokenProcessor } from './token-processors/number.js';
 // import { CompositionTokenProcessor } from './token-processors/composition.js';
@@ -8,6 +7,7 @@ import { AnimationTokenProcessor } from './token-processors/animation.js';
 import { ColorTokenProcessor } from './token-processors/color.js';
 import { ShadowTokenProcessor } from './token-processors/shadow.js';
 import { SpacingTokenProcessor } from './token-processors/spacing.js';
+import { TypographyTokenProcessor } from './token-processors/typography.js';
 import { UtilityTokenProcessor } from './token-processors/utility.js';
 
 /**
@@ -29,7 +29,7 @@ export class TokenProcessingEngine {
     this.registerProcessor('utility', new UtilityTokenProcessor(this.config.getAll()));
     this.registerProcessor('shadow', new ShadowTokenProcessor(this.config.getAll()));
     this.registerProcessor('animation', new AnimationTokenProcessor(this.config.getAll()));
-    // this.registerProcessor('typography', new TypographyTokenProcessor(this.config.getAll()));
+    this.registerProcessor('typography', new TypographyTokenProcessor(this.config.getAll()));
     // this.registerProcessor('component', new ComponentTokenProcessor(this.config.getAll()));
     // this.registerProcessor('number', new NumberTokenProcessor(this.config.getAll()));
     // this.registerProcessor('composition', new CompositionTokenProcessor(this.config.getAll()));

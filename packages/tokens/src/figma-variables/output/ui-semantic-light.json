@@ -1390,6 +1390,43 @@
       "description": "Immediate animation"
     }
   },
+  "font-size": {
+    "text-sm": {
+      "value": "0.875rem",
+      "type": "fontSizes",
+      "description": "14px"
+    },
+    "text-base": {
+      "value": "1rem",
+      "type": "fontSizes",
+      "description": "16px"
+    },
+    "text-lg": {
+      "value": "1.25rem",
+      "type": "fontSizes",
+      "description": "20px"
+    },
+    "text-xl": {
+      "value": "1.5rem",
+      "type": "fontSizes",
+      "description": "24px"
+    },
+    "text-2xl": {
+      "value": "1.75rem",
+      "type": "fontSizes",
+      "description": "28px"
+    },
+    "text-3xl": {
+      "value": "2rem",
+      "type": "fontSizes",
+      "description": "32px"
+    },
+    "text-4xl": {
+      "value": "2.5rem",
+      "type": "fontSizes",
+      "description": "40px"
+    }
+  },
   "z-": {
     "10": {
       "value": "10",

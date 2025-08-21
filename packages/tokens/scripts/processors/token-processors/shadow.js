@@ -6,7 +6,6 @@ import { BaseTokenProcessor } from './base.js';
 export class ShadowTokenProcessor extends BaseTokenProcessor {
   constructor(options = {}) {
     super(options);
-    this.prefix = options.shadowPrefix || 'shadow';
   }
 
   canProcess(token) {

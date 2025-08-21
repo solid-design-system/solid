@@ -13,6 +13,13 @@
   --transition-duration-medium: var(--sd-duration-medium, 300ms);
   --transition-duration-slow: var(--sd-duration-slow, 500ms);
   --transition-duration-x-slow: var(--sd-duration-x-slow, 750ms);
+  --text-sm: var(--sd-text-sm, 0.875rem);
+  --text-base: var(--sd-text-base, 1rem);
+  --text-lg: var(--sd-text-lg, 1.25rem);
+  --text-xl: var(--sd-text-xl, 1.5rem);
+  --text-2xl: var(--sd-text-2xl, 1.75rem);
+  --text-3xl: var(--sd-text-3xl, 2rem);
+  --text-4xl: var(--sd-text-4xl, 2.5rem);
   --color-risk-low: var(--sd-color-low, rgb(var(--sd-color-risk-low, 1 125 195)));
   --color-risk-moderate: var(--sd-color-moderate, rgb(var(--sd-color-risk-moderate, 0 165 147)));
   --color-risk-increased: var(--sd-color-increased, rgb(var(--sd-color-risk-increased, 255 240 0)));
