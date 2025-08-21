@@ -42,10 +42,16 @@ export class FigmaClient extends FigmaBase {
     const legacy = new FigmaLegacyTokens().get();
     const { core, themes } = this.#getThemes();
 
-    this.processed = Object.entries(themes).map(([name, tokens]) => ({
-      name,
-      tokens: { core: { ...legacy.core, ...core }, ...legacy.tokens, ...tokens }
-    }));
+    this.processed = Object.entries(themes)
+      .map(([name, tokens]) => ({
+        name,
+        tokens: { core: { ...legacy.core, ...core }, ...legacy.tokens, ...tokens }
+      }))
+      .map(theme => {
+        theme.tokens.outline = theme.tokens.border;
+        theme.tokens.ring = theme.tokens.border;
+        return theme;
+      });
 
     return this;
   }

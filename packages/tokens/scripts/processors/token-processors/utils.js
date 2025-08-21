@@ -16,6 +16,5 @@ export function toKebabCase(str) {
  * Get token value with fallback
  */
 export function getTokenValue(token) {
-  const { value } = token;
-  return typeof value === 'string' ? token.value : token.value;
+  return token.value;
 }

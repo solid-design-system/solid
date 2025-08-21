@@ -56,9 +56,7 @@ export class TokenProcessingEngine {
     const result = {
       baseVars: [
         /** TODO: Add to actual variables in figma */
-        '--background-color-primary-400: var(--sd-color-primary-400, red);',
-        '--outline-color-primary: var(--sd-color-primary, red);',
-        '--outline-color-error: var(--sd-color-primary, red);'
+        '--background-color-primary-400: var(--sd-color-primary-400, red);'
       ],
       utilities: [],
       spacing: [],

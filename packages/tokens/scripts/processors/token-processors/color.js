@@ -42,6 +42,14 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       return { type: 'color', name: `--${token.replace('icon-fill', 'fill')}` };
     }
 
+    if (token.startsWith('outline')) {
+      return { type: 'color', name: `--${token.replace('outline', 'outline-color')}` };
+    }
+
+    if (token.startsWith('ring')) {
+      return { type: 'color', name: `--${token.replace('ring', 'ring-color')}` };
+    }
+
     if (token.includes('background')) {
       return { type: 'utility', name: token, properties: `@utility ${token} {\n  background-color: ${value};\n}` };
     }

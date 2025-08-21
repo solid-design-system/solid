@@ -79,7 +79,7 @@ export class TailwindCSSGenerator {
           this.css.property('outline-style', 'solid'),
           this.css.property('outline-offset', '2px'),
           this.css.property('outline-width', '2px'),
-          this.css.property('outline-color', 'var(--background-color-primary)')
+          this.css.property('outline-color', 'var(--outline-color-primary)')
         ])
       ),
       this.css.utility(
@@ -88,7 +88,7 @@ export class TailwindCSSGenerator {
           this.css.property('outline-style', 'solid'),
           this.css.property('outline-offset', '2px'),
           this.css.property('outline-width', '2px'),
-          this.css.property('outline-color', 'var(--background-color-white)')
+          this.css.property('outline-color', 'var(--outline-color-white)')
         ])
       )
     ]);

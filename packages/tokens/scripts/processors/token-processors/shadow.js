@@ -14,26 +14,14 @@ export class ShadowTokenProcessor extends BaseTokenProcessor {
   }
 
   process(token) {
-    const value = this.getTokenValue(token);
     const path = this.pathToKebabCase(this.processTokenPath(token).path);
-
-    // Handle both single shadow objects and arrays of shadows
-    let shadowValue;
-    if (Array.isArray(value)) {
-      shadowValue = value.map(shadow => this.formatShadow(shadow)).join(', ');
-    } else if (typeof value === 'object') {
-      shadowValue = this.formatShadow(value);
-    } else {
-      shadowValue = value;
-    }
-
+    const value = this.formatShadow(token.attributes.value);
     const name = path.join('-');
-    shadowValue = this.getOverrideFormat({ name, value: shadowValue });
 
     return {
       type: 'shadow',
       name: `--${name}`,
-      value: shadowValue
+      value: this.getOverrideFormat({ name, value })
     };
   }
 
@@ -41,9 +29,9 @@ export class ShadowTokenProcessor extends BaseTokenProcessor {
    * Format a shadow object into CSS shadow syntax
    */
   formatShadow(shadow) {
-    const { offsetX = '0', offsetY = '0', blur = '0', spread = '0', color = 'transparent', inset = false } = shadow;
+    const { offsetX = '0', offsetY = '0', blur = '0', spread = '0', color = 'transparent' } = shadow;
 
-    const parts = [inset ? 'inset' : '', offsetX, offsetY, blur, spread, color].filter(Boolean);
+    const parts = [offsetX, offsetY, blur, spread, color].filter(Boolean);
 
     return parts.join(' ');
   }

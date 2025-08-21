@@ -7,8 +7,6 @@
 
 @theme {
   --background-color-primary-400: var(--sd-color-primary-400, red);
-  --outline-color-primary: var(--sd-color-primary, red);
-  --outline-color-error: var(--sd-color-primary, red);
   --shadow: var(--sd-shadow, 0 1px 3px 0 rgba(81, 81, 81, 0.75));
   --shadow-sm: var(--sd-shadow-sm, 0.5px 0.5px 1.5px 0 rgba(81, 81, 81, 1));
   --transition-duration-fast: var(--sd-duration-fast, 150ms);
@@ -113,6 +111,40 @@
   --text-color-accent: var(--sd-color-accent, #2d9d00);
   --text-color-primary-100: var(--sd-color-primary-100, #ecf0f9);
   --text-color-neutral-600: var(--sd-color-neutral-600, #888888);
+  --outline-color-primary: var(--sd-color-primary, #00358e);
+  --outline-color-accent-550: var(--sd-color-accent-550, #367b28);
+  --outline-color-primary-500: var(--sd-color-primary-500, #466daf);
+  --outline-color-primary-800: var(--sd-color-primary-800, #051530);
+  --outline-color-neutral-400: var(--sd-color-neutral-400, #c3c3c3);
+  --outline-color-neutral-800: var(--sd-color-neutral-800, #515151);
+  --outline-color-success: var(--sd-color-success, #367b28);
+  --outline-color-error: var(--sd-color-error, #cc1937);
+  --outline-color-error-400: var(--sd-color-error-400, #ac1938);
+  --outline-color-null: var(--sd-color-null, rgba(255, 255, 255, 0));
+  --outline-color-white: var(--sd-color-white, #ffffff);
+  --outline-color-accent: var(--sd-color-accent, #2d9d00);
+  --outline-color-primary-100: var(--sd-color-primary-100, #ecf0f9);
+  --outline-color-primary-200: var(--sd-color-primary-200, #e0e9f3);
+  --outline-color-primary-400: var(--sd-color-primary-400, #99abd0);
+  --outline-color-neutral-500: var(--sd-color-neutral-500, #aeaeae);
+  --outline-color-neutral-600: var(--sd-color-neutral-600, #888888);
+  --ring-color-primary: var(--sd-color-primary, #00358e);
+  --ring-color-accent-550: var(--sd-color-accent-550, #367b28);
+  --ring-color-primary-500: var(--sd-color-primary-500, #466daf);
+  --ring-color-primary-800: var(--sd-color-primary-800, #051530);
+  --ring-color-neutral-400: var(--sd-color-neutral-400, #c3c3c3);
+  --ring-color-neutral-800: var(--sd-color-neutral-800, #515151);
+  --ring-color-success: var(--sd-color-success, #367b28);
+  --ring-color-error: var(--sd-color-error, #cc1937);
+  --ring-color-error-400: var(--sd-color-error-400, #ac1938);
+  --ring-color-null: var(--sd-color-null, rgba(255, 255, 255, 0));
+  --ring-color-white: var(--sd-color-white, #ffffff);
+  --ring-color-accent: var(--sd-color-accent, #2d9d00);
+  --ring-color-primary-100: var(--sd-color-primary-100, #ecf0f9);
+  --ring-color-primary-200: var(--sd-color-primary-200, #e0e9f3);
+  --ring-color-primary-400: var(--sd-color-primary-400, #99abd0);
+  --ring-color-neutral-500: var(--sd-color-neutral-500, #aeaeae);
+  --ring-color-neutral-600: var(--sd-color-neutral-600, #888888);
   --spacing-0: var(--sd-spacing-0, 0px);
   --spacing: var(--sd-spacing-1, 0.25rem);
   --spacing-2: var(--sd-spacing-2, 0.5rem);
@@ -461,12 +493,12 @@
   outline-style: solid;
   outline-offset: 2px;
   outline-width: 2px;
-  outline-color: var(--background-color-primary);
+  outline-color: var(--outline-color-primary);
 }
 
 @utility focus-outline-inverted {
   outline-style: solid;
   outline-offset: 2px;
   outline-width: 2px;
-  outline-color: var(--background-color-white);
+  outline-color: var(--outline-color-white);
 }
