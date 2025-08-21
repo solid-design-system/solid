@@ -73,7 +73,9 @@ jobs:
           run: pnpm i
 
         - name: Run Playwright tests
-          run: pnpm run test.a11y
+          run: |
+            cd packages/docs
+            pnpm run test.a11y
 
     # Check Chromatic for visual changes after all other checks have passed
     chromatic-deployment-pr:
