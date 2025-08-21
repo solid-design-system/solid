@@ -47,6 +47,9 @@ jobs:
                 cd ${{ matrix.package }}
                 pnpm verify
 
+            - name: Playwright tests
+              run: pnpm run test.a11y
+
     # Check Chromatic for visual changes after all other checks have passed
     chromatic-deployment-pr:
       name: Verify Chromatic
