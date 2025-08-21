@@ -19,6 +19,7 @@ on:
     branches:
       - main
       - develop
+      - next
       - feat/**
 
 jobs:
@@ -62,12 +63,12 @@ jobs:
       - name: Run existing build process
         run: pnpm -C ./packages/tokens build
 
-      # - name: Commit changes if any
-      #   uses: stefanzweifel/git-auto-commit-action@v5
-      #   with:
-      #     commit_message: "feat: ✨ Update tokens from Figma"
-      #     commit_user_name: "github-actions[bot]"
-      #     commit_user_email: "github-actions[bot]@users.noreply.github.com"
+      - name: Commit changes if any
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "feat: ✨ Update tokens from Figma"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
 
       - name: Create Pull Request (only if changes)
         uses: peter-evans/create-pull-request@v7
@@ -83,3 +84,5 @@ jobs:
             smfonseca
             auroraVasconcelos
             paulovareiro29
+            mariohamann
+            balco0110
