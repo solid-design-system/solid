@@ -19,7 +19,7 @@ on:
     branches:
       - main
       - develop
-      - next
+      - next        # Added for code freeze periods
       - feat/**
 
 jobs:
@@ -29,18 +29,25 @@ jobs:
       contents: write
       pull-requests: write
 
-    # Compute a single FIGMA_FILE_ID that works for both triggers:
-    # 1) use manual input if provided
-    # 2) else use repo variable FIGMA_FILE_ID
-    # 3) else use your hardcoded fallback
+    # Use manual input if provided, otherwise use repo variable (no hardcoded fallback)
     env:
-      FIGMA_FILE_ID: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.figma_file_id != '') && github.event.inputs.figma_file_id || vars.FIGMA_FILE_ID || 'dBb3Zm5i3EL3mC1VPUWiBe' }}
+      FIGMA_FILE_ID: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.figma_file_id != '') && github.event.inputs.figma_file_id || vars.FIGMA_FILE_ID }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Validate Figma File ID
+        run: |
+          if [ -z "$FIGMA_FILE_ID" ]; then
+            echo "❌ FIGMA_FILE_ID is required. Please either:"
+            echo "   1. Set the FIGMA_FILE_ID repository variable in Settings → Secrets and variables → Actions → Variables"
+            echo "   2. Provide figma_file_id as input when running manually"
+            exit 1
+          fi
+          echo "✅ Using Figma File ID: $FIGMA_FILE_ID"
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
