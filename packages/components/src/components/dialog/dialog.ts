@@ -228,8 +228,15 @@ export default class SdDialog extends SolidElement {
 
       // Restore focus to the original trigger
       const trigger = this.originalTrigger;
-      if (typeof trigger?.focus === 'function') {
-        setTimeout(() => trigger.focus());
+      if (typeof trigger?.focus === 'function' && trigger.isConnected) {
+        setTimeout(() => {
+          try {
+            trigger.focus({ preventScroll: true });
+          } catch {
+            trigger.focus();
+          }
+          this.originalTrigger = null;
+        });
       }
 
       this.emit('sd-after-hide');
