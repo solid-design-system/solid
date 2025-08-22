@@ -8,6 +8,7 @@ import VitePluginCreateEmptyCemIfNotExisting from './scripts/vite-plugin-create-
 import VitePluginCustomElementsManifest from 'vite-plugin-cem';
 import VitePluginFetchIconsFromCdn from './scripts/vite-plugin-fetch-icons-from-cdn';
 import VitePluginGetPlaywrightVersion from './scripts/vite-plugin-get-playwright-version';
+import VitePluginGetTailwindTheme from './scripts/vite-plugin-get-tailwind-theme';
 import VitePluginLitTailwind from './scripts/vite-plugin-lit-tailwind.js';
 import VitePluginSolidStyles from './scripts/vite-plugin-solid-styles/index.js';
 
@@ -28,6 +29,7 @@ export default () => {
         srcDir: '../styles/src'
       }),
       VitePluginGetPlaywrightVersion(),
+      VitePluginGetTailwindTheme(),
       VitePluginCreateEmptyCemIfNotExisting(),
       VitePluginCustomElementsManifest({
         ...customElementConfig,

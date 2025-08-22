@@ -1,4 +1,4 @@
-import { createTailwindV4Plugin } from './processors/index.js';
+import { createTailwindV4Plugin } from './tailwind/index.js';
 import { FigmaClient } from './figma/index.js';
 import { OUTPUT_DIR } from './config.js';
 import { register } from '@tokens-studio/sd-transforms';
