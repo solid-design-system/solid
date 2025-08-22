@@ -1,5 +1,16 @@
 # @solid-design-system/components
 
+## 5.15.5
+
+### Patch Changes
+
+- Minor improvement to the `sd-step` horizontal inline variant: _[`#2469`](https://github.com/solid-design-system/solid/pull/2469) [`bec1056`](https://github.com/solid-design-system/solid/commit/bec105630e7caf449ad2e0cb7d4d681db2c4193d) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - Remove the extra width from the last `sd-step`.
+
+### 📈 Stats
+* Uncompressed: 479 KB (+1 KB / +0%)
+* Gzipped: 113 KB (+1 KB / +1%)
+
 ## 5.15.4
 
 ### Patch Changes
@@ -8,8 +19,9 @@
   - Prevent unexpected scrolling behaviour.
 
 ### 📈 Stats
-* Uncompressed: 478 KB (-1 KB / 0%)
-* Gzipped: 112 KB (-1 KB / -1%)
+
+- Uncompressed: 478 KB (-1 KB / 0%)
+- Gzipped: 112 KB (-1 KB / -1%)
 
 ## 5.15.3
 
