@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.28.4
+
+### Patch Changes
+
+- Minor improvements to the `sd-step-group` docs and template stories. _[`#2457`](https://github.com/solid-design-system/solid/pull/2457) [`98efdf9`](https://github.com/solid-design-system/solid/commit/98efdf9167a4e783d5273d65f43b8957468435c9) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 1.28.3
 
 ### Patch Changes

@@ -1,5 +1,19 @@
 # @solid-design-system/components
 
+## 5.15.4
+
+### Patch Changes
+
+- Improve sd-dialog: _[`#2466`](https://github.com/solid-design-system/solid/pull/2466) [`3bac0bc`](https://github.com/solid-design-system/solid/commit/3bac0bc304e9ed8929fcb0a80791cd9663db6ef0) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - Prevent unexpected scrolling behaviour.
+
+- Minor improvement to the `sd-step` horizontal inline variant: _[`#2457`](https://github.com/solid-design-system/solid/pull/2457) [`98efdf9`](https://github.com/solid-design-system/solid/commit/98efdf9167a4e783d5273d65f43b8957468435c9) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - Remove the extra width from the last `sd-step`.
+
+### 📈 Stats
+* Uncompressed: 478 KB (-1 KB / 0%)
+* Gzipped: 112 KB (-1 KB / -1%)
+
 ## 5.15.3
 
 ### Patch Changes
