@@ -37,8 +37,7 @@ export default {
             enabled: false
           }
         ]
-      },
-      options: {}
+      }
     }
   }
 };

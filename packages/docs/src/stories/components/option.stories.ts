@@ -22,8 +22,7 @@ export default {
             enabled: false
           }
         ]
-      },
-      options: {}
+      }
     },
     design: {
       type: 'figma',
@@ -43,8 +42,7 @@ export const Default = {
             enabled: false
           }
         ]
-      },
-      options: {}
+      }
     }
   },
   render: (args: any) => {

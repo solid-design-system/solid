@@ -33,8 +33,7 @@ export default {
             enabled: false
           }
         ]
-      },
-      options: {}
+      }
     },
     design: {
       type: 'figma',

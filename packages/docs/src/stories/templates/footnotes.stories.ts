@@ -13,8 +13,7 @@ export default {
             enabled: false
           }
         ]
-      },
-      options: {}
+      }
     },
     chromatic: { disableSnapshot: true }
   }

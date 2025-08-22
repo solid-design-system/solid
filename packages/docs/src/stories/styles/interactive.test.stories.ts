@@ -32,8 +32,7 @@ export default {
             enabled: false
           }
         ]
-      },
-      options: {}
+      }
     },
     controls: { disable: true }
   },
