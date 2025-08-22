@@ -9,6 +9,7 @@ import fs from 'fs/promises';
 import ora from 'ora';
 import util from 'util';
 import { litTailwindAndMinifyPlugin } from './esbuild-plugin-lit-tailwind-and-minify.js';
+import { esbuildPluginTailwind } from './esbuild-plugin-tailwind.js';
 
 const outdir = 'dist';
 const cdndir = 'cdn';
@@ -57,7 +58,12 @@ async function buildTheSource() {
     //
     external: alwaysExternal,
     splitting: true,
-    plugins: [litTailwindAndMinifyPlugin()]
+    plugins: [
+      esbuildPluginTailwind({
+        base: process.cwd()
+      })
+      // litTailwindAndMinifyPlugin()
+    ]
   };
 
   const npmConfig = {

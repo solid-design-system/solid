@@ -36,6 +36,7 @@
     "@tamtamchik/json-deep-sort": "^1.4.1",
     "@tokens-studio/sd-transforms": "^2.0.1",
     "style-dictionary": "^5.0.1",
+    "tailwindcss": "^4.1.12",
     "tailwindcss-export-config": "^4.1.0"
   },
   "readme": "README.md"

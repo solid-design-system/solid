@@ -41,7 +41,7 @@ async function generateTheme() {
       console.warn(`\nTheme not provided. Using default theme: "${DEFAULT_THEME}"`);
     }
 
-    await cp(`../tokens/dist/themes/${theme || DEFAULT_THEME}.css`, 'tailwind.css');
+    await cp(`../tokens/dist/themes/${theme || DEFAULT_THEME}.css`, '../tokens/tailwind.css');
   });
 }
 

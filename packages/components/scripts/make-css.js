@@ -4,34 +4,29 @@
  * CSS to the `dist` directory and a minified version to the `cdn` directory.
  */
 
-import atImportPlugin from 'postcss-import';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import fs from 'fs/promises';
 import postcss from 'postcss';
 import tailwindcss from '@tailwindcss/postcss';
 import theme from './postcss-token-variables.js';
+import cssnested from 'postcss-nested';
 
 (async () => {
   const lite = process.argv.includes('--lite');
-  const css = await fs.readFile('./src/solid-components.css', 'utf8');
+  const path = './src/solid-components.css';
+  const css = await fs.readFile(path, 'utf8');
 
-  const result = await postcss([atImportPlugin({ allowDuplicates: false }), tailwindcss, autoprefixer, theme])
-    .process(css, { from: undefined })
+  const result = await postcss([tailwindcss(), cssnested(), autoprefixer, theme])
+    .process(css, { from: path })
     .then(result => result.css);
 
   await fs.writeFile('./dist/solid-components.css', result);
 
   if (lite) return;
 
-  const minifiedResult = await postcss([
-    atImportPlugin({ allowDuplicates: false }),
-    tailwindcss,
-    autoprefixer,
-    theme,
-    cssnano
-  ])
-    .process(css, { from: undefined })
+  const minifiedResult = await postcss([tailwindcss(), autoprefixer(), theme, cssnano])
+    .process(css, { from: path })
     .then(result => result.css);
 
   await fs.writeFile('./cdn/solid-components.css', minifiedResult);

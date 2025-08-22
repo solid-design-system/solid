@@ -1,6 +1,5 @@
-import '../../styles/src/solid-styles.css';
 import './preview.css';
-import 'normalize.css';
+import '../../styles/src/solid-styles.css';
 import { storybookUtilities } from '../scripts/storybook/helper';
 import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer';
 

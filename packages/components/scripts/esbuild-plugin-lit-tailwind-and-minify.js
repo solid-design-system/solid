@@ -1,10 +1,10 @@
 import { minifyHTMLLiterals } from 'minify-html-literals';
-import atImportPlugin from 'postcss-import';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import fs from 'fs/promises';
 import postcss from 'postcss';
 import tailwindcss from '@tailwindcss/postcss';
+import cssnested from 'postcss-nested';
 
 /**
  * Escapes tailwind special characters in a string and wraps it in a CSS template literal.
@@ -24,7 +24,7 @@ export async function processCssTags(source) {
     const css = `@reference './components/tailwind.css'; ${cssContent}`;
 
     try {
-      const result = await postcss([atImportPlugin({ allowDuplicates: false }), tailwindcss, autoprefixer, cssnano])
+      const result = await postcss([tailwindcss(), cssnested(), autoprefixer(), cssnano()])
         .process(css, { from: undefined })
         .then(result => result.css);
 

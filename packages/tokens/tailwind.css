@@ -1,7 +1,5 @@
 @import 'tailwindcss';
 
-@source './src';
-
 @custom-variant hover (&:hover:not([disabled]));
 @custom-variant focus (&:focus:not([disabled]));
 
