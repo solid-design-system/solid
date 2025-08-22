@@ -15,15 +15,12 @@ export default class SolidElement extends LitElement {
   /** The element's language. */
   @property() lang: string;
 
-  /**
-   * TODO: Add missing imports
-   * @import '../../../styles/src/modules/interactive.css';
-   * @import '../../../styles/src/modules/paragraph.css';
-   * @import '../../../styles/src/modules/headline.css';
-   */
   static styles = [
     css`
       @import '../tokens/tailwind.css';
+      @import '../styles/src/modules/interactive.css';
+      @import '../styles/src/modules/paragraph.css';
+      @import '../styles/src/modules/headline.css';
 
       :host {
         box-sizing: border-box;
