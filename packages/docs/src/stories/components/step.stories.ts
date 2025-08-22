@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-step');
 
 export default {
   title: 'Components/sd-step',
-  tags: ['!dev', 'autodocs', 'skip-a11y-[aria-required-parent]'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-step',
   args: overrideArgs([
     {
@@ -25,6 +25,17 @@ export default {
   argTypes,
   parameters: {
     ...parameters,
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'aria-required-parent',
+            enabled: false
+          }
+        ]
+      },
+      options: {}
+    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3274-30758&node-type=section&t=5PpAC3TA3kYF7ufX-0'

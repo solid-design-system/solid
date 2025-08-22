@@ -8,12 +8,23 @@ const { overrideArgs } = storybookHelpers('sd-option');
 
 export default {
   title: 'Components/sd-option',
-  tags: ['!dev', 'autodocs', 'skip-a11y-[aria-required-parent]'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-option',
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
   argTypes,
   parameters: {
     ...parameters,
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'aria-required-parent',
+            enabled: false
+          }
+        ]
+      },
+      options: {}
+    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2196-3579&node-type=section&t=5PpAC3TA3kYF7ufX-0'
@@ -29,7 +40,7 @@ export const Default = {
         rules: [
           {
             id: 'aria-required-parent',
-            selector: 'sd-option'
+            enabled: false
           }
         ]
       },

@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-tab');
 
 export default {
   title: 'Components/sd-tab',
-  tags: ['!dev', 'autodocs', 'skip-a11y-[aria-required-parent]'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-tab',
   args: overrideArgs([
     {
@@ -20,6 +20,17 @@ export default {
   argTypes,
   parameters: {
     ...parameters,
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'aria-required-parent',
+            enabled: false
+          }
+        ]
+      },
+      options: {}
+    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3074-37925&node-type=section&t=5PpAC3TA3kYF7ufX-0'

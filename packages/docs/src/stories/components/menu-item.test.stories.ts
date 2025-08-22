@@ -29,7 +29,7 @@ const iconSlotConstant: ConstantDefinition = {
 export default {
   title: 'Components/sd-menu-item/Screenshots: sd-menu-item',
   component: 'sd-menu-item',
-  tags: ['!autodocs', 'skip-a11y-[aria-required-parent]'],
+  tags: ['!autodocs'],
   parameters: {
     ...parameters,
     controls: { disable: true },

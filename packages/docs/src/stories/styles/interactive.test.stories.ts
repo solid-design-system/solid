@@ -20,10 +20,21 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Styles/sd-interactive/Screenshots: sd-interactive',
-  tags: ['!autodocs', 'skip-a11y-[color-contrast]'],
+  tags: ['!autodocs'],
   component: 'sd-interactive',
   parameters: {
     ...parameters,
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: false
+          }
+        ]
+      },
+      options: {}
+    },
     controls: { disable: true }
   },
   args: overrideArgs([
