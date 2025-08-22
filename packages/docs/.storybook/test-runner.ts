@@ -4,16 +4,11 @@ import { injectAxe, getViolations, configureAxe } from 'axe-playwright';
 import assert from 'assert';
 import pc from 'picocolors';
 
-const SKIP_TESTS = 'skip-a11y';
-
 /*
  * See https://storybook.js.org/docs/writing-tests/test-runner#test-hook-api
  * to learn more about the test-runner hooks API.
  */
 const config: TestRunnerConfig = {
-  tags: {
-    exclude: [SKIP_TESTS]
-  },
   async preVisit(page) {
     await injectAxe(page);
   },
@@ -23,19 +18,13 @@ const config: TestRunnerConfig = {
 
     const story = await getStoryContext(page, context);
 
-    const ignoredRules = story.tags
-      .filter(tag => tag.startsWith(`${SKIP_TESTS}-`))
-      .flatMap(tag =>
-        tag
-          .match(/\[([^\]]+)\]/)?.[1]
-          ?.split(',')
-          .map(rule => rule.trim())
-      )
-      .filter(Boolean)
-      .reduce((acc, rule) => {
-        acc[rule!] = { enabled: false };
-        return acc;
-      }, {});
+    const ignoredRules =
+      story.parameters?.a11y?.config?.rules
+        ?.filter(rule => rule.enabled === false)
+        ?.reduce((acc, rule) => {
+          acc[rule.id] = { enabled: false };
+          return acc;
+        }, {}) || {};
 
     await configureAxe(page, {
       rules: [{ id: 'wcag22aa', enabled: true }]
