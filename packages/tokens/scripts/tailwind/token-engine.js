@@ -127,10 +127,9 @@ export class TokenProcessingEngine {
         break;
       }
 
-      // case 'keyframes':
-      //   // Keyframes go in a special section for @keyframes rules
-      //   result.baseVars.push(processed.value);
-      //   break;
+      case 'keyframes':
+        result.baseVars.push(processed.value);
+        break;
 
       case 'utility':
         if (processed.properties) {

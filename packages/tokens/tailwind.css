@@ -31,6 +31,65 @@
   --color-risk-increased: var(--sd-color-increased, rgb(var(--sd-color-risk-increased, 255 240 0)));
   --color-risk-high: var(--sd-color-high, rgb(var(--sd-color-risk-high, 250 155 30)));
   --color-risk-veryhigh: var(--sd-color-veryhigh, rgb(var(--sd-color-risk-veryhigh, 255 0 0)));
+  @keyframes bounce-once {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-18px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes grow {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  @keyframes loader-color-primary {
+    0%, 100% {
+      color: var(--sd-color-primary, #00358E);
+    }
+    50% {
+      color: var(--sd-color-primary, #00358E);
+      opacity: 20%;
+    }
+  }
+  @keyframes loader-color-white {
+    0%, 100% {
+      color: var(--sd-color-white, #FFFFFF);
+    }
+    50% {
+      color: var(--sd-color-white, #FFFFFF);
+      opacity: 20%;
+    }
+  }
+  @keyframes loader-color-current {
+    0%, 100% {
+      color: currentColor;
+    }
+    50% {
+      color: currentColor;
+      opacity: 20%;
+    }
+  }
+  @keyframes wave {
+    0%, 40%, 100% {
+      transform: initial;
+    }
+    20% {
+      transform: translateY(-4px);
+    }
+  }
+  --animate-bounce-once: bounce-once var(--sd-duration-medium, 300ms) ease-in-out;
+  --animate-grow: grow linear;
+  --animate-loader-primary: wave 1.3s infinite, loader-color-primary 2.6s infinite;
+  --animate-loader-white: wave 1.3s infinite, loader-color-white 2.6s infinite;
+  --animate-loader-current: wave 1.3s infinite, loader-color-current 2.6s infinite;
   --fill-primary: var(--sd-color-primary, #00358e);
   --fill-accent-550: var(--sd-color-accent-550, #367b28);
   --fill-primary-500: var(--sd-color-primary-500, #466daf);
@@ -227,150 +286,87 @@
 }
 
 @utility gradient-vertical-white-transparent {
-  background-image: var(
-    --sd-color-vertical-white-transparent,
-    linear-gradient(0deg, rgba(255, 255, 255, 0) 5%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%)
-  );
+  background-image: var(--sd-color-vertical-white-transparent, linear-gradient(0deg, rgba(255, 255, 255, 0) 5%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%));
 }
 
 @utility gradient-vertical-black-40-transparent {
-  background-image: var(
-    --sd-color-vertical-black-40-transparent,
-    linear-gradient(0deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%)
-  );
+  background-image: var(--sd-color-vertical-black-40-transparent, linear-gradient(0deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%));
 }
 
 @utility gradient-vertical-transparent-black-40 {
-  background-image: var(
-    --sd-color-vertical-transparent-black-40,
-    linear-gradient(180deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%)
-  );
+  background-image: var(--sd-color-vertical-transparent-black-40, linear-gradient(180deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%));
 }
 
 @utility gradient-vertical-black-10-transparent {
-  background-image: var(
-    --sd-color-vertical-black-10-transparent,
-    linear-gradient(180deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.1) 100%)
-  );
+  background-image: var(--sd-color-vertical-black-10-transparent, linear-gradient(180deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.1) 100%));
 }
 
 @utility gradient-vertical-transparent-black-10 {
-  background-image: var(
-    --sd-color-vertical-transparent-black-10,
-    linear-gradient(0deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.1) 100%)
-  );
+  background-image: var(--sd-color-vertical-transparent-black-10, linear-gradient(0deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.1) 100%));
 }
 
 @utility gradient-vertical-transparent-white-60 {
-  background-image: var(
-    --sd-color-vertical-transparent-white-60,
-    linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 100%)
-  );
+  background-image: var(--sd-color-vertical-transparent-white-60, linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 100%));
 }
 
 @utility gradient-vertical-white-60-transparent {
-  background-image: var(
-    --sd-color-vertical-white-60-transparent,
-    linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%)
-  );
+  background-image: var(--sd-color-vertical-white-60-transparent, linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%));
 }
 
 @utility gradient-vertical-white-60-white-75 {
-  background-image: var(
-    --sd-color-vertical-white-60-white-75,
-    linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.75) 100%)
-  );
+  background-image: var(--sd-color-vertical-white-60-white-75, linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.75) 100%));
 }
 
 @utility gradient-vertical-white-75-white-60 {
-  background-image: var(
-    --sd-color-vertical-white-75-white-60,
-    linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.6) 100%)
-  );
+  background-image: var(--sd-color-vertical-white-75-white-60, linear-gradient(180deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.6) 100%));
 }
 
 @utility gradient-vertical-transparent-primary-800-60 {
-  background-image: var(
-    --sd-color-vertical-transparent-primary-800-60,
-    linear-gradient(180deg, rgba(5, 21, 48, 0) 0%, rgba(5, 21, 48, 0.6) 100%)
-  );
+  background-image: var(--sd-color-vertical-transparent-primary-800-60, linear-gradient(180deg, rgba(5, 21, 48, 0) 0%, rgba(5, 21, 48, 0.6) 100%));
 }
 
 @utility gradient-vertical-primary-800-60-transparent {
-  background-image: var(
-    --sd-color-vertical-primary-800-60-transparent,
-    linear-gradient(180deg, rgba(5, 21, 48, 0.6) 0%, rgba(5, 21, 48, 0) 100%)
-  );
+  background-image: var(--sd-color-vertical-primary-800-60-transparent, linear-gradient(180deg, rgba(5, 21, 48, 0.6) 0%, rgba(5, 21, 48, 0) 100%));
 }
 
 @utility gradient-vertical-primary-800-60-primary-800-75 {
-  background-image: var(
-    --sd-color-vertical-primary-800-60-primary-800-75,
-    linear-gradient(180deg, rgba(5, 21, 48, 0.6) 0%, rgba(5, 21, 48, 0.75) 100%)
-  );
+  background-image: var(--sd-color-vertical-primary-800-60-primary-800-75, linear-gradient(180deg, rgba(5, 21, 48, 0.6) 0%, rgba(5, 21, 48, 0.75) 100%));
 }
 
 @utility gradient-vertical-primary-800-75-primary-800-60 {
-  background-image: var(
-    --sd-color-vertical-primary-800-75-primary-800-60,
-    linear-gradient(180deg, rgba(5, 21, 48, 0.75) 0%, rgba(5, 21, 48, 0.6) 100%)
-  );
+  background-image: var(--sd-color-vertical-primary-800-75-primary-800-60, linear-gradient(180deg, rgba(5, 21, 48, 0.75) 0%, rgba(5, 21, 48, 0.6) 100%));
 }
 
 @utility gradient-vertical-transparent-white-80-white {
-  background-image: var(
-    --sd-color-vertical-transparent-white-80-white,
-    linear-gradient(180deg, rgba(255, 255, 255, 0) 5%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 1) 100%)
-  );
+  background-image: var(--sd-color-vertical-transparent-white-80-white, linear-gradient(180deg, rgba(255, 255, 255, 0) 5%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 1) 100%));
 }
 
 @utility gradient-vertical-white-white-80-transparent {
-  background-image: var(
-    --sd-color-vertical-white-white-80-transparent,
-    linear-gradient(0deg, rgba(255, 255, 255, 0) 5%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 1) 100%)
-  );
+  background-image: var(--sd-color-vertical-white-white-80-transparent, linear-gradient(0deg, rgba(255, 255, 255, 0) 5%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 1) 100%));
 }
 
 @utility gradient-horizontal-white-white-80-transparent {
-  background-image: var(
-    --sd-color-horizontal-white-white-80-transparent,
-    linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 65%, rgba(255, 255, 255, 1) 100%)
-  );
+  background-image: var(--sd-color-horizontal-white-white-80-transparent, linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 65%, rgba(255, 255, 255, 1) 100%));
 }
 
 @utility gradient-horizontal-transparent-white-80-white {
-  background-image: var(
-    --sd-color-horizontal-transparent-white-80-white,
-    linear-gradient(90deg, rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 1) 100%)
-  );
+  background-image: var(--sd-color-horizontal-transparent-white-80-white, linear-gradient(90deg, rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 1) 100%));
 }
 
 @utility gradient-horizontal-black-10-transparent {
-  background-image: var(
-    --sd-color-horizontal-black-10-transparent,
-    linear-gradient(270deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.1) 100%)
-  );
+  background-image: var(--sd-color-horizontal-black-10-transparent, linear-gradient(270deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.1) 100%));
 }
 
 @utility gradient-horizontal-transparent-black-10 {
-  background-image: var(
-    --sd-color-horizontal-transparent-black-10,
-    linear-gradient(90deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.1) 100%)
-  );
+  background-image: var(--sd-color-horizontal-transparent-black-10, linear-gradient(90deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.1) 100%));
 }
 
 @utility gradient-horizontal-transparent-black-40 {
-  background-image: var(
-    --sd-color-horizontal-transparent-black-40,
-    linear-gradient(270deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%)
-  );
+  background-image: var(--sd-color-horizontal-transparent-black-40, linear-gradient(270deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%));
 }
 
 @utility gradient-horizontal-black-40-transparent {
-  background-image: var(
-    --sd-color-horizontal-black-40-transparent,
-    linear-gradient(90deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%)
-  );
+  background-image: var(--sd-color-horizontal-black-40-transparent, linear-gradient(90deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%));
 }
 
 @utility z-10 {

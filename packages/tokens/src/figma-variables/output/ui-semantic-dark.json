@@ -1554,6 +1554,102 @@
       "type": "spacing"
     }
   },
+  "keyframes": {
+    "bounce-once": {
+      "type": "keyframes",
+      "value": {
+        "0%": {
+          "transform": "translateY(0)"
+        },
+        "50%": {
+          "transform": "translateY(-18px)"
+        },
+        "100%": {
+          "transform": "translateY(0)"
+        }
+      }
+    },
+    "grow": {
+      "type": "keyframes",
+      "value": {
+        "0%": {
+          "width": "0%"
+        },
+        "100%": {
+          "width": "100%"
+        }
+      }
+    },
+    "loader-color-primary": {
+      "type": "keyframes",
+      "value": {
+        "0%, 100%": {
+          "color": "var(--sd-color-primary, #00358E)"
+        },
+        "50%": {
+          "color": "var(--sd-color-primary, #00358E)",
+          "opacity": "20%"
+        }
+      }
+    },
+    "loader-color-white": {
+      "type": "keyframes",
+      "value": {
+        "0%, 100%": {
+          "color": "var(--sd-color-white, #FFFFFF)"
+        },
+        "50%": {
+          "color": "var(--sd-color-white, #FFFFFF)",
+          "opacity": "20%"
+        }
+      }
+    },
+    "loader-color-current": {
+      "type": "keyframes",
+      "value": {
+        "0%, 100%": {
+          "color": "currentColor"
+        },
+        "50%": {
+          "color": "currentColor",
+          "opacity": "20%"
+        }
+      }
+    },
+    "wave": {
+      "type": "keyframes",
+      "value": {
+        "0%, 40%, 100%": {
+          "transform": "initial"
+        },
+        "20%": {
+          "transform": "translateY(-4px)"
+        }
+      }
+    }
+  },
+  "animation": {
+    "bounce-once": {
+      "type": "animation",
+      "value": "bounce-once var(--sd-duration-medium, 300ms) ease-in-out"
+    },
+    "grow": {
+      "type": "animation",
+      "value": "grow linear"
+    },
+    "loader-primary": {
+      "type": "animation",
+      "value": "wave 1.3s infinite, loader-color-primary 2.6s infinite"
+    },
+    "loader-white": {
+      "type": "animation",
+      "value": "wave 1.3s infinite, loader-color-white 2.6s infinite"
+    },
+    "loader-current": {
+      "type": "animation",
+      "value": "wave 1.3s infinite, loader-color-current 2.6s infinite"
+    }
+  },
   "icon-fill": {
     "primary": {
       "description": "Default icon color ",

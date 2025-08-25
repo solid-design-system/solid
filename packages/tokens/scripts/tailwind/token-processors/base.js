@@ -73,7 +73,11 @@ export class BaseTokenProcessor {
    * Convert path to kebab-case for CSS variable names
    */
   pathToKebabCase(path) {
-    return path.map(p => toKebabCase(p));
+    if (Array.isArray(path)) {
+      return path.map(p => toKebabCase(p));
+    }
+
+    return toKebabCase(path);
   }
 
   /**
