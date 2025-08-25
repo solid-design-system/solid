@@ -10,7 +10,8 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "verify": "pnpm build && echo '✅ Build verified'",
-    "postversion": "pnpm build"
+    "postversion": "pnpm build",
+    "fetch:figma": "node ./scripts/figma/fetch-variables.js"
   },
   "files": [
     "dist"

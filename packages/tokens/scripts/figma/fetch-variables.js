@@ -5,7 +5,7 @@
  * @typedef {VariablesAndCollections['variableCollections']} VariableCollections
  */
 import { existsSync, mkdirSync, rmSync, writeFileSync } from 'fs';
-import { FIGMA_FETCHED_VARIABLES_PATH, FIGMA_VARIABLES_DIR } from '../../src/config.js';
+import { FIGMA_FETCHED_VARIABLES_PATH, FIGMA_VARIABLES_DIR } from '../../scripts/config.js';
 import { sort } from '@tamtamchik/json-deep-sort';
 
 /**

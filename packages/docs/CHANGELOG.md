@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.28.3
+
+### Patch Changes
+
+- Fixed usability issues of the Storybook controls on the components default story. _[`4ed1261`](https://github.com/solid-design-system/solid/commit/4ed12613e723c76a71542e6944ed4d4de11d5ce1) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.28.2
 
 ### Patch Changes

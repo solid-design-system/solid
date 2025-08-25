@@ -1,0 +1,95 @@
+name: Sync Figma variables to tokens
+
+on:
+  workflow_dispatch:
+    inputs:
+      figma_file_id:
+        description: "This can either be a branch_id or the id for the main Figma file"
+        required: false
+        default: ""
+      branch_name:
+        description: "The name for the branch, which should be created for the pull request"
+        required: true
+        default: "feat/update-tokens-from-figma"
+      pull_request_name:
+        description: "The name for the pull request. If not provided, a default name will be used."
+        required: true
+        default: "feat: ✨ Update tokens from Figma"
+  push:
+    branches:
+      - main
+      - develop
+      - next        # Added for code freeze periods
+      - feat/**
+
+jobs:
+  sync-figma-to-tokens:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    # Use manual input if provided, otherwise use repo variable (no hardcoded fallback)
+    env:
+      FIGMA_FILE_ID: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.figma_file_id != '') && github.event.inputs.figma_file_id || vars.FIGMA_FILE_ID }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate Figma File ID
+        run: |
+          if [ -z "$FIGMA_FILE_ID" ]; then
+            echo "❌ FIGMA_FILE_ID is required. Please either:"
+            echo "   1. Set the FIGMA_FILE_ID repository variable in Settings → Secrets and variables → Actions → Variables"
+            echo "   2. Provide figma_file_id as input when running manually"
+            exit 1
+          fi
+          echo "✅ Using Figma File ID: $FIGMA_FILE_ID"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
+
+      - name: Fetch variables from Figma
+        run: pnpm -C ./packages/tokens fetch:figma
+        env:
+          FIGMA_FILE_ID: ${{ env.FIGMA_FILE_ID }}
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+
+      - name: Run existing build process
+        run: pnpm -C ./packages/tokens build
+
+      - name: Commit changes if any
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "feat: ✨ Update tokens from Figma"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
+
+      - name: Create Pull Request (only if changes)
+        uses: peter-evans/create-pull-request@v7
+        with:
+          add-paths: | 
+                  src/figma-variables/**
+                  # add any other paths that may change
+          commit-message: Update variables and styles from Figma
+          title: ${{ github.event.inputs.pull_request_name }}
+          branch: ${{ github.event.inputs.branch_name }}
+          base: main
+          reviewers: |
+            smfonseca
+            auroraVasconcelos
+            paulovareiro29
+            mariohamann
+            balco0110
