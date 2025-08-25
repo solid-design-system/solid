@@ -1,16 +1,16 @@
 diff --git a/preflight.css b/preflight.css
-index 753e79ef0d0fbdb8aaad09733e4dc851ab6d5737..e8cfb09e8ad90d6258cad605e8e93b24b3348b6b 100644
+index 753e79ef0d0fbdb8aaad09733e4dc851ab6d5737..23491447122a591981783def3790604fff25f970 100644
 --- a/preflight.css
 +++ b/preflight.css
-@@ -5,8 +5,6 @@
- */
- 
- *,
--::after,
--::before,
+@@ -10,8 +10,6 @@
  ::backdrop,
  ::file-selector-button {
    box-sizing: border-box; /* 1 */
+-  margin: 0; /* 2 */
+-  padding: 0; /* 2 */
+   border: 0 solid; /* 3 */
+ }
+ 
 @@ -30,18 +28,6 @@ html,
    line-height: 1.5; /* 1 */
    -webkit-text-size-adjust: 100%; /* 2 */
@@ -30,3 +30,35 @@ index 753e79ef0d0fbdb8aaad09733e4dc851ab6d5737..e8cfb09e8ad90d6258cad605e8e93b24
    -webkit-tap-highlight-color: transparent; /* 7 */
  }
  
+@@ -80,6 +66,22 @@ h6 {
+   font-weight: inherit;
+ }
+ 
++blockquote,
++dl,
++dd,
++h1,
++h2,
++h3,
++h4,
++h5,
++h6,
++hr,
++figure,
++p,
++pre {
++  margin: 0
++}
++
+ /*
+   Reset links to optimize for opt-in styling instead of opt-out.
+ */
+@@ -198,6 +200,8 @@ ol,
+ ul,
+ menu {
+   list-style: none;
++  margin: 0;
++  padding: 0;
+ }
+ 
+ /*
