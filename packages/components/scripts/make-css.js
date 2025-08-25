@@ -9,7 +9,6 @@ import cssnano from 'cssnano';
 import fs from 'fs/promises';
 import postcss from 'postcss';
 import tailwindcss from '@tailwindcss/postcss';
-import theme from './postcss-token-variables.js';
 import cssnested from 'postcss-nested';
 
 (async () => {
@@ -19,7 +18,7 @@ import cssnested from 'postcss-nested';
 
   const content = `@reference '../../tokens/tailwind.css'; ${css}`;
 
-  const result = await postcss([tailwindcss(), cssnested(), autoprefixer, theme])
+  const result = await postcss([tailwindcss(), cssnested(), autoprefixer])
     .process(content, { from: path })
     .then(result => result.css);
 
@@ -27,7 +26,7 @@ import cssnested from 'postcss-nested';
 
   if (lite) return;
 
-  const minifiedResult = await postcss([tailwindcss(), autoprefixer(), theme, cssnano])
+  const minifiedResult = await postcss([tailwindcss(), autoprefixer(), cssnano])
     .process(css, { from: path })
     .then(result => result.css);
 
