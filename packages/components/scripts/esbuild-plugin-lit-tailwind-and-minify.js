@@ -23,7 +23,7 @@ export async function processCssTags(source, { base, minify = false }) {
   while ((match = cssTagRegex.exec(source)) !== null) {
     const [fullMatch, cssContent] = match;
 
-    const css = `@import '../tokens/tailwind.css'; ${cssContent}`;
+    const css = `@import '../tokens/tailwind.css'; @import 'tailwindcss/preflight'; ${cssContent}`;
 
     try {
       /**

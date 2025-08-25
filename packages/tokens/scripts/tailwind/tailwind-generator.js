@@ -30,7 +30,13 @@ export class TailwindCSSGenerator {
    * Generate import statement
    */
   generateImport() {
-    return this.config.includeImport ? this.css.import(this.config.importPath) : null;
+    return this.config.includeImport
+      ? `
+@layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme';
+@import 'tailwindcss/utilities';`
+      : null;
   }
 
   /**

@@ -19,7 +19,6 @@ export const DEFAULT_CONFIG = {
   },
 
   includeImport: true,
-  importPath: 'tailwindcss',
   includeSource: true,
   sourcePath: '../components/src'
 };
