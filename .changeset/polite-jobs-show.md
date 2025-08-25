@@ -2,4 +2,4 @@
 '@solid-design-system/docs': patch
 ---
 
-changed the id into class in step-group template
+Changed `hide-label` attribute from an `id` into `class` on the `Step Group` template.
