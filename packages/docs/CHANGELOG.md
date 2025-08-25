@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.28.5
+
+### Patch Changes
+
+- Changed `hide-label` attribute from an `id` into `class` on the `Step Group` template. _[`#2470`](https://github.com/solid-design-system/solid/pull/2470) [`712e747`](https://github.com/solid-design-system/solid/commit/712e7474e0ccab3f087a572a184a888983bad970) [@balco0110](https://github.com/balco0110)_
+
 ## 1.28.4
 
 ### Patch Changes
