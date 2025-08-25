@@ -1,4 +1,5 @@
-@reference '../../components/src/solid-components.css';
+@import '../../tokens/tailwind.css';
+@import '../../components/src/solid-components.css';
 
 /* Lists */
 .sbdocs .sbdocs-content ol {

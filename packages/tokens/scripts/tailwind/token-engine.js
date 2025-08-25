@@ -48,7 +48,9 @@ export class TokenProcessingEngine {
     const result = {
       baseVars: [
         /** TODO: Add to actual variables in figma */
-        '--background-color-primary-400: var(--sd-color-primary-400, red);'
+        '--background-color-primary-400: var(--sd-color-primary-400, red);',
+        '--font-weight-normal: 400;',
+        '--font-weight-bold: 700;'
       ],
       utilities: [],
       spacing: [],
@@ -119,11 +121,11 @@ export class TokenProcessingEngine {
         break;
       }
 
-      // case 'animation': {
-      //   const animationVarString = `${processed.name}: ${processed.value};`;
-      //   result.baseVars.push(animationVarString);
-      //   break;
-      // }
+      case 'animation': {
+        const animationVarString = `${processed.name}: ${processed.value};`;
+        result.baseVars.push(animationVarString);
+        break;
+      }
 
       // case 'keyframes':
       //   // Keyframes go in a special section for @keyframes rules

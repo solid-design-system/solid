@@ -7,6 +7,8 @@
 
 @theme {
   --background-color-primary-400: var(--sd-color-primary-400, red);
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
   --shadow: var(--sd-shadow, 0 1px 3px 0 rgba(81, 81, 81, 0.75));
   --shadow-sm: var(--sd-shadow-sm, 0.5px 0.5px 1.5px 0 rgba(81, 81, 81, 1));
   --transition-duration-fast: var(--sd-duration-fast, 150ms);
@@ -167,9 +169,9 @@
   --spacing-24: var(--sd-spacing-24, 6rem);
   --spacing-32: var(--sd-spacing-32, 8rem);
   --spacing-40: var(--sd-spacing-40, 10rem);
-  --spacing-0.5: var(--sd-spacing-0.5, 0.125rem);
-  --spacing-0.25: var(--sd-spacing-0.25, 1px);
-  --spacing-1.5: var(--sd-spacing-1.5, 0.375rem);
+  --spacing-0.5: var(--sd-spacing-0\.5, 0.125rem);
+  --spacing-0.25: var(--sd-spacing-0\.25, 1px);
+  --spacing-1.5: var(--sd-spacing-1\.5, 0.375rem);
   --spacing-auto: var(--sd-spacing-auto, auto);
   --sizing-2: var(--sd-spacing-2, 0.5rem);
   --sizing-3: var(--sd-spacing-3, 0.75rem);
@@ -181,7 +183,7 @@
   --sizing-12: var(--sd-spacing-12, 3rem);
   --sizing-16: var(--sd-spacing-16, 4rem);
   --sizing-24: var(--sd-spacing-24, 6rem);
-  --sizing-2.5: var(--sd-spacing-2.5, 0.625rem);
+  --sizing-2.5: var(--sd-spacing-2\.5, 0.625rem);
   --radius-default: var(--sd-border-radius-default, 0.25rem);
   --radius-sm: var(--sd-border-radius-sm, 0.125rem);
   --radius-md: var(--sd-border-radius-md, 0.375rem);
