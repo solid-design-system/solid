@@ -8,13 +8,16 @@ import cx from 'classix';
 
 <table>
   <tbody>
-    {Object.entries(theme.opacity).map((token, i) => {
+    {theme.base
+      .filter(token => token.name.startsWith('opacity'))
+      .map(token => ({ ...token, name: token.name.replace('opacity-', '') }))
+      .map((token, i) => {
       return (
         <tr>
           <td>
             <div class="flex flex-col">
-              <div class="font-bold">sd-opacity-{token[0]}</div>
-              <div>sd-opacity-{token[1]}</div>
+              <div class="font-bold">sd-opacity-{token.name}</div>
+              <div>opacity: {token.value}</div>
             </div>
           </td>
           <td>
@@ -30,7 +33,23 @@ import cx from 'classix';
                 </div>
               ))}
 
-              <div class={`bg-neutral-800 w-full h-full absolute inset-0 z-10 opacity-${token[0]}`}/>
+              <div class={cx('bg-neutral-800 w-full h-full absolute inset-0 z-10', {
+                '0': 'opacity-0',
+                '5': 'opacity-5',
+                '10': 'opacity-10',
+                '20': 'opacity-20',
+                '30': 'opacity-30',
+                '40': 'opacity-40',
+                '50': 'opacity-50',
+                '55': 'opacity-55',
+                '60': 'opacity-60',
+                '70': 'opacity-70',
+                '75': 'opacity-75',
+                '80': 'opacity-80',
+                '85': 'opacity-85',
+                '90': 'opacity-90',
+                '100': 'opacity-100',
+              }[token.name])}/>
             </div>
           </td>
         </tr>
