@@ -1,5 +1,6 @@
-@import url('../../components/src/solid-components.css');
-@import url('../../styles/src/solid-styles.css');
+@import 'tailwindcss/preflight';
+@import '../../tokens/tailwind.css';
+@import '../../components/src/solid-components.css';
 
 /* Lists */
 .sbdocs .sbdocs-content ol {
@@ -16,11 +17,11 @@
 .sbdocs.sbdocs-a:focus-visible,
 .sbdocs .sbdocs-content a:not(:where(#root-inner *, #storybook-docs *)):focus-visible,
 .sbdocs .toc-list .toc-list-item a:focus-visible {
-  @apply outline outline-2 outline-offset-2 outline-primary;
+  @apply outline-2 outline-offset-2 outline-primary;
 }
 
 div[data-radix-scroll-area-viewport]:focus-visible {
-  @apply outline -outline-offset-2 outline-2 outline-primary;
+  @apply -outline-offset-2 outline-2 outline-primary;
 }
 
 /* Color palettes */

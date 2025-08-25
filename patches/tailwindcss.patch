@@ -1,0 +1,32 @@
+diff --git a/preflight.css b/preflight.css
+index 753e79ef0d0fbdb8aaad09733e4dc851ab6d5737..e8cfb09e8ad90d6258cad605e8e93b24b3348b6b 100644
+--- a/preflight.css
++++ b/preflight.css
+@@ -5,8 +5,6 @@
+ */
+ 
+ *,
+-::after,
+-::before,
+ ::backdrop,
+ ::file-selector-button {
+   box-sizing: border-box; /* 1 */
+@@ -30,18 +28,6 @@ html,
+   line-height: 1.5; /* 1 */
+   -webkit-text-size-adjust: 100%; /* 2 */
+   tab-size: 4; /* 3 */
+-  font-family: --theme(
+-    --default-font-family,
+-    ui-sans-serif,
+-    system-ui,
+-    sans-serif,
+-    'Apple Color Emoji',
+-    'Segoe UI Emoji',
+-    'Segoe UI Symbol',
+-    'Noto Color Emoji'
+-  ); /* 4 */
+-  font-feature-settings: --theme(--default-font-feature-settings, normal); /* 5 */
+-  font-variation-settings: --theme(--default-font-variation-settings, normal); /* 6 */
+   -webkit-tap-highlight-color: transparent; /* 7 */
+ }
+ 

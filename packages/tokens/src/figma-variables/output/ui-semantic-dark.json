@@ -1390,6 +1390,43 @@
       "description": "Immediate animation"
     }
   },
+  "font-size": {
+    "text-sm": {
+      "value": "0.875rem",
+      "type": "fontSizes",
+      "description": "14px"
+    },
+    "text-base": {
+      "value": "1rem",
+      "type": "fontSizes",
+      "description": "16px"
+    },
+    "text-lg": {
+      "value": "1.25rem",
+      "type": "fontSizes",
+      "description": "20px"
+    },
+    "text-xl": {
+      "value": "1.5rem",
+      "type": "fontSizes",
+      "description": "24px"
+    },
+    "text-2xl": {
+      "value": "1.75rem",
+      "type": "fontSizes",
+      "description": "28px"
+    },
+    "text-3xl": {
+      "value": "2rem",
+      "type": "fontSizes",
+      "description": "32px"
+    },
+    "text-4xl": {
+      "value": "2.5rem",
+      "type": "fontSizes",
+      "description": "40px"
+    }
+  },
   "z-": {
     "10": {
       "value": "10",
@@ -2183,6 +2220,180 @@
         "type": "color",
         "value": "rgba(255, 255, 255, 0.00)"
       }
+    }
+  },
+  "outline": {
+    "primary": {
+      "description": "Used for buttons, select field, focus state",
+      "type": "color",
+      "value": "{core.white}"
+    },
+    "accent-550": {
+      "description": "Used for hover interaction",
+      "type": "color",
+      "value": "{core.green.500}"
+    },
+    "primary-500": {
+      "description": "Used for hover interaction (dark mode)",
+      "type": "color",
+      "value": "{core.blue.100}"
+    },
+    "primary-800": {
+      "description": "Used for pressed interaction",
+      "type": "color",
+      "value": "{core.blue.200}"
+    },
+    "neutral-400": {
+      "description": "Default border color. \nUsed for divider, teaser, container, table cell, ... ",
+      "type": "color",
+      "value": "{core.blue.400}"
+    },
+    "neutral-800": {
+      "description": "Used for form fields, switch, radio, checkbox",
+      "type": "color",
+      "value": "{core.white}"
+    },
+    "success": {
+      "description": "Used for valid form fields\n",
+      "type": "color",
+      "value": "{core.green.300}"
+    },
+    "error": {
+      "description": "Used for invalid form fields",
+      "type": "color",
+      "value": "{core.red.250}"
+    },
+    "error-400": {
+      "description": "Used for hover interaction invalid form elements",
+      "type": "color",
+      "value": "{core.red.300}"
+    },
+    "null": {
+      "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+      "type": "color",
+      "value": "{core.white}"
+    },
+    "white": {
+      "description": "Used for buttons, inverted focus state",
+      "type": "color",
+      "value": "{core.white}"
+    },
+    "accent": {
+      "description": "Used to highlight active/selected elements\n",
+      "type": "color",
+      "value": "{core.green.default}"
+    },
+    "primary-100": {
+      "description": "Used for inverted hover interaction",
+      "type": "color",
+      "value": "{core.blue.100}"
+    },
+    "primary-200": {
+      "description": "Used for inverted pressed interaction",
+      "type": "color",
+      "value": "{core.blue.200}"
+    },
+    "primary-400": {
+      "description": "Used for inverted dividers",
+      "type": "color",
+      "value": "{core.blue.400}"
+    },
+    "neutral-500": {
+      "description": "Used for disabled state",
+      "type": "color",
+      "value": "{core.grey.500}"
+    },
+    "neutral-600": {
+      "description": "Used for inverted disabled state",
+      "type": "color",
+      "value": "{core.grey.600}"
+    }
+  },
+  "ring": {
+    "primary": {
+      "description": "Used for buttons, select field, focus state",
+      "type": "color",
+      "value": "{core.white}"
+    },
+    "accent-550": {
+      "description": "Used for hover interaction",
+      "type": "color",
+      "value": "{core.green.500}"
+    },
+    "primary-500": {
+      "description": "Used for hover interaction (dark mode)",
+      "type": "color",
+      "value": "{core.blue.100}"
+    },
+    "primary-800": {
+      "description": "Used for pressed interaction",
+      "type": "color",
+      "value": "{core.blue.200}"
+    },
+    "neutral-400": {
+      "description": "Default border color. \nUsed for divider, teaser, container, table cell, ... ",
+      "type": "color",
+      "value": "{core.blue.400}"
+    },
+    "neutral-800": {
+      "description": "Used for form fields, switch, radio, checkbox",
+      "type": "color",
+      "value": "{core.white}"
+    },
+    "success": {
+      "description": "Used for valid form fields\n",
+      "type": "color",
+      "value": "{core.green.300}"
+    },
+    "error": {
+      "description": "Used for invalid form fields",
+      "type": "color",
+      "value": "{core.red.250}"
+    },
+    "error-400": {
+      "description": "Used for hover interaction invalid form elements",
+      "type": "color",
+      "value": "{core.red.300}"
+    },
+    "null": {
+      "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+      "type": "color",
+      "value": "{core.white}"
+    },
+    "white": {
+      "description": "Used for buttons, inverted focus state",
+      "type": "color",
+      "value": "{core.white}"
+    },
+    "accent": {
+      "description": "Used to highlight active/selected elements\n",
+      "type": "color",
+      "value": "{core.green.default}"
+    },
+    "primary-100": {
+      "description": "Used for inverted hover interaction",
+      "type": "color",
+      "value": "{core.blue.100}"
+    },
+    "primary-200": {
+      "description": "Used for inverted pressed interaction",
+      "type": "color",
+      "value": "{core.blue.200}"
+    },
+    "primary-400": {
+      "description": "Used for inverted dividers",
+      "type": "color",
+      "value": "{core.blue.400}"
+    },
+    "neutral-500": {
+      "description": "Used for disabled state",
+      "type": "color",
+      "value": "{core.grey.500}"
+    },
+    "neutral-600": {
+      "description": "Used for inverted disabled state",
+      "type": "color",
+      "value": "{core.grey.600}"
     }
   }
 }

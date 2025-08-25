@@ -1,20 +1,31 @@
-@import 'tailwindcss';
 
-@source './src';
+@layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme';
+@import 'tailwindcss/utilities';
+
+@source '../components/src';
 
 @custom-variant hover (&:hover:not([disabled]));
 @custom-variant focus (&:focus:not([disabled]));
 
 @theme {
   --background-color-primary-400: var(--sd-color-primary-400, red);
-  --outline-color-primary: var(--sd-color-primary, red);
-  --outline-color-error: var(--sd-color-primary, red);
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
   --shadow: var(--sd-shadow, 0 1px 3px 0 rgba(81, 81, 81, 0.75));
   --shadow-sm: var(--sd-shadow-sm, 0.5px 0.5px 1.5px 0 rgba(81, 81, 81, 1));
   --transition-duration-fast: var(--sd-duration-fast, 150ms);
   --transition-duration-medium: var(--sd-duration-medium, 300ms);
   --transition-duration-slow: var(--sd-duration-slow, 500ms);
   --transition-duration-x-slow: var(--sd-duration-x-slow, 750ms);
+  --text-sm: var(--sd-text-sm, 0.875rem);
+  --text-base: var(--sd-text-base, 1rem);
+  --text-lg: var(--sd-text-lg, 1.25rem);
+  --text-xl: var(--sd-text-xl, 1.5rem);
+  --text-2xl: var(--sd-text-2xl, 1.75rem);
+  --text-3xl: var(--sd-text-3xl, 2rem);
+  --text-4xl: var(--sd-text-4xl, 2.5rem);
   --color-risk-low: var(--sd-color-low, rgb(var(--sd-color-risk-low, 1 125 195)));
   --color-risk-moderate: var(--sd-color-moderate, rgb(var(--sd-color-risk-moderate, 0 165 147)));
   --color-risk-increased: var(--sd-color-increased, rgb(var(--sd-color-risk-increased, 255 240 0)));
@@ -113,6 +124,40 @@
   --text-color-accent: var(--sd-color-accent, #2d9d00);
   --text-color-primary-100: var(--sd-color-primary-100, #ecf0f9);
   --text-color-neutral-600: var(--sd-color-neutral-600, #888888);
+  --outline-color-primary: var(--sd-color-primary, #00358e);
+  --outline-color-accent-550: var(--sd-color-accent-550, #367b28);
+  --outline-color-primary-500: var(--sd-color-primary-500, #466daf);
+  --outline-color-primary-800: var(--sd-color-primary-800, #051530);
+  --outline-color-neutral-400: var(--sd-color-neutral-400, #c3c3c3);
+  --outline-color-neutral-800: var(--sd-color-neutral-800, #515151);
+  --outline-color-success: var(--sd-color-success, #367b28);
+  --outline-color-error: var(--sd-color-error, #cc1937);
+  --outline-color-error-400: var(--sd-color-error-400, #ac1938);
+  --outline-color-null: var(--sd-color-null, rgba(255, 255, 255, 0));
+  --outline-color-white: var(--sd-color-white, #ffffff);
+  --outline-color-accent: var(--sd-color-accent, #2d9d00);
+  --outline-color-primary-100: var(--sd-color-primary-100, #ecf0f9);
+  --outline-color-primary-200: var(--sd-color-primary-200, #e0e9f3);
+  --outline-color-primary-400: var(--sd-color-primary-400, #99abd0);
+  --outline-color-neutral-500: var(--sd-color-neutral-500, #aeaeae);
+  --outline-color-neutral-600: var(--sd-color-neutral-600, #888888);
+  --ring-color-primary: var(--sd-color-primary, #00358e);
+  --ring-color-accent-550: var(--sd-color-accent-550, #367b28);
+  --ring-color-primary-500: var(--sd-color-primary-500, #466daf);
+  --ring-color-primary-800: var(--sd-color-primary-800, #051530);
+  --ring-color-neutral-400: var(--sd-color-neutral-400, #c3c3c3);
+  --ring-color-neutral-800: var(--sd-color-neutral-800, #515151);
+  --ring-color-success: var(--sd-color-success, #367b28);
+  --ring-color-error: var(--sd-color-error, #cc1937);
+  --ring-color-error-400: var(--sd-color-error-400, #ac1938);
+  --ring-color-null: var(--sd-color-null, rgba(255, 255, 255, 0));
+  --ring-color-white: var(--sd-color-white, #ffffff);
+  --ring-color-accent: var(--sd-color-accent, #2d9d00);
+  --ring-color-primary-100: var(--sd-color-primary-100, #ecf0f9);
+  --ring-color-primary-200: var(--sd-color-primary-200, #e0e9f3);
+  --ring-color-primary-400: var(--sd-color-primary-400, #99abd0);
+  --ring-color-neutral-500: var(--sd-color-neutral-500, #aeaeae);
+  --ring-color-neutral-600: var(--sd-color-neutral-600, #888888);
   --spacing-0: var(--sd-spacing-0, 0px);
   --spacing: var(--sd-spacing-1, 0.25rem);
   --spacing-2: var(--sd-spacing-2, 0.5rem);
@@ -128,9 +173,9 @@
   --spacing-24: var(--sd-spacing-24, 6rem);
   --spacing-32: var(--sd-spacing-32, 8rem);
   --spacing-40: var(--sd-spacing-40, 10rem);
-  --spacing-0.5: var(--sd-spacing-0.5, 0.125rem);
-  --spacing-0.25: var(--sd-spacing-0.25, 1px);
-  --spacing-1.5: var(--sd-spacing-1.5, 0.375rem);
+  --spacing-0.5: var(--sd-spacing-0\.5, 0.125rem);
+  --spacing-0.25: var(--sd-spacing-0\.25, 1px);
+  --spacing-1.5: var(--sd-spacing-1\.5, 0.375rem);
   --spacing-auto: var(--sd-spacing-auto, auto);
   --sizing-2: var(--sd-spacing-2, 0.5rem);
   --sizing-3: var(--sd-spacing-3, 0.75rem);
@@ -142,7 +187,7 @@
   --sizing-12: var(--sd-spacing-12, 3rem);
   --sizing-16: var(--sd-spacing-16, 4rem);
   --sizing-24: var(--sd-spacing-24, 6rem);
-  --sizing-2.5: var(--sd-spacing-2.5, 0.625rem);
+  --sizing-2.5: var(--sd-spacing-2\.5, 0.625rem);
   --radius-default: var(--sd-border-radius-default, 0.25rem);
   --radius-sm: var(--sd-border-radius-sm, 0.125rem);
   --radius-md: var(--sd-border-radius-md, 0.375rem);
@@ -524,12 +569,12 @@
   outline-style: solid;
   outline-offset: 2px;
   outline-width: 2px;
-  outline-color: var(--background-color-primary);
+  outline-color: var(--outline-color-primary);
 }
 
 @utility focus-outline-inverted {
   outline-style: solid;
   outline-offset: 2px;
   outline-width: 2px;
-  outline-color: var(--background-color-white);
+  outline-color: var(--outline-color-white);
 }

@@ -30,7 +30,13 @@ export class TailwindCSSGenerator {
    * Generate import statement
    */
   generateImport() {
-    return this.config.includeImport ? this.css.import(this.config.importPath) : null;
+    return this.config.includeImport
+      ? `
+@layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme';
+@import 'tailwindcss/utilities';`
+      : null;
   }
 
   /**
@@ -79,7 +85,7 @@ export class TailwindCSSGenerator {
           this.css.property('outline-style', 'solid'),
           this.css.property('outline-offset', '2px'),
           this.css.property('outline-width', '2px'),
-          this.css.property('outline-color', 'var(--background-color-primary)')
+          this.css.property('outline-color', 'var(--outline-color-primary)')
         ])
       ),
       this.css.utility(
@@ -88,7 +94,7 @@ export class TailwindCSSGenerator {
           this.css.property('outline-style', 'solid'),
           this.css.property('outline-offset', '2px'),
           this.css.property('outline-width', '2px'),
-          this.css.property('outline-color', 'var(--background-color-white)')
+          this.css.property('outline-color', 'var(--outline-color-white)')
         ])
       )
     ]);

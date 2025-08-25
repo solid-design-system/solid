@@ -6,43 +6,11 @@ export class FigmaLegacyTokens {
     this.legacy = this.#sanitize(legacy);
   }
 
-  #sanitize(value) {
-    if (!value) return value;
-
-    if (typeof value === 'string') {
-      ['\t', '\b', '\u001d'].forEach(ch => {
-        value = value.split(ch).join('');
-      });
-      return value;
-    }
-
-    if (Array.isArray(value)) {
-      return value.map(v => this.#sanitize(v));
-    }
-
-    if (typeof value === 'object') {
-      const out = Array.isArray(value) ? [] : {};
-      for (const [k, v] of Object.entries(value)) {
-        out[this.#sanitize(k)] = this.#sanitize(v);
-      }
-      return out;
-    }
-
-    return value;
-  }
-
-  #getCore() {
-    return this.legacy['UI Core'];
-  }
-
-  #getTokens() {
-    const nonLegacy = ['background', 'icon-fill', 'border', '*background-transparent', 'text'];
-    return Object.fromEntries(Object.entries(this.legacy['UI Semantic']).filter(([key]) => !nonLegacy.includes(key)));
-  }
-
   get() {
     const core = this.#getCore();
     const tokens = this.#getTokens();
+
+    tokens['font-size'] = this.#getTokensByType(core, 'fontSizes');
 
     tokens.spacing = {
       ...tokens.spacing,
@@ -119,5 +87,83 @@ export class FigmaLegacyTokens {
     };
 
     return { core, tokens: prefixReferences(tokens) };
+  }
+
+  #sanitize(value) {
+    if (!value) return value;
+
+    if (typeof value === 'string') {
+      ['\t', '\b', '\u001d'].forEach(ch => {
+        value = value.split(ch).join('');
+      });
+      return value;
+    }
+
+    if (Array.isArray(value)) {
+      return value.map(v => this.#sanitize(v));
+    }
+
+    if (typeof value === 'object') {
+      const out = Array.isArray(value) ? [] : {};
+      for (const [k, v] of Object.entries(value)) {
+        out[this.#sanitize(k)] = this.#sanitize(v);
+      }
+      return out;
+    }
+
+    return value;
+  }
+
+  #getCore() {
+    return this.legacy['UI Core'];
+  }
+
+  #getTokens() {
+    const nonLegacy = ['background', 'icon-fill', 'border', '*background-transparent', 'text'];
+    return Object.fromEntries(Object.entries(this.legacy['UI Semantic']).filter(([key]) => !nonLegacy.includes(key)));
+  }
+
+  #getTokensByType(library, type) {
+    const result = {};
+
+    function ensurePath(target, pathParts) {
+      let node = target;
+      for (const part of pathParts) {
+        if (
+          !Object.prototype.hasOwnProperty.call(node, part) ||
+          typeof node[part] !== 'object' ||
+          node[part] === null
+        ) {
+          node[part] = {};
+        }
+        node = node[part];
+      }
+      return node;
+    }
+
+    function setAtPath(target, pathParts, value) {
+      if (pathParts.length === 0) return;
+      const leafKey = pathParts[pathParts.length - 1];
+      const parent = ensurePath(target, pathParts.slice(0, -1));
+      parent[leafKey] = value;
+    }
+
+    function walk(node, path = []) {
+      if (node && typeof node === 'object' && !Array.isArray(node)) {
+        if (Object.prototype.hasOwnProperty.call(node, 'type') && typeof node.type === 'string') {
+          if (node.type === type) {
+            setAtPath(result, path, node);
+          }
+          return;
+        }
+
+        for (const key of Object.keys(node)) {
+          walk(node[key], path.concat(key));
+        }
+      }
+    }
+
+    walk(library);
+    return result;
   }
 }
