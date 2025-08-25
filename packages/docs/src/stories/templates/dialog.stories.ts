@@ -224,7 +224,7 @@ export const PreventClosing = {
           <sd-button slot="footer" class="w-full" id="close-button">Close</sd-button>
         </sd-dialog>
 
-        <script>
+        <script type="module">
           // Prevent closing the dialog when clicking on the overlay
           const openDialogButton = document.querySelector('#open-dialog');
           const defaultDialog = document.querySelector('#default-dialog');
@@ -248,7 +248,7 @@ export const PreventClosing = {
           </sd-button>
         </sd-dialog>
 
-        <script>
+        <script type="module">
           // Prevent closing the dialog for a certain amount of time
           const openTimedDialogButton = document.querySelector('#open-timed-dialog');
           const countdownElement = document.querySelector('#countdown');

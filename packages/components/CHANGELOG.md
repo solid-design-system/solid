@@ -1,5 +1,34 @@
 # @solid-design-system/components
 
+## 5.15.5
+
+### Patch Changes
+
+- Minor improvement to the `sd-step` horizontal inline variant: _[`#2469`](https://github.com/solid-design-system/solid/pull/2469) [`bec1056`](https://github.com/solid-design-system/solid/commit/bec105630e7caf449ad2e0cb7d4d681db2c4193d) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - Remove the extra width from the last `sd-step`.
+
+### 📈 Stats
+* Uncompressed: 479 KB (+1 KB / +0%)
+* Gzipped: 113 KB (+1 KB / +1%)
+
+## 5.15.4
+
+### Patch Changes
+
+- Improve sd-dialog: _[`#2466`](https://github.com/solid-design-system/solid/pull/2466) [`3bac0bc`](https://github.com/solid-design-system/solid/commit/3bac0bc304e9ed8929fcb0a80791cd9663db6ef0) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - Prevent unexpected scrolling behaviour.
+
+### 📈 Stats
+
+- Uncompressed: 478 KB (-1 KB / 0%)
+- Gzipped: 112 KB (-1 KB / -1%)
+
+## 5.15.3
+
+### Patch Changes
+
+- Added missing tailwind variable `--tw-content` to components. _[`#2465`](https://github.com/solid-design-system/solid/pull/2465) [`1b970bc`](https://github.com/solid-design-system/solid/commit/1b970bc9fd42ae6649468a89552df9f39653246c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.15.2
 
 ### Patch Changes
