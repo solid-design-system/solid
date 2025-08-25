@@ -8,9 +8,6 @@ patchedDependencies:
   tailwindcss:
     hash: 34715676d6597e4c6128a3de02de3a0be3d4243c2c987fbf28253d27e72ed066
     path: patches/tailwindcss.patch
-  tailwindcss@3.4.17:
-    hash: cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2
-    path: patches/tailwindcss@3.4.1.patch
   wc-storybook-helpers:
     hash: 4c6e82d07661a53d7daebec7dd842590a6dbeecda03c83d466a808c346d32a67
     path: patches/wc-storybook-helpers.patch
@@ -15354,12 +15351,12 @@ snapshots:
       chalk: 4.1.2
       fs-extra: 10.1.0
       lodash.reduce: 4.6.0
-      tailwindcss: 3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.2.0)(typescript@5.9.2))
+      tailwindcss: 3.4.17(patch_hash=34715676d6597e4c6128a3de02de3a0be3d4243c2c987fbf28253d27e72ed066)(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.2.0)(typescript@5.9.2))
       yargs: 17.7.2
     transitivePeerDependencies:
       - ts-node
 
-  tailwindcss@3.4.17(patch_hash=cca1bbc79af6902b0fdf11a8edc6eb619e60a0015e27e5c54077b18faa12b5e2)(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.2.0)(typescript@5.9.2)):
+  tailwindcss@3.4.17(patch_hash=34715676d6597e4c6128a3de02de3a0be3d4243c2c987fbf28253d27e72ed066)(ts-node@10.9.2(@swc/core@1.12.1)(@types/node@24.2.0)(typescript@5.9.2)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
