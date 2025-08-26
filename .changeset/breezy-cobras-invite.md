@@ -2,4 +2,4 @@
 '@solid-design-system/components': patch
 ---
 
-chore: update status-check icon
+Update `status-check` icon of the `_internal` icon library.
