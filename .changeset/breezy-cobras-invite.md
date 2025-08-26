@@ -1,5 +1,5 @@
 ---
-'@solid-design-system/components': minor
+'@solid-design-system/components': patch
 ---
 
-chore: update status-check icon and Node.js engine to ^22.14.0
+chore: update status-check icon
