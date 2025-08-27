@@ -3,11 +3,7 @@ import pc from 'picocolors';
 import { execSync } from 'child_process';
 import { cp } from 'fs/promises';
 
-const DEFAULT_THEME = 'light';
-
 const spinner = ora({ hideCursor: false }).start();
-const args = process.argv.slice(2);
-const theme = args.find(arg => arg.startsWith('--theme'))?.split('=')[1];
 
 /**
  * Helper function to draw a spinner while tasks run.
@@ -31,18 +27,14 @@ async function nextTask(label, action) {
 
 const runTailwindVariablesBuild = () => execSync('pnpm --filter=@solid-design-system/tokens run build');
 
-async function generateTheme() {
+async function buildTailwindConfiguration() {
   await nextTask('Building tailwind config', () => {
     runTailwindVariablesBuild();
   });
 
   await nextTask('Copying tailwind config', async () => {
-    if (!theme) {
-      console.warn(`\nTheme not provided. Using default theme: "${DEFAULT_THEME}"`);
-    }
-
-    await cp(`../tokens/dist/themes/${theme || DEFAULT_THEME}.css`, '../tokens/tailwind.css');
+    await cp(`../tokens/dist/themes/tailwind.css`, '../tokens/tailwind.css');
   });
 }
 
-generateTheme();
+buildTailwindConfiguration();

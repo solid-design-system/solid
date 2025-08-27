@@ -17,10 +17,12 @@ export class TypographyTokenProcessor extends BaseTokenProcessor {
     const name = path.join('-').replace('font-size-', '');
     const value = this.getTokenValue(token);
 
+    const formatted = this.getFormattedValue({ name, value });
+
     return {
       type: 'typography',
       name: `--${name}`,
-      value: this.getOverrideFormat({ name, value })
+      value: `var(${formatted.variable}, ${formatted.value})`
     };
   }
 }

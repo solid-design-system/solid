@@ -2,6 +2,11 @@
 @import '../../tokens/tailwind.css';
 @import '../../components/src/solid-components.css';
 
+.sbdocs {
+  @apply !bg-primary;
+  /* background-color: var(--sd-color-background-primary) !important; */
+}
+
 /* Lists */
 .sbdocs .sbdocs-content ol {
   @apply !list-decimal;

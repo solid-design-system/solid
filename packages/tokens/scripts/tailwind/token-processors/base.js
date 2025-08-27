@@ -53,19 +53,13 @@ export class BaseTokenProcessor {
     // Get the original token path (before kebab-case conversion)
     let path = [...token.path];
 
-    // Remove common prefixes from original path
-    if (path[0] === 'sd') {
-      path = path.slice(1);
-    }
-    if (path[0] === 'color') {
-      path = path.slice(1);
-    }
-    if (path[0] === 'colors') {
-      path = path.slice(1);
-    }
+    path = path.map(p => p.replaceAll('*', '').replaceAll('|', '-'));
+
+    const variant = path[0];
 
     return {
-      path: path.map(p => p.replaceAll('*', '').replaceAll('|', '-'))
+      path: path.slice(1),
+      variant
     };
   }
 
@@ -83,14 +77,16 @@ export class BaseTokenProcessor {
   /**
    * Returns the variable value as a var with possibility to override
    */
-  getOverrideFormat({ prefix, name, value }) {
+  getFormattedValue({ prefix, name, value }) {
     const fallback = ['--sd-'];
 
     if (prefix) {
       fallback.push(`${prefix}-`);
     }
 
-    fallback.push(`${name}, ${value}`);
-    return `var(${fallback.join('')})`;
+    fallback.push(name);
+
+    const variable = fallback.join('');
+    return { variable, value };
   }
 }

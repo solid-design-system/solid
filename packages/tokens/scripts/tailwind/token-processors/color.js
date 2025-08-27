@@ -13,16 +13,40 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
   }
 
   process(token) {
-    const path = this.pathToKebabCase(this.processTokenPath(token).path);
-    const value = this.getOverrideFormat({ prefix: 'color', name: path.at(-1), value: this.getTokenValue(token) });
-    const { type, name, properties } = this.getTokenInfo(path.join('-'), value);
+    const { path: _path, variant } = this.processTokenPath(token);
+    const path = this.pathToKebabCase(_path);
+    const { variable, value } = this.getFormattedValue({
+      prefix: 'color',
+      name: path.join('-'),
+      value: this.getTokenValue(token)
+    });
+    const { type, name, properties } = this.getTokenInfo(path.join('-'), `var(${variable})`, variant);
 
-    return {
-      type,
-      name,
-      value,
-      properties
-    };
+    // TODO: Replace by check if variant !== default
+    if (variant !== 'light') {
+      return {
+        type: 'color',
+        name: variable,
+        value,
+        variant
+      };
+    }
+
+    return [
+      {
+        type,
+        name,
+        value: `var(${variable})`,
+        properties,
+        variant: 'default'
+      },
+      {
+        type: 'color',
+        name: variable,
+        value,
+        variant
+      }
+    ];
   }
 
   getTokenInfo(token, value) {

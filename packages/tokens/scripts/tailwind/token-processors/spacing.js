@@ -68,13 +68,14 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
     }
 
     const name = path.join('-').replace(',', '.');
+    const formatted = this.getFormattedValue({
+      prefix: this.specialOverrides[prefix],
+      name: name.replace('.', '\\.'),
+      value: processedValue
+    });
 
     if (this.specialOverrides[prefix]) {
-      processedValue = this.getOverrideFormat({
-        prefix: this.specialOverrides[prefix],
-        name: name.replace('.', '\\.'),
-        value: processedValue
-      });
+      processedValue = `var(${formatted.variable}, ${formatted.value})`;
     }
 
     if (prefix === 'spacing' && name === '1') {

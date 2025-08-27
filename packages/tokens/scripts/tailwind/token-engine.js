@@ -99,7 +99,11 @@ export class TokenProcessingEngine {
     switch (processed.type) {
       case 'color': {
         const varString = `${processed.name}: ${processed.value};`;
-        result.baseVars.push(varString);
+        const store = processed.variant === 'default' ? 'baseVars' : processed.variant;
+
+        if (!result[store]) result[store] = [];
+
+        result[store].push(varString);
         break;
       }
 
@@ -136,24 +140,6 @@ export class TokenProcessingEngine {
           result.utilities.push(processed.properties);
         }
         break;
-
-      // case 'composition':
-      //   if (processed.properties) {
-      //     result.utilities.push(processed.properties);
-      //   }
-      //   break;
-
-      // case 'component':
-      //   if (processed.value) {
-      //     result.components.push(processed.value);
-      //   }
-      //   break;
-
-      // case 'number': {
-      //   const numberVarString = `${processed.name}: ${processed.value};`;
-      //   result.baseVars.push(numberVarString);
-      //   break;
-      // }
 
       default:
         console.warn(`Unknown processed token type: ${processed.type}`);

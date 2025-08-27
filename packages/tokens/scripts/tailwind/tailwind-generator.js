@@ -20,7 +20,8 @@ export class TailwindCSSGenerator {
       this.generateCustomVariants(),
       this.generateTheme(processedTokens),
       this.generateUtilities(processedTokens.utilities),
-      this.generateExtras()
+      this.generateExtras(),
+      this.generateThemeVariants(processedTokens)
     ].filter(Boolean);
 
     return parts.join('\n\n') + '\n';
@@ -98,5 +99,18 @@ export class TailwindCSSGenerator {
         ])
       )
     ]);
+  }
+
+  generateThemeVariants(processedTokens) {
+    const variants = Object.keys(processedTokens).filter(
+      k => !['baseVars', 'utilities', 'spacing', 'compositions', 'components'].includes(k)
+    );
+
+    return variants
+      .map(
+        variant =>
+          `/* build:theme[${variant}] */\n:root, :root:has(.${variant}), .${variant} {\n${this.css.indent(`color-scheme: ${variant};`)}\n${this.css.indent(this.css.join(processedTokens[variant], '\n'))}\n}\n/* build:theme */`
+      )
+      .join('\n\n');
   }
 }

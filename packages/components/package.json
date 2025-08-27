@@ -60,7 +60,7 @@
   },
   "scripts": {
     "build": "node scripts/build.js",
-    "build.theme": "node scripts/generate-theme.js",
+    "build.tailwind": "node scripts/build-tailwind-configuration.js",
     "watch": "pnpm build --watch",
     "verify": "pnpm build && echo '✅ Build verified' && pnpm ts.verify && pnpm test.verify && echo '✅ Test verified'",
     "ts.verify": "tsc --noEmit --project ./tsconfig.json && echo '✅ TypeScript verified'",

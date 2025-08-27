@@ -150,8 +150,8 @@ async function runBuild() {
     });
   }
 
-  await nextTask('Generating tailwind theme', () => {
-    return execPromise(`node scripts/generate-theme.js`, { stdio: 'inherit' });
+  await nextTask('Building tailwind configuration', () => {
+    return execPromise(`node scripts/build-tailwind-configuration.js`, { stdio: 'inherit' });
   });
 
   await nextTask('Generating Utility CSS', () => {

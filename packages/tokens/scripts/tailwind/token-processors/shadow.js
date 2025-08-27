@@ -17,10 +17,12 @@ export class ShadowTokenProcessor extends BaseTokenProcessor {
     const value = this.formatShadow(token.attributes.value);
     const name = path.join('-');
 
+    const formatted = this.getFormattedValue({ name, value });
+
     return {
       type: 'shadow',
       name: `--${name}`,
-      value: this.getOverrideFormat({ name, value })
+      value: `var(${formatted.variable}, ${formatted.value})`
     };
   }
 

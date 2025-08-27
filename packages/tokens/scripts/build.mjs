@@ -1,3 +1,4 @@
+import { readFileSync, writeFileSync } from 'node:fs';
 import { createTailwindV4Plugin } from './tailwind/index.js';
 import { FigmaClient } from './figma/index.js';
 import { OUTPUT_DIR } from './config.js';
@@ -22,31 +23,31 @@ const sd = new StyleDictionary({
 });
 
 const config = {
-  buildPath: './dist/'
+  buildPath: './dist',
+  themeBlock: 'build:theme'
 };
 
 const availableThemes = [
   {
-    input: 'ui-semantic-light.json',
-    theme: 'light'
-  },
-  {
-    input: 'ui-semantic-dark.json',
-    theme: 'dark'
+    input: 'ui-semantic.json',
+    output: 'tailwind',
+    themes: ['light', 'dark']
   }
 ];
 
-const cssRuns = availableThemes.map(async ({ input, theme }) => {
+const cssRuns = availableThemes.map(async ({ input, output, themes }) => {
+  const buildPath = `${config.buildPath}/themes`;
+
   const themeInstance = await sd.extend({
     platforms: {
       css: {
-        buildPath: `${config.buildPath}themes/`,
+        buildPath,
         files: [
           {
-            destination: `${theme}.css`,
+            destination: `${output}.css`,
             format: 'tailwind-v4',
             options: {
-              theme
+              output
             }
           }
         ],
@@ -72,7 +73,33 @@ const cssRuns = availableThemes.map(async ({ input, theme }) => {
     source: [`${OUTPUT_DIR}/${input}`]
   });
 
-  return themeInstance.buildAllPlatforms();
+  await themeInstance.buildAllPlatforms();
+
+  function getThemeBlock(source, theme) {
+    const re = new RegExp(
+      `/\\*\\s*${config.themeBlock}\\[${theme}\\]\\s*\\*/([\\s\\S]*?)/\\*\\s*${config.themeBlock}\\s*\\*/`,
+      'g'
+    );
+    const out = [];
+    let m;
+    while ((m = re.exec(source)) !== null) out.push(m[1]);
+    return out.join('');
+  }
+
+  let file = readFileSync(`${buildPath}/${output}.css`, { encoding: 'utf-8' });
+
+  const themeFiles = themes.map(theme => ({
+    name: theme,
+    content: getThemeBlock(file, theme)
+  }));
+
+  file = file.replaceAll(`/* ${config.themeBlock} */`, '');
+
+  themeFiles.forEach(theme => {
+    file = file.replace(theme.content, '').replace(`/* ${config.themeBlock}[${theme.name}] */`, '');
+    writeFileSync(`${buildPath}/${output}.css`, file.trim());
+    writeFileSync(`${buildPath}/${theme.name}.css`, theme.content.trim());
+  });
 });
 
 await Promise.all(cssRuns);

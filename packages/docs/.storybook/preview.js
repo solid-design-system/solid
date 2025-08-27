@@ -1,5 +1,7 @@
 import './preview.css';
 import '../../styles/src/solid-styles.css';
+import '../../tokens/dist/themes/dark.css';
+import '../../tokens/dist/themes/light.css';
 import { storybookUtilities } from '../scripts/storybook/helper';
 import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer';
 

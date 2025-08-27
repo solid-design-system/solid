@@ -49,8 +49,8 @@ export class CSSBuilder {
   /**
    * Create a @theme directive
    */
-  theme(content) {
-    return `@theme ${this.block(content, 1)}`;
+  theme(content, name = '') {
+    return `@theme ${name} ${this.block(content, 1)}`;
   }
 
   /**

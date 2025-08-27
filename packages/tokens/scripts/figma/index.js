@@ -53,6 +53,26 @@ export class FigmaClient extends FigmaBase {
         return theme;
       });
 
+    const baseName = name => name.replace(/\s*(light|dark)\s*$/i, '').trim();
+
+    const getVariantFromName = name => {
+      const m = name.match(/\b(light|dark)\b$/i);
+      return m ? m[1].toLowerCase() : null;
+    };
+
+    this.processed = Object.values(
+      this.processed.reduce((acc, theme) => {
+        const key = baseName(theme.name);
+        const variant = getVariantFromName(theme.name);
+
+        const { core: _core, ...tokens } = theme.tokens;
+        if (!acc[key]) acc[key] = { name: key, tokens: { core: _core } };
+        if (!acc[key].tokens[variant]) acc[key].tokens[variant] = tokens;
+
+        return acc;
+      }, {})
+    );
+
     return this;
   }
 

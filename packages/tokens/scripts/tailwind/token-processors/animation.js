@@ -1,7 +1,7 @@
 import { BaseTokenProcessor } from './base.js';
 
 /**
- * Processor for animation-related tokens (duration, cubicBezier)
+ * Processor for animation-related tokens (duration, keyframes)
  */
 export class AnimationTokenProcessor extends BaseTokenProcessor {
   constructor(options = {}) {
