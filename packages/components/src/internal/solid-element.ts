@@ -17,7 +17,7 @@ export default class SolidElement extends LitElement {
 
   static styles = [
     css`
-      @import '../tokens/tailwind.css';
+      @import '../tokens/themes/tailwind.css';
       @import '../styles/src/modules/interactive.css';
       @import '../styles/src/modules/paragraph.css';
       @import '../styles/src/modules/headline.css';

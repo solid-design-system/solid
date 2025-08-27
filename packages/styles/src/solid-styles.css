@@ -11,4 +11,4 @@
 /* plop:style */
 @import './modules/prose.css';
 
-@reference '../../tokens/tailwind.css';
+@reference '../../tokens/themes/tailwind.css';

@@ -33,7 +33,7 @@ const extractUtilities = css => {
   });
 };
 
-const tailwind = readFileSync(path.join(process.cwd(), '../tokens/tailwind.css'), { encoding: 'utf-8' });
+const tailwind = readFileSync(path.join(process.cwd(), '../tokens/themes/tailwind.css'), { encoding: 'utf-8' });
 
 const theme = {
   base: extractBase(tailwind),

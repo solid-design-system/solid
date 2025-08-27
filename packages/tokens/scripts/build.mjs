@@ -23,7 +23,7 @@ const sd = new StyleDictionary({
 });
 
 const config = {
-  buildPath: './dist',
+  buildPath: './themes',
   themeBlock: 'build:theme'
 };
 
@@ -36,7 +36,7 @@ const availableThemes = [
 ];
 
 const cssRuns = availableThemes.map(async ({ input, output, themes }) => {
-  const buildPath = `${config.buildPath}/themes`;
+  const buildPath = config.buildPath;
 
   const themeInstance = await sd.extend({
     platforms: {

@@ -31,10 +31,6 @@ async function buildTailwindConfiguration() {
   await nextTask('Building tailwind config', () => {
     runTailwindVariablesBuild();
   });
-
-  await nextTask('Copying tailwind config', async () => {
-    await cp(`../tokens/dist/themes/tailwind.css`, '../tokens/tailwind.css');
-  });
 }
 
 buildTailwindConfiguration();

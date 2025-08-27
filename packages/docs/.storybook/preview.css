@@ -1,5 +1,5 @@
 @import 'tailwindcss/preflight';
-@import '../../tokens/tailwind.css';
+@import '../../tokens/themes/tailwind.css';
 @import '../../components/src/solid-components.css';
 
 /* Lists */

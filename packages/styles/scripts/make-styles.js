@@ -21,7 +21,10 @@ const files = await globby('./src/**/*.css');
 for (const file of files) {
   const css = await fs.readFile(file, 'utf-8');
 
-  const tailwind = file.includes('modules') ? '../../../tokens/tailwind.css' : '../../tokens/tailwind.css';
+  // TODO: Improve this to make the path relative to file path.
+  const tailwind = file.includes('modules')
+    ? '../../../tokens/themes/tailwind.css'
+    : '../../tokens/themes/tailwind.css';
 
   // Process the CSS file with PostCSS
   const result = await runner.process(`@reference '${tailwind}'; ${css}`, {

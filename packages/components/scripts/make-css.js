@@ -16,7 +16,7 @@ import cssnested from 'postcss-nested';
   const path = './src/solid-components.css';
   const css = await fs.readFile(path, 'utf8');
 
-  const content = `@reference '../../tokens/tailwind.css'; ${css}`;
+  const content = `@reference '../../tokens/themes/tailwind.css'; ${css}`;
 
   const result = await postcss([tailwindcss(), cssnested(), autoprefixer])
     .process(content, { from: path })

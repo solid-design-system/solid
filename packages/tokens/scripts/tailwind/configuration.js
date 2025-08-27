@@ -20,7 +20,7 @@ export const DEFAULT_CONFIG = {
 
   includeImport: true,
   includeSource: true,
-  sourcePath: '../components/src'
+  sourcePath: '../../components/src'
 };
 
 /**
