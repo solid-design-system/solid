@@ -64,7 +64,7 @@ export class TailwindCSSGenerator {
   generateTheme(processedTokens) {
     const themeVars = [...processedTokens.baseVars, ...processedTokens.spacing];
 
-    return this.css.theme(this.css.join(themeVars, '\n'));
+    return this.css.theme(this.css.join(themeVars, '\n'), 'inline');
   }
 
   /**
@@ -109,7 +109,7 @@ export class TailwindCSSGenerator {
     return variants
       .map(
         variant =>
-          `/* build:theme[${variant}] */\n:root, :root:has(.${variant}), .${variant} {\n${this.css.indent(`color-scheme: ${variant};`)}\n${this.css.indent(this.css.join(processedTokens[variant], '\n'))}\n}\n/* build:theme */`
+          `/* build:theme[${variant}] */\n:root, .${variant} {\n${this.css.indent(`color-scheme: ${variant};`)}\n${this.css.indent(this.css.join(processedTokens[variant], '\n'))}\n}\n/* build:theme */`
       )
       .join('\n\n');
   }
