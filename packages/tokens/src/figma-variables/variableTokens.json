@@ -170,27 +170,6 @@
         "VariableID:45703:23169",
         "VariableID:45703:23170",
         "VariableID:45703:23171",
-        "VariableID:45703:23172",
-        "VariableID:45703:23173",
-        "VariableID:45703:23174",
-        "VariableID:45703:23175",
-        "VariableID:45703:23176",
-        "VariableID:45703:23177",
-        "VariableID:45703:23178",
-        "VariableID:45703:23179",
-        "VariableID:45703:23180",
-        "VariableID:45703:23181",
-        "VariableID:45703:23182",
-        "VariableID:45703:23183",
-        "VariableID:45703:23184",
-        "VariableID:45703:23185",
-        "VariableID:45703:23186",
-        "VariableID:45703:23187",
-        "VariableID:45703:23188",
-        "VariableID:45703:23189",
-        "VariableID:45703:23190",
-        "VariableID:45703:23191",
-        "VariableID:45703:23192",
         "VariableID:45703:23193",
         "VariableID:45703:23194",
         "VariableID:45703:23195",
@@ -231,18 +210,52 @@
         "VariableID:45703:23232",
         "VariableID:45703:23233",
         "VariableID:45703:23234",
-        "VariableID:45703:23235",
-        "VariableID:45703:23236",
-        "VariableID:45703:23237",
-        "VariableID:45703:23238",
-        "VariableID:45703:23239",
-        "VariableID:45703:23240",
-        "VariableID:45703:23241",
-        "VariableID:45703:23242",
-        "VariableID:45703:23243",
-        "VariableID:45703:23244",
         "VariableID:45709:39394",
-        "VariableID:45709:39564"
+        "VariableID:45709:39564",
+        "VariableID:47736:8176",
+        "VariableID:47736:8177",
+        "VariableID:47736:8178",
+        "VariableID:47736:8179",
+        "VariableID:47736:8180",
+        "VariableID:47736:8181",
+        "VariableID:47736:8182",
+        "VariableID:47736:8183",
+        "VariableID:47736:8184",
+        "VariableID:47736:8185",
+        "VariableID:47736:8186",
+        "VariableID:47736:8187",
+        "VariableID:47736:8188",
+        "VariableID:47736:8189",
+        "VariableID:47736:8190",
+        "VariableID:47736:8191",
+        "VariableID:47736:8192",
+        "VariableID:47736:8193",
+        "VariableID:47736:8194",
+        "VariableID:47736:8195",
+        "VariableID:47736:8196",
+        "VariableID:47736:8197",
+        "VariableID:47736:8198",
+        "VariableID:47736:8199",
+        "VariableID:47736:8200",
+        "VariableID:47736:8201",
+        "VariableID:47736:8202",
+        "VariableID:47736:8203",
+        "VariableID:47736:8204",
+        "VariableID:47736:8205",
+        "VariableID:47736:8206",
+        "VariableID:47736:8207",
+        "VariableID:47736:8208",
+        "VariableID:47736:8209",
+        "VariableID:47736:8210",
+        "VariableID:47736:8211",
+        "VariableID:47736:8212",
+        "VariableID:47736:8213",
+        "VariableID:47736:8214",
+        "VariableID:47736:8215",
+        "VariableID:47736:8216",
+        "VariableID:47736:8217",
+        "VariableID:47743:3027",
+        "VariableID:47743:3028"
       ]
     }
   },
@@ -3299,510 +3312,6 @@
       },
       "variableCollectionId": "VariableCollectionId:45703:23038"
     },
-    "VariableID:45703:23172": {
-      "codeSyntax": {},
-      "description": "Default icon color ",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23172",
-      "key": "be25f07b2e10a11d2a44e49f0f1f960260adf999",
-      "name": "button/icon-fill/primary",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23049",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23118",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23173": {
-      "codeSyntax": {},
-      "description": "Inverted icon color",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23173",
-      "key": "e9d51d10ddb75c36750cd7be94d6eb1a14447e01",
-      "name": "button/icon-fill/white",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23118",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23049",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23174": {
-      "codeSyntax": {},
-      "description": "Used for inverted hover interaction",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23174",
-      "key": "175b85f87e737e9d706c9255702a90ab3c1b36c6",
-      "name": "button/icon-fill/primary-100",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23039",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23043",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23175": {
-      "codeSyntax": {},
-      "description": "Used for inverted pressed interaction",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23175",
-      "key": "ac5b450166cd5715e8ba4d3e5b03a95cf77d87b0",
-      "name": "button/icon-fill/primary-200",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23040",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23045",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23176": {
-      "codeSyntax": {},
-      "description": "Used for hover interaction",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23176",
-      "key": "9488955e5d7a60478f5ddaf02c42c4f8a7b46f44",
-      "name": "button/icon-fill/primary-500",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23043",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23039",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23177": {
-      "codeSyntax": {},
-      "description": "Used for pressed interaction",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23177",
-      "key": "b145811f31628eaef48f198c97c14ac65d70b784",
-      "name": "button/icon-fill/primary-800",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23047",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23118",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23178": {
-      "codeSyntax": {},
-      "description": "Used for buttons, select field, focus state",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23178",
-      "key": "24af2f7f0dd38eba7c695dfd1a5792047a67a582",
-      "name": "button/border/primary",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23049",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23118",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23179": {
-      "codeSyntax": {},
-      "description": "Used for hover interaction",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23179",
-      "key": "740ed110d1d985db77502615577863258588fa53",
-      "name": "button/border/primary-500",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23043",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23039",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23180": {
-      "codeSyntax": {},
-      "description": "Used for pressed interaction",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23180",
-      "key": "eb49b8130acaf433e794fd630c893b845df1b5ce",
-      "name": "button/border/primary-800",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23047",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23040",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23181": {
-      "codeSyntax": {},
-      "description": "Primary brand color for text",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23181",
-      "key": "8070a5e603dbbb775f59cd0a3289325dab6e7e6c",
-      "name": "button/text/primary",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23049",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23118",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23182": {
-      "codeSyntax": {},
-      "description": "Inverted text color",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23182",
-      "key": "f01e8f76e5c8e7d31350b2f8df4da675d269c7bf",
-      "name": "button/text/white",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23118",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23049",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23183": {
-      "codeSyntax": {},
-      "description": "Used for inverted hover interaction button label",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23183",
-      "key": "e1b2b43cd9e0e8004224293edb8c08cc46f90775",
-      "name": "button/text/primary-100",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23039",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23043",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23184": {
-      "codeSyntax": {},
-      "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23184",
-      "key": "204ae3e7d69542afd6ddd3ee534d2cc056c7f4e5",
-      "name": "button/text/primary-200",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23040",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23045",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23185": {
-      "codeSyntax": {},
-      "description": "Used for hover interaction",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23185",
-      "key": "0169518428f5a31d65e659d7f84c5a31988c2703",
-      "name": "button/text/primary-500",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23043",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23039",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23186": {
-      "codeSyntax": {},
-      "description": "Used for pressed interaction",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23186",
-      "key": "f3d08b1a91252fd819e568ce5121b1f41d8db861",
-      "name": "button/text/primary-800",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23047",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23118",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23187": {
-      "codeSyntax": {},
-      "description": "Used for pressed interaction",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23187",
-      "key": "5c546594c03d2fac7f441edd6fef8201973b0afb",
-      "name": "button/background/primary",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23049",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23118",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23188": {
-      "codeSyntax": {},
-      "description": "Default background color (light mode) Used for inverted button",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23188",
-      "key": "66bfb969274cc9e90002432fb0cf1eb80fbafd41",
-      "name": "button/background/white",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23118",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23118",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23189": {
-      "codeSyntax": {},
-      "description": "Additional background color (light mode)",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23189",
-      "key": "9fc73f57c43eff7dda6750980ea72e644303f4ab",
-      "name": "button/background/primary-100",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23039",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23045",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23190": {
-      "codeSyntax": {},
-      "description": "Additional background color (light mode) on primary-100",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23190",
-      "key": "c759e12e93c3a3107bc930639fac8624d8f05a34",
-      "name": "button/background/primary-200",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23040",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23043",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23191": {
-      "codeSyntax": {},
-      "description": "Used for hover interaction, badge",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23191",
-      "key": "e48a5d6330a40cf8cac72057df01247aca8ae1e5",
-      "name": "button/background/primary-500",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23043",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23039",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23192": {
-      "codeSyntax": {},
-      "description": "Used for pressed interaction",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23192",
-      "key": "98e68e221fe87379bd349d9e60d9b854ce5f7fbb",
-      "name": "button/background/primary-800",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23047",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23040",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
     "VariableID:45703:23193": {
       "codeSyntax": {},
       "description": "Used for form fields, checkbox, toggle, radio",
@@ -4841,246 +4350,6 @@
       },
       "variableCollectionId": "VariableCollectionId:45703:23038"
     },
-    "VariableID:45703:23235": {
-      "codeSyntax": {},
-      "description": "Default icon color ",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23235",
-      "key": "82ddee6c1c25ec695dd450f8ac174b44c45ee728",
-      "name": "button/icon-fill/primary-alternative",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23049",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23049",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23236": {
-      "codeSyntax": {},
-      "description": "Used for hover interaction",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23236",
-      "key": "8cd46f0a6a377fb612e10c0d4584462ecf62e39a",
-      "name": "button/icon-fill/primary-500-alternative",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23043",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23043",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23237": {
-      "codeSyntax": {},
-      "description": "Used for pressed interaction",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23237",
-      "key": "82b3deab5df21aaaa4c3b3730d8ed7962ab6ffe3",
-      "name": "button/icon-fill/primary-800-alternative",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23047",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23047",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23238": {
-      "codeSyntax": {},
-      "description": "Primary brand color for text",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23238",
-      "key": "53936d64c5456cf99e18188946be454d32e9b06f",
-      "name": "button/text/primary-alternative",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23049",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23049",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23239": {
-      "codeSyntax": {},
-      "description": "Used for hover interaction",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23239",
-      "key": "c72cd398052a8c032e236d2cffa1cb5f2b78d5e5",
-      "name": "button/text/primary-500-alternative",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23043",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23043",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23240": {
-      "codeSyntax": {},
-      "description": "Used for pressed interaction",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23240",
-      "key": "cfbc1575f57c4b67306557cc0ee3e8c8eeb8bbd1",
-      "name": "button/text/primary-800-alternative",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23047",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23047",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23241": {
-      "codeSyntax": {},
-      "description": "Additional background color (light mode)",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23241",
-      "key": "c939b67b490bd20317179558eebfffa5257d7c73",
-      "name": "button/background/primary-100-alternative",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23039",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23039",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23242": {
-      "codeSyntax": {},
-      "description": "Additional background color (light mode) on primary-100",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23242",
-      "key": "356ec502b8a55fa2c674dd434330fd4dc523ffd2",
-      "name": "button/background/primary-200-alternative",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23040",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23040",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23243": {
-      "codeSyntax": {},
-      "description": "Used for hover interaction, badge",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23243",
-      "key": "59e216f544d151857dd60e75c0526d5d319f3d3f",
-      "name": "button/background/primary-500-alternative",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23043",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23043",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
-    "VariableID:45703:23244": {
-      "codeSyntax": {},
-      "description": "Used for pressed interaction",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:45703:23244",
-      "key": "8b876c346f463794d4e57400ec593daf223d9ab8",
-      "name": "button/background/primary-800-alternative",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "45703:16": {
-          "id": "VariableID:45703:23047",
-          "type": "VARIABLE_ALIAS"
-        },
-        "45703:17": {
-          "id": "VariableID:45703:23047",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:45703:23038"
-    },
     "VariableID:45708:36067": {
       "codeSyntax": {},
       "description": "Inverted icon color",
@@ -5148,6 +4417,1068 @@
         },
         "45703:17": {
           "id": "VariableID:45703:23043",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8176": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8176",
+      "key": "c472b877e1505c872ee300d1cb833da7cb13f5ff",
+      "name": "button/background/primary/default",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23049",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8177": {
+      "codeSyntax": {},
+      "description": "Used for hover interaction",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8177",
+      "key": "70ea48df4764bfe0ff37f7c44380c5bfb398fcd0",
+      "name": "button/background/primary/hover",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23043",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23039",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8178": {
+      "codeSyntax": {},
+      "description": "Used for pressed interaction",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8178",
+      "key": "133289336e78b62b9671a0150fa830f811b18a03",
+      "name": "button/background/primary/pressed",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23047",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23040",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8179": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8179",
+      "key": "35a399d968957702ad708b9727bbc68ff63ba366",
+      "name": "button/background/secondary/default",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "a": 0,
+          "b": 1,
+          "g": 1,
+          "r": 1
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8180": {
+      "codeSyntax": {},
+      "description": "Additional background color (light mode)",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8180",
+      "key": "554b1c8eb3808e80404b001d93a6cbe3b9ec6d0d",
+      "name": "button/background/secondary/hover",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23039",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23045",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8181": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8181",
+      "key": "0b98601d6cacb3f585725efe908518a1ad579cea",
+      "name": "button/background/secondary/pressed",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23040",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23043",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8182": {
+      "codeSyntax": {},
+      "description": "Used for cta background",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8182",
+      "key": "15ab04d4b90dc67ffd6cbbf3d10e28bc3057ce56",
+      "name": "button/background/cta/default",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23054",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23054",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8183": {
+      "codeSyntax": {},
+      "description": "Used for hover interaction",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8183",
+      "key": "86f501527339ab261e7c839bee16979258a6b460",
+      "name": "button/background/cta/hover",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23055",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23055",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8184": {
+      "codeSyntax": {},
+      "description": "Used for pressed interaction",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8184",
+      "key": "69d63d0b54dbc6c2ca28ce60c435a8b732240248",
+      "name": "button/background/cta/pressed",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23057",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23057",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8185": {
+      "codeSyntax": {},
+      "description": "Inverted text color",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8185",
+      "key": "081b9098b5bea741ea80e2836c5d6d9b5b8f8927",
+      "name": "button/text-icon-fill/primary/default",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23049",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8186": {
+      "codeSyntax": {},
+      "description": "Used for inverted hover interaction button label",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8186",
+      "key": "b2041bd2acfddc5e16133ddc52572f481c58fba6",
+      "name": "button/text-icon-fill/primary/hover",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23039",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23043",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8187": {
+      "codeSyntax": {},
+      "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8187",
+      "key": "f89356dde0dcf4679ee4d5c3b9289a0be5dd46b8",
+      "name": "button/text-icon-fill/primary/pressed",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23040",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23045",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8188": {
+      "codeSyntax": {},
+      "description": "Primary brand color for text",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8188",
+      "key": "302cd9d7fcc64ab7ec663db663c98ec00895966e",
+      "name": "button/text-icon-fill/secondary/default",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23049",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8189": {
+      "codeSyntax": {},
+      "description": "Used for hover interaction",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8189",
+      "key": "9125fe2339e9ac74291375bb5a6409513239f335",
+      "name": "button/text-icon-fill/secondary/hover",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23043",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23039",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8190": {
+      "codeSyntax": {},
+      "description": "Used for pressed interaction",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8190",
+      "key": "e7740cb01d9ec95e93232ccc93e1b3e8d8d20cd1",
+      "name": "button/text-icon-fill/secondary/pressed",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23047",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23040",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8191": {
+      "codeSyntax": {},
+      "description": "Inverted text color",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8191",
+      "key": "50059c4af9aade3d1c88e413e386e450904a3f0b",
+      "name": "button/text-icon-fill/cta/default",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8192": {
+      "codeSyntax": {},
+      "description": "Used for inverted hover interaction button label",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8192",
+      "key": "a4ed4a24ac7d4a182091a93f5705ea36a1d92116",
+      "name": "button/text-icon-fill/cta/hover",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8193": {
+      "codeSyntax": {},
+      "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8193",
+      "key": "697e1d7bea1a24185c69b79f37995e3210194a5a",
+      "name": "button/text-icon-fill/cta/pressed",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8194": {
+      "codeSyntax": {},
+      "description": "Default background color (light mode) Used for inverted button",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8194",
+      "key": "8b14060550a24dc676635c063c003c65ebe34705",
+      "name": "button/border/secondary/default",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23049",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8195": {
+      "codeSyntax": {},
+      "description": "Additional background color (light mode)",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8195",
+      "key": "56e158c2e363da9448dbd008d828e2643784add0",
+      "name": "button/border/secondary/hover",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23043",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23039",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8196": {
+      "codeSyntax": {},
+      "description": "Additional background color (light mode) on primary-100",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8196",
+      "key": "a3b09adf7c378e635c885609dd69ae03ca3e042a",
+      "name": "button/border/secondary/pressed",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23047",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23040",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8197": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8197",
+      "key": "150b9ea7ca18b17ca63fe646604f316980edbe32",
+      "name": "button-inverted/background/primary/default",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8198": {
+      "codeSyntax": {},
+      "description": "Used for hover interaction",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8198",
+      "key": "a1f9afd29f9d3c3bc9f25012999af71d8cf33c85",
+      "name": "button-inverted/background/primary/hover",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23039",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23039",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8199": {
+      "codeSyntax": {},
+      "description": "Used for pressed interaction",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8199",
+      "key": "c6d4ebcbcad5df75c233eb1f7f6e40ff2850697b",
+      "name": "button-inverted/background/primary/pressed",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23040",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23040",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8200": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8200",
+      "key": "b197844e5445aac1aab66dc2a1a3076b63e15501",
+      "name": "button-inverted/background/secondary/default",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "a": 0,
+          "b": 1,
+          "g": 1,
+          "r": 1
+        },
+        "45703:17": {
+          "a": 0,
+          "b": 1,
+          "g": 1,
+          "r": 1
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8201": {
+      "codeSyntax": {},
+      "description": "Additional background color (light mode)",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8201",
+      "key": "41dd51fcfbccf4db328ae8b6625e1cbcfa8caedf",
+      "name": "button-inverted/background/secondary/hover",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23043",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23043",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8202": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8202",
+      "key": "c2f79f7ee8dc69fe5f86ecc5661e42c0715582be",
+      "name": "button-inverted/background/secondary/pressed",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23047",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23047",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8203": {
+      "codeSyntax": {},
+      "description": "Used for cta background",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8203",
+      "key": "3579f70d8b7f02ad02459b848859b9d2e1ea1f18",
+      "name": "button-inverted/background/cta/default",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23054",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23054",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8204": {
+      "codeSyntax": {},
+      "description": "Used for hover interaction",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8204",
+      "key": "c6049e79bb25af064393b5374654a288fc0faf29",
+      "name": "button-inverted/background/cta/hover",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23055",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23055",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8205": {
+      "codeSyntax": {},
+      "description": "Used for pressed interaction",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8205",
+      "key": "efcef66024d2c77038eb4c9583ae25670c6d527f",
+      "name": "button-inverted/background/cta/pressed",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23057",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23057",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8206": {
+      "codeSyntax": {},
+      "description": "Inverted text color",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8206",
+      "key": "e8cbc0e490bdd79df5aca2a096f6358a5885e8fe",
+      "name": "button-inverted/text-icon-fill/primary/default",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23049",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23049",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8207": {
+      "codeSyntax": {},
+      "description": "Used for inverted hover interaction button label",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8207",
+      "key": "6414a2c16137dd728406066adce09648970d9742",
+      "name": "button-inverted/text-icon-fill/primary/hover",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23043",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23043",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8208": {
+      "codeSyntax": {},
+      "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8208",
+      "key": "bdc0ddcbca9d60cbd2bc584255245c35dd271ccd",
+      "name": "button-inverted/text-icon-fill/primary/pressed",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23047",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23047",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8209": {
+      "codeSyntax": {},
+      "description": "Primary brand color for text",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8209",
+      "key": "ea4a2e98794eabccc4273e97a30b0dabf7ca9d45",
+      "name": "button-inverted/text-icon-fill/secondary/default",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8210": {
+      "codeSyntax": {},
+      "description": "Used for hover interaction",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8210",
+      "key": "078a34882697cf73c23cd1fbc1374688caf5eec9",
+      "name": "button-inverted/text-icon-fill/secondary/hover",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23039",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23039",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8211": {
+      "codeSyntax": {},
+      "description": "Used for pressed interaction",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8211",
+      "key": "b9fa155e3555ea043b3c31900cb813b9a83cd4da",
+      "name": "button-inverted/text-icon-fill/secondary/pressed",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23040",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23040",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8212": {
+      "codeSyntax": {},
+      "description": "Inverted text color",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8212",
+      "key": "8ccbe8558b034c6d89edc27708b6e823dfd5e24d",
+      "name": "button-inverted/text-icon-fill/cta/default",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8213": {
+      "codeSyntax": {},
+      "description": "Used for inverted hover interaction button label",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8213",
+      "key": "1d055cdcb365a64f6624fe1d1067d830ebf8dbaa",
+      "name": "button-inverted/text-icon-fill/cta/hover",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8214": {
+      "codeSyntax": {},
+      "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8214",
+      "key": "3df911e8cfcf6bc7eefa2d469b94b4ad37b09616",
+      "name": "button-inverted/text-icon-fill/cta/pressed",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8215": {
+      "codeSyntax": {},
+      "description": "Default background color (light mode) Used for inverted button",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8215",
+      "key": "97892aa4df478280f2871a409e437fc1b598b704",
+      "name": "button-inverted/border/secondary/default",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23118",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8216": {
+      "codeSyntax": {},
+      "description": "Additional background color (light mode)",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8216",
+      "key": "08307765f4b359bd457cfab79dafe24e6d953a31",
+      "name": "button-inverted/border/secondary/hover",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23039",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23039",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47736:8217": {
+      "codeSyntax": {},
+      "description": "Additional background color (light mode) on primary-100",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47736:8217",
+      "key": "5d9ae0c6f46a98b090ef10de36e052467a50597c",
+      "name": "button-inverted/border/secondary/pressed",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23040",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23040",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47743:3027": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47743:3027",
+      "key": "1519238915600d5e5894c9581eb69d863bce393a",
+      "name": "button/disabled",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23064",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23064",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:45703:23038"
+    },
+    "VariableID:47743:3028": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:47743:3028",
+      "key": "2142b0f96bd73449a96712ef2c0fc8e9bfa4273c",
+      "name": "button-inverted/disabled",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "45703:16": {
+          "id": "VariableID:45703:23065",
+          "type": "VARIABLE_ALIAS"
+        },
+        "45703:17": {
+          "id": "VariableID:45703:23065",
           "type": "VARIABLE_ALIAS"
         }
       },
