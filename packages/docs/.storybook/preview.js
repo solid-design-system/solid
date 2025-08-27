@@ -2,11 +2,22 @@ import './preview.css';
 import '../../styles/src/solid-styles.css';
 import '../../tokens/themes/dark.css';
 import '../../tokens/themes/light.css';
-import { storybookUtilities } from '../scripts/storybook/helper';
-import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer';
+import { withThemeByClassName } from '@storybook/addon-themes';
+import { storybookUtilities } from '../scripts/storybook/helper.js';
+import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer.js';
+import { LIGHT_THEME, DARK_THEME } from './modes.js';
+
+const theme = withThemeByClassName({
+  defaultTheme: LIGHT_THEME,
+  parentSelector: 'body',
+  themes: {
+    [DARK_THEME]: 'dark',
+    [LIGHT_THEME]: 'light'
+  }
+});
 
 export const preview = {
-  decorators: [],
+  decorators: [theme],
   parameters: {
     chromatic: {
       disableSnapshot: true

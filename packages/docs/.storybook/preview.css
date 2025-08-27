@@ -2,6 +2,11 @@
 @import '../../tokens/themes/tailwind.css';
 @import '../../components/src/solid-components.css';
 
+body.sb-show-main,
+.docs-story > div {
+  @apply !bg-white !text-black;
+}
+
 /* Lists */
 .sbdocs .sbdocs-content ol {
   @apply !list-decimal;
@@ -41,7 +46,15 @@ div[data-radix-scroll-area-viewport]:focus-visible {
   @apply before:border-transparent before:border-l-[3px];
 
   a {
-    @apply text-primary hover:text-primary-500 active:text-primary-800;
+    color: #00358e;
+
+    &:hover {
+      color: #466daf;
+    }
+
+    &:active {
+      color: #051530;
+    }
   }
 }
 
@@ -49,7 +62,7 @@ div[data-radix-scroll-area-viewport]:focus-visible {
   @apply before:border-accent;
 
   a {
-    @apply text-primary;
+    color: #00358e;
   }
 }
 
