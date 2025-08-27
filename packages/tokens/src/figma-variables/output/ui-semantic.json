@@ -2126,171 +2126,6 @@
         "value": "{core.grey.600}"
       }
     },
-    "button": {
-      "icon-fill": {
-        "primary": {
-          "description": "Default icon color ",
-          "type": "color",
-          "value": "{core.blue.default}"
-        },
-        "white": {
-          "description": "Inverted icon color",
-          "type": "color",
-          "value": "{core.white}"
-        },
-        "primary-100": {
-          "description": "Used for inverted hover interaction",
-          "type": "color",
-          "value": "{core.blue.100}"
-        },
-        "primary-200": {
-          "description": "Used for inverted pressed interaction",
-          "type": "color",
-          "value": "{core.blue.200}"
-        },
-        "primary-500": {
-          "description": "Used for hover interaction",
-          "type": "color",
-          "value": "{core.blue.500}"
-        },
-        "primary-800": {
-          "description": "Used for pressed interaction",
-          "type": "color",
-          "value": "{core.blue.800}"
-        },
-        "primary-alternative": {
-          "description": "Default icon color ",
-          "type": "color",
-          "value": "{core.blue.default}"
-        },
-        "primary-500-alternative": {
-          "description": "Used for hover interaction",
-          "type": "color",
-          "value": "{core.blue.500}"
-        },
-        "primary-800-alternative": {
-          "description": "Used for pressed interaction",
-          "type": "color",
-          "value": "{core.blue.800}"
-        }
-      },
-      "border": {
-        "primary": {
-          "description": "Used for buttons, select field, focus state",
-          "type": "color",
-          "value": "{core.blue.default}"
-        },
-        "primary-500": {
-          "description": "Used for hover interaction",
-          "type": "color",
-          "value": "{core.blue.500}"
-        },
-        "primary-800": {
-          "description": "Used for pressed interaction",
-          "type": "color",
-          "value": "{core.blue.800}"
-        }
-      },
-      "text": {
-        "primary": {
-          "description": "Primary brand color for text",
-          "type": "color",
-          "value": "{core.blue.default}"
-        },
-        "white": {
-          "description": "Inverted text color",
-          "type": "color",
-          "value": "{core.white}"
-        },
-        "primary-100": {
-          "description": "Used for inverted hover interaction button label",
-          "type": "color",
-          "value": "{core.blue.100}"
-        },
-        "primary-200": {
-          "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
-          "type": "color",
-          "value": "{core.blue.200}"
-        },
-        "primary-500": {
-          "description": "Used for hover interaction",
-          "type": "color",
-          "value": "{core.blue.500}"
-        },
-        "primary-800": {
-          "description": "Used for pressed interaction",
-          "type": "color",
-          "value": "{core.blue.800}"
-        },
-        "primary-alternative": {
-          "description": "Primary brand color for text",
-          "type": "color",
-          "value": "{core.blue.default}"
-        },
-        "primary-500-alternative": {
-          "description": "Used for hover interaction",
-          "type": "color",
-          "value": "{core.blue.500}"
-        },
-        "primary-800-alternative": {
-          "description": "Used for pressed interaction",
-          "type": "color",
-          "value": "{core.blue.800}"
-        }
-      },
-      "background": {
-        "primary": {
-          "description": "Used for pressed interaction",
-          "type": "color",
-          "value": "{core.blue.default}"
-        },
-        "white": {
-          "description": "Default background color (light mode) Used for inverted button",
-          "type": "color",
-          "value": "{core.white}"
-        },
-        "primary-100": {
-          "description": "Additional background color (light mode)",
-          "type": "color",
-          "value": "{core.blue.100}"
-        },
-        "primary-200": {
-          "description": "Additional background color (light mode) on primary-100",
-          "type": "color",
-          "value": "{core.blue.200}"
-        },
-        "primary-500": {
-          "description": "Used for hover interaction, badge",
-          "type": "color",
-          "value": "{core.blue.500}"
-        },
-        "primary-800": {
-          "description": "Used for pressed interaction",
-          "type": "color",
-          "value": "{core.blue.800}"
-        },
-        "primary-100-alternative": {
-          "description": "Additional background color (light mode)",
-          "type": "color",
-          "value": "{core.blue.100}"
-        },
-        "primary-200-alternative": {
-          "description": "Additional background color (light mode) on primary-100",
-          "type": "color",
-          "value": "{core.blue.200}"
-        },
-        "primary-500-alternative": {
-          "description": "Used for hover interaction, badge",
-          "type": "color",
-          "value": "{core.blue.500}"
-        },
-        "primary-800-alternative": {
-          "description": "Used for pressed interaction",
-          "type": "color",
-          "value": "{core.blue.800}"
-        }
-      }
-    },
     "selection-control": {
       "border": {
         "neutral-800": {
@@ -2317,6 +2152,262 @@
           "type": "color",
           "value": "{core.white}"
         }
+      }
+    },
+    "button": {
+      "background": {
+        "primary": {
+          "default": {
+            "type": "color",
+            "value": "{core.blue.default}"
+          },
+          "hover": {
+            "description": "Used for hover interaction",
+            "type": "color",
+            "value": "{core.blue.500}"
+          },
+          "pressed": {
+            "description": "Used for pressed interaction",
+            "type": "color",
+            "value": "{core.blue.800}"
+          }
+        },
+        "secondary": {
+          "default": {
+            "type": "color",
+            "value": "{core.white}"
+          },
+          "hover": {
+            "description": "Additional background color (light mode)",
+            "type": "color",
+            "value": "{core.blue.100}"
+          },
+          "pressed": {
+            "type": "color",
+            "value": "{core.blue.200}"
+          }
+        },
+        "cta": {
+          "default": {
+            "description": "Used for cta background",
+            "type": "color",
+            "value": "{core.green.500}"
+          },
+          "hover": {
+            "description": "Used for hover interaction",
+            "type": "color",
+            "value": "{core.green.550}"
+          },
+          "pressed": {
+            "description": "Used for pressed interaction",
+            "type": "color",
+            "value": "{core.green.700}"
+          }
+        }
+      },
+      "text-icon-fill": {
+        "primary": {
+          "default": {
+            "description": "Inverted text color",
+            "type": "color",
+            "value": "{core.white}"
+          },
+          "hover": {
+            "description": "Used for inverted hover interaction button label",
+            "type": "color",
+            "value": "{core.blue.100}"
+          },
+          "pressed": {
+            "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+            "type": "color",
+            "value": "{core.blue.200}"
+          }
+        },
+        "secondary": {
+          "default": {
+            "description": "Primary brand color for text",
+            "type": "color",
+            "value": "{core.blue.default}"
+          },
+          "hover": {
+            "description": "Used for hover interaction",
+            "type": "color",
+            "value": "{core.blue.500}"
+          },
+          "pressed": {
+            "description": "Used for pressed interaction",
+            "type": "color",
+            "value": "{core.blue.800}"
+          }
+        },
+        "cta": {
+          "default": {
+            "description": "Inverted text color",
+            "type": "color",
+            "value": "{core.white}"
+          },
+          "hover": {
+            "description": "Used for inverted hover interaction button label",
+            "type": "color",
+            "value": "{core.white}"
+          },
+          "pressed": {
+            "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+            "type": "color",
+            "value": "{core.white}"
+          }
+        }
+      },
+      "border": {
+        "secondary": {
+          "default": {
+            "description": "Default background color (light mode) Used for inverted button",
+            "type": "color",
+            "value": "{core.blue.default}"
+          },
+          "hover": {
+            "description": "Additional background color (light mode)",
+            "type": "color",
+            "value": "{core.blue.500}"
+          },
+          "pressed": {
+            "description": "Additional background color (light mode) on primary-100",
+            "type": "color",
+            "value": "{core.blue.800}"
+          }
+        }
+      },
+      "disabled": {
+        "type": "color",
+        "value": "{core.grey.500}"
+      }
+    },
+    "button-inverted": {
+      "background": {
+        "primary": {
+          "default": {
+            "type": "color",
+            "value": "{core.white}"
+          },
+          "hover": {
+            "description": "Used for hover interaction",
+            "type": "color",
+            "value": "{core.blue.100}"
+          },
+          "pressed": {
+            "description": "Used for pressed interaction",
+            "type": "color",
+            "value": "{core.blue.200}"
+          }
+        },
+        "secondary": {
+          "default": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          },
+          "hover": {
+            "description": "Additional background color (light mode)",
+            "type": "color",
+            "value": "{core.blue.500}"
+          },
+          "pressed": {
+            "type": "color",
+            "value": "{core.blue.800}"
+          }
+        },
+        "cta": {
+          "default": {
+            "description": "Used for cta background",
+            "type": "color",
+            "value": "{core.green.500}"
+          },
+          "hover": {
+            "description": "Used for hover interaction",
+            "type": "color",
+            "value": "{core.green.550}"
+          },
+          "pressed": {
+            "description": "Used for pressed interaction",
+            "type": "color",
+            "value": "{core.green.700}"
+          }
+        }
+      },
+      "text-icon-fill": {
+        "primary": {
+          "default": {
+            "description": "Inverted text color",
+            "type": "color",
+            "value": "{core.blue.default}"
+          },
+          "hover": {
+            "description": "Used for inverted hover interaction button label",
+            "type": "color",
+            "value": "{core.blue.500}"
+          },
+          "pressed": {
+            "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+            "type": "color",
+            "value": "{core.blue.800}"
+          }
+        },
+        "secondary": {
+          "default": {
+            "description": "Primary brand color for text",
+            "type": "color",
+            "value": "{core.white}"
+          },
+          "hover": {
+            "description": "Used for hover interaction",
+            "type": "color",
+            "value": "{core.blue.100}"
+          },
+          "pressed": {
+            "description": "Used for pressed interaction",
+            "type": "color",
+            "value": "{core.blue.200}"
+          }
+        },
+        "cta": {
+          "default": {
+            "description": "Inverted text color",
+            "type": "color",
+            "value": "{core.white}"
+          },
+          "hover": {
+            "description": "Used for inverted hover interaction button label",
+            "type": "color",
+            "value": "{core.white}"
+          },
+          "pressed": {
+            "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+            "type": "color",
+            "value": "{core.white}"
+          }
+        }
+      },
+      "border": {
+        "secondary": {
+          "default": {
+            "description": "Default background color (light mode) Used for inverted button",
+            "type": "color",
+            "value": "{core.white}"
+          },
+          "hover": {
+            "description": "Additional background color (light mode)",
+            "type": "color",
+            "value": "{core.blue.100}"
+          },
+          "pressed": {
+            "description": "Additional background color (light mode) on primary-100",
+            "type": "color",
+            "value": "{core.blue.200}"
+          }
+        }
+      },
+      "disabled": {
+        "type": "color",
+        "value": "{core.grey.600}"
       }
     },
     "outline": {
@@ -3892,171 +3983,6 @@
         "value": "{core.grey.600}"
       }
     },
-    "button": {
-      "icon-fill": {
-        "primary": {
-          "description": "Default icon color ",
-          "type": "color",
-          "value": "{core.white}"
-        },
-        "white": {
-          "description": "Inverted icon color",
-          "type": "color",
-          "value": "{core.blue.default}"
-        },
-        "primary-100": {
-          "description": "Used for inverted hover interaction",
-          "type": "color",
-          "value": "{core.blue.500}"
-        },
-        "primary-200": {
-          "description": "Used for inverted pressed interaction",
-          "type": "color",
-          "value": "{core.blue.700}"
-        },
-        "primary-500": {
-          "description": "Used for hover interaction",
-          "type": "color",
-          "value": "{core.blue.100}"
-        },
-        "primary-800": {
-          "description": "Used for pressed interaction",
-          "type": "color",
-          "value": "{core.white}"
-        },
-        "primary-alternative": {
-          "description": "Default icon color ",
-          "type": "color",
-          "value": "{core.blue.default}"
-        },
-        "primary-500-alternative": {
-          "description": "Used for hover interaction",
-          "type": "color",
-          "value": "{core.blue.500}"
-        },
-        "primary-800-alternative": {
-          "description": "Used for pressed interaction",
-          "type": "color",
-          "value": "{core.blue.800}"
-        }
-      },
-      "border": {
-        "primary": {
-          "description": "Used for buttons, select field, focus state",
-          "type": "color",
-          "value": "{core.white}"
-        },
-        "primary-500": {
-          "description": "Used for hover interaction",
-          "type": "color",
-          "value": "{core.blue.100}"
-        },
-        "primary-800": {
-          "description": "Used for pressed interaction",
-          "type": "color",
-          "value": "{core.blue.200}"
-        }
-      },
-      "text": {
-        "primary": {
-          "description": "Primary brand color for text",
-          "type": "color",
-          "value": "{core.white}"
-        },
-        "white": {
-          "description": "Inverted text color",
-          "type": "color",
-          "value": "{core.blue.default}"
-        },
-        "primary-100": {
-          "description": "Used for inverted hover interaction button label",
-          "type": "color",
-          "value": "{core.blue.500}"
-        },
-        "primary-200": {
-          "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
-          "type": "color",
-          "value": "{core.blue.700}"
-        },
-        "primary-500": {
-          "description": "Used for hover interaction",
-          "type": "color",
-          "value": "{core.blue.100}"
-        },
-        "primary-800": {
-          "description": "Used for pressed interaction",
-          "type": "color",
-          "value": "{core.white}"
-        },
-        "primary-alternative": {
-          "description": "Primary brand color for text",
-          "type": "color",
-          "value": "{core.blue.default}"
-        },
-        "primary-500-alternative": {
-          "description": "Used for hover interaction",
-          "type": "color",
-          "value": "{core.blue.500}"
-        },
-        "primary-800-alternative": {
-          "description": "Used for pressed interaction",
-          "type": "color",
-          "value": "{core.blue.800}"
-        }
-      },
-      "background": {
-        "primary": {
-          "description": "Used for pressed interaction",
-          "type": "color",
-          "value": "{core.white}"
-        },
-        "white": {
-          "description": "Default background color (light mode) Used for inverted button",
-          "type": "color",
-          "value": "{core.white}"
-        },
-        "primary-100": {
-          "description": "Additional background color (light mode)",
-          "type": "color",
-          "value": "{core.blue.700}"
-        },
-        "primary-200": {
-          "description": "Additional background color (light mode) on primary-100",
-          "type": "color",
-          "value": "{core.blue.500}"
-        },
-        "primary-500": {
-          "description": "Used for hover interaction, badge",
-          "type": "color",
-          "value": "{core.blue.100}"
-        },
-        "primary-800": {
-          "description": "Used for pressed interaction",
-          "type": "color",
-          "value": "{core.blue.200}"
-        },
-        "primary-100-alternative": {
-          "description": "Additional background color (light mode)",
-          "type": "color",
-          "value": "{core.blue.100}"
-        },
-        "primary-200-alternative": {
-          "description": "Additional background color (light mode) on primary-100",
-          "type": "color",
-          "value": "{core.blue.200}"
-        },
-        "primary-500-alternative": {
-          "description": "Used for hover interaction, badge",
-          "type": "color",
-          "value": "{core.blue.500}"
-        },
-        "primary-800-alternative": {
-          "description": "Used for pressed interaction",
-          "type": "color",
-          "value": "{core.blue.800}"
-        }
-      }
-    },
     "selection-control": {
       "border": {
         "neutral-800": {
@@ -4083,6 +4009,262 @@
           "type": "color",
           "value": "rgba(255, 255, 255, 0.00)"
         }
+      }
+    },
+    "button": {
+      "background": {
+        "primary": {
+          "default": {
+            "type": "color",
+            "value": "{core.white}"
+          },
+          "hover": {
+            "description": "Used for hover interaction",
+            "type": "color",
+            "value": "{core.blue.100}"
+          },
+          "pressed": {
+            "description": "Used for pressed interaction",
+            "type": "color",
+            "value": "{core.blue.200}"
+          }
+        },
+        "secondary": {
+          "default": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          },
+          "hover": {
+            "description": "Additional background color (light mode)",
+            "type": "color",
+            "value": "{core.blue.700}"
+          },
+          "pressed": {
+            "type": "color",
+            "value": "{core.blue.500}"
+          }
+        },
+        "cta": {
+          "default": {
+            "description": "Used for cta background",
+            "type": "color",
+            "value": "{core.green.500}"
+          },
+          "hover": {
+            "description": "Used for hover interaction",
+            "type": "color",
+            "value": "{core.green.550}"
+          },
+          "pressed": {
+            "description": "Used for pressed interaction",
+            "type": "color",
+            "value": "{core.green.700}"
+          }
+        }
+      },
+      "text-icon-fill": {
+        "primary": {
+          "default": {
+            "description": "Inverted text color",
+            "type": "color",
+            "value": "{core.blue.default}"
+          },
+          "hover": {
+            "description": "Used for inverted hover interaction button label",
+            "type": "color",
+            "value": "{core.blue.500}"
+          },
+          "pressed": {
+            "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+            "type": "color",
+            "value": "{core.blue.700}"
+          }
+        },
+        "secondary": {
+          "default": {
+            "description": "Primary brand color for text",
+            "type": "color",
+            "value": "{core.white}"
+          },
+          "hover": {
+            "description": "Used for hover interaction",
+            "type": "color",
+            "value": "{core.blue.100}"
+          },
+          "pressed": {
+            "description": "Used for pressed interaction",
+            "type": "color",
+            "value": "{core.blue.200}"
+          }
+        },
+        "cta": {
+          "default": {
+            "description": "Inverted text color",
+            "type": "color",
+            "value": "{core.white}"
+          },
+          "hover": {
+            "description": "Used for inverted hover interaction button label",
+            "type": "color",
+            "value": "{core.white}"
+          },
+          "pressed": {
+            "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+            "type": "color",
+            "value": "{core.white}"
+          }
+        }
+      },
+      "border": {
+        "secondary": {
+          "default": {
+            "description": "Default background color (light mode) Used for inverted button",
+            "type": "color",
+            "value": "{core.white}"
+          },
+          "hover": {
+            "description": "Additional background color (light mode)",
+            "type": "color",
+            "value": "{core.blue.100}"
+          },
+          "pressed": {
+            "description": "Additional background color (light mode) on primary-100",
+            "type": "color",
+            "value": "{core.blue.200}"
+          }
+        }
+      },
+      "disabled": {
+        "type": "color",
+        "value": "{core.grey.500}"
+      }
+    },
+    "button-inverted": {
+      "background": {
+        "primary": {
+          "default": {
+            "type": "color",
+            "value": "{core.white}"
+          },
+          "hover": {
+            "description": "Used for hover interaction",
+            "type": "color",
+            "value": "{core.blue.100}"
+          },
+          "pressed": {
+            "description": "Used for pressed interaction",
+            "type": "color",
+            "value": "{core.blue.200}"
+          }
+        },
+        "secondary": {
+          "default": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          },
+          "hover": {
+            "description": "Additional background color (light mode)",
+            "type": "color",
+            "value": "{core.blue.500}"
+          },
+          "pressed": {
+            "type": "color",
+            "value": "{core.blue.800}"
+          }
+        },
+        "cta": {
+          "default": {
+            "description": "Used for cta background",
+            "type": "color",
+            "value": "{core.green.500}"
+          },
+          "hover": {
+            "description": "Used for hover interaction",
+            "type": "color",
+            "value": "{core.green.550}"
+          },
+          "pressed": {
+            "description": "Used for pressed interaction",
+            "type": "color",
+            "value": "{core.green.700}"
+          }
+        }
+      },
+      "text-icon-fill": {
+        "primary": {
+          "default": {
+            "description": "Inverted text color",
+            "type": "color",
+            "value": "{core.blue.default}"
+          },
+          "hover": {
+            "description": "Used for inverted hover interaction button label",
+            "type": "color",
+            "value": "{core.blue.500}"
+          },
+          "pressed": {
+            "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+            "type": "color",
+            "value": "{core.blue.800}"
+          }
+        },
+        "secondary": {
+          "default": {
+            "description": "Primary brand color for text",
+            "type": "color",
+            "value": "{core.white}"
+          },
+          "hover": {
+            "description": "Used for hover interaction",
+            "type": "color",
+            "value": "{core.blue.100}"
+          },
+          "pressed": {
+            "description": "Used for pressed interaction",
+            "type": "color",
+            "value": "{core.blue.200}"
+          }
+        },
+        "cta": {
+          "default": {
+            "description": "Inverted text color",
+            "type": "color",
+            "value": "{core.white}"
+          },
+          "hover": {
+            "description": "Used for inverted hover interaction button label",
+            "type": "color",
+            "value": "{core.white}"
+          },
+          "pressed": {
+            "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+            "type": "color",
+            "value": "{core.white}"
+          }
+        }
+      },
+      "border": {
+        "secondary": {
+          "default": {
+            "description": "Default background color (light mode) Used for inverted button",
+            "type": "color",
+            "value": "{core.white}"
+          },
+          "hover": {
+            "description": "Additional background color (light mode)",
+            "type": "color",
+            "value": "{core.blue.100}"
+          },
+          "pressed": {
+            "description": "Additional background color (light mode) on primary-100",
+            "type": "color",
+            "value": "{core.blue.200}"
+          }
+        }
+      },
+      "disabled": {
+        "type": "color",
+        "value": "{core.grey.600}"
       }
     },
     "outline": {
