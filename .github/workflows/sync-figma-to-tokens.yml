@@ -19,7 +19,7 @@ on:
     branches:
       - main
       - develop
-      - next        # Added for code freeze periods
+      - next   
       - feat/**
 
 jobs:
