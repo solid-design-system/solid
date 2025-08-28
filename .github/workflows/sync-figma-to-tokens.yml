@@ -43,7 +43,7 @@ jobs:
           else
             echo "FIGMA_FILE_ID=${{ vars.FIGMA_FILE_ID }}" >> $GITHUB_ENV
           fi
-          
+         
           # Set BRANCH_NAME and PR_TITLE based on trigger type
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             echo "BRANCH_NAME=${{ github.event.inputs.branch_name }}" >> $GITHUB_ENV
@@ -93,11 +93,12 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
+          token: ${{ secrets.PAT_TOKEN_BLAGOJA }}
           commit-message: Update variables and styles from Figma
           title: ${{ env.PR_TITLE }}
           body: |
             Update tokens from Figma for figma file/branch id: ${{ env.FIGMA_FILE_ID }}
-            
+           
             Triggered by: ${{ github.event_name }}
             ${{ github.event_name == 'push' && format('Push to branch: {0}', github.ref_name) || '' }}
           branch: ${{ env.BRANCH_NAME }}
