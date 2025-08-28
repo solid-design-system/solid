@@ -7,7 +7,6 @@ on:
       - develop
       - next        # Added for code freeze periods
       - feat/**
-
   workflow_dispatch:
     # inputs:
     #   figma_file_id:
