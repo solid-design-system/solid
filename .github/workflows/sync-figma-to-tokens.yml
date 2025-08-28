@@ -76,6 +76,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
+          token: ${{ secrets.PAT_TOKEN_BLAGOJA }}
           commit-message: Update variables and styles from Figma
           title: ${{ env.PR_TITLE }}
           body: |
