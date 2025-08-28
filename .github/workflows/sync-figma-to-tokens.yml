@@ -1,6 +1,13 @@
 name: Sync Figma variables to tokens
 
 on:
+  push:
+    branches:
+      - main
+      - develop
+      - next        # Added for code freeze periods
+      - feat/**
+
   workflow_dispatch:
     inputs:
       figma_file_id:
@@ -15,12 +22,6 @@ on:
         description: "The name for the pull request. If not provided, a default name will be used."
         required: true
         default: "feat: ✨ Update tokens from Figma"
-  push:
-    branches:
-      - main
-      - develop
-      - next   
-      - feat/**
 
 jobs:
   sync-figma-to-tokens:
