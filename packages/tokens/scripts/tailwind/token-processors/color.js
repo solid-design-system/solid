@@ -22,16 +22,6 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     });
     const { type, name, properties } = this.getTokenInfo(path.join('-'), `var(${variable})`, variant);
 
-    // TODO: Replace by check if variant !== default
-    if (variant !== 'light') {
-      return {
-        type: 'color',
-        name: variable,
-        value,
-        variant
-      };
-    }
-
     return [
       {
         type,

@@ -2,13 +2,6 @@
  * Default configuration for the Tailwind v4 plugin
  */
 export const DEFAULT_CONFIG = {
-  // TODO: Theme configuration with sensible defaults
-  themeSelectors: {
-    light: ':root',
-    dark: '[data-theme="dark"]',
-    system: '@media (prefers-color-scheme: dark)'
-  },
-
   customVariants: {
     hover: '&:hover:not([disabled])',
     focus: '&:focus:not([disabled])'
