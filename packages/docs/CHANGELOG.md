@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.28.6
+
+### Patch Changes
+
+- Fixed a11y tests to use Storybook accessibility settings to skip specific rules instead of relying on custom tags. _[`#2471`](https://github.com/solid-design-system/solid/pull/2471) [`930b84a`](https://github.com/solid-design-system/solid/commit/930b84a255bc1c27af2085e37cef226fa0910fbd) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.28.5
 
 ### Patch Changes
