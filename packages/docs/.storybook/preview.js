@@ -1,14 +1,30 @@
-import '../../styles/src/solid-styles.css';
 import './preview.css';
-import 'normalize.css';
-import { storybookUtilities } from '../scripts/storybook/helper';
-import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer';
+import '../../styles/src/solid-styles.css';
+import '../../tokens/themes/dark.css';
+import '../../tokens/themes/light.css';
+import { withThemeByClassName } from '@storybook/addon-themes';
+import { storybookUtilities } from '../scripts/storybook/helper.js';
+import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer.js';
+import { LIGHT_THEME, DARK_THEME } from './modes.js';
+
+const theme = withThemeByClassName({
+  defaultTheme: LIGHT_THEME,
+  parentSelector: 'body',
+  themes: {
+    [DARK_THEME]: 'dark',
+    [LIGHT_THEME]: 'light'
+  }
+});
 
 export const preview = {
-  decorators: [],
+  decorators: [theme],
   parameters: {
     chromatic: {
-      disableSnapshot: true
+      disableSnapshot: true,
+      modes: {
+        light: { theme: 'light' },
+        dark: { theme: 'dark' }
+      }
     },
     docs: {
       story: { inline: true },
