@@ -9,19 +9,19 @@ on:
       - feat/**
 
   workflow_dispatch:
-    inputs:
-      figma_file_id:
-        description: "This can either be a branch_id or the id for the main Figma file"
-        required: false
-        default: ""
-      branch_name:
-        description: "The name for the branch, which should be created for the pull request"
-        required: true
-        default: "feat/update-tokens-from-figma"
-      pull_request_name:
-        description: "The name for the pull request. If not provided, a default name will be used."
-        required: true
-        default: "feat: ✨ Update tokens from Figma"
+    # inputs:
+    #   figma_file_id:
+    #     description: "This can either be a branch_id or the id for the main Figma file"
+    #     required: false
+    #     default: ""
+    #   branch_name:
+    #     description: "The name for the branch, which should be created for the pull request"
+    #     required: true
+    #     default: "feat/update-tokens-from-figma"
+    #   pull_request_name:
+    #     description: "The name for the pull request. If not provided, a default name will be used."
+    #     required: true
+    #     default: "feat: ✨ Update tokens from Figma"
 
 jobs:
   sync-figma-to-tokens:
