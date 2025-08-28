@@ -20,7 +20,11 @@ export const preview = {
   decorators: [theme],
   parameters: {
     chromatic: {
-      disableSnapshot: true
+      disableSnapshot: true,
+      modes: {
+        light: { theme: 'light' },
+        dark: { theme: 'dark' }
+      }
     },
     docs: {
       story: { inline: true },
