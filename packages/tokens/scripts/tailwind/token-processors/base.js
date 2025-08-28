@@ -6,7 +6,6 @@ import { getTokenValue, toKebabCase } from './utils.js';
 export class BaseTokenProcessor {
   constructor(options = {}) {
     this.options = options;
-    this.rootPropertyName = options.rootPropertyName || '_';
   }
 
   /**

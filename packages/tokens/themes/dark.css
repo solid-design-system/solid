@@ -1,5 +1,6 @@
 :root, .dark {
   color-scheme: dark;
+
   --sd-color-gradient-vertical-white-transparent: linear-gradient(0deg, rgba(255, 255, 255, 0) 5%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 100%);
   --sd-color-gradient-vertical-black-40-transparent: linear-gradient(0deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%);
   --sd-color-gradient-vertical-transparent-black-40: linear-gradient(180deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%);

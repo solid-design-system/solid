@@ -2,9 +2,6 @@
  * Default configuration for the Tailwind v4 plugin
  */
 export const DEFAULT_CONFIG = {
-  // Token processing
-  rootPropertyName: '_',
-
   // TODO: Theme configuration with sensible defaults
   themeSelectors: {
     light: ':root',
@@ -12,7 +9,6 @@ export const DEFAULT_CONFIG = {
     system: '@media (prefers-color-scheme: dark)'
   },
 
-  // Custom variants for interactive states
   customVariants: {
     hover: '&:hover:not([disabled])',
     focus: '&:focus:not([disabled])'

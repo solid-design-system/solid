@@ -96,53 +96,54 @@ export class TokenProcessingEngine {
    * Categorize processed token into appropriate result buckets
    */
   categorizeProcessedToken(processed, result) {
+    const variable = `${processed.name}: ${processed.value};`;
+    const store = processed.variant === 'default' ? 'baseVars' : processed.variant || 'baseVars';
+
+    if (!result[store]) result[store] = [];
+
     switch (processed.type) {
       case 'color': {
-        const varString = `${processed.name}: ${processed.value};`;
-        const store = processed.variant === 'default' ? 'baseVars' : processed.variant;
-
-        if (!result[store]) result[store] = [];
-
-        result[store].push(varString);
+        this.categorize(store, variable, result);
         break;
       }
 
       case 'spacing': {
-        const spacingVarString = `${processed.name}: ${processed.value};`;
-        result.spacing.push(spacingVarString);
+        this.categorize('spacing', variable, result);
         break;
       }
 
       case 'typography': {
-        const typographyVarString = `${processed.name}: ${processed.value};`;
-        result.baseVars.push(typographyVarString);
+        this.categorize(store, variable, result);
         break;
       }
 
       case 'shadow': {
-        const shadowVarString = `${processed.name}: ${processed.value};`;
-        result.baseVars.push(shadowVarString);
+        this.categorize(store, variable, result);
         break;
       }
 
       case 'animation': {
-        const animationVarString = `${processed.name}: ${processed.value};`;
-        result.baseVars.push(animationVarString);
+        this.categorize(store, variable, result);
         break;
       }
 
       case 'keyframes':
-        result.baseVars.push(processed.value);
+        this.categorize(store, processed.value, result);
         break;
 
       case 'utility':
         if (processed.properties) {
-          result.utilities.push(processed.properties);
+          this.categorize('utilities', processed.properties, result);
         }
         break;
 
       default:
         console.warn(`Unknown processed token type: ${processed.type}`);
     }
+  }
+
+  categorize(store, variable, result) {
+    if (result[store].includes(variable)) return;
+    result[store].push(variable);
   }
 }

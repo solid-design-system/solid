@@ -107,10 +107,11 @@ export class TailwindCSSGenerator {
     );
 
     return variants
-      .map(
-        variant =>
-          `/* build:theme[${variant}] */\n:root, .${variant} {\n${this.css.indent(`color-scheme: ${variant};`)}\n${this.css.indent(this.css.join(processedTokens[variant], '\n'))}\n}\n/* build:theme */`
-      )
+      .map(variant => {
+        const scheme = ['light', 'dark'].includes(variant) ? `color-scheme: ${variant};\n` : null;
+        const variables = [scheme, ...processedTokens[variant]];
+        return `/* build:theme[${variant}] */\n:root, .${variant} {\n${this.css.indent(this.css.join(variables, '\n'))}\n}\n/* build:theme */`;
+      })
       .join('\n\n');
   }
 }
