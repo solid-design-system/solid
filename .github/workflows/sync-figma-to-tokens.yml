@@ -29,17 +29,31 @@ jobs:
       contents: write
       pull-requests: write
 
-    # Use manual input if provided, otherwise use repo variable (no hardcoded fallback)
-    env:
-      FIGMA_FILE_ID: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.figma_file_id != '') && github.event.inputs.figma_file_id || vars.FIGMA_FILE_ID }}
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Validate Figma File ID
+      - name: Set environment variables
+        run: |
+          # Set FIGMA_FILE_ID
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ github.event.inputs.figma_file_id }}" != "" ]]; then
+            echo "FIGMA_FILE_ID=${{ github.event.inputs.figma_file_id }}" >> $GITHUB_ENV
+          else
+            echo "FIGMA_FILE_ID=${{ vars.FIGMA_FILE_ID }}" >> $GITHUB_ENV
+          fi
+          
+          # Set BRANCH_NAME and PR_TITLE based on trigger type
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "BRANCH_NAME=${{ github.event.inputs.branch_name }}" >> $GITHUB_ENV
+            echo "PR_TITLE=${{ github.event.inputs.pull_request_name }}" >> $GITHUB_ENV
+          else
+            echo "BRANCH_NAME=feat/update-tokens-from-figma-auto" >> $GITHUB_ENV
+            echo "PR_TITLE=feat: ✨ Update tokens from Figma (auto-sync)" >> $GITHUB_ENV
+          fi
+
+      - name: Validate environment variables
         run: |
           if [ -z "$FIGMA_FILE_ID" ]; then
             echo "❌ FIGMA_FILE_ID is required. Please either:"
@@ -47,7 +61,13 @@ jobs:
             echo "   2. Provide figma_file_id as input when running manually"
             exit 1
           fi
+          if [ -z "$BRANCH_NAME" ]; then
+            echo "❌ BRANCH_NAME is empty"
+            exit 1
+          fi
           echo "✅ Using Figma File ID: $FIGMA_FILE_ID"
+          echo "✅ Using Branch Name: $BRANCH_NAME"
+          echo "✅ Using PR Title: $PR_TITLE"
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -74,10 +94,13 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           commit-message: Update variables and styles from Figma
-          title: ${{ github.event.inputs.pull_request_name }}
+          title: ${{ env.PR_TITLE }}
           body: |
-            Update tokens from Figma for figma branch id ${{ github.event.inputs.figma_file_id }}"
-          branch: ${{ github.event.inputs.branch_name }}
+            Update tokens from Figma for figma file/branch id: ${{ env.FIGMA_FILE_ID }}
+            
+            Triggered by: ${{ github.event_name }}
+            ${{ github.event_name == 'push' && format('Push to branch: {0}', github.ref_name) || '' }}
+          branch: ${{ env.BRANCH_NAME }}
           reviewers: |
             smfonseca
             auroraVasconcelos
