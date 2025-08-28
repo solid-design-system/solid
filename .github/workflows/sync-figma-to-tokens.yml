@@ -2,11 +2,7 @@ name: Sync Figma variables to tokens
 
 on:
   push:
-    branches:
-      - 'main'
-      - 'develop'
-      - 'next'        # Added for code freeze periods
-      - 'feat/**'
+    branches: [ "main", "develop", "next", "feat/**"]
   workflow_dispatch:
     inputs:
       figma_file_id:
