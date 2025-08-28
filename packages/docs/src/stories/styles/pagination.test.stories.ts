@@ -21,7 +21,7 @@ const html = String.raw;
 export default {
   title: 'Styles/sd-pagination/Screenshots: sd-pagination',
   component: 'sd-pagination',
-  tags: ['!autodocs', 'skip-a11y-[landmark-unique]'],
+  tags: ['!autodocs'],
   parameters: {
     ...parameters,
     controls: { disable: true },

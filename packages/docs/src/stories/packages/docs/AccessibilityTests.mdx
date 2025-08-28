@@ -13,17 +13,11 @@ To execute the accessibility tests, the command `pnpm test` must be run.
 In case it is being run without any preview running, the command will `build, preview and run the tests`.
 In case a preview is already running on a separate terminal, the command will just `run the tests`.
 
-## Using custom tags for accessibility tests
+## Using a11y configuration to skip rules
 
-Custom tags can be used in Storybook stories for better control and customization of
-accessibility testing. These tags can help you skip tests globally or
-target specific rules for exceptions. Here's how to use them:
+In Storybook stories, it's possible to configure accessibility settings to skip specific rules. This can be helpful when certain rules are irrelevant or when addressing an issue is planned for later. Here's how to use them:
 
-### `skip-a11y`
-
-The `skip-a11y` tag can be added to a story to completely skip all accessibility checks
-for that particular story. This can be useful for drafts or components under development
-that are not yet ready for a11y testing.
+Inside the `parameters` object of a story, you can add an `a11y` property with a `config` object. Within this config, you can specify the `rules` array, where each rule can be enabled or disabled using its `id`.
 
 **Example:**
 
@@ -31,27 +25,21 @@ that are not yet ready for a11y testing.
 export default {
   title: 'Components/sd-component',
   component: 'sd-component',
-  tags: ['skip-a11y']
+  parameters: {
+    ...parameters,
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'aria-required-parent',
+            enabled: false
+          }
+        ]
+      }
+    }
+  }
 };
 ```
-
-### skip-a11y-[specific rules]
-
-To skip specific accessibility rules for a story, use the skip-a11y-[rule names] format.
-This can be helpful when certain rules are irrelevant or when addressing an issue is planned for later.
-Rules are set between square brackets and separated by commas.
-
-**Example:**
-
-```js
-export default {
-  title: 'Components/sd-component',
-  component: 'sd-component',
-  tags: ['skip-a11y-[color-contrast, label]']
-};
-```
-
-In this example, only the color-contrast and label rules are skipped during testing.
 
 ## Debugging failing accessibility tests
 
