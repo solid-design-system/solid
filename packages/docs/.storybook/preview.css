@@ -1,6 +1,7 @@
 @import 'tailwindcss/preflight';
 @import '../../tokens/themes/tailwind.css';
 @import '../../components/src/solid-components.css';
+@import '../../styles/src/solid-styles.css';
 
 body.sb-show-main,
 .docs-story > div {

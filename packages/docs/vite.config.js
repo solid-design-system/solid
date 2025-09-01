@@ -1,3 +1,4 @@
+import { processTailwind } from '../components/scripts/esbuild-plugin-lit-tailwind-and-minify.js';
 import { replaceCodePlugin as ViteReplaceCodePlugin } from 'vite-plugin-replace';
 import componentsPackageJson from '../components/package.json';
 import customElementConfig from '../components/custom-elements-manifest.config.js';
@@ -39,6 +40,16 @@ export default () => {
           ['solid-custom-tags', 'remove-html-members'].includes(plugin.name)
         )
       }),
+      {
+        name: 'docs-css-processor',
+        async transform(code, id) {
+          if (/\.css$/i.test(id)) {
+            code = await processTailwind(code, { minify: true, storybook: true });
+          }
+
+          return { code };
+        }
+      },
       ViteReplaceCodePlugin({
         // replace %COMPONENTS-VERSION% with version from ../components/package.json
         replacements: [
@@ -68,6 +79,9 @@ export default () => {
           }
         ]
       })
-    ]
+    ],
+    css: {
+      postcss: {}
+    }
   };
 };

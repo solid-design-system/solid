@@ -31,20 +31,17 @@ export class TailwindCSSGenerator {
    * Generate import statement
    */
   generateImport() {
-    return this.config.includeImport
-      ? `
-@layer theme, base, components, utilities;
+    return `@layer theme, base, components, utilities;
 
 @import 'tailwindcss/theme';
-@import 'tailwindcss/utilities';`
-      : null;
+@import 'tailwindcss/utilities';`;
   }
 
   /**
    * Generate source statement
    */
   generateSource() {
-    return this.config.includeSource ? this.css.source(this.config.sourcePath) : null;
+    return this.css.source('../../components/src');
   }
 
   /**

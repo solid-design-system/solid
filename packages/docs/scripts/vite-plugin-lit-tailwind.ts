@@ -29,7 +29,7 @@ export default function litTailwindPlugin(options: LitTailwindPluginOptions = {}
       // eslint-disable-next-line consistent-return
       return {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-        code: await processCssTags(code, { base: process.cwd() })
+        code: await processCssTags(code)
       };
     }
   };

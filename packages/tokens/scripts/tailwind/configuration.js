@@ -5,11 +5,7 @@ export const DEFAULT_CONFIG = {
   customVariants: {
     hover: '&:hover:not([disabled])',
     focus: '&:focus:not([disabled])'
-  },
-
-  includeImport: true,
-  includeSource: true,
-  sourcePath: '../../components/src'
+  }
 };
 
 /**

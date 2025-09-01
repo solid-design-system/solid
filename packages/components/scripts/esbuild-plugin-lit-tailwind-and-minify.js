@@ -6,6 +6,76 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import cssnested from 'postcss-nested';
 import postcss from 'postcss';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+export async function processTailwind(source, options = { minify: false, storybook: false }) {
+  const base = path.resolve(fileURLToPath(import.meta.url), '../../');
+
+  const prepend = [
+    `@import '${path.resolve(base, '../tokens/themes/tailwind.css')}';`,
+    `@import 'tailwindcss/preflight';`
+  ];
+
+  if (options.storybook) {
+    prepend.push(`@source '${path.resolve(base, '../docs/src')}';`);
+  }
+
+  const css = `${prepend.join('\n')} ${source}`;
+
+  try {
+    /**
+     * Step 1: Compile the css content
+     */
+    const compiler = await compile(css, {
+      base,
+      onDependency: () => {}
+    });
+
+    let candidates = [];
+    if (compiler.features > 0) {
+      let sources = [...compiler.sources];
+      if (compiler.root === null) {
+        sources.push({ base, pattern: '**/*', negated: false });
+      }
+      let scanner = new Scanner({
+        sources
+      });
+      candidates = scanner.scan();
+    }
+
+    const compiled = compiler.build(candidates);
+
+    /**
+     * Step 2: Use PostCSS to resolve nested CSS, autoprefix and minify
+     */
+    const plugins = [cssnested, autoprefixer];
+
+    if (options.minify) {
+      plugins.push(cssnano);
+    }
+
+    let result = await postcss(plugins)
+      .process(compiled, { from: undefined })
+      .then(r => r.css);
+
+    /**
+     * Step 3: Get the tailwind properties and inject them into the host,
+     * because the "@layer properties" has problems with host and shadow root.
+     */
+    const tailwindProperties =
+      result.match(/\*,\s*::before,\s*::after,\s*::backdrop\s*\{([\s\S]*?)\}/)?.[1].trim() ?? null;
+
+    if (tailwindProperties) {
+      result = `${result} :host { ${tailwindProperties} }`;
+    }
+
+    return result;
+  } catch (error) {
+    console.error(`PostCSS error: ${error}`);
+    return 'postcss error: ' + error;
+  }
+}
 
 /**
  * Escapes tailwind special characters in a string and wraps it in a CSS template literal.
@@ -16,70 +86,20 @@ import postcss from 'postcss';
  *  - minify (boolean): True if is should minify the css content.
  * @returns The updated source string with the replacement applied.
  */
-export async function processCssTags(source, { base, minify = false }) {
+export async function processCssTags(source, minify = false) {
   const cssTagRegex = /css`([^`]*)`/g;
   let match;
 
   while ((match = cssTagRegex.exec(source)) !== null) {
     const [fullMatch, cssContent] = match;
 
-    const css = `@import '../tokens/themes/tailwind.css'; @import 'tailwindcss/preflight'; ${cssContent}`;
-
-    try {
-      /**
-       * Step 1: Compile the css content
-       */
-      const compiler = await compile(css, {
-        base,
-        onDependency: () => {}
-      });
-
-      let candidates = [];
-      if (compiler.features > 0) {
-        let sources = [...compiler.sources];
-        if (compiler.root === null) {
-          sources.push({ base, pattern: '**/*', negated: false });
-        }
-        let scanner = new Scanner({
-          sources
-        });
-        candidates = scanner.scan();
-      }
-
-      const compiled = compiler.build(candidates);
-
-      /**
-       * Step 2: Use PostCSS to resolve nested CSS, autoprefix and minify
-       */
-      const plugins = [cssnested, autoprefixer];
-
-      if (minify) {
-        plugins.push(cssnano);
-      }
-
-      let result = await postcss([cssnested])
-        .process(compiled, { from: undefined })
-        .then(r => r.css);
-
-      /**
-       * Step 3: Get the tailwind properties and inject them into the host,
-       * because the "@layer properties" has problems with host and shadow root.
-       */
-      const tailwindProperties =
-        result.match(/\*,\s*::before,\s*::after,\s*::backdrop\s*\{([\s\S]*?)\}/)?.[1].trim() ?? null;
-
-      result = `${result} :host { ${tailwindProperties} }`;
-
-      /* Step 3: Escape tailwind backslashes so it doesn't break the file */
-      source = source.replace(
-        fullMatch,
-        `css\`${result
-          .replaceAll('\\', '\\\\') // Escape backslashes
-          .replaceAll('`', '\\`')}\``
-      );
-    } catch (error) {
-      console.error(`PostCSS error: ${error}`);
-    }
+    const result = await processTailwind(cssContent, { minify });
+    source = source.replace(
+      fullMatch,
+      `css\`${result
+        .replaceAll('\\', '\\\\') // Escape backslashes
+        .replaceAll('`', '\\`')}\``
+    );
   }
 
   return source;

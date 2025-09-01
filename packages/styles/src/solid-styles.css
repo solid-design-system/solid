@@ -10,5 +10,3 @@
 @import './modules/status-badge.css';
 /* plop:style */
 @import './modules/prose.css';
-
-@reference '../../tokens/themes/tailwind.css';

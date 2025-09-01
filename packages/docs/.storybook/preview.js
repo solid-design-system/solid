@@ -1,5 +1,4 @@
 import './preview.css';
-import '../../styles/src/solid-styles.css';
 import '../../tokens/themes/dark.css';
 import '../../tokens/themes/light.css';
 import { withThemeByClassName } from '@storybook/addon-themes';
