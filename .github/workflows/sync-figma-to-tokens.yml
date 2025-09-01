@@ -69,27 +69,3 @@ jobs:
 
       - name: Run existing build process
         run: pnpm -C ./packages/tokens build
-
-      - name: Commit changes if any
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "feat: ✨ Update tokens from Figma"
-          commit_user_name: "github-actions[bot]"
-          commit_user_email: "github-actions[bot]@users.noreply.github.com"
-
-      - name: Create Pull Request (only if changes)
-        uses: peter-evans/create-pull-request@v7
-        with:
-          add-paths: | 
-                  src/figma-variables/**
-                  # add any other paths that may change
-          commit-message: Update variables and styles from Figma
-          title: ${{ github.event.inputs.pull_request_name }}
-          branch: ${{ github.event.inputs.branch_name }}
-          base: main
-          reviewers: |
-            smfonseca
-            auroraVasconcelos
-            paulovareiro29
-            mariohamann
-            balco0110
