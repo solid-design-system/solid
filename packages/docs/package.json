@@ -26,7 +26,7 @@
   "scripts": {
     "dev": "pnpm storybook",
     "storybook": "pnpm build/tailwind && storybook dev -p 6999",
-    "verify": "pnpm ts.verify && pnpm build && echo '✅ Build verified' && pnpm test && echo '✅ Tests verified' && vite-node ./scripts/node-optimize-chromatic.cjs && echo '✅ Chromatic optimization verified'",
+    "verify": "pnpm ts.verify && pnpm build && echo '✅ Build verified' && pnpm test && echo '✅ Tests verified'",
     "ts.verify": "tsc --noEmit --project ./tsconfig.json && echo '✅ TypeScript verified'",
     "test": "node ./scripts/test.js",
     "build.chromatic": "pnpm build",
