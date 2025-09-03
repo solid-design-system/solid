@@ -4,7 +4,7 @@ import '../../tokens/themes/light.css';
 import { withThemeByClassName } from '@storybook/addon-themes';
 import { storybookUtilities } from '../scripts/storybook/helper.js';
 import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer.js';
-import { LIGHT_THEME, DARK_THEME } from './modes.js';
+import { LIGHT_THEME, DARK_THEME, allModes } from './modes.js';
 
 const theme = withThemeByClassName({
   defaultTheme: LIGHT_THEME,
@@ -21,8 +21,8 @@ export const preview = {
     chromatic: {
       disableSnapshot: true,
       modes: {
-        light: { theme: 'light' },
-        dark: { theme: 'dark' }
+        light: allModes['light'],
+        dark: allModes['dark']
       }
     },
     docs: {
