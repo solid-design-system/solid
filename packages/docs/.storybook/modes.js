@@ -1,11 +1,11 @@
-export const LIGHT_THEME = 'light';
-export const DARK_THEME = 'dark';
+export const UI_SEMANTIC_LIGHT = 'Ui Semantic Light';
+export const UI_SEMANTIC_DARK = 'Ui Semantic Dark';
 
 export const allModes = {
-  light: {
-    theme: 'light'
+  'ui-semantic-light': {
+    theme: UI_SEMANTIC_LIGHT
   },
-  dark: {
-    theme: 'dark'
+  'ui-semantic-dark': {
+    theme: UI_SEMANTIC_DARK
   }
 };

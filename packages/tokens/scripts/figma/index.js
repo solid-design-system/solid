@@ -1,4 +1,4 @@
-import { createDirectory, setNestedProperty } from './utils.js';
+import { createDirectory, setNestedProperty, toKebabCase } from './utils.js';
 import { FigmaBase } from './base.js';
 import { FigmaLegacyTokens } from './legacy.js';
 import { FigmaVariable } from './variable.js';
@@ -7,9 +7,10 @@ import { writeFileSync } from 'fs';
 import path from 'path';
 
 export class FigmaClient extends FigmaBase {
-  constructor(dictionary, legacy) {
+  constructor(name, dictionary, legacy) {
     super(dictionary);
 
+    this.name = name;
     this.legacy = legacy;
   }
 
@@ -53,21 +54,13 @@ export class FigmaClient extends FigmaBase {
         return theme;
       });
 
-    const baseName = name => name.replace(/\s*(light|dark)\s*$/i, '').trim();
-
-    const getVariantFromName = name => {
-      const m = name.match(/\b(light|dark)\b$/i);
-      return m ? m[1].toLowerCase() : null;
-    };
-
     this.processed = Object.values(
       this.processed.reduce((acc, theme) => {
-        const key = baseName(theme.name);
-        const variant = getVariantFromName(theme.name);
+        const name = toKebabCase(theme.name.replaceAll(' ', '-'));
 
         const { core: _core, ...tokens } = theme.tokens;
-        if (!acc[key]) acc[key] = { name: key, tokens: { core: _core } };
-        if (!acc[key].tokens[variant]) acc[key].tokens[variant] = tokens;
+        if (!acc[this.name]) acc[this.name] = { name: this.name, tokens: { core: _core } };
+        if (!acc[this.name].tokens[name]) acc[this.name].tokens[name] = tokens;
 
         return acc;
       }, {})

@@ -728,7 +728,7 @@
       }
     }
   },
-  "light": {
+  "ui-semantic-light": {
     "spacing": {
       "0": {
         "value": "0px",
@@ -2585,7 +2585,7 @@
       }
     }
   },
-  "dark": {
+  "ui-semantic-dark": {
     "spacing": {
       "0": {
         "value": "0px",

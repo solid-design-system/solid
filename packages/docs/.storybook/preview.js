@@ -1,17 +1,17 @@
 import './preview.css';
-import '../../tokens/themes/dark.css';
-import '../../tokens/themes/light.css';
+import '../../tokens/themes/sd-ui-semantic-dark.css';
+import '../../tokens/themes/sd-ui-semantic-light.css';
 import { withThemeByClassName } from '@storybook/addon-themes';
 import { storybookUtilities } from '../scripts/storybook/helper.js';
 import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer.js';
-import { LIGHT_THEME, DARK_THEME, allModes } from './modes.js';
+import { UI_SEMANTIC_LIGHT, UI_SEMANTIC_DARK, allModes } from './modes.js';
 
 const theme = withThemeByClassName({
-  defaultTheme: LIGHT_THEME,
+  defaultTheme: UI_SEMANTIC_LIGHT,
   parentSelector: 'body',
   themes: {
-    [DARK_THEME]: 'dark',
-    [LIGHT_THEME]: 'light'
+    [UI_SEMANTIC_LIGHT]: 'sd-ui-semantic-light',
+    [UI_SEMANTIC_DARK]: 'sd-ui-semantic-dark'
   }
 });
 
@@ -21,8 +21,8 @@ export const preview = {
     chromatic: {
       disableSnapshot: true,
       modes: {
-        light: allModes['light'],
-        dark: allModes['dark']
+        'ui-semantic-light': allModes['ui-semantic-light'],
+        'ui-semantic-dark': allModes['ui-semantic-dark']
       }
     },
     docs: {

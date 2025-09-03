@@ -6,7 +6,7 @@ import { register } from '@tokens-studio/sd-transforms';
 import StyleDictionary from 'style-dictionary';
 import variables from '../src/figma-variables/variableTokens.json' with { type: 'json' };
 
-const figma = new FigmaClient(variables);
+const figma = new FigmaClient('ui-semantic', variables);
 figma.process().save();
 
 await register(StyleDictionary);
@@ -30,12 +30,11 @@ const config = {
 const availableThemes = [
   {
     input: 'ui-semantic.json',
-    output: 'tailwind',
-    themes: ['light', 'dark']
+    output: 'tailwind'
   }
 ];
 
-const cssRuns = availableThemes.map(async ({ input, output, themes }) => {
+const cssRuns = availableThemes.map(async ({ input, output }) => {
   const buildPath = config.buildPath;
 
   const themeInstance = await sd.extend({
@@ -75,27 +74,34 @@ const cssRuns = availableThemes.map(async ({ input, output, themes }) => {
 
   await themeInstance.buildAllPlatforms();
 
-  function getThemeBlock(source, theme) {
-    const re = new RegExp(
-      `/\\*\\s*${config.themeBlock}\\[${theme}\\]\\s*\\*/([\\s\\S]*?)/\\*\\s*${config.themeBlock}\\s*\\*/`,
-      'g'
-    );
-    const out = [];
-    let m;
-    while ((m = re.exec(source)) !== null) out.push(m[1]);
-    return out.join('');
+  function extractThemeBlock(src) {
+    const re = /\/\*\s*build:theme\[(.*?)\]\s*\*\/([\s\S]*?)\/\*\s*build:theme\s*\*\//;
+    const m = src.match(re);
+    if (!m) return null;
+    const name = m[1]; // content inside the brackets
+    const content = m[2]; // content between the markers
+    return { name, content };
   }
 
   let file = readFileSync(`${buildPath}/${output}.css`, { encoding: 'utf-8' });
+  let themes = [];
 
-  const themeFiles = themes.map(theme => ({
-    name: theme,
-    content: getThemeBlock(file, theme)
-  }));
+  while (true) {
+    const theme = extractThemeBlock(file);
 
-  file = file.replaceAll(`/* ${config.themeBlock} */`, '');
+    if (!theme) {
+      break;
+    }
 
-  themeFiles.forEach(theme => {
+    file = file
+      .replace(theme.content, '')
+      .replace(`/* ${config.themeBlock}[${theme.name}] */`, '')
+      .replace(`/* ${config.themeBlock} */`, '');
+
+    themes.push(theme);
+  }
+
+  themes.forEach(theme => {
     file = file.replace(theme.content, '').replace(`/* ${config.themeBlock}[${theme.name}] */`, '');
     writeFileSync(`${buildPath}/${output}.css`, file.trim());
     writeFileSync(`${buildPath}/${theme.name}.css`, theme.content.trim());
