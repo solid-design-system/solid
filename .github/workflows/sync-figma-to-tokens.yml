@@ -110,4 +110,4 @@ jobs:
 
             Triggered by: ${{ github.event_name }}
             ${{ github.event_name == 'push' && format('Push to branch: {0}', github.ref_name) || '' }}
-          reviewers: smfonseca,auroraVasconcelos,paulovareiro29,mariohamann,balco0110
+          reviewers: smfonseca,auroraVasconcelos,paulovareiro29,mariohamann,balco0110 
