@@ -46,13 +46,20 @@ export class BaseTokenProcessor {
   }
 
   /**
+   * Cleans the token name by removing and replacing some special characters
+   */
+  cleanupTokenName(name) {
+    return name.replaceAll('*', '').replaceAll('|', '-');
+  }
+
+  /**
    * Process token path and handle theme variants globally
    */
   processTokenPath(token) {
     // Get the original token path (before kebab-case conversion)
     let path = [...token.path];
 
-    path = path.map(p => p.replaceAll('*', '').replaceAll('|', '-'));
+    path = path.map(this.cleanupTokenName);
 
     const variant = path[0];
 

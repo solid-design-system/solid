@@ -46,7 +46,12 @@ export class TokenProcessingEngine {
    */
   processTokens(dictionary) {
     const result = {
-      baseVars: ['--font-weight-normal: 400;', '--font-weight-bold: 700;'],
+      baseVars: [
+        /** TODO: Add to actual variables in figma */
+        '--background-color-primary-400: var(--sd-color-primary-400);',
+        '--font-weight-normal: 400;',
+        '--font-weight-bold: 700;'
+      ],
       utilities: [],
       spacing: [],
       compositions: [],

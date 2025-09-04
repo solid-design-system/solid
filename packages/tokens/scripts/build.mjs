@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync } from 'node:fs';
-import { createTailwindV4Plugin } from './tailwind/index.js';
+import { createTailwindV4Plugin, extractThemeBlock } from './tailwind/index.js';
 import { FigmaClient } from './figma/index.js';
 import { OUTPUT_DIR } from './config.js';
 import { register } from '@tokens-studio/sd-transforms';
@@ -73,15 +73,6 @@ const cssRuns = availableThemes.map(async ({ input, output }) => {
   });
 
   await themeInstance.buildAllPlatforms();
-
-  function extractThemeBlock(src) {
-    const re = /\/\*\s*build:theme\[(.*?)\]\s*\*\/([\s\S]*?)\/\*\s*build:theme\s*\*\//;
-    const m = src.match(re);
-    if (!m) return null;
-    const name = m[1]; // content inside the brackets
-    const content = m[2]; // content between the markers
-    return { name, content };
-  }
 
   let file = readFileSync(`${buildPath}/${output}.css`, { encoding: 'utf-8' });
   let themes = [];

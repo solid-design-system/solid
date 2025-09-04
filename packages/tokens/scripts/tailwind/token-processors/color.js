@@ -7,7 +7,11 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
   constructor(options = {}) {
     super(options);
 
-    this.core = ['risk', 'icon-fill', 'border', 'background', 'text', 'outline', 'ring', 'background-transparent'];
+    /* Namespaces that should be created as theme variables */
+    this.core = ['background-transparent', 'background', 'border', 'icon-fill', 'outline', 'ring', 'risk', 'text'];
+
+    /* Namespaces that are not core colors, but should be created as theme variables */
+    this.semicore = ['gradient'];
   }
 
   canProcess(token) {
@@ -18,6 +22,8 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     const { path: _path, variant } = this.processTokenPath(token);
     const path = this.pathToKebabCase(_path);
     const isCoreColor = this.core.includes(path[0]);
+    const isSemicoreColor = this.semicore.includes(path[0]);
+
     const { variable, value } = this.getFormattedValue({
       prefix: isCoreColor ? 'color' : `${path[0]}`,
       name: path.slice(1).join('-'),
@@ -28,24 +34,31 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       ? this.getCoreToken(path.join('-'))
       : this.getSemanticToken(
           path.join('-'),
-          `var(--sd-${path.join('-')}, var(${this.getCoreTokenFromValue(token, dictionary)}))`
+          isSemicoreColor
+            ? `var(--sd-${path.join('-')})`
+            : `var(--sd-${path.join('-')}, var(${this.getCoreTokenFromValue(token, dictionary)}))`
         );
 
-    return [
+    const variables = [
       {
         type,
         name,
         value: `var(--sd-${path.join('-')}, var(${variable}))`,
         properties,
         variant: 'default'
-      },
-      {
+      }
+    ];
+
+    if (isCoreColor || isSemicoreColor) {
+      variables.push({
         type: 'color',
         name: variable,
         value,
         variant
-      }
-    ];
+      });
+    }
+
+    return variables;
   }
 
   getCoreTokenFromValue(token, dictionary) {
@@ -63,7 +76,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       });
     });
 
-    return `--sd-color-${found.path.at(-1)}`;
+    return this.cleanupTokenName(`--sd-color-${found.path.at(-1)}`);
   }
 
   getCoreToken(token) {

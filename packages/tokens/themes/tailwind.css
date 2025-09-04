@@ -9,6 +9,7 @@
 @custom-variant focus (&:focus:not([disabled]));
 
 @theme inline {
+  --background-color-primary-400: var(--sd-color-primary-400);
   --font-weight-normal: 400;
   --font-weight-bold: 700;
   --shadow: var(--sd-shadow, 0 1px 3px 0 rgba(81, 81, 81, 0.75));
@@ -286,87 +287,87 @@
 }
 
 @utility gradient-vertical-white-transparent {
-  background-image: var(--sd-gradient-vertical-white-transparent, var(--sd-color-vertical-white-transparent));
+  background-image: var(--sd-gradient-vertical-white-transparent);
 }
 
 @utility gradient-vertical-black-40-transparent {
-  background-image: var(--sd-gradient-vertical-black-40-transparent, var(--sd-color-vertical-black|40-transparent));
+  background-image: var(--sd-gradient-vertical-black-40-transparent);
 }
 
 @utility gradient-vertical-transparent-black-40 {
-  background-image: var(--sd-gradient-vertical-transparent-black-40, var(--sd-color-vertical-transparent-black|40));
+  background-image: var(--sd-gradient-vertical-transparent-black-40);
 }
 
 @utility gradient-vertical-black-10-transparent {
-  background-image: var(--sd-gradient-vertical-black-10-transparent, var(--sd-color-vertical-black|10-transparent));
+  background-image: var(--sd-gradient-vertical-black-10-transparent);
 }
 
 @utility gradient-vertical-transparent-black-10 {
-  background-image: var(--sd-gradient-vertical-transparent-black-10, var(--sd-color-vertical-transparent-black|10));
+  background-image: var(--sd-gradient-vertical-transparent-black-10);
 }
 
 @utility gradient-vertical-transparent-white-60 {
-  background-image: var(--sd-gradient-vertical-transparent-white-60, var(--sd-color-vertical-transparent-white|60));
+  background-image: var(--sd-gradient-vertical-transparent-white-60);
 }
 
 @utility gradient-vertical-white-60-transparent {
-  background-image: var(--sd-gradient-vertical-white-60-transparent, var(--sd-color-vertical-white|60-transparent));
+  background-image: var(--sd-gradient-vertical-white-60-transparent);
 }
 
 @utility gradient-vertical-white-60-white-75 {
-  background-image: var(--sd-gradient-vertical-white-60-white-75, var(--sd-color-vertical-white|60-white|75));
+  background-image: var(--sd-gradient-vertical-white-60-white-75);
 }
 
 @utility gradient-vertical-white-75-white-60 {
-  background-image: var(--sd-gradient-vertical-white-75-white-60, var(--sd-color-vertical-white|75-white|60));
+  background-image: var(--sd-gradient-vertical-white-75-white-60);
 }
 
 @utility gradient-vertical-transparent-primary-800-60 {
-  background-image: var(--sd-gradient-vertical-transparent-primary-800-60, var(--sd-color-vertical-transparent-primary-800|60));
+  background-image: var(--sd-gradient-vertical-transparent-primary-800-60);
 }
 
 @utility gradient-vertical-primary-800-60-transparent {
-  background-image: var(--sd-gradient-vertical-primary-800-60-transparent, var(--sd-color-vertical-primary-800|60-transparent));
+  background-image: var(--sd-gradient-vertical-primary-800-60-transparent);
 }
 
 @utility gradient-vertical-primary-800-60-primary-800-75 {
-  background-image: var(--sd-gradient-vertical-primary-800-60-primary-800-75, var(--sd-color-vertical-primary-800|60-primary-800|75));
+  background-image: var(--sd-gradient-vertical-primary-800-60-primary-800-75);
 }
 
 @utility gradient-vertical-primary-800-75-primary-800-60 {
-  background-image: var(--sd-gradient-vertical-primary-800-75-primary-800-60, var(--sd-color-vertical-primary-800|75-primary-800|60));
+  background-image: var(--sd-gradient-vertical-primary-800-75-primary-800-60);
 }
 
 @utility gradient-vertical-transparent-white-80-white {
-  background-image: var(--sd-gradient-vertical-transparent-white-80-white, var(--sd-color-vertical-transparent-white|80-white));
+  background-image: var(--sd-gradient-vertical-transparent-white-80-white);
 }
 
 @utility gradient-vertical-white-white-80-transparent {
-  background-image: var(--sd-gradient-vertical-white-white-80-transparent, var(--sd-color-vertical-white-white|80-transparent));
+  background-image: var(--sd-gradient-vertical-white-white-80-transparent);
 }
 
 @utility gradient-horizontal-white-white-80-transparent {
-  background-image: var(--sd-gradient-horizontal-white-white-80-transparent, var(--sd-color-horizontal-white-white|80-transparent));
+  background-image: var(--sd-gradient-horizontal-white-white-80-transparent);
 }
 
 @utility gradient-horizontal-transparent-white-80-white {
-  background-image: var(--sd-gradient-horizontal-transparent-white-80-white, var(--sd-color-horizontal-transparent-white|80-white));
+  background-image: var(--sd-gradient-horizontal-transparent-white-80-white);
 }
 
 @utility gradient-horizontal-black-10-transparent {
-  background-image: var(--sd-gradient-horizontal-black-10-transparent, var(--sd-color-horizontal-black|10-transparent));
+  background-image: var(--sd-gradient-horizontal-black-10-transparent);
 }
 
 @utility gradient-horizontal-transparent-black-10 {
-  background-image: var(--sd-gradient-horizontal-transparent-black-10, var(--sd-color-horizontal-transparent-black|10));
+  background-image: var(--sd-gradient-horizontal-transparent-black-10);
 }
 
 @utility gradient-horizontal-transparent-black-40 {
-  background-image: var(--sd-gradient-horizontal-transparent-black-40, var(--sd-color-horizontal-transparent-black|40));
+  background-image: var(--sd-gradient-horizontal-transparent-black-40);
 }
 
 @utility gradient-horizontal-black-40-transparent {
-  background-image: var(--sd-gradient-horizontal-black-40-transparent, var(--sd-color-horizontal-black|40-transparent));
+  background-image: var(--sd-gradient-horizontal-black-40-transparent);
 }
 
 @utility z-10 {
