@@ -4,15 +4,15 @@ import '../../tokens/themes/sd-ui-semantic-light.css';
 import { withThemeByClassName } from '@storybook/addon-themes';
 import { storybookUtilities } from '../scripts/storybook/helper.js';
 import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer.js';
-import { UI_SEMANTIC_LIGHT, UI_SEMANTIC_DARK, allModes } from './modes.js';
+import { themes, allModes } from './modes.js';
 
 const theme = withThemeByClassName({
-  defaultTheme: UI_SEMANTIC_LIGHT,
+  defaultTheme: 'UI Semantic Light',
   parentSelector: 'body',
-  themes: {
-    [UI_SEMANTIC_LIGHT]: 'sd-ui-semantic-light',
-    [UI_SEMANTIC_DARK]: 'sd-ui-semantic-dark'
-  }
+  themes: themes.reduce((acc, { id, name }) => {
+    acc[name] = id;
+    return acc;
+  }, {})
 });
 
 export const preview = {
@@ -20,10 +20,10 @@ export const preview = {
   parameters: {
     chromatic: {
       disableSnapshot: true,
-      modes: {
-        'ui-semantic-light': allModes['ui-semantic-light'],
-        'ui-semantic-dark': allModes['ui-semantic-dark']
-      }
+      modes: themes.reduce((acc, { id }) => {
+        acc[id] = allModes[id];
+        return acc;
+      }, {})
     },
     docs: {
       story: { inline: true },

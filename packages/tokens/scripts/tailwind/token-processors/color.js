@@ -6,27 +6,36 @@ import { BaseTokenProcessor } from './base.js';
 export class ColorTokenProcessor extends BaseTokenProcessor {
   constructor(options = {}) {
     super(options);
+
+    this.core = ['risk', 'icon-fill', 'border', 'background', 'text', 'outline', 'ring', 'background-transparent'];
   }
 
   canProcess(token) {
     return token.type === 'color';
   }
 
-  process(token) {
+  process(token, dictionary) {
     const { path: _path, variant } = this.processTokenPath(token);
     const path = this.pathToKebabCase(_path);
+    const isCoreColor = this.core.includes(path[0]);
     const { variable, value } = this.getFormattedValue({
-      prefix: 'color',
-      name: path.join('-'),
+      prefix: isCoreColor ? 'color' : `${path[0]}`,
+      name: path.slice(1).join('-'),
       value: this.getTokenValue(token)
     });
-    const { type, name, properties } = this.getTokenInfo(path.join('-'), `var(${variable})`, variant);
+
+    const { type, name, properties } = isCoreColor
+      ? this.getCoreToken(path.join('-'))
+      : this.getSemanticToken(
+          path.join('-'),
+          `var(--sd-${path.join('-')}, var(${this.getCoreTokenFromValue(token, dictionary)}))`
+        );
 
     return [
       {
         type,
         name,
-        value: `var(${variable})`,
+        value: `var(--sd-${path.join('-')}, var(${variable}))`,
         properties,
         variant: 'default'
       },
@@ -39,7 +48,25 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     ];
   }
 
-  getTokenInfo(token, value) {
+  getCoreTokenFromValue(token, dictionary) {
+    let found = null;
+    Object.values(dictionary).forEach(item => {
+      if (found) return;
+
+      Object.values(item).forEach(i => {
+        if (found) return;
+
+        if (!i.key?.startsWith('{core.')) {
+          if (i.value !== token.value) return;
+          found = i;
+        }
+      });
+    });
+
+    return `--sd-color-${found.path.at(-1)}`;
+  }
+
+  getCoreToken(token) {
     if (token.startsWith('background')) {
       return { type: 'color', name: `--${token.replace('background', 'background-color')}` };
     }
@@ -64,6 +91,10 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       return { type: 'color', name: `--${token.replace('ring', 'ring-color')}` };
     }
 
+    return { type: 'color', name: `--color-${token}` };
+  }
+
+  getSemanticToken(token, value) {
     if (token.includes('background')) {
       return { type: 'utility', name: token, properties: `@utility ${token} {\n  background-color: ${value};\n}` };
     }
@@ -84,6 +115,6 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       return { type: 'utility', name: token, properties: `@utility ${token} {\n  background-image: ${value};\n}` };
     }
 
-    return { type: 'color', name: `--color-${token}` };
+    return { type: 'color', name: `--${token}` };
   }
 }

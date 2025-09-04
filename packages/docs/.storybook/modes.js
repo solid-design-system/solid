@@ -1,11 +1,9 @@
-export const UI_SEMANTIC_LIGHT = 'Ui Semantic Light';
-export const UI_SEMANTIC_DARK = 'Ui Semantic Dark';
+export const themes = [
+  { id: 'sd-ui-semantic-light', name: 'UI Semantic Light' },
+  { id: 'sd-ui-semantic-dark', name: 'UI Semantic Dark' }
+];
 
-export const allModes = {
-  'ui-semantic-light': {
-    theme: UI_SEMANTIC_LIGHT
-  },
-  'ui-semantic-dark': {
-    theme: UI_SEMANTIC_DARK
-  }
-};
+export const allModes = themes.reduce((acc, { id, name }) => {
+  acc[id] = name;
+  return acc;
+}, {});

@@ -37,31 +37,33 @@ export class FigmaLegacyTokens {
       tooltip: { value: 'var(--sd-z-index-tooltip, 1000)', type: 'utility' }
     };
 
-    tokens.risk = {
-      low: {
-        value: 'rgb(1 125 195)',
-        type: 'color',
-        description: 'Exclusively for marking fonds'
-      },
-      moderate: {
-        value: 'rgb(0 165 147)',
-        type: 'color',
-        description: 'Exclusively for marking fonds'
-      },
-      increased: {
-        value: 'rgb(255 240 0)',
-        type: 'color',
-        description: 'Exclusively for marking fonds'
-      },
-      high: {
-        value: 'rgb(250 155 30)',
-        type: 'color',
-        description: 'Exclusively for marking fonds'
-      },
-      veryhigh: {
-        value: 'rgb(255 0 0)',
-        type: 'color',
-        description: 'Exclusively for marking fonds'
+    tokens.color = {
+      risk: {
+        low: {
+          value: 'rgb(1 125 195)',
+          type: 'color',
+          description: 'Exclusively for marking fonds'
+        },
+        moderate: {
+          value: 'rgb(0 165 147)',
+          type: 'color',
+          description: 'Exclusively for marking fonds'
+        },
+        increased: {
+          value: 'rgb(255 240 0)',
+          type: 'color',
+          description: 'Exclusively for marking fonds'
+        },
+        high: {
+          value: 'rgb(250 155 30)',
+          type: 'color',
+          description: 'Exclusively for marking fonds'
+        },
+        veryhigh: {
+          value: 'rgb(255 0 0)',
+          type: 'color',
+          description: 'Exclusively for marking fonds'
+        }
       }
     };
 
