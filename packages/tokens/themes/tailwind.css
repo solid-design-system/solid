@@ -9,7 +9,6 @@
 @custom-variant focus (&:focus:not([disabled]));
 
 @theme inline {
-  --background-color-primary-400: var(--sd-color-primary-400, red);
   --font-weight-normal: 400;
   --font-weight-bold: 700;
   --shadow: var(--sd-shadow, 0 1px 3px 0 rgba(81, 81, 81, 0.75));
