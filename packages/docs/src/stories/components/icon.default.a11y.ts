@@ -1,0 +1,3785 @@
+import { test, expect } from '@playwright/test';
+
+test('union-investment/content', async ({ page }) => {
+  await page.goto(
+    'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-icon-default--library-default-content&viewMode=story'
+  );
+  await expect(page.locator('body')).toMatchAriaSnapshot(`
+      - region "Top right notifications"
+      - region "Bottom center notifications"
+      - table:
+        - rowgroup:
+          - row "color":
+            - cell
+            - cell
+            - cell "color":
+              - code: color
+          - row "currentColor primary white":
+            - cell
+            - cell
+            - cell "currentColor":
+              - code: currentColor
+            - cell "primary":
+              - code: primary
+            - cell "white":
+              - code: white
+        - rowgroup:
+          - row "name content/website":
+            - cell "name":
+              - code: name
+            - cell "content/website":
+              - code: content/website
+            - cell
+            - cell
+            - cell
+          - row "content/websites":
+            - cell "content/websites":
+              - code: content/websites
+            - cell
+            - cell
+            - cell
+          - row "content/thumbs-down":
+            - cell "content/thumbs-down":
+              - code: content/thumbs-down
+            - cell
+            - cell
+            - cell
+          - row "content/thumbs-up":
+            - cell "content/thumbs-up":
+              - code: content/thumbs-up
+            - cell
+            - cell
+            - cell
+          - row "content/water-drop":
+            - cell "content/water-drop":
+              - code: content/water-drop
+            - cell
+            - cell
+            - cell
+          - row "content/scale-question-answer":
+            - cell "content/scale-question-answer":
+              - code: content/scale-question-answer
+            - cell
+            - cell
+            - cell
+          - row "content/hot-water-bottle":
+            - cell "content/hot-water-bottle":
+              - code: content/hot-water-bottle
+            - cell
+            - cell
+            - cell
+          - row "content/vodcast":
+            - cell "content/vodcast":
+              - code: content/vodcast
+            - cell
+            - cell
+            - cell
+          - row "content/bird":
+            - cell "content/bird":
+              - code: content/bird
+            - cell
+            - cell
+            - cell
+          - row "content/video":
+            - cell "content/video":
+              - code: content/video
+            - cell
+            - cell
+            - cell
+          - row "content/clock-round":
+            - cell "content/clock-round":
+              - code: content/clock-round
+            - cell
+            - cell
+            - cell
+          - row "content/circuit-euro":
+            - cell "content/circuit-euro":
+              - code: content/circuit-euro
+            - cell
+            - cell
+            - cell
+          - row "content/lesson":
+            - cell "content/lesson":
+              - code: content/lesson
+            - cell
+            - cell
+            - cell
+          - row /content\\/circuit-\\d+/:
+            - cell /content\\/circuit-\\d+/:
+              - code: /content\\/circuit-\\d+/
+            - cell
+            - cell
+            - cell
+          - row "content/circle-chart-percent":
+            - cell "content/circle-chart-percent":
+              - code: content/circle-chart-percent
+            - cell
+            - cell
+            - cell
+          - row "content/circle-chart":
+            - cell "content/circle-chart":
+              - code: content/circle-chart
+            - cell
+            - cell
+            - cell
+          - row "content/clock-angular":
+            - cell "content/clock-angular":
+              - code: content/clock-angular
+            - cell
+            - cell
+            - cell
+          - row "content/circle-plus":
+            - cell "content/circle-plus":
+              - code: content/circle-plus
+            - cell
+            - cell
+            - cell
+          - row "content/ticket":
+            - cell "content/ticket":
+              - code: content/ticket
+            - cell
+            - cell
+            - cell
+          - row "content/circle-hook":
+            - cell "content/circle-hook":
+              - code: content/circle-hook
+            - cell
+            - cell
+            - cell
+          - row "content/tennis":
+            - cell "content/tennis":
+              - code: content/tennis
+            - cell
+            - cell
+            - cell
+          - row "content/thermometer":
+            - cell "content/thermometer":
+              - code: content/thermometer
+            - cell
+            - cell
+            - cell
+          - row "content/circle-minus":
+            - cell "content/circle-minus":
+              - code: content/circle-minus
+            - cell
+            - cell
+            - cell
+          - row "content/water-dispenser":
+            - cell "content/water-dispenser":
+              - code: content/water-dispenser
+            - cell
+            - cell
+            - cell
+          - row "content/crane":
+            - cell "content/crane":
+              - code: content/crane
+            - cell
+            - cell
+            - cell
+          - row "content/plate-cutlery":
+            - cell "content/plate-cutlery":
+              - code: content/plate-cutlery
+            - cell
+            - cell
+            - cell
+          - row "content/compass":
+            - cell "content/compass":
+              - code: content/compass
+            - cell
+            - cell
+            - cell
+          - row "content/phone-receiver":
+            - cell "content/phone-receiver":
+              - code: content/phone-receiver
+            - cell
+            - cell
+            - cell
+          - row "content/clipboard":
+            - cell "content/clipboard":
+              - code: content/clipboard
+            - cell
+            - cell
+            - cell
+          - row "content/phone":
+            - cell "content/phone":
+              - code: content/phone
+            - cell
+            - cell
+            - cell
+          - row "content/tape":
+            - cell "content/tape":
+              - code: content/tape
+            - cell
+            - cell
+            - cell
+          - row "content/taxi":
+            - cell "content/taxi":
+              - code: content/taxi
+            - cell
+            - cell
+            - cell
+          - row "content/locker":
+            - cell "content/locker":
+              - code: content/locker
+            - cell
+            - cell
+            - cell
+          - row "content/coffee-machine":
+            - cell "content/coffee-machine":
+              - code: content/coffee-machine
+            - cell
+            - cell
+            - cell
+          - row "content/church-cross":
+            - cell "content/church-cross":
+              - code: content/church-cross
+            - cell
+            - cell
+            - cell
+          - row "content/children":
+            - cell "content/children":
+              - code: content/children
+            - cell
+            - cell
+            - cell
+          - row "content/stroller":
+            - cell "content/stroller":
+              - code: content/stroller
+            - cell
+            - cell
+            - cell
+          - row "content/tap":
+            - cell "content/tap":
+              - code: content/tap
+            - cell
+            - cell
+            - cell
+          - row "content/card":
+            - cell "content/card":
+              - code: content/card
+            - cell
+            - cell
+            - cell
+          - row "content/card-hand":
+            - cell "content/card-hand":
+              - code: content/card-hand
+            - cell
+            - cell
+            - cell
+          - row "content/calendar-stock":
+            - cell "content/calendar-stock":
+              - code: content/calendar-stock
+            - cell
+            - cell
+            - cell
+          - row "content/camera":
+            - cell "content/camera":
+              - code: content/camera
+            - cell
+            - cell
+            - cell
+          - row "content/calendar":
+            - cell "content/calendar":
+              - code: content/calendar
+            - cell
+            - cell
+            - cell
+          - row "content/calendar-piggy-bank":
+            - cell "content/calendar-piggy-bank":
+              - code: content/calendar-piggy-bank
+            - cell
+            - cell
+            - cell
+          - row "content/squares-connected":
+            - cell "content/squares-connected":
+              - code: content/squares-connected
+            - cell
+            - cell
+            - cell
+          - row "content/calendar-day":
+            - cell "content/calendar-day":
+              - code: content/calendar-day
+            - cell
+            - cell
+            - cell
+          - row "content/qr-code":
+            - cell "content/qr-code":
+              - code: content/qr-code
+            - cell
+            - cell
+            - cell
+          - row "content/squares":
+            - cell "content/squares":
+              - code: content/squares
+            - cell
+            - cell
+            - cell
+          - row "content/puzzle":
+            - cell "content/puzzle":
+              - code: content/puzzle
+            - cell
+            - cell
+            - cell
+          - row "content/coffee-mug":
+            - cell "content/coffee-mug":
+              - code: content/coffee-mug
+            - cell
+            - cell
+            - cell
+          - row "content/calendar-euro":
+            - cell "content/calendar-euro":
+              - code: content/calendar-euro
+            - cell
+            - cell
+            - cell
+          - row "content/boy":
+            - cell "content/boy":
+              - code: content/boy
+            - cell
+            - cell
+            - cell
+          - row "content/dots":
+            - cell "content/dots":
+              - code: content/dots
+            - cell
+            - cell
+            - cell
+          - row "content/audience-plus-minus":
+            - cell "content/audience-plus-minus":
+              - code: content/audience-plus-minus
+            - cell
+            - cell
+            - cell
+          - row "content/audience":
+            - cell "content/audience":
+              - code: content/audience
+            - cell
+            - cell
+            - cell
+          - row "content/audience-mask":
+            - cell "content/audience-mask":
+              - code: content/audience-mask
+            - cell
+            - cell
+            - cell
+          - row "content/statue-of-liberty":
+            - cell "content/statue-of-liberty":
+              - code: content/statue-of-liberty
+            - cell
+            - cell
+            - cell
+          - row "content/audience-chart":
+            - cell "content/audience-chart":
+              - code: content/audience-chart
+            - cell
+            - cell
+            - cell
+          - row "content/percentage-rate":
+            - cell "content/percentage-rate":
+              - code: content/percentage-rate
+            - cell
+            - cell
+            - cell
+          - row "content/percentage-sign":
+            - cell "content/percentage-sign":
+              - code: content/percentage-sign
+            - cell
+            - cell
+            - cell
+          - row "content/presentation-technique":
+            - cell "content/presentation-technique":
+              - code: content/presentation-technique
+            - cell
+            - cell
+            - cell
+          - row "content/file-hand":
+            - cell "content/file-hand":
+              - code: content/file-hand
+            - cell
+            - cell
+            - cell
+          - row "content/presentation":
+            - cell "content/presentation":
+              - code: content/presentation
+            - cell
+            - cell
+            - cell
+          - row "content/diamond":
+            - cell "content/diamond":
+              - code: content/diamond
+            - cell
+            - cell
+            - cell
+          - row "content/head":
+            - cell "content/head":
+              - code: content/head
+            - cell
+            - cell
+            - cell
+          - row "content/screenplay":
+            - cell "content/screenplay":
+              - code: content/screenplay
+            - cell
+            - cell
+            - cell
+          - row "content/mailbox":
+            - cell "content/mailbox":
+              - code: content/mailbox
+            - cell
+            - cell
+            - cell
+          - row "content/files":
+            - cell "content/files":
+              - code: content/files
+            - cell
+            - cell
+            - cell
+          - row "content/post-it":
+            - cell "content/post-it":
+              - code: content/post-it
+            - cell
+            - cell
+            - cell
+          - row "content/trophy":
+            - cell "content/trophy":
+              - code: content/trophy
+            - cell
+            - cell
+            - cell
+          - row "content/pizza":
+            - cell "content/pizza":
+              - code: content/pizza
+            - cell
+            - cell
+            - cell
+          - row "content/file-magnifying-glass":
+            - cell "content/file-magnifying-glass":
+              - code: content/file-magnifying-glass
+            - cell
+            - cell
+            - cell
+          - row "content/podcast":
+            - cell "content/podcast":
+              - code: content/podcast
+            - cell
+            - cell
+            - cell
+          - row "content/file":
+            - cell "content/file":
+              - code: content/file
+            - cell
+            - cell
+            - cell
+          - row "content/file-information":
+            - cell "content/file-information":
+              - code: content/file-information
+            - cell
+            - cell
+            - cell
+          - row "content/arrows-directions":
+            - cell "content/arrows-directions":
+              - code: content/arrows-directions
+            - cell
+            - cell
+            - cell
+          - row "content/file-hook":
+            - cell "content/file-hook":
+              - code: content/file-hook
+            - cell
+            - cell
+            - cell
+          - row "content/plant":
+            - cell "content/plant":
+              - code: content/plant
+            - cell
+            - cell
+            - cell
+          - row "content/arrows-process":
+            - cell "content/arrows-process":
+              - code: content/arrows-process
+            - cell
+            - cell
+            - cell
+          - row "content/people":
+            - cell "content/people":
+              - code: content/people
+            - cell
+            - cell
+            - cell
+          - row "content/doctor-hat-at-sign":
+            - cell "content/doctor-hat-at-sign":
+              - code: content/doctor-hat-at-sign
+            - cell
+            - cell
+            - cell
+          - row "content/tablet":
+            - cell "content/tablet":
+              - code: content/tablet
+            - cell
+            - cell
+            - cell
+          - row "content/arrows-circle":
+            - cell "content/arrows-circle":
+              - code: content/arrows-circle
+            - cell
+            - cell
+            - cell
+          - row "content/doctor-hat":
+            - cell "content/doctor-hat":
+              - code: content/doctor-hat
+            - cell
+            - cell
+            - cell
+          - row "content/cup":
+            - cell "content/cup":
+              - code: content/cup
+            - cell
+            - cell
+            - cell
+          - row "content/surfer":
+            - cell "content/surfer":
+              - code: content/surfer
+            - cell
+            - cell
+            - cell
+          - row "content/people-match":
+            - cell "content/people-match":
+              - code: content/people-match
+            - cell
+            - cell
+            - cell
+          - row "content/stop-watch":
+            - cell "content/stop-watch":
+              - code: content/stop-watch
+            - cell
+            - cell
+            - cell
+          - row "content/people-speech-bubble":
+            - cell "content/people-speech-bubble":
+              - code: content/people-speech-bubble
+            - cell
+            - cell
+            - cell
+          - row "content/electricity":
+            - cell "content/electricity":
+              - code: content/electricity
+            - cell
+            - cell
+            - cell
+          - row "content/thumbs-neutral":
+            - cell "content/thumbs-neutral":
+              - code: content/thumbs-neutral
+            - cell
+            - cell
+            - cell
+          - row "content/japan":
+            - cell "content/japan":
+              - code: content/japan
+            - cell
+            - cell
+            - cell
+          - row "content/data-supply-online":
+            - cell "content/data-supply-online":
+              - code: content/data-supply-online
+            - cell
+            - cell
+            - cell
+          - row "content/pen-tip":
+            - cell "content/pen-tip":
+              - code: content/pen-tip
+            - cell
+            - cell
+            - cell
+          - row "content/pen":
+            - cell "content/pen":
+              - code: content/pen
+            - cell
+            - cell
+            - cell
+          - row "content/computer":
+            - cell "content/computer":
+              - code: content/computer
+            - cell
+            - cell
+            - cell
+          - row "content/database":
+            - cell "content/database":
+              - code: content/database
+            - cell
+            - cell
+            - cell
+          - row "content/pens":
+            - cell "content/pens":
+              - code: content/pens
+            - cell
+            - cell
+            - cell
+          - row "content/scale-euro-dollar":
+            - cell "content/scale-euro-dollar":
+              - code: content/scale-euro-dollar
+            - cell
+            - cell
+            - cell
+          - row "content/co2-cloud":
+            - cell "content/co2-cloud":
+              - code: content/co2-cloud
+            - cell
+            - cell
+            - cell
+          - row "content/latte-macchiato":
+            - cell "content/latte-macchiato":
+              - code: content/latte-macchiato
+            - cell
+            - cell
+            - cell
+          - row "content/bull":
+            - cell "content/bull":
+              - code: content/bull
+            - cell
+            - cell
+            - cell
+          - row "content/chemistry":
+            - cell "content/chemistry":
+              - code: content/chemistry
+            - cell
+            - cell
+            - cell
+          - row "content/pen-paper":
+            - cell "content/pen-paper":
+              - code: content/pen-paper
+            - cell
+            - cell
+            - cell
+          - row "content/bus":
+            - cell "content/bus":
+              - code: content/bus
+            - cell
+            - cell
+            - cell
+          - row "content/stethoscope":
+            - cell "content/stethoscope":
+              - code: content/stethoscope
+            - cell
+            - cell
+            - cell
+          - row "content/stars":
+            - cell "content/stars":
+              - code: content/stars
+            - cell
+            - cell
+            - cell
+          - row "content/bus-stop":
+            - cell "content/bus-stop":
+              - code: content/bus-stop
+            - cell
+            - cell
+            - cell
+          - row "content/shooting-star":
+            - cell "content/shooting-star":
+              - code: content/shooting-star
+            - cell
+            - cell
+            - cell
+          - row "content/statue":
+            - cell "content/statue":
+              - code: content/statue
+            - cell
+            - cell
+            - cell
+          - row "content/office-chair":
+            - cell "content/office-chair":
+              - code: content/office-chair
+            - cell
+            - cell
+            - cell
+          - row "content/heart":
+            - cell "content/heart":
+              - code: content/heart
+            - cell
+            - cell
+            - cell
+          - row "content/office":
+            - cell "content/office":
+              - code: content/office
+            - cell
+            - cell
+            - cell
+          - row "content/city-apartment":
+            - cell "content/city-apartment":
+              - code: content/city-apartment
+            - cell
+            - cell
+            - cell
+          - row "content/paper-clip":
+            - cell "content/paper-clip":
+              - code: content/paper-clip
+            - cell
+            - cell
+            - cell
+          - row "content/speech-bubbles-question-answer":
+            - cell "content/speech-bubbles-question-answer":
+              - code: content/speech-bubbles-question-answer
+            - cell
+            - cell
+            - cell
+          - row "content/office-euro":
+            - cell "content/office-euro":
+              - code: content/office-euro
+            - cell
+            - cell
+            - cell
+          - row "content/speech-bubbles":
+            - cell "content/speech-bubbles":
+              - code: content/speech-bubbles
+            - cell
+            - cell
+            - cell
+          - row "content/speech-bubble":
+            - cell "content/speech-bubble":
+              - code: content/speech-bubble
+            - cell
+            - cell
+            - cell
+          - row "content/book":
+            - cell "content/book":
+              - code: content/book
+            - cell
+            - cell
+            - cell
+          - row "content/speech-bubble-face":
+            - cell "content/speech-bubble-face":
+              - code: content/speech-bubble-face
+            - cell
+            - cell
+            - cell
+          - row "content/playground":
+            - cell "content/playground":
+              - code: content/playground
+            - cell
+            - cell
+            - cell
+          - row "content/piggy-bank":
+            - cell "content/piggy-bank":
+              - code: content/piggy-bank
+            - cell
+            - cell
+            - cell
+          - row "content/game-controller":
+            - cell "content/game-controller":
+              - code: content/game-controller
+            - cell
+            - cell
+            - cell
+          - row "content/piggy-bank-euro":
+            - cell "content/piggy-bank-euro":
+              - code: content/piggy-bank-euro
+            - cell
+            - cell
+            - cell
+          - row "content/sun-clouds":
+            - cell "content/sun-clouds":
+              - code: content/sun-clouds
+            - cell
+            - cell
+            - cell
+          - row "content/umbrella-chairs":
+            - cell "content/umbrella-chairs":
+              - code: content/umbrella-chairs
+            - cell
+            - cell
+            - cell
+          - row "content/train":
+            - cell "content/train":
+              - code: content/train
+            - cell
+            - cell
+            - cell
+          - row "content/certificate":
+            - cell "content/certificate":
+              - code: content/certificate
+            - cell
+            - cell
+            - cell
+          - row "content/bricks":
+            - cell "content/bricks":
+              - code: content/bricks
+            - cell
+            - cell
+            - cell
+          - row "content/target":
+            - cell "content/target":
+              - code: content/target
+            - cell
+            - cell
+            - cell
+          - row "content/traffic-light":
+            - cell "content/traffic-light":
+              - code: content/traffic-light
+            - cell
+            - cell
+            - cell
+          - row "content/circle-info":
+            - cell "content/circle-info":
+              - code: content/circle-info
+            - cell
+            - cell
+            - cell
+          - row "content/gears-circle":
+            - cell "content/gears-circle":
+              - code: content/gears-circle
+            - cell
+            - cell
+            - cell
+          - row "content/certificate-rolled":
+            - cell "content/certificate-rolled":
+              - code: content/certificate-rolled
+            - cell
+            - cell
+            - cell
+          - row "content/dragon":
+            - cell "content/dragon":
+              - code: content/dragon
+            - cell
+            - cell
+            - cell
+          - row "content/gears-arrow":
+            - cell "content/gears-arrow":
+              - code: content/gears-arrow
+            - cell
+            - cell
+            - cell
+          - row "content/rocket-cloud":
+            - cell "content/rocket-cloud":
+              - code: content/rocket-cloud
+            - cell
+            - cell
+            - cell
+          - row "content/magazine":
+            - cell "content/magazine":
+              - code: content/magazine
+            - cell
+            - cell
+            - cell
+          - row "content/toothbrushes":
+            - cell "content/toothbrushes":
+              - code: content/toothbrushes
+            - cell
+            - cell
+            - cell
+          - row "content/magnet":
+            - cell "content/magnet":
+              - code: content/magnet
+            - cell
+            - cell
+            - cell
+          - row "content/note-box":
+            - cell "content/note-box":
+              - code: content/note-box
+            - cell
+            - cell
+            - cell
+          - row "content/cubes":
+            - cell "content/cubes":
+              - code: content/cubes
+            - cell
+            - cell
+            - cell
+          - row "content/yin-yang":
+            - cell "content/yin-yang":
+              - code: content/yin-yang
+            - cell
+            - cell
+            - cell
+          - row "content/magnifying-glass":
+            - cell "content/magnifying-glass":
+              - code: content/magnifying-glass
+            - cell
+            - cell
+            - cell
+          - row "content/cube-hexagon":
+            - cell "content/cube-hexagon":
+              - code: content/cube-hexagon
+            - cell
+            - cell
+            - cell
+          - row "content/girl":
+            - cell "content/girl":
+              - code: content/girl
+            - cell
+            - cell
+            - cell
+          - row "content/magnifying-glass-person":
+            - cell "content/magnifying-glass-person":
+              - code: content/magnifying-glass-person
+            - cell
+            - cell
+            - cell
+          - row "content/cloud":
+            - cell "content/cloud":
+              - code: content/cloud
+            - cell
+            - cell
+            - cell
+          - row "content/wlan-crossed-out":
+            - cell "content/wlan-crossed-out":
+              - code: content/wlan-crossed-out
+            - cell
+            - cell
+            - cell
+          - row "content/link":
+            - cell "content/link":
+              - code: content/link
+            - cell
+            - cell
+            - cell
+          - row "content/cloud-arrows":
+            - cell "content/cloud-arrows":
+              - code: content/cloud-arrows
+            - cell
+            - cell
+            - cell
+          - row "content/magnifying-glass-question-mark":
+            - cell "content/magnifying-glass-question-mark":
+              - code: content/magnifying-glass-question-mark
+            - cell
+            - cell
+            - cell
+          - row "content/swipe":
+            - cell "content/swipe":
+              - code: content/swipe
+            - cell
+            - cell
+            - cell
+          - row "content/encyclopedia":
+            - cell "content/encyclopedia":
+              - code: content/encyclopedia
+            - cell
+            - cell
+            - cell
+          - row "content/canvas":
+            - cell "content/canvas":
+              - code: content/canvas
+            - cell
+            - cell
+            - cell
+          - row "content/waving":
+            - cell "content/waving":
+              - code: content/waving
+            - cell
+            - cell
+            - cell
+          - row "content/steering-wheel":
+            - cell "content/steering-wheel":
+              - code: content/steering-wheel
+            - cell
+            - cell
+            - cell
+          - row "content/person-wlan":
+            - cell "content/person-wlan":
+              - code: content/person-wlan
+            - cell
+            - cell
+            - cell
+          - row "content/food":
+            - cell "content/food":
+              - code: content/food
+            - cell
+            - cell
+            - cell
+          - row "content/stock":
+            - cell "content/stock":
+              - code: content/stock
+            - cell
+            - cell
+            - cell
+          - row "content/wind-energy":
+            - cell "content/wind-energy":
+              - code: content/wind-energy
+            - cell
+            - cell
+            - cell
+          - row "content/truck":
+            - cell "content/truck":
+              - code: content/truck
+            - cell
+            - cell
+            - cell
+          - row "content/volume":
+            - cell "content/volume":
+              - code: content/volume
+            - cell
+            - cell
+            - cell
+          - row "content/truck-euro":
+            - cell "content/truck-euro":
+              - code: content/truck-euro
+            - cell
+            - cell
+            - cell
+          - row "content/laptop-gear":
+            - cell "content/laptop-gear":
+              - code: content/laptop-gear
+            - cell
+            - cell
+            - cell
+          - row "content/laptop":
+            - cell "content/laptop":
+              - code: content/laptop
+            - cell
+            - cell
+            - cell
+          - row "content/laptop-keyboard":
+            - cell "content/laptop-keyboard":
+              - code: content/laptop-keyboard
+            - cell
+            - cell
+            - cell
+          - row "content/share-price-coins":
+            - cell "content/share-price-coins":
+              - code: content/share-price-coins
+            - cell
+            - cell
+            - cell
+          - row "content/warehouse":
+            - cell "content/warehouse":
+              - code: content/warehouse
+            - cell
+            - cell
+            - cell
+          - row "content/share-price-binocluars":
+            - cell "content/share-price-binocluars":
+              - code: content/share-price-binocluars
+            - cell
+            - cell
+            - cell
+          - row "content/binoculars":
+            - cell "content/binoculars":
+              - code: content/binoculars
+            - cell
+            - cell
+            - cell
+          - row "content/share-price-chart-person":
+            - cell "content/share-price-chart-person":
+              - code: content/share-price-chart-person
+            - cell
+            - cell
+            - cell
+          - row "content/share-price-chart":
+            - cell "content/share-price-chart":
+              - code: content/share-price-chart
+            - cell
+            - cell
+            - cell
+          - row "content/share-price-analysis":
+            - cell "content/share-price-analysis":
+              - code: content/share-price-analysis
+            - cell
+            - cell
+            - cell
+          - row "content/circuit-coins":
+            - cell "content/circuit-coins":
+              - code: content/circuit-coins
+            - cell
+            - cell
+            - cell
+          - row "content/share-price":
+            - cell "content/share-price":
+              - code: content/share-price
+            - cell
+            - cell
+            - cell
+          - row "content/woman":
+            - cell "content/woman":
+              - code: content/woman
+            - cell
+            - cell
+            - cell
+          - row "content/feather":
+            - cell "content/feather":
+              - code: content/feather
+            - cell
+            - cell
+            - cell
+          - row "content/fax":
+            - cell "content/fax":
+              - code: content/fax
+            - cell
+            - cell
+            - cell
+          - row "content/tube-euro":
+            - cell "content/tube-euro":
+              - code: content/tube-euro
+            - cell
+            - cell
+            - cell
+          - row "content/life-belt":
+            - cell "content/life-belt":
+              - code: content/life-belt
+            - cell
+            - cell
+            - cell
+          - row "content/robot-arm":
+            - cell "content/robot-arm":
+              - code: content/robot-arm
+            - cell
+            - cell
+            - cell
+          - row "content/bicycle":
+            - cell "content/bicycle":
+              - code: content/bicycle
+            - cell
+            - cell
+            - cell
+          - row "content/factory":
+            - cell "content/factory":
+              - code: content/factory
+            - cell
+            - cell
+            - cell
+          - row "content/euro":
+            - cell "content/euro":
+              - code: content/euro
+            - cell
+            - cell
+            - cell
+          - row "content/umbrella":
+            - cell "content/umbrella":
+              - code: content/umbrella
+            - cell
+            - cell
+            - cell
+          - row "content/europe-stars":
+            - cell "content/europe-stars":
+              - code: content/europe-stars
+            - cell
+            - cell
+            - cell
+          - row "content/rain-cloud":
+            - cell "content/rain-cloud":
+              - code: content/rain-cloud
+            - cell
+            - cell
+            - cell
+          - row "content/box":
+            - cell "content/box":
+              - code: content/box
+            - cell
+            - cell
+            - cell
+          - row "content/euro-hand":
+            - cell "content/euro-hand":
+              - code: content/euro-hand
+            - cell
+            - cell
+            - cell
+          - row "content/calculator":
+            - cell "content/calculator":
+              - code: content/calculator
+            - cell
+            - cell
+            - cell
+          - row "content/city-hall":
+            - cell "content/city-hall":
+              - code: content/city-hall
+            - cell
+            - cell
+            - cell
+          - row "content/tag-percent":
+            - cell "content/tag-percent":
+              - code: content/tag-percent
+            - cell
+            - cell
+            - cell
+          - row "content/caterpillar-butterfly":
+            - cell "content/caterpillar-butterfly":
+              - code: content/caterpillar-butterfly
+            - cell
+            - cell
+            - cell
+          - row "content/owl":
+            - cell "content/owl":
+              - code: content/owl
+            - cell
+            - cell
+            - cell
+          - row "content/tag-coins":
+            - cell "content/tag-coins":
+              - code: content/tag-coins
+            - cell
+            - cell
+            - cell
+          - row "content/rocket":
+            - cell "content/rocket":
+              - code: content/rocket
+            - cell
+            - cell
+            - cell
+          - row "content/esg-criteria":
+            - cell "content/esg-criteria":
+              - code: content/esg-criteria
+            - cell
+            - cell
+            - cell
+          - row "content/esg-gear":
+            - cell "content/esg-gear":
+              - code: content/esg-gear
+            - cell
+            - cell
+            - cell
+          - row "content/radar":
+            - cell "content/radar":
+              - code: content/radar
+            - cell
+            - cell
+            - cell
+          - row "content/electric-car":
+            - cell "content/electric-car":
+              - code: content/electric-car
+            - cell
+            - cell
+            - cell
+          - row "content/elbphilharmonie":
+            - cell "content/elbphilharmonie":
+              - code: content/elbphilharmonie
+            - cell
+            - cell
+            - cell
+          - row "content/orange":
+            - cell "content/orange":
+              - code: content/orange
+            - cell
+            - cell
+            - cell
+          - row "content/shopping-cart":
+            - cell "content/shopping-cart":
+              - code: content/shopping-cart
+            - cell
+            - cell
+            - cell
+          - row "content/cloud-bars":
+            - cell "content/cloud-bars":
+              - code: content/cloud-bars
+            - cell
+            - cell
+            - cell
+          - row "content/screen-chart":
+            - cell "content/screen-chart":
+              - code: content/screen-chart
+            - cell
+            - cell
+            - cell
+          - row "content/shopping-bag":
+            - cell "content/shopping-bag":
+              - code: content/shopping-bag
+            - cell
+            - cell
+            - cell
+          - row "content/unicorn":
+            - cell "content/unicorn":
+              - code: content/unicorn
+            - cell
+            - cell
+            - cell
+          - row "content/shopping-bag-euro":
+            - cell "content/shopping-bag-euro":
+              - code: content/shopping-bag-euro
+            - cell
+            - cell
+            - cell
+          - row "content/bucket":
+            - cell "content/bucket":
+              - code: content/bucket
+            - cell
+            - cell
+            - cell
+          - row "content/eiffel-tower":
+            - cell "content/eiffel-tower":
+              - code: content/eiffel-tower
+            - cell
+            - cell
+            - cell
+          - row "content/wedding-ring":
+            - cell "content/wedding-ring":
+              - code: content/wedding-ring
+            - cell
+            - cell
+            - cell
+          - row "content/triangle-euro":
+            - cell "content/triangle-euro":
+              - code: content/triangle-euro
+            - cell
+            - cell
+            - cell
+          - row "content/average":
+            - cell "content/average":
+              - code: content/average
+            - cell
+            - cell
+            - cell
+          - row "content/triangle-exclamation-mark":
+            - cell "content/triangle-exclamation-mark":
+              - code: content/triangle-exclamation-mark
+            - cell
+            - cell
+            - cell
+          - row "content/circles-concentric":
+            - cell "content/circles-concentric":
+              - code: content/circles-concentric
+            - cell
+            - cell
+            - cell
+          - row "content/world-globe":
+            - cell "content/world-globe":
+              - code: content/world-globe
+            - cell
+            - cell
+            - cell
+          - row "content/signpost":
+            - cell "content/signpost":
+              - code: content/signpost
+            - cell
+            - cell
+            - cell
+          - row "content/world-globe-percent":
+            - cell "content/world-globe-percent":
+              - code: content/world-globe-percent
+            - cell
+            - cell
+            - cell
+          - row "content/alarm-clock":
+            - cell "content/alarm-clock":
+              - code: content/alarm-clock
+            - cell
+            - cell
+            - cell
+          - row "content/commen-ground":
+            - cell "content/commen-ground":
+              - code: content/commen-ground
+            - cell
+            - cell
+            - cell
+          - row "content/oil":
+            - cell "content/oil":
+              - code: content/oil
+            - cell
+            - cell
+            - cell
+          - row "content/newsletter":
+            - cell "content/newsletter":
+              - code: content/newsletter
+            - cell
+            - cell
+            - cell
+          - row "content/upper-limit":
+            - cell "content/upper-limit":
+              - code: content/upper-limit
+            - cell
+            - cell
+            - cell
+          - row "content/music":
+            - cell "content/music":
+              - code: content/music
+            - cell
+            - cell
+            - cell
+          - row "content/navigation":
+            - cell "content/navigation":
+              - code: content/navigation
+            - cell
+            - cell
+            - cell
+          - row "content/website-globe":
+            - cell "content/website-globe":
+              - code: content/website-globe
+            - cell
+            - cell
+            - cell
+          - row "content/coins":
+            - cell "content/coins":
+              - code: content/coins
+            - cell
+            - cell
+            - cell
+          - row "content/network":
+            - cell "content/network":
+              - code: content/network
+            - cell
+            - cell
+            - cell
+          - row "content/coins-arrow-right":
+            - cell "content/coins-arrow-right":
+              - code: content/coins-arrow-right
+            - cell
+            - cell
+            - cell
+          - row "content/coins-arrow-bottom-right":
+            - cell "content/coins-arrow-bottom-right":
+              - code: content/coins-arrow-bottom-right
+            - cell
+            - cell
+            - cell
+          - row "content/protective-shield-lock":
+            - cell "content/protective-shield-lock":
+              - code: content/protective-shield-lock
+            - cell
+            - cell
+            - cell
+          - row "content/coins-arrow-top-right":
+            - cell "content/coins-arrow-top-right":
+              - code: content/coins-arrow-top-right
+            - cell
+            - cell
+            - cell
+          - row "content/coins-arrow-left":
+            - cell "content/coins-arrow-left":
+              - code: content/coins-arrow-left
+            - cell
+            - cell
+            - cell
+          - row "content/trash":
+            - cell "content/trash":
+              - code: content/trash
+            - cell
+            - cell
+            - cell
+          - row "content/coins-hand":
+            - cell "content/coins-hand":
+              - code: content/coins-hand
+            - cell
+            - cell
+            - cell
+          - row "content/possibilities":
+            - cell "content/possibilities":
+              - code: content/possibilities
+            - cell
+            - cell
+            - cell
+          - row "content/eye":
+            - cell "content/eye":
+              - code: content/eye
+            - cell
+            - cell
+            - cell
+          - row "content/statement":
+            - cell "content/statement":
+              - code: content/statement
+            - cell
+            - cell
+            - cell
+          - row "content/mobile-phone-gear":
+            - cell "content/mobile-phone-gear":
+              - code: content/mobile-phone-gear
+            - cell
+            - cell
+            - cell
+          - row "content/gears":
+            - cell "content/gears":
+              - code: content/gears
+            - cell
+            - cell
+            - cell
+          - row "content/printer":
+            - cell "content/printer":
+              - code: content/printer
+            - cell
+            - cell
+            - cell
+          - row "content/elevator":
+            - cell "content/elevator":
+              - code: content/elevator
+            - cell
+            - cell
+            - cell
+          - row "content/mobile-phone-vr":
+            - cell "content/mobile-phone-vr":
+              - code: content/mobile-phone-vr
+            - cell
+            - cell
+            - cell
+          - row "content/headset":
+            - cell "content/headset":
+              - code: content/headset
+            - cell
+            - cell
+            - cell
+          - row "content/mobile-phone-square-scan":
+            - cell "content/mobile-phone-square-scan":
+              - code: content/mobile-phone-square-scan
+            - cell
+            - cell
+            - cell
+          - row "content/aquarium":
+            - cell "content/aquarium":
+              - code: content/aquarium
+            - cell
+            - cell
+            - cell
+          - row "content/mobile-phone":
+            - cell "content/mobile-phone":
+              - code: content/mobile-phone
+            - cell
+            - cell
+            - cell
+          - row "content/alarm":
+            - cell "content/alarm":
+              - code: content/alarm
+            - cell
+            - cell
+            - cell
+          - row "content/yen":
+            - cell "content/yen":
+              - code: content/yen
+            - cell
+            - cell
+            - cell
+          - row "content/checkbox":
+            - cell "content/checkbox":
+              - code: content/checkbox
+            - cell
+            - cell
+            - cell
+          - row "content/badge":
+            - cell "content/badge":
+              - code: content/badge
+            - cell
+            - cell
+            - cell
+          - row "content/microphone":
+            - cell "content/microphone":
+              - code: content/microphone
+            - cell
+            - cell
+            - cell
+          - row "content/eagle":
+            - cell "content/eagle":
+              - code: content/eagle
+            - cell
+            - cell
+            - cell
+          - row "content/mobile-phone-crossed-out":
+            - cell "content/mobile-phone-crossed-out":
+              - code: content/mobile-phone-crossed-out
+            - cell
+            - cell
+            - cell
+          - row "content/metaplan-wall-person":
+            - cell "content/metaplan-wall-person":
+              - code: content/metaplan-wall-person
+            - cell
+            - cell
+            - cell
+          - row "content/mouse":
+            - cell "content/mouse":
+              - code: content/mouse
+            - cell
+            - cell
+            - cell
+          - row "content/megaphone":
+            - cell "content/megaphone":
+              - code: content/megaphone
+            - cell
+            - cell
+            - cell
+          - row "content/wall":
+            - cell "content/wall":
+              - code: content/wall
+            - cell
+            - cell
+            - cell
+          - row "content/man":
+            - cell "content/man":
+              - code: content/man
+            - cell
+            - cell
+            - cell
+          - row "content/masks":
+            - cell "content/masks":
+              - code: content/masks
+            - cell
+            - cell
+            - cell
+          - row "content/big-ben":
+            - cell "content/big-ben":
+              - code: content/big-ben
+            - cell
+            - cell
+            - cell
+          - row "content/weight-euro-arrow-left":
+            - cell "content/weight-euro-arrow-left":
+              - code: content/weight-euro-arrow-left
+            - cell
+            - cell
+            - cell
+          - row "content/weight-euro-arrow-right":
+            - cell "content/weight-euro-arrow-right":
+              - code: content/weight-euro-arrow-right
+            - cell
+            - cell
+            - cell
+          - row "content/businesswoman":
+            - cell "content/businesswoman":
+              - code: content/businesswoman
+            - cell
+            - cell
+            - cell
+          - row "content/businessman":
+            - cell "content/businessman":
+              - code: content/businessman
+            - cell
+            - cell
+            - cell
+          - row "content/gift":
+            - cell "content/gift":
+              - code: content/gift
+            - cell
+            - cell
+            - cell
+          - row "content/face-happy":
+            - cell "content/face-happy":
+              - code: content/face-happy
+            - cell
+            - cell
+            - cell
+          - row "content/flag-position":
+            - cell "content/flag-position":
+              - code: content/flag-position
+            - cell
+            - cell
+            - cell
+          - row "content/hands-baton":
+            - cell "content/hands-baton":
+              - code: content/hands-baton
+            - cell
+            - cell
+            - cell
+          - row "content/singing":
+            - cell "content/singing":
+              - code: content/singing
+            - cell
+            - cell
+            - cell
+          - row "content/business":
+            - cell "content/business":
+              - code: content/business
+            - cell
+            - cell
+            - cell
+          - row "content/face-sad":
+            - cell "content/face-sad":
+              - code: content/face-sad
+            - cell
+            - cell
+            - cell
+          - row "content/rotate-device":
+            - cell "content/rotate-device":
+              - code: content/rotate-device
+            - cell
+            - cell
+            - cell
+          - row "content/face-neutral":
+            - cell "content/face-neutral":
+              - code: content/face-neutral
+            - cell
+            - cell
+            - cell
+          - row "content/banknote":
+            - cell "content/banknote":
+              - code: content/banknote
+            - cell
+            - cell
+            - cell
+          - row "content/banknotes":
+            - cell "content/banknotes":
+              - code: content/banknotes
+            - cell
+            - cell
+            - cell
+          - row "content/jam":
+            - cell "content/jam":
+              - code: content/jam
+            - cell
+            - cell
+            - cell
+          - row "content/banknote-hand":
+            - cell "content/banknote-hand":
+              - code: content/banknote-hand
+            - cell
+            - cell
+            - cell
+          - row "content/money-bag":
+            - cell "content/money-bag":
+              - code: content/money-bag
+            - cell
+            - cell
+            - cell
+          - row "content/walking":
+            - cell "content/walking":
+              - code: content/walking
+            - cell
+            - cell
+            - cell
+          - row "content/lightning":
+            - cell "content/lightning":
+              - code: content/lightning
+            - cell
+            - cell
+            - cell
+          - row "content/football":
+            - cell "content/football":
+              - code: content/football
+            - cell
+            - cell
+            - cell
+          - row "content/forklift":
+            - cell "content/forklift":
+              - code: content/forklift
+            - cell
+            - cell
+            - cell
+          - row "content/casual-clothes":
+            - cell "content/casual-clothes":
+              - code: content/casual-clothes
+            - cell
+            - cell
+            - cell
+          - row "content/flipchart-paper":
+            - cell "content/flipchart-paper":
+              - code: content/flipchart-paper
+            - cell
+            - cell
+            - cell
+          - row "content/airplane":
+            - cell "content/airplane":
+              - code: content/airplane
+            - cell
+            - cell
+            - cell
+          - row "content/flipchart":
+            - cell "content/flipchart":
+              - code: content/flipchart
+            - cell
+            - cell
+            - cell
+          - row "content/fingerprint":
+            - cell "content/fingerprint":
+              - code: content/fingerprint
+            - cell
+            - cell
+            - cell
+          - row "content/bottle-glass":
+            - cell "content/bottle-glass":
+              - code: content/bottle-glass
+            - cell
+            - cell
+            - cell
+          - row "content/financial-house":
+            - cell "content/financial-house":
+              - code: content/financial-house
+            - cell
+            - cell
+            - cell
+          - row "content/window":
+            - cell "content/window":
+              - code: content/window
+            - cell
+            - cell
+            - cell
+          - row "content/ruble":
+            - cell "content/ruble":
+              - code: content/ruble
+            - cell
+            - cell
+            - cell
+          - row "content/dollar":
+            - cell "content/dollar":
+              - code: content/dollar
+            - cell
+            - cell
+            - cell
+          - row "content/island":
+            - cell "content/island":
+              - code: content/island
+            - cell
+            - cell
+            - cell
+          - row "content/hotel-bellboy":
+            - cell "content/hotel-bellboy":
+              - code: content/hotel-bellboy
+            - cell
+            - cell
+            - cell
+          - row "content/hotel":
+            - cell "content/hotel":
+              - code: content/hotel
+            - cell
+            - cell
+            - cell
+          - row "content/hotel-bellboy-euro":
+            - cell "content/hotel-bellboy-euro":
+              - code: content/hotel-bellboy-euro
+            - cell
+            - cell
+            - cell
+          - row "content/honey":
+            - cell "content/honey":
+              - code: content/honey
+            - cell
+            - cell
+            - cell
+          - row "content/trousers":
+            - cell "content/trousers":
+              - code: content/trousers
+            - cell
+            - cell
+            - cell
+          - row "content/skyscraper-world-globe":
+            - cell "content/skyscraper-world-globe":
+              - code: content/skyscraper-world-globe
+            - cell
+            - cell
+            - cell
+          - row "content/skyscraper-sun-bench":
+            - cell "content/skyscraper-sun-bench":
+              - code: content/skyscraper-sun-bench
+            - cell
+            - cell
+            - cell
+          - row "content/skyscraper":
+            - cell "content/skyscraper":
+              - code: content/skyscraper
+            - cell
+            - cell
+            - cell
+          - row "content/bull-bear":
+            - cell "content/bull-bear":
+              - code: content/bull-bear
+            - cell
+            - cell
+            - cell
+          - row "content/skyscraper-measures":
+            - cell "content/skyscraper-measures":
+              - code: content/skyscraper-measures
+            - cell
+            - cell
+            - cell
+          - row "content/skyscraper-percent":
+            - cell "content/skyscraper-percent":
+              - code: content/skyscraper-percent
+            - cell
+            - cell
+            - cell
+          - row "content/skyscraper-curve":
+            - cell "content/skyscraper-curve":
+              - code: content/skyscraper-curve
+            - cell
+            - cell
+            - cell
+          - row "content/skyscraper-euro":
+            - cell "content/skyscraper-euro":
+              - code: content/skyscraper-euro
+            - cell
+            - cell
+            - cell
+          - row "content/skyscrapers":
+            - cell "content/skyscrapers":
+              - code: content/skyscrapers
+            - cell
+            - cell
+            - cell
+          - row "content/skyscraper-badge":
+            - cell "content/skyscraper-badge":
+              - code: content/skyscraper-badge
+            - cell
+            - cell
+            - cell
+          - row "content/heart-curve":
+            - cell "content/heart-curve":
+              - code: content/heart-curve
+            - cell
+            - cell
+            - cell
+          - row "content/shirt":
+            - cell "content/shirt":
+              - code: content/shirt
+            - cell
+            - cell
+            - cell
+          - row "content/house":
+            - cell "content/house":
+              - code: content/house
+            - cell
+            - cell
+            - cell
+          - row "content/hands":
+            - cell "content/hands":
+              - code: content/hands
+            - cell
+            - cell
+            - cell
+          - row "content/light-bulb-brain":
+            - cell "content/light-bulb-brain":
+              - code: content/light-bulb-brain
+            - cell
+            - cell
+            - cell
+          - row "content/people-speech-bubble-card":
+            - cell "content/people-speech-bubble-card":
+              - code: content/people-speech-bubble-card
+            - cell
+            - cell
+            - cell
+          - row "content/house-star":
+            - cell "content/house-star":
+              - code: content/house-star
+            - cell
+            - cell
+            - cell
+          - row "content/people-file":
+            - cell "content/people-file":
+              - code: content/people-file
+            - cell
+            - cell
+            - cell
+          - row "content/petrol-pump":
+            - cell "content/petrol-pump":
+              - code: content/petrol-pump
+            - cell
+            - cell
+            - cell
+          - row "content/people-files":
+            - cell "content/people-files":
+              - code: content/people-files
+            - cell
+            - cell
+            - cell
+          - row "content/organizational-chart":
+            - cell "content/organizational-chart":
+              - code: content/organizational-chart
+            - cell
+            - cell
+            - cell
+          - row "content/house-speech-bubble":
+            - cell "content/house-speech-bubble":
+              - code: content/house-speech-bubble
+            - cell
+            - cell
+            - cell
+          - row "content/flowchart":
+            - cell "content/flowchart":
+              - code: content/flowchart
+            - cell
+            - cell
+            - cell
+          - row "content/person-newspaper":
+            - cell "content/person-newspaper":
+              - code: content/person-newspaper
+            - cell
+            - cell
+            - cell
+          - row "content/house-percent":
+            - cell "content/house-percent":
+              - code: content/house-percent
+            - cell
+            - cell
+            - cell
+          - row "content/house-protective-shield":
+            - cell "content/house-protective-shield":
+              - code: content/house-protective-shield
+            - cell
+            - cell
+            - cell
+          - row "content/person-vr-glasses":
+            - cell "content/person-vr-glasses":
+              - code: content/person-vr-glasses
+            - cell
+            - cell
+            - cell
+          - row "content/house-arrow-down":
+            - cell "content/house-arrow-down":
+              - code: content/house-arrow-down
+            - cell
+            - cell
+            - cell
+          - row "content/robot":
+            - cell "content/robot":
+              - code: content/robot
+            - cell
+            - cell
+            - cell
+          - row "content/fuel-tap":
+            - cell "content/fuel-tap":
+              - code: content/fuel-tap
+            - cell
+            - cell
+            - cell
+          - row "content/person":
+            - cell "content/person":
+              - code: content/person
+            - cell
+            - cell
+            - cell
+          - row "content/person-steering-wheel-euro":
+            - cell "content/person-steering-wheel-euro":
+              - code: content/person-steering-wheel-euro
+            - cell
+            - cell
+            - cell
+          - row "content/person-steering-wheel":
+            - cell "content/person-steering-wheel":
+              - code: content/person-steering-wheel
+            - cell
+            - cell
+            - cell
+          - row "content/euro-lock":
+            - cell "content/euro-lock":
+              - code: content/euro-lock
+            - cell
+            - cell
+            - cell
+          - row "content/person-cross-legged-seat":
+            - cell "content/person-cross-legged-seat":
+              - code: content/person-cross-legged-seat
+            - cell
+            - cell
+            - cell
+          - row "content/person-euro":
+            - cell "content/person-euro":
+              - code: content/person-euro
+            - cell
+            - cell
+            - cell
+          - row "content/person-file":
+            - cell "content/person-file":
+              - code: content/person-file
+            - cell
+            - cell
+            - cell
+          - row "content/person-entrance":
+            - cell "content/person-entrance":
+              - code: content/person-entrance
+            - cell
+            - cell
+            - cell
+          - row "content/person-glasses":
+            - cell "content/person-glasses":
+              - code: content/person-glasses
+            - cell
+            - cell
+            - cell
+          - row "content/parking-lot":
+            - cell "content/parking-lot":
+              - code: content/parking-lot
+            - cell
+            - cell
+            - cell
+          - row "content/book-open":
+            - cell "content/book-open":
+              - code: content/book-open
+            - cell
+            - cell
+            - cell
+          - row "content/person-belly-star":
+            - cell "content/person-belly-star":
+              - code: content/person-belly-star
+            - cell
+            - cell
+            - cell
+          - row "content/fountain":
+            - cell "content/fountain":
+              - code: content/fountain
+            - cell
+            - cell
+            - cell
+          - row "content/book-bookmark":
+            - cell "content/book-bookmark":
+              - code: content/book-bookmark
+            - cell
+            - cell
+            - cell
+          - row "content/letter":
+            - cell "content/letter":
+              - code: content/letter
+            - cell
+            - cell
+            - cell
+          - row "content/paragraph":
+            - cell "content/paragraph":
+              - code: content/paragraph
+            - cell
+            - cell
+            - cell
+          - row "content/buttons-tap":
+            - cell "content/buttons-tap":
+              - code: content/buttons-tap
+            - cell
+            - cell
+            - cell
+          - row "content/parking":
+            - cell "content/parking":
+              - code: content/parking
+            - cell
+            - cell
+            - cell
+          - row "content/gas-flame":
+            - cell "content/gas-flame":
+              - code: content/gas-flame
+            - cell
+            - cell
+            - cell
+          - row "content/letter-sent":
+            - cell "content/letter-sent":
+              - code: content/letter-sent
+            - cell
+            - cell
+            - cell
+          - row "content/paragraph-euro":
+            - cell "content/paragraph-euro":
+              - code: content/paragraph-euro
+            - cell
+            - cell
+            - cell
+          - row "content/brain":
+            - cell "content/brain":
+              - code: content/brain
+            - cell
+            - cell
+            - cell
+          - row "content/couple":
+            - cell "content/couple":
+              - code: content/couple
+            - cell
+            - cell
+            - cell
+          - row "content/blog":
+            - cell "content/blog":
+              - code: content/blog
+            - cell
+            - cell
+            - cell
+          - row "content/candy":
+            - cell "content/candy":
+              - code: content/candy
+            - cell
+            - cell
+            - cell
+          - row "content/couple-running":
+            - cell "content/couple-running":
+              - code: content/couple-running
+            - cell
+            - cell
+            - cell
+          - row "content/billiard-ball":
+            - cell "content/billiard-ball":
+              - code: content/billiard-ball
+            - cell
+            - cell
+            - cell
+          - row "content/sun":
+            - cell "content/sun":
+              - code: content/sun
+            - cell
+            - cell
+            - cell
+          - row "content/location-street":
+            - cell "content/location-street":
+              - code: content/location-street
+            - cell
+            - cell
+            - cell
+          - row "content/sun-water":
+            - cell "content/sun-water":
+              - code: content/sun-water
+            - cell
+            - cell
+            - cell
+          - row "content/bitcoin":
+            - cell "content/bitcoin":
+              - code: content/bitcoin
+            - cell
+            - cell
+            - cell
+          - row "content/location":
+            - cell "content/location":
+              - code: content/location
+            - cell
+            - cell
+            - cell
+          - row "content/solar-energy":
+            - cell "content/solar-energy":
+              - code: content/solar-energy
+            - cell
+            - cell
+            - cell
+          - row "content/armchair":
+            - cell "content/armchair":
+              - code: content/armchair
+            - cell
+            - cell
+            - cell
+          - row "content/screen-person":
+            - cell "content/screen-person":
+              - code: content/screen-person
+            - cell
+            - cell
+            - cell
+          - row "content/skier":
+            - cell "content/skier":
+              - code: content/skier
+            - cell
+            - cell
+            - cell
+          - row "content/folder-book-leaned":
+            - cell "content/folder-book-leaned":
+              - code: content/folder-book-leaned
+            - cell
+            - cell
+            - cell
+          - row "content/screen":
+            - cell "content/screen":
+              - code: content/screen
+            - cell
+            - cell
+            - cell
+          - row "content/folder-book":
+            - cell "content/folder-book":
+              - code: content/folder-book
+            - cell
+            - cell
+            - cell
+          - row "content/sparkling-wine":
+            - cell "content/sparkling-wine":
+              - code: content/sparkling-wine
+            - cell
+            - cell
+            - cell
+          - row "content/image":
+            - cell "content/image":
+              - code: content/image
+            - cell
+            - cell
+            - cell
+          - row "content/mountain-goal":
+            - cell "content/mountain-goal":
+              - code: content/mountain-goal
+            - cell
+            - cell
+            - cell
+          - row "content/sdg-circle":
+            - cell "content/sdg-circle":
+              - code: content/sdg-circle
+            - cell
+            - cell
+            - cell
+          - row "content/cutlery-euro":
+            - cell "content/cutlery-euro":
+              - code: content/cutlery-euro
+            - cell
+            - cell
+            - cell
+          - row "content/fluctuation-range":
+            - cell "content/fluctuation-range":
+              - code: content/fluctuation-range
+            - cell
+            - cell
+            - cell
+          - row "content/magnifying-glass-curve":
+            - cell "content/magnifying-glass-curve":
+              - code: content/magnifying-glass-curve
+            - cell
+            - cell
+            - cell
+          - row "content/skyscraper-arrow":
+            - cell "content/skyscraper-arrow":
+              - code: content/skyscraper-arrow
+            - cell
+            - cell
+            - cell
+          - row "content/clothing":
+            - cell "content/clothing":
+              - code: content/clothing
+            - cell
+            - cell
+            - cell
+          - row "content/tree-fruits":
+            - cell "content/tree-fruits":
+              - code: content/tree-fruits
+            - cell
+            - cell
+            - cell
+          - row "content/protective-shield-plus":
+            - cell "content/protective-shield-plus":
+              - code: content/protective-shield-plus
+            - cell
+            - cell
+            - cell
+          - row "content/tree":
+            - cell "content/tree":
+              - code: content/tree
+            - cell
+            - cell
+            - cell
+          - row "content/fluctuating-rate":
+            - cell "content/fluctuating-rate":
+              - code: content/fluctuating-rate
+            - cell
+            - cell
+            - cell
+          - row "content/bank-card":
+            - cell "content/bank-card":
+              - code: content/bank-card
+            - cell
+            - cell
+            - cell
+          - row "content/protective-shield-hook":
+            - cell "content/protective-shield-hook":
+              - code: content/protective-shield-hook
+            - cell
+            - cell
+            - cell
+          - row "content/bank":
+            - cell "content/bank":
+              - code: content/bank
+            - cell
+            - cell
+            - cell
+          - row "content/server":
+            - cell "content/server":
+              - code: content/server
+            - cell
+            - cell
+            - cell
+          - row "content/protective-shield-euro":
+            - cell "content/protective-shield-euro":
+              - code: content/protective-shield-euro
+            - cell
+            - cell
+            - cell
+          - row "content/share-price-negativ-person":
+            - cell "content/share-price-negativ-person":
+              - code: content/share-price-negativ-person
+            - cell
+            - cell
+            - cell
+          - row "content/snowflake":
+            - cell "content/snowflake":
+              - code: content/snowflake
+            - cell
+            - cell
+            - cell
+          - row "content/baby":
+            - cell "content/baby":
+              - code: content/baby
+            - cell
+            - cell
+            - cell
+          - row "content/house-cross":
+            - cell "content/house-cross":
+              - code: content/house-cross
+            - cell
+            - cell
+            - cell
+          - row "content/sign-forbidden":
+            - cell "content/sign-forbidden":
+              - code: content/sign-forbidden
+            - cell
+            - cell
+            - cell
+          - row "content/house-measures":
+            - cell "content/house-measures":
+              - code: content/house-measures
+            - cell
+            - cell
+            - cell
+          - row "content/award-second":
+            - cell "content/award-second":
+              - code: content/award-second
+            - cell
+            - cell
+            - cell
+          - row "content/car":
+            - cell "content/car":
+              - code: content/car
+            - cell
+            - cell
+            - cell
+          - row "content/award-first":
+            - cell "content/award-first":
+              - code: content/award-first
+            - cell
+            - cell
+            - cell
+          - row "content/ship-water":
+            - cell "content/ship-water":
+              - code: content/ship-water
+            - cell
+            - cell
+            - cell
+          - row "content/house-euro":
+            - cell "content/house-euro":
+              - code: content/house-euro
+            - cell
+            - cell
+            - cell
+          - row "content/house-hook":
+            - cell "content/house-hook":
+              - code: content/house-hook
+            - cell
+            - cell
+            - cell
+          - row "content/award-third":
+            - cell "content/award-third":
+              - code: content/award-third
+            - cell
+            - cell
+            - cell
+          - row "content/house-skyscraper":
+            - cell "content/house-skyscraper":
+              - code: content/house-skyscraper
+            - cell
+            - cell
+            - cell
+          - row "content/slider":
+            - cell "content/slider":
+              - code: content/slider
+            - cell
+            - cell
+            - cell
+          - row "content/laptop-code":
+            - cell "content/laptop-code":
+              - code: content/laptop-code
+            - cell
+            - cell
+            - cell
+          - row "content/chess-piece":
+            - cell "content/chess-piece":
+              - code: content/chess-piece
+            - cell
+            - cell
+            - cell
+          - row "content/rocking-horse":
+            - cell "content/rocking-horse":
+              - code: content/rocking-horse
+            - cell
+            - cell
+            - cell
+          - row "content/person-code":
+            - cell "content/person-code":
+              - code: content/person-code
+            - cell
+            - cell
+            - cell
+          - row "content/dumbbell":
+            - cell "content/dumbbell":
+              - code: content/dumbbell
+            - cell
+            - cell
+            - cell
+          - row "content/saw":
+            - cell "content/saw":
+              - code: content/saw
+            - cell
+            - cell
+            - cell
+          - row "content/house-bed":
+            - cell "content/house-bed":
+              - code: content/house-bed
+            - cell
+            - cell
+            - cell
+          - row "content/hourglass":
+            - cell "content/hourglass":
+              - code: content/hourglass
+            - cell
+            - cell
+            - cell
+          - row "content/dumbbell-weigth":
+            - cell "content/dumbbell-weigth":
+              - code: content/dumbbell-weigth
+            - cell
+            - cell
+            - cell
+          - row "content/hand-plant":
+            - cell "content/hand-plant":
+              - code: content/hand-plant
+            - cell
+            - cell
+            - cell
+          - row "content/handshake":
+            - cell "content/handshake":
+              - code: content/handshake
+            - cell
+            - cell
+            - cell
+          - row "content/group-presentation":
+            - cell "content/group-presentation":
+              - code: content/group-presentation
+            - cell
+            - cell
+            - cell
+          - row "content/group-speech-bubble":
+            - cell "content/group-speech-bubble":
+              - code: content/group-speech-bubble
+            - cell
+            - cell
+            - cell
+          - row "content/group-file":
+            - cell "content/group-file":
+              - code: content/group-file
+            - cell
+            - cell
+            - cell
+          - row "content/group-mask":
+            - cell "content/group-mask":
+              - code: content/group-mask
+            - cell
+            - cell
+            - cell
+          - row "content/plot-world-globe":
+            - cell "content/plot-world-globe":
+              - code: content/plot-world-globe
+            - cell
+            - cell
+            - cell
+          - row "content/plot-useable-area":
+            - cell "content/plot-useable-area":
+              - code: content/plot-useable-area
+            - cell
+            - cell
+            - cell
+          - row "content/plot-rental-area":
+            - cell "content/plot-rental-area":
+              - code: content/plot-rental-area
+            - cell
+            - cell
+            - cell
+          - row "content/plot-size":
+            - cell "content/plot-size":
+              - code: content/plot-size
+            - cell
+            - cell
+            - cell
+          - row "content/grandmother":
+            - cell "content/grandmother":
+              - code: content/grandmother
+            - cell
+            - cell
+            - cell
+          - row "content/grandfather-coins":
+            - cell "content/grandfather-coins":
+              - code: content/grandfather-coins
+            - cell
+            - cell
+            - cell
+          - row "content/gold-bar":
+            - cell "content/gold-bar":
+              - code: content/gold-bar
+            - cell
+            - cell
+            - cell
+          - row "content/grandmother-euro":
+            - cell "content/grandmother-euro":
+              - code: content/grandmother-euro
+            - cell
+            - cell
+            - cell
+          - row "content/light-bulb":
+            - cell "content/light-bulb":
+              - code: content/light-bulb
+            - cell
+            - cell
+            - cell
+          - row "content/globe":
+            - cell "content/globe":
+              - code: content/globe
+            - cell
+            - cell
+            - cell
+          - row "content/weight-euro":
+            - cell "content/weight-euro":
+              - code: content/weight-euro
+            - cell
+            - cell
+            - cell
+    `);
+});
+
+test('union-investment/system', async ({ page }) => {
+  await page.goto(
+    'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-icon-default--library-default-system&viewMode=story'
+  );
+  await expect(page.locator('body')).toMatchAriaSnapshot(`
+      - region "Top right notifications"
+      - region "Bottom center notifications"
+      - table:
+        - rowgroup:
+          - row "color":
+            - cell
+            - cell
+            - cell "color":
+              - code: color
+          - row "currentColor primary white":
+            - cell
+            - cell
+            - cell "currentColor":
+              - code: currentColor
+            - cell "primary":
+              - code: primary
+            - cell "white":
+              - code: white
+        - rowgroup:
+          - row "name system/scroll":
+            - cell "name":
+              - code: name
+            - cell "system/scroll":
+              - code: system/scroll
+            - cell
+            - cell
+            - cell
+          - row "system/calendar":
+            - cell "system/calendar":
+              - code: system/calendar
+            - cell
+            - cell
+            - cell
+          - row "system/info-circle":
+            - cell "system/info-circle":
+              - code: system/info-circle
+            - cell
+            - cell
+            - cell
+          - row "system/price-chart":
+            - cell "system/price-chart":
+              - code: system/price-chart
+            - cell
+            - cell
+            - cell
+          - row "system/shopping-cart-crossed-out":
+            - cell "system/shopping-cart-crossed-out":
+              - code: system/shopping-cart-crossed-out
+            - cell
+            - cell
+            - cell
+          - row "system/settings":
+            - cell "system/settings":
+              - code: system/settings
+            - cell
+            - cell
+            - cell
+          - row "system/sun":
+            - cell "system/sun":
+              - code: system/sun
+            - cell
+            - cell
+            - cell
+          - row "system/volume":
+            - cell "system/volume":
+              - code: system/volume
+            - cell
+            - cell
+            - cell
+          - row "system/chevrons-small-right":
+            - cell "system/chevrons-small-right":
+              - code: system/chevrons-small-right
+            - cell
+            - cell
+            - cell
+          - row "system/chevrons-small-left":
+            - cell "system/chevrons-small-left":
+              - code: system/chevrons-small-left
+            - cell
+            - cell
+            - cell
+          - row "system/subtitle":
+            - cell "system/subtitle":
+              - code: system/subtitle
+            - cell
+            - cell
+            - cell
+          - row "system/transcript":
+            - cell "system/transcript":
+              - code: system/transcript
+            - cell
+            - cell
+            - cell
+          - row "system/shopping-bag":
+            - cell "system/shopping-bag":
+              - code: system/shopping-bag
+            - cell
+            - cell
+            - cell
+          - row "system/chevron-small-right":
+            - cell "system/chevron-small-right":
+              - code: system/chevron-small-right
+            - cell
+            - cell
+            - cell
+          - row "system/chevron-small-left":
+            - cell "system/chevron-small-left":
+              - code: system/chevron-small-left
+            - cell
+            - cell
+            - cell
+          - row "system/list":
+            - cell "system/list":
+              - code: system/list
+            - cell
+            - cell
+            - cell
+          - row "system/sun-clouds":
+            - cell "system/sun-clouds":
+              - code: system/sun-clouds
+            - cell
+            - cell
+            - cell
+          - row "system/on-off":
+            - cell "system/on-off":
+              - code: system/on-off
+            - cell
+            - cell
+            - cell
+          - row "system/flash-off":
+            - cell "system/flash-off":
+              - code: system/flash-off
+            - cell
+            - cell
+            - cell
+          - row "system/battery-full":
+            - cell "system/battery-full":
+              - code: system/battery-full
+            - cell
+            - cell
+            - cell
+          - row "system/flash-on":
+            - cell "system/flash-on":
+              - code: system/flash-on
+            - cell
+            - cell
+            - cell
+          - row "system/sort-down":
+            - cell "system/sort-down":
+              - code: system/sort-down
+            - cell
+            - cell
+            - cell
+          - row "system/magnifying-glass":
+            - cell "system/magnifying-glass":
+              - code: system/magnifying-glass
+            - cell
+            - cell
+            - cell
+          - row "system/battery-half-full":
+            - cell "system/battery-half-full":
+              - code: system/battery-half-full
+            - cell
+            - cell
+            - cell
+          - row "system/battery-empty":
+            - cell "system/battery-empty":
+              - code: system/battery-empty
+            - cell
+            - cell
+            - cell
+          - row "system/sort-up":
+            - cell "system/sort-up":
+              - code: system/sort-up
+            - cell
+            - cell
+            - cell
+          - row "system/more-functions":
+            - cell "system/more-functions":
+              - code: system/more-functions
+            - cell
+            - cell
+            - cell
+          - row "system/save":
+            - cell "system/save":
+              - code: system/save
+            - cell
+            - cell
+            - cell
+          - row "system/confirm-circle":
+            - cell "system/confirm-circle":
+              - code: system/confirm-circle
+            - cell
+            - cell
+            - cell
+          - row "system/menu":
+            - cell "system/menu":
+              - code: system/menu
+            - cell
+            - cell
+            - cell
+          - row "system/confirm":
+            - cell "system/confirm":
+              - code: system/confirm
+            - cell
+            - cell
+            - cell
+          - row "system/eye-crossed-out":
+            - cell "system/eye-crossed-out":
+              - code: system/eye-crossed-out
+            - cell
+            - cell
+            - cell
+          - row "system/file-move-":
+            - cell "system/file-move-":
+              - code: system/file-move-
+            - cell
+            - cell
+            - cell
+          - row "system/speech-bubble":
+            - cell "system/speech-bubble":
+              - code: system/speech-bubble
+            - cell
+            - cell
+            - cell
+          - row "system/eye-open":
+            - cell "system/eye-open":
+              - code: system/eye-open
+            - cell
+            - cell
+            - cell
+          - row "system/anchor-link":
+            - cell "system/anchor-link":
+              - code: system/anchor-link
+            - cell
+            - cell
+            - cell
+          - row "system/image":
+            - cell "system/image":
+              - code: system/image
+            - cell
+            - cell
+            - cell
+          - row "system/start":
+            - cell "system/start":
+              - code: system/start
+            - cell
+            - cell
+            - cell
+          - row "system/leaf":
+            - cell "system/leaf":
+              - code: system/leaf
+            - cell
+            - cell
+            - cell
+          - row "system/new-window":
+            - cell "system/new-window":
+              - code: system/new-window
+            - cell
+            - cell
+            - cell
+          - row "system/globe":
+            - cell "system/globe":
+              - code: system/globe
+            - cell
+            - cell
+            - cell
+          - row "system/new-link":
+            - cell "system/new-link":
+              - code: system/new-link
+            - cell
+            - cell
+            - cell
+          - row "system/tool":
+            - cell "system/tool":
+              - code: system/tool
+            - cell
+            - cell
+            - cell
+          - row "system/swipe":
+            - cell "system/swipe":
+              - code: system/swipe
+            - cell
+            - cell
+            - cell
+          - row "system/planet":
+            - cell "system/planet":
+              - code: system/planet
+            - cell
+            - cell
+            - cell
+          - row "system/wlan":
+            - cell "system/wlan":
+              - code: system/wlan
+            - cell
+            - cell
+            - cell
+          - row "system/folder":
+            - cell "system/folder":
+              - code: system/folder
+            - cell
+            - cell
+            - cell
+          - row "system/equal":
+            - cell "system/equal":
+              - code: system/equal
+            - cell
+            - cell
+            - cell
+          - row "system/equal-circle":
+            - cell "system/equal-circle":
+              - code: system/equal-circle
+            - cell
+            - cell
+            - cell
+          - row "system/to-the-end":
+            - cell "system/to-the-end":
+              - code: system/to-the-end
+            - cell
+            - cell
+            - cell
+          - row "system/to-the-start":
+            - cell "system/to-the-start":
+              - code: system/to-the-start
+            - cell
+            - cell
+            - cell
+          - row "system/slider":
+            - cell "system/slider":
+              - code: system/slider
+            - cell
+            - cell
+            - cell
+          - row "system/bell":
+            - cell "system/bell":
+              - code: system/bell
+            - cell
+            - cell
+            - cell
+          - row "system/close-circle":
+            - cell "system/close-circle":
+              - code: system/close-circle
+            - cell
+            - cell
+            - cell
+          - row "system/close":
+            - cell "system/close":
+              - code: system/close
+            - cell
+            - cell
+            - cell
+          - row "system/face-happy":
+            - cell "system/face-happy":
+              - code: system/face-happy
+            - cell
+            - cell
+            - cell
+          - row "system/gps":
+            - cell "system/gps":
+              - code: system/gps
+            - cell
+            - cell
+            - cell
+          - row "system/lock-locked":
+            - cell "system/lock-locked":
+              - code: system/lock-locked
+            - cell
+            - cell
+            - cell
+          - row "system/high-low-chart":
+            - cell "system/high-low-chart":
+              - code: system/high-low-chart
+            - cell
+            - cell
+            - cell
+          - row "system/lock-open":
+            - cell "system/lock-open":
+              - code: system/lock-open
+            - cell
+            - cell
+            - cell
+          - row "system/shopping-cart":
+            - cell "system/shopping-cart":
+              - code: system/shopping-cart
+            - cell
+            - cell
+            - cell
+          - row "system/eraser":
+            - cell "system/eraser":
+              - code: system/eraser
+            - cell
+            - cell
+            - cell
+          - row "system/light-bulb":
+            - cell "system/light-bulb":
+              - code: system/light-bulb
+            - cell
+            - cell
+            - cell
+          - row "system/employees":
+            - cell "system/employees":
+              - code: system/employees
+            - cell
+            - cell
+            - cell
+          - row "system/overview":
+            - cell "system/overview":
+              - code: system/overview
+            - cell
+            - cell
+            - cell
+          - row "system/minus":
+            - cell "system/minus":
+              - code: system/minus
+            - cell
+            - cell
+            - cell
+          - row "system/clock":
+            - cell "system/clock":
+              - code: system/clock
+            - cell
+            - cell
+            - cell
+          - row "system/minus-circle":
+            - cell "system/minus-circle":
+              - code: system/minus-circle
+            - cell
+            - cell
+            - cell
+          - row "system/enlarge":
+            - cell "system/enlarge":
+              - code: system/enlarge
+            - cell
+            - cell
+            - cell
+          - row "system/upload":
+            - cell "system/upload":
+              - code: system/upload
+            - cell
+            - cell
+            - cell
+          - row "system/moon":
+            - cell "system/moon":
+              - code: system/moon
+            - cell
+            - cell
+            - cell
+          - row "system/clock-delete":
+            - cell "system/clock-delete":
+              - code: system/clock-delete
+            - cell
+            - cell
+            - cell
+          - row "system/shrink":
+            - cell "system/shrink":
+              - code: system/shrink
+            - cell
+            - cell
+            - cell
+          - row "system/clock-edit":
+            - cell "system/clock-edit":
+              - code: system/clock-edit
+            - cell
+            - cell
+            - cell
+          - row "system/trash":
+            - cell "system/trash":
+              - code: system/trash
+            - cell
+            - cell
+            - cell
+          - row "system/laptop":
+            - cell "system/laptop":
+              - code: system/laptop
+            - cell
+            - cell
+            - cell
+          - row "system/undo":
+            - cell "system/undo":
+              - code: system/undo
+            - cell
+            - cell
+            - cell
+          - row "system/move":
+            - cell "system/move":
+              - code: system/move
+            - cell
+            - cell
+            - cell
+          - row "system/website":
+            - cell "system/website":
+              - code: system/website
+            - cell
+            - cell
+            - cell
+          - row "system/reload":
+            - cell "system/reload":
+              - code: system/reload
+            - cell
+            - cell
+            - cell
+          - row "system/sort-up-filled":
+            - cell "system/sort-up-filled":
+              - code: system/sort-up-filled
+            - cell
+            - cell
+            - cell
+          - row "system/star-delete":
+            - cell "system/star-delete":
+              - code: system/star-delete
+            - cell
+            - cell
+            - cell
+          - row "system/file-read-out":
+            - cell "system/file-read-out":
+              - code: system/file-read-out
+            - cell
+            - cell
+            - cell
+          - row "system/file-wai":
+            - cell "system/file-wai":
+              - code: system/file-wai
+            - cell
+            - cell
+            - cell
+          - row "system/download":
+            - cell "system/download":
+              - code: system/download
+            - cell
+            - cell
+            - cell
+          - row "system/tag-delete":
+            - cell "system/tag-delete":
+              - code: system/tag-delete
+            - cell
+            - cell
+            - cell
+          - row "system/file-xls":
+            - cell "system/file-xls":
+              - code: system/file-xls
+            - cell
+            - cell
+            - cell
+          - row "system/tag-add":
+            - cell "system/tag-add":
+              - code: system/tag-add
+            - cell
+            - cell
+            - cell
+          - row "system/duplicate":
+            - cell "system/duplicate":
+              - code: system/duplicate
+            - cell
+            - cell
+            - cell
+          - row "system/print":
+            - cell "system/print":
+              - code: system/print
+            - cell
+            - cell
+            - cell
+          - row "system/tag-edit":
+            - cell "system/tag-edit":
+              - code: system/tag-edit
+            - cell
+            - cell
+            - cell
+          - row "system/e-mail-rejected":
+            - cell "system/e-mail-rejected":
+              - code: system/e-mail-rejected
+            - cell
+            - cell
+            - cell
+          - row "system/e-mail-open":
+            - cell "system/e-mail-open":
+              - code: system/e-mail-open
+            - cell
+            - cell
+            - cell
+          - row "system/plus-circle":
+            - cell "system/plus-circle":
+              - code: system/plus-circle
+            - cell
+            - cell
+            - cell
+          - row "system/position":
+            - cell "system/position":
+              - code: system/position
+            - cell
+            - cell
+            - cell
+          - row "system/postbox":
+            - cell "system/postbox":
+              - code: system/postbox
+            - cell
+            - cell
+            - cell
+          - row "system/file-zip":
+            - cell "system/file-zip":
+              - code: system/file-zip
+            - cell
+            - cell
+            - cell
+          - row "system/postbox-download":
+            - cell "system/postbox-download":
+              - code: system/postbox-download
+            - cell
+            - cell
+            - cell
+          - row "system/user":
+            - cell "system/user":
+              - code: system/user
+            - cell
+            - cell
+            - cell
+          - row "system/task-representation":
+            - cell "system/task-representation":
+              - code: system/task-representation
+            - cell
+            - cell
+            - cell
+          - row "system/at":
+            - cell "system/at":
+              - code: system/at
+            - cell
+            - cell
+            - cell
+          - row "system/file-wid":
+            - cell "system/file-wid":
+              - code: system/file-wid
+            - cell
+            - cell
+            - cell
+          - row "system/circle-chart":
+            - cell "system/circle-chart":
+              - code: system/circle-chart
+            - cell
+            - cell
+            - cell
+          - row "system/exclamation-circle":
+            - cell "system/exclamation-circle":
+              - code: system/exclamation-circle
+            - cell
+            - cell
+            - cell
+          - row "system/exclamation":
+            - cell "system/exclamation":
+              - code: system/exclamation
+            - cell
+            - cell
+            - cell
+          - row "system/sort-down-filled":
+            - cell "system/sort-down-filled":
+              - code: system/sort-down-filled
+            - cell
+            - cell
+            - cell
+          - row "system/home":
+            - cell "system/home":
+              - code: system/home
+            - cell
+            - cell
+            - cell
+          - row "system/arrow-top-bottom":
+            - cell "system/arrow-top-bottom":
+              - code: system/arrow-top-bottom
+            - cell
+            - cell
+            - cell
+          - row "system/center":
+            - cell "system/center":
+              - code: system/center
+            - cell
+            - cell
+            - cell
+          - row "system/stop-watch":
+            - cell "system/stop-watch":
+              - code: system/stop-watch
+            - cell
+            - cell
+            - cell
+          - row "system/files":
+            - cell "system/files":
+              - code: system/files
+            - cell
+            - cell
+            - cell
+          - row "system/file-change":
+            - cell "system/file-change":
+              - code: system/file-change
+            - cell
+            - cell
+            - cell
+          - row "system/file-confirm":
+            - cell "system/file-confirm":
+              - code: system/file-confirm
+            - cell
+            - cell
+            - cell
+          - row "system/file-bib":
+            - cell "system/file-bib":
+              - code: system/file-bib
+            - cell
+            - cell
+            - cell
+          - row "system/file-csv":
+            - cell "system/file-csv":
+              - code: system/file-csv
+            - cell
+            - cell
+            - cell
+          - row "system/face-sad":
+            - cell "system/face-sad":
+              - code: system/face-sad
+            - cell
+            - cell
+            - cell
+          - row "system/file-doc":
+            - cell "system/file-doc":
+              - code: system/file-doc
+            - cell
+            - cell
+            - cell
+          - row "system/file-mb":
+            - cell "system/file-mb":
+              - code: system/file-mb
+            - cell
+            - cell
+            - cell
+          - row "system/file-pdf":
+            - cell "system/file-pdf":
+              - code: system/file-pdf
+            - cell
+            - cell
+            - cell
+          - row "system/file-pif":
+            - cell "system/file-pif":
+              - code: system/file-pif
+            - cell
+            - cell
+            - cell
+          - row "system/file-ppt":
+            - cell "system/file-ppt":
+              - code: system/file-ppt
+            - cell
+            - cell
+            - cell
+          - row "system/code":
+            - cell "system/code":
+              - code: system/code
+            - cell
+            - cell
+            - cell
+          - row "system/dashboard":
+            - cell "system/dashboard":
+              - code: system/dashboard
+            - cell
+            - cell
+            - cell
+          - row "system/thumbs-up":
+            - cell "system/thumbs-up":
+              - code: system/thumbs-up
+            - cell
+            - cell
+            - cell
+          - row "system/mobilephone":
+            - cell "system/mobilephone":
+              - code: system/mobilephone
+            - cell
+            - cell
+            - cell
+          - row "system/thumbs-neutral":
+            - cell "system/thumbs-neutral":
+              - code: system/thumbs-neutral
+            - cell
+            - cell
+            - cell
+          - row "system/thumbs-down":
+            - cell "system/thumbs-down":
+              - code: system/thumbs-down
+            - cell
+            - cell
+            - cell
+          - row "system/dialog":
+            - cell "system/dialog":
+              - code: system/dialog
+            - cell
+            - cell
+            - cell
+          - row "system/chart":
+            - cell "system/chart":
+              - code: system/chart
+            - cell
+            - cell
+            - cell
+          - row "system/log-out":
+            - cell "system/log-out":
+              - code: system/log-out
+            - cell
+            - cell
+            - cell
+          - row "system/diamond":
+            - cell "system/diamond":
+              - code: system/diamond
+            - cell
+            - cell
+            - cell
+          - row "system/divide":
+            - cell "system/divide":
+              - code: system/divide
+            - cell
+            - cell
+            - cell
+          - row "system/divide-circle":
+            - cell "system/divide-circle":
+              - code: system/divide-circle
+            - cell
+            - cell
+            - cell
+          - row "system/piggy-bank":
+            - cell "system/piggy-bank":
+              - code: system/piggy-bank
+            - cell
+            - cell
+            - cell
+          - row "system/file-reject":
+            - cell "system/file-reject":
+              - code: system/file-reject
+            - cell
+            - cell
+            - cell
+          - row "system/bookmark":
+            - cell "system/bookmark":
+              - code: system/bookmark
+            - cell
+            - cell
+            - cell
+          - row "system/file":
+            - cell "system/file":
+              - code: system/file
+            - cell
+            - cell
+            - cell
+          - row "system/arrow-right":
+            - cell "system/arrow-right":
+              - code: system/arrow-right
+            - cell
+            - cell
+            - cell
+          - row "system/flash":
+            - cell "system/flash":
+              - code: system/flash
+            - cell
+            - cell
+            - cell
+          - row "system/arrow-top":
+            - cell "system/arrow-top":
+              - code: system/arrow-top
+            - cell
+            - cell
+            - cell
+          - row "system/fax":
+            - cell "system/fax":
+              - code: system/fax
+            - cell
+            - cell
+            - cell
+          - row "system/faq":
+            - cell "system/faq":
+              - code: system/faq
+            - cell
+            - cell
+            - cell
+          - row "system/arrow-top-right":
+            - cell "system/arrow-top-right":
+              - code: system/arrow-top-right
+            - cell
+            - cell
+            - cell
+          - row "system/arrow-bottom-right":
+            - cell "system/arrow-bottom-right":
+              - code: system/arrow-bottom-right
+            - cell
+            - cell
+            - cell
+          - row "system/filter-empty":
+            - cell "system/filter-empty":
+              - code: system/filter-empty
+            - cell
+            - cell
+            - cell
+          - row "system/arrow-bottom":
+            - cell "system/arrow-bottom":
+              - code: system/arrow-bottom
+            - cell
+            - cell
+            - cell
+          - row "system/filter-filled":
+            - cell "system/filter-filled":
+              - code: system/filter-filled
+            - cell
+            - cell
+            - cell
+          - row "system/question":
+            - cell "system/question":
+              - code: system/question
+            - cell
+            - cell
+            - cell
+          - row "system/chevron-left":
+            - cell "system/chevron-left":
+              - code: system/chevron-left
+            - cell
+            - cell
+            - cell
+          - row "system/chevron-top":
+            - cell "system/chevron-top":
+              - code: system/chevron-top
+            - cell
+            - cell
+            - cell
+          - row "system/question-circle":
+            - cell "system/question-circle":
+              - code: system/question-circle
+            - cell
+            - cell
+            - cell
+          - row "system/chevron-bottom":
+            - cell "system/chevron-bottom":
+              - code: system/chevron-bottom
+            - cell
+            - cell
+            - cell
+          - row "system/checkbox":
+            - cell "system/checkbox":
+              - code: system/checkbox
+            - cell
+            - cell
+            - cell
+          - row "system/camera":
+            - cell "system/camera":
+              - code: system/camera
+            - cell
+            - cell
+            - cell
+          - row "system/chevron-right":
+            - cell "system/chevron-right":
+              - code: system/chevron-right
+            - cell
+            - cell
+            - cell
+          - row "system/euro":
+            - cell "system/euro":
+              - code: system/euro
+            - cell
+            - cell
+            - cell
+          - row "system/cloud-download":
+            - cell "system/cloud-download":
+              - code: system/cloud-download
+            - cell
+            - cell
+            - cell
+          - row "system/chatbot":
+            - cell "system/chatbot":
+              - code: system/chatbot
+            - cell
+            - cell
+            - cell
+          - row "system/plus":
+            - cell "system/plus":
+              - code: system/plus
+            - cell
+            - cell
+            - cell
+          - row "system/pin":
+            - cell "system/pin":
+              - code: system/pin
+            - cell
+            - cell
+            - cell
+          - row "system/cloud-upload":
+            - cell "system/cloud-upload":
+              - code: system/cloud-upload
+            - cell
+            - cell
+            - cell
+          - row "system/star-empty":
+            - cell "system/star-empty":
+              - code: system/star-empty
+            - cell
+            - cell
+            - cell
+          - row "system/mailbox-empty":
+            - cell "system/mailbox-empty":
+              - code: system/mailbox-empty
+            - cell
+            - cell
+            - cell
+          - row "system/mailbox-full":
+            - cell "system/mailbox-full":
+              - code: system/mailbox-full
+            - cell
+            - cell
+            - cell
+          - row "system/star-filled":
+            - cell "system/star-filled":
+              - code: system/star-filled
+            - cell
+            - cell
+            - cell
+          - row "system/warning":
+            - cell "system/warning":
+              - code: system/warning
+            - cell
+            - cell
+            - cell
+          - row "system/pen":
+            - cell "system/pen":
+              - code: system/pen
+            - cell
+            - cell
+            - cell
+          - row "system/paper-clip":
+            - cell "system/paper-clip":
+              - code: system/paper-clip
+            - cell
+            - cell
+            - cell
+          - row "system/rain-cloud":
+            - cell "system/rain-cloud":
+              - code: system/rain-cloud
+            - cell
+            - cell
+            - cell
+          - row "system/stop":
+            - cell "system/stop":
+              - code: system/stop
+            - cell
+            - cell
+            - cell
+          - row "system/play":
+            - cell "system/play":
+              - code: system/play
+            - cell
+            - cell
+            - cell
+          - row "system/mute":
+            - cell "system/mute":
+              - code: system/mute
+            - cell
+            - cell
+            - cell
+          - row "system/alarm":
+            - cell "system/alarm":
+              - code: system/alarm
+            - cell
+            - cell
+            - cell
+          - row "system/refresh":
+            - cell "system/refresh":
+              - code: system/refresh
+            - cell
+            - cell
+            - cell
+          - row "system/pause":
+            - cell "system/pause":
+              - code: system/pause
+            - cell
+            - cell
+            - cell
+          - row "system/rss":
+            - cell "system/rss":
+              - code: system/rss
+            - cell
+            - cell
+            - cell
+          - row "system/table":
+            - cell "system/table":
+              - code: system/table
+            - cell
+            - cell
+            - cell
+          - row "system/e-mail":
+            - cell "system/e-mail":
+              - code: system/e-mail
+            - cell
+            - cell
+            - cell
+          - row "system/password":
+            - cell "system/password":
+              - code: system/password
+            - cell
+            - cell
+            - cell
+          - row "system/e-mail-send":
+            - cell "system/e-mail-send":
+              - code: system/e-mail-send
+            - cell
+            - cell
+            - cell
+          - row "system/reply":
+            - cell "system/reply":
+              - code: system/reply
+            - cell
+            - cell
+            - cell
+          - row "system/e-mail-exclamation":
+            - cell "system/e-mail-exclamation":
+              - code: system/e-mail-exclamation
+            - cell
+            - cell
+            - cell
+          - row "system/tag":
+            - cell "system/tag":
+              - code: system/tag
+            - cell
+            - cell
+            - cell
+          - row "system/share":
+            - cell "system/share":
+              - code: system/share
+            - cell
+            - cell
+            - cell
+          - row "system/phone":
+            - cell "system/phone":
+              - code: system/phone
+            - cell
+            - cell
+            - cell
+          - row "system/arrow-left":
+            - cell "system/arrow-left":
+              - code: system/arrow-left
+            - cell
+            - cell
+            - cell
+          - row "system/highlighter":
+            - cell "system/highlighter":
+              - code: system/highlighter
+            - cell
+            - cell
+            - cell
+          - row "system/arrow-top-left":
+            - cell "system/arrow-top-left":
+              - code: system/arrow-top-left
+            - cell
+            - cell
+            - cell
+          - row "system/e-mail-forward":
+            - cell "system/e-mail-forward":
+              - code: system/e-mail-forward
+            - cell
+            - cell
+            - cell
+          - row "system/tap":
+            - cell "system/tap":
+              - code: system/tap
+            - cell
+            - cell
+            - cell
+          - row "system/external-link":
+            - cell "system/external-link":
+              - code: system/external-link
+            - cell
+            - cell
+            - cell
+          - row "system/arrow-bottom-left":
+            - cell "system/arrow-bottom-left":
+              - code: system/arrow-bottom-left
+            - cell
+            - cell
+            - cell
+    `);
+});
