@@ -5,9 +5,15 @@ on:
     branches: [ "main", "develop", "next", "feat/**"]
   workflow_dispatch:
 
+# Add permissions at the workflow level
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   sync-figma-to-tokens:
     runs-on: ubuntu-latest
+    # These will inherit from workflow level but can be overridden if needed
     permissions:
       contents: write
       pull-requests: write
@@ -17,6 +23,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # Important: Use the token with proper permissions
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set environment variables
         run: |
@@ -73,31 +81,31 @@ jobs:
       - name: Run existing build process
         run: pnpm -C ./packages/tokens build
 
-      - name: Setup GitHub CLI
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - run: |
-          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
-          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-          sudo apt update
-          sudo apt install gh
-
-      - name: Authenticate GitHub CLI
-        run: gh auth setup-git --hostname github.com
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create Pull Request with GitHub CLI
+      - name: Configure Git
         run: |
-          gh pr create \
-            --title "${{ env.PR_TITLE }}" \
-            --body "Update tokens from Figma for figma file/branch id: ${{ env.FIGMA_FILE_ID }}
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-          Triggered by: ${{ github.event_name }}
-          ${{ github.event_name == 'push' && format('Push to branch: {0}', github.ref_name) || '' }}" \
-            --base main \
-            --head ${{ env.BRANCH_NAME }} \
-            --reviewer smfonseca,auroraVasconcelos,paulovareiro29,mariohamann,balco0110
+      - name: Create branch and commit changes
+        run: |
+          git checkout -b ${{ env.BRANCH_NAME }}
+          git add .
+          git commit -m "Update tokens from Figma"
+          git push origin ${{ env.BRANCH_NAME }}
         env:
+          # Use the GITHUB_TOKEN for authentication
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ env.BRANCH_NAME }}
+          base: main
+          title: ${{ env.PR_TITLE }}
+          body: |
+            Update tokens from Figma for figma file/branch id: ${{ env.FIGMA_FILE_ID }}
+
+            Triggered by: ${{ github.event_name }}
+            ${{ github.event_name == 'push' && format('Push to branch: {0}', github.ref_name) || '' }}
+          reviewers: smfonseca,auroraVasconcelos,paulovareiro29,mariohamann,balco0110
