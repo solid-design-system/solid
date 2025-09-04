@@ -4,10 +4,10 @@ export const themes = [
 ];
 
 export const allModes = {
-  'ui-semantic-light': {
-    theme: 'sd-ui-semantic-light'
+  'sd-ui-semantic-light': {
+    theme: 'UI Semantic Light'
   },
-  'ui-semantic-dark': {
-    theme: 'sd-ui-semantic-dark'
+  'sd-ui-semantic-dark': {
+    theme: 'UI Semantic Dark'
   }
 };
