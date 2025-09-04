@@ -73,21 +73,31 @@ jobs:
       - name: Run existing build process
         run: pnpm -C ./packages/tokens build
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
+      - name: Setup GitHub CLI
+        uses: actions/setup-node@v4
         with:
-          token: ${{ secrets.PAT_TOKEN_BLAGOJA }}
-          commit-message: Update variables and styles from Figma
-          title: ${{ env.PR_TITLE }}
-          body: |
-            Update tokens from Figma for figma file/branch id: ${{ env.FIGMA_FILE_ID }}
-           
-            Triggered by: ${{ github.event_name }}
-            ${{ github.event_name == 'push' && format('Push to branch: {0}', github.ref_name) || '' }}
-          branch: ${{ env.BRANCH_NAME }}
-          reviewers: |
-            smfonseca
-            auroraVasconcelos
-            paulovareiro29
-            mariohamann
-            balco0110
+          node-version: 22
+      - run: |
+          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+          sudo apt update
+          sudo apt install gh
+
+      - name: Authenticate GitHub CLI
+        run: gh auth setup-git --hostname github.com
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Pull Request with GitHub CLI
+        run: |
+          gh pr create \
+            --title "${{ env.PR_TITLE }}" \
+            --body "Update tokens from Figma for figma file/branch id: ${{ env.FIGMA_FILE_ID }}
+
+          Triggered by: ${{ github.event_name }}
+          ${{ github.event_name == 'push' && format('Push to branch: {0}', github.ref_name) || '' }}" \
+            --base main \
+            --head ${{ env.BRANCH_NAME }} \
+            --reviewer smfonseca,auroraVasconcelos,paulovareiro29,mariohamann,balco0110
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
