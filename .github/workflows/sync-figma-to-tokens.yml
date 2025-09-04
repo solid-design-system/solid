@@ -40,8 +40,10 @@ jobs:
             echo "BRANCH_NAME=${{ github.event.inputs.branch_name }}" >> $GITHUB_ENV
             echo "PR_TITLE=${{ github.event.inputs.pull_request_name }}" >> $GITHUB_ENV
           else
-            echo "BRANCH_NAME=feat/update-tokens-from-figma-auto" >> $GITHUB_ENV
-            echo "PR_TITLE=feat: ✨ Update tokens from Figma (auto-sync)" >> $GITHUB_ENV
+            # Create unique branch name with timestamp
+            TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+            echo "BRANCH_NAME=feat/update-tokens-from-figma-auto-${TIMESTAMP}" >> $GITHUB_ENV
+            echo "PR_TITLE=feat: ✨ Update tokens from Figma (auto-sync ${TIMESTAMP})" >> $GITHUB_ENV
           fi
 
       - name: Validate environment variables
