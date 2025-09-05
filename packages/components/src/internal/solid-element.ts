@@ -17,21 +17,12 @@ export default class SolidElement extends LitElement {
 
   static styles = [
     css`
-      /* Import CSS styles once to make them available in every component */
-      @import url('../styles/src/modules/interactive.css');
-      @import url('../styles/src/modules/paragraph.css');
-      @import url('../styles/src/modules/headline.css');
-
-      /* TailwindCSS directives have to come after imports */
-      @tailwind base;
-      @tailwind components;
-      @tailwind utilities;
+      @import '../tokens/themes/tailwind.css';
+      @import '../styles/src/modules/interactive.css';
+      @import '../styles/src/modules/paragraph.css';
+      @import '../styles/src/modules/headline.css';
 
       :host {
-        --tw-content: '';
-        --tw-gradient-from-position: 0%;
-        --tw-gradient-to-position: 100%;
-
         box-sizing: border-box;
       }
 

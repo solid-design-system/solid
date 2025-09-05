@@ -13,17 +13,20 @@ fs.readdir(directoryPath, (err, files) => {
   files.forEach(file => {
     if (file.endsWith('.js')) {
       if (
-        fs
-          .readFileSync(path.join(directoryPath, file), 'utf8')
-          .includes('.animate-spin{animation:spin 1s linear infinite}') === true
+        fs.readFileSync(path.join(directoryPath, file), 'utf8').includes(`--animate-spin: spin 1s linear infinite;`)
       ) {
         matchedFiles.push(file);
       }
     }
   });
 
-  if (matchedFiles.length === 1) {
-    const filePath = path.join(directoryPath, matchedFiles[0]);
+  if (!matchedFiles.length) {
+    console.error('No matching files found.');
+    process.exit(1);
+  }
+
+  matchedFiles.forEach(matchedFile => {
+    const filePath = path.join(directoryPath, matchedFile);
 
     fs.readFile(filePath, 'utf8', (err, data) => {
       if (err) {
@@ -32,21 +35,19 @@ fs.readdir(directoryPath, (err, files) => {
       }
 
       const animations = [
-        '.animate-spin{animation:spin 1s linear infinite}',
-        '.animate-loader-current{animation:wave 1.3s infinite,loader-color-current 2.6s infinite}',
+        '--animate-spin: spin 1s linear infinite;',
+        'wave 1.3s infinite, loader-color-current 2.6s infinite;',
         '.animate-loader-white{animation:wave 1.3s infinite,loader-color-white 2.6s infinite}',
         '.animate-loader-primary{animation:wave 1.3s infinite,loader-color-primary 2.6s infinite}'
       ];
 
       // Map of original animation to replacement
       const replacements = {
-        '.animate-spin{animation:spin 1s linear infinite}': '.animate-spin{animation: 1s linear 5.0s infinite spin}',
-        '.animate-loader-current{animation:wave 1.3s infinite,loader-color-current 2.6s infinite}':
-          '.animate-loader-current{animation:wave 0s infinite,loader-color-current 0s infinite}',
-        '.animate-loader-white{animation:wave 1.3s infinite,loader-color-white 2.6s infinite}':
-          '.animate-loader-white{animation:wave 0s infinite,loader-color-white 0s infinite}',
-        '.animate-loader-primary{animation:wave 1.3s infinite,loader-color-primary 2.6s infinite}':
-          '.animate-loader-primary{animation:wave 0s infinite,loader-color-primary 0s infinite}'
+        '--animate-spin: spin 1s linear infinite;': '--animate-spin: 1s linear infinite spin;',
+        'wave 1.3s infinite, loader-color-current 2.6s infinite;':
+          'wave 0s infinite, loader-color-current 0s infinite;',
+        'wave 1.3s infinite, loader-color-white 2.6s infinite;': 'wave 0s infinite, loader-color-white 0s infinite;',
+        'wave 1.3s infinite, loader-color-primary 2.6s infinite;': 'wave 0s infinite, loader-color-primary 0s infinite;'
       };
 
       let found = false;
@@ -71,11 +72,5 @@ fs.readdir(directoryPath, (err, files) => {
         console.error('File does not contain any of the required animation strings.');
       }
     });
-  } else if (matchedFiles.length > 1) {
-    console.error('Multiple matching files found.');
-    process.exit(1);
-  } else {
-    console.error('No matching files found.');
-    process.exit(1);
-  }
+  });
 });

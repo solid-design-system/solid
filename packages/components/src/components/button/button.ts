@@ -436,10 +436,9 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       }
 
       /*
-    * Badges:
-    * Slotted badges are positioned absolutely in the top right corner of the button.
-    */
-
+      * Badges:
+      * Slotted badges are positioned absolutely in the top right corner of the button.
+      */
       ::slotted(sd-badge) {
         @apply absolute top-0 right-0 !translate-x-1/2 !-translate-y-1/2 pointer-events-none;
       }
@@ -447,7 +446,6 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       /**
        * sd-icons should automatically resize correctly based on the button size.
        */
-
       ::slotted(sd-icon),
       sd-loader {
         font-size: calc(var(--tw-varspacing) / 2);

@@ -8,15 +8,22 @@ import cx from 'classix';
 
 <table>
   <tbody>
-    {Object.entries(theme.zIndex).map((token, i) => {
-      return (
-        <tr>
-          <td>
-            <div class="font-bold">sd-z-index-{token[0]}</div>
-            <div>sd-z-index-{token[1]}</div>
-          </td>
-        </tr>
-      );
-    })}
+    {theme.utilities
+      .filter(token => token.name.startsWith('z'))
+      .map(token => ({ ...token, name: token.name.replace('z-', '') }))
+      .map((token, i) => {
+        return (
+          <tr>
+            <td>
+              <div class="font-bold">sd-z-index-{token.name}</div>
+              {token.declarations.map(declaration => (
+                <div>
+                  {declaration.prop}: {declaration.value}
+                </div>
+              ))}
+            </td>
+          </tr>
+        );
+      })}
   </tbody>
 </table>

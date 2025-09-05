@@ -154,13 +154,17 @@ export default class SdBreadcrumb extends SolidElement {
         @apply block relative;
       }
 
-      sd-dropdown,
-      ::slotted(sd-breadcrumb-item:not(:last-of-type)) {
-        @apply after:hidden lg:after:inline-block after:w-1 after:h-1 after:mx-2 after:rounded-full after:bg-neutral-400;
+      sd-dropdown::after,
+      ::slotted(sd-breadcrumb-item:not(:last-of-type))::after {
+        @apply content-[''] hidden lg:inline-block w-1 h-1 mx-2 rounded-full bg-neutral-400;
       }
 
       ::slotted(sd-breadcrumb-item:nth-last-child(2)) {
-        @apply flex lg:after:bg-accent;
+        @apply flex;
+      }
+
+      ::slotted(sd-breadcrumb-item:nth-last-child(2))::after {
+        @apply lg:bg-accent;
       }
 
       sd-dropdown,
