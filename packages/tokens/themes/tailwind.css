@@ -25,11 +25,11 @@
   --text-2xl: var(--sd-text-2xl, 1.75rem);
   --text-3xl: var(--sd-text-3xl, 2rem);
   --text-4xl: var(--sd-text-4xl, 2.5rem);
-  --color-risk-low: var(--sd-color-risk-low, var(--sd-color-risk-low));
-  --color-risk-moderate: var(--sd-color-risk-moderate, var(--sd-color-risk-moderate));
-  --color-risk-increased: var(--sd-color-risk-increased, var(--sd-color-risk-increased));
-  --color-risk-high: var(--sd-color-risk-high, var(--sd-color-risk-high));
-  --color-risk-veryhigh: var(--sd-color-risk-veryhigh, var(--sd-color-risk-veryhigh));
+  --color-risk-low: var(--sd-risk-low, var(--sd-color-risk-low));
+  --color-risk-moderate: var(--sd-risk-moderate, var(--sd-color-risk-moderate));
+  --color-risk-increased: var(--sd-risk-increased, var(--sd-color-risk-increased));
+  --color-risk-high: var(--sd-risk-high, var(--sd-color-risk-high));
+  --color-risk-veryhigh: var(--sd-risk-veryhigh, var(--sd-color-risk-veryhigh));
   @keyframes bounce-once {
     0% {
       transform: translateY(0);
@@ -182,8 +182,6 @@
   --text-color-accent: var(--sd-text-accent, var(--sd-color-accent));
   --text-color-primary-100: var(--sd-text-primary-100, var(--sd-color-primary-100));
   --text-color-neutral-600: var(--sd-text-neutral-600, var(--sd-color-neutral-600));
-  --button-disabled: var(--sd-button-disabled, var(--sd-button-disabled));
-  --button-inverted-disabled: var(--sd-button-inverted-disabled, var(--sd-button-inverted-disabled));
   --outline-color-primary: var(--sd-outline-primary, var(--sd-color-primary));
   --outline-color-accent-550: var(--sd-outline-accent-550, var(--sd-color-accent-550));
   --outline-color-primary-500: var(--sd-outline-primary-500, var(--sd-color-primary-500));
@@ -471,39 +469,39 @@
 }
 
 @utility button-text-icon-fill-primary-default {
-  color: var(--sd-button-text-icon-fill-primary-default, var(--sd-color-white));
+  fill: var(--sd-button-text-icon-fill-primary-default, var(--sd-color-white));
 }
 
 @utility button-text-icon-fill-primary-hover {
-  color: var(--sd-button-text-icon-fill-primary-hover, var(--sd-color-primary-100));
+  fill: var(--sd-button-text-icon-fill-primary-hover, var(--sd-color-primary-100));
 }
 
 @utility button-text-icon-fill-primary-pressed {
-  color: var(--sd-button-text-icon-fill-primary-pressed, var(--sd-color-primary-200));
+  fill: var(--sd-button-text-icon-fill-primary-pressed, var(--sd-color-primary-200));
 }
 
 @utility button-text-icon-fill-secondary-default {
-  color: var(--sd-button-text-icon-fill-secondary-default, var(--sd-color-primary));
+  fill: var(--sd-button-text-icon-fill-secondary-default, var(--sd-color-primary));
 }
 
 @utility button-text-icon-fill-secondary-hover {
-  color: var(--sd-button-text-icon-fill-secondary-hover, var(--sd-color-primary-500));
+  fill: var(--sd-button-text-icon-fill-secondary-hover, var(--sd-color-primary-500));
 }
 
 @utility button-text-icon-fill-secondary-pressed {
-  color: var(--sd-button-text-icon-fill-secondary-pressed, var(--sd-color-primary-800));
+  fill: var(--sd-button-text-icon-fill-secondary-pressed, var(--sd-color-primary-800));
 }
 
 @utility button-text-icon-fill-cta-default {
-  color: var(--sd-button-text-icon-fill-cta-default, var(--sd-color-white));
+  fill: var(--sd-button-text-icon-fill-cta-default, var(--sd-color-white));
 }
 
 @utility button-text-icon-fill-cta-hover {
-  color: var(--sd-button-text-icon-fill-cta-hover, var(--sd-color-white));
+  fill: var(--sd-button-text-icon-fill-cta-hover, var(--sd-color-white));
 }
 
 @utility button-text-icon-fill-cta-pressed {
-  color: var(--sd-button-text-icon-fill-cta-pressed, var(--sd-color-white));
+  fill: var(--sd-button-text-icon-fill-cta-pressed, var(--sd-color-white));
 }
 
 @utility button-border-secondary-default {
@@ -516,6 +514,10 @@
 
 @utility button-border-secondary-pressed {
   border-color: var(--sd-button-border-secondary-pressed, var(--sd-color-primary-800));
+}
+
+@utility button-disabled {
+  background-color: var(--sd-button-disabled, var(--sd-color-neutral-500));
 }
 
 @utility button-inverted-background-primary-default {
@@ -555,39 +557,39 @@
 }
 
 @utility button-inverted-text-icon-fill-primary-default {
-  color: var(--sd-button-inverted-text-icon-fill-primary-default, var(--sd-color-primary));
+  fill: var(--sd-button-inverted-text-icon-fill-primary-default, var(--sd-color-primary));
 }
 
 @utility button-inverted-text-icon-fill-primary-hover {
-  color: var(--sd-button-inverted-text-icon-fill-primary-hover, var(--sd-color-primary-500));
+  fill: var(--sd-button-inverted-text-icon-fill-primary-hover, var(--sd-color-primary-500));
 }
 
 @utility button-inverted-text-icon-fill-primary-pressed {
-  color: var(--sd-button-inverted-text-icon-fill-primary-pressed, var(--sd-color-primary-800));
+  fill: var(--sd-button-inverted-text-icon-fill-primary-pressed, var(--sd-color-primary-800));
 }
 
 @utility button-inverted-text-icon-fill-secondary-default {
-  color: var(--sd-button-inverted-text-icon-fill-secondary-default, var(--sd-color-white));
+  fill: var(--sd-button-inverted-text-icon-fill-secondary-default, var(--sd-color-white));
 }
 
 @utility button-inverted-text-icon-fill-secondary-hover {
-  color: var(--sd-button-inverted-text-icon-fill-secondary-hover, var(--sd-color-primary-100));
+  fill: var(--sd-button-inverted-text-icon-fill-secondary-hover, var(--sd-color-primary-100));
 }
 
 @utility button-inverted-text-icon-fill-secondary-pressed {
-  color: var(--sd-button-inverted-text-icon-fill-secondary-pressed, var(--sd-color-primary-200));
+  fill: var(--sd-button-inverted-text-icon-fill-secondary-pressed, var(--sd-color-primary-200));
 }
 
 @utility button-inverted-text-icon-fill-cta-default {
-  color: var(--sd-button-inverted-text-icon-fill-cta-default, var(--sd-color-white));
+  fill: var(--sd-button-inverted-text-icon-fill-cta-default, var(--sd-color-white));
 }
 
 @utility button-inverted-text-icon-fill-cta-hover {
-  color: var(--sd-button-inverted-text-icon-fill-cta-hover, var(--sd-color-white));
+  fill: var(--sd-button-inverted-text-icon-fill-cta-hover, var(--sd-color-white));
 }
 
 @utility button-inverted-text-icon-fill-cta-pressed {
-  color: var(--sd-button-inverted-text-icon-fill-cta-pressed, var(--sd-color-white));
+  fill: var(--sd-button-inverted-text-icon-fill-cta-pressed, var(--sd-color-white));
 }
 
 @utility button-inverted-border-secondary-default {
@@ -600,6 +602,10 @@
 
 @utility button-inverted-border-secondary-pressed {
   border-color: var(--sd-button-inverted-border-secondary-pressed, var(--sd-color-primary-200));
+}
+
+@utility button-inverted-disabled {
+  background-color: var(--sd-button-inverted-disabled, var(--sd-color-neutral-600));
 }
 
 @utility selection-control-border-neutral-800 {
@@ -643,23 +649,23 @@
 }
 
 @utility button-text-icon-fill-primary-default {
-  color: var(--sd-button-text-icon-fill-primary-default, var(--sd-color-primary));
+  fill: var(--sd-button-text-icon-fill-primary-default, var(--sd-color-primary));
 }
 
 @utility button-text-icon-fill-primary-hover {
-  color: var(--sd-button-text-icon-fill-primary-hover, var(--sd-color-primary-500));
+  fill: var(--sd-button-text-icon-fill-primary-hover, var(--sd-color-primary-500));
 }
 
 @utility button-text-icon-fill-secondary-default {
-  color: var(--sd-button-text-icon-fill-secondary-default, var(--sd-color-white));
+  fill: var(--sd-button-text-icon-fill-secondary-default, var(--sd-color-white));
 }
 
 @utility button-text-icon-fill-secondary-hover {
-  color: var(--sd-button-text-icon-fill-secondary-hover, var(--sd-color-primary-100));
+  fill: var(--sd-button-text-icon-fill-secondary-hover, var(--sd-color-primary-100));
 }
 
 @utility button-text-icon-fill-secondary-pressed {
-  color: var(--sd-button-text-icon-fill-secondary-pressed, var(--sd-color-primary-200));
+  fill: var(--sd-button-text-icon-fill-secondary-pressed, var(--sd-color-primary-200));
 }
 
 @utility button-border-secondary-default {

@@ -22,6 +22,11 @@
   --sd-gradient-horizontal-transparent-black-10: linear-gradient(90deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.1) 100%);
   --sd-gradient-horizontal-transparent-black-40: linear-gradient(270deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%);
   --sd-gradient-horizontal-black-40-transparent: linear-gradient(90deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%);
+  --sd-color-risk-low: #017dc3;
+  --sd-color-risk-moderate: #00a593;
+  --sd-color-risk-increased: #fff000;
+  --sd-color-risk-high: #fa9b1e;
+  --sd-color-risk-veryhigh: #ff0000;
   --sd-color-primary: #00358e;
   --sd-color-accent-550: #367b28;
   --sd-color-primary-500: #466daf;
@@ -37,11 +42,6 @@
   --sd-color-primary-200: #e0e9f3;
   --sd-color-primary-400: #99abd0;
   --sd-color-neutral-600: #888888;
-  --sd-color-risk-low: #017dc3;
-  --sd-color-risk-moderate: #00a593;
-  --sd-color-risk-increased: #fff000;
-  --sd-color-risk-high: #fa9b1e;
-  --sd-color-risk-veryhigh: #ff0000;
   --sd-color-white-alternative: #ffffff;
   --sd-color-neutral-400: #c3c3c3;
   --sd-color-null: rgba(255, 255, 255, 0);

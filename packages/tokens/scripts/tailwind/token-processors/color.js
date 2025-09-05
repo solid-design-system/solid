@@ -7,11 +7,32 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
   constructor(options = {}) {
     super(options);
 
-    /* Namespaces that should be created as theme variables */
-    this.core = ['background-transparent', 'background', 'border', 'icon-fill', 'outline', 'ring', 'risk', 'text'];
+    /* Namespaces that should be created as theme variables mapped to the respective css property */
+    this.core = {
+      'background-transparent': 'background-color-transparent',
+      'icon-fill': 'fill',
+      background: 'background-color',
+      border: 'border-color',
+      outline: 'outline-color',
+      ring: 'ring-color',
+      risk: 'color-risk',
+      text: 'text-color'
+    };
 
     /* Namespaces that are not core colors, but should be created as theme variables */
     this.semicore = ['gradient'];
+
+    /* Mapping of the semantic variables to the css property */
+    this.semantic = {
+      'icon-fill': 'fill',
+      background: 'background-color',
+      border: 'border-color',
+      gradient: 'background-image',
+      text: 'color'
+    };
+
+    /* Namespaces that were added manually, and are not available in themes */
+    this.manual = ['risk'];
   }
 
   canProcess(token) {
@@ -19,49 +40,52 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
   }
 
   process(token, dictionary) {
-    const { path: _path, variant } = this.processTokenPath(token);
-    const path = this.pathToKebabCase(_path);
-    const isCoreColor = this.core.includes(path[0]);
-    const isSemicoreColor = this.semicore.includes(path[0]);
+    const { path, variant } = this.processTokenPath(token);
+    const isCoreColor = this.#isCoreToken(path[0]);
+    const isSemicoreColor = this.#isSemicoreToken(path[0]);
 
-    const { variable, value } = this.getFormattedValue({
-      prefix: isCoreColor ? 'color' : `${path[0]}`,
-      name: path.slice(1).join('-'),
-      value: this.getTokenValue(token)
-    });
+    const processed = isCoreColor ? this.#processCoreToken(token) : this.#processSemanticToken(token, dictionary);
+    const fallback = this.#getFallbackColor(token);
 
-    const { type, name, properties } = isCoreColor
-      ? this.getCoreToken(path.join('-'))
-      : this.getSemanticToken(
-          path.join('-'),
-          isSemicoreColor
-            ? `var(--sd-${path.join('-')})`
-            : `var(--sd-${path.join('-')}, var(${this.getCoreTokenFromValue(token, dictionary)}))`
-        );
-
-    const variables = [
+    return [
       {
-        type,
-        name,
-        value: `var(--sd-${path.join('-')}, var(${variable}))`,
-        properties,
+        type: processed.type,
+        name: processed.name,
+        value: this.cssvar(path.join('-'), this.cssvar(fallback)),
+        properties: processed.properties,
         variant: 'default'
-      }
+      },
+      ...(isCoreColor || isSemicoreColor
+        ? [
+            {
+              type: 'color',
+              name: this.cssprefix(fallback),
+              value: this.getTokenValue(token),
+              variant
+            }
+          ]
+        : [])
     ];
-
-    if (isCoreColor || isSemicoreColor) {
-      variables.push({
-        type: 'color',
-        name: variable,
-        value,
-        variant
-      });
-    }
-
-    return variables;
   }
 
-  getCoreTokenFromValue(token, dictionary) {
+  #isCoreToken(token) {
+    return Object.keys(this.core).includes(token);
+  }
+
+  #isSemicoreToken(token) {
+    return this.semicore.includes(token);
+  }
+
+  #getFallbackColor(token) {
+    const processed = this.processTokenPath(token);
+    const isCoreColor = this.#isCoreToken(processed.path[0]);
+
+    const prefix = isCoreColor ? 'color' : processed.path[0];
+    const name = this.manual.includes(processed.path[0]) ? processed.path.join('-') : processed.path.slice(1).join('-');
+    return `${prefix}-${name}`;
+  }
+
+  #getCoreTokenFromColor(color, dictionary) {
     let found = null;
     Object.values(dictionary).forEach(item => {
       if (found) return;
@@ -70,64 +94,43 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
         if (found) return;
 
         if (!i.key?.startsWith('{core.')) {
-          if (i.value !== token.value) return;
+          if (i.value !== color) return;
           found = i;
         }
       });
     });
 
-    return this.cleanupTokenName(`--sd-color-${found.path.at(-1)}`);
+    return this.cleanupTokenName(`color-${found.path.at(-1)}`);
   }
 
-  getCoreToken(token) {
-    if (token.startsWith('background')) {
-      return { type: 'color', name: `--${token.replace('background', 'background-color')}` };
+  #processCoreToken(token) {
+    const processed = this.processTokenPath(token);
+    const name = processed.path.join('-');
+
+    for (const [property, cssproperty] of Object.entries(this.core)) {
+      if (name.startsWith(property)) {
+        return { type: 'color', name: `--${name.replace(property, cssproperty)}` };
+      }
     }
 
-    if (token.startsWith('text')) {
-      return { type: 'color', name: `--${token.replace('text', 'text-color')}` };
-    }
-
-    if (token.startsWith('border')) {
-      return { type: 'color', name: `--${token.replace('border', 'border-color')}` };
-    }
-
-    if (token.startsWith('icon-fill')) {
-      return { type: 'color', name: `--${token.replace('icon-fill', 'fill')}` };
-    }
-
-    if (token.startsWith('outline')) {
-      return { type: 'color', name: `--${token.replace('outline', 'outline-color')}` };
-    }
-
-    if (token.startsWith('ring')) {
-      return { type: 'color', name: `--${token.replace('ring', 'ring-color')}` };
-    }
-
-    return { type: 'color', name: `--color-${token}` };
+    return { type: 'color', name: `--color-${name}` };
   }
 
-  getSemanticToken(token, value) {
-    if (token.includes('background')) {
-      return { type: 'utility', name: token, properties: `@utility ${token} {\n  background-color: ${value};\n}` };
+  #processSemanticToken(token, dictionary) {
+    const processed = this.processTokenPath(token);
+    const isSemicoreColor = this.#isSemicoreToken(processed.path[0]);
+
+    const name = processed.path.join('-');
+    const value = isSemicoreColor
+      ? this.cssvar(name)
+      : this.cssvar(name, this.cssvar(this.#getCoreTokenFromColor(token.value, dictionary)));
+
+    for (const [property, cssproperty] of Object.entries(this.semantic)) {
+      if (name.includes(property)) {
+        return { type: 'utility', name, properties: `@utility ${name} {\n  ${cssproperty}: ${value};\n}` };
+      }
     }
 
-    if (token.includes('text')) {
-      return { type: 'utility', name: token, properties: `@utility ${token} {\n  color: ${value};\n}` };
-    }
-
-    if (token.includes('border')) {
-      return { type: 'utility', name: token, properties: `@utility ${token} {\n  border-color: ${value};\n}` };
-    }
-
-    if (token.includes('icon-fill')) {
-      return { type: 'utility', name: token, properties: `@utility ${token} {\n  fill: ${value};\n}` };
-    }
-
-    if (token.includes('gradient')) {
-      return { type: 'utility', name: token, properties: `@utility ${token} {\n  background-image: ${value};\n}` };
-    }
-
-    return { type: 'color', name: `--${token}` };
+    return { type: 'utility', name: `--${name}`, properties: `@utility ${name} {\n  background-color: ${value};\n}` };
   }
 }

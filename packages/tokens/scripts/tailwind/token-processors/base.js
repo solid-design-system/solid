@@ -64,7 +64,7 @@ export class BaseTokenProcessor {
     const variant = path[0];
 
     return {
-      path: path.slice(1),
+      path: this.pathToKebabCase(path.slice(1)),
       variant
     };
   }
@@ -81,7 +81,7 @@ export class BaseTokenProcessor {
   }
 
   /**
-   * Returns the variable value as a var with possibility to override
+   * Returns the variable value as a css var() with possibility to override
    */
   getFormattedValue({ prefix, name, value }) {
     const fallback = ['--sd-'];
@@ -94,5 +94,16 @@ export class BaseTokenProcessor {
 
     const variable = fallback.join('');
     return { variable, value };
+  }
+
+  cssprefix(variable) {
+    return `--sd-${variable}`;
+  }
+
+  cssvar(variable, fallback) {
+    if (fallback) {
+      return `var(${this.cssprefix(variable)}, ${fallback})`;
+    }
+    return `var(${this.cssprefix(variable)})`;
   }
 }
