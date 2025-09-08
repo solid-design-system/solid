@@ -62,6 +62,11 @@ jobs:
           echo "✅ Using Branch Name: $BRANCH_NAME"
           echo "✅ Using PR Title: $PR_TITLE"
 
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
 
@@ -81,12 +86,9 @@ jobs:
           FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
 
       - name: Run existing build process
-        run: pnpm -C ./packages/tokens build
-
-      - name: Configure Git
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          pnpm -C ./packages/tokens build
+          git diff
 
       - name: Create branch and commit changes
         run: |
@@ -98,16 +100,16 @@ jobs:
           # Use the GITHUB_TOKEN for authentication
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ env.BRANCH_NAME }}
-          base: main
-          title: ${{ env.PR_TITLE }}
-          body: |
-            Update tokens from Figma for figma file/branch id: ${{ env.FIGMA_FILE_ID }}
+      # - name: Create Pull Request
+      #   uses: peter-evans/create-pull-request@v7
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     branch: ${{ env.BRANCH_NAME }}
+      #     base: main
+      #     title: ${{ env.PR_TITLE }}
+      #     body: |
+      #       Update tokens from Figma for figma file/branch id: ${{ env.FIGMA_FILE_ID }}
 
-            Triggered by: ${{ github.event_name }}
-            ${{ github.event_name == 'push' && format('Push to branch: {0}', github.ref_name) || '' }}
-          reviewers: smfonseca,auroraVasconcelos,paulovareiro29,mariohamann,balco0110 
+      #       Triggered by: ${{ github.event_name }}
+      #       ${{ github.event_name == 'push' && format('Push to branch: {0}', github.ref_name) || '' }}
+      #     reviewers: smfonseca,auroraVasconcelos,paulovareiro29,mariohamann,balco0110 
