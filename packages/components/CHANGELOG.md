@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.15.6
+
+### Patch Changes
+
+- Fixed issue with `sd-carousel` initialisation where attributes are only added once all slides are ready. _[`#2475`](https://github.com/solid-design-system/solid/pull/2475) [`31c2b2a`](https://github.com/solid-design-system/solid/commit/31c2b2a2e46cc1c00f189e1c55cc7f4ea2b602e7) [@smfonseca](https://github.com/smfonseca)_
+
 ## 5.15.5
 
 ### Patch Changes
@@ -8,8 +14,9 @@
   - Remove the extra width from the last `sd-step`.
 
 ### 📈 Stats
-* Uncompressed: 479 KB (+1 KB / +0%)
-* Gzipped: 113 KB (+1 KB / +1%)
+
+- Uncompressed: 479 KB (+1 KB / +0%)
+- Gzipped: 113 KB (+1 KB / +1%)
 
 ## 5.15.4
 
