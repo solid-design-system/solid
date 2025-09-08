@@ -1,4 +1,4 @@
-import { createDirectory, setNestedProperty } from './utils.js';
+import { createDirectory, setNestedProperty, toKebabCase } from './utils.js';
 import { FigmaBase } from './base.js';
 import { FigmaLegacyTokens } from './legacy.js';
 import { FigmaVariable } from './variable.js';
@@ -7,9 +7,10 @@ import { writeFileSync } from 'fs';
 import path from 'path';
 
 export class FigmaClient extends FigmaBase {
-  constructor(dictionary, legacy) {
+  constructor(name, dictionary, legacy) {
     super(dictionary);
 
+    this.name = name;
     this.legacy = legacy;
   }
 
@@ -42,10 +43,28 @@ export class FigmaClient extends FigmaBase {
     const legacy = new FigmaLegacyTokens().get();
     const { core, themes } = this.#getThemes();
 
-    this.processed = Object.entries(themes).map(([name, tokens]) => ({
-      name,
-      tokens: { core: { ...legacy.core, ...core }, ...legacy.tokens, ...tokens }
-    }));
+    this.processed = Object.entries(themes)
+      .map(([name, tokens]) => ({
+        name,
+        tokens: { core: { ...legacy.core, ...core }, ...legacy.tokens, ...tokens }
+      }))
+      .map(theme => {
+        theme.tokens.outline = theme.tokens.border;
+        theme.tokens.ring = theme.tokens.border;
+        return theme;
+      });
+
+    this.processed = Object.values(
+      this.processed.reduce((acc, theme) => {
+        const name = toKebabCase(theme.name.replaceAll(' ', '-'));
+
+        const { core: _core, ...tokens } = theme.tokens;
+        if (!acc[this.name]) acc[this.name] = { name: this.name, tokens: { core: _core } };
+        if (!acc[this.name].tokens[name]) acc[this.name].tokens[name] = tokens;
+
+        return acc;
+      }, {})
+    );
 
     return this;
   }

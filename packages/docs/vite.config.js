@@ -1,3 +1,4 @@
+import { processTailwind } from '../components/scripts/esbuild-plugin-lit-tailwind-and-minify.js';
 import { replaceCodePlugin as ViteReplaceCodePlugin } from 'vite-plugin-replace';
 import componentsPackageJson from '../components/package.json';
 import customElementConfig from '../components/custom-elements-manifest.config.js';
@@ -8,6 +9,7 @@ import VitePluginCreateEmptyCemIfNotExisting from './scripts/vite-plugin-create-
 import VitePluginCustomElementsManifest from 'vite-plugin-cem';
 import VitePluginFetchIconsFromCdn from './scripts/vite-plugin-fetch-icons-from-cdn';
 import VitePluginGetPlaywrightVersion from './scripts/vite-plugin-get-playwright-version';
+import VitePluginGetTailwindTheme from './scripts/vite-plugin-get-tailwind-theme';
 import VitePluginLitTailwind from './scripts/vite-plugin-lit-tailwind.js';
 import VitePluginSolidStyles from './scripts/vite-plugin-solid-styles/index.js';
 
@@ -28,6 +30,7 @@ export default () => {
         srcDir: '../styles/src'
       }),
       VitePluginGetPlaywrightVersion(),
+      VitePluginGetTailwindTheme(),
       VitePluginCreateEmptyCemIfNotExisting(),
       VitePluginCustomElementsManifest({
         ...customElementConfig,
@@ -37,6 +40,16 @@ export default () => {
           ['solid-custom-tags', 'remove-html-members'].includes(plugin.name)
         )
       }),
+      {
+        name: 'docs-css-processor',
+        async transform(code, id) {
+          if (/\.css$/i.test(id)) {
+            code = await processTailwind(code, { minify: true, storybook: true });
+          }
+
+          return { code };
+        }
+      },
       ViteReplaceCodePlugin({
         // replace %COMPONENTS-VERSION% with version from ../components/package.json
         replacements: [
@@ -66,6 +79,9 @@ export default () => {
           }
         ]
       })
-    ]
+    ],
+    css: {
+      postcss: {}
+    }
   };
 };

@@ -33,3 +33,12 @@ export function createTailwindV4Plugin(options = {}) {
     return plugin.format(dictionary);
   };
 }
+/**
+ * Extracts the first theme block found
+ */
+export function extractThemeBlock(source) {
+  const re = /\/\*\s*build:theme\[(.*?)\]\s*\*\/([\s\S]*?)\/\*\s*build:theme\s*\*\//;
+  const m = source.match(re);
+  if (!m) return null;
+  return { name: m[1], content: m[2] };
+}

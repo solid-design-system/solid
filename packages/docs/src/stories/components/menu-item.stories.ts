@@ -8,7 +8,7 @@ const { overrideArgs } = storybookHelpers('sd-menu-item');
 const { generateTemplate } = storybookTemplate('sd-menu-item');
 
 export default {
-  tags: ['!dev', 'autodocs', 'skip-a11y-[aria-required-parent]'],
+  tags: ['!dev', 'autodocs'],
   title: 'Components/sd-menu-item',
   component: 'sd-menu-item',
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Menu item 1' }),

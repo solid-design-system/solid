@@ -6,7 +6,6 @@ import { getTokenValue, toKebabCase } from './utils.js';
 export class BaseTokenProcessor {
   constructor(options = {}) {
     this.options = options;
-    this.rootPropertyName = options.rootPropertyName || '_';
   }
 
   /**
@@ -47,25 +46,26 @@ export class BaseTokenProcessor {
   }
 
   /**
+   * Cleans the token name by removing and replacing some special characters
+   */
+  cleanupTokenName(name) {
+    return name.replaceAll('*', '').replaceAll('|', '-');
+  }
+
+  /**
    * Process token path and handle theme variants globally
    */
   processTokenPath(token) {
     // Get the original token path (before kebab-case conversion)
     let path = [...token.path];
 
-    // Remove common prefixes from original path
-    if (path[0] === 'sd') {
-      path = path.slice(1);
-    }
-    if (path[0] === 'color') {
-      path = path.slice(1);
-    }
-    if (path[0] === 'colors') {
-      path = path.slice(1);
-    }
+    path = path.map(this.cleanupTokenName);
+
+    const variant = path[0];
 
     return {
-      path: path.map(p => p.replaceAll('*', '').replaceAll('|', '-'))
+      path: this.pathToKebabCase(path.slice(1)),
+      variant
     };
   }
 
@@ -73,20 +73,37 @@ export class BaseTokenProcessor {
    * Convert path to kebab-case for CSS variable names
    */
   pathToKebabCase(path) {
-    return path.map(p => toKebabCase(p));
+    if (Array.isArray(path)) {
+      return path.map(p => toKebabCase(p));
+    }
+
+    return toKebabCase(path);
   }
 
   /**
-   * Returns the variable value as a var with possibility to override
+   * Returns the variable value as a css var() with possibility to override
    */
-  getOverrideFormat({ prefix, name, value }) {
+  getFormattedValue({ prefix, name, value }) {
     const fallback = ['--sd-'];
 
     if (prefix) {
       fallback.push(`${prefix}-`);
     }
 
-    fallback.push(`${name}, ${value}`);
-    return `var(${fallback.join('')})`;
+    fallback.push(name);
+
+    const variable = fallback.join('');
+    return { variable, value };
+  }
+
+  cssprefix(variable) {
+    return `--sd-${variable}`;
+  }
+
+  cssvar(variable, fallback) {
+    if (fallback) {
+      return `var(${this.cssprefix(variable)}, ${fallback})`;
+    }
+    return `var(${this.cssprefix(variable)})`;
   }
 }

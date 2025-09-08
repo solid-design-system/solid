@@ -1,6 +1,7 @@
 import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
 import theme from 'tailwind-theme';
 import cx from 'classix';
+import { getColorItems } from './utils.js';
 
 <Meta title="Packages/Tokens/Colors" />
 
@@ -12,29 +13,51 @@ The following colors are used throughout the whole design system. They use CSS c
 They use shorthand RGB values (e. g. `108 194 84`) to allow setting opacity via other CSS properties/utility classes.
 
 <ColorPalette>
-  <ColorItem title="Primary" subtitle="--sd-color-primary-{shade}" colors={theme.color.primary} />
-  <ColorItem title="Accent" subtitle="--sd-color-accent-{shade}" colors={theme.color.accent} />
-  <ColorItem title="Neutral" subtitle="--sd-color-neutral-{shade}" colors={theme.color.neutral} />
+  <ColorItem
+    title="Primary"
+    subtitle="--sd-color-primary-{shade}"
+    colors={getColorItems('background-color', 'primary', theme.base)}
+  />
+  <ColorItem
+    title="Accent"
+    subtitle="--sd-color-accent-{shade}"
+    colors={getColorItems('background-color', 'accent', theme.base)}
+  />
+  <ColorItem
+    title="Neutral"
+    subtitle="--sd-color-neutral-{shade}"
+    colors={getColorItems('background-color', 'neutral', theme.base)}
+  />
   <ColorItem
     title="Status"
     subtitle="--sd-color-{color}"
-    colors={{ success: theme.color.success, warning: theme.color.warning }}
+    colors={{
+      ...getColorItems('background-color', 'success', theme.base),
+      ...getColorItems('background-color', 'warning', theme.base)
+    }}
   />
-  <ColorItem title="Error" subtitle="--sd-color-error-{shade}" colors={theme.color.error} />
+  <ColorItem
+    title="Status"
+    subtitle="--sd-color-error-{color}"
+    colors={getColorItems('background-color', 'error', theme.base)}
+  />
   <ColorItem
     title="Risk"
     subtitle="--sd-color-{color}"
     colors={{
-      low: theme.color.risk.low,
-      moderate: theme.color.risk.moderate,
-      increased: theme.color.risk.increased,
-      high: theme.color.risk.high,
-      veryhigh: theme.color.risk.veryhigh
+      ...getColorItems('color', 'risk-low', theme.base),
+      ...getColorItems('color', 'risk-moderate', theme.base),
+      ...getColorItems('color', 'risk-increased', theme.base),
+      ...getColorItems('color', 'risk-high', theme.base),
+      ...getColorItems('color', 'risk-veryhigh', theme.base)
     }}
   />
   <ColorItem
     title="Additional"
     subtitle="--sd-color-{color}"
-    colors={{ black: theme.color.black, white: theme.color.white }}
+    colors={{
+      ...getColorItems('text-color', 'black', theme.base),
+      ...getColorItems('text-color', 'white', theme.base)
+    }}
   />
 </ColorPalette>

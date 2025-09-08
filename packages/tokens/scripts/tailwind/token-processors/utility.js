@@ -20,7 +20,8 @@ export class UtilityTokenProcessor extends BaseTokenProcessor {
 
   process(token) {
     const value = this.getTokenValue(token);
-    const name = token.name;
+    const { path } = this.processTokenPath(token);
+    const name = path.join('');
 
     const special = Object.entries(this.specialUtilities).find(([utility]) => name.startsWith(utility))?.[1];
     if (special) {

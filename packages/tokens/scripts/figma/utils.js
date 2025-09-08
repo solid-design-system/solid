@@ -63,3 +63,13 @@ export function prefixReferences(obj) {
 
   return obj;
 }
+
+/**
+ * Convert camelCase or PascalCase to kebab-case
+ */
+export function toKebabCase(str) {
+  return str
+    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    .replace(/_/g, '-')
+    .toLowerCase();
+}

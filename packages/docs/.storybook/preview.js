@@ -1,14 +1,29 @@
-import '../../styles/src/solid-styles.css';
 import './preview.css';
-import 'normalize.css';
-import { storybookUtilities } from '../scripts/storybook/helper';
-import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer';
+import '../../tokens/themes/sd-ui-semantic-dark.css';
+import '../../tokens/themes/sd-ui-semantic-light.css';
+import { withThemeByClassName } from '@storybook/addon-themes';
+import { storybookUtilities } from '../scripts/storybook/helper.js';
+import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer.js';
+import { themes, allModes } from './modes.js';
+
+const theme = withThemeByClassName({
+  defaultTheme: 'UI Semantic Light',
+  parentSelector: 'body',
+  themes: themes.reduce((acc, { id, name }) => {
+    acc[name] = id;
+    return acc;
+  }, {})
+});
 
 export const preview = {
-  decorators: [],
+  decorators: [theme],
   parameters: {
     chromatic: {
-      disableSnapshot: true
+      disableSnapshot: true,
+      modes: themes.reduce((acc, { id }) => {
+        acc[id] = allModes[id];
+        return acc;
+      }, {})
     },
     docs: {
       story: { inline: true },

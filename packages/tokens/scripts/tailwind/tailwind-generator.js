@@ -20,7 +20,8 @@ export class TailwindCSSGenerator {
       this.generateCustomVariants(),
       this.generateTheme(processedTokens),
       this.generateUtilities(processedTokens.utilities),
-      this.generateExtras()
+      this.generateExtras(),
+      this.generateThemeVariants(processedTokens)
     ].filter(Boolean);
 
     return parts.join('\n\n') + '\n';
@@ -30,14 +31,17 @@ export class TailwindCSSGenerator {
    * Generate import statement
    */
   generateImport() {
-    return this.config.includeImport ? this.css.import(this.config.importPath) : null;
+    return `@layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme';
+@import 'tailwindcss/utilities';`;
   }
 
   /**
    * Generate source statement
    */
   generateSource() {
-    return this.config.includeSource ? this.css.source(this.config.sourcePath) : null;
+    return this.css.source('../../components/src');
   }
 
   /**
@@ -57,7 +61,7 @@ export class TailwindCSSGenerator {
   generateTheme(processedTokens) {
     const themeVars = [...processedTokens.baseVars, ...processedTokens.spacing];
 
-    return this.css.theme(this.css.join(themeVars, '\n'));
+    return this.css.theme(this.css.join(themeVars, '\n'), 'inline');
   }
 
   /**
@@ -79,7 +83,7 @@ export class TailwindCSSGenerator {
           this.css.property('outline-style', 'solid'),
           this.css.property('outline-offset', '2px'),
           this.css.property('outline-width', '2px'),
-          this.css.property('outline-color', 'var(--background-color-primary)')
+          this.css.property('outline-color', 'var(--outline-color-primary)')
         ])
       ),
       this.css.utility(
@@ -88,9 +92,23 @@ export class TailwindCSSGenerator {
           this.css.property('outline-style', 'solid'),
           this.css.property('outline-offset', '2px'),
           this.css.property('outline-width', '2px'),
-          this.css.property('outline-color', 'var(--background-color-white)')
+          this.css.property('outline-color', 'var(--outline-color-white)')
         ])
       )
     ]);
+  }
+
+  generateThemeVariants(processedTokens) {
+    const variants = Object.keys(processedTokens).filter(
+      k => !['baseVars', 'utilities', 'spacing', 'compositions', 'components'].includes(k)
+    );
+
+    return variants
+      .map(variant => {
+        const scheme = variant.includes('dark') ? 'dark' : 'light';
+        const variables = [`color-scheme: ${scheme};\n`, ...processedTokens[variant]];
+        return `/* build:theme[sd-${variant}] */\n:root, .sd-${variant} {\n${this.css.indent(this.css.join(variables, '\n'))}\n}\n/* build:theme */`;
+      })
+      .join('\n\n');
   }
 }

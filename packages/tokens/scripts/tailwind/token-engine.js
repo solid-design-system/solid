@@ -1,13 +1,8 @@
-// import { TypographyTokenProcessor } from './token-processors/typography.js';
-// import { ComponentTokenProcessor } from './token-processors/component.js';
-// import { NumberTokenProcessor } from './token-processors/number.js';
-// import { CompositionTokenProcessor } from './token-processors/composition.js';
-// import { BaseTokenProcessor } from './token-processors/base.js';
-
 import { AnimationTokenProcessor } from './token-processors/animation.js';
 import { ColorTokenProcessor } from './token-processors/color.js';
 import { ShadowTokenProcessor } from './token-processors/shadow.js';
 import { SpacingTokenProcessor } from './token-processors/spacing.js';
+import { TypographyTokenProcessor } from './token-processors/typography.js';
 import { UtilityTokenProcessor } from './token-processors/utility.js';
 
 /**
@@ -29,10 +24,7 @@ export class TokenProcessingEngine {
     this.registerProcessor('utility', new UtilityTokenProcessor(this.config.getAll()));
     this.registerProcessor('shadow', new ShadowTokenProcessor(this.config.getAll()));
     this.registerProcessor('animation', new AnimationTokenProcessor(this.config.getAll()));
-    // this.registerProcessor('typography', new TypographyTokenProcessor(this.config.getAll()));
-    // this.registerProcessor('component', new ComponentTokenProcessor(this.config.getAll()));
-    // this.registerProcessor('number', new NumberTokenProcessor(this.config.getAll()));
-    // this.registerProcessor('composition', new CompositionTokenProcessor(this.config.getAll()));
+    this.registerProcessor('typography', new TypographyTokenProcessor(this.config.getAll()));
   }
 
   /**
@@ -56,9 +48,9 @@ export class TokenProcessingEngine {
     const result = {
       baseVars: [
         /** TODO: Add to actual variables in figma */
-        '--background-color-primary-400: var(--sd-color-primary-400, red);',
-        '--outline-color-primary: var(--sd-color-primary, red);',
-        '--outline-color-error: var(--sd-color-primary, red);'
+        '--background-color-primary-400: var(--sd-color-primary-400);',
+        '--font-weight-normal: 400;',
+        '--font-weight-bold: 700;'
       ],
       utilities: [],
       spacing: [],
@@ -86,7 +78,6 @@ export class TokenProcessingEngine {
       try {
         const processed = processor.process(token, dictionary);
         if (processed) {
-          // Handle both single processed tokens and arrays (e.g., keyframes)
           if (Array.isArray(processed)) {
             processed.forEach(item => this.categorizeProcessedToken(item, result));
           } else {
@@ -105,68 +96,54 @@ export class TokenProcessingEngine {
    * Categorize processed token into appropriate result buckets
    */
   categorizeProcessedToken(processed, result) {
+    const variable = `${processed.name}: ${processed.value};`;
+    const store = processed.variant === 'default' ? 'baseVars' : processed.variant || 'baseVars';
+
+    if (!result[store]) result[store] = [];
+
     switch (processed.type) {
       case 'color': {
-        const varString = `${processed.name}: ${processed.value};`;
-        result.baseVars.push(varString);
+        this.categorize(store, variable, result);
         break;
       }
 
       case 'spacing': {
-        const spacingVarString = `${processed.name}: ${processed.value};`;
-        result.spacing.push(spacingVarString);
+        this.categorize('spacing', variable, result);
         break;
       }
 
       case 'typography': {
-        const typographyVarString = `${processed.name}: ${processed.value};`;
-        result.baseVars.push(typographyVarString);
+        this.categorize(store, variable, result);
         break;
       }
 
       case 'shadow': {
-        const shadowVarString = `${processed.name}: ${processed.value};`;
-        result.baseVars.push(shadowVarString);
+        this.categorize(store, variable, result);
         break;
       }
 
       case 'animation': {
-        const animationVarString = `${processed.name}: ${processed.value};`;
-        result.baseVars.push(animationVarString);
+        this.categorize(store, variable, result);
         break;
       }
 
       case 'keyframes':
-        // Keyframes go in a special section for @keyframes rules
-        result.baseVars.push(processed.value);
+        this.categorize(store, processed.value, result);
         break;
 
       case 'utility':
         if (processed.properties) {
-          result.utilities.push(processed.properties);
+          this.categorize('utilities', processed.properties, result);
         }
         break;
-
-      case 'composition':
-        if (processed.properties) {
-          result.utilities.push(processed.properties);
-        }
-        break;
-
-      case 'component':
-        if (processed.value) {
-          result.components.push(processed.value);
-        }
-        break;
-
-      case 'number': {
-        const numberVarString = `${processed.name}: ${processed.value};`;
-        result.baseVars.push(numberVarString);
-        break;
-      }
 
       default:
         console.warn(`Unknown processed token type: ${processed.type}`);
     }
+  }
+
+  categorize(store, variable, result) {
+    if (result[store].includes(variable)) return;
+    result[store].push(variable);
   }
 }

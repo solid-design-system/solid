@@ -219,7 +219,7 @@ export default class SdStep extends SolidElement {
           ${
             isHorizontalInline
               ? html`
-                  <div class=${cx('flex flex-col gap-1 flex-1')}>
+                  <div class=${cx(!this.noTail && 'flex-1', 'flex flex-col gap-1')}>
                     <div
                       class=${cx(
                         'flex w-full',
@@ -227,27 +227,25 @@ export default class SdStep extends SolidElement {
                         this.size === 'sm' && !hasDescription ? 'mt-1' : 'mt-3'
                       )}
                     >
-                      ${hasLabel
+                      ${hasLabel &&
+                      html`
+                        <div
+                          part="label"
+                          id="label"
+                          class=${cx(
+                            'font-bold sd-paragraph whitespace-nowrap',
+                            this.disabled && 'text-neutral-500',
+                            this.waiting && 'text-neutral-700',
+                            !this.disabled && !this.current && !this.notInteractive && !this.waiting
+                              ? 'text-primary'
+                              : 'text-black'
+                          )}
+                        >
+                          <slot name="label">${this.label}</slot>
+                        </div>
+                      `}
+                      ${!this.noTail
                         ? html`
-                            <div
-                              part="label"
-                              id="label"
-                              class=${cx(
-                                '!font-bold sd-paragraph whitespace-nowrap',
-                                this.disabled && '!text-neutral-500',
-                                this.waiting && '!text-neutral-700',
-                                !this.disabled && !this.current && !this.notInteractive && !this.waiting
-                                  ? '!text-primary'
-                                  : 'text-black'
-                              )}
-                            >
-                              <slot name="label">${this.label}</slot>
-                            </div>
-                          `
-                        : ''}
-                      ${this.noTail
-                        ? html`<div class="flex-1"></div>`
-                        : html`
                             <div
                               part="tail"
                               class=${cx(
@@ -257,19 +255,23 @@ export default class SdStep extends SolidElement {
                                   : 'border-neutral-500'
                               )}
                             ></div>
-                          `}
+                          `
+                        : ''}
                     </div>
-                    <div
-                      part="description"
-                      id="description"
-                      class=${cx(
-                        'sd-paragraph sd-paragraph--size-sm break-words',
-                        hasDescription ? 'flex-1 pr-4' : 'w-0 h-0 overflow-hidden',
-                        (this.disabled || this.waiting) && '!text-neutral-700'
-                      )}
-                    >
-                      ${hasDescription ? this.description || html`<slot></slot>` : ''}
-                    </div>
+                    ${hasDescription
+                      ? html` <div
+                          part="description"
+                          id="description"
+                          class=${cx(
+                            'sd-paragraph sd-paragraph--size-sm break-words',
+                            hasDescription ? 'flex-1' : 'w-0 h-0 overflow-hidden',
+                            hasDescription && !this.noTail && 'pr-4',
+                            (this.disabled || this.waiting) && '!text-neutral-700'
+                          )}
+                        >
+                          ${this.description || html`<slot></slot>`}
+                        </div>`
+                      : ''}
                   </div>
                 `
               : this.noTail
@@ -297,8 +299,8 @@ export default class SdStep extends SolidElement {
                   class=${cx(
                     'mt-4 break-words flex flex-col gap-2',
                     this.orientation === 'horizontal' ? 'text-center w-40' : 'text-left',
-                    this.disabled && '!text-neutral-500',
-                    this.waiting && '!text-neutral-700',
+                    this.disabled && 'text-neutral-500',
+                    this.waiting && 'text-neutral-700',
                     this.notInteractive ? 'ml-2' : 'mr-4'
                   )}
                 >
@@ -307,10 +309,10 @@ export default class SdStep extends SolidElement {
                     id="label"
                     class=${cx(
                       '!font-bold sd-paragraph',
-                      this.disabled && '!text-neutral-500',
-                      this.waiting && '!text-neutral-700',
+                      this.disabled && 'text-neutral-500',
+                      this.waiting && 'text-neutral-700',
                       !this.disabled && !this.current && !this.notInteractive && !this.waiting
-                        ? '!text-primary'
+                        ? 'text-primary'
                         : 'text-black'
                     )}
                   >
@@ -321,8 +323,7 @@ export default class SdStep extends SolidElement {
                     id="description"
                     class=${cx(
                       'sd-paragraph sd-paragraph--size-sm',
-                      this.disabled && '!text-neutral-700',
-                      this.waiting && '!text-neutral-700'
+                      (this.disabled || this.waiting) && 'text-neutral-700'
                     )}
                   >
                     ${this.description || html`<slot></slot>`}
@@ -346,12 +347,8 @@ export default class SdStep extends SolidElement {
         @apply flex-grow-0;
       }
 
-      :host([horizontal-inline]) {
+      :host([horizontal-inline]):has([part='description']) {
         @apply flex-1 min-w-0;
-      }
-
-      :host([horizontal-inline][no-tail]) {
-        @apply flex-1;
       }
 
       .translateLg {
