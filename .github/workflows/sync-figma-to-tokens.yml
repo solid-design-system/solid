@@ -92,28 +92,27 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      # Switch to the artifact branch, commit only if changes exist
-      - name: Commit build outputs to artifact branch
-        id: commit_step
-        run: |
-          set -euo pipefail
-          git checkout -B "${ARTIFACT_BRANCH}"
+      # # Switch to the artifact branch, commit only if changes exist
+      # - name: Commit build outputs to artifact branch
+      #   id: commit_step
+      #   run: |
+      #     set -euo pipefail
+      #     git checkout -B "${ARTIFACT_BRANCH}"
 
-          # Stage and commit if there are changes
-          if [ -n "$(git status --porcelain)" ]; then
-            git add -A
-            git commit -m "chore: build artifacts from ${ORIGINAL_BRANCH} (${GITHUB_SHA})"
+      #     # Stage and commit if there are changes
+      #     if [ -n "$(git status --porcelain)" ]; then
+      #       git add -A
+      #       git commit -m "chore: build artifacts from ${ORIGINAL_BRANCH} (${GITHUB_SHA})"
 
-            echo "changes=true" >> $GITHUB_OUTPUT
-          else
-            echo "No changes to commit."
-            echo "changes=false" >> $GITHUB_OUTPUT
-          fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #       echo "changes=true" >> $GITHUB_OUTPUT
+      #     else
+      #       echo "No changes to commit."
+      #       echo "changes=false" >> $GITHUB_OUTPUT
+      #     fi
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Pull Request
-        if: steps.commit_step.outputs.changes == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
