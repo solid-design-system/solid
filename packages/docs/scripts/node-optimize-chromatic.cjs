@@ -34,13 +34,6 @@ fs.readdir(directoryPath, (err, files) => {
         process.exit(1);
       }
 
-      const animations = [
-        '--animate-spin: spin 1s linear infinite;',
-        'wave 1.3s infinite, loader-color-current 2.6s infinite;',
-        '.animate-loader-white{animation:wave 1.3s infinite,loader-color-white 2.6s infinite}',
-        '.animate-loader-primary{animation:wave 1.3s infinite,loader-color-primary 2.6s infinite}'
-      ];
-
       // Map of original animation to replacement
       const replacements = {
         '--animate-spin: spin 1s linear infinite;': '--animate-spin: 1s linear infinite spin;',
@@ -53,10 +46,10 @@ fs.readdir(directoryPath, (err, files) => {
       let found = false;
       let result = data;
 
-      animations.forEach(anim => {
+      Object.entries(replacements).forEach(([anim, replacement]) => {
         if (result.includes(anim)) {
           found = true;
-          result = result.replace(new RegExp(anim.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), replacements[anim]);
+          result = result.replace(new RegExp(anim.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), replacement);
         }
       });
 
