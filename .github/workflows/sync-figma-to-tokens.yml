@@ -103,7 +103,7 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             git add -A
             git commit -m "chore: build artifacts from ${ORIGINAL_BRANCH} (${GITHUB_SHA})"
-            git push -u origin "${ARTIFACT_BRANCH}"
+
             echo "changes=true" >> $GITHUB_OUTPUT
           else
             echo "No changes to commit."
