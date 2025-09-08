@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ORIGINAL_BRANCH: ${{ github.ref_name }}
-      ARTIFACT_BRANCH: chore/update-figma-tokens-${{ github.ref_name }}-${{ github.run_id }}
+      ARTIFACT_BRANCH: chore/update-figma-tokens-${{ github.run_id }}
 
     # These will inherit from workflow level but can be overridden if needed
     permissions:
@@ -117,8 +117,8 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ env.ARTIFACT_BRANCH }}     # head/source (build branch)
-          base: ${{ env.ORIGINAL_BRANCH }}       # base/target (original branch)
+          branch: ${{ env.ARTIFACT_BRANCH }}
+          base: ${{ env.ORIGINAL_BRANCH }}
           title: ${{ env.PR_TITLE }}
           reviewers: smfonseca,auroraVasconcelos,paulovareiro29,mariohamann,balco0110 
           body: |
