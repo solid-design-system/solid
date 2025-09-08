@@ -13,6 +13,10 @@ permissions:
 jobs:
   sync-figma-to-tokens:
     runs-on: ubuntu-latest
+    env:
+      ORIGINAL_BRANCH: ${{ github.ref_name }}
+      ARTIFACT_BRANCH: chore/update-figma-tokens-${{ github.ref_name }}-${{ github.run_id }}
+
     # These will inherit from workflow level but can be overridden if needed
     permissions:
       contents: write
@@ -62,11 +66,6 @@ jobs:
           echo "✅ Using Branch Name: $BRANCH_NAME"
           echo "✅ Using PR Title: $PR_TITLE"
 
-      - name: Configure Git
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
 
@@ -88,26 +87,42 @@ jobs:
       - name: Build theme tokens
         run: pnpm -C ./packages/tokens build
 
-      - name: Create branch and commit changes
+      - name: Configure Git
         run: |
-          git checkout -b ${{ env.BRANCH_NAME }}
-          git add .
-          git commit -m "Update tokens from Figma"
-          git push origin ${{ env.BRANCH_NAME }}
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      # Switch to the artifact branch, commit only if changes exist
+      - name: Commit build outputs to artifact branch
+        id: commit_step
+        run: |
+          set -euo pipefail
+          git checkout -B "${ARTIFACT_BRANCH}"
+
+          # Stage and commit if there are changes
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "chore: build artifacts from ${ORIGINAL_BRANCH} (${GITHUB_SHA})"
+            git push -u origin "${ARTIFACT_BRANCH}"
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "No changes to commit."
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
         env:
-          # Use the GITHUB_TOKEN for authentication
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Pull Request
+        if: steps.commit_step.outputs.changes == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ env.BRANCH_NAME }}
-          base: ${{ github.ref_name }}
+          branch: ${{ env.ARTIFACT_BRANCH }}     # head/source (build branch)
+          base: ${{ env.ORIGINAL_BRANCH }}       # base/target (original branch)
           title: ${{ env.PR_TITLE }}
+          reviewers: smfonseca,auroraVasconcelos,paulovareiro29,mariohamann,balco0110 
           body: |
             Update tokens from Figma for figma file/branch id: ${{ env.FIGMA_FILE_ID }}
 
             Triggered by: ${{ github.event_name }}
             ${{ github.event_name == 'push' && format('Push to branch: {0}', github.ref_name) || '' }}
-          reviewers: smfonseca,auroraVasconcelos,paulovareiro29,mariohamann,balco0110 
