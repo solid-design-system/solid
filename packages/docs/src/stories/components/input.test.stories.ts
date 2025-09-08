@@ -6,9 +6,8 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
+import { userEvent } from 'storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-input');
 const { generateTemplate } = storybookTemplate('sd-input');
@@ -63,8 +62,7 @@ export default {
       type: 'figma',
       url: 'https://www.figma.com/file/xSIeTnyfW2T21Uw5JgdZOg/Input?node-id=0%3A1&mode=dev'
     }
-  },
-  decorators: [withActions] as any
+  }
 };
 
 /**
@@ -158,7 +156,7 @@ export const Clearable = {
  */
 
 export const TogglePassword = {
-  name: 'Toggle Password',
+  name: 'Toggle password',
   args: overrideArgs([{ type: 'attribute', name: 'type', value: 'password' }]),
   render: (args: any) => {
     return html`
@@ -184,7 +182,7 @@ export const Disabled = {
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' }
+    { type: 'attribute', name: 'help-text', value: 'Help-text' }
   ]),
   render: (args: any) => {
     return html`
@@ -207,7 +205,7 @@ export const Readonly = {
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' }
+    { type: 'attribute', name: 'help-text', value: 'Help-text' }
   ]),
   render: (args: any) => {
     return html`
@@ -230,7 +228,7 @@ export const Sizes = {
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' },
+    { type: 'attribute', name: 'help-text', value: 'Help-text' },
     { type: 'attribute', name: 'clearable', value: true },
     {
       type: 'slot',
@@ -253,11 +251,11 @@ export const Sizes = {
  */
 
 export const StyleOnValid = {
-  name: 'Style on Valid',
+  name: 'Style on valid',
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' },
+    { type: 'attribute', name: 'help-text', value: 'Help-text' },
     { type: 'attribute', name: 'clearable', value: true },
     {
       type: 'slot',
@@ -302,7 +300,7 @@ export const Types = {
               { type: 'attribute', name: 'type', value: 'date' },
               { type: 'attribute', name: 'label', value: 'Date' },
               { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
-              { type: 'attribute', name: 'help-text', value: 'value is restricted to date format' }
+              { type: 'attribute', name: 'help-text', value: 'Value is restricted to date format' }
             ],
             args
           })}
@@ -313,7 +311,7 @@ export const Types = {
               { type: 'attribute', name: 'type', value: 'datetime-local' },
               { type: 'attribute', name: 'label', value: 'Date Time' },
               { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
-              { type: 'attribute', name: 'help-text', value: 'value is restricted to datetime format' }
+              { type: 'attribute', name: 'help-text', value: 'Value is restricted to datetime format' }
             ],
             args
           })}
@@ -324,7 +322,7 @@ export const Types = {
               { type: 'attribute', name: 'type', value: 'email' },
               { type: 'attribute', name: 'label', value: 'Email' },
               { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
-              { type: 'attribute', name: 'help-text', value: 'validate with email address format' }
+              { type: 'attribute', name: 'help-text', value: 'Validate with email address format' }
             ],
             args
           })}
@@ -335,7 +333,7 @@ export const Types = {
               { type: 'attribute', name: 'type', value: 'number' },
               { type: 'attribute', name: 'label', value: 'Number' },
               { type: 'attribute', name: 'placeholder', value: '^d{1,3}$' },
-              { type: 'attribute', name: 'help-text', value: 'value is restricted to numbers' }
+              { type: 'attribute', name: 'help-text', value: 'Value is restricted to numbers' }
             ],
             args
           })}
@@ -347,7 +345,7 @@ export const Types = {
               { type: 'attribute', name: 'label', value: 'Password' },
               { type: 'attribute', name: 'password-toggle', value: true },
               { type: 'attribute', name: 'placeholder', value: '.*' },
-              { type: 'attribute', name: 'help-text', value: 'use password display format' }
+              { type: 'attribute', name: 'help-text', value: 'Use password display format' }
             ],
             args
           })}
@@ -358,7 +356,7 @@ export const Types = {
               { type: 'attribute', name: 'type', value: 'search' },
               { type: 'attribute', name: 'label', value: 'Search' },
               { type: 'attribute', name: 'placeholder', value: '^d{1,3}$' },
-              { type: 'attribute', name: 'help-text', value: 'use search format' }
+              { type: 'attribute', name: 'help-text', value: 'Use search format' }
             ],
             args
           })}
@@ -380,7 +378,7 @@ export const Types = {
               { type: 'attribute', name: 'type', value: 'text' },
               { type: 'attribute', name: 'label', value: 'Text' },
               { type: 'attribute', name: 'placeholder', value: '.*' },
-              { type: 'attribute', name: 'help-text', value: 'default type' }
+              { type: 'attribute', name: 'help-text', value: 'Default type' }
             ],
             args
           })}
@@ -391,7 +389,7 @@ export const Types = {
               { type: 'attribute', name: 'type', value: 'time' },
               { type: 'attribute', name: 'label', value: 'Time' },
               { type: 'attribute', name: 'placeholder', value: '' },
-              { type: 'attribute', name: 'help-text', value: 'value is restricted to time format' }
+              { type: 'attribute', name: 'help-text', value: 'Value is restricted to time format' }
             ],
             args
           })}
@@ -403,7 +401,7 @@ export const Types = {
               { type: 'attribute', name: 'label', value: 'URL' },
               { type: 'attribute', name: 'name', value: 'url field' },
               { type: 'attribute', name: 'placeholder', value: 'https://www.union-investment.de/' },
-              { type: 'attribute', name: 'help-text', value: 'validate with url format' }
+              { type: 'attribute', name: 'help-text', value: 'Validate with url format' }
             ],
             args
           })}
@@ -438,9 +436,9 @@ export const Validation = {
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'label', value: 'Indicate Valid State' },
-              { type: 'attribute', name: 'name', value: 'required field' },
+              { type: 'attribute', name: 'name', value: 'Required field' },
               { type: 'attribute', name: 'placeholder', value: '.*' },
-              { type: 'attribute', name: 'help-text', value: 'indicate on valid' },
+              { type: 'attribute', name: 'help-text', value: 'Indicate on valid' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'style-on-valid', value: true },
               {
@@ -456,9 +454,9 @@ export const Validation = {
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'label', value: 'Required' },
-              { type: 'attribute', name: 'name', value: 'required field' },
+              { type: 'attribute', name: 'name', value: 'Required field' },
               { type: 'attribute', name: 'placeholder', value: '.*' },
-              { type: 'attribute', name: 'help-text', value: 'input must be filled' },
+              { type: 'attribute', name: 'help-text', value: 'Input must be filled' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               {
@@ -474,9 +472,9 @@ export const Validation = {
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'label', value: 'Pattern' },
-              { type: 'attribute', name: 'name', value: 'pattern field' },
+              { type: 'attribute', name: 'name', value: 'Pattern field' },
               { type: 'attribute', name: 'placeholder', value: '[A-Za-z]{3,}' },
-              { type: 'attribute', name: 'help-text', value: 'input must match pattern' },
+              { type: 'attribute', name: 'help-text', value: 'Input must match pattern' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               { type: 'attribute', name: 'pattern', value: '[A-Za-z]{3,}' },
@@ -493,9 +491,9 @@ export const Validation = {
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'label', value: 'Min Length' },
-              { type: 'attribute', name: 'name', value: 'min length field' },
+              { type: 'attribute', name: 'name', value: 'Min length field' },
               { type: 'attribute', name: 'placeholder', value: '^.{3,}$' },
-              { type: 'attribute', name: 'help-text', value: 'value must meet minlength' },
+              { type: 'attribute', name: 'help-text', value: 'Value must meet minlength' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               { type: 'attribute', name: 'minlength', value: 3 },
@@ -512,9 +510,9 @@ export const Validation = {
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'label', value: 'Max Length' },
-              { type: 'attribute', name: 'name', value: 'max length field' },
+              { type: 'attribute', name: 'name', value: 'Max length field' },
               { type: 'attribute', name: 'placeholder', value: '^.{0,3}$' },
-              { type: 'attribute', name: 'help-text', value: 'value cannot exceed maxlength' },
+              { type: 'attribute', name: 'help-text', value: 'Value cannot exceed maxlength' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               { type: 'attribute', name: 'maxlength', value: 3 },
@@ -532,9 +530,9 @@ export const Validation = {
             constants: [
               { type: 'attribute', name: 'type', value: 'number' },
               { type: 'attribute', name: 'label', value: 'Min' },
-              { type: 'attribute', name: 'name', value: 'min field' },
+              { type: 'attribute', name: 'name', value: 'Min field' },
               { type: 'attribute', name: 'placeholder', value: '^d{1,3}$' },
-              { type: 'attribute', name: 'help-text', value: 'numeric value must be greater than min' },
+              { type: 'attribute', name: 'help-text', value: 'Numeric value must be greater than min' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               { type: 'attribute', name: 'min', value: 3 },
@@ -552,9 +550,9 @@ export const Validation = {
             constants: [
               { type: 'attribute', name: 'type', value: 'number' },
               { type: 'attribute', name: 'label', value: 'Max' },
-              { type: 'attribute', name: 'name', value: 'max field' },
+              { type: 'attribute', name: 'name', value: 'Max field' },
               { type: 'attribute', name: 'placeholder', value: '^d{1,3}$' },
-              { type: 'attribute', name: 'help-text', value: 'numeric value must not exceed max' },
+              { type: 'attribute', name: 'help-text', value: 'Numeric value must not exceed max' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               { type: 'attribute', name: 'max', value: 3 },
@@ -572,9 +570,9 @@ export const Validation = {
             constants: [
               { type: 'attribute', name: 'type', value: 'email' },
               { type: 'attribute', name: 'label', value: 'Email' },
-              { type: 'attribute', name: 'name', value: 'email field' },
+              { type: 'attribute', name: 'name', value: 'Email field' },
               { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
-              { type: 'attribute', name: 'help-text', value: 'value must match email address format' },
+              { type: 'attribute', name: 'help-text', value: 'Value must match email address format' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               {
@@ -591,9 +589,9 @@ export const Validation = {
             constants: [
               { type: 'attribute', name: 'type', value: 'date' },
               { type: 'attribute', name: 'label', value: 'Date' },
-              { type: 'attribute', name: 'name', value: 'date field' },
+              { type: 'attribute', name: 'name', value: 'Date field' },
               { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
-              { type: 'attribute', name: 'help-text', value: 'value is restricted to date format' },
+              { type: 'attribute', name: 'help-text', value: 'Value is restricted to date format' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               {
@@ -609,10 +607,10 @@ export const Validation = {
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'type', value: 'datetime-local' },
-              { type: 'attribute', name: 'label', value: 'Date Time' },
-              { type: 'attribute', name: 'name', value: 'datetime field' },
+              { type: 'attribute', name: 'label', value: 'Date time' },
+              { type: 'attribute', name: 'name', value: 'Datetime field' },
               { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
-              { type: 'attribute', name: 'help-text', value: 'value is restricted to datetime format' },
+              { type: 'attribute', name: 'help-text', value: 'Value is restricted to datetime format' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               {
@@ -629,9 +627,9 @@ export const Validation = {
             constants: [
               { type: 'attribute', name: 'type', value: 'time' },
               { type: 'attribute', name: 'label', value: 'Time' },
-              { type: 'attribute', name: 'name', value: 'time field' },
+              { type: 'attribute', name: 'name', value: 'Time field' },
               { type: 'attribute', name: 'placeholder', value: '' },
-              { type: 'attribute', name: 'help-text', value: 'value is restricted to time format' },
+              { type: 'attribute', name: 'help-text', value: 'Value is restricted to time format' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               {
@@ -648,9 +646,9 @@ export const Validation = {
             constants: [
               { type: 'attribute', name: 'type', value: 'url' },
               { type: 'attribute', name: 'label', value: 'URL' },
-              { type: 'attribute', name: 'name', value: 'url field' },
+              { type: 'attribute', name: 'name', value: 'Url field' },
               { type: 'attribute', name: 'placeholder', value: 'https://www.union-investment.de/' },
-              { type: 'attribute', name: 'help-text', value: 'value must match url format' },
+              { type: 'attribute', name: 'help-text', value: 'Value must match url format' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               {
@@ -712,9 +710,9 @@ export const Slots = {
           constants: [
             { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
             { type: 'attribute', name: 'clearable', value: true },
-            { type: 'attribute', name: 'value', value: 'value' },
+            { type: 'attribute', name: 'value', value: 'Value' },
             { type: 'attribute', name: 'label', value: 'Label' },
-            { type: 'attribute', name: 'help-text', value: 'help-text' },
+            { type: 'attribute', name: 'help-text', value: 'Help-text' },
             {
               type: 'slot',
               name: 'left',
@@ -766,9 +764,9 @@ export const Parts = {
       },
       constants: [
         { type: 'attribute', name: 'clearable', value: true },
-        { type: 'attribute', name: 'value', value: 'value' },
+        { type: 'attribute', name: 'value', value: 'Value' },
         { type: 'attribute', name: 'label', value: 'Label' },
-        { type: 'attribute', name: 'help-text', value: 'help-text' },
+        { type: 'attribute', name: 'help-text', value: 'Help-text' },
         {
           type: 'slot',
           name: 'left',

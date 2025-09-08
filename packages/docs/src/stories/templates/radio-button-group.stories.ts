@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Templates/Radio Button Group',
   parameters: {
     chromatic: { disableSnapshot: true },
@@ -15,7 +15,7 @@ export default {
 
 export const Default = {
   render: () => html`
-    <sd-radio-group name="radio-group">
+    <sd-radio-group name="radio-group" value="list">
       <sd-radio-button value="list">
         <sd-icon slot="icon" name="system/list"></sd-icon>
         List

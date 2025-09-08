@@ -185,7 +185,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   @property({ type: String, reflect: true }) name = '';
 
   /**
-   * The `title` attribute specifies extra information about an element most often as tooltip text when the mouse moves over the element.
+   * The `title` attribute specifies extra information about an element most often as a default browser tooltip text when the mouse moves over the element.
    */
   @property({ type: String, reflect: true }) title = ''; // make reactive to pass through
 
@@ -800,7 +800,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           name="help-text"
           part="form-control-help-text"
           id="help-text"
-          class=${cx('text-sm text-neutral-700 mt-2', hasHelpText ? 'block' : 'hidden')}
+          class=${cx('text-sm text-neutral-700 mt-1', hasHelpText ? 'block' : 'hidden')}
           aria-hidden=${!hasHelpText}
         >
           ${this.helpText}

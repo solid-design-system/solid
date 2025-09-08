@@ -55,7 +55,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   /** @internal */
   @state() showInvalidStyle = false;
 
-  /** An empty title prevents browser validation tooltips from appearing on hover */
+  /**
+   * The `title` attribute specifies extra information about an element most often as a default browser tooltip text when the mouse moves over the element.
+   */
   @property({ type: String, reflect: true }) title = ''; // make reactive to pass through
 
   /** The name of the textarea, submitted as a name/value pair with form data. */
@@ -474,7 +476,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           name="help-text"
           part="form-control-help-text"
           id="help-text"
-          class=${cx('text-sm text-neutral-700 mt-2', hasHelpText ? 'block' : 'hidden')}
+          class=${cx('text-sm text-neutral-700 mt-1', hasHelpText ? 'block' : 'hidden')}
           aria-hidden=${hasHelpText ? 'false' : 'true'}
         >
           ${this.helpText}

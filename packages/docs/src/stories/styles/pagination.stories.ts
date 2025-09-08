@@ -1,6 +1,5 @@
 import '../../../../components/src/solid-components';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-pagination');
 const { overrideArgs } = storybookHelpers('sd-pagination');
@@ -9,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-pagination');
 const html = String.raw;
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Styles/sd-pagination',
   component: 'sd-pagination',
   argTypes,
@@ -26,7 +25,6 @@ export default {
     value: html``
   }),
   decorators: [
-    withActions,
     (story: any) => {
       const handlePageClick = (event: MouseEvent) => {
         event.preventDefault();
@@ -57,19 +55,23 @@ export const Default = {
       options: {
         templateContent:
           args['sd-pagination--...'] === 'simple'
-            ? html`
-              <nav class="%CLASSES%" aria-label="Default pagination">
+            ? html` <nav class="%CLASSES%" aria-label="Default pagination">
                 <ul>
-                  <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
+                  <li>
+                    <a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></sd-icon></a>
+                  </li>
                   <li>1</li>
                   <li>20</li>
-                  <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
+                  <li>
+                    <a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></sd-icon></a>
+                  </li>
                 </ul>
               </nav>`
-            : html`
-              <nav class="%CLASSES%" aria-label="Default pagination">
+            : html` <nav class="%CLASSES%" aria-label="Default pagination">
                 <ul>
-                  <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
+                  <li>
+                    <a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></sd-icon></a>
+                  </li>
                   <li><a aria-current="page">1</a></li>
                   <li><a href="/?page=2">2</a></li>
                   <li><a href="/?page=3">3</a></li>
@@ -90,7 +92,9 @@ export const Default = {
                   <li><a href="/?page=18">18</a></li>
                   <li><a href="/?page=19">19</a></li>
                   <li><a href="/?page=20">20</a></li>
-                  <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
+                  <li>
+                    <a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></sd-icon></a>
+                  </li>
                 </ul>
               </nav>`
       },
@@ -100,9 +104,9 @@ export const Default = {
 };
 
 /**
- * Use the `sd-pagination` classes for alternative appearances:
+ * Use the `sd-pagination--*` classes for alternative appearances:
  *
- * - `number` (default)
+ * - number is the default appearance
  * - `simple`
  */
 export const Variants = {
@@ -110,7 +114,9 @@ export const Variants = {
     <div class="flex gap-10">
       <nav class="sd-pagination" aria-label="Default variant pagination">
         <ul>
-          <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
+          <li>
+            <a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></sd-icon></a>
+          </li>
           <li><a aria-current="page">1</a></li>
           <li><a href="/?page=2">2</a></li>
           <li><a href="/?page=3">3</a></li>
@@ -131,15 +137,21 @@ export const Variants = {
           <li><a href="/?page=18">18</a></li>
           <li><a href="/?page=19">19</a></li>
           <li><a href="/?page=20">20</a></li>
-          <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
+          <li>
+            <a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></sd-icon></a>
+          </li>
         </ul>
       </nav>
       <nav class="sd-pagination sd-pagination--simple" aria-label="Simple variant pagination">
         <ul>
-          <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
+          <li>
+            <a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></sd-icon></a>
+          </li>
           <li>1</li>
           <li>20</li>
-          <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
+          <li>
+            <a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></sd-icon></a>
+          </li>
         </ul>
       </nav>
     </div>
@@ -151,69 +163,78 @@ export const Variants = {
  */
 export const Truncation = {
   render: () => html`
-      <nav class="sd-pagination" aria-label="Truncated pagination">
-        <ul>
-          <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-          <li><a href="/?page=1">1</a></li>
-          <li><a href="/?page=2">2</a></li>
-          <li><a href="/?page=3">3</a></li>
-          <li><a href="/?page=4">4</a></li>
-          <li><a aria-current="page">5</a></li>
-          <li><a href="/?page=6">6</a></li>
-          <li><a href="/?page=7">7</a></li>
-          <li><a href="/?page=8">8</a></li>
-          <li><a href="/?page=9">9</a></li>
-          <li><a href="/?page=10">10</a></li>
-          <li><a href="/?page=11">11</a></li>
-          <li><a href="/?page=12">12</a></li>
-          <li><a href="/?page=13">13</a></li>
-          <li><a href="/?page=14">14</a></li>
-          <li><a href="/?page=15">15</a></li>
-          <li><a href="/?page=16">16</a></li>
-          <li><a href="/?page=17">17</a></li>
-          <li><a href="/?page=18">18</a></li>
-          <li><a href="/?page=19">19</a></li>
-          <li><a href="/?page=20">20</a></li>
-          <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
-        </ul>
-      </nav>
+    <nav class="sd-pagination" aria-label="Truncated pagination">
+      <ul>
+        <li>
+          <a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></sd-icon></a>
+        </li>
+        <li><a href="/?page=1">1</a></li>
+        <li><a href="/?page=2">2</a></li>
+        <li><a href="/?page=3">3</a></li>
+        <li><a href="/?page=4">4</a></li>
+        <li><a aria-current="page">5</a></li>
+        <li><a href="/?page=6">6</a></li>
+        <li><a href="/?page=7">7</a></li>
+        <li><a href="/?page=8">8</a></li>
+        <li><a href="/?page=9">9</a></li>
+        <li><a href="/?page=10">10</a></li>
+        <li><a href="/?page=11">11</a></li>
+        <li><a href="/?page=12">12</a></li>
+        <li><a href="/?page=13">13</a></li>
+        <li><a href="/?page=14">14</a></li>
+        <li><a href="/?page=15">15</a></li>
+        <li><a href="/?page=16">16</a></li>
+        <li><a href="/?page=17">17</a></li>
+        <li><a href="/?page=18">18</a></li>
+        <li><a href="/?page=19">19</a></li>
+        <li><a href="/?page=20">20</a></li>
+        <li>
+          <a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></sd-icon></a>
+        </li>
+      </ul>
+    </nav>
   `
 };
 
 /**
- * Use the `inverted` attribute when displayed on primary background.
+ * Use the `sd-pagination--inverted` attribute when displayed on primary background.
  */
 export const Inverted = {
   render: () => html`
-    <div class="bg-primary p-4">
-      <nav class="sd-pagination sd-pagination--inverted" aria-label="Inverted pagination">
-        <ul>
-          <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
-          <li><a aria-current="page">1</a></li>
-          <li><a href="/?page=2">2</a></li>
-          <li><a href="/?page=3">3</a></li>
-          <li><a href="/?page=4">4</a></li>
-          <li><a href="/?page=5">5</a></li>
-          <li><a href="/?page=6">6</a></li>
-          <li><a href="/?page=7">7</a></li>
-          <li><a href="/?page=8">8</a></li>
-          <li><a href="/?page=9">9</a></li>
-          <li><a href="/?page=10">10</a></li>
-          <li><a href="/?page=11">11</a></li>
-          <li><a href="/?page=12">12</a></li>
-          <li><a href="/?page=13">13</a></li>
-          <li><a href="/?page=14">14</a></li>
-          <li><a href="/?page=15">15</a></li>
-          <li><a href="/?page=16">16</a></li>
-          <li><a href="/?page=17">17</a></li>
-          <li><a href="/?page=18">18</a></li>
-          <li><a href="/?page=19">19</a></li>
-          <li><a href="/?page=20">20</a></li>
-          <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
-        </ul>
-      </nav>
-    </div>
-  `
+    <nav class="sd-pagination sd-pagination--inverted" aria-label="Inverted pagination">
+      <ul>
+        <li>
+          <a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></sd-icon></a>
+        </li>
+        <li><a aria-current="page">1</a></li>
+        <li><a href="/?page=2">2</a></li>
+        <li><a href="/?page=3">3</a></li>
+        <li><a href="/?page=4">4</a></li>
+        <li><a href="/?page=5">5</a></li>
+        <li><a href="/?page=6">6</a></li>
+        <li><a href="/?page=7">7</a></li>
+        <li><a href="/?page=8">8</a></li>
+        <li><a href="/?page=9">9</a></li>
+        <li><a href="/?page=10">10</a></li>
+        <li><a href="/?page=11">11</a></li>
+        <li><a href="/?page=12">12</a></li>
+        <li><a href="/?page=13">13</a></li>
+        <li><a href="/?page=14">14</a></li>
+        <li><a href="/?page=15">15</a></li>
+        <li><a href="/?page=16">16</a></li>
+        <li><a href="/?page=17">17</a></li>
+        <li><a href="/?page=18">18</a></li>
+        <li><a href="/?page=19">19</a></li>
+        <li><a href="/?page=20">20</a></li>
+        <li>
+          <a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></sd-icon></a>
+        </li>
+      </ul>
+    </nav>
+  `,
+  globals: {
+    backgrounds: { value: 'primary' }
+  }
 };
 
 /**
@@ -225,7 +246,9 @@ export const HiddenHeadline = {
       <nav class="sd-pagination" aria-labelledby="pagination--hidden-headline">
         <h4 id="pagination--hidden-headline">Pagination</h4>
         <ul>
-          <li><a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></a></li>
+          <li>
+            <a aria-hidden="true"><sd-icon name="system/chevron-left" label="Previous"></sd-icon></a>
+          </li>
           <li><a aria-current="page">1</a></li>
           <li><a href="/?page=2">2</a></li>
           <li><a href="/?page=3">3</a></li>
@@ -246,7 +269,9 @@ export const HiddenHeadline = {
           <li><a href="/?page=18">18</a></li>
           <li><a href="/?page=19">19</a></li>
           <li><a href="/?page=20">20</a></li>
-          <li><a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></a></li>
+          <li>
+            <a href="/?page=2"><sd-icon name="system/chevron-right" label="Next"></sd-icon></a>
+          </li>
         </ul>
       </nav>
     </div>

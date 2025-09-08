@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-headline');
 
 export default {
   title: 'Styles/sd-headline',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-headline',
   parameters: {
     ...parameters,
@@ -41,7 +41,7 @@ export const Default = {
 };
 
 /**
- * Use the `sd-headline` classes for alternative appearances:
+ * Use the `sd-headline--size-*` classes for alternative appearances:
  *
  * - 4xl is the default size
  * - `sd-headline--size-3xl`
@@ -57,7 +57,7 @@ export const Default = {
 export const Sizes = {
   render: () => html`
     <div class="flex flex-col gap-12">
-      <p class="sd-headline sd-headline--size-4xl">Lorem ipsum sic semper</p>
+      <p class="sd-headline">Lorem ipsum sic semper</p>
       <p class="sd-headline sd-headline--size-3xl">Lorem ipsum sic semper</p>
       <p class="sd-headline sd-headline--size-xl">Lorem ipsum sic semper</p>
       <p class="sd-headline sd-headline--size-lg">Lorem ipsum sic semper</p>

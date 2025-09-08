@@ -91,14 +91,38 @@
       @apply bg-neutral-200;
     }
 
-    &::before {
-      content: '[ ';
-      display: inline-block;
+    &:not(:has(a)) {
+      &::before {
+        content: '[ ';
+        display: inline-block;
+      }
+
+      &::after {
+        content: ' ]';
+        display: inline-block;
+      }
     }
 
-    &::after {
-      content: ' ]';
-      display: inline-block;
+    :is(a) {
+      @apply inline-block !no-underline font-bold whitespace-nowrap;
+
+      &::before {
+        content: '[ ';
+        display: inline-block;
+      }
+
+      &::after {
+        content: ' ]';
+        display: inline-block;
+      }
+
+      &:focus-visible {
+        @apply outline outline-2 outline-offset-2 outline-primary rounded-default;
+      }
+
+      &:link {
+        @apply text-primary;
+      }
     }
 
     &:link,

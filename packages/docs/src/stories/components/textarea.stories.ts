@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-textarea');
 const { generateTemplate } = storybookTemplate('sd-textarea');
@@ -9,7 +8,7 @@ const { overrideArgs } = storybookHelpers('sd-textarea');
 
 export default {
   title: 'Components/sd-textarea',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-textarea',
   args,
   argTypes: {
@@ -21,8 +20,7 @@ export default {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2619-19544&node-type=section&t=5PpAC3TA3kYF7ufX-0'
     }
-  },
-  decorators: [withActions] as any
+  }
 };
 
 export const Default = {
@@ -80,9 +78,9 @@ export const Label = {
   name: 'Label',
   render: () => html`
     <div class="flex gap-12">
-      <sd-textarea size="lg" label="Label Attribute" rows="4" spellcheck class="w-full"></sd-textarea>
+      <sd-textarea size="lg" label="Label attribute" rows="4" spellcheck class="w-full"></sd-textarea>
       <sd-textarea size="lg" rows="4" spellcheck class="w-full">
-        <div slot="label" class="text-lg">Label Slot</div>
+        <div slot="label" class="text-lg">Label slot</div>
       </sd-textarea>
     </div>
   `
@@ -124,7 +122,7 @@ export const VisuallyDisabled = {
   name: 'Visually Disabled',
   render: () => html`
     <div class="w-[500px] mt-12">
-      <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm">
+      <sd-tooltip content="Visually disabled" trigger="hover focus" size="sm">
         <sd-textarea
           size="lg"
           label="Label"
@@ -170,9 +168,9 @@ export const HelpText = {
   name: 'Help Text',
   render: () => html`
     <div class="flex gap-12">
-      <sd-textarea size="lg" label="Label" help-text="Help text Attribute" rows="4" class="w-full"></sd-textarea>
+      <sd-textarea size="lg" label="Label" help-text="Help text attribute" rows="4" class="w-full"></sd-textarea>
       <sd-textarea size="lg" label="Label" rows="4" spellcheck class="w-full">
-        <div slot="help-text" class="text-lg">Help text Slot</div>
+        <div slot="help-text" class="text-lg">Help text slot</div>
       </sd-textarea>
     </div>
   `

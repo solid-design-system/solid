@@ -13,9 +13,9 @@ import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
-import type SdButton from '../button/button'; // This import should be changed as soon as the menu is moved to the components folder
-import type SdMenu from '../../_components/menu/menu'; // This import should be changed as soon as the menu-item is moved to the components folder
-import type SdMenuItem from '../../_components/menu-item/menu-item';
+import type SdButton from '../button/button';
+import type SdMenu from '../../components/menu/menu';
+import type SdMenuItem from '../../components/menu-item/menu-item';
 import type SdNavigationItem from '../navigation-item/navigation-item';
 import type SdPopup from '../popup/popup';
 
@@ -36,6 +36,7 @@ import type SdPopup from '../popup/popup';
  * @event sd-after-hide - Emitted after the dropdown closes and all animations are complete.
  *
  * @csspart base - The component's base wrapper.
+ * @csspart base__popup - The popup's exported `popup` part. Use this to target the dropdowns' popup container.
  * @csspart trigger - The container that wraps the trigger.
  * @csspart panel - The panel that gets shown when the dropdown is open.
  *
@@ -293,7 +294,7 @@ export default class SdDropdown extends SolidElement {
 
     if (menu) {
       const menuItems = menu.defaultSlot.assignedElements({ flatten: true }) as SdMenuItem[];
-      const firstMenuItem = menuItems[0];
+      const firstMenuItem = menuItems.find(item => !item.disabled) || menuItems[0];
       const lastMenuItem = menuItems[menuItems.length - 1];
 
       // When up/down is pressed, we make the assumption that the user is familiar with the menu and plans to make a
@@ -423,6 +424,9 @@ export default class SdDropdown extends SolidElement {
       <sd-popup
         part="base"
         id="dropdown"
+        exportparts="
+          popup:base__popup,
+        "
         placement=${this.placement}
         distance=${this.rounded && this.distance < 1 ? 1 : this.distance}
         skidding=${this.skidding}

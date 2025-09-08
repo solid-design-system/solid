@@ -27,3 +27,5 @@ public
 *storybook.log
 
 axe-reports
+
+.storybook/solid-tw-configuration.json

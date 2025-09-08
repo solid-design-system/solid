@@ -7,7 +7,6 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from '@storybook/addon-actions/decorator';
 import cx from 'classix';
 import type { ConstantDefinition } from '../../../scripts/storybook/helper';
 
@@ -43,8 +42,7 @@ export default {
   tags: ['!autodocs'],
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Navigation' }]),
   argTypes,
-  parameters: { ...parameters, controls: { disable: true } },
-  decorators: [withActions] as any
+  parameters: { ...parameters, controls: { disable: true } }
 };
 
 /**
@@ -237,6 +235,41 @@ export const Chevron = {
         constants
       });
     })}`;
+  }
+};
+
+export const Separated = {
+  name: 'Separated',
+  render: (args: any) => {
+    return html`
+      ${generateTemplate({
+        args,
+        axis: {
+          y: [{ type: 'attribute', name: 'separated', values: [true, false] }],
+          x: [{ type: 'attribute', name: 'href', values: ['#', ''] }]
+        },
+        constants: [
+          { type: 'attribute', name: 'vertical', value: true },
+          { type: 'attribute', name: 'current', value: true },
+          defaultSlotConstant,
+          childrenSlotConstant
+        ]
+      })}
+      ${generateTemplate({
+        args,
+        axis: {
+          y: [{ type: 'attribute', name: 'separated', values: [true, false] }],
+          x: [{ type: 'attribute', name: 'href', values: ['#', ''] }]
+        },
+        constants: [
+          { type: 'attribute', name: 'vertical', value: true },
+          { type: 'attribute', name: 'current', value: true },
+          defaultSlotConstant,
+          descriptionSlotConstant,
+          childrenSlotConstant
+        ]
+      })}
+    `;
   }
 };
 
@@ -440,6 +473,7 @@ export const Combination = generateScreenshotStory([
   IndentedRelaxed,
   VerticalAndCurrent,
   VerticalAndLink,
+  Separated,
   Slots,
   Mouseless
 ]);

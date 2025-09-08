@@ -1,5 +1,17 @@
 # @solid-design-system/tokens
 
+## 5.6.0
+
+### Minor Changes
+
+- Added new token `primary-400` to be used on the inverted audio bar. _[`#2371`](https://github.com/solid-design-system/solid/pull/2371) [`1b472bd`](https://github.com/solid-design-system/solid/commit/1b472bd3fd4a42134b7f0ebc018826a6a18e5ef6) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 5.5.0
+
+### Minor Changes
+
+- Add new `spacing` token for `20px`. _[`#2344`](https://github.com/solid-design-system/solid/pull/2344) [`496be2c`](https://github.com/solid-design-system/solid/commit/496be2cc87c25a9aa68bc4cd1966da8c5c2cd834) [@smfonseca](https://github.com/smfonseca)_
+
 ## 5.4.0
 
 ### Minor Changes
@@ -25,7 +37,6 @@
 ### Minor Changes
 
 - Improve copyright: _[`#1691`](https://github.com/solid-design-system/solid/pull/1691) [`0ea037c`](https://github.com/solid-design-system/solid/commit/0ea037cf5b283ea52936fc84e5eaea112ead257e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
   - Add class to black color variant
   - Add class to remove shadow
   - Add class to top placement

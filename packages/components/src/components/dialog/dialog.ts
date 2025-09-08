@@ -6,7 +6,7 @@ import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
 import { getDeepActiveElement } from '../../internal/deep-active-element';
 import { HasSlotController } from '../../internal/slot';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { property, query } from 'lit/decorators.js';
@@ -228,8 +228,15 @@ export default class SdDialog extends SolidElement {
 
       // Restore focus to the original trigger
       const trigger = this.originalTrigger;
-      if (typeof trigger?.focus === 'function') {
-        setTimeout(() => trigger.focus());
+      if (typeof trigger?.focus === 'function' && trigger.isConnected) {
+        setTimeout(() => {
+          try {
+            trigger.focus({ preventScroll: true });
+          } catch {
+            trigger.focus();
+          }
+          this.originalTrigger = null;
+        });
       }
 
       this.emit('sd-after-hide');

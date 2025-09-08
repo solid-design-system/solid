@@ -6,9 +6,8 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
+import { userEvent } from 'storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-step');
 const { overrideArgs } = storybookHelpers('sd-step');
@@ -17,7 +16,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-step/Screenshots: sd-step',
-  tags: ['!autodocs', 'skip-a11y-[aria-required-parent]'],
+  tags: ['!autodocs'],
   component: 'sd-step',
   args: overrideArgs([
     {
@@ -38,11 +37,9 @@ export default {
             enabled: false
           }
         ]
-      },
-      options: {}
+      }
     }
-  },
-  decorators: [withActions] as any
+  }
 };
 
 /**
@@ -80,6 +77,82 @@ export const Orientation = {
       ${story()}
     `
   ]
+};
+
+export const HorizontalInline = {
+  name: 'Horizontal Inline',
+  render: () => {
+    return generateTemplate({
+      args: overrideArgs([
+        {
+          type: 'slot',
+          name: 'default',
+          value: `Lorem ipsum est dolor sit amet`
+        },
+        {
+          type: 'slot',
+          name: 'label',
+          value: `<span slot="label">Step name</span>`
+        },
+        {
+          type: 'attribute',
+          name: 'description',
+          value: `This description was set using "description" attribute.`
+        },
+        {
+          type: 'attribute',
+          name: 'horizontal-inline',
+          value: true
+        }
+      ])
+    });
+  }
+};
+
+/**
+ * Use the `waiting` attribute to set the step as a future step.
+ */
+export const Waiting = {
+  name: 'Waiting',
+  render: () => {
+    return generateTemplate({
+      args: overrideArgs([
+        {
+          type: 'slot',
+          name: 'label',
+          value: `<span slot="label">Step name</span>`
+        },
+        {
+          type: 'attribute',
+          name: 'waiting',
+          value: true
+        }
+      ])
+    });
+  }
+};
+
+/**
+ * Use the `disabled` attribute to disable a step.
+ */
+export const Disabled = {
+  name: 'Disabled',
+  render: () => {
+    return generateTemplate({
+      args: overrideArgs([
+        {
+          type: 'slot',
+          name: 'label',
+          value: `<span slot="label">Step name</span>`
+        },
+        {
+          type: 'attribute',
+          name: 'disabled',
+          value: true
+        }
+      ])
+    });
+  }
 };
 
 /**
@@ -129,11 +202,6 @@ export const DescriptionAndLabelUsingAttributes = {
           type: 'attribute',
           name: 'label',
           value: `This label was set using the "label" attribute.`
-        },
-        {
-          type: 'attribute',
-          name: 'description',
-          value: `This description was set using "description" attribute.`
         }
       ])
     });
@@ -188,14 +256,14 @@ export const Parts = {
 };
 
 /**
- * Use the 'default', 'label', 'index', 'circle-content' slots to add content to the step..
+ * Use the 'default', 'label', 'circle-content' slots to add content to the step..
  */
 
 export const Slots = {
   name: 'Slots',
   render: () => {
     return html`
-      ${['default', 'label', 'index', 'circle-content'].map(slot =>
+      ${['default', 'label', 'circle-content'].map(slot =>
         generateTemplate({
           axis: {
             y: {
@@ -257,6 +325,9 @@ export const Mouseless = {
 export const Combination = generateScreenshotStory([
   Default,
   Orientation,
+  HorizontalInline,
+  Waiting,
+  Disabled,
   Description,
   DescriptionAndLabelUsingAttributes,
   Parts,

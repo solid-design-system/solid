@@ -82,25 +82,51 @@ export function litTailwindAndMinifyPlugin(options = {}) {
          *    to restore the original dynamic tags, and the minified code replaces the original code.
          * 5. If minification failed, it leaves the original code untouched.
          */
-        const prepareCode = (codeToModify, reverse = false) => {
-          const dynamicTags = [{ from: '${tag}', to: 'tag-to-be-replaced' }];
-          dynamicTags.forEach(dynamicTag => {
-            const from = reverse ? dynamicTag.to : dynamicTag.from;
-            const to = reverse ? dynamicTag.from : dynamicTag.to;
 
-            codeToModify = codeToModify.replaceAll(`<${from}`, `<${to}`);
-            codeToModify = codeToModify.replaceAll(`</${from}`, `</${to}`);
-          });
-          return codeToModify;
+        /**
+         * Extracts tag from binding e.g. ${tag} -> tag
+         */
+        const extractTagName = str => str.match(/<\/*\$\{([^}]+)\}/)?.[1] ?? null;
+        const getPlaceholderTag = tag => `tag-to-replace--${tag}`;
+
+        const tags = new Map();
+
+        const replaceDynamicTags = code => {
+          return (
+            code
+              // e.g. <${base} --> <tag-to-replace--base
+              .replace(/<\$\{[^}]+\}?/g, match => {
+                const tag = extractTagName(match);
+                const placeholder = getPlaceholderTag(tag);
+                tags.set(tag, placeholder);
+                return `<${placeholder}`;
+              })
+              // e.g. </${base}> --> </tag-to-replace--base>
+              .replace(/<\/\$\{[^}]+\}>?/g, match => {
+                const tag = extractTagName(match);
+                const placeholder = getPlaceholderTag(tag);
+                tags.set(tag, placeholder);
+                return `</${placeholder}>`;
+              })
+          );
         };
 
-        const preparedCode = prepareCode(source, false);
+        const restoreDynamicTags = code => {
+          for (const [original, replaced] of tags.entries()) {
+            code = code
+              .replace(new RegExp(`<${replaced}`, 'g'), `<\${${original}}`)
+              .replace(new RegExp(`</${replaced}>`, 'g'), `</\${${original}}>`);
+          }
+          return code;
+        };
+
+        const preparedCode = replaceDynamicTags(source);
 
         try {
           const minified = minifyHTMLLiterals(preparedCode, { fileName: args.path });
 
           if (minified) {
-            source = prepareCode(minified.code, true);
+            source = restoreDynamicTags(minified.code, true);
           }
         } catch (error) {
           console.error(`Error minifying HTML literals in ${args.path}: ${error}`);

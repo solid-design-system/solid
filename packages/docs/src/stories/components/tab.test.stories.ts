@@ -6,7 +6,6 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-tab');
 const { overrideArgs } = storybookHelpers('sd-tab');
@@ -15,7 +14,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-tab/Screenshots: sd-tab',
-  tags: ['!autodocs', 'skip-a11y-[aria-required-parent]'],
+  tags: ['!autodocs'],
   component: 'sd-tab',
   args: overrideArgs([
     {
@@ -36,11 +35,9 @@ export default {
             enabled: false
           }
         ]
-      },
-      options: {}
+      }
     }
-  },
-  decorators: [withActions] as any
+  }
 };
 
 /**
@@ -55,31 +52,15 @@ export const Default = {
 };
 
 /**
- * Use the `active` attribute to toggle the active state. Styling to indicate the active state is applied in the `sd-tab-group` component.
- */
-
-export const Active = {
-  name: 'Active',
-  render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'active', values: [false, true] }
-      },
-      args
-    });
-  }
-};
-
-/**
  * Use the variant attribute to alternate between the `default` and `container` styles.
  */
 
-export const Variant = {
-  name: 'Variant',
+export const ContainerActive = {
+  name: 'Container x Active',
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: { type: 'attribute', name: 'variant' },
+        y: { type: 'attribute', name: 'variant', values: ['container'] },
         x: { type: 'attribute', name: 'active', values: [false, true] }
       },
       args,
@@ -134,7 +115,8 @@ export const Parts = {
                 <div style="width: 600px; position: relative;">%TEMPLATE%
                 </div>
               `
-            }
+            },
+            { type: 'attribute', name: 'variant', value: 'container' }
           ],
           args
         })
@@ -178,4 +160,4 @@ export const Sample = {
   }
 };
 
-export const Combination = generateScreenshotStory([Default, Active, Variant, Disabled, Parts, Sample]);
+export const Combination = generateScreenshotStory([Default, ContainerActive, Disabled, Parts, Sample]);

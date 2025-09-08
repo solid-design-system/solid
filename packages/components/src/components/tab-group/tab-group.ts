@@ -1,6 +1,8 @@
 import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
+import { debounce } from '../../internal/debounce';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll';
@@ -47,12 +49,19 @@ export default class SdTabGroup extends SolidElement {
   @query('[part=base]') tabGroup: HTMLElement;
   @query('[part=body]') body: HTMLSlotElement;
   @query('[part=scroll-container]') nav: HTMLElement;
+  @query('[part=active-tab-indicator]') indicator: HTMLElement | null;
+  @query('[part="tabs"]') private tabsContainer!: HTMLElement;
 
   /** @internal */
   @state() hasScrollControls = false;
 
   /** @internal */
   @state() variant = 'default';
+
+  @state() private canScroll: Record<'left' | 'right', boolean> = {
+    left: false,
+    right: false
+  };
 
   /**
    * When set to auto, navigating tabs with the arrow keys will instantly show the corresponding tab panel. When set to
@@ -70,6 +79,7 @@ export default class SdTabGroup extends SolidElement {
 
     this.resizeObserver = new ResizeObserver(() => {
       this.updateScrollControls();
+      this.repositionIndicator();
     });
 
     this.mutationObserver = new MutationObserver(mutations => {
@@ -89,6 +99,8 @@ export default class SdTabGroup extends SolidElement {
       this.syncTabsAndPanels();
       this.mutationObserver.observe(this, { attributes: true, childList: true, subtree: true });
       this.resizeObserver.observe(this.nav);
+      this.handleScroll();
+      this.nav.addEventListener('scroll', () => this.handleScroll());
 
       // Wait for tabs and tab panels to be registered
       whenAllDefined.then(() => {
@@ -169,18 +181,20 @@ export default class SdTabGroup extends SolidElement {
     // Scroll tab into view when tabbing forward
     if (['Tab'].includes(event.key)) {
       const index = this.tabs.indexOf(this.getActiveTab()!);
+      const nextTab = this.tabs[index + 1];
 
-      if (tab !== null) {
-        scrollIntoView(this.tabs[index + 1], this.nav, 'horizontal');
+      if (tab !== null && nextTab) {
+        scrollIntoView(nextTab, this.nav, 'horizontal');
       }
     }
 
     // Scroll tab into view when tabbing backward
     if (['Shift', 'Tab'].includes(event.key)) {
       const index = this.tabs.indexOf(this.getActiveTab()!);
+      const previousTab = this.tabs[index - 1];
 
-      if (tab !== null) {
-        scrollIntoView(this.tabs[index - 1], this.nav, 'horizontal');
+      if (tab !== null && previousTab) {
+        scrollIntoView(previousTab, this.nav, 'horizontal');
       }
     }
 
@@ -223,6 +237,14 @@ export default class SdTabGroup extends SolidElement {
     }
   }
 
+  @debounce(20)
+  private handleScroll() {
+    this.canScroll = {
+      left: this.nav.scrollLeft > 0,
+      right: this.nav.scrollLeft + this.nav.clientWidth < this.nav.scrollWidth - 1
+    };
+  }
+
   private handleScrollToStart() {
     this.nav.scroll({
       left:
@@ -258,6 +280,7 @@ export default class SdTabGroup extends SolidElement {
       // Sync active tab and panel
       this.tabs.map(el => (el.active = el === this.activeTab));
       this.panels.map(el => (el.active = el.name === this.activeTab?.panel));
+      this.repositionIndicator();
 
       scrollIntoView(this.activeTab, this.nav, 'horizontal', options.scrollBehavior);
 
@@ -286,6 +309,7 @@ export default class SdTabGroup extends SolidElement {
   private syncTabsAndPanels() {
     this.tabs = this.getAllTabs({ includeDisabled: false });
     this.panels = this.getAllPanels();
+    this.repositionIndicator();
 
     this.panels.forEach(panel => {
       panel.tabIndex = 0;
@@ -301,6 +325,29 @@ export default class SdTabGroup extends SolidElement {
 
   private updateScrollControls() {
     this.hasScrollControls = this.nav.scrollWidth > this.nav.clientWidth;
+  }
+
+  private async repositionIndicator() {
+    await this.updateComplete;
+
+    const currentTab = this.activeTab;
+    const indicator = this.indicator;
+    const tabsContainer = this.tabsContainer;
+
+    if (!currentTab || !indicator || !tabsContainer || currentTab.variant === 'container') return;
+
+    const tabRect = currentTab.getBoundingClientRect();
+    const containerRect = tabsContainer.getBoundingClientRect();
+    const isCentered = getComputedStyle(tabsContainer).justifyContent === 'center';
+
+    const containerCenter = containerRect.left + containerRect.width / 2;
+    const tabCenter = tabRect.left + tabRect.width / 2;
+
+    const width = currentTab.offsetWidth;
+    const offsetX = isCentered ? tabCenter - containerCenter : tabRect.left - containerRect.left;
+
+    indicator.style.width = `${width}px`;
+    indicator.style.transform = `translateX(${offsetX}px)`;
   }
 
   /** Shows the specified tab panel. */
@@ -330,6 +377,7 @@ export default class SdTabGroup extends SolidElement {
                   exportparts="base:scroll-button__base"
                   tabindex="-1"
                   aria-hidden="true"
+                  disabled=${ifDefined(!this.canScroll.left || undefined)}
                   class=${cx(
                     'sd-interactive flex items-center justify-center absolute top-0 bottom-0 left-0 !outline-offset-0 border-b border-neutral-400 z-10',
                     this.localize.dir() === 'rtl' && 'left-auto right-0'
@@ -348,7 +396,14 @@ export default class SdTabGroup extends SolidElement {
 
           <div part="scroll-container" class="flex overflow-x-auto focus-visible:focus-outline !outline-offset-0">
             <div part="tabs" class=${cx('flex flex-auto relative flex-row')} role="tablist">
-              <div part="separation" class="w-full border-[0.25px] border-neutral-400 absolute bottom-0"></div>
+              ${this.activeTab?.variant !== 'container'
+                ? html` <div
+                    part="active-tab-indicator"
+                    id="indicator"
+                    class="absolute h-1 bg-accent bottom-0 transition-[transform,width] duration-medium ease-in-out z-30"
+                  ></div>`
+                : ''}
+              <div part="separation" class="border-neutral-400 absolute w-full h-0.25 bottom-0 border-b z-10"></div>
               <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
             </div>
           </div>
@@ -360,6 +415,7 @@ export default class SdTabGroup extends SolidElement {
                   exportparts="base:scroll-button__base"
                   tabindex="-1"
                   aria-hidden="true"
+                  disabled=${ifDefined(!this.canScroll.right || undefined)}
                   class=${cx(
                     'sd-interactive flex items-center justify-center absolute top-0 bottom-0 right-0 !outline-offset-0 border-b border-neutral-400 z-10',
                     this.localize.dir() === 'rtl' && 'right-auto left-0'
@@ -404,8 +460,11 @@ export default class SdTabGroup extends SolidElement {
       }
 
       ::slotted(sd-tab-panel) {
-        @apply focus-within:focus-outline;
         --padding: 1rem 0;
+      }
+
+      ::slotted(sd-tab-panel:focus-visible) {
+        @apply focus-outline;
       }
     `
   ];

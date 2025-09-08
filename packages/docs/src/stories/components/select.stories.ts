@@ -18,12 +18,12 @@ const labelConstant: ConstantDefinition = { type: 'attribute', name: 'label', va
 
 export default {
   title: 'Components/sd-select',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-select',
   args: overrideArgs([
     threeOptionsConstant,
     labelConstant,
-    { type: 'attribute', name: 'placeholder', value: 'Please Select' },
+    { type: 'attribute', name: 'placeholder', value: 'Please select' },
     { type: 'attribute', name: 'max-options-visible', value: 3 }
   ]),
   argTypes: {
@@ -125,7 +125,7 @@ export const Placement = {
 export const Label = {
   render: () => html`
     <div class="flex gap-12 h-[500px]">
-      <sd-select size="lg" label="Label Attribute" placement="bottom" value="">
+      <sd-select size="lg" label="Label attribute" placement="bottom" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -134,7 +134,7 @@ export const Label = {
       </sd-select>
 
       <sd-select size="lg" placement="bottom" value="">
-        <div slot="label" class="text-lg">Label Slot</div>
+        <div slot="label" class="text-lg">Label slot</div>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -189,11 +189,11 @@ export const Disabled = {
 export const VisuallyDisabled = {
   render: () => html`
     <div class="w-[400px] h-[200px] mt-12">
-      <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm">
+      <sd-tooltip content="Visually disabled" trigger="hover focus" size="sm">
         <sd-select
           size="lg"
           label="Label"
-          placeholder="Visually Disabled"
+          placeholder="Visually disabled"
           placement="bottom"
           value=""
           visually-disabled
@@ -217,7 +217,7 @@ export const VisuallyDisabled = {
 export const HelpText = {
   render: () => html`
     <div class="flex gap-12 h-[500px]">
-      <sd-select size="lg" label="Label" placement="bottom" value="" help-text="Help text Attribute">
+      <sd-select size="lg" label="Label" placement="bottom" value="" help-text="Help text attribute">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -226,7 +226,7 @@ export const HelpText = {
       </sd-select>
 
       <sd-select size="lg" label="Label" placement="bottom" value="">
-        <div slot="help-text" class="text-lg">Help text Slot</div>
+        <div slot="help-text" class="text-lg">Help text slot</div>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -329,7 +329,7 @@ export const MaxOptionsVisible = {
 export const Required = {
   render: () => html`
     <div class="w-[400px] h-[400px]">
-      <sd-select size="lg" label="Required" placeholder="Please Select" placement="bottom" value="" required="">
+      <sd-select size="lg" label="Required" placeholder="Please select" placement="bottom" value="" required="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -358,7 +358,7 @@ export const Valid = {
         size="lg"
         placement="bottom"
         label="Label"
-        placeholder="Please Select"
+        placeholder="Please select"
         style-on-valid=""
         value="option-1"
         class="valid-example"
@@ -391,7 +391,7 @@ export const Invalid = {
         size="lg"
         placement="bottom"
         label="Label"
-        placeholder="Please Select"
+        placeholder="Please select"
         style-on-valid=""
         value=""
         required=""

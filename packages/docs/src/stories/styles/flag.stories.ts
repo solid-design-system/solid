@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-flag');
 
 export default {
   title: 'Styles/sd-flag',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-flag',
   parameters: {
     ...parameters,
@@ -31,8 +31,8 @@ export const Default = {
 };
 
 /**
- * Use the `sd-flag` classes for alternative appearances:
- * - `sd-flag--neutral-200` (default)
+ * Use the `sd-flag--*` classes for alternative appearances:
+ * - neutral-200 is the default appearance
  * - `sd-flag--neutral-300`
  * - `sd-flag--neutral-500`
  * - `sd-flag--white`
@@ -41,7 +41,7 @@ export const Default = {
 export const Variants = {
   render: () =>
     html` <div class="flex gap-4 bg-neutral-100 p-8">
-      <div class="sd-flag sd-flag--neutral-200">Default</div>
+      <div class="sd-flag">Default</div>
       <div class="sd-flag sd-flag--neutral-300">Neutral 300</div>
       <div class="sd-flag sd-flag--neutral-500">Neutral 500</div>
       <div class="sd-flag sd-flag--white">White</div>

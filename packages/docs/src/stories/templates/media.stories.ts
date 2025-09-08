@@ -3,26 +3,10 @@ import { html } from 'lit-html';
 
 export default {
   title: 'Templates/Media',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   parameters: {
     chromatic: { disableSnapshot: true }
   }
-};
-
-/**
- * Use the html `figcaption` element to add a description.
- */
-export const Description = {
-  render: () => html`
-    <figure class="sd-media p-4">
-      <img
-        src="./placeholders/images/architecture.jpg"
-        alt="A generic placeholder jpg"
-        class="aspect-video object-cover"
-      />
-      <figcaption>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula</figcaption>
-    </figure>
-  `
 };
 
 /**
@@ -32,7 +16,7 @@ export const Description = {
 export const Copyright = {
   render: () => html`
     <figure class="sd-media p-4">
-      <div class="sd-copyright" style="--copyright: '© Union Investment 2024'">
+      <div class="sd-copyright" style="--copyright: '© Union Investment 2025'">
         <img
           src="./placeholders/images/architecture.jpg"
           alt="A generic placeholder jpg"

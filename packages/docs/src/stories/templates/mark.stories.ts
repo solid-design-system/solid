@@ -6,7 +6,7 @@ import { html } from 'lit-html';
  * For the green accent color in the mark, ensure a minimum font size of 18.67 pixels when bolded and 24 pixels when in regular weight.
  */
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Templates/Mark',
   parameters: {
     chromatic: { disableSnapshot: true },
@@ -40,5 +40,5 @@ export const HeadlineWithMark = {
 
 export const DisplayWithMark = {
   name: 'Display with Mark',
-  render: () => html` <p class="sd-display">Lorem <mark class="sd-mark">ipsum</mark></p> `
+  render: () => html` <p class="sd-display"><mark class="sd-mark">Union Investment</mark> at a glance</p> `
 };

@@ -380,6 +380,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         )}
         role="radiogroup"
         aria-describedby="invalid-message"
+        aria-labelledby="label"
       >
         ${hasLabel || hasTooltipSlot
           ? html`<div class="flex items-center gap-1 mb-2">
@@ -388,7 +389,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
                 id="label"
                 class=${cx(
                   'p-0 leading-normal text-black text-left',
-                  hasLabel ? 'flex' : 'hidden',
+                  hasLabel ? 'inline-block' : 'hidden',
                   this.boldLabel && 'font-bold'
                 )}
                 @click=${this.focus}
@@ -426,7 +427,12 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
           </div>
           ${this.hasButtonGroup
             ? html`
-                <sd-button-group part="button-group" exportparts="base:button-group__base" role="presentation">
+                <sd-button-group
+                  class="border border-primary rounded-full"
+                  part="button-group"
+                  exportparts="base:button-group__base"
+                  role="presentation"
+                >
                   ${defaultSlot}
                 </sd-button-group>
               `
@@ -485,6 +491,10 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
 
       :host([required]) #label::after {
         content: ' *';
+      }
+
+      :host:has(sd-button-group) {
+        @apply inline-flex;
       }
     `
   ];

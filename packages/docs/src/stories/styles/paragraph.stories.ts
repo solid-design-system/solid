@@ -7,7 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-paragraph');
 const { generateTemplate } = storybookTemplate('sd-paragraph');
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Styles/sd-paragraph',
   component: 'sd-paragraph',
   parameters: {
@@ -36,7 +36,7 @@ export const Default = {
 };
 
 /**
- * Use the `sd-paragraph` classes for alternative appearances:
+ * Use the `sd-paragraph--size-*` classes for alternative appearances:
  *
  * - lg is the default size
  * - `sd-paragraph--size-sm`

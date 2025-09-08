@@ -1,7 +1,7 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
+import { userEvent } from 'storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 import cx from 'classix';
 
@@ -11,7 +11,7 @@ const { overrideArgs } = storybookHelpers('sd-drawer');
 
 export default {
   title: 'Components/sd-drawer/Screenshots: sd-drawer',
-  tags: ['!autodocs', 'skip-a11y-[landmark-unique]'],
+  tags: ['!autodocs'],
   component: 'sd-drawer',
 
   args: overrideArgs([

@@ -45,6 +45,9 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
   @query('input[type="checkbox"]') input: HTMLInputElement;
   @query('#invalid-message') invalidMessage: HTMLDivElement;
 
+  /**
+   * The `title` attribute specifies extra information about an element most often as a default browser tooltip text when the mouse moves over the element.
+   */
   @property({ type: String, reflect: true }) title = ''; // make reactive to pass through
 
   /** The name of the checkbox, submitted as a name/value pair with form data. */
@@ -264,7 +267,12 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             }[checkboxState]
           )}
         >
-          <div class=${cx('absolute h-3 transition-[width] right-0.25 duration-medium', this.checked ? 'w-0' : 'w-3')}>
+          <div
+            class=${cx(
+              'absolute h-3 transition-[width] right-0.25 duration-medium',
+              this.checked || this.indeterminate ? 'w-0' : 'w-3'
+            )}
+          >
             <div
               class=${cx(
                 'w-full h-full transition-colors duration-medium ease-in-out group-hover:duration-fast',

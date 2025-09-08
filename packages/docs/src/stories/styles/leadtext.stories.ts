@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-leadtext');
 
 export default {
   title: 'Styles/sd-leadtext',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-leadtext',
   parameters: {
     ...parameters,
@@ -36,8 +36,8 @@ export const Default = {
 };
 
 /**
- * Use the `sd-leadtext` classes for alternative appearances:
- * -  xl is the default leadtext size
+ * Use the `sd-leadtext--size-*` classes for alternative appearances:
+ * -  xl is the default size
  * - `sd-leadtext--size-lg`
  */
 

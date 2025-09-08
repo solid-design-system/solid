@@ -9,10 +9,20 @@ const { generateTemplate } = storybookTemplate('sd-interactive');
 
 export default {
   title: 'Styles/sd-interactive',
-  tags: ['!dev', 'skip-a11y-[color-contrast]'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-interactive',
   parameters: {
     ...parameters,
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: false
+          }
+        ]
+      }
+    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3173-12771&t=yS054qhxgjorbMDv-4'

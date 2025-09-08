@@ -10,11 +10,11 @@ import { filterOnlyOptgroups, getAllOptions, getAssignedElementsForSlot, normali
 import { FormControlController } from '../../internal/form.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry.js';
 import { HasSlotController } from '../../internal/slot.js';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize.js';
 import { property, query, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll.js';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
 import cx from 'classix';
@@ -1449,7 +1449,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         <div
           part="form-control-help-text"
           id="help-text"
-          class="text-sm text-neutral-700 mt-2"
+          class="text-sm text-neutral-700 mt-1"
           aria-hidden=${!hasHelpText}
         >
           <slot name="help-text">${this.helpText}</slot>

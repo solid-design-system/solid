@@ -9,7 +9,7 @@ const { overrideArgs } = storybookHelpers('sd-radio-group');
 export default {
   title: 'Components/sd-radio-group',
   component: 'sd-radio-group',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   parameters: {
     ...parameters,
     design: {
@@ -21,7 +21,11 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<sd-radio value="1">Radio 1</sd-radio><sd-radio value="2">Radio 2</sd-radio><sd-radio value="3">Radio 3</sd-radio>`
+      value: `<sd-radio-group name="large-radio-group" size="lg" value="1" label="Group label" boldLabel> 
+                <sd-radio value="1">Radio 1</sd-radio>
+                <sd-radio value="2">Radio 2</sd-radio>
+                <sd-radio value="3">Radio 3</sd-radio>
+              </sd-radio-group>`
     },
     { type: 'attribute', name: 'name', value: 'radio-group' },
     { type: 'attribute', name: 'value', value: '1' },
@@ -38,29 +42,22 @@ export const Default = {
 };
 
 /**
- * Use the `size` attribute to change the size (`md` equals `lg` but added for consistency reason on input elements):
+ * Use the `size` attribute to change the size of the input radio. This attribute affects the font-size within the element, while the element itself remains the same size:
  *
  * - `lg` (default)
- * - `md`
  * - `sm`
  */
 export const Size = {
   name: 'Size',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio-group name="large-radio-group" size="lg" value="1">
+      <sd-radio-group name="large-radio-group" size="lg" value="1" label="Group label" boldLabel>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
       </sd-radio-group>
 
-      <sd-radio-group name="medium-radio-group" size="md" value="1">
-        <sd-radio value="1">Radio 1</sd-radio>
-        <sd-radio value="2">Radio 2</sd-radio>
-        <sd-radio value="3">Radio 3</sd-radio>
-      </sd-radio-group>
-
-      <sd-radio-group name="small-radio-group" size="sm" value="1">
+      <sd-radio-group name="small-radio-group" size="sm" value="1" label="Group label" boldLabel>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
@@ -72,35 +69,16 @@ export const Size = {
 /**
  * Use the `label` attribute to add a label on top.
  *
- * **Accessibility Hint**: It is required to include the 'boldLabel' attribute to make the label bold.
+ * **Accessibility Hint**: It is required to include the `boldLabel` attribute to make the label bold.
  */
 export const Label = {
   name: 'Label',
   render: () => html`
-    <sd-radio-group name="radio-group" value="1" label="Group Label" boldLabel>
+    <sd-radio-group name="radio-group" value="1" label="Group label" boldLabel>
       <sd-radio value="1">Radio 1</sd-radio>
       <sd-radio value="2">Radio 2</sd-radio>
       <sd-radio value="3">Radio 3</sd-radio>
     </sd-radio-group>
-  `
-};
-
-/**
- * Use the `help-text` attribute to add a descriptive “help text”.
- *
- * For help texts that contain HTML, use the `help-text` slot instead.
- */
-export const HelpText = {
-  name: 'Help Text',
-  render: () => html`
-    <div class="flex gap-12">
-      <sd-radio-group orientation="vertical" help-text="Help text">
-        <label slot="label">Group Label</label>
-        <sd-radio value="1">Radio 1</sd-radio>
-        <sd-radio value="2">Radio 2</sd-radio>
-        <sd-radio value="3">Radio 3</sd-radio>
-      </sd-radio-group>
-    </div>
   `
 };
 
@@ -115,13 +93,13 @@ export const Orientation = {
   name: 'Orientation',
   render: () => html`
     <div class="flex gap-12">
-      <sd-radio-group name="radio-group" orientation="vertical" value="1">
+      <sd-radio-group name="radio-group" orientation="vertical" value="1" label="Group label" boldLabel>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
       </sd-radio-group>
 
-      <sd-radio-group name="radio-group" orientation="horizontal" value="1">
+      <sd-radio-group name="radio-group" orientation="horizontal" value="1" label="Group label" boldLabel>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
@@ -141,25 +119,21 @@ export const Required = {
   name: 'Required',
   render: () => html`
     <form id="required-form" class="flex flex-col gap-8">
-      <sd-radio-group name="radio-group" required boldlabel>
+      <sd-radio-group name="radio-group" boldlabel label="Required group" required>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
-        <label slot="label">Required Group</label>
       </sd-radio-group>
-
       <div class="flex gap-2">
         <sd-button class="w-min" type="submit">Submit</sd-button>
         <sd-button class="w-min" type="reset" variant="secondary">Reset</sd-button>
       </div>
     </form>
-
     <script type="module">
       // Wait for custom elements to be defined
       await Promise.all([customElements.whenDefined('sd-radio-group'), customElements.whenDefined('sd-button')]).then(
         () => {
           const form = document.getElementById('required-form');
-
           form.addEventListener('submit', event => {
             event.preventDefault();
             alert('This field is valid!');
@@ -171,17 +145,41 @@ export const Required = {
 };
 
 /**
+ * Use the `help-text` attribute to add a descriptive “help text”.
+ *
+ * For help texts that contain HTML, use the `help-text` slot instead.
+ */
+export const HelpText = {
+  name: 'Help Text',
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-radio-group
+        orientation="vertical"
+        value="1"
+        help-text="Help text attribute"
+        boldlabel
+        label="Group label"
+        required
+      >
+        <sd-radio value="1">Radio 1</sd-radio>
+        <sd-radio value="2">Radio 2</sd-radio>
+        <sd-radio value="3">Radio 3</sd-radio>
+      </sd-radio-group>
+    </div>
+  `
+};
+
+/**
  * Use the `disabled` attribute to disable an input radio. Clicks will be suppressed until the disabled state is removed.
  */
 
 export const Disabled = {
   name: 'Disabled',
   render: () => html`
-      <sd-radio-group name="radio-group" required boldLabel>
+      <sd-radio-group name="radio-group" boldLabel label="Disabled group" required>
         <sd-radio value="1" disabled>Radio 1</sd-radio>
         <sd-radio value="2" disabled>Radio 2</sd-radio>
         <sd-radio value="3" disabled>Radio 3</sd-radio>
-        <label slot="label">Disabled Group</label>
       </sd-radio-group>
     </form>
   `
@@ -197,10 +195,10 @@ export const Invalid = {
   name: 'Invalid',
   render: () => html`
     <form id="invalid-form" class="flex flex-col gap-8">
-      <sd-radio-group name="radio-group" id="invalid-radio" required boldlabel>
+      <sd-radio-group name="radio-group" id="invalid-radio" boldlabel label="Invalid group" required>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
-        <label slot="label">Invalid Group</label>
+        <sd-radio value="3">Radio 3</sd-radio>
       </sd-radio-group>
     </form>
 
@@ -209,6 +207,7 @@ export const Invalid = {
       await Promise.all([customElements.whenDefined('sd-radio-group'), customElements.whenDefined('sd-button')]).then(
         () => {
           const input = document.getElementById('invalid-radio');
+          input.setCustomValidity('Please fill in this field.');
           input.reportValidity();
         }
       );

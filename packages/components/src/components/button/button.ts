@@ -1,4 +1,4 @@
-import '../spinner/spinner';
+import '../loader/loader';
 import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { FormControlController, validValidityState } from '../../internal/form';
@@ -18,7 +18,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @since 1.0
  *
  * @dependency sd-icon
- * @dependency sd-spinner
+ * @dependency sd-loader
  *
  * @event sd-blur - Emitted when the button loses focus.
  * @event sd-focus - Emitted when the button gains focus.
@@ -60,6 +60,9 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   /** @internal */
   @state() protected invalid = false;
 
+  /**
+   * The `title` attribute specifies extra information about an element most often as a default browser tooltip text when the mouse moves over the element.
+   */
   @property({ type: String, reflect: true }) title = ''; // make reactive to pass through
 
   /** The button's theme variant. */
@@ -255,44 +258,46 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       'icon-only': this._iconsInDefaultSlot.length > 0
     };
 
+    const hasBorder = this.variant === 'secondary';
+
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
     return html`
       <${tag}
       part="base"
       class=${cx(
-        `group relative z-10 font-md leading-[calc(var(--tw-varspacing)-2px)] no-underline
-        w-full h-varspacing whitespace-nowrap align-middle inline-flex items-stretch justify-center
+        `group relative z-10 font-md no-underline
+        w-full align-middle inline-flex items-stretch justify-center
         transition-colors duration-fast ease-in-out rounded-default
         select-none cursor-[inherit]`,
         !this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted',
         this.loading && 'relative cursor-wait',
         (this.disabled || this.visuallyDisabled) && 'cursor-not-allowed',
-        slots['icon-only'] && 'px-0 w-varspacing',
+        slots['icon-only'] && 'px-0 min-h-varspacing w-varspacing',
         /**
          * Anatomy
          * */
         {
           /* sizes, fonts */
-          sm: 'text-sm varspacing-8 px-4',
-          md: 'text-base varspacing-10 px-4',
-          lg: 'text-base varspacing-12 px-4'
+          sm: `text-sm varspacing-8 ${hasBorder ? 'py-[0.281rem] px-[0.938rem]' : 'py-[0.344rem] px-4'}`,
+          md: `text-base varspacing-10 ${hasBorder ? 'py-[0.438rem] px-[0.938rem]' : 'py-2 px-4'}`,
+          lg: `text-base varspacing-12 ${hasBorder ? 'py-[0.688rem] px-[0.938rem]' : 'py-3 px-4'}`
         }[this.size],
         {
           /* variants */
           primary: !this.inverted
             ? `text-white ${
                 this.visuallyDisabled
-                  ? 'bg-neutral-500 hover:bg-neutral-500'
-                  : 'bg-primary hover:text-primary-100 active:text-primary-200'
+                  ? 'bg-neutral-500 border-neutral-500 hover:bg-neutral-500'
+                  : 'bg-primary border-transparent hover:text-primary-100 active:text-primary-200'
               }
           disabled:bg-neutral-500`
             : `${
                 this.visuallyDisabled
-                  ? 'bg-neutral-500 text-white hover:bg-neutral-500 active:bg-neutral-500'
-                  : 'text-primary bg-white hover:text-primary-500 active:text-primary-800'
+                  ? 'bg-neutral-500 text-white border-neutral-500 hover:bg-neutral-500 active:bg-neutral-500'
+                  : 'text-primary bg-white border-white hover:text-primary-500 active:text-primary-800'
               }
-          disabled:bg-neutral-600 disabled:text-white`,
+          disabled:bg-neutral-600 disabled:text-white disabled:border-neutral-600`,
           secondary: !this.inverted
             ? `border ${
                 this.visuallyDisabled
@@ -307,16 +312,16 @@ export default class SdButton extends SolidElement implements SolidFormControl {
               }
           disabled:text-neutral-600 disabled:border-neutral-600`,
           tertiary: !this.inverted
-            ? `${
+            ? `border-transparent ${
                 this.visuallyDisabled
                   ? 'text-neutral-500 hover:text-neutral-500 active:text-neutral-500'
                   : 'text-primary hover:text-primary-500 active:text-primary-800'
               }
           disabled:text-neutral-500`
-            : `${this.visuallyDisabled ? 'text-neutral-600 hover:text-neutral-600 active:text-neutral-600' : 'text-white hover:text-primary-100 active:text-primary-200'}
+            : `border-transparent  ${this.visuallyDisabled ? 'text-neutral-600 hover:text-neutral-600 active:text-neutral-600' : 'text-white hover:text-primary-100 active:text-primary-200'}
           disabled:text-neutral-600`,
-          cta: `text-white ${this.visuallyDisabled ? 'bg-neutral-500 hover:bg-neutral-500 active:bg-neutral-500' : 'bg-accent-500'}
-          ${!this.inverted ? 'disabled:bg-neutral-500' : 'disabled:bg-neutral-600'} disabled:text-white`
+          cta: `text-white ${this.visuallyDisabled ? 'bg-neutral-500 border-neutral-500 hover:bg-neutral-500 active:bg-neutral-500' : 'bg-accent-500 border-transparent'}
+          ${!this.inverted ? 'disabled:bg-neutral-500 disabled:border-neutral-500' : 'disabled:bg-neutral-600 disabled:border-neutral-600'} disabled:text-white`
         }[this.variant]
       )}
         ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
@@ -409,9 +414,9 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         </slot>
       ${
         this.loading
-          ? html`<sd-spinner
+          ? html`<sd-loader
               class="${cx('absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2')}"
-            ></sd-spinner>`
+            ></sd-loader>`
           : ''
       }
       </${tag}>
@@ -430,11 +435,6 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         @apply z-[0] inline-block cursor-pointer w-auto relative;
       }
 
-      sd-spinner {
-        --indicator-color: currentColor;
-        --track-color: var(--tw-varcolor-200);
-      }
-
       /*
     * Badges:
     * Slotted badges are positioned absolutely in the top right corner of the button.
@@ -449,7 +449,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
        */
 
       ::slotted(sd-icon),
-      sd-spinner {
+      sd-loader {
         font-size: calc(var(--tw-varspacing) / 2);
       }
     `

@@ -2,7 +2,7 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 
 export default {
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   title: 'Templates/Teaser Media',
   parameters: {
     chromatic: { disableSnapshot: true },
@@ -132,7 +132,7 @@ export const TeaserMediaWithCopyright = {
       <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
         <h3 slot="headline">Headline Media Teaser</h3>
         <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="" />
-        <div class="flex flex-col sd-copyright" style="--copyright: '© Union Investment 2024'">
+        <div class="flex flex-col sd-copyright" style="--copyright: '© Union Investment 2025'">
           <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </div>
       </sd-teaser-media>
@@ -141,7 +141,7 @@ export const TeaserMediaWithCopyright = {
         <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="" />
         <div
           class="flex flex-col sd-copyright sd-copyright--color-black gradient-white"
-          style="--copyright: '© Union Investment 2024'"
+          style="--copyright: '© Union Investment 2025'"
         >
           <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </div>

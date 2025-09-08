@@ -9,7 +9,7 @@ import {
 const { argTypes, parameters } = storybookDefaults('sd-tab-group');
 const { overrideArgs } = storybookHelpers('sd-tab-group');
 const { generateTemplate } = storybookTemplate('sd-tab-group');
-import { userEvent } from '@storybook/test';
+import { userEvent } from 'storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 const { generateScreenshotStory } = storybookUtilities;
 
@@ -29,7 +29,7 @@ function generateTabsAndPanels(
 
 export default {
   title: 'Components/sd-tab-group/Screenshots: sd-tab-group',
-  tags: ['!autodocs', 'skip-a11y-[scrollable-region-focusable]'],
+  tags: ['!autodocs'],
   component: 'sd-tab-group',
   args: overrideArgs({
     type: 'slot',
@@ -390,6 +390,50 @@ export const SampleDeepLink = {
           sdTabGroup.setActiveTab(nextActivePanel);
         });
       </script>
+    `;
+  }
+};
+
+export const SampleWithLinks = {
+  name: 'Sample: With Links',
+  parameters: { ...parameters, docs: { story: { height: '550px' } } },
+  render: () => {
+    return html`
+      <sd-tab-group>
+        <sd-tab slot="nav" panel="tab-1">Tab 1</sd-tab>
+        <sd-tab slot="nav" panel="tab-2">Tab 2</sd-tab>
+        <sd-tab slot="nav" panel="tab-3">Tab 3</sd-tab>
+
+        <sd-tab-panel name="tab-1">
+          <ul class="sd-list">
+            <li>
+              <sd-link href="https://union-investment.com" target="_blank">Union Investment</sd-link>
+            </li>
+            <li>
+              <sd-link href="https://solid-design-system.fe.union-investment.de/docs/" target="_blank"
+                >Solid Design System</sd-link
+              >
+            </li>
+          </ul>
+        </sd-tab-panel>
+        <sd-tab-panel name="tab-2">
+          Odit fugit consequatur illum est eveniet cupiditate distinctio quos. Esse itaque doloribus quis vel. Deleniti
+          vitae alias hic necessitatibus ullam ut inventore sint. At ratione repudiandae accusamus suscipit ipsam
+          necessitatibus illum doloribus saepe. Maxime veritatis ducimus quaerat dolores sequi ullam maxime earum.
+        </sd-tab-panel>
+        <sd-tab-panel name="tab-3">
+          <ul class="sd-list">
+            <li>
+              <sd-link href="https://union-investment.com" target="_blank">Union Investment</sd-link>
+            </li>
+            <li>
+              <sd-link href="https://solid-design-system.fe.union-investment.de/docs/" target="_blank"
+                >Solid Design System</sd-link
+              >
+            </li>
+          </ul>
+        </sd-tab-panel>
+      </sd-tab-group>
     `;
   }
 };

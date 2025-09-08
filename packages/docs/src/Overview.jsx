@@ -1,26 +1,28 @@
 import React from 'react';
-import { Markdown, Canvas } from '@storybook/blocks';
+import { Markdown, Canvas } from '@storybook/addon-docs/blocks';
 
 export const OverviewFormatter = ({ children, story }) => {
   const links = ({ children, ...props }) => <sd-link {...props}>{children}</sd-link>;
   const defaultStoryCanvas = () => <Canvas of={story} />;
   const documentationLinks = ({ children, ...props }) => (
-    <div className="flex flex-col md:flex-row gap-8 items-start md:items-center mt-8 mb-8">
-      {Object.entries(JSON.parse(props.links || '{}')).map(([name, link]) => (
-        <div key={name} className="flex flex-row gap-4 items-center">
-          <sd-link href={link}>
-            {name
-              .split('-')
-              .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-              .join(' ')}
-          </sd-link>
+    <div className="flex flex-col items-start gap-8 mt-8 mb-8 md:flex-row md:items-center">
+      {Object.entries(JSON.parse(props.links || '{}')).map(([name, link]) => {
+        const linkName = name
+          .split('-')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ');
 
-          <div className="sd-status-badge sd-status-badge--success m-0">
-            <sd-icon name="status-check" library="sd-status-assets"></sd-icon>
-            Available
+        return (
+          <div key={name} className="flex flex-row items-center gap-4">
+            {link ? <sd-link href={link}>{linkName}</sd-link> : <p>{linkName}</p>}
+
+            <div className={`m-0 sd-status-badge ${link ? `sd-status-badge--success` : `sd-status-badge--info`}`}>
+              <sd-icon name={link ? 'status-check' : 'status-info'} library="sd-status-assets"></sd-icon>
+              {link ? 'Available' : 'Does not apply'}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 

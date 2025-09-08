@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-icon');
 const { overrideArgs } = storybookHelpers('sd-icon');
@@ -19,11 +18,11 @@ const { generateTemplate } = storybookTemplate('sd-icon');
 
 export default {
   title: 'Components/sd-icon',
+  tags: ['autodocs'],
   component: 'sd-icon',
   args: overrideArgs([{ name: 'name', type: 'attribute', value: 'union-investment/content/image' }], args),
   argTypes,
-  parameters: { ...parameters },
-  decorators: [withActions] as any
+  parameters: { ...parameters }
 };
 
 export const Default = {
@@ -119,9 +118,10 @@ export const Size = {
 
 /**
  * You can register additional icons to use with the `<sd-icon>` component through icon libraries. Icon files can exist locally or on a CORS-enabled endpoint (e.g. a CDN). There is no limit to how many icon libraries you can register and there is no cost associated with registering them, as individual icons are only requested when they're used.
- * Solid ships with two built-in icon libraries, `default` and `system`:
+ * Solid ships with three built-in icon libraries, `default`, `_internal`, and `sd-status-assets`:
  * - `default`: The `default` icon library refers to the official CDN by Union Investment which is fed by Celum. It is provided by the brand department, therefore requests towards the icons itself need to be addressed accordingly.
- * - `system`: They icons are an integrated library of the Solid Components to ensure they're always available. They are a subset of Union Investment's official icons. As names and visuals may change over time, system icons should NOT be used directly.
+ * - `_internal`: These icons are an integrated library of the Solid Components to ensure they're always available. They are a subset of Union Investment's official icons. As names and visuals may change over time, internal icons should NOT be used directly.
+ * - `sd-status-assets`: This library contains icons specifically for status indicators like the `sd-status-badge` component.
  *
  * To register an additional icon library, use the `registerIconLibrary()` function that's exported from `utilities/icon-library.js`. At a minimum, you must provide a name and a resolver function. The resolver function translates an icon name to a URL where the corresponding SVG file exists. Refer to the examples below to better understand how it works.
  *

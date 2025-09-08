@@ -51,7 +51,7 @@ export class LocalizeController extends DefaultLocalizationController<Translatio
   }
 
   override term<K extends keyof Translation>(key: K, ...args: unknown[]): string {
-    const term = this.instanceTranslations && this.instanceTranslations[key];
+    const term = this.instanceTranslations?.[key];
     if (term) {
       if (typeof term === 'function') {
         // @ts-expect-error: TS doesn't like this, but it's fine
@@ -63,7 +63,6 @@ export class LocalizeController extends DefaultLocalizationController<Translatio
     // @ts-expect-error: TS doesn't like this, but it's fine
     return super.term(key, ...args);
   }
-
   public setCustomLocalization(customLocalization: Partial<Translation>) {
     this.instanceTranslations = { ...this.instanceTranslations, ...customLocalization };
   }
@@ -88,6 +87,8 @@ export interface Translation extends DefaultTranslation {
   goToSlide: (slide: number, count: number) => string;
   hidePassword: string;
   loading: string;
+  maximum: string;
+  minimum: string;
   mute: string;
   nextSlide: string;
   noResults: string;
@@ -110,6 +111,7 @@ export interface Translation extends DefaultTranslation {
   scrollToStart: string;
   search: string;
   seekBar: string;
+  seconds: (time: number) => string;
   selectAColorFromTheScreen: string;
   selectDefaultPlaceholder: string;
   showLess: string;

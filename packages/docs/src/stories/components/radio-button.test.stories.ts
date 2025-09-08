@@ -6,7 +6,6 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-radio-button');
 const { overrideArgs } = storybookHelpers('sd-radio-button');
@@ -26,11 +25,15 @@ export default {
       type: 'slot',
       name: 'icon',
       value: '<sd-icon name="system/image" slot="icon" label="Label"></sd-icon>'
+    },
+    {
+      type: 'attribute',
+      name: 'checked',
+      value: true
     }
   ]),
   argTypes,
-  parameters: { ...parameters, controls: { disable: true } },
-  decorators: [withActions] as any
+  parameters: { ...parameters, controls: { disable: true } }
 };
 
 /**
@@ -132,7 +135,7 @@ export const DisabledAndChecked = {
         </sd-radio-button>
         <sd-radio-button checked disabled showLabel>
           <sd-icon name="system/image" slot="icon"></sd-icon>
-          <slot class="whitespace-nowrap">Disabled and Checked</slot>
+          <slot class="whitespace-nowrap">Disabled and checked</slot>
         </sd-radio-button>
       </div>
     `;

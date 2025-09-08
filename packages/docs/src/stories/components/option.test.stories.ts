@@ -6,7 +6,6 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-option');
 const { generateTemplate } = storybookTemplate('sd-option');
@@ -19,7 +18,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-option/Screenshots: sd-option',
-  tags: ['!autodocs', 'skip-a11y-[aria-required-parent]'],
+  tags: ['!autodocs'],
   component: 'sd-option',
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
   argTypes,
@@ -34,11 +33,9 @@ export default {
             enabled: false
           }
         ]
-      },
-      options: {}
+      }
     }
-  },
-  decorators: [withActions] as any
+  }
 };
 
 /**

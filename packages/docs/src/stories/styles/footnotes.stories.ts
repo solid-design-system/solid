@@ -8,10 +8,20 @@ const { generateTemplate } = storybookTemplate('sd-footnotes');
 
 export default {
   title: 'Styles/sd-footnotes',
-  tags: ['!dev', 'skip-a11y-[link-name]'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-footnotes',
   parameters: {
     ...parameters,
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'link-name',
+            enabled: false
+          }
+        ]
+      }
+    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3153-5381&t=ohgrgpEVGgKzqMzU-4'

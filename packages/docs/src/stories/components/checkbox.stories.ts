@@ -8,7 +8,7 @@ const { overrideArgs } = storybookHelpers('sd-checkbox');
 export default {
   title: 'Components/sd-checkbox',
   component: 'sd-checkbox',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   args: overrideArgs([{ type: 'slot', name: 'default', value: 'Checkbox' }]),
   argTypes,
   parameters: {
@@ -65,11 +65,11 @@ export const Disabled = {
  * **Accessibility Hint:** Disabling elements is not recommended for accessibility reasons.
  */
 export const VisuallyDisabled = {
-  name: 'Visually Disabled',
+  name: 'Visually disabled',
   render: () => html`
     <div class="w-[250px] h-[100px] pt-12">
-      <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
-        <sd-checkbox visually-disabled>Visually Disabled</sd-checkbox>
+      <sd-tooltip content="Visually disabled" trigger="hover focus" size="sm" placement="top">
+        <sd-checkbox visually-disabled>Visually disabled</sd-checkbox>
       </sd-tooltip>
     </div>
   `

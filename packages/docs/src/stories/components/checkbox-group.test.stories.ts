@@ -6,7 +6,7 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
+import { userEvent } from 'storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
 
 const { argTypes, parameters } = storybookDefaults('sd-checkbox-group');
@@ -19,7 +19,7 @@ export default {
   tags: ['!autodocs'],
   component: 'sd-checkbox-group',
   args: overrideArgs([
-    { type: 'slot', name: 'label', value: `<label slot="label">Group Label</label>` },
+    { type: 'slot', name: 'label', value: `<label slot="label">Group label</label>` },
     {
       type: 'slot',
       name: 'default',

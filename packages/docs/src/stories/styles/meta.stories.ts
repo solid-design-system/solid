@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-meta');
 
 export default {
   title: 'Styles/sd-meta',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-meta',
   parameters: {
     ...parameters,
@@ -31,7 +31,7 @@ export const Default = {
 };
 
 /**
- * Use the `sd-meta` classes for alternative appearances:
+ * Use the `sd-meta--*` classes for alternative appearances:
  *
  * - Black is the default color
  * - `sd-meta--light`: Neutral-700
@@ -46,7 +46,7 @@ export const Variants = {
 };
 
 /**
- * Use `sd-meta` classes for alternative appearances:
+ * Use `sd-meta--size-*` classes for alternative appearances:
  *
  * - Base is the default size
  * - `sd-meta--size-sm`

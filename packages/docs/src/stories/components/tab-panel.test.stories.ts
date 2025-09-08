@@ -1,6 +1,5 @@
 import '../../../../components/src/solid-components';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-tab-panel');
 const { overrideArgs } = storybookHelpers('sd-tab-panel');
@@ -28,8 +27,7 @@ export default {
     }
   ]),
   argTypes,
-  parameters: { ...parameters, controls: { disable: true } },
-  decorators: [withActions] as any
+  parameters: { ...parameters, controls: { disable: true } }
 };
 
 /**

@@ -6,9 +6,8 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
-import { userEvent } from '@storybook/test';
+import { userEvent } from 'storybook/test';
 import { waitUntil } from '@open-wc/testing-helpers';
-import { withActions } from '@storybook/addon-actions/decorator';
 
 const { argTypes, parameters } = storybookDefaults('sd-textarea');
 const { generateTemplate } = storybookTemplate('sd-textarea');
@@ -30,8 +29,7 @@ export default {
       type: 'figma',
       url: 'https://www.figma.com/file/07Bzd23A0QSrSWiXy6w2uM/Text-Area?node-id=1010%3A1736&mode=dev'
     }
-  },
-  decorators: [withActions] as any
+  }
 };
 
 /**
@@ -42,7 +40,7 @@ export const Default = {
   args: overrideArgs([
     { type: 'attribute', name: 'label', value: 'Label' },
     { type: 'attribute', name: 'value', value: 'value' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' }
+    { type: 'attribute', name: 'help-text', value: 'Help-text' }
   ]),
   render: (args: any) => {
     return html`<div class="w-[250px]">${generateTemplate({ args })}</div> `;
@@ -58,7 +56,7 @@ export const Placeholders = {
   args: overrideArgs([
     { type: 'attribute', name: 'label', value: 'Label' },
     { type: 'attribute', name: 'placeholder', value: 'Placeholder' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' }
+    { type: 'attribute', name: 'help-text', value: 'Help-text' }
   ]),
   render: (args: any) => {
     return html`
@@ -79,7 +77,7 @@ export const Disabled = {
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' }
+    { type: 'attribute', name: 'help-text', value: 'Help-text' }
   ]),
   render: (args: any) => {
     return html`
@@ -101,7 +99,7 @@ export const Readonly = {
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' }
+    { type: 'attribute', name: 'help-text', value: 'Help-text' }
   ]),
   render: (args: any) => {
     return html`
@@ -124,7 +122,7 @@ export const Sizes = {
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'value' },
     { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' }
+    { type: 'attribute', name: 'help-text', value: 'Help-text' }
   ]),
   render: (args: any) => {
     return generateTemplate({
@@ -145,7 +143,7 @@ export const StyleOnValid = {
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: 'valu' },
     { type: 'attribute', name: 'label', value: 'Label' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' },
+    { type: 'attribute', name: 'help-text', value: 'Help-text' },
     { type: 'attribute', name: 'clearable', value: true },
     {
       type: 'slot',
@@ -341,7 +339,7 @@ export const ResponsiveHeight = {
   args: overrideArgs([
     { type: 'attribute', name: 'label', value: 'Label' },
     { type: 'attribute', name: 'value', value: 'value' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' }
+    { type: 'attribute', name: 'help-text', value: 'Help-text' }
   ]),
   render: (args: any) => {
     return html`<div class="w-[250px] h-[300px]">${generateTemplate({ args })}</div> `;
@@ -377,7 +375,7 @@ export const Slots = {
             { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
             { type: 'attribute', name: 'value', value: 'value' },
             { type: 'attribute', name: 'label', value: 'Label' },
-            { type: 'attribute', name: 'help-text', value: 'help-text' }
+            { type: 'attribute', name: 'help-text', value: 'Help-text' }
           ],
           args
         })
@@ -417,7 +415,7 @@ export const Parts = {
       constants: [
         { type: 'attribute', name: 'value', value: 'value' },
         { type: 'attribute', name: 'label', value: 'Label' },
-        { type: 'attribute', name: 'help-text', value: 'help-text' }
+        { type: 'attribute', name: 'help-text', value: 'Help-text' }
       ],
       args
     });
@@ -433,7 +431,7 @@ export const Mouseless = {
   args: overrideArgs([
     { type: 'attribute', name: 'label', value: 'Label' },
     { type: 'attribute', name: 'value', value: 'value' },
-    { type: 'attribute', name: 'help-text', value: 'help-text' }
+    { type: 'attribute', name: 'help-text', value: 'Help-text' }
   ]),
   render: (args: any) => {
     return html`<div class="mouseless w-[250px]">${generateTemplate({ args })}</div>`;

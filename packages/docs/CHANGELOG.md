@@ -1,5 +1,238 @@
 # @solid-design-system/docs
 
+## 1.28.6
+
+### Patch Changes
+
+- Fixed a11y tests to use Storybook accessibility settings to skip specific rules instead of relying on custom tags. _[`#2471`](https://github.com/solid-design-system/solid/pull/2471) [`930b84a`](https://github.com/solid-design-system/solid/commit/930b84a255bc1c27af2085e37cef226fa0910fbd) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.28.5
+
+### Patch Changes
+
+- Changed `hide-label` attribute from an `id` into `class` on the `Step Group` template. _[`#2470`](https://github.com/solid-design-system/solid/pull/2470) [`712e747`](https://github.com/solid-design-system/solid/commit/712e7474e0ccab3f087a572a184a888983bad970) [@balco0110](https://github.com/balco0110)_
+
+## 1.28.4
+
+### Patch Changes
+
+- Minor improvements to the `sd-step-group` docs and template stories. _[`#2457`](https://github.com/solid-design-system/solid/pull/2457) [`98efdf9`](https://github.com/solid-design-system/solid/commit/98efdf9167a4e783d5273d65f43b8957468435c9) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 1.28.3
+
+### Patch Changes
+
+- Fixed usability issues of the Storybook controls on the components default story. _[`4ed1261`](https://github.com/solid-design-system/solid/commit/4ed12613e723c76a71542e6944ed4d4de11d5ce1) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.28.2
+
+### Patch Changes
+
+- Fixed a small keyboard navigation issue within the `Header Navigation` template. _[`#2454`](https://github.com/solid-design-system/solid/pull/2454) [`038a16a`](https://github.com/solid-design-system/solid/commit/038a16ada52e11bd92f7a621947104c96e71bd54) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.28.1
+
+### Patch Changes
+
+- Fixed a small layout issue on the `Button` template. _[`#2448`](https://github.com/solid-design-system/solid/pull/2448) [`8025cd2`](https://github.com/solid-design-system/solid/commit/8025cd2a1e738aa7f26eb752147417af720a2399) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.28.0
+
+### Minor Changes
+
+- Implemented a new `sd-navigation-item` template showcasing a `mega menu`. _[`#2318`](https://github.com/solid-design-system/solid/pull/2318) [`11300b4`](https://github.com/solid-design-system/solid/commit/11300b42a379e8f13ac4316b8824126c61891281) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.27.0
+
+### Minor Changes
+
+- Implemented `waiting` attribute and `horizontal-inline` variant on `sd-step` _[`#2364`](https://github.com/solid-design-system/solid/pull/2364) [`b6d6768`](https://github.com/solid-design-system/solid/commit/b6d6768f99dffceb06356a519e9d74ee5490e5aa) [@balco0110](https://github.com/balco0110)_
+- Updated the docs for `sd-step` and `sd-step-group` and `Step Group` template. _[`#2364`](https://github.com/solid-design-system/solid/pull/2364) [`b6d6768`](https://github.com/solid-design-system/solid/commit/b6d6768f99dffceb06356a519e9d74ee5490e5aa) [@balco0110](https://github.com/balco0110)_
+
+## 1.26.11
+
+### Patch Changes
+
+- Adjusted form components stories casing. _[`#2403`](https://github.com/solid-design-system/solid/pull/2403) [`364eafa`](https://github.com/solid-design-system/solid/commit/364eafad92827a95ed1522741c990a1a1fdeaced) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.26.10
+
+### Patch Changes
+
+- Improved all style classes documentation so the user can better visualise which modifier classes are available. _[`#2386`](https://github.com/solid-design-system/solid/pull/2386) [`6ce01e4`](https://github.com/solid-design-system/solid/commit/6ce01e4d9c758cf1e181565fbe10c7010c0df002) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.26.9
+
+### Patch Changes
+
+- Added support for `<a>` inside `sd-footnotes--marker`. _[`#2421`](https://github.com/solid-design-system/solid/pull/2421) [`515a2b1`](https://github.com/solid-design-system/solid/commit/515a2b1168af2cc7c91469942220f7e520637bb3) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Removed `sd-footnotes` safari known issue.
+
+## 1.26.8
+
+### Patch Changes
+
+- Improved use of solid components in Codepen environment: _[`#2407`](https://github.com/solid-design-system/solid/pull/2407) [`9280957`](https://github.com/solid-design-system/solid/commit/928095786bd6eaca704c1a6a07f7e3f602e3265e) [@smfonseca](https://github.com/smfonseca)_
+  - Images, videos and audio files from the `placeholders` package are correctly imported.
+  - Solid Tailwind configuration is available allowing the correct display of component and the use of different variables.
+
+## 1.26.7
+
+### Patch Changes
+
+- Optimized `sd-media` documentation and template. _[`#2404`](https://github.com/solid-design-system/solid/pull/2404) [`6b1b045`](https://github.com/solid-design-system/solid/commit/6b1b0459b96d985b7c27b3d8f351b9ac0940098a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.26.6
+
+### Patch Changes
+
+- Added a disclaimer to the `Range` template. _[`#2381`](https://github.com/solid-design-system/solid/pull/2381) [`be17a92`](https://github.com/solid-design-system/solid/commit/be17a92a1dc4b1b68171bef4c0d30367034db0d2) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.26.5
+
+### Patch Changes
+
+- Added new `Multiline` `sd-button` screenshot test. _[`#2362`](https://github.com/solid-design-system/solid/pull/2362) [`b5d9a60`](https://github.com/solid-design-system/solid/commit/b5d9a60c50a97193b57f4208e6d23af31c556f5d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Updated `Button` template according to figma.
+
+## 1.26.4
+
+### Patch Changes
+
+- Added more screenshot test cases to `sd-pagination`. _[`#2376`](https://github.com/solid-design-system/solid/pull/2376) [`ef0096e`](https://github.com/solid-design-system/solid/commit/ef0096ea8f2118a41faca0c6055ad017af0fea4e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.26.3
+
+### Patch Changes
+
+- Updated icon libraries. _[`#2385`](https://github.com/solid-design-system/solid/pull/2385) [`2b57a70`](https://github.com/solid-design-system/solid/commit/2b57a707fb9d9ef60c313fd457ddfa6fb1db69b4) [@smfonseca](https://github.com/smfonseca)_
+  - Added `internal-lib` story to showcase `_internal` icon library.
+  - Added `Library: _internal` screenshot test.
+  - Added `status-assets` story to showcase `sd-status-assets` icon library.
+  - Added `Library: sd-status-assets` screenshot test.
+  - Updated docs page with reference to `_internal` and `sd-status-assets` libraries.
+
+- Update migration guide `from v4` with more information regarding the internal icon library renaming. _[`#2385`](https://github.com/solid-design-system/solid/pull/2385) [`2b57a70`](https://github.com/solid-design-system/solid/commit/2b57a707fb9d9ef60c313fd457ddfa6fb1db69b4) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.26.2
+
+### Patch Changes
+
+- Fixed an issue where the `sd-tab` `active` story would not show the current tab correctly after navigating through storybook. _[`#2384`](https://github.com/solid-design-system/solid/pull/2384) [`cbe0e16`](https://github.com/solid-design-system/solid/commit/cbe0e16de7296eeec08a8ca87f2c1812160abeb3) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.26.1
+
+### Patch Changes
+
+- Added inverted background on `sd-interactive` disabled screenshot tests. _[`#2361`](https://github.com/solid-design-system/solid/pull/2361) [`9e512b6`](https://github.com/solid-design-system/solid/commit/9e512b646d0959585d4d294658c880125cfeeafc) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.26.0
+
+### Minor Changes
+
+- Add overview pages for: _[`#2337`](https://github.com/solid-design-system/solid/pull/2337) [`4e642ad`](https://github.com/solid-design-system/solid/commit/4e642ad01318d58043d61a1216c0d64ef6cb3cf5) [@smfonseca](https://github.com/smfonseca)_
+  - `sd-carousel-item`
+  - `sd-mark`
+  - `sd-table`
+
+  Update Solid DS Best Practices for WCAG Compliance link in all overview pages.
+
+## 1.25.0
+
+### Minor Changes
+
+- Extended `sd-pagination` style component to support the use of the `button` element. _[`#2352`](https://github.com/solid-design-system/solid/pull/2352) [`1e0338c`](https://github.com/solid-design-system/solid/commit/1e0338c1e125b0d5625d7411f81ca345c2161bd6) [@smfonseca](https://github.com/smfonseca)_
+  - Included screenshot tests for new functionality.
+
+## 1.24.5
+
+### Patch Changes
+
+- Update introduction page to align with Figma _[`#2353`](https://github.com/solid-design-system/solid/pull/2353) [`ac317c2`](https://github.com/solid-design-system/solid/commit/ac317c2a3ae9aca4e966cd53b002e0217e9b05c1) [@karlbaumhauer](https://github.com/karlbaumhauer)_
+
+## 1.24.4
+
+### Patch Changes
+
+- - Sync `sd-tab` samples with figma _[`#2256`](https://github.com/solid-design-system/solid/pull/2256) [`6f9d3fa`](https://github.com/solid-design-system/solid/commit/6f9d3fa42e95fbe3a13dcf89c499294facb25052) [@smfonseca](https://github.com/smfonseca)_
+
+  - `sd-tab` screenshot tests update
+
+## 1.24.3
+
+### Patch Changes
+
+- Updated `sd-radio-button` stories and screenshot tests to showcase the new style. _[`#2344`](https://github.com/solid-design-system/solid/pull/2344) [`496be2c`](https://github.com/solid-design-system/solid/commit/496be2cc87c25a9aa68bc4cd1966da8c5c2cd834) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.24.2
+
+### Patch Changes
+
+- Added screenshot test for `sd-tab-group` with links inside the `sd-tab-panel`. _[`#2350`](https://github.com/solid-design-system/solid/pull/2350) [`5ef9005`](https://github.com/solid-design-system/solid/commit/5ef90053097b1c4b940037e1f79a17b3680fcca4) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.24.1
+
+### Patch Changes
+
+- Fixed missing footnotes templates. _[`#2349`](https://github.com/solid-design-system/solid/pull/2349) [`fc196a3`](https://github.com/solid-design-system/solid/commit/fc196a36bcfa2e7849cac3595f41a8e798ff0a86) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.24.0
+
+### Minor Changes
+
+- The `sd-loader` has arrived! 🎉 _[`#2324`](https://github.com/solid-design-system/solid/pull/2324) [`48c1a2e`](https://github.com/solid-design-system/solid/commit/48c1a2e91b9ba1eca1383b92725c7d0c3dfcae67) [@smfonseca](https://github.com/smfonseca)_
+
+  It is a visual indicator that shows loading is in process.
+  - This component will replace the `sd-spinner` which will be **deprecated** in the near future.
+
+## 1.23.0
+
+### Minor Changes
+
+- The `sd-range` and `sd-range-tick` have arrived! 🎉 _[`#2306`](https://github.com/solid-design-system/solid/pull/2306) [`6aba9bd`](https://github.com/solid-design-system/solid/commit/6aba9bd348b999fa6677de99488df234bc119de2) [@paulovareiro29](https://github.com/paulovareiro29)_
+  - Used to allow users to select a single or multiple values within a defined range using a slider.
+
+## 1.22.2
+
+### Patch Changes
+
+- Fixed table template a11y issue with `role="region"`. _[`#2346`](https://github.com/solid-design-system/solid/pull/2346) [`4ae574a`](https://github.com/solid-design-system/solid/commit/4ae574ab375a5557fd3f63896d12de613a92134d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.22.1
+
+### Patch Changes
+
+- Fixed render content for `tooltip` with bolded text template _[`#2327`](https://github.com/solid-design-system/solid/pull/2327) [`1dfe777`](https://github.com/solid-design-system/solid/commit/1dfe777224c5f139065a809c426aefc81da43d92) [@balco0110](https://github.com/balco0110)_
+
+## 1.22.0
+
+### Minor Changes
+
+- - Create `switch` template _[`#2319`](https://github.com/solid-design-system/solid/pull/2319) [`5d20c51`](https://github.com/solid-design-system/solid/commit/5d20c51b9e0b15be47cfd60e24bb179cef42bf27) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add `Switch with Tooltip` story to `switch` template
+
+## 1.21.0
+
+### Minor Changes
+
+- The `sd-menu` and `sd-menu-item` have arrived. 🎉 _[`#2297`](https://github.com/solid-design-system/solid/pull/2297) [`b2485fe`](https://github.com/solid-design-system/solid/commit/b2485fe1fcf7ee7897fd4e9d2fc48db06fe7c390) [@smfonseca](https://github.com/smfonseca)_
+  - Added documentation with usage guidelines, best practices and accessibility hints.
+
+## 1.20.2
+
+### Patch Changes
+
+- Fix missing components and styles docs. _[`#2323`](https://github.com/solid-design-system/solid/pull/2323) [`d945956`](https://github.com/solid-design-system/solid/commit/d945956798d4c145d962e82cf302e388e6ac7ef8) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.20.1
+
+### Patch Changes
+
+- Updated the sample for `checked`, `help text` and `invalid` in `sd-radio-button-group` according to Figma. _[`#2273`](https://github.com/solid-design-system/solid/pull/2273) [`6701124`](https://github.com/solid-design-system/solid/commit/6701124ce70e65968802b795e5d616219d772fb0) [@balco0110](https://github.com/balco0110)_
+
 ## 1.20.0
 
 ### Minor Changes
@@ -11,7 +244,6 @@
 ### Minor Changes
 
 - The `sd-breadcrumb` and `sd-breadcrumb-item` have arrived! 🎉 _[`#2288`](https://github.com/solid-design-system/solid/pull/2288) [`9a224c7`](https://github.com/solid-design-system/solid/commit/9a224c77ce047c8966ee6f3c7be54cbf7c161020) [@paulovareiro29](https://github.com/paulovareiro29)_
-
   - Added new `sd-breadcrumb` and `sd-breadcrumb-item` docs.
 
 ## 1.18.0
@@ -93,7 +325,6 @@
 ### Patch Changes
 
 - Improved `sd-teaser` and `sd-teaser-media` accessibility: _[`#2120`](https://github.com/solid-design-system/solid/pull/2120) [`ec19bb7`](https://github.com/solid-design-system/solid/commit/ec19bb7b101ced45393850328b534981b6d90c29) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
   - Ensure the headline is the first element in the teaser's DOM structure in all templates.
   - Improve clickable teaser media:
     - Whole card is clickable;
@@ -105,7 +336,6 @@
 ### Patch Changes
 
 - Improved `sd-tooltip` accessibility: _[`#2138`](https://github.com/solid-design-system/solid/pull/2138) [`6c61fde`](https://github.com/solid-design-system/solid/commit/6c61fde928d4fb2bf3cfb7355cb58d1f8dc42ec1) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
   - Custom trigger announcement.
 
 ## 1.15.0
@@ -117,7 +347,6 @@
 ### Patch Changes
 
 - Improved `sd-notification` a11y: _[`#2101`](https://github.com/solid-design-system/solid/pull/2101) [`fc8514e`](https://github.com/solid-design-system/solid/commit/fc8514ea809e0ad1869953b7cb08dcffd842294c) [@paulovareiro29](https://github.com/paulovareiro29)_
-
   - Added preloaded `sd-toast-stacks` to improve consistency within screen readers.
   - Added documentation about the importance of adding preloaded `sd-toast-stacks`.
 
@@ -126,7 +355,6 @@
 ### Patch Changes
 
 - Update `sd-combobox` documentation: _[`#2154`](https://github.com/solid-design-system/solid/pull/2154) [`bb67377`](https://github.com/solid-design-system/solid/commit/bb673772c5ce0216c229c999604024804c8c0d59) [@smfonseca](https://github.com/smfonseca)_
-
   - Add new `search` story in `sd-combobox`.
   - Align search icon in combobox `icons` story and correctly format documentation.
 
@@ -137,7 +365,6 @@
 - Introduce overview page for components and styles. _[`#2024`](https://github.com/solid-design-system/solid/pull/2024) [`6fa86c8`](https://github.com/solid-design-system/solid/commit/6fa86c819208ecc26d9ab1394af81e3467aab191) [@smfonseca](https://github.com/smfonseca)_
 
   These pages include information for:
-
   - Common use cases
   - Usage guidelines
   - Accessibility
@@ -297,7 +524,6 @@
 ### Patch Changes
 
 - Improved `sd-drawer` accessibility. _[`#1943`](https://github.com/solid-design-system/solid/pull/1943) [`f1197c5`](https://github.com/solid-design-system/solid/commit/f1197c5a777a2b330b5773eb3deef83bcda8c32e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
   - Add labels to stories.
 
   Improved slots color contrast by adding a darker shade to the border and text color.
@@ -313,11 +539,9 @@
 ### Patch Changes
 
 - Improved `sd-step-group` and `sd-step-group template` accessibility. _[`#1966`](https://github.com/solid-design-system/solid/pull/1966) [`c49e5f8`](https://github.com/solid-design-system/solid/commit/c49e5f8bd1999ed26f75551b4d41f7d82da947a6) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
   - Add aria label to all stories.
 
   Improved `sd-step` accessibility.
-
   - Skipped `aria-required-parent` violation in accessibility automatic tests. This test is not relevant in this context since we only want to show the isolated component and not in the context of its real use which would be wrapped in a `sd-step-group` component.
 
 ## 1.12.10
@@ -337,7 +561,6 @@
 ### Patch Changes
 
 - Improve `sd-carousel` a11y: _[`#1935`](https://github.com/solid-design-system/solid/pull/1935) [`1c54e1c`](https://github.com/solid-design-system/solid/commit/1c54e1ce286f64a7ad7f575918b9952961938646) [@paulovareiro29](https://github.com/paulovareiro29)_
-
   - Improve template a11y by adding the attributes `role="region"` and `aria-label`.
   - Add accessibility hint regarding `role="region"` and `aria-label`.
   - Fix inverted stories slot colors to improve a11y.
@@ -347,7 +570,6 @@
 ### Patch Changes
 
 - Improved `sd-input` accessibility and consistency with other components. _[`#1934`](https://github.com/solid-design-system/solid/pull/1934) [`b8f1d87`](https://github.com/solid-design-system/solid/commit/b8f1d879b7974fe81633d08d66e3605ab9eae139) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
   - Add labels to sd-input.
 
 ## 1.12.6
@@ -391,7 +613,6 @@
 ### Minor Changes
 
 - The `sd-pagination` has arrived! 🎉 _[`#1916`](https://github.com/solid-design-system/solid/pull/1916) [`8e97181`](https://github.com/solid-design-system/solid/commit/8e97181cbc913d47fbadc1997cfe75bcaa7a9245) [@paulovareiro29](https://github.com/paulovareiro29)_
-
   - Add new `sd-pagination` stories and template.
 
 ## 1.11.6
@@ -475,7 +696,6 @@
 - Add `visually-disabled` attribute in form elements for improved accessibility. _[`#1899`](https://github.com/solid-design-system/solid/pull/1899) [`15d4497`](https://github.com/solid-design-system/solid/commit/15d44972b1c3c616dd147245bc837df492d9ec1c) [@smfonseca](https://github.com/smfonseca)_
 
   By introducing this new attribute, it is possible to display an element as if it is disabled while still keeping it accessible to screen readers. This attribute is currently available on the following components:
-
   - sd-button
   - sd-link
   - sd-input
@@ -519,7 +739,6 @@
 ### Patch Changes
 
 - Improve docs: _[`#1712`](https://github.com/solid-design-system/solid/pull/1712) [`776c0e4`](https://github.com/solid-design-system/solid/commit/776c0e4579644380b0b169c76373b522ce508edf) [@Vahid1919](https://github.com/Vahid1919)_
-
   - Improve tooltip placement in the size story
   - Improve mobile version in the placement story
 
@@ -528,7 +747,6 @@
 ### Patch Changes
 
 - Accessibility tests: _[`#1896`](https://github.com/solid-design-system/solid/pull/1896) [`36904da`](https://github.com/solid-design-system/solid/commit/36904dadac5ac0fe83abac7bc51b7c4a79f5cefc) [@paulovareiro29](https://github.com/paulovareiro29)_
-
   - Resolved errors during test execution.
   - Removed unstable `test.watch`.
 
@@ -589,7 +807,6 @@
 ### Patch Changes
 
 - Improved sd-drawer screenshot tests, sd-drawer and sd-header templates a11y: _[`#1743`](https://github.com/solid-design-system/solid/pull/1743) [`722cc99`](https://github.com/solid-design-system/solid/commit/722cc99e032a91bfb1a14a019190ddd0bd1ba790) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
   - Add aria-labels to duplicated navigation landmarks in templates
   - Fix focus style cut off
   - Fix autofocus story
@@ -656,7 +873,6 @@
 
 - Extend sd-interactive and icon-only buttons documentation regarding accessibility best practices. _[`#1740`](https://github.com/solid-design-system/solid/pull/1740) [`311d2f6`](https://github.com/solid-design-system/solid/commit/311d2f6715cddc760c6860bd6a0017a4123379da) [@smfonseca](https://github.com/smfonseca)_
 - Improved quote template a11y: _[`#1756`](https://github.com/solid-design-system/solid/pull/1756) [`70a17a0`](https://github.com/solid-design-system/solid/commit/70a17a0391db0d95e440ab885c674f01758bb6d8) [@paulovareiro29](https://github.com/paulovareiro29)_
-
   - Added accessibility information
   - Replaced `q` html elements by `blockquote`
   - Renamed `John Doe` to `Jane Doe`
@@ -666,7 +882,6 @@
 - Removed unecessary padding classes from tab stories. _[`#1755`](https://github.com/solid-design-system/solid/pull/1755) [`9954447`](https://github.com/solid-design-system/solid/commit/9954447efacc72908971c123b94bfd549dc69454) [@paulovareiro29](https://github.com/paulovareiro29)_
 - Added the debug class to sd-hidden-links to display hidden links for screenshot tests. _[`#1753`](https://github.com/solid-design-system/solid/pull/1753) [`5dbc65f`](https://github.com/solid-design-system/solid/commit/5dbc65f27496303c7f02cb0dfa90c18d232af33c) [@paulovareiro29](https://github.com/paulovareiro29)_
 - Bugfixes and minor non-breaking changes to the sd-select and sd-combobox components _[`#1742`](https://github.com/solid-design-system/solid/pull/1742) [`125d5f1`](https://github.com/solid-design-system/solid/commit/125d5f1db6c0eaf19500cc333ac33ab39646d842) [@DanielHargesheimer](https://github.com/DanielHargesheimer)_
-
   - sd-combobox: emit events correctly
   - sd-combobox: set options' initial attributes
   - sd-select and sd-combobox: add max-options-tag-label attribute
@@ -678,7 +893,6 @@
 
 - Update `variant` attribute options name in stories where sd-badge is used. _[`#1774`](https://github.com/solid-design-system/solid/pull/1774) [`8b96338`](https://github.com/solid-design-system/solid/commit/8b963385855a6440b3a888ac73bec1ae71697a67) [@smfonseca](https://github.com/smfonseca)_
 - Improved sd-expandable a11y: _[`#1724`](https://github.com/solid-design-system/solid/pull/1724) [`c7bab9d`](https://github.com/solid-design-system/solid/commit/c7bab9db426203a61b42a19740c409c50b25da4c) [@paulovareiro29](https://github.com/paulovareiro29)_
-
   - Improved template labels
   - Added accessibility hints
 
@@ -695,7 +909,6 @@
 ### Patch Changes
 
 - Improved quote template a11y: _[`#1756`](https://github.com/solid-design-system/solid/pull/1756) [`70a17a0`](https://github.com/solid-design-system/solid/commit/70a17a0391db0d95e440ab885c674f01758bb6d8) [@paulovareiro29](https://github.com/paulovareiro29)_
-
   - Added accessibility information
   - Replaced `q` html elements by `blockquote`
   - Renamed `John Doe` to `Jane Doe`
@@ -705,7 +918,6 @@
 ### Patch Changes
 
 - Improved sd-expandable a11y: _[`#1724`](https://github.com/solid-design-system/solid/pull/1724) [`c7bab9d`](https://github.com/solid-design-system/solid/commit/c7bab9db426203a61b42a19740c409c50b25da4c) [@paulovareiro29](https://github.com/paulovareiro29)_
-
   - Improved template labels
   - Added accessibility hints
 
@@ -740,7 +952,6 @@
 ### Patch Changes
 
 - Bugfixes and minor non-breaking changes to the sd-select and sd-combobox components _[`#1742`](https://github.com/solid-design-system/solid/pull/1742) [`125d5f1`](https://github.com/solid-design-system/solid/commit/125d5f1db6c0eaf19500cc333ac33ab39646d842) [@DanielHargesheimer](https://github.com/DanielHargesheimer)_
-
   - sd-combobox: emit events correctly
   - sd-combobox: set options' initial attributes
   - sd-select and sd-combobox: add max-options-tag-label attribute
@@ -787,7 +998,6 @@
 ### Patch Changes
 
 - Improve copyright: _[`#1691`](https://github.com/solid-design-system/solid/pull/1691) [`0ea037c`](https://github.com/solid-design-system/solid/commit/0ea037cf5b283ea52936fc84e5eaea112ead257e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
   - Add class to black color variant
   - Add class to remove shadow
   - Add class to top placement
@@ -799,7 +1009,6 @@
 ### Patch Changes
 
 - Improve sd-dialog examples and templates: _[`#1721`](https://github.com/solid-design-system/solid/pull/1721) [`d81bd6d`](https://github.com/solid-design-system/solid/commit/d81bd6d60f42f9ac675f3d15744952f9dfca3bed) [@smfonseca](https://github.com/smfonseca)_
-
   - Added buttons to reopen dialog in both stories and templates
   - Added example actions to the templates buttons
 
@@ -808,7 +1017,6 @@
 ### Patch Changes
 
 - Improved a11y for sd-header: _[`#1668`](https://github.com/solid-design-system/solid/pull/1668) [`c2fb231`](https://github.com/solid-design-system/solid/commit/c2fb2318e910be9fd591ca50292a886a898d1c00) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
   - Add ARIA attributes sd-drawer close button
   - Improve logo link alt text
   - Improve open drawer button name
@@ -820,7 +1028,6 @@
 ### Patch Changes
 
 - Improved a11y for sd-step and sd-step-group: _[`#1688`](https://github.com/solid-design-system/solid/pull/1688) [`56daf24`](https://github.com/solid-design-system/solid/commit/56daf244989a624e2c54a22b94927d5aeb2fe44c) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
   - Add list role to sd-step-group
   - Add list-item role to sd-step
   - Fix tests
@@ -839,7 +1046,6 @@
 ### Minor Changes
 
 - Restructure FAQ _[`#1608`](https://github.com/solid-design-system/solid/pull/1608) [`ee7287c`](https://github.com/solid-design-system/solid/commit/ee7287c88537c66c0c3a8ff487b91846037a28b3) [@karlbaumhauer](https://github.com/karlbaumhauer)_
-
   - Cluster FAQ items into sections
   - Rephrase some existing FAQ items
   - Add new FAQ item
@@ -849,7 +1055,6 @@
 ### Patch Changes
 
 - Improved sd-dropdown a11y: _[`#1715`](https://github.com/solid-design-system/solid/pull/1715) [`1ecd19f`](https://github.com/solid-design-system/solid/commit/1ecd19fa9c4bef060092361a71d0e7ae784ec50d) [@paulovareiro29](https://github.com/paulovareiro29)_
-
   - Correctly label icon-button dropdown triggers.
   - Fix focus on the trigger after the dropdown is hidden using the keyboard.
 
@@ -858,7 +1063,6 @@
 ### Minor Changes
 
 - Add sd-combobox and improve sd-select. _[`#1633`](https://github.com/solid-design-system/solid/pull/1633) [`8a16da8`](https://github.com/solid-design-system/solid/commit/8a16da830e7fdd135d9dcbbc540c48ef567dbe02) [@DanielHargesheimer](https://github.com/DanielHargesheimer)_
-
   - add configurable `sd-combobox` component
   - add keyboard navigation and accessibility features
   - add multi-select and tag support
@@ -873,7 +1077,6 @@
 ### Patch Changes
 
 - Removed references to deprecated `library="global-resources"` from: _[`#1701`](https://github.com/solid-design-system/solid/pull/1701) [`82c6b31`](https://github.com/solid-design-system/solid/commit/82c6b314fc89478cda192fcadad0daa2b73fe70d) [@smfonseca](https://github.com/smfonseca)_
-
   - Spin buttons on the `sd-input`
   - Templates for `sd-interactive` and `sd-table`
   - Screenshot tests of several components and styles

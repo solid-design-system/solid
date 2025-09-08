@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/eslint-plugin",
   "description": "ESLint custom rules for the Solid Design System component library",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "author": {
     "name": "Union Investment"
@@ -30,27 +30,28 @@
     "build": "node scripts/build.mjs",
     "test": "jest",
     "verify": "pnpm build && echo '✅ Build verified' && pnpm test && echo '✅ Tests verified'",
-    "plop": "plop --plopfile scripts/plop/plopfile.js"
+    "plop": "plop --plopfile scripts/plop/plopfile.js",
+    "postversion": "pnpm build"
   },
   "devDependencies": {
-    "@types/node": "^24.0.3",
-    "@typescript-eslint/rule-tester": "^8.34.1",
-    "@typescript-eslint/utils": "^8.34.1",
-    "es-html-parser": "^0.2.0",
-    "esbuild": "^0.25.5",
-    "eslint": "^9.29.0",
+    "@types/node": "^24.2.0",
+    "@typescript-eslint/rule-tester": "^8.39.0",
+    "@typescript-eslint/utils": "^8.39.0",
+    "es-html-parser": "^0.3.0",
+    "esbuild": "^0.25.8",
+    "eslint": "^9.32.0",
     "globby": "^14.1.0",
-    "jest": "^30.0.0",
+    "jest": "^30.0.5",
     "plop": "^4.0.1",
-    "ts-jest": "^29.4.0",
+    "ts-jest": "^29.4.1",
     "ts-node": "^10.9.2",
     "typescript": "5.8.3"
   },
   "peerDependencies": {
-    "@html-eslint/parser": "^0.40.0",
+    "@html-eslint/parser": "^0.44.0",
     "eslint": "^9.18.0"
   },
   "dependencies": {
-    "@html-eslint/parser": "^0.41.0"
+    "@html-eslint/parser": "^0.44.0"
   }
 }

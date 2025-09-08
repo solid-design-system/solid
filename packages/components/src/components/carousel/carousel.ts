@@ -155,7 +155,26 @@ export default class SdCarousel extends SolidElement {
   }
 
   protected async firstUpdated(): Promise<void> {
-    this.initializeSlides();
+    const areSlidesReady = (() => {
+      const slides = this.getSlides({ excludeClones: false });
+      return slides.length > 0 && slides[0].getBoundingClientRect().width > 0;
+    })();
+
+    if (areSlidesReady) {
+      this.initializeSlides();
+    } else {
+      const initObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && entry.target.getBoundingClientRect().width > 0) {
+            this.initializeSlides();
+            initObserver.disconnect();
+          }
+        });
+      });
+
+      initObserver.observe(this);
+    }
+
     this.mutationObserver = new MutationObserver(this.handleSlotChange);
     this.mutationObserver.observe(this, { childList: true, subtree: false });
 
@@ -332,7 +351,6 @@ export default class SdCarousel extends SolidElement {
   initializeSlides() {
     const slides = this.getSlides();
     const intersectionObserver = this.intersectionObserver;
-
     this.intersectionObserverEntries.clear();
 
     // Removes all the cloned elements from the carousel
@@ -596,7 +614,10 @@ export default class SdCarousel extends SolidElement {
           )}"
           style="--slides-per-page: ${this.slidesPerPage};"
           aria-busy="${scrollController.scrolling ? 'true' : 'false'}"
-          aria-label="${this.localize.term('carouselContainer', this.slides.length)}"
+          aria-label="${this.localize.term(
+            'carouselContainer',
+            Array.from(this.slides).filter(el => !el.hasAttribute('data-clone')).length
+          )}"
           aria-live=${this.autoplay ? 'off' : 'polite'}
           tabindex="0"
           @keydown=${this.handleKeyDown}

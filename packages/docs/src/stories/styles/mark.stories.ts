@@ -5,18 +5,9 @@ const { argTypes, parameters } = storybookDefaults('sd-mark');
 const { overrideArgs } = storybookHelpers('sd-mark');
 const { generateTemplate } = storybookTemplate('sd-mark');
 
-/**
- * Used to highlight text sections in the accent color.
- *
- * Use the `<mark>` html element with the class `sd-mark` for regular fonts-sizes at 24px and above, and use bold fonts at 18.67px.
- *
- * **Related Templates**:
- * - [Mark](?path=/docs/templates-mark--docs)
- */
-
 export default {
   title: 'Styles/sd-mark',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-mark',
   parameters: {
     parameters

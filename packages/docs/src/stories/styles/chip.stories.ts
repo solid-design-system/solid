@@ -9,7 +9,7 @@ const { generateTemplate } = storybookTemplate('sd-chip');
 export default {
   title: 'Styles/sd-chip',
   component: 'sd-chip',
-  tags: ['!dev'],
+  tags: ['!dev', 'autodocs'],
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Chip' }),
   parameters: {
     ...parameters,
@@ -30,8 +30,8 @@ export const Default = {
   }
 };
 /**
- * Use the `sd-chip` classes for alternative appearances:
- * - primary-200 is the default background color
+ * Use the `sd-chip--*` classes for alternative appearances:
+ * - primary-200 is the default appearance
  * - `sd-chip--primary-300`
  * - `sd-chip--primary-500`
  * - `sd-chip--white`
