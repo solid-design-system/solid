@@ -4,6 +4,11 @@ on:
   push:
     branches: ["main", "next", "feat/**"]
   workflow_dispatch:
+    inputs:
+      target-branch:
+        description: "Branch to open the PR against"
+        required: false
+        default: "main"
 
 # Add permissions at the workflow level
 permissions:
@@ -14,7 +19,7 @@ jobs:
   sync-figma-to-tokens:
     runs-on: ubuntu-latest
     env:
-      ORIGINAL_BRANCH: ${{ github.ref_name }}
+      ORIGINAL_BRANCH: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.target-branch || github.ref_name }}
       ARTIFACT_BRANCH: chore/update-figma-tokens-${{ github.run_id }}
 
     # These will inherit from workflow level but can be overridden if needed
