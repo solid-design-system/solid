@@ -2,13 +2,8 @@ name: Sync Figma variables to tokens
 
 on:
   push:
-    branches: [ "main", "develop", "next", "feat/**"]
+    branches: ["main", "next", "feat/**"]
   workflow_dispatch:
-    inputs: 
-      branch:
-        description: "Which branch should it create the PR to"
-        required: true
-        default: "main"
 
 # Add permissions at the workflow level
 permissions:
