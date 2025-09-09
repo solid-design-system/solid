@@ -92,7 +92,7 @@ export const Variants = {
         },
         templateBackgrounds: {
           alternate: 'y',
-          colors: ['transparent', 'transparent', 'transparent', 'transparent', 'rgb(var(--sd-color-primary, 0 53 142))']
+          colors: ['transparent', 'transparent', 'transparent', 'transparent', 'var(--sd-color-primary)']
         }
       },
       args
@@ -192,9 +192,9 @@ export const TriangleBorder = {
 };
 
 /**
- * You can set the color of the triangle cut-out using the `--triangle-background` CSS property. CSS variables can be set either with an inline style: `style="--triangle-background: rgb(var(--sd-color-primary-600, 0 53 142) / 1);"` or a custom class:
+ * You can set the color of the triangle cut-out using the `--triangle-background` CSS property. CSS variables can be set either with an inline style: `style="--triangle-background: var(--sd-color-primary);"` or a custom class:
  * `.custom-sd-container {
-    --triangle-background: rgb(var(--sd-color-primary-600, 0 53 142) / 1);
+    --triangle-background: var(--sd-color-primary);
   }`
  */
 
@@ -207,7 +207,7 @@ export const TriangleColor = {
       <div class="bg-primary p-4">
         <div
           class=${`sd-container sd-container--variant-white sd-container--triangle-top sd-container--padding-${paddingAttr}`}
-          style="--triangle-background: rgb(var(--sd-color-primary-600, 0 53 142) / 1);"
+          style="--triangle-background: var(--sd-color-primary);"
         >
           <div class="slot slot--border slot--text h-12">Default slot</div>
         </div>

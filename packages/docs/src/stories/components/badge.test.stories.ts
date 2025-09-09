@@ -73,7 +73,7 @@ export const VariantAndInverted = {
       options: {
         templateBackgrounds: {
           alternate: 'y',
-          colors: ['', 'rgb(var(--sd-color-primary, 0 53 142))']
+          colors: ['', 'var(--sd-color-primary)']
         }
       }
     });

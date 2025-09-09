@@ -77,7 +77,7 @@ export const Inverted = {
       constants: { type: 'attribute', name: 'sd-headline--inverted', value: true },
       options: {
         templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>',
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+        templateBackgrounds: { alternate: 'y', colors: ['white', 'var(--sd-color-primary)'] }
       },
       args
     });
@@ -150,7 +150,7 @@ export const SizeXInverted = {
         },
         options: {
           templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>',
-          templateBackgrounds: { alternate: 'x', colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))'] },
+          templateBackgrounds: { alternate: 'x', colors: ['transparent', 'var(--sd-color-primary)'] },
           title: headline.title
         },
         args
@@ -219,7 +219,7 @@ export const Samples = {
           options: {
             templateBackgrounds: {
               alternate: 'x',
-              colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))']
+              colors: ['transparent', 'var(--sd-color-primary)']
             },
             templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>'
           },
@@ -259,7 +259,7 @@ export const Samples = {
           options: {
             templateBackgrounds: {
               alternate: 'x',
-              colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))']
+              colors: ['transparent', 'var(--sd-color-primary)']
             },
             templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>'
           },

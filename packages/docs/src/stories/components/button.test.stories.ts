@@ -56,7 +56,7 @@ export const VariantAndInverted = {
       },
       args,
       options: {
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+        templateBackgrounds: { alternate: 'y', colors: ['white', 'var(--sd-color-primary)'] }
       }
     });
   }
@@ -80,7 +80,7 @@ export const Loading = {
       args,
       options: {
         title: 'disabled=false',
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+        templateBackgrounds: { alternate: 'y', colors: ['white', 'var(--sd-color-primary)'] }
       }
     })}
     ${generateTemplate({
@@ -96,7 +96,7 @@ export const Loading = {
       args,
       options: {
         title: 'disabled=true',
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+        templateBackgrounds: { alternate: 'y', colors: ['white', 'var(--sd-color-primary)'] }
       }
     })}`;
   }
@@ -114,7 +114,7 @@ export const Inverted = {
         ]
       },
       constants: { type: 'attribute', name: 'inverted', value: true },
-      options: { templateBackground: 'rgb(var(--sd-color-primary, 0 53 142))' },
+      options: { templateBackground: 'var(--sd-color-primary)' },
       args
     });
   }
@@ -135,7 +135,7 @@ export const Disabled = {
       constants: { type: 'attribute', name: 'disabled', value: true },
       args,
       options: {
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+        templateBackgrounds: { alternate: 'y', colors: ['white', 'var(--sd-color-primary)'] }
       }
     });
   }

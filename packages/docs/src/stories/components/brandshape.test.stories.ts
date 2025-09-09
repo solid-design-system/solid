@@ -99,14 +99,7 @@ export const Variants = {
       options: {
         templateBackgrounds: {
           alternate: 'y',
-          colors: [
-            'white',
-            'white',
-            'rgb(var(--sd-color-primary, 0 53 142))',
-            'white',
-            'rgb(var(--sd-color-primary, 0 53 142))',
-            'white'
-          ]
+          colors: ['white', 'white', 'var(--sd-color-primary)', 'white', 'var(--sd-color-primary)', 'white']
         },
         templateRenderer: ({ attributes, slots }) => {
           const inverted = ['neutral-100', 'white', 'border-primary'].includes(attributes.variant as string);
