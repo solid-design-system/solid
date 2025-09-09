@@ -3,7 +3,7 @@
 @import 'tailwindcss/theme';
 @import 'tailwindcss/utilities';
 
-@source '../../components/src'
+@source '../../components/src';
 
 @custom-variant hover (&:hover:not([disabled]));
 @custom-variant focus (&:focus:not([disabled]));
@@ -50,28 +50,25 @@
     }
   }
   @keyframes loader-color-primary {
-    0%,
-    100% {
-      color: var(--sd-color-primary, #00358e);
+    0%, 100% {
+      color: var(--sd-color-primary, #00358E);
     }
     50% {
-      color: var(--sd-color-primary, #00358e);
+      color: var(--sd-color-primary, #00358E);
       opacity: 20%;
     }
   }
   @keyframes loader-color-white {
-    0%,
-    100% {
-      color: var(--sd-color-white, #ffffff);
+    0%, 100% {
+      color: var(--sd-color-white, #FFFFFF);
     }
     50% {
-      color: var(--sd-color-white, #ffffff);
+      color: var(--sd-color-white, #FFFFFF);
       opacity: 20%;
     }
   }
   @keyframes loader-color-current {
-    0%,
-    100% {
+    0%, 100% {
       color: currentColor;
     }
     50% {
@@ -80,9 +77,7 @@
     }
   }
   @keyframes wave {
-    0%,
-    40%,
-    100% {
+    0%, 40%, 100% {
       transform: initial;
     }
     20% {
@@ -157,27 +152,12 @@
   --background-color-neutral-800: var(--sd-background-neutral-800, var(--sd-color-neutral-800));
   --background-color-info: var(--sd-background-info, var(--sd-color-info));
   --background-color-warning: var(--sd-background-warning, var(--sd-color-warning));
-  --background-color-primary-800-alternative: var(
-    --sd-background-primary-800-alternative,
-    var(--sd-color-primary-800-alternative)
-  );
+  --background-color-primary-800-alternative: var(--sd-background-primary-800-alternative, var(--sd-color-primary-800-alternative));
   --background-color-neutral-400: var(--sd-background-neutral-400, var(--sd-color-neutral-400));
-  --background-color-transparent-primary-100-80: var(
-    --sd-background-transparent-primary-100-80,
-    var(--sd-color-primary-100-80)
-  );
-  --background-color-transparent-primary-100-90: var(
-    --sd-background-transparent-primary-100-90,
-    var(--sd-color-primary-100-90)
-  );
-  --background-color-transparent-neutral-100-80: var(
-    --sd-background-transparent-neutral-100-80,
-    var(--sd-color-neutral-100-80)
-  );
-  --background-color-transparent-neutral-100-90: var(
-    --sd-background-transparent-neutral-100-90,
-    var(--sd-color-neutral-100-90)
-  );
+  --background-color-transparent-primary-100-80: var(--sd-background-transparent-primary-100-80, var(--sd-color-primary-100-80));
+  --background-color-transparent-primary-100-90: var(--sd-background-transparent-primary-100-90, var(--sd-color-primary-100-90));
+  --background-color-transparent-neutral-100-80: var(--sd-background-transparent-neutral-100-80, var(--sd-color-neutral-100-80));
+  --background-color-transparent-neutral-100-90: var(--sd-background-transparent-neutral-100-90, var(--sd-color-neutral-100-90));
   --background-color-transparent-white-90: var(--sd-background-transparent-white-90, var(--sd-color-white-90));
   --background-color-transparent-white-80: var(--sd-background-transparent-white-80, var(--sd-color-white-80));
   --background-color-transparent-primary-10: var(--sd-background-transparent-primary-10, var(--sd-color-primary-10));
@@ -185,10 +165,7 @@
   --background-color-transparent-primary-80: var(--sd-background-transparent-primary-80, var(--sd-color-primary-80));
   --background-color-transparent-primary-90: var(--sd-background-transparent-primary-90, var(--sd-color-primary-90));
   --background-color-transparent-white-20: var(--sd-background-transparent-white-20, var(--sd-color-white-20));
-  --background-color-transparent-primary-800-90: var(
-    --sd-background-transparent-primary-800-90,
-    var(--sd-color-primary-800-90)
-  );
+  --background-color-transparent-primary-800-90: var(--sd-background-transparent-primary-800-90, var(--sd-color-primary-800-90));
   --text-color-primary: var(--sd-text-primary, var(--sd-color-primary));
   --text-color-white: var(--sd-text-white, var(--sd-color-white));
   --text-color-black: var(--sd-text-black, var(--sd-color-black));
