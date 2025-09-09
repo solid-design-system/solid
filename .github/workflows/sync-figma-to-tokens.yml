@@ -20,7 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ORIGINAL_BRANCH: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.target-branch || github.ref_name }}
-      ARTIFACT_BRANCH: chore/update-figma-tokens-${{ github.run_id }}
 
     # These will inherit from workflow level but can be overridden if needed
     permissions:
@@ -97,31 +96,20 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      # # Switch to the artifact branch, commit only if changes exist
-      # - name: Commit build outputs to artifact branch
-      #   id: commit_step
-      #   run: |
-      #     set -euo pipefail
-      #     git checkout -B "${ARTIFACT_BRANCH}"
-
-      #     # Stage and commit if there are changes
-      #     if [ -n "$(git status --porcelain)" ]; then
-      #       git add -A
-      #       git commit -m "chore: build artifacts from ${ORIGINAL_BRANCH} (${GITHUB_SHA})"
-
-      #       echo "changes=true" >> $GITHUB_OUTPUT
-      #     else
-      #       echo "No changes to commit."
-      #       echo "changes=false" >> $GITHUB_OUTPUT
-      #     fi
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Normalize branch ID
+        id: slug
+        run: |
+          # replace / with -
+          safe_branch=$(echo "${{ env.ORIGINAL_BRANCH }}" | tr '/' '-' | tr '[:upper:]' '[:lower:]')
+          echo "BRANCH_ID=$safe_branch" >> $GITHUB_ENV
+          echo "Original branch: $ORIGINAL_BRANCH"
+          echo "Branch ID: $BRANCH_ID"
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ env.ARTIFACT_BRANCH }}
+          branch: chore/update-figma-tokens-${{ env.BRANCH_ID }}
           base: ${{ env.ORIGINAL_BRANCH }}
           title: ${{ env.PR_TITLE }}
           reviewers: smfonseca,auroraVasconcelos,paulovareiro29,mariohamann,balco0110 
