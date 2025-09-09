@@ -50,7 +50,9 @@ export class TokenProcessingEngine {
         /** TODO: Add to actual variables in figma */
         '--background-color-primary-400: var(--sd-color-primary-400);',
         '--font-weight-normal: 400;',
-        '--font-weight-bold: 700;'
+        '--font-weight-bold: 700;',
+        '--sizing-varspacing: var(--tw-varspacing);',
+        '--spacing-varspacing: var(--tw-varspacing);'
       ],
       utilities: [],
       spacing: [],

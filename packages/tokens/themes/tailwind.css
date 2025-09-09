@@ -12,6 +12,8 @@
   --background-color-primary-400: var(--sd-color-primary-400);
   --font-weight-normal: 400;
   --font-weight-bold: 700;
+  --sizing-varspacing: var(--tw-varspacing);
+  --spacing-varspacing: var(--tw-varspacing);
   --shadow: var(--sd-shadow, 0 1px 3px 0 rgba(81, 81, 81, 0.75));
   --shadow-sm: var(--sd-shadow-sm, 0.5px 0.5px 1.5px 0 rgba(81, 81, 81, 1));
   --transition-duration-fast: var(--sd-duration-fast, 150ms);
