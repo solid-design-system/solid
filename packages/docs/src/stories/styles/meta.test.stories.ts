@@ -80,7 +80,7 @@ export const LightAndInverted = {
       },
       args,
       options: {
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'var(--sd-color-primary)'] }
+        templateBackgrounds: { alternate: 'y', colors: ['var(--sd-color-white)', 'var(--sd-color-primary)'] }
       }
     });
   }

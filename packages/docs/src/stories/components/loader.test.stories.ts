@@ -55,7 +55,7 @@ export const Variants = {
         },
         templateBackgrounds: {
           alternate: 'y',
-          colors: ['', 'var(--sd-color-primary)', '#F6F6F6']
+          colors: ['', 'var(--sd-color-primary)', 'var(--sd-color-neutral-100)']
         }
       },
       args

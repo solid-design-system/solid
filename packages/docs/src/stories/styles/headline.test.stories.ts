@@ -77,7 +77,7 @@ export const Inverted = {
       constants: { type: 'attribute', name: 'sd-headline--inverted', value: true },
       options: {
         templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>',
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'var(--sd-color-primary)'] }
+        templateBackgrounds: { alternate: 'y', colors: ['var(--sd-color-white)', 'var(--sd-color-primary)'] }
       },
       args
     });
