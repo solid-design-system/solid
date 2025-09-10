@@ -1,10 +1,14 @@
-import { readFileSync, writeFileSync } from 'node:fs';
 import { createTailwindV4Plugin, extractThemeBlock } from './tailwind/index.js';
 import { FigmaClient } from './figma/index.js';
 import { OUTPUT_DIR } from './config.js';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { register } from '@tokens-studio/sd-transforms';
+import path from 'node:path';
 import StyleDictionary from 'style-dictionary';
-import variables from '../src/figma-variables/variableTokens.json' with { type: 'json' };
+
+const variables = JSON.parse(
+  readFileSync(path.join(import.meta.dirname, '../src/figma-variables/variableTokens.json'), { encoding: 'utf-8' })
+);
 
 const figma = new FigmaClient('ui-semantic', variables);
 figma.process().save();
@@ -75,7 +79,7 @@ const cssRuns = availableThemes.map(async ({ input, output }) => {
   await themeInstance.buildAllPlatforms();
 
   let file = readFileSync(`${buildPath}/${output}.css`, { encoding: 'utf-8' });
-  let themes = [];
+  const themes = [];
 
   while (true) {
     const theme = extractThemeBlock(file);
