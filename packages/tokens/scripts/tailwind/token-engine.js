@@ -44,7 +44,7 @@ export class TokenProcessingEngine {
   /**
    * Process all tokens using registered processors
    */
-  processTokens(dictionary) {
+  processTokens(dictionary, options) {
     const result = {
       baseVars: [
         /** TODO: Add to actual variables in figma */
@@ -78,7 +78,7 @@ export class TokenProcessingEngine {
       }
 
       try {
-        const processed = processor.process(token, dictionary);
+        const processed = processor.process(token, dictionary, options);
         if (processed) {
           if (Array.isArray(processed)) {
             processed.forEach(item => this.categorizeProcessedToken(item, result));

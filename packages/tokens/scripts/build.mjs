@@ -34,11 +34,12 @@ const config = {
 const availableThemes = [
   {
     input: 'ui-semantic.json',
-    output: 'tailwind'
+    output: 'tailwind',
+    defaultTheme: 'ui-semantic-light'
   }
 ];
 
-const cssRuns = availableThemes.map(async ({ input, output }) => {
+const cssRuns = availableThemes.map(async ({ input, output, defaultTheme }) => {
   const buildPath = config.buildPath;
 
   const themeInstance = await sd.extend({
@@ -50,7 +51,8 @@ const cssRuns = availableThemes.map(async ({ input, output }) => {
             destination: `${output}.css`,
             format: 'tailwind-v4',
             options: {
-              output
+              output,
+              defaultTheme
             }
           }
         ],

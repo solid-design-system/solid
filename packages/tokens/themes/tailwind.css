@@ -54,25 +54,28 @@
     }
   }
   @keyframes loader-color-primary {
-    0%, 100% {
-      color: var(--sd-color-primary, #00358E);
+    0%,
+    100% {
+      color: var(--sd-color-primary, #00358e);
     }
     50% {
-      color: var(--sd-color-primary, #00358E);
+      color: var(--sd-color-primary, #00358e);
       opacity: 20%;
     }
   }
   @keyframes loader-color-white {
-    0%, 100% {
-      color: var(--sd-color-white, #FFFFFF);
+    0%,
+    100% {
+      color: var(--sd-color-white, #ffffff);
     }
     50% {
-      color: var(--sd-color-white, #FFFFFF);
+      color: var(--sd-color-white, #ffffff);
       opacity: 20%;
     }
   }
   @keyframes loader-color-current {
-    0%, 100% {
+    0%,
+    100% {
       color: currentColor;
     }
     50% {
@@ -81,7 +84,9 @@
     }
   }
   @keyframes wave {
-    0%, 40%, 100% {
+    0%,
+    40%,
+    100% {
       transform: initial;
     }
     20% {
@@ -156,12 +161,27 @@
   --background-color-neutral-800: var(--sd-background-neutral-800, var(--sd-color-neutral-800));
   --background-color-info: var(--sd-background-info, var(--sd-color-info));
   --background-color-warning: var(--sd-background-warning, var(--sd-color-warning));
-  --background-color-primary-800-alternative: var(--sd-background-primary-800-alternative, var(--sd-color-primary-800-alternative));
+  --background-color-primary-800-alternative: var(
+    --sd-background-primary-800-alternative,
+    var(--sd-color-primary-800-alternative)
+  );
   --background-color-neutral-400: var(--sd-background-neutral-400, var(--sd-color-neutral-400));
-  --background-color-transparent-primary-100-80: var(--sd-background-transparent-primary-100-80, var(--sd-color-primary-100-80));
-  --background-color-transparent-primary-100-90: var(--sd-background-transparent-primary-100-90, var(--sd-color-primary-100-90));
-  --background-color-transparent-neutral-100-80: var(--sd-background-transparent-neutral-100-80, var(--sd-color-neutral-100-80));
-  --background-color-transparent-neutral-100-90: var(--sd-background-transparent-neutral-100-90, var(--sd-color-neutral-100-90));
+  --background-color-transparent-primary-100-80: var(
+    --sd-background-transparent-primary-100-80,
+    var(--sd-color-primary-100-80)
+  );
+  --background-color-transparent-primary-100-90: var(
+    --sd-background-transparent-primary-100-90,
+    var(--sd-color-primary-100-90)
+  );
+  --background-color-transparent-neutral-100-80: var(
+    --sd-background-transparent-neutral-100-80,
+    var(--sd-color-neutral-100-80)
+  );
+  --background-color-transparent-neutral-100-90: var(
+    --sd-background-transparent-neutral-100-90,
+    var(--sd-color-neutral-100-90)
+  );
   --background-color-transparent-white-90: var(--sd-background-transparent-white-90, var(--sd-color-white-90));
   --background-color-transparent-white-80: var(--sd-background-transparent-white-80, var(--sd-color-white-80));
   --background-color-transparent-primary-10: var(--sd-background-transparent-primary-10, var(--sd-color-primary-10));
@@ -169,7 +189,10 @@
   --background-color-transparent-primary-80: var(--sd-background-transparent-primary-80, var(--sd-color-primary-80));
   --background-color-transparent-primary-90: var(--sd-background-transparent-primary-90, var(--sd-color-primary-90));
   --background-color-transparent-white-20: var(--sd-background-transparent-white-20, var(--sd-color-white-20));
-  --background-color-transparent-primary-800-90: var(--sd-background-transparent-primary-800-90, var(--sd-color-primary-800-90));
+  --background-color-transparent-primary-800-90: var(
+    --sd-background-transparent-primary-800-90,
+    var(--sd-color-primary-800-90)
+  );
   --text-color-primary: var(--sd-text-primary, var(--sd-color-primary));
   --text-color-white: var(--sd-text-white, var(--sd-color-white));
   --text-color-black: var(--sd-text-black, var(--sd-color-black));
@@ -610,78 +633,6 @@
 
 @utility button-inverted-disabled {
   background-color: var(--sd-button-inverted-disabled, var(--sd-color-neutral-600));
-}
-
-@utility selection-control-border-neutral-800 {
-  border-color: var(--sd-selection-control-border-neutral-800, var(--sd-color-primary-200));
-}
-
-@utility brandshape-border-null {
-  border-color: var(--sd-brandshape-border-null, var(--sd-color-white));
-}
-
-@utility brandshape-background-neutral-100 {
-  background-color: var(--sd-brandshape-background-neutral-100, var(--sd-color-null));
-}
-
-@utility brandshape-background-white {
-  background-color: var(--sd-brandshape-background-white, var(--sd-color-null));
-}
-
-@utility button-background-primary-default {
-  background-color: var(--sd-button-background-primary-default, var(--sd-color-white));
-}
-
-@utility button-background-primary-hover {
-  background-color: var(--sd-button-background-primary-hover, var(--sd-color-primary-100));
-}
-
-@utility button-background-primary-pressed {
-  background-color: var(--sd-button-background-primary-pressed, var(--sd-color-primary-200));
-}
-
-@utility button-background-secondary-default {
-  background-color: var(--sd-button-background-secondary-default, var(--sd-color-null));
-}
-
-@utility button-background-secondary-hover {
-  background-color: var(--sd-button-background-secondary-hover, var(--sd-color-primary-200));
-}
-
-@utility button-background-secondary-pressed {
-  background-color: var(--sd-button-background-secondary-pressed, var(--sd-color-primary-500));
-}
-
-@utility button-text-icon-fill-primary-default {
-  fill: var(--sd-button-text-icon-fill-primary-default, var(--sd-color-primary));
-}
-
-@utility button-text-icon-fill-primary-hover {
-  fill: var(--sd-button-text-icon-fill-primary-hover, var(--sd-color-primary-500));
-}
-
-@utility button-text-icon-fill-secondary-default {
-  fill: var(--sd-button-text-icon-fill-secondary-default, var(--sd-color-white));
-}
-
-@utility button-text-icon-fill-secondary-hover {
-  fill: var(--sd-button-text-icon-fill-secondary-hover, var(--sd-color-primary-100));
-}
-
-@utility button-text-icon-fill-secondary-pressed {
-  fill: var(--sd-button-text-icon-fill-secondary-pressed, var(--sd-color-primary-200));
-}
-
-@utility button-border-secondary-default {
-  border-color: var(--sd-button-border-secondary-default, var(--sd-color-white));
-}
-
-@utility button-border-secondary-hover {
-  border-color: var(--sd-button-border-secondary-hover, var(--sd-color-primary-100));
-}
-
-@utility button-border-secondary-pressed {
-  border-color: var(--sd-button-border-secondary-pressed, var(--sd-color-primary-200));
 }
 
 @utility varspacing-* {
