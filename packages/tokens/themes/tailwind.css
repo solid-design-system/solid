@@ -14,8 +14,10 @@
   --font-weight-bold: 700;
   --sizing-varspacing: var(--tw-varspacing);
   --spacing-varspacing: var(--tw-varspacing);
-  --shadow: var(--sd-shadow, 0 1px 3px 0 rgba(81, 81, 81, 0.75));
-  --shadow-sm: var(--sd-shadow-sm, 0.5px 0.5px 1.5px 0 rgba(81, 81, 81, 1));
+  --shadow: var(--sd-shadow, 0 1px 3px rgba(81, 81, 81, 0.75));
+  --drop-shadow: var(--sd-shadow, 0 1px 3px rgba(81, 81, 81, 0.75));
+  --shadow-sm: var(--sd-shadow-sm, 0.5px 0.5px 1.5px rgba(81, 81, 81, 1));
+  --drop-shadow-sm: var(--sd-shadow-sm, 0.5px 0.5px 1.5px rgba(81, 81, 81, 1));
   --transition-duration-fast: var(--sd-duration-fast, 150ms);
   --transition-duration-medium: var(--sd-duration-medium, 300ms);
   --transition-duration-slow: var(--sd-duration-slow, 500ms);
