@@ -352,7 +352,7 @@ export default class SdTooltip extends SolidElement {
       }
 
       sd-popup {
-        --arrow-color: rgb(var(--sd-color-primary, 0 53 142) / 1);
+        --arrow-color: var(--sd-color-primary);
         --arrow-size: 10px;
       }
 

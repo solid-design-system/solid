@@ -301,7 +301,7 @@ export default class SdBrandshape extends SolidElement {
       /* Stylized border */
 
       :host([variant='border-primary']) {
-        --internal-border-color: rgb(var(--sd-color-primary, 0 53 142));
+        --internal-border-color: var(--sd-color-primary);
       }
 
       :host([variant='border-white']) {
