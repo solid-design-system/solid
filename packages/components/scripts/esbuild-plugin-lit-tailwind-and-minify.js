@@ -13,7 +13,7 @@ export async function processTailwind(source, options = { standalone: false, min
   const base = path.resolve(fileURLToPath(import.meta.url), '../../');
 
   const prepend = [
-    `@import 'tailwindcss/preflight';`,
+    `${options.standalone ? '@import' : '@reference'} 'tailwindcss/preflight';`,
     `${options.standalone ? '@import' : '@reference'} '${path.resolve(base, '../tokens/themes/tailwind.css')}';`
   ];
 
