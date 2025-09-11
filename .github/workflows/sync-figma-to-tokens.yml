@@ -112,7 +112,7 @@ jobs:
           branch: chore/update-figma-tokens-${{ env.BRANCH_ID }}
           base: ${{ env.ORIGINAL_BRANCH }}
           title: ${{ env.PR_TITLE }}
-          reviewers: solid-design-system/core-development
+          team-reviewers: solid-design-system/core-development
           assignees: smfonseca,auroraVasconcelos,paulovareiro29,mariohamann,balco0110 
           body: |
             Update tokens from Figma for figma file/branch id: ${{ env.FIGMA_FILE_ID }}
