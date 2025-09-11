@@ -1,45 +1,60 @@
 name: Sync Figma variables to tokens
 
 on:
+  push:
+    branches: ["main", "next", "feat/**", "fix/**"]
   workflow_dispatch:
     inputs:
-      figma_file_id:
-        description: "This can either be a branch_id or the id for the main Figma file"
+      target-branch:
+        description: "Branch to open the PR against"
         required: false
-        default: ""
-      branch_name:
-        description: "The name for the branch, which should be created for the pull request"
-        required: true
-        default: "feat/update-tokens-from-figma"
-      pull_request_name:
-        description: "The name for the pull request. If not provided, a default name will be used."
-        required: true
-        default: "feat: ✨ Update tokens from Figma"
-  push:
-    branches:
-      - main
-      - develop
-      - next        # Added for code freeze periods
-      - feat/**
+        default: "main"
+
+# Add permissions at the workflow level
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   sync-figma-to-tokens:
     runs-on: ubuntu-latest
+    env:
+      ORIGINAL_BRANCH: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.target-branch || github.ref_name }}
+
+    # These will inherit from workflow level but can be overridden if needed
     permissions:
       contents: write
       pull-requests: write
-
-    # Use manual input if provided, otherwise use repo variable (no hardcoded fallback)
-    env:
-      FIGMA_FILE_ID: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.figma_file_id != '') && github.event.inputs.figma_file_id || vars.FIGMA_FILE_ID }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # Important: Use the token with proper permissions
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Validate Figma File ID
+      - name: Set environment variables
+        run: |
+          # Set FIGMA_FILE_ID
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ github.event.inputs.figma_file_id }}" != "" ]]; then
+            echo "FIGMA_FILE_ID=${{ github.event.inputs.figma_file_id }}" >> $GITHUB_ENV
+          else
+            echo "FIGMA_FILE_ID=${{ vars.FIGMA_FILE_ID }}" >> $GITHUB_ENV
+          fi
+         
+          # Set BRANCH_NAME and PR_TITLE based on trigger type
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "BRANCH_NAME=${{ github.event.inputs.branch_name }}" >> $GITHUB_ENV
+            echo "PR_TITLE=${{ github.event.inputs.pull_request_name }}" >> $GITHUB_ENV
+          else
+            # Create unique branch name with timestamp
+            TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+            echo "BRANCH_NAME=feat/update-tokens-from-figma-auto-${TIMESTAMP}" >> $GITHUB_ENV
+            echo "PR_TITLE=feat: ✨ Update tokens from Figma (auto-sync ${TIMESTAMP})" >> $GITHUB_ENV
+          fi
+
+      - name: Validate environment variables
         run: |
           if [ -z "$FIGMA_FILE_ID" ]; then
             echo "❌ FIGMA_FILE_ID is required. Please either:"
@@ -47,7 +62,13 @@ jobs:
             echo "   2. Provide figma_file_id as input when running manually"
             exit 1
           fi
+          if [ -z "$BRANCH_NAME" ]; then
+            echo "❌ BRANCH_NAME is empty"
+            exit 1
+          fi
           echo "✅ Using Figma File ID: $FIGMA_FILE_ID"
+          echo "✅ Using Branch Name: $BRANCH_NAME"
+          echo "✅ Using PR Title: $PR_TITLE"
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -67,5 +88,33 @@ jobs:
           FIGMA_FILE_ID: ${{ env.FIGMA_FILE_ID }}
           FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
 
-      - name: Run existing build process
+      - name: Build theme tokens
         run: pnpm -C ./packages/tokens build
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Normalize branch ID
+        id: slug
+        run: |
+          # replace / with -
+          safe_branch=$(echo "${{ env.ORIGINAL_BRANCH }}" | tr '/' '-' | tr '[:upper:]' '[:lower:]')
+          echo "BRANCH_ID=$safe_branch" >> $GITHUB_ENV
+          echo "Original branch: $ORIGINAL_BRANCH"
+          echo "Branch ID: $BRANCH_ID"
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: chore/update-figma-tokens-${{ env.BRANCH_ID }}
+          base: ${{ env.ORIGINAL_BRANCH }}
+          title: ${{ env.PR_TITLE }}
+          assignees: smfonseca,auroraVasconcelos,paulovareiro29,mariohamann,balco0110 
+          body: |
+            Update tokens from Figma for figma file/branch id: ${{ env.FIGMA_FILE_ID }}
+
+            Triggered by: ${{ github.event_name }}
+            ${{ github.event_name == 'push' && format('Push to branch: {0}', github.ref_name) || '' }}
