@@ -13,8 +13,8 @@ export async function processTailwind(source, options = { minify: false, storybo
   const base = path.resolve(fileURLToPath(import.meta.url), '../../');
 
   const prepend = [
-    `@import '${path.resolve(base, '../tokens/themes/tailwind.css')}';`,
-    `@import 'tailwindcss/preflight';`
+    `@import 'tailwindcss/preflight';`,
+    `@reference '${path.resolve(base, '../tokens/themes/tailwind.css')}';`
   ];
 
   if (options.storybook) {
@@ -106,7 +106,6 @@ export async function processCssTags(source, minify = false) {
 }
 
 export function litTailwindAndMinifyPlugin(options) {
-  let base = options?.base ?? process.cwd();
   let minify = options?.minify ?? false;
 
   const defaultInclude = /\.(ts|js)$/; // Include .ts and .js files
@@ -128,7 +127,7 @@ export function litTailwindAndMinifyPlugin(options) {
         /**
          * Step 1: Process CSS in Lit `css` tagged template literals
          */
-        source = await processCssTags(source, { base, minify });
+        source = await processCssTags(source, { minify });
 
         /**
          * Step 2: Minify HTML literals
