@@ -3,7 +3,7 @@
 @import 'tailwindcss/theme';
 @import 'tailwindcss/utilities';
 
-@source '../../components/src'
+@source '../../components/src';
 
 @custom-variant hover (&:hover:not([disabled]));
 @custom-variant focus (&:focus:not([disabled]));
