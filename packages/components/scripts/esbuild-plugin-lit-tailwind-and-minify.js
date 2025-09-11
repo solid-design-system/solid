@@ -9,12 +9,12 @@ import postcss from 'postcss';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-export async function processTailwind(source, options = { minify: false, storybook: false }) {
+export async function processTailwind(source, options = { standalone: false, minify: false, storybook: false }) {
   const base = path.resolve(fileURLToPath(import.meta.url), '../../');
 
   const prepend = [
     `@import 'tailwindcss/preflight';`,
-    `@reference '${path.resolve(base, '../tokens/themes/tailwind.css')}';`
+    `${options.standalone ? '@import' : '@reference'} '${path.resolve(base, '../tokens/themes/tailwind.css')}';`
   ];
 
   if (options.storybook) {
@@ -93,7 +93,10 @@ export async function processCssTags(source, minify = false) {
   while ((match = cssTagRegex.exec(source)) !== null) {
     const [fullMatch, cssContent] = match;
 
-    const result = await processTailwind(cssContent, { minify });
+    const result = await processTailwind(cssContent, {
+      standalone: source.includes('default class SolidElement'),
+      minify
+    });
     source = source.replace(
       fullMatch,
       `css\`${result
