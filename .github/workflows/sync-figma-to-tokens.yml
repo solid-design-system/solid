@@ -2,7 +2,7 @@ name: Sync Figma variables to tokens
 
 on:
   push:
-    branches: ["main", "next", "feat/**"]
+    branches: ["main", "next", "feat/**", "fix/**"]
   workflow_dispatch:
     inputs:
       target-branch:
