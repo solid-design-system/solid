@@ -9,12 +9,12 @@ import postcss from 'postcss';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-export async function processTailwind(source, options = { minify: false, storybook: false }) {
+export async function processTailwind(source, options = { standalone: false, minify: false, storybook: false }) {
   const base = path.resolve(fileURLToPath(import.meta.url), '../../');
 
   const prepend = [
-    `@import '${path.resolve(base, '../tokens/themes/tailwind.css')}';`,
-    `@import 'tailwindcss/preflight';`
+    `${options.standalone ? '@import' : '@reference'} 'tailwindcss/preflight';`,
+    `${options.standalone ? '@import' : '@reference'} '${path.resolve(base, '../tokens/themes/tailwind.css')}';`
   ];
 
   if (options.storybook) {
@@ -93,7 +93,10 @@ export async function processCssTags(source, minify = false) {
   while ((match = cssTagRegex.exec(source)) !== null) {
     const [fullMatch, cssContent] = match;
 
-    const result = await processTailwind(cssContent, { minify });
+    const result = await processTailwind(cssContent, {
+      standalone: source.includes('default class SolidElement'),
+      minify
+    });
     source = source.replace(
       fullMatch,
       `css\`${result
@@ -106,7 +109,6 @@ export async function processCssTags(source, minify = false) {
 }
 
 export function litTailwindAndMinifyPlugin(options) {
-  let base = options?.base ?? process.cwd();
   let minify = options?.minify ?? false;
 
   const defaultInclude = /\.(ts|js)$/; // Include .ts and .js files
@@ -128,7 +130,7 @@ export function litTailwindAndMinifyPlugin(options) {
         /**
          * Step 1: Process CSS in Lit `css` tagged template literals
          */
-        source = await processCssTags(source, { base, minify });
+        source = await processCssTags(source, { minify });
 
         /**
          * Step 2: Minify HTML literals

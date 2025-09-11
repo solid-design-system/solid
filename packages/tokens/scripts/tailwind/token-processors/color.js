@@ -39,7 +39,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     return token.type === 'color';
   }
 
-  process(token, dictionary) {
+  process(token, dictionary, options) {
     const { path, variant } = this.processTokenPath(token);
     const isCoreColor = this.#isCoreToken(path[0]);
     const isSemicoreColor = this.#isSemicoreToken(path[0]);
@@ -47,25 +47,28 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     const processed = isCoreColor ? this.#processCoreToken(token) : this.#processSemanticToken(token, dictionary);
     const fallback = this.#getFallbackColor(token);
 
-    return [
-      {
+    const cssvariables = [];
+
+    if ((processed.type === 'utility' && variant === options.defaultTheme) || processed.type !== 'utility') {
+      cssvariables.push({
         type: processed.type,
         name: processed.name,
         value: this.cssvar(path.join('-'), this.cssvar(fallback)),
         properties: processed.properties,
         variant: 'default'
-      },
-      ...(isCoreColor || isSemicoreColor
-        ? [
-            {
-              type: 'color',
-              name: this.cssprefix(fallback),
-              value: this.getTokenValue(token),
-              variant
-            }
-          ]
-        : [])
-    ];
+      });
+    }
+
+    if (isCoreColor || isSemicoreColor) {
+      cssvariables.push({
+        type: 'color',
+        name: this.cssprefix(fallback),
+        value: this.getTokenValue(token),
+        variant
+      });
+    }
+
+    return cssvariables;
   }
 
   #isCoreToken(token) {

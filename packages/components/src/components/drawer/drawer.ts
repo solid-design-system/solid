@@ -319,8 +319,8 @@ export default class SdDrawer extends SolidElement {
           class=${cx(
             'absolute flex flex-col gap-4 z-10 max-w-full max-h-full bg-white shadow-lg overflow-auto pointer-events-auto focus:outline-none',
             {
-              end: 'top-0 end-0 bottom-auto start-auto w-[--width] h-full',
-              start: 'top-0 end-auto bottom-auto start-0 w-[--width] h-full'
+              end: 'top-0 end-0 bottom-auto start-auto w-[var(--width)] h-full',
+              start: 'top-0 end-auto bottom-auto start-0 w-[var(--width)] h-full'
             }[this.placement]
           )}
           role="dialog"

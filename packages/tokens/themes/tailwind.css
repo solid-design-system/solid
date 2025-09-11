@@ -12,8 +12,12 @@
   --background-color-primary-400: var(--sd-color-primary-400);
   --font-weight-normal: 400;
   --font-weight-bold: 700;
-  --shadow: var(--sd-shadow, 0 1px 3px 0 rgba(81, 81, 81, 0.75));
-  --shadow-sm: var(--sd-shadow-sm, 0.5px 0.5px 1.5px 0 rgba(81, 81, 81, 1));
+  --sizing-varspacing: var(--tw-varspacing);
+  --spacing-varspacing: var(--tw-varspacing);
+  --shadow: var(--sd-shadow, 0 1px 3px rgba(81, 81, 81, 0.75));
+  --drop-shadow: var(--sd-shadow, 0 1px 3px rgba(81, 81, 81, 0.75));
+  --shadow-sm: var(--sd-shadow-sm, 0.5px 0.5px 1.5px rgba(81, 81, 81, 1));
+  --drop-shadow-sm: var(--sd-shadow-sm, 0.5px 0.5px 1.5px rgba(81, 81, 81, 1));
   --transition-duration-fast: var(--sd-duration-fast, 150ms);
   --transition-duration-medium: var(--sd-duration-medium, 300ms);
   --transition-duration-slow: var(--sd-duration-slow, 500ms);
@@ -606,78 +610,6 @@
 
 @utility button-inverted-disabled {
   background-color: var(--sd-button-inverted-disabled, var(--sd-color-neutral-600));
-}
-
-@utility selection-control-border-neutral-800 {
-  border-color: var(--sd-selection-control-border-neutral-800, var(--sd-color-primary-200));
-}
-
-@utility brandshape-border-null {
-  border-color: var(--sd-brandshape-border-null, var(--sd-color-white));
-}
-
-@utility brandshape-background-neutral-100 {
-  background-color: var(--sd-brandshape-background-neutral-100, var(--sd-color-null));
-}
-
-@utility brandshape-background-white {
-  background-color: var(--sd-brandshape-background-white, var(--sd-color-null));
-}
-
-@utility button-background-primary-default {
-  background-color: var(--sd-button-background-primary-default, var(--sd-color-white));
-}
-
-@utility button-background-primary-hover {
-  background-color: var(--sd-button-background-primary-hover, var(--sd-color-primary-100));
-}
-
-@utility button-background-primary-pressed {
-  background-color: var(--sd-button-background-primary-pressed, var(--sd-color-primary-200));
-}
-
-@utility button-background-secondary-default {
-  background-color: var(--sd-button-background-secondary-default, var(--sd-color-null));
-}
-
-@utility button-background-secondary-hover {
-  background-color: var(--sd-button-background-secondary-hover, var(--sd-color-primary-200));
-}
-
-@utility button-background-secondary-pressed {
-  background-color: var(--sd-button-background-secondary-pressed, var(--sd-color-primary-500));
-}
-
-@utility button-text-icon-fill-primary-default {
-  fill: var(--sd-button-text-icon-fill-primary-default, var(--sd-color-primary));
-}
-
-@utility button-text-icon-fill-primary-hover {
-  fill: var(--sd-button-text-icon-fill-primary-hover, var(--sd-color-primary-500));
-}
-
-@utility button-text-icon-fill-secondary-default {
-  fill: var(--sd-button-text-icon-fill-secondary-default, var(--sd-color-white));
-}
-
-@utility button-text-icon-fill-secondary-hover {
-  fill: var(--sd-button-text-icon-fill-secondary-hover, var(--sd-color-primary-100));
-}
-
-@utility button-text-icon-fill-secondary-pressed {
-  fill: var(--sd-button-text-icon-fill-secondary-pressed, var(--sd-color-primary-200));
-}
-
-@utility button-border-secondary-default {
-  border-color: var(--sd-button-border-secondary-default, var(--sd-color-white));
-}
-
-@utility button-border-secondary-hover {
-  border-color: var(--sd-button-border-secondary-hover, var(--sd-color-primary-100));
-}
-
-@utility button-border-secondary-pressed {
-  border-color: var(--sd-button-border-secondary-pressed, var(--sd-color-primary-200));
 }
 
 @utility varspacing-* {

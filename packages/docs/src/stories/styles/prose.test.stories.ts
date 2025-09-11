@@ -707,7 +707,7 @@ export const Inverted = {
           </style>
           <div class="%CLASSES%">${args['default-slot'] || content}</div>
         </div>`,
-        templateBackgrounds: { alternate: 'x', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+        templateBackgrounds: { alternate: 'x', colors: ['white', 'var(--sd-color-primary)'] }
       },
       args
     });

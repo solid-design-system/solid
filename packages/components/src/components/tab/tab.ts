@@ -88,7 +88,7 @@ export default class SdTab extends SolidElement {
         part="base"
         class=${cx(
           'inline-flex justify-center min-w-max items-center h-12 px-3 leading-none select-none cursor-pointer group relative',
-          'focus-visible:focus-outline outline-2 !-outline-offset-2 transition-all duration-fast ease-in-out',
+          'outline-hidden focus-visible:focus-outline outline-2 !-outline-offset-2 transition-all duration-fast ease-in-out',
           this.variant === 'container' && 'tab-container-border bg-white rounded-[4px_4px_0_0]',
           this.variant === 'container' && this.active && 'tab--active-container-border bg-white',
           this.disabled || this.visuallyDisabled ? '!cursor-not-allowed' : 'hover:bg-neutral-200',

@@ -1,5 +1,8 @@
 import { prefixReferences } from './utils.js';
-import legacy from '../../src/tokens.json' with { type: 'json' };
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
+
+const legacy = JSON.parse(readFileSync(path.join(import.meta.dirname, '../../src/tokens.json'), { encoding: 'utf-8' }));
 
 export class FigmaLegacyTokens {
   constructor() {
@@ -202,17 +205,17 @@ export class FigmaLegacyTokens {
       parent[leafKey] = value;
     }
 
-    function walk(node, path = []) {
+    function walk(node, nodepath = []) {
       if (node && typeof node === 'object' && !Array.isArray(node)) {
         if (Object.prototype.hasOwnProperty.call(node, 'type') && typeof node.type === 'string') {
           if (node.type === type) {
-            setAtPath(result, path, node);
+            setAtPath(result, nodepath, node);
           }
           return;
         }
 
         for (const key of Object.keys(node)) {
-          walk(node[key], path.concat(key));
+          walk(node[key], nodepath.concat(key));
         }
       }
     }

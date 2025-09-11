@@ -44,13 +44,15 @@ export class TokenProcessingEngine {
   /**
    * Process all tokens using registered processors
    */
-  processTokens(dictionary) {
+  processTokens(dictionary, options) {
     const result = {
       baseVars: [
         /** TODO: Add to actual variables in figma */
         '--background-color-primary-400: var(--sd-color-primary-400);',
         '--font-weight-normal: 400;',
-        '--font-weight-bold: 700;'
+        '--font-weight-bold: 700;',
+        '--sizing-varspacing: var(--tw-varspacing);',
+        '--spacing-varspacing: var(--tw-varspacing);'
       ],
       utilities: [],
       spacing: [],
@@ -76,7 +78,7 @@ export class TokenProcessingEngine {
       }
 
       try {
-        const processed = processor.process(token, dictionary);
+        const processed = processor.process(token, dictionary, options);
         if (processed) {
           if (Array.isArray(processed)) {
             processed.forEach(item => this.categorizeProcessedToken(item, result));

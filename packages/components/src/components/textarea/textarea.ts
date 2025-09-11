@@ -415,7 +415,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               part="textarea"
               id="input"
               class=${cx(
-                'ps-4 flex-grow focus:outline-none bg-transparent placeholder-neutral-700 resize-none group-has-[sd-icon]:pe-8',
+                'ps-4 flex-grow focus:outline-none bg-transparent placeholder:text-neutral-700 resize-none group-has-[sd-icon]:pe-8',
                 {
                   sm: 'py-1',
                   md: 'py-1',

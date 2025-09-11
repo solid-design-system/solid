@@ -19,21 +19,27 @@ export class ShadowTokenProcessor extends BaseTokenProcessor {
 
     const formatted = this.getFormattedValue({ name, value });
 
-    return {
-      type: 'shadow',
-      name: `--${name}`,
-      value: `var(${formatted.variable}, ${formatted.value})`
-    };
+    return [
+      {
+        type: 'shadow',
+        name: `--${name}`,
+        value: `var(${formatted.variable}, ${formatted.value})`
+      },
+      {
+        type: 'shadow',
+        name: `--drop-${name}`,
+        value: `var(${formatted.variable}, ${formatted.value})`
+      }
+    ];
   }
 
   /**
    * Format a shadow object into CSS shadow syntax
    */
   formatShadow(shadow) {
-    const { offsetX = '0', offsetY = '0', blur = '0', spread = '0', color = 'transparent' } = shadow;
+    const { offsetX = '0', offsetY = '0', blur = '0', color = 'transparent' } = shadow;
 
-    const parts = [offsetX, offsetY, blur, spread, color].filter(Boolean);
-
+    const parts = [offsetX, offsetY, blur, color].filter(Boolean);
     return parts.join(' ');
   }
 }

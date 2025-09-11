@@ -12,9 +12,9 @@ export class TailwindV4Plugin {
   /**
    * Process dictionary and generate CSS output
    */
-  format(dictionary) {
+  format(dictionary, options) {
     try {
-      const processedTokens = this.engine.processTokens(dictionary);
+      const processedTokens = this.engine.processTokens(dictionary, options);
       return this.generator.generate(processedTokens);
     } catch (error) {
       console.error('Error in TailwindV4Plugin.format:', error);
@@ -29,8 +29,8 @@ export class TailwindV4Plugin {
 export function createTailwindV4Plugin(options = {}) {
   const plugin = new TailwindV4Plugin(options);
 
-  return function ({ dictionary }) {
-    return plugin.format(dictionary);
+  return function ({ dictionary, options: pluginOptions }) {
+    return plugin.format(dictionary, pluginOptions);
   };
 }
 /**
