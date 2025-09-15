@@ -8,8 +8,8 @@ import type { IconLibrary } from './library';
 //
 export const icons = {
   'status-check': `
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-      <path fill="currentColor" fill-rule="evenodd" d="m18.18 4.903-.037-.022a1.164 1.164 0 0 0-1.58.368l-6.448 10.942-3.379-3.37a1.167 1.167 0 0 0-1.649 1.649l4.447 4.445c.204.215.488.35.804.362h.169a1.17 1.17 0 0 0 .825-.555l.004-.006.002-.003 7.224-12.226a1.165 1.165 0 0 0-.374-1.58l-.009-.004Z" clip-rule="evenodd"/>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 12">
+      <path d="M9.202 2.228a.832.832 0 0 0-1.14.274v.003L5.006 7.691 3.542 6.23a.834.834 0 0 0-1.178 1.178L4.586 9.63a.83.83 0 0 0 .579.258h.107a.836.836 0 0 0 .609-.399l.002-.004 3.611-6.11a.833.833 0 0 0-.287-1.145l-.005-.002Z"/>
     </svg>
   `,
   'status-exclamation': `
