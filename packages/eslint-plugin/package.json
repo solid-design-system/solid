@@ -45,13 +45,13 @@
     "plop": "^4.0.1",
     "ts-jest": "^29.4.1",
     "ts-node": "^10.9.2",
-    "typescript": "5.8.3"
+    "typescript": "5.9.2"
   },
   "peerDependencies": {
-    "@html-eslint/parser": "^0.44.0",
+    "@html-eslint/parser": "^0.46.2",
     "eslint": "^9.18.0"
   },
   "dependencies": {
-    "@html-eslint/parser": "^0.44.0"
+    "@html-eslint/parser": "^0.46.2"
   }
 }
