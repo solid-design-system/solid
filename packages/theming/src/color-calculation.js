@@ -154,12 +154,12 @@ export const calculateColorsForType = (type, theme, colors, useNormalizedLuminan
  * console.log(cssProperties); // Outputs CSS custom properties as a string
  */
 export const calculateColorsAsCss = (colors, theme, useNormalizedLuminanceMap, useForcedShades) => {
-  let allTokens = `:root, .custom-theme {\n  /* Copy & paste into your theme */\n`;
+  let allTokens = `:root, .sd-custom-theme {\n  /* Copy & paste into your theme */\n`;
 
   Object.keys(colors).forEach(type => {
     if (type === 'black' || type === 'white') {
       // Add the color directly without generating shades
-      allTokens += `  --sd-color-${type}: ${chroma(colors[type]).rgb().join(' ')};\n`;
+      allTokens += `  --sd-color-${type}: ${chroma(colors[type]).hex()};\n`;
     } else {
       allTokens += calculateColorsForType(type, theme, colors, useNormalizedLuminanceMap, useForcedShades);
     }

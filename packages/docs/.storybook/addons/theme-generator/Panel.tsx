@@ -24,7 +24,9 @@ export const Panel: React.FC<PanelProps> = (props: PanelProps) => {
   const [hexInputs, setHexInputs] = useState({
     primary: PANEL_DEFAULTS.colors.primary,
     accent: PANEL_DEFAULTS.colors.accent,
-    neutral: PANEL_DEFAULTS.colors.neutral
+    neutral: PANEL_DEFAULTS.colors.neutral,
+    black: PANEL_DEFAULTS.colors.black,
+    white: PANEL_DEFAULTS.colors.white
   });
 
   const refreshAndUpdateGlobal = () => {
@@ -77,7 +79,7 @@ export const Panel: React.FC<PanelProps> = (props: PanelProps) => {
     <AddonPanel {...props}>
       <div style={{ padding: '20px' }}>
         <h2>Solid Theme Generator</h2>
-        {['primary', 'accent', 'neutral'].map(colorKey => (
+        {['primary', 'accent', 'neutral', 'black', 'white'].map(colorKey => (
           <div style={{ display: 'flex', alignItems: 'center', marginTop: '8px' }}>
             <label style={{ width: '60px', display: 'inline-block' }}>
               {colorKey.charAt(0).toUpperCase() + colorKey.slice(1)}

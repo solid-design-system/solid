@@ -25,7 +25,7 @@ function displayToolState(selector: string, customThemeActive: boolean, customTh
 
   // If customThemeActive is false, remove the style tag if it exists
   if (!customThemeActive) {
-    document.getElementById('storybook-root')?.classList.remove(PANEL_THEME_NAME);
+    document.body.classList.remove(PANEL_THEME_NAME);
     if (styleTag) {
       styleTag.remove();
     }
@@ -40,5 +40,5 @@ function displayToolState(selector: string, customThemeActive: boolean, customTh
   }
 
   styleTag.innerHTML = customTheme;
-  document.getElementById('storybook-root')?.classList.add(PANEL_THEME_NAME);
+  document.body.classList.add(PANEL_THEME_NAME);
 }
