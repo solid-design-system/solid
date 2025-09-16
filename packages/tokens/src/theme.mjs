@@ -35,9 +35,7 @@ const extractUtilities = css => {
 
 const tailwind = readFileSync(path.join(process.cwd(), '../tokens/themes/tailwind.css'), { encoding: 'utf-8' });
 
-const theme = {
+export default {
   base: extractBase(tailwind),
   utilities: extractUtilities(tailwind)
 };
-
-module.exports = theme;

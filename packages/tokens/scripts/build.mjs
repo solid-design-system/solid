@@ -1,10 +1,12 @@
 import { createTailwindV4Plugin, extractThemeBlock } from './tailwind/index.js';
 import { FigmaClient } from './figma/index.js';
+import { fileURLToPath } from 'url';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { OUTPUT_DIR } from './config.js';
-import { readFileSync, writeFileSync } from 'node:fs';
 import { register } from '@tokens-studio/sd-transforms';
 import path from 'node:path';
 import StyleDictionary from 'style-dictionary';
+import tailwindtheme from '../src/theme.mjs';
 
 const variables = JSON.parse(
   readFileSync(path.join(import.meta.dirname, '../src/figma-variables/variableTokens.json'), { encoding: 'utf-8' })
@@ -106,3 +108,8 @@ const cssRuns = availableThemes.map(async ({ input, output, defaultTheme }) => {
 });
 
 await Promise.all(cssRuns);
+
+// --- Build dist theme.js ---
+const dist = path.resolve(fileURLToPath(import.meta.url), '../../dist');
+mkdirSync(dist, { recursive: true });
+writeFileSync(path.resolve(dist, './theme.js'), `export default ${JSON.stringify(tailwindtheme)}`);
