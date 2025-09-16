@@ -1,28 +1,20 @@
 import type { Renderer, PartialStoryFn as StoryFunction, StoryContext } from 'storybook/internal/types';
-import { useEffect, useGlobals, addons } from 'storybook/preview-api';
-import { PARAM_KEY, PANEL_DEFAULTS } from './constants';
-import { calculateColorsAsCss } from '@solid-design-system/theming';
+import { useEffect, useGlobals } from 'storybook/preview-api';
+import { PANEL_THEME_NAME, PARAM_KEY } from './constants';
 
 export const withGlobals = (StoryFn: StoryFunction<Renderer>, context: StoryContext<Renderer>) => {
   const [globals] = useGlobals();
 
-  const panelStateStr = globals[PARAM_KEY + '_STATE'];
-  const panelState = panelStateStr ? JSON.parse(panelStateStr) : null;
+  const panelState = globals[PARAM_KEY + '_STATE'];
+  const customThemeActive = globals[PARAM_KEY];
+  const customTheme = panelState?.output;
 
-  // const customThemeActive = globals[PARAM_KEY];
-  // let customTheme = calculateColorsAsCss(
-  //   panelState?.colors || PANEL_DEFAULTS.colors,
-  //   theme,
-  //   panelState?.useNormalizedLuminanceMap || PANEL_DEFAULTS.useNormalizedLuminanceMap,
-  //   panelState?.useForcedShades || PANEL_DEFAULTS.useForcedShades
-  // );
+  const isInDocs = context.viewMode === 'docs';
 
-  // const isInDocs = context.viewMode === 'docs';
-
-  // useEffect(() => {
-  //   const selector = isInDocs ? `#anchor--${context.id} .sb-story` : '#storybook-root';
-  //   displayToolState(selector, customThemeActive, customTheme);
-  // }, [customThemeActive, customTheme]);
+  useEffect(() => {
+    const selector = isInDocs ? `#anchor--${context.id} .sb-story` : '#storybook-root';
+    displayToolState(selector, customThemeActive, customTheme);
+  }, [customThemeActive, customTheme]);
 
   return StoryFn(context);
 };
@@ -33,10 +25,11 @@ function displayToolState(selector: string, customThemeActive: boolean, customTh
 
   // If customThemeActive is false, remove the style tag if it exists
   if (!customThemeActive) {
+    document.getElementById('storybook-root')?.classList.remove(PANEL_THEME_NAME);
     if (styleTag) {
       styleTag.remove();
     }
-    return; // Exit early
+    return;
   }
 
   // If customThemeActive is true, update or create the style tag
@@ -47,4 +40,5 @@ function displayToolState(selector: string, customThemeActive: boolean, customTh
   }
 
   styleTag.innerHTML = customTheme;
+  document.getElementById('storybook-root')?.classList.add(PANEL_THEME_NAME);
 }

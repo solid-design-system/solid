@@ -1,19 +1,43 @@
 import { readFileSync } from 'node:fs';
 import path from 'path';
 
-const extractBase = css => {
-  const blocks = [...css.matchAll(/@theme\s*\{([\s\S]*?)\}/g)].map(m => m[1]);
+const extractBlock = (css, selector) => {
+  const startIndex = css.indexOf(selector);
+  if (startIndex === -1) return null;
 
-  const variables = [];
-  for (const block of blocks) {
-    for (const m of block.matchAll(/--([a-z0-9-_\\/.]+)\s*:\s*([^;]+);/gi)) {
-      const name = m[1];
-      const value = m[2].trim();
-      variables.push({ name, value });
+  const openIndex = css.indexOf('{', startIndex);
+  if (openIndex === -1) return null;
+
+  let depth = 0;
+  let endIndex = -1;
+
+  for (let i = openIndex; i < css.length; i++) {
+    if (css[i] === '{') {
+      depth++;
+    } else if (css[i] === '}') {
+      depth--;
+      if (depth === 0) {
+        endIndex = i;
+        break;
+      }
     }
   }
 
-  return variables;
+  if (endIndex === -1) return null;
+  return css.slice(openIndex + 1, endIndex).trim();
+};
+
+const extractVariables = (css, selector) => {
+  const block = extractBlock(css, selector);
+
+  return block
+    .split('\n')
+    .map(variable => {
+      const [name, value] = variable.trim().split(':');
+      if (!name.startsWith('--')) return null;
+      return { name: name.replace('--', '').trim(), value: value?.trim() };
+    })
+    .filter(Boolean);
 };
 
 const extractUtilities = css => {
@@ -33,9 +57,12 @@ const extractUtilities = css => {
   });
 };
 
-const tailwind = readFileSync(path.join(process.cwd(), '../tokens/themes/tailwind.css'), { encoding: 'utf-8' });
+const dir = path.join(process.cwd(), '../tokens/themes');
+const tailwind = readFileSync(path.join(dir, './tailwind.css'), { encoding: 'utf-8' });
+const theme = readFileSync(path.join(dir, './sd-ui-semantic-light.css'), { encoding: 'utf-8' });
 
 export default {
-  base: extractBase(tailwind),
-  utilities: extractUtilities(tailwind)
+  base: extractVariables(tailwind, '@theme inline'),
+  utilities: extractUtilities(tailwind),
+  theme: extractVariables(theme, ':root, .sd-ui-semantic-light')
 };

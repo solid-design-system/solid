@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { AddonPanel, Form } from 'storybook/internal/components';
 import { PARAM_KEY, PANEL_DEFAULTS } from './constants';
-import { useGlobals, useStorybookState } from 'storybook/manager-api';
+import { addons, useGlobals } from 'storybook/manager-api';
 import { calculateColorsAsCss } from '@solid-design-system/theming';
 import theme from '../../../../tokens/dist/theme.js';
-import { addons } from 'storybook/preview-api';
+import { FORCE_RE_RENDER } from 'storybook/internal/core-events';
 
 const { Textarea, Button } = Form;
 
@@ -12,12 +12,11 @@ interface PanelProps {
   active: boolean;
 }
 
-export const Panel: React.FC<PanelProps> = props => {
+export const Panel: React.FC<PanelProps> = (props: PanelProps) => {
   const [useNormalizedLuminanceMap, setUseNormalizedLuminanceMap] = useState(PANEL_DEFAULTS.useNormalizedLuminanceMap);
   const [useForcedShades, setUseForcedShades] = useState(PANEL_DEFAULTS.useForcedShades);
 
   const [colors, setColors] = useState(PANEL_DEFAULTS.colors);
-  console.log('theme', theme);
   const [output, setOutput] = useState('');
   const [globals, updateGlobals] = useGlobals();
   const isActive = globals[PARAM_KEY] || false;
@@ -27,6 +26,19 @@ export const Panel: React.FC<PanelProps> = props => {
     accent: PANEL_DEFAULTS.colors.accent,
     neutral: PANEL_DEFAULTS.colors.neutral
   });
+
+  const refreshAndUpdateGlobal = () => {
+    (updateGlobals({
+      [PARAM_KEY + '_STATE']: {
+        colors,
+        output,
+        useNormalizedLuminanceMap,
+        useForcedShades
+      }
+    }),
+      // Invokes Storybook's addon API method (with the FORCE_RE_RENDER) event to trigger a UI refresh
+      addons.getChannel().emit(FORCE_RE_RENDER));
+  };
 
   const useDebouncedEffect = (effect, delay, deps) => {
     const callback = useCallback(effect, deps);
@@ -41,24 +53,25 @@ export const Panel: React.FC<PanelProps> = props => {
     }, [callback, delay]);
   };
 
-  // useEffect(() => {
-  //   setOutput(calculateColorsAsCss(colors, theme, useNormalizedLuminanceMap, useForcedShades));
-  // }, [colors, useNormalizedLuminanceMap, useForcedShades]);
+  useEffect(() => {
+    setOutput(calculateColorsAsCss(colors, theme, useNormalizedLuminanceMap, useForcedShades));
+  }, [colors, useNormalizedLuminanceMap, useForcedShades]);
 
   useDebouncedEffect(
-    () => {
-      const panelState = {
-        colors,
-        useNormalizedLuminanceMap,
-        useForcedShades
-      };
+    () =>
       updateGlobals({
-        [PARAM_KEY + '_STATE']: JSON.stringify(panelState)
-      });
-    },
+        [PARAM_KEY + '_STATE']: {
+          colors,
+          output,
+          useNormalizedLuminanceMap,
+          useForcedShades
+        }
+      }),
     500,
     [colors, useNormalizedLuminanceMap, useForcedShades]
   );
+
+  useEffect(() => refreshAndUpdateGlobal(), [isActive]);
 
   return (
     <AddonPanel {...props}>
@@ -141,7 +154,7 @@ export const Panel: React.FC<PanelProps> = props => {
         </div>
 
         <Textarea
-          style={{ marginTop: '16px', fontFamily: 'monospace', width: '400px', height: '600px' }}
+          style={{ marginTop: '16px', fontFamily: 'monospace', width: '400px', height: 600 }}
           readOnly
           value={output || ''}
         />
