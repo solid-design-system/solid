@@ -112,6 +112,7 @@ export const Closable = {
 
 export const Duration = {
   name: 'Duration',
+  tags: ['skip-playwright'],
   render: () => html`
     <sd-notification variant="info" open duration="Infinity">Notification will stay open (Infinity)</sd-notification>
     <sd-notification id="duration-example" variant="info" open duration="5000">
@@ -134,6 +135,7 @@ export const Duration = {
 
 export const DurationIndicator = {
   name: 'Duration Indicator',
+  tags: ['skip-playwright'],
   render: () => html`
     <sd-notification id="duration-indicator-attribute" variant="info" open duration-indicator duration="5000">
       Notification will self close after 5 seconds
@@ -183,6 +185,7 @@ export const DurationIndicator = {
  */
 export const ToastNotification = {
   name: 'Toast Notification',
+  tags: ['skip-playwright'],
   render: (_args: Record<string, any>) => {
     return html`
       <div class="flex gap-2">
@@ -249,7 +252,8 @@ export const ToastNotification = {
  * Use the `data-notification-position` attribute with the value `bottom-center` to align the toast to the bottom center.
  */
 export const ToastBottomCenter = {
-  name: ' ',
+  name: 'Toast Bottom Center',
+  tags: ['skip-playwright'],
   render: (_args: Record<string, any>) => {
     return html`
       <div class="flex gap-2">

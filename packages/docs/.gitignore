@@ -29,3 +29,9 @@ public
 axe-reports
 
 .storybook/solid-tw-configuration.json
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

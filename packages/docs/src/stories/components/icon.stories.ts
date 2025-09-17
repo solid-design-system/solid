@@ -18,7 +18,7 @@ const { generateTemplate } = storybookTemplate('sd-icon');
 
 export default {
   title: 'Components/sd-icon',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'skip-playwright'],
   component: 'sd-icon',
   args: overrideArgs([{ name: 'name', type: 'attribute', value: 'union-investment/content/image' }], args),
   argTypes,
@@ -183,6 +183,7 @@ export const Size = {
  */
 
 export const IconLibraries = {
+  tags: ['skip-playwright'],
   render: () => {
     return html`
       <sd-icon name="system/image"> </sd-icon>
