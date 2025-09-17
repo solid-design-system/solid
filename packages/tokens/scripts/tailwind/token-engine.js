@@ -41,6 +41,22 @@ export class TokenProcessingEngine {
     return Array.from(this.processors.values());
   }
 
+  sortTokens(target) {
+    const result = { ...target };
+
+    for (const [key, value] of Object.entries(result)) {
+      if (!Array.isArray(value)) {
+        result[key] = value;
+        continue;
+      }
+
+      const comparator = value.every(v => typeof v === 'number') ? (a, b) => a - b : undefined;
+      result[key] = value.sort(comparator);
+    }
+
+    return result;
+  }
+
   /**
    * Process all tokens using registered processors
    */
@@ -91,7 +107,7 @@ export class TokenProcessingEngine {
       }
     }
 
-    return result;
+    return this.sortTokens(result);
   }
 
   /**
