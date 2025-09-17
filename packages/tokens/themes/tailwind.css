@@ -158,6 +158,7 @@
   --background-color-warning: var(--sd-background-warning, var(--sd-color-warning));
   --background-color-primary-800-alternative: var(--sd-background-primary-800-alternative, var(--sd-color-primary-800-alternative));
   --background-color-neutral-400: var(--sd-background-neutral-400, var(--sd-color-neutral-400));
+  --background-color-primary-400: var(--sd-background-primary-400, var(--sd-color-primary-400));
   --background-color-transparent-primary-100-80: var(--sd-background-transparent-primary-100-80, var(--sd-color-primary-100-80));
   --background-color-transparent-primary-100-90: var(--sd-background-transparent-primary-100-90, var(--sd-color-primary-100-90));
   --background-color-transparent-neutral-100-80: var(--sd-background-transparent-neutral-100-80, var(--sd-color-neutral-100-80));
@@ -448,8 +449,12 @@
   background-color: var(--sd-button-background-primary-pressed, var(--sd-color-primary-800));
 }
 
+@utility button-background-primary-disabled {
+  background-color: var(--sd-button-background-primary-disabled, var(--sd-color-neutral-400));
+}
+
 @utility button-background-secondary-default {
-  background-color: var(--sd-button-background-secondary-default, var(--sd-color-white));
+  background-color: var(--sd-button-background-secondary-default, var(--sd-color-null));
 }
 
 @utility button-background-secondary-hover {
@@ -458,6 +463,10 @@
 
 @utility button-background-secondary-pressed {
   background-color: var(--sd-button-background-secondary-pressed, var(--sd-color-primary-200));
+}
+
+@utility button-background-secondary-disabled {
+  background-color: var(--sd-button-background-secondary-disabled, var(--sd-color-null));
 }
 
 @utility button-background-cta-default {
@@ -472,6 +481,26 @@
   background-color: var(--sd-button-background-cta-pressed, var(--sd-color-accent-700));
 }
 
+@utility button-background-cta-disabled {
+  background-color: var(--sd-button-background-cta-disabled, var(--sd-color-neutral-400));
+}
+
+@utility button-background-tertiary-default {
+  background-color: var(--sd-button-background-tertiary-default, var(--sd-color-null));
+}
+
+@utility button-background-tertiary-hover {
+  background-color: var(--sd-button-background-tertiary-hover, var(--sd-color-primary-100));
+}
+
+@utility button-background-tertiary-pressed {
+  background-color: var(--sd-button-background-tertiary-pressed, var(--sd-color-primary-200));
+}
+
+@utility button-background-tertiary-disabled {
+  background-color: var(--sd-button-background-tertiary-disabled, var(--sd-color-null));
+}
+
 @utility button-text-icon-fill-primary-default {
   fill: var(--sd-button-text-icon-fill-primary-default, var(--sd-color-white));
 }
@@ -482,6 +511,10 @@
 
 @utility button-text-icon-fill-primary-pressed {
   fill: var(--sd-button-text-icon-fill-primary-pressed, var(--sd-color-primary-200));
+}
+
+@utility button-text-icon-fill-primary-disabled {
+  fill: var(--sd-button-text-icon-fill-primary-disabled, var(--sd-color-white));
 }
 
 @utility button-text-icon-fill-secondary-default {
@@ -496,6 +529,10 @@
   fill: var(--sd-button-text-icon-fill-secondary-pressed, var(--sd-color-primary-800));
 }
 
+@utility button-text-icon-fill-secondary-disabled {
+  fill: var(--sd-button-text-icon-fill-secondary-disabled, var(--sd-color-neutral-500));
+}
+
 @utility button-text-icon-fill-cta-default {
   fill: var(--sd-button-text-icon-fill-cta-default, var(--sd-color-white));
 }
@@ -506,6 +543,26 @@
 
 @utility button-text-icon-fill-cta-pressed {
   fill: var(--sd-button-text-icon-fill-cta-pressed, var(--sd-color-white));
+}
+
+@utility button-text-icon-fill-cta-disabled {
+  fill: var(--sd-button-text-icon-fill-cta-disabled, var(--sd-color-white));
+}
+
+@utility button-text-icon-fill-tertiary-default {
+  fill: var(--sd-button-text-icon-fill-tertiary-default, var(--sd-color-primary));
+}
+
+@utility button-text-icon-fill-tertiary-hover {
+  fill: var(--sd-button-text-icon-fill-tertiary-hover, var(--sd-color-primary-500));
+}
+
+@utility button-text-icon-fill-tertiary-pressed {
+  fill: var(--sd-button-text-icon-fill-tertiary-pressed, var(--sd-color-primary-800));
+}
+
+@utility button-text-icon-fill-tertiary-disabled {
+  fill: var(--sd-button-text-icon-fill-tertiary-disabled, var(--sd-color-neutral-500));
 }
 
 @utility button-border-secondary-default {
@@ -520,8 +577,24 @@
   border-color: var(--sd-button-border-secondary-pressed, var(--sd-color-primary-800));
 }
 
-@utility button-disabled {
-  background-color: var(--sd-button-disabled, var(--sd-color-neutral-500));
+@utility button-border-secondary-disabled {
+  border-color: var(--sd-button-border-secondary-disabled, var(--sd-color-neutral-400));
+}
+
+@utility button-border-tertiary-default {
+  border-color: var(--sd-button-border-tertiary-default, var(--sd-color-null));
+}
+
+@utility button-border-tertiary-hover {
+  border-color: var(--sd-button-border-tertiary-hover, var(--sd-color-null));
+}
+
+@utility button-border-tertiary-pressed {
+  border-color: var(--sd-button-border-tertiary-pressed, var(--sd-color-null));
+}
+
+@utility button-border-tertiary-disabled {
+  border-color: var(--sd-button-border-tertiary-disabled, var(--sd-color-null));
 }
 
 @utility button-inverted-background-primary-default {
@@ -536,6 +609,10 @@
   background-color: var(--sd-button-inverted-background-primary-pressed, var(--sd-color-primary-200));
 }
 
+@utility button-inverted-background-primary-disabled {
+  background-color: var(--sd-button-inverted-background-primary-disabled, var(--sd-color-neutral-600));
+}
+
 @utility button-inverted-background-secondary-default {
   background-color: var(--sd-button-inverted-background-secondary-default, var(--sd-color-null));
 }
@@ -546,6 +623,10 @@
 
 @utility button-inverted-background-secondary-hover {
   background-color: var(--sd-button-inverted-background-secondary-hover, var(--sd-color-primary-500));
+}
+
+@utility button-inverted-background-secondary-disabled {
+  background-color: var(--sd-button-inverted-background-secondary-disabled, var(--sd-color-null));
 }
 
 @utility button-inverted-background-cta-default {
@@ -560,6 +641,26 @@
   background-color: var(--sd-button-inverted-background-cta-pressed, var(--sd-color-accent-700));
 }
 
+@utility button-inverted-background-cta-disabled {
+  background-color: var(--sd-button-inverted-background-cta-disabled, var(--sd-color-neutral-600));
+}
+
+@utility button-inverted-background-tertiary-default {
+  background-color: var(--sd-button-inverted-background-tertiary-default, var(--sd-color-null));
+}
+
+@utility button-inverted-background-tertiary-hover {
+  background-color: var(--sd-button-inverted-background-tertiary-hover, var(--sd-color-primary-500));
+}
+
+@utility button-inverted-background-tertiary-pressed {
+  background-color: var(--sd-button-inverted-background-tertiary-pressed, var(--sd-color-primary-800));
+}
+
+@utility button-inverted-background-tertiary-disabled {
+  background-color: var(--sd-button-inverted-background-tertiary-disabled, var(--sd-color-null));
+}
+
 @utility button-inverted-text-icon-fill-primary-default {
   fill: var(--sd-button-inverted-text-icon-fill-primary-default, var(--sd-color-primary));
 }
@@ -570,6 +671,10 @@
 
 @utility button-inverted-text-icon-fill-primary-pressed {
   fill: var(--sd-button-inverted-text-icon-fill-primary-pressed, var(--sd-color-primary-800));
+}
+
+@utility button-inverted-text-icon-fill-primary-disabled {
+  fill: var(--sd-button-inverted-text-icon-fill-primary-disabled, var(--sd-color-white));
 }
 
 @utility button-inverted-text-icon-fill-secondary-default {
@@ -584,6 +689,10 @@
   fill: var(--sd-button-inverted-text-icon-fill-secondary-pressed, var(--sd-color-primary-200));
 }
 
+@utility button-inverted-text-icon-fill-secondary-disabled {
+  fill: var(--sd-button-inverted-text-icon-fill-secondary-disabled, var(--sd-color-neutral-600));
+}
+
 @utility button-inverted-text-icon-fill-cta-default {
   fill: var(--sd-button-inverted-text-icon-fill-cta-default, var(--sd-color-white));
 }
@@ -594,6 +703,26 @@
 
 @utility button-inverted-text-icon-fill-cta-pressed {
   fill: var(--sd-button-inverted-text-icon-fill-cta-pressed, var(--sd-color-white));
+}
+
+@utility button-inverted-text-icon-fill-cta-disabled {
+  fill: var(--sd-button-inverted-text-icon-fill-cta-disabled, var(--sd-color-white));
+}
+
+@utility button-inverted-text-icon-fill-tertiary-default {
+  fill: var(--sd-button-inverted-text-icon-fill-tertiary-default, var(--sd-color-white));
+}
+
+@utility button-inverted-text-icon-fill-tertiary-hover {
+  fill: var(--sd-button-inverted-text-icon-fill-tertiary-hover, var(--sd-color-primary-100));
+}
+
+@utility button-inverted-text-icon-fill-tertiary-pressed {
+  fill: var(--sd-button-inverted-text-icon-fill-tertiary-pressed, var(--sd-color-primary-200));
+}
+
+@utility button-inverted-text-icon-fill-tertiary-disabled {
+  fill: var(--sd-button-inverted-text-icon-fill-tertiary-disabled, var(--sd-color-neutral-600));
 }
 
 @utility button-inverted-border-secondary-default {
@@ -608,8 +737,160 @@
   border-color: var(--sd-button-inverted-border-secondary-pressed, var(--sd-color-primary-200));
 }
 
-@utility button-inverted-disabled {
-  background-color: var(--sd-button-inverted-disabled, var(--sd-color-neutral-600));
+@utility button-inverted-border-secondary-disabled {
+  border-color: var(--sd-button-inverted-border-secondary-disabled, var(--sd-color-neutral-600));
+}
+
+@utility button-inverted-border-tertiary-default {
+  border-color: var(--sd-button-inverted-border-tertiary-default, var(--sd-color-null));
+}
+
+@utility button-inverted-border-tertiary-hover {
+  border-color: var(--sd-button-inverted-border-tertiary-hover, var(--sd-color-null));
+}
+
+@utility button-inverted-border-tertiary-pressed {
+  border-color: var(--sd-button-inverted-border-tertiary-pressed, var(--sd-color-null));
+}
+
+@utility button-inverted-border-tertiary-disabled {
+  border-color: var(--sd-button-inverted-border-tertiary-disabled, var(--sd-color-null));
+}
+
+@utility interactive-inverted-text-icon-fill-default {
+  fill: var(--sd-interactive-inverted-text-icon-fill-default, var(--sd-color-white));
+}
+
+@utility interactive-inverted-text-icon-fill-hover {
+  fill: var(--sd-interactive-inverted-text-icon-fill-hover, var(--sd-color-primary-200));
+}
+
+@utility interactive-inverted-text-icon-fill-pressed {
+  fill: var(--sd-interactive-inverted-text-icon-fill-pressed, var(--sd-color-primary-400));
+}
+
+@utility interactive-inverted-text-icon-fill-disabled {
+  fill: var(--sd-interactive-inverted-text-icon-fill-disabled, var(--sd-color-neutral-600));
+}
+
+@utility interactive-text-icon-fill-default {
+  fill: var(--sd-interactive-text-icon-fill-default, var(--sd-color-primary));
+}
+
+@utility interactive-text-icon-fill-hover {
+  fill: var(--sd-interactive-text-icon-fill-hover, var(--sd-color-primary-500));
+}
+
+@utility interactive-text-icon-fill-pressed {
+  fill: var(--sd-interactive-text-icon-fill-pressed, var(--sd-color-primary-800));
+}
+
+@utility interactive-text-icon-fill-disabled {
+  fill: var(--sd-interactive-text-icon-fill-disabled, var(--sd-color-neutral-500));
+}
+
+@utility tag-background-default-default {
+  background-color: var(--sd-tag-background-default-default, var(--sd-color-null));
+}
+
+@utility tag-background-default-hover {
+  background-color: var(--sd-tag-background-default-hover, var(--sd-color-null));
+}
+
+@utility tag-background-default-disabled {
+  background-color: var(--sd-tag-background-default-disabled, var(--sd-color-null));
+}
+
+@utility tag-background-selected-default {
+  background-color: var(--sd-tag-background-selected-default, var(--sd-color-primary));
+}
+
+@utility tag-background-selected-hover {
+  background-color: var(--sd-tag-background-selected-hover, var(--sd-color-primary-500));
+}
+
+@utility tag-background-selected-disabled {
+  background-color: var(--sd-tag-background-selected-disabled, var(--sd-color-neutral-400));
+}
+
+@utility tag-text-icon-fill-default-default {
+  fill: var(--sd-tag-text-icon-fill-default-default, var(--sd-color-primary));
+}
+
+@utility tag-text-icon-fill-default-hover {
+  fill: var(--sd-tag-text-icon-fill-default-hover, var(--sd-color-primary-500));
+}
+
+@utility tag-text-icon-fill-default-disabled {
+  fill: var(--sd-tag-text-icon-fill-default-disabled, var(--sd-color-neutral-500));
+}
+
+@utility tag-text-icon-fill-selected-default {
+  fill: var(--sd-tag-text-icon-fill-selected-default, var(--sd-color-white));
+}
+
+@utility tag-text-icon-fill-selected-hover {
+  fill: var(--sd-tag-text-icon-fill-selected-hover, var(--sd-color-white));
+}
+
+@utility tag-text-icon-fill-selected-disabled {
+  fill: var(--sd-tag-text-icon-fill-selected-disabled, var(--sd-color-white));
+}
+
+@utility tag-border-default-default {
+  border-color: var(--sd-tag-border-default-default, var(--sd-color-primary));
+}
+
+@utility tag-border-default-hover {
+  border-color: var(--sd-tag-border-default-hover, var(--sd-color-primary-500));
+}
+
+@utility tag-border-default-disabled {
+  border-color: var(--sd-tag-border-default-disabled, var(--sd-color-neutral-400));
+}
+
+@utility tag-border-default-secondary-default {
+  border-color: var(--sd-tag-border-default-secondary-default, var(--sd-color-white));
+}
+
+@utility tag-border-default-secondary-hover {
+  border-color: var(--sd-tag-border-default-secondary-hover, var(--sd-color-primary-100));
+}
+
+@utility tag-border-default-secondary-pressed {
+  border-color: var(--sd-tag-border-default-secondary-pressed, var(--sd-color-primary-200));
+}
+
+@utility tag-border-default-secondary-disabled {
+  border-color: var(--sd-tag-border-default-secondary-disabled, var(--sd-color-neutral-600));
+}
+
+@utility tag-border-default-tertiary-default {
+  border-color: var(--sd-tag-border-default-tertiary-default, var(--sd-color-null));
+}
+
+@utility tag-border-default-tertiary-hover {
+  border-color: var(--sd-tag-border-default-tertiary-hover, var(--sd-color-null));
+}
+
+@utility tag-border-default-tertiary-pressed {
+  border-color: var(--sd-tag-border-default-tertiary-pressed, var(--sd-color-null));
+}
+
+@utility tag-border-default-tertiary-disabled {
+  border-color: var(--sd-tag-border-default-tertiary-disabled, var(--sd-color-null));
+}
+
+@utility tag-border-selected-default {
+  border-color: var(--sd-tag-border-selected-default, var(--sd-color-null));
+}
+
+@utility tag-border-selected-hover {
+  border-color: var(--sd-tag-border-selected-hover, var(--sd-color-null));
+}
+
+@utility tag-border-selected-disabled {
+  border-color: var(--sd-tag-border-selected-disabled, var(--sd-color-null));
 }
 
 @utility varspacing-* {
