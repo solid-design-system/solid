@@ -8,6 +8,12 @@ export const getThemeColors = theme => {
     .reduce((acc, variable) => {
       const [base, ...rest] = variable.name.split('-');
 
+      // Prevent prototype pollution via dangerous keys
+      const dangerousKeys = ['__proto__', 'constructor', 'prototype'];
+      if (dangerousKeys.includes(base)) {
+        return acc;
+      }
+
       if (!acc[base]) {
         acc[base] = {};
       }
@@ -18,7 +24,9 @@ export const getThemeColors = theme => {
         acc[base].DEFAULT = value;
       } else {
         const key = rest.join('-');
-        acc[base][key] = value;
+        if (!dangerousKeys.includes(key)) {
+          acc[base][key] = value;
+        }
       }
 
       return acc;
