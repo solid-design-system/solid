@@ -465,7 +465,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                   <sd-icon
                     class=${cx('text-success absolute right-4 pointer-events-none', iconSize)}
                     library="_internal"
-                    name="status-check"
+                    name="confirm-circle"
                     part="valid-icon"
                   ></sd-icon>
                 `

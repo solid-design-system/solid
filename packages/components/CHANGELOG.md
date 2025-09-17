@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.15.7
+
+### Patch Changes
+
+- Update `status-check` icon of the `_internal` icon library and change icon usage in `sd-textarea`, `sd-select`, `sd-combobox`, and `sd-input`. _[`#2473`](https://github.com/solid-design-system/solid/pull/2473) [`ae722bc`](https://github.com/solid-design-system/solid/commit/ae722bc836753279dc92e77d1a547993314b9790) [@demirgazetic](https://github.com/demirgazetic)_
+
 ## 5.15.6
 
 ### Patch Changes
