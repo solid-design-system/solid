@@ -1,3 +1,4 @@
+import { getThemeColors } from './get-theme-colors.js';
 import chroma from 'chroma-js';
 
 const defaultLuminanceMap = {
@@ -14,12 +15,6 @@ const defaultLuminanceMap = {
   DEFAULT: 0.22
 };
 
-const extractRGB = str => {
-  const parts = str.split(',').filter(part => /\d/.test(part));
-  const match = parts[1]?.match(/(\d[\d\s]*)\s*\)/);
-  return match ? match[1] : null;
-};
-
 const calculateLuminanceMap = colorObject => {
   const relevantColors = {
     accent: { ...colorObject['accent'] },
@@ -33,14 +28,10 @@ const calculateLuminanceMap = colorObject => {
     const luminanceMap = {};
 
     for (const scale in colorObject[colorType]) {
-      const rgbStr = extractRGB(colorObject[colorType][scale]);
+      if (!defaultLuminanceMap[scale]) continue;
 
-      // If we successfully extracted the RGB string
-      if (rgbStr) {
-        const rgbArray = rgbStr.split(' ').map(num => parseInt(num, 10));
-        const luminance = chroma(...rgbArray).luminance();
-        luminanceMap[scale] = luminance;
-      }
+      const luminance = chroma(colorObject[colorType][scale]).luminance();
+      luminanceMap[scale] = luminance;
     }
 
     luminanceMaps[colorType] = luminanceMap;
@@ -70,8 +61,6 @@ const adjustLuminanceMap = (color, luminanceMap, forcedShade) => {
 
   // Find the closest luminance key in the map
   const referenceShade = parseInt(forcedShade || findClosestShade(colorLuminance, luminanceMap));
-
-  // console.log({ color, referenceShade, forcedShade, colorLuminance, luminanceMap });
 
   // Calculate the difference from the closest key's luminance
   const difference = colorLuminance - luminanceMap[referenceShade];
@@ -108,7 +97,7 @@ const adjustLuminanceMap = (color, luminanceMap, forcedShade) => {
 
 export const calculateColorsForType = (type, theme, colors, useNormalizedLuminanceMap, useForcedShades) => {
   const color = colors[type];
-  const luminanceMaps = calculateLuminanceMap(theme['color']);
+  const luminanceMaps = calculateLuminanceMap(getThemeColors(theme));
 
   if (!color || !chroma.valid(color)) return '';
 
@@ -135,11 +124,11 @@ export const calculateColorsForType = (type, theme, colors, useNormalizedLuminan
   scale.forEach((currentColor, index) => {
     const scaleValue = scalesForType[index];
     if (scaleValue === 'DEFAULT') {
-      const rgb = chroma(scale[{ primary: 5, accent: 3 }[type]]).rgb(); //  as default we use 600 (primary) or 400 (accent)
-      tokens += `  --sd-color-${type}: ${rgb.join(' ')};\n`;
+      const colorHex = chroma(currentColor).hex();
+      tokens += `  --sd-color-${type}: ${colorHex};\n`;
     } else {
-      const rgb = chroma(currentColor).rgb();
-      tokens += `  --sd-color-${type}${`-${scaleValue}`}: ${rgb.join(' ')};\n`;
+      const colorHex = chroma(currentColor).hex();
+      tokens += `  --sd-color-${type}${`-${scaleValue}`}: ${colorHex};\n`;
     }
   });
 
@@ -165,12 +154,12 @@ export const calculateColorsForType = (type, theme, colors, useNormalizedLuminan
  * console.log(cssProperties); // Outputs CSS custom properties as a string
  */
 export const calculateColorsAsCss = (colors, theme, useNormalizedLuminanceMap, useForcedShades) => {
-  let allTokens = ':root{\n  /* Copy & paste into your theme */\n';
+  let allTokens = `:root, .sd-custom-theme {\n  /* Copy & paste into your theme */\n`;
 
   Object.keys(colors).forEach(type => {
     if (type === 'black' || type === 'white') {
       // Add the color directly without generating shades
-      allTokens += `  --sd-color-${type}: ${chroma(colors[type]).rgb().join(' ')};\n`;
+      allTokens += `  --sd-color-${type}: ${chroma(colors[type]).hex()};\n`;
     } else {
       allTokens += calculateColorsForType(type, theme, colors, useNormalizedLuminanceMap, useForcedShades);
     }

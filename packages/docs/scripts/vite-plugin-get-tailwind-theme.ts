@@ -1,5 +1,5 @@
 // @ts-expect-error - no types
-import theme from '../../tokens/src/theme.cjs';
+import theme from '../../tokens/src/theme.mjs';
 
 export default () => {
   return {
