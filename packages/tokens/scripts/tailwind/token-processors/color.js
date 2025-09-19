@@ -33,6 +33,9 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
 
     /* Namespaces that were added manually, and are not available in themes */
     this.manual = ['risk'];
+
+    /* Stores the history of processed color tokens. */
+    this.processedHistory = [];
   }
 
   canProcess(token) {
@@ -60,15 +63,34 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     }
 
     if (isCoreColor || isSemicoreColor) {
-      cssvariables.push({
+      const variable = {
         type: 'color',
         name: this.cssprefix(fallback),
         value: this.getTokenValue(token),
         variant
-      });
+      };
+
+      /**
+       * In case a core variable was already defined in the current variant, but the value differs,
+       * then we should associate the color with the semantic variable instead.
+       */
+      const shouldOverrideSemanticVariable = !!this.processedHistory.find(
+        t => t.name === variable.name && t.variant === variable.variant && t.value !== variable.value
+      );
+
+      if (shouldOverrideSemanticVariable) {
+        variable.name = this.cssprefix(path.join('-'));
+      }
+
+      cssvariables.push(variable);
+      this.processedHistory.push(variable);
     }
 
     return cssvariables;
+  }
+
+  reset() {
+    this.processedHistory = [];
   }
 
   #isCoreToken(token) {

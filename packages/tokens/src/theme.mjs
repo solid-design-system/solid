@@ -29,6 +29,7 @@ const extractBlock = (css, selector) => {
 
 const extractVariables = (css, selector) => {
   const block = extractBlock(css, selector);
+  if (!block) return null;
 
   return block
     .split('\n')

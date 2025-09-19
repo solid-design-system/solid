@@ -25,6 +25,13 @@ export class BaseTokenProcessor {
   }
 
   /**
+   * Resets any cache or inbuilt memory
+   */
+  reset() {
+    /* empty */
+  }
+
+  /**
    * Normalize token name by removing prefixes and converting to kebab-case
    */
   normalizeTokenName(name) {
