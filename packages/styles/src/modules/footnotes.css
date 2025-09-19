@@ -67,18 +67,18 @@
     @apply text-primary-400;
 
     :target {
-      @apply bg-primary-800;
+      @apply bg-primary-800-alternative;
     }
 
     .sd-footnotes--marker::before {
-      @apply text-white !outline-white;
+      @apply text-white-alternative !outline-white;
     }
 
     &:is(.sd-footnotes--marker) {
-      @apply !text-white !outline-white;
+      @apply !text-white-alternative !outline-white;
 
       &:target {
-        @apply bg-primary-800;
+        @apply bg-primary-800-alternative;
       }
     }
   }

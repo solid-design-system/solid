@@ -90,7 +90,7 @@ export const Variants = {
 
 export const Inverted = {
   render: () => html`
-    <div class="sd-container sd-container--variant-primary">
+    <div class="px-12 py-8 bg-primary-alternative">
       <ol class="sd-footnotes sd-footnotes--inverted">
         <li>Lorem ipsum dolor sit amet.</li>
         <li>Sed diam nonumy eirmod tempor invidunt ut labore.</li>

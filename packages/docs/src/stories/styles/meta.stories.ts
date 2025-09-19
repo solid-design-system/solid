@@ -68,7 +68,7 @@ export const Size = {
  */
 export const Inverted = {
   render: () =>
-    html` <div class="p-4 bg-primary flex flex-row gap-12">
+    html` <div class="p-4 bg-primary-alternative flex flex-row gap-12">
       <span class="sd-meta sd-meta--inverted">Default</span>
       <span class="sd-meta sd-meta--inverted sd-meta--light">Light</span>
     </div>`

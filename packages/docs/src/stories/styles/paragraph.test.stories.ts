@@ -62,7 +62,7 @@ export const Inverted = {
       },
       constants: { type: 'attribute', name: 'sd-paragraph--inverted', value: true },
       options: {
-        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'var(--sd-color-primary)'] }
+        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'var(--sd-color-primary-alternative)'] }
       },
       args
     });
