@@ -18,5 +18,5 @@
 
 .sd-prose--inverted > .sd-leadtext,
 .sd-leadtext--inverted {
-  @apply text-white;
+  @apply text-white-alternative;
 }

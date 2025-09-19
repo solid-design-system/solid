@@ -1279,7 +1279,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 class=${cx(
                   'appearance-none outline-none bg-transparent flex-auto min-w-0',
                   cursorStyles,
-                  this.selectedTextLabel && !this.multiple ? 'placeholder-black' : 'placeholder-neutral-700'
+                  this.selectedTextLabel && !this.multiple ? 'placeholder:text-black' : 'placeholder:text-neutral-700'
                 )}
                 type="text"
                 placeholder=${this.selectedTextLabel && !this.multiple
