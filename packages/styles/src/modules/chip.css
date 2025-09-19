@@ -10,7 +10,7 @@
   @apply h-6 bg-primary-200 rounded-default text-black text-sm inline-flex items-center whitespace-nowrap px-2 overflow-hidden;
 
   &--primary-500 {
-    @apply bg-primary-500 text-white;
+    @apply bg-primary-500 text-white-alternative;
   }
 
   &--primary-300 {

@@ -150,10 +150,10 @@
 
 .sd-list--inverted,
 .sd-prose--inverted > :is(ol, ul) {
-  @apply text-white;
+  @apply text-white-alternative;
 
   li > sd-icon:first-of-type,
   li > .sd-list--icon__icon:first-of-type {
-    @apply text-white;
+    @apply text-white-alternative;
   }
 }
