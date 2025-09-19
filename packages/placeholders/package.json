@@ -7,6 +7,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "main": "src",
+  "types": "types/solid-faker.d.ts",
   "scripts": {
     "verify": "pnpm build.types && echo '✅ Types verified' && pnpm test && echo '✅ Tests verified'",
     "build.types": "tsc --project tsconfig.json",
@@ -17,7 +18,11 @@
     "./*": "./src/*",
     "./images/*": "./src/images/*",
     "./videos/*": "./src/videos/*",
-    "./audio/*": "./src/audio/*"
+    "./audio/*": "./src/audio/*",
+    "./solid-faker.js": {
+      "types": "./types/solid-faker.d.ts",
+      "default": "./src/solid-faker.js"
+    }
   },
   "repository": {
     "type": "git",
@@ -25,7 +30,8 @@
     "directory": "packages/placeholders"
   },
   "files": [
-    "src"
+    "src",
+    "types"
   ],
   "author": "Union Investment",
   "license": "MIT",
