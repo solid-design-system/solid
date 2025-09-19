@@ -1251,6 +1251,281 @@ export const sortableTable = {
   }
 };
 
+export const multiSelectTable = {
+  render: () => html`
+    <section tabindex="0" aria-label="Simple table" class="focus-visible:focus-outline">
+      <table id="multi-select-table" class="sd-table sample-table w-full">
+        <thead>
+          <tr>
+            <th class="sd-table-cell sd-table-cell--bg-white">
+              <sd-checkbox id="select-all" size="sm" indeterminate></sd-checkbox>
+            </th>
+            <th class="sd-table-cell sd-table-cell--bg-white">Name</th>
+            <th class="sd-table-cell sd-table-cell--bg-white">ISIN</th>
+            <th class="sd-table-cell sd-table-cell--bg-white">Fund type</th>
+            <th class="sd-table-cell sd-table-cell--bg-white">Date</th>
+            <th class="sd-table-cell sd-table-cell--bg-white">File type</th>
+          </tr>
+        </thead>
+        <tbody class="selectable-rows">
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-checkbox size="sm"></sd-checkbox>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-link href="javascript:void(0)">PrivatFonds: Flexibel</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">DE000A0Q2H14</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-button variant="tertiary" size="md">
+                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
+              </sd-button>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-checkbox size="sm" checked></sd-checkbox>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-link href="javascript:void(0)">PrivatFonds: Flexibel pro</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">DE000A0RPAL7</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Value-protected funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-button variant="tertiary" size="md">
+                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
+              </sd-button>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-checkbox size="sm" checked></sd-checkbox>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-link href="javascript:void(0)">PrivatFonds: Konsequent</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">LU0493492200</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Value-protected funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-button variant="tertiary" size="md">
+                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
+              </sd-button>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-checkbox size="sm"></sd-checkbox>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-link href="javascript:void(0)">PrivatFonds: Konsequent pro</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">LU0493584741</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Value-protected funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-button variant="tertiary" size="md">
+                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
+              </sd-button>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-checkbox size="sm"></sd-checkbox>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-link href="javascript:void(0)">PrivatFonds: Kontrolliert</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">DE000A0RPAM5</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-button variant="tertiary" size="md">
+                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
+              </sd-button>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-checkbox size="sm"></sd-checkbox>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-link href="javascript:void(0)">PrivatFonds: Kontrolliert pro</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">DE000A0RPAN3</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-button variant="tertiary" size="md">
+                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
+              </sd-button>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-checkbox size="sm" checked></sd-checkbox>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-link href="javascript:void(0)">PrivatFonds: Nachhaltig</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">LU1900195949</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-button variant="tertiary" size="md">
+                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
+              </sd-button>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-checkbox size="sm"></sd-checkbox>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-link href="javascript:void(0)"> Uni21.Jahrhundert -net- </sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">DE0009757872</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Stock funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-button variant="tertiary" size="md">
+                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
+              </sd-button>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-checkbox size="sm"></sd-checkbox>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-link href="javascript:void(0)">UniAbsoluterErtrag -net- A</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">LU1206679554</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-button variant="tertiary" size="md">
+                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
+              </sd-button>
+            </td>
+          </tr>
+          <tr>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-checkbox size="sm"></sd-checkbox>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-link href="javascript:void(0)">UniAbsoluterErtrag A</sd-link>
+            </td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">LU1206678580</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent">
+              <sd-button variant="tertiary" size="md">
+                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
+              </sd-button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="flex flex-row gap-4 py-6">
+        <p id="selected-count" class="sd-paragraph pt-3 font-bold">selected:</p>
+        <sd-button id="download-btn" variant="primary" disabled>
+          <sd-icon name="system/download" slot="icon-left"></sd-icon>Download PDF
+        </sd-button>
+        <sd-button id="print-btn" variant="secondary" disabled>
+          <sd-icon name="system/print" slot="icon-left"></sd-icon>Print
+        </sd-button>
+      </div>
+    </section>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const selectAllCheckbox = document.querySelector('#select-all');
+        const tbody = document.querySelector('.selectable-rows');
+        const selectedCountEl = document.querySelector('#selected-count');
+        const downloadBtn = document.querySelector('#download-btn');
+        const printBtn = document.querySelector('#print-btn');
+
+        function getCheckedCount() {
+          const checkboxes = tbody.querySelectorAll('sd-checkbox');
+          let count = 0;
+          checkboxes.forEach(cb => {
+            if (cb.hasAttribute('checked')) count++;
+          });
+          return { checked: count, total: checkboxes.length };
+        }
+
+        function updateUI() {
+          const { checked, total } = getCheckedCount();
+
+          // Update counter text
+          if (selectedCountEl) {
+            selectedCountEl.textContent = checked + ' selected:';
+          }
+
+          // Update buttons
+          const hasSelection = checked > 0;
+          if (downloadBtn) {
+            hasSelection ? downloadBtn.removeAttribute('disabled') : downloadBtn.setAttribute('disabled', '');
+          }
+          if (printBtn) {
+            hasSelection ? printBtn.removeAttribute('disabled') : printBtn.setAttribute('disabled', '');
+          }
+
+          // Update select all checkbox
+          if (selectAllCheckbox) {
+            if (checked === 0) {
+              selectAllCheckbox.removeAttribute('checked');
+              selectAllCheckbox.removeAttribute('indeterminate');
+            } else if (checked === total) {
+              selectAllCheckbox.setAttribute('checked', '');
+              selectAllCheckbox.removeAttribute('indeterminate');
+            } else {
+              selectAllCheckbox.removeAttribute('checked');
+              selectAllCheckbox.setAttribute('indeterminate', '');
+            }
+          }
+        }
+
+        // Handle individual checkbox clicks
+        tbody?.addEventListener('click', e => {
+          const checkbox = e.target.closest('sd-checkbox');
+          if (checkbox && tbody.contains(checkbox)) {
+            // Toggle checked attribute
+            if (checkbox.hasAttribute('checked')) {
+              checkbox.removeAttribute('checked');
+            } else {
+              checkbox.setAttribute('checked', '');
+            }
+            updateUI();
+          }
+        });
+
+        // Handle select all
+        selectAllCheckbox?.addEventListener('click', () => {
+          const checkboxes = tbody.querySelectorAll('sd-checkbox');
+          console.log(checkboxes);
+          const shouldCheck = !selectAllCheckbox.hasAttribute('checked');
+          console.log(shouldCheck);
+
+          checkboxes.forEach(cb => {
+            if (shouldCheck) {
+              cb.setAttribute('checked', '');
+            } else {
+              cb.removeAttribute('checked');
+            }
+          });
+
+          updateUI();
+        });
+
+        updateUI();
+      });
+    </script>
+  `
+};
 /**
  *
  * These examples demonstrate the usage of sd-table-cell when the header is sticky and a shadow is displayed.
