@@ -6,7 +6,7 @@ on:
 
 jobs:
     quality-gate:
-        name: Verify monorepo
+        name: Verify
         runs-on: ubuntu-latest
         if: github.event.pull_request.draft == false
         container:
@@ -48,7 +48,7 @@ jobs:
                 pnpm verify
 
     playwright-tests:
-      name: Playwright Tests
+      name: Verify (docs/a11y-tree)
       runs-on: ubuntu-latest
       if: github.event.pull_request.draft == false
       container:
