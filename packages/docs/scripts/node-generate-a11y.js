@@ -10,7 +10,9 @@ const data = JSON.parse(raw);
 const entries = Object.entries(data.entries)
   .filter(
     ([key, value]) =>
-      key.startsWith('components-') && !value.id.includes('--docs') && !value.id.includes('--combination')
+      (key.startsWith('components-') || key.startsWith('templates-')) &&
+      !value.id.includes('--docs') &&
+      !value.id.includes('--combination')
   )
   .map(([, value]) => value);
 
