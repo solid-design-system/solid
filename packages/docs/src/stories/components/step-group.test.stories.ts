@@ -15,7 +15,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-step-group/Screenshots: sd-step-group',
-  tags: ['!autodocs', 'skip-a11y-[landmark-unique]'],
+  tags: ['!autodocs'],
   component: 'sd-step-group',
   args: overrideArgs([
     {
@@ -153,7 +153,6 @@ export const notInteractive = {
  */
 export const Parts = {
   name: 'Parts',
-  tags: ['skip-a11y-[landmark-unique]'],
   render: () => {
     return generateTemplate({
       axis: {

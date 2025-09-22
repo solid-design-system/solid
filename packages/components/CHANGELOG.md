@@ -1,5 +1,29 @@
 # @solid-design-system/components
 
+## 5.15.7
+
+### Patch Changes
+
+- Update `status-check` icon of the `_internal` icon library and change icon usage in `sd-textarea`, `sd-select`, `sd-combobox`, and `sd-input`. _[`#2473`](https://github.com/solid-design-system/solid/pull/2473) [`ae722bc`](https://github.com/solid-design-system/solid/commit/ae722bc836753279dc92e77d1a547993314b9790) [@demirgazetic](https://github.com/demirgazetic)_
+
+## 5.15.6
+
+### Patch Changes
+
+- Fixed issue with `sd-carousel` initialisation where attributes are only added once all slides are ready. _[`#2475`](https://github.com/solid-design-system/solid/pull/2475) [`31c2b2a`](https://github.com/solid-design-system/solid/commit/31c2b2a2e46cc1c00f189e1c55cc7f4ea2b602e7) [@smfonseca](https://github.com/smfonseca)_
+
+## 5.15.5
+
+### Patch Changes
+
+- Minor improvement to the `sd-step` horizontal inline variant: _[`#2469`](https://github.com/solid-design-system/solid/pull/2469) [`bec1056`](https://github.com/solid-design-system/solid/commit/bec105630e7caf449ad2e0cb7d4d681db2c4193d) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - Remove the extra width from the last `sd-step`.
+
+### 📈 Stats
+
+- Uncompressed: 479 KB (+1 KB / +0%)
+- Gzipped: 113 KB (+1 KB / +1%)
+
 ## 5.15.4
 
 ### Patch Changes
@@ -7,12 +31,10 @@
 - Improve sd-dialog: _[`#2466`](https://github.com/solid-design-system/solid/pull/2466) [`3bac0bc`](https://github.com/solid-design-system/solid/commit/3bac0bc304e9ed8929fcb0a80791cd9663db6ef0) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
   - Prevent unexpected scrolling behaviour.
 
-- Minor improvement to the `sd-step` horizontal inline variant: _[`#2457`](https://github.com/solid-design-system/solid/pull/2457) [`98efdf9`](https://github.com/solid-design-system/solid/commit/98efdf9167a4e783d5273d65f43b8957468435c9) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-  - Remove the extra width from the last `sd-step`.
-
 ### 📈 Stats
-* Uncompressed: 478 KB (-1 KB / 0%)
-* Gzipped: 112 KB (-1 KB / -1%)
+
+- Uncompressed: 478 KB (-1 KB / 0%)
+- Gzipped: 112 KB (-1 KB / -1%)
 
 ## 5.15.3
 

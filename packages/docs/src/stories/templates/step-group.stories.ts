@@ -20,7 +20,7 @@ export const HorizontalInlineWithLabelStepGroup = {
   name: 'Step Group Horizontal Inline with Label for current step only',
   render: () => html`
     <style>
-      #hide-label sd-step:not([current])::part(label) {
+      .hide-label sd-step:not([current])::part(label) {
         position: absolute;
         visibility: hidden;
         width: 1px;
@@ -29,7 +29,7 @@ export const HorizontalInlineWithLabelStepGroup = {
       }
     </style>
     <div class="h-32 gap-16 w-[500px]">
-      <sd-step-group size="sm" orientation="horizontal" active-step="0" class="w-full" label="Account" id="hide-label">
+      <sd-step-group size="sm" orientation="horizontal" active-step="0" class="w-full hide-label" label="Account">
         <sd-step orientation="horizontal" horizontal-inline current>
           <span slot="label">Account</span>
         </sd-step>
@@ -39,7 +39,7 @@ export const HorizontalInlineWithLabelStepGroup = {
     </div>
 
     <div class="h-32 gap-16 w-[500px]">
-      <sd-step-group size="sm" orientation="horizontal" active-step="1" class="w-full" label="Payment" id="hide-label">
+      <sd-step-group size="sm" orientation="horizontal" active-step="1" class="w-full hide-label" label="Payment">
         <sd-step orientation="horizontal" horizontal-inline label="Step 1"></sd-step>
         <sd-step orientation="horizontal" horizontal-inline current>
           <span slot="label">Payment</span>
@@ -49,14 +49,7 @@ export const HorizontalInlineWithLabelStepGroup = {
     </div>
 
     <div class="h-32 gap-16 w-[500px]">
-      <sd-step-group
-        size="sm"
-        orientation="horizontal"
-        active-step="2"
-        class="w-full"
-        label="Confirmation"
-        id="hide-label"
-      >
+      <sd-step-group size="sm" orientation="horizontal" active-step="2" class="w-full hide-label" label="Confirmation">
         <sd-step orientation="horizontal" horizontal-inline label="Step 1"></sd-step>
         <sd-step orientation="horizontal" horizontal-inline label="Step 2"></sd-step>
         <sd-step orientation="horizontal" horizontal-inline current>
