@@ -173,7 +173,7 @@ test('Valid x Invalid', async ({ page }) => {
     `);
 });
 
-test('Border Visibility', async ({ page }) => {
+test('Border visibility', async ({ page }) => {
   await page.goto(
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-select-screenshots-sd-select--border-visibility&viewMode=story'
   );
@@ -527,7 +527,7 @@ test('Parts', async ({ page }) => {
     `);
 });
 
-test('Style on Valid', async ({ page }) => {
+test('Style on valid', async ({ page }) => {
   await page.goto(
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-select-screenshots-sd-select--style-on-valid&viewMode=story'
   );
@@ -577,7 +577,7 @@ test('Mouseless', async ({ page }) => {
     `);
 });
 
-test('Sample: Grouping Options', async ({ page }) => {
+test('Sample: Grouping options', async ({ page }) => {
   await page.goto(
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-select-screenshots-sd-select--sample-grouping-options&viewMode=story'
   );
@@ -628,7 +628,7 @@ test('setCustomValidity', async ({ page }) => {
     `);
 });
 
-test('Sample: Solid Form', async ({ page }) => {
+test('Sample: Solid form', async ({ page }) => {
   await page.goto(
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-select-screenshots-sd-select--solid-form&viewMode=story'
   );

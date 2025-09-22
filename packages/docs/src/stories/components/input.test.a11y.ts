@@ -61,7 +61,7 @@ test('Clearable', async ({ page }) => {
     `);
 });
 
-test('Toggle Password', async ({ page }) => {
+test('Toggle password', async ({ page }) => {
   await page.goto(
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-input-screenshots-sd-input--toggle-password&viewMode=story'
   );
@@ -133,7 +133,7 @@ test('Sizes', async ({ page }) => {
     `);
 });
 
-test('Style on Valid', async ({ page }) => {
+test('Style on valid', async ({ page }) => {
   await page.goto(
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-input-screenshots-sd-input--style-on-valid&viewMode=story'
   );

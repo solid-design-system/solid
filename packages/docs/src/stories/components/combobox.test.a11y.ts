@@ -155,7 +155,7 @@ test('Valid x Invalid', async ({ page }) => {
     `);
 });
 
-test('Border Visibility', async ({ page }) => {
+test('Border visibility', async ({ page }) => {
   await page.goto(
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-combobox-screenshots-sd-combobox--border-visibility&viewMode=story'
   );
@@ -542,7 +542,7 @@ test('Focus', async ({ page }) => {
     `);
 });
 
-test('Style on Valid', async ({ page }) => {
+test('Style on valid', async ({ page }) => {
   await page.goto(
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-combobox-screenshots-sd-combobox--style-on-valid&viewMode=story'
   );
@@ -600,7 +600,7 @@ test('Tags', async ({ page }) => {
     `);
 });
 
-test('Simple Suggests', async ({ page }) => {
+test('Simple suggests', async ({ page }) => {
   await page.goto(
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-combobox-screenshots-sd-combobox--simple-suggests&viewMode=story'
   );
@@ -682,7 +682,7 @@ test('Mouseless', async ({ page }) => {
     `);
 });
 
-test('Sample: Grouping Options and Sizes', async ({ page }) => {
+test('Sample: Grouping options and sizes', async ({ page }) => {
   await page.goto(
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-combobox-screenshots-sd-combobox--sample-grouping-options&viewMode=story'
   );
@@ -747,7 +747,7 @@ test('Sample: Form', async ({ page }) => {
     `);
 });
 
-test('Sample: Solid Form', async ({ page }) => {
+test('Sample: Solid form', async ({ page }) => {
   await page.goto(
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-combobox-screenshots-sd-combobox--solid-form&viewMode=story'
   );
@@ -779,7 +779,7 @@ test('Sample: Solid Form', async ({ page }) => {
     `);
 });
 
-test('Set Custom Validity', async ({ page }) => {
+test('Set custom validity', async ({ page }) => {
   await page.goto(
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-combobox-screenshots-sd-combobox--set-custom-validity&viewMode=story'
   );
