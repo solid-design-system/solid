@@ -36,7 +36,7 @@ const extractVariables = (css, selector) => {
     .map(variable => {
       const [name, value] = variable.trim().split(':');
       if (!name.startsWith('--')) return null;
-      return { name: name.replace('--', '').trim(), value: value?.trim() };
+      return { name: name.replace('--', '').replace('\\', '').trim(), value: value?.trim() };
     })
     .filter(Boolean);
 };

@@ -35,61 +35,43 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
   }
 
   process(token) {
-    const value = this.getTokenValue(token);
-
-    let path = this.pathToKebabCase(this.processTokenPath(token).path);
-
-    // Determine the appropriate prefix based on the first path segment
+    const processed = this.processTokenPath(token);
+    let value = this.getTokenValue(token);
     let prefix = this.defaultPrefix;
-    const firstSegment = path[0];
 
-    if (firstSegment && this.specialPrefixes[firstSegment]) {
-      prefix = this.specialPrefixes[firstSegment];
-      // Remove the first segment since it becomes the prefix
-      path = path.slice(1);
+    if (processed.path[0] && this.specialPrefixes[processed.path[0]]) {
+      prefix = this.specialPrefixes[processed.path[0]];
+      processed.path = processed.path.slice(1);
     } else {
-      // For regular spacing tokens, remove redundant prefix if present
       const prefixKebab = toKebabCase(prefix);
-      if (path[0] === prefixKebab) {
-        path = path.slice(1);
+      if (processed.path[0] === prefixKebab) {
+        processed.path = processed.path.slice(1);
       }
     }
 
-    // Special handling for aspect ratio tokens - preserve original string value
-    let processedValue = value;
-    if (prefix === 'aspect') {
-      // For aspect ratios, use the original value to preserve ratio format
-      processedValue = token.original?.value || token.value || value;
+    switch (prefix) {
+      case 'aspect':
+        // Special handling for aspect ratio tokens - preserve original string value
+        value = token.original?.value || token.value || value;
+        break;
+      case 'opacity':
+        // Opacity needs to be in percentage so it doesn't break tailwinds color-mix.
+        value = `${(value * 100).toFixed(0)}%`;
+        break;
     }
 
-    if (prefix === 'opacity') {
-      // Opacity needs to be in percentage so it doesn't break tailwinds color-mix.
-      processedValue = `${(processedValue * 100).toFixed(0)}%`;
-    }
-
-    const name = path.join('-').replace(',', '.');
-    const formatted = this.getFormattedValue({
-      prefix: this.specialOverrides[prefix],
-      name: name.replace('.', '\\.'),
-      value: processedValue
-    });
-
-    if (this.specialOverrides[prefix]) {
-      processedValue = `var(${formatted.variable}, ${formatted.value})`;
-    }
-
-    if (prefix === 'spacing' && name === '1') {
-      return {
-        type: 'spacing',
-        name: `--${prefix}`,
-        value: processedValue
-      };
-    }
-
-    return {
+    const name = `${prefix}-${processed.path.join('-').replace(',', '\\.').replace('/', '\\/')}`;
+    const variable = {
       type: 'spacing',
-      name: `--${prefix}-${name}`,
-      value: processedValue
+      name: `--${name}`,
+      value: this.cssvar(name, value),
+      variant: 'default'
     };
+
+    if (prefix === 'spacing' && name.endsWith('1')) {
+      return { ...variable, name: `--${prefix}` };
+    }
+
+    return [variable, { ...variable, name: this.cssprefix(name), value, variant: processed.variant }];
   }
 }

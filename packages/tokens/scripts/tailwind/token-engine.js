@@ -126,7 +126,7 @@ export class TokenProcessingEngine {
       }
 
       case 'spacing': {
-        this.categorize('spacing', variable, result);
+        this.categorize(store, variable, result);
         break;
       }
 
