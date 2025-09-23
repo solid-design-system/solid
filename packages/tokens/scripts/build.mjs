@@ -1,6 +1,7 @@
 import { createTailwindV4Plugin, extractThemeBlock } from './tailwind/index.js';
 import { FigmaClient } from './figma/index.js';
 import { fileURLToPath } from 'url';
+import { generateScss } from './scss/index.js';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { OUTPUT_DIR } from './config.js';
 import { register } from '@tokens-studio/sd-transforms';
@@ -113,3 +114,7 @@ await Promise.all(cssRuns);
 const dist = path.resolve(fileURLToPath(import.meta.url), '../../dist');
 mkdirSync(dist, { recursive: true });
 writeFileSync(path.resolve(dist, './theme.js'), `export default ${JSON.stringify(tailwindtheme)}`);
+
+// --- Build tokens.scss ---
+const scss = generateScss(tailwindtheme);
+writeFileSync(path.resolve(dist, './tokens.scss'), scss);

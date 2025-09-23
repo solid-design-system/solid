@@ -14,11 +14,13 @@
     "fetch:figma": "node ./scripts/figma/fetch-variables.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "themes",
+    "!themes/tailwind.css"
   ],
   "exports": {
     "./scss": "./dist/tokens.scss",
-    "./tailwind": "./dist/tokens.tailwind.json"
+    "./themes": "./themes"
   },
   "keywords": [],
   "homepage": "https://solid-design-system.fe.union-investment.de/docs/",
