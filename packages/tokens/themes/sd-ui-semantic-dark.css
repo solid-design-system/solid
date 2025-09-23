@@ -143,6 +143,7 @@
   --sd-spacing-10: 2.5rem;
   --sd-spacing-12: 3rem;
   --sd-spacing-16: 4rem;
+  --sd-spacing-1: 0.25rem;
   --sd-spacing-1\.5: 0.375rem;
   --sd-spacing-20: 5rem;
   --sd-spacing-24: 6rem;
@@ -155,6 +156,7 @@
   --sd-spacing-6: 1.5rem;
   --sd-spacing-8: 2rem;
   --sd-spacing-auto: auto;
+  --sd-spacing: 0.25rem;
   --sd-text-primary-500: #e0e9f3;
   --sd-text-white: #00358e;
 }

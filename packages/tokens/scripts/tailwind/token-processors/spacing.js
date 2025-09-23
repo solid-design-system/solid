@@ -64,14 +64,26 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
     const variable = {
       type: 'spacing',
       name: `--${name}`,
-      value: this.cssvar(name, value),
+      value: this.cssvar(name),
       variant: 'default'
     };
 
-    if (prefix === 'spacing' && name.endsWith('1')) {
-      return { ...variable, name: `--${prefix}` };
+    const core = {
+      ...variable,
+      name: this.cssprefix(name),
+      value,
+      variant: processed.variant
+    };
+
+    if (name === 'spacing-1') {
+      return [
+        variable,
+        core,
+        { ...variable, name: `--${prefix}`, value: this.cssvar(prefix) },
+        { ...core, name: this.cssprefix(prefix) }
+      ];
     }
 
-    return [variable, { ...variable, name: this.cssprefix(name), value, variant: processed.variant }];
+    return [variable, core];
   }
 }
