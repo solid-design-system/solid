@@ -1254,38 +1254,36 @@ export const sortableTable = {
 export const multiSelectTable = {
   render: () => html`
     <style>
-      /* sd-checkbox.hide-label::part(label) {
+      sd-checkbox.hide-label::part(label) {
         position: absolute;
-        display: none;
         width: 1px;
         height: 1px;
-        pointer-events: none;
-      } */
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
     </style>
-    <section tabindex="0" aria-label="Simple table" class="focus-visible:focus-outline">
-      <table id="multi-select-table" class="sd-table sample-table w-full">
+    <section class="focus-visible:focus-outline">
+      <table id="multi-select-table" class="sd-table sample-table w-full" aria-label="Multi Select Table">
         <thead>
           <tr>
-            <th class="sd-table-cell sd-table-cell--bg-white">
-              <sd-checkbox
-                class="hide-label"
-                id="select-all"
-                size="sm"
-                indeterminate
-                aria-label="Select all"
-              ></sd-checkbox>
+            <th class="sd-table-cell sd-table-cell--bg-white" scope="col">
+              <sd-checkbox class="hide-label" id="select-all" size="sm" indeterminate>Select all</sd-checkbox>
             </th>
-            <th class="sd-table-cell sd-table-cell--bg-white">Name</th>
-            <th class="sd-table-cell sd-table-cell--bg-white">ISIN</th>
-            <th class="sd-table-cell sd-table-cell--bg-white">Fund type</th>
-            <th class="sd-table-cell sd-table-cell--bg-white">Date</th>
-            <th class="sd-table-cell sd-table-cell--bg-white">File type</th>
+            <th class="sd-table-cell sd-table-cell--bg-white" scope="col">Name</th>
+            <th class="sd-table-cell sd-table-cell--bg-white" scope="col">ISIN</th>
+            <th class="sd-table-cell sd-table-cell--bg-white" scope="col">Fund type</th>
+            <th class="sd-table-cell sd-table-cell--bg-white" scope="col">Date</th>
+            <th class="sd-table-cell sd-table-cell--bg-white" scope="col">File type</th>
           </tr>
         </thead>
         <tbody class="selectable-rows">
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm"></sd-checkbox>
+              <sd-checkbox class="hide-label" size="sm">Select PrivatFonds: Flexibel</sd-checkbox>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <sd-link href="javascript:void(0)">PrivatFonds: Flexibel</sd-link>
@@ -1301,7 +1299,7 @@ export const multiSelectTable = {
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm" checked></sd-checkbox>
+              <sd-checkbox class="hide-label" size="sm" checked>Select PrivatFonds: Flexibel pro</sd-checkbox>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <sd-link href="javascript:void(0)">PrivatFonds: Flexibel pro</sd-link>
@@ -1317,7 +1315,7 @@ export const multiSelectTable = {
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm" checked></sd-checkbox>
+              <sd-checkbox class="hide-label" size="sm" checked>Select PrivatFonds: Konsequent</sd-checkbox>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <sd-link href="javascript:void(0)">PrivatFonds: Konsequent</sd-link>
@@ -1333,7 +1331,7 @@ export const multiSelectTable = {
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm"></sd-checkbox>
+              <sd-checkbox class="hide-label" size="sm">Select PrivatFonds: Konsequent pro</sd-checkbox>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <sd-link href="javascript:void(0)">PrivatFonds: Konsequent pro</sd-link>
@@ -1349,7 +1347,7 @@ export const multiSelectTable = {
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm"></sd-checkbox>
+              <sd-checkbox class="hide-label" size="sm">Select PrivatFonds: Kontrolliert</sd-checkbox>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <sd-link href="javascript:void(0)">PrivatFonds: Kontrolliert</sd-link>
@@ -1365,7 +1363,7 @@ export const multiSelectTable = {
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm"></sd-checkbox>
+              <sd-checkbox class="hide-label" size="sm">Select PrivatFonds: Kontrolliert pro</sd-checkbox>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <sd-link href="javascript:void(0)">PrivatFonds: Kontrolliert pro</sd-link>
@@ -1381,7 +1379,7 @@ export const multiSelectTable = {
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm" checked></sd-checkbox>
+              <sd-checkbox class="hide-label" size="sm" checked>Select PrivatFonds: Nachhaltig</sd-checkbox>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <sd-link href="javascript:void(0)">PrivatFonds: Nachhaltig</sd-link>
@@ -1397,7 +1395,7 @@ export const multiSelectTable = {
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm"></sd-checkbox>
+              <sd-checkbox class="hide-label" size="sm">Select Uni21.Jahrhundert -net-</sd-checkbox>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <sd-link href="javascript:void(0)"> Uni21.Jahrhundert -net- </sd-link>
@@ -1413,7 +1411,7 @@ export const multiSelectTable = {
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm"></sd-checkbox>
+              <sd-checkbox class="hide-label" size="sm">Select UniAbsoluterErtrag -net- A</sd-checkbox>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <sd-link href="javascript:void(0)">UniAbsoluterErtrag -net- A</sd-link>
@@ -1429,7 +1427,7 @@ export const multiSelectTable = {
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm"></sd-checkbox>
+              <sd-checkbox class="hide-label" size="sm">Select UniAbsoluterErtrag A</sd-checkbox>
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <sd-link href="javascript:void(0)">UniAbsoluterErtrag A</sd-link>
@@ -1521,9 +1519,7 @@ export const multiSelectTable = {
         // Handle select all
         selectAllCheckbox?.addEventListener('click', () => {
           const checkboxes = tbody.querySelectorAll('sd-checkbox');
-          console.log(checkboxes);
           const shouldCheck = !selectAllCheckbox.hasAttribute('checked');
-          console.log(shouldCheck);
 
           checkboxes.forEach(cb => {
             if (shouldCheck) {
