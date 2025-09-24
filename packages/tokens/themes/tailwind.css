@@ -115,8 +115,8 @@
   --fill-success: var(--sd-fill-success, var(--sd-color-success));
   --fill-white-alternative: var(--sd-fill-white-alternative, var(--sd-color-white-alternative));
   --fill-white: var(--sd-fill-white, var(--sd-color-white));
-  --font-weight-bold: 700;
-  --font-weight-normal: 400;
+  --font-weight-bold: var(--sd-font-weight-bold);
+  --font-weight-normal: var(--sd-font-weight-normal);
   --opacity-0: var(--sd-opacity-0);
   --opacity-100: var(--sd-opacity-100);
   --opacity-10: var(--sd-opacity-10);
@@ -189,10 +189,10 @@
   --spacing-auto: var(--sd-spacing-auto);
   --spacing-varspacing: var(--tw-varspacing);
   --spacing: var(--sd-spacing);
-  --text-2xl: var(--sd-text-2xl, 1.75rem);
-  --text-3xl: var(--sd-text-3xl, 2rem);
-  --text-4xl: var(--sd-text-4xl, 2.5rem);
-  --text-base: var(--sd-text-base, 1rem);
+  --text-2xl: var(--sd-text-2xl);
+  --text-3xl: var(--sd-text-3xl);
+  --text-4xl: var(--sd-text-4xl);
+  --text-base: var(--sd-text-base);
   --text-color-accent: var(--sd-text-color-accent, var(--sd-color-accent));
   --text-color-black-alternative: var(--sd-text-color-black-alternative, var(--sd-color-black-alternative));
   --text-color-black: var(--sd-text-color-black, var(--sd-color-black));
@@ -209,9 +209,9 @@
   --text-color-success: var(--sd-text-color-success, var(--sd-color-success));
   --text-color-white-alternative: var(--sd-text-color-white-alternative, var(--sd-color-white-alternative));
   --text-color-white: var(--sd-text-color-white, var(--sd-color-white));
-  --text-lg: var(--sd-text-lg, 1.25rem);
-  --text-sm: var(--sd-text-sm, 0.875rem);
-  --text-xl: var(--sd-text-xl, 1.5rem);
+  --text-lg: var(--sd-text-lg);
+  --text-sm: var(--sd-text-sm);
+  --text-xl: var(--sd-text-xl);
   --transition-duration-fast: var(--sd-duration-fast, 150ms);
   --transition-duration-medium: var(--sd-duration-medium, 300ms);
   --transition-duration-slow: var(--sd-duration-slow, 500ms);

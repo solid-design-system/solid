@@ -9,20 +9,32 @@ export class TypographyTokenProcessor extends BaseTokenProcessor {
   }
 
   canProcess(token) {
-    return token.type === 'fontSize';
+    return token.type === 'fontSize' || token.type === 'fontWeight';
   }
 
   process(token) {
-    const path = this.pathToKebabCase(this.processTokenPath(token).path);
-    const name = path.join('-').replace('font-size-', '');
+    const processed = this.processTokenPath(token);
     const value = this.getTokenValue(token);
 
-    const formatted = this.getFormattedValue({ name, value });
+    if (['font-size'].includes(processed.path[0])) {
+      processed.path = processed.path.slice(1);
+    }
 
-    return {
-      type: 'typography',
+    const name = processed.path.join('-');
+    const variable = {
+      type: 'spacing',
       name: `--${name}`,
-      value: `var(${formatted.variable}, ${formatted.value})`
+      value: this.cssvar(name),
+      variant: 'default'
     };
+
+    const core = {
+      ...variable,
+      name: this.cssprefix(name),
+      value,
+      variant: processed.variant
+    };
+
+    return [variable, core];
   }
 }

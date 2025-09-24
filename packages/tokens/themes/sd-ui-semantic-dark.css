@@ -79,6 +79,8 @@
   --sd-color-white-90: rgba(0, 53, 142, 0.9);
   --sd-color-white-alternative: #ffffff;
   --sd-color-white: #ffffff;
+  --sd-font-weight-bold: 700;
+  --sd-font-weight-normal: 400;
   --sd-gradient-horizontal-black-10-transparent: linear-gradient(270deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.1) 100%);
   --sd-gradient-horizontal-black-40-transparent: linear-gradient(90deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%);
   --sd-gradient-horizontal-transparent-black-10: linear-gradient(90deg, rgba(24, 24, 24, 0) 0%, rgba(24, 24, 24, 0.1) 100%);
@@ -154,6 +156,13 @@
   --sd-spacing-8: 2rem;
   --sd-spacing-auto: auto;
   --sd-spacing: 0.25rem;
+  --sd-text-2xl: 1.75rem;
+  --sd-text-3xl: 2rem;
+  --sd-text-4xl: 2.5rem;
+  --sd-text-base: 1rem;
+  --sd-text-lg: 1.25rem;
   --sd-text-primary-500: #e0e9f3;
+  --sd-text-sm: 0.875rem;
   --sd-text-white: #00358e;
+  --sd-text-xl: 1.5rem;
 }

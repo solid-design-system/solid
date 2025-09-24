@@ -62,13 +62,7 @@ export class TokenProcessingEngine {
    */
   processTokens(dictionary, options) {
     const result = {
-      baseVars: [
-        /** TODO: Add to actual variables in figma */
-        '--font-weight-normal: 400;',
-        '--font-weight-bold: 700;',
-        '--sizing-varspacing: var(--tw-varspacing);',
-        '--spacing-varspacing: var(--tw-varspacing);'
-      ],
+      baseVars: ['--sizing-varspacing: var(--tw-varspacing);', '--spacing-varspacing: var(--tw-varspacing);'],
       utilities: [],
       spacing: [],
       compositions: [],

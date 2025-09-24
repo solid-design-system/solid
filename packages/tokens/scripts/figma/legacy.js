@@ -143,6 +143,11 @@ export class FigmaLegacyTokens {
       'loader-current': { type: 'animation', value: 'wave 1.3s infinite, loader-color-current 2.6s infinite' }
     };
 
+    tokens['font-weight'] = {
+      normal: { type: 'fontWeight', value: 400 },
+      bold: { type: 'fontWeight', value: 700 }
+    };
+
     return { core, tokens: prefixReferences(tokens) };
   }
 
