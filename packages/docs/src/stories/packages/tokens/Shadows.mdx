@@ -8,21 +8,32 @@ import cx from 'classix';
 
 <table>
   <tbody>
-    {Object.entries(theme.boxShadow).map((token, i) => {
-      const name = token[0] === 'DEFAULT' ? 'shadow' : `shadow-${token[0]}`;
-      return (
-        <tr>
-          <td>
-            <div class="flex flex-col">
-              <div class="font-bold">sd-{name}</div>
-              <div>--sd-shadow-{token[1]}</div>
-            </div>
-          </td>
-          <td>
-            <div class={`h-16 w-16 ${name}`}></div>
-          </td>
-        </tr>
-      );
-    })}
+    {theme.base
+      .filter(token => token.name.startsWith('shadow'))
+      .map(token => ({ ...token, name: token.name.replace('shadow-', '') }))
+      .map((token, i) => {
+        const name = token.name === 'shadow' ? '' : `-${token.name}`;
+        return (
+          <tr>
+            <td>
+              <div class="flex flex-col">
+                <div class="font-bold">sd-shadow{name}</div>
+                <div>box-shadow: {token.value}</div>
+              </div>
+            </td>
+            <td>
+              <div
+                class={cx(
+                  'size-16',
+                  {
+                    shadow: 'shadow',
+                    sm: 'shadow-sm'
+                  }[token.name]
+                )}
+              ></div>
+            </td>
+          </tr>
+        );
+      })}
   </tbody>
 </table>

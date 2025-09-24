@@ -1,14 +1,14 @@
 /* eslint-disable no-param-reassign */
 import type { StoryContext } from '@storybook/web-components';
-import TailwindConfiguration from '../../.storybook/solid-tw-configuration.json';
+// import TailwindConfiguration from '../../.storybook/solid-tw-configuration.json';
 
-const tailwindConfig = `<script>
-  tailwind.config = {
-    theme: {
-      extend: ${TailwindConfiguration ? JSON.stringify(TailwindConfiguration, null, 8) : '{}'}
-    }
-  }
-</script>`;
+// const tailwindConfig = `<script>
+//   tailwind.config = {
+//     theme: {
+//       extend: ${TailwindConfiguration ? JSON.stringify(TailwindConfiguration, null, 8) : '{}'}
+//     }
+//   }
+// </script>`;
 
 export default function docsCodepenEnhancer(code: string, storyContext: StoryContext) {
   // We hijack the formatter to keep track of every story's code change
@@ -180,9 +180,7 @@ body {
           css_external: '',
           description: '',
           editors: 1110,
-          head:
-            '<meta name="viewport" content="width=device-width"><script src="https://cdn.tailwindcss.com"></script> ' +
-            tailwindConfig,
+          head: '<meta name="viewport" content="width=device-width"><script src="https://cdn.tailwindcss.com"></script> ', // + tailwindConfig,
           html: code.replace(/\n\s*\n/g, '\n').replaceAll('./placeholders', `${urls().placeholders}`), // Regex removes empty lines and replaces placeholders
           js: `/* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-components-installation--docs */
 import { registerIconLibrary } from "${urls().components}/solid-components.bundle.js";`,

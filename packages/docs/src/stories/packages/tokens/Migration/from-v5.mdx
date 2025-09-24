@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Packages/Tokens/Migration/from v5" />
+
+# Migration from v5
+
+The v5 release introduces support for multi-theming tokens.
+
+## What changed in `tokens.scss`
+
+- Previously, `tokens.scss` defined Sass variables that directly contained token values.
+- In v5, `tokens.scss` now maps Sass variables to the corresponding CSS variables, it no longer holds raw values. The corresponding CSS variables need to be loaded separately.
+- Only core variables are exposed. For example:
+  - Tokens like `sd-backgroundColor`, `sd-borderColor` and `sd-textColor` are unified under a single core token: `sd-color`.
+- The `DEFAULT` prefix has been removed from default color tokens. Any token previously named with `DEFAULT` will not appear without that prefix.
+
+**Before**:
+
+```css
+$sd-backgroundColor-primary-DEFAULT: rgb(var(--sd-color-primary, 0 53 142));
+$sd-backgroundColor-primary-100: rgb(var(--sd-color-primary-100, 236 240 249));
+```
+
+**After**:
+
+```css
+$sd-color-primary: var(--sd-color-primary);
+$sd-color-primary-100: var(--sd-color-primary-100);
+```
