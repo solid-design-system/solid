@@ -56,7 +56,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       cssvariables.push({
         type: processed.type,
         name: processed.name,
-        value: this.cssvar(path.join('-'), this.cssvar(fallback)),
+        value: this.cssvar(processed.name, this.cssvar(fallback)),
         properties: processed.properties,
         variant: 'default'
       });

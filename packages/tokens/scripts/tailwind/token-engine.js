@@ -120,30 +120,13 @@ export class TokenProcessingEngine {
     if (!result[store]) result[store] = [];
 
     switch (processed.type) {
-      case 'color': {
+      case 'color':
+      case 'spacing':
+      case 'typography':
+      case 'shadow':
+      case 'animation':
         this.categorize(store, variable, result);
         break;
-      }
-
-      case 'spacing': {
-        this.categorize(store, variable, result);
-        break;
-      }
-
-      case 'typography': {
-        this.categorize(store, variable, result);
-        break;
-      }
-
-      case 'shadow': {
-        this.categorize(store, variable, result);
-        break;
-      }
-
-      case 'animation': {
-        this.categorize(store, variable, result);
-        break;
-      }
 
       case 'keyframes':
         this.categorize(store, processed.value, result);

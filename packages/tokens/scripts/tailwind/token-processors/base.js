@@ -104,7 +104,7 @@ export class BaseTokenProcessor {
   }
 
   cssprefix(variable) {
-    return `--sd-${variable}`;
+    return `--sd-${variable.startsWith('--') ? variable.slice(2) : variable}`;
   }
 
   cssvar(variable, fallback) {
