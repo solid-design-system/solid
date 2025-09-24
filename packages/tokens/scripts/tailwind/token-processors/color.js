@@ -14,7 +14,6 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       background: 'background-color',
       border: 'border-color',
       outline: 'outline-color',
-      ring: 'ring-color',
       risk: 'color-risk',
       text: 'text-color'
     };
@@ -34,6 +33,8 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     /* Namespaces that were added manually, and are not available in themes */
     this.manual = ['risk'];
 
+    this.skip = ['ring'];
+
     /* Stores the history of processed color tokens. */
     this.processedHistory = [];
   }
@@ -44,6 +45,8 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
 
   process(token, dictionary, options) {
     const { path, variant } = this.processTokenPath(token);
+    if (this.skip.includes(path[0])) return [];
+
     const isCoreColor = this.#isCoreToken(path[0]);
     const isSemicoreColor = this.#isSemicoreToken(path[0]);
 
