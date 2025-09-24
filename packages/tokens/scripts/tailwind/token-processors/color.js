@@ -13,7 +13,10 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       'icon-fill': 'fill',
       background: 'background-color',
       border: 'border-color',
-      outline: 'outline-color',
+      outline: {
+        token: 'outline-color',
+        cssvar: 'border-color'
+      },
       risk: 'color-risk',
       text: 'text-color'
     };
@@ -33,6 +36,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     /* Namespaces that were added manually, and are not available in themes */
     this.manual = ['risk'];
 
+    /* Namepsaces that should be skipped and not processed */
     this.skip = ['ring'];
 
     /* Stores the history of processed color tokens. */
@@ -59,7 +63,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       cssvariables.push({
         type: processed.type,
         name: processed.name,
-        value: this.cssvar(processed.name, this.cssvar(fallback)),
+        value: this.cssvar(processed.cssvar ?? processed.name, this.cssvar(fallback)),
         properties: processed.properties,
         variant: 'default'
       });
@@ -136,9 +140,17 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     const name = processed.path.join('-');
 
     for (const [property, cssproperty] of Object.entries(this.core)) {
-      if (name.startsWith(property)) {
-        return { type: 'color', name: `--${name.replace(property, cssproperty)}` };
+      if (!name.startsWith(property)) continue;
+
+      if (typeof cssproperty === 'object') {
+        return {
+          type: 'color',
+          name: `--${name.replace(property, cssproperty.token)}`,
+          cssvar: `--${name.replace(property, cssproperty.cssvar)}`
+        };
       }
+
+      return { type: 'color', name: `--${name.replace(property, cssproperty)}` };
     }
 
     return { type: 'color', name: `--color-${name}` };
