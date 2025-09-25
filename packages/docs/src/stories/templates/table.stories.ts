@@ -1254,6 +1254,7 @@ export const sortableTable = {
 export const multiSelectTable = {
   render: () => html`
     <style>
+      /* a11y: visually hide labels inside sd-checkbox */
       sd-checkbox.hide-label::part(label) {
         position: absolute;
         width: 1px;
@@ -1265,11 +1266,27 @@ export const multiSelectTable = {
         white-space: nowrap;
         border: 0;
       }
+
+      #multi-select-table {
+        --row-h: 54px;
+      }
+
+      #multi-select-table tr {
+        block-size: var(--row-h);
+      }
+
+      #multi-select-table th.sd-table-cell,
+      #multi-select-table td.sd-table-cell {
+        block-size: var(--row-h);
+        min-block-size: 0;
+        padding-block: 0;
+        vertical-align: middle;
+      }
     </style>
     <section class="focus-visible:focus-outline">
       <table id="multi-select-table" class="sd-table sample-table w-full" aria-label="Multi Select Table">
         <thead>
-          <tr>
+          <tr class="h-[54px]">
             <th class="sd-table-cell sd-table-cell--bg-white" scope="col">
               <sd-checkbox class="hide-label" id="select-all" size="sm" indeterminate>Select all</sd-checkbox>
             </th>
@@ -1292,7 +1309,7 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md">
+              <sd-button variant="tertiary" size="md" class="sd-interactive">
                 <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
               </sd-button>
             </td>
@@ -1308,7 +1325,7 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Value-protected funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md">
+              <sd-button variant="tertiary" size="md" class="sd-interactive">
                 <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
               </sd-button>
             </td>
@@ -1324,7 +1341,7 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Value-protected funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md">
+              <sd-button variant="tertiary" size="md" class="sd-interactive">
                 <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
               </sd-button>
             </td>
@@ -1340,7 +1357,7 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Value-protected funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md">
+              <sd-button variant="tertiary" size="md" class="sd-interactive">
                 <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
               </sd-button>
             </td>
@@ -1356,7 +1373,7 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md">
+              <sd-button variant="tertiary" size="md" class="sd-interactive">
                 <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
               </sd-button>
             </td>
@@ -1372,7 +1389,7 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md">
+              <sd-button variant="tertiary" size="md" class="sd-interactive">
                 <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
               </sd-button>
             </td>
@@ -1388,7 +1405,7 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md">
+              <sd-button variant="tertiary" size="md" class="sd-interactive">
                 <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
               </sd-button>
             </td>
@@ -1404,7 +1421,7 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Stock funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md">
+              <sd-button variant="tertiary" size="md" class="sd-interactive">
                 <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
               </sd-button>
             </td>
@@ -1420,7 +1437,7 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md">
+              <sd-button variant="tertiary" size="md" class="sd-interactive">
                 <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
               </sd-button>
             </td>
@@ -1436,7 +1453,7 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md">
+              <sd-button variant="tertiary" size="md" class="sd-interactive">
                 <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
               </sd-button>
             </td>
