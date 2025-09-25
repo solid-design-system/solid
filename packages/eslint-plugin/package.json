@@ -34,14 +34,14 @@
     "postversion": "pnpm build"
   },
   "devDependencies": {
-    "@types/node": "^24.2.0",
+    "@types/node": "^24.5.2",
     "@typescript-eslint/rule-tester": "^8.44.1",
     "@typescript-eslint/utils": "^8.44.1",
     "es-html-parser": "^0.3.0",
     "esbuild": "^0.25.8",
     "eslint": "^9.36.0",
     "globby": "^14.1.0",
-    "jest": "^30.0.5",
+    "jest": "^30.1.3",
     "plop": "^4.0.3",
     "ts-jest": "^29.4.4",
     "ts-node": "^10.9.2",
