@@ -48,10 +48,10 @@
     "typescript": "5.8.3"
   },
   "peerDependencies": {
-    "@html-eslint/parser": "^0.44.0",
+    "@html-eslint/parser": "^0.46.2",
     "eslint": "^9.18.0"
   },
   "dependencies": {
-    "@html-eslint/parser": "^0.44.0"
+    "@html-eslint/parser": "^0.46.2"
   }
 }
