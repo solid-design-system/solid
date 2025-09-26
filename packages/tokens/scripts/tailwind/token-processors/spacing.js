@@ -35,7 +35,6 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
     if (processed.path.length === 1) return [];
 
     const formatedPrefix = processed.path[0]?.split('-').shift();
-    console.log(processed.path[0], processed.variant);
     if (processed.path[0] && this.specialPrefixes[formatedPrefix]) {
       prefix = this.specialPrefixes[formatedPrefix];
       processed.path = processed.path.slice(1);

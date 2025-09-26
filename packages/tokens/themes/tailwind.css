@@ -65,7 +65,6 @@
   --background-color-warning: var(--sd-background-color-warning, var(--sd-color-warning));
   --background-color-white-constant: var(--sd-background-color-white-constant, var(--sd-color-white-constant));
   --background-color-white: var(--sd-background-color-white, var(--sd-color-white));
-  --background-color: var(--sd-background-color, var(--sd-color-));
   --color-risk-high: var(--sd-color-risk-high, var(--sd-color-risk-high));
   --color-risk-increased: var(--sd-color-risk-increased, var(--sd-color-risk-increased));
   --color-risk-low: var(--sd-color-risk-low, var(--sd-color-risk-low));
@@ -223,7 +222,6 @@
   --text-color-primary-500: var(--sd-text-color-primary-500, var(--sd-color-primary-500));
   --text-color-primary-800: var(--sd-text-color-primary-800, var(--sd-color-primary-800));
   --text-color-primary: var(--sd-text-color-primary, var(--sd-color-primary));
-  --text-color-secondary: var(--sd-text-color-secondary, var(--sd-color-secondary));
   --text-color-success: var(--sd-text-color-success, var(--sd-color-success));
   --text-color-white-constant: var(--sd-text-color-white-constant, var(--sd-color-white-constant));
   --text-color-white: var(--sd-text-color-white, var(--sd-color-white));
@@ -307,7 +305,7 @@
 }
 
 @utility sd-button-color-background-primary-default {
-  background-color: var(--sd-button-color-background-primary-default, var(--sd-color-element outline));
+  background-color: var(--sd-button-color-background-primary-default, var(--sd-color-primary));
 }
 
 @utility sd-button-color-background-primary-disabled {
@@ -319,7 +317,7 @@
 }
 
 @utility sd-button-color-background-primary-pressed {
-  background-color: var(--sd-button-color-background-primary-pressed, var(--sd-color-item spacing line));
+  background-color: var(--sd-button-color-background-primary-pressed, var(--sd-color-primary-800));
 }
 
 @utility sd-button-color-background-secondary-default {
@@ -331,7 +329,7 @@
 }
 
 @utility sd-button-color-background-secondary-hover {
-  background-color: var(--sd-button-color-background-secondary-hover, var(--sd-color-token text));
+  background-color: var(--sd-button-color-background-secondary-hover, var(--sd-color-primary-100));
 }
 
 @utility sd-button-color-background-secondary-pressed {
@@ -347,7 +345,7 @@
 }
 
 @utility sd-button-color-background-tertiary-hover {
-  background-color: var(--sd-button-color-background-tertiary-hover, var(--sd-color-token text));
+  background-color: var(--sd-button-color-background-tertiary-hover, var(--sd-color-primary-100));
 }
 
 @utility sd-button-color-background-tertiary-pressed {
@@ -355,7 +353,7 @@
 }
 
 @utility sd-button-color-border-secondary-default {
-  border-color: var(--sd-button-color-border-secondary-default, var(--sd-color-element outline));
+  border-color: var(--sd-button-color-border-secondary-default, var(--sd-color-primary));
 }
 
 @utility sd-button-color-border-secondary-disabled {
@@ -367,7 +365,7 @@
 }
 
 @utility sd-button-color-border-secondary-pressed {
-  border-color: var(--sd-button-color-border-secondary-pressed, var(--sd-color-item spacing line));
+  border-color: var(--sd-button-color-border-secondary-pressed, var(--sd-color-primary-800));
 }
 
 @utility sd-button-color-border-tertiary-default {
@@ -403,7 +401,7 @@
 }
 
 @utility sd-button-color-inverted-background-primary-default {
-  background-color: var(--sd-button-color-inverted-background-primary-default, var(--sd-color-background));
+  background-color: var(--sd-button-color-inverted-background-primary-default, var(--sd-color-white));
 }
 
 @utility sd-button-color-inverted-background-primary-disabled {
@@ -411,7 +409,7 @@
 }
 
 @utility sd-button-color-inverted-background-primary-hover {
-  background-color: var(--sd-button-color-inverted-background-primary-hover, var(--sd-color-token text));
+  background-color: var(--sd-button-color-inverted-background-primary-hover, var(--sd-color-primary-100));
 }
 
 @utility sd-button-color-inverted-background-primary-pressed {
@@ -431,7 +429,7 @@
 }
 
 @utility sd-button-color-inverted-background-secondary-pressed {
-  background-color: var(--sd-button-color-inverted-background-secondary-pressed, var(--sd-color-item spacing line));
+  background-color: var(--sd-button-color-inverted-background-secondary-pressed, var(--sd-color-primary-800));
 }
 
 @utility sd-button-color-inverted-background-tertiary-default {
@@ -447,11 +445,11 @@
 }
 
 @utility sd-button-color-inverted-background-tertiary-pressed {
-  background-color: var(--sd-button-color-inverted-background-tertiary-pressed, var(--sd-color-item spacing line));
+  background-color: var(--sd-button-color-inverted-background-tertiary-pressed, var(--sd-color-primary-800));
 }
 
 @utility sd-button-color-inverted-border-secondary-default {
-  border-color: var(--sd-button-color-inverted-border-secondary-default, var(--sd-color-background));
+  border-color: var(--sd-button-color-inverted-border-secondary-default, var(--sd-color-white));
 }
 
 @utility sd-button-color-inverted-border-secondary-disabled {
@@ -459,7 +457,7 @@
 }
 
 @utility sd-button-color-inverted-border-secondary-hover {
-  border-color: var(--sd-button-color-inverted-border-secondary-hover, var(--sd-color-token text));
+  border-color: var(--sd-button-color-inverted-border-secondary-hover, var(--sd-color-primary-100));
 }
 
 @utility sd-button-color-inverted-border-secondary-pressed {
@@ -483,27 +481,27 @@
 }
 
 @utility sd-button-color-inverted-text-icon-fill-cta-default {
-  fill: var(--sd-button-color-inverted-text-icon-fill-cta-default, var(--sd-color-background));
+  fill: var(--sd-button-color-inverted-text-icon-fill-cta-default, var(--sd-color-white));
 }
 
 @utility sd-button-color-inverted-text-icon-fill-cta-disabled {
-  fill: var(--sd-button-color-inverted-text-icon-fill-cta-disabled, var(--sd-color-background));
+  fill: var(--sd-button-color-inverted-text-icon-fill-cta-disabled, var(--sd-color-white));
 }
 
 @utility sd-button-color-inverted-text-icon-fill-cta-hover {
-  fill: var(--sd-button-color-inverted-text-icon-fill-cta-hover, var(--sd-color-background));
+  fill: var(--sd-button-color-inverted-text-icon-fill-cta-hover, var(--sd-color-white));
 }
 
 @utility sd-button-color-inverted-text-icon-fill-cta-pressed {
-  fill: var(--sd-button-color-inverted-text-icon-fill-cta-pressed, var(--sd-color-background));
+  fill: var(--sd-button-color-inverted-text-icon-fill-cta-pressed, var(--sd-color-white));
 }
 
 @utility sd-button-color-inverted-text-icon-fill-primary-default {
-  fill: var(--sd-button-color-inverted-text-icon-fill-primary-default, var(--sd-color-element outline));
+  fill: var(--sd-button-color-inverted-text-icon-fill-primary-default, var(--sd-color-primary));
 }
 
 @utility sd-button-color-inverted-text-icon-fill-primary-disabled {
-  fill: var(--sd-button-color-inverted-text-icon-fill-primary-disabled, var(--sd-color-background));
+  fill: var(--sd-button-color-inverted-text-icon-fill-primary-disabled, var(--sd-color-white));
 }
 
 @utility sd-button-color-inverted-text-icon-fill-primary-hover {
@@ -511,11 +509,11 @@
 }
 
 @utility sd-button-color-inverted-text-icon-fill-primary-pressed {
-  fill: var(--sd-button-color-inverted-text-icon-fill-primary-pressed, var(--sd-color-item spacing line));
+  fill: var(--sd-button-color-inverted-text-icon-fill-primary-pressed, var(--sd-color-primary-800));
 }
 
 @utility sd-button-color-inverted-text-icon-fill-secondary-default {
-  fill: var(--sd-button-color-inverted-text-icon-fill-secondary-default, var(--sd-color-background));
+  fill: var(--sd-button-color-inverted-text-icon-fill-secondary-default, var(--sd-color-white));
 }
 
 @utility sd-button-color-inverted-text-icon-fill-secondary-disabled {
@@ -523,7 +521,7 @@
 }
 
 @utility sd-button-color-inverted-text-icon-fill-secondary-hover {
-  fill: var(--sd-button-color-inverted-text-icon-fill-secondary-hover, var(--sd-color-token text));
+  fill: var(--sd-button-color-inverted-text-icon-fill-secondary-hover, var(--sd-color-primary-100));
 }
 
 @utility sd-button-color-inverted-text-icon-fill-secondary-pressed {
@@ -531,7 +529,7 @@
 }
 
 @utility sd-button-color-inverted-text-icon-fill-tertiary-default {
-  fill: var(--sd-button-color-inverted-text-icon-fill-tertiary-default, var(--sd-color-background));
+  fill: var(--sd-button-color-inverted-text-icon-fill-tertiary-default, var(--sd-color-white));
 }
 
 @utility sd-button-color-inverted-text-icon-fill-tertiary-disabled {
@@ -539,7 +537,7 @@
 }
 
 @utility sd-button-color-inverted-text-icon-fill-tertiary-hover {
-  fill: var(--sd-button-color-inverted-text-icon-fill-tertiary-hover, var(--sd-color-token text));
+  fill: var(--sd-button-color-inverted-text-icon-fill-tertiary-hover, var(--sd-color-primary-100));
 }
 
 @utility sd-button-color-inverted-text-icon-fill-tertiary-pressed {
@@ -547,31 +545,31 @@
 }
 
 @utility sd-button-color-text-icon-fill-cta-default {
-  fill: var(--sd-button-color-text-icon-fill-cta-default, var(--sd-color-background));
+  fill: var(--sd-button-color-text-icon-fill-cta-default, var(--sd-color-white));
 }
 
 @utility sd-button-color-text-icon-fill-cta-disabled {
-  fill: var(--sd-button-color-text-icon-fill-cta-disabled, var(--sd-color-background));
+  fill: var(--sd-button-color-text-icon-fill-cta-disabled, var(--sd-color-white));
 }
 
 @utility sd-button-color-text-icon-fill-cta-hover {
-  fill: var(--sd-button-color-text-icon-fill-cta-hover, var(--sd-color-background));
+  fill: var(--sd-button-color-text-icon-fill-cta-hover, var(--sd-color-white));
 }
 
 @utility sd-button-color-text-icon-fill-cta-pressed {
-  fill: var(--sd-button-color-text-icon-fill-cta-pressed, var(--sd-color-background));
+  fill: var(--sd-button-color-text-icon-fill-cta-pressed, var(--sd-color-white));
 }
 
 @utility sd-button-color-text-icon-fill-primary-default {
-  fill: var(--sd-button-color-text-icon-fill-primary-default, var(--sd-color-background));
+  fill: var(--sd-button-color-text-icon-fill-primary-default, var(--sd-color-white));
 }
 
 @utility sd-button-color-text-icon-fill-primary-disabled {
-  fill: var(--sd-button-color-text-icon-fill-primary-disabled, var(--sd-color-background));
+  fill: var(--sd-button-color-text-icon-fill-primary-disabled, var(--sd-color-white));
 }
 
 @utility sd-button-color-text-icon-fill-primary-hover {
-  fill: var(--sd-button-color-text-icon-fill-primary-hover, var(--sd-color-token text));
+  fill: var(--sd-button-color-text-icon-fill-primary-hover, var(--sd-color-primary-100));
 }
 
 @utility sd-button-color-text-icon-fill-primary-pressed {
@@ -579,7 +577,7 @@
 }
 
 @utility sd-button-color-text-icon-fill-secondary-default {
-  fill: var(--sd-button-color-text-icon-fill-secondary-default, var(--sd-color-element outline));
+  fill: var(--sd-button-color-text-icon-fill-secondary-default, var(--sd-color-primary));
 }
 
 @utility sd-button-color-text-icon-fill-secondary-disabled {
@@ -591,11 +589,11 @@
 }
 
 @utility sd-button-color-text-icon-fill-secondary-pressed {
-  fill: var(--sd-button-color-text-icon-fill-secondary-pressed, var(--sd-color-item spacing line));
+  fill: var(--sd-button-color-text-icon-fill-secondary-pressed, var(--sd-color-primary-800));
 }
 
 @utility sd-button-color-text-icon-fill-tertiary-default {
-  fill: var(--sd-button-color-text-icon-fill-tertiary-default, var(--sd-color-element outline));
+  fill: var(--sd-button-color-text-icon-fill-tertiary-default, var(--sd-color-primary));
 }
 
 @utility sd-button-color-text-icon-fill-tertiary-disabled {
@@ -607,11 +605,11 @@
 }
 
 @utility sd-button-color-text-icon-fill-tertiary-pressed {
-  fill: var(--sd-button-color-text-icon-fill-tertiary-pressed, var(--sd-color-item spacing line));
+  fill: var(--sd-button-color-text-icon-fill-tertiary-pressed, var(--sd-color-primary-800));
 }
 
 @utility sd-interactive-color-inverted-text-icon-fill-default {
-  fill: var(--sd-interactive-color-inverted-text-icon-fill-default, var(--sd-color-background));
+  fill: var(--sd-interactive-color-inverted-text-icon-fill-default, var(--sd-color-white));
 }
 
 @utility sd-interactive-color-inverted-text-icon-fill-disabled {
@@ -627,7 +625,7 @@
 }
 
 @utility sd-interactive-color-text-icon-fill-default {
-  fill: var(--sd-interactive-color-text-icon-fill-default, var(--sd-color-background));
+  fill: var(--sd-interactive-color-text-icon-fill-default, var(--sd-color-white));
 }
 
 @utility sd-interactive-color-text-icon-fill-disabled {
@@ -655,7 +653,7 @@
 }
 
 @utility sd-tag-color-background-selected-default {
-  background-color: var(--sd-tag-color-background-selected-default, var(--sd-color-background));
+  background-color: var(--sd-tag-color-background-selected-default, var(--sd-color-white));
 }
 
 @utility sd-tag-color-background-selected-disabled {
@@ -667,7 +665,7 @@
 }
 
 @utility sd-tag-color-border-default-default {
-  border-color: var(--sd-tag-color-border-default-default, var(--sd-color-background));
+  border-color: var(--sd-tag-color-border-default-default, var(--sd-color-white));
 }
 
 @utility sd-tag-color-border-default-disabled {
@@ -675,7 +673,7 @@
 }
 
 @utility sd-tag-color-border-default-hover {
-  border-color: var(--sd-tag-color-border-default-hover, var(--sd-color-token text));
+  border-color: var(--sd-tag-color-border-default-hover, var(--sd-color-primary-100));
 }
 
 @utility sd-tag-color-border-selected-default {
@@ -691,7 +689,7 @@
 }
 
 @utility sd-tag-color-text-icon-fill-default-default {
-  fill: var(--sd-tag-color-text-icon-fill-default-default, var(--sd-color-background));
+  fill: var(--sd-tag-color-text-icon-fill-default-default, var(--sd-color-white));
 }
 
 @utility sd-tag-color-text-icon-fill-default-disabled {
@@ -699,19 +697,19 @@
 }
 
 @utility sd-tag-color-text-icon-fill-default-hover {
-  fill: var(--sd-tag-color-text-icon-fill-default-hover, var(--sd-color-token text));
+  fill: var(--sd-tag-color-text-icon-fill-default-hover, var(--sd-color-primary-100));
 }
 
 @utility sd-tag-color-text-icon-fill-selected-default {
-  fill: var(--sd-tag-color-text-icon-fill-selected-default, var(--sd-color-element outline));
+  fill: var(--sd-tag-color-text-icon-fill-selected-default, var(--sd-color-primary));
 }
 
 @utility sd-tag-color-text-icon-fill-selected-disabled {
-  fill: var(--sd-tag-color-text-icon-fill-selected-disabled, var(--sd-color-background));
+  fill: var(--sd-tag-color-text-icon-fill-selected-disabled, var(--sd-color-white));
 }
 
 @utility sd-tag-color-text-icon-fill-selected-hover {
-  fill: var(--sd-tag-color-text-icon-fill-selected-hover, var(--sd-color-background));
+  fill: var(--sd-tag-color-text-icon-fill-selected-hover, var(--sd-color-white));
 }
 
 @utility z-10 {

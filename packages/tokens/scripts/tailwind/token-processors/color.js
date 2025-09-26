@@ -56,12 +56,14 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
 
     if (!isCoreColor && !token.path[1].startsWith('sd-')) return [];
 
-    const processed = isCoreColor ? this.#processCoreToken(token) : this.#processSemanticToken(token, dictionary);
+    const processed = isCoreColor
+      ? this.#processCoreToken(token)
+      : this.#processSemanticToken(token, dictionary, options);
     const fallback = this.#getFallbackColor(token);
 
     const cssvariables = [];
 
-    if ((processed.type === 'utility' && variant === options.defaultTheme) || processed.type !== 'utility') {
+    if (variant === options.defaultTheme) {
       cssvariables.push({
         type: processed.type,
         name: processed.name,
@@ -119,7 +121,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     return `${prefix}-${name}`;
   }
 
-  #getCoreTokenFromColor(color, dictionary) {
+  #getCoreTokenFromColor(color, dictionary, options) {
     let found = null;
     Object.values(dictionary).forEach(item => {
       if (found) return;
@@ -127,7 +129,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       Object.values(item).forEach(i => {
         if (found) return;
 
-        if (!i.key?.startsWith('{core.')) {
+        if (i.key?.startsWith(`{${options.defaultTheme}.`)) {
           if (i.value !== color) return;
           found = i;
         }
@@ -158,14 +160,14 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     return { type: 'color', name: `--color-${name}` };
   }
 
-  #processSemanticToken(token, dictionary) {
+  #processSemanticToken(token, dictionary, options) {
     const processed = this.processTokenPath(token);
     const isSemicoreColor = this.#isSemicoreToken(processed.path[0]);
 
     const name = processed.path.join('-');
     const value = isSemicoreColor
       ? this.cssvar(name)
-      : this.cssvar(name, this.cssvar(this.#getCoreTokenFromColor(token.value, dictionary)));
+      : this.cssvar(name, this.cssvar(this.#getCoreTokenFromColor(token.value, dictionary, options)));
 
     for (const [property, cssproperty] of Object.entries(this.semantic)) {
       if (name.includes(property)) {
