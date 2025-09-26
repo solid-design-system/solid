@@ -9,7 +9,7 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "customElements": "dist/custom-elements.json",
+  "customElements": "dist-versioned/custom-elements.json",
   "web-types": "./dist/web-types.json",
   "type": "module",
   "types": "dist/solid-components.d.ts",
@@ -78,7 +78,7 @@
     "lit": "^3.3.1"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.10.4",
+    "@custom-elements-manifest/analyzer": "^0.10.6",
     "@mariohamann/tailwindcss-var": "github:mariohamann/tailwindcss-var",
     "@open-wc/testing": "^4.0.0",
     "@open-wc/testing-helpers": "^3.0.1",
