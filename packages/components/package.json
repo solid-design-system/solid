@@ -71,10 +71,10 @@
     "postversion": "pnpm build && node scripts/node-write-sizes.mjs"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.7.3",
+    "@floating-ui/dom": "^1.7.4",
     "@shoelace-style/animations": "^1.2.0",
     "@shoelace-style/localize": "^3.2.1",
-    "classix": "^2.2.2",
+    "classix": "^2.2.4",
     "lit": "^3.3.1"
   },
   "devDependencies": {
@@ -95,7 +95,7 @@
     "chokidar": "^4.0.3",
     "command-line-args": "^6.0.1",
     "comment-parser": "^1.4.1",
-    "concurrently": "^9.2.0",
+    "concurrently": "^9.2.1",
     "cssnano": "^7.1.0",
     "custom-element-jet-brains-integration": "^1.7.0",
     "custom-element-vs-code-integration": "^1.5.0",
