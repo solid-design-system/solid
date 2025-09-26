@@ -100,7 +100,7 @@
     "custom-element-jet-brains-integration": "^1.7.0",
     "custom-element-vs-code-integration": "^1.5.0",
     "del": "^8.0.1",
-    "esbuild": "^0.25.8",
+    "esbuild": "^0.25.10",
     "esbuild-plugin-replace": "^1.4.0",
     "globby": "^14.1.0",
     "gzip-size": "^7.0.0",
