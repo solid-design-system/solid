@@ -78,7 +78,7 @@
     "vite-node": "^3.2.4",
     "vite-plugin-cem": "^0.8.4",
     "vite-tsconfig-paths": "^5.1.4",
-    "wait-on": "^8.0.3",
+    "wait-on": "^9.0.1",
     "wc-storybook-helpers": "1.5.3",
     "@storybook/addon-docs": "^9.1.8"
   }
