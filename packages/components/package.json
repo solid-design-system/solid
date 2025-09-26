@@ -9,7 +9,7 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "customElements": "cdn-versioned/custom-elements.json",
+  "customElements": "cdn/custom-elements.json",
   "web-types": "./dist/web-types.json",
   "type": "module",
   "types": "dist/solid-components.d.ts",
@@ -96,7 +96,7 @@
     "command-line-args": "^6.0.1",
     "comment-parser": "^1.4.1",
     "concurrently": "^9.2.1",
-    "cssnano": "^7.1.0",
+    "cssnano": "^7.1.1",
     "custom-element-jet-brains-integration": "^1.7.0",
     "custom-element-vs-code-integration": "^1.5.0",
     "del": "^8.0.1",
