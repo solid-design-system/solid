@@ -71,7 +71,7 @@ export const Sizes = {
  */
 export const Inverted = {
   render: () =>
-    html` <div class="bg-primary-alternative p-4">
+    html` <div class="bg-primary-constant p-4">
       <h4 class="sd-headline sd-headline--inverted">Lorem ipsum sic semper</h4>
     </div>`
 };

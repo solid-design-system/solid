@@ -56,7 +56,7 @@ export class BaseTokenProcessor {
    * Cleans the token name by removing and replacing some special characters
    */
   cleanupTokenName(name) {
-    return name.replaceAll('*', '').replaceAll('|', '-');
+    return name.replaceAll('*', '').replaceAll('|', '-').replace('', '');
   }
 
   /**
@@ -104,7 +104,13 @@ export class BaseTokenProcessor {
   }
 
   cssprefix(variable) {
-    return `--sd-${variable.startsWith('--') ? variable.slice(2) : variable}`;
+    let name = variable.startsWith('--') ? variable.slice(2) : variable;
+
+    if (name.startsWith('sd-')) {
+      name = name.slice(3);
+    }
+
+    return `--sd-${name}`;
   }
 
   cssvar(variable, fallback) {

@@ -108,6 +108,7 @@ export class TokenProcessingEngine {
    * Categorize processed token into appropriate result buckets
    */
   categorizeProcessedToken(processed, result) {
+    if (!processed) return;
     const variable = `${processed.name}: ${processed.value};`;
     const store = processed.variant === 'default' ? 'baseVars' : processed.variant || 'baseVars';
 

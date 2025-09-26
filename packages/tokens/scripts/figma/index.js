@@ -32,7 +32,7 @@ export class FigmaClient extends FigmaBase {
         });
       });
 
-    const { Core, ...rest } = themes;
+    const { 'UI Core': Core, ...rest } = themes;
     return {
       core: Core,
       themes: rest

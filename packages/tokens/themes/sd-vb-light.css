@@ -1,4 +1,4 @@
-:root, .sd-ui-semantic-light {
+:root, .sd-vb-light {
   color-scheme: light;
 
   --sd-aspect-16\/10: 16 / 10;
@@ -108,19 +108,19 @@
   --sd-spacing-border-width-4: 0.25rem;
   --sd-spacing-border-width-6: 0.375rem;
   --sd-spacing-border-width-default: 0.0625rem;
-  --sd-spacing-sd-button-border-radius: 0.25rem;
-  --sd-spacing-sd-button-border-width: 0.0625rem;
-  --sd-spacing-sd-button-font-size-sm: 0.875rem;
+  --sd-spacing-sd-button-border-radius: 624.9375rem;
+  --sd-spacing-sd-button-border-width: 0.125rem;
+  --sd-spacing-sd-button-font-size-sm: 1rem;
   --sd-spacing-sd-button-font-size: 1rem;
   --sd-spacing-sd-button-letter-spacing: 0rem;
-  --sd-spacing-sd-button-line-height: 1.5rem;
+  --sd-spacing-sd-button-line-height: 1rem;
   --sd-spacing-sd-button-sizing-size-lg-loading: 6rem;
   --sd-spacing-sd-button-sizing-size-lg: 3rem;
   --sd-spacing-sd-button-sizing-size-md-loading: 5rem;
   --sd-spacing-sd-button-sizing-size-md: 2.5rem;
   --sd-spacing-sd-button-sizing-size-sm-loading: 4rem;
   --sd-spacing-sd-button-sizing-size-sm: 2rem;
-  --sd-spacing-sd-button-spacing-left-right: 1rem;
+  --sd-spacing-sd-button-spacing-left-right: 2.25rem;
   --sd-spacing: 0.25rem;
   --sd-text-2xl: 1.75rem;
   --sd-text-3xl: 2rem;

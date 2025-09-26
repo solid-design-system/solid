@@ -17,5 +17,5 @@
 
 .sd-paragraph--inverted,
 .sd-prose--inverted p {
-  @apply text-white-alternative;
+  @apply text-white-constant;
 }

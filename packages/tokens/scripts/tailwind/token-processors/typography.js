@@ -28,12 +28,15 @@ export class TypographyTokenProcessor extends BaseTokenProcessor {
       variant: 'default'
     };
 
-    const core = {
-      ...variable,
-      name: this.cssprefix(name),
-      value,
-      variant: processed.variant
-    };
+    const core =
+      processed.variant !== 'default'
+        ? {
+            ...variable,
+            name: this.cssprefix(name),
+            value,
+            variant: processed.variant
+          }
+        : undefined;
 
     return [variable, core];
   }
