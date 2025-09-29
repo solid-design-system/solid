@@ -45,17 +45,16 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -70,17 +69,16 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -95,17 +93,16 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -120,17 +117,16 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -146,17 +142,16 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -169,17 +164,16 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -194,17 +188,16 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -219,17 +212,16 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -242,17 +234,16 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -265,17 +256,16 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -323,17 +313,16 @@ export const simpleTableVerticalDividers = {
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -350,17 +339,16 @@ export const simpleTableVerticalDividers = {
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -375,17 +363,16 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -400,17 +387,16 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -426,17 +412,16 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -449,17 +434,16 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -474,17 +458,16 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -499,17 +482,16 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -522,17 +504,16 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -545,17 +526,16 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -601,17 +581,16 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -626,17 +605,16 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-primary-100">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-primary-100">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -651,17 +629,16 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -676,17 +653,16 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-primary-100">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-primary-100">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -702,17 +678,16 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -725,17 +700,16 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-primary-100">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-primary-100">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -750,17 +724,16 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -775,17 +748,16 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-primary-100">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-primary-100">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -798,17 +770,16 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -821,17 +792,16 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-primary-100">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-primary-100">
               <div class="flex">
-                <sd-button variant="tertiary" size="sm">
+                <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                   <sd-icon
+                    class="w-5 h-5 pl-[2px] pt-[2px]"
                     name="system/star-empty"
-                    library="default"
-                    color="primary"
                     label="Add to favorites"
                   ></sd-icon>
-                </sd-button>
-                <sd-button variant="tertiary" size="sm">
-                  <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                </sd-button>
+                </button>
+                <button class="sd-interactive sd-interactive--reset" title="Share">
+                  <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                </button>
               </div>
             </td>
           </tr>
@@ -1000,17 +970,16 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1025,17 +994,16 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1050,17 +1018,16 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1075,17 +1042,16 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1101,17 +1067,16 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1124,17 +1089,16 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1149,17 +1113,16 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1174,17 +1137,16 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1197,17 +1159,16 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1220,17 +1181,16 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1309,9 +1269,9 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md" class="sd-interactive">
-                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
-              </sd-button>
+              <button class="sd-interactive sd-interactive--reset items-center" title="PDF">
+                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              </button>
             </td>
           </tr>
           <tr>
@@ -1325,9 +1285,9 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Value-protected funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md" class="sd-interactive">
-                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
-              </sd-button>
+              <button class="sd-interactive sd-interactive--reset" title="PDF">
+                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              </button>
             </td>
           </tr>
           <tr>
@@ -1341,9 +1301,9 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Value-protected funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md" class="sd-interactive">
-                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
-              </sd-button>
+              <button class="sd-interactive sd-interactive--reset" title="PDF">
+                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              </button>
             </td>
           </tr>
           <tr>
@@ -1357,9 +1317,9 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Value-protected funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md" class="sd-interactive">
-                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
-              </sd-button>
+              <button class="sd-interactive sd-interactive--reset" title="PDF">
+                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              </button>
             </td>
           </tr>
           <tr>
@@ -1373,9 +1333,9 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md" class="sd-interactive">
-                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
-              </sd-button>
+              <button class="sd-interactive sd-interactive--reset" title="PDF">
+                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              </button>
             </td>
           </tr>
           <tr>
@@ -1389,9 +1349,9 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md" class="sd-interactive">
-                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
-              </sd-button>
+              <button class="sd-interactive sd-interactive--reset" title="PDF">
+                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              </button>
             </td>
           </tr>
           <tr>
@@ -1405,9 +1365,9 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md" class="sd-interactive">
-                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
-              </sd-button>
+              <button class="sd-interactive sd-interactive--reset" title="PDF">
+                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              </button>
             </td>
           </tr>
           <tr>
@@ -1421,9 +1381,9 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Stock funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md" class="sd-interactive">
-                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
-              </sd-button>
+              <button class="sd-interactive sd-interactive--reset" title="PDF">
+                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              </button>
             </td>
           </tr>
           <tr>
@@ -1437,9 +1397,9 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md" class="sd-interactive">
-                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
-              </sd-button>
+              <button class="sd-interactive sd-interactive--reset" title="PDF">
+                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              </button>
             </td>
           </tr>
           <tr>
@@ -1453,9 +1413,9 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-button variant="tertiary" size="md" class="sd-interactive">
-                <sd-icon name="system/file-pdf" library="default" color="primary" label="PDF"></sd-icon>
-              </sd-button>
+              <button class="sd-interactive sd-interactive--reset" title="PDF">
+                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              </button>
             </td>
           </tr>
         </tbody>
@@ -1653,17 +1613,16 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1678,17 +1637,16 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1703,17 +1661,16 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1728,17 +1685,16 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1754,17 +1710,16 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1777,17 +1732,16 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1802,17 +1756,16 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1827,17 +1780,16 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1850,17 +1802,16 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1873,17 +1824,16 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1948,17 +1898,16 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1973,17 +1922,16 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -1998,17 +1946,16 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -2023,17 +1970,16 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -2049,17 +1995,16 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -2072,17 +2017,16 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -2097,17 +2041,16 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -2122,17 +2065,16 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -2145,17 +2087,16 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -2168,17 +2109,16 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -2278,17 +2218,16 @@ export const TableFixedLeft = {
               </td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -2307,17 +2246,16 @@ export const TableFixedLeft = {
               </td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -2334,17 +2272,16 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -2361,17 +2298,16 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -2389,17 +2325,16 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -2414,17 +2349,16 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -2441,17 +2375,16 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -2468,17 +2401,16 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -2493,17 +2425,16 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -2518,17 +2449,16 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
                 <div class="flex">
-                  <sd-button variant="tertiary" size="sm">
+                  <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
                     <sd-icon
+                      class="w-5 h-5 pl-[2px] pt-[2px]"
                       name="system/star-empty"
-                      library="default"
-                      color="primary"
                       label="Add to favorites"
                     ></sd-icon>
-                  </sd-button>
-                  <sd-button variant="tertiary" size="sm">
-                    <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                  </sd-button>
+                  </button>
+                  <button class="sd-interactive sd-interactive--reset" title="Share">
+                    <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share"></sd-icon>
+                  </button>
                 </div>
               </td>
             </tr>
@@ -2594,12 +2524,12 @@ export const TableFixedRight = {
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
-                    </sd-button>
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                    </sd-button>
+                    <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[2px]" name="system/star-empty" label="Add to favorites"></sd-icon>
+                    </button>
+                    <button class="sd-interactive sd-interactive--reset" title="Share">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share" ></sd-icon>
+                    </button>
                   </div>
                 </th>
               </tr>
@@ -2614,12 +2544,12 @@ export const TableFixedRight = {
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
-                    </sd-button>
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                    </sd-button>
+                    <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[2px]" name="system/star-empty" label="Add to favorites"></sd-icon>
+                    </button>
+                    <button class="sd-interactive sd-interactive--reset" title="Share">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share" ></sd-icon>
+                    </button>
                   </div>
                 </th>
               </tr>
@@ -2634,12 +2564,12 @@ export const TableFixedRight = {
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
-                    </sd-button>
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                    </sd-button>
+                    <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[2px]" name="system/star-empty" label="Add to favorites"></sd-icon>
+                    </button>
+                    <button class="sd-interactive sd-interactive--reset" title="Share">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share" ></sd-icon>
+                    </button>
                   </div>
                 </th>
               </tr>
@@ -2656,12 +2586,12 @@ export const TableFixedRight = {
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
-                    </sd-button>
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                    </sd-button>
+                   <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[2px]" name="system/star-empty" label="Add to favorites"></sd-icon>
+                    </button>
+                    <button class="sd-interactive sd-interactive--reset" title="Share">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share" ></sd-icon>
+                    </button>
                   </div>
                 </th>
               </tr>
@@ -2678,12 +2608,12 @@ export const TableFixedRight = {
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
-                    </sd-button>
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                    </sd-button>
+                   <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[2px]" name="system/star-empty" label="Add to favorites"></sd-icon>
+                    </button>
+                    <button class="sd-interactive sd-interactive--reset" title="Share">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share" ></sd-icon>
+                    </button>
                   </div>
                 </th>
               </tr>
@@ -2698,12 +2628,12 @@ export const TableFixedRight = {
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
-                    </sd-button>
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                    </sd-button>
+                   <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[2px]" name="system/star-empty" label="Add to favorites"></sd-icon>
+                    </button>
+                    <button class="sd-interactive sd-interactive--reset" title="Share">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share" ></sd-icon>
+                    </button>
                   </div>
                 </th>
               </tr>
@@ -2718,12 +2648,12 @@ export const TableFixedRight = {
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
-                    </sd-button>
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                    </sd-button>
+                   <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[2px]" name="system/star-empty" label="Add to favorites"></sd-icon>
+                    </button>
+                    <button class="sd-interactive sd-interactive--reset" title="Share">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share" ></sd-icon>
+                    </button>
                   </div>
                 </th>
               </tr>
@@ -2740,12 +2670,12 @@ export const TableFixedRight = {
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
-                    </sd-button>
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                    </sd-button>
+                    <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[2px]" name="system/star-empty" label="Add to favorites"></sd-icon>
+                    </button>
+                    <button class="sd-interactive sd-interactive--reset" title="Share">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share" ></sd-icon>
+                    </button>
                   </div>
                 </th>
               </tr>
@@ -2760,12 +2690,12 @@ export const TableFixedRight = {
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
-                    </sd-button>
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                    </sd-button>
+                   <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[2px]" name="system/star-empty" label="Add to favorites"></sd-icon>
+                    </button>
+                    <button class="sd-interactive sd-interactive--reset" title="Share">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share" ></sd-icon>
+                    </button>
                   </div>
                 </th>
               </tr>
@@ -2780,12 +2710,12 @@ export const TableFixedRight = {
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
                 >
                   <div class="flex">
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/star-empty" library="default" color="primary" label="Add to favorites"></sd-icon>
-                    </sd-button>
-                    <sd-button variant="tertiary" size="sm">
-                      <sd-icon name="system/share" library="default" color="primary" label="Share"></sd-icon>
-                    </sd-button>
+                    <button class="sd-interactive sd-interactive--reset gap-2" title="Add to favorites">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[2px]" name="system/star-empty" label="Add to favorites"></sd-icon>
+                    </button>
+                    <button class="sd-interactive sd-interactive--reset" title="Share">
+                      <sd-icon class="w-5 h-5 pl-[2px] pt-[1.97px]" name="system/share" label="Share" ></sd-icon>
+                    </button>
                   </div>
                 </th>
               </tr>
