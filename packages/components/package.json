@@ -9,7 +9,7 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "customElements": "cdn/custom-elements.json",
+  "customElements": "dist/custom-elements.json",
   "web-types": "./dist/web-types.json",
   "type": "module",
   "types": "dist/solid-components.d.ts",
