@@ -116,7 +116,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     | 'characters';
 
   /** Indicates whether the browser's autocorrect feature is on or off. */
-  @property({ type: String, reflect: true }) autocorrect: 'off' | 'on';
+  @property({ type: Boolean, reflect: true }) autocorrect = false;
 
   /**
    * Specifies what permission the browser has to provide assistance in filling out form field values. Refer to
@@ -436,7 +436,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               maxlength=${ifDefined(this.maxlength)}
               rows=${ifDefined(this.rows)}
               autocapitalize=${ifDefined(this.autocapitalize)}
-              autocorrect=${ifDefined(this.autocorrect)}
+              autocorrect=${ifDefined(this.autocorrect ? 'on' : 'off')}
               ?autofocus=${this.autofocus}
               spellcheck=${ifDefined(this.spellcheck)}
               enterkeyhint=${ifDefined(this.enterkeyhint)}
