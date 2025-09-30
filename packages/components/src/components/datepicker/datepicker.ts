@@ -1,6 +1,6 @@
 import { css, html, nothing } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
-import { DateUtils } from 'src/utilities/date';
+import { DateUtils } from '../../utilities/date';
 import { FormControlController } from '../../internal/form.js';
 import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
