@@ -16,6 +16,10 @@
   "type": "module",
   "exports": {
     "./*": "./src/*",
+    ".": {
+      "types": "./types/solid-faker.d.ts",
+      "default": "./src/solid-faker.js"
+    },
     "./images/*": "./src/images/*",
     "./videos/*": "./src/videos/*",
     "./audio/*": "./src/audio/*",
