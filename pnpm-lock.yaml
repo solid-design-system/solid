@@ -252,6 +252,9 @@ importers:
       '@open-wc/testing-helpers':
         specifier: ^3.0.1
         version: 3.0.1
+      '@playwright/test':
+        specifier: ^1.54.2
+        version: 1.55.0
       '@rollup/pluginutils':
         specifier: ^5.2.0
         version: 5.2.0(rollup@4.43.0)
@@ -262,7 +265,7 @@ importers:
         specifier: ^9.0.15
         version: 9.1.1(@types/react@19.0.8)(storybook@9.1.1(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.0.6(@types/node@24.2.0)(jiti@1.21.7)(tsx@4.19.2)(yaml@2.8.0)))
       '@storybook/addon-links':
-        specifier: ^9.1.1
+        specifier: ^9.0.15
         version: 9.1.1(react@19.1.1)(storybook@9.1.1(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.0.6(@types/node@24.2.0)(jiti@1.21.7)(tsx@4.19.2)(yaml@2.8.0)))
       '@storybook/test-runner':
         specifier: ^0.23.0
@@ -273,6 +276,9 @@ importers:
       '@tarekraafat/autocomplete.js':
         specifier: ^10.2.9
         version: 10.2.9
+      '@types/node':
+        specifier: ^24.0.10
+        version: 24.2.0
       autoprefixer:
         specifier: ^10.4.21
         version: 10.4.21(postcss@8.5.6)
@@ -281,7 +287,7 @@ importers:
         version: 2.2.11(axe-core@4.10.3)
       axe-playwright:
         specifier: ^2.1.0
-        version: 2.1.0(playwright@1.54.2)
+        version: 2.1.0(playwright@1.55.0)
       change-case:
         specifier: ^5.4.4
         version: 5.4.4
@@ -1446,6 +1452,11 @@ packages:
   '@pkgr/core@0.2.7':
     resolution: {integrity: sha512-YLT9Zo3oNPJoBjBc4q8G2mjU4tqIbf5CEOORbUUr48dCD9q3umJ3IPlVqOqDakPfd2HuwccBaqlGhN4Gmr5OWg==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
+
+  '@playwright/test@1.55.0':
+    resolution: {integrity: sha512-04IXzPwHrW69XusN/SIdDdKZBzMfOT9UNT/YiJit/xpy2VuAoB8NHc8Aplb96zsWDddLnbkPL3TsmrS04ZU2xQ==}
+    engines: {node: '>=18'}
+    hasBin: true
 
   '@prettier/sync@0.5.5':
     resolution: {integrity: sha512-6BMtNr7aQhyNcGzmumkL0tgr1YQGfm9d7ZdmRpWqWuqpc9vZBind4xMe5NMiRECOhjuSiWHfBWLBnXkpeE90bw==}
@@ -5533,18 +5544,23 @@ packages:
     resolution: {integrity: sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==}
     engines: {node: '>=8'}
 
-  playwright-core@1.53.0:
-    resolution: {integrity: sha512-mGLg8m0pm4+mmtB7M89Xw/GSqoNC+twivl8ITteqvAndachozYe2ZA7srU6uleV1vEdAHYqjq+SV8SNxRRFYBw==}
-    engines: {node: '>=18'}
-    hasBin: true
-
   playwright-core@1.54.2:
     resolution: {integrity: sha512-n5r4HFbMmWsB4twG7tJLDN9gmBUeSPcsBZiWSE4DnYz9mJMAFqr2ID7+eGC9kpEnxExJ1epttwR59LEWCk8mtA==}
     engines: {node: '>=18'}
     hasBin: true
 
+  playwright-core@1.55.0:
+    resolution: {integrity: sha512-GvZs4vU3U5ro2nZpeiwyb0zuFaqb9sUiAJuyrWpcGouD8y9/HLgGbNRjIph7zU9D3hnPaisMl9zG9CgFi/biIg==}
+    engines: {node: '>=18'}
+    hasBin: true
+
   playwright@1.54.2:
     resolution: {integrity: sha512-Hu/BMoA1NAdRUuulyvQC0pEqZ4vQbGfn8f7wPXcnqQmM+zct9UliKxsIkLNmz/ku7LElUNqmaiv1TG/aL5ACsw==}
+    engines: {node: '>=18'}
+    hasBin: true
+
+  playwright@1.55.0:
+    resolution: {integrity: sha512-sdCWStblvV1YU909Xqx0DhOjPZE4/5lJsIS84IfN9dAZfcl/CIZ5O8l3o0j7hPMjDvqoTF8ZUcc+i/GL5erstA==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -8172,6 +8188,10 @@ snapshots:
 
   '@pkgr/core@0.2.7': {}
 
+  '@playwright/test@1.55.0':
+    dependencies:
+      playwright: 1.55.0
+
   '@prettier/sync@0.5.5(prettier@3.6.2)':
     dependencies:
       make-synchronized: 0.4.2
@@ -9534,14 +9554,14 @@ snapshots:
       axe-core: 4.10.3
       mustache: 4.2.0
 
-  axe-playwright@2.1.0(playwright@1.54.2):
+  axe-playwright@2.1.0(playwright@1.55.0):
     dependencies:
       '@types/junit-report-builder': 3.0.2
       axe-core: 4.10.3
       axe-html-reporter: 2.2.11(axe-core@4.10.3)
       junit-report-builder: 5.1.1
       picocolors: 1.1.1
-      playwright: 1.54.2
+      playwright: 1.55.0
 
   axios@1.10.0:
     dependencies:
@@ -12108,7 +12128,7 @@ snapshots:
       jest-process-manager: 0.4.0
       jest-runner: 29.7.0
       nyc: 15.1.0
-      playwright-core: 1.53.0
+      playwright-core: 1.54.2
       rimraf: 3.0.2
       uuid: 8.3.2
     transitivePeerDependencies:
@@ -13261,13 +13281,19 @@ snapshots:
     dependencies:
       find-up: 4.1.0
 
-  playwright-core@1.53.0: {}
-
   playwright-core@1.54.2: {}
+
+  playwright-core@1.55.0: {}
 
   playwright@1.54.2:
     dependencies:
       playwright-core: 1.54.2
+    optionalDependencies:
+      fsevents: 2.3.2
+
+  playwright@1.55.0:
+    dependencies:
+      playwright-core: 1.55.0
     optionalDependencies:
       fsevents: 2.3.2
 
