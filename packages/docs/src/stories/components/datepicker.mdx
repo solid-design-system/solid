@@ -1,0 +1,56 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdDatepickerStories from './datepicker.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/components-sd-datepicker--docs',
+  'figma-library': '',
+  'figma-docs': ''
+};
+
+export const content = `
+# Datepicker
+
+Used to enter or select a date or a range of dates using a calendar view.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+### Common Use Cases
+
+- Reservations & Scheduling: Select or enter a specific date for bookings, appointments, or events.
+- Data Filtering & Analysis: Choose a start and end date to define a time range for reports, trends, or historical records.
+
+<sd-notification variant="warning" open>**Don’t use sd-datepicker for the following use cases:**
+
+If entering a birth date is required: Use sd-input with type date.
+
+If a week selection is required: Use sd-select with a list of weeks to select from. </sd-notification>
+
+### Usage Guidelines
+
+#### Behavior
+
+- Opens a calendar flyout when clicking the input for quick date selection.
+- Supports manual date entry (e.g., DD.MM.YYYY) for users who prefer typing.
+
+#### Content
+
+- Use the default label.
+- Append an asterisk (\*) to indicate required fields.
+- Include placeholder text (e.g., “Select date”) for usability.
+- Provide contextual hints where additional guidance is needed.
+
+#### Background
+
+- Place on light backgrounds (white, neutral-100, or primary-100) for clarity and readability.
+
+### Accessibility Information
+
+Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=10708-5011&t=Z1FxSGWkmXG5r5sw-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+
+<Meta title="Components/sd-datepicker/Overview" />
+
+<OverviewFormatter story={SdDatepickerStories.Default}>{content}</OverviewFormatter>
