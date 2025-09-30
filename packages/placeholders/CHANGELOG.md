@@ -1,5 +1,11 @@
 # @solid-design-system/placeholders
 
+## 2.1.2
+
+### Patch Changes
+
+- Improve TypeScript support for Faker _[`#2513`](https://github.com/solid-design-system/solid/pull/2513) [`19ea42a`](https://github.com/solid-design-system/solid/commit/19ea42a59dcb1747080b93278dc7e595e9c167f6) [@mariohamann](https://github.com/mariohamann)_
+
 ## 2.1.1
 
 ### Patch Changes
