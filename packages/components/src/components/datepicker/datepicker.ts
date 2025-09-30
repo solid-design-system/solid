@@ -1,0 +1,1599 @@
+import { css, html, nothing } from 'lit';
+import { customElement } from '../../internal/register-custom-element';
+import { DateUtils } from 'src/utilities/date';
+import { FormControlController } from '../../internal/form.js';
+import { HasSlotController } from '../../internal/slot';
+import { LocalizeController } from '../../utilities/localize';
+import { property, query, state } from 'lit/decorators.js';
+import { watch } from '../../internal/watch';
+import cx from 'classix';
+import SolidElement from '../../internal/solid-element';
+import type { SolidFormControl } from '../../internal/solid-element';
+
+@customElement('sd-datepicker')
+export default class SdDatepicker extends SolidElement implements SolidFormControl {
+  /** Localize controller used to fetch localized terms/labels. */
+  public localize = new LocalizeController(this);
+
+  private readonly hasSlotController = new HasSlotController(this, 'label', 'help-text', 'tooltip');
+
+  private readonly formControlController: FormControlController = new FormControlController(this, {
+    assumeInteractionOn: ['sd-blur', 'sd-input']
+  });
+
+  /** Used for formatting and announcements (e.g., 'en-US', 'de-DE'). */
+  @property({ type: String, reflect: true }) locale = 'en-US';
+
+  /** Selected date in local ISO format (YYYY-MM-DD) when not in range mode. */
+  @property({ type: String }) value: string | null = null;
+
+  /** Enables date range selection when true. */
+  @property({ type: Boolean, reflect: true }) range = false;
+
+  /** Range start date in local ISO format (YYYY-MM-DD). */
+  @property({ type: String }) rangeStart: string | null = null;
+
+  /** Range end date in local ISO format (YYYY-MM-DD). */
+  @property({ type: String }) rangeEnd: string | null = null;
+
+  /** Allows selecting the same start and end date when true. */
+  @property({ type: Boolean }) allowSameDayRange = true;
+
+  /** Minimum selectable date in local ISO format (YYYY-MM-DD). */
+  @property({ type: String }) min: string | number | Date | undefined = undefined;
+
+  /** Maximum selectable date in local ISO format (YYYY-MM-DD). */
+  @property({ type: String }) max: string | number | Date | undefined = undefined;
+
+  /** First day of the week (0=Sun .. 6=Sat). If null, defaults to 1 (Monday). */
+  @property({ type: Number }) firstDayOfWeek: number | null = null;
+
+  /** When true, weekends (Saturday/Sunday) are disabled. */
+  @property({ type: Boolean, reflect: true, attribute: 'disabled-weekends' }) disabledWeekends = false;
+
+  /** List of disabled dates as local ISO strings. Accepts array or CSV/JSON string. */
+  @property({ attribute: 'disabled-dates' }) disabledDates: string[] | string = [];
+
+  /** Custom predicate that can disable specific dates at runtime. */
+  @property({ attribute: false }) isDateDisabled: ((d: Date) => boolean) | null = null;
+
+  /** Size of the input and calendar visuals. */
+  @property({ type: String, reflect: true }) size: 'lg' | 'md' | 'sm' = 'lg';
+
+  /** Horizontal alignment of the flyout relative to the input. */
+  @property({ type: String }) alignment: 'left' | 'right' = 'left';
+
+  /** Text label for the input. Can be overridden with slot="label". */
+  @property({ type: String, reflect: true }) label = '';
+
+  /** Help text shown below the input. Can be overridden with slot="help-text". */
+  @property({ type: String, attribute: 'help-text', reflect: true }) helpText = '';
+
+  /** Disables the control entirely when true. */
+  @property({ type: Boolean, reflect: true }) disabled = false;
+
+  /** Makes the control non-interactive visually (like disabled) without disabling it functionally. */
+  @property({ type: Boolean, attribute: 'visually-disabled' }) visuallyDisabled = false;
+
+  /** When true, applies success styling for valid selections. */
+  @property({ type: Boolean, reflect: true, attribute: 'style-on-valid' }) styleOnValid = false;
+
+  /** Makes the input read-only (non-editable) when true. */
+  @property({ type: Boolean, reflect: true }) readonly = false;
+
+  /** Preferred placement of the flyout relative to the input (top|bottom). */
+  @property({ type: String, reflect: true }) placement: 'top' | 'bottom' = 'bottom';
+
+  @property({ type: String, reflect: true }) placeholder: string = '';
+
+  /** The name of the datepicker, submitted as a name/value pair with form data. */
+  @property({ reflect: true }) name = '';
+
+  /**
+   * By default, form controls are associated with the nearest containing `<form>` element.
+   * This attribute allows you to place the form control outside of a form and associate it
+   * with the form that has this `id`.
+   */
+  @property({ type: String, reflect: true }) form = '';
+
+  /** Whether the calendar flyout is open. */
+  @state() private open = false;
+
+  /** The month (first day) currently displayed by the calendar grid. */
+  @state() private viewMonth!: Date;
+
+  /** The date that has keyboard focus (for roving tabindex in the grid). */
+  @state() private focusedDate!: Date;
+
+  /** Today's date at local midnight for comparisons and highlighting. */
+  @state() private today = DateUtils.startOfDayLocal(new Date());
+
+  /** Set of disabled date strings (local ISO) derived from disabledDates input. */
+  @state() private disabledDatesSet: Set<string> = new Set();
+
+  /** Live preview end date during range hover interaction. */
+  @state() private previewEnd: Date | null = null;
+
+  /** Live region text for navigation updates (month/day changes). */
+  @state() private statusNavText = '';
+
+  /** Live region text for selection announcements. */
+  @state() private statusSelectText = '';
+
+  /** True when the input or calendar has focus. */
+  @state() hasFocus = false;
+
+  /** Whether to show the valid styling state. */
+  @state() showValidStyle = false;
+
+  /** Whether to show the invalid styling state. */
+  @state() showInvalidStyle = false;
+
+  /** Actual placement currently used by the flyout. */
+  @state() currentPlacement = this.placement;
+
+  /** The text value shown in the input, synchronized with selection. */
+  @state() private inputValue = '';
+
+  @query('#invalid-message') invalidMessage: HTMLDivElement;
+
+  @query('#input') input: HTMLInputElement;
+
+  /** Internal flag used when tabbing from header into grid to pick initial tabbable day. */
+  private tabbingIntoGrid = false;
+
+  /** Bump counter ensuring live region text updates are recognized. */
+  private statusBumpCounter = 0;
+
+  constructor() {
+    super();
+    this.handleOutsideClick = this.handleOutsideClick.bind(this);
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.syncDisabledDatesSet();
+    document.addEventListener('click', this.handleOutsideClick);
+    this.updateComplete.then(() => {
+      this.formControlController.updateValidity();
+    });
+
+    const initialSingle = this.value ? DateUtils.parseLocalISO(this.value) : null;
+    const initialRangeStart = this.rangeStart ? DateUtils.parseLocalISO(this.rangeStart) : null;
+    const initial =
+      this.range && initialRangeStart ? initialRangeStart : (initialSingle ?? DateUtils.startOfDayLocal(new Date()));
+
+    this.viewMonth = new Date(initial.getFullYear(), initial.getMonth(), 1);
+    this.focusedDate = DateUtils.clampDateToMonth(initial, this.viewMonth);
+
+    if (this.firstDayOfWeek === null || this.firstDayOfWeek === undefined) {
+      // Monday default
+      this.firstDayOfWeek = 1;
+    }
+
+    this.inputValue = this.formatInputValue();
+
+    this.tabIndex = 0;
+    this.setAttribute('role', 'group');
+    this.setAttribute(
+      'aria-label',
+      this.range ? this.localize.term('datePickerRange') : this.localize.term('datePicker')
+    );
+
+    this.addEventListener('keydown', this.onKeyDown);
+    this.addEventListener('focusin', this.onFocusIn);
+  }
+
+  firstUpdated() {
+    this.formControlController.updateValidity();
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener('keydown', this.onKeyDown);
+    this.removeEventListener('focusin', this.onFocusIn);
+    document.removeEventListener('click', this.handleOutsideClick);
+  }
+
+  @watch('locale')
+  handleLocaleChange() {
+    if (this.firstDayOfWeek === null) {
+      this.firstDayOfWeek = 1;
+    }
+    this.requestUpdate();
+  }
+
+  @watch('disabledDates')
+  handleDisabledDatesChange() {
+    this.syncDisabledDatesSet();
+    this.requestUpdate();
+  }
+
+  @watch('value')
+  handleValueChange() {
+    const v = this.value ? DateUtils.parseLocalISO(this.value) : null;
+    if (v) {
+      this.viewMonth = new Date(v.getFullYear(), v.getMonth(), 1);
+      this.focusedDate = DateUtils.startOfDayLocal(v);
+    }
+    this.inputValue = this.formatInputValue();
+
+    this.updateComplete.then(() => {
+      this.formControlController.updateValidity();
+    });
+
+    this.emit('sd-change', {
+      detail: {
+        value: this.value,
+        rangeStart: this.rangeStart,
+        rangeEnd: this.rangeEnd
+      }
+    });
+  }
+
+  @watch('rangeStart')
+  @watch('rangeEnd')
+  handleRangeChange() {
+    const rs = this.rangeStart ? DateUtils.parseLocalISO(this.rangeStart) : null;
+    const re = this.rangeEnd ? DateUtils.parseLocalISO(this.rangeEnd) : null;
+    const pivot = rs ?? re;
+    if (pivot) {
+      this.viewMonth = new Date(pivot.getFullYear(), pivot.getMonth(), 1);
+      this.focusedDate = DateUtils.startOfDayLocal(pivot);
+    }
+    if (this.previewEnd !== null) this.previewEnd = null;
+    this.inputValue = this.formatInputValue();
+
+    this.updateComplete.then(() => {
+      this.formControlController.updateValidity();
+    });
+
+    this.emit('sd-change', {
+      detail: {
+        value: this.value,
+        rangeStart: this.rangeStart,
+        rangeEnd: this.rangeEnd
+      }
+    });
+  }
+
+  @watch(['disabled', 'visually-disabled'], { waitUntilFirstUpdate: true })
+  handleDisabledChange() {
+    this.formControlController.setValidity(this.disabled);
+
+    if (this.disabled || this.visuallyDisabled) {
+      this.open = false;
+    }
+  }
+
+  get validity() {
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+    const defaultValidity: ValidityState = { valid: true } as ValidityState;
+    return this.input instanceof HTMLInputElement ? this.input.validity : defaultValidity;
+  }
+
+  get validationMessage() {
+    return (this.input instanceof HTMLInputElement ? this.input.validationMessage : '') || '';
+  }
+
+  checkValidity() {
+    if (this.input instanceof HTMLInputElement) {
+      return this.input.checkValidity();
+    }
+    return true;
+  }
+
+  getForm(): HTMLFormElement | null {
+    return this.formControlController.getForm();
+  }
+
+  reportValidity() {
+    this.formControlController.fakeUserInteraction();
+    return this.input instanceof HTMLInputElement ? this.input.reportValidity() : true;
+  }
+
+  setCustomValidity(message: string) {
+    this.input?.setCustomValidity(message);
+    this.formControlController.updateValidity();
+  }
+
+  private handleInvalid(event: Event) {
+    this.formControlController.setValidity(false);
+    this.formControlController.emitInvalidEvent(event);
+    this.invalidMessage.textContent = (event.target as HTMLInputElement).validationMessage;
+  }
+
+  /** Parses a local ISO date string to a Date or returns null. */
+  private parseISO(iso: string | null): Date | null {
+    return DateUtils.parseLocalISO(iso);
+  }
+
+  private inMinMax(d: Date): boolean {
+    const min = this.parseISO(this.min !== null ? String(this.min) : null);
+    const max = this.parseISO(this.max !== null ? String(this.max) : null);
+
+    if (min && d < min) return false;
+    if (max && d > max) return false;
+    return true;
+  }
+
+  /** Returns true if the date matches any date in disabledDatesSet. */
+  private isInDisabledDates(d: Date): boolean {
+    if (!this.disabledDatesSet || this.disabledDatesSet.size === 0) return false;
+    const iso = DateUtils.toLocalISODate(DateUtils.startOfDayLocal(d));
+    return this.disabledDatesSet.has(iso);
+  }
+
+  /** Returns true if the date is Saturday or Sunday. */
+  private isWeekend(d: Date): boolean {
+    const day = d.getDay();
+    return day === 0 || day === 6;
+  }
+
+  /** Returns true if the date is disabled */
+  private isDisabled(d: Date): boolean {
+    if (!this.inMinMax(d)) return true;
+    if (this.disabledWeekends && this.isWeekend(d)) return true;
+    if (this.isInDisabledDates(d)) return true;
+    if (this.isDateDisabled?.(d)) return true;
+    return false;
+  }
+
+  /** Updates the hidden live region for navigation feedback. */
+  private setNavStatus(text: string) {
+    this.statusNavText = text;
+  }
+
+  /** Announces an assertive message with a slight delay to ensure SR pick-up. */
+  private announceSelect(message: string, delayMs = 40) {
+    setTimeout(() => {
+      this.statusBumpCounter++;
+      const bump = '\u200B'.repeat(this.statusBumpCounter % 3);
+      this.statusSelectText = message + bump;
+    }, delayMs);
+  }
+
+  /** Returns localized selection label for announcements. */
+  private formatSelectionLabel(d: Date): string {
+    if (this.locale === 'de-DE') {
+      return d.toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+
+    const day = d.getDate();
+    const ordinal = this.ordinal(day);
+    const month = d.toLocaleDateString('en-US', { month: 'long' });
+    const year = d.getFullYear();
+    return `${ordinal} of ${month} ${year}`;
+  }
+
+  /** English ordinal for day numbers (1st, 2nd, 3rd...). */
+  private ordinal(day: number): string {
+    const suffixes = ['th', 'st', 'nd', 'rd'];
+    const lastTwoDigits = day % 100;
+    const suffix = suffixes[(lastTwoDigits - 20) % 10] || suffixes[lastTwoDigits] || suffixes[0];
+    return day + suffix;
+  }
+
+  /** Syncs disabledDatesSet from the disabledDates property */
+  private syncDisabledDatesSet() {
+    let arr: string[] = [];
+    if (Array.isArray(this.disabledDates)) {
+      arr = this.disabledDates;
+    } else if (typeof this.disabledDates === 'string') {
+      const s = this.disabledDates.trim();
+      if (s.startsWith('[')) {
+        try {
+          const parsed = JSON.parse(s) as unknown;
+          if (Array.isArray(parsed)) arr = parsed as string[];
+        } catch {
+          arr = [];
+        }
+      } else if (s.length > 0) {
+        arr = s
+          .split(',')
+          .map(v => v.trim())
+          .filter(Boolean);
+      }
+    }
+    this.disabledDatesSet = new Set(arr);
+  }
+  /** Returns true if the range between two dates contains any disabled dates. */
+  private wouldRangeContainDisabled(a: Date, b: Date) {
+    const start = DateUtils.compareDates(a, b) <= 0 ? DateUtils.startOfDayLocal(a) : DateUtils.startOfDayLocal(b);
+    const end = DateUtils.compareDates(a, b) <= 0 ? DateUtils.startOfDayLocal(b) : DateUtils.startOfDayLocal(a);
+    const cursor = new Date(start);
+    while (DateUtils.compareDates(cursor, end) <= 0) {
+      if (this.isDisabled(cursor)) return true;
+      cursor.setDate(cursor.getDate() + 1);
+    }
+    return false;
+  }
+
+  private termStartSelected() {
+    return this.localize?.term?.('startDateSelected');
+  }
+
+  private termEndSelected() {
+    return this.localize?.term?.('endDateSelected');
+  }
+
+  private formatInputValue(): string {
+    // Single mode
+    if (!this.range) {
+      return this.value ?? '';
+    }
+    // Range mode
+    const start = this.rangeStart ?? '';
+    const end = this.rangeEnd ?? '';
+    if (start && end) return `${start} - ${end}`;
+    // auto separator while awaiting end
+    if (start && !end) return `${start} -`;
+    return '';
+  }
+
+  /** Parses input text into normalized single/range values with validation flag. */
+  private parseInputText(text: string): {
+    start?: string | null;
+    end?: string | null;
+    single?: string | null;
+    valid: boolean;
+  } {
+    const trimmed = text.trim();
+
+    const isValidISO = (s: string) => {
+      const d = DateUtils.parseLocalISO(s);
+      return !!d && DateUtils.toLocalISODate(DateUtils.startOfDayLocal(d)) === s;
+    };
+
+    if (this.range) {
+      const parts = trimmed.split(/\s*-\s*/);
+      if (parts.length === 1) {
+        const startCandidate = parts[0];
+        if (!startCandidate) return { start: null, end: null, valid: true };
+        if (!isValidISO(startCandidate)) return { start: null, end: null, valid: false };
+        return { start: startCandidate, end: null, valid: true };
+      } else if (parts.length >= 2) {
+        const startCandidate = parts[0];
+        const endCandidate = parts[1] ?? '';
+        if (startCandidate && !isValidISO(startCandidate)) return { start: null, end: null, valid: false };
+        if (endCandidate && !isValidISO(endCandidate)) return { start: null, end: null, valid: false };
+        return { start: startCandidate || null, end: endCandidate || null, valid: true };
+      }
+      return { start: null, end: null, valid: false };
+    }
+
+    // Single mode
+    if (!trimmed) return { single: null, valid: true };
+    if (!isValidISO(trimmed)) return { single: null, valid: false };
+    return { single: trimmed, valid: true };
+  }
+
+  /** Applies parsed input into component state; returns true if state changed. */
+  private applyParsedInput(parsed: {
+    start?: string | null;
+    end?: string | null;
+    single?: string | null;
+    valid: boolean;
+  }): boolean {
+    if (!parsed.valid) {
+      this.showInvalidStyle = true;
+      this.showValidStyle = false;
+      this.formControlController.setValidity(false);
+      return false;
+    }
+
+    const inBounds = (iso: string | null) => {
+      if (!iso) return true;
+      const d = DateUtils.parseLocalISO(iso)!;
+      if (!this.inMinMax(d)) return false;
+      if (this.isDisabled(d)) return false;
+      return true;
+    };
+
+    let changed = false;
+
+    if (this.range) {
+      const start = parsed.start ?? null;
+      const end = parsed.end ?? null;
+
+      if (!inBounds(start) || (end && !inBounds(end))) {
+        this.showInvalidStyle = true;
+        this.showValidStyle = false;
+        return false;
+      }
+
+      let rs = start ? DateUtils.parseLocalISO(start)! : null;
+      let re = end ? DateUtils.parseLocalISO(end)! : null;
+
+      if (rs && re) {
+        if (DateUtils.compareDates(rs, re) > 0) {
+          const tmp = rs;
+          rs = re;
+          re = tmp;
+        }
+        if (!this.allowSameDayRange && DateUtils.isSameDay(rs, re)) {
+          this.showInvalidStyle = true;
+          this.showValidStyle = false;
+          return false;
+        }
+        if (this.wouldRangeContainDisabled(rs, re)) {
+          this.showInvalidStyle = true;
+          this.showValidStyle = false;
+          return false;
+        }
+      }
+
+      const newStart = rs ? DateUtils.toLocalISODate(DateUtils.startOfDayLocal(rs)) : null;
+      const newEnd = re ? DateUtils.toLocalISODate(DateUtils.startOfDayLocal(re)) : null;
+
+      if (this.rangeStart !== newStart || this.rangeEnd !== newEnd) {
+        this.rangeStart = newStart;
+        this.rangeEnd = newEnd;
+        this.previewEnd = null;
+        changed = true;
+
+        const pivot = rs ?? re ?? this.today;
+        this.viewMonth = new Date(pivot.getFullYear(), pivot.getMonth(), 1);
+        this.focusedDate = DateUtils.startOfDayLocal(pivot);
+
+        this.emit('sd-range-select', { detail: { start: this.rangeStart, end: this.rangeEnd } });
+      }
+
+      this.showInvalidStyle = false;
+
+      if (this.range) {
+        this.showValidStyle = !!(this.rangeStart && this.rangeEnd && this.styleOnValid);
+      } else {
+        this.showValidStyle = !!(this.value && this.styleOnValid);
+      }
+
+      this.formControlController.setValidity(true);
+      this.updateComplete.then(() => {
+        this.formControlController.updateValidity();
+      });
+
+      return true;
+    }
+
+    // Single
+    const single = parsed.single ?? null;
+    if (!inBounds(single)) {
+      this.showInvalidStyle = true;
+      this.showValidStyle = false;
+      return false;
+    }
+
+    const v = single ? DateUtils.parseLocalISO(single)! : null;
+    const newValue = v ? DateUtils.toLocalISODate(DateUtils.startOfDayLocal(v)) : null;
+
+    if (this.value !== newValue) {
+      this.value = newValue;
+      changed = true;
+
+      if (v) {
+        this.viewMonth = new Date(v.getFullYear(), v.getMonth(), 1);
+        this.focusedDate = DateUtils.startOfDayLocal(v);
+      }
+
+      this.emit('sd-select', { detail: { value: this.value, date: v ?? null } });
+    }
+
+    this.showInvalidStyle = false;
+    this.showValidStyle = !!this.value;
+
+    this.inputValue = this.formatInputValue();
+    return changed;
+  }
+
+  /** Converts up to 8 digits into YYYY, YYYY.MM, or YYYY.MM.DD. */
+  private buildIsoFromDigits(digits: string): string {
+    const capped = digits.slice(0, 8);
+    const y = capped.slice(0, 4);
+    const m = capped.slice(4, 6);
+    const d = capped.slice(6, 8);
+    let out = y;
+    if (m.length) out += '.' + m;
+    if (d.length) out += '.' + d;
+    return out;
+  }
+
+  /** Maps digit count before caret to caret position in ISO string. */
+  private digitIndexToIsoCaretPos(digitIdx: number): number {
+    if (digitIdx <= 4) return digitIdx; // YYYY
+    if (digitIdx <= 6) return 4 + 1 + (digitIdx - 4); // YYYY. + MM
+    return 4 + 1 + 2 + 1 + (digitIdx - 6); // YYYY.MM. + DD
+  }
+
+  /** Counts how many digits appear before the caret in the raw string. */
+  private countDigitsBeforeCaret(raw: string, caretPos: number): number {
+    return raw.slice(0, caretPos).replace(/\D/g, '').length;
+  }
+
+  private handleOutsideClick(event: Event) {
+    const path = (event as MouseEvent).composedPath?.() ?? [];
+    if (!path.includes(this)) {
+      this.hide();
+      this.hasFocus = false;
+      this.emit('sd-datepicker-close');
+    }
+  }
+
+  private handleKeyDown(event: KeyboardEvent) {
+    if ((this.visuallyDisabled || this.disabled) && event.key !== 'Tab') {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
+    if (event.key === 'Escape' && this.open) {
+      event.preventDefault();
+      this.hide();
+      this.emit('sd-datepicker-close');
+    }
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      if (!this.open) this.show();
+    }
+  }
+
+  show() {
+    if (this.open || this.disabled || this.visuallyDisabled) {
+      this.open = false;
+      return undefined;
+    }
+    this.open = true;
+    return undefined;
+  }
+
+  hide() {
+    if (!this.open || this.disabled) {
+      this.open = false;
+      return;
+    }
+    this.open = false;
+  }
+
+  private onFocusIn = (ev: FocusEvent) => {
+    const path = ev.composedPath();
+    const fromHeader = path.some(
+      n => n instanceof HTMLElement && (n.classList?.contains('nav') || n.classList?.contains('month-label'))
+    );
+    if (fromHeader) {
+      this.tabbingIntoGrid = true;
+    }
+  };
+
+  private handleMouseDown(event: MouseEvent) {
+    if (this.visuallyDisabled || this.disabled) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
+    event.preventDefault();
+    if (!this.open) this.show();
+  }
+
+  private handleBlur() {
+    this.hasFocus = false;
+    this.emit('sd-blur');
+  }
+
+  private handleFocus() {
+    if (this.visuallyDisabled || this.disabled) {
+      return;
+    }
+
+    this.hasFocus = true;
+    if (!this.open && !this.disabled && !this.visuallyDisabled) {
+      this.show();
+    }
+    this.emit('sd-focus');
+  }
+
+  private handleInput = (ev: Event) => {
+    const input = ev.target as HTMLInputElement;
+    const raw = input.value;
+    const oldPos = input.selectionStart ?? raw.length;
+
+    if (this.visuallyDisabled || this.disabled) {
+      ev.preventDefault();
+      ev.stopPropagation();
+      return;
+    }
+
+    if (!this.range) {
+      // SINGLE
+      const digits = raw.replace(/\D/g, '').slice(0, 8);
+      const formatted = this.buildIsoFromDigits(digits);
+      const digitsBefore = this.countDigitsBeforeCaret(raw, oldPos);
+      const newPos = Math.min(formatted.length, this.digitIndexToIsoCaretPos(digitsBefore));
+
+      this.inputValue = formatted;
+
+      if (/^\d{4}\.\d{2}\.\d{2}$/.test(formatted)) {
+        const parsed = this.parseInputText(formatted);
+        this.applyParsedInput(parsed);
+      } else {
+        this.showInvalidStyle = false;
+        this.showValidStyle = false;
+      }
+
+      requestAnimationFrame(() => input.setSelectionRange(newPos, newPos));
+    } else {
+      // RANGE
+      const allDigits = raw.replace(/\D/g, '');
+      const startDigits = allDigits.slice(0, 8);
+      const endDigits = allDigits.slice(8, 16);
+
+      const startISO = this.buildIsoFromDigits(startDigits);
+      const endISO = this.buildIsoFromDigits(endDigits);
+
+      let formatted: string;
+      if (startDigits.length === 0) {
+        formatted = '';
+      } else if (startDigits.length < 8) {
+        formatted = startISO;
+      } else {
+        formatted = endDigits.length > 0 ? `${startISO} - ${endISO}` : `${startISO} -`;
+      }
+
+      const digitsBefore = this.countDigitsBeforeCaret(raw, oldPos);
+      let newPos: number;
+      if (digitsBefore <= 8) {
+        const withinStartPos = this.digitIndexToIsoCaretPos(Math.min(digitsBefore, 8));
+        newPos = Math.min(withinStartPos, startISO.length);
+      } else {
+        const offsetBase = startDigits.length < 8 ? startISO.length : startISO.length + 3; // " - "
+        const endDigitIdx = Math.min(digitsBefore - 8, 8);
+        const withinEndPos = this.digitIndexToIsoCaretPos(endDigitIdx);
+        newPos = offsetBase + Math.min(withinEndPos, endISO.length);
+      }
+
+      this.inputValue = formatted;
+
+      // Commit state progressively
+      let committed = false;
+
+      // Commit start
+      if (/^\d{4}\.\d{2}\.\d{2}$/.test(startISO)) {
+        const pStart = DateUtils.parseLocalISO(startISO);
+        const startOk = !!pStart && !this.isDisabled(pStart) && this.inMinMax(pStart);
+        if (startOk && this.rangeStart !== startISO) {
+          this.rangeStart = startISO;
+          this.previewEnd = null;
+          this.viewMonth = new Date(pStart.getFullYear(), pStart.getMonth(), 1);
+          this.focusedDate = DateUtils.startOfDayLocal(pStart);
+          committed = true;
+        }
+      } else {
+        if (this.rangeStart) {
+          this.rangeStart = null;
+          committed = true;
+        }
+        if (this.rangeEnd) {
+          this.rangeEnd = null;
+          committed = true;
+        }
+      }
+
+      // Commit end
+      if (/^\d{4}\.\d{2}\.\d{2}$/.test(endISO) && this.rangeStart) {
+        const pStart = DateUtils.parseLocalISO(this.rangeStart)!;
+        const pEnd = DateUtils.parseLocalISO(endISO);
+        const endOk = !!pEnd && !this.isDisabled(pEnd) && this.inMinMax(pEnd);
+        if (endOk) {
+          const [a, b] = DateUtils.compareDates(pStart, pEnd) <= 0 ? [pStart, pEnd] : [pEnd, pStart];
+          const sameDay = DateUtils.isSameDay(a, b);
+          const rangeOk = (this.allowSameDayRange || !sameDay) && !this.wouldRangeContainDisabled(a, b);
+
+          if (rangeOk) {
+            const normalizedStart = DateUtils.toLocalISODate(DateUtils.startOfDayLocal(a));
+            const normalizedEnd = DateUtils.toLocalISODate(DateUtils.startOfDayLocal(b));
+            if (this.rangeStart !== normalizedStart || this.rangeEnd !== normalizedEnd) {
+              this.rangeStart = normalizedStart;
+              this.rangeEnd = normalizedEnd;
+              this.viewMonth = new Date(b.getFullYear(), b.getMonth(), 1);
+              this.focusedDate = DateUtils.startOfDayLocal(b);
+              committed = true;
+            }
+          }
+        }
+      } else {
+        if (this.rangeEnd) {
+          this.rangeEnd = null;
+          committed = true;
+        }
+      }
+
+      this.showInvalidStyle = false;
+      this.showValidStyle = !!(this.rangeStart && this.rangeEnd);
+
+      if (committed) {
+        this.emit('sd-range-select', { detail: { start: this.rangeStart, end: this.rangeEnd } });
+        this.emit('sd-change', { detail: { value: this.value, rangeStart: this.rangeStart, rangeEnd: this.rangeEnd } });
+      }
+
+      requestAnimationFrame(() => input.setSelectionRange(newPos, newPos));
+    }
+
+    if (!this.open && this.hasFocus && !this.disabled && !this.visuallyDisabled) {
+      this.show();
+    }
+
+    // Live status updates
+    if (this.range) {
+      const s = this.rangeStart ? DateUtils.parseLocalISO(this.rangeStart)! : null;
+      const e = this.rangeEnd ? DateUtils.parseLocalISO(this.rangeEnd)! : null;
+      if (s && !e) {
+        this.setNavStatus(`${this.termStartSelected()}: ${this.formatSelectionLabel(s)}`);
+      } else if (s && e) {
+        this.setNavStatus(
+          `${this.termStartSelected()}: ${this.formatSelectionLabel(s)}; ${this.termEndSelected()}: ${this.formatSelectionLabel(e)}`
+        );
+      }
+    } else if (this.value) {
+      const v = DateUtils.parseLocalISO(this.value)!;
+      this.setNavStatus(`${this.formatSelectionLabel(v)}`);
+    }
+  };
+
+  private handleKeyUp = (ev: KeyboardEvent) => {
+    const input = ev.target as HTMLInputElement;
+    if (!input || input.id !== 'input') return;
+
+    const digits = input.value.replace(/\D/g, '');
+    if (!this.range) {
+      if (digits.length >= 8 && !/^\d{4}\.\d{2}\.\d{2}$/.test(this.inputValue)) {
+        // Changed from '-' to '\.'
+        input.dispatchEvent(new Event('input', { bubbles: true, cancelable: true }));
+      }
+    } else {
+      const startDigits = digits.slice(0, 8);
+      const endDigits = digits.slice(8, 16);
+      const expected =
+        startDigits.length === 0
+          ? ''
+          : startDigits.length < 8
+            ? this.buildIsoFromDigits(startDigits)
+            : endDigits.length > 0
+              ? `${this.buildIsoFromDigits(startDigits)} - ${this.buildIsoFromDigits(endDigits)}`
+              : `${this.buildIsoFromDigits(startDigits)} -`;
+
+      if (this.inputValue !== expected) {
+        input.dispatchEvent(new Event('input', { bubbles: true, cancelable: true }));
+      }
+    }
+  };
+
+  private handleInputBlur = () => {
+    const parsed = this.parseInputText(this.inputValue);
+    if (!parsed.valid) {
+      this.inputValue = this.formatInputValue();
+      this.showInvalidStyle = !!this.inputValue && !this.value && !this.rangeStart;
+    } else {
+      this.applyParsedInput(parsed);
+    }
+    this.handleBlur();
+  };
+
+  private handleCurrentPlacement = (ev: CustomEvent<{ placement: 'top' | 'bottom' }>) => {
+    this.currentPlacement = ev.detail.placement;
+  };
+
+  private setMonth(offset: number) {
+    const next = new Date(this.viewMonth.getFullYear(), this.viewMonth.getMonth() + offset, 1);
+    if (next.getMonth() === this.viewMonth.getMonth() && next.getFullYear() === this.viewMonth.getFullYear()) return;
+    this.viewMonth = next;
+    const monthLabel = this.formatMonthYear(this.viewMonth);
+    this.setNavStatus(monthLabel);
+    this.emit('sd-month-change', { detail: { month: this.viewMonth } });
+  }
+
+  private setYear(offset: number) {
+    const next = new Date(this.viewMonth.getFullYear() + offset, this.viewMonth.getMonth(), 1);
+    if (next.getFullYear() === this.viewMonth.getFullYear() && next.getMonth() === this.viewMonth.getMonth()) {
+      return;
+    }
+    this.viewMonth = next;
+    const monthLabel = this.formatMonthYear(this.viewMonth);
+    this.setNavStatus(monthLabel);
+    this.emit('sd-month-change', { detail: { month: this.viewMonth } });
+  }
+
+  private handleMonthNavEnter = (ev: KeyboardEvent, direction: -1 | 1) => {
+    if (ev.key === 'Enter') {
+      ev.preventDefault();
+      ev.stopPropagation();
+      this.setMonth(direction);
+    }
+  };
+
+  private handleYearNavEnter = (ev: KeyboardEvent, direction: -1 | 1) => {
+    if (ev.key === 'Enter') {
+      ev.preventDefault();
+      ev.stopPropagation();
+      this.setYear(direction);
+    }
+  };
+
+  private selectSingleDate(d: Date) {
+    if (this.isDisabled(d)) return;
+    const localMidnight = DateUtils.startOfDayLocal(d);
+    const iso = DateUtils.toLocalISODate(localMidnight);
+    if (this.value === iso) return;
+    this.value = iso;
+    const announce = `${this.formatSelectionLabel(localMidnight)}, ${this.localize.term('selected')}`;
+    this.announceSelect(announce);
+    this.emit('sd-select', { detail: { value: this.value, date: localMidnight } });
+  }
+
+  private selectRangeDate(d: Date) {
+    const day = DateUtils.startOfDayLocal(d);
+    const rs = this.rangeStart ? DateUtils.parseLocalISO(this.rangeStart) : null;
+    const re = this.rangeEnd ? DateUtils.parseLocalISO(this.rangeEnd) : null;
+
+    // Start the range
+    if (!rs && !re) {
+      if (this.isDisabled(day)) return;
+      this.rangeStart = DateUtils.toLocalISODate(day);
+      this.rangeEnd = null;
+      this.previewEnd = null;
+      const startLabel = this.formatSelectionLabel(day);
+      this.announceSelect(`${this.termStartSelected()}: ${startLabel}`, 40);
+      this.emit('sd-range-select', { detail: { start: this.rangeStart, end: this.rangeEnd } });
+      this.inputValue = this.formatInputValue();
+      return;
+    }
+
+    // Complete the range
+    if (rs && !re) {
+      if (this.isDisabled(day)) return;
+
+      if (DateUtils.isSameDay(rs, day)) {
+        if (!this.allowSameDayRange) {
+          this.rangeStart = DateUtils.toLocalISODate(day);
+          this.rangeEnd = null;
+          this.previewEnd = null;
+          const startLabel = this.formatSelectionLabel(day);
+          this.announceSelect(`${this.termStartSelected()}: ${startLabel}`, 40);
+          this.emit('sd-range-select', { detail: { start: this.rangeStart, end: this.rangeEnd } });
+          this.inputValue = this.formatInputValue();
+          return;
+        }
+        this.rangeStart = DateUtils.toLocalISODate(day);
+        this.rangeEnd = DateUtils.toLocalISODate(day);
+        this.previewEnd = null;
+        const label = this.formatSelectionLabel(day);
+        this.announceSelect(`${this.termStartSelected()}: ${label}`, 40);
+        this.announceSelect(`${this.termEndSelected()}: ${label}`, 140);
+        this.emit('sd-range-select', { detail: { start: this.rangeStart, end: this.rangeEnd } });
+        this.inputValue = this.formatInputValue();
+        return;
+      }
+
+      const rsDate = DateUtils.parseLocalISO(this.rangeStart)!;
+      if (this.wouldRangeContainDisabled(rsDate, day)) return;
+
+      const [start, end] = DateUtils.compareDates(rsDate, day) <= 0 ? [rsDate, day] : [day, rsDate];
+      this.rangeStart = DateUtils.toLocalISODate(start);
+      this.rangeEnd = DateUtils.toLocalISODate(end);
+      this.previewEnd = null;
+
+      const startLabel = this.formatSelectionLabel(start);
+      const endLabel = this.formatSelectionLabel(end);
+      this.announceSelect(`${this.termStartSelected()}: ${startLabel}`, 40);
+      this.announceSelect(`${this.termEndSelected()}: ${endLabel}`, 140);
+      this.emit('sd-range-select', { detail: { start: this.rangeStart, end: this.rangeEnd } });
+      this.inputValue = this.formatInputValue();
+      return;
+    }
+
+    // Start a new range after completion
+    if (rs && re) {
+      if (this.isDisabled(day)) return;
+      this.rangeStart = DateUtils.toLocalISODate(day);
+      this.rangeEnd = null;
+      this.previewEnd = null;
+      const startLabel = this.formatSelectionLabel(day);
+      this.announceSelect(`${this.termStartSelected()}: ${startLabel}`, 40);
+      this.emit('sd-range-select', { detail: { start: this.rangeStart, end: this.rangeEnd } });
+      this.inputValue = this.formatInputValue();
+    }
+  }
+
+  private selectDate(d: Date) {
+    if (this.range) this.selectRangeDate(d);
+    else this.selectSingleDate(d);
+  }
+
+  private onKeyDown = (ev: KeyboardEvent) => {
+    const key = ev.key;
+    let handled = true;
+    const next = new Date(this.focusedDate);
+
+    switch (key) {
+      case 'ArrowLeft':
+        next.setDate(next.getDate() - 1);
+        break;
+      case 'ArrowRight':
+        next.setDate(next.getDate() + 1);
+        break;
+      case 'ArrowUp':
+        next.setDate(next.getDate() - 7);
+        break;
+      case 'ArrowDown':
+        next.setDate(next.getDate() + 7);
+        break;
+      case 'PageUp':
+        if (ev.shiftKey) next.setFullYear(next.getFullYear() - 1);
+        else next.setMonth(next.getMonth() - 1);
+        break;
+      case 'PageDown':
+        if (ev.shiftKey) next.setFullYear(next.getFullYear() + 1);
+        else next.setMonth(next.getMonth() + 1);
+        break;
+      case 'Home': {
+        const fdw = this.firstDayOfWeek ?? 1;
+        const day = next.getDay();
+        const delta = (day - fdw + 7) % 7;
+        next.setDate(next.getDate() - delta);
+        break;
+      }
+      case 'End': {
+        const fdw = this.firstDayOfWeek ?? 1;
+        const day = next.getDay();
+        const delta = 6 - ((day - fdw + 7) % 7);
+        next.setDate(next.getDate() + delta);
+        break;
+      }
+      case 'Escape': {
+        if (this.previewEnd) {
+          this.previewEnd = null;
+          this.setNavStatus(this.localize.term('selectionCleared'));
+        } else if (this.range && this.rangeStart && !this.rangeEnd) {
+          this.rangeStart = null;
+          this.setNavStatus(this.localize.term('selectionCleared'));
+          this.emit('sd-range-select', { detail: { start: this.rangeStart, end: this.rangeEnd } });
+        }
+        if (this.open) {
+          this.hide();
+          this.emit('sd-datepicker-close');
+        }
+        break;
+      }
+      case 'Enter':
+      case ' ':
+        this.selectDate(this.focusedDate);
+        break;
+      default:
+        handled = false;
+    }
+
+    if (handled) {
+      ev.preventDefault();
+      const monthChanged =
+        next.getMonth() !== this.viewMonth.getMonth() || next.getFullYear() !== this.viewMonth.getFullYear();
+      if (monthChanged) {
+        this.viewMonth = new Date(next.getFullYear(), next.getMonth(), 1);
+        const monthLabel = this.formatMonthYear(this.viewMonth);
+        this.setNavStatus(monthLabel);
+      }
+
+      const fd = DateUtils.startOfDayLocal(next);
+      if (!this.focusedDate || fd.getTime() !== this.focusedDate.getTime()) {
+        this.focusedDate = fd;
+      }
+
+      const dayLabel = fd.toLocaleDateString(this.locale, {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
+      this.setNavStatus(dayLabel);
+
+      this.requestUpdate();
+
+      requestAnimationFrame(() => {
+        const root = this.shadowRoot;
+        const btn = root?.querySelector<HTMLButtonElement>('button.day.focused');
+        btn?.focus({ preventScroll: true });
+      });
+    }
+  };
+
+  private getMonthMatrix(monthRef: Date) {
+    const fdw = this.firstDayOfWeek ?? 1;
+    const firstOfMonth = new Date(monthRef.getFullYear(), monthRef.getMonth(), 1);
+    const start = new Date(firstOfMonth);
+    const offset = (firstOfMonth.getDay() - fdw + 7) % 7;
+    start.setDate(firstOfMonth.getDate() - offset);
+
+    const weeks: Date[][] = [];
+    const cursor = start;
+    for (let w = 0; w < 6; w++) {
+      const row: Date[] = [];
+      for (let d = 0; d < 7; d++) {
+        row.push(new Date(cursor));
+        cursor.setDate(cursor.getDate() + 1);
+      }
+      weeks.push(row);
+    }
+    return { weeks };
+  }
+
+  private formatMonthYear(d: Date): string {
+    try {
+      return new Intl.DateTimeFormat(this.locale, { month: 'long', year: 'numeric' }).format(d);
+    } catch {
+      return `${d.toLocaleString(undefined, { month: 'long' })} ${d.getFullYear()}`;
+    }
+  }
+
+  private weekdayLabels(): string[] {
+    const fdw = this.firstDayOfWeek ?? 1;
+    const base = new Date(2021, 7, 1);
+    const labels: string[] = [];
+    for (let i = 0; i < 7; i++) {
+      const day = new Date(base);
+      day.setDate(base.getDate() + ((fdw + i) % 7));
+      try {
+        labels.push(new Intl.DateTimeFormat(this.locale, { weekday: 'short' }).format(day));
+      } catch {
+        labels.push(day.toLocaleDateString(undefined, { weekday: 'short' }));
+      }
+    }
+    return labels;
+  }
+
+  /** Chooses a tabbable day when tabbing into the grid (today or first enabled). */
+  private getTabTargetDayForCurrentView(weeks: Date[][]): Date | null {
+    const inViewToday = weeks
+      .flat()
+      .find(
+        d => d.getMonth() === this.viewMonth.getMonth() && DateUtils.isSameDay(d, this.today) && !this.isDisabled(d)
+      );
+    if (inViewToday) return DateUtils.startOfDayLocal(inViewToday);
+
+    const firstEnabled = weeks.flat().find(d => d.getMonth() === this.viewMonth.getMonth() && !this.isDisabled(d));
+    return firstEnabled ? DateUtils.startOfDayLocal(firstEnabled) : null;
+  }
+
+  /** Mouse enter on a day: updates preview end when selecting a range. */
+  private onDayMouseEnter(day: Date) {
+    if (!this.range) return;
+    const rs = this.rangeStart ? DateUtils.parseLocalISO(this.rangeStart) : null;
+    const re = this.rangeEnd ? DateUtils.parseLocalISO(this.rangeEnd) : null;
+    if (rs && !re) {
+      const local = DateUtils.startOfDayLocal(day);
+      this.previewEnd = this.isDisabled(local) ? null : local;
+      this.requestUpdate();
+    }
+  }
+
+  private onGridMouseLeave() {
+    if (this.previewEnd !== null) {
+      this.previewEnd = null;
+      this.requestUpdate();
+    }
+  }
+
+  private renderCalendar() {
+    const { weeks } = this.getMonthMatrix(this.viewMonth);
+    const monthLabel = this.formatMonthYear(this.viewMonth);
+    const weekdays = this.weekdayLabels();
+
+    const selectedSingle = this.value ? this.parseISO(this.value) : null;
+    const rs = this.rangeStart ? this.parseISO(this.rangeStart) : null;
+    const re = this.rangeEnd ? this.parseISO(this.rangeEnd) : null;
+    const pe = this.previewEnd;
+
+    const isInPreviewRange = (day: Date) => {
+      if (!this.range || !rs || re || !pe) return false;
+      return DateUtils.isBetweenInclusive(day, rs, pe);
+    };
+
+    const tabTarget = this.getTabTargetDayForCurrentView(weeks);
+
+    return html`
+      <div
+        part="base"
+        class="dp w-[300px] z-50 calendar absolute top-full bg-white border-2 border-t-0 border-primary py-3 px-4 ${this
+          .open
+          ? 'block'
+          : 'hidden'} ${this.alignment === 'left' ? 'left-0' : 'right-0'}"
+      >
+        <div class="dp-header flex flex-row items-center w-full justify-between mb-3" part="header">
+          <div class="flex items-center">
+            <!-- Prev Year -->
+            <button
+              type="button"
+              tabindex="0"
+              class="nav prev w-6 h-6 hover:cursor-pointer sd-interactive"
+              part="prev-button"
+              @click=${() => this.setYear(-1)}
+              @keydown=${(ev: KeyboardEvent) => this.handleYearNavEnter(ev, -1)}
+              aria-label=${this.localize.term('previousYear')}
+            >
+              <sd-icon library="_internal" name="chevrons-sm-left" class="h-6 w-6"></sd-icon>
+            </button>
+            <!-- Prev Month -->
+            <button
+              type="button"
+              tabindex="0"
+              class="nav prev w-6 h-6 hover:cursor-pointer sd-interactive"
+              part="prev-button"
+              @click=${() => this.setMonth(-1)}
+              @keydown=${(ev: KeyboardEvent) => this.handleMonthNavEnter(ev, -1)}
+              aria-label=${this.localize.term('previousMonth')}
+            >
+              <sd-icon library="_internal" name="chevron-sm-left" class="h-6 w-6"></sd-icon>
+            </button>
+          </div>
+
+          <!-- Month label -->
+          <div
+            tabindex="-1"
+            class="month-label flex justify-center sd-headline sd-headline--size-lg !text-primary"
+            part="month-label"
+            aria-live="polite"
+          >
+            ${monthLabel}
+          </div>
+
+          <div class="flex items-center">
+            <!-- Next Month -->
+            <button
+              type="button"
+              tabindex="0"
+              class="nav next w-6 h-6 hover:cursor-pointer sd-interactive"
+              part="next-button"
+              @click=${() => this.setMonth(1)}
+              @keydown=${(ev: KeyboardEvent) => this.handleMonthNavEnter(ev, 1)}
+              aria-label=${this.localize.term('nextMonth')}
+            >
+              <sd-icon library="_internal" name="chevron-sm-right" class="h-6 w-6"></sd-icon>
+            </button>
+            <!-- Next Year -->
+            <button
+              type="button"
+              tabindex="0"
+              class="nav next w-6 h-6 hover:cursor-pointer sd-interactive"
+              part="next-button"
+              @click=${() => this.setYear(1)}
+              @keydown=${(ev: KeyboardEvent) => this.handleYearNavEnter(ev, 1)}
+              aria-label=${this.localize.term('nextYear')}
+            >
+              <sd-icon library="_internal" name="chevrons-sm-right" class="h-6 w-6"></sd-icon>
+            </button>
+          </div>
+        </div>
+
+        <sd-divider></sd-divider>
+
+        <!-- Live regions -->
+        <div class="sr-only" aria-live="polite" aria-atomic="true">${this.statusNavText}</div>
+        <div class="sr-only" aria-live="assertive" aria-atomic="true">${this.statusSelectText}</div>
+
+        <div class="sr-only" id="keyboard-hint">${this.localize.term('datePickerInfo')}</div>
+
+        <div
+          class="grid mt-3"
+          role="grid"
+          aria-describedby="keyboard-hint"
+          aria-label=${monthLabel}
+          part="grid"
+          @mouseleave=${this.onGridMouseLeave}
+          @focusin=${() => {
+            this.tabbingIntoGrid = false;
+          }}
+        >
+          <div class="grid-row grid-head grid grid-cols-7 gap-y-[1px]" role="row">
+            ${weekdays.map(
+              (w, colIndex) => html`
+                <div
+                  role="columnheader"
+                  aria-colindex=${colIndex + 1}
+                  part="weekday"
+                  class="cell head flex items-center justify-center aspect-square font-bold text-black"
+                  aria-label=${w}
+                  title=${w}
+                  id=${'col-' + (colIndex + 1)}
+                >
+                  ${w}
+                </div>
+              `
+            )}
+          </div>
+
+          ${weeks.map(
+            (week, rowIndex) => html`
+              <div class="grid-row grid grid-cols-7" role="row" aria-rowindex=${rowIndex + 2}>
+                ${week.map((day, colIndex) => {
+                  const inMonth = day.getMonth() === this.viewMonth.getMonth();
+                  const disabled = this.isDisabled(day);
+                  const isFocused = DateUtils.isSameDay(day, this.focusedDate);
+                  const isToday = DateUtils.isSameDay(day, this.today);
+
+                  const isSelectedSingle =
+                    !this.range && selectedSingle ? DateUtils.isSameDay(day, selectedSingle) : false;
+                  const isRangeStart = this.range && rs ? DateUtils.isSameDay(day, rs) : false;
+                  const isRangeEnd = this.range && re ? DateUtils.isSameDay(day, re) : false;
+                  const inSelectedRange = this.range && rs && re ? DateUtils.isBetweenInclusive(day, rs, re) : false;
+                  const inPreviewRange = isInPreviewRange(day) && !disabled;
+
+                  let tabIndex = -1;
+                  const isTabTarget = tabTarget && DateUtils.isSameDay(day, tabTarget);
+                  if (this.tabbingIntoGrid && isTabTarget) {
+                    tabIndex = 0;
+                  } else if (!this.tabbingIntoGrid && isFocused) {
+                    tabIndex = 0;
+                  }
+
+                  const isWeekendDay = this.isWeekend(day);
+
+                  const label = day.toLocaleDateString(this.locale, {
+                    weekday: 'long',
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                  });
+
+                  const roleDesc = isRangeStart
+                    ? this.localize.term('startDateSelected')
+                    : isRangeEnd
+                      ? this.localize.term('endDateSelected')
+                      : undefined;
+
+                  return html`
+                    <button
+                      type="button"
+                      part="day"
+                      class=${cx(
+                        'cell day w-full h-8 flex items-center justify-center aspect-square hover:bg-primary-100 hover:text-primary-500 focus-visible:outline focus:outline-2 focus:outline-primary -outline-offset-2 rounded-md',
+                        this.size === 'sm' ? 'text-sm' : 'text-base',
+                        !inMonth
+                          ? 'out-month text-neutral-700'
+                          : (this.disabledWeekends && isWeekendDay) || this.isInDisabledDates(day)
+                            ? 'weekend-day text-neutral-500'
+                            : 'in-month text-primary',
+                        isSelectedSingle
+                          ? 'selected border-primary bg-primary text-white hover:bg-primary-500 hover:text-white'
+                          : '',
+                        isRangeStart ? 'bg-primary text-white rounded-l-md rounded-r-none' : '',
+                        isRangeEnd ? 'bg-primary text-white range-end rounded-r-md rounded-l-none' : '',
+                        inSelectedRange && !isRangeStart && !isRangeEnd
+                          ? 'in-range selected bg-primary-100 text-primary-500 rounded-none hover:bg-primary-500 hover:text-white'
+                          : '',
+                        !inSelectedRange && inPreviewRange && !isRangeStart && !isRangeEnd
+                          ? 'in-preview-range bg-primary-100 text-primary-500 rounded-none'
+                          : '',
+                        isToday && !isSelectedSingle && !isRangeStart && !isRangeEnd && isFocused
+                          ? 'today border-1 border-primary font-bold'
+                          : '',
+                        disabled ? 'disabled text-neutral-500 cursor-not-allowed hover:bg-transparent' : '',
+                        isFocused && !isToday ? 'focused outline outline-2 outline-primary' : ''
+                      )}
+                      role="gridcell"
+                      aria-colindex=${colIndex + 1}
+                      aria-labelledby=${'col-' + (colIndex + 1)}
+                      .tabIndex=${tabIndex}
+                      ?disabled=${disabled}
+                      aria-disabled=${disabled ? 'true' : 'false'}
+                      aria-selected=${isSelectedSingle || inSelectedRange || isRangeStart || isRangeEnd
+                        ? 'true'
+                        : 'false'}
+                      aria-current=${isToday ? 'date' : nothing}
+                      aria-label=${label}
+                      aria-roledescription=${roleDesc ?? nothing}
+                      @focus=${() => (this.focusedDate = DateUtils.startOfDayLocal(day))}
+                      @mouseenter=${() => this.onDayMouseEnter(day)}
+                      @click=${() => {
+                        this.focusedDate = DateUtils.startOfDayLocal(day);
+                        this.selectDate(day);
+                      }}
+                    >
+                      ${day.getDate()}
+                    </button>
+                  `;
+                })}
+              </div>
+            `
+          )}
+        </div>
+      </div>
+    `;
+  }
+
+  render() {
+    const slots = {
+      label: this.hasSlotController.test('label'),
+      helpText: this.hasSlotController.test('help-text'),
+      tooltip: this.hasSlotController.test('tooltip')
+    };
+
+    const hasLabel = this.label ? true : !!slots['label'];
+    const hasHelpText = this.helpText ? true : !!slots['helpText'];
+    const hasTooltip = !!slots['tooltip'];
+
+    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary';
+    const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
+    const iconSize = { sm: 'text-base', md: 'text-lg', lg: 'text-xl' }[this.size];
+
+    const inputState = this.disabled
+      ? 'disabled'
+      : this.visuallyDisabled && !this.hasFocus
+        ? 'visuallyDisabled'
+        : this.readonly
+          ? 'readonly'
+          : this.hasFocus && this.showInvalidStyle
+            ? 'activeInvalid'
+            : this.hasFocus && this.styleOnValid && this.showValidStyle
+              ? 'activeValid'
+              : this.hasFocus || this.open
+                ? 'active'
+                : this.showInvalidStyle
+                  ? 'invalid'
+                  : this.styleOnValid && this.showValidStyle
+                    ? 'valid'
+                    : 'default';
+
+    const borderColor = {
+      disabled: 'border-neutral-500',
+      visuallyDisabled: 'border-neutral-500',
+      readonly: 'border-neutral-800',
+      activeInvalid: 'border-error border-2',
+      activeValid: 'border-success border-2',
+      active: 'border-primary border-2',
+      invalid: 'border-error',
+      valid: 'border-success',
+      default: 'border-neutral-800'
+    }[inputState];
+
+    const textSize = this.size === 'sm' ? 'text-sm' : 'text-base';
+
+    return html`<div
+        part="form-control"
+        class=${cx('w-[370px]', this.open && 'z-50', (this.disabled || this.visuallyDisabled) && 'cursor-not-allowed')}
+      >
+        ${hasLabel || hasTooltip
+          ? html`<div class="flex items-center gap-1 mb-2">
+              <label
+                part="form-control-label"
+                id="label"
+                class=${cx(hasLabel ? 'inline-block' : 'hidden', textSize)}
+                for="input"
+                aria-hidden=${hasLabel ? 'false' : 'true'}
+              >
+                <slot name="label">${this.label}</slot>
+              </label>
+              ${slots['tooltip'] ? html`<slot name="tooltip"></slot>` : ''}
+            </div>`
+          : null}
+
+        <div
+          part="form-control-input"
+          class=${cx(
+            'relative w-full',
+            this.disabled && 'pointer-events-none',
+            this.visuallyDisabled && 'cursor-not-allowed'
+          )}
+        >
+          <div
+            part="border"
+            class=${cx(
+              'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10 transition-[border] duration-medium ease-in-out',
+              borderColor,
+              this.open &&
+                (this.currentPlacement === 'bottom'
+                  ? 'rounded-bl-none rounded-br-none'
+                  : 'rounded-tl-none rounded-tr-none')
+            )}
+          ></div>
+          <sd-popup
+            @sd-current-placement=${this.handleCurrentPlacement}
+            class=${cx('inline-flex relative w-full')}
+            sync="width"
+            auto-size="vertical"
+            auto-size-padding="10"
+            exportparts="popup:popup__content,"
+          >
+            <div
+              part="base"
+              class=${cx(
+                'px-4 flex flex-row items-center rounded-default transition-colors ease-in-out duration-medium hover:duration-fast w-full',
+                !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
+                this.readonly ? 'bg-neutral-100' : 'bg-white',
+                inputState === 'disabled' || inputState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black'
+              )}
+              slot="anchor"
+            >
+              <input
+                id="input"
+                type="text"
+                role="combobox"
+                aria-expanded=${this.open ? 'true' : 'false'}
+                aria-haspopup="dialog"
+                aria-controls="calendar-grid"
+                aria-describedby=${hasHelpText ? 'help-text' : undefined}
+                aria-invalid=${this.showInvalidStyle ? 'true' : 'false'}
+                aria-label=${this.range ? 'Select date range' : 'Select a date'}
+                class=${cx(
+                  'min-w-0 flex-grow focus:outline-none bg-transparent',
+                  this.visuallyDisabled || this.disabled
+                    ? 'placeholder-neutral-500 cursor-not-allowed'
+                    : 'placeholder-neutral-700',
+                  { sm: 'h-8', md: 'h-10', lg: 'h-12' }[this.size],
+                  textSize
+                )}
+                .value=${this.inputValue}
+                placeholder=${this.placeholder ||
+                this.localize.term(this.range ? 'dateRangePlaceholder' : 'datePlaceholder')}
+                ?disabled=${this.disabled}
+                ?readonly=${this.readonly}
+                @input=${this.handleInput}
+                @click=${this.handleMouseDown}
+                @keydown=${this.handleKeyDown}
+                @keyup=${this.handleKeyUp}
+                @focus=${this.handleFocus}
+                @blur=${this.handleInputBlur}
+                @invalid=${this.handleInvalid}
+              />
+
+              ${this.showInvalidStyle
+                ? html`<sd-icon
+                    part="invalid-icon"
+                    class=${cx('text-error', iconMarginLeft, iconSize)}
+                    library="_internal"
+                    name="risk"
+                  ></sd-icon>`
+                : ''}
+              ${this.showValidStyle && this.styleOnValid
+                ? html`<sd-icon
+                    class=${cx('text-success flex-shrink-0', iconMarginLeft, iconSize)}
+                    library="_internal"
+                    name="confirm-circle"
+                    part="valid-icon"
+                  ></sd-icon>`
+                : ''}
+
+              <sd-icon class=${cx(iconColor, iconMarginLeft, iconSize)} library="_internal" name="calendar"></sd-icon>
+
+              ${this.renderCalendar()}
+            </div>
+          </sd-popup>
+        </div>
+        <slot
+          name="help-text"
+          part="form-control-help-text"
+          id="help-text"
+          class=${cx('text-sm text-neutral-700 mt-2', hasHelpText ? 'block' : 'hidden')}
+          aria-hidden=${!hasHelpText}
+        >
+          ${this.helpText}
+        </slot>
+      </div>
+      ${this.formControlController.renderInvalidMessage()} `;
+  }
+
+  static styles = [
+    ...SolidElement.styles,
+    css`
+      :host {
+        @apply inline-block relative outline-none;
+      }
+
+      :host([required]) #label::after {
+        content: ' *';
+      }
+    `
+  ];
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'sd-datepicker': SdDatepicker;
+  }
+}
