@@ -1431,86 +1431,57 @@ export const multiSelectTable = {
       </div>
     </section>
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const selectAllCheckbox = document.querySelector('#select-all');
-        const tbody = document.querySelector('.selectable-rows');
-        const selectedCountEl = document.querySelector('#selected-count');
-        const downloadBtn = document.querySelector('#download-btn');
-        const printBtn = document.querySelector('#print-btn');
+      const selectAllCheckbox = document.querySelector('#select-all');
+      const tbody = document.querySelector('.selectable-rows');
+      const selectedCountEl = document.querySelector('#selected-count');
+      const downloadBtn = document.querySelector('#download-btn');
+      const printBtn = document.querySelector('#print-btn');
 
-        function getCheckedCount() {
-          const checkboxes = tbody.querySelectorAll('sd-checkbox');
-          let count = 0;
-          checkboxes.forEach(cb => {
-            if (cb.hasAttribute('checked')) count++;
-          });
-          return { checked: count, total: checkboxes.length };
-        }
+      function getCheckedCount() {
+        const checkboxes = tbody.querySelectorAll('sd-checkbox');
+        let count = 0;
+        checkboxes.forEach(cb => {
+          if (cb.hasAttribute('checked')) count++;
+        });
+        return { checked: count, total: checkboxes.length };
+      }
 
-        function updateUI() {
-          const { checked, total } = getCheckedCount();
+      function updateUI() {
+        const res = getCheckedCount();
+        const checked = res.checked;
+        const total = res.total;
 
-          // Update counter text
-          if (selectedCountEl) {
-            selectedCountEl.textContent = checked + ' selected:';
-          }
+        if (selectedCountEl) selectedCountEl.textContent = checked + ' selected';
 
-          // Update buttons
-          const hasSelection = checked > 0;
-          if (downloadBtn) {
-            hasSelection ? downloadBtn.removeAttribute('disabled') : downloadBtn.setAttribute('disabled', '');
-          }
-          if (printBtn) {
-            hasSelection ? printBtn.removeAttribute('disabled') : printBtn.setAttribute('disabled', '');
-          }
-
-          // Update select all checkbox
-          if (selectAllCheckbox) {
-            if (checked === 0) {
-              selectAllCheckbox.removeAttribute('checked');
-              selectAllCheckbox.removeAttribute('indeterminate');
-            } else if (checked === total) {
-              selectAllCheckbox.setAttribute('checked', '');
-              selectAllCheckbox.removeAttribute('indeterminate');
-            } else {
-              selectAllCheckbox.removeAttribute('checked');
-              selectAllCheckbox.setAttribute('indeterminate', '');
-            }
-          }
-        }
-
-        // Handle individual checkbox clicks
-        tbody?.addEventListener('click', e => {
-          const checkbox = e.target.closest('sd-checkbox');
-          if (checkbox && tbody.contains(checkbox)) {
-            // Toggle checked attribute
-            if (checkbox.hasAttribute('checked')) {
-              checkbox.removeAttribute('checked');
-            } else {
-              checkbox.setAttribute('checked', '');
-            }
-            updateUI();
-          }
+        const hasSelection = checked > 0;
+        [downloadBtn, printBtn].forEach(btn => {
+          if (btn) btn.toggleAttribute('disabled', !hasSelection);
         });
 
-        // Handle select all
-        selectAllCheckbox?.addEventListener('click', () => {
-          const checkboxes = tbody.querySelectorAll('sd-checkbox');
-          const shouldCheck = !selectAllCheckbox.hasAttribute('checked');
+        if (selectAllCheckbox) {
+          const isAllChecked = checked === total;
+          const isPartiallyChecked = checked > 0 && checked < total;
+          selectAllCheckbox.toggleAttribute('checked', isAllChecked);
+          selectAllCheckbox.toggleAttribute('indeterminate', isPartiallyChecked);
+        }
+      }
 
-          checkboxes.forEach(cb => {
-            if (shouldCheck) {
-              cb.setAttribute('checked', '');
-            } else {
-              cb.removeAttribute('checked');
-            }
-          });
-
+      tbody?.addEventListener('click', e => {
+        const checkbox = e.target.closest('sd-checkbox');
+        if (checkbox && tbody.contains(checkbox)) {
+          checkbox.toggleAttribute('checked');
           updateUI();
-        });
+        }
+      });
 
+      selectAllCheckbox?.addEventListener('click', () => {
+        const checkboxes = tbody.querySelectorAll('sd-checkbox');
+        const shouldCheck = !selectAllCheckbox.hasAttribute('checked');
+        checkboxes.forEach(cb => cb.toggleAttribute('checked', shouldCheck));
         updateUI();
       });
+
+      updateUI();
     </script>
   `
 };
