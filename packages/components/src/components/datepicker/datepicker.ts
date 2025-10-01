@@ -1338,7 +1338,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
 
           ${weeks.map(
             (week, rowIndex) => html`
-              <div class="grid-row grid grid-cols-7" role="row" aria-rowindex=${rowIndex + 2}>
+              <div class="grid-row grid grid-cols-7 mt-2" role="row" aria-rowindex=${rowIndex + 2}>
                 ${week.map((day, colIndex) => {
                   const inMonth = day.getMonth() === this.viewMonth.getMonth();
                   const disabled = this.isDisabled(day);
@@ -1382,7 +1382,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                       class=${cx(
                         'cell day flex items-center justify-center w-full aspect-square focus-visible:outline focus:outline-2 focus:outline-primary -outline-offset-2 rounded-md',
                         this.size === 'sm' ? 'text-sm h-6' : 'text-base h-8',
-                        isRangeStart || isRangeEnd ? 'hover:bg-none' : 'hover:bg-primary-100 hover:text-primary-500',
+                        isRangeStart || isRangeEnd
+                          ? 'hover:bg-primary-500'
+                          : 'hover:bg-primary-100 hover:text-primary-500',
                         !inMonth || this.isInDisabledDates(day)
                           ? 'out-month text-neutral-700'
                           : this.disabledWeekends && isWeekendDay
