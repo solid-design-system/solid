@@ -51,9 +51,9 @@ export const Default = {
 export const Size = {
   render: () => html`
     <div class="flex flex-col gap-4">
-      <sd-datepicker size="lg" placeholder="Large"></sd-datepicker>
-      <sd-datepicker size="md" placeholder="Medium"></sd-datepicker>
-      <sd-datepicker size="sm" placeholder="Small"></sd-datepicker>
+      <sd-datepicker size="lg" placeholder="Large" label="Label"></sd-datepicker>
+      <sd-datepicker size="md" placeholder="Medium" label="Label"></sd-datepicker>
+      <sd-datepicker size="sm" placeholder="Small" label="Label"></sd-datepicker>
     </div>
   `
 };
@@ -77,16 +77,16 @@ export const Disabled = {
 export const VisuallyDisabled = {
   render: () =>
     html` <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
-      <sd-datepicker label="Label" placeholder="Disabled" visually-disabled></sd-datepicker>
+      <sd-datepicker label="Label" placeholder="Visually Disabled" visually-disabled></sd-datepicker>
     </sd-tooltip>`
 };
 
 export const HelpText = {
-  render: () => html` <sd-datepicker label="Label" help-text="Help text attribute"></sd-datepicker> `
+  render: () => html` <sd-datepicker label="Label" help-text="Help text"></sd-datepicker> `
 };
 
 export const Required = {
-  render: () => html` <sd-datepicker label="Label" required></sd-datepicker> `
+  render: () => html` <sd-datepicker label="Required" required></sd-datepicker> `
 };
 
 export const Valid = {
@@ -105,13 +105,13 @@ export const Valid = {
 
 export const Invalid = {
   render: () => html`
-    <sd-datepicker id="invalid-example" label="Label" style-on-valid=""></sd-datepicker>
+    <sd-datepicker id="invalid-example" label="Label" style-on-valid="" required></sd-datepicker>
     <script type="module">
       var invalidDatepicker = document.querySelector('#invalid-example');
       setTimeout(() => {
         invalidDatepicker.checkValidity();
         invalidDatepicker.reportValidity();
-        invalidDatepicker.setCustomValidity('Please enter the date in the format YYYY.MM.DD');
+        invalidDatepicker.setCustomValidity('Please enter the date in the format DD.MM.YYYY');
       }, 500);
     </script>
   `

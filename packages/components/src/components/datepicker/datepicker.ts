@@ -37,7 +37,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   @property({ type: String }) rangeEnd: string | null = null;
 
   /** Allows selecting the same start and end date when true. */
-  @property({ type: Boolean }) allowSameDayRange = true;
+  @property({ type: Boolean }) allowSameDayRange = false;
 
   /** Minimum selectable date in local ISO format (YYYY-MM-DD). */
   @property({ type: String }) min: string | number | Date | undefined = undefined;
@@ -417,21 +417,49 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     return this.localize?.term?.('endDateSelected');
   }
 
+  /** UI formatting: internal ISO → DD.MM.YYYY */
+  private isoToDmy(iso: string | null): string {
+    if (!iso) return '';
+    const d = DateUtils.parseLocalISO(iso);
+    if (!d) return '';
+    const dd = String(d.getDate()).padStart(2, '0');
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const yyyy = String(d.getFullYear());
+    return `${dd}.${mm}.${yyyy}`;
+  }
+
+  /** UI parsing: DD.MM.YYYY → internal ISO (YYYY-MM-DD), returns null if invalid */
+  private dmyToIso(dmy: string | null): string | null {
+    if (!dmy) return null;
+
+    const m = dmy.match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
+    if (!m) return null;
+    const dd = Number(m[1]);
+    const mm = Number(m[2]);
+    const yyyy = Number(m[3]);
+
+    const d = new Date(yyyy, mm - 1, dd);
+
+    if (d.getFullYear() !== yyyy || d.getMonth() !== mm - 1 || d.getDate() !== dd) return null;
+
+    const localMidnight = DateUtils.startOfDayLocal(d);
+    return DateUtils.toLocalISODate(localMidnight);
+  }
+
   private formatInputValue(): string {
-    // Single mode
+    // Single mode: show DD.MM.YYYY
     if (!this.range) {
-      return this.value ?? '';
+      return this.isoToDmy(this.value);
     }
-    // Range mode
-    const start = this.rangeStart ?? '';
-    const end = this.rangeEnd ?? '';
+    // Range mode: DD.MM.YYYY - DD.MM.YYYY
+    const start = this.isoToDmy(this.rangeStart);
+    const end = this.isoToDmy(this.rangeEnd);
     if (start && end) return `${start} - ${end}`;
-    // auto separator while awaiting end
     if (start && !end) return `${start} -`;
     return '';
   }
 
-  /** Parses input text into normalized single/range values with validation flag. */
+  /** Parses input text (DD.MM.YYYY) into normalized internal ISO values with validation flag. */
   private parseInputText(text: string): {
     start?: string | null;
     end?: string | null;
@@ -440,32 +468,31 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   } {
     const trimmed = text.trim();
 
-    const isValidISO = (s: string) => {
-      const d = DateUtils.parseLocalISO(s);
-      return !!d && DateUtils.toLocalISODate(DateUtils.startOfDayLocal(d)) === s;
-    };
-
     if (this.range) {
       const parts = trimmed.split(/\s*-\s*/);
       if (parts.length === 1) {
         const startCandidate = parts[0];
         if (!startCandidate) return { start: null, end: null, valid: true };
-        if (!isValidISO(startCandidate)) return { start: null, end: null, valid: false };
-        return { start: startCandidate, end: null, valid: true };
+        const isoStart = this.dmyToIso(startCandidate);
+        if (!isoStart) return { start: null, end: null, valid: false };
+        return { start: isoStart, end: null, valid: true };
       } else if (parts.length >= 2) {
-        const startCandidate = parts[0];
+        const startCandidate = parts[0] ?? '';
         const endCandidate = parts[1] ?? '';
-        if (startCandidate && !isValidISO(startCandidate)) return { start: null, end: null, valid: false };
-        if (endCandidate && !isValidISO(endCandidate)) return { start: null, end: null, valid: false };
-        return { start: startCandidate || null, end: endCandidate || null, valid: true };
+        const isoStart = startCandidate ? this.dmyToIso(startCandidate) : null;
+        const isoEnd = endCandidate ? this.dmyToIso(endCandidate) : null;
+        if (startCandidate && !isoStart) return { start: null, end: null, valid: false };
+        if (endCandidate && !isoEnd) return { start: null, end: null, valid: false };
+        return { start: isoStart, end: isoEnd, valid: true };
       }
       return { start: null, end: null, valid: false };
     }
 
     // Single mode
     if (!trimmed) return { single: null, valid: true };
-    if (!isValidISO(trimmed)) return { single: null, valid: false };
-    return { single: trimmed, valid: true };
+    const iso = this.dmyToIso(trimmed);
+    if (!iso) return { single: null, valid: false };
+    return { single: iso, valid: true };
   }
 
   /** Applies parsed input into component state; returns true if state changed. */
@@ -482,7 +509,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       return false;
     }
 
-    const inBounds = (iso: string | null) => {
+    const inBoundsIso = (iso: string | null) => {
       if (!iso) return true;
       const d = DateUtils.parseLocalISO(iso)!;
       if (!this.inMinMax(d)) return false;
@@ -493,17 +520,17 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     let changed = false;
 
     if (this.range) {
-      const start = parsed.start ?? null;
-      const end = parsed.end ?? null;
+      const startIso = parsed.start ?? null;
+      const endIso = parsed.end ?? null;
 
-      if (!inBounds(start) || (end && !inBounds(end))) {
+      if (!inBoundsIso(startIso) || (endIso && !inBoundsIso(endIso))) {
         this.showInvalidStyle = true;
         this.showValidStyle = false;
         return false;
       }
 
-      let rs = start ? DateUtils.parseLocalISO(start)! : null;
-      let re = end ? DateUtils.parseLocalISO(end)! : null;
+      let rs = startIso ? DateUtils.parseLocalISO(startIso)! : null;
+      let re = endIso ? DateUtils.parseLocalISO(endIso)! : null;
 
       if (rs && re) {
         if (DateUtils.compareDates(rs, re) > 0) {
@@ -556,14 +583,14 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     }
 
     // Single
-    const single = parsed.single ?? null;
-    if (!inBounds(single)) {
+    const singleIso = parsed.single ?? null;
+    if (!inBoundsIso(singleIso)) {
       this.showInvalidStyle = true;
       this.showValidStyle = false;
       return false;
     }
 
-    const v = single ? DateUtils.parseLocalISO(single)! : null;
+    const v = singleIso ? DateUtils.parseLocalISO(singleIso)! : null;
     const newValue = v ? DateUtils.toLocalISODate(DateUtils.startOfDayLocal(v)) : null;
 
     if (this.value !== newValue) {
@@ -585,23 +612,23 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     return changed;
   }
 
-  /** Converts up to 8 digits into YYYY, YYYY.MM, or YYYY.MM.DD. */
-  private buildIsoFromDigits(digits: string): string {
+  /** Converts up to 8 digits into DD, DD.MM, or DD.MM.YYYY. */
+  private buildDmyFromDigits(digits: string): string {
     const capped = digits.slice(0, 8);
-    const y = capped.slice(0, 4);
-    const m = capped.slice(4, 6);
-    const d = capped.slice(6, 8);
-    let out = y;
+    const d = capped.slice(0, 2);
+    const m = capped.slice(2, 4);
+    const y = capped.slice(4, 8);
+    let out = d;
     if (m.length) out += '.' + m;
-    if (d.length) out += '.' + d;
+    if (y.length) out += '.' + y;
     return out;
   }
 
-  /** Maps digit count before caret to caret position in ISO string. */
-  private digitIndexToIsoCaretPos(digitIdx: number): number {
-    if (digitIdx <= 4) return digitIdx; // YYYY
-    if (digitIdx <= 6) return 4 + 1 + (digitIdx - 4); // YYYY. + MM
-    return 4 + 1 + 2 + 1 + (digitIdx - 6); // YYYY.MM. + DD
+  /** Maps digit count before caret to caret position in DD.MM.YYYY string. */
+  private digitIndexToDmyCaretPos(digitIdx: number): number {
+    if (digitIdx <= 2) return digitIdx; // DD
+    if (digitIdx <= 4) return 2 + 1 + (digitIdx - 2); // DD. + MM
+    return 2 + 1 + 2 + 1 + (digitIdx - 4); // DD.MM. + YYYY
   }
 
   /** Counts how many digits appear before the caret in the raw string. */
@@ -704,15 +731,15 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     }
 
     if (!this.range) {
-      // SINGLE
+      // SINGLE: progressive input on DD.MM.YYYY
       const digits = raw.replace(/\D/g, '').slice(0, 8);
-      const formatted = this.buildIsoFromDigits(digits);
+      const formatted = this.buildDmyFromDigits(digits);
       const digitsBefore = this.countDigitsBeforeCaret(raw, oldPos);
-      const newPos = Math.min(formatted.length, this.digitIndexToIsoCaretPos(digitsBefore));
+      const newPos = Math.min(formatted.length, this.digitIndexToDmyCaretPos(digitsBefore));
 
       this.inputValue = formatted;
 
-      if (/^\d{4}\.\d{2}\.\d{2}$/.test(formatted)) {
+      if (/^\d{2}\.\d{2}\.\d{4}$/.test(formatted)) {
         const parsed = this.parseInputText(formatted);
         this.applyParsedInput(parsed);
       } else {
@@ -722,33 +749,33 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
 
       requestAnimationFrame(() => input.setSelectionRange(newPos, newPos));
     } else {
-      // RANGE
+      // RANGE: progressive input on DD.MM.YYYY - DD.MM.YYYY
       const allDigits = raw.replace(/\D/g, '');
       const startDigits = allDigits.slice(0, 8);
       const endDigits = allDigits.slice(8, 16);
 
-      const startISO = this.buildIsoFromDigits(startDigits);
-      const endISO = this.buildIsoFromDigits(endDigits);
+      const startDMY = this.buildDmyFromDigits(startDigits);
+      const endDMY = this.buildDmyFromDigits(endDigits);
 
       let formatted: string;
       if (startDigits.length === 0) {
         formatted = '';
       } else if (startDigits.length < 8) {
-        formatted = startISO;
+        formatted = startDMY;
       } else {
-        formatted = endDigits.length > 0 ? `${startISO} - ${endISO}` : `${startISO} -`;
+        formatted = endDigits.length > 0 ? `${startDMY} - ${endDMY}` : `${startDMY} -`;
       }
 
       const digitsBefore = this.countDigitsBeforeCaret(raw, oldPos);
       let newPos: number;
       if (digitsBefore <= 8) {
-        const withinStartPos = this.digitIndexToIsoCaretPos(Math.min(digitsBefore, 8));
-        newPos = Math.min(withinStartPos, startISO.length);
+        const withinStartPos = this.digitIndexToDmyCaretPos(Math.min(digitsBefore, 8));
+        newPos = Math.min(withinStartPos, startDMY.length);
       } else {
-        const offsetBase = startDigits.length < 8 ? startISO.length : startISO.length + 3; // " - "
+        const offsetBase = startDigits.length < 8 ? startDMY.length : startDMY.length + 3; // " - "
         const endDigitIdx = Math.min(digitsBefore - 8, 8);
-        const withinEndPos = this.digitIndexToIsoCaretPos(endDigitIdx);
-        newPos = offsetBase + Math.min(withinEndPos, endISO.length);
+        const withinEndPos = this.digitIndexToDmyCaretPos(endDigitIdx);
+        newPos = offsetBase + Math.min(withinEndPos, endDMY.length);
       }
 
       this.inputValue = formatted;
@@ -757,11 +784,12 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       let committed = false;
 
       // Commit start
-      if (/^\d{4}\.\d{2}\.\d{2}$/.test(startISO)) {
-        const pStart = DateUtils.parseLocalISO(startISO);
+      if (/^\d{2}\.\d{2}\.\d{4}$/.test(startDMY)) {
+        const startIso = this.dmyToIso(startDMY);
+        const pStart = startIso ? DateUtils.parseLocalISO(startIso) : null;
         const startOk = !!pStart && !this.isDisabled(pStart) && this.inMinMax(pStart);
-        if (startOk && this.rangeStart !== startISO) {
-          this.rangeStart = startISO;
+        if (startOk && this.rangeStart !== startIso) {
+          this.rangeStart = startIso!;
           this.previewEnd = null;
           this.viewMonth = new Date(pStart.getFullYear(), pStart.getMonth(), 1);
           this.focusedDate = DateUtils.startOfDayLocal(pStart);
@@ -779,9 +807,10 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       }
 
       // Commit end
-      if (/^\d{4}\.\d{2}\.\d{2}$/.test(endISO) && this.rangeStart) {
+      if (/^\d{2}\.\d{2}\.\d{4}$/.test(endDMY) && this.rangeStart) {
         const pStart = DateUtils.parseLocalISO(this.rangeStart)!;
-        const pEnd = DateUtils.parseLocalISO(endISO);
+        const endIso = this.dmyToIso(endDMY);
+        const pEnd = endIso ? DateUtils.parseLocalISO(endIso) : null;
         const endOk = !!pEnd && !this.isDisabled(pEnd) && this.inMinMax(pEnd);
         if (endOk) {
           const [a, b] = DateUtils.compareDates(pStart, pEnd) <= 0 ? [pStart, pEnd] : [pEnd, pStart];
@@ -822,7 +851,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       this.show();
     }
 
-    // Live status updates
+    // Live status updates (unchanged labels)
     if (this.range) {
       const s = this.rangeStart ? DateUtils.parseLocalISO(this.rangeStart)! : null;
       const e = this.rangeEnd ? DateUtils.parseLocalISO(this.rangeEnd)! : null;
@@ -845,8 +874,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
 
     const digits = input.value.replace(/\D/g, '');
     if (!this.range) {
-      if (digits.length >= 8 && !/^\d{4}\.\d{2}\.\d{2}$/.test(this.inputValue)) {
-        // Changed from '-' to '\.'
+      if (digits.length >= 8 && !/^\d{2}\.\d{2}\.\d{4}$/.test(this.inputValue)) {
         input.dispatchEvent(new Event('input', { bubbles: true, cancelable: true }));
       }
     } else {
@@ -856,10 +884,10 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
         startDigits.length === 0
           ? ''
           : startDigits.length < 8
-            ? this.buildIsoFromDigits(startDigits)
+            ? this.buildDmyFromDigits(startDigits)
             : endDigits.length > 0
-              ? `${this.buildIsoFromDigits(startDigits)} - ${this.buildIsoFromDigits(endDigits)}`
-              : `${this.buildIsoFromDigits(startDigits)} -`;
+              ? `${this.buildDmyFromDigits(startDigits)} - ${this.buildDmyFromDigits(endDigits)}`
+              : `${this.buildDmyFromDigits(startDigits)} -`;
 
       if (this.inputValue !== expected) {
         input.dispatchEvent(new Event('input', { bubbles: true, cancelable: true }));
@@ -1280,7 +1308,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
         <div class="sr-only" id="keyboard-hint">${this.localize.term('datePickerInfo')}</div>
 
         <div
-          class="grid mt-3"
+          class="grid mt-2"
           role="grid"
           aria-describedby="keyboard-hint"
           aria-label=${monthLabel}
@@ -1352,11 +1380,12 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                       type="button"
                       part="day"
                       class=${cx(
-                        'cell day w-full h-8 flex items-center justify-center aspect-square hover:bg-primary-100 hover:text-primary-500 focus-visible:outline focus:outline-2 focus:outline-primary -outline-offset-2 rounded-md',
-                        this.size === 'sm' ? 'text-sm' : 'text-base',
-                        !inMonth
+                        'cell day flex items-center justify-center w-full aspect-square focus-visible:outline focus:outline-2 focus:outline-primary -outline-offset-2 rounded-md',
+                        this.size === 'sm' ? 'text-sm h-6' : 'text-base h-8',
+                        isRangeStart || isRangeEnd ? 'hover:bg-none' : 'hover:bg-primary-100 hover:text-primary-500',
+                        !inMonth || this.isInDisabledDates(day)
                           ? 'out-month text-neutral-700'
-                          : (this.disabledWeekends && isWeekendDay) || this.isInDisabledDates(day)
+                          : this.disabledWeekends && isWeekendDay
                             ? 'weekend-day text-neutral-500'
                             : 'in-month text-primary',
                         isSelectedSingle
@@ -1371,17 +1400,17 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                           ? 'in-preview-range bg-primary-100 text-primary-500 rounded-none'
                           : '',
                         isToday && !isSelectedSingle && !isRangeStart && !isRangeEnd && isFocused
-                          ? 'today border-1 border-primary font-bold'
+                          ? 'today border-[1px] border-primary font-bold'
                           : '',
-                        disabled ? 'disabled text-neutral-500 cursor-not-allowed hover:bg-transparent' : '',
+                        disabled ? 'disabled text-neutral-700 cursor-not-allowed hover:bg-transparent' : '',
                         isFocused && !isToday ? 'focused outline outline-2 outline-primary' : ''
                       )}
                       role="gridcell"
                       aria-colindex=${colIndex + 1}
                       aria-labelledby=${'col-' + (colIndex + 1)}
                       .tabIndex=${tabIndex}
-                      ?disabled=${disabled}
-                      aria-disabled=${disabled ? 'true' : 'false'}
+                      ?disabled=${disabled || this.disabled}
+                      aria-disabled=${disabled || this.visuallyDisabled || this.disabled ? 'true' : 'false'}
                       aria-selected=${isSelectedSingle || inSelectedRange || isRangeStart || isRangeEnd
                         ? 'true'
                         : 'false'}
@@ -1531,7 +1560,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 .value=${this.inputValue}
                 placeholder=${this.placeholder ||
                 this.localize.term(this.range ? 'dateRangePlaceholder' : 'datePlaceholder')}
-                ?disabled=${this.disabled}
+                ?disabled=${this.disabled || this.disabled}
                 ?readonly=${this.readonly}
                 @input=${this.handleInput}
                 @click=${this.handleMouseDown}
@@ -1569,7 +1598,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
           name="help-text"
           part="form-control-help-text"
           id="help-text"
-          class=${cx('text-sm text-neutral-700 mt-2', hasHelpText ? 'block' : 'hidden')}
+          class=${cx('text-sm text-neutral-700 mt-1', hasHelpText ? 'block' : 'hidden')}
           aria-hidden=${!hasHelpText}
         >
           ${this.helpText}
