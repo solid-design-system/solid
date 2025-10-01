@@ -1338,7 +1338,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
 
           ${weeks.map(
             (week, rowIndex) => html`
-              <div class="grid-row grid grid-cols-7 mt-2" role="row" aria-rowindex=${rowIndex + 2}>
+              <div
+                class="grid-row grid grid-cols-7 ${rowIndex === 0 ? 'mt-2' : ''}"
+                role="row"
+                aria-rowindex=${rowIndex + 2}
+              >
                 ${week.map((day, colIndex) => {
                   const inMonth = day.getMonth() === this.viewMonth.getMonth();
                   const disabled = this.isDisabled(day);

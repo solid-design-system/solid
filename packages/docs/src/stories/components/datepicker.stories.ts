@@ -175,7 +175,9 @@ export const DisabledWeekends = {
  * Use the `disable-days` attribute to manually disabled days in your datepicker. If this attribute is active the range selection will not be possible.
  */
 export const DisabledDays = {
-  render: () => html` <sd-datepicker label="Label" disabled-dates="2025.09.03,2025.09.10"></sd-datepicker> `
+  render: () => html`
+    <sd-datepicker label="Label" value="2025.09.15" disabled-dates="2025.09.03,2025.09.10"></sd-datepicker>
+  `
 };
 
 /**
