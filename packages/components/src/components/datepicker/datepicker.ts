@@ -1228,9 +1228,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     return html`
       <div
         part="base"
-        class="dp w-[300px] z-50 calendar absolute top-full bg-white border-2 border-t-0 border-primary py-3 px-4 ${this
+        class="dp w-[284px] z-50 calendar absolute top-full bg-white border-2 border-t-0 border-primary py-3 px-4 ${this
           .open
-          ? 'block'
+          ? 'block rounded-bl-default rounded-br-default'
           : 'hidden'} ${this.alignment === 'left' ? 'left-0' : 'right-0'}"
       >
         <div class="dp-header flex flex-row items-center w-full justify-between mb-3" part="header">
@@ -1264,7 +1264,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
           <!-- Month label -->
           <div
             tabindex="-1"
-            class="month-label flex justify-center sd-headline sd-headline--size-lg !text-primary"
+            class="month-label flex justify-center sd-headline sd-headline--size-base !text-primary"
             part="month-label"
             aria-live="polite"
           >
@@ -1325,7 +1325,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                   role="columnheader"
                   aria-colindex=${colIndex + 1}
                   part="weekday"
-                  class="cell head flex items-center justify-center aspect-square font-bold text-black"
+                  class="cell head flex items-center justify-center font-bold text-black"
                   aria-label=${w}
                   title=${w}
                   id=${'col-' + (colIndex + 1)}
@@ -1384,7 +1384,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                       type="button"
                       part="day"
                       class=${cx(
-                        'cell day flex items-center justify-center w-full aspect-square focus-visible:outline focus:outline-2 focus:outline-primary -outline-offset-2 rounded-md',
+                        'cell day flex items-center justify-center focus-visible:outline focus:outline-2 focus:outline-primary -outline-offset-2 rounded-md w-[36px]',
                         this.size === 'sm' ? 'text-sm h-6' : 'text-base h-8',
                         isRangeStart || isRangeEnd
                           ? 'hover:bg-primary-500'
@@ -1408,7 +1408,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                         isToday && !isSelectedSingle && !isRangeStart && !isRangeEnd && isFocused
                           ? 'today border-[1px] border-primary font-bold'
                           : '',
-                        disabled ? 'disabled text-neutral-700 cursor-not-allowed hover:bg-transparent' : '',
+                        disabled ? 'disabled cursor-not-allowed hover:bg-transparent' : '',
                         isFocused && !isToday ? 'focused outline outline-2 outline-primary' : ''
                       )}
                       role="gridcell"
@@ -1521,10 +1521,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
             class=${cx(
               'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10 transition-[border] duration-medium ease-in-out',
               borderColor,
-              this.open &&
-                (this.currentPlacement === 'bottom'
-                  ? 'rounded-bl-none rounded-br-none'
-                  : 'rounded-tl-none rounded-tr-none')
+              this.open
             )}
           ></div>
           <sd-popup

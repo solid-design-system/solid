@@ -74,7 +74,7 @@ export const Size = {
  */
 
 export const Alignment = {
-  render: () => html` <sd-datepicker label="Label" size="lg" alignment="right"></sd-datepicker>`
+  render: () => html` <sd-datepicker label="Label" size="lg" alignment="right" value="2023.11.06"></sd-datepicker>`
 };
 
 /**
@@ -111,7 +111,7 @@ When using this attribute, make sure to provide ways to inform the user why the 
 export const VisuallyDisabled = {
   render: () =>
     html` <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
-      <sd-datepicker label="Label" placeholder="Visually Disabled" visually-disabled></sd-datepicker>
+      <sd-datepicker label="Label" placeholder="Visually disabled" visually-disabled></sd-datepicker>
     </sd-tooltip>`
 };
 
@@ -176,7 +176,11 @@ export const DisabledWeekends = {
  */
 export const DisabledDays = {
   render: () => html`
-    <sd-datepicker label="Label" value="2025.09.15" disabled-dates="2025.09.03,2025.09.10"></sd-datepicker>
+    <sd-datepicker
+      label="Label"
+      value="2025.11.03"
+      disabled-dates="2025.10.31,2025.11.11,2025.11.19,2025.11.20,2025.11.24"
+    ></sd-datepicker>
   `
 };
 
