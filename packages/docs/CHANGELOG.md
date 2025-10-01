@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.29.0
+
+### Minor Changes
+
+- Introduced accessibility testing with Playwright in components. _[`#2435`](https://github.com/solid-design-system/solid/pull/2435) [`27f919c`](https://github.com/solid-design-system/solid/commit/27f919c157da0772876a855f3a6c0003118e0bfe) [@mariohamann](https://github.com/mariohamann)_
+
 ## 1.28.6
 
 ### Patch Changes
