@@ -1,7 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import {
-  ConstantDefinition,
   storybookDefaults,
   storybookHelpers,
   storybookTemplate,
