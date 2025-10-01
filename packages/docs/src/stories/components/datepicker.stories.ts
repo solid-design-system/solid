@@ -48,6 +48,14 @@ export const Default = {
   }
 };
 
+/**
+ * Use the `size` attribute to change the size:
+ *
+ * - `lg`(default)
+ * - `md`
+ * - `sm`
+ */
+
 export const Size = {
   render: () => html`
     <div class="flex flex-col gap-4">
@@ -58,21 +66,47 @@ export const Size = {
   `
 };
 
+/**
+ * Use the `alignment` attribute to define where the flyout should appear:
+ *
+ * - left (default)
+ * - right
+ */
+
 export const Alignment = {
   render: () => html` <sd-datepicker label="Label" size="lg" alignment="right"></sd-datepicker>`
 };
+
+/**
+ * Use the `label` attribute to give the datepicker an accessible label.
+ */
 
 export const Label = {
   render: () => html` <sd-datepicker label="Label"></sd-datepicker> `
 };
 
+/**
+ * Use the `placeholder` attribute to add a placeholder text.
+ */
+
 export const Placeholder = {
   render: () => html` <sd-datepicker label="Label" placeholder="Select date"></sd-datepicker> `
 };
 
+/**
+ * Use the `disabled` attribute to disable the datepicker.
+ *
+ * Hint: Clicks will be suppressed until the disabled state is removed
+ */
+
 export const Disabled = {
   render: () => html` <sd-datepicker label="Label" placeholder="Disabled" disabled></sd-datepicker> `
 };
+
+/**
+ * Use the `visually-disabled` attribute to style the component as if it was disabled and enable `aria-disabled` to allow it to be reachable by screen readers.
+When using this attribute, make sure to provide ways to inform the user why the element is disabled and how to enable it. This can be done by using the `help-text` attribute or wrapping the element in a sd-tooltip. Disabling elements is not recommended for accessibility reasons.
+ */
 
 export const VisuallyDisabled = {
   render: () =>
@@ -81,13 +115,23 @@ export const VisuallyDisabled = {
     </sd-tooltip>`
 };
 
+/**
+ * Use the `help-text` attribute to add a descriptive “help text”.
+ */
 export const HelpText = {
   render: () => html` <sd-datepicker label="Label" help-text="Help text"></sd-datepicker> `
 };
 
+/**
+ * Use the `required` attribute to mark the element as required.
+ */
 export const Required = {
   render: () => html` <sd-datepicker label="Required" required></sd-datepicker> `
 };
+
+/**
+ * Use the `style-on-valid` attribute to automatically indicate and show a valid state.
+ */
 
 export const Valid = {
   render: () => html`
@@ -103,6 +147,9 @@ export const Valid = {
   `
 };
 
+/**
+ * The component gets `invalid`` state when the datepicker is not valid.
+ */
 export const Invalid = {
   render: () => html`
     <sd-datepicker id="invalid-example" label="Label" style-on-valid="" required></sd-datepicker>
@@ -117,14 +164,23 @@ export const Invalid = {
   `
 };
 
+/**
+ * Use the `disable-weekends` attribute to manually disabled days in your datepicker.
+ */
 export const DisabledWeekends = {
   render: () => html` <sd-datepicker label="Label" disabled-weekends></sd-datepicker> `
 };
 
+/**
+ * Use the `disable-days` attribute to manually disabled days in your datepicker. If this attribute is active the range selection will not be possible.
+ */
 export const DisabledDays = {
   render: () => html` <sd-datepicker label="Label" disabled-dates="2025.09.03,2025.09.10"></sd-datepicker> `
 };
 
+/**
+ * Use the `range` attribute to enable range selection.
+ */
 export const Range = {
   render: () => html`
     <sd-datepicker label="Label" range rangeStart="2025.10.02" rangeEnd="2025.10.12"></sd-datepicker>
