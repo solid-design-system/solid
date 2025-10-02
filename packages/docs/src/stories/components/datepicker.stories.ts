@@ -165,14 +165,14 @@ export const Invalid = {
 };
 
 /**
- * Use the `disable-weekends` attribute to manually disabled days in your datepicker.
+ * Use the `disabled-weekends` attribute to manually disable days in your datepicker.
  */
 export const DisabledWeekends = {
   render: () => html` <sd-datepicker label="Label" disabled-weekends></sd-datepicker> `
 };
 
 /**
- * Use the `disable-days` attribute to manually disabled days in your datepicker. If this attribute is active the range selection will not be possible.
+ * Use the `disable-days` attribute to manually disable days in your datepicker. If this attribute is active the range selection will not be possible.
  */
 export const DisabledDays = {
   render: () => html`

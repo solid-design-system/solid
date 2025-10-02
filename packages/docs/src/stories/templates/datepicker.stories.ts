@@ -26,7 +26,8 @@ export default {
 
 export const UnavailableWeekends = {
   name: 'Datepicker with a Selected Date and Unavailable Weekends',
-  render: () => html` <sd-datepicker value="2025.11.21" disabled-weekends alignment="right"></sd-datepicker>`
+  render: () =>
+    html` <sd-datepicker value="2025.11.21" disabled-weekends alignment="right" label="Appointment"></sd-datepicker>`
 };
 
 export const UnavailableDates = {
@@ -37,6 +38,7 @@ export const UnavailableDates = {
       disabled-dates="2025.11.04,2025.11.12,2025.11.18,2025.11.26"
       disabled-weekends
       alignment="right"
+      label="Appointment"
     ></sd-datepicker>`
 };
 
@@ -49,5 +51,6 @@ export const SelectedRange = {
       rangeStart="2025.11.21"
       rangeEnd="2025.11.28"
       alignment="right"
+      label="Time period"
     ></sd-datepicker>`
 };

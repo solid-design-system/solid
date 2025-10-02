@@ -1168,9 +1168,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       const day = new Date(base);
       day.setDate(base.getDate() + ((fdw + i) % 7));
       try {
-        labels.push(new Intl.DateTimeFormat(this.locale, { weekday: 'short' }).format(day));
+        labels.push(new Intl.DateTimeFormat(this.locale, { weekday: 'narrow' }).format(day));
       } catch {
-        labels.push(day.toLocaleDateString(undefined, { weekday: 'short' }));
+        labels.push(day.toLocaleDateString(undefined, { weekday: 'narrow' }));
       }
     }
     return labels;
@@ -1389,11 +1389,15 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                         isRangeStart || isRangeEnd
                           ? 'hover:bg-primary-500'
                           : 'hover:bg-primary-100 hover:text-primary-500',
-                        !inMonth || this.isInDisabledDates(day)
-                          ? 'out-month text-neutral-700'
-                          : this.disabledWeekends && isWeekendDay
-                            ? 'weekend-day text-neutral-500'
-                            : 'in-month text-primary',
+                        !inMonth
+                          ? isWeekendDay
+                            ? 'out-month weekend-day text-neutral-500'
+                            : 'out-month text-neutral-700'
+                          : this.isInDisabledDates(day)
+                            ? 'out-month text-neutral-700'
+                            : this.disabledWeekends && isWeekendDay
+                              ? 'weekend-day text-neutral-500'
+                              : 'in-month text-primary',
                         isSelectedSingle
                           ? 'selected border-primary bg-primary text-white hover:bg-primary-500 hover:text-white'
                           : '',
@@ -1521,7 +1525,8 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
             class=${cx(
               'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10 transition-[border] duration-medium ease-in-out',
               borderColor,
-              this.open
+              this.open && this.alignment === 'left' ? 'rounded-bl-none' : '',
+              this.open && this.alignment === 'right' ? 'rounded-br-none' : ''
             )}
           ></div>
           <sd-popup
