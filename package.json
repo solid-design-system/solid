@@ -27,7 +27,7 @@
   "license": "MIT",
   "engines": {
     "node": "^22.0.0",
-    "pnpm": "^10.17.0"
+    "pnpm": "^10.17.1"
   },
   "lint-staged": {
     "*": [

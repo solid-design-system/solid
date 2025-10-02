@@ -23,7 +23,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-            version: 10.17.0
+            version: 10.17.1
             run_install: false
 
       - name: Install dependencies
