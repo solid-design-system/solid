@@ -37,7 +37,7 @@ describe('<sd-input>', () => {
     expect(el.pattern).to.be.undefined;
     expect(el.required).to.be.false;
     expect(el.autocapitalize).to.be.undefined;
-    expect(el.autocorrect).to.be.undefined;
+    expect(el.autocorrect).to.be.false;
     expect(el.autocomplete).to.be.undefined;
     expect(el.autofocus).to.be.undefined;
     expect(el.enterkeyhint).to.be.undefined;
