@@ -25,9 +25,9 @@ jobs:
         with:
             node-version: 22
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v4
         with:
-            version: 10.0.0
+            version: 10.17.0
       - name: Install dependencies
       # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
