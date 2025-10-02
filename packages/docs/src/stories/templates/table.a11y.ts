@@ -1,0 +1,1291 @@
+import { test, expect } from '@playwright/test';
+
+test('Simple Table', async ({ page }) => {
+  await page.goto('http://127.0.0.1:6998/iframe.html?globals=&args=&id=templates-table--simple-table&viewMode=story');
+  await expect(page.locator('body')).toMatchAriaSnapshot(`
+      - region "Top right notifications"
+      - region "Bottom center notifications"
+      - region "Simple table":
+        - table:
+          - rowgroup:
+            - row "Job title Location Job category Employment type Actions":
+              - cell "Job title"
+              - cell "Location"
+              - cell "Job category"
+              - cell "Employment type"
+              - cell "Actions"
+          - rowgroup:
+            - row "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d) Frankfurt am Main Apprenticeship Dual Study Program / Training Add to favorites Share":
+              - cell "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)":
+                - link "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Apprenticeship"
+              - cell "Dual Study Program / Training"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+ Frankfurt am Main IT Dual Study Program \\/ Training Add to favorites Share/:
+              - cell /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+/:
+                - link /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+/:
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "IT"
+              - cell "Dual Study Program / Training"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Portfolio Manager Multi Asset Solutions (Full-time or Part-time) Frankfurt am Main Portfolio Management Full-time Part-time Add to favorites Share":
+              - cell "Portfolio Manager Multi Asset Solutions (Full-time or Part-time)":
+                - link "Portfolio Manager Multi Asset Solutions (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Portfolio Management"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "(Junior) Employee for our Legal Reporting in the Fund Administration Area Frankfurt am Main Fund Administration Full-time Part-time Add to favorites Share":
+              - cell "(Junior) Employee for our Legal Reporting in the Fund Administration Area":
+                - link "(Junior) Employee for our Legal Reporting in the Fund Administration Area":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Fund Administration"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time)) Frankfurt am Main Customer Service Full-time Part-time Add to favorites Share":
+              - cell "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time))":
+                - link "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time))":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Customer Service"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Data Protection Officer/Auditor (Full-time or Part-time) Hamburg Compliance Full-time Part-time Add to favorites Share":
+              - cell "Data Protection Officer/Auditor (Full-time or Part-time)":
+                - link "Data Protection Officer/Auditor (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Hamburg"
+              - cell "Compliance"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "(Junior) Business Analyst Risk Management (Full-time or Part-time) Frankfurt am Main Private Clients Full-time Part-time Add to favorites Share":
+              - cell "(Junior) Business Analyst Risk Management (Full-time or Part-time)":
+                - link "(Junior) Business Analyst Risk Management (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Private Clients"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time) Frankfurt am Main IT Full-time Part-time Add to favorites Share":
+              - cell "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)":
+                - link "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "IT"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Trainee (m/f/d) Product Management & Sales PLUS Frankfurt am Main Private Clients Full-time Add to favorites Share":
+              - cell "Trainee (m/f/d) Product Management & Sales PLUS":
+                - link "Trainee (m/f/d) Product Management & Sales PLUS":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Private Clients"
+              - cell "Full-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Trainee (m/f/d) Digitalization PLUS Frankfurt am Main Other Full-time Add to favorites Share":
+              - cell "Trainee (m/f/d) Digitalization PLUS":
+                - link "Trainee (m/f/d) Digitalization PLUS":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Other"
+              - cell "Full-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+    `);
+});
+
+test('Simple Table with Vertical Dividers', async ({ page }) => {
+  await page.goto(
+    'http://127.0.0.1:6998/iframe.html?globals=&args=&id=templates-table--simple-table-vertical-dividers&viewMode=story'
+  );
+  await expect(page.locator('body')).toMatchAriaSnapshot(`
+      - region "Top right notifications"
+      - region "Bottom center notifications"
+      - region "Simple Table with Vertical Dividers":
+        - table:
+          - rowgroup:
+            - row "Job title Location Job category Employment type Actions":
+              - cell "Job title"
+              - cell "Location"
+              - cell "Job category"
+              - cell "Employment type"
+              - cell "Actions"
+          - rowgroup:
+            - row "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d) Frankfurt am Main Apprenticeship Dual Study Program / Training Add to favorites Share":
+              - cell "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)":
+                - link "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Apprenticeship"
+              - cell "Dual Study Program / Training"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+ Frankfurt am Main IT Dual Study Program \\/ Training Add to favorites Share/:
+              - cell /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+/:
+                - link /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+/:
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "IT"
+              - cell "Dual Study Program / Training"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Portfolio Manager Multi Asset Solutions (Full-time or Part-time) Frankfurt am Main Portfolio Management Full-time Part-time Add to favorites Share":
+              - cell "Portfolio Manager Multi Asset Solutions (Full-time or Part-time)":
+                - link "Portfolio Manager Multi Asset Solutions (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Portfolio Management"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "(Junior) Employee for our Legal Reporting in the Fund Administration Area Frankfurt am Main Fund Administration Full-time Part-time Add to favorites Share":
+              - cell "(Junior) Employee for our Legal Reporting in the Fund Administration Area":
+                - link "(Junior) Employee for our Legal Reporting in the Fund Administration Area":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Fund Administration"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time)) Frankfurt am Main Customer Service Full-time Part-time Add to favorites Share":
+              - cell "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time))":
+                - link "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time))":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Customer Service"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Data Protection Officer/Auditor (Full-time or Part-time) Hamburg Compliance Full-time Part-time Add to favorites Share":
+              - cell "Data Protection Officer/Auditor (Full-time or Part-time)":
+                - link "Data Protection Officer/Auditor (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Hamburg"
+              - cell "Compliance"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "(Junior) Business Analyst Risk Management (Full-time or Part-time) Frankfurt am Main Private Clients Full-time Part-time Add to favorites Share":
+              - cell "(Junior) Business Analyst Risk Management (Full-time or Part-time)":
+                - link "(Junior) Business Analyst Risk Management (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Private Clients"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time) Frankfurt am Main IT Full-time Part-time Add to favorites Share":
+              - cell "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)":
+                - link "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "IT"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Trainee (m/f/d) Product Management & Sales PLUS Frankfurt am Main Private Clients Full-time Add to favorites Share":
+              - cell "Trainee (m/f/d) Product Management & Sales PLUS":
+                - link "Trainee (m/f/d) Product Management & Sales PLUS":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Private Clients"
+              - cell "Full-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Trainee (m/f/d) Digitalization PLUS Frankfurt am Main Other Full-time Add to favorites Share":
+              - cell "Trainee (m/f/d) Digitalization PLUS":
+                - link "Trainee (m/f/d) Digitalization PLUS":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Other"
+              - cell "Full-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+    `);
+});
+
+test('Simple Table with Alternating Colors', async ({ page }) => {
+  await page.goto(
+    'http://127.0.0.1:6998/iframe.html?globals=&args=&id=templates-table--simple-table-alternating-colors&viewMode=story'
+  );
+  await expect(page.locator('body')).toMatchAriaSnapshot(`
+      - region "Top right notifications"
+      - region "Bottom center notifications"
+      - region "Simple Table with Alternating Colors":
+        - table:
+          - rowgroup:
+            - row "Job title Location Job category Employment type Actions":
+              - cell "Job title"
+              - cell "Location"
+              - cell "Job category"
+              - cell "Employment type"
+              - cell "Actions"
+          - rowgroup:
+            - row "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d) Frankfurt am Main Apprenticeship Dual Study Program / Training Add to favorites Share":
+              - cell "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)":
+                - link "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Apprenticeship"
+              - cell "Dual Study Program / Training"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+ Frankfurt am Main IT Dual Study Program \\/ Training Add to favorites Share/:
+              - cell /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+/:
+                - link /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+/:
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "IT"
+              - cell "Dual Study Program / Training"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Portfolio Manager Multi Asset Solutions (Full-time or Part-time) Frankfurt am Main Portfolio Management Full-time Part-time Add to favorites Share":
+              - cell "Portfolio Manager Multi Asset Solutions (Full-time or Part-time)":
+                - link "Portfolio Manager Multi Asset Solutions (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Portfolio Management"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "(Junior) Employee for our Legal Reporting in the Fund Administration Area Frankfurt am Main Fund Administration Full-time Part-time Add to favorites Share":
+              - cell "(Junior) Employee for our Legal Reporting in the Fund Administration Area":
+                - link "(Junior) Employee for our Legal Reporting in the Fund Administration Area":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Fund Administration"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time)) Frankfurt am Main Customer Service Full-time Part-time Add to favorites Share":
+              - cell "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time))":
+                - link "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time))":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Customer Service"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Data Protection Officer/Auditor (Full-time or Part-time) Hamburg Compliance Full-time Part-time Add to favorites Share":
+              - cell "Data Protection Officer/Auditor (Full-time or Part-time)":
+                - link "Data Protection Officer/Auditor (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Hamburg"
+              - cell "Compliance"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "(Junior) Business Analyst Risk Management (Full-time or Part-time) Frankfurt am Main Private Clients Full-time Part-time Add to favorites Share":
+              - cell "(Junior) Business Analyst Risk Management (Full-time or Part-time)":
+                - link "(Junior) Business Analyst Risk Management (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Private Clients"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time) Frankfurt am Main IT Full-time Part-time Add to favorites Share":
+              - cell "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)":
+                - link "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "IT"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Trainee (m/f/d) Product Management & Sales PLUS Frankfurt am Main Private Clients Full-time Add to favorites Share":
+              - cell "Trainee (m/f/d) Product Management & Sales PLUS":
+                - link "Trainee (m/f/d) Product Management & Sales PLUS":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Private Clients"
+              - cell "Full-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Trainee (m/f/d) Digitalization PLUS Frankfurt am Main Other Full-time Add to favorites Share":
+              - cell "Trainee (m/f/d) Digitalization PLUS":
+                - link "Trainee (m/f/d) Digitalization PLUS":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Other"
+              - cell "Full-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+    `);
+});
+
+test('Sortable Table', async ({ page }) => {
+  await page.goto('http://127.0.0.1:6998/iframe.html?globals=&args=&id=templates-table--sortable-table&viewMode=story');
+  await expect(page.locator('body')).toMatchAriaSnapshot(`
+      - region "Top right notifications"
+      - region "Bottom center notifications"
+      - status
+      - region "Sortable table":
+        - table:
+          - rowgroup:
+            - row "Job title Location Job category Employment type Actions":
+              - cell "Job title":
+                - button "Job title"
+              - cell "Location":
+                - button "Location"
+              - cell "Job category":
+                - button "Job category"
+              - cell "Employment type":
+                - button "Employment type"
+              - cell "Actions"
+          - rowgroup:
+            - row "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d) Frankfurt am Main Apprenticeship Dual Study Program / Training Add to favorites Share":
+              - cell "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)":
+                - link "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Apprenticeship"
+              - cell "Dual Study Program / Training"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+ Frankfurt am Main IT Dual Study Program \\/ Training Add to favorites Share/:
+              - cell /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+/:
+                - link /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+/:
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "IT"
+              - cell "Dual Study Program / Training"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Portfolio Manager Multi Asset Solutions (Full-time or Part-time) Frankfurt am Main Portfolio Management Full-time Part-time Add to favorites Share":
+              - cell "Portfolio Manager Multi Asset Solutions (Full-time or Part-time)":
+                - link "Portfolio Manager Multi Asset Solutions (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Portfolio Management"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "(Junior) Employee for our Legal Reporting in the Fund Administration Area Frankfurt am Main Fund Administration Full-time Part-time Add to favorites Share":
+              - cell "(Junior) Employee for our Legal Reporting in the Fund Administration Area":
+                - link "(Junior) Employee for our Legal Reporting in the Fund Administration Area":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Fund Administration"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time) Frankfurt am Main Customer Service Full-time Part-time Add to favorites Share":
+              - cell "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time)":
+                - link "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Customer Service"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Data Protection Officer/Auditor (Full-time or Part-time) Hamburg Compliance Full-time Part-time Add to favorites Share":
+              - cell "Data Protection Officer/Auditor (Full-time or Part-time)":
+                - link "Data Protection Officer/Auditor (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Hamburg"
+              - cell "Compliance"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "(Junior) Business Analyst Risk Management (Full-time or Part-time) Frankfurt am Main Private Clients Full-time Part-time Add to favorites Share":
+              - cell "(Junior) Business Analyst Risk Management (Full-time or Part-time)":
+                - link "(Junior) Business Analyst Risk Management (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Private Clients"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time) Frankfurt am Main IT Full-time Part-time Add to favorites Share":
+              - cell "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)":
+                - link "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "IT"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Trainee (m/f/d) Product Management & Sales PLUS Frankfurt am Main Private Clients Full-time Add to favorites Share":
+              - cell "Trainee (m/f/d) Product Management & Sales PLUS":
+                - link "Trainee (m/f/d) Product Management & Sales PLUS":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Private Clients"
+              - cell "Full-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Trainee (m/f/d) Digitalization PLUS Frankfurt am Main Other Full-time Add to favorites Share":
+              - cell "Trainee (m/f/d) Digitalization PLUS":
+                - link "Trainee (m/f/d) Digitalization PLUS":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Other"
+              - cell "Full-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+    `);
+});
+
+test('Advanced Tables', async ({ page }) => {
+  await page.goto(
+    'http://127.0.0.1:6998/iframe.html?globals=&args=&id=templates-table--advanced-tables&viewMode=story'
+  );
+  await expect(page.locator('body')).toMatchAriaSnapshot(`
+      - region "Top right notifications"
+      - region "Bottom center notifications"
+      - region "Table with Fixed Top Header Row and Shadow":
+        - table:
+          - rowgroup:
+            - row "Job title Location Job category Employment type Actions":
+              - cell "Job title"
+              - cell "Location"
+              - cell "Job category"
+              - cell "Employment type"
+              - cell "Actions"
+          - rowgroup:
+            - row "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d) Frankfurt am Main Apprenticeship Dual Study Program / Training Add to favorites Share":
+              - cell "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)":
+                - link "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Apprenticeship"
+              - cell "Dual Study Program / Training"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+ Frankfurt am Main IT Dual Study Program \\/ Training Add to favorites Share/:
+              - cell /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+/:
+                - link /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+/:
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "IT"
+              - cell "Dual Study Program / Training"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Portfolio Manager Multi Asset Solutions (Full-time or Part-time) Frankfurt am Main Portfolio Management Full-time Part-time Add to favorites Share":
+              - cell "Portfolio Manager Multi Asset Solutions (Full-time or Part-time)":
+                - link "Portfolio Manager Multi Asset Solutions (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Portfolio Management"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "(Junior) Employee for our Legal Reporting in the Fund Administration Area Frankfurt am Main Fund Administration Full-time Part-time Add to favorites Share":
+              - cell "(Junior) Employee for our Legal Reporting in the Fund Administration Area":
+                - link "(Junior) Employee for our Legal Reporting in the Fund Administration Area":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Fund Administration"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time) Frankfurt am Main Customer Service Full-time Part-time Add to favorites Share":
+              - cell "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time)":
+                - link "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Customer Service"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Data Protection Officer/Auditor (Full-time or Part-time) Hamburg Compliance Full-time Part-time Add to favorites Share":
+              - cell "Data Protection Officer/Auditor (Full-time or Part-time)":
+                - link "Data Protection Officer/Auditor (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Hamburg"
+              - cell "Compliance"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "(Junior) Business Analyst Risk Management (Full-time or Part-time) Frankfurt am Main Private Clients Full-time Part-time Add to favorites Share":
+              - cell "(Junior) Business Analyst Risk Management (Full-time or Part-time)":
+                - link "(Junior) Business Analyst Risk Management (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Private Clients"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time) Frankfurt am Main IT Full-time Part-time Add to favorites Share":
+              - cell "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)":
+                - link "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "IT"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Trainee (m/f/d) Product Management & Sales PLUS Frankfurt am Main Private Clients Full-time Add to favorites Share":
+              - cell "Trainee (m/f/d) Product Management & Sales PLUS":
+                - link "Trainee (m/f/d) Product Management & Sales PLUS":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Private Clients"
+              - cell "Full-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Trainee (m/f/d) Digitalization PLUS Frankfurt am Main Other Full-time Add to favorites Share":
+              - cell "Trainee (m/f/d) Digitalization PLUS":
+                - link "Trainee (m/f/d) Digitalization PLUS":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Other"
+              - cell "Full-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+    `);
+});
+
+test('Table with Fixed Bottom Header Row and Shadow', async ({ page }) => {
+  await page.goto(
+    'http://127.0.0.1:6998/iframe.html?globals=&args=&id=templates-table--table-fixed-bottom&viewMode=story'
+  );
+  await expect(page.locator('body')).toMatchAriaSnapshot(`
+      - region "Top right notifications"
+      - region "Bottom center notifications"
+      - region "Table with Fixed Bottom Header Row and Shadow":
+        - table:
+          - rowgroup:
+            - row "Job title Location Job category Employment type Actions":
+              - cell "Job title"
+              - cell "Location"
+              - cell "Job category"
+              - cell "Employment type"
+              - cell "Actions"
+          - rowgroup:
+            - row "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d) Frankfurt am Main Apprenticeship Dual Study Program / Training Add to favorites Share":
+              - cell "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)":
+                - link "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Apprenticeship"
+              - cell "Dual Study Program / Training"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+ Frankfurt am Main IT Dual Study Program \\/ Training Add to favorites Share/:
+              - cell /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+/:
+                - link /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+/:
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "IT"
+              - cell "Dual Study Program / Training"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Portfolio Manager Multi Asset Solutions (Full-time or Part-time) Frankfurt am Main Portfolio Management Full-time Part-time Add to favorites Share":
+              - cell "Portfolio Manager Multi Asset Solutions (Full-time or Part-time)":
+                - link "Portfolio Manager Multi Asset Solutions (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Portfolio Management"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "(Junior) Employee for our Legal Reporting in the Fund Administration Area Frankfurt am Main Fund Administration Full-time Part-time Add to favorites Share":
+              - cell "(Junior) Employee for our Legal Reporting in the Fund Administration Area":
+                - link "(Junior) Employee for our Legal Reporting in the Fund Administration Area":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Fund Administration"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time) Frankfurt am Main Customer Service Full-time Part-time Add to favorites Share":
+              - cell "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time)":
+                - link "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Customer Service"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Data Protection Officer/Auditor (Full-time or Part-time) Hamburg Compliance Full-time Part-time Add to favorites Share":
+              - cell "Data Protection Officer/Auditor (Full-time or Part-time)":
+                - link "Data Protection Officer/Auditor (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Hamburg"
+              - cell "Compliance"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "(Junior) Business Analyst Risk Management (Full-time or Part-time) Frankfurt am Main Private Clients Full-time Part-time Add to favorites Share":
+              - cell "(Junior) Business Analyst Risk Management (Full-time or Part-time)":
+                - link "(Junior) Business Analyst Risk Management (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Private Clients"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time) Frankfurt am Main IT Full-time Part-time Add to favorites Share":
+              - cell "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)":
+                - link "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "IT"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Trainee (m/f/d) Product Management & Sales PLUS Frankfurt am Main Private Clients Full-time Add to favorites Share":
+              - cell "Trainee (m/f/d) Product Management & Sales PLUS":
+                - link "Trainee (m/f/d) Product Management & Sales PLUS":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Private Clients"
+              - cell "Full-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Trainee (m/f/d) Digitalization PLUS Frankfurt am Main Other Full-time Add to favorites Share":
+              - cell "Trainee (m/f/d) Digitalization PLUS":
+                - link "Trainee (m/f/d) Digitalization PLUS":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Other"
+              - cell "Full-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+          - rowgroup:
+            - row "Job title Location Job category Employment type Actions":
+              - cell "Job title"
+              - cell "Location"
+              - cell "Job category"
+              - cell "Employment type"
+              - cell "Actions"
+    `);
+});
+
+test('Table with Fixed Left Header Column and Shadow', async ({ page }) => {
+  await page.goto(
+    'http://127.0.0.1:6998/iframe.html?globals=&args=&id=templates-table--table-fixed-left&viewMode=story'
+  );
+  await expect(page.locator('body')).toMatchAriaSnapshot(`
+      - region "Top right notifications"
+      - region "Bottom center notifications"
+      - region "Table with Fixed Left Header Column and Shadow":
+        - table:
+          - rowgroup:
+            - row "Job title Location Job category Employment type Actions":
+              - cell
+              - cell "Job title"
+              - cell "Location"
+              - cell "Job category"
+              - cell "Employment type"
+              - cell "Actions"
+          - rowgroup:
+            - row "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d) Frankfurt am Main Apprenticeship Dual Study Program / Training Add to favorites Share":
+              - cell "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)":
+                - link "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Apprenticeship"
+              - cell "Dual Study Program / Training"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+ Frankfurt am Main IT Dual Study Program \\/ Training Add to favorites Share/:
+              - cell /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+/:
+                - link /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+/:
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "IT"
+              - cell "Dual Study Program / Training"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Portfolio Manager Multi Asset Solutions (Full-time or Part-time) Frankfurt am Main Portfolio Management Full-time Part-time Add to favorites Share":
+              - cell "Portfolio Manager Multi Asset Solutions (Full-time or Part-time)":
+                - link "Portfolio Manager Multi Asset Solutions (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Portfolio Management"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "(Junior) Employee for our Legal Reporting in the Fund Administration Area Frankfurt am Main Fund Administration Full-time Part-time Add to favorites Share":
+              - cell "(Junior) Employee for our Legal Reporting in the Fund Administration Area":
+                - link "(Junior) Employee for our Legal Reporting in the Fund Administration Area":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Fund Administration"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time) Frankfurt am Main Customer Service Full-time Part-time Add to favorites Share":
+              - cell "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time)":
+                - link "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Customer Service"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Data Protection Officer/Auditor (Full-time or Part-time) Hamburg Compliance Full-time Part-time Add to favorites Share":
+              - cell "Data Protection Officer/Auditor (Full-time or Part-time)":
+                - link "Data Protection Officer/Auditor (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Hamburg"
+              - cell "Compliance"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "(Junior) Business Analyst Risk Management (Full-time or Part-time) Frankfurt am Main Private Clients Full-time Part-time Add to favorites Share":
+              - cell "(Junior) Business Analyst Risk Management (Full-time or Part-time)":
+                - link "(Junior) Business Analyst Risk Management (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Private Clients"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time) Frankfurt am Main IT Full-time Part-time Add to favorites Share":
+              - cell "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)":
+                - link "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "IT"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Trainee (m/f/d) Product Management & Sales PLUS Frankfurt am Main Private Clients Full-time Add to favorites Share":
+              - cell "Trainee (m/f/d) Product Management & Sales PLUS":
+                - link "Trainee (m/f/d) Product Management & Sales PLUS":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Private Clients"
+              - cell "Full-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Trainee (m/f/d) Digitalization PLUS Frankfurt am Main Other Full-time Add to favorites Share":
+              - cell "Trainee (m/f/d) Digitalization PLUS":
+                - link "Trainee (m/f/d) Digitalization PLUS":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Other"
+              - cell "Full-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+    `);
+});
+
+test('Table with Fixed Right Header Column and Shadow', async ({ page }) => {
+  await page.goto(
+    'http://127.0.0.1:6998/iframe.html?globals=&args=&id=templates-table--table-fixed-right&viewMode=story'
+  );
+  await expect(page.locator('body')).toMatchAriaSnapshot(`
+      - region "Top right notifications"
+      - region "Bottom center notifications"
+      - region "Table with Fixed Right Header Column and Shadow":
+        - table:
+          - rowgroup:
+            - row "Job title Location Job category Employment type Actions":
+              - cell "Job title"
+              - cell "Location"
+              - cell "Job category"
+              - cell "Employment type"
+              - cell "Actions"
+              - cell
+          - rowgroup:
+            - row "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d) Frankfurt am Main Apprenticeship Dual Study Program / Training Add to favorites Share":
+              - cell "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)":
+                - link "Dual Study Program with Training Investment Fund Saleswoman/Man (m/f/d)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Apprenticeship"
+              - cell "Dual Study Program / Training"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+ Frankfurt am Main IT Dual Study Program \\/ Training Add to favorites Share/:
+              - cell /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+/:
+                - link /Dual Study Program in Business Informatics \\(m\\/f\\/d\\), Start \\d+\\.\\d+\\.\\d+/:
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "IT"
+              - cell "Dual Study Program / Training"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Portfolio Manager Multi Asset Solutions (Full-time or Part-time) Frankfurt am Main Portfolio Management Full-time Part-time Add to favorites Share":
+              - cell "Portfolio Manager Multi Asset Solutions (Full-time or Part-time)":
+                - link "Portfolio Manager Multi Asset Solutions (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Portfolio Management"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "(Junior) Employee for our Legal Reporting in the Fund Administration Area Frankfurt am Main Fund Administration Full-time Part-time Add to favorites Share":
+              - cell "(Junior) Employee for our Legal Reporting in the Fund Administration Area":
+                - link "(Junior) Employee for our Legal Reporting in the Fund Administration Area":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Fund Administration"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time) Frankfurt am Main Customer Service Full-time Part-time Add to favorites Share":
+              - cell "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time)":
+                - link "Sales Staff (m/f/d) Customer Service with a Focus on Partner Banks and Private Clients (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Customer Service"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Data Protection Officer/Auditor (Full-time or Part-time) Hamburg Compliance Full-time Part-time Add to favorites Share":
+              - cell "Data Protection Officer/Auditor (Full-time or Part-time)":
+                - link "Data Protection Officer/Auditor (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Hamburg"
+              - cell "Compliance"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "(Junior) Business Analyst Risk Management (Full-time or Part-time) Frankfurt am Main Private Clients Full-time Part-time Add to favorites Share":
+              - cell "(Junior) Business Analyst Risk Management (Full-time or Part-time)":
+                - link "(Junior) Business Analyst Risk Management (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Private Clients"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time) Frankfurt am Main IT Full-time Part-time Add to favorites Share":
+              - cell "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)":
+                - link "Head of the AI Competence Center as Group Leader*in IT Data Analytics (Full-time or Part-time)":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "IT"
+              - cell "Full-time Part-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Trainee (m/f/d) Product Management & Sales PLUS Frankfurt am Main Private Clients Full-time Add to favorites Share":
+              - cell "Trainee (m/f/d) Product Management & Sales PLUS":
+                - link "Trainee (m/f/d) Product Management & Sales PLUS":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Private Clients"
+              - cell "Full-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+            - row "Trainee (m/f/d) Digitalization PLUS Frankfurt am Main Other Full-time Add to favorites Share":
+              - cell "Trainee (m/f/d) Digitalization PLUS":
+                - link "Trainee (m/f/d) Digitalization PLUS":
+                  - /url: javascript:void(0)
+              - cell "Frankfurt am Main"
+              - cell "Other"
+              - cell "Full-time"
+              - cell "Add to favorites Share":
+                - button "Add to favorites":
+                  - img "Add to favorites":
+                    - img
+                - button "Share":
+                  - img "Share":
+                    - img
+    `);
+});
