@@ -1168,9 +1168,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       const day = new Date(base);
       day.setDate(base.getDate() + ((fdw + i) % 7));
       try {
-        labels.push(new Intl.DateTimeFormat(this.locale, { weekday: 'narrow' }).format(day));
+        labels.push(new Intl.DateTimeFormat(this.locale, { weekday: 'short' }).format(day));
       } catch {
-        labels.push(day.toLocaleDateString(undefined, { weekday: 'narrow' }));
+        labels.push(day.toLocaleDateString(undefined, { weekday: 'short' }));
       }
     }
     return labels;
@@ -1325,7 +1325,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                   role="columnheader"
                   aria-colindex=${colIndex + 1}
                   part="weekday"
-                  class="cell head flex items-center justify-center font-bold text-black"
+                  class="cell head flex items-center justify-center font-bold text-black text-sm leading-none h-8"
                   aria-label=${w}
                   title=${w}
                   id=${'col-' + (colIndex + 1)}
