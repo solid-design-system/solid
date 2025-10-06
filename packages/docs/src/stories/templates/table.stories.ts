@@ -236,7 +236,7 @@ export const simpleTable = {
       const table = document.getElementById('simple');
       const actions = table.querySelectorAll('sd-button');
 
-      actions.forEach(action => {
+      actions?.forEach(action => {
         action.onclick = () => {
           alert('Action performed');
         };
@@ -466,7 +466,7 @@ export const simpleTableVerticalDividers = {
       const table = document.getElementById('dividers');
       const actions = table.querySelectorAll('sd-button');
 
-      actions.forEach(action => {
+      actions?.forEach(action => {
         action.onclick = () => {
           alert('Action performed');
         };
@@ -692,7 +692,7 @@ export const simpleTableAlternatingColors = {
       const table = document.getElementById('alternating');
       const actions = table.querySelectorAll('sd-button');
 
-      actions.forEach(action => {
+      actions?.forEach(action => {
         action.onclick = () => {
           alert('Action performed');
         };
@@ -1041,7 +1041,7 @@ export const sortableTable = {
         const table = document.getElementById('sortable');
         const actions = table.querySelectorAll('sd-button');
 
-        actions.forEach(action => {
+        actions?.forEach(action => {
           action.onclick = () => {
             alert('Action performed');
           };
@@ -1109,8 +1109,15 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <button class="sd-interactive sd-interactive--reset items-center" title="PDF">
-                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              <button
+                class="sd-interactive sd-interactive--reset items-center"
+                title="Preview PrivatFonds: Flexibel PDF"
+              >
+                <sd-icon
+                  class="w-6 h-6 px-4"
+                  name="system/file-pdf"
+                  label="Preview PrivatFonds: Flexibel PDF"
+                ></sd-icon>
               </button>
             </td>
           </tr>
@@ -1125,8 +1132,12 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Value-protected funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <button class="sd-interactive sd-interactive--reset" title="PDF">
-                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              <button class="sd-interactive sd-interactive--reset" title="Preview PrivatFonds: Flexibel PDF">
+                <sd-icon
+                  class="w-6 h-6 px-4"
+                  name="system/file-pdf"
+                  label="Preview PrivatFonds: Flexibel PDF"
+                ></sd-icon>
               </button>
             </td>
           </tr>
@@ -1141,8 +1152,12 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Value-protected funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <button class="sd-interactive sd-interactive--reset" title="PDF">
-                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              <button class="sd-interactive sd-interactive--reset" title="Preview PrivatFonds: Konsequent PDF">
+                <sd-icon
+                  class="w-6 h-6 px-4"
+                  name="system/file-pdf"
+                  label="Preview PrivatFonds: Konsequent PDF"
+                ></sd-icon>
               </button>
             </td>
           </tr>
@@ -1157,8 +1172,12 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Value-protected funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <button class="sd-interactive sd-interactive--reset" title="PDF">
-                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              <button class="sd-interactive sd-interactive--reset" title="Preview PrivatFonds: Konsequent pro PDF">
+                <sd-icon
+                  class="w-6 h-6 px-4"
+                  name="system/file-pdf"
+                  label="Preview PrivatFonds: Konsequent pro PDF"
+                ></sd-icon>
               </button>
             </td>
           </tr>
@@ -1173,8 +1192,12 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <button class="sd-interactive sd-interactive--reset" title="PDF">
-                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              <button class="sd-interactive sd-interactive--reset" title="Preview PrivatFonds: Kontrolliert PDF">
+                <sd-icon
+                  class="w-6 h-6 px-4"
+                  name="system/file-pdf"
+                  label="Preview PrivatFonds: Kontrolliert PDF"
+                ></sd-icon>
               </button>
             </td>
           </tr>
@@ -1189,8 +1212,12 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <button class="sd-interactive sd-interactive--reset" title="PDF">
-                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              <button class="sd-interactive sd-interactive--reset" title="Preview PrivatFonds: Kontrolliert pro PDF">
+                <sd-icon
+                  class="w-6 h-6 px-4"
+                  name="system/file-pdf"
+                  label="Preview PrivatFonds: Kontrolliert pro PDF"
+                ></sd-icon>
               </button>
             </td>
           </tr>
@@ -1205,8 +1232,12 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <button class="sd-interactive sd-interactive--reset" title="PDF">
-                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              <button class="sd-interactive sd-interactive--reset" title="Preview PrivatFonds: Nachhaltig PDF">
+                <sd-icon
+                  class="w-6 h-6 px-4"
+                  name="system/file-pdf"
+                  label="Preview PrivatFonds: Nachhaltig PDF"
+                ></sd-icon>
               </button>
             </td>
           </tr>
@@ -1221,8 +1252,12 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Stock funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <button class="sd-interactive sd-interactive--reset" title="PDF">
-                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              <button class="sd-interactive sd-interactive--reset" title="Preview Uni21.Jahrhundert -net- PDF">
+                <sd-icon
+                  class="w-6 h-6 px-4"
+                  name="system/file-pdf"
+                  label="Preview Uni21.Jahrhundert -net- PDF"
+                ></sd-icon>
               </button>
             </td>
           </tr>
@@ -1237,8 +1272,12 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <button class="sd-interactive sd-interactive--reset" title="PDF">
-                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              <button class="sd-interactive sd-interactive--reset" title="Preview UniAbsoluterErtrag -net- A PDF">
+                <sd-icon
+                  class="w-6 h-6 px-4"
+                  name="system/file-pdf"
+                  label="Preview UniAbsoluterErtrag -net- A PDF"
+                ></sd-icon>
               </button>
             </td>
           </tr>
@@ -1253,8 +1292,8 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <button class="sd-interactive sd-interactive--reset" title="PDF">
-                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="PDF"></sd-icon>
+              <button class="sd-interactive sd-interactive--reset" title="Preview UniAbsoluterErtrag A PDF">
+                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="Preview UniAbsoluterErtrag A PDF"></sd-icon>
               </button>
             </td>
           </tr>
@@ -1270,7 +1309,7 @@ export const multiSelectTable = {
         </sd-button>
       </div>
     </section>
-    <script>
+    <script type="module">
       const selectAllCheckbox = document.querySelector('#select-all');
       const tbody = document.querySelector('.selectable-rows');
       const selectedCountEl = document.querySelector('#selected-count');
@@ -1353,9 +1392,9 @@ export const multiSelectTable = {
  * ```js
  * document.addEventListener('DOMContentLoaded', () => {
  *   const scrollableTable = document.getElementById('vertical-scrollable-table');
- *   const tableHeaders = scrollableTable.querySelectorAll('th');
+ *   const tableHeaders = scrollableTable?.querySelectorAll('th');
  *
- *   scrollableTable.addEventListener('scroll', () => {
+ *   scrollableTable?.addEventListener('scroll', () => {
  *     tableHeaders.forEach(header => {
  *       if (scrollableTable.scrollTop === 0) {
  *         header.classList.remove('sd-table-cell--shadow-active');
@@ -1375,9 +1414,9 @@ export const advancedTables = {
       <script>
         document.addEventListener('DOMContentLoaded', () => {
           const scrollableTable = document.getElementById('vertical-scrollable-table');
-          const tableHeaders = scrollableTable.querySelectorAll('th');
+          const tableHeaders = scrollableTable?.querySelectorAll('th');
 
-          scrollableTable.addEventListener('scroll', () => {
+          scrollableTable?.addEventListener('scroll', () => {
             tableHeaders.forEach(header => {
               if (scrollableTable.scrollTop === 0) {
                 header.classList.remove('sd-table-cell--shadow-active');
@@ -1387,8 +1426,8 @@ export const advancedTables = {
             });
           });
 
-          const actions = scrollableTable.querySelectorAll('sd-button');
-          actions.forEach(action => {
+          const actions = scrollableTable?.querySelectorAll('button') ?? [];
+          actions?.forEach(action => {
             action.onclick = () => {
               alert('Action performed');
             };
@@ -1622,9 +1661,9 @@ export const TableFixedBottom = {
       <script>
         document.addEventListener('DOMContentLoaded', () => {
           const scrollableTable = document.getElementById('vertical-scrollable-table-2');
-          const tableHeaders = scrollableTable.querySelectorAll('th');
+          const tableHeaders = scrollableTable?.querySelectorAll('th');
 
-          scrollableTable.addEventListener('scroll', () => {
+          scrollableTable?.addEventListener('scroll', () => {
             tableHeaders.forEach(header => {
               if (scrollableTable.scrollTop === scrollableTable.scrollHeight - scrollableTable.clientHeight) {
                 header.classList.remove('sd-table-cell--shadow-active');
@@ -1634,8 +1673,8 @@ export const TableFixedBottom = {
             });
           });
 
-          const actions = scrollableTable.querySelectorAll('sd-button');
-          actions.forEach(action => {
+          const actions = scrollableTable?.querySelectorAll('button') ?? [];
+          actions?.forEach(action => {
             action.onclick = () => {
               alert('Action performed');
             };
@@ -1896,9 +1935,9 @@ export const TableFixedLeft = {
       <script>
         document.addEventListener('DOMContentLoaded', () => {
           const scrollableTable = document.getElementById('horizontal-scrollable-table');
-          const tableHeaders = scrollableTable.querySelectorAll('th');
+          const tableHeaders = scrollableTable?.querySelectorAll('th');
 
-          scrollableTable.addEventListener('scroll', () => {
+          scrollableTable?.addEventListener('scroll', () => {
             tableHeaders.forEach(header => {
               if (scrollableTable.scrollLeft === 0) {
                 header.classList.remove('sd-table-cell--shadow-active');
@@ -1908,8 +1947,8 @@ export const TableFixedLeft = {
             });
           });
 
-          const actions = scrollableTable.querySelectorAll('sd-button');
-          actions.forEach(action => {
+          const actions = scrollableTable?.querySelectorAll('button') ?? [];
+          actions?.forEach(action => {
             action.onclick = () => {
               alert('Action performed');
             };
@@ -2167,10 +2206,10 @@ export const TableFixedRight = {
         <script>
           document.addEventListener('DOMContentLoaded', () => {
             const scrollableTable = document.getElementById('horizontal-scrollable-table-2');
-            const tableHeaders = scrollableTable.querySelectorAll('th');
+            const tableHeaders = scrollableTable?.querySelectorAll('th');
 
 
-            scrollableTable.addEventListener('scroll', () => {
+            scrollableTable?.addEventListener('scroll', () => {
               tableHeaders.forEach(header => {
                 if (scrollableTable.scrollLeft + scrollableTable.clientWidth >= scrollableTable.scrollWidth) {
                   header.classList.remove('sd-table-cell--shadow-active');
@@ -2180,8 +2219,8 @@ export const TableFixedRight = {
               });
             });
 
-            const actions = scrollableTable.querySelectorAll('sd-button');
-            actions.forEach(action => {
+            const actions = scrollableTable?.querySelectorAll('button') ?? [];
+            actions?.forEach(action => {
               action.onclick = () => {
                 alert('Action performed');
               };
