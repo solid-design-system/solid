@@ -210,7 +210,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     | 'words'
     | 'characters';
 
-  // @ts-expect-error – TypeScript expects a boolean for the attribute, although it's only needed for the property
   @property({ type: String, reflect: true }) autocorrect: 'off' | 'on';
 
   /**

@@ -116,7 +116,6 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     | 'characters';
 
   /** Indicates whether the browser's autocorrect feature is on or off. */
-  // @ts-expect-error – TypeScript expects a boolean for the attribute, although it's only needed for the property
   @property({ type: String, reflect: true }) autocorrect: 'off' | 'on';
   /**
    * Specifies what permission the browser has to provide assistance in filling out form field values. Refer to
