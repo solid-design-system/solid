@@ -122,6 +122,8 @@ export const VisuallyDisabled = {
 
 /**
  * Use the `help-text` attribute to add a descriptive “help text”.
+ *
+ * For help texts that contain HTML, use the `help-text` slot instead.
  */
 export const HelpText = {
   render: () => html` <sd-datepicker label="Label" help-text="Help text"></sd-datepicker> `
