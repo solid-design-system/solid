@@ -1169,7 +1169,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     ...SolidElement.styles,
     css`
       :host {
-        @apply block relative w-full;
+        @apply block relative w-auto;
       }
 
       :host([required]) #label::after {
