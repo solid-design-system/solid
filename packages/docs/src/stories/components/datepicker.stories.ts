@@ -84,7 +84,13 @@ export const Alignment = {
  */
 
 export const Label = {
-  render: () => html` <sd-datepicker label="Label"></sd-datepicker> `
+  render: () =>
+    html`<div class="flex gap-12 h-[500px]">
+      <sd-datepicker label="Label attribute"></sd-datepicker>
+      <sd-datepicker>
+        <div slot="label">Label slot</div>
+      </sd-datepicker>
+    </div>`
 };
 
 /**
@@ -109,7 +115,7 @@ export const Disabled = {
  * Use the `visually-disabled` attribute to style the component as if it was disabled and enable `aria-disabled` to allow it to be reachable by screen readers.
  *
  * __Hint:__ When using this attribute, make sure to provide ways to inform the user why the element is disabled and how to enable it. This can be done by using the `help-text` attribute or wrapping the element in a sd-tooltip.
- * 
+ *
  * __Accessibility Hint:__ Disabling elements is not recommended for accessibility reasons.
  */
 
@@ -126,7 +132,13 @@ export const VisuallyDisabled = {
  * For help texts that contain HTML, use the `help-text` slot instead.
  */
 export const HelpText = {
-  render: () => html` <sd-datepicker label="Label" help-text="Help text"></sd-datepicker> `
+  render: () =>
+    html`<div class="flex gap-12 h-[500px]">
+      <sd-datepicker label="Label" help-text="Help text attribute"></sd-datepicker>
+      <sd-datepicker label="Label">
+        <div slot="help-text">Help text slot</div>
+      </sd-datepicker>
+    </div>`
 };
 
 /**
@@ -137,6 +149,8 @@ export const Required = {
 };
 
 /**
+ * The component gets `valid` state when the datepicker is valid.
+ *
  * Use the `style-on-valid` attribute to automatically indicate and show a valid state.
  */
 
