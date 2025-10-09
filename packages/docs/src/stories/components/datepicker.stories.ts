@@ -98,7 +98,7 @@ export const Placeholder = {
 /**
  * Use the `disabled` attribute to disable the datepicker.
  *
- * Hint: Clicks will be suppressed until the disabled state is removed
+ * __Hint__: Clicks will be suppressed until the disabled state is removed.
  */
 
 export const Disabled = {
