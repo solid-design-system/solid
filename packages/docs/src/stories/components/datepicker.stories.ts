@@ -69,8 +69,8 @@ export const Size = {
 /**
  * Use the `alignment` attribute to define where the flyout should appear:
  *
- * - left (default)
- * - right
+ * - `left` (default)
+ * - `right`
  */
 
 export const Alignment = {
