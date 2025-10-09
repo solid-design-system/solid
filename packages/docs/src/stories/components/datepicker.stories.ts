@@ -79,6 +79,8 @@ export const Alignment = {
 
 /**
  * Use the `label` attribute to give the datepicker an accessible label.
+ *
+ * For labels that contain HTML, use the `label` slot instead.
  */
 
 export const Label = {
