@@ -155,7 +155,7 @@ export const Valid = {
 };
 
 /**
- * The component gets `invalid`` state when the datepicker is not valid.
+ * The component gets `invalid` state when the datepicker is not valid.
  */
 export const Invalid = {
   render: () => html`
