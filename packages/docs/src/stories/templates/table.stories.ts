@@ -1066,49 +1066,35 @@ export const multiSelectTable = {
         white-space: nowrap;
         border: 0;
       }
-
-      #multi-select-table {
-        --row-h: 54px;
-      }
-
-      #multi-select-table tr {
-        block-size: var(--row-h);
-      }
-
-      #multi-select-table th.sd-table-cell,
-      #multi-select-table td.sd-table-cell {
-        block-size: var(--row-h);
-        min-block-size: 0;
-        padding-block: 0;
-        vertical-align: middle;
-      }
     </style>
     <section class="focus-visible:focus-outline">
       <table id="multi-select-table" class="sd-table sample-table w-full" aria-label="Multi Select Table">
         <thead>
-          <tr class="h-[54px]">
-            <th class="sd-table-cell sd-table-cell--bg-white" scope="col">
-              <sd-checkbox class="hide-label" id="select-all" size="sm" indeterminate>Select all</sd-checkbox>
+          <tr class="">
+            <th class="sd-table-cell sd-table-cell--bg-white text-center p-4 text-sm leading-none" scope="col">
+              <sd-checkbox class="hide-label block mx-auto" id="select-all" size="sm" indeterminate
+                >Select all</sd-checkbox
+              >
             </th>
-            <th class="sd-table-cell sd-table-cell--bg-white" scope="col">Name</th>
-            <th class="sd-table-cell sd-table-cell--bg-white" scope="col">ISIN</th>
-            <th class="sd-table-cell sd-table-cell--bg-white" scope="col">Fund type</th>
-            <th class="sd-table-cell sd-table-cell--bg-white" scope="col">Date</th>
-            <th class="sd-table-cell sd-table-cell--bg-white" scope="col">File type</th>
+            <th class="sd-table-cell sd-table-cell--bg-white p-4 text-sm leading-none" scope="col">Name</th>
+            <th class="sd-table-cell sd-table-cell--bg-white p-4 text-sm leading-none" scope="col">ISIN</th>
+            <th class="sd-table-cell sd-table-cell--bg-white p-4 text-sm leading-none" scope="col">Fund type</th>
+            <th class="sd-table-cell sd-table-cell--bg-white p-4 text-sm leading-none" scope="col">Date</th>
+            <th class="sd-table-cell sd-table-cell--bg-white p-4 text-sm leading-none" scope="col">File type</th>
           </tr>
         </thead>
         <tbody class="selectable-rows">
-          <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm">Select PrivatFonds: Flexibel</sd-checkbox>
+          <tr class="leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+              <sd-checkbox class="hide-label block mx-auto" size="sm">Select PrivatFonds: Flexibel</sd-checkbox>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <sd-link href="javascript:void(0)">PrivatFonds: Flexibel</sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">DE000A0Q2H14</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">DE000A0Q2H14</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Mixed funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <button
                 class="sd-interactive sd-interactive--reset items-center"
                 title="Preview PrivatFonds: Flexibel PDF"
@@ -1122,16 +1108,18 @@ export const multiSelectTable = {
             </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm" checked>Select PrivatFonds: Flexibel pro</sd-checkbox>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+              <sd-checkbox class="hide-label block mx-auto" size="sm" checked
+                >Select PrivatFonds: Flexibel pro</sd-checkbox
+              >
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <sd-link href="javascript:void(0)">PrivatFonds: Flexibel pro</sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">DE000A0RPAL7</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Value-protected funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">DE000A0RPAL7</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Value-protected funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <button class="sd-interactive sd-interactive--reset" title="Preview PrivatFonds: Flexibel PDF">
                 <sd-icon
                   class="w-6 h-6 px-4"
@@ -1142,16 +1130,18 @@ export const multiSelectTable = {
             </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm" checked>Select PrivatFonds: Konsequent</sd-checkbox>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+              <sd-checkbox class="hide-label block mx-auto" size="sm" checked
+                >Select PrivatFonds: Konsequent</sd-checkbox
+              >
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <sd-link href="javascript:void(0)">PrivatFonds: Konsequent</sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">LU0493492200</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Value-protected funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">LU0493492200</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Value-protected funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <button class="sd-interactive sd-interactive--reset" title="Preview PrivatFonds: Konsequent PDF">
                 <sd-icon
                   class="w-6 h-6 px-4"
@@ -1162,16 +1152,16 @@ export const multiSelectTable = {
             </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm">Select PrivatFonds: Konsequent pro</sd-checkbox>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+              <sd-checkbox class="hide-label block mx-auto" size="sm">Select PrivatFonds: Konsequent pro</sd-checkbox>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <sd-link href="javascript:void(0)">PrivatFonds: Konsequent pro</sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">LU0493584741</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Value-protected funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">LU0493584741</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Value-protected funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <button class="sd-interactive sd-interactive--reset" title="Preview PrivatFonds: Konsequent pro PDF">
                 <sd-icon
                   class="w-6 h-6 px-4"
@@ -1182,16 +1172,16 @@ export const multiSelectTable = {
             </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm">Select PrivatFonds: Kontrolliert</sd-checkbox>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+              <sd-checkbox class="hide-label block mx-auto" size="sm">Select PrivatFonds: Kontrolliert</sd-checkbox>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <sd-link href="javascript:void(0)">PrivatFonds: Kontrolliert</sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">DE000A0RPAM5</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">DE000A0RPAM5</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Mixed funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <button class="sd-interactive sd-interactive--reset" title="Preview PrivatFonds: Kontrolliert PDF">
                 <sd-icon
                   class="w-6 h-6 px-4"
@@ -1202,16 +1192,16 @@ export const multiSelectTable = {
             </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm">Select PrivatFonds: Kontrolliert pro</sd-checkbox>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+              <sd-checkbox class="hide-label block mx-auto" size="sm">Select PrivatFonds: Kontrolliert pro</sd-checkbox>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <sd-link href="javascript:void(0)">PrivatFonds: Kontrolliert pro</sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">DE000A0RPAN3</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">DE000A0RPAN3</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Mixed funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <button class="sd-interactive sd-interactive--reset" title="Preview PrivatFonds: Kontrolliert pro PDF">
                 <sd-icon
                   class="w-6 h-6 px-4"
@@ -1222,16 +1212,18 @@ export const multiSelectTable = {
             </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm" checked>Select PrivatFonds: Nachhaltig</sd-checkbox>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+              <sd-checkbox class="hide-label block mx-auto" size="sm" checked
+                >Select PrivatFonds: Nachhaltig</sd-checkbox
+              >
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <sd-link href="javascript:void(0)">PrivatFonds: Nachhaltig</sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">LU1900195949</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">LU1900195949</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Mixed funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <button class="sd-interactive sd-interactive--reset" title="Preview PrivatFonds: Nachhaltig PDF">
                 <sd-icon
                   class="w-6 h-6 px-4"
@@ -1242,16 +1234,16 @@ export const multiSelectTable = {
             </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm">Select Uni21.Jahrhundert -net-</sd-checkbox>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+              <sd-checkbox class="hide-label block mx-auto" size="sm">Select Uni21.Jahrhundert -net-</sd-checkbox>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <sd-link href="javascript:void(0)"> Uni21.Jahrhundert -net- </sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">DE0009757872</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Stock funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">DE0009757872</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Stock funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <button class="sd-interactive sd-interactive--reset" title="Preview Uni21.Jahrhundert -net- PDF">
                 <sd-icon
                   class="w-6 h-6 px-4"
@@ -1262,16 +1254,16 @@ export const multiSelectTable = {
             </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm">Select UniAbsoluterErtrag -net- A</sd-checkbox>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+              <sd-checkbox class="hide-label block mx-auto" size="sm">Select UniAbsoluterErtrag -net- A</sd-checkbox>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <sd-link href="javascript:void(0)">UniAbsoluterErtrag -net- A</sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">LU1206679554</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">LU1206679554</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Mixed funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <button class="sd-interactive sd-interactive--reset" title="Preview UniAbsoluterErtrag -net- A PDF">
                 <sd-icon
                   class="w-6 h-6 px-4"
@@ -1282,16 +1274,16 @@ export const multiSelectTable = {
             </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <sd-checkbox class="hide-label" size="sm">Select UniAbsoluterErtrag A</sd-checkbox>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+              <sd-checkbox class="hide-label block mx-auto" size="sm">Select UniAbsoluterErtrag A</sd-checkbox>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <sd-link href="javascript:void(0)">UniAbsoluterErtrag A</sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">LU1206678580</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">Mixed funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent">
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">LU1206678580</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Mixed funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
               <button class="sd-interactive sd-interactive--reset" title="Preview UniAbsoluterErtrag A PDF">
                 <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="Preview UniAbsoluterErtrag A PDF"></sd-icon>
               </button>
@@ -1320,7 +1312,7 @@ export const multiSelectTable = {
         const checkboxes = tbody.querySelectorAll('sd-checkbox');
         let count = 0;
         checkboxes.forEach(cb => {
-          if (cb.hasAttribute('checked')) count++;
+          if (cb.checked) count++;
         });
         return { checked: count, total: checkboxes.length };
       }
@@ -1340,24 +1332,47 @@ export const multiSelectTable = {
         if (selectAllCheckbox) {
           const isAllChecked = checked === total;
           const isPartiallyChecked = checked > 0 && checked < total;
-          selectAllCheckbox.toggleAttribute('checked', isAllChecked);
-          selectAllCheckbox.toggleAttribute('indeterminate', isPartiallyChecked);
+          selectAllCheckbox.checked = isAllChecked;
+          selectAllCheckbox.indeterminate = isPartiallyChecked;
         }
       }
 
+      function handleCheckboxToggle(checkbox) {
+        if (checkbox && tbody.contains(checkbox)) {
+          checkbox.checked = !checkbox.checked;
+          updateUI();
+        }
+      }
+
+      function handleSelectAllToggle() {
+        const checkboxes = tbody.querySelectorAll('sd-checkbox');
+        const shouldCheck = !selectAllCheckbox.checked;
+        checkboxes.forEach(cb => (cb.checked = shouldCheck));
+        updateUI();
+      }
+
+      // Handle row checkbox interactions (click and keyboard)
       tbody?.addEventListener('click', e => {
         const checkbox = e.target.closest('sd-checkbox');
-        if (checkbox && tbody.contains(checkbox)) {
-          checkbox.toggleAttribute('checked');
-          updateUI();
+        handleCheckboxToggle(checkbox);
+      });
+
+      tbody?.addEventListener('keydown', e => {
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault(); // Prevent page scroll on space
+          const checkbox = e.target.closest('sd-checkbox');
+          handleCheckboxToggle(checkbox);
         }
       });
 
-      selectAllCheckbox?.addEventListener('click', () => {
-        const checkboxes = tbody.querySelectorAll('sd-checkbox');
-        const shouldCheck = !selectAllCheckbox.hasAttribute('checked');
-        checkboxes.forEach(cb => cb.toggleAttribute('checked', shouldCheck));
-        updateUI();
+      // Handle select-all checkbox interactions (click and keyboard)
+      selectAllCheckbox?.addEventListener('click', handleSelectAllToggle);
+
+      selectAllCheckbox?.addEventListener('keydown', e => {
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault(); // Prevent page scroll on space
+          handleSelectAllToggle();
+        }
       });
 
       updateUI();
