@@ -109,10 +109,10 @@ export default class SdRadioButton extends SolidElement {
             this.size === 'sm' ? 'text-sm' : 'text-base',
             this.checked && !this.disabled && !this.visuallyDisabled
               ? 'bg-primary text-white hover:bg-primary-500'
-              : (this.disabled || this.visuallyDisabled) && !this.checked
+              : !this.checked && (this.disabled || this.visuallyDisabled)
                 ? 'text-neutral-500 hover:cursor-not-allowed'
-                : (this.disabled || this.visuallyDisabled) && this.checked
-                  ? 'text-neutral-500 hover:cursor-not-allowed '
+                : this.checked && (this.disabled || this.visuallyDisabled)
+                  ? 'bg-neutral-400 text-white hover:cursor-not-allowed '
                   : 'bg-transparent text-primary border-primary hover:text-primary-500 cursor-pointer',
             hasDefaultSlot &&
               {
