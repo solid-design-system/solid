@@ -757,7 +757,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   async handleOpenChange() {
     if (this.open && (!this.disabled || !this.visuallyDisabled)) {
       // Reset the current option
-      if (!this.multiple) this.setCurrentOption(this.selectedOptions[0] || this.getFirstOption());
+      this.setCurrentOption(this.selectedOptions[0] || this.getFirstOption());
 
       // Show
       this.emit('sd-show');
