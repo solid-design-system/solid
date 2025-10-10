@@ -1071,222 +1071,243 @@ export const multiSelectTable = {
       <table id="multi-select-table" class="sd-table sample-table w-full" aria-label="Multi Select Table">
         <thead>
           <tr class="">
-            <th class="sd-table-cell sd-table-cell--bg-white text-center p-4 text-sm leading-none" scope="col">
+            <th class="sd-table-cell sd-table-cell--bg-white text-center text-sm leading-none" scope="col">
               <sd-checkbox class="hide-label block mx-auto" id="select-all" size="sm" indeterminate
                 >Select all</sd-checkbox
               >
             </th>
-            <th class="sd-table-cell sd-table-cell--bg-white p-4 text-sm leading-none" scope="col">Name</th>
-            <th class="sd-table-cell sd-table-cell--bg-white p-4 text-sm leading-none" scope="col">ISIN</th>
-            <th class="sd-table-cell sd-table-cell--bg-white p-4 text-sm leading-none" scope="col">Fund type</th>
-            <th class="sd-table-cell sd-table-cell--bg-white p-4 text-sm leading-none" scope="col">Date</th>
-            <th class="sd-table-cell sd-table-cell--bg-white p-4 text-sm leading-none" scope="col">File type</th>
+            <th class="sd-table-cell sd-table-cell--bg-white text-sm leading-none" scope="col">Name</th>
+            <th class="sd-table-cell sd-table-cell--bg-white text-sm leading-none" scope="col">ISIN</th>
+            <th class="sd-table-cell sd-table-cell--bg-white text-sm leading-none" scope="col">Fund type</th>
+            <th class="sd-table-cell sd-table-cell--bg-white text-sm leading-none" scope="col">Date</th>
+            <th class="sd-table-cell sd-table-cell--bg-white text-sm leading-none" scope="col">File type</th>
           </tr>
         </thead>
         <tbody class="selectable-rows">
           <tr class="leading-none">
-            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
               <sd-checkbox class="hide-label block mx-auto" size="sm">Select PrivatFonds: Flexibel</sd-checkbox>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-link href="javascript:void(0)">PrivatFonds: Flexibel</sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">DE000A0Q2H14</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Mixed funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
-              <button
-                class="sd-interactive sd-interactive--reset items-center"
-                title="Preview PrivatFonds: Flexibel PDF"
-              >
-                <sd-icon
-                  class="w-6 h-6 px-4"
-                  name="system/file-pdf"
-                  label="Preview PrivatFonds: Flexibel PDF"
-                ></sd-icon>
-              </button>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">DE000A0Q2H14</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">Mixed funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
+              <sd-tooltip content="Preview PrivatFonds: Flexibel PDF">
+                <button class="sd-interactive sd-interactive--reset items-center flex">
+                  <sd-icon
+                    class="w-6 h-6 px-4 text-sm"
+                    name="system/file-pdf"
+                    label="Preview PrivatFonds: Flexibel PDF"
+                  ></sd-icon>
+                </button>
+              </sd-tooltip>
             </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
               <sd-checkbox class="hide-label block mx-auto" size="sm" checked
                 >Select PrivatFonds: Flexibel pro</sd-checkbox
               >
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent  text-sm leading-none">
               <sd-link href="javascript:void(0)">PrivatFonds: Flexibel pro</sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">DE000A0RPAL7</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Value-protected funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
-              <button class="sd-interactive sd-interactive--reset" title="Preview PrivatFonds: Flexibel PDF">
-                <sd-icon
-                  class="w-6 h-6 px-4"
-                  name="system/file-pdf"
-                  label="Preview PrivatFonds: Flexibel PDF"
-                ></sd-icon>
-              </button>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">DE000A0RPAL7</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">Value-protected funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
+              <sd-tooltip content="Preview PrivatFonds: Flexibel pro PDF">
+                <button class="sd-interactive sd-interactive--reset">
+                  <sd-icon
+                    class="w-6 h-6 px-4"
+                    name="system/file-pdf"
+                    label="Preview PrivatFonds: Flexibel PDF"
+                  ></sd-icon>
+                </button>
+              </sd-tooltip>
             </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
               <sd-checkbox class="hide-label block mx-auto" size="sm" checked
                 >Select PrivatFonds: Konsequent</sd-checkbox
               >
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-link href="javascript:void(0)">PrivatFonds: Konsequent</sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">LU0493492200</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Value-protected funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
-              <button class="sd-interactive sd-interactive--reset" title="Preview PrivatFonds: Konsequent PDF">
-                <sd-icon
-                  class="w-6 h-6 px-4"
-                  name="system/file-pdf"
-                  label="Preview PrivatFonds: Konsequent PDF"
-                ></sd-icon>
-              </button>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">LU0493492200</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">Value-protected funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
+              <sd-tooltip content="Preview PrivatFonds: Konsequent PDF">
+                <button class="sd-interactive sd-interactive--reset">
+                  <sd-icon
+                    class="w-6 h-6 px-4"
+                    name="system/file-pdf"
+                    label="Preview PrivatFonds: Konsequent PDF"
+                  ></sd-icon>
+                </button>
+              </sd-tooltip>
             </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
               <sd-checkbox class="hide-label block mx-auto" size="sm">Select PrivatFonds: Konsequent pro</sd-checkbox>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-link href="javascript:void(0)">PrivatFonds: Konsequent pro</sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">LU0493584741</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Value-protected funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
-              <button class="sd-interactive sd-interactive--reset" title="Preview PrivatFonds: Konsequent pro PDF">
-                <sd-icon
-                  class="w-6 h-6 px-4"
-                  name="system/file-pdf"
-                  label="Preview PrivatFonds: Konsequent pro PDF"
-                ></sd-icon>
-              </button>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">LU0493584741</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">Value-protected funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
+              <sd-tooltip content="Preview PrivatFonds: Konsequent pro PDF">
+                <button class="sd-interactive sd-interactive--reset">
+                  <sd-icon
+                    class="w-6 h-6 px-4"
+                    name="system/file-pdf"
+                    label="Preview PrivatFonds: Konsequent pro PDF"
+                  ></sd-icon>
+                </button>
+              </sd-tooltip>
             </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
               <sd-checkbox class="hide-label block mx-auto" size="sm">Select PrivatFonds: Kontrolliert</sd-checkbox>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-link href="javascript:void(0)">PrivatFonds: Kontrolliert</sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">DE000A0RPAM5</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Mixed funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
-              <button class="sd-interactive sd-interactive--reset" title="Preview PrivatFonds: Kontrolliert PDF">
-                <sd-icon
-                  class="w-6 h-6 px-4"
-                  name="system/file-pdf"
-                  label="Preview PrivatFonds: Kontrolliert PDF"
-                ></sd-icon>
-              </button>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">DE000A0RPAM5</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">Mixed funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
+              <sd-tooltip content="Preview PrivatFonds: Kontrolliert PDF">
+                <button class="sd-interactive sd-interactive--reset">
+                  <sd-icon
+                    class="w-6 h-6 px-4"
+                    name="system/file-pdf"
+                    label="Preview PrivatFonds: Kontrolliert PDF"
+                  ></sd-icon>
+                </button>
+              </sd-tooltip>
             </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
               <sd-checkbox class="hide-label block mx-auto" size="sm">Select PrivatFonds: Kontrolliert pro</sd-checkbox>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-link href="javascript:void(0)">PrivatFonds: Kontrolliert pro</sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">DE000A0RPAN3</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Mixed funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
-              <button class="sd-interactive sd-interactive--reset" title="Preview PrivatFonds: Kontrolliert pro PDF">
-                <sd-icon
-                  class="w-6 h-6 px-4"
-                  name="system/file-pdf"
-                  label="Preview PrivatFonds: Kontrolliert pro PDF"
-                ></sd-icon>
-              </button>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">DE000A0RPAN3</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">Mixed funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
+              <sd-tooltip content="Preview PrivatFonds: Kontrolliert pro PDF">
+                <button class="sd-interactive sd-interactive--reset">
+                  <sd-icon
+                    class="w-6 h-6 px-4"
+                    name="system/file-pdf"
+                    label="Preview PrivatFonds: Kontrolliert pro PDF"
+                  ></sd-icon>
+                </button>
+              </sd-tooltip>
             </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
               <sd-checkbox class="hide-label block mx-auto" size="sm" checked
                 >Select PrivatFonds: Nachhaltig</sd-checkbox
               >
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-link href="javascript:void(0)">PrivatFonds: Nachhaltig</sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">LU1900195949</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Mixed funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
-              <button class="sd-interactive sd-interactive--reset" title="Preview PrivatFonds: Nachhaltig PDF">
-                <sd-icon
-                  class="w-6 h-6 px-4"
-                  name="system/file-pdf"
-                  label="Preview PrivatFonds: Nachhaltig PDF"
-                ></sd-icon>
-              </button>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">LU1900195949</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">Mixed funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
+              <sd-tooltip content="Preview PrivatFonds: Nachhaltig PDF">
+                <button class="sd-interactive sd-interactive--reset">
+                  <sd-icon
+                    class="w-6 h-6 px-4"
+                    name="system/file-pdf"
+                    label="Preview PrivatFonds: Nachhaltig PDF"
+                  ></sd-icon>
+                </button>
+              </sd-tooltip>
             </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
               <sd-checkbox class="hide-label block mx-auto" size="sm">Select Uni21.Jahrhundert -net-</sd-checkbox>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-link href="javascript:void(0)"> Uni21.Jahrhundert -net- </sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">DE0009757872</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Stock funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
-              <button class="sd-interactive sd-interactive--reset" title="Preview Uni21.Jahrhundert -net- PDF">
-                <sd-icon
-                  class="w-6 h-6 px-4"
-                  name="system/file-pdf"
-                  label="Preview Uni21.Jahrhundert -net- PDF"
-                ></sd-icon>
-              </button>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">DE0009757872</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">Stock funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
+              <sd-tooltip content="Preview Uni21.Jahrhundert -net- PDF">
+                <button class="sd-interactive sd-interactive--reset">
+                  <sd-icon
+                    class="w-6 h-6 px-4"
+                    name="system/file-pdf"
+                    label="Preview Uni21.Jahrhundert -net- PDF"
+                  ></sd-icon>
+                </button>
+              </sd-tooltip>
             </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
               <sd-checkbox class="hide-label block mx-auto" size="sm">Select UniAbsoluterErtrag -net- A</sd-checkbox>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-link href="javascript:void(0)">UniAbsoluterErtrag -net- A</sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">LU1206679554</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Mixed funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
-              <button class="sd-interactive sd-interactive--reset" title="Preview UniAbsoluterErtrag -net- A PDF">
-                <sd-icon
-                  class="w-6 h-6 px-4"
-                  name="system/file-pdf"
-                  label="Preview UniAbsoluterErtrag -net- A PDF"
-                ></sd-icon>
-              </button>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">LU1206679554</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">Mixed funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
+              <sd-tooltip content="Preview UniAbsoluterErtrag -net- A PDF">
+                <button class="sd-interactive sd-interactive--reset">
+                  <sd-icon
+                    class="w-6 h-6 px-4"
+                    name="system/file-pdf"
+                    label="Preview UniAbsoluterErtrag -net- A PDF"
+                  ></sd-icon>
+                </button>
+              </sd-tooltip>
             </td>
           </tr>
           <tr>
-            <td class="sd-table-cell sd-table-cell--bg-transparent text-center p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
               <sd-checkbox class="hide-label block mx-auto" size="sm">Select UniAbsoluterErtrag A</sd-checkbox>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-link href="javascript:void(0)">UniAbsoluterErtrag A</sd-link>
             </td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">LU1206678580</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">Mixed funds</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">23.01.2025</td>
-            <td class="sd-table-cell sd-table-cell--bg-transparent p-4 text-sm leading-none">
-              <button class="sd-interactive sd-interactive--reset" title="Preview UniAbsoluterErtrag A PDF">
-                <sd-icon class="w-6 h-6 px-4" name="system/file-pdf" label="Preview UniAbsoluterErtrag A PDF"></sd-icon>
-              </button>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">LU1206678580</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">Mixed funds</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">23.01.2025</td>
+            <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
+              <sd-tooltip content="Preview UniAbsoluterErtrag A PDF">
+                <button class="sd-interactive sd-interactive--reset">
+                  <sd-icon
+                    class="w-6 h-6 px-4"
+                    name="system/file-pdf"
+                    label="Preview UniAbsoluterErtrag A PDF"
+                  ></sd-icon>
+                </button>
+              </sd-tooltip>
             </td>
           </tr>
         </tbody>
