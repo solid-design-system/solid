@@ -6,12 +6,19 @@ import { OUTPUT_DIR } from '../config.js';
 import { writeFileSync } from 'fs';
 import path from 'path';
 
+const CORE_COLLECTION = 'UI Core';
+
 export class FigmaClient extends FigmaBase {
   constructor(name, dictionary, legacy) {
     super(dictionary);
 
     this.name = name;
     this.legacy = legacy;
+    this.collections = [CORE_COLLECTION, 'Theme'];
+  }
+
+  #isCoreCollection(name) {
+    return name === CORE_COLLECTION;
   }
 
   #getThemes() {
@@ -19,10 +26,20 @@ export class FigmaClient extends FigmaBase {
 
     Object.values(this.variables)
       .map(variable => new FigmaVariable(variable, this.dictionary))
+      .filter(variable => this.collections.includes(variable.collection.name))
       .forEach(variable => {
         const transformed = variable.resolve();
+
         transformed.modes.forEach(mode => {
           if (!themes[mode.name]) themes[mode.name] = {};
+
+          if (
+            !this.#isCoreCollection(mode.name) &&
+            !transformed.name.startsWith('utilities') &&
+            !transformed.name.startsWith('components')
+          ) {
+            return;
+          }
 
           setNestedProperty(themes[mode.name], transformed.name.split('/'), {
             description: transformed.description || undefined,
@@ -46,7 +63,7 @@ export class FigmaClient extends FigmaBase {
     this.processed = Object.entries(themes)
       .map(([name, tokens]) => ({
         name,
-        tokens: { core: { ...legacy.core, ...core }, ...legacy.tokens, ...tokens }
+        tokens: { core: { ...legacy.core, ...core }, ...tokens }
       }))
       .map(theme => {
         theme.tokens.outline = theme.tokens.border;

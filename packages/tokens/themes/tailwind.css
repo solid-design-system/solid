@@ -9,755 +9,198 @@
 @custom-variant focus (&:focus:not([disabled]));
 
 @theme inline {
-  --animate-bounce-once: bounce-once var(--sd-duration-medium, 300ms) ease-in-out;
-  --animate-grow: grow linear;
-  --animate-loader-current: wave 1.3s infinite, loader-color-current 2.6s infinite;
-  --animate-loader-primary: wave 1.3s infinite, loader-color-primary 2.6s infinite;
-  --animate-loader-white: wave 1.3s infinite, loader-color-white 2.6s infinite;
-  --aspect-16\/10: var(--sd-aspect-16\/10);
-  --aspect-21\/9: var(--sd-aspect-21\/9);
-  --aspect-2\/1: var(--sd-aspect-2\/1);
-  --aspect-3\/2: var(--sd-aspect-3\/2);
-  --aspect-3\/4: var(--sd-aspect-3\/4);
-  --aspect-4\/3: var(--sd-aspect-4\/3);
-  --aspect-4\/5: var(--sd-aspect-4\/5);
-  --aspect-5\/4: var(--sd-aspect-5\/4);
-  --aspect-6\/5: var(--sd-aspect-6\/5);
-  --aspect-golden-ratio: var(--sd-aspect-golden-ratio);
-  --aspect-square: var(--sd-aspect-square);
-  --aspect-video: var(--sd-aspect-video);
-  --background-color-accent-300: var(--sd-background-color-accent-300, var(--sd-color-accent-300));
-  --background-color-accent-500: var(--sd-background-color-accent-500, var(--sd-color-accent-500));
-  --background-color-accent-550: var(--sd-background-color-accent-550, var(--sd-color-accent-550));
-  --background-color-accent-700: var(--sd-background-color-accent-700, var(--sd-color-accent-700));
-  --background-color-accent: var(--sd-background-color-accent, var(--sd-color-accent));
-  --background-color-error-400: var(--sd-background-color-error-400, var(--sd-color-error-400));
-  --background-color-error: var(--sd-background-color-error, var(--sd-color-error));
-  --background-color-info: var(--sd-background-color-info, var(--sd-color-info));
-  --background-color-neutral-100: var(--sd-background-color-neutral-100, var(--sd-color-neutral-100));
-  --background-color-neutral-200: var(--sd-background-color-neutral-200, var(--sd-color-neutral-200));
-  --background-color-neutral-300: var(--sd-background-color-neutral-300, var(--sd-color-neutral-300));
-  --background-color-neutral-400: var(--sd-background-color-neutral-400, var(--sd-color-neutral-400));
-  --background-color-neutral-500: var(--sd-background-color-neutral-500, var(--sd-color-neutral-500));
-  --background-color-neutral-600: var(--sd-background-color-neutral-600, var(--sd-color-neutral-600));
-  --background-color-neutral-800: var(--sd-background-color-neutral-800, var(--sd-color-neutral-800));
-  --background-color-primary-100: var(--sd-background-color-primary-100, var(--sd-color-primary-100));
-  --background-color-primary-200: var(--sd-background-color-primary-200, var(--sd-color-primary-200));
-  --background-color-primary-300: var(--sd-background-color-primary-300, var(--sd-color-primary-300));
-  --background-color-primary-500: var(--sd-background-color-primary-500, var(--sd-color-primary-500));
-  --background-color-primary-800-constant: var(--sd-background-color-primary-800-constant, var(--sd-color-primary-800-constant));
-  --background-color-primary-800: var(--sd-background-color-primary-800, var(--sd-color-primary-800));
-  --background-color-primary-constant: var(--sd-background-color-primary-constant, var(--sd-color-primary-constant));
-  --background-color-primary: var(--sd-background-color-primary, var(--sd-color-primary));
-  --background-color-success: var(--sd-background-color-success, var(--sd-color-success));
-  --background-color-transparent-neutral-100-80: var(--sd-background-color-transparent-neutral-100-80, var(--sd-color-neutral-100-80));
-  --background-color-transparent-neutral-100-90: var(--sd-background-color-transparent-neutral-100-90, var(--sd-color-neutral-100-90));
-  --background-color-transparent-primary-100-80: var(--sd-background-color-transparent-primary-100-80, var(--sd-color-primary-100-80));
-  --background-color-transparent-primary-100-90: var(--sd-background-color-transparent-primary-100-90, var(--sd-color-primary-100-90));
-  --background-color-transparent-primary-10: var(--sd-background-color-transparent-primary-10, var(--sd-color-primary-10));
-  --background-color-transparent-primary-30: var(--sd-background-color-transparent-primary-30, var(--sd-color-primary-30));
-  --background-color-transparent-primary-800-90: var(--sd-background-color-transparent-primary-800-90, var(--sd-color-primary-800-90));
-  --background-color-transparent-primary-80: var(--sd-background-color-transparent-primary-80, var(--sd-color-primary-80));
-  --background-color-transparent-primary-90: var(--sd-background-color-transparent-primary-90, var(--sd-color-primary-90));
-  --background-color-transparent-white-20: var(--sd-background-color-transparent-white-20, var(--sd-color-white-20));
-  --background-color-transparent-white-80: var(--sd-background-color-transparent-white-80, var(--sd-color-white-80));
-  --background-color-transparent-white-90: var(--sd-background-color-transparent-white-90, var(--sd-color-white-90));
-  --background-color-warning: var(--sd-background-color-warning, var(--sd-color-warning));
-  --background-color-white-constant: var(--sd-background-color-white-constant, var(--sd-color-white-constant));
-  --background-color-white: var(--sd-background-color-white, var(--sd-color-white));
+  --background-color-accent-300: var(--sd-color-background-accent-300, var(--sd-color-accent-300));
+  --background-color-accent-500: var(--sd-color-background-accent-500, var(--sd-color-accent-500));
+  --background-color-accent-550: var(--sd-color-background-accent-550, var(--sd-color-accent-550));
+  --background-color-accent-700: var(--sd-color-background-accent-700, var(--sd-color-accent-700));
+  --background-color-accent: var(--sd-color-background-accent, var(--sd-color-accent));
+  --background-color-error-400: var(--sd-color-background-error-400, var(--sd-color-error-400));
+  --background-color-error: var(--sd-color-background-error, var(--sd-color-error));
+  --background-color-info: var(--sd-color-background-info, var(--sd-color-info));
+  --background-color-neutral-100: var(--sd-color-background-neutral-100, var(--sd-color-neutral-100));
+  --background-color-neutral-200: var(--sd-color-background-neutral-200, var(--sd-color-neutral-200));
+  --background-color-neutral-300: var(--sd-color-background-neutral-300, var(--sd-color-neutral-300));
+  --background-color-neutral-400: var(--sd-color-background-neutral-400, var(--sd-color-neutral-400));
+  --background-color-neutral-500: var(--sd-color-background-neutral-500, var(--sd-color-neutral-500));
+  --background-color-neutral-600: var(--sd-color-background-neutral-600, var(--sd-color-neutral-600));
+  --background-color-neutral-800: var(--sd-color-background-neutral-800, var(--sd-color-neutral-800));
+  --background-color-primary-100: var(--sd-color-background-primary-100, var(--sd-color-primary-100));
+  --background-color-primary-200: var(--sd-color-background-primary-200, var(--sd-color-primary-200));
+  --background-color-primary-300: var(--sd-color-background-primary-300, var(--sd-color-primary-300));
+  --background-color-primary-500: var(--sd-color-background-primary-500, var(--sd-color-primary-500));
+  --background-color-primary-800-constant: var(--sd-color-background-primary-800-constant, var(--sd-color-primary-800-constant));
+  --background-color-primary-800: var(--sd-color-background-primary-800, var(--sd-color-primary-800));
+  --background-color-primary-constant: var(--sd-color-background-primary-constant, var(--sd-color-primary-constant));
+  --background-color-primary: var(--sd-color-background-primary, var(--sd-color-primary));
+  --background-color-success: var(--sd-color-background-success, var(--sd-color-success));
+  --background-color-transparent-neutral-100-80: var(--sd-color-background-transparent-neutral-100-80, var(--sd-color-background-transparent-neutral-100-80));
+  --background-color-transparent-neutral-100-90: var(--sd-color-background-transparent-neutral-100-90, var(--sd-color-background-transparent-neutral-100-90));
+  --background-color-transparent-primary-100-80: var(--sd-color-background-transparent-primary-100-80, var(--sd-color-background-transparent-primary-100-80));
+  --background-color-transparent-primary-100-90: var(--sd-color-background-transparent-primary-100-90, var(--sd-color-background-transparent-primary-100-90));
+  --background-color-transparent-primary-10: var(--sd-color-background-transparent-primary-10, var(--sd-color-background-transparent-primary-10));
+  --background-color-transparent-primary-30: var(--sd-color-background-transparent-primary-30, var(--sd-color-background-transparent-primary-30));
+  --background-color-transparent-primary-800-90: var(--sd-color-background-transparent-primary-800-90, var(--sd-color-background-transparent-primary-800-90));
+  --background-color-transparent-primary-80: var(--sd-color-background-transparent-primary-80, var(--sd-color-background-transparent-primary-80));
+  --background-color-transparent-primary-90: var(--sd-color-background-transparent-primary-90, var(--sd-color-background-transparent-primary-90));
+  --background-color-transparent-white-20: var(--sd-color-background-transparent-white-20, var(--sd-color-background-transparent-white-20));
+  --background-color-transparent-white-80: var(--sd-color-background-transparent-white-80, var(--sd-color-background-transparent-white-80));
+  --background-color-transparent-white-90: var(--sd-color-background-transparent-white-90, var(--sd-color-background-transparent-white-90));
+  --background-color-warning: var(--sd-color-background-warning, var(--sd-color-warning));
+  --background-color-white: var(--sd-color-background-white, var(--sd-color-white));
+  --border-color-accent-550: var(--sd-color-border-accent-550, var(--sd-color-accent-550));
+  --border-color-accent: var(--sd-color-border-accent, var(--sd-color-accent));
+  --border-color-error-400: var(--sd-color-border-error-400, var(--sd-color-error-400));
+  --border-color-error: var(--sd-color-border-error, var(--sd-color-error));
+  --border-color-neutral-400: var(--sd-color-border-neutral-400, var(--sd-color-neutral-400));
+  --border-color-neutral-500: var(--sd-color-border-neutral-500, var(--sd-color-neutral-500));
+  --border-color-neutral-600: var(--sd-color-border-neutral-600, var(--sd-color-neutral-600));
+  --border-color-neutral-800: var(--sd-color-border-neutral-800, var(--sd-color-neutral-800));
+  --border-color-null: var(--sd-color-border-null, var(--sd-color-null));
+  --border-color-primary-100: var(--sd-color-border-primary-100, var(--sd-color-primary-100));
+  --border-color-primary-200: var(--sd-color-border-primary-200, var(--sd-color-primary-200));
+  --border-color-primary-400: var(--sd-color-border-primary-400, var(--sd-color-primary-400));
+  --border-color-primary-500: var(--sd-color-border-primary-500, var(--sd-color-primary-500));
+  --border-color-primary-800: var(--sd-color-border-primary-800, var(--sd-color-primary-800));
+  --border-color-primary: var(--sd-color-border-primary, var(--sd-color-primary));
+  --border-color-success: var(--sd-color-border-success, var(--sd-color-success));
+  --border-color-white: var(--sd-color-border-white, var(--sd-color-white));
+  --color-accent-100: var(--sd-color-accent-100, var(--sd-color-accent-100));
+  --color-accent-200: var(--sd-color-accent-200, var(--sd-color-accent-200));
+  --color-accent-300: var(--sd-color-accent-300, var(--sd-color-accent-300));
+  --color-accent-400: var(--sd-color-accent-400, var(--sd-color-accent-400));
+  --color-accent-500: var(--sd-color-accent-500, var(--sd-color-accent-500));
+  --color-accent-550: var(--sd-color-accent-550, var(--sd-color-accent-550));
+  --color-accent-600: var(--sd-color-accent-600, var(--sd-color-accent-600));
+  --color-accent-700: var(--sd-color-accent-700, var(--sd-color-accent-700));
+  --color-accent-750: var(--sd-color-accent-750, var(--sd-color-accent-750));
+  --color-accent-800: var(--sd-color-accent-800, var(--sd-color-accent-800));
+  --color-accent: var(--sd-color-accent, var(--sd-color-accent));
+  --color-black-constant: var(--sd-color-black-constant, var(--sd-color-black-constant));
+  --color-black: var(--sd-color-black, var(--sd-color-black));
+  --color-error-300: var(--sd-color-error-300, var(--sd-color-error-300));
+  --color-error-400: var(--sd-color-error-400, var(--sd-color-error-400));
+  --color-error: var(--sd-color-error, var(--sd-color-error));
+  --color-info: var(--sd-color-info, var(--sd-color-info));
+  --color-neutral-100: var(--sd-color-neutral-100, var(--sd-color-neutral-100));
+  --color-neutral-200: var(--sd-color-neutral-200, var(--sd-color-neutral-200));
+  --color-neutral-300: var(--sd-color-neutral-300, var(--sd-color-neutral-300));
+  --color-neutral-400: var(--sd-color-neutral-400, var(--sd-color-neutral-400));
+  --color-neutral-500: var(--sd-color-neutral-500, var(--sd-color-neutral-500));
+  --color-neutral-600: var(--sd-color-neutral-600, var(--sd-color-neutral-600));
+  --color-neutral-700: var(--sd-color-neutral-700, var(--sd-color-neutral-700));
+  --color-neutral-800: var(--sd-color-neutral-800, var(--sd-color-neutral-800));
+  --color-primary-100: var(--sd-color-primary-100, var(--sd-color-primary-100));
+  --color-primary-200: var(--sd-color-primary-200, var(--sd-color-primary-200));
+  --color-primary-300: var(--sd-color-primary-300, var(--sd-color-primary-300));
+  --color-primary-400: var(--sd-color-primary-400, var(--sd-color-primary-400));
+  --color-primary-500: var(--sd-color-primary-500, var(--sd-color-primary-500));
+  --color-primary-600: var(--sd-color-primary-600, var(--sd-color-primary-600));
+  --color-primary-700: var(--sd-color-primary-700, var(--sd-color-primary-700));
+  --color-primary-750: var(--sd-color-primary-750, var(--sd-color-primary-750));
+  --color-primary-800: var(--sd-color-primary-800, var(--sd-color-primary-800));
+  --color-primary-900: var(--sd-color-primary-900, var(--sd-color-primary-900));
+  --color-primary: var(--sd-color-primary, var(--sd-color-primary));
   --color-risk-high: var(--sd-color-risk-high, var(--sd-color-risk-high));
   --color-risk-increased: var(--sd-color-risk-increased, var(--sd-color-risk-increased));
   --color-risk-low: var(--sd-color-risk-low, var(--sd-color-risk-low));
   --color-risk-moderate: var(--sd-color-risk-moderate, var(--sd-color-risk-moderate));
   --color-risk-veryhigh: var(--sd-color-risk-veryhigh, var(--sd-color-risk-veryhigh));
-  --drop-shadow-sm: var(--sd-shadow-sm, 0.5px 0.5px 1.5px rgba(81, 81, 81, 100));
-  --drop-shadow: var(--sd-shadow, 0 1px 3px rgba(81, 81, 81, 75));
-  --fill-accent-550: var(--sd-fill-accent-550, var(--sd-color-accent-550));
-  --fill-accent: var(--sd-fill-accent, var(--sd-color-accent));
-  --fill-error-400: var(--sd-fill-error-400, var(--sd-color-error-400));
-  --fill-error: var(--sd-fill-error, var(--sd-color-error));
-  --fill-neutral-500: var(--sd-fill-neutral-500, var(--sd-color-neutral-500));
-  --fill-neutral-600: var(--sd-fill-neutral-600, var(--sd-color-neutral-600));
-  --fill-neutral-800: var(--sd-fill-neutral-800, var(--sd-color-neutral-800));
-  --fill-primary-100: var(--sd-fill-primary-100, var(--sd-color-primary-100));
-  --fill-primary-200: var(--sd-fill-primary-200, var(--sd-color-primary-200));
-  --fill-primary-400: var(--sd-fill-primary-400, var(--sd-color-primary-400));
-  --fill-primary-500: var(--sd-fill-primary-500, var(--sd-color-primary-500));
-  --fill-primary-800: var(--sd-fill-primary-800, var(--sd-color-primary-800));
-  --fill-primary: var(--sd-fill-primary, var(--sd-color-primary));
-  --fill-risk-high: var(--sd-fill-risk-high, var(--sd-color-risk-high));
-  --fill-risk-increased: var(--sd-fill-risk-increased, var(--sd-color-risk-increased));
-  --fill-risk-low: var(--sd-fill-risk-low, var(--sd-color-risk-low));
-  --fill-risk-moderate: var(--sd-fill-risk-moderate, var(--sd-color-risk-moderate));
-  --fill-risk-veryhigh: var(--sd-fill-risk-veryhigh, var(--sd-color-risk-veryhigh));
-  --fill-success: var(--sd-fill-success, var(--sd-color-success));
-  --fill-white-constant: var(--sd-fill-white-constant, var(--sd-color-white-constant));
-  --fill-white: var(--sd-fill-white, var(--sd-color-white));
-  --font-weight-bold: var(--sd-font-weight-bold);
-  --font-weight-normal: var(--sd-font-weight-normal);
-  --opacity-0: var(--sd-opacity-0);
-  --opacity-100: var(--sd-opacity-100);
-  --opacity-10: var(--sd-opacity-10);
-  --opacity-20: var(--sd-opacity-20);
-  --opacity-30: var(--sd-opacity-30);
-  --opacity-50: var(--sd-opacity-50);
-  --opacity-55: var(--sd-opacity-55);
-  --opacity-5: var(--sd-opacity-5);
-  --opacity-60: var(--sd-opacity-60);
-  --opacity-70: var(--sd-opacity-70);
-  --opacity-75: var(--sd-opacity-75);
-  --opacity-80: var(--sd-opacity-80);
-  --opacity-85: var(--sd-opacity-85);
-  --opacity-90: var(--sd-opacity-90);
-  --radius-default: var(--sd-radius-default);
-  --radius-full: var(--sd-radius-full);
-  --radius-lg: var(--sd-radius-lg);
-  --radius-md: var(--sd-radius-md);
-  --radius-none: var(--sd-radius-none);
-  --radius-sm: var(--sd-radius-sm);
-  --shadow-sm: var(--sd-shadow-sm, 0.5px 0.5px 1.5px rgba(81, 81, 81, 100));
-  --shadow: var(--sd-shadow, 0 1px 3px rgba(81, 81, 81, 75));
-  --sizing-10: var(--sd-sizing-10);
-  --sizing-12: var(--sd-sizing-12);
-  --sizing-16: var(--sd-sizing-16);
-  --sizing-24: var(--sd-sizing-24);
-  --sizing-2: var(--sd-sizing-2);
-  --sizing-2\.5: var(--sd-sizing-2\.5);
-  --sizing-3: var(--sd-sizing-3);
-  --sizing-4: var(--sd-sizing-4);
-  --sizing-5: var(--sd-sizing-5);
-  --sizing-6: var(--sd-sizing-6);
-  --sizing-8: var(--sd-sizing-8);
+  --color-success: var(--sd-color-success, var(--sd-color-success));
+  --color-warning: var(--sd-color-warning, var(--sd-color-warning));
+  --color-white-constant: var(--sd-color-white-constant, var(--sd-color-white-constant));
+  --color-white: var(--sd-color-white, var(--sd-color-white));
+  --fill-accent-550: var(--sd-color-icon-fill-accent-550, var(--sd-color-accent-550));
+  --fill-accent: var(--sd-color-icon-fill-accent, var(--sd-color-accent));
+  --fill-error-400: var(--sd-color-icon-fill-error-400, var(--sd-color-error-400));
+  --fill-error: var(--sd-color-icon-fill-error, var(--sd-color-error));
+  --fill-neutral-400: var(--sd-color-icon-fill-neutral-400, var(--sd-color-neutral-400));
+  --fill-neutral-500: var(--sd-color-icon-fill-neutral-500, var(--sd-color-neutral-500));
+  --fill-neutral-600: var(--sd-color-icon-fill-neutral-600, var(--sd-color-neutral-600));
+  --fill-neutral-800: var(--sd-color-icon-fill-neutral-800, var(--sd-color-neutral-800));
+  --fill-primary-100: var(--sd-color-icon-fill-primary-100, var(--sd-color-primary-100));
+  --fill-primary-200: var(--sd-color-icon-fill-primary-200, var(--sd-color-primary-200));
+  --fill-primary-400: var(--sd-color-icon-fill-primary-400, var(--sd-color-primary-400));
+  --fill-primary-500: var(--sd-color-icon-fill-primary-500, var(--sd-color-primary-500));
+  --fill-primary-800: var(--sd-color-icon-fill-primary-800, var(--sd-color-primary-800));
+  --fill-primary: var(--sd-color-icon-fill-primary, var(--sd-color-primary));
+  --fill-risk-high: var(--sd-color-icon-fill-risk-high, var(--sd-color-risk-high));
+  --fill-risk-increased: var(--sd-color-icon-fill-risk-increased, var(--sd-color-risk-increased));
+  --fill-risk-low: var(--sd-color-icon-fill-risk-low, var(--sd-color-risk-low));
+  --fill-risk-moderate: var(--sd-color-icon-fill-risk-moderate, var(--sd-color-risk-moderate));
+  --fill-risk-veryhigh: var(--sd-color-icon-fill-risk-veryhigh, var(--sd-color-risk-veryhigh));
+  --fill-success: var(--sd-color-icon-fill-success, var(--sd-color-success));
+  --fill-white: var(--sd-color-icon-fill-white, var(--sd-color-white));
+  --shadow: var(--sd-shadow, var(--sd-color-));
   --sizing-varspacing: var(--tw-varspacing);
-  --spacing-0: var(--sd-spacing-0);
-  --spacing-0\.25: var(--sd-spacing-0\.25);
-  --spacing-0\.5: var(--sd-spacing-0\.5);
-  --spacing-10: var(--sd-spacing-10);
-  --spacing-12: var(--sd-spacing-12);
-  --spacing-16: var(--sd-spacing-16);
-  --spacing-1: var(--sd-spacing-1);
-  --spacing-1\.5: var(--sd-spacing-1\.5);
-  --spacing-20: var(--sd-spacing-20);
-  --spacing-24: var(--sd-spacing-24);
-  --spacing-2: var(--sd-spacing-2);
-  --spacing-32: var(--sd-spacing-32);
-  --spacing-3: var(--sd-spacing-3);
-  --spacing-40: var(--sd-spacing-40);
-  --spacing-4: var(--sd-spacing-4);
-  --spacing-5: var(--sd-spacing-5);
-  --spacing-6: var(--sd-spacing-6);
-  --spacing-8: var(--sd-spacing-8);
-  --spacing-attribute-horizontal-itemspacing: var(--sd-spacing-attribute-horizontal-itemspacing);
-  --spacing-attribute-layer-itemspacing: var(--sd-spacing-attribute-layer-itemspacing);
-  --spacing-attribute-layer-paddingvertical: var(--sd-spacing-attribute-layer-paddingvertical);
-  --spacing-attribute-style-itemspacing: var(--sd-spacing-attribute-style-itemspacing);
-  --spacing-attribute-style-paddinghorizontal: var(--sd-spacing-attribute-style-paddinghorizontal);
-  --spacing-attribute-token studio-itemspacing: var(--sd-spacing-attribute-token studio-itemspacing);
-  --spacing-attribute-token studio-paddingleft: var(--sd-spacing-attribute-token studio-paddingleft);
-  --spacing-attribute-token studio-paddingright: var(--sd-spacing-attribute-token studio-paddingright);
-  --spacing-attribute-variable-color-paddingleft: var(--sd-spacing-attribute-variable-color-paddingleft);
-  --spacing-attribute-variable-itemspacing: var(--sd-spacing-attribute-variable-itemspacing);
-  --spacing-attribute-variable-paddinghorizontal: var(--sd-spacing-attribute-variable-paddinghorizontal);
-  --spacing-attribute-variable-paddingvertical: var(--sd-spacing-attribute-variable-paddingvertical);
-  --spacing-attribute-vertical-itemspacing: var(--sd-spacing-attribute-vertical-itemspacing);
-  --spacing-auto: var(--sd-spacing-auto);
-  --spacing-border-width-2: var(--sd-spacing-border-width-2);
-  --spacing-border-width-4: var(--sd-spacing-border-width-4);
-  --spacing-border-width-6: var(--sd-spacing-border-width-6);
-  --spacing-border-width-default: var(--sd-spacing-border-width-default);
-  --spacing-element-anatomy-paddingleft: var(--sd-spacing-element-anatomy-paddingleft);
-  --spacing-element-horizontal-itemspacing: var(--sd-spacing-element-horizontal-itemspacing);
-  --spacing-element-name-itemspacing: var(--sd-spacing-element-name-itemspacing);
-  --spacing-element-vertical-itemspacing: var(--sd-spacing-element-vertical-itemspacing);
-  --spacing-exhibit-anatomy-itemspacing: var(--sd-spacing-exhibit-anatomy-itemspacing);
-  --spacing-exhibit-content-itemspacing: var(--sd-spacing-exhibit-content-itemspacing);
-  --spacing-exhibit-horizontal-itemspacing: var(--sd-spacing-exhibit-horizontal-itemspacing);
-  --spacing-exhibit-vertical-itemspacing: var(--sd-spacing-exhibit-vertical-itemspacing);
-  --spacing-exhibit-vertical-paddingbottom: var(--sd-spacing-exhibit-vertical-paddingbottom);
-  --spacing-exhibit-vertical-table-itemspacing: var(--sd-spacing-exhibit-vertical-table-itemspacing);
-  --spacing-option-itemspacing: var(--sd-spacing-option-itemspacing);
-  --spacing-option-label-itemspacing: var(--sd-spacing-option-label-itemspacing);
-  --spacing-resources-itemspacing: var(--sd-spacing-resources-itemspacing);
-  --spacing-sd-button-border-radius: var(--sd-spacing-sd-button-border-radius);
-  --spacing-sd-button-border-width: var(--sd-spacing-sd-button-border-width);
-  --spacing-sd-button-font-size-sm: var(--sd-spacing-sd-button-font-size-sm);
-  --spacing-sd-button-font-size: var(--sd-spacing-sd-button-font-size);
-  --spacing-sd-button-letter-spacing: var(--sd-spacing-sd-button-letter-spacing);
-  --spacing-sd-button-line-height: var(--sd-spacing-sd-button-line-height);
-  --spacing-sd-button-sizing-size-lg-loading: var(--sd-spacing-sd-button-sizing-size-lg-loading);
-  --spacing-sd-button-sizing-size-lg: var(--sd-spacing-sd-button-sizing-size-lg);
-  --spacing-sd-button-sizing-size-md-loading: var(--sd-spacing-sd-button-sizing-size-md-loading);
-  --spacing-sd-button-sizing-size-md: var(--sd-spacing-sd-button-sizing-size-md);
-  --spacing-sd-button-sizing-size-sm-loading: var(--sd-spacing-sd-button-sizing-size-sm-loading);
-  --spacing-sd-button-sizing-size-sm: var(--sd-spacing-sd-button-sizing-size-sm);
-  --spacing-sd-button-spacing-left-right: var(--sd-spacing-sd-button-spacing-left-right);
-  --spacing-section-itemspacing: var(--sd-spacing-section-itemspacing);
-  --spacing-section-padding: var(--sd-spacing-section-padding);
-  --spacing-spec-itemspacing: var(--sd-spacing-spec-itemspacing);
-  --spacing-specs-itemspacing: var(--sd-spacing-specs-itemspacing);
-  --spacing-subsection-exhibits-itemspacing: var(--sd-spacing-subsection-exhibits-itemspacing);
-  --spacing-subsection-itemspacing: var(--sd-spacing-subsection-itemspacing);
-  --spacing-subsection-title-itemspacing: var(--sd-spacing-subsection-title-itemspacing);
-  --spacing-table-column header-itemspacing: var(--sd-spacing-table-column header-itemspacing);
-  --spacing-table-itemspacing: var(--sd-spacing-table-itemspacing);
-  --spacing-table-row-itemspacing: var(--sd-spacing-table-row-itemspacing);
-  --spacing-title-itemspacing: var(--sd-spacing-title-itemspacing);
-  --spacing-title-padding: var(--sd-spacing-title-padding);
+  --spacing-utilities-border-width-2: var(--sd-spacing-utilities-border-width-2);
+  --spacing-utilities-border-width-4: var(--sd-spacing-utilities-border-width-4);
+  --spacing-utilities-border-width-6: var(--sd-spacing-utilities-border-width-6);
+  --spacing-utilities-border-width-default: var(--sd-spacing-utilities-border-width-default);
+  --spacing-utilities-rounded-default: var(--sd-spacing-utilities-rounded-default);
+  --spacing-utilities-rounded-full: var(--sd-spacing-utilities-rounded-full);
+  --spacing-utilities-rounded-lg: var(--sd-spacing-utilities-rounded-lg);
+  --spacing-utilities-rounded-md: var(--sd-spacing-utilities-rounded-md);
+  --spacing-utilities-rounded-none: var(--sd-spacing-utilities-rounded-none);
+  --spacing-utilities-rounded-sm: var(--sd-spacing-utilities-rounded-sm);
+  --spacing-utilities-sizing-10: var(--sd-spacing-utilities-sizing-10);
+  --spacing-utilities-sizing-12: var(--sd-spacing-utilities-sizing-12);
+  --spacing-utilities-sizing-16: var(--sd-spacing-utilities-sizing-16);
+  --spacing-utilities-sizing-24: var(--sd-spacing-utilities-sizing-24);
+  --spacing-utilities-sizing-2: var(--sd-spacing-utilities-sizing-2);
+  --spacing-utilities-sizing-2\.5: var(--sd-spacing-utilities-sizing-2\.5);
+  --spacing-utilities-sizing-3: var(--sd-spacing-utilities-sizing-3);
+  --spacing-utilities-sizing-4: var(--sd-spacing-utilities-sizing-4);
+  --spacing-utilities-sizing-5: var(--sd-spacing-utilities-sizing-5);
+  --spacing-utilities-sizing-6: var(--sd-spacing-utilities-sizing-6);
+  --spacing-utilities-sizing-8: var(--sd-spacing-utilities-sizing-8);
+  --spacing-utilities-spacing-0\.25: var(--sd-spacing-utilities-spacing-0\.25);
+  --spacing-utilities-spacing-0\.5: var(--sd-spacing-utilities-spacing-0\.5);
+  --spacing-utilities-spacing-10: var(--sd-spacing-utilities-spacing-10);
+  --spacing-utilities-spacing-12: var(--sd-spacing-utilities-spacing-12);
+  --spacing-utilities-spacing-16: var(--sd-spacing-utilities-spacing-16);
+  --spacing-utilities-spacing-1: var(--sd-spacing-utilities-spacing-1);
+  --spacing-utilities-spacing-1\.5: var(--sd-spacing-utilities-spacing-1\.5);
+  --spacing-utilities-spacing-20: var(--sd-spacing-utilities-spacing-20);
+  --spacing-utilities-spacing-24: var(--sd-spacing-utilities-spacing-24);
+  --spacing-utilities-spacing-2: var(--sd-spacing-utilities-spacing-2);
+  --spacing-utilities-spacing-32: var(--sd-spacing-utilities-spacing-32);
+  --spacing-utilities-spacing-3: var(--sd-spacing-utilities-spacing-3);
+  --spacing-utilities-spacing-40: var(--sd-spacing-utilities-spacing-40);
+  --spacing-utilities-spacing-4: var(--sd-spacing-utilities-spacing-4);
+  --spacing-utilities-spacing-6: var(--sd-spacing-utilities-spacing-6);
+  --spacing-utilities-spacing-8: var(--sd-spacing-utilities-spacing-8);
   --spacing-varspacing: var(--tw-varspacing);
-  --spacing: var(--sd-spacing);
-  --text-2xl: var(--sd-text-2xl);
-  --text-3xl: var(--sd-text-3xl);
-  --text-4xl: var(--sd-text-4xl);
-  --text-base: var(--sd-text-base);
-  --text-color-accent: var(--sd-text-color-accent, var(--sd-color-accent));
-  --text-color-black-constant: var(--sd-text-color-black-constant, var(--sd-color-black-constant));
-  --text-color-black: var(--sd-text-color-black, var(--sd-color-black));
-  --text-color-error: var(--sd-text-color-error, var(--sd-color-error));
-  --text-color-neutral-500: var(--sd-text-color-neutral-500, var(--sd-color-neutral-500));
-  --text-color-neutral-600: var(--sd-text-color-neutral-600, var(--sd-color-neutral-600));
-  --text-color-neutral-700: var(--sd-text-color-neutral-700, var(--sd-color-neutral-700));
-  --text-color-primary-100: var(--sd-text-color-primary-100, var(--sd-color-primary-100));
-  --text-color-primary-200: var(--sd-text-color-primary-200, var(--sd-color-primary-200));
-  --text-color-primary-400: var(--sd-text-color-primary-400, var(--sd-color-primary-400));
-  --text-color-primary-500: var(--sd-text-color-primary-500, var(--sd-color-primary-500));
-  --text-color-primary-800: var(--sd-text-color-primary-800, var(--sd-color-primary-800));
-  --text-color-primary: var(--sd-text-color-primary, var(--sd-color-primary));
-  --text-color-success: var(--sd-text-color-success, var(--sd-color-success));
-  --text-color-white-constant: var(--sd-text-color-white-constant, var(--sd-color-white-constant));
-  --text-color-white: var(--sd-text-color-white, var(--sd-color-white));
-  --text-lg: var(--sd-text-lg);
-  --text-sm: var(--sd-text-sm);
-  --text-xl: var(--sd-text-xl);
-  --transition-duration-fast: var(--sd-duration-fast, 150ms);
-  --transition-duration-medium: var(--sd-duration-medium, 300ms);
-  --transition-duration-slow: var(--sd-duration-slow, 500ms);
-  --transition-duration-x-slow: var(--sd-duration-x-slow, 750ms);
-  @keyframes bounce-once {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-18px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-  @keyframes grow {
-    0% {
-      width: 0%;
-    }
-    100% {
-      width: 100%;
-    }
-  }
-  @keyframes loader-color-current {
-    0%, 100% {
-      color: currentColor;
-    }
-    50% {
-      color: currentColor;
-      opacity: 20%;
-    }
-  }
-  @keyframes loader-color-primary {
-    0%, 100% {
-      color: var(--sd-color-primary, #00358E);
-    }
-    50% {
-      color: var(--sd-color-primary, #00358E);
-      opacity: 20%;
-    }
-  }
-  @keyframes loader-color-white {
-    0%, 100% {
-      color: var(--sd-color-white, #FFFFFF);
-    }
-    50% {
-      color: var(--sd-color-white, #FFFFFF);
-      opacity: 20%;
-    }
-  }
-  @keyframes wave {
-    0%, 40%, 100% {
-      transform: initial;
-    }
-    20% {
-      transform: translateY(-4px);
-    }
-  }
+  --text-color-accent: var(--sd-color-text-accent, var(--sd-color-accent));
+  --text-color-black-constant: var(--sd-color-text-black-constant, var(--sd-color-black-constant));
+  --text-color-black: var(--sd-color-text-black, var(--sd-color-black));
+  --text-color-error: var(--sd-color-text-error, var(--sd-color-error));
+  --text-color-neutral-500: var(--sd-color-text-neutral-500, var(--sd-color-neutral-500));
+  --text-color-neutral-600: var(--sd-color-text-neutral-600, var(--sd-color-neutral-600));
+  --text-color-neutral-700: var(--sd-color-text-neutral-700, var(--sd-color-neutral-700));
+  --text-color-primary-100: var(--sd-color-text-primary-100, var(--sd-color-primary-100));
+  --text-color-primary-200: var(--sd-color-text-primary-200, var(--sd-color-primary-200));
+  --text-color-primary-400: var(--sd-color-text-primary-400, var(--sd-color-primary-400));
+  --text-color-primary-500: var(--sd-color-text-primary-500, var(--sd-color-primary-500));
+  --text-color-primary-800: var(--sd-color-text-primary-800, var(--sd-color-primary-800));
+  --text-color-primary: var(--sd-color-text-primary, var(--sd-color-primary));
+  --text-color-success: var(--sd-color-text-success, var(--sd-color-success));
+  --text-color-white: var(--sd-color-text-white, var(--sd-color-white));
 }
 
-@utility sd-button-color-background-cta-default {
-  background-color: var(--sd-button-color-background-cta-default, var(--sd-color-accent));
+@utility components-sd-breadcrumb-separator-color {
+  background-color: var(--sd-components-sd-breadcrumb-separator-color, var(--sd-color-400));
 }
 
-@utility sd-button-color-background-cta-disabled {
-  background-color: var(--sd-button-color-background-cta-disabled, var(--sd-color-neutral-400));
+@utility components-sd-button---primary---active-color-background {
+  background-color: var(--sd-components-sd-button---primary---active-color-background, var(--sd-color-default));
 }
 
-@utility sd-button-color-background-cta-hover {
-  background-color: var(--sd-button-color-background-cta-hover, var(--sd-color-accent-550));
+@utility components-sd-header-color-background {
+  background-color: var(--sd-components-sd-header-color-background, var(--sd-color-default));
 }
 
-@utility sd-button-color-background-cta-pressed {
-  background-color: var(--sd-button-color-background-cta-pressed, var(--sd-color-accent-700));
-}
-
-@utility sd-button-color-background-primary-default {
-  background-color: var(--sd-button-color-background-primary-default, var(--sd-color-primary));
-}
-
-@utility sd-button-color-background-primary-disabled {
-  background-color: var(--sd-button-color-background-primary-disabled, var(--sd-color-neutral-400));
-}
-
-@utility sd-button-color-background-primary-hover {
-  background-color: var(--sd-button-color-background-primary-hover, var(--sd-color-primary-500));
-}
-
-@utility sd-button-color-background-primary-pressed {
-  background-color: var(--sd-button-color-background-primary-pressed, var(--sd-color-primary-800));
-}
-
-@utility sd-button-color-background-secondary-default {
-  background-color: var(--sd-button-color-background-secondary-default, var(--sd-color-null));
-}
-
-@utility sd-button-color-background-secondary-disabled {
-  background-color: var(--sd-button-color-background-secondary-disabled, var(--sd-color-null));
-}
-
-@utility sd-button-color-background-secondary-hover {
-  background-color: var(--sd-button-color-background-secondary-hover, var(--sd-color-primary-100));
-}
-
-@utility sd-button-color-background-secondary-pressed {
-  background-color: var(--sd-button-color-background-secondary-pressed, var(--sd-color-primary-200));
-}
-
-@utility sd-button-color-background-tertiary-default {
-  background-color: var(--sd-button-color-background-tertiary-default, var(--sd-color-null));
-}
-
-@utility sd-button-color-background-tertiary-disabled {
-  background-color: var(--sd-button-color-background-tertiary-disabled, var(--sd-color-null));
-}
-
-@utility sd-button-color-background-tertiary-hover {
-  background-color: var(--sd-button-color-background-tertiary-hover, var(--sd-color-primary-100));
-}
-
-@utility sd-button-color-background-tertiary-pressed {
-  background-color: var(--sd-button-color-background-tertiary-pressed, var(--sd-color-primary-200));
-}
-
-@utility sd-button-color-border-secondary-default {
-  border-color: var(--sd-button-color-border-secondary-default, var(--sd-color-primary));
-}
-
-@utility sd-button-color-border-secondary-disabled {
-  border-color: var(--sd-button-color-border-secondary-disabled, var(--sd-color-neutral-400));
-}
-
-@utility sd-button-color-border-secondary-hover {
-  border-color: var(--sd-button-color-border-secondary-hover, var(--sd-color-primary-500));
-}
-
-@utility sd-button-color-border-secondary-pressed {
-  border-color: var(--sd-button-color-border-secondary-pressed, var(--sd-color-primary-800));
-}
-
-@utility sd-button-color-border-tertiary-default {
-  border-color: var(--sd-button-color-border-tertiary-default, var(--sd-color-null));
-}
-
-@utility sd-button-color-border-tertiary-disabled {
-  border-color: var(--sd-button-color-border-tertiary-disabled, var(--sd-color-null));
-}
-
-@utility sd-button-color-border-tertiary-hover {
-  border-color: var(--sd-button-color-border-tertiary-hover, var(--sd-color-null));
-}
-
-@utility sd-button-color-border-tertiary-pressed {
-  border-color: var(--sd-button-color-border-tertiary-pressed, var(--sd-color-null));
-}
-
-@utility sd-button-color-inverted-background-cta-default {
-  background-color: var(--sd-button-color-inverted-background-cta-default, var(--sd-color-accent));
-}
-
-@utility sd-button-color-inverted-background-cta-disabled {
-  background-color: var(--sd-button-color-inverted-background-cta-disabled, var(--sd-color-neutral-600));
-}
-
-@utility sd-button-color-inverted-background-cta-hover {
-  background-color: var(--sd-button-color-inverted-background-cta-hover, var(--sd-color-accent-550));
-}
-
-@utility sd-button-color-inverted-background-cta-pressed {
-  background-color: var(--sd-button-color-inverted-background-cta-pressed, var(--sd-color-accent-700));
-}
-
-@utility sd-button-color-inverted-background-primary-default {
-  background-color: var(--sd-button-color-inverted-background-primary-default, var(--sd-color-white));
-}
-
-@utility sd-button-color-inverted-background-primary-disabled {
-  background-color: var(--sd-button-color-inverted-background-primary-disabled, var(--sd-color-neutral-600));
-}
-
-@utility sd-button-color-inverted-background-primary-hover {
-  background-color: var(--sd-button-color-inverted-background-primary-hover, var(--sd-color-primary-100));
-}
-
-@utility sd-button-color-inverted-background-primary-pressed {
-  background-color: var(--sd-button-color-inverted-background-primary-pressed, var(--sd-color-primary-200));
-}
-
-@utility sd-button-color-inverted-background-secondary-default {
-  background-color: var(--sd-button-color-inverted-background-secondary-default, var(--sd-color-null));
-}
-
-@utility sd-button-color-inverted-background-secondary-disabled {
-  background-color: var(--sd-button-color-inverted-background-secondary-disabled, var(--sd-color-null));
-}
-
-@utility sd-button-color-inverted-background-secondary-hover {
-  background-color: var(--sd-button-color-inverted-background-secondary-hover, var(--sd-color-primary-500));
-}
-
-@utility sd-button-color-inverted-background-secondary-pressed {
-  background-color: var(--sd-button-color-inverted-background-secondary-pressed, var(--sd-color-primary-800));
-}
-
-@utility sd-button-color-inverted-background-tertiary-default {
-  background-color: var(--sd-button-color-inverted-background-tertiary-default, var(--sd-color-null));
-}
-
-@utility sd-button-color-inverted-background-tertiary-disabled {
-  background-color: var(--sd-button-color-inverted-background-tertiary-disabled, var(--sd-color-null));
-}
-
-@utility sd-button-color-inverted-background-tertiary-hover {
-  background-color: var(--sd-button-color-inverted-background-tertiary-hover, var(--sd-color-primary-500));
-}
-
-@utility sd-button-color-inverted-background-tertiary-pressed {
-  background-color: var(--sd-button-color-inverted-background-tertiary-pressed, var(--sd-color-primary-800));
-}
-
-@utility sd-button-color-inverted-border-secondary-default {
-  border-color: var(--sd-button-color-inverted-border-secondary-default, var(--sd-color-white));
-}
-
-@utility sd-button-color-inverted-border-secondary-disabled {
-  border-color: var(--sd-button-color-inverted-border-secondary-disabled, var(--sd-color-neutral-600));
-}
-
-@utility sd-button-color-inverted-border-secondary-hover {
-  border-color: var(--sd-button-color-inverted-border-secondary-hover, var(--sd-color-primary-100));
-}
-
-@utility sd-button-color-inverted-border-secondary-pressed {
-  border-color: var(--sd-button-color-inverted-border-secondary-pressed, var(--sd-color-primary-200));
-}
-
-@utility sd-button-color-inverted-border-tertiary-default {
-  border-color: var(--sd-button-color-inverted-border-tertiary-default, var(--sd-color-null));
-}
-
-@utility sd-button-color-inverted-border-tertiary-disabled {
-  border-color: var(--sd-button-color-inverted-border-tertiary-disabled, var(--sd-color-null));
-}
-
-@utility sd-button-color-inverted-border-tertiary-hover {
-  border-color: var(--sd-button-color-inverted-border-tertiary-hover, var(--sd-color-null));
-}
-
-@utility sd-button-color-inverted-border-tertiary-pressed {
-  border-color: var(--sd-button-color-inverted-border-tertiary-pressed, var(--sd-color-null));
-}
-
-@utility sd-button-color-inverted-text-icon-fill-cta-default {
-  fill: var(--sd-button-color-inverted-text-icon-fill-cta-default, var(--sd-color-white));
-}
-
-@utility sd-button-color-inverted-text-icon-fill-cta-disabled {
-  fill: var(--sd-button-color-inverted-text-icon-fill-cta-disabled, var(--sd-color-white));
-}
-
-@utility sd-button-color-inverted-text-icon-fill-cta-hover {
-  fill: var(--sd-button-color-inverted-text-icon-fill-cta-hover, var(--sd-color-white));
-}
-
-@utility sd-button-color-inverted-text-icon-fill-cta-pressed {
-  fill: var(--sd-button-color-inverted-text-icon-fill-cta-pressed, var(--sd-color-white));
-}
-
-@utility sd-button-color-inverted-text-icon-fill-primary-default {
-  fill: var(--sd-button-color-inverted-text-icon-fill-primary-default, var(--sd-color-primary));
-}
-
-@utility sd-button-color-inverted-text-icon-fill-primary-disabled {
-  fill: var(--sd-button-color-inverted-text-icon-fill-primary-disabled, var(--sd-color-white));
-}
-
-@utility sd-button-color-inverted-text-icon-fill-primary-hover {
-  fill: var(--sd-button-color-inverted-text-icon-fill-primary-hover, var(--sd-color-primary-500));
-}
-
-@utility sd-button-color-inverted-text-icon-fill-primary-pressed {
-  fill: var(--sd-button-color-inverted-text-icon-fill-primary-pressed, var(--sd-color-primary-800));
-}
-
-@utility sd-button-color-inverted-text-icon-fill-secondary-default {
-  fill: var(--sd-button-color-inverted-text-icon-fill-secondary-default, var(--sd-color-white));
-}
-
-@utility sd-button-color-inverted-text-icon-fill-secondary-disabled {
-  fill: var(--sd-button-color-inverted-text-icon-fill-secondary-disabled, var(--sd-color-neutral-600));
-}
-
-@utility sd-button-color-inverted-text-icon-fill-secondary-hover {
-  fill: var(--sd-button-color-inverted-text-icon-fill-secondary-hover, var(--sd-color-primary-100));
-}
-
-@utility sd-button-color-inverted-text-icon-fill-secondary-pressed {
-  fill: var(--sd-button-color-inverted-text-icon-fill-secondary-pressed, var(--sd-color-primary-200));
-}
-
-@utility sd-button-color-inverted-text-icon-fill-tertiary-default {
-  fill: var(--sd-button-color-inverted-text-icon-fill-tertiary-default, var(--sd-color-white));
-}
-
-@utility sd-button-color-inverted-text-icon-fill-tertiary-disabled {
-  fill: var(--sd-button-color-inverted-text-icon-fill-tertiary-disabled, var(--sd-color-neutral-600));
-}
-
-@utility sd-button-color-inverted-text-icon-fill-tertiary-hover {
-  fill: var(--sd-button-color-inverted-text-icon-fill-tertiary-hover, var(--sd-color-primary-100));
-}
-
-@utility sd-button-color-inverted-text-icon-fill-tertiary-pressed {
-  fill: var(--sd-button-color-inverted-text-icon-fill-tertiary-pressed, var(--sd-color-primary-200));
-}
-
-@utility sd-button-color-text-icon-fill-cta-default {
-  fill: var(--sd-button-color-text-icon-fill-cta-default, var(--sd-color-white));
-}
-
-@utility sd-button-color-text-icon-fill-cta-disabled {
-  fill: var(--sd-button-color-text-icon-fill-cta-disabled, var(--sd-color-white));
-}
-
-@utility sd-button-color-text-icon-fill-cta-hover {
-  fill: var(--sd-button-color-text-icon-fill-cta-hover, var(--sd-color-white));
-}
-
-@utility sd-button-color-text-icon-fill-cta-pressed {
-  fill: var(--sd-button-color-text-icon-fill-cta-pressed, var(--sd-color-white));
-}
-
-@utility sd-button-color-text-icon-fill-primary-default {
-  fill: var(--sd-button-color-text-icon-fill-primary-default, var(--sd-color-white));
-}
-
-@utility sd-button-color-text-icon-fill-primary-disabled {
-  fill: var(--sd-button-color-text-icon-fill-primary-disabled, var(--sd-color-white));
-}
-
-@utility sd-button-color-text-icon-fill-primary-hover {
-  fill: var(--sd-button-color-text-icon-fill-primary-hover, var(--sd-color-primary-100));
-}
-
-@utility sd-button-color-text-icon-fill-primary-pressed {
-  fill: var(--sd-button-color-text-icon-fill-primary-pressed, var(--sd-color-primary-200));
-}
-
-@utility sd-button-color-text-icon-fill-secondary-default {
-  fill: var(--sd-button-color-text-icon-fill-secondary-default, var(--sd-color-primary));
-}
-
-@utility sd-button-color-text-icon-fill-secondary-disabled {
-  fill: var(--sd-button-color-text-icon-fill-secondary-disabled, var(--sd-color-neutral-500));
-}
-
-@utility sd-button-color-text-icon-fill-secondary-hover {
-  fill: var(--sd-button-color-text-icon-fill-secondary-hover, var(--sd-color-primary-500));
-}
-
-@utility sd-button-color-text-icon-fill-secondary-pressed {
-  fill: var(--sd-button-color-text-icon-fill-secondary-pressed, var(--sd-color-primary-800));
-}
-
-@utility sd-button-color-text-icon-fill-tertiary-default {
-  fill: var(--sd-button-color-text-icon-fill-tertiary-default, var(--sd-color-primary));
-}
-
-@utility sd-button-color-text-icon-fill-tertiary-disabled {
-  fill: var(--sd-button-color-text-icon-fill-tertiary-disabled, var(--sd-color-neutral-500));
-}
-
-@utility sd-button-color-text-icon-fill-tertiary-hover {
-  fill: var(--sd-button-color-text-icon-fill-tertiary-hover, var(--sd-color-primary-500));
-}
-
-@utility sd-button-color-text-icon-fill-tertiary-pressed {
-  fill: var(--sd-button-color-text-icon-fill-tertiary-pressed, var(--sd-color-primary-800));
-}
-
-@utility sd-interactive-color-inverted-text-icon-fill-default {
-  fill: var(--sd-interactive-color-inverted-text-icon-fill-default, var(--sd-color-white));
-}
-
-@utility sd-interactive-color-inverted-text-icon-fill-disabled {
-  fill: var(--sd-interactive-color-inverted-text-icon-fill-disabled, var(--sd-color-neutral-600));
-}
-
-@utility sd-interactive-color-inverted-text-icon-fill-hover {
-  fill: var(--sd-interactive-color-inverted-text-icon-fill-hover, var(--sd-color-primary-200));
-}
-
-@utility sd-interactive-color-inverted-text-icon-fill-pressed {
-  fill: var(--sd-interactive-color-inverted-text-icon-fill-pressed, var(--sd-color-primary-400));
-}
-
-@utility sd-interactive-color-text-icon-fill-default {
-  fill: var(--sd-interactive-color-text-icon-fill-default, var(--sd-color-white));
-}
-
-@utility sd-interactive-color-text-icon-fill-disabled {
-  fill: var(--sd-interactive-color-text-icon-fill-disabled, var(--sd-color-neutral-600));
-}
-
-@utility sd-interactive-color-text-icon-fill-hover {
-  fill: var(--sd-interactive-color-text-icon-fill-hover, var(--sd-color-primary-200));
-}
-
-@utility sd-interactive-color-text-icon-fill-pressed {
-  fill: var(--sd-interactive-color-text-icon-fill-pressed, var(--sd-color-primary-400));
-}
-
-@utility sd-tag-color-background-default-default {
-  background-color: var(--sd-tag-color-background-default-default, var(--sd-color-null));
-}
-
-@utility sd-tag-color-background-default-disabled {
-  background-color: var(--sd-tag-color-background-default-disabled, var(--sd-color-null));
-}
-
-@utility sd-tag-color-background-default-hover {
-  background-color: var(--sd-tag-color-background-default-hover, var(--sd-color-null));
-}
-
-@utility sd-tag-color-background-selected-default {
-  background-color: var(--sd-tag-color-background-selected-default, var(--sd-color-white));
-}
-
-@utility sd-tag-color-background-selected-disabled {
-  background-color: var(--sd-tag-color-background-selected-disabled, var(--sd-color-neutral-600));
-}
-
-@utility sd-tag-color-background-selected-hover {
-  background-color: var(--sd-tag-color-background-selected-hover, var(--sd-color-primary-500));
-}
-
-@utility sd-tag-color-border-default-default {
-  border-color: var(--sd-tag-color-border-default-default, var(--sd-color-white));
-}
-
-@utility sd-tag-color-border-default-disabled {
-  border-color: var(--sd-tag-color-border-default-disabled, var(--sd-color-neutral-600));
-}
-
-@utility sd-tag-color-border-default-hover {
-  border-color: var(--sd-tag-color-border-default-hover, var(--sd-color-primary-100));
-}
-
-@utility sd-tag-color-border-selected-default {
-  border-color: var(--sd-tag-color-border-selected-default, var(--sd-color-null));
-}
-
-@utility sd-tag-color-border-selected-disabled {
-  border-color: var(--sd-tag-color-border-selected-disabled, var(--sd-color-null));
-}
-
-@utility sd-tag-color-border-selected-hover {
-  border-color: var(--sd-tag-color-border-selected-hover, var(--sd-color-null));
-}
-
-@utility sd-tag-color-text-icon-fill-default-default {
-  fill: var(--sd-tag-color-text-icon-fill-default-default, var(--sd-color-white));
-}
-
-@utility sd-tag-color-text-icon-fill-default-disabled {
-  fill: var(--sd-tag-color-text-icon-fill-default-disabled, var(--sd-color-neutral-600));
-}
-
-@utility sd-tag-color-text-icon-fill-default-hover {
-  fill: var(--sd-tag-color-text-icon-fill-default-hover, var(--sd-color-primary-100));
-}
-
-@utility sd-tag-color-text-icon-fill-selected-default {
-  fill: var(--sd-tag-color-text-icon-fill-selected-default, var(--sd-color-primary));
-}
-
-@utility sd-tag-color-text-icon-fill-selected-disabled {
-  fill: var(--sd-tag-color-text-icon-fill-selected-disabled, var(--sd-color-white));
-}
-
-@utility sd-tag-color-text-icon-fill-selected-hover {
-  fill: var(--sd-tag-color-text-icon-fill-selected-hover, var(--sd-color-white));
-}
-
-@utility z-10 {
-  z-index: 10;
-}
-
-@utility z-20 {
-  z-index: 20;
-}
-
-@utility z-30 {
-  z-index: 30;
-}
-
-@utility z-40 {
-  z-index: 40;
-}
-
-@utility z-50 {
-  z-index: 50;
-}
-
-@utility z-alert-group {
-  z-index: var(--sd-z-index-alert-group, 950);
-}
-
-@utility z-auto {
-  z-index: auto;
-}
-
-@utility z-dialog {
-  z-index: var(--sd-z-index-dialog, 800);
-}
-
-@utility z-drawer {
-  z-index: var(--sd-z-index-drawer, 700);
-}
-
-@utility z-dropdown {
-  z-index: var(--sd-z-index-dropdown, 900);
-}
-
-@utility z-header {
-  z-index: var(--sd-z-index-header, 600);
-}
-
-@utility z-tooltip {
-  z-index: var(--sd-z-index-tooltip, 1000);
+@utility components-sd-tag---selected-color-text {
+  color: var(--sd-components-sd-tag---selected-color-text, var(--sd-color-default));
 }
 
 @utility varspacing-* {

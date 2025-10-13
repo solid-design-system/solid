@@ -8,21 +8,12 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     super(options);
 
     /* Namespaces that should be created as theme variables mapped to the respective css property */
-    this.core = {
-      'background-transparent': 'background-color-transparent',
-      'icon-fill': 'fill',
-      background: 'background-color',
-      border: 'border-color',
-      outline: {
-        token: 'outline-color',
-        cssvar: 'border-color'
-      },
-      risk: 'color-risk',
-      text: 'text-color'
+    this.utilities = {
+      'color-text': 'text-color',
+      'color-background': 'background-color',
+      'color-icon-fill': 'fill',
+      'color-border': 'border-color'
     };
-
-    /* Namespaces that are not core colors, but should be created as theme variables */
-    this.semicore = ['gradient'];
 
     /* Mapping of the semantic variables to the css property */
     this.semantic = {
@@ -33,9 +24,6 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       text: 'color'
     };
 
-    /* Namespaces that were added manually, and are not available in themes */
-    this.manual = ['risk'];
-
     /* Namepsaces that should be skipped and not processed */
     this.skip = ['ring'];
 
@@ -44,22 +32,20 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
   }
 
   canProcess(token) {
-    return token.type === 'color';
+    return token.type === 'color' && token.name !== 'shadow';
   }
 
   process(token, dictionary, options) {
     const { path, variant } = this.processTokenPath(token);
     if (this.skip.includes(path[0])) return [];
 
-    const isCoreColor = this.#isCoreToken(path[0]);
-    const isSemicoreColor = this.#isSemicoreToken(path[0]);
+    const isCoreColor = this.#isUtilityToken(path);
+    if (!isCoreColor && !token.path[2].startsWith('sd-')) return [];
 
-    if (!isCoreColor && !token.path[1].startsWith('sd-')) return [];
-
-    const processed = isCoreColor
-      ? this.#processCoreToken(token)
-      : this.#processSemanticToken(token, dictionary, options);
     const fallback = this.#getFallbackColor(token);
+    const processed = isCoreColor
+      ? this.#processUtilityToken(token)
+      : this.#processSemanticToken(token, dictionary, options);
 
     const cssvariables = [];
 
@@ -73,7 +59,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       });
     }
 
-    if ((isCoreColor || isSemicoreColor) && variant !== 'default') {
+    if (isCoreColor && variant !== 'default') {
       const variable = {
         type: 'color',
         name: this.cssprefix(fallback),
@@ -104,21 +90,22 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     this.processedHistory = [];
   }
 
-  #isCoreToken(token) {
-    return Object.keys(this.core).includes(token) && !token.startsWith('sd-');
-  }
-
-  #isSemicoreToken(token) {
-    return this.semicore.includes(token);
+  #isUtilityToken(token) {
+    return token?.[0] === 'utilities';
   }
 
   #getFallbackColor(token) {
     const processed = this.processTokenPath(token);
-    const isCoreColor = this.#isCoreToken(processed.path[0]);
+    const isCoreColor = this.#isUtilityToken(processed.path);
 
-    const prefix = isCoreColor ? 'color' : processed.path[0];
-    const name = this.manual.includes(processed.path[0]) ? processed.path.join('-') : processed.path.slice(1).join('-');
-    return `${prefix}-${name}`;
+    const fallback = processed.path.length > 4 ? processed.path.slice(3) : processed.path.slice(2);
+    const name = `color-${fallback.join('-').replace('-default', '')}`;
+    const color = isCoreColor ? name : `${processed.path[0]}-${name}`;
+
+    if (color === 'color-') {
+      console.log(token);
+    }
+    return color;
   }
 
   #getCoreTokenFromColor(color, dictionary, options) {
@@ -139,35 +126,24 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     return this.cleanupTokenName(`color-${found.path.at(-1)}`);
   }
 
-  #processCoreToken(token) {
+  #processUtilityToken(token) {
     const processed = this.processTokenPath(token);
-    const name = processed.path.join('-');
+    const name = processed.path.slice(1).join('-').replace('-default', '');
 
-    for (const [property, cssproperty] of Object.entries(this.core)) {
+    for (const [property, cssproperty] of Object.entries(this.utilities)) {
       if (!name.startsWith(property)) continue;
 
-      if (typeof cssproperty === 'object') {
-        return {
-          type: 'color',
-          name: `--${name.replace(property, cssproperty.token)}`,
-          cssvar: `--${name.replace(property, cssproperty.cssvar)}`
-        };
-      }
-
-      return { type: 'color', name: `--${name.replace(property, cssproperty)}` };
+      return { type: 'color', name: `--${name.replace(property, cssproperty)}`, cssvar: `--${name}` };
     }
 
-    return { type: 'color', name: `--color-${name}` };
+    return { type: 'color', name: `--${name}` };
   }
 
   #processSemanticToken(token, dictionary, options) {
     const processed = this.processTokenPath(token);
-    const isSemicoreColor = this.#isSemicoreToken(processed.path[0]);
 
     const name = processed.path.join('-');
-    const value = isSemicoreColor
-      ? this.cssvar(name)
-      : this.cssvar(name, this.cssvar(this.#getCoreTokenFromColor(token.value, dictionary, options)));
+    const value = this.cssvar(name, this.cssvar(this.#getCoreTokenFromColor(token.value, dictionary, options)));
 
     for (const [property, cssproperty] of Object.entries(this.semantic)) {
       if (name.includes(property)) {
