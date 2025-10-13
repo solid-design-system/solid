@@ -10,6 +10,48 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 
+/**
+ * @summary Used to enter or select a date or a range of dates using a calendar view.
+ * @status stable
+ * @since 5.16.0
+ *
+ * @dependency sd-icon
+ * @dependency sd-divider
+ * @dependency sd-popup
+ *
+ * @event sd-change - Emitted when the date selection changes.
+ * @event sd-range-select - Emitted when the date range selection changes.
+ * @event sd-select - Emitted when the date selection changes.
+ * @event sd-datepicker-close - Emitted when the datepicker is closed.
+ * @event sd-focus - Emitted when the datepicker is focused.
+ * @event sd-blur - Emitted when the datepicker is blurred.
+ * @event sd-month-change - Emitted when the month is changed.
+ * @event sd-month-year - Emitted when the year is changed.
+ *
+ * @slot - The default slot.
+ * @slot label - The label for the date input.
+ * @slot help-text - The help text, displayed below the input.
+ * @slot tooltip - The tooltip icon and content.
+ *
+ * @csspart base - The component's base wrapper.
+ * @csspart header - The header containing the month/year and navigation buttons.
+ * @csspart prev-year-button - The button to go to the previous year.
+ * @csspart prev-month-button - The button to go to the previous month.
+ * @csspart month-label - The month and year label.
+ * @csspart next-month-button - The button to go to the next month.
+ * @csspart next-year-button - The button to go to the next year.
+ * @csspart grid - The calendar grid container.
+ * @csspart weekday - Each weekday label in the calendar header.
+ * @csspart day - Each day button in the calendar grid.
+ * @csspart form-control - The form control wrapper around the input.
+ * @csspart form-control-label - The label for the input.
+ * @csspart form-control-input - The input element.
+ * @csspart border - The border around the input.
+ * @csspart invalid-icon - The icon shown when the input is invalid.
+ * @csspart valid-icon - The icon shown when the input is valid.
+ * @csspart form-control-help-text - The help text, displayed below the input.
+ *
+ */
 @customElement('sd-datepicker')
 export default class SdDatepicker extends SolidElement implements SolidFormControl {
   /** Localize controller used to fetch localized terms/labels. */
@@ -927,7 +969,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     this.viewMonth = next;
     const monthLabel = this.formatMonthYear(this.viewMonth);
     this.setNavStatus(monthLabel);
-    this.emit('sd-month-change', { detail: { month: this.viewMonth } });
+    this.emit('sd-month-year', { detail: { month: this.viewMonth } });
   }
 
   private handleMonthNavEnter = (ev: KeyboardEvent, direction: -1 | 1) => {
@@ -1240,7 +1282,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               type="button"
               tabindex="0"
               class="nav prev w-6 h-6 hover:cursor-pointer sd-interactive"
-              part="prev-button"
+              part="prev-year-button"
               @click=${() => this.setYear(-1)}
               @keydown=${(ev: KeyboardEvent) => this.handleYearNavEnter(ev, -1)}
               aria-label=${this.localize.term('previousYear')}
@@ -1252,7 +1294,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               type="button"
               tabindex="0"
               class="nav prev w-6 h-6 hover:cursor-pointer sd-interactive"
-              part="prev-button"
+              part="prev-month-button"
               @click=${() => this.setMonth(-1)}
               @keydown=${(ev: KeyboardEvent) => this.handleMonthNavEnter(ev, -1)}
               aria-label=${this.localize.term('previousMonth')}
@@ -1277,7 +1319,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               type="button"
               tabindex="0"
               class="nav next w-6 h-6 hover:cursor-pointer sd-interactive"
-              part="next-button"
+              part="next-month-button"
               @click=${() => this.setMonth(1)}
               @keydown=${(ev: KeyboardEvent) => this.handleMonthNavEnter(ev, 1)}
               aria-label=${this.localize.term('nextMonth')}
@@ -1289,7 +1331,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               type="button"
               tabindex="0"
               class="nav next w-6 h-6 hover:cursor-pointer sd-interactive"
-              part="next-button"
+              part="next-year-button"
               @click=${() => this.setYear(1)}
               @keydown=${(ev: KeyboardEvent) => this.handleYearNavEnter(ev, 1)}
               aria-label=${this.localize.term('nextYear')}
