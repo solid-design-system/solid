@@ -109,6 +109,7 @@
   --color-warning: var(--sd-color-warning, var(--sd-color-warning));
   --color-white-constant: var(--sd-color-white-constant, var(--sd-color-white-constant));
   --color-white: var(--sd-color-white, var(--sd-color-white));
+  --drop-shadow: var(--sd-drop-shadow);
   --fill-accent-550: var(--sd-color-icon-fill-accent-550, var(--sd-color-accent-550));
   --fill-accent: var(--sd-color-icon-fill-accent, var(--sd-color-accent));
   --fill-error-400: var(--sd-color-icon-fill-error-400, var(--sd-color-error-400));
@@ -130,7 +131,7 @@
   --fill-risk-veryhigh: var(--sd-color-icon-fill-risk-veryhigh, var(--sd-color-risk-veryhigh));
   --fill-success: var(--sd-color-icon-fill-success, var(--sd-color-success));
   --fill-white: var(--sd-color-icon-fill-white, var(--sd-color-white));
-  --shadow: var(--sd-shadow, var(--sd-color-));
+  --shadow: var(--sd-shadow);
   --sizing-varspacing: var(--tw-varspacing);
   --spacing-utilities-border-width-2: var(--sd-spacing-utilities-border-width-2);
   --spacing-utilities-border-width-4: var(--sd-spacing-utilities-border-width-4);

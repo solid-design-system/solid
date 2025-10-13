@@ -1,7 +1,6 @@
 :root, .sd-theme-vb-light {
   color-scheme: light;
 
-  --sd-color-: rgba(81, 81, 81, 0.75);
   --sd-color-accent-100: #f2f7fb;
   --sd-color-accent-200: #e5f0f7;
   --sd-color-accent-300: #99c2e1;
@@ -62,6 +61,8 @@
   --sd-color-warning: #bb8d20;
   --sd-color-white-constant: #ffffff;
   --sd-color-white: #ffffff;
+  --sd-drop-shadow: 0 1px 3px rgba(81, 81, 81, 0.75);
+  --sd-shadow: 0 1px 3px rgba(81, 81, 81, 0.75);
   --sd-spacing-utilities-border-width-2: 0rem;
   --sd-spacing-utilities-border-width-4: 0rem;
   --sd-spacing-utilities-border-width-6: 0rem;

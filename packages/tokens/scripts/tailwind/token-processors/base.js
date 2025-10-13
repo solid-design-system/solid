@@ -87,22 +87,6 @@ export class BaseTokenProcessor {
     return toKebabCase(path);
   }
 
-  /**
-   * Returns the variable value as a css var() with possibility to override
-   */
-  getFormattedValue({ prefix, name, value }) {
-    const fallback = ['--sd-'];
-
-    if (prefix) {
-      fallback.push(`${prefix}-`);
-    }
-
-    fallback.push(name);
-
-    const variable = fallback.join('');
-    return { variable, value };
-  }
-
   cssprefix(variable) {
     let name = variable.startsWith('--') ? variable.slice(2) : variable;
 

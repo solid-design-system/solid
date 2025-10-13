@@ -9,37 +9,48 @@ export class ShadowTokenProcessor extends BaseTokenProcessor {
   }
 
   canProcess(token) {
-    return token.type === 'boxShadow' || token.type === 'shadow';
+    return token.type === 'boxShadow' || token.type === 'shadow' || token.path.includes('shadow');
   }
 
-  process(token) {
-    const path = this.pathToKebabCase(this.processTokenPath(token).path);
-    const value = this.formatShadow(token.attributes.value);
-    const name = path.join('-');
+  process(token, _, options) {
+    const { path, variant } = this.processTokenPath(token);
+    const name = path.slice(1).join('-');
+    const properties = name.includes('-sm') ? '0.5px 0.5px 1.5px' : '0 1px 3px';
 
-    const formatted = this.getFormattedValue({ name, value });
+    const cssvariables = [];
 
-    return [
+    if (variant === options.defaultTheme) {
+      cssvariables.push(
+        {
+          type: 'shadow',
+          name: `--${name}`,
+          value: this.cssvar(this.cssprefix(name)),
+          variant: 'default'
+        },
+        {
+          type: 'shadow',
+          name: `--drop-${name}`,
+          value: this.cssvar(this.cssprefix(`drop-${name}`)),
+          variant: 'default'
+        }
+      );
+    }
+
+    cssvariables.push(
       {
         type: 'shadow',
-        name: `--${name}`,
-        value: `var(${formatted.variable}, ${formatted.value})`
+        name: this.cssprefix(name),
+        value: `${properties} ${token.attributes.value}`,
+        variant
       },
       {
         type: 'shadow',
-        name: `--drop-${name}`,
-        value: `var(${formatted.variable}, ${formatted.value})`
+        name: this.cssprefix(`drop-${name}`),
+        value: `${properties} ${token.attributes.value}`,
+        variant
       }
-    ];
-  }
+    );
 
-  /**
-   * Format a shadow object into CSS shadow syntax
-   */
-  formatShadow(shadow) {
-    const { offsetX = '0', offsetY = '0', blur = '0', color = 'transparent' } = shadow;
-
-    const parts = [offsetX, offsetY, blur, color].filter(Boolean);
-    return parts.join(' ');
+    return cssvariables;
   }
 }

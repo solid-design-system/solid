@@ -32,7 +32,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
   }
 
   canProcess(token) {
-    return token.type === 'color' && token.name !== 'shadow';
+    return token.type === 'color' && !token.name.endsWith('-shadow');
   }
 
   process(token, dictionary, options) {
@@ -100,12 +100,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
 
     const fallback = processed.path.length > 4 ? processed.path.slice(3) : processed.path.slice(2);
     const name = `color-${fallback.join('-').replace('-default', '')}`;
-    const color = isCoreColor ? name : `${processed.path[0]}-${name}`;
-
-    if (color === 'color-') {
-      console.log(token);
-    }
-    return color;
+    return isCoreColor ? name : `${processed.path[0]}-${name}`;
   }
 
   #getCoreTokenFromColor(color, dictionary, options) {

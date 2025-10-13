@@ -1,7 +1,6 @@
 :root, .sd-theme-ui-semantic-light {
   color-scheme: light;
 
-  --sd-color-: rgba(81, 81, 81, 0.75);
   --sd-color-accent-100: #b6dfaa;
   --sd-color-accent-200: #8ed082;
   --sd-color-accent-300: #6cc254;
@@ -62,6 +61,8 @@
   --sd-color-warning: #bb8d20;
   --sd-color-white-constant: #ffffff;
   --sd-color-white: #ffffff;
+  --sd-drop-shadow: 0 1px 3px rgba(81, 81, 81, 0.75);
+  --sd-shadow: 0 1px 3px rgba(81, 81, 81, 0.75);
   --sd-spacing-utilities-border-width-2: 0.125rem;
   --sd-spacing-utilities-border-width-4: 0.25rem;
   --sd-spacing-utilities-border-width-6: 0.375rem;

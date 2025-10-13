@@ -1,7 +1,6 @@
 .sd-theme-ui-semantic-dark {
   color-scheme: dark;
 
-  --sd-color-: #ffffff;
   --sd-color-accent-100: #b6dfaa;
   --sd-color-accent-200: #8ed082;
   --sd-color-accent-300: #6cc254;
@@ -62,6 +61,8 @@
   --sd-color-warning: #bb8d20;
   --sd-color-white-constant: #ffffff;
   --sd-color-white: #020920;
+  --sd-drop-shadow: 0 1px 3px #ffffff;
+  --sd-shadow: 0 1px 3px #ffffff;
   --sd-spacing-utilities-border-width-2: 0rem;
   --sd-spacing-utilities-border-width-4: 0rem;
   --sd-spacing-utilities-border-width-6: 0rem;
