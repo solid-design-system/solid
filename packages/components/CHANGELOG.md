@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.15.10
+
+### Patch Changes
+
+- Adjusted `sd-breadcrumb` font-size to `14px` instead of `16px`. _[`#2534`](https://github.com/solid-design-system/solid/pull/2534) [`1ebd640`](https://github.com/solid-design-system/solid/commit/1ebd6403350b07cbfb8d604732191db7ce880924) [@smfonseca](https://github.com/smfonseca)_
+
 ## 5.15.9
 
 ### Patch Changes
