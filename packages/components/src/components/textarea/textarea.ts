@@ -117,7 +117,6 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
   /** Indicates whether the browser's autocorrect feature is on or off. */
   @property({ type: String, reflect: true }) autocorrect: 'off' | 'on';
-
   /**
    * Specifies what permission the browser has to provide assistance in filling out form field values. Refer to
    * [this page on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) for available values.

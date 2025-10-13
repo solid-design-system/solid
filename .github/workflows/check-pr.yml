@@ -10,7 +10,7 @@ jobs:
         runs-on: ubuntu-latest
         if: github.event.pull_request.draft == false
         container:
-            image: mcr.microsoft.com/playwright:v1.54.2-noble
+            image: mcr.microsoft.com/playwright:v1.55.1-noble
         strategy:
           matrix:
             package:
@@ -31,11 +31,10 @@ jobs:
               with:
                   node-version: 22
 
-            - uses: pnpm/action-setup@v2
+            - uses: pnpm/action-setup@v4
               name: Install pnpm
               id: pnpm-install
               with:
-                  version: 10.0.0
                   run_install: false
 
             - name: Install dependencies
@@ -63,10 +62,9 @@ jobs:
           with:
             node-version: 22
 
-        - uses: pnpm/action-setup@v2
+        - uses: pnpm/action-setup@v4
           name: Install pnpm
           with:
-            version: 10.0.0
             run_install: false
 
         - name: Install dependencies
@@ -95,9 +93,7 @@ jobs:
           with:
               node-version: 22
 
-        - uses: pnpm/action-setup@v2
-          with:
-              version: 10.0.0
+        - uses: pnpm/action-setup@v4
         # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
         - name: Install dependencies
           run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
