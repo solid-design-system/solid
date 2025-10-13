@@ -259,7 +259,7 @@ describe('<sd-datepicker>', () => {
       input.focus();
       await el.updateComplete;
 
-      expect(el.open).to.be.true;
+      expect(input.ariaExpanded).to.equal('true');
       const before = input.value;
       await sendKeys({ type: '15012024' });
       await el.updateComplete;
@@ -272,7 +272,7 @@ describe('<sd-datepicker>', () => {
       input.focus();
       await el.updateComplete;
 
-      expect(el.open).to.be.false;
+      expect(input.ariaExpanded).to.equal('false');
       const day = el.shadowRoot!.querySelector<HTMLButtonElement>('button.day');
       if (day) {
         expect(day.getAttribute('aria-disabled')).to.equal('true');
