@@ -19,3 +19,4 @@ packages/tokens/src/tokens.json
 packages/autocomplete/src
 .changeset/*.md
 .changeset/pre.json
+packages/docs/.storybook/solid-tw-configuration.json

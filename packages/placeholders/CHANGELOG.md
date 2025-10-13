@@ -1,5 +1,20 @@
 # @solid-design-system/placeholders
 
+## 2.1.3
+
+### Patch Changes
+
+- - Update pnpm to 10.17 _[`#2522`](https://github.com/solid-design-system/solid/pull/2522) [`7cc6bb7`](https://github.com/solid-design-system/solid/commit/7cc6bb7bdfc9ccb26c2ecfa58b27021d15379312) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add minimumReleaseAge to 5 days
+  - Update all actions to ensure that they're using the correct version
+
+## 2.1.2
+
+### Patch Changes
+
+- Improve TypeScript support for Faker _[`#2513`](https://github.com/solid-design-system/solid/pull/2513) [`19ea42a`](https://github.com/solid-design-system/solid/commit/19ea42a59dcb1747080b93278dc7e595e9c167f6) [@mariohamann](https://github.com/mariohamann)_
+
 ## 2.1.1
 
 ### Patch Changes
