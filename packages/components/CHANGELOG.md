@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.15.9
+
+### Patch Changes
+
+- Fixed `sd-radio-button` style when in `checked` and `disabled` state. _[`#2537`](https://github.com/solid-design-system/solid/pull/2537) [`9776ac9`](https://github.com/solid-design-system/solid/commit/9776ac999d176b394477de505b48deb63d3817f3) [@smfonseca](https://github.com/smfonseca)_
+
 ## 5.15.8
 
 ### Patch Changes
