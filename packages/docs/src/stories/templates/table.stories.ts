@@ -1232,7 +1232,7 @@ export const multiSelectTable = {
         <thead>
           <tr class="">
             <th class="sd-table-cell sd-table-cell--bg-white text-center text-sm leading-none" scope="col">
-              <sd-checkbox class="hide-label block mx-auto" id="select-all" size="sm" indeterminate
+              <sd-checkbox class="hide-label block mx-auto" id="select-all" size="sm" indeterminate tabindex="0"
                 >Select all</sd-checkbox
               >
             </th>
@@ -1246,7 +1246,9 @@ export const multiSelectTable = {
         <tbody class="selectable-rows">
           <tr class="leading-none">
             <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
-              <sd-checkbox class="hide-label block mx-auto" size="sm">Select PrivatFonds: Flexibel</sd-checkbox>
+              <sd-checkbox class="hide-label block mx-auto" size="sm" tabindex="0"
+                >Select PrivatFonds: Flexibel</sd-checkbox
+              >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-link href="javascript:void(0)">PrivatFonds: Flexibel</sd-link>
@@ -1268,7 +1270,7 @@ export const multiSelectTable = {
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
-              <sd-checkbox class="hide-label block mx-auto" size="sm" checked
+              <sd-checkbox class="hide-label block mx-auto" size="sm" checked tabindex="0"
                 >Select PrivatFonds: Flexibel pro</sd-checkbox
               >
             </td>
@@ -1292,7 +1294,7 @@ export const multiSelectTable = {
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
-              <sd-checkbox class="hide-label block mx-auto" size="sm" checked
+              <sd-checkbox class="hide-label block mx-auto" size="sm" checked tabindex="0"
                 >Select PrivatFonds: Konsequent</sd-checkbox
               >
             </td>
@@ -1316,7 +1318,9 @@ export const multiSelectTable = {
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
-              <sd-checkbox class="hide-label block mx-auto" size="sm">Select PrivatFonds: Konsequent pro</sd-checkbox>
+              <sd-checkbox class="hide-label block mx-auto" size="sm" tabindex="0"
+                >Select PrivatFonds: Konsequent pro</sd-checkbox
+              >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-link href="javascript:void(0)">PrivatFonds: Konsequent pro</sd-link>
@@ -1338,7 +1342,9 @@ export const multiSelectTable = {
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
-              <sd-checkbox class="hide-label block mx-auto" size="sm">Select PrivatFonds: Kontrolliert</sd-checkbox>
+              <sd-checkbox class="hide-label block mx-auto" size="sm" tabindex="0"
+                >Select PrivatFonds: Kontrolliert</sd-checkbox
+              >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-link href="javascript:void(0)">PrivatFonds: Kontrolliert</sd-link>
@@ -1360,7 +1366,9 @@ export const multiSelectTable = {
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
-              <sd-checkbox class="hide-label block mx-auto" size="sm">Select PrivatFonds: Kontrolliert pro</sd-checkbox>
+              <sd-checkbox class="hide-label block mx-auto" size="sm" tabindex="0"
+                >Select PrivatFonds: Kontrolliert pro</sd-checkbox
+              >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-link href="javascript:void(0)">PrivatFonds: Kontrolliert pro</sd-link>
@@ -1382,7 +1390,7 @@ export const multiSelectTable = {
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
-              <sd-checkbox class="hide-label block mx-auto" size="sm" checked
+              <sd-checkbox class="hide-label block mx-auto" size="sm" checked tabindex="0"
                 >Select PrivatFonds: Nachhaltig</sd-checkbox
               >
             </td>
@@ -1406,7 +1414,9 @@ export const multiSelectTable = {
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
-              <sd-checkbox class="hide-label block mx-auto" size="sm">Select Uni21.Jahrhundert -net-</sd-checkbox>
+              <sd-checkbox class="hide-label block mx-auto" size="sm" tabindex="0"
+                >Select Uni21.Jahrhundert -net-</sd-checkbox
+              >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-link href="javascript:void(0)"> Uni21.Jahrhundert -net- </sd-link>
@@ -1428,7 +1438,9 @@ export const multiSelectTable = {
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
-              <sd-checkbox class="hide-label block mx-auto" size="sm">Select UniAbsoluterErtrag -net- A</sd-checkbox>
+              <sd-checkbox class="hide-label block mx-auto" size="sm" tabindex="0"
+                >Select UniAbsoluterErtrag -net- A</sd-checkbox
+              >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-link href="javascript:void(0)">UniAbsoluterErtrag -net- A</sd-link>
@@ -1450,7 +1462,9 @@ export const multiSelectTable = {
           </tr>
           <tr>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-center text-sm leading-none">
-              <sd-checkbox class="hide-label block mx-auto" size="sm">Select UniAbsoluterErtrag A</sd-checkbox>
+              <sd-checkbox class="hide-label block mx-auto" size="sm" tabindex="0"
+                >Select UniAbsoluterErtrag A</sd-checkbox
+              >
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-link href="javascript:void(0)">UniAbsoluterErtrag A</sd-link>
@@ -1528,33 +1542,33 @@ export const multiSelectTable = {
       function handleSelectAllToggle() {
         const checkboxes = tbody.querySelectorAll('sd-checkbox');
         const shouldCheck = !selectAllCheckbox.checked;
+        selectAllCheckbox.checked = shouldCheck;
         checkboxes.forEach(cb => (cb.checked = shouldCheck));
         updateUI();
       }
 
-      // Handle row checkbox interactions (click and keyboard)
-      tbody?.addEventListener('click', e => {
-        const checkbox = e.target.closest('sd-checkbox');
-        handleCheckboxToggle(checkbox);
-      });
+      function handleEvent(e, isSelectAll = false) {
+        if (e.type === 'keydown' && !['Space', 'Enter', ' '].includes(e.key)) {
+          return;
+        }
 
-      tbody?.addEventListener('keydown', e => {
-        if (e.key === ' ' || e.key === 'Enter') {
-          e.preventDefault(); // Prevent page scroll on space
+        if (e.type === 'keydown') {
+          e.preventDefault();
+        }
+
+        if (isSelectAll) {
+          handleSelectAllToggle();
+        } else {
           const checkbox = e.target.closest('sd-checkbox');
           handleCheckboxToggle(checkbox);
         }
-      });
+      }
 
-      // Handle select-all checkbox interactions (click and keyboard)
-      selectAllCheckbox?.addEventListener('click', handleSelectAllToggle);
+      tbody?.addEventListener('click', e => handleEvent(e, false));
+      tbody?.addEventListener('keydown', e => handleEvent(e, false));
 
-      selectAllCheckbox?.addEventListener('keydown', e => {
-        if (e.key === ' ' || e.key === 'Enter') {
-          e.preventDefault(); // Prevent page scroll on space
-          handleSelectAllToggle();
-        }
-      });
+      selectAllCheckbox?.addEventListener('click', e => handleEvent(e, true));
+      selectAllCheckbox?.addEventListener('keydown', e => handleEvent(e, true));
 
       updateUI();
     </script>
