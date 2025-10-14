@@ -37,29 +37,33 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
 
   process(token, dictionary, options) {
     const { path, variant } = this.processTokenPath(token);
+    const coreColors = this.#getCoreColors(dictionary, variant);
     if (this.skip.includes(path[0])) return [];
 
-    const isCoreColor = this.#isUtilityToken(path);
-    if (!isCoreColor && !token.path[2].startsWith('sd-')) return [];
+    const isUtility = this.#isUtilityToken(path);
+    const isCoreColor = this.#isCoreToken(path);
+    if (!isUtility && !token.path[2].startsWith('sd-')) return [];
 
     const fallback = this.#getFallbackColor(token);
-    const processed = isCoreColor
+    const processed = isUtility
       ? this.#processUtilityToken(token)
-      : this.#processSemanticToken(token, dictionary, options);
+      : this.#processComponentToken(token, dictionary, options);
 
     const cssvariables = [];
 
-    if (variant === options.defaultTheme) {
+    if (!isCoreColor && variant === options.defaultTheme) {
+      const cssvar = processed.cssvar ?? processed.name;
+
       cssvariables.push({
         type: processed.type,
         name: processed.name,
-        value: this.cssvar(processed.cssvar ?? processed.name, this.cssvar(fallback)),
+        value: this.cssvar(cssvar, cssvar.replace('--', '') === fallback ? undefined : this.cssvar(fallback)),
         properties: processed.properties,
         variant: 'default'
       });
     }
 
-    if (isCoreColor && variant !== 'default') {
+    if (isUtility && isCoreColor && variant !== 'default') {
       const variable = {
         type: 'color',
         name: this.cssprefix(fallback),
@@ -67,20 +71,29 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
         variant
       };
 
-      /**
-       * In case a core variable was already defined in the current variant, but the value differs,
-       * then we should associate the color with the semantic variable instead.
-       */
-      const shouldOverrideSemanticVariable = !!this.processedHistory.find(
-        t => t.name === variable.name && t.variant === variable.variant && t.value !== variable.value
-      );
-
-      if (shouldOverrideSemanticVariable) {
-        variable.name = this.cssprefix(path.join('-'));
-      }
-
       cssvariables.push(variable);
       this.processedHistory.push(variable);
+    }
+
+    if (isUtility && !isCoreColor && variant !== 'default') {
+      const coreToken = path.slice(1);
+      coreToken.splice(1, 1);
+
+      const color = this.getTokenValue(token);
+      const coreColor = Object.values(coreColors).find(core => core.path.join('-') === coreToken.join('-'))?.value;
+
+      if (color !== coreColor) {
+        const replacement = Object.values(coreColors).find(core => core.value === color);
+        const variable = {
+          type: 'color',
+          name: this.cssprefix(processed.cssvar),
+          value: replacement ? this.cssvar(this.cssprefix(replacement.path.join('-').replace('-default', ''))) : color,
+          variant
+        };
+
+        cssvariables.push(variable);
+        this.processedHistory.push(variable);
+      }
     }
 
     return cssvariables;
@@ -94,13 +107,20 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     return token?.[0] === 'utilities';
   }
 
+  #isCoreToken(token) {
+    return (
+      this.#isUtilityToken(token) &&
+      !['icon-fill', 'border', 'background', 'text', 'background-transparent'].includes(token?.[2])
+    );
+  }
+
   #getFallbackColor(token) {
     const processed = this.processTokenPath(token);
-    const isCoreColor = this.#isUtilityToken(processed.path);
+    const isUtility = this.#isUtilityToken(processed.path);
 
     const fallback = processed.path.length > 4 ? processed.path.slice(3) : processed.path.slice(2);
     const name = `color-${fallback.join('-').replace('-default', '')}`;
-    return isCoreColor ? name : `${processed.path[0]}-${name}`;
+    return isUtility ? name : `${processed.path[0]}-${name}`;
   }
 
   #getCoreTokenFromColor(color, dictionary, options) {
@@ -118,7 +138,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       });
     });
 
-    return this.cleanupTokenName(`color-${found.path.at(-1)}`);
+    return this.cleanupTokenName(`color-${found?.path.at(-1)}`);
   }
 
   #processUtilityToken(token) {
@@ -134,7 +154,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     return { type: 'color', name: `--${name}` };
   }
 
-  #processSemanticToken(token, dictionary, options) {
+  #processComponentToken(token, dictionary, options) {
     const processed = this.processTokenPath(token);
 
     const name = processed.path.join('-');
@@ -147,5 +167,37 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     }
 
     return { type: 'utility', name: `--${name}`, properties: `@utility ${name} {\n  background-color: ${value};\n}` };
+  }
+
+  #getCoreColors(dictionary, variant) {
+    const root = dictionary?.tokens?.[variant]?.utilities;
+    if (!root || typeof root !== 'object') return [];
+
+    const results = [];
+    const stack = [root];
+
+    while (stack.length) {
+      const node = stack.pop();
+
+      if (node && typeof node === 'object' && 'path' in node) {
+        results.push({
+          path: node.path.slice(2).map(this.cleanupTokenName),
+          value: node.value
+        });
+        continue;
+      }
+
+      if (node && typeof node === 'object') {
+        for (const value of Object.values(node)) {
+          if (value && typeof value === 'object') stack.push(value);
+        }
+      }
+    }
+
+    return results.filter(
+      node =>
+        node.path[0] === 'color' &&
+        !['icon-fill', 'border', 'background', 'text', 'background-transparent'].includes(node.path[1])
+    );
   }
 }
