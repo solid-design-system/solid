@@ -21,3 +21,4 @@ packages/tokens/themes
 packages/autocomplete/src
 .changeset/*.md
 .changeset/pre.json
+packages/docs/.storybook/solid-tw-configuration.json

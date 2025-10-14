@@ -210,7 +210,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     | 'words'
     | 'characters';
 
-  /** Indicates whether the browser's autocorrect feature is on or off. */
   @property({ type: String, reflect: true }) autocorrect: 'off' | 'on';
 
   /**

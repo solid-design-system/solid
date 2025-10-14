@@ -1,5 +1,20 @@
 # @solid-design-system/docs
 
+## 1.29.1
+
+### Patch Changes
+
+- - Update pnpm to 10.17 _[`#2522`](https://github.com/solid-design-system/solid/pull/2522) [`7cc6bb7`](https://github.com/solid-design-system/solid/commit/7cc6bb7bdfc9ccb26c2ecfa58b27021d15379312) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add minimumReleaseAge to 5 days
+  - Update all actions to ensure that they're using the correct version
+
+## 1.29.0
+
+### Minor Changes
+
+- Introduced accessibility testing with Playwright in components. _[`#2435`](https://github.com/solid-design-system/solid/pull/2435) [`27f919c`](https://github.com/solid-design-system/solid/commit/27f919c157da0772876a855f3a6c0003118e0bfe) [@mariohamann](https://github.com/mariohamann)_
+
 ## 1.28.6
 
 ### Patch Changes

@@ -1,5 +1,34 @@
 # @solid-design-system/components
 
+## 5.15.11
+
+### Patch Changes
+
+- Improvements done on the `sd-select`: _[`#2533`](https://github.com/solid-design-system/solid/pull/2533) [`45ac618`](https://github.com/solid-design-system/solid/commit/45ac6183c5c88315788894069d93bec1ff0c8ba9) [@smfonseca](https://github.com/smfonseca)_
+  - Prevent input wrapper elements from overflowing.
+  - Better handling of option highlight when `multiple` or `useTags` is enabled. If no option is selected, the first is highlighted, otherwise, the first selected option is highlighted instead.
+
+## 5.15.10
+
+### Patch Changes
+
+- Adjusted `sd-breadcrumb` font-size to `14px` instead of `16px`. _[`#2534`](https://github.com/solid-design-system/solid/pull/2534) [`1ebd640`](https://github.com/solid-design-system/solid/commit/1ebd6403350b07cbfb8d604732191db7ce880924) [@smfonseca](https://github.com/smfonseca)_
+
+## 5.15.9
+
+### Patch Changes
+
+- Fixed `sd-radio-button` style when in `checked` and `disabled` state. _[`#2537`](https://github.com/solid-design-system/solid/pull/2537) [`9776ac9`](https://github.com/solid-design-system/solid/commit/9776ac999d176b394477de505b48deb63d3817f3) [@smfonseca](https://github.com/smfonseca)_
+
+## 5.15.8
+
+### Patch Changes
+
+- - Update pnpm to 10.17 _[`#2522`](https://github.com/solid-design-system/solid/pull/2522) [`7cc6bb7`](https://github.com/solid-design-system/solid/commit/7cc6bb7bdfc9ccb26c2ecfa58b27021d15379312) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add minimumReleaseAge to 5 days
+  - Update all actions to ensure that they're using the correct version
+
 ## 5.15.7
 
 ### Patch Changes

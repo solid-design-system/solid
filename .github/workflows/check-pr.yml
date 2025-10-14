@@ -5,52 +5,81 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
-    # quality-gate:
-    #     name: Verify monorepo
-    #     runs-on: ubuntu-latest
-    #     if: github.event.pull_request.draft == false
-    #     container:
-    #         image: mcr.microsoft.com/playwright:v1.54.2-noble
-    #     strategy:
-    #       matrix:
-    #         package:
-    #           - packages/components
-    #           - packages/docs
-    #           - packages/placeholders
-    #           - packages/styles
-    #           - packages/theming
-    #           - packages/tokens
-    #           - packages/eslint-plugin
+    quality-gate:
+        name: Verify
+        runs-on: ubuntu-latest
+        if: github.event.pull_request.draft == false
+        container:
+            image: mcr.microsoft.com/playwright:v1.55.1-noble
+        strategy:
+          matrix:
+            package:
+              - packages/components
+              - packages/docs
+              - packages/placeholders
+              - packages/styles
+              - packages/theming
+              - packages/tokens
+              - packages/eslint-plugin
 
-    #     steps:
-    #         - name: Checkout
-    #           uses: actions/checkout@v4
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
 
-    #         - name: Install Node.js
-    #           uses: actions/setup-node@v4
-    #           with:
-    #               node-version: 22
+            - name: Install Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22
 
-    #         - uses: pnpm/action-setup@v2
-    #           name: Install pnpm
-    #           id: pnpm-install
-    #           with:
-    #               version: 10.0.0
-    #               run_install: false
+            - uses: pnpm/action-setup@v4
+              name: Install pnpm
+              id: pnpm-install
+              with:
+                  run_install: false
 
-    #         - name: Install dependencies
-    #           run: pnpm i
+            - name: Install dependencies
+              run: pnpm i
 
-    #         - name: Verify package
-    #           run: |
-    #             echo "Running pnpm verify in ${{ matrix.package }}"
-    #             cd ${{ matrix.package }}
-    #             pnpm verify
+            - name: Verify package
+              run: |
+                echo "Running pnpm verify in ${{ matrix.package }}"
+                cd ${{ matrix.package }}
+                pnpm verify
+
+    playwright-tests:
+      name: Verify (docs/a11y-tree)
+      runs-on: ubuntu-latest
+      if: github.event.pull_request.draft == false
+      container:
+        image: mcr.microsoft.com/playwright:v1.55.0-noble
+
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+
+        - name: Install Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: 22
+
+        - uses: pnpm/action-setup@v4
+          name: Install pnpm
+          with:
+            run_install: false
+
+        - name: Install dependencies
+          run: pnpm i
+
+        - name: Run Playwright tests
+          run: |
+            cd packages/docs
+            pnpm run build
+            pnpm run test.a11y
 
     # Check Chromatic for visual changes after all other checks have passed
     chromatic-deployment-pr:
       name: Verify Chromatic
-      # needs: [quality-gate]
+      needs: [quality-gate, playwright-tests]
       if: ${{!contains(github.event.pull_request.title, '[skip chromatic]') && !startsWith(github.event.pull_request.title, 'chore(security deps):')}}
       runs-on: ubuntu-latest
       steps:
@@ -64,9 +93,7 @@ jobs:
           with:
               node-version: 22
 
-        - uses: pnpm/action-setup@v2
-          with:
-              version: 10.0.0
+        - uses: pnpm/action-setup@v4
         # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
         - name: Install dependencies
           run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i

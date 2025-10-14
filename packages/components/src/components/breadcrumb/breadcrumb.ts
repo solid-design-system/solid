@@ -169,7 +169,7 @@ export default class SdBreadcrumb extends SolidElement {
 
       sd-dropdown,
       ::slotted(sd-breadcrumb-item) {
-        @apply hidden lg:flex items-center;
+        @apply hidden lg:flex items-center text-sm;
       }
     `
   ];
