@@ -80,7 +80,7 @@
     "storybook": "^9.1.5",
     "react": "^19.1.1",
     "tailwindcss": "^4.1.13",
-    "typescript": "5.9.3",
+    "typescript": "5.8.3",
     "user-agent-data-types": "^0.4.2",
     "vite-node": "^3.2.4",
     "vite-plugin-cem": "^0.8.4",
