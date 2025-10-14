@@ -144,20 +144,20 @@
   --text-color-white: var(--sd-color-text-white, var(--sd-color-white));
 }
 
-@utility components-sd-breadcrumb-separator-color {
-  background-color: var(--sd-components-sd-breadcrumb-separator-color, var(--sd-color-400));
+@utility sd-breadcrumb-separator-color {
+  background-color: var(--sd-breadcrumb-separator-color, var(--sd-color-400));
 }
 
-@utility components-sd-button---primary---active-color-background {
-  background-color: var(--sd-components-sd-button---primary---active-color-background, var(--sd-color-default));
+@utility sd-button--primary--active-color-background {
+  background-color: var(--sd-button--primary--active-color-background, var(--sd-color-default));
 }
 
-@utility components-sd-header-color-background {
-  background-color: var(--sd-components-sd-header-color-background, var(--sd-color-default));
+@utility sd-header-color-background {
+  background-color: var(--sd-header-color-background, var(--sd-color-default));
 }
 
-@utility components-sd-tag---selected-color-text {
-  color: var(--sd-components-sd-tag---selected-color-text, var(--sd-color-default));
+@utility sd-tag--selected-color-text {
+  color: var(--sd-tag--selected-color-text, var(--sd-color-default));
 }
 
 @utility varspacing-* {

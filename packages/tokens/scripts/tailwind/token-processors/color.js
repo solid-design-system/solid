@@ -157,7 +157,11 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
   #processComponentToken(token, dictionary, options) {
     const processed = this.processTokenPath(token);
 
-    const name = processed.path.join('-');
+    const name = processed.path
+      .slice(1)
+      .map(p => p.replace('--', '-'))
+      .join('-');
+
     const value = this.cssvar(name, this.cssvar(this.#getCoreTokenFromColor(token.value, dictionary, options)));
 
     for (const [property, cssproperty] of Object.entries(this.semantic)) {
