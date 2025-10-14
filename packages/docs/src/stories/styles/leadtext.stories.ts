@@ -64,7 +64,7 @@ export const Size = {
 
 export const Inverted = {
   render: () => html`
-    <div class="bg-primary-alternative p-4">
+    <div class="bg-primary-constant p-4">
       <div class="sd-leadtext sd-leadtext--inverted">
         Large Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
         phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.

@@ -7,47 +7,43 @@ import { toKebabCase } from './utils.js';
 export class SpacingTokenProcessor extends BaseTokenProcessor {
   constructor(options = {}) {
     super(options);
-    this.defaultPrefix = 'spacing';
 
-    // Define special prefixes for specific token categories
-    this.specialPrefixes = {
+    // Define special mapping of prefixes for specific token names
+    this.spacingTokens = {
       aspect: 'aspect',
       sizing: 'sizing',
+      spacing: 'spacing',
       rounded: 'radius',
       'border-width': 'border-width',
       opacity: 'opacity'
     };
-
-    this.specialOverrides = {
-      spacing: 'spacing',
-      sizing: 'spacing',
-      opacity: 'opacity',
-      radius: 'border-radius'
-    };
   }
 
   canProcess(token) {
-    if (!['dimension', 'sizing', 'spacing', ...Object.keys(this.specialPrefixes)].includes(token.type)) {
-      return false;
-    }
-
-    return true;
+    return (
+      ['dimension'].includes(token.type) ||
+      (token.path.includes('utilities') && Object.keys(this.spacingTokens).some(p => token.path[2] === p))
+    );
   }
 
   process(token) {
     const processed = this.processTokenPath(token);
     let value = this.getTokenValue(token);
-    let prefix = this.defaultPrefix;
+    let prefix = processed.path[1];
 
-    if (processed.path[0] && this.specialPrefixes[processed.path[0]]) {
-      prefix = this.specialPrefixes[processed.path[0]];
-      processed.path = processed.path.slice(1);
+    if (processed.path.length === 1) return [];
+
+    if (processed.path[0] && this.spacingTokens[prefix]) {
+      prefix = this.spacingTokens[prefix];
+      processed.path = processed.path.slice(2);
     } else {
       const prefixKebab = toKebabCase(prefix);
-      if (processed.path[0] === prefixKebab) {
-        processed.path = processed.path.slice(1);
+      if (processed.path[1] === prefixKebab) {
+        processed.path = processed.path.slice(2);
       }
     }
+
+    if (!processed.path.length) return [];
 
     switch (prefix) {
       case 'aspect':
@@ -56,7 +52,10 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
         break;
       case 'opacity':
         // Opacity needs to be in percentage so it doesn't break tailwinds color-mix.
-        value = `${(value * 100).toFixed(0)}%`;
+        value = `${value}%`;
+        break;
+      default:
+        value = `${value / 16}rem`;
         break;
     }
 
@@ -64,16 +63,19 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
     const variable = {
       type: 'spacing',
       name: `--${name}`,
-      value: this.cssvar(name),
-      variant: 'default'
+      variant: 'default',
+      value: this.cssvar(name)
     };
 
-    const core = {
-      ...variable,
-      name: this.cssprefix(name),
-      value,
-      variant: processed.variant
-    };
+    const core =
+      processed.variant !== 'default'
+        ? {
+            ...variable,
+            name: this.cssprefix(name),
+            value,
+            variant: processed.variant
+          }
+        : undefined;
 
     if (name === 'spacing-1') {
       return [

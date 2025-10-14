@@ -56,7 +56,7 @@ export class BaseTokenProcessor {
    * Cleans the token name by removing and replacing some special characters
    */
   cleanupTokenName(name) {
-    return name.replaceAll('*', '').replaceAll('|', '-');
+    return name.replaceAll('*', '').replaceAll('|', '-').replace('', '');
   }
 
   /**
@@ -87,24 +87,14 @@ export class BaseTokenProcessor {
     return toKebabCase(path);
   }
 
-  /**
-   * Returns the variable value as a css var() with possibility to override
-   */
-  getFormattedValue({ prefix, name, value }) {
-    const fallback = ['--sd-'];
+  cssprefix(variable) {
+    let name = variable.startsWith('--') ? variable.slice(2) : variable;
 
-    if (prefix) {
-      fallback.push(`${prefix}-`);
+    if (name.startsWith('sd-')) {
+      name = name.slice(3);
     }
 
-    fallback.push(name);
-
-    const variable = fallback.join('');
-    return { variable, value };
-  }
-
-  cssprefix(variable) {
-    return `--sd-${variable.startsWith('--') ? variable.slice(2) : variable}`;
+    return `--sd-${name}`;
   }
 
   cssvar(variable, fallback) {

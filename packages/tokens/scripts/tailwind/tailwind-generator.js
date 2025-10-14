@@ -107,7 +107,7 @@ export class TailwindCSSGenerator {
       .map(variant => {
         const scheme = variant.includes('dark') ? 'dark' : 'light';
         const variables = [`color-scheme: ${scheme};\n`, ...processedTokens[variant]];
-        const selectors = [`.sd-${variant}`];
+        const selectors = [`.sd-theme-${variant}`];
 
         if (scheme === 'light') {
           selectors.unshift(':root');

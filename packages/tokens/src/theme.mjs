@@ -65,5 +65,5 @@ const theme = readFileSync(path.join(dir, './sd-ui-semantic-light.css'), { encod
 export default {
   base: extractVariables(tailwind, '@theme inline'),
   utilities: extractUtilities(tailwind),
-  theme: extractVariables(theme, ':root, .sd-ui-semantic-light')
+  theme: extractVariables(theme, ':root, .sd-theme-ui-semantic-light')
 };

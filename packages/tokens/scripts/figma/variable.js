@@ -1,5 +1,5 @@
 import { FigmaBase } from './base.js';
-import { formatColor } from './utils.js';
+import { formatColor, toKebabCase } from './utils.js';
 
 export class FigmaVariable extends FigmaBase {
   constructor(variable, dictionary) {
@@ -13,14 +13,15 @@ export class FigmaVariable extends FigmaBase {
     return this.collection.modes.map(mode => ({ id: mode.modeId, name: mode.name }));
   }
 
-  #alias(id) {
+  #alias(id, mode) {
     const alias = Object.values(this.variables).find(v => v.id === id);
     if (!alias) return null;
 
     const name = alias.name.toLowerCase();
     const type = alias.resolvedType.toLowerCase();
 
-    return { type, value: `{core.${name.replaceAll('/', '.')}}` };
+    const theme = name.startsWith('utilities/') ? toKebabCase(mode.name.replaceAll(' ', '-')) : 'core';
+    return { type, value: `{${theme}.${name.replaceAll('/', '.')}}` };
   }
 
   #value(mode) {
@@ -29,7 +30,7 @@ export class FigmaVariable extends FigmaBase {
 
     const isAlias = typeof value === 'object' && 'type' in value && value.type === 'VARIABLE_ALIAS';
     if (isAlias) {
-      return this.#alias(value.id);
+      return this.#alias(value.id, mode);
     }
 
     if (type === 'COLOR') {
@@ -48,7 +49,6 @@ export class FigmaVariable extends FigmaBase {
   resolve() {
     const { name, description } = this.self;
     const modes = this.#getModes().map(mode => ({ ...mode, ...this.#value(mode) }));
-
     return { name: name.toLowerCase(), description, modes };
   }
 }

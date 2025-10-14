@@ -12,7 +12,7 @@ import { sort } from '@tamtamchik/json-deep-sort';
  * Validates environment variables and returns branch ID and headers
  */
 const getApiConfig = () => {
-  const branchId = process.env.FIGMA_FILE_ID || 'dBb3Zm5i3EL3mC1VPUWiBe';
+  const branchId = process.env.FIGMA_FILE_ID || 'apbvGbLB19BODT4Cih8OmO';
   if (!process.env.FIGMA_FILE_ID) {
     console.log('No FIGMA_FILE_ID provided, using default branch ID:', branchId);
   }

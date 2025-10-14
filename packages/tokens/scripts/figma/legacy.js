@@ -181,8 +181,8 @@ export class FigmaLegacyTokens {
   }
 
   #getTokens() {
-    const nonLegacy = ['background', 'icon-fill', 'border', '*background-transparent', 'text'];
-    return Object.fromEntries(Object.entries(this.legacy['UI Semantic']).filter(([key]) => !nonLegacy.includes(key)));
+    const legacyTokens = ['duration'];
+    return Object.fromEntries(Object.entries(this.legacy['UI Semantic']).filter(([key]) => legacyTokens.includes(key)));
   }
 
   #getTokensByType(library, type) {
