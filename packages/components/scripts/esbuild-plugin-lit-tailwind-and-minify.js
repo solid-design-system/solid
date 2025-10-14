@@ -9,7 +9,10 @@ import postcss from 'postcss';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-export async function processTailwind(source, options = { standalone: false, minify: false, storybook: false }) {
+export async function processTailwind(
+  source,
+  options = { standalone: false, minify: false, storybook: false, from: undefined }
+) {
   const base = path.resolve(fileURLToPath(import.meta.url), '../../');
 
   const prepend = [
@@ -28,7 +31,7 @@ export async function processTailwind(source, options = { standalone: false, min
      * Step 1: Compile the css content
      */
     const compiler = await compile(css, {
-      base,
+      base: options.from ? options.from : base,
       onDependency: () => {}
     });
 
