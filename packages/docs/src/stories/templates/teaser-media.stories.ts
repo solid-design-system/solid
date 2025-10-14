@@ -48,7 +48,7 @@ export const TeaserMediaWithLink = {
             European commercial real estate markets.
           </p>
           <div>
-            <sd-button href="#" target="_blank" variant="primary" inverted>Research view</sd-button>
+            <sd-button href="#" target="_blank" variant="primary" inverted>View research</sd-button>
           </div>
         </div>
       </sd-teaser-media>
