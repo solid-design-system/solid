@@ -32,7 +32,7 @@
     "test.a11y": "vite-node scripts/node-generate-a11y.js && npx playwright test --update-snapshots --update-source-method=overwrite",
     "build.chromatic": "pnpm build && node ./scripts/node-optimize-chromatic.cjs",
     "chromatic": "npx chromatic -b build.chromatic",
-    "build": "storybook build --output-dir dist/storybook && vite-node scripts/node-optimize-storybook.js",
+    "build": "pnpm build/components && pnpm build/styles && storybook build --output-dir dist/storybook && vite-node scripts/node-optimize-storybook.js",
     "build/components": "cd ../components && pnpm build",
     "build/tailwind": "cd ../components && pnpm build.tailwind",
     "build/styles": "cd ../styles && pnpm build",
