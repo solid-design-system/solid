@@ -63,7 +63,7 @@ export class FigmaClient extends FigmaBase {
     this.processed = Object.entries(themes)
       .map(([name, tokens]) => ({
         name,
-        tokens: { core: { ...legacy.core, ...core }, ...tokens }
+        tokens: { core: { ...legacy.core, ...core }, ...legacy.tokens, ...tokens }
       }))
       .map(theme => {
         theme.tokens.outline = theme.tokens.border;

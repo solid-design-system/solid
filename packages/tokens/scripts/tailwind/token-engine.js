@@ -62,7 +62,14 @@ export class TokenProcessingEngine {
    */
   processTokens(dictionary, options) {
     const result = {
-      baseVars: ['--sizing-varspacing: var(--tw-varspacing);', '--spacing-varspacing: var(--tw-varspacing);'],
+      baseVars: [
+        '--sizing-varspacing: var(--tw-varspacing);',
+        '--spacing-varspacing: var(--tw-varspacing);',
+        '--background-color-primary-400: var(--sd-background-color-primary-400, var(--sd-color-primary-400));',
+        '--outline-color-primary: var(--sd-border-color-primary, var(--sd-color-primary));',
+        '--outline-color-error: var(--sd-border-color-error, var(--sd-color-error));',
+        '--text-color-white-constant: var(--sd-text-color-white-constant, --sd-color-white-constant);'
+      ],
       utilities: [],
       spacing: [],
       compositions: [],

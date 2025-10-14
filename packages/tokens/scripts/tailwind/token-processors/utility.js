@@ -15,7 +15,10 @@ export class UtilityTokenProcessor extends BaseTokenProcessor {
   }
 
   canProcess(token) {
-    return token.type === 'utility';
+    return (
+      token.type === 'utility' ||
+      (token.path.includes('utilities') && !['color', 'shadow'].some(group => token.path.includes(group)))
+    );
   }
 
   process(token) {

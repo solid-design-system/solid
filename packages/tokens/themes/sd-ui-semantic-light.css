@@ -71,6 +71,8 @@
   --sd-color-white-constant: #ffffff;
   --sd-color-white: #ffffff;
   --sd-drop-shadow: 0 1px 3px rgba(81, 81, 81, 0.75);
+  --sd-font-weight-bold: 700;
+  --sd-font-weight-normal: 400;
   --sd-radius-default: 0.25rem;
   --sd-radius-full: 624.9375rem;
   --sd-radius-lg: 0.5rem;
@@ -106,4 +108,11 @@
   --sd-spacing-6: 1.5rem;
   --sd-spacing-8: 2rem;
   --sd-spacing: 0.25rem;
+  --sd-text-2xl: 1.75rem;
+  --sd-text-3xl: 2rem;
+  --sd-text-4xl: 2.5rem;
+  --sd-text-base: 1rem;
+  --sd-text-lg: 1.25rem;
+  --sd-text-sm: 0.875rem;
+  --sd-text-xl: 1.5rem;
 }

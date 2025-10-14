@@ -9,9 +9,10 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
     super(options);
 
     // Define special mapping of prefixes for specific token names
-    this.specialPrefixes = {
+    this.spacingTokens = {
       aspect: 'aspect',
       sizing: 'sizing',
+      spacing: 'spacing',
       rounded: 'radius',
       'border-width': 'border-width',
       opacity: 'opacity'
@@ -19,7 +20,10 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
   }
 
   canProcess(token) {
-    return ['dimension', 'sizing', 'spacing', 'float', ...Object.keys(this.specialPrefixes)].includes(token.type);
+    return (
+      ['dimension'].includes(token.type) ||
+      (token.path.includes('utilities') && Object.keys(this.spacingTokens).some(p => token.path[2] === p))
+    );
   }
 
   process(token) {
@@ -29,8 +33,8 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
 
     if (processed.path.length === 1) return [];
 
-    if (processed.path[0] && this.specialPrefixes[prefix]) {
-      prefix = this.specialPrefixes[prefix];
+    if (processed.path[0] && this.spacingTokens[prefix]) {
+      prefix = this.spacingTokens[prefix];
       processed.path = processed.path.slice(2);
     } else {
       const prefixKebab = toKebabCase(prefix);
