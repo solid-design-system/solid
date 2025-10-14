@@ -1,5 +1,13 @@
 # @solid-design-system/components
 
+## 5.15.11
+
+### Patch Changes
+
+- Improvements done on the `sd-select`: _[`#2533`](https://github.com/solid-design-system/solid/pull/2533) [`45ac618`](https://github.com/solid-design-system/solid/commit/45ac6183c5c88315788894069d93bec1ff0c8ba9) [@smfonseca](https://github.com/smfonseca)_
+  - Prevent input wrapper elements from overflowing.
+  - Better handling of option highlight when `multiple` or `useTags` is enabled. If no option is selected, the first is highlighted, otherwise, the first selected option is highlighted instead.
+
 ## 5.15.10
 
 ### Patch Changes
