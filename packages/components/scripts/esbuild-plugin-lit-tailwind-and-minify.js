@@ -3,16 +3,13 @@ import { minifyHTMLLiterals } from 'minify-html-literals';
 import { readFile } from 'node:fs/promises';
 import { Scanner } from '@tailwindcss/oxide';
 import autoprefixer from 'autoprefixer';
-import cssnano from 'cssnano';
 import cssnested from 'postcss-nested';
 import postcss from 'postcss';
 import path from 'node:path';
+import tailwindcss from '@tailwindcss/postcss';
 import { fileURLToPath } from 'node:url';
 
-export async function processTailwind(
-  source,
-  options = { standalone: false, minify: false, storybook: false, from: undefined }
-) {
+export async function processTailwind(source, options = { standalone: false, storybook: false, from: undefined }) {
   const base = path.resolve(fileURLToPath(import.meta.url), '../../');
 
   const prepend = [
@@ -52,26 +49,11 @@ export async function processTailwind(
     /**
      * Step 2: Use PostCSS to resolve nested CSS, autoprefix and minify
      */
-    const plugins = [cssnested, autoprefixer];
-
-    if (options.minify) {
-      plugins.push(cssnano);
-    }
+    const plugins = [cssnested, tailwindcss, autoprefixer];
 
     let result = await postcss(plugins)
       .process(compiled, { from: undefined })
       .then(r => r.css);
-
-    /**
-     * Step 3: Get the tailwind properties and inject them into the host,
-     * because the "@layer properties" has problems with host and shadow root.
-     */
-    const tailwindProperties =
-      result.match(/\*,\s*::before,\s*::after,\s*::backdrop\s*\{([\s\S]*?)\}/)?.[1].trim() ?? null;
-
-    if (tailwindProperties) {
-      result = `${result} :host { ${tailwindProperties} }`;
-    }
 
     return result;
   } catch (error) {
@@ -84,12 +66,9 @@ export async function processTailwind(
  * Escapes tailwind special characters in a string and wraps it in a CSS template literal.
  *
  * @param source - The source string where the replacement occurs.
- * @param options - The options to process the css tags.
- *  - base (String): Base directory from where the processor should start relative paths
- *  - minify (boolean): True if is should minify the css content.
  * @returns The updated source string with the replacement applied.
  */
-export async function processCssTags(source, minify = false) {
+export async function processCssTags(source) {
   const cssTagRegex = /css`([^`]*)`/g;
   let match;
 
@@ -97,8 +76,7 @@ export async function processCssTags(source, minify = false) {
     const [fullMatch, cssContent] = match;
 
     const result = await processTailwind(cssContent, {
-      standalone: source.includes('default class SolidElement'),
-      minify
+      standalone: source.includes('default class SolidElement')
     });
     source = source.replace(
       fullMatch,
@@ -111,9 +89,7 @@ export async function processCssTags(source, minify = false) {
   return source;
 }
 
-export function litTailwindAndMinifyPlugin(options) {
-  let minify = options?.minify ?? false;
-
+export function litTailwindAndMinifyPlugin(options = {}) {
   const defaultInclude = /\.(ts|js)$/; // Include .ts and .js files
   const defaultExclude = /node_modules/; // Exclude node_modules by default
 
@@ -133,7 +109,7 @@ export function litTailwindAndMinifyPlugin(options) {
         /**
          * Step 1: Process CSS in Lit `css` tagged template literals
          */
-        source = await processCssTags(source, { minify });
+        source = await processCssTags(source);
 
         /**
          * Step 2: Minify HTML literals

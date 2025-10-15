@@ -44,7 +44,7 @@ export default () => {
         name: 'docs-css-processor',
         async transform(code, id) {
           if (/\.css$/i.test(id)) {
-            code = await processTailwind(code, { minify: true, storybook: true });
+            code = await processTailwind(code, { storybook: true });
           }
 
           return { code };

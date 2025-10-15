@@ -14,7 +14,7 @@ for (const file of files) {
   const css = await fs.readFile(file, 'utf-8');
   const tailwind = path.join(fileURLToPath(import.meta.url), '../../../tokens/themes/tailwind.css');
 
-  const result = await processTailwind(`@reference '${tailwind}'; ${css}`, { from, minify: outdir !== 'dist' });
+  const result = await processTailwind(`@reference '${tailwind}'; ${css}`, { from });
 
   const outputPath = file.replace('src', outdir);
   const outputDir = dirname(outputPath);

@@ -41,7 +41,7 @@ export class TailwindCSSGenerator {
    * Generate source statement
    */
   generateSource() {
-    return this.css.source('../../components/src');
+    return this.css.source('../components/src');
   }
 
   /**

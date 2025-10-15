@@ -57,12 +57,7 @@ async function buildTheSource() {
     //
     external: alwaysExternal,
     splitting: true,
-    plugins: [
-      litTailwindAndMinifyPlugin({
-        base: process.cwd(),
-        minify: true
-      })
-    ]
+    plugins: [litTailwindAndMinifyPlugin()]
   };
 
   const npmConfig = {
