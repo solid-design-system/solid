@@ -68,7 +68,7 @@ export class TokenProcessingEngine {
         '--background-color-primary-400: var(--sd-background-color-primary-400, var(--sd-color-primary-400));',
         '--outline-color-primary: var(--sd-border-color-primary, var(--sd-color-primary));',
         '--outline-color-error: var(--sd-border-color-error, var(--sd-color-error));',
-        '--text-color-white-constant: var(--sd-text-color-white-constant, --sd-color-white-constant);'
+        '--text-color-white-constant: var(--sd-text-color-white-constant, var(--sd-color-white-constant));'
       ],
       utilities: [],
       spacing: [],

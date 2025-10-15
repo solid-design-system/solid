@@ -155,7 +155,7 @@
   --text-color-primary-800: var(--sd-color-text-primary-800, var(--sd-color-primary-800));
   --text-color-primary: var(--sd-color-text-primary, var(--sd-color-primary));
   --text-color-success: var(--sd-color-text-success, var(--sd-color-success));
-  --text-color-white-constant: var(--sd-text-color-white-constant, --sd-color-white-constant);
+  --text-color-white-constant: var(--sd-text-color-white-constant, var(--sd-color-white-constant));
   --text-color-white: var(--sd-color-text-white, var(--sd-color-white));
   --text-lg: var(--sd-text-lg);
   --text-sm: var(--sd-text-sm);
