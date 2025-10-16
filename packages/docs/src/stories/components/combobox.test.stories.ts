@@ -678,7 +678,7 @@ export const SampleForm = {
             constants: [
               ...sharedConstants,
               { type: 'attribute', name: 'label', value: 'Required' },
-              { type: 'attribute', name: 'name', value: 'required field' }
+              { type: 'attribute', name: 'name', value: 'required-field' }
             ],
             args
           })}
@@ -688,7 +688,7 @@ export const SampleForm = {
             constants: [
               ...sharedConstants,
               { type: 'attribute', name: 'label', value: 'Required multiple' },
-              { type: 'attribute', name: 'name', value: 'required multiple field' },
+              { type: 'attribute', name: 'name', value: 'required-multiple-field' },
               multipleConstant
             ],
             args
@@ -699,7 +699,7 @@ export const SampleForm = {
             constants: [
               ...sharedConstants,
               { type: 'attribute', name: 'label', value: 'Required multiple w/ tags' },
-              { type: 'attribute', name: 'name', value: 'required multiple tags field' },
+              { type: 'attribute', name: 'name', value: 'required-multiple-tags-field' },
               multipleConstant,
               { type: 'attribute', name: 'useTags', value: true }
             ],
@@ -708,27 +708,37 @@ export const SampleForm = {
         </div>
         <sd-button type="submit">Submit</sd-button>
       </form>
-      <script>
+      <script type="module">
+        const customErrorMessages = {
+          'required-field': 'Please select an option.',
+          'required-multiple-field': 'Please select at least one option.',
+          'required-multiple-tags-field': 'Please select at least one option.'
+        };
+
+        await Promise.all([customElements.whenDefined('sd-combobox'), customElements.whenDefined('sd-button')]);
+        const form = document.querySelector('#testForm');
+        const controls = Array.from(form.querySelectorAll('sd-select'));
+
+        controls.forEach(control => {
+          const name = control.getAttribute('name');
+          const message = customErrorMessages[name];
+          if (message) {
+            control.setCustomValidity(message);
+          }
+        });
+
         function handleSubmit(event) {
-          const form = document.querySelector('#testForm');
-          const sdComboboxes = Array.from(document.querySelectorAll('sd-combobox'));
+          event.preventDefault();
 
-          const isValid = sdCombobox => sdCombobox.checkValidity();
+          const formData = new FormData(form);
+          const formValues = Object.fromEntries(formData);
 
-          if (sdComboboxes.every(isValid)) {
-            event.preventDefault(); // Prevent the default form submission behavior
-
-            const formData = new FormData(form);
-            const formValues = Object.fromEntries(formData);
-            formValues['required multiple field'] = formData.getAll('required multiple field');
-            formValues['required multiple tags field'] = formData.getAll('required multiple tags field');
-            m;
-
-            alert('Form submitted successfully with the following values: ' + JSON.stringify(formValues, null, 2));
+          if (form.reportValidity()) {
+            alert('Form submitted with the following values: ' + JSON.stringify(formValues, null, 2));
           }
         }
 
-        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
+        form.addEventListener('submit', handleSubmit);
       </script>
     `;
   }
