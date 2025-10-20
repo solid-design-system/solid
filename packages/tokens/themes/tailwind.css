@@ -47,7 +47,6 @@
   --border-color-neutral-500: var(--sd-color-border-neutral-500, var(--sd-color-neutral-500));
   --border-color-neutral-600: var(--sd-color-border-neutral-600, var(--sd-color-neutral-600));
   --border-color-neutral-800: var(--sd-color-border-neutral-800, var(--sd-color-neutral-800));
-  --border-color-null: var(--sd-color-border-null, var(--sd-color-null));
   --border-color-primary-100: var(--sd-color-border-primary-100, var(--sd-color-primary-100));
   --border-color-primary-200: var(--sd-color-border-primary-200, var(--sd-color-primary-200));
   --border-color-primary-400: var(--sd-color-border-primary-400, var(--sd-color-primary-400));
@@ -230,6 +229,10 @@
   border-color: var(--sd-accordion--hover-color-border, var(--sd-color-200));
 }
 
+@utility sd-audio--inverted-color-border {
+  border-color: var(--sd-audio--inverted-color-border, var(--sd-color-default));
+}
+
 @utility sd-breadcrumb-separator-color {
   background-color: var(--sd-breadcrumb-separator-color, var(--sd-color-400));
 }
@@ -240,6 +243,10 @@
 
 @utility sd-button--primary--default--active-color-text {
   color: var(--sd-button--primary--default--active-color-text, var(--sd-color-200));
+}
+
+@utility sd-button--primary--default--default-color-background {
+  background-color: var(--sd-button--primary--default--default-color-background, var(--sd-color-default));
 }
 
 @utility sd-button--primary--default--default-color-icon-fill {
@@ -387,7 +394,7 @@
 }
 
 @utility sd-tag--default--hover-color-background {
-  background-color: var(--sd-tag--default--hover-color-background, var(--sd-color-default));
+  background-color: var(--sd-tag--default--hover-color-background, var(--sd-color-white-0));
 }
 
 @utility sd-tag--selected--default-color-text {

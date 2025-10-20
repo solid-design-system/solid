@@ -1625,107 +1625,6 @@
     },
     "utilities": {
       "color": {
-        "border": {
-          "null": {
-            "default": {
-              "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-              "type": "color",
-              "value": "rgba(255, 255, 255, 0.00)"
-            }
-          },
-          "primary": {
-            "100": {
-              "description": "Used for inverted hover interaction",
-              "type": "color",
-              "value": "{ui-light.utilities.color.primary.100}"
-            },
-            "200": {
-              "description": "Used for inverted pressed interaction",
-              "type": "color",
-              "value": "{ui-light.utilities.color.primary.200}"
-            },
-            "400": {
-              "description": "Used for inverted dividers",
-              "type": "color",
-              "value": "{ui-light.utilities.color.primary.400}"
-            },
-            "500": {
-              "description": "Used for hover interaction (dark mode)",
-              "type": "color",
-              "value": "{ui-light.utilities.color.primary.500}"
-            },
-            "800": {
-              "description": "Used for pressed interaction",
-              "type": "color",
-              "value": "{ui-light.utilities.color.primary.800}"
-            },
-            "default": {
-              "description": "Used for buttons, select field, focus state",
-              "type": "color",
-              "value": "{ui-light.utilities.color.primary.default}"
-            }
-          },
-          "accent": {
-            "550": {
-              "description": "Used for hover interaction",
-              "type": "color",
-              "value": "{ui-light.utilities.color.accent.550}"
-            },
-            "default": {
-              "description": "Used to highlight active/selected elements\n",
-              "type": "color",
-              "value": "{ui-light.utilities.color.accent.default}"
-            }
-          },
-          "neutral": {
-            "400": {
-              "description": "Default border color. \nUsed for sd-divider, teaser, table cell, ... sd-container,",
-              "type": "color",
-              "value": "{ui-light.utilities.color.neutral.400}"
-            },
-            "500": {
-              "description": "Used for disabled state",
-              "type": "color",
-              "value": "{ui-light.utilities.color.neutral.500}"
-            },
-            "600": {
-              "description": "Used for inverted disabled state",
-              "type": "color",
-              "value": "{ui-light.utilities.color.neutral.600}"
-            },
-            "800": {
-              "description": "Used for form fields, switch, radio, checkbox",
-              "type": "color",
-              "value": "{ui-light.utilities.color.neutral.800}"
-            }
-          },
-          "success": {
-            "default": {
-              "description": "Used for valid form fields\n",
-              "type": "color",
-              "value": "{ui-light.utilities.color.success.default}"
-            }
-          },
-          "error": {
-            "400": {
-              "description": "Used for hover interaction invalid form elements",
-              "type": "color",
-              "value": "{ui-light.utilities.color.error.400}"
-            },
-            "default": {
-              "description": "Used for invalid form fields",
-              "type": "color",
-              "value": "{ui-light.utilities.color.error.300}"
-            }
-          },
-          "white": {
-            "default": {
-              "description": "Used for buttons, inverted focus state",
-              "type": "color",
-              "value": "{ui-light.utilities.color.white.default}"
-            }
-          }
-        },
         "background": {
           "white": {
             "default": {
@@ -2252,6 +2151,100 @@
             }
           }
         },
+        "border": {
+          "primary": {
+            "100": {
+              "description": "Used for inverted hover interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.100}"
+            },
+            "200": {
+              "description": "Used for inverted pressed interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.200}"
+            },
+            "400": {
+              "description": "Used for inverted dividers",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.400}"
+            },
+            "500": {
+              "description": "Used for hover interaction (dark mode)",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.500}"
+            },
+            "800": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.800}"
+            },
+            "default": {
+              "description": "Used for buttons, select field, focus state",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.default}"
+            }
+          },
+          "accent": {
+            "550": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.accent.550}"
+            },
+            "default": {
+              "description": "Used to highlight active/selected elements\n",
+              "type": "color",
+              "value": "{ui-light.utilities.color.accent.default}"
+            }
+          },
+          "neutral": {
+            "400": {
+              "description": "Default border color. \nUsed for sd-divider, teaser, table cell, ... sd-container,",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.400}"
+            },
+            "500": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.500}"
+            },
+            "600": {
+              "description": "Used for inverted disabled state",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.600}"
+            },
+            "800": {
+              "description": "Used for form fields, switch, radio, checkbox",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.800}"
+            }
+          },
+          "success": {
+            "default": {
+              "description": "Used for valid form fields\n",
+              "type": "color",
+              "value": "{ui-light.utilities.color.success.default}"
+            }
+          },
+          "error": {
+            "400": {
+              "description": "Used for hover interaction invalid form elements",
+              "type": "color",
+              "value": "{ui-light.utilities.color.error.400}"
+            },
+            "default": {
+              "description": "Used for invalid form fields",
+              "type": "color",
+              "value": "{ui-light.utilities.color.error.300}"
+            }
+          },
+          "white": {
+            "default": {
+              "description": "Used for buttons, inverted focus state",
+              "type": "color",
+              "value": "{ui-light.utilities.color.white.default}"
+            }
+          }
+        },
         "text": {
           "primary": {
             "100": {
@@ -2707,6 +2700,11 @@
           "background": {
             "type": "color",
             "value": "{ui-light.utilities.color.background.white.default}"
+          },
+          "shadow": {
+            "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+            "type": "color",
+            "value": "rgba(24, 24, 24, 0.40)"
           }
         }
       },
@@ -2792,6 +2790,10 @@
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{ui-light.utilities.color.white.default}"
+                },
+                "background": {
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.background.primary.default}"
                 }
               }
             },
@@ -3136,6 +3138,16 @@
             }
           }
         }
+      },
+      "sd-audio": {
+        "--inverted": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.white.default}"
+            }
+          }
+        }
       }
     }
   },
@@ -3446,107 +3458,6 @@
     },
     "utilities": {
       "color": {
-        "border": {
-          "null": {
-            "default": {
-              "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-              "type": "color",
-              "value": "{core.ui.white}"
-            }
-          },
-          "primary": {
-            "100": {
-              "description": "Used for inverted hover interaction",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.primary.100}"
-            },
-            "200": {
-              "description": "Used for inverted pressed interaction",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.background.primary.200}"
-            },
-            "400": {
-              "description": "Used for inverted dividers",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.primary.400}"
-            },
-            "500": {
-              "description": "Used for hover interaction (dark mode)",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.primary.100}"
-            },
-            "800": {
-              "description": "Used for pressed interaction",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.primary.200}"
-            },
-            "default": {
-              "description": "Used for buttons, select field, focus state",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.white.default}"
-            }
-          },
-          "accent": {
-            "550": {
-              "description": "Used for hover interaction",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.accent.550}"
-            },
-            "default": {
-              "description": "Used to highlight active/selected elements\n",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.accent.default}"
-            }
-          },
-          "neutral": {
-            "400": {
-              "description": "Default border color. \nUsed for sd-divider, teaser, table cell, ... sd-container,",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.primary.400}"
-            },
-            "500": {
-              "description": "Used for disabled state",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.neutral.500}"
-            },
-            "600": {
-              "description": "Used for inverted disabled state",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.neutral.600}"
-            },
-            "800": {
-              "description": "Used for form fields, switch, radio, checkbox",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.white.default}"
-            }
-          },
-          "success": {
-            "default": {
-              "description": "Used for valid form fields\n",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.success.default}"
-            }
-          },
-          "error": {
-            "400": {
-              "description": "Used for hover interaction invalid form elements",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.error.400}"
-            },
-            "default": {
-              "description": "Used for invalid form fields",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.error.300}"
-            }
-          },
-          "white": {
-            "default": {
-              "description": "Used for buttons, inverted focus state",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.background.white.default}"
-            }
-          }
-        },
         "background": {
           "white": {
             "default": {
@@ -3665,7 +3576,7 @@
             "white|20": {
               "description": "Used for audio (wave animation inverted)",
               "type": "color",
-              "value": "rgba(2, 9, 32, 0.20)"
+              "value": "rgba(255, 255, 255, 0.20)"
             },
             "primary-800|90": {
               "description": "Used for overlays",
@@ -3702,7 +3613,7 @@
             "default": {
               "description": "Inverted background color (light mode)\nUsed for button",
               "type": "color",
-              "value": "{ui-dark.utilities.color.white.default}"
+              "value": "{ui-dark.utilities.color.primary.default}"
             }
           },
           "accent": {
@@ -4073,6 +3984,100 @@
             }
           }
         },
+        "border": {
+          "primary": {
+            "100": {
+              "description": "Used for inverted hover interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.100}"
+            },
+            "200": {
+              "description": "Used for inverted pressed interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.background.primary.200}"
+            },
+            "400": {
+              "description": "Used for inverted dividers",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.400}"
+            },
+            "500": {
+              "description": "Used for hover interaction (dark mode)",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.100}"
+            },
+            "800": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.200}"
+            },
+            "default": {
+              "description": "Used for buttons, select field, focus state",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            }
+          },
+          "accent": {
+            "550": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.accent.550}"
+            },
+            "default": {
+              "description": "Used to highlight active/selected elements\n",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.accent.default}"
+            }
+          },
+          "neutral": {
+            "400": {
+              "description": "Default border color. \nUsed for sd-divider, teaser, table cell, ... sd-container,",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.400}"
+            },
+            "500": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.neutral.500}"
+            },
+            "600": {
+              "description": "Used for inverted disabled state",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.neutral.600}"
+            },
+            "800": {
+              "description": "Used for form fields, switch, radio, checkbox",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            }
+          },
+          "success": {
+            "default": {
+              "description": "Used for valid form fields\n",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.success.default}"
+            }
+          },
+          "error": {
+            "400": {
+              "description": "Used for hover interaction invalid form elements",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.error.400}"
+            },
+            "default": {
+              "description": "Used for invalid form fields",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.error.300}"
+            }
+          },
+          "white": {
+            "default": {
+              "description": "Used for buttons, inverted focus state",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.900}"
+            }
+          }
+        },
         "text": {
           "primary": {
             "100": {
@@ -4171,7 +4176,7 @@
           "neutral-800-40%": {
             "description": "Used to add border that is only visible in dark mode:\n-dropdown",
             "type": "color",
-            "value": "rgba(255, 255, 255, 0.40)"
+            "value": "rgba(255, 255, 255, 0.00)"
           },
           "neutral-800-0%": {
             "description": "Used to add border that is only visible in dark mode:\n-dropdown",
@@ -4528,6 +4533,11 @@
           "background": {
             "type": "color",
             "value": "{ui-dark.utilities.color.primary.default}"
+          },
+          "shadow": {
+            "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
           }
         }
       },
@@ -4613,6 +4623,10 @@
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{ui-dark.utilities.color.primary.default}"
+                },
+                "background": {
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.white.default}"
                 }
               }
             },
@@ -4957,6 +4971,16 @@
             }
           }
         }
+      },
+      "sd-audio": {
+        "--inverted": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            }
+          }
+        }
       }
     }
   },
@@ -5267,107 +5291,6 @@
     },
     "utilities": {
       "color": {
-        "border": {
-          "null": {
-            "default": {
-              "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-              "type": "color",
-              "value": "rgba(255, 255, 255, 0.00)"
-            }
-          },
-          "primary": {
-            "100": {
-              "description": "Used for inverted hover interaction",
-              "type": "color",
-              "value": "{vb-light.utilities.color.primary.100}"
-            },
-            "200": {
-              "description": "Used for inverted pressed interaction",
-              "type": "color",
-              "value": "{vb-light.utilities.color.primary.200}"
-            },
-            "400": {
-              "description": "Used for inverted dividers",
-              "type": "color",
-              "value": "{vb-light.utilities.color.primary.400}"
-            },
-            "500": {
-              "description": "Used for hover interaction (dark mode)",
-              "type": "color",
-              "value": "#ffffff"
-            },
-            "800": {
-              "description": "Used for pressed interaction",
-              "type": "color",
-              "value": "#ffffff"
-            },
-            "default": {
-              "description": "Used for buttons, select field, focus state",
-              "type": "color",
-              "value": "{vb-light.utilities.color.primary.default}"
-            }
-          },
-          "accent": {
-            "550": {
-              "description": "Used for hover interaction",
-              "type": "color",
-              "value": "{vb-light.utilities.color.accent.550}"
-            },
-            "default": {
-              "description": "Used to highlight active/selected elements\n",
-              "type": "color",
-              "value": "{vb-light.utilities.color.accent.default}"
-            }
-          },
-          "neutral": {
-            "400": {
-              "description": "Default border color. \nUsed for sd-divider, teaser, table cell, ... sd-container,",
-              "type": "color",
-              "value": "{vb-light.utilities.color.neutral.400}"
-            },
-            "500": {
-              "description": "Used for disabled state",
-              "type": "color",
-              "value": "{vb-light.utilities.color.neutral.500}"
-            },
-            "600": {
-              "description": "Used for inverted disabled state",
-              "type": "color",
-              "value": "{vb-light.utilities.color.neutral.600}"
-            },
-            "800": {
-              "description": "Used for form fields, switch, radio, checkbox",
-              "type": "color",
-              "value": "{vb-light.utilities.color.neutral.800}"
-            }
-          },
-          "success": {
-            "default": {
-              "description": "Used for valid form fields\n",
-              "type": "color",
-              "value": "{vb-light.utilities.color.success.default}"
-            }
-          },
-          "error": {
-            "400": {
-              "description": "Used for hover interaction invalid form elements",
-              "type": "color",
-              "value": "{vb-light.utilities.color.error.400}"
-            },
-            "default": {
-              "description": "Used for invalid form fields",
-              "type": "color",
-              "value": "{vb-light.utilities.color.error.300}"
-            }
-          },
-          "white": {
-            "default": {
-              "description": "Used for buttons, inverted focus state",
-              "type": "color",
-              "value": "{vb-light.utilities.color.white.default}"
-            }
-          }
-        },
         "background": {
           "white": {
             "default": {
@@ -5894,6 +5817,100 @@
             }
           }
         },
+        "border": {
+          "primary": {
+            "100": {
+              "description": "Used for inverted hover interaction",
+              "type": "color",
+              "value": "{vb-light.utilities.color.primary.100}"
+            },
+            "200": {
+              "description": "Used for inverted pressed interaction",
+              "type": "color",
+              "value": "{vb-light.utilities.color.primary.200}"
+            },
+            "400": {
+              "description": "Used for inverted dividers",
+              "type": "color",
+              "value": "{vb-light.utilities.color.primary.400}"
+            },
+            "500": {
+              "description": "Used for hover interaction (dark mode)",
+              "type": "color",
+              "value": "#ffffff"
+            },
+            "800": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "#ffffff"
+            },
+            "default": {
+              "description": "Used for buttons, select field, focus state",
+              "type": "color",
+              "value": "{vb-light.utilities.color.primary.default}"
+            }
+          },
+          "accent": {
+            "550": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{vb-light.utilities.color.accent.550}"
+            },
+            "default": {
+              "description": "Used to highlight active/selected elements\n",
+              "type": "color",
+              "value": "{vb-light.utilities.color.accent.default}"
+            }
+          },
+          "neutral": {
+            "400": {
+              "description": "Default border color. \nUsed for sd-divider, teaser, table cell, ... sd-container,",
+              "type": "color",
+              "value": "{vb-light.utilities.color.neutral.400}"
+            },
+            "500": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{vb-light.utilities.color.neutral.500}"
+            },
+            "600": {
+              "description": "Used for inverted disabled state",
+              "type": "color",
+              "value": "{vb-light.utilities.color.neutral.600}"
+            },
+            "800": {
+              "description": "Used for form fields, switch, radio, checkbox",
+              "type": "color",
+              "value": "{vb-light.utilities.color.neutral.800}"
+            }
+          },
+          "success": {
+            "default": {
+              "description": "Used for valid form fields\n",
+              "type": "color",
+              "value": "{vb-light.utilities.color.success.default}"
+            }
+          },
+          "error": {
+            "400": {
+              "description": "Used for hover interaction invalid form elements",
+              "type": "color",
+              "value": "{vb-light.utilities.color.error.400}"
+            },
+            "default": {
+              "description": "Used for invalid form fields",
+              "type": "color",
+              "value": "{vb-light.utilities.color.error.300}"
+            }
+          },
+          "white": {
+            "default": {
+              "description": "Used for buttons, inverted focus state",
+              "type": "color",
+              "value": "{vb-light.utilities.color.white.default}"
+            }
+          }
+        },
         "text": {
           "primary": {
             "100": {
@@ -6349,6 +6366,11 @@
           "background": {
             "type": "color",
             "value": "#ffffff"
+          },
+          "shadow": {
+            "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
           }
         }
       },
@@ -6434,6 +6456,10 @@
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{vb-light.utilities.color.white.default}"
+                },
+                "background": {
+                  "type": "color",
+                  "value": "#ffffff"
                 }
               }
             },
@@ -6773,6 +6799,16 @@
         "--neutral-500": {
           "color": {
             "background": {
+              "type": "color",
+              "value": "#ffffff"
+            }
+          }
+        }
+      },
+      "sd-audio": {
+        "--inverted": {
+          "color": {
+            "border": {
               "type": "color",
               "value": "#ffffff"
             }

@@ -20,7 +20,6 @@
   --sd-color-black-constant: #ffffff;
   --sd-color-black: #181818;
   --sd-color-border-error: var(--sd-color-error-300);
-  --sd-color-border-null: rgba(255, 255, 255, 0);
   --sd-color-error-300: #cc1937;
   --sd-color-error-400: #ac1938;
   --sd-color-error: #ffffff;

@@ -26,13 +26,11 @@
   --sd-color-background-primary-300: var(--sd-color-primary-700);
   --sd-color-background-primary-500: var(--sd-color-primary-100);
   --sd-color-background-primary-800: var(--sd-color-primary-200);
-  --sd-color-background-primary: var(--sd-color-white);
   --sd-color-background-white: var(--sd-color-primary-900);
   --sd-color-black-constant: #ffffff;
   --sd-color-black: #181818;
   --sd-color-border-neutral-400: var(--sd-color-primary-400);
   --sd-color-border-neutral-800: var(--sd-color-white);
-  --sd-color-border-null: var(--sd-color-white);
   --sd-color-border-primary-200: var(--sd-color-primary-750);
   --sd-color-border-primary-500: var(--sd-color-primary-100);
   --sd-color-border-primary-800: var(--sd-color-primary-200);
@@ -43,7 +41,7 @@
   --sd-color-error: #ea586b;
   --sd-color-gradient-neutral-800-0: rgba(5, 21, 48, 0);
   --sd-color-gradient-neutral-800-10: rgba(24, 24, 24, 0.1);
-  --sd-color-gradient-neutral-800-40: rgba(255, 255, 255, 0.4);
+  --sd-color-gradient-neutral-800-40: rgba(255, 255, 255, 0);
   --sd-color-gradient-primary-800-0: rgba(5, 21, 48, 0);
   --sd-color-gradient-primary-800-60: rgba(5, 21, 48, 0.6);
   --sd-color-gradient-primary-800-75: rgba(5, 21, 48, 0.75);

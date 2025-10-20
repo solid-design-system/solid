@@ -18,7 +18,6 @@
   --sd-color-accent: #0066b3;
   --sd-color-black-constant: #181818;
   --sd-color-black: #181818;
-  --sd-color-border-null: rgba(255, 255, 255, 0);
   --sd-color-border-primary-500: var(--sd-color-white);
   --sd-color-border-primary-800: var(--sd-color-white);
   --sd-color-error-300: #cc1937;
