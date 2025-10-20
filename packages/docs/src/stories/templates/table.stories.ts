@@ -1282,7 +1282,7 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-tooltip content="Preview PrivatFonds: Flexibel pro PDF">
-                <button class="sd-interactive sd-interactive--reset">
+                <button class="sd-interactive sd-interactive--reset flex">
                   <sd-icon
                     class="w-6 h-6 px-4"
                     name="system/file-pdf"
@@ -1306,7 +1306,7 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-tooltip content="Preview PrivatFonds: Konsequent PDF">
-                <button class="sd-interactive sd-interactive--reset">
+                <button class="sd-interactive sd-interactive--reset flex">
                   <sd-icon
                     class="w-6 h-6 px-4"
                     name="system/file-pdf"
@@ -1330,7 +1330,7 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-tooltip content="Preview PrivatFonds: Konsequent pro PDF">
-                <button class="sd-interactive sd-interactive--reset">
+                <button class="sd-interactive sd-interactive--reset flex">
                   <sd-icon
                     class="w-6 h-6 px-4"
                     name="system/file-pdf"
@@ -1354,7 +1354,7 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-tooltip content="Preview PrivatFonds: Kontrolliert PDF">
-                <button class="sd-interactive sd-interactive--reset">
+                <button class="sd-interactive sd-interactive--reset flex">
                   <sd-icon
                     class="w-6 h-6 px-4"
                     name="system/file-pdf"
@@ -1378,7 +1378,7 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-tooltip content="Preview PrivatFonds: Kontrolliert pro PDF">
-                <button class="sd-interactive sd-interactive--reset">
+                <button class="sd-interactive sd-interactive--reset flex">
                   <sd-icon
                     class="w-6 h-6 px-4"
                     name="system/file-pdf"
@@ -1402,7 +1402,7 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-tooltip content="Preview PrivatFonds: Nachhaltig PDF">
-                <button class="sd-interactive sd-interactive--reset">
+                <button class="sd-interactive sd-interactive--reset flex">
                   <sd-icon
                     class="w-6 h-6 px-4"
                     name="system/file-pdf"
@@ -1426,7 +1426,7 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-tooltip content="Preview Uni21.Jahrhundert -net- PDF">
-                <button class="sd-interactive sd-interactive--reset">
+                <button class="sd-interactive sd-interactive--reset flex">
                   <sd-icon
                     class="w-6 h-6 px-4"
                     name="system/file-pdf"
@@ -1450,7 +1450,7 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-tooltip content="Preview UniAbsoluterErtrag -net- A PDF">
-                <button class="sd-interactive sd-interactive--reset">
+                <button class="sd-interactive sd-interactive--reset flex">
                   <sd-icon
                     class="w-6 h-6 px-4"
                     name="system/file-pdf"
@@ -1474,7 +1474,7 @@ export const multiSelectTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">23.01.2025</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent text-sm leading-none">
               <sd-tooltip content="Preview UniAbsoluterErtrag A PDF">
-                <button class="sd-interactive sd-interactive--reset">
+                <button class="sd-interactive sd-interactive--reset flex">
                   <sd-icon
                     class="w-6 h-6 px-4"
                     name="system/file-pdf"
