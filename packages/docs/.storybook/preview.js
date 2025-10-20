@@ -1,14 +1,14 @@
 import './preview.css';
 import '../../tokens/themes/sd-ui-semantic-dark.css';
 import '../../tokens/themes/sd-ui-semantic-light.css';
-import { withThemeByClassName } from '@storybook/addon-themes';
+import { withThemeByClassName } from './with-theme.js';
 import { storybookUtilities } from '../scripts/storybook/helper.js';
 import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer.js';
 import { themes, allModes } from './modes.js';
 
 const theme = withThemeByClassName({
   defaultTheme: 'UI Semantic Light',
-  parentSelector: 'body',
+  parentSelector: '.docs-story',
   themes: themes.reduce((acc, { id, name }) => {
     acc[name] = id;
     return acc;
