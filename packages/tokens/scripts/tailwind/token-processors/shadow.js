@@ -12,9 +12,11 @@ export class ShadowTokenProcessor extends BaseTokenProcessor {
     return token.type === 'boxShadow' || token.type === 'shadow' || token.path.includes('shadow');
   }
 
+  // TODO: Process is hardcoded since Figma doesn't have shadow ready.
   process(token, _, options) {
     const { path, variant } = this.processTokenPath(token);
-    const name = path.slice(1).join('-');
+    const _name = path.slice(1).join('-');
+    const name = _name.includes('-sm') ? 'shadow-sm' : 'shadow';
     const properties = name.includes('-sm') ? '0.5px 0.5px 1.5px' : '0 1px 3px';
 
     const cssvariables = [];
@@ -40,13 +42,13 @@ export class ShadowTokenProcessor extends BaseTokenProcessor {
       {
         type: 'shadow',
         name: this.cssprefix(name),
-        value: `${properties} ${token.attributes.value}`,
+        value: `${properties} var(--sd-color-neutral-800)`,
         variant
       },
       {
         type: 'shadow',
         name: this.cssprefix(`drop-${name}`),
-        value: `${properties} ${token.attributes.value}`,
+        value: `${properties} var(--sd-color-neutral-800)`,
         variant
       }
     );

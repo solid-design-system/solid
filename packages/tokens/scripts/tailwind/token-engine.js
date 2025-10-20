@@ -83,9 +83,15 @@ export class TokenProcessingEngine {
     const processors = this.getProcessors();
 
     for (const token of dictionary.allTokens) {
-      if (!token || typeof token.type !== 'string' || token.key.startsWith('{core.')) continue;
+      if (
+        !token ||
+        typeof token.type !== 'string' ||
+        token.key.startsWith('{core.') ||
+        token.path.some(t => t.startsWith('_'))
+      ) {
+        continue;
+      }
 
-      // Find the first processor that can handle this token
       const processor = processors.find(p => p.canProcess(token));
 
       if (!processor) {

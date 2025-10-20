@@ -60,10 +60,10 @@ const extractUtilities = css => {
 
 const dir = path.join(process.cwd(), '../tokens/themes');
 const tailwind = readFileSync(path.join(dir, './tailwind.css'), { encoding: 'utf-8' });
-const theme = readFileSync(path.join(dir, './sd-ui-semantic-light.css'), { encoding: 'utf-8' });
+const theme = readFileSync(path.join(dir, './sd-ui-light.css'), { encoding: 'utf-8' });
 
 export default {
   base: extractVariables(tailwind, '@theme inline'),
   utilities: extractUtilities(tailwind),
-  theme: extractVariables(theme, ':root, .sd-theme-ui-semantic-light')
+  theme: extractVariables(theme, ':root, .sd-theme-ui-light')
 };

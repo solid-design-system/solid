@@ -5,10 +5,7 @@ import { playwrightLauncher } from '@web/test-runner-playwright';
 import { readFileSync } from 'fs';
 import path from 'path';
 
-const styles = readFileSync(
-  path.join(fileURLToPath(import.meta.url), '../../tokens/themes/sd-ui-semantic-light.css'),
-  'utf-8'
-);
+const styles = readFileSync(path.join(fileURLToPath(import.meta.url), '../../tokens/themes/sd-ui-light.css'), 'utf-8');
 
 export default {
   rootDir: '.',

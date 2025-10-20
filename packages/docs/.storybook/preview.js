@@ -1,6 +1,6 @@
 import './preview.css';
-import '../../tokens/themes/sd-ui-semantic-dark.css';
-import '../../tokens/themes/sd-ui-semantic-light.css';
+import '../../tokens/themes/sd-ui-dark.css';
+import '../../tokens/themes/sd-ui-light.css';
 import { withThemeByClassName } from './with-theme.js';
 import { storybookUtilities } from '../scripts/storybook/helper.js';
 import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer.js';

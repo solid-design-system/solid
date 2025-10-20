@@ -1,5 +1,4 @@
 import { BaseTokenProcessor } from './base.js';
-import { toKebabCase } from './utils.js';
 
 /**
  * Processor for spacing/dimension tokens with proper Tailwind CSS v4 naming
@@ -29,29 +28,15 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
   process(token) {
     const processed = this.processTokenPath(token);
     let value = this.getTokenValue(token);
-    let prefix = processed.path[1];
+    if (processed.path.length <= 2) return [];
 
-    if (processed.path.length === 1) return [];
-
-    if (processed.path[0] && this.spacingTokens[prefix]) {
-      prefix = this.spacingTokens[prefix];
-      processed.path = processed.path.slice(2);
-    } else {
-      const prefixKebab = toKebabCase(prefix);
-      if (processed.path[1] === prefixKebab) {
-        processed.path = processed.path.slice(2);
-      }
-    }
-
-    if (!processed.path.length) return [];
+    const prefix = this.spacingTokens[processed.path[1]] || processed.path[1];
+    processed.path = processed.path.slice(2);
 
     switch (prefix) {
       case 'aspect':
-        // Special handling for aspect ratio tokens - preserve original string value
-        value = token.original?.value || token.value || value;
         break;
       case 'opacity':
-        // Opacity needs to be in percentage so it doesn't break tailwinds color-mix.
         value = `${value}%`;
         break;
       default:

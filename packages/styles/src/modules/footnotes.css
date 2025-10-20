@@ -67,7 +67,7 @@
     @apply text-primary-400;
 
     :target {
-      @apply bg-primary-800-constant;
+      @apply bg-primary-800;
     }
 
     .sd-footnotes--marker::before {
@@ -78,7 +78,7 @@
       @apply !text-white-constant !outline-white;
 
       &:target {
-        @apply bg-primary-800-constant;
+        @apply bg-primary-800;
       }
     }
   }

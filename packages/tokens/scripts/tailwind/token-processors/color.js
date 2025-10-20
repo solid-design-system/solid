@@ -51,6 +51,10 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
 
     const cssvariables = [];
 
+    // if (token.name.includes('-white-default')) {
+    //   console.log(token.name, token.value);
+    // }
+
     if (!isCoreColor && variant === options.defaultTheme) {
       const cssvar = processed.cssvar ?? processed.name;
 
@@ -201,7 +205,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     return results.filter(
       node =>
         node.path[0] === 'color' &&
-        !['icon-fill', 'border', 'background', 'text', 'background-transparent'].includes(node.path[1])
+        !['icon-fill', 'border', 'background', 'text', 'background-transparent', 'gradient'].includes(node.path[1])
     );
   }
 }

@@ -7,13 +7,12 @@ import { OUTPUT_DIR } from './config.js';
 import { register } from '@tokens-studio/sd-transforms';
 import path from 'node:path';
 import StyleDictionary from 'style-dictionary';
-import tailwindtheme from '../src/theme.mjs';
 
 const variables = JSON.parse(
   readFileSync(path.join(import.meta.dirname, '../src/figma-variables/variableTokens.json'), { encoding: 'utf-8' })
 );
 
-const figma = new FigmaClient('ui-semantic', variables);
+const figma = new FigmaClient('figma-variables', variables);
 figma.process().save();
 
 await register(StyleDictionary);
@@ -36,9 +35,9 @@ const config = {
 
 const availableThemes = [
   {
-    input: 'ui-semantic.json',
+    input: 'figma-variables.json',
     output: 'tailwind',
-    defaultTheme: 'ui-semantic-light'
+    defaultTheme: 'ui-light'
   }
 ];
 
@@ -59,7 +58,6 @@ const cssRuns = availableThemes.map(async ({ input, output, defaultTheme }) => {
             }
           }
         ],
-        prefix: config.prefix,
         transformGroup: 'tokens-studio',
         transforms: [
           'name/kebab',
@@ -111,6 +109,7 @@ const cssRuns = availableThemes.map(async ({ input, output, defaultTheme }) => {
 await Promise.all(cssRuns);
 
 // --- Build dist theme.js ---
+const tailwindtheme = (await import('../src/theme.mjs')).default;
 const dist = path.resolve(fileURLToPath(import.meta.url), '../../dist');
 mkdirSync(dist, { recursive: true });
 writeFileSync(path.resolve(dist, './theme.js'), `export default ${JSON.stringify(tailwindtheme)}`);

@@ -6,7 +6,7 @@ import { OUTPUT_DIR } from '../config.js';
 import { writeFileSync } from 'fs';
 import path from 'path';
 
-const CORE_COLLECTION = 'UI Core';
+const CORE_COLLECTION = 'Core';
 
 export class FigmaClient extends FigmaBase {
   constructor(name, dictionary, legacy) {
@@ -34,7 +34,7 @@ export class FigmaClient extends FigmaBase {
           if (!themes[mode.name]) themes[mode.name] = {};
 
           if (
-            !this.#isCoreCollection(mode.name) &&
+            !this.#isCoreCollection(variable.collection.name) &&
             !transformed.name.startsWith('utilities') &&
             !transformed.name.startsWith('components')
           ) {
@@ -49,9 +49,10 @@ export class FigmaClient extends FigmaBase {
         });
       });
 
-    const { 'UI Core': Core, ...rest } = themes;
+    const { Default, ...rest } = themes;
+
     return {
-      core: Core,
+      core: Default,
       themes: rest
     };
   }

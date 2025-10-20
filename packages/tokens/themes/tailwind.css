@@ -34,23 +34,9 @@
   --background-color-primary-300: var(--sd-color-background-primary-300, var(--sd-color-primary-300));
   --background-color-primary-400: var(--sd-background-color-primary-400, var(--sd-color-primary-400));
   --background-color-primary-500: var(--sd-color-background-primary-500, var(--sd-color-primary-500));
-  --background-color-primary-800-constant: var(--sd-color-background-primary-800-constant, var(--sd-color-primary-800-constant));
   --background-color-primary-800: var(--sd-color-background-primary-800, var(--sd-color-primary-800));
-  --background-color-primary-constant: var(--sd-color-background-primary-constant, var(--sd-color-primary-constant));
   --background-color-primary: var(--sd-color-background-primary, var(--sd-color-primary));
   --background-color-success: var(--sd-color-background-success, var(--sd-color-success));
-  --background-color-transparent-neutral-100-80: var(--sd-color-background-transparent-neutral-100-80);
-  --background-color-transparent-neutral-100-90: var(--sd-color-background-transparent-neutral-100-90);
-  --background-color-transparent-primary-100-80: var(--sd-color-background-transparent-primary-100-80);
-  --background-color-transparent-primary-100-90: var(--sd-color-background-transparent-primary-100-90);
-  --background-color-transparent-primary-10: var(--sd-color-background-transparent-primary-10);
-  --background-color-transparent-primary-30: var(--sd-color-background-transparent-primary-30);
-  --background-color-transparent-primary-800-90: var(--sd-color-background-transparent-primary-800-90);
-  --background-color-transparent-primary-80: var(--sd-color-background-transparent-primary-80);
-  --background-color-transparent-primary-90: var(--sd-color-background-transparent-primary-90);
-  --background-color-transparent-white-20: var(--sd-color-background-transparent-white-20);
-  --background-color-transparent-white-80: var(--sd-color-background-transparent-white-80);
-  --background-color-transparent-white-90: var(--sd-color-background-transparent-white-90);
   --background-color-warning: var(--sd-color-background-warning, var(--sd-color-warning));
   --background-color-white: var(--sd-color-background-white, var(--sd-color-white));
   --border-color-accent-550: var(--sd-color-border-accent-550, var(--sd-color-accent-550));
@@ -74,6 +60,7 @@
   --border-width-4: var(--sd-border-width-4);
   --border-width-6: var(--sd-border-width-6);
   --border-width-default: var(--sd-border-width-default);
+  --drop-shadow-sm: var(--sd-drop-shadow-sm);
   --drop-shadow: var(--sd-drop-shadow);
   --fill-accent-550: var(--sd-color-icon-fill-accent-550, var(--sd-color-accent-550));
   --fill-accent: var(--sd-color-icon-fill-accent, var(--sd-color-accent));
@@ -98,6 +85,20 @@
   --fill-white: var(--sd-color-icon-fill-white, var(--sd-color-white));
   --font-weight-bold: var(--sd-font-weight-bold);
   --font-weight-normal: var(--sd-font-weight-normal);
+  --opacity-0: var(--sd-opacity-0);
+  --opacity-100: var(--sd-opacity-100);
+  --opacity-10: var(--sd-opacity-10);
+  --opacity-20: var(--sd-opacity-20);
+  --opacity-30: var(--sd-opacity-30);
+  --opacity-50: var(--sd-opacity-50);
+  --opacity-55: var(--sd-opacity-55);
+  --opacity-5: var(--sd-opacity-5);
+  --opacity-60: var(--sd-opacity-60);
+  --opacity-70: var(--sd-opacity-70);
+  --opacity-75: var(--sd-opacity-75);
+  --opacity-80: var(--sd-opacity-80);
+  --opacity-85: var(--sd-opacity-85);
+  --opacity-90: var(--sd-opacity-90);
   --outline-color-error: var(--sd-border-color-error, var(--sd-color-error));
   --outline-color-primary: var(--sd-border-color-primary, var(--sd-color-primary));
   --radius-default: var(--sd-radius-default);
@@ -106,10 +107,12 @@
   --radius-md: var(--sd-radius-md);
   --radius-none: var(--sd-radius-none);
   --radius-sm: var(--sd-radius-sm);
+  --shadow-sm: var(--sd-shadow-sm);
   --shadow: var(--sd-shadow);
   --sizing-10: var(--sd-sizing-10);
   --sizing-12: var(--sd-sizing-12);
   --sizing-16: var(--sd-sizing-16);
+  --sizing-20: var(--sd-sizing-20);
   --sizing-24: var(--sd-sizing-24);
   --sizing-2: var(--sd-sizing-2);
   --sizing-2\.5: var(--sd-sizing-2\.5);
@@ -142,7 +145,6 @@
   --text-4xl: var(--sd-text-4xl);
   --text-base: var(--sd-text-base);
   --text-color-accent: var(--sd-color-text-accent, var(--sd-color-accent));
-  --text-color-black-constant: var(--sd-color-text-black-constant, var(--sd-color-black-constant));
   --text-color-black: var(--sd-color-text-black, var(--sd-color-black));
   --text-color-error: var(--sd-color-text-error, var(--sd-color-error));
   --text-color-neutral-500: var(--sd-color-text-neutral-500, var(--sd-color-neutral-500));
@@ -220,20 +222,192 @@
   }
 }
 
+@utility sd-accordion--hover-color-background {
+  background-color: var(--sd-accordion--hover-color-background, var(--sd-color-200));
+}
+
+@utility sd-accordion--hover-color-border {
+  border-color: var(--sd-accordion--hover-color-border, var(--sd-color-200));
+}
+
 @utility sd-breadcrumb-separator-color {
   background-color: var(--sd-breadcrumb-separator-color, var(--sd-color-400));
 }
 
-@utility sd-button--primary--active-color-background {
-  background-color: var(--sd-button--primary--active-color-background, var(--sd-color-default));
+@utility sd-button--primary--default--active-color-icon-fill {
+  fill: var(--sd-button--primary--default--active-color-icon-fill, var(--sd-color-200));
+}
+
+@utility sd-button--primary--default--active-color-text {
+  color: var(--sd-button--primary--default--active-color-text, var(--sd-color-200));
+}
+
+@utility sd-button--primary--default--default-color-icon-fill {
+  fill: var(--sd-button--primary--default--default-color-icon-fill, var(--sd-color-default));
+}
+
+@utility sd-button--primary--default--default-color-text {
+  color: var(--sd-button--primary--default--default-color-text, var(--sd-color-default));
+}
+
+@utility sd-button--primary--default--hover-color-icon-fill {
+  fill: var(--sd-button--primary--default--hover-color-icon-fill, var(--sd-color-100));
+}
+
+@utility sd-button--primary--default--hover-color-text {
+  color: var(--sd-button--primary--default--hover-color-text, var(--sd-color-100));
+}
+
+@utility sd-button--primary--inverted--active-color-icon-fill {
+  fill: var(--sd-button--primary--inverted--active-color-icon-fill, var(--sd-color-800));
+}
+
+@utility sd-button--primary--inverted--active-color-text {
+  color: var(--sd-button--primary--inverted--active-color-text, var(--sd-color-800));
+}
+
+@utility sd-button--primary--inverted--default-color-background {
+  background-color: var(--sd-button--primary--inverted--default-color-background, var(--sd-color-default));
+}
+
+@utility sd-button--primary--inverted--default-color-icon-fill {
+  fill: var(--sd-button--primary--inverted--default-color-icon-fill, var(--sd-color-default));
+}
+
+@utility sd-button--primary--inverted--default-color-text {
+  color: var(--sd-button--primary--inverted--default-color-text, var(--sd-color-default));
+}
+
+@utility sd-button--primary--inverted--hover-color-background {
+  background-color: var(--sd-button--primary--inverted--hover-color-background, var(--sd-color-100));
+}
+
+@utility sd-button--primary--inverted--hover-color-icon-fill {
+  fill: var(--sd-button--primary--inverted--hover-color-icon-fill, var(--sd-color-500));
+}
+
+@utility sd-button--primary--inverted--hover-color-text {
+  color: var(--sd-button--primary--inverted--hover-color-text, var(--sd-color-500));
+}
+
+@utility sd-button--secondary--default--active-color-background {
+  background-color: var(--sd-button--secondary--default--active-color-background, var(--sd-color-200));
+}
+
+@utility sd-button--secondary--default--hover-color-background {
+  background-color: var(--sd-button--secondary--default--hover-color-background, var(--sd-color-200));
+}
+
+@utility sd-button--secondary--inverted--active-color-background {
+  background-color: var(--sd-button--secondary--inverted--active-color-background, var(--sd-color-800));
+}
+
+@utility sd-button--secondary--inverted--active-color-icon-fill {
+  fill: var(--sd-button--secondary--inverted--active-color-icon-fill, var(--sd-color-200));
+}
+
+@utility sd-button--secondary--inverted--active-color-text {
+  color: var(--sd-button--secondary--inverted--active-color-text, var(--sd-color-200));
+}
+
+@utility sd-button--secondary--inverted--default-color-border {
+  border-color: var(--sd-button--secondary--inverted--default-color-border, var(--sd-color-default));
+}
+
+@utility sd-button--secondary--inverted--hover-color-background {
+  background-color: var(--sd-button--secondary--inverted--hover-color-background, var(--sd-color-500));
+}
+
+@utility sd-button--secondary--inverted--hover-color-icon-fill {
+  fill: var(--sd-button--secondary--inverted--hover-color-icon-fill, var(--sd-color-100));
+}
+
+@utility sd-button--secondary--inverted--hover-color-text {
+  color: var(--sd-button--secondary--inverted--hover-color-text, var(--sd-color-100));
+}
+
+@utility sd-button--tertiary--default--active-color-background {
+  background-color: var(--sd-button--tertiary--default--active-color-background, var(--sd-color-200));
+}
+
+@utility sd-button--tertiary--default--hover-color-background {
+  background-color: var(--sd-button--tertiary--default--hover-color-background, var(--sd-color-200));
+}
+
+@utility sd-button--tertiary--inverted--active-color-background {
+  background-color: var(--sd-button--tertiary--inverted--active-color-background, var(--sd-color-800));
+}
+
+@utility sd-button--tertiary--inverted--active-color-icon-fill {
+  fill: var(--sd-button--tertiary--inverted--active-color-icon-fill, var(--sd-color-200));
+}
+
+@utility sd-button--tertiary--inverted--active-color-text {
+  color: var(--sd-button--tertiary--inverted--active-color-text, var(--sd-color-200));
+}
+
+@utility sd-button--tertiary--inverted--hover-color-background {
+  background-color: var(--sd-button--tertiary--inverted--hover-color-background, var(--sd-color-500));
+}
+
+@utility sd-button--tertiary--inverted--hover-color-icon-fill {
+  fill: var(--sd-button--tertiary--inverted--hover-color-icon-fill, var(--sd-color-100));
+}
+
+@utility sd-button--tertiary--inverted--hover-color-text {
+  color: var(--sd-button--tertiary--inverted--hover-color-text, var(--sd-color-100));
+}
+
+@utility sd-chip--neutral-500-color-background {
+  background-color: var(--sd-chip--neutral-500-color-background, var(--sd-color-500));
+}
+
+@utility sd-container--primary-color-background {
+  background-color: var(--sd-container--primary-color-background, var(--sd-color-default));
+}
+
+@utility sd-flag--neutral-500-color-background {
+  background-color: var(--sd-flag--neutral-500-color-background, var(--sd-color-400));
+}
+
+@utility sd-footnotes--target--inverted-color-background {
+  background-color: var(--sd-footnotes--target--inverted-color-background, var(--sd-color-800));
 }
 
 @utility sd-header-color-background {
   background-color: var(--sd-header-color-background, var(--sd-color-default));
 }
 
-@utility sd-tag--selected-color-text {
-  color: var(--sd-tag--selected-color-text, var(--sd-color-default));
+@utility sd-loader--neutral-500-color-icon-fill {
+  fill: var(--sd-loader--neutral-500-color-icon-fill, var(--sd-color-500));
+}
+
+@utility sd-loader--neutral-600-color-icon-fill {
+  fill: var(--sd-loader--neutral-600-color-icon-fill, var(--sd-color-600));
+}
+
+@utility sd-tag--default--hover-color-background {
+  background-color: var(--sd-tag--default--hover-color-background, var(--sd-color-default));
+}
+
+@utility sd-tag--selected--default-color-text {
+  color: var(--sd-tag--selected--default-color-text, var(--sd-color-default));
+}
+
+@utility sd-tag--selected--hover-color-text {
+  color: var(--sd-tag--selected--hover-color-text, var(--sd-color-default));
+}
+
+@utility sd-tag--tmplt--default-color-border {
+  border-color: var(--sd-tag--tmplt--default-color-border, var(--sd-color-800));
+}
+
+@utility sd-tag--tmplt--selected-color-border {
+  border-color: var(--sd-tag--tmplt--selected-color-border, var(--sd-color-default));
+}
+
+@utility sd-tag--tmplt--selected-color-icon-fill {
+  fill: var(--sd-tag--tmplt--selected-color-icon-fill, var(--sd-color-default));
 }
 
 @utility z-10 {
