@@ -56,7 +56,7 @@ export class BaseTokenProcessor {
    * Cleans the token name by removing and replacing some special characters
    */
   cleanupTokenName(name) {
-    return name.replaceAll('*', '').replaceAll('|', '-').replace('', '').replace('%', '');
+    return name.replaceAll('*', '').replaceAll('|', '-').replace('', '').replaceAll('%', '');
   }
 
   /**
