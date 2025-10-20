@@ -176,6 +176,43 @@ body {
   -webkit-text-size-adjust: 100%;
   line-height: 1.5;
   font-size: 16px;
+}
+
+.slot {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+  justify-content: center;
+  visibility: visible !important;
+  border-radius: 6px;
+}
+
+.slot--text {
+  color: #62359b;
+  font-size: 14px;
+  font-family: 'Courier New', Courier, monospace;
+  flex-grow: 0;
+  font-weight: bold;
+  padding: 8px;
+}
+
+.slot--background {
+  background-color: #9747ff34;
+}
+
+.slot--border {
+  border: 2px dashed #62359b;
+}
+
+.slot--inverted {
+  color: #ccb6f1;
+  border-color: #ccb6f1;
+}
+
+.slot--overlay {
+  filter: sepia(100%) hue-rotate(216deg);
 }`,
           css_external: '',
           description: '',
