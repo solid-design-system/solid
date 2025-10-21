@@ -60,7 +60,7 @@ const extractUtilities = css => {
 
 const dir = path.join(process.cwd(), '../tokens/themes');
 const tailwind = readFileSync(path.join(dir, './tailwind.css'), { encoding: 'utf-8' });
-const theme = readFileSync(path.join(dir, './sd-ui-light.css'), { encoding: 'utf-8' });
+const theme = readFileSync(path.join(dir, './ui-light.css'), { encoding: 'utf-8' });
 
 export default {
   base: extractVariables(tailwind, '@theme inline'),
