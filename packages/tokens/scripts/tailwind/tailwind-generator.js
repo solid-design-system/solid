@@ -113,7 +113,7 @@ export class TailwindCSSGenerator {
           selectors.unshift(':root');
         }
 
-        return `/* build:theme[sd-${variant}] */\n${selectors.join(', ')} {\n${this.css.indent(this.css.join(variables, '\n'))}\n}\n/* build:theme */`;
+        return `/* build:theme[${variant}] */\n${selectors.join(', ')} {\n${this.css.indent(this.css.join(variables, '\n'))}\n}\n/* build:theme */`;
       })
       .join('\n\n');
   }
