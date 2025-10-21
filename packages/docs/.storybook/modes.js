@@ -1,11 +1,13 @@
+export const DEFAULT_THEME = 'UI Light';
+
 export const themes = [
-  { id: 'sd-theme-ui-light', name: 'UI Light' },
+  { id: 'sd-theme-ui-light', name: DEFAULT_THEME },
   { id: 'sd-theme-ui-dark', name: 'UI Dark' }
 ];
 
 export const allModes = {
   'sd-theme-ui-light': {
-    theme: 'UI Light'
+    theme: DEFAULT_THEME
   },
   'sd-theme-ui-dark': {
     theme: 'UI Dark'
