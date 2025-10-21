@@ -56,7 +56,7 @@ This will apply the UI Light theme globally.
 You can create your own theme by overriding CSS variables.
 There are two main types of variables (tokens):
 
-#### Primitive tokens
+#### **1 - Primitive tokens**
 
 Primitive variables define the base values used across all components.
 They act as fallbacks for all other variables.
@@ -69,11 +69,11 @@ Changing the primary color globally:
 
 This change will affect every component that uses the primary color.
 
-#### Semantic tokens
+#### **2 - Semantic tokens**
 
 Semantic tokens are divided into general and component-specific variables.
 
-##### General semantic tokens
+##### **2.1 - General semantic tokens**
 
 These let you target specific use cases without interfering with other parts that use the same primitive variable (e.g., primary background color without affecting all primary color usages).
 
@@ -85,7 +85,7 @@ Example:
 
 This overrides only the “primary background” usages, falling back to the primitive tokens otherwise.
 
-##### Component-specific semantic tokens
+##### **2.2 - Component-specific semantic tokens**
 
 If you want to customize variables for a specific component only, you can override its semantic tokens.
 Example, changing only the primary background color of the `sd-button` component:
@@ -98,14 +98,17 @@ Example, changing only the primary background color of the `sd-button` component
 
 Currently, component-specific theming is available for:
 
-- Accordion
-- Button
-- Chip
-- Footnotes
-- Loader
-- Flag
-- Header
-- Tag
+- [sd-accordion](./?path=/docs/components-sd-accordion--docs)
+- [sd-audio](./?path=/docs/components-sd-audio--docs)
+- [sd-breadcrumb](./?path=/docs/components-sd-breadcrumb--docs)
+- [sd-button](./?path=/docs/components-sd-button--docs)
+- [sd-chip](./?path=/docs/components-sd-chip--docs)
+- [sd-container](./?path=/docs/components-sd-container--docs)
+- [sd-flag](./?path=/docs/components-sd-flag--docs)
+- [sd-footnotes](./?path=/docs/components-sd-footnotes--docs)
+- [sd-header](./?path=/docs/components-sd-header--docs)
+- [sd-loader](./?path=/docs/components-sd-loader--docs)
+- [sd-tag](./?path=/docs/components-sd-tag--docs)
 
 **Note:** Even if a component doesn’t yet have full semantic variable support, you can still apply overrides within the component’s scope using general semantic tokens.
 
