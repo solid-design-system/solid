@@ -46,13 +46,13 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -70,13 +70,13 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -94,13 +94,13 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -118,13 +118,13 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -143,13 +143,13 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -165,13 +165,13 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -189,13 +189,13 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -213,13 +213,13 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -235,13 +235,13 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -257,13 +257,13 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -314,13 +314,13 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -340,13 +340,13 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -364,13 +364,13 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -388,13 +388,13 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -413,13 +413,13 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -435,13 +435,13 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -459,13 +459,13 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -483,13 +483,13 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -505,13 +505,13 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -527,13 +527,13 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -582,13 +582,13 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -606,13 +606,13 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-primary-100">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -630,13 +630,13 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -654,13 +654,13 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-primary-100">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -679,13 +679,13 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -701,13 +701,13 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-primary-100">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -725,13 +725,13 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -749,13 +749,13 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-primary-100">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -771,13 +771,13 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -793,13 +793,13 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-primary-100">
               <div class="flex">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset gap-2">
+                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
                 <sd-tooltip content="Share">
-                  <button class="sd-interactive sd-interactive--reset">
-                    <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                  <button class="sd-interactive sd-interactive--reset flex">
+                    <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                   </button>
                 </sd-tooltip>
               </div>
@@ -971,13 +971,13 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -995,13 +995,13 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1019,13 +1019,13 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1043,13 +1043,13 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1068,13 +1068,13 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1090,13 +1090,13 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1114,13 +1114,13 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1138,13 +1138,13 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1160,13 +1160,13 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1182,13 +1182,13 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1656,13 +1656,13 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1680,13 +1680,13 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1704,13 +1704,13 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1728,13 +1728,13 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1753,13 +1753,13 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1775,13 +1775,13 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1799,13 +1799,13 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1823,13 +1823,13 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1845,13 +1845,13 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1867,13 +1867,13 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1941,13 +1941,13 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1965,13 +1965,13 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -1989,13 +1989,13 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -2013,13 +2013,13 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -2038,13 +2038,13 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -2060,13 +2060,13 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -2084,13 +2084,13 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -2108,13 +2108,13 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -2130,13 +2130,13 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -2152,13 +2152,13 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -2261,13 +2261,13 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -2289,13 +2289,13 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -2315,13 +2315,13 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -2341,13 +2341,13 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -2368,13 +2368,13 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -2392,13 +2392,13 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -2418,13 +2418,13 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -2444,13 +2444,13 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -2468,13 +2468,13 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -2492,13 +2492,13 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
                 <div class="flex">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset gap-2">
+                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
                   <sd-tooltip content="Share">
-                    <button class="sd-interactive sd-interactive--reset">
-                      <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                    <button class="sd-interactive sd-interactive--reset flex">
+                      <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                     </button>
                   </sd-tooltip>
                 </div>
@@ -2567,13 +2567,13 @@ export const TableFixedRight = {
                 >
                   <div class="flex">
                    <sd-tooltip content="Add to favorites">
-                      <button class="sd-interactive sd-interactive--reset gap-2">
+                      <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                         <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                       </button>
                     </sd-tooltip>
                     <sd-tooltip content="Share">
-                      <button class="sd-interactive sd-interactive--reset">
-                        <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                      <button class="sd-interactive sd-interactive--reset flex">
+                       <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                       </button>
                     </sd-tooltip>
                   </div>
@@ -2591,13 +2591,13 @@ export const TableFixedRight = {
                 >
                   <div class="flex">
                     <sd-tooltip content="Add to favorites">
-                      <button class="sd-interactive sd-interactive--reset gap-2">
+                      <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                         <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                       </button>
                     </sd-tooltip>
                     <sd-tooltip content="Share">
-                      <button class="sd-interactive sd-interactive--reset">
-                        <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                      <button class="sd-interactive sd-interactive--reset flex">
+                       <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                       </button>
                     </sd-tooltip>
                   </div>
@@ -2615,13 +2615,13 @@ export const TableFixedRight = {
                 >
                   <div class="flex">
                     <sd-tooltip content="Add to favorites">
-                      <button class="sd-interactive sd-interactive--reset gap-2">
+                      <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                         <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                       </button>
                     </sd-tooltip>
                     <sd-tooltip content="Share">
-                      <button class="sd-interactive sd-interactive--reset">
-                        <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                      <button class="sd-interactive sd-interactive--reset flex">
+                       <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                       </button>
                     </sd-tooltip>
                   </div>
@@ -2641,13 +2641,13 @@ export const TableFixedRight = {
                 >
                   <div class="flex">
                    <sd-tooltip content="Add to favorites">
-                      <button class="sd-interactive sd-interactive--reset gap-2">
+                      <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                         <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                       </button>
                     </sd-tooltip>
                     <sd-tooltip content="Share">
-                      <button class="sd-interactive sd-interactive--reset">
-                        <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                      <button class="sd-interactive sd-interactive--reset flex">
+                       <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                       </button>
                     </sd-tooltip>
                   </div>
@@ -2667,13 +2667,13 @@ export const TableFixedRight = {
                 >
                   <div class="flex">
                     <sd-tooltip content="Add to favorites">
-                        <button class="sd-interactive sd-interactive--reset gap-2">
+                        <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                           <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                         </button>
                       </sd-tooltip>
                       <sd-tooltip content="Share">
-                        <button class="sd-interactive sd-interactive--reset">
-                          <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                        <button class="sd-interactive sd-interactive--reset flex">
+                         <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                         </button>
                       </sd-tooltip>
                   </div>
@@ -2691,13 +2691,13 @@ export const TableFixedRight = {
                 >
                   <div class="flex">
                    <sd-tooltip content="Add to favorites">
-                        <button class="sd-interactive sd-interactive--reset gap-2">
+                        <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                           <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                         </button>
                       </sd-tooltip>
                       <sd-tooltip content="Share">
-                        <button class="sd-interactive sd-interactive--reset">
-                          <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                        <button class="sd-interactive sd-interactive--reset flex">
+                         <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                         </button>
                       </sd-tooltip>
                   </div>
@@ -2715,13 +2715,13 @@ export const TableFixedRight = {
                 >
                   <div class="flex">
                    <sd-tooltip content="Add to favorites">
-                        <button class="sd-interactive sd-interactive--reset gap-2">
+                        <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                           <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                         </button>
                       </sd-tooltip>
                       <sd-tooltip content="Share">
-                        <button class="sd-interactive sd-interactive--reset">
-                          <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                        <button class="sd-interactive sd-interactive--reset flex">
+                         <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                         </button>
                       </sd-tooltip>
                   </div>
@@ -2741,13 +2741,13 @@ export const TableFixedRight = {
                 >
                   <div class="flex">
                     <sd-tooltip content="Add to favorites">
-                        <button class="sd-interactive sd-interactive--reset gap-2">
+                        <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                           <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                         </button>
                       </sd-tooltip>
                       <sd-tooltip content="Share">
-                        <button class="sd-interactive sd-interactive--reset">
-                          <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                        <button class="sd-interactive sd-interactive--reset flex">
+                         <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                         </button>
                       </sd-tooltip>
                   </div>
@@ -2765,13 +2765,13 @@ export const TableFixedRight = {
                 >
                   <div class="flex">
                    <sd-tooltip content="Add to favorites">
-                        <button class="sd-interactive sd-interactive--reset gap-2">
+                        <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                           <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                         </button>
                       </sd-tooltip>
                       <sd-tooltip content="Share">
-                        <button class="sd-interactive sd-interactive--reset">
-                          <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                        <button class="sd-interactive sd-interactive--reset flex">
+                         <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                         </button>
                       </sd-tooltip>
                   </div>
@@ -2789,13 +2789,13 @@ export const TableFixedRight = {
                 >
                   <div class="flex">
                     <sd-tooltip content="Add to favorites">
-                        <button class="sd-interactive sd-interactive--reset gap-2">
+                        <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
                           <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                         </button>
                       </sd-tooltip>
                       <sd-tooltip content="Share">
-                        <button class="sd-interactive sd-interactive--reset">
-                          <sd-icon class="w-6 h-6 pl-[2px]" name="system/share" label="Share"></sd-icon>
+                        <button class="sd-interactive sd-interactive--reset flex">
+                         <sd-icon class="w-6 h-6" name="system/share" label="Share"></sd-icon>
                         </button>
                       </sd-tooltip>
                   </div>
