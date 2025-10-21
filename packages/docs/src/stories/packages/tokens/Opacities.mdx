@@ -1,6 +1,7 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import theme from 'tailwind-theme';
 import cx from 'classix';
+import { getTokens } from './utils.js';
 
 <Meta title="Packages/Tokens/Opacities" />
 
@@ -8,32 +9,30 @@ import cx from 'classix';
 
 <table>
   <tbody>
-    {theme.base
-      .filter(token => token.name.startsWith('opacity'))
-      .map(token => ({ ...token, name: token.name.replace('opacity-', '') }))
-      .map((token, i) => {
-      return (
-        <tr>
+    {getTokens('opacity', theme.base, {
+      sort: (a, b) => a.name.localeCompare(b.name, undefined, { numeric: true })
+    }).map((token, i) => (
+        <tr key={token.name}>
           <td>
-            <div class="flex flex-col">
-              <div class="font-bold">sd-opacity-{token.name}</div>
+            <div className="flex flex-col">
+              <div className="font-bold">sd-opacity-{token.name}</div>
               <div>opacity: {token.value}</div>
             </div>
           </td>
           <td>
-            <div class={`relative flex flex-col`}>
+            <div className={`relative flex flex-col`}>
               {[...Array(12)].map((_, rowIndex) => (
-                <div class="flex w-full" key={rowIndex}>
+                <div className="flex w-full" key={rowIndex}>
                   {[...Array(30)].map((_, cellIndex) => (
                     <div
-                      class={`w-1 h-1 ${rowIndex % 2 === cellIndex % 2 ? 'bg-white' : 'bg-neutral-500'}`}
+                      className={`w-1 h-1 ${rowIndex % 2 === cellIndex % 2 ? 'bg-white' : 'bg-neutral-500'}`}
                       key={cellIndex}
                     />
                   ))}
                 </div>
               ))}
 
-              <div class={cx('bg-neutral-800 w-full h-full absolute inset-0 z-10', {
+              <div className={cx('bg-neutral-800 w-full h-full absolute inset-0 z-10', {
                 '0': 'opacity-0',
                 '5': 'opacity-5',
                 '10': 'opacity-10',
@@ -53,8 +52,7 @@ import cx from 'classix';
             </div>
           </td>
         </tr>
-      );
-    })}
+      ))}
 
   </tbody>
 </table>

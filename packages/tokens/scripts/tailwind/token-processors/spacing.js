@@ -35,6 +35,7 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
 
     switch (prefix) {
       case 'aspect':
+        value = token.original.value;
         break;
       case 'opacity':
         value = `${value}%`;

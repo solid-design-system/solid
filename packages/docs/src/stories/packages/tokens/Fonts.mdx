@@ -1,6 +1,7 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import theme from 'tailwind-theme';
 import cx from 'classix';
+import { getTokens } from './utils.js';
 
 <Meta title="Packages/Tokens/Fonts" />
 
@@ -8,19 +9,26 @@ import cx from 'classix';
 
 <table>
   <tbody>
-    {theme.base
-      .filter(token => token.name.startsWith('text-') && !token.name.includes('color'))
-      .map(token => ({ ...token, name: token.name.replace('text-', '') }))
+    {getTokens('text', theme.base, {
+      filter: (token) => !token.name.includes('color'),
+      sort: (a, b) => {
+        const order = new Map(['sm', 'base', 'lg', 'xl', '2xl', '3xl', '4xl'].map((v, i) => [v, i]));
+        const aValue = a.name.replace('font-size-', '');
+        const bValue = b.name.replace('font-size-', '');
+
+        return order.get(aValue) - order.get(bValue);
+      }
+    })
       .map((token, i) => {
         return (
-          <tr>
+          <tr key={token.name}>
             <td>
-              <div class="font-bold">sd-font-size-{token.name}</div>
+              <div className="font-bold">sd-font-size-{token.name}</div>
               <div>font-size: {token.value}</div>
             </td>
             <td>
               <div
-                class={cx(
+                className={cx(
                   {
                     sm: '!text-sm',
                     base: '!text-base',
@@ -38,6 +46,7 @@ import cx from 'classix';
           </tr>
         );
       })}
+
   </tbody>
 </table>
 
@@ -45,30 +54,27 @@ import cx from 'classix';
 
 <table>
   <tbody>
-    {theme.base
-      .filter(token => token.name.startsWith('font-weight-'))
-      .map(token => ({ ...token, name: token.name.replace('font-weight-', '') }))
-      .map((token, i) => {
-        return (
-          <tr>
-            <td>
-              <div class="font-bold">sd-font-weight-{token.name}</div>
-              <div>font-weight: {token.name}</div>
-            </td>
-            <td>
-              <div
-                class={cx(
-                  {
-                    normal: 'font-normal',
-                    bold: 'font-bold'
-                  }[token.name]
-                )}
-              >
-                Lorem ipsum dolor
-              </div>
-            </td>
-          </tr>
-        );
-      })}
+    {getTokens('font-weight', theme.base).map((token, i) => {
+      return (
+        <tr key={token.name}>
+          <td>
+            <div className="font-bold">sd-font-weight-{token.name}</div>
+            <div>font-weight: {token.name}</div>
+          </td>
+          <td>
+            <div
+              className={cx(
+                {
+                  normal: 'font-normal',
+                  bold: 'font-bold'
+                }[token.name]
+              )}
+            >
+              Lorem ipsum dolor
+            </div>
+          </td>
+        </tr>
+      );
+    })}
   </tbody>
 </table>

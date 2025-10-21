@@ -67,6 +67,7 @@ export class FigmaClient extends FigmaBase {
         tokens: { core: { ...legacy.core, ...core }, ...legacy.tokens, ...tokens }
       }))
       .map(theme => {
+        theme.tokens.utilities = { ...legacy.tokens.utilities, ...theme.tokens.utilities };
         theme.tokens.outline = theme.tokens.border;
         theme.tokens.ring = theme.tokens.border;
         return theme;

@@ -33,7 +33,8 @@ They use shorthand RGB values (e. g. `108 194 84`) to allow setting opacity via 
     subtitle="--sd-color-{color}"
     colors={{
       ...getColorItems('background-color', 'success', theme.base),
-      ...getColorItems('background-color', 'warning', theme.base)
+      ...getColorItems('background-color', 'warning', theme.base),
+      ...getColorItems('background-color', 'info', theme.base)
     }}
   />
   <ColorItem
@@ -45,11 +46,11 @@ They use shorthand RGB values (e. g. `108 194 84`) to allow setting opacity via 
     title="Risk"
     subtitle="--sd-color-{color}"
     colors={{
-      ...getColorItems('color', 'risk-low', theme.base),
-      ...getColorItems('color', 'risk-moderate', theme.base),
-      ...getColorItems('color', 'risk-increased', theme.base),
-      ...getColorItems('color', 'risk-high', theme.base),
-      ...getColorItems('color', 'risk-veryhigh', theme.base)
+      ...getColorItems('fill', 'risk-low', theme.base),
+      ...getColorItems('fill', 'risk-moderate', theme.base),
+      ...getColorItems('fill', 'risk-increased', theme.base),
+      ...getColorItems('fill', 'risk-high', theme.base),
+      ...getColorItems('fill', 'risk-veryhigh', theme.base)
     }}
   />
   <ColorItem

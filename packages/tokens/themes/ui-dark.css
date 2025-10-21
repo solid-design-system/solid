@@ -1,6 +1,18 @@
 .sd-theme-ui-dark {
   color-scheme: dark;
 
+  --sd-aspect-16\/10: 16 / 10;
+  --sd-aspect-21\/9: 21 / 9;
+  --sd-aspect-2\/1: 2 / 1;
+  --sd-aspect-3\/2: 3 / 2;
+  --sd-aspect-3\/4: 3 / 4;
+  --sd-aspect-4\/3: 4 / 3;
+  --sd-aspect-4\/5: 4 / 5;
+  --sd-aspect-5\/4: 5 / 4;
+  --sd-aspect-6\/5: 6 / 5;
+  --sd-aspect-golden-ratio: 1.6180339887498948482 / 1;
+  --sd-aspect-square: 1 / 1;
+  --sd-aspect-video: 16 / 9;
   --sd-border-width-2: 0.125rem;
   --sd-border-width-4: 0.25rem;
   --sd-border-width-6: 0.375rem;

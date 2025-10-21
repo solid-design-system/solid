@@ -13,6 +13,8 @@ export class FigmaLegacyTokens {
     const core = this.#getCore();
     const tokens = this.#getTokens();
 
+    tokens.utilities = tokens.utilities || {};
+
     tokens['font-size'] = this.#getTokensByType(core, 'fontSizes');
 
     tokens.spacing = {
@@ -68,7 +70,7 @@ export class FigmaLegacyTokens {
       }
     };
 
-    tokens.aspect = {
+    tokens.utilities.aspect = {
       video: { value: '16 / 9', type: 'spacing' },
       square: { value: '1 / 1', type: 'spacing' },
       '6/5': { value: '6 / 5', type: 'spacing' },

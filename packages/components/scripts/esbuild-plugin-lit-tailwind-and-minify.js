@@ -19,6 +19,9 @@ export async function processTailwind(source, options = { standalone: false, sto
 
   if (options.storybook) {
     prepend.push(`@source '${path.resolve(base, '../docs/src')}';`);
+
+    /* Safelist */
+    prepend.push(`@source inline('w-{1.5}');`);
   }
 
   const css = `${prepend.join('\n')} ${source}`;

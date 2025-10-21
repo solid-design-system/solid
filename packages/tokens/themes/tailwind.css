@@ -14,6 +14,18 @@
   --animate-loader-current: wave 1.3s infinite, loader-color-current 2.6s infinite;
   --animate-loader-primary: wave 1.3s infinite, loader-color-primary 2.6s infinite;
   --animate-loader-white: wave 1.3s infinite, loader-color-white 2.6s infinite;
+  --aspect-16\/10: var(--sd-aspect-16\/10);
+  --aspect-21\/9: var(--sd-aspect-21\/9);
+  --aspect-2\/1: var(--sd-aspect-2\/1);
+  --aspect-3\/2: var(--sd-aspect-3\/2);
+  --aspect-3\/4: var(--sd-aspect-3\/4);
+  --aspect-4\/3: var(--sd-aspect-4\/3);
+  --aspect-4\/5: var(--sd-aspect-4\/5);
+  --aspect-5\/4: var(--sd-aspect-5\/4);
+  --aspect-6\/5: var(--sd-aspect-6\/5);
+  --aspect-golden-ratio: var(--sd-aspect-golden-ratio);
+  --aspect-square: var(--sd-aspect-square);
+  --aspect-video: var(--sd-aspect-video);
   --background-color-accent-300: var(--sd-color-background-accent-300, var(--sd-color-accent-300));
   --background-color-accent-500: var(--sd-color-background-accent-500, var(--sd-color-accent-500));
   --background-color-accent-550: var(--sd-color-background-accent-550, var(--sd-color-accent-550));
