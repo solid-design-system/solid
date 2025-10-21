@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import '../../../../../../components/src/components/tab-group/tab-group';
+import '../../../../../../components/src/components/tab/tab';
+import '../../../../../../components/src/components/tab-panel/tab-panel';
+
+<Meta title="Packages/Components/Migration/from v5" />
+
+# Migration from v5
+
+## Importing themes
+
+You must import at least one theme.
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="npm" variant="container"> NPM </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="cdn" variant="container"> CDN </sd-tab>
+  <sd-tab-panel name="npm">
+  __Before__:
+    ```js
+    import '@solid-design-system/components/dist/solid-components.css';
+    ```
+  __After__:
+    ```js
+    import '@solid-design-system/components/dist/solid-components.css';
+    import 'path/to/ui-light.css';
+    ```
+
+  </sd-tab-panel>
+  <sd-tab-panel name="cdn">
+  __Before__:
+    ```html
+    <link rel="stylesheet" href="/solid/dist/solid-components.css" />
+    ```
+  __After__:
+    ```html
+    <link rel="stylesheet" href="/solid/dist/solid-components.css" />
+    <link rel="stylesheet" href="path/to/ui-light.css" />
+    ```
+  </sd-tab-panel>
+</sd-tab-group>
