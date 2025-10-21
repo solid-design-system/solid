@@ -71,7 +71,7 @@ export class BaseTokenProcessor {
     const variant = path[0];
 
     return {
-      path: this.pathToKebabCase(path.slice(1)),
+      path: path.slice(1),
       variant
     };
   }

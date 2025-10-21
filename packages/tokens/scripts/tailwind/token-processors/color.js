@@ -1,4 +1,5 @@
 import { BaseTokenProcessor } from './base.js';
+import pc from 'picocolors';
 
 /**
  * Processor for color tokens with theme support
@@ -47,13 +48,9 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     const fallback = this.#getFallbackColor(token);
     const processed = isUtility
       ? this.#processUtilityToken(token)
-      : this.#processComponentToken(token, dictionary, options);
+      : this.#processComponentToken(token, variant, dictionary);
 
     const cssvariables = [];
-
-    // if (token.name.includes('-white-default')) {
-    //   console.log(token.name, token.value);
-    // }
 
     if (!isCoreColor && variant === options.defaultTheme) {
       const cssvar = processed.cssvar ?? processed.name;
@@ -127,22 +124,15 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     return isUtility ? name : `${processed.path[0]}-${name}`;
   }
 
-  #getCoreTokenFromColor(color, dictionary, options) {
-    let found = null;
-    Object.values(dictionary).forEach(item => {
-      if (found) return;
+  #getCoreTokenFromColor(color, variant, dictionary) {
+    const coreColors = this.#getCoreColors(dictionary, variant);
+    const token = Object.values(coreColors).find(core => core.value === color);
 
-      Object.values(item).forEach(i => {
-        if (found) return;
+    if (!token) {
+      return null;
+    }
 
-        if (i.key?.startsWith(`{${options.defaultTheme}.`)) {
-          if (i.value !== color) return;
-          found = i;
-        }
-      });
-    });
-
-    return this.cleanupTokenName(`color-${found?.path.at(-1)}`);
+    return this.cleanupTokenName(`${token.path.join('-').replace('-default', '')}`);
   }
 
   #processUtilityToken(token) {
@@ -158,15 +148,24 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     return { type: 'color', name: `--${name}` };
   }
 
-  #processComponentToken(token, dictionary, options) {
+  #processComponentToken(token, variant, dictionary) {
     const processed = this.processTokenPath(token);
 
     const name = processed.path
       .slice(1)
-      .map(p => p.replace('--', '-'))
-      .join('-');
+      .map(p => p.replaceAll('--', '-'))
+      .join('-')
+      .replaceAll('-__', '__');
 
-    const value = this.cssvar(name, this.cssvar(this.#getCoreTokenFromColor(token.value, dictionary, options)));
+    const coreToken = this.#getCoreTokenFromColor(token.value, variant, dictionary);
+
+    if (!coreToken) {
+      console.error(
+        pc.redBright(`Fallback primitive color not found for token: ${pc.red(name)} - ${pc.red(token.value)}`)
+      );
+    }
+
+    const value = this.cssvar(name, coreToken ? this.cssvar(coreToken) : undefined);
 
     for (const [property, cssproperty] of Object.entries(this.semantic)) {
       if (name.includes(property)) {

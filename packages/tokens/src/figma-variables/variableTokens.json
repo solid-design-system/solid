@@ -499,6 +499,7 @@
         "VariableID:43979:308",
         "VariableID:43979:309",
         "VariableID:43979:310",
+        "VariableID:44677:46587",
         "VariableID:43979:252",
         "VariableID:43979:288",
         "VariableID:43979:289",
@@ -543,7 +544,6 @@
         "VariableID:44336:5069",
         "VariableID:44336:5070",
         "VariableID:44336:5061",
-        "VariableID:44612:686",
         "VariableID:44336:5063",
         "VariableID:44336:5062",
         "VariableID:44336:5066",
@@ -628,21 +628,25 @@
         "VariableID:44294:67001",
         "VariableID:44300:67002",
         "VariableID:44300:67003",
-        "VariableID:44300:68644",
-        "VariableID:44300:68645",
+        "VariableID:44612:9948",
+        "VariableID:44650:36286",
         "VariableID:44023:39692",
+        "VariableID:44650:36908",
+        "VariableID:44650:37064",
+        "VariableID:44650:37065",
         "VariableID:44271:64019",
         "VariableID:44318:23584",
         "VariableID:44318:23395",
         "VariableID:44283:66900",
         "VariableID:44318:23033",
+        "VariableID:44612:686",
         "VariableID:44023:39695",
         "VariableID:44300:68679",
         "VariableID:44023:39696",
+        "VariableID:44650:19862",
         "VariableID:44300:68704",
         "VariableID:44300:68711",
         "VariableID:44318:24450",
-        "VariableID:44612:9948",
         "VariableID:44318:24451",
         "VariableID:44318:24496",
         "VariableID:44300:68680",
@@ -4166,7 +4170,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "43174:14": {
-          "id": "VariableID:43979:200",
+          "id": "VariableID:43979:199",
           "type": "VARIABLE_ALIAS"
         },
         "43343:1": {
@@ -7672,9 +7676,7 @@
       "name": "utilities/color/primary/100",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4947",
@@ -7700,9 +7702,7 @@
       "name": "utilities/color/primary/200",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4948",
@@ -7728,9 +7728,7 @@
       "name": "utilities/color/primary/300",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4949",
@@ -7756,9 +7754,7 @@
       "name": "utilities/color/primary/400",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4950",
@@ -7784,9 +7780,7 @@
       "name": "utilities/color/primary/500",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4951",
@@ -7812,9 +7806,7 @@
       "name": "utilities/color/primary/600",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4952",
@@ -7840,9 +7832,7 @@
       "name": "utilities/color/primary/700",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4953",
@@ -7868,9 +7858,7 @@
       "name": "utilities/color/primary/750",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4954",
@@ -7896,9 +7884,7 @@
       "name": "utilities/color/primary/800",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4955",
@@ -7924,9 +7910,7 @@
       "name": "utilities/color/primary/900",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4956",
@@ -7952,9 +7936,7 @@
       "name": "utilities/color/primary/default",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4957",
@@ -7980,9 +7962,7 @@
       "name": "utilities/color/accent/100",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4958",
@@ -8008,9 +7988,7 @@
       "name": "utilities/color/accent/200",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4959",
@@ -8036,9 +8014,7 @@
       "name": "utilities/color/accent/300",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4960",
@@ -8064,9 +8040,7 @@
       "name": "utilities/color/accent/400",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4961",
@@ -8092,9 +8066,7 @@
       "name": "utilities/color/accent/500",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4962",
@@ -8120,9 +8092,7 @@
       "name": "utilities/color/accent/550",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4963",
@@ -8150,9 +8120,7 @@
       "name": "utilities/color/accent/600",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4964",
@@ -8178,9 +8146,7 @@
       "name": "utilities/color/accent/700",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4965",
@@ -8206,9 +8172,7 @@
       "name": "utilities/color/accent/800",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4966",
@@ -8234,9 +8198,7 @@
       "name": "utilities/color/accent/default",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4967",
@@ -8262,9 +8224,7 @@
       "name": "utilities/color/neutral/100",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4968",
@@ -8290,9 +8250,7 @@
       "name": "utilities/color/neutral/200",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4969",
@@ -8318,9 +8276,7 @@
       "name": "utilities/color/neutral/300",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4970",
@@ -8346,9 +8302,7 @@
       "name": "utilities/color/neutral/400",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4971",
@@ -8374,9 +8328,7 @@
       "name": "utilities/color/neutral/500",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4972",
@@ -8402,9 +8354,7 @@
       "name": "utilities/color/neutral/600",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4973",
@@ -8430,9 +8380,7 @@
       "name": "utilities/color/neutral/700",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4974",
@@ -8458,9 +8406,7 @@
       "name": "utilities/color/neutral/800",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4975",
@@ -8486,9 +8432,7 @@
       "name": "utilities/color/error/300",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:5018",
@@ -8514,9 +8458,7 @@
       "name": "utilities/color/error/400",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:5019",
@@ -8542,9 +8484,7 @@
       "name": "utilities/color/success/default",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4963",
@@ -8570,9 +8510,7 @@
       "name": "utilities/color/black/default",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:5027",
@@ -8598,9 +8536,7 @@
       "name": "utilities/color/white/default",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:5026",
@@ -8626,9 +8562,7 @@
       "name": "utilities/color/risk/low",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:5021",
@@ -8654,9 +8588,7 @@
       "name": "utilities/color/risk/moderate",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:5022",
@@ -8682,9 +8614,7 @@
       "name": "utilities/color/risk/increased",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:5023",
@@ -8710,9 +8640,7 @@
       "name": "utilities/color/risk/high",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:5024",
@@ -8738,9 +8666,7 @@
       "name": "utilities/color/risk/veryhigh",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:5025",
@@ -8766,9 +8692,7 @@
       "name": "utilities/color/info/default",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4997",
@@ -8794,9 +8718,7 @@
       "name": "utilities/color/warning/default",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "id": "VariableID:43927:4990",
@@ -9214,9 +9136,7 @@
       "name": "utilities/color/error/default",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "a": 1,
@@ -9533,7 +9453,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "43174:14": {
-          "id": "VariableID:43979:193",
+          "id": "VariableID:43979:197",
           "type": "VARIABLE_ALIAS"
         },
         "43343:1": {
@@ -10276,7 +10196,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "43174:14": {
-          "id": "VariableID:43979:260",
+          "id": "VariableID:43979:194",
           "type": "VARIABLE_ALIAS"
         },
         "43343:1": {
@@ -10332,7 +10252,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "43174:14": {
-          "id": "VariableID:43979:202",
+          "id": "VariableID:43979:227",
           "type": "VARIABLE_ALIAS"
         },
         "43343:1": {
@@ -10615,9 +10535,9 @@
         },
         "43174:14": {
           "a": 0.10000000149011612,
-          "b": 1,
-          "g": 1,
-          "r": 1
+          "b": 0.5568627715110779,
+          "g": 0.2078431397676468,
+          "r": 0
         },
         "43343:1": {
           "a": 0.10000000149011612,
@@ -10649,9 +10569,9 @@
         },
         "43174:14": {
           "a": 0.30000001192092896,
-          "b": 1,
-          "g": 1,
-          "r": 1
+          "b": 0.5568627715110779,
+          "g": 0.2078431397676468,
+          "r": 0
         },
         "43343:1": {
           "a": 0.30000001192092896,
@@ -10682,10 +10602,10 @@
           "r": 0
         },
         "43174:14": {
-          "a": 0.30000001192092896,
-          "b": 1,
-          "g": 1,
-          "r": 1
+          "a": 0.800000011920929,
+          "b": 0.5568627715110779,
+          "g": 0.2078431397676468,
+          "r": 0
         },
         "43343:1": {
           "a": 0.800000011920929,
@@ -10716,10 +10636,10 @@
           "r": 0
         },
         "43174:14": {
-          "a": 0.30000001192092896,
-          "b": 1,
-          "g": 1,
-          "r": 1
+          "a": 0.8999999761581421,
+          "b": 0.5568627715110779,
+          "g": 0.2078431397676468,
+          "r": 0
         },
         "43343:1": {
           "a": 0.8999999761581421,
@@ -10751,9 +10671,9 @@
         },
         "43174:14": {
           "a": 0.20000000298023224,
-          "b": 1,
-          "g": 1,
-          "r": 1
+          "b": 0.125490203499794,
+          "g": 0.03529411926865578,
+          "r": 0.007843137718737125
         },
         "43343:1": {
           "a": 0.20000000298023224,
@@ -10925,9 +10845,7 @@
       "name": "utilities/color/accent/750",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "a": 1,
@@ -11050,8 +10968,10 @@
       ],
       "valuesByMode": {
         "43174:13": {
-          "id": "VariableID:43979:273",
-          "type": "VARIABLE_ALIAS"
+          "a": 1,
+          "b": 1,
+          "g": 1,
+          "r": 1
         },
         "43174:14": {
           "id": "VariableID:43979:203",
@@ -11137,9 +11057,7 @@
       "name": "ui/sizing/0",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 0
       },
@@ -11154,9 +11072,7 @@
       "name": "ui/sizing/1",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 4
       },
@@ -11171,9 +11087,7 @@
       "name": "ui/sizing/2",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 8
       },
@@ -11188,9 +11102,7 @@
       "name": "ui/sizing/3",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 12
       },
@@ -11205,9 +11117,7 @@
       "name": "ui/sizing/4",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 16
       },
@@ -11222,9 +11132,7 @@
       "name": "ui/sizing/5",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 20
       },
@@ -11239,9 +11147,7 @@
       "name": "ui/sizing/6",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 24
       },
@@ -11256,9 +11162,7 @@
       "name": "ui/sizing/7",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 28
       },
@@ -11273,9 +11177,7 @@
       "name": "ui/sizing/8",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 32
       },
@@ -11290,9 +11192,7 @@
       "name": "ui/sizing/9",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 36
       },
@@ -11307,9 +11207,7 @@
       "name": "ui/sizing/10",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 40
       },
@@ -11324,9 +11222,7 @@
       "name": "ui/sizing/11",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 44
       },
@@ -11341,9 +11237,7 @@
       "name": "ui/sizing/12",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 48
       },
@@ -11358,9 +11252,7 @@
       "name": "ui/sizing/14",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 56
       },
@@ -11375,9 +11267,7 @@
       "name": "ui/sizing/16",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 64
       },
@@ -11392,9 +11282,7 @@
       "name": "ui/sizing/20",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 80
       },
@@ -11409,9 +11297,7 @@
       "name": "ui/sizing/24",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 96
       },
@@ -11426,9 +11312,7 @@
       "name": "ui/sizing/28",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 112
       },
@@ -11443,9 +11327,7 @@
       "name": "ui/sizing/32",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 128
       },
@@ -11460,9 +11342,7 @@
       "name": "ui/sizing/36",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 144
       },
@@ -11477,9 +11357,7 @@
       "name": "ui/sizing/40",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 160
       },
@@ -11494,9 +11372,7 @@
       "name": "ui/sizing/44",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 176
       },
@@ -11511,9 +11387,7 @@
       "name": "ui/sizing/52",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 208
       },
@@ -11528,9 +11402,7 @@
       "name": "ui/sizing/56",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 224
       },
@@ -11545,9 +11417,7 @@
       "name": "ui/sizing/64",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 256
       },
@@ -11562,9 +11432,7 @@
       "name": "ui/sizing/72",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 288
       },
@@ -11579,9 +11447,7 @@
       "name": "ui/sizing/80",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 320
       },
@@ -11596,9 +11462,7 @@
       "name": "ui/sizing/96",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 384
       },
@@ -11613,9 +11477,7 @@
       "name": "ui/text/sm",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 14
       },
@@ -11630,9 +11492,7 @@
       "name": "ui/text/base",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 16
       },
@@ -11647,9 +11507,7 @@
       "name": "ui/text/lg",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 20
       },
@@ -11664,9 +11522,7 @@
       "name": "ui/text/xl",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 24
       },
@@ -11681,9 +11537,7 @@
       "name": "ui/text/2xl",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 28
       },
@@ -11698,9 +11552,7 @@
       "name": "ui/text/3xl",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 32
       },
@@ -11715,9 +11567,7 @@
       "name": "ui/text/4xl",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 40
       },
@@ -11732,9 +11582,7 @@
       "name": "ui/leading/3",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 14
       },
@@ -11749,9 +11597,7 @@
       "name": "ui/leading/4",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 16
       },
@@ -11766,9 +11612,7 @@
       "name": "ui/leading/5",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 21
       },
@@ -11783,9 +11627,7 @@
       "name": "ui/leading/6",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 24
       },
@@ -11800,9 +11642,7 @@
       "name": "ui/leading/7",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 28.799999237060547
       },
@@ -11817,9 +11657,7 @@
       "name": "ui/leading/8",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 30
       },
@@ -11834,9 +11672,7 @@
       "name": "ui/leading/8,5",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 33.599998474121094
       },
@@ -11851,9 +11687,7 @@
       "name": "ui/leading/9",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 36
       },
@@ -11868,9 +11702,7 @@
       "name": "ui/leading/9,5",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 38.400001525878906
       },
@@ -11885,9 +11717,7 @@
       "name": "ui/leading/12",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 48
       },
@@ -11902,9 +11732,7 @@
       "name": "ui/leading/15",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 60
       },
@@ -11919,9 +11747,7 @@
       "name": "ui/border/border-0",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 0
       },
@@ -11936,9 +11762,7 @@
       "name": "ui/border/border",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 1
       },
@@ -11953,9 +11777,7 @@
       "name": "ui/border/border-2",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 2
       },
@@ -11970,9 +11792,7 @@
       "name": "ui/border/border-4",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 4
       },
@@ -11987,9 +11807,7 @@
       "name": "ui/border/border-6",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 6
       },
@@ -12004,9 +11822,7 @@
       "name": "ui/rounded/full",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 9999
       },
@@ -12021,9 +11837,7 @@
       "name": "ui/rounded/default",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 4
       },
@@ -12038,9 +11852,7 @@
       "name": "ui/rounded/none",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 0
       },
@@ -12055,9 +11867,7 @@
       "name": "ui/rounded/sm",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 2
       },
@@ -12072,9 +11882,7 @@
       "name": "ui/rounded/md",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 6
       },
@@ -12089,9 +11897,7 @@
       "name": "ui/rounded/\blg",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 8
       },
@@ -12106,9 +11912,7 @@
       "name": "ui/rounded/xl",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 12
       },
@@ -12123,9 +11927,7 @@
       "name": "ui/sizing/px",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 1
       },
@@ -12140,9 +11942,7 @@
       "name": "ui/sizing/0,5",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 2
       },
@@ -12157,9 +11957,7 @@
       "name": "ui/sizing/1,5",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 6
       },
@@ -12174,9 +11972,7 @@
       "name": "ui/sizing/3,5",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 14
       },
@@ -12191,9 +11987,7 @@
       "name": "ui/sizing/2,5",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 10
       },
@@ -12208,9 +12002,7 @@
       "name": "ui/opacity/opacity-0",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 0
       },
@@ -12225,9 +12017,7 @@
       "name": "ui/opacity/opacity-5",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 5
       },
@@ -12242,9 +12032,7 @@
       "name": "ui/opacity/opacity-2",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 2
       },
@@ -12259,9 +12047,7 @@
       "name": "ui/opacity/opacity-10",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 10
       },
@@ -12276,9 +12062,7 @@
       "name": "ui/opacity/opacity-20",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 20
       },
@@ -12293,9 +12077,7 @@
       "name": "ui/opacity/opacity-30",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 30
       },
@@ -12310,9 +12092,7 @@
       "name": "ui/opacity/opacity-50",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 50
       },
@@ -12327,9 +12107,7 @@
       "name": "ui/opacity/opacity-55",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 55
       },
@@ -12344,9 +12122,7 @@
       "name": "ui/opacity/opacity-60",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 60
       },
@@ -12361,9 +12137,7 @@
       "name": "ui/opacity/opacity-70",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 70
       },
@@ -12378,9 +12152,7 @@
       "name": "ui/opacity/opacity-75",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 75
       },
@@ -12395,9 +12167,7 @@
       "name": "ui/opacity/opacity-80",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 80
       },
@@ -12412,9 +12182,7 @@
       "name": "ui/opacity/opacity-85",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 85
       },
@@ -12429,9 +12197,7 @@
       "name": "ui/opacity/opacity-90",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 90
       },
@@ -12446,9 +12212,7 @@
       "name": "ui/opacity/opacity-1",
       "remote": false,
       "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43138:0": 100
       },
@@ -13769,9 +13533,7 @@
       "name": "utilities/color/black/default-constant",
       "remote": false,
       "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
+      "scopes": [],
       "valuesByMode": {
         "43174:13": {
           "a": 1,
@@ -14832,66 +14594,6 @@
       },
       "variableCollectionId": "VariableCollectionId:43174:55999"
     },
-    "VariableID:44300:68644": {
-      "codeSyntax": {},
-      "description": "",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:44300:68644",
-      "key": "f7ee9c2187975d03f7f83e018068bd09c91ba4f5",
-      "name": "components/sd-accordion/--hover/color/background",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "43174:13": {
-          "id": "VariableID:43979:215",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43174:14": {
-          "id": "VariableID:43979:199",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43343:1": {
-          "a": 1,
-          "b": 1,
-          "g": 1,
-          "r": 1
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:43174:55999"
-    },
-    "VariableID:44300:68645": {
-      "codeSyntax": {},
-      "description": "",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:44300:68645",
-      "key": "0be5c5e325f1842609f595e4cf9e260ec3d9aa18",
-      "name": "components/sd-accordion/--hover/color/border",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "43174:13": {
-          "id": "VariableID:43979:215",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43174:14": {
-          "id": "VariableID:43979:199",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43343:1": {
-          "a": 1,
-          "b": 1,
-          "g": 1,
-          "r": 1
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:43174:55999"
-    },
     "VariableID:44300:68678": {
       "codeSyntax": {},
       "description": "",
@@ -14994,7 +14696,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "43174:14": {
-          "id": "VariableID:43979:197",
+          "id": "VariableID:43979:227",
           "type": "VARIABLE_ALIAS"
         },
         "43343:1": {
@@ -15249,7 +14951,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44336:4885",
       "key": "e1e9403c69c2cd8b996e6184248962988dd94237",
-      "name": "utilities/shadow/y",
+      "name": "utilities/shadow/shadow/y",
       "remote": false,
       "resolvedType": "FLOAT",
       "scopes": [
@@ -15767,6 +15469,7 @@
     },
     "VariableID:44612:9948": {
       "codeSyntax": {},
+      "deletedButReferenced": true,
       "description": "",
       "hiddenFromPublishing": false,
       "id": "VariableID:44612:9948",
@@ -15821,6 +15524,192 @@
           "b": 1,
           "g": 1,
           "r": 1
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:44650:19862": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:44650:19862",
+      "key": "97b23239ce016ac7f4a8eeb2fe5936e47293f17c",
+      "name": "components/sd-tag/--selected/--default/color/background",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "id": "VariableID:43979:264",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43174:14": {
+          "id": "VariableID:43979:227",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43343:1": {
+          "a": 1,
+          "b": 1,
+          "g": 1,
+          "r": 1
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:44650:36286": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:44650:36286",
+      "key": "8e51e986ef00e9ed99bb8fc6646a323f6932b1be",
+      "name": "components/sd-audio/__timestamp/color/text",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "id": "VariableID:43979:275",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43174:14": {
+          "id": "VariableID:43979:269",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43343:1": {
+          "a": 1,
+          "b": 1,
+          "g": 1,
+          "r": 1
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:44650:36908": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:44650:36908",
+      "key": "0790cdc626c0b370bc53c4e1134d53fcd25b2b50",
+      "name": "components/sd-brandshape/--white/color/background",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "id": "VariableID:43373:35293",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43174:14": {
+          "id": "VariableID:43979:203",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43343:1": {
+          "a": 1,
+          "b": 1,
+          "g": 1,
+          "r": 1
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:44650:37064": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:44650:37064",
+      "key": "60a19528e4317ca4cd8296345ad3190ae21ab435",
+      "name": "components/sd-brandshape/--neutral-100/color/border",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "a": 0,
+          "b": 1,
+          "g": 1,
+          "r": 1
+        },
+        "43174:14": {
+          "id": "VariableID:43979:227",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43343:1": {
+          "a": 1,
+          "b": 1,
+          "g": 1,
+          "r": 1
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:44650:37065": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:44650:37065",
+      "key": "fe3e8308de68911d8f7f082a91b56365250a7aad",
+      "name": "components/sd-brandshape/--neutral-100/color/background",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "id": "VariableID:43979:214",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43174:14": {
+          "id": "VariableID:43979:202",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43343:1": {
+          "a": 1,
+          "b": 1,
+          "g": 1,
+          "r": 1
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:44677:46587": {
+      "codeSyntax": {},
+      "description": "Used for overlays",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:44677:46587",
+      "key": "8a4b4d185b7c58947aa87b02d99a500c59207748",
+      "name": "components/overlay/color/background",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "a": 0.8999999761581421,
+          "b": 0.1882352977991104,
+          "g": 0.08235294371843338,
+          "r": 0.019607843831181526
+        },
+        "43174:14": {
+          "a": 0.8999999761581421,
+          "b": 0.1882352977991104,
+          "g": 0.08235294371843338,
+          "r": 0.019607843831181526
+        },
+        "43343:1": {
+          "a": 0.8999999761581421,
+          "b": 0.40392157435417175,
+          "g": 0.1764705926179886,
+          "r": 0
         }
       },
       "variableCollectionId": "VariableCollectionId:43174:55999"

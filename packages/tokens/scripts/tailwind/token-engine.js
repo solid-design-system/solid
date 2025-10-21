@@ -87,7 +87,7 @@ export class TokenProcessingEngine {
         !token ||
         typeof token.type !== 'string' ||
         token.key.startsWith('{core.') ||
-        token.path.some(t => t.startsWith('_'))
+        token.path.some(t => t.startsWith('_') && !t.startsWith('__'))
       ) {
         continue;
       }

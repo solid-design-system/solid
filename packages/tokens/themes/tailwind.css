@@ -221,200 +221,212 @@
   }
 }
 
-@utility sd-accordion--hover-color-background {
-  background-color: var(--sd-accordion--hover-color-background, var(--sd-color-200));
-}
-
-@utility sd-accordion--hover-color-border {
-  border-color: var(--sd-accordion--hover-color-border, var(--sd-color-200));
-}
-
 @utility sd-audio--inverted-color-border {
-  border-color: var(--sd-audio--inverted-color-border, var(--sd-color-default));
+  border-color: var(--sd-audio--inverted-color-border, var(--sd-color-white));
+}
+
+@utility sd-audio__timestamp-color-text {
+  color: var(--sd-audio__timestamp-color-text, var(--sd-color-black));
+}
+
+@utility sd-brandshape--neutral-100-color-background {
+  background-color: var(--sd-brandshape--neutral-100-color-background, var(--sd-color-neutral-100));
+}
+
+@utility sd-brandshape--neutral-100-color-border {
+  border-color: var(--sd-brandshape--neutral-100-color-border);
+}
+
+@utility sd-brandshape--white-color-background {
+  background-color: var(--sd-brandshape--white-color-background, var(--sd-color-white));
 }
 
 @utility sd-breadcrumb-separator-color {
-  background-color: var(--sd-breadcrumb-separator-color, var(--sd-color-400));
+  background-color: var(--sd-breadcrumb-separator-color, var(--sd-color-neutral-400));
 }
 
 @utility sd-button--primary--default--active-color-icon-fill {
-  fill: var(--sd-button--primary--default--active-color-icon-fill, var(--sd-color-200));
+  fill: var(--sd-button--primary--default--active-color-icon-fill, var(--sd-color-primary-200));
 }
 
 @utility sd-button--primary--default--active-color-text {
-  color: var(--sd-button--primary--default--active-color-text, var(--sd-color-200));
+  color: var(--sd-button--primary--default--active-color-text, var(--sd-color-primary-200));
 }
 
 @utility sd-button--primary--default--default-color-background {
-  background-color: var(--sd-button--primary--default--default-color-background, var(--sd-color-default));
+  background-color: var(--sd-button--primary--default--default-color-background, var(--sd-color-primary));
 }
 
 @utility sd-button--primary--default--default-color-icon-fill {
-  fill: var(--sd-button--primary--default--default-color-icon-fill, var(--sd-color-default));
+  fill: var(--sd-button--primary--default--default-color-icon-fill, var(--sd-color-white));
 }
 
 @utility sd-button--primary--default--default-color-text {
-  color: var(--sd-button--primary--default--default-color-text, var(--sd-color-default));
+  color: var(--sd-button--primary--default--default-color-text, var(--sd-color-white));
 }
 
 @utility sd-button--primary--default--hover-color-icon-fill {
-  fill: var(--sd-button--primary--default--hover-color-icon-fill, var(--sd-color-100));
+  fill: var(--sd-button--primary--default--hover-color-icon-fill, var(--sd-color-primary-100));
 }
 
 @utility sd-button--primary--default--hover-color-text {
-  color: var(--sd-button--primary--default--hover-color-text, var(--sd-color-100));
+  color: var(--sd-button--primary--default--hover-color-text, var(--sd-color-primary-100));
 }
 
 @utility sd-button--primary--inverted--active-color-icon-fill {
-  fill: var(--sd-button--primary--inverted--active-color-icon-fill, var(--sd-color-800));
+  fill: var(--sd-button--primary--inverted--active-color-icon-fill, var(--sd-color-primary-800));
 }
 
 @utility sd-button--primary--inverted--active-color-text {
-  color: var(--sd-button--primary--inverted--active-color-text, var(--sd-color-800));
+  color: var(--sd-button--primary--inverted--active-color-text, var(--sd-color-primary-800));
 }
 
 @utility sd-button--primary--inverted--default-color-background {
-  background-color: var(--sd-button--primary--inverted--default-color-background, var(--sd-color-default));
+  background-color: var(--sd-button--primary--inverted--default-color-background, var(--sd-color-white));
 }
 
 @utility sd-button--primary--inverted--default-color-icon-fill {
-  fill: var(--sd-button--primary--inverted--default-color-icon-fill, var(--sd-color-default));
+  fill: var(--sd-button--primary--inverted--default-color-icon-fill, var(--sd-color-primary));
 }
 
 @utility sd-button--primary--inverted--default-color-text {
-  color: var(--sd-button--primary--inverted--default-color-text, var(--sd-color-default));
+  color: var(--sd-button--primary--inverted--default-color-text, var(--sd-color-primary));
 }
 
 @utility sd-button--primary--inverted--hover-color-background {
-  background-color: var(--sd-button--primary--inverted--hover-color-background, var(--sd-color-100));
+  background-color: var(--sd-button--primary--inverted--hover-color-background, var(--sd-color-primary-100));
 }
 
 @utility sd-button--primary--inverted--hover-color-icon-fill {
-  fill: var(--sd-button--primary--inverted--hover-color-icon-fill, var(--sd-color-500));
+  fill: var(--sd-button--primary--inverted--hover-color-icon-fill, var(--sd-color-primary-500));
 }
 
 @utility sd-button--primary--inverted--hover-color-text {
-  color: var(--sd-button--primary--inverted--hover-color-text, var(--sd-color-500));
+  color: var(--sd-button--primary--inverted--hover-color-text, var(--sd-color-primary-500));
 }
 
 @utility sd-button--secondary--default--active-color-background {
-  background-color: var(--sd-button--secondary--default--active-color-background, var(--sd-color-200));
+  background-color: var(--sd-button--secondary--default--active-color-background, var(--sd-color-primary-200));
 }
 
 @utility sd-button--secondary--default--hover-color-background {
-  background-color: var(--sd-button--secondary--default--hover-color-background, var(--sd-color-200));
+  background-color: var(--sd-button--secondary--default--hover-color-background, var(--sd-color-primary-200));
 }
 
 @utility sd-button--secondary--inverted--active-color-background {
-  background-color: var(--sd-button--secondary--inverted--active-color-background, var(--sd-color-800));
+  background-color: var(--sd-button--secondary--inverted--active-color-background, var(--sd-color-primary-800));
 }
 
 @utility sd-button--secondary--inverted--active-color-icon-fill {
-  fill: var(--sd-button--secondary--inverted--active-color-icon-fill, var(--sd-color-200));
+  fill: var(--sd-button--secondary--inverted--active-color-icon-fill, var(--sd-color-primary-200));
 }
 
 @utility sd-button--secondary--inverted--active-color-text {
-  color: var(--sd-button--secondary--inverted--active-color-text, var(--sd-color-200));
+  color: var(--sd-button--secondary--inverted--active-color-text, var(--sd-color-primary-200));
 }
 
 @utility sd-button--secondary--inverted--default-color-border {
-  border-color: var(--sd-button--secondary--inverted--default-color-border, var(--sd-color-default));
+  border-color: var(--sd-button--secondary--inverted--default-color-border, var(--sd-color-white));
 }
 
 @utility sd-button--secondary--inverted--hover-color-background {
-  background-color: var(--sd-button--secondary--inverted--hover-color-background, var(--sd-color-500));
+  background-color: var(--sd-button--secondary--inverted--hover-color-background, var(--sd-color-primary-500));
 }
 
 @utility sd-button--secondary--inverted--hover-color-icon-fill {
-  fill: var(--sd-button--secondary--inverted--hover-color-icon-fill, var(--sd-color-100));
+  fill: var(--sd-button--secondary--inverted--hover-color-icon-fill, var(--sd-color-primary-100));
 }
 
 @utility sd-button--secondary--inverted--hover-color-text {
-  color: var(--sd-button--secondary--inverted--hover-color-text, var(--sd-color-100));
+  color: var(--sd-button--secondary--inverted--hover-color-text, var(--sd-color-primary-100));
 }
 
 @utility sd-button--tertiary--default--active-color-background {
-  background-color: var(--sd-button--tertiary--default--active-color-background, var(--sd-color-200));
+  background-color: var(--sd-button--tertiary--default--active-color-background, var(--sd-color-primary-200));
 }
 
 @utility sd-button--tertiary--default--hover-color-background {
-  background-color: var(--sd-button--tertiary--default--hover-color-background, var(--sd-color-200));
+  background-color: var(--sd-button--tertiary--default--hover-color-background, var(--sd-color-primary-200));
 }
 
 @utility sd-button--tertiary--inverted--active-color-background {
-  background-color: var(--sd-button--tertiary--inverted--active-color-background, var(--sd-color-800));
+  background-color: var(--sd-button--tertiary--inverted--active-color-background, var(--sd-color-primary-800));
 }
 
 @utility sd-button--tertiary--inverted--active-color-icon-fill {
-  fill: var(--sd-button--tertiary--inverted--active-color-icon-fill, var(--sd-color-200));
+  fill: var(--sd-button--tertiary--inverted--active-color-icon-fill, var(--sd-color-primary-200));
 }
 
 @utility sd-button--tertiary--inverted--active-color-text {
-  color: var(--sd-button--tertiary--inverted--active-color-text, var(--sd-color-200));
+  color: var(--sd-button--tertiary--inverted--active-color-text, var(--sd-color-primary-200));
 }
 
 @utility sd-button--tertiary--inverted--hover-color-background {
-  background-color: var(--sd-button--tertiary--inverted--hover-color-background, var(--sd-color-500));
+  background-color: var(--sd-button--tertiary--inverted--hover-color-background, var(--sd-color-primary-500));
 }
 
 @utility sd-button--tertiary--inverted--hover-color-icon-fill {
-  fill: var(--sd-button--tertiary--inverted--hover-color-icon-fill, var(--sd-color-100));
+  fill: var(--sd-button--tertiary--inverted--hover-color-icon-fill, var(--sd-color-primary-100));
 }
 
 @utility sd-button--tertiary--inverted--hover-color-text {
-  color: var(--sd-button--tertiary--inverted--hover-color-text, var(--sd-color-100));
+  color: var(--sd-button--tertiary--inverted--hover-color-text, var(--sd-color-primary-100));
 }
 
 @utility sd-chip--neutral-500-color-background {
-  background-color: var(--sd-chip--neutral-500-color-background, var(--sd-color-500));
+  background-color: var(--sd-chip--neutral-500-color-background, var(--sd-color-primary-500));
 }
 
 @utility sd-container--primary-color-background {
-  background-color: var(--sd-container--primary-color-background, var(--sd-color-default));
+  background-color: var(--sd-container--primary-color-background, var(--sd-color-primary));
 }
 
 @utility sd-flag--neutral-500-color-background {
-  background-color: var(--sd-flag--neutral-500-color-background, var(--sd-color-400));
+  background-color: var(--sd-flag--neutral-500-color-background, var(--sd-color-neutral-400));
 }
 
 @utility sd-footnotes--target--inverted-color-background {
-  background-color: var(--sd-footnotes--target--inverted-color-background, var(--sd-color-800));
+  background-color: var(--sd-footnotes--target--inverted-color-background, var(--sd-color-primary-800));
 }
 
 @utility sd-header-color-background {
-  background-color: var(--sd-header-color-background, var(--sd-color-default));
+  background-color: var(--sd-header-color-background, var(--sd-color-white));
 }
 
 @utility sd-loader--neutral-500-color-icon-fill {
-  fill: var(--sd-loader--neutral-500-color-icon-fill, var(--sd-color-500));
+  fill: var(--sd-loader--neutral-500-color-icon-fill, var(--sd-color-neutral-500));
 }
 
 @utility sd-loader--neutral-600-color-icon-fill {
-  fill: var(--sd-loader--neutral-600-color-icon-fill, var(--sd-color-600));
+  fill: var(--sd-loader--neutral-600-color-icon-fill, var(--sd-color-neutral-600));
 }
 
 @utility sd-tag--default--hover-color-background {
-  background-color: var(--sd-tag--default--hover-color-background, var(--sd-color-white-0));
+  background-color: var(--sd-tag--default--hover-color-background);
+}
+
+@utility sd-tag--selected--default-color-background {
+  background-color: var(--sd-tag--selected--default-color-background, var(--sd-color-primary));
 }
 
 @utility sd-tag--selected--default-color-text {
-  color: var(--sd-tag--selected--default-color-text, var(--sd-color-default));
+  color: var(--sd-tag--selected--default-color-text, var(--sd-color-white));
 }
 
 @utility sd-tag--selected--hover-color-text {
-  color: var(--sd-tag--selected--hover-color-text, var(--sd-color-default));
+  color: var(--sd-tag--selected--hover-color-text, var(--sd-color-white));
 }
 
 @utility sd-tag--tmplt--default-color-border {
-  border-color: var(--sd-tag--tmplt--default-color-border, var(--sd-color-800));
+  border-color: var(--sd-tag--tmplt--default-color-border, var(--sd-color-primary-800));
 }
 
 @utility sd-tag--tmplt--selected-color-border {
-  border-color: var(--sd-tag--tmplt--selected-color-border, var(--sd-color-default));
+  border-color: var(--sd-tag--tmplt--selected-color-border, var(--sd-color-white));
 }
 
 @utility sd-tag--tmplt--selected-color-icon-fill {
-  fill: var(--sd-tag--tmplt--selected-color-icon-fill, var(--sd-color-default));
+  fill: var(--sd-tag--tmplt--selected-color-icon-fill, var(--sd-color-white));
 }
 
 @utility z-10 {
