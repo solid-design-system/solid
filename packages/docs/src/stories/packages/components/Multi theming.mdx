@@ -1,0 +1,120 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import '../../../../../components/src/components/tab-group/tab-group';
+import '../../../../../components/src/components/tab/tab';
+import '../../../../../components/src/components/tab-panel/tab-panel';
+
+<Meta title="Packages/Components/Multi Theming" />
+
+# Multi theming
+
+The `multi-theming` feature allows you to easily switch between predefined themes (such as light or dark mode, or brand-specific) and even create your own custom themes by overriding CSS variables.
+
+## How to use
+
+### Importing themes
+
+Each theme is defined in a CSS file containing variables.
+You must import at least one theme to use the system.
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="npm" variant="container"> NPM </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="cdn" variant="container"> CDN </sd-tab>
+  <sd-tab-panel name="npm">
+    ```js
+    import 'path/to/ui-light.css';
+    ```
+
+  </sd-tab-panel>
+  <sd-tab-panel name="cdn">
+    ```html
+    <link rel="stylesheet" href="path/to/ui-light.css" />
+    ```
+  </sd-tab-panel>
+</sd-tab-group>
+
+### Applying a theme
+
+The `sd-theme-ui-light` is applied by default.
+
+To apply a theme to your entire document (or any container), use the theme’s class name.
+Each theme class follows this pattern: `sd-theme-[theme-name]`.
+
+Example:
+
+```html
+<body class="sd-theme-ui-light">
+  <!-- Your app -->
+</body>
+```
+
+This will apply the UI Light theme globally.
+
+### Creating your own theme
+
+You can create your own theme by overriding CSS variables.
+There are two main types of variables (tokens):
+
+#### Primitive tokens
+
+Primitive variables define the base values used across all components.
+They act as fallbacks for all other variables.
+
+Changing the primary color globally:
+
+```css
+--sd-color-primary: #ff0055;
+```
+
+This change will affect every component that uses the primary color.
+
+#### Semantic tokens
+
+Semantic tokens are divided into general and component-specific variables.
+
+##### General semantic tokens
+
+These let you target specific use cases without interfering with other parts that use the same primitive variable (e.g., primary background color without affecting all primary color usages).
+
+Example:
+
+```css
+--background-color-primary: #ffe6ee;
+```
+
+This overrides only the “primary background” usages, falling back to the primitive tokens otherwise.
+
+##### Component-specific semantic tokens
+
+If you want to customize variables for a specific component only, you can override its semantic tokens.
+Example, changing only the primary background color of the `sd-button` component:
+
+```css
+--sd-button--primary--default--default-color-background: #ff0055;
+```
+
+<blockquote>The list of available component variables is documented on each component’s `docs` page.</blockquote>
+
+Currently, component-specific theming is available for:
+
+- Accordion
+- Button
+- Chip
+- Footnotes
+- Loader
+- Flag
+- Header
+- Tag
+
+**Note:** Even if a component doesn’t yet have full semantic variable support, you can still apply overrides within the component’s scope using general semantic tokens.
+
+Example:
+
+```css
+sd-button {
+  --background-color-primary: #ff0055;
+}
+```
+
+This will only affect the primary background color inside `sd-button` components.
