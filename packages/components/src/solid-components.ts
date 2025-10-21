@@ -54,6 +54,7 @@ export { default as SdTeaserMedia } from './components/teaser-media/teaser-media
 export { default as SdTextarea } from './components/textarea/textarea.js';
 export { default as SdTooltip } from './components/tooltip/tooltip.js';
 export { default as SdVideo } from './components/video/video.js';
+export { default as SdSkeleton } from './components/skeleton/skeleton.js';
 /* plop:component */
 
 // Utilities

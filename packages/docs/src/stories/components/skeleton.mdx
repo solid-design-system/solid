@@ -1,0 +1,61 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdSkeletonStories from './skeleton.stories';
+
+export const links = {
+  'storybook-docs': '/?path=/docs/components-sd-skeleton--docs',
+  'figma-library': '',
+  'figma-docs': ''
+};
+
+export const content = `
+# Skeleton
+
+DESCRIPTION
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+[]()
+
+### Common Use Cases
+
+- Represent the loading state of specific UI elements like titles, images, and body content on detailed pages.
+
+- Show placeholders for repeating elements such as items in a product grid or a list of search results.
+
+### Usage Guidelines
+
+**Content and Styling**
+
+- Ensure skeleton screens closely resemble the layout of the final content to provide a smooth transition once the content is loaded.
+- Use a consistent skeleton style across similar components for uniformity.
+- Make skeletons non-interactive placeholders, not functional components.
+
+**Behavior and Interaction**
+
+- Use skeletons only for content that takes longer than one second to load, avoiding quick flashes.
+- Avoid showing skeletons for elements that aren't actually loading, as this can confuse or mislead users.
+- Do not rely solely on skeletons for loading feedback; consider providing text like "Loading" for better accessibility.
+- Provide smooth, subtle transitions from the skeleton to the loaded content.
+
+**Performance**
+
+- Ensure skeletons are lightweight to avoid overloading the page with complex or animated elements that can affect performance.
+
+### Accessibility Information
+
+- Use aria-hidden="true" on skeleton placeholders so screenreaders skip them.
+- Provide a meaningful status update while skeletons are visible (e.g., “Loading…” or a live region announcing updates) to inform assistive technology users that content is still being retrieved.
+
+Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=38262-58412&t=1qhfYXrbNhSCYCzZ-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.
+
+### Accessibility Information
+
+`;
+
+<Meta title="Components/sd-skeleton/Overview" />
+
+<OverviewFormatter story={SdSkeletonStories.Default}>{content}</OverviewFormatter>
