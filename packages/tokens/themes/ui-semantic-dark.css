@@ -1,0 +1,25 @@
+.sd-theme-ui-semantic-dark {
+  color-scheme: dark;
+
+  --sd-aspect-16\/10: 16 / 10;
+  --sd-aspect-21\/9: 21 / 9;
+  --sd-aspect-2\/1: 2 / 1;
+  --sd-aspect-3\/2: 3 / 2;
+  --sd-aspect-3\/4: 3 / 4;
+  --sd-aspect-4\/3: 4 / 3;
+  --sd-aspect-4\/5: 4 / 5;
+  --sd-aspect-5\/4: 5 / 4;
+  --sd-aspect-6\/5: 6 / 5;
+  --sd-aspect-golden-ratio: 1.6180339887498948482 / 1;
+  --sd-aspect-square: 1 / 1;
+  --sd-aspect-video: 16 / 9;
+  --sd-font-weight-bold: 700;
+  --sd-font-weight-normal: 400;
+  --sd-text-2xl: 1.75rem;
+  --sd-text-3xl: 2rem;
+  --sd-text-4xl: 2.5rem;
+  --sd-text-base: 1rem;
+  --sd-text-lg: 1.25rem;
+  --sd-text-sm: 0.875rem;
+  --sd-text-xl: 1.5rem;
+}
