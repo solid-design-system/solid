@@ -58,7 +58,9 @@ export class TokenProcessingEngine {
   }
 
   /**
-   * Process all tokens using registered processors
+   * Process all tokens using registered processors.
+   *
+   * Note: Hardcoded variables should be added in here.
    */
   processTokens(dictionary, options) {
     const result = {
@@ -73,7 +75,11 @@ export class TokenProcessingEngine {
       utilities: [],
       spacing: [],
       compositions: [],
-      components: []
+      components: [
+        `@utility sd-brandshape--neutral-100-color-icon-fill {
+  fill-color: var(--sd-brandshape--neutral-100-color-background, var(--sd-color-neutral-100));
+}`
+      ]
     };
 
     if (!dictionary?.allTokens || !Array.isArray(dictionary.allTokens)) {
