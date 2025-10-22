@@ -1,4 +1,4 @@
-import { createTailwindV4Plugin, extractThemeBlock } from './tailwind/index.js';
+import { createTailwindV4Plugin, extractComponentsBlock, extractThemeBlock } from './tailwind/index.js';
 import { FigmaClient } from './figma/index.js';
 import { fileURLToPath } from 'url';
 import { generateScss } from './scss/index.js';
@@ -12,37 +12,31 @@ const variables = JSON.parse(
   readFileSync(path.join(import.meta.dirname, '../src/figma-variables/variableTokens.json'), { encoding: 'utf-8' })
 );
 
-const figma = new FigmaClient('figma-variables', variables);
-figma.process().save();
-
-await register(StyleDictionary);
-
-StyleDictionary.registerFormat({
-  name: 'tailwind-v4',
-  format: createTailwindV4Plugin()
-});
-
-const sd = new StyleDictionary({
-  log: {
-    verbosity: 'verbose'
-  }
-});
-
 const config = {
+  input: 'figma-variables.json',
+  output: 'tailwind',
+  defaultTheme: 'ui-light',
   buildPath: './themes',
-  themeBlock: 'build:theme'
+  themeBlock: 'build:theme',
+  componentsBlock: 'build:components'
 };
 
-const availableThemes = [
-  {
-    input: 'figma-variables.json',
-    output: 'tailwind',
-    defaultTheme: 'ui-light'
-  }
-];
+const loadStyleDictionary = async () => {
+  await register(StyleDictionary);
+  StyleDictionary.registerFormat({
+    name: 'tailwind-v4',
+    format: createTailwindV4Plugin()
+  });
 
-const cssRuns = availableThemes.map(async ({ input, output, defaultTheme }) => {
-  const buildPath = config.buildPath;
+  return new StyleDictionary({
+    log: {
+      verbosity: 'verbose'
+    }
+  });
+};
+
+const buildStylesheet = async ({ buildPath, input, output, defaultTheme }) => {
+  const sd = await loadStyleDictionary();
 
   const themeInstance = await sd.extend({
     platforms: {
@@ -81,17 +75,20 @@ const cssRuns = availableThemes.map(async ({ input, output, defaultTheme }) => {
 
   await themeInstance.buildAllPlatforms();
 
-  let file = readFileSync(`${buildPath}/${output}.css`, { encoding: 'utf-8' });
+  return readFileSync(`${buildPath}/${output}.css`, { encoding: 'utf-8' });
+};
+
+const getStylesheetThemes = stylesheet => {
   const themes = [];
 
   while (true) {
-    const theme = extractThemeBlock(file);
+    const theme = extractThemeBlock(stylesheet);
 
     if (!theme) {
       break;
     }
 
-    file = file
+    stylesheet = stylesheet
       .replace(theme.content, '')
       .replace(`/* ${config.themeBlock}[${theme.name}] */`, '')
       .replace(`/* ${config.themeBlock} */`, '');
@@ -99,14 +96,38 @@ const cssRuns = availableThemes.map(async ({ input, output, defaultTheme }) => {
     themes.push(theme);
   }
 
-  themes.forEach(theme => {
-    file = file.replace(theme.content, '').replace(`/* ${config.themeBlock}[${theme.name}] */`, '');
-    writeFileSync(`${buildPath}/${output}.css`, file.trim());
-    writeFileSync(`${buildPath}/${theme.name}.css`, theme.content.trim());
-  });
+  return themes;
+};
+
+// --- Process figma variables ---
+const figma = new FigmaClient('figma-variables', variables);
+figma.process().save();
+
+// --- Build the main stylesheet file ---
+let stylesheet = await buildStylesheet({
+  buildPath: config.buildPath,
+  input: config.input,
+  output: config.output,
+  defaultTheme: config.defaultTheme
 });
 
-await Promise.all(cssRuns);
+// --- Extract theme blocks as separate files ---
+const themes = getStylesheetThemes(stylesheet);
+themes.forEach(theme => {
+  stylesheet = stylesheet
+    .replace(theme.content, '')
+    .replace(`/* ${config.themeBlock}[${theme.name}] */`, '')
+    .replace(`/* ${config.themeBlock} */`, '');
+
+  writeFileSync(`${config.buildPath}/${config.output}.css`, stylesheet.trim());
+  writeFileSync(`${config.buildPath}/${theme.name}.css`, theme.content.trim());
+});
+
+// --- Extract component block as a separate file ---
+const components = extractComponentsBlock(stylesheet);
+stylesheet = stylesheet.replace(components.content, '').replaceAll(`/* ${config.componentsBlock} */`, '');
+writeFileSync(`${config.buildPath}/${config.output}.css`, stylesheet.trim());
+writeFileSync(`${config.buildPath}/components.css`, components.content.trim());
 
 // --- Build dist theme.js ---
 const tailwindtheme = (await import('../src/theme.mjs')).default;

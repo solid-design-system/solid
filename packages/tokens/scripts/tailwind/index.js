@@ -42,3 +42,13 @@ export function extractThemeBlock(source) {
   if (!m) return null;
   return { name: m[1], content: m[2] };
 }
+
+/**
+ * Extracts the first components block found
+ */
+export function extractComponentsBlock(source) {
+  const re = /\/\*\s*build:components\s*\*\/([\s\S]*?)\/\*\s*build:components\s*\*\//;
+  const m = source.match(re);
+  if (!m) return null;
+  return { content: m[1] };
+}

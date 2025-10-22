@@ -100,7 +100,7 @@ export class TailwindCSSGenerator {
   }
 
   generateComponents(components) {
-    return this.generateUtilities(components);
+    return `/* build:components */\n${this.generateUtilities(components)}\n/* build:components */`;
   }
 
   generateThemeVariants(processedTokens) {

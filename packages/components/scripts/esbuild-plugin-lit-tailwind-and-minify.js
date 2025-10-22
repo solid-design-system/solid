@@ -14,7 +14,8 @@ export async function processTailwind(source, options = { standalone: false, sto
 
   const prepend = [
     `${options.standalone ? '@import' : '@reference'} 'tailwindcss/preflight';`,
-    `${options.standalone ? '@import' : '@reference'} '${path.resolve(base, '../tokens/themes/tailwind.css')}';`
+    `${options.standalone ? '@import' : '@reference'} '${path.resolve(base, '../tokens/themes/tailwind.css')}';`,
+    `@import '${path.resolve(base, '../tokens/themes/components.css')}';`
   ];
 
   if (options.storybook) {
