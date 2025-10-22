@@ -4,6 +4,8 @@
  * @status stable
  * @since 3.0.0
  * @boolean sd-footnotes--inverted Inverts the footnote text.
+ *
+ * @cssproperty --sd-footnotes--target--inverted-color-background Used as background color for the `inverted` variant when the footnote is targeted.
  */
 
 .sd-footnotes {
