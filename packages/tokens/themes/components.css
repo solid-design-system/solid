@@ -1,3 +1,19 @@
+@utility form-control-color-border {
+  border-color: var(--sd-form-control-color-border, var(--sd-color-neutral-800));
+}
+
+@utility interactive--active-color-text {
+  color: var(--sd-interactive--active-color-text, var(--sd-color-primary-800));
+}
+
+@utility overlay-color-background {
+  background-color: var(--sd-overlay-color-background, rgba(5, 21, 48, 0.9));
+}
+
+@utility panel-color-border {
+  border-color: var(--sd-panel-color-border, rgba(255, 255, 255, 0));
+}
+
 @utility sd-audio--inverted-color-border {
   border-color: var(--sd-audio--inverted-color-border, var(--sd-color-white));
 }
@@ -20,6 +36,10 @@
 
 @utility sd-brandshape--white-color-background {
   background-color: var(--sd-brandshape--white-color-background, var(--sd-color-white));
+}
+
+@utility sd-breadcrumb__separator-color {
+  background-color: var(--sd-breadcrumb__separator-color, var(--sd-color-neutral-400));
 }
 
 @utility sd-button--primary--active-color-text {
@@ -100,10 +120,6 @@
 
 @utility sd-header-color-background {
   background-color: var(--sd-header-color-background, var(--sd-color-white));
-}
-
-@utility sd-interactive--default--active-color-text {
-  color: var(--sd-interactive--default--active-color-text, var(--sd-color-primary-800));
 }
 
 @utility sd-loader--neutral-500-color-icon-fill {

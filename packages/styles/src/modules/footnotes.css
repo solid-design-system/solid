@@ -73,11 +73,11 @@
     }
 
     .sd-footnotes--marker::before {
-      @apply text-white-constant !outline-white;
+      @apply text-white !outline-white;
     }
 
     &:is(.sd-footnotes--marker) {
-      @apply !text-white-constant !outline-white;
+      @apply !text-white !outline-white;
 
       &:target {
         @apply sd-footnotes--target--inverted-color-background;

@@ -95,7 +95,7 @@ export class BaseTokenProcessor {
       name = name.slice(3);
     }
 
-    if (name.endsWith('-default') || name.endsWith('-default-constant')) {
+    if (name.endsWith('-default')) {
       name = name.replace(/-default$/, '');
     }
 

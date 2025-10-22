@@ -198,11 +198,11 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
 
     for (const [property, cssproperty] of Object.entries(this.semantic)) {
       if (name.includes(property)) {
-        return { type: 'utility', name, properties: `@utility ${name} {\n  ${cssproperty}: ${value};\n}` };
+        return { type: 'component', name, properties: `@utility ${name} {\n  ${cssproperty}: ${value};\n}` };
       }
     }
 
-    return { type: 'utility', name: `--${name}`, properties: `@utility ${name} {\n  background-color: ${value};\n}` };
+    return { type: 'component', name: `--${name}`, properties: `@utility ${name} {\n  background-color: ${value};\n}` };
   }
 
   #getCoreColors(dictionary, variant) {

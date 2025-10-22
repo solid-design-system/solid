@@ -44,7 +44,6 @@
   --sd-color-accent-750: #1a4276;
   --sd-color-accent-800: #002d67;
   --sd-color-accent: #0066b3;
-  --sd-color-black-constant: #181818;
   --sd-color-black: #181818;
   --sd-color-border-primary-500: var(--sd-color-white);
   --sd-color-border-primary-800: var(--sd-color-white);
@@ -97,9 +96,7 @@
   --sd-font-weight-bold: 700;
   --sd-font-weight-normal: 400;
   --sd-footnotes--target--inverted-color-background: var(--sd-color-white);
-  --sd-interactive--default--active-color-text: var(--sd-color-white);
-  --sd-interactive--inverted--hover-color-icon-fill: var(--sd-color-white);
-  --sd-interactive--inverted--hover-color-text: var(--sd-color-white);
+  --sd-interactive--active-color-text: var(--sd-color-white);
   --sd-opacity-0: 0%;
   --sd-opacity-100: 0%;
   --sd-opacity-10: 0%;

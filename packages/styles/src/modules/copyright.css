@@ -22,7 +22,7 @@
   --tw-sepia: ;
 
   &::after {
-    @apply block absolute pb-2 pl-4 bottom-0 left-0 text-white-constant text-sm w-full drop-shadow-sm;
+    @apply block absolute pb-2 pl-4 bottom-0 left-0 text-white text-sm w-full drop-shadow-sm;
     content: var(--copyright);
   }
 

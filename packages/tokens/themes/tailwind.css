@@ -167,7 +167,6 @@
   --text-color-primary-800: var(--sd-color-text-primary-800, var(--sd-color-primary-800));
   --text-color-primary: var(--sd-color-text-primary, var(--sd-color-primary));
   --text-color-success: var(--sd-color-text-success, var(--sd-color-success));
-  --text-color-white-constant: var(--sd-text-color-white-constant, var(--sd-color-white-constant));
   --text-color-white: var(--sd-color-text-white, var(--sd-color-white));
   --text-lg: var(--sd-text-lg);
   --text-sm: var(--sd-text-sm);
@@ -230,38 +229,6 @@
       transform: translateY(-4px);
     }
   }
-}
-
-@utility form-control-color-border {
-  border-color: var(--sd-form-control-color-border, var(--sd-color-neutral-800));
-}
-
-@utility interactive--default--active-color-icon-fill {
-  fill: var(--sd-interactive--default--active-color-icon-fill, var(--sd-color-risk-veryhigh));
-}
-
-@utility interactive--inverted--hover-color-icon-fill {
-  fill: var(--sd-interactive--inverted--hover-color-icon-fill, var(--sd-color-primary-200));
-}
-
-@utility interactive--inverted--hover-color-text {
-  color: var(--sd-interactive--inverted--hover-color-text, var(--sd-color-primary-200));
-}
-
-@utility overlay-color-background {
-  background-color: var(--sd-overlay-color-background, rgba(5, 21, 48, 0.9));
-}
-
-@utility panel-color-border {
-  border-color: var(--sd-panel-color-border, rgba(255, 255, 255, 0));
-}
-
-@utility sd-audio-components-sd-audio__wave-color {
-  background-color: var(--sd-audio-components-sd-audio__wave-color, var(--sd-color-white));
-}
-
-@utility sd-breadcrumb__separator-color {
-  background-color: var(--sd-breadcrumb__separator-color, var(--sd-color-neutral-400));
 }
 
 @utility z-10 {

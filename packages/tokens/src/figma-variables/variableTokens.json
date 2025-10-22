@@ -449,7 +449,6 @@
         "VariableID:43979:219",
         "VariableID:43979:220",
         "VariableID:43979:221",
-        "VariableID:44029:1688",
         "VariableID:43979:227",
         "VariableID:43979:225",
         "VariableID:43979:234",
@@ -624,10 +623,7 @@
         "VariableID:43979:314",
         "VariableID:44023:41070",
         "VariableID:44023:39698",
-        "VariableID:44294:67001",
-        "VariableID:44300:67002",
-        "VariableID:44300:67003",
-        "VariableID:44789:14711",
+        "VariableID:44294:66968",
         "VariableID:44612:9948",
         "VariableID:44650:36286",
         "VariableID:44762:16901",
@@ -655,7 +651,6 @@
         "VariableID:44283:66900",
         "VariableID:44612:686",
         "VariableID:44023:39695",
-        "VariableID:44294:66968",
         "VariableID:44300:68679",
         "VariableID:44023:39696",
         "VariableID:44650:19862",
@@ -10921,10 +10916,8 @@
       ],
       "valuesByMode": {
         "43174:13": {
-          "a": 1,
-          "b": 1,
-          "g": 1,
-          "r": 1
+          "id": "VariableID:43979:227",
+          "type": "VARIABLE_ALIAS"
         },
         "43174:14": {
           "id": "VariableID:43979:203",
@@ -13477,36 +13470,6 @@
       },
       "variableCollectionId": "VariableCollectionId:43174:55999"
     },
-    "VariableID:44029:1688": {
-      "codeSyntax": {},
-      "description": "Default text color in light mode and unchanged in dark mode",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:44029:1688",
-      "key": "d3667e3979b753d50025e5da5f35610b8b6e0319",
-      "name": "utilities/color/black/default-constant",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [],
-      "valuesByMode": {
-        "43174:13": {
-          "a": 1,
-          "b": 1,
-          "g": 1,
-          "r": 1
-        },
-        "43174:14": {
-          "a": 1,
-          "b": 1,
-          "g": 1,
-          "r": 1
-        },
-        "43343:1": {
-          "id": "VariableID:43979:225",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:43174:55999"
-    },
     "VariableID:44032:68245": {
       "codeSyntax": {},
       "description": "Used for disabled state breadcrumb",
@@ -13823,7 +13786,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44294:66968",
       "key": "2b24e8c88da9729bbfbd136a34a11873dc2708c8",
-      "name": "components/sd-interactive/--default/--active/color/text",
+      "name": "components/interactive/--active/color/text",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -13836,95 +13799,6 @@
         },
         "43174:14": {
           "id": "VariableID:43979:196",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43343:1": {
-          "id": "VariableID:43979:227",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:43174:55999"
-    },
-    "VariableID:44294:67001": {
-      "codeSyntax": {},
-      "deletedButReferenced": true,
-      "description": "Default icon color ",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:44294:67001",
-      "key": "2327b75495da4420165e47042d929f775d18e059",
-      "name": "components/interactive/--default/--active/color/icon-fill",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "43174:13": {
-          "a": 1,
-          "b": 0,
-          "g": 0,
-          "r": 1
-        },
-        "43174:14": {
-          "id": "VariableID:43979:196",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43343:1": {
-          "id": "VariableID:43979:227",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:43174:55999"
-    },
-    "VariableID:44300:67002": {
-      "codeSyntax": {},
-      "deletedButReferenced": true,
-      "description": "Default icon color ",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:44300:67002",
-      "key": "a4e2afbc45d6b7a9ca0cf74f450166bd40ddb15f",
-      "name": "components/interactive/--inverted/--hover/color/text",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "43174:13": {
-          "id": "VariableID:43979:194",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43174:14": {
-          "id": "VariableID:43979:194",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43343:1": {
-          "id": "VariableID:43979:227",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:43174:55999"
-    },
-    "VariableID:44300:67003": {
-      "codeSyntax": {},
-      "deletedButReferenced": true,
-      "description": "Default icon color ",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:44300:67003",
-      "key": "bfa121d4b899a9bb5d21ce3b1f74479796494355",
-      "name": "components/interactive/--inverted/--hover/color/icon-fill",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "43174:13": {
-          "id": "VariableID:43979:194",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43174:14": {
-          "id": "VariableID:43979:194",
           "type": "VARIABLE_ALIAS"
         },
         "43343:1": {
@@ -15154,40 +15028,6 @@
         "43174:14": {
           "id": "VariableID:43979:193",
           "type": "VARIABLE_ALIAS"
-        },
-        "43343:1": {
-          "a": 1,
-          "b": 1,
-          "g": 1,
-          "r": 1
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:43174:55999"
-    },
-    "VariableID:44789:14711": {
-      "codeSyntax": {},
-      "description": "",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:44789:14711",
-      "key": "9ea83ae35565ca846666d067d31d6a3d61d886c5",
-      "name": "components/sd-audio/components/sd-audio/__wave/color",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "43174:13": {
-          "a": 1,
-          "b": 1,
-          "g": 1,
-          "r": 1
-        },
-        "43174:14": {
-          "a": 1,
-          "b": 1,
-          "g": 1,
-          "r": 1
         },
         "43343:1": {
           "a": 1,

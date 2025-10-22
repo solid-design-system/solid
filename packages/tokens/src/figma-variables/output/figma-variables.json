@@ -1744,11 +1744,6 @@
           "default": {
             "type": "color",
             "value": "{core.ui.black}"
-          },
-          "default-constant": {
-            "description": "Default text color in light mode and unchanged in dark mode",
-            "type": "color",
-            "value": "#ffffff"
           }
         },
         "white": {
@@ -2714,7 +2709,7 @@
             "color": {
               "text": {
                 "type": "color",
-                "value": "#ffffff"
+                "value": "{ui-light.utilities.color.white.default}"
               },
               "background": {
                 "type": "color",
@@ -2915,44 +2910,13 @@
           }
         }
       },
-      "sd-interactive": {
-        "--default": {
-          "--active": {
-            "color": {
-              "text": {
-                "description": "Default icon color ",
-                "type": "color",
-                "value": "{ui-light.utilities.color.primary.800}"
-              }
-            }
-          }
-        }
-      },
       "interactive": {
-        "--default": {
-          "--active": {
-            "color": {
-              "icon-fill": {
-                "description": "Default icon color ",
-                "type": "color",
-                "value": "#ff0000"
-              }
-            }
-          }
-        },
-        "--inverted": {
-          "--hover": {
-            "color": {
-              "text": {
-                "description": "Default icon color ",
-                "type": "color",
-                "value": "{ui-light.utilities.color.primary.200}"
-              },
-              "icon-fill": {
-                "description": "Default icon color ",
-                "type": "color",
-                "value": "{ui-light.utilities.color.primary.200}"
-              }
+        "--active": {
+          "color": {
+            "text": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.800}"
             }
           }
         }
@@ -3039,16 +3003,6 @@
             "text": {
               "type": "color",
               "value": "{ui-light.utilities.color.text.black.default}"
-            }
-          }
-        },
-        "components": {
-          "sd-audio": {
-            "__wave": {
-              "color": {
-                "type": "color",
-                "value": "#ffffff"
-              }
             }
           }
         }
@@ -3512,11 +3466,6 @@
           "default": {
             "type": "color",
             "value": "{core.ui.black}"
-          },
-          "default-constant": {
-            "description": "Default text color in light mode and unchanged in dark mode",
-            "type": "color",
-            "value": "#ffffff"
           }
         },
         "white": {
@@ -4683,44 +4632,13 @@
           }
         }
       },
-      "sd-interactive": {
-        "--default": {
-          "--active": {
-            "color": {
-              "text": {
-                "description": "Default icon color ",
-                "type": "color",
-                "value": "{ui-dark.utilities.color.primary.400}"
-              }
-            }
-          }
-        }
-      },
       "interactive": {
-        "--default": {
-          "--active": {
-            "color": {
-              "icon-fill": {
-                "description": "Default icon color ",
-                "type": "color",
-                "value": "{ui-dark.utilities.color.primary.400}"
-              }
-            }
-          }
-        },
-        "--inverted": {
-          "--hover": {
-            "color": {
-              "text": {
-                "description": "Default icon color ",
-                "type": "color",
-                "value": "{ui-dark.utilities.color.primary.200}"
-              },
-              "icon-fill": {
-                "description": "Default icon color ",
-                "type": "color",
-                "value": "{ui-dark.utilities.color.primary.200}"
-              }
+        "--active": {
+          "color": {
+            "text": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.400}"
             }
           }
         }
@@ -4807,16 +4725,6 @@
             "text": {
               "type": "color",
               "value": "{ui-dark.utilities.color.text.primary.400}"
-            }
-          }
-        },
-        "components": {
-          "sd-audio": {
-            "__wave": {
-              "color": {
-                "type": "color",
-                "value": "#ffffff"
-              }
             }
           }
         }
@@ -5280,11 +5188,6 @@
           "default": {
             "type": "color",
             "value": "{core.ui.black}"
-          },
-          "default-constant": {
-            "description": "Default text color in light mode and unchanged in dark mode",
-            "type": "color",
-            "value": "{-vb-light.utilities.color.black.default}"
           }
         },
         "white": {
@@ -6451,44 +6354,13 @@
           }
         }
       },
-      "sd-interactive": {
-        "--default": {
-          "--active": {
-            "color": {
-              "text": {
-                "description": "Default icon color ",
-                "type": "color",
-                "value": "{-vb-light.utilities.color.white.default}"
-              }
-            }
-          }
-        }
-      },
       "interactive": {
-        "--default": {
-          "--active": {
-            "color": {
-              "icon-fill": {
-                "description": "Default icon color ",
-                "type": "color",
-                "value": "{-vb-light.utilities.color.white.default}"
-              }
-            }
-          }
-        },
-        "--inverted": {
-          "--hover": {
-            "color": {
-              "text": {
-                "description": "Default icon color ",
-                "type": "color",
-                "value": "{-vb-light.utilities.color.white.default}"
-              },
-              "icon-fill": {
-                "description": "Default icon color ",
-                "type": "color",
-                "value": "{-vb-light.utilities.color.white.default}"
-              }
+        "--active": {
+          "color": {
+            "text": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{-vb-light.utilities.color.white.default}"
             }
           }
         }
@@ -6575,16 +6447,6 @@
             "text": {
               "type": "color",
               "value": "#ffffff"
-            }
-          }
-        },
-        "components": {
-          "sd-audio": {
-            "__wave": {
-              "color": {
-                "type": "color",
-                "value": "#ffffff"
-              }
             }
           }
         }

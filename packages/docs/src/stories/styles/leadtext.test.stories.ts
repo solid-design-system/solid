@@ -63,7 +63,7 @@ export const Inverted = {
       },
       constants: { type: 'attribute', name: 'sd-leadtext--inverted', value: true },
       options: {
-        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'var(--sd-color-primary-constant)'] }
+        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'var(--sd-color-primary)'] }
       },
       args
     });
