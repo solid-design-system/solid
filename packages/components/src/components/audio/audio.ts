@@ -482,10 +482,12 @@ export default class SdAudio extends SolidElement {
       )}
       part="timestamps"
     >
-      <div class=${cx('current-time text-sm', this.inverted ? 'text-primary-400' : 'text-black')}>
+      <div class=${cx('current-time text-sm', this.inverted ? 'text-primary-400' : 'sd-audio__timestamp-color-text')}>
         ${this.currentTime}
       </div>
-      <div class=${cx('current-time text-sm', this.inverted ? 'text-primary-400' : 'text-black')}>${this.duration}</div>
+      <div class=${cx('current-time text-sm', this.inverted ? 'text-primary-400' : 'sd-audio__timestamp-color-text')}>
+        ${this.duration}
+      </div>
     </div>`;
 
     return html`
