@@ -6,6 +6,8 @@
  * @boolean sd-interactive--disabled Makes an element look disabled.
  * @boolean sd-interactive--inverted Inverts the colors of an element.
  * @boolean sd-interactive--reset Resets the default browser styles of e.g., a button.
+ *
+ * @cssproperty --sd-interactive--default--active-color-text The text color applied when active.
  */
 
 .sd-prose a,
@@ -15,7 +17,7 @@
     outline: revert;
   }
 
-  @apply cursor-pointer text-primary hover:text-primary-500 active:text-primary-800 transition-colors duration-fast ease-in-out underline focus-visible:focus-outline;
+  @apply cursor-pointer text-primary hover:text-primary-500 active:sd-interactive--default--active-color-text transition-colors duration-fast ease-in-out underline focus-visible:focus-outline;
 
   &:is(.sd-interactive) {
     @apply no-underline;
