@@ -35,19 +35,17 @@ test('Navigation Item with Badge', async ({ page }) => {
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=templates-badge--navigation-item-with-badge&viewMode=story'
   );
   await expect(page.locator('body')).toMatchAriaSnapshot(`
-      - region "Top right notifications"
-      - region "Bottom center notifications"
-      - banner:
-        - link "Logo":
-          - /url: "#"
-          - img "Logo"
-        - button /Open Notifications \\+\\d+ Notifications/:
-          - img "Open Notifications":
-            - img
-        - button "Open menu":
-          - img "Open menu":
-            - img
-    `);
+    - region "Top right notifications"
+    - region "Bottom center notifications"
+    - banner:
+      - link "Logo":
+        - /url: "#"
+        - img "Logo"
+      - button /Open Notifications \\+\\d+ Notifications/:
+        - img "Open Notifications"
+      - button "Open menu":
+        - img "Open menu"
+  `);
 });
 
 test('Interactive Increment', async ({ page }) => {

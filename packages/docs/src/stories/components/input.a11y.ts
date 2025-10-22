@@ -117,17 +117,15 @@ test('Clearable', async ({ page }) => {
 test('Icon', async ({ page }) => {
   await page.goto('http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-input--icon&viewMode=story');
   await expect(page.locator('body')).toMatchAriaSnapshot(`
-      - region "Top right notifications"
-      - region "Bottom center notifications"
-      - text: Label
-      - img "landscape":
-        - img
-      - textbox "Label"
-      - text: Label
-      - textbox "Label"
-      - img "landscape":
-        - img
-    `);
+    - region "Top right notifications"
+    - region "Bottom center notifications"
+    - text: Label
+    - img "landscape"
+    - textbox "Label"
+    - text: Label
+    - textbox "Label"
+    - img "landscape"
+  `);
 });
 
 test('Toggle Password', async ({ page }) => {

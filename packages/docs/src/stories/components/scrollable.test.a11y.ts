@@ -103,19 +103,18 @@ test('Custom Icon', async ({ page }) => {
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-scrollable-screenshots-sd-scrollable--custom-icon&viewMode=story'
   );
   await expect(page.locator('body')).toMatchAriaSnapshot(`
-      - region "Top right notifications"
-      - region "Bottom center notifications"
-      - status
-      - paragraph: Scroll and give it a try!
-      - paragraph: This is a long scrollable content.
-      - paragraph: It contains multiple paragraphs and lines.
-      - paragraph: The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.
-      - paragraph: The scrollable component will display shadows and buttons based on the props.
-      - paragraph: Customize the content and attributes as needed.
-      - button "End":
-        - img "End":
-          - img
-    `);
+    - region "Top right notifications"
+    - region "Bottom center notifications"
+    - status
+    - paragraph: Scroll and give it a try!
+    - paragraph: This is a long scrollable content.
+    - paragraph: It contains multiple paragraphs and lines.
+    - paragraph: The content is intentionally long to trigger scrolling. You can scroll horizontally and vertically.
+    - paragraph: The scrollable component will display shadows and buttons based on the props.
+    - paragraph: Customize the content and attributes as needed.
+    - button "End":
+      - img "End"
+  `);
 });
 
 test('Parts', async ({ page }) => {

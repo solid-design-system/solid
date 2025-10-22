@@ -16,12 +16,11 @@ test('Default', async ({ page }) => {
 test('Icon', async ({ page }) => {
   await page.goto('http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-menu--icon&viewMode=story');
   await expect(page.locator('body')).toMatchAriaSnapshot(`
-      - region "Top right notifications"
-      - region "Bottom center notifications"
-      - button "Icon only":
-        - img "Icon only":
-          - img
-    `);
+    - region "Top right notifications"
+    - region "Bottom center notifications"
+    - button "Icon only":
+      - img "Icon only"
+  `);
 });
 
 test('Checkmark', async ({ page }) => {

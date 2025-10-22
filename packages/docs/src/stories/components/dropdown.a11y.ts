@@ -23,13 +23,12 @@ test('Open', async ({ page }) => {
 test('Rounded', async ({ page }) => {
   await page.goto('http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-dropdown--rounded&viewMode=story');
   await expect(page.locator('body')).toMatchAriaSnapshot(`
-      - region "Top right notifications"
-      - region "Bottom center notifications"
-      - button "Rounded dropdown" [expanded]:
-        - img "Rounded dropdown":
-          - img
-      - text: Default slot
-    `);
+    - region "Top right notifications"
+    - region "Bottom center notifications"
+    - button "Rounded dropdown" [expanded]:
+      - img "Rounded dropdown"
+    - text: Default slot
+  `);
 });
 
 test('Placement', async ({ page }) => {

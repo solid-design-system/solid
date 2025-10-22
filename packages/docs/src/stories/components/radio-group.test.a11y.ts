@@ -235,17 +235,14 @@ test('Mouseless with Radio Buttons', async ({ page }) => {
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-radio-group-screenshots-sd-radio-group--mouseless-with-radio-buttons&viewMode=story'
   );
   await expect(page.locator('body')).toMatchAriaSnapshot(`
-      - region "Top right notifications"
-      - region "Bottom center notifications"
-      - radiogroup:
-        - radio "Label":
-          - img "Label":
-            - img
-        - radio "Label" [checked]:
-          - img "Label":
-            - img
-        - radio "Label":
-          - img "Label":
-            - img
-    `);
+    - region "Top right notifications"
+    - region "Bottom center notifications"
+    - radiogroup:
+      - radio "Label":
+        - img "Label"
+      - radio "Label" [checked]:
+        - img "Label"
+      - radio "Label":
+        - img "Label"
+  `);
 });

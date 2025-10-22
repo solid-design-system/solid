@@ -66,19 +66,16 @@ test('Icon', async ({ page }) => {
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-radio-button--icon&viewMode=story'
   );
   await expect(page.locator('body')).toMatchAriaSnapshot(`
-      - region "Top right notifications"
-      - region "Bottom center notifications"
-      - radiogroup:
-        - radio "landscape" [checked]:
-          - img "landscape":
-            - img
-        - radio "landscape":
-          - img "landscape":
-            - img
-        - radio "landscape":
-          - img "landscape":
-            - img
-    `);
+    - region "Top right notifications"
+    - region "Bottom center notifications"
+    - radiogroup:
+      - radio "landscape" [checked]:
+        - img "landscape"
+      - radio "landscape":
+        - img "landscape"
+      - radio "landscape":
+        - img "landscape"
+  `);
 });
 
 test('Disabled', async ({ page }) => {
