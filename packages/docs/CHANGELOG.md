@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.29.2
+
+### Patch Changes
+
+- Made `slot` CSS classes available in Codepen to ensure stories such as `sd-expandable--default` can be correctly visualized. _[`#2550`](https://github.com/solid-design-system/solid/pull/2550) [`b760ea8`](https://github.com/solid-design-system/solid/commit/b760ea829f73a1834127dbf2cdf8706c64002d39) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.29.1
 
 ### Patch Changes
