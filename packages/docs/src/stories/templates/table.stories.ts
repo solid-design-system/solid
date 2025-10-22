@@ -44,9 +44,9 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Apprenticeship</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -68,9 +68,9 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -92,9 +92,9 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Portfolio Management</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -116,9 +116,9 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Fund Administration</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -141,9 +141,9 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Customer Service</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -163,9 +163,9 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Compliance</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -187,9 +187,9 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -211,9 +211,9 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -233,9 +233,9 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -255,9 +255,9 @@ export const simpleTable = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Other</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -312,9 +312,9 @@ export const simpleTableVerticalDividers = {
               Dual Study Program / Training
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -338,9 +338,9 @@ export const simpleTableVerticalDividers = {
               Dual Study Program / Training
             </td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -362,9 +362,9 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Portfolio Management</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -386,9 +386,9 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Fund Administration</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -411,9 +411,9 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Customer Service</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -433,9 +433,9 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Compliance</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -457,9 +457,9 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Private Clients</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -481,9 +481,9 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">IT</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -503,9 +503,9 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Private Clients</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -525,9 +525,9 @@ export const simpleTableVerticalDividers = {
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Other</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent sd-table-cell--divider">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -580,9 +580,9 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Apprenticeship</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -604,9 +604,9 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-primary-100">IT</td>
             <td class="sd-table-cell sd-table-cell--bg-primary-100">Dual Study Program / Training</td>
             <td class="sd-table-cell sd-table-cell--bg-primary-100">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -628,9 +628,9 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Portfolio Management</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -652,9 +652,9 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-primary-100">Fund Administration</td>
             <td class="sd-table-cell sd-table-cell--bg-primary-100">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-primary-100">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -677,9 +677,9 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Customer Service</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -699,9 +699,9 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-primary-100">Compliance</td>
             <td class="sd-table-cell sd-table-cell--bg-primary-100">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-primary-100">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -723,9 +723,9 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -747,9 +747,9 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-primary-100">IT</td>
             <td class="sd-table-cell sd-table-cell--bg-primary-100">Full-time<br />Part-time</td>
             <td class="sd-table-cell sd-table-cell--bg-primary-100">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -769,9 +769,9 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-transparent">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -791,9 +791,9 @@ export const simpleTableAlternatingColors = {
             <td class="sd-table-cell sd-table-cell--bg-primary-100">Other</td>
             <td class="sd-table-cell sd-table-cell--bg-primary-100">Full-time</td>
             <td class="sd-table-cell sd-table-cell--bg-primary-100">
-              <div class="flex">
+              <div class="flex gap-1">
                 <sd-tooltip content="Add to favorites">
-                  <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                  <button class="sd-interactive sd-interactive--reset flex">
                     <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                   </button>
                 </sd-tooltip>
@@ -969,9 +969,9 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Apprenticeship</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -993,9 +993,9 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1017,9 +1017,9 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Portfolio Management</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1041,9 +1041,9 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Fund Administration</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1066,9 +1066,9 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Customer Service</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1088,9 +1088,9 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Compliance</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1112,9 +1112,9 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1136,9 +1136,9 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1158,9 +1158,9 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1180,9 +1180,9 @@ export const sortableTable = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Other</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1654,9 +1654,9 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Apprenticeship</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1678,9 +1678,9 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1702,9 +1702,9 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Portfolio Management</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1726,9 +1726,9 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Fund Administration</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1751,9 +1751,9 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Customer Service</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1773,9 +1773,9 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Compliance</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1797,9 +1797,9 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1821,9 +1821,9 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1843,9 +1843,9 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1865,9 +1865,9 @@ export const advancedTables = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Other</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1939,9 +1939,9 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Apprenticeship</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1963,9 +1963,9 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Dual Study Program / Training</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -1987,9 +1987,9 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Portfolio Management</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -2011,9 +2011,9 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Fund Administration</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -2036,9 +2036,9 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Customer Service</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -2058,9 +2058,9 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Compliance</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -2082,9 +2082,9 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -2106,9 +2106,9 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">IT</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -2128,9 +2128,9 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Private Clients</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -2150,9 +2150,9 @@ export const TableFixedBottom = {
               <td class="sd-table-cell sd-table-cell--bg-transparent">Other</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">Full-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -2259,9 +2259,9 @@ export const TableFixedLeft = {
                 Dual Study Program / Training
               </td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -2287,9 +2287,9 @@ export const TableFixedLeft = {
                 Dual Study Program / Training
               </td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -2313,9 +2313,9 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Portfolio Management</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -2339,9 +2339,9 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Fund Administration</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -2366,9 +2366,9 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Customer Service</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -2390,9 +2390,9 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Compliance</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -2416,9 +2416,9 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Private Clients</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -2442,9 +2442,9 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">IT</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time<br />Part-time</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -2466,9 +2466,9 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Private Clients</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent whitespace-nowrap">Full-time</td>
               <td class="sd-table-cell sd-table-cell--bg-transparent">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -2490,9 +2490,9 @@ export const TableFixedLeft = {
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Other</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100 whitespace-nowrap">Full-time</td>
               <td class="sd-table-cell sd-table-cell--bg-neutral-100">
-                <div class="flex">
+                <div class="flex gap-1">
                   <sd-tooltip content="Add to favorites">
-                    <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                    <button class="sd-interactive sd-interactive--reset flex">
                       <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                     </button>
                   </sd-tooltip>
@@ -2565,9 +2565,9 @@ export const TableFixedRight = {
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
-                  <div class="flex">
+                  <div class="flex gap-1">
                    <sd-tooltip content="Add to favorites">
-                      <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                      <button class="sd-interactive sd-interactive--reset flex">
                         <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                       </button>
                     </sd-tooltip>
@@ -2589,9 +2589,9 @@ export const TableFixedRight = {
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
                 >
-                  <div class="flex">
+                  <div class="flex gap-1">
                     <sd-tooltip content="Add to favorites">
-                      <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                      <button class="sd-interactive sd-interactive--reset flex">
                         <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                       </button>
                     </sd-tooltip>
@@ -2613,9 +2613,9 @@ export const TableFixedRight = {
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
-                  <div class="flex">
+                  <div class="flex gap-1">
                     <sd-tooltip content="Add to favorites">
-                      <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                      <button class="sd-interactive sd-interactive--reset flex">
                         <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                       </button>
                     </sd-tooltip>
@@ -2639,9 +2639,9 @@ export const TableFixedRight = {
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
                 >
-                  <div class="flex">
+                  <div class="flex gap-1">
                    <sd-tooltip content="Add to favorites">
-                      <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                      <button class="sd-interactive sd-interactive--reset flex">
                         <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                       </button>
                     </sd-tooltip>
@@ -2665,9 +2665,9 @@ export const TableFixedRight = {
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
-                  <div class="flex">
+                  <div class="flex gap-1">
                     <sd-tooltip content="Add to favorites">
-                        <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                        <button class="sd-interactive sd-interactive--reset flex">
                           <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                         </button>
                       </sd-tooltip>
@@ -2689,9 +2689,9 @@ export const TableFixedRight = {
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
                 >
-                  <div class="flex">
+                  <div class="flex gap-1">
                    <sd-tooltip content="Add to favorites">
-                        <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                        <button class="sd-interactive sd-interactive--reset flex">
                           <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                         </button>
                       </sd-tooltip>
@@ -2713,9 +2713,9 @@ export const TableFixedRight = {
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
-                  <div class="flex">
+                  <div class="flex gap-1">
                    <sd-tooltip content="Add to favorites">
-                        <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                        <button class="sd-interactive sd-interactive--reset flex">
                           <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                         </button>
                       </sd-tooltip>
@@ -2739,9 +2739,9 @@ export const TableFixedRight = {
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
                 >
-                  <div class="flex">
+                  <div class="flex gap-1">
                     <sd-tooltip content="Add to favorites">
-                        <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                        <button class="sd-interactive sd-interactive--reset flex">
                           <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                         </button>
                       </sd-tooltip>
@@ -2763,9 +2763,9 @@ export const TableFixedRight = {
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-white"
                 >
-                  <div class="flex">
+                  <div class="flex gap-1">
                    <sd-tooltip content="Add to favorites">
-                        <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                        <button class="sd-interactive sd-interactive--reset flex">
                           <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                         </button>
                       </sd-tooltip>
@@ -2787,9 +2787,9 @@ export const TableFixedRight = {
                 <th
                   class="sd-table-cell top-auto sticky right-0 z-[2] bg-clip-padding sd-table-cell--shadow-left sd-table-cell--shadow-active sd-table-cell--bg-neutral-100"
                 >
-                  <div class="flex">
+                  <div class="flex gap-1">
                     <sd-tooltip content="Add to favorites">
-                        <button class="sd-interactive sd-interactive--reset mr-0.5 flex">
+                        <button class="sd-interactive sd-interactive--reset flex">
                           <sd-icon class="w-6 h-6" name="system/star-empty" label="Add to favorites"></sd-icon>
                         </button>
                       </sd-tooltip>
