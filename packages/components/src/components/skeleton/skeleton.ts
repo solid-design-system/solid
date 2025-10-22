@@ -32,10 +32,10 @@ export default class SdSkeleton extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'bg-neutral-200',
+          'bg-neutral-200 w-full h-full',
           {
-            rectangular: 'rounded',
-            circular: 'rounded-full'
+            rectangular: 'rounded-sm',
+            circular: 'rounded-full inline-block'
           }[this.variant]
         )}
       ></div>
@@ -50,18 +50,6 @@ export default class SdSkeleton extends SolidElement {
     css`
       :host {
         @apply block;
-        min-width: 72px;
-        min-height: 16px;
-      }
-
-      :host([variant='circular']) {
-        @apply inline-block;
-        min-width: 16px;
-        min-height: 16px;
-      }
-
-      [part='base'] {
-        @apply w-full h-full;
       }
     `
   ];
