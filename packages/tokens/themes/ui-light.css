@@ -16,7 +16,7 @@
   --sd-border-width-2: 0.125rem;
   --sd-border-width-4: 0.25rem;
   --sd-border-width-6: 0.375rem;
-  --sd-border-width-default: 0.0625rem;
+  --sd-border-width: 0.0625rem;
   --sd-color-accent-100: #b6dfaa;
   --sd-color-accent-200: #8ed082;
   --sd-color-accent-300: #6cc254;
@@ -94,12 +94,12 @@
   --sd-opacity-80: 80%;
   --sd-opacity-85: 85%;
   --sd-opacity-90: 90%;
-  --sd-radius-default: 0.25rem;
   --sd-radius-full: 624.9375rem;
   --sd-radius-lg: 0.5rem;
   --sd-radius-md: 0.375rem;
   --sd-radius-none: 0rem;
   --sd-radius-sm: 0.125rem;
+  --sd-radius: 0.25rem;
   --sd-shadow-sm: 0.5px 0.5px 1.5px var(--sd-color-neutral-800);
   --sd-shadow: 0 1px 3px var(--sd-color-neutral-800);
   --sd-sizing-10: 2.5rem;

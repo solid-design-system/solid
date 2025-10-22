@@ -70,7 +70,7 @@
   --border-width-2: var(--sd-border-width-2);
   --border-width-4: var(--sd-border-width-4);
   --border-width-6: var(--sd-border-width-6);
-  --border-width-default: var(--sd-border-width-default);
+  --border-width-default: var(--sd-border-width);
   --drop-shadow-sm: var(--sd-drop-shadow-sm);
   --drop-shadow: var(--sd-drop-shadow);
   --fill-accent-550: var(--sd-color-icon-fill-accent-550, var(--sd-color-accent-550));
@@ -112,7 +112,7 @@
   --opacity-90: var(--sd-opacity-90);
   --outline-color-error: var(--sd-border-color-error, var(--sd-color-error));
   --outline-color-primary: var(--sd-border-color-primary, var(--sd-color-primary));
-  --radius-default: var(--sd-radius-default);
+  --radius-default: var(--sd-radius);
   --radius-full: var(--sd-radius-full);
   --radius-lg: var(--sd-radius-lg);
   --radius-md: var(--sd-radius-md);
@@ -246,15 +246,15 @@
 }
 
 @utility sd-brandshape--neutral-100-color-border {
-  border-color: var(--sd-brandshape--neutral-100-color-border);
+  border-color: var(--sd-brandshape--neutral-100-color-border, rgba(255, 255, 255, 0));
 }
 
 @utility sd-brandshape--white-color-background {
   background-color: var(--sd-brandshape--white-color-background, var(--sd-color-white));
 }
 
-@utility sd-breadcrumb-separator-color {
-  background-color: var(--sd-breadcrumb-separator-color, var(--sd-color-neutral-400));
+@utility sd-breadcrumb__separator-color {
+  background-color: var(--sd-breadcrumb__separator-color, var(--sd-color-neutral-400));
 }
 
 @utility sd-button--primary--default--active-color-icon-fill {
@@ -414,7 +414,7 @@
 }
 
 @utility sd-tag--default--hover-color-background {
-  background-color: var(--sd-tag--default--hover-color-background);
+  background-color: var(--sd-tag--default--hover-color-background, rgba(255, 255, 255, 0));
 }
 
 @utility sd-tag--selected--default-color-background {
@@ -427,18 +427,6 @@
 
 @utility sd-tag--selected--hover-color-text {
   color: var(--sd-tag--selected--hover-color-text, var(--sd-color-white));
-}
-
-@utility sd-tag--tmplt--default-color-border {
-  border-color: var(--sd-tag--tmplt--default-color-border, var(--sd-color-primary-800));
-}
-
-@utility sd-tag--tmplt--selected-color-border {
-  border-color: var(--sd-tag--tmplt--selected-color-border, var(--sd-color-white));
-}
-
-@utility sd-tag--tmplt--selected-color-icon-fill {
-  fill: var(--sd-tag--tmplt--selected-color-icon-fill, var(--sd-color-white));
 }
 
 @utility z-10 {

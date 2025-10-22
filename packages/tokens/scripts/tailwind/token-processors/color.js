@@ -64,7 +64,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       });
     }
 
-    if (isUtility && isCoreColor && variant !== 'default') {
+    if (isUtility && isCoreColor) {
       const variable = {
         type: 'color',
         name: this.cssprefix(fallback),
@@ -76,7 +76,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       this.processedHistory.push(variable);
     }
 
-    if (isUtility && !isCoreColor && variant !== 'default') {
+    if (isUtility && !isCoreColor) {
       const coreToken = path.slice(1);
       coreToken.splice(1, 1);
 
@@ -89,6 +89,35 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
           type: 'color',
           name: this.cssprefix(processed.cssvar),
           value: replacement ? this.cssvar(this.cssprefix(replacement.path.join('-').replace('-default', ''))) : color,
+          variant
+        };
+
+        cssvariables.push(variable);
+        this.processedHistory.push(variable);
+      }
+    }
+
+    if (!isUtility && variant !== options.defaultTheme) {
+      const defaultPrimitiveColor = this.#getColorFromToken(path, options.defaultTheme, dictionary);
+      const defaultPrimitiveToken = this.#getCoreTokenFromColor(
+        defaultPrimitiveColor,
+        options.defaultTheme,
+        dictionary
+      );
+
+      const variantColor = this.#getColorFromToken(
+        ['utilities', ...(defaultPrimitiveToken ?? [])],
+        variant,
+        dictionary
+      );
+
+      if (defaultPrimitiveColor !== variantColor && variantColor !== token.value) {
+        const coreToken = this.#getCoreTokenFromColor(token.value, variant, dictionary);
+
+        const variable = {
+          type: 'color',
+          name: this.cssprefix(processed.name),
+          value: this.cssvar(coreToken.join('-')),
           variant
         };
 
@@ -124,6 +153,13 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     return isUtility ? name : `${processed.path[0]}-${name}`;
   }
 
+  #getColorFromToken(token, variant, dictionary) {
+    return token.reduce(
+      (obj, key) => (obj && obj[key] !== undefined ? obj[key] : undefined),
+      dictionary?.tokens?.[variant]
+    )?.value;
+  }
+
   #getCoreTokenFromColor(color, variant, dictionary) {
     const coreColors = this.#getCoreColors(dictionary, variant);
     const token = Object.values(coreColors).find(core => core.value === color);
@@ -132,7 +168,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       return null;
     }
 
-    return this.cleanupTokenName(`${token.path.join('-').replace('-default', '')}`);
+    return token.path.map(this.cleanupTokenName);
   }
 
   #processUtilityToken(token) {
@@ -157,7 +193,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       .join('-')
       .replaceAll('-__', '__');
 
-    const coreToken = this.#getCoreTokenFromColor(token.value, variant, dictionary);
+    const coreToken = this.#getCoreTokenFromColor(token.value, variant, dictionary)?.join('-');
 
     if (!coreToken) {
       console.error(
@@ -165,7 +201,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       );
     }
 
-    const value = this.cssvar(name, coreToken ? this.cssvar(coreToken) : undefined);
+    const value = this.cssvar(name, coreToken ? this.cssvar(coreToken) : token.value);
 
     for (const [property, cssproperty] of Object.entries(this.semantic)) {
       if (name.includes(property)) {

@@ -2688,7 +2688,7 @@
     },
     "components": {
       "sd-breadcrumb": {
-        "separator": {
+        "__separator": {
           "color": {
             "type": "color",
             "value": "{ui-light.utilities.color.icon-fill.neutral.400}"
@@ -2737,28 +2737,6 @@
               "background": {
                 "type": "color",
                 "value": "rgba(255, 255, 255, 0.00)"
-              }
-            }
-          }
-        },
-        "--tmplt": {
-          "--default": {
-            "color": {
-              "border": {
-                "type": "color",
-                "value": "{ui-light.utilities.color.primary.800}"
-              }
-            }
-          },
-          "--selected": {
-            "color": {
-              "border": {
-                "type": "color",
-                "value": "{ui-light.utilities.color.white.default}"
-              },
-              "icon-fill": {
-                "type": "color",
-                "value": "{ui-light.utilities.color.white.default}"
               }
             }
           }
@@ -3073,6 +3051,30 @@
                 "left-right": {
                   "type": "float",
                   "value": "{ui-light.utilities.sizing.4}"
+                }
+              }
+            }
+          }
+        },
+        "sd-tag": {
+          "--tmplt": {
+            "--default": {
+              "color": {
+                "border": {
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.800}"
+                }
+              }
+            },
+            "--selected": {
+              "color": {
+                "border": {
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.white.default}"
+                },
+                "icon-fill": {
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.white.default}"
                 }
               }
             }
@@ -4550,7 +4552,7 @@
     },
     "components": {
       "sd-breadcrumb": {
-        "separator": {
+        "__separator": {
           "color": {
             "type": "color",
             "value": "{ui-dark.utilities.color.icon-fill.primary.400}"
@@ -4599,28 +4601,6 @@
               "background": {
                 "type": "color",
                 "value": "{ui-dark.utilities.color.primary.700}"
-              }
-            }
-          }
-        },
-        "--tmplt": {
-          "--default": {
-            "color": {
-              "border": {
-                "type": "color",
-                "value": "{ui-dark.utilities.color.white.default}"
-              }
-            }
-          },
-          "--selected": {
-            "color": {
-              "border": {
-                "type": "color",
-                "value": "{ui-dark.utilities.color.primary.800}"
-              },
-              "icon-fill": {
-                "type": "color",
-                "value": "{ui-dark.utilities.color.primary.default}"
               }
             }
           }
@@ -4939,6 +4919,30 @@
               }
             }
           }
+        },
+        "sd-tag": {
+          "--tmplt": {
+            "--default": {
+              "color": {
+                "border": {
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.white.default}"
+                }
+              }
+            },
+            "--selected": {
+              "color": {
+                "border": {
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.800}"
+                },
+                "icon-fill": {
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.default}"
+                }
+              }
+            }
+          }
         }
       },
       "sd-loader": {
@@ -5042,7 +5046,7 @@
       }
     }
   },
-  "vb-light": {
+  "-vb-light": {
     "duration": {
       "fast": {
         "value": "{core.duration.150}",
@@ -5122,63 +5126,63 @@
             "default": {
               "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
               "type": "color",
-              "value": "{vb-light.utilities.color.white.default}"
+              "value": "{-vb-light.utilities.color.white.default}"
             }
           },
           "neutral": {
             "100": {
               "description": "Form field read only. Used for sd-container",
               "type": "color",
-              "value": "{vb-light.utilities.color.neutral.100}"
+              "value": "{-vb-light.utilities.color.neutral.100}"
             },
             "200": {
               "description": "Used for sd-flag",
               "type": "color",
-              "value": "{vb-light.utilities.color.neutral.200}"
+              "value": "{-vb-light.utilities.color.neutral.200}"
             },
             "300": {
               "description": "Used for sd-flag ",
               "type": "color",
-              "value": "{vb-light.utilities.color.neutral.300}"
+              "value": "{-vb-light.utilities.color.neutral.300}"
             },
             "400": {
               "description": "Used for sd-flag ",
               "type": "color",
-              "value": "{vb-light.utilities.color.neutral.400}"
+              "value": "{-vb-light.utilities.color.neutral.400}"
             },
             "500": {
               "description": "Used for disabled state ",
               "type": "color",
-              "value": "{vb-light.utilities.color.neutral.500}"
+              "value": "{-vb-light.utilities.color.neutral.500}"
             },
             "600": {
               "description": "Used for inverted disabled state ",
               "type": "color",
-              "value": "{vb-light.utilities.color.neutral.600}"
+              "value": "{-vb-light.utilities.color.neutral.600}"
             },
             "800": {
               "description": "Used for badge",
               "type": "color",
-              "value": "{vb-light.utilities.color.neutral.800}"
+              "value": "{-vb-light.utilities.color.neutral.800}"
             }
           },
           "success": {
             "default": {
               "description": "Used for notification, status-badge",
               "type": "color",
-              "value": "{vb-light.utilities.color.success.default}"
+              "value": "{-vb-light.utilities.color.success.default}"
             }
           },
           "error": {
             "400": {
               "description": "Used for hover interaction invalid form elements",
               "type": "color",
-              "value": "{vb-light.utilities.color.error.400}"
+              "value": "{-vb-light.utilities.color.error.400}"
             },
             "default": {
               "description": "Used for notification, status-badge",
               "type": "color",
-              "value": "{vb-light.utilities.color.error.300}"
+              "value": "{-vb-light.utilities.color.error.300}"
             }
           },
           "_transparent": {
@@ -5247,73 +5251,73 @@
             "100": {
               "description": "Used for sd-container",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.100}"
+              "value": "{-vb-light.utilities.color.primary.100}"
             },
             "200": {
               "description": "Used for sd-chip",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.200}"
+              "value": "{-vb-light.utilities.color.primary.200}"
             },
             "300": {
               "description": "Used for sd-chip",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.300}"
+              "value": "{-vb-light.utilities.color.primary.300}"
             },
             "500": {
               "description": "Used for sd-chip, sd-badge",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.500}"
+              "value": "{-vb-light.utilities.color.primary.500}"
             },
             "800": {
               "description": "Used for pressed interaction",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.800}"
+              "value": "{-vb-light.utilities.color.primary.800}"
             },
             "default": {
               "description": "Inverted background color (light mode)\nUsed for button",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.default}"
+              "value": "{-vb-light.utilities.color.primary.default}"
             }
           },
           "accent": {
             "300": {
               "description": "Used for inverted hover interaction",
               "type": "color",
-              "value": "{vb-light.utilities.color.accent.300}"
+              "value": "{-vb-light.utilities.color.accent.300}"
             },
             "500": {
               "description": "Used for cta background",
               "type": "color",
-              "value": "{vb-light.utilities.color.accent.500}"
+              "value": "{-vb-light.utilities.color.accent.500}"
             },
             "550": {
               "description": "Used for hover interaction",
               "type": "color",
-              "value": "{vb-light.utilities.color.accent.550}"
+              "value": "{-vb-light.utilities.color.accent.550}"
             },
             "700": {
               "description": "Used for pressed interaction",
               "type": "color",
-              "value": "{vb-light.utilities.color.accent.700}"
+              "value": "{-vb-light.utilities.color.accent.700}"
             },
             "default": {
               "description": "Used for checkbox, switch",
               "type": "color",
-              "value": "{vb-light.utilities.color.accent.default}"
+              "value": "{-vb-light.utilities.color.accent.default}"
             }
           },
           "info": {
             "default": {
               "description": "Used for notification, status-badge",
               "type": "color",
-              "value": "{vb-light.utilities.color.info.default}"
+              "value": "{-vb-light.utilities.color.info.default}"
             }
           },
           "warning": {
             "default": {
               "description": "Used for notification, status-badge",
               "type": "color",
-              "value": "{vb-light.utilities.color.warning.default}"
+              "value": "{-vb-light.utilities.color.warning.default}"
             }
           }
         },
@@ -5455,7 +5459,7 @@
           "default": {
             "description": "Used for error messages, invalid states",
             "type": "color",
-            "value": "{vb-light.utilities.color.error.300}"
+            "value": "{-vb-light.utilities.color.error.300}"
           }
         },
         "success": {
@@ -5472,7 +5476,7 @@
           "default-constant": {
             "description": "Default text color in light mode and unchanged in dark mode",
             "type": "color",
-            "value": "{vb-light.utilities.color.black.default}"
+            "value": "{-vb-light.utilities.color.black.default}"
           }
         },
         "white": {
@@ -5527,51 +5531,51 @@
             "100": {
               "description": "Used for inverted hover interaction",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.100}"
+              "value": "{-vb-light.utilities.color.primary.100}"
             },
             "200": {
               "description": "Used for inverted pressed interaction",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.200}"
+              "value": "{-vb-light.utilities.color.primary.200}"
             },
             "400": {
               "description": "Used for inverted pressed interaction in text link",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.400}"
+              "value": "{-vb-light.utilities.color.primary.400}"
             },
             "500": {
               "description": "Used for hover interaction",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.500}"
+              "value": "{-vb-light.utilities.color.primary.500}"
             },
             "800": {
               "description": "Used for pressed interaction",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.800}"
+              "value": "{-vb-light.utilities.color.primary.800}"
             },
             "default": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.default}"
+              "value": "{-vb-light.utilities.color.primary.default}"
             }
           },
           "white": {
             "default": {
               "description": "Inverted icon color",
               "type": "color",
-              "value": "{vb-light.utilities.color.white.default}"
+              "value": "{-vb-light.utilities.color.white.default}"
             }
           },
           "accent": {
             "550": {
               "description": "Used for hover interaction",
               "type": "color",
-              "value": "{vb-light.utilities.color.accent.550}"
+              "value": "{-vb-light.utilities.color.accent.550}"
             },
             "default": {
               "description": "Used for active / selected elements",
               "type": "color",
-              "value": "{vb-light.utilities.color.accent.default}"
+              "value": "{-vb-light.utilities.color.accent.default}"
             }
           },
           "neutral": {
@@ -5583,63 +5587,63 @@
             "500": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{vb-light.utilities.color.neutral.500}"
+              "value": "{-vb-light.utilities.color.neutral.500}"
             },
             "600": {
               "description": "Used for inverted disabled state",
               "type": "color",
-              "value": "{vb-light.utilities.color.neutral.600}"
+              "value": "{-vb-light.utilities.color.neutral.600}"
             },
             "800": {
               "description": "Used for switch, clearable",
               "type": "color",
-              "value": "{vb-light.utilities.color.neutral.800}"
+              "value": "{-vb-light.utilities.color.neutral.800}"
             }
           },
           "success": {
             "default": {
               "description": "Used for success messages, valid states",
               "type": "color",
-              "value": "{vb-light.utilities.color.success.default}"
+              "value": "{-vb-light.utilities.color.success.default}"
             }
           },
           "error": {
             "400": {
               "description": "Used for hover interaction invalid form elements\n",
               "type": "color",
-              "value": "{vb-light.utilities.color.error.400}"
+              "value": "{-vb-light.utilities.color.error.400}"
             },
             "default": {
               "description": "Used for error messages, invalid states",
               "type": "color",
-              "value": "{vb-light.utilities.color.error.300}"
+              "value": "{-vb-light.utilities.color.error.300}"
             }
           },
           "risk": {
             "low": {
               "description": "Exclusively for marking fonds",
               "type": "color",
-              "value": "{vb-light.utilities.color.risk.low}"
+              "value": "{-vb-light.utilities.color.risk.low}"
             },
             "moderate": {
               "description": "Exclusively for marking fonds",
               "type": "color",
-              "value": "{vb-light.utilities.color.risk.moderate}"
+              "value": "{-vb-light.utilities.color.risk.moderate}"
             },
             "increased": {
               "description": "Exclusively for marking fonds",
               "type": "color",
-              "value": "{vb-light.utilities.color.risk.increased}"
+              "value": "{-vb-light.utilities.color.risk.increased}"
             },
             "high": {
               "description": "Exclusively for marking fonds",
               "type": "color",
-              "value": "{vb-light.utilities.color.risk.high}"
+              "value": "{-vb-light.utilities.color.risk.high}"
             },
             "veryhigh": {
               "description": "Exclusively for marking fonds",
               "type": "color",
-              "value": "{vb-light.utilities.color.risk.veryhigh}"
+              "value": "{-vb-light.utilities.color.risk.veryhigh}"
             }
           }
         },
@@ -5648,17 +5652,17 @@
             "100": {
               "description": "Used for inverted hover interaction",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.100}"
+              "value": "{-vb-light.utilities.color.primary.100}"
             },
             "200": {
               "description": "Used for inverted pressed interaction",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.200}"
+              "value": "{-vb-light.utilities.color.primary.200}"
             },
             "400": {
               "description": "Used for inverted dividers",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.400}"
+              "value": "{-vb-light.utilities.color.primary.400}"
             },
             "500": {
               "description": "Used for hover interaction (dark mode)",
@@ -5673,67 +5677,67 @@
             "default": {
               "description": "Used for buttons, select field, focus state",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.default}"
+              "value": "{-vb-light.utilities.color.primary.default}"
             }
           },
           "accent": {
             "550": {
               "description": "Used for hover interaction",
               "type": "color",
-              "value": "{vb-light.utilities.color.accent.550}"
+              "value": "{-vb-light.utilities.color.accent.550}"
             },
             "default": {
               "description": "Used to highlight active/selected elements\n",
               "type": "color",
-              "value": "{vb-light.utilities.color.accent.default}"
+              "value": "{-vb-light.utilities.color.accent.default}"
             }
           },
           "neutral": {
             "400": {
               "description": "Default border color. \nUsed for sd-divider, teaser, table cell, ... sd-container,",
               "type": "color",
-              "value": "{vb-light.utilities.color.neutral.400}"
+              "value": "{-vb-light.utilities.color.neutral.400}"
             },
             "500": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{vb-light.utilities.color.neutral.500}"
+              "value": "{-vb-light.utilities.color.neutral.500}"
             },
             "600": {
               "description": "Used for inverted disabled state",
               "type": "color",
-              "value": "{vb-light.utilities.color.neutral.600}"
+              "value": "{-vb-light.utilities.color.neutral.600}"
             },
             "800": {
               "description": "Used for form fields, switch, radio, checkbox",
               "type": "color",
-              "value": "{vb-light.utilities.color.neutral.800}"
+              "value": "{-vb-light.utilities.color.neutral.800}"
             }
           },
           "success": {
             "default": {
               "description": "Used for valid form fields\n",
               "type": "color",
-              "value": "{vb-light.utilities.color.success.default}"
+              "value": "{-vb-light.utilities.color.success.default}"
             }
           },
           "error": {
             "400": {
               "description": "Used for hover interaction invalid form elements",
               "type": "color",
-              "value": "{vb-light.utilities.color.error.400}"
+              "value": "{-vb-light.utilities.color.error.400}"
             },
             "default": {
               "description": "Used for invalid form fields",
               "type": "color",
-              "value": "{vb-light.utilities.color.error.300}"
+              "value": "{-vb-light.utilities.color.error.300}"
             }
           },
           "white": {
             "default": {
               "description": "Used for buttons, inverted focus state",
               "type": "color",
-              "value": "{vb-light.utilities.color.white.default}"
+              "value": "{-vb-light.utilities.color.white.default}"
             }
           }
         },
@@ -5742,39 +5746,39 @@
             "100": {
               "description": "Used for inverted hover interaction button label",
               "type": "color",
-              "value": "{vb-light.utilities.color.white.default}"
+              "value": "{-vb-light.utilities.color.white.default}"
             },
             "200": {
               "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.200}"
+              "value": "{-vb-light.utilities.color.primary.200}"
             },
             "400": {
               "description": "Additional text inverted color",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.400}"
+              "value": "{-vb-light.utilities.color.primary.400}"
             },
             "500": {
               "description": "Used for hover interaction",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.500}"
+              "value": "{-vb-light.utilities.color.primary.500}"
             },
             "800": {
               "description": "Used for pressed interaction",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.800}"
+              "value": "{-vb-light.utilities.color.primary.800}"
             },
             "default": {
               "description": "Primary brand color for text",
               "type": "color",
-              "value": "{vb-light.utilities.color.primary.default}"
+              "value": "{-vb-light.utilities.color.primary.default}"
             }
           },
           "white": {
             "default": {
               "description": "Inverted text color",
               "type": "color",
-              "value": "{vb-light.utilities.color.white.default}"
+              "value": "{-vb-light.utilities.color.white.default}"
             },
             "default-constant": {
               "description": "Unchanged in dark mode"
@@ -5784,45 +5788,45 @@
             "default": {
               "description": "Default text color",
               "type": "color",
-              "value": "{vb-light.utilities.color.black.default}"
+              "value": "{-vb-light.utilities.color.black.default}"
             }
           },
           "neutral": {
             "500": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{vb-light.utilities.color.neutral.500}"
+              "value": "{-vb-light.utilities.color.neutral.500}"
             },
             "600": {
               "description": "Used for inverted disabled state",
               "type": "color",
-              "value": "{vb-light.utilities.color.neutral.600}"
+              "value": "{-vb-light.utilities.color.neutral.600}"
             },
             "700": {
               "description": "Additional text color, Breadcrumb item current",
               "type": "color",
-              "value": "{vb-light.utilities.color.neutral.700}"
+              "value": "{-vb-light.utilities.color.neutral.700}"
             }
           },
           "error": {
             "default": {
               "description": "Used to display negative performance values",
               "type": "color",
-              "value": "{vb-light.utilities.color.error.300}"
+              "value": "{-vb-light.utilities.color.error.300}"
             }
           },
           "success": {
             "default": {
               "description": "Used to display positive performance values",
               "type": "color",
-              "value": "{vb-light.utilities.color.success.default}"
+              "value": "{-vb-light.utilities.color.success.default}"
             }
           },
           "accent": {
             "default": {
               "description": "Used for inverted hover interaction button label",
               "type": "color",
-              "value": "{vb-light.utilities.color.accent.default}"
+              "value": "{-vb-light.utilities.color.accent.default}"
             }
           }
         },
@@ -6412,7 +6416,7 @@
     },
     "components": {
       "sd-breadcrumb": {
-        "separator": {
+        "__separator": {
           "color": {
             "type": "color",
             "value": "#ffffff"
@@ -6464,28 +6468,6 @@
               }
             }
           }
-        },
-        "--tmplt": {
-          "--default": {
-            "color": {
-              "border": {
-                "type": "color",
-                "value": "#ffffff"
-              }
-            }
-          },
-          "--selected": {
-            "color": {
-              "border": {
-                "type": "color",
-                "value": "#ffffff"
-              },
-              "icon-fill": {
-                "type": "color",
-                "value": "#ffffff"
-              }
-            }
-          }
         }
       },
       "form-control": {
@@ -6512,12 +6494,12 @@
                 "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 },
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 },
                 "background": {
                   "type": "color",
@@ -6530,12 +6512,12 @@
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 },
                 "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 }
               }
             },
@@ -6544,12 +6526,12 @@
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 },
                 "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 }
               }
             }
@@ -6560,17 +6542,17 @@
                 "background": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 },
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 },
                 "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 }
               }
             },
@@ -6579,17 +6561,17 @@
                 "background": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 },
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 },
                 "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 }
               }
             },
@@ -6598,12 +6580,12 @@
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 },
                 "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 }
               }
             }
@@ -6616,7 +6598,7 @@
                 "background": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 }
               }
             },
@@ -6625,7 +6607,7 @@
                 "background": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 }
               }
             }
@@ -6636,17 +6618,17 @@
                 "background": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 },
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 },
                 "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 }
               }
             },
@@ -6655,12 +6637,12 @@
                 "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 },
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 },
                 "background": {
                   "type": "color",
@@ -6673,7 +6655,7 @@
                 "border": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 }
               }
             }
@@ -6686,7 +6668,7 @@
                 "background": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 }
               }
             },
@@ -6695,7 +6677,7 @@
                 "background": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 }
               }
             }
@@ -6706,17 +6688,17 @@
                 "background": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 },
                 "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 },
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 }
               }
             },
@@ -6725,17 +6707,17 @@
                 "background": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 },
                 "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 },
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb-light.utilities.color.white.default}"
+                  "value": "{-vb-light.utilities.color.white.default}"
                 }
               }
             }
@@ -6749,7 +6731,7 @@
               "background": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{vb-light.utilities.color.white.default}"
+                "value": "{-vb-light.utilities.color.white.default}"
               }
             }
           }
@@ -6762,12 +6744,12 @@
               "text": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{vb-light.utilities.color.white.default}"
+                "value": "{-vb-light.utilities.color.white.default}"
               },
               "icon-fill": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{vb-light.utilities.color.white.default}"
+                "value": "{-vb-light.utilities.color.white.default}"
               }
             }
           }
@@ -6778,12 +6760,12 @@
               "text": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{vb-light.utilities.color.white.default}"
+                "value": "{-vb-light.utilities.color.white.default}"
               },
               "icon-fill": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{vb-light.utilities.color.white.default}"
+                "value": "{-vb-light.utilities.color.white.default}"
               }
             }
           }
@@ -6796,7 +6778,31 @@
               "spacing": {
                 "left-right": {
                   "type": "float",
-                  "value": "{vb-light.utilities.sizing.8}"
+                  "value": "{-vb-light.utilities.sizing.8}"
+                }
+              }
+            }
+          }
+        },
+        "sd-tag": {
+          "--tmplt": {
+            "--default": {
+              "color": {
+                "border": {
+                  "type": "color",
+                  "value": "#ffffff"
+                }
+              }
+            },
+            "--selected": {
+              "color": {
+                "border": {
+                  "type": "color",
+                  "value": "#ffffff"
+                },
+                "icon-fill": {
+                  "type": "color",
+                  "value": "#ffffff"
                 }
               }
             }
@@ -6809,7 +6815,7 @@
             "icon-fill": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "{vb-light.utilities.color.white.default}"
+              "value": "{-vb-light.utilities.color.white.default}"
             }
           }
         },
@@ -6818,7 +6824,7 @@
             "icon-fill": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "{vb-light.utilities.color.white.default}"
+              "value": "{-vb-light.utilities.color.white.default}"
             }
           }
         }

@@ -1,4 +1,4 @@
-:root, .sd-theme-vb-light {
+:root, .sd-theme--vb-light {
   color-scheme: light;
 
   --sd-aspect-16\/10: 16 / 10;
@@ -16,7 +16,37 @@
   --sd-border-width-2: 0rem;
   --sd-border-width-4: 0rem;
   --sd-border-width-6: 0rem;
-  --sd-border-width-default: 0rem;
+  --sd-border-width: 0rem;
+  --sd-brandshape--neutral-100-color-border: var(--sd-color-white);
+  --sd-button--primary--default--active-color-icon-fill: var(--sd-color-white);
+  --sd-button--primary--default--active-color-text: var(--sd-color-white);
+  --sd-button--primary--default--default-color-background: var(--sd-color-white);
+  --sd-button--primary--default--hover-color-icon-fill: var(--sd-color-white);
+  --sd-button--primary--default--hover-color-text: var(--sd-color-white);
+  --sd-button--primary--inverted--active-color-icon-fill: var(--sd-color-white);
+  --sd-button--primary--inverted--active-color-text: var(--sd-color-white);
+  --sd-button--primary--inverted--default-color-icon-fill: var(--sd-color-white);
+  --sd-button--primary--inverted--default-color-text: var(--sd-color-white);
+  --sd-button--primary--inverted--hover-color-background: var(--sd-color-white);
+  --sd-button--primary--inverted--hover-color-icon-fill: var(--sd-color-white);
+  --sd-button--primary--inverted--hover-color-text: var(--sd-color-white);
+  --sd-button--secondary--default--active-color-background: var(--sd-color-white);
+  --sd-button--secondary--default--hover-color-background: var(--sd-color-white);
+  --sd-button--secondary--inverted--active-color-background: var(--sd-color-white);
+  --sd-button--secondary--inverted--active-color-icon-fill: var(--sd-color-white);
+  --sd-button--secondary--inverted--active-color-text: var(--sd-color-white);
+  --sd-button--secondary--inverted--hover-color-background: var(--sd-color-white);
+  --sd-button--secondary--inverted--hover-color-icon-fill: var(--sd-color-white);
+  --sd-button--secondary--inverted--hover-color-text: var(--sd-color-white);
+  --sd-button--tertiary--default--active-color-background: var(--sd-color-white);
+  --sd-button--tertiary--default--hover-color-background: var(--sd-color-white);
+  --sd-button--tertiary--inverted--active-color-background: var(--sd-color-white);
+  --sd-button--tertiary--inverted--active-color-icon-fill: var(--sd-color-white);
+  --sd-button--tertiary--inverted--active-color-text: var(--sd-color-white);
+  --sd-button--tertiary--inverted--hover-color-background: var(--sd-color-white);
+  --sd-button--tertiary--inverted--hover-color-icon-fill: var(--sd-color-white);
+  --sd-button--tertiary--inverted--hover-color-text: var(--sd-color-white);
+  --sd-chip--neutral-500-color-background: var(--sd-color-white);
   --sd-color-accent-100: #f2f7fb;
   --sd-color-accent-200: #e5f0f7;
   --sd-color-accent-300: #99c2e1;
@@ -76,10 +106,12 @@
   --sd-color-text-primary-100: var(--sd-color-white);
   --sd-color-warning: #bb8d20;
   --sd-color-white: #ffffff;
+  --sd-container--primary-color-background: var(--sd-color-white);
   --sd-drop-shadow-sm: 0.5px 0.5px 1.5px var(--sd-color-neutral-800);
   --sd-drop-shadow: 0 1px 3px var(--sd-color-neutral-800);
   --sd-font-weight-bold: 700;
   --sd-font-weight-normal: 400;
+  --sd-footnotes--target--inverted-color-background: var(--sd-color-white);
   --sd-opacity-0: 0%;
   --sd-opacity-100: 0%;
   --sd-opacity-10: 0%;
@@ -94,12 +126,12 @@
   --sd-opacity-80: 0%;
   --sd-opacity-85: 0%;
   --sd-opacity-90: 0%;
-  --sd-radius-default: 0rem;
   --sd-radius-full: 0rem;
   --sd-radius-lg: 0rem;
   --sd-radius-md: 0rem;
   --sd-radius-none: 0rem;
   --sd-radius-sm: 0rem;
+  --sd-radius: 0rem;
   --sd-shadow-sm: 0.5px 0.5px 1.5px var(--sd-color-neutral-800);
   --sd-shadow: 0 1px 3px var(--sd-color-neutral-800);
   --sd-sizing-10: 0rem;
@@ -131,6 +163,8 @@
   --sd-spacing-6: 0rem;
   --sd-spacing-8: 0rem;
   --sd-spacing: 0rem;
+  --sd-tag--default--hover-color-background: var(--sd-color-white);
+  --sd-tag--selected--default-color-background: var(--sd-color-white);
   --sd-text-2xl: 1.75rem;
   --sd-text-3xl: 2rem;
   --sd-text-4xl: 2.5rem;

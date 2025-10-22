@@ -410,7 +410,7 @@
         },
         {
           "modeId": "43343:1",
-          "name": "vb-light"
+          "name": "_vb-light"
         }
       ],
       "name": "Theme",
@@ -10900,7 +10900,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44023:39692",
       "key": "69a0c181ec1858b732df02fa523b46e41534f4e4",
-      "name": "components/sd-breadcrumb/separator/color",
+      "name": "components/sd-breadcrumb/__separator/color",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -14836,7 +14836,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44318:24450",
       "key": "df1e80eecaa526710336575143a4ac639359e8e2",
-      "name": "components/sd-tag/--tmplt/--default/color/border",
+      "name": "components/_todo/sd-tag/--tmplt/--default/color/border",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -14866,7 +14866,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44318:24451",
       "key": "a45a75ad6d6bf12234c110f01678705d385278a4",
-      "name": "components/sd-tag/--tmplt/--selected/color/border",
+      "name": "components/_todo/sd-tag/--tmplt/--selected/color/border",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -14896,7 +14896,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44318:24496",
       "key": "f4eb254067dbaf76a73b2b0517c60a37e760b2ab",
-      "name": "components/sd-tag/--tmplt/--selected/color/icon-fill",
+      "name": "components/_todo/sd-tag/--tmplt/--selected/color/icon-fill",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [

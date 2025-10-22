@@ -88,10 +88,15 @@ export class BaseTokenProcessor {
   }
 
   cssprefix(variable) {
-    let name = variable.startsWith('--') ? variable.slice(2) : variable;
+    const _variable = Array.isArray(variable) ? variable.join('-') : variable;
+    let name = _variable.startsWith('--') ? _variable.slice(2) : _variable;
 
     if (name.startsWith('sd-')) {
       name = name.slice(3);
+    }
+
+    if (name.endsWith('-default') || name.endsWith('-default-constant')) {
+      name = name.replace(/-default$/, '');
     }
 
     return `--sd-${name}`;
