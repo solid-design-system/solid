@@ -2721,14 +2721,6 @@
                 "value": "{ui-light.utilities.color.background.primary.default}"
               }
             }
-          },
-          "--hover": {
-            "color": {
-              "text": {
-                "type": "color",
-                "value": "{ui-light.utilities.color.text.white.default}"
-              }
-            }
           }
         },
         "--default": {
@@ -2766,7 +2758,7 @@
                 "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{ui-light.utilities.color.white.default}"
+                  "value": "#ff0000"
                 },
                 "text": {
                   "description": "Default icon color ",
@@ -2779,31 +2771,20 @@
                 }
               }
             },
-            "--hover": {
-              "color": {
-                "text": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-light.utilities.color.primary.100}"
-                },
-                "icon-fill": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-light.utilities.color.primary.100}"
-                }
-              }
-            },
             "--active": {
               "color": {
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{ui-light.utilities.color.primary.200}"
-                },
-                "icon-fill": {
-                  "description": "Default icon color ",
+                }
+              }
+            },
+            "--hover": {
+              "color": {
+                "background": {
                   "type": "color",
-                  "value": "{ui-light.utilities.color.primary.200}"
+                  "value": "{ui-light.utilities.color.primary.500}"
                 }
               }
             }
@@ -2824,7 +2805,7 @@
                 "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{ui-light.utilities.color.primary.default}"
+                  "value": "#ff0000"
                 }
               }
             },
@@ -2839,22 +2820,12 @@
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{ui-light.utilities.color.primary.500}"
-                },
-                "icon-fill": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-light.utilities.color.primary.500}"
                 }
               }
             },
             "--active": {
               "color": {
                 "text": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-light.utilities.color.primary.800}"
-                },
-                "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{ui-light.utilities.color.primary.800}"
@@ -2887,17 +2858,7 @@
           "--inverted": {
             "--hover": {
               "color": {
-                "background": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-light.utilities.color.primary.500}"
-                },
                 "text": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-light.utilities.color.primary.100}"
-                },
-                "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{ui-light.utilities.color.primary.100}"
@@ -2906,28 +2867,9 @@
             },
             "--active": {
               "color": {
-                "icon-fill": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-light.utilities.color.primary.200}"
-                },
-                "text": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-light.utilities.color.primary.200}"
-                },
                 "background": {
                   "type": "color",
                   "value": "{ui-light.utilities.color.primary.800}"
-                }
-              }
-            },
-            "--default": {
-              "color": {
-                "border": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-light.utilities.color.white.default}"
                 }
               }
             }
@@ -2957,16 +2899,6 @@
           "--inverted": {
             "--hover": {
               "color": {
-                "background": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-light.utilities.color.primary.500}"
-                },
-                "icon-fill": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-light.utilities.color.primary.100}"
-                },
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
@@ -2980,16 +2912,6 @@
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{ui-light.utilities.color.primary.800}"
-                },
-                "icon-fill": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-light.utilities.color.primary.200}"
-                },
-                "text": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-light.utilities.color.primary.200}"
                 }
               }
             }
@@ -3009,7 +2931,7 @@
           }
         }
       },
-      "interactive": {
+      "sd-interactive": {
         "--default": {
           "--active": {
             "color": {
@@ -3017,11 +2939,19 @@
                 "description": "Default icon color ",
                 "type": "color",
                 "value": "{ui-light.utilities.color.primary.800}"
-              },
+              }
+            }
+          }
+        }
+      },
+      "interactive": {
+        "--default": {
+          "--active": {
+            "color": {
               "icon-fill": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{ui-light.utilities.color.primary.800}"
+                "value": "#ff0000"
               }
             }
           }
@@ -3106,27 +3036,7 @@
           "color": {
             "background": {
               "type": "color",
-              "value": "{ui-light.utilities.color.neutral.400}"
-            }
-          }
-        }
-      },
-      "sd-container": {
-        "--primary": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.primary.default}"
-            }
-          }
-        }
-      },
-      "sd-chip": {
-        "--neutral-500": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.primary.500}"
+              "value": "{ui-light.utilities.color.neutral.500}"
             }
           }
         }
@@ -4585,14 +4495,6 @@
                 "value": "{ui-dark.utilities.color.white.default}"
               }
             }
-          },
-          "--hover": {
-            "color": {
-              "text": {
-                "type": "color",
-                "value": "{ui-dark.utilities.color.white.default}"
-              }
-            }
           }
         },
         "--default": {
@@ -4643,31 +4545,20 @@
                 }
               }
             },
-            "--hover": {
-              "color": {
-                "text": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.primary.500}"
-                },
-                "icon-fill": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.primary.500}"
-                }
-              }
-            },
             "--active": {
               "color": {
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{ui-dark.utilities.color.primary.700}"
-                },
-                "icon-fill": {
-                  "description": "Default icon color ",
+                }
+              }
+            },
+            "--hover": {
+              "color": {
+                "background": {
                   "type": "color",
-                  "value": "{ui-dark.utilities.color.primary.700}"
+                  "value": "{ui-dark.utilities.color.primary.100}"
                 }
               }
             }
@@ -4703,22 +4594,12 @@
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{ui-dark.utilities.color.primary.500}"
-                },
-                "icon-fill": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.primary.500}"
                 }
               }
             },
             "--active": {
               "color": {
                 "text": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.primary.800}"
-                },
-                "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{ui-dark.utilities.color.primary.800}"
@@ -4751,17 +4632,7 @@
           "--inverted": {
             "--hover": {
               "color": {
-                "background": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.primary.500}"
-                },
                 "text": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.primary.100}"
-                },
-                "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{ui-dark.utilities.color.primary.100}"
@@ -4770,28 +4641,9 @@
             },
             "--active": {
               "color": {
-                "icon-fill": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.primary.200}"
-                },
-                "text": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.primary.200}"
-                },
                 "background": {
                   "type": "color",
                   "value": "{ui-dark.utilities.color.primary.800}"
-                }
-              }
-            },
-            "--default": {
-              "color": {
-                "border": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.white.default}"
                 }
               }
             }
@@ -4821,16 +4673,6 @@
           "--inverted": {
             "--hover": {
               "color": {
-                "background": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.primary.500}"
-                },
-                "icon-fill": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.primary.100}"
-                },
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
@@ -4844,16 +4686,6 @@
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{ui-dark.utilities.color.primary.800}"
-                },
-                "icon-fill": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.primary.200}"
-                },
-                "text": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.primary.200}"
                 }
               }
             }
@@ -4873,7 +4705,7 @@
           }
         }
       },
-      "interactive": {
+      "sd-interactive": {
         "--default": {
           "--active": {
             "color": {
@@ -4881,7 +4713,15 @@
                 "description": "Default icon color ",
                 "type": "color",
                 "value": "{ui-dark.utilities.color.primary.400}"
-              },
+              }
+            }
+          }
+        }
+      },
+      "interactive": {
+        "--default": {
+          "--active": {
+            "color": {
               "icon-fill": {
                 "description": "Default icon color ",
                 "type": "color",
@@ -4971,26 +4811,6 @@
             "background": {
               "type": "color",
               "value": "{ui-dark.utilities.color.primary.750}"
-            }
-          }
-        }
-      },
-      "sd-container": {
-        "--primary": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.primary.default}"
-            }
-          }
-        }
-      },
-      "sd-chip": {
-        "--neutral-500": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.primary.500}"
             }
           }
         }
@@ -6449,14 +6269,6 @@
                 "value": "#ffffff"
               }
             }
-          },
-          "--hover": {
-            "color": {
-              "text": {
-                "type": "color",
-                "value": "#ffffff"
-              }
-            }
           }
         },
         "--default": {
@@ -6507,31 +6319,20 @@
                 }
               }
             },
-            "--hover": {
-              "color": {
-                "text": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
-                },
-                "icon-fill": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
-                }
-              }
-            },
             "--active": {
               "color": {
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{-vb-light.utilities.color.white.default}"
-                },
-                "icon-fill": {
-                  "description": "Default icon color ",
+                }
+              }
+            },
+            "--hover": {
+              "color": {
+                "background": {
                   "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
+                  "value": "#ffffff"
                 }
               }
             }
@@ -6567,22 +6368,12 @@
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{-vb-light.utilities.color.white.default}"
-                },
-                "icon-fill": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
                 }
               }
             },
             "--active": {
               "color": {
                 "text": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
-                },
-                "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{-vb-light.utilities.color.white.default}"
@@ -6615,17 +6406,7 @@
           "--inverted": {
             "--hover": {
               "color": {
-                "background": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
-                },
                 "text": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
-                },
-                "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{-vb-light.utilities.color.white.default}"
@@ -6634,28 +6415,9 @@
             },
             "--active": {
               "color": {
-                "icon-fill": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
-                },
-                "text": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
-                },
                 "background": {
                   "type": "color",
                   "value": "#ffffff"
-                }
-              }
-            },
-            "--default": {
-              "color": {
-                "border": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
                 }
               }
             }
@@ -6685,16 +6447,6 @@
           "--inverted": {
             "--hover": {
               "color": {
-                "background": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
-                },
-                "icon-fill": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
-                },
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
@@ -6705,16 +6457,6 @@
             "--active": {
               "color": {
                 "background": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
-                },
-                "icon-fill": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
-                },
-                "text": {
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{-vb-light.utilities.color.white.default}"
@@ -6737,7 +6479,7 @@
           }
         }
       },
-      "interactive": {
+      "sd-interactive": {
         "--default": {
           "--active": {
             "color": {
@@ -6745,7 +6487,15 @@
                 "description": "Default icon color ",
                 "type": "color",
                 "value": "{-vb-light.utilities.color.white.default}"
-              },
+              }
+            }
+          }
+        }
+      },
+      "interactive": {
+        "--default": {
+          "--active": {
+            "color": {
               "icon-fill": {
                 "description": "Default icon color ",
                 "type": "color",
@@ -6830,26 +6580,6 @@
         }
       },
       "sd-flag": {
-        "--neutral-500": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "#ffffff"
-            }
-          }
-        }
-      },
-      "sd-container": {
-        "--primary": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "#ffffff"
-            }
-          }
-        }
-      },
-      "sd-chip": {
         "--neutral-500": {
           "color": {
             "background": {
