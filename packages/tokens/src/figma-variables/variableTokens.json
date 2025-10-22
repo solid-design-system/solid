@@ -13543,7 +13543,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44271:64020",
       "key": "426edb584831a1f119530814dc5ec046c450f0d2",
-      "name": "components/sd-button/--primary/--default/--default/color/text",
+      "name": "components/sd-button/--primary/--default/color/text",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -13571,7 +13571,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44271:64186",
       "key": "360ffb6bce9b0ae2b38d5317031a529e9f8776f1",
-      "name": "components/sd-button/--secondary/--default/--active/color/background",
+      "name": "components/sd-button/--secondary/--active/color/background",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -13599,7 +13599,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44271:64197",
       "key": "36d36c14e3507a8dca297684a8cda0928afd208e",
-      "name": "components/sd-button/--primary/--default/--active/color/text",
+      "name": "components/sd-button/--primary/--active/color/text",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -13627,7 +13627,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44271:64199",
       "key": "35cadee759ba1c349af1a7c7bc0dd2042b05adbb",
-      "name": "components/sd-button/--secondary/--default/--hover/color/background",
+      "name": "components/sd-button/--secondary/--hover/color/background",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -13655,7 +13655,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44271:64200",
       "key": "b815cba39a946c608c006df50a12bce9d801402c",
-      "name": "components/sd-button/--tertiary/--default/--hover/color/background",
+      "name": "components/sd-button/--tertiary/--hover/color/background",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -13683,7 +13683,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44271:64201",
       "key": "d61b8e48627dec1490b97480f0b010d5e10ad43d",
-      "name": "components/sd-button/--tertiary/--default/--active/color/background",
+      "name": "components/sd-button/--tertiary/--active/color/background",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -14924,7 +14924,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44625:20357",
       "key": "31bba1f507150a2fffcecd84c187e13a78236e74",
-      "name": "components/sd-button/--primary/--default/--default/color/background",
+      "name": "components/sd-button/--primary/--default/color/background",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -15140,7 +15140,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44762:16901",
       "key": "d69c5ddcf1b40c1588df085f4fb2105ba9ad6158",
-      "name": "components/sd-button/--primary/--default/--hover/color/background",
+      "name": "components/sd-button/--primary/--hover/color/background",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
