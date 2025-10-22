@@ -41,9 +41,11 @@ export class TailwindCSSGenerator {
    * Generate custom variants
    */
   generateCustomVariants() {
-    const variants = Object.entries(this.config.customVariants).map(([variant, selector]) =>
-      this.css.customVariant(variant, selector)
-    );
+    const variants = Object.entries({
+      hover: '&:hover:not([disabled])',
+      focus: '&:focus:not([disabled])',
+      active: '&:active:not([disabled])'
+    }).map(([variant, selector]) => this.css.customVariant(variant, selector));
 
     return this.css.join(variants, '\n');
   }

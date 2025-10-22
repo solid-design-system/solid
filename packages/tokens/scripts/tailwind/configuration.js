@@ -1,26 +1,9 @@
 /**
- * Default configuration for the Tailwind v4 plugin
- */
-export const DEFAULT_CONFIG = {
-  customVariants: {
-    hover: '&:hover:not([disabled])',
-    focus: '&:focus:not([disabled])'
-  }
-};
-
-/**
  * Configuration validator and normalizer
  */
 export class PluginConfiguration {
   constructor(userConfig = {}) {
-    this.config = this.validateAndNormalize(userConfig);
-  }
-
-  /**
-   * Validate and normalize user configuration
-   */
-  validateAndNormalize(userConfig) {
-    return { ...DEFAULT_CONFIG, ...userConfig };
+    this.config = userConfig;
   }
 
   /**

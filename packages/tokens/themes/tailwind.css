@@ -5,6 +5,7 @@
 
 @custom-variant hover (&:hover:not([disabled]));
 @custom-variant focus (&:focus:not([disabled]));
+@custom-variant active (&:active:not([disabled]));
 
 @theme inline {
   --animate-bounce-once: bounce-once var(--sd-duration-medium, 300ms) ease-in-out;
