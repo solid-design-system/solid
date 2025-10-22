@@ -21,6 +21,7 @@ export class TailwindCSSGenerator {
       this.generateTheme(processedTokens),
       this.generateUtilities(processedTokens.utilities),
       this.generateExtras(),
+      this.generateComponents(processedTokens.components),
       this.generateThemeVariants(processedTokens)
     ].filter(Boolean);
 
@@ -96,6 +97,10 @@ export class TailwindCSSGenerator {
         ])
       )
     ]);
+  }
+
+  generateComponents(components) {
+    return this.generateUtilities(components);
   }
 
   generateThemeVariants(processedTokens) {

@@ -98,6 +98,8 @@
   --sd-font-weight-normal: 400;
   --sd-footnotes--target--inverted-color-background: var(--sd-color-white);
   --sd-interactive--default--active-color-text: var(--sd-color-white);
+  --sd-interactive--inverted--hover-color-icon-fill: var(--sd-color-white);
+  --sd-interactive--inverted--hover-color-text: var(--sd-color-white);
   --sd-opacity-0: 0%;
   --sd-opacity-100: 0%;
   --sd-opacity-10: 0%;
@@ -112,6 +114,8 @@
   --sd-opacity-80: 0%;
   --sd-opacity-85: 0%;
   --sd-opacity-90: 0%;
+  --sd-overlay-color-background: rgba(0, 45, 103, 0.9);
+  --sd-panel-color-border: var(--sd-color-white);
   --sd-radius-full: 0rem;
   --sd-radius-lg: 0rem;
   --sd-radius-md: 0rem;

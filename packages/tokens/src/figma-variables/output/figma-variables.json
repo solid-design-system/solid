@@ -2755,11 +2755,6 @@
           "--default": {
             "--default": {
               "color": {
-                "icon-fill": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "#ff0000"
-                },
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
@@ -2801,11 +2796,6 @@
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{ui-light.utilities.color.primary.default}"
-                },
-                "icon-fill": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "#ff0000"
                 }
               }
             },
@@ -3055,6 +3045,16 @@
             "text": {
               "type": "color",
               "value": "{ui-light.utilities.color.text.black.default}"
+            }
+          }
+        },
+        "components": {
+          "sd-audio": {
+            "__wave": {
+              "color": {
+                "type": "color",
+                "value": "#ffffff"
+              }
             }
           }
         }
@@ -4529,11 +4529,6 @@
           "--default": {
             "--default": {
               "color": {
-                "icon-fill": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.primary.default}"
-                },
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
@@ -4572,11 +4567,6 @@
                   "value": "{ui-dark.utilities.color.white.default}"
                 },
                 "text": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.primary.default}"
-                },
-                "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{ui-dark.utilities.color.primary.default}"
@@ -4829,6 +4819,16 @@
             "text": {
               "type": "color",
               "value": "{ui-dark.utilities.color.text.primary.400}"
+            }
+          }
+        },
+        "components": {
+          "sd-audio": {
+            "__wave": {
+              "color": {
+                "type": "color",
+                "value": "#ffffff"
+              }
             }
           }
         }
@@ -6303,11 +6303,6 @@
           "--default": {
             "--default": {
               "color": {
-                "icon-fill": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
-                },
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
@@ -6346,11 +6341,6 @@
                   "value": "{-vb-light.utilities.color.white.default}"
                 },
                 "text": {
-                  "description": "Default icon color ",
-                  "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
-                },
-                "icon-fill": {
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{-vb-light.utilities.color.white.default}"
@@ -6603,6 +6593,16 @@
             "text": {
               "type": "color",
               "value": "#ffffff"
+            }
+          }
+        },
+        "components": {
+          "sd-audio": {
+            "__wave": {
+              "color": {
+                "type": "color",
+                "value": "#ffffff"
+              }
             }
           }
         }

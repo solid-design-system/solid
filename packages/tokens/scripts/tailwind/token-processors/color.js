@@ -1,5 +1,4 @@
 import { BaseTokenProcessor } from './base.js';
-import pc from 'picocolors';
 
 /**
  * Processor for color tokens with theme support
@@ -43,7 +42,8 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
 
     const isUtility = this.#isUtilityToken(path);
     const isCoreColor = this.#isCoreToken(path);
-    if (!isUtility && !token.path[2].startsWith('sd-')) return [];
+
+    if (!isUtility && !path[0].startsWith('components')) return [];
 
     const fallback = this.#getFallbackColor(token);
     const processed = isUtility
@@ -117,7 +117,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
         const variable = {
           type: 'color',
           name: this.cssprefix(processed.name),
-          value: this.cssvar(coreToken.join('-')),
+          value: coreToken ? this.cssvar(coreToken.join('-')) : token.value,
           variant
         };
 
@@ -194,13 +194,6 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       .replaceAll('-__', '__');
 
     const coreToken = this.#getCoreTokenFromColor(token.value, variant, dictionary)?.join('-');
-
-    if (!coreToken) {
-      console.error(
-        pc.redBright(`Fallback primitive color not found for token: ${pc.red(name)} - ${pc.red(token.value)}`)
-      );
-    }
-
     const value = this.cssvar(name, coreToken ? this.cssvar(coreToken) : token.value);
 
     for (const [property, cssproperty] of Object.entries(this.semantic)) {

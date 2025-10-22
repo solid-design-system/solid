@@ -142,7 +142,7 @@ export class TokenProcessingEngine {
 
       case 'utility':
         if (processed.properties) {
-          this.categorize('utilities', processed.properties, result);
+          this.categorize(processed.name.startsWith('sd-') ? 'components' : 'utilities', processed.properties, result);
         }
         break;
 

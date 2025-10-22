@@ -627,6 +627,7 @@
         "VariableID:44294:67001",
         "VariableID:44300:67002",
         "VariableID:44300:67003",
+        "VariableID:44789:14711",
         "VariableID:44612:9948",
         "VariableID:44650:36286",
         "VariableID:44762:16901",
@@ -635,7 +636,6 @@
         "VariableID:44625:20357",
         "VariableID:44300:68046",
         "VariableID:44300:68048",
-        "VariableID:44300:68049",
         "VariableID:44300:68555",
         "VariableID:44300:68556",
         "VariableID:44300:68558",
@@ -652,7 +652,6 @@
         "VariableID:44318:23033",
         "VariableID:44650:37064",
         "VariableID:44650:37065",
-        "VariableID:44271:64019",
         "VariableID:44283:66900",
         "VariableID:44612:686",
         "VariableID:44023:39695",
@@ -13538,37 +13537,6 @@
       },
       "variableCollectionId": "VariableCollectionId:43174:55999"
     },
-    "VariableID:44271:64019": {
-      "codeSyntax": {},
-      "deletedButReferenced": true,
-      "description": "Default icon color ",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:44271:64019",
-      "key": "0c8ad449aa171b68c32a1af92b628c212d4c85d5",
-      "name": "components/sd-button/--primary/--default/--default/color/icon-fill",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "43174:13": {
-          "a": 1,
-          "b": 0,
-          "g": 0,
-          "r": 1
-        },
-        "43174:14": {
-          "id": "VariableID:43979:203",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43343:1": {
-          "id": "VariableID:43979:227",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:43174:55999"
-    },
     "VariableID:44271:64020": {
       "codeSyntax": {},
       "description": "Default icon color ",
@@ -14010,37 +13978,6 @@
         "43174:13": {
           "id": "VariableID:43979:203",
           "type": "VARIABLE_ALIAS"
-        },
-        "43174:14": {
-          "id": "VariableID:43979:203",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43343:1": {
-          "id": "VariableID:43979:227",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:43174:55999"
-    },
-    "VariableID:44300:68049": {
-      "codeSyntax": {},
-      "deletedButReferenced": true,
-      "description": "Default icon color ",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:44300:68049",
-      "key": "d57face0d15b59dd97e6dc198ebd9ac79f90755f",
-      "name": "components/sd-button/--primary/--inverted/--default/color/icon-fill",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "43174:13": {
-          "a": 1,
-          "b": 0,
-          "g": 0,
-          "r": 1
         },
         "43174:14": {
           "id": "VariableID:43979:203",
@@ -15217,6 +15154,40 @@
         "43174:14": {
           "id": "VariableID:43979:193",
           "type": "VARIABLE_ALIAS"
+        },
+        "43343:1": {
+          "a": 1,
+          "b": 1,
+          "g": 1,
+          "r": 1
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:44789:14711": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:44789:14711",
+      "key": "9ea83ae35565ca846666d067d31d6a3d61d886c5",
+      "name": "components/sd-audio/components/sd-audio/__wave/color",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "a": 1,
+          "b": 1,
+          "g": 1,
+          "r": 1
+        },
+        "43174:14": {
+          "a": 1,
+          "b": 1,
+          "g": 1,
+          "r": 1
         },
         "43343:1": {
           "a": 1,
