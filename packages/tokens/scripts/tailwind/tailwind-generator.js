@@ -16,7 +16,6 @@ export class TailwindCSSGenerator {
   generate(processedTokens) {
     const parts = [
       this.generateImport(),
-      this.generateSource(),
       this.generateCustomVariants(),
       this.generateTheme(processedTokens),
       this.generateUtilities(processedTokens.utilities),
@@ -36,13 +35,6 @@ export class TailwindCSSGenerator {
 
 @import 'tailwindcss/theme';
 @import 'tailwindcss/utilities';`;
-  }
-
-  /**
-   * Generate source statement
-   */
-  generateSource() {
-    return this.css.source('../components/src');
   }
 
   /**
