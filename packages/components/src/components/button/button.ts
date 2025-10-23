@@ -375,10 +375,10 @@ export default class SdButton extends SolidElement implements SolidFormControl {
                   ? 'sd-button--primary--hover-color-background group-active:bg-primary-800'
                   : 'sd-button--primary--inverted--hover-color-background group-active:bg-primary-200',
                 secondary: !this.inverted
-                  ? 'bg-primary-100 group-active:sd-button--secondary--active-color-background'
+                  ? 'sd-button--secondary--hover-color-background group-active:sd-button--secondary--active-color-background'
                   : 'bg-primary-500 group-active:sd-button--secondary--inverted--active-color-background',
                 tertiary: !this.inverted
-                  ? 'bg-primary-100 group-active:sd-button--tertiary--active-color-background'
+                  ? 'sd-button--tertiary--hover-color-background group-active:sd-button--tertiary--active-color-background'
                   : 'bg-primary-500 group-active:sd-button--tertiary--inverted--active-color-background',
                 cta: 'bg-accent-550 group-active:bg-accent-700'
               }[this.variant]
@@ -390,10 +390,10 @@ export default class SdButton extends SolidElement implements SolidFormControl {
                   ? 'sd-button--primary--hover-color-background group-active:bg-primary-800'
                   : 'sd-button--primary--inverted--hover-color-background group-active:bg-primary-200',
                 secondary: !this.inverted
-                  ? 'bg-primary-100 group-active:sd-button--secondary--active-color-background'
+                  ? 'sd-button--secondary--hover-color-background group-active:sd-button--secondary--active-color-background'
                   : 'bg-primary-500 group-active:sd-button--secondary--inverted--active-color-background',
                 tertiary: !this.inverted
-                  ? 'bg-primary-100 group-active:sd-button--tertiary--active-color-background'
+                  ? 'sd-button--tertiary--hover-color-background group-active:sd-button--tertiary--active-color-background'
                   : 'bg-primary-500 group-active:sd-button--tertiary--inverted--active-color-background',
                 cta: 'bg-accent-550 group-active:bg-accent-700'
               }[this.variant]
