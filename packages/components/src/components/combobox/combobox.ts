@@ -1220,7 +1220,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 active: 'border-primary border-2',
                 invalid: 'border-error',
                 valid: 'border-success',
-                default: 'border-neutral-800'
+                default: 'form-control-color-border'
               }[selectState],
               this.open &&
                 (this.currentPlacement === 'bottom'
