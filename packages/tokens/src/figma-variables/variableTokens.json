@@ -9104,10 +9104,8 @@
       "scopes": [],
       "valuesByMode": {
         "43174:13": {
-          "a": 1,
-          "b": 1,
-          "g": 1,
-          "r": 1
+          "id": "VariableID:43979:222",
+          "type": "VARIABLE_ALIAS"
         },
         "43174:14": {
           "id": "VariableID:43979:222",

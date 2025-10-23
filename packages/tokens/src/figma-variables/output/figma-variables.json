@@ -1808,7 +1808,7 @@
           "default": {
             "description": "Used for error messages, invalid states",
             "type": "color",
-            "value": "#ffffff"
+            "value": "{ui-light.utilities.color.error.300}"
           }
         },
         "success": {
