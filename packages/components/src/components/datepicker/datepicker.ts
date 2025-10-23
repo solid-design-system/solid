@@ -222,7 +222,6 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       this.range ? this.localize.term('datePickerRange') : this.localize.term('datePicker')
     );
 
-    this.addEventListener('keydown', this.onKeyDown);
     this.addEventListener('focusin', this.onFocusIn);
   }
 
@@ -232,7 +231,6 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.removeEventListener('keydown', this.onKeyDown);
     this.removeEventListener('focusin', this.onFocusIn);
     document.removeEventListener('click', this.handleOutsideClick);
   }
@@ -261,6 +259,12 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     this.inputValue = this.formatInputValue();
 
     this.updateComplete.then(() => {
+      const el = this.input;
+      if (el) {
+        el.value = this.inputValue ?? '';
+        const end = el.value.length;
+        el.setSelectionRange(end, end);
+      }
       this.formControlController.updateValidity();
     });
 
@@ -287,6 +291,12 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     this.inputValue = this.formatInputValue();
 
     this.updateComplete.then(() => {
+      const el = this.input;
+      if (el) {
+        el.value = this.inputValue ?? '';
+        const end = el.value.length;
+        el.setSelectionRange(end, end);
+      }
       this.formControlController.updateValidity();
     });
 
@@ -687,25 +697,6 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     }
   }
 
-  private handleKeyDown(event: KeyboardEvent) {
-    if ((this.visuallyDisabled || this.disabled) && event.key !== 'Tab') {
-      event.preventDefault();
-      event.stopPropagation();
-      return;
-    }
-
-    if (event.key === 'Escape' && this.open) {
-      event.preventDefault();
-      this.hide();
-      this.emit('sd-datepicker-close');
-    }
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      if (!this.open) this.show();
-    }
-  }
-
   show() {
     if (this.open || this.disabled || this.visuallyDisabled) {
       this.open = false;
@@ -765,6 +756,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     const input = ev.target as HTMLInputElement;
     const raw = input.value;
     const oldPos = input.selectionStart ?? raw.length;
+    const isDeleting = (ev as InputEvent).inputType?.startsWith('delete');
 
     if (this.visuallyDisabled || this.disabled) {
       ev.preventDefault();
@@ -773,23 +765,97 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     }
 
     if (!this.range) {
-      // SINGLE: progressive input on DD.MM.YYYY
-      const digits = raw.replace(/\D/g, '').slice(0, 8);
-      const formatted = this.buildDmyFromDigits(digits);
-      const digitsBefore = this.countDigitsBeforeCaret(raw, oldPos);
-      const newPos = Math.min(formatted.length, this.digitIndexToDmyCaretPos(digitsBefore));
+      // SINGLE: progressive input on DD.MM.YYYY with immediate dots and caret preservation
+      const inputEl = input;
+      const rawText = inputEl.value;
+      const oldCaret = inputEl.selectionStart ?? rawText.length;
 
-      this.inputValue = formatted;
+      // Extract up to 8 digits in order
+      const digits = rawText.replace(/\D/g, '').slice(0, 8);
+      const d = digits.slice(0, 2);
+      const m = digits.slice(2, 4);
+      const y = digits.slice(4, 8);
 
-      if (/^\d{2}\.\d{2}\.\d{4}$/.test(formatted)) {
-        const parsed = this.parseInputText(formatted);
+      // Compose formatted value:
+      // - First dot as soon as day completes
+      // - Second dot as soon as month completes
+      let nextFormatted = '';
+
+      // Day
+      if (d.length > 0) {
+        nextFormatted += d;
+        if (d.length === 2) {
+          nextFormatted += '.';
+        }
+      }
+
+      // Month (visible only after dd complete)
+      if (m.length > 0 && d.length === 2) {
+        nextFormatted += m;
+        if (m.length === 2) {
+          nextFormatted += '.';
+        }
+      }
+
+      // Year (visible only after dd.mm complete)
+      if (y.length > 0 && d.length === 2 && m.length === 2) {
+        nextFormatted += y;
+      }
+
+      // Avoid duplicate trailing dot if the user is deleting at boundaries
+      nextFormatted = nextFormatted.replace(/\.\.+/g, '.');
+
+      const prevFormatted = this.inputValue || '';
+      this.inputValue = nextFormatted;
+
+      // Compute caret shift: advance caret when a dot appears at or before it
+      let newCaret = oldCaret;
+
+      // Helper: indices of dots
+      const dotIdxs = (s: string) => {
+        const idxs: number[] = [];
+        for (let i = 0; i < s.length; i++) if (s[i] === '.') idxs.push(i);
+        return idxs;
+      };
+
+      const prevDots = dotIdxs(prevFormatted);
+      const nextDots = dotIdxs(nextFormatted);
+
+      // Count dots strictly before caret in prev/next
+      const prevBefore = prevDots.filter(i => i < oldCaret).length;
+      const nextBefore = nextDots.filter(i => i < oldCaret).length;
+
+      // If more dots exist before the caret in the new value, move caret forward
+      const insertedBefore = nextBefore - prevBefore;
+      if (insertedBefore > 0) {
+        newCaret += insertedBefore;
+      } else {
+        // Also check if a dot was inserted exactly at oldCaret (e.g., dd completed at caret)
+        const dotInsertedAtCaret = !prevDots.includes(oldCaret) && nextDots.includes(oldCaret);
+        if (dotInsertedAtCaret) newCaret += 1;
+      }
+
+      // Clamp
+      newCaret = Math.min(Math.max(0, newCaret), nextFormatted.length);
+
+      // Apply without forcing to end
+      requestAnimationFrame(() => {
+        const el = this.input ?? inputEl;
+        if (el) {
+          el.value = this.inputValue;
+          el.setSelectionRange(newCaret, newCaret);
+        }
+      });
+
+      // Commit only when full date is present
+      if (/^\d{2}\.\d{2}\.\d{4}$/.test(nextFormatted)) {
+        const parsed = this.parseInputText(nextFormatted);
         this.applyParsedInput(parsed);
       } else {
         this.showInvalidStyle = false;
         this.showValidStyle = false;
       }
-
-      requestAnimationFrame(() => input.setSelectionRange(newPos, newPos));
+      return;
     } else {
       // RANGE: progressive input on DD.MM.YYYY - DD.MM.YYYY
       const allDigits = raw.replace(/\D/g, '');
@@ -805,7 +871,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       } else if (startDigits.length < 8) {
         formatted = startDMY;
       } else {
-        formatted = endDigits.length > 0 ? `${startDMY} - ${endDMY}` : `${startDMY} -`;
+        if (endDigits.length > 0) {
+          formatted = `${startDMY} - ${endDMY}`;
+        } else {
+          formatted = isDeleting ? startDMY : `${startDMY} -`;
+        }
       }
 
       const digitsBefore = this.countDigitsBeforeCaret(raw, oldPos);
@@ -886,7 +956,15 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
         this.emit('sd-change', { detail: { value: this.value, rangeStart: this.rangeStart, rangeEnd: this.rangeEnd } });
       }
 
-      requestAnimationFrame(() => input.setSelectionRange(newPos, newPos));
+      Promise.resolve().then(() => {
+        requestAnimationFrame(() => {
+          const el = this.input ?? input;
+          if (el) {
+            el.value = this.inputValue;
+            el.setSelectionRange(newPos, newPos);
+          }
+        });
+      });
     }
 
     if (!this.open && this.hasFocus && !this.disabled && !this.visuallyDisabled) {
@@ -907,33 +985,6 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     } else if (this.value) {
       const v = DateUtils.parseLocalISO(this.value)!;
       this.setNavStatus(`${this.formatSelectionLabel(v)}`);
-    }
-  };
-
-  private handleKeyUp = (ev: KeyboardEvent) => {
-    const input = ev.target as HTMLInputElement;
-    if (!input || input.id !== 'input') return;
-
-    const digits = input.value.replace(/\D/g, '');
-    if (!this.range) {
-      if (digits.length >= 8 && !/^\d{2}\.\d{2}\.\d{4}$/.test(this.inputValue)) {
-        input.dispatchEvent(new Event('input', { bubbles: true, cancelable: true }));
-      }
-    } else {
-      const startDigits = digits.slice(0, 8);
-      const endDigits = digits.slice(8, 16);
-      const expected =
-        startDigits.length === 0
-          ? ''
-          : startDigits.length < 8
-            ? this.buildDmyFromDigits(startDigits)
-            : endDigits.length > 0
-              ? `${this.buildDmyFromDigits(startDigits)} - ${this.buildDmyFromDigits(endDigits)}`
-              : `${this.buildDmyFromDigits(startDigits)} -`;
-
-      if (this.inputValue !== expected) {
-        input.dispatchEvent(new Event('input', { bubbles: true, cancelable: true }));
-      }
     }
   };
 
@@ -972,31 +1023,115 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     this.emit('sd-month-year', { detail: { month: this.viewMonth } });
   }
 
-  private handleMonthNavEnter = (ev: KeyboardEvent, direction: -1 | 1) => {
-    if (ev.key === 'Enter') {
-      ev.preventDefault();
-      ev.stopPropagation();
-      this.setMonth(direction);
-    }
-  };
+  private focusInitialGridDay() {
+    let target: Date | null = null;
 
-  private handleYearNavEnter = (ev: KeyboardEvent, direction: -1 | 1) => {
-    if (ev.key === 'Enter') {
+    if (!this.range && this.value) {
+      const v = DateUtils.parseLocalISO(this.value);
+      if (v) target = DateUtils.startOfDayLocal(v);
+    }
+
+    if (this.range) {
+      const rs = this.rangeStart ? DateUtils.parseLocalISO(this.rangeStart) : null;
+      const re = this.rangeEnd ? DateUtils.parseLocalISO(this.rangeEnd) : null;
+      if (re) target = DateUtils.startOfDayLocal(re);
+      else if (rs) target = DateUtils.startOfDayLocal(rs);
+    }
+
+    const inViewAndEnabled = (d: Date | null) => {
+      if (!d) return false;
+      const sameMonth = d.getFullYear() === this.viewMonth.getFullYear() && d.getMonth() === this.viewMonth.getMonth();
+      return sameMonth && !this.isDisabled(d);
+    };
+
+    if (!inViewAndEnabled(target)) {
+      const { weeks } = this.getMonthMatrix(this.viewMonth);
+
+      const todayInView = weeks
+        .flat()
+        .find(
+          day =>
+            day.getMonth() === this.viewMonth.getMonth() &&
+            DateUtils.isSameDay(day, this.today) &&
+            !this.isDisabled(day)
+        );
+      if (todayInView) {
+        target = DateUtils.startOfDayLocal(todayInView);
+      } else {
+        const firstEnabled = weeks
+          .flat()
+          .find(day => day.getMonth() === this.viewMonth.getMonth() && !this.isDisabled(day));
+        target = firstEnabled ? DateUtils.startOfDayLocal(firstEnabled) : null;
+      }
+    }
+
+    if (target) {
+      this.focusedDate = target;
+    }
+
+    this.requestUpdate();
+    requestAnimationFrame(() => {
+      const root = this.shadowRoot;
+      const selectedBtn =
+        root?.querySelector<HTMLButtonElement>('button.day.selected') ||
+        root?.querySelector<HTMLButtonElement>('button.day.focused') ||
+        root?.querySelector<HTMLButtonElement>('button.day[tabindex="0"]') ||
+        root?.querySelector<HTMLButtonElement>('button.day');
+
+      selectedBtn?.focus({ preventScroll: true });
+    });
+  }
+
+  private handleHeaderKeyDown = (
+    ev: KeyboardEvent,
+    type: 'month' | 'year',
+    direction: -1 | 1,
+    isLastHeaderControl: boolean
+  ) => {
+    // Only the last header control sends focus into the grid on Tab
+    if (ev.key === 'Tab' && !ev.shiftKey) {
+      if (isLastHeaderControl) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        this.tabbingIntoGrid = true;
+        this.focusInitialGridDay();
+      }
+      return;
+    }
+
+    if (ev.key === 'Enter' || ev.key === ' ') {
       ev.preventDefault();
       ev.stopPropagation();
-      this.setYear(direction);
+      if (type === 'month') this.setMonth(direction);
+      else this.setYear(direction);
     }
   };
 
   private selectSingleDate(d: Date) {
     if (this.isDisabled(d)) return;
+
     const localMidnight = DateUtils.startOfDayLocal(d);
     const iso = DateUtils.toLocalISODate(localMidnight);
     if (this.value === iso) return;
+
     this.value = iso;
     const announce = `${this.formatSelectionLabel(localMidnight)}, ${this.localize.term('selected')}`;
     this.announceSelect(announce);
     this.emit('sd-select', { detail: { value: this.value, date: localMidnight } });
+
+    this.inputValue = this.formatInputValue();
+    this.updateComplete.then(() => {
+      const el = this.input;
+      if (el) {
+        el.value = this.inputValue ?? '';
+        Promise.resolve().then(() => {
+          requestAnimationFrame(() => {
+            const end = el.value.length;
+            el.setSelectionRange(end, end);
+          });
+        });
+      }
+    });
   }
 
   private selectRangeDate(d: Date) {
@@ -1013,7 +1148,20 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       const startLabel = this.formatSelectionLabel(day);
       this.announceSelect(`${this.termStartSelected()}: ${startLabel}`, 40);
       this.emit('sd-range-select', { detail: { start: this.rangeStart, end: this.rangeEnd } });
+
       this.inputValue = this.formatInputValue();
+      this.updateComplete.then(() => {
+        const el = this.input;
+        if (el) {
+          el.value = this.inputValue ?? '';
+          Promise.resolve().then(() => {
+            requestAnimationFrame(() => {
+              const end = el.value.length;
+              el.setSelectionRange(end, end);
+            });
+          });
+        }
+      });
       return;
     }
 
@@ -1029,9 +1177,23 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
           const startLabel = this.formatSelectionLabel(day);
           this.announceSelect(`${this.termStartSelected()}: ${startLabel}`, 40);
           this.emit('sd-range-select', { detail: { start: this.rangeStart, end: this.rangeEnd } });
+
           this.inputValue = this.formatInputValue();
+          this.updateComplete.then(() => {
+            const el = this.input;
+            if (el) {
+              el.value = this.inputValue ?? '';
+              Promise.resolve().then(() => {
+                requestAnimationFrame(() => {
+                  const end = el.value.length;
+                  el.setSelectionRange(end, end);
+                });
+              });
+            }
+          });
           return;
         }
+
         this.rangeStart = DateUtils.toLocalISODate(day);
         this.rangeEnd = DateUtils.toLocalISODate(day);
         this.previewEnd = null;
@@ -1039,7 +1201,20 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
         this.announceSelect(`${this.termStartSelected()}: ${label}`, 40);
         this.announceSelect(`${this.termEndSelected()}: ${label}`, 140);
         this.emit('sd-range-select', { detail: { start: this.rangeStart, end: this.rangeEnd } });
+
         this.inputValue = this.formatInputValue();
+        this.updateComplete.then(() => {
+          const el = this.input;
+          if (el) {
+            el.value = this.inputValue ?? '';
+            Promise.resolve().then(() => {
+              requestAnimationFrame(() => {
+                const end = el.value.length;
+                el.setSelectionRange(end, end);
+              });
+            });
+          }
+        });
         return;
       }
 
@@ -1057,6 +1232,18 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       this.announceSelect(`${this.termEndSelected()}: ${endLabel}`, 140);
       this.emit('sd-range-select', { detail: { start: this.rangeStart, end: this.rangeEnd } });
       this.inputValue = this.formatInputValue();
+      this.updateComplete.then(() => {
+        const el = this.input;
+        if (el) {
+          el.value = this.inputValue ?? '';
+          Promise.resolve().then(() => {
+            requestAnimationFrame(() => {
+              const caretEnd = el.value.length;
+              el.setSelectionRange(caretEnd, caretEnd);
+            });
+          });
+        }
+      });
       return;
     }
 
@@ -1069,7 +1256,20 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       const startLabel = this.formatSelectionLabel(day);
       this.announceSelect(`${this.termStartSelected()}: ${startLabel}`, 40);
       this.emit('sd-range-select', { detail: { start: this.rangeStart, end: this.rangeEnd } });
+
       this.inputValue = this.formatInputValue();
+      this.updateComplete.then(() => {
+        const el = this.input;
+        if (el) {
+          el.value = this.inputValue ?? '';
+          Promise.resolve().then(() => {
+            requestAnimationFrame(() => {
+              const end = el.value.length;
+              el.setSelectionRange(end, end);
+            });
+          });
+        }
+      });
     }
   }
 
@@ -1096,28 +1296,6 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       case 'ArrowDown':
         next.setDate(next.getDate() + 7);
         break;
-      case 'PageUp':
-        if (ev.shiftKey) next.setFullYear(next.getFullYear() - 1);
-        else next.setMonth(next.getMonth() - 1);
-        break;
-      case 'PageDown':
-        if (ev.shiftKey) next.setFullYear(next.getFullYear() + 1);
-        else next.setMonth(next.getMonth() + 1);
-        break;
-      case 'Home': {
-        const fdw = this.firstDayOfWeek ?? 1;
-        const day = next.getDay();
-        const delta = (day - fdw + 7) % 7;
-        next.setDate(next.getDate() - delta);
-        break;
-      }
-      case 'End': {
-        const fdw = this.firstDayOfWeek ?? 1;
-        const day = next.getDay();
-        const delta = 6 - ((day - fdw + 7) % 7);
-        next.setDate(next.getDate() + delta);
-        break;
-      }
       case 'Escape': {
         if (this.previewEnd) {
           this.previewEnd = null;
@@ -1171,6 +1349,33 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
         const btn = root?.querySelector<HTMLButtonElement>('button.day.focused');
         btn?.focus({ preventScroll: true });
       });
+    }
+  };
+
+  private handleInputKeyDown = (ev: KeyboardEvent) => {
+    if (
+      ev.key === 'ArrowLeft' ||
+      ev.key === 'ArrowRight' ||
+      ev.key === 'ArrowUp' ||
+      ev.key === 'ArrowDown' ||
+      ev.key === 'Home' ||
+      ev.key === 'End' ||
+      ev.key === 'PageUp' ||
+      ev.key === 'PageDown'
+    ) {
+      return;
+    }
+
+    if (ev.key === 'Escape' && this.open) {
+      ev.preventDefault();
+      this.hide();
+      this.emit('sd-datepicker-close');
+      return;
+    }
+
+    if (ev.key === 'Enter' && !this.open && !this.disabled && !this.visuallyDisabled) {
+      ev.preventDefault();
+      this.show();
     }
   };
 
@@ -1270,12 +1475,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     return html`
       <div
         part="base"
-        class="dp w-[284px] z-50 calendar absolute top-full bg-white border-2 border-t-0 border-primary py-3 px-4 ${this
-          .open
+        class="w-[284px] z-50 absolute top-full bg-white border-2 border-t-0 border-primary py-3 px-4 ${this.open
           ? 'block rounded-bl-default rounded-br-default'
           : 'hidden'} ${this.alignment === 'left' ? 'left-0' : 'right-0'}"
       >
-        <div class="dp-header flex flex-row items-center w-full justify-between mb-3" part="header">
+        <div class="flex flex-row items-center w-full justify-between mb-3" part="header">
           <div class="flex items-center">
             <!-- Prev Year -->
             <button
@@ -1284,7 +1488,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               class="nav prev w-6 h-6 hover:cursor-pointer sd-interactive"
               part="prev-year-button"
               @click=${() => this.setYear(-1)}
-              @keydown=${(ev: KeyboardEvent) => this.handleYearNavEnter(ev, -1)}
+              @keydown=${(ev: KeyboardEvent) => this.handleHeaderKeyDown(ev, 'year', -1, false)}
               aria-label=${this.localize.term('previousYear')}
             >
               <sd-icon library="_internal" name="chevrons-sm-left" class="h-6 w-6"></sd-icon>
@@ -1296,7 +1500,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               class="nav prev w-6 h-6 hover:cursor-pointer sd-interactive"
               part="prev-month-button"
               @click=${() => this.setMonth(-1)}
-              @keydown=${(ev: KeyboardEvent) => this.handleMonthNavEnter(ev, -1)}
+              @keydown=${(ev: KeyboardEvent) => this.handleHeaderKeyDown(ev, 'month', -1, false)}
               aria-label=${this.localize.term('previousMonth')}
             >
               <sd-icon library="_internal" name="chevron-sm-left" class="h-6 w-6"></sd-icon>
@@ -1321,7 +1525,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               class="nav next w-6 h-6 hover:cursor-pointer sd-interactive"
               part="next-month-button"
               @click=${() => this.setMonth(1)}
-              @keydown=${(ev: KeyboardEvent) => this.handleMonthNavEnter(ev, 1)}
+              @keydown=${(ev: KeyboardEvent) => this.handleHeaderKeyDown(ev, 'month', 1, false)}
               aria-label=${this.localize.term('nextMonth')}
             >
               <sd-icon library="_internal" name="chevron-sm-right" class="h-6 w-6"></sd-icon>
@@ -1333,7 +1537,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               class="nav next w-6 h-6 hover:cursor-pointer sd-interactive"
               part="next-year-button"
               @click=${() => this.setYear(1)}
-              @keydown=${(ev: KeyboardEvent) => this.handleYearNavEnter(ev, 1)}
+              @keydown=${(ev: KeyboardEvent) => this.handleHeaderKeyDown(ev, 'year', 1, true)}
               aria-label=${this.localize.term('nextYear')}
             >
               <sd-icon library="_internal" name="chevrons-sm-right" class="h-6 w-6"></sd-icon>
@@ -1471,6 +1675,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                       aria-roledescription=${roleDesc ?? nothing}
                       @focus=${() => (this.focusedDate = DateUtils.startOfDayLocal(day))}
                       @mouseenter=${() => this.onDayMouseEnter(day)}
+                      @keydown=${this.onKeyDown}
                       @click=${() => {
                         this.focusedDate = DateUtils.startOfDayLocal(day);
                         this.selectDate(day);
@@ -1607,15 +1812,13 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                   { sm: 'h-8', md: 'h-10', lg: 'h-12' }[this.size],
                   textSize
                 )}
-                .value=${this.inputValue}
                 placeholder=${this.placeholder ||
                 this.localize.term(this.range ? 'dateRangePlaceholder' : 'datePlaceholder')}
                 ?disabled=${this.disabled || this.disabled}
                 ?readonly=${this.readonly}
                 @input=${this.handleInput}
                 @click=${this.handleMouseDown}
-                @keydown=${this.handleKeyDown}
-                @keyup=${this.handleKeyUp}
+                @keydown=${this.handleInputKeyDown}
                 @focus=${this.handleFocus}
                 @blur=${this.handleInputBlur}
                 @invalid=${this.handleInvalid}
