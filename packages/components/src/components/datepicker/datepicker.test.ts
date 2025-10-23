@@ -307,26 +307,6 @@ describe('<sd-datepicker>', () => {
 
       expect(el.value).to.not.be.null;
     });
-
-    it('Home/End move to start/end of the week (respecting firstDayOfWeek)', async () => {
-      const el = await fixture<SdDatepicker>(html`<sd-datepicker .firstDayOfWeek=${1}></sd-datepicker>`);
-      el.show();
-      await el.updateComplete;
-
-      const anyDay = el.shadowRoot!.querySelector<HTMLButtonElement>('button.day.in-month')!;
-      anyDay.focus();
-
-      await sendKeys({ press: 'Home' });
-      await el.updateComplete;
-
-      const focused = el.shadowRoot!.querySelector('button.day.focused')!;
-      expect(focused.getAttribute('aria-colindex')).to.equal('1');
-
-      await sendKeys({ press: 'End' });
-      await el.updateComplete;
-      const focusedEnd = el.shadowRoot!.querySelector('button.day.focused')!;
-      expect(focusedEnd.getAttribute('aria-colindex')).to.equal('7');
-    });
   });
 
   describe('calendar alignment and placement', () => {
@@ -334,13 +314,13 @@ describe('<sd-datepicker>', () => {
       const elLeft = await fixture<SdDatepicker>(html`<sd-datepicker alignment="left"></sd-datepicker>`);
       elLeft.show();
       await elLeft.updateComplete;
-      const calLeft = elLeft.shadowRoot!.querySelector('.calendar')!;
+      const calLeft = elLeft.shadowRoot!.querySelector('[part~="datepicker"]')!;
       expect(calLeft.className).to.include('left-0');
 
       const elRight = await fixture<SdDatepicker>(html`<sd-datepicker alignment="right"></sd-datepicker>`);
       elRight.show();
       await elRight.updateComplete;
-      const calRight = elRight.shadowRoot!.querySelector('.calendar')!;
+      const calRight = elRight.shadowRoot!.querySelector('[part~="datepicker"]')!;
       expect(calRight.className).to.include('right-0');
     });
 

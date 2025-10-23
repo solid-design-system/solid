@@ -33,7 +33,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @slot help-text - The help text, displayed below the input.
  * @slot tooltip - The tooltip icon and content.
  *
- * @csspart base - The component's base wrapper.
+ * @csspart datepicker - The component's base wrapper.
  * @csspart header - The header containing the month/year and navigation buttons.
  * @csspart prev-year-button - The button to go to the previous year.
  * @csspart prev-month-button - The button to go to the previous month.
@@ -1474,7 +1474,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
 
     return html`
       <div
-        part="base"
+        part="datepicker"
         class="w-[284px] z-50 absolute top-full bg-white border-2 border-t-0 border-primary py-3 px-4 ${this.open
           ? 'block rounded-bl-default rounded-br-default'
           : 'hidden'} ${this.alignment === 'left' ? 'left-0' : 'right-0'}"
