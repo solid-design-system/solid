@@ -23,6 +23,8 @@ import SolidElement from '../../internal/solid-element';
  * @csspart icon-left - The container that wraps the left icon area.
  * @csspart label - The link's label.
  * @csspart icon-right - The container that wraps the right icon area.
+ *
+ * @cssproperty --sd-interactive--active-color-text - The link's text color when active.
  */
 @customElement('sd-link')
 export default class SdLink extends SolidElement {
@@ -97,7 +99,7 @@ export default class SdLink extends SolidElement {
         {
           disabled: !this.inverted ? 'text-neutral-500' : 'text-neutral-600',
           enabled: !this.inverted
-            ? ` text-primary hover:text-primary-500 active:text-primary-800 focus-visible:focus-outline`
+            ? ` text-primary hover:text-primary-500 active:interactive--active-color-text focus-visible:focus-outline`
             : `text-white hover:text-primary-200 active:text-primary-400 focus-visible:focus-outline-inverted`,
           visuallyDisabled: !this.inverted ? 'text-neutral-500' : 'text-neutral-600'
         }[this.href && !this.visuallyDisabled ? 'enabled' : this.visuallyDisabled ? 'visuallyDisabled' : 'disabled']
