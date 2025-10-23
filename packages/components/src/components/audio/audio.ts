@@ -551,7 +551,9 @@ export default class SdAudio extends SolidElement {
       }
 
       :host([inverted]) sd-range::part(thumb) {
-        @apply bg-white outline-white;
+        @apply outline-white;
+
+        background-color: var(--sd-color-border-white, var(--sd-color-white));
       }
 
       :host([animated]) sd-range::part(track) {
@@ -559,11 +561,11 @@ export default class SdAudio extends SolidElement {
       }
 
       :host([inverted]:not([animated])) sd-range::part(track) {
-        @apply bg-primary-400;
+        background-color: var(--sd-color-border-primary-400, var(--sd-color-primary-400));
       }
 
       :host([inverted]:not([animated])) sd-range::part(active-track) {
-        @apply bg-white;
+        background-color: var(--sd-color-border-white, var(--sd-color-white));
       }
     `
   ];

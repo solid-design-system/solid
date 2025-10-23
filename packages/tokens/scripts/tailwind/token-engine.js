@@ -67,7 +67,6 @@ export class TokenProcessingEngine {
       baseVars: [
         '--sizing-varspacing: var(--tw-varspacing);',
         '--spacing-varspacing: var(--tw-varspacing);',
-        '--background-color-primary-400: var(--sd-background-color-primary-400, var(--sd-color-primary-400));',
         '--outline-color-primary: var(--sd-border-color-primary, var(--sd-color-primary));',
         '--outline-color-error: var(--sd-border-color-error, var(--sd-color-error));'
       ],
@@ -131,6 +130,11 @@ export class TokenProcessingEngine {
     const store = processed.variant === 'default' ? 'baseVars' : processed.variant || 'baseVars';
 
     if (!result[store]) result[store] = [];
+
+
+    if (processed.name === '--sd-brandshape--neutral-100-color-background') {
+      console.log(processed);
+    }
 
     switch (processed.type) {
       case 'color':

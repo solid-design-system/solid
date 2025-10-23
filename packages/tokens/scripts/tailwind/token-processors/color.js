@@ -111,7 +111,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
         dictionary
       );
 
-      if (defaultPrimitiveColor !== variantColor && variantColor !== token.value) {
+      if (variantColor !== token.value) {
         const coreToken = this.#getCoreTokenFromColor(token.value, variant, dictionary);
 
         const variable = {
@@ -215,7 +215,12 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     while (stack.length) {
       const node = stack.pop();
 
-      if (node && typeof node === 'object' && 'path' in node) {
+      if (
+        node &&
+        typeof node === 'object' &&
+        'path' in node &&
+        !node.path.some(p => p.startsWith('_') && !p.startsWith('__'))
+      ) {
         results.push({
           path: node.path.slice(2).map(this.cleanupTokenName),
           value: node.value

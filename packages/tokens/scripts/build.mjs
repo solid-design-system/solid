@@ -119,8 +119,9 @@ themes.forEach(theme => {
     .replace(`/* ${config.themeBlock}[${theme.name}] */`, '')
     .replace(`/* ${config.themeBlock} */`, '');
 
+  mkdirSync(`${config.buildPath}/${theme.name}`, { recursive: true });
   writeFileSync(`${config.buildPath}/${config.output}.css`, stylesheet.trim());
-  writeFileSync(`${config.buildPath}/${theme.name}.css`, theme.content.trim());
+  writeFileSync(`${config.buildPath}/${theme.name}/${theme.name}.css`, theme.content.trim());
 });
 
 // --- Extract component block as a separate file ---

@@ -586,6 +586,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
             aria-valuenow="${value}"
             aria-valuetext="${this.tooltipFormatter(value)}"
             data-range-id="${rangeId}"
+            data-disabled=${ifDefined(this.disabled || this.visuallyDisabled || undefined)}
             @pointerdown=${this.onClickThumb}
             @pointermove=${this.onDragThumb}
             @pointerup=${this.onReleaseThumb}
@@ -595,9 +596,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
             @focus=${this.onFocusThumb}
             class=${cx(
               'rounded-full absolute top-0 size-4 hover:cursor-grab after:-inset-2',
-              this.disabled || this.visuallyDisabled
-                ? 'bg-neutral-500 outline-none'
-                : 'bg-primary hover:bg-primary-500 cursor-pointer focus-visible:focus-outline'
+              this.disabled || this.visuallyDisabled ? 'outline-none' : 'cursor-pointer focus-visible:focus-outline'
             )}
           ></div>
         </sd-tooltip>
@@ -648,15 +647,14 @@ export default class SdRange extends SolidElement implements SolidFormControl {
             <div part="track-click-helper" class="absolute -inset-y-2 inset-x-0"></div>
             <div
               part="track"
-              class=${cx('h-1 my-[6px]', this.disabled || this.visuallyDisabled ? 'bg-neutral-500' : 'bg-neutral-400')}
+              data-disabled=${ifDefined(this.disabled || this.visuallyDisabled || undefined)}
+              class=${cx('h-1 my-[6px]')}
             ></div>
             <div
               part="active-track"
               hidden=${ifDefined(this.noTrackBar ? true : undefined)}
-              class=${cx(
-                'absolute top-0 h-1',
-                this.disabled || this.visuallyDisabled ? 'bg-neutral-500' : 'bg-primary'
-              )}
+              data-disabled=${ifDefined(this.disabled || this.visuallyDisabled || undefined)}
+              class=${cx('absolute top-0 h-1')}
             ></div>
           </div>
 
@@ -691,8 +689,36 @@ export default class SdRange extends SolidElement implements SolidFormControl {
         -webkit-touch-callout: none;
       }
 
+      [part='thumb'] {
+        background-color: var(--sd-color-icon-fill-primary, var(--sd-color-primary));
+      }
+
+      [part='thumb']:hover {
+        background-color: var(--sd-color-icon-fill-primary-500, var(--sd-color-primary-500));
+      }
+
+      [part='thumb'][data-disabled] {
+        background-color: var(--sd-color-icon-fill-neutral-500, var(--sd-color-neutral-500));
+      }
+
       [part='thumb'].grabbed {
-        @apply !bg-primary-800;
+        background-color: var(--sd-color-icon-fill-primary-800, var(--sd-color-primary-800));
+      }
+
+      [part='track'] {
+        background-color: var(--sd-color-border-neutral-400, var(--sd-color-neutral-400));
+      }
+
+      [part='track'][data-disabled] {
+        background-color: var(--sd-color-background-neutral-500, var(--sd-color-neutral-500));
+      }
+
+      [part='active-track'] {
+        background-color: var(--sd-color-icon-fill-primary, var(--sd-color-primary));
+      }
+
+      [part='active-track'][data-disabled] {
+        background-color: var(--sd-color-icon-fill-neutral-500, var(--sd-color-neutral-500));
       }
     `
   ];

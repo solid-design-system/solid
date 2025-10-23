@@ -1,6 +1,7 @@
 :root, .sd-theme-ui-light {
   color-scheme: light;
 
+  --sd-theme: 'ui-light';
   --sd-aspect-16\/10: 16 / 10;
   --sd-aspect-21\/9: 21 / 9;
   --sd-aspect-2\/1: 2 / 1;
@@ -29,22 +30,12 @@
   --sd-color-accent-800: #19411b;
   --sd-color-accent: #25880e;
   --sd-color-background-error: var(--sd-color-error-300);
+  --sd-color-background-gradient-primary-800: var(--sd-color-primary-800);
   --sd-color-black: #181818;
   --sd-color-border-error: var(--sd-color-error-300);
   --sd-color-error-300: #cc1937;
   --sd-color-error-400: #ac1938;
   --sd-color-error: #ffffff;
-  --sd-color-gradient-neutral-800-0: rgba(24, 24, 24, 0);
-  --sd-color-gradient-neutral-800-10: rgba(24, 24, 24, 0.1);
-  --sd-color-gradient-neutral-800-40: rgba(24, 24, 24, 0.4);
-  --sd-color-gradient-primary-800-0: rgba(5, 21, 48, 0);
-  --sd-color-gradient-primary-800-60: rgba(5, 21, 48, 0.6);
-  --sd-color-gradient-primary-800-75: rgba(5, 21, 48, 0.75);
-  --sd-color-gradient-white-0: rgba(255, 255, 255, 0);
-  --sd-color-gradient-white-5: rgba(255, 255, 255, 0.05);
-  --sd-color-gradient-white-60: rgba(255, 255, 255, 0.6);
-  --sd-color-gradient-white-75: rgba(255, 255, 255, 0.75);
-  --sd-color-gradient-white-80: rgba(255, 255, 255, 0.8);
   --sd-color-icon-fill-error: var(--sd-color-error-300);
   --sd-color-info: #1582d5;
   --sd-color-neutral-100: #f6f6f6;

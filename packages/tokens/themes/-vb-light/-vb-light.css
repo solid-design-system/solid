@@ -1,6 +1,7 @@
 :root, .sd-theme--vb-light {
   color-scheme: light;
 
+  --sd-theme: '-vb-light';
   --sd-aspect-16\/10: 16 / 10;
   --sd-aspect-21\/9: 21 / 9;
   --sd-aspect-2\/1: 2 / 1;
@@ -13,11 +14,14 @@
   --sd-aspect-golden-ratio: 1.6180339887498948482 / 1;
   --sd-aspect-square: 1 / 1;
   --sd-aspect-video: 16 / 9;
+  --sd-audio__timestamp-color-text: var(--sd-color-white);
   --sd-border-width-2: 0rem;
   --sd-border-width-4: 0rem;
   --sd-border-width-6: 0rem;
   --sd-border-width: 0rem;
+  --sd-brandshape--neutral-100-color-background: var(--sd-color-white);
   --sd-brandshape--neutral-100-color-border: var(--sd-color-white);
+  --sd-breadcrumb__separator-color: var(--sd-color-white);
   --sd-button--primary--active-color-text: var(--sd-color-white);
   --sd-button--primary--default-color-background: var(--sd-color-white);
   --sd-button--primary--hover-color-background: var(--sd-color-white);
@@ -44,23 +48,13 @@
   --sd-color-accent-750: #1a4276;
   --sd-color-accent-800: #002d67;
   --sd-color-accent: #0066b3;
+  --sd-color-background-gradient-primary-800: var(--sd-color-white);
   --sd-color-black: #181818;
   --sd-color-border-primary-500: var(--sd-color-white);
   --sd-color-border-primary-800: var(--sd-color-white);
   --sd-color-error-300: #cc1937;
   --sd-color-error-400: #ac1938;
   --sd-color-error: #cc1937;
-  --sd-color-gradient-neutral-800-0: rgba(255, 255, 255, 0);
-  --sd-color-gradient-neutral-800-10: rgba(255, 255, 255, 0);
-  --sd-color-gradient-neutral-800-40: rgba(255, 255, 255, 0);
-  --sd-color-gradient-primary-800-0: rgba(255, 255, 255, 0);
-  --sd-color-gradient-primary-800-60: rgba(255, 255, 255, 0);
-  --sd-color-gradient-primary-800-75: rgba(255, 255, 255, 0);
-  --sd-color-gradient-white-0: rgba(255, 255, 255, 0);
-  --sd-color-gradient-white-5: rgba(255, 255, 255, 0);
-  --sd-color-gradient-white-60: rgba(255, 255, 255, 0);
-  --sd-color-gradient-white-75: rgba(255, 255, 255, 0);
-  --sd-color-gradient-white-80: rgba(255, 255, 255, 0);
   --sd-color-icon-fill-neutral-400: var(--sd-color-white);
   --sd-color-info: #1582d5;
   --sd-color-neutral-100: #f6f6f6;
@@ -93,10 +87,15 @@
   --sd-color-white: #ffffff;
   --sd-drop-shadow-sm: 0.5px 0.5px 1.5px var(--sd-color-neutral-800);
   --sd-drop-shadow: 0 1px 3px var(--sd-color-neutral-800);
+  --sd-flag--neutral-500-color-background: var(--sd-color-white);
   --sd-font-weight-bold: 700;
   --sd-font-weight-normal: 400;
   --sd-footnotes--target--inverted-color-background: var(--sd-color-white);
+  --sd-form-control-color-border: var(--sd-color-white);
+  --sd-informational-gradient--primary-800-background-color: var(--sd-color-white);
   --sd-interactive--active-color-text: var(--sd-color-white);
+  --sd-loader--neutral-500-color-icon-fill: var(--sd-color-white);
+  --sd-loader--neutral-600-color-icon-fill: var(--sd-color-white);
   --sd-opacity-0: 0%;
   --sd-opacity-100: 0%;
   --sd-opacity-10: 0%;

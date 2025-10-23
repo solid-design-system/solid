@@ -2,6 +2,10 @@
   border-color: var(--sd-form-control-color-border, var(--sd-color-neutral-800));
 }
 
+@utility informational-gradient--primary-800-background-color {
+  background-color: var(--sd-informational-gradient--primary-800-background-color, var(--sd-color-primary-800));
+}
+
 @utility interactive--active-color-text {
   color: var(--sd-interactive--active-color-text, var(--sd-color-primary-800));
 }
@@ -79,7 +83,7 @@
 }
 
 @utility sd-button--secondary--active-color-background {
-  background-color: var(--sd-button--secondary--active-color-background, var(--sd-color-primary-200));
+  background-color: var(--sd-button--secondary--active-color-background, var(--sd-color-primary-100));
 }
 
 @utility sd-button--secondary--hover-color-background {
@@ -99,7 +103,7 @@
 }
 
 @utility sd-button--tertiary--hover-color-background {
-  background-color: var(--sd-button--tertiary--hover-color-background, var(--sd-color-primary-200));
+  background-color: var(--sd-button--tertiary--hover-color-background, var(--sd-color-primary-100));
 }
 
 @utility sd-button--tertiary--inverted--active-color-background {
