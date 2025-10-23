@@ -206,20 +206,7 @@ export default class SdBrandshape extends SolidElement {
     const isStylizedVariant = this.variant.startsWith('border-') || this.variant === 'image';
 
     return html`
-      <div
-        class="${cx(
-          {
-            'neutral-100': 'fill-neutral-100',
-            primary: 'fill-primary',
-            white: 'fill-white',
-            'border-white': 'fill-transparent',
-            'border-primary': 'fill-transparent',
-            image: 'fill-transparent'
-          }[this.variant],
-          'relative'
-        )}"
-        part="base"
-      >
+      <div class="${cx(isStylizedVariant && 'fill-transparent', 'relative')}" part="base">
         ${isStylizedVariant ? this.renderStylizedVariant() : ''} ${this.renderShapes()}
       </div>
     `;
@@ -301,17 +288,29 @@ export default class SdBrandshape extends SolidElement {
       /* Stylized border */
 
       :host([variant='border-primary']) {
-        --internal-border-color: var(--sd-color-primary);
+        --internal-border-color: var(--sd-color-border-primary, var(--sd-color-primary));
       }
 
       :host([variant='border-white']) {
-        --internal-border-color: var(--sd-color-white, white);
+        --internal-border-color: var(--sd-color-border-white, var(--sd-color-white));
       }
 
       :host([variant^='border-']) [part='stylized-container']::before {
         @apply right-0 border-solid border-2;
         content: '';
         border-color: var(--internal-border-color, black);
+      }
+
+      :host([variant='neutral-100']) [part='base'] {
+        fill: var(--sd-color-background-neutral-100, var(--sd-color-neutral-100));
+      }
+
+      :host([variant='white']) [part='base'] {
+        fill: var(--sd-color-background-white, var(--sd-color-white));
+      }
+
+      :host([variant='primary']) [part='base'] {
+        fill: var(--sd-color-background-primary, var(--sd-color-primary));
       }
     `
   ];
