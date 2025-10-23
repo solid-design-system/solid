@@ -48,7 +48,6 @@
   --sd-color-accent-750: #1a4276;
   --sd-color-accent-800: #002d67;
   --sd-color-accent: #0066b3;
-  --sd-color-background-gradient-primary-800: var(--sd-color-white);
   --sd-color-black: #181818;
   --sd-color-border-primary-500: var(--sd-color-white);
   --sd-color-border-primary-800: var(--sd-color-white);
@@ -92,7 +91,7 @@
   --sd-font-weight-normal: 400;
   --sd-footnotes--target--inverted-color-background: var(--sd-color-white);
   --sd-form-control-color-border: var(--sd-color-white);
-  --sd-informational-gradient--primary-800-background-color: var(--sd-color-white);
+  --sd-informational-gradient--primary-800-color-background: var(--sd-color-white);
   --sd-interactive--active-color-text: var(--sd-color-white);
   --sd-loader--neutral-500-color-icon-fill: var(--sd-color-white);
   --sd-loader--neutral-600-color-icon-fill: var(--sd-color-white);

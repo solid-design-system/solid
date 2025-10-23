@@ -420,6 +420,7 @@
         "VariableID:43373:35271",
         "VariableID:43373:35286",
         "VariableID:44837:7261",
+        "VariableID:44837:15833",
         "VariableID:43979:193",
         "VariableID:43979:194",
         "VariableID:43979:195",
@@ -501,9 +502,9 @@
         "VariableID:43979:310",
         "VariableID:44336:5060",
         "VariableID:44336:5065",
+        "VariableID:44336:5070",
         "VariableID:44336:5064",
         "VariableID:44336:5069",
-        "VariableID:44336:5070",
         "VariableID:44336:5062",
         "VariableID:44336:5063",
         "VariableID:44336:5061",
@@ -511,7 +512,6 @@
         "VariableID:44336:5068",
         "VariableID:44336:5066",
         "VariableID:44336:5067",
-        "VariableID:44837:5954",
         "VariableID:43979:252",
         "VariableID:43979:288",
         "VariableID:43979:289",
@@ -14418,7 +14418,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44336:5060",
       "key": "e197e56727fdea5bcd63d82faaca3730c7170fa2",
-      "name": "utilities/color/background/gradient/_white/0%",
+      "name": "utilities/color/background/_gradient/components/informational/gradient/--white/background/color/0%",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -14452,7 +14452,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44336:5061",
       "key": "ed80fd61fcbe42337f57c0cf621850313615d3ad",
-      "name": "utilities/color/background/gradient/_neutral-800/40%",
+      "name": "utilities/color/background/_gradient/neutral-800/40%",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -14486,7 +14486,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44336:5062",
       "key": "ae06ea99311b2a474d458a9c1b4d392754a88a28",
-      "name": "utilities/color/background/gradient/_neutral-800/0%",
+      "name": "utilities/color/background/_gradient/neutral-800/0%",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -14520,7 +14520,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44336:5063",
       "key": "6810746af44fefb027aef25ec03a952e67819ad3",
-      "name": "utilities/color/background/gradient/_neutral-800/10%",
+      "name": "utilities/color/background/_gradient/neutral-800/10%",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -14554,7 +14554,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44336:5064",
       "key": "b5601f46ca117f90af8bce7b34bfb6528a882917",
-      "name": "utilities/color/background/gradient/_white/60%",
+      "name": "utilities/color/background/_gradient/components/informational/gradient/--white/background/color/60%",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -14588,7 +14588,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44336:5065",
       "key": "f3a1cc9a85d22d9d3922a8cc1c5739ac3acffe84",
-      "name": "utilities/color/background/gradient/_white/5%",
+      "name": "utilities/color/background/_gradient/components/informational/gradient/--white/background/color/5%",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -14622,7 +14622,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44336:5066",
       "key": "4f435c9f34678bf6aa05dd9f12e4ed36e95064c8",
-      "name": "utilities/color/background/gradient/primary-800/_60%",
+      "name": "utilities/color/background/_gradient/components/informational/gradient/--primary-800/background/color/60%",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -14656,7 +14656,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44336:5067",
       "key": "bab93ed766eab4c7ec6e0775a08b5ee21f36f901",
-      "name": "utilities/color/background/gradient/primary-800/_75%",
+      "name": "utilities/color/background/_gradient/components/informational/gradient/--primary-800/background/color/75%",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -14690,7 +14690,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44336:5068",
       "key": "4cd5988714807b4824a1faff2b083b322bf02bfc",
-      "name": "utilities/color/background/gradient/primary-800/_0%",
+      "name": "utilities/color/background/_gradient/components/informational/gradient/--primary-800/background/color/0%",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -14724,7 +14724,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44336:5069",
       "key": "e5dfcdc4955593aa537b56e311b871cdac0ddc0e",
-      "name": "utilities/color/background/gradient/_white/75%",
+      "name": "utilities/color/background/_gradient/components/informational/gradient/--white/background/color/75%",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -14758,7 +14758,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44336:5070",
       "key": "b5678b4674df0a0ffedc04df7284cd318165a6ec",
-      "name": "utilities/color/background/gradient/_white/80%",
+      "name": "utilities/color/background/_gradient/components/informational/gradient/--white/background/color/80%",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -14959,7 +14959,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "43174:14": {
-          "id": "VariableID:43979:203",
+          "id": "VariableID:43373:35293",
           "type": "VARIABLE_ALIAS"
         },
         "43343:1": {
@@ -14991,8 +14991,10 @@
           "r": 1
         },
         "43174:14": {
-          "id": "VariableID:43979:227",
-          "type": "VARIABLE_ALIAS"
+          "a": 0,
+          "b": 1,
+          "g": 1,
+          "r": 1
         },
         "43343:1": {
           "a": 1,
@@ -15017,11 +15019,11 @@
       ],
       "valuesByMode": {
         "43174:13": {
-          "id": "VariableID:43979:214",
+          "id": "VariableID:43373:35301",
           "type": "VARIABLE_ALIAS"
         },
         "43174:14": {
-          "id": "VariableID:43979:202",
+          "id": "VariableID:43373:35301",
           "type": "VARIABLE_ALIAS"
         },
         "43343:1": {
@@ -15097,13 +15099,13 @@
       },
       "variableCollectionId": "VariableCollectionId:43174:55999"
     },
-    "VariableID:44837:5954": {
+    "VariableID:44837:15833": {
       "codeSyntax": {},
       "description": "",
       "hiddenFromPublishing": false,
-      "id": "VariableID:44837:5954",
-      "key": "9b17b73e490439afb89653000227410b91026dea",
-      "name": "utilities/color/background/gradient/primary-800/default",
+      "id": "VariableID:44837:15833",
+      "key": "64bc28bc975cb3850ec4d5110e97569aa0028c00",
+      "name": "components/informational/gradient/--white/color/background",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [
@@ -15111,7 +15113,7 @@
       ],
       "valuesByMode": {
         "43174:13": {
-          "id": "VariableID:43979:201",
+          "id": "VariableID:43373:35293",
           "type": "VARIABLE_ALIAS"
         },
         "43174:14": {
@@ -15133,7 +15135,7 @@
       "hiddenFromPublishing": false,
       "id": "VariableID:44837:7261",
       "key": "ffa238263d4568d7c80a0cbf7e8c5dd858cdd738",
-      "name": "components/informational/gradient/--primary-800/background/color",
+      "name": "components/informational/gradient/--primary-800/color/background",
       "remote": false,
       "resolvedType": "COLOR",
       "scopes": [

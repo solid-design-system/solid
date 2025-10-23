@@ -32,7 +32,6 @@
   --background-color-accent: var(--sd-color-background-accent, var(--sd-color-accent));
   --background-color-error-400: var(--sd-color-background-error-400, var(--sd-color-error-400));
   --background-color-error: var(--sd-color-background-error, var(--sd-color-error));
-  --background-color-gradient-primary-800: var(--sd-color-background-gradient-primary-800, var(--sd-color-gradient-primary-800));
   --background-color-info: var(--sd-color-background-info, var(--sd-color-info));
   --background-color-neutral-100: var(--sd-color-background-neutral-100, var(--sd-color-neutral-100));
   --background-color-neutral-200: var(--sd-color-background-neutral-200, var(--sd-color-neutral-200));

@@ -19,9 +19,9 @@
   --sd-border-width-4: 0.25rem;
   --sd-border-width-6: 0.375rem;
   --sd-border-width: 0.0625rem;
-  --sd-brandshape--neutral-100-color-background: var(--sd-color-primary-900);
-  --sd-brandshape--neutral-100-color-border: var(--sd-color-white);
-  --sd-brandshape--white-color-background: var(--sd-color-primary);
+  --sd-brandshape--neutral-100-color-background: var(--sd-color-primary-750);
+  --sd-brandshape--neutral-100-color-border: rgba(255, 255, 255, 0);
+  --sd-brandshape--white-color-background: var(--sd-color-primary-900);
   --sd-breadcrumb__separator-color: var(--sd-color-primary-400);
   --sd-button--primary--active-color-text: var(--sd-color-primary-700);
   --sd-button--primary--default-color-background: var(--sd-color-white);
@@ -42,7 +42,6 @@
   --sd-color-accent-750: #ffffff;
   --sd-color-accent-800: #19411b;
   --sd-color-accent: #25880e;
-  --sd-color-background-gradient-primary-800: var(--sd-color-primary-800);
   --sd-color-background-neutral-100: var(--sd-color-primary-750);
   --sd-color-background-neutral-200: var(--sd-color-primary-700);
   --sd-color-background-neutral-300: var(--sd-color-primary-700);
@@ -116,6 +115,7 @@
   --sd-font-weight-normal: 400;
   --sd-form-control-color-border: var(--sd-color-primary-200);
   --sd-header-color-background: var(--sd-color-primary);
+  --sd-informational-gradient--white-color-background: var(--sd-color-primary-800);
   --sd-interactive--active-color-text: var(--sd-color-primary-400);
   --sd-loader--neutral-500-color-icon-fill: var(--sd-color-primary-400);
   --sd-loader--neutral-600-color-icon-fill: var(--sd-color-primary-400);

@@ -131,11 +131,6 @@ export class TokenProcessingEngine {
 
     if (!result[store]) result[store] = [];
 
-
-    if (processed.name === '--sd-brandshape--neutral-100-color-background') {
-      console.log(processed);
-    }
-
     switch (processed.type) {
       case 'color':
       case 'spacing':

@@ -2,8 +2,12 @@
   border-color: var(--sd-form-control-color-border, var(--sd-color-neutral-800));
 }
 
-@utility informational-gradient--primary-800-background-color {
-  background-color: var(--sd-informational-gradient--primary-800-background-color, var(--sd-color-primary-800));
+@utility informational-gradient--primary-800-color-background {
+  background-color: var(--sd-informational-gradient--primary-800-color-background, var(--sd-color-primary-800));
+}
+
+@utility informational-gradient--white-color-background {
+  background-color: var(--sd-informational-gradient--white-color-background, var(--sd-color-white));
 }
 
 @utility interactive--active-color-text {

@@ -1592,35 +1592,66 @@
               "value": "{ui-light.utilities.color.warning.default}"
             }
           },
-          "gradient": {
-            "_white": {
-              "0%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.00)"
-              },
-              "60%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.60)"
-              },
-              "5%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.05)"
-              },
-              "75%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.75)"
-              },
-              "80%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.80)"
+          "_gradient": {
+            "components": {
+              "informational": {
+                "gradient": {
+                  "--white": {
+                    "background": {
+                      "color": {
+                        "0%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.00)"
+                        },
+                        "60%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.60)"
+                        },
+                        "5%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.05)"
+                        },
+                        "75%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.75)"
+                        },
+                        "80%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.80)"
+                        }
+                      }
+                    }
+                  },
+                  "--primary-800": {
+                    "background": {
+                      "color": {
+                        "60%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.60)"
+                        },
+                        "75%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.75)"
+                        },
+                        "0%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.00)"
+                        }
+                      }
+                    }
+                  }
+                }
               }
             },
-            "_neutral-800": {
+            "neutral-800": {
               "40%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
@@ -1635,27 +1666,6 @@
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
                 "value": "rgba(24, 24, 24, 0.10)"
-              }
-            },
-            "primary-800": {
-              "_60%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(5, 21, 48, 0.60)"
-              },
-              "_75%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(5, 21, 48, 0.75)"
-              },
-              "_0%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(5, 21, 48, 0.00)"
-              },
-              "default": {
-                "type": "color",
-                "value": "{ui-light.utilities.color.primary.800}"
               }
             }
           }
@@ -3034,7 +3044,7 @@
             },
             "background": {
               "type": "color",
-              "value": "{ui-light.utilities.color.neutral.100}"
+              "value": "{ui-light.utilities.color.background.neutral.100}"
             }
           }
         }
@@ -3050,9 +3060,17 @@
       },
       "informational": {
         "gradient": {
+          "--white": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.background.white.default}"
+              }
+            }
+          },
           "--primary-800": {
-            "background": {
-              "color": {
+            "color": {
+              "background": {
                 "type": "color",
                 "value": "{ui-light.utilities.color.primary.800}"
               }
@@ -3336,35 +3354,66 @@
               "value": "{core.ui.yellow.650}"
             }
           },
-          "gradient": {
-            "_white": {
-              "0%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(5, 21, 48, 0.00)"
-              },
-              "60%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(5, 21, 48, 0.60)"
-              },
-              "5%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(5, 21, 48, 0.05)"
-              },
-              "75%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(5, 21, 48, 0.75)"
-              },
-              "80%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(5, 21, 48, 0.80)"
+          "_gradient": {
+            "components": {
+              "informational": {
+                "gradient": {
+                  "--white": {
+                    "background": {
+                      "color": {
+                        "0%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.00)"
+                        },
+                        "60%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.60)"
+                        },
+                        "5%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.05)"
+                        },
+                        "75%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.75)"
+                        },
+                        "80%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.80)"
+                        }
+                      }
+                    }
+                  },
+                  "--primary-800": {
+                    "background": {
+                      "color": {
+                        "60%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.60)"
+                        },
+                        "75%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.75)"
+                        },
+                        "0%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.00)"
+                        }
+                      }
+                    }
+                  }
+                }
               }
             },
-            "_neutral-800": {
+            "neutral-800": {
               "40%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
@@ -3379,27 +3428,6 @@
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
                 "value": "rgba(24, 24, 24, 0.10)"
-              }
-            },
-            "primary-800": {
-              "_60%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(5, 21, 48, 0.60)"
-              },
-              "_75%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(5, 21, 48, 0.75)"
-              },
-              "_0%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(5, 21, 48, 0.00)"
-              },
-              "default": {
-                "type": "color",
-                "value": "{ui-dark.utilities.color.primary.800}"
               }
             }
           }
@@ -4766,7 +4794,7 @@
           "color": {
             "background": {
               "type": "color",
-              "value": "{ui-dark.utilities.color.primary.default}"
+              "value": "{ui-dark.utilities.color.background.white.default}"
             }
           }
         },
@@ -4774,11 +4802,11 @@
           "color": {
             "border": {
               "type": "color",
-              "value": "{ui-dark.utilities.color.white.default}"
+              "value": "rgba(255, 255, 255, 0.00)"
             },
             "background": {
               "type": "color",
-              "value": "{ui-dark.utilities.color.primary.900}"
+              "value": "{ui-dark.utilities.color.background.neutral.100}"
             }
           }
         }
@@ -4794,9 +4822,17 @@
       },
       "informational": {
         "gradient": {
+          "--white": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.800}"
+              }
+            }
+          },
           "--primary-800": {
-            "background": {
-              "color": {
+            "color": {
+              "background": {
                 "type": "color",
                 "value": "{ui-dark.utilities.color.primary.800}"
               }
@@ -5080,35 +5116,66 @@
               "value": "{-vb-light.utilities.color.warning.default}"
             }
           },
-          "gradient": {
-            "_white": {
-              "0%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.00)"
-              },
-              "60%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.00)"
-              },
-              "5%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.00)"
-              },
-              "75%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.00)"
-              },
-              "80%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.00)"
+          "_gradient": {
+            "components": {
+              "informational": {
+                "gradient": {
+                  "--white": {
+                    "background": {
+                      "color": {
+                        "0%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.00)"
+                        },
+                        "60%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.00)"
+                        },
+                        "5%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.00)"
+                        },
+                        "75%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.00)"
+                        },
+                        "80%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.00)"
+                        }
+                      }
+                    }
+                  },
+                  "--primary-800": {
+                    "background": {
+                      "color": {
+                        "60%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.00)"
+                        },
+                        "75%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.00)"
+                        },
+                        "0%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.00)"
+                        }
+                      }
+                    }
+                  }
+                }
               }
             },
-            "_neutral-800": {
+            "neutral-800": {
               "40%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
@@ -5123,27 +5190,6 @@
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
                 "value": "rgba(255, 255, 255, 0.00)"
-              }
-            },
-            "primary-800": {
-              "_60%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.00)"
-              },
-              "_75%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.00)"
-              },
-              "_0%": {
-                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.00)"
-              },
-              "default": {
-                "type": "color",
-                "value": "#ffffff"
               }
             }
           }
@@ -6538,9 +6584,17 @@
       },
       "informational": {
         "gradient": {
+          "--white": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "#ffffff"
+              }
+            }
+          },
           "--primary-800": {
-            "background": {
-              "color": {
+            "color": {
+              "background": {
                 "type": "color",
                 "value": "#ffffff"
               }
