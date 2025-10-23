@@ -1315,6 +1315,57 @@
           "type": "string",
           "value": "GenosGFG"
         }
+      },
+      "text": {
+        "sm": {
+          "description": "14px",
+          "type": "float",
+          "value": "13"
+        },
+        "base": {
+          "description": "16px",
+          "type": "float",
+          "value": "16"
+        },
+        "lg": {
+          "description": "20px",
+          "type": "float",
+          "value": "20"
+        },
+        "xl": {
+          "description": "24px",
+          "type": "float",
+          "value": "24"
+        },
+        "2xl": {
+          "description": "28px",
+          "type": "float",
+          "value": "28"
+        },
+        "3xl": {
+          "description": "32px",
+          "type": "float",
+          "value": "32"
+        },
+        "4xl": {
+          "description": "40px",
+          "type": "float",
+          "value": "38"
+        }
+      },
+      "status": {
+        "success": {
+          "type": "color",
+          "value": "#0c7336"
+        },
+        "error": {
+          "type": "color",
+          "value": "#d20000"
+        },
+        "warning": {
+          "type": "color",
+          "value": "#ffab00"
+        }
       }
     }
   },
@@ -1748,10 +1799,6 @@
           "700": {
             "type": "color",
             "value": "{core.ui.green.700}"
-          },
-          "750": {
-            "type": "color",
-            "value": "#ffffff"
           },
           "800": {
             "type": "color",
@@ -2915,6 +2962,24 @@
               }
             }
           }
+        },
+        "--size": {
+          "md": {
+            "text": {
+              "type": "float",
+              "value": "{core.text-base}"
+            },
+            "padding": {
+              "y": {
+                "type": "float",
+                "value": "{ui-light.utilities.spacing.2}"
+              }
+            },
+            "border-radius": {
+              "type": "float",
+              "value": "{ui-light.utilities.rounded.default}"
+            }
+          }
         }
       },
       "sd-footnotes": {
@@ -3510,10 +3575,6 @@
           "700": {
             "type": "color",
             "value": "{core.ui.green.700}"
-          },
-          "750": {
-            "type": "color",
-            "value": "#ffffff"
           },
           "800": {
             "type": "color",
@@ -4197,7 +4258,7 @@
       "font-family": {
         "primary": {
           "type": "string",
-          "value": "String value"
+          "value": "{core.ui.font-family.font-family-primary}"
         }
       },
       "shadow": {
@@ -4677,6 +4738,24 @@
               }
             }
           }
+        },
+        "--size": {
+          "md": {
+            "text": {
+              "type": "float",
+              "value": "{core.text-base}"
+            },
+            "padding": {
+              "y": {
+                "type": "float",
+                "value": "{ui-dark.utilities.spacing.2}"
+              }
+            },
+            "border-radius": {
+              "type": "float",
+              "value": "{ui-dark.utilities.rounded.default}"
+            }
+          }
         }
       },
       "sd-footnotes": {
@@ -4842,7 +4921,7 @@
       }
     }
   },
-  "-vb-light": {
+  "vb": {
     "duration": {
       "fast": {
         "value": "{core.duration.150}",
@@ -4922,75 +5001,75 @@
             "default": {
               "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
               "type": "color",
-              "value": "{-vb-light.utilities.color.white.default}"
+              "value": "{vb.utilities.color.white.default}"
             }
           },
           "neutral": {
             "100": {
               "description": "Form field read only. Used for sd-container",
               "type": "color",
-              "value": "{-vb-light.utilities.color.neutral.100}"
+              "value": "{vb.utilities.color.neutral.100}"
             },
             "200": {
               "description": "Used for sd-flag",
               "type": "color",
-              "value": "{-vb-light.utilities.color.neutral.200}"
+              "value": "{vb.utilities.color.neutral.200}"
             },
             "300": {
               "description": "Used for sd-flag ",
               "type": "color",
-              "value": "{-vb-light.utilities.color.neutral.300}"
+              "value": "{vb.utilities.color.neutral.300}"
             },
             "400": {
               "description": "Used for sd-flag ",
               "type": "color",
-              "value": "{-vb-light.utilities.color.neutral.400}"
+              "value": "{vb.utilities.color.neutral.400}"
             },
             "500": {
               "description": "Used for disabled state ",
               "type": "color",
-              "value": "{-vb-light.utilities.color.neutral.500}"
+              "value": "{vb.utilities.color.neutral.500}"
             },
             "600": {
               "description": "Used for inverted disabled state ",
               "type": "color",
-              "value": "{-vb-light.utilities.color.neutral.600}"
+              "value": "{vb.utilities.color.neutral.600}"
             },
             "800": {
               "description": "Used for badge",
               "type": "color",
-              "value": "{-vb-light.utilities.color.neutral.800}"
+              "value": "{vb.utilities.color.neutral.800}"
             }
           },
           "success": {
             "default": {
               "description": "Used for notification, status-badge",
               "type": "color",
-              "value": "{-vb-light.utilities.color.success.default}"
+              "value": "{vb.utilities.color.success.default}"
             }
           },
           "error": {
             "400": {
               "description": "Used for hover interaction invalid form elements",
               "type": "color",
-              "value": "{-vb-light.utilities.color.error.400}"
+              "value": "{vb.utilities.color.error.400}"
             },
             "default": {
               "description": "Used for notification, status-badge",
               "type": "color",
-              "value": "{-vb-light.utilities.color.error.300}"
+              "value": "{vb.utilities.color.error.300}"
             }
           },
           "_transparent": {
             "primary-100|80": {
               "description": "Used for teaser",
               "type": "color",
-              "value": "rgba(242, 247, 251, 0.80)"
+              "value": "rgba(236, 240, 249, 0.80)"
             },
             "primary-100|90": {
               "description": "Used for teaser",
               "type": "color",
-              "value": "rgba(242, 247, 251, 0.90)"
+              "value": "rgba(236, 240, 249, 0.90)"
             },
             "neutral-100|80": {
               "description": "Used for teaser",
@@ -5015,22 +5094,22 @@
             "primary|10": {
               "description": "Used for audio (wave animation)",
               "type": "color",
-              "value": "rgba(0, 102, 179, 0.10)"
+              "value": "rgba(0, 53, 142, 0.10)"
             },
             "primary|30": {
               "description": "Used for map-marker",
               "type": "color",
-              "value": "rgba(0, 102, 179, 0.30)"
+              "value": "rgba(0, 53, 142, 0.30)"
             },
             "primary|80": {
               "description": "Used for teaser",
               "type": "color",
-              "value": "rgba(0, 102, 179, 0.80)"
+              "value": "rgba(0, 53, 142, 0.80)"
             },
             "primary|90": {
               "description": "Used for teaser",
               "type": "color",
-              "value": "rgba(0, 102, 179, 0.90)"
+              "value": "rgba(0, 53, 142, 0.90)"
             },
             "white|20": {
               "description": "Used for audio (wave animation inverted)",
@@ -5040,80 +5119,80 @@
             "primary-800|90": {
               "description": "Used for overlays",
               "type": "color",
-              "value": "rgba(0, 45, 103, 0.90)"
+              "value": "rgba(5, 21, 48, 0.90)"
             }
           },
           "primary": {
             "100": {
               "description": "Used for sd-container",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.100}"
+              "value": "{vb.utilities.color.primary.100}"
             },
             "200": {
               "description": "Used for sd-chip",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.200}"
+              "value": "{vb.utilities.color.primary.200}"
             },
             "300": {
               "description": "Used for sd-chip",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.300}"
+              "value": "{vb.utilities.color.primary.300}"
             },
             "500": {
               "description": "Used for sd-chip, sd-badge",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.500}"
+              "value": "{vb.utilities.color.primary.500}"
             },
             "800": {
               "description": "Used for pressed interaction",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.800}"
+              "value": "{vb.utilities.color.primary.800}"
             },
             "default": {
               "description": "Inverted background color (light mode)\nUsed for button",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.default}"
+              "value": "{vb.utilities.color.primary.default}"
             }
           },
           "accent": {
             "300": {
               "description": "Used for inverted hover interaction",
               "type": "color",
-              "value": "{-vb-light.utilities.color.accent.300}"
+              "value": "{vb.utilities.color.accent.300}"
             },
             "500": {
               "description": "Used for cta background",
               "type": "color",
-              "value": "{-vb-light.utilities.color.accent.500}"
+              "value": "{vb.utilities.color.accent.500}"
             },
             "550": {
               "description": "Used for hover interaction",
               "type": "color",
-              "value": "{-vb-light.utilities.color.accent.550}"
+              "value": "{vb.utilities.color.accent.550}"
             },
             "700": {
               "description": "Used for pressed interaction",
               "type": "color",
-              "value": "{-vb-light.utilities.color.accent.700}"
+              "value": "{vb.utilities.color.accent.700}"
             },
             "default": {
               "description": "Used for checkbox, switch",
               "type": "color",
-              "value": "{-vb-light.utilities.color.accent.default}"
+              "value": "{vb.utilities.color.accent.default}"
             }
           },
           "info": {
             "default": {
               "description": "Used for notification, status-badge",
               "type": "color",
-              "value": "{-vb-light.utilities.color.info.default}"
+              "value": "{vb.utilities.color.info.default}"
             }
           },
           "warning": {
             "default": {
               "description": "Used for notification, status-badge",
               "type": "color",
-              "value": "{-vb-light.utilities.color.warning.default}"
+              "value": "{vb.utilities.color.warning.default}"
             }
           },
           "_gradient": {
@@ -5131,22 +5210,22 @@
                         "60%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(255, 255, 255, 0.00)"
+                          "value": "rgba(255, 255, 255, 0.60)"
                         },
                         "5%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(255, 255, 255, 0.00)"
+                          "value": "rgba(255, 255, 255, 0.05)"
                         },
                         "75%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(255, 255, 255, 0.00)"
+                          "value": "rgba(255, 255, 255, 0.75)"
                         },
                         "80%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(255, 255, 255, 0.00)"
+                          "value": "rgba(255, 255, 255, 0.80)"
                         }
                       }
                     }
@@ -5157,17 +5236,17 @@
                         "60%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(255, 255, 255, 0.00)"
+                          "value": "rgba(5, 21, 48, 0.60)"
                         },
                         "75%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(255, 255, 255, 0.00)"
+                          "value": "rgba(5, 21, 48, 0.75)"
                         },
                         "0%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(255, 255, 255, 0.00)"
+                          "value": "rgba(5, 21, 48, 0.00)"
                         }
                       }
                     }
@@ -5179,17 +5258,17 @@
               "40%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
-                "value": "rgba(255, 255, 255, 0.00)"
+                "value": "rgba(24, 24, 24, 0.40)"
               },
               "0%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
-                "value": "rgba(255, 255, 255, 0.00)"
+                "value": "rgba(24, 24, 24, 0.00)"
               },
               "10%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
-                "value": "rgba(255, 255, 255, 0.00)"
+                "value": "rgba(24, 24, 24, 0.10)"
               }
             }
           }
@@ -5263,17 +5342,13 @@
           },
           "550": {
             "type": "color",
-            "value": "#ffffff"
+            "value": "{core.vb.azure.550}"
           },
           "600": {
             "type": "color",
             "value": "{core.vb.azure.600}"
           },
           "700": {
-            "type": "color",
-            "value": "{core.vb.azure.750}"
-          },
-          "750": {
             "type": "color",
             "value": "{core.vb.azure.750}"
           },
@@ -5323,22 +5398,22 @@
         "error": {
           "300": {
             "type": "color",
-            "value": "{core.ui.red.300}"
+            "value": "{core.vb.status.error}"
           },
           "400": {
             "type": "color",
-            "value": "{core.ui.red.400}"
+            "value": "{core.vb.status.error}"
           },
           "default": {
             "description": "Used for error messages, invalid states",
             "type": "color",
-            "value": "{-vb-light.utilities.color.error.300}"
+            "value": "{core.vb.status.error}"
           }
         },
         "success": {
           "default": {
             "type": "color",
-            "value": "{core.ui.green.550}"
+            "value": "{core.vb.status.success}"
           }
         },
         "black": {
@@ -5391,7 +5466,7 @@
           "default": {
             "description": "Used for notification, status-badge",
             "type": "color",
-            "value": "{core.ui.yellow.650}"
+            "value": "{core.vb.status.warning}"
           }
         },
         "icon-fill": {
@@ -5399,119 +5474,119 @@
             "100": {
               "description": "Used for inverted hover interaction",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.100}"
+              "value": "{vb.utilities.color.primary.100}"
             },
             "200": {
               "description": "Used for inverted pressed interaction",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.200}"
+              "value": "{vb.utilities.color.primary.200}"
             },
             "400": {
               "description": "Used for inverted pressed interaction in text link",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.400}"
+              "value": "{vb.utilities.color.primary.400}"
             },
             "500": {
               "description": "Used for hover interaction",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.500}"
+              "value": "{vb.utilities.color.primary.500}"
             },
             "800": {
               "description": "Used for pressed interaction",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.800}"
+              "value": "{vb.utilities.color.primary.800}"
             },
             "default": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.default}"
+              "value": "{vb.utilities.color.primary.default}"
             }
           },
           "white": {
             "default": {
               "description": "Inverted icon color",
               "type": "color",
-              "value": "{-vb-light.utilities.color.white.default}"
+              "value": "{vb.utilities.color.white.default}"
             }
           },
           "accent": {
             "550": {
               "description": "Used for hover interaction",
               "type": "color",
-              "value": "{-vb-light.utilities.color.accent.550}"
+              "value": "{vb.utilities.color.accent.550}"
             },
             "default": {
               "description": "Used for active / selected elements",
               "type": "color",
-              "value": "{-vb-light.utilities.color.accent.default}"
+              "value": "{vb.utilities.color.accent.default}"
             }
           },
           "neutral": {
             "400": {
               "description": "Used for disabled state breadcrumb",
               "type": "color",
-              "value": "#ffffff"
+              "value": "{vb.utilities.color.neutral.400}"
             },
             "500": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{-vb-light.utilities.color.neutral.500}"
+              "value": "{vb.utilities.color.neutral.500}"
             },
             "600": {
               "description": "Used for inverted disabled state",
               "type": "color",
-              "value": "{-vb-light.utilities.color.neutral.600}"
+              "value": "{vb.utilities.color.neutral.600}"
             },
             "800": {
               "description": "Used for switch, clearable",
               "type": "color",
-              "value": "{-vb-light.utilities.color.neutral.800}"
+              "value": "{vb.utilities.color.neutral.800}"
             }
           },
           "success": {
             "default": {
               "description": "Used for success messages, valid states",
               "type": "color",
-              "value": "{-vb-light.utilities.color.success.default}"
+              "value": "{vb.utilities.color.success.default}"
             }
           },
           "error": {
             "400": {
               "description": "Used for hover interaction invalid form elements\n",
               "type": "color",
-              "value": "{-vb-light.utilities.color.error.400}"
+              "value": "{vb.utilities.color.error.400}"
             },
             "default": {
               "description": "Used for error messages, invalid states",
               "type": "color",
-              "value": "{-vb-light.utilities.color.error.300}"
+              "value": "{vb.utilities.color.error.300}"
             }
           },
           "risk": {
             "low": {
               "description": "Exclusively for marking fonds",
               "type": "color",
-              "value": "{-vb-light.utilities.color.risk.low}"
+              "value": "{vb.utilities.color.risk.low}"
             },
             "moderate": {
               "description": "Exclusively for marking fonds",
               "type": "color",
-              "value": "{-vb-light.utilities.color.risk.moderate}"
+              "value": "{vb.utilities.color.risk.moderate}"
             },
             "increased": {
               "description": "Exclusively for marking fonds",
               "type": "color",
-              "value": "{-vb-light.utilities.color.risk.increased}"
+              "value": "{vb.utilities.color.risk.increased}"
             },
             "high": {
               "description": "Exclusively for marking fonds",
               "type": "color",
-              "value": "{-vb-light.utilities.color.risk.high}"
+              "value": "{vb.utilities.color.risk.high}"
             },
             "veryhigh": {
               "description": "Exclusively for marking fonds",
               "type": "color",
-              "value": "{-vb-light.utilities.color.risk.veryhigh}"
+              "value": "{vb.utilities.color.risk.veryhigh}"
             }
           }
         },
@@ -5520,92 +5595,92 @@
             "100": {
               "description": "Used for inverted hover interaction",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.100}"
+              "value": "{vb.utilities.color.primary.100}"
             },
             "200": {
               "description": "Used for inverted pressed interaction",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.200}"
+              "value": "{vb.utilities.color.primary.200}"
             },
             "400": {
               "description": "Used for inverted dividers",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.400}"
+              "value": "{vb.utilities.color.primary.400}"
             },
             "500": {
               "description": "Used for hover interaction (dark mode)",
               "type": "color",
-              "value": "#ffffff"
+              "value": "{vb.utilities.color.primary.500}"
             },
             "800": {
               "description": "Used for pressed interaction",
               "type": "color",
-              "value": "#ffffff"
+              "value": "{vb.utilities.color.primary.800}"
             },
             "default": {
               "description": "Used for buttons, select field, focus state",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.default}"
+              "value": "{vb.utilities.color.primary.default}"
             }
           },
           "accent": {
             "550": {
               "description": "Used for hover interaction",
               "type": "color",
-              "value": "{-vb-light.utilities.color.accent.550}"
+              "value": "{vb.utilities.color.accent.550}"
             },
             "default": {
               "description": "Used to highlight active/selected elements\n",
               "type": "color",
-              "value": "{-vb-light.utilities.color.accent.default}"
+              "value": "{vb.utilities.color.accent.default}"
             }
           },
           "neutral": {
             "400": {
               "description": "Default border color. \nUsed for sd-divider, teaser, table cell, ... sd-container,",
               "type": "color",
-              "value": "{-vb-light.utilities.color.neutral.400}"
+              "value": "{vb.utilities.color.neutral.400}"
             },
             "500": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{-vb-light.utilities.color.neutral.500}"
+              "value": "{vb.utilities.color.neutral.500}"
             },
             "600": {
               "description": "Used for inverted disabled state",
               "type": "color",
-              "value": "{-vb-light.utilities.color.neutral.600}"
+              "value": "{vb.utilities.color.neutral.600}"
             },
             "800": {
               "description": "Used for form fields, switch, radio, checkbox",
               "type": "color",
-              "value": "{-vb-light.utilities.color.neutral.800}"
+              "value": "{vb.utilities.color.neutral.800}"
             }
           },
           "success": {
             "default": {
               "description": "Used for valid form fields\n",
               "type": "color",
-              "value": "{-vb-light.utilities.color.success.default}"
+              "value": "{vb.utilities.color.success.default}"
             }
           },
           "error": {
             "400": {
               "description": "Used for hover interaction invalid form elements",
               "type": "color",
-              "value": "{-vb-light.utilities.color.error.400}"
+              "value": "{vb.utilities.color.error.400}"
             },
             "default": {
               "description": "Used for invalid form fields",
               "type": "color",
-              "value": "{-vb-light.utilities.color.error.300}"
+              "value": "{vb.utilities.color.error.300}"
             }
           },
           "white": {
             "default": {
               "description": "Used for buttons, inverted focus state",
               "type": "color",
-              "value": "{-vb-light.utilities.color.white.default}"
+              "value": "{vb.utilities.color.white.default}"
             }
           }
         },
@@ -5614,39 +5689,39 @@
             "100": {
               "description": "Used for inverted hover interaction button label",
               "type": "color",
-              "value": "{-vb-light.utilities.color.white.default}"
+              "value": "{vb.utilities.color.primary.100}"
             },
             "200": {
               "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.200}"
+              "value": "{vb.utilities.color.primary.200}"
             },
             "400": {
               "description": "Additional text inverted color",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.400}"
+              "value": "{vb.utilities.color.primary.400}"
             },
             "500": {
               "description": "Used for hover interaction",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.500}"
+              "value": "{vb.utilities.color.primary.500}"
             },
             "800": {
               "description": "Used for pressed interaction",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.800}"
+              "value": "{vb.utilities.color.primary.800}"
             },
             "default": {
               "description": "Primary brand color for text",
               "type": "color",
-              "value": "{-vb-light.utilities.color.primary.default}"
+              "value": "{vb.utilities.color.primary.default}"
             }
           },
           "white": {
             "default": {
               "description": "Inverted text color",
               "type": "color",
-              "value": "{-vb-light.utilities.color.white.default}"
+              "value": "{vb.utilities.color.white.default}"
             },
             "default-constant": {
               "description": "Unchanged in dark mode"
@@ -5656,45 +5731,45 @@
             "default": {
               "description": "Default text color",
               "type": "color",
-              "value": "{-vb-light.utilities.color.black.default}"
+              "value": "{vb.utilities.color.black.default}"
             }
           },
           "neutral": {
             "500": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{-vb-light.utilities.color.neutral.500}"
+              "value": "{vb.utilities.color.neutral.500}"
             },
             "600": {
               "description": "Used for inverted disabled state",
               "type": "color",
-              "value": "{-vb-light.utilities.color.neutral.600}"
+              "value": "{vb.utilities.color.neutral.600}"
             },
             "700": {
               "description": "Additional text color, Breadcrumb item current",
               "type": "color",
-              "value": "{-vb-light.utilities.color.neutral.700}"
+              "value": "{vb.utilities.color.neutral.700}"
             }
           },
           "error": {
             "default": {
               "description": "Used to display negative performance values",
               "type": "color",
-              "value": "{-vb-light.utilities.color.error.300}"
+              "value": "{vb.utilities.color.error.300}"
             }
           },
           "success": {
             "default": {
               "description": "Used to display positive performance values",
               "type": "color",
-              "value": "{-vb-light.utilities.color.success.default}"
+              "value": "{vb.utilities.color.success.default}"
             }
           },
           "accent": {
             "default": {
               "description": "Used for inverted hover interaction button label",
               "type": "color",
-              "value": "{-vb-light.utilities.color.accent.default}"
+              "value": "{vb.utilities.color.accent.default}"
             }
           }
         }
@@ -5709,274 +5784,274 @@
       "opacity": {
         "0": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-0}"
         },
         "5": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-5}"
         },
         "10": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-10}"
         },
         "20": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-20}"
         },
         "30": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-30}"
         },
         "50": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-50}"
         },
         "55": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-55}"
         },
         "60": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-60}"
         },
         "70": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-70}"
         },
         "75": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-75}"
         },
         "80": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-80}"
         },
         "\b85": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-85}"
         },
         "\b90": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-90}"
         },
         "\b100": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-100}"
         }
       },
       "sizing": {
         "2": {
           "description": "8px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.2}"
         },
         "3": {
           "description": "12px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.3}"
         },
         "4": {
           "description": "16px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.4}"
         },
         "5": {
           "description": "20px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.5}"
         },
         "6": {
           "description": "24px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.6}"
         },
         "8": {
           "description": "32px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.8}"
         },
         "10": {
           "description": "40px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.10}"
         },
         "12": {
           "description": "48px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.12}"
         },
         "16": {
           "description": "64px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.16}"
         },
         "20": {
           "description": "64px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.20}"
         },
         "24": {
           "description": "96px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.24}"
         },
         "2,5": {
           "description": "10px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.2,5}"
         }
       },
       "spacing": {
         "1": {
           "description": "4px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.1}"
         },
         "2": {
           "description": "8px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.2}"
         },
         "3": {
           "description": "12px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.3}"
         },
         "4": {
           "description": "16px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.4}"
         },
         "6": {
           "description": "24px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.6}"
         },
         "8": {
           "description": "32px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.8}"
         },
         "10": {
           "description": "40px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.10}"
         },
         "12": {
           "description": "48px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.12}"
         },
         "16": {
           "description": "64px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.16}"
         },
         "20": {
           "description": "80px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.20}"
         },
         "24": {
           "description": "96px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.24}"
         },
         "32": {
           "description": "128px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.32}"
         },
         "40": {
           "description": "160px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.40}"
         },
         "0,5": {
           "description": "2px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.0,5}"
         },
         "0,25": {
           "description": "1px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.px}"
         },
         "1,5": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.sizing.1,5}"
         }
       },
       "rounded": {
         "default": {
           "description": "4px Default radius for buttons",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.rounded.default}"
         },
         "sm": {
           "description": "2px",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.rounded.sm}"
         },
         "md": {
           "description": "6px Inner focus outline",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.rounded.md}"
         },
         "lg": {
           "description": "8px Outer focus outline",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.rounded.\blg}"
         },
         "full": {
           "description": "Radius for pill shape buttons",
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.rounded.full}"
         },
         "none": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.rounded.none}"
         }
       },
       "border-width": {
         "2": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.border.border-2}"
         },
         "4": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.border.border-4}"
         },
         "6": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.border.border-6}"
         },
         "default": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.border.border}"
         }
       },
       "font-family": {
         "primary": {
           "type": "string",
-          "value": "String value"
+          "value": "{core.vb.font-family.font-family-primary}"
         }
       },
       "shadow": {
         "shadow": {
           "y": {
             "type": "float",
-            "value": "0"
+            "value": "1"
           },
           "spread": {
             "type": "float",
-            "value": "0"
+            "value": "3"
           }
         },
         "shadow-sm": {
           "y": {
             "type": "float",
-            "value": "0"
+            "value": "0.5"
           },
           "spread": {
             "type": "float",
@@ -5984,11 +6059,11 @@
           },
           "x": {
             "type": "float",
-            "value": "0"
+            "value": "0.5"
           },
           "blur": {
             "type": "float",
-            "value": "0"
+            "value": "0.5"
           }
         }
       }
@@ -6230,7 +6305,7 @@
         "__separator": {
           "color": {
             "type": "color",
-            "value": "#ffffff"
+            "value": "{vb.utilities.color.icon-fill.neutral.400}"
           }
         }
       },
@@ -6238,12 +6313,12 @@
         "color": {
           "background": {
             "type": "color",
-            "value": "#ffffff"
+            "value": "{vb.utilities.color.background.white.default}"
           },
           "shadow": {
             "description": "Used to add border that is only visible in dark mode:\n-dropdown",
             "type": "color",
-            "value": "rgba(255, 255, 255, 0.00)"
+            "value": "rgba(24, 24, 24, 0.40)"
           }
         }
       },
@@ -6253,11 +6328,11 @@
             "color": {
               "text": {
                 "type": "color",
-                "value": "#ffffff"
+                "value": "{vb.utilities.color.white.default}"
               },
               "background": {
                 "type": "color",
-                "value": "#ffffff"
+                "value": "{vb.utilities.color.background.primary.default}"
               }
             }
           }
@@ -6267,7 +6342,7 @@
             "color": {
               "background": {
                 "type": "color",
-                "value": "#ffffff"
+                "value": "rgba(255, 255, 255, 0.00)"
               }
             }
           }
@@ -6277,7 +6352,7 @@
         "color": {
           "border": {
             "type": "color",
-            "value": "#ffffff"
+            "value": "{vb.utilities.color.border.neutral.800}"
           }
         }
       },
@@ -6285,7 +6360,7 @@
         "color": {
           "border": {
             "type": "color",
-            "value": "#ffffff"
+            "value": "rgba(255, 255, 255, 0.00)"
           }
         }
       },
@@ -6296,11 +6371,11 @@
               "text": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{-vb-light.utilities.color.white.default}"
+                "value": "{vb.utilities.color.white.default}"
               },
               "background": {
                 "type": "color",
-                "value": "#ffffff"
+                "value": "{vb.utilities.color.background.primary.default}"
               }
             }
           },
@@ -6309,7 +6384,7 @@
               "text": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{-vb-light.utilities.color.white.default}"
+                "value": "{vb.utilities.color.primary.200}"
               }
             }
           },
@@ -6319,12 +6394,12 @@
                 "background": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
+                  "value": "{vb.utilities.color.white.default}"
                 },
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
+                  "value": "{vb.utilities.color.primary.800}"
                 }
               }
             },
@@ -6333,12 +6408,12 @@
                 "background": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
+                  "value": "{vb.utilities.color.primary.100}"
                 },
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
+                  "value": "{vb.utilities.color.primary.800}"
                 }
               }
             },
@@ -6347,7 +6422,7 @@
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
+                  "value": "{vb.utilities.color.primary.800}"
                 }
               }
             }
@@ -6356,7 +6431,7 @@
             "color": {
               "background": {
                 "type": "color",
-                "value": "#ffffff"
+                "value": "{vb.utilities.color.primary.600}"
               }
             }
           }
@@ -6367,7 +6442,7 @@
               "background": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{-vb-light.utilities.color.white.default}"
+                "value": "{vb.utilities.color.primary.100}"
               }
             }
           },
@@ -6376,7 +6451,7 @@
               "background": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{-vb-light.utilities.color.white.default}"
+                "value": "{vb.utilities.color.primary.200}"
               }
             }
           },
@@ -6386,7 +6461,7 @@
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
+                  "value": "{vb.utilities.color.primary.100}"
                 }
               }
             },
@@ -6394,7 +6469,7 @@
               "color": {
                 "background": {
                   "type": "color",
-                  "value": "#ffffff"
+                  "value": "{vb.utilities.color.primary.800}"
                 }
               }
             }
@@ -6406,7 +6481,7 @@
               "background": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{-vb-light.utilities.color.white.default}"
+                "value": "{vb.utilities.color.background.primary.100}"
               }
             }
           },
@@ -6415,7 +6490,7 @@
               "background": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{-vb-light.utilities.color.white.default}"
+                "value": "{vb.utilities.color.primary.200}"
               }
             }
           },
@@ -6425,7 +6500,7 @@
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
+                  "value": "{vb.utilities.color.primary.100}"
                 }
               }
             },
@@ -6434,9 +6509,27 @@
                 "background": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{-vb-light.utilities.color.white.default}"
+                  "value": "{vb.utilities.color.primary.800}"
                 }
               }
+            }
+          }
+        },
+        "--size": {
+          "md": {
+            "text": {
+              "type": "float",
+              "value": "{core.text-sm}"
+            },
+            "padding": {
+              "y": {
+                "type": "float",
+                "value": "{vb.utilities.sizing.2,5}"
+              }
+            },
+            "border-radius": {
+              "type": "float",
+              "value": "{vb.utilities.rounded.full}"
             }
           }
         }
@@ -6448,7 +6541,7 @@
               "background": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{-vb-light.utilities.color.white.default}"
+                "value": "{vb.utilities.color.primary.800}"
               }
             }
           }
@@ -6460,7 +6553,7 @@
             "text": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "{-vb-light.utilities.color.white.default}"
+              "value": "{vb.utilities.color.primary.800}"
             }
           }
         }
@@ -6472,7 +6565,7 @@
               "spacing": {
                 "left-right": {
                   "type": "float",
-                  "value": "{-vb-light.utilities.sizing.8}"
+                  "value": "{vb.utilities.sizing.4}"
                 }
               }
             }
@@ -6484,7 +6577,7 @@
               "color": {
                 "border": {
                   "type": "color",
-                  "value": "#ffffff"
+                  "value": "{vb.utilities.color.primary.800}"
                 }
               }
             },
@@ -6492,11 +6585,11 @@
               "color": {
                 "border": {
                   "type": "color",
-                  "value": "#ffffff"
+                  "value": "{vb.utilities.color.white.default}"
                 },
                 "icon-fill": {
                   "type": "color",
-                  "value": "#ffffff"
+                  "value": "{vb.utilities.color.white.default}"
                 }
               }
             }
@@ -6509,7 +6602,7 @@
             "icon-fill": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "{-vb-light.utilities.color.white.default}"
+              "value": "{vb.utilities.color.neutral.500}"
             }
           }
         },
@@ -6518,7 +6611,7 @@
             "icon-fill": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "{-vb-light.utilities.color.white.default}"
+              "value": "{vb.utilities.color.neutral.600}"
             }
           }
         }
@@ -6528,7 +6621,7 @@
           "color": {
             "background": {
               "type": "color",
-              "value": "#ffffff"
+              "value": "{vb.utilities.color.neutral.500}"
             }
           }
         }
@@ -6538,7 +6631,7 @@
           "color": {
             "border": {
               "type": "color",
-              "value": "#ffffff"
+              "value": "{vb.utilities.color.white.default}"
             }
           }
         },
@@ -6546,7 +6639,7 @@
           "color": {
             "text": {
               "type": "color",
-              "value": "#ffffff"
+              "value": "{vb.utilities.color.text.black.default}"
             }
           }
         }
@@ -6556,7 +6649,7 @@
           "color": {
             "background": {
               "type": "color",
-              "value": "#ffffff"
+              "value": "{vb.utilities.color.background.white.default}"
             }
           }
         },
@@ -6564,11 +6657,11 @@
           "color": {
             "border": {
               "type": "color",
-              "value": "#ffffff"
+              "value": "rgba(255, 255, 255, 0.00)"
             },
             "background": {
               "type": "color",
-              "value": "#ffffff"
+              "value": "{vb.utilities.color.background.neutral.100}"
             }
           }
         }
@@ -6578,7 +6671,7 @@
           "background": {
             "description": "Used for overlays",
             "type": "color",
-            "value": "rgba(0, 45, 103, 0.90)"
+            "value": "rgba(5, 21, 48, 0.90)"
           }
         }
       },
@@ -6588,7 +6681,7 @@
             "color": {
               "background": {
                 "type": "color",
-                "value": "#ffffff"
+                "value": "{vb.utilities.color.background.white.default}"
               }
             }
           },
@@ -6596,7 +6689,7 @@
             "color": {
               "background": {
                 "type": "color",
-                "value": "#ffffff"
+                "value": "{vb.utilities.color.primary.800}"
               }
             }
           }

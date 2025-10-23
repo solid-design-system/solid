@@ -74,15 +74,17 @@ export class FigmaClient extends FigmaBase {
       });
 
     this.processed = Object.values(
-      this.processed.reduce((acc, theme) => {
-        const name = toKebabCase(theme.name.replaceAll(' ', '-'));
+      this.processed
+        .filter(theme => !theme.name.startsWith('_'))
+        .reduce((acc, theme) => {
+          const name = toKebabCase(theme.name.replaceAll(' ', '-'));
 
-        const { core: _core, ...tokens } = theme.tokens;
-        if (!acc[this.name]) acc[this.name] = { name: this.name, tokens: { core: _core } };
-        if (!acc[this.name].tokens[name]) acc[this.name].tokens[name] = tokens;
+          const { core: _core, ...tokens } = theme.tokens;
+          if (!acc[this.name]) acc[this.name] = { name: this.name, tokens: { core: _core } };
+          if (!acc[this.name].tokens[name]) acc[this.name].tokens[name] = tokens;
 
-        return acc;
-      }, {})
+          return acc;
+        }, {})
     );
 
     return this;

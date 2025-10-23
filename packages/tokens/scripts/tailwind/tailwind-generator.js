@@ -103,6 +103,7 @@ export class TailwindCSSGenerator {
     );
 
     return variants
+      .filter(variant => !variant.startsWith('_'))
       .map(variant => {
         const scheme = variant.includes('dark') ? 'dark' : 'light';
         const variables = [`color-scheme: ${scheme};\n`, `--sd-theme: '${variant}';`, ...processedTokens[variant]];

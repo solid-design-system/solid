@@ -151,6 +151,12 @@ export default class SdTeaserMedia extends SolidElement {
         @apply bg-primary-100/90;
       }
 
+      /**
+       * Dev-note: In some components, css properties need to be assigned
+       * to specific variables so we keep consistency as in Figma.
+       * 
+       * For more details, see the 'Consistency with Figma' section in the **CONTRIBUTING.md**.
+       */
       :host([variant='gradient-light']) .bg-gradient-to-t {
         --sd-color-background-white: var(--sd-informational-gradient--white-color-background, var(--sd-color-white));
       }

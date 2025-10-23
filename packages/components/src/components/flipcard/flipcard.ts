@@ -359,6 +359,12 @@ export default class SdFlipcard extends SolidElement {
         flex: 0.4 1 0;
       }
 
+      /**
+       * Dev-note: In some components, css properties need to be assigned
+       * to specific variables so we keep consistency as in Figma.
+       * 
+       * For more details, see the 'Consistency with Figma' section in the **CONTRIBUTING.md**.
+       */
       :host([front-variant='gradient-light']) [part='front-slot-container'] .bg-gradient-to-b,
       :host([front-variant='gradient-light']) [part='front-secondary-gradient'] {
         --sd-color-background-white: var(--sd-informational-gradient--white-color-background, var(--sd-color-white));

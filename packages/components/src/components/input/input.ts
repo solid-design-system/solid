@@ -533,13 +533,13 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const borderColor = {
       disabled: 'border-neutral-500',
       visuallyDisabled: 'border-neutral-500',
-      readonly: 'border-neutral-800',
+      readonly: 'form-control-color-border',
       activeInvalid: 'border-error border-2',
       activeValid: 'border-success border-2',
       active: 'border-primary border-2',
       invalid: 'border-error',
       valid: 'border-success',
-      default: 'border-neutral-800'
+      default: 'form-control-color-border'
     }[inputState];
 
     const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary';

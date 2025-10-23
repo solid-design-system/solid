@@ -301,6 +301,12 @@ export default class SdBrandshape extends SolidElement {
         border-color: var(--internal-border-color, black);
       }
 
+      /**
+       * Dev-note: In some components, css properties need to be assigned
+       * to specific variables so we keep consistency as in Figma.
+       * 
+       * For more details, see the 'Consistency with Figma' section in the **CONTRIBUTING.md**.
+       */
       :host([variant='neutral-100']) [part='base'] {
         fill: var(--sd-color-background-neutral-100, var(--sd-color-neutral-100));
       }

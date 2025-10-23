@@ -454,11 +454,6 @@ export const Required = {
 
 export const Valid = {
   render: () => html`
-    <style>
-      sd-combobox.valid-example::part(display-input) {
-        color: #181818;
-      }
-    </style>
     <div class="w-[400px] h-[400px]">
       <sd-combobox
         size="lg"

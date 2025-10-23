@@ -951,13 +951,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               {
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
-                readonly: 'border-neutral-800',
+                readonly: 'form-control-color-border',
                 activeInvalid: 'border-error border-2',
                 activeValid: 'border-success border-2',
                 active: 'border-primary border-2',
                 invalid: 'border-error',
                 valid: 'border-success',
-                default: 'border-neutral-800'
+                default: 'form-control-color-border'
               }[selectState],
               this.open &&
                 (this.currentPlacement === 'bottom'
