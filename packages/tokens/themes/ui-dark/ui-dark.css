@@ -108,8 +108,8 @@
   --sd-color-text-primary: var(--sd-color-white);
   --sd-color-warning: #bb8d20;
   --sd-color-white: #ffffff;
-  --sd-drop-shadow-sm: 0.5px 0.5px 1.5px var(--sd-color-neutral-800);
-  --sd-drop-shadow: 0 1px 3px var(--sd-color-neutral-800);
+  --sd-drop-shadow-sm: 0.5px 0.5px 1.5px transparent;
+  --sd-drop-shadow: 0 1px 3px transparent;
   --sd-flag--neutral-500-color-background: var(--sd-color-primary-750);
   --sd-font-weight-bold: 700;
   --sd-font-weight-normal: 400;
@@ -141,8 +141,8 @@
   --sd-radius-none: 0rem;
   --sd-radius-sm: 0.125rem;
   --sd-radius: 0.25rem;
-  --sd-shadow-sm: 0.5px 0.5px 1.5px var(--sd-color-neutral-800);
-  --sd-shadow: 0 1px 3px var(--sd-color-neutral-800);
+  --sd-shadow-sm: 0.5px 0.5px 1.5px transparent;
+  --sd-shadow: 0 1px 3px transparent;
   --sd-sizing-10: 2.5rem;
   --sd-sizing-12: 3rem;
   --sd-sizing-16: 4rem;

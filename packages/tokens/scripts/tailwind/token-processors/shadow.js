@@ -38,17 +38,19 @@ export class ShadowTokenProcessor extends BaseTokenProcessor {
       );
     }
 
+    const shadowColor = !variant.includes('-dark') ? 'var(--sd-color-neutral-800)' : 'transparent';
+
     cssvariables.push(
       {
         type: 'shadow',
         name: this.cssprefix(name),
-        value: `${properties} var(--sd-color-neutral-800)`,
+        value: `${properties} ${shadowColor}`,
         variant
       },
       {
         type: 'shadow',
         name: this.cssprefix(`drop-${name}`),
-        value: `${properties} var(--sd-color-neutral-800)`,
+        value: `${properties} ${shadowColor}`,
         variant
       }
     );
