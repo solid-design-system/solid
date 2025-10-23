@@ -20,14 +20,12 @@
     @apply bottom-0 -translate-x-1/2;
     inset-inline-start: 50%;
   }
-}
 
-.sd-toast-stack {
   sd-notification::part(wrapper) {
     @apply shadow;
   }
 
   sd-notification::part(content) {
-    @apply border-white;
+    @apply panel-color-border;
   }
 }
