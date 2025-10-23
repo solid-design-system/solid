@@ -51,7 +51,7 @@ export const Variants = {
       },
       options: {
         templateRenderer: ({ attributes }) => {
-          return `<div class="flex"><sd-loader color=${attributes.color}></sd-loader></div>`;
+          return `<div class="flex text-neutral-500"><sd-loader color=${attributes.color}></sd-loader></div>`;
         },
         templateBackgrounds: {
           alternate: 'y',

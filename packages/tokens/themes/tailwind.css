@@ -204,19 +204,19 @@
   }
   @keyframes loader-color-primary {
     0%, 100% {
-      color: var(--sd-color-primary, #00358E);
+      color: var(--sd-color-icon-fill-primary, var(--sd-color-primary));
     }
     50% {
-      color: var(--sd-color-primary, #00358E);
+      color: var(--sd-color-icon-fill-primary, var(--sd-color-primary));
       opacity: 20%;
     }
   }
   @keyframes loader-color-white {
     0%, 100% {
-      color: var(--sd-color-white, #FFFFFF);
+      color: var(--sd-color-icon-fill-white, var(--sd-color-white));;
     }
     50% {
-      color: var(--sd-color-white, #FFFFFF);
+      color: var(--sd-color-icon-fill-white, var(--sd-color-white));;
       opacity: 20%;
     }
   }
