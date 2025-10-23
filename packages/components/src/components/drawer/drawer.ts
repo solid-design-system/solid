@@ -50,6 +50,8 @@ import SolidElement from '../../internal/solid-element';
  *
  * @cssproperty --width - The preferred width of the drawer.
  *   depending on its `placement`. Note that the drawer will shrink to accommodate smaller screens.
+ * @cssproperty --sd-panel-color-border - The border color of the drawer panel.
+ * @cssproperty --sd-overlay-color-background - The background color of the drawer overlay.
  *
  * @animation drawer.showEnd - The animation to use when showing a drawer with `end` placement.
  * @animation drawer.showStart - The animation to use when showing a drawer with `start` placement.
@@ -308,7 +310,7 @@ export default class SdDrawer extends SolidElement {
         <div
           part="overlay"
           class=${cx(
-            'block top-0 left-0 right-0 bottom-0 bg-neutral-800/75 pointer-events-auto',
+            'block top-0 left-0 right-0 bottom-0 overlay-color-background pointer-events-auto',
             this.contained ? 'absolute' : 'fixed'
           )}
           @click=${() => this.requestClose('overlay')}
@@ -393,6 +395,10 @@ export default class SdDrawer extends SolidElement {
         &::-webkit-scrollbar {
           @apply w-0 h-0;
         }
+      }
+
+      :host [part='panel'] {
+        outline: 1px solid var(--sd-panel-color-border, transparent);
       }
     `
   ];
