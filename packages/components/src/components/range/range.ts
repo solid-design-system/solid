@@ -697,12 +697,12 @@ export default class SdRange extends SolidElement implements SolidFormControl {
         background-color: var(--sd-color-icon-fill-primary-500, var(--sd-color-primary-500));
       }
 
-      [part='thumb'][data-disabled] {
-        background-color: var(--sd-color-icon-fill-neutral-500, var(--sd-color-neutral-500));
-      }
-
       [part='thumb'].grabbed {
         background-color: var(--sd-color-icon-fill-primary-800, var(--sd-color-primary-800));
+      }
+
+      [part='thumb'][data-disabled] {
+        background-color: var(--sd-color-icon-fill-neutral-500, var(--sd-color-neutral-500));
       }
 
       [part='track'] {
