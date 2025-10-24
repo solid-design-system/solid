@@ -1,8 +1,8 @@
 import { createTailwindV4Plugin, extractComponentsBlock, extractThemeBlock } from './tailwind/index.js';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { FigmaClient } from './figma/index.js';
 import { fileURLToPath } from 'url';
 import { generateScss } from './scss/index.js';
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { OUTPUT_DIR } from './config.js';
 import { register } from '@tokens-studio/sd-transforms';
 import path from 'node:path';
@@ -117,11 +117,20 @@ themes.forEach(theme => {
   stylesheet = stylesheet
     .replace(theme.content, '')
     .replace(`/* ${config.themeBlock}[${theme.name}] */`, '')
-    .replace(`/* ${config.themeBlock} */`, '');
+    .replace(`/* ${config.themeBlock} */`, '')
+    .trim();
+
+  theme.content = theme.content.trim();
+
+  const iconsPath = `${config.buildPath}/${theme.name}/icons.css`;
+  if (existsSync(iconsPath)) {
+    const icons = readFileSync(iconsPath, { encoding: 'utf-8' });
+    theme.content = `${theme.content.trim()}\n\n${icons.replaceAll('--sd-icon-', `--sd-icon--${theme.name}-`)}`;
+  }
 
   mkdirSync(`${config.buildPath}/${theme.name}`, { recursive: true });
-  writeFileSync(`${config.buildPath}/${config.output}.css`, stylesheet.trim());
-  writeFileSync(`${config.buildPath}/${theme.name}/${theme.name}.css`, theme.content.trim());
+  writeFileSync(`${config.buildPath}/${config.output}.css`, stylesheet);
+  writeFileSync(`${config.buildPath}/${theme.name}/${theme.name}.css`, theme.content);
 });
 
 // --- Extract component block as a separate file ---

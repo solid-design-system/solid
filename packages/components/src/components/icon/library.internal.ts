@@ -147,8 +147,15 @@ export const icons = {
 const internalLibrary: IconLibrary = {
   name: '_internal',
   resolver: (name: keyof typeof icons) => {
-    if (name in icons) {
-      return `data:image/svg+xml,${encodeURIComponent(icons[name])}`;
+    const [theme, icon] = name.split('--');
+
+    const svg = window.getComputedStyle(document.body).getPropertyValue(`--sd-icon--${theme}--${icon}`);
+    if (svg) {
+      return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+    }
+
+    if (icon in icons) {
+      return `data:image/svg+xml,${encodeURIComponent(icons[icon as keyof typeof icons])}`;
     }
     return '';
   },
