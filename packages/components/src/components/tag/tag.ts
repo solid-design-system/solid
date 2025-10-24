@@ -95,7 +95,7 @@ export default class SdTag extends SolidElement {
     this.emit('sd-hide');
 
     this.style.opacity = '0';
-    await new Promise(resolve => setTimeout(resolve, this.token('sd-duration-fast', 150)));
+    await new Promise(resolve => setTimeout(resolve, this.token('--sd-duration-fast', 150)));
     this.hidden = true;
 
     this.emit('sd-after-hide');

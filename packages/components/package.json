@@ -76,7 +76,8 @@
     "@shoelace-style/animations": "^1.2.0",
     "@shoelace-style/localize": "^3.2.1",
     "classix": "^2.2.4",
-    "lit": "^3.3.1"
+    "lit": "^3.3.1",
+    "style-observer": "^0.1.2"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.8",

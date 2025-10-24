@@ -1,6 +1,7 @@
 import { cssVar, parseDuration } from './animate';
 import { LitElement, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
+import { ThemeObserver } from './theme-observer';
 
 const css = unsafeCSS;
 
@@ -14,6 +15,9 @@ export default class SolidElement extends LitElement {
 
   /** The element's language. */
   @property() lang: string;
+
+  private themeObserver?: ThemeObserver;
+  protected onThemeChange?(theme: string): void;
 
   static styles = [
     css`
@@ -85,6 +89,13 @@ export default class SolidElement extends LitElement {
     `
   ];
 
+  constructor() {
+    super();
+    if (!this.onThemeChange) return;
+    this.themeObserver = new ThemeObserver(this, this.onThemeChange.bind(this));
+    this.themeObserver.connect();
+  }
+
   /** Emits a custom event with more convenient defaults. */
   emit(name: string, options?: CustomEventInit) {
     const event = new CustomEvent(name, {
@@ -102,7 +113,7 @@ export default class SolidElement extends LitElement {
 
   /** Retrieves the value of a css variable token. */
   token<T>(name: string, fallback: T): T {
-    const value = cssVar(`var(--${name})`, this);
+    const value = cssVar(`var(${name})`, this);
 
     if (value === null) {
       return fallback;

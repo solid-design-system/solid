@@ -61,7 +61,7 @@ export default class SdVideo extends SolidElement {
     if (!(this.poster instanceof HTMLImageElement)) return;
 
     this.poster.style.opacity = '0';
-    await new Promise(resolve => setTimeout(resolve, this.token('sd-duration-medium', 300)));
+    await new Promise(resolve => setTimeout(resolve, this.token('--sd-duration-medium', 300)));
     this.poster.style.display = 'none';
   }
 

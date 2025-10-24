@@ -106,6 +106,9 @@ importers:
       lit:
         specifier: ^3.3.1
         version: 3.3.1
+      style-observer:
+        specifier: ^0.1.2
+        version: 0.1.2
     devDependencies:
       '@custom-elements-manifest/analyzer':
         specifier: ^0.10.8
@@ -6739,6 +6742,9 @@ packages:
     resolution: {integrity: sha512-scRFwr2VrerXy6BzO2Ym8AI0dRGkAIoS2YhooagytxCFkoXPYCLhvIxg3VO/yD2i4VeU4aGmHG80+ZLdPDb0uw==}
     engines: {node: '>=22.0.0'}
     hasBin: true
+
+  style-observer@0.1.2:
+    resolution: {integrity: sha512-VdGkVx7dGqEzosau63CI33vRJsAGKPJCXyS9f5ze7gFbgsXm0wt5liXUNB9+YjyfhMyD+iTwNa7sM4cvpP3N9Q==}
 
   stylehacks@7.0.6:
     resolution: {integrity: sha512-iitguKivmsueOmTO0wmxURXBP8uqOO+zikLGZ7Mm9e/94R4w5T999Js2taS/KBOnQ/wdC3jN3vNSrkGDrlnqQg==}
@@ -14817,6 +14823,8 @@ snapshots:
       path-unified: 0.2.0
       prettier: 3.6.2
       tinycolor2: 1.6.0
+
+  style-observer@0.1.2: {}
 
   stylehacks@7.0.6(postcss@8.5.6):
     dependencies:

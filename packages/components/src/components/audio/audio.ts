@@ -310,19 +310,21 @@ export default class SdAudio extends SolidElement {
     return null;
   }
 
+  onThemeChange(): void {
+    this.clear();
+    setTimeout(this.initAnimation.bind(this), this.token('--sd-duration-fast', 150));
+  }
+
   private initAnimation() {
-    this.context = this.canvas.getContext('2d')!;
+    const context = this.canvas?.getContext('2d');
+    if (!context) return;
+    this.context = context;
 
     const button = this.audioPlayerContainer.querySelector('.playback-speed')!;
     const computedStyles = window.getComputedStyle(button);
     const color = computedStyles.color;
 
-    let computedColor: string;
-    if (this.inverted) {
-      computedColor = `#FFFFFF33`;
-    } else {
-      computedColor = this.rgbToHex(color) + '33';
-    }
+    const computedColor = this.inverted ? `#FFFFFF33` : this.rgbToHex(color) + '33';
 
     this.waveList = [
       new Wave({
