@@ -1,5 +1,5 @@
+import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
-import { html } from 'lit';
 import { LocalizeController } from '../../utilities/localize';
 import { property } from 'lit/decorators.js';
 import cx from 'classix';
@@ -28,14 +28,21 @@ export default class SdRangeTick extends SolidElement {
 
   render() {
     return html` <div part="base" class=${cx(this.subtick ? 'w-0.25' : 'w-0.5')}>
-      <div part="line" class=${cx('bg-neutral-500', this.subtick ? 'h-2' : 'h-[10px]')}></div>
+      <div part="line" class=${cx(this.subtick ? 'h-2' : 'h-[10px]')}></div>
       <div part="label" class="flex items-center justify-center text-center text-nowrap text-sm">
         <slot></slot>
       </div>
     </div>`;
   }
 
-  static styles = SolidElement.styles;
+  static styles = [
+    ...SolidElement.styles,
+    css`
+      [part='line'] {
+        background-color: var(--sd-color-border-neutral-400, var(--sd-color-neutral-400));
+      }
+    `
+  ];
 }
 
 declare global {

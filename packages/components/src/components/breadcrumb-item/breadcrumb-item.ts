@@ -78,10 +78,6 @@ export default class SdBreadcrumbItem extends SolidElement {
         @apply mr-0 inline-flex;
       }
 
-      sd-link sd-icon {
-        @apply m-0;
-      }
-
       :host([current]) sd-link::part(base) {
         @apply text-neutral-700;
       }

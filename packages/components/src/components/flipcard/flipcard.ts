@@ -144,27 +144,32 @@ export default class SdFlipcard extends SolidElement {
           <div
             part="front-slot-container"
             class=${cx(
-              'flex',
+              'flex relative',
               {
                 primary: 'text-white',
                 'primary-100': 'text-black',
                 'gradient-light': 'text-black',
                 'gradient-dark': 'text-white'
-              }[this.frontVariant],
-              {
-                primary: '',
-                'primary-100': '',
-                'gradient-light':
-                  this.placement === 'top'
-                    ? 'bg-gradient-to-b from-white/75 to-white/60'
-                    : 'bg-gradient-to-t  from-white/75 to-white/60',
-                'gradient-dark':
-                  this.placement === 'bottom'
-                    ? 'bg-gradient-to-t from-primary-800/75 to-primary-800/60'
-                    : 'bg-gradient-to-b  from-primary-800/75 to-primary-800/60'
               }[this.frontVariant]
             )}
           >
+            <div
+              class=${cx(
+                'absolute inset-0',
+                {
+                  primary: '',
+                  'primary-100': '',
+                  'gradient-light':
+                    this.placement === 'top'
+                      ? 'bg-gradient-to-b from-white/75 to-white/60'
+                      : 'bg-gradient-to-t  from-white/75 to-white/60',
+                  'gradient-dark':
+                    this.placement === 'bottom'
+                      ? 'bg-gradient-to-t from-primary-800/75 to-primary-800/60'
+                      : 'bg-gradient-to-b  from-primary-800/75 to-primary-800/60'
+                }[this.frontVariant]
+              )}
+            ></div>
             <slot name="front"></slot>
           </div>
 
@@ -352,6 +357,25 @@ export default class SdFlipcard extends SolidElement {
 
       .flip-card__gradient {
         flex: 0.4 1 0;
+      }
+
+      /**
+       * Dev-note: In some components, css properties need to be assigned
+       * to specific variables so we keep consistency as in Figma.
+       * 
+       * For more details, see the 'Consistency with Figma' section in the **CONTRIBUTING.md**.
+       */
+      :host([front-variant='gradient-light']) [part='front-slot-container'] .bg-gradient-to-b,
+      :host([front-variant='gradient-light']) [part='front-secondary-gradient'] {
+        --sd-color-background-white: var(--sd-informational-gradient--white-color-background, var(--sd-color-white));
+      }
+
+      :host([front-variant='gradient-dark']) [part='front-slot-container'] .bg-gradient-to-b,
+      :host([front-variant='gradient-dark']) [part='front-secondary-gradient'] {
+        --sd-color-background-primary-800: var(
+          --sd-informational-gradient--primary-800-color-background,
+          var(--sd-color-primary-800)
+        );
       }
     `
   ];

@@ -100,12 +100,12 @@ export const Variants = {
         templateBackgrounds: {
           alternate: 'y',
           colors: [
-            'white',
-            'white',
-            'rgb(var(--sd-color-primary, 0 53 142))',
-            'white',
-            'rgb(var(--sd-color-primary, 0 53 142))',
-            'white'
+            'var(--sd-color-white)',
+            'var(--sd-color-white)',
+            'var(--sd-color-primary)',
+            'var(--sd-color-white)',
+            'var(--sd-color-primary)',
+            'var(--sd-color-white)'
           ]
         },
         templateRenderer: ({ attributes, slots }) => {

@@ -1,6 +1,7 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import theme from 'tailwind-theme';
 import cx from 'classix';
+import { getTokens } from './utils.js';
 
 <Meta title="Packages/Tokens/Shadows" />
 
@@ -8,18 +9,26 @@ import cx from 'classix';
 
 <table>
   <tbody>
-    {Object.entries(theme.boxShadow).map((token, i) => {
-      const name = token[0] === 'DEFAULT' ? 'shadow' : `shadow-${token[0]}`;
+    {getTokens('shadow', theme.base).map((token, i) => {
+      const name = token.name === 'shadow' ? '' : `-${token.name}`;
       return (
-        <tr>
+        <tr key={token.name}>
           <td>
-            <div class="flex flex-col">
-              <div class="font-bold">sd-{name}</div>
-              <div>--sd-shadow-{token[1]}</div>
+            <div className="flex flex-col">
+              <div className="font-bold">sd-shadow{name}</div>
+              <div>box-shadow: {token.value}</div>
             </div>
           </td>
           <td>
-            <div class={`h-16 w-16 ${name}`}></div>
+            <div
+              className={cx(
+                'size-16',
+                {
+                  shadow: 'shadow',
+                  sm: 'shadow-sm'
+                }[token.name]
+              )}
+            ></div>
           </td>
         </tr>
       );
