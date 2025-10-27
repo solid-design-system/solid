@@ -1,6 +1,7 @@
 import './preview.css';
 import '../../tokens/themes/ui-dark/ui-dark.css';
 import '../../tokens/themes/ui-light/ui-light.css';
+import '../../tokens/themes/vb/vb.css';
 import { withThemeByClassName } from './addons/with-theme.js';
 import { storybookUtilities } from '../scripts/storybook/helper.js';
 import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer.js';

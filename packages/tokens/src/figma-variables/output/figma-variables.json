@@ -1232,82 +1232,181 @@
       }
     },
     "vb": {
-      "azure": {
-        "100": {
-          "type": "color",
-          "value": "#f2f7fb"
+      "from-figma": {
+        "azure": {
+          "100": {
+            "type": "color",
+            "value": "#f2f7fb"
+          },
+          "200": {
+            "description": "color has same luminance as step 100",
+            "type": "color",
+            "value": "#e5f0f7"
+          },
+          "300": {
+            "description": "color has same luminance as step 100",
+            "type": "color",
+            "value": "#99c2e1"
+          },
+          "400": {
+            "description": "color has same luminance as step 100",
+            "type": "color",
+            "value": "#6681a4"
+          },
+          "500": {
+            "type": "color",
+            "value": "#0066b3"
+          },
+          "550": {
+            "type": "color",
+            "value": "#005ca1"
+          },
+          "600": {
+            "type": "color",
+            "value": "#005798"
+          },
+          "650": {
+            "type": "color",
+            "value": "#274d7e"
+          },
+          "750": {
+            "type": "color",
+            "value": "#1a4276"
+          },
+          "800": {
+            "type": "color",
+            "value": "#002d67"
+          },
+          "900": {
+            "type": "color",
+            "value": "#002d67"
+          },
+          "default": {
+            "type": "color",
+            "value": "{core.vb.from-figma.azure.500}"
+          }
         },
-        "200": {
-          "description": "color has same luminance as step 100",
-          "type": "color",
-          "value": "#e5f0f7"
+        "vermillion": {
+          "500": {
+            "type": "color",
+            "value": "#f35e01"
+          },
+          "550": {
+            "type": "color",
+            "value": "#bd5622"
+          },
+          "default": {
+            "description": "green-default",
+            "type": "color",
+            "value": "{core.vb.from-figma.vermillion.500}"
+          },
+          "custom": {
+            "50": {
+              "type": "color",
+              "value": "#f5dbc7"
+            },
+            "100": {
+              "type": "color",
+              "value": "#f4cdb2"
+            },
+            "200": {
+              "type": "color",
+              "value": "#f5b691"
+            },
+            "300": {
+              "type": "color",
+              "value": "#f79a66"
+            },
+            "400": {
+              "type": "color",
+              "value": "#f97e3a"
+            },
+            "500": {
+              "description": "Generated with https://www.tints.dev/palette/v1:cnVieXxGMzVFMDF8NTAwfHB8NXwtNHwxM3w5Mnxt",
+              "type": "color",
+              "value": "#f35e01"
+            },
+            "600": {
+              "type": "color",
+              "value": "#ab5421"
+            },
+            "700": {
+              "type": "color",
+              "value": "#925020"
+            },
+            "800": {
+              "type": "color",
+              "value": "#693f1d"
+            },
+            "900": {
+              "type": "color",
+              "value": "#492f18"
+            },
+            "950": {
+              "type": "color",
+              "value": "#3a2916"
+            }
+          }
         },
-        "300": {
-          "description": "color has same luminance as step 100",
-          "type": "color",
-          "value": "#99c2e1"
+        "indigo": {
+          "700": {
+            "type": "color",
+            "value": "#002d67"
+          },
+          "default": {
+            "type": "color",
+            "value": "{core.vb.from-figma.indigo.700}"
+          }
         },
-        "400": {
-          "description": "color has same luminance as step 100",
-          "type": "color",
-          "value": "#6681a4"
+        "grey": {
+          "100": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.10)"
+          },
+          "150": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.15)"
+          },
+          "200": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.20)"
+          },
+          "380": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.38)"
+          },
+          "620": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.62)"
+          },
+          "default": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.86)"
+          },
+          "concrete": {
+            "200": {
+              "type": "color",
+              "value": "#d9e0e8"
+            }
+          }
         },
-        "500": {
-          "type": "color",
-          "value": "#0066b3"
-        },
-        "550": {
-          "type": "color",
-          "value": "#005ca1"
-        },
-        "600": {
-          "type": "color",
-          "value": "#005798"
-        },
-        "650": {
-          "type": "color",
-          "value": "#274d7e"
-        },
-        "750": {
-          "type": "color",
-          "value": "#1a4276"
-        },
-        "800": {
-          "type": "color",
-          "value": "#002d67"
-        },
-        "900": {
-          "type": "color",
-          "value": "#002d67"
-        },
-        "default": {
-          "type": "color",
-          "value": "{core.vb.azure.500}"
-        }
-      },
-      "vermillion": {
-        "500": {
-          "type": "color",
-          "value": "#f35e01"
-        },
-        "550": {
-          "type": "color",
-          "value": "#bd5622"
-        },
-        "default": {
-          "description": "green-default",
-          "type": "color",
-          "value": "{core.vb.vermillion.500}"
-        }
-      },
-      "indigo": {
-        "700": {
-          "type": "color",
-          "value": "#002d67"
-        },
-        "default": {
-          "type": "color",
-          "value": "{core.vb.indigo.700}"
+        "white": {
+          "100": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.10)"
+          },
+          "500": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.50)"
+          },
+          "840": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.84)"
+          },
+          "default": {
+            "type": "color",
+            "value": "#ffffff"
+          }
         }
       },
       "font-family": {
@@ -1365,6 +1464,158 @@
         "warning": {
           "type": "color",
           "value": "#ffab00"
+        },
+        "success-bg": {
+          "type": "color",
+          "value": "#d9e0e8"
+        },
+        "error-bg": {
+          "type": "color",
+          "value": "#fdeded"
+        },
+        "warning-bg": {
+          "type": "color",
+          "value": "#fff5e0"
+        }
+      },
+      "black": {
+        "type": "color",
+        "value": "{core.vb.from-figma.grey.default}"
+      },
+      "from-code": {
+        "primary": {
+          "50": {
+            "type": "color",
+            "value": "#e0edf6"
+          },
+          "100": {
+            "type": "color",
+            "value": "#b3d1e8"
+          },
+          "200": {
+            "type": "color",
+            "value": "#80b3d9"
+          },
+          "300": {
+            "type": "color",
+            "value": "#4d94ca"
+          },
+          "400": {
+            "type": "color",
+            "value": "#267dbe"
+          },
+          "500": {
+            "type": "color",
+            "value": "#0066b3"
+          },
+          "600": {
+            "type": "color",
+            "value": "#005eac"
+          },
+          "700": {
+            "type": "color",
+            "value": "#005ba0"
+          },
+          "800": {
+            "type": "color",
+            "value": "#00499a"
+          },
+          "900": {
+            "type": "color",
+            "value": "#00388b"
+          },
+          "default": {
+            "type": "color",
+            "value": "{core.vb.from-code.primary.500}"
+          }
+        },
+        "accent": {
+          "50": {
+            "type": "color",
+            "value": "#fef2eb"
+          },
+          "100": {
+            "type": "color",
+            "value": "#fbcfb3"
+          },
+          "200": {
+            "type": "color",
+            "value": "#f9af80"
+          },
+          "300": {
+            "type": "color",
+            "value": "#f78e4d"
+          },
+          "400": {
+            "type": "color",
+            "value": "#f57627"
+          },
+          "500": {
+            "type": "color",
+            "value": "#f35e01"
+          },
+          "600": {
+            "type": "color",
+            "value": "#f15601"
+          },
+          "700": {
+            "type": "color",
+            "value": "#db5501"
+          },
+          "800": {
+            "type": "color",
+            "value": "#ed4201"
+          },
+          "900": {
+            "type": "color",
+            "value": "#ea3100"
+          },
+          "default": {
+            "type": "color",
+            "value": "{core.vb.from-code.accent.500}"
+          }
+        },
+        "grey": {
+          "50": {
+            "type": "color",
+            "value": "#f5f7f9"
+          },
+          "100": {
+            "type": "color",
+            "value": "#edf0f4"
+          },
+          "200": {
+            "type": "color",
+            "value": "#d9e0e8"
+          },
+          "300": {
+            "type": "color",
+            "value": "#ccd5e1"
+          },
+          "400": {
+            "type": "color",
+            "value": "#bfcad9"
+          },
+          "700": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.65)"
+          },
+          "500 (disabled)": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.65)"
+          },
+          "600 (foreground-secondary-text)": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.62)"
+          },
+          "800 (foreground-text)": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.65)"
+          },
+          "default": {
+            "type": "color",
+            "value": "{core.vb.from-code.accent.500}"
+          }
         }
       }
     }
@@ -2514,6 +2765,16 @@
             "value": "0.5"
           }
         }
+      },
+      "font-weight": {
+        "normal": {
+          "type": "string",
+          "value": "{core.ui.font-weight.font-normal}"
+        },
+        "bold": {
+          "type": "string",
+          "value": "{core.ui.font-weight.font-bold}"
+        }
       }
     },
     "font-size": {
@@ -2768,6 +3029,10 @@
             "type": "color",
             "value": "rgba(24, 24, 24, 0.40)"
           }
+        },
+        "padding-bottom": {
+          "type": "float",
+          "value": "0"
         }
       },
       "sd-tag": {
@@ -2781,16 +3046,6 @@
               "background": {
                 "type": "color",
                 "value": "{ui-light.utilities.color.background.primary.default}"
-              }
-            }
-          }
-        },
-        "--default": {
-          "--hover": {
-            "color": {
-              "background": {
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.00)"
               }
             }
           }
@@ -2965,21 +3220,43 @@
         },
         "--size": {
           "md": {
-            "text": {
+            "font-size": {
               "type": "float",
               "value": "{core.text-base}"
             },
-            "padding": {
-              "y": {
-                "type": "float",
-                "value": "{ui-light.utilities.spacing.2}"
-              }
+            "padding-block": {
+              "type": "float",
+              "value": "{ui-light.utilities.spacing.2}"
             },
             "border-radius": {
               "type": "float",
               "value": "{ui-light.utilities.rounded.default}"
             }
+          },
+          "lg": {
+            "icon": {
+              "font-size": {
+                "type": "float",
+                "value": "{ui-light.utilities.sizing.6}"
+              }
+            },
+            "font-size": {
+              "type": "float",
+              "value": "{core.text-base}"
+            },
+            "border-radius": {
+              "type": "float",
+              "value": "{ui-light.utilities.rounded.default}"
+            },
+            "padding-block": {
+              "type": "float",
+              "value": "{ui-light.utilities.spacing.2}"
+            }
           }
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{ui-light.utilities.font-weight.normal}"
         }
       },
       "sd-footnotes": {
@@ -3140,6 +3417,43 @@
                 "value": "{ui-light.utilities.color.primary.800}"
               }
             }
+          }
+        }
+      },
+      "sd-accordion": {
+        "color": {
+          "shadow": {
+            "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+            "type": "color",
+            "value": "rgba(24, 24, 24, 0.40)"
+          },
+          "background": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.background.white.default}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.text.primary.default}"
+          }
+        },
+        "__indicator": {
+          "color": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.border.accent.default}"
+          }
+        },
+        "padding-block": {
+          "type": "float",
+          "value": "{ui-light.utilities.spacing.3}"
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{core.ui.sizing.px}"
+        },
+        "__chevron": {
+          "color": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.text.primary.default}"
           }
         }
       }
@@ -3790,27 +4104,27 @@
             "low": {
               "description": "Exclusively for marking fonds",
               "type": "color",
-              "value": "#ffffff"
+              "value": "{ui-dark.utilities.color.risk.low}"
             },
             "moderate": {
               "description": "Exclusively for marking fonds",
               "type": "color",
-              "value": "#ffffff"
+              "value": "{ui-dark.utilities.color.risk.moderate}"
             },
             "increased": {
               "description": "Exclusively for marking fonds",
               "type": "color",
-              "value": "#ffffff"
+              "value": "{ui-dark.utilities.color.risk.increased}"
             },
             "high": {
               "description": "Exclusively for marking fonds",
               "type": "color",
-              "value": "#ffffff"
+              "value": "{ui-dark.utilities.color.risk.high}"
             },
             "veryhigh": {
               "description": "Exclusively for marking fonds",
               "type": "color",
-              "value": "#ffffff"
+              "value": "{ui-dark.utilities.color.risk.veryhigh}"
             }
           }
         },
@@ -4290,6 +4604,16 @@
             "value": "0"
           }
         }
+      },
+      "font-weight": {
+        "normal": {
+          "type": "string",
+          "value": "{core.ui.font-weight.font-normal}"
+        },
+        "bold": {
+          "type": "string",
+          "value": "{core.ui.font-weight.font-bold}"
+        }
       }
     },
     "font-size": {
@@ -4544,6 +4868,10 @@
             "type": "color",
             "value": "rgba(255, 255, 255, 0.00)"
           }
+        },
+        "padding-bottom": {
+          "type": "float",
+          "value": "0"
         }
       },
       "sd-tag": {
@@ -4557,16 +4885,6 @@
               "background": {
                 "type": "color",
                 "value": "{ui-dark.utilities.color.white.default}"
-              }
-            }
-          }
-        },
-        "--default": {
-          "--hover": {
-            "color": {
-              "background": {
-                "type": "color",
-                "value": "{ui-dark.utilities.color.primary.700}"
               }
             }
           }
@@ -4741,21 +5059,43 @@
         },
         "--size": {
           "md": {
-            "text": {
+            "font-size": {
               "type": "float",
               "value": "{core.text-base}"
             },
-            "padding": {
-              "y": {
-                "type": "float",
-                "value": "{ui-dark.utilities.spacing.2}"
-              }
+            "padding-block": {
+              "type": "float",
+              "value": "{ui-dark.utilities.spacing.2}"
             },
             "border-radius": {
               "type": "float",
               "value": "{ui-dark.utilities.rounded.default}"
             }
+          },
+          "lg": {
+            "icon": {
+              "font-size": {
+                "type": "float",
+                "value": "{ui-dark.utilities.sizing.6}"
+              }
+            },
+            "font-size": {
+              "type": "float",
+              "value": "{core.text-base}"
+            },
+            "border-radius": {
+              "type": "float",
+              "value": "{ui-dark.utilities.rounded.default}"
+            },
+            "padding-block": {
+              "type": "float",
+              "value": "{ui-dark.utilities.spacing.2}"
+            }
           }
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{ui-dark.utilities.font-weight.normal}"
         }
       },
       "sd-footnotes": {
@@ -4918,6 +5258,43 @@
             }
           }
         }
+      },
+      "sd-accordion": {
+        "color": {
+          "shadow": {
+            "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          },
+          "background": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.primary.default}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.text.primary.default}"
+          }
+        },
+        "__indicator": {
+          "color": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.border.accent.default}"
+          }
+        },
+        "padding-block": {
+          "type": "float",
+          "value": "{ui-dark.utilities.spacing.3}"
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{core.ui.sizing.px}"
+        },
+        "__chevron": {
+          "color": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.text.primary.default}"
+          }
+        }
       }
     }
   },
@@ -5013,22 +5390,22 @@
             "200": {
               "description": "Used for sd-flag",
               "type": "color",
-              "value": "{vb.utilities.color.neutral.200}"
+              "value": "{vb.utilities.color.neutral.100}"
             },
             "300": {
               "description": "Used for sd-flag ",
               "type": "color",
-              "value": "{vb.utilities.color.neutral.300}"
+              "value": "{vb.utilities.color.neutral.200}"
             },
             "400": {
               "description": "Used for sd-flag ",
               "type": "color",
-              "value": "{vb.utilities.color.neutral.400}"
+              "value": "{vb.utilities.color.neutral.300}"
             },
             "500": {
               "description": "Used for disabled state ",
               "type": "color",
-              "value": "{vb.utilities.color.neutral.500}"
+              "value": "{vb.utilities.color.neutral.400}"
             },
             "600": {
               "description": "Used for inverted disabled state ",
@@ -5094,22 +5471,22 @@
             "primary|10": {
               "description": "Used for audio (wave animation)",
               "type": "color",
-              "value": "rgba(0, 53, 142, 0.10)"
+              "value": "rgba(0, 45, 103, 0.10)"
             },
             "primary|30": {
               "description": "Used for map-marker",
               "type": "color",
-              "value": "rgba(0, 53, 142, 0.30)"
+              "value": "rgba(0, 45, 103, 0.30)"
             },
             "primary|80": {
               "description": "Used for teaser",
               "type": "color",
-              "value": "rgba(0, 53, 142, 0.80)"
+              "value": "rgba(0, 45, 103, 0.80)"
             },
             "primary|90": {
               "description": "Used for teaser",
               "type": "color",
-              "value": "rgba(0, 53, 142, 0.90)"
+              "value": "rgba(0, 45, 103, 0.90)"
             },
             "white|20": {
               "description": "Used for audio (wave animation inverted)",
@@ -5119,7 +5496,7 @@
             "primary-800|90": {
               "description": "Used for overlays",
               "type": "color",
-              "value": "rgba(5, 21, 48, 0.90)"
+              "value": "rgba(0, 45, 103, 0.90)"
             }
           },
           "primary": {
@@ -5151,34 +5528,34 @@
             "default": {
               "description": "Inverted background color (light mode)\nUsed for button",
               "type": "color",
-              "value": "{vb.utilities.color.primary.default}"
+              "value": "{vb.utilities.color.primary.800}"
             }
           },
           "accent": {
             "300": {
               "description": "Used for inverted hover interaction",
               "type": "color",
-              "value": "{vb.utilities.color.accent.300}"
+              "value": "{vb.utilities.color.primary.400}"
             },
             "500": {
               "description": "Used for cta background",
               "type": "color",
-              "value": "{vb.utilities.color.accent.500}"
+              "value": "{vb.utilities.color.primary.500}"
             },
             "550": {
               "description": "Used for hover interaction",
               "type": "color",
-              "value": "{vb.utilities.color.accent.550}"
+              "value": "{vb.utilities.color.primary.600}"
             },
             "700": {
               "description": "Used for pressed interaction",
               "type": "color",
-              "value": "{vb.utilities.color.accent.700}"
+              "value": "{vb.utilities.color.primary.700}"
             },
             "default": {
               "description": "Used for checkbox, switch",
               "type": "color",
-              "value": "{vb.utilities.color.accent.default}"
+              "value": "{vb.utilities.color.primary.default}"
             }
           },
           "info": {
@@ -5236,17 +5613,17 @@
                         "60%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(5, 21, 48, 0.60)"
+                          "value": "rgba(0, 45, 103, 0.60)"
                         },
                         "75%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(5, 21, 48, 0.75)"
+                          "value": "rgba(0, 45, 103, 0.75)"
                         },
                         "0%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(5, 21, 48, 0.00)"
+                          "value": "rgba(0, 45, 103, 0.00)"
                         }
                       }
                     }
@@ -5276,123 +5653,123 @@
         "primary": {
           "100": {
             "type": "color",
-            "value": "{core.vb.azure.100}"
+            "value": "{core.vb.from-figma.azure.100}"
           },
           "200": {
             "type": "color",
-            "value": "{core.vb.azure.200}"
+            "value": "{core.vb.from-figma.azure.200}"
           },
           "300": {
             "type": "color",
-            "value": "{core.vb.azure.300}"
+            "value": "{core.vb.from-figma.azure.300}"
           },
           "400": {
             "type": "color",
-            "value": "{core.vb.azure.400}"
+            "value": "{core.vb.from-figma.azure.400}"
           },
           "500": {
             "type": "color",
-            "value": "{core.vb.azure.500}"
+            "value": "{core.vb.from-figma.azure.500}"
           },
           "600": {
             "type": "color",
-            "value": "{core.vb.azure.600}"
+            "value": "{core.vb.from-figma.azure.600}"
           },
           "700": {
             "type": "color",
-            "value": "{core.vb.azure.750}"
+            "value": "{core.vb.from-figma.azure.750}"
           },
           "750": {
             "type": "color",
-            "value": "{core.vb.azure.750}"
+            "value": "{core.vb.from-figma.azure.750}"
           },
           "800": {
             "type": "color",
-            "value": "{core.vb.azure.800}"
+            "value": "{core.vb.from-figma.azure.800}"
           },
           "900": {
             "type": "color",
-            "value": "{core.vb.azure.900}"
+            "value": "{core.vb.from-figma.azure.900}"
           },
           "default": {
             "type": "color",
-            "value": "{core.vb.azure.default}"
+            "value": "{core.vb.from-figma.azure.default}"
           }
         },
         "accent": {
           "100": {
             "type": "color",
-            "value": "{core.vb.azure.100}"
+            "value": "{core.vb.from-figma.vermillion.custom.100}"
           },
           "200": {
             "type": "color",
-            "value": "{core.vb.azure.200}"
+            "value": "{core.vb.from-figma.vermillion.custom.200}"
           },
           "300": {
             "type": "color",
-            "value": "{core.vb.azure.300}"
+            "value": "{core.vb.from-figma.vermillion.custom.300}"
           },
           "400": {
             "type": "color",
-            "value": "{core.vb.azure.400}"
+            "value": "{core.vb.from-figma.vermillion.custom.400}"
           },
           "500": {
             "type": "color",
-            "value": "{core.vb.azure.500}"
+            "value": "{core.vb.from-figma.vermillion.500}"
           },
           "550": {
             "type": "color",
-            "value": "{core.vb.azure.550}"
+            "value": "{core.vb.from-figma.vermillion.550}"
           },
           "600": {
             "type": "color",
-            "value": "{core.vb.azure.600}"
+            "value": "{core.vb.from-figma.vermillion.custom.600}"
           },
           "700": {
             "type": "color",
-            "value": "{core.vb.azure.750}"
+            "value": "{core.vb.from-figma.vermillion.custom.700}"
           },
           "800": {
             "type": "color",
-            "value": "{core.vb.azure.800}"
+            "value": "{core.vb.from-figma.vermillion.custom.800}"
           },
           "default": {
             "type": "color",
-            "value": "{core.vb.azure.default}"
+            "value": "{core.vb.from-figma.vermillion.default}"
           }
         },
         "neutral": {
           "100": {
             "type": "color",
-            "value": "{core.ui.grey.100}"
+            "value": "{core.vb.from-code.grey.100}"
           },
           "200": {
             "type": "color",
-            "value": "{core.ui.grey.200}"
+            "value": "{core.vb.from-code.grey.200}"
           },
           "300": {
             "type": "color",
-            "value": "{core.ui.grey.300}"
+            "value": "{core.vb.from-code.grey.300}"
           },
           "400": {
             "type": "color",
-            "value": "{core.ui.grey.400}"
+            "value": "{core.vb.from-code.grey.400}"
           },
           "500": {
             "type": "color",
-            "value": "{core.ui.grey.500}"
+            "value": "{core.vb.from-code.grey.500 (disabled)}"
           },
           "600": {
             "type": "color",
-            "value": "{core.ui.grey.600}"
+            "value": "{core.vb.from-code.grey.600 (foreground-secondary-text)}"
           },
           "700": {
             "type": "color",
-            "value": "{core.ui.grey.700}"
+            "value": "{core.vb.from-code.grey.700}"
           },
           "800": {
             "type": "color",
-            "value": "{core.ui.grey.800}"
+            "value": "{core.vb.from-code.grey.800 (foreground-text)}"
           }
         },
         "error": {
@@ -5525,12 +5902,12 @@
             "400": {
               "description": "Used for disabled state breadcrumb",
               "type": "color",
-              "value": "{vb.utilities.color.neutral.400}"
+              "value": "{vb.utilities.color.neutral.200}"
             },
             "500": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{vb.utilities.color.neutral.500}"
+              "value": "{vb.utilities.color.neutral.400}"
             },
             "600": {
               "description": "Used for inverted disabled state",
@@ -5627,24 +6004,24 @@
             "550": {
               "description": "Used for hover interaction",
               "type": "color",
-              "value": "{vb.utilities.color.accent.550}"
+              "value": "{vb.utilities.color.primary.600}"
             },
             "default": {
               "description": "Used to highlight active/selected elements\n",
               "type": "color",
-              "value": "{vb.utilities.color.accent.default}"
+              "value": "{vb.utilities.color.primary.default}"
             }
           },
           "neutral": {
             "400": {
               "description": "Default border color. \nUsed for sd-divider, teaser, table cell, ... sd-container,",
               "type": "color",
-              "value": "{vb.utilities.color.neutral.400}"
+              "value": "{vb.utilities.color.neutral.200}"
             },
             "500": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{vb.utilities.color.neutral.500}"
+              "value": "{vb.utilities.color.neutral.400}"
             },
             "600": {
               "description": "Used for inverted disabled state",
@@ -5738,7 +6115,7 @@
             "500": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{vb.utilities.color.neutral.500}"
+              "value": "{vb.utilities.color.neutral.400}"
             },
             "600": {
               "description": "Used for inverted disabled state",
@@ -6066,6 +6443,16 @@
             "value": "0.5"
           }
         }
+      },
+      "font-weight": {
+        "normal": {
+          "type": "string",
+          "value": "Regular"
+        },
+        "bold": {
+          "type": "string",
+          "value": "Bold"
+        }
       }
     },
     "font-size": {
@@ -6320,6 +6707,10 @@
             "type": "color",
             "value": "rgba(24, 24, 24, 0.40)"
           }
+        },
+        "padding-bottom": {
+          "type": "float",
+          "value": "{vb.utilities.spacing.0,5}"
         }
       },
       "sd-tag": {
@@ -6333,16 +6724,6 @@
               "background": {
                 "type": "color",
                 "value": "{vb.utilities.color.background.primary.default}"
-              }
-            }
-          }
-        },
-        "--default": {
-          "--hover": {
-            "color": {
-              "background": {
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.00)"
               }
             }
           }
@@ -6375,7 +6756,7 @@
               },
               "background": {
                 "type": "color",
-                "value": "{vb.utilities.color.background.primary.default}"
+                "value": "{vb.utilities.color.primary.default}"
               }
             }
           },
@@ -6517,21 +6898,43 @@
         },
         "--size": {
           "md": {
-            "text": {
+            "font-size": {
               "type": "float",
               "value": "{core.text-sm}"
             },
-            "padding": {
-              "y": {
-                "type": "float",
-                "value": "{vb.utilities.sizing.2,5}"
-              }
+            "padding-block": {
+              "type": "float",
+              "value": "{vb.utilities.sizing.2,5}"
             },
             "border-radius": {
               "type": "float",
               "value": "{vb.utilities.rounded.full}"
             }
+          },
+          "lg": {
+            "icon": {
+              "font-size": {
+                "type": "float",
+                "value": "{vb.utilities.sizing.5}"
+              }
+            },
+            "font-size": {
+              "type": "float",
+              "value": "{core.text-sm}"
+            },
+            "border-radius": {
+              "type": "float",
+              "value": "{vb.utilities.rounded.full}"
+            },
+            "padding-block": {
+              "type": "float",
+              "value": "{vb.utilities.sizing.2,5}"
+            }
           }
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{vb.utilities.font-weight.bold}"
         }
       },
       "sd-footnotes": {
@@ -6692,6 +7095,43 @@
                 "value": "{vb.utilities.color.primary.800}"
               }
             }
+          }
+        }
+      },
+      "sd-accordion": {
+        "color": {
+          "shadow": {
+            "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+            "type": "color",
+            "value": "rgba(24, 24, 24, 0.40)"
+          },
+          "background": {
+            "type": "color",
+            "value": "{vb.utilities.color.background.white.default}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{vb.utilities.color.text.black.default}"
+          }
+        },
+        "__indicator": {
+          "color": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          }
+        },
+        "padding-block": {
+          "type": "float",
+          "value": "{vb.utilities.spacing.4}"
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{core.ui.sizing.0,5}"
+        },
+        "__chevron": {
+          "color": {
+            "type": "color",
+            "value": "{vb.utilities.color.text.neutral.600}"
           }
         }
       }

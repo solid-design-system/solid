@@ -2,6 +2,9 @@
   color-scheme: dark;
 
   --sd-theme: 'ui-dark';
+  --sd-accordion-color-background: var(--sd-color-primary);
+  --sd-accordion-color-text: var(--sd-color-white);
+  --sd-accordion__chevron-color: var(--sd-color-white);
   --sd-aspect-16\/10: 16 / 10;
   --sd-aspect-21\/9: 21 / 9;
   --sd-aspect-2\/1: 2 / 1;
@@ -67,11 +70,6 @@
   --sd-color-icon-fill-primary-500: var(--sd-color-primary-200);
   --sd-color-icon-fill-primary-800: var(--sd-color-white);
   --sd-color-icon-fill-primary: var(--sd-color-white);
-  --sd-color-icon-fill-risk-high: var(--sd-color-white);
-  --sd-color-icon-fill-risk-increased: var(--sd-color-white);
-  --sd-color-icon-fill-risk-low: var(--sd-color-white);
-  --sd-color-icon-fill-risk-moderate: var(--sd-color-white);
-  --sd-color-icon-fill-risk-veryhigh: var(--sd-color-white);
   --sd-color-info: #1582d5;
   --sd-color-neutral-100: #f6f6f6;
   --sd-color-neutral-200: #e9e9e9;
@@ -171,7 +169,6 @@
   --sd-spacing-6: 1.5rem;
   --sd-spacing-8: 2rem;
   --sd-spacing: 0.25rem;
-  --sd-tag--default--hover-color-background: var(--sd-color-primary-700);
   --sd-tag--selected--default-color-background: var(--sd-color-white);
   --sd-tag--selected--default-color-text: var(--sd-color-primary);
   --sd-text-2xl: 1.75rem;

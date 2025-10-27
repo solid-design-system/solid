@@ -22,6 +22,22 @@
   border-color: var(--sd-panel-color-border, rgba(255, 255, 255, 0));
 }
 
+@utility sd-accordion-color-background {
+  background-color: var(--sd-accordion-color-background, var(--sd-color-white));
+}
+
+@utility sd-accordion-color-text {
+  color: var(--sd-accordion-color-text, var(--sd-color-primary));
+}
+
+@utility sd-accordion__chevron-color {
+  background-color: var(--sd-accordion__chevron-color, var(--sd-color-primary));
+}
+
+@utility sd-accordion__indicator-color {
+  background-color: var(--sd-accordion__indicator-color, var(--sd-color-accent));
+}
+
 @utility sd-audio--inverted-color-border {
   border-color: var(--sd-audio--inverted-color-border, var(--sd-color-white));
 }
@@ -136,10 +152,6 @@
 
 @utility sd-loader--neutral-600-color-icon-fill {
   fill: var(--sd-loader--neutral-600-color-icon-fill, var(--sd-color-neutral-600));
-}
-
-@utility sd-tag--default--hover-color-background {
-  background-color: var(--sd-tag--default--hover-color-background, rgba(255, 255, 255, 0));
 }
 
 @utility sd-tag--selected--default-color-background {
