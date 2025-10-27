@@ -99,13 +99,7 @@ export default class SdBreadcrumb extends SolidElement {
   }
 
   handleMobileChevron() {
-    const icon = document.createElement('sd-icon');
-    icon.setAttribute('slot', 'icon-left');
-    icon.setAttribute('library', '_internal');
-    icon.setAttribute('name', 'chevron-left');
-    icon.setAttribute('class', 'text-base me-1 lg:hidden');
-
-    Array.from(this.items).at(-2)?.shadowRoot?.querySelector('sd-link')?.appendChild(icon);
+    Array.from(this.items).at(-2)?.setAttribute('isMobile', 'true');
   }
 
   handleSlotChange() {

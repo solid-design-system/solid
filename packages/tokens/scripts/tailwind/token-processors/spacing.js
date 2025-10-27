@@ -135,7 +135,7 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
     return {
       type: 'component',
       name,
-      properties: `@utility ${name} {\n ${cssproperty}: ${this.cssvar(name, core ? this.cssvar(core.join('-')) : this.#toRem(value))};\n}\n`
+      properties: `@utility ${name} {\n ${cssproperty}: ${this.cssvar(name, core ? this.cssvar(core.join('-')) : this.#toRem(value))};\n}`
     };
   }
 

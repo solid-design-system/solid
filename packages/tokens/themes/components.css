@@ -26,7 +26,6 @@
  border-width: var(--sd-accordion-border-width, var(--sd-spacing-0\.25));
 }
 
-
 @utility sd-accordion-color-background {
   background-color: var(--sd-accordion-color-background, var(--sd-color-white));
 }
@@ -38,7 +37,6 @@
 @utility sd-accordion-padding-block {
  padding-block: var(--sd-accordion-padding-block, var(--sd-spacing-3));
 }
-
 
 @utility sd-accordion__chevron-color {
   background-color: var(--sd-accordion__chevron-color, var(--sd-color-primary));
@@ -132,36 +130,29 @@
  border-radius: var(--sd-button--size-lg-border-radius, var(--sd-spacing-1));
 }
 
-
 @utility sd-button--size-lg-font-size {
  font-size: var(--sd-button--size-lg-font-size, var(--sd-spacing-4));
 }
-
 
 @utility sd-button--size-lg-icon-font-size {
  font-size: var(--sd-button--size-lg-icon-font-size, var(--sd-spacing-6));
 }
 
-
 @utility sd-button--size-lg-padding-block {
  padding-block: var(--sd-button--size-lg-padding-block, var(--sd-spacing-2));
 }
-
 
 @utility sd-button--size-md-border-radius {
  border-radius: var(--sd-button--size-md-border-radius, var(--sd-spacing-1));
 }
 
-
 @utility sd-button--size-md-font-size {
  font-size: var(--sd-button--size-md-font-size, var(--sd-spacing-4));
 }
 
-
 @utility sd-button--size-md-padding-block {
  padding-block: var(--sd-button--size-md-padding-block, var(--sd-spacing-2));
 }
-
 
 @utility sd-button--tertiary--active-color-background {
   background-color: var(--sd-button--tertiary--active-color-background, var(--sd-color-primary-200));
@@ -195,7 +186,6 @@
  padding-bottom: var(--sd-header-padding-bottom, 0);
 }
 
-
 @utility sd-loader--neutral-500-color-icon-fill {
   fill: var(--sd-loader--neutral-500-color-icon-fill, var(--sd-color-neutral-500));
 }
@@ -212,11 +202,9 @@
  border-radius-bottom: var(--sd-navigation-item-border-radius-bottom, 0);
 }
 
-
 @utility sd-navigation-item-border-radius-top {
  border-radius-top: var(--sd-navigation-item-border-radius-top, 0);
 }
-
 
 @utility sd-navigation-item-color {
   background-color: var(--sd-navigation-item-color, var(--sd-color-primary));
@@ -226,16 +214,13 @@
  font-size: var(--sd-navigation-item-font-size, var(--sd-spacing-4));
 }
 
-
 @utility sd-navigation-item__current-indicator-border-radius {
  border-radius: var(--sd-navigation-item__current-indicator-border-radius, 0);
 }
 
-
 @utility sd-navigation-item__current-indicator-height {
  height: var(--sd-navigation-item__current-indicator-height, var(--sd-spacing-1));
 }
-
 
 @utility sd-tag--selected--default-color-background {
   background-color: var(--sd-tag--selected--default-color-background, var(--sd-color-primary));
