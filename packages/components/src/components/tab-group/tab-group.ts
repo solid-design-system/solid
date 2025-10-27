@@ -99,7 +99,6 @@ export default class SdTabGroup extends SolidElement {
       this.syncTabsAndPanels();
       this.mutationObserver.observe(this, { attributes: true, childList: true, subtree: true });
       this.resizeObserver.observe(this.nav);
-      this.handleScroll();
       this.nav.addEventListener('scroll', () => this.handleScroll());
 
       // Wait for tabs and tab panels to be registered
@@ -115,6 +114,13 @@ export default class SdTabGroup extends SolidElement {
         intersectionObserver.observe(this.tabGroup);
       });
     });
+  }
+
+  updated(changedProperties: Map<string | number | symbol, unknown>) {
+    const oldValue = changedProperties.get('canScroll');
+    if (!oldValue && this.canScroll) {
+      this.handleScroll();
+    }
   }
 
   disconnectedCallback() {
