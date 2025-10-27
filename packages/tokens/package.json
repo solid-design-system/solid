@@ -16,7 +16,7 @@
   "files": [
     "dist",
     "themes",
-    "!themes/tailwind.css"
+    "!themes/components.css"
   ],
   "exports": {
     "./scss": "./dist/tokens.scss",

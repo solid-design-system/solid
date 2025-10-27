@@ -140,7 +140,7 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
   }
 
   #getCoreToken(token, variant, dictionary) {
-    const spacings = this.#getCoreSpacings('spacing', dictionary, variant);
+    const spacings = this.#getCoreSpacings(dictionary, variant);
     const value = this.getTokenValue(token);
     const core = spacings.find(c => c.value === value);
 
@@ -151,8 +151,10 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
     return core.path.map(this.cleanupTokenName);
   }
 
-  #getCoreSpacings(type, dictionary, variant) {
-    return this.getTokens('utilities', dictionary, variant).filter(node => node.path[0] === type);
+  #getCoreSpacings(dictionary, variant) {
+    return this.getTokens('utilities', dictionary, variant).filter(node => {
+      return node.path[0] === 'spacing';
+    });
   }
 
   #toRem(value) {
