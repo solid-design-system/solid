@@ -81,9 +81,21 @@ export const icons = {
       <path fill="currentColor" d="M10 5.4H2a.6.6 0 0 0 0 1.2h8a.6.6 0 0 0 0-1.2"/>
     </svg>
   `,
+  'minus-circle': `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
+      <path fill="currentColor" d="M49.5 33h-27a3 3 0 0 0 0 6h27a3 3 0 0 0 0-6Z"/>
+      <path fill="currentColor" d="M36 6a30 30 0 1 0 30 30A30 30 0 0 0 36 6Zm0 54a24 24 0 1 1 24-24 24 24 0 0 1-24 24Z"/>
+    </svg>
+  `,
   pause: `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path d="M9 22a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1zM6 4h2v16H6zm13 18q.4 0 .7-.3l.3-.7V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1zM16 4h2v16h-2z"/>
+    </svg>
+  `,
+  'plus-circle': `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
+      <path fill="currentColor" d="M49.5 33H39V22.5a3 3 0 0 0-6 0V33H22.5a3 3 0 0 0 0 6H33v10.5a3 3 0 0 0 6 0V39h10.5a3 3 0 0 0 0-6Z"/>
+      <path fill="currentColor" d="M36 6a30 30 0 1 0 30 30A30 30 0 0 0 36 6Zm0 54a24 24 0 1 1 24-24 24 24 0 0 1-24 24Z"/>
     </svg>
   `,
   risk: `

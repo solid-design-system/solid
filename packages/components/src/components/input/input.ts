@@ -765,7 +765,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     >
                       <slot name="decrement-number-stepper">
                         <sd-icon
-                          name="system/minus-circle"
+                          library="_internal"
+                          name="minus-circle"
                           label="Decrease value"
                           class=${cx(iconColor, iconMarginLeft, iconSize)}
                         ></sd-icon>
@@ -783,7 +784,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     >
                       <slot name="increment-number-stepper">
                         <sd-icon
-                          name="system/plus-circle"
+                          library="_internal"
+                          name="plus-circle"
                           label="Decrease value"
                           class=${cx(iconColor, iconMarginLeft, iconSize)}
                         ></sd-icon>
