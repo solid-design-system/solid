@@ -499,6 +499,12 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   }
 
   private formatInputValue(): string {
+    const loc = (this.locale || '').toLowerCase();
+    const langAttr = (this.getAttribute('lang') || '').toLowerCase();
+
+    const isGerman = loc.startsWith('de') || langAttr.startsWith('de');
+    const separator = isGerman ? '–' : '-';
+
     // Single mode: show DD.MM.YYYY
     if (!this.range) {
       return this.isoToDmy(this.value);
@@ -506,8 +512,8 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     // Range mode: DD.MM.YYYY - DD.MM.YYYY
     const start = this.isoToDmy(this.rangeStart);
     const end = this.isoToDmy(this.rangeEnd);
-    if (start && end) return `${start} - ${end}`;
-    if (start && !end) return `${start} -`;
+    if (start && end) return `${start} ${separator} ${end}`;
+    if (start && !end) return `${start} ${separator}`;
     return '';
   }
 
