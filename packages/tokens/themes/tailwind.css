@@ -148,7 +148,7 @@
   --spacing-6: var(--sd-spacing-6);
   --spacing-8: var(--sd-spacing-8);
   --spacing-varspacing: var(--tw-varspacing);
-  --spacing: var(--sd-spacing);
+  --spacing: var(--sd-spacing-1);
   --text-2xl: var(--sd-text-2xl);
   --text-3xl: var(--sd-text-3xl);
   --text-4xl: var(--sd-text-4xl);

@@ -41,10 +41,10 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     if (this.skip.includes(path[0])) return [];
 
     const isUtility = this.#isUtilityToken(path);
+    const isComponent = !isUtility && path[0].startsWith('components');
+    if (!isUtility && !isComponent) return [];
+
     const isCoreColor = this.#isCoreToken(path);
-
-    if (!isUtility && !path[0].startsWith('components')) return [];
-
     const fallback = this.#getFallbackColor(token);
     const processed = isUtility
       ? this.#processUtilityToken(token)
@@ -206,39 +206,10 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
   }
 
   #getCoreColors(dictionary, variant) {
-    const root = dictionary?.tokens?.[variant]?.utilities;
-    if (!root || typeof root !== 'object') return [];
-
-    const results = [];
-    const stack = [root];
-
-    while (stack.length) {
-      const node = stack.pop();
-
-      if (
-        node &&
-        typeof node === 'object' &&
-        'path' in node &&
-        !node.path.some(p => p.startsWith('_') && !p.startsWith('__'))
-      ) {
-        results.push({
-          path: node.path.slice(2).map(this.cleanupTokenName),
-          value: node.value
-        });
-        continue;
-      }
-
-      if (node && typeof node === 'object') {
-        for (const value of Object.values(node)) {
-          if (value && typeof value === 'object') stack.push(value);
-        }
-      }
-    }
-
-    return results.filter(
-      node =>
-        node.path[0] === 'color' &&
-        !['icon-fill', 'border', 'background', 'text', 'background-transparent', 'gradient'].includes(node.path[1])
+    return this.getTokens('utilities', dictionary, variant).filter(
+      utility =>
+        utility.path[0] === 'color' &&
+        !['icon-fill', 'border', 'background', 'text', 'background-transparent', 'gradient'].includes(utility.path[1])
     );
   }
 }

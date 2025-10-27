@@ -682,8 +682,8 @@
         "VariableID:44029:1676",
         "VariableID:44029:1677",
         "VariableID:44029:1678",
-        "VariableID:44029:1684",
         "VariableID:44029:1679",
+        "VariableID:44029:1684",
         "VariableID:44029:1681",
         "VariableID:44029:1682",
         "VariableID:44029:1683",
@@ -698,8 +698,8 @@
         "VariableID:44921:14808",
         "VariableID:44921:14809",
         "VariableID:44921:14810",
-        "VariableID:44612:9948",
         "VariableID:44921:22299",
+        "VariableID:44612:9948",
         "VariableID:44921:22300",
         "VariableID:44921:22302",
         "VariableID:44966:31913",
@@ -738,7 +738,14 @@
         "VariableID:44921:21016",
         "VariableID:44612:686",
         "VariableID:44023:39695",
+        "VariableID:45014:30944",
+        "VariableID:45014:30959",
+        "VariableID:45014:30581",
         "VariableID:44300:68679",
+        "VariableID:45014:35870",
+        "VariableID:45014:35994",
+        "VariableID:45014:30582",
+        "VariableID:45014:36471",
         "VariableID:44023:39696",
         "VariableID:44650:19862",
         "VariableID:44318:24450",
@@ -5825,7 +5832,7 @@
       "scopes": [],
       "valuesByMode": {
         "43138:0": {
-          "id": "VariableID:43927:4962",
+          "id": "VariableID:43927:4961",
           "type": "VARIABLE_ALIAS"
         }
       },
@@ -16784,6 +16791,181 @@
         "43174:13": "ui-light",
         "43174:14": "ui-dark",
         "44883:0": "vb"
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:45014:30581": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:45014:30581",
+      "key": "f7a847ff9296d9eb6bd0400fee2b978fb8458a00",
+      "name": "components/sd-navigation-item/__current-indicator/border-radius",
+      "remote": false,
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "43174:13": 0,
+        "43174:14": 0,
+        "44883:0": {
+          "id": "VariableID:44029:1678",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:45014:30582": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:45014:30582",
+      "key": "e7d0abd39e9bbdb916243314ad78c76614a4fb36",
+      "name": "components/sd-navigation-item/__current-indicator/height",
+      "remote": false,
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "id": "VariableID:44029:1658",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43174:14": {
+          "id": "VariableID:44029:1658",
+          "type": "VARIABLE_ALIAS"
+        },
+        "44883:0": 3
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:45014:30944": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:45014:30944",
+      "key": "bb0e8966751d26d88237a07e00d3e13753b2c2b4",
+      "name": "components/sd-navigation-item/color",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "id": "VariableID:43979:272",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43174:14": {
+          "id": "VariableID:43979:272",
+          "type": "VARIABLE_ALIAS"
+        },
+        "44883:0": {
+          "id": "VariableID:43979:278",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:45014:30959": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:45014:30959",
+      "key": "84d889bd592d05dfdd0e800291108dc0999d4620",
+      "name": "components/sd-navigation-item/--current/color",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "id": "VariableID:43979:272",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43174:14": {
+          "id": "VariableID:43979:272",
+          "type": "VARIABLE_ALIAS"
+        },
+        "44883:0": {
+          "id": "VariableID:43979:275",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:45014:35870": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:45014:35870",
+      "key": "b954bfd467b9dfbb17c864da6106248d0b6a3028",
+      "name": "components/sd-navigation-item/border-radius-top",
+      "remote": false,
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "43174:13": 0,
+        "43174:14": 0,
+        "44883:0": {
+          "id": "VariableID:44029:1676",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:45014:35994": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:45014:35994",
+      "key": "87b0c01cf0633c9b65092ac9747c990d31a6e672",
+      "name": "components/sd-navigation-item/border-radius-bottom",
+      "remote": false,
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "43174:13": 0,
+        "43174:14": 0,
+        "44883:0": {
+          "id": "VariableID:44029:1675",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:45014:36471": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:45014:36471",
+      "key": "ec8353d5cb70dd77a8d3f0f67c1c7d0c397eab33",
+      "name": "components/sd-navigation-item/font-size",
+      "remote": false,
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "id": "VariableID:43343:15191",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43174:14": {
+          "id": "VariableID:43343:15191",
+          "type": "VARIABLE_ALIAS"
+        },
+        "44883:0": {
+          "id": "VariableID:43343:15190",
+          "type": "VARIABLE_ALIAS"
+        }
       },
       "variableCollectionId": "VariableCollectionId:43174:55999"
     }

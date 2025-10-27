@@ -2,7 +2,9 @@
   color-scheme: light;
 
   --sd-theme: 'vb';
+  --sd-accordion-border-width: var(--sd-spacing-0\.5);
   --sd-accordion-color-text: var(--sd-color-black);
+  --sd-accordion-padding-block: var(--sd-spacing-4);
   --sd-accordion__chevron-color: var(--sd-color-neutral-600);
   --sd-accordion__indicator-color: rgba(255, 255, 255, 0);
   --sd-aspect-16\/10: 16 / 10;
@@ -26,6 +28,13 @@
   --sd-button--primary--hover-color-background: var(--sd-color-primary-600);
   --sd-button--primary--inverted--default-color-text: var(--sd-color-primary-900);
   --sd-button--primary--inverted--hover-color-text: var(--sd-color-primary-900);
+  --sd-button--size-lg-border-radius: 624.9375rem;
+  --sd-button--size-lg-font-size: 0.875rem;
+  --sd-button--size-lg-icon-font-size: 1.25rem;
+  --sd-button--size-lg-padding-block: 0.625rem;
+  --sd-button--size-md-border-radius: 624.9375rem;
+  --sd-button--size-md-font-size: 0.875rem;
+  --sd-button--size-md-padding-block: 0.625rem;
   --sd-color-accent-100: #f4cdb2;
   --sd-color-accent-200: #f5b691;
   --sd-color-accent-300: #f79a66;
@@ -89,6 +98,14 @@
   --sd-drop-shadow: 0 1px 3px var(--sd-color-neutral-800);
   --sd-font-weight-bold: 700;
   --sd-font-weight-normal: 400;
+  --sd-header-padding-bottom: var(--sd-spacing-0\.5);
+  --sd-navigation-item--current-color: var(--sd-color-black);
+  --sd-navigation-item-border-radius-bottom: var(--sd-spacing-0\.5);
+  --sd-navigation-item-border-radius-top: var(--sd-spacing-1\.5);
+  --sd-navigation-item-color: var(--sd-color-neutral-800);
+  --sd-navigation-item-font-size: 0.875rem;
+  --sd-navigation-item__current-indicator-border-radius: 624.9375rem;
+  --sd-navigation-item__current-indicator-height: 0.1875rem;
   --sd-opacity-0: 0%;
   --sd-opacity-100: 100%;
   --sd-opacity-10: 10%;
@@ -108,7 +125,7 @@
   --sd-radius-full: 624.9375rem;
   --sd-radius-lg: 0.5rem;
   --sd-radius-md: 0.375rem;
-  --sd-radius-none: 0rem;
+  --sd-radius-none: 0;
   --sd-radius-sm: 0.125rem;
   --sd-radius: 0.25rem;
   --sd-shadow-sm: 0.5px 0.5px 1.5px var(--sd-color-neutral-800);
@@ -141,7 +158,6 @@
   --sd-spacing-4: 1rem;
   --sd-spacing-6: 1.5rem;
   --sd-spacing-8: 2rem;
-  --sd-spacing: 0.25rem;
   --sd-tag--selected--default-color-background: var(--sd-color-primary-900);
   --sd-text-2xl: 1.75rem;
   --sd-text-3xl: 2rem;

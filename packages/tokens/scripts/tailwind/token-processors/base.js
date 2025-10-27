@@ -56,7 +56,13 @@ export class BaseTokenProcessor {
    * Cleans the token name by removing and replacing some special characters
    */
   cleanupTokenName(name) {
-    return name.replaceAll('*', '').replaceAll('|', '-').replace('', '').replaceAll('%', '');
+    return name
+      .replaceAll('*', '')
+      .replaceAll('|', '-')
+      .replace('', '')
+      .replaceAll('%', '')
+      .replaceAll(',', '\\.')
+      .replaceAll('/', '\\/');
   }
 
   /**
@@ -107,5 +113,38 @@ export class BaseTokenProcessor {
       return `var(${this.cssprefix(variable)}, ${fallback})`;
     }
     return `var(${this.cssprefix(variable)})`;
+  }
+
+  getTokens(type, dictionary, variant) {
+    const root = dictionary?.tokens?.[variant]?.[type];
+    if (!root || typeof root !== 'object') return [];
+
+    const results = [];
+    const stack = [root];
+
+    while (stack.length) {
+      const node = stack.pop();
+
+      if (
+        node &&
+        typeof node === 'object' &&
+        'path' in node &&
+        !node.path.some(p => p.startsWith('_') && !p.startsWith('__'))
+      ) {
+        results.push({
+          path: node.path.slice(2).map(this.cleanupTokenName),
+          value: node.value
+        });
+        continue;
+      }
+
+      if (node && typeof node === 'object') {
+        for (const value of Object.values(node)) {
+          if (value && typeof value === 'object') stack.push(value);
+        }
+      }
+    }
+
+    return results;
   }
 }
