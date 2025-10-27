@@ -72,19 +72,19 @@ export const icons = {
     </svg>
   `,
   'status-check': `
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 13">
-      <path fill="currentColor" d="M10 1.1 4.3 9.5 1.9 7a.6.6 0 0 0-1 .5L1 8l3 3 .5.1q.4 0 .5-.2l6-9a1 1 0 0 0-.2-1 1 1 0 0 0-.9.2"/>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 13">
+      <path d="M10 1.1 4.3 9.5 1.9 7a.6.6 0 0 0-1 .5L1 8l3 3 .5.1q.4 0 .5-.2l6-9a1 1 0 0 0-.2-1 1 1 0 0 0-.9.2"/>
     </svg>
   `,
   'status-minus': `
-    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
-      <path fill="currentColor" d="M10 5.4H2a.6.6 0 0 0 0 1.2h8a.6.6 0 0 0 0-1.2"/>
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+      <path d="M10 5.4H2a.6.6 0 0 0 0 1.2h8a.6.6 0 0 0 0-1.2"/>
     </svg>
   `,
   'minus-circle': `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
-      <path fill="currentColor" d="M49.5 33h-27a3 3 0 0 0 0 6h27a3 3 0 0 0 0-6Z"/>
-      <path fill="currentColor" d="M36 6a30 30 0 1 0 30 30A30 30 0 0 0 36 6Zm0 54a24 24 0 1 1 24-24 24 24 0 0 1-24 24Z"/>
+      <path d="M49.5 33h-27a3 3 0 0 0 0 6h27a3 3 0 0 0 0-6Z"/>
+      <path d="M36 6a30 30 0 1 0 30 30A30 30 0 0 0 36 6Zm0 54a24 24 0 1 1 24-24 24 24 0 0 1-24 24Z"/>
     </svg>
   `,
   pause: `
@@ -94,8 +94,8 @@ export const icons = {
   `,
   'plus-circle': `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
-      <path fill="currentColor" d="M49.5 33H39V22.5a3 3 0 0 0-6 0V33H22.5a3 3 0 0 0 0 6H33v10.5a3 3 0 0 0 6 0V39h10.5a3 3 0 0 0 0-6Z"/>
-      <path fill="currentColor" d="M36 6a30 30 0 1 0 30 30A30 30 0 0 0 36 6Zm0 54a24 24 0 1 1 24-24 24 24 0 0 1-24 24Z"/>
+      <path d="M49.5 33H39V22.5a3 3 0 0 0-6 0V33H22.5a3 3 0 0 0 0 6H33v10.5a3 3 0 0 0 6 0V39h10.5a3 3 0 0 0 0-6Z"/>
+      <path d="M36 6a30 30 0 1 0 30 30A30 30 0 0 0 36 6Zm0 54a24 24 0 1 1 24-24 24 24 0 0 1-24 24Z"/>
     </svg>
   `,
   risk: `
@@ -110,9 +110,9 @@ export const icons = {
     </svg>
   `,
   'confirm-circle': `
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20m0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16"/>
-      <path fill="currentColor" d="M15.8 7.5a1 1 0 0 0-1.4.3L10.9 14 9 12.3a1 1 0 0 0-1.6.7q0 .4.2.7l2.7 2.7q.3.2.7.3h.1q.5-.1.8-.5l4.3-7.4.1-.5a1 1 0 0 0-.5-.8"/>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20m0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16"/>
+      <path d="M15.8 7.5a1 1 0 0 0-1.4.3L10.9 14 9 12.3a1 1 0 0 0-1.6.7q0 .4.2.7l2.7 2.7q.3.2.7.3h.1q.5-.1.8-.5l4.3-7.4.1-.5a1 1 0 0 0-.5-.8"/>
     </svg>
   `,
   warning: `
@@ -129,29 +129,29 @@ export const icons = {
   `,
   'magnifying-glass': `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path fill="currentColor" d="m21.7 20.3-7-7h-.1a7 7 0 1 0-1.4 1.4v-.1l.1.1 7 7a1 1 0 0 0 1.4 0 1 1 0 0 0 0-1.4M9 14a5 5 0 1 1 5-5 5 5 0 0 1-5 5"/>
+      <path d="m21.7 20.3-7-7h-.1a7 7 0 1 0-1.4 1.4v-.1l.1.1 7 7a1 1 0 0 0 1.4 0 1 1 0 0 0 0-1.4M9 14a5 5 0 1 1 5-5 5 5 0 0 1-5 5"/>
     </svg>
   `,
   transcript: `
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M19 22H5a1 1 0 0 1-1-1V3q0-1 1-1h9q.4 0 .7.3l5 5q.3.3.3.7v13q0 1-1 1M6 20h12V8.4L13.6 4H6z"/>
-      <path fill="currentColor" d="M19 10h-6a1 1 0 0 1-1-1V3a1 1 0 1 1 2 0v5h5a1 1 0 1 1 0 2m-3 4H8a1 1 0 1 1 0-2h8a1 1 0 1 1 0 2m-2 4H8a1 1 0 1 1 0-2h6a1 1 0 1 1 0 2"/>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M19 22H5a1 1 0 0 1-1-1V3q0-1 1-1h9q.4 0 .7.3l5 5q.3.3.3.7v13q0 1-1 1M6 20h12V8.4L13.6 4H6z"/>
+      <path d="M19 10h-6a1 1 0 0 1-1-1V3a1 1 0 1 1 2 0v5h5a1 1 0 1 1 0 2m-3 4H8a1 1 0 1 1 0-2h8a1 1 0 1 1 0 2m-2 4H8a1 1 0 1 1 0-2h6a1 1 0 1 1 0 2"/>
     </svg>
   `,
   mute: `
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M8.7 0a1 1 0 0 0-1 .3L3.8 4H1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h3l3.6 3.7.7.3h.4q.6-.3.6-1V1a1 1 0 0 0-.6-1M2 6h1.3v4H2zm5.3 6.6-2-2V5.4l2-2zm12.4-9a1 1 0 0 0-1.4 0l-3 3-3-3A1 1 0 0 0 11 5l3 3-3 3a1 1 0 0 0 1.4 1.4l3-3 2.9 3a1 1 0 0 0 1.4-1.4l-3-3 3-3a1 1 0 0 0 0-1.4"/>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M8.7 0a1 1 0 0 0-1 .3L3.8 4H1a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h3l3.6 3.7.7.3h.4q.6-.3.6-1V1a1 1 0 0 0-.6-1M2 6h1.3v4H2zm5.3 6.6-2-2V5.4l2-2zm12.4-9a1 1 0 0 0-1.4 0l-3 3-3-3A1 1 0 0 0 11 5l3 3-3 3a1 1 0 0 0 1.4 1.4l3-3 2.9 3a1 1 0 0 0 1.4-1.4l-3-3 3-3a1 1 0 0 0 0-1.4"/>
     </svg>
   `,
   volume: `
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M10.7 4a1 1 0 0 0-1 .3L5.8 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h3l3.6 3.7.7.3h.4q.6-.4.6-1V5a1 1 0 0 0-.6-1M4 10h1.3v4H4zm5.3 6.6-2-2V9.4l2-2zM18.6 3a1 1 0 0 0-.5 1.3Q20 7.8 20 12t-2 7.6h.1a1 1 0 0 0 .4 1.3 1 1 0 0 0 1.4-.4q2-3.8 2.1-8.5 0-4.6-2.2-8.5a1 1 0 0 0-1.3-.4"/>
-      <path fill="currentColor" d="M14.4 5.2a1 1 0 0 0-.2 1.4Q16 9.3 16 12t-1.8 5.4a1 1 0 0 0 1.6 1.2Q18 15.2 18 12t-2.2-6.6a1 1 0 0 0-1.4-.2"/>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M10.7 4a1 1 0 0 0-1 .3L5.8 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h3l3.6 3.7.7.3h.4q.6-.4.6-1V5a1 1 0 0 0-.6-1M4 10h1.3v4H4zm5.3 6.6-2-2V9.4l2-2zM18.6 3a1 1 0 0 0-.5 1.3Q20 7.8 20 12t-2 7.6h.1a1 1 0 0 0 .4 1.3 1 1 0 0 0 1.4-.4q2-3.8 2.1-8.5 0-4.6-2.2-8.5a1 1 0 0 0-1.3-.4"/>
+      <path d="M14.4 5.2a1 1 0 0 0-.2 1.4Q16 9.3 16 12t-1.8 5.4a1 1 0 0 0 1.6 1.2Q18 15.2 18 12t-2.2-6.6a1 1 0 0 0-1.4-.2"/>
     </svg>
   `,
   reload: `
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-      <path fill="currentColor" d="m1.7 7.11 1.33 1.34C3.13 3.69 6.75 0 11.33 0a8.67 8.67 0 1 1 0 17.33 1 1 0 0 1 0-2 6.67 6.67 0 1 0 0-13.33C7.8 2 5.14 4.74 5 8.42l1.34-1.3a1 1 0 1 1 1.41 1.41l-3.02 3.02a1 1 0 0 1-1.42 0L.3 8.53A1 1 0 0 1 1.7 7.11z"/>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="m1.7 7.11 1.33 1.34C3.13 3.69 6.75 0 11.33 0a8.67 8.67 0 1 1 0 17.33 1 1 0 0 1 0-2 6.67 6.67 0 1 0 0-13.33C7.8 2 5.14 4.74 5 8.42l1.34-1.3a1 1 0 1 1 1.41 1.41l-3.02 3.02a1 1 0 0 1-1.42 0L.3 8.53A1 1 0 0 1 1.7 7.11z"/>
     </svg>
   `
 };
