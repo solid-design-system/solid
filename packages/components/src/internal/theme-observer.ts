@@ -14,6 +14,8 @@ export class ThemeObserver {
   connect() {
     this.observer = new StyleObserver(records => {
       const theme: string = records?.[0]?.value?.replaceAll(`'`, '');
+      if (!theme) return;
+
       this.callback(theme);
     });
 
