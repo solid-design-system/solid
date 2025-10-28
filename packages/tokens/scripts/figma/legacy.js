@@ -117,8 +117,8 @@ export class FigmaLegacyTokens {
       'loader-color-white': {
         type: 'keyframes',
         value: {
-          '0%, 100%': { color: 'var(--sd-color-icon-fill-white, var(--sd-color-white));' },
-          '50%': { color: 'var(--sd-color-icon-fill-white, var(--sd-color-white));', opacity: '20%' }
+          '0%, 100%': { color: 'var(--sd-color-icon-fill-white, var(--sd-color-white))' },
+          '50%': { color: 'var(--sd-color-icon-fill-white, var(--sd-color-white))', opacity: '20%' }
         }
       },
       'loader-color-current': {
