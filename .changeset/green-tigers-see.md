@@ -1,3 +1,31 @@
 ---
 ---
 
+Add component-specific theming tokens:
+
+- Accordion
+- Breadcrumb
+- Button
+- Checkbox
+- Checkbox-group
+- Combobox
+- Dialog
+- Drawer
+- Dropdown
+- Header
+- Icons
+- Input
+- Link
+- Menu
+- Navigation-item
+- Notification
+- Option
+- Radio
+- Radio-button
+- Range
+- Switch
+- Tab
+- Tab-group
+- Tag
+- Taser-media
+- Textarea
