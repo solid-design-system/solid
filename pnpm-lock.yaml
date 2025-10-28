@@ -518,6 +518,9 @@ importers:
       '@tokens-studio/sd-transforms':
         specifier: ^2.0.1
         version: 2.0.1(style-dictionary@5.1.1)
+      ora:
+        specifier: ^9.0.0
+        version: 9.0.0
       picocolors:
         specifier: ^1.1.1
         version: 1.1.1
