@@ -140,8 +140,8 @@ export const LocaleAware = {
   name: 'Locale Aware',
   render: () => {
     return html`<div class="flex flex-col gap-4">
-      <sd-datepicker lang="de"></sd-datepicker>
-      <sd-datepicker lang="de" range rangeStart="2025.10.02" rangeEnd="2025.10.12"></sd-datepicker>
+      <sd-datepicker lang="de" locale="de-DE"></sd-datepicker>
+      <sd-datepicker lang="de" locale="de-DE" range rangeStart="2025.10.02" rangeEnd="2025.10.12"></sd-datepicker>
     </div>`;
   }
 };
