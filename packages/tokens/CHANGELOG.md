@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 6.0.0-next.1
+
+### Patch Changes
+
+- Optimize output for TailwindCSS _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`f3c4ac6`](https://github.com/solid-design-system/solid/commit/f3c4ac6c688f8a1a76de2967e3b8920c81959d71) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 6.0.0-next.0
 
 ### Major Changes
