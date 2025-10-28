@@ -3,6 +3,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { FigmaClient } from './figma/index.js';
 import { fileURLToPath } from 'url';
 import { generateScss } from './scss/index.js';
+import { minimizeCss } from '../../components/scripts/esbuild-plugin-lit-tailwind-and-minify.js';
 import { OUTPUT_DIR } from './config.js';
 import { register } from '@tokens-studio/sd-transforms';
 import path from 'node:path';
@@ -101,52 +102,77 @@ const getStylesheetThemes = stylesheet => {
   return themes;
 };
 
-// --- Process figma variables ---
-const figma = new FigmaClient('figma-variables', variables);
-figma.process().save();
+//
+// Called on SIGINT or SIGTERM to cleanup the build and child processes.
+//
+function handleCleanup() {
+  process.exit();
+}
 
-// --- Build the main stylesheet file ---
-let stylesheet = await buildStylesheet({
-  buildPath: config.buildPath,
-  input: config.input,
-  output: config.output,
-  defaultTheme: config.defaultTheme
-});
+async function runBuild() {
+  // --- Process figma variables ---
+  const figma = new FigmaClient('figma-variables', variables);
+  figma.process().save();
 
-// --- Extract theme blocks as separate files ---
-const themes = getStylesheetThemes(stylesheet);
-themes.forEach(theme => {
-  stylesheet = stylesheet
-    .replace(theme.content, '')
-    .replace(`/* ${config.themeBlock}[${theme.name}] */`, '')
-    .replace(`/* ${config.themeBlock} */`, '')
-    .trim();
+  // --- Build the main stylesheet file ---
+  let stylesheet = await buildStylesheet({
+    buildPath: config.buildPath,
+    input: config.input,
+    output: config.output,
+    defaultTheme: config.defaultTheme
+  });
 
-  theme.content = theme.content.trim();
+  // --- Extract theme blocks as separate files ---
+  const themes = getStylesheetThemes(stylesheet);
+  themes.forEach(theme => {
+    stylesheet = stylesheet
+      .replace(theme.content, '')
+      .replace(`/* ${config.themeBlock}[${theme.name}] */`, '')
+      .replace(`/* ${config.themeBlock} */`, '')
+      .trim();
 
-  const iconsPath = `${config.buildPath}/${theme.name}/icons.css`;
-  if (existsSync(iconsPath)) {
-    const icons = readFileSync(iconsPath, { encoding: 'utf-8' });
-    theme.content = `${theme.content.trim()}\n\n${icons.replaceAll('--sd-icon-', `--sd-icon--${theme.name}-`)}`;
-  }
+    const iconsPath = `${config.buildPath}/${theme.name}/icons.css`;
+    if (existsSync(iconsPath)) {
+      const icons = readFileSync(iconsPath, { encoding: 'utf-8' });
+      theme.content = `${theme.content.trim()}\n\n${icons.replaceAll('--sd-icon-', `--sd-icon--${theme.name}-`)}`;
+    }
 
-  mkdirSync(`${config.buildPath}/${theme.name}`, { recursive: true });
+    theme.content = theme.content.trim();
+
+    mkdirSync(`${config.buildPath}/${theme.name}`, { recursive: true });
+    writeFileSync(`${config.buildPath}/${config.output}.css`, stylesheet);
+    writeFileSync(`${config.buildPath}/${theme.name}/${theme.name}.css`, theme.content);
+  });
+
+  // --- Extract component block as a separate file ---
+  const components = extractComponentsBlock(stylesheet);
+  stylesheet = stylesheet.replace(components.content, '').replaceAll(`/* ${config.componentsBlock} */`, '').trim();
   writeFileSync(`${config.buildPath}/${config.output}.css`, stylesheet);
-  writeFileSync(`${config.buildPath}/${theme.name}/${theme.name}.css`, theme.content);
-});
+  writeFileSync(`${config.buildPath}/components.css`, components.content.trim());
 
-// --- Extract component block as a separate file ---
-const components = extractComponentsBlock(stylesheet);
-stylesheet = stylesheet.replace(components.content, '').replaceAll(`/* ${config.componentsBlock} */`, '');
-writeFileSync(`${config.buildPath}/${config.output}.css`, stylesheet.trim());
-writeFileSync(`${config.buildPath}/components.css`, components.content.trim());
+  // --- Create themes css files ---
+  themes.forEach(theme => {
+    mkdirSync(`./dist/${config.buildPath}/${theme.name}`, { recursive: true });
+    writeFileSync(`./dist/${config.buildPath}/${theme.name}/${theme.name}.css`, minimizeCss(theme.content));
+  });
 
-// --- Build dist theme.js ---
-const tailwindtheme = (await import('../src/theme.mjs')).default;
-const dist = path.resolve(fileURLToPath(import.meta.url), '../../dist');
-mkdirSync(dist, { recursive: true });
-writeFileSync(path.resolve(dist, './theme.js'), `export default ${JSON.stringify(tailwindtheme)}`);
+  // --- Copy tailwind.css to dist ---
+  writeFileSync(`./dist/${config.buildPath}/${config.output}.css`, stylesheet);
 
-// --- Build tokens.scss ---
-const scss = generateScss(tailwindtheme);
-writeFileSync(path.resolve(dist, './tokens.scss'), scss);
+  // --- Build dist theme.js ---
+  const tailwindtheme = (await import('../src/theme.mjs')).default;
+  const dist = path.resolve(fileURLToPath(import.meta.url), '../../dist');
+  mkdirSync(dist, { recursive: true });
+  writeFileSync(path.resolve(dist, './theme.js'), `export default ${JSON.stringify(tailwindtheme)}`);
+
+  // --- Build tokens.scss ---
+  const scss = generateScss(tailwindtheme);
+  writeFileSync(path.resolve(dist, './tokens.scss'), scss);
+
+  process.exit();
+}
+
+runBuild();
+
+process.on('SIGINT', handleCleanup);
+process.on('SIGTERM', handleCleanup);
