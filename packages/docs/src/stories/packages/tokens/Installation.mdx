@@ -1,0 +1,213 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import '../../../../../components/src/components/tab-group/tab-group';
+import '../../../../../components/src/components/tab/tab';
+import '../../../../../components/src/components/tab-panel/tab-panel';
+
+<Meta title="Packages/Tokens/Installation" />
+
+# Installation
+
+## Themes
+
+Themes allow you to easily switch between predefined themes (such as light or dark mode, or brand-specific) and even create your own custom themes by overriding CSS variables.
+
+### Importing themes
+
+> This only has to be done once per document, every application and component using Solid Components/Styles on that page can then automatically use the included themes.
+
+```bash
+npm install @solid-design-system/tokens
+```
+
+Then include the CSS file of the theme you want to use. The following example, shows the usage of the `ui-light` theme:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css"
+/>
+```
+
+Each theme is defined in a CSS file containing variables.
+You must import at least one theme to use Solid Components or Styles.
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="npm" variant="container"> NPM </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="cdn" variant="container"> CDN </sd-tab>
+  <sd-tab-panel name="npm">
+    ```js
+    import '@solid-design-system/tokens/themes/ui-light/ui-light.css';
+    ```
+
+  </sd-tab-panel>
+  <sd-tab-panel name="cdn">
+    ```html
+    <link
+      rel="stylesheet"
+      href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css"
+    />
+    ```
+  </sd-tab-panel>
+</sd-tab-group>
+
+### Applying a theme
+
+To apply a theme to your entire document (or any container), use the theme's class name and set it on the body or the desired element.
+
+> After importing it, `ui-light` is automatically applied, if no other theme is specified.
+
+Each theme class follows this pattern: `sd-theme-[name]`.
+
+Example for `ui-dark`:
+
+```html
+<body class="sd-theme-ui-dark">
+  <!-- Your website -->
+</body>
+```
+
+This will apply the UI Dark theme globally on your website. This makes it easy to switch between themes, for example when toggling between light and dark mode.
+
+### Creating your own theme
+
+You can create your own theme by overriding CSS variables.
+There are two main types of variables (tokens):
+
+#### **1 - Primitive tokens**
+
+Primitive variables define the base values used across all components.
+They act as fallbacks for all other variables.
+
+Changing the primary color globally:
+
+```css
+--sd-color-primary: #ff0055;
+```
+
+This change will affect every component that uses the primary color.
+
+#### **2 - Semantic tokens**
+
+Semantic tokens are divided into general and component-specific variables.
+
+##### **2.1 - General semantic tokens**
+
+These let you target specific use cases without interfering with other parts that use the same primitive variable (e.g., primary background color without affecting all primary color usages).
+
+Example:
+
+```css
+--background-color-primary: #ffe6ee;
+```
+
+This overrides only the “primary background” usages, falling back to the primitive tokens otherwise.
+
+##### **2.2 - Component-specific semantic tokens**
+
+If you want to customize variables for a specific component only, you can override its semantic tokens.
+Example, changing only the primary background color of the `sd-button` component:
+
+```css
+--sd-button--primary--default--default-color-background: #ff0055;
+```
+
+<blockquote>The list of available component variables is documented on each component’s `docs` page.</blockquote>
+
+Currently, component-specific theming is available for:
+
+- [sd-accordion](./?path=/docs/components-sd-accordion--docs)
+- [sd-audio](./?path=/docs/components-sd-audio--docs)
+- [sd-breadcrumb](./?path=/docs/components-sd-breadcrumb--docs)
+- [sd-button](./?path=/docs/components-sd-button--docs)
+- [sd-chip](./?path=/docs/components-sd-chip--docs)
+- [sd-container](./?path=/docs/components-sd-container--docs)
+- [sd-flag](./?path=/docs/components-sd-flag--docs)
+- [sd-footnotes](./?path=/docs/components-sd-footnotes--docs)
+- [sd-header](./?path=/docs/components-sd-header--docs)
+- [sd-loader](./?path=/docs/components-sd-loader--docs)
+- [sd-tag](./?path=/docs/components-sd-tag--docs)
+
+**Note:** Even if a component doesn’t yet have full semantic variable support, you can still apply overrides within the component’s scope using general semantic tokens.
+
+Example:
+
+```css
+sd-button {
+  --background-color-primary: #ff0055;
+}
+```
+
+This will only affect the primary background color inside `sd-button` components.
+
+## Tokens
+
+You can use design tokens to build own components and websites. The following solutions are provided:
+
+- Vanilla CSS (via the provided CSS variables)
+- SCSS
+- TailwindCSS (v3)
+- TailwindCSS (v4)
+
+> This is still Work in Progress.
+
+### Vanilla CSS
+
+Import a theme as described above and use the CSS variables in your own styles.
+
+Example:
+
+```css
+.my-special-element {
+  background-color: var(--sd-color-background-primary-100);
+  color: var(--sd-color-text-black);
+}
+```
+
+### SCSS
+
+Import the SCSS files from `@solid-design-system/tokens` and use the SCSS variables in your own styles.
+
+```scss
+@import '@solid-design-system/tokens/scss/index.scss';
+```
+
+Example:
+
+```scss
+.my-special-element {
+  background-color: $sd-color-background-primary-100;
+  color: $sd-color-text-black;
+}
+```
+
+### TailwindCSS (v4)
+
+Import the TailwindCSS configuration from `@solid-design-system/tokens` and extend your own Tailwind configuration with it.
+
+```css
+@import 'tailwindcss';
+@import '@solid-design-system/tokens/tailwind/tailwind.css';
+```
+
+This will automatically include all Solid Design System tokens into your Tailwind setup and make them available as classes.
+
+### TailwindCSS (v3)
+
+Import the TailwindCSS configuration from `@solid-design-system/tokens` and extend your own Tailwind configuration with it.
+
+```js
+// tailwind.config.js
+const solidDesignSystemTokens = require('@solid-design-system/tokens/tailwind/tailwind.config.cjs');
+
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        ...solidDesignSystemTokens.colors
+      }
+    }
+  }
+};
+```

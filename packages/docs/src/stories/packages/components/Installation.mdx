@@ -1,9 +1,6 @@
 import { Markdown, Meta } from '@storybook/addon-docs/blocks';
 import Readme from '../../../../../components/README.md?raw';
-import '../../../../../components/src/components/accordion/accordion';
-import '../../../../../components/src/components/tab-group/tab-group';
-import '../../../../../components/src/components/tab/tab';
-import '../../../../../components/src/components/tab-panel/tab-panel';
+import '../../../../../components/src/solid-components';
 
 <Meta title="Packages/Components/Installation" />
 
@@ -12,6 +9,27 @@ import '../../../../../components/src/components/tab-panel/tab-panel';
 You can load Solid Components via CDN or by installing it locally.
 
 ## Prerequisites
+
+### Theme
+
+Solid Components come without any theme by default. You have to install `@solid-design-system/tokens` and integrate a theme via CSS yourself:
+
+> This only has to be done once per document, every application and component using Solid Components on that page can then automatically use the included themes.
+
+```bash
+npm install @solid-design-system/tokens
+```
+
+Then include the CSS file of the theme you want to use. For example, to use `ui-light` theme, add the following line to your HTML head:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css"
+/>
+```
+
+For more information about themes, please refer to the documentation in the [tokens package](?path=/docs/packages-tokens-installation--docs).
 
 ### Fonts
 
