@@ -680,6 +680,13 @@ export const storybookUtilities = {
    */
   codeOptimizer: (code: string) => {
     const body = new DOMParser().parseFromString(code, 'text/html').body;
+    const doc = new DOMParser().parseFromString(code, 'text/html');
+    const style = doc.head.querySelector('style');
+    const componentStyle = style?.textContent?.replace(/\s+/g, '') ?? '';
+    const componentName = body.firstElementChild?.tagName?.toLowerCase() || '';
+    const styleTag =
+      componentStyle && componentStyle.includes(`${componentName}`) ? `<style>${componentStyle}</style>` : '';
+
     const templates = body.querySelectorAll('.template');
     let templateInnerHTML = '';
     if (templates.length) {
@@ -687,7 +694,7 @@ export const storybookUtilities = {
         .map(template => template.innerHTML)
         .join('\n');
     } else {
-      templateInnerHTML = body.innerHTML;
+      templateInnerHTML = body.innerHTML + styleTag;
     }
     templateInnerHTML = templateInnerHTML
       .replace(/<style><\/style>/g, '')
