@@ -28,26 +28,24 @@ test('Sample A', async ({ page }) => {
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-header-screenshots-sd-header--sample-a&viewMode=story'
   );
   await expect(page.locator('body')).toMatchAriaSnapshot(`
-      - region "Top right notifications"
-      - region "Bottom center notifications"
-      - banner:
-        - link "Logo":
-          - /url: "#"
-          - img "Logo"
-        - button "Über Uns"
-        - button "Märkte"
-        - button "Presseservice"
-        - button "Nachhaltigkeit"
-        - button "Karriere"
-        - button "Other locations":
-          - img "Other locations":
-            - img
-        - button "Search":
-          - img "Search":
-            - img
-        - button "Mein Depot"
-        - button "Meine Bewerbung"
-    `);
+    - region "Top right notifications"
+    - region "Bottom center notifications"
+    - banner:
+      - link "Logo":
+        - /url: "#"
+        - img "Logo"
+      - button "Über Uns"
+      - button "Märkte"
+      - button "Presseservice"
+      - button "Nachhaltigkeit"
+      - button "Karriere"
+      - button "Other locations":
+        - img "Other locations"
+      - button "Search":
+        - img "Search"
+      - button "Mein Depot"
+      - button "Meine Bewerbung"
+  `);
 });
 
 test('Sample A Tablet', async ({ page }) => {
@@ -55,26 +53,24 @@ test('Sample A Tablet', async ({ page }) => {
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-header-screenshots-sd-header--sample-a-md&viewMode=story'
   );
   await expect(page.locator('body')).toMatchAriaSnapshot(`
-      - region "Top right notifications"
-      - region "Bottom center notifications"
-      - banner:
-        - link "Logo":
-          - /url: "#"
-          - img "Logo"
-        - button "Über Uns"
-        - button "Märkte"
-        - button "Presseservice"
-        - button "Nachhaltigkeit"
-        - button "Karriere"
-        - button "Other locations":
-          - img "Other locations":
-            - img
-        - button "Search":
-          - img "Search":
-            - img
-        - button "Mein Depot"
-        - button "Meine Bewerbung"
-    `);
+    - region "Top right notifications"
+    - region "Bottom center notifications"
+    - banner:
+      - link "Logo":
+        - /url: "#"
+        - img "Logo"
+      - button "Über Uns"
+      - button "Märkte"
+      - button "Presseservice"
+      - button "Nachhaltigkeit"
+      - button "Karriere"
+      - button "Other locations":
+        - img "Other locations"
+      - button "Search":
+        - img "Search"
+      - button "Mein Depot"
+      - button "Meine Bewerbung"
+  `);
 });
 
 test('Sample A Small Mobile', async ({ page }) => {
@@ -82,26 +78,24 @@ test('Sample A Small Mobile', async ({ page }) => {
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-header-screenshots-sd-header--sample-a-sm&viewMode=story'
   );
   await expect(page.locator('body')).toMatchAriaSnapshot(`
-      - region "Top right notifications"
-      - region "Bottom center notifications"
-      - banner:
-        - link "Logo":
-          - /url: "#"
-          - img "Logo"
-        - button "Über Uns"
-        - button "Märkte"
-        - button "Presseservice"
-        - button "Nachhaltigkeit"
-        - button "Karriere"
-        - button "Other locations":
-          - img "Other locations":
-            - img
-        - button "Search":
-          - img "Search":
-            - img
-        - button "Mein Depot"
-        - button "Meine Bewerbung"
-    `);
+    - region "Top right notifications"
+    - region "Bottom center notifications"
+    - banner:
+      - link "Logo":
+        - /url: "#"
+        - img "Logo"
+      - button "Über Uns"
+      - button "Märkte"
+      - button "Presseservice"
+      - button "Nachhaltigkeit"
+      - button "Karriere"
+      - button "Other locations":
+        - img "Other locations"
+      - button "Search":
+        - img "Search"
+      - button "Mein Depot"
+      - button "Meine Bewerbung"
+  `);
 });
 
 test('Sample B', async ({ page }) => {
@@ -109,25 +103,23 @@ test('Sample B', async ({ page }) => {
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-header-screenshots-sd-header--sample-b&viewMode=story'
   );
   await expect(page.locator('body')).toMatchAriaSnapshot(`
-      - region "Top right notifications"
-      - region "Bottom center notifications"
-      - banner:
-        - link "Logo":
-          - /url: "#"
-          - img "Logo"
-        - text: Partnerlogo
-        - button "Über Uns"
-        - button "Märkte"
-        - button "Presseservice"
-        - button "Nachhaltigkeit"
-        - button "Karriere"
-        - button "Other Locations":
-          - img "Other Locations":
-            - img
-        - button "Search":
-          - img "Search":
-            - img
-    `);
+    - region "Top right notifications"
+    - region "Bottom center notifications"
+    - banner:
+      - link "Logo":
+        - /url: "#"
+        - img "Logo"
+      - text: Partnerlogo
+      - button "Über Uns"
+      - button "Märkte"
+      - button "Presseservice"
+      - button "Nachhaltigkeit"
+      - button "Karriere"
+      - button "Other Locations":
+        - img "Other Locations"
+      - button "Search":
+        - img "Search"
+  `);
 });
 
 test('Tablet', async ({ page }) => {
@@ -135,25 +127,23 @@ test('Tablet', async ({ page }) => {
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-header-screenshots-sd-header--sample-b-md&viewMode=story'
   );
   await expect(page.locator('body')).toMatchAriaSnapshot(`
-      - region "Top right notifications"
-      - region "Bottom center notifications"
-      - banner:
-        - link "Logo":
-          - /url: "#"
-          - img "Logo"
-        - text: Partnerlogo
-        - button "Über Uns"
-        - button "Märkte"
-        - button "Presseservice"
-        - button "Nachhaltigkeit"
-        - button "Karriere"
-        - button "Other Locations":
-          - img "Other Locations":
-            - img
-        - button "Search":
-          - img "Search":
-            - img
-    `);
+    - region "Top right notifications"
+    - region "Bottom center notifications"
+    - banner:
+      - link "Logo":
+        - /url: "#"
+        - img "Logo"
+      - text: Partnerlogo
+      - button "Über Uns"
+      - button "Märkte"
+      - button "Presseservice"
+      - button "Nachhaltigkeit"
+      - button "Karriere"
+      - button "Other Locations":
+        - img "Other Locations"
+      - button "Search":
+        - img "Search"
+  `);
 });
 
 test('Small mobile', async ({ page }) => {
@@ -161,23 +151,21 @@ test('Small mobile', async ({ page }) => {
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-header-screenshots-sd-header--small-viewport-sample-2&viewMode=story'
   );
   await expect(page.locator('body')).toMatchAriaSnapshot(`
-      - region "Top right notifications"
-      - region "Bottom center notifications"
-      - banner:
-        - link "Logo":
-          - /url: "#"
-          - img "Logo"
-        - text: Partnerlogo
-        - button "Über Uns"
-        - button "Märkte"
-        - button "Presseservice"
-        - button "Nachhaltigkeit"
-        - button "Karriere"
-        - button "Other Locations":
-          - img "Other Locations":
-            - img
-        - button "Search":
-          - img "Search":
-            - img
-    `);
+    - region "Top right notifications"
+    - region "Bottom center notifications"
+    - banner:
+      - link "Logo":
+        - /url: "#"
+        - img "Logo"
+      - text: Partnerlogo
+      - button "Über Uns"
+      - button "Märkte"
+      - button "Presseservice"
+      - button "Nachhaltigkeit"
+      - button "Karriere"
+      - button "Other Locations":
+        - img "Other Locations"
+      - button "Search":
+        - img "Search"
+  `);
 });

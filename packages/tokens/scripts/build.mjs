@@ -50,7 +50,7 @@ async function runBuild() {
         .replace(`/* ${config.themeBlock} */`, '')
         .trim();
 
-      for (let append of toAppend) {
+      for (const append of toAppend) {
         const filepath = `${config.buildPath}/${theme.name}/${append.name}`;
         if (!existsSync(filepath)) continue;
 

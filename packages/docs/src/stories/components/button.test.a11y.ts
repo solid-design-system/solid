@@ -751,38 +751,35 @@ test('Icon Only', async ({ page }) => {
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=components-sd-button-screenshots-sd-button--icon-only&viewMode=story'
   );
   await expect(page.locator('body')).toMatchAriaSnapshot(`
-      - region "Top right notifications"
-      - region "Bottom center notifications"
-      - table:
-        - rowgroup:
-          - row "size":
-            - cell
-            - cell "size":
-              - code: size
-          - row "lg md sm":
-            - cell
-            - cell "lg":
-              - code: lg
-            - cell "md":
-              - code: md
-            - cell "sm":
-              - code: sm
-        - rowgroup:
-          - row "Y axis Icon Button Icon Button Icon Button":
-            - cell "Y axis"
-            - cell "Icon Button":
-              - button "Icon Button":
-                - img "Icon Button":
-                  - img
-            - cell "Icon Button":
-              - button "Icon Button":
-                - img "Icon Button":
-                  - img
-            - cell "Icon Button":
-              - button "Icon Button":
-                - img "Icon Button":
-                  - img
-    `);
+    - region "Top right notifications"
+    - region "Bottom center notifications"
+    - table:
+      - rowgroup:
+        - row "size":
+          - cell
+          - cell "size":
+            - code: size
+        - row "lg md sm":
+          - cell
+          - cell "lg":
+            - code: lg
+          - cell "md":
+            - code: md
+          - cell "sm":
+            - code: sm
+      - rowgroup:
+        - row "Y axis Icon Button Icon Button Icon Button":
+          - cell "Y axis"
+          - cell "Icon Button":
+            - button "Icon Button":
+              - img "Icon Button"
+          - cell "Icon Button":
+            - button "Icon Button":
+              - img "Icon Button"
+          - cell "Icon Button":
+            - button "Icon Button":
+              - img "Icon Button"
+  `);
 });
 
 test('Multiline', async ({ page }) => {
