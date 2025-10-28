@@ -1,4 +1,4 @@
-import { compile } from '@tailwindcss/node';
+import { compile, optimize } from '@tailwindcss/node';
 import { minifyHTMLLiterals } from 'minify-html-literals';
 import { readFile } from 'node:fs/promises';
 import { Scanner } from '@tailwindcss/oxide';
@@ -9,10 +9,16 @@ import path from 'node:path';
 import tailwindcss from '@tailwindcss/postcss';
 import { fileURLToPath } from 'node:url';
 
-export async function processTailwind(source, options = { standalone: false, storybook: false, from: undefined }) {
+export async function processTailwind(
+  source,
+  options = { standalone: false, minify: false, storybook: false, from: undefined }
+) {
   const base = path.resolve(fileURLToPath(import.meta.url), '../../');
 
   const prepend = [
+    '@layer theme, base, components, utilities;',
+    `@import 'tailwindcss/theme';`,
+    `@import 'tailwindcss/utilities';`,
     `${options.standalone ? '@import' : '@reference'} 'tailwindcss/preflight';`,
     `${options.standalone ? '@import' : '@reference'} '${path.resolve(base, '../tokens/themes/tailwind.css')}';`,
     `@import '${path.resolve(base, '../tokens/themes/components.css')}';`,
@@ -59,6 +65,10 @@ export async function processTailwind(source, options = { standalone: false, sto
     let result = await postcss(plugins)
       .process(compiled, { from: undefined })
       .then(r => r.css);
+
+    if (options.minify) {
+      return optimize(result, { minify: true }).code;
+    }
 
     return result;
   } catch (error) {

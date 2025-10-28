@@ -1,8 +1,3 @@
-@layer theme, base, components, utilities;
-
-@import 'tailwindcss/theme';
-@import 'tailwindcss/utilities';
-
 @custom-variant hover (&:hover:not([disabled]));
 @custom-variant focus (&:focus:not([disabled]));
 @custom-variant active (&:active:not([disabled]));
