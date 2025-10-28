@@ -115,6 +115,7 @@
   --sd-color-warning: #bb8d20;
   --sd-color-white: #ffffff;
   --sd-flag--neutral-500-color-background: var(--sd-color-primary-750);
+  --sd-font-primary: 'Frutiger Neue fuer UI Web';
   --sd-font-weight-bold: 700;
   --sd-font-weight-normal: 400;
   --sd-form-control-color-border: var(--sd-color-primary-200);

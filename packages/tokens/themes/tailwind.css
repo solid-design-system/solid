@@ -87,6 +87,7 @@
   --fill-risk-veryhigh: var(--sd-color-icon-fill-risk-veryhigh, var(--sd-color-risk-veryhigh));
   --fill-success: var(--sd-color-icon-fill-success, var(--sd-color-success));
   --fill-white: var(--sd-color-icon-fill-white, var(--sd-color-white));
+  --font-primary: var(--sd-font-primary);
   --font-weight-bold: var(--sd-font-weight-bold);
   --font-weight-normal: var(--sd-font-weight-normal);
   --opacity-0: var(--sd-opacity-0);

@@ -20,9 +20,9 @@ export class TokenProcessingEngine {
   registerDefaultProcessors() {
     this.registerProcessor('color', new ColorTokenProcessor(this.config.getAll()));
     this.registerProcessor('spacing', new SpacingTokenProcessor(this.config.getAll()));
-    this.registerProcessor('utility', new UtilityTokenProcessor(this.config.getAll()));
     this.registerProcessor('animation', new AnimationTokenProcessor(this.config.getAll()));
     this.registerProcessor('typography', new TypographyTokenProcessor(this.config.getAll()));
+    this.registerProcessor('utility', new UtilityTokenProcessor(this.config.getAll()));
   }
 
   /**

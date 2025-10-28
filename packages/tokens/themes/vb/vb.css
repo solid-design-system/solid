@@ -94,6 +94,7 @@
   --sd-color-text-neutral-500: var(--sd-color-neutral-400);
   --sd-color-warning: #ffab00;
   --sd-color-white: #ffffff;
+  --sd-font-primary: 'GenosGFG';
   --sd-font-weight-bold: 700;
   --sd-font-weight-normal: 400;
   --sd-header-padding-bottom: var(--sd-spacing-0\.5);
