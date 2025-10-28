@@ -37,6 +37,11 @@ async function runBuild() {
   });
 
   await nextTask('Extracting themes', () => {
+    const toAppend = [
+      { name: 'icons.css', process: (css, theme) => css.replaceAll('--sd-icon-', `--sd-icon--${theme.name}-`) },
+      { name: 'overrides.css' }
+    ];
+
     themes = getStylesheetThemes(stylesheet, config);
     themes.forEach(theme => {
       stylesheet = stylesheet
@@ -45,13 +50,13 @@ async function runBuild() {
         .replace(`/* ${config.themeBlock} */`, '')
         .trim();
 
-      const iconsPath = `${config.buildPath}/${theme.name}/icons.css`;
-      if (existsSync(iconsPath)) {
-        const icons = readFileSync(iconsPath, { encoding: 'utf-8' });
-        theme.content = `${theme.content.trim()}\n\n${icons.replaceAll('--sd-icon-', `--sd-icon--${theme.name}-`)}`;
-      }
+      for (let append of toAppend) {
+        const filepath = `${config.buildPath}/${theme.name}/${append.name}`;
+        if (!existsSync(filepath)) continue;
 
-      theme.content = theme.content.trim();
+        const css = readFileSync(filepath, { encoding: 'utf-8' }).trim();
+        theme.content = `${theme.content.trim()}\n\n${append.process?.(css, theme) ?? css}`;
+      }
 
       mkdirSync(`${config.buildPath}/${theme.name}`, { recursive: true });
       writeFileSync(`${config.buildPath}/${config.output}.css`, stylesheet);
