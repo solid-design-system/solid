@@ -9,6 +9,10 @@ import path from 'node:path';
 import tailwindcss from '@tailwindcss/postcss';
 import { fileURLToPath } from 'node:url';
 
+export function minimizeCss(source) {
+  return optimize(source, { minify: true }).code;
+}
+
 export async function processTailwind(
   source,
   options = { standalone: false, minify: false, storybook: false, from: undefined }
@@ -67,7 +71,7 @@ export async function processTailwind(
       .then(r => r.css);
 
     if (options.minify) {
-      return optimize(result, { minify: true }).code;
+      return minimizeCss(result);
     }
 
     return result;
