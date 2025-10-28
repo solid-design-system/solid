@@ -16,5 +16,7 @@ import { processTailwind } from './esbuild-plugin-lit-tailwind-and-minify.js';
   await fs.writeFile('./dist/solid-components.css', result);
 
   if (lite) return;
-  await fs.writeFile('./cdn/solid-components.css', result);
+
+  const minified = await processTailwind(css, { minify: true });
+  await fs.writeFile('./cdn/solid-components.css', minified);
 })();

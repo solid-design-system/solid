@@ -25,7 +25,9 @@ const loadStyleDictionary = async () => {
   await register(StyleDictionary);
   StyleDictionary.registerFormat({
     name: 'tailwind-v4',
-    format: createTailwindV4Plugin()
+    format: createTailwindV4Plugin({
+      defaultTheme: config.defaultTheme
+    })
   });
 
   return new StyleDictionary({
