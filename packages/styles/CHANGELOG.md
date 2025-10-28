@@ -1,5 +1,11 @@
 # @solid-design-system/styles
 
+## 2.0.0-next.0
+
+### Major Changes
+
+- Introduce multi-theming with new CSS variables _[`#2565`](https://github.com/solid-design-system/solid/pull/2565) [`602f0d3`](https://github.com/solid-design-system/solid/commit/602f0d38371c8f797662997071feb8173113e896) [@github-actions](https://github.com/apps/github-actions)_
+
 ## 1.5.5
 
 ### Patch Changes

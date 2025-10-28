@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.0.0-next.1
+
+### Major Changes
+
+- Introduce multi-theming with new CSS variables _[`#2565`](https://github.com/solid-design-system/solid/pull/2565) [`602f0d3`](https://github.com/solid-design-system/solid/commit/602f0d38371c8f797662997071feb8173113e896) [@github-actions](https://github.com/apps/github-actions)_
+
 ## 5.16.0-next.0
 
 ### Minor Changes
@@ -11,8 +17,9 @@
 - Changed icon library to `_internal` on the `sd-input` step buttons. _[`#2472`](https://github.com/solid-design-system/solid/pull/2472) [`8f5163f`](https://github.com/solid-design-system/solid/commit/8f5163f7f89d47afb0501569d191667eca3f8865) [@paulovareiro29](https://github.com/paulovareiro29)_
 
 ### 📈 Stats
-* Uncompressed: 518 KB (+39 KB / +8%)
-* Gzipped: 118 KB (+5 KB / +4%)
+
+- Uncompressed: 518 KB (+39 KB / +8%)
+- Gzipped: 118 KB (+5 KB / +4%)
 
 ## 5.15.12
 
