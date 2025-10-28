@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.30.0-next.0
+
+### Minor Changes
+
+- Implemented new utility componented named `sd-theme-listener`, used to listen to theme changes. _[`#2472`](https://github.com/solid-design-system/solid/pull/2472) [`58b6d04`](https://github.com/solid-design-system/solid/commit/58b6d043d4126a1441ae929c2d9300352f787f1c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.29.2
 
 ### Patch Changes

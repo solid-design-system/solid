@@ -1,0 +1,20 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@solid-design-system/components": "5.15.12",
+    "@solid-design-system/docs": "1.29.2",
+    "@solid-design-system/eslint-plugin": "1.0.2",
+    "@solid-design-system/placeholders": "2.1.3",
+    "@solid-design-system/styles": "1.5.5",
+    "@solid-design-system/theming": "1.1.2",
+    "@solid-design-system/tokens": "5.6.0",
+    "@solid-design-system/versioning": "1.0.0"
+  },
+  "changesets": [
+    "brave-pots-know",
+    "green-tigers-see",
+    "quick-rice-brake",
+    "thick-cars-prove"
+  ]
+}

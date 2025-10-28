@@ -1,5 +1,19 @@
 # @solid-design-system/components
 
+## 5.16.0-next.0
+
+### Minor Changes
+
+- Implemented new utility componented named `sd-theme-listener`, used to listen to theme changes. _[`#2472`](https://github.com/solid-design-system/solid/pull/2472) [`58b6d04`](https://github.com/solid-design-system/solid/commit/58b6d043d4126a1441ae929c2d9300352f787f1c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### Patch Changes
+
+- Changed icon library to `_internal` on the `sd-input` step buttons. _[`#2472`](https://github.com/solid-design-system/solid/pull/2472) [`8f5163f`](https://github.com/solid-design-system/solid/commit/8f5163f7f89d47afb0501569d191667eca3f8865) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+* Uncompressed: 518 KB (+39 KB / +8%)
+* Gzipped: 118 KB (+5 KB / +4%)
+
 ## 5.15.12
 
 ### Patch Changes
