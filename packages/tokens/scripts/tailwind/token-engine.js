@@ -1,6 +1,5 @@
 import { AnimationTokenProcessor } from './token-processors/animation.js';
 import { ColorTokenProcessor } from './token-processors/color.js';
-import { ShadowTokenProcessor } from './token-processors/shadow.js';
 import { SpacingTokenProcessor } from './token-processors/spacing.js';
 import { TypographyTokenProcessor } from './token-processors/typography.js';
 import { UtilityTokenProcessor } from './token-processors/utility.js';
@@ -22,7 +21,6 @@ export class TokenProcessingEngine {
     this.registerProcessor('color', new ColorTokenProcessor(this.config.getAll()));
     this.registerProcessor('spacing', new SpacingTokenProcessor(this.config.getAll()));
     this.registerProcessor('utility', new UtilityTokenProcessor(this.config.getAll()));
-    this.registerProcessor('shadow', new ShadowTokenProcessor(this.config.getAll()));
     this.registerProcessor('animation', new AnimationTokenProcessor(this.config.getAll()));
     this.registerProcessor('typography', new TypographyTokenProcessor(this.config.getAll()));
   }
@@ -68,7 +66,11 @@ export class TokenProcessingEngine {
         '--sizing-varspacing: var(--tw-varspacing);',
         '--spacing-varspacing: var(--tw-varspacing);',
         '--outline-color-primary: var(--sd-border-color-primary, var(--sd-color-primary));',
-        '--outline-color-error: var(--sd-border-color-error, var(--sd-color-error));'
+        '--outline-color-error: var(--sd-border-color-error, var(--sd-color-error));',
+        '--drop-shadow-sm: var(--sd-drop-shadow-sm);',
+        '--drop-shadow: var(--sd-drop-shadow);',
+        '--shadow-sm: var(--sd-shadow-sm);',
+        '--shadow: var(--sd-shadow);'
       ],
       utilities: [],
       spacing: [],
