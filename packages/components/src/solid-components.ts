@@ -13,6 +13,7 @@ export { default as SdCarouselItem } from './components/carousel-item/carousel-i
 export { default as SdCheckbox } from './components/checkbox/checkbox.js';
 export { default as SdCheckboxGroup } from './components/checkbox-group/checkbox-group.js';
 export { default as SdCombobox } from './components/combobox/combobox.js';
+export { default as SdDatepicker } from './components/datepicker/datepicker.js';
 export { default as SdDialog } from './components/dialog/dialog.js';
 export { default as SdDivider } from './components/divider/divider.js';
 export { default as SdDrawer } from './components/drawer/drawer.js';

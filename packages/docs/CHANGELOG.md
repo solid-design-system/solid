@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 1.30.0
+
+### Minor Changes
+
+- Introducing the brand new `sd-datepicker` component. _[`#2521`](https://github.com/solid-design-system/solid/pull/2521) [`5b493e5`](https://github.com/solid-design-system/solid/commit/5b493e5a29164a0efd0d537c9097fa6f472fc913) [@smfonseca](https://github.com/smfonseca)_
+
+  This component is used to enter or select a date or a range of dates using a calendar view.
+
 ## 1.29.2
 
 ### Patch Changes
