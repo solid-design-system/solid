@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.31.0
+
+### Minor Changes
+
+- Added template for multi select table _[`#2515`](https://github.com/solid-design-system/solid/pull/2515) [`7bc6502`](https://github.com/solid-design-system/solid/commit/7bc65025d4f225dc4b351294526b61b0febc3df1) [@balco0110](https://github.com/balco0110)_
+
 ## 1.30.0
 
 ### Minor Changes
