@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.32.0-next.0
+
+### Minor Changes
+
+- Add and update documentation regarding multi-theming for tokens, components and styles _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`4c995ee`](https://github.com/solid-design-system/solid/commit/4c995ee085c602854acda8624e20b80f8e72f031) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.30.0-next.0
 
 ### Minor Changes
