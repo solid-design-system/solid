@@ -1,5 +1,17 @@
 # @solid-design-system/components
 
+## 5.15.13
+
+### Patch Changes
+
+- Fixed issue where the build process would generate empty chunk files, therefore, breaking the build. _[`#2567`](https://github.com/solid-design-system/solid/pull/2567) [`c1b32c7`](https://github.com/solid-design-system/solid/commit/c1b32c79bed00ccd2bd8d3d08112b1c74cb398da) [@mariohamann](https://github.com/mariohamann)_
+
+## 5.15.12
+
+### Patch Changes
+
+- Fixed `sd-tab-group` scroll controls to ensure they are active when it's possible to scroll left or right. _[`#2558`](https://github.com/solid-design-system/solid/pull/2558) [`57018bb`](https://github.com/solid-design-system/solid/commit/57018bb1c1c97137592758841252d855dcbd0c88) [@smfonseca](https://github.com/smfonseca)_
+
 ## 5.15.11
 
 ### Patch Changes
