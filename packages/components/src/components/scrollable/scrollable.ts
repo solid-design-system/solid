@@ -411,8 +411,10 @@ export default class SdScrollable extends SolidElement {
     ...SolidElement.styles,
     css`
       :host {
-        --gradient-color: rgba(255, 255, 255, 0);
-        --gradient: var(--gradient-color) 0%, #fff 80%, #fff 100%;
+        --gradient-color: transparent;
+        --gradient:
+          var(--gradient-color) 0%, var(--sd-color-background-white, var(--sd-color-white)) 80%,
+          var(--sd-color-background-white, var(--sd-color-white)) 100%;
 
         @apply flex relative overflow-hidden;
       }
@@ -463,19 +465,19 @@ export default class SdScrollable extends SolidElement {
       }
 
       [part='shadow-left'] {
-        background: linear-gradient(270deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%);
+        background: linear-gradient(270deg, transparent 50%, rgba(24, 24, 24, 0.4) 100%);
       }
 
       [part='shadow-right'] {
-        background: linear-gradient(90deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%);
+        background: linear-gradient(90deg, transparent 50%, rgba(24, 24, 24, 0.4) 100%);
       }
 
       [part='shadow-top'] {
-        background: linear-gradient(0deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%);
+        background: linear-gradient(0deg, transparent 50%, rgba(24, 24, 24, 0.4) 100%);
       }
 
       [part='shadow-bottom'] {
-        background: linear-gradient(180deg, rgba(24, 24, 24, 0) 50%, rgba(24, 24, 24, 0.4) 100%);
+        background: linear-gradient(180deg, transparent 50%, rgba(24, 24, 24, 0.4) 100%);
       }
 
       .sd-icon--top {

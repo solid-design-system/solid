@@ -18,7 +18,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-option/Screenshots: sd-option',
-  tags: ['!autodocs', 'skip-a11y-[aria-required-parent]'],
+  tags: ['!autodocs'],
   component: 'sd-option',
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
   argTypes,
@@ -33,8 +33,7 @@ export default {
             enabled: false
           }
         ]
-      },
-      options: {}
+      }
     }
   }
 };

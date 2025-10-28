@@ -48,6 +48,8 @@ export default class SdIcon extends SolidElement {
    */
   @property({ reflect: true }) color: 'currentColor' | 'primary' | 'white' = 'currentColor';
 
+  @state() theme?: string;
+
   connectedCallback() {
     super.connectedCallback();
     watchIcon(this);
@@ -62,9 +64,18 @@ export default class SdIcon extends SolidElement {
     unwatchIcon(this);
   }
 
+  protected onThemeChange(theme: string): void {
+    this.theme = theme;
+    this.setIcon();
+  }
+
   private getUrl() {
     const library = getIconLibrary(this.library);
     if (this.name && library) {
+      if (library.name === '_internal' && this.theme) {
+        return library.resolver(`${this.theme}--${this.name}`);
+      }
+
       return library.resolver(this.name);
     }
     return this.src;
@@ -85,7 +96,7 @@ export default class SdIcon extends SolidElement {
     }
   }
 
-  @watch(['name', 'src', 'library'])
+  @watch(['name', 'src', 'library', 'theme'])
   async setIcon() {
     const library = getIconLibrary(this.library);
     const url = this.getUrl();

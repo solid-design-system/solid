@@ -1,29 +1,68 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import theme from 'tailwind-theme';
 import cx from 'classix';
+import { getTokens } from './utils.js';
 
 <Meta title="Packages/Tokens/Spacings" />
 
 ## Spacings
 
-> "By default, these values are inherited by the padding, margin, width, height, maxHeight, flex-basis, gap, inset, space, translate, scrollMargin, scrollPadding, and textIndent core plugins." [tailwindcss docs](https://tailwindcss.com/docs/theme#spacing)
+> "By default, these values are inherited by the padding, margin, width, height, maxHeight, flex-basis, gap, inset, space, translate, scrollMargin, scrollPadding, and textIndent core plugins." [tailwindcss docs](https://tailwindcss.com/docs/theme#theme-variable-namespaces)
 
 <table>
   <tbody>
-    {Object.entries(theme.spacing).map((token, i) => {
-      return (
-        <tr>
-          <td>
-            <div class="flex flex-col">
-              <div class="font-bold">sd-spacing-{token[0]}</div>
-              <div>sd-spacing-{token[1]}</div>
-            </div>
-          </td>
-          <td class="w-[calc(theme('spacing.40')+3rem)]">
-            <div class={`bg-primary flex h-10 w-${token[0]}`}></div>
-          </td>
-        </tr>
-      );
-    })}
+    {getTokens('spacing', theme.base, {
+      sort: (a, b) => {
+        const numA = parseFloat(a.name.replace("spacing", ""));
+        const numB = parseFloat(b.name.replace("spacing", ""));
+        
+        if (isNaN(numA) && isNaN(numB)) return 0;
+        if (isNaN(numA)) return 1;
+        if (isNaN(numB)) return -1;
+
+        return numA - numB;
+      }
+    }).map((token, i) => {
+        const name = token.name === 'spacing' ? '1' : token.name;
+        return (
+          <tr key={token.name}>
+            <td>
+              <div className="flex flex-col">
+                <div className="font-bold">sd-spacing-{name}</div>
+                <div>width: {token.value}</div>
+              </div>
+            </td>
+            <td className="w-[calc(theme('spacing.40')+3rem)]">
+              <div
+                className={cx(
+                  'bg-primary flex h-10',
+                  {
+                    '0': 'w-0',
+                    '1': 'w-1',
+                    '2': 'w-2',
+                    '3': 'w-3',
+                    '4': 'w-4',
+                    '5': 'w-5',
+                    '6': 'w-6',
+                    '8': 'w-8',
+                    '10': 'w-10',
+                    '12': 'w-12',
+                    '16': 'w-16',
+                    '20': 'w-20',
+                    '24': 'w-24',
+                    '32': 'w-32',
+                    '40': 'w-40',
+                    '0.25': 'w-0.25',
+                    '0.5': 'w-0.5',
+                    '1.5': 'w-1.5',
+                    auto: 'w-auto'
+                  }[name]
+                )}
+              ></div>
+            </td>
+          </tr>
+        );
+      })}
+
   </tbody>
 </table>

@@ -50,6 +50,8 @@ import SolidElement from '../../internal/solid-element';
  *
  * @cssproperty --width - The preferred width of the drawer.
  *   depending on its `placement`. Note that the drawer will shrink to accommodate smaller screens.
+ * @cssproperty --sd-panel-color-border - The border color of the drawer panel.
+ * @cssproperty --sd-overlay-color-background - The background color of the drawer overlay.
  *
  * @animation drawer.showEnd - The animation to use when showing a drawer with `end` placement.
  * @animation drawer.showStart - The animation to use when showing a drawer with `start` placement.
@@ -308,7 +310,7 @@ export default class SdDrawer extends SolidElement {
         <div
           part="overlay"
           class=${cx(
-            'block top-0 left-0 right-0 bottom-0 bg-neutral-800/75 pointer-events-auto',
+            'block top-0 left-0 right-0 bottom-0 overlay-color-background pointer-events-auto',
             this.contained ? 'absolute' : 'fixed'
           )}
           @click=${() => this.requestClose('overlay')}
@@ -319,8 +321,8 @@ export default class SdDrawer extends SolidElement {
           class=${cx(
             'absolute flex flex-col gap-4 z-10 max-w-full max-h-full bg-white shadow-lg overflow-auto pointer-events-auto focus:outline-none',
             {
-              end: 'top-0 end-0 bottom-auto start-auto w-[--width] h-full',
-              start: 'top-0 end-auto bottom-auto start-0 w-[--width] h-full'
+              end: 'top-0 end-0 bottom-auto start-auto w-[var(--width)] h-full',
+              start: 'top-0 end-auto bottom-auto start-0 w-[var(--width)] h-full'
             }[this.placement]
           )}
           role="dialog"
@@ -333,7 +335,7 @@ export default class SdDrawer extends SolidElement {
                 <header
                   part="header"
                   class="flex justify-between py-2 px-4 items-center flex-shrink-0"
-                  style="min-height: 56px;"
+                  style="min-height: 64px;"
                 >
                   <div part="title">
                     <slot name="header" part="title" class="flex-auto text-xl m-0" id="title"> </slot>
@@ -355,7 +357,7 @@ export default class SdDrawer extends SolidElement {
                 size="lg"
                 part="close-button"
                 @click=${() => this.requestClose('close-button')}
-                class="absolute top-2 end-2"
+                class="absolute top-2 end-2 z-10"
                 ><sd-icon label=${this.localize.term('close')} name="close" library="_internal"></sd-icon
               ></sd-button>`}
           <div part="body" class="flex-auto block px-4 focus-visible:focus-outline !-outline-offset-2" tabindex="0">
@@ -393,6 +395,10 @@ export default class SdDrawer extends SolidElement {
         &::-webkit-scrollbar {
           @apply w-0 h-0;
         }
+      }
+
+      :host [part='panel'] {
+        outline: 1px solid var(--sd-panel-color-border, transparent);
       }
     `
   ];

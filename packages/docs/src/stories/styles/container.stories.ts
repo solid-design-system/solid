@@ -32,8 +32,8 @@ export const Default = {
 };
 
 /**
- * Use the `sd-container` classes for alternative appearances:
- * - `sd-container--variant-neutral-100` (default)
+ * Use the `sd-container--variant-*` classes for alternative appearances:
+ * - neutral-100 is the default appearance
  * - `sd-container--variant-primary-100`
  * - `sd-container--variant-primary`
  * - `sd-container--variant-border-neutral-400`
@@ -43,7 +43,7 @@ export const Default = {
 export const Variants = {
   render: () =>
     html`<div class="grid grid-cols-2 gap-4">
-      <div class="sd-container sd-container--variant-neutral-100">
+      <div class="sd-container">
         <div class="slot slot--border slot--text h-12">Default slot</div>
       </div>
 
@@ -88,7 +88,7 @@ export const CustomPadding = {
 };
 
 /**
- * Use the `sd-container` classes to add a triangle indentation to the container:
+ * Use the `sd-container--triangle-*` classes to add a triangle indentation to the container:
  *
  * - `sd-container--triangle-top`
  * - `sd-container--triangle-right`
@@ -120,7 +120,7 @@ export const TrianglePosition = {
 };
 
 /**
- * Use the `sd-container` classes to create a triangle with a border when using the variant `sd-container--variant-border-neutral-400`:
+ * Use the `sd-container--triangle-*-border` classes to create a triangle with a border when using the variant `sd-container--variant-border-neutral-400`:
  *
  * - `sd-container--triangle-top-border`
  * - `sd-container--triangle-right-border`
@@ -158,7 +158,7 @@ export const TriangleColor = {
   render: () =>
     html`<div class="bg-primary p-4">
       <div
-        style="--triangle-background: rgb(var(--sd-color-primary-600, 0 53 142) / 1);"
+        style="--triangle-background: var(--sd-color-primary);"
         class="sd-container sd-container--variant-white sd-container--triangle-top sd-container--padding-sm"
       >
         <div class="slot slot--border slot--text h-12">Default slot</div>

@@ -1,5 +1,26 @@
 # @solid-design-system/styles
 
+## 2.0.0-next.0
+
+### Major Changes
+
+- Introduce multi-theming with new CSS variables _[`#2565`](https://github.com/solid-design-system/solid/pull/2565) [`602f0d3`](https://github.com/solid-design-system/solid/commit/602f0d38371c8f797662997071feb8173113e896) [@github-actions](https://github.com/apps/github-actions)_
+
+## 1.5.5
+
+### Patch Changes
+
+- - Update pnpm to 10.17 _[`#2522`](https://github.com/solid-design-system/solid/pull/2522) [`7cc6bb7`](https://github.com/solid-design-system/solid/commit/7cc6bb7bdfc9ccb26c2ecfa58b27021d15379312) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add minimumReleaseAge to 5 days
+  - Update all actions to ensure that they're using the correct version
+
+## 1.5.4
+
+### Patch Changes
+
+- Added support for `<a>` inside `sd-footnotes--marker`. _[`#2421`](https://github.com/solid-design-system/solid/pull/2421) [`515a2b1`](https://github.com/solid-design-system/solid/commit/515a2b1168af2cc7c91469942220f7e520637bb3) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.5.3
 
 ### Patch Changes

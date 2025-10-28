@@ -5,6 +5,7 @@
     "source.fixAll.eslint": "explicit"
   },
   "tailwindCSS.experimental.classRegex": ["([a-zA-Z0-9\\-:]+)"],
+  "typescript.tsdk": "./packages/components/node_modules/typescript/lib",
   "editor.quickSuggestions": {
     "source.fixAll.eslint": true
   },

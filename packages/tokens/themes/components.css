@@ -1,0 +1,231 @@
+@utility form-control-color-border {
+  border-color: var(--sd-form-control-color-border, var(--sd-color-neutral-800));
+}
+
+@utility informational-gradient--primary-800-color-background {
+  background-color: var(--sd-informational-gradient--primary-800-color-background, var(--sd-color-primary-800));
+}
+
+@utility informational-gradient--white-color-background {
+  background-color: var(--sd-informational-gradient--white-color-background, var(--sd-color-white));
+}
+
+@utility interactive--active-color-text {
+  color: var(--sd-interactive--active-color-text, var(--sd-color-primary-800));
+}
+
+@utility overlay-color-background {
+  background-color: var(--sd-overlay-color-background, rgba(5, 21, 48, 0.9));
+}
+
+@utility panel-color-border {
+  border-color: var(--sd-panel-color-border, rgba(255, 255, 255, 0));
+}
+
+@utility sd-accordion-border-width {
+ border-width: var(--sd-accordion-border-width, var(--sd-spacing-0\.25));
+}
+
+@utility sd-accordion-color-background {
+  background-color: var(--sd-accordion-color-background, var(--sd-color-white));
+}
+
+@utility sd-accordion-color-text {
+  color: var(--sd-accordion-color-text, var(--sd-color-primary));
+}
+
+@utility sd-accordion-padding-block {
+ padding-block: var(--sd-accordion-padding-block, var(--sd-spacing-3));
+}
+
+@utility sd-accordion__chevron-color {
+  background-color: var(--sd-accordion__chevron-color, var(--sd-color-primary));
+}
+
+@utility sd-accordion__indicator-color {
+  background-color: var(--sd-accordion__indicator-color, var(--sd-color-accent));
+}
+
+@utility sd-audio--inverted-color-border {
+  border-color: var(--sd-audio--inverted-color-border, var(--sd-color-white));
+}
+
+@utility sd-audio__timestamp-color-text {
+  color: var(--sd-audio__timestamp-color-text, var(--sd-color-black));
+}
+
+@utility sd-brandshape--neutral-100-color-background {
+  background-color: var(--sd-brandshape--neutral-100-color-background, var(--sd-color-neutral-100));
+}
+
+@utility sd-brandshape--neutral-100-color-border {
+  border-color: var(--sd-brandshape--neutral-100-color-border, rgba(255, 255, 255, 0));
+}
+
+@utility sd-brandshape--neutral-100-color-icon-fill {
+  fill: var(--sd-brandshape--neutral-100-color-background, var(--sd-color-neutral-100));
+}
+
+@utility sd-brandshape--white-color-background {
+  background-color: var(--sd-brandshape--white-color-background, var(--sd-color-white));
+}
+
+@utility sd-breadcrumb__separator-color {
+  background-color: var(--sd-breadcrumb__separator-color, var(--sd-color-neutral-400));
+}
+
+@utility sd-button--primary--active-color-text {
+  color: var(--sd-button--primary--active-color-text, var(--sd-color-primary-200));
+}
+
+@utility sd-button--primary--default-color-background {
+  background-color: var(--sd-button--primary--default-color-background, var(--sd-color-primary));
+}
+
+@utility sd-button--primary--default-color-text {
+  color: var(--sd-button--primary--default-color-text, var(--sd-color-white));
+}
+
+@utility sd-button--primary--hover-color-background {
+  background-color: var(--sd-button--primary--hover-color-background, var(--sd-color-primary-500));
+}
+
+@utility sd-button--primary--inverted--active-color-text {
+  color: var(--sd-button--primary--inverted--active-color-text, var(--sd-color-primary-800));
+}
+
+@utility sd-button--primary--inverted--default-color-background {
+  background-color: var(--sd-button--primary--inverted--default-color-background, var(--sd-color-white));
+}
+
+@utility sd-button--primary--inverted--default-color-text {
+  color: var(--sd-button--primary--inverted--default-color-text, var(--sd-color-primary));
+}
+
+@utility sd-button--primary--inverted--hover-color-background {
+  background-color: var(--sd-button--primary--inverted--hover-color-background, var(--sd-color-primary-100));
+}
+
+@utility sd-button--primary--inverted--hover-color-text {
+  color: var(--sd-button--primary--inverted--hover-color-text, var(--sd-color-primary-500));
+}
+
+@utility sd-button--secondary--active-color-background {
+  background-color: var(--sd-button--secondary--active-color-background, var(--sd-color-primary-100));
+}
+
+@utility sd-button--secondary--hover-color-background {
+  background-color: var(--sd-button--secondary--hover-color-background, var(--sd-color-primary-200));
+}
+
+@utility sd-button--secondary--inverted--active-color-background {
+  background-color: var(--sd-button--secondary--inverted--active-color-background, var(--sd-color-primary-800));
+}
+
+@utility sd-button--secondary--inverted--hover-color-text {
+  color: var(--sd-button--secondary--inverted--hover-color-text, var(--sd-color-primary-100));
+}
+
+@utility sd-button--size-lg-border-radius {
+ border-radius: var(--sd-button--size-lg-border-radius, var(--sd-spacing-1));
+}
+
+@utility sd-button--size-lg-font-size {
+ font-size: var(--sd-button--size-lg-font-size, var(--sd-spacing-4));
+}
+
+@utility sd-button--size-lg-icon-font-size {
+ font-size: var(--sd-button--size-lg-icon-font-size, var(--sd-spacing-6));
+}
+
+@utility sd-button--size-lg-padding-block {
+ padding-block: var(--sd-button--size-lg-padding-block, var(--sd-spacing-2));
+}
+
+@utility sd-button--size-md-border-radius {
+ border-radius: var(--sd-button--size-md-border-radius, var(--sd-spacing-1));
+}
+
+@utility sd-button--size-md-font-size {
+ font-size: var(--sd-button--size-md-font-size, var(--sd-spacing-4));
+}
+
+@utility sd-button--size-md-padding-block {
+ padding-block: var(--sd-button--size-md-padding-block, var(--sd-spacing-2));
+}
+
+@utility sd-button--tertiary--active-color-background {
+  background-color: var(--sd-button--tertiary--active-color-background, var(--sd-color-primary-200));
+}
+
+@utility sd-button--tertiary--hover-color-background {
+  background-color: var(--sd-button--tertiary--hover-color-background, var(--sd-color-primary-100));
+}
+
+@utility sd-button--tertiary--inverted--active-color-background {
+  background-color: var(--sd-button--tertiary--inverted--active-color-background, var(--sd-color-primary-800));
+}
+
+@utility sd-button--tertiary--inverted--hover-color-text {
+  color: var(--sd-button--tertiary--inverted--hover-color-text, var(--sd-color-primary-100));
+}
+
+@utility sd-flag--neutral-500-color-background {
+  background-color: var(--sd-flag--neutral-500-color-background, var(--sd-color-neutral-500));
+}
+
+@utility sd-footnotes--target--inverted-color-background {
+  background-color: var(--sd-footnotes--target--inverted-color-background, var(--sd-color-primary-800));
+}
+
+@utility sd-header-color-background {
+  background-color: var(--sd-header-color-background, var(--sd-color-white));
+}
+
+@utility sd-header-padding-bottom {
+ padding-bottom: var(--sd-header-padding-bottom, 0);
+}
+
+@utility sd-loader--neutral-500-color-icon-fill {
+  fill: var(--sd-loader--neutral-500-color-icon-fill, var(--sd-color-neutral-500));
+}
+
+@utility sd-loader--neutral-600-color-icon-fill {
+  fill: var(--sd-loader--neutral-600-color-icon-fill, var(--sd-color-neutral-600));
+}
+
+@utility sd-navigation-item--current-color {
+  background-color: var(--sd-navigation-item--current-color, var(--sd-color-primary));
+}
+
+@utility sd-navigation-item-border-radius-bottom {
+ border-radius-bottom: var(--sd-navigation-item-border-radius-bottom, 0);
+}
+
+@utility sd-navigation-item-border-radius-top {
+ border-radius-top: var(--sd-navigation-item-border-radius-top, 0);
+}
+
+@utility sd-navigation-item-color {
+  background-color: var(--sd-navigation-item-color, var(--sd-color-primary));
+}
+
+@utility sd-navigation-item-font-size {
+ font-size: var(--sd-navigation-item-font-size, var(--sd-spacing-4));
+}
+
+@utility sd-navigation-item__current-indicator-border-radius {
+ border-radius: var(--sd-navigation-item__current-indicator-border-radius, 0);
+}
+
+@utility sd-navigation-item__current-indicator-height {
+ height: var(--sd-navigation-item__current-indicator-height, var(--sd-spacing-1));
+}
+
+@utility sd-tag--selected--default-color-background {
+  background-color: var(--sd-tag--selected--default-color-background, var(--sd-color-primary));
+}
+
+@utility sd-tag--selected--default-color-text {
+  color: var(--sd-tag--selected--default-color-text, var(--sd-color-white));
+}

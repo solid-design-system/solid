@@ -1,0 +1,297 @@
+@layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme';
+@import 'tailwindcss/utilities';
+
+@custom-variant hover (&:hover:not([disabled]));
+@custom-variant focus (&:focus:not([disabled]));
+@custom-variant active (&:active:not([disabled]));
+
+@theme inline {
+  --animate-bounce-once: bounce-once var(--sd-duration-medium, 300ms) ease-in-out;
+  --animate-grow: grow linear;
+  --animate-loader-current: wave 1.3s infinite, loader-color-current 2.6s infinite;
+  --animate-loader-primary: wave 1.3s infinite, loader-color-primary 2.6s infinite;
+  --animate-loader-white: wave 1.3s infinite, loader-color-white 2.6s infinite;
+  --aspect-16\/10: var(--sd-aspect-16\/10);
+  --aspect-21\/9: var(--sd-aspect-21\/9);
+  --aspect-2\/1: var(--sd-aspect-2\/1);
+  --aspect-3\/2: var(--sd-aspect-3\/2);
+  --aspect-3\/4: var(--sd-aspect-3\/4);
+  --aspect-4\/3: var(--sd-aspect-4\/3);
+  --aspect-4\/5: var(--sd-aspect-4\/5);
+  --aspect-5\/4: var(--sd-aspect-5\/4);
+  --aspect-6\/5: var(--sd-aspect-6\/5);
+  --aspect-golden-ratio: var(--sd-aspect-golden-ratio);
+  --aspect-square: var(--sd-aspect-square);
+  --aspect-video: var(--sd-aspect-video);
+  --background-color-accent-300: var(--sd-color-background-accent-300, var(--sd-color-accent-300));
+  --background-color-accent-500: var(--sd-color-background-accent-500, var(--sd-color-accent-500));
+  --background-color-accent-550: var(--sd-color-background-accent-550, var(--sd-color-accent-550));
+  --background-color-accent-700: var(--sd-color-background-accent-700, var(--sd-color-accent-700));
+  --background-color-accent: var(--sd-color-background-accent, var(--sd-color-accent));
+  --background-color-error-400: var(--sd-color-background-error-400, var(--sd-color-error-400));
+  --background-color-error: var(--sd-color-background-error, var(--sd-color-error));
+  --background-color-info: var(--sd-color-background-info, var(--sd-color-info));
+  --background-color-neutral-100: var(--sd-color-background-neutral-100, var(--sd-color-neutral-100));
+  --background-color-neutral-200: var(--sd-color-background-neutral-200, var(--sd-color-neutral-200));
+  --background-color-neutral-300: var(--sd-color-background-neutral-300, var(--sd-color-neutral-300));
+  --background-color-neutral-400: var(--sd-color-background-neutral-400, var(--sd-color-neutral-400));
+  --background-color-neutral-500: var(--sd-color-background-neutral-500, var(--sd-color-neutral-500));
+  --background-color-neutral-600: var(--sd-color-background-neutral-600, var(--sd-color-neutral-600));
+  --background-color-neutral-800: var(--sd-color-background-neutral-800, var(--sd-color-neutral-800));
+  --background-color-primary-100: var(--sd-color-background-primary-100, var(--sd-color-primary-100));
+  --background-color-primary-200: var(--sd-color-background-primary-200, var(--sd-color-primary-200));
+  --background-color-primary-300: var(--sd-color-background-primary-300, var(--sd-color-primary-300));
+  --background-color-primary-500: var(--sd-color-background-primary-500, var(--sd-color-primary-500));
+  --background-color-primary-800: var(--sd-color-background-primary-800, var(--sd-color-primary-800));
+  --background-color-primary: var(--sd-color-background-primary, var(--sd-color-primary));
+  --background-color-success: var(--sd-color-background-success, var(--sd-color-success));
+  --background-color-warning: var(--sd-color-background-warning, var(--sd-color-warning));
+  --background-color-white: var(--sd-color-background-white, var(--sd-color-white));
+  --border-color-accent-550: var(--sd-color-border-accent-550, var(--sd-color-accent-550));
+  --border-color-accent: var(--sd-color-border-accent, var(--sd-color-accent));
+  --border-color-error-400: var(--sd-color-border-error-400, var(--sd-color-error-400));
+  --border-color-error: var(--sd-color-border-error, var(--sd-color-error));
+  --border-color-neutral-400: var(--sd-color-border-neutral-400, var(--sd-color-neutral-400));
+  --border-color-neutral-500: var(--sd-color-border-neutral-500, var(--sd-color-neutral-500));
+  --border-color-neutral-600: var(--sd-color-border-neutral-600, var(--sd-color-neutral-600));
+  --border-color-neutral-800: var(--sd-color-border-neutral-800, var(--sd-color-neutral-800));
+  --border-color-primary-100: var(--sd-color-border-primary-100, var(--sd-color-primary-100));
+  --border-color-primary-200: var(--sd-color-border-primary-200, var(--sd-color-primary-200));
+  --border-color-primary-400: var(--sd-color-border-primary-400, var(--sd-color-primary-400));
+  --border-color-primary-500: var(--sd-color-border-primary-500, var(--sd-color-primary-500));
+  --border-color-primary-800: var(--sd-color-border-primary-800, var(--sd-color-primary-800));
+  --border-color-primary: var(--sd-color-border-primary, var(--sd-color-primary));
+  --border-color-success: var(--sd-color-border-success, var(--sd-color-success));
+  --border-color-white: var(--sd-color-border-white, var(--sd-color-white));
+  --border-width-2: var(--sd-border-width-2);
+  --border-width-4: var(--sd-border-width-4);
+  --border-width-6: var(--sd-border-width-6);
+  --border-width-default: var(--sd-border-width);
+  --drop-shadow-sm: var(--sd-drop-shadow-sm);
+  --drop-shadow: var(--sd-drop-shadow);
+  --fill-accent-550: var(--sd-color-icon-fill-accent-550, var(--sd-color-accent-550));
+  --fill-accent: var(--sd-color-icon-fill-accent, var(--sd-color-accent));
+  --fill-error-400: var(--sd-color-icon-fill-error-400, var(--sd-color-error-400));
+  --fill-error: var(--sd-color-icon-fill-error, var(--sd-color-error));
+  --fill-neutral-400: var(--sd-color-icon-fill-neutral-400, var(--sd-color-neutral-400));
+  --fill-neutral-500: var(--sd-color-icon-fill-neutral-500, var(--sd-color-neutral-500));
+  --fill-neutral-600: var(--sd-color-icon-fill-neutral-600, var(--sd-color-neutral-600));
+  --fill-neutral-800: var(--sd-color-icon-fill-neutral-800, var(--sd-color-neutral-800));
+  --fill-primary-100: var(--sd-color-icon-fill-primary-100, var(--sd-color-primary-100));
+  --fill-primary-200: var(--sd-color-icon-fill-primary-200, var(--sd-color-primary-200));
+  --fill-primary-400: var(--sd-color-icon-fill-primary-400, var(--sd-color-primary-400));
+  --fill-primary-500: var(--sd-color-icon-fill-primary-500, var(--sd-color-primary-500));
+  --fill-primary-800: var(--sd-color-icon-fill-primary-800, var(--sd-color-primary-800));
+  --fill-primary: var(--sd-color-icon-fill-primary, var(--sd-color-primary));
+  --fill-risk-high: var(--sd-color-icon-fill-risk-high, var(--sd-color-risk-high));
+  --fill-risk-increased: var(--sd-color-icon-fill-risk-increased, var(--sd-color-risk-increased));
+  --fill-risk-low: var(--sd-color-icon-fill-risk-low, var(--sd-color-risk-low));
+  --fill-risk-moderate: var(--sd-color-icon-fill-risk-moderate, var(--sd-color-risk-moderate));
+  --fill-risk-veryhigh: var(--sd-color-icon-fill-risk-veryhigh, var(--sd-color-risk-veryhigh));
+  --fill-success: var(--sd-color-icon-fill-success, var(--sd-color-success));
+  --fill-white: var(--sd-color-icon-fill-white, var(--sd-color-white));
+  --font-weight-bold: var(--sd-font-weight-bold);
+  --font-weight-normal: var(--sd-font-weight-normal);
+  --opacity-0: var(--sd-opacity-0);
+  --opacity-100: var(--sd-opacity-100);
+  --opacity-10: var(--sd-opacity-10);
+  --opacity-20: var(--sd-opacity-20);
+  --opacity-30: var(--sd-opacity-30);
+  --opacity-50: var(--sd-opacity-50);
+  --opacity-55: var(--sd-opacity-55);
+  --opacity-5: var(--sd-opacity-5);
+  --opacity-60: var(--sd-opacity-60);
+  --opacity-70: var(--sd-opacity-70);
+  --opacity-75: var(--sd-opacity-75);
+  --opacity-80: var(--sd-opacity-80);
+  --opacity-85: var(--sd-opacity-85);
+  --opacity-90: var(--sd-opacity-90);
+  --outline-color-error: var(--sd-border-color-error, var(--sd-color-error));
+  --outline-color-primary: var(--sd-border-color-primary, var(--sd-color-primary));
+  --radius-default: var(--sd-radius);
+  --radius-full: var(--sd-radius-full);
+  --radius-lg: var(--sd-radius-lg);
+  --radius-md: var(--sd-radius-md);
+  --radius-none: var(--sd-radius-none);
+  --radius-sm: var(--sd-radius-sm);
+  --shadow-sm: var(--sd-shadow-sm);
+  --shadow: var(--sd-shadow);
+  --sizing-10: var(--sd-sizing-10);
+  --sizing-12: var(--sd-sizing-12);
+  --sizing-16: var(--sd-sizing-16);
+  --sizing-20: var(--sd-sizing-20);
+  --sizing-24: var(--sd-sizing-24);
+  --sizing-2: var(--sd-sizing-2);
+  --sizing-2\.5: var(--sd-sizing-2\.5);
+  --sizing-3: var(--sd-sizing-3);
+  --sizing-4: var(--sd-sizing-4);
+  --sizing-5: var(--sd-sizing-5);
+  --sizing-6: var(--sd-sizing-6);
+  --sizing-8: var(--sd-sizing-8);
+  --sizing-varspacing: var(--tw-varspacing);
+  --spacing-0\.25: var(--sd-spacing-0\.25);
+  --spacing-0\.5: var(--sd-spacing-0\.5);
+  --spacing-10: var(--sd-spacing-10);
+  --spacing-12: var(--sd-spacing-12);
+  --spacing-16: var(--sd-spacing-16);
+  --spacing-1: var(--sd-spacing-1);
+  --spacing-1\.5: var(--sd-spacing-1\.5);
+  --spacing-20: var(--sd-spacing-20);
+  --spacing-24: var(--sd-spacing-24);
+  --spacing-2: var(--sd-spacing-2);
+  --spacing-32: var(--sd-spacing-32);
+  --spacing-3: var(--sd-spacing-3);
+  --spacing-40: var(--sd-spacing-40);
+  --spacing-4: var(--sd-spacing-4);
+  --spacing-6: var(--sd-spacing-6);
+  --spacing-8: var(--sd-spacing-8);
+  --spacing-varspacing: var(--tw-varspacing);
+  --spacing: var(--sd-spacing-1);
+  --text-2xl: var(--sd-text-2xl);
+  --text-3xl: var(--sd-text-3xl);
+  --text-4xl: var(--sd-text-4xl);
+  --text-base: var(--sd-text-base);
+  --text-color-accent: var(--sd-color-text-accent, var(--sd-color-accent));
+  --text-color-black: var(--sd-color-text-black, var(--sd-color-black));
+  --text-color-error: var(--sd-color-text-error, var(--sd-color-error));
+  --text-color-neutral-500: var(--sd-color-text-neutral-500, var(--sd-color-neutral-500));
+  --text-color-neutral-600: var(--sd-color-text-neutral-600, var(--sd-color-neutral-600));
+  --text-color-neutral-700: var(--sd-color-text-neutral-700, var(--sd-color-neutral-700));
+  --text-color-primary-100: var(--sd-color-text-primary-100, var(--sd-color-primary-100));
+  --text-color-primary-200: var(--sd-color-text-primary-200, var(--sd-color-primary-200));
+  --text-color-primary-400: var(--sd-color-text-primary-400, var(--sd-color-primary-400));
+  --text-color-primary-500: var(--sd-color-text-primary-500, var(--sd-color-primary-500));
+  --text-color-primary-800: var(--sd-color-text-primary-800, var(--sd-color-primary-800));
+  --text-color-primary: var(--sd-color-text-primary, var(--sd-color-primary));
+  --text-color-success: var(--sd-color-text-success, var(--sd-color-success));
+  --text-color-white: var(--sd-color-text-white, var(--sd-color-white));
+  --text-lg: var(--sd-text-lg);
+  --text-sm: var(--sd-text-sm);
+  --text-xl: var(--sd-text-xl);
+  --transition-duration-fast: var(--sd-duration-fast, 150ms);
+  --transition-duration-medium: var(--sd-duration-medium, 300ms);
+  --transition-duration-slow: var(--sd-duration-slow, 500ms);
+  --transition-duration-x-slow: var(--sd-duration-x-slow, 750ms);
+  @keyframes bounce-once {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-18px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes grow {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  @keyframes loader-color-current {
+    0%, 100% {
+      color: currentColor;
+    }
+    50% {
+      color: currentColor;
+      opacity: 20%;
+    }
+  }
+  @keyframes loader-color-primary {
+    0%, 100% {
+      color: var(--sd-color-icon-fill-primary, var(--sd-color-primary));
+    }
+    50% {
+      color: var(--sd-color-icon-fill-primary, var(--sd-color-primary));
+      opacity: 20%;
+    }
+  }
+  @keyframes loader-color-white {
+    0%, 100% {
+      color: var(--sd-color-icon-fill-white, var(--sd-color-white));;
+    }
+    50% {
+      color: var(--sd-color-icon-fill-white, var(--sd-color-white));;
+      opacity: 20%;
+    }
+  }
+  @keyframes wave {
+    0%, 40%, 100% {
+      transform: initial;
+    }
+    20% {
+      transform: translateY(-4px);
+    }
+  }
+}
+
+@utility z-10 {
+  z-index: 10;
+}
+
+@utility z-20 {
+  z-index: 20;
+}
+
+@utility z-30 {
+  z-index: 30;
+}
+
+@utility z-40 {
+  z-index: 40;
+}
+
+@utility z-50 {
+  z-index: 50;
+}
+
+@utility z-alert-group {
+  z-index: var(--sd-z-index-alert-group, 950);
+}
+
+@utility z-auto {
+  z-index: auto;
+}
+
+@utility z-dialog {
+  z-index: var(--sd-z-index-dialog, 800);
+}
+
+@utility z-drawer {
+  z-index: var(--sd-z-index-drawer, 700);
+}
+
+@utility z-dropdown {
+  z-index: var(--sd-z-index-dropdown, 900);
+}
+
+@utility z-header {
+  z-index: var(--sd-z-index-header, 600);
+}
+
+@utility z-tooltip {
+  z-index: var(--sd-z-index-tooltip, 1000);
+}
+
+@utility varspacing-* {
+  --tw-varspacing: --value(--spacing-*);
+}
+
+@utility focus-outline {
+  outline-style: solid;
+  outline-offset: 2px;
+  outline-width: 2px;
+  outline-color: var(--outline-color-primary);
+}
+
+@utility focus-outline-inverted {
+  outline-style: solid;
+  outline-offset: 2px;
+  outline-width: 2px;
+  outline-color: var(--outline-color-white);
+}

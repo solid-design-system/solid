@@ -20,10 +20,20 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Styles/sd-interactive/Screenshots: sd-interactive',
-  tags: ['!autodocs', 'skip-a11y-[color-contrast]'],
+  tags: ['!autodocs'],
   component: 'sd-interactive',
   parameters: {
     ...parameters,
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: false
+          }
+        ]
+      }
+    },
     controls: { disable: true }
   },
   args: overrideArgs([
@@ -131,7 +141,7 @@ export const Inverted = {
       },
       options: {
         templateContent: '<button class="%CLASSES%" title="Action name">%SLOT%</button>',
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+        templateBackgrounds: { alternate: 'y', colors: ['var(--sd-color-white)', 'var(--sd-color-primary)'] }
       },
       constants: { type: 'attribute', name: 'sd-interactive--inverted', value: true },
       args

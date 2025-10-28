@@ -8,7 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-step');
 
 export default {
   title: 'Components/sd-step',
-  tags: ['!dev', 'autodocs', 'skip-a11y-[aria-required-parent]'],
+  tags: ['!dev', 'autodocs'],
   component: 'sd-step',
   args: overrideArgs([
     {
@@ -25,6 +25,16 @@ export default {
   argTypes,
   parameters: {
     ...parameters,
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'aria-required-parent',
+            enabled: false
+          }
+        ]
+      }
+    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=3274-30758&node-type=section&t=5PpAC3TA3kYF7ufX-0'
@@ -90,7 +100,19 @@ export const Orientation = {
     </div>
   `
 };
-
+/**
+ * Use the `horizontal-inline` attribute to activate the inline option of the horizontal orientation.
+ */
+export const HorizontalInline = {
+  name: 'Horizontal Inline',
+  render: () => html`
+    <div class="w-[255px]">
+      <sd-step orientation="horizontal" horizontal-inline>
+        <span slot="label">Horizontal inline</span>
+      </sd-step>
+    </div>
+  `
+};
 /**
  * Use the `current` attribute to set a step as the current step.
  */
@@ -101,6 +123,21 @@ export const Current = {
     <div class="w-min">
       <sd-step current>
         <span slot="label">Current</span>
+      </sd-step>
+    </div>
+  `
+};
+
+/**
+ * Use the `waiting` attribute to set the step as a future step.
+ */
+
+export const Waiting = {
+  name: 'Waiting',
+  render: () => html`
+    <div class="w-min">
+      <sd-step waiting>
+        <span slot="label">Waiting</span>
       </sd-step>
     </div>
   `
@@ -160,7 +197,7 @@ export const NoTail = {
 export const NotInteractive = {
   name: 'Not Interactive',
   render: () => html`
-    <div class="w-min">
+    <div class="w-[220px]">
       <sd-step not-interactive>
         <span slot="label">Step name</span>
       </sd-step>
@@ -175,7 +212,7 @@ export const NotInteractive = {
 export const Icon = {
   name: 'Icon',
   render: () => html`
-    <div class="w-min">
+    <div class="w-[220px]">
       <sd-step not-interactive>
         <sd-icon slot="circle-content" name="content/image" class="h-12 w-12"></sd-icon>
         <span slot="label">Step name</span>
@@ -185,14 +222,38 @@ export const Icon = {
 };
 
 /**
- * Use the `default` slot to set a description for the step. Alternatively, you can use the `description` attribute.
+ * Use the `label` attribute to hide or show the step label.
+ */
+export const Label = {
+  name: 'Label',
+  render: () => html`
+    <div class="w-min">
+      <sd-step label="Label"></sd-step>
+    </div>
+  `
+};
+
+/**
+ *  Use the ”default” slot to add a description to the step. Alternatively, you can use the description attribute.
  */
 
 export const Description = {
   name: 'Description',
   render: () => html`
-    <div class="w-min">
-      <sd-step>
+    <div class="h-32 mb-16 w-[200px]">
+      <sd-step orientation="vertical" description="">
+        <span slot="label">Step name</span>
+        <p class="sd-paragraph">Description lorem ipsum sic semper</p>
+      </sd-step>
+    </div>
+    <div class="mb-16 w-[255px]">
+      <sd-step orientation="horizontal" horizontal-inline>
+        <span slot="label">Step name</span>
+        <p class="sd-paragraph">Description lorem ipsum sic semper</p>
+      </sd-step>
+    </div>
+    <div class="w-[293px]">
+      <sd-step orientation="horizontal">
         <span slot="label">Step name</span>
         <p class="sd-paragraph">Description lorem ipsum sic semper</p>
       </sd-step>
@@ -201,7 +262,7 @@ export const Description = {
 };
 
 /**
- * Use the `description` and `label` attributes to set the respective text on the step. These are used as alternatives to using the `default` and `label` slots.
+ * Use the `description` and `label` attributes to set the respective text on the step. These are used as alternatives to using the `default` and `label` slots.
  */
 
 export const DescriptionAndLabelUsingAttributes = {

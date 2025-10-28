@@ -117,7 +117,6 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
   /** Indicates whether the browser's autocorrect feature is on or off. */
   @property({ type: String, reflect: true }) autocorrect: 'off' | 'on';
-
   /**
    * Specifies what permission the browser has to provide assistance in filling out form field values. Refer to
    * [this page on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) for available values.
@@ -387,13 +386,13 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               {
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
-                readonly: 'border-neutral-800',
+                readonly: 'form-control-color-border',
                 activeInvalid: 'border-error border-2',
                 activeValid: 'border-success border-2',
                 active: 'border-primary border-2',
                 invalid: 'border-error',
                 valid: 'border-success',
-                default: 'border-neutral-800'
+                default: 'form-control-color-border'
               }[textareaState]
             )}
           ></div>
@@ -415,7 +414,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               part="textarea"
               id="input"
               class=${cx(
-                'ps-4 flex-grow focus:outline-none bg-transparent placeholder-neutral-700 resize-none group-has-[sd-icon]:pe-8',
+                'ps-4 flex-grow focus:outline-none bg-transparent placeholder:text-neutral-700 resize-none group-has-[sd-icon]:pe-8',
                 {
                   sm: 'py-1',
                   md: 'py-1',
@@ -465,7 +464,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                   <sd-icon
                     class=${cx('text-success absolute right-4 pointer-events-none', iconSize)}
                     library="_internal"
-                    name="status-check"
+                    name="confirm-circle"
                     part="valid-icon"
                   ></sd-icon>
                 `
@@ -476,7 +475,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           name="help-text"
           part="form-control-help-text"
           id="help-text"
-          class=${cx('text-sm text-neutral-700 mt-2', hasHelpText ? 'block' : 'hidden')}
+          class=${cx('text-sm text-neutral-700 mt-1', hasHelpText ? 'block' : 'hidden')}
           aria-hidden=${hasHelpText ? 'false' : 'true'}
         >
           ${this.helpText}

@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/eslint-plugin",
   "description": "ESLint custom rules for the Solid Design System component library",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "author": {
     "name": "Union Investment"
@@ -34,24 +34,24 @@
     "postversion": "pnpm build"
   },
   "devDependencies": {
-    "@types/node": "^24.0.10",
-    "@typescript-eslint/rule-tester": "^8.35.1",
-    "@typescript-eslint/utils": "^8.35.1",
-    "es-html-parser": "^0.2.0",
-    "esbuild": "^0.25.5",
-    "eslint": "^9.30.1",
-    "globby": "^14.1.0",
-    "jest": "^30.0.4",
-    "plop": "^4.0.1",
-    "ts-jest": "^29.4.0",
+    "@types/node": "^24.5.2",
+    "@typescript-eslint/rule-tester": "^8.44.1",
+    "@typescript-eslint/utils": "^8.44.1",
+    "es-html-parser": "^0.3.0",
+    "esbuild": "^0.25.10",
+    "eslint": "^9.36.0",
+    "globby": "^15.0.0",
+    "jest": "^30.2.0",
+    "plop": "^4.0.4",
+    "ts-jest": "^29.4.4",
     "ts-node": "^10.9.2",
     "typescript": "5.8.3"
   },
   "peerDependencies": {
-    "@html-eslint/parser": "^0.42.0",
+    "@html-eslint/parser": "^0.47.0",
     "eslint": "^9.18.0"
   },
   "dependencies": {
-    "@html-eslint/parser": "^0.41.0"
+    "@html-eslint/parser": "^0.47.0"
   }
 }

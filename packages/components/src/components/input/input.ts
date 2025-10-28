@@ -210,7 +210,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     | 'words'
     | 'characters';
 
-  /** Indicates whether the browser's autocorrect feature is on or off. */
   @property({ type: String, reflect: true }) autocorrect: 'off' | 'on';
 
   /**
@@ -534,13 +533,13 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const borderColor = {
       disabled: 'border-neutral-500',
       visuallyDisabled: 'border-neutral-500',
-      readonly: 'border-neutral-800',
+      readonly: 'form-control-color-border',
       activeInvalid: 'border-error border-2',
       activeValid: 'border-success border-2',
       active: 'border-primary border-2',
       invalid: 'border-error',
       valid: 'border-success',
-      default: 'border-neutral-800'
+      default: 'form-control-color-border'
     }[inputState];
 
     const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary';
@@ -609,8 +608,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               class=${cx(
                 'min-w-0 flex-grow focus:outline-none bg-transparent',
                 this.visuallyDisabled || this.disabled
-                  ? 'placeholder-neutral-500 cursor-not-allowed'
-                  : 'placeholder-neutral-700',
+                  ? 'placeholder:text-neutral-500 cursor-not-allowed'
+                  : 'placeholder:text-neutral-700',
                 this.size === 'sm' ? 'h-6' : 'h-8',
                 textSize
               )}
@@ -740,7 +739,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   <sd-icon
                     class=${cx('text-success flex-shrink-0', iconMarginLeft, iconSize)}
                     library="_internal"
-                    name="status-check"
+                    name="confirm-circle"
                     part="valid-icon"
                   ></sd-icon>
                 `
@@ -766,7 +765,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     >
                       <slot name="decrement-number-stepper">
                         <sd-icon
-                          name="system/minus-circle"
+                          library="_internal"
+                          name="minus-circle"
                           label="Decrease value"
                           class=${cx(iconColor, iconMarginLeft, iconSize)}
                         ></sd-icon>
@@ -784,7 +784,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     >
                       <slot name="increment-number-stepper">
                         <sd-icon
-                          name="system/plus-circle"
+                          library="_internal"
+                          name="plus-circle"
                           label="Decrease value"
                           class=${cx(iconColor, iconMarginLeft, iconSize)}
                         ></sd-icon>
@@ -800,7 +801,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           name="help-text"
           part="form-control-help-text"
           id="help-text"
-          class=${cx('text-sm text-neutral-700 mt-2', hasHelpText ? 'block' : 'hidden')}
+          class=${cx('text-sm text-neutral-700 mt-1', hasHelpText ? 'block' : 'hidden')}
           aria-hidden=${!hasHelpText}
         >
           ${this.helpText}

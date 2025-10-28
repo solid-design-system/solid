@@ -1,5 +1,14 @@
 /* eslint-disable no-param-reassign */
 import type { StoryContext } from '@storybook/web-components';
+// import TailwindConfiguration from '../../.storybook/solid-tw-configuration.json';
+
+// const tailwindConfig = `<script>
+//   tailwind.config = {
+//     theme: {
+//       extend: ${TailwindConfiguration ? JSON.stringify(TailwindConfiguration, null, 8) : '{}'}
+//     }
+//   }
+// </script>`;
 
 export default function docsCodepenEnhancer(code: string, storyContext: StoryContext) {
   // We hijack the formatter to keep track of every story's code change
@@ -18,26 +27,30 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
       if (version === 'next') {
         return {
           components: `${cdnBaseUrl}/components@%COMPONENTS-VERSION%/cdn`,
-          styles: `${cdnBaseUrl}/styles@%STYLES-VERSION%/cdn`
+          styles: `${cdnBaseUrl}/styles@%STYLES-VERSION%/cdn`,
+          placeholders: `${cdnBaseUrl}/placeholders@%PLACEHOLDERS-VERSION%/src`
         };
       }
 
       if (version === 'main') {
         return {
           components: `${baseUrl}/components/%COMPONENTS-VERSION%/cdn`,
-          styles: `${baseUrl}/styles/%STYLES-VERSION%/cdn`
+          styles: `${baseUrl}/styles/%STYLES-VERSION%/cdn`,
+          placeholders: `${baseUrl}/docs/placeholders`
         };
       }
 
       return {
         components: `${githubBaseUrl}/${version}/components/cdn`,
-        styles: `${githubBaseUrl}/${version}/styles/cdn`
+        styles: `${githubBaseUrl}/${version}/styles/cdn`,
+        placeholders: `${githubBaseUrl}/${version}/placeholders`
       };
     }
 
     return {
       components: `${baseUrl}/components/%COMPONENTS-VERSION%/cdn`,
-      styles: `${baseUrl}/styles/%STYLES-VERSION%/cdn`
+      styles: `${baseUrl}/styles/%STYLES-VERSION%/cdn`,
+      placeholders: `${baseUrl}/docs/placeholders`
     };
   };
 
@@ -163,12 +176,49 @@ body {
   -webkit-text-size-adjust: 100%;
   line-height: 1.5;
   font-size: 16px;
+}
+
+.slot {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+  justify-content: center;
+  visibility: visible !important;
+  border-radius: 6px;
+}
+
+.slot--text {
+  color: #62359b;
+  font-size: 14px;
+  font-family: 'Courier New', Courier, monospace;
+  flex-grow: 0;
+  font-weight: bold;
+  padding: 8px;
+}
+
+.slot--background {
+  background-color: #9747ff34;
+}
+
+.slot--border {
+  border: 2px dashed #62359b;
+}
+
+.slot--inverted {
+  color: #ccb6f1;
+  border-color: #ccb6f1;
+}
+
+.slot--overlay {
+  filter: sepia(100%) hue-rotate(216deg);
 }`,
           css_external: '',
           description: '',
           editors: 1110,
-          head: '<meta name="viewport" content="width=device-width">',
-          html: code.replace(/\n\s*\n/g, '\n'), // Regex removes empty lines
+          head: '<meta name="viewport" content="width=device-width"><script src="https://cdn.tailwindcss.com"></script> ', // + tailwindConfig,
+          html: code.replace(/\n\s*\n/g, '\n').replaceAll('./placeholders', `${urls().placeholders}`), // Regex removes empty lines and replaces placeholders
           js: `/* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-components-installation--docs */
 import { registerIconLibrary } from "${urls().components}/solid-components.bundle.js";`,
           js_external: '',

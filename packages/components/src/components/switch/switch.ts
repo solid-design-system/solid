@@ -205,16 +205,16 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
             peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2
             peer-focus-visible:outline-primary transition-colors ease-in-out duration-medium hover:duration-fast`,
               this.disabled && this.checked
-                ? 'border-neutral-500 bg-neutral-500'
+                ? 'bg-neutral-500'
                 : this.disabled
                   ? 'border-neutral-500'
                   : this.showInvalidStyle
                     ? this.checked
-                      ? 'border-error bg-error hover:bg-error-400 hover:border-error-400 group-hover:bg-error-400'
+                      ? 'border-error bg-error hover:bg-error-400 hover:border-error-400 group-hover:border-error-400 group-hover:bg-error-400'
                       : 'border-error bg-white hover:border-error-400 hover:bg-white group-hover:border-error-400 group-hover:bg-white'
                     : this.checked
                       ? 'border-accent hover:bg-accent-550 bg-accent hover:border-accent-550 group-hover:bg-accent-550'
-                      : 'border-neutral-800 bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
+                      : 'form-control-color-border bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
             )}
           >
             <span
@@ -223,16 +223,16 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
               class=${cx(
                 'w-2.5 h-2.5 rounded-full transition[transform,colors] ease-in-out duration-medium',
                 this.disabled && this.checked
-                  ? 'bg-white translate-x-2'
+                  ? 'translate-x-2'
                   : this.disabled
-                    ? '-translate-x-2 bg-neutral-500'
+                    ? '-translate-x-2'
                     : this.showInvalidStyle
                       ? this.checked
-                        ? 'bg-white translate-x-2'
+                        ? 'translate-x-2'
                         : 'bg-error -translate-x-2 hover:bg-error-400 hover:border-error-400 group-hover:border-error-400 group-hover:bg-error-400'
                       : this.checked
-                        ? 'bg-white translate-x-2'
-                        : 'bg-neutral-800 -translate-x-2'
+                        ? 'translate-x-2'
+                        : '-translate-x-2'
               )}
             ></span>
           </span>
@@ -269,6 +269,28 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
 
       :host([required]) #label::after {
         content: ' *';
+      }
+
+      /**
+       * Dev-note: In some components, css properties need to be assigned
+       * to specific variables so we keep consistency as in Figma.
+       * 
+       * For more details, see the 'Consistency with Figma' section in the **CONTRIBUTING.md**.
+       */
+      :host([disabled][checked]) #control {
+        border-color: var(--sd-color-background-neutral-500, var(--sd-color-neutral-500));
+      }
+
+      :host(:not([disabled])) #input:not([aria-invalid='true']) ~ #control #thumb {
+        background-color: var(--sd-color-icon-fill-neutral-800, var(--sd-color-neutral-800));
+      }
+
+      :host([checked]) [part='thumb'] {
+        background-color: var(--sd-color-icon-fill-white, var(--sd-color-white));
+      }
+
+      :host([disabled]:not([checked])) [part='thumb'] {
+        background-color: var(--sd-color-icon-fill-neutral-500, var(--sd-color-neutral-500));
       }
     `
   ];

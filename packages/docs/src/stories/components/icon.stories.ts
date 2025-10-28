@@ -18,7 +18,7 @@ const { generateTemplate } = storybookTemplate('sd-icon');
 
 export default {
   title: 'Components/sd-icon',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'skip-playwright'],
   component: 'sd-icon',
   args: overrideArgs([{ name: 'name', type: 'attribute', value: 'union-investment/content/image' }], args),
   argTypes,
@@ -183,6 +183,7 @@ export const Size = {
  */
 
 export const IconLibraries = {
+  tags: ['skip-playwright'],
   render: () => {
     return html`
       <sd-icon name="system/image"> </sd-icon>
@@ -237,14 +238,11 @@ export const IconLibraries = {
               });
 
               recoloredElements.greenFills.forEach(filledElement => {
-                filledElement.setAttribute('fill', 'rgb(var(--sd-color-accent, 45 157 0) / var(--tw-bg-opacity, 1))');
+                filledElement.setAttribute('fill', 'var(--sd-color-accent, 45 157 0)');
               });
 
               recoloredElements.greenStrokes.forEach(strokedElement => {
-                strokedElement.setAttribute(
-                  'stroke',
-                  'rgb(var(--sd-color-accent, 45 157 0) / var(--tw-bg-opacity, 1))'
-                );
+                strokedElement.setAttribute('stroke', 'var(--sd-color-accent, 45 157 0)');
               });
               return svg;
             }

@@ -14,7 +14,7 @@ const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-header/Screenshots: sd-header',
-  tags: ['!autodocs', 'skip-a11y-[landmark-no-duplicate-banner, landmark-unique]'],
+  tags: ['!autodocs'],
   component: 'sd-header',
   args: overrideArgs([
     {
@@ -197,7 +197,7 @@ export const SampleA = {
 /* Sample Header lg – variant A - 01 */
 export const SampleAMd = {
   ...SampleA,
-  name: '↳ Tablet',
+  name: 'Sample A Tablet',
   globals: {
     viewport: { value: 'tablet' }
   }
@@ -206,7 +206,7 @@ export const SampleAMd = {
 /* Sample Header sm - variant A - 01 */
 export const SampleASm = {
   ...SampleA,
-  name: '↳ Small mobile',
+  name: 'Sample A Small Mobile',
   globals: {
     viewport: { value: 'mobile1' }
   }
@@ -307,7 +307,7 @@ export const SampleB = {
 /* Sample Header lg – variant B */
 export const SampleBMd = {
   ...SampleB,
-  name: '↳ Tablet',
+  name: 'Tablet',
   globals: {
     viewport: { value: 'tablet' }
   }
@@ -316,7 +316,7 @@ export const SampleBMd = {
 /* Sample Header sm - variant B */
 export const SmallViewportSample2 = {
   ...SampleB,
-  name: '↳ Small mobile',
+  name: 'Small mobile',
   globals: {
     viewport: { value: 'mobile1' }
   }

@@ -9,13 +9,24 @@ const { generateTemplate } = storybookTemplate('sd-breadcrumb-item');
  * Used to visualize a page's location within the site's hierarchy and provide easy navigation to previous sections.
  */
 export default {
-  tags: ['!dev', 'autodocs', 'skip-a11y-[aria-required-parent]'],
+  tags: ['!dev', 'autodocs'],
   title: 'Components/sd-breadcrumb-item',
   component: 'sd-breadcrumb-item',
 
   argTypes,
   parameters: {
     ...parameters,
+    controls: { disable: true },
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'aria-required-parent',
+            enabled: false
+          }
+        ]
+      }
+    },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=15550-5257&t=ODEg7n9EI3PRszyz-0'

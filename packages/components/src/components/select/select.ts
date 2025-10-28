@@ -757,7 +757,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   async handleOpenChange() {
     if (this.open && (!this.disabled || !this.visuallyDisabled)) {
       // Reset the current option
-      if (!this.multiple) this.setCurrentOption(this.selectedOptions[0] || this.getFirstOption());
+      this.setCurrentOption(this.selectedOptions[0] || this.getFirstOption());
 
       // Show
       this.emit('sd-show');
@@ -951,13 +951,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               {
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
-                readonly: 'border-neutral-800',
+                readonly: 'form-control-color-border',
                 activeInvalid: 'border-error border-2',
                 activeValid: 'border-success border-2',
                 active: 'border-primary border-2',
                 invalid: 'border-error',
                 valid: 'border-success',
-                default: 'border-neutral-800'
+                default: 'form-control-color-border'
               }[selectState],
               this.open &&
                 (this.currentPlacement === 'bottom'
@@ -983,7 +983,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           >
             <div
               class=${cx(
-                'relative w-full h-full grid grid-cols-1 rounded-default transition-colors hover:duration-fast ease-in-out',
+                'relative w-full h-full grid rounded-default transition-colors hover:duration-fast ease-in-out',
                 this.visuallyDisabled || this.disabled ? 'hover:bg-transparent' : 'hover:bg-neutral-200'
               )}
               slot="anchor"
@@ -1003,7 +1003,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   form=${this.form}
                   part="display-input"
                   class=${cx(
-                    'top-0 left-0 appearance-none outline-none flex-grow bg-transparent w-full placeholder-neutral-700',
+                    'top-0 left-0 appearance-none outline-none flex-grow bg-transparent flex-1 placeholder:text-neutral-700',
                     cursorStyles,
                     this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : ''
                   )}
@@ -1087,7 +1087,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                         part="valid-icon"
                         class=${cx('flex-shrink-0 text-success', iconMarginLeft, iconSize)}
                         library="_internal"
-                        name="status-check"
+                        name="confirm-circle"
                       ></sd-icon>
                     `
                   : ''}
@@ -1150,7 +1150,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         </div>
 
         <div
-          class="text-sm text-neutral-700 mt-2"
+          class="text-sm text-neutral-700 mt-1"
           part="form-control-help-text"
           id="help-text"
           aria-hidden=${hasHelpText ? 'false' : 'true'}
@@ -1169,7 +1169,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     ...SolidElement.styles,
     css`
       :host {
-        @apply block relative w-full;
+        @apply block relative w-auto;
       }
 
       :host([required]) #label::after {

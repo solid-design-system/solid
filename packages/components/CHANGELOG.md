@@ -1,5 +1,162 @@
 # @solid-design-system/components
 
+## 6.0.0-next.1
+
+### Major Changes
+
+- Introduce multi-theming with new CSS variables _[`#2565`](https://github.com/solid-design-system/solid/pull/2565) [`602f0d3`](https://github.com/solid-design-system/solid/commit/602f0d38371c8f797662997071feb8173113e896) [@github-actions](https://github.com/apps/github-actions)_
+
+## 5.16.0-next.0
+
+### Minor Changes
+
+- Implemented new utility componented named `sd-theme-listener`, used to listen to theme changes. _[`#2472`](https://github.com/solid-design-system/solid/pull/2472) [`58b6d04`](https://github.com/solid-design-system/solid/commit/58b6d043d4126a1441ae929c2d9300352f787f1c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### Patch Changes
+
+- Changed icon library to `_internal` on the `sd-input` step buttons. _[`#2472`](https://github.com/solid-design-system/solid/pull/2472) [`8f5163f`](https://github.com/solid-design-system/solid/commit/8f5163f7f89d47afb0501569d191667eca3f8865) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+
+- Uncompressed: 518 KB (+39 KB / +8%)
+- Gzipped: 118 KB (+5 KB / +4%)
+
+## 5.15.12
+
+### Patch Changes
+
+- Fixed `sd-tab-group` scroll controls to ensure they are active when it's possible to scroll left or right. _[`#2558`](https://github.com/solid-design-system/solid/pull/2558) [`57018bb`](https://github.com/solid-design-system/solid/commit/57018bb1c1c97137592758841252d855dcbd0c88) [@smfonseca](https://github.com/smfonseca)_
+
+## 5.15.11
+
+### Patch Changes
+
+- Improvements done on the `sd-select`: _[`#2533`](https://github.com/solid-design-system/solid/pull/2533) [`45ac618`](https://github.com/solid-design-system/solid/commit/45ac6183c5c88315788894069d93bec1ff0c8ba9) [@smfonseca](https://github.com/smfonseca)_
+  - Prevent input wrapper elements from overflowing.
+  - Better handling of option highlight when `multiple` or `useTags` is enabled. If no option is selected, the first is highlighted, otherwise, the first selected option is highlighted instead.
+
+## 5.15.10
+
+### Patch Changes
+
+- Adjusted `sd-breadcrumb` font-size to `14px` instead of `16px`. _[`#2534`](https://github.com/solid-design-system/solid/pull/2534) [`1ebd640`](https://github.com/solid-design-system/solid/commit/1ebd6403350b07cbfb8d604732191db7ce880924) [@smfonseca](https://github.com/smfonseca)_
+
+## 5.15.9
+
+### Patch Changes
+
+- Fixed `sd-radio-button` style when in `checked` and `disabled` state. _[`#2537`](https://github.com/solid-design-system/solid/pull/2537) [`9776ac9`](https://github.com/solid-design-system/solid/commit/9776ac999d176b394477de505b48deb63d3817f3) [@smfonseca](https://github.com/smfonseca)_
+
+## 5.15.8
+
+### Patch Changes
+
+- - Update pnpm to 10.17 _[`#2522`](https://github.com/solid-design-system/solid/pull/2522) [`7cc6bb7`](https://github.com/solid-design-system/solid/commit/7cc6bb7bdfc9ccb26c2ecfa58b27021d15379312) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add minimumReleaseAge to 5 days
+  - Update all actions to ensure that they're using the correct version
+
+## 5.15.7
+
+### Patch Changes
+
+- Update `status-check` icon of the `_internal` icon library and change icon usage in `sd-textarea`, `sd-select`, `sd-combobox`, and `sd-input`. _[`#2473`](https://github.com/solid-design-system/solid/pull/2473) [`ae722bc`](https://github.com/solid-design-system/solid/commit/ae722bc836753279dc92e77d1a547993314b9790) [@demirgazetic](https://github.com/demirgazetic)_
+
+## 5.15.6
+
+### Patch Changes
+
+- Fixed issue with `sd-carousel` initialisation where attributes are only added once all slides are ready. _[`#2475`](https://github.com/solid-design-system/solid/pull/2475) [`31c2b2a`](https://github.com/solid-design-system/solid/commit/31c2b2a2e46cc1c00f189e1c55cc7f4ea2b602e7) [@smfonseca](https://github.com/smfonseca)_
+
+## 5.15.5
+
+### Patch Changes
+
+- Minor improvement to the `sd-step` horizontal inline variant: _[`#2469`](https://github.com/solid-design-system/solid/pull/2469) [`bec1056`](https://github.com/solid-design-system/solid/commit/bec105630e7caf449ad2e0cb7d4d681db2c4193d) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - Remove the extra width from the last `sd-step`.
+
+### 📈 Stats
+
+- Uncompressed: 479 KB (+1 KB / +0%)
+- Gzipped: 113 KB (+1 KB / +1%)
+
+## 5.15.4
+
+### Patch Changes
+
+- Improve sd-dialog: _[`#2466`](https://github.com/solid-design-system/solid/pull/2466) [`3bac0bc`](https://github.com/solid-design-system/solid/commit/3bac0bc304e9ed8929fcb0a80791cd9663db6ef0) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - Prevent unexpected scrolling behaviour.
+
+### 📈 Stats
+
+- Uncompressed: 478 KB (-1 KB / 0%)
+- Gzipped: 112 KB (-1 KB / -1%)
+
+## 5.15.3
+
+### Patch Changes
+
+- Added missing tailwind variable `--tw-content` to components. _[`#2465`](https://github.com/solid-design-system/solid/pull/2465) [`1b970bc`](https://github.com/solid-design-system/solid/commit/1b970bc9fd42ae6649468a89552df9f39653246c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 5.15.2
+
+### Patch Changes
+
+- Fixed `sd-checkbox` animation to correctly display the `indeterminate` state icon. _[`#2455`](https://github.com/solid-design-system/solid/pull/2455) [`cf0f7e2`](https://github.com/solid-design-system/solid/commit/cf0f7e2e09c10f1b64d048b0ffe9912ef7a14beb) [@smfonseca](https://github.com/smfonseca)_
+
+## 5.15.1
+
+### Patch Changes
+
+- Fixed an issue on `sd-navigation-item` where it was not properly finding the `part="base"` when it had slotted children. _[`#2454`](https://github.com/solid-design-system/solid/pull/2454) [`038a16a`](https://github.com/solid-design-system/solid/commit/038a16ada52e11bd92f7a621947104c96e71bd54) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 5.15.0
+
+### Minor Changes
+
+- Increased `sd-drawer` close button `z-index` when using attribute `no-header` to prevent it being overlapped by the content. _[`#2318`](https://github.com/solid-design-system/solid/pull/2318) [`11300b4`](https://github.com/solid-design-system/solid/commit/11300b42a379e8f13ac4316b8824126c61891281) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Exported new CSS part on `sd-dropdown` named `base__popup`, which targets the internal `sd-popup` `popup` part.
+
+  Implemented `focus` and `blur` methods on `sd-navigation-item`.
+
+  Improved `sd-navigation-item` accessibility by separating the content and description into `aria-labelledby` and `aria-describedby` respectively.
+
+### 📈 Stats
+
+- Uncompressed: 479 KB (unchanged)
+- Gzipped: 113 KB (+1 KB / +1%)
+
+## 5.14.0
+
+### Minor Changes
+
+- Implemented `waiting` attribute and `horizontal-inline` variant on `sd-step` _[`#2364`](https://github.com/solid-design-system/solid/pull/2364) [`b6d6768`](https://github.com/solid-design-system/solid/commit/b6d6768f99dffceb06356a519e9d74ee5490e5aa) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+
+- Uncompressed: 479 KB (+2 KB / +0%)
+- Gzipped: 112 KB (unchanged)
+
+## 5.13.15
+
+### Patch Changes
+
+- Fixed `sd-navigation-item` padding when it is icon only. _[`#2380`](https://github.com/solid-design-system/solid/pull/2380) [`d1f3fb7`](https://github.com/solid-design-system/solid/commit/d1f3fb7ef5c47e7978e3e20f78cb11b4bbdf0f09) [@balco0110](https://github.com/balco0110)_
+
+## 5.13.14
+
+### Patch Changes
+
+- Fixed `numOptionsSelected` translation letter casing used on the `sd-select`. _[`#2403`](https://github.com/solid-design-system/solid/pull/2403) [`364eafa`](https://github.com/solid-design-system/solid/commit/364eafad92827a95ed1522741c990a1a1fdeaced) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Adjusted the `help-text` top margin on:
+  - `sd-combobox`
+  - `sd-input`
+  - `sd-range`
+  - `sd-select`
+  - `sd-textarea`
+
 ## 5.13.13
 
 ### Patch Changes

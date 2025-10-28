@@ -15,9 +15,19 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Components/sd-menu/Screenshots: sd-menu',
   component: 'sd-menu',
-  tags: ['!autodocs', 'skip-a11y-[aria-allowed-attr]'],
+  tags: ['!autodocs'],
   parameters: {
     ...parameters,
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'aria-allowed-attr',
+            enabled: false
+          }
+        ]
+      }
+    },
     design: {
       type: 'figma',
       url: ''

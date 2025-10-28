@@ -20,7 +20,7 @@ const execPromise = util.promisify(exec);
 let childProcess;
 let buildResults;
 
-const bundleDirectories = lite ? [outdir] : [cdndir, outdir, `${outdir}-versioned`, `${cdndir}-versioned`];
+const bundleDirectories = lite ? [outdir] : [cdndir, `${outdir}-versioned`, `${cdndir}-versioned`, outdir];
 
 //
 // Builds the source with esbuild.
@@ -136,14 +136,16 @@ async function runBuild() {
   }
 
   if (!lite) {
-    await nextTask('Generating component metadata', () => {
-      return Promise.all(
-        bundleDirectories.map(dir => {
-          return execPromise(`node scripts/make-metadata.js --outdir "${dir}"`, { stdio: 'inherit' });
-        })
-      );
+    await nextTask('Generating component metadata', async () => {
+      for (const dir of bundleDirectories) {
+        await execPromise(`node scripts/make-metadata.js --outdir "${dir}"`, { stdio: 'inherit' });
+      }
     });
   }
+
+  await nextTask('Building tailwind configuration', () => {
+    return execPromise(`node scripts/build-tailwind-configuration.js`, { stdio: 'inherit' });
+  });
 
   await nextTask('Generating Utility CSS', () => {
     const args = lite ? '--lite' : '';

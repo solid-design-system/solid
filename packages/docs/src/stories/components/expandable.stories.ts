@@ -141,9 +141,7 @@ export const Gradient = {
   render: () =>
     html`<div class="flex flex-col gap-4">
       <div class="bg-neutral-100 p-4">
-        <sd-expandable
-          style="--gradient-color-start: rgb(var(--sd-color-neutral-100, 246 246 246) / 0);--gradient-color-end: rgb(var(--sd-color-neutral-100, 246 246 246) / 1)"
-        >
+        <sd-expandable style="--gradient-color-start: transparent;--gradient-color-end: var(--sd-color-neutral-100)">
           <span slot="toggle-open"> Collapse: Learn more about our commitment to diversity </span>
           <span slot="toggle-closed"> Expand: Learn more about our commitment to diversity </span>
 
@@ -173,9 +171,7 @@ export const Gradient = {
         </sd-expandable>
       </div>
       <div class="bg-primary-100 p-4">
-        <sd-expandable
-          style="--gradient-color-start: rgb(var(--sd-color-primary-100, 236 240 249) / 0);--gradient-color-end: rgb(var(--sd-color-primary-100, 236 240 249) / 1)"
-        >
+        <sd-expandable style="--gradient-color-start: transparent;--gradient-color-end: var(--sd-color-primary-100)">
           <span slot="toggle-open"> Collapse: Learn more about our commitment to diversity </span>
           <span slot="toggle-closed"> Expand: Learn more about our commitment to diversity </span>
 

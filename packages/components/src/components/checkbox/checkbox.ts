@@ -263,11 +263,16 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
               invalid: 'border-error group-hover:bg-neutral-200',
               filled:
                 'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent group-hover:bg-accent-550',
-              default: 'border-neutral-800 hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
+              default: 'form-control-color-border hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
             }[checkboxState]
           )}
         >
-          <div class=${cx('absolute h-3 transition-[width] right-0.25 duration-medium', this.checked ? 'w-0' : 'w-3')}>
+          <div
+            class=${cx(
+              'absolute h-3 transition-[width] right-0.25 duration-medium',
+              this.checked || this.indeterminate ? 'w-0' : 'w-3'
+            )}
+          >
             <div
               class=${cx(
                 'w-full h-full transition-colors duration-medium ease-in-out group-hover:duration-fast',

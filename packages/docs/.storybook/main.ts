@@ -18,6 +18,7 @@ export default {
     '../src/stories/legal/*.@(mdx|stories.*)'
   ],
   addons: [
+    '@storybook/addon-themes',
     '@storybook/addon-links',
     './addons/theme-generator/preset',
     '@storybook/addon-a11y',

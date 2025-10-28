@@ -36,11 +36,14 @@ import type SdPopup from '../popup/popup';
  * @event sd-after-hide - Emitted after the dropdown closes and all animations are complete.
  *
  * @csspart base - The component's base wrapper.
+ * @csspart base__popup - The popup's exported `popup` part. Use this to target the dropdowns' popup container.
  * @csspart trigger - The container that wraps the trigger.
  * @csspart panel - The panel that gets shown when the dropdown is open.
  *
  * @animation dropdown.show - The animation to use when showing the dropdown.
  * @animation dropdown.hide - The animation to use when hiding the dropdown.
+ *
+ * @cssproperty --sd-panel-color-border - The border color of the dropdown panel.
  */
 @customElement('sd-dropdown')
 export default class SdDropdown extends SolidElement {
@@ -423,6 +426,9 @@ export default class SdDropdown extends SolidElement {
       <sd-popup
         part="base"
         id="dropdown"
+        exportparts="
+          popup:base__popup,
+        "
         placement=${this.placement}
         distance=${this.rounded && this.distance < 1 ? 1 : this.distance}
         skidding=${this.skidding}
@@ -446,7 +452,7 @@ export default class SdDropdown extends SolidElement {
         <slot
           part="panel"
           class=${cx(
-            'shadow bg-white block',
+            'panel-color-border border shadow bg-white block',
             this.open ? 'pointer-events-auto' : 'pointer-events-none',
             this.rounded && 'rounded-md'
           )}

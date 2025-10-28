@@ -1214,13 +1214,13 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               {
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
-                readonly: 'border-neutral-800',
+                readonly: 'form-control-color-border',
                 activeInvalid: 'border-error border-2',
                 activeValid: 'border-success border-2',
                 active: 'border-primary border-2',
                 invalid: 'border-error',
                 valid: 'border-success',
-                default: 'border-neutral-800'
+                default: 'form-control-color-border'
               }[selectState],
               this.open &&
                 (this.currentPlacement === 'bottom'
@@ -1279,7 +1279,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 class=${cx(
                   'appearance-none outline-none bg-transparent flex-auto min-w-0',
                   cursorStyles,
-                  this.selectedTextLabel && !this.multiple ? 'placeholder-black' : 'placeholder-neutral-700'
+                  this.selectedTextLabel && !this.multiple ? 'placeholder:text-black' : 'placeholder:text-neutral-700'
                 )}
                 type="text"
                 placeholder=${this.selectedTextLabel && !this.multiple
@@ -1363,7 +1363,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                       part="valid-icon"
                       class=${cx('flex-shrink-0 text-success', iconMarginLeft, iconSize)}
                       library="_internal"
-                      name="status-check"
+                      name="confirm-circle"
                     ></sd-icon>
                   `
                 : ''}
@@ -1449,7 +1449,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         <div
           part="form-control-help-text"
           id="help-text"
-          class="text-sm text-neutral-700 mt-2"
+          class="text-sm text-neutral-700 mt-1"
           aria-hidden=${!hasHelpText}
         >
           <slot name="help-text">${this.helpText}</slot>

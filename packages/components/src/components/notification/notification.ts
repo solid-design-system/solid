@@ -65,6 +65,8 @@ loadStacks();
  *
  * @animation notification.show - The animation to use when showing the sd-notification.
  * @animation notifiation.hide - The animation to use when hiding the sd-notification.
+ *
+ * @cssproperty --sd-panel-color-border - The border color of panels for toast notifications.
  */
 
 @customElement('sd-notification')

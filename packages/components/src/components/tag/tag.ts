@@ -28,6 +28,9 @@ import SolidElement from '../../internal/solid-element';
  * @csspart base - The component's base wrapper.
  * @csspart content - The tag's content.
  * @csspart removable-indicator - The tag's removability indicator.
+ *
+ * @cssproperty --sd-tag--selected--default-color-background - The default background color for selected tags.
+ * @cssproperty --sd-tag--selected--default-color-text - The default text color for selected tags.
  */
 @customElement('sd-tag')
 export default class SdTag extends SolidElement {
@@ -95,7 +98,7 @@ export default class SdTag extends SolidElement {
     this.emit('sd-hide');
 
     this.style.opacity = '0';
-    await new Promise(resolve => setTimeout(resolve, this.token('sd-duration-fast', 150)));
+    await new Promise(resolve => setTimeout(resolve, this.token('--sd-duration-fast', 150)));
     this.hidden = true;
 
     this.emit('sd-after-hide');
@@ -140,10 +143,10 @@ export default class SdTag extends SolidElement {
             ? cx(
                 'border-primary text-primary disabled:border-neutral-500 disabled:text-neutral-500',
                 !this.removable
-                  ? 'hover:border-primary-500 hover:bg-neutral-100 hover:text-primary-500'
-                  : 'has-[button:hover]:border-primary-500 has-[button:hover]:bg-neutral-100 has-[button:hover]:text-primary-500'
+                  ? 'hover:border-primary-500 hover:text-primary-500'
+                  : 'has-[button:hover]:border-primary-500 has-[button:hover]:text-primary-500'
               )
-            : 'bg-primary border-primary text-white hover:bg-primary-500 hover:border-primary-500 disabled:bg-neutral-500 disabled:border-neutral-500',
+            : 'sd-tag--selected--default-color-background border-primary sd-tag--selected--default-color-text hover:bg-primary-500 hover:border-primary-500 disabled:bg-neutral-500 disabled:border-neutral-500',
           this.disabled && !isLink && 'cursor-not-allowed'
         )}
       >
