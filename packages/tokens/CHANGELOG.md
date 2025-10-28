@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 6.0.0-next.2
+
+### Patch Changes
+
+- Remove semicolon breaking imports in other TailwindCSS projects _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`aebb285`](https://github.com/solid-design-system/solid/commit/aebb28534faf3f881f718fc0c8f62ab5845cd494) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 6.0.0-next.1
 
 ### Patch Changes
