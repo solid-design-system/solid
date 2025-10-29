@@ -54,7 +54,28 @@ You must import at least one theme to use Solid Components or Styles.
 
 ### Applying a theme
 
-To apply a theme to your entire document (or any container), use the theme's class name and set it on the body or the desired element.
+#### User Setting
+
+If you just want to respect the user's system preference for light or dark mode, you can adaptively load the appropriate theme based on the `prefers-color-scheme` media query.
+
+```html
+<link
+  rel="stylesheet"
+  href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css"
+  media="(prefers-color-scheme: light)"
+/>
+<link
+  rel="stylesheet"
+  href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-dark/ui-dark.css"
+  media="(prefers-color-scheme: dark)"
+/>
+```
+
+For further information how to make this more dynamic check out [this article](https://pepelsbey.dev/articles/native-light-dark/).
+
+#### Class-based theming
+
+For finer granularity use the theme's class name and set it on the body or the desired element.
 
 > After importing it, `ui-light` is automatically applied, if no other theme is specified.
 
