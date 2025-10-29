@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 6.0.0-next.3
+
+### Patch Changes
+
+- Optimize exports for themes, TailwindCSS and SCSS _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`9e7c10f`](https://github.com/solid-design-system/solid/commit/9e7c10fd923f378b112071ed8a3fa7cc2dd19b87) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 6.0.0-next.2
 
 ### Patch Changes
