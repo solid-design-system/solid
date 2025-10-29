@@ -11,164 +11,164 @@
       "description": "0px"
     },
     "1": {
-      "value": "0.25rem",
-      "type": "spacing",
-      "description": "4px"
+      "description": "4px",
+      "type": "float",
+      "value": "4"
     },
     "2": {
-      "value": "0.5rem",
-      "type": "spacing",
-      "description": "8px"
+      "description": "8px",
+      "type": "float",
+      "value": "8"
     },
     "3": {
-      "value": "0.75rem",
-      "type": "spacing",
-      "description": "12px"
+      "description": "12px",
+      "type": "float",
+      "value": "12"
     },
     "4": {
-      "value": "1rem",
-      "type": "spacing",
-      "description": "16px"
+      "description": "16px",
+      "type": "float",
+      "value": "16"
     },
     "5": {
-      "value": "1.25rem",
-      "type": "spacing",
-      "description": "20px"
+      "description": "20px",
+      "type": "float",
+      "value": "20"
     },
     "6": {
-      "value": "1.5rem",
-      "type": "spacing",
-      "description": "24px"
+      "description": "24px",
+      "type": "float",
+      "value": "24"
     },
     "7": {
-      "value": "1.75rem",
-      "type": "spacing",
-      "description": "28px"
+      "description": "28px",
+      "type": "float",
+      "value": "28"
     },
     "8": {
-      "value": "2rem",
-      "type": "spacing",
-      "description": "32px"
+      "description": "32px",
+      "type": "float",
+      "value": "32"
     },
     "9": {
-      "value": "2.25rem",
-      "type": "spacing",
-      "description": "36px"
+      "description": "36px",
+      "type": "float",
+      "value": "36"
     },
     "10": {
-      "value": "2.5rem",
-      "type": "spacing",
-      "description": "40px"
+      "description": "40px",
+      "type": "float",
+      "value": "40"
     },
     "11": {
-      "value": "2.75rem",
-      "type": "spacing",
-      "description": "44px"
+      "description": "44px",
+      "type": "float",
+      "value": "44"
     },
     "12": {
-      "value": "3rem",
-      "type": "spacing",
-      "description": "48px"
+      "description": "48px",
+      "type": "float",
+      "value": "48"
     },
     "14": {
-      "value": "3.5rem",
-      "type": "spacing",
-      "description": "56px"
+      "description": "56px",
+      "type": "float",
+      "value": "56"
     },
     "16": {
-      "value": "4rem",
-      "type": "spacing",
-      "description": "64px"
+      "description": "64px",
+      "type": "float",
+      "value": "64"
     },
     "20": {
-      "value": "5rem",
-      "type": "spacing",
-      "description": "80px"
+      "description": "80px",
+      "type": "float",
+      "value": "80"
     },
     "24": {
-      "value": "6rem",
-      "type": "spacing",
-      "description": "96px"
+      "description": "96px",
+      "type": "float",
+      "value": "96"
     },
     "28": {
-      "value": "7rem",
-      "type": "spacing",
-      "description": "112px"
+      "description": "112px",
+      "type": "float",
+      "value": "112"
     },
     "32": {
-      "value": "8rem",
-      "type": "spacing",
-      "description": "128px"
+      "description": "128px",
+      "type": "float",
+      "value": "128"
     },
     "36": {
-      "value": "9rem",
-      "type": "spacing",
-      "description": "144px"
+      "description": "144px",
+      "type": "float",
+      "value": "144"
     },
     "40": {
-      "value": "10rem",
-      "type": "spacing",
-      "description": "160px"
+      "description": "160px",
+      "type": "float",
+      "value": "160"
     },
     "44": {
-      "value": "11rem",
-      "type": "spacing",
-      "description": "176px"
+      "description": "176px",
+      "type": "float",
+      "value": "176"
     },
     "52": {
-      "value": "13rem",
-      "type": "spacing",
-      "description": "208px"
+      "description": "208px",
+      "type": "float",
+      "value": "208"
     },
     "56": {
-      "value": "14rem",
-      "type": "spacing",
-      "description": "224px"
+      "description": "224px",
+      "type": "float",
+      "value": "224"
     },
     "64": {
-      "value": "16rem",
-      "type": "spacing",
-      "description": "256px"
+      "description": "256px",
+      "type": "float",
+      "value": "256"
     },
     "72": {
-      "value": "18rem",
-      "type": "spacing",
-      "description": "288px"
+      "description": "288px",
+      "type": "float",
+      "value": "288"
     },
     "80": {
-      "value": "20rem",
-      "type": "spacing",
-      "description": "320px"
+      "description": "320px",
+      "type": "float",
+      "value": "320"
     },
     "96": {
-      "value": "24rem",
-      "type": "spacing",
-      "description": "384px"
+      "description": "384px",
+      "type": "float",
+      "value": "384"
     },
     "px": {
-      "value": "1px",
-      "type": "spacing",
-      "description": "1px"
+      "description": "1px\b",
+      "type": "float",
+      "value": "1"
     },
     "0,5": {
-      "value": "0.125rem",
-      "type": "spacing",
-      "description": "2px"
+      "description": "2px",
+      "type": "float",
+      "value": "2"
     },
     "1,5": {
-      "value": "0.375rem",
-      "type": "spacing",
-      "description": "6px"
+      "description": "\b6px",
+      "type": "float",
+      "value": "6"
     },
     "3,5": {
-      "value": "0.875rem",
-      "type": "spacing",
-      "description": "14px"
+      "description": "14px",
+      "type": "float",
+      "value": "14"
     },
     "2,5": {
-      "value": "0.625rem",
-      "type": "spacing",
-      "description": "10px"
+      "description": "10px",
+      "type": "float",
+      "value": "10"
     },
     "font-family": {
       "font-family-primary": {
@@ -192,129 +192,129 @@
       "description": "Used for body copy and smaller titles"
     },
     "font-normal": {
-      "value": "Bk",
-      "type": "fontWeights"
+      "type": "string",
+      "value": "Bk"
     },
     "font-bold": {
-      "value": "Bold",
-      "type": "fontWeights"
+      "type": "string",
+      "value": "Bold"
     },
     "border-0": {
-      "value": "0px",
-      "type": "borderWidth"
+      "type": "float",
+      "value": "0"
     },
     "border": {
-      "value": "1px",
-      "type": "borderWidth",
-      "description": "Default border width"
+      "description": "Default border width",
+      "type": "float",
+      "value": "1"
     },
     "border-2": {
-      "value": "2px",
-      "type": "borderWidth"
+      "type": "float",
+      "value": "2"
     },
     "border-4": {
-      "value": "4px",
-      "type": "borderWidth"
+      "type": "float",
+      "value": "4"
     },
     "border-6": {
-      "value": "6px",
-      "type": "borderWidth"
+      "type": "float",
+      "value": "6"
     },
     "opacity-0": {
-      "value": "0%",
-      "type": "opacity"
+      "type": "float",
+      "value": "0"
     },
     "opacity-5": {
-      "value": "5%",
-      "type": "opacity"
+      "type": "float",
+      "value": "5"
     },
     "opacity-10": {
-      "value": "10%",
-      "type": "opacity"
+      "type": "float",
+      "value": "10"
     },
     "opacity-20": {
-      "value": "20%",
-      "type": "opacity"
+      "type": "float",
+      "value": "20"
     },
     "opacity-30": {
-      "value": "30%",
-      "type": "opacity"
+      "type": "float",
+      "value": "30"
     },
     "opacity-50": {
-      "value": "50%",
-      "type": "opacity"
+      "type": "float",
+      "value": "50"
     },
     "opacity-55": {
-      "value": "55%",
-      "type": "opacity"
+      "type": "float",
+      "value": "55"
     },
     "opacity-60": {
-      "value": "60%",
-      "type": "opacity"
+      "type": "float",
+      "value": "60"
     },
     "opacity-70": {
-      "value": "70%",
-      "type": "opacity"
+      "type": "float",
+      "value": "70"
     },
     "opacity-75": {
-      "value": "75%",
-      "type": "opacity"
+      "type": "float",
+      "value": "75"
     },
     "opacity-80": {
-      "value": "80%",
-      "type": "opacity"
+      "type": "float",
+      "value": "80"
     },
     "opacity-85": {
-      "value": "85%",
-      "type": "opacity"
+      "type": "float",
+      "value": "85"
     },
     "opacity-90": {
-      "value": "90%",
-      "type": "opacity"
+      "type": "float",
+      "value": "90"
     },
     "opacity-1": {
-      "value": "100%",
-      "type": "opacity"
+      "type": "float",
+      "value": "100"
     },
     "text-sm": {
-      "value": "0.875rem",
-      "type": "fontSizes",
-      "description": "14px"
+      "description": "14px",
+      "type": "float",
+      "value": "14"
     },
     "text-base": {
-      "value": "1rem",
-      "type": "fontSizes",
-      "description": "16px"
+      "description": "16px",
+      "type": "float",
+      "value": "16"
     },
     "text-lg": {
-      "value": "1.25rem",
-      "type": "fontSizes",
-      "description": "20px"
+      "description": "20px",
+      "type": "float",
+      "value": "20"
     },
     "text-xl": {
-      "value": "1.5rem",
-      "type": "fontSizes",
-      "description": "24px"
+      "description": "24px",
+      "type": "float",
+      "value": "24"
     },
     "text-2xl": {
-      "value": "1.75rem",
-      "type": "fontSizes",
-      "description": "28px"
+      "description": "28px",
+      "type": "float",
+      "value": "28"
     },
     "text-3xl": {
-      "value": "2rem",
-      "type": "fontSizes",
-      "description": "32px"
+      "description": "32px",
+      "type": "float",
+      "value": "32"
     },
     "text-4xl": {
-      "value": "2.5rem",
-      "type": "fontSizes",
-      "description": "40px"
+      "description": "40px",
+      "type": "float",
+      "value": "40"
     },
     "rounded-full": {
-      "value": "9999px",
-      "type": "borderRadius",
-      "description": "For pill buttons / shapes"
+      "description": "For pill buttons / shapes",
+      "type": "float",
+      "value": "9999"
     },
     "duration": {
       "0": {
@@ -343,9 +343,1284 @@
         "value": "(0.4,0.03,0.4,0.97)",
         "type": "other"
       }
+    },
+    "cerulean": {
+      "description": "low value fluctuation",
+      "type": "color",
+      "value": "#017dc3"
+    },
+    "emerald": {
+      "description": "moderate value fluctuation",
+      "type": "color",
+      "value": "#00a593"
+    },
+    "lemon": {
+      "description": "increased value fluctuation",
+      "type": "color",
+      "value": "#fff000"
+    },
+    "orange": {
+      "description": "high value fluctuation",
+      "type": "color",
+      "value": "#fa9b1e"
+    },
+    "brightred": {
+      "description": "very high value fluctuation",
+      "type": "color",
+      "value": "#ff0000"
+    },
+    "white": {
+      "description": "white",
+      "type": "color",
+      "value": "#ffffff"
+    },
+    "black": {
+      "description": "black",
+      "type": "color",
+      "value": "#181818"
+    },
+    "sizing": {
+      "description": "\b0px",
+      "type": "float",
+      "value": "0"
+    },
+    "opacity-2": {
+      "type": "float",
+      "value": "2"
+    },
+    "rounded": {
+      "description": "For pill buttons / shapes",
+      "type": "float",
+      "value": "4"
+    },
+    "rounded-none": {
+      "description": "No rounding",
+      "type": "float",
+      "value": "0"
+    },
+    "rounded-sm": {
+      "description": "2px",
+      "type": "float",
+      "value": "2"
+    },
+    "rounded-md": {
+      "description": "6px",
+      "type": "float",
+      "value": "6"
+    },
+    "rounded-\blg": {
+      "description": "8px",
+      "type": "float",
+      "value": "8"
+    },
+    "rounded-xl": {
+      "description": "12px",
+      "type": "float",
+      "value": "12"
+    },
+    "leading-9,5": {
+      "description": "Used for text 3xl, mobile text 4xl (size: 32, line-height: 120%)",
+      "type": "float",
+      "value": "38.400001525878906"
+    },
+    "leading-8": {
+      "description": "Used for mobile text lg (size: 20, line-height: 150%)",
+      "type": "float",
+      "value": "30"
+    },
+    "leading-9": {
+      "description": "Used for text base (size: 16, line-height: 150%)",
+      "type": "float",
+      "value": "36"
+    },
+    "leading-12": {
+      "description": "Used for text 3xl (size: 32, line-height: 120%)",
+      "type": "float",
+      "value": "48"
+    },
+    "leading-7": {
+      "description": "Used for text xl (size: 24, line-height: 120%)",
+      "type": "float",
+      "value": "28.799999237060547"
+    },
+    "leading-6": {
+      "description": "Used for text base (size: 16, line-height: 150%)",
+      "type": "float",
+      "value": "24"
+    },
+    "leading-5": {
+      "description": "Used for text sm (size: 14, line-height: 150%)",
+      "type": "float",
+      "value": "21"
+    },
+    "leading-4": {
+      "description": "Used for text base compact (size: 16, line-height: 100%)",
+      "type": "float",
+      "value": "16"
+    },
+    "leading-8,5": {
+      "description": "Used for text xl, mobile text 3xl (size: 28, line-height: 120%)",
+      "type": "float",
+      "value": "33.599998474121094"
+    },
+    "leading-3": {
+      "description": "Used for text sm compact (size: 14, line-height: 100%)",
+      "type": "float",
+      "value": "14"
+    },
+    "leading-15": {
+      "description": "Used for text 4xl (size: 40, line-height: 120%)",
+      "type": "float",
+      "value": "60"
+    },
+    "letter-spacing-none": {
+      "type": "float",
+      "value": "0"
+    },
+    "ui": {
+      "font-family": {
+        "font-family-primary": {
+          "type": "string",
+          "value": "Frutiger Neue fuer UI Web"
+        }
+      },
+      "blue": {
+        "100": {
+          "type": "color",
+          "value": "#ecf0f9"
+        },
+        "200": {
+          "type": "color",
+          "value": "#e0e9f3"
+        },
+        "300": {
+          "type": "color",
+          "value": "#c8d5e7"
+        },
+        "400": {
+          "type": "color",
+          "value": "#99abd0"
+        },
+        "500": {
+          "type": "color",
+          "value": "#466daf"
+        },
+        "600": {
+          "type": "color",
+          "value": "#00358e"
+        },
+        "700": {
+          "type": "color",
+          "value": "#132e6e"
+        },
+        "750": {
+          "type": "color",
+          "value": "#0a204a"
+        },
+        "800": {
+          "type": "color",
+          "value": "#051530"
+        },
+        "900": {
+          "type": "color",
+          "value": "#020920"
+        },
+        "default": {
+          "description": "blue-default",
+          "type": "color",
+          "value": "{core.ui.blue.600}"
+        }
+      },
+      "green": {
+        "100": {
+          "type": "color",
+          "value": "#b6dfaa"
+        },
+        "200": {
+          "type": "color",
+          "value": "#8ed082"
+        },
+        "300": {
+          "type": "color",
+          "value": "#6cc254"
+        },
+        "400": {
+          "type": "color",
+          "value": "#2d9d00"
+        },
+        "500": {
+          "type": "color",
+          "value": "#25880e"
+        },
+        "550": {
+          "type": "color",
+          "value": "#367b28"
+        },
+        "600": {
+          "type": "color",
+          "value": "#316f24"
+        },
+        "700": {
+          "type": "color",
+          "value": "#215725"
+        },
+        "800": {
+          "type": "color",
+          "value": "#19411b"
+        },
+        "default": {
+          "description": "green-default",
+          "type": "color",
+          "value": "{core.ui.green.400}"
+        }
+      },
+      "grey": {
+        "100": {
+          "type": "color",
+          "value": "#f6f6f6"
+        },
+        "200": {
+          "type": "color",
+          "value": "#e9e9e9"
+        },
+        "300": {
+          "type": "color",
+          "value": "#dadada"
+        },
+        "400": {
+          "description": "grey-400",
+          "type": "color",
+          "value": "#c3c3c3"
+        },
+        "500": {
+          "type": "color",
+          "value": "#aeaeae"
+        },
+        "600": {
+          "description": "grey-600",
+          "type": "color",
+          "value": "#888888"
+        },
+        "700": {
+          "type": "color",
+          "value": "#686868"
+        },
+        "800": {
+          "type": "color",
+          "value": "#515151"
+        }
+      },
+      "teal": {
+        "100": {
+          "type": "color",
+          "value": "#bde0e0"
+        },
+        "200": {
+          "type": "color",
+          "value": "#a0d2d1"
+        },
+        "300": {
+          "type": "color",
+          "value": "#72b8bc"
+        },
+        "400": {
+          "type": "color",
+          "value": "#3ca4a4"
+        },
+        "500": {
+          "type": "color",
+          "value": "#008d92"
+        },
+        "600": {
+          "type": "color",
+          "value": "#236e6d"
+        },
+        "700": {
+          "type": "color",
+          "value": "#215d5c"
+        },
+        "800": {
+          "type": "color",
+          "value": "#194547"
+        }
+      },
+      "yellow": {
+        "100": {
+          "type": "color",
+          "value": "#ffeaa5"
+        },
+        "200": {
+          "type": "color",
+          "value": "#ffe07a"
+        },
+        "300": {
+          "type": "color",
+          "value": "#fed210"
+        },
+        "400": {
+          "type": "color",
+          "value": "#e9be33"
+        },
+        "500": {
+          "type": "color",
+          "value": "#d6ad31"
+        },
+        "600": {
+          "type": "color",
+          "value": "#c89712"
+        },
+        "650": {
+          "type": "color",
+          "value": "#bb8d20"
+        },
+        "700": {
+          "type": "color",
+          "value": "#ab812e"
+        },
+        "800": {
+          "type": "color",
+          "value": "#8d6927"
+        }
+      },
+      "lightblue": {
+        "100": {
+          "type": "color",
+          "value": "#c7e6f8"
+        },
+        "200": {
+          "type": "color",
+          "value": "#a2d7f6"
+        },
+        "300": {
+          "type": "color",
+          "value": "#73c3f0"
+        },
+        "400": {
+          "type": "color",
+          "value": "#42aeec"
+        },
+        "500": {
+          "type": "color",
+          "value": "#1582d5"
+        },
+        "600": {
+          "type": "color",
+          "value": "#1a6cac"
+        },
+        "700": {
+          "type": "color",
+          "value": "#1e5c8d"
+        },
+        "800": {
+          "type": "color",
+          "value": "#21486d"
+        }
+      },
+      "violet": {
+        "100": {
+          "type": "color",
+          "value": "#f0eafb"
+        },
+        "200": {
+          "type": "color",
+          "value": "#e1d5f6"
+        },
+        "300": {
+          "type": "color",
+          "value": "#ccb6f1"
+        },
+        "400": {
+          "type": "color",
+          "value": "#b48ee7"
+        },
+        "500": {
+          "type": "color",
+          "value": "#9768de"
+        },
+        "600": {
+          "type": "color",
+          "value": "#873fd5"
+        },
+        "700": {
+          "type": "color",
+          "value": "#62359b"
+        },
+        "800": {
+          "type": "color",
+          "value": "#421e6c"
+        }
+      },
+      "lightgreen": {
+        "100": {
+          "type": "color",
+          "value": "#e9eec1"
+        },
+        "200": {
+          "type": "color",
+          "value": "#d4e08d"
+        },
+        "300": {
+          "type": "color",
+          "value": "#bad71c"
+        },
+        "400": {
+          "type": "color",
+          "value": "#9fb638"
+        },
+        "500": {
+          "type": "color",
+          "value": "#8aa33d"
+        },
+        "600": {
+          "type": "color",
+          "value": "#74903e"
+        },
+        "700": {
+          "type": "color",
+          "value": "#597540"
+        },
+        "800": {
+          "type": "color",
+          "value": "#445d3a"
+        }
+      },
+      "red": {
+        "250": {
+          "type": "color",
+          "value": "#ea586b"
+        },
+        "300": {
+          "type": "color",
+          "value": "#cc1937"
+        },
+        "400": {
+          "type": "color",
+          "value": "#ac1938"
+        },
+        "500": {
+          "type": "color",
+          "value": "#7d142d"
+        }
+      },
+      "cerulean": {
+        "description": "low value fluctuation",
+        "type": "color",
+        "value": "#017dc3"
+      },
+      "emerald": {
+        "description": "moderate value fluctuation",
+        "type": "color",
+        "value": "#00a593"
+      },
+      "lemon": {
+        "description": "increased value fluctuation",
+        "type": "color",
+        "value": "#fff000"
+      },
+      "orange": {
+        "description": "high value fluctuation",
+        "type": "color",
+        "value": "#fa9b1e"
+      },
+      "brightred": {
+        "description": "very high value fluctuation",
+        "type": "color",
+        "value": "#ff0000"
+      },
+      "white": {
+        "description": "white",
+        "type": "color",
+        "value": "#ffffff"
+      },
+      "black": {
+        "description": "black",
+        "type": "color",
+        "value": "#181818"
+      },
+      "sizing": {
+        "0": {
+          "description": "\b0px",
+          "type": "float",
+          "value": "0"
+        },
+        "1": {
+          "description": "4px",
+          "type": "float",
+          "value": "4"
+        },
+        "2": {
+          "description": "8px",
+          "type": "float",
+          "value": "8"
+        },
+        "3": {
+          "description": "12px",
+          "type": "float",
+          "value": "12"
+        },
+        "4": {
+          "description": "16px",
+          "type": "float",
+          "value": "16"
+        },
+        "5": {
+          "description": "20px",
+          "type": "float",
+          "value": "20"
+        },
+        "6": {
+          "description": "24px",
+          "type": "float",
+          "value": "24"
+        },
+        "7": {
+          "description": "28px",
+          "type": "float",
+          "value": "28"
+        },
+        "8": {
+          "description": "32px",
+          "type": "float",
+          "value": "32"
+        },
+        "9": {
+          "description": "36px",
+          "type": "float",
+          "value": "36"
+        },
+        "10": {
+          "description": "40px",
+          "type": "float",
+          "value": "40"
+        },
+        "11": {
+          "description": "44px",
+          "type": "float",
+          "value": "44"
+        },
+        "12": {
+          "description": "48px",
+          "type": "float",
+          "value": "48"
+        },
+        "14": {
+          "description": "56px",
+          "type": "float",
+          "value": "56"
+        },
+        "16": {
+          "description": "64px",
+          "type": "float",
+          "value": "64"
+        },
+        "20": {
+          "description": "80px",
+          "type": "float",
+          "value": "80"
+        },
+        "24": {
+          "description": "96px",
+          "type": "float",
+          "value": "96"
+        },
+        "28": {
+          "description": "112px",
+          "type": "float",
+          "value": "112"
+        },
+        "32": {
+          "description": "128px",
+          "type": "float",
+          "value": "128"
+        },
+        "36": {
+          "description": "144px",
+          "type": "float",
+          "value": "144"
+        },
+        "40": {
+          "description": "160px",
+          "type": "float",
+          "value": "160"
+        },
+        "44": {
+          "description": "176px",
+          "type": "float",
+          "value": "176"
+        },
+        "52": {
+          "description": "208px",
+          "type": "float",
+          "value": "208"
+        },
+        "56": {
+          "description": "224px",
+          "type": "float",
+          "value": "224"
+        },
+        "64": {
+          "description": "256px",
+          "type": "float",
+          "value": "256"
+        },
+        "72": {
+          "description": "288px",
+          "type": "float",
+          "value": "288"
+        },
+        "80": {
+          "description": "320px",
+          "type": "float",
+          "value": "320"
+        },
+        "96": {
+          "description": "384px",
+          "type": "float",
+          "value": "384"
+        },
+        "px": {
+          "description": "1px\b",
+          "type": "float",
+          "value": "1"
+        },
+        "0,5": {
+          "description": "2px",
+          "type": "float",
+          "value": "2"
+        },
+        "1,5": {
+          "description": "\b6px",
+          "type": "float",
+          "value": "6"
+        },
+        "3,5": {
+          "description": "14px",
+          "type": "float",
+          "value": "14"
+        },
+        "2,5": {
+          "description": "10px",
+          "type": "float",
+          "value": "10"
+        }
+      },
+      "text": {
+        "sm": {
+          "description": "14px",
+          "type": "float",
+          "value": "14"
+        },
+        "base": {
+          "description": "16px",
+          "type": "float",
+          "value": "16"
+        },
+        "lg": {
+          "description": "20px",
+          "type": "float",
+          "value": "20"
+        },
+        "xl": {
+          "description": "24px",
+          "type": "float",
+          "value": "24"
+        },
+        "2xl": {
+          "description": "28px",
+          "type": "float",
+          "value": "28"
+        },
+        "3xl": {
+          "description": "32px",
+          "type": "float",
+          "value": "32"
+        },
+        "4xl": {
+          "description": "40px",
+          "type": "float",
+          "value": "40"
+        }
+      },
+      "leading": {
+        "3": {
+          "description": "Used for text sm compact (size: 14, line-height: 100%)",
+          "type": "float",
+          "value": "14"
+        },
+        "4": {
+          "description": "Used for text base compact (size: 16, line-height: 100%)",
+          "type": "float",
+          "value": "16"
+        },
+        "5": {
+          "description": "Used for text sm (size: 14, line-height: 150%)",
+          "type": "float",
+          "value": "21"
+        },
+        "6": {
+          "description": "Used for text base (size: 16, line-height: 150%)",
+          "type": "float",
+          "value": "24"
+        },
+        "7": {
+          "description": "Used for text xl (size: 24, line-height: 120%)",
+          "type": "float",
+          "value": "28.799999237060547"
+        },
+        "8": {
+          "description": "Used for mobile text lg (size: 20, line-height: 150%)",
+          "type": "float",
+          "value": "30"
+        },
+        "9": {
+          "description": "Used for text base (size: 16, line-height: 150%)",
+          "type": "float",
+          "value": "36"
+        },
+        "12": {
+          "description": "Used for text 3xl (size: 32, line-height: 120%)",
+          "type": "float",
+          "value": "48"
+        },
+        "15": {
+          "description": "Used for text 4xl (size: 40, line-height: 120%)",
+          "type": "float",
+          "value": "60"
+        },
+        "8,5": {
+          "description": "Used for text xl, mobile text 3xl (size: 28, line-height: 120%)",
+          "type": "float",
+          "value": "33.599998474121094"
+        },
+        "9,5": {
+          "description": "Used for text 3xl, mobile text 4xl (size: 32, line-height: 120%)",
+          "type": "float",
+          "value": "38.400001525878906"
+        }
+      },
+      "border": {
+        "border-0": {
+          "type": "float",
+          "value": "0"
+        },
+        "border": {
+          "description": "Default border width",
+          "type": "float",
+          "value": "1"
+        },
+        "border-2": {
+          "type": "float",
+          "value": "2"
+        },
+        "border-4": {
+          "type": "float",
+          "value": "4"
+        },
+        "border-6": {
+          "type": "float",
+          "value": "6"
+        }
+      },
+      "rounded": {
+        "full": {
+          "description": "For pill buttons / shapes",
+          "type": "float",
+          "value": "9999"
+        },
+        "default": {
+          "description": "For pill buttons / shapes",
+          "type": "float",
+          "value": "4"
+        },
+        "none": {
+          "description": "No rounding",
+          "type": "float",
+          "value": "0"
+        },
+        "sm": {
+          "description": "2px",
+          "type": "float",
+          "value": "2"
+        },
+        "md": {
+          "description": "6px",
+          "type": "float",
+          "value": "6"
+        },
+        "\blg": {
+          "description": "8px",
+          "type": "float",
+          "value": "8"
+        },
+        "xl": {
+          "description": "12px",
+          "type": "float",
+          "value": "12"
+        }
+      },
+      "opacity": {
+        "opacity-0": {
+          "type": "float",
+          "value": "0"
+        },
+        "opacity-5": {
+          "type": "float",
+          "value": "5"
+        },
+        "opacity-2": {
+          "type": "float",
+          "value": "2"
+        },
+        "opacity-10": {
+          "type": "float",
+          "value": "10"
+        },
+        "opacity-20": {
+          "type": "float",
+          "value": "20"
+        },
+        "opacity-30": {
+          "type": "float",
+          "value": "30"
+        },
+        "opacity-50": {
+          "type": "float",
+          "value": "50"
+        },
+        "opacity-55": {
+          "type": "float",
+          "value": "55"
+        },
+        "opacity-60": {
+          "type": "float",
+          "value": "60"
+        },
+        "opacity-70": {
+          "type": "float",
+          "value": "70"
+        },
+        "opacity-75": {
+          "type": "float",
+          "value": "75"
+        },
+        "opacity-80": {
+          "type": "float",
+          "value": "80"
+        },
+        "opacity-85": {
+          "type": "float",
+          "value": "85"
+        },
+        "opacity-90": {
+          "type": "float",
+          "value": "90"
+        },
+        "opacity-100": {
+          "type": "float",
+          "value": "100"
+        }
+      },
+      "font-weight": {
+        "font-normal": {
+          "type": "string",
+          "value": "Bk"
+        },
+        "font-bold": {
+          "type": "string",
+          "value": "Bold"
+        }
+      }
+    },
+    "vb": {
+      "from-figma": {
+        "azure": {
+          "100": {
+            "type": "color",
+            "value": "#f2f7fb"
+          },
+          "200": {
+            "description": "color has same luminance as step 100",
+            "type": "color",
+            "value": "#e5f0f7"
+          },
+          "300": {
+            "description": "color has same luminance as step 100",
+            "type": "color",
+            "value": "#99c2e1"
+          },
+          "400": {
+            "description": "color has same luminance as step 100",
+            "type": "color",
+            "value": "#6681a4"
+          },
+          "500": {
+            "type": "color",
+            "value": "#0066b3"
+          },
+          "550": {
+            "type": "color",
+            "value": "#005ca1"
+          },
+          "600": {
+            "type": "color",
+            "value": "#005798"
+          },
+          "650": {
+            "type": "color",
+            "value": "#274d7e"
+          },
+          "750": {
+            "type": "color",
+            "value": "#1a4276"
+          },
+          "800": {
+            "type": "color",
+            "value": "#002d67"
+          },
+          "900": {
+            "type": "color",
+            "value": "#002d67"
+          },
+          "default": {
+            "type": "color",
+            "value": "{core.vb.from-figma.azure.500}"
+          }
+        },
+        "vermillion": {
+          "500": {
+            "type": "color",
+            "value": "#f35e01"
+          },
+          "550": {
+            "type": "color",
+            "value": "#bd5622"
+          },
+          "default": {
+            "description": "green-default",
+            "type": "color",
+            "value": "{core.vb.from-figma.vermillion.500}"
+          },
+          "custom": {
+            "50": {
+              "type": "color",
+              "value": "#f5dbc7"
+            },
+            "100": {
+              "type": "color",
+              "value": "#f4cdb2"
+            },
+            "200": {
+              "type": "color",
+              "value": "#f5b691"
+            },
+            "300": {
+              "type": "color",
+              "value": "#f79a66"
+            },
+            "400": {
+              "type": "color",
+              "value": "#f97e3a"
+            },
+            "500": {
+              "description": "Generated with https://www.tints.dev/palette/v1:cnVieXxGMzVFMDF8NTAwfHB8NXwtNHwxM3w5Mnxt",
+              "type": "color",
+              "value": "#f35e01"
+            },
+            "600": {
+              "type": "color",
+              "value": "#ab5421"
+            },
+            "700": {
+              "type": "color",
+              "value": "#925020"
+            },
+            "800": {
+              "type": "color",
+              "value": "#693f1d"
+            },
+            "900": {
+              "type": "color",
+              "value": "#492f18"
+            },
+            "950": {
+              "type": "color",
+              "value": "#3a2916"
+            }
+          }
+        },
+        "indigo": {
+          "700": {
+            "type": "color",
+            "value": "#002d67"
+          },
+          "default": {
+            "type": "color",
+            "value": "{core.vb.from-figma.indigo.700}"
+          }
+        },
+        "grey": {
+          "100": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.10)"
+          },
+          "150": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.15)"
+          },
+          "200": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.20)"
+          },
+          "380": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.38)"
+          },
+          "620": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.62)"
+          },
+          "default": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.86)"
+          },
+          "concrete": {
+            "200": {
+              "type": "color",
+              "value": "#d9e0e8"
+            }
+          }
+        },
+        "white": {
+          "100": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.10)"
+          },
+          "500": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.50)"
+          },
+          "840": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.84)"
+          },
+          "default": {
+            "type": "color",
+            "value": "#ffffff"
+          }
+        }
+      },
+      "font-family": {
+        "font-family-primary": {
+          "type": "string",
+          "value": "GenosGFG"
+        }
+      },
+      "text": {
+        "sm": {
+          "description": "14px",
+          "type": "float",
+          "value": "13"
+        },
+        "base": {
+          "description": "16px",
+          "type": "float",
+          "value": "16"
+        },
+        "lg": {
+          "description": "20px",
+          "type": "float",
+          "value": "20"
+        },
+        "xl": {
+          "description": "24px",
+          "type": "float",
+          "value": "24"
+        },
+        "2xl": {
+          "description": "28px",
+          "type": "float",
+          "value": "28"
+        },
+        "3xl": {
+          "description": "32px",
+          "type": "float",
+          "value": "32"
+        },
+        "4xl": {
+          "description": "40px",
+          "type": "float",
+          "value": "38"
+        }
+      },
+      "status": {
+        "success": {
+          "type": "color",
+          "value": "#0c7336"
+        },
+        "error": {
+          "type": "color",
+          "value": "#d20000"
+        },
+        "warning": {
+          "type": "color",
+          "value": "#ffab00"
+        },
+        "success-bg": {
+          "type": "color",
+          "value": "#d9e0e8"
+        },
+        "error-bg": {
+          "type": "color",
+          "value": "#fdeded"
+        },
+        "warning-bg": {
+          "type": "color",
+          "value": "#fff5e0"
+        }
+      },
+      "black": {
+        "type": "color",
+        "value": "{core.vb.from-figma.grey.default}"
+      },
+      "from-code": {
+        "primary": {
+          "50": {
+            "type": "color",
+            "value": "#e0edf6"
+          },
+          "100": {
+            "type": "color",
+            "value": "#b3d1e8"
+          },
+          "200": {
+            "type": "color",
+            "value": "#80b3d9"
+          },
+          "300": {
+            "type": "color",
+            "value": "#4d94ca"
+          },
+          "400": {
+            "type": "color",
+            "value": "#267dbe"
+          },
+          "500": {
+            "type": "color",
+            "value": "#0066b3"
+          },
+          "600": {
+            "type": "color",
+            "value": "#005eac"
+          },
+          "700": {
+            "type": "color",
+            "value": "#005ba0"
+          },
+          "800": {
+            "type": "color",
+            "value": "#00499a"
+          },
+          "900": {
+            "type": "color",
+            "value": "#00388b"
+          },
+          "default": {
+            "type": "color",
+            "value": "{core.vb.from-code.primary.500}"
+          }
+        },
+        "accent": {
+          "50": {
+            "type": "color",
+            "value": "#fef2eb"
+          },
+          "100": {
+            "type": "color",
+            "value": "#fbcfb3"
+          },
+          "200": {
+            "type": "color",
+            "value": "#f9af80"
+          },
+          "300": {
+            "type": "color",
+            "value": "#f78e4d"
+          },
+          "400": {
+            "type": "color",
+            "value": "#f57627"
+          },
+          "500": {
+            "type": "color",
+            "value": "#f35e01"
+          },
+          "600": {
+            "type": "color",
+            "value": "#f15601"
+          },
+          "700": {
+            "type": "color",
+            "value": "#db5501"
+          },
+          "800": {
+            "type": "color",
+            "value": "#ed4201"
+          },
+          "900": {
+            "type": "color",
+            "value": "#ea3100"
+          },
+          "default": {
+            "type": "color",
+            "value": "{core.vb.from-code.accent.500}"
+          }
+        },
+        "grey": {
+          "50": {
+            "type": "color",
+            "value": "#f5f7f9"
+          },
+          "100": {
+            "type": "color",
+            "value": "#edf0f4"
+          },
+          "200": {
+            "type": "color",
+            "value": "#d9e0e8"
+          },
+          "300": {
+            "type": "color",
+            "value": "#ccd5e1"
+          },
+          "400": {
+            "type": "color",
+            "value": "#bfcad9"
+          },
+          "700": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.65)"
+          },
+          "500 (disabled)": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.65)"
+          },
+          "600 (foreground-secondary-text)": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.62)"
+          },
+          "800 (foreground-text)": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.65)"
+          },
+          "default": {
+            "type": "color",
+            "value": "{core.vb.from-code.accent.500}"
+          }
+        }
+      }
     }
   },
-  "ui-semantic-light": {
+  "ui-light": {
     "duration": {
       "fast": {
         "value": "{core.duration.150}",
@@ -417,6 +1692,1099 @@
         "4/5": {
           "value": "4 / 5",
           "type": "spacing"
+        }
+      },
+      "color": {
+        "background": {
+          "white": {
+            "default": {
+              "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
+              "type": "color",
+              "value": "{ui-light.utilities.color.white.default}"
+            }
+          },
+          "neutral": {
+            "100": {
+              "description": "Form field read only. Used for sd-container",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.100}"
+            },
+            "200": {
+              "description": "Used for sd-flag",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.200}"
+            },
+            "300": {
+              "description": "Used for sd-flag ",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.300}"
+            },
+            "400": {
+              "description": "Used for sd-flag ",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.400}"
+            },
+            "500": {
+              "description": "Used for disabled state ",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.500}"
+            },
+            "600": {
+              "description": "Used for inverted disabled state ",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.600}"
+            },
+            "800": {
+              "description": "Used for badge",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.800}"
+            }
+          },
+          "success": {
+            "default": {
+              "description": "Used for notification, status-badge",
+              "type": "color",
+              "value": "{ui-light.utilities.color.success.default}"
+            }
+          },
+          "error": {
+            "400": {
+              "description": "Used for hover interaction invalid form elements",
+              "type": "color",
+              "value": "{ui-light.utilities.color.error.400}"
+            },
+            "default": {
+              "description": "Used for notification, status-badge",
+              "type": "color",
+              "value": "{ui-light.utilities.color.error.300}"
+            }
+          },
+          "_transparent": {
+            "primary-100|80": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(236, 240, 249, 0.80)"
+            },
+            "primary-100|90": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(236, 240, 249, 0.90)"
+            },
+            "neutral-100|80": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(246, 246, 246, 0.80)"
+            },
+            "neutral-100|90": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(246, 246, 246, 0.90)"
+            },
+            "white|90": {
+              "description": "Used for teaser, audio (wave animation)\n",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.90)"
+            },
+            "white|80": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.80)"
+            },
+            "primary|10": {
+              "description": "Used for audio (wave animation)",
+              "type": "color",
+              "value": "rgba(0, 53, 142, 0.10)"
+            },
+            "primary|30": {
+              "description": "Used for map-marker",
+              "type": "color",
+              "value": "rgba(0, 53, 142, 0.30)"
+            },
+            "primary|80": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(0, 53, 142, 0.80)"
+            },
+            "primary|90": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(0, 53, 142, 0.90)"
+            },
+            "white|20": {
+              "description": "Used for audio (wave animation inverted)",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.20)"
+            },
+            "primary-800|90": {
+              "description": "Used for overlays",
+              "type": "color",
+              "value": "rgba(5, 21, 48, 0.90)"
+            }
+          },
+          "primary": {
+            "100": {
+              "description": "Used for sd-container",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.100}"
+            },
+            "200": {
+              "description": "Used for sd-chip",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.200}"
+            },
+            "300": {
+              "description": "Used for sd-chip",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.300}"
+            },
+            "500": {
+              "description": "Used for sd-chip, sd-badge",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.500}"
+            },
+            "800": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.800}"
+            },
+            "default": {
+              "description": "Inverted background color (light mode)\nUsed for button",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.default}"
+            }
+          },
+          "accent": {
+            "300": {
+              "description": "Used for inverted hover interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.accent.300}"
+            },
+            "500": {
+              "description": "Used for cta background",
+              "type": "color",
+              "value": "{ui-light.utilities.color.accent.500}"
+            },
+            "550": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.accent.550}"
+            },
+            "700": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.accent.700}"
+            },
+            "default": {
+              "description": "Used for checkbox, switch",
+              "type": "color",
+              "value": "{ui-light.utilities.color.accent.default}"
+            }
+          },
+          "info": {
+            "default": {
+              "description": "Used for notification, status-badge",
+              "type": "color",
+              "value": "{ui-light.utilities.color.info.default}"
+            }
+          },
+          "warning": {
+            "default": {
+              "description": "Used for notification, status-badge",
+              "type": "color",
+              "value": "{ui-light.utilities.color.warning.default}"
+            }
+          },
+          "_gradient": {
+            "components": {
+              "informational": {
+                "gradient": {
+                  "--white": {
+                    "background": {
+                      "color": {
+                        "0%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.00)"
+                        },
+                        "60%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.60)"
+                        },
+                        "5%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.05)"
+                        },
+                        "75%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.75)"
+                        },
+                        "80%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.80)"
+                        }
+                      }
+                    }
+                  },
+                  "--primary-800": {
+                    "background": {
+                      "color": {
+                        "60%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.60)"
+                        },
+                        "75%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.75)"
+                        },
+                        "0%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.00)"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "neutral-800": {
+              "40%": {
+                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                "type": "color",
+                "value": "rgba(24, 24, 24, 0.40)"
+              },
+              "0%": {
+                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                "type": "color",
+                "value": "rgba(24, 24, 24, 0.00)"
+              },
+              "10%": {
+                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                "type": "color",
+                "value": "rgba(24, 24, 24, 0.10)"
+              }
+            }
+          }
+        },
+        "primary": {
+          "100": {
+            "type": "color",
+            "value": "{core.ui.blue.100}"
+          },
+          "200": {
+            "type": "color",
+            "value": "{core.ui.blue.200}"
+          },
+          "300": {
+            "type": "color",
+            "value": "{core.ui.blue.300}"
+          },
+          "400": {
+            "type": "color",
+            "value": "{core.ui.blue.400}"
+          },
+          "500": {
+            "type": "color",
+            "value": "{core.ui.blue.500}"
+          },
+          "600": {
+            "type": "color",
+            "value": "{core.ui.blue.600}"
+          },
+          "700": {
+            "type": "color",
+            "value": "{core.ui.blue.700}"
+          },
+          "750": {
+            "type": "color",
+            "value": "{core.ui.blue.750}"
+          },
+          "800": {
+            "type": "color",
+            "value": "{core.ui.blue.800}"
+          },
+          "900": {
+            "type": "color",
+            "value": "{core.ui.blue.900}"
+          },
+          "default": {
+            "type": "color",
+            "value": "{core.ui.blue.default}"
+          }
+        },
+        "accent": {
+          "100": {
+            "type": "color",
+            "value": "{core.ui.green.100}"
+          },
+          "200": {
+            "type": "color",
+            "value": "{core.ui.green.200}"
+          },
+          "300": {
+            "type": "color",
+            "value": "{core.ui.green.300}"
+          },
+          "400": {
+            "type": "color",
+            "value": "{core.ui.green.400}"
+          },
+          "500": {
+            "type": "color",
+            "value": "{core.ui.green.500}"
+          },
+          "550": {
+            "type": "color",
+            "value": "{core.ui.green.550}"
+          },
+          "600": {
+            "type": "color",
+            "value": "{core.ui.green.600}"
+          },
+          "700": {
+            "type": "color",
+            "value": "{core.ui.green.700}"
+          },
+          "800": {
+            "type": "color",
+            "value": "{core.ui.green.800}"
+          },
+          "default": {
+            "type": "color",
+            "value": "{core.ui.green.default}"
+          }
+        },
+        "neutral": {
+          "100": {
+            "type": "color",
+            "value": "{core.ui.grey.100}"
+          },
+          "200": {
+            "type": "color",
+            "value": "{core.ui.grey.200}"
+          },
+          "300": {
+            "type": "color",
+            "value": "{core.ui.grey.300}"
+          },
+          "400": {
+            "type": "color",
+            "value": "{core.ui.grey.400}"
+          },
+          "500": {
+            "type": "color",
+            "value": "{core.ui.grey.500}"
+          },
+          "600": {
+            "type": "color",
+            "value": "{core.ui.grey.600}"
+          },
+          "700": {
+            "type": "color",
+            "value": "{core.ui.grey.700}"
+          },
+          "800": {
+            "type": "color",
+            "value": "{core.ui.grey.800}"
+          }
+        },
+        "error": {
+          "300": {
+            "type": "color",
+            "value": "{core.ui.red.300}"
+          },
+          "400": {
+            "type": "color",
+            "value": "{core.ui.red.400}"
+          },
+          "default": {
+            "description": "Used for error messages, invalid states",
+            "type": "color",
+            "value": "{ui-light.utilities.color.error.300}"
+          }
+        },
+        "success": {
+          "default": {
+            "type": "color",
+            "value": "{core.ui.green.550}"
+          }
+        },
+        "black": {
+          "default": {
+            "type": "color",
+            "value": "{core.ui.black}"
+          }
+        },
+        "white": {
+          "default": {
+            "type": "color",
+            "value": "{core.ui.white}"
+          }
+        },
+        "risk": {
+          "low": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.cerulean}"
+          },
+          "moderate": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.emerald}"
+          },
+          "increased": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.lemon}"
+          },
+          "high": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.orange}"
+          },
+          "veryhigh": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.brightred}"
+          }
+        },
+        "info": {
+          "default": {
+            "description": "Used for notification, status-badge",
+            "type": "color",
+            "value": "{core.ui.lightblue.500}"
+          }
+        },
+        "warning": {
+          "default": {
+            "description": "Used for notification, status-badge",
+            "type": "color",
+            "value": "{core.ui.yellow.650}"
+          }
+        },
+        "icon-fill": {
+          "primary": {
+            "100": {
+              "description": "Used for inverted hover interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.100}"
+            },
+            "200": {
+              "description": "Used for inverted pressed interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.200}"
+            },
+            "400": {
+              "description": "Used for inverted pressed interaction in text link",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.400}"
+            },
+            "500": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.500}"
+            },
+            "800": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.800}"
+            },
+            "default": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.default}"
+            }
+          },
+          "white": {
+            "default": {
+              "description": "Inverted icon color",
+              "type": "color",
+              "value": "{ui-light.utilities.color.white.default}"
+            }
+          },
+          "accent": {
+            "550": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.accent.550}"
+            },
+            "default": {
+              "description": "Used for active / selected elements",
+              "type": "color",
+              "value": "{ui-light.utilities.color.accent.default}"
+            }
+          },
+          "neutral": {
+            "400": {
+              "description": "Used for disabled state breadcrumb",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.400}"
+            },
+            "500": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.500}"
+            },
+            "600": {
+              "description": "Used for inverted disabled state",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.600}"
+            },
+            "800": {
+              "description": "Used for switch, clearable",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.800}"
+            }
+          },
+          "success": {
+            "default": {
+              "description": "Used for success messages, valid states",
+              "type": "color",
+              "value": "{ui-light.utilities.color.success.default}"
+            }
+          },
+          "error": {
+            "400": {
+              "description": "Used for hover interaction invalid form elements\n",
+              "type": "color",
+              "value": "{ui-light.utilities.color.error.400}"
+            },
+            "default": {
+              "description": "Used for error messages, invalid states",
+              "type": "color",
+              "value": "{ui-light.utilities.color.error.300}"
+            }
+          },
+          "risk": {
+            "low": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{ui-light.utilities.color.risk.low}"
+            },
+            "moderate": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{ui-light.utilities.color.risk.moderate}"
+            },
+            "increased": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{ui-light.utilities.color.risk.increased}"
+            },
+            "high": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{ui-light.utilities.color.risk.high}"
+            },
+            "veryhigh": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{ui-light.utilities.color.risk.veryhigh}"
+            }
+          }
+        },
+        "border": {
+          "primary": {
+            "100": {
+              "description": "Used for inverted hover interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.100}"
+            },
+            "200": {
+              "description": "Used for inverted pressed interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.200}"
+            },
+            "400": {
+              "description": "Used for inverted dividers",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.400}"
+            },
+            "500": {
+              "description": "Used for hover interaction (dark mode)",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.500}"
+            },
+            "800": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.800}"
+            },
+            "default": {
+              "description": "Used for buttons, select field, focus state",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.default}"
+            }
+          },
+          "accent": {
+            "550": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.accent.550}"
+            },
+            "default": {
+              "description": "Used to highlight active/selected elements\n",
+              "type": "color",
+              "value": "{ui-light.utilities.color.accent.default}"
+            }
+          },
+          "neutral": {
+            "400": {
+              "description": "Default border color. \nUsed for sd-divider, teaser, table cell, ... sd-container,",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.400}"
+            },
+            "500": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.500}"
+            },
+            "600": {
+              "description": "Used for inverted disabled state",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.600}"
+            },
+            "800": {
+              "description": "Used for form fields, switch, radio, checkbox",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.800}"
+            }
+          },
+          "success": {
+            "default": {
+              "description": "Used for valid form fields\n",
+              "type": "color",
+              "value": "{ui-light.utilities.color.success.default}"
+            }
+          },
+          "error": {
+            "400": {
+              "description": "Used for hover interaction invalid form elements",
+              "type": "color",
+              "value": "{ui-light.utilities.color.error.400}"
+            },
+            "default": {
+              "description": "Used for invalid form fields",
+              "type": "color",
+              "value": "{ui-light.utilities.color.error.300}"
+            }
+          },
+          "white": {
+            "default": {
+              "description": "Used for buttons, inverted focus state",
+              "type": "color",
+              "value": "{ui-light.utilities.color.white.default}"
+            }
+          }
+        },
+        "text": {
+          "primary": {
+            "100": {
+              "description": "Used for inverted hover interaction button label",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.100}"
+            },
+            "200": {
+              "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.200}"
+            },
+            "400": {
+              "description": "Additional text inverted color",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.400}"
+            },
+            "500": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.500}"
+            },
+            "800": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.800}"
+            },
+            "default": {
+              "description": "Primary brand color for text",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.default}"
+            }
+          },
+          "white": {
+            "default": {
+              "description": "Inverted text color",
+              "type": "color",
+              "value": "{ui-light.utilities.color.white.default}"
+            },
+            "default-constant": {
+              "description": "Unchanged in dark mode"
+            }
+          },
+          "black": {
+            "default": {
+              "description": "Default text color",
+              "type": "color",
+              "value": "{ui-light.utilities.color.black.default}"
+            }
+          },
+          "neutral": {
+            "500": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.500}"
+            },
+            "600": {
+              "description": "Used for inverted disabled state",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.600}"
+            },
+            "700": {
+              "description": "Additional text color, Breadcrumb item current",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.700}"
+            }
+          },
+          "error": {
+            "default": {
+              "description": "Used to display negative performance values",
+              "type": "color",
+              "value": "{ui-light.utilities.color.error.300}"
+            }
+          },
+          "success": {
+            "default": {
+              "description": "Used to display positive performance values",
+              "type": "color",
+              "value": "{ui-light.utilities.color.success.default}"
+            }
+          },
+          "accent": {
+            "default": {
+              "description": "Used for inverted hover interaction button label",
+              "type": "color",
+              "value": "{ui-light.utilities.color.accent.default}"
+            }
+          }
+        }
+      },
+      "shadow": {
+        "default": {
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "rgba(81, 81, 81, 0.75)"
+          },
+          "y": {
+            "type": "float",
+            "value": "1"
+          },
+          "blur": {
+            "type": "float",
+            "value": "3"
+          },
+          "x": {
+            "type": "float",
+            "value": "0"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "sm": {
+          "y": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          },
+          "x": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "blur": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "{ui-light.utilities.color.neutral.800}"
+          }
+        }
+      },
+      "opacity": {
+        "0": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-0}"
+        },
+        "5": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-5}"
+        },
+        "10": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-10}"
+        },
+        "20": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-20}"
+        },
+        "30": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-30}"
+        },
+        "50": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-50}"
+        },
+        "55": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-55}"
+        },
+        "60": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-60}"
+        },
+        "70": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-70}"
+        },
+        "75": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-75}"
+        },
+        "80": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-80}"
+        },
+        "\b85": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-85}"
+        },
+        "\b90": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-90}"
+        },
+        "\b100": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-100}"
+        }
+      },
+      "sizing": {
+        "2": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.2}"
+        },
+        "3": {
+          "description": "12px",
+          "type": "float",
+          "value": "{core.ui.sizing.3}"
+        },
+        "4": {
+          "description": "16px",
+          "type": "float",
+          "value": "{core.ui.sizing.4}"
+        },
+        "5": {
+          "description": "20px",
+          "type": "float",
+          "value": "{core.ui.sizing.5}"
+        },
+        "6": {
+          "description": "24px",
+          "type": "float",
+          "value": "{core.ui.sizing.6}"
+        },
+        "8": {
+          "description": "32px",
+          "type": "float",
+          "value": "{core.ui.sizing.8}"
+        },
+        "10": {
+          "description": "40px",
+          "type": "float",
+          "value": "{core.ui.sizing.10}"
+        },
+        "12": {
+          "description": "48px",
+          "type": "float",
+          "value": "{core.ui.sizing.12}"
+        },
+        "16": {
+          "description": "64px",
+          "type": "float",
+          "value": "{core.ui.sizing.16}"
+        },
+        "20": {
+          "description": "64px",
+          "type": "float",
+          "value": "{core.ui.sizing.20}"
+        },
+        "24": {
+          "description": "96px",
+          "type": "float",
+          "value": "{core.ui.sizing.24}"
+        },
+        "2,5": {
+          "description": "10px",
+          "type": "float",
+          "value": "{core.ui.sizing.2,5}"
+        }
+      },
+      "spacing": {
+        "1": {
+          "description": "4px",
+          "type": "float",
+          "value": "{core.ui.sizing.1}"
+        },
+        "2": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.2}"
+        },
+        "3": {
+          "description": "12px",
+          "type": "float",
+          "value": "{core.ui.sizing.3}"
+        },
+        "4": {
+          "description": "16px",
+          "type": "float",
+          "value": "{core.ui.sizing.4}"
+        },
+        "6": {
+          "description": "24px",
+          "type": "float",
+          "value": "{core.ui.sizing.6}"
+        },
+        "8": {
+          "description": "32px",
+          "type": "float",
+          "value": "{core.ui.sizing.8}"
+        },
+        "10": {
+          "description": "40px",
+          "type": "float",
+          "value": "{core.ui.sizing.10}"
+        },
+        "12": {
+          "description": "48px",
+          "type": "float",
+          "value": "{core.ui.sizing.12}"
+        },
+        "16": {
+          "description": "64px",
+          "type": "float",
+          "value": "{core.ui.sizing.16}"
+        },
+        "20": {
+          "description": "80px",
+          "type": "float",
+          "value": "{core.ui.sizing.20}"
+        },
+        "24": {
+          "description": "96px",
+          "type": "float",
+          "value": "{core.ui.sizing.24}"
+        },
+        "32": {
+          "description": "128px",
+          "type": "float",
+          "value": "{core.ui.sizing.32}"
+        },
+        "40": {
+          "description": "160px",
+          "type": "float",
+          "value": "{core.ui.sizing.40}"
+        },
+        "0,5": {
+          "description": "2px",
+          "type": "float",
+          "value": "{core.ui.sizing.0,5}"
+        },
+        "0,25": {
+          "description": "1px",
+          "type": "float",
+          "value": "{core.ui.sizing.px}"
+        },
+        "1,5": {
+          "type": "float",
+          "value": "{core.ui.sizing.1,5}"
+        }
+      },
+      "rounded": {
+        "default": {
+          "description": "4px Default radius for buttons",
+          "type": "float",
+          "value": "{core.ui.rounded.default}"
+        },
+        "sm": {
+          "description": "2px",
+          "type": "float",
+          "value": "{core.ui.rounded.sm}"
+        },
+        "md": {
+          "description": "6px Inner focus outline",
+          "type": "float",
+          "value": "{core.ui.rounded.md}"
+        },
+        "lg": {
+          "description": "8px Outer focus outline",
+          "type": "float",
+          "value": "{core.ui.rounded.\blg}"
+        },
+        "full": {
+          "description": "Radius for pill shape buttons",
+          "type": "float",
+          "value": "{core.ui.rounded.full}"
+        },
+        "none": {
+          "type": "float",
+          "value": "{core.ui.rounded.none}"
+        }
+      },
+      "border-width": {
+        "2": {
+          "type": "float",
+          "value": "{core.ui.border.border-2}"
+        },
+        "4": {
+          "type": "float",
+          "value": "{core.ui.border.border-4}"
+        },
+        "6": {
+          "type": "float",
+          "value": "{core.ui.border.border-6}"
+        },
+        "default": {
+          "type": "float",
+          "value": "{core.ui.border.border}"
+        }
+      },
+      "font-family": {
+        "primary": {
+          "type": "string",
+          "value": "{core.ui.font-family.font-family-primary}"
+        }
+      },
+      "font-weight": {
+        "normal": {
+          "type": "string",
+          "value": "{core.ui.font-weight.font-normal}"
+        },
+        "bold": {
+          "type": "string",
+          "value": "{core.ui.font-weight.font-bold}"
         }
       }
     },
@@ -651,9 +3019,497 @@
         "type": "fontWeight",
         "value": 700
       }
+    },
+    "components": {
+      "sd-breadcrumb": {
+        "__separator": {
+          "color": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.icon-fill.neutral.400}"
+          }
+        }
+      },
+      "sd-header": {
+        "color": {
+          "background": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.background.white.default}"
+          },
+          "shadow": {
+            "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+            "type": "color",
+            "value": "rgba(24, 24, 24, 0.40)"
+          }
+        },
+        "padding-bottom": {
+          "type": "float",
+          "value": "0"
+        }
+      },
+      "sd-tag": {
+        "--selected": {
+          "--default": {
+            "color": {
+              "text": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.white.default}"
+              },
+              "background": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.background.primary.default}"
+              }
+            }
+          }
+        }
+      },
+      "form-control": {
+        "color": {
+          "border": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.border.neutral.800}"
+          }
+        }
+      },
+      "panel": {
+        "color": {
+          "border": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          }
+        }
+      },
+      "sd-button": {
+        "--primary": {
+          "--default": {
+            "color": {
+              "text": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-light.utilities.color.white.default}"
+              },
+              "background": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.background.primary.default}"
+              }
+            }
+          },
+          "--active": {
+            "color": {
+              "text": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.200}"
+              }
+            }
+          },
+          "--inverted": {
+            "--default": {
+              "color": {
+                "background": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.white.default}"
+                },
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.default}"
+                }
+              }
+            },
+            "--hover": {
+              "color": {
+                "background": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.100}"
+                },
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.500}"
+                }
+              }
+            },
+            "--active": {
+              "color": {
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.800}"
+                }
+              }
+            }
+          },
+          "--hover": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.500}"
+              }
+            }
+          }
+        },
+        "--secondary": {
+          "--active": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.100}"
+              }
+            }
+          },
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.200}"
+              }
+            }
+          },
+          "--inverted": {
+            "--hover": {
+              "color": {
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.100}"
+                }
+              }
+            },
+            "--active": {
+              "color": {
+                "background": {
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.800}"
+                }
+              }
+            }
+          }
+        },
+        "--tertiary": {
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-light.utilities.color.background.primary.100}"
+              }
+            }
+          },
+          "--active": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.200}"
+              }
+            }
+          },
+          "--inverted": {
+            "--hover": {
+              "color": {
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.100}"
+                }
+              }
+            },
+            "--active": {
+              "color": {
+                "background": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.800}"
+                }
+              }
+            }
+          }
+        },
+        "--size": {
+          "md": {
+            "font-size": {
+              "type": "float",
+              "value": "{core.text-base}"
+            },
+            "padding-block": {
+              "type": "float",
+              "value": "{ui-light.utilities.spacing.2}"
+            },
+            "border-radius": {
+              "type": "float",
+              "value": "{ui-light.utilities.rounded.default}"
+            }
+          },
+          "lg": {
+            "icon": {
+              "font-size": {
+                "type": "float",
+                "value": "{ui-light.utilities.sizing.6}"
+              }
+            },
+            "font-size": {
+              "type": "float",
+              "value": "{core.text-base}"
+            },
+            "border-radius": {
+              "type": "float",
+              "value": "{ui-light.utilities.rounded.default}"
+            },
+            "padding-block": {
+              "type": "float",
+              "value": "{ui-light.utilities.spacing.2}"
+            }
+          }
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{ui-light.utilities.font-weight.normal}"
+        }
+      },
+      "sd-footnotes": {
+        "--target": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.800}"
+              }
+            }
+          }
+        }
+      },
+      "interactive": {
+        "--active": {
+          "color": {
+            "text": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.800}"
+            }
+          }
+        }
+      },
+      "_todo": {
+        "components": {
+          "sd-button": {
+            "_todo": {
+              "spacing": {
+                "left-right": {
+                  "type": "float",
+                  "value": "{ui-light.utilities.sizing.4}"
+                }
+              }
+            }
+          }
+        },
+        "sd-tag": {
+          "--tmplt": {
+            "--default": {
+              "color": {
+                "border": {
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.800}"
+                }
+              }
+            },
+            "--selected": {
+              "color": {
+                "border": {
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.white.default}"
+                },
+                "icon-fill": {
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.white.default}"
+                }
+              }
+            }
+          }
+        }
+      },
+      "sd-loader": {
+        "--neutral-500": {
+          "color": {
+            "icon-fill": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.500}"
+            }
+          }
+        },
+        "--neutral-600": {
+          "color": {
+            "icon-fill": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.600}"
+            }
+          }
+        }
+      },
+      "sd-flag": {
+        "--neutral-500": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.500}"
+            }
+          }
+        }
+      },
+      "sd-audio": {
+        "--inverted": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.white.default}"
+            }
+          }
+        },
+        "__timestamp": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.text.black.default}"
+            }
+          }
+        }
+      },
+      "sd-brandshape": {
+        "--white": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.background.white.default}"
+            }
+          }
+        },
+        "--neutral-100": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "background": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.background.neutral.100}"
+            }
+          }
+        }
+      },
+      "overlay": {
+        "color": {
+          "background": {
+            "description": "Used for overlays",
+            "type": "color",
+            "value": "rgba(5, 21, 48, 0.90)"
+          }
+        }
+      },
+      "informational": {
+        "gradient": {
+          "--white": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.background.white.default}"
+              }
+            }
+          },
+          "--primary-800": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.800}"
+              }
+            }
+          }
+        }
+      },
+      "sd-accordion": {
+        "color": {
+          "shadow": {
+            "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+            "type": "color",
+            "value": "rgba(24, 24, 24, 0.40)"
+          },
+          "background": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.background.white.default}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.text.primary.default}"
+          }
+        },
+        "__indicator": {
+          "color": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.border.accent.default}"
+          }
+        },
+        "padding-block": {
+          "type": "float",
+          "value": "{ui-light.utilities.spacing.3}"
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{core.ui.sizing.px}"
+        },
+        "__chevron": {
+          "color": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.text.primary.default}"
+          }
+        }
+      },
+      "navigable": {
+        "__current-indicator": {
+          "border-radius": {
+            "type": "float",
+            "value": "0"
+          },
+          "height": {
+            "type": "float",
+            "value": "{ui-light.utilities.spacing.1}"
+          }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "0"
+        },
+        "font-size": {
+          "type": "float",
+          "value": "{core.text-base}"
+        },
+        "_docs": {
+          "description": "Used in: sd-tab, sd-navigation-item and sd-menu",
+          "type": "string",
+          "value": "ℹ️ See description"
+        }
+      },
+      "sd-navigation": {
+        "color": {
+          "text": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.text.primary.default}"
+          }
+        },
+        "--current": {
+          "color": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.text.primary.default}"
+          }
+        }
+      }
     }
   },
-  "ui-semantic-dark": {
+  "ui-dark": {
     "duration": {
       "fast": {
         "value": "{core.duration.150}",
@@ -725,6 +3581,1099 @@
         "4/5": {
           "value": "4 / 5",
           "type": "spacing"
+        }
+      },
+      "color": {
+        "background": {
+          "white": {
+            "default": {
+              "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.900}"
+            }
+          },
+          "neutral": {
+            "100": {
+              "description": "Form field read only. Used for sd-container",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.750}"
+            },
+            "200": {
+              "description": "Used for sd-flag",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.700}"
+            },
+            "300": {
+              "description": "Used for sd-flag ",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.700}"
+            },
+            "400": {
+              "description": "Used for sd-flag ",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.neutral.600}"
+            },
+            "500": {
+              "description": "Used for disabled state ",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.neutral.600}"
+            },
+            "600": {
+              "description": "Used for inverted disabled state ",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.neutral.600}"
+            },
+            "800": {
+              "description": "Used for badge",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.neutral.800}"
+            }
+          },
+          "success": {
+            "default": {
+              "description": "Used for notification, status-badge",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.success.default}"
+            }
+          },
+          "error": {
+            "400": {
+              "description": "Used for hover interaction invalid form elements",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.error.400}"
+            },
+            "default": {
+              "description": "Used for notification, status-badge",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.error.300}"
+            }
+          },
+          "_transparent": {
+            "primary-100|80": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(10, 32, 74, 0.80)"
+            },
+            "primary-100|90": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(10, 32, 74, 0.90)"
+            },
+            "neutral-100|80": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(10, 32, 74, 0.80)"
+            },
+            "neutral-100|90": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(10, 32, 74, 0.90)"
+            },
+            "white|90": {
+              "description": "Used for teaser, audio (wave animation)\n",
+              "type": "color",
+              "value": "rgba(0, 53, 142, 0.90)"
+            },
+            "white|80": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(0, 53, 142, 0.80)"
+            },
+            "primary|10": {
+              "description": "Used for audio (wave animation)",
+              "type": "color",
+              "value": "rgba(0, 53, 142, 0.10)"
+            },
+            "primary|30": {
+              "description": "Used for map-marker",
+              "type": "color",
+              "value": "rgba(0, 53, 142, 0.30)"
+            },
+            "primary|80": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(0, 53, 142, 0.80)"
+            },
+            "primary|90": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(0, 53, 142, 0.90)"
+            },
+            "white|20": {
+              "description": "Used for audio (wave animation inverted)",
+              "type": "color",
+              "value": "rgba(2, 9, 32, 0.20)"
+            },
+            "primary-800|90": {
+              "description": "Used for overlays",
+              "type": "color",
+              "value": "rgba(224, 233, 243, 0.90)"
+            }
+          },
+          "primary": {
+            "100": {
+              "description": "Used for sd-container",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.750}"
+            },
+            "200": {
+              "description": "Used for sd-chip",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.750}"
+            },
+            "300": {
+              "description": "Used for sd-chip",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.700}"
+            },
+            "500": {
+              "description": "Used for sd-chip, sd-badge",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.500}"
+            },
+            "800": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.200}"
+            },
+            "default": {
+              "description": "Inverted background color (light mode)\nUsed for button",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.default}"
+            }
+          },
+          "accent": {
+            "300": {
+              "description": "Used for inverted hover interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.accent.300}"
+            },
+            "500": {
+              "description": "Used for cta background",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.accent.500}"
+            },
+            "550": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.accent.550}"
+            },
+            "700": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.accent.700}"
+            },
+            "default": {
+              "description": "Used for checkbox, switch",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.accent.default}"
+            }
+          },
+          "info": {
+            "default": {
+              "description": "Used for notification, status-badge",
+              "type": "color",
+              "value": "{core.ui.lightblue.500}"
+            }
+          },
+          "warning": {
+            "default": {
+              "description": "Used for notification, status-badge",
+              "type": "color",
+              "value": "{core.ui.yellow.650}"
+            }
+          },
+          "_gradient": {
+            "components": {
+              "informational": {
+                "gradient": {
+                  "--white": {
+                    "background": {
+                      "color": {
+                        "0%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.00)"
+                        },
+                        "60%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.60)"
+                        },
+                        "5%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.05)"
+                        },
+                        "75%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.75)"
+                        },
+                        "80%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.80)"
+                        }
+                      }
+                    }
+                  },
+                  "--primary-800": {
+                    "background": {
+                      "color": {
+                        "60%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.60)"
+                        },
+                        "75%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.75)"
+                        },
+                        "0%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(5, 21, 48, 0.00)"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "neutral-800": {
+              "40%": {
+                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                "type": "color",
+                "value": "rgba(24, 24, 24, 0.40)"
+              },
+              "0%": {
+                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                "type": "color",
+                "value": "rgba(24, 24, 24, 0.00)"
+              },
+              "10%": {
+                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                "type": "color",
+                "value": "rgba(24, 24, 24, 0.10)"
+              }
+            }
+          }
+        },
+        "primary": {
+          "100": {
+            "type": "color",
+            "value": "{core.ui.blue.100}"
+          },
+          "200": {
+            "type": "color",
+            "value": "{core.ui.blue.200}"
+          },
+          "300": {
+            "type": "color",
+            "value": "{core.ui.blue.300}"
+          },
+          "400": {
+            "type": "color",
+            "value": "{core.ui.blue.400}"
+          },
+          "500": {
+            "type": "color",
+            "value": "{core.ui.blue.500}"
+          },
+          "600": {
+            "type": "color",
+            "value": "{core.ui.blue.600}"
+          },
+          "700": {
+            "type": "color",
+            "value": "{core.ui.blue.700}"
+          },
+          "750": {
+            "type": "color",
+            "value": "{core.ui.blue.750}"
+          },
+          "800": {
+            "type": "color",
+            "value": "{core.ui.blue.800}"
+          },
+          "900": {
+            "type": "color",
+            "value": "{core.ui.blue.900}"
+          },
+          "default": {
+            "type": "color",
+            "value": "{core.ui.blue.default}"
+          }
+        },
+        "accent": {
+          "100": {
+            "type": "color",
+            "value": "{core.ui.green.100}"
+          },
+          "200": {
+            "type": "color",
+            "value": "{core.ui.green.200}"
+          },
+          "300": {
+            "type": "color",
+            "value": "{core.ui.green.300}"
+          },
+          "400": {
+            "type": "color",
+            "value": "{core.ui.green.400}"
+          },
+          "500": {
+            "type": "color",
+            "value": "{core.ui.green.500}"
+          },
+          "550": {
+            "type": "color",
+            "value": "{core.ui.green.500}"
+          },
+          "600": {
+            "type": "color",
+            "value": "{core.ui.green.600}"
+          },
+          "700": {
+            "type": "color",
+            "value": "{core.ui.green.700}"
+          },
+          "800": {
+            "type": "color",
+            "value": "{core.ui.green.800}"
+          },
+          "default": {
+            "type": "color",
+            "value": "{core.ui.green.default}"
+          }
+        },
+        "neutral": {
+          "100": {
+            "type": "color",
+            "value": "{core.ui.grey.100}"
+          },
+          "200": {
+            "type": "color",
+            "value": "{core.ui.grey.200}"
+          },
+          "300": {
+            "type": "color",
+            "value": "{core.ui.grey.300}"
+          },
+          "400": {
+            "type": "color",
+            "value": "{core.ui.grey.400}"
+          },
+          "500": {
+            "type": "color",
+            "value": "{core.ui.grey.500}"
+          },
+          "600": {
+            "type": "color",
+            "value": "{core.ui.grey.600}"
+          },
+          "700": {
+            "type": "color",
+            "value": "{core.ui.grey.700}"
+          },
+          "800": {
+            "type": "color",
+            "value": "{core.ui.grey.800}"
+          }
+        },
+        "error": {
+          "300": {
+            "type": "color",
+            "value": "{core.ui.red.250}"
+          },
+          "400": {
+            "type": "color",
+            "value": "{core.ui.red.300}"
+          },
+          "default": {
+            "description": "Used for error messages, invalid states",
+            "type": "color",
+            "value": "{ui-dark.utilities.color.error.300}"
+          }
+        },
+        "success": {
+          "default": {
+            "type": "color",
+            "value": "{core.ui.green.300}"
+          }
+        },
+        "black": {
+          "default": {
+            "type": "color",
+            "value": "{core.ui.black}"
+          }
+        },
+        "white": {
+          "default": {
+            "type": "color",
+            "value": "{core.ui.white}"
+          }
+        },
+        "risk": {
+          "low": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.cerulean}"
+          },
+          "moderate": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.emerald}"
+          },
+          "increased": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.lemon}"
+          },
+          "high": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.orange}"
+          },
+          "veryhigh": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.brightred}"
+          }
+        },
+        "info": {
+          "default": {
+            "description": "Used for notification, status-badge",
+            "type": "color",
+            "value": "{core.ui.lightblue.500}"
+          }
+        },
+        "warning": {
+          "default": {
+            "description": "Used for notification, status-badge",
+            "type": "color",
+            "value": "{core.ui.yellow.650}"
+          }
+        },
+        "icon-fill": {
+          "primary": {
+            "100": {
+              "description": "Used for inverted hover interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.500}"
+            },
+            "200": {
+              "description": "Used for inverted pressed interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.800}"
+            },
+            "400": {
+              "description": "Used for inverted pressed interaction in text link",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.400}"
+            },
+            "500": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.200}"
+            },
+            "800": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            },
+            "default": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            }
+          },
+          "white": {
+            "default": {
+              "description": "Inverted icon color",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            }
+          },
+          "accent": {
+            "550": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.accent.500}"
+            },
+            "default": {
+              "description": "Used for active / selected elements",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.accent.default}"
+            }
+          },
+          "neutral": {
+            "400": {
+              "description": "Used for disabled state breadcrumb",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.neutral.400}"
+            },
+            "500": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.neutral.600}"
+            },
+            "600": {
+              "description": "Used for inverted disabled state",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.neutral.600}"
+            },
+            "800": {
+              "description": "Used for switch, clearable",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.text.white.default}"
+            }
+          },
+          "success": {
+            "default": {
+              "description": "Used for success messages, valid states",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.success.default}"
+            }
+          },
+          "error": {
+            "400": {
+              "description": "Used for hover interaction invalid form elements\n",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.error.400}"
+            },
+            "default": {
+              "description": "Used for error messages, invalid states",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.error.300}"
+            }
+          },
+          "risk": {
+            "low": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.risk.low}"
+            },
+            "moderate": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.risk.moderate}"
+            },
+            "increased": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.risk.increased}"
+            },
+            "high": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.risk.high}"
+            },
+            "veryhigh": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.risk.veryhigh}"
+            }
+          }
+        },
+        "border": {
+          "primary": {
+            "100": {
+              "description": "Used for inverted hover interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.100}"
+            },
+            "200": {
+              "description": "Used for inverted pressed interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.200}"
+            },
+            "400": {
+              "description": "Used for inverted dividers",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.400}"
+            },
+            "500": {
+              "description": "Used for hover interaction (dark mode)",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.100}"
+            },
+            "800": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.200}"
+            },
+            "default": {
+              "description": "Used for buttons, select field, focus state",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            }
+          },
+          "accent": {
+            "550": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.accent.550}"
+            },
+            "default": {
+              "description": "Used to highlight active/selected elements\n",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.accent.default}"
+            }
+          },
+          "neutral": {
+            "400": {
+              "description": "Default border color. \nUsed for sd-divider, teaser, table cell, ... sd-container,",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.400}"
+            },
+            "500": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.neutral.500}"
+            },
+            "600": {
+              "description": "Used for inverted disabled state",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.neutral.600}"
+            },
+            "800": {
+              "description": "Used for form fields, switch, radio, checkbox",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            }
+          },
+          "success": {
+            "default": {
+              "description": "Used for valid form fields\n",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.success.default}"
+            }
+          },
+          "error": {
+            "400": {
+              "description": "Used for hover interaction invalid form elements",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.error.400}"
+            },
+            "default": {
+              "description": "Used for invalid form fields",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.error.300}"
+            }
+          },
+          "white": {
+            "default": {
+              "description": "Used for buttons, inverted focus state",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            }
+          }
+        },
+        "text": {
+          "primary": {
+            "100": {
+              "description": "Used for inverted hover interaction button label",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.500}"
+            },
+            "200": {
+              "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.200}"
+            },
+            "400": {
+              "description": "Additional text inverted color",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.400}"
+            },
+            "500": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.200}"
+            },
+            "800": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            },
+            "default": {
+              "description": "Primary brand color for text",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            }
+          },
+          "white": {
+            "default": {
+              "description": "Inverted text color",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            },
+            "default-constant": {
+              "description": "Unchanged in dark mode"
+            }
+          },
+          "black": {
+            "default": {
+              "description": "Default text color",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            }
+          },
+          "neutral": {
+            "500": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.neutral.600}"
+            },
+            "600": {
+              "description": "Used for inverted disabled state",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.border.neutral.600}"
+            },
+            "700": {
+              "description": "Additional text color, Breadcrumb item current",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.400}"
+            }
+          },
+          "error": {
+            "default": {
+              "description": "Used to display negative performance values",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.error.300}"
+            }
+          },
+          "success": {
+            "default": {
+              "description": "Used to display positive performance values",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.success.default}"
+            }
+          },
+          "accent": {
+            "default": {
+              "description": "Used for inverted hover interaction button label",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.accent.default}"
+            }
+          }
+        }
+      },
+      "shadow": {
+        "default": {
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          },
+          "y": {
+            "type": "float",
+            "value": "0"
+          },
+          "blur": {
+            "type": "float",
+            "value": "0"
+          },
+          "x": {
+            "type": "float",
+            "value": "0"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "sm": {
+          "y": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "x": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "blur": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "{ui-dark.utilities.color.neutral.800}"
+          }
+        }
+      },
+      "opacity": {
+        "0": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-0}"
+        },
+        "5": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-5}"
+        },
+        "10": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-10}"
+        },
+        "20": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-20}"
+        },
+        "30": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-30}"
+        },
+        "50": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-50}"
+        },
+        "55": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-55}"
+        },
+        "60": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-60}"
+        },
+        "70": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-70}"
+        },
+        "75": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-75}"
+        },
+        "80": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-80}"
+        },
+        "\b85": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-85}"
+        },
+        "\b90": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-90}"
+        },
+        "\b100": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-100}"
+        }
+      },
+      "sizing": {
+        "2": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.2}"
+        },
+        "3": {
+          "description": "12px",
+          "type": "float",
+          "value": "{core.ui.sizing.3}"
+        },
+        "4": {
+          "description": "16px",
+          "type": "float",
+          "value": "{core.ui.sizing.4}"
+        },
+        "5": {
+          "description": "20px",
+          "type": "float",
+          "value": "{core.ui.sizing.5}"
+        },
+        "6": {
+          "description": "24px",
+          "type": "float",
+          "value": "{core.ui.sizing.6}"
+        },
+        "8": {
+          "description": "32px",
+          "type": "float",
+          "value": "{core.ui.sizing.8}"
+        },
+        "10": {
+          "description": "40px",
+          "type": "float",
+          "value": "{core.ui.sizing.10}"
+        },
+        "12": {
+          "description": "48px",
+          "type": "float",
+          "value": "{core.ui.sizing.12}"
+        },
+        "16": {
+          "description": "64px",
+          "type": "float",
+          "value": "{core.ui.sizing.16}"
+        },
+        "20": {
+          "description": "64px",
+          "type": "float",
+          "value": "{core.ui.sizing.20}"
+        },
+        "24": {
+          "description": "96px",
+          "type": "float",
+          "value": "{core.ui.sizing.24}"
+        },
+        "2,5": {
+          "description": "10px",
+          "type": "float",
+          "value": "{core.ui.sizing.2,5}"
+        }
+      },
+      "spacing": {
+        "1": {
+          "description": "4px",
+          "type": "float",
+          "value": "{core.ui.sizing.1}"
+        },
+        "2": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.2}"
+        },
+        "3": {
+          "description": "12px",
+          "type": "float",
+          "value": "{core.ui.sizing.3}"
+        },
+        "4": {
+          "description": "16px",
+          "type": "float",
+          "value": "{core.ui.sizing.4}"
+        },
+        "6": {
+          "description": "24px",
+          "type": "float",
+          "value": "{core.ui.sizing.6}"
+        },
+        "8": {
+          "description": "32px",
+          "type": "float",
+          "value": "{core.ui.sizing.8}"
+        },
+        "10": {
+          "description": "40px",
+          "type": "float",
+          "value": "{core.ui.sizing.10}"
+        },
+        "12": {
+          "description": "48px",
+          "type": "float",
+          "value": "{core.ui.sizing.12}"
+        },
+        "16": {
+          "description": "64px",
+          "type": "float",
+          "value": "{core.ui.sizing.16}"
+        },
+        "20": {
+          "description": "80px",
+          "type": "float",
+          "value": "{core.ui.sizing.20}"
+        },
+        "24": {
+          "description": "96px",
+          "type": "float",
+          "value": "{core.ui.sizing.24}"
+        },
+        "32": {
+          "description": "128px",
+          "type": "float",
+          "value": "{core.ui.sizing.32}"
+        },
+        "40": {
+          "description": "160px",
+          "type": "float",
+          "value": "{core.ui.sizing.40}"
+        },
+        "0,5": {
+          "description": "2px",
+          "type": "float",
+          "value": "{core.ui.sizing.0,5}"
+        },
+        "0,25": {
+          "description": "1px",
+          "type": "float",
+          "value": "{core.ui.sizing.px}"
+        },
+        "1,5": {
+          "type": "float",
+          "value": "{core.ui.sizing.1,5}"
+        }
+      },
+      "rounded": {
+        "default": {
+          "description": "4px Default radius for buttons",
+          "type": "float",
+          "value": "{core.ui.rounded.default}"
+        },
+        "sm": {
+          "description": "2px",
+          "type": "float",
+          "value": "{core.ui.rounded.sm}"
+        },
+        "md": {
+          "description": "6px Inner focus outline",
+          "type": "float",
+          "value": "{core.ui.rounded.md}"
+        },
+        "lg": {
+          "description": "8px Outer focus outline",
+          "type": "float",
+          "value": "{core.ui.rounded.\blg}"
+        },
+        "full": {
+          "description": "Radius for pill shape buttons",
+          "type": "float",
+          "value": "{core.ui.rounded.full}"
+        },
+        "none": {
+          "type": "float",
+          "value": "{core.ui.rounded.none}"
+        }
+      },
+      "border-width": {
+        "2": {
+          "type": "float",
+          "value": "{core.ui.border.border-2}"
+        },
+        "4": {
+          "type": "float",
+          "value": "{core.ui.border.border-4}"
+        },
+        "6": {
+          "type": "float",
+          "value": "{core.ui.border.border-6}"
+        },
+        "default": {
+          "type": "float",
+          "value": "{core.ui.border.border}"
+        }
+      },
+      "font-family": {
+        "primary": {
+          "type": "string",
+          "value": "{core.ui.font-family.font-family-primary}"
+        }
+      },
+      "font-weight": {
+        "normal": {
+          "type": "string",
+          "value": "{core.ui.font-weight.font-normal}"
+        },
+        "bold": {
+          "type": "string",
+          "value": "{core.ui.font-weight.font-bold}"
         }
       }
     },
@@ -958,6 +4907,2383 @@
       "bold": {
         "type": "fontWeight",
         "value": 700
+      }
+    },
+    "components": {
+      "sd-breadcrumb": {
+        "__separator": {
+          "color": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.icon-fill.primary.400}"
+          }
+        }
+      },
+      "sd-header": {
+        "color": {
+          "background": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.primary.default}"
+          },
+          "shadow": {
+            "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          }
+        },
+        "padding-bottom": {
+          "type": "float",
+          "value": "0"
+        }
+      },
+      "sd-tag": {
+        "--selected": {
+          "--default": {
+            "color": {
+              "text": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.default}"
+              },
+              "background": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.white.default}"
+              }
+            }
+          }
+        }
+      },
+      "form-control": {
+        "color": {
+          "border": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.primary.200}"
+          }
+        }
+      },
+      "panel": {
+        "color": {
+          "border": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.border.primary.400}"
+          }
+        }
+      },
+      "sd-button": {
+        "--primary": {
+          "--default": {
+            "color": {
+              "text": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.default}"
+              },
+              "background": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.white.default}"
+              }
+            }
+          },
+          "--active": {
+            "color": {
+              "text": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.700}"
+              }
+            }
+          },
+          "--inverted": {
+            "--default": {
+              "color": {
+                "background": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.white.default}"
+                },
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.default}"
+                }
+              }
+            },
+            "--hover": {
+              "color": {
+                "background": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.100}"
+                },
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.500}"
+                }
+              }
+            },
+            "--active": {
+              "color": {
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.800}"
+                }
+              }
+            }
+          },
+          "--hover": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.100}"
+              }
+            }
+          }
+        },
+        "--secondary": {
+          "--active": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.500}"
+              }
+            }
+          },
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.700}"
+              }
+            }
+          },
+          "--inverted": {
+            "--hover": {
+              "color": {
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.100}"
+                }
+              }
+            },
+            "--active": {
+              "color": {
+                "background": {
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.800}"
+                }
+              }
+            }
+          }
+        },
+        "--tertiary": {
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.700}"
+              }
+            }
+          },
+          "--active": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.500}"
+              }
+            }
+          },
+          "--inverted": {
+            "--hover": {
+              "color": {
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.100}"
+                }
+              }
+            },
+            "--active": {
+              "color": {
+                "background": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.800}"
+                }
+              }
+            }
+          }
+        },
+        "--size": {
+          "md": {
+            "font-size": {
+              "type": "float",
+              "value": "{core.text-base}"
+            },
+            "padding-block": {
+              "type": "float",
+              "value": "{ui-dark.utilities.spacing.2}"
+            },
+            "border-radius": {
+              "type": "float",
+              "value": "{ui-dark.utilities.rounded.default}"
+            }
+          },
+          "lg": {
+            "icon": {
+              "font-size": {
+                "type": "float",
+                "value": "{ui-dark.utilities.sizing.6}"
+              }
+            },
+            "font-size": {
+              "type": "float",
+              "value": "{core.text-base}"
+            },
+            "border-radius": {
+              "type": "float",
+              "value": "{ui-dark.utilities.rounded.default}"
+            },
+            "padding-block": {
+              "type": "float",
+              "value": "{ui-dark.utilities.spacing.2}"
+            }
+          }
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{ui-dark.utilities.font-weight.normal}"
+        }
+      },
+      "sd-footnotes": {
+        "--target": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.800}"
+              }
+            }
+          }
+        }
+      },
+      "interactive": {
+        "--active": {
+          "color": {
+            "text": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.400}"
+            }
+          }
+        }
+      },
+      "_todo": {
+        "components": {
+          "sd-button": {
+            "_todo": {
+              "spacing": {
+                "left-right": {
+                  "type": "float",
+                  "value": "{ui-dark.utilities.sizing.4}"
+                }
+              }
+            }
+          }
+        },
+        "sd-tag": {
+          "--tmplt": {
+            "--default": {
+              "color": {
+                "border": {
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.white.default}"
+                }
+              }
+            },
+            "--selected": {
+              "color": {
+                "border": {
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.800}"
+                },
+                "icon-fill": {
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.default}"
+                }
+              }
+            }
+          }
+        }
+      },
+      "sd-loader": {
+        "--neutral-500": {
+          "color": {
+            "icon-fill": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.400}"
+            }
+          }
+        },
+        "--neutral-600": {
+          "color": {
+            "icon-fill": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.400}"
+            }
+          }
+        }
+      },
+      "sd-flag": {
+        "--neutral-500": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.750}"
+            }
+          }
+        }
+      },
+      "sd-audio": {
+        "--inverted": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            }
+          }
+        },
+        "__timestamp": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.text.primary.400}"
+            }
+          }
+        }
+      },
+      "sd-brandshape": {
+        "--white": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.background.white.default}"
+            }
+          }
+        },
+        "--neutral-100": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "background": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.background.neutral.100}"
+            }
+          }
+        }
+      },
+      "overlay": {
+        "color": {
+          "background": {
+            "description": "Used for overlays",
+            "type": "color",
+            "value": "rgba(5, 21, 48, 0.90)"
+          }
+        }
+      },
+      "informational": {
+        "gradient": {
+          "--white": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.800}"
+              }
+            }
+          },
+          "--primary-800": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.800}"
+              }
+            }
+          }
+        }
+      },
+      "sd-accordion": {
+        "color": {
+          "shadow": {
+            "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          },
+          "background": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.primary.default}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.text.primary.default}"
+          }
+        },
+        "__indicator": {
+          "color": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.border.accent.default}"
+          }
+        },
+        "padding-block": {
+          "type": "float",
+          "value": "{ui-dark.utilities.spacing.3}"
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{core.ui.sizing.px}"
+        },
+        "__chevron": {
+          "color": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.text.primary.default}"
+          }
+        }
+      },
+      "navigable": {
+        "__current-indicator": {
+          "border-radius": {
+            "type": "float",
+            "value": "0"
+          },
+          "height": {
+            "type": "float",
+            "value": "{ui-dark.utilities.spacing.1}"
+          }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "0"
+        },
+        "font-size": {
+          "type": "float",
+          "value": "{core.text-base}"
+        },
+        "_docs": {
+          "description": "Used in: sd-tab, sd-navigation-item and sd-menu",
+          "type": "string",
+          "value": "-"
+        }
+      },
+      "sd-navigation": {
+        "color": {
+          "text": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.text.primary.default}"
+          }
+        },
+        "--current": {
+          "color": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.text.primary.default}"
+          }
+        }
+      }
+    }
+  },
+  "vb": {
+    "duration": {
+      "fast": {
+        "value": "{core.duration.150}",
+        "type": "duration",
+        "description": "Component State\nAnimation of states like hover or pressed\nMicrointeractions\nSmooth transitions eg. for buttons or dropdowns"
+      },
+      "medium": {
+        "value": "{core.duration.300}",
+        "type": "duration",
+        "description": "Component State\nAnimation of states like hover or pressed\nMicrointeractions\nSmooth transitions eg. for buttons or dropdowns"
+      },
+      "slow": {
+        "value": "{core.duration.500}",
+        "type": "duration",
+        "description": "Component State\nAnimation of states like hover or pressed\nMicrointeractions\nSmooth transitions eg. for buttons or dropdowns"
+      },
+      "x-slow": {
+        "value": "{core.duration.750}",
+        "type": "duration",
+        "description": "Page and component transitions\nTransitions between screens, building animations for bigger components. (eg. image-text, super-teaser)"
+      }
+    },
+    "utilities": {
+      "aspect": {
+        "video": {
+          "value": "16 / 9",
+          "type": "spacing"
+        },
+        "square": {
+          "value": "1 / 1",
+          "type": "spacing"
+        },
+        "6/5": {
+          "value": "6 / 5",
+          "type": "spacing"
+        },
+        "5/4": {
+          "value": "5 / 4",
+          "type": "spacing"
+        },
+        "4/3": {
+          "value": "4 / 3",
+          "type": "spacing"
+        },
+        "3/2": {
+          "value": "3 / 2",
+          "type": "spacing"
+        },
+        "16/10": {
+          "value": "16 / 10",
+          "type": "spacing"
+        },
+        "golden-ratio": {
+          "value": "1.6180339887498948482 / 1",
+          "type": "spacing"
+        },
+        "2/1": {
+          "value": "2 / 1",
+          "type": "spacing"
+        },
+        "21/9": {
+          "value": "21 / 9",
+          "type": "spacing"
+        },
+        "3/4": {
+          "value": "3 / 4",
+          "type": "spacing"
+        },
+        "4/5": {
+          "value": "4 / 5",
+          "type": "spacing"
+        }
+      },
+      "color": {
+        "background": {
+          "white": {
+            "default": {
+              "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
+              "type": "color",
+              "value": "{vb.utilities.color.white.default}"
+            }
+          },
+          "neutral": {
+            "100": {
+              "description": "Form field read only. Used for sd-container",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.100}"
+            },
+            "200": {
+              "description": "Used for sd-flag",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.100}"
+            },
+            "300": {
+              "description": "Used for sd-flag ",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.200}"
+            },
+            "400": {
+              "description": "Used for sd-flag ",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.300}"
+            },
+            "500": {
+              "description": "Used for disabled state ",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.400}"
+            },
+            "600": {
+              "description": "Used for inverted disabled state ",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.600}"
+            },
+            "800": {
+              "description": "Used for badge",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.800}"
+            }
+          },
+          "success": {
+            "default": {
+              "description": "Used for notification, status-badge",
+              "type": "color",
+              "value": "{vb.utilities.color.success.default}"
+            }
+          },
+          "error": {
+            "400": {
+              "description": "Used for hover interaction invalid form elements",
+              "type": "color",
+              "value": "{vb.utilities.color.error.400}"
+            },
+            "default": {
+              "description": "Used for notification, status-badge",
+              "type": "color",
+              "value": "{vb.utilities.color.error.300}"
+            }
+          },
+          "_transparent": {
+            "primary-100|80": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(236, 240, 249, 0.80)"
+            },
+            "primary-100|90": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(236, 240, 249, 0.90)"
+            },
+            "neutral-100|80": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(246, 246, 246, 0.80)"
+            },
+            "neutral-100|90": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(246, 246, 246, 0.90)"
+            },
+            "white|90": {
+              "description": "Used for teaser, audio (wave animation)\n",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.90)"
+            },
+            "white|80": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.80)"
+            },
+            "primary|10": {
+              "description": "Used for audio (wave animation)",
+              "type": "color",
+              "value": "rgba(0, 45, 103, 0.10)"
+            },
+            "primary|30": {
+              "description": "Used for map-marker",
+              "type": "color",
+              "value": "rgba(0, 45, 103, 0.30)"
+            },
+            "primary|80": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(0, 45, 103, 0.80)"
+            },
+            "primary|90": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(0, 45, 103, 0.90)"
+            },
+            "white|20": {
+              "description": "Used for audio (wave animation inverted)",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.20)"
+            },
+            "primary-800|90": {
+              "description": "Used for overlays",
+              "type": "color",
+              "value": "rgba(0, 45, 103, 0.90)"
+            }
+          },
+          "primary": {
+            "100": {
+              "description": "Used for sd-container",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.100}"
+            },
+            "200": {
+              "description": "Used for sd-chip",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.200}"
+            },
+            "300": {
+              "description": "Used for sd-chip",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.300}"
+            },
+            "500": {
+              "description": "Used for sd-chip, sd-badge",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.500}"
+            },
+            "800": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.800}"
+            },
+            "default": {
+              "description": "Inverted background color (light mode)\nUsed for button",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.800}"
+            }
+          },
+          "accent": {
+            "300": {
+              "description": "Used for inverted hover interaction",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.400}"
+            },
+            "500": {
+              "description": "Used for cta background",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.500}"
+            },
+            "550": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.600}"
+            },
+            "700": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.700}"
+            },
+            "default": {
+              "description": "Used for checkbox, switch",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.default}"
+            }
+          },
+          "info": {
+            "default": {
+              "description": "Used for notification, status-badge",
+              "type": "color",
+              "value": "{vb.utilities.color.info.default}"
+            }
+          },
+          "warning": {
+            "default": {
+              "description": "Used for notification, status-badge",
+              "type": "color",
+              "value": "{vb.utilities.color.warning.default}"
+            }
+          },
+          "_gradient": {
+            "components": {
+              "informational": {
+                "gradient": {
+                  "--white": {
+                    "background": {
+                      "color": {
+                        "0%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.00)"
+                        },
+                        "60%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.60)"
+                        },
+                        "5%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.05)"
+                        },
+                        "75%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.75)"
+                        },
+                        "80%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.80)"
+                        }
+                      }
+                    }
+                  },
+                  "--primary-800": {
+                    "background": {
+                      "color": {
+                        "60%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(0, 45, 103, 0.60)"
+                        },
+                        "75%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(0, 45, 103, 0.75)"
+                        },
+                        "0%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(0, 45, 103, 0.00)"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "neutral-800": {
+              "40%": {
+                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                "type": "color",
+                "value": "rgba(24, 24, 24, 0.40)"
+              },
+              "0%": {
+                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                "type": "color",
+                "value": "rgba(24, 24, 24, 0.00)"
+              },
+              "10%": {
+                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                "type": "color",
+                "value": "rgba(24, 24, 24, 0.10)"
+              }
+            }
+          }
+        },
+        "primary": {
+          "100": {
+            "type": "color",
+            "value": "{core.vb.from-figma.azure.100}"
+          },
+          "200": {
+            "type": "color",
+            "value": "{core.vb.from-figma.azure.200}"
+          },
+          "300": {
+            "type": "color",
+            "value": "{core.vb.from-figma.azure.300}"
+          },
+          "400": {
+            "type": "color",
+            "value": "{core.vb.from-figma.azure.400}"
+          },
+          "500": {
+            "type": "color",
+            "value": "{core.vb.from-figma.azure.500}"
+          },
+          "600": {
+            "type": "color",
+            "value": "{core.vb.from-figma.azure.600}"
+          },
+          "700": {
+            "type": "color",
+            "value": "{core.vb.from-figma.azure.750}"
+          },
+          "750": {
+            "type": "color",
+            "value": "{core.vb.from-figma.azure.750}"
+          },
+          "800": {
+            "type": "color",
+            "value": "{core.vb.from-figma.azure.800}"
+          },
+          "900": {
+            "type": "color",
+            "value": "{core.vb.from-figma.azure.900}"
+          },
+          "default": {
+            "type": "color",
+            "value": "{core.vb.from-figma.azure.default}"
+          }
+        },
+        "accent": {
+          "100": {
+            "type": "color",
+            "value": "{core.vb.from-figma.vermillion.custom.100}"
+          },
+          "200": {
+            "type": "color",
+            "value": "{core.vb.from-figma.vermillion.custom.200}"
+          },
+          "300": {
+            "type": "color",
+            "value": "{core.vb.from-figma.vermillion.custom.300}"
+          },
+          "400": {
+            "type": "color",
+            "value": "{core.vb.from-figma.vermillion.custom.400}"
+          },
+          "500": {
+            "type": "color",
+            "value": "{core.vb.from-figma.vermillion.500}"
+          },
+          "550": {
+            "type": "color",
+            "value": "{core.vb.from-figma.vermillion.550}"
+          },
+          "600": {
+            "type": "color",
+            "value": "{core.vb.from-figma.vermillion.custom.600}"
+          },
+          "700": {
+            "type": "color",
+            "value": "{core.vb.from-figma.vermillion.custom.700}"
+          },
+          "800": {
+            "type": "color",
+            "value": "{core.vb.from-figma.vermillion.custom.800}"
+          },
+          "default": {
+            "type": "color",
+            "value": "{core.vb.from-figma.vermillion.default}"
+          }
+        },
+        "neutral": {
+          "100": {
+            "type": "color",
+            "value": "{core.vb.from-code.grey.100}"
+          },
+          "200": {
+            "type": "color",
+            "value": "{core.vb.from-code.grey.200}"
+          },
+          "300": {
+            "type": "color",
+            "value": "{core.vb.from-code.grey.300}"
+          },
+          "400": {
+            "type": "color",
+            "value": "{core.vb.from-code.grey.400}"
+          },
+          "500": {
+            "type": "color",
+            "value": "{core.vb.from-code.grey.500 (disabled)}"
+          },
+          "600": {
+            "type": "color",
+            "value": "{core.vb.from-code.grey.600 (foreground-secondary-text)}"
+          },
+          "700": {
+            "type": "color",
+            "value": "{core.vb.from-code.grey.700}"
+          },
+          "800": {
+            "type": "color",
+            "value": "{core.vb.from-code.grey.800 (foreground-text)}"
+          }
+        },
+        "error": {
+          "300": {
+            "type": "color",
+            "value": "{core.vb.status.error}"
+          },
+          "400": {
+            "type": "color",
+            "value": "{core.vb.status.error}"
+          },
+          "default": {
+            "description": "Used for error messages, invalid states",
+            "type": "color",
+            "value": "{core.vb.status.error}"
+          }
+        },
+        "success": {
+          "default": {
+            "type": "color",
+            "value": "{core.vb.status.success}"
+          }
+        },
+        "black": {
+          "default": {
+            "type": "color",
+            "value": "{core.ui.black}"
+          }
+        },
+        "white": {
+          "default": {
+            "type": "color",
+            "value": "{core.ui.white}"
+          }
+        },
+        "risk": {
+          "low": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.cerulean}"
+          },
+          "moderate": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.emerald}"
+          },
+          "increased": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.lemon}"
+          },
+          "high": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.orange}"
+          },
+          "veryhigh": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.brightred}"
+          }
+        },
+        "info": {
+          "default": {
+            "description": "Used for notification, status-badge",
+            "type": "color",
+            "value": "{core.ui.lightblue.500}"
+          }
+        },
+        "warning": {
+          "default": {
+            "description": "Used for notification, status-badge",
+            "type": "color",
+            "value": "{core.vb.status.warning}"
+          }
+        },
+        "icon-fill": {
+          "primary": {
+            "100": {
+              "description": "Used for inverted hover interaction",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.100}"
+            },
+            "200": {
+              "description": "Used for inverted pressed interaction",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.200}"
+            },
+            "400": {
+              "description": "Used for inverted pressed interaction in text link",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.400}"
+            },
+            "500": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.500}"
+            },
+            "800": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.800}"
+            },
+            "default": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.default}"
+            }
+          },
+          "white": {
+            "default": {
+              "description": "Inverted icon color",
+              "type": "color",
+              "value": "{vb.utilities.color.white.default}"
+            }
+          },
+          "accent": {
+            "550": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{vb.utilities.color.accent.550}"
+            },
+            "default": {
+              "description": "Used for active / selected elements",
+              "type": "color",
+              "value": "{vb.utilities.color.accent.default}"
+            }
+          },
+          "neutral": {
+            "400": {
+              "description": "Used for disabled state breadcrumb",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.200}"
+            },
+            "500": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.400}"
+            },
+            "600": {
+              "description": "Used for inverted disabled state",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.600}"
+            },
+            "800": {
+              "description": "Used for switch, clearable",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.800}"
+            }
+          },
+          "success": {
+            "default": {
+              "description": "Used for success messages, valid states",
+              "type": "color",
+              "value": "{vb.utilities.color.success.default}"
+            }
+          },
+          "error": {
+            "400": {
+              "description": "Used for hover interaction invalid form elements\n",
+              "type": "color",
+              "value": "{vb.utilities.color.error.400}"
+            },
+            "default": {
+              "description": "Used for error messages, invalid states",
+              "type": "color",
+              "value": "{vb.utilities.color.error.300}"
+            }
+          },
+          "risk": {
+            "low": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{vb.utilities.color.risk.low}"
+            },
+            "moderate": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{vb.utilities.color.risk.moderate}"
+            },
+            "increased": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{vb.utilities.color.risk.increased}"
+            },
+            "high": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{vb.utilities.color.risk.high}"
+            },
+            "veryhigh": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{vb.utilities.color.risk.veryhigh}"
+            }
+          }
+        },
+        "border": {
+          "primary": {
+            "100": {
+              "description": "Used for inverted hover interaction",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.100}"
+            },
+            "200": {
+              "description": "Used for inverted pressed interaction",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.200}"
+            },
+            "400": {
+              "description": "Used for inverted dividers",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.400}"
+            },
+            "500": {
+              "description": "Used for hover interaction (dark mode)",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.500}"
+            },
+            "800": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.800}"
+            },
+            "default": {
+              "description": "Used for buttons, select field, focus state",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.default}"
+            }
+          },
+          "accent": {
+            "550": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.600}"
+            },
+            "default": {
+              "description": "Used to highlight active/selected elements\n",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.default}"
+            }
+          },
+          "neutral": {
+            "400": {
+              "description": "Default border color. \nUsed for sd-divider, teaser, table cell, ... sd-container,",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.200}"
+            },
+            "500": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.400}"
+            },
+            "600": {
+              "description": "Used for inverted disabled state",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.600}"
+            },
+            "800": {
+              "description": "Used for form fields, switch, radio, checkbox",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.800}"
+            }
+          },
+          "success": {
+            "default": {
+              "description": "Used for valid form fields\n",
+              "type": "color",
+              "value": "{vb.utilities.color.success.default}"
+            }
+          },
+          "error": {
+            "400": {
+              "description": "Used for hover interaction invalid form elements",
+              "type": "color",
+              "value": "{vb.utilities.color.error.400}"
+            },
+            "default": {
+              "description": "Used for invalid form fields",
+              "type": "color",
+              "value": "{vb.utilities.color.error.300}"
+            }
+          },
+          "white": {
+            "default": {
+              "description": "Used for buttons, inverted focus state",
+              "type": "color",
+              "value": "{vb.utilities.color.white.default}"
+            }
+          }
+        },
+        "text": {
+          "primary": {
+            "100": {
+              "description": "Used for inverted hover interaction button label",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.100}"
+            },
+            "200": {
+              "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.200}"
+            },
+            "400": {
+              "description": "Additional text inverted color",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.300}"
+            },
+            "500": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.500}"
+            },
+            "800": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.800}"
+            },
+            "default": {
+              "description": "Primary brand color for text",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.default}"
+            }
+          },
+          "white": {
+            "default": {
+              "description": "Inverted text color",
+              "type": "color",
+              "value": "{vb.utilities.color.white.default}"
+            },
+            "default-constant": {
+              "description": "Unchanged in dark mode"
+            }
+          },
+          "black": {
+            "default": {
+              "description": "Default text color",
+              "type": "color",
+              "value": "{vb.utilities.color.black.default}"
+            }
+          },
+          "neutral": {
+            "500": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.400}"
+            },
+            "600": {
+              "description": "Used for inverted disabled state",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.600}"
+            },
+            "700": {
+              "description": "Additional text color, Breadcrumb item current",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.700}"
+            }
+          },
+          "error": {
+            "default": {
+              "description": "Used to display negative performance values",
+              "type": "color",
+              "value": "{vb.utilities.color.error.300}"
+            }
+          },
+          "success": {
+            "default": {
+              "description": "Used to display positive performance values",
+              "type": "color",
+              "value": "{vb.utilities.color.success.default}"
+            }
+          },
+          "accent": {
+            "default": {
+              "description": "Used for inverted hover interaction button label",
+              "type": "color",
+              "value": "{vb.utilities.color.accent.default}"
+            }
+          }
+        }
+      },
+      "shadow": {
+        "default": {
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.10)"
+          },
+          "y": {
+            "type": "float",
+            "value": "4"
+          },
+          "blur": {
+            "type": "float",
+            "value": "10"
+          },
+          "x": {
+            "type": "float",
+            "value": "0"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "sm": {
+          "y": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          },
+          "x": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "blur": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "{vb.utilities.color.neutral.800}"
+          }
+        }
+      },
+      "opacity": {
+        "0": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-0}"
+        },
+        "5": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-5}"
+        },
+        "10": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-10}"
+        },
+        "20": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-20}"
+        },
+        "30": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-30}"
+        },
+        "50": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-50}"
+        },
+        "55": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-55}"
+        },
+        "60": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-60}"
+        },
+        "70": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-70}"
+        },
+        "75": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-75}"
+        },
+        "80": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-80}"
+        },
+        "\b85": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-85}"
+        },
+        "\b90": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-90}"
+        },
+        "\b100": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-100}"
+        }
+      },
+      "sizing": {
+        "2": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.2}"
+        },
+        "3": {
+          "description": "12px",
+          "type": "float",
+          "value": "{core.ui.sizing.3}"
+        },
+        "4": {
+          "description": "16px",
+          "type": "float",
+          "value": "{core.ui.sizing.4}"
+        },
+        "5": {
+          "description": "20px",
+          "type": "float",
+          "value": "{core.ui.sizing.5}"
+        },
+        "6": {
+          "description": "24px",
+          "type": "float",
+          "value": "{core.ui.sizing.6}"
+        },
+        "8": {
+          "description": "32px",
+          "type": "float",
+          "value": "{core.ui.sizing.8}"
+        },
+        "10": {
+          "description": "40px",
+          "type": "float",
+          "value": "{core.ui.sizing.10}"
+        },
+        "12": {
+          "description": "48px",
+          "type": "float",
+          "value": "{core.ui.sizing.12}"
+        },
+        "16": {
+          "description": "64px",
+          "type": "float",
+          "value": "{core.ui.sizing.16}"
+        },
+        "20": {
+          "description": "64px",
+          "type": "float",
+          "value": "{core.ui.sizing.20}"
+        },
+        "24": {
+          "description": "96px",
+          "type": "float",
+          "value": "{core.ui.sizing.24}"
+        },
+        "2,5": {
+          "description": "10px",
+          "type": "float",
+          "value": "{core.ui.sizing.2,5}"
+        }
+      },
+      "spacing": {
+        "1": {
+          "description": "4px",
+          "type": "float",
+          "value": "{core.ui.sizing.1}"
+        },
+        "2": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.2}"
+        },
+        "3": {
+          "description": "12px",
+          "type": "float",
+          "value": "{core.ui.sizing.3}"
+        },
+        "4": {
+          "description": "16px",
+          "type": "float",
+          "value": "{core.ui.sizing.4}"
+        },
+        "6": {
+          "description": "24px",
+          "type": "float",
+          "value": "{core.ui.sizing.6}"
+        },
+        "8": {
+          "description": "32px",
+          "type": "float",
+          "value": "{core.ui.sizing.8}"
+        },
+        "10": {
+          "description": "40px",
+          "type": "float",
+          "value": "{core.ui.sizing.10}"
+        },
+        "12": {
+          "description": "48px",
+          "type": "float",
+          "value": "{core.ui.sizing.12}"
+        },
+        "16": {
+          "description": "64px",
+          "type": "float",
+          "value": "{core.ui.sizing.16}"
+        },
+        "20": {
+          "description": "80px",
+          "type": "float",
+          "value": "{core.ui.sizing.20}"
+        },
+        "24": {
+          "description": "96px",
+          "type": "float",
+          "value": "{core.ui.sizing.24}"
+        },
+        "32": {
+          "description": "128px",
+          "type": "float",
+          "value": "{core.ui.sizing.32}"
+        },
+        "40": {
+          "description": "160px",
+          "type": "float",
+          "value": "{core.ui.sizing.40}"
+        },
+        "0,5": {
+          "description": "2px",
+          "type": "float",
+          "value": "{core.ui.sizing.0,5}"
+        },
+        "0,25": {
+          "description": "1px",
+          "type": "float",
+          "value": "{core.ui.sizing.px}"
+        },
+        "1,5": {
+          "type": "float",
+          "value": "{core.ui.sizing.1,5}"
+        }
+      },
+      "rounded": {
+        "default": {
+          "description": "4px Default radius for buttons",
+          "type": "float",
+          "value": "{core.ui.rounded.default}"
+        },
+        "sm": {
+          "description": "2px",
+          "type": "float",
+          "value": "{core.ui.rounded.sm}"
+        },
+        "md": {
+          "description": "6px Inner focus outline",
+          "type": "float",
+          "value": "{core.ui.rounded.md}"
+        },
+        "lg": {
+          "description": "8px Outer focus outline",
+          "type": "float",
+          "value": "{core.ui.rounded.\blg}"
+        },
+        "full": {
+          "description": "Radius for pill shape buttons",
+          "type": "float",
+          "value": "{core.ui.rounded.full}"
+        },
+        "none": {
+          "type": "float",
+          "value": "{core.ui.rounded.none}"
+        }
+      },
+      "border-width": {
+        "2": {
+          "type": "float",
+          "value": "{core.ui.border.border-2}"
+        },
+        "4": {
+          "type": "float",
+          "value": "{core.ui.border.border-4}"
+        },
+        "6": {
+          "type": "float",
+          "value": "{core.ui.border.border-6}"
+        },
+        "default": {
+          "type": "float",
+          "value": "{core.ui.border.border}"
+        }
+      },
+      "font-family": {
+        "primary": {
+          "type": "string",
+          "value": "{core.vb.font-family.font-family-primary}"
+        }
+      },
+      "font-weight": {
+        "normal": {
+          "type": "string",
+          "value": "Regular"
+        },
+        "bold": {
+          "type": "string",
+          "value": "Bold"
+        }
+      }
+    },
+    "font-size": {
+      "text-sm": {
+        "value": "0.875rem",
+        "type": "fontSizes",
+        "description": "14px"
+      },
+      "text-base": {
+        "value": "1rem",
+        "type": "fontSizes",
+        "description": "16px"
+      },
+      "text-lg": {
+        "value": "1.25rem",
+        "type": "fontSizes",
+        "description": "20px"
+      },
+      "text-xl": {
+        "value": "1.5rem",
+        "type": "fontSizes",
+        "description": "24px"
+      },
+      "text-2xl": {
+        "value": "1.75rem",
+        "type": "fontSizes",
+        "description": "28px"
+      },
+      "text-3xl": {
+        "value": "2rem",
+        "type": "fontSizes",
+        "description": "32px"
+      },
+      "text-4xl": {
+        "value": "2.5rem",
+        "type": "fontSizes",
+        "description": "40px"
+      }
+    },
+    "spacing": {
+      "0": {
+        "value": "0px",
+        "type": "spacing",
+        "description": "No spacing (manually added)"
+      },
+      "auto": {
+        "value": "auto",
+        "type": "spacing",
+        "description": "Automatic spacing (manually added)"
+      }
+    },
+    "z-": {
+      "10": {
+        "value": "10",
+        "type": "utility"
+      },
+      "20": {
+        "value": "20",
+        "type": "utility"
+      },
+      "30": {
+        "value": "30",
+        "type": "utility"
+      },
+      "40": {
+        "value": "40",
+        "type": "utility"
+      },
+      "50": {
+        "value": "50",
+        "type": "utility"
+      },
+      "auto": {
+        "value": "auto",
+        "type": "utility"
+      },
+      "header": {
+        "value": "var(--sd-z-index-header, 600)",
+        "type": "utility"
+      },
+      "drawer": {
+        "value": "var(--sd-z-index-drawer, 700)",
+        "type": "utility"
+      },
+      "dialog": {
+        "value": "var(--sd-z-index-dialog, 800)",
+        "type": "utility"
+      },
+      "dropdown": {
+        "value": "var(--sd-z-index-dropdown, 900)",
+        "type": "utility"
+      },
+      "alert-group": {
+        "value": "var(--sd-z-index-alert-group, 950)",
+        "type": "utility"
+      },
+      "tooltip": {
+        "value": "var(--sd-z-index-tooltip, 1000)",
+        "type": "utility"
+      }
+    },
+    "risk": {
+      "low": {
+        "value": "rgb(1 125 195)",
+        "type": "color",
+        "description": "Exclusively for marking fonds"
+      },
+      "moderate": {
+        "value": "rgb(0 165 147)",
+        "type": "color",
+        "description": "Exclusively for marking fonds"
+      },
+      "increased": {
+        "value": "rgb(255 240 0)",
+        "type": "color",
+        "description": "Exclusively for marking fonds"
+      },
+      "high": {
+        "value": "rgb(250 155 30)",
+        "type": "color",
+        "description": "Exclusively for marking fonds"
+      },
+      "veryhigh": {
+        "value": "rgb(255 0 0)",
+        "type": "color",
+        "description": "Exclusively for marking fonds"
+      }
+    },
+    "keyframes": {
+      "bounce-once": {
+        "type": "keyframes",
+        "value": {
+          "0%": {
+            "transform": "translateY(0)"
+          },
+          "50%": {
+            "transform": "translateY(-18px)"
+          },
+          "100%": {
+            "transform": "translateY(0)"
+          }
+        }
+      },
+      "grow": {
+        "type": "keyframes",
+        "value": {
+          "0%": {
+            "width": "0%"
+          },
+          "100%": {
+            "width": "100%"
+          }
+        }
+      },
+      "loader-color-primary": {
+        "type": "keyframes",
+        "value": {
+          "0%, 100%": {
+            "color": "var(--sd-color-icon-fill-primary, var(--sd-color-primary))"
+          },
+          "50%": {
+            "color": "var(--sd-color-icon-fill-primary, var(--sd-color-primary))",
+            "opacity": "20%"
+          }
+        }
+      },
+      "loader-color-white": {
+        "type": "keyframes",
+        "value": {
+          "0%, 100%": {
+            "color": "var(--sd-color-icon-fill-white, var(--sd-color-white))"
+          },
+          "50%": {
+            "color": "var(--sd-color-icon-fill-white, var(--sd-color-white))",
+            "opacity": "20%"
+          }
+        }
+      },
+      "loader-color-current": {
+        "type": "keyframes",
+        "value": {
+          "0%, 100%": {
+            "color": "currentColor"
+          },
+          "50%": {
+            "color": "currentColor",
+            "opacity": "20%"
+          }
+        }
+      },
+      "wave": {
+        "type": "keyframes",
+        "value": {
+          "0%, 40%, 100%": {
+            "transform": "initial"
+          },
+          "20%": {
+            "transform": "translateY(-4px)"
+          }
+        }
+      }
+    },
+    "animation": {
+      "bounce-once": {
+        "type": "animation",
+        "value": "bounce-once var(--sd-duration-medium, 300ms) ease-in-out"
+      },
+      "grow": {
+        "type": "animation",
+        "value": "grow linear"
+      },
+      "loader-primary": {
+        "type": "animation",
+        "value": "wave 1.3s infinite, loader-color-primary 2.6s infinite"
+      },
+      "loader-white": {
+        "type": "animation",
+        "value": "wave 1.3s infinite, loader-color-white 2.6s infinite"
+      },
+      "loader-current": {
+        "type": "animation",
+        "value": "wave 1.3s infinite, loader-color-current 2.6s infinite"
+      }
+    },
+    "font-weight": {
+      "normal": {
+        "type": "fontWeight",
+        "value": 400
+      },
+      "bold": {
+        "type": "fontWeight",
+        "value": 700
+      }
+    },
+    "components": {
+      "sd-breadcrumb": {
+        "__separator": {
+          "color": {
+            "type": "color",
+            "value": "{vb.utilities.color.icon-fill.neutral.400}"
+          }
+        }
+      },
+      "sd-header": {
+        "color": {
+          "background": {
+            "type": "color",
+            "value": "{vb.utilities.color.background.white.default}"
+          },
+          "shadow": {
+            "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+            "type": "color",
+            "value": "rgba(24, 24, 24, 0.40)"
+          }
+        },
+        "padding-bottom": {
+          "type": "float",
+          "value": "{vb.utilities.spacing.0,5}"
+        }
+      },
+      "sd-tag": {
+        "--selected": {
+          "--default": {
+            "color": {
+              "text": {
+                "type": "color",
+                "value": "{vb.utilities.color.white.default}"
+              },
+              "background": {
+                "type": "color",
+                "value": "{vb.utilities.color.background.primary.default}"
+              }
+            }
+          }
+        }
+      },
+      "form-control": {
+        "color": {
+          "border": {
+            "type": "color",
+            "value": "{vb.utilities.color.border.neutral.800}"
+          }
+        }
+      },
+      "panel": {
+        "color": {
+          "border": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          }
+        }
+      },
+      "sd-button": {
+        "--primary": {
+          "--default": {
+            "color": {
+              "text": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{vb.utilities.color.white.default}"
+              },
+              "background": {
+                "type": "color",
+                "value": "{vb.utilities.color.primary.default}"
+              }
+            }
+          },
+          "--active": {
+            "color": {
+              "text": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{vb.utilities.color.primary.200}"
+              }
+            }
+          },
+          "--inverted": {
+            "--default": {
+              "color": {
+                "background": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{vb.utilities.color.white.default}"
+                },
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{vb.utilities.color.primary.800}"
+                }
+              }
+            },
+            "--hover": {
+              "color": {
+                "background": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{vb.utilities.color.primary.100}"
+                },
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{vb.utilities.color.primary.800}"
+                }
+              }
+            },
+            "--active": {
+              "color": {
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{vb.utilities.color.primary.800}"
+                }
+              }
+            }
+          },
+          "--hover": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{vb.utilities.color.primary.600}"
+              }
+            }
+          }
+        },
+        "--secondary": {
+          "--active": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{vb.utilities.color.primary.100}"
+              }
+            }
+          },
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{vb.utilities.color.primary.200}"
+              }
+            }
+          },
+          "--inverted": {
+            "--hover": {
+              "color": {
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{vb.utilities.color.primary.100}"
+                }
+              }
+            },
+            "--active": {
+              "color": {
+                "background": {
+                  "type": "color",
+                  "value": "{vb.utilities.color.primary.800}"
+                }
+              }
+            }
+          }
+        },
+        "--tertiary": {
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{vb.utilities.color.background.primary.100}"
+              }
+            }
+          },
+          "--active": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{vb.utilities.color.primary.200}"
+              }
+            }
+          },
+          "--inverted": {
+            "--hover": {
+              "color": {
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{vb.utilities.color.primary.100}"
+                }
+              }
+            },
+            "--active": {
+              "color": {
+                "background": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{vb.utilities.color.primary.800}"
+                }
+              }
+            }
+          }
+        },
+        "--size": {
+          "md": {
+            "font-size": {
+              "type": "float",
+              "value": "{core.text-sm}"
+            },
+            "padding-block": {
+              "type": "float",
+              "value": "{vb.utilities.sizing.2,5}"
+            },
+            "border-radius": {
+              "type": "float",
+              "value": "{vb.utilities.rounded.full}"
+            }
+          },
+          "lg": {
+            "icon": {
+              "font-size": {
+                "type": "float",
+                "value": "{vb.utilities.sizing.5}"
+              }
+            },
+            "font-size": {
+              "type": "float",
+              "value": "{core.text-sm}"
+            },
+            "border-radius": {
+              "type": "float",
+              "value": "{vb.utilities.rounded.full}"
+            },
+            "padding-block": {
+              "type": "float",
+              "value": "{vb.utilities.sizing.2,5}"
+            }
+          }
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{vb.utilities.font-weight.bold}"
+        }
+      },
+      "sd-footnotes": {
+        "--target": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{vb.utilities.color.primary.800}"
+              }
+            }
+          }
+        }
+      },
+      "interactive": {
+        "--active": {
+          "color": {
+            "text": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.800}"
+            }
+          }
+        }
+      },
+      "_todo": {
+        "components": {
+          "sd-button": {
+            "_todo": {
+              "spacing": {
+                "left-right": {
+                  "type": "float",
+                  "value": "{vb.utilities.sizing.4}"
+                }
+              }
+            }
+          }
+        },
+        "sd-tag": {
+          "--tmplt": {
+            "--default": {
+              "color": {
+                "border": {
+                  "type": "color",
+                  "value": "{vb.utilities.color.primary.800}"
+                }
+              }
+            },
+            "--selected": {
+              "color": {
+                "border": {
+                  "type": "color",
+                  "value": "{vb.utilities.color.white.default}"
+                },
+                "icon-fill": {
+                  "type": "color",
+                  "value": "{vb.utilities.color.white.default}"
+                }
+              }
+            }
+          }
+        }
+      },
+      "sd-loader": {
+        "--neutral-500": {
+          "color": {
+            "icon-fill": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.500}"
+            }
+          }
+        },
+        "--neutral-600": {
+          "color": {
+            "icon-fill": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.600}"
+            }
+          }
+        }
+      },
+      "sd-flag": {
+        "--neutral-500": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.400}"
+            }
+          }
+        }
+      },
+      "sd-audio": {
+        "--inverted": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{vb.utilities.color.white.default}"
+            }
+          }
+        },
+        "__timestamp": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{vb.utilities.color.text.black.default}"
+            }
+          }
+        }
+      },
+      "sd-brandshape": {
+        "--white": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{vb.utilities.color.background.white.default}"
+            }
+          }
+        },
+        "--neutral-100": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "background": {
+              "type": "color",
+              "value": "{vb.utilities.color.background.neutral.100}"
+            }
+          }
+        }
+      },
+      "overlay": {
+        "color": {
+          "background": {
+            "description": "Used for overlays",
+            "type": "color",
+            "value": "rgba(5, 21, 48, 0.90)"
+          }
+        }
+      },
+      "informational": {
+        "gradient": {
+          "--white": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{vb.utilities.color.background.white.default}"
+              }
+            }
+          },
+          "--primary-800": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{vb.utilities.color.primary.800}"
+              }
+            }
+          }
+        }
+      },
+      "sd-accordion": {
+        "color": {
+          "shadow": {
+            "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+            "type": "color",
+            "value": "rgba(24, 24, 24, 0.40)"
+          },
+          "background": {
+            "type": "color",
+            "value": "{vb.utilities.color.background.white.default}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{vb.utilities.color.text.black.default}"
+          }
+        },
+        "__indicator": {
+          "color": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          }
+        },
+        "padding-block": {
+          "type": "float",
+          "value": "{vb.utilities.spacing.4}"
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{core.ui.sizing.0,5}"
+        },
+        "__chevron": {
+          "color": {
+            "type": "color",
+            "value": "{vb.utilities.color.text.neutral.600}"
+          }
+        }
+      },
+      "navigable": {
+        "__current-indicator": {
+          "border-radius": {
+            "type": "float",
+            "value": "{vb.utilities.rounded.full}"
+          },
+          "height": {
+            "type": "float",
+            "value": "3"
+          }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "{vb.utilities.rounded.sm}"
+        },
+        "font-size": {
+          "type": "float",
+          "value": "{core.text-sm}"
+        },
+        "_docs": {
+          "description": "Used in: sd-tab, sd-navigation-item and sd-menu",
+          "type": "string",
+          "value": "-"
+        }
+      },
+      "sd-navigation": {
+        "color": {
+          "text": {
+            "type": "color",
+            "value": "{vb.utilities.color.text.neutral.700}"
+          }
+        },
+        "--current": {
+          "color": {
+            "type": "color",
+            "value": "{vb.utilities.color.text.black.default}"
+          }
+        }
       }
     }
   }

@@ -107,7 +107,7 @@
   --sd-navigable__current-indicator-border-radius: 624.9375rem;
   --sd-navigable__current-indicator-height: 0.1875rem;
   --sd-navigation--current-color: var(--sd-color-black);
-  --sd-navigation-color: var(--sd-color-neutral-800);
+  --sd-navigation-color-text: var(--sd-color-neutral-800);
   --sd-opacity-0: 0%;
   --sd-opacity-100: 100%;
   --sd-opacity-10: 10%;

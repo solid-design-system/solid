@@ -132,7 +132,7 @@
   --sd-navigable__current-indicator-border-radius: 0;
   --sd-navigable__current-indicator-height: var(--sd-spacing-1);
   --sd-navigation--current-color: var(--sd-color-white);
-  --sd-navigation-color: var(--sd-color-white);
+  --sd-navigation-color-text: var(--sd-color-white);
   --sd-opacity-0: 0%;
   --sd-opacity-100: 100%;
   --sd-opacity-10: 10%;
