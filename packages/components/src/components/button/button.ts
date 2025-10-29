@@ -292,7 +292,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       class=${cx(
         `group relative z-10 font-md no-underline
         w-full align-middle inline-flex items-stretch justify-center
-        transition-colors duration-fast ease-in-out rounded-default
+        transition-colors duration-fast ease-in-out
         select-none cursor-[inherit]`,
         !this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted',
         this.loading && 'relative cursor-wait',
@@ -371,8 +371,14 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         @click=${this.handleClick}
       >
         <div part="motion-wrapper" class=${cx(
-          'absolute inset-0 rounded-default -z-10 overflow-hidden pointer-events-none ',
-          (this.disabled || this.visuallyDisabled) && 'hidden'
+          'absolute inset-0 -z-10 overflow-hidden pointer-events-none ',
+          (this.disabled || this.visuallyDisabled) && 'hidden',
+          {
+            /* sizes, fonts */
+            sm: `rounded-default`,
+            md: `sd-button--size-md-border-radius`,
+            lg: `sd-button--size-lg-border-radius`
+          }[this.size]
         )}>
           <div class='absolute inset-0 w-full h-full transition-all duration-fast translate-y-full group-hover:translate-y-0 group-hover:mt-[-22%] mt-[11%]'>
             <div class=${cx(
