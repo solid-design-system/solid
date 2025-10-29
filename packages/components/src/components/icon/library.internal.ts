@@ -172,16 +172,18 @@ export const icons = {
 
 const internalLibrary: IconLibrary = {
   name: '_internal',
-  resolver: (name: keyof typeof icons) => {
-    const [theme, icon] = name.split('--');
+  resolver: (name: keyof typeof icons, element?: HTMLElement) => {
+    if (element) {
+      const svg = window.getComputedStyle(element).getPropertyValue(`--sd-icon--${name}`);
 
-    const svg = window.getComputedStyle(document.body).getPropertyValue(`--sd-icon--${theme}--${icon}`);
-    if (svg) {
-      return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+      if (svg) {
+        // eslint-disable-next-line no-useless-escape
+        return `data:image/svg+xml,${encodeURIComponent(svg.replaceAll(`\\`, '').replaceAll('"', "\'"))}`;
+      }
     }
 
-    if (icon in icons) {
-      return `data:image/svg+xml,${encodeURIComponent(icons[icon as keyof typeof icons])}`;
+    if (name in icons) {
+      return `data:image/svg+xml,${encodeURIComponent(icons[name])}`;
     }
     return '';
   },

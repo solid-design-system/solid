@@ -37,10 +37,7 @@ async function runBuild() {
   });
 
   await nextTask('Extracting themes', () => {
-    const toAppend = [
-      { name: 'icons.css', process: (css, theme) => css.replaceAll('--sd-icon-', `--sd-icon--${theme.name}-`) },
-      { name: 'overrides.css' }
-    ];
+    const toAppend = [{ name: 'icons.css' }, { name: 'overrides.css' }];
 
     themes = getStylesheetThemes(stylesheet, config);
     themes.forEach(theme => {
