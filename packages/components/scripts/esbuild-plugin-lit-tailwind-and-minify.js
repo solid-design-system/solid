@@ -21,11 +21,11 @@ export async function processTailwind(
 
   const prepend = [
     '@layer theme, base, components, utilities;',
-    `@import 'tailwindcss/theme';`,
-    `@import 'tailwindcss/utilities';`,
+    `${options.standalone ? '@import' : '@reference'} 'tailwindcss/theme';`,
+    `${options.standalone ? '@import' : '@reference'} 'tailwindcss/utilities';`,
     `${options.standalone ? '@import' : '@reference'} 'tailwindcss/preflight';`,
     `${options.standalone ? '@import' : '@reference'} '${path.resolve(base, '../tokens/themes/tailwind.css')}';`,
-    `@import '${path.resolve(base, '../tokens/themes/components.css')}';`,
+    `${options.standalone ? '@import' : '@reference'} '${path.resolve(base, '../tokens/themes/components.css')}';`,
     `@source '${path.resolve(base, '../components/src')}';`
   ];
 
