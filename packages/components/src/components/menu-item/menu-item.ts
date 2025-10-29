@@ -147,7 +147,7 @@ export default class SdMenuItem extends SolidElement {
       id="anchor"
       part="base"
       class=${cx(
-        'relative flex items-stretch whitespace-nowrap py-3 px-4 no-wrap',
+        'relative flex items-stretch whitespace-nowrap py-3 px-4 no-wrap !navigable-border-radius',
         this.disabled
           ? 'outline-none cursor-not-allowed text-neutral-500 hover:bg-transparent'
           : 'cursor-pointer text-primary hover:bg-neutral-200',

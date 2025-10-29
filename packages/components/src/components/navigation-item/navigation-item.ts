@@ -204,7 +204,7 @@ export default class SdNavigationItem extends SolidElement {
       <${tag}
         part="base"
         class=${cx(
-          'flex items-center cursor-pointer relative focus-visible:focus-outline group hover:bg-neutral-200 transition-colors duration-fast ease-in-out min-h-[48px] sd-navigation-item-border-radius-bottom  sd-navigation-item-border-radius-top',
+          'flex items-center cursor-pointer relative focus-visible:focus-outline group hover:bg-neutral-200 transition-colors duration-fast ease-in-out min-h-[48px] navigable-border-radius',
           { md: 'sd-navigation-item-font-size', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
           this.disabled ? 'text-neutral-500 pointer-events-none' : 'sd-navigation-item-color',
           this.current && 'font-bold sd-navigation-item--current-color',
@@ -229,10 +229,10 @@ export default class SdNavigationItem extends SolidElement {
         <div
         part="current-indicator"
         class=${cx(
-          'absolute bg-accent left-0 pointer-events-none sd-navigation-item__current-indicator-border-radius',
+          'absolute bg-accent left-0 pointer-events-none navigable__current-indicator-border-radius',
           this.vertical
             ? 'w-1 h-[calc(100%-16px)] top-2 group-hover:h-full group-hover:top-0'
-            : 'sd-navigation-item__current-indicator-height w-[calc(100%-16px)] bottom-0 left-2 group-hover:w-full group-hover:left-0',
+            : 'navigable__current-indicator-height w-[calc(100%-16px)] bottom-0 left-2 group-hover:w-full group-hover:left-0 transition-all',
           this.disabled && 'bg-neutral-500'
         )}></div>
         <div class='inline-flex flex-col justify-center gap-1 w-full h-full'>
