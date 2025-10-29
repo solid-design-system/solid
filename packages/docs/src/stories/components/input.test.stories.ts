@@ -299,7 +299,7 @@ export const Types = {
             constants: [
               { type: 'attribute', name: 'type', value: 'date' },
               { type: 'attribute', name: 'label', value: 'Date' },
-              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
+              { type: 'attribute', name: 'placeholder', value: 'name@example.com' },
               { type: 'attribute', name: 'help-text', value: 'Value is restricted to date format' }
             ],
             args
@@ -310,7 +310,7 @@ export const Types = {
             constants: [
               { type: 'attribute', name: 'type', value: 'datetime-local' },
               { type: 'attribute', name: 'label', value: 'Date Time' },
-              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
+              { type: 'attribute', name: 'placeholder', value: 'name@example.com' },
               { type: 'attribute', name: 'help-text', value: 'Value is restricted to datetime format' }
             ],
             args
@@ -436,246 +436,231 @@ export const Validation = {
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'label', value: 'Indicate Valid State' },
-              { type: 'attribute', name: 'name', value: 'Required field' },
-              { type: 'attribute', name: 'placeholder', value: '.*' },
-              { type: 'attribute', name: 'help-text', value: 'Indicate on valid' },
+              { type: 'attribute', name: 'name', value: 'valid-field' },
+              { type: 'attribute', name: 'placeholder', value: '' },
+              { type: 'attribute', name: 'help-text', value: '' },
               { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'style-on-valid', value: true },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
-              }
+              { type: 'attribute', name: 'style-on-valid', value: true }
             ],
             args
           })}
         </div>
+
         <div class="mb-2">
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'label', value: 'Required' },
-              { type: 'attribute', name: 'name', value: 'Required field' },
-              { type: 'attribute', name: 'placeholder', value: '.*' },
-              { type: 'attribute', name: 'help-text', value: 'Input must be filled' },
+              { type: 'attribute', name: 'name', value: 'required-field' },
+              { type: 'attribute', name: 'placeholder', value: '' },
+              { type: 'attribute', name: 'help-text', value: '' },
               { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
-              }
+              { type: 'attribute', name: 'required', value: true }
             ],
             args
           })}
         </div>
+
         <div class="mb-2">
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'label', value: 'Pattern' },
-              { type: 'attribute', name: 'name', value: 'Pattern field' },
-              { type: 'attribute', name: 'placeholder', value: '[A-Za-z]{3,}' },
-              { type: 'attribute', name: 'help-text', value: 'Input must match pattern' },
+              { type: 'attribute', name: 'name', value: 'pattern-field' },
+              { type: 'attribute', name: 'placeholder', value: '' },
+              { type: 'attribute', name: 'help-text', value: 'Please use the pattern [A-Za-z]{3,}' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
-              { type: 'attribute', name: 'pattern', value: '[A-Za-z]{3,}' },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
-              }
+              { type: 'attribute', name: 'pattern', value: '[A-Za-z]{3,}' }
             ],
             args
           })}
         </div>
+
         <div class="mb-2">
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'label', value: 'Min Length' },
-              { type: 'attribute', name: 'name', value: 'Min length field' },
-              { type: 'attribute', name: 'placeholder', value: '^.{3,}$' },
-              { type: 'attribute', name: 'help-text', value: 'Value must meet minlength' },
+              { type: 'attribute', name: 'name', value: 'minlength-field' },
+              { type: 'attribute', name: 'placeholder', value: '' },
+              { type: 'attribute', name: 'help-text', value: 'Please type in at least 3 characters' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
-              { type: 'attribute', name: 'minlength', value: 3 },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
-              }
+              { type: 'attribute', name: 'minlength', value: 3 }
             ],
             args
           })}
         </div>
+
         <div class="mb-2">
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'label', value: 'Max Length' },
-              { type: 'attribute', name: 'name', value: 'Max length field' },
-              { type: 'attribute', name: 'placeholder', value: '^.{0,3}$' },
-              { type: 'attribute', name: 'help-text', value: 'Value cannot exceed maxlength' },
+              { type: 'attribute', name: 'name', value: 'maxlength-field' },
+              { type: 'attribute', name: 'placeholder', value: '{8}' },
+              { type: 'attribute', name: 'help-text', value: 'Max. 3 Characters are allowed' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
-              { type: 'attribute', name: 'maxlength', value: 3 },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
-              }
+              { type: 'attribute', name: 'maxlength', value: 3 }
             ],
             args
           })}
         </div>
+
         <div class="mb-2">
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'type', value: 'number' },
               { type: 'attribute', name: 'label', value: 'Min' },
-              { type: 'attribute', name: 'name', value: 'Min field' },
-              { type: 'attribute', name: 'placeholder', value: '^d{1,3}$' },
-              { type: 'attribute', name: 'help-text', value: 'Numeric value must be greater than min' },
+              { type: 'attribute', name: 'name', value: 'min-field' },
+              { type: 'attribute', name: 'placeholder', value: '' },
+              { type: 'attribute', name: 'help-text', value: 'The number must be greater than or equal to 3' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
-              { type: 'attribute', name: 'min', value: 3 },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
-              }
+              { type: 'attribute', name: 'min', value: 3 }
             ],
             args
           })}
         </div>
+
         <div class="mb-2">
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'type', value: 'number' },
               { type: 'attribute', name: 'label', value: 'Max' },
-              { type: 'attribute', name: 'name', value: 'Max field' },
-              { type: 'attribute', name: 'placeholder', value: '^d{1,3}$' },
-              { type: 'attribute', name: 'help-text', value: 'Numeric value must not exceed max' },
+              { type: 'attribute', name: 'name', value: 'max-field' },
+              { type: 'attribute', name: 'placeholder', value: '3' },
+              { type: 'attribute', name: 'help-text', value: 'The number must be smaller than or equal to 3' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
-              { type: 'attribute', name: 'max', value: 3 },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
-              }
+              { type: 'attribute', name: 'max', value: 3 }
             ],
             args
           })}
         </div>
+
         <div class="mb-2">
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'type', value: 'email' },
               { type: 'attribute', name: 'label', value: 'Email' },
-              { type: 'attribute', name: 'name', value: 'Email field' },
-              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
-              { type: 'attribute', name: 'help-text', value: 'Value must match email address format' },
+              { type: 'attribute', name: 'name', value: 'email-field' },
+              { type: 'attribute', name: 'placeholder', value: 'name@example.com' },
+              { type: 'attribute', name: 'help-text', value: 'Please use the format name@example.com' },
               { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
-              }
+              { type: 'attribute', name: 'required', value: true }
             ],
             args
           })}
         </div>
+
         <div class="mb-2">
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'type', value: 'date' },
               { type: 'attribute', name: 'label', value: 'Date' },
-              { type: 'attribute', name: 'name', value: 'Date field' },
-              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
-              { type: 'attribute', name: 'help-text', value: 'Value is restricted to date format' },
+              { type: 'attribute', name: 'name', value: 'date-field' },
+              { type: 'attribute', name: 'placeholder', value: 'tt.mm.jjjj' },
+              { type: 'attribute', name: 'help-text', value: 'Please use the format tt.mm.jjjj' },
               { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
-              }
+              { type: 'attribute', name: 'required', value: true }
             ],
             args
           })}
         </div>
+
         <div class="mb-2">
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'type', value: 'datetime-local' },
               { type: 'attribute', name: 'label', value: 'Date time' },
-              { type: 'attribute', name: 'name', value: 'Datetime field' },
-              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
-              { type: 'attribute', name: 'help-text', value: 'Value is restricted to datetime format' },
+              { type: 'attribute', name: 'name', value: 'datetime-field' },
+              { type: 'attribute', name: 'placeholder', value: 'tt.mm.jjjj, hh:mm' },
+              { type: 'attribute', name: 'help-text', value: 'Please use the format tt.mm.jjjj, hh:mm' },
               { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
-              }
+              { type: 'attribute', name: 'required', value: true }
             ],
             args
           })}
         </div>
+
         <div class="mb-2">
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'type', value: 'time' },
               { type: 'attribute', name: 'label', value: 'Time' },
-              { type: 'attribute', name: 'name', value: 'Time field' },
-              { type: 'attribute', name: 'placeholder', value: '' },
-              { type: 'attribute', name: 'help-text', value: 'Value is restricted to time format' },
+              { type: 'attribute', name: 'name', value: 'time-field' },
+              { type: 'attribute', name: 'placeholder', value: 'hh:mm' },
+              { type: 'attribute', name: 'help-text', value: 'Please use the format hh:mm' },
               { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
-              }
+              { type: 'attribute', name: 'required', value: true }
             ],
             args
           })}
         </div>
+
         <div class="mb-2">
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'type', value: 'url' },
               { type: 'attribute', name: 'label', value: 'URL' },
-              { type: 'attribute', name: 'name', value: 'Url field' },
+              { type: 'attribute', name: 'name', value: 'url-field' },
               { type: 'attribute', name: 'placeholder', value: 'https://www.union-investment.de/' },
-              { type: 'attribute', name: 'help-text', value: 'Value must match url format' },
+              { type: 'attribute', name: 'help-text', value: 'Please use the format https://www.example.de/' },
               { type: 'attribute', name: 'form', value: 'testForm' },
-              { type: 'attribute', name: 'required', value: true },
-              {
-                type: 'slot',
-                name: 'right',
-                value: '<sd-icon slot="right" name="system/image"></sd-icon>'
-              }
+              { type: 'attribute', name: 'required', value: true }
             ],
             args
           })}
         </div>
+
         <sd-button type="submit">Submit</sd-button>
       </form>
-      <script>
+
+      <script type="module">
+        const customErrorMessages = {
+          'valid-field': { message: 'Please correct your input.' },
+          'required-field': { message: 'Please correct your input.' },
+          'pattern-field': { message: 'The input does not meet the required format. Please correct your input.' },
+          'minlength-field': { message: 'At least 3 characters are needed. Please correct your input.' },
+          'maxlength-field': { message: 'Maximum 3 characters are allowed. Please correct your input.' },
+          'min-field': { message: 'Enter a number 3 or greater.' },
+          'max-field': { message: 'Enter a number 3 or less.' },
+          'email-field': { typeMismatch: 'Enter a valid email address (e.g., name@example.com).' },
+          'date-field': { typeMismatch: 'Enter a valid date (tt.mm.jjjj).' },
+          'datetime-field': { typeMismatch: 'Enter a valid date and time (tt.mm.jjjj, hh:mm).' },
+          'time-field': { typeMismatch: 'Enter a valid time (hh:mm).' },
+          'url-field': { typeMismatch: 'Enter a valid URL (e.g., https://www.example.de/).' }
+        };
+
+        await Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-button')]);
+
+        const form = document.querySelector('#testForm');
+        const inputs = form.querySelectorAll('sd-input');
+
+        inputs.forEach(input => {
+          const fieldName = input.getAttribute('name');
+          const messages = customErrorMessages[fieldName];
+
+          if (messages) {
+            if (messages.typeMismatch) {
+              input.setCustomValidity(messages.typeMismatch);
+            } else if (messages.message) {
+              input.setCustomValidity(messages.message);
+            }
+          }
+        });
+
         function handleSubmit(event) {
-          const form = document.querySelector('#testForm');
+          event.preventDefault();
 
           const formData = new FormData(form);
           const formValues = Object.fromEntries(formData);
 
           if (form.reportValidity()) {
-            event.preventDefault(); // Prevent the default form submission behavior
             alert('Form submitted with the following values: ' + JSON.stringify(formValues, null, 2));
           }
         }
 
-        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
+        form.addEventListener('submit', handleSubmit);
       </script>
     `;
   }
