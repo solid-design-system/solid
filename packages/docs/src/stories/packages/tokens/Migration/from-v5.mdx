@@ -1,7 +1,119 @@
 import { Meta } from '@storybook/addon-docs/blocks';
+import '../../../../../../components/src/solid-components';
 
 <Meta title="Packages/Tokens/Migration/from v5" />
 
 # Migration from v5
 
-The v5 release introduces support for multi-theming tokens. More info will follow how to handle this in SCSS and TailwindCSS.
+The v5 release introduces support for multi-theming tokens.
+
+> This is work in progress.
+
+## SCSS Token Naming
+
+We improved our SCSS tokens to match them with our CSS variables:
+
+**Before:**
+
+```scss
+.my-special-element {
+  background-color: $sd-color-backgroundPrimary-100;
+  color: $sd-color-textPrimary-DEFAULT;
+}
+```
+
+**After:**
+
+```scss
+.my-special-element {
+  background-color: $sd-color-background-primary-100;
+  color: $sd-color-text-primary;
+}
+```
+
+## Import Paths
+
+The package exports have been restructured to better organize theme and token files.
+
+**Before:**
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="scss"> SCSS </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="tailwindcss-v3"> TailwindCSS (v3) </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="tailwindcss-v4"> TailwindCSS (v4) </sd-tab>
+  <sd-tab-panel name="scss">
+    ```scss
+    /* index.scss */
+    @import "@solid-design-system/tokens/scss";
+    ```
+  </sd-tab-panel>
+  <sd-tab-panel name="tailwindcss-v3">
+    ```js
+    // tailwind.config.js
+    import solidTheme from '@solid-design-system/tokens/tailwind';
+    export default {
+      theme: {
+        extend: {
+          ...solidTheme,
+        },
+      },
+    };
+    ```
+  </sd-tab-panel>
+  <sd-tab-panel name="tailwindcss-v4">
+    ```css
+    /* index.css */
+    @import "tailwindcss";
+    @config "../../tailwind.legacy.config.js";
+    ```
+
+    ```js
+    // tailwind.legacy.config.js
+    const tokens = require('@solid-design-system/tokens/dist/tokens.tailwind.json');
+    module.exports = {
+        theme: tokens,
+    };
+    ```
+
+</sd-tab-panel>
+</sd-tab-group>
+
+**After:**
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="scss"> SCSS </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="tailwindcss-v3"> TailwindCSS (v3) </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="tailwindcss-v4"> TailwindCSS (v4) </sd-tab>
+  <sd-tab-panel name="scss">
+    ```scss
+    /* index.scss */
+    @import "@solid-design-system/tokens/dist/scss";
+    ```
+  </sd-tab-panel>
+  <sd-tab-panel name="tailwindcss-v3">
+    ```js
+    // tailwind.config.js
+    import solidTheme from '@solid-design-system/tokens/dist/tailwind.json' with { type: 'json' };
+    export default {
+      theme: {
+        extend: {
+          ...solidTheme,
+        },
+      },
+    };
+    ```
+  </sd-tab-panel>
+  <sd-tab-panel name="tailwindcss-v4">
+    ```css
+    /* index.css */
+    @import "tailwindcss";
+    @import "@solid-design-system/tokens/dist/tailwind.css";
+    ```
+  </sd-tab-panel>
+</sd-tab-group>
