@@ -14,6 +14,22 @@
   color: var(--sd-interactive--active-color-text, var(--sd-color-primary-800));
 }
 
+@utility navigable-border-radius {
+ border-radius: var(--sd-navigable-border-radius, 0);
+}
+
+@utility navigable-font-size {
+ font-size: var(--sd-navigable-font-size, var(--sd-spacing-4));
+}
+
+@utility navigable__current-indicator-border-radius {
+ border-radius: var(--sd-navigable__current-indicator-border-radius, 0);
+}
+
+@utility navigable__current-indicator-height {
+ height: var(--sd-navigable__current-indicator-height, var(--sd-spacing-1));
+}
+
 @utility overlay-color-background {
   background-color: var(--sd-overlay-color-background, rgba(5, 21, 48, 0.9));
 }
@@ -194,32 +210,12 @@
   fill: var(--sd-loader--neutral-600-color-icon-fill, var(--sd-color-neutral-600));
 }
 
-@utility sd-navigation-item--current-color {
-  background-color: var(--sd-navigation-item--current-color, var(--sd-color-primary));
+@utility sd-navigation--current-color {
+  background-color: var(--sd-navigation--current-color, var(--sd-color-primary));
 }
 
-@utility sd-navigation-item-border-radius-bottom {
- border-radius-bottom: var(--sd-navigation-item-border-radius-bottom, 0);
-}
-
-@utility sd-navigation-item-border-radius-top {
- border-radius-top: var(--sd-navigation-item-border-radius-top, 0);
-}
-
-@utility sd-navigation-item-color {
-  background-color: var(--sd-navigation-item-color, var(--sd-color-primary));
-}
-
-@utility sd-navigation-item-font-size {
- font-size: var(--sd-navigation-item-font-size, var(--sd-spacing-4));
-}
-
-@utility sd-navigation-item__current-indicator-border-radius {
- border-radius: var(--sd-navigation-item__current-indicator-border-radius, 0);
-}
-
-@utility sd-navigation-item__current-indicator-height {
- height: var(--sd-navigation-item__current-indicator-height, var(--sd-spacing-1));
+@utility sd-navigation-color {
+  background-color: var(--sd-navigation-color, var(--sd-color-primary));
 }
 
 @utility sd-tag--selected--default-color-background {
