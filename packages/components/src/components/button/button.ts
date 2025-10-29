@@ -52,6 +52,13 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @cssproperty --sd-button--tertiary--hover-color-background - The background color for tertiary buttons in hover state.
  * @cssproperty --sd-button--tertiary--inverted--active-color-background - The background color for inverted tertiary buttons in active state. 
  * @cssproperty --sd-button--tertiary--inverted--hover-color-text - The text color for inverted tertiary buttons in hover state.
+ * @cssproperty --sd-button--size-md-font-size - The medium button text font size.
+ * @cssproperty --sd-button--size-lg-font-size - The large button text font size.
+ * @cssproperty --sd-button--size-md-border-radius - The medium button border radius.
+ * @cssproperty --sd-button--size-lg-border-radius - The large button border radius.
+ * @cssproperty --sd-button--size-md-padding-block - The medium button vertical padding value.
+ * @cssproperty --sd-button--size-lg-padding-block - The large button vertical padding value.
+ * @cssproperty --sd-button--size-lg-icon-font-size - The large button icon size.
  */
 @customElement('sd-button')
 export default class SdButton extends SolidElement implements SolidFormControl {
@@ -297,8 +304,8 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         {
           /* sizes, fonts */
           sm: `text-sm varspacing-8 ${hasBorder ? 'py-[0.281rem] px-[0.938rem]' : 'py-[0.344rem] px-4'}`,
-          md: `text-base varspacing-10 ${hasBorder ? 'py-[0.438rem] px-[0.938rem]' : 'py-2 px-4'}`,
-          lg: `text-base varspacing-12 ${hasBorder ? 'py-[0.688rem] px-[0.938rem]' : 'py-3 px-4'}`
+          md: `sd-button--size-md-font-size sd-button--size-md-border-radius varspacing-10 ${hasBorder ? 'py-[0.438rem] px-[0.938rem]' : 'sd-button--size-md-padding-block px-4'}`,
+          lg: `sd-button--size-lg-font-size sd-button--size-lg-border-radius varspacing-12 ${hasBorder ? 'py-[0.688rem] px-[0.938rem]' : 'sd-button--size-lg-padding-block px-4'}`
         }[this.size],
         {
           /* variants */
@@ -409,7 +416,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
             {
               sm: 'mr-1',
               md: 'mr-2',
-              lg: 'mr-2'
+              lg: 'mr-2 sd-button--size-lg-icon-font-size'
             }[this.size]
         )}></slot>
         <slot part="label" id="content" class=${cx(
@@ -429,7 +436,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
               {
                 sm: 'ml-1',
                 md: 'ml-2',
-                lg: 'ml-2'
+                lg: 'ml-2 sd-button--size-lg-icon-font-size'
               }[this.size]
           )}>
         </slot>
