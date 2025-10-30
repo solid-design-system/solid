@@ -26,6 +26,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart submenu-icon - The icon shown when the menu item has a submenu.
  *
  * @cssproperty --submenu-offset - The offset of the submenu from the parent menu item.
+ * @cssproperty --sd-navigable-border-radius - The menu-item border radius on hover.
  */
 @customElement('sd-menu-item')
 export default class SdMenuItem extends SolidElement {

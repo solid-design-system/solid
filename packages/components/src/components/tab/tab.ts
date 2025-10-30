@@ -23,6 +23,10 @@ let id = 0;
  * @csspart base - The component's base wrapper.
  * @csspart active-tab-indicator - The active tab indicator.
  * @csspart hover-bottom-border - The bottom border that appears when the tab is hovered.
+ *
+ * @cssproperty --sd-navigable-border-radius: The tab border radius on hover.
+ * @cssproperty --sd-navigable__current-indicator-height: The tab current indicator height.
+ * @cssproperty --sd-navigable__current-indicator-border-radius: The tab current indicator border radius value.
  */
 @customElement('sd-tab')
 export default class SdTab extends SolidElement {
