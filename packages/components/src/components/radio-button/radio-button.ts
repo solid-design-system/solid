@@ -24,6 +24,10 @@ import SolidElement from '../../internal/solid-element';
  * @csspart button--checked - The internal button element when the radio button is checked.
  * @csspart icon - The container that wraps the icon.
  * @csspart label - The container that wraps the radio button's label.
+ *
+ * @cssproperty --sd-button--primary--default-color-background - The background color of radio-button when checked.
+ * @cssproperty --sd-button--primary--default-color-text - The text color of radio-button when checked.
+ * @cssproperty --sd-button--primary--hover-color-background - The background color of radio-button on hover when checked.
  */
 @customElement('sd-radio-button')
 export default class SdRadioButton extends SolidElement {
@@ -108,7 +112,7 @@ export default class SdRadioButton extends SolidElement {
             'relative text-center rounded-full transition-all ease-in-out duration-100 items-center justify-center focus-visible:focus-outline',
             this.size === 'sm' ? 'text-sm' : 'text-base',
             this.checked && !this.disabled && !this.visuallyDisabled
-              ? 'bg-primary text-white hover:bg-primary-500'
+              ? 'sd-button--primary--default-color-background sd-button--primary--default-color-text hover:sd-button--primary--hover-color-background'
               : !this.checked && (this.disabled || this.visuallyDisabled)
                 ? 'text-neutral-500 hover:cursor-not-allowed'
                 : this.checked && (this.disabled || this.visuallyDisabled)

@@ -1,0 +1,49 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import theme from 'tailwind-theme';
+import cx from 'classix';
+import { getTokens } from '../utils.js';
+
+<Meta title="Packages/Tokens/Preview/Aspect Ratios" />
+
+## Aspect ratios
+
+<table>
+  <tbody>
+    {getTokens('aspect', theme.base).map((token, i) => (
+      <tr key={token.name}>
+        <td>
+          <div className="flex flex-col">
+            <div className="font-bold">--sd-aspect-{token.name}</div>
+            <div>aspect-ratio: {token.value}</div>
+          </div>
+        </td>
+        <td>
+          <img
+            slot="media"
+            src="./placeholders/images/generic.jpg"
+            alt="A placeholder image"
+            className={cx(
+              `bg-primary w-32 object-cover`,
+              {
+                video: 'aspect-video',
+                square: 'aspect-square',
+                '1/1': 'aspect-1/1',
+                '6/5': 'aspect-6/5',
+                '5/4': 'aspect-5/4',
+                '4/3': 'aspect-4/3',
+                '3/2': 'aspect-3/2',
+                '16/10': 'aspect-16/10',
+                'golden-ratio': 'aspect-golden-ratio',
+                '2/1': 'aspect-2/1',
+                '21/9': 'aspect-21/9',
+                '3/4': 'aspect-3/4',
+                '4/5': 'aspect-4/5'
+              }[token.name]
+            )}
+          />
+        </td>
+      </tr>
+    ))}
+
+  </tbody>
+</table>

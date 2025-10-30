@@ -30,8 +30,11 @@ export default class SdBreadcrumbItem extends SolidElement {
   /** Tells the browser where to open the link. Only used when `href` is present. */
   @property({ type: String, reflect: true }) target: '_blank' | '_parent' | '_self' | '_top';
 
-  /** When set, the attribute `aria-current="page"` will be applied */
+  /** When set, the attribute `aria-current="page"` will be applied. */
   @property({ type: Boolean, reflect: true }) current = false;
+
+  /** When set, a chevron-left icon will be rendered. */
+  @property({ type: Boolean, reflect: true }) isMobile = false;
 
   @watch('current')
   handleCurrentChange() {
@@ -59,6 +62,14 @@ export default class SdBreadcrumbItem extends SolidElement {
       standalone
       class="text-nowrap"
     >
+      ${this.isMobile
+        ? html`<sd-icon
+            slot="icon-left"
+            library="_internal"
+            name="chevron-left"
+            class="text-base me-1 mb-0 lg:hidden"
+          ></sd-icon>`
+        : ''}
       <slot></slot>
     </sd-link>`;
   }
@@ -76,10 +87,6 @@ export default class SdBreadcrumbItem extends SolidElement {
 
       sd-link::part(icon-left) {
         @apply mr-0 inline-flex;
-      }
-
-      sd-link sd-icon {
-        @apply m-0;
       }
 
       :host([current]) sd-link::part(base) {

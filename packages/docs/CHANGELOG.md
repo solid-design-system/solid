@@ -1,5 +1,17 @@
 # @solid-design-system/docs
 
+## 1.32.0-next.0
+
+### Minor Changes
+
+- Add and update documentation regarding multi-theming for tokens, components and styles _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`4c995ee`](https://github.com/solid-design-system/solid/commit/4c995ee085c602854acda8624e20b80f8e72f031) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.30.0-next.0
+
+### Minor Changes
+
+- Implemented new utility componented named `sd-theme-listener`, used to listen to theme changes. _[`#2472`](https://github.com/solid-design-system/solid/pull/2472) [`58b6d04`](https://github.com/solid-design-system/solid/commit/58b6d043d4126a1441ae929c2d9300352f787f1c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.31.0
 
 ### Minor Changes

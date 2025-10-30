@@ -22,6 +22,16 @@ We ensure consistency and try to minimize bundle size by following these rules:
 - Utilize IDs or part selectors for any custom CSS needs.
 - Use `@apply` inside `css` tagged template literals to generate CSS, but do not use arbitrary values like `mt-[var(--spacing-xxl)]` there (!), as this increases the bundle size of the main TailwindCSS file. Add those custom values as plain CSS outside the `@apply` directive
 
+#### Consistency with Figma
+
+In Figma, some design variables are used differently than in code. For example, Figma might use a variable like `icon-fill-color`, whereas in code, the corresponding property could be `background-color`.
+
+To maintain consistency with Figma’s naming conventions, certain styles in the codebase directly assign CSS variables to properties instead of relying on Tailwind utilities.
+
+```css
+background-color: var(--sd-color-icon-fill-neutral-800, var(--sd-color-neutral-800));
+```
+
 ### Importing other components
 
 When you use a component inside another component, you need to import it in the component file to ensure stability with Cherry Picking. E. g. if you use the `sd-icon` component inside your component, you need to import it like this:
