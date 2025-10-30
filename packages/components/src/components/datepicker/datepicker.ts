@@ -1813,8 +1813,8 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 class=${cx(
                   'min-w-0 flex-grow focus:outline-none bg-transparent',
                   this.visuallyDisabled || this.disabled
-                    ? 'placeholder-neutral-500 cursor-not-allowed'
-                    : 'placeholder-neutral-700',
+                    ? 'placeholder:text-neutral-500 cursor-not-allowed'
+                    : 'placeholder:text-neutral-700',
                   { sm: 'h-8', md: 'h-10', lg: 'h-12' }[this.size],
                   textSize
                 )}
