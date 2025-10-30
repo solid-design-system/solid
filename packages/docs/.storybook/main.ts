@@ -5,6 +5,7 @@ export default {
     // General, Migration
     '../src/stories/docs/**/*.@(mdx|stories.*)',
     // Packages (custom order)
+    '../src/stories/packages/Quickstart.@(mdx|stories.*)',
     '../src/stories/packages/**/Index.@(mdx|stories.*)',
     '../src/stories/packages/**/Installation.@(mdx|stories.*)',
     '../src/stories/packages/**/!(Changelog|Contributing)*.@(mdx|stories.*)',

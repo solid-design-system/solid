@@ -11,24 +11,7 @@ You can load Solid via CDN or by installing it locally.
 
 ### Theme
 
-Solid Styles come without any theme by default. You have to install `@solid-design-system/tokens` and integrate a theme via CSS yourself:
-
-> This only has to be done once per document, every application and component using Solid Styles on that page can then automatically use the included themes.
-
-```bash
-npm install @solid-design-system/tokens
-```
-
-Then include the CSS file of the theme you want to use. For example, to use `ui-light` theme, add the following line to your HTML head:
-
-```html
-<link
-  rel="stylesheet"
-  href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css"
-/>
-```
-
-For more information about themes, please refer to the documentation in the [tokens package](?path=/docs/packages-tokens-installation--docs).
+Solid Styles come without any theme or font by default. Ensure to follow the installation guidelines from [@solid-design-system/tokens](?path=/docs/packages-tokens-installation--docs) to include a fitting theme in your project.
 
 ### Fonts
 
