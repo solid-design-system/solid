@@ -58,7 +58,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       cssvariables.push({
         type: processed.type,
         name: processed.name,
-        value: this.cssvar(cssvar, cssvar.replace('--', '') === fallback ? undefined : this.cssvar(fallback)),
+        value: this.cssvar(cssvar),
         properties: processed.properties,
         variant: 'default'
       });
@@ -81,20 +81,16 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       coreToken.splice(1, 1);
 
       const color = this.getTokenValue(token);
-      const coreColor = Object.values(coreColors).find(core => core.path.join('-') === coreToken.join('-'))?.value;
+      const replacement = Object.values(coreColors).find(core => core.value === color);
+      const variable = {
+        type: 'color',
+        name: this.cssprefix(processed.cssvar),
+        value: replacement ? this.cssvar(this.cssprefix(replacement.path.join('-').replace('-default', ''))) : color,
+        variant
+      };
 
-      if (color !== coreColor) {
-        const replacement = Object.values(coreColors).find(core => core.value === color);
-        const variable = {
-          type: 'color',
-          name: this.cssprefix(processed.cssvar),
-          value: replacement ? this.cssvar(this.cssprefix(replacement.path.join('-').replace('-default', ''))) : color,
-          variant
-        };
-
-        cssvariables.push(variable);
-        this.processedHistory.push(variable);
-      }
+      cssvariables.push(variable);
+      this.processedHistory.push(variable);
     }
 
     if (!isUtility && variant !== options.defaultTheme) {
