@@ -20,6 +20,10 @@
 * Uncompressed: 564 KB (-3472 KB / -86%)
 * Gzipped: 128 KB (-493 KB / -79%)
 
+### 📈 Stats
+* Uncompressed: 559 KB (-5 KB / -1%)
+* Gzipped: 128 KB (unchanged)
+
 ## 5.15.13
 
 ### Patch Changes

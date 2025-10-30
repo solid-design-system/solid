@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 6.0.0-next.4
+
+### Patch Changes
+
+- Improve themes token generation to include all utility tokens. _[`#2590`](https://github.com/solid-design-system/solid/pull/2590) [`d87bf13`](https://github.com/solid-design-system/solid/commit/d87bf1395d700b6b95cbbdca2c48ea2fc06338ab) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 6.0.0-next.3
 
 ### Patch Changes
