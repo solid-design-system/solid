@@ -22,8 +22,7 @@
   --sd-border-width: 0.0625rem;
   --sd-button--size-lg-border-radius: var(--sd-spacing-1);
   --sd-button--size-lg-font-size: var(--sd-spacing-4);
-  --sd-button--size-lg-icon-font-size: var(--sd-spacing-6);
-  --sd-button--size-lg-padding-block: var(--sd-spacing-2);
+  --sd-button--size-lg-padding-block: var(--sd-spacing-3);
   --sd-button--size-md-border-radius: var(--sd-spacing-1);
   --sd-button--size-md-font-size: var(--sd-spacing-4);
   --sd-button--size-md-padding-block: var(--sd-spacing-2);
@@ -79,6 +78,7 @@
   --sd-navigable-font-size: var(--sd-spacing-4);
   --sd-navigable__current-indicator-border-radius: 0;
   --sd-navigable__current-indicator-height: var(--sd-spacing-1);
+  --sd-navigable__current-indicator-width: var(--sd-spacing-1);
   --sd-opacity-0: 0%;
   --sd-opacity-100: 100%;
   --sd-opacity-10: 10%;

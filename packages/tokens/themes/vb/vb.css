@@ -5,7 +5,7 @@
   --sd-accordion-border-width: var(--sd-spacing-0\.5);
   --sd-accordion-color-text: var(--sd-color-black);
   --sd-accordion-padding-block: var(--sd-spacing-4);
-  --sd-accordion__chevron-color: var(--sd-color-neutral-600);
+  --sd-accordion__chevron-color-text: var(--sd-color-neutral-600);
   --sd-accordion__indicator-color: rgba(255, 255, 255, 0);
   --sd-aspect-16\/10: 16 / 10;
   --sd-aspect-21\/9: 21 / 9;
@@ -30,7 +30,6 @@
   --sd-button--primary--inverted--hover-color-text: var(--sd-color-primary-900);
   --sd-button--size-lg-border-radius: 624.9375rem;
   --sd-button--size-lg-font-size: 0.875rem;
-  --sd-button--size-lg-icon-font-size: 1.25rem;
   --sd-button--size-lg-padding-block: 0.625rem;
   --sd-button--size-md-border-radius: 624.9375rem;
   --sd-button--size-md-font-size: 0.875rem;
@@ -106,7 +105,8 @@
   --sd-navigable-font-size: 0.875rem;
   --sd-navigable__current-indicator-border-radius: 624.9375rem;
   --sd-navigable__current-indicator-height: 0.1875rem;
-  --sd-navigation--current-color: var(--sd-color-black);
+  --sd-navigable__current-indicator-width: 0.1875rem;
+  --sd-navigation--current-color-text: var(--sd-color-black);
   --sd-navigation-color-text: var(--sd-color-neutral-800);
   --sd-opacity-0: 0%;
   --sd-opacity-100: 100%;

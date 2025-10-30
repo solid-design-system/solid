@@ -3246,7 +3246,7 @@
           },
           "lg": {
             "icon": {
-              "font-size": {
+              "_font-size": {
                 "type": "float",
                 "value": "{ui-light.utilities.sizing.6}"
               }
@@ -3261,7 +3261,7 @@
             },
             "padding-block": {
               "type": "float",
-              "value": "{ui-light.utilities.spacing.2}"
+              "value": "{ui-light.utilities.spacing.3}"
             }
           }
         },
@@ -3463,8 +3463,10 @@
         },
         "__chevron": {
           "color": {
-            "type": "color",
-            "value": "{ui-light.utilities.color.text.primary.default}"
+            "text": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.text.primary.default}"
+            }
           }
         }
       },
@@ -3475,6 +3477,10 @@
             "value": "0"
           },
           "height": {
+            "type": "float",
+            "value": "{ui-light.utilities.spacing.1}"
+          },
+          "width": {
             "type": "float",
             "value": "{ui-light.utilities.spacing.1}"
           }
@@ -3502,8 +3508,10 @@
         },
         "--current": {
           "color": {
-            "type": "color",
-            "value": "{ui-light.utilities.color.text.primary.default}"
+            "text": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.text.primary.default}"
+            }
           }
         }
       }
@@ -5135,7 +5143,7 @@
           },
           "lg": {
             "icon": {
-              "font-size": {
+              "_font-size": {
                 "type": "float",
                 "value": "{ui-dark.utilities.sizing.6}"
               }
@@ -5150,7 +5158,7 @@
             },
             "padding-block": {
               "type": "float",
-              "value": "{ui-dark.utilities.spacing.2}"
+              "value": "{ui-dark.utilities.spacing.3}"
             }
           }
         },
@@ -5352,8 +5360,10 @@
         },
         "__chevron": {
           "color": {
-            "type": "color",
-            "value": "{ui-dark.utilities.color.text.primary.default}"
+            "text": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.text.primary.default}"
+            }
           }
         }
       },
@@ -5364,6 +5374,10 @@
             "value": "0"
           },
           "height": {
+            "type": "float",
+            "value": "{ui-dark.utilities.spacing.1}"
+          },
+          "width": {
             "type": "float",
             "value": "{ui-dark.utilities.spacing.1}"
           }
@@ -5391,8 +5405,10 @@
         },
         "--current": {
           "color": {
-            "type": "color",
-            "value": "{ui-dark.utilities.color.text.primary.default}"
+            "text": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.text.primary.default}"
+            }
           }
         }
       }
@@ -7024,7 +7040,7 @@
           },
           "lg": {
             "icon": {
-              "font-size": {
+              "_font-size": {
                 "type": "float",
                 "value": "{vb.utilities.sizing.5}"
               }
@@ -7241,8 +7257,10 @@
         },
         "__chevron": {
           "color": {
-            "type": "color",
-            "value": "{vb.utilities.color.text.neutral.600}"
+            "text": {
+              "type": "color",
+              "value": "{vb.utilities.color.text.neutral.600}"
+            }
           }
         }
       },
@@ -7253,6 +7271,10 @@
             "value": "{vb.utilities.rounded.full}"
           },
           "height": {
+            "type": "float",
+            "value": "3"
+          },
+          "width": {
             "type": "float",
             "value": "3"
           }
@@ -7280,8 +7302,10 @@
         },
         "--current": {
           "color": {
-            "type": "color",
-            "value": "{vb.utilities.color.text.black.default}"
+            "text": {
+              "type": "color",
+              "value": "{vb.utilities.color.text.black.default}"
+            }
           }
         }
       }

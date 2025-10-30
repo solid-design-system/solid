@@ -30,6 +30,10 @@
  height: var(--sd-navigable__current-indicator-height, var(--sd-spacing-1));
 }
 
+@utility navigable__current-indicator-width {
+ width: var(--sd-navigable__current-indicator-width, var(--sd-spacing-1));
+}
+
 @utility overlay-color-background {
   background-color: var(--sd-overlay-color-background, rgba(5, 21, 48, 0.9));
 }
@@ -54,8 +58,8 @@
  padding-block: var(--sd-accordion-padding-block, var(--sd-spacing-3));
 }
 
-@utility sd-accordion__chevron-color {
-  background-color: var(--sd-accordion__chevron-color, var(--sd-color-primary));
+@utility sd-accordion__chevron-color-text {
+  color: var(--sd-accordion__chevron-color-text, var(--sd-color-primary));
 }
 
 @utility sd-accordion__indicator-color {
@@ -150,12 +154,8 @@
  font-size: var(--sd-button--size-lg-font-size, var(--sd-spacing-4));
 }
 
-@utility sd-button--size-lg-icon-font-size {
- font-size: var(--sd-button--size-lg-icon-font-size, var(--sd-spacing-6));
-}
-
 @utility sd-button--size-lg-padding-block {
- padding-block: var(--sd-button--size-lg-padding-block, var(--sd-spacing-2));
+ padding-block: var(--sd-button--size-lg-padding-block, var(--sd-spacing-3));
 }
 
 @utility sd-button--size-md-border-radius {
@@ -210,8 +210,8 @@
   fill: var(--sd-loader--neutral-600-color-icon-fill, var(--sd-color-neutral-600));
 }
 
-@utility sd-navigation--current-color {
-  background-color: var(--sd-navigation--current-color, var(--sd-color-primary));
+@utility sd-navigation--current-color-text {
+  color: var(--sd-navigation--current-color-text, var(--sd-color-primary));
 }
 
 @utility sd-navigation-color-text {

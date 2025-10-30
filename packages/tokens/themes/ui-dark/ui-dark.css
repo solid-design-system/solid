@@ -6,7 +6,7 @@
   --sd-accordion-color-background: var(--sd-color-primary);
   --sd-accordion-color-text: var(--sd-color-white);
   --sd-accordion-padding-block: var(--sd-spacing-3);
-  --sd-accordion__chevron-color: var(--sd-color-white);
+  --sd-accordion__chevron-color-text: var(--sd-color-white);
   --sd-aspect-16\/10: 16 / 10;
   --sd-aspect-21\/9: 21 / 9;
   --sd-aspect-2\/1: 2 / 1;
@@ -36,8 +36,7 @@
   --sd-button--secondary--hover-color-background: var(--sd-color-primary-700);
   --sd-button--size-lg-border-radius: var(--sd-spacing-1);
   --sd-button--size-lg-font-size: var(--sd-spacing-4);
-  --sd-button--size-lg-icon-font-size: var(--sd-spacing-6);
-  --sd-button--size-lg-padding-block: var(--sd-spacing-2);
+  --sd-button--size-lg-padding-block: var(--sd-spacing-3);
   --sd-button--size-md-border-radius: var(--sd-spacing-1);
   --sd-button--size-md-font-size: var(--sd-spacing-4);
   --sd-button--size-md-padding-block: var(--sd-spacing-2);
@@ -131,7 +130,8 @@
   --sd-navigable-font-size: var(--sd-spacing-4);
   --sd-navigable__current-indicator-border-radius: 0;
   --sd-navigable__current-indicator-height: var(--sd-spacing-1);
-  --sd-navigation--current-color: var(--sd-color-white);
+  --sd-navigable__current-indicator-width: var(--sd-spacing-1);
+  --sd-navigation--current-color-text: var(--sd-color-white);
   --sd-navigation-color-text: var(--sd-color-white);
   --sd-opacity-0: 0%;
   --sd-opacity-100: 100%;
