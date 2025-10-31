@@ -1,7 +1,6 @@
 import { cssVar, parseDuration } from './animate';
 import { LitElement, unsafeCSS } from 'lit';
-import { property, query } from 'lit/decorators.js';
-import { SdThemeListener } from 'src/solid-components';
+import { property } from 'lit/decorators.js';
 
 const css = unsafeCSS;
 
@@ -15,8 +14,6 @@ export default class SolidElement extends LitElement {
 
   /** The element's language. */
   @property() lang: string;
-
-  @query('sd-theme-listener') themeListener: SdThemeListener | null;
 
   protected onThemeChange?(e: CustomEvent<{ theme: string }>): void;
 
