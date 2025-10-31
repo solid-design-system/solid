@@ -215,7 +215,6 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
 
     this.inputValue = this.formatInputValue();
 
-    this.tabIndex = 0;
     this.setAttribute('role', 'group');
     this.setAttribute(
       'aria-label',
@@ -706,10 +705,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   show() {
     if (this.open || this.disabled || this.visuallyDisabled) {
       this.open = false;
-      return undefined;
+      return;
     }
     this.open = true;
-    return undefined;
   }
 
   hide() {
@@ -721,6 +719,8 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   }
 
   private onFocusIn = (ev: FocusEvent) => {
+    if (this.disabled || this.visuallyDisabled) return;
+
     const path = ev.composedPath();
     const fromHeader = path.some(
       n => n instanceof HTMLElement && (n.classList?.contains('nav') || n.classList?.contains('month-label'))
@@ -747,11 +747,8 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   }
 
   private handleFocus() {
-    if (this.visuallyDisabled || this.disabled) {
-      return;
-    }
-
     this.hasFocus = true;
+
     if (!this.open && !this.disabled && !this.visuallyDisabled) {
       this.show();
     }
@@ -759,16 +756,16 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   }
 
   private handleInput = (ev: Event) => {
+    if (this.disabled || this.visuallyDisabled) {
+      ev.preventDefault?.();
+      ev.stopPropagation?.();
+      return;
+    }
+
     const input = ev.target as HTMLInputElement;
     const raw = input.value;
     const oldPos = input.selectionStart ?? raw.length;
     const isDeleting = (ev as InputEvent).inputType?.startsWith('delete');
-
-    if (this.visuallyDisabled || this.disabled) {
-      ev.preventDefault();
-      ev.stopPropagation();
-      return;
-    }
 
     if (!this.range) {
       // SINGLE: progressive input on DD.MM.YYYY with immediate dots and caret preservation
@@ -995,6 +992,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   };
 
   private handleInputBlur = () => {
+    if (this.disabled || this.visuallyDisabled) {
+      this.handleBlur();
+      return;
+    }
+
     const parsed = this.parseInputText(this.inputValue);
     if (!parsed.valid) {
       this.inputValue = this.formatInputValue();
@@ -1285,6 +1287,12 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   }
 
   private onKeyDown = (ev: KeyboardEvent) => {
+    if (this.disabled || this.visuallyDisabled) {
+      ev.preventDefault();
+      ev.stopPropagation();
+      return;
+    }
+
     const key = ev.key;
     let handled = true;
     const next = new Date(this.focusedDate);
@@ -1359,6 +1367,12 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   };
 
   private handleInputKeyDown = (ev: KeyboardEvent) => {
+    if ((this.disabled || this.visuallyDisabled) && ev.key !== 'Tab') {
+      ev.preventDefault();
+      ev.stopPropagation();
+      return;
+    }
+
     if (
       ev.key === 'ArrowLeft' ||
       ev.key === 'ArrowRight' ||
@@ -1818,10 +1832,12 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                   { sm: 'h-8', md: 'h-10', lg: 'h-12' }[this.size],
                   textSize
                 )}
+                autocomplete="off"
+                spellcheck="false"
                 placeholder=${this.placeholder ||
                 this.localize.term(this.range ? 'dateRangePlaceholder' : 'datePlaceholder')}
-                ?disabled=${this.disabled || this.disabled}
-                ?readonly=${this.readonly}
+                ?disabled=${this.disabled}
+                ?readonly=${this.readonly || this.visuallyDisabled}
                 @input=${this.handleInput}
                 @click=${this.handleMouseDown}
                 @keydown=${this.handleInputKeyDown}
@@ -1875,6 +1891,10 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
 
       :host([required]) #label::after {
         content: ' *';
+      }
+
+      :host([visually-disabled]) input {
+        caret-color: transparent;
       }
     `
   ];
