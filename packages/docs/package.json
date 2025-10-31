@@ -83,6 +83,6 @@
     "wait-on": "^9.0.1",
     "wc-storybook-helpers": "1.5.3",
     "@storybook/addon-docs": "^9.1.8",
-    "vite": "^7.0.0"
+    "vite": "^7.0.8"
   }
 }
