@@ -20,11 +20,15 @@ export default class SdThemeListener extends SolidElement {
   }
 
   connectedCallback(): void {
+    super.connectedCallback();
+
     this.themeObserver = new ThemeObserver(this, this.handleThemeChange.bind(this));
     this.themeObserver.connect();
   }
 
   disconnectedCallback(): void {
+    super.disconnectedCallback();
+
     this.themeObserver?.disconnect();
   }
 
