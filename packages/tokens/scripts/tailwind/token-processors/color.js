@@ -93,33 +93,18 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       this.processedHistory.push(variable);
     }
 
-    if (!isUtility && variant !== options.defaultTheme) {
-      const defaultPrimitiveColor = this.#getColorFromToken(path, options.defaultTheme, dictionary);
-      const defaultPrimitiveToken = this.#getCoreTokenFromColor(
-        defaultPrimitiveColor,
-        options.defaultTheme,
-        dictionary
-      );
+    if (!isUtility) {
+      const coreToken = this.#getCoreTokenFromColor(token.value, variant, dictionary);
 
-      const variantColor = this.#getColorFromToken(
-        ['utilities', ...(defaultPrimitiveToken ?? [])],
-        variant,
-        dictionary
-      );
+      const variable = {
+        type: 'color',
+        name: this.cssprefix(processed.name),
+        value: coreToken ? this.cssvar(coreToken.join('-')) : token.value,
+        variant
+      };
 
-      if (variantColor !== token.value) {
-        const coreToken = this.#getCoreTokenFromColor(token.value, variant, dictionary);
-
-        const variable = {
-          type: 'color',
-          name: this.cssprefix(processed.name),
-          value: coreToken ? this.cssvar(coreToken.join('-')) : token.value,
-          variant
-        };
-
-        cssvariables.push(variable);
-        this.processedHistory.push(variable);
-      }
+      cssvariables.push(variable);
+      this.processedHistory.push(variable);
     }
 
     return cssvariables;
