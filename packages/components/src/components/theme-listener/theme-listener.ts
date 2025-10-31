@@ -1,6 +1,7 @@
 import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import SolidElement from '../../internal/solid-element';
+import { ThemeObserver } from '../../internal/theme-observer';
 
 /**
  * @summary Theme listener is a utility that listens to theme changes and triggers an event.
@@ -12,8 +13,23 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-theme-listener')
 export default class SdThemeListener extends SolidElement {
-  protected onThemeChange(theme: string): void {
-    this.emit('sd-theme-change', { detail: { theme } });
+  private themeObserver?: ThemeObserver;
+
+  protected handleThemeChange(theme: string): void {
+    this.emit('sd-theme-change', { detail: { theme }, bubbles: true });
+  }
+
+  connectedCallback(): void {
+    super.connectedCallback();
+
+    this.themeObserver = new ThemeObserver(this, this.handleThemeChange.bind(this));
+    this.themeObserver.connect();
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+
+    this.themeObserver?.disconnect();
   }
 
   static styles = [

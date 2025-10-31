@@ -33,9 +33,6 @@ export default class SdBreadcrumbItem extends SolidElement {
   /** When set, the attribute `aria-current="page"` will be applied. */
   @property({ type: Boolean, reflect: true }) current = false;
 
-  /** When set, a chevron-left icon will be rendered. */
-  @property({ type: Boolean, reflect: true }) isMobile = false;
-
   @watch('current')
   handleCurrentChange() {
     if (!this.base || !this.current) return;
@@ -62,14 +59,6 @@ export default class SdBreadcrumbItem extends SolidElement {
       standalone
       class="text-nowrap"
     >
-      ${this.isMobile
-        ? html`<sd-icon
-            slot="icon-left"
-            library="_internal"
-            name="chevron-left"
-            class="text-base me-1 mb-0 lg:hidden"
-          ></sd-icon>`
-        : ''}
       <slot></slot>
     </sd-link>`;
   }

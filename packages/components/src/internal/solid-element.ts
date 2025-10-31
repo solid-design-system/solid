@@ -1,7 +1,6 @@
 import { cssVar, parseDuration } from './animate';
 import { LitElement, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
-import { ThemeObserver } from './theme-observer';
 
 const css = unsafeCSS;
 
@@ -16,8 +15,21 @@ export default class SolidElement extends LitElement {
   /** The element's language. */
   @property() lang: string;
 
-  private themeObserver?: ThemeObserver;
-  protected onThemeChange?(theme: string): void;
+  protected onThemeChange?(e: CustomEvent<{ theme: string }>): void;
+
+  connectedCallback(): void {
+    super.connectedCallback();
+
+    if (!this.onThemeChange) return;
+    this.renderRoot.addEventListener('sd-theme-change', this.onThemeChange.bind(this));
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+
+    if (!this.onThemeChange) return;
+    this.renderRoot.removeEventListener('sd-theme-change', this.onThemeChange.bind(this));
+  }
 
   static styles = [
     css`
@@ -88,13 +100,6 @@ export default class SolidElement extends LitElement {
       }
     `
   ];
-
-  constructor() {
-    super();
-    if (!this.onThemeChange) return;
-    this.themeObserver = new ThemeObserver(this, this.onThemeChange.bind(this));
-    this.themeObserver.connect();
-  }
 
   /** Emits a custom event with more convenient defaults. */
   emit(name: string, options?: CustomEventInit) {
