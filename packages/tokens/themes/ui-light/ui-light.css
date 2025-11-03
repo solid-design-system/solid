@@ -1,3 +1,4 @@
+
 :root, .sd-theme-ui-light {
   color-scheme: light;
 
@@ -77,7 +78,6 @@
   --sd-color-border-primary: var(--sd-color-primary);
   --sd-color-border-success: var(--sd-color-success);
   --sd-color-border-white: var(--sd-color-white);
-  --sd-color-default-color: rgba(81, 81, 81, 0.75);
   --sd-color-error-300: #cc1937;
   --sd-color-error-400: #ac1938;
   --sd-color-error: #cc1937;
@@ -127,7 +127,6 @@
   --sd-color-risk-low: #017dc3;
   --sd-color-risk-moderate: #00a593;
   --sd-color-risk-veryhigh: #ff0000;
-  --sd-color-sm-color: #515151;
   --sd-color-success: #367b28;
   --sd-color-text-accent: var(--sd-color-accent);
   --sd-color-text-black: var(--sd-color-black);
@@ -145,6 +144,8 @@
   --sd-color-text-white: var(--sd-color-white);
   --sd-color-warning: #bb8d20;
   --sd-color-white: #ffffff;
+  --sd-drop-shadow-sm:  0.5px 0.5px 0.5px #515151;
+  --sd-drop-shadow:  1px 0px 3px rgba(81, 81, 81, 0.75);
   --sd-font-primary: 'Frutiger Neue fuer UI Web';
   --sd-font-weight-bold: 700;
   --sd-font-weight-normal: 400;
@@ -174,6 +175,8 @@
   --sd-radius-none: 0;
   --sd-radius-sm: 0.125rem;
   --sd-radius: 0.25rem;
+  --sd-shadow-sm:  0.5px 0.5px 0px 0.5px #515151;
+  --sd-shadow:  1px 0px 0px 3px rgba(81, 81, 81, 0.75);
   --sd-sizing-10: 2.5rem;
   --sd-sizing-12: 3rem;
   --sd-sizing-16: 4rem;
@@ -209,11 +212,4 @@
   --sd-text-lg: 1.25rem;
   --sd-text-sm: 0.875rem;
   --sd-text-xl: 1.5rem;
-}
-
-.sd-theme-ui-light {
-  --sd-shadow-sm: 0.5px 0.5px 1.5px var(--sd-color-neutral-800);
-  --sd-shadow: 0 1px 3px var(--sd-color-neutral-800);
-  --sd-drop-shadow-sm: 0.5px 0.5px 1.5px var(--sd-color-neutral-800);
-  --sd-drop-shadow: 0 1px 3px var(--sd-color-neutral-800);
 }

@@ -30,7 +30,7 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
     const { path, variant } = this.processTokenPath(token);
     if (path.length <= 2) return [];
 
-    const isUtility = this.#isUtilityToken(path);
+    const isUtility = this.isUtilityToken(path);
     const isComponent = !isUtility && path[0].startsWith('components');
     if (!isUtility && !isComponent) return [];
 
@@ -84,10 +84,6 @@ export class SpacingTokenProcessor extends BaseTokenProcessor {
     }
 
     return cssvariables;
-  }
-
-  #isUtilityToken(token) {
-    return token?.[0] === 'utilities';
   }
 
   #processUtilityToken(token) {

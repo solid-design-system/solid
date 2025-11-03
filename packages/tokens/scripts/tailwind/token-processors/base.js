@@ -115,6 +115,10 @@ export class BaseTokenProcessor {
     return `var(${this.cssprefix(variable)})`;
   }
 
+  isUtilityToken(token) {
+    return token?.[0] === 'utilities';
+  }
+
   getTokens(type, dictionary, variant) {
     const root = dictionary?.tokens?.[variant]?.[type];
     if (!root || typeof root !== 'object') return [];

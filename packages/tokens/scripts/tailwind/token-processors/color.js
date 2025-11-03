@@ -40,7 +40,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     const coreColors = this.#getCoreColors(dictionary, variant);
     if (this.skip.includes(path[0])) return [];
 
-    const isUtility = this.#isUtilityToken(path);
+    const isUtility = this.isUtilityToken(path);
     const isComponent = !isUtility && path[0].startsWith('components');
     if (!isUtility && !isComponent) return [];
 
@@ -129,20 +129,16 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     this.processedHistory = [];
   }
 
-  #isUtilityToken(token) {
-    return token?.[0] === 'utilities';
-  }
-
   #isCoreToken(token) {
     return (
-      this.#isUtilityToken(token) &&
+      this.isUtilityToken(token) &&
       !['icon-fill', 'border', 'background', 'text', 'background-transparent'].includes(token?.[2])
     );
   }
 
   #getFallbackColor(token) {
     const processed = this.processTokenPath(token);
-    const isUtility = this.#isUtilityToken(processed.path);
+    const isUtility = this.isUtilityToken(processed.path);
 
     const fallback = processed.path.length > 4 ? processed.path.slice(3) : processed.path.slice(2);
     const name = `color-${fallback.join('-').replace('-default', '')}`;

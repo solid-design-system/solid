@@ -85,7 +85,6 @@
   --sd-color-border-primary: var(--sd-color-primary);
   --sd-color-border-success: var(--sd-color-success);
   --sd-color-border-white: var(--sd-color-white);
-  --sd-color-default-color: rgba(0, 0, 0, 0.1);
   --sd-color-error-300: #d20000;
   --sd-color-error-400: #d20000;
   --sd-color-error: #d20000;
@@ -135,7 +134,6 @@
   --sd-color-risk-low: #017dc3;
   --sd-color-risk-moderate: #00a593;
   --sd-color-risk-veryhigh: #ff0000;
-  --sd-color-sm-color: rgba(0, 0, 0, 0.65);
   --sd-color-success: #0c7336;
   --sd-color-text-accent: var(--sd-color-accent);
   --sd-color-text-black: var(--sd-color-black);
@@ -153,6 +151,8 @@
   --sd-color-text-white: var(--sd-color-white);
   --sd-color-warning: #ffab00;
   --sd-color-white: #ffffff;
+  --sd-drop-shadow-sm:  0.5px 0.5px 0.5px rgba(0, 0, 0, 0.65);
+  --sd-drop-shadow:  4px 0px 10px rgba(0, 0, 0, 0.1);
   --sd-flag--neutral-500-color-background: var(--sd-color-neutral-400);
   --sd-font-primary: 'GenosGFG';
   --sd-font-weight-bold: 700;
@@ -187,6 +187,8 @@
   --sd-radius-none: 0;
   --sd-radius-sm: 0.125rem;
   --sd-radius: 0.25rem;
+  --sd-shadow-sm:  0.5px 0.5px 0px 0.5px rgba(0, 0, 0, 0.65);
+  --sd-shadow:  4px 0px 0px 10px rgba(0, 0, 0, 0.1);
   --sd-sizing-10: 2.5rem;
   --sd-sizing-12: 3rem;
   --sd-sizing-16: 4rem;
@@ -250,11 +252,4 @@
   --sd-icon--mute: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.5 3.1a1 1 0 0 1 1.5.7V20a1 1 0 0 1-1.4 1v-.1L6.3 17H3a1 1 0 0 1-1-.8V8q0-.9.9-1h3.5zM13 5.7 7.1 8.9h-.3l-.1.1H4v6h3l.1.1 5.9 3.2zm3.3 3.6a1 1 0 0 1 1.3 0h.1l1.3 1.3 1.3-1.3a1 1 0 0 1 1.5 1.3v.1L20.3 12l1.3 1.3a1 1 0 0 1-1.3 1.5h-.1L19 13.3l-1.3 1.3a1 1 0 0 1-1.5-1.3v-.1l1.4-1.3-1.3-1.3a1 1 0 0 1 0-1.4" clip-rule="evenodd"/></svg>';
   --sd-icon--volume: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.5 3.1a1 1 0 0 1 1.5.7V20a1 1 0 0 1-1.4 1v-.1L6.3 17H3a1 1 0 0 1-1-.8V8q0-.9.9-1h3.5zm6.3 2.3Q22 8.7 22 12a12 12 0 0 1-2.2 6.6 1 1 0 1 1-1.6-1A10 10 0 0 0 20 12q0-2.7-1.8-5.4a1 1 0 1 1 1.6-1.2m-6.8.3L7.1 8.9h-.3l-.1.1H4v6h3l.1.1 5.9 3.2zm4.8 2.7A6 6 0 0 1 19 12q0 1.8-1.2 3.6a1 1 0 0 1-1.6-1.2q.8-1.2.8-2.4t-.8-2.4a1 1 0 0 1 1.6-1.2" clip-rule="evenodd"/></svg>';
   --sd-icon--reload: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 18v1a1 1 0 1 1-2 0v-4q0-.9 1-1h4a1 1 0 1 1 0 2H5a8 8 0 1 0-.6-6.5 1 1 0 0 1-2-.6A10 10 0 1 1 4 18" clip-rule="evenodd"/></svg>';
-}
-
-.sd-theme-vb {
-  --sd-shadow-sm: 0.5px 0.5px var(--sd-color-neutral-800);
-  --sd-shadow: 0 4px 10px rgba(0 0 0 / 0.1);
-  --sd-drop-shadow-sm: 0.5px 0.5px var(--sd-color-neutral-800);
-  --sd-drop-shadow: 0 4px 10px rgba(0 0 0 / 0.1);
 }
