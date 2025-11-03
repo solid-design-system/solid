@@ -1,4 +1,4 @@
-.sd-theme-vb {
+:root, .sd-theme-vb {
   color-scheme: light;
 
   --sd-theme: 'vb';

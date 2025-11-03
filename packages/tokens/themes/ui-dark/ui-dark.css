@@ -1,4 +1,4 @@
-.sd-theme-ui-dark {
+:root, .sd-theme-ui-dark {
   color-scheme: dark;
 
   --sd-theme: 'ui-dark';
