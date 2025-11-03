@@ -83,7 +83,7 @@ async function runBuild() {
       writeFileSync(`./${cdndir}/${config.buildPath}/${theme.name}/${theme.name}.css`, minimizeCss(theme.content));
     });
 
-    writeFileSync(`./${cdndir}/${config.buildPath}/${config.output}.css`, minimizeCss(stylesheet));
+    writeFileSync(`./${cdndir}/${config.buildPath}/${config.output}.css`, stylesheet);
   });
 
   await nextTask('Generating theme.js', async () => {
