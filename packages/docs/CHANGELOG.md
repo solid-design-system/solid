@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.31.1
+
+### Patch Changes
+
+- Fixed component stories visualization inside Codepen where specific story styling was missing (eg. `sd-scrollable`). _[`#2563`](https://github.com/solid-design-system/solid/pull/2563) [`7115848`](https://github.com/solid-design-system/solid/commit/7115848124752ce2741a3e4db18231ae226c7b44) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.31.0
 
 ### Minor Changes
