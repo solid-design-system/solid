@@ -1762,7 +1762,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
 
     return html`<div
         part="form-control"
-        class=${cx('w-[370px]', this.open && 'z-50', (this.disabled || this.visuallyDisabled) && 'cursor-not-allowed')}
+        class=${cx(
+          'min-w-[284px]',
+          this.open && 'z-50',
+          (this.disabled || this.visuallyDisabled) && 'cursor-not-allowed'
+        )}
       >
         ${hasLabel || hasTooltip
           ? html`<div class="flex items-center gap-1 mb-2">
@@ -1886,7 +1890,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     ...SolidElement.styles,
     css`
       :host {
-        @apply inline-block relative outline-none;
+        @apply inline-block relative outline-none w-full;
       }
 
       :host([required]) #label::after {
