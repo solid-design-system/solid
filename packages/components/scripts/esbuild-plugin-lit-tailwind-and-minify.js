@@ -8,6 +8,7 @@ import postcss from 'postcss';
 import path from 'node:path';
 import tailwindcss from '@tailwindcss/postcss';
 import { fileURLToPath } from 'node:url';
+import atImportPlugin from 'postcss-import';
 
 export function minimizeCss(source) {
   return optimize(source, { minify: true }).code;
@@ -15,7 +16,7 @@ export function minimizeCss(source) {
 
 export async function processTailwind(
   source,
-  options = { standalone: false, minify: false, storybook: false, from: undefined }
+  options = { standalone: false, minify: false, storybook: false, from: undefined, resolveImports: false }
 ) {
   const base = path.resolve(fileURLToPath(import.meta.url), '../../');
 
@@ -36,12 +37,23 @@ export async function processTailwind(
     prepend.push(`@source inline('w-{1.5}');`);
   }
 
-  const css = `${prepend.join('\n')} ${source}`;
+  let css = `${source}`;
 
   try {
     /**
-     * Step 1: Compile the css content
+     * (Optional) Step 1: Resolve all imports on the css before tailwindcss
      */
+    if (options.resolveImports) {
+      css = await postcss([atImportPlugin])
+        .process(source, { from: options.from ? options.from : base, onDependency: () => {} })
+        .then(r => r.css);
+    }
+
+    /**
+     * Step 2: Compile the css content with tailwindcss
+     */
+    css = `${prepend.join('\n')} ${css}`;
+
     const compiler = await compile(css, {
       base: options.from ? options.from : base,
       onDependency: () => {}
@@ -59,22 +71,21 @@ export async function processTailwind(
       candidates = scanner.scan();
     }
 
-    const compiled = compiler.build(candidates);
+    css = compiler.build(candidates);
 
     /**
-     * Step 2: Use PostCSS to resolve nested CSS, autoprefix and minify
+     * Step 3: Use PostCSS to resolve nested CSS, autoprefix and minify
      */
     const plugins = [cssnested, tailwindcss, autoprefixer];
-
-    let result = await postcss(plugins)
-      .process(compiled, { from: undefined })
+    css = await postcss(plugins)
+      .process(css, { from: undefined })
       .then(r => r.css);
 
     if (options.minify) {
-      return minimizeCss(result);
+      return minimizeCss(css);
     }
 
-    return result;
+    return css;
   } catch (error) {
     console.error(`PostCSS error: ${error}`);
     return 'postcss error: ' + error;
