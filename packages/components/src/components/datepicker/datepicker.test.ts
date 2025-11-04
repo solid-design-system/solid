@@ -61,7 +61,7 @@ describe('<sd-datepicker>', () => {
   });
 
   it('changes month/year labels when locale changes', async () => {
-    const el = await fixture<SdDatepicker>(html`<sd-datepicker locale="en-US"></sd-datepicker>`);
+    const el = await fixture<SdDatepicker>(html`<sd-datepicker locale="en-US" value="2024.01.15"></sd-datepicker>`);
     el.show();
     await el.updateComplete;
 
