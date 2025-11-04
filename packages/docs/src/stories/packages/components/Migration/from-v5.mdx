@@ -42,3 +42,21 @@ You must now import at least one theme (via NPM or CDN) to ensure components ren
     ```
   </sd-tab-panel>
 </sd-tab-group>
+
+## Removed enforced headline styling from `sd-teaser-media`. Removed this CSS rule that used to force styles into whatever is slotted into slot="headline"
+
+::slotted([slot='headline']) { '@apply font-bold !m-0 !text-lg;'}
+
+Result: `sd-teaser-media` no longer forces font-weight, margin or test size on headline elements. Headline sizing/spacing must now be provided by the user.
+
+<sd-teaser-media variant="gradient-dark">
+  __Before__: ```html
+  <h3 slot="headline" class="sd-headline sd-headline--inverted">
+    Market turnaround in sight
+  </h3>
+  ``` __After__: ```html
+  <h3 slot="headline" class="sd-headline sd-headline--inverted sd-headline--size-lg">
+    Market turnaround in sight
+  </h3>
+</sd-teaser-media>
+```
