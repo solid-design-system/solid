@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.16.1-next.0
+
+### Patch Changes
+
+- Fix broken sd-icon load with multi theming. _[`#2595`](https://github.com/solid-design-system/solid/pull/2595) [`89d7ac7`](https://github.com/solid-design-system/solid/commit/89d7ac7fbe51b382544765de6e08cb9be6c9e9fc) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.16.0
 
 ### Minor Changes
@@ -9,20 +15,24 @@
   This component is used to enter or select a date or a range of dates using a calendar view.
 
 ### 📈 Stats
-* Uncompressed: 519 KB (+40 KB / +8%)
-* Gzipped: 122 KB (+9 KB / +8%)
+
+- Uncompressed: 519 KB (+40 KB / +8%)
+- Gzipped: 122 KB (+9 KB / +8%)
 
 ### 📈 Stats
-* Uncompressed: 4036 KB (+3517 KB / +678%)
-* Gzipped: 621 KB (+499 KB / +409%)
+
+- Uncompressed: 4036 KB (+3517 KB / +678%)
+- Gzipped: 621 KB (+499 KB / +409%)
 
 ### 📈 Stats
-* Uncompressed: 564 KB (-3472 KB / -86%)
-* Gzipped: 128 KB (-493 KB / -79%)
+
+- Uncompressed: 564 KB (-3472 KB / -86%)
+- Gzipped: 128 KB (-493 KB / -79%)
 
 ### 📈 Stats
-* Uncompressed: 559 KB (-5 KB / -1%)
-* Gzipped: 128 KB (unchanged)
+
+- Uncompressed: 559 KB (-5 KB / -1%)
+- Gzipped: 128 KB (unchanged)
 
 ## 5.15.13
 
