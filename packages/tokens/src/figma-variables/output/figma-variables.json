@@ -3035,8 +3035,8 @@
             "type": "color",
             "value": "{ui-light.utilities.color.background.white.default}"
           },
-          "shadow": {
-            "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+          "_shadow": {
+            "description": "Deprecated?",
             "type": "color",
             "value": "rgba(24, 24, 24, 0.40)"
           }
@@ -3433,8 +3433,8 @@
       },
       "sd-accordion": {
         "color": {
-          "shadow": {
-            "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+          "_shadow": {
+            "description": "Deprecated",
             "type": "color",
             "value": "rgba(24, 24, 24, 0.40)"
           },
@@ -4109,7 +4109,7 @@
             "550": {
               "description": "Used for hover interaction",
               "type": "color",
-              "value": "{ui-dark.utilities.color.accent.500}"
+              "value": "{ui-dark.utilities.color.accent.550}"
             },
             "default": {
               "description": "Used for active / selected elements",
@@ -4932,8 +4932,8 @@
             "type": "color",
             "value": "{ui-dark.utilities.color.primary.default}"
           },
-          "shadow": {
-            "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+          "_shadow": {
+            "description": "Deprecated?",
             "type": "color",
             "value": "rgba(255, 255, 255, 0.00)"
           }
@@ -5330,8 +5330,8 @@
       },
       "sd-accordion": {
         "color": {
-          "shadow": {
-            "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+          "_shadow": {
+            "description": "Deprecated",
             "type": "color",
             "value": "rgba(255, 255, 255, 0.00)"
           },
@@ -6829,8 +6829,8 @@
             "type": "color",
             "value": "{vb.utilities.color.background.white.default}"
           },
-          "shadow": {
-            "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+          "_shadow": {
+            "description": "Deprecated?",
             "type": "color",
             "value": "rgba(24, 24, 24, 0.40)"
           }
@@ -7227,8 +7227,8 @@
       },
       "sd-accordion": {
         "color": {
-          "shadow": {
-            "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+          "_shadow": {
+            "description": "Deprecated",
             "type": "color",
             "value": "rgba(24, 24, 24, 0.40)"
           },

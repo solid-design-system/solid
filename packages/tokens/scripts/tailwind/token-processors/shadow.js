@@ -25,9 +25,8 @@ export class ShadowTokenProcessor extends BaseTokenProcessor {
     if (!this.store[processed.variant][size]) this.store[processed.variant][size] = {};
     this.store[processed.variant][size][property] = this.getTokenValue(token);
 
-    const canProcess = ['y', 'x', 'spread', 'blur', 'color'].every(k =>
-      Object.keys(this.store[processed.variant][size]).includes(k)
-    );
+    const properties = this.store[processed.variant][size];
+    const canProcess = ['y', 'x', 'spread', 'blur', 'color'].every(k => k in properties);
     if (!canProcess) return [];
 
     processed.path = processed.path.slice(2);
@@ -52,12 +51,12 @@ export class ShadowTokenProcessor extends BaseTokenProcessor {
     }
 
     const shadowValue = ['y', 'x', 'spread', 'blur', 'color'].reduce(
-      (acc, key) => this.#reduceShadowValue(acc, key, this.store[processed.variant][size][key]),
+      (acc, key) => this.#reduceShadowValue(acc, key, properties[key]),
       ''
     );
 
     const dropShadowValue = ['y', 'x', 'blur', 'color'].reduce(
-      (acc, key) => this.#reduceShadowValue(acc, key, this.store[processed.variant][size][key]),
+      (acc, key) => this.#reduceShadowValue(acc, key, properties[key]),
       ''
     );
 
