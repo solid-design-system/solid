@@ -135,7 +135,7 @@ export default class SdIcon extends SolidElement {
   }
 
   render() {
-    return html` ${unsafeSVG(this.svg)} `;
+    return html`<sd-theme-listener></sd-theme-listener> ${unsafeSVG(this.svg)} `;
   }
 
   static styles = [

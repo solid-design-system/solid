@@ -530,6 +530,7 @@ export default class SdAudio extends SolidElement {
           : null}
         ${!this.hideTimestamps && (!this.animated || !this.reversedLayout) ? renderTimestamps : null}
       </div>
+      <sd-theme-listener></sd-theme-listener>
     `;
   }
 
