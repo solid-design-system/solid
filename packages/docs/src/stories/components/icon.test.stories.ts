@@ -41,7 +41,10 @@ export const LibraryDefault = {
       },
       constants: [{ type: 'attribute', name: 'library', value: '' }],
       options: {
-        templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'var(--sd-color-primary)'] }
+        templateBackgrounds: {
+          alternate: 'x',
+          colors: ['var(--sd-color-background-white)', 'var(--sd-color-background-white)', 'var(--sd-color-primary)']
+        }
       },
       args
     })
@@ -67,7 +70,10 @@ export const LibraryInternal = {
         { type: 'attribute', name: 'name', value: 'check' }
       ],
       options: {
-        templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'var(--sd-color-primary)'] }
+        templateBackgrounds: {
+          alternate: 'x',
+          colors: ['var(--sd-color-background-white)', 'var(--sd-color-background-white)', 'var(--sd-color-primary)']
+        }
       },
       args
     })
@@ -93,7 +99,10 @@ export const StatusLibrary = {
         { type: 'attribute', name: 'name', value: 'status-questionmark' }
       ],
       options: {
-        templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'var(--sd-color-primary)'] }
+        templateBackgrounds: {
+          alternate: 'x',
+          colors: ['var(--sd-color-background-white)', 'var(--sd-color-background-white)', 'var(--sd-color-primary)']
+        }
       },
       args
     })
