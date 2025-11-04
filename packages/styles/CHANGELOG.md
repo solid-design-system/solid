@@ -1,5 +1,11 @@
 # @solid-design-system/styles
 
+## 2.0.0-next.1
+
+### Patch Changes
+
+- Fixed styles build output to correctly resolve imports. _[`#2601`](https://github.com/solid-design-system/solid/pull/2601) [`be010da`](https://github.com/solid-design-system/solid/commit/be010daa4b1d5ed2e87b1910643bf01dae8071d7) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 2.0.0-next.0
 
 ### Major Changes
