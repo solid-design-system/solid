@@ -96,11 +96,7 @@ export class TailwindCSSGenerator {
       .map(variant => {
         const scheme = variant.includes('dark') ? 'dark' : 'light';
         const variables = [`color-scheme: ${scheme};\n`, `--sd-theme: '${variant}';`, ...processedTokens[variant]];
-        const selectors = [`.sd-theme-${variant}`];
-
-        if (variant === this.config.defaultTheme) {
-          selectors.unshift(':root');
-        }
+        const selectors = [':root', `.sd-theme-${variant}`];
 
         return `/* build:theme[${variant}] */\n${selectors.join(', ')} {\n${this.css.indent(this.css.join(variables, '\n'))}\n}\n/* build:theme */`;
       })
