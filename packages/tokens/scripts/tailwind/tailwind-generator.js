@@ -15,7 +15,6 @@ export class TailwindCSSGenerator {
    */
   generate(processedTokens) {
     const parts = [
-      this.generateImport(),
       this.generateCustomVariants(),
       this.generateTheme(processedTokens),
       this.generateUtilities(processedTokens.utilities),
@@ -25,16 +24,6 @@ export class TailwindCSSGenerator {
     ].filter(Boolean);
 
     return parts.join('\n\n') + '\n';
-  }
-
-  /**
-   * Generate import statement
-   */
-  generateImport() {
-    return `@layer theme, base, components, utilities;
-
-@import 'tailwindcss/theme';
-@import 'tailwindcss/utilities';`;
   }
 
   /**
@@ -109,7 +98,7 @@ export class TailwindCSSGenerator {
         const variables = [`color-scheme: ${scheme};\n`, `--sd-theme: '${variant}';`, ...processedTokens[variant]];
         const selectors = [`.sd-theme-${variant}`];
 
-        if (scheme === 'light') {
+        if (variant === this.config.defaultTheme) {
           selectors.unshift(':root');
         }
 

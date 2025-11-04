@@ -1,5 +1,29 @@
 # @solid-design-system/tokens
 
+## 6.0.0-next.4
+
+### Patch Changes
+
+- Improve themes token generation to include all utility tokens. _[`#2590`](https://github.com/solid-design-system/solid/pull/2590) [`d87bf13`](https://github.com/solid-design-system/solid/commit/d87bf1395d700b6b95cbbdca2c48ea2fc06338ab) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 6.0.0-next.3
+
+### Patch Changes
+
+- Optimize exports for themes, TailwindCSS and SCSS _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`9e7c10f`](https://github.com/solid-design-system/solid/commit/9e7c10fd923f378b112071ed8a3fa7cc2dd19b87) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 6.0.0-next.2
+
+### Patch Changes
+
+- Remove semicolon breaking imports in other TailwindCSS projects _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`aebb285`](https://github.com/solid-design-system/solid/commit/aebb28534faf3f881f718fc0c8f62ab5845cd494) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 6.0.0-next.1
+
+### Patch Changes
+
+- Optimize output for TailwindCSS _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`f3c4ac6`](https://github.com/solid-design-system/solid/commit/f3c4ac6c688f8a1a76de2967e3b8920c81959d71) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 6.0.0-next.0
 
 ### Major Changes

@@ -1,25 +1,34 @@
 # @solid-design-system/components
 
-## 6.0.0-next.1
-
-### Major Changes
-
-- Introduce multi-theming with new CSS variables _[`#2565`](https://github.com/solid-design-system/solid/pull/2565) [`602f0d3`](https://github.com/solid-design-system/solid/commit/602f0d38371c8f797662997071feb8173113e896) [@github-actions](https://github.com/apps/github-actions)_
-
-## 5.16.0-next.0
+## 5.16.0
 
 ### Minor Changes
 
-- Implemented new utility componented named `sd-theme-listener`, used to listen to theme changes. _[`#2472`](https://github.com/solid-design-system/solid/pull/2472) [`58b6d04`](https://github.com/solid-design-system/solid/commit/58b6d043d4126a1441ae929c2d9300352f787f1c) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Introducing the brand new `sd-datepicker` component. _[`#2521`](https://github.com/solid-design-system/solid/pull/2521) [`5b493e5`](https://github.com/solid-design-system/solid/commit/5b493e5a29164a0efd0d537c9097fa6f472fc913) [@smfonseca](https://github.com/smfonseca)_
+
+  This component is used to enter or select a date or a range of dates using a calendar view.
+
+### 📈 Stats
+* Uncompressed: 519 KB (+40 KB / +8%)
+* Gzipped: 122 KB (+9 KB / +8%)
+
+### 📈 Stats
+* Uncompressed: 4036 KB (+3517 KB / +678%)
+* Gzipped: 621 KB (+499 KB / +409%)
+
+### 📈 Stats
+* Uncompressed: 564 KB (-3472 KB / -86%)
+* Gzipped: 128 KB (-493 KB / -79%)
+
+### 📈 Stats
+* Uncompressed: 559 KB (-5 KB / -1%)
+* Gzipped: 128 KB (unchanged)
+
+## 5.15.13
 
 ### Patch Changes
 
-- Changed icon library to `_internal` on the `sd-input` step buttons. _[`#2472`](https://github.com/solid-design-system/solid/pull/2472) [`8f5163f`](https://github.com/solid-design-system/solid/commit/8f5163f7f89d47afb0501569d191667eca3f8865) [@paulovareiro29](https://github.com/paulovareiro29)_
-
-### 📈 Stats
-
-- Uncompressed: 518 KB (+39 KB / +8%)
-- Gzipped: 118 KB (+5 KB / +4%)
+- Fixed issue where the build process would generate empty chunk files, therefore, breaking the build. _[`#2567`](https://github.com/solid-design-system/solid/pull/2567) [`c1b32c7`](https://github.com/solid-design-system/solid/commit/c1b32c79bed00ccd2bd8d3d08112b1c74cb398da) [@mariohamann](https://github.com/mariohamann)_
 
 ## 5.15.12
 

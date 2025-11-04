@@ -2473,11 +2473,52 @@
           }
         }
       },
-      "_todo": {
-        "shadow": {
-          "description": "Used for tooltip",
-          "type": "color",
-          "value": "rgba(81, 81, 81, 0.75)"
+      "shadow": {
+        "default": {
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "rgba(81, 81, 81, 0.75)"
+          },
+          "y": {
+            "type": "float",
+            "value": "1"
+          },
+          "blur": {
+            "type": "float",
+            "value": "3"
+          },
+          "x": {
+            "type": "float",
+            "value": "0"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "sm": {
+          "y": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          },
+          "x": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "blur": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "{ui-light.utilities.color.neutral.800}"
+          }
         }
       },
       "opacity": {
@@ -2736,36 +2777,6 @@
           "value": "{core.ui.font-family.font-family-primary}"
         }
       },
-      "shadow": {
-        "shadow": {
-          "y": {
-            "type": "float",
-            "value": "1"
-          },
-          "spread": {
-            "type": "float",
-            "value": "3"
-          }
-        },
-        "shadow-sm": {
-          "y": {
-            "type": "float",
-            "value": "0.5"
-          },
-          "spread": {
-            "type": "float",
-            "value": "0"
-          },
-          "x": {
-            "type": "float",
-            "value": "0.5"
-          },
-          "blur": {
-            "type": "float",
-            "value": "0.5"
-          }
-        }
-      },
       "font-weight": {
         "normal": {
           "type": "string",
@@ -2945,10 +2956,10 @@
         "type": "keyframes",
         "value": {
           "0%, 100%": {
-            "color": "var(--sd-color-icon-fill-white, var(--sd-color-white));"
+            "color": "var(--sd-color-icon-fill-white, var(--sd-color-white))"
           },
           "50%": {
-            "color": "var(--sd-color-icon-fill-white, var(--sd-color-white));",
+            "color": "var(--sd-color-icon-fill-white, var(--sd-color-white))",
             "opacity": "20%"
           }
         }
@@ -3235,7 +3246,7 @@
           },
           "lg": {
             "icon": {
-              "font-size": {
+              "_font-size": {
                 "type": "float",
                 "value": "{ui-light.utilities.sizing.6}"
               }
@@ -3250,7 +3261,7 @@
             },
             "padding-block": {
               "type": "float",
-              "value": "{ui-light.utilities.spacing.2}"
+              "value": "{ui-light.utilities.spacing.3}"
             }
           }
         },
@@ -3452,12 +3463,14 @@
         },
         "__chevron": {
           "color": {
-            "type": "color",
-            "value": "{ui-light.utilities.color.text.primary.default}"
+            "text": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.text.primary.default}"
+            }
           }
         }
       },
-      "sd-navigation-item": {
+      "navigable": {
         "__current-indicator": {
           "border-radius": {
             "type": "float",
@@ -3466,29 +3479,40 @@
           "height": {
             "type": "float",
             "value": "{ui-light.utilities.spacing.1}"
+          },
+          "width": {
+            "type": "float",
+            "value": "{ui-light.utilities.spacing.1}"
           }
         },
-        "color": {
-          "type": "color",
-          "value": "{ui-light.utilities.color.text.primary.default}"
-        },
-        "--current": {
-          "color": {
-            "type": "color",
-            "value": "{ui-light.utilities.color.text.primary.default}"
-          }
-        },
-        "border-radius-top": {
-          "type": "float",
-          "value": "0"
-        },
-        "border-radius-bottom": {
+        "border-radius": {
           "type": "float",
           "value": "0"
         },
         "font-size": {
           "type": "float",
           "value": "{core.text-base}"
+        },
+        "_docs": {
+          "description": "Used in: sd-tab, sd-navigation-item and sd-menu",
+          "type": "string",
+          "value": "ℹ️ See description"
+        }
+      },
+      "sd-navigation": {
+        "color": {
+          "text": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.text.primary.default}"
+          }
+        },
+        "--current": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.text.primary.default}"
+            }
+          }
         }
       }
     }
@@ -4346,11 +4370,52 @@
           }
         }
       },
-      "_todo": {
-        "shadow": {
-          "description": "Used for tooltip",
-          "type": "color",
-          "value": "rgba(255, 255, 255, 0.00)"
+      "shadow": {
+        "default": {
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          },
+          "y": {
+            "type": "float",
+            "value": "0"
+          },
+          "blur": {
+            "type": "float",
+            "value": "0"
+          },
+          "x": {
+            "type": "float",
+            "value": "0"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "sm": {
+          "y": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "x": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "blur": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "{ui-dark.utilities.color.neutral.800}"
+          }
         }
       },
       "opacity": {
@@ -4609,36 +4674,6 @@
           "value": "{core.ui.font-family.font-family-primary}"
         }
       },
-      "shadow": {
-        "shadow": {
-          "y": {
-            "type": "float",
-            "value": "0"
-          },
-          "spread": {
-            "type": "float",
-            "value": "0"
-          }
-        },
-        "shadow-sm": {
-          "y": {
-            "type": "float",
-            "value": "0"
-          },
-          "spread": {
-            "type": "float",
-            "value": "0"
-          },
-          "x": {
-            "type": "float",
-            "value": "0"
-          },
-          "blur": {
-            "type": "float",
-            "value": "0"
-          }
-        }
-      },
       "font-weight": {
         "normal": {
           "type": "string",
@@ -4818,10 +4853,10 @@
         "type": "keyframes",
         "value": {
           "0%, 100%": {
-            "color": "var(--sd-color-icon-fill-white, var(--sd-color-white));"
+            "color": "var(--sd-color-icon-fill-white, var(--sd-color-white))"
           },
           "50%": {
-            "color": "var(--sd-color-icon-fill-white, var(--sd-color-white));",
+            "color": "var(--sd-color-icon-fill-white, var(--sd-color-white))",
             "opacity": "20%"
           }
         }
@@ -5108,7 +5143,7 @@
           },
           "lg": {
             "icon": {
-              "font-size": {
+              "_font-size": {
                 "type": "float",
                 "value": "{ui-dark.utilities.sizing.6}"
               }
@@ -5123,7 +5158,7 @@
             },
             "padding-block": {
               "type": "float",
-              "value": "{ui-dark.utilities.spacing.2}"
+              "value": "{ui-dark.utilities.spacing.3}"
             }
           }
         },
@@ -5325,12 +5360,14 @@
         },
         "__chevron": {
           "color": {
-            "type": "color",
-            "value": "{ui-dark.utilities.color.text.primary.default}"
+            "text": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.text.primary.default}"
+            }
           }
         }
       },
-      "sd-navigation-item": {
+      "navigable": {
         "__current-indicator": {
           "border-radius": {
             "type": "float",
@@ -5339,29 +5376,40 @@
           "height": {
             "type": "float",
             "value": "{ui-dark.utilities.spacing.1}"
+          },
+          "width": {
+            "type": "float",
+            "value": "{ui-dark.utilities.spacing.1}"
           }
         },
-        "color": {
-          "type": "color",
-          "value": "{ui-dark.utilities.color.text.primary.default}"
-        },
-        "--current": {
-          "color": {
-            "type": "color",
-            "value": "{ui-dark.utilities.color.text.primary.default}"
-          }
-        },
-        "border-radius-top": {
-          "type": "float",
-          "value": "0"
-        },
-        "border-radius-bottom": {
+        "border-radius": {
           "type": "float",
           "value": "0"
         },
         "font-size": {
           "type": "float",
           "value": "{core.text-base}"
+        },
+        "_docs": {
+          "description": "Used in: sd-tab, sd-navigation-item and sd-menu",
+          "type": "string",
+          "value": "-"
+        }
+      },
+      "sd-navigation": {
+        "color": {
+          "text": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.text.primary.default}"
+          }
+        },
+        "--current": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.text.primary.default}"
+            }
+          }
         }
       }
     }
@@ -6144,7 +6192,7 @@
             "400": {
               "description": "Additional text inverted color",
               "type": "color",
-              "value": "{vb.utilities.color.primary.400}"
+              "value": "{vb.utilities.color.primary.300}"
             },
             "500": {
               "description": "Used for hover interaction",
@@ -6219,11 +6267,52 @@
           }
         }
       },
-      "_todo": {
-        "shadow": {
-          "description": "Used for tooltip",
-          "type": "color",
-          "value": "rgba(81, 81, 81, 0.75)"
+      "shadow": {
+        "default": {
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.10)"
+          },
+          "y": {
+            "type": "float",
+            "value": "4"
+          },
+          "blur": {
+            "type": "float",
+            "value": "10"
+          },
+          "x": {
+            "type": "float",
+            "value": "0"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "sm": {
+          "y": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          },
+          "x": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "blur": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "{vb.utilities.color.neutral.800}"
+          }
         }
       },
       "opacity": {
@@ -6482,36 +6571,6 @@
           "value": "{core.vb.font-family.font-family-primary}"
         }
       },
-      "shadow": {
-        "shadow": {
-          "y": {
-            "type": "float",
-            "value": "1"
-          },
-          "spread": {
-            "type": "float",
-            "value": "3"
-          }
-        },
-        "shadow-sm": {
-          "y": {
-            "type": "float",
-            "value": "0.5"
-          },
-          "spread": {
-            "type": "float",
-            "value": "0"
-          },
-          "x": {
-            "type": "float",
-            "value": "0.5"
-          },
-          "blur": {
-            "type": "float",
-            "value": "0.5"
-          }
-        }
-      },
       "font-weight": {
         "normal": {
           "type": "string",
@@ -6691,10 +6750,10 @@
         "type": "keyframes",
         "value": {
           "0%, 100%": {
-            "color": "var(--sd-color-icon-fill-white, var(--sd-color-white));"
+            "color": "var(--sd-color-icon-fill-white, var(--sd-color-white))"
           },
           "50%": {
-            "color": "var(--sd-color-icon-fill-white, var(--sd-color-white));",
+            "color": "var(--sd-color-icon-fill-white, var(--sd-color-white))",
             "opacity": "20%"
           }
         }
@@ -6981,7 +7040,7 @@
           },
           "lg": {
             "icon": {
-              "font-size": {
+              "_font-size": {
                 "type": "float",
                 "value": "{vb.utilities.sizing.5}"
               }
@@ -7092,7 +7151,7 @@
           "color": {
             "background": {
               "type": "color",
-              "value": "{vb.utilities.color.neutral.500}"
+              "value": "{vb.utilities.color.neutral.400}"
             }
           }
         }
@@ -7198,12 +7257,14 @@
         },
         "__chevron": {
           "color": {
-            "type": "color",
-            "value": "{vb.utilities.color.text.neutral.600}"
+            "text": {
+              "type": "color",
+              "value": "{vb.utilities.color.text.neutral.600}"
+            }
           }
         }
       },
-      "sd-navigation-item": {
+      "navigable": {
         "__current-indicator": {
           "border-radius": {
             "type": "float",
@@ -7212,29 +7273,40 @@
           "height": {
             "type": "float",
             "value": "3"
+          },
+          "width": {
+            "type": "float",
+            "value": "3"
           }
         },
-        "color": {
-          "type": "color",
-          "value": "{vb.utilities.color.text.neutral.700}"
-        },
-        "--current": {
-          "color": {
-            "type": "color",
-            "value": "{vb.utilities.color.text.black.default}"
-          }
-        },
-        "border-radius-top": {
-          "type": "float",
-          "value": "{vb.utilities.rounded.md}"
-        },
-        "border-radius-bottom": {
+        "border-radius": {
           "type": "float",
           "value": "{vb.utilities.rounded.sm}"
         },
         "font-size": {
           "type": "float",
           "value": "{core.text-sm}"
+        },
+        "_docs": {
+          "description": "Used in: sd-tab, sd-navigation-item and sd-menu",
+          "type": "string",
+          "value": "-"
+        }
+      },
+      "sd-navigation": {
+        "color": {
+          "text": {
+            "type": "color",
+            "value": "{vb.utilities.color.text.neutral.700}"
+          }
+        },
+        "--current": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{vb.utilities.color.text.black.default}"
+            }
+          }
         }
       }
     }

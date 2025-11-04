@@ -168,6 +168,18 @@ async function runBuild() {
     buildResults = await buildTheSource();
   });
 
+  await nextTask('Fix broken imports', async () => {
+    const distFiles = await globby([`${outdir}/chunks/chunk.*.js`, `${cdndir}/chunks/chunk.*.js`]);
+    await Promise.all(
+      distFiles.map(async file => {
+        const content = await fs.readFile(file, 'utf-8');
+        if (content.trim().length === 0) {
+          await fs.writeFile(file, '//');
+        }
+      })
+    );
+  });
+
   if (!lite) {
     await nextTask('Versioning components and meta data', async () => {
       await execPromise('node scripts/make-versioning.js', { stdio: 'inherit' });

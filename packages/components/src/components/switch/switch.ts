@@ -281,7 +281,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
         border-color: var(--sd-color-background-neutral-500, var(--sd-color-neutral-500));
       }
 
-      :host(:not([disabled])) #input:not([aria-invalid='true']) ~ #control #thumb {
+      :host(:not([disabled]):not([checked])) #input:not([aria-invalid='true']) ~ #control #thumb {
         background-color: var(--sd-color-icon-fill-neutral-800, var(--sd-color-neutral-800));
       }
 

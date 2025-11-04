@@ -16,14 +16,13 @@ test('Menu with Checkmarks and Icons', async ({ page }) => {
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=templates-menu--menu-with-checkmarks-and-icons&viewMode=story'
   );
   await expect(page.locator('body')).toMatchAriaSnapshot(`
-      - region "Top right notifications"
-      - region "Bottom center notifications"
-      - button "Icon only" [expanded]:
-        - img "Icon only":
-          - img
-      - menu:
-        - menuitemcheckbox "Menu item"
-        - menuitemcheckbox "Menu item" [checked]
-        - menuitemcheckbox "Menu item"
-    `);
+    - region "Top right notifications"
+    - region "Bottom center notifications"
+    - button "Icon only" [expanded]:
+      - img "Icon only"
+    - menu:
+      - menuitemcheckbox "Menu item"
+      - menuitemcheckbox "Menu item" [checked]
+      - menuitemcheckbox "Menu item"
+  `);
 });

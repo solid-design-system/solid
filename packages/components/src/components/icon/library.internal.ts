@@ -34,6 +34,20 @@ export const icons = {
       <path d="M17.7 2.3a1 1 0 0 0-1.4 0l-10 9a1 1 0 0 0 0 1.4l10 9a1 1 0 0 0 1.4-1.4L8.5 12l9.2-8.3a1 1 0 0 0 0-1.4"/>
     </svg>
   `,
+  'chevron-sm-right': `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M10.688 6.257a1 1 0 1 0-1.336 1.485h.002L14.528 12l-5.174 4.257a1 1 0 0 0 1.336 1.485h-.002l6-5a.997.997 0 0 0 .002-1.485l-.002-.001-6-5Z"/>
+  </svg>`,
+  'chevron-sm-left': `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M14.742 6.333a.997.997 0 0 0-1.41-.076l.001-.001-6 5a.997.997 0 0 0 0 1.486v.001l6 5a1 1 0 0 0 1.333-1.487l-5.173-4.257 5.173-4.257a.997.997 0 0 0 .076-1.409Z"/>
+  </svg>`,
+  'chevrons-sm-left': `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M11.74 6.333a.997.997 0 0 0-1.41-.076l.001-.001-6 5a.997.997 0 0 0-.001 1.486l.001.001 6 5a1 1 0 0 0 1.333-1.487l-5.173-4.257 5.173-4.257a.997.997 0 0 0 .076-1.409Z"/>
+    <path fill="currentColor" d="M18.74 6.333a.997.997 0 0 0-1.41-.076l.001-.001-6 5a.997.997 0 0 0-.001 1.486l.001.001 6 5a1 1 0 0 0 1.333-1.487l-5.173-4.257 5.173-4.257a.997.997 0 0 0 .076-1.409Z"/>
+  </svg>`,
+  'chevrons-sm-right': `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+  <path fill="currentColor" d="M13.718 6.257a1 1 0 1 0-1.336 1.485h.002L17.557 12l-5.173 4.257a1 1 0 0 0 1.336 1.485h-.002l6-5a.997.997 0 0 0 .001-1.485l-.001-.001-6-5Z"/>
+  <path fill="currentColor" d="M6.718 6.257a1 1 0 1 0-1.336 1.485h.002L10.557 12l-5.173 4.257a1 1 0 0 0 1.336 1.485h-.002l6-5a.997.997 0 0 0 .001-1.485l-.001-.001-6-5Z"/>
+</svg>`,
   clock: `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path d="M13 11.6V8a1 1 0 0 0-2 0v4.4h.1v.2l.2.1 2.8 2.8a1 1 0 0 0 1.4-1.4z"/>
@@ -158,16 +172,18 @@ export const icons = {
 
 const internalLibrary: IconLibrary = {
   name: '_internal',
-  resolver: (name: keyof typeof icons) => {
-    const [theme, icon] = name.split('--');
+  resolver: (name: keyof typeof icons, element?: HTMLElement) => {
+    if (element) {
+      const svg = window.getComputedStyle(element).getPropertyValue(`--sd-icon--${name}`);
 
-    const svg = window.getComputedStyle(document.body).getPropertyValue(`--sd-icon--${theme}--${icon}`);
-    if (svg) {
-      return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+      if (svg) {
+        // eslint-disable-next-line no-useless-escape
+        return `data:image/svg+xml,${encodeURIComponent(svg.replaceAll(`\\`, '').replaceAll('"', "\'"))}`;
+      }
     }
 
-    if (icon in icons) {
-      return `data:image/svg+xml,${encodeURIComponent(icons[icon as keyof typeof icons])}`;
+    if (name in icons) {
+      return `data:image/svg+xml,${encodeURIComponent(icons[name])}`;
     }
     return '';
   },

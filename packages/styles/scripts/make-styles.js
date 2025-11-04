@@ -5,16 +5,17 @@ import { processTailwind } from '../../components/scripts/esbuild-plugin-lit-tai
 import commandLineArgs from 'command-line-args';
 import path, { dirname } from 'path';
 
-const { outdir } = commandLineArgs({ name: 'outdir', type: String });
+const { outdir, minify } = commandLineArgs([
+  { name: 'outdir', type: String },
+  { name: 'minify', type: String }
+]);
 
 const files = await globby('./src/**/*.css');
 const from = path.join(fileURLToPath(import.meta.url), '../../src');
 
 for (const file of files) {
   const css = await fs.readFile(file, 'utf-8');
-  const tailwind = path.join(fileURLToPath(import.meta.url), '../../../tokens/themes/tailwind.css');
-
-  const result = await processTailwind(`@reference '${tailwind}'; ${css}`, { from });
+  const result = await processTailwind(css, { from, minify: minify === 'true' });
 
   const outputPath = file.replace('src', outdir);
   const outputDir = dirname(outputPath);

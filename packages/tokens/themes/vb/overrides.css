@@ -1,0 +1,6 @@
+.sd-theme-vb {
+  --sd-shadow-sm: 0.5px 0.5px var(--sd-color-neutral-800);
+  --sd-shadow: 0 4px 10px rgba(0 0 0 / 0.1);
+  --sd-drop-shadow-sm: 0.5px 0.5px var(--sd-color-neutral-800);
+  --sd-drop-shadow: 0 4px 10px rgba(0 0 0 / 0.1);
+}

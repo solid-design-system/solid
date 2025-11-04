@@ -130,8 +130,8 @@
   "readme": "README.md",
   "meta": {
     "bundleSizeInKb": {
-      "uncompressed": 518,
-      "gzip": 118
+      "uncompressed": 559,
+      "gzip": 128
     }
   }
 }

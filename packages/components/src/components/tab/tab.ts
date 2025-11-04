@@ -23,6 +23,10 @@ let id = 0;
  * @csspart base - The component's base wrapper.
  * @csspart active-tab-indicator - The active tab indicator.
  * @csspart hover-bottom-border - The bottom border that appears when the tab is hovered.
+ *
+ * @cssproperty --sd-navigable-border-radius: The tab border radius on hover.
+ * @cssproperty --sd-navigable__current-indicator-height: The tab current indicator height.
+ * @cssproperty --sd-navigable__current-indicator-border-radius: The tab current indicator border radius value.
  */
 @customElement('sd-tab')
 export default class SdTab extends SolidElement {
@@ -89,7 +93,9 @@ export default class SdTab extends SolidElement {
         class=${cx(
           'inline-flex justify-center min-w-max items-center h-12 px-3 leading-none select-none cursor-pointer group relative',
           'outline-hidden focus-visible:focus-outline outline-2 !-outline-offset-2 transition-all duration-fast ease-in-out',
-          this.variant === 'container' && 'tab-container-border bg-white rounded-[4px_4px_0_0]',
+          this.variant === 'container'
+            ? 'tab-container-border bg-white rounded-[4px_4px_0_0]'
+            : 'navigable-border-radius',
           this.variant === 'container' && this.active && 'tab--active-container-border bg-white',
           this.disabled || this.visuallyDisabled ? '!cursor-not-allowed' : 'hover:bg-neutral-200',
           this.active && 'z-20'
@@ -115,7 +121,9 @@ export default class SdTab extends SolidElement {
             ? html`
                 <div
                   part="active-tab-indicator"
-                  class=${cx('absolute bottom-0 h-1 bg-accent w-3/4 bottom-0 group-hover:w-full')}
+                  class=${cx(
+                    'absolute bottom-0 h-1 bg-accent w-3/4 bottom-0 group-hover:w-[calc(100%-2px)] navigable__current-indicator-height navigable__current-indicator-border-radius'
+                  )}
                 ></div>
               `
             : ''}

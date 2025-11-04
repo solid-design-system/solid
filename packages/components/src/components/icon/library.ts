@@ -3,7 +3,7 @@ import internalLibrary from './library.internal';
 import statusLibrary from './library.status';
 import type SdIcon from '../icon/icon';
 
-export type IconLibraryResolver = (name: string) => string;
+export type IconLibraryResolver = (name: string, element?: HTMLElement) => string;
 export type IconLibraryMutator = (svg: SVGElement) => void;
 export interface IconLibrary {
   name: string;
