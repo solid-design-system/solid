@@ -1,5 +1,13 @@
 # @solid-design-system/tokens
 
+## 6.0.0-next.5
+
+### Patch Changes
+
+- Fixed semantic tokens generation to enable multi theming on the same page. _[`#2596`](https://github.com/solid-design-system/solid/pull/2596) [`854414e`](https://github.com/solid-design-system/solid/commit/854414ed0a2105e5d44f9b83a6417d12f2fae9b0) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Added `:root` selector to all theme files.
+
 ## 6.0.0-next.4
 
 ### Patch Changes
