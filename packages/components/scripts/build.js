@@ -20,7 +20,7 @@ const execPromise = util.promisify(exec);
 let childProcess;
 let buildResults;
 
-const bundleDirectories = lite ? [outdir] : [cdndir, outdir, `${outdir}-versioned`, `${cdndir}-versioned`];
+const bundleDirectories = lite ? [outdir] : [cdndir, `${outdir}-versioned`, `${cdndir}-versioned`, outdir];
 
 //
 // Builds the source with esbuild.
@@ -136,12 +136,10 @@ async function runBuild() {
   }
 
   if (!lite) {
-    await nextTask('Generating component metadata', () => {
-      return Promise.all(
-        bundleDirectories.map(dir => {
-          return execPromise(`node scripts/make-metadata.js --outdir "${dir}"`, { stdio: 'inherit' });
-        })
-      );
+    await nextTask('Generating component metadata', async () => {
+      for (const dir of bundleDirectories) {
+        await execPromise(`node scripts/make-metadata.js --outdir "${dir}"`, { stdio: 'inherit' });
+      }
     });
   }
 
@@ -164,6 +162,18 @@ async function runBuild() {
 
   await nextTask('Building source files', async () => {
     buildResults = await buildTheSource();
+  });
+
+  await nextTask('Fix broken imports', async () => {
+    const distFiles = await globby([`${outdir}/chunks/chunk.*.js`, `${cdndir}/chunks/chunk.*.js`]);
+    await Promise.all(
+      distFiles.map(async file => {
+        const content = await fs.readFile(file, 'utf-8');
+        if (content.trim().length === 0) {
+          await fs.writeFile(file, '//');
+        }
+      })
+    );
   });
 
   if (!lite) {
