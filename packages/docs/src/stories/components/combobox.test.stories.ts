@@ -716,7 +716,6 @@ export const SampleForm = {
         };
 
         await Promise.all([customElements.whenDefined('sd-combobox'), customElements.whenDefined('sd-button')]);
-        const form = document.querySelector('#testForm');
         const controls = Array.from(form.querySelectorAll('sd-select'));
 
         controls.forEach(control => {
@@ -733,12 +732,12 @@ export const SampleForm = {
           const formData = new FormData(form);
           const formValues = Object.fromEntries(formData);
 
-          if (form.reportValidity()) {
+          if (document.querySelector('#testForm').reportValidity()) {
             alert('Form submitted with the following values: ' + JSON.stringify(formValues, null, 2));
           }
         }
 
-        form.addEventListener('submit', handleSubmit);
+        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
       </script>
     `;
   }
