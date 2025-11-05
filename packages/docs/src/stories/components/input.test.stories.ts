@@ -616,51 +616,91 @@ export const Validation = {
       </form>
 
       <script type="module">
-        const customErrorMessages = {
-          'valid-field': { message: 'Please correct your input.' },
-          'required-field': { message: 'Please correct your input.' },
-          'pattern-field': { message: 'The input does not meet the required format. Please correct your input.' },
-          'minlength-field': { message: 'At least 3 characters are needed. Please correct your input.' },
-          'maxlength-field': { message: 'Maximum 3 characters are allowed. Please correct your input.' },
-          'min-field': { message: 'Enter a number 3 or greater.' },
-          'max-field': { message: 'Enter a number 3 or less.' },
-          'email-field': { typeMismatch: 'Enter a valid email address (e.g., name@example.com).' },
-          'date-field': { typeMismatch: 'Enter a valid date (tt.mm.jjjj).' },
-          'datetime-field': { typeMismatch: 'Enter a valid date and time (tt.mm.jjjj, hh:mm).' },
-          'time-field': { typeMismatch: 'Enter a valid time (hh:mm).' },
-          'url-field': { typeMismatch: 'Enter a valid URL (e.g., https://www.example.de/).' }
-        };
-
         await Promise.all([customElements.whenDefined('sd-input'), customElements.whenDefined('sd-button')]);
 
         const form = document.querySelector('#testForm');
-        const inputs = form.querySelectorAll('sd-input');
+        const fields = Array.from(form.querySelectorAll('sd-input')).map(el => ({
+          el,
+          native: el.shadowRoot.querySelector('input')
+        }));
 
-        inputs.forEach(input => {
-          const fieldName = input.getAttribute('name');
-          const messages = customErrorMessages[fieldName];
+        let formSubmitted = false;
 
-          if (messages) {
-            if (messages.typeMismatch) {
-              input.setCustomValidity(messages.typeMismatch);
-            } else if (messages.message) {
-              input.setCustomValidity(messages.message);
-            }
-          }
-        });
-
-        function handleSubmit(event) {
-          event.preventDefault();
-
-          const formData = new FormData(form);
-          const formValues = Object.fromEntries(formData);
-
-          if (form.reportValidity()) {
-            alert('Form submitted with the following values: ' + JSON.stringify(formValues, null, 2));
+        function getMessage(name) {
+          switch (name) {
+            case 'valid-field':
+            case 'required-field':
+              return 'Please correct your input.';
+            case 'pattern-field':
+              return 'The input does not meet the required format. Please correct your input.';
+            case 'minlength-field':
+              return 'At least 3 characters are needed. Please correct your input.';
+            case 'maxlength-field':
+              return 'Maximum 3 characters are allowed. Please correct your input.';
+            case 'min-field':
+              return 'Enter a number 3 or greater.';
+            case 'max-field':
+              return 'Enter a number 3 or less.';
+            case 'email-field':
+              return 'Enter a valid email address (e.g., name@example.com).';
+            case 'date-field':
+              return 'Enter a valid date (tt.mm.jjjj).';
+            case 'datetime-field':
+              return 'Enter a valid date and time (tt.mm.jjjj, hh:mm).';
+            case 'time-field':
+              return 'Enter a valid time (hh:mm).';
+            case 'url-field':
+              return 'Enter a valid URL (e.g., https://www.example.de/).';
+            default:
+              return 'Please correct your input.';
           }
         }
 
-        form.addEventListener('submit', handleSubmit);
+        // Always prevent validation while typing
+        form.addEventListener(
+          'sd-input',
+          ev => {
+            ev.stopImmediatePropagation();
+            fields.forEach(({ el, native }) => {
+              el.setCustomValidity('');
+              native.setCustomValidity('');
+              el.removeAttribute('data-user-invalid');
+            });
+          },
+          { capture: true }
+        );
+
+        // Always block native invalid events
+        form.addEventListener('invalid', e => e.preventDefault(), { capture: true });
+
+        // Set custom messages BEFORE form validation runs
+        form.addEventListener(
+          'submit',
+          () => {
+            fields.forEach(({ el, native }) => {
+              el.setCustomValidity('');
+              native.setCustomValidity('');
+              if (!native.validity.valid) {
+                const msg = getMessage(el.getAttribute('name'));
+                native.setCustomValidity(msg);
+                el.setCustomValidity(msg);
+              }
+            });
+          },
+          { capture: true }
+        );
+
+        // Handle submit
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          formSubmitted = true;
+          if (form.checkValidity()) {
+            alert(
+              'Form submitted with the following values: ' +
+                JSON.stringify(Object.fromEntries(new FormData(form)), null, 2)
+            );
+          }
+        });
       </script>
     `;
   }

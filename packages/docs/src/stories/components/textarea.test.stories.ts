@@ -226,37 +226,76 @@ export const Validation = {
         <sd-button type="submit">Submit</sd-button>
       </form>
       <script type="module">
-        const customErrorMessages = {
-          'required-field': 'Please correct your input.',
-          'minlength-field': 'At least 3 characters are needed. Please correct your input.',
-          'maxlength-field': 'Maximum 3 characters are allowed. Please correct your input.'
-        };
-
         await Promise.all([customElements.whenDefined('sd-textarea'), customElements.whenDefined('sd-button')]);
 
         const form = document.querySelector('#testForm');
-        const controls = Array.from(form.querySelectorAll('sd-textarea'));
+        const fields = Array.from(form.querySelectorAll('sd-textarea')).map(el => ({
+          el,
+          native: el.shadowRoot.querySelector('textarea')
+        }));
 
-        controls.forEach(control => {
-          const name = control.getAttribute('name');
-          const message = customErrorMessages[name];
-          if (message) {
-            control.setCustomValidity(message);
-          }
-        });
+        let formSubmitted = false;
 
-        function handleSubmit(event) {
-          event.preventDefault();
-
-          const formData = new FormData(form);
-          const formValues = Object.fromEntries(formData);
-
-          if (form.reportValidity()) {
-            alert('Form submitted with the following values: ' + JSON.stringify(formValues, null, 2));
+        function getMessage(name) {
+          switch (name) {
+            case 'required-field':
+              return 'Please correct your input.';
+            case 'minlength-field':
+              return 'At least 3 characters are needed. Please correct your input.';
+            case 'maxlength-field':
+              return 'Maximum 3 characters are allowed. Please correct your input.';
+            default:
+              return 'Please correct your input.';
           }
         }
 
-        form.addEventListener('submit', handleSubmit);
+        // Prevent validation before first submit
+        form.addEventListener(
+          'sd-input',
+          ev => {
+            if (formSubmitted) return;
+            ev.stopImmediatePropagation();
+            fields.forEach(({ el, native }) => {
+              el.setCustomValidity('');
+              native.setCustomValidity('');
+              el.removeAttribute('data-user-invalid');
+            });
+          },
+          { capture: true }
+        );
+
+        // Block native invalid events before submit
+        form.addEventListener('invalid', e => !formSubmitted && e.preventDefault(), { capture: true });
+
+        // Set custom messages BEFORE form validation runs
+        form.addEventListener(
+          'submit',
+          () => {
+            fields.forEach(({ el, native }) => {
+              el.setCustomValidity('');
+              native.setCustomValidity('');
+              if (!native.validity.valid) {
+                const msg = getMessage(el.getAttribute('name'));
+                native.setCustomValidity(msg);
+                el.setCustomValidity(msg);
+              }
+            });
+          },
+          { capture: true }
+        );
+
+        // Handle submit
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          formSubmitted = true;
+
+          if (form.checkValidity()) {
+            alert(
+              'Form submitted with the following values: ' +
+                JSON.stringify(Object.fromEntries(new FormData(form)), null, 2)
+            );
+          }
+        });
       </script>
     `;
   }
