@@ -1,6 +1,0 @@
-.sd-theme-ui-light {
-  --sd-shadow-sm: 0.5px 0.5px 1.5px var(--sd-color-neutral-800);
-  --sd-shadow: 0 1px 3px var(--sd-color-neutral-800);
-  --sd-drop-shadow-sm: 0.5px 0.5px 1.5px var(--sd-color-neutral-800);
-  --sd-drop-shadow: 0 1px 3px var(--sd-color-neutral-800);
-}

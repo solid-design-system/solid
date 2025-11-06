@@ -6,55 +6,83 @@ import { BaseTokenProcessor } from './base.js';
 export class ShadowTokenProcessor extends BaseTokenProcessor {
   constructor(options = {}) {
     super(options);
+
+    this.store = {};
   }
 
   canProcess(token) {
     return token.type === 'boxShadow' || token.type === 'shadow' || token.path.includes('shadow');
   }
 
-  // TODO: Process is hardcoded since Figma doesn't have shadow ready.
   process(token, _, options) {
-    const { path, variant } = this.processTokenPath(token);
-    const _name = path.slice(1).join('-');
-    const name = _name.includes('-sm') ? 'shadow-sm' : 'shadow';
-    const properties = name.includes('-sm') ? '0.5px 0.5px 1.5px' : '0 1px 3px';
+    const processed = this.processTokenPath(token);
+
+    const isUtility = this.isUtilityToken(processed.path);
+    if (!isUtility) return [];
+
+    const [, , size, property] = processed.path;
+    if (!this.store[[processed.variant]]) this.store[processed.variant] = {};
+    if (!this.store[processed.variant][size]) this.store[processed.variant][size] = {};
+    this.store[processed.variant][size][property] = this.getTokenValue(token);
+
+    const properties = this.store[processed.variant][size];
+    const canProcess = ['y', 'x', 'spread', 'blur', 'color'].every(k => k in properties);
+    if (!canProcess) return [];
+
+    processed.path = processed.path.slice(2);
 
     const cssvariables = [];
 
-    if (variant === options.defaultTheme) {
+    if (processed.variant === options.defaultTheme) {
       cssvariables.push(
         {
           type: 'shadow',
-          name: `--${name}`,
-          value: this.cssvar(this.cssprefix(name)),
+          name: `--shadow-${size}`,
+          value: this.cssvar(this.cssprefix(`shadow-${size}`)),
           variant: 'default'
         },
         {
           type: 'shadow',
-          name: `--drop-${name}`,
-          value: this.cssvar(this.cssprefix(`drop-${name}`)),
+          name: `--drop-shadow-${size}`,
+          value: this.cssvar(this.cssprefix(`drop-shadow-${size}`)),
           variant: 'default'
         }
       );
     }
 
-    const shadowColor = !variant.includes('-dark') ? 'var(--sd-color-neutral-800)' : 'transparent';
+    const shadowValue = ['y', 'x', 'spread', 'blur', 'color'].reduce(
+      (acc, key) => this.#reduceShadowValue(acc, key, properties[key]),
+      ''
+    );
+
+    const dropShadowValue = ['y', 'x', 'blur', 'color'].reduce(
+      (acc, key) => this.#reduceShadowValue(acc, key, properties[key]),
+      ''
+    );
 
     cssvariables.push(
       {
         type: 'shadow',
-        name: this.cssprefix(name),
-        value: `${properties} ${shadowColor}`,
-        variant
+        name: this.cssprefix(`shadow-${size}`),
+        value: shadowValue,
+        variant: processed.variant
       },
       {
         type: 'shadow',
-        name: this.cssprefix(`drop-${name}`),
-        value: `${properties} ${shadowColor}`,
-        variant
+        name: this.cssprefix(`drop-shadow-${size}`),
+        value: dropShadowValue,
+        variant: processed.variant
       }
     );
 
+    cssvariables.forEach(v => {
+      v.name = v.name.replace('-default', '');
+    });
     return cssvariables;
+  }
+
+  #reduceShadowValue(acc, key, value) {
+    const append = key === 'color' ? value : `${value}px`;
+    return `${acc} ${append}`;
   }
 }

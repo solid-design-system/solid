@@ -1,5 +1,6 @@
 import { AnimationTokenProcessor } from './token-processors/animation.js';
 import { ColorTokenProcessor } from './token-processors/color.js';
+import { ShadowTokenProcessor } from './token-processors/shadow.js';
 import { SpacingTokenProcessor } from './token-processors/spacing.js';
 import { TypographyTokenProcessor } from './token-processors/typography.js';
 import { UtilityTokenProcessor } from './token-processors/utility.js';
@@ -18,6 +19,7 @@ export class TokenProcessingEngine {
    * Register default token processors
    */
   registerDefaultProcessors() {
+    this.registerProcessor('shadow', new ShadowTokenProcessor(this.config.getAll()));
     this.registerProcessor('color', new ColorTokenProcessor(this.config.getAll()));
     this.registerProcessor('spacing', new SpacingTokenProcessor(this.config.getAll()));
     this.registerProcessor('animation', new AnimationTokenProcessor(this.config.getAll()));
