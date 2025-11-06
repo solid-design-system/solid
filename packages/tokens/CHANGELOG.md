@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 6.0.0-next.6
+
+### Minor Changes
+
+- Implement shadow tokens generation according to Figma. _[`#2602`](https://github.com/solid-design-system/solid/pull/2602) [`ad2ae5b`](https://github.com/solid-design-system/solid/commit/ad2ae5b017c3e988dcb912832284e6db93fa5369) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 6.0.0-next.5
 
 ### Patch Changes
