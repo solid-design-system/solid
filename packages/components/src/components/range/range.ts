@@ -185,6 +185,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       const rangeId = +thumb.dataset.rangeId!;
       if (!this._rangeValues.has(rangeId)) continue;
       this.moveThumb(thumb, this._rangeValues.get(rangeId)!);
+      (thumb.parentElement as SdTooltip).show();
     }
 
     this.updateActiveTrack();
@@ -377,8 +378,6 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     thumb.dataset.pointerId = event.pointerId.toString();
     thumb.setPointerCapture(event.pointerId);
     thumb.classList.add('grabbed');
-
-    await (thumb.parentElement as SdTooltip).show();
   }
 
   private onDragThumb(event: PointerEvent) {
@@ -439,8 +438,6 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       this._lastChangeValue = Array.from(this._value);
       this.emit('sd-change');
     }
-
-    await (thumb.parentElement as SdTooltip).hide();
   }
 
   private onKeyPress(event: KeyboardEvent) {
@@ -570,7 +567,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       return html`
         <sd-tooltip
           hoist
-          trigger="focus"
+          trigger="manual"
           disabled=${ifDefined(this.disabled || this.visuallyDisabled || this.noTooltip ? true : undefined)}
         >
           <div
