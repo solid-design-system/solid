@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.31.2
+
+### Patch Changes
+
+- Updated `sd-datepicker` stories and screenshot tests. _[`#2585`](https://github.com/solid-design-system/solid/pull/2585) [`ffa4d08`](https://github.com/solid-design-system/solid/commit/ffa4d08c3bb5c9b8ba61e9c7f2fec13a65ac7de5) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.31.1
 
 ### Patch Changes

@@ -1,5 +1,19 @@
 # @solid-design-system/components
 
+## 5.16.1
+
+### Patch Changes
+
+- Addressed minor issues with the `sd-datepicker`: _[`#2585`](https://github.com/solid-design-system/solid/pull/2585) [`ffa4d08`](https://github.com/solid-design-system/solid/commit/ffa4d08c3bb5c9b8ba61e9c7f2fec13a65ac7de5) [@smfonseca](https://github.com/smfonseca)_
+  - Updated placeholder color to be reactive to theme.
+  - Disabled autocomplete.
+  - Improved `visually-disabled` handling and focus management.
+  - Fixed element width.
+
+### 📈 Stats
+* Uncompressed: 520 KB (+1 KB / +0%)
+* Gzipped: 122 KB (unchanged)
+
 ## 5.16.0
 
 ### Minor Changes
@@ -9,8 +23,9 @@
   This component is used to enter or select a date or a range of dates using a calendar view.
 
 ### 📈 Stats
-* Uncompressed: 519 KB (+40 KB / +8%)
-* Gzipped: 122 KB (+9 KB / +8%)
+
+- Uncompressed: 519 KB (+40 KB / +8%)
+- Gzipped: 122 KB (+9 KB / +8%)
 
 ## 5.15.13
 
