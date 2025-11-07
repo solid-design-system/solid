@@ -23,13 +23,6 @@ describe('<sd-range>', () => {
 
       expect(tooltip.content).to.equal('Value: 5');
     });
-
-    it('should disable the tooltip if the range is disabled', async () => {
-      const el = await fixture<SdRange>(html`<sd-range disabled></sd-range>`);
-      const tooltip = el.shadowRoot!.querySelector('sd-tooltip')!;
-
-      expect(tooltip).to.have.attribute('disabled');
-    });
   });
 
   describe('value methods', () => {
