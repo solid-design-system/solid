@@ -565,11 +565,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       }
 
       return html`
-        <sd-tooltip
-          hoist
-          trigger="manual"
-          disabled=${ifDefined(this.disabled || this.visuallyDisabled || this.noTooltip ? true : undefined)}
-        >
+        <sd-tooltip hoist trigger="manual" disabled=${ifDefined(this.noTooltip ? true : undefined)}>
           <div
             id=${id}
             part="thumb"
