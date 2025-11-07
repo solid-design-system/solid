@@ -143,6 +143,12 @@ export default class SdRange extends SolidElement implements SolidFormControl {
   firstUpdated() {
     this.formControlController.updateValidity();
     this._lastChangeValue = Array.from(this._value);
+
+    this.thumbs.forEach(async thumb => {
+      const tooltip = thumb.parentElement as SdTooltip;
+      await tooltip.updateComplete;
+      tooltip.shadowRoot?.querySelector('sd-popup')?.setAttribute('distance', '14');
+    });
   }
 
   protected willUpdate(changedProperties: PropertyValues): void {
