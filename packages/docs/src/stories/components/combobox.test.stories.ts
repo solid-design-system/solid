@@ -709,35 +709,49 @@ export const SampleForm = {
         <sd-button type="submit">Submit</sd-button>
       </form>
       <script type="module">
-        const customErrorMessages = {
-          'required-field': 'Please select an option.',
-          'required-multiple-field': 'Please select at least one option.',
-          'required-multiple-tags-field': 'Please select at least one option.'
-        };
-
         await Promise.all([customElements.whenDefined('sd-combobox'), customElements.whenDefined('sd-button')]);
-        const controls = Array.from(form.querySelectorAll('sd-select'));
 
-        controls.forEach(control => {
-          const name = control.getAttribute('name');
-          const message = customErrorMessages[name];
-          if (message) {
-            control.setCustomValidity(message);
+        const form = document.querySelector('#testForm');
+        const comboboxes = Array.from(form.querySelectorAll('sd-combobox'));
+
+        function getMessage(name, validity) {
+          if (validity.valueMissing) {
+            switch (name) {
+              case 'required-field':
+                return 'Please select an option.';
+              case 'required-multiple-field':
+                return 'Please select at least one option.';
+              case 'required-multiple-tags-field':
+                return 'Please select at least one option.';
+              default:
+                return '';
+            }
           }
-        });
+          return '';
+        }
 
-        function handleSubmit(event) {
+        form.addEventListener(
+          'submit',
+          event => {
+            comboboxes.forEach(combobox => {
+              const input = combobox.shadowRoot.querySelector('.value-input');
+              const name = combobox.getAttribute('name');
+              const message = getMessage(name, input.validity);
+              input.setCustomValidity(message);
+            });
+          },
+          true
+        );
+
+        form.addEventListener('submit', event => {
           event.preventDefault();
-
           const formData = new FormData(form);
           const formValues = Object.fromEntries(formData);
 
-          if (document.querySelector('#testForm').reportValidity()) {
+          if (form.reportValidity()) {
             alert('Form submitted with the following values: ' + JSON.stringify(formValues, null, 2));
           }
-        }
-
-        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
+        });
       </script>
     `;
   }
