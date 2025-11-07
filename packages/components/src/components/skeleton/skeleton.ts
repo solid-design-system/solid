@@ -5,26 +5,18 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Short summary of the component's intended use.
- * @status experimental
- * @since 1.0
+ * @summary Skeleton loaders are used as placeholder previews of content before data gets loaded.
+ * @documentation https://solid.union-investment.com/[storybook-link]/skeleton
+ * @status stable
+ * @since 3.0
  *
- * @dependency sd-example
- *
- * @event sd-event-name - Emitted as an example.
- *
- * @slot - The default slot.
- * @slot example - An example slot.
+ * @slot - The skeleton's content. When provided, adapts to the content's dimensions. When empty, displays according to the variant property.
  *
  * @csspart base - The component's base wrapper.
- *
- * @cssproperty --example - An example CSS custom property.
  */
 @customElement('sd-skeleton')
 export default class SdSkeleton extends SolidElement {
-  // public localize = new LocalizeController(this);
-
-  /** An example attribute. */
+  /** The shape variant when used without slotted content. */
   @property({ type: String, reflect: true }) variant: 'rectangular' | 'circular' = 'rectangular';
 
   render() {
@@ -32,24 +24,27 @@ export default class SdSkeleton extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'bg-neutral-200 w-full h-full',
+          'bg-neutral-200 w-full h-full animate-pulse',
           {
             rectangular: 'rounded-sm',
             circular: 'rounded-full inline-block'
           }[this.variant]
         )}
-      ></div>
+      >
+        <slot></slot>
+      </div>
     `;
   }
 
-  /**
-   * Inherits global stylesheet including TailwindCSS
-   */
   static styles = [
     ...SolidElement.styles,
     css`
       :host {
         @apply block;
+      }
+
+      ::slotted(*) {
+        @apply invisible;
       }
     `
   ];
