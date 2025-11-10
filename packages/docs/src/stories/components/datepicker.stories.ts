@@ -76,7 +76,7 @@ export const Size = {
 export const Alignment = {
   render: () =>
     html` <div class="w-[370px]">
-      <sd-datepicker label="Label" size="lg" alignment="right" value="2023.11.06"></sd-datepicker>
+      <sd-datepicker label="Label" size="lg" alignment="right" value="2025.11.15"></sd-datepicker>
     </div>`
 };
 
@@ -132,7 +132,7 @@ export const VisuallyDisabled = {
   render: () =>
     html` <div class="w-[370px]">
       <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
-        <sd-datepicker label="Label" placeholder="Visually disabled" visually-disabled></sd-datepicker>
+        <sd-datepicker label="Label" placeholder="Visually Disabled" visually-disabled></sd-datepicker>
       </sd-tooltip>
     </div>`
 };
