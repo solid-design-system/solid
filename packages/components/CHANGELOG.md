@@ -1,5 +1,44 @@
 # @solid-design-system/components
 
+## 5.16.1
+
+### Patch Changes
+
+- Addressed minor issues with the `sd-datepicker`: _[`#2585`](https://github.com/solid-design-system/solid/pull/2585) [`ffa4d08`](https://github.com/solid-design-system/solid/commit/ffa4d08c3bb5c9b8ba61e9c7f2fec13a65ac7de5) [@smfonseca](https://github.com/smfonseca)_
+  - Updated placeholder color to be reactive to theme.
+  - Disabled autocomplete.
+  - Improved `visually-disabled` handling and focus management.
+  - Fixed element width.
+
+### 📈 Stats
+* Uncompressed: 520 KB (+1 KB / +0%)
+* Gzipped: 122 KB (unchanged)
+
+## 5.16.0
+
+### Minor Changes
+
+- Introducing the brand new `sd-datepicker` component. _[`#2521`](https://github.com/solid-design-system/solid/pull/2521) [`5b493e5`](https://github.com/solid-design-system/solid/commit/5b493e5a29164a0efd0d537c9097fa6f472fc913) [@smfonseca](https://github.com/smfonseca)_
+
+  This component is used to enter or select a date or a range of dates using a calendar view.
+
+### 📈 Stats
+
+- Uncompressed: 519 KB (+40 KB / +8%)
+- Gzipped: 122 KB (+9 KB / +8%)
+
+## 5.15.13
+
+### Patch Changes
+
+- Fixed issue where the build process would generate empty chunk files, therefore, breaking the build. _[`#2567`](https://github.com/solid-design-system/solid/pull/2567) [`c1b32c7`](https://github.com/solid-design-system/solid/commit/c1b32c79bed00ccd2bd8d3d08112b1c74cb398da) [@mariohamann](https://github.com/mariohamann)_
+
+## 5.15.12
+
+### Patch Changes
+
+- Fixed `sd-tab-group` scroll controls to ensure they are active when it's possible to scroll left or right. _[`#2558`](https://github.com/solid-design-system/solid/pull/2558) [`57018bb`](https://github.com/solid-design-system/solid/commit/57018bb1c1c97137592758841252d855dcbd0c88) [@smfonseca](https://github.com/smfonseca)_
+
 ## 5.15.11
 
 ### Patch Changes

@@ -278,6 +278,8 @@ You can take a look at tests on Github. Users might be required to log in to [Ch
 In our security workflow, Renovate (GitHub App) automatically identifies and updates security issues in our project dependencies.
 Renovate also creates a “Dependency Dashboard” ticket to track all found updates. During each iteration, we plan and assign the dashboard ticket to a specific team member. The assigned team member has to update the described packages by running `pnpm update all`, creating a corresponding PR, and finally closing the ticket. This process ensures efficient handling of security updates while maintaining clear accountability within the team.
 
+To improve stability, both Renovate and pnpm are configured with a minimum release age of 5 days. This policy ensures that we only adopt dependencies with a proven level of maturity, increasing the overall security and robustness of our system. Note that this rule does not apply to vulnerability-related updates, which are considered critical and therefore handled with priority and urgency.
+
 ## Release Process
 
 > Note: To avoid cluttering the commit history and losing track of the GitHub and Azure DevOps context, we have relocated Azure pipelines to the [Azure DevOps Pipeline Repository](https://dev.azure.com/Union-Investment/SolidDesignSystem/_git/SolidDesignSystem-Pipelines?path=/&version=GBmain). The release and deployment process remains unchanged as outlined below.

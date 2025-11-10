@@ -1,5 +1,31 @@
 # @solid-design-system/docs
 
+## 1.31.2
+
+### Patch Changes
+
+- Updated `sd-datepicker` stories and screenshot tests. _[`#2585`](https://github.com/solid-design-system/solid/pull/2585) [`ffa4d08`](https://github.com/solid-design-system/solid/commit/ffa4d08c3bb5c9b8ba61e9c7f2fec13a65ac7de5) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.31.1
+
+### Patch Changes
+
+- Fixed component stories visualization inside Codepen where specific story styling was missing (eg. `sd-scrollable`). _[`#2563`](https://github.com/solid-design-system/solid/pull/2563) [`7115848`](https://github.com/solid-design-system/solid/commit/7115848124752ce2741a3e4db18231ae226c7b44) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.31.0
+
+### Minor Changes
+
+- Added template for multi select table _[`#2515`](https://github.com/solid-design-system/solid/pull/2515) [`7bc6502`](https://github.com/solid-design-system/solid/commit/7bc65025d4f225dc4b351294526b61b0febc3df1) [@balco0110](https://github.com/balco0110)_
+
+## 1.30.0
+
+### Minor Changes
+
+- Introducing the brand new `sd-datepicker` component. _[`#2521`](https://github.com/solid-design-system/solid/pull/2521) [`5b493e5`](https://github.com/solid-design-system/solid/commit/5b493e5a29164a0efd0d537c9097fa6f472fc913) [@smfonseca](https://github.com/smfonseca)_
+
+  This component is used to enter or select a date or a range of dates using a calendar view.
+
 ## 1.29.2
 
 ### Patch Changes
