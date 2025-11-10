@@ -1416,6 +1416,13 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       }
       weeks.push(row);
     }
+
+    const isRowOutsideMonth = (row: Date[]) => row.every(d => d.getMonth() !== monthRef.getMonth());
+
+    while (weeks.length > 0 && isRowOutsideMonth(weeks[weeks.length - 1])) {
+      weeks.pop();
+    }
+
     return { weeks };
   }
 
