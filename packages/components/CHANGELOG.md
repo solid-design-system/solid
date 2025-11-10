@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.16.2-next.1
+
+### Patch Changes
+
+- Fix `sd-video` play button issue where styles are being reset. _[`#2609`](https://github.com/solid-design-system/solid/pull/2609) [`9556c9f`](https://github.com/solid-design-system/solid/commit/9556c9fa38e20df410d67a7fde13b0cae3b052b9) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.16.2-next.0
 
 ### Patch Changes
