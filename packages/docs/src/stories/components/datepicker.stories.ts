@@ -76,7 +76,7 @@ export const Size = {
 export const Alignment = {
   render: () =>
     html` <div class="w-[370px]">
-      <sd-datepicker label="Label" size="lg" alignment="right" value="2025.11.15"></sd-datepicker>
+      <sd-datepicker label="Label" size="lg" alignment="right" value="2025.11.10"></sd-datepicker>
     </div>`
 };
 
@@ -171,7 +171,7 @@ export const Required = {
 export const Valid = {
   render: () => html`
     <div class="w-[370px]">
-      <sd-datepicker id="valid-example" label="Label" value="2025.09.15" style-on-valid=""></sd-datepicker>
+      <sd-datepicker id="valid-example" label="Label" value="2025.11.10" style-on-valid=""></sd-datepicker>
     </div>
     <script type="module">
       var validDatepicker = document.querySelector('#valid-example');
@@ -221,7 +221,7 @@ export const DisabledDays = {
     <div class="w-[370px]">
       <sd-datepicker
         label="Label"
-        value="2025.11.03"
+        value="2025.11.10"
         disabled-dates="2025.10.31,2025.11.11,2025.11.19,2025.11.20,2025.11.24"
       ></sd-datepicker>
     </div>
