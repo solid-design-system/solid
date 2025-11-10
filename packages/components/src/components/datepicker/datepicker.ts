@@ -1660,7 +1660,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                             ? 'out-month weekend-day text-neutral-500'
                             : 'out-month text-neutral-700'
                           : this.isInDisabledDates(day)
-                            ? 'out-month text-neutral-700'
+                            ? 'out-month text-neutral-500'
                             : this.disabledWeekends && isWeekendDay
                               ? 'weekend-day text-neutral-500'
                               : 'in-month text-primary',
