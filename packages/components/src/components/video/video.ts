@@ -164,7 +164,7 @@ export default class SdVideo extends SolidElement {
 
       ::slotted([slot='poster']),
       .play-pause-transition {
-        @apply transition-[opacity,transform] ease-in-out duration-medium scale-100;
+        @apply transition-[opacity,scale] ease-in-out duration-medium scale-100;
       }
 
       #default-play-icon,
