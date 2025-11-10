@@ -94,8 +94,11 @@ export default class SdRange extends SolidElement implements SolidFormControl {
   /** Disables the active track bar. */
   @property({ attribute: 'no-track-bar', type: Boolean, reflect: true }) noTrackBar = false;
 
-  /** Disables the thumbs tooltip. */
-  @property({ attribute: 'no-tooltip', type: Boolean, reflect: true }) noTooltip = false;
+  /** Defined the thumbs tooltip behaviour. */
+  @property({ attribute: 'tooltip', type: String, reflect: true }) tooltip:
+    | 'on-interaction'
+    | 'hidden'
+    | 'always-visible' = 'on-interaction';
 
   /** The default value of the form control. Primarily used for resetting the form control. */
   @defaultValue() defaultValue = '';
@@ -191,7 +194,10 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       const rangeId = +thumb.dataset.rangeId!;
       if (!this._rangeValues.has(rangeId)) continue;
       this.moveThumb(thumb, this._rangeValues.get(rangeId)!);
-      (thumb.parentElement as SdTooltip).show();
+
+      if (this.tooltip === 'always-visible') {
+        (thumb.parentElement as SdTooltip).show();
+      }
     }
 
     this.updateActiveTrack();
@@ -384,6 +390,10 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     thumb.dataset.pointerId = event.pointerId.toString();
     thumb.setPointerCapture(event.pointerId);
     thumb.classList.add('grabbed');
+
+    if (this.tooltip === 'on-interaction') {
+      await (thumb.parentElement as SdTooltip).show();
+    }
   }
 
   private onDragThumb(event: PointerEvent) {
@@ -443,6 +453,10 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     if (arraysDiffer(this._lastChangeValue, this._value)) {
       this._lastChangeValue = Array.from(this._value);
       this.emit('sd-change');
+    }
+
+    if (this.tooltip === 'on-interaction') {
+      await (thumb.parentElement as SdTooltip).hide();
     }
   }
 
@@ -571,7 +585,11 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       }
 
       return html`
-        <sd-tooltip hoist trigger="manual" disabled=${ifDefined(this.noTooltip ? true : undefined)}>
+        <sd-tooltip
+          hoist
+          trigger=${this.tooltip === 'on-interaction' ? 'focus' : 'manual'}
+          disabled=${ifDefined(this.tooltip === 'hidden' ? true : undefined)}
+        >
           <div
             id=${id}
             part="thumb"

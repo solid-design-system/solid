@@ -1,6 +1,8 @@
 ---
-'@solid-design-system/components': patch
+'@solid-design-system/components': major
 '@solid-design-system/docs': patch
 ---
 
-Updated `sd-range` tooltip to be always visible.
+Implemented `tooltip` attribute on `sd-range` to define the tooltip behaviour.
+
+Removed the `no-tooltip` attribute from `sd-range`.

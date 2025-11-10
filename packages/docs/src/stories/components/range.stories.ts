@@ -140,14 +140,19 @@ export const Ticks = {
 };
 
 /**
- * Use the `no-tooltip` attribute to disable the tooltip. By default, the tooltip is always visible.
+ * Use the `tooltip` attribute to define its behaviour:
+ * - on-interaction (default)
+ * - hidden
+ * - always-visible
+ *
+ * By default, the tooltip shows on interaction.
  */
 export const Tooltip = {
   render: (args: any) => {
     return html` <div class="min-h-20">
       ${generateTemplate({
         args,
-        constants: [{ type: 'attribute', name: 'no-tooltip', value: true }]
+        constants: [{ type: 'attribute', name: 'tooltip', value: 'always-visible' }]
       })}
     </div>`;
   }

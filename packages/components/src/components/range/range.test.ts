@@ -23,6 +23,13 @@ describe('<sd-range>', () => {
 
       expect(tooltip.content).to.equal('Value: 5');
     });
+
+    it('should be visible when tooltip is set as always-visible', async () => {
+      const el = await fixture<SdRange>(html`<sd-range tooltip="always-visible"></sd-range>`);
+      const tooltip = el.shadowRoot!.querySelector('sd-tooltip')!;
+
+      expect(tooltip.hasAttribute('open')).to.be.true;
+    });
   });
 
   describe('value methods', () => {
