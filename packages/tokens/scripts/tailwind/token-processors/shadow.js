@@ -50,12 +50,12 @@ export class ShadowTokenProcessor extends BaseTokenProcessor {
       );
     }
 
-    const shadowValue = ['y', 'x', 'spread', 'blur', 'color'].reduce(
+    const shadowValue = ['x', 'y', 'blur', 'spread', 'color'].reduce(
       (acc, key) => this.#reduceShadowValue(acc, key, properties[key]),
       ''
     );
 
-    const dropShadowValue = ['y', 'x', 'blur', 'color'].reduce(
+    const dropShadowValue = ['x', 'y', 'blur', 'color'].reduce(
       (acc, key) => this.#reduceShadowValue(acc, key, properties[key]),
       ''
     );

@@ -2512,7 +2512,7 @@
           },
           "blur": {
             "type": "float",
-            "value": "0.5"
+            "value": "1.5"
           },
           "color": {
             "description": "Used for tooltip",

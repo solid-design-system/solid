@@ -171,8 +171,8 @@
   --sd-color-text-white: var(--sd-color-white);
   --sd-color-warning: #bb8d20;
   --sd-color-white: #ffffff;
-  --sd-drop-shadow-sm:  0.5px 0.5px 0.5px #515151;
-  --sd-drop-shadow:  1px 0px 3px rgba(81, 81, 81, 0.75);
+  --sd-drop-shadow-sm:  0.5px 0.5px 1.5px #515151;
+  --sd-drop-shadow:  0px 1px 3px rgba(81, 81, 81, 0.75);
   --sd-flag--neutral-500-color-background: var(--sd-color-neutral-500);
   --sd-font-primary: 'Frutiger Neue fuer UI Web';
   --sd-font-weight-bold: 700;
@@ -215,8 +215,8 @@
   --sd-radius-none: 0;
   --sd-radius-sm: 0.125rem;
   --sd-radius: 0.25rem;
-  --sd-shadow-sm:  0.5px 0.5px 0px 0.5px #515151;
-  --sd-shadow:  1px 0px 0px 3px rgba(81, 81, 81, 0.75);
+  --sd-shadow-sm:  0.5px 0.5px 1.5px 0px #515151;
+  --sd-shadow:  0px 1px 3px 0px rgba(81, 81, 81, 0.75);
   --sd-sizing-10: 2.5rem;
   --sd-sizing-12: 3rem;
   --sd-sizing-16: 4rem;
