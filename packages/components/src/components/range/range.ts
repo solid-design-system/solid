@@ -637,7 +637,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
               id="label"
               part="form-control-label"
               aria-hidden=${hasLabel ? 'false' : 'true'}
-              class=${cx('w-full', hasLabel ? 'inline-block' : 'hidden')}
+              class=${cx('w-full text-start', hasLabel ? 'inline-block' : 'hidden')}
               @click=${this.focus}
             >
               <slot name="label">${this.label}</slot>
