@@ -171,7 +171,7 @@
   --sd-color-warning: #ffab00;
   --sd-color-white: #ffffff;
   --sd-drop-shadow-sm:  0.5px 0.5px 0.5px rgba(0, 0, 0, 0.65);
-  --sd-drop-shadow:  4px 0px 10px rgba(0, 0, 0, 0.1);
+  --sd-drop-shadow:  0px 4px 10px rgba(0, 0, 0, 0.1);
   --sd-flag--neutral-500-color-background: var(--sd-color-neutral-400);
   --sd-font-primary: 'GenosGFG';
   --sd-font-weight-bold: 700;
@@ -214,8 +214,8 @@
   --sd-radius-none: 0;
   --sd-radius-sm: 0.125rem;
   --sd-radius: 0.25rem;
-  --sd-shadow-sm:  0.5px 0.5px 0px 0.5px rgba(0, 0, 0, 0.65);
-  --sd-shadow:  4px 0px 0px 10px rgba(0, 0, 0, 0.1);
+  --sd-shadow-sm:  0.5px 0.5px 0.5px 0px rgba(0, 0, 0, 0.65);
+  --sd-shadow:  0px 4px 10px 0px rgba(0, 0, 0, 0.1);
   --sd-sizing-10: 2.5rem;
   --sd-sizing-12: 3rem;
   --sd-sizing-16: 4rem;
