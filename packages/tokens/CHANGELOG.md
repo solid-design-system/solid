@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 6.0.0-next.7
+
+### Patch Changes
+
+- Fix theme shadows generation. _[`#2608`](https://github.com/solid-design-system/solid/pull/2608) [`a051aea`](https://github.com/solid-design-system/solid/commit/a051aeaeccf68fd1af8839ff1d463fcc98b325e4) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 6.0.0-next.6
 
 ### Minor Changes

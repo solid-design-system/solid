@@ -129,7 +129,7 @@ export default class SdVideo extends SolidElement {
           @keydown=${this.handleKeydown}
           class=${cx(
             this.playing && 'pointer-events-none',
-            'group w-full h-full absolute top-0 left-0 z-30 text-primary hover:text-primary-500 sd-interactive sd-interactive--reset outline-hidden focus-visible:focus-outline'
+            'group w-full h-full absolute top-0 left-0 z-30 text-primary hover:text-primary-500 sd-interactive outline-hidden focus-visible:focus-outline'
           )}
         >
           <div
@@ -164,7 +164,7 @@ export default class SdVideo extends SolidElement {
 
       ::slotted([slot='poster']),
       .play-pause-transition {
-        @apply transition-[opacity,transform] ease-in-out duration-medium scale-100;
+        @apply transition-[opacity,scale] ease-in-out duration-medium scale-100;
       }
 
       #default-play-icon,
