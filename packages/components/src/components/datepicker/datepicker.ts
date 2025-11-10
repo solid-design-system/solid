@@ -1867,7 +1867,12 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                   ></sd-icon>`
                 : ''}
 
-              <sd-icon class=${cx(iconColor, iconMarginLeft, iconSize)} library="_internal" name="calendar"></sd-icon>
+              <sd-icon
+                class=${cx(iconColor, iconMarginLeft, iconSize)}
+                library="_internal"
+                name="calendar"
+                @click=${this.show}
+              ></sd-icon>
 
               ${this.renderCalendar()}
             </div>
