@@ -30,12 +30,9 @@ export const Default = {
         </sd-accordion>
         <sd-accordion summary="Cooperative financial network">
           <div class="flex flex-row gap-4 mx-auto">
-                <sd-skeleton class="w-32 h-32"></sd-skeleton>
                 <div class="flex flex-col gap-4 w-full">
                     <sd-skeleton class="h-8"></sd-skeleton>
-                    <sd-skeleton class="h-4"></sd-skeleton>
-                    <sd-skeleton class="h-4"></sd-skeleton>
-                    <sd-skeleton variant="circular" class="w-8 h-4"></sd-skeleton>
+                    <sd-skeleton class="w-20 h-8"></sd-skeleton>
                 </div>
             </div>
         </sd-accordion>
