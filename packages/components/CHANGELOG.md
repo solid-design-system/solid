@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.16.2-next.0
+
+### Patch Changes
+
+- Fix theme shadows generation. _[`#2608`](https://github.com/solid-design-system/solid/pull/2608) [`a051aea`](https://github.com/solid-design-system/solid/commit/a051aeaeccf68fd1af8839ff1d463fcc98b325e4) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.16.1-next.0
 
 ### Patch Changes
