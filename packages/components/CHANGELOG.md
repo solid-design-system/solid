@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.0.0-next.2
+
+### Patch Changes
+
+- Bump components next version. _[`#2612`](https://github.com/solid-design-system/solid/pull/2612) [`6d68731`](https://github.com/solid-design-system/solid/commit/6d68731f1e4c21c39cfe0b8e55133eed0909e6c6) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.16.2-next.1
 
 ### Patch Changes
