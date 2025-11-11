@@ -196,6 +196,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     super.connectedCallback();
     this.syncDisabledDatesSet();
     document.addEventListener('click', this.handleOutsideClick);
+    this.addEventListener('focusout', this.onFocusOut);
     this.updateComplete.then(() => {
       this.formControlController.updateValidity();
     });
@@ -231,6 +232,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   disconnectedCallback() {
     super.disconnectedCallback();
     this.removeEventListener('focusin', this.onFocusIn);
+    this.removeEventListener('focusout', this.onFocusOut);
     document.removeEventListener('click', this.handleOutsideClick);
   }
 
@@ -701,6 +703,18 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       this.emit('sd-datepicker-close');
     }
   }
+
+  private onFocusOut = (ev: FocusEvent) => {
+    const next = ev.relatedTarget as Node | null;
+
+    if (next && this.contains(next)) return;
+
+    if (this.open) {
+      this.hide();
+      this.emit('sd-datepicker-close');
+    }
+    this.hasFocus = false;
+  };
 
   show() {
     if (this.open || this.disabled || this.visuallyDisabled) {
@@ -1838,7 +1852,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 aria-invalid=${this.showInvalidStyle ? 'true' : 'false'}
                 aria-label=${this.range ? 'Select date range' : 'Select a date'}
                 class=${cx(
-                  'min-w-0 flex-grow focus:outline-none bg-transparent',
+                  'min-w-0 flex-grow focus:outline-none bg-transparent hover:cursor-pointer',
                   this.visuallyDisabled || this.disabled
                     ? 'placeholder:text-neutral-500 cursor-not-allowed'
                     : 'placeholder:text-neutral-700',
@@ -1877,7 +1891,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 : ''}
 
               <sd-icon
-                class=${(cx(iconColor, iconMarginLeft, iconSize), 'hover:cursor-pointer')}
+                class=${cx(iconColor, iconMarginLeft, iconSize, 'hover:cursor-pointer')}
                 library="_internal"
                 name="calendar"
                 @click=${this.show}
