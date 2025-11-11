@@ -6,10 +6,8 @@ const { argTypes, args, parameters } = storybookDefaults('sd-skeleton');
 storybookTemplate('sd-skeleton');
 
 /**
- * Used to do something cool. (Describe usage of component here.)
  *
- * **Related templates**:
- * - [Link to template](?path=/docs/templates-skeleton--docs)
+
  */
 export default {
   tags: ['!dev', 'autodocs'],
@@ -31,7 +29,7 @@ export default {
 export const Default = {
   render: () => {
     return html`
-      <div class="flex flex-row gap-4 w-[392px] mx-auto">
+      <div class="w-[392px]">
         <div class="flex flex-col gap-4 w-full">
           <sd-skeleton class="h-8"></sd-skeleton>
           <sd-skeleton class="h-4"></sd-skeleton>
