@@ -1663,9 +1663,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                           ? 'hover:bg-primary-500'
                           : 'hover:bg-primary-100 hover:text-primary-500',
                         !inMonth
-                          ? isWeekendDay
+                          ? this.disabledWeekends && isWeekendDay
                             ? 'out-month weekend-day text-neutral-500'
-                            : 'out-month text-neutral-700'
+                            : isWeekendDay
+                              ? 'out-month weekend-day text-neutral-700'
+                              : 'out-month text-neutral-700'
                           : this.isInDisabledDates(day)
                             ? 'out-month text-neutral-500'
                             : this.disabledWeekends && isWeekendDay
@@ -1875,7 +1877,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 : ''}
 
               <sd-icon
-                class=${cx(iconColor, iconMarginLeft, iconSize)}
+                class=${(cx(iconColor, iconMarginLeft, iconSize), 'hover:cursor-pointer')}
                 library="_internal"
                 name="calendar"
                 @click=${this.show}
