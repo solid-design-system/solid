@@ -1,5 +1,17 @@
 # @solid-design-system/components
 
+## 6.0.0-next.3
+
+### Major Changes
+
+- Implemented `tooltip` attribute on `sd-range` to define the tooltip behaviour. _[`#2607`](https://github.com/solid-design-system/solid/pull/2607) [`87d3e4d`](https://github.com/solid-design-system/solid/commit/87d3e4de892a0b7109ac0e9d68dd63a5bcaf8302) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Removed the `no-tooltip` attribute from `sd-range`.
+
+### 📈 Stats
+* Uncompressed: 560 KB (+1 KB / +0%)
+* Gzipped: 129 KB (+1 KB / +1%)
+
 ## 6.0.0-next.2
 
 ### Patch Changes

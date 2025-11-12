@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.31.3-next.0
+
+### Patch Changes
+
+- Updated `sd-range` tooltip story documentation. _[`#2607`](https://github.com/solid-design-system/solid/pull/2607) [`87d3e4d`](https://github.com/solid-design-system/solid/commit/87d3e4de892a0b7109ac0e9d68dd63a5bcaf8302) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.32.0-next.0
 
 ### Minor Changes

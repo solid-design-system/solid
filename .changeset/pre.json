@@ -12,8 +12,11 @@
     "@solid-design-system/versioning": "1.0.0"
   },
   "changesets": [
+    "blue-crabs-cry",
     "brave-pots-know",
     "busy-crabs-warn",
+    "curvy-memes-stand",
+    "dark-cougars-drive",
     "eight-baboons-post",
     "every-readers-stare",
     "famous-wolves-read",
