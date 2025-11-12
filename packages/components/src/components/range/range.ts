@@ -94,7 +94,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
   /** Disables the active track bar. */
   @property({ attribute: 'no-track-bar', type: Boolean, reflect: true }) noTrackBar = false;
 
-  /** Defined the thumbs tooltip behaviour. */
+  /** Defines the thumbs tooltip behaviour. */
   @property({ attribute: 'tooltip', type: String, reflect: true }) tooltip:
     | 'on-interaction'
     | 'hidden'
