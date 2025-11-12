@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.0.0-next.4
+
+### Patch Changes
+
+- Fixed theming background color issue on `sd-tooltip` arrow. _[`#2613`](https://github.com/solid-design-system/solid/pull/2613) [`c75ef18`](https://github.com/solid-design-system/solid/commit/c75ef180b55e89f6f730675c40e53dcaa6fd8979) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 6.0.0-next.3
 
 ### Major Changes
@@ -9,8 +15,9 @@
   Removed the `no-tooltip` attribute from `sd-range`.
 
 ### 📈 Stats
-* Uncompressed: 560 KB (+1 KB / +0%)
-* Gzipped: 129 KB (+1 KB / +1%)
+
+- Uncompressed: 560 KB (+1 KB / +0%)
+- Gzipped: 129 KB (+1 KB / +1%)
 
 ## 6.0.0-next.2
 
