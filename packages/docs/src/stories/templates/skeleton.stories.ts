@@ -13,9 +13,6 @@ export default {
   }
 };
 
-/**
- *
- */
 export const Default = {
   name: 'Accordion Group with Skeleton',
   render: () =>

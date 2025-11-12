@@ -5,10 +5,6 @@ import { storybookDefaults, storybookTemplate } from '../../../scripts/storybook
 const { argTypes, args, parameters } = storybookDefaults('sd-skeleton');
 storybookTemplate('sd-skeleton');
 
-/**
- *
-
- */
 export default {
   tags: ['!dev', 'autodocs'],
   title: 'Components/sd-skeleton',

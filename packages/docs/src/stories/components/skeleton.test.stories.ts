@@ -70,19 +70,40 @@ export const WrappingContent = {
   name: 'Wrapping Content',
   render: () => html`
     <div class="flex flex-col gap-4">
-      <!-- Text content -->
       <sd-skeleton>
-        <div style="font-size: 24px; font-weight: bold;">Large Heading Text</div>
+          <span slot="headline" class="sd-headline sd-headline--size-3xl">Terms of use</span>
+            <div class="items-start justify-start h-[300px] lg:h-[454px] space-y-5">
+              <h3 class="sd-headline sd-headline--size-lg">Important notices to our investors</h3>
+              <p class="sd-paragraph">
+                By accepting this document, you accept the following restrictions as binding on you:
+              </p>
+              <p class="sd-paragraph">
+                This investor information is intended exclusively for professional clients who are already invested in
+                the fund.
+                <sd-link href="http://institutional@union-investment.de">institutional@union-investment.de</sd-link>,
+                </p>
+              </p>
+            <sd-button class="close-dialog" variant="secondary" size="lg" type="button" aria-label="Close">
+              <sd-icon name="system/log-out" slot="icon-left"></sd-icon>
+              Exit portal
+            </sd-button>
+            <sd-button class="download" variant="secondary" size="lg" type="button">
+              <sd-icon name="system/download" slot="icon-left"></sd-icon>
+              Download PDF
+            </sd-button>
+            <sd-button class="close-dialog" variant="primary" size="lg" type="button"> Accept terms of use </sd-button>
+          </div>
       </sd-skeleton>
 
-      <!-- Small text -->
       <sd-skeleton>
-        <div style="font-size: 14px;">Small body text content</div>
+        <div class="sd-leadtext">
+          Large Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
+          phasellus dui vel id.
+        </div>
       </sd-skeleton>
 
-      <!-- Button-like content -->
       <sd-skeleton>
-        <div style="width: 120px; height: 40px; padding: 10px 20px;">Button</div>
+        <sd-button variant="primary">Primary</sd-button>
       </sd-skeleton>
     </div>
   `

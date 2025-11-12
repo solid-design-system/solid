@@ -8,7 +8,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Skeleton loaders are used as placeholder previews of content before data gets loaded.
  * @documentation https://solid.union-investment.com/[storybook-link]/skeleton
  * @status stable
- * @since 3.0
+ * @since 5.16.1
  *
  * @slot - The skeleton's content. When provided, adapts to the content's dimensions. When empty, displays according to the variant property.
  *
@@ -18,6 +18,8 @@ import SolidElement from '../../internal/solid-element';
 export default class SdSkeleton extends SolidElement {
   /** The shape variant when used without slotted content. */
   @property({ type: String, reflect: true }) variant: 'rectangular' | 'circular' = 'rectangular';
+  /** Show content when loaded */
+  @property({ type: Boolean, reflect: true }) showContent = false;
 
   render() {
     return html`
@@ -44,7 +46,18 @@ export default class SdSkeleton extends SolidElement {
       }
 
       ::slotted(*) {
-        @apply invisible;
+        visibility: hidden;
+      }
+
+      :host([show-content]) ::slotted(*) {
+        visibility: visible;
+      }
+
+      :host([show-content]) [part='base'] {
+        animation: none;
+        background: transparent;
+        background-color: transparent;
+        display: contents;
       }
     `
   ];
