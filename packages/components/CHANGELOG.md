@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.0.0-next.6
+
+### Patch Changes
+
+- Fix`sd-accordion` border margin-top when using preflight. _[`#2616`](https://github.com/solid-design-system/solid/pull/2616) [`cc19dec`](https://github.com/solid-design-system/solid/commit/cc19decb97490275bdb401316d51443b115b134a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 6.0.0-next.5
 
 ### Patch Changes
