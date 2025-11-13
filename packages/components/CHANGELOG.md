@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.0.0-next.5
+
+### Patch Changes
+
+- Fix accordion group margin for vb _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`e9d350f`](https://github.com/solid-design-system/solid/commit/e9d350f0c5f88b71f74fb5ae44f7b4027bd9dcd1) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 6.0.0-next.4
 
 ### Patch Changes
