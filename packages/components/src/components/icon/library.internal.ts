@@ -177,6 +177,7 @@ const internalLibrary: IconLibrary = {
       const svg = window.getComputedStyle(element).getPropertyValue(`--sd-icon--${name}`);
 
       if (svg) {
+        // @eslint-disable-next-line no-useless-escape
         return `data:image/svg+xml,${encodeURIComponent(svg.replaceAll(`\\`, '').replaceAll('"', "\'"))}`;
       }
     }

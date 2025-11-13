@@ -130,6 +130,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     return isUtility ? name : `${processed.path[0]}-${name}`;
   }
 
+  // eslint-disable-next-line no-unused-private-class-members
   #getColorFromToken(token, variant, dictionary) {
     return token.reduce(
       (obj, key) => (obj && obj[key] !== undefined ? obj[key] : undefined),

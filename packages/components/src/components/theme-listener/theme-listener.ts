@@ -1,7 +1,7 @@
 import { css } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
-import SolidElement from '../../internal/solid-element';
 import { ThemeObserver } from '../../internal/theme-observer';
+import SolidElement from '../../internal/solid-element';
 
 /**
  * @summary Theme listener is a utility that listens to theme changes and triggers an event.
