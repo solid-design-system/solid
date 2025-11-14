@@ -1407,6 +1407,14 @@
             "type": "color",
             "value": "#ffffff"
           }
+        },
+        "vb": {
+          "from-ultra": {
+            "hover": {
+              "type": "color",
+              "value": "rgba(0, 102, 179, 0.05)"
+            }
+          }
         }
       },
       "font-family": {
@@ -5857,7 +5865,7 @@
         "neutral": {
           "100": {
             "type": "color",
-            "value": "{core.vb.from-code.grey.100}"
+            "value": "{core.vb.from-figma.vb.from-ultra.hover}"
           },
           "200": {
             "type": "color",
