@@ -8,7 +8,7 @@ import SolidElement from '../../internal/solid-element';
  * @summary Skeleton loaders are used as placeholder previews of content before data gets loaded.
  * @documentation https://solid.union-investment.com/[storybook-link]/skeleton
  * @status stable
- * @since 5.16.1
+ * @since 5.17.0
  *
  * @slot - The skeleton's content. When provided, adapts to the content's dimensions. When empty, displays according to the variant property.
  *
