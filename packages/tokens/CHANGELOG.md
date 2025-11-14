@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 6.0.0-next.8
+
+### Patch Changes
+
+- Sync packages versions. _[`#2618`](https://github.com/solid-design-system/solid/pull/2618) [`c87b6ef`](https://github.com/solid-design-system/solid/commit/c87b6ef3c8db38b6add6cb87a712a50bc2068935) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 6.0.0-next.7
 
 ### Patch Changes
