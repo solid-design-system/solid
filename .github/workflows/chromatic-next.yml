@@ -1,8 +1,10 @@
 # .github/workflows/chromatic.yml
 
 # Workflow name
-name: 'Chromatic (Main)'
-
+name: 'Chromatic (Next)'
+permissions:
+  contents: read
+  
 # Event for the workflow
 on:
   push:
