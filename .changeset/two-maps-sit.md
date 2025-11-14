@@ -1,7 +1,7 @@
 ---
-'@solid-design-system/components': minor
-'@solid-design-system/styles': minor
-'@solid-design-system/tokens': minor
+'@solid-design-system/components': patch
+'@solid-design-system/styles': patch
+'@solid-design-system/tokens': patch
 ---
 
 Sync packages versions.
