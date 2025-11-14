@@ -1,5 +1,25 @@
 # @solid-design-system/tokens
 
+## 6.0.0-next.7
+
+### Patch Changes
+
+- Fix theme shadows generation. _[`#2608`](https://github.com/solid-design-system/solid/pull/2608) [`a051aea`](https://github.com/solid-design-system/solid/commit/a051aeaeccf68fd1af8839ff1d463fcc98b325e4) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 6.0.0-next.6
+
+### Minor Changes
+
+- Implement shadow tokens generation according to Figma. _[`#2602`](https://github.com/solid-design-system/solid/pull/2602) [`ad2ae5b`](https://github.com/solid-design-system/solid/commit/ad2ae5b017c3e988dcb912832284e6db93fa5369) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 6.0.0-next.5
+
+### Patch Changes
+
+- Fixed semantic tokens generation to enable multi theming on the same page. _[`#2596`](https://github.com/solid-design-system/solid/pull/2596) [`854414e`](https://github.com/solid-design-system/solid/commit/854414ed0a2105e5d44f9b83a6417d12f2fae9b0) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Added `:root` selector to all theme files.
+
 ## 6.0.0-next.4
 
 ### Patch Changes

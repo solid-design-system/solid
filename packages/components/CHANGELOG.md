@@ -1,5 +1,60 @@
 # @solid-design-system/components
 
+## 6.0.0-next.6
+
+### Patch Changes
+
+- Fix`sd-accordion` border margin-top when using preflight. _[`#2616`](https://github.com/solid-design-system/solid/pull/2616) [`cc19dec`](https://github.com/solid-design-system/solid/commit/cc19decb97490275bdb401316d51443b115b134a) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 6.0.0-next.5
+
+### Patch Changes
+
+- Fix accordion group margin for vb _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`e9d350f`](https://github.com/solid-design-system/solid/commit/e9d350f0c5f88b71f74fb5ae44f7b4027bd9dcd1) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 6.0.0-next.4
+
+### Patch Changes
+
+- Fixed theming background color issue on `sd-tooltip` arrow. _[`#2613`](https://github.com/solid-design-system/solid/pull/2613) [`c75ef18`](https://github.com/solid-design-system/solid/commit/c75ef180b55e89f6f730675c40e53dcaa6fd8979) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 6.0.0-next.3
+
+### Major Changes
+
+- Implemented `tooltip` attribute on `sd-range` to define the tooltip behaviour. _[`#2607`](https://github.com/solid-design-system/solid/pull/2607) [`87d3e4d`](https://github.com/solid-design-system/solid/commit/87d3e4de892a0b7109ac0e9d68dd63a5bcaf8302) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Removed the `no-tooltip` attribute from `sd-range`.
+
+### 📈 Stats
+
+- Uncompressed: 560 KB (+1 KB / +0%)
+- Gzipped: 129 KB (+1 KB / +1%)
+
+## 6.0.0-next.2
+
+### Patch Changes
+
+- Bump components next version. _[`#2612`](https://github.com/solid-design-system/solid/pull/2612) [`6d68731`](https://github.com/solid-design-system/solid/commit/6d68731f1e4c21c39cfe0b8e55133eed0909e6c6) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 5.16.2-next.1
+
+### Patch Changes
+
+- Fix `sd-video` play button issue where styles are being reset. _[`#2609`](https://github.com/solid-design-system/solid/pull/2609) [`9556c9f`](https://github.com/solid-design-system/solid/commit/9556c9fa38e20df410d67a7fde13b0cae3b052b9) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 5.16.2-next.0
+
+### Patch Changes
+
+- Fix theme shadows generation. _[`#2608`](https://github.com/solid-design-system/solid/pull/2608) [`a051aea`](https://github.com/solid-design-system/solid/commit/a051aeaeccf68fd1af8839ff1d463fcc98b325e4) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 5.16.1-next.0
+
+### Patch Changes
+
+- Fix broken sd-icon load with multi theming. _[`#2595`](https://github.com/solid-design-system/solid/pull/2595) [`89d7ac7`](https://github.com/solid-design-system/solid/commit/89d7ac7fbe51b382544765de6e08cb9be6c9e9fc) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 5.16.0
 
 ### Minor Changes
@@ -9,20 +64,24 @@
   This component is used to enter or select a date or a range of dates using a calendar view.
 
 ### 📈 Stats
-* Uncompressed: 519 KB (+40 KB / +8%)
-* Gzipped: 122 KB (+9 KB / +8%)
+
+- Uncompressed: 519 KB (+40 KB / +8%)
+- Gzipped: 122 KB (+9 KB / +8%)
 
 ### 📈 Stats
-* Uncompressed: 4036 KB (+3517 KB / +678%)
-* Gzipped: 621 KB (+499 KB / +409%)
+
+- Uncompressed: 4036 KB (+3517 KB / +678%)
+- Gzipped: 621 KB (+499 KB / +409%)
 
 ### 📈 Stats
-* Uncompressed: 564 KB (-3472 KB / -86%)
-* Gzipped: 128 KB (-493 KB / -79%)
+
+- Uncompressed: 564 KB (-3472 KB / -86%)
+- Gzipped: 128 KB (-493 KB / -79%)
 
 ### 📈 Stats
-* Uncompressed: 559 KB (-5 KB / -1%)
-* Gzipped: 128 KB (unchanged)
+
+- Uncompressed: 559 KB (-5 KB / -1%)
+- Gzipped: 128 KB (unchanged)
 
 ## 5.15.13
 

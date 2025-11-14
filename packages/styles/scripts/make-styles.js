@@ -11,11 +11,15 @@ const { outdir, minify } = commandLineArgs([
 ]);
 
 const files = await globby('./src/**/*.css');
-const from = path.join(fileURLToPath(import.meta.url), '../../src');
+const from = path.join(fileURLToPath(import.meta.url), '../..');
 
 for (const file of files) {
   const css = await fs.readFile(file, 'utf-8');
-  const result = await processTailwind(css, { from, minify: minify === 'true' });
+  const result = await processTailwind(css, {
+    from: path.join(from, file),
+    minify: minify === 'true',
+    resolveImports: true
+  });
 
   const outputPath = file.replace('src', outdir);
   const outputDir = dirname(outputPath);

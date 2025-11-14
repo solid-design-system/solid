@@ -40,7 +40,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     const coreColors = this.#getCoreColors(dictionary, variant);
     if (this.skip.includes(path[0])) return [];
 
-    const isUtility = this.#isUtilityToken(path);
+    const isUtility = this.isUtilityToken(path);
     const isComponent = !isUtility && path[0].startsWith('components');
     if (!isUtility && !isComponent) return [];
 
@@ -93,33 +93,18 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       this.processedHistory.push(variable);
     }
 
-    if (!isUtility && variant !== options.defaultTheme) {
-      const defaultPrimitiveColor = this.#getColorFromToken(path, options.defaultTheme, dictionary);
-      const defaultPrimitiveToken = this.#getCoreTokenFromColor(
-        defaultPrimitiveColor,
-        options.defaultTheme,
-        dictionary
-      );
+    if (!isUtility) {
+      const coreToken = this.#getCoreTokenFromColor(token.value, variant, dictionary);
 
-      const variantColor = this.#getColorFromToken(
-        ['utilities', ...(defaultPrimitiveToken ?? [])],
-        variant,
-        dictionary
-      );
+      const variable = {
+        type: 'color',
+        name: this.cssprefix(processed.name),
+        value: coreToken ? this.cssvar(coreToken.join('-')) : token.value,
+        variant
+      };
 
-      if (variantColor !== token.value) {
-        const coreToken = this.#getCoreTokenFromColor(token.value, variant, dictionary);
-
-        const variable = {
-          type: 'color',
-          name: this.cssprefix(processed.name),
-          value: coreToken ? this.cssvar(coreToken.join('-')) : token.value,
-          variant
-        };
-
-        cssvariables.push(variable);
-        this.processedHistory.push(variable);
-      }
+      cssvariables.push(variable);
+      this.processedHistory.push(variable);
     }
 
     return cssvariables;
@@ -129,26 +114,23 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     this.processedHistory = [];
   }
 
-  #isUtilityToken(token) {
-    return token?.[0] === 'utilities';
-  }
-
   #isCoreToken(token) {
     return (
-      this.#isUtilityToken(token) &&
+      this.isUtilityToken(token) &&
       !['icon-fill', 'border', 'background', 'text', 'background-transparent'].includes(token?.[2])
     );
   }
 
   #getFallbackColor(token) {
     const processed = this.processTokenPath(token);
-    const isUtility = this.#isUtilityToken(processed.path);
+    const isUtility = this.isUtilityToken(processed.path);
 
     const fallback = processed.path.length > 4 ? processed.path.slice(3) : processed.path.slice(2);
     const name = `color-${fallback.join('-').replace('-default', '')}`;
     return isUtility ? name : `${processed.path[0]}-${name}`;
   }
 
+  // eslint-disable-next-line no-unused-private-class-members
   #getColorFromToken(token, variant, dictionary) {
     return token.reduce(
       (obj, key) => (obj && obj[key] !== undefined ? obj[key] : undefined),

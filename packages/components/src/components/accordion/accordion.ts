@@ -242,7 +242,7 @@ export default class SdAccordion extends SolidElement {
       }
 
       [part='base'] {
-        border-block-width: var(--sd-accordion-border-width, var(--sd-spacing-0\.25));
+        border-block-width: var(--sd-accordion-border-width);
       }
 
       [part='summary-icon'] {
