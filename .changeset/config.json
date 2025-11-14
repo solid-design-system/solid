@@ -7,7 +7,7 @@
     }
   ],
   "commit": false,
-  "fixed": [],
+  "fixed": [["@solid-design-system/components", "@solid-design-system/styles"]],
   "linked": [],
   "access": "public",
   "baseBranch": "main",
