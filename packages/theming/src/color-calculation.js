@@ -30,7 +30,7 @@ const calculateLuminanceMap = colorObject => {
     for (const scale in colorObject[colorType]) {
       if (!defaultLuminanceMap[scale]) continue;
 
-      const luminance = chroma(colorObject[colorType][scale]).luminance();
+      const luminance = chroma(`rgba(${colorObject[colorType][scale]})`).luminance();
       luminanceMap[scale] = luminance;
     }
 
@@ -96,12 +96,12 @@ const adjustLuminanceMap = (color, luminanceMap, forcedShade) => {
 };
 
 export const calculateColorsForType = (type, theme, colors, useNormalizedLuminanceMap, useForcedShades) => {
-  const color = colors[type];
+  const color = `rgba(${colors[type]})`;
   const luminanceMaps = calculateLuminanceMap(getThemeColors(theme));
 
   if (!color || !chroma.valid(color)) return '';
 
-  const hex = chroma(color).hex();
+  const hex = chroma(color);
   const scalesForType = Object.keys(luminanceMaps[type]);
 
   const selectedLuminanceMap = useNormalizedLuminanceMap ? defaultLuminanceMap : luminanceMaps[type];
@@ -124,11 +124,11 @@ export const calculateColorsForType = (type, theme, colors, useNormalizedLuminan
   scale.forEach((currentColor, index) => {
     const scaleValue = scalesForType[index];
     if (scaleValue === 'DEFAULT') {
-      const colorHex = chroma(currentColor).hex();
-      tokens += `  --sd-color-${type}: ${colorHex};\n`;
+      const rgba = chroma(currentColor).rgba();
+      tokens += `  --sd-color-${type}: ${rgba};\n`;
     } else {
-      const colorHex = chroma(currentColor).hex();
-      tokens += `  --sd-color-${type}${`-${scaleValue}`}: ${colorHex};\n`;
+      const rgba = chroma(currentColor).rgba();
+      tokens += `  --sd-color-${type}-${scaleValue}: ${rgba};\n`;
     }
   });
 
@@ -159,7 +159,7 @@ export const calculateColorsAsCss = (colors, theme, useNormalizedLuminanceMap, u
   Object.keys(colors).forEach(type => {
     if (type === 'black' || type === 'white') {
       // Add the color directly without generating shades
-      allTokens += `  --sd-color-${type}: ${chroma(colors[type]).hex()};\n`;
+      allTokens += `  --sd-color-${type}: ${colors[type]};\n`;
     } else {
       allTokens += calculateColorsForType(type, theme, colors, useNormalizedLuminanceMap, useForcedShades);
     }
@@ -167,4 +167,24 @@ export const calculateColorsAsCss = (colors, theme, useNormalizedLuminanceMap, u
 
   allTokens += '}';
   return allTokens;
+};
+
+export const rgbaToHex = value => {
+  try {
+    if (value.startsWith('rgba')) {
+      return chroma(value).hex();
+    }
+
+    return chroma(`rgba(${value})`).hex();
+  } catch {
+    return value;
+  }
+};
+
+export const hexToRgba = value => {
+  try {
+    return chroma(value).rgba().join(',');
+  } catch {
+    return value;
+  }
 };
