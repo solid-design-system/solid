@@ -1,5 +1,8 @@
 name: Sync to Azure
 
+permissions:
+  contents: read
+
 on:
   workflow_run:
     workflows: ["Release new main version"]
