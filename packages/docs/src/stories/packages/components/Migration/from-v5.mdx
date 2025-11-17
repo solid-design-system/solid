@@ -43,18 +43,28 @@ You must now import at least one theme (via NPM or CDN) to ensure components ren
   </sd-tab-panel>
 </sd-tab-group>
 
-## sd-range
+## Removed enforced headline styling from `sd-teaser-media`.
 
-The attribute `no-tooltip` has been removed in favour of the new `tooltip` attribute. Use the `tooltip` attribute to define the sd-range tooltip behaviour.
+Removed this CSS rule that used to force styles into whatever is slotted into slot="headline"
 
-**Before:**
-
-```html
-<sd-range no-tooltip></sd-range>
+```css
+::slotted([slot='headline']) { '@apply font-bold !m-0 !text-lg;'}
 ```
 
-**After:**
+Result: `sd-teaser-media` no longer forces font-weight, margin or test size on headline elements. Headline sizing/spacing must now be provided by the user.
+
+**Before**:
 
 ```html
-<sd-range tooltip="hidden"></sd-range>
+<sd-teaser-media>
+  <h3 slot="headline" class="sd-headline sd-headline--inverted">Market turnaround in sight</h3>
+</sd-teaser-media>
+```
+
+**After**:
+
+```html
+<sd-teaser-media>
+  <h3 slot="headline" class="sd-headline sd-headline--inverted sd-headline--size-lg">Market turnaround in sight</h3>
+</sd-teaser-media>
 ```
