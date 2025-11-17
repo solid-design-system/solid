@@ -53,7 +53,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       cssvariables.push({
         type: processed.type,
         name: processed.name,
-        value: this.cssvar(cssvar),
+        value: `rgba(${this.cssvar(cssvar)})`,
         properties: processed.properties,
         variant: 'default'
       });
@@ -74,11 +74,15 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       const coreToken = path.slice(1);
       coreToken.splice(1, 1);
 
-      const replacement = Object.values(coreColors).find(core => core.value === color);
+      const replacement = Object.values(coreColors)
+        .find(core => core.value === color)
+        ?.path.join('-')
+        .replace('-default', '');
+
       const variable = {
         type: 'color',
         name: this.cssprefix(processed.cssvar),
-        value: replacement ? this.cssvar(this.cssprefix(replacement.path.join('-').replace('-default', ''))) : color,
+        value: replacement ? this.cssvar(this.cssprefix(replacement)) : color,
         variant
       };
 
@@ -151,7 +155,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       .replaceAll('-__', '__');
 
     const coreToken = this.#getCoreTokenFromColor(token.value, variant, dictionary)?.join('-');
-    const value = this.cssvar(name, coreToken ? this.cssvar(coreToken) : token.value);
+    const value = `rgba(${this.cssvar(name, coreToken ? `rgba(${this.cssvar(coreToken)})` : token.value)})`;
 
     for (const [property, cssproperty] of Object.entries(this.semantic)) {
       if (name.includes(property)) {
@@ -159,7 +163,11 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       }
     }
 
-    return { type: 'component', name: `--${name}`, properties: `@utility ${name} {\n  background-color: ${value};\n}` };
+    return {
+      type: 'component',
+      name: `--${name}`,
+      properties: `@utility ${name} {\n  background-color: ${value};\n}`
+    };
   }
 
   #getCoreColors(dictionary, variant) {
@@ -188,6 +196,6 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     const g = (num >> 8) & 255;
     // eslint-disable-next-line no-bitwise
     const b = num & 255;
-    return [r, g, b, 1].join(' ');
+    return [r, g, b].join(' ');
   }
 }
