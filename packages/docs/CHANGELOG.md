@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.31.3-next.1
+
+### Patch Changes
+
+- Fixed the restriction of changing the font size and margin for headline in `sd-teased-media`. _[`#2405`](https://github.com/solid-design-system/solid/pull/2405) [`22c42e7`](https://github.com/solid-design-system/solid/commit/22c42e72319e4e409735420cdab52092fe6b74b2) [@balco0110](https://github.com/balco0110)_
+
 ## 1.31.3-next.0
 
 ### Patch Changes
