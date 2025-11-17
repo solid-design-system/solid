@@ -44,9 +44,9 @@ export const Internal = {
         templateBackgrounds: {
           alternate: 'x',
           colors: [
-            'var(--sd-color-background-white)',
-            'var(--sd-color-background-white)',
-            'var(--sd-color-background-primary)'
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-background-primary))'
           ]
         }
       },

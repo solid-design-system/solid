@@ -278,19 +278,19 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
        * For more details, see the 'Consistency with Figma' section in the **CONTRIBUTING.md**.
        */
       :host([disabled][checked]) #control {
-        border-color: var(--sd-color-background-neutral-500, var(--sd-color-neutral-500));
+        border-color: rgba(var(--sd-color-background-neutral-500, rgba(var(--sd-color-neutral-500))));
       }
 
       :host(:not([disabled]):not([checked])) #input:not([aria-invalid='true']) ~ #control #thumb {
-        background-color: var(--sd-color-icon-fill-neutral-800, var(--sd-color-neutral-800));
+        background-color: rgba(var(--sd-color-icon-fill-neutral-800, rgba(var(--sd-color-neutral-800))));
       }
 
       :host([checked]) [part='thumb'] {
-        background-color: var(--sd-color-icon-fill-white, var(--sd-color-white));
+        background-color: rgba(var(--sd-color-icon-fill-white, rgba(var(--sd-color-white))));
       }
 
       :host([disabled]:not([checked])) [part='thumb'] {
-        background-color: var(--sd-color-icon-fill-neutral-500, var(--sd-color-neutral-500));
+        background-color: rgba(var(--sd-color-icon-fill-neutral-500, rgba(var(--sd-color-neutral-500))));
       }
     `
   ];

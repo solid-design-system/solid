@@ -41,7 +41,7 @@ export const SdStatusAssets = {
       },
       constants: [{ type: 'attribute', name: 'library', value: 'sd-status-assets' }],
       options: {
-        templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'var(--sd-color-primary)'] }
+        templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'rgba(var(--sd-color-primary))'] }
       },
       args
     })

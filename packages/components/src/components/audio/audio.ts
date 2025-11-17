@@ -293,7 +293,7 @@ export default class SdAudio extends SolidElement {
     // extracts the numbers from the rgb string
     const result = rgbString.match(/\d+/g);
 
-    if (result && result.length === 3) {
+    if (result?.length === 3) {
       const r = parseInt(result[0]);
       const g = parseInt(result[1]);
       const b = parseInt(result[2]);
@@ -556,7 +556,7 @@ export default class SdAudio extends SolidElement {
       :host([inverted]) sd-range::part(thumb) {
         @apply outline-white;
 
-        background-color: var(--sd-color-border-white, var(--sd-color-white));
+        background-color: rgba(var(--sd-color-border-white, rgba(var(--sd-color-white))));
       }
 
       :host([animated]) sd-range::part(track) {
@@ -564,11 +564,11 @@ export default class SdAudio extends SolidElement {
       }
 
       :host([inverted]:not([animated])) sd-range::part(track) {
-        background-color: var(--sd-color-border-primary-400, var(--sd-color-primary-400));
+        background-color: rgba(var(--sd-color-border-primary-400, rgba(var(--sd-color-primary-400))));
       }
 
       :host([inverted]:not([animated])) sd-range::part(active-track) {
-        background-color: var(--sd-color-border-white, var(--sd-color-white));
+        background-color: rgba(var(--sd-color-border-white, rgba(var(--sd-color-white))));
       }
     `
   ];

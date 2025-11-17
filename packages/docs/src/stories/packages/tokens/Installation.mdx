@@ -217,7 +217,7 @@ They act as fallbacks for all other variables.
 Changing the primary color globally:
 
 ```css
---sd-color-primary: #ff0055;
+--sd-color-primary: 255 0 85;
 ```
 
 This change will affect every component that uses the primary color.
@@ -233,7 +233,7 @@ These let you target specific use cases without interfering with other parts tha
 Example:
 
 ```css
---background-color-primary: #ffe6ee;
+--background-color-primary: 255 230 238;
 ```
 
 This overrides only the “primary background” usages, falling back to the primitive tokens otherwise.
@@ -244,7 +244,7 @@ If you want to customize variables for a specific component only, you can overri
 Example, changing only the primary background color of the `sd-button` component:
 
 ```css
---sd-button--primary--default--default-color-background: #ff0055;
+--sd-button--primary--default--default-color-background: 255 0 85;
 ```
 
 <blockquote>The list of available component variables is documented on each component’s `docs` page.</blockquote>
@@ -269,7 +269,7 @@ Example:
 
 ```css
 sd-button {
-  --background-color-primary: #ff0055;
+  --background-color-primary: 255 0 85;
 }
 ```
 
@@ -294,8 +294,8 @@ Example:
 
 ```css
 .my-special-element {
-  background-color: var(--sd-color-background-primary-100);
-  color: var(--sd-color-text-black);
+  background-color: rgba(var(--sd-color-background-primary-100));
+  color: rgba(var(--sd-color-text-black));
 }
 ```
 
@@ -311,8 +311,8 @@ Example:
 
 ```scss
 .my-special-element {
-  background-color: $sd-color-background-primary-100;
-  color: $sd-color-text-black;
+  background-color: rgba($sd-color-background-primary-100);
+  color: rgba($sd-color-text-black);
 }
 ```
 

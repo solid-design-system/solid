@@ -154,13 +154,14 @@ export default class SdTeaserMedia extends SolidElement {
        * For more details, see the 'Consistency with Figma' section in the **CONTRIBUTING.md**.
        */
       :host([variant='gradient-light']) .bg-gradient-to-t {
-        --sd-color-background-white: var(--sd-informational-gradient--white-color-background, var(--sd-color-white));
+        --sd-color-background-white: rgba(
+          var(--sd-informational-gradient--white-color-background, rgba(var(--sd-color-white)))
+        );
       }
 
       :host([variant='gradient-dark']) .bg-gradient-to-t {
-        --sd-color-background-primary-800: var(
-          --sd-informational-gradient--primary-800-color-background,
-          var(--sd-color-primary-800)
+        --sd-color-background-primary-800: rgba(
+          var(--sd-informational-gradient--primary-800-color-background, rgba(var(--sd-color-primary-800)))
         );
       }
     `
