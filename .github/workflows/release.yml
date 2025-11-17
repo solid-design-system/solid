@@ -40,7 +40,7 @@ jobs:
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
 
       - name: Release
-        run: node ./scripts/release-main.mjs
+        run: GH_TOKEN=${{secrets.PAT_RELEASE_KARL}} node ./scripts/release-main.mjs
 
   publish-next:
     name: Release new next version
@@ -67,4 +67,4 @@ jobs:
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
 
       - name: Release next
-        run: node ./scripts/release-next.mjs
+        run: GH_TOKEN=${{secrets.PAT_RELEASE_KARL}} node ./scripts/release-next.mjs
