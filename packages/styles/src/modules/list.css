@@ -45,7 +45,7 @@
       > li {
         counter-increment: item;
         &::marker {
-          content: counters(item, '.', decimal) '. ';
+          content: counter(item, decimal) '. ';
         }
         /* Level 2 */
         > ol {
@@ -54,7 +54,7 @@
           > li {
             counter-increment: subitem;
             &::marker {
-              content: counters(item, '.', decimal) '.' counters(subitem, '.', decimal) '. ';
+              content: counter(item, decimal) '. ' counter(subitem, decimal) '. ';
             }
             /* Level 3 */
             > ol {
@@ -63,8 +63,7 @@
               > li {
                 counter-increment: subsubitem;
                 &::marker {
-                  content: counters(item, '.', decimal) '.' counters(subitem, '.', decimal) '.'
-                    counters(subsubitem, '.', decimal) '. ';
+                  content: counter(item, decimal) '. ' counter(subitem, decimal) '. ' counter(subsubitem, decimal) '. ';
                 }
               }
             }
