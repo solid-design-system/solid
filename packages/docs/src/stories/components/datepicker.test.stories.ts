@@ -118,7 +118,7 @@ export const DisabledDates = {
           ]
         }
       },
-      args
+      args: overrideArgs({ type: 'attribute', name: 'value', value: '2025.11.10' }, args)
     });
   }
 };
