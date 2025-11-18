@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.31.3
+
+### Patch Changes
+
+- Sync `sd-datepicker` stories with Figma. _[`#2611`](https://github.com/solid-design-system/solid/pull/2611) [`dba5493`](https://github.com/solid-design-system/solid/commit/dba5493d077bfc390728377722b4c2f0f4453f1c) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.31.2
 
 ### Patch Changes
