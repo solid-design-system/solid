@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 6.0.0-next.10
+
+### Patch Changes
+
+- Adjusted theme generator to support rgba instead of hex. _[`#2621`](https://github.com/solid-design-system/solid/pull/2621) [`5a3a5a5`](https://github.com/solid-design-system/solid/commit/5a3a5a575a2fab8cd5e8c56533e215ae94a5aaab) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+* Uncompressed: 561 KB (+2 KB / +0%)
+* Gzipped: 129 KB (unchanged)
+
 ## 6.0.0-next.9
 
 ### Patch Changes
@@ -7,8 +17,9 @@
 - Fixed the restriction of changing the font size and margin for headline in `sd-teased-media`. _[`#2405`](https://github.com/solid-design-system/solid/pull/2405) [`22c42e7`](https://github.com/solid-design-system/solid/commit/22c42e72319e4e409735420cdab52092fe6b74b2) [@balco0110](https://github.com/balco0110)_
 
 ### 📈 Stats
-* Uncompressed: 559 KB (-1 KB / 0%)
-* Gzipped: 129 KB (unchanged)
+
+- Uncompressed: 559 KB (-1 KB / 0%)
+- Gzipped: 129 KB (unchanged)
 
 ## 6.0.0-next.8
 

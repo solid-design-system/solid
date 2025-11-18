@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 6.0.0-next.10
+
+### Patch Changes
+
+- Generate theme colors in rgb instead of hex to reduce breaking changes. _[`#2621`](https://github.com/solid-design-system/solid/pull/2621) [`5a3a5a5`](https://github.com/solid-design-system/solid/commit/5a3a5a575a2fab8cd5e8c56533e215ae94a5aaab) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 6.0.0-next.9
 
 ## 6.0.0-next.8

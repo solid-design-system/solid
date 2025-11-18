@@ -1,5 +1,7 @@
 # @solid-design-system/styles
 
+## 6.0.0-next.10
+
 ## 6.0.0-next.9
 
 ## 6.0.0-next.8
