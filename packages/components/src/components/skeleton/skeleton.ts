@@ -18,13 +18,12 @@ import SolidElement from '../../internal/solid-element';
 export default class SdSkeleton extends SolidElement {
   /** The shape variant when used without slotted content. */
   @property({ type: String, reflect: true }) variant: 'rectangular' | 'circular' = 'rectangular';
-  /** Show content when loaded */
-  @property({ type: Boolean, reflect: true }) showContent = false;
 
   render() {
     return html`
       <div
         part="base"
+        aria-hidden="true"
         class=${cx(
           'bg-neutral-200 w-full h-full animate-pulse',
           {
@@ -46,18 +45,7 @@ export default class SdSkeleton extends SolidElement {
       }
 
       ::slotted(*) {
-        visibility: hidden;
-      }
-
-      :host([show-content]) ::slotted(*) {
-        visibility: visible;
-      }
-
-      :host([show-content]) [part='base'] {
-        animation: none;
-        background: transparent;
-        background-color: transparent;
-        display: contents;
+        @apply invisible;
       }
     `
   ];
