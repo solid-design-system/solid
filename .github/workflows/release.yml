@@ -11,22 +11,20 @@ permissions:
   contents: write
   id-token: write
 
+env:
+  GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
+
 jobs:
   publish-main:
     name: Release new main version
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Debug GH_TOKEN (redacted)
-        run: |
-          echo "GH_TOKEN prefix: ${GH_TOKEN:0:6}******"
+          persist-credentials: false
 
       - name: Install Node.js
         uses: actions/setup-node@v4
@@ -56,6 +54,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Install Node.js
         uses: actions/setup-node@v4
