@@ -294,8 +294,9 @@
         "VariableID:43927:5025",
         "VariableID:43979:188",
         "VariableID:43927:5026",
-        "VariableID:43927:5027",
         "VariableID:43979:189",
+        "VariableID:43927:5027",
+        "VariableID:46172:9194",
         "VariableID:44921:14675",
         "VariableID:44921:14687",
         "VariableID:44921:14688",
@@ -318,9 +319,9 @@
         "VariableID:44921:14685",
         "VariableID:44921:14686",
         "VariableID:44921:14683",
-        "VariableID:43927:5028",
         "VariableID:43979:190",
         "VariableID:44917:20144",
+        "VariableID:43927:5028",
         "VariableID:44917:20151",
         "VariableID:44917:20152",
         "VariableID:44917:20153",
@@ -334,26 +335,26 @@
         "VariableID:44921:14674",
         "VariableID:44917:19938",
         "VariableID:43927:5029",
-        "VariableID:44917:19939",
         "VariableID:43927:5030",
-        "VariableID:44917:19940",
+        "VariableID:44917:19939",
         "VariableID:43927:5031",
+        "VariableID:44917:19940",
         "VariableID:44917:19941",
         "VariableID:43927:5032",
-        "VariableID:44917:19942",
         "VariableID:43927:5033",
+        "VariableID:44917:19942",
         "VariableID:43927:5034",
         "VariableID:44917:19943",
         "VariableID:43927:5035",
         "VariableID:44917:19944",
         "VariableID:44917:19945",
         "VariableID:43927:5036",
-        "VariableID:43927:5037",
         "VariableID:44917:19946",
+        "VariableID:43927:5037",
         "VariableID:43927:5038",
         "VariableID:44917:19947",
-        "VariableID:43979:187",
         "VariableID:44917:19948",
+        "VariableID:43979:187",
         "VariableID:44883:20781",
         "VariableID:44883:20782",
         "VariableID:44883:20783",
@@ -487,8 +488,8 @@
         "VariableID:43372:21101",
         "VariableID:43373:35271",
         "VariableID:43373:35286",
-        "VariableID:44953:15244",
         "VariableID:45365:12253",
+        "VariableID:44953:15244",
         "VariableID:43979:193",
         "VariableID:44953:15245",
         "VariableID:43979:194",
@@ -537,8 +538,8 @@
         "VariableID:43979:261",
         "VariableID:43979:262",
         "VariableID:43979:263",
-        "VariableID:43979:299",
         "VariableID:43979:264",
+        "VariableID:43979:299",
         "VariableID:43979:300",
         "VariableID:43979:265",
         "VariableID:43979:301",
@@ -7944,7 +7945,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "44883:0": {
-          "id": "VariableID:44921:14700",
+          "id": "VariableID:46172:9194",
           "type": "VARIABLE_ALIAS"
         }
       },
@@ -17129,6 +17130,28 @@
         }
       },
       "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:46172:9194": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:46172:9194",
+      "key": "2e4c87b0ebc458049e1cd55d6566883762cb6769",
+      "name": "vb/from-figma/vb/from-ultra/hover",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "43138:0": {
+          "a": 0.05000000074505806,
+          "b": 0.7019608020782471,
+          "g": 0.4000000059604645,
+          "r": 0
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:42952:95"
     }
   }
 }

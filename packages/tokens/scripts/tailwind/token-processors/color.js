@@ -23,12 +23,6 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       gradient: 'background-image',
       text: 'color'
     };
-
-    /* Namepsaces that should be skipped and not processed */
-    this.skip = ['ring'];
-
-    /* Stores the history of processed color tokens. */
-    this.processedHistory = [];
   }
 
   canProcess(token) {
@@ -38,7 +32,6 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
   process(token, dictionary, options) {
     const { path, variant } = this.processTokenPath(token);
     const coreColors = this.#getCoreColors(dictionary, variant);
-    if (this.skip.includes(path[0])) return [];
 
     const isUtility = this.isUtilityToken(path);
     const isComponent = !isUtility && path[0].startsWith('components');
@@ -50,6 +43,8 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       ? this.#processUtilityToken(token)
       : this.#processComponentToken(token, variant, dictionary);
 
+    const color = this.getTokenValue(token);
+
     const cssvariables = [];
 
     if (!isCoreColor && variant === options.defaultTheme) {
@@ -58,7 +53,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       cssvariables.push({
         type: processed.type,
         name: processed.name,
-        value: this.cssvar(cssvar),
+        value: `rgba(${this.cssvar(cssvar)})`,
         properties: processed.properties,
         variant: 'default'
       });
@@ -68,29 +63,30 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       const variable = {
         type: 'color',
         name: this.cssprefix(fallback),
-        value: this.getTokenValue(token),
+        value: this.#toRgb(color),
         variant
       };
 
       cssvariables.push(variable);
-      this.processedHistory.push(variable);
     }
 
     if (isUtility && !isCoreColor) {
       const coreToken = path.slice(1);
       coreToken.splice(1, 1);
 
-      const color = this.getTokenValue(token);
-      const replacement = Object.values(coreColors).find(core => core.value === color);
+      const replacement = Object.values(coreColors)
+        .find(core => core.value === color)
+        ?.path.join('-')
+        .replace('-default', '');
+
       const variable = {
         type: 'color',
         name: this.cssprefix(processed.cssvar),
-        value: replacement ? this.cssvar(this.cssprefix(replacement.path.join('-').replace('-default', ''))) : color,
+        value: replacement ? this.cssvar(this.cssprefix(replacement)) : color,
         variant
       };
 
       cssvariables.push(variable);
-      this.processedHistory.push(variable);
     }
 
     if (!isUtility) {
@@ -104,14 +100,9 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       };
 
       cssvariables.push(variable);
-      this.processedHistory.push(variable);
     }
 
     return cssvariables;
-  }
-
-  reset() {
-    this.processedHistory = [];
   }
 
   #isCoreToken(token) {
@@ -128,14 +119,6 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     const fallback = processed.path.length > 4 ? processed.path.slice(3) : processed.path.slice(2);
     const name = `color-${fallback.join('-').replace('-default', '')}`;
     return isUtility ? name : `${processed.path[0]}-${name}`;
-  }
-
-  // eslint-disable-next-line no-unused-private-class-members
-  #getColorFromToken(token, variant, dictionary) {
-    return token.reduce(
-      (obj, key) => (obj && obj[key] !== undefined ? obj[key] : undefined),
-      dictionary?.tokens?.[variant]
-    )?.value;
   }
 
   #getCoreTokenFromColor(color, variant, dictionary) {
@@ -172,7 +155,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       .replaceAll('-__', '__');
 
     const coreToken = this.#getCoreTokenFromColor(token.value, variant, dictionary)?.join('-');
-    const value = this.cssvar(name, coreToken ? this.cssvar(coreToken) : token.value);
+    const value = `rgba(${this.cssvar(name, coreToken ? `rgba(${this.cssvar(coreToken)})` : token.value)})`;
 
     for (const [property, cssproperty] of Object.entries(this.semantic)) {
       if (name.includes(property)) {
@@ -180,7 +163,11 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       }
     }
 
-    return { type: 'component', name: `--${name}`, properties: `@utility ${name} {\n  background-color: ${value};\n}` };
+    return {
+      type: 'component',
+      name: `--${name}`,
+      properties: `@utility ${name} {\n  background-color: ${value};\n}`
+    };
   }
 
   #getCoreColors(dictionary, variant) {
@@ -189,5 +176,26 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
         utility.path[0] === 'color' &&
         !['icon-fill', 'border', 'background', 'text', 'background-transparent', 'gradient'].includes(utility.path[1])
     );
+  }
+
+  #toRgb(color) {
+    if (color.startsWith('rgba')) {
+      return color.slice(5, -1).replaceAll(',', '');
+    }
+
+    let h = color.replace(/^#/, '');
+    if (h.length === 3)
+      h = h
+        .split('')
+        .map(c => c + c)
+        .join('');
+    const num = parseInt(h, 16);
+    // eslint-disable-next-line no-bitwise
+    const r = (num >> 16) & 255;
+    // eslint-disable-next-line no-bitwise
+    const g = (num >> 8) & 255;
+    // eslint-disable-next-line no-bitwise
+    const b = num & 255;
+    return [r, g, b].join(' ');
   }
 }

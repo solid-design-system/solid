@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { AddonPanel, Form } from 'storybook/internal/components';
 import { PARAM_KEY, PANEL_DEFAULTS } from './constants';
 import { addons, useGlobals } from 'storybook/manager-api';
-import { calculateColorsAsCss } from '@solid-design-system/theming';
+import { calculateColorsAsCss, hexToRgba, rgbaToHex } from '@solid-design-system/theming';
 import theme from '../../../../tokens/dist/theme.js';
 import { FORCE_RE_RENDER } from 'storybook/internal/core-events';
 
@@ -20,14 +20,6 @@ export const Panel: React.FC<PanelProps> = (props: PanelProps) => {
   const [output, setOutput] = useState('');
   const [globals, updateGlobals] = useGlobals();
   const isActive = globals[PARAM_KEY] || false;
-
-  const [hexInputs, setHexInputs] = useState({
-    primary: PANEL_DEFAULTS.colors.primary,
-    accent: PANEL_DEFAULTS.colors.accent,
-    neutral: PANEL_DEFAULTS.colors.neutral,
-    black: PANEL_DEFAULTS.colors.black,
-    white: PANEL_DEFAULTS.colors.white
-  });
 
   const refreshAndUpdateGlobal = () => {
     (updateGlobals({
@@ -88,28 +80,19 @@ export const Panel: React.FC<PanelProps> = (props: PanelProps) => {
             {/* Color Picker */}
             <input
               type="color"
-              value={colors[colorKey]}
+              value={rgbaToHex(colors[colorKey])}
               onChange={e => {
-                const newColor = e.target.value;
-                setColors(prev => ({ ...prev, [colorKey]: newColor }));
-                setHexInputs(prev => ({ ...prev, [colorKey]: newColor }));
+                setColors(prev => ({ ...prev, [colorKey]: hexToRgba(e.target.value) }));
               }}
             />
 
             {/* Text Input for Hex Color */}
             <input
               type="text"
-              value={hexInputs[colorKey]}
-              pattern="^#(?:[0-9a-fA-F]{3}){1,2}$"
-              placeholder="#RRGGBB"
+              value={colors[colorKey]}
+              placeholder="r,g,b,t"
               onChange={e => {
-                const newHexValue = e.target.value;
-                setHexInputs(prev => ({ ...prev, [colorKey]: newHexValue }));
-
-                // Check if it's a valid hex color and update the main color state
-                if (/^#(?:[0-9a-fA-F]{3}){1,2}$/.test(newHexValue)) {
-                  setColors(prev => ({ ...prev, [colorKey]: newHexValue }));
-                }
+                setColors(prev => ({ ...prev, [colorKey]: hexToRgba(e.target.value) }));
               }}
               style={{ marginLeft: '8px' }}
             />

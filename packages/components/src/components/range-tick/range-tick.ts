@@ -39,7 +39,7 @@ export default class SdRangeTick extends SolidElement {
     ...SolidElement.styles,
     css`
       [part='line'] {
-        background-color: var(--sd-color-border-neutral-400, var(--sd-color-neutral-400));
+        background-color: rgba(var(--sd-color-border-neutral-400, rgba(var(--sd-color-neutral-400))));
       }
     `
   ];

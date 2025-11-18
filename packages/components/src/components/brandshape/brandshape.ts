@@ -288,11 +288,11 @@ export default class SdBrandshape extends SolidElement {
       /* Stylized border */
 
       :host([variant='border-primary']) {
-        --internal-border-color: var(--sd-color-border-primary, var(--sd-color-primary));
+        --internal-border-color: rgba(var(--sd-color-border-primary, rgba(var(--sd-color-primary))));
       }
 
       :host([variant='border-white']) {
-        --internal-border-color: var(--sd-color-border-white, var(--sd-color-white));
+        --internal-border-color: rgba(var(--sd-color-border-white, rgba(var(--sd-color-white))));
       }
 
       :host([variant^='border-']) [part='stylized-container']::before {
@@ -308,15 +308,15 @@ export default class SdBrandshape extends SolidElement {
        * For more details, see the 'Consistency with Figma' section in the **CONTRIBUTING.md**.
        */
       :host([variant='neutral-100']) [part='base'] {
-        fill: var(--sd-color-background-neutral-100, var(--sd-color-neutral-100));
+        fill: rgba(var(--sd-color-background-neutral-100, rgba(var(--sd-color-neutral-100))));
       }
 
       :host([variant='white']) [part='base'] {
-        fill: var(--sd-color-background-white, var(--sd-color-white));
+        fill: rgba(var(--sd-color-background-white, rgba(var(--sd-color-white))));
       }
 
       :host([variant='primary']) [part='base'] {
-        fill: var(--sd-color-background-primary, var(--sd-color-primary));
+        fill: rgba(var(--sd-color-background-primary, rgba(var(--sd-color-primary))));
       }
     `
   ];

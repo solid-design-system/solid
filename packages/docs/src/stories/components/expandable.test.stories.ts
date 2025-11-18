@@ -53,8 +53,8 @@ export const Inverted = {
         templateBackgrounds: {
           alternate: 'y',
           colors: [
-            'var(--sd-color-background-primary, var(--sd-color-primary))',
-            'var(--sd-color-background-white, var(--sd-color-white))'
+            'rgba(var(--sd-color-background-primary, rgba(var(--sd-color-primary))))',
+            'rgba(var(--sd-color-background-white, rgba(var(--sd-color-white))))'
           ]
         },
         templateRenderer: ({ attributes, slots }) => {

@@ -707,35 +707,35 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       }
 
       [part='thumb'] {
-        background-color: var(--sd-color-icon-fill-primary, var(--sd-color-primary));
+        background-color: rgba(var(--sd-color-icon-fill-primary, rgba(var(--sd-color-primary))));
       }
 
       [part='thumb']:hover {
-        background-color: var(--sd-color-icon-fill-primary-500, var(--sd-color-primary-500));
+        background-color: rgba(var(--sd-color-icon-fill-primary-500, rgba(var(--sd-color-primary-500))));
       }
 
       [part='thumb'].grabbed {
-        background-color: var(--sd-color-icon-fill-primary-800, var(--sd-color-primary-800));
+        background-color: rgba(var(--sd-color-icon-fill-primary-800, rgba(var(--sd-color-primary-800))));
       }
 
       [part='thumb'][data-disabled] {
-        background-color: var(--sd-color-icon-fill-neutral-500, var(--sd-color-neutral-500));
+        background-color: rgba(var(--sd-color-icon-fill-neutral-500, rgba(var(--sd-color-neutral-500))));
       }
 
       [part='track'] {
-        background-color: var(--sd-color-border-neutral-400, var(--sd-color-neutral-400));
+        background-color: rgba(var(--sd-color-border-neutral-400, rgba(var(--sd-color-neutral-400))));
       }
 
       [part='track'][data-disabled] {
-        background-color: var(--sd-color-background-neutral-500, var(--sd-color-neutral-500));
+        background-color: rgba(var(--sd-color-background-neutral-500, rgba(var(--sd-color-neutral-500))));
       }
 
       [part='active-track'] {
-        background-color: var(--sd-color-icon-fill-primary, var(--sd-color-primary));
+        background-color: rgba(var(--sd-color-icon-fill-primary, rgba(var(--sd-color-primary))));
       }
 
       [part='active-track'][data-disabled] {
-        background-color: var(--sd-color-icon-fill-neutral-500, var(--sd-color-neutral-500));
+        background-color: rgba(var(--sd-color-icon-fill-neutral-500, rgba(var(--sd-color-neutral-500))));
       }
     `
   ];

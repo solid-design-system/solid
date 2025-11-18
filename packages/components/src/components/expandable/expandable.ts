@@ -195,10 +195,10 @@ export default class SdExpandable extends SolidElement {
           var(
               --gradient-color-start,
               transparent,
-              var(--gradient-color-end, var(--sd-color-background-white, var(--sd-color-white)))
+              var(--gradient-color-end, rgba(var(--sd-color-background-white, rgba(var(--sd-color-white)))))
             )
             80%,
-          var(--gradient-color-end, var(--sd-color-background-white, var(--sd-color-white))) 100%;
+          var(--gradient-color-end, rgba(var(--sd-color-background-white, rgba(var(--sd-color-white))))) 100%;
 
         @apply inline-block relative w-full;
       }

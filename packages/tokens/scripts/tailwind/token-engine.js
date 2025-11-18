@@ -79,7 +79,7 @@ export class TokenProcessingEngine {
       compositions: [],
       components: [
         `@utility sd-brandshape--neutral-100-color-icon-fill {
-  fill: var(--sd-brandshape--neutral-100-color-background, var(--sd-color-neutral-100));
+  fill: rgba(var(--sd-brandshape--neutral-100-color-background, rgba(var(--sd-color-neutral-100))));
 }`
       ]
     };

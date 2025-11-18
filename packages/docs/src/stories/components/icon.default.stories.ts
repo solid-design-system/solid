@@ -48,7 +48,11 @@ export const LibraryDefaultContent = {
       options: {
         templateBackgrounds: {
           alternate: 'x',
-          colors: ['var(--sd-color-background-white)', 'var(--sd-color-background-white)', 'var(--sd-color-primary)']
+          colors: [
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-primary))'
+          ]
         }
       },
       args
@@ -78,7 +82,11 @@ export const LibraryDefaultSystem = {
       options: {
         templateBackgrounds: {
           alternate: 'x',
-          colors: ['var(--sd-color-background-white)', 'var(--sd-color-background-white)', 'var(--sd-color-primary)']
+          colors: [
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-primary))'
+          ]
         }
       },
       args

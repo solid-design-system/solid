@@ -82,7 +82,7 @@ export const OrderedList = {
       options: {
         templateBackgrounds: {
           alternate: 'x',
-          colors: ['transparent', 'var(--sd-color-primary)']
+          colors: ['transparent', 'rgba(var(--sd-color-primary))']
         },
         templateContent: html`<ol class="%CLASSES%">
           <li>
@@ -134,7 +134,7 @@ export const UnorderedList = {
       options: {
         templateBackgrounds: {
           alternate: 'x',
-          colors: ['transparent', 'var(--sd-color-primary)']
+          colors: ['transparent', 'rgba(var(--sd-color-primary))']
         },
         templateContent: html`<ul class="%CLASSES%">
           <li>
@@ -190,7 +190,7 @@ export const IconList = {
       options: {
         templateBackgrounds: {
           alternate: 'x',
-          colors: ['transparent', 'var(--sd-color-primary)']
+          colors: ['transparent', 'rgba(var(--sd-color-primary))']
         },
         templateRenderer: ({ attributes }) =>
           html`<ul class="sd-list--icon ${attributes.classes}">
@@ -229,7 +229,7 @@ export const HorizontalIconList = {
       options: {
         templateBackgrounds: {
           alternate: 'x',
-          colors: ['transparent', 'var(--sd-color-primary)']
+          colors: ['transparent', 'rgba(var(--sd-color-primary))']
         },
         templateRenderer: ({ attributes }) =>
           html` <ul class="sd-list--icon sd-list--horizontal ${attributes.classes}">

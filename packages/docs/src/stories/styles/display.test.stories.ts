@@ -62,7 +62,7 @@ export const Inverted = {
         y: [{ type: 'attribute', name: 'sd-display--inverted', values: [false, true] }]
       },
       options: {
-        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'var(--sd-color-primary)'] }
+        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'rgba(var(--sd-color-primary))'] }
       },
       args
     });

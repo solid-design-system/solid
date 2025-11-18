@@ -413,8 +413,8 @@ export default class SdScrollable extends SolidElement {
       :host {
         --gradient-color: transparent;
         --gradient:
-          var(--gradient-color) 0%, var(--sd-color-background-white, var(--sd-color-white)) 80%,
-          var(--sd-color-background-white, var(--sd-color-white)) 100%;
+          var(--gradient-color) 0%, rgba(var(--sd-color-background-white, rgba(var(--sd-color-white)))) 80%,
+          rgba(var(--sd-color-background-white, rgba(var(--sd-color-white)))) 100%;
 
         @apply flex relative overflow-hidden;
       }
