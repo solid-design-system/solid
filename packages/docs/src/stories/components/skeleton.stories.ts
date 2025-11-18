@@ -23,10 +23,6 @@ export default {
   }
 };
 
-/**
- * The skeleton component is used to provide a low fidelity representation of content while it loads.
- */
-
 export const Default = {
   render: (args: any) => {
     return html`
