@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.0.0-next.11
+
+### Patch Changes
+
+- Fix icon color default library (content/system) _[`#2628`](https://github.com/solid-design-system/solid/pull/2628) [`1e743d6`](https://github.com/solid-design-system/solid/commit/1e743d6458fc728151d44ebdc1bd5e0a665e2739) [@mariohamann](https://github.com/mariohamann)_
+
 ## 6.0.0-next.10
 
 ### Patch Changes
@@ -7,8 +13,9 @@
 - Adjusted theme generator to support rgba instead of hex. _[`#2621`](https://github.com/solid-design-system/solid/pull/2621) [`5a3a5a5`](https://github.com/solid-design-system/solid/commit/5a3a5a575a2fab8cd5e8c56533e215ae94a5aaab) [@paulovareiro29](https://github.com/paulovareiro29)_
 
 ### 📈 Stats
-* Uncompressed: 561 KB (+2 KB / +0%)
-* Gzipped: 129 KB (unchanged)
+
+- Uncompressed: 561 KB (+2 KB / +0%)
+- Gzipped: 129 KB (unchanged)
 
 ## 6.0.0-next.9
 
