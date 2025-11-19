@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 6.0.0-next.12
+
+### Patch Changes
+
+- Remove unneeded border in quickfact _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`e829dec`](https://github.com/solid-design-system/solid/commit/e829decbe1b704007a1d38a93405ee9344df6529) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+* Uncompressed: 562 KB (+1 KB / +0%)
+* Gzipped: 129 KB (unchanged)
+
 ## 6.0.0-next.11
 
 ### Patch Changes
