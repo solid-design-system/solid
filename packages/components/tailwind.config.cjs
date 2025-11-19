@@ -31,6 +31,10 @@ theme.extend = {
     wave: {
       '0%, 40%, 100%': { transform: 'initial' },
       '20%': { transform: 'translateY(-4px)' }
+    },
+    pulse: {
+      '0% 100%': { opacity: '1' },
+      '50%': { opacity: '0.5' }
     }
   },
   animation: {
@@ -38,7 +42,8 @@ theme.extend = {
     grow: 'grow linear',
     'loader-primary': 'wave 1.3s infinite, loader-color-primary 2.6s infinite',
     'loader-white': 'wave 1.3s infinite, loader-color-white 2.6s infinite',
-    'loader-current': 'wave 1.3s infinite, loader-color-current 2.6s infinite'
+    'loader-current': 'wave 1.3s infinite, loader-color-current 2.6s infinite',
+    pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
   }
 };
 
