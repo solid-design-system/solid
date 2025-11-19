@@ -7,6 +7,7 @@ import { property } from 'lit/decorators.js';
 import { setDefaultAnimation } from '../../utilities/animation-registry';
 import cx from 'classix';
 import SdAccordion from '../accordion/accordion';
+import SolidElement from '../../internal/solid-element';
 
 /**
  * @summary Accordion shows a brief summary and expands to show additional content.
@@ -87,10 +88,19 @@ export default class SdQuickfact extends SdAccordion {
   }
 
   static styles = [
-    ...SdAccordion.styles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block;
+      }
+
+      /** Removes summary marker on Safari */
+      [part='header']::-webkit-details-marker {
+        @apply hidden;
+      }
+
+      [part='summary-icon'] {
+        color: var(--sd-accordion__chevron-color-text);
       }
 
       @media (min-width: 640px) {
