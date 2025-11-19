@@ -24,6 +24,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Install Node.js
         uses: actions/setup-node@v4
@@ -46,11 +47,14 @@ jobs:
     name: Release new next version
     if: github.ref == 'refs/heads/next'
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.PAT_RELEASE_KARL }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Install Node.js
         uses: actions/setup-node@v4
