@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 33">
     <style>
         .dynamic {
-            fill: #fff;
+            fill: #00358E;
         }
         @media (prefers-color-scheme: dark) {
             .dynamic {
-                fill: #00358E;
+                fill: #fff;
             }
         }
     </style>
