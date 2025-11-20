@@ -1,5 +1,17 @@
 # @solid-design-system/docs
 
+## 1.32.0
+
+### Minor Changes
+
+- Introducing the brand new `sd-skeleton` component. _[`#2605`](https://github.com/solid-design-system/solid/pull/2605) [`6a6b794`](https://github.com/solid-design-system/solid/commit/6a6b794366c9e377e8a8c32fad6d762e377a5dbe) [@balco0110](https://github.com/balco0110)_
+
+## 1.31.3
+
+### Patch Changes
+
+- Sync `sd-datepicker` stories with Figma. _[`#2611`](https://github.com/solid-design-system/solid/pull/2611) [`dba5493`](https://github.com/solid-design-system/solid/commit/dba5493d077bfc390728377722b4c2f0f4453f1c) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.31.2
 
 ### Patch Changes

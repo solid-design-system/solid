@@ -1,5 +1,29 @@
 # @solid-design-system/components
 
+## 5.17.0
+
+### Minor Changes
+
+- Introducing the brand new `sd-skeleton` component. _[`#2605`](https://github.com/solid-design-system/solid/pull/2605) [`6a6b794`](https://github.com/solid-design-system/solid/commit/6a6b794366c9e377e8a8c32fad6d762e377a5dbe) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+* Uncompressed: 521 KB (+1 KB / +0%)
+* Gzipped: 123 KB (unchanged)
+
+## 5.16.2
+
+### Patch Changes
+
+- Minor improvements to the `sd-datepicker` component: _[`#2611`](https://github.com/solid-design-system/solid/pull/2611) [`dba5493`](https://github.com/solid-design-system/solid/commit/dba5493d077bfc390728377722b4c2f0f4453f1c) [@smfonseca](https://github.com/smfonseca)_
+  - Updated `disabled-dates` and weekend days color
+  - Clicking the `calendar` icon opens the calendar flyout
+  - Display only current months plus next month's days until end of current week
+
+### 📈 Stats
+
+- Uncompressed: 520 KB (unchanged)
+- Gzipped: 123 KB (+1 KB / +1%)
+
 ## 5.16.1
 
 ### Patch Changes
@@ -11,8 +35,9 @@
   - Fixed element width.
 
 ### 📈 Stats
-* Uncompressed: 520 KB (+1 KB / +0%)
-* Gzipped: 122 KB (unchanged)
+
+- Uncompressed: 520 KB (+1 KB / +0%)
+- Gzipped: 122 KB (unchanged)
 
 ## 5.16.0
 
