@@ -1,5 +1,105 @@
 # @solid-design-system/components
 
+## 5.17.1
+
+### Patch Changes
+
+- Import components used inside `sd-datepicker` to ensure stability when cherry picking. _[`#2631`](https://github.com/solid-design-system/solid/pull/2631) [`8ddc041`](https://github.com/solid-design-system/solid/commit/8ddc0410d7bb43941a13b50d13763bb317504f33) [@smfonseca](https://github.com/smfonseca)_
+
+## 5.17.0
+
+### Minor Changes
+
+- Introducing the brand new `sd-skeleton` component. _[`#2605`](https://github.com/solid-design-system/solid/pull/2605) [`6a6b794`](https://github.com/solid-design-system/solid/commit/6a6b794366c9e377e8a8c32fad6d762e377a5dbe) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+
+- Uncompressed: 521 KB (+1 KB / +0%)
+- Gzipped: 123 KB (unchanged)
+
+## 5.16.2
+
+### Patch Changes
+
+- Minor improvements to the `sd-datepicker` component: _[`#2611`](https://github.com/solid-design-system/solid/pull/2611) [`dba5493`](https://github.com/solid-design-system/solid/commit/dba5493d077bfc390728377722b4c2f0f4453f1c) [@smfonseca](https://github.com/smfonseca)_
+  - Updated `disabled-dates` and weekend days color
+  - Clicking the `calendar` icon opens the calendar flyout
+  - Display only current months plus next month's days until end of current week
+
+### 📈 Stats
+
+- Uncompressed: 520 KB (unchanged)
+- Gzipped: 123 KB (+1 KB / +1%)
+
+## 5.16.1
+
+### Patch Changes
+
+- Addressed minor issues with the `sd-datepicker`: _[`#2585`](https://github.com/solid-design-system/solid/pull/2585) [`ffa4d08`](https://github.com/solid-design-system/solid/commit/ffa4d08c3bb5c9b8ba61e9c7f2fec13a65ac7de5) [@smfonseca](https://github.com/smfonseca)_
+  - Updated placeholder color to be reactive to theme.
+  - Disabled autocomplete.
+  - Improved `visually-disabled` handling and focus management.
+  - Fixed element width.
+
+### 📈 Stats
+
+- Uncompressed: 520 KB (+1 KB / +0%)
+- Gzipped: 122 KB (unchanged)
+
+## 5.16.0
+
+### Minor Changes
+
+- Introducing the brand new `sd-datepicker` component. _[`#2521`](https://github.com/solid-design-system/solid/pull/2521) [`5b493e5`](https://github.com/solid-design-system/solid/commit/5b493e5a29164a0efd0d537c9097fa6f472fc913) [@smfonseca](https://github.com/smfonseca)_
+
+  This component is used to enter or select a date or a range of dates using a calendar view.
+
+### 📈 Stats
+
+- Uncompressed: 519 KB (+40 KB / +8%)
+- Gzipped: 122 KB (+9 KB / +8%)
+
+## 5.15.13
+
+### Patch Changes
+
+- Fixed issue where the build process would generate empty chunk files, therefore, breaking the build. _[`#2567`](https://github.com/solid-design-system/solid/pull/2567) [`c1b32c7`](https://github.com/solid-design-system/solid/commit/c1b32c79bed00ccd2bd8d3d08112b1c74cb398da) [@mariohamann](https://github.com/mariohamann)_
+
+## 5.15.12
+
+### Patch Changes
+
+- Fixed `sd-tab-group` scroll controls to ensure they are active when it's possible to scroll left or right. _[`#2558`](https://github.com/solid-design-system/solid/pull/2558) [`57018bb`](https://github.com/solid-design-system/solid/commit/57018bb1c1c97137592758841252d855dcbd0c88) [@smfonseca](https://github.com/smfonseca)_
+
+## 5.15.11
+
+### Patch Changes
+
+- Improvements done on the `sd-select`: _[`#2533`](https://github.com/solid-design-system/solid/pull/2533) [`45ac618`](https://github.com/solid-design-system/solid/commit/45ac6183c5c88315788894069d93bec1ff0c8ba9) [@smfonseca](https://github.com/smfonseca)_
+  - Prevent input wrapper elements from overflowing.
+  - Better handling of option highlight when `multiple` or `useTags` is enabled. If no option is selected, the first is highlighted, otherwise, the first selected option is highlighted instead.
+
+## 5.15.10
+
+### Patch Changes
+
+- Adjusted `sd-breadcrumb` font-size to `14px` instead of `16px`. _[`#2534`](https://github.com/solid-design-system/solid/pull/2534) [`1ebd640`](https://github.com/solid-design-system/solid/commit/1ebd6403350b07cbfb8d604732191db7ce880924) [@smfonseca](https://github.com/smfonseca)_
+
+## 5.15.9
+
+### Patch Changes
+
+- Fixed `sd-radio-button` style when in `checked` and `disabled` state. _[`#2537`](https://github.com/solid-design-system/solid/pull/2537) [`9776ac9`](https://github.com/solid-design-system/solid/commit/9776ac999d176b394477de505b48deb63d3817f3) [@smfonseca](https://github.com/smfonseca)_
+
+## 5.15.8
+
+### Patch Changes
+
+- - Update pnpm to 10.17 _[`#2522`](https://github.com/solid-design-system/solid/pull/2522) [`7cc6bb7`](https://github.com/solid-design-system/solid/commit/7cc6bb7bdfc9ccb26c2ecfa58b27021d15379312) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add minimumReleaseAge to 5 days
+  - Update all actions to ensure that they're using the correct version
+
 ## 5.15.7
 
 ### Patch Changes

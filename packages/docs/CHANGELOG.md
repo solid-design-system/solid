@@ -1,5 +1,64 @@
 # @solid-design-system/docs
 
+## 1.32.0
+
+### Minor Changes
+
+- Introducing the brand new `sd-skeleton` component. _[`#2605`](https://github.com/solid-design-system/solid/pull/2605) [`6a6b794`](https://github.com/solid-design-system/solid/commit/6a6b794366c9e377e8a8c32fad6d762e377a5dbe) [@balco0110](https://github.com/balco0110)_
+
+## 1.31.3
+
+### Patch Changes
+
+- Sync `sd-datepicker` stories with Figma. _[`#2611`](https://github.com/solid-design-system/solid/pull/2611) [`dba5493`](https://github.com/solid-design-system/solid/commit/dba5493d077bfc390728377722b4c2f0f4453f1c) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.31.2
+
+### Patch Changes
+
+- Updated `sd-datepicker` stories and screenshot tests. _[`#2585`](https://github.com/solid-design-system/solid/pull/2585) [`ffa4d08`](https://github.com/solid-design-system/solid/commit/ffa4d08c3bb5c9b8ba61e9c7f2fec13a65ac7de5) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.31.1
+
+### Patch Changes
+
+- Fixed component stories visualization inside Codepen where specific story styling was missing (eg. `sd-scrollable`). _[`#2563`](https://github.com/solid-design-system/solid/pull/2563) [`7115848`](https://github.com/solid-design-system/solid/commit/7115848124752ce2741a3e4db18231ae226c7b44) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.31.0
+
+### Minor Changes
+
+- Added template for multi select table _[`#2515`](https://github.com/solid-design-system/solid/pull/2515) [`7bc6502`](https://github.com/solid-design-system/solid/commit/7bc65025d4f225dc4b351294526b61b0febc3df1) [@balco0110](https://github.com/balco0110)_
+
+## 1.30.0
+
+### Minor Changes
+
+- Introducing the brand new `sd-datepicker` component. _[`#2521`](https://github.com/solid-design-system/solid/pull/2521) [`5b493e5`](https://github.com/solid-design-system/solid/commit/5b493e5a29164a0efd0d537c9097fa6f472fc913) [@smfonseca](https://github.com/smfonseca)_
+
+  This component is used to enter or select a date or a range of dates using a calendar view.
+
+## 1.29.2
+
+### Patch Changes
+
+- Made `slot` CSS classes available in Codepen to ensure stories such as `sd-expandable--default` can be correctly visualized. _[`#2550`](https://github.com/solid-design-system/solid/pull/2550) [`b760ea8`](https://github.com/solid-design-system/solid/commit/b760ea829f73a1834127dbf2cdf8706c64002d39) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.29.1
+
+### Patch Changes
+
+- - Update pnpm to 10.17 _[`#2522`](https://github.com/solid-design-system/solid/pull/2522) [`7cc6bb7`](https://github.com/solid-design-system/solid/commit/7cc6bb7bdfc9ccb26c2ecfa58b27021d15379312) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  - Add minimumReleaseAge to 5 days
+  - Update all actions to ensure that they're using the correct version
+
+## 1.29.0
+
+### Minor Changes
+
+- Introduced accessibility testing with Playwright in components. _[`#2435`](https://github.com/solid-design-system/solid/pull/2435) [`27f919c`](https://github.com/solid-design-system/solid/commit/27f919c157da0772876a855f3a6c0003118e0bfe) [@mariohamann](https://github.com/mariohamann)_
+
 ## 1.28.6
 
 ### Patch Changes

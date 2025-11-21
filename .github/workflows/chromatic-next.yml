@@ -1,8 +1,10 @@
 # .github/workflows/chromatic.yml
 
 # Workflow name
-name: 'Chromatic (Main)'
-
+name: 'Chromatic (Next)'
+permissions:
+  contents: read
+  
 # Event for the workflow
 on:
   push:
@@ -25,9 +27,7 @@ jobs:
         with:
             node-version: 22
 
-      - uses: pnpm/action-setup@v2
-        with:
-            version: 10.0.0
+      - uses: pnpm/action-setup@v4
 
       - name: Install dependencies
       # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
