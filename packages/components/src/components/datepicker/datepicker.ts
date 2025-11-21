@@ -1,3 +1,6 @@
+import '../divider/divider';
+import '../icon/icon';
+import '../popup/popup';
 import { css, html, nothing } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { DateUtils } from '../../utilities/date';
