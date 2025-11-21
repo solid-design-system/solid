@@ -91,3 +91,8 @@ div[data-radix-scroll-area-viewport]:focus-visible {
 .sbdocs .token.comment {
   @apply !text-success;
 }
+
+sd-notification#license-hint::part(base) {
+  margin-left: 0;
+  margin-bottom: 2rem;
+}
