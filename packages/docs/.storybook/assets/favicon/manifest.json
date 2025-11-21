@@ -2,7 +2,7 @@
   "name": "App",
   "icons": [
     {
-      "src": "./favicon.svg",
+      "src": "./favicon-light.svg",
       "sizes": "any",
       "type": "image/svg+xml"
     }
