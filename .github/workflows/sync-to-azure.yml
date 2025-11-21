@@ -5,7 +5,7 @@ permissions:
 
 on:
   workflow_run:
-    workflows: ["Release new main version"]
+    workflows: ["Release"]
     types:
       - completed
   workflow_dispatch:
