@@ -250,6 +250,22 @@ describe('<sd-datepicker>', () => {
       expect(el['disabledDatesSet'].has('2025.11.04')).to.be.true;
       expect(el['disabledDatesSet'].has('2025.11.12')).to.be.true;
     });
+
+    it('parses hyphen-separated dates', async () => {
+      const el = await fixture<SdDatepicker>(
+        html`<sd-datepicker disabled-dates="2025-11-11,2025-11-19"></sd-datepicker>`
+      );
+      expect(el['disabledDatesSet'].has('2025.11.11')).to.be.true;
+      expect(el['disabledDatesSet'].has('2025.11.19')).to.be.true;
+    });
+
+    it('parses slash-separated dates', async () => {
+      const el = await fixture<SdDatepicker>(
+        html`<sd-datepicker disabled-dates="2025/11/20 2025/11/24"></sd-datepicker>`
+      );
+      expect(el['disabledDatesSet'].has('2025.11.20')).to.be.true;
+      expect(el['disabledDatesSet'].has('2025.11.24')).to.be.true;
+    });
   });
 
   describe('form integration', () => {

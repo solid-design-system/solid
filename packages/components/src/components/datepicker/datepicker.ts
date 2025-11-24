@@ -55,6 +55,24 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @csspart form-control-help-text - The help text, displayed below the input.
  *
  */
+
+const dateConverter = {
+  fromAttribute: (value: string) => {
+    if (!value) return [];
+
+    return value
+      .split(/[,\s]+/)
+      .map(s => s.trim())
+      .filter(Boolean)
+      .map(s => s.replace(/\D+/g, '.'))
+      .map(s => s.replace(/^\.+|\.+$/g, ''));
+  },
+  toAttribute: (value: string[]) => {
+    if (!value) return '';
+    return value.map(s => s.replace(/\D+/g, '.').replace(/^\.+|\.+$/g, '')).join(',');
+  }
+};
+
 @customElement('sd-datepicker')
 export default class SdDatepicker extends SolidElement implements SolidFormControl {
   /** Localize controller used to fetch localized terms/labels. */
@@ -76,10 +94,10 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   @property({ type: Boolean, reflect: true }) range = false;
 
   /** Range start date in local ISO format (YYYY-MM-DD). */
-  @property({ type: String }) rangeStart: string | null = null;
+  @property({ attribute: 'range-start', converter: dateConverter }) rangeStart: string | null = null;
 
   /** Range end date in local ISO format (YYYY-MM-DD). */
-  @property({ type: String }) rangeEnd: string | null = null;
+  @property({ attribute: 'range-end', converter: dateConverter }) rangeEnd: string | null = null;
 
   /** Allows selecting the same start and end date when true. */
   @property({ type: Boolean }) allowSameDayRange = false;
@@ -97,7 +115,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   @property({ type: Boolean, reflect: true, attribute: 'disabled-weekends' }) disabledWeekends = false;
 
   /** List of disabled dates as local ISO strings. Accepts array or CSV/JSON string. */
-  @property({ attribute: 'disabled-dates' }) disabledDates: string[] | string = [];
+  @property({ attribute: 'disabled-dates', converter: dateConverter }) disabledDates: string[] | string = [];
 
   /** Custom predicate that can disable specific dates at runtime. */
   @property({ attribute: false }) isDateDisabled: ((d: Date) => boolean) | null = null;

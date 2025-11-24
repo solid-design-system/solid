@@ -222,7 +222,7 @@ export const DisabledDays = {
       <sd-datepicker
         label="Label"
         value="2025.11.10"
-        disabled-dates="2025.10.31,2025.11.11,2025.11.19,2025.11.20,2025.11.24"
+        disabled-dates="2025-10-31,2025-11-11,2025-11-19,2025-11-20,2025-11-24"
       ></sd-datepicker>
     </div>
   `
@@ -234,7 +234,7 @@ export const DisabledDays = {
 export const Range = {
   render: () => html`
     <div class="w-[370px]">
-      <sd-datepicker label="Label" range rangeStart="2025.10.02" rangeEnd="2025.10.12"></sd-datepicker>
+      <sd-datepicker label="Label" range range-start="2025-11-02" range-end="2025-11-12"></sd-datepicker>
     </div>
   `
 };
