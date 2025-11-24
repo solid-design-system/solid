@@ -249,9 +249,17 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
         </label>
         ${this.hasSlotController.test('tooltip') ? html` <slot name="tooltip"></slot>` : null}
       </div>
-      <div class="flex items-center gap-1 mt-1">
+      <div id="invalid-icon-message" class="flex items-center gap-2">
         ${this.showInvalidStyle
-          ? html` <sd-icon part="invalid-icon" class=${cx('text-error')} library="_internal" name="risk"></sd-icon> `
+          ? html`
+              <sd-icon
+                id="invalid-icon"
+                part="invalid-icon"
+                class=${cx('text-error mt-1')}
+                library="_internal"
+                name="risk"
+              ></sd-icon>
+            `
           : ''}
         ${this.formControlController.renderInvalidMessage()}
       </div>
