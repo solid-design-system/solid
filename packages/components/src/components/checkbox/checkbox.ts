@@ -205,13 +205,6 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
                     ? 'filled'
                     : 'default';
 
-    const iconMarginLeft = { sm: 'ml-0', md: 'ml-0', lg: 'ml-0' }[this.size];
-    const iconSize = {
-      sm: 'text-sm',
-      md: 'text-base',
-      lg: 'text-base'
-    }[this.size];
-
     return html`
       <label
         part="base"
@@ -334,14 +327,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
       </label>
       <div class="flex items-center gap-1 mt-1">
         ${this.showInvalidStyle
-          ? html`
-              <sd-icon
-                part="invalid-icon"
-                class=${cx('text-error', iconMarginLeft, iconSize)}
-                library="_internal"
-                name="risk"
-              ></sd-icon>
-            `
+          ? html` <sd-icon part="invalid-icon" class=${cx('text-error')} library="_internal" name="risk"></sd-icon> `
           : ''}
         ${this.formControlController.renderInvalidMessage()}
       </div>
