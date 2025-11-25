@@ -135,6 +135,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   /** Disables the control entirely when true. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  /** Makes the input a required field. */
+  @property({ type: Boolean, reflect: true }) required = false;
+
   /** Makes the control non-interactive visually (like disabled) without disabling it functionally. */
   @property({ type: Boolean, attribute: 'visually-disabled' }) visuallyDisabled = false;
 
@@ -1885,6 +1888,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 placeholder=${this.placeholder ||
                 this.localize.term(this.range ? 'dateRangePlaceholder' : 'datePlaceholder')}
                 ?disabled=${this.disabled}
+                ?required=${this.required}
                 ?readonly=${this.readonly || this.visuallyDisabled}
                 @input=${this.handleInput}
                 @click=${this.handleMouseDown}

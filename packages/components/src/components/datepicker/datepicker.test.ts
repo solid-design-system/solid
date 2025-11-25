@@ -353,4 +353,13 @@ describe('<sd-datepicker>', () => {
       expect(el['currentPlacement']).to.equal('bottom');
     });
   });
+
+  describe('required attribute', () => {
+    it('should make the input a required field when the required attribute is set', async () => {
+      const el = await fixture<SdDatepicker>(html` <sd-datepicker required></sd-datepicker> `);
+      const input = el.shadowRoot!.querySelector<HTMLInputElement>('#input')!;
+
+      expect(input.checkValidity()).to.be.false;
+    });
+  });
 });
