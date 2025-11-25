@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.17.2
+
+### Patch Changes
+
+- Updated `sd-checkbox` to use icon from `sd-status-assets`. _[`#2633`](https://github.com/solid-design-system/solid/pull/2633) [`9d5c6bd`](https://github.com/solid-design-system/solid/commit/9d5c6bd6197a977dd99c232516f6f0d22ad5dde7) [@smfonseca](https://github.com/smfonseca)_
+
 ## 5.17.1
 
 ### Patch Changes
