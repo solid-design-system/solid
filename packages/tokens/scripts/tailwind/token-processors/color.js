@@ -82,7 +82,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       const variable = {
         type: 'color',
         name: this.cssprefix(processed.cssvar),
-        value: replacement ? this.cssvar(this.cssprefix(replacement)) : color,
+        value: replacement ? this.cssvar(this.cssprefix(replacement)) : this.#toRgb(color),
         variant
       };
 
@@ -95,7 +95,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
       const variable = {
         type: 'color',
         name: this.cssprefix(processed.name),
-        value: coreToken ? this.cssvar(coreToken.join('-')) : token.value,
+        value: coreToken ? this.cssvar(coreToken.join('-')) : this.#toRgb(token.value),
         variant
       };
 
@@ -180,7 +180,7 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
 
   #toRgb(color) {
     if (color.startsWith('rgba')) {
-      return color.slice(5, -1).replaceAll(',', '');
+      return color.slice(5, -1);
     }
 
     let h = color.replace(/^#/, '');
@@ -196,6 +196,6 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     const g = (num >> 8) & 255;
     // eslint-disable-next-line no-bitwise
     const b = num & 255;
-    return [r, g, b].join(' ');
+    return [r, g, b].join(', ');
   }
 }

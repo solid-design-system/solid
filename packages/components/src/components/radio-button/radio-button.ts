@@ -109,7 +109,7 @@ export default class SdRadioButton extends SolidElement {
           role="radio"
           aria-checked="${this.checked}"
           class="${cx(
-            'relative text-center rounded-full transition-all ease-in-out duration-100 items-center justify-center focus-visible:focus-outline',
+            'relative text-center sd-radio-button-border-radius transition-all ease-in-out duration-100 items-center justify-center focus-visible:focus-outline',
             this.size === 'sm' ? 'text-sm' : 'text-base',
             this.checked && !this.disabled && !this.visuallyDisabled
               ? 'sd-button--primary--default-color-background sd-button--primary--default-color-text hover:sd-button--primary--hover-color-background'
@@ -117,7 +117,7 @@ export default class SdRadioButton extends SolidElement {
                 ? 'text-neutral-500 hover:cursor-not-allowed'
                 : this.checked && (this.disabled || this.visuallyDisabled)
                   ? 'bg-neutral-400 text-white hover:cursor-not-allowed '
-                  : 'bg-transparent text-primary border-primary hover:text-primary-500 cursor-pointer',
+                  : 'bg-transparent sd-radio-button-color-text border-primary hover:text-primary-500 cursor-pointer',
             hasDefaultSlot &&
               {
                 sm: 'px-3',

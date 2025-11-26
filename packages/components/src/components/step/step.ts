@@ -145,7 +145,7 @@ export default class SdStep extends SolidElement {
     );
 
     const circleButtonClasses = cx(
-      'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
+      'border sd-step__circle-border-width rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
       this.disabled
         ? 'focus-visible:outline-none cursor-not-allowed'
         : !this.notInteractive && !this.waiting

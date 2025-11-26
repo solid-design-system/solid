@@ -509,7 +509,7 @@ export default class SdAudio extends SolidElement {
 
           <sd-range
             part="progress-slider"
-            no-tooltip
+            tooltip="hidden"
             min="0"
             max="100"
             step="0.001"

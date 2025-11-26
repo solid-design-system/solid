@@ -32,8 +32,8 @@ import SolidElement from '../../internal/solid-element';
  * @csspart description - The component's description area below its main content.
  * @csspart divider - The component's optional top divider.
  *
- * @cssproperty --sd-navigation--current-color-text - The navigation-item text color when current state.
- * @cssproperty --sd-navigation-color-text - The navigation-item text color.
+ * @cssproperty --sd-navigation-item--current-color-text - The navigation-item text color when current state.
+ * @cssproperty --sd-navigation-item-color-text - The navigation-item text color.
  * @cssproperty --sd-navigable-border-radius - The navigation-item border radius on hover and active state.
  * @cssproperty --sd-navigable-font-size - The navigation-item font size.
  * @cssproperty --sd-navigable__current-indicator-border-radius - The navigation-item current indicator border radius value.
@@ -206,8 +206,8 @@ export default class SdNavigationItem extends SolidElement {
         class=${cx(
           'flex items-center cursor-pointer relative focus-visible:focus-outline group hover:bg-neutral-200 transition-colors duration-fast ease-in-out min-h-[48px] navigable-border-radius',
           { md: 'navigable-font-size', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
-          this.disabled ? 'text-neutral-500 pointer-events-none' : 'sd-navigation-color-text',
-          this.current && 'font-bold sd-navigation--current-color-text',
+          this.disabled ? 'text-neutral-500 pointer-events-none' : 'sd-navigation-item-color-text',
+          this.current && 'font-bold sd-navigation-item--current-color-text',
           !isAccordion && 'w-full',
           this.divider && this.vertical && 'mt-0.25',
           !this.vertical && 'inline-flex items-center',

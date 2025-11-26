@@ -325,7 +325,13 @@ export default class SdNotification extends SolidElement {
             part="content"
             class=${cx(
               'h-full w-full p-1 gap-2 flex items-center justify-stretch bg-white',
-              'border-solid border-[1px] border-l-0 border-neutral-400'
+              'border-solid border-[1px] border-l-0 border-neutral-400',
+              {
+                info: 'sd-notification--info-color-background',
+                success: 'sd-notification--success-color-background',
+                warning: 'sd-notification--warning-color-background',
+                error: 'sd-notification--error-color-background'
+              }[this.variant]
             )}
           >
             <slot id="message" part="message" class="block w-full pl-3 py-2"></slot>

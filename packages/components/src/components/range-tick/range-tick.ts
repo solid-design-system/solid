@@ -29,7 +29,10 @@ export default class SdRangeTick extends SolidElement {
   render() {
     return html` <div part="base" class=${cx(this.subtick ? 'w-0.25' : 'w-0.5')}>
       <div part="line" class=${cx(this.subtick ? 'h-2' : 'h-[10px]')}></div>
-      <div part="label" class="flex items-center justify-center text-center text-nowrap text-sm">
+      <div
+        part="label"
+        class="flex items-center justify-center text-center text-nowrap text-sm sd-range-scale-ticks-color-text"
+      >
         <slot></slot>
       </div>
     </div>`;

@@ -74,9 +74,11 @@ export default class SdTeaserMedia extends SolidElement {
                 'absolute inset-0',
                 {
                   white: 'bg-white/[.8] group-hover:bg-white/90',
-                  'neutral-100': 'bg-neutral-100/[.8] group-hover:bg-neutral-100/90',
+                  'neutral-100':
+                    'sd-teaser-media--neutral-100-color-background group-hover:sd-teaser-media--neutral-100--hover-color-background',
                   primary: 'bg-primary/[.8] text-white group-hover:bg-primary/90',
-                  'primary-100': 'bg-primary-100/[.8] group-hover:bg-primary-100/90',
+                  'primary-100':
+                    'sd-teaser-media--primary-100-color-background group-hover:sd-teaser-media--primary-100--hover-color-background',
                   'gradient-light': 'bg-gradient-to-t from-white/90 to-white/[.8]',
                   'gradient-dark': 'bg-gradient-to-t from-primary-800/90 to-primary-800/[.8]'
                 }[this.variant]
@@ -154,14 +156,13 @@ export default class SdTeaserMedia extends SolidElement {
        * For more details, see the 'Consistency with Figma' section in the **CONTRIBUTING.md**.
        */
       :host([variant='gradient-light']) .bg-gradient-to-t {
-        --sd-color-background-white: rgba(
-          var(--sd-informational-gradient--white-color-background, rgba(var(--sd-color-white)))
-        );
+        --sd-color-background-white: var(--sd-informational-gradient--white-color-background, var(--sd-color-white));
       }
 
       :host([variant='gradient-dark']) .bg-gradient-to-t {
-        --sd-color-background-primary-800: rgba(
-          var(--sd-informational-gradient--primary-800-color-background, rgba(var(--sd-color-primary-800)))
+        --sd-color-background-primary-800: var(
+          --sd-informational-gradient--primary-800-color-background,
+          var(--sd-color-primary-800)
         );
       }
     `

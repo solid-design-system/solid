@@ -127,7 +127,7 @@ export default class SdTag extends SolidElement {
         @focus=${this.handleFocus}
         class=${cx(
           /* basic styles of the wrapper */
-          'inline-flex border box-border rounded-full items-center leading-none whitespace-nowrap transition-colors duration-fast ease-in-out focus-visible:focus-outline',
+          'inline-flex border box-border sd-tag-border-radius items-center leading-none whitespace-nowrap transition-colors duration-fast ease-in-out focus-visible:focus-outline',
           {
             /* sizes, fonts */
             lg: 'h-8 text-base gap-2',
@@ -143,10 +143,10 @@ export default class SdTag extends SolidElement {
             ? cx(
                 'border-primary text-primary disabled:border-neutral-500 disabled:text-neutral-500',
                 !this.removable
-                  ? 'hover:border-primary-500 hover:text-primary-500'
+                  ? 'hover:border-primary-500 hover:text-primary-500 hover:sd-tag--default--hover-color-background'
                   : 'has-[button:hover]:border-primary-500 has-[button:hover]:text-primary-500'
               )
-            : 'sd-tag--selected--default-color-background border-primary sd-tag--selected--default-color-text hover:bg-primary-500 hover:border-primary-500 disabled:bg-neutral-500 disabled:border-neutral-500',
+            : 'sd-tag--selected-border-width sd-tag--selected--default-color-background sd-tag--selected--default-color-border sd-tag--selected--default-color-text hover:sd-tag--selected--hover-color-background hover:sd-tag--selected--hover-color-border hover:sd-tag--selected--hover-color-text disabled:bg-neutral-500 disabled:border-neutral-500',
           this.disabled && !isLink && 'cursor-not-allowed'
         )}
       >

@@ -592,7 +592,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               // States
               !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
-              inputState === 'disabled' || inputState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black'
+              ['disabled', 'visuallyDisabled'].includes(inputState) ? 'text-neutral-500' : 'text-black',
+              ['invalid', 'activeInvalid'].includes(inputState) && 'form-control--invalid-color-background'
             )}
           >
             ${slots['left']

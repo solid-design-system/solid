@@ -691,7 +691,7 @@ export default class SdCarousel extends SolidElement {
                         >
                           <span
                             class=${cx(
-                              'h-4 w-4 block border hover:border-primary-500 rounded-full transition-colors duration-slow hover:duration-fast ease-in-out',
+                              'h-4 w-4 block border sd-carousel__pager-dot-border-width hover:border-primary-500 rounded-full transition-colors duration-slow hover:duration-fast ease-in-out',
                               this.inverted ? 'border-white hover:border-primary-500' : 'border-primary',
                               isActive && 'bg-accent border-none',
                               isActive ? (this.inverted ? 'hover:bg-accent-300' : 'hover:bg-accent-550') : ''
@@ -838,6 +838,26 @@ export default class SdCarousel extends SolidElement {
 
       sd-button::part(label) {
         @apply flex flex-auto items-center pointer-events-none;
+      }
+
+      #carousel__navigation-button--next,
+      #carousel__navigation-button--previous {
+        color: rgba(var(--sd-color-icon-fill-primary));
+
+        &:disabled {
+          color: rgba(var(--sd-color-icon-fill-neutral-500));
+        }
+      }
+
+      :host([inverted]) {
+        #carousel__navigation-button--next,
+        #carousel__navigation-button--previous {
+          color: rgba(var(--sd-color-icon-fill-white));
+
+          &:disabled {
+            color: rgba(var(--sd-color-icon-fill-neutral-600));
+          }
+        }
       }
     `
   ];

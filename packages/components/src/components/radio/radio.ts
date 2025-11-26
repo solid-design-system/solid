@@ -121,13 +121,18 @@ export default class SdRadio extends SolidElement {
         <span
           part="${`${this.checked ? 'control--checked' : 'control--unchecked'}`}"
           class=${cx(
-            'flex-initial shrink-0 relative inline-flex items-center justify-center border rounded-full bg-white h-4 w-4 duration-fast ease-in-out',
+            'flex-initial shrink-0 relative inline-flex items-center justify-center border sd-radio-border-width rounded-full bg-white h-4 w-4 duration-fast ease-in-out',
             this.disabled || this.visuallyDisabled
               ? 'border-neutral-500'
               : this.invalid
-                ? 'border-error hover:border-error-400 group-hover:border-error-400'
+                ? cx(
+                    'border-error hover:border-error-400 group-hover:border-error-400',
+                    this.checked
+                      ? 'sd-radio--checked--invalid--default-color-background'
+                      : 'sd-radio--default--invalid-color-background'
+                  )
                 : this.checked
-                  ? 'border-accent hover:border-accent-550 group-hover:border-accent-550'
+                  ? 'sd-radio--checked--default-color-background hover:sd-radio--checked--hover-color-background group-hover:sd-radio--checked--hover-color-background border-accent hover:border-accent-550 group-hover:border-accent-550'
                   : 'form-control-color-border hover:bg-neutral-200 group-hover:bg-neutral-200'
           )}
         >

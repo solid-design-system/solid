@@ -428,7 +428,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
           ${this.hasButtonGroup
             ? html`
                 <sd-button-group
-                  class="border border-primary rounded-full"
+                  class="border border-primary sd-radio-button-group-border-radius sd-radio-button-group-border-width sd-radio-button-group-padding-block"
                   part="button-group"
                   exportparts="base:button-group__base"
                   role="presentation"

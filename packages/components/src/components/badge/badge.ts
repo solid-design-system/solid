@@ -37,9 +37,13 @@ export default class SdBadge extends SolidElement {
             /* variants */
             blue: !this.inverted
               ? 'text-white bg-primary-500 border-white'
-              : 'text-primary bg-primary-100 border-primary',
-            green: !this.inverted ? 'text-white bg-success border-white' : 'text-white bg-success border-primary',
-            red: !this.inverted ? 'text-white bg-error border-white' : 'text-white bg-error border-primary'
+              : 'sd-badge--blue--inverted-color-text sd-badge--blue--inverted-color-background border-primary',
+            green: !this.inverted
+              ? 'text-white sd-badge--green-color-background border-white'
+              : 'sd-badge--green-color--inverted-text sd-badge--green-color--inverted-background border-primary',
+            red: !this.inverted
+              ? 'text-white sd-badge--red-color-background border-white'
+              : 'sd-badge--red--inverted-text sd-badge--red--inverted-background border-primary'
           }[this.variant]
         )}
       >

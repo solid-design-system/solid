@@ -129,7 +129,7 @@ export default class SdVideo extends SolidElement {
           @keydown=${this.handleKeydown}
           class=${cx(
             this.playing && 'pointer-events-none',
-            'group w-full h-full absolute top-0 left-0 z-30 text-primary hover:text-primary-500 sd-interactive outline-hidden focus-visible:focus-outline'
+            'group w-full h-full absolute top-0 left-0 z-30 sd-interactive outline-hidden focus-visible:focus-outline'
           )}
         >
           <div
@@ -174,6 +174,11 @@ export default class SdVideo extends SolidElement {
 
       :has([part='play-button']:hover) ::slotted([slot='poster']) {
         @apply !scale-110;
+      }
+
+      [part='play-button-bg'] {
+        color: rgba(var(--sd-video--play-button-color-icon-fill));
+        background-color: rgba(var(--sd-video--play-button-color-background));
       }
     `
   ];

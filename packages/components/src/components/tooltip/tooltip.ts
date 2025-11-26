@@ -332,7 +332,7 @@ export default class SdTooltip extends SolidElement {
           name="content"
           part="body"
           id="tooltip"
-          class=" bg-primary text-white py-3 px-4 block rounded-none text-sm text-left"
+          class="sd-tooltip-color-background sd-tooltip-color-text py-3 px-4 block rounded-none text-sm text-left"
           role="tooltip"
           aria-label=${this.content}
           aria-live=${this.open ? 'polite' : 'off'}
@@ -352,7 +352,7 @@ export default class SdTooltip extends SolidElement {
       }
 
       sd-popup {
-        --arrow-color: rgba(var(--sd-color-background-primary));
+        --arrow-color: rgba(var(--sd-tooltip-color-background));
         --arrow-size: 10px;
       }
 

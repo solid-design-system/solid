@@ -1251,6 +1251,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 'relative w-full px-4 flex flex-row items-center rounded-default transition-colors hover:duration-fast ease-in-out',
                 this.visuallyDisabled || this.disabled ? 'hover:bg-transparent' : 'hover:bg-neutral-200',
                 this.open && 'shadow transition-shadow duration-medium ease-in-out',
+                ['invalid', 'activeInvalid'].includes(selectState) && 'form-control--invalid-color-background',
                 {
                   sm: 'py-1 min-h-[32px]',
                   md: 'py-1 min-h-[40px]',

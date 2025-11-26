@@ -308,7 +308,7 @@ export default class SdBrandshape extends SolidElement {
        * For more details, see the 'Consistency with Figma' section in the **CONTRIBUTING.md**.
        */
       :host([variant='neutral-100']) [part='base'] {
-        fill: rgba(var(--sd-color-background-neutral-100, rgba(var(--sd-color-neutral-100))));
+        fill: rgba(var(--sd-brandshape--neutral-100-color-background, rgba(var(--sd-color-neutral-100))));
       }
 
       :host([variant='white']) [part='base'] {

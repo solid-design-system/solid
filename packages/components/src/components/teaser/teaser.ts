@@ -102,10 +102,10 @@ export default class SdTeaser extends SolidElement {
           'flex',
           {
             white: 'bg-white',
-            'white border-neutral-400': 'bg-white border border-neutral-400',
-            'neutral-100': 'bg-neutral-100',
+            'white border-neutral-400': 'bg-white border sd-teaser--neutral-400-color-border',
+            'neutral-100': 'sd-teaser--neutral-100-color-background',
             primary: 'bg-primary text-white',
-            'primary-100': 'bg-primary-100'
+            'primary-100': 'sd-teaser--primary-100-color-background'
           }[this.variant],
           this._orientation === 'vertical' && 'flex-col',
           this._orientation === 'horizontal' && 'flex-row gap-8',
