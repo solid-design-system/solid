@@ -448,7 +448,20 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
       >
         ${this.helpText}
       </slot>
-      ${this.formControlController.renderInvalidMessage()}
+      <div id="invalid-icon-message" class="flex items-center gap-2">
+        ${this.showInvalidStyle
+          ? html`
+              <sd-icon
+                id="invalid-icon"
+                part="invalid-icon"
+                class=${cx('text-error mt-1')}
+                library="_internal"
+                name="risk"
+              ></sd-icon>
+            `
+          : ''}
+        ${this.formControlController.renderInvalidMessage()}
+      </div>
     `;
   }
 
