@@ -104,6 +104,8 @@ export default class SdTooltip extends SolidElement {
     this.handleMouseOut = this.handleMouseOut.bind(this);
     document.addEventListener('mousedown', this.handleMouseInteraction);
     document.addEventListener('keydown', this.handleKeyboardInteraction);
+    this.handleDocumentClick = this.handleDocumentClick.bind(this);
+    document.addEventListener('click', this.handleDocumentClick);
 
     this.updateComplete.then(() => {
       this.addEventListener('blur', this.handleBlur, true);
@@ -136,6 +138,7 @@ export default class SdTooltip extends SolidElement {
     this.removeEventListener('mouseout', this.handleMouseOut);
     document.removeEventListener('mousedown', this.handleMouseInteraction);
     document.removeEventListener('keydown', this.handleKeyboardInteraction);
+    document.removeEventListener('click', this.handleDocumentClick);
   }
 
   private get hasCustomTrigger() {
@@ -208,6 +211,15 @@ export default class SdTooltip extends SolidElement {
       const delay = parseDuration(getComputedStyle(this).getPropertyValue('--hide-delay'));
       clearTimeout(this.hoverTimeout);
       this.hoverTimeout = window.setTimeout(() => this.hide(), delay);
+    }
+  }
+
+  private handleDocumentClick(event: MouseEvent) {
+    if (!this.open) return;
+    const path = event.composedPath();
+    const clickedInsideComponent = path.includes(this) || path.includes(this.popup);
+    if (!clickedInsideComponent) {
+      this.hide();
     }
   }
 
