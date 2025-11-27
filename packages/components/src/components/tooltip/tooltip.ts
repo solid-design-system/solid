@@ -216,9 +216,9 @@ export default class SdTooltip extends SolidElement {
 
   private handleDocumentClick(event: MouseEvent) {
     if (!this.open) return;
+    if (this.interactionType === 'keyboard') return;
     const path = event.composedPath();
-    const clickedInsideComponent = path.includes(this) || path.includes(this.popup);
-    if (!clickedInsideComponent) {
+    if (!path.includes(this) && !path.includes(this.popup)) {
       this.hide();
     }
   }
