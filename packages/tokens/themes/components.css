@@ -238,10 +238,6 @@
   color: rgba(var(--sd-button--secondary--inverted--hover-color-text, rgba(var(--sd-color-primary-100))));
 }
 
-@utility sd-button--secondary--pressed-color-background {
-  background-color: rgba(var(--sd-button--secondary--pressed-color-background, rgba(var(--sd-color-primary-200))));
-}
-
 @utility sd-button--size-lg-border-radius {
  border-radius: var(--sd-button--size-lg-border-radius, var(--sd-spacing-1));
 }
@@ -432,10 +428,6 @@
 
 @utility sd-navigation-item--current-color-text {
   color: rgba(var(--sd-navigation-item--current-color-text, rgba(var(--sd-color-primary))));
-}
-
-@utility sd-navigation-item-color-icon {
-  background-color: rgba(var(--sd-navigation-item-color-icon, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-navigation-item-color-text {

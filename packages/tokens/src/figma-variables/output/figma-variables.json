@@ -3389,15 +3389,6 @@
                 }
               }
             }
-          },
-          "--pressed": {
-            "color": {
-              "background": {
-                "description": "Default icon color ",
-                "type": "color",
-                "value": "{ui-light.utilities.color.primary.200}"
-              }
-            }
           }
         },
         "--tertiary": {
@@ -3793,7 +3784,7 @@
             "type": "color",
             "value": "{ui-light.utilities.color.text.primary.default}"
           },
-          "icon": {
+          "_icon": {
             "type": "color",
             "value": "{ui-light.utilities.color.text.primary.default}"
           }
@@ -6109,15 +6100,6 @@
                 }
               }
             }
-          },
-          "--pressed": {
-            "color": {
-              "background": {
-                "description": "Default icon color ",
-                "type": "color",
-                "value": "{ui-dark.utilities.color.primary.700}"
-              }
-            }
           }
         },
         "--tertiary": {
@@ -6513,7 +6495,7 @@
             "type": "color",
             "value": "{ui-dark.utilities.color.text.primary.default}"
           },
-          "icon": {
+          "_icon": {
             "type": "color",
             "value": "{ui-dark.utilities.color.text.primary.default}"
           }
@@ -8829,15 +8811,6 @@
                 }
               }
             }
-          },
-          "--pressed": {
-            "color": {
-              "background": {
-                "description": "Default icon color ",
-                "type": "color",
-                "value": "{vb.utilities.color.primary.200}"
-              }
-            }
           }
         },
         "--tertiary": {
@@ -9233,7 +9206,7 @@
             "type": "color",
             "value": "{vb.utilities.color.text.black.default}"
           },
-          "icon": {
+          "_icon": {
             "type": "color",
             "value": "{vb.utilities.color.text.black.default}"
           }

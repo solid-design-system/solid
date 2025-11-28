@@ -63,7 +63,6 @@
   --sd-button--secondary--inverted--active-color-background: var(--sd-color-primary-800);
   --sd-button--secondary--inverted--hover-color-background: var(--sd-color-primary-500);
   --sd-button--secondary--inverted--hover-color-text: var(--sd-color-primary-100);
-  --sd-button--secondary--pressed-color-background: var(--sd-color-primary-200);
   --sd-button--size-lg-border-radius: var(--sd-spacing-1);
   --sd-button--size-lg-font-size: var(--sd-spacing-4);
   --sd-button--size-lg-padding-block: var(--sd-spacing-3);
@@ -254,7 +253,6 @@
   --sd-navigable__current-indicator-height: var(--sd-spacing-1);
   --sd-navigable__current-indicator-width: var(--sd-spacing-1);
   --sd-navigation-item--current-color-text: var(--sd-color-primary);
-  --sd-navigation-item-color-icon: var(--sd-color-primary);
   --sd-navigation-item-color-text: var(--sd-color-primary);
   --sd-notification--error-color-background: var(--sd-color-white);
   --sd-notification--info-color-background: var(--sd-color-white);
