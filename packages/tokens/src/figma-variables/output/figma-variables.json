@@ -1385,6 +1385,10 @@
             "type": "color",
             "value": "rgba(0, 0, 0, 0.38)"
           },
+          "540": {
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.54)"
+          },
           "620": {
             "type": "color",
             "value": "rgba(0, 0, 0, 0.62)"
@@ -1449,7 +1453,7 @@
         "sm": {
           "description": "14px",
           "type": "float",
-          "value": "13"
+          "value": "14"
         },
         "base": {
           "description": "16px",
@@ -1480,6 +1484,11 @@
           "description": "40px",
           "type": "float",
           "value": "38"
+        },
+        "xs": {
+          "description": "14px",
+          "type": "float",
+          "value": "12"
         }
       },
       "status": {
@@ -2675,6 +2684,11 @@
         }
       },
       "sizing": {
+        "1": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.1}"
+        },
         "2": {
           "description": "8px",
           "type": "float",
@@ -2734,6 +2748,11 @@
           "description": "10px",
           "type": "float",
           "value": "{core.ui.sizing.2,5}"
+        },
+        "0,5": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.0,5}"
         }
       },
       "spacing": {
@@ -2880,6 +2899,18 @@
         "bold": {
           "type": "string",
           "value": "{core.ui.font-weight.font-bold}"
+        }
+      },
+      "components": {
+        "sd-datepicker": {
+          "--disabled": {
+            "color": {
+              "text": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.text.neutral.500}"
+              }
+            }
+          }
         }
       }
     },
@@ -3178,10 +3209,6 @@
                 "value": "rgba(255, 255, 255, 0.00)"
               }
             }
-          },
-          "font-weight": {
-            "type": "string",
-            "value": "{ui-light.utilities.font-weight.normal}"
           }
         },
         "--default": {
@@ -3193,11 +3220,23 @@
                 "value": "rgba(255, 255, 255, 0.00)"
               }
             }
+          },
+          "--default": {
+            "color": {
+              "text": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.default}"
+              }
+            }
           }
         },
         "border-radius": {
           "type": "float",
           "value": "{ui-light.utilities.rounded.full}"
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{ui-light.utilities.font-weight.normal}"
         }
       },
       "form-control": {
@@ -3205,6 +3244,10 @@
           "border": {
             "type": "color",
             "value": "{ui-light.utilities.color.neutral.800}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.text.black.default}"
           }
         },
         "--invalid": {
@@ -3212,6 +3255,14 @@
             "background": {
               "type": "color",
               "value": "{ui-light.utilities.color.white.default}"
+            }
+          }
+        },
+        "__tooltip": {
+          "color": {
+            "icon": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.icon-fill.primary.default}"
             }
           }
         }
@@ -3341,7 +3392,7 @@
           },
           "--pressed": {
             "color": {
-              "background2": {
+              "background": {
                 "description": "Default icon color ",
                 "type": "color",
                 "value": "{ui-light.utilities.color.primary.200}"
@@ -3521,6 +3572,15 @@
               "value": "{ui-light.utilities.color.primary.800}"
             }
           }
+        },
+        "--default": {
+          "color": {
+            "text": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{ui-light.utilities.color.text.primary.default}"
+            }
+          }
         }
       },
       "sd-flag": {
@@ -3623,10 +3683,6 @@
         },
         "--neutral-100": {
           "color": {
-            "border": {
-              "type": "color",
-              "value": "rgba(255, 255, 255, 0.00)"
-            },
             "background": {
               "type": "color",
               "value": "{ui-light.utilities.color.background.neutral.100}"
@@ -3737,7 +3793,7 @@
             "type": "color",
             "value": "{ui-light.utilities.color.text.primary.default}"
           },
-          "icon-fill": {
+          "icon": {
             "type": "color",
             "value": "{ui-light.utilities.color.text.primary.default}"
           }
@@ -3821,7 +3877,7 @@
           "type": "float",
           "value": "{ui-light.utilities.rounded.full}"
         },
-        "padding-block": {
+        "padding": {
           "type": "float",
           "value": "0"
         }
@@ -3842,13 +3898,24 @@
             "type": "color",
             "value": "{ui-light.utilities.color.primary.default}"
           }
-        }
-      },
-      "sd-tooltip-interactive": {
-        "color": {
-          "icon": {
-            "type": "color",
-            "value": "{ui-light.utilities.color.primary.default}"
+        },
+        "--hover": {
+          "color": {
+            "background": {
+              "description": "Primary brand color for text",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "icon-fill": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.500}"
+            },
+            "text": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.500}"
+            }
           }
         }
       },
@@ -3861,10 +3928,6 @@
           "text": {
             "type": "color",
             "value": "{ui-light.utilities.color.white.default}"
-          },
-          "icon": {
-            "type": "color",
-            "value": "{ui-light.utilities.color.icon-fill.primary.default}"
           }
         }
       },
@@ -3913,6 +3976,12 @@
               "type": "color",
               "value": "{ui-light.utilities.color.text.black.default}"
             }
+          }
+        },
+        "__bar": {
+          "border-width": {
+            "type": "float",
+            "value": "{ui-light.utilities.sizing.1}"
           }
         }
       },
@@ -3983,12 +4052,16 @@
       "sd-radio": {
         "--checked": {
           "--default": {
+            "__icon": {
+              "color": {
+                "background": {
+                  "description": "Used for active / selected elements",
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.accent.default}"
+                }
+              }
+            },
             "color": {
-              "icon-fill": {
-                "description": "Used for active / selected elements",
-                "type": "color",
-                "value": "{ui-light.utilities.color.accent.default}"
-              },
               "background": {
                 "description": "Used for active / selected elements",
                 "type": "color",
@@ -3997,12 +4070,16 @@
             }
           },
           "--hover": {
+            "__icon": {
+              "color": {
+                "background": {
+                  "description": "Used for hover interaction",
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.accent.550}"
+                }
+              }
+            },
             "color": {
-              "icon-fill": {
-                "description": "Used for hover interaction",
-                "type": "color",
-                "value": "{ui-light.utilities.color.accent.550}"
-              },
               "background": {
                 "description": "Used for active / selected elements",
                 "type": "color",
@@ -4017,20 +4094,26 @@
                   "description": "Used for active / selected elements",
                   "type": "color",
                   "value": "{ui-light.utilities.color.white.default}"
-                },
-                "icon-fill": {
-                  "description": "Used for error messages, invalid states",
-                  "type": "color",
-                  "value": "{ui-light.utilities.color.error.300}"
+                }
+              },
+              "__icon": {
+                "color": {
+                  "background": {
+                    "description": "Used for error messages, invalid states",
+                    "type": "color",
+                    "value": "{ui-light.utilities.color.error.300}"
+                  }
                 }
               }
             },
             "--hover": {
-              "color": {
-                "icon-fill": {
-                  "description": "Used for hover interaction invalid form elements\n",
-                  "type": "color",
-                  "value": "{ui-light.utilities.color.error.400}"
+              "__icon": {
+                "color": {
+                  "background": {
+                    "description": "Used for hover interaction invalid form elements\n",
+                    "type": "color",
+                    "value": "{ui-light.utilities.color.error.400}"
+                  }
                 }
               }
             }
@@ -4082,14 +4165,18 @@
       },
       "sd-map-marker": {
         "cluster": {
-          "background-color": {
-            "type": "color",
-            "value": "{ui-light.utilities.color.background.primary.default}"
-          },
-          "hovered": {
-            "background-color": {
+          "color": {
+            "icon-fill": {
               "type": "color",
-              "value": "{ui-light.utilities.color.background.primary.500}"
+              "value": "{ui-light.utilities.color.background.primary.default}"
+            }
+          },
+          "--hovered": {
+            "color": {
+              "icon-fill": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.background.primary.500}"
+              }
             }
           }
         },
@@ -4158,7 +4245,7 @@
       "sd-loader": {
         "color": {
           "neutral-500": {
-            "text": {
+            "_text": {
               "type": "color",
               "value": "{ui-light.utilities.color.text.neutral.500}"
             }
@@ -4262,6 +4349,10 @@
             "type": "color",
             "value": "{ui-light.utilities.color.border.neutral.400}"
           }
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{ui-light.utilities.font-weight.normal}"
         }
       },
       "sd-switch": {
@@ -4272,20 +4363,22 @@
           }
         },
         "--unchecked": {
-          "border": {
-            "color": {
+          "color": {
+            "border": {
               "type": "color",
               "value": "{ui-light.utilities.color.icon-fill.neutral.800}"
             }
           },
-          "icon": {
+          "__icon": {
             "color": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.icon-fill.neutral.800}"
+              "background": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.icon-fill.neutral.800}"
+              }
             }
           }
         },
-        "--primary": {
+        "--checked": {
           "--hover": {
             "color": {
               "background": {
@@ -4293,14 +4386,6 @@
                 "value": "{ui-light.utilities.color.accent.550}"
               }
             }
-          }
-        }
-      },
-      "sd-select": {
-        "color": {
-          "text": {
-            "type": "color",
-            "value": "{ui-light.utilities.color.text.black.default}"
           }
         }
       },
@@ -4327,13 +4412,15 @@
           }
         },
         "--disabled": {
-          "icon": {
-            "type": "color",
-            "value": "{ui-light.utilities.color.icon-fill.neutral.500}"
-          },
-          "text": {
-            "type": "color",
-            "value": "{ui-light.utilities.color.text.neutral.500}"
+          "color": {
+            "icon": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.icon-fill.neutral.500}"
+            },
+            "text": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.text.neutral.500}"
+            }
           }
         }
       }
@@ -5317,6 +5404,11 @@
         }
       },
       "sizing": {
+        "1": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.1}"
+        },
         "2": {
           "description": "8px",
           "type": "float",
@@ -5376,6 +5468,11 @@
           "description": "10px",
           "type": "float",
           "value": "{core.ui.sizing.2,5}"
+        },
+        "0,5": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.0,5}"
         }
       },
       "spacing": {
@@ -5522,6 +5619,18 @@
         "bold": {
           "type": "string",
           "value": "{core.ui.font-weight.font-bold}"
+        }
+      },
+      "components": {
+        "sd-datepicker": {
+          "--disabled": {
+            "color": {
+              "text": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.text.neutral.600}"
+              }
+            }
+          }
         }
       }
     },
@@ -5809,7 +5918,7 @@
             "color": {
               "text": {
                 "type": "color",
-                "value": "{ui-dark.utilities.color.primary.default}"
+                "value": "{ui-dark.utilities.color.white.default}"
               },
               "background": {
                 "type": "color",
@@ -5820,10 +5929,6 @@
                 "value": "rgba(255, 255, 255, 0.00)"
               }
             }
-          },
-          "font-weight": {
-            "type": "string",
-            "value": "{ui-dark.utilities.font-weight.normal}"
           }
         },
         "--default": {
@@ -5835,11 +5940,23 @@
                 "value": "rgba(255, 255, 255, 0.00)"
               }
             }
+          },
+          "--default": {
+            "color": {
+              "text": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.white.default}"
+              }
+            }
           }
         },
         "border-radius": {
           "type": "float",
           "value": "{ui-dark.utilities.rounded.full}"
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{ui-dark.utilities.font-weight.normal}"
         }
       },
       "form-control": {
@@ -5847,6 +5964,10 @@
           "border": {
             "type": "color",
             "value": "{ui-dark.utilities.color.primary.200}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.text.black.default}"
           }
         },
         "--invalid": {
@@ -5854,6 +5975,14 @@
             "background": {
               "type": "color",
               "value": "{ui-dark.utilities.color.primary.900}"
+            }
+          }
+        },
+        "__tooltip": {
+          "color": {
+            "icon": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.icon-fill.primary.default}"
             }
           }
         }
@@ -5983,7 +6112,7 @@
           },
           "--pressed": {
             "color": {
-              "background2": {
+              "background": {
                 "description": "Default icon color ",
                 "type": "color",
                 "value": "{ui-dark.utilities.color.primary.700}"
@@ -6163,6 +6292,15 @@
               "value": "{ui-dark.utilities.color.primary.400}"
             }
           }
+        },
+        "--default": {
+          "color": {
+            "text": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.text.primary.default}"
+            }
+          }
         }
       },
       "sd-flag": {
@@ -6265,10 +6403,6 @@
         },
         "--neutral-100": {
           "color": {
-            "border": {
-              "type": "color",
-              "value": "rgba(255, 255, 255, 0.00)"
-            },
             "background": {
               "type": "color",
               "value": "{ui-dark.utilities.color.background.neutral.100}"
@@ -6379,7 +6513,7 @@
             "type": "color",
             "value": "{ui-dark.utilities.color.text.primary.default}"
           },
-          "icon-fill": {
+          "icon": {
             "type": "color",
             "value": "{ui-dark.utilities.color.text.primary.default}"
           }
@@ -6463,7 +6597,7 @@
           "type": "float",
           "value": "{ui-dark.utilities.rounded.full}"
         },
-        "padding-block": {
+        "padding": {
           "type": "float",
           "value": "0"
         }
@@ -6484,13 +6618,24 @@
             "type": "color",
             "value": "{ui-dark.utilities.color.white.default}"
           }
-        }
-      },
-      "sd-tooltip-interactive": {
-        "color": {
-          "icon": {
-            "type": "color",
-            "value": "{ui-dark.utilities.color.white.default}"
+        },
+        "--hover": {
+          "color": {
+            "background": {
+              "description": "Primary brand color for text",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "icon-fill": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.200}"
+            },
+            "text": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.200}"
+            }
           }
         }
       },
@@ -6503,10 +6648,6 @@
           "text": {
             "type": "color",
             "value": "{ui-dark.utilities.color.white.default}"
-          },
-          "icon": {
-            "type": "color",
-            "value": "{ui-dark.utilities.color.icon-fill.primary.default}"
           }
         }
       },
@@ -6555,6 +6696,12 @@
               "type": "color",
               "value": "{ui-dark.utilities.color.text.black.default}"
             }
+          }
+        },
+        "__bar": {
+          "border-width": {
+            "type": "float",
+            "value": "{ui-dark.utilities.sizing.1}"
           }
         }
       },
@@ -6625,12 +6772,16 @@
       "sd-radio": {
         "--checked": {
           "--default": {
+            "__icon": {
+              "color": {
+                "background": {
+                  "description": "Used for active / selected elements",
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.accent.default}"
+                }
+              }
+            },
             "color": {
-              "icon-fill": {
-                "description": "Used for active / selected elements",
-                "type": "color",
-                "value": "{ui-dark.utilities.color.accent.default}"
-              },
               "background": {
                 "description": "Used for active / selected elements",
                 "type": "color",
@@ -6639,12 +6790,16 @@
             }
           },
           "--hover": {
+            "__icon": {
+              "color": {
+                "background": {
+                  "description": "Used for hover interaction",
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.accent.550}"
+                }
+              }
+            },
             "color": {
-              "icon-fill": {
-                "description": "Used for hover interaction",
-                "type": "color",
-                "value": "{ui-dark.utilities.color.accent.550}"
-              },
               "background": {
                 "description": "Used for active / selected elements",
                 "type": "color",
@@ -6659,20 +6814,26 @@
                   "description": "Used for active / selected elements",
                   "type": "color",
                   "value": "{ui-dark.utilities.color.primary.900}"
-                },
-                "icon-fill": {
-                  "description": "Used for error messages, invalid states",
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.error.300}"
+                }
+              },
+              "__icon": {
+                "color": {
+                  "background": {
+                    "description": "Used for error messages, invalid states",
+                    "type": "color",
+                    "value": "{ui-dark.utilities.color.error.300}"
+                  }
                 }
               }
             },
             "--hover": {
-              "color": {
-                "icon-fill": {
-                  "description": "Used for hover interaction invalid form elements\n",
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.error.400}"
+              "__icon": {
+                "color": {
+                  "background": {
+                    "description": "Used for hover interaction invalid form elements\n",
+                    "type": "color",
+                    "value": "{ui-dark.utilities.color.error.400}"
+                  }
                 }
               }
             }
@@ -6724,14 +6885,18 @@
       },
       "sd-map-marker": {
         "cluster": {
-          "background-color": {
-            "type": "color",
-            "value": "{ui-dark.utilities.color.background.primary.default}"
-          },
-          "hovered": {
-            "background-color": {
+          "color": {
+            "icon-fill": {
               "type": "color",
-              "value": "{ui-dark.utilities.color.background.primary.500}"
+              "value": "{ui-dark.utilities.color.background.primary.default}"
+            }
+          },
+          "--hovered": {
+            "color": {
+              "icon-fill": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.background.primary.500}"
+              }
             }
           }
         },
@@ -6800,7 +6965,7 @@
       "sd-loader": {
         "color": {
           "neutral-500": {
-            "text": {
+            "_text": {
               "type": "color",
               "value": "{ui-dark.utilities.color.text.neutral.500}"
             }
@@ -6904,6 +7069,10 @@
             "type": "color",
             "value": "{ui-dark.utilities.color.border.neutral.400}"
           }
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{ui-dark.utilities.font-weight.normal}"
         }
       },
       "sd-switch": {
@@ -6914,20 +7083,22 @@
           }
         },
         "--unchecked": {
-          "border": {
-            "color": {
+          "color": {
+            "border": {
               "type": "color",
               "value": "{ui-dark.utilities.color.icon-fill.neutral.800}"
             }
           },
-          "icon": {
+          "__icon": {
             "color": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.icon-fill.neutral.800}"
+              "background": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.icon-fill.neutral.800}"
+              }
             }
           }
         },
-        "--primary": {
+        "--checked": {
           "--hover": {
             "color": {
               "background": {
@@ -6935,14 +7106,6 @@
                 "value": "{ui-dark.utilities.color.accent.550}"
               }
             }
-          }
-        }
-      },
-      "sd-select": {
-        "color": {
-          "text": {
-            "type": "color",
-            "value": "{ui-dark.utilities.color.text.black.default}"
           }
         }
       },
@@ -6969,13 +7132,15 @@
           }
         },
         "--disabled": {
-          "icon": {
-            "type": "color",
-            "value": "{ui-dark.utilities.color.icon-fill.neutral.500}"
-          },
-          "text": {
-            "type": "color",
-            "value": "{ui-dark.utilities.color.text.neutral.500}"
+          "color": {
+            "icon": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.icon-fill.neutral.500}"
+            },
+            "text": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.text.neutral.500}"
+            }
           }
         }
       }
@@ -7306,17 +7471,17 @@
                         "60%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(0, 45, 103, 0.60)"
+                          "value": "rgba(0, 0, 0, 0.54)"
                         },
                         "75%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(0, 45, 103, 0.75)"
+                          "value": "rgba(0, 0, 0, 0.54)"
                         },
                         "0%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(0, 45, 103, 0.00)"
+                          "value": "rgba(0, 0, 0, 0.00)"
                         }
                       }
                     }
@@ -7959,6 +8124,11 @@
         }
       },
       "sizing": {
+        "1": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.1}"
+        },
         "2": {
           "description": "8px",
           "type": "float",
@@ -8018,6 +8188,11 @@
           "description": "10px",
           "type": "float",
           "value": "{core.ui.sizing.2,5}"
+        },
+        "0,5": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.0,5}"
         }
       },
       "spacing": {
@@ -8164,6 +8339,18 @@
         "bold": {
           "type": "string",
           "value": "Bold"
+        }
+      },
+      "components": {
+        "sd-datepicker": {
+          "--disabled": {
+            "color": {
+              "text": {
+                "type": "color",
+                "value": "{vb.utilities.color.text.neutral.500}"
+              }
+            }
+          }
         }
       }
     },
@@ -8462,10 +8649,6 @@
                 "value": "{vb.utilities.color.primary.default}"
               }
             }
-          },
-          "font-weight": {
-            "type": "string",
-            "value": "{vb.utilities.font-weight.bold}"
           }
         },
         "--default": {
@@ -8477,11 +8660,23 @@
                 "value": "{vb.utilities.color.primary.100}"
               }
             }
+          },
+          "--default": {
+            "color": {
+              "text": {
+                "type": "color",
+                "value": "{vb.utilities.color.primary.default}"
+              }
+            }
           }
         },
         "border-radius": {
           "type": "float",
           "value": "{vb.utilities.rounded.lg}"
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{vb.utilities.font-weight.bold}"
         }
       },
       "form-control": {
@@ -8489,6 +8684,10 @@
           "border": {
             "type": "color",
             "value": "{vb.utilities.color.black.default}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{core.vb.from-figma.grey.620}"
           }
         },
         "--invalid": {
@@ -8496,6 +8695,14 @@
             "background": {
               "type": "color",
               "value": "{core.vb.status.error-bg}"
+            }
+          }
+        },
+        "__tooltip": {
+          "color": {
+            "icon": {
+              "type": "color",
+              "value": "{vb.utilities.color.black.default}"
             }
           }
         }
@@ -8625,7 +8832,7 @@
           },
           "--pressed": {
             "color": {
-              "background2": {
+              "background": {
                 "description": "Default icon color ",
                 "type": "color",
                 "value": "{vb.utilities.color.primary.200}"
@@ -8805,6 +9012,15 @@
               "value": "{vb.utilities.color.primary.800}"
             }
           }
+        },
+        "--default": {
+          "color": {
+            "text": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{vb.utilities.color.icon-fill.primary.default}"
+            }
+          }
         }
       },
       "sd-flag": {
@@ -8907,10 +9123,6 @@
         },
         "--neutral-100": {
           "color": {
-            "border": {
-              "type": "color",
-              "value": "rgba(255, 255, 255, 0.00)"
-            },
             "background": {
               "type": "color",
               "value": "{vb.utilities.color.background.neutral.100}"
@@ -9021,7 +9233,7 @@
             "type": "color",
             "value": "{vb.utilities.color.text.black.default}"
           },
-          "icon-fill": {
+          "icon": {
             "type": "color",
             "value": "{vb.utilities.color.text.black.default}"
           }
@@ -9105,7 +9317,7 @@
           "type": "float",
           "value": "{vb.utilities.rounded.lg}"
         },
-        "padding-block": {
+        "padding": {
           "type": "float",
           "value": "{vb.utilities.spacing.1}"
         }
@@ -9126,13 +9338,24 @@
             "type": "color",
             "value": "{vb.utilities.color.black.default}"
           }
-        }
-      },
-      "sd-tooltip-interactive": {
-        "color": {
-          "icon": {
-            "type": "color",
-            "value": "{core.vb.from-figma.grey.default}"
+        },
+        "--hover": {
+          "color": {
+            "background": {
+              "description": "Primary brand color for text",
+              "type": "color",
+              "value": "{core.vb.from-figma.vb.from-ultra.hover}"
+            },
+            "icon-fill": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{vb.utilities.color.black.default}"
+            },
+            "text": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{vb.utilities.color.black.default}"
+            }
           }
         }
       },
@@ -9145,10 +9368,6 @@
           "text": {
             "type": "color",
             "value": "{core.vb.from-code.grey.600 (foreground-secondary-text)}"
-          },
-          "icon": {
-            "type": "color",
-            "value": "{vb.utilities.color.black.default}"
           }
         }
       },
@@ -9197,6 +9416,12 @@
               "type": "color",
               "value": "{core.vb.from-code.grey.600 (foreground-secondary-text)}"
             }
+          }
+        },
+        "__bar": {
+          "border-width": {
+            "type": "float",
+            "value": "{vb.utilities.sizing.0,5}"
           }
         }
       },
@@ -9267,12 +9492,16 @@
       "sd-radio": {
         "--checked": {
           "--default": {
+            "__icon": {
+              "color": {
+                "background": {
+                  "description": "Used for active / selected elements",
+                  "type": "color",
+                  "value": "{vb.utilities.color.white.default}"
+                }
+              }
+            },
             "color": {
-              "icon-fill": {
-                "description": "Used for active / selected elements",
-                "type": "color",
-                "value": "{vb.utilities.color.white.default}"
-              },
               "background": {
                 "description": "Used for active / selected elements",
                 "type": "color",
@@ -9281,12 +9510,16 @@
             }
           },
           "--hover": {
+            "__icon": {
+              "color": {
+                "background": {
+                  "description": "Used for hover interaction",
+                  "type": "color",
+                  "value": "{vb.utilities.color.white.default}"
+                }
+              }
+            },
             "color": {
-              "icon-fill": {
-                "description": "Used for hover interaction",
-                "type": "color",
-                "value": "{vb.utilities.color.white.default}"
-              },
               "background": {
                 "description": "Used for active / selected elements",
                 "type": "color",
@@ -9301,20 +9534,26 @@
                   "description": "Used for active / selected elements",
                   "type": "color",
                   "value": "{vb.utilities.color.error.default}"
-                },
-                "icon-fill": {
-                  "description": "Used for error messages, invalid states",
-                  "type": "color",
-                  "value": "{vb.utilities.color.white.default}"
+                }
+              },
+              "__icon": {
+                "color": {
+                  "background": {
+                    "description": "Used for error messages, invalid states",
+                    "type": "color",
+                    "value": "{vb.utilities.color.white.default}"
+                  }
                 }
               }
             },
             "--hover": {
-              "color": {
-                "icon-fill": {
-                  "description": "Used for hover interaction invalid form elements\n",
-                  "type": "color",
-                  "value": "{vb.utilities.color.white.default}"
+              "__icon": {
+                "color": {
+                  "background": {
+                    "description": "Used for hover interaction invalid form elements\n",
+                    "type": "color",
+                    "value": "{vb.utilities.color.white.default}"
+                  }
                 }
               }
             }
@@ -9366,14 +9605,18 @@
       },
       "sd-map-marker": {
         "cluster": {
-          "background-color": {
-            "type": "color",
-            "value": "{vb.utilities.color.background.accent.500}"
-          },
-          "hovered": {
-            "background-color": {
+          "color": {
+            "icon-fill": {
               "type": "color",
-              "value": "{vb.utilities.color.background.accent.550}"
+              "value": "{vb.utilities.color.background.accent.500}"
+            }
+          },
+          "--hovered": {
+            "color": {
+              "icon-fill": {
+                "type": "color",
+                "value": "{vb.utilities.color.background.accent.550}"
+              }
             }
           }
         },
@@ -9442,7 +9685,7 @@
       "sd-loader": {
         "color": {
           "neutral-500": {
-            "text": {
+            "_text": {
               "type": "color",
               "value": "{core.vb.from-code.primary.500 (40%)}"
             }
@@ -9546,6 +9789,10 @@
             "type": "color",
             "value": "{core.vb.from-code.grey.400}"
           }
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{vb.utilities.font-weight.bold}"
         }
       },
       "sd-switch": {
@@ -9556,20 +9803,22 @@
           }
         },
         "--unchecked": {
-          "border": {
-            "color": {
+          "color": {
+            "border": {
               "type": "color",
               "value": "{vb.utilities.color.text.black.default}"
             }
           },
-          "icon": {
+          "__icon": {
             "color": {
-              "type": "color",
-              "value": "{vb.utilities.color.text.black.default}"
+              "background": {
+                "type": "color",
+                "value": "{vb.utilities.color.text.black.default}"
+              }
             }
           }
         },
-        "--primary": {
+        "--checked": {
           "--hover": {
             "color": {
               "background": {
@@ -9577,14 +9826,6 @@
                 "value": "{vb.utilities.color.primary.600}"
               }
             }
-          }
-        }
-      },
-      "sd-select": {
-        "color": {
-          "text": {
-            "type": "color",
-            "value": "{core.vb.from-figma.grey.620}"
           }
         }
       },
@@ -9611,13 +9852,15 @@
           }
         },
         "--disabled": {
-          "icon": {
-            "type": "color",
-            "value": "{vb.utilities.color.text.black.default}"
-          },
-          "text": {
-            "type": "color",
-            "value": "rgba(0, 102, 179, 0.40)"
+          "color": {
+            "icon": {
+              "type": "color",
+              "value": "{vb.utilities.color.text.black.default}"
+            },
+            "text": {
+              "type": "color",
+              "value": "rgba(0, 102, 179, 0.40)"
+            }
           }
         }
       }

@@ -150,8 +150,8 @@ export default class SdMenuItem extends SolidElement {
       class=${cx(
         'relative flex items-stretch whitespace-nowrap py-3 px-4 no-wrap !navigable-border-radius',
         this.disabled
-          ? 'outline-none cursor-not-allowed text-neutral-500 hover:bg-transparent'
-          : 'cursor-pointer text-primary hover:bg-neutral-200',
+          ? 'outline-none cursor-not-allowed sd-menu--disabled-color-text hover:bg-transparent'
+          : 'cursor-pointer sd-menu-color-text hover:bg-neutral-200',
         this.isSubmenu() && isSubmenuExpanded && 'submenu-expanded'
       )}
       .disabled=${this.disabled}
@@ -231,6 +231,16 @@ export default class SdMenuItem extends SolidElement {
 
       :host(:hover) [part='base'] {
         @apply outline-none;
+      }
+
+      :host [part='icon-indent'],
+      :host [part='checked-icon'],
+      :host [part='submenu-icon'] {
+        color: rgba(var(--sd-menu-color-icon));
+      }
+
+      :host([aria-disabled='true']) [part='icon-indent'] {
+        color: rgba(var(--sd-menu--disabled-color-icon));
       }
 
       sd-popup::part(popup) {

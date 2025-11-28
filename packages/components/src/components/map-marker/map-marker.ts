@@ -107,12 +107,14 @@ export default class SdMapMarker extends SolidElement {
           class=${cx(
             'relative inline-flex',
             this.animated && (this.variant === 'main' || this.variant === 'place') && 'animate-bounce-once',
-            this.variant === 'cluster' && this.state === 'hover' && 'scale-110 fill-primary-500',
+            this.variant === 'cluster' &&
+              this.state === 'hover' &&
+              'scale-110 sd-map-marker-cluster--hovered-color-icon-fill',
             this.variant === 'cluster' &&
               !this.notInteractive &&
               'transition-transform duration-fast ease-in-out hover:scale-110',
             {
-              cluster: 'fill-primary',
+              cluster: 'sd-map-marker-cluster-color-icon-fill',
               main: 'fill-accent',
               place: 'fill-white'
             }[this.variant]

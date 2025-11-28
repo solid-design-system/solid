@@ -139,16 +139,16 @@ export default class SdRadio extends SolidElement {
           <span
             part="checked"
             class=${cx(
-              'rounded-full inline-flex text-white bg-accent h-2.5 w-2.5 transition-[transform, colors] duration-medium ease-in-out',
+              'rounded-full inline-flex text-white sd-radio--checked--default__icon-color-background h-2.5 w-2.5 transition-[transform, colors] duration-medium ease-in-out',
               this.checked ? 'scale-100' : 'scale-0',
               this.disabled
                 ? 'bg-neutral-500'
                 : this.visuallyDisabled
                   ? 'bg-white'
                   : this.invalid
-                    ? 'bg-error hover:bg-error-400 group-hover:bg-error-400'
+                    ? 'sd-radio--checked--invalid--default__icon-color-background hover:sd-radio--checked--invalid--hover__icon-color-background group-hover:sd-radio--checked--invalid--hover__icon-color-background'
                     : this.checked
-                      ? 'bg-accent hover:bg-accent-550 group-hover:bg-accent-550'
+                      ? 'sd-radio--checked--default__icon-color-background hover:sd-radio--checked--hover__icon-color-background group-hover:sd-radio--checked--hover__icon-color-background'
                       : 'bg-neutral-800'
             )}
           ></span>

@@ -114,9 +114,11 @@
   --radius-sm: var(--sd-radius-sm);
   --shadow-sm: var(--sd-shadow-sm);
   --shadow: var(--sd-shadow);
+  --sizing-0\.5: var(--sd-sizing-0\.5);
   --sizing-10: var(--sd-sizing-10);
   --sizing-12: var(--sd-sizing-12);
   --sizing-16: var(--sd-sizing-16);
+  --sizing-1: var(--sd-sizing-1);
   --sizing-20: var(--sd-sizing-20);
   --sizing-24: var(--sd-sizing-24);
   --sizing-2: var(--sd-sizing-2);

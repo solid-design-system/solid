@@ -61,7 +61,7 @@ export default class SdQuickfact extends SdAccordion {
             part="summary"
             class=${cx(
               'flex flex-auto items-start text-left text-base leading-normal font-normal sm:leading-tight sm:text-3xl sm:text-center',
-              this.expandable ? 'text-primary' : 'text-black cursor-default'
+              this.expandable ? 'sd-quickfact--expandable-color-text' : 'text-black cursor-default'
             )}>
             ${this.summary}
             </slot>

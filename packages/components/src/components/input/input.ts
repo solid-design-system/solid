@@ -557,7 +557,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               <label
                 part="form-control-label"
                 id="label"
-                class=${cx(hasLabel ? 'inline-block' : 'hidden', textSize)}
+                class=${cx(hasLabel ? 'inline-block form-control-color-text' : 'hidden', textSize)}
                 for="input"
                 aria-hidden=${hasLabel ? 'false' : 'true'}
               >
@@ -592,7 +592,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               // States
               !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
-              ['disabled', 'visuallyDisabled'].includes(inputState) ? 'text-neutral-500' : 'text-black',
+              ['disabled', 'visuallyDisabled'].includes(inputState) ? 'text-neutral-500' : 'form-control-color-text',
               ['invalid', 'activeInvalid'].includes(inputState) && 'form-control--invalid-color-background'
             )}
           >

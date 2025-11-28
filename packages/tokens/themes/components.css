@@ -6,6 +6,14 @@
   border-color: rgba(var(--sd-form-control-color-border, rgba(var(--sd-color-neutral-800))));
 }
 
+@utility form-control-color-text {
+  color: rgba(var(--sd-form-control-color-text, rgba(var(--sd-color-black))));
+}
+
+@utility form-control__tooltip-color-icon {
+  background-color: rgba(var(--sd-form-control__tooltip-color-icon, rgba(var(--sd-color-primary))));
+}
+
 @utility informational-gradient--primary-800-color-background {
   background-color: rgba(var(--sd-informational-gradient--primary-800-color-background, rgba(var(--sd-color-primary-800))));
 }
@@ -16,6 +24,10 @@
 
 @utility interactive--active-color-text {
   color: rgba(var(--sd-interactive--active-color-text, rgba(var(--sd-color-primary-800))));
+}
+
+@utility interactive--default-color-text {
+  color: rgba(var(--sd-interactive--default-color-text, rgba(var(--sd-color-primary))));
 }
 
 @utility navigable-border-radius {
@@ -122,10 +134,6 @@
   background-color: rgba(var(--sd-brandshape--neutral-100-color-background, rgba(var(--sd-color-neutral-100))));
 }
 
-@utility sd-brandshape--neutral-100-color-border {
-  border-color: rgba(var(--sd-brandshape--neutral-100-color-border, rgba(255, 255, 255, 0)));
-}
-
 @utility sd-brandshape--neutral-100-color-icon-fill {
   fill: rgba(var(--sd-brandshape--neutral-100-color-background, rgba(var(--sd-color-neutral-100))));
 }
@@ -230,8 +238,8 @@
   color: rgba(var(--sd-button--secondary--inverted--hover-color-text, rgba(var(--sd-color-primary-100))));
 }
 
-@utility sd-button--secondary--pressed-color-background2 {
-  background-color: rgba(var(--sd-button--secondary--pressed-color-background2, rgba(var(--sd-color-primary-200))));
+@utility sd-button--secondary--pressed-color-background {
+  background-color: rgba(var(--sd-button--secondary--pressed-color-background, rgba(var(--sd-color-primary-200))));
 }
 
 @utility sd-button--size-lg-border-radius {
@@ -394,28 +402,24 @@
   color: rgba(var(--sd-headline-4xl-and-mobile-4xl-text, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-loader-color-neutral-500-text {
-  color: rgba(var(--sd-loader-color-neutral-500-text, rgba(var(--sd-color-neutral-500))));
+@utility sd-map-marker-cluster--hovered-color-icon-fill {
+  fill: rgba(var(--sd-map-marker-cluster--hovered-color-icon-fill, rgba(var(--sd-color-primary-500))));
 }
 
-@utility sd-map-marker-cluster-background-color {
-  background-color: rgba(var(--sd-map-marker-cluster-background-color, rgba(var(--sd-color-primary))));
-}
-
-@utility sd-map-marker-cluster-hovered-background-color {
-  background-color: rgba(var(--sd-map-marker-cluster-hovered-background-color, rgba(var(--sd-color-primary-500))));
+@utility sd-map-marker-cluster-color-icon-fill {
+  fill: rgba(var(--sd-map-marker-cluster-color-icon-fill, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-map-marker-font-size {
  font-size: var(--sd-map-marker-font-size, var(--sd-spacing-3));
 }
 
-@utility sd-menu--disabled-icon {
-  background-color: rgba(var(--sd-menu--disabled-icon, rgba(var(--sd-color-neutral-500))));
+@utility sd-menu--disabled-color-icon {
+  background-color: rgba(var(--sd-menu--disabled-color-icon, rgba(var(--sd-color-neutral-500))));
 }
 
-@utility sd-menu--disabled-text {
-  color: rgba(var(--sd-menu--disabled-text, rgba(var(--sd-color-neutral-500))));
+@utility sd-menu--disabled-color-text {
+  color: rgba(var(--sd-menu--disabled-color-text, rgba(var(--sd-color-neutral-500))));
 }
 
 @utility sd-menu-color-icon {
@@ -430,8 +434,8 @@
   color: rgba(var(--sd-navigation-item--current-color-text, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-navigation-item-color-icon-fill {
-  fill: rgba(var(--sd-navigation-item-color-icon-fill, rgba(var(--sd-color-primary))));
+@utility sd-navigation-item-color-icon {
+  background-color: rgba(var(--sd-navigation-item-color-icon, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-navigation-item-color-text {
@@ -470,28 +474,28 @@
   background-color: rgba(var(--sd-radio--checked--default-color-background, rgba(var(--sd-color-white))));
 }
 
-@utility sd-radio--checked--default-color-icon-fill {
-  fill: rgba(var(--sd-radio--checked--default-color-icon-fill, rgba(var(--sd-color-accent))));
+@utility sd-radio--checked--default__icon-color-background {
+  background-color: rgba(var(--sd-radio--checked--default__icon-color-background, rgba(var(--sd-color-accent))));
 }
 
 @utility sd-radio--checked--hover-color-background {
   background-color: rgba(var(--sd-radio--checked--hover-color-background, rgba(var(--sd-color-white))));
 }
 
-@utility sd-radio--checked--hover-color-icon-fill {
-  fill: rgba(var(--sd-radio--checked--hover-color-icon-fill, rgba(var(--sd-color-success))));
+@utility sd-radio--checked--hover__icon-color-background {
+  background-color: rgba(var(--sd-radio--checked--hover__icon-color-background, rgba(var(--sd-color-success))));
 }
 
 @utility sd-radio--checked--invalid--default-color-background {
   background-color: rgba(var(--sd-radio--checked--invalid--default-color-background, rgba(var(--sd-color-white))));
 }
 
-@utility sd-radio--checked--invalid--default-color-icon-fill {
-  fill: rgba(var(--sd-radio--checked--invalid--default-color-icon-fill, rgba(var(--sd-color-error))));
+@utility sd-radio--checked--invalid--default__icon-color-background {
+  background-color: rgba(var(--sd-radio--checked--invalid--default__icon-color-background, rgba(var(--sd-color-error))));
 }
 
-@utility sd-radio--checked--invalid--hover-color-icon-fill {
-  fill: rgba(var(--sd-radio--checked--invalid--hover-color-icon-fill, rgba(var(--sd-color-error-400))));
+@utility sd-radio--checked--invalid--hover__icon-color-background {
+  background-color: rgba(var(--sd-radio--checked--invalid--hover__icon-color-background, rgba(var(--sd-color-error-400))));
 }
 
 @utility sd-radio--default--invalid-color-background {
@@ -500,6 +504,18 @@
 
 @utility sd-radio-border-width {
  border-width: var(--sd-radio-border-width, var(--sd-spacing-0\.25));
+}
+
+@utility sd-radio-button--hover-color-background {
+  background-color: rgba(var(--sd-radio-button--hover-color-background, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-radio-button--hover-color-icon-fill {
+  fill: rgba(var(--sd-radio-button--hover-color-icon-fill, rgba(var(--sd-color-primary-500))));
+}
+
+@utility sd-radio-button--hover-color-text {
+  color: rgba(var(--sd-radio-button--hover-color-text, rgba(var(--sd-color-primary-500))));
 }
 
 @utility sd-radio-button-border-radius {
@@ -522,16 +538,16 @@
  border-width: var(--sd-radio-button-group-border-width, var(--sd-spacing-0\.25));
 }
 
-@utility sd-radio-button-group-padding-block {
- padding-block: var(--sd-radio-button-group-padding-block, 0);
+@utility sd-radio-button-group-padding {
+ padding: var(--sd-radio-button-group-padding, 0);
 }
 
 @utility sd-range-scale-ticks-color-text {
   color: rgba(var(--sd-range-scale-ticks-color-text, rgba(var(--sd-color-black))));
 }
 
-@utility sd-select-color-text {
-  color: rgba(var(--sd-select-color-text, rgba(var(--sd-color-black))));
+@utility sd-range__bar-border-width {
+ border-width: var(--sd-range__bar-border-width, var(--sd-spacing-1));
 }
 
 @utility sd-step-color-text {
@@ -550,16 +566,16 @@
  border-width: var(--sd-step__tail-border-width, var(--sd-spacing-0\.25));
 }
 
-@utility sd-switch--primary--hover-color-background {
-  background-color: rgba(var(--sd-switch--primary--hover-color-background, rgba(var(--sd-color-success))));
+@utility sd-switch--checked--hover-color-background {
+  background-color: rgba(var(--sd-switch--checked--hover-color-background, rgba(var(--sd-color-success))));
 }
 
-@utility sd-switch--unchecked-border-color {
-  border-color: rgba(var(--sd-switch--unchecked-border-color, rgba(var(--sd-color-neutral-800))));
+@utility sd-switch--unchecked-color-border {
+  border-color: rgba(var(--sd-switch--unchecked-color-border, rgba(var(--sd-color-neutral-800))));
 }
 
-@utility sd-switch--unchecked-icon-color {
-  background-color: rgba(var(--sd-switch--unchecked-icon-color, rgba(var(--sd-color-neutral-800))));
+@utility sd-switch--unchecked__icon-color-background {
+  background-color: rgba(var(--sd-switch--unchecked__icon-color-background, rgba(var(--sd-color-neutral-800))));
 }
 
 @utility sd-switch-color-text {
@@ -572,6 +588,10 @@
 
 @utility sd-tab-color-border {
   border-color: rgba(var(--sd-tab-color-border, rgba(var(--sd-color-neutral-400))));
+}
+
+@utility sd-tag--default--default-color-text {
+  color: rgba(var(--sd-tag--default--default-color-text, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-tag--default--hover-color-background {
@@ -642,16 +662,8 @@
   background-color: rgba(var(--sd-tooltip-color-background, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-tooltip-color-icon {
-  background-color: rgba(var(--sd-tooltip-color-icon, rgba(var(--sd-color-primary))));
-}
-
 @utility sd-tooltip-color-text {
   color: rgba(var(--sd-tooltip-color-text, rgba(var(--sd-color-white))));
-}
-
-@utility sd-tooltip-interactive-color-icon {
-  background-color: rgba(var(--sd-tooltip-interactive-color-icon, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-video--description-color-text {

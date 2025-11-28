@@ -367,7 +367,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               <label
                 part="form-control-label"
                 id="label"
-                class=${cx(hasLabel ? 'inline-block' : 'hidden', textSize)}
+                class=${cx(hasLabel ? 'inline-block form-control-color-text' : 'hidden', textSize)}
                 for="input"
                 aria-hidden=${hasLabel ? 'false' : 'true'}
               >
@@ -407,7 +407,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               }[this.size],
               !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
-              textareaState === 'disabled' || textareaState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black',
+              textareaState === 'disabled' || textareaState === 'visuallyDisabled'
+                ? 'text-neutral-500'
+                : 'form-control-color-text',
               ['invalid', 'activeInvalid'].includes(textareaState) && 'form-control--invalid-color-background'
             )}
           >

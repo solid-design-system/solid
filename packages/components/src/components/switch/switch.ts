@@ -213,8 +213,8 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
                       ? 'border-error bg-error hover:bg-error-400 hover:border-error-400 group-hover:border-error-400 group-hover:bg-error-400'
                       : 'border-error bg-white hover:border-error-400 hover:bg-white group-hover:border-error-400 group-hover:bg-white'
                     : this.checked
-                      ? 'border-accent hover:bg-accent-550 bg-accent hover:border-accent-550 group-hover:bg-accent-550'
-                      : 'form-control-color-border bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
+                      ? 'border-accent hover:sd-switch--checked--hover-color-background bg-accent hover:border-accent-550 group-hover:sd-switch--checked--hover-color-background'
+                      : 'sd-switch--unchecked-color-border bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
             )}
           >
             <span
@@ -232,7 +232,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
                         : 'bg-error -translate-x-2 hover:bg-error-400 hover:border-error-400 group-hover:border-error-400 group-hover:bg-error-400'
                       : this.checked
                         ? 'translate-x-2'
-                        : '-translate-x-2'
+                        : '-translate-x-2 sd-switch--unchecked__icon-color-background'
               )}
             ></span>
           </span>
@@ -279,10 +279,6 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
        */
       :host([disabled][checked]) #control {
         border-color: rgba(var(--sd-color-background-neutral-500, rgba(var(--sd-color-neutral-500))));
-      }
-
-      :host(:not([disabled]):not([checked])) #input:not([aria-invalid='true']) ~ #control #thumb {
-        background-color: rgba(var(--sd-color-icon-fill-neutral-800, rgba(var(--sd-color-neutral-800))));
       }
 
       :host([checked]) [part='thumb'] {

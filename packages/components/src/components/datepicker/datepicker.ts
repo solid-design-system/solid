@@ -1755,7 +1755,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               <label
                 part="form-control-label"
                 id="label"
-                class=${cx(hasLabel ? 'inline-block' : 'hidden', textSize)}
+                class=${cx(hasLabel ? 'inline-block form-control-color-text' : 'hidden', textSize)}
                 for="input"
                 aria-hidden=${hasLabel ? 'false' : 'true'}
               >
@@ -1811,7 +1811,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 aria-invalid=${this.showInvalidStyle ? 'true' : 'false'}
                 aria-label=${this.range ? 'Select date range' : 'Select a date'}
                 class=${cx(
-                  'min-w-0 flex-grow focus:outline-none bg-transparent',
+                  'min-w-0 flex-grow focus:outline-none bg-transparent form-control-color-text',
                   this.visuallyDisabled || this.disabled
                     ? 'placeholder-neutral-500 cursor-not-allowed'
                     : 'placeholder-neutral-700',

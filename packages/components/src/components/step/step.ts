@@ -249,7 +249,7 @@ export default class SdStep extends SolidElement {
                             <div
                               part="tail"
                               class=${cx(
-                                'border-t flex-1 mr-2 mt-3',
+                                'border-t sd-step__tail-border-top-width flex-1 mr-2 mt-3',
                                 !this.disabled && !this.current && !this.notInteractive && !this.waiting
                                   ? 'border-primary'
                                   : 'border-neutral-500'
@@ -341,6 +341,14 @@ export default class SdStep extends SolidElement {
     css`
       :host {
         @apply flex-1;
+      }
+
+      :host([orientation='horizontal']) [part='tail'] {
+        border-top-width: var(--sd-step__tail-border-width);
+      }
+
+      :host([orientation='vertical']) [part='tail'] {
+        border-left-width: var(--sd-step__tail-border-width);
       }
 
       :host([no-tail]) {

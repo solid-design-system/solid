@@ -1197,7 +1197,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         <label
           id="label"
           part="form-control-label"
-          class=${hasLabel && 'inline-block mb-2'}
+          class=${hasLabel && 'inline-block mb-2 form-control-color-text'}
           aria-hidden=${!hasLabel}
           @click=${this.handleLabelClick}
         >
@@ -1280,7 +1280,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 class=${cx(
                   'appearance-none outline-none bg-transparent flex-auto min-w-0',
                   cursorStyles,
-                  this.selectedTextLabel && !this.multiple ? 'placeholder:text-black' : 'placeholder:text-neutral-700'
+                  this.selectedTextLabel && !this.multiple
+                    ? 'placeholder:form-control-color-text'
+                    : 'placeholder:text-neutral-700'
                 )}
                 type="text"
                 placeholder=${this.selectedTextLabel && !this.multiple

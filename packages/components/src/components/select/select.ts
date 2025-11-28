@@ -929,7 +929,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               <label
                 id="label"
                 part="form-control-label"
-                class=${hasLabel && 'inline-block'}
+                class=${hasLabel && 'inline-block form-control-color-text'}
                 aria-hidden=${hasLabel ? 'false' : 'true'}
                 @click=${this.handleLabelClick}
               >
@@ -942,7 +942,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
         <div
           part="form-control-input"
-          class=${cx('relative w-full bg-white', selectState === 'disabled' ? 'text-neutral-500' : 'text-black')}
+          class=${cx(
+            'relative w-full bg-white',
+            selectState === 'disabled' ? 'text-neutral-500' : 'form-control-color-text'
+          )}
         >
           <div
             part="border"
