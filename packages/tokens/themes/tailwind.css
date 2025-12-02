@@ -104,8 +104,8 @@
   --opacity-80: var(--sd-opacity-80);
   --opacity-85: var(--sd-opacity-85);
   --opacity-90: var(--sd-opacity-90);
-  --outline-color-error: var(--sd-border-color-error, var(--sd-color-error));
-  --outline-color-primary: var(--sd-border-color-primary, var(--sd-color-primary));
+  --outline-color-error: var(--sd-color-border-error, var(--sd-color-error));
+  --outline-color-primary: var(--sd-color-border-primary, var(--sd-color-primary));
   --radius-default: var(--sd-radius);
   --radius-full: var(--sd-radius-full);
   --radius-lg: var(--sd-radius-lg);
@@ -284,12 +284,12 @@
   outline-style: solid;
   outline-offset: 2px;
   outline-width: 2px;
-  outline-color: var(--outline-color-primary);
+  outline-color: rgba(var(--outline-color-primary));
 }
 
 @utility focus-outline-inverted {
   outline-style: solid;
   outline-offset: 2px;
   outline-width: 2px;
-  outline-color: var(--outline-color-white);
+  outline-color: rgba(var(--outline-color-white));
 }
