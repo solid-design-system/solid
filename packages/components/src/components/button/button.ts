@@ -35,6 +35,9 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @csspart icon-right - The container that wraps the right icon area.
  * @csspart motion-wrapper - The container that wraps the motion animation.
  * 
+ * @cssproperty --sd-button--inverted--disabled-color-background - The background color for inverted buttons in disabled state.
+ * @cssproperty --sd-button--inverted--disabled-color-border - The border color for inverted buttons in disabled state.
+ * @cssproperty --sd-button--inverted--disabled-color-text - The text color for inverted buttons in disabled state.
  * @cssproperty --sd-button--primary--active-color-text - The text color for primary buttons in active state.
  * @cssproperty --sd-button--primary--default-color-background - The background color for primary buttons in default state.
  * @cssproperty --sd-button--primary--default-color-text - The text color for primary buttons in default state.
@@ -52,6 +55,12 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @cssproperty --sd-button--tertiary--hover-color-background - The background color for tertiary buttons in hover state.
  * @cssproperty --sd-button--tertiary--inverted--active-color-background - The background color for inverted tertiary buttons in active state. 
  * @cssproperty --sd-button--tertiary--inverted--hover-color-text - The text color for inverted tertiary buttons in hover state.
+ * @cssproperty --sd-button--cta--inverted--default-color-background - The background color for inverted CTA buttons in default state.
+ * @cssproperty --sd-button--cta--inverted--default-color-text - The text color for inverted CTA buttons in default state.
+ * @cssproperty --sd-button--cta--inverted--active-color-text - The text color for inverted CTA buttons in active state.
+ * @cssproperty --sd-button--cta--inverted--hover-color-text - The text color for inverted CTA buttons in hover state.
+ * @cssproperty --sd-button--cta--inverted--hover-color-background - The background color for inverted CTA buttons in hover state.
+ * @cssproperty --sd-button--cta--inverted--active-color-background - The background color for inverted CTA buttons in active state.
  * @cssproperty --sd-button--size-md-font-size - The medium button text font size.
  * @cssproperty --sd-button--size-lg-font-size - The large button text font size.
  * @cssproperty --sd-button--size-md-border-radius - The medium button border radius.

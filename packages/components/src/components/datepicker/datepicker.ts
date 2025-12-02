@@ -51,6 +51,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @csspart valid-icon - The icon shown when the input is valid.
  * @csspart form-control-help-text - The help text, displayed below the input.
  *
+ * @cssproperty --sd-form-control-color-text - The text color for form controls.
  */
 @customElement('sd-datepicker')
 export default class SdDatepicker extends SolidElement implements SolidFormControl {

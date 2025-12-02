@@ -14,6 +14,17 @@ import SolidElement from '../../internal/solid-element';
  *
  * @csspart base - The badge's base wrapper.
  * @csspart content - The badge's main content.
+ *
+ * @cssproperty --sd-badge--blue--inverted-color-background - The background color for the blue badge in its inverted state.
+ * @cssproperty --sd-badge--blue--inverted-color-text - The text color for the blue badge in its inverted state.
+ * @cssproperty --sd-badge--green-color--inverted-background - The background color for the green badge in its inverted state.
+ * @cssproperty --sd-badge--green-color--inverted-text - The text color for the green badge in its inverted state.
+ * @cssproperty --sd-badge--inverted-color-border - The border color used in inverted state.
+ * @cssproperty --sd-badge--green-color-background - The background color for the green badge.
+ * @cssproperty --sd-badge--red--inverted-background - The background color for the red badge in its inverted state.
+ * @cssproperty --sd-badge--red--inverted-text - The text color for the red badge in its inverted state.
+ * @cssproperty --sd-badge--red-color-background - The background color for the red badge in its standard state.
+ *
  */
 @customElement('sd-badge')
 export default class SdBadge extends SolidElement {

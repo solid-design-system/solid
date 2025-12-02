@@ -16,6 +16,8 @@ import SolidElement from '../../internal/solid-element';
  * @csspart label - The component's label.
  * @csspart line - The component's tick line.
  *
+ * @cssproperty --sd-range-scale-ticks-color-text - The text color for range scale ticks.
+ *
  */
 @customElement('sd-range-tick')
 export default class SdRangeTick extends SolidElement {

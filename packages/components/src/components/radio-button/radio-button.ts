@@ -28,6 +28,9 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-button--primary--default-color-background - The background color of radio-button when checked.
  * @cssproperty --sd-button--primary--default-color-text - The text color of radio-button when checked.
  * @cssproperty --sd-button--primary--hover-color-background - The background color of radio-button on hover when checked.
+ * @cssproperty --sd-radio-button-border-radius - The border radius of the radio-button.
+ * @cssproperty --sd-radio-button-color-text - The text color of the radio-button.
+
  */
 @customElement('sd-radio-button')
 export default class SdRadioButton extends SolidElement {

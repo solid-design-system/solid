@@ -39,6 +39,8 @@ import type SdPopup from '../popup/popup';
  * @cssproperty --max-width - The maximum width of the tooltip before its content will wrap.
  * @cssproperty --hide-delay - The amount of time to wait before hiding the tooltip when hovering.
  * @cssproperty --show-delay - The amount of time to wait before showing the tooltip when hovering.
+ * @cssproperty --sd-tooltip-color-background - The background color for the tooltip.
+ * @cssproperty --sd-tooltip-color-text - The text color for the tooltip.
  *
  * @animation tooltip.show - The animation to use when showing the tooltip.
  * @animation tooltip.hide - The animation to use when hiding the tooltip.

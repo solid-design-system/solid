@@ -22,6 +22,9 @@ type Breakpoints = 0 | 414 | 640;
  * @csspart shape-middle - Middle shape.
  * @csspart shape-bottom - Bottom shape.
  * @csspart stylized-container - Container for border and image variant.
+ *
+ * @cssproperty --sd-brandshape--neutral-100-color-background - The background color using the neutral‑100 variant.
+ * @cssproperty --sd-brandshape--white-color-background - The background color using the white variant.
  */
 
 @customElement('sd-brandshape')

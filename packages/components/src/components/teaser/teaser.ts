@@ -26,6 +26,9 @@ import type { PropertyValues } from 'lit';
  *
  * @cssproperty --distribution-media - The distribution ratio of the media.
  * @cssproperty --distribution-content - The distribution ratio of the content.
+ * @cssproperty --sd-teaser--neutral-100-color-background - The background color for neutral‑100 teasers.
+ * @cssproperty --sd-teaser--neutral-400-color-border - The border color for neutral‑400 teasers.
+ * @cssproperty --sd-teaser--primary-100-color-background - The background color for primary‑100 teasers.
  */
 
 @customElement('sd-teaser')

@@ -36,6 +36,9 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @csspart base - The component's base wrapper.
  * @csspart border - The base part's absolutely positioned border. Allows for easy adjustment of border thickness without affecting component dimensions.
  * @csspart textarea - The internal `<textarea>` control.
+ *
+ * @cssproperty --sd-form-control--invalid-color-background - The background color for form controls in invalid state.
+ * @cssproperty --sd-form-control-color-text - The text color for form controls.
  */
 @customElement('sd-textarea')
 export default class SdTextarea extends SolidElement implements SolidFormControl {

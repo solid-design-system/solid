@@ -11,6 +11,8 @@ import SolidElement from '../../internal/solid-element';
  * @since 1.0
  *
  * @csspart base - The component's base wrapper.
+ *
+ * @cssproperty --sd-divider--inverted-color-border - The border color for dividers in inverted state.
  */
 @customElement('sd-divider')
 export default class SdDivider extends SolidElement {

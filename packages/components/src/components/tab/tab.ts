@@ -27,6 +27,8 @@ let id = 0;
  * @cssproperty --sd-navigable-border-radius: The tab border radius on hover.
  * @cssproperty --sd-navigable__current-indicator-height: The tab current indicator height.
  * @cssproperty --sd-navigable__current-indicator-border-radius: The tab current indicator border radius value.
+ * @cssproperty --sd-color-background - The background color when on hover state.
+ * @cssproperty --sd-tab-color-border - The border color for the tab.
  */
 @customElement('sd-tab')
 export default class SdTab extends SolidElement {

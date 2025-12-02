@@ -39,6 +39,10 @@ import type SdRadioButton from '../../components/radio-button/radio-button';
  * @csspart form-control-input - The input's wrapper.
  * @csspart button-group - The button group that wraps radio buttons.
  * @csspart button-group__base - The button group's `base` part.
+ *
+ * @cssproperty --sd-radio-button-group-border-radius - The border radius for radio button groups.
+ * @cssproperty --sd-radio-button-group-border-width - The border width for radio button groups.
+ * @cssproperty --sd-radio-button-group-padding - The padding for radio button groups.
  */
 
 @customElement('sd-radio-group')
@@ -428,7 +432,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
           ${this.hasButtonGroup
             ? html`
                 <sd-button-group
-                  class="border border-primary sd-radio-button-group-border-radius sd-radio-button-group-border-width sd-radio-button-group-padding-block"
+                  class="border border-primary sd-radio-button-group-border-radius sd-radio-button-group-border-width sd-radio-button-group-padding"
                   part="button-group"
                   exportparts="base:button-group__base"
                   role="presentation"

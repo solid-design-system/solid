@@ -48,6 +48,7 @@ import SolidElement from '../../internal/solid-element.js';
  * @cssproperty --slide-gap - The space between each slide.
  * @cssproperty --scroll-hint - The amount of padding to apply to the scroll area, allowing adjacent slides to become
  *  partially visible as a scroll hint.
+ * @cssproperty --sd-carousel__pager-dot-border-width - The border width of the pager dots in the carousel.
  */
 @customElement('sd-carousel')
 export default class SdCarousel extends SolidElement {

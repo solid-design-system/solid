@@ -31,6 +31,9 @@ import SolidElement from '../../internal/solid-element';
  * @csspart text-container - The container that wraps the step's label and description.
  * @csspart label - The step's label.
  * @csspart description - The step's description.
+ *
+ * @cssproperty --sd-step__circle-border-width - The border width of the step circle.
+ * @cssproperty --sd-step__tail-border-width - The border width of the step tail.
  */
 @customElement('sd-step')
 export default class SdStep extends SolidElement {

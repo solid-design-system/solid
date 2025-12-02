@@ -29,8 +29,16 @@ import SolidElement from '../../internal/solid-element';
  * @csspart content - The tag's content.
  * @csspart removable-indicator - The tag's removability indicator.
  *
+ * @cssproperty --sd-tag--default--default-color-text - The default text color for tags in their default state.
+ * @cssproperty --sd-tag--default--hover-color-background - The background color for tags in default state on hover.
  * @cssproperty --sd-tag--selected--default-color-background - The default background color for selected tags.
  * @cssproperty --sd-tag--selected--default-color-text - The default text color for selected tags.
+ * @cssproperty --sd-tag--selected--default-color-border - The border color for selected tags in default state.
+ * @cssproperty --sd-tag--selected--hover-color-background - The background color for selected tags in hover state.
+ * @cssproperty --sd-tag--selected--hover-color-border - The border color for selected tags in hover state.
+ * @cssproperty --sd-tag--selected--hover-color-text - The text color for selected tags in hover state.
+ * @cssproperty --sd-tag--selected-border-width - The border width for selected tags.
+ * @cssproperty --sd-tag-border-radius - The border radius for tags.
  */
 @customElement('sd-tag')
 export default class SdTag extends SolidElement {
@@ -141,7 +149,7 @@ export default class SdTag extends SolidElement {
           /* colors */
           !this.selected
             ? cx(
-                'border-primary text-primary disabled:border-neutral-500 disabled:text-neutral-500',
+                'border-primary sd-tag--default--default-color-text disabled:border-neutral-500 disabled:text-neutral-500',
                 !this.removable
                   ? 'hover:border-primary-500 hover:text-primary-500 hover:sd-tag--default--hover-color-background'
                   : 'has-[button:hover]:border-primary-500 has-[button:hover]:text-primary-500'

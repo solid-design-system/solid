@@ -66,6 +66,8 @@ import type SdPopup from '../popup/popup';
  * @csspart expand-icon - The container that wraps the expand icon.
  *
  * @cssproperty --tag-max-width - Set the maximum width of the tags and to show an ellipsis. Defaults to "15ch"
+ * @cssproperty --sd-form-control--invalid-color-background - The background color for form controls in invalid state.
+ * @cssproperty --sd-form-control-color-text - The text color for form controls.
  */
 @customElement('sd-select')
 export default class SdSelect extends SolidElement implements SolidFormControl {

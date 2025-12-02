@@ -33,6 +33,9 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @csspart checked-icon - The checked icon, an `<sd-icon>` element.
  * @csspart indeterminate-icon - The indeterminate icon, an `<sd-icon>` element.
  * @csspart label - The container that wraps the checkbox's label.
+ *
+ * @cssproperty --sd-checkbox-border-width - The border width of the checkbox.
+ *
  */
 @customElement('sd-checkbox')
 export default class SdCheckbox extends SolidElement implements SolidFormControl {

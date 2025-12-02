@@ -24,6 +24,9 @@ import SolidElement from '../../internal/solid-element';
  * @csspart play-button - The `<button>` element wrapper around the play-icon slot (full screen to field all click events).
  * @csspart play-button-bg - The `<div>` element wrapper around the play-button that defines the circular background.
  * @csspart poster-wrapper - The `<div>` element wrapper around the poster slot.
+ *
+ * @cssproperty --sd-video--play-button-color-background - The background color for the video play button.
+ * @cssproperty --sd-video--play-button-color-icon-fill - The icon fill color for the video play button.
  */
 
 @customElement('sd-video')

@@ -32,6 +32,11 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @csspart control--unchecked - Matches the control part when the switch is off.
  * @csspart thumb - The circle that marks the switch's state.
  * @csspart label - The container that wraps the switch's label.
+ *
+ * @cssproperty --sd-switch--checked--hover-color-background - The background color for the switch in checked hover state.
+ * @cssproperty --sd-switch--unchecked-color-border - The border color for the switch in unchecked state.
+ * @cssproperty --sd-switch--unchecked__icon-color-background - The icon background color for the switch in unchecked state.
+ * @cssproperty --sd-switch-color-text - The text color for the switch label.
  */
 @customElement('sd-switch')
 export default class SdSwitch extends SolidElement implements SolidFormControl {
@@ -241,7 +246,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
             id="label"
             class=${cx(
               'select-none inline-block ml-2',
-              this.disabled ? 'text-neutral-500' : this.showInvalidStyle ? 'text-error' : 'text-black'
+              this.disabled ? 'text-neutral-500' : this.showInvalidStyle ? 'text-error' : 'sd-switch-color-text'
             )}
           >
             <slot></slot>

@@ -24,6 +24,11 @@ import SolidElement from '../../internal/solid-element';
  * @csspart headline - The container that wraps the headline.
  * @csspart expandable - The container that wraps the expandable.
  * @csspart main - The container that wraps the main content.
+ *
+ * @cssproperty --sd-teaser-media--neutral-100--hover-color-background - The background color for neutral‑100 teaser media in hover state.
+ * @cssproperty --sd-teaser-media--neutral-100-color-background - The default background color for neutral‑100 teaser media.
+ * @cssproperty --sd-teaser-media--primary-100--hover-color-background - The background color for primary‑100 teaser media in hover state.
+ * @cssproperty --sd-teaser-media--primary-100-color-background - The default background color for primary‑100 teaser media.
  */
 
 @customElement('sd-teaser-media')

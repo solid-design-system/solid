@@ -21,6 +21,16 @@ import SolidElement from '../../internal/solid-element';
  * @csspart control--checked - The radio control when the radio is checked.
  * @csspart checked - The dot inside the radio component when the radio is checked.
  * @csspart label - The container that wraps the radio's label.
+ *
+ * @cssproperty --sd-radio--checked--default-color-background - The background color for checked radios in default state.
+ * @cssproperty --sd-radio--checked--default__icon-color-background - The icon background color for checked radios in default state.
+ * @cssproperty --sd-radio--checked--hover-color-background - The background color for checked radios in hover state.
+ * @cssproperty --sd-radio--checked--hover__icon-color-background - The icon background color for checked radios in hover state.
+ * @cssproperty --sd-radio--checked--invalid--default-color-background - The background color for checked invalid radios in default state.
+ * @cssproperty --sd-radio--checked--invalid--default__icon-color-background - The icon background color for checked invalid radios in default state.
+ * @cssproperty --sd-radio--checked--invalid--hover__icon-color-background - The icon background color for checked invalid radios in hover state.
+ * @cssproperty --sd-radio--default--invalid-color-background - The background color for invalid radios in default state.
+ * @cssproperty --sd-radio-border-width - The border width for the radio.
  */
 @customElement('sd-radio')
 export default class SdRadio extends SolidElement {

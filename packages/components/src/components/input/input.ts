@@ -64,6 +64,9 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @csspart invalid-icon - The invalid icon.
  * @csspart valid-icon - The valid icon.
  * @csspart invalid-message - The invalid message.
+ *
+ * @cssproperty --sd-form-control--invalid-color-background - The background color for form controls in invalid state.
+ * @cssproperty --sd-form-control-color-text - The text color for form controls.
  */
 
 @customElement('sd-input')
