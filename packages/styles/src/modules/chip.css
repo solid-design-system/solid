@@ -4,6 +4,18 @@
  * @status stable
  * @since 1.30.0
  * @variant { primary-300 | primary-500 | white } sd-chip--...
+ *
+ * @cssproperty --sd-chip--primary-200-color-background - The background color for primary‑200 chip.
+ * @cssproperty --sd-chip--primary-200-color-border - The border color for primary‑200 chips.
+ * @cssproperty --sd-chip--primary-300-color-background - The background color for primary‑300 chips.
+ * @cssproperty --sd-chip--primary-300-color-border - The border color for primary‑300 chips.
+ * @cssproperty --sd-chip--primary-500-color-background - The background color for primary‑500 chips.
+ * @cssproperty --sd-chip--primary-500-color-border - The border color for primary‑500 chips.
+ * @cssproperty --sd-chip--primary-500-color-text - The text color for primary‑500 chips.
+ * @cssproperty --sd-chip--white-color-background - The background color for white chips.
+ * @cssproperty --sd-chip--white-color-border - The border color for white chips.
+ * @cssproperty --sd-chip-border-radius - The border radius for chips.
+ * @cssproperty --sd-chip-border-width - The border width for chips.
  */
 
 .sd-chip {
