@@ -68,7 +68,7 @@
   --sd-button--size-md-border-radius: 624.9375rem;
   --sd-button--size-md-font-size: 0.875rem;
   --sd-button--size-md-padding-block: 0.625rem;
-  --sd-button--tertiary--active-color-background: var(--sd-color-primary-200);
+  --sd-button--tertiary--active-color-background: var(--sd-color-neutral-100);
   --sd-button--tertiary--hover-color-background: var(--sd-color-neutral-100);
   --sd-button--tertiary--inverted--active-color-background: 39, 77, 126;
   --sd-button--tertiary--inverted--hover-color-background: var(--sd-color-primary-750);
@@ -122,6 +122,7 @@
   --sd-color-background-success: var(--sd-color-success);
   --sd-color-background-warning: var(--sd-color-warning);
   --sd-color-background-white: var(--sd-color-white);
+  --sd-color-background: 0, 102, 179, 0.05;
   --sd-color-black: 0, 0, 0, 0.86;
   --sd-color-border-accent-550: var(--sd-color-primary-600);
   --sd-color-border-accent: var(--sd-color-primary);
@@ -342,7 +343,6 @@
   --sd-switch--unchecked-color-border: var(--sd-color-black);
   --sd-switch--unchecked__icon-color-background: var(--sd-color-black);
   --sd-switch-color-text: var(--sd-color-black);
-  --sd-tab--hover-color-background: 0, 102, 179, 0.05;
   --sd-tab-color-border: var(--sd-color-neutral-400);
   --sd-tag--default--default-color-text: var(--sd-color-primary);
   --sd-tag--default--hover-color-background: var(--sd-color-neutral-100);

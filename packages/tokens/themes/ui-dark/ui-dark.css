@@ -123,6 +123,7 @@
   --sd-color-background-success: var(--sd-color-success);
   --sd-color-background-warning: var(--sd-color-warning);
   --sd-color-background-white: var(--sd-color-primary-900);
+  --sd-color-background: var(--sd-color-primary-700);
   --sd-color-black: 24, 24, 24;
   --sd-color-border-accent-550: var(--sd-color-accent-550);
   --sd-color-border-accent: var(--sd-color-accent);
@@ -343,7 +344,6 @@
   --sd-switch--unchecked-color-border: var(--sd-color-white);
   --sd-switch--unchecked__icon-color-background: var(--sd-color-white);
   --sd-switch-color-text: var(--sd-color-white);
-  --sd-tab--hover-color-background: var(--sd-color-primary-700);
   --sd-tab-color-border: var(--sd-color-primary-400);
   --sd-tag--default--default-color-text: var(--sd-color-white);
   --sd-tag--default--hover-color-background: 255, 255, 255, 0;

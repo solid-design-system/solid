@@ -97,7 +97,7 @@ export default class SdTab extends SolidElement {
             ? 'tab-container-border bg-white rounded-[4px_4px_0_0]'
             : 'navigable-border-radius',
           this.variant === 'container' && this.active && 'tab--active-container-border bg-white',
-          this.disabled || this.visuallyDisabled ? '!cursor-not-allowed' : 'hover:sd-tab--hover-color-background',
+          this.disabled || this.visuallyDisabled ? '!cursor-not-allowed' : 'hover:color-background',
           this.active && 'z-20'
         )}
         tabindex=${!this.active || this.disabled ? '-1' : '0'}

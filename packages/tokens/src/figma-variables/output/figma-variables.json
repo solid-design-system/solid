@@ -3406,7 +3406,7 @@
               "background": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{ui-light.utilities.color.primary.200}"
+                "value": "{ui-light.utilities.color.primary.100}"
               }
             }
           },
@@ -4326,15 +4326,13 @@
           "value": "{ui-light.utilities.border-width.default}"
         }
       },
+      "color": {
+        "background": {
+          "type": "color",
+          "value": "{ui-light.utilities.color.background.neutral.200}"
+        }
+      },
       "sd-tab": {
-        "--hover": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.background.neutral.200}"
-            }
-          }
-        },
         "color": {
           "border": {
             "type": "color",
@@ -7037,15 +7035,13 @@
           "value": "{ui-dark.utilities.border-width.default}"
         }
       },
+      "color": {
+        "background": {
+          "type": "color",
+          "value": "{ui-dark.utilities.color.background.neutral.200}"
+        }
+      },
       "sd-tab": {
-        "--hover": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.background.neutral.200}"
-            }
-          }
-        },
         "color": {
           "border": {
             "type": "color",
@@ -8828,7 +8824,7 @@
               "background": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{vb.utilities.color.primary.200}"
+                "value": "{vb.utilities.color.primary.100}"
               }
             }
           },
@@ -9748,15 +9744,13 @@
           "value": "{vb.utilities.border-width.2}"
         }
       },
+      "color": {
+        "background": {
+          "type": "color",
+          "value": "{core.vb.from-figma.vb.from-ultra.hover}"
+        }
+      },
       "sd-tab": {
-        "--hover": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{core.vb.from-figma.vb.from-ultra.hover}"
-            }
-          }
-        },
         "color": {
           "border": {
             "type": "color",

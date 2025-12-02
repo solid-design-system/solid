@@ -1,3 +1,7 @@
+@utility color-background {
+  background-color: rgba(var(--sd-color-background, rgba(var(--sd-color-neutral-200))));
+}
+
 @utility form-control--invalid-color-background {
   background-color: rgba(var(--sd-form-control--invalid-color-background, rgba(var(--sd-color-white))));
 }
@@ -263,7 +267,7 @@
 }
 
 @utility sd-button--tertiary--active-color-background {
-  background-color: rgba(var(--sd-button--tertiary--active-color-background, rgba(var(--sd-color-primary-200))));
+  background-color: rgba(var(--sd-button--tertiary--active-color-background, rgba(var(--sd-color-primary-100))));
 }
 
 @utility sd-button--tertiary--hover-color-background {
@@ -572,10 +576,6 @@
 
 @utility sd-switch-color-text {
   color: rgba(var(--sd-switch-color-text, rgba(var(--sd-color-black))));
-}
-
-@utility sd-tab--hover-color-background {
-  background-color: rgba(var(--sd-tab--hover-color-background, rgba(var(--sd-color-neutral-200))));
 }
 
 @utility sd-tab-color-border {
