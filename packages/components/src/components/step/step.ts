@@ -236,12 +236,10 @@ export default class SdStep extends SolidElement {
                           part="label"
                           id="label"
                           class=${cx(
-                            'font-bold sd-paragraph whitespace-nowrap',
+                            'font-bold whitespace-nowrap',
                             this.disabled && 'text-neutral-500',
                             this.waiting && 'text-neutral-700',
-                            !this.disabled && !this.current && !this.notInteractive && !this.waiting
-                              ? 'text-primary'
-                              : 'text-black'
+                            !this.disabled && !this.current && !this.notInteractive && !this.waiting && 'text-black'
                           )}
                         >
                           <slot name="label">${this.label}</slot>
@@ -311,12 +309,10 @@ export default class SdStep extends SolidElement {
                     part="label"
                     id="label"
                     class=${cx(
-                      '!font-bold sd-paragraph',
+                      'font-bold',
                       this.disabled && 'text-neutral-500',
                       this.waiting && 'text-neutral-700',
-                      !this.disabled && !this.current && !this.notInteractive && !this.waiting
-                        ? 'text-primary'
-                        : 'text-black'
+                      !this.disabled && !this.current && !this.notInteractive && !this.waiting && 'text-black'
                     )}
                   >
                     <slot name="label">${this.label}</slot>
@@ -356,6 +352,10 @@ export default class SdStep extends SolidElement {
 
       :host([no-tail]) {
         @apply flex-grow-0;
+      }
+
+      :host [name='circle-content'].text-primary {
+        color: rgba(var(--sd-color-icon-fill-primary));
       }
 
       :host([horizontal-inline]):has([part='description']) {

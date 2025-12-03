@@ -79,7 +79,7 @@ export const Inverted = {
         templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>',
         templateBackgrounds: {
           alternate: 'y',
-          colors: ['transparent', 'rgba(var(--sd-color-primary))']
+          colors: ['transparent', 'rgba(var(--sd-color-background-primary))']
         }
       },
       args
@@ -153,7 +153,7 @@ export const SizeXInverted = {
         },
         options: {
           templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>',
-          templateBackgrounds: { alternate: 'x', colors: ['transparent', 'rgba(var(--sd-color-primary))'] },
+          templateBackgrounds: { alternate: 'x', colors: ['transparent', 'rgba(var(--sd-color-background-primary))'] },
           title: headline.title
         },
         args
@@ -222,7 +222,7 @@ export const Samples = {
           options: {
             templateBackgrounds: {
               alternate: 'x',
-              colors: ['transparent', 'rgba(var(--sd-color-primary))']
+              colors: ['transparent', 'rgba(var(--sd-color-background-primary))']
             },
             templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>'
           },
@@ -262,7 +262,7 @@ export const Samples = {
           options: {
             templateBackgrounds: {
               alternate: 'x',
-              colors: ['transparent', 'rgba(var(--sd-color-primary))']
+              colors: ['transparent', 'rgba(var(--sd-color-background-primary))']
             },
             templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>'
           },
