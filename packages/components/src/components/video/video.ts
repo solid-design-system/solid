@@ -24,6 +24,9 @@ import SolidElement from '../../internal/solid-element';
  * @csspart play-button - The `<button>` element wrapper around the play-icon slot (full screen to field all click events).
  * @csspart play-button-bg - The `<div>` element wrapper around the play-button that defines the circular background.
  * @csspart poster-wrapper - The `<div>` element wrapper around the poster slot.
+ *
+ * @cssproperty --sd-video--play-button-color-background - The background color for the video play button.
+ * @cssproperty --sd-video--play-button-color-icon-fill - The icon fill color for the video play button.
  */
 
 @customElement('sd-video')
@@ -129,7 +132,7 @@ export default class SdVideo extends SolidElement {
           @keydown=${this.handleKeydown}
           class=${cx(
             this.playing && 'pointer-events-none',
-            'group w-full h-full absolute top-0 left-0 z-30 text-primary hover:text-primary-500 sd-interactive outline-hidden focus-visible:focus-outline'
+            'group w-full h-full absolute top-0 left-0 z-30 sd-interactive outline-hidden focus-visible:focus-outline'
           )}
         >
           <div
@@ -174,6 +177,11 @@ export default class SdVideo extends SolidElement {
 
       :has([part='play-button']:hover) ::slotted([slot='poster']) {
         @apply !scale-110;
+      }
+
+      [part='play-button-bg'] {
+        color: rgba(var(--sd-video--play-button-color-icon-fill));
+        background-color: rgba(var(--sd-video--play-button-color-background));
       }
     `
   ];

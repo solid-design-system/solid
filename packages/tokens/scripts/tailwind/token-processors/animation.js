@@ -13,12 +13,13 @@ export class AnimationTokenProcessor extends BaseTokenProcessor {
   }
 
   process(token) {
+    const processed = this.processTokenPath(token);
     const value = token.type === 'transition' ? token.original.value || token.value : this.getTokenValue(token);
-    const path = this.pathToKebabCase(this.processTokenPath(token).path);
+    const path = this.pathToKebabCase(processed.path);
 
     switch (token.type) {
       case 'duration':
-        return this.processDuration(path, value);
+        return this.processDuration(path, value, processed.variant);
 
       case 'keyframes':
         return this.processKeyframes(path, value);
@@ -31,16 +32,19 @@ export class AnimationTokenProcessor extends BaseTokenProcessor {
     }
   }
 
-  processDuration(path, value) {
+  processDuration(path, value, variant) {
     if (path[0] === 'duration') {
       path = path.slice(1);
     }
 
-    return {
-      type: 'animation',
-      name: `--transition-duration-${path.join('-')}`,
-      value: `var(--sd-duration-${path.join('-')}, ${value}ms)`
-    };
+    return [
+      {
+        type: 'animation',
+        name: `--transition-duration-${path.join('-')}`,
+        value: `var(--sd-duration-${path.join('-')}, ${value}ms)`
+      },
+      { type: 'animation', name: `--sd-duration-${path.join('-')}`, value: `${value}ms`, variant }
+    ];
   }
 
   processKeyframes(path, value) {

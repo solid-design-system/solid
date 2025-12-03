@@ -30,7 +30,13 @@ const calculateLuminanceMap = colorObject => {
     for (const scale in colorObject[colorType]) {
       if (!defaultLuminanceMap[scale]) continue;
 
-      const luminance = chroma(`rgba(${colorObject[colorType][scale]})`).luminance();
+      const parts = colorObject[colorType][scale].split(',').map(v => v.trim());
+      if (parts.length === 3) {
+        parts.push('1');
+      }
+
+      const rgba = `rgba(${parts.join(', ')})`;
+      const luminance = chroma(rgba).luminance();
       luminanceMap[scale] = luminance;
     }
 

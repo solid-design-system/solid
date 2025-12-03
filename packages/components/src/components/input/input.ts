@@ -64,6 +64,9 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @csspart invalid-icon - The invalid icon.
  * @csspart valid-icon - The valid icon.
  * @csspart invalid-message - The invalid message.
+ *
+ * @cssproperty --sd-form-control--invalid-color-background - The background color for form controls in invalid state.
+ * @cssproperty --sd-form-control-color-text - The text color for form controls.
  */
 
 @customElement('sd-input')
@@ -557,7 +560,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               <label
                 part="form-control-label"
                 id="label"
-                class=${cx(hasLabel ? 'inline-block' : 'hidden', textSize)}
+                class=${cx(hasLabel ? 'inline-block form-control-color-text' : 'hidden', textSize)}
                 for="input"
                 aria-hidden=${hasLabel ? 'false' : 'true'}
               >
@@ -592,7 +595,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               // States
               !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
-              inputState === 'disabled' || inputState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black'
+              ['disabled', 'visuallyDisabled'].includes(inputState) ? 'text-neutral-500' : 'form-control-color-text',
+              ['invalid', 'activeInvalid'].includes(inputState) && 'form-control--invalid-color-background'
             )}
           >
             ${slots['left']

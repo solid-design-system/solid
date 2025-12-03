@@ -16,6 +16,8 @@ import SolidElement from '../../internal/solid-element';
  * @csspart label - The component's label.
  * @csspart line - The component's tick line.
  *
+ * @cssproperty --sd-range-scale-ticks-color-text - The text color for range scale ticks.
+ *
  */
 @customElement('sd-range-tick')
 export default class SdRangeTick extends SolidElement {
@@ -29,7 +31,10 @@ export default class SdRangeTick extends SolidElement {
   render() {
     return html` <div part="base" class=${cx(this.subtick ? 'w-0.25' : 'w-0.5')}>
       <div part="line" class=${cx(this.subtick ? 'h-2' : 'h-[10px]')}></div>
-      <div part="label" class="flex items-center justify-center text-center text-nowrap text-sm">
+      <div
+        part="label"
+        class="flex items-center justify-center text-center text-nowrap text-sm sd-range-scale-ticks-color-text"
+      >
         <slot></slot>
       </div>
     </div>`;

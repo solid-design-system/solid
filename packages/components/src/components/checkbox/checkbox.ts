@@ -33,6 +33,9 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @csspart checked-icon - The checked icon, an `<sd-icon>` element.
  * @csspart indeterminate-icon - The indeterminate icon, an `<sd-icon>` element.
  * @csspart label - The container that wraps the checkbox's label.
+ *
+ * @cssproperty --sd-checkbox-border-width - The border width of the checkbox.
+ *
  */
 @customElement('sd-checkbox')
 export default class SdCheckbox extends SolidElement implements SolidFormControl {
@@ -246,7 +249,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             ? ' control--indeterminate'
             : ''}"
           class=${cx(
-            'relative flex flex-shrink-0 items-center justify-center border rounded-sm h-4 w-4',
+            'relative flex flex-shrink-0 items-center justify-center border sd-checkbox-border-width rounded-sm h-4 w-4',
             'transition-colors ease-in-out duration-medium group-hover:duration-fast',
             'peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary',
             {
@@ -269,7 +272,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
         >
           <div
             class=${cx(
-              'absolute h-3 transition-[width] right-0.25 duration-medium',
+              'absolute h-3 transition-[width] right-0 duration-medium',
               this.checked || this.indeterminate ? 'w-0' : 'w-3'
             )}
           >

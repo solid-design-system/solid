@@ -74,6 +74,8 @@ import type SdPopup from '../popup/popup';
  * @csspart expand-icon - The container that wraps the expand icon.
  *
  * @cssproperty --tag-max-width - Set the maximum width of the tags and to show an ellipsis. Defaults to "15ch"
+ * @cssproperty --sd-form-control--invalid-color-background - The background color for form controls in invalid state.
+ * @cssproperty --sd-form-control-color-text - The text color for form controls.
  */
 
 @customElement('sd-combobox')
@@ -1197,7 +1199,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         <label
           id="label"
           part="form-control-label"
-          class=${hasLabel && 'inline-block mb-2'}
+          class=${hasLabel && 'inline-block mb-2 form-control-color-text'}
           aria-hidden=${!hasLabel}
           @click=${this.handleLabelClick}
         >
@@ -1251,6 +1253,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 'relative w-full px-4 flex flex-row items-center rounded-default transition-colors hover:duration-fast ease-in-out',
                 this.visuallyDisabled || this.disabled ? 'hover:bg-transparent' : 'hover:bg-neutral-200',
                 this.open && 'shadow transition-shadow duration-medium ease-in-out',
+                ['invalid', 'activeInvalid'].includes(selectState) && 'form-control--invalid-color-background',
                 {
                   sm: 'py-1 min-h-[32px]',
                   md: 'py-1 min-h-[40px]',
@@ -1279,7 +1282,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 class=${cx(
                   'appearance-none outline-none bg-transparent flex-auto min-w-0',
                   cursorStyles,
-                  this.selectedTextLabel && !this.multiple ? 'placeholder:text-black' : 'placeholder:text-neutral-700'
+                  this.selectedTextLabel && !this.multiple
+                    ? 'placeholder:form-control-color-text'
+                    : 'placeholder:text-neutral-700'
                 )}
                 type="text"
                 placeholder=${this.selectedTextLabel && !this.multiple

@@ -36,6 +36,9 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @csspart base - The component's base wrapper.
  * @csspart border - The base part's absolutely positioned border. Allows for easy adjustment of border thickness without affecting component dimensions.
  * @csspart textarea - The internal `<textarea>` control.
+ *
+ * @cssproperty --sd-form-control--invalid-color-background - The background color for form controls in invalid state.
+ * @cssproperty --sd-form-control-color-text - The text color for form controls.
  */
 @customElement('sd-textarea')
 export default class SdTextarea extends SolidElement implements SolidFormControl {
@@ -367,7 +370,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               <label
                 part="form-control-label"
                 id="label"
-                class=${cx(hasLabel ? 'inline-block' : 'hidden', textSize)}
+                class=${cx(hasLabel ? 'inline-block form-control-color-text' : 'hidden', textSize)}
                 for="input"
                 aria-hidden=${hasLabel ? 'false' : 'true'}
               >
@@ -407,7 +410,10 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               }[this.size],
               !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
-              textareaState === 'disabled' || textareaState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black'
+              textareaState === 'disabled' || textareaState === 'visuallyDisabled'
+                ? 'text-neutral-500'
+                : 'form-control-color-text',
+              ['invalid', 'activeInvalid'].includes(textareaState) && 'form-control--invalid-color-background'
             )}
           >
             <textarea

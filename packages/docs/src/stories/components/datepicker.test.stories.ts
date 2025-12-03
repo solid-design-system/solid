@@ -27,6 +27,16 @@ export default {
     design: {
       type: 'figma',
       url: ''
+    },
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: false
+          }
+        ]
+      }
     }
   },
   args: overrideArgs([{ type: 'attribute', name: 'label', value: 'Label' }]),

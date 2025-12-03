@@ -27,6 +27,8 @@ let id = 0;
  * @cssproperty --sd-navigable-border-radius: The tab border radius on hover.
  * @cssproperty --sd-navigable__current-indicator-height: The tab current indicator height.
  * @cssproperty --sd-navigable__current-indicator-border-radius: The tab current indicator border radius value.
+ * @cssproperty --sd-color-background - The background color when on hover state.
+ * @cssproperty --sd-tab-color-border - The border color for the tab.
  */
 @customElement('sd-tab')
 export default class SdTab extends SolidElement {
@@ -97,7 +99,7 @@ export default class SdTab extends SolidElement {
             ? 'tab-container-border bg-white rounded-[4px_4px_0_0]'
             : 'navigable-border-radius',
           this.variant === 'container' && this.active && 'tab--active-container-border bg-white',
-          this.disabled || this.visuallyDisabled ? '!cursor-not-allowed' : 'hover:bg-neutral-200',
+          this.disabled || this.visuallyDisabled ? '!cursor-not-allowed' : 'hover:color-background',
           this.active && 'z-20'
         )}
         tabindex=${!this.active || this.disabled ? '-1' : '0'}
@@ -130,9 +132,7 @@ export default class SdTab extends SolidElement {
           <div
             part="hover-bottom-border"
             class=${cx(
-              !this.active &&
-                !this.disabled &&
-                'absolute bottom-0 left-0 w-full h-0.25 border-b border-transparent group-hover:border-b-neutral-400 transition-[border] duration-fast ease-in-out'
+              !this.active && !this.disabled && 'absolute bottom-0 left-0 w-full h-0.25 border-b sd-tab-color-border'
             )}
           ></div>
         </div>

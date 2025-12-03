@@ -1,5 +1,21 @@
+@utility color-background {
+  background-color: rgba(var(--sd-color-background, rgba(var(--sd-color-neutral-200))));
+}
+
+@utility form-control--invalid-color-background {
+  background-color: rgba(var(--sd-form-control--invalid-color-background, rgba(var(--sd-color-white))));
+}
+
 @utility form-control-color-border {
   border-color: rgba(var(--sd-form-control-color-border, rgba(var(--sd-color-neutral-800))));
+}
+
+@utility form-control-color-text {
+  color: rgba(var(--sd-form-control-color-text, rgba(var(--sd-color-black))));
+}
+
+@utility form-control__tooltip-color-icon {
+  background-color: rgba(var(--sd-form-control__tooltip-color-icon, rgba(var(--sd-color-primary))));
 }
 
 @utility informational-gradient--primary-800-color-background {
@@ -12,6 +28,10 @@
 
 @utility interactive--active-color-text {
   color: rgba(var(--sd-interactive--active-color-text, rgba(var(--sd-color-primary-800))));
+}
+
+@utility interactive--default-color-text {
+  color: rgba(var(--sd-interactive--default-color-text, rgba(var(--sd-color-primary))));
 }
 
 @utility navigable-border-radius {
@@ -70,16 +90,52 @@
   border-color: rgba(var(--sd-audio--inverted-color-border, rgba(var(--sd-color-white))));
 }
 
+@utility sd-audio__slide-bar--inverted-color-border {
+  border-color: rgba(var(--sd-audio__slide-bar--inverted-color-border, rgba(var(--sd-color-primary-400))));
+}
+
 @utility sd-audio__timestamp-color-text {
   color: rgba(var(--sd-audio__timestamp-color-text, rgba(var(--sd-color-black))));
 }
 
-@utility sd-brandshape--neutral-100-color-background {
-  background-color: rgba(var(--sd-brandshape--neutral-100-color-background, rgba(var(--sd-color-neutral-100))));
+@utility sd-badge--blue--inverted-color-background {
+  background-color: rgba(var(--sd-badge--blue--inverted-color-background, rgba(var(--sd-color-primary-100))));
 }
 
-@utility sd-brandshape--neutral-100-color-border {
-  border-color: rgba(var(--sd-brandshape--neutral-100-color-border, rgba(255, 255, 255, 0)));
+@utility sd-badge--blue--inverted-color-text {
+  color: rgba(var(--sd-badge--blue--inverted-color-text, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-badge--green-color--inverted-background {
+  background-color: rgba(var(--sd-badge--green-color--inverted-background, rgba(var(--sd-color-success))));
+}
+
+@utility sd-badge--green-color--inverted-text {
+  color: rgba(var(--sd-badge--green-color--inverted-text, rgba(var(--sd-color-white))));
+}
+
+@utility sd-badge--green-color-background {
+  background-color: rgba(var(--sd-badge--green-color-background, rgba(var(--sd-color-success))));
+}
+
+@utility sd-badge--inverted-color-border {
+  border-color: rgba(var(--sd-badge--inverted-color-border, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-badge--red--inverted-background {
+  background-color: rgba(var(--sd-badge--red--inverted-background, rgba(var(--sd-color-error))));
+}
+
+@utility sd-badge--red--inverted-text {
+  color: rgba(var(--sd-badge--red--inverted-text, rgba(var(--sd-color-white))));
+}
+
+@utility sd-badge--red-color-background {
+  background-color: rgba(var(--sd-badge--red-color-background, rgba(var(--sd-color-error))));
+}
+
+@utility sd-brandshape--neutral-100-color-background {
+  background-color: rgba(var(--sd-brandshape--neutral-100-color-background, rgba(var(--sd-color-neutral-100))));
 }
 
 @utility sd-brandshape--neutral-100-color-icon-fill {
@@ -92,6 +148,42 @@
 
 @utility sd-breadcrumb__separator-color {
   background-color: rgba(var(--sd-breadcrumb__separator-color, rgba(var(--sd-color-neutral-400))));
+}
+
+@utility sd-button--cta--inverted--active-color-background {
+  background-color: rgba(var(--sd-button--cta--inverted--active-color-background, rgba(var(--sd-color-accent-700))));
+}
+
+@utility sd-button--cta--inverted--active-color-text {
+  color: rgba(var(--sd-button--cta--inverted--active-color-text, rgba(var(--sd-color-white))));
+}
+
+@utility sd-button--cta--inverted--default-color-background {
+  background-color: rgba(var(--sd-button--cta--inverted--default-color-background, rgba(var(--sd-color-accent))));
+}
+
+@utility sd-button--cta--inverted--default-color-text {
+  color: rgba(var(--sd-button--cta--inverted--default-color-text, rgba(var(--sd-color-white))));
+}
+
+@utility sd-button--cta--inverted--hover-color-background {
+  background-color: rgba(var(--sd-button--cta--inverted--hover-color-background, rgba(var(--sd-color-accent-500))));
+}
+
+@utility sd-button--cta--inverted--hover-color-text {
+  color: rgba(var(--sd-button--cta--inverted--hover-color-text, rgba(var(--sd-color-white))));
+}
+
+@utility sd-button--inverted--disabled-color-background {
+  background-color: rgba(var(--sd-button--inverted--disabled-color-background, rgba(var(--sd-color-neutral-600))));
+}
+
+@utility sd-button--inverted--disabled-color-border {
+  border-color: rgba(var(--sd-button--inverted--disabled-color-border, rgba(var(--sd-color-neutral-600))));
+}
+
+@utility sd-button--inverted--disabled-color-text {
+  color: rgba(var(--sd-button--inverted--disabled-color-text, rgba(var(--sd-color-neutral-600))));
 }
 
 @utility sd-button--primary--active-color-text {
@@ -142,6 +234,10 @@
   background-color: rgba(var(--sd-button--secondary--inverted--active-color-background, rgba(var(--sd-color-primary-800))));
 }
 
+@utility sd-button--secondary--inverted--hover-color-background {
+  background-color: rgba(var(--sd-button--secondary--inverted--hover-color-background, rgba(var(--sd-color-primary-500))));
+}
+
 @utility sd-button--secondary--inverted--hover-color-text {
   color: rgba(var(--sd-button--secondary--inverted--hover-color-text, rgba(var(--sd-color-primary-100))));
 }
@@ -171,7 +267,7 @@
 }
 
 @utility sd-button--tertiary--active-color-background {
-  background-color: rgba(var(--sd-button--tertiary--active-color-background, rgba(var(--sd-color-primary-200))));
+  background-color: rgba(var(--sd-button--tertiary--active-color-background, rgba(var(--sd-color-primary-100))));
 }
 
 @utility sd-button--tertiary--hover-color-background {
@@ -182,12 +278,112 @@
   background-color: rgba(var(--sd-button--tertiary--inverted--active-color-background, rgba(var(--sd-color-primary-800))));
 }
 
+@utility sd-button--tertiary--inverted--hover-color-background {
+  background-color: rgba(var(--sd-button--tertiary--inverted--hover-color-background, rgba(var(--sd-color-primary-500))));
+}
+
 @utility sd-button--tertiary--inverted--hover-color-text {
   color: rgba(var(--sd-button--tertiary--inverted--hover-color-text, rgba(var(--sd-color-primary-100))));
 }
 
+@utility sd-carousel--active-color-icon-fill {
+  fill: rgba(var(--sd-carousel--active-color-icon-fill, rgba(var(--sd-color-accent))));
+}
+
+@utility sd-carousel__pager-dot-border-width {
+ border-width: var(--sd-carousel__pager-dot-border-width, var(--sd-spacing-0\.25));
+}
+
+@utility sd-checkbox-border-width {
+ border-width: var(--sd-checkbox-border-width, var(--sd-spacing-0\.25));
+}
+
+@utility sd-chip--primary-200-color-background {
+  background-color: rgba(var(--sd-chip--primary-200-color-background, rgba(var(--sd-color-primary-200))));
+}
+
+@utility sd-chip--primary-200-color-border {
+  border-color: rgba(var(--sd-chip--primary-200-color-border, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-chip--primary-300-color-background {
+  background-color: rgba(var(--sd-chip--primary-300-color-background, rgba(var(--sd-color-primary-300))));
+}
+
+@utility sd-chip--primary-300-color-border {
+  border-color: rgba(var(--sd-chip--primary-300-color-border, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-chip--primary-500-color-background {
+  background-color: rgba(var(--sd-chip--primary-500-color-background, rgba(var(--sd-color-primary-500))));
+}
+
+@utility sd-chip--primary-500-color-border {
+  border-color: rgba(var(--sd-chip--primary-500-color-border, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-chip--primary-500-color-text {
+  color: rgba(var(--sd-chip--primary-500-color-text, rgba(var(--sd-color-white))));
+}
+
+@utility sd-chip--white-color-background {
+  background-color: rgba(var(--sd-chip--white-color-background, rgba(var(--sd-color-white))));
+}
+
+@utility sd-chip--white-color-border {
+  border-color: rgba(var(--sd-chip--white-color-border, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-chip-border-radius {
+ border-radius: var(--sd-chip-border-radius, var(--sd-spacing-1));
+}
+
+@utility sd-chip-border-width {
+ border-width: var(--sd-chip-border-width, 0);
+}
+
+@utility sd-divider--inverted-color-border {
+  border-color: rgba(var(--sd-divider--inverted-color-border, rgba(var(--sd-color-primary-400))));
+}
+
+@utility sd-flag--neutral-200-color-background {
+  background-color: rgba(var(--sd-flag--neutral-200-color-background, rgba(var(--sd-color-neutral-200))));
+}
+
+@utility sd-flag--neutral-200-color-border {
+  border-color: rgba(var(--sd-flag--neutral-200-color-border, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-flag--neutral-300-color-background {
+  background-color: rgba(var(--sd-flag--neutral-300-color-background, rgba(var(--sd-color-neutral-300))));
+}
+
+@utility sd-flag--neutral-300-color-border {
+  border-color: rgba(var(--sd-flag--neutral-300-color-border, rgba(255, 255, 255, 0)));
+}
+
 @utility sd-flag--neutral-500-color-background {
   background-color: rgba(var(--sd-flag--neutral-500-color-background, rgba(var(--sd-color-neutral-500))));
+}
+
+@utility sd-flag--neutral-500-color-border {
+  border-color: rgba(var(--sd-flag--neutral-500-color-border, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-flag--white-color-background {
+  background-color: rgba(var(--sd-flag--white-color-background, rgba(var(--sd-color-white))));
+}
+
+@utility sd-flag--white-color-border {
+  border-color: rgba(var(--sd-flag--white-color-border, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-flag-border-radius {
+ border-radius: var(--sd-flag-border-radius, 0);
+}
+
+@utility sd-flag-border-width {
+ border-width: var(--sd-flag-border-width, 0);
 }
 
 @utility sd-footnotes--target--inverted-color-background {
@@ -202,26 +398,274 @@
  padding-bottom: var(--sd-header-padding-bottom, 0);
 }
 
-@utility sd-loader--neutral-500-color-icon-fill {
-  fill: rgba(var(--sd-loader--neutral-500-color-icon-fill, rgba(var(--sd-color-neutral-500))));
+@utility sd-headline-4xl-and-mobile-4xl-text {
+  color: rgba(var(--sd-headline-4xl-and-mobile-4xl-text, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-loader--neutral-600-color-icon-fill {
-  fill: rgba(var(--sd-loader--neutral-600-color-icon-fill, rgba(var(--sd-color-neutral-600))));
+@utility sd-map-marker-cluster--hovered-color-icon-fill {
+  fill: rgba(var(--sd-map-marker-cluster--hovered-color-icon-fill, rgba(var(--sd-color-primary-500))));
 }
 
-@utility sd-navigation--current-color-text {
-  color: rgba(var(--sd-navigation--current-color-text, rgba(var(--sd-color-primary))));
+@utility sd-map-marker-cluster-color-icon-fill {
+  fill: rgba(var(--sd-map-marker-cluster-color-icon-fill, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-navigation-color-text {
-  color: rgba(var(--sd-navigation-color-text, rgba(var(--sd-color-primary))));
+@utility sd-map-marker-font-size {
+ font-size: var(--sd-map-marker-font-size, var(--sd-spacing-3));
+}
+
+@utility sd-menu--disabled-color-icon {
+  background-color: rgba(var(--sd-menu--disabled-color-icon, rgba(var(--sd-color-neutral-500))));
+}
+
+@utility sd-menu--disabled-color-text {
+  color: rgba(var(--sd-menu--disabled-color-text, rgba(var(--sd-color-neutral-500))));
+}
+
+@utility sd-menu-color-icon {
+  background-color: rgba(var(--sd-menu-color-icon, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-menu-color-text {
+  color: rgba(var(--sd-menu-color-text, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-navigation-item--current-color-text {
+  color: rgba(var(--sd-navigation-item--current-color-text, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-navigation-item-color-text {
+  color: rgba(var(--sd-navigation-item-color-text, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-notification--error-color-background {
+  background-color: rgba(var(--sd-notification--error-color-background, rgba(var(--sd-color-white))));
+}
+
+@utility sd-notification--info-color-background {
+  background-color: rgba(var(--sd-notification--info-color-background, rgba(var(--sd-color-white))));
+}
+
+@utility sd-notification--success-color-background {
+  background-color: rgba(var(--sd-notification--success-color-background, rgba(var(--sd-color-white))));
+}
+
+@utility sd-notification--warning-color-background {
+  background-color: rgba(var(--sd-notification--warning-color-background, rgba(var(--sd-color-white))));
+}
+
+@utility sd-quickfact--expandable-color-text {
+  color: rgba(var(--sd-quickfact--expandable-color-text, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-quickfact__expandable-color-description-default-text {
+  color: rgba(var(--sd-quickfact__expandable-color-description-default-text, rgba(var(--sd-color-black))));
+}
+
+@utility sd-quickfact__expandable-color-title-default-text {
+  color: rgba(var(--sd-quickfact__expandable-color-title-default-text, rgba(var(--sd-color-black))));
+}
+
+@utility sd-radio--checked--default-color-background {
+  background-color: rgba(var(--sd-radio--checked--default-color-background, rgba(var(--sd-color-white))));
+}
+
+@utility sd-radio--checked--default__icon-color-background {
+  background-color: rgba(var(--sd-radio--checked--default__icon-color-background, rgba(var(--sd-color-accent))));
+}
+
+@utility sd-radio--checked--hover-color-background {
+  background-color: rgba(var(--sd-radio--checked--hover-color-background, rgba(var(--sd-color-white))));
+}
+
+@utility sd-radio--checked--hover__icon-color-background {
+  background-color: rgba(var(--sd-radio--checked--hover__icon-color-background, rgba(var(--sd-color-success))));
+}
+
+@utility sd-radio--checked--invalid--default-color-background {
+  background-color: rgba(var(--sd-radio--checked--invalid--default-color-background, rgba(var(--sd-color-white))));
+}
+
+@utility sd-radio--checked--invalid--default__icon-color-background {
+  background-color: rgba(var(--sd-radio--checked--invalid--default__icon-color-background, rgba(var(--sd-color-error))));
+}
+
+@utility sd-radio--checked--invalid--hover__icon-color-background {
+  background-color: rgba(var(--sd-radio--checked--invalid--hover__icon-color-background, rgba(var(--sd-color-error-400))));
+}
+
+@utility sd-radio--default--invalid-color-background {
+  background-color: rgba(var(--sd-radio--default--invalid-color-background, rgba(var(--sd-color-white))));
+}
+
+@utility sd-radio-border-width {
+ border-width: var(--sd-radio-border-width, var(--sd-spacing-0\.25));
+}
+
+@utility sd-radio-button--hover-color-background {
+  background-color: rgba(var(--sd-radio-button--hover-color-background, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-radio-button--hover-color-icon-fill {
+  fill: rgba(var(--sd-radio-button--hover-color-icon-fill, rgba(var(--sd-color-primary-500))));
+}
+
+@utility sd-radio-button--hover-color-text {
+  color: rgba(var(--sd-radio-button--hover-color-text, rgba(var(--sd-color-primary-500))));
+}
+
+@utility sd-radio-button-border-radius {
+ border-radius: var(--sd-radio-button-border-radius, 624.9375rem);
+}
+
+@utility sd-radio-button-color-icon-fil {
+  background-color: rgba(var(--sd-radio-button-color-icon-fil, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-radio-button-color-text {
+  color: rgba(var(--sd-radio-button-color-text, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-radio-button-group-border-radius {
+ border-radius: var(--sd-radio-button-group-border-radius, 624.9375rem);
+}
+
+@utility sd-radio-button-group-border-width {
+ border-width: var(--sd-radio-button-group-border-width, var(--sd-spacing-0\.25));
+}
+
+@utility sd-radio-button-group-padding {
+ padding: var(--sd-radio-button-group-padding, 0);
+}
+
+@utility sd-range-scale-ticks-color-text {
+  color: rgba(var(--sd-range-scale-ticks-color-text, rgba(var(--sd-color-black))));
+}
+
+@utility sd-range__bar-border-width {
+ border-width: var(--sd-range__bar-border-width, var(--sd-spacing-1));
+}
+
+@utility sd-step-color-text {
+  color: rgba(var(--sd-step-color-text, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-step-hover-color-text {
+  color: rgba(var(--sd-step-hover-color-text, rgba(var(--sd-color-primary-500))));
+}
+
+@utility sd-step__circle-border-width {
+ border-width: var(--sd-step__circle-border-width, var(--sd-spacing-0\.25));
+}
+
+@utility sd-step__tail-border-width {
+ border-width: var(--sd-step__tail-border-width, var(--sd-spacing-0\.25));
+}
+
+@utility sd-switch--checked--hover-color-background {
+  background-color: rgba(var(--sd-switch--checked--hover-color-background, rgba(var(--sd-color-success))));
+}
+
+@utility sd-switch--unchecked-color-border {
+  border-color: rgba(var(--sd-switch--unchecked-color-border, rgba(var(--sd-color-neutral-800))));
+}
+
+@utility sd-switch--unchecked__icon-color-background {
+  background-color: rgba(var(--sd-switch--unchecked__icon-color-background, rgba(var(--sd-color-neutral-800))));
+}
+
+@utility sd-switch-color-text {
+  color: rgba(var(--sd-switch-color-text, rgba(var(--sd-color-black))));
+}
+
+@utility sd-tab-color-border {
+  border-color: rgba(var(--sd-tab-color-border, rgba(var(--sd-color-neutral-400))));
+}
+
+@utility sd-tag--default--default-color-text {
+  color: rgba(var(--sd-tag--default--default-color-text, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-tag--default--hover-color-background {
+  background-color: rgba(var(--sd-tag--default--hover-color-background, rgba(255, 255, 255, 0)));
 }
 
 @utility sd-tag--selected--default-color-background {
   background-color: rgba(var(--sd-tag--selected--default-color-background, rgba(var(--sd-color-primary))));
 }
 
+@utility sd-tag--selected--default-color-border {
+  border-color: rgba(var(--sd-tag--selected--default-color-border, rgba(255, 255, 255, 0)));
+}
+
 @utility sd-tag--selected--default-color-text {
   color: rgba(var(--sd-tag--selected--default-color-text, rgba(var(--sd-color-white))));
+}
+
+@utility sd-tag--selected--hover-color-background {
+  background-color: rgba(var(--sd-tag--selected--hover-color-background, rgba(var(--sd-color-primary-500))));
+}
+
+@utility sd-tag--selected--hover-color-border {
+  border-color: rgba(var(--sd-tag--selected--hover-color-border, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-tag--selected--hover-color-text {
+  color: rgba(var(--sd-tag--selected--hover-color-text, rgba(var(--sd-color-white))));
+}
+
+@utility sd-tag--selected-border-width {
+ border-width: var(--sd-tag--selected-border-width, 0);
+}
+
+@utility sd-tag-border-radius {
+ border-radius: var(--sd-tag-border-radius, 624.9375rem);
+}
+
+@utility sd-teaser--neutral-100-color-background {
+  background-color: rgba(var(--sd-teaser--neutral-100-color-background, rgba(var(--sd-color-neutral-100))));
+}
+
+@utility sd-teaser--neutral-400-color-border {
+  border-color: rgba(var(--sd-teaser--neutral-400-color-border, rgba(var(--sd-color-neutral-400))));
+}
+
+@utility sd-teaser--primary-100-color-background {
+  background-color: rgba(var(--sd-teaser--primary-100-color-background, rgba(var(--sd-color-primary-100))));
+}
+
+@utility sd-teaser-media--neutral-100--hover-color-background {
+  background-color: rgba(var(--sd-teaser-media--neutral-100--hover-color-background, rgba(var(--sd-color-neutral-100))));
+}
+
+@utility sd-teaser-media--neutral-100-color-background {
+  background-color: rgba(var(--sd-teaser-media--neutral-100-color-background, rgba(var(--sd-color-neutral-100))));
+}
+
+@utility sd-teaser-media--primary-100--hover-color-background {
+  background-color: rgba(var(--sd-teaser-media--primary-100--hover-color-background, rgba(var(--sd-color-primary-100))));
+}
+
+@utility sd-teaser-media--primary-100-color-background {
+  background-color: rgba(var(--sd-teaser-media--primary-100-color-background, rgba(var(--sd-color-primary-100))));
+}
+
+@utility sd-tooltip-color-background {
+  background-color: rgba(var(--sd-tooltip-color-background, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-tooltip-color-text {
+  color: rgba(var(--sd-tooltip-color-text, rgba(var(--sd-color-white))));
+}
+
+@utility sd-video--description-color-text {
+  color: rgba(var(--sd-video--description-color-text, rgba(var(--sd-color-neutral-700))));
+}
+
+@utility sd-video--play-button-color-background {
+  background-color: rgba(var(--sd-video--play-button-color-background, rgba(255, 255, 255, 0.8)));
+}
+
+@utility sd-video--play-button-color-icon-fill {
+  fill: rgba(var(--sd-video--play-button-color-icon-fill, rgba(var(--sd-color-primary))));
 }

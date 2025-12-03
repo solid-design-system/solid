@@ -22,6 +22,9 @@ type Breakpoints = 0 | 414 | 640;
  * @csspart shape-middle - Middle shape.
  * @csspart shape-bottom - Bottom shape.
  * @csspart stylized-container - Container for border and image variant.
+ *
+ * @cssproperty --sd-brandshape--neutral-100-color-background - The background color using the neutral‑100 variant.
+ * @cssproperty --sd-brandshape--white-color-background - The background color using the white variant.
  */
 
 @customElement('sd-brandshape')
@@ -308,7 +311,7 @@ export default class SdBrandshape extends SolidElement {
        * For more details, see the 'Consistency with Figma' section in the **CONTRIBUTING.md**.
        */
       :host([variant='neutral-100']) [part='base'] {
-        fill: rgba(var(--sd-color-background-neutral-100, rgba(var(--sd-color-neutral-100))));
+        fill: rgba(var(--sd-brandshape--neutral-100-color-background, rgba(var(--sd-color-neutral-100))));
       }
 
       :host([variant='white']) [part='base'] {
