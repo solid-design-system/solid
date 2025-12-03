@@ -1,5 +1,57 @@
 # @solid-design-system/components
 
+## 6.0.0-next.13
+
+### Minor Changes
+
+- Added more semantic tokens to the following components: _[`#2646`](https://github.com/solid-design-system/solid/pull/2646) [`24e0bff`](https://github.com/solid-design-system/solid/commit/24e0bffe2a91c5ddbd39cef6c7a3bb46df89f472) [@paulovareiro29](https://github.com/paulovareiro29)_
+  - sd-accordion
+  - sd-audio
+  - sd-badge
+  - sd-brandshape
+  - sd-breadcrumb
+  - sd-button
+  - sd-carousel
+  - sd-checkbox
+  - sd-chip
+  - sd-combobox
+  - sd-container
+  - sd-date-picker
+  - sd-divider
+  - sd-flag
+  - sd-footnotes
+  - sd-header
+  - sd-input
+  - sd-interactive
+  - sd-loader
+  - sd-map-marker
+  - sd-menu-item
+  - sd-navigation-item
+  - sd-notification
+  - sd-quick-fact
+  - sd-radio
+  - sd-radio-button
+  - sd-radio-group
+  - sd-range-tick
+  - sd-select
+  - sd-step
+  - sd-switch
+  - sd-tab
+  - sd-tag
+  - sd-teaser
+  - sd-teaser-media
+  - sd-textarea
+  - sd-tooltip
+  - sd-video
+
+### Patch Changes
+
+- Fixed `sd-accordion` focus outline being cropped when grouped with multiple `sd-accordion` _[`#2646`](https://github.com/solid-design-system/solid/pull/2646) [`24e0bff`](https://github.com/solid-design-system/solid/commit/24e0bffe2a91c5ddbd39cef6c7a3bb46df89f472) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+* Uncompressed: 574 KB (+12 KB / +2%)
+* Gzipped: 130 KB (+1 KB / +1%)
+
 ## 6.0.0-next.12
 
 ### Patch Changes
@@ -7,8 +59,9 @@
 - Remove unneeded border in quickfact _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`e829dec`](https://github.com/solid-design-system/solid/commit/e829decbe1b704007a1d38a93405ee9344df6529) [@paulovareiro29](https://github.com/paulovareiro29)_
 
 ### 📈 Stats
-* Uncompressed: 562 KB (+1 KB / +0%)
-* Gzipped: 129 KB (unchanged)
+
+- Uncompressed: 562 KB (+1 KB / +0%)
+- Gzipped: 129 KB (unchanged)
 
 ## 6.0.0-next.11
 

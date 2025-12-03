@@ -1,5 +1,49 @@
 # @solid-design-system/styles
 
+## 6.0.0-next.13
+
+### Minor Changes
+
+- Added more semantic tokens to the following components: _[`#2646`](https://github.com/solid-design-system/solid/pull/2646) [`24e0bff`](https://github.com/solid-design-system/solid/commit/24e0bffe2a91c5ddbd39cef6c7a3bb46df89f472) [@paulovareiro29](https://github.com/paulovareiro29)_
+  - sd-accordion
+  - sd-audio
+  - sd-badge
+  - sd-brandshape
+  - sd-breadcrumb
+  - sd-button
+  - sd-carousel
+  - sd-checkbox
+  - sd-chip
+  - sd-combobox
+  - sd-container
+  - sd-date-picker
+  - sd-divider
+  - sd-flag
+  - sd-footnotes
+  - sd-header
+  - sd-input
+  - sd-interactive
+  - sd-loader
+  - sd-map-marker
+  - sd-menu-item
+  - sd-navigation-item
+  - sd-notification
+  - sd-quick-fact
+  - sd-radio
+  - sd-radio-button
+  - sd-radio-group
+  - sd-range-tick
+  - sd-select
+  - sd-step
+  - sd-switch
+  - sd-tab
+  - sd-tag
+  - sd-teaser
+  - sd-teaser-media
+  - sd-textarea
+  - sd-tooltip
+  - sd-video
+
 ## 6.0.0-next.12
 
 ## 6.0.0-next.11
