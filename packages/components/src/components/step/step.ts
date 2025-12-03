@@ -250,7 +250,7 @@ export default class SdStep extends SolidElement {
                             <div
                               part="tail"
                               class=${cx(
-                                'border-t sd-step__tail-border-top-width flex-1 mr-2 mt-3',
+                                'border-t flex-1 mr-2 mt-3',
                                 !this.disabled && !this.current && !this.notInteractive && !this.waiting
                                   ? 'border-primary'
                                   : 'border-neutral-500'
