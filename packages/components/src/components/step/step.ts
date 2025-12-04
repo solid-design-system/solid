@@ -354,7 +354,12 @@ export default class SdStep extends SolidElement {
         @apply flex-grow-0;
       }
 
-      :host [name='circle-content'].text-primary {
+      :host(:not([current])) slot[name='circle-content'] {
+        color: rgba(var(--sd-color-text-neutral-700));
+      }
+
+      slot[name='circle-content'] sd-icon,
+      slot[name='circle-content']::slotted(sd-icon) {
         color: rgba(var(--sd-color-icon-fill-primary));
       }
 
