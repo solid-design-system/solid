@@ -1,5 +1,7 @@
 # @solid-design-system/styles
 
+## 6.0.0-next.14
+
 ## 6.0.0-next.13
 
 ### Minor Changes

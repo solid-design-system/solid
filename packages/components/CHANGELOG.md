@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.0.0-next.14
+
+### Patch Changes
+
+- Fixed `sd-step` text color. _[`#2648`](https://github.com/solid-design-system/solid/pull/2648) [`e39d834`](https://github.com/solid-design-system/solid/commit/e39d83492d00f72afc82a2692d0dc9156ac03db1) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 6.0.0-next.13
 
 ### Minor Changes
@@ -49,8 +55,9 @@
 - Fixed `sd-accordion` focus outline being cropped when grouped with multiple `sd-accordion` _[`#2646`](https://github.com/solid-design-system/solid/pull/2646) [`24e0bff`](https://github.com/solid-design-system/solid/commit/24e0bffe2a91c5ddbd39cef6c7a3bb46df89f472) [@paulovareiro29](https://github.com/paulovareiro29)_
 
 ### 📈 Stats
-* Uncompressed: 574 KB (+12 KB / +2%)
-* Gzipped: 130 KB (+1 KB / +1%)
+
+- Uncompressed: 574 KB (+12 KB / +2%)
+- Gzipped: 130 KB (+1 KB / +1%)
 
 ## 6.0.0-next.12
 
