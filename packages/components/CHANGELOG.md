@@ -1,5 +1,17 @@
 # @solid-design-system/components
 
+## 5.17.2
+
+### Patch Changes
+
+- Updated `sd-checkbox` to use icon from `sd-status-assets`. _[`#2633`](https://github.com/solid-design-system/solid/pull/2633) [`9d5c6bd`](https://github.com/solid-design-system/solid/commit/9d5c6bd6197a977dd99c232516f6f0d22ad5dde7) [@smfonseca](https://github.com/smfonseca)_
+
+## 5.17.1
+
+### Patch Changes
+
+- Import components used inside `sd-datepicker` to ensure stability when cherry picking. _[`#2631`](https://github.com/solid-design-system/solid/pull/2631) [`8ddc041`](https://github.com/solid-design-system/solid/commit/8ddc0410d7bb43941a13b50d13763bb317504f33) [@smfonseca](https://github.com/smfonseca)_
+
 ## 5.17.0
 
 ### Minor Changes
@@ -7,8 +19,9 @@
 - Introducing the brand new `sd-skeleton` component. _[`#2605`](https://github.com/solid-design-system/solid/pull/2605) [`6a6b794`](https://github.com/solid-design-system/solid/commit/6a6b794366c9e377e8a8c32fad6d762e377a5dbe) [@balco0110](https://github.com/balco0110)_
 
 ### 📈 Stats
-* Uncompressed: 521 KB (+1 KB / +0%)
-* Gzipped: 123 KB (unchanged)
+
+- Uncompressed: 521 KB (+1 KB / +0%)
+- Gzipped: 123 KB (unchanged)
 
 ## 5.16.2
 

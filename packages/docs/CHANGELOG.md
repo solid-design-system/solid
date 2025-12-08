@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.32.1
+
+### Patch Changes
+
+- Adding a font license notification to installation docs page _[`#2519`](https://github.com/solid-design-system/solid/pull/2519) [`8e9bd8d`](https://github.com/solid-design-system/solid/commit/8e9bd8d9f54871e3000dafb17f5244142e207dbb) [@karlbaumhauer](https://github.com/karlbaumhauer)_
+
 ## 1.32.0
 
 ### Minor Changes

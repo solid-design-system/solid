@@ -1,5 +1,4 @@
 import { execSync } from 'child_process';
-import { globbySync } from 'globby';
 import { Octokit } from '@octokit/rest';
 import fs from 'fs';
 
@@ -102,41 +101,6 @@ async function main() {
         name: tag,
         body: releaseNotes
       });
-    }
-
-    // In this step we update the package.json files in the next branch with the new versions
-    // This is needed to ensure that the next branch publishes the correct versions
-    // and when the next branch is merged into main.
-    if (execSync('git ls-remote origin next').toString().trim()) {
-      try {
-        execSync('git checkout next', { stdio: 'inherit' });
-      } catch {
-        console.log('Creating local branch tracking origin/next...');
-        execSync('git checkout -b next origin/next', { stdio: 'inherit' });
-      }
-
-      const packageJsonFiles = globbySync('packages/*/package.json');
-      const updatedPackages = [];
-      status.releases.forEach(release => {
-        updatedPackages[release.name] = release.newVersion;
-      });
-
-      packageJsonFiles.forEach(file => {
-        const packageJson = JSON.parse(fs.readFileSync(file, 'utf-8'));
-        const packageName = packageJson.name;
-        if (updatedPackages[packageName]) {
-          packageJson.version = updatedPackages[packageName];
-          fs.writeFileSync(file, JSON.stringify(packageJson, null, 2));
-        }
-      });
-
-      execSync('git add .');
-      execSync(`git commit -m "chore(release-from-main): ${packagesWithVersions}" || echo "No changes to commit"`, {
-        stdio: 'inherit'
-      });
-      execSync('git push', { stdio: 'inherit' });
-    } else {
-      console.log('Branch origin/next does not exist. No updates needed.');
     }
 
     console.log('All done!');
