@@ -686,14 +686,16 @@ describe('<sd-input>', () => {
   describe('when using floating label', () => {
     it('should not render label wrapper', async () => {
       const el = await fixture<SdInput>(html` <sd-input label="test" floating-label></sd-input> `);
-      const label = el.shadowRoot!.querySelector('#label')!;
+
+      const label = el.shadowRoot?.querySelector('#label');
 
       expect(label).to.not.exist;
     });
 
     it('should render floating label part', async () => {
-      const el = await fixture<SdInput>(html`<sd-input label="test" floating-label></sd-input>`);
-      const floatingLabel = el.shadowRoot!.querySelector('[part~="form-control-floating-label"]')!;
+      const el = await fixture<SdInput>(html` <sd-input label="test" floating-label></sd-input> `);
+
+      const floatingLabel = el.shadowRoot?.querySelector('[part~="form-control-floating-label"]');
 
       expect(floatingLabel).to.exist;
     });
