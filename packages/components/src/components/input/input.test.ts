@@ -45,6 +45,7 @@ describe('<sd-input>', () => {
     expect(el.inputmode).to.be.undefined;
     expect(el.valueAsDate).to.be.null;
     expect(isNaN(el.valueAsNumber)).to.be.true;
+    expect(el.floatingLabel).to.be.false;
   });
 
   it('should have title if title attribute is set', async () => {
@@ -679,6 +680,22 @@ describe('<sd-input>', () => {
 
       expect(formControls.length).to.equal(10);
       expect(formControls.map((fc: HTMLInputElement) => fc.value).join('')).to.equal('12345678910');
+    });
+  });
+
+  describe('when using floating label', () => {
+    it('should not render label wrapper', async () => {
+      const el = await fixture<SdInput>(html` <sd-input label="test" floating-label></sd-input> `);
+      const label = el.shadowRoot!.querySelector('#label')!;
+
+      expect(label).to.not.exist;
+    });
+
+    it('should render floating label part', async () => {
+      const el = await fixture<SdInput>(html`<sd-input label="test" floating-label></sd-input>`);
+      const floatingLabel = el.shadowRoot!.querySelector('[part~="form-control-floating-label"]')!;
+
+      expect(floatingLabel).to.exist;
     });
   });
 });

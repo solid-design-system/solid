@@ -54,6 +54,7 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @csspart form-control-label - The label's wrapper.
  * @csspart form-control-input - The input's wrapper.
  * @csspart form-control-help-text - The help text's wrapper.
+ * @csspart form-control-floating-label - The floating label text's wrapper.
  * @csspart base - The component's base wrapper.
  * @csspart border - The base part's absolutely positioned border. Allows for easy adjustment of border thickness without affecting component dimensions.
  * @csspart input - The internal `<input>` control.
@@ -193,7 +194,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   @property({ type: Boolean, reflect: true }) required = false;
 
   /** Enables the floating label behavior for the input. */
-  @property({ type: Boolean, reflect: true }) floatingLabel = false;
+  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = false;
 
   /** A regular expression pattern to validate input against. */
   @property() pattern: string;
@@ -511,8 +512,12 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.readonly && (typeof this.value === 'number' || this.value.length > 0);
     const hasTooltip = !!slots['tooltip'];
+    const hasIconLeft = slots['left'];
+    console.log(hasIconLeft);
     const isFloatingLabelActive =
-      this.floatingLabel && hasLabel && (this.hasFocus || (this.value !== null && String(this.value).length > 0));
+      this.floatingLabel &&
+      hasLabel &&
+      (this.hasFocus || (this.value !== null && String(this.value).length > 0) || this.placeholder);
     // Hierarchy of input states:
     const inputState = this.disabled
       ? 'disabled'
@@ -566,6 +571,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           : isFloatingLabelActive
             ? 'py-2'
             : 'py-3';
+    const floatingLabelHorizontalAlignmentWithIconLeft = { sm: 'left-[36px]', md: 'left-[44px]', lg: 'left-12' }[
+      this.size
+    ];
     // Render
     return html`
       <div part="form-control" class=${cx((this.disabled || this.visuallyDisabled) && 'cursor-not-allowed')}>
@@ -602,7 +610,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           <div
             part="base"
             class=${cx(
-              'px-4 flex flex-row rounded-default transition-colors ease-in-out duration-medium hover:duration-fast',
+              'px-4 flex flex-row items-center rounded-default transition-colors ease-in-out duration-medium hover:duration-fast',
               // States
               !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
@@ -635,7 +643,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               ?disabled=${this.disabled}
               ?readonly=${this.readonly}
               ?required=${this.required}
-              placeholder=${this.floatingLabel ? '' : ifDefined(this.placeholder)}
+              placeholder=${ifDefined(this.placeholder)}
               minlength=${ifDefined(this.minlength)}
               maxlength=${ifDefined(this.maxlength)}
               min=${ifDefined(this.min)}
@@ -669,15 +677,20 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     part="form-control-floating-label"
                     id="label"
                     class=${cx(
-                      'pointer-events-none absolute left-4 transition-all duration-medium ease-out',
+                      'pointer-events-none absolute',
+                      !this.readonly && 'transition-all duration-medium ease-out',
                       !isFloatingLabelActive && 'top-1/2 -translate-y-1/2 text-black text-base',
-                      isFloatingLabelActive && 'text-neutral-700 text-xs',
-                      isFloatingLabelActive && (this.size === 'lg' ? 'top-3' : 'top-2')
+                      isFloatingLabelActive && 'text-xs',
+                      (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
+                      isFloatingLabelActive && (this.size === 'lg' ? 'top-3' : 'top-2'),
+                      hasIconLeft ? floatingLabelHorizontalAlignmentWithIconLeft : 'left-4',
+                      isFloatingLabelActive && !this.visuallyDisabled && !this.disabled && 'text-neutral-700'
                     )}
                     for="input"
                     aria-hidden=${hasLabel ? 'false' : 'true'}
-                    >${this.label}</label
                   >
+                    ${this.label}
+                  </label>
                 `
               : null}
             ${hasClearIcon

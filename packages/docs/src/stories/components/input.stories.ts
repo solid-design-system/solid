@@ -412,3 +412,14 @@ export const SpinButtons = {
     </div>
   `
 };
+
+/**
+ * Use the `floating-label` attribute to enable a floating label on the input.
+ */
+export const FloatingLabel = {
+  render: () => html`
+    <div class="w-[350px]">
+      <sd-input label="Floating Label" floating-label></sd-input>
+    </div>
+  `
+};

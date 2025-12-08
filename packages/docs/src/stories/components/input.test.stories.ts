@@ -845,6 +845,23 @@ export const setCustomValidity = {
 };
 
 /**
+ * Use the `floating-label` attribute to enable a floating label on the input.
+ */
+export const FloatingLabel = {
+  name: 'Floating Label',
+  args: overrideArgs([{ type: 'attribute', name: 'floating-label', value: true }]),
+  render: (args: any) => {
+    return html`
+      <div class="w-[350px]">
+        ${generateTemplate({
+          args
+        })}
+      </div>
+    `;
+  }
+};
+
+/**
  * `sd-input` is fully accessibile via keyboard.
  */
 
@@ -877,5 +894,6 @@ export const Combination = generateScreenshotStory([
   Slots,
   Parts,
   setCustomValidity,
+  FloatingLabel,
   Mouseless
 ]);
