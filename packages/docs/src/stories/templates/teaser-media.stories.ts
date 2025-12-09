@@ -125,6 +125,8 @@ export const TeaserMediaExpandable = {
       .media-overrides::part(content) {
         display: flex;
         align-items: center;
+        justify-content: center;
+        text-align: center;
       }
     </style>
     <div class="flex flex-row gap-2 media-overrides">
