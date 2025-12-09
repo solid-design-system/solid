@@ -677,7 +677,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     id="label"
                     class=${cx(
                       'pointer-events-none absolute',
-                      !this.readonly && 'transition-all duration-medium ease-out',
+                      !this.readonly && 'transition-all duration-medium ease-in-out',
                       !isFloatingLabelActive && 'top-1/2 -translate-y-1/2 text-black text-base',
                       isFloatingLabelActive && 'text-xs',
                       (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
