@@ -705,7 +705,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   >
                     <slot name="clear-icon">
                       <sd-icon
-                        class=${cx('text-neutral-700', iconSize)}
+                        class=${cx(
+                          this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-neutral-700',
+                          iconSize
+                        )}
                         library="_internal"
                         name="closing-round"
                       ></sd-icon>

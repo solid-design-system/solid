@@ -103,6 +103,16 @@ describe('<sd-input>', () => {
     expect(labelParentElement!.contains(tooltip)).to.be.false;
   });
 
+  it('should not render label wrapper if floating label is true', async () => {
+    const el = await fixture<SdInput>(html` <sd-input label="test" floating-label> </sd-input> `);
+
+    const labelParentElement = el.shadowRoot!.querySelector('[part~="form-control"]');
+    const label = el.shadowRoot!.querySelector('[part~="form-control-label"]');
+
+    expect(labelParentElement).to.exist;
+    expect(labelParentElement!.contains(label)).to.be.false;
+  });
+
   describe('value methods', () => {
     it('should set the value as a date when using valueAsDate', async () => {
       const el = await fixture<SdInput>(html` <sd-input type="date"></sd-input> `);
@@ -680,24 +690,6 @@ describe('<sd-input>', () => {
 
       expect(formControls.length).to.equal(10);
       expect(formControls.map((fc: HTMLInputElement) => fc.value).join('')).to.equal('12345678910');
-    });
-  });
-
-  describe('when using floating label', () => {
-    it('should not render label wrapper', async () => {
-      const el = await fixture<SdInput>(html` <sd-input label="test" floating-label></sd-input> `);
-
-      const label = el.shadowRoot?.querySelector('#label');
-
-      expect(label).to.not.exist;
-    });
-
-    it('should render floating label part', async () => {
-      const el = await fixture<SdInput>(html` <sd-input label="test" floating-label></sd-input> `);
-
-      const floatingLabel = el.shadowRoot?.querySelector('[part~="form-control-floating-label"]');
-
-      expect(floatingLabel).to.exist;
     });
   });
 });

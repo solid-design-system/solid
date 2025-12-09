@@ -277,7 +277,7 @@ export const StyleOnValid = {
 
     for (const el of els) {
       await waitUntil(() => el?.shadowRoot?.querySelector('input'));
-      await userEvent.type(el.shadowRoot!.querySelector('input')!, 'e');
+      await userEvent.type(el.shadowRoot!.querySelector('input')!, ' ');
     }
 
     // tab to next element to loose focus
