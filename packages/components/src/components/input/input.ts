@@ -513,7 +513,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const hasClearIcon = this.clearable && !this.readonly && (typeof this.value === 'number' || this.value.length > 0);
     const hasTooltip = !!slots['tooltip'];
     const hasIconLeft = slots['left'];
-    console.log(hasIconLeft);
     const isFloatingLabelActive =
       this.floatingLabel &&
       hasLabel &&
