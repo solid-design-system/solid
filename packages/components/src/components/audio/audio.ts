@@ -293,7 +293,7 @@ export default class SdAudio extends SolidElement {
     // extracts the numbers from the rgb string
     const result = rgbString.match(/\d+/g);
 
-    if (result?.length === 3) {
+    if (result && result.length === 3) {
       const r = parseInt(result[0]);
       const g = parseInt(result[1]);
       const b = parseInt(result[2]);
