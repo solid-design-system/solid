@@ -65,6 +65,19 @@ export const Label = {
 };
 
 /**
+ * Use the `floating-label` attribute to enable a floating label on the input.
+ *
+ * __Note:__ Floating labels only work with the `label attribute`. The `label slot` is not supported.
+ */
+export const FloatingLabel = {
+  render: () => html`
+    <div class="w-[350px]">
+      <sd-input label="Floating Label" floating-label></sd-input>
+    </div>
+  `
+};
+
+/**
  * Use the `placeholder` attribute to add a placeholder.
  */
 export const Placeholder = {
@@ -409,17 +422,6 @@ export const SpinButtons = {
         help-text="Min value is 0 and Max value is 100"
         spin-buttons
       ></sd-input>
-    </div>
-  `
-};
-
-/**
- * Use the `floating-label` attribute to enable a floating label on the input.
- */
-export const FloatingLabel = {
-  render: () => html`
-    <div class="w-[350px]">
-      <sd-input label="Floating Label" floating-label></sd-input>
     </div>
   `
 };
