@@ -4,4 +4,4 @@
 '@solid-design-system/docs': patch
 ---
 
-- Implement sd-input floating label
+Added `sd-input` `floating-label` attribute.
