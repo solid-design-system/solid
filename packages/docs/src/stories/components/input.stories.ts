@@ -67,7 +67,7 @@ export const Label = {
 /**
  * Use the `floating-label` attribute to enable a floating label on the input.
  *
- * __Note:__ Floating labels only work with the `label attribute`. The `label slot` is not supported.
+ * __Note:__ Floating labels only work with the `label` attribute. The `label` slot is not supported.
  */
 export const FloatingLabel = {
   render: () => html`
