@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 5.6.1
+
+### Patch Changes
+
+- Add new font-size `text-xs`. _[`#2649`](https://github.com/solid-design-system/solid/pull/2649) [`60e6b7f`](https://github.com/solid-design-system/solid/commit/60e6b7f6bf6a5786c3205ac282bf3e373aa09472) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 5.6.0
 
 ### Minor Changes
