@@ -5,4 +5,4 @@ packages:
   # exclude packages that are inside test directories
   - '!**/test/**'
 
-minimumReleaseAge: 7200
+minimumReleaseAge: 1209600 #14 days

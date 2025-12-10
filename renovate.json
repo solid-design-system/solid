@@ -10,6 +10,6 @@
   "draftPR": true,
   "rebaseWhen": "never",
   "osvVulnerabilityAlerts": true,
-  "minimumReleaseAge": "5 days",
+  "minimumReleaseAge": "14 days",
   "internalChecksFilter": "strict"
 }
