@@ -672,7 +672,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               ? html`
                   <label
                     part="form-control-floating-label"
-                    id="label"
                     class=${cx(
                       'pointer-events-none absolute',
                       hasIconLeft ? floatingLabelHorizontalAlignmentWithIconLeft : 'left-4',
@@ -687,6 +686,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     aria-hidden=${hasLabel ? 'false' : 'true'}
                   >
                     <span
+                      id="floating-label"
                       class=${cx(
                         'pointer-events-none leading-none',
                         !this.readonly && 'transition-all duration-medium ease-out',
@@ -881,7 +881,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         @apply block;
       }
 
-      :host([required]) #label::after {
+      :host([required]) :is(#label, #floating-label)::after {
         content: ' *';
       }
 
