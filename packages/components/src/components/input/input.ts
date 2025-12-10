@@ -513,10 +513,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const hasClearIcon = this.clearable && !this.readonly && (typeof this.value === 'number' || this.value.length > 0);
     const hasTooltip = !!slots['tooltip'];
     const hasIconLeft = slots['left'];
-    const isFloatingLabelActive =
-      this.floatingLabel &&
-      hasLabel &&
-      (this.hasFocus || (this.value !== null && String(this.value).length > 0) || this.placeholder);
+    const hasValue = this.value !== null && String(this.value).length > 0;
+    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue || this.placeholder);
     // Hierarchy of input states:
     const inputState = this.disabled
       ? 'disabled'
@@ -677,18 +675,30 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     id="label"
                     class=${cx(
                       'pointer-events-none absolute',
-                      !this.readonly && 'transition-all duration-medium ease-in-out',
-                      !isFloatingLabelActive && 'top-1/2 -translate-y-1/2 text-black text-base',
-                      isFloatingLabelActive && 'text-xs',
-                      (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
-                      isFloatingLabelActive && (this.size === 'lg' ? 'top-3' : 'top-2'),
                       hasIconLeft ? floatingLabelHorizontalAlignmentWithIconLeft : 'left-4',
-                      isFloatingLabelActive && !this.visuallyDisabled && !this.disabled && 'text-neutral-700'
+                      !this.readonly && 'transition-all duration-medium ease-out',
+                      !isFloatingLabelActive || (!hasValue && (this.readonly || this.visuallyDisabled))
+                        ? 'top-1/2 -translate-y-1/2'
+                        : this.size === 'lg'
+                          ? 'top-2'
+                          : 'top-1'
                     )}
                     for="input"
                     aria-hidden=${hasLabel ? 'false' : 'true'}
                   >
-                    ${this.label}
+                    <span
+                      class=${cx(
+                        'pointer-events-none leading-none',
+                        !this.readonly && 'transition-all duration-medium ease-out',
+                        !isFloatingLabelActive || (!hasValue && (this.readonly || this.visuallyDisabled))
+                          ? 'text-base'
+                          : 'text-xs',
+                        (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
+                        isFloatingLabelActive && !this.visuallyDisabled && !this.disabled && 'text-neutral-700'
+                      )}
+                    >
+                      ${this.label}
+                    </span>
                   </label>
                 `
               : null}
