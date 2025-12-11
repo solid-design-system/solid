@@ -61,7 +61,7 @@ describe('<sd-datepicker>', () => {
   });
 
   it('changes month/year labels when locale changes', async () => {
-    const el = await fixture<SdDatepicker>(html`<sd-datepicker locale="en-US" value="2024.01.15"></sd-datepicker>`);
+    const el = await fixture<SdDatepicker>(html`<sd-datepicker locale="en-US" value="2024-01-15"></sd-datepicker>`);
     el.show();
     await el.updateComplete;
 
@@ -147,7 +147,7 @@ describe('<sd-datepicker>', () => {
     });
 
     it('formats input as DD.MM.YYYY from value after interaction', async () => {
-      const el = await fixture<SdDatepicker>(html`<sd-datepicker value="2024.01.15"></sd-datepicker>`);
+      const el = await fixture<SdDatepicker>(html`<sd-datepicker value="2024-01-15"></sd-datepicker>`);
       const input = el.shadowRoot!.querySelector<HTMLInputElement>('#input')!;
 
       input.focus();
@@ -236,35 +236,35 @@ describe('<sd-datepicker>', () => {
 
   describe('disabled dates', () => {
     it('parses disabled-dates JSON string', async () => {
-      const dates = '2025.11.04,2025.11.12';
+      const dates = '2025-11-04,2025-11-12';
       const el = await fixture<SdDatepicker>(html`<sd-datepicker .disabledDates=${dates}></sd-datepicker>`);
 
-      expect(el['disabledDatesSet'].has('2025.11.04')).to.be.true;
-      expect(el['disabledDatesSet'].has('2025.11.12')).to.be.true;
+      expect(el['disabledDatesSet'].has('2025-11-04')).to.be.true;
+      expect(el['disabledDatesSet'].has('2025-11-12')).to.be.true;
     });
 
     it('parses disabled-dates string with spaces', async () => {
       const el = await fixture<SdDatepicker>(
-        html`<sd-datepicker disabled-dates=" 2025.11.04 , 2025.11.12 "></sd-datepicker>`
+        html`<sd-datepicker disabled-dates=" 2025-11-04 , 2025-11-12 "></sd-datepicker>`
       );
-      expect(el['disabledDatesSet'].has('2025.11.04')).to.be.true;
-      expect(el['disabledDatesSet'].has('2025.11.12')).to.be.true;
+      expect(el['disabledDatesSet'].has('2025-11-04')).to.be.true;
+      expect(el['disabledDatesSet'].has('2025-11-12')).to.be.true;
     });
 
     it('parses hyphen-separated dates', async () => {
       const el = await fixture<SdDatepicker>(
         html`<sd-datepicker disabled-dates="2025-11-11,2025-11-19"></sd-datepicker>`
       );
-      expect(el['disabledDatesSet'].has('2025.11.11')).to.be.true;
-      expect(el['disabledDatesSet'].has('2025.11.19')).to.be.true;
+      expect(el['disabledDatesSet'].has('2025-11-11')).to.be.true;
+      expect(el['disabledDatesSet'].has('2025-11-19')).to.be.true;
     });
 
     it('parses slash-separated dates', async () => {
       const el = await fixture<SdDatepicker>(
         html`<sd-datepicker disabled-dates="2025/11/20 2025/11/24"></sd-datepicker>`
       );
-      expect(el['disabledDatesSet'].has('2025.11.20')).to.be.true;
-      expect(el['disabledDatesSet'].has('2025.11.24')).to.be.true;
+      expect(el['disabledDatesSet'].has('2025-11-20')).to.be.true;
+      expect(el['disabledDatesSet'].has('2025-11-24')).to.be.true;
     });
   });
 
@@ -360,6 +360,30 @@ describe('<sd-datepicker>', () => {
       const input = el.shadowRoot!.querySelector<HTMLInputElement>('#input')!;
 
       expect(input.checkValidity()).to.be.false;
+    });
+  });
+
+  describe('min and max attributes', () => {
+    it('should mark all days before min and after max with disabled attribute', async () => {
+      const el = await fixture<SdDatepicker>(
+        html`<sd-datepicker value="2025-12-16" min="2025-12-10" max="2025-12-20"></sd-datepicker>`
+      );
+
+      el.show();
+      await el.updateComplete;
+
+      const dayButtons = Array.from(el.shadowRoot!.querySelectorAll('button.day'));
+      const enabledDays = dayButtons.filter(btn => !btn.classList.contains('disabled'));
+
+      expect(enabledDays.length).to.equal(11);
+      const input = el.shadowRoot!.querySelector<HTMLInputElement>('#input')!;
+      input.value = '25.12.2025';
+      input.dispatchEvent(new Event('input'));
+      input.dispatchEvent(new Event('blur'));
+      await el.updateComplete;
+
+      expect(el.checkValidity()).to.be.false;
+      expect(input.getAttribute('aria-invalid')).to.equal('true');
     });
   });
 });
