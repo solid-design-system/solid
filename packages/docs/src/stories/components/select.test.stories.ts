@@ -181,37 +181,53 @@ export const ValidInvalid = {
     delete args['open-attr'];
 
     return html`<form class="h-[260px] w-full flex gap-4">
-      ${generateTemplate({
-        options: {
-          classes: 'w-full [&>tbody>tr>td]:align-top'
-        },
-        axis: {
-          y: {
-            type: 'attribute',
-            name: 'useTags',
-            values: [false, true]
+        ${generateTemplate({
+          options: {
+            classes: 'w-full [&>tbody>tr>td]:align-top'
           },
-          x: {
-            type: 'attribute',
-            name: 'value',
-            values: ['option-1 option-2', '']
+          axis: {
+            y: {
+              type: 'attribute',
+              name: 'useTags',
+              values: [false, true]
+            },
+            x: {
+              type: 'attribute',
+              name: 'value',
+              values: ['option-1 option-2', '']
+            }
+          },
+          constants: [twoOptionsConstant, labelConstant, multipleConstant],
+          args
+        })}
+      </form>
+      <script type="module">
+        await customElements.whenDefined('sd-select');
+        const form = document.querySelector('form');
+        form.addEventListener('invalid', e => e.preventDefault(), { capture: true });
+
+        const selects = Array.from(form.querySelectorAll('sd-select'));
+        selects.forEach(select => {
+          const isEmpty = !select.value || (Array.isArray(select.value) && select.value.length === 0);
+          if (isEmpty) {
+            select.setCustomValidity('Please select at least one option.');
+            select.reportValidity();
           }
-        },
-        constants: [
-          twoOptionsConstant,
-          labelConstant,
-          multipleConstant,
-          { type: 'attribute', name: 'required', value: true }
-        ],
-        args
-      })}
-      <sd-button class="hidden" type="submit">Submit</sd-button>
-    </form>`;
-  },
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('sd-button');
-    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
-    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
+
+          const validateSelect = () => {
+            const isEmpty = !select.value || (Array.isArray(select.value) && select.value.length === 0);
+            if (isEmpty) {
+              select.setCustomValidity('Please select at least one option.');
+            } else {
+              select.setCustomValidity('');
+            }
+            select.reportValidity();
+          };
+
+          select.addEventListener('sd-change', validateSelect);
+          select.addEventListener('sd-input', validateSelect);
+        });
+      </script>`;
   }
 };
 
@@ -461,7 +477,6 @@ export const SampleForm = {
     const sharedConstants: ConstantDefinition[] = [
       { type: 'attribute', name: 'form', value: 'testForm' },
       { type: 'attribute', name: 'clearable', value: true },
-      { type: 'attribute', name: 'required', value: true },
       twoOptionsConstant
     ];
 
@@ -471,8 +486,8 @@ export const SampleForm = {
           ${generateTemplate({
             constants: [
               ...sharedConstants,
-              { type: 'attribute', name: 'label', value: 'Required' },
-              { type: 'attribute', name: 'name', value: 'required field' }
+              { type: 'attribute', name: 'label', value: 'Required *' },
+              { type: 'attribute', name: 'name', value: 'required-field' }
             ],
             args
           })}
@@ -481,8 +496,8 @@ export const SampleForm = {
           ${generateTemplate({
             constants: [
               ...sharedConstants,
-              { type: 'attribute', name: 'label', value: 'Required multiple' },
-              { type: 'attribute', name: 'name', value: 'required multiple field' },
+              { type: 'attribute', name: 'label', value: 'Required multiple *' },
+              { type: 'attribute', name: 'name', value: 'required-multiple-field' },
               multipleConstant
             ],
             args
@@ -492,8 +507,8 @@ export const SampleForm = {
           ${generateTemplate({
             constants: [
               ...sharedConstants,
-              { type: 'attribute', name: 'label', value: 'Required multiple w/ tags' },
-              { type: 'attribute', name: 'name', value: 'required multiple tags field' },
+              { type: 'attribute', name: 'label', value: 'Required multiple w/ tags *' },
+              { type: 'attribute', name: 'name', value: 'required-multiple-tags-field' },
               multipleConstant,
               { type: 'attribute', name: 'useTags', value: true }
             ],
@@ -502,24 +517,66 @@ export const SampleForm = {
         </div>
         <sd-button type="submit">Submit</sd-button>
       </form>
-      <script>
+      <script type="module">
+        const customErrorMessages = {
+          'required-field': 'Please select an option.',
+          'required-multiple-field': 'Please select at least one option.',
+          'required-multiple-tags-field': 'Please select at least one option.'
+        };
+
+        await Promise.all([customElements.whenDefined('sd-select'), customElements.whenDefined('sd-button')]);
+        const form = document.querySelector('#testForm');
+        const controls = Array.from(form.querySelectorAll('sd-select'));
+
+        controls.forEach(control => {
+          const name = control.getAttribute('name');
+          control.addEventListener('sd-change', () => {
+            control.setCustomValidity('');
+          });
+          control.addEventListener('sd-input', () => {
+            control.setCustomValidity('');
+          });
+        });
+
+        form.addEventListener(
+          'submit',
+          event => {
+            controls.forEach(control => {
+              const name = control.getAttribute('name');
+              const value = control.value;
+              let isValid = false;
+
+              if (Array.isArray(value)) {
+                isValid = value.length > 0;
+              } else {
+                isValid = value && value.trim() !== '';
+              }
+
+              if (!isValid) {
+                const message = customErrorMessages[name];
+                if (message) {
+                  control.setCustomValidity(message);
+                }
+              } else {
+                control.setCustomValidity('');
+              }
+            });
+          },
+          true
+        );
+
         function handleSubmit(event) {
-          const form = document.querySelector('#testForm');
-          const sdSelects = Array.from(document.querySelectorAll('sd-select'));
+          event.preventDefault();
 
-          const isValid = sdSelect => sdSelect.checkValidity();
+          const formData = new FormData(form);
+          const formValues = Object.fromEntries(formData);
 
-          if (sdSelects.every(isValid)) {
-            event.preventDefault(); // Prevent the default form submission behavior
-
-            const formData = new FormData(form);
-            const formValues = Object.fromEntries(formData);
-
-            alert('Form submitted successfully with the following values: ' + JSON.stringify(formValues, null, 2));
+          if (form.reportValidity()) {
+            alert('Form submitted with the following values: ' + JSON.stringify(formValues, null, 2));
           }
         }
 
-        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
+        form.addEventListener('submit', handleSubmit);
       </script>
     `;
   }
