@@ -113,6 +113,11 @@
 ### Major Changes
 
 - Introduce multi-theming with new CSS variables _[`#2565`](https://github.com/solid-design-system/solid/pull/2565) [`602f0d3`](https://github.com/solid-design-system/solid/commit/602f0d38371c8f797662997071feb8173113e896) [@github-actions](https://github.com/apps/github-actions)_
+## 5.6.1
+
+### Patch Changes
+
+- Add new font-size `text-xs`. _[`#2649`](https://github.com/solid-design-system/solid/pull/2649) [`60e6b7f`](https://github.com/solid-design-system/solid/commit/60e6b7f6bf6a5786c3205ac282bf3e373aa09472) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
 
 ## 5.6.0
 

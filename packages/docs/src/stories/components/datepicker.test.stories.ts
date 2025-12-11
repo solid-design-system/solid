@@ -46,7 +46,7 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return generateTemplate({ args });
+    return html`<div class="w-[400px]">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -128,7 +128,7 @@ export const DisabledDates = {
           ]
         }
       },
-      args
+      args: overrideArgs({ type: 'attribute', name: 'value', value: '2025.11.10' }, args)
     });
   }
 };
@@ -149,7 +149,7 @@ export const Mouseless = {
 export const LocaleAware = {
   name: 'Locale Aware',
   render: () => {
-    return html`<div class="flex flex-col gap-4">
+    return html`<div class="flex flex-col gap-4 w-[400px]">
       <sd-datepicker lang="de" locale="de-DE"></sd-datepicker>
       <sd-datepicker lang="de" locale="de-DE" range rangeStart="2025.10.02" rangeEnd="2025.10.12"></sd-datepicker>
     </div>`;

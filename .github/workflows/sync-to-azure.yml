@@ -1,14 +1,18 @@
 name: Sync to Azure
 
+permissions:
+  contents: read
+
 on:
   workflow_run:
-    workflows: ["Release new main version"]
+    workflows: ["Release"]
     types:
       - completed
   workflow_dispatch:
 
 jobs:
   check-env:
+    if: ${{ github.event.workflow_run.head_branch == 'main' }}
     runs-on: ubuntu-latest
     outputs:
       azure-key: ${{ steps.azure-key.outputs.defined }}

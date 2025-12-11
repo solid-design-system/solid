@@ -67,6 +67,41 @@
 ### Minor Changes
 
 - Implemented new utility componented named `sd-theme-listener`, used to listen to theme changes. _[`#2472`](https://github.com/solid-design-system/solid/pull/2472) [`58b6d04`](https://github.com/solid-design-system/solid/commit/58b6d043d4126a1441ae929c2d9300352f787f1c) [@paulovareiro29](https://github.com/paulovareiro29)_
+## 1.32.2
+
+### Patch Changes
+
+- Added `sd-input` `floating-label` attribute. _[`#2649`](https://github.com/solid-design-system/solid/pull/2649) [`60e6b7f`](https://github.com/solid-design-system/solid/commit/60e6b7f6bf6a5786c3205ac282bf3e373aa09472) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 1.32.1
+
+### Patch Changes
+
+- Adding a font license notification to installation docs page _[`#2519`](https://github.com/solid-design-system/solid/pull/2519) [`8e9bd8d`](https://github.com/solid-design-system/solid/commit/8e9bd8d9f54871e3000dafb17f5244142e207dbb) [@karlbaumhauer](https://github.com/karlbaumhauer)_
+
+## 1.32.0
+
+### Minor Changes
+
+- Introducing the brand new `sd-skeleton` component. _[`#2605`](https://github.com/solid-design-system/solid/pull/2605) [`6a6b794`](https://github.com/solid-design-system/solid/commit/6a6b794366c9e377e8a8c32fad6d762e377a5dbe) [@balco0110](https://github.com/balco0110)_
+
+## 1.31.3
+
+### Patch Changes
+
+- Sync `sd-datepicker` stories with Figma. _[`#2611`](https://github.com/solid-design-system/solid/pull/2611) [`dba5493`](https://github.com/solid-design-system/solid/commit/dba5493d077bfc390728377722b4c2f0f4453f1c) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.31.2
+
+### Patch Changes
+
+- Updated `sd-datepicker` stories and screenshot tests. _[`#2585`](https://github.com/solid-design-system/solid/pull/2585) [`ffa4d08`](https://github.com/solid-design-system/solid/commit/ffa4d08c3bb5c9b8ba61e9c7f2fec13a65ac7de5) [@smfonseca](https://github.com/smfonseca)_
+
+## 1.31.1
+
+### Patch Changes
+
+- Fixed component stories visualization inside Codepen where specific story styling was missing (eg. `sd-scrollable`). _[`#2563`](https://github.com/solid-design-system/solid/pull/2563) [`7115848`](https://github.com/solid-design-system/solid/commit/7115848124752ce2741a3e4db18231ae226c7b44) [@smfonseca](https://github.com/smfonseca)_
 
 ## 1.31.0
 

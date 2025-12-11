@@ -159,6 +159,68 @@
 
 - Fix broken sd-icon load with multi theming. _[`#2595`](https://github.com/solid-design-system/solid/pull/2595) [`89d7ac7`](https://github.com/solid-design-system/solid/commit/89d7ac7fbe51b382544765de6e08cb9be6c9e9fc) [@paulovareiro29](https://github.com/paulovareiro29)_
 
+## 5.17.3
+
+### Patch Changes
+
+- Added `sd-input` `floating-label` attribute. _[`#2649`](https://github.com/solid-design-system/solid/pull/2649) [`60e6b7f`](https://github.com/solid-design-system/solid/commit/60e6b7f6bf6a5786c3205ac282bf3e373aa09472) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+### 📈 Stats
+* Uncompressed: 522 KB (+1 KB / +0%)
+* Gzipped: 123 KB (unchanged)
+
+## 5.17.2
+
+### Patch Changes
+
+- Updated `sd-checkbox` to use icon from `sd-status-assets`. _[`#2633`](https://github.com/solid-design-system/solid/pull/2633) [`9d5c6bd`](https://github.com/solid-design-system/solid/commit/9d5c6bd6197a977dd99c232516f6f0d22ad5dde7) [@smfonseca](https://github.com/smfonseca)_
+
+## 5.17.1
+
+### Patch Changes
+
+- Import components used inside `sd-datepicker` to ensure stability when cherry picking. _[`#2631`](https://github.com/solid-design-system/solid/pull/2631) [`8ddc041`](https://github.com/solid-design-system/solid/commit/8ddc0410d7bb43941a13b50d13763bb317504f33) [@smfonseca](https://github.com/smfonseca)_
+
+## 5.17.0
+
+### Minor Changes
+
+- Introducing the brand new `sd-skeleton` component. _[`#2605`](https://github.com/solid-design-system/solid/pull/2605) [`6a6b794`](https://github.com/solid-design-system/solid/commit/6a6b794366c9e377e8a8c32fad6d762e377a5dbe) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+
+- Uncompressed: 521 KB (+1 KB / +0%)
+- Gzipped: 123 KB (unchanged)
+
+## 5.16.2
+
+### Patch Changes
+
+- Minor improvements to the `sd-datepicker` component: _[`#2611`](https://github.com/solid-design-system/solid/pull/2611) [`dba5493`](https://github.com/solid-design-system/solid/commit/dba5493d077bfc390728377722b4c2f0f4453f1c) [@smfonseca](https://github.com/smfonseca)_
+  - Updated `disabled-dates` and weekend days color
+  - Clicking the `calendar` icon opens the calendar flyout
+  - Display only current months plus next month's days until end of current week
+
+### 📈 Stats
+
+- Uncompressed: 520 KB (unchanged)
+- Gzipped: 123 KB (+1 KB / +1%)
+
+## 5.16.1
+
+### Patch Changes
+
+- Addressed minor issues with the `sd-datepicker`: _[`#2585`](https://github.com/solid-design-system/solid/pull/2585) [`ffa4d08`](https://github.com/solid-design-system/solid/commit/ffa4d08c3bb5c9b8ba61e9c7f2fec13a65ac7de5) [@smfonseca](https://github.com/smfonseca)_
+  - Updated placeholder color to be reactive to theme.
+  - Disabled autocomplete.
+  - Improved `visually-disabled` handling and focus management.
+  - Fixed element width.
+
+### 📈 Stats
+
+- Uncompressed: 520 KB (+1 KB / +0%)
+- Gzipped: 122 KB (unchanged)
+
 ## 5.16.0
 
 ### Minor Changes
@@ -171,21 +233,6 @@
 
 - Uncompressed: 519 KB (+40 KB / +8%)
 - Gzipped: 122 KB (+9 KB / +8%)
-
-### 📈 Stats
-
-- Uncompressed: 4036 KB (+3517 KB / +678%)
-- Gzipped: 621 KB (+499 KB / +409%)
-
-### 📈 Stats
-
-- Uncompressed: 564 KB (-3472 KB / -86%)
-- Gzipped: 128 KB (-493 KB / -79%)
-
-### 📈 Stats
-
-- Uncompressed: 559 KB (-5 KB / -1%)
-- Gzipped: 128 KB (unchanged)
 
 ## 5.15.13
 

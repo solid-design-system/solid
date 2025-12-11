@@ -54,6 +54,7 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @csspart form-control-label - The label's wrapper.
  * @csspart form-control-input - The input's wrapper.
  * @csspart form-control-help-text - The help text's wrapper.
+ * @csspart form-control-floating-label - The floating label text's wrapper.
  * @csspart base - The component's base wrapper.
  * @csspart border - The base part's absolutely positioned border. Allows for easy adjustment of border thickness without affecting component dimensions.
  * @csspart input - The internal `<input>` control.
@@ -194,6 +195,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   /** Makes the input a required field. */
   @property({ type: Boolean, reflect: true }) required = false;
+
+  /** Enables the floating label behavior for the input. */
+  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = false;
 
   /** A regular expression pattern to validate input against. */
   @property() pattern: string;
@@ -511,6 +515,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.readonly && (typeof this.value === 'number' || this.value.length > 0);
     const hasTooltip = !!slots['tooltip'];
+    const hasIconLeft = slots['left'];
+    const hasValue = this.value !== null && String(this.value).length > 0;
+    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue || this.placeholder);
     // Hierarchy of input states:
     const inputState = this.disabled
       ? 'disabled'
@@ -552,10 +559,25 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       md: 'text-lg',
       lg: 'text-xl'
     }[this.size];
+    const verticalPadding =
+      this.size === 'lg'
+        ? !this.floatingLabel
+          ? 'py-2'
+          : isFloatingLabelActive
+            ? 'py-3'
+            : 'py-4'
+        : !this.floatingLabel
+          ? 'py-1'
+          : isFloatingLabelActive
+            ? 'py-2'
+            : 'py-3';
+    const floatingLabelHorizontalAlignmentWithIconLeft = { sm: 'left-[36px]', md: 'left-[44px]', lg: 'left-12' }[
+      this.size
+    ];
     // Render
     return html`
       <div part="form-control" class=${cx((this.disabled || this.visuallyDisabled) && 'cursor-not-allowed')}>
-        ${hasLabel || hasTooltip
+        ${(hasLabel || hasTooltip) && !this.floatingLabel
           ? html`<div class="flex items-center gap-1 mb-2">
               <label
                 part="form-control-label"
@@ -570,7 +592,6 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               ${slots['tooltip'] ? html`<slot name="tooltip"></slot>` : ''}
             </div>`
           : null}
-
         <div
           part="form-control-input"
           class=${cx(
@@ -590,13 +611,12 @@ export default class SdInput extends SolidElement implements SolidFormControl {
             part="base"
             class=${cx(
               'px-4 flex flex-row items-center rounded-default transition-colors ease-in-out duration-medium hover:duration-fast',
-              // Vertical Padding
-              this.size === 'lg' ? 'py-2' : 'py-1',
               // States
               !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
               ['disabled', 'visuallyDisabled'].includes(inputState) ? 'text-neutral-500' : 'form-control-color-text',
-              ['invalid', 'activeInvalid'].includes(inputState) && 'form-control--invalid-color-background'
+              ['invalid', 'activeInvalid'].includes(inputState) && 'form-control--invalid-color-background',
+              verticalPadding
             )}
           >
             ${slots['left']
@@ -614,8 +634,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                 this.visuallyDisabled || this.disabled
                   ? 'placeholder:text-neutral-500 cursor-not-allowed'
                   : 'placeholder:text-neutral-700',
-                this.size === 'sm' ? 'h-6' : 'h-8',
-                textSize
+                this.size === 'sm' ? (isFloatingLabelActive ? 'h-4' : 'h-6') : isFloatingLabelActive ? 'h-6' : 'h-8',
+                textSize,
+                isFloatingLabelActive && 'leading-none mt-4'
               )}
               type=${this.type === 'password' && this.passwordVisible ? 'text' : this.type}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
@@ -651,6 +672,40 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               @focus=${this.handleFocus}
               @blur=${this.handleBlur}
             />
+            ${hasLabel && this.floatingLabel
+              ? html`
+                  <label
+                    part="form-control-floating-label"
+                    class=${cx(
+                      'pointer-events-none absolute',
+                      hasIconLeft ? floatingLabelHorizontalAlignmentWithIconLeft : 'left-4',
+                      !this.readonly && 'transition-all duration-medium ease-out',
+                      !isFloatingLabelActive || (!hasValue && (this.readonly || this.visuallyDisabled))
+                        ? 'top-1/2 -translate-y-1/2'
+                        : this.size === 'lg'
+                          ? 'top-2'
+                          : 'top-1'
+                    )}
+                    for="input"
+                    aria-hidden=${hasLabel ? 'false' : 'true'}
+                  >
+                    <span
+                      id="floating-label"
+                      class=${cx(
+                        'pointer-events-none leading-none',
+                        !this.readonly && 'transition-all duration-medium ease-out',
+                        !isFloatingLabelActive || (!hasValue && (this.readonly || this.visuallyDisabled))
+                          ? 'text-base'
+                          : 'text-xs',
+                        (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
+                        isFloatingLabelActive && !this.visuallyDisabled && !this.disabled && 'text-neutral-700'
+                      )}
+                    >
+                      ${this.label}
+                    </span>
+                  </label>
+                `
+              : null}
             ${hasClearIcon
               ? html`
                   <button
@@ -663,7 +718,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   >
                     <slot name="clear-icon">
                       <sd-icon
-                        class=${cx('text-neutral-700', iconSize)}
+                        class=${cx(
+                          this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-neutral-700',
+                          iconSize
+                        )}
                         library="_internal"
                         name="closing-round"
                       ></sd-icon>
@@ -829,7 +887,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
         @apply block;
       }
 
-      :host([required]) #label::after {
+      :host([required]) :is(#label, #floating-label)::after {
         content: ' *';
       }
 

@@ -71,6 +71,13 @@
 ### Major Changes
 
 - Introduce multi-theming with new CSS variables _[`#2565`](https://github.com/solid-design-system/solid/pull/2565) [`602f0d3`](https://github.com/solid-design-system/solid/commit/602f0d38371c8f797662997071feb8173113e896) [@github-actions](https://github.com/apps/github-actions)_
+## 1.5.6
+
+### Patch Changes
+
+- Replace counters() with counter() inside ordered lists: _[`#2623`](https://github.com/solid-design-system/solid/pull/2623) [`d5dd9c0`](https://github.com/solid-design-system/solid/commit/d5dd9c001ff94fa1841ae40633af04fdb29f3f4a) [@Vahid1919](https://github.com/Vahid1919)_
+  - counter() is sufficient here since we are already incrementing each level's counter separately.
+  - Fixes an issue where nested ordered lists would sometimes not display correct numbering in some browsers.
 
 ## 1.5.5
 
