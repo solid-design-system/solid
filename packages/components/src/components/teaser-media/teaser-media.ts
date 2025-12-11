@@ -1,3 +1,4 @@
+import '../icon/icon'; // Ensure this import is present for sd-icon to work
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
@@ -59,8 +60,7 @@ export default class SdTeaserMedia extends SolidElement {
 
     return html`
       <div class="relative flex flex-col group" part="base">
-        <!-- opacity should be replaced with a opacity token from the design system https://github.com/solid-design-system/solid/issues/731 -->
-        <div class="absolute flex flex-col justify-end h-full w-full pb-4 ">
+        <div class="absolute flex flex-col justify-end h-full w-full pb-4">
           <div
             class=${cx(
               'flex-1',
@@ -82,7 +82,7 @@ export default class SdTeaserMedia extends SolidElement {
           >
             <div class="flex-col text-left p-4" part="content">
               <div class="flex flex-col">
-                <div part="headline" class="text-lg font-bold m-0 order-2">
+                <div part="headline" class="text-lg font-bold m-0 order-2 pb-4">
                   <slot name="headline"
                     >Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)</slot
                   >
@@ -96,13 +96,30 @@ export default class SdTeaserMedia extends SolidElement {
                 class=${cx(
                   'hidden',
                   slots['teaser-has-expandable'] &&
-                    'h-[0px] invisible opacity-0 md:[transition:_height_0.2s_linear,opacity_0.1s_linear_0.1s] md:block md:group-hover:h-auto md:group-hover:my-4 md:group-hover:opacity-[100%] md:group-hover:visible'
+                    'h-[0px] invisible opacity-0 md:[transition:_height_var(--sd-duration-medium)_linear,opacity_var(--sd-duration-fast)_linear_var(--sd-duration-fast)] md:block md:group-hover:h-auto **md:group-hover:my-2** md:group-hover:opacity-[100%] md:group-hover:visible'
                 )}
                 part="expandable"
                 aria-hidden="true"
               >
                 <slot name="expandable"></slot>
               </div>
+
+              ${slots['teaser-has-expandable']
+                ? html`
+                    <div>
+                      <sd-icon
+                        class="inline-block group-hover:hidden transition-transform w-6 h-6"
+                        library="_internal"
+                        name="chevron-down"
+                      ></sd-icon>
+                      <sd-icon
+                        class="hidden group-hover:inline-block transition-transform w-6 h-6"
+                        library="_internal"
+                        name="chevron-up"
+                      ></sd-icon>
+                    </div>
+                  `
+                : null}
 
               <div part="main" class=${cx(!slots['teaser-has-default'] && 'hidden')}>
                 <slot></slot>
