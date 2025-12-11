@@ -13,10 +13,6 @@ const { overrideArgs } = storybookHelpers('sd-datepicker');
 const { generateTemplate } = storybookTemplate('sd-datepicker');
 const { generateScreenshotStory } = storybookUtilities;
 
-const currentMonth = new Date().getMonth() + 1;
-const paddedMonth = String(currentMonth).padStart(2, '0');
-const currentYear = new Date().getFullYear();
-
 export default {
   title: 'Components/sd-datepicker/Screenshots: sd-datepicker',
   component: 'sd-datepicker',
