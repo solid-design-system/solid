@@ -1,5 +1,11 @@
 # @solid-design-system/theming
 
+## 1.2.0-next.1
+
+### Patch Changes
+
+- Internal: version bump to align with main (no user-facing changes). _[`#2656`](https://github.com/solid-design-system/solid/pull/2656) [`34dbd53`](https://github.com/solid-design-system/solid/commit/34dbd5304ad4bd6486068c40e307742841c25f4d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.2.0-next.0
 
 ### Minor Changes

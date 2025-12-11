@@ -1,5 +1,11 @@
 # @solid-design-system/styles
 
+## 6.0.0-next.15
+
+### Patch Changes
+
+- Internal: version bump to align with main (no user-facing changes). _[`#2656`](https://github.com/solid-design-system/solid/pull/2656) [`34dbd53`](https://github.com/solid-design-system/solid/commit/34dbd5304ad4bd6486068c40e307742841c25f4d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 6.0.0-next.14
 
 ## 6.0.0-next.13
@@ -71,6 +77,7 @@
 ### Major Changes
 
 - Introduce multi-theming with new CSS variables _[`#2565`](https://github.com/solid-design-system/solid/pull/2565) [`602f0d3`](https://github.com/solid-design-system/solid/commit/602f0d38371c8f797662997071feb8173113e896) [@github-actions](https://github.com/apps/github-actions)_
+
 ## 1.5.6
 
 ### Patch Changes

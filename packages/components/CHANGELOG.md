@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 6.0.0-next.15
+
+### Patch Changes
+
+- Internal: version bump to align with main (no user-facing changes). _[`#2656`](https://github.com/solid-design-system/solid/pull/2656) [`34dbd53`](https://github.com/solid-design-system/solid/commit/34dbd5304ad4bd6486068c40e307742841c25f4d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### 📈 Stats
+* Uncompressed: 577 KB (+3 KB / +1%)
+* Gzipped: 131 KB (+1 KB / +1%)
+
 ## 6.0.0-next.14
 
 ### Patch Changes
@@ -166,8 +176,9 @@
 - Added `sd-input` `floating-label` attribute. _[`#2649`](https://github.com/solid-design-system/solid/pull/2649) [`60e6b7f`](https://github.com/solid-design-system/solid/commit/60e6b7f6bf6a5786c3205ac282bf3e373aa09472) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
 
 ### 📈 Stats
-* Uncompressed: 522 KB (+1 KB / +0%)
-* Gzipped: 123 KB (unchanged)
+
+- Uncompressed: 522 KB (+1 KB / +0%)
+- Gzipped: 123 KB (unchanged)
 
 ## 5.17.2
 
