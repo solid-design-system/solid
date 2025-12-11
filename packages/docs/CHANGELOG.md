@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.32.2
+
+### Patch Changes
+
+- Added `sd-input` `floating-label` attribute. _[`#2649`](https://github.com/solid-design-system/solid/pull/2649) [`60e6b7f`](https://github.com/solid-design-system/solid/commit/60e6b7f6bf6a5786c3205ac282bf3e373aa09472) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 1.32.1
 
 ### Patch Changes
