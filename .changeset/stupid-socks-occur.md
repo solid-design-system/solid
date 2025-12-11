@@ -1,10 +1,10 @@
 ---
-'@solid-design-system/components': patch
-'@solid-design-system/docs': patch
+'@solid-design-system/components': major
 ---
 
-Fixed the following in `sd-datepicker`:
+Updated the following in `sd-datepicker`:
 
-- Added date conversion in `disabled-dates`, `range-start` and `range-end` attributes to accept other date formats such as `YYYY-MM-DD` or `YYYY/MM/DD`.
-- Updated `range` and `disabled dates` stories to reflect new date conversion.
+- Changed `range-start` and `range-end` attributes from camelCase to kebab case to align with the rest of the component API.
+- Added date conversion in `value`, `disabled-dates`, `range-start`, `range-end`, `min` and `max` attributes.
 - Added missing `required` attribute.
+- Updated properties descritions and other minor fixes.
