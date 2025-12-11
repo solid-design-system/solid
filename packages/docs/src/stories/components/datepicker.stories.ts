@@ -18,33 +18,12 @@ export default {
       type: 'figma',
       url: ''
     }
-  },
-  decorators: [
-    (story: any) =>
-      html`<style>
-          #anchor--components-sd-datepicker--size .innerZoomElementWrapper,
-          #anchor--components-sd-datepicker--alignment .innerZoomElementWrapper,
-          #anchor--components-sd-datepicker--label .innerZoomElementWrapper,
-          #anchor--components-sd-datepicker--placeholder .innerZoomElementWrapper,
-          #anchor--components-sd-datepicker--visually-disabled .innerZoomElementWrapper,
-          #anchor--components-sd-datepicker--range .innerZoomElementWrapper,
-          #anchor--components-sd-datepicker--disabled .innerZoomElementWrapper,
-          #anchor--components-sd-datepicker--disabled-weekends .innerZoomElementWrapper,
-          #anchor--components-sd-datepicker--disabled-days .innerZoomElementWrapper,
-          #anchor--components-sd-datepicker--required .innerZoomElementWrapper,
-          #anchor--components-sd-datepicker--invalid .innerZoomElementWrapper,
-          #anchor--components-sd-datepicker--valid .innerZoomElementWrapper,
-          #anchor--components-sd-datepicker--help-text .innerZoomElementWrapper {
-            min-height: 500px;
-          }
-        </style>
-        ${story()}`
-  ] as unknown
+  }
 };
 
 export const Default = {
   render: (args: any) => {
-    return html`<div class="h-[500px] w-[370px]">${generateTemplate({ args })}</div>`;
+    return html`<div class="h-[500px] w-[370px] h-[500px]">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -58,7 +37,7 @@ export const Default = {
 
 export const Size = {
   render: () => html`
-    <div class="flex flex-col gap-4 w-[370px]">
+    <div class="flex flex-col gap-4 w-[370px] h-[500px]">
       <sd-datepicker size="lg" placeholder="Large" label="Label"></sd-datepicker>
       <sd-datepicker size="md" placeholder="Medium" label="Label"></sd-datepicker>
       <sd-datepicker size="sm" placeholder="Small" label="Label"></sd-datepicker>
@@ -75,7 +54,7 @@ export const Size = {
 
 export const Alignment = {
   render: () =>
-    html` <div class="w-[370px]">
+    html` <div class="w-[370px] h-[500px]">
       <sd-datepicker label="Label" size="lg" alignment="right" value="2025.11.10"></sd-datepicker>
     </div>`
 };
@@ -102,7 +81,7 @@ export const Label = {
 
 export const Placeholder = {
   render: () =>
-    html`<div class="w-[370px]">
+    html`<div class="w-[370px] h-[500px]">
       <sd-datepicker label="Label" placeholder="Select date"></sd-datepicker>
     </div>`
 };
@@ -115,7 +94,7 @@ export const Placeholder = {
 
 export const Disabled = {
   render: () =>
-    html`<div class="w-[370px]">
+    html`<div class="w-[370px] h-[500px]">
       <sd-datepicker label="Label" placeholder="Disabled" disabled></sd-datepicker>
     </div>`
 };
@@ -130,7 +109,7 @@ export const Disabled = {
 
 export const VisuallyDisabled = {
   render: () =>
-    html` <div class="w-[370px]">
+    html` <div class="w-[370px] h-[500px]">
       <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
         <sd-datepicker label="Label" placeholder="Visually Disabled" visually-disabled></sd-datepicker>
       </sd-tooltip>
@@ -144,7 +123,7 @@ export const VisuallyDisabled = {
  */
 export const HelpText = {
   render: () =>
-    html`<div class="flex gap-12 h-[500px] w-[370px]">
+    html`<div class="flex gap-12 h-[500px] w-[370px] h-[500px]">
       <sd-datepicker label="Label" help-text="Help text attribute"></sd-datepicker>
       <sd-datepicker label="Label">
         <div slot="help-text">Help text slot</div>
@@ -157,7 +136,7 @@ export const HelpText = {
  */
 export const Required = {
   render: () =>
-    html` <div class="w-[370px]">
+    html` <div class="w-[370px] h-[500px]">
       <sd-datepicker label="Label" required></sd-datepicker>
     </div>`
 };
@@ -170,7 +149,7 @@ export const Required = {
 
 export const Valid = {
   render: () => html`
-    <div class="w-[370px]">
+    <div class="w-[370px] h-[500px]">
       <sd-datepicker id="valid-example" label="Label" value="2025.11.10" style-on-valid=""></sd-datepicker>
     </div>
     <script type="module">
@@ -189,7 +168,7 @@ export const Valid = {
  */
 export const Invalid = {
   render: () => html`
-    <div class="w-[370px]">
+    <div class="w-[370px] h-[500px]">
       <sd-datepicker id="invalid-example" label="Label" style-on-valid="" required></sd-datepicker>
     </div>
     <script type="module">
@@ -208,20 +187,20 @@ export const Invalid = {
  */
 export const DisabledWeekends = {
   render: () =>
-    html` <div class="w-[370px]">
+    html` <div class="w-[370px] h-[500px]">
       <sd-datepicker label="Label" disabled-weekends></sd-datepicker>
     </div>`
 };
 
 /**
- * Use the `disable-days` attribute to manually disable days in your datepicker. If this attribute is active the range selection will not be possible.
+ * Use the `disable-dates` attribute to manually disable days in your datepicker. If this attribute is active the range selection will not be possible.
  */
-export const DisabledDays = {
+export const DisabledDates = {
   render: () => html`
-    <div class="w-[370px]">
+    <div class="w-[370px] h-[500px]">
       <sd-datepicker
         label="Label"
-        value="2025.11.10"
+        value="2025-11-10"
         disabled-dates="2025-10-31,2025-11-11,2025-11-19,2025-11-20,2025-11-24"
       ></sd-datepicker>
     </div>
@@ -233,7 +212,7 @@ export const DisabledDays = {
  */
 export const Range = {
   render: () => html`
-    <div class="w-[370px]">
+    <div class="w-[370px] h-[500px]">
       <sd-datepicker label="Label" range range-start="2025-11-02" range-end="2025-11-12"></sd-datepicker>
     </div>
   `
