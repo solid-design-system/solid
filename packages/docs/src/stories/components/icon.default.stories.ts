@@ -46,7 +46,14 @@ export const LibraryDefaultContent = {
       },
       constants: [{ type: 'attribute', name: 'library', value: '' }],
       options: {
-        templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+        templateBackgrounds: {
+          alternate: 'x',
+          colors: [
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-primary))'
+          ]
+        }
       },
       args
     })
@@ -73,7 +80,14 @@ export const LibraryDefaultSystem = {
       },
       constants: [{ type: 'attribute', name: 'library', value: '' }],
       options: {
-        templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+        templateBackgrounds: {
+          alternate: 'x',
+          colors: [
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-primary))'
+          ]
+        }
       },
       args
     })

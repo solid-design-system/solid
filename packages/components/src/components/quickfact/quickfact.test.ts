@@ -14,7 +14,7 @@ describe('<sd-quickfact>', () => {
       expect(el.expandable).to.be.false;
       const summary = el.shadowRoot!.querySelector('slot[name="summary"]')!;
 
-      expect(summary.classList.contains('text-primary')).to.be.false;
+      expect(summary.classList.contains('sd-quickfact--expandable-color-text')).to.be.false;
     });
   });
 
@@ -23,7 +23,7 @@ describe('<sd-quickfact>', () => {
       const el = await fixture<SdQuickfact>(html`<sd-quickfact expandable></sd-quickfact>`);
 
       const summary = el.shadowRoot!.querySelector('slot[name="summary"]')!;
-      expect(summary.classList.contains('text-primary')).to.be.true;
+      expect(summary.classList.contains('sd-quickfact--expandable-color-text')).to.be.true;
     });
   });
 });

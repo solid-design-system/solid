@@ -7,6 +7,7 @@ import { property } from 'lit/decorators.js';
 import { setDefaultAnimation } from '../../utilities/animation-registry';
 import cx from 'classix';
 import SdAccordion from '../accordion/accordion';
+import SolidElement from '../../internal/solid-element';
 
 /**
  * @summary Accordion shows a brief summary and expands to show additional content.
@@ -20,6 +21,8 @@ import SdAccordion from '../accordion/accordion';
  *
  * @dependency sd-icon
  * @dependency sd-accordion
+ *
+ * @cssproperty --sd-quickfact--expandable-color-text - The text color for expandable quickfact.
  */
 @customElement('sd-quickfact')
 export default class SdQuickfact extends SdAccordion {
@@ -60,14 +63,14 @@ export default class SdQuickfact extends SdAccordion {
             part="summary"
             class=${cx(
               'flex flex-auto items-start text-left text-base leading-normal font-normal sm:leading-tight sm:text-3xl sm:text-center',
-              this.expandable ? 'text-primary' : 'text-black cursor-default'
+              this.expandable ? 'sd-quickfact--expandable-color-text' : 'text-black cursor-default'
             )}>
             ${this.summary}
             </slot>
           <span
             part="summary-icon"
             class=${cx(
-              'flex flex-grow-0 flex-shrink-0 flex-auto self-start sm:self-center transition-transform ease-in-out duration-medium text-xl sm:text-4xl sm:mt-2',
+              'flex flex-grow-0 flex-shrink-0 flex-auto self-start sm:self-center transition-transform ease-in-out duration-medium text-xl sm:mt-2',
               this.open && 'rotate-180',
               !this.expandable && 'hidden'
             )}
@@ -87,16 +90,19 @@ export default class SdQuickfact extends SdAccordion {
   }
 
   static styles = [
-    ...SdAccordion.styles,
+    ...SolidElement.styles,
     css`
       :host {
         @apply block;
       }
 
-      @media (min-width: 640px) {
-        [part='summary-icon'] {
-          font-size: var(--sd-spacing-12, 3rem);
-        }
+      /** Removes summary marker on Safari */
+      [part='header']::-webkit-details-marker {
+        @apply hidden;
+      }
+
+      [part='summary-icon'] {
+        color: var(--sd-accordion__chevron-color-text);
       }
 
       [part='icon'] {

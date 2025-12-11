@@ -1,0 +1,70 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import '../../../../../../components/src/components/tab-group/tab-group';
+import '../../../../../../components/src/components/tab/tab';
+import '../../../../../../components/src/components/tab-panel/tab-panel';
+
+<Meta title="Packages/Components/Migration/from v5" />
+
+# Migration from v5
+
+The v5 release introduces multi-theming, allowing you to use light and dark modes, brand-specific themes, and fully customize Solid components to match your design system — while maintaining the quality, accessibility, and reliability Solid is known for.
+
+## Multi theming
+
+You must now import at least one theme (via NPM or CDN) to ensure components render correctly.
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="npm" variant="container"> NPM </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="cdn" variant="container"> CDN </sd-tab>
+  <sd-tab-panel name="npm">
+  __Before__:
+    ```js
+    import '@solid-design-system/components/dist/solid-components.css';
+    ```
+  __After__:
+    ```js
+    import '@solid-design-system/components/dist/solid-components.css';
+    import 'path/to/ui-light.css';
+    ```
+
+  </sd-tab-panel>
+  <sd-tab-panel name="cdn">
+  __Before__:
+    ```html
+    <link rel="stylesheet" href="/solid/dist/solid-components.css" />
+    ```
+  __After__:
+    ```html
+    <link rel="stylesheet" href="/solid/dist/solid-components.css" />
+    <link rel="stylesheet" href="path/to/ui-light.css" />
+    ```
+  </sd-tab-panel>
+</sd-tab-group>
+
+## Removed enforced headline styling from `sd-teaser-media`.
+
+Removed this CSS rule that used to force styles into whatever is slotted into slot="headline"
+
+```css
+::slotted([slot='headline']) { '@apply font-bold !m-0 !text-lg;'}
+```
+
+Result: `sd-teaser-media` no longer forces font-weight, margin or test size on headline elements. Headline sizing/spacing must now be provided by the user.
+
+**Before**:
+
+```html
+<sd-teaser-media>
+  <h3 slot="headline" class="sd-headline sd-headline--inverted">Market turnaround in sight</h3>
+</sd-teaser-media>
+```
+
+**After**:
+
+```html
+<sd-teaser-media>
+  <h3 slot="headline" class="sd-headline sd-headline--inverted sd-headline--size-lg">Market turnaround in sight</h3>
+</sd-teaser-media>
+```

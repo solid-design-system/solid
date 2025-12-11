@@ -192,8 +192,13 @@ export default class SdExpandable extends SolidElement {
         --component-expandable-max-block-size: 90px;
         --gradient-height: 24px;
         --gradient:
-          var(--gradient-color-start, rgba(255, 255, 255, 0)) 0%, var(--gradient-color-end, rgba(255, 255, 255, 1)) 80%,
-          var(--gradient-color-end, rgba(255, 255, 255, 1)) 100%;
+          var(
+              --gradient-color-start,
+              transparent,
+              var(--gradient-color-end, rgba(var(--sd-color-background-white, rgba(var(--sd-color-white)))))
+            )
+            80%,
+          var(--gradient-color-end, rgba(var(--sd-color-background-white, rgba(var(--sd-color-white))))) 100%;
 
         @apply inline-block relative w-full;
       }

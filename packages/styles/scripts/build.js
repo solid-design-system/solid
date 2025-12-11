@@ -45,7 +45,9 @@ await nextTask('Cleaning up the previous build', async () => {
 await nextTask('Running PostCSS...', () => {
   bundleDirectories
     .filter(dir => !dir.includes('versioned'))
-    .map(dir => execSync(`node scripts/make-styles.js --outdir ${dir}`, { stdio: 'inherit' }));
+    .map(dir =>
+      execSync(`node scripts/make-styles.js --outdir ${dir} --minify ${dir.startsWith('cdn')}`, { stdio: 'inherit' })
+    );
 });
 
 // Version all styles task

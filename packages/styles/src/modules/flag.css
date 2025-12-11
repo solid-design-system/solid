@@ -4,20 +4,31 @@
  * @status stable
  * @since 1.34.0
  * @variant { neutral-300 | neutral-500 | white } sd-flag--...
+ *
+ * @cssproperty --sd-flag--neutral-200-color-background - The background color for neutral‑200 flags.
+ * @cssproperty --sd-flag--neutral-200-color-border - The border color for neutral‑200 flags.
+ * @cssproperty --sd-flag--neutral-300-color-background - The background color for neutral‑300 flags.
+ * @cssproperty --sd-flag--neutral-300-color-border - The border color for neutral‑300 flags.
+ * @cssproperty --sd-flag--neutral-500-color-background - The background color for neutral‑500 flags.
+ * @cssproperty --sd-flag--neutral-500-color-border - The border color for neutral‑500 flags.
+ * @cssproperty --sd-flag--white-color-background - The background color for white flags.
+ * @cssproperty --sd-flag--white-color-border - The border color for white flags.
+ * @cssproperty --sd-flag-border-radius - The border radius for flags.
+ * @cssproperty --sd-flag-border-width - The border width for flags.
  */
 
 .sd-flag {
-  @apply h-8 bg-neutral-200 text-black text-sm inline-flex items-center px-3 whitespace-nowrap overflow-hidden;
+  @apply border h-8 sd-flag--neutral-200-color-background sd-flag--neutral-200-color-border sd-flag-border-radius sd-flag-border-width text-black text-sm inline-flex items-center px-3 whitespace-nowrap overflow-hidden;
 
   &--neutral-500 {
-    @apply bg-neutral-500 text-black;
+    @apply sd-flag--neutral-500-color-background sd-flag--neutral-500-color-border text-black;
   }
 
   &--neutral-300 {
-    @apply bg-neutral-300;
+    @apply sd-flag--neutral-300-color-background sd-flag--neutral-300-color-border;
   }
 
   &--white {
-    @apply bg-white;
+    @apply sd-flag--white-color-background sd-flag--white-color-border;
   }
 }

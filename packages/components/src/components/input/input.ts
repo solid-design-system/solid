@@ -65,6 +65,9 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @csspart invalid-icon - The invalid icon.
  * @csspart valid-icon - The valid icon.
  * @csspart invalid-message - The invalid message.
+ *
+ * @cssproperty --sd-form-control--invalid-color-background - The background color for form controls in invalid state.
+ * @cssproperty --sd-form-control-color-text - The text color for form controls.
  */
 
 @customElement('sd-input')
@@ -540,13 +543,13 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const borderColor = {
       disabled: 'border-neutral-500',
       visuallyDisabled: 'border-neutral-500',
-      readonly: 'border-neutral-800',
+      readonly: 'form-control-color-border',
       activeInvalid: 'border-error border-2',
       activeValid: 'border-success border-2',
       active: 'border-primary border-2',
       invalid: 'border-error',
       valid: 'border-success',
-      default: 'border-neutral-800'
+      default: 'form-control-color-border'
     }[inputState];
 
     const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary';
@@ -579,7 +582,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               <label
                 part="form-control-label"
                 id="label"
-                class=${cx(hasLabel ? 'inline-block' : 'hidden', textSize)}
+                class=${cx(hasLabel ? 'inline-block form-control-color-text' : 'hidden', textSize)}
                 for="input"
                 aria-hidden=${hasLabel ? 'false' : 'true'}
               >
@@ -611,7 +614,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               // States
               !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
-              inputState === 'disabled' || inputState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black',
+              ['disabled', 'visuallyDisabled'].includes(inputState) ? 'text-neutral-500' : 'form-control-color-text',
+              ['invalid', 'activeInvalid'].includes(inputState) && 'form-control--invalid-color-background',
               verticalPadding
             )}
           >
@@ -628,8 +632,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               class=${cx(
                 'min-w-0 flex-grow focus:outline-none bg-transparent',
                 this.visuallyDisabled || this.disabled
-                  ? 'placeholder-neutral-500 cursor-not-allowed'
-                  : 'placeholder-neutral-700',
+                  ? 'placeholder:text-neutral-500 cursor-not-allowed'
+                  : 'placeholder:text-neutral-700',
                 this.size === 'sm' ? (isFloatingLabelActive ? 'h-4' : 'h-6') : isFloatingLabelActive ? 'h-6' : 'h-8',
                 textSize,
                 isFloatingLabelActive && 'leading-none mt-4'
@@ -823,7 +827,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     >
                       <slot name="decrement-number-stepper">
                         <sd-icon
-                          name="system/minus-circle"
+                          library="_internal"
+                          name="minus-circle"
                           label="Decrease value"
                           class=${cx(iconColor, iconMarginLeft, iconSize)}
                         ></sd-icon>
@@ -841,7 +846,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     >
                       <slot name="increment-number-stepper">
                         <sd-icon
-                          name="system/plus-circle"
+                          library="_internal"
+                          name="plus-circle"
                           label="Decrease value"
                           class=${cx(iconColor, iconMarginLeft, iconSize)}
                         ></sd-icon>

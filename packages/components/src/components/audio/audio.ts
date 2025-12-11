@@ -293,7 +293,7 @@ export default class SdAudio extends SolidElement {
     // extracts the numbers from the rgb string
     const result = rgbString.match(/\d+/g);
 
-    if (result && result.length === 3) {
+    if (result?.length === 3) {
       const r = parseInt(result[0]);
       const g = parseInt(result[1]);
       const b = parseInt(result[2]);
@@ -310,19 +310,21 @@ export default class SdAudio extends SolidElement {
     return null;
   }
 
+  onThemeChange(): void {
+    this.clear();
+    setTimeout(this.initAnimation.bind(this), this.token('--sd-duration-fast', 150));
+  }
+
   private initAnimation() {
-    this.context = this.canvas.getContext('2d')!;
+    const context = this.canvas?.getContext('2d');
+    if (!context) return;
+    this.context = context;
 
     const button = this.audioPlayerContainer.querySelector('.playback-speed')!;
     const computedStyles = window.getComputedStyle(button);
     const color = computedStyles.color;
 
-    let computedColor: string;
-    if (this.inverted) {
-      computedColor = `#FFFFFF33`;
-    } else {
-      computedColor = this.rgbToHex(color) + '33';
-    }
+    const computedColor = this.inverted ? `#FFFFFF33` : this.rgbToHex(color) + '33';
 
     this.waveList = [
       new Wave({
@@ -482,10 +484,12 @@ export default class SdAudio extends SolidElement {
       )}
       part="timestamps"
     >
-      <div class=${cx('current-time text-sm', this.inverted ? 'text-primary-400' : 'text-black')}>
+      <div class=${cx('current-time text-sm', this.inverted ? 'text-primary-400' : 'sd-audio__timestamp-color-text')}>
         ${this.currentTime}
       </div>
-      <div class=${cx('current-time text-sm', this.inverted ? 'text-primary-400' : 'text-black')}>${this.duration}</div>
+      <div class=${cx('current-time text-sm', this.inverted ? 'text-primary-400' : 'sd-audio__timestamp-color-text')}>
+        ${this.duration}
+      </div>
     </div>`;
 
     return html`
@@ -505,7 +509,7 @@ export default class SdAudio extends SolidElement {
 
           <sd-range
             part="progress-slider"
-            no-tooltip
+            tooltip="hidden"
             min="0"
             max="100"
             step="0.001"
@@ -526,6 +530,7 @@ export default class SdAudio extends SolidElement {
           : null}
         ${!this.hideTimestamps && (!this.animated || !this.reversedLayout) ? renderTimestamps : null}
       </div>
+      <sd-theme-listener></sd-theme-listener>
     `;
   }
 
@@ -549,7 +554,9 @@ export default class SdAudio extends SolidElement {
       }
 
       :host([inverted]) sd-range::part(thumb) {
-        @apply bg-white outline-white;
+        @apply outline-white;
+
+        background-color: rgba(var(--sd-color-border-white, rgba(var(--sd-color-white))));
       }
 
       :host([animated]) sd-range::part(track) {
@@ -557,11 +564,11 @@ export default class SdAudio extends SolidElement {
       }
 
       :host([inverted]:not([animated])) sd-range::part(track) {
-        @apply bg-primary-400;
+        background-color: rgba(var(--sd-color-border-primary-400, rgba(var(--sd-color-primary-400))));
       }
 
       :host([inverted]:not([animated])) sd-range::part(active-track) {
-        @apply bg-white;
+        background-color: rgba(var(--sd-color-border-white, rgba(var(--sd-color-white))));
       }
     `
   ];
