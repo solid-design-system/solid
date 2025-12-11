@@ -94,8 +94,11 @@ export default class SdRange extends SolidElement implements SolidFormControl {
   /** Disables the active track bar. */
   @property({ attribute: 'no-track-bar', type: Boolean, reflect: true }) noTrackBar = false;
 
-  /** Disables the thumbs tooltip. */
-  @property({ attribute: 'no-tooltip', type: Boolean, reflect: true }) noTooltip = false;
+  /** Defines the thumbs tooltip behaviour. */
+  @property({ attribute: 'tooltip', type: String, reflect: true }) tooltip:
+    | 'on-interaction'
+    | 'hidden'
+    | 'always-visible' = 'on-interaction';
 
   /** The default value of the form control. Primarily used for resetting the form control. */
   @defaultValue() defaultValue = '';
@@ -143,6 +146,12 @@ export default class SdRange extends SolidElement implements SolidFormControl {
   firstUpdated() {
     this.formControlController.updateValidity();
     this._lastChangeValue = Array.from(this._value);
+
+    this.thumbs.forEach(async thumb => {
+      const tooltip = thumb.parentElement as SdTooltip;
+      await tooltip.updateComplete;
+      tooltip.shadowRoot?.querySelector('sd-popup')?.setAttribute('distance', '14');
+    });
   }
 
   protected willUpdate(changedProperties: PropertyValues): void {
@@ -185,6 +194,10 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       const rangeId = +thumb.dataset.rangeId!;
       if (!this._rangeValues.has(rangeId)) continue;
       this.moveThumb(thumb, this._rangeValues.get(rangeId)!);
+
+      if (this.tooltip === 'always-visible') {
+        (thumb.parentElement as SdTooltip).show();
+      }
     }
 
     this.updateActiveTrack();
@@ -378,7 +391,9 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     thumb.setPointerCapture(event.pointerId);
     thumb.classList.add('grabbed');
 
-    await (thumb.parentElement as SdTooltip).show();
+    if (this.tooltip === 'on-interaction') {
+      await (thumb.parentElement as SdTooltip).show();
+    }
   }
 
   private onDragThumb(event: PointerEvent) {
@@ -440,7 +455,9 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       this.emit('sd-change');
     }
 
-    await (thumb.parentElement as SdTooltip).hide();
+    if (this.tooltip === 'on-interaction') {
+      await (thumb.parentElement as SdTooltip).hide();
+    }
   }
 
   private onKeyPress(event: KeyboardEvent) {
@@ -570,8 +587,8 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       return html`
         <sd-tooltip
           hoist
-          trigger="focus"
-          disabled=${ifDefined(this.disabled || this.visuallyDisabled || this.noTooltip ? true : undefined)}
+          trigger=${this.tooltip === 'on-interaction' ? 'focus' : 'manual'}
+          disabled=${ifDefined(this.disabled || this.visuallyDisabled || this.tooltip === 'hidden' ? true : undefined)}
         >
           <div
             id=${id}
@@ -586,6 +603,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
             aria-valuenow="${value}"
             aria-valuetext="${this.tooltipFormatter(value)}"
             data-range-id="${rangeId}"
+            data-disabled=${ifDefined(this.disabled || this.visuallyDisabled || undefined)}
             @pointerdown=${this.onClickThumb}
             @pointermove=${this.onDragThumb}
             @pointerup=${this.onReleaseThumb}
@@ -595,9 +613,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
             @focus=${this.onFocusThumb}
             class=${cx(
               'rounded-full absolute top-0 size-4 hover:cursor-grab after:-inset-2',
-              this.disabled || this.visuallyDisabled
-                ? 'bg-neutral-500 outline-none'
-                : 'bg-primary hover:bg-primary-500 cursor-pointer focus-visible:focus-outline'
+              this.disabled || this.visuallyDisabled ? 'outline-none' : 'cursor-pointer focus-visible:focus-outline'
             )}
           ></div>
         </sd-tooltip>
@@ -621,7 +637,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
               id="label"
               part="form-control-label"
               aria-hidden=${hasLabel ? 'false' : 'true'}
-              class=${cx('w-full', hasLabel ? 'inline-block' : 'hidden')}
+              class=${cx('w-full text-start', hasLabel ? 'inline-block' : 'hidden')}
               @click=${this.focus}
             >
               <slot name="label">${this.label}</slot>
@@ -648,15 +664,14 @@ export default class SdRange extends SolidElement implements SolidFormControl {
             <div part="track-click-helper" class="absolute -inset-y-2 inset-x-0"></div>
             <div
               part="track"
-              class=${cx('h-1 my-[6px]', this.disabled || this.visuallyDisabled ? 'bg-neutral-500' : 'bg-neutral-400')}
+              data-disabled=${ifDefined(this.disabled || this.visuallyDisabled || undefined)}
+              class=${cx('h-1 my-[6px]')}
             ></div>
             <div
               part="active-track"
               hidden=${ifDefined(this.noTrackBar ? true : undefined)}
-              class=${cx(
-                'absolute top-0 h-1',
-                this.disabled || this.visuallyDisabled ? 'bg-neutral-500' : 'bg-primary'
-              )}
+              data-disabled=${ifDefined(this.disabled || this.visuallyDisabled || undefined)}
+              class=${cx('absolute top-0 h-1')}
             ></div>
           </div>
 
@@ -691,8 +706,36 @@ export default class SdRange extends SolidElement implements SolidFormControl {
         -webkit-touch-callout: none;
       }
 
+      [part='thumb'] {
+        background-color: rgba(var(--sd-color-icon-fill-primary, rgba(var(--sd-color-primary))));
+      }
+
+      [part='thumb']:hover {
+        background-color: rgba(var(--sd-color-icon-fill-primary-500, rgba(var(--sd-color-primary-500))));
+      }
+
       [part='thumb'].grabbed {
-        @apply !bg-primary-800;
+        background-color: rgba(var(--sd-color-icon-fill-primary-800, rgba(var(--sd-color-primary-800))));
+      }
+
+      [part='thumb'][data-disabled] {
+        background-color: rgba(var(--sd-color-icon-fill-neutral-500, rgba(var(--sd-color-neutral-500))));
+      }
+
+      [part='track'] {
+        background-color: rgba(var(--sd-color-border-neutral-400, rgba(var(--sd-color-neutral-400))));
+      }
+
+      [part='track'][data-disabled] {
+        background-color: rgba(var(--sd-color-background-neutral-500, rgba(var(--sd-color-neutral-500))));
+      }
+
+      [part='active-track'] {
+        background-color: rgba(var(--sd-color-icon-fill-primary, rgba(var(--sd-color-primary))));
+      }
+
+      [part='active-track'][data-disabled] {
+        background-color: rgba(var(--sd-color-icon-fill-neutral-500, rgba(var(--sd-color-neutral-500))));
       }
     `
   ];
