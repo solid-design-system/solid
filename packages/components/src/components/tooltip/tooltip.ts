@@ -83,6 +83,13 @@ export default class SdTooltip extends SolidElement {
   @property({ type: Boolean, reflect: true }) open = false;
 
   /**
+   * Controls how the tooltip is closed.
+   * Possible options: `click`, `hover`, `focus`, `escape`, `manual`.
+   * Multiple options can be passed with spaces.
+   */
+  @property({ type: String, reflect: true }) closeTrigger = 'click hover blur escape';
+
+  /**
    * Controls how the tooltip is activated. Possible options include `click`, `hover`, `focus`, and `manual`. Multiple
    * options can be passed by separating them with a space. When manual is used, the tooltip must be activated
    * programmatically.
@@ -194,7 +201,7 @@ export default class SdTooltip extends SolidElement {
 
   private handleKeyDown(event: KeyboardEvent) {
     // Pressing escape when the target element has focus should dismiss the tooltip
-    if (this.open && event.key === 'Escape') {
+    if (this.open && event.key === 'Escape' && this.hasCloseTrigger('escape')) {
       event.stopPropagation();
       this.hide();
     }
@@ -220,9 +227,14 @@ export default class SdTooltip extends SolidElement {
     if (!this.open) return;
     if (this.interactionType === 'keyboard') return;
     const path = event.composedPath();
-    if (!path.includes(this) && !path.includes(this.popup)) {
+    if (this.hasCloseTrigger('click') && !path.includes(this) && !path.includes(this.popup)) {
       this.hide();
     }
+  }
+
+  private hasCloseTrigger(type: string) {
+    const triggers = this.closeTrigger.split(' ');
+    return triggers.includes(type);
   }
 
   private hasTrigger(triggerType: string) {
