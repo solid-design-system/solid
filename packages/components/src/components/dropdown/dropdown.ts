@@ -267,6 +267,13 @@ export default class SdDropdown extends SolidElement {
 
   handleTriggerClick() {
     if (this.open) {
+      const menu = this.getMenu();
+      if (menu) {
+        const current = menu.getCurrentItem();
+        current?.classList.remove('force-visible-focus');
+        console.log(current);
+      }
+
       this.hide();
     } else {
       this.show();
@@ -278,7 +285,7 @@ export default class SdDropdown extends SolidElement {
     if (event.key === 'Escape' && this.open) {
       event.stopPropagation();
       this.focusOnTrigger();
-      this.hide();
+      this.handleTriggerClick();
       return;
     }
 
@@ -314,11 +321,13 @@ export default class SdDropdown extends SolidElement {
             if (event.key === 'ArrowDown' || event.key === 'Home') {
               menu.setCurrentItem(firstMenuItem);
               firstMenuItem.focus();
+              firstMenuItem.classList.add('force-visible-focus');
             }
 
             if (event.key === 'ArrowUp' || event.key === 'End') {
               menu.setCurrentItem(lastMenuItem);
               lastMenuItem.focus();
+              lastMenuItem.classList.add('force-visible-focus');
             }
           });
         }
