@@ -76,7 +76,6 @@ export class TokenProcessingEngine {
       ],
       utilities: [],
       spacing: [],
-      compositions: [],
       components: [
         `@utility sd-brandshape--neutral-100-color-icon-fill {
   fill: rgba(var(--sd-brandshape--neutral-100-color-background, rgba(var(--sd-color-neutral-100))));
