@@ -19,6 +19,11 @@ import type SdMenuItem from '../menu-item/menu-item';
  *
  * @slot - The menu's content.
  *
+ * @cssproperty --sd-menu-color-icon - The default icon color for menu items.
+ * @cssproperty --sd-menu-color-text - The default text color for menu items.
+ * @cssproperty --sd-menu--disabled-color-icon - The icon color for disabled menu items.
+ * @cssproperty --sd-menu--disabled-color-text - The text color for disabled menu items.
+ *
  */
 @customElement('sd-menu')
 export default class SdMenu extends SolidElement {
