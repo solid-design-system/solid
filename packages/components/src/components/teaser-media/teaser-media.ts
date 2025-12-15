@@ -82,7 +82,7 @@ export default class SdTeaserMedia extends SolidElement {
           >
             <div class="flex-col text-left p-4" part="content">
               <div class="flex flex-col">
-                <div part="headline" class="text-lg font-bold m-0 order-2 pb-4">
+                <div part="headline" class="text-lg font-bold m-0 order-2">
                   <slot name="headline"
                     >Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)</slot
                   >
@@ -96,7 +96,7 @@ export default class SdTeaserMedia extends SolidElement {
                 class=${cx(
                   'hidden',
                   slots['teaser-has-expandable'] &&
-                    'h-[0px] invisible opacity-0 md:[transition:_height_var(--sd-duration-medium)_linear,opacity_var(--sd-duration-fast)_linear_var(--sd-duration-fast)] md:block md:group-hover:h-auto **md:group-hover:my-2** md:group-hover:opacity-[100%] md:group-hover:visible'
+                    'h-[0px] invisible opacity-0 md:[transition:_height_var(--sd-duration-fast)_linear,opacity_var(--sd-duration-fast)_linear_var(--sd-duration-fast)] md:block md:group-hover:h-auto **md:group-hover:my-2** md:group-hover:opacity-[100%] md:group-hover:visible'
                 )}
                 part="expandable"
                 aria-hidden="true"
