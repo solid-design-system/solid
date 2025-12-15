@@ -91,7 +91,7 @@ export default class SdTeaserMedia extends SolidElement {
             ></div>
             <div class="relative flex-col text-left p-4" part="content">
               <div class="flex flex-col">
-                <div part="headline" class="text-lg font-bold m-0 order-2">
+                <div part="headline" class="text-lg font-bold m-0 order-2 gap-1">
                   <slot name="headline">
                     Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)
                   </slot>
