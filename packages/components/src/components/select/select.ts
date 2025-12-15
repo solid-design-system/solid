@@ -990,7 +990,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             >
               <div
                 class=${cx(
-                  'input-container flex items-center w-full h-full px-4',
+                  'input-container flex items-center w-full h-full px-4 min-w-0',
                   {
                     sm: 'py-1',
                     md: 'py-1',
@@ -1003,7 +1003,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   form=${this.form}
                   part="display-input"
                   class=${cx(
-                    'top-0 left-0 appearance-none outline-none flex-grow bg-transparent flex-1 placeholder-neutral-700',
+                    'top-0 left-0 appearance-none outline-none flex-grow bg-transparent flex-1 placeholder-neutral-700 min-w-0',
                     cursorStyles,
                     this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : ''
                   )}
