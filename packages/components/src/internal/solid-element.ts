@@ -15,22 +15,76 @@ export default class SolidElement extends LitElement {
   /** The element's language. */
   @property() lang: string;
 
+  protected onThemeChange?(e: CustomEvent<{ theme: string }>): void;
+
+  connectedCallback(): void {
+    super.connectedCallback();
+
+    if (!this.onThemeChange) return;
+    this.renderRoot.addEventListener('sd-theme-change', this.onThemeChange.bind(this));
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+
+    if (!this.onThemeChange) return;
+    this.renderRoot.removeEventListener('sd-theme-change', this.onThemeChange.bind(this));
+  }
+
   static styles = [
     css`
-      /* Import CSS styles once to make them available in every component */
-      @import url('../styles/src/modules/interactive.css');
-      @import url('../styles/src/modules/paragraph.css');
-      @import url('../styles/src/modules/headline.css');
-
-      /* TailwindCSS directives have to come after imports */
-      @tailwind base;
-      @tailwind components;
-      @tailwind utilities;
+      @import '../styles/src/modules/interactive.css';
+      @import '../styles/src/modules/paragraph.css';
+      @import '../styles/src/modules/headline.css';
 
       :host {
-        --tw-content: '';
+        /* Add default tailwind variables that get lost during compilation */
+        --tw-blur: initial;
+        --tw-border-style: solid;
+        --tw-brightness: initial;
+        --tw-contrast: initial;
+        --tw-divide-y-reverse: 0;
+        --tw-drop-shadow: initial;
+        --tw-duration: initial;
+        --tw-ease: initial;
+        --tw-font-weight: initial;
         --tw-gradient-from-position: 0%;
+        --tw-gradient-from: #0000;
+        --tw-gradient-position: initial;
+        --tw-gradient-stops: initial;
         --tw-gradient-to-position: 100%;
+        --tw-gradient-to: #0000;
+        --tw-gradient-via-position: 50%;
+        --tw-gradient-via-stops: initial;
+        --tw-gradient-via: #0000;
+        --tw-grayscale: initial;
+        --tw-hue-rotate: initial;
+        --tw-inset-ring-color: initial;
+        --tw-inset-ring-shadow: 0 0 #0000;
+        --tw-inset-shadow-color: initial;
+        --tw-inset-shadow: 0 0 #0000;
+        --tw-invert: initial;
+        --tw-opacity: initial;
+        --tw-ring-color: initial;
+        --tw-ring-inset: initial;
+        --tw-ring-offset-color: #fff;
+        --tw-ring-offset-shadow: 0 0 #0000;
+        --tw-ring-offset-width: 0px;
+        --tw-ring-shadow: 0 0 #0000;
+        --tw-rotate-x: rotateX(0);
+        --tw-rotate-y: rotateY(0);
+        --tw-rotate-z: rotateZ(0);
+        --tw-saturate: initial;
+        --tw-sepia: initial;
+        --tw-shadow-color: initial;
+        --tw-shadow: 0 0 #0000;
+        --tw-skew-x: skewX(0);
+        --tw-skew-y: skewY(0);
+        --tw-space-x-reverse: 0;
+        --tw-tracking: initial;
+        --tw-translate-x: 0;
+        --tw-translate-y: 0;
+        --tw-translate-z: 0;
 
         box-sizing: border-box;
       }
@@ -64,7 +118,7 @@ export default class SolidElement extends LitElement {
 
   /** Retrieves the value of a css variable token. */
   token<T>(name: string, fallback: T): T {
-    const value = cssVar(`var(--${name})`, this);
+    const value = cssVar(`var(${name})`, this);
 
     if (value === null) {
       return fallback;

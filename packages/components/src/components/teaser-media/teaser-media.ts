@@ -25,6 +25,11 @@ import SolidElement from '../../internal/solid-element';
  * @csspart headline - The container that wraps the headline.
  * @csspart expandable - The container that wraps the expandable.
  * @csspart main - The container that wraps the main content.
+ *
+ * @cssproperty --sd-teaser-media--neutral-100--hover-color-background - The background color for neutral‑100 teaser media in hover state.
+ * @cssproperty --sd-teaser-media--neutral-100-color-background - The default background color for neutral‑100 teaser media.
+ * @cssproperty --sd-teaser-media--primary-100--hover-color-background - The background color for primary‑100 teaser media in hover state.
+ * @cssproperty --sd-teaser-media--primary-100-color-background - The default background color for primary‑100 teaser media.
  */
 
 @customElement('sd-teaser-media')
@@ -65,27 +70,31 @@ export default class SdTeaserMedia extends SolidElement {
             class=${cx(
               'flex-1',
               this.variant === 'gradient-light' && 'bg-gradient-to-t from-white/[.8] to-60%',
-              this.variant === 'gradient-dark' && 'bg-gradient-to-t from-primary-800/[.6] to-60%'
+              this.variant === 'gradient-dark' && 'bg-gradient-to-t from-primary-800/[.8] to-60%'
             )}
           ></div>
-          <div
-            class=${cx(
-              {
-                white: 'bg-white/[.8] group-hover:bg-white/90',
-                'neutral-100': 'bg-neutral-100/[.8] group-hover:bg-neutral-100/90',
-                primary: 'bg-primary/[.8] text-white group-hover:bg-primary/90',
-                'primary-100': 'bg-primary-100/[.8] group-hover:bg-primary-100/90',
-                'gradient-light': 'bg-gradient-to-t from-white/90 to-white/[.8]',
-                'gradient-dark': 'bg-gradient-to-t from-primary-800/75 to-primary-800/[.6]  text-white'
-              }[this.variant]
-            )}
-          >
-            <div class="flex-col text-left p-4" part="content">
+          <div class=${cx('relative', ['primary', 'gradient-dark'].includes(this.variant) && 'text-white')}>
+            <div
+              class=${cx(
+                'absolute inset-0',
+                {
+                  white: 'bg-white/[.8] group-hover:bg-white/90',
+                  'neutral-100':
+                    'sd-teaser-media--neutral-100-color-background group-hover:sd-teaser-media--neutral-100--hover-color-background',
+                  primary: 'bg-primary/[.8] text-white group-hover:bg-primary/90',
+                  'primary-100':
+                    'sd-teaser-media--primary-100-color-background group-hover:sd-teaser-media--primary-100--hover-color-background',
+                  'gradient-light': 'bg-gradient-to-t from-white/90 to-white/[.8]',
+                  'gradient-dark': 'bg-gradient-to-t from-primary-800/90 to-primary-800/[.8]'
+                }[this.variant]
+              )}
+            ></div>
+            <div class="relative flex-col text-left p-4" part="content">
               <div class="flex flex-col">
                 <div part="headline" class="text-lg font-bold m-0 order-2">
-                  <slot name="headline"
-                    >Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)</slot
-                  >
+                  <slot name="headline">
+                    Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)
+                  </slot>
                 </div>
                 <div part="meta" class=${cx('gap-2 mb-4 order-1', !slots['teaser-has-meta'] && 'hidden')}>
                   <slot name="meta"></slot>
@@ -146,10 +155,6 @@ export default class SdTeaserMedia extends SolidElement {
         @apply m-0;
       }
 
-      ::slotted([slot='headline']) {
-        @apply font-bold !m-0 !text-lg;
-      }
-
       :host([variant='white']) .background:focus-within {
         @apply bg-white/90;
       }
@@ -164,6 +169,23 @@ export default class SdTeaserMedia extends SolidElement {
 
       :host([variant='primary-100']) .background:focus-within {
         @apply bg-primary-100/90;
+      }
+
+      /**
+       * Dev-note: In some components, css properties need to be assigned
+       * to specific variables so we keep consistency as in Figma.
+       * 
+       * For more details, see the 'Consistency with Figma' section in the **CONTRIBUTING.md**.
+       */
+      :host([variant='gradient-light']) .bg-gradient-to-t {
+        --sd-color-background-white: var(--sd-informational-gradient--white-color-background, var(--sd-color-white));
+      }
+
+      :host([variant='gradient-dark']) .bg-gradient-to-t {
+        --sd-color-background-primary-800: var(
+          --sd-informational-gradient--primary-800-color-background,
+          var(--sd-color-primary-800)
+        );
       }
     `
   ];
