@@ -39,6 +39,8 @@ import type SdPopup from '../popup/popup';
  * @cssproperty --max-width - The maximum width of the tooltip before its content will wrap.
  * @cssproperty --hide-delay - The amount of time to wait before hiding the tooltip when hovering.
  * @cssproperty --show-delay - The amount of time to wait before showing the tooltip when hovering.
+ * @cssproperty --sd-tooltip-color-background - The background color for the tooltip.
+ * @cssproperty --sd-tooltip-color-text - The text color for the tooltip.
  *
  * @animation tooltip.show - The animation to use when showing the tooltip.
  * @animation tooltip.hide - The animation to use when hiding the tooltip.
@@ -332,7 +334,7 @@ export default class SdTooltip extends SolidElement {
           name="content"
           part="body"
           id="tooltip"
-          class=" bg-primary text-white py-3 px-4 block rounded-none text-sm text-left"
+          class="sd-tooltip-color-background sd-tooltip-color-text py-3 px-4 block rounded-none text-sm text-left"
           role="tooltip"
           aria-label=${this.content}
           aria-live=${this.open ? 'polite' : 'off'}
@@ -352,7 +354,7 @@ export default class SdTooltip extends SolidElement {
       }
 
       sd-popup {
-        --arrow-color: rgb(var(--sd-color-primary, 0 53 142) / 1);
+        --arrow-color: rgba(var(--sd-tooltip-color-background));
         --arrow-size: 10px;
       }
 
@@ -382,6 +384,10 @@ export default class SdTooltip extends SolidElement {
         @apply overflow-auto;
         max-width: var(--auto-size-available-width) !important;
         max-height: var(--auto-size-available-height) !important;
+      }
+
+      :host [slot='anchor'] {
+        color: rgba(var(--sd-form-control__tooltip-color-icon));
       }
     `
   ];

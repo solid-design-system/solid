@@ -27,7 +27,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html`<div class="w-[250px]">${generateTemplate({ args })}</div> `;
+    return html`<div class="w-[300px]">${generateTemplate({ args })}</div> `;
   }
 };
 
@@ -60,6 +60,19 @@ export const Label = {
       <sd-input spellcheck>
         <div slot="label" class="text-lg">Label slot</div>
       </sd-input>
+    </div>
+  `
+};
+
+/**
+ * Use the `floating-label` attribute to enable a floating label on the input.
+ *
+ * __Note:__ Floating labels only work with the `label` attribute. The `label` slot is not supported.
+ */
+export const FloatingLabel = {
+  render: () => html`
+    <div class="w-[350px]">
+      <sd-input label="Floating Label" floating-label></sd-input>
     </div>
   `
 };
