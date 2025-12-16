@@ -205,7 +205,7 @@ describe('<sd-tooltip>', () => {
 
   it('should toggle the tooltip when focus the trigger', async () => {
     const el = await fixture<SdTooltip>(html`
-      <sd-tooltip content="This is a tooltip" trigger="focus">
+      <sd-tooltip content="This is a tooltip" trigger="focus" close-trigger="focus">
         <sd-button>Click Me</sd-button>
       </sd-tooltip>
     `);
@@ -223,7 +223,7 @@ describe('<sd-tooltip>', () => {
     // tooltip is visible after focusing the button
     expect(body.hidden).to.be.false;
 
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab' }));
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', bubbles: true }));
     button.blur();
     await waitUntil(() => body.hidden);
 

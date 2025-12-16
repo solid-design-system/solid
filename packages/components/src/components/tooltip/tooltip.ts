@@ -94,7 +94,7 @@ export default class SdTooltip extends SolidElement {
    * Possible options: `click`, `hover`, `focus`, `escape`, `manual`.
    * Multiple options can be passed with spaces.
    */
-  @property({ type: String, attribute: 'close-trigger', reflect: true }) closeTrigger = 'click blur escape';
+  @property({ type: String, attribute: 'close-trigger', reflect: true }) closeTrigger = 'click focus escape';
 
   /**
    * Enable this option to prevent the tooltip from being clipped when the component is placed inside a container with
