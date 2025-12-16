@@ -26,6 +26,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart submenu-icon - The icon shown when the menu item has a submenu.
  *
  * @cssproperty --submenu-offset - The offset of the submenu from the parent menu item.
+ * @cssproperty --sd-navigable-border-radius - The menu-item border radius on hover.
  */
 @customElement('sd-menu-item')
 export default class SdMenuItem extends SolidElement {
@@ -147,10 +148,10 @@ export default class SdMenuItem extends SolidElement {
       id="anchor"
       part="base"
       class=${cx(
-        'relative flex items-stretch whitespace-nowrap py-3 px-4 no-wrap',
+        'relative flex items-stretch whitespace-nowrap py-3 px-4 no-wrap !navigable-border-radius',
         this.disabled
-          ? 'outline-none cursor-not-allowed text-neutral-500 hover:bg-transparent'
-          : 'cursor-pointer text-primary hover:bg-neutral-200',
+          ? 'outline-none cursor-not-allowed sd-menu--disabled-color-text hover:bg-transparent'
+          : 'cursor-pointer sd-menu-color-text hover:bg-neutral-200',
         this.isSubmenu() && isSubmenuExpanded && 'submenu-expanded'
       )}
       .disabled=${this.disabled}
@@ -234,6 +235,16 @@ export default class SdMenuItem extends SolidElement {
 
       :host(:hover) [part='base'] {
         @apply outline-none;
+      }
+
+      :host [part='icon-indent'],
+      :host [part='checked-icon'],
+      :host [part='submenu-icon'] {
+        color: rgba(var(--sd-menu-color-icon));
+      }
+
+      :host([aria-disabled='true']) [part='icon-indent'] {
+        color: rgba(var(--sd-menu--disabled-color-icon));
       }
 
       sd-popup::part(popup) {
