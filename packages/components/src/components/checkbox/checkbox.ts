@@ -250,7 +250,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
               ? ' control--indeterminate'
               : ''}"
             class=${cx(
-              'relative flex flex-shrink-0 items-center justify-center border rounded-sm h-4 w-4',
+              'relative flex flex-shrink-0 items-center justify-center border sd-checkbox-border-width rounded-sm h-4 w-4',
               'transition-colors ease-in-out duration-medium group-hover:duration-fast',
               'peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary',
               {
@@ -267,7 +267,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
                 invalid: 'border-error group-hover:bg-neutral-200',
                 filled:
                   'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent group-hover:bg-accent-550',
-                default: 'border-neutral-800 hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
+                default: 'form-control-color-border hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
               }[checkboxState]
             )}
           >
