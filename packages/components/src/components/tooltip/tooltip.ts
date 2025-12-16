@@ -83,18 +83,18 @@ export default class SdTooltip extends SolidElement {
   @property({ type: Boolean, reflect: true }) open = false;
 
   /**
-   * Controls how the tooltip is closed.
-   * Possible options: `click`, `hover`, `focus`, `escape`, `manual`.
-   * Multiple options can be passed with spaces.
-   */
-  @property({ type: String, reflect: true }) closeTrigger = 'click hover blur escape';
-
-  /**
    * Controls how the tooltip is activated. Possible options include `click`, `hover`, `focus`, and `manual`. Multiple
    * options can be passed by separating them with a space. When manual is used, the tooltip must be activated
    * programmatically.
    */
   @property({ type: String, reflect: true }) trigger = 'click focus';
+
+  /**
+   * Controls how the tooltip is closed.
+   * Possible options: `click`, `hover`, `focus`, `escape`, `manual`.
+   * Multiple options can be passed with spaces.
+   */
+  @property({ type: String, attribute: 'close-trigger', reflect: true }) closeTrigger = 'click blur escape';
 
   /**
    * Enable this option to prevent the tooltip from being clipped when the component is placed inside a container with
@@ -176,18 +176,16 @@ export default class SdTooltip extends SolidElement {
   };
 
   private handleBlur() {
-    if (this.hasTrigger('focus')) {
+    if (this.hasCloseTrigger('focus')) {
       this.hide();
     }
   }
 
   private handleClick() {
-    if (this.hasTrigger('click')) {
-      if (this.open) {
-        this.hide();
-      } else {
-        this.show();
-      }
+    if (this.open && this.hasCloseTrigger('click')) {
+      this.hide();
+    } else if (this.hasTrigger('click')) {
+      this.show();
     }
   }
 
@@ -216,7 +214,7 @@ export default class SdTooltip extends SolidElement {
   }
 
   private handleMouseOut() {
-    if (this.hasTrigger('hover')) {
+    if (this.hasCloseTrigger('hover')) {
       const delay = parseDuration(getComputedStyle(this).getPropertyValue('--hide-delay'));
       clearTimeout(this.hoverTimeout);
       this.hoverTimeout = window.setTimeout(() => this.hide(), delay);
@@ -227,19 +225,20 @@ export default class SdTooltip extends SolidElement {
     if (!this.open) return;
     if (this.interactionType === 'keyboard') return;
     const path = event.composedPath();
+
     if (this.hasCloseTrigger('click') && !path.includes(this) && !path.includes(this.popup)) {
       this.hide();
     }
   }
 
-  private hasCloseTrigger(type: string) {
-    const triggers = this.closeTrigger.split(' ');
-    return triggers.includes(type);
-  }
-
   private hasTrigger(triggerType: string) {
     const triggers = this.trigger.split(' ');
     return triggers.includes(triggerType);
+  }
+
+  private hasCloseTrigger(type: string) {
+    const triggers = this.closeTrigger.split(' ');
+    return triggers.includes(type);
   }
 
   @watch('open', { waitUntilFirstUpdate: true })
