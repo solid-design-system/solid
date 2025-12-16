@@ -30,7 +30,7 @@ export default class SdBreadcrumbItem extends SolidElement {
   /** Tells the browser where to open the link. Only used when `href` is present. */
   @property({ type: String, reflect: true }) target: '_blank' | '_parent' | '_self' | '_top';
 
-  /** When set, the attribute `aria-current="page"` will be applied */
+  /** When set, the attribute `aria-current="page"` will be applied. */
   @property({ type: Boolean, reflect: true }) current = false;
 
   @watch('current')
@@ -76,10 +76,6 @@ export default class SdBreadcrumbItem extends SolidElement {
 
       sd-link::part(icon-left) {
         @apply mr-0 inline-flex;
-      }
-
-      sd-link sd-icon {
-        @apply m-0;
       }
 
       :host([current]) sd-link::part(base) {
