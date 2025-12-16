@@ -229,10 +229,6 @@ export default class SdMenuItem extends SolidElement {
         @apply focus-outline outline-offset-[-2px];
       }
 
-      :host(.force-visible-focus) [part='base'] {
-        @apply focus-outline outline-offset-[-2px];
-      }
-
       :host(:hover) [part='base'] {
         @apply outline-none;
       }
