@@ -204,7 +204,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @property() getTag: (option: SdOption, index: number) => TemplateResult | string | HTMLElement = option => {
     return html`
       <sd-tag
-        class="relative z-10"
+        class="relative z-10 min-w-0"
         ?disabled=${this.disabled}
         part="tag"
         exportparts="
@@ -700,7 +700,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       return [
         html`
           <sd-tag
-            class="z-10"
+            class="z-10 min-w-0"
             ?disabled=${this.disabled}
             part="tag"
             exportparts="
@@ -1033,7 +1033,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 />
 
                 ${this.multiple && this.useTags
-                  ? html`<div part="tags" class="flex-grow flex flex-wrap items-center gap-1">${this.tags}</div>`
+                  ? html`<div part="tags" class="flex-grow flex flex-wrap items-center gap-1 min-w-0">
+                      ${this.tags}
+                    </div>`
                   : ''}
 
                 <div aria-live="polite" id="control-value" class="absolute top-0 left-0 opacity-0 -z-10">
