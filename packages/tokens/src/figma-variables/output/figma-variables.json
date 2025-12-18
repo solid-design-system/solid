@@ -4548,9 +4548,11 @@
           "type": "float",
           "value": "{ui-light.utilities.rounded.default}"
         },
-        "border-width": {
-          "type": "float",
-          "value": "0"
+        "_primary-200": {
+          "border-width": {
+            "type": "float",
+            "value": "0"
+          }
         },
         "--white": {
           "color": {
@@ -4577,15 +4579,25 @@
             }
           }
         },
-        "border-radius 2": {
-          "type": "float",
-          "value": "{ui-light.utilities.rounded.full}"
-        },
-        "font-weight 2": {
-          "type": "string",
-          "value": "{ui-light.utilities.font-weight.normal}"
-        },
         "--selected": {
+          "border-width": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "_primary-300": {
+          "border-width": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "_primary-500": {
+          "border-width": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "_white": {
           "border-width": {
             "type": "float",
             "value": "0"
@@ -7512,9 +7524,11 @@
           "type": "float",
           "value": "{ui-dark.utilities.rounded.default}"
         },
-        "border-width": {
-          "type": "float",
-          "value": "0"
+        "_primary-200": {
+          "border-width": {
+            "type": "float",
+            "value": "0"
+          }
         },
         "--white": {
           "color": {
@@ -7541,15 +7555,25 @@
             }
           }
         },
-        "border-radius 2": {
-          "type": "float",
-          "value": "{ui-dark.utilities.rounded.full}"
-        },
-        "font-weight 2": {
-          "type": "string",
-          "value": "{ui-dark.utilities.font-weight.normal}"
-        },
         "--selected": {
+          "border-width": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "_primary-300": {
+          "border-width": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "_primary-500": {
+          "border-width": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "_white": {
           "border-width": {
             "type": "float",
             "value": "0"
@@ -10476,9 +10500,11 @@
           "type": "float",
           "value": "{vb.utilities.rounded.default}"
         },
-        "border-width": {
-          "type": "float",
-          "value": "{vb.utilities.border-width.default}"
+        "_primary-200": {
+          "border-width": {
+            "type": "float",
+            "value": "{vb.utilities.border-width.default}"
+          }
         },
         "--white": {
           "color": {
@@ -10505,15 +10531,25 @@
             }
           }
         },
-        "border-radius 2": {
-          "type": "float",
-          "value": "{vb.utilities.rounded.lg}"
-        },
-        "font-weight 2": {
-          "type": "string",
-          "value": "{vb.utilities.font-weight.bold}"
-        },
         "--selected": {
+          "border-width": {
+            "type": "float",
+            "value": "{vb.utilities.border-width.default}"
+          }
+        },
+        "_primary-300": {
+          "border-width": {
+            "type": "float",
+            "value": "{vb.utilities.border-width.default}"
+          }
+        },
+        "_primary-500": {
+          "border-width": {
+            "type": "float",
+            "value": "{vb.utilities.border-width.default}"
+          }
+        },
+        "_white": {
           "border-width": {
             "type": "float",
             "value": "{vb.utilities.border-width.default}"
@@ -13400,7 +13436,7 @@
             "background": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "{core.vb.status.neutral-grey-bg}"
+              "value": "rgba(255, 255, 255, 0.60)"
             },
             "border": {
               "type": "color",
@@ -13412,7 +13448,7 @@
           "color": {
             "background": {
               "type": "color",
-              "value": "{core.vb.status.neutral-blue-bg}"
+              "value": "rgba(255, 255, 255, 0.60)"
             },
             "border": {
               "type": "color",
@@ -13424,7 +13460,7 @@
           "color": {
             "background": {
               "type": "color",
-              "value": "{core.vb.status.neutral-blue-bg}"
+              "value": "rgba(255, 255, 255, 0.60)"
             },
             "border": {
               "type": "color",
@@ -13440,16 +13476,18 @@
           "type": "float",
           "value": "{kid.utilities.rounded.full}"
         },
-        "border-width": {
-          "type": "float",
-          "value": "{kid.utilities.border-width.default}"
+        "_primary-200": {
+          "border-width": {
+            "type": "float",
+            "value": "0"
+          }
         },
         "--white": {
           "color": {
             "background": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "{core.vb.status.neutral-grey-bg}"
+              "value": "rgba(251, 251, 251, 0.60)"
             },
             "border": {
               "type": "color",
@@ -13469,18 +13507,28 @@
             }
           }
         },
-        "border-radius 2": {
-          "type": "float",
-          "value": "{kid.utilities.rounded.full}"
-        },
-        "font-weight 2": {
-          "type": "string",
-          "value": "{kid.utilities.font-weight.bold}"
-        },
         "--selected": {
           "border-width": {
             "type": "float",
             "value": "{kid.utilities.border-width.default}"
+          }
+        },
+        "_primary-300": {
+          "border-width": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "_primary-500": {
+          "border-width": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "_white": {
+          "border-width": {
+            "type": "float",
+            "value": "0"
           }
         }
       },

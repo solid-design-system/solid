@@ -366,16 +366,8 @@
   border-color: rgba(var(--sd-chip--white-color-border, rgba(255, 255, 255, 0)));
 }
 
-@utility sd-chip-border-radius 2 {
- border-radius 2: var(--sd-chip-border-radius 2, 624.9375rem);
-}
-
 @utility sd-chip-border-radius {
  border-radius: var(--sd-chip-border-radius, var(--sd-spacing-1));
-}
-
-@utility sd-chip-border-width {
- border-width: var(--sd-chip-border-width, 0);
 }
 
 @utility sd-combobox--default-color-icon {
