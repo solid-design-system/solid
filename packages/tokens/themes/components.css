@@ -370,6 +370,10 @@
  border-radius: var(--sd-chip-border-radius, var(--sd-spacing-1));
 }
 
+@utility sd-chip-font-size {
+ font-size: var(--sd-chip-font-size, 0.875rem);
+}
+
 @utility sd-combobox--default-color-icon {
   background-color: rgba(var(--sd-combobox--default-color-icon, rgba(var(--sd-color-primary))));
 }

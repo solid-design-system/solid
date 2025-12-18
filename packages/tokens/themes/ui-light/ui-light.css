@@ -93,6 +93,7 @@
   --sd-chip--white-color-background: var(--sd-color-white);
   --sd-chip--white-color-border: 255, 255, 255, 0;
   --sd-chip-border-radius: var(--sd-spacing-1);
+  --sd-chip-font-size: 0.875rem;
   --sd-color-accent-100: 182, 223, 170;
   --sd-color-accent-200: 142, 208, 130;
   --sd-color-accent-300: 108, 194, 84;

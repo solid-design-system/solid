@@ -93,6 +93,7 @@
   --sd-chip--white-color-background: var(--sd-color-primary-750);
   --sd-chip--white-color-border: 255, 255, 255, 0;
   --sd-chip-border-radius: var(--sd-spacing-1);
+  --sd-chip-font-size: 0.875rem;
   --sd-color-accent-100: 182, 223, 170;
   --sd-color-accent-200: 142, 208, 130;
   --sd-color-accent-300: 108, 194, 84;
@@ -203,7 +204,7 @@
   --sd-color-text-error: var(--sd-color-error-250);
   --sd-color-text-neutral-500: var(--sd-color-neutral-500);
   --sd-color-text-neutral-600: var(--sd-color-neutral-600);
-  --sd-color-text-neutral-700: var(--sd-color-neutral-700);
+  --sd-color-text-neutral-700: var(--sd-color-primary-400);
   --sd-color-text-primary-100: var(--sd-color-primary-500);
   --sd-color-text-primary-200: var(--sd-color-primary-200);
   --sd-color-text-primary-400: var(--sd-color-primary-400);
@@ -245,7 +246,7 @@
   --sd-font-weight-bold: 700;
   --sd-font-weight-normal: 400;
   --sd-footnotes--target--inverted-color-background: var(--sd-color-primary-800);
-  --sd-form-control--filled__floating-label-color-text: var(--sd-color-neutral-700);
+  --sd-form-control--filled__floating-label-color-text: var(--sd-color-primary-400);
   --sd-form-control--invalid-color-background: var(--sd-color-primary-900);
   --sd-form-control-color-border: var(--sd-color-primary-200);
   --sd-form-control-color-icon: var(--sd-color-white);
@@ -401,7 +402,7 @@
   --sd-text-xl: 1.5rem;
   --sd-tooltip-color-background: var(--sd-color-primary);
   --sd-tooltip-color-text: var(--sd-color-white);
-  --sd-video--description-color-text: var(--sd-color-neutral-700);
+  --sd-video--description-color-text: var(--sd-color-primary-400);
   --sd-video--play-button-color-background: 0, 53, 142, 0.8;
   --sd-video--play-button-color-icon-fill: var(--sd-color-white);
 }

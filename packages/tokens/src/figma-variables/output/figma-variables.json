@@ -1716,270 +1716,88 @@
       }
     },
     "kid": {
-      "from-figma": {
-        "vermillion": {
-          "500": {
-            "type": "color",
-            "value": "#f35e01"
-          },
-          "550": {
-            "type": "color",
-            "value": "#bd5622"
-          },
-          "default": {
-            "description": "green-default",
-            "type": "color",
-            "value": "{core.vb.from-figma.vermillion.500}"
-          },
-          "custom": {
-            "50": {
-              "type": "color",
-              "value": "#f5dbc7"
-            },
-            "100": {
-              "type": "color",
-              "value": "#f4cdb2"
-            },
-            "200": {
-              "type": "color",
-              "value": "#f5b691"
-            },
-            "300": {
-              "type": "color",
-              "value": "#f79a66"
-            },
-            "400": {
-              "type": "color",
-              "value": "#f97e3a"
-            },
-            "500": {
-              "description": "Generated with https://www.tints.dev/palette/v1:cnVieXxGMzVFMDF8NTAwfHB8NXwtNHwxM3w5Mnxt",
-              "type": "color",
-              "value": "#f35e01"
-            },
-            "600": {
-              "type": "color",
-              "value": "#ab5421"
-            },
-            "700": {
-              "type": "color",
-              "value": "#925020"
-            },
-            "800": {
-              "type": "color",
-              "value": "#693f1d"
-            },
-            "900": {
-              "type": "color",
-              "value": "#492f18"
-            },
-            "950": {
-              "type": "color",
-              "value": "#3a2916"
-            }
-          }
+      "accent": {
+        "100": {
+          "type": "color",
+          "value": "#f7f2ec"
         },
-        "vb": {
-          "from-ultra": {
-            "hover": {
-              "type": "color",
-              "value": "rgba(0, 102, 179, 0.05)"
-            },
-            "selected-hover": {
-              "type": "color",
-              "value": "#dae8f4"
-            }
-          }
+        "200": {
+          "type": "color",
+          "value": "#f9e0d0"
         },
-        "white": {
-          "20": {
-            "type": "color",
-            "value": "rgba(255, 255, 255, 0.02)"
-          },
-          "100": {
-            "type": "color",
-            "value": "rgba(255, 255, 255, 0.10)"
-          },
-          "400": {
-            "type": "color",
-            "value": "rgba(255, 255, 255, 0.40)"
-          },
-          "500": {
-            "type": "color",
-            "value": "rgba(255, 255, 255, 0.50)"
-          },
-          "840": {
-            "type": "color",
-            "value": "rgba(255, 255, 255, 0.84)"
-          },
-          "default": {
-            "type": "color",
-            "value": "#ffffff"
-          }
+        "300": {
+          "type": "color",
+          "value": "#fbcfb4"
         },
-        "grey": {
-          "100": {
-            "type": "color",
-            "value": "rgba(0, 0, 0, 0.10)"
-          },
-          "150": {
-            "type": "color",
-            "value": "rgba(0, 0, 0, 0.15)"
-          },
-          "200": {
-            "type": "color",
-            "value": "rgba(0, 0, 0, 0.20)"
-          },
-          "380": {
-            "type": "color",
-            "value": "rgba(0, 0, 0, 0.38)"
-          },
-          "540": {
-            "type": "color",
-            "value": "rgba(0, 0, 0, 0.54)"
-          },
-          "620": {
-            "type": "color",
-            "value": "rgba(0, 0, 0, 0.62)"
-          },
-          "default": {
-            "type": "color",
-            "value": "rgba(0, 0, 0, 0.86)"
-          }
+        "400": {
+          "type": "color",
+          "value": "#fcbd96"
         },
-        "indigo": {
-          "700": {
-            "type": "color",
-            "value": "#002d67"
-          },
-          "default": {
-            "type": "color",
-            "value": "{core.vb.from-figma.indigo.700}"
-          }
+        "500": {
+          "type": "color",
+          "value": "#fa8f4f"
+        },
+        "600": {
+          "type": "color",
+          "value": "#d67138"
+        },
+        "700": {
+          "type": "color",
+          "value": "#b35624"
+        },
+        "800": {
+          "type": "color",
+          "value": "#8f3c13"
+        },
+        "900": {
+          "type": "color",
+          "value": "#6b2405"
+        },
+        "default": {
+          "type": "color",
+          "value": "{core.kid.accent.100}"
         }
       },
-      "from-code": {
-        "accent": {
-          "100": {
-            "type": "color",
-            "value": "#f7f2ec"
-          },
-          "200": {
-            "type": "color",
-            "value": "#f9e0d0"
-          },
-          "300": {
-            "type": "color",
-            "value": "#fbcfb4"
-          },
-          "400": {
-            "type": "color",
-            "value": "#fcbd96"
-          },
-          "500": {
-            "type": "color",
-            "value": "#fa8f4f"
-          },
-          "600": {
-            "type": "color",
-            "value": "#d67138"
-          },
-          "700": {
-            "type": "color",
-            "value": "#b35624"
-          },
-          "800": {
-            "type": "color",
-            "value": "#8f3c13"
-          },
-          "900": {
-            "type": "color",
-            "value": "#6b2405"
-          },
-          "default": {
-            "type": "color",
-            "value": "{core.kid.from-code.accent.100}"
-          }
+      "primary": {
+        "100": {
+          "type": "color",
+          "value": "#e6e9f5"
         },
-        "primary": {
-          "100": {
-            "type": "color",
-            "value": "#e6e9f5"
-          },
-          "200": {
-            "type": "color",
-            "value": "#c1c9e7"
-          },
-          "300": {
-            "type": "color",
-            "value": "#98a6d6"
-          },
-          "400": {
-            "type": "color",
-            "value": "#6e84c6"
-          },
-          "500": {
-            "type": "color",
-            "value": "#4c69bb"
-          },
-          "600": {
-            "type": "color",
-            "value": "#244faf"
-          },
-          "700": {
-            "type": "color",
-            "value": "#00348e"
-          },
-          "800": {
-            "type": "color",
-            "value": "#002379"
-          },
-          "900": {
-            "type": "color",
-            "value": "#051530"
-          },
-          "default": {
-            "type": "color",
-            "value": "{core.kid.from-code.primary.900}"
-          }
+        "200": {
+          "type": "color",
+          "value": "#c1c9e7"
         },
-        "grey": {
-          "100": {
-            "type": "color",
-            "value": "#eceff1"
-          },
-          "200": {
-            "type": "color",
-            "value": "#cfd8dc"
-          },
-          "300": {
-            "type": "color",
-            "value": "#b0bec5"
-          },
-          "400": {
-            "type": "color",
-            "value": "#90a4ae"
-          },
-          "500": {
-            "type": "color",
-            "value": "#78909c"
-          },
-          "600": {
-            "type": "color",
-            "value": "#607d8b"
-          },
-          "700": {
-            "type": "color",
-            "value": "#546e7a"
-          },
-          "800": {
-            "type": "color",
-            "value": "#455a64"
-          },
-          "900": {
-            "type": "color",
-            "value": "#263238"
-          }
+        "300": {
+          "type": "color",
+          "value": "#98a6d6"
+        },
+        "400": {
+          "type": "color",
+          "value": "#6e84c6"
+        },
+        "500": {
+          "type": "color",
+          "value": "#4c69bb"
+        },
+        "600": {
+          "type": "color",
+          "value": "#244faf"
+        },
+        "700": {
+          "type": "color",
+          "value": "#00348e"
+        },
+        "800": {
+          "type": "color",
+          "value": "#002379"
+        },
+        "900": {
+          "type": "color",
+          "value": "#051530"
+        },
+        "default": {
+          "type": "color",
+          "value": "{core.kid.primary.900}"
         }
       },
       "black": {
@@ -1987,6 +1805,10 @@
         "value": "#051530"
       },
       "white": {
+        "600": {
+          "type": "color",
+          "value": "rgba(255, 255, 255, 0.60)"
+        },
         "type": "color",
         "value": "#ffffff"
       },
@@ -2076,7 +1898,45 @@
           "value": "#eceff1"
         }
       },
-      "color": {
+      "neutral": {
+        "100": {
+          "type": "color",
+          "value": "#eceff1"
+        },
+        "200": {
+          "type": "color",
+          "value": "#cfd8dc"
+        },
+        "300": {
+          "type": "color",
+          "value": "#b0bec5"
+        },
+        "400": {
+          "type": "color",
+          "value": "#90a4ae"
+        },
+        "500": {
+          "type": "color",
+          "value": "#78909c"
+        },
+        "600": {
+          "type": "color",
+          "value": "#607d8b"
+        },
+        "700": {
+          "type": "color",
+          "value": "#546e7a"
+        },
+        "800": {
+          "type": "color",
+          "value": "#455a64"
+        },
+        "900": {
+          "type": "color",
+          "value": "#263238"
+        }
+      },
+      "creme": {
         "type": "color",
         "value": "#f7f2ec"
       },
@@ -2134,6 +1994,68 @@
           "description": "opacity 100%",
           "type": "float",
           "value": "100"
+        }
+      },
+      "leading": {
+        "3": {
+          "description": "Used for text sm compact (size: 14, line-height: 100%)",
+          "type": "float",
+          "value": "14"
+        },
+        "4": {
+          "description": "Used for text base compact (size: 16, line-height: 100%)",
+          "type": "float",
+          "value": "16"
+        },
+        "5": {
+          "description": "Used for text sm (size: 14, line-height: 150%)",
+          "type": "float",
+          "value": "18"
+        },
+        "6": {
+          "description": "Used for text base (size: 16, line-height: 150%)",
+          "type": "float",
+          "value": "20.799999237060547"
+        },
+        "7": {
+          "description": "Used for text xl (size: 24, line-height: 120%)",
+          "type": "float",
+          "value": "28.799999237060547"
+        },
+        "8": {
+          "description": "Used for mobile text lg (size: 20, line-height: 150%)",
+          "type": "float",
+          "value": "30"
+        },
+        "9": {
+          "description": "Used for text base (size: 16, line-height: 150%)",
+          "type": "float",
+          "value": "36"
+        },
+        "12": {
+          "description": "Used for text 3xl (size: 32, line-height: 120%)",
+          "type": "float",
+          "value": "46.20000076293945"
+        },
+        "15": {
+          "description": "Used for text 4xl (size: 40, line-height: 120%)",
+          "type": "float",
+          "value": "60"
+        },
+        "4,5": {
+          "description": "Used for text base compact (size: 16, line-height: 100%)",
+          "type": "float",
+          "value": "18"
+        },
+        "8,5": {
+          "description": "Used for text xl, mobile text 3xl (size: 28, line-height: 120%)",
+          "type": "float",
+          "value": "33.599998474121094"
+        },
+        "9,5": {
+          "description": "Used for text 3xl, mobile text 4xl (size: 32, line-height: 120%)",
+          "type": "float",
+          "value": "35.20000076293945"
         }
       }
     },
@@ -4602,6 +4524,10 @@
             "type": "float",
             "value": "0"
           }
+        },
+        "font-size": {
+          "type": "float",
+          "value": "{ui-light.utilities.text.sm}"
         }
       },
       "sd-radio": {
@@ -5972,7 +5898,7 @@
             "700": {
               "description": "Additional text color, Breadcrumb item current and Video descriotion #100, 62%",
               "type": "color",
-              "value": "{ui-dark.utilities.color.neutral.700}"
+              "value": "{ui-dark.utilities.color.primary.400}"
             }
           },
           "error": {
@@ -7578,6 +7504,10 @@
             "type": "float",
             "value": "0"
           }
+        },
+        "font-size": {
+          "type": "float",
+          "value": "{ui-dark.utilities.text.sm}"
         }
       },
       "sd-radio": {
@@ -10554,6 +10484,10 @@
             "type": "float",
             "value": "{vb.utilities.border-width.default}"
           }
+        },
+        "font-size": {
+          "type": "float",
+          "value": "{vb.utilities.text.sm}"
         }
       },
       "sd-radio": {
@@ -11280,7 +11214,7 @@
             "100": {
               "description": "Used for sd-container",
               "type": "color",
-              "value": "{kid.utilities.color.primary.100}"
+              "value": "{kid.utilities.color.neutral.100}"
             },
             "200": {
               "description": "Used for sd-chip",
@@ -11290,17 +11224,17 @@
             "300": {
               "description": "Used for sd-chip",
               "type": "color",
-              "value": "{kid.utilities.color.neutral.900}"
+              "value": "{kid.utilities.color.neutral.800}"
             },
             "500": {
               "description": "Used for sd-chip, sd-badge",
               "type": "color",
-              "value": "{kid.utilities.color.neutral.900}"
+              "value": "{kid.utilities.color.neutral.800}"
             },
             "800": {
               "description": "Used for pressed interaction",
               "type": "color",
-              "value": "{kid.utilities.color.neutral.900}"
+              "value": "{kid.utilities.color.neutral.800}"
             },
             "default": {
               "description": "Inverted background color (light mode)\nUsed for button",
@@ -11312,12 +11246,12 @@
             "300": {
               "description": "Used for inverted hover interaction",
               "type": "color",
-              "value": "{kid.utilities.color.neutral.900}"
+              "value": "{kid.utilities.color.neutral.800}"
             },
             "500": {
               "description": "Used for cta background",
               "type": "color",
-              "value": "{kid.utilities.color.neutral.900}"
+              "value": "{kid.utilities.color.neutral.800}"
             },
             "550": {
               "description": "Used for hover interaction",
@@ -11327,7 +11261,7 @@
             "700": {
               "description": "Used for pressed interaction",
               "type": "color",
-              "value": "{kid.utilities.color.neutral.900}"
+              "value": "{kid.utilities.color.neutral.800}"
             },
             "default": {
               "description": "Used for checkbox, switch",
@@ -11440,77 +11374,77 @@
         "primary": {
           "100": {
             "type": "color",
-            "value": "{core.kid.from-code.primary.100}"
+            "value": "{core.kid.primary.100}"
           },
           "200": {
             "type": "color",
-            "value": "{core.kid.from-code.primary.200}"
+            "value": "{core.kid.primary.200}"
           },
           "300": {
             "type": "color",
-            "value": "{core.kid.from-code.primary.300}"
+            "value": "{core.kid.primary.300}"
           },
           "400": {
             "type": "color",
-            "value": "{core.kid.from-code.primary.400}"
+            "value": "{core.kid.primary.400}"
           },
           "500": {
             "type": "color",
-            "value": "{core.kid.from-code.primary.500}"
+            "value": "{core.kid.primary.500}"
           },
           "600": {
             "type": "color",
-            "value": "{core.kid.from-code.primary.600}"
+            "value": "{core.kid.primary.600}"
           },
           "700": {
             "type": "color",
-            "value": "{core.kid.from-code.primary.700}"
+            "value": "{core.kid.primary.700}"
           },
           "750": {
             "type": "color",
-            "value": "{core.kid.from-code.primary.700}"
+            "value": "{core.kid.primary.700}"
           },
           "800": {
             "type": "color",
-            "value": "{core.kid.from-code.primary.800}"
+            "value": "{core.kid.primary.800}"
           },
           "900": {
             "type": "color",
-            "value": "{core.kid.from-code.primary.900}"
+            "value": "{core.kid.primary.900}"
           },
           "default": {
             "type": "color",
-            "value": "{core.kid.from-code.primary.default}"
+            "value": "{core.kid.primary.default}"
           }
         },
         "accent": {
           "100": {
             "type": "color",
-            "value": "{core.kid.from-code.accent.100}"
+            "value": "{core.kid.accent.100}"
           },
           "200": {
             "type": "color",
-            "value": "{core.kid.from-code.accent.200}"
+            "value": "{core.kid.accent.200}"
           },
           "300": {
             "type": "color",
-            "value": "{core.kid.from-code.accent.300}"
+            "value": "{core.kid.accent.300}"
           },
           "400": {
             "type": "color",
-            "value": "{core.kid.from-code.accent.400}"
+            "value": "{core.kid.accent.400}"
           },
           "500": {
             "type": "color",
-            "value": "{core.kid.from-code.accent.500}"
+            "value": "{core.kid.accent.500}"
           },
           "550": {
             "type": "color",
-            "value": "{core.kid.from-code.accent.500}"
+            "value": "{core.kid.accent.500}"
           },
           "600": {
             "type": "color",
-            "value": "{core.kid.from-code.accent.600}"
+            "value": "{core.kid.accent.600}"
           },
           "700": {
             "type": "color",
@@ -11518,49 +11452,49 @@
           },
           "800": {
             "type": "color",
-            "value": "{core.kid.from-code.accent.800}"
+            "value": "{core.kid.accent.800}"
           },
           "default": {
             "type": "color",
-            "value": "{core.kid.from-code.accent.default}"
+            "value": "{core.kid.accent.default}"
           }
         },
         "neutral": {
           "100": {
             "type": "color",
-            "value": "{core.kid.from-code.grey.100}"
+            "value": "{core.kid.neutral.100}"
           },
           "200": {
             "type": "color",
-            "value": "{core.kid.from-code.grey.200}"
+            "value": "{core.kid.neutral.200}"
           },
           "300": {
             "type": "color",
-            "value": "{core.kid.from-code.grey.300}"
+            "value": "{core.kid.neutral.300}"
           },
           "400": {
             "type": "color",
-            "value": "{core.kid.from-code.grey.400}"
+            "value": "{core.kid.neutral.400}"
           },
           "500": {
             "type": "color",
-            "value": "{core.kid.from-code.grey.500}"
+            "value": "{core.kid.neutral.500}"
           },
           "600": {
             "type": "color",
-            "value": "{core.kid.from-code.grey.600}"
+            "value": "{core.kid.neutral.600}"
           },
           "700": {
             "type": "color",
-            "value": "{core.kid.from-code.grey.700}"
+            "value": "{core.kid.neutral.700}"
           },
           "800": {
             "type": "color",
-            "value": "{core.kid.from-code.grey.800}"
+            "value": "{core.kid.neutral.800}"
           },
           "900": {
             "type": "color",
-            "value": "{core.kid.from-code.grey.900}"
+            "value": "{core.kid.neutral.900}"
           }
         },
         "error": {
@@ -11595,7 +11529,7 @@
         "black": {
           "default": {
             "type": "color",
-            "value": "{core.kid.from-code.primary.default}"
+            "value": "{core.kid.primary.default}"
           }
         },
         "white": {
@@ -11635,7 +11569,7 @@
           "default": {
             "description": "Used for notification, status-badge",
             "type": "color",
-            "value": "{core.kid.from-code.primary.500}"
+            "value": "{core.kid.primary.500}"
           }
         },
         "warning": {
@@ -11803,7 +11737,7 @@
             "550": {
               "description": "Used for hover interaction",
               "type": "color",
-              "value": "{kid.utilities.color.neutral.900}"
+              "value": "{kid.utilities.color.neutral.800}"
             },
             "default": {
               "description": "Used to highlight active/selected elements\n",
@@ -11880,7 +11814,7 @@
             "500": {
               "description": "Used for hover interaction",
               "type": "color",
-              "value": "{kid.utilities.color.neutral.900}"
+              "value": "{kid.utilities.color.neutral.800}"
             },
             "800": {
               "description": "Used for pressed interaction",
@@ -12585,7 +12519,7 @@
             "color": {
               "text": {
                 "type": "color",
-                "value": "{kid.utilities.color.primary.default}"
+                "value": "{kid.utilities.color.neutral.800}"
               },
               "background": {
                 "type": "color",
@@ -12593,7 +12527,7 @@
               },
               "border": {
                 "type": "color",
-                "value": "{kid.utilities.color.primary.default}"
+                "value": "{kid.utilities.color.neutral.800}"
               }
             }
           }
@@ -12635,7 +12569,7 @@
           "color": {
             "border": {
               "type": "color",
-              "value": "{core.vb.from-figma.grey.620}"
+              "value": "{kid.utilities.color.neutral.500}"
             }
           }
         },
@@ -12690,7 +12624,7 @@
             "color": {
               "text": {
                 "type": "color",
-                "value": "{core.kid.from-code.grey.800}"
+                "value": "{core.kid.neutral.800}"
               }
             }
           }
@@ -13008,7 +12942,7 @@
             "text": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "{core.kid.from-code.primary.default}"
+              "value": "{kid.utilities.color.neutral.800}"
             }
           }
         },
@@ -13530,6 +13464,10 @@
             "type": "float",
             "value": "0"
           }
+        },
+        "font-size": {
+          "type": "float",
+          "value": "{kid.utilities.text.xs}"
         }
       },
       "sd-radio": {
@@ -13558,7 +13496,7 @@
                 "background": {
                   "description": "Used for hover interaction",
                   "type": "color",
-                  "value": "{core.kid.from-code.grey.900}"
+                  "value": "{core.kid.neutral.900}"
                 }
               }
             },
@@ -13992,7 +13930,7 @@
           "--hover": {
             "text": {
               "type": "color",
-              "value": "{kid.utilities.color.text.black.default}"
+              "value": "{kid.utilities.color.neutral.800}"
             },
             "icon": {
               "type": "color",
@@ -14014,7 +13952,7 @@
           "--active": {
             "text": {
               "type": "color",
-              "value": "{kid.utilities.color.text.black.default}"
+              "value": "{kid.utilities.color.neutral.800}"
             }
           },
           "--pressed": {
