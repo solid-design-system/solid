@@ -68,6 +68,9 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  *
  * @cssproperty --sd-form-control--invalid-color-background - The background color for form controls in invalid state.
  * @cssproperty --sd-form-control-color-text - The text color for form controls.
+ * @cssproperty --sd-form-control--filled__floating-label-color-text - The floating label text color when active.
+ * @cssproperty --sd-form-control-color-border - The color border for form controls.
+ * @cssproperty --sd-form-control-color-icon - The icon color for form controls.
  */
 
 @customElement('sd-input')
@@ -549,10 +552,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       active: 'border-primary border-2',
       invalid: 'border-error',
       valid: 'border-success',
-      default: 'form-control-color-border'
+      default: 'sd-form-control-color-border'
     }[inputState];
 
-    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary';
+    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'sd-form-control-color-icon';
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
     const iconSize = {
       sm: 'text-base',
@@ -614,8 +617,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               // States
               !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
-              ['disabled', 'visuallyDisabled'].includes(inputState) ? 'text-neutral-500' : 'form-control-color-text',
-              ['invalid', 'activeInvalid'].includes(inputState) && 'form-control--invalid-color-background',
+              ['disabled', 'visuallyDisabled'].includes(inputState) ? 'text-neutral-500' : 'sd-form-control-color-text',
+              ['invalid', 'activeInvalid'].includes(inputState) && 'sd-form-control--invalid-color-background',
               verticalPadding
             )}
           >
@@ -698,7 +701,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                           ? 'text-base'
                           : 'text-xs',
                         (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
-                        isFloatingLabelActive && !this.visuallyDisabled && !this.disabled && 'text-neutral-700'
+                        isFloatingLabelActive &&
+                          !this.visuallyDisabled &&
+                          !this.disabled &&
+                          'sd-form-control--filled__floating-label-color-text'
                       )}
                     >
                       ${this.label}
