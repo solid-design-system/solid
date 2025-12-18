@@ -38,6 +38,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @cssproperty --sd-button--inverted--disabled-color-background - The background color for inverted buttons in disabled state.
  * @cssproperty --sd-button--inverted--disabled-color-border - The border color for inverted buttons in disabled state.
  * @cssproperty --sd-button--inverted--disabled-color-text - The text color for inverted buttons in disabled state.
+ * @cssproperty --sd-button--inverted--active-color-background - The background color for inverted buttons in active state.
  * @cssproperty --sd-button--primary--active-color-text - The text color for primary buttons in active state.
  * @cssproperty --sd-button--primary--default-color-background - The background color for primary buttons in default state.
  * @cssproperty --sd-button--primary--default-color-text - The text color for primary buttons in default state.
@@ -61,10 +62,13 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @cssproperty --sd-button--cta--inverted--hover-color-text - The text color for inverted CTA buttons in hover state.
  * @cssproperty --sd-button--cta--inverted--hover-color-background - The background color for inverted CTA buttons in hover state.
  * @cssproperty --sd-button--cta--inverted--active-color-background - The background color for inverted CTA buttons in active state.
+ * @cssproperty --sd-button--size-sm-font-size - The small button border radius.
  * @cssproperty --sd-button--size-md-font-size - The medium button text font size.
  * @cssproperty --sd-button--size-lg-font-size - The large button text font size.
+ * @cssproperty --sd-button--size-sm-border-radius - The small button border radius.
  * @cssproperty --sd-button--size-md-border-radius - The medium button border radius.
  * @cssproperty --sd-button--size-lg-border-radius - The large button border radius.
+ * @cssproperty --sd-button--size-sm-padding-block - The small button vertical padding value.
  * @cssproperty --sd-button--size-md-padding-block - The medium button vertical padding value.
  * @cssproperty --sd-button--size-lg-padding-block - The large button vertical padding value.
  */
@@ -311,7 +315,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
          * */
         {
           /* sizes, fonts */
-          sm: `text-sm varspacing-8 rounded-default ${hasBorder ? 'py-[0.281rem] px-[0.938rem]' : 'py-[0.344rem] px-4'}`,
+          sm: `sd-button--size-sm-font-size sd-button--size-sm-border-radius varspacing-8 ${hasBorder ? 'py-[0.281rem] px-[0.938rem]' : 'sd-button--size-sm-padding-block px-4'}`,
           md: `sd-button--size-md-font-size sd-button--size-md-border-radius varspacing-10 ${hasBorder ? 'py-[0.438rem] px-[0.938rem]' : 'sd-button--size-md-padding-block px-4'}`,
           lg: `sd-button--size-lg-font-size sd-button--size-lg-border-radius varspacing-12 ${hasBorder ? 'py-[0.688rem] px-[0.938rem]' : 'sd-button--size-lg-padding-block px-4'}`
         }[this.size],
@@ -327,7 +331,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
             : `${
                 this.visuallyDisabled
                   ? 'bg-neutral-500 text-white border-neutral-500 hover:bg-neutral-500 active:bg-neutral-500'
-                  : 'sd-button--primary--inverted--default-color-text sd-button--primary--inverted--default-color-background border-white hover:sd-button--primary--inverted--hover-color-text active:sd-button--primary--inverted--active-color-text'
+                  : 'sd-button--primary--inverted--default-color-text sd-button--primary--inverted--default-color-background border-white hover:sd-button--primary--inverted--hover-color-text active:sd-button--primary--inverted--active-color-text active:sd-button--primary--inverted--active-color-background'
               }
           disabled:sd-button--inverted--disabled-color-background disabled:sd-button--inverted--disabled-color-border disabled:sd-button--inverted--disabled-color-text`,
           secondary: !this.inverted
@@ -383,7 +387,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
           (this.disabled || this.visuallyDisabled) && 'hidden',
           {
             /* sizes, fonts */
-            sm: `rounded-default`,
+            sm: `sd-button--size-sm-border-radius`,
             md: `sd-button--size-md-border-radius`,
             lg: `sd-button--size-lg-border-radius`
           }[this.size]
