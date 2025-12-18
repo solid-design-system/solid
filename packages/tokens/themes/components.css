@@ -2,6 +2,10 @@
   background-color: rgba(var(--sd-color-background, rgba(var(--sd-color-neutral-200))));
 }
 
+@utility form-control--filled__floating-label-color-text {
+  color: rgba(var(--sd-form-control--filled__floating-label-color-text, rgba(var(--sd-color-neutral-700))));
+}
+
 @utility form-control--invalid-color-background {
   background-color: rgba(var(--sd-form-control--invalid-color-background, rgba(var(--sd-color-white))));
 }
@@ -16,10 +20,6 @@
 
 @utility form-control-color-text {
   color: rgba(var(--sd-form-control-color-text, rgba(var(--sd-color-black))));
-}
-
-@utility form-control__floating-label--filled-color-text {
-  color: rgba(var(--sd-form-control__floating-label--filled-color-text, rgba(var(--sd-color-neutral-700))));
 }
 
 @utility form-control__tooltip-color-icon {
@@ -322,6 +322,10 @@
  border-width: var(--sd-checkbox-border-width, var(--sd-spacing-0\.25));
 }
 
+@utility sd-chip--disabled-color-border {
+  border-color: rgba(var(--sd-chip--disabled-color-border, rgba(var(--sd-color-neutral-500))));
+}
+
 @utility sd-chip--primary-200-color-background {
   background-color: rgba(var(--sd-chip--primary-200-color-background, rgba(var(--sd-color-primary-200))));
 }
@@ -350,12 +354,20 @@
   color: rgba(var(--sd-chip--primary-500-color-text, rgba(var(--sd-color-white))));
 }
 
+@utility sd-chip--selected-border-width {
+ border-width: var(--sd-chip--selected-border-width, 0);
+}
+
 @utility sd-chip--white-color-background {
   background-color: rgba(var(--sd-chip--white-color-background, rgba(var(--sd-color-white))));
 }
 
 @utility sd-chip--white-color-border {
   border-color: rgba(var(--sd-chip--white-color-border, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-chip-border-radius 2 {
+ border-radius 2: var(--sd-chip-border-radius 2, 624.9375rem);
 }
 
 @utility sd-chip-border-radius {
@@ -374,40 +386,36 @@
   color: rgba(var(--sd-combobox--default-color-text, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-combobox--disabled-color-border {
-  border-color: rgba(var(--sd-combobox--disabled-color-border, rgba(var(--sd-color-neutral-500))));
+@utility sd-datepicker--disabled__flyout-color-text {
+  color: rgba(var(--sd-datepicker--disabled__flyout-color-text, rgba(var(--sd-color-neutral-500))));
 }
 
-@utility sd-datepicker--disabled-color-text {
-  color: rgba(var(--sd-datepicker--disabled-color-text, rgba(var(--sd-color-neutral-500))));
+@utility sd-datepicker--hovered--current__date-item-color-background {
+  background-color: rgba(var(--sd-datepicker--hovered--current__date-item-color-background, rgba(var(--sd-color-primary-100))));
 }
 
-@utility sd-datepicker--hovered--current-color-background {
-  background-color: rgba(var(--sd-datepicker--hovered--current-color-background, rgba(var(--sd-color-primary-100))));
+@utility sd-datepicker--hovered--current__date-item-color-text {
+  color: rgba(var(--sd-datepicker--hovered--current__date-item-color-text, rgba(var(--sd-color-primary-500))));
 }
 
-@utility sd-datepicker--hovered--current-color-text {
-  color: rgba(var(--sd-datepicker--hovered--current-color-text, rgba(var(--sd-color-primary-500))));
+@utility sd-datepicker--hovered--default__date-item-color-text {
+  color: rgba(var(--sd-datepicker--hovered--default__date-item-color-text, rgba(var(--sd-color-primary-500))));
 }
 
-@utility sd-datepicker--hovered--default-color-background {
-  background-color: rgba(var(--sd-datepicker--hovered--default-color-background, rgba(var(--sd-color-primary-100))));
+@utility sd-datepicker--hovered__date-item--default-color-background {
+  background-color: rgba(var(--sd-datepicker--hovered__date-item--default-color-background, rgba(var(--sd-color-primary-100))));
 }
 
-@utility sd-datepicker--hovered--default-color-text {
-  color: rgba(var(--sd-datepicker--hovered--default-color-text, rgba(var(--sd-color-primary-500))));
+@utility sd-datepicker--hovered__prev-next-color-background {
+  background-color: rgba(var(--sd-datepicker--hovered__prev-next-color-background, rgba(var(--sd-color-primary-100))));
 }
 
-@utility sd-datepicker--hovered--prev-next-color-background {
-  background-color: rgba(var(--sd-datepicker--hovered--prev-next-color-background, rgba(var(--sd-color-primary-100))));
+@utility sd-datepicker--hovered__prev-next-color-text {
+  color: rgba(var(--sd-datepicker--hovered__prev-next-color-text, rgba(var(--sd-color-neutral-700))));
 }
 
-@utility sd-datepicker--hovered--prev-next-color-text {
-  color: rgba(var(--sd-datepicker--hovered--prev-next-color-text, rgba(var(--sd-color-neutral-700))));
-}
-
-@utility sd-datepicker-color-text {
-  color: rgba(var(--sd-datepicker-color-text, rgba(var(--sd-color-white))));
+@utility sd-datepicker__date-item-color-text {
+  color: rgba(var(--sd-datepicker__date-item-color-text, rgba(var(--sd-color-white))));
 }
 
 @utility sd-divider--inverted-color-border {
@@ -458,24 +466,20 @@
   background-color: rgba(var(--sd-footnotes--target--inverted-color-background, rgba(var(--sd-color-primary-800))));
 }
 
-@utility sd-header-color-background {
-  background-color: rgba(var(--sd-header-color-background, rgba(var(--sd-color-white))));
-}
-
-@utility sd-header-color-icon {
-  background-color: rgba(var(--sd-header-color-icon, rgba(var(--sd-color-primary))));
-}
-
-@utility sd-header-color-text {
-  color: rgba(var(--sd-header-color-text, rgba(var(--sd-color-primary))));
-}
-
 @utility sd-header-padding-bottom {
  padding-bottom: var(--sd-header-padding-bottom, 0);
 }
 
 @utility sd-headline-4xl-and-mobile-4xl-text {
   color: rgba(var(--sd-headline-4xl-and-mobile-4xl-text, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-link-color--active-text {
+  color: rgba(var(--sd-link-color--active-text, rgba(var(--sd-color-primary-800))));
+}
+
+@utility sd-link-color--default-text {
+  color: rgba(var(--sd-link-color--default-text, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-link-color--hover-icon {
@@ -490,16 +494,8 @@
   background-color: rgba(var(--sd-link-color--none-icon, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-link-color--none-text {
-  color: rgba(var(--sd-link-color--none-text, rgba(var(--sd-color-primary))));
-}
-
 @utility sd-link-color--pressed-icon {
   background-color: rgba(var(--sd-link-color--pressed-icon, rgba(var(--sd-color-primary-800))));
-}
-
-@utility sd-link-color--pressed-text {
-  color: rgba(var(--sd-link-color--pressed-text, rgba(var(--sd-color-primary-800))));
 }
 
 @utility sd-map-marker-cluster--hovered-color-icon-fill {
@@ -690,6 +686,10 @@
   border-color: rgba(var(--sd-tab-color-border, rgba(var(--sd-color-neutral-400))));
 }
 
+@utility sd-tag--default--hover-color-background {
+  background-color: rgba(var(--sd-tag--default--hover-color-background, rgba(255, 255, 255, 0)));
+}
+
 @utility sd-tag--default-color-background {
   background-color: rgba(var(--sd-tag--default-color-background, rgba(255, 255, 255, 0)));
 }
@@ -702,8 +702,8 @@
   color: rgba(var(--sd-tag--default-color-text, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-tag--hover-color-background {
-  background-color: rgba(var(--sd-tag--hover-color-background, rgba(255, 255, 255, 0)));
+@utility sd-tag--disabled-color-border {
+  border-color: rgba(var(--sd-tag--disabled-color-border, rgba(var(--sd-color-neutral-500))));
 }
 
 @utility sd-tag--selected--default-color-background {

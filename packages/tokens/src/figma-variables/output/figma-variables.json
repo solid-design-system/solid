@@ -3631,33 +3631,6 @@
           }
         }
       },
-      "sd-header": {
-        "color": {
-          "background": {
-            "type": "color",
-            "value": "{ui-light.utilities.color.background.white.default}"
-          },
-          "_shadow": {
-            "description": "Deprecated?",
-            "type": "color",
-            "value": "rgba(24, 24, 24, 0.40)"
-          },
-          "text": {
-            "description": "Default icon color ",
-            "type": "color",
-            "value": "{ui-light.utilities.color.text.primary.default}"
-          },
-          "icon": {
-            "description": "Default icon color ",
-            "type": "color",
-            "value": "{ui-light.utilities.color.text.primary.default}"
-          }
-        },
-        "padding-bottom": {
-          "type": "float",
-          "value": "0"
-        }
-      },
       "sd-tag": {
         "--selected": {
           "--default": {
@@ -3697,24 +3670,16 @@
             }
           }
         },
-        "--hover": {
-          "color": {
-            "background": {
-              "description": "Default icon color ",
-              "type": "color",
-              "value": "rgba(255, 255, 255, 0.00)"
-            }
-          }
-        },
-        "border-radius": {
-          "type": "float",
-          "value": "{ui-light.utilities.rounded.full}"
-        },
-        "font-weight": {
-          "type": "string",
-          "value": "{ui-light.utilities.font-weight.normal}"
-        },
         "--default": {
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              }
+            }
+          },
           "color": {
             "text": {
               "type": "color",
@@ -3727,6 +3692,22 @@
             "border": {
               "type": "color",
               "value": "{ui-light.utilities.color.border.primary.default}"
+            }
+          }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "{ui-light.utilities.rounded.full}"
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{ui-light.utilities.font-weight.normal}"
+        },
+        "--disabled": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.500}"
             }
           }
         },
@@ -3776,8 +3757,8 @@
             }
           }
         },
-        "__floating-label": {
-          "--filled": {
+        "--filled": {
+          "__floating-label": {
             "color": {
               "text": {
                 "type": "color",
@@ -4288,6 +4269,12 @@
           }
         }
       },
+      "sd-header": {
+        "padding-bottom": {
+          "type": "float",
+          "value": "0"
+        }
+      },
       "navigable": {
         "__current-indicator": {
           "border-radius": {
@@ -4576,6 +4563,32 @@
               "type": "color",
               "value": "rgba(255, 255, 255, 0.00)"
             }
+          }
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{ui-light.utilities.font-weight.normal}"
+        },
+        "--disabled": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.500}"
+            }
+          }
+        },
+        "border-radius 2": {
+          "type": "float",
+          "value": "{ui-light.utilities.rounded.full}"
+        },
+        "font-weight 2": {
+          "type": "string",
+          "value": "{ui-light.utilities.font-weight.normal}"
+        },
+        "--selected": {
+          "border-width": {
+            "type": "float",
+            "value": "0"
           }
         }
       },
@@ -4968,39 +4981,41 @@
       },
       "sd-datepicker": {
         "--disabled": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.neutral.500}"
+          "__flyout": {
+            "color": {
+              "text": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.text.neutral.500}"
+              }
             }
           }
         },
         "--hovered": {
-          "--default": {
-            "color": {
-              "background": {
-                "type": "color",
-                "value": "{ui-light.utilities.color.primary.100}"
-              },
-              "text": {
-                "type": "color",
-                "value": "{ui-light.utilities.color.primary.500}"
+          "__date-item": {
+            "--default": {
+              "color": {
+                "background": {
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.100}"
+                }
               }
             }
           },
           "--current": {
-            "color": {
-              "background": {
-                "type": "color",
-                "value": "{ui-light.utilities.color.primary.100}"
-              },
-              "text": {
-                "type": "color",
-                "value": "{ui-light.utilities.color.primary.500}"
+            "__date-item": {
+              "color": {
+                "background": {
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.100}"
+                },
+                "text": {
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.500}"
+                }
               }
             }
           },
-          "--prev-next": {
+          "__prev-next": {
             "color": {
               "background": {
                 "type": "color",
@@ -5011,12 +5026,24 @@
                 "value": "{ui-light.utilities.color.neutral.700}"
               }
             }
+          },
+          "--default": {
+            "__date-item": {
+              "color": {
+                "text": {
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.500}"
+                }
+              }
+            }
           }
         },
-        "color": {
-          "text": {
-            "type": "color",
-            "value": "{ui-light.utilities.color.white.default}"
+        "__date-item": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.white.default}"
+            }
           }
         }
       },
@@ -5032,21 +5059,25 @@
               "value": "{ui-light.utilities.color.text.primary.500}"
             }
           },
-          "--none": {
+          "--default": {
             "text": {
               "type": "color",
               "value": "{ui-light.utilities.color.text.primary.default}"
-            },
+            }
+          },
+          "--none": {
             "icon": {
               "type": "color",
               "value": "{ui-light.utilities.color.text.primary.default}"
             }
           },
-          "--pressed": {
+          "--active": {
             "text": {
               "type": "color",
               "value": "{ui-light.utilities.color.text.primary.800}"
-            },
+            }
+          },
+          "--pressed": {
             "icon": {
               "type": "color",
               "value": "{ui-light.utilities.color.text.primary.800}"
@@ -5055,14 +5086,6 @@
         }
       },
       "sd-combobox": {
-        "--disabled": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.neutral.500}"
-            }
-          }
-        },
         "--default": {
           "color": {
             "text": {
@@ -6572,33 +6595,6 @@
           }
         }
       },
-      "sd-header": {
-        "color": {
-          "background": {
-            "type": "color",
-            "value": "{ui-dark.utilities.color.primary.default}"
-          },
-          "_shadow": {
-            "description": "Deprecated?",
-            "type": "color",
-            "value": "rgba(255, 255, 255, 0.00)"
-          },
-          "text": {
-            "description": "Default icon color ",
-            "type": "color",
-            "value": "{ui-dark.utilities.color.text.primary.default}"
-          },
-          "icon": {
-            "description": "Default icon color ",
-            "type": "color",
-            "value": "{ui-dark.utilities.color.text.primary.default}"
-          }
-        },
-        "padding-bottom": {
-          "type": "float",
-          "value": "0"
-        }
-      },
       "sd-tag": {
         "--selected": {
           "--default": {
@@ -6638,24 +6634,16 @@
             }
           }
         },
-        "--hover": {
-          "color": {
-            "background": {
-              "description": "Default icon color ",
-              "type": "color",
-              "value": "rgba(255, 255, 255, 0.00)"
-            }
-          }
-        },
-        "border-radius": {
-          "type": "float",
-          "value": "{ui-dark.utilities.rounded.full}"
-        },
-        "font-weight": {
-          "type": "string",
-          "value": "{ui-dark.utilities.font-weight.normal}"
-        },
         "--default": {
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              }
+            }
+          },
           "color": {
             "text": {
               "type": "color",
@@ -6668,6 +6656,22 @@
             "border": {
               "type": "color",
               "value": "{ui-dark.utilities.color.border.primary.500}"
+            }
+          }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "{ui-dark.utilities.rounded.full}"
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{ui-dark.utilities.font-weight.normal}"
+        },
+        "--disabled": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.neutral.500}"
             }
           }
         },
@@ -6717,8 +6721,8 @@
             }
           }
         },
-        "__floating-label": {
-          "--filled": {
+        "--filled": {
+          "__floating-label": {
             "color": {
               "text": {
                 "type": "color",
@@ -7229,6 +7233,12 @@
           }
         }
       },
+      "sd-header": {
+        "padding-bottom": {
+          "type": "float",
+          "value": "0"
+        }
+      },
       "navigable": {
         "__current-indicator": {
           "border-radius": {
@@ -7297,13 +7307,13 @@
           "color": {
             "background": {
               "type": "color",
-              "value": "{core.ui.red.300}"
+              "value": "{ui-dark.utilities.color.error.300}"
             }
           },
           "--inverted": {
             "background": {
               "type": "color",
-              "value": "{core.ui.red.300}"
+              "value": "{ui-dark.utilities.color.error.300}"
             },
             "text": {
               "type": "color",
@@ -7517,6 +7527,32 @@
               "type": "color",
               "value": "rgba(255, 255, 255, 0.00)"
             }
+          }
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{ui-dark.utilities.font-weight.normal}"
+        },
+        "--disabled": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.neutral.500}"
+            }
+          }
+        },
+        "border-radius 2": {
+          "type": "float",
+          "value": "{ui-dark.utilities.rounded.full}"
+        },
+        "font-weight 2": {
+          "type": "string",
+          "value": "{ui-dark.utilities.font-weight.normal}"
+        },
+        "--selected": {
+          "border-width": {
+            "type": "float",
+            "value": "0"
           }
         }
       },
@@ -7909,39 +7945,41 @@
       },
       "sd-datepicker": {
         "--disabled": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.neutral.600}"
+          "__flyout": {
+            "color": {
+              "text": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.text.neutral.600}"
+              }
             }
           }
         },
         "--hovered": {
-          "--default": {
-            "color": {
-              "background": {
-                "type": "color",
-                "value": "{ui-dark.utilities.color.primary.100}"
-              },
-              "text": {
-                "type": "color",
-                "value": "{core.ui.blue.750}"
+          "__date-item": {
+            "--default": {
+              "color": {
+                "background": {
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.100}"
+                }
               }
             }
           },
           "--current": {
-            "color": {
-              "background": {
-                "type": "color",
-                "value": "{ui-dark.utilities.color.primary.100}"
-              },
-              "text": {
-                "type": "color",
-                "value": "{core.ui.blue.750}"
+            "__date-item": {
+              "color": {
+                "background": {
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.100}"
+                },
+                "text": {
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.750}"
+                }
               }
             }
           },
-          "--prev-next": {
+          "__prev-next": {
             "color": {
               "background": {
                 "type": "color",
@@ -7949,15 +7987,27 @@
               },
               "text": {
                 "type": "color",
-                "value": "{core.ui.blue.750}"
+                "value": "{ui-dark.utilities.color.primary.750}"
+              }
+            }
+          },
+          "--default": {
+            "__date-item": {
+              "color": {
+                "text": {
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.750}"
+                }
               }
             }
           }
         },
-        "color": {
-          "text": {
-            "type": "color",
-            "value": "{core.ui.blue.600}"
+        "__date-item": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.600}"
+            }
           }
         }
       },
@@ -7973,21 +8023,25 @@
               "value": "{ui-dark.utilities.color.text.primary.200}"
             }
           },
-          "--none": {
+          "--default": {
             "text": {
               "type": "color",
               "value": "{ui-dark.utilities.color.text.primary.default}"
-            },
+            }
+          },
+          "--none": {
             "icon": {
               "type": "color",
               "value": "{ui-dark.utilities.color.text.primary.default}"
             }
           },
-          "--pressed": {
+          "--active": {
             "text": {
               "type": "color",
               "value": "{ui-dark.utilities.color.text.primary.400}"
-            },
+            }
+          },
+          "--pressed": {
             "icon": {
               "type": "color",
               "value": "{ui-dark.utilities.color.text.primary.400}"
@@ -7996,14 +8050,6 @@
         }
       },
       "sd-combobox": {
-        "--disabled": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.neutral.500}"
-            }
-          }
-        },
         "--default": {
           "color": {
             "text": {
@@ -8660,7 +8706,7 @@
             "500": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{core.vb.from-code.grey.400}"
+              "value": "{vb.utilities.color.background.neutral.400}"
             },
             "600": {
               "description": "Used for inverted disabled state",
@@ -9513,33 +9559,6 @@
           }
         }
       },
-      "sd-header": {
-        "color": {
-          "background": {
-            "type": "color",
-            "value": "{vb.utilities.color.background.white.default}"
-          },
-          "_shadow": {
-            "description": "Deprecated?",
-            "type": "color",
-            "value": "rgba(24, 24, 24, 0.40)"
-          },
-          "text": {
-            "description": "Default icon color ",
-            "type": "color",
-            "value": "{core.vb.from-figma.grey.620}"
-          },
-          "icon": {
-            "description": "Default icon color ",
-            "type": "color",
-            "value": "{core.vb.from-figma.grey.620}"
-          }
-        },
-        "padding-bottom": {
-          "type": "float",
-          "value": "{vb.utilities.spacing.0,5}"
-        }
-      },
       "sd-tag": {
         "--selected": {
           "--default": {
@@ -9579,24 +9598,16 @@
             }
           }
         },
-        "--hover": {
-          "color": {
-            "background": {
-              "description": "Default icon color ",
-              "type": "color",
-              "value": "{vb.utilities.color.primary.100}"
-            }
-          }
-        },
-        "border-radius": {
-          "type": "float",
-          "value": "{vb.utilities.rounded.lg}"
-        },
-        "font-weight": {
-          "type": "string",
-          "value": "{vb.utilities.font-weight.bold}"
-        },
         "--default": {
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{vb.utilities.color.primary.100}"
+              }
+            }
+          },
           "color": {
             "text": {
               "type": "color",
@@ -9609,6 +9620,22 @@
             "border": {
               "type": "color",
               "value": "{vb.utilities.color.border.primary.500}"
+            }
+          }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "{vb.utilities.rounded.lg}"
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{vb.utilities.font-weight.bold}"
+        },
+        "--disabled": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.600}"
             }
           }
         },
@@ -9658,8 +9685,8 @@
             }
           }
         },
-        "__floating-label": {
-          "--filled": {
+        "--filled": {
+          "__floating-label": {
             "color": {
               "text": {
                 "type": "color",
@@ -9990,7 +10017,7 @@
             "text": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "{vb.utilities.color.icon-fill.primary.default}"
+              "value": "{vb.utilities.color.text.primary.500}"
             }
           }
         }
@@ -10168,6 +10195,12 @@
               "value": "{vb.utilities.color.text.neutral.600}"
             }
           }
+        }
+      },
+      "sd-header": {
+        "padding-bottom": {
+          "type": "float",
+          "value": "{vb.utilities.spacing.0,5}"
         }
       },
       "navigable": {
@@ -10458,6 +10491,32 @@
               "type": "color",
               "value": "{vb.utilities.color.primary.900}"
             }
+          }
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{vb.utilities.font-weight.normal}"
+        },
+        "--disabled": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.600}"
+            }
+          }
+        },
+        "border-radius 2": {
+          "type": "float",
+          "value": "{vb.utilities.rounded.lg}"
+        },
+        "font-weight 2": {
+          "type": "string",
+          "value": "{vb.utilities.font-weight.bold}"
+        },
+        "--selected": {
+          "border-width": {
+            "type": "float",
+            "value": "{vb.utilities.border-width.default}"
           }
         }
       },
@@ -10850,39 +10909,41 @@
       },
       "sd-datepicker": {
         "--disabled": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{vb.utilities.color.text.neutral.500}"
+          "__flyout": {
+            "color": {
+              "text": {
+                "type": "color",
+                "value": "{vb.utilities.color.text.neutral.500}"
+              }
             }
           }
         },
         "--hovered": {
-          "--default": {
-            "color": {
-              "background": {
-                "type": "color",
-                "value": "{vb.utilities.color.primary.100}"
-              },
-              "text": {
-                "type": "color",
-                "value": "{vb.utilities.color.primary.500}"
+          "__date-item": {
+            "--default": {
+              "color": {
+                "background": {
+                  "type": "color",
+                  "value": "{vb.utilities.color.primary.100}"
+                }
               }
             }
           },
           "--current": {
-            "color": {
-              "background": {
-                "type": "color",
-                "value": "{vb.utilities.color.primary.100}"
-              },
-              "text": {
-                "type": "color",
-                "value": "{vb.utilities.color.primary.500}"
+            "__date-item": {
+              "color": {
+                "background": {
+                  "type": "color",
+                  "value": "{vb.utilities.color.primary.100}"
+                },
+                "text": {
+                  "type": "color",
+                  "value": "{vb.utilities.color.primary.500}"
+                }
               }
             }
           },
-          "--prev-next": {
+          "__prev-next": {
             "color": {
               "background": {
                 "type": "color",
@@ -10893,12 +10954,24 @@
                 "value": "{vb.utilities.color.neutral.700}"
               }
             }
+          },
+          "--default": {
+            "__date-item": {
+              "color": {
+                "text": {
+                  "type": "color",
+                  "value": "{vb.utilities.color.primary.500}"
+                }
+              }
+            }
           }
         },
-        "color": {
-          "text": {
-            "type": "color",
-            "value": "{vb.utilities.color.white.default}"
+        "__date-item": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{vb.utilities.color.white.default}"
+            }
           }
         }
       },
@@ -10914,21 +10987,25 @@
               "value": "{core.vb.from-figma.azure.500}"
             }
           },
-          "--none": {
+          "--default": {
             "text": {
               "type": "color",
               "value": "{core.vb.from-figma.azure.500}"
-            },
+            }
+          },
+          "--none": {
             "icon": {
               "type": "color",
               "value": "{core.vb.from-figma.azure.500}"
             }
           },
-          "--pressed": {
+          "--active": {
             "text": {
               "type": "color",
               "value": "{core.vb.from-figma.azure.500}"
-            },
+            }
+          },
+          "--pressed": {
             "icon": {
               "type": "color",
               "value": "{core.vb.from-figma.azure.500}"
@@ -10937,23 +11014,15 @@
         }
       },
       "sd-combobox": {
-        "--disabled": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{core.vb.from-code.grey.600 (foreground-secondary-text)}"
-            }
-          }
-        },
         "--default": {
           "color": {
             "text": {
               "type": "color",
-              "value": "{core.vb.from-code.primary.500}"
+              "value": "{vb.utilities.color.primary.500}"
             },
             "icon": {
               "type": "color",
-              "value": "{core.vb.from-code.primary.500}"
+              "value": "{vb.utilities.color.primary.500}"
             }
           }
         }
@@ -11050,14 +11119,14 @@
             "default": {
               "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
               "type": "color",
-              "value": "{core.kid.from-code.accent.100}"
+              "value": "{kid.utilities.color.accent.100}"
             }
           },
           "neutral": {
             "100": {
               "description": "Form field read only. Used for sd-container",
               "type": "color",
-              "value": "{kid.utilities.color.primary.100}"
+              "value": "{kid.utilities.color.neutral.100}"
             },
             "200": {
               "description": "Used for sd-flag",
@@ -11113,116 +11182,116 @@
             "primary-100|80": {
               "description": "Used for teaser",
               "type": "color",
-              "value": "rgba(236, 240, 249, 0.80)"
+              "value": "rgba(247, 242, 236, 0.80)"
             },
             "primary-100|90": {
               "description": "Used for teaser",
               "type": "color",
-              "value": "rgba(236, 240, 249, 0.90)"
+              "value": "rgba(247, 242, 236, 0.90)"
             },
             "neutral-100|80": {
               "description": "Used for teaser",
               "type": "color",
-              "value": "rgba(246, 246, 246, 0.80)"
+              "value": "rgba(247, 242, 236, 0.80)"
             },
             "neutral-100|90": {
               "description": "Used for teaser",
               "type": "color",
-              "value": "rgba(246, 246, 246, 0.90)"
+              "value": "rgba(247, 242, 236, 0.90)"
             },
             "white|90": {
               "description": "Used for teaser, audio (wave animation)\n",
               "type": "color",
-              "value": "rgba(255, 255, 255, 0.90)"
+              "value": "rgba(247, 242, 236, 0.90)"
             },
             "white|80": {
               "description": "Used for teaser",
               "type": "color",
-              "value": "rgba(255, 255, 255, 0.80)"
+              "value": "rgba(247, 242, 236, 0.80)"
             },
             "primary|10": {
               "description": "Used for audio (wave animation)",
               "type": "color",
-              "value": "rgba(0, 45, 103, 0.10)"
+              "value": "rgba(5, 21, 48, 0.10)"
             },
             "primary|30": {
               "description": "Used for map-marker",
               "type": "color",
-              "value": "rgba(0, 45, 103, 0.30)"
+              "value": "rgba(5, 21, 48, 0.30)"
             },
             "primary|80": {
               "description": "Used for teaser",
               "type": "color",
-              "value": "rgba(0, 45, 103, 0.80)"
+              "value": "rgba(5, 21, 48, 0.80)"
             },
             "primary|90": {
               "description": "Used for teaser",
               "type": "color",
-              "value": "rgba(0, 45, 103, 0.90)"
+              "value": "rgba(5, 21, 48, 0.90)"
             },
             "white|20": {
               "description": "Used for audio (wave animation inverted)",
               "type": "color",
-              "value": "rgba(255, 255, 255, 0.20)"
+              "value": "rgba(247, 242, 236, 0.20)"
             },
             "primary-800|90": {
               "description": "Used for overlays",
               "type": "color",
-              "value": "rgba(0, 45, 103, 0.90)"
+              "value": "rgba(5, 21, 48, 0.90)"
             }
           },
           "primary": {
             "100": {
               "description": "Used for sd-container",
               "type": "color",
-              "value": "{core.kid.from-code.primary.100}"
+              "value": "{kid.utilities.color.primary.100}"
             },
             "200": {
               "description": "Used for sd-chip",
               "type": "color",
-              "value": "{core.kid.from-code.grey.200}"
+              "value": "{kid.utilities.color.neutral.200}"
             },
             "300": {
               "description": "Used for sd-chip",
               "type": "color",
-              "value": "{core.kid.from-code.grey.900}"
+              "value": "{kid.utilities.color.neutral.900}"
             },
             "500": {
               "description": "Used for sd-chip, sd-badge",
               "type": "color",
-              "value": "{core.kid.from-code.grey.900}"
+              "value": "{kid.utilities.color.neutral.900}"
             },
             "800": {
               "description": "Used for pressed interaction",
               "type": "color",
-              "value": "{core.kid.from-code.grey.900}"
+              "value": "{kid.utilities.color.neutral.900}"
             },
             "default": {
               "description": "Inverted background color (light mode)\nUsed for button",
               "type": "color",
-              "value": "{core.kid.from-code.primary.default}"
+              "value": "{kid.utilities.color.primary.900}"
             }
           },
           "accent": {
             "300": {
               "description": "Used for inverted hover interaction",
               "type": "color",
-              "value": "{core.kid.from-code.grey.900}"
+              "value": "{kid.utilities.color.neutral.900}"
             },
             "500": {
               "description": "Used for cta background",
               "type": "color",
-              "value": "{core.kid.from-code.grey.900}"
+              "value": "{kid.utilities.color.neutral.900}"
             },
             "550": {
               "description": "Used for hover interaction",
               "type": "color",
-              "value": "{core.kid.from-code.grey.700}"
+              "value": "{kid.utilities.color.neutral.700}"
             },
             "700": {
               "description": "Used for pressed interaction",
               "type": "color",
-              "value": "{core.kid.from-code.grey.900}"
+              "value": "{kid.utilities.color.neutral.900}"
             },
             "default": {
               "description": "Used for checkbox, switch",
@@ -11254,37 +11323,37 @@
                         "0%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(255, 255, 255, 0.00)"
+                          "value": "rgba(247, 242, 236, 0.00)"
                         },
                         "60%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(255, 255, 255, 0.60)"
+                          "value": "rgba(247, 242, 236, 0.60)"
                         },
                         "5%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(255, 255, 255, 0.05)"
+                          "value": "rgba(247, 242, 236, 0.05)"
                         },
                         "75%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(255, 255, 255, 0.75)"
+                          "value": "rgba(247, 242, 236, 0.75)"
                         },
                         "80%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(255, 255, 255, 0.80)"
+                          "value": "rgba(247, 242, 236, 0.80)"
                         },
                         "20%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(255, 255, 255, 0.20)"
+                          "value": "rgba(247, 242, 236, 0.20)"
                         },
                         "50%": {
                           "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                           "type": "color",
-                          "value": "rgba(255, 255, 255, 0.50)"
+                          "value": "rgba(247, 242, 236, 0.50)"
                         }
                       }
                     }
@@ -11666,27 +11735,27 @@
             "100": {
               "description": "Used for inverted hover interaction",
               "type": "color",
-              "value": "{core.kid.from-code.grey.100}"
+              "value": "{kid.utilities.color.neutral.100}"
             },
             "200": {
               "description": "Used for inverted pressed interaction",
               "type": "color",
-              "value": "{core.kid.from-code.grey.200}"
+              "value": "{kid.utilities.color.neutral.200}"
             },
             "400": {
               "description": "Used for inverted dividers",
               "type": "color",
-              "value": "{core.kid.from-code.grey.400}"
+              "value": "{kid.utilities.color.neutral.400}"
             },
             "500": {
               "description": "Used for hover interaction (dark mode)",
               "type": "color",
-              "value": "{core.kid.from-code.grey.800}"
+              "value": "{kid.utilities.color.neutral.800}"
             },
             "800": {
               "description": "Used for pressed interaction",
               "type": "color",
-              "value": "{core.kid.from-code.grey.800}"
+              "value": "{kid.utilities.color.neutral.800}"
             },
             "default": {
               "description": "Used for buttons, select field, focus state",
@@ -11698,7 +11767,7 @@
             "550": {
               "description": "Used for hover interaction",
               "type": "color",
-              "value": "{core.kid.from-code.grey.900}"
+              "value": "{kid.utilities.color.neutral.900}"
             },
             "default": {
               "description": "Used to highlight active/selected elements\n",
@@ -11760,12 +11829,12 @@
             "100": {
               "description": "Used for inverted hover interaction button label",
               "type": "color",
-              "value": "{kid.utilities.color.primary.100}"
+              "value": "{kid.utilities.color.accent.100}"
             },
             "200": {
               "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
               "type": "color",
-              "value": "{kid.utilities.color.primary.200}"
+              "value": "{kid.utilities.color.accent.100}"
             },
             "400": {
               "description": "Additional text inverted color",
@@ -11775,24 +11844,24 @@
             "500": {
               "description": "Used for hover interaction",
               "type": "color",
-              "value": "{core.kid.from-code.grey.900}"
+              "value": "{kid.utilities.color.neutral.900}"
             },
             "800": {
               "description": "Used for pressed interaction",
               "type": "color",
-              "value": "{core.kid.from-code.primary.default}"
+              "value": "{kid.utilities.color.primary.900}"
             },
             "default": {
               "description": "Primary brand color for text",
               "type": "color",
-              "value": "{core.kid.black}"
+              "value": "{kid.utilities.color.primary.900}"
             }
           },
           "white": {
             "default": {
               "description": "Inverted text color",
               "type": "color",
-              "value": "{kid.utilities.color.white.default}"
+              "value": "{kid.utilities.color.accent.100}"
             },
             "default-constant": {
               "description": "Unchanged in dark mode"
@@ -11809,12 +11878,12 @@
             "500": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{core.kid.from-code.grey.500}"
+              "value": "{kid.utilities.color.neutral.500}"
             },
             "600": {
               "description": "Used for inverted disabled state",
               "type": "color",
-              "value": "{core.vb.from-figma.white.400}"
+              "value": "{kid.utilities.color.neutral.600}"
             },
             "700": {
               "description": "Additional text color, Breadcrumb item current and Video descriotion #100, 62%",
@@ -11826,7 +11895,7 @@
             "default": {
               "description": "Used to display negative performance values",
               "type": "color",
-              "value": "{core.kid.from-code.primary.default}"
+              "value": "{kid.utilities.color.primary.default}"
             }
           },
           "success": {
@@ -11840,7 +11909,7 @@
             "default": {
               "description": "Used for inverted hover interaction button label",
               "type": "color",
-              "value": "{core.kid.black}"
+              "value": "{kid.utilities.color.primary.900}"
             }
           }
         }
@@ -11850,7 +11919,7 @@
           "color": {
             "description": "Used for tooltip",
             "type": "color",
-            "value": "rgba(60, 24, 0, 0.26)"
+            "value": "rgba(5, 21, 48, 0.25)"
           },
           "y": {
             "type": "float",
@@ -11889,7 +11958,7 @@
           "color": {
             "description": "Used for tooltip",
             "type": "color",
-            "value": "rgba(60, 24, 0, 0.26)"
+            "value": "rgba(5, 21, 48, 0.25)"
           }
         }
       },
@@ -12209,7 +12278,7 @@
         },
         "4xl": {
           "type": "float",
-          "value": "40"
+          "value": "42"
         }
       }
     },
@@ -12454,33 +12523,6 @@
           }
         }
       },
-      "sd-header": {
-        "color": {
-          "background": {
-            "type": "color",
-            "value": "{kid.utilities.color.background.white.default}"
-          },
-          "_shadow": {
-            "description": "Deprecated?",
-            "type": "color",
-            "value": "rgba(24, 24, 24, 0.40)"
-          },
-          "text": {
-            "description": "Default icon color ",
-            "type": "color",
-            "value": "{core.vb.from-figma.grey.620}"
-          },
-          "icon": {
-            "description": "Default icon color ",
-            "type": "color",
-            "value": "{core.vb.from-figma.grey.620}"
-          }
-        },
-        "padding-bottom": {
-          "type": "float",
-          "value": "{kid.utilities.spacing.0,5}"
-        }
-      },
       "sd-tag": {
         "--selected": {
           "--default": {
@@ -12520,10 +12562,26 @@
             }
           }
         },
-        "--hover": {
+        "--default": {
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.60)"
+              }
+            }
+          },
           "color": {
+            "text": {
+              "type": "color",
+              "value": "{kid.utilities.color.primary.default}"
+            },
             "background": {
-              "description": "Default icon color ",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.60)"
+            },
+            "border": {
               "type": "color",
               "value": "rgba(255, 255, 255, 0.60)"
             }
@@ -12537,19 +12595,11 @@
           "type": "string",
           "value": "{kid.utilities.font-weight.bold}"
         },
-        "--default": {
+        "--disabled": {
           "color": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.primary.default}"
-            },
-            "background": {
-              "type": "color",
-              "value": "rgba(255, 255, 255, 0.60)"
-            },
             "border": {
               "type": "color",
-              "value": "rgba(255, 255, 255, 0.60)"
+              "value": "{core.vb.from-figma.grey.620}"
             }
           }
         },
@@ -12599,8 +12649,8 @@
             }
           }
         },
-        "__floating-label": {
-          "--filled": {
+        "--filled": {
+          "__floating-label": {
             "color": {
               "text": {
                 "type": "color",
@@ -13111,6 +13161,12 @@
           }
         }
       },
+      "sd-header": {
+        "padding-bottom": {
+          "type": "float",
+          "value": "{kid.utilities.spacing.0,5}"
+        }
+      },
       "navigable": {
         "__current-indicator": {
           "border-radius": {
@@ -13382,7 +13438,7 @@
         },
         "border-radius": {
           "type": "float",
-          "value": "{kid.utilities.rounded.default}"
+          "value": "{kid.utilities.rounded.full}"
         },
         "border-width": {
           "type": "float",
@@ -13399,6 +13455,32 @@
               "type": "color",
               "value": "{kid.utilities.color.primary.900}"
             }
+          }
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{kid.utilities.font-weight.bold}"
+        },
+        "--disabled": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{core.vb.from-figma.grey.620}"
+            }
+          }
+        },
+        "border-radius 2": {
+          "type": "float",
+          "value": "{kid.utilities.rounded.full}"
+        },
+        "font-weight 2": {
+          "type": "string",
+          "value": "{kid.utilities.font-weight.bold}"
+        },
+        "--selected": {
+          "border-width": {
+            "type": "float",
+            "value": "{kid.utilities.border-width.default}"
           }
         }
       },
@@ -13791,27 +13873,41 @@
       },
       "sd-datepicker": {
         "--disabled": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.text.neutral.500}"
+          "__flyout": {
+            "color": {
+              "text": {
+                "type": "color",
+                "value": "{kid.utilities.color.text.neutral.500}"
+              }
             }
           }
         },
         "--hovered": {
-          "--default": {
-            "color": {
-              "background": {
-                "type": "color",
-                "value": "{core.vb.from-figma.grey.620}"
-              },
-              "text": {
-                "type": "color",
-                "value": "{core.vb.from-figma.grey.620}"
+          "__date-item": {
+            "--default": {
+              "color": {
+                "background": {
+                  "type": "color",
+                  "value": "{core.vb.from-figma.grey.620}"
+                }
               }
             }
           },
           "--current": {
+            "__date-item": {
+              "color": {
+                "background": {
+                  "type": "color",
+                  "value": "{core.vb.from-figma.grey.620}"
+                },
+                "text": {
+                  "type": "color",
+                  "value": "{core.vb.from-figma.grey.620}"
+                }
+              }
+            }
+          },
+          "__prev-next": {
             "color": {
               "background": {
                 "type": "color",
@@ -13823,23 +13919,23 @@
               }
             }
           },
-          "--prev-next": {
-            "color": {
-              "background": {
-                "type": "color",
-                "value": "{core.vb.from-figma.grey.620}"
-              },
-              "text": {
-                "type": "color",
-                "value": "{core.vb.from-figma.grey.620}"
+          "--default": {
+            "__date-item": {
+              "color": {
+                "text": {
+                  "type": "color",
+                  "value": "{core.vb.from-figma.grey.620}"
+                }
               }
             }
           }
         },
-        "color": {
-          "text": {
-            "type": "color",
-            "value": "{core.vb.from-figma.grey.620}"
+        "__date-item": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{core.vb.from-figma.grey.620}"
+            }
           }
         }
       },
@@ -13855,21 +13951,25 @@
               "value": "{kid.utilities.color.text.black.default}"
             }
           },
-          "--none": {
+          "--default": {
             "text": {
               "type": "color",
               "value": "{kid.utilities.color.text.black.default}"
-            },
+            }
+          },
+          "--none": {
             "icon": {
               "type": "color",
               "value": "{kid.utilities.color.text.black.default}"
             }
           },
-          "--pressed": {
+          "--active": {
             "text": {
               "type": "color",
               "value": "{kid.utilities.color.text.black.default}"
-            },
+            }
+          },
+          "--pressed": {
             "icon": {
               "type": "color",
               "value": "{kid.utilities.color.text.black.default}"
@@ -13878,14 +13978,6 @@
         }
       },
       "sd-combobox": {
-        "--disabled": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{core.vb.from-figma.grey.620}"
-            }
-          }
-        },
         "--default": {
           "color": {
             "text": {
