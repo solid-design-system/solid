@@ -7,11 +7,19 @@
 }
 
 @utility form-control-color-border {
-  border-color: rgba(var(--sd-form-control-color-border, rgba(var(--sd-color-neutral-800))));
+  border-color: rgba(var(--sd-form-control-color-border, rgba(var(--sd-color-neutral-900))));
+}
+
+@utility form-control-color-icon {
+  background-color: rgba(var(--sd-form-control-color-icon, rgba(var(--sd-color-primary))));
 }
 
 @utility form-control-color-text {
   color: rgba(var(--sd-form-control-color-text, rgba(var(--sd-color-black))));
+}
+
+@utility form-control__floating-label--filled-color-text {
+  color: rgba(var(--sd-form-control__floating-label--filled-color-text, rgba(var(--sd-color-neutral-700))));
 }
 
 @utility form-control__tooltip-color-icon {
@@ -202,6 +210,10 @@
   background-color: rgba(var(--sd-button--primary--hover-color-background, rgba(var(--sd-color-primary-500))));
 }
 
+@utility sd-button--primary--inverted--active-color-background {
+  background-color: rgba(var(--sd-button--primary--inverted--active-color-background, rgba(var(--sd-color-primary-200))));
+}
+
 @utility sd-button--primary--inverted--active-color-text {
   color: rgba(var(--sd-button--primary--inverted--active-color-text, rgba(var(--sd-color-primary-800))));
 }
@@ -223,11 +235,11 @@
 }
 
 @utility sd-button--secondary--active-color-background {
-  background-color: rgba(var(--sd-button--secondary--active-color-background, rgba(var(--sd-color-primary-100))));
+  background-color: rgba(var(--sd-button--secondary--active-color-background, rgba(var(--sd-color-primary-200))));
 }
 
 @utility sd-button--secondary--hover-color-background {
-  background-color: rgba(var(--sd-button--secondary--hover-color-background, rgba(var(--sd-color-primary-200))));
+  background-color: rgba(var(--sd-button--secondary--hover-color-background, rgba(var(--sd-color-primary-100))));
 }
 
 @utility sd-button--secondary--inverted--active-color-background {
@@ -266,8 +278,20 @@
  padding-block: var(--sd-button--size-md-padding-block, var(--sd-spacing-2));
 }
 
+@utility sd-button--size-sm-border-radius {
+ border-radius: var(--sd-button--size-sm-border-radius, var(--sd-spacing-1));
+}
+
+@utility sd-button--size-sm-font-size {
+ font-size: var(--sd-button--size-sm-font-size, 0.875rem);
+}
+
+@utility sd-button--size-sm-padding-block {
+ padding-block: var(--sd-button--size-sm-padding-block, var(--sd-spacing-2));
+}
+
 @utility sd-button--tertiary--active-color-background {
-  background-color: rgba(var(--sd-button--tertiary--active-color-background, rgba(var(--sd-color-primary-100))));
+  background-color: rgba(var(--sd-button--tertiary--active-color-background, rgba(var(--sd-color-primary-200))));
 }
 
 @utility sd-button--tertiary--hover-color-background {
@@ -342,6 +366,50 @@
  border-width: var(--sd-chip-border-width, 0);
 }
 
+@utility sd-combobox--default-color-icon {
+  background-color: rgba(var(--sd-combobox--default-color-icon, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-combobox--default-color-text {
+  color: rgba(var(--sd-combobox--default-color-text, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-combobox--disabled-color-border {
+  border-color: rgba(var(--sd-combobox--disabled-color-border, rgba(var(--sd-color-neutral-500))));
+}
+
+@utility sd-datepicker--disabled-color-text {
+  color: rgba(var(--sd-datepicker--disabled-color-text, rgba(var(--sd-color-neutral-500))));
+}
+
+@utility sd-datepicker--hovered--current-color-background {
+  background-color: rgba(var(--sd-datepicker--hovered--current-color-background, rgba(var(--sd-color-primary-100))));
+}
+
+@utility sd-datepicker--hovered--current-color-text {
+  color: rgba(var(--sd-datepicker--hovered--current-color-text, rgba(var(--sd-color-primary-500))));
+}
+
+@utility sd-datepicker--hovered--default-color-background {
+  background-color: rgba(var(--sd-datepicker--hovered--default-color-background, rgba(var(--sd-color-primary-100))));
+}
+
+@utility sd-datepicker--hovered--default-color-text {
+  color: rgba(var(--sd-datepicker--hovered--default-color-text, rgba(var(--sd-color-primary-500))));
+}
+
+@utility sd-datepicker--hovered--prev-next-color-background {
+  background-color: rgba(var(--sd-datepicker--hovered--prev-next-color-background, rgba(var(--sd-color-primary-100))));
+}
+
+@utility sd-datepicker--hovered--prev-next-color-text {
+  color: rgba(var(--sd-datepicker--hovered--prev-next-color-text, rgba(var(--sd-color-neutral-700))));
+}
+
+@utility sd-datepicker-color-text {
+  color: rgba(var(--sd-datepicker-color-text, rgba(var(--sd-color-white))));
+}
+
 @utility sd-divider--inverted-color-border {
   border-color: rgba(var(--sd-divider--inverted-color-border, rgba(var(--sd-color-primary-400))));
 }
@@ -394,12 +462,44 @@
   background-color: rgba(var(--sd-header-color-background, rgba(var(--sd-color-white))));
 }
 
+@utility sd-header-color-icon {
+  background-color: rgba(var(--sd-header-color-icon, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-header-color-text {
+  color: rgba(var(--sd-header-color-text, rgba(var(--sd-color-primary))));
+}
+
 @utility sd-header-padding-bottom {
  padding-bottom: var(--sd-header-padding-bottom, 0);
 }
 
 @utility sd-headline-4xl-and-mobile-4xl-text {
   color: rgba(var(--sd-headline-4xl-and-mobile-4xl-text, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-link-color--hover-icon {
+  background-color: rgba(var(--sd-link-color--hover-icon, rgba(var(--sd-color-primary-500))));
+}
+
+@utility sd-link-color--hover-text {
+  color: rgba(var(--sd-link-color--hover-text, rgba(var(--sd-color-primary-500))));
+}
+
+@utility sd-link-color--none-icon {
+  background-color: rgba(var(--sd-link-color--none-icon, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-link-color--none-text {
+  color: rgba(var(--sd-link-color--none-text, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-link-color--pressed-icon {
+  background-color: rgba(var(--sd-link-color--pressed-icon, rgba(var(--sd-color-primary-800))));
+}
+
+@utility sd-link-color--pressed-text {
+  color: rgba(var(--sd-link-color--pressed-text, rgba(var(--sd-color-primary-800))));
 }
 
 @utility sd-map-marker-cluster--hovered-color-icon-fill {
@@ -498,6 +598,14 @@
   background-color: rgba(var(--sd-radio--default--invalid-color-background, rgba(var(--sd-color-white))));
 }
 
+@utility sd-radio--disabled-color-background {
+  background-color: rgba(var(--sd-radio--disabled-color-background, rgba(var(--sd-color-white))));
+}
+
+@utility sd-radio--disabled-color-icon {
+  background-color: rgba(var(--sd-radio--disabled-color-icon, rgba(var(--sd-color-neutral-500))));
+}
+
 @utility sd-radio-border-width {
  border-width: var(--sd-radio-border-width, var(--sd-spacing-0\.25));
 }
@@ -567,11 +675,11 @@
 }
 
 @utility sd-switch--unchecked-color-border {
-  border-color: rgba(var(--sd-switch--unchecked-color-border, rgba(var(--sd-color-neutral-800))));
+  border-color: rgba(var(--sd-switch--unchecked-color-border, rgba(var(--sd-color-neutral-900))));
 }
 
 @utility sd-switch--unchecked__icon-color-background {
-  background-color: rgba(var(--sd-switch--unchecked__icon-color-background, rgba(var(--sd-color-neutral-800))));
+  background-color: rgba(var(--sd-switch--unchecked__icon-color-background, rgba(var(--sd-color-neutral-900))));
 }
 
 @utility sd-switch-color-text {
@@ -582,12 +690,20 @@
   border-color: rgba(var(--sd-tab-color-border, rgba(var(--sd-color-neutral-400))));
 }
 
-@utility sd-tag--default--default-color-text {
-  color: rgba(var(--sd-tag--default--default-color-text, rgba(var(--sd-color-primary))));
+@utility sd-tag--default-color-background {
+  background-color: rgba(var(--sd-tag--default-color-background, rgba(255, 255, 255, 0)));
 }
 
-@utility sd-tag--default--hover-color-background {
-  background-color: rgba(var(--sd-tag--default--hover-color-background, rgba(255, 255, 255, 0)));
+@utility sd-tag--default-color-border {
+  border-color: rgba(var(--sd-tag--default-color-border, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-tag--default-color-text {
+  color: rgba(var(--sd-tag--default-color-text, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-tag--hover-color-background {
+  background-color: rgba(var(--sd-tag--hover-color-background, rgba(255, 255, 255, 0)));
 }
 
 @utility sd-tag--selected--default-color-background {
@@ -616,6 +732,14 @@
 
 @utility sd-tag--selected-border-width {
  border-width: var(--sd-tag--selected-border-width, 0);
+}
+
+@utility sd-tag--size-lg-font-size {
+ font-size: var(--sd-tag--size-lg-font-size, var(--sd-spacing-4));
+}
+
+@utility sd-tag--size-sm-font-size {
+ font-size: var(--sd-tag--size-sm-font-size, 0.875rem);
 }
 
 @utility sd-tag-border-radius {
