@@ -317,6 +317,16 @@ export const BreadcrumbWithHeaderNavigation = {
         const showBreadcrumb = type => {
           breadcrumbCompetencies.style.display = type === 'competencies' ? 'block' : 'none';
           breadcrumbAboutUs.style.display = type === 'about-us' ? 'block' : 'none';
+
+          const headerTriggers = Array.from(document.querySelectorAll('sd-navigation-item[slot="trigger"]'));
+          headerTriggers.forEach(item => item.removeAttribute('current'));
+          const target = headerTriggers.find(item =>
+            item.textContent.trim().includes(type === 'competencies' ? 'Competencies' : 'About Us')
+          );
+
+          if (target) {
+            target.setAttribute('current', '');
+          }
         };
 
         // Desktop triggers
