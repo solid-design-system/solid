@@ -248,7 +248,7 @@
   --sd-form-control--filled__floating-label-color-text: var(--sd-color-neutral-700);
   --sd-form-control--invalid-color-background: 253, 237, 237;
   --sd-form-control-color-border: var(--sd-color-black);
-  --sd-form-control-color-icon: var(--sd-color-neutral-700);
+  --sd-form-control-color-icon-fill: var(--sd-color-neutral-700);
   --sd-form-control-color-text: var(--sd-color-neutral-700);
   --sd-form-control__tooltip-color-icon: var(--sd-color-black);
   --sd-header-padding-bottom: var(--sd-spacing-0\.5);

@@ -1,4 +1,3 @@
-
 :root, .sd-theme-kid {
   color-scheme: light;
 
@@ -136,7 +135,7 @@
   --sd-color-border-error-400: var(--sd-color-error);
   --sd-color-border-error: var(--sd-color-error);
   --sd-color-border-neutral-400: var(--sd-color-neutral-400);
-  --sd-color-border-neutral-500: var(--sd-color-neutral-400);
+  --sd-color-border-neutral-500: var(--sd-color-neutral-500);
   --sd-color-border-neutral-600: var(--sd-color-neutral-600);
   --sd-color-border-neutral-800: var(--sd-color-neutral-800);
   --sd-color-border-primary-100: var(--sd-color-neutral-100);
@@ -249,7 +248,7 @@
   --sd-form-control--filled__floating-label-color-text: var(--sd-color-neutral-800);
   --sd-form-control--invalid-color-background: 253, 232, 230;
   --sd-form-control-color-border: var(--sd-color-black);
-  --sd-form-control-color-icon: var(--sd-color-neutral-900);
+  --sd-form-control-color-icon-fill: var(--sd-color-neutral-800);
   --sd-form-control-color-text: var(--sd-color-black);
   --sd-form-control__tooltip-color-icon: var(--sd-color-black);
   --sd-header-padding-bottom: var(--sd-spacing-0\.5);
@@ -406,4 +405,9 @@
   --sd-video--description-color-text: 0, 0, 0, 0.62;
   --sd-video--play-button-color-background: var(--sd-color-white);
   --sd-video--play-button-color-icon-fill: var(--sd-color-black);
+}
+
+.sd-theme-kid {
+    --sd-icon--start: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.375C7.50781 4.375 3.875 8.00781 3.875 12.5C3.875 16.9922 7.50781 20.625 12 20.625C16.4922 20.625 20.125 16.9922 20.125 12.5C20.125 8.00781 16.4922 4.375 12 4.375ZM12 22.5C6.49219 22.5 2 18.0078 2 12.5C2 6.99219 6.49219 2.5 12 2.5C17.5078 2.5 22 6.99219 22 12.5C22 18.0078 17.5078 22.5 12 22.5ZM10.75 16.3672L8.875 17.5V7.5L10.75 8.67188C14.1875 10.7422 16.2578 12.0312 17 12.5C16.2578 12.9688 14.1875 14.2578 10.75 16.3672ZM13.4062 12.5L10.75 10.8594V14.1406L13.4062 12.5Z" fill="black"/></svg>';
+    --sd-icon--risk: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.0215 23C8.06836 23 4.45898 20.9375 2.48242 17.5C0.505859 14.1055 0.505859 9.9375 2.48242 6.5C4.45898 3.10547 8.06836 1 12.0215 1C15.9316 1 19.541 3.10547 21.5176 6.5C23.4941 9.9375 23.4941 14.1055 21.5176 17.5C19.541 20.9375 15.9316 23 12.0215 23ZM12.0215 6.5C11.4199 6.5 10.9902 6.97266 10.9902 7.53125V12.3438C10.9902 12.9453 11.4199 13.375 12.0215 13.375C12.5801 13.375 13.0527 12.9453 13.0527 12.3438V7.53125C13.0527 6.97266 12.5801 6.5 12.0215 6.5ZM10.6465 16.125C10.6465 16.8984 11.248 17.5 12.0215 17.5C12.752 17.5 13.3965 16.8984 13.3965 16.125C13.3965 15.3945 12.752 14.75 12.0215 14.75C11.248 14.75 10.6465 15.3945 10.6465 16.125Z" fill="#FF391C"/></svg>'
 }

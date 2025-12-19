@@ -14,8 +14,8 @@
   border-color: rgba(var(--sd-form-control-color-border, rgba(var(--sd-color-neutral-900))));
 }
 
-@utility form-control-color-icon {
-  background-color: rgba(var(--sd-form-control-color-icon, rgba(var(--sd-color-primary))));
+@utility form-control-color-icon-fill {
+  fill: rgba(var(--sd-form-control-color-icon-fill, rgba(var(--sd-color-primary))));
 }
 
 @utility form-control-color-text {

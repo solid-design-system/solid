@@ -44,6 +44,7 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-tag-border-radius - The border radius for tags.
  * @cssproperty --sd-tag--size-lg-font-size - The font size for large tags.
  * @cssproperty --sd-tag--size-sm-font-size - The font size for small tags.
+ * @cssproperty --sd-tag-font-weight - The font weight for tags.
  */
 @customElement('sd-tag')
 export default class SdTag extends SolidElement {
@@ -143,8 +144,8 @@ export default class SdTag extends SolidElement {
           'inline-flex border box-border sd-tag-border-radius items-center leading-none whitespace-nowrap transition-colors duration-fast ease-in-out focus-visible:focus-outline',
           {
             /* sizes, fonts */
-            lg: 'h-8 sd-tag--size-lg-font-size gap-2',
-            sm: 'h-6 sd-tag--size-sm-font-size gap-1'
+            lg: 'h-8 sd-tag-font-weight sd-tag--size-lg-font-size gap-2',
+            sm: 'h-6 sd-tag-font-weight sd-tag--size-sm-font-size gap-1'
           }[this.size],
           {
             /* padding */

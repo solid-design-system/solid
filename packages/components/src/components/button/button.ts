@@ -71,6 +71,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @cssproperty --sd-button--size-sm-padding-block - The small button vertical padding value.
  * @cssproperty --sd-button--size-md-padding-block - The medium button vertical padding value.
  * @cssproperty --sd-button--size-lg-padding-block - The large button vertical padding value.
+ * @cssproperty --sd-button-font-weight - The text font weight for buttons.
  */
 @customElement('sd-button')
 export default class SdButton extends SolidElement implements SolidFormControl {
@@ -315,9 +316,9 @@ export default class SdButton extends SolidElement implements SolidFormControl {
          * */
         {
           /* sizes, fonts */
-          sm: `sd-button--size-sm-font-size sd-button--size-sm-border-radius varspacing-8 ${hasBorder ? 'py-[0.281rem] px-[0.938rem]' : 'sd-button--size-sm-padding-block px-4'}`,
-          md: `sd-button--size-md-font-size sd-button--size-md-border-radius varspacing-10 ${hasBorder ? 'py-[0.438rem] px-[0.938rem]' : 'sd-button--size-md-padding-block px-4'}`,
-          lg: `sd-button--size-lg-font-size sd-button--size-lg-border-radius varspacing-12 ${hasBorder ? 'py-[0.688rem] px-[0.938rem]' : 'sd-button--size-lg-padding-block px-4'}`
+          sm: `sd-button--size-sm-font-size sd-button-font-weight sd-button--size-sm-border-radius varspacing-8 ${hasBorder ? 'py-[0.281rem] px-[0.938rem]' : 'sd-button--size-sm-padding-block px-4'}`,
+          md: `sd-button--size-md-font-size sd-button-font-weight sd-button--size-md-border-radius varspacing-10 ${hasBorder ? 'py-[0.438rem] px-[0.938rem]' : 'sd-button--size-md-padding-block px-4'}`,
+          lg: `sd-button--size-lg-font-size sd-button-font-weight sd-button--size-lg-border-radius varspacing-12 ${hasBorder ? 'py-[0.688rem] px-[0.938rem]' : 'sd-button--size-lg-padding-block px-4'}`
         }[this.size],
         {
           /* variants */
@@ -360,7 +361,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
                   : 'text-white hover:sd-button--tertiary--inverted--hover-color-text active:text-primary-200'
               }
           disabled:sd-button--inverted--disabled-color-text`,
-          cta: `${this.visuallyDisabled ? 'bg-neutral-500 border-neutral-500 hover:bg-neutral-500 active:bg-neutral-500' : 'bg-accent-500 border-transparent'}
+          cta: `${this.visuallyDisabled ? 'bg-neutral-500 border-neutral-500 hover:bg-neutral-500 active:bg-neutral-500' : 'bg-accent border-transparent'}
           ${!this.inverted ? 'text-white disabled:bg-neutral-500 disabled:border-neutral-500 disabled:text-white' : 'sd-button--cta--inverted--default-color-background sd-button--cta--inverted--default-color-text hover:sd-button--cta--inverted--hover-color-text active:sd-button--cta--inverted--active-color-text disabled:sd-button--inverted--disabled-color-background disabled:sd-button--inverted--disabled-color-border disabled:sd-button--inverted--disabled-color-text'}`
         }[this.variant]
       )}
