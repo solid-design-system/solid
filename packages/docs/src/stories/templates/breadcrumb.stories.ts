@@ -153,7 +153,7 @@ export const BreadcrumbWithHeaderNavigation = {
         </div>
       </sd-drawer>
 
-      <main class="flex flex-col gap-6">
+      <main class="flex flex-col gap-6 px-8">
         <div id="breadcrumb-competencies">
           <sd-breadcrumb class="mt-8" label="Breadcrumb navigation">
             <sd-breadcrumb-item
@@ -172,8 +172,8 @@ export const BreadcrumbWithHeaderNavigation = {
           </sd-breadcrumb>
 
           <div>
-            <h1 class="sd-headline mt-8 mb-8">Engagement</h1>
-            <p class="sd-leadtext mb-16">
+            <h4 class="sd-headline sd-headline--4xl mb-8 mt-8">Engagement</h4>
+            <p class="sd-leadtext">
               As an internationally active shareholder, Union Investment attended a total of 1,756 annual general
               meetings in 33 countries last year.
             </p>
