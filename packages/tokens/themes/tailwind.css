@@ -112,10 +112,6 @@
   --radius-md: var(--sd-radius-md);
   --radius-none: var(--sd-radius-none);
   --radius-sm: var(--sd-radius-sm);
-  --sd-button-font-weight: var(--sd-button-font-weight);
-  --sd-chip-font-weight: var(--sd-chip-font-weight);
-  --sd-tab-font-weight: var(--sd-tab-font-weight);
-  --sd-tag-font-weight: var(--sd-tag-font-weight);
   --shadow-sm: var(--sd-shadow-sm);
   --shadow: var(--sd-shadow);
   --sizing-0\.5: var(--sd-sizing-0\.5);
@@ -173,6 +169,7 @@
   --text-lg: var(--sd-text-lg);
   --text-sm: var(--sd-text-sm);
   --text-xl: var(--sd-text-xl);
+  --text-xs: var(--sd-text-xs);
   --transition-duration-fast: var(--sd-duration-fast, 150ms);
   --transition-duration-medium: var(--sd-duration-medium, 300ms);
   --transition-duration-slow: var(--sd-duration-slow, 500ms);

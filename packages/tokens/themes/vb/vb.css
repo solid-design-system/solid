@@ -77,7 +77,7 @@
   --sd-button--tertiary--inverted--active-color-background: 39, 77, 126;
   --sd-button--tertiary--inverted--hover-color-background: var(--sd-color-primary-750);
   --sd-button--tertiary--inverted--hover-color-text: var(--sd-color-neutral-100);
-  --sd-button-font-weight: 600;
+  --sd-button-font-weight: var(--sd-font-weight-bold);
   --sd-carousel--active-color-icon-fill: var(--sd-color-primary);
   --sd-carousel__pager-dot-border-width: var(--sd-spacing-0\.5);
   --sd-checkbox-border-width: var(--sd-spacing-0\.5);
@@ -93,7 +93,7 @@
   --sd-chip-border-radius: var(--sd-spacing-1);
   --sd-chip-border-width: var(--sd-spacing-0\.25);
   --sd-chip-font-size: 0.875rem;
-  --sd-chip-font-weight: 400;
+  --sd-chip-font-weight: var(--sd-font-weight-normal);
   --sd-color-accent-100: 244, 205, 178;
   --sd-color-accent-200: 245, 182, 145;
   --sd-color-accent-300: 247, 154, 102;
@@ -368,7 +368,7 @@
   --sd-switch--unchecked__icon-color-background: var(--sd-color-black);
   --sd-switch-color-text: var(--sd-color-black);
   --sd-tab-color-border: var(--sd-color-neutral-400);
-  --sd-tab-font-weight: 600;
+  --sd-tab-font-weight: var(--sd-font-weight-bold);
   --sd-tag--default--hover-color-background: var(--sd-color-neutral-100);
   --sd-tag--default-color-background: 255, 255, 255, 0;
   --sd-tag--default-color-border: var(--sd-color-primary);
@@ -384,7 +384,7 @@
   --sd-tag--size-lg-font-size: var(--sd-spacing-4);
   --sd-tag--size-sm-font-size: 0.875rem;
   --sd-tag-border-radius: var(--sd-spacing-2);
-  --sd-tag-font-weight: 600;
+  --sd-tag-font-weight: var(--sd-font-weight-bold);
   --sd-teaser--neutral-100-color-background: var(--sd-color-neutral-100);
   --sd-teaser--neutral-400-color-border: var(--sd-color-neutral-400);
   --sd-teaser--primary-100-color-background: var(--sd-color-neutral-100);
@@ -399,6 +399,7 @@
   --sd-text-lg: 1.25rem;
   --sd-text-sm: 0.875rem;
   --sd-text-xl: 1.5rem;
+  --sd-text-xs: 0.75rem;
   --sd-tooltip-color-background: var(--sd-color-white);
   --sd-tooltip-color-text: var(--sd-color-neutral-600);
   --sd-video--description-color-text: var(--sd-color-neutral-700);

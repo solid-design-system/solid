@@ -310,6 +310,10 @@
   color: rgba(var(--sd-button--tertiary--inverted--hover-color-text, rgba(var(--sd-color-primary-100))));
 }
 
+@utility sd-button-font-weight {
+  font-weight: var(--sd-button-font-weight, var(--sd-font-weight-normal));
+}
+
 @utility sd-carousel--active-color-icon-fill {
   fill: rgba(var(--sd-carousel--active-color-icon-fill, rgba(var(--sd-color-accent))));
 }
@@ -368,6 +372,10 @@
 
 @utility sd-chip-font-size {
  font-size: var(--sd-chip-font-size, 0.875rem);
+}
+
+@utility sd-chip-font-weight {
+  font-weight: var(--sd-chip-font-weight, var(--sd-font-weight-normal));
 }
 
 @utility sd-combobox--default-color-icon {
@@ -666,6 +674,10 @@
   border-color: rgba(var(--sd-tab-color-border, rgba(var(--sd-color-neutral-400))));
 }
 
+@utility sd-tab-font-weight {
+  font-weight: var(--sd-tab-font-weight, var(--sd-font-weight-normal));
+}
+
 @utility sd-tag--default--hover-color-background {
   background-color: rgba(var(--sd-tag--default--hover-color-background, rgba(255, 255, 255, 0)));
 }
@@ -724,6 +736,10 @@
 
 @utility sd-tag-border-radius {
  border-radius: var(--sd-tag-border-radius, 624.9375rem);
+}
+
+@utility sd-tag-font-weight {
+  font-weight: var(--sd-tag-font-weight, var(--sd-font-weight-normal));
 }
 
 @utility sd-teaser--neutral-100-color-background {
