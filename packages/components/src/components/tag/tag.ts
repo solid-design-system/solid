@@ -158,7 +158,7 @@ export default class SdTag extends SolidElement {
                 'sd-tag--default-color-border sd-tag--default-color-text disabled:sd-tag--disabled-color-border disabled:text-neutral-500',
                 !this.removable
                   ? 'sd-tag--default-color-background hover:border-primary-500 hover:text-primary-500 hover:sd-tag--default--hover-color-background'
-                  : 'has-[button:hover]:border-primary-500 has-[button:hover]:text-primary-500'
+                  : 'sd-tag--default-color-background has-[button:hover]:border-primary-500 has-[button:hover]:text-primary-500'
               )
             : 'sd-tag--selected-border-width sd-tag--selected--default-color-background sd-tag--selected--default-color-border sd-tag--selected--default-color-text hover:sd-tag--selected--hover-color-background hover:sd-tag--selected--hover-color-border hover:sd-tag--selected--hover-color-text disabled:bg-neutral-500 disabled:sd-tag--disabled-color-border',
           this.disabled && !isLink && 'cursor-not-allowed'
