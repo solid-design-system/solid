@@ -14,9 +14,11 @@ export default {
 };
 
 /**
+ * ### Breadcrumb with Header Navigation
+ *
  * Example of sd-breacrumb working in sd-navigation-item:
  */
-export const BreadcrumbWithHeaderNavigation = {
+export const Default = {
   name: 'Breadcrumb with Header Navigation',
   render: () => {
     return html`
