@@ -2,10 +2,6 @@
   background-color: rgba(var(--sd-color-background, rgba(var(--sd-color-neutral-200))));
 }
 
-@utility form-control--filled__floating-label-color-text {
-  color: rgba(var(--sd-form-control--filled__floating-label-color-text, rgba(var(--sd-color-neutral-700))));
-}
-
 @utility form-control--invalid-color-background {
   background-color: rgba(var(--sd-form-control--invalid-color-background, rgba(var(--sd-color-white))));
 }
@@ -20,6 +16,10 @@
 
 @utility form-control-color-text {
   color: rgba(var(--sd-form-control-color-text, rgba(var(--sd-color-black))));
+}
+
+@utility form-control-filled__floating-label-color-text {
+  color: rgba(var(--sd-form-control-filled__floating-label-color-text, rgba(var(--sd-color-neutral-700))));
 }
 
 @utility form-control__tooltip-color-icon {
@@ -322,10 +322,6 @@
  border-width: var(--sd-checkbox-border-width, var(--sd-spacing-0\.25));
 }
 
-@utility sd-chip--disabled-color-border {
-  border-color: rgba(var(--sd-chip--disabled-color-border, rgba(var(--sd-color-neutral-500))));
-}
-
 @utility sd-chip--primary-200-color-background {
   background-color: rgba(var(--sd-chip--primary-200-color-background, rgba(var(--sd-color-primary-200))));
 }
@@ -354,10 +350,6 @@
   color: rgba(var(--sd-chip--primary-500-color-text, rgba(var(--sd-color-white))));
 }
 
-@utility sd-chip--selected-border-width {
- border-width: var(--sd-chip--selected-border-width, 0);
-}
-
 @utility sd-chip--white-color-background {
   background-color: rgba(var(--sd-chip--white-color-background, rgba(var(--sd-color-white))));
 }
@@ -370,6 +362,10 @@
  border-radius: var(--sd-chip-border-radius, var(--sd-spacing-1));
 }
 
+@utility sd-chip-border-width {
+ border-width: var(--sd-chip-border-width, 0);
+}
+
 @utility sd-chip-font-size {
  font-size: var(--sd-chip-font-size, 0.875rem);
 }
@@ -380,10 +376,6 @@
 
 @utility sd-combobox--default-color-text {
   color: rgba(var(--sd-combobox--default-color-text, rgba(var(--sd-color-primary))));
-}
-
-@utility sd-datepicker--disabled__flyout-color-text {
-  color: rgba(var(--sd-datepicker--disabled__flyout-color-text, rgba(var(--sd-color-neutral-500))));
 }
 
 @utility sd-datepicker--hovered--current__date-item-color-background {
@@ -588,14 +580,6 @@
 
 @utility sd-radio--default--invalid-color-background {
   background-color: rgba(var(--sd-radio--default--invalid-color-background, rgba(var(--sd-color-white))));
-}
-
-@utility sd-radio--disabled-color-background {
-  background-color: rgba(var(--sd-radio--disabled-color-background, rgba(var(--sd-color-white))));
-}
-
-@utility sd-radio--disabled-color-icon {
-  background-color: rgba(var(--sd-radio--disabled-color-icon, rgba(var(--sd-color-neutral-500))));
 }
 
 @utility sd-radio-border-width {

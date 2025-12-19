@@ -3679,7 +3679,7 @@
             }
           }
         },
-        "--filled": {
+        "filled": {
           "__floating-label": {
             "color": {
               "text": {
@@ -4493,19 +4493,9 @@
           "type": "string",
           "value": "{ui-light.utilities.font-weight.normal}"
         },
-        "--disabled": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.neutral.500}"
-            }
-          }
-        },
-        "--selected": {
-          "border-width": {
-            "type": "float",
-            "value": "0"
-          }
+        "border-width": {
+          "type": "float",
+          "value": "0"
         },
         "_primary-300": {
           "border-width": {
@@ -4614,20 +4604,6 @@
         "border-width": {
           "type": "float",
           "value": "{ui-light.utilities.border-width.default}"
-        },
-        "--disabled": {
-          "color": {
-            "background": {
-              "description": "Used for hover interaction",
-              "type": "color",
-              "value": "{ui-light.utilities.color.white.default}"
-            },
-            "icon": {
-              "description": "Used for hover interaction",
-              "type": "color",
-              "value": "{ui-light.utilities.color.icon-fill.neutral.500}"
-            }
-          }
         }
       },
       "sd-step": {
@@ -4917,17 +4893,45 @@
           }
         }
       },
-      "sd-datepicker": {
-        "--disabled": {
-          "__flyout": {
-            "color": {
-              "text": {
-                "type": "color",
-                "value": "{ui-light.utilities.color.text.neutral.500}"
-              }
+      "sd-link": {
+        "color": {
+          "--hover": {
+            "text": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.text.primary.500}"
+            },
+            "icon": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.text.primary.500}"
+            }
+          },
+          "--default": {
+            "text": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.text.primary.default}"
+            }
+          },
+          "--none": {
+            "icon": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.text.primary.default}"
+            }
+          },
+          "--active": {
+            "text": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.text.primary.800}"
+            }
+          },
+          "--pressed": {
+            "icon": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.text.primary.800}"
             }
           }
-        },
+        }
+      },
+      "sd-datepicker": {
         "--hovered": {
           "__date-item": {
             "--default": {
@@ -4981,44 +4985,6 @@
             "text": {
               "type": "color",
               "value": "{ui-light.utilities.color.white.default}"
-            }
-          }
-        }
-      },
-      "sd-link": {
-        "color": {
-          "--hover": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.500}"
-            },
-            "icon": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.500}"
-            }
-          },
-          "--default": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.default}"
-            }
-          },
-          "--none": {
-            "icon": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.default}"
-            }
-          },
-          "--active": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.800}"
-            }
-          },
-          "--pressed": {
-            "icon": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.800}"
             }
           }
         }
@@ -6659,7 +6625,7 @@
             }
           }
         },
-        "--filled": {
+        "filled": {
           "__floating-label": {
             "color": {
               "text": {
@@ -7473,19 +7439,9 @@
           "type": "string",
           "value": "{ui-dark.utilities.font-weight.normal}"
         },
-        "--disabled": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.neutral.500}"
-            }
-          }
-        },
-        "--selected": {
-          "border-width": {
-            "type": "float",
-            "value": "0"
-          }
+        "border-width": {
+          "type": "float",
+          "value": "0"
         },
         "_primary-300": {
           "border-width": {
@@ -7594,20 +7550,6 @@
         "border-width": {
           "type": "float",
           "value": "{ui-dark.utilities.border-width.default}"
-        },
-        "--disabled": {
-          "color": {
-            "background": {
-              "description": "Used for hover interaction",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.primary.900}"
-            },
-            "icon": {
-              "description": "Used for hover interaction",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.icon-fill.neutral.500}"
-            }
-          }
         }
       },
       "sd-step": {
@@ -7897,17 +7839,45 @@
           }
         }
       },
-      "sd-datepicker": {
-        "--disabled": {
-          "__flyout": {
-            "color": {
-              "text": {
-                "type": "color",
-                "value": "{ui-dark.utilities.color.text.neutral.600}"
-              }
+      "sd-link": {
+        "color": {
+          "--hover": {
+            "text": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.text.primary.200}"
+            },
+            "icon": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.text.primary.200}"
+            }
+          },
+          "--default": {
+            "text": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.text.primary.default}"
+            }
+          },
+          "--none": {
+            "icon": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.text.primary.default}"
+            }
+          },
+          "--active": {
+            "text": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.text.primary.400}"
+            }
+          },
+          "--pressed": {
+            "icon": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.text.primary.400}"
             }
           }
-        },
+        }
+      },
+      "sd-datepicker": {
         "--hovered": {
           "__date-item": {
             "--default": {
@@ -7961,44 +7931,6 @@
             "text": {
               "type": "color",
               "value": "{ui-dark.utilities.color.primary.600}"
-            }
-          }
-        }
-      },
-      "sd-link": {
-        "color": {
-          "--hover": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.200}"
-            },
-            "icon": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.200}"
-            }
-          },
-          "--default": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.default}"
-            }
-          },
-          "--none": {
-            "icon": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.default}"
-            }
-          },
-          "--active": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.400}"
-            }
-          },
-          "--pressed": {
-            "icon": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.400}"
             }
           }
         }
@@ -9639,7 +9571,7 @@
             }
           }
         },
-        "--filled": {
+        "filled": {
           "__floating-label": {
             "color": {
               "text": {
@@ -10453,19 +10385,9 @@
           "type": "string",
           "value": "{vb.utilities.font-weight.normal}"
         },
-        "--disabled": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{vb.utilities.color.neutral.600}"
-            }
-          }
-        },
-        "--selected": {
-          "border-width": {
-            "type": "float",
-            "value": "{vb.utilities.border-width.default}"
-          }
+        "border-width": {
+          "type": "float",
+          "value": "{vb.utilities.border-width.default}"
         },
         "_primary-300": {
           "border-width": {
@@ -10574,20 +10496,6 @@
         "border-width": {
           "type": "float",
           "value": "{vb.utilities.border-width.2}"
-        },
-        "--disabled": {
-          "color": {
-            "background": {
-              "description": "Used for hover interaction",
-              "type": "color",
-              "value": "{core.vb.status.error-bg}"
-            },
-            "icon": {
-              "description": "Used for hover interaction",
-              "type": "color",
-              "value": "{vb.utilities.color.icon-fill.neutral.500}"
-            }
-          }
         }
       },
       "sd-step": {
@@ -10877,17 +10785,45 @@
           }
         }
       },
-      "sd-datepicker": {
-        "--disabled": {
-          "__flyout": {
-            "color": {
-              "text": {
-                "type": "color",
-                "value": "{vb.utilities.color.text.neutral.500}"
-              }
+      "sd-link": {
+        "color": {
+          "--hover": {
+            "text": {
+              "type": "color",
+              "value": "{core.vb.from-figma.azure.500}"
+            },
+            "icon": {
+              "type": "color",
+              "value": "{core.vb.from-figma.azure.500}"
+            }
+          },
+          "--default": {
+            "text": {
+              "type": "color",
+              "value": "{core.vb.from-figma.azure.500}"
+            }
+          },
+          "--none": {
+            "icon": {
+              "type": "color",
+              "value": "{core.vb.from-figma.azure.500}"
+            }
+          },
+          "--active": {
+            "text": {
+              "type": "color",
+              "value": "{core.vb.from-figma.azure.500}"
+            }
+          },
+          "--pressed": {
+            "icon": {
+              "type": "color",
+              "value": "{core.vb.from-figma.azure.500}"
             }
           }
-        },
+        }
+      },
+      "sd-datepicker": {
         "--hovered": {
           "__date-item": {
             "--default": {
@@ -10941,44 +10877,6 @@
             "text": {
               "type": "color",
               "value": "{vb.utilities.color.white.default}"
-            }
-          }
-        }
-      },
-      "sd-link": {
-        "color": {
-          "--hover": {
-            "text": {
-              "type": "color",
-              "value": "{core.vb.from-figma.azure.500}"
-            },
-            "icon": {
-              "type": "color",
-              "value": "{core.vb.from-figma.azure.500}"
-            }
-          },
-          "--default": {
-            "text": {
-              "type": "color",
-              "value": "{core.vb.from-figma.azure.500}"
-            }
-          },
-          "--none": {
-            "icon": {
-              "type": "color",
-              "value": "{core.vb.from-figma.azure.500}"
-            }
-          },
-          "--active": {
-            "text": {
-              "type": "color",
-              "value": "{core.vb.from-figma.azure.500}"
-            }
-          },
-          "--pressed": {
-            "icon": {
-              "type": "color",
-              "value": "{core.vb.from-figma.azure.500}"
             }
           }
         }
@@ -12619,7 +12517,7 @@
             }
           }
         },
-        "--filled": {
+        "filled": {
           "__floating-label": {
             "color": {
               "text": {
@@ -13433,19 +13331,9 @@
           "type": "string",
           "value": "{kid.utilities.font-weight.bold}"
         },
-        "--disabled": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{core.vb.from-figma.grey.620}"
-            }
-          }
-        },
-        "--selected": {
-          "border-width": {
-            "type": "float",
-            "value": "{kid.utilities.border-width.default}"
-          }
+        "border-width": {
+          "type": "float",
+          "value": "{kid.utilities.border-width.default}"
         },
         "_primary-300": {
           "border-width": {
@@ -13554,20 +13442,6 @@
         "border-width": {
           "type": "float",
           "value": "{kid.utilities.border-width.default}"
-        },
-        "--disabled": {
-          "color": {
-            "background": {
-              "description": "Used for hover interaction",
-              "type": "color",
-              "value": "{core.kid.status.neutral-grey-bg}"
-            },
-            "icon": {
-              "description": "Used for hover interaction",
-              "type": "color",
-              "value": "{kid.utilities.color.neutral.500}"
-            }
-          }
         }
       },
       "sd-step": {
@@ -13857,17 +13731,45 @@
           }
         }
       },
-      "sd-datepicker": {
-        "--disabled": {
-          "__flyout": {
-            "color": {
-              "text": {
-                "type": "color",
-                "value": "{kid.utilities.color.text.neutral.500}"
-              }
+      "sd-link": {
+        "color": {
+          "--hover": {
+            "text": {
+              "type": "color",
+              "value": "{kid.utilities.color.neutral.800}"
+            },
+            "icon": {
+              "type": "color",
+              "value": "{kid.utilities.color.text.black.default}"
+            }
+          },
+          "--default": {
+            "text": {
+              "type": "color",
+              "value": "{kid.utilities.color.text.black.default}"
+            }
+          },
+          "--none": {
+            "icon": {
+              "type": "color",
+              "value": "{kid.utilities.color.text.black.default}"
+            }
+          },
+          "--active": {
+            "text": {
+              "type": "color",
+              "value": "{kid.utilities.color.neutral.800}"
+            }
+          },
+          "--pressed": {
+            "icon": {
+              "type": "color",
+              "value": "{kid.utilities.color.text.black.default}"
             }
           }
-        },
+        }
+      },
+      "sd-datepicker": {
         "--hovered": {
           "__date-item": {
             "--default": {
@@ -13921,44 +13823,6 @@
             "text": {
               "type": "color",
               "value": "{core.vb.from-figma.grey.620}"
-            }
-          }
-        }
-      },
-      "sd-link": {
-        "color": {
-          "--hover": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.neutral.800}"
-            },
-            "icon": {
-              "type": "color",
-              "value": "{kid.utilities.color.text.black.default}"
-            }
-          },
-          "--default": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.text.black.default}"
-            }
-          },
-          "--none": {
-            "icon": {
-              "type": "color",
-              "value": "{kid.utilities.color.text.black.default}"
-            }
-          },
-          "--active": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.neutral.800}"
-            }
-          },
-          "--pressed": {
-            "icon": {
-              "type": "color",
-              "value": "{kid.utilities.color.text.black.default}"
             }
           }
         }

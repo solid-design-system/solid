@@ -81,7 +81,6 @@
   --sd-carousel--active-color-icon-fill: var(--sd-color-black);
   --sd-carousel__pager-dot-border-width: var(--sd-spacing-0\.5);
   --sd-checkbox-border-width: var(--sd-spacing-0\.25);
-  --sd-chip--disabled-color-border: 0, 0, 0, 0.62;
   --sd-chip--primary-200-color-background: 255, 255, 255, 0.6;
   --sd-chip--primary-200-color-border: var(--sd-color-black);
   --sd-chip--primary-300-color-background: 255, 255, 255, 0.6;
@@ -89,10 +88,10 @@
   --sd-chip--primary-500-color-background: 255, 255, 255, 0.6;
   --sd-chip--primary-500-color-border: 0, 121, 168;
   --sd-chip--primary-500-color-text: var(--sd-color-black);
-  --sd-chip--selected-border-width: var(--sd-spacing-0\.25);
   --sd-chip--white-color-background: 251, 251, 251, 0.6;
   --sd-chip--white-color-border: var(--sd-color-black);
   --sd-chip-border-radius: 624.9375rem;
+  --sd-chip-border-width: var(--sd-spacing-0\.25);
   --sd-chip-font-size: var(--sd-spacing-3);
   --sd-color-accent-100: 247, 242, 236;
   --sd-color-accent-200: 249, 224, 208;
@@ -217,7 +216,6 @@
   --sd-color-white: 255, 255, 255;
   --sd-combobox--default-color-icon: 0, 0, 0, 0.62;
   --sd-combobox--default-color-text: 0, 0, 0, 0.62;
-  --sd-datepicker--disabled__flyout-color-text: var(--sd-color-neutral-500);
   --sd-datepicker--hovered--current__date-item-color-background: 0, 0, 0, 0.62;
   --sd-datepicker--hovered--current__date-item-color-text: 0, 0, 0, 0.62;
   --sd-datepicker--hovered--default__date-item-color-text: 0, 0, 0, 0.62;
@@ -246,11 +244,11 @@
   --sd-font-weight-bold: 700;
   --sd-font-weight-normal: 400;
   --sd-footnotes--target--inverted-color-background: 0, 0, 0, 0.1;
-  --sd-form-control--filled__floating-label-color-text: var(--sd-color-neutral-800);
   --sd-form-control--invalid-color-background: 253, 232, 230;
   --sd-form-control-color-border: var(--sd-color-black);
   --sd-form-control-color-icon: var(--sd-color-neutral-900);
   --sd-form-control-color-text: var(--sd-color-black);
+  --sd-form-control-filled__floating-label-color-text: var(--sd-color-neutral-800);
   --sd-form-control__tooltip-color-icon: var(--sd-color-black);
   --sd-header-padding-bottom: var(--sd-spacing-0\.5);
   --sd-headline-4xl-and-mobile-4xl-text: var(--sd-color-black);
@@ -309,8 +307,6 @@
   --sd-radio--checked--invalid--default__icon-color-background: var(--sd-color-error);
   --sd-radio--checked--invalid--hover__icon-color-background: var(--sd-color-error);
   --sd-radio--default--invalid-color-background: 253, 232, 230;
-  --sd-radio--disabled-color-background: var(--sd-color-neutral-100);
-  --sd-radio--disabled-color-icon: var(--sd-color-neutral-500);
   --sd-radio-border-width: var(--sd-spacing-0\.25);
   --sd-radio-button--hover-color-background: 0, 102, 179, 0.05;
   --sd-radio-button--hover-color-icon-fill: var(--sd-color-black);
