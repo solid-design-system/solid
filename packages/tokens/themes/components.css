@@ -2,6 +2,10 @@
   background-color: rgba(var(--sd-color-background, rgba(var(--sd-color-neutral-200))));
 }
 
+@utility form-control--filled__floating-label-color-text {
+  color: rgba(var(--sd-form-control--filled__floating-label-color-text, rgba(var(--sd-color-neutral-700))));
+}
+
 @utility form-control--invalid-color-background {
   background-color: rgba(var(--sd-form-control--invalid-color-background, rgba(var(--sd-color-white))));
 }
@@ -16,10 +20,6 @@
 
 @utility form-control-color-text {
   color: rgba(var(--sd-form-control-color-text, rgba(var(--sd-color-black))));
-}
-
-@utility form-control-filled__floating-label-color-text {
-  color: rgba(var(--sd-form-control-filled__floating-label-color-text, rgba(var(--sd-color-neutral-700))));
 }
 
 @utility form-control__tooltip-color-icon {
