@@ -77,6 +77,7 @@
   --sd-button--tertiary--inverted--active-color-background: 39, 77, 126;
   --sd-button--tertiary--inverted--hover-color-background: var(--sd-color-primary-750);
   --sd-button--tertiary--inverted--hover-color-text: var(--sd-color-neutral-100);
+  --sd-button-font-weight: 600;
   --sd-carousel--active-color-icon-fill: var(--sd-color-primary);
   --sd-carousel__pager-dot-border-width: var(--sd-spacing-0\.5);
   --sd-checkbox-border-width: var(--sd-spacing-0\.5);
@@ -92,6 +93,7 @@
   --sd-chip-border-radius: var(--sd-spacing-1);
   --sd-chip-border-width: var(--sd-spacing-0\.25);
   --sd-chip-font-size: 0.875rem;
+  --sd-chip-font-weight: 400;
   --sd-color-accent-100: 244, 205, 178;
   --sd-color-accent-200: 245, 182, 145;
   --sd-color-accent-300: 247, 154, 102;
@@ -240,7 +242,7 @@
   --sd-flag-border-radius: var(--sd-spacing-1);
   --sd-flag-border-width: var(--sd-spacing-0\.25);
   --sd-font-primary: 'GenosGFG';
-  --sd-font-weight-bold: 700;
+  --sd-font-weight-bold: 600;
   --sd-font-weight-normal: 400;
   --sd-footnotes--target--inverted-color-background: 0, 0, 0, 0.1;
   --sd-form-control--filled__floating-label-color-text: var(--sd-color-neutral-700);
@@ -366,6 +368,7 @@
   --sd-switch--unchecked__icon-color-background: var(--sd-color-black);
   --sd-switch-color-text: var(--sd-color-black);
   --sd-tab-color-border: var(--sd-color-neutral-400);
+  --sd-tab-font-weight: 600;
   --sd-tag--default--hover-color-background: var(--sd-color-neutral-100);
   --sd-tag--default-color-background: 255, 255, 255, 0;
   --sd-tag--default-color-border: var(--sd-color-primary);
@@ -381,6 +384,7 @@
   --sd-tag--size-lg-font-size: var(--sd-spacing-4);
   --sd-tag--size-sm-font-size: 0.875rem;
   --sd-tag-border-radius: var(--sd-spacing-2);
+  --sd-tag-font-weight: 600;
   --sd-teaser--neutral-100-color-background: var(--sd-color-neutral-100);
   --sd-teaser--neutral-400-color-border: var(--sd-color-neutral-400);
   --sd-teaser--primary-100-color-background: var(--sd-color-neutral-100);

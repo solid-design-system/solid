@@ -3271,10 +3271,6 @@
         "bold": {
           "type": "string",
           "value": "{core.ui.font-weight.font-bold}"
-        },
-        "semibold": {
-          "type": "string",
-          "value": "{core.ui.font-weight.font-bold}"
         }
       },
       "text": {
@@ -3532,16 +3528,6 @@
       "loader-current": {
         "type": "animation",
         "value": "wave 1.3s infinite, loader-color-current 2.6s infinite"
-      }
-    },
-    "font-weight": {
-      "normal": {
-        "type": "fontWeight",
-        "value": 400
-      },
-      "bold": {
-        "type": "fontWeight",
-        "value": 700
       }
     },
     "components": {
@@ -6193,10 +6179,6 @@
         "bold": {
           "type": "string",
           "value": "{core.ui.font-weight.font-bold}"
-        },
-        "semibold": {
-          "type": "string",
-          "value": "{core.ui.font-weight.font-bold}"
         }
       },
       "text": {
@@ -6454,16 +6436,6 @@
       "loader-current": {
         "type": "animation",
         "value": "wave 1.3s infinite, loader-color-current 2.6s infinite"
-      }
-    },
-    "font-weight": {
-      "normal": {
-        "type": "fontWeight",
-        "value": 400
-      },
-      "bold": {
-        "type": "fontWeight",
-        "value": 700
       }
     },
     "components": {
@@ -9115,10 +9087,6 @@
         "bold": {
           "type": "string",
           "value": "{core.vb.font-weight.font-bold}"
-        },
-        "semibold": {
-          "type": "string",
-          "value": "{core.vb.font-weight.font-bold}"
         }
       },
       "text": {
@@ -9376,16 +9344,6 @@
       "loader-current": {
         "type": "animation",
         "value": "wave 1.3s infinite, loader-color-current 2.6s infinite"
-      }
-    },
-    "font-weight": {
-      "normal": {
-        "type": "fontWeight",
-        "value": 400
-      },
-      "bold": {
-        "type": "fontWeight",
-        "value": 700
       }
     },
     "components": {
@@ -12037,10 +11995,6 @@
         "bold": {
           "type": "string",
           "value": "{core.kid.font-weight.font-bold}"
-        },
-        "semibold": {
-          "type": "string",
-          "value": "{core.kid.font-weight.font-semibold}"
         }
       },
       "text": {
@@ -12298,16 +12252,6 @@
       "loader-current": {
         "type": "animation",
         "value": "wave 1.3s infinite, loader-color-current 2.6s infinite"
-      }
-    },
-    "font-weight": {
-      "normal": {
-        "type": "fontWeight",
-        "value": 400
-      },
-      "bold": {
-        "type": "fontWeight",
-        "value": 700
       }
     },
     "components": {
@@ -12682,7 +12626,7 @@
         },
         "font-weight": {
           "type": "string",
-          "value": "{kid.utilities.font-weight.semibold}"
+          "value": "{core.kid.font-weight.font-semibold}"
         },
         "--cta": {
           "--inverted": {

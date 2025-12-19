@@ -78,6 +78,7 @@
   --sd-button--tertiary--inverted--active-color-background: 247, 242, 236, 0;
   --sd-button--tertiary--inverted--hover-color-background: 247, 242, 236, 0;
   --sd-button--tertiary--inverted--hover-color-text: var(--sd-color-accent);
+  --sd-button-font-weight: 600;
   --sd-carousel--active-color-icon-fill: var(--sd-color-black);
   --sd-carousel__pager-dot-border-width: var(--sd-spacing-0\.5);
   --sd-checkbox-border-width: var(--sd-spacing-0\.25);
@@ -93,6 +94,7 @@
   --sd-chip-border-radius: 624.9375rem;
   --sd-chip-border-width: 0;
   --sd-chip-font-size: var(--sd-spacing-3);
+  --sd-chip-font-weight: 600;
   --sd-color-accent-100: 247, 242, 236;
   --sd-color-accent-200: 249, 224, 208;
   --sd-color-accent-300: 251, 207, 180;
@@ -241,7 +243,7 @@
   --sd-flag-border-radius: var(--sd-spacing-1);
   --sd-flag-border-width: var(--sd-spacing-0\.25);
   --sd-font-primary: 'Bricolage Grotesque';
-  --sd-font-weight-bold: 700;
+  --sd-font-weight-bold: 600;
   --sd-font-weight-normal: 400;
   --sd-footnotes--target--inverted-color-background: 0, 0, 0, 0.1;
   --sd-form-control--filled__floating-label-color-text: var(--sd-color-neutral-800);
@@ -367,6 +369,7 @@
   --sd-switch--unchecked__icon-color-background: var(--sd-color-black);
   --sd-switch-color-text: var(--sd-color-black);
   --sd-tab-color-border: 191, 202, 217;
+  --sd-tab-font-weight: 600;
   --sd-tag--default--hover-color-background: 255, 255, 255, 0.6;
   --sd-tag--default-color-background: 255, 255, 255, 0.6;
   --sd-tag--default-color-border: 255, 255, 255, 0.6;
@@ -382,6 +385,7 @@
   --sd-tag--size-lg-font-size: var(--sd-spacing-3);
   --sd-tag--size-sm-font-size: var(--sd-spacing-3);
   --sd-tag-border-radius: 624.9375rem;
+  --sd-tag-font-weight: 600;
   --sd-teaser--neutral-100-color-background: 245, 247, 249;
   --sd-teaser--neutral-400-color-border: 191, 202, 217;
   --sd-teaser--primary-100-color-background: 245, 247, 249;

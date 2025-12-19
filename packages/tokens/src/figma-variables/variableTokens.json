@@ -325,8 +325,8 @@
         "VariableID:44921:14685",
         "VariableID:44921:14686",
         "VariableID:44921:14683",
-        "VariableID:44917:20144",
         "VariableID:43927:5028",
+        "VariableID:44917:20144",
         "VariableID:43979:190",
         "VariableID:44917:20151",
         "VariableID:46977:27420",
@@ -342,25 +342,25 @@
         "VariableID:44917:20148",
         "VariableID:44917:20149",
         "VariableID:44921:14674",
-        "VariableID:46408:70201",
-        "VariableID:44917:19938",
         "VariableID:43927:5029",
+        "VariableID:44917:19938",
+        "VariableID:46408:70201",
         "VariableID:44917:19939",
         "VariableID:43927:5030",
-        "VariableID:44917:19940",
         "VariableID:43927:5031",
+        "VariableID:44917:19940",
         "VariableID:44917:19941",
         "VariableID:43927:5032",
-        "VariableID:43927:5033",
         "VariableID:44917:19942",
-        "VariableID:43927:5034",
+        "VariableID:43927:5033",
         "VariableID:44917:19943",
+        "VariableID:43927:5034",
         "VariableID:43927:5035",
         "VariableID:44917:19944",
         "VariableID:44917:19945",
         "VariableID:43927:5036",
-        "VariableID:44917:19946",
         "VariableID:43927:5037",
+        "VariableID:44917:19946",
         "VariableID:43927:5038",
         "VariableID:44917:19947",
         "VariableID:43979:187",
@@ -663,8 +663,8 @@
         "VariableID:43979:261",
         "VariableID:43979:262",
         "VariableID:43979:263",
-        "VariableID:43979:299",
         "VariableID:43979:264",
+        "VariableID:43979:299",
         "VariableID:43979:300",
         "VariableID:43979:265",
         "VariableID:43979:301",
@@ -815,7 +815,6 @@
         "VariableID:44029:1683",
         "VariableID:44029:1685",
         "VariableID:44953:15244",
-        "VariableID:47805:4777",
         "VariableID:44953:15245",
         "VariableID:43979:314",
         "VariableID:45046:31066",
@@ -866,8 +865,8 @@
         "VariableID:44300:68046",
         "VariableID:44300:68048",
         "VariableID:44300:68555",
-        "VariableID:47858:29969",
         "VariableID:44300:68556",
+        "VariableID:47858:29969",
         "VariableID:44300:68558",
         "VariableID:44271:64199",
         "VariableID:44271:64186",
@@ -1027,8 +1026,8 @@
         "VariableID:46396:82804",
         "VariableID:46500:50144",
         "VariableID:46408:53949",
-        "VariableID:46408:107780",
         "VariableID:47226:13296",
+        "VariableID:46408:107780",
         "VariableID:46408:107781",
         "VariableID:46841:8934",
         "VariableID:46841:9198",
@@ -17418,7 +17417,7 @@
       "remote": false,
       "resolvedType": "STRING",
       "scopes": [
-        "ALL_SCOPES"
+        "FONT_STYLE"
       ],
       "valuesByMode": {
         "43174:13": {
@@ -17434,7 +17433,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "47719:0": {
-          "id": "VariableID:47805:4777",
+          "id": "VariableID:47805:4779",
           "type": "VARIABLE_ALIAS"
         }
       },
@@ -17450,7 +17449,7 @@
       "remote": false,
       "resolvedType": "STRING",
       "scopes": [
-        "ALL_SCOPES"
+        "FONT_STYLE"
       ],
       "valuesByMode": {
         "43174:13": {
@@ -17482,7 +17481,7 @@
       "remote": false,
       "resolvedType": "STRING",
       "scopes": [
-        "ALL_SCOPES"
+        "FONT_STYLE"
       ],
       "valuesByMode": {
         "43174:13": {
@@ -18742,7 +18741,7 @@
       "remote": false,
       "resolvedType": "STRING",
       "scopes": [
-        "ALL_SCOPES"
+        "FONT_STYLE"
       ],
       "valuesByMode": {
         "43174:13": {
@@ -22219,7 +22218,7 @@
       "remote": false,
       "resolvedType": "STRING",
       "scopes": [
-        "ALL_SCOPES"
+        "FONT_STYLE"
       ],
       "valuesByMode": {
         "43174:13": {
@@ -24183,38 +24182,6 @@
       },
       "variableCollectionId": "VariableCollectionId:42952:95"
     },
-    "VariableID:47805:4777": {
-      "codeSyntax": {},
-      "description": "",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:47805:4777",
-      "key": "d50d6fcc3da0213ff1fec029d3a4df195216ea0a",
-      "name": "utilities/font-weight/semibold",
-      "remote": false,
-      "resolvedType": "STRING",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "43174:13": {
-          "id": "VariableID:44029:1631",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43174:14": {
-          "id": "VariableID:44029:1631",
-          "type": "VARIABLE_ALIAS"
-        },
-        "44883:0": {
-          "id": "VariableID:47835:23075",
-          "type": "VARIABLE_ALIAS"
-        },
-        "47719:0": {
-          "id": "VariableID:47805:4779",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:43174:55999"
-    },
     "VariableID:47805:4778": {
       "codeSyntax": {},
       "description": "400",
@@ -24941,7 +24908,7 @@
       "remote": false,
       "resolvedType": "STRING",
       "scopes": [
-        "ALL_SCOPES"
+        "FONT_STYLE"
       ],
       "valuesByMode": {
         "43174:13": {

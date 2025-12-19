@@ -1,8 +1,5 @@
 import { BaseTokenProcessor } from './base.js';
 
-/**
- * Processor for typography tokens
- */
 export class TypographyTokenProcessor extends BaseTokenProcessor {
   constructor(options = {}) {
     super(options);
@@ -11,15 +8,48 @@ export class TypographyTokenProcessor extends BaseTokenProcessor {
       'font-family': 'font',
       'font-size': null
     };
+
+    this.fontWeightMap = {
+      default: {
+        Regular: '400',
+        Semibold: '600',
+        Bold: '600',
+        Bk: '400'
+      },
+      VB: {
+        Regular: '400',
+        Semibold: '600',
+        Bold: '700'
+      },
+      KID: {
+        Regular: '400',
+        Semibold: '600',
+        Bold: '700'
+      }
+    };
   }
 
   canProcess(token) {
-    return token.type === 'fontSize' || token.type === 'fontWeight' || token.path.includes('font-family');
+    return (
+      token.type === 'fontSize' ||
+      token.type === 'fontWeight' ||
+      token.path.includes('font-family') ||
+      token.path.includes('font-weight')
+    );
   }
 
   process(token) {
     const processed = this.processTokenPath(token);
-    const value = this.getTokenValue(token);
+    let value = this.getTokenValue(token);
+
+    const isFontWeight = token.path.includes('font-weight');
+
+    if (isFontWeight) {
+      const themeMap = this.fontWeightMap[processed.variant] || this.fontWeightMap.default;
+      if (themeMap[value]) {
+        value = themeMap[value];
+      }
+    }
 
     if (['utilities', 'components'].includes(processed.path[0])) {
       processed.path = processed.path.slice(1);
@@ -44,7 +74,7 @@ export class TypographyTokenProcessor extends BaseTokenProcessor {
     cssvariables.push({
       type: 'spacing',
       name: this.cssprefix(name),
-      value: token.type === 'string' ? `'${value}'` : value,
+      value: isFontWeight ? value : token.type === 'string' ? `'${value}'` : value,
       variant: processed.variant
     });
 
