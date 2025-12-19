@@ -38,7 +38,7 @@ export const Default = {
  */
 export const Variants = {
   render: () =>
-    html` <div class="flex gap-12 bg-neutral-100 p-8">
+    html` <div class="flex gap-12">
       <div class="sd-chip">primary-200</div>
       <div class="sd-chip sd-chip--primary-300">primary-300</div>
       <div class="sd-chip sd-chip--primary-500">primary-500</div>

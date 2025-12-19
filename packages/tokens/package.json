@@ -6,12 +6,13 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "build": "node scripts/build.mjs",
     "verify": "pnpm build && echo '✅ Build verified'",
     "postversion": "pnpm build",
-    "fetch:figma": "node ./scripts/figma/fetch-variables.js"
+    "fetch:figma": "node ./scripts/figma/fetch-variables.js && pnpm build"
   },
   "files": [
     "dist",
