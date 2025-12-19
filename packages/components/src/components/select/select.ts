@@ -204,7 +204,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @property() getTag: (option: SdOption, index: number) => TemplateResult | string | HTMLElement = option => {
     return html`
       <sd-tag
-        class="relative z-10 min-w-0"
+        class="relative z-10 min-w-0 max-w-full"
         ?disabled=${this.disabled}
         part="tag"
         exportparts="
@@ -690,7 +690,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
           const tag = this.getTag(option, index);
           // Wrap so we can handle the remove
-          return html` <div @sd-remove=${(e: CustomEvent) => this.handleTagRemove(e, option)}>
+          return html` <div @sd-remove=${(e: CustomEvent) => this.handleTagRemove(e, option)} class="max-w-full">
             ${typeof tag === 'string' ? unsafeHTML(tag) : tag}
           </div>`;
         }
@@ -700,7 +700,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       return [
         html`
           <sd-tag
-            class="z-10 min-w-0"
+            class="z-10 min-w-0 max-w-full"
             ?disabled=${this.disabled}
             part="tag"
             exportparts="
@@ -996,7 +996,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             >
               <div
                 class=${cx(
-                  'input-container flex items-center w-full h-full px-4 min-w-0',
+                  'input-container flex items-center w-full h-full px-4 min-w-0 gap-2',
                   {
                     sm: 'py-1',
                     md: 'py-1',
