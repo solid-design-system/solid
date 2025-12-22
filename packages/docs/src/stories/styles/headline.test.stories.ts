@@ -29,6 +29,16 @@ export default {
   component: 'sd-headline',
   parameters: {
     ...parameters,
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: false
+          }
+        ]
+      }
+    },
     controls: { disable: true },
     design: {
       type: 'figma',

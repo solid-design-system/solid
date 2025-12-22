@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.32.0-next.2
+
+### Patch Changes
+
+- - Add `kid-starter` theme. _[`#2663`](https://github.com/solid-design-system/solid/pull/2663) [`575bcf1`](https://github.com/solid-design-system/solid/commit/575bcf1ae1ce4bf0ee1773be5519ae07c5c8981a) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 1.32.0-next.1
 
 ### Patch Changes
