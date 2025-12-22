@@ -137,7 +137,7 @@ export default class SdOption extends SolidElement {
         part="base"
         style="word-break: break-word;"
         class=${cx(
-          'px-4 flex items-start w-full transition-colors duration-fast ease-in-out text-left text-base relative',
+          'px-4 flex items-center w-full transition-colors duration-fast ease-in-out text-left text-base relative',
           {
             sm: 'text-sm py-1',
             md: 'text-base py-2',
@@ -164,7 +164,7 @@ export default class SdOption extends SolidElement {
               id="control"
               part="control ${this.selected ? ' control--checked' : 'control--unchecked'}"
               class=${cx(
-                'relative flex flex-shrink-0 items-start justify-center border rounded-sm h-4 w-4 mr-2 mt-1',
+                'relative flex flex-shrink-0 items-center justify-center border rounded-sm h-4 w-4 mr-2',
                 this.disabled
                   ? 'border-neutral-500'
                   : this.selected
