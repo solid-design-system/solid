@@ -103,6 +103,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   /** Makes the textarea a required field. */
   @property({ type: Boolean, reflect: true }) required = false;
 
+  /** Enables the floating label behavior for the input. */
+  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = true;
+
   /** The minimum length of input that will be considered valid. */
   @property({ type: Number, reflect: true }) minlength: number;
 
@@ -335,6 +338,8 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasTooltip = !!slots['tooltip'];
+    const hasValue = this.value !== null && String(this.value).length > 0;
+    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue);
 
     // Hierarchy of textarea states:
     const textareaState = this.disabled
@@ -365,7 +370,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
     return html`
       <div part="form-control" class="flex flex-col h-full text-left">
-        ${hasLabel || hasTooltip
+        ${(hasLabel && !this.floatingLabel) || hasTooltip
           ? html`<div class="flex items-center gap-1 mb-2">
               <label
                 part="form-control-label"
@@ -398,7 +403,38 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                 default: 'form-control-color-border'
               }[textareaState]
             )}
-          ></div>
+          >
+            ${hasLabel && this.floatingLabel
+              ? html`
+                  <label
+                    id="label"
+                    part="form-control-floating-label"
+                    class=${cx(
+                      'absolute left-4 z-20 pointer-events-none transition-all duration-200',
+                      !isFloatingLabelActive
+                        ? 'top-1/2 -translate-y-1/2 text-base'
+                        : this.size === 'lg'
+                          ? 'top-2 text-xs'
+                          : 'top-1 text-xs'
+                    )}
+                    for="input"
+                  >
+                    <span
+                      class=${cx(
+                        'leading-none',
+                        (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
+                        isFloatingLabelActive &&
+                          !this.visuallyDisabled &&
+                          !this.disabled &&
+                          'form-control--filled__floating-label-color-text'
+                      )}
+                    >
+                      ${this.label}
+                    </span>
+                  </label>
+                `
+              : null}
+          </div>
           <div
             part="base"
             class=${cx(
@@ -429,6 +465,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                 this.disabled && 'cursor-not-allowed',
                 textSize
               )}
+              style=${this.floatingLabel ? 'padding-top: 30px;' : ''}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
               name=${ifDefined(this.name)}
               .value=${live(this.value)}
@@ -436,7 +473,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               ?readonly=${this.readonly}
               ?required=${this.required}
               ?visually-disabled=${this.visuallyDisabled}
-              placeholder=${ifDefined(this.placeholder)}
+              placeholder=${!this.floatingLabel ? ifDefined(this.placeholder) : ''}
               minlength=${ifDefined(this.minlength)}
               maxlength=${ifDefined(this.maxlength)}
               rows=${ifDefined(this.rows)}
