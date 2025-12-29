@@ -204,6 +204,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   /** The combobox's required attribute. */
   @property({ type: Boolean, reflect: true }) required = false;
 
+  /** Enables the floating label behavior for the input. */
+  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = false;
+
   /**
    * The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults
    * to `text`.
@@ -1156,6 +1159,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     const hasLabel = this.label ? true : !!hasLabelSlot;
     const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
     const hasClearIcon = this.clearable && !this.disabled && !this.visuallyDisabled;
+    const hasValue = this.value !== null && String(this.value).length > 0;
+    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue);
 
     // Hierarchy of input states:
     const selectState = this.disabled
@@ -1184,6 +1189,18 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       md: 'text-lg',
       lg: 'text-xl'
     }[this.size];
+    const verticalPadding =
+      this.size === 'lg'
+        ? !this.floatingLabel
+          ? 'py-2'
+          : isFloatingLabelActive
+            ? 'py-3'
+            : 'py-4'
+        : !this.floatingLabel
+          ? 'py-1'
+          : isFloatingLabelActive
+            ? 'py-2'
+            : 'py-3';
 
     return html`
       <div
@@ -1196,15 +1213,78 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           this.open && 'z-50'
         )}
       >
-        <label
-          id="label"
-          part="form-control-label"
-          class=${hasLabel && 'inline-block mb-2 form-control-color-text'}
-          aria-hidden=${!hasLabel}
-          @click=${this.handleLabelClick}
-        >
-          <slot name="label">${this.label}</slot>
-        </label>
+        ${hasLabel && !this.floatingLabel
+          ? html`<div class="flex items-center gap-1 mb-2">
+              <label
+                id="label"
+                part="form-control-label"
+                class=${hasLabel && 'inline-block form-control-color-text'}
+                aria-hidden=${hasLabel ? 'false' : 'true'}
+                @click=${this.handleLabelClick}
+              >
+                <slot name="label">${this.label}</slot>
+              </label>
+            </div>`
+          : this.floatingLabel
+            ? html`
+                <label
+                  id="label"
+                  part="form-control-floating-label"
+                  class=${cx(
+                    'absolute left-4 z-20 pointer-events-none transition-all duration-200',
+                    !isFloatingLabelActive
+                      ? 'top-1/2 -translate-y-1/2 text-base'
+                      : this.size === 'lg'
+                        ? 'top-2 text-xs'
+                        : 'top-1 text-xs'
+                  )}
+                  for="input"
+                >
+                  <span
+                    class=${cx(
+                      'leading-none',
+                      (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
+                      isFloatingLabelActive &&
+                        !this.visuallyDisabled &&
+                        !this.disabled &&
+                        'form-control--filled__floating-label-color-text'
+                    )}
+                  >
+                    ${this.label}
+                  </span>
+                </label>
+              `
+            : null}
+        ${hasLabel && this.floatingLabel
+          ? html`
+              <label
+                id="label"
+                part="form-control-floating-label"
+                class=${cx(
+                  'absolute left-4 z-20 pointer-events-none transition-all duration-200',
+                  !isFloatingLabelActive
+                    ? 'top-1/2 -translate-y-1/2 text-base'
+                    : this.size === 'lg'
+                      ? 'top-2 text-xs'
+                      : 'top-1 text-xs'
+                )}
+                for="input"
+              >
+                <span
+                  class=${cx(
+                    'leading-none',
+                    (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
+                    isFloatingLabelActive &&
+                      !this.visuallyDisabled &&
+                      !this.disabled &&
+                      'form-control--filled__floating-label-color-text'
+                  )}
+                >
+                  ${this.label}
+                </span>
+              </label>
+            `
+          : null}
 
         <span aria-live="polite" class="sr-only">${this.deletedTagLabel}</span>
 
@@ -1272,7 +1352,13 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                   ></slot>`
                 : ''}
               ${this.multiple && this.useTags && this.tags.length > 0
-                ? html`<div part="tags" class="${cx('flex items-center gap-1', iconMarginRight)}">${this.tags}</div>`
+                ? html`<div
+                    part="tags"
+                    class="${cx('flex items-center gap-1', iconMarginRight)}"
+                    style="padding-top: 20px;"
+                  >
+                    ${this.tags}
+                  </div>`
                 : null}
               <input
                 id="display-input"
@@ -1284,12 +1370,17 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                   cursorStyles,
                   this.selectedTextLabel && !this.multiple
                     ? 'placeholder:form-control-color-text'
-                    : 'placeholder:text-neutral-700'
+                    : 'placeholder:text-neutral-700',
+                  verticalPadding,
+                  this.size === 'sm' ? (isFloatingLabelActive ? 'h-4' : 'h-6') : isFloatingLabelActive ? 'h-6' : 'h-8',
+                  isFloatingLabelActive && 'leading-none mt-4'
                 )}
                 type="text"
                 placeholder=${this.selectedTextLabel && !this.multiple
                   ? this.selectedTextLabel
-                  : this.placeholder || this.localize.term('comboboxDefaultPlaceholder')}
+                  : this.floatingLabel
+                    ? ''
+                    : this.placeholder || this.localize.term('comboboxDefaultPlaceholder')}
                 .disabled=${this.disabled}
                 .value=${this.displayInputValue}
                 autocomplete="off"
