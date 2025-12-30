@@ -120,7 +120,8 @@ export default class SdTag extends SolidElement {
 
   render() {
     const isLink = this.isLink();
-    const tag = isLink ? literal`a` : this.removable ? literal`div` : literal`button`;
+    const isRemovable = this.removable && !this.selected && !this.toggleable;
+    const tag = isLink ? literal`a` : isRemovable ? literal`div` : literal`button`;
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
@@ -136,7 +137,7 @@ export default class SdTag extends SolidElement {
         aria-labelledby="content"
         aria-disabled=${this.disabled ? 'true' : 'false'}
         aria-pressed=${ifDefined(this.toggleable ? this.selected : undefined)}
-        tabindex=${this.disabled || this.removable ? '-1' : '0'}
+        tabindex=${this.disabled || isRemovable ? '-1' : '0'}
         @blur=${this.handleBlur}
         @focus=${this.handleFocus}
         class=${cx(
@@ -149,14 +150,14 @@ export default class SdTag extends SolidElement {
           }[this.size],
           {
             /* padding */
-            lg: !this.removable ? 'px-4 py-2' : 'pl-4 pr-3 py-2',
-            sm: !this.removable ? 'px-3 py-[5px]' : 'pl-3 pr-2 py-2'
+            lg: !isRemovable ? 'px-4 py-2' : 'pl-4 pr-3 py-2',
+            sm: !isRemovable ? 'px-3 py-[5px]' : 'pl-3 pr-2 py-2'
           }[this.size],
           /* colors */
           !this.selected
             ? cx(
                 'sd-tag--default-color-border sd-tag--default-color-text disabled:sd-tag--disabled-color-border disabled:text-neutral-500',
-                !this.removable
+                !isRemovable
                   ? 'sd-tag--default-color-background hover:border-primary-500 hover:text-primary-500 hover:sd-tag--default--hover-color-background'
                   : 'sd-tag--default-color-background has-[button:hover]:border-primary-500 has-[button:hover]:text-primary-500'
               )
@@ -166,7 +167,7 @@ export default class SdTag extends SolidElement {
       >
         <slot id="content" part='content'></slot>
         ${
-          this.removable && !isLink
+          isRemovable && !isLink
             ? html` <button class="sd-interactive flex items-center" type="button" @click=${this.handleRemove}>
                 <slot part="removable-indicator" name="removable-indicator">
                   <sd-icon library="_internal" name="close" label=${this.localize.term('remove')}></sd-icon>
