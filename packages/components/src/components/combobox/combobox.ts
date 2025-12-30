@@ -1201,7 +1201,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           : isFloatingLabelActive
             ? 'py-2'
             : 'py-3';
-
     return html`
       <div
         part="form-control"
@@ -1354,8 +1353,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               ${this.multiple && this.useTags && this.tags.length > 0
                 ? html`<div
                     part="tags"
+                    style=${this.floatingLabel ? 'margin-top: 20px;' : ''}
                     class="${cx('flex items-center gap-1', iconMarginRight)}"
-                    style="padding-top: 20px;"
                   >
                     ${this.tags}
                   </div>`

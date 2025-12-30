@@ -465,7 +465,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                 this.disabled && 'cursor-not-allowed',
                 textSize
               )}
-              style=${this.floatingLabel ? 'padding-top: 30px;' : ''}
+              style=${this.floatingLabel ? 'margin-top: 20px;' : ''}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
               name=${ifDefined(this.name)}
               .value=${live(this.value)}

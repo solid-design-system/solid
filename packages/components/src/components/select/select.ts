@@ -1092,8 +1092,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 ${this.multiple && this.useTags
                   ? html` <div
                       part="tags"
-                      class=${cx('flex-grow flex flex-wrap items-center gap-1')}
-                      style="padding-top: 20px;"
+                      class=${cx('flex-grow flex flex-wrap items-center gap-1', this.floatingLabel && 'pt-6')}
                     >
                       ${this.tags}
                     </div>`
