@@ -90,12 +90,6 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   /** The element help text. If you need to display HTML, use the `help-text` slot instead. */
   @property({ type: String, attribute: 'help-text', reflect: true }) helpText = '';
 
-  /**
-   * Quick way to make the group label bold. Bolding the group label is highly recommended for visual clarity between the label and radio options.
-   * It is false by default for consistency among the other form elements which do not use bold labels by default.
-   */
-  @property({ type: Boolean, reflect: true }) boldLabel = false;
-
   /** The name of the radio group, submitted as a name/value pair with form data. */
   @property({ type: String, reflect: true }) name = 'option';
 
@@ -391,11 +385,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
               <legend
                 part="form-control-label"
                 id="label"
-                class=${cx(
-                  'p-0 leading-normal text-black text-left',
-                  hasLabel ? 'inline-block' : 'hidden',
-                  this.boldLabel && 'font-bold'
-                )}
+                class=${cx('p-0 font-bold leading-normal text-black text-left', hasLabel ? 'inline-block' : 'hidden')}
                 @click=${this.focus}
                 aria-hidden=${hasLabel ? 'false' : 'true'}
               >
