@@ -115,18 +115,16 @@ export default class SdTeaserMedia extends SolidElement {
 
               ${slots['teaser-has-expandable']
                 ? html`
-                    <div>
-                      <sd-icon
-                        class="inline-block group-hover:hidden transition-transform w-6 h-6"
-                        library="_internal"
-                        name="chevron-down"
-                      ></sd-icon>
-                      <sd-icon
-                        class="hidden group-hover:inline-block transition-transform w-6 h-6"
-                        library="_internal"
-                        name="chevron-up"
-                      ></sd-icon>
-                    </div>
+                    <sd-icon
+                      class="inline-block group-hover:hidden transition-transform w-6 h-6"
+                      library="_internal"
+                      name="chevron-down"
+                    ></sd-icon>
+                    <sd-icon
+                      class="hidden group-hover:inline-block transition-transform w-6 h-6"
+                      library="_internal"
+                      name="chevron-up"
+                    ></sd-icon>
                   `
                 : null}
 
