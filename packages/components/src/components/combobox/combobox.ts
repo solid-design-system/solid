@@ -1353,8 +1353,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               ${this.multiple && this.useTags && this.tags.length > 0
                 ? html`<div
                     part="tags"
-                    style=${this.floatingLabel ? 'margin-top: 20px;' : ''}
-                    class="${cx('flex items-center gap-1', iconMarginRight)}"
+                    class="${cx(
+                      'flex items-center gap-1',
+                      iconMarginRight,
+                      this.floatingLabel && 'combobox--floating-label'
+                    )}"
                   >
                     ${this.tags}
                   </div>`
@@ -1616,6 +1619,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
       mark {
         @apply bg-transparent text-inherit font-bold;
+      }
+
+      .combobox--floating-label {
+        margin-top: 20px;
       }
     `
   ];

@@ -115,6 +115,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   /** Help text shown below the input. Can be overridden with slot="help-text". */
   @property({ type: String, attribute: 'help-text', reflect: true }) helpText = '';
 
+  /** Enables the floating label behavior for the input. */
+  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = false;
+
   /** Disables the control entirely when true. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
@@ -1750,6 +1753,8 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasTooltip = !!slots['tooltip'];
+    const hasValue = this.value !== null && String(this.value).length > 0;
+    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue);
 
     const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary';
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
@@ -1795,7 +1800,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
           (this.disabled || this.visuallyDisabled) && 'cursor-not-allowed'
         )}
       >
-        ${hasLabel || hasTooltip
+        ${(hasLabel && !this.floatingLabel) || hasTooltip
           ? html`<div class="flex items-center gap-1 mb-2">
               <label
                 part="form-control-label"
@@ -1826,7 +1831,38 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               this.open && this.alignment === 'left' ? 'rounded-bl-none' : '',
               this.open && this.alignment === 'right' ? 'rounded-br-none' : ''
             )}
-          ></div>
+          >
+            ${hasLabel && this.floatingLabel
+              ? html`
+                  <label
+                    id="label"
+                    part="form-control-floating-label"
+                    class=${cx(
+                      'absolute left-4 z-20 pointer-events-none transition-all duration-200',
+                      !isFloatingLabelActive
+                        ? 'top-1/2 -translate-y-1/2 text-base'
+                        : this.size === 'lg'
+                          ? 'top-2 text-xs'
+                          : 'top-1 text-xs'
+                    )}
+                    for="input"
+                  >
+                    <span
+                      class=${cx(
+                        'leading-none',
+                        (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
+                        isFloatingLabelActive &&
+                          !this.visuallyDisabled &&
+                          !this.disabled &&
+                          'form-control--filled__floating-label-color-text'
+                      )}
+                    >
+                      ${this.label}
+                    </span>
+                  </label>
+                `
+              : null}
+          </div>
           <sd-popup
             @sd-current-placement=${this.handleCurrentPlacement}
             class=${cx('inline-flex relative w-full')}
@@ -1861,12 +1897,14 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                     ? 'placeholder:text-neutral-500 cursor-not-allowed'
                     : 'placeholder:text-neutral-700',
                   { sm: 'h-8', md: 'h-10', lg: 'h-12' }[this.size],
-                  textSize
+                  textSize,
+                  this.floatingLabel && 'datepicker--floating-label'
                 )}
                 autocomplete="off"
                 spellcheck="false"
-                placeholder=${this.placeholder ||
-                this.localize.term(this.range ? 'dateRangePlaceholder' : 'datePlaceholder')}
+                placeholder=${this.floatingLabel
+                  ? ''
+                  : this.placeholder || this.localize.term(this.range ? 'dateRangePlaceholder' : 'datePlaceholder')}
                 ?disabled=${this.disabled}
                 ?readonly=${this.readonly || this.visuallyDisabled}
                 @input=${this.handleInput}
@@ -1931,6 +1969,10 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
 
       :host([visually-disabled]) input {
         caret-color: transparent;
+      }
+
+      .datepicker--floating-label {
+        margin-top: 20px;
       }
     `
   ];
