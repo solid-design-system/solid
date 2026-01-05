@@ -1160,7 +1160,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
     const hasClearIcon = this.clearable && !this.disabled && !this.visuallyDisabled;
     const hasValue = this.value !== null && String(this.value).length > 0;
-    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue);
+    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue || this.placeholder);
 
     // Hierarchy of input states:
     const selectState = this.disabled
@@ -1380,9 +1380,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 type="text"
                 placeholder=${this.selectedTextLabel && !this.multiple
                   ? this.selectedTextLabel
-                  : this.floatingLabel
-                    ? ''
-                    : this.placeholder || this.localize.term('comboboxDefaultPlaceholder')}
+                  : this.placeholder ||
+                    (this.floatingLabel && !isFloatingLabelActive
+                      ? ''
+                      : this.localize.term('comboboxDefaultPlaceholder'))}
                 .disabled=${this.disabled}
                 .value=${this.displayInputValue}
                 autocomplete="off"

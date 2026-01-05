@@ -339,7 +339,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasTooltip = !!slots['tooltip'];
     const hasValue = this.value !== null && String(this.value).length > 0;
-    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue);
+    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue || this.placeholder);
 
     // Hierarchy of textarea states:
     const textareaState = this.disabled
@@ -474,7 +474,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               ?readonly=${this.readonly}
               ?required=${this.required}
               ?visually-disabled=${this.visuallyDisabled}
-              placeholder=${!this.floatingLabel ? ifDefined(this.placeholder) : ''}
+              placeholder=${ifDefined(this.placeholder)}
               minlength=${ifDefined(this.minlength)}
               maxlength=${ifDefined(this.maxlength)}
               rows=${ifDefined(this.rows)}

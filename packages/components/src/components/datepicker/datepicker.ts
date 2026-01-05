@@ -1754,7 +1754,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasTooltip = !!slots['tooltip'];
     const hasValue = this.value !== null && String(this.value).length > 0;
-    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue);
+    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue || this.placeholder);
 
     const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary';
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
@@ -1902,9 +1902,10 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 )}
                 autocomplete="off"
                 spellcheck="false"
-                placeholder=${this.floatingLabel
+                placeholder=${this.placeholder ||
+                (this.floatingLabel && !isFloatingLabelActive
                   ? ''
-                  : this.placeholder || this.localize.term(this.range ? 'dateRangePlaceholder' : 'datePlaceholder')}
+                  : this.localize.term(this.range ? 'dateRangePlaceholder' : 'datePlaceholder'))}
                 ?disabled=${this.disabled}
                 ?readonly=${this.readonly || this.visuallyDisabled}
                 @input=${this.handleInput}
