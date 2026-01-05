@@ -457,7 +457,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               id="input"
               class=${cx(
                 'ps-4 flex-grow focus:outline-none bg-transparent placeholder:text-neutral-700 resize-none group-has-[sd-icon]:pe-8',
-                this.floatingLabel && 'textarea--floating-label',
+                this.floatingLabel && 'mt-4',
                 {
                   sm: 'py-1',
                   md: 'py-1',
@@ -558,10 +558,6 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
       .no-scrollbar::-webkit-scrollbar {
         @apply hidden;
-      }
-
-      .textarea--floating-label {
-        margin-top: 20px;
       }
     `
   ];

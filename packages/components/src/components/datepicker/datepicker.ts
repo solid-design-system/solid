@@ -1897,7 +1897,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                     : 'placeholder:text-neutral-700',
                   { sm: 'h-8', md: 'h-10', lg: 'h-12' }[this.size],
                   textSize,
-                  this.floatingLabel && 'datepicker--floating-label'
+                  this.floatingLabel && 'mt-4'
                 )}
                 autocomplete="off"
                 spellcheck="false"
@@ -1967,10 +1967,6 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
 
       :host([visually-disabled]) input {
         caret-color: transparent;
-      }
-
-      .datepicker--floating-label {
-        margin-top: 20px;
       }
     `
   ];
