@@ -888,8 +888,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.disabled;
     const hasTooltip = !!slots['tooltip'];
-    const hasValue = this.value !== null && String(this.value).length > 0;
-    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue || this.placeholder);
+    const isFloatingLabelActive = this.floatingLabel && hasLabel;
 
     // Hierarchy of input states:
     const selectState = this.disabled
@@ -1070,8 +1069,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   )}
                   type="text"
                   .disabled=${this.disabled}
-                  placeholder=${this.placeholder ||
-                  (this.floatingLabel && !isFloatingLabelActive ? '' : this.localize.term('selectDefaultPlaceholder'))}
+                  placeholder=${this.placeholder || this.localize.term('selectDefaultPlaceholder')}
                   .value=${this.displayLabel}
                   autocomplete="off"
                   spellcheck="false"
