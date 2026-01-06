@@ -48,6 +48,32 @@ export const Default = {
 };
 
 /**
+ * Use the `label` attribute to give the textarea an accessible label. For labels that contain HTML, use the `label` slot instead.
+ */
+export const Labels = {
+  name: 'Label',
+  args: {
+    label: 'Label'
+  },
+  render: (args: any) => {
+    return html`<div class="w-[250px]">${generateTemplate({ args })}</div> `;
+  }
+};
+
+/**
+ * Use the `floating-label` attribute to enable a floating label on the textarea.
+ */
+export const FloatingLabel = {
+  name: 'Floating Label',
+  args: {
+    'floating-label': true
+  },
+  render: (args: any) => {
+    return html`<div class="w-[250px]">${generateTemplate({ args })}</div> `;
+  }
+};
+
+/**
  * Use the `placeholder` attribute to add a placeholder.
  */
 
@@ -446,6 +472,8 @@ export const Mouseless = {
 
 export const Combination = generateScreenshotStory([
   Default,
+  Labels,
+  FloatingLabel,
   Placeholders,
   Disabled,
   Readonly,

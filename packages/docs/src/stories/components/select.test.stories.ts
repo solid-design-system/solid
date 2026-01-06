@@ -94,6 +94,32 @@ export const Default = {
 };
 
 /**
+ * Use the `label` attribute to give the combobox an accessible label. For labels that contain HTML, use the `label` slot instead.
+ */
+export const Labels = {
+  name: 'Label',
+  args: {
+    label: 'Label'
+  },
+  render: (args: any) => {
+    return html`<div class="h-[260px] w-[420px]">${generateTemplate({ args })}</div>`;
+  }
+};
+
+/**
+ * Use the `floating-label` attribute to enable a floating label on the combobox.
+ */
+export const FloatingLabel = {
+  name: 'Floating Label',
+  args: {
+    'floating-label': true
+  },
+  render: (args: any) => {
+    return html`<div class="h-[260px] w-[420px]">${generateTemplate({ args })}</div>`;
+  }
+};
+
+/**
  * Use the `size` attribute to change a select’s size. It will cascade to slotted `sd-option` elements.
  */
 
@@ -648,6 +674,8 @@ export const SolidForm = {
 
 export const Combination = generateScreenshotStory([
   Default,
+  Labels,
+  FloatingLabel,
   SizeMultiple,
   DisabledMultiple,
   ValidInvalid,

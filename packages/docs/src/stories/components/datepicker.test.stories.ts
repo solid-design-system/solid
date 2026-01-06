@@ -50,6 +50,32 @@ export const Default = {
   }
 };
 
+/**
+ * Use the `label` attribute to give the datepicker an accessible label. For labels that contain HTML, use the `label` slot instead.
+ */
+export const Labels = {
+  name: 'Label',
+  args: {
+    label: 'Label'
+  },
+  render: (args: any) => {
+    return html`<div class="w-[400px]">${generateTemplate({ args })}</div>`;
+  }
+};
+
+/**
+ * Use the `floating-label` attribute to enable a floating label on the datepicker.
+ */
+export const FloatingLabel = {
+  name: 'Floating Label',
+  args: {
+    'floating-label': true
+  },
+  render: (args: any) => {
+    return html`<div class="w-[400px]">${generateTemplate({ args })}</div>`;
+  }
+};
+
 export const Size = {
   name: 'Size',
   render: (args: any) => {
@@ -158,6 +184,8 @@ export const LocaleAware = {
 
 export const Combination = generateScreenshotStory([
   Default,
+  Labels,
+  FloatingLabel,
   Size,
   Required,
   Placeholder,
