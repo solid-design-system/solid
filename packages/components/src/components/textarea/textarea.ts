@@ -104,7 +104,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   @property({ type: Boolean, reflect: true }) required = false;
 
   /** Enables the floating label behavior for the input. */
-  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = true;
+  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = false;
 
   /** The minimum length of input that will be considered valid. */
   @property({ type: Number, reflect: true }) minlength: number;
@@ -466,7 +466,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                 this.disabled && 'cursor-not-allowed',
                 textSize
               )}
-              style=${this.floatingLabel ? 'margin-top: 20px;' : ''}
+              style=${this.floatingLabel ? 'margin-top: 25px;' : ''}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
               name=${ifDefined(this.name)}
               .value=${live(this.value)}
