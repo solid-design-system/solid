@@ -1460,7 +1460,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           <slot name="help-text">${this.helpText}</slot>
         </div>
       </div>
-      ${this.formControlController.renderInvalidMessage()}
+      ${this.formControlController.renderInvalidMessage(this.size)}
     `;
   }
   static styles = [

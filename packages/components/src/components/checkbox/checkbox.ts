@@ -335,13 +335,13 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
                 <sd-icon
                   id="invalid-icon"
                   part="invalid-icon"
-                  class=${cx('text-error mt-1')}
+                  class=${cx('text-error mt-2')}
                   library="_internal"
                   name="risk"
                 ></sd-icon>
               `
             : ''}
-          ${this.formControlController.renderInvalidMessage()}
+          ${this.formControlController.renderInvalidMessage(this.size)}
         </div>
       </div>
     `;
