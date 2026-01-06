@@ -996,7 +996,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             >
               <div
                 class=${cx(
-                  'input-container flex items-center w-full h-full px-4 min-w-0 gap-2',
+                  'input-container flex items-center w-full h-full px-4 min-w-0',
                   {
                     sm: 'py-1',
                     md: 'py-1',
