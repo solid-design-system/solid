@@ -66,7 +66,7 @@ export const Size = {
 export const Disabled = {
   name: 'Disabled',
   render: () => html`
-    <sd-radio-group label="Disabled radio in group" boldLabel value="1">
+    <sd-radio-group label="Disabled radio in group" value="1">
       <sd-radio value="1">Radio 1</sd-radio>
       <sd-radio value="2" disabled>Radio 2</sd-radio>
       <sd-radio value="3">Radio 3</sd-radio>
@@ -84,7 +84,7 @@ export const Disabled = {
 export const VisuallyDisabled = {
   name: 'Visually Disabled',
   render: () => html`
-    <sd-radio-group label="Visually disabled" boldLabel value="1">
+    <sd-radio-group label="Visually disabled" value="1">
       <sd-tooltip content="Visually disabled" trigger="hover focus" size="sm">
         <sd-radio value="1" visually-disabled>Radio 1</sd-radio>
       </sd-tooltip>
@@ -101,7 +101,7 @@ export const Invalid = {
   name: 'Invalid',
   render: () => html`
     <form id="invalid-form" class="flex flex-col gap-8">
-      <sd-radio-group name="radio-group" id="invalid-radio" required boldlabel>
+      <sd-radio-group name="radio-group" id="invalid-radio" required>
         <sd-radio value="1">Radio 1</sd-radio>
         <sd-radio value="2">Radio 2</sd-radio>
         <sd-radio value="3">Radio 3</sd-radio>
