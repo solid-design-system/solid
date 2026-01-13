@@ -74,7 +74,7 @@ async function runBuild() {
       writeFileSync(`./${outdir}/${config.buildPath}/${theme.name}/${theme.name}.css`, theme.content);
     });
 
-    writeFileSync(`./${outdir}/${config.buildPath}/${config.output}.css`, stylesheet);
+    writeFileSync(`./${outdir}/${config.output}.css`, stylesheet);
   });
 
   await nextTask(`Creating ${cdndir} output`, () => {
@@ -82,8 +82,6 @@ async function runBuild() {
       mkdirSync(`./${cdndir}/${config.buildPath}/${theme.name}`, { recursive: true });
       writeFileSync(`./${cdndir}/${config.buildPath}/${theme.name}/${theme.name}.css`, minimizeCss(theme.content));
     });
-
-    writeFileSync(`./${cdndir}/${config.buildPath}/${config.output}.css`, stylesheet);
   });
 
   await nextTask('Generating theme.js', async () => {

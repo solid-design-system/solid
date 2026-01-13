@@ -151,7 +151,7 @@ You must import at least one theme to use Solid Components or Styles.
     ```
 
     ```js
-    import '@solid-design-system/tokens/themes/ui-light/ui-light.css';
+    import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
     ```
 
   </sd-tab-panel>
@@ -331,7 +331,7 @@ Example:
 Import the SCSS files from `@solid-design-system/tokens` and use the SCSS variables in your own styles.
 
 ```scss
-@import '@solid-design-system/tokens/scss/index.scss';
+@import '@solid-design-system/tokens/dist/scss';
 ```
 
 Example:
@@ -349,7 +349,7 @@ Import the TailwindCSS configuration from `@solid-design-system/tokens` and exte
 
 ```css
 @import 'tailwindcss';
-@import '@solid-design-system/tokens/tailwind/tailwind.css';
+@import '@solid-design-system/tokens/dist/tailwind.css';
 ```
 
 This will automatically include all Solid Design System tokens into your Tailwind setup and make them available as classes.
@@ -360,7 +360,7 @@ Import the TailwindCSS configuration from `@solid-design-system/tokens` and exte
 
 ```js
 // tailwind.config.js
-const solidDesignSystemTokens = require('@solid-design-system/tokens/tailwind/tailwind.config.cjs');
+const solidDesignSystemTokens = require('@solid-design-system/tokens/dist/tailwind.json');
 
 module.exports = {
   theme: {
