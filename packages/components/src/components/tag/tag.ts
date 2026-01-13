@@ -28,6 +28,23 @@ import SolidElement from '../../internal/solid-element';
  * @csspart base - The component's base wrapper.
  * @csspart content - The tag's content.
  * @csspart removable-indicator - The tag's removability indicator.
+ *
+ * @cssproperty --sd-tag--default-color-text - The default text color for tags in their default state.
+ * @cssproperty --sd-tag--default-color-background - The default color background for tags in their default state.
+ * @cssproperty --sd-tag--default-color-border - The default color border for tags in their default state.
+ * @cssproperty --sd-tag--default--hover-color-background - The background color for tags in default state on hover.
+ * @cssproperty --sd-tag--selected--default-color-background - The default background color for selected tags.
+ * @cssproperty --sd-tag--selected--default-color-text - The default text color for selected tags.
+ * @cssproperty --sd-tag--selected--default-color-border - The border color for selected tags in default state.
+ * @cssproperty --sd-tag--selected--hover-color-background - The background color for selected tags in hover state.
+ * @cssproperty --sd-tag--selected--hover-color-border - The border color for selected tags in hover state.
+ * @cssproperty --sd-tag--selected--hover-color-text - The text color for selected tags in hover state.
+ * @cssproperty --sd-tag--selected-border-width - The border width for selected tags.
+ * @cssproperty --sd-tag--disabled-color-border - The border color for disabled tags.
+ * @cssproperty --sd-tag-border-radius - The border radius for tags.
+ * @cssproperty --sd-tag--size-lg-font-size - The font size for large tags.
+ * @cssproperty --sd-tag--size-sm-font-size - The font size for small tags.
+ * @cssproperty --sd-tag-font-weight - The font weight for tags.
  */
 @customElement('sd-tag')
 export default class SdTag extends SolidElement {
@@ -95,7 +112,7 @@ export default class SdTag extends SolidElement {
     this.emit('sd-hide');
 
     this.style.opacity = '0';
-    await new Promise(resolve => setTimeout(resolve, this.token('sd-duration-fast', 150)));
+    await new Promise(resolve => setTimeout(resolve, this.token('--sd-duration-fast', 150)));
     this.hidden = true;
 
     this.emit('sd-after-hide');
@@ -124,11 +141,11 @@ export default class SdTag extends SolidElement {
         @focus=${this.handleFocus}
         class=${cx(
           /* basic styles of the wrapper */
-          'inline-flex border box-border rounded-full items-center leading-none whitespace-nowrap transition-colors duration-fast ease-in-out focus-visible:focus-outline',
+          'inline-flex border box-border sd-tag-border-radius items-center leading-none whitespace-nowrap transition-colors duration-fast ease-in-out focus-visible:focus-outline',
           {
             /* sizes, fonts */
-            lg: 'h-8 text-base gap-2',
-            sm: 'h-6 text-sm gap-1'
+            lg: 'h-8 sd-tag-font-weight sd-tag--size-lg-font-size gap-2',
+            sm: 'h-6 sd-tag-font-weight sd-tag--size-sm-font-size gap-1'
           }[this.size],
           {
             /* padding */
@@ -138,12 +155,12 @@ export default class SdTag extends SolidElement {
           /* colors */
           !this.selected
             ? cx(
-                'border-primary text-primary disabled:border-neutral-500 disabled:text-neutral-500',
+                'sd-tag--default-color-border sd-tag--default-color-text disabled:sd-tag--disabled-color-border disabled:text-neutral-500',
                 !this.removable
-                  ? 'hover:border-primary-500 hover:bg-neutral-100 hover:text-primary-500'
-                  : 'has-[button:hover]:border-primary-500 has-[button:hover]:bg-neutral-100 has-[button:hover]:text-primary-500'
+                  ? 'sd-tag--default-color-background hover:border-primary-500 hover:text-primary-500 hover:sd-tag--default--hover-color-background'
+                  : 'sd-tag--default-color-background has-[button:hover]:border-primary-500 has-[button:hover]:text-primary-500'
               )
-            : 'bg-primary border-primary text-white hover:bg-primary-500 hover:border-primary-500 disabled:bg-neutral-500 disabled:border-neutral-500',
+            : 'sd-tag--selected-border-width sd-tag--selected--default-color-background sd-tag--selected--default-color-border sd-tag--selected--default-color-text hover:sd-tag--selected--hover-color-background hover:sd-tag--selected--hover-color-border hover:sd-tag--selected--hover-color-text disabled:bg-neutral-500 disabled:sd-tag--disabled-color-border',
           this.disabled && !isLink && 'cursor-not-allowed'
         )}
       >
