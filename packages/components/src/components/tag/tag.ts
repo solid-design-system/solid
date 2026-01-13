@@ -47,6 +47,9 @@ export default class SdTag extends SolidElement {
   /** Displays the tag with a removability indicator. */
   @property({ type: Boolean, reflect: true }) removable = false;
 
+  /** Displays icon on the left side of the tag. */
+  @property({ type: String, attribute: 'icon-left' }) iconLeft = '';
+
   /** Displays the tag in a disabled state. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
@@ -104,6 +107,7 @@ export default class SdTag extends SolidElement {
   render() {
     const isLink = this.isLink();
     const tag = isLink ? literal`a` : this.removable ? literal`div` : literal`button`;
+    const iconLeftClasses = cx('flex-shrink-0', this.size === 'lg' ? 'text-base' : 'text-[0.75rem]');
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
@@ -147,10 +151,19 @@ export default class SdTag extends SolidElement {
           this.disabled && !isLink && 'cursor-not-allowed'
         )}
       >
+       ${
+         this.iconLeft
+           ? html`<sd-icon name=${this.iconLeft} aria-hidden="true" class=${iconLeftClasses}></sd-icon>`
+           : ''
+       }
         <slot id="content" part='content'></slot>
         ${
           this.removable && !isLink
-            ? html` <button class="sd-interactive flex items-center" type="button" @click=${this.handleRemove}>
+            ? html` <button
+                class="${this.selected ? 'text-white' : 'text-primary'} sd-interactive flex items-center"
+                type="button"
+                @click=${this.handleRemove}
+              >
                 <slot part="removable-indicator" name="removable-indicator">
                   <sd-icon library="_internal" name="close" label=${this.localize.term('remove')}></sd-icon>
                 </slot>
