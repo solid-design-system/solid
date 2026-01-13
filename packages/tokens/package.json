@@ -21,7 +21,7 @@
   "exports": {
     "./dist/scss": "./dist/tokens.scss",
     "./dist/tailwind.css": "./dist/themes/tailwind.css",
-    "./dist/tailwind.json": "./dist/tokens.tailwind.json",
+    "./dist/theme.js": "./dist/theme.js",
     "./dist/themes": "./dist/themes",
     "./dist/themes/*": "./dist/themes/*"
   },
