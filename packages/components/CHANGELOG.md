@@ -1,5 +1,7 @@
 # @solid-design-system/components
 
+## 6.0.0-next.17
+
 ## 6.0.0-next.16
 
 ### Patch Changes
@@ -7,8 +9,9 @@
 - - Add `kid-starter` theme. _[`#2663`](https://github.com/solid-design-system/solid/pull/2663) [`575bcf1`](https://github.com/solid-design-system/solid/commit/575bcf1ae1ce4bf0ee1773be5519ae07c5c8981a) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
 
 ### 📈 Stats
-* Uncompressed: 579 KB (+2 KB / +0%)
-* Gzipped: 131 KB (unchanged)
+
+- Uncompressed: 579 KB (+2 KB / +0%)
+- Gzipped: 131 KB (unchanged)
 
 ## 6.0.0-next.15
 

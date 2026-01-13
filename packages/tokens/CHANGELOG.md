@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 6.0.0-next.17
+
+### Patch Changes
+
+- - Fix SCSS token generation by consistently escaping token names containing dots. _[`#2705`](https://github.com/solid-design-system/solid/pull/2705) [`288d25d`](https://github.com/solid-design-system/solid/commit/288d25d3c6222210ffd4bde9d4f4615c3dfbdbdb) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 6.0.0-next.16
 
 ### Patch Changes
