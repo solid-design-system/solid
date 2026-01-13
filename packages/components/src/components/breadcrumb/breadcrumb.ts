@@ -1,3 +1,5 @@
+import '../dropdown/dropdown';
+import '../icon/icon';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { LocalizeController } from '../../utilities/localize';
