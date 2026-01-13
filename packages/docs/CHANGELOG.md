@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.32.0-next.4
+
+### Minor Changes
+
+- Implemented a new `sd-menu` template _[`#2678`](https://github.com/solid-design-system/solid/pull/2678) [`0baa30a`](https://github.com/solid-design-system/solid/commit/0baa30a00c9416e05f03c304ecb5c5ed6e64e0a4) [@balco0110](https://github.com/balco0110)_
+
 ## 1.32.0-next.3
 
 ### Patch Changes
