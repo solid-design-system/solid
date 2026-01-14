@@ -1,5 +1,23 @@
 # @solid-design-system/docs
 
+## 1.32.0-next.4
+
+### Minor Changes
+
+- Implemented a new `sd-menu` template _[`#2678`](https://github.com/solid-design-system/solid/pull/2678) [`0baa30a`](https://github.com/solid-design-system/solid/commit/0baa30a00c9416e05f03c304ecb5c5ed6e64e0a4) [@balco0110](https://github.com/balco0110)_
+
+## 1.32.0-next.3
+
+### Patch Changes
+
+- Updated the validation messages for `sd-combobox`, `sd-input`, `sd-radio-group`, `sd-select`, `sd-switch` and `sd-textarea` _[`#2549`](https://github.com/solid-design-system/solid/pull/2549) [`121a09a`](https://github.com/solid-design-system/solid/commit/121a09a357c351b5dd056dff561938c76857c8a0) [@balco0110](https://github.com/balco0110)_
+
+## 1.32.0-next.2
+
+### Patch Changes
+
+- - Add `kid-starter` theme. _[`#2663`](https://github.com/solid-design-system/solid/pull/2663) [`575bcf1`](https://github.com/solid-design-system/solid/commit/575bcf1ae1ce4bf0ee1773be5519ae07c5c8981a) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 1.32.0-next.1
 
 ### Patch Changes

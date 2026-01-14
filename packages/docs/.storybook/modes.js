@@ -3,7 +3,8 @@ export const DEFAULT_THEME = 'UI Light';
 export const themes = [
   { id: 'sd-theme-ui-light', name: DEFAULT_THEME },
   { id: 'sd-theme-ui-dark', name: 'UI Dark' },
-  { id: 'sd-theme-vb', name: 'VB Ultra' }
+  { id: 'sd-theme-vb', name: 'VB Ultra' },
+  { id: 'sd-theme-kid', name: 'Kid Starter' }
 ];
 
 export const allModes = {
@@ -15,5 +16,8 @@ export const allModes = {
   },
   'sd-theme-vb': {
     theme: 'VB Ultra'
+  },
+  'sd-theme-kid': {
+    theme: 'Kid Starter'
   }
 };
