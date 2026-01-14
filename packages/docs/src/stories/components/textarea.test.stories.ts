@@ -186,8 +186,8 @@ export const Validation = {
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'label', value: 'Required' },
-              { type: 'attribute', name: 'name', value: 'required field' },
-              { type: 'attribute', name: 'help-text', value: 'textarea must be filled' },
+              { type: 'attribute', name: 'name', value: 'required-field' },
+              { type: 'attribute', name: 'help-text', value: '' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               { type: 'attribute', name: 'style-on-valid', value: true }
@@ -199,8 +199,8 @@ export const Validation = {
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'label', value: 'Min Length' },
-              { type: 'attribute', name: 'name', value: 'min length field' },
-              { type: 'attribute', name: 'help-text', value: 'value must meet minlength' },
+              { type: 'attribute', name: 'name', value: 'minlength-field' },
+              { type: 'attribute', name: 'help-text', value: 'Please type in at least 3 characters' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               { type: 'attribute', name: 'minlength', value: 3 },
@@ -213,8 +213,8 @@ export const Validation = {
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'label', value: 'Max Length' },
-              { type: 'attribute', name: 'name', value: 'max length field' },
-              { type: 'attribute', name: 'help-text', value: 'value cannot exceed maxlength' },
+              { type: 'attribute', name: 'name', value: 'maxlength-field' },
+              { type: 'attribute', name: 'help-text', value: 'Max. 3 Characters are allowed' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               { type: 'attribute', name: 'maxlength', value: 3 },
@@ -225,24 +225,77 @@ export const Validation = {
         </div>
         <sd-button type="submit">Submit</sd-button>
       </form>
-      <script>
-        function handleSubmit(event) {
-          const form = document.querySelector('#testForm');
-          const sdTextarea = Array.from(document.querySelectorAll('sd-textarea'));
+      <script type="module">
+        await Promise.all([customElements.whenDefined('sd-textarea'), customElements.whenDefined('sd-button')]);
 
-          const isValid = sdTextarea => sdTextarea.checkValidity();
+        const form = document.querySelector('#testForm');
+        const fields = Array.from(form.querySelectorAll('sd-textarea')).map(el => ({
+          el,
+          native: el.shadowRoot.querySelector('textarea')
+        }));
 
-          if (sdTextarea.every(isValid)) {
-            event.preventDefault(); // Prevent the default form submission behavior
+        let formSubmitted = false;
 
-            const formData = new FormData(form);
-            const formValues = Object.fromEntries(formData);
-
-            alert('Form submitted successfully with the following values: ' + JSON.stringify(formValues, null, 2));
+        function getMessage(name) {
+          switch (name) {
+            case 'required-field':
+              return 'Please correct your input.';
+            case 'minlength-field':
+              return 'At least 3 characters are needed. Please correct your input.';
+            case 'maxlength-field':
+              return 'Maximum 3 characters are allowed. Please correct your input.';
+            default:
+              return 'Please correct your input.';
           }
         }
 
-        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
+        // Prevent validation before first submit
+        form.addEventListener(
+          'sd-input',
+          ev => {
+            if (formSubmitted) return;
+            ev.stopImmediatePropagation();
+            fields.forEach(({ el, native }) => {
+              el.setCustomValidity('');
+              native.setCustomValidity('');
+              el.removeAttribute('data-user-invalid');
+            });
+          },
+          { capture: true }
+        );
+
+        // Block native invalid events before submit
+        form.addEventListener('invalid', e => !formSubmitted && e.preventDefault(), { capture: true });
+
+        // Set custom messages BEFORE form validation runs
+        form.addEventListener(
+          'submit',
+          () => {
+            fields.forEach(({ el, native }) => {
+              el.setCustomValidity('');
+              native.setCustomValidity('');
+              if (!native.validity.valid) {
+                const msg = getMessage(el.getAttribute('name'));
+                native.setCustomValidity(msg);
+                el.setCustomValidity(msg);
+              }
+            });
+          },
+          { capture: true }
+        );
+
+        // Handle submit
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          formSubmitted = true;
+
+          if (form.checkValidity()) {
+            alert(
+              'Form submitted with the following values: ' +
+                JSON.stringify(Object.fromEntries(new FormData(form)), null, 2)
+            );
+          }
+        });
       </script>
     `;
   }
