@@ -3,4 +3,4 @@
 '@solid-design-system/docs': major
 ---
 
-put bold as default for radio group (removed boldLabel)
+`sd-radio-group` label set to bold as default (removed `boldLabel` attribute).
