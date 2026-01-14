@@ -57,6 +57,10 @@ export default {
           {
             from: '../../styles/cdn',
             to: '/styles/cdn'
+          },
+          {
+            from: '../../tokens/cdn',
+            to: '/tokens/cdn'
           }
         ]
       : []
