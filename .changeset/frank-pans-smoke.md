@@ -2,4 +2,4 @@
 '@solid-design-system/components': patch
 ---
 
-fix the resizing of sd-select box, as well as changed the option and tag ways of wrapping inside it
+Fixed the resizing of the `sd-select`, inclunding the way the `sd-option` and `sd-tag` resize inside this component
