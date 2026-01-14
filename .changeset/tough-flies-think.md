@@ -2,4 +2,4 @@
 '@solid-design-system/components': patch
 ---
 
-fixing mouse click then keyboard use after
+Fixed `sd-menu` keyboard interaction issue after enabling it with a mouse click.
