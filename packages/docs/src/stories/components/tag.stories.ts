@@ -130,7 +130,7 @@ export const Disabled = {
 };
 
 /**
- * Use the `icon-left` property to add system icons.
+ * Use the `icon-left` slot to add system icons.
  *
  */
 export const Icon = {
