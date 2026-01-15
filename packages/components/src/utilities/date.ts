@@ -16,21 +16,38 @@ export const DateUtils = {
     return d;
   },
 
-  toLocalISODate: (d: Date) => {
-    const y = d.getFullYear();
-    const m = (d.getMonth() + 1).toString().padStart(2, '0');
-    const day = d.getDate().toString().padStart(2, '0');
-    return `${y}.${m}.${day}`;
+  toLocalISODate: (d: Date): string => {
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    return `${yyyy}-${mm}-${dd}`;
   },
 
   parseLocalISO: (iso: string | null): Date | null => {
     if (!iso) return null;
-    const m = /^(\d{4})\.(\d{2})\.(\d{2})$/.exec(iso);
-    if (!m) return null;
-    const y = Number(m[1]);
-    const mon = Number(m[2]) - 1;
-    const d = Number(m[3]);
-    const date = new Date(y, mon, d); // local midnight
+
+    let y: number;
+    let m: number;
+    let d: number;
+
+    // support ISO
+    if (/^\d{4}-\d{2}-\d{2}$/.test(iso)) {
+      const parts = iso.split('-');
+      y = Number(parts[0]);
+      m = Number(parts[1]) - 1;
+      d = Number(parts[2]);
+    }
+    // support date with dots "YYYY.MM.DD"
+    else if (/^\d{4}\.\d{2}\.\d{2}$/.test(iso)) {
+      const parts = iso.split('.');
+      y = Number(parts[0]);
+      m = Number(parts[1]) - 1;
+      d = Number(parts[2]);
+    } else {
+      return null;
+    }
+
+    const date = new Date(y, m, d);
     return Number.isNaN(date.getTime()) ? null : date;
   },
 

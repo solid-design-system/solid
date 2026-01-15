@@ -22,7 +22,7 @@ To develop with Solid Design System, you need the following three packages:
     ```
 
     ```js
-    import '@solid-design-system/tokens/themes/ui-light/ui-light.css';
+    import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
     import '@solid-design-system/styles/dist/solid-styles.css';
     import '@solid-design-system/components/dist/solid-components.css';
     import '@solid-design-system/components/dist/solid-components.js';
@@ -30,7 +30,12 @@ To develop with Solid Design System, you need the following three packages:
 
   </sd-tab-panel>
   <sd-tab-panel name="cdn">
-    Currently not available in Beta phase.
+    ```html
+    <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css" />
+    <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%/cdn/solid-styles.css" />
+    <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.css" />
+    <script type="module" src="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.js"></script>
+    ```
   </sd-tab-panel>
 </sd-tab-group>
 

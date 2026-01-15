@@ -1,10 +1,30 @@
 # @solid-design-system/docs
 
+## 1.32.0-next.5
+
+### Patch Changes
+
+- Improvements on `sd-datepicker` documentation: _[`#2640`](https://github.com/solid-design-system/solid/pull/2640) [`3cc8aab`](https://github.com/solid-design-system/solid/commit/3cc8aab1836b39e66cbdc1850af9056f075e4b26) [@smfonseca](https://github.com/smfonseca)_
+  - Updated `range` and `disabled-dates` stories to reflect new date conversion.
+  - Added new screenshot test for `min` and `max`.
+
+## 1.32.0-next.4
+
+### Minor Changes
+
+- Implemented a new `sd-menu` template _[`#2678`](https://github.com/solid-design-system/solid/pull/2678) [`0baa30a`](https://github.com/solid-design-system/solid/commit/0baa30a00c9416e05f03c304ecb5c5ed6e64e0a4) [@balco0110](https://github.com/balco0110)_
+
+## 1.32.0-next.3
+
+### Patch Changes
+
+- Updated the validation messages for `sd-combobox`, `sd-input`, `sd-radio-group`, `sd-select`, `sd-switch` and `sd-textarea` _[`#2549`](https://github.com/solid-design-system/solid/pull/2549) [`121a09a`](https://github.com/solid-design-system/solid/commit/121a09a357c351b5dd056dff561938c76857c8a0) [@balco0110](https://github.com/balco0110)_
+
 ## 1.32.0-next.2
 
 ### Patch Changes
 
-- - Add `kid-starter` theme. _[`#2663`](https://github.com/solid-design-system/solid/pull/2663) [`575bcf1`](https://github.com/solid-design-system/solid/commit/575bcf1ae1ce4bf0ee1773be5519ae07c5c8981a) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+- Add `kid-starter` theme. _[`#2663`](https://github.com/solid-design-system/solid/pull/2663) [`575bcf1`](https://github.com/solid-design-system/solid/commit/575bcf1ae1ce4bf0ee1773be5519ae07c5c8981a) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
 
 ## 1.32.0-next.1
 
@@ -140,8 +160,7 @@
 
 ### Patch Changes
 
-- - Update pnpm to 10.17 _[`#2522`](https://github.com/solid-design-system/solid/pull/2522) [`7cc6bb7`](https://github.com/solid-design-system/solid/commit/7cc6bb7bdfc9ccb26c2ecfa58b27021d15379312) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
+- Update pnpm to 10.17 _[`#2522`](https://github.com/solid-design-system/solid/pull/2522) [`7cc6bb7`](https://github.com/solid-design-system/solid/commit/7cc6bb7bdfc9ccb26c2ecfa58b27021d15379312) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
   - Add minimumReleaseAge to 5 days
   - Update all actions to ensure that they're using the correct version
 
@@ -307,8 +326,7 @@
 
 ### Patch Changes
 
-- - Sync `sd-tab` samples with figma _[`#2256`](https://github.com/solid-design-system/solid/pull/2256) [`6f9d3fa`](https://github.com/solid-design-system/solid/commit/6f9d3fa42e95fbe3a13dcf89c499294facb25052) [@smfonseca](https://github.com/smfonseca)_
-
+- Sync `sd-tab` samples with figma _[`#2256`](https://github.com/solid-design-system/solid/pull/2256) [`6f9d3fa`](https://github.com/solid-design-system/solid/commit/6f9d3fa42e95fbe3a13dcf89c499294facb25052) [@smfonseca](https://github.com/smfonseca)_
   - `sd-tab` screenshot tests update
 
 ## 1.24.3
@@ -361,8 +379,7 @@
 
 ### Minor Changes
 
-- - Create `switch` template _[`#2319`](https://github.com/solid-design-system/solid/pull/2319) [`5d20c51`](https://github.com/solid-design-system/solid/commit/5d20c51b9e0b15be47cfd60e24bb179cef42bf27) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
+- Create `switch` template _[`#2319`](https://github.com/solid-design-system/solid/pull/2319) [`5d20c51`](https://github.com/solid-design-system/solid/commit/5d20c51b9e0b15be47cfd60e24bb179cef42bf27) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
   - Add `Switch with Tooltip` story to `switch` template
 
 ## 1.21.0
@@ -401,7 +418,7 @@
 
 ### Minor Changes
 
-- - Implement `reversed-layout` attribute for the `sd-teaser`. _[`#2283`](https://github.com/solid-design-system/solid/pull/2283) [`e65a94a`](https://github.com/solid-design-system/solid/commit/e65a94a7120525d73c40f58ad565911a81cff97b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+- Implement `reversed-layout` attribute for the `sd-teaser`. _[`#2283`](https://github.com/solid-design-system/solid/pull/2283) [`e65a94a`](https://github.com/solid-design-system/solid/commit/e65a94a7120525d73c40f58ad565911a81cff97b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
 
 ## 1.17.0
 

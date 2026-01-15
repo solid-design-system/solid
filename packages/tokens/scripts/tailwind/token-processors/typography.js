@@ -45,6 +45,10 @@ export class TypographyTokenProcessor extends BaseTokenProcessor {
     const processed = this.processTokenPath(token);
     let value = this.getTokenValue(token);
 
+    if (token.path.includes('font-family') && value === 'Frutiger Neue fuer UI Web') {
+      value = 'Frutiger Neue';
+    }
+
     const isFontWeight = token.path.includes('font-weight');
     const isFontSize = token.path.includes('text') && token.type === 'float';
 
