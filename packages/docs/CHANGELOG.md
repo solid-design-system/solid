@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.32.0-next.6
+
+### Patch Changes
+
+- - Update favicon to support dark mode. _[`#2629`](https://github.com/solid-design-system/solid/pull/2629) [`f84c2eb`](https://github.com/solid-design-system/solid/commit/f84c2eb90a198973299317def2f9b01a8d919524) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 1.32.0-next.5
 
 ### Patch Changes
