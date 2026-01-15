@@ -61,11 +61,19 @@ export default class SdMenu extends SolidElement {
   }
 
   private handleKeyDown(event: KeyboardEvent) {
+    // Remove focus css class on escape
+    if (event.key === 'Escape') {
+      const item = this.getCurrentItem();
+      item?.classList.remove('menu-item-focus');
+    }
+
     // Make a selection when pressing enter or space
-    if (event.key === 'Enter' || event.key === ' ') {
+    else if (event.key === 'Enter' || event.key === ' ') {
       const item = this.getCurrentItem();
       event.preventDefault();
       event.stopPropagation();
+
+      item?.classList.remove('menu-item-focus');
 
       // Simulate a click to support @click handlers on menu items that also work with the keyboard
       item?.click();
@@ -76,6 +84,7 @@ export default class SdMenu extends SolidElement {
       const items = this.getAllItems();
       const activeItem = this.getCurrentItem();
       let index = activeItem ? items.indexOf(activeItem) : 0;
+      activeItem?.classList.remove('menu-item-focus');
 
       if (items.length > 0) {
         event.preventDefault();
@@ -110,6 +119,7 @@ export default class SdMenu extends SolidElement {
 
         this.setCurrentItem(items[index]);
         items[index].focus();
+        items[index].classList.add('menu-item-focus');
       }
     }
   }
