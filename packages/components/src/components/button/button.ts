@@ -323,18 +323,18 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         {
           /* variants */
           primary: !this.inverted
-            ? `sd-button--primary--default-color-text ${
+            ? `${
                 this.visuallyDisabled
-                  ? 'bg-neutral-500 border-neutral-500 hover:bg-neutral-500'
-                  : 'sd-button--primary--default-color-background border-transparent hover:text-primary-100 active:sd-button--primary--active-color-text'
+                  ? 'bg-neutral-500 border-neutral-500 hover:bg-neutral-500 text-white'
+                  : 'sd-button--primary--default-color-background border-transparent sd-button--primary--default-color-text hover:text-primary-100 active:sd-button--primary--active-color-text'
               }
-          disabled:bg-neutral-500`
+          disabled:bg-neutral-500 disabled:text-white`
             : `${
                 this.visuallyDisabled
                   ? 'bg-neutral-500 text-white border-neutral-500 hover:bg-neutral-500 active:bg-neutral-500'
                   : 'sd-button--primary--inverted--default-color-text sd-button--primary--inverted--default-color-background border-white hover:sd-button--primary--inverted--hover-color-text active:sd-button--primary--inverted--active-color-text active:sd-button--primary--inverted--active-color-background'
               }
-          disabled:sd-button--inverted--disabled-color-background disabled:sd-button--inverted--disabled-color-border disabled:sd-button--inverted--disabled-color-text`,
+          disabled:sd-button--inverted--disabled-color-background disabled:sd-button--inverted--disabled-color-border disabled:text-white`,
           secondary: !this.inverted
             ? `border ${
                 this.visuallyDisabled
@@ -362,7 +362,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
               }
           disabled:sd-button--inverted--disabled-color-text`,
           cta: `${this.visuallyDisabled ? 'bg-neutral-500 border-neutral-500 hover:bg-neutral-500 active:bg-neutral-500' : 'bg-accent border-transparent'}
-          ${!this.inverted ? 'text-white disabled:bg-neutral-500 disabled:border-neutral-500 disabled:text-white' : 'sd-button--cta--inverted--default-color-background sd-button--cta--inverted--default-color-text hover:sd-button--cta--inverted--hover-color-text active:sd-button--cta--inverted--active-color-text disabled:sd-button--inverted--disabled-color-background disabled:sd-button--inverted--disabled-color-border disabled:sd-button--inverted--disabled-color-text'}`
+          ${!this.inverted ? 'text-white disabled:bg-neutral-500 disabled:border-neutral-500 disabled:text-white' : 'sd-button--cta--inverted--default-color-background sd-button--cta--inverted--default-color-text hover:sd-button--cta--inverted--hover-color-text active:sd-button--cta--inverted--active-color-text disabled:sd-button--inverted--disabled-color-background disabled:sd-button--inverted--disabled-color-border disabled:text-white'}`
         }[this.variant]
       )}
         ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
