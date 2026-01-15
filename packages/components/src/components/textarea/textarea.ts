@@ -412,7 +412,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                     class=${cx(
                       'absolute left-4 z-20 pointer-events-none transition-all duration-200',
                       !isFloatingLabelActive
-                        ? 'top-1/2 -translate-y-1/2 text-base'
+                        ? 'top-2.5 text-base'
                         : this.size === 'lg'
                           ? 'top-2 text-xs'
                           : 'top-1 text-xs'
@@ -457,7 +457,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               id="input"
               class=${cx(
                 'ps-4 flex-grow focus:outline-none bg-transparent placeholder:text-neutral-700 resize-none group-has-[sd-icon]:pe-8',
-                this.floatingLabel && 'mt-4',
+                this.floatingLabel ? 'pt-6' : '',
                 {
                   sm: 'py-1',
                   md: 'py-1',
@@ -466,7 +466,6 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                 this.disabled && 'cursor-not-allowed',
                 textSize
               )}
-              style=${this.floatingLabel ? 'margin-top: 25px;' : ''}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
               name=${ifDefined(this.name)}
               .value=${live(this.value)}

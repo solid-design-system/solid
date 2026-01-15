@@ -104,7 +104,7 @@ export const Label = {
 export const FloatingLabel = {
   render: () => html`
     <div class="flex gap-12 h-[500px] w-[370px]">
-      <sd-datepicker label="Label attribute" floating-label></sd-datepicker>
+      <sd-datepicker label="Floating Label" floating-label></sd-datepicker>
     </div>
   `
 };
