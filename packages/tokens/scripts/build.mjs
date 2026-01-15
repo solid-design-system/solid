@@ -1,5 +1,5 @@
 import { buildStylesheet, getFigmaVariables, getStylesheetThemes, nextTask } from './utils.js';
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { extractComponentsBlock } from './tailwind/index.js';
 import { FigmaClient } from './figma/index.js';
 import { generateScss } from './scss/index.js';
@@ -16,12 +16,21 @@ const config = {
   input: 'figma-variables.json',
   output: 'tailwind',
   defaultTheme: 'ui-light',
-  buildPath: './themes',
+  buildPath: 'themes',
   themeBlock: 'build:theme',
   componentsBlock: 'build:components'
 };
 
 async function runBuild() {
+  await nextTask('Cleaning up old build directories', () => {
+    if (existsSync(outdir)) {
+      rmSync(outdir, { recursive: true });
+    }
+    if (existsSync(cdndir)) {
+      rmSync(cdndir, { recursive: true });
+    }
+  });
+
   await nextTask('Processing figma variables', () => {
     const figma = new FigmaClient('figma-variables', getFigmaVariables());
     figma.process().save();
@@ -63,12 +72,18 @@ async function runBuild() {
 
   await nextTask('Extracting component variables', () => {
     const components = extractComponentsBlock(stylesheet);
-    stylesheet = stylesheet.replace(components.content, '').replaceAll(`/* ${config.componentsBlock} */`, '').trim();
-    writeFileSync(`${config.buildPath}/${config.output}.css`, stylesheet);
-    writeFileSync(`${config.buildPath}/components.css`, components.content.trim());
+    if (components) {
+      stylesheet = stylesheet.replace(components.content, '').replaceAll(`/* ${config.componentsBlock} */`, '').trim();
+      writeFileSync(`${config.buildPath}/${config.output}.css`, stylesheet);
+      writeFileSync(`${config.buildPath}/components.css`, components.content.trim());
+    } else {
+      writeFileSync(`${config.buildPath}/${config.output}.css`, stylesheet);
+    }
   });
 
   await nextTask(`Creating ${outdir} output`, () => {
+    mkdirSync(`./${outdir}/${config.buildPath}`, { recursive: true });
+
     themes.forEach(theme => {
       mkdirSync(`./${outdir}/${config.buildPath}/${theme.name}`, { recursive: true });
       writeFileSync(`./${outdir}/${config.buildPath}/${theme.name}/${theme.name}.css`, theme.content);
@@ -78,6 +93,8 @@ async function runBuild() {
   });
 
   await nextTask(`Creating ${cdndir} output`, () => {
+    mkdirSync(`./${cdndir}/${config.buildPath}`, { recursive: true });
+
     themes.forEach(theme => {
       mkdirSync(`./${cdndir}/${config.buildPath}/${theme.name}`, { recursive: true });
       writeFileSync(`./${cdndir}/${config.buildPath}/${theme.name}/${theme.name}.css`, minimizeCss(theme.content));
