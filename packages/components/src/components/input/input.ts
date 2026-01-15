@@ -869,8 +869,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           name="help-text"
           part="form-control-help-text"
           id="help-text"
-          class=${cx('text-sm text-neutral-700 mt-1', hasHelpText ? 'block' : 'hidden')}
-          aria-hidden=${!hasHelpText}
+          class=${cx('text-sm text-neutral-700 mt-1', hasHelpText && !this.showInvalidStyle ? 'block' : 'hidden')}
+          aria-hidden=${!hasHelpText || this.showInvalidStyle}
         >
           ${this.helpText}
         </slot>

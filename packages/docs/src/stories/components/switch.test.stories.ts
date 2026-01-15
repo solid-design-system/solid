@@ -141,7 +141,7 @@ export const Invalid = {
           sdSwitch.id = 'invalid-switch-' + index;
           sdSwitch.click();
           sdSwitch.reportValidity();
-          sdSwitch.setCustomValidity('Error text');
+          sdSwitch.setCustomValidity('Please select an option.');
         });
       </script>
     `;

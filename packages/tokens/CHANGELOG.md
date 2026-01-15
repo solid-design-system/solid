@@ -1,10 +1,24 @@
 # @solid-design-system/tokens
 
+## 6.0.0-next.19
+
+## 6.0.0-next.18
+
+### Patch Changes
+
+- Updated documentation for multi-theming feature _[`#2709`](https://github.com/solid-design-system/solid/pull/2709) [`4c240e0`](https://github.com/solid-design-system/solid/commit/4c240e0209cd7a4c90a344ec043969272ef4471d) [@mariohamann](https://github.com/mariohamann)_
+
+## 6.0.0-next.17
+
+### Patch Changes
+
+- Fix SCSS token generation by consistently escaping token names containing dots. _[`#2705`](https://github.com/solid-design-system/solid/pull/2705) [`288d25d`](https://github.com/solid-design-system/solid/commit/288d25d3c6222210ffd4bde9d4f4615c3dfbdbdb) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 6.0.0-next.16
 
 ### Patch Changes
 
-- - Add `kid-starter` theme. _[`#2663`](https://github.com/solid-design-system/solid/pull/2663) [`575bcf1`](https://github.com/solid-design-system/solid/commit/575bcf1ae1ce4bf0ee1773be5519ae07c5c8981a) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+- Add `kid-starter` theme. _[`#2663`](https://github.com/solid-design-system/solid/pull/2663) [`575bcf1`](https://github.com/solid-design-system/solid/commit/575bcf1ae1ce4bf0ee1773be5519ae07c5c8981a) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
 
 ## 6.0.0-next.15
 
