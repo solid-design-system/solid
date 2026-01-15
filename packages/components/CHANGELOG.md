@@ -1,5 +1,19 @@
 # @solid-design-system/components
 
+## 6.0.0-next.19
+
+### Major Changes
+
+- Updated the following in `sd-datepicker`: _[`#2640`](https://github.com/solid-design-system/solid/pull/2640) [`3cc8aab`](https://github.com/solid-design-system/solid/commit/3cc8aab1836b39e66cbdc1850af9056f075e4b26) [@smfonseca](https://github.com/smfonseca)_
+  - Changed `range-start` and `range-end` attributes from camelCase to kebab case to align with the rest of the component API.
+  - Added date conversion in `value`, `disabled-dates`, `range-start`, `range-end`, `min` and `max` attributes.
+  - Added missing `required` attribute.
+  - Updated properties descritions and other minor fixes.
+
+### 📈 Stats
+* Uncompressed: 580 KB (+1 KB / +0%)
+* Gzipped: 132 KB (+1 KB / +1%)
+
 ## 6.0.0-next.18
 
 ### Patch Changes

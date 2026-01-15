@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 1.32.0-next.5
+
+### Patch Changes
+
+- Improvements on `sd-datepicker` documentation: _[`#2640`](https://github.com/solid-design-system/solid/pull/2640) [`3cc8aab`](https://github.com/solid-design-system/solid/commit/3cc8aab1836b39e66cbdc1850af9056f075e4b26) [@smfonseca](https://github.com/smfonseca)_
+  - Updated `range` and `disabled-dates` stories to reflect new date conversion.
+  - Added new screenshot test for `min` and `max`.
+
 ## 1.32.0-next.4
 
 ### Minor Changes
@@ -153,7 +161,6 @@
 ### Patch Changes
 
 - Update pnpm to 10.17 _[`#2522`](https://github.com/solid-design-system/solid/pull/2522) [`7cc6bb7`](https://github.com/solid-design-system/solid/commit/7cc6bb7bdfc9ccb26c2ecfa58b27021d15379312) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
   - Add minimumReleaseAge to 5 days
   - Update all actions to ensure that they're using the correct version
 
@@ -320,7 +327,6 @@
 ### Patch Changes
 
 - Sync `sd-tab` samples with figma _[`#2256`](https://github.com/solid-design-system/solid/pull/2256) [`6f9d3fa`](https://github.com/solid-design-system/solid/commit/6f9d3fa42e95fbe3a13dcf89c499294facb25052) [@smfonseca](https://github.com/smfonseca)_
-
   - `sd-tab` screenshot tests update
 
 ## 1.24.3
@@ -374,7 +380,6 @@
 ### Minor Changes
 
 - Create `switch` template _[`#2319`](https://github.com/solid-design-system/solid/pull/2319) [`5d20c51`](https://github.com/solid-design-system/solid/commit/5d20c51b9e0b15be47cfd60e24bb179cef42bf27) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
   - Add `Switch with Tooltip` story to `switch` template
 
 ## 1.21.0
