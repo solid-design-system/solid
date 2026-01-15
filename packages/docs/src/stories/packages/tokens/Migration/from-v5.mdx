@@ -7,8 +7,6 @@ import '../../../../../../components/src/solid-components';
 
 The v5 release introduces support for multi-theming tokens.
 
-> This is work in progress.
-
 ## SCSS Token Naming
 
 We improved our SCSS tokens to match them with our CSS variables:
@@ -72,7 +70,7 @@ The package exports have been restructured to better organize theme and token fi
 
     ```js
     // tailwind.legacy.config.js
-    const tokens = require('@solid-design-system/tokens/dist/tokens.tailwind.json');
+    const tokens = require('@solid-design-system/tokens/dist/tailwind.json');
     module.exports = {
         theme: tokens,
     };
@@ -99,7 +97,7 @@ The package exports have been restructured to better organize theme and token fi
   <sd-tab-panel name="tailwindcss-v3">
     ```js
     // tailwind.config.js
-    import solidTheme from '@solid-design-system/tokens/dist/tailwind.json' with { type: 'json' };
+    import solidTheme from '@solid-design-system/tokens/dist/theme.js';
     export default {
       theme: {
         extend: {
@@ -113,7 +111,7 @@ The package exports have been restructured to better organize theme and token fi
     ```css
     /* index.css */
     @import "tailwindcss";
-    @import "@solid-design-system/tokens/dist/tailwind.css";
+    @import "@solid-design-system/tokens/dist/themes/tailwind.css";
     ```
   </sd-tab-panel>
 </sd-tab-group>

@@ -26,6 +26,7 @@ const translation: Translation = {
   expandNavigationItem: 'Expand navigation item',
   goToSlide: (slide, count) => `Go to slide ${slide} of ${count}`,
   hidePassword: 'Hide password',
+  invalidDate: 'Invalid date',
   loading: 'Loading',
   maximum: 'Maximum',
   minimum: 'Minimum',
