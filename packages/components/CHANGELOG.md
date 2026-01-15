@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.0.0-next.18
+
+### Patch Changes
+
+- Updated documentation for multi-theming feature _[`#2709`](https://github.com/solid-design-system/solid/pull/2709) [`4c240e0`](https://github.com/solid-design-system/solid/commit/4c240e0209cd7a4c90a344ec043969272ef4471d) [@mariohamann](https://github.com/mariohamann)_
+
 ## 6.0.0-next.17
 
 ## 6.0.0-next.16
@@ -296,7 +302,6 @@
 ### Patch Changes
 
 - Update pnpm to 10.17 _[`#2522`](https://github.com/solid-design-system/solid/pull/2522) [`7cc6bb7`](https://github.com/solid-design-system/solid/commit/7cc6bb7bdfc9ccb26c2ecfa58b27021d15379312) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
   - Add minimumReleaseAge to 5 days
   - Update all actions to ensure that they're using the correct version
 

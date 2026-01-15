@@ -1,5 +1,7 @@
 # @solid-design-system/styles
 
+## 6.0.0-next.18
+
 ## 6.0.0-next.17
 
 ## 6.0.0-next.16
@@ -99,7 +101,6 @@
 ### Patch Changes
 
 - Update pnpm to 10.17 _[`#2522`](https://github.com/solid-design-system/solid/pull/2522) [`7cc6bb7`](https://github.com/solid-design-system/solid/commit/7cc6bb7bdfc9ccb26c2ecfa58b27021d15379312) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
   - Add minimumReleaseAge to 5 days
   - Update all actions to ensure that they're using the correct version
 
