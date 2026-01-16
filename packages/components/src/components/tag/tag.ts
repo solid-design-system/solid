@@ -17,6 +17,7 @@ import SolidElement from '../../internal/solid-element';
  * @dependency sd-icon
  *
  * @slot - The tag's content.
+ * @slot icon-left - A prefix icon or similar element.
  * @slot removable-indicator - The tag's removability indicator.
  *
  * @event sd-blur - Emitted when the tag loses focus.
@@ -28,6 +29,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart base - The component's base wrapper.
  * @csspart content - The tag's content.
  * @csspart removable-indicator - The tag's removability indicator.
+ * @csspart icon-left - The container that wraps the left icon area.
  *
  * @cssproperty --sd-tag--default-color-text - The default text color for tags in their default state.
  * @cssproperty --sd-tag--default-color-background - The default color background for tags in their default state.
@@ -63,9 +65,6 @@ export default class SdTag extends SolidElement {
 
   /** Displays the tag with a removability indicator. */
   @property({ type: Boolean, reflect: true }) removable = false;
-
-  /** Displays icon on the left side of the tag. */
-  @property({ type: String, attribute: 'icon-left' }) iconLeft = '';
 
   /** Displays the tag in a disabled state. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -124,7 +123,6 @@ export default class SdTag extends SolidElement {
   render() {
     const isLink = this.isLink();
     const tag = isLink ? literal`a` : this.removable ? literal`div` : literal`button`;
-    const iconLeftClasses = cx('flex-shrink-0', this.size === 'lg' ? 'text-base' : 'text-[0.75rem]');
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
@@ -168,19 +166,11 @@ export default class SdTag extends SolidElement {
           this.disabled && !isLink && 'cursor-not-allowed'
         )}
       >
-       ${
-         this.iconLeft
-           ? html`<sd-icon name=${this.iconLeft} aria-hidden="true" class=${iconLeftClasses}></sd-icon>`
-           : ''
-       }
+        <slot name="icon-left" aria-hidden="true" class=${cx('flex-shrink-0', this.size === 'lg' ? 'text-base' : 'text-[0.75rem]')}></slot>
         <slot id="content" part='content'></slot>
         ${
           this.removable && !isLink
-            ? html` <button
-                class="${this.selected ? 'text-white' : 'text-primary'} sd-interactive flex items-center"
-                type="button"
-                @click=${this.handleRemove}
-              >
+            ? html` <button class="sd-interactive flex items-center" type="button" @click=${this.handleRemove}>
                 <slot part="removable-indicator" name="removable-indicator">
                   <sd-icon library="_internal" name="close" label=${this.localize.term('remove')}></sd-icon>
                 </slot>

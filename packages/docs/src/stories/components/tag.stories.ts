@@ -136,7 +136,10 @@ export const Disabled = {
 export const Icon = {
   render: () => html`
     <div class="flex gap-12">
-      <sd-tag icon-left="union-investment/system/image">Icon left</sd-tag>
+      <sd-tag>
+        <sd-icon slot="icon-left" name="union-investment/system/image"></sd-icon>
+        Icon left
+      </sd-tag>
     </div>
   `
 };

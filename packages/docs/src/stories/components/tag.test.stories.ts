@@ -74,9 +74,15 @@ export const iconLeft = {
     return generateTemplate({
       axis: {
         x: { type: 'attribute', name: 'selected' },
-        y: { type: 'attribute', name: 'size', values: ['sm', 'lg'] }
+        y: { type: 'attribute', name: 'size', values: ['lg', 'sm'] }
       },
-      constants: [{ type: 'attribute', name: 'icon-left', value: 'union-investment/system/image' }],
+      constants: [
+        {
+          type: 'slot',
+          name: 'icon-left',
+          value: '<sd-icon slot="icon-left" name="union-investment/system/image"></sd-icon>'
+        }
+      ],
       args
     });
   }
