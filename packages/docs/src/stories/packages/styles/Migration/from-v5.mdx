@@ -1,0 +1,16 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import '../../../../../../components/src/solid-components';
+
+<Meta title="Packages/Styles/Migration/from v5" />
+
+# Migration from v5
+
+The v5 release introduces support for multi-theming tokens.
+
+## Unified Versioning for Components, Styles and Tokens
+
+As part of this release, the packages `components`, `styles` and `tokens` now share a single, synchronized version number. Even if a change occurs in only one package, all three will be released with the same version.
+
+This alignment ensures that all packages stay in sync, there are no mismatches in dependency expectations and simpler updates for consuming projects, since you can always upgrade all packages to the same version.
+
+Going forward, whenever you update the design system, expect new releases of all three packages with the same version, regardless of where the actual code changes occurred.
