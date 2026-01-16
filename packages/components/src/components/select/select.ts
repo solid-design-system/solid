@@ -204,7 +204,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @property() getTag: (option: SdOption, index: number) => TemplateResult | string | HTMLElement = option => {
     return html`
       <sd-tag
-        class="relative z-10"
+        class="relative z-10 min-w-0 max-w-full"
         ?disabled=${this.disabled}
         part="tag"
         exportparts="
@@ -690,7 +690,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
           const tag = this.getTag(option, index);
           // Wrap so we can handle the remove
-          return html` <div @sd-remove=${(e: CustomEvent) => this.handleTagRemove(e, option)}>
+          return html` <div @sd-remove=${(e: CustomEvent) => this.handleTagRemove(e, option)} class="max-w-full">
             ${typeof tag === 'string' ? unsafeHTML(tag) : tag}
           </div>`;
         }
@@ -700,7 +700,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       return [
         html`
           <sd-tag
-            class="z-10"
+            class="z-10 min-w-0 max-w-full"
             ?disabled=${this.disabled}
             part="tag"
             exportparts="
@@ -996,7 +996,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             >
               <div
                 class=${cx(
-                  'input-container flex items-center w-full h-full px-4',
+                  'input-container flex items-center w-full h-full px-4 min-w-0',
                   {
                     sm: 'py-1',
                     md: 'py-1',
@@ -1009,7 +1009,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   form=${this.form}
                   part="display-input"
                   class=${cx(
-                    'top-0 left-0 appearance-none outline-none flex-grow bg-transparent flex-1 placeholder:text-neutral-700',
+                    'top-0 left-0 appearance-none outline-none flex-grow bg-transparent flex-1 placeholder:text-neutral-700 min-w-0',
                     cursorStyles,
                     this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : ''
                   )}
@@ -1033,7 +1033,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 />
 
                 ${this.multiple && this.useTags
-                  ? html`<div part="tags" class="flex-grow flex flex-wrap items-center gap-1">${this.tags}</div>`
+                  ? html`<div part="tags" class="flex-grow flex flex-wrap items-center gap-1 min-w-0">
+                      ${this.tags}
+                    </div>`
                   : ''}
 
                 <div aria-live="polite" id="control-value" class="absolute top-0 left-0 opacity-0 -z-10">
