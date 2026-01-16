@@ -1753,7 +1753,6 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasTooltip = !!slots['tooltip'];
-    console.log(this.rangeStart);
     const hasValue =
       (this.value !== null && String(this.value).length > 0) ||
       (this.range && this.rangeStart !== null) ||
@@ -1852,7 +1851,8 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                         ? 'top-1/2 -translate-y-1/2 text-base'
                         : this.size === 'lg'
                           ? 'top-2 text-xs'
-                          : 'top-1 text-xs'
+                          : 'top-1 text-xs',
+                      isFloatingLabelActive && 'mt-1'
                     )}
                     for="input"
                   >

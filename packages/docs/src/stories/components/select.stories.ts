@@ -152,7 +152,7 @@ export const Label = {
  */
 export const FloatingLabel = {
   render: () => html`
-    <div class="flex gap-12 h-[500px]">
+    <div class="flex gap-12 w-[400px] h-[500px]">
       <sd-select size="lg" label="Floating Label" floating-label placement="bottom" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>

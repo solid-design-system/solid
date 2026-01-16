@@ -1243,7 +1243,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                       ? 'top-1/2 -translate-y-1/2 text-base'
                       : this.size === 'lg'
                         ? 'top-2 text-xs'
-                        : 'top-1 text-xs'
+                        : 'top-1 text-xs',
+                    isFloatingLabelActive && 'mt-1'
                   )}
                   for="input"
                 >
