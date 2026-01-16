@@ -200,7 +200,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   @property({ type: Boolean, reflect: true }) required = false;
 
   /** Enables the floating label behavior for the input. */
-  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = true;
+  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = false;
 
   /** A regular expression pattern to validate input against. */
   @property() pattern: string;
@@ -521,7 +521,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const hasIconLeft = slots['left'];
     const hasValue = this.value !== null && String(this.value).length > 0;
     const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue);
-    
+
     // Hierarchy of input states:
     const inputState = this.disabled
       ? 'disabled'

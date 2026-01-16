@@ -188,7 +188,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @property({ type: Boolean, reflect: true }) required = false;
 
   /** Enables the floating label behavior for the input. */
-  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = true;
+  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = false;
 
   /** Shows success styles if the validity of the input is valid. */
   @property({ type: Boolean, reflect: true, attribute: 'style-on-valid' }) styleOnValid = false;

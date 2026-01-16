@@ -205,7 +205,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   @property({ type: Boolean, reflect: true }) required = false;
 
   /** Enables the floating label behavior for the input. */
-  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = true;
+  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = false;
 
   /**
    * The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults
