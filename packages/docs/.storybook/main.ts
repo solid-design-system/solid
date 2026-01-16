@@ -5,6 +5,7 @@ export default {
     // General, Migration
     '../src/stories/docs/**/*.@(mdx|stories.*)',
     // Packages (custom order)
+    '../src/stories/packages/Quickstart.@(mdx|stories.*)',
     '../src/stories/packages/**/Index.@(mdx|stories.*)',
     '../src/stories/packages/**/Installation.@(mdx|stories.*)',
     '../src/stories/packages/**/!(Changelog|Contributing)*.@(mdx|stories.*)',
@@ -18,6 +19,7 @@ export default {
     '../src/stories/legal/*.@(mdx|stories.*)'
   ],
   addons: [
+    '@storybook/addon-themes',
     '@storybook/addon-links',
     './addons/theme-generator/preset',
     '@storybook/addon-a11y',
@@ -55,6 +57,10 @@ export default {
           {
             from: '../../styles/cdn',
             to: '/styles/cdn'
+          },
+          {
+            from: '../../tokens/cdn',
+            to: '/tokens/cdn'
           }
         ]
       : []

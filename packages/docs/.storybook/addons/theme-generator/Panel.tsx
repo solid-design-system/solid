@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { AddonPanel, Form } from 'storybook/internal/components';
 import { PARAM_KEY, PANEL_DEFAULTS } from './constants';
-import { useGlobals } from 'storybook/manager-api';
-import theme from '../../../../tokens/src/create-theme.cjs';
-import { calculateColorsAsCss } from '@solid-design-system/theming';
+import { addons, useGlobals } from 'storybook/manager-api';
+import { calculateColorsAsCss, hexToRgba, rgbaToHex } from '@solid-design-system/theming';
+import theme from '../../../../tokens/dist/theme.js';
+import { FORCE_RE_RENDER } from 'storybook/internal/core-events';
 
 const { Textarea, Button } = Form;
 
@@ -11,21 +12,27 @@ interface PanelProps {
   active: boolean;
 }
 
-export const Panel: React.FC<PanelProps> = props => {
+export const Panel: React.FC<PanelProps> = (props: PanelProps) => {
   const [useNormalizedLuminanceMap, setUseNormalizedLuminanceMap] = useState(PANEL_DEFAULTS.useNormalizedLuminanceMap);
   const [useForcedShades, setUseForcedShades] = useState(PANEL_DEFAULTS.useForcedShades);
 
   const [colors, setColors] = useState(PANEL_DEFAULTS.colors);
-
   const [output, setOutput] = useState('');
   const [globals, updateGlobals] = useGlobals();
   const isActive = globals[PARAM_KEY] || false;
 
-  const [hexInputs, setHexInputs] = useState({
-    primary: PANEL_DEFAULTS.colors.primary,
-    accent: PANEL_DEFAULTS.colors.accent,
-    neutral: PANEL_DEFAULTS.colors.neutral
-  });
+  const refreshAndUpdateGlobal = () => {
+    (updateGlobals({
+      [PARAM_KEY + '_STATE']: {
+        colors,
+        output,
+        useNormalizedLuminanceMap,
+        useForcedShades
+      }
+    }),
+      // Invokes Storybook's addon API method (with the FORCE_RE_RENDER) event to trigger a UI refresh
+      addons.getChannel().emit(FORCE_RE_RENDER));
+  };
 
   const useDebouncedEffect = (effect, delay, deps) => {
     const callback = useCallback(effect, deps);
@@ -45,25 +52,26 @@ export const Panel: React.FC<PanelProps> = props => {
   }, [colors, useNormalizedLuminanceMap, useForcedShades]);
 
   useDebouncedEffect(
-    () => {
-      const panelState = {
-        colors,
-        useNormalizedLuminanceMap,
-        useForcedShades
-      };
+    () =>
       updateGlobals({
-        [PARAM_KEY + '_STATE']: JSON.stringify(panelState)
-      });
-    },
+        [PARAM_KEY + '_STATE']: {
+          colors,
+          output,
+          useNormalizedLuminanceMap,
+          useForcedShades
+        }
+      }),
     500,
     [colors, useNormalizedLuminanceMap, useForcedShades]
   );
+
+  useEffect(() => refreshAndUpdateGlobal(), [isActive]);
 
   return (
     <AddonPanel {...props}>
       <div style={{ padding: '20px' }}>
         <h2>Solid Theme Generator</h2>
-        {['primary', 'accent', 'neutral'].map(colorKey => (
+        {['primary', 'accent', 'neutral', 'black', 'white'].map(colorKey => (
           <div style={{ display: 'flex', alignItems: 'center', marginTop: '8px' }}>
             <label style={{ width: '60px', display: 'inline-block' }}>
               {colorKey.charAt(0).toUpperCase() + colorKey.slice(1)}
@@ -72,28 +80,19 @@ export const Panel: React.FC<PanelProps> = props => {
             {/* Color Picker */}
             <input
               type="color"
-              value={colors[colorKey]}
+              value={rgbaToHex(colors[colorKey])}
               onChange={e => {
-                const newColor = e.target.value;
-                setColors(prev => ({ ...prev, [colorKey]: newColor }));
-                setHexInputs(prev => ({ ...prev, [colorKey]: newColor }));
+                setColors(prev => ({ ...prev, [colorKey]: hexToRgba(e.target.value) }));
               }}
             />
 
             {/* Text Input for Hex Color */}
             <input
               type="text"
-              value={hexInputs[colorKey]}
-              pattern="^#(?:[0-9a-fA-F]{3}){1,2}$"
-              placeholder="#RRGGBB"
+              value={colors[colorKey]}
+              placeholder="r,g,b,t"
               onChange={e => {
-                const newHexValue = e.target.value;
-                setHexInputs(prev => ({ ...prev, [colorKey]: newHexValue }));
-
-                // Check if it's a valid hex color and update the main color state
-                if (/^#(?:[0-9a-fA-F]{3}){1,2}$/.test(newHexValue)) {
-                  setColors(prev => ({ ...prev, [colorKey]: newHexValue }));
-                }
+                setColors(prev => ({ ...prev, [colorKey]: hexToRgba(e.target.value) }));
               }}
               style={{ marginLeft: '8px' }}
             />
@@ -140,7 +139,7 @@ export const Panel: React.FC<PanelProps> = props => {
         </div>
 
         <Textarea
-          style={{ marginTop: '16px', fontFamily: 'monospace', width: '400px', height: '600px' }}
+          style={{ marginTop: '16px', fontFamily: 'monospace', width: '400px', height: 600 }}
           readOnly
           value={output || ''}
         />

@@ -1,4 +1,6 @@
 .DS_Store
 .cache
+.env
 dist
+cdn
 node_modules

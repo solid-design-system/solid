@@ -54,7 +54,92 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @csspart valid-icon - The icon shown when the input is valid.
  * @csspart form-control-help-text - The help text, displayed below the input.
  *
+ * @cssproperty --sd-form-control-color-text - The text color for form controls.
  */
+
+const isoDateConverter = {
+  fromAttribute(value: string | null): string | null {
+    if (!value) return null;
+
+    // normalize all separators to hyphens
+    const cleaned = value.trim().replace(/[./]/g, '-');
+
+    // acccept YYYY-MM-DD only
+    const match = cleaned.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) return null;
+
+    const iso = `${match[1]}-${match[2]}-${match[3]}`;
+
+    // validate date
+    const d = new Date(+match[1], +match[2] - 1, +match[3]);
+    if (d.getFullYear() !== +match[1] || d.getMonth() !== +match[2] - 1 || d.getDate() !== +match[3]) {
+      return null;
+    }
+
+    return iso;
+  },
+
+  toAttribute(value: string | null): string {
+    return value ?? '';
+  }
+};
+
+const disabledDatesConverter = {
+  fromAttribute(value: string | null): string[] {
+    if (!value) return [];
+
+    let rawList: string[] = [];
+
+    const trimmed = value.trim();
+
+    // arrays
+    if (trimmed.startsWith('[')) {
+      try {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        const parsed = JSON.parse(trimmed);
+        if (Array.isArray(parsed)) {
+          rawList = parsed.map(String);
+        }
+      } catch {
+        return [];
+      }
+    } else {
+      // space separated
+      rawList = trimmed
+        .split(/[\s,]+/)
+        .map(v => v.trim())
+        .filter(Boolean);
+    }
+
+    const result: string[] = [];
+
+    for (const raw of rawList) {
+      // replace all separators with dots
+      const cleaned = raw.replace(/[-/]/g, '.');
+      const parts = cleaned.split('.');
+
+      if (parts.length !== 3) continue;
+      const [yyyy, mm, dd] = parts.map(Number);
+
+      if (!yyyy || !mm || !dd) continue;
+
+      // validate date
+      const date = new Date(yyyy, mm - 1, dd);
+      if (date.getFullYear() !== yyyy || date.getMonth() !== mm - 1 || date.getDate() !== dd) continue;
+
+      const iso = `${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}`;
+
+      result.push(iso);
+    }
+
+    return result;
+  },
+
+  toAttribute(value: string[] | null): string {
+    return value ? value.join(',') : '';
+  }
+};
+
 @customElement('sd-datepicker')
 export default class SdDatepicker extends SolidElement implements SolidFormControl {
   /** Localize controller used to fetch localized terms/labels. */
@@ -70,25 +155,27 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   @property({ type: String, reflect: true }) locale = 'en-US';
 
   /** Selected date in local ISO format (YYYY-MM-DD) when not in range mode. */
-  @property({ type: String }) value: string | null = null;
+  @property({ type: String, converter: isoDateConverter, reflect: true }) value: string | null = null;
 
   /** Enables date range selection when true. */
   @property({ type: Boolean, reflect: true }) range = false;
 
   /** Range start date in local ISO format (YYYY-MM-DD). */
-  @property({ type: String }) rangeStart: string | null = null;
+  @property({ attribute: 'range-start', converter: isoDateConverter, reflect: true }) rangeStart: string | null = null;
 
   /** Range end date in local ISO format (YYYY-MM-DD). */
-  @property({ type: String }) rangeEnd: string | null = null;
+  @property({ attribute: 'range-end', converter: isoDateConverter, reflect: true }) rangeEnd: string | null = null;
 
   /** Allows selecting the same start and end date when true. */
   @property({ type: Boolean }) allowSameDayRange = false;
 
   /** Minimum selectable date in local ISO format (YYYY-MM-DD). */
-  @property({ type: String }) min: string | number | Date | undefined = undefined;
+  @property({ type: String, converter: isoDateConverter, reflect: true }) min: string | number | Date | undefined =
+    undefined;
 
   /** Maximum selectable date in local ISO format (YYYY-MM-DD). */
-  @property({ type: String }) max: string | number | Date | undefined = undefined;
+  @property({ type: String, converter: isoDateConverter, reflect: true }) max: string | number | Date | undefined =
+    undefined;
 
   /** First day of the week (0=Sun .. 6=Sat). If null, defaults to 1 (Monday). */
   @property({ type: Number }) firstDayOfWeek: number | null = null;
@@ -97,7 +184,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   @property({ type: Boolean, reflect: true, attribute: 'disabled-weekends' }) disabledWeekends = false;
 
   /** List of disabled dates as local ISO strings. Accepts array or CSV/JSON string. */
-  @property({ attribute: 'disabled-dates' }) disabledDates: string[] | string = [];
+  @property({ attribute: 'disabled-dates', converter: disabledDatesConverter }) disabledDates: string[] | string = [];
 
   /** Custom predicate that can disable specific dates at runtime. */
   @property({ attribute: false }) isDateDisabled: ((d: Date) => boolean) | null = null;
@@ -114,8 +201,14 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   /** Help text shown below the input. Can be overridden with slot="help-text". */
   @property({ type: String, attribute: 'help-text', reflect: true }) helpText = '';
 
+  /** Enables the floating label behavior for the input. */
+  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = false;
+
   /** Disables the control entirely when true. */
   @property({ type: Boolean, reflect: true }) disabled = false;
+
+  /** Makes the input a required field. */
+  @property({ type: Boolean, reflect: true }) required = false;
 
   /** Makes the control non-interactive visually (like disabled) without disabling it functionally. */
   @property({ type: Boolean, attribute: 'visually-disabled' }) visuallyDisabled = false;
@@ -129,6 +222,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   /** Preferred placement of the flyout relative to the input (top|bottom). */
   @property({ type: String, reflect: true }) placement: 'top' | 'bottom' = 'bottom';
 
+  /** Placeholder text for the input when no date is selected. */
   @property({ type: String, reflect: true }) placeholder: string = '';
 
   /** The name of the datepicker, submitted as a name/value pair with form data. */
@@ -365,8 +459,8 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   }
 
   private inMinMax(d: Date): boolean {
-    const min = this.parseISO(this.min !== null ? String(this.min) : null);
-    const max = this.parseISO(this.max !== null ? String(this.max) : null);
+    const min = this.min === null ? null : this.parseISO(String(this.min));
+    const max = this.max === null ? null : this.parseISO(String(this.max));
 
     if (min && d < min) return false;
     if (max && d > max) return false;
@@ -376,7 +470,10 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   /** Returns true if the date matches any date in disabledDatesSet. */
   private isInDisabledDates(d: Date): boolean {
     if (!this.disabledDatesSet || this.disabledDatesSet.size === 0) return false;
-    const iso = DateUtils.toLocalISODate(DateUtils.startOfDayLocal(d));
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    const iso = `${yyyy}-${mm}-${dd}`;
     return this.disabledDatesSet.has(iso);
   }
 
@@ -476,7 +573,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   /** UI formatting: internal ISO → DD.MM.YYYY */
   private isoToDmy(iso: string | null): string {
     if (!iso) return '';
-    const d = DateUtils.parseLocalISO(iso);
+    let d = DateUtils.parseLocalISO(iso);
+    if (!d) {
+      // try replacing hyphens with dots (old behavior)
+      d = DateUtils.parseLocalISO(iso.replace(/-/g, '.'));
+    }
     if (!d) return '';
     const dd = String(d.getDate()).padStart(2, '0');
     const mm = String(d.getMonth() + 1).padStart(2, '0');
@@ -647,6 +748,8 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     // Single
     const singleIso = parsed.single ?? null;
     if (!inBoundsIso(singleIso)) {
+      this.input.setCustomValidity(this.localize.term('datePickerRange'));
+      this.formControlController.setValidity(false);
       this.showInvalidStyle = true;
       this.showValidStyle = false;
       return false;
@@ -1635,7 +1738,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               >
                 ${week.map((day, colIndex) => {
                   const inMonth = day.getMonth() === this.viewMonth.getMonth();
-                  const disabled = this.isDisabled(day);
+                  const disabled = this.isDisabled(day) || !this.inMinMax(day);
                   const isFocused = DateUtils.isSameDay(day, this.focusedDate);
                   const isToday = DateUtils.isSameDay(day, this.today);
 
@@ -1685,7 +1788,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                             : isWeekendDay
                               ? 'out-month weekend-day text-neutral-700'
                               : 'out-month text-neutral-700'
-                          : this.isInDisabledDates(day)
+                          : this.isInDisabledDates(day) || !this.inMinMax(day)
                             ? 'out-month text-neutral-500'
                             : this.disabledWeekends && isWeekendDay
                               ? 'weekend-day text-neutral-500'
@@ -1704,7 +1807,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                         isToday && !isSelectedSingle && !isRangeStart && !isRangeEnd && isFocused
                           ? 'today border-[1px] border-primary font-bold'
                           : '',
-                        disabled ? 'disabled cursor-not-allowed hover:bg-transparent' : '',
+                        disabled ? 'disabled cursor-not-allowed hover:bg-transparent' : 'cursor-pointer',
                         isFocused && !isToday ? 'focused outline outline-2 outline-primary' : ''
                       )}
                       role="gridcell"
@@ -1749,6 +1852,16 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasTooltip = !!slots['tooltip'];
+    const hasValue =
+      (this.value !== null && String(this.value).length > 0) ||
+      (this.range && this.rangeStart !== null) ||
+      this.rangeEnd !== null;
+    const isFloatingLabelActive =
+      this.floatingLabel &&
+      hasLabel &&
+      (this.hasFocus || this.open || hasValue) &&
+      !this.disabled &&
+      !this.visuallyDisabled;
 
     const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary';
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
@@ -1794,12 +1907,12 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
           (this.disabled || this.visuallyDisabled) && 'cursor-not-allowed'
         )}
       >
-        ${hasLabel || hasTooltip
+        ${(hasLabel && !this.floatingLabel) || hasTooltip
           ? html`<div class="flex items-center gap-1 mb-2">
               <label
                 part="form-control-label"
                 id="label"
-                class=${cx(hasLabel ? 'inline-block' : 'hidden', textSize)}
+                class=${cx(hasLabel ? 'inline-block form-control-color-text' : 'hidden', textSize)}
                 for="input"
                 aria-hidden=${hasLabel ? 'false' : 'true'}
               >
@@ -1825,7 +1938,39 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               this.open && this.alignment === 'left' ? 'rounded-bl-none' : '',
               this.open && this.alignment === 'right' ? 'rounded-br-none' : ''
             )}
-          ></div>
+          >
+            ${hasLabel && this.floatingLabel
+              ? html`
+                  <label
+                    id="label"
+                    part="form-control-floating-label"
+                    class=${cx(
+                      'absolute left-4 z-20 pointer-events-none transition-all duration-200',
+                      !isFloatingLabelActive
+                        ? 'top-1/2 -translate-y-1/2 text-base'
+                        : this.size === 'lg'
+                          ? 'top-2 text-xs'
+                          : 'top-1 text-xs',
+                      isFloatingLabelActive && 'mt-1'
+                    )}
+                    for="input"
+                  >
+                    <span
+                      class=${cx(
+                        'leading-none',
+                        (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
+                        isFloatingLabelActive &&
+                          !this.visuallyDisabled &&
+                          !this.disabled &&
+                          'form-control--filled__floating-label-color-text'
+                      )}
+                    >
+                      ${this.label}
+                    </span>
+                  </label>
+                `
+              : null}
+          </div>
           <sd-popup
             @sd-current-placement=${this.handleCurrentPlacement}
             class=${cx('inline-flex relative w-full')}
@@ -1855,18 +2000,21 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 aria-invalid=${this.showInvalidStyle ? 'true' : 'false'}
                 aria-label=${this.range ? 'Select date range' : 'Select a date'}
                 class=${cx(
-                  'min-w-0 flex-grow focus:outline-none bg-transparent hover:cursor-pointer',
+                  'min-w-0 flex-grow focus:outline-none bg-transparent hover:cursor-pointer form-control-color-text',
                   this.visuallyDisabled || this.disabled
                     ? 'placeholder:text-neutral-500 cursor-not-allowed'
                     : 'placeholder:text-neutral-700',
                   { sm: 'h-8', md: 'h-10', lg: 'h-12' }[this.size],
-                  textSize
+                  textSize,
+                  this.floatingLabel && 'mt-4'
                 )}
                 autocomplete="off"
                 spellcheck="false"
-                placeholder=${this.placeholder ||
-                this.localize.term(this.range ? 'dateRangePlaceholder' : 'datePlaceholder')}
+                placeholder=${!this.floatingLabel || isFloatingLabelActive
+                  ? this.placeholder || this.localize.term(this.range ? 'dateRangePlaceholder' : 'datePlaceholder')
+                  : ''}
                 ?disabled=${this.disabled}
+                ?required=${this.required}
                 ?readonly=${this.readonly || this.visuallyDisabled}
                 @input=${this.handleInput}
                 @click=${this.handleMouseDown}

@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import '../../../../components/src/solid-components';
+
+<Meta title="Packages/Quickstart" />
+
+# Quickstart
+
+To develop with Solid Design System, you need the following three packages:
+
+- `@solid-design-system/components`: Component library with web components.
+- `@solid-design-system/styles`: Smaller components built with CSS.
+- `@solid-design-system/tokens`: Tokens and themes for consistent design.
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="npm" variant="container"> NPM </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="cdn" variant="container"> CDN </sd-tab>
+  <sd-tab-panel name="npm">
+    ```bash
+    pnpm i @solid-design-system/components@next @solid-design-system/styles@next @solid-design-system/tokens@next
+    ```
+
+    ```js
+    import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
+    import '@solid-design-system/styles/dist/solid-styles.css';
+    import '@solid-design-system/components/dist/solid-components.css';
+    import '@solid-design-system/components/dist/solid-components.js';
+    ```
+
+  </sd-tab-panel>
+  <sd-tab-panel name="cdn">
+    ```html
+    <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css" />
+    <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%/cdn/solid-styles.css" />
+    <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.css" />
+    <script type="module" src="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.js"></script>
+    ```
+  </sd-tab-panel>
+</sd-tab-group>
+
+Now you are ready to use Solid Design System in your project!
+
+```html
+<div class="sd-prose">
+  <h2>Welcome to Solid Design System!</h2>
+  <sd-button variant="primary">Click me!</sd-button>
+</div>
+```
+
+Ensure to check out the installation docs for tokens, styles, and components to get more details on prerequisites, multi-theming, versioning, setup and usage:
+
+- [Tokens Installation](?path=/docs/packages-tokens-installation--docs)
+- [Styles Installation](?path=/docs/packages-styles-installation--docs)
+- [Components Installation](?path=/docs/packages-components-installation--docs)

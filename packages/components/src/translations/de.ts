@@ -26,6 +26,7 @@ const translation: Translation = {
   expandNavigationItem: 'Navigationspunkt erweitern',
   goToSlide: (slide, count) => `Zu Folie ${slide} von ${count} gehen`,
   hidePassword: 'Passwort verbergen',
+  invalidDate: 'Ungültiges Datum',
   loading: 'Wird geladen',
   maximum: 'Höchstwert',
   minimum: 'Minimum',

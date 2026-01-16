@@ -65,7 +65,7 @@ export default class SdAccordionGroup extends SolidElement {
       }
 
       ::slotted(sd-accordion:not(:first-of-type)) {
-        margin-top: -1px;
+        margin-top: calc(-1 * var(--sd-accordion-border-width)) !important;
       }
     `
   ];

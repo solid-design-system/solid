@@ -12,7 +12,7 @@ jobs:
         runs-on: ubuntu-latest
         if: github.event.pull_request.draft == false
         container:
-            image: mcr.microsoft.com/playwright:v1.55.1-noble
+            image: mcr.microsoft.com/playwright:v1.57.0-noble
         strategy:
           matrix:
             package:
@@ -48,40 +48,10 @@ jobs:
                 cd ${{ matrix.package }}
                 pnpm verify
 
-    playwright-tests:
-      name: Verify (docs/a11y-tree)
-      runs-on: ubuntu-latest
-      if: github.event.pull_request.draft == false
-      container:
-        image: mcr.microsoft.com/playwright:v1.55.0-noble
-
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v4
-
-        - name: Install Node.js
-          uses: actions/setup-node@v4
-          with:
-            node-version: 22
-
-        - uses: pnpm/action-setup@v4
-          name: Install pnpm
-          with:
-            run_install: false
-
-        - name: Install dependencies
-          run: pnpm i
-
-        - name: Run Playwright tests
-          run: |
-            cd packages/docs
-            pnpm run build
-            pnpm run test.a11y
-
     # Check Chromatic for visual changes after all other checks have passed
     chromatic-deployment-pr:
       name: Verify Chromatic
-      needs: [quality-gate, playwright-tests]
+      needs: [quality-gate]
       if: ${{!contains(github.event.pull_request.title, '[skip chromatic]') && !startsWith(github.event.pull_request.title, 'chore(security deps):')}}
       runs-on: ubuntu-latest
       steps:

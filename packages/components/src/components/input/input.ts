@@ -65,6 +65,12 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @csspart invalid-icon - The invalid icon.
  * @csspart valid-icon - The valid icon.
  * @csspart invalid-message - The invalid message.
+ *
+ * @cssproperty --sd-form-control--invalid-color-background - The background color for form controls in invalid state.
+ * @cssproperty --sd-form-control-color-text - The text color for form controls.
+ * @cssproperty --sd-form-control--filled__floating-label-color-text - The floating label text color when active.
+ * @cssproperty --sd-form-control-color-border - The color border for form controls.
+ * @cssproperty --sd-form-control-color-icon - The icon color for form controls.
  */
 
 @customElement('sd-input')
@@ -514,7 +520,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const hasTooltip = !!slots['tooltip'];
     const hasIconLeft = slots['left'];
     const hasValue = this.value !== null && String(this.value).length > 0;
-    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue || this.placeholder);
+    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue);
+
     // Hierarchy of input states:
     const inputState = this.disabled
       ? 'disabled'
@@ -540,16 +547,16 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const borderColor = {
       disabled: 'border-neutral-500',
       visuallyDisabled: 'border-neutral-500',
-      readonly: 'border-neutral-800',
+      readonly: 'form-control-color-border',
       activeInvalid: 'border-error border-2',
       activeValid: 'border-success border-2',
       active: 'border-primary border-2',
       invalid: 'border-error',
       valid: 'border-success',
-      default: 'border-neutral-800'
+      default: 'form-control-color-border'
     }[inputState];
 
-    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary';
+    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'form-control-color-icon';
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
     const iconSize = {
       sm: 'text-base',
@@ -579,7 +586,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               <label
                 part="form-control-label"
                 id="label"
-                class=${cx(hasLabel ? 'inline-block' : 'hidden', textSize)}
+                class=${cx(hasLabel ? 'inline-block form-control-color-text' : 'hidden', textSize)}
                 for="input"
                 aria-hidden=${hasLabel ? 'false' : 'true'}
               >
@@ -611,7 +618,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               // States
               !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
-              inputState === 'disabled' || inputState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black',
+              ['disabled', 'visuallyDisabled'].includes(inputState) ? 'text-neutral-500' : 'form-control-color-text',
+              ['invalid', 'activeInvalid'].includes(inputState) && 'form-control--invalid-color-background',
               verticalPadding
             )}
           >
@@ -628,8 +636,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               class=${cx(
                 'min-w-0 flex-grow focus:outline-none bg-transparent',
                 this.visuallyDisabled || this.disabled
-                  ? 'placeholder-neutral-500 cursor-not-allowed'
-                  : 'placeholder-neutral-700',
+                  ? 'placeholder:text-neutral-500 cursor-not-allowed'
+                  : 'placeholder:text-neutral-700',
                 this.size === 'sm' ? (isFloatingLabelActive ? 'h-4' : 'h-6') : isFloatingLabelActive ? 'h-6' : 'h-8',
                 textSize,
                 isFloatingLabelActive && 'leading-none mt-4'
@@ -640,7 +648,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               ?disabled=${this.disabled}
               ?readonly=${this.readonly}
               ?required=${this.required}
-              placeholder=${ifDefined(this.placeholder)}
+              placeholder=${!this.floatingLabel || isFloatingLabelActive ? ifDefined(this.placeholder) : ''}
               minlength=${ifDefined(this.minlength)}
               maxlength=${ifDefined(this.maxlength)}
               min=${ifDefined(this.min)}
@@ -694,7 +702,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                           ? 'text-base'
                           : 'text-xs',
                         (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
-                        isFloatingLabelActive && !this.visuallyDisabled && !this.disabled && 'text-neutral-700'
+                        isFloatingLabelActive &&
+                          !this.visuallyDisabled &&
+                          !this.disabled &&
+                          'form-control--filled__floating-label-color-text'
                       )}
                     >
                       ${this.label}
@@ -823,7 +834,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     >
                       <slot name="decrement-number-stepper">
                         <sd-icon
-                          name="system/minus-circle"
+                          library="_internal"
+                          name="minus-circle"
                           label="Decrease value"
                           class=${cx(iconColor, iconMarginLeft, iconSize)}
                         ></sd-icon>
@@ -841,7 +853,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     >
                       <slot name="increment-number-stepper">
                         <sd-icon
-                          name="system/plus-circle"
+                          library="_internal"
+                          name="plus-circle"
                           label="Decrease value"
                           class=${cx(iconColor, iconMarginLeft, iconSize)}
                         ></sd-icon>
@@ -857,8 +870,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           name="help-text"
           part="form-control-help-text"
           id="help-text"
-          class=${cx('text-sm text-neutral-700 mt-1', hasHelpText ? 'block' : 'hidden')}
-          aria-hidden=${!hasHelpText}
+          class=${cx('text-sm text-neutral-700 mt-1', hasHelpText && !this.showInvalidStyle ? 'block' : 'hidden')}
+          aria-hidden=${!hasHelpText || this.showInvalidStyle}
         >
           ${this.helpText}
         </slot>

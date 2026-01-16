@@ -66,19 +66,19 @@ export const Size = {
   render: () =>
     html` <div class="flex flex-row gap-4 h-[260px]">
       <sd-select label="Large" placeholder="Please select" placement="bottom" max-options-visible="3">
-        <sd-option value="option-1" size="lg">Option 1</sd-option>
-        <sd-option value="option-2" size="lg">Option 2</sd-option>
-        <sd-option value="option-3" size="lg">Option 3</sd-option>
+        <sd-option value="option-1" size="lg">option 1</sd-option>
+        <sd-option value="option-2" size="lg">option 2</sd-option>
+        <sd-option value="option-3" size="lg">option 3</sd-option>
       </sd-select>
       <sd-select label="Medium" placeholder="Please select" placement="bottom" max-options-visible="3" size="md">
-        <sd-option value="option-1" size="md">Option 1</sd-option>
-        <sd-option value="option-2" size="md">Option 2</sd-option>
-        <sd-option value="option-3" size="md">Option 3</sd-option>
+        <sd-option value="option-1" size="md">option 1</sd-option>
+        <sd-option value="option-2" size="md">option 2</sd-option>
+        <sd-option value="option-3" size="md">option 3</sd-option>
       </sd-select>
       <sd-select label="Small" placeholder="Please select" placement="bottom" max-options-visible="3" size="sm">
-        <sd-option value="option-1" size="sm">Option 1</sd-option>
-        <sd-option value="option-2" size="sm">Option 2</sd-option>
-        <sd-option value="option-3" size="sm">Option 3</sd-option>
+        <sd-option value="option-1" size="sm">option 1</sd-option>
+        <sd-option value="option-2" size="sm">option 2</sd-option>
+        <sd-option value="option-3" size="sm">option 3</sd-option>
       </sd-select>
     </div>`
 };
@@ -120,9 +120,9 @@ export const Selected = {
         size="lg"
         max-options-visible="3"
       >
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
+        <sd-option value="option-1">option 1</sd-option>
+        <sd-option value="option-2">option 2</sd-option>
+        <sd-option value="option-3">option 3</sd-option>
       </sd-select>
       <sd-select
         label="Multiple selected option"
@@ -147,9 +147,9 @@ export const Disabled = {
   render: () =>
     html`<div class="flex flex-row gap-12 h-[260px]">
       <sd-select label="Disabled options" placeholder="Please select" placement="bottom" max-options-visible="3">
-        <sd-option value="option-1" disabled>Option 1</sd-option>
-        <sd-option value="option-2" disabled>Option 2</sd-option>
-        <sd-option value="option-3" disabled>Option 3</sd-option>
+        <sd-option value="option-1" disabled>option 1</sd-option>
+        <sd-option value="option-2" disabled>option 2</sd-option>
+        <sd-option value="option-3" disabled>option 3</sd-option>
       </sd-select>
       <sd-select
         label="Disabled checkbox options"
@@ -159,8 +159,8 @@ export const Disabled = {
         multiple
       >
         <sd-option value="option-1" disabled checkbox>Checkbox option 1</sd-option>
-        <sd-option value="option-2" disabled checkbox>Checkbox Option 2</sd-option>
-        <sd-option value="option-3" disabled checkbox>Checkbox Option 3</sd-option>
+        <sd-option value="option-2" disabled checkbox>Checkbox option 2</sd-option>
+        <sd-option value="option-3" disabled checkbox>Checkbox option 3</sd-option>
       </sd-select>
     </div>`
 };

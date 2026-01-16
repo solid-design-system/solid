@@ -62,9 +62,17 @@ export default class SdIcon extends SolidElement {
     unwatchIcon(this);
   }
 
+  protected onThemeChange(): void {
+    this.setIcon();
+  }
+
   private getUrl() {
     const library = getIconLibrary(this.library);
     if (this.name && library) {
+      if (library.name === '_internal') {
+        return library.resolver(this.name, this);
+      }
+
       return library.resolver(this.name);
     }
     return this.src;
@@ -127,7 +135,7 @@ export default class SdIcon extends SolidElement {
   }
 
   render() {
-    return html` ${unsafeSVG(this.svg)} `;
+    return html`<sd-theme-listener></sd-theme-listener> ${unsafeSVG(this.svg)} `;
   }
 
   static styles = [
