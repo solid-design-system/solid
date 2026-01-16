@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.0.0-next.20
+
+### Patch Changes
+
+- Imported components used inside `sd-breadcrumb` and `sd-breadcrumb-item` to ensure stability when cherry picking. _[`#2706`](https://github.com/solid-design-system/solid/pull/2706) [`76f9844`](https://github.com/solid-design-system/solid/commit/76f9844b41a5084adfbe475d810689d5a4777bde) [@mariohamann](https://github.com/mariohamann)_
+
 ## 6.0.0-next.19
 
 ### Major Changes
@@ -11,8 +17,9 @@
   - Updated properties descritions and other minor fixes.
 
 ### 📈 Stats
-* Uncompressed: 580 KB (+1 KB / +0%)
-* Gzipped: 132 KB (+1 KB / +1%)
+
+- Uncompressed: 580 KB (+1 KB / +0%)
+- Gzipped: 132 KB (+1 KB / +1%)
 
 ## 6.0.0-next.18
 
