@@ -89,3 +89,42 @@ The `sd-datepicker` component's `range-start` and `range-end` attributes changed
 ```html
 <sd-datepicker range range-start="2025-12-10" range-end="2025-12-20"></sd-datepicker>
 ```
+
+## Changed the `sd-radio-group`'s label to be bold by default
+
+Removed the attribute `boldLabel` from `sd-radio-group`, making this component's label bold by default.
+
+**Before**:
+
+```html
+<sd-radio-group size="lg" orientation="vertical" name="radio-group" value="1" boldlabel="true">
+  <sd-radio-group name="large-radio-group" size="lg" value="1" label="Group label" boldlabel>
+    <sd-radio value="1">Radio 1</sd-radio>
+    <sd-radio value="2">Radio 2</sd-radio>
+    <sd-radio value="3">Radio 3</sd-radio>
+  </sd-radio-group>
+</sd-radio-group>
+```
+
+**After**:
+
+```html
+<sd-radio-group size="lg" orientation="vertical" name="radio-group" value="1">
+  <sd-radio-group name="large-radio-group" size="lg" value="1" label="Group label">
+    <sd-radio value="1">Radio 1</sd-radio>
+    <sd-radio value="2">Radio 2</sd-radio>
+    <sd-radio value="3">Radio 3</sd-radio>
+  </sd-radio-group>
+</sd-radio-group>
+```
+
+**How to make it non-bold**:
+
+```html
+<sd-radio-group name="large-radio-group" size="lg" value="1">
+  <span slot="label" class="font-normal">Group label</span>
+  <sd-radio value="1">Radio 1</sd-radio>
+  <sd-radio value="2">Radio 2</sd-radio>
+  <sd-radio value="3">Radio 3</sd-radio>
+</sd-radio-group>
+```

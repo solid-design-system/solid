@@ -63,7 +63,7 @@ export const TextAreaWithTooltip = {
 export const RadioGroupWithTooltip = {
   name: 'Radio Group with Tooltip',
   render: () => html`
-    <sd-radio-group class="w-[400px] py-6" boldLabel>
+    <sd-radio-group class="w-[400px] py-6">
       <div slot="label">Choose your subscription plan</div>
       <sd-tooltip slot="tooltip" content="Select the plan that best meets your needs" size="sm"></sd-tooltip>
 
