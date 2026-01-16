@@ -100,7 +100,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** @internal */
   @state() showInvalidStyle = false;
   /** @internal */
-  @state() isPasswordToggleFocused = false;
+  @state() isClickableIconFocused = false;
 
   /**
    * The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults
@@ -363,12 +363,12 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     this.passwordVisible = !this.passwordVisible;
   }
 
-  private handlePasswordToggleFocusIn() {
-    this.isPasswordToggleFocused = true;
+  private handleClickableIconFocusIn() {
+    this.isClickableIconFocused = true;
   }
 
-  private handlePasswordToggleFocusOut() {
-    this.isPasswordToggleFocused = false;
+  private handleClickableIconFocusOut() {
+    this.isClickableIconFocused = false;
   }
 
   private isDecrementDisabled() {
@@ -530,8 +530,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const hasTooltip = !!slots['tooltip'];
     const hasIconLeft = slots['left'];
     const hasValue = this.value !== null && String(this.value).length > 0;
+    const isTypeWithDefaultText = this.type === 'time' || this.type === 'date' || this.type === 'datetime-local';
     const isFloatingLabelActive =
-      this.floatingLabel && hasLabel && (this.hasFocus || hasValue || this.isPasswordToggleFocused);
+      this.floatingLabel &&
+      hasLabel &&
+      (this.hasFocus || hasValue || this.isClickableIconFocused || isTypeWithDefaultText);
 
     // Hierarchy of input states:
     const inputState = this.disabled
@@ -759,9 +762,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                     )}
                     type="button"
                     @click=${this.handlePasswordToggle}
-                    @mousedown=${this.handlePasswordToggleFocusIn}
-                    @focus=${() => this.handlePasswordToggleFocusIn()}
-                    @blur=${this.handlePasswordToggleFocusOut}
+                    @mousedown=${this.handleClickableIconFocusIn}
+                    @focus=${() => this.handleClickableIconFocusIn()}
+                    @blur=${this.handleClickableIconFocusOut}
                   >
                     ${this.passwordVisible
                       ? html`
@@ -849,6 +852,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                       aria-hidden="true"
                       ${longPress({ start: () => this.handleStepDown(), end: () => this.handleChange() })}
                       tabindex="-1"
+                      @mousedown=${this.handleClickableIconFocusIn}
+                      @focus=${() => this.handleClickableIconFocusIn()}
+                      @blur=${this.handleClickableIconFocusOut}
                     >
                       <slot name="decrement-number-stepper">
                         <sd-icon
