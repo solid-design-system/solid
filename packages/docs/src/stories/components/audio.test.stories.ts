@@ -268,7 +268,7 @@ export const SamplesHeadline = {
     return html`
       <style></style>
       <div>
-        <div class="px-12 pt-12">
+        <div class="px-12 pt-12 pb-4">
           <h4 class="sd-headline sd-headline--size-xl flex justify-center">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           </h4>

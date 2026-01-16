@@ -70,6 +70,7 @@ loadStacks();
  * @cssproperty --sd-notification--info-color-background - The background color for info notifications.
  * @cssproperty --sd-notification--success-color-background - The background color for success notifications.
  * @cssproperty --sd-notification--warning-color-background - The background color for warning notifications.
+ * @cssproperty --sd-notification-color-border - the border color of notifications.
  */
 
 @customElement('sd-notification')
@@ -328,7 +329,7 @@ export default class SdNotification extends SolidElement {
             part="content"
             class=${cx(
               'h-full w-full p-1 gap-2 flex items-center justify-stretch bg-white',
-              'border-solid border-[1px] border-l-0 border-neutral-400',
+              'border-solid border-[1px] border-l-0 sd-notification-color-border',
               {
                 info: 'sd-notification--info-color-background',
                 success: 'sd-notification--success-color-background',
@@ -369,7 +370,7 @@ export default class SdNotification extends SolidElement {
                 ></div>
                 <div
                   part="duration-indicator__total"
-                  class="w-full h-[2px] bottom-0 absolute border border-neutral-400"
+                  class="w-full h-[2px] bottom-0 absolute border sd-notification-color-border"
                 ></div>
               `
             : ''}

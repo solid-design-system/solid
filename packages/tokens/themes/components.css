@@ -10,8 +10,12 @@
   background-color: rgba(var(--sd-form-control--invalid-color-background, rgba(var(--sd-color-white))));
 }
 
+@utility form-control-border-radius {
+ border-radius: var(--sd-form-control-border-radius, var(--sd-spacing-1));
+}
+
 @utility form-control-color-border {
-  border-color: rgba(var(--sd-form-control-color-border, rgba(var(--sd-color-neutral-900))));
+  border-color: rgba(var(--sd-form-control-color-border, rgba(var(--sd-color-neutral-800))));
 }
 
 @utility form-control-color-icon-fill {
@@ -74,10 +78,6 @@
  border-width: var(--sd-accordion-border-width, var(--sd-spacing-0\.25));
 }
 
-@utility sd-accordion-color-background {
-  background-color: rgba(var(--sd-accordion-color-background, rgba(var(--sd-color-white))));
-}
-
 @utility sd-accordion-color-text {
   color: rgba(var(--sd-accordion-color-text, rgba(var(--sd-color-primary))));
 }
@@ -112,6 +112,10 @@
 
 @utility sd-badge--blue--inverted-color-text {
   color: rgba(var(--sd-badge--blue--inverted-color-text, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-badge--blue-color-background {
+  background-color: rgba(var(--sd-badge--blue-color-background, rgba(var(--sd-color-primary-500))));
 }
 
 @utility sd-badge--green-color--inverted-background {
@@ -152,6 +156,10 @@
 
 @utility sd-brandshape--white-color-background {
   background-color: rgba(var(--sd-brandshape--white-color-background, rgba(var(--sd-color-white))));
+}
+
+@utility sd-breadcrumb__separator--current-color {
+  background-color: rgba(var(--sd-breadcrumb__separator--current-color, rgba(var(--sd-color-accent))));
 }
 
 @utility sd-breadcrumb__separator-color {
@@ -238,6 +246,14 @@
   background-color: rgba(var(--sd-button--secondary--active-color-background, rgba(var(--sd-color-primary-200))));
 }
 
+@utility sd-button--secondary--default-color-text {
+  color: rgba(var(--sd-button--secondary--default-color-text, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-button--secondary--disabled-color-text {
+  color: rgba(var(--sd-button--secondary--disabled-color-text, rgba(var(--sd-color-neutral-500))));
+}
+
 @utility sd-button--secondary--hover-color-background {
   background-color: rgba(var(--sd-button--secondary--hover-color-background, rgba(var(--sd-color-primary-100))));
 }
@@ -252,6 +268,10 @@
 
 @utility sd-button--secondary--inverted--hover-color-text {
   color: rgba(var(--sd-button--secondary--inverted--hover-color-text, rgba(var(--sd-color-primary-100))));
+}
+
+@utility sd-button--secondary--inverted-color-border {
+  border-color: rgba(var(--sd-button--secondary--inverted-color-border, rgba(var(--sd-color-white))));
 }
 
 @utility sd-button--size-lg-border-radius {
@@ -294,6 +314,14 @@
   background-color: rgba(var(--sd-button--tertiary--active-color-background, rgba(var(--sd-color-primary-200))));
 }
 
+@utility sd-button--tertiary--default-color-text {
+  color: rgba(var(--sd-button--tertiary--default-color-text, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-button--tertiary--disabled-color-text {
+  color: rgba(var(--sd-button--tertiary--disabled-color-text, rgba(var(--sd-color-neutral-500))));
+}
+
 @utility sd-button--tertiary--hover-color-background {
   background-color: rgba(var(--sd-button--tertiary--hover-color-background, rgba(var(--sd-color-primary-100))));
 }
@@ -314,8 +342,28 @@
   font-weight: var(--sd-button-font-weight, var(--sd-font-weight-normal));
 }
 
-@utility sd-carousel--active-color-icon-fill {
-  fill: rgba(var(--sd-carousel--active-color-icon-fill, rgba(var(--sd-color-accent))));
+@utility sd-carousel--active--inverted-color-border {
+  border-color: rgba(var(--sd-carousel--active--inverted-color-border, rgba(var(--sd-color-accent))));
+}
+
+@utility sd-carousel--active-color-border {
+  border-color: rgba(var(--sd-carousel--active-color-border, rgba(var(--sd-color-accent))));
+}
+
+@utility sd-carousel__pager-dot--inverted--hovered-background {
+  background-color: rgba(var(--sd-carousel__pager-dot--inverted--hovered-background, rgba(var(--sd-color-accent))));
+}
+
+@utility sd-carousel__pager-dot--inverted-background {
+  background-color: rgba(var(--sd-carousel__pager-dot--inverted-background, rgba(var(--sd-color-accent))));
+}
+
+@utility sd-carousel__pager-dot--inverted-border {
+  border-color: rgba(var(--sd-carousel__pager-dot--inverted-border, rgba(var(--sd-color-white))));
+}
+
+@utility sd-carousel__pager-dot-background {
+  background-color: rgba(var(--sd-carousel__pager-dot-background, rgba(var(--sd-color-accent))));
 }
 
 @utility sd-carousel__pager-dot-border-width {
@@ -386,36 +434,52 @@
   color: rgba(var(--sd-combobox--default-color-text, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-datepicker--hovered--current__date-item-color-background {
-  background-color: rgba(var(--sd-datepicker--hovered--current__date-item-color-background, rgba(var(--sd-color-primary-100))));
+@utility sd-combobox__tag-border-width {
+ border-width: var(--sd-combobox__tag-border-width, var(--sd-spacing-0\.25));
 }
 
-@utility sd-datepicker--hovered--current__date-item-color-text {
-  color: rgba(var(--sd-datepicker--hovered--current__date-item-color-text, rgba(var(--sd-color-primary-500))));
+@utility sd-datepicker__date-item--current-font-weight {
+  font-weight: var(--sd-datepicker__date-item--current-font-weight, var(--sd-font-weight-bold));
 }
 
-@utility sd-datepicker--hovered--default__date-item-color-text {
-  color: rgba(var(--sd-datepicker--hovered--default__date-item-color-text, rgba(var(--sd-color-primary-500))));
+@utility sd-datepicker__date-item--default-color-text {
+  color: rgba(var(--sd-datepicker__date-item--default-color-text, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-datepicker--hovered__date-item--default-color-background {
-  background-color: rgba(var(--sd-datepicker--hovered__date-item--default-color-background, rgba(var(--sd-color-primary-100))));
+@utility sd-datepicker__date-item--default-font-weight {
+  font-weight: var(--sd-datepicker__date-item--default-font-weight, var(--sd-font-weight-normal));
 }
 
-@utility sd-datepicker--hovered__prev-next-color-background {
-  background-color: rgba(var(--sd-datepicker--hovered__prev-next-color-background, rgba(var(--sd-color-primary-100))));
+@utility sd-datepicker__date-item--hovered--current-color-text {
+  color: rgba(var(--sd-datepicker__date-item--hovered--current-color-text, rgba(var(--sd-color-primary-500))));
 }
 
-@utility sd-datepicker--hovered__prev-next-color-text {
-  color: rgba(var(--sd-datepicker--hovered__prev-next-color-text, rgba(var(--sd-color-neutral-700))));
+@utility sd-datepicker__date-item--hovered--default-color-background {
+  background-color: rgba(var(--sd-datepicker__date-item--hovered--default-color-background, rgba(var(--sd-color-primary-100))));
 }
 
-@utility sd-datepicker__date-item-color-text {
-  color: rgba(var(--sd-datepicker__date-item-color-text, rgba(var(--sd-color-white))));
+@utility sd-datepicker__date-item--hovered--default-color-text {
+  color: rgba(var(--sd-datepicker__date-item--hovered--default-color-text, rgba(var(--sd-color-primary-500))));
+}
+
+@utility sd-datepicker__date-item--hovered--prev-next-color-background {
+  background-color: rgba(var(--sd-datepicker__date-item--hovered--prev-next-color-background, rgba(var(--sd-color-primary-100))));
+}
+
+@utility sd-datepicker__date-item--hovered--prev-next-color-text {
+  color: rgba(var(--sd-datepicker__date-item--hovered--prev-next-color-text, rgba(var(--sd-color-neutral-700))));
+}
+
+@utility sd-datepicker__date-item--selected-color-text {
+  color: rgba(var(--sd-datepicker__date-item--selected-color-text, rgba(var(--sd-color-white))));
 }
 
 @utility sd-divider--inverted-color-border {
   border-color: rgba(var(--sd-divider--inverted-color-border, rgba(var(--sd-color-primary-400))));
+}
+
+@utility sd-dropdown-color-background {
+  background-color: rgba(var(--sd-dropdown-color-background, rgba(var(--sd-color-white))));
 }
 
 @utility sd-flag--neutral-200-color-background {
@@ -458,12 +522,28 @@
  border-width: var(--sd-flag-border-width, 0);
 }
 
+@utility sd-flag-font-size {
+ font-size: var(--sd-flag-font-size, 0.875rem);
+}
+
+@utility sd-flag-font-weight {
+  font-weight: var(--sd-flag-font-weight, var(--sd-font-weight-normal));
+}
+
 @utility sd-footnotes--target--inverted-color-background {
   background-color: rgba(var(--sd-footnotes--target--inverted-color-background, rgba(var(--sd-color-primary-800))));
 }
 
 @utility sd-header-padding-bottom {
  padding-bottom: var(--sd-header-padding-bottom, 0);
+}
+
+@utility sd-header__underline-color-background {
+  background-color: rgba(var(--sd-header__underline-color-background, rgba(255, 255, 255, 0)));
+}
+
+@utility sd-header__underline-height {
+ height: var(--sd-header__underline-height, var(--sd-spacing-2));
 }
 
 @utility sd-headline-4xl-and-mobile-4xl-text {
@@ -476,6 +556,10 @@
 
 @utility sd-link-color--default-text {
   color: rgba(var(--sd-link-color--default-text, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-link-color--disabled-text {
+  color: rgba(var(--sd-link-color--disabled-text, rgba(var(--sd-color-primary-800))));
 }
 
 @utility sd-link-color--hover-icon {
@@ -504,6 +588,10 @@
 
 @utility sd-map-marker-font-size {
  font-size: var(--sd-map-marker-font-size, var(--sd-spacing-3));
+}
+
+@utility sd-map-marker-main-color-icon-fill {
+  fill: rgba(var(--sd-map-marker-main-color-icon-fill, rgba(var(--sd-color-accent-500))));
 }
 
 @utility sd-menu--disabled-color-icon {
@@ -544,6 +632,26 @@
 
 @utility sd-notification--warning-color-background {
   background-color: rgba(var(--sd-notification--warning-color-background, rgba(var(--sd-color-white))));
+}
+
+@utility sd-notification-color-border {
+  border-color: rgba(var(--sd-notification-color-border, rgba(var(--sd-color-neutral-400))));
+}
+
+@utility sd-notification-color-icon-fill {
+  fill: rgba(var(--sd-notification-color-icon-fill, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-option--disabled-color-border {
+  border-color: rgba(var(--sd-option--disabled-color-border, rgba(var(--sd-color-neutral-500))));
+}
+
+@utility sd-pagination--default-border {
+  border-color: rgba(var(--sd-pagination--default-border, rgba(var(--sd-color-success))));
+}
+
+@utility sd-pagination--inverted-border {
+  border-color: rgba(var(--sd-pagination--inverted-border, rgba(var(--sd-color-success))));
 }
 
 @utility sd-quickfact--expandable-color-text {
@@ -588,6 +696,10 @@
 
 @utility sd-radio--default--invalid-color-background {
   background-color: rgba(var(--sd-radio--default--invalid-color-background, rgba(var(--sd-color-white))));
+}
+
+@utility sd-radio--error-color-text {
+  color: rgba(var(--sd-radio--error-color-text, rgba(var(--sd-color-error))));
 }
 
 @utility sd-radio-border-width {
@@ -638,6 +750,10 @@
  border-width: var(--sd-range__bar-border-width, var(--sd-spacing-1));
 }
 
+@utility sd-skeleton-color {
+  background-color: rgba(var(--sd-skeleton-color, rgba(var(--sd-color-neutral-200))));
+}
+
 @utility sd-step-color-text {
   color: rgba(var(--sd-step-color-text, rgba(var(--sd-color-primary))));
 }
@@ -659,11 +775,11 @@
 }
 
 @utility sd-switch--unchecked-color-border {
-  border-color: rgba(var(--sd-switch--unchecked-color-border, rgba(var(--sd-color-neutral-900))));
+  border-color: rgba(var(--sd-switch--unchecked-color-border, rgba(var(--sd-color-neutral-800))));
 }
 
 @utility sd-switch--unchecked__icon-color-background {
-  background-color: rgba(var(--sd-switch--unchecked__icon-color-background, rgba(var(--sd-color-neutral-900))));
+  background-color: rgba(var(--sd-switch--unchecked__icon-color-background, rgba(var(--sd-color-neutral-800))));
 }
 
 @utility sd-switch-color-text {
@@ -754,6 +870,10 @@
   background-color: rgba(var(--sd-teaser--primary-100-color-background, rgba(var(--sd-color-primary-100))));
 }
 
+@utility sd-teaser-border-radius {
+ border-radius: var(--sd-teaser-border-radius, 0);
+}
+
 @utility sd-teaser-media--neutral-100--hover-color-background {
   background-color: rgba(var(--sd-teaser-media--neutral-100--hover-color-background, rgba(var(--sd-color-neutral-100))));
 }
@@ -770,8 +890,16 @@
   background-color: rgba(var(--sd-teaser-media--primary-100-color-background, rgba(var(--sd-color-primary-100))));
 }
 
+@utility sd-tooltip-border-width {
+ border-width: var(--sd-tooltip-border-width, var(--sd-spacing-0\.25));
+}
+
 @utility sd-tooltip-color-background {
   background-color: rgba(var(--sd-tooltip-color-background, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-tooltip-color-border {
+  border-color: rgba(var(--sd-tooltip-color-border, rgba(255, 255, 255, 0)));
 }
 
 @utility sd-tooltip-color-text {

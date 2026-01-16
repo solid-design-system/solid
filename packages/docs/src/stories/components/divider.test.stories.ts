@@ -87,7 +87,7 @@ export const Inverted = {
       options: {
         templateBackgrounds: {
           alternate: 'y',
-          colors: ['rgba(var(--sd-color-primary))', 'rgba(var(--sd-color-white))']
+          colors: ['rgba(var(--sd-color-primary))', 'transparent']
         }
       }
     });

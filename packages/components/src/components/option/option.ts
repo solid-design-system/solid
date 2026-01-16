@@ -24,6 +24,8 @@ import SolidElement from '../../internal/solid-element';
  * @csspart label - The option's label.
  * @csspart left - The container that wraps the left.
  * @csspart right - The container that wraps the right.
+ *
+ * @cssproperty --sd-option--disabled-color-border - The border color of checkboxes for the disabled options.
  */
 @customElement('sd-option')
 export default class SdOption extends SolidElement {
@@ -165,7 +167,7 @@ export default class SdOption extends SolidElement {
               class=${cx(
                 'relative flex flex-shrink-0 items-center justify-center border rounded-sm h-4 w-4 mr-2',
                 this.disabled
-                  ? 'border-neutral-500'
+                  ? 'sd-option--disabled-color-border'
                   : this.selected
                     ? 'bg-accent border-accent'
                     : 'bg-white form-control-color-border'

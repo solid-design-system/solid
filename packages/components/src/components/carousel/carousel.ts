@@ -49,6 +49,12 @@ import SolidElement from '../../internal/solid-element.js';
  * @cssproperty --scroll-hint - The amount of padding to apply to the scroll area, allowing adjacent slides to become
  *  partially visible as a scroll hint.
  * @cssproperty --sd-carousel__pager-dot-border-width - The border width of the pager dots in the carousel.
+ * @cssproperty --sd-carousel__pager-dot--inverted-background - The background for the pager dots in the inverted carousel when active.
+ * @cssproperty --sd-carousel__pager-dot--inverted--hovered-background - The background for the pager dots in the inverted carousel when hovered.
+ * @cssproperty --sd-carousel__pager-dot--inverted-border - The border color for the pager dots in the inverted carousel.
+ * @cssproperty --sd-carousel__pager-dot-background - The background for the pager dots when active.
+ * @cssproperty --sd-carousel--active-color-border - The border color for the active pagination item.
+ * @cssproperty --sd-carousel--active--inverted-color-border - The border color for the active pagination item in inverted carousel.
  */
 @customElement('sd-carousel')
 export default class SdCarousel extends SolidElement {
@@ -692,10 +698,16 @@ export default class SdCarousel extends SolidElement {
                         >
                           <span
                             class=${cx(
-                              'h-4 w-4 block border sd-carousel__pager-dot-border-width hover:border-primary-500 rounded-full transition-colors duration-slow hover:duration-fast ease-in-out',
-                              this.inverted ? 'border-white hover:border-primary-500' : 'border-primary',
-                              isActive && 'bg-accent border-none',
-                              isActive ? (this.inverted ? 'hover:bg-accent-300' : 'hover:bg-accent-550') : ''
+                              'h-4 w-4 block border sd-carousel__pager-dot-border-width rounded-full transition-colors duration-slow hover:duration-fast ease-in-out',
+                              this.inverted
+                                ? 'sd-carousel__pager-dot--inverted-border hover:border-primary-200'
+                                : 'border-primary hover:border-primary-500',
+                              isActive && 'border-none',
+                              isActive
+                                ? this.inverted
+                                  ? 'sd-carousel__pager-dot--inverted-background hover:sd-carousel__pager-dot--inverted--hovered-background'
+                                  : 'sd-carousel__pager-dot-background hover:bg-accent-550'
+                                : ''
                             )}
                           ></span>
                         </button>
@@ -710,7 +722,12 @@ export default class SdCarousel extends SolidElement {
                 >
                   <span
                     part="pagination-item"
-                    class=${cx('w-5 text-center border-b-2 border-accent', this.inverted ? 'text-white' : 'text-black')}
+                    class=${cx(
+                      'w-5 text-center border-b-2',
+                      this.inverted
+                        ? 'text-white sd-carousel--active--inverted-color-border'
+                        : 'text-black sd-carousel--active-color-border'
+                    )}
                     >${currentPage}</span
                   >
                   <span
