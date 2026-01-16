@@ -12,10 +12,12 @@
     "@solid-design-system/versioning": "1.0.0"
   },
   "changesets": [
+    "blue-animals-hang",
     "blue-crabs-cry",
     "brave-pots-know",
     "busy-crabs-warn",
     "cold-ghosts-check",
+    "cold-parts-guess",
     "cozy-windows-throw",
     "curvy-memes-stand",
     "dark-cougars-drive",

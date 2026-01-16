@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 6.0.0-next.24
+
+### Major Changes
+
+- Added the `floating-label`attribute to the components `sd-select`, `sd-datepicker`, `sd-combobox` and `sd-textarea`, as well as some improvements related to the handling of placeholders to the floating label logic of the `sd-input` component. _[`#2679`](https://github.com/solid-design-system/solid/pull/2679) [`6ab3afe`](https://github.com/solid-design-system/solid/commit/6ab3afefc4c9d29b5fcaf3d541170e5e6a78dd7f) [@martascorreia](https://github.com/martascorreia)_
+
+### 📈 Stats
+* Uncompressed: 587 KB (+4 KB / +1%)
+* Gzipped: 133 KB (+1 KB / +1%)
+
 ## 6.0.0-next.23
 
 ### Major Changes
