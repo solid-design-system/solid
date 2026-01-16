@@ -115,7 +115,7 @@ export const FloatingLabel = {
     'floating-label': true
   },
   render: (args: any) => {
-    return html`<div class="h-[260px] w-[420px]">${generateTemplate({ args })}</div>`;
+    return html` <div class="h-[260px] w-[420px]">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -128,30 +128,56 @@ export const SizeMultiple = {
   render: (args: { open?: string }) => {
     delete args['open'];
 
-    return html`<div class="h-[340px]">
-      ${generateTemplate({
-        options: {
-          classes: 'w-full'
-        },
-        axis: {
-          x: {
-            type: 'attribute',
-            name: 'size'
+    return html` <div class="h-[340px]">
+        ${generateTemplate({
+          options: {
+            classes: 'w-full'
           },
-          y: {
-            type: 'attribute',
-            name: 'useTags',
-            values: [false, true]
-          }
-        },
-        constants: [
-          fiveOptionsConstant,
-          multipleConstant,
-          { type: 'attribute', name: 'value', value: 'option-1 option-2 option-3 option-4' }
-        ],
-        args
-      })}
-    </div>`;
+          axis: {
+            x: {
+              type: 'attribute',
+              name: 'size'
+            },
+            y: {
+              type: 'attribute',
+              name: 'useTags',
+              values: [false, true]
+            }
+          },
+          constants: [
+            fiveOptionsConstant,
+            multipleConstant,
+            { type: 'attribute', name: 'value', value: 'option-1 option-2 option-3 option-4' }
+          ],
+          args
+        })}
+      </div>
+      <br />
+      <div class="h-[340px]">
+        ${generateTemplate({
+          options: {
+            classes: 'w-full'
+          },
+          axis: {
+            x: {
+              type: 'attribute',
+              name: 'size'
+            },
+            y: {
+              type: 'attribute',
+              name: 'useTags',
+              values: [false, true]
+            }
+          },
+          constants: [
+            fiveOptionsConstant,
+            multipleConstant,
+            { type: 'attribute', name: 'value', value: 'option-1 option-2 option-3 option-4' },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
+          args
+        })}
+      </div>`;
   }
 };
 
@@ -164,36 +190,68 @@ export const DisabledMultiple = {
   render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
-    return html`<div class="h-[340px] w-full">
-      ${generateTemplate({
-        options: {
-          classes: 'w-full [&>tbody>tr>td]:w-[50%]'
-        },
-        axis: {
-          y: {
-            type: 'attribute',
-            name: 'useTags',
-            values: [false, true]
+    return html` <div class="h-[340px] w-full">
+        ${generateTemplate({
+          options: {
+            classes: 'w-full [&>tbody>tr>td]:w-[50%]'
           },
-          x: {
-            type: 'attribute',
-            name: 'disabled',
-            values: [false, true]
-          }
-        },
-        constants: [
-          clearableConstant,
-          multipleConstant,
-          fiveOptionsConstant,
-          {
-            type: 'attribute',
-            name: 'value',
-            value: 'option-1 option-2 option-3 option-4'
-          }
-        ],
-        args
-      })}
-    </div>`;
+          axis: {
+            y: {
+              type: 'attribute',
+              name: 'useTags',
+              values: [false, true]
+            },
+            x: {
+              type: 'attribute',
+              name: 'disabled',
+              values: [false, true]
+            }
+          },
+          constants: [
+            clearableConstant,
+            multipleConstant,
+            fiveOptionsConstant,
+            {
+              type: 'attribute',
+              name: 'value',
+              value: 'option-1 option-2 option-3 option-4'
+            }
+          ],
+          args
+        })}
+      </div>
+      <br />
+      <div class="h-[340px] w-full">
+        ${generateTemplate({
+          options: {
+            classes: 'w-full [&>tbody>tr>td]:w-[50%]'
+          },
+          axis: {
+            y: {
+              type: 'attribute',
+              name: 'useTags',
+              values: [false, true]
+            },
+            x: {
+              type: 'attribute',
+              name: 'disabled',
+              values: [false, true]
+            }
+          },
+          constants: [
+            clearableConstant,
+            multipleConstant,
+            fiveOptionsConstant,
+            {
+              type: 'attribute',
+              name: 'value',
+              value: 'option-1 option-2 option-3 option-4'
+            },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
+          args
+        })}
+      </div>`;
   }
 };
 
@@ -206,38 +264,73 @@ export const ValidInvalid = {
   render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
-    return html`<form class="h-[260px] w-full flex gap-4">
-      ${generateTemplate({
-        options: {
-          classes: 'w-full [&>tbody>tr>td]:align-top'
-        },
-        axis: {
-          y: {
-            type: 'attribute',
-            name: 'useTags',
-            values: [false, true]
+    return html`
+      <form class="h-[340px] w-full flex gap-4">
+        ${generateTemplate({
+          options: {
+            classes: 'w-full [&>tbody>tr>td]:align-top'
           },
-          x: {
-            type: 'attribute',
-            name: 'value',
-            values: ['option-1 option-2', '']
-          }
-        },
-        constants: [
-          twoOptionsConstant,
-          labelConstant,
-          multipleConstant,
-          { type: 'attribute', name: 'required', value: true }
-        ],
-        args
-      })}
-      <sd-button class="hidden" type="submit">Submit</sd-button>
-    </form>`;
+          axis: {
+            y: {
+              type: 'attribute',
+              name: 'useTags',
+              values: [false, true]
+            },
+            x: {
+              type: 'attribute',
+              name: 'value',
+              values: ['option-1 option-2', '']
+            }
+          },
+          constants: [
+            twoOptionsConstant,
+            labelConstant,
+            multipleConstant,
+            { type: 'attribute', name: 'required', value: true }
+          ],
+          args
+        })}
+        <sd-button class="hidden" type="submit">Submit</sd-button>
+      </form>
+      <br />
+      <form class="h-[340] w-full flex gap-4">
+        ${generateTemplate({
+          options: {
+            classes: 'w-full [&>tbody>tr>td]:align-top'
+          },
+          axis: {
+            y: {
+              type: 'attribute',
+              name: 'useTags',
+              values: [false, true]
+            },
+            x: {
+              type: 'attribute',
+              name: 'value',
+              values: ['option-1 option-2', '']
+            }
+          },
+          constants: [
+            twoOptionsConstant,
+            labelConstant,
+            multipleConstant,
+            { type: 'attribute', name: 'required', value: true },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
+          args
+        })}
+        <sd-button class="hidden" type="submit">Submit</sd-button>
+      </form>
+    `;
   },
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('sd-button');
-    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
-    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
+    const buttons = canvasElement.querySelectorAll('sd-button');
+
+    for (const el of Array.from(buttons)) {
+      await waitUntil(() => el.shadowRoot?.querySelector('button'));
+
+      await userEvent.type(el.shadowRoot!.querySelector('button')!, '{enter}', { pointerEventsCheck: 0 });
+    }
   }
 };
 
@@ -380,38 +473,55 @@ export const StyleOnValid = {
   render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
-    return html`<div class="h-[340px]">
-      ${generateTemplate({
-        options: {
-          classes: 'w-full'
-        },
-        axis: {
-          x: {
-            type: 'attribute',
-            name: 'style-on-valid'
-          }
-        },
-        constants: [fiveOptionsConstant, { type: 'attribute', name: 'value', value: '' }],
-        args
-      })}
-    </div>`;
+    return html` <div class="h-[340px]">
+        ${generateTemplate({
+          options: {
+            classes: 'w-full'
+          },
+          axis: {
+            x: {
+              type: 'attribute',
+              name: 'style-on-valid'
+            }
+          },
+          constants: [fiveOptionsConstant, { type: 'attribute', name: 'value', value: '' }],
+          args
+        })}
+      </div>
+      <br />
+      <div class="h-[340px]">
+        ${generateTemplate({
+          options: {
+            classes: 'w-full'
+          },
+          axis: {
+            x: {
+              type: 'attribute',
+              name: 'style-on-valid'
+            }
+          },
+          constants: [
+            fiveOptionsConstant,
+            { type: 'attribute', name: 'value', value: '' },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
+          args
+        })}
+      </div>`;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    await Promise.all([customElements.whenDefined('sd-select'), customElements.whenDefined('sd-option')]).then(
-      async () => {
-        const els = canvasElement.querySelectorAll('sd-select');
+    await Promise.all([customElements.whenDefined('sd-select'), customElements.whenDefined('sd-option')]);
 
-        for (const el of els) {
-          await waitUntil(() => el?.shadowRoot?.querySelector('input'));
-          await userEvent.click(el.shadowRoot!.querySelector('input')!);
-          await userEvent.click(el.querySelector('sd-option')!);
-        }
+    const els = canvasElement.querySelectorAll('sd-select');
 
-        // tab to next element to loose focus
-        await userEvent.tab();
-      }
-    );
+    for (const el of els) {
+      await waitUntil(() => el.shadowRoot?.querySelector('input'));
+      const input = el.shadowRoot!.querySelector('input')!;
+      await userEvent.click(input);
+      await userEvent.click(el.querySelector('sd-option')!);
+      input.blur();
+    }
   }
 };
 
@@ -424,25 +534,56 @@ export const Mouseless = {
   render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
-    return html`<div class="mouseless h-[260px] w-full flex gap-4">
-      ${generateTemplate({
-        constants: [twoOptionsConstant, { type: 'attribute', name: 'label', value: 'Default' }],
-        args
-      })}
-      ${generateTemplate({
-        constants: [twoOptionsConstant, multipleConstant, { type: 'attribute', name: 'label', value: 'Multiple' }],
-        args
-      })}
-      ${generateTemplate({
-        constants: [
-          twoOptionsConstant,
-          multipleConstant,
-          { type: 'attribute', name: 'useTags', value: true },
-          { type: 'attribute', name: 'label', value: 'Multiple w/ tags' }
-        ],
-        args
-      })}
-    </div>`;
+    return html`
+      <div class="mouseless h-[260px] w-full flex gap-4">
+        ${generateTemplate({
+          constants: [twoOptionsConstant, { type: 'attribute', name: 'label', value: 'Default' }],
+          args
+        })}
+        ${generateTemplate({
+          constants: [twoOptionsConstant, multipleConstant, { type: 'attribute', name: 'label', value: 'Multiple' }],
+          args
+        })}
+        ${generateTemplate({
+          constants: [
+            twoOptionsConstant,
+            multipleConstant,
+            { type: 'attribute', name: 'useTags', value: true },
+            { type: 'attribute', name: 'label', value: 'Multiple w/ tags' }
+          ],
+          args
+        })}
+      </div>
+      <div class="mouseless h-[260px] w-full flex gap-4">
+        ${generateTemplate({
+          constants: [
+            twoOptionsConstant,
+            { type: 'attribute', name: 'label', value: 'Default' },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
+          args
+        })}
+        ${generateTemplate({
+          constants: [
+            twoOptionsConstant,
+            multipleConstant,
+            { type: 'attribute', name: 'label', value: 'Multiple' },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
+          args
+        })}
+        ${generateTemplate({
+          constants: [
+            twoOptionsConstant,
+            multipleConstant,
+            { type: 'attribute', name: 'useTags', value: true },
+            { type: 'attribute', name: 'label', value: 'Multiple w/ tags' },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
+          args
+        })}
+      </div>
+    `;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
