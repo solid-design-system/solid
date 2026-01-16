@@ -1753,8 +1753,17 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasTooltip = !!slots['tooltip'];
-    const hasValue = this.value !== null && String(this.value).length > 0;
-    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue);
+    console.log(this.rangeStart);
+    const hasValue =
+      (this.value !== null && String(this.value).length > 0) ||
+      (this.range && this.rangeStart !== null) ||
+      this.rangeEnd !== null;
+    const isFloatingLabelActive =
+      this.floatingLabel &&
+      hasLabel &&
+      (this.hasFocus || this.open || hasValue) &&
+      !this.disabled &&
+      !this.visuallyDisabled;
 
     const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary';
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];

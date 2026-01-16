@@ -1212,7 +1212,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           'relative text-left',
           cursorStyles,
           this.size === 'sm' ? 'text-sm' : 'text-base',
-
           this.open && 'z-50'
         )}
       >
@@ -1228,7 +1227,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 <slot name="label">${this.label}</slot>
               </label>
             </div>`
-          : this.floatingLabel
+          : null}
+        <span aria-live="polite" class="sr-only">${this.deletedTagLabel}</span>
+
+        <div part="form-control-input" class="relative w-full bg-white text-black">
+          ${hasLabel && this.floatingLabel
             ? html`
                 <label
                   id="label"
@@ -1259,9 +1262,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 </label>
               `
             : null}
-        <span aria-live="polite" class="sr-only">${this.deletedTagLabel}</span>
 
-        <div part="form-control-input" class="relative w-full bg-white text-black">
           <div
             part="border"
             class=${cx(
@@ -1311,7 +1312,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                   sm: 'py-1 min-h-[32px]',
                   md: 'py-1 min-h-[40px]',
                   lg: 'py-2 min-h-[48px]'
-                }[this.size]
+                }[this.size],
+                verticalPadding
               )}
               slot="anchor"
               @keydown=${this.handleComboboxKeyDown}
@@ -1343,7 +1345,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                   this.selectedTextLabel && !this.multiple
                     ? 'placeholder:form-control-color-text'
                     : 'placeholder:text-neutral-700',
-                  verticalPadding,
                   this.size === 'sm' ? (isFloatingLabelActive ? 'h-4' : 'h-6') : isFloatingLabelActive ? 'h-6' : 'h-8',
                   isFloatingLabelActive && 'leading-none mt-4'
                 )}
@@ -1389,7 +1390,6 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 @focus=${() => this.focus()}
                 @invalid=${this.handleInvalid}
               />
-
               ${hasClearIcon
                 ? html`
                     <button
@@ -1514,14 +1514,15 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           </sd-popup>
         </div>
 
-        <div
+        <slot
+          name="help-text"
           part="form-control-help-text"
           id="help-text"
-          class="text-sm text-neutral-700 mt-1"
+          class=${cx('text-sm text-neutral-700 mt-1', hasHelpText ? 'block' : 'hidden')}
           aria-hidden=${!hasHelpText}
         >
-          <slot name="help-text">${this.helpText}</slot>
-        </div>
+          ${this.helpText}
+        </slot>
       </div>
       ${this.formControlController.renderInvalidMessage()}
     `;
