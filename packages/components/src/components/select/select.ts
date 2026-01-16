@@ -890,7 +890,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     const hasTooltip = !!slots['tooltip'];
     const hasValue = this.value !== null && String(this.value).length > 0;
     const isFloatingLabelActive =
-      this.floatingLabel && hasLabel && ((this.hasFocus && !this.visuallyDisabled) || this.open || hasValue);
+      this.floatingLabel &&
+      hasLabel &&
+      ((this.hasFocus && !this.visuallyDisabled) || this.open || hasValue) &&
+      !(this.disabled && !hasValue);
 
     // Hierarchy of input states:
     const selectState = this.disabled
