@@ -1804,7 +1804,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                         isToday && !isSelectedSingle && !isRangeStart && !isRangeEnd && isFocused
                           ? 'today border-[1px] border-primary font-bold'
                           : '',
-                        disabled ? 'disabled cursor-not-allowed hover:bg-transparent' : '',
+                        disabled ? 'disabled cursor-not-allowed hover:bg-transparent' : 'cursor-pointer',
                         isFocused && !isToday ? 'focused outline outline-2 outline-primary' : ''
                       )}
                       role="gridcell"
