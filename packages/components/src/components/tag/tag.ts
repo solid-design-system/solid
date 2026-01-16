@@ -166,7 +166,7 @@ export default class SdTag extends SolidElement {
           this.disabled && !isLink && 'cursor-not-allowed'
         )}
       >
-        <slot name="icon-left" aria-hidden="true" class=${cx('flex-shrink-0', this.size === 'lg' ? 'text-base' : 'text-[0.75rem]')}></slot>
+        <slot name="icon-left" class=${cx('flex-shrink-0', this.size === 'lg' ? 'text-base' : 'text-[0.75rem]')}></slot>
         <slot id="content" part='content'></slot>
         ${
           this.removable && !isLink
