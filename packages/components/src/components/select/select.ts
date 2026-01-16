@@ -188,7 +188,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @property({ type: Boolean, reflect: true }) required = false;
 
   /** Enables the floating label behavior for the input. */
-  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = false;
+  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = true;
 
   /** Shows success styles if the validity of the input is valid. */
   @property({ type: Boolean, reflect: true, attribute: 'style-on-valid' }) styleOnValid = false;
@@ -888,7 +888,8 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.disabled;
     const hasTooltip = !!slots['tooltip'];
-    const isFloatingLabelActive = this.floatingLabel && hasLabel;
+    const hasValue = this.value !== null && String(this.value).length > 0;
+    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue);
 
     // Hierarchy of input states:
     const selectState = this.disabled
@@ -1069,7 +1070,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   )}
                   type="text"
                   .disabled=${this.disabled}
-                  placeholder=${this.placeholder || this.localize.term('selectDefaultPlaceholder')}
+                  placeholder=${!this.floatingLabel || isFloatingLabelActive
+                    ? this.placeholder || this.localize.term('selectDefaultPlaceholder')
+                    : ''}
                   .value=${this.displayLabel}
                   autocomplete="off"
                   spellcheck="false"

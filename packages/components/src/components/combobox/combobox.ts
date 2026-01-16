@@ -205,7 +205,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   @property({ type: Boolean, reflect: true }) required = false;
 
   /** Enables the floating label behavior for the input. */
-  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = false;
+  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = true;
 
   /**
    * The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults
@@ -1160,7 +1160,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
     const hasClearIcon = this.clearable && !this.disabled && !this.visuallyDisabled;
     const hasIconLeft = slots['left'];
-    const isFloatingLabelActive = this.floatingLabel && hasLabel;
+    const hasValue = this.value !== null && String(this.value).length > 0;
+    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue);
 
     // Hierarchy of input states:
     const selectState = this.disabled
@@ -1347,9 +1348,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                   isFloatingLabelActive && 'leading-none mt-4'
                 )}
                 type="text"
-                placeholder=${this.selectedTextLabel && !this.multiple
-                  ? this.selectedTextLabel
-                  : this.placeholder || this.localize.term('comboboxDefaultPlaceholder')}
+                placeholder=${!this.floatingLabel || isFloatingLabelActive
+                  ? this.selectedTextLabel && !this.multiple
+                    ? this.selectedTextLabel
+                    : this.placeholder || this.localize.term('comboboxDefaultPlaceholder')
+                  : ''}
                 .disabled=${this.disabled}
                 .value=${this.displayInputValue}
                 autocomplete="off"
