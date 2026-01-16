@@ -57,8 +57,9 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @cssproperty --sd-button--tertiary--disabled-color-text - The text color for tertiary buttons in disabled state.
  * @cssproperty --sd-button--tertiary--active-color-background - The background color for tertiary buttons in active state.
  * @cssproperty --sd-button--tertiary--hover-color-background - The background color for tertiary buttons in hover state.
+ * @cssproperty --sd-button--tertiary--inverted--hover-color-background - The background color for inverted tertiary buttons in hover state.
  * @cssproperty --sd-button--tertiary--inverted--active-color-background - The background color for inverted tertiary buttons in active state.
- * @cssproperty --sd-button--secondary--default-color-text - The text color for secondary buttons in default state. 
+ * @cssproperty --sd-button--secondary--default-color-text - The text color for secondary buttons in default state.
  * @cssproperty --sd-button--tertiary--inverted--hover-color-text - The text color for inverted tertiary buttons in hover state.
  * @cssproperty --sd-button--tertiary--default-color-text - The text color for tertiary buttons in default state.
  * @cssproperty --sd-button--cta--inverted--default-color-background - The background color for inverted CTA buttons in default state.
@@ -363,7 +364,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
             : `border-transparent  ${
                 this.visuallyDisabled
                   ? 'text-neutral-600 hover:text-neutral-600 active:text-neutral-600'
-                  : 'text-white hover:sd-button--tertiary--inverted--hover-color-text active:text-primary-200'
+                  : 'text-white hover:sd-button--tertiary--inverted--hover-color-text hover:sd-button--tertiary--inverted--hover-color-background active:text-primary-200'
               }
           disabled:sd-button--inverted--disabled-color-text`,
           cta: `${this.visuallyDisabled ? 'bg-neutral-500 border-neutral-500 hover:bg-neutral-500 active:bg-neutral-500' : 'bg-accent border-transparent'}
