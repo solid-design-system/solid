@@ -69,7 +69,7 @@ export const Selected = {
 };
 
 /**
- * Use the `removable` attribute to include the removability indicator.
+ * Use the `removable` attribute to include the removability indicator. This attribute is disabled when using the attributes `selected` or `toggleable`.
  *
  * __Hint:__ Combine the `sd-remove` event and `hide` method to visually hide the tag
  * when the removable button is triggered.
