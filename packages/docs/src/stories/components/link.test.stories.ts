@@ -54,7 +54,7 @@ export const InvertedAndDisabled = {
       options: {
         templateBackgrounds: {
           alternate: 'y',
-          colors: ['rgba(var(--sd-color-white))', 'rgba(var(--sd-color-primary))']
+          colors: ['transparent', 'rgba(var(--sd-color-primary))']
         }
       }
     })
@@ -143,7 +143,7 @@ export const InvertedAndIconSlots = {
       options: {
         templateBackgrounds: {
           alternate: 'y',
-          colors: ['rgba(var(--sd-color-white))', 'rgba(var(--sd-color-primary))']
+          colors: ['transparent', 'rgba(var(--sd-color-primary))']
         }
       }
     })
