@@ -24,3 +24,20 @@ Create new variables in Variables.
    cd packages/tokens && pnpm fetch:figma
    ```
 6. Enjoy.
+
+### Analyzing Variable Usage
+
+To analyze CSS variable usage across the monorepo:
+
+```bash
+cd packages/tokens && pnpm analyze:variables
+```
+
+The script:
+
+- Extracts all `--sd-*` variables from theme files
+- Searches for usage in generated bundles (components & styles)
+- Categorizes variables (base vs component tokens)
+- Shows usage statistics and lists unused variables
+
+This helps identify dead variables that can be removed from the design system.

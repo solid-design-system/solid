@@ -12,7 +12,8 @@
     "build": "node scripts/build.mjs",
     "verify": "pnpm build && echo '✅ Build verified'",
     "postversion": "pnpm build",
-    "fetch:figma": "node ./scripts/figma/fetch-variables.js && pnpm build"
+    "fetch:figma": "node ./scripts/figma/fetch-variables.js && pnpm build",
+    "analyze:variables": "node scripts/analyze-variables.mjs"
   },
   "files": [
     "dist",

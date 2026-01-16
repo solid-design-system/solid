@@ -90,4 +90,10 @@ const fetchFigmaVariables = async () => {
   writeFileSync(FIGMA_FETCHED_VARIABLES_PATH, JSON.stringify(sort(filteredData), null, 2));
 };
 
-fetchFigmaVariables().catch(console.error);
+fetchFigmaVariables()
+  .then(() => {
+    console.log('\n✅ Figma variables fetched successfully!\n');
+    console.log('💡 Tip: Analyze variable usage with:\n');
+    console.log('   pnpm analyze:variables\n');
+  })
+  .catch(console.error);
