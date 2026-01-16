@@ -439,6 +439,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
             part="base"
             class=${cx(
               'textarea h-full flex items-top rounded-default group transition-colors duration-medium hover:duration-fast ease-in-out',
+              this.floatingLabel && 'pt-6',
               {
                 sm: 'textarea-sm',
                 md: 'textarea-md',
@@ -457,11 +458,10 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               id="input"
               class=${cx(
                 'ps-4 flex-grow focus:outline-none bg-transparent placeholder:text-neutral-700 resize-none group-has-[sd-icon]:pe-8',
-                this.floatingLabel ? 'pt-6' : '',
                 {
-                  sm: 'py-1',
-                  md: 'py-1',
-                  lg: 'py-2'
+                  sm: this.floatingLabel ? 'pb-1' : 'py-1',
+                  md: this.floatingLabel ? 'pb-1' : 'py-1',
+                  lg: this.floatingLabel ? 'pb-2' : 'py-2'
                 }[this.size],
                 this.disabled && 'cursor-not-allowed',
                 textSize
