@@ -99,6 +99,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   @state() showValidStyle = false;
   /** @internal */
   @state() showInvalidStyle = false;
+  /** @internal */
+  @state() isPasswordToggleFocused = false;
 
   /**
    * The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults
@@ -361,6 +363,14 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     this.passwordVisible = !this.passwordVisible;
   }
 
+  private handlePasswordToggleFocusIn() {
+    this.isPasswordToggleFocused = true;
+  }
+
+  private handlePasswordToggleFocusOut() {
+    this.isPasswordToggleFocused = false;
+  }
+
   private isDecrementDisabled() {
     if (this.disabled || this.readonly) {
       return true;
@@ -520,7 +530,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const hasTooltip = !!slots['tooltip'];
     const hasIconLeft = slots['left'];
     const hasValue = this.value !== null && String(this.value).length > 0;
-    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue);
+    const isFloatingLabelActive =
+      this.floatingLabel && hasLabel && (this.hasFocus || hasValue || this.isPasswordToggleFocused);
 
     // Hierarchy of input states:
     const inputState = this.disabled
@@ -741,9 +752,16 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   <button
                     aria-label=${this.localize.term(this.passwordVisible ? 'hidePassword' : 'showPassword')}
                     part="password-toggle-button"
-                    class=${cx('flex items-center sd-interactive', iconMarginLeft)}
+                    class=${cx(
+                      'flex items-center sd-interactive',
+                      iconMarginLeft,
+                      this.floatingLabel && !isFloatingLabelActive && 'hide-password-toggle'
+                    )}
                     type="button"
                     @click=${this.handlePasswordToggle}
+                    @mousedown=${this.handlePasswordToggleFocusIn}
+                    @focus=${() => this.handlePasswordToggleFocusIn()}
+                    @blur=${this.handlePasswordToggleFocusOut}
                   >
                     ${this.passwordVisible
                       ? html`
@@ -939,6 +957,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
       .stepper-button[disabled] sd-icon {
         @apply text-neutral-500;
+      }
+
+      .hide-password-toggle {
+        display: none;
       }
     `
   ];
