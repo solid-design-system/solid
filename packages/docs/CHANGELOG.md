@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 1.32.0-next.7
+
+### Minor Changes
+
+- Implement `icon-left` property for the `sd-tag` _[`#2707`](https://github.com/solid-design-system/solid/pull/2707) [`1055de1`](https://github.com/solid-design-system/solid/commit/1055de18cbcbdcc20d2f62d5f1c77da4cd925053) [@balco0110](https://github.com/balco0110)_
+
 ## 1.32.0-next.6
 
 ### Patch Changes
