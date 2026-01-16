@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.0.0-next.10
+
+### Patch Changes
+
+- Add new package versioning strategy information for `components`, `styles` and `tokens` in installation pages and migration guides. _[`#2736`](https://github.com/solid-design-system/solid/pull/2736) [`c7cb5f9`](https://github.com/solid-design-system/solid/commit/c7cb5f9a39906752dd81615e7118fd5ae311593e) [@smfonseca](https://github.com/smfonseca)_
+
 ## 2.0.0-next.9
 
 ### Major Changes
