@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.0.0-next.8
+
+### Major Changes
+
+- `sd-radio-group` label set to bold as default (removed `boldLabel` attribute). _[`#2681`](https://github.com/solid-design-system/solid/pull/2681) [`878ad8d`](https://github.com/solid-design-system/solid/commit/878ad8d05bb10d09381a049eb07714b930293b10) [@martascorreia](https://github.com/martascorreia)_
+
 ## 1.32.0-next.7
 
 ### Minor Changes
