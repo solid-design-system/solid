@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 5.17.4
+
+### Patch Changes
+
+- Imported components used inside `sd-breadcrumb` and `sd-breadcrumb-item` to ensure stability when cherry picking. _[`#2706`](https://github.com/solid-design-system/solid/pull/2706) [`76f9844`](https://github.com/solid-design-system/solid/commit/76f9844b41a5084adfbe475d810689d5a4777bde) [@mariohamann](https://github.com/mariohamann)_
+
 ## 5.17.3
 
 ### Patch Changes
@@ -7,8 +13,9 @@
 - Added `sd-input` `floating-label` attribute. _[`#2649`](https://github.com/solid-design-system/solid/pull/2649) [`60e6b7f`](https://github.com/solid-design-system/solid/commit/60e6b7f6bf6a5786c3205ac282bf3e373aa09472) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
 
 ### 📈 Stats
-* Uncompressed: 522 KB (+1 KB / +0%)
-* Gzipped: 123 KB (unchanged)
+
+- Uncompressed: 522 KB (+1 KB / +0%)
+- Gzipped: 123 KB (unchanged)
 
 ## 5.17.2
 
