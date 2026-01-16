@@ -340,7 +340,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     const hasTooltip = !!slots['tooltip'];
     const hasValue = this.value !== null && String(this.value).length > 0;
     const isFloatingLabelActive =
-      this.floatingLabel && hasLabel && (this.hasFocus || hasValue) && !this.disabled && !this.visuallyDisabled;
+      this.floatingLabel && hasLabel && ((this.hasFocus && !this.visuallyDisabled) || hasValue);
 
     // Hierarchy of textarea states:
     const textareaState = this.disabled
@@ -412,6 +412,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                     part="form-control-floating-label"
                     class=${cx(
                       'absolute left-4 z-20 pointer-events-none transition-all duration-200',
+                      textSize,
                       !isFloatingLabelActive
                         ? 'top-2.5 text-base'
                         : this.size === 'lg'

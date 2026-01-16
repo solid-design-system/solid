@@ -69,7 +69,16 @@ export const FloatingLabel = {
     'floating-label': true
   },
   render: (args: any) => {
-    return html`<div class="w-[250px]">${generateTemplate({ args })}</div> `;
+    return html`
+      <div class="w-[250px]">${generateTemplate({ args })}</div>
+      <br />
+      <div class="w-[250px]">
+        ${generateTemplate({
+          constants: [{ type: 'attribute', name: 'value', value: 'Floating Label with value' }],
+          args
+        })}
+      </div>
+    `;
   }
 };
 
