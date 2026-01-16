@@ -642,6 +642,10 @@
   fill: rgba(var(--sd-notification-color-icon-fill, rgba(var(--sd-color-primary))));
 }
 
+@utility sd-option--disabled-color-border {
+  border-color: rgba(var(--sd-option--disabled-color-border, rgba(var(--sd-color-neutral-500))));
+}
+
 @utility sd-pagination--default-border {
   border-color: rgba(var(--sd-pagination--default-border, rgba(var(--sd-color-success))));
 }

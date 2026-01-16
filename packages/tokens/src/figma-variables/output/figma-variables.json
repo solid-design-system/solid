@@ -4861,6 +4861,17 @@
             "value": "{ui-light.utilities.color.white.default}"
           }
         }
+      },
+      "sd-option": {
+        "--disabled": {
+          "color": {
+            "border": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.500}"
+            }
+          }
+        }
       }
     }
   },
@@ -8016,6 +8027,17 @@
             "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
             "type": "color",
             "value": "{ui-dark.utilities.color.primary.900}"
+          }
+        }
+      },
+      "sd-option": {
+        "--disabled": {
+          "color": {
+            "border": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.neutral.500}"
+            }
           }
         }
       }
@@ -11175,6 +11197,17 @@
             "value": "{vb.utilities.color.white.default}"
           }
         }
+      },
+      "sd-option": {
+        "--disabled": {
+          "color": {
+            "border": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{vb.utilities.color.background.neutral.400}"
+            }
+          }
+        }
       }
     }
   },
@@ -14330,6 +14363,17 @@
             "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
             "type": "color",
             "value": "rgba(255, 255, 255, 0.60)"
+          }
+        }
+      },
+      "sd-option": {
+        "--disabled": {
+          "color": {
+            "border": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{kid.utilities.color.neutral.400}"
+            }
           }
         }
       }

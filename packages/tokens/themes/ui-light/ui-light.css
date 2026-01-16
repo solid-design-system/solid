@@ -319,6 +319,7 @@
   --sd-opacity-80: 80%;
   --sd-opacity-85: 85%;
   --sd-opacity-90: 90%;
+  --sd-option--disabled-color-border: var(--sd-color-neutral-500);
   --sd-overlay-color-background: 5, 21, 48, 0.9;
   --sd-pagination--default-border: var(--sd-color-success);
   --sd-pagination--inverted-border: var(--sd-color-success);
