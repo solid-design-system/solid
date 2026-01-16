@@ -17,6 +17,7 @@ import SolidElement from '../../internal/solid-element';
  * @dependency sd-icon
  *
  * @slot - The tag's content.
+ * @slot icon-left - A prefix icon or similar element.
  * @slot removable-indicator - The tag's removability indicator.
  *
  * @event sd-blur - Emitted when the tag loses focus.
@@ -28,6 +29,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart base - The component's base wrapper.
  * @csspart content - The tag's content.
  * @csspart removable-indicator - The tag's removability indicator.
+ * @csspart icon-left - The container that wraps the left icon area.
  *
  * @cssproperty --sd-tag--default-color-text - The default text color for tags in their default state.
  * @cssproperty --sd-tag--default-color-background - The default color background for tags in their default state.
@@ -164,6 +166,7 @@ export default class SdTag extends SolidElement {
           this.disabled && !isLink && 'cursor-not-allowed'
         )}
       >
+        <slot name="icon-left" class=${cx('flex-shrink-0', this.size === 'lg' ? 'text-base' : 'text-[0.75rem]')}></slot>
         <slot id="content" part='content'></slot>
         ${
           this.removable && !isLink
