@@ -1,5 +1,88 @@
 # @solid-design-system/components
 
+## 6.0.0
+
+### Major Changes
+
+- Added the `floating-label`attribute to the components `sd-select`, `sd-datepicker`, `sd-combobox` and `sd-textarea`, as well as some improvements related to the handling of placeholders to the floating label logic of the `sd-input` component. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Implemented `tooltip` attribute on `sd-range` to define the tooltip behaviour. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Removed the `no-tooltip` attribute from `sd-range`.
+
+- Introduce multi-theming with new CSS variables _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- `sd-radio-group` label set to bold as default (removed `boldLabel` attribute). _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Updated the following in `sd-datepicker`: _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+  - Changed `range-start` and `range-end` attributes from camelCase to kebab case to align with the rest of the component API.
+  - Added date conversion in `value`, `disabled-dates`, `range-start`, `range-end`, `min` and `max` attributes.
+  - Added missing `required` attribute.
+  - Updated properties descritions and other minor fixes.
+
+### Minor Changes
+
+- Implemented new utility componented named `sd-theme-listener`, used to listen to theme changes. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Added more semantic tokens to the following components: _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+  - sd-accordion
+  - sd-audio
+  - sd-badge
+  - sd-brandshape
+  - sd-breadcrumb
+  - sd-button
+  - sd-carousel
+  - sd-checkbox
+  - sd-chip
+  - sd-combobox
+  - sd-container
+  - sd-date-picker
+  - sd-divider
+  - sd-flag
+  - sd-footnotes
+  - sd-header
+  - sd-input
+  - sd-interactive
+  - sd-loader
+  - sd-map-marker
+  - sd-menu-item
+  - sd-navigation-item
+  - sd-notification
+  - sd-quick-fact
+  - sd-radio
+  - sd-radio-button
+  - sd-radio-group
+  - sd-range-tick
+  - sd-select
+  - sd-step
+  - sd-switch
+  - sd-tab
+  - sd-tag
+  - sd-teaser
+  - sd-teaser-media
+  - sd-textarea
+  - sd-tooltip
+  - sd-video
+
+- Implement `icon-left` property for the `sd-tag` _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### Patch Changes
+
+- Remove unneeded border in quickfact _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Fixed `sd-step` text color. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Updated documentation for multi-theming feature _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Internal: version bump to align with main (no user-facing changes). _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Fixed the restriction of changing the font size and margin for headline in `sd-teased-media`. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Fix accordion group margin for vb _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Bump components next version. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Fixed theming background color issue on `sd-tooltip` arrow. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Fix theme shadows generation. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- - Add `kid-starter` theme. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Fix icon color default library (content/system) _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Adjusted theme generator to support rgba instead of hex. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Fixed `sd-accordion` focus outline being cropped when grouped with multiple `sd-accordion` _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Changed icon library to `_internal` on the `sd-input` step buttons. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Fix`sd-accordion` border margin-top when using preflight. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Fix broken sd-icon load with multi theming. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Sync packages versions. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Fix `sd-video` play button issue where styles are being reset. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 6.0.0-next.24
 
 ### Major Changes
@@ -7,8 +90,9 @@
 - Added the `floating-label`attribute to the components `sd-select`, `sd-datepicker`, `sd-combobox` and `sd-textarea`, as well as some improvements related to the handling of placeholders to the floating label logic of the `sd-input` component. _[`#2679`](https://github.com/solid-design-system/solid/pull/2679) [`6ab3afe`](https://github.com/solid-design-system/solid/commit/6ab3afefc4c9d29b5fcaf3d541170e5e6a78dd7f) [@martascorreia](https://github.com/martascorreia)_
 
 ### 📈 Stats
-* Uncompressed: 587 KB (+4 KB / +1%)
-* Gzipped: 133 KB (+1 KB / +1%)
+
+- Uncompressed: 587 KB (+4 KB / +1%)
+- Gzipped: 133 KB (+1 KB / +1%)
 
 ## 6.0.0-next.23
 

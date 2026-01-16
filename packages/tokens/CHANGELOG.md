@@ -1,5 +1,74 @@
 # @solid-design-system/tokens
 
+## 6.0.0
+
+### Major Changes
+
+- Introduce multi-theming with new CSS variables _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### Minor Changes
+
+- Added more semantic tokens to the following components: _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+  - sd-accordion
+  - sd-audio
+  - sd-badge
+  - sd-brandshape
+  - sd-breadcrumb
+  - sd-button
+  - sd-carousel
+  - sd-checkbox
+  - sd-chip
+  - sd-combobox
+  - sd-container
+  - sd-date-picker
+  - sd-divider
+  - sd-flag
+  - sd-footnotes
+  - sd-header
+  - sd-input
+  - sd-interactive
+  - sd-loader
+  - sd-map-marker
+  - sd-menu-item
+  - sd-navigation-item
+  - sd-notification
+  - sd-quick-fact
+  - sd-radio
+  - sd-radio-button
+  - sd-radio-group
+  - sd-range-tick
+  - sd-select
+  - sd-step
+  - sd-switch
+  - sd-tab
+  - sd-tag
+  - sd-teaser
+  - sd-teaser-media
+  - sd-textarea
+  - sd-tooltip
+  - sd-video
+
+- Implement shadow tokens generation according to Figma. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### Patch Changes
+
+- - Fix SCSS token generation by consistently escaping token names containing dots. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Optimize output for TailwindCSS _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Updated documentation for multi-theming feature _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Internal: version bump to align with main (no user-facing changes). _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Remove semicolon breaking imports in other TailwindCSS projects _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Fix theme shadows generation. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- - Add `kid-starter` theme. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Add new icons to vb and kid icons. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Fixed semantic tokens generation to enable multi theming on the same page. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Added `:root` selector to all theme files.
+
+- Improve themes token generation to include all utility tokens. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Sync packages versions. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Generate theme colors in rgb instead of hex to reduce breaking changes. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Optimize exports for themes, TailwindCSS and SCSS _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 6.0.0-next.24
 
 ## 6.0.0-next.23

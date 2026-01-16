@@ -1,5 +1,60 @@
 # @solid-design-system/styles
 
+## 6.0.0
+
+### Major Changes
+
+- Introduce multi-theming with new CSS variables _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+### Minor Changes
+
+- Added more semantic tokens to the following components: _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+  - sd-accordion
+  - sd-audio
+  - sd-badge
+  - sd-brandshape
+  - sd-breadcrumb
+  - sd-button
+  - sd-carousel
+  - sd-checkbox
+  - sd-chip
+  - sd-combobox
+  - sd-container
+  - sd-date-picker
+  - sd-divider
+  - sd-flag
+  - sd-footnotes
+  - sd-header
+  - sd-input
+  - sd-interactive
+  - sd-loader
+  - sd-map-marker
+  - sd-menu-item
+  - sd-navigation-item
+  - sd-notification
+  - sd-quick-fact
+  - sd-radio
+  - sd-radio-button
+  - sd-radio-group
+  - sd-range-tick
+  - sd-select
+  - sd-step
+  - sd-switch
+  - sd-tab
+  - sd-tag
+  - sd-teaser
+  - sd-teaser-media
+  - sd-textarea
+  - sd-tooltip
+  - sd-video
+
+### Patch Changes
+
+- Internal: version bump to align with main (no user-facing changes). _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Fixed styles build output to correctly resolve imports. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- - Add `kid-starter` theme. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- Sync packages versions. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 6.0.0-next.24
 
 ## 6.0.0-next.23
