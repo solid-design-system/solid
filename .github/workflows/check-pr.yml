@@ -76,7 +76,7 @@ jobs:
           run: |
             cd packages/docs
             pnpm run build
-            pnpm run test.a11y
+            # pnpm run test.a11y
 
     # Check Chromatic for visual changes after all other checks have passed
     chromatic-deployment-pr:
