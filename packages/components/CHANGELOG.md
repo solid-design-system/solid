@@ -1,11 +1,4 @@
 # @solid-design-system/components
-
-## 6.0.0-next.20
-
-### Patch Changes
-
-- Imported components used inside `sd-breadcrumb` and `sd-breadcrumb-item` to ensure stability when cherry picking. _[`#2706`](https://github.com/solid-design-system/solid/pull/2706) [`76f9844`](https://github.com/solid-design-system/solid/commit/76f9844b41a5084adfbe475d810689d5a4777bde) [@mariohamann](https://github.com/mariohamann)_
-
 ## 6.0.0-next.19
 
 ### Major Changes
@@ -209,6 +202,12 @@
 ### Patch Changes
 
 - Fix broken sd-icon load with multi theming. _[`#2595`](https://github.com/solid-design-system/solid/pull/2595) [`89d7ac7`](https://github.com/solid-design-system/solid/commit/89d7ac7fbe51b382544765de6e08cb9be6c9e9fc) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 5.17.4
+
+### Patch Changes
+
+- Imported components used inside `sd-breadcrumb` and `sd-breadcrumb-item` to ensure stability when cherry picking. _[`#2706`](https://github.com/solid-design-system/solid/pull/2706) [`76f9844`](https://github.com/solid-design-system/solid/commit/76f9844b41a5084adfbe475d810689d5a4777bde) [@mariohamann](https://github.com/mariohamann)_
 
 ## 5.17.3
 
