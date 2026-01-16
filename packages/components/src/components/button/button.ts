@@ -52,10 +52,15 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @cssproperty --sd-button--secondary--hover-color-background - The background color for secondary buttons in hover state.
  * @cssproperty --sd-button--secondary--inverted--active-color-background - The background color for inverted secondary buttons in active state.
  * @cssproperty --sd-button--secondary--inverted--hover-color-text - The text color for inverted secondary buttons in hover state.
+ * @cssproperty --sd-button--secondary--inverted--color-border - The border color for inverted secondary buttons.
+ * @cssproperty --sd-button--secondary--disabled-color-text - The text color for secondary buttons in disabled state.
+ * @cssproperty --sd-button--tertiary--disabled-color-text - The text color for tertiary buttons in disabled state.
  * @cssproperty --sd-button--tertiary--active-color-background - The background color for tertiary buttons in active state.
  * @cssproperty --sd-button--tertiary--hover-color-background - The background color for tertiary buttons in hover state.
- * @cssproperty --sd-button--tertiary--inverted--active-color-background - The background color for inverted tertiary buttons in active state. 
+ * @cssproperty --sd-button--tertiary--inverted--active-color-background - The background color for inverted tertiary buttons in active state.
+ * @cssproperty --sd-button--secondary--default-color-text - The text color for secondary buttons in default state. 
  * @cssproperty --sd-button--tertiary--inverted--hover-color-text - The text color for inverted tertiary buttons in hover state.
+ * @cssproperty --sd-button--tertiary--default-color-text - The text color for tertiary buttons in default state.
  * @cssproperty --sd-button--cta--inverted--default-color-background - The background color for inverted CTA buttons in default state.
  * @cssproperty --sd-button--cta--inverted--default-color-text - The text color for inverted CTA buttons in default state.
  * @cssproperty --sd-button--cta--inverted--active-color-text - The text color for inverted CTA buttons in active state.
@@ -338,23 +343,23 @@ export default class SdButton extends SolidElement implements SolidFormControl {
           secondary: !this.inverted
             ? `border ${
                 this.visuallyDisabled
-                  ? 'text-neutral-500 border-neutral-500 hover:text-neutral-500 hover:border-neutral-500 active:text-neutral-500 active:border-neutral-500'
-                  : 'text-primary border-primary hover:text-primary-500 hover:border-primary-500 active:text-primary-800 active:border-primary-800'
+                  ? 'sd-button--secondary--disabled-color-text border-neutral-500 hover:text-neutral-500 hover:border-neutral-500 active:text-neutral-500 active:border-neutral-500'
+                  : 'sd-button--secondary--default-color-text border-primary hover:text-primary-500 hover:border-primary-500 active:text-primary-800 active:border-primary-800'
               }
-          disabled:text-neutral-500 disabled:border-neutral-500`
+          disabled:sd-button--secondary--disabled-color-text disabled:border-neutral-500`
             : `border ${
                 this.visuallyDisabled
                   ? 'text-neutral-600 border-neutral-600 hover:text-neutral-600 hover:border-neutral-600 active:text-neutral-600 active:border-neutral-600'
-                  : 'text-white border-white hover:sd-button--secondary--inverted--hover-color-text hover:border-primary-100 active:text-primary-200'
+                  : 'text-white sd-button--secondary--inverted--color-border hover:sd-button--secondary--inverted--hover-color-text hover:border-primary-100 active:text-primary-200'
               }
           disabled:sd-button--inverted--disabled-color-border disabled:sd-button--inverted--disabled-color-text`,
           tertiary: !this.inverted
             ? `border-transparent ${
                 this.visuallyDisabled
-                  ? 'text-neutral-500 hover:text-neutral-500 active:text-neutral-500'
-                  : 'text-primary hover:text-primary-500 active:text-primary-800'
+                  ? 'sd-button--tertiary--disabled-color-text hover:text-neutral-500 active:text-neutral-500'
+                  : 'sd-button--tertiary--default-color-text hover:text-primary-500 active:text-primary-800'
               }
-          disabled:text-neutral-500`
+          disabled:sd-button--tertiary--disabled-color-text`
             : `border-transparent  ${
                 this.visuallyDisabled
                   ? 'text-neutral-600 hover:text-neutral-600 active:text-neutral-600'
