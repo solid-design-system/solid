@@ -1,5 +1,147 @@
 # @solid-design-system/tokens
 
+## 6.0.0-next.20
+
+## 6.0.0-next.19
+
+## 6.0.0-next.18
+
+### Patch Changes
+
+- Updated documentation for multi-theming feature _[`#2709`](https://github.com/solid-design-system/solid/pull/2709) [`4c240e0`](https://github.com/solid-design-system/solid/commit/4c240e0209cd7a4c90a344ec043969272ef4471d) [@mariohamann](https://github.com/mariohamann)_
+
+## 6.0.0-next.17
+
+### Patch Changes
+
+- Fix SCSS token generation by consistently escaping token names containing dots. _[`#2705`](https://github.com/solid-design-system/solid/pull/2705) [`288d25d`](https://github.com/solid-design-system/solid/commit/288d25d3c6222210ffd4bde9d4f4615c3dfbdbdb) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.0.0-next.16
+
+### Patch Changes
+
+- Add `kid-starter` theme. _[`#2663`](https://github.com/solid-design-system/solid/pull/2663) [`575bcf1`](https://github.com/solid-design-system/solid/commit/575bcf1ae1ce4bf0ee1773be5519ae07c5c8981a) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.0.0-next.15
+
+### Patch Changes
+
+- Internal: version bump to align with main (no user-facing changes). _[`#2656`](https://github.com/solid-design-system/solid/pull/2656) [`34dbd53`](https://github.com/solid-design-system/solid/commit/34dbd5304ad4bd6486068c40e307742841c25f4d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 6.0.0-next.14
+
+## 6.0.0-next.13
+
+### Minor Changes
+
+- Added more semantic tokens to the following components: _[`#2646`](https://github.com/solid-design-system/solid/pull/2646) [`24e0bff`](https://github.com/solid-design-system/solid/commit/24e0bffe2a91c5ddbd39cef6c7a3bb46df89f472) [@paulovareiro29](https://github.com/paulovareiro29)_
+  - sd-accordion
+  - sd-audio
+  - sd-badge
+  - sd-brandshape
+  - sd-breadcrumb
+  - sd-button
+  - sd-carousel
+  - sd-checkbox
+  - sd-chip
+  - sd-combobox
+  - sd-container
+  - sd-date-picker
+  - sd-divider
+  - sd-flag
+  - sd-footnotes
+  - sd-header
+  - sd-input
+  - sd-interactive
+  - sd-loader
+  - sd-map-marker
+  - sd-menu-item
+  - sd-navigation-item
+  - sd-notification
+  - sd-quick-fact
+  - sd-radio
+  - sd-radio-button
+  - sd-radio-group
+  - sd-range-tick
+  - sd-select
+  - sd-step
+  - sd-switch
+  - sd-tab
+  - sd-tag
+  - sd-teaser
+  - sd-teaser-media
+  - sd-textarea
+  - sd-tooltip
+  - sd-video
+
+## 6.0.0-next.12
+
+## 6.0.0-next.11
+
+## 6.0.0-next.10
+
+### Patch Changes
+
+- Generate theme colors in rgb instead of hex to reduce breaking changes. _[`#2621`](https://github.com/solid-design-system/solid/pull/2621) [`5a3a5a5`](https://github.com/solid-design-system/solid/commit/5a3a5a575a2fab8cd5e8c56533e215ae94a5aaab) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 6.0.0-next.9
+
+## 6.0.0-next.8
+
+### Patch Changes
+
+- Sync packages versions. _[`#2618`](https://github.com/solid-design-system/solid/pull/2618) [`c87b6ef`](https://github.com/solid-design-system/solid/commit/c87b6ef3c8db38b6add6cb87a712a50bc2068935) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 6.0.0-next.7
+
+### Patch Changes
+
+- Fix theme shadows generation. _[`#2608`](https://github.com/solid-design-system/solid/pull/2608) [`a051aea`](https://github.com/solid-design-system/solid/commit/a051aeaeccf68fd1af8839ff1d463fcc98b325e4) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 6.0.0-next.6
+
+### Minor Changes
+
+- Implement shadow tokens generation according to Figma. _[`#2602`](https://github.com/solid-design-system/solid/pull/2602) [`ad2ae5b`](https://github.com/solid-design-system/solid/commit/ad2ae5b017c3e988dcb912832284e6db93fa5369) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 6.0.0-next.5
+
+### Patch Changes
+
+- Fixed semantic tokens generation to enable multi theming on the same page. _[`#2596`](https://github.com/solid-design-system/solid/pull/2596) [`854414e`](https://github.com/solid-design-system/solid/commit/854414ed0a2105e5d44f9b83a6417d12f2fae9b0) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+  Added `:root` selector to all theme files.
+
+## 6.0.0-next.4
+
+### Patch Changes
+
+- Improve themes token generation to include all utility tokens. _[`#2590`](https://github.com/solid-design-system/solid/pull/2590) [`d87bf13`](https://github.com/solid-design-system/solid/commit/d87bf1395d700b6b95cbbdca2c48ea2fc06338ab) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 6.0.0-next.3
+
+### Patch Changes
+
+- Optimize exports for themes, TailwindCSS and SCSS _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`9e7c10f`](https://github.com/solid-design-system/solid/commit/9e7c10fd923f378b112071ed8a3fa7cc2dd19b87) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 6.0.0-next.2
+
+### Patch Changes
+
+- Remove semicolon breaking imports in other TailwindCSS projects _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`aebb285`](https://github.com/solid-design-system/solid/commit/aebb28534faf3f881f718fc0c8f62ab5845cd494) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 6.0.0-next.1
+
+### Patch Changes
+
+- Optimize output for TailwindCSS _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`f3c4ac6`](https://github.com/solid-design-system/solid/commit/f3c4ac6c688f8a1a76de2967e3b8920c81959d71) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 6.0.0-next.0
+
+### Major Changes
+
+- Introduce multi-theming with new CSS variables _[`#2565`](https://github.com/solid-design-system/solid/pull/2565) [`602f0d3`](https://github.com/solid-design-system/solid/commit/602f0d38371c8f797662997071feb8173113e896) [@github-actions](https://github.com/apps/github-actions)_
+
 ## 5.6.1
 
 ### Patch Changes

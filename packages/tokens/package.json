@@ -1,23 +1,29 @@
 {
   "name": "@solid-design-system/tokens",
-  "version": "5.6.1",
+  "version": "6.0.0-next.20",
   "description": "Solid Design System: Tokens",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "build": "node scripts/build.mjs && echo '✅ Build verified'",
-    "verify": "pnpm build",
-    "postversion": "pnpm build"
+    "build": "node scripts/build.mjs",
+    "verify": "pnpm build && echo '✅ Build verified'",
+    "postversion": "pnpm build",
+    "fetch:figma": "node ./scripts/figma/fetch-variables.js && pnpm build"
   },
   "files": [
-    "dist"
+    "dist",
+    "cdn"
   ],
   "exports": {
-    "./scss": "./dist/tokens.scss",
-    "./tailwind": "./dist/tokens.tailwind.json"
+    "./dist/scss": "./dist/tokens.scss",
+    "./dist/tailwind.css": "./dist/themes/tailwind.css",
+    "./dist/theme.js": "./dist/theme.js",
+    "./dist/themes": "./dist/themes",
+    "./dist/themes/*": "./dist/themes/*"
   },
   "keywords": [],
   "homepage": "https://solid-design-system.fe.union-investment.de/docs/",
@@ -31,6 +37,15 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@figma-export/types": "^6.2.2",
+    "@figma/rest-api-spec": "^0.33.0",
+    "@tamtamchik/json-deep-sort": "^1.4.1",
+    "@tokens-studio/sd-transforms": "^2.0.1",
+    "dotenv": "^17.2.3",
+    "ora": "^9.0.0",
+    "picocolors": "^1.1.1",
+    "style-dictionary": "^5.0.1",
+    "tailwindcss": "^4.1.13",
     "tailwindcss-export-config": "^4.1.0"
   },
   "readme": "README.md"

@@ -348,11 +348,6 @@ export const Required = {
 
 export const Valid = {
   render: () => html`
-    <style>
-      sd-select.valid-example::part(display-input) {
-        color: #181818;
-      }
-    </style>
     <div class="w-[400px] h-[400px]">
       <sd-select
         size="lg"
@@ -409,7 +404,7 @@ export const Invalid = {
       setTimeout(() => {
         invalidSelect.checkValidity();
         invalidSelect.reportValidity();
-        invalidSelect.setCustomValidity('Error text');
+        invalidSelect.setCustomValidity('Please select at least one option.');
       }, 500);
     </script>
   `

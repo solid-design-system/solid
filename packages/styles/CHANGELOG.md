@@ -1,5 +1,97 @@
 # @solid-design-system/styles
 
+## 6.0.0-next.20
+
+## 6.0.0-next.19
+
+## 6.0.0-next.18
+
+## 6.0.0-next.17
+
+## 6.0.0-next.16
+
+### Patch Changes
+
+- Add `kid-starter` theme. _[`#2663`](https://github.com/solid-design-system/solid/pull/2663) [`575bcf1`](https://github.com/solid-design-system/solid/commit/575bcf1ae1ce4bf0ee1773be5519ae07c5c8981a) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.0.0-next.15
+
+### Patch Changes
+
+- Internal: version bump to align with main (no user-facing changes). _[`#2656`](https://github.com/solid-design-system/solid/pull/2656) [`34dbd53`](https://github.com/solid-design-system/solid/commit/34dbd5304ad4bd6486068c40e307742841c25f4d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 6.0.0-next.14
+
+## 6.0.0-next.13
+
+### Minor Changes
+
+- Added more semantic tokens to the following components: _[`#2646`](https://github.com/solid-design-system/solid/pull/2646) [`24e0bff`](https://github.com/solid-design-system/solid/commit/24e0bffe2a91c5ddbd39cef6c7a3bb46df89f472) [@paulovareiro29](https://github.com/paulovareiro29)_
+  - sd-accordion
+  - sd-audio
+  - sd-badge
+  - sd-brandshape
+  - sd-breadcrumb
+  - sd-button
+  - sd-carousel
+  - sd-checkbox
+  - sd-chip
+  - sd-combobox
+  - sd-container
+  - sd-date-picker
+  - sd-divider
+  - sd-flag
+  - sd-footnotes
+  - sd-header
+  - sd-input
+  - sd-interactive
+  - sd-loader
+  - sd-map-marker
+  - sd-menu-item
+  - sd-navigation-item
+  - sd-notification
+  - sd-quick-fact
+  - sd-radio
+  - sd-radio-button
+  - sd-radio-group
+  - sd-range-tick
+  - sd-select
+  - sd-step
+  - sd-switch
+  - sd-tab
+  - sd-tag
+  - sd-teaser
+  - sd-teaser-media
+  - sd-textarea
+  - sd-tooltip
+  - sd-video
+
+## 6.0.0-next.12
+
+## 6.0.0-next.11
+
+## 6.0.0-next.10
+
+## 6.0.0-next.9
+
+## 6.0.0-next.8
+
+### Patch Changes
+
+- Sync packages versions. _[`#2618`](https://github.com/solid-design-system/solid/pull/2618) [`c87b6ef`](https://github.com/solid-design-system/solid/commit/c87b6ef3c8db38b6add6cb87a712a50bc2068935) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 2.0.0-next.1
+
+### Patch Changes
+
+- Fixed styles build output to correctly resolve imports. _[`#2601`](https://github.com/solid-design-system/solid/pull/2601) [`be010da`](https://github.com/solid-design-system/solid/commit/be010daa4b1d5ed2e87b1910643bf01dae8071d7) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 2.0.0-next.0
+
+### Major Changes
+
+- Introduce multi-theming with new CSS variables _[`#2565`](https://github.com/solid-design-system/solid/pull/2565) [`602f0d3`](https://github.com/solid-design-system/solid/commit/602f0d38371c8f797662997071feb8173113e896) [@github-actions](https://github.com/apps/github-actions)_
+
 ## 1.5.6
 
 ### Patch Changes
@@ -12,8 +104,7 @@
 
 ### Patch Changes
 
-- - Update pnpm to 10.17 _[`#2522`](https://github.com/solid-design-system/solid/pull/2522) [`7cc6bb7`](https://github.com/solid-design-system/solid/commit/7cc6bb7bdfc9ccb26c2ecfa58b27021d15379312) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
+- Update pnpm to 10.17 _[`#2522`](https://github.com/solid-design-system/solid/pull/2522) [`7cc6bb7`](https://github.com/solid-design-system/solid/commit/7cc6bb7bdfc9ccb26c2ecfa58b27021d15379312) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
   - Add minimumReleaseAge to 5 days
   - Update all actions to ensure that they're using the correct version
 

@@ -13,10 +13,6 @@ const { overrideArgs } = storybookHelpers('sd-datepicker');
 const { generateTemplate } = storybookTemplate('sd-datepicker');
 const { generateScreenshotStory } = storybookUtilities;
 
-const currentMonth = new Date().getMonth() + 1;
-const paddedMonth = String(currentMonth).padStart(2, '0');
-const currentYear = new Date().getFullYear();
-
 export default {
   title: 'Components/sd-datepicker/Screenshots: sd-datepicker',
   component: 'sd-datepicker',
@@ -27,6 +23,16 @@ export default {
     design: {
       type: 'figma',
       url: ''
+    },
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: false
+          }
+        ]
+      }
     }
   },
   args: overrideArgs([{ type: 'attribute', name: 'label', value: 'Label' }]),
@@ -112,14 +118,20 @@ export const DisabledDates = {
         x: {
           type: 'attribute',
           name: 'disabled-dates',
-          values: [
-            `${currentYear}.${paddedMonth}.03, ${currentYear}.${paddedMonth}.10, ${currentYear}.${paddedMonth}.17`,
-            false
-          ]
+          values: [`2025-11-03, 2025-11-11, 2025-11-17`, false]
         }
       },
-      args: overrideArgs({ type: 'attribute', name: 'value', value: '2025.11.10' }, args)
+      args: overrideArgs({ type: 'attribute', name: 'value', value: '2025-11-10' }, args)
     });
+  }
+};
+
+export const MinAndMax = {
+  name: 'Min and Max',
+  render: () => {
+    return html`<div class="w-[370px] h-[500px]">
+      <sd-datepicker label="Label" value="2025-12-10" min="2025-12-02" max="2025-12-12"></sd-datepicker>
+    </div>`;
   }
 };
 
@@ -154,6 +166,7 @@ export const Combination = generateScreenshotStory([
   Disabled,
   DisabledWeekends,
   DisabledDates,
+  MinAndMax,
   Mouseless,
   LocaleAware
 ]);

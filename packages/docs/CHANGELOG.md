@@ -1,5 +1,111 @@
 # @solid-design-system/docs
 
+## 1.32.0-next.6
+
+### Patch Changes
+
+- - Update favicon to support dark mode. _[`#2629`](https://github.com/solid-design-system/solid/pull/2629) [`f84c2eb`](https://github.com/solid-design-system/solid/commit/f84c2eb90a198973299317def2f9b01a8d919524) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 1.32.0-next.5
+
+### Patch Changes
+
+- Improvements on `sd-datepicker` documentation: _[`#2640`](https://github.com/solid-design-system/solid/pull/2640) [`3cc8aab`](https://github.com/solid-design-system/solid/commit/3cc8aab1836b39e66cbdc1850af9056f075e4b26) [@smfonseca](https://github.com/smfonseca)_
+  - Updated `range` and `disabled-dates` stories to reflect new date conversion.
+  - Added new screenshot test for `min` and `max`.
+
+## 1.32.0-next.4
+
+### Minor Changes
+
+- Implemented a new `sd-menu` template _[`#2678`](https://github.com/solid-design-system/solid/pull/2678) [`0baa30a`](https://github.com/solid-design-system/solid/commit/0baa30a00c9416e05f03c304ecb5c5ed6e64e0a4) [@balco0110](https://github.com/balco0110)_
+
+## 1.32.0-next.3
+
+### Patch Changes
+
+- Updated the validation messages for `sd-combobox`, `sd-input`, `sd-radio-group`, `sd-select`, `sd-switch` and `sd-textarea` _[`#2549`](https://github.com/solid-design-system/solid/pull/2549) [`121a09a`](https://github.com/solid-design-system/solid/commit/121a09a357c351b5dd056dff561938c76857c8a0) [@balco0110](https://github.com/balco0110)_
+
+## 1.32.0-next.2
+
+### Patch Changes
+
+- Add `kid-starter` theme. _[`#2663`](https://github.com/solid-design-system/solid/pull/2663) [`575bcf1`](https://github.com/solid-design-system/solid/commit/575bcf1ae1ce4bf0ee1773be5519ae07c5c8981a) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 1.32.0-next.1
+
+### Patch Changes
+
+- Internal: version bump to align with main (no user-facing changes). _[`#2656`](https://github.com/solid-design-system/solid/pull/2656) [`34dbd53`](https://github.com/solid-design-system/solid/commit/34dbd5304ad4bd6486068c40e307742841c25f4d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.32.0-next.0
+
+### Minor Changes
+
+- Added more semantic tokens to the following components: _[`#2646`](https://github.com/solid-design-system/solid/pull/2646) [`24e0bff`](https://github.com/solid-design-system/solid/commit/24e0bffe2a91c5ddbd39cef6c7a3bb46df89f472) [@paulovareiro29](https://github.com/paulovareiro29)_
+  - sd-accordion
+  - sd-audio
+  - sd-badge
+  - sd-brandshape
+  - sd-breadcrumb
+  - sd-button
+  - sd-carousel
+  - sd-checkbox
+  - sd-chip
+  - sd-combobox
+  - sd-container
+  - sd-date-picker
+  - sd-divider
+  - sd-flag
+  - sd-footnotes
+  - sd-header
+  - sd-input
+  - sd-interactive
+  - sd-loader
+  - sd-map-marker
+  - sd-menu-item
+  - sd-navigation-item
+  - sd-notification
+  - sd-quick-fact
+  - sd-radio
+  - sd-radio-button
+  - sd-radio-group
+  - sd-range-tick
+  - sd-select
+  - sd-step
+  - sd-switch
+  - sd-tab
+  - sd-tag
+  - sd-teaser
+  - sd-teaser-media
+  - sd-textarea
+  - sd-tooltip
+  - sd-video
+
+## 1.31.3-next.1
+
+### Patch Changes
+
+- Fixed the restriction of changing the font size and margin for headline in `sd-teased-media`. _[`#2405`](https://github.com/solid-design-system/solid/pull/2405) [`22c42e7`](https://github.com/solid-design-system/solid/commit/22c42e72319e4e409735420cdab52092fe6b74b2) [@balco0110](https://github.com/balco0110)_
+
+## 1.31.3-next.0
+
+### Patch Changes
+
+- Updated `sd-range` tooltip story documentation. _[`#2607`](https://github.com/solid-design-system/solid/pull/2607) [`87d3e4d`](https://github.com/solid-design-system/solid/commit/87d3e4de892a0b7109ac0e9d68dd63a5bcaf8302) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.32.0-next.0
+
+### Minor Changes
+
+- Add and update documentation regarding multi-theming for tokens, components and styles _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`4c995ee`](https://github.com/solid-design-system/solid/commit/4c995ee085c602854acda8624e20b80f8e72f031) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.30.0-next.0
+
+### Minor Changes
+
+- Implemented new utility componented named `sd-theme-listener`, used to listen to theme changes. _[`#2472`](https://github.com/solid-design-system/solid/pull/2472) [`58b6d04`](https://github.com/solid-design-system/solid/commit/58b6d043d4126a1441ae929c2d9300352f787f1c) [@paulovareiro29](https://github.com/paulovareiro29)_
+
 ## 1.32.2
 
 ### Patch Changes
@@ -60,8 +166,7 @@
 
 ### Patch Changes
 
-- - Update pnpm to 10.17 _[`#2522`](https://github.com/solid-design-system/solid/pull/2522) [`7cc6bb7`](https://github.com/solid-design-system/solid/commit/7cc6bb7bdfc9ccb26c2ecfa58b27021d15379312) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
+- Update pnpm to 10.17 _[`#2522`](https://github.com/solid-design-system/solid/pull/2522) [`7cc6bb7`](https://github.com/solid-design-system/solid/commit/7cc6bb7bdfc9ccb26c2ecfa58b27021d15379312) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
   - Add minimumReleaseAge to 5 days
   - Update all actions to ensure that they're using the correct version
 
@@ -227,8 +332,7 @@
 
 ### Patch Changes
 
-- - Sync `sd-tab` samples with figma _[`#2256`](https://github.com/solid-design-system/solid/pull/2256) [`6f9d3fa`](https://github.com/solid-design-system/solid/commit/6f9d3fa42e95fbe3a13dcf89c499294facb25052) [@smfonseca](https://github.com/smfonseca)_
-
+- Sync `sd-tab` samples with figma _[`#2256`](https://github.com/solid-design-system/solid/pull/2256) [`6f9d3fa`](https://github.com/solid-design-system/solid/commit/6f9d3fa42e95fbe3a13dcf89c499294facb25052) [@smfonseca](https://github.com/smfonseca)_
   - `sd-tab` screenshot tests update
 
 ## 1.24.3
@@ -281,8 +385,7 @@
 
 ### Minor Changes
 
-- - Create `switch` template _[`#2319`](https://github.com/solid-design-system/solid/pull/2319) [`5d20c51`](https://github.com/solid-design-system/solid/commit/5d20c51b9e0b15be47cfd60e24bb179cef42bf27) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
+- Create `switch` template _[`#2319`](https://github.com/solid-design-system/solid/pull/2319) [`5d20c51`](https://github.com/solid-design-system/solid/commit/5d20c51b9e0b15be47cfd60e24bb179cef42bf27) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
   - Add `Switch with Tooltip` story to `switch` template
 
 ## 1.21.0
@@ -321,7 +424,7 @@
 
 ### Minor Changes
 
-- - Implement `reversed-layout` attribute for the `sd-teaser`. _[`#2283`](https://github.com/solid-design-system/solid/pull/2283) [`e65a94a`](https://github.com/solid-design-system/solid/commit/e65a94a7120525d73c40f58ad565911a81cff97b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+- Implement `reversed-layout` attribute for the `sd-teaser`. _[`#2283`](https://github.com/solid-design-system/solid/pull/2283) [`e65a94a`](https://github.com/solid-design-system/solid/commit/e65a94a7120525d73c40f58ad565911a81cff97b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
 
 ## 1.17.0
 
