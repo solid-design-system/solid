@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 6.0.0-next.22
+
+### Patch Changes
+
+- Add new icons to vb and kid icons. _[`#2729`](https://github.com/solid-design-system/solid/pull/2729) [`530df21`](https://github.com/solid-design-system/solid/commit/530df210d9cf71de5c5627a2b94a0b6422aec07e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 6.0.0-next.21
 
 ## 6.0.0-next.20

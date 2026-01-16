@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.0.0-next.22
+
+### 📈 Stats
+* Uncompressed: 583 KB (+3 KB / +1%)
+* Gzipped: 132 KB (unchanged)
+
 ## 6.0.0-next.21
 
 ### Minor Changes
