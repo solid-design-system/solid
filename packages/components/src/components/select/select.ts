@@ -187,6 +187,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   /** The select's required attribute. */
   @property({ type: Boolean, reflect: true }) required = false;
 
+  /** Enables the floating label behavior for the input. */
+  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = false;
+
   /** Shows success styles if the validity of the input is valid. */
   @property({ type: Boolean, reflect: true, attribute: 'style-on-valid' }) styleOnValid = false;
 
@@ -885,6 +888,12 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasClearIcon = this.clearable && !this.disabled;
     const hasTooltip = !!slots['tooltip'];
+    const hasValue = this.value !== null && String(this.value).length > 0;
+    const isFloatingLabelActive =
+      this.floatingLabel &&
+      hasLabel &&
+      ((this.hasFocus && !this.visuallyDisabled) || this.open || hasValue) &&
+      !(this.disabled && !hasValue);
 
     // Hierarchy of input states:
     const selectState = this.disabled
@@ -912,6 +921,18 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       md: 'text-lg',
       lg: 'text-xl'
     }[this.size];
+    const verticalPadding =
+      this.size === 'lg'
+        ? !this.floatingLabel
+          ? 'py-2'
+          : isFloatingLabelActive
+            ? 'py-3'
+            : 'py-4'
+        : !this.floatingLabel
+          ? 'py-1'
+          : isFloatingLabelActive
+            ? 'py-2'
+            : 'py-3';
 
     // Template
     return html`
@@ -926,7 +947,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       >
         <span class="sr-only" aria-live="polite">${this.deletedTagLabel}</span>
 
-        ${hasLabel || hasTooltip
+        ${(hasLabel && !this.floatingLabel) || hasTooltip
           ? html`<div class="flex items-center gap-1 mb-2">
               <label
                 id="label"
@@ -941,7 +962,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               ${slots['tooltip'] ? html`<slot name="tooltip"></slot>` : ''}
             </div>`
           : null}
-
         <div
           part="form-control-input"
           class=${cx(
@@ -949,6 +969,37 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             selectState === 'disabled' ? 'text-neutral-500' : 'form-control-color-text'
           )}
         >
+          ${hasLabel && this.floatingLabel
+            ? html`
+                <label
+                  id="label"
+                  part="form-control-floating-label"
+                  class=${cx(
+                    'absolute left-4 z-20 pointer-events-none transition-all duration-200',
+                    !isFloatingLabelActive
+                      ? 'top-1/2 -translate-y-1/2 text-base'
+                      : this.size === 'lg'
+                        ? 'top-2 text-xs'
+                        : 'top-1 text-xs',
+                    isFloatingLabelActive && 'mt-1'
+                  )}
+                  for="input"
+                >
+                  <span
+                    class=${cx(
+                      'leading-none',
+                      (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
+                      isFloatingLabelActive &&
+                        !this.visuallyDisabled &&
+                        !this.disabled &&
+                        'form-control--filled__floating-label-color-text'
+                    )}
+                  >
+                    ${this.label}
+                  </span>
+                </label>
+              `
+            : null}
           <div
             part="border"
             class=${cx(
@@ -996,12 +1047,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             >
               <div
                 class=${cx(
-                  'input-container flex items-center w-full h-full px-4',
+                  'input-container items-center w-full h-full px-4 flex',
                   {
                     sm: 'py-1',
                     md: 'py-1',
                     lg: 'py-2'
-                  }[this.size]
+                  }[this.size],
+                  verticalPadding
                 )}
               >
                 <input
@@ -1011,11 +1063,21 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   class=${cx(
                     'top-0 left-0 appearance-none outline-none flex-grow bg-transparent flex-1 placeholder:text-neutral-700',
                     cursorStyles,
-                    this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : ''
+                    this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : '',
+                    this.size === 'sm'
+                      ? isFloatingLabelActive
+                        ? 'h-4'
+                        : 'h-6'
+                      : isFloatingLabelActive
+                        ? 'h-6'
+                        : 'h-8',
+                    isFloatingLabelActive && 'leading-none mt-4'
                   )}
                   type="text"
                   .disabled=${this.disabled}
-                  placeholder=${this.placeholder || this.localize.term('selectDefaultPlaceholder')}
+                  placeholder=${!this.floatingLabel || isFloatingLabelActive
+                    ? this.placeholder || this.localize.term('selectDefaultPlaceholder')
+                    : ''}
                   .value=${this.displayLabel}
                   autocomplete="off"
                   spellcheck="false"
@@ -1033,7 +1095,12 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 />
 
                 ${this.multiple && this.useTags
-                  ? html`<div part="tags" class="flex-grow flex flex-wrap items-center gap-1">${this.tags}</div>`
+                  ? html` <div
+                      part="tags"
+                      class=${cx('flex-grow flex flex-wrap items-center gap-1', this.floatingLabel && 'pt-6')}
+                    >
+                      ${this.tags}
+                    </div>`
                   : ''}
 
                 <div aria-live="polite" id="control-value" class="absolute top-0 left-0 opacity-0 -z-10">

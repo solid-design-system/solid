@@ -48,6 +48,41 @@ export const Default = {
 };
 
 /**
+ * Use the `label` attribute to give the textarea an accessible label. For labels that contain HTML, use the `label` slot instead.
+ */
+export const Labels = {
+  name: 'Label',
+  args: {
+    label: 'Label'
+  },
+  render: (args: any) => {
+    return html`<div class="w-[250px]">${generateTemplate({ args })}</div> `;
+  }
+};
+
+/**
+ * Use the `floating-label` attribute to enable a floating label on the textarea.
+ */
+export const FloatingLabel = {
+  name: 'Floating Label',
+  args: {
+    'floating-label': true
+  },
+  render: (args: any) => {
+    return html`
+      <div class="w-[250px]">${generateTemplate({ args })}</div>
+      <br />
+      <div class="w-[250px]">
+        ${generateTemplate({
+          constants: [{ type: 'attribute', name: 'value', value: 'Floating Label with value' }],
+          args
+        })}
+      </div>
+    `;
+  }
+};
+
+/**
  * Use the `placeholder` attribute to add a placeholder.
  */
 
@@ -62,6 +97,13 @@ export const Placeholders = {
     return html`
       <div class="w-[250px]">
         ${generateTemplate({
+          args
+        })}
+      </div>
+      <br />
+      <div class="w-[250px]">
+        ${generateTemplate({
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
         })}
       </div>
@@ -87,6 +129,16 @@ export const Disabled = {
           args
         })}
       </div>
+      <br />
+      <div class="w-[250px]">
+        ${generateTemplate({
+          constants: [
+            { type: 'attribute', name: 'disabled', value: true },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
+          args
+        })}
+      </div>
     `;
   }
 };
@@ -109,6 +161,16 @@ export const Readonly = {
           args
         })}
       </div>
+      <br />
+      <div class="w-[250px]">
+        ${generateTemplate({
+          constants: [
+            { type: 'attribute', name: 'readonly', value: true },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
+          args
+        })}
+      </div>
     `;
   }
 };
@@ -125,12 +187,26 @@ export const Sizes = {
     { type: 'attribute', name: 'help-text', value: 'Help-text' }
   ]),
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'size' }
-      },
-      args
-    });
+    return html`
+      <div>
+        ${generateTemplate({
+          axis: {
+            y: { type: 'attribute', name: 'size' }
+          },
+          args
+        })}
+      </div>
+      <br />
+      <div>
+        ${generateTemplate({
+          axis: {
+            y: { type: 'attribute', name: 'size' }
+          },
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
+          args
+        })}
+      </div>
+    `;
   }
 };
 
@@ -152,12 +228,26 @@ export const StyleOnValid = {
     }
   ]),
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'style-on-valid' }
-      },
-      args
-    });
+    return html`
+      <div>
+        ${generateTemplate({
+          axis: {
+            y: { type: 'attribute', name: 'style-on-valid' }
+          },
+          args
+        })}
+      </div>
+      <br />
+      <div>
+        ${generateTemplate({
+          axis: {
+            y: { type: 'attribute', name: 'style-on-valid' }
+          },
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
+          args
+        })}
+      </div>
+    `;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
@@ -195,6 +285,7 @@ export const Validation = {
             args
           })}
         </div>
+        <br />
         <div class="mb-2">
           ${generateTemplate({
             constants: [
@@ -209,6 +300,7 @@ export const Validation = {
             args
           })}
         </div>
+        <br />
         <div class="mb-2">
           ${generateTemplate({
             constants: [
@@ -219,6 +311,53 @@ export const Validation = {
               { type: 'attribute', name: 'required', value: true },
               { type: 'attribute', name: 'maxlength', value: 3 },
               { type: 'attribute', name: 'style-on-valid', value: true }
+            ],
+            args
+          })}
+        </div>
+        <br />
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'label', value: 'Required' },
+              { type: 'attribute', name: 'name', value: 'required field' },
+              { type: 'attribute', name: 'help-text', value: 'textarea must be filled' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: true },
+              { type: 'attribute', name: 'style-on-valid', value: true },
+              { type: 'attribute', name: 'floating-label', value: true }
+            ],
+            args
+          })}
+        </div>
+        <br />
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'label', value: 'Min Length' },
+              { type: 'attribute', name: 'name', value: 'min length field' },
+              { type: 'attribute', name: 'help-text', value: 'value must meet minlength' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: true },
+              { type: 'attribute', name: 'minlength', value: 3 },
+              { type: 'attribute', name: 'style-on-valid', value: true },
+              { type: 'attribute', name: 'floating-label', value: true }
+            ],
+            args
+          })}
+        </div>
+        <br />
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'label', value: 'Max Length' },
+              { type: 'attribute', name: 'name', value: 'max length field' },
+              { type: 'attribute', name: 'help-text', value: 'value cannot exceed maxlength' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: true },
+              { type: 'attribute', name: 'maxlength', value: 3 },
+              { type: 'attribute', name: 'style-on-valid', value: true },
+              { type: 'attribute', name: 'floating-label', value: true }
             ],
             args
           })}
@@ -366,7 +505,21 @@ export const Scrollable = {
   name: 'Scrollable',
   render: () => {
     return html`
-      <sd-textarea id="scrollable-textarea" label="Label" style-on-valid style="max-width: 350px;"></sd-textarea>
+      <div>
+        <sd-textarea id="scrollable-textarea" label="Label" style-on-valid style="max-width: 350px;"></sd-textarea>
+        <div />
+        <br />
+        <div>
+          <sd-textarea
+            id="scrollable-textarea"
+            floating-label
+            label="Label"
+            style-on-valid
+            style="max-width: 350px;"
+          ></sd-textarea>
+          <div />
+        </div>
+      </div>
     `;
   },
 
@@ -499,6 +652,8 @@ export const Mouseless = {
 
 export const Combination = generateScreenshotStory([
   Default,
+  Labels,
+  FloatingLabel,
   Placeholders,
   Disabled,
   Readonly,

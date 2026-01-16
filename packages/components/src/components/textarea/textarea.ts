@@ -103,6 +103,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
   /** Makes the textarea a required field. */
   @property({ type: Boolean, reflect: true }) required = false;
 
+  /** Enables the floating label behavior for the input. */
+  @property({ attribute: 'floating-label', type: Boolean, reflect: true }) floatingLabel = false;
+
   /** The minimum length of input that will be considered valid. */
   @property({ type: Number, reflect: true }) minlength: number;
 
@@ -335,6 +338,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     const hasLabel = this.label ? true : !!slots['label'];
     const hasHelpText = this.helpText ? true : !!slots['helpText'];
     const hasTooltip = !!slots['tooltip'];
+    const hasValue = this.value !== null && String(this.value).length > 0;
+    const isFloatingLabelActive =
+      this.floatingLabel && hasLabel && ((this.hasFocus && !this.visuallyDisabled) || hasValue);
 
     // Hierarchy of textarea states:
     const textareaState = this.disabled
@@ -365,7 +371,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
 
     return html`
       <div part="form-control" class="flex flex-col h-full text-left">
-        ${hasLabel || hasTooltip
+        ${(hasLabel && !this.floatingLabel) || hasTooltip
           ? html`<div class="flex items-center gap-1 mb-2">
               <label
                 part="form-control-label"
@@ -398,11 +404,44 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                 default: 'form-control-color-border'
               }[textareaState]
             )}
-          ></div>
+          >
+            ${hasLabel && this.floatingLabel
+              ? html`
+                  <label
+                    id="label"
+                    part="form-control-floating-label"
+                    class=${cx(
+                      'absolute left-4 z-20 pointer-events-none transition-all duration-200',
+                      textSize,
+                      !isFloatingLabelActive
+                        ? 'top-2.5 text-base'
+                        : this.size === 'lg'
+                          ? 'top-2 text-xs'
+                          : 'top-1 text-xs'
+                    )}
+                    for="input"
+                  >
+                    <span
+                      class=${cx(
+                        'leading-none',
+                        (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
+                        isFloatingLabelActive &&
+                          !this.visuallyDisabled &&
+                          !this.disabled &&
+                          'form-control--filled__floating-label-color-text'
+                      )}
+                    >
+                      ${this.label}
+                    </span>
+                  </label>
+                `
+              : null}
+          </div>
           <div
             part="base"
             class=${cx(
               'textarea h-full flex items-top rounded-default group transition-colors duration-medium hover:duration-fast ease-in-out',
+              this.floatingLabel && 'pt-6',
               {
                 sm: 'textarea-sm',
                 md: 'textarea-md',
@@ -422,9 +461,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               class=${cx(
                 'ps-4 flex-grow focus:outline-none bg-transparent placeholder:text-neutral-700 resize-none group-has-[sd-icon]:pe-8',
                 {
-                  sm: 'py-1',
-                  md: 'py-1',
-                  lg: 'py-2'
+                  sm: this.floatingLabel ? 'pb-1' : 'py-1',
+                  md: this.floatingLabel ? 'pb-1' : 'py-1',
+                  lg: this.floatingLabel ? 'pb-2' : 'py-2'
                 }[this.size],
                 this.disabled && 'cursor-not-allowed',
                 textSize
@@ -436,7 +475,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               ?readonly=${this.readonly}
               ?required=${this.required}
               ?visually-disabled=${this.visuallyDisabled}
-              placeholder=${ifDefined(this.placeholder)}
+              placeholder=${!this.floatingLabel || isFloatingLabelActive ? ifDefined(this.placeholder) : ''}
               minlength=${ifDefined(this.minlength)}
               maxlength=${ifDefined(this.maxlength)}
               rows=${ifDefined(this.rows)}

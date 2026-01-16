@@ -520,7 +520,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const hasTooltip = !!slots['tooltip'];
     const hasIconLeft = slots['left'];
     const hasValue = this.value !== null && String(this.value).length > 0;
-    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue || this.placeholder);
+    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue);
+
     // Hierarchy of input states:
     const inputState = this.disabled
       ? 'disabled'
@@ -647,7 +648,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               ?disabled=${this.disabled}
               ?readonly=${this.readonly}
               ?required=${this.required}
-              placeholder=${ifDefined(this.placeholder)}
+              placeholder=${!this.floatingLabel || isFloatingLabelActive ? ifDefined(this.placeholder) : ''}
               minlength=${ifDefined(this.minlength)}
               maxlength=${ifDefined(this.maxlength)}
               min=${ifDefined(this.min)}
