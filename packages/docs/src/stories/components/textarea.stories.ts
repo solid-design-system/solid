@@ -87,6 +87,19 @@ export const Label = {
 };
 
 /**
+ * Use the `floating-label` attribute to enable a floating label on the text-area.
+ *
+ * __Note:__ Floating labels only work with the `label` attribute. The `label` slot is not supported.
+ */
+export const FloatingLabel = {
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-textarea size="lg" label="Floating Label" floating-label rows="4" spellcheck class="w-full"></sd-textarea>
+    </div>
+  `
+};
+
+/**
  * Use the `placeholder` attribute to add a placeholder.
  */
 

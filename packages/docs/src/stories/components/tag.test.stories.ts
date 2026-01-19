@@ -68,6 +68,25 @@ export const removableAndSize = {
   }
 };
 
+export const iconLeft = {
+  name: 'Icon x Size',
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        x: { type: 'attribute', name: 'selected' },
+        y: { type: 'attribute', name: 'size', values: ['lg', 'sm'] }
+      },
+      constants: [
+        {
+          type: 'slot',
+          name: 'icon-left',
+          value: '<sd-icon slot="icon-left" name="union-investment/system/image"></sd-icon>'
+        }
+      ],
+      args
+    });
+  }
+};
 /**
  * Use the `disabled` attribute to disable a tag. Clicks will be suppressed until the disabled state is removed.
  *
@@ -204,6 +223,7 @@ export const Combination = generateScreenshotStory([
   Default,
   selectedAndSize,
   removableAndSize,
+  iconLeft,
   Disabled,
   Slots,
   Parts,

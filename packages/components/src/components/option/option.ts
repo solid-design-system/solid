@@ -24,6 +24,8 @@ import SolidElement from '../../internal/solid-element';
  * @csspart label - The option's label.
  * @csspart left - The container that wraps the left.
  * @csspart right - The container that wraps the right.
+ *
+ * @cssproperty --sd-option--disabled-color-border - The border color of checkboxes for the disabled options.
  */
 @customElement('sd-option')
 export default class SdOption extends SolidElement {
@@ -136,13 +138,13 @@ export default class SdOption extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'px-4 flex items-center w-full transition-colors duration-fast ease-in-out text-left text-base relative text-black',
+          'px-4 flex items-center w-full transition-colors duration-fast ease-in-out text-left text-base relative',
           {
             sm: 'text-sm py-1',
             md: 'text-base py-2',
             lg: 'text-base py-3'
           }[this.size],
-          this.disabled ? 'text-neutral-700 cursor-not-allowed' : 'cursor-pointer',
+          this.disabled ? 'text-neutral-500 cursor-not-allowed' : 'text-black cursor-pointer',
           this.hasHover && !this.disabled ? 'bg-neutral-200' : '',
           this.isKeyboardFocus ? 'focus-outline focus-outline-offset' : '',
           this.current && 'bg-neutral-200'
@@ -165,10 +167,10 @@ export default class SdOption extends SolidElement {
               class=${cx(
                 'relative flex flex-shrink-0 items-center justify-center border rounded-sm h-4 w-4 mr-2',
                 this.disabled
-                  ? 'border-neutral-500'
+                  ? 'sd-option--disabled-color-border'
                   : this.selected
                     ? 'bg-accent border-accent'
-                    : 'bg-white border-neutral-800'
+                    : 'bg-white form-control-color-border'
               )}
             >
               ${this.selected

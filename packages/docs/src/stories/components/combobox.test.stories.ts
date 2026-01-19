@@ -115,6 +115,33 @@ export const Default = {
 };
 
 /**
+ * Use the `label` attribute to give the combobox an accessible label. For labels that contain HTML, use the `label` slot instead.
+ */
+
+export const Labels = {
+  name: 'Label',
+  args: {
+    label: 'Label'
+  },
+  render: (args: any) => {
+    return html`<div class="h-[260px] w-[400px]">${generateTemplate({ args })}</div>`;
+  }
+};
+
+/**
+ * Use the `floating-label` attribute to enable a floating label on the combobox.
+ */
+export const FloatingLabel = {
+  name: 'Floating Label',
+  args: {
+    'floating-label': true
+  },
+  render: (args: any) => {
+    return html`<div class="h-[260px] w-[400px]">${generateTemplate({ args })}</div>`;
+  }
+};
+
+/**
  * Use the `size` attribute to change the size. It will cascade to slotted `sd-option` elements:
  * - `lg` (default)
  * - `md`
@@ -207,33 +234,50 @@ export const ValidInvalid = {
     delete args['getOption'];
     delete args['getOption-attr'];
 
-    return html`<form class="h-[260px] w-full flex gap-4">
-      ${generateTemplate({
-        options: {
-          classes: 'w-full [&>tbody>tr>td]:align-top'
-        },
-        axis: {
-          x: {
-            type: 'attribute',
-            name: 'value',
-            values: ['option-1 option-2', '']
+    return html`<form id="valid-invalid-form" class="h-[260px] w-full flex gap-4">
+        ${generateTemplate({
+          options: {
+            classes: 'w-full [&>tbody>tr>td]:align-top'
+          },
+          axis: {
+            x: {
+              type: 'attribute',
+              name: 'value',
+              values: ['option-1 option-2', '']
+            }
+          },
+          constants: [twoOptionsConstant, labelConstant, multipleConstant],
+          args
+        })}
+      </form>
+      <script type="module">
+        await customElements.whenDefined('sd-combobox');
+        const form = document.getElementById('valid-invalid-form');
+
+        form.addEventListener('invalid', e => e.preventDefault(), { capture: true });
+
+        const comboboxes = form.querySelectorAll('sd-combobox');
+        comboboxes.forEach(combobox => {
+          const isEmpty = !combobox.value || (Array.isArray(combobox.value) && combobox.value.length === 0);
+          if (isEmpty) {
+            combobox.setCustomValidity('Please select an option.');
+            combobox.reportValidity();
           }
-        },
-        constants: [
-          twoOptionsConstant,
-          labelConstant,
-          multipleConstant,
-          { type: 'attribute', name: 'required', value: true }
-        ],
-        args
-      })}
-      <sd-button class="hidden" type="submit">Submit</sd-button>
-    </form>`;
-  },
-  play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const el = canvasElement.querySelector('sd-button');
-    await waitUntil(() => el?.shadowRoot?.querySelector('button'));
-    await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
+
+          const validateCombobox = () => {
+            const isEmpty = !combobox.value || (Array.isArray(combobox.value) && combobox.value.length === 0);
+            if (isEmpty) {
+              combobox.setCustomValidity('Please select an option.');
+            } else {
+              combobox.setCustomValidity('');
+            }
+            combobox.reportValidity();
+          };
+
+          combobox.addEventListener('sd-change', validateCombobox);
+          combobox.addEventListener('sd-input', validateCombobox);
+        });
+      </script>`;
   }
 };
 
@@ -667,7 +711,6 @@ export const SampleForm = {
     const sharedConstants: ConstantDefinition[] = [
       { type: 'attribute', name: 'form', value: 'testForm' },
       { type: 'attribute', name: 'clearable', value: true },
-      { type: 'attribute', name: 'required', value: true },
       twoOptionsConstant
     ];
 
@@ -677,8 +720,8 @@ export const SampleForm = {
           ${generateTemplate({
             constants: [
               ...sharedConstants,
-              { type: 'attribute', name: 'label', value: 'Required' },
-              { type: 'attribute', name: 'name', value: 'required field' }
+              { type: 'attribute', name: 'label', value: 'Required *' },
+              { type: 'attribute', name: 'name', value: 'required-field' }
             ],
             args
           })}
@@ -687,8 +730,8 @@ export const SampleForm = {
           ${generateTemplate({
             constants: [
               ...sharedConstants,
-              { type: 'attribute', name: 'label', value: 'Required multiple' },
-              { type: 'attribute', name: 'name', value: 'required multiple field' },
+              { type: 'attribute', name: 'label', value: 'Required multiple *' },
+              { type: 'attribute', name: 'name', value: 'required-multiple-field' },
               multipleConstant
             ],
             args
@@ -698,8 +741,8 @@ export const SampleForm = {
           ${generateTemplate({
             constants: [
               ...sharedConstants,
-              { type: 'attribute', name: 'label', value: 'Required multiple w/ tags' },
-              { type: 'attribute', name: 'name', value: 'required multiple tags field' },
+              { type: 'attribute', name: 'label', value: 'Required multiple w/ tags *' },
+              { type: 'attribute', name: 'name', value: 'required-multiple-tags-field' },
               multipleConstant,
               { type: 'attribute', name: 'useTags', value: true }
             ],
@@ -708,27 +751,71 @@ export const SampleForm = {
         </div>
         <sd-button type="submit">Submit</sd-button>
       </form>
-      <script>
-        function handleSubmit(event) {
-          const form = document.querySelector('#testForm');
-          const sdComboboxes = Array.from(document.querySelectorAll('sd-combobox'));
+      <script type="module">
+        await Promise.all([customElements.whenDefined('sd-combobox'), customElements.whenDefined('sd-button')]);
 
-          const isValid = sdCombobox => sdCombobox.checkValidity();
+        const form = document.querySelector('#testForm');
+        const comboboxes = Array.from(form.querySelectorAll('sd-combobox'));
 
-          if (sdComboboxes.every(isValid)) {
-            event.preventDefault(); // Prevent the default form submission behavior
-
-            const formData = new FormData(form);
-            const formValues = Object.fromEntries(formData);
-            formValues['required multiple field'] = formData.getAll('required multiple field');
-            formValues['required multiple tags field'] = formData.getAll('required multiple tags field');
-            m;
-
-            alert('Form submitted successfully with the following values: ' + JSON.stringify(formValues, null, 2));
+        function getMessage(name) {
+          switch (name) {
+            case 'required-field':
+              return 'Please select an option.';
+            case 'required-multiple-field':
+              return 'Please select at least one option.';
+            case 'required-multiple-tags-field':
+              return 'Please select at least one option.';
+            default:
+              return '';
           }
         }
 
-        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
+        comboboxes.forEach(combobox => {
+          const name = combobox.getAttribute('name');
+          combobox.addEventListener('sd-change', () => {
+            combobox.setCustomValidity('');
+          });
+          combobox.addEventListener('sd-input', () => {
+            combobox.setCustomValidity('');
+          });
+        });
+
+        form.addEventListener(
+          'submit',
+          event => {
+            let isFormValid = true;
+            comboboxes.forEach(combobox => {
+              const name = combobox.getAttribute('name');
+              const value = combobox.value;
+              let isValid = false;
+
+              if (Array.isArray(value)) {
+                isValid = value.length > 0;
+              } else {
+                isValid = value && value.trim() !== '';
+              }
+
+              if (!isValid) {
+                const message = getMessage(name);
+                combobox.setCustomValidity(message);
+                isFormValid = false;
+              } else {
+                combobox.setCustomValidity('');
+              }
+            });
+          },
+          true
+        );
+
+        form.addEventListener('submit', event => {
+          event.preventDefault();
+          const formData = new FormData(form);
+          const formValues = Object.fromEntries(formData);
+
+          if (form.reportValidity()) {
+            alert('Form submitted with the following values: ' + JSON.stringify(formValues, null, 2));
+          }
+        });
       </script>
     `;
   }
@@ -862,6 +949,8 @@ export const setCustomValidity = {
 
 export const Combination = generateScreenshotStory([
   Default,
+  Labels,
+  FloatingLabel,
   SizeMultiple,
   DisabledMultiple,
   ValidInvalid,

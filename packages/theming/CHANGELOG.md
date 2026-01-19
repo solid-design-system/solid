@@ -1,11 +1,115 @@
 # @solid-design-system/theming
 
+## 1.2.0
+
+### Minor Changes
+
+- Added more semantic tokens to the following components: _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+  - sd-accordion
+  - sd-audio
+  - sd-badge
+  - sd-brandshape
+  - sd-breadcrumb
+  - sd-button
+  - sd-carousel
+  - sd-checkbox
+  - sd-chip
+  - sd-combobox
+  - sd-container
+  - sd-date-picker
+  - sd-divider
+  - sd-flag
+  - sd-footnotes
+  - sd-header
+  - sd-input
+  - sd-interactive
+  - sd-loader
+  - sd-map-marker
+  - sd-menu-item
+  - sd-navigation-item
+  - sd-notification
+  - sd-quick-fact
+  - sd-radio
+  - sd-radio-button
+  - sd-radio-group
+  - sd-range-tick
+  - sd-select
+  - sd-step
+  - sd-switch
+  - sd-tab
+  - sd-tag
+  - sd-teaser
+  - sd-teaser-media
+  - sd-textarea
+  - sd-tooltip
+  - sd-video
+
+### Patch Changes
+
+- Internal: version bump to align with main (no user-facing changes). _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+- - Add `kid-starter` theme. _[`#2570`](https://github.com/solid-design-system/solid/pull/2570) [`a51e702`](https://github.com/solid-design-system/solid/commit/a51e70205b44f03ea0c0af5c25d71520befb073e) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.2.0-next.2
+
+### Patch Changes
+
+- Add `kid-starter` theme. _[`#2663`](https://github.com/solid-design-system/solid/pull/2663) [`575bcf1`](https://github.com/solid-design-system/solid/commit/575bcf1ae1ce4bf0ee1773be5519ae07c5c8981a) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 1.2.0-next.1
+
+### Patch Changes
+
+- Internal: version bump to align with main (no user-facing changes). _[`#2656`](https://github.com/solid-design-system/solid/pull/2656) [`34dbd53`](https://github.com/solid-design-system/solid/commit/34dbd5304ad4bd6486068c40e307742841c25f4d) [@paulovareiro29](https://github.com/paulovareiro29)_
+
+## 1.2.0-next.0
+
+### Minor Changes
+
+- Added more semantic tokens to the following components: _[`#2646`](https://github.com/solid-design-system/solid/pull/2646) [`24e0bff`](https://github.com/solid-design-system/solid/commit/24e0bffe2a91c5ddbd39cef6c7a3bb46df89f472) [@paulovareiro29](https://github.com/paulovareiro29)_
+  - sd-accordion
+  - sd-audio
+  - sd-badge
+  - sd-brandshape
+  - sd-breadcrumb
+  - sd-button
+  - sd-carousel
+  - sd-checkbox
+  - sd-chip
+  - sd-combobox
+  - sd-container
+  - sd-date-picker
+  - sd-divider
+  - sd-flag
+  - sd-footnotes
+  - sd-header
+  - sd-input
+  - sd-interactive
+  - sd-loader
+  - sd-map-marker
+  - sd-menu-item
+  - sd-navigation-item
+  - sd-notification
+  - sd-quick-fact
+  - sd-radio
+  - sd-radio-button
+  - sd-radio-group
+  - sd-range-tick
+  - sd-select
+  - sd-step
+  - sd-switch
+  - sd-tab
+  - sd-tag
+  - sd-teaser
+  - sd-teaser-media
+  - sd-textarea
+  - sd-tooltip
+  - sd-video
+
 ## 1.1.2
 
 ### Patch Changes
 
-- - Update pnpm to 10.17 _[`#2522`](https://github.com/solid-design-system/solid/pull/2522) [`7cc6bb7`](https://github.com/solid-design-system/solid/commit/7cc6bb7bdfc9ccb26c2ecfa58b27021d15379312) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
+- Update pnpm to 10.17 _[`#2522`](https://github.com/solid-design-system/solid/pull/2522) [`7cc6bb7`](https://github.com/solid-design-system/solid/commit/7cc6bb7bdfc9ccb26c2ecfa58b27021d15379312) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
   - Add minimumReleaseAge to 5 days
   - Update all actions to ensure that they're using the correct version
 

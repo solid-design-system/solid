@@ -1,8 +1,12 @@
-@import url('../../components/src/solid-components.css');
+@import 'tailwindcss/preflight';
+@import '../../tokens/themes/tailwind.css';
+@import '../../components/src/solid-components.css';
+@import '../../styles/src/solid-styles.css';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+body.sb-show-main,
+.docs-story > div {
+  @apply !bg-white !text-black;
+}
 
 /* Lists */
 .sbdocs .sbdocs-content ol {
@@ -19,11 +23,11 @@
 .sbdocs.sbdocs-a:focus-visible,
 .sbdocs .sbdocs-content a:not(:where(#root-inner *, #storybook-docs *)):focus-visible,
 .sbdocs .toc-list .toc-list-item a:focus-visible {
-  @apply outline outline-2 outline-offset-2 outline-primary;
+  @apply outline-2 outline-offset-2 outline-primary;
 }
 
 div[data-radix-scroll-area-viewport]:focus-visible {
-  @apply outline -outline-offset-2 outline-2 outline-primary;
+  @apply -outline-offset-2 outline-2 outline-primary;
 }
 
 /* Color palettes */
@@ -43,7 +47,15 @@ div[data-radix-scroll-area-viewport]:focus-visible {
   @apply before:border-transparent before:border-l-[3px];
 
   a {
-    @apply text-primary hover:text-primary-500 active:text-primary-800;
+    color: #00358e;
+
+    &:hover {
+      color: #466daf;
+    }
+
+    &:active {
+      color: #051530;
+    }
   }
 }
 
@@ -51,7 +63,7 @@ div[data-radix-scroll-area-viewport]:focus-visible {
   @apply before:border-accent;
 
   a {
-    @apply text-primary;
+    color: #00358e;
   }
 }
 
@@ -92,7 +104,8 @@ div[data-radix-scroll-area-viewport]:focus-visible {
   @apply !text-success;
 }
 
-sd-notification#license-hint::part(base) {
+sd-notification#license-hint::part(base),
+sd-notification#versioning-info::part(base) {
   margin-left: 0;
   margin-bottom: 2rem;
 }

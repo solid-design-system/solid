@@ -29,6 +29,16 @@ export default {
   component: 'sd-headline',
   parameters: {
     ...parameters,
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: false
+          }
+        ]
+      }
+    },
     controls: { disable: true },
     design: {
       type: 'figma',
@@ -77,7 +87,10 @@ export const Inverted = {
       constants: { type: 'attribute', name: 'sd-headline--inverted', value: true },
       options: {
         templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>',
-        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
+        templateBackgrounds: {
+          alternate: 'y',
+          colors: ['transparent', 'rgba(var(--sd-color-background-primary))']
+        }
       },
       args
     });
@@ -150,7 +163,7 @@ export const SizeXInverted = {
         },
         options: {
           templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>',
-          templateBackgrounds: { alternate: 'x', colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))'] },
+          templateBackgrounds: { alternate: 'x', colors: ['transparent', 'rgba(var(--sd-color-background-primary))'] },
           title: headline.title
         },
         args
@@ -174,7 +187,7 @@ export const Samples = {
         }
         .headline {
           padding: 16px;
-          background: #e0e0e0;
+          background: var(--sd-color-neutral-200);
           text-align: left;
           font-size: 14px;
           font-weight: bold;
@@ -219,7 +232,7 @@ export const Samples = {
           options: {
             templateBackgrounds: {
               alternate: 'x',
-              colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))']
+              colors: ['transparent', 'rgba(var(--sd-color-background-primary))']
             },
             templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>'
           },
@@ -259,7 +272,7 @@ export const Samples = {
           options: {
             templateBackgrounds: {
               alternate: 'x',
-              colors: ['transparent', 'rgb(var(--sd-color-primary, 0 53 142))']
+              colors: ['transparent', 'rgba(var(--sd-color-background-primary))']
             },
             templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>'
           },

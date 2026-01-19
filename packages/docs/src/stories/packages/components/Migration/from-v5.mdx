@@ -1,0 +1,138 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import '../../../../../../components/src/components/tab-group/tab-group';
+import '../../../../../../components/src/components/tab/tab';
+import '../../../../../../components/src/components/tab-panel/tab-panel';
+
+<Meta title="Packages/Components/Migration/from v5" />
+
+# Migration from v5
+
+The v5 release introduces multi-theming, allowing you to use light and dark modes, brand-specific themes, and fully customize Solid components to match your design system — while maintaining the quality, accessibility, and reliability Solid is known for.
+
+It also brings a rework of the `sd-datepicker` attributes to improve consistency with other component attributes.
+
+## Unified Versioning for Components, Styles and Tokens
+
+As part of this release, the packages `components`, `styles` and `tokens` now share a single, synchronized version number. Even if a change occurs in only one package, all three will be released with the same version.
+
+This alignment ensures that all packages stay in sync, there are no mismatches in dependency expectations and simpler updates for consuming projects, since you can always upgrade all packages to the same version.
+
+Going forward, whenever you update the design system, expect new releases of all three packages with the same version, regardless of where the actual code changes occurred.
+
+## Multi theming
+
+You must now import at least one theme (via NPM or CDN) to ensure components render correctly.
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="npm" variant="container"> NPM </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="cdn" variant="container"> CDN </sd-tab>
+  <sd-tab-panel name="npm">
+  __Before__:
+    ```js
+    import '@solid-design-system/components/dist/solid-components.css';
+    ```
+  __After__:
+    ```bash
+    npm install @solid-design-system/tokens
+    ```
+    ```js
+    import '@solid-design-system/components/dist/solid-components.css';
+    import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
+    ```
+
+  </sd-tab-panel>
+  <sd-tab-panel name="cdn">
+  __Before__:
+    ```html
+    <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.css" />
+    ```
+  __After__:
+    ```html
+    <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/components/%COMPONENTS-VERSION%/cdn/solid-components.css" />
+    <link rel="stylesheet" href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css" />
+    ```
+  </sd-tab-panel>
+</sd-tab-group>
+
+## Removed enforced headline styling from `sd-teaser-media`.
+
+Removed this CSS rule that used to force styles into whatever is slotted into slot="headline"
+
+```css
+::slotted([slot='headline']) { '@apply font-bold !m-0 !text-lg;'}
+```
+
+Result: `sd-teaser-media` no longer forces font-weight, margin or test size on headline elements. Headline sizing/spacing must now be provided by the user.
+
+**Before**:
+
+```html
+<sd-teaser-media>
+  <h3 slot="headline" class="sd-headline sd-headline--inverted">Market turnaround in sight</h3>
+</sd-teaser-media>
+```
+
+**After**:
+
+```html
+<sd-teaser-media>
+  <h3 slot="headline" class="sd-headline sd-headline--inverted sd-headline--size-lg">Market turnaround in sight</h3>
+</sd-teaser-media>
+```
+
+## sd-datepicker date format
+
+The `sd-datepicker` component's `range-start` and `range-end` attributes changed from camelCase to kebab-case to follow HTML attribute naming conventions and align with the rest of the component API. This improves consistency, accessibility tooling compatibility, and reduces confusion when integrating the component.
+
+**Before**:
+
+```html
+<sd-datepicker range rangeStart="2025-12-10" rangeEnd="2025-12-20"></sd-datepicker>
+```
+
+**After**:
+
+```html
+<sd-datepicker range range-start="2025-12-10" range-end="2025-12-20"></sd-datepicker>
+```
+
+## Changed the `sd-radio-group`'s label to be bold by default
+
+Removed the attribute `boldLabel` from `sd-radio-group`, making this component's label bold by default.
+
+**Before**:
+
+```html
+<sd-radio-group size="lg" orientation="vertical" name="radio-group" value="1" boldlabel="true">
+  <sd-radio-group name="large-radio-group" size="lg" value="1" label="Group label" boldlabel>
+    <sd-radio value="1">Radio 1</sd-radio>
+    <sd-radio value="2">Radio 2</sd-radio>
+    <sd-radio value="3">Radio 3</sd-radio>
+  </sd-radio-group>
+</sd-radio-group>
+```
+
+**After**:
+
+```html
+<sd-radio-group size="lg" orientation="vertical" name="radio-group" value="1">
+  <sd-radio-group name="large-radio-group" size="lg" value="1" label="Group label">
+    <sd-radio value="1">Radio 1</sd-radio>
+    <sd-radio value="2">Radio 2</sd-radio>
+    <sd-radio value="3">Radio 3</sd-radio>
+  </sd-radio-group>
+</sd-radio-group>
+```
+
+**How to make it non-bold**:
+
+```html
+<sd-radio-group name="large-radio-group" size="lg" value="1">
+  <span slot="label" class="font-normal">Group label</span>
+  <sd-radio value="1">Radio 1</sd-radio>
+  <sd-radio value="2">Radio 2</sd-radio>
+  <sd-radio value="3">Radio 3</sd-radio>
+</sd-radio-group>
+```

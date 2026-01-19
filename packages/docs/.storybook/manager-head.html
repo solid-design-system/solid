@@ -1,21 +1,10 @@
-<link rel="shortcut icon" href="./favicon/favicon.ico" />
-<link rel="apple-touch-icon" sizes="57x57" href="./favicon/apple-icon-57x57.png" />
-<link rel="apple-touch-icon" sizes="60x60" href="./favicon/apple-icon-60x60.png" />
-<link rel="apple-touch-icon" sizes="72x72" href="./favicon/apple-icon-72x72.png" />
-<link rel="apple-touch-icon" sizes="76x76" href="./favicon/apple-icon-76x76.png" />
-<link rel="apple-touch-icon" sizes="114x114" href="./favicon/apple-icon-114x114.png" />
-<link rel="apple-touch-icon" sizes="120x120" href="./favicon/apple-icon-120x120.png" />
-<link rel="apple-touch-icon" sizes="144x144" href="./favicon/apple-icon-144x144.png" />
-<link rel="apple-touch-icon" sizes="152x152" href="./favicon/apple-icon-152x152.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-icon-180x180.png" />
-<link rel="icon" type="image/png" sizes="192x192" href="./favicon/android-icon-192x192.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png" />
-<link rel="icon" type="image/png" sizes="96x96" href="./favicon/favicon-96x96.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png" />
+<link rel="icon" href="./favicon/favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)" />
+<link rel="icon" href="./favicon/favicon.svg" type="image/svg+xml" />
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32.png" />
 <link rel="manifest" href="./favicon/manifest.json" />
 <meta name="msapplication-TileColor" content="#ffffff" />
-<meta name="msapplication-TileImage" content="./favicon/ms-icon-144x144.png" />
 <meta name="theme-color" content="#ffffff" />
+
 <meta
   name="description"
   content="Interactive documentation for Union Investment's Solid Design System, the robust foundation for Union Investment's digital presence."
@@ -59,6 +48,116 @@
     --sd-color-primary: #00358e;
     --sd-color-accent: #2d9d00;
     --sd-color-neutral-200: #e9e9e9;
+  }
+
+  /* Native dialog styles for theme protection */
+  #theme-protection-dialog {
+    border: none;
+    border-radius: 8px;
+    padding: 0;
+    max-width: 500px;
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+
+  #theme-protection-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+  }
+
+  #theme-protection-dialog .dialog-header {
+    padding: 24px 24px 16px;
+    border-bottom: 1px solid #e9e9e9;
+  }
+
+  #theme-protection-dialog .dialog-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #000;
+  }
+
+  #theme-protection-dialog .dialog-body {
+    padding: 24px;
+  }
+
+  #theme-protection-dialog .dialog-text {
+    margin: 0 0 16px;
+    color: #333;
+    line-height: 1.5;
+  }
+
+  #theme-protection-dialog .input-group {
+    margin-bottom: 8px;
+  }
+
+  #theme-protection-dialog label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #000;
+  }
+
+  #theme-protection-dialog input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  #theme-protection-dialog input:focus {
+    outline: 2px solid var(--sd-color-primary);
+    outline-offset: 2px;
+    border-color: var(--sd-color-primary);
+  }
+
+  #theme-protection-dialog .error-message {
+    color: #d32f2f;
+    font-size: 14px;
+    margin-top: 8px;
+    display: none;
+  }
+
+  #theme-protection-dialog .error-message.show {
+    display: block;
+  }
+
+  #theme-protection-dialog .dialog-footer {
+    padding: 16px 24px 24px;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+  }
+
+  #theme-protection-dialog button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 150ms;
+  }
+
+  #theme-protection-dialog .btn-secondary {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  #theme-protection-dialog .btn-secondary:hover {
+    background: #e9e9e9;
+  }
+
+  #theme-protection-dialog .btn-primary {
+    background: var(--sd-color-primary);
+    color: white;
+  }
+
+  #theme-protection-dialog .btn-primary:hover {
+    background: #002d75;
   }
 
   #storybook-explorer-tree .sidebar-item {

@@ -4,20 +4,38 @@
  * @status stable
  * @since 1.30.0
  * @variant { primary-300 | primary-500 | white } sd-chip--...
+ *
+ * @cssproperty --sd-chip--primary-200-color-background - The background color for primary‑200 chip.
+ * @cssproperty --sd-chip--primary-200-color-border - The border color for primary‑200 chips.
+ * @cssproperty --sd-chip--primary-300-color-background - The background color for primary‑300 chips.
+ * @cssproperty --sd-chip--primary-300-color-border - The border color for primary‑300 chips.
+ * @cssproperty --sd-chip--primary-500-color-background - The background color for primary‑500 chips.
+ * @cssproperty --sd-chip--primary-500-color-border - The border color for primary‑500 chips.
+ * @cssproperty --sd-chip--primary-500-color-text - The text color for primary‑500 chips.
+ * @cssproperty --sd-chip--white-color-background - The background color for white chips.
+ * @cssproperty --sd-chip--white-color-border - The border color for white chips.
+ * @cssproperty --sd-chip-border-radius - The border radius for chips.
+ * @cssproperty --sd-chip-font-size - The font size for chips.
+ * @cssproperty --sd-chip-border-width - The border width for chips.
+ * @cssproperty --sd-chip-font-weight - The font weight for chips.
  */
 
 .sd-chip {
-  @apply h-6 bg-primary-200 rounded-default text-black text-sm inline-flex items-center whitespace-nowrap px-2 overflow-hidden;
+  @apply border h-6 sd-chip-font-weight sd-chip-border-width sd-chip--primary-200-color-background sd-chip-border-radius sd-chip--primary-200-color-border text-black sd-chip-font-size inline-flex items-center whitespace-nowrap px-2 overflow-hidden;
 
   &--primary-500 {
-    @apply bg-primary-500 text-white;
+    @apply sd-chip--primary-500-color-background sd-chip--primary-500-color-border sd-chip--primary-500-color-text;
   }
 
   &--primary-300 {
-    @apply bg-primary-300;
+    @apply sd-chip--primary-300-color-background sd-chip--primary-300-color-border;
   }
 
   &--white {
-    @apply bg-white;
+    @apply sd-chip--white-color-background sd-chip--white-color-border;
   }
+}
+
+.sd-theme-kid .sd-chip {
+  box-shadow: var(--sd-shadow-sm);
 }

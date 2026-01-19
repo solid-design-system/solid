@@ -107,7 +107,7 @@ export const AsLink = {
     <div class="flex gap-12">
       <sd-tag href="https://solid-design-system.fe.union-investment.de/docs/?path=/docs/docs-general-introduction--docs"
         >Link</sd-tag
-      ><sd-tag href="https://union-investment.com" target="_blank">New Window</sd-tag
+      ><sd-tag href="https://union-investment.com" target="_blank">New window</sd-tag
       ><sd-tag href="./placeholders/images/coffeeshop.jpg" download="">Download</sd-tag>
     </div>
   `
@@ -125,6 +125,21 @@ export const Disabled = {
   render: () => html`
     <div class="flex gap-12">
       <sd-tag disabled>Disabled</sd-tag>
+    </div>
+  `
+};
+
+/**
+ * Use the `icon-left` slot to add system icons.
+ *
+ */
+export const Icon = {
+  render: () => html`
+    <div class="flex gap-12">
+      <sd-tag>
+        <sd-icon slot="icon-left" name="union-investment/system/image"></sd-icon>
+        Icon left
+      </sd-tag>
     </div>
   `
 };

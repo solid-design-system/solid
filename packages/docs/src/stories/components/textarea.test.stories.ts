@@ -48,6 +48,41 @@ export const Default = {
 };
 
 /**
+ * Use the `label` attribute to give the textarea an accessible label. For labels that contain HTML, use the `label` slot instead.
+ */
+export const Labels = {
+  name: 'Label',
+  args: {
+    label: 'Label'
+  },
+  render: (args: any) => {
+    return html`<div class="w-[250px]">${generateTemplate({ args })}</div> `;
+  }
+};
+
+/**
+ * Use the `floating-label` attribute to enable a floating label on the textarea.
+ */
+export const FloatingLabel = {
+  name: 'Floating Label',
+  args: {
+    'floating-label': true
+  },
+  render: (args: any) => {
+    return html`
+      <div class="w-[250px]">${generateTemplate({ args })}</div>
+      <br />
+      <div class="w-[250px]">
+        ${generateTemplate({
+          constants: [{ type: 'attribute', name: 'value', value: 'Floating Label with value' }],
+          args
+        })}
+      </div>
+    `;
+  }
+};
+
+/**
  * Use the `placeholder` attribute to add a placeholder.
  */
 
@@ -62,6 +97,13 @@ export const Placeholders = {
     return html`
       <div class="w-[250px]">
         ${generateTemplate({
+          args
+        })}
+      </div>
+      <br />
+      <div class="w-[250px]">
+        ${generateTemplate({
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
         })}
       </div>
@@ -87,6 +129,16 @@ export const Disabled = {
           args
         })}
       </div>
+      <br />
+      <div class="w-[250px]">
+        ${generateTemplate({
+          constants: [
+            { type: 'attribute', name: 'disabled', value: true },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
+          args
+        })}
+      </div>
     `;
   }
 };
@@ -109,6 +161,16 @@ export const Readonly = {
           args
         })}
       </div>
+      <br />
+      <div class="w-[250px]">
+        ${generateTemplate({
+          constants: [
+            { type: 'attribute', name: 'readonly', value: true },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
+          args
+        })}
+      </div>
     `;
   }
 };
@@ -125,12 +187,26 @@ export const Sizes = {
     { type: 'attribute', name: 'help-text', value: 'Help-text' }
   ]),
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'size' }
-      },
-      args
-    });
+    return html`
+      <div>
+        ${generateTemplate({
+          axis: {
+            y: { type: 'attribute', name: 'size' }
+          },
+          args
+        })}
+      </div>
+      <br />
+      <div>
+        ${generateTemplate({
+          axis: {
+            y: { type: 'attribute', name: 'size' }
+          },
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
+          args
+        })}
+      </div>
+    `;
   }
 };
 
@@ -152,12 +228,26 @@ export const StyleOnValid = {
     }
   ]),
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'style-on-valid' }
-      },
-      args
-    });
+    return html`
+      <div>
+        ${generateTemplate({
+          axis: {
+            y: { type: 'attribute', name: 'style-on-valid' }
+          },
+          args
+        })}
+      </div>
+      <br />
+      <div>
+        ${generateTemplate({
+          axis: {
+            y: { type: 'attribute', name: 'style-on-valid' }
+          },
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
+          args
+        })}
+      </div>
+    `;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
@@ -186,8 +276,8 @@ export const Validation = {
           ${generateTemplate({
             constants: [
               { type: 'attribute', name: 'label', value: 'Required' },
-              { type: 'attribute', name: 'name', value: 'required field' },
-              { type: 'attribute', name: 'help-text', value: 'textarea must be filled' },
+              { type: 'attribute', name: 'name', value: 'required-field' },
+              { type: 'attribute', name: 'help-text', value: '' },
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               { type: 'attribute', name: 'style-on-valid', value: true }
@@ -195,6 +285,52 @@ export const Validation = {
             args
           })}
         </div>
+        <br />
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'label', value: 'Min Length' },
+              { type: 'attribute', name: 'name', value: 'minlength-field' },
+              { type: 'attribute', name: 'help-text', value: 'Please type in at least 3 characters' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: true },
+              { type: 'attribute', name: 'minlength', value: 3 },
+              { type: 'attribute', name: 'style-on-valid', value: true }
+            ],
+            args
+          })}
+        </div>
+        <br />
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'label', value: 'Max Length' },
+              { type: 'attribute', name: 'name', value: 'maxlength-field' },
+              { type: 'attribute', name: 'help-text', value: 'Max. 3 Characters are allowed' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: true },
+              { type: 'attribute', name: 'maxlength', value: 3 },
+              { type: 'attribute', name: 'style-on-valid', value: true }
+            ],
+            args
+          })}
+        </div>
+        <br />
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'label', value: 'Required' },
+              { type: 'attribute', name: 'name', value: 'required field' },
+              { type: 'attribute', name: 'help-text', value: 'textarea must be filled' },
+              { type: 'attribute', name: 'form', value: 'testForm' },
+              { type: 'attribute', name: 'required', value: true },
+              { type: 'attribute', name: 'style-on-valid', value: true },
+              { type: 'attribute', name: 'floating-label', value: true }
+            ],
+            args
+          })}
+        </div>
+        <br />
         <div class="mb-2">
           ${generateTemplate({
             constants: [
@@ -204,11 +340,13 @@ export const Validation = {
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               { type: 'attribute', name: 'minlength', value: 3 },
-              { type: 'attribute', name: 'style-on-valid', value: true }
+              { type: 'attribute', name: 'style-on-valid', value: true },
+              { type: 'attribute', name: 'floating-label', value: true }
             ],
             args
           })}
         </div>
+        <br />
         <div class="mb-2">
           ${generateTemplate({
             constants: [
@@ -218,31 +356,85 @@ export const Validation = {
               { type: 'attribute', name: 'form', value: 'testForm' },
               { type: 'attribute', name: 'required', value: true },
               { type: 'attribute', name: 'maxlength', value: 3 },
-              { type: 'attribute', name: 'style-on-valid', value: true }
+              { type: 'attribute', name: 'style-on-valid', value: true },
+              { type: 'attribute', name: 'floating-label', value: true }
             ],
             args
           })}
         </div>
         <sd-button type="submit">Submit</sd-button>
       </form>
-      <script>
-        function handleSubmit(event) {
-          const form = document.querySelector('#testForm');
-          const sdTextarea = Array.from(document.querySelectorAll('sd-textarea'));
+      <script type="module">
+        await Promise.all([customElements.whenDefined('sd-textarea'), customElements.whenDefined('sd-button')]);
 
-          const isValid = sdTextarea => sdTextarea.checkValidity();
+        const form = document.querySelector('#testForm');
+        const fields = Array.from(form.querySelectorAll('sd-textarea')).map(el => ({
+          el,
+          native: el.shadowRoot.querySelector('textarea')
+        }));
 
-          if (sdTextarea.every(isValid)) {
-            event.preventDefault(); // Prevent the default form submission behavior
+        let formSubmitted = false;
 
-            const formData = new FormData(form);
-            const formValues = Object.fromEntries(formData);
-
-            alert('Form submitted successfully with the following values: ' + JSON.stringify(formValues, null, 2));
+        function getMessage(name) {
+          switch (name) {
+            case 'required-field':
+              return 'Please correct your input.';
+            case 'minlength-field':
+              return 'At least 3 characters are needed. Please correct your input.';
+            case 'maxlength-field':
+              return 'Maximum 3 characters are allowed. Please correct your input.';
+            default:
+              return 'Please correct your input.';
           }
         }
 
-        document.querySelector('#testForm').addEventListener('submit', handleSubmit);
+        // Prevent validation before first submit
+        form.addEventListener(
+          'sd-input',
+          ev => {
+            if (formSubmitted) return;
+            ev.stopImmediatePropagation();
+            fields.forEach(({ el, native }) => {
+              el.setCustomValidity('');
+              native.setCustomValidity('');
+              el.removeAttribute('data-user-invalid');
+            });
+          },
+          { capture: true }
+        );
+
+        // Block native invalid events before submit
+        form.addEventListener('invalid', e => !formSubmitted && e.preventDefault(), { capture: true });
+
+        // Set custom messages BEFORE form validation runs
+        form.addEventListener(
+          'submit',
+          () => {
+            fields.forEach(({ el, native }) => {
+              el.setCustomValidity('');
+              native.setCustomValidity('');
+              if (!native.validity.valid) {
+                const msg = getMessage(el.getAttribute('name'));
+                native.setCustomValidity(msg);
+                el.setCustomValidity(msg);
+              }
+            });
+          },
+          { capture: true }
+        );
+
+        // Handle submit
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          formSubmitted = true;
+
+          if (form.checkValidity()) {
+            alert(
+              'Form submitted with the following values: ' +
+                JSON.stringify(Object.fromEntries(new FormData(form)), null, 2)
+            );
+          }
+        });
       </script>
     `;
   }
@@ -313,7 +505,21 @@ export const Scrollable = {
   name: 'Scrollable',
   render: () => {
     return html`
-      <sd-textarea id="scrollable-textarea" label="Label" style-on-valid style="max-width: 350px;"></sd-textarea>
+      <div>
+        <sd-textarea id="scrollable-textarea" label="Label" style-on-valid style="max-width: 350px;"></sd-textarea>
+        <div />
+        <br />
+        <div>
+          <sd-textarea
+            id="scrollable-textarea"
+            floating-label
+            label="Label"
+            style-on-valid
+            style="max-width: 350px;"
+          ></sd-textarea>
+          <div />
+        </div>
+      </div>
     `;
   },
 
@@ -446,6 +652,8 @@ export const Mouseless = {
 
 export const Combination = generateScreenshotStory([
   Default,
+  Labels,
+  FloatingLabel,
   Placeholders,
   Disabled,
   Readonly,

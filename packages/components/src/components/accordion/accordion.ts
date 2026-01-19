@@ -39,6 +39,13 @@ import SolidElement from '../../internal/solid-element';
  *
  * @animation accordion.show - The animation to use when showing accordion. You can use `height: auto` with this animation.
  * @animation accordion.hide - The animation to use when hiding accordion. You can use `height: auto` with this animation.
+ *
+ * @cssproperty --sd-accordion-border-width - The accordion border width.
+ * @cssproperty --sd-accordion-color-background - The accordion background color.
+ * @cssproperty --sd-accordion-color-text - The accordion color text.
+ * @cssproperty --sd-accordion-padding-block - The accordion vertical padding value.
+ * @cssproperty --sd-accordion__chevron-color-text - The accordion chevron color.
+ * @cssproperty --sd-accordion__indicator-color - The accordion indicator color.
  */
 @customElement('sd-accordion')
 export default class SdAccordion extends SolidElement {
@@ -181,12 +188,12 @@ export default class SdAccordion extends SolidElement {
 
   render() {
     return html`
-      <details part="base" class="border-y border-neutral-400">
+      <details part="base" class="border-neutral-400">
         <summary
           part="header"
           id="header"
           class=${cx(
-            'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 py-3 focus-visible:focus-outline text-primary relative group transition-colors ease-in-out duration-fast hover:bg-neutral-200'
+            'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 sd-accordion-padding-block focus-visible:focus-outline focus-visible:z-10 sd-accordion-color-text relative group transition-colors ease-in-out duration-fast hover:bg-neutral-200'
           )}
           aria-expanded=${this.open ? 'true' : 'false'}
           aria-controls="content"
@@ -198,7 +205,7 @@ export default class SdAccordion extends SolidElement {
             part="summary-border"
             class=${cx(
               !this.open && 'opacity-0',
-              'w-1 bg-accent absolute left-0 transition-height duration-fast ease-in-out h-[calc(100%-16px)] group-hover:h-full'
+              'w-1 sd-accordion__indicator-color absolute left-0 transition-height duration-fast ease-in-out h-[calc(100%-16px)] group-hover:h-full'
             )}
           ></div>
           <slot name="summary" part="summary" class="flex flex-auto items-center text-left">${this.summary}</slot>
@@ -232,6 +239,14 @@ export default class SdAccordion extends SolidElement {
       /** Removes summary marker on Safari */
       [part='header']::-webkit-details-marker {
         @apply hidden;
+      }
+
+      [part='base'] {
+        border-block-width: var(--sd-accordion-border-width);
+      }
+
+      [part='summary-icon'] {
+        color: var(--sd-accordion__chevron-color-text);
       }
     `
   ];
