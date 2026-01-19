@@ -95,6 +95,23 @@ export const Labels = {
 };
 
 /**
+ * Use the `floating-label` attribute to enable a floating label on the input.
+ */
+export const FloatingLabel = {
+  name: 'Floating Label',
+  args: overrideArgs([{ type: 'attribute', name: 'floating-label', value: true }]),
+  render: (args: any) => {
+    return html`
+      <div class="w-[350px]">
+        ${generateTemplate({
+          args
+        })}
+      </div>
+    `;
+  }
+};
+
+/**
  * Add descriptive help text to an input with the `help-text` attribute. For help texts that contain HTML, use the `help-text` slot instead.
  */
 
@@ -277,7 +294,7 @@ export const StyleOnValid = {
 
     for (const el of els) {
       await waitUntil(() => el?.shadowRoot?.querySelector('input'));
-      await userEvent.type(el.shadowRoot!.querySelector('input')!, 'e');
+      await userEvent.type(el.shadowRoot!.querySelector('input')!, ' ');
     }
 
     // tab to next element to loose focus
@@ -889,6 +906,7 @@ export const Mouseless = {
 export const Combination = generateScreenshotStory([
   Default,
   Labels,
+  FloatingLabel,
   HelpText,
   Placeholders,
   Clearable,
