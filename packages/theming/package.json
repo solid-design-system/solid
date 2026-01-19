@@ -1,6 +1,6 @@
 {
   "name": "@solid-design-system/theming",
-  "version": "1.2.0-next.2",
+  "version": "1.2.0-next.1",
   "description": "This package provides a color calculation service for the Solid Design System.",
   "main": "./src/index.js",
   "scripts": {

@@ -114,7 +114,7 @@ export const Disabled = {
 export const Invalid = {
   name: 'Invalid',
   render: (args: any) => {
-    return html`<form id="testForm">
+    return html`<form>
       ${generateTemplate({
         constants: [
           { type: 'attribute', name: 'required', value: true },
@@ -126,14 +126,6 @@ export const Invalid = {
     </form>`;
   },
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    await Promise.all([customElements.whenDefined('sd-radio-group'), customElements.whenDefined('sd-button')]);
-
-    const form = canvasElement.querySelector('#testForm');
-    const radioGroup = form?.querySelector('sd-radio-group');
-    if (radioGroup) {
-      radioGroup.setCustomValidity('Please select an option.');
-    }
-
     const el = canvasElement.querySelector('sd-button');
     await waitUntil(() => el?.shadowRoot?.querySelector('button'));
     await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });

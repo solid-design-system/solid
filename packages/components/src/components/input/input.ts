@@ -68,9 +68,6 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  *
  * @cssproperty --sd-form-control--invalid-color-background - The background color for form controls in invalid state.
  * @cssproperty --sd-form-control-color-text - The text color for form controls.
- * @cssproperty --sd-form-control--filled__floating-label-color-text - The floating label text color when active.
- * @cssproperty --sd-form-control-color-border - The color border for form controls.
- * @cssproperty --sd-form-control-color-icon - The icon color for form controls.
  */
 
 @customElement('sd-input')
@@ -555,7 +552,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       default: 'form-control-color-border'
     }[inputState];
 
-    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'form-control-color-icon';
+    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary';
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
     const iconSize = {
       sm: 'text-base',
@@ -701,10 +698,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                           ? 'text-base'
                           : 'text-xs',
                         (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
-                        isFloatingLabelActive &&
-                          !this.visuallyDisabled &&
-                          !this.disabled &&
-                          'form-control--filled__floating-label-color-text'
+                        isFloatingLabelActive && !this.visuallyDisabled && !this.disabled && 'text-neutral-700'
                       )}
                     >
                       ${this.label}
@@ -869,8 +863,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           name="help-text"
           part="form-control-help-text"
           id="help-text"
-          class=${cx('text-sm text-neutral-700 mt-1', hasHelpText && !this.showInvalidStyle ? 'block' : 'hidden')}
-          aria-hidden=${!hasHelpText || this.showInvalidStyle}
+          class=${cx('text-sm text-neutral-700 mt-1', hasHelpText ? 'block' : 'hidden')}
+          aria-hidden=${!hasHelpText}
         >
           ${this.helpText}
         </slot>

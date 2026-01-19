@@ -133,7 +133,6 @@
   --spacing-0\.5: var(--sd-spacing-0\.5);
   --spacing-10: var(--sd-spacing-10);
   --spacing-12: var(--sd-spacing-12);
-  --spacing-14: var(--sd-spacing-14);
   --spacing-16: var(--sd-spacing-16);
   --spacing-1: var(--sd-spacing-1);
   --spacing-1\.5: var(--sd-spacing-1\.5);
@@ -169,7 +168,6 @@
   --text-lg: var(--sd-text-lg);
   --text-sm: var(--sd-text-sm);
   --text-xl: var(--sd-text-xl);
-  --text-xs: var(--sd-text-xs);
   --transition-duration-fast: var(--sd-duration-fast, 150ms);
   --transition-duration-medium: var(--sd-duration-medium, 300ms);
   --transition-duration-slow: var(--sd-duration-slow, 500ms);

@@ -404,7 +404,7 @@ export const Invalid = {
       setTimeout(() => {
         invalidSelect.checkValidity();
         invalidSelect.reportValidity();
-        invalidSelect.setCustomValidity('Please select at least one option.');
+        invalidSelect.setCustomValidity('Error text');
       }, 500);
     </script>
   `
