@@ -45,7 +45,6 @@ describe('<sd-input>', () => {
     expect(el.inputmode).to.be.undefined;
     expect(el.valueAsDate).to.be.null;
     expect(isNaN(el.valueAsNumber)).to.be.true;
-    expect(el.floatingLabel).to.be.false;
   });
 
   it('should have title if title attribute is set', async () => {
@@ -101,18 +100,6 @@ describe('<sd-input>', () => {
     expect(labelParentElement).to.exist;
     expect(labelParentElement!.contains(label)).to.be.false;
     expect(labelParentElement!.contains(tooltip)).to.be.false;
-  });
-
-  it('should render floating label part instead of label if floating label is active', async () => {
-    const el = await fixture<SdInput>(html` <sd-input label="test" floating-label> </sd-input> `);
-
-    const labelParentElement = el.shadowRoot!.querySelector('[part~="form-control"]');
-    const label = el.shadowRoot!.querySelector('[part~="form-control-label"]');
-    const floatingLabel = el.shadowRoot!.querySelector('[part~="form-control-floating-label"]');
-
-    expect(labelParentElement).to.exist;
-    expect(labelParentElement!.contains(label)).to.be.false;
-    expect(labelParentElement!.contains(floatingLabel)).to.be.true;
   });
 
   describe('value methods', () => {

@@ -1,0 +1,28 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import theme from 'tailwind-theme';
+import cx from 'classix';
+
+<Meta title="Packages/Tokens/Shadows" />
+
+## Shadow
+
+<table>
+  <tbody>
+    {Object.entries(theme.boxShadow).map((token, i) => {
+      const name = token[0] === 'DEFAULT' ? 'shadow' : `shadow-${token[0]}`;
+      return (
+        <tr>
+          <td>
+            <div class="flex flex-col">
+              <div class="font-bold">sd-{name}</div>
+              <div>--sd-shadow-{token[1]}</div>
+            </div>
+          </td>
+          <td>
+            <div class={`h-16 w-16 ${name}`}></div>
+          </td>
+        </tr>
+      );
+    })}
+  </tbody>
+</table>

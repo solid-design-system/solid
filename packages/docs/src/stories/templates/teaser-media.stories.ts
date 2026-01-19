@@ -28,9 +28,7 @@ export const TeaserMediaWithLink = {
   render: () =>
     html` <div class="flex flex-col gap-12">
       <sd-teaser-media variant="gradient-dark">
-        <h3 slot="headline" class="sd-headline sd-headline--inverted sd-headline--size-lg">
-          Market turnaround in sight
-        </h3>
+        <h3 slot="headline" class="sd-headline sd-headline--inverted">Market turnaround in sight</h3>
         <div slot="media" class="relative">
           <img
             class="w-full aspect-ratio"
@@ -39,7 +37,7 @@ export const TeaserMediaWithLink = {
           />
         </div>
         <div slot="meta" class="meta-info">
-          <span class="sd-meta sd-meta--pipe sd-meta--inverted sd-headline--size-lg">August 2024</span>
+          <span class="sd-meta sd-meta--pipe sd-meta--inverted">August 2024</span>
           <span class="sd-meta sd-meta--inverted">Olaf Janßen</span>
         </div>
         <div>
@@ -48,12 +46,12 @@ export const TeaserMediaWithLink = {
             European commercial real estate markets.
           </p>
           <div>
-            <sd-button href="#" target="_blank" variant="primary" inverted>View research</sd-button>
+            <sd-button href="#" target="_blank" variant="primary" inverted>Research view</sd-button>
           </div>
         </div>
       </sd-teaser-media>
       <sd-teaser-media variant="primary">
-        <h3 slot="headline" class="sd-headline sd-headline--inverted sd-headline--size-lg">Your contact person</h3>
+        <h3 slot="headline" class="sd-headline sd-headline--inverted">Your contact person</h3>
         <img
           slot="media"
           class="w-full"
@@ -61,7 +59,7 @@ export const TeaserMediaWithLink = {
           alt="Two professionals representing accessible customer support."
         />
         <div class="flex flex-col gap-4">
-          <p class="sd-paragraph sd-paragraph--inverted sd-headline--size-lg">
+          <p class="sd-paragraph sd-paragraph--inverted">
             If you have any questions or would like to obtain further information, please find your dedicated contact
             below.
           </p>
@@ -71,7 +69,7 @@ export const TeaserMediaWithLink = {
         </div>
       </sd-teaser-media>
       <sd-teaser-media variant="neutral-100" class="teaser-neutral-100">
-        <h3 slot="headline" class="sd-headline sd-headline--size-lg">USA or Europe? It depends on the mix</h3>
+        <h3 slot="headline" class="sd-headline sd-headline--size-base">USA or Europe? It depends on the mix</h3>
         <img
           slot="media"
           class="w-full aspect-ratio"
@@ -108,7 +106,7 @@ export const TeaserMediaOverrides = {
         }
       </style>
       <sd-teaser-media variant="gradient-dark" class="media-overrides">
-        <h3 slot="headline" class="sd-headline sd-headline--inverted sd-headline--size-lg">Gender</h3>
+        <h3 slot="headline" class="sd-headline sd-headline--inverted">Gender</h3>
         <div slot="media" class="relative">
           <img
             class="w-full aspect-ratio"

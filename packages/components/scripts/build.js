@@ -143,10 +143,6 @@ async function runBuild() {
     });
   }
 
-  await nextTask('Building tailwind configuration', () => {
-    return execPromise(`node scripts/build-tailwind-configuration.js`, { stdio: 'inherit' });
-  });
-
   await nextTask('Generating Utility CSS', () => {
     const args = lite ? '--lite' : '';
     return execPromise(`node scripts/make-css.js ${args}`, { stdio: 'inherit' });

@@ -4,6 +4,8 @@
  * to reduce the possibility of collisions.
  */
 
+@solid variables;
+
 .sd-scroll-lock {
   padding-right: var(--sd-scroll-lock-size) !important;
   overflow: hidden !important;
@@ -20,12 +22,14 @@
     @apply bottom-0 -translate-x-1/2;
     inset-inline-start: 50%;
   }
+}
 
+.sd-toast-stack {
   sd-notification::part(wrapper) {
     @apply shadow;
   }
 
   sd-notification::part(content) {
-    @apply panel-color-border;
+    @apply border-white;
   }
 }

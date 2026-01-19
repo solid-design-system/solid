@@ -56,10 +56,7 @@ export const VariantAndInverted = {
       },
       args,
       options: {
-        templateBackgrounds: {
-          alternate: 'y',
-          colors: ['rgba(var(--sd-color-white))', 'rgba(var(--sd-color-primary))']
-        }
+        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
       }
     });
   }
@@ -83,10 +80,7 @@ export const Loading = {
       args,
       options: {
         title: 'disabled=false',
-        templateBackgrounds: {
-          alternate: 'y',
-          colors: ['rgba(var(--sd-color-white))', 'rgba(var(--sd-color-primary))']
-        }
+        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
       }
     })}
     ${generateTemplate({
@@ -102,10 +96,7 @@ export const Loading = {
       args,
       options: {
         title: 'disabled=true',
-        templateBackgrounds: {
-          alternate: 'y',
-          colors: ['rgba(var(--sd-color-white))', 'rgba(var(--sd-color-primary))']
-        }
+        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
       }
     })}`;
   }
@@ -123,7 +114,7 @@ export const Inverted = {
         ]
       },
       constants: { type: 'attribute', name: 'inverted', value: true },
-      options: { templateBackground: 'rgba(var(--sd-color-primary))' },
+      options: { templateBackground: 'rgb(var(--sd-color-primary, 0 53 142))' },
       args
     });
   }
@@ -144,10 +135,7 @@ export const Disabled = {
       constants: { type: 'attribute', name: 'disabled', value: true },
       args,
       options: {
-        templateBackgrounds: {
-          alternate: 'y',
-          colors: ['rgba(var(--sd-color-white))', 'rgba(var(--sd-color-primary))']
-        }
+        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
       }
     });
   }

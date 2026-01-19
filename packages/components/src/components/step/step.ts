@@ -31,9 +31,6 @@ import SolidElement from '../../internal/solid-element';
  * @csspart text-container - The container that wraps the step's label and description.
  * @csspart label - The step's label.
  * @csspart description - The step's description.
- *
- * @cssproperty --sd-step__circle-border-width - The border width of the step circle.
- * @cssproperty --sd-step__tail-border-width - The border width of the step tail.
  */
 @customElement('sd-step')
 export default class SdStep extends SolidElement {
@@ -148,7 +145,7 @@ export default class SdStep extends SolidElement {
     );
 
     const circleButtonClasses = cx(
-      'border sd-step__circle-border-width rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
+      'border rounded-full aspect-square circle flex items-center justify-center shrink-0 font-bold select-none',
       this.disabled
         ? 'focus-visible:outline-none cursor-not-allowed'
         : !this.notInteractive && !this.waiting
@@ -236,10 +233,12 @@ export default class SdStep extends SolidElement {
                           part="label"
                           id="label"
                           class=${cx(
-                            'font-bold whitespace-nowrap',
+                            'font-bold sd-paragraph whitespace-nowrap',
                             this.disabled && 'text-neutral-500',
                             this.waiting && 'text-neutral-700',
-                            !this.disabled && !this.current && !this.notInteractive && !this.waiting && 'text-black'
+                            !this.disabled && !this.current && !this.notInteractive && !this.waiting
+                              ? 'text-primary'
+                              : 'text-black'
                           )}
                         >
                           <slot name="label">${this.label}</slot>
@@ -309,10 +308,12 @@ export default class SdStep extends SolidElement {
                     part="label"
                     id="label"
                     class=${cx(
-                      'font-bold',
+                      '!font-bold sd-paragraph',
                       this.disabled && 'text-neutral-500',
                       this.waiting && 'text-neutral-700',
-                      !this.disabled && !this.current && !this.notInteractive && !this.waiting && 'text-black'
+                      !this.disabled && !this.current && !this.notInteractive && !this.waiting
+                        ? 'text-primary'
+                        : 'text-black'
                     )}
                   >
                     <slot name="label">${this.label}</slot>
@@ -342,25 +343,8 @@ export default class SdStep extends SolidElement {
         @apply flex-1;
       }
 
-      :host([orientation='horizontal']) [part='tail'] {
-        border-top-width: var(--sd-step__tail-border-width);
-      }
-
-      :host([orientation='vertical']) [part='tail'] {
-        border-left-width: var(--sd-step__tail-border-width);
-      }
-
       :host([no-tail]) {
         @apply flex-grow-0;
-      }
-
-      :host(:not([current])) slot[name='circle-content'] {
-        color: rgba(var(--sd-color-text-neutral-700));
-      }
-
-      slot[name='circle-content'] sd-icon,
-      slot[name='circle-content']::slotted(sd-icon) {
-        color: rgba(var(--sd-color-icon-fill-primary));
       }
 
       :host([horizontal-inline]):has([part='description']) {

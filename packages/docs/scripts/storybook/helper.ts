@@ -504,10 +504,10 @@ export const storybookTemplate = (customElementTag: string) => {
         }
         .story-template thead tr th {
           text-align: center;
-          border-bottom: 1px solid rgba(var(--sd-color-background-primary-100));
+          border-bottom: 1px solid #e0e0e0;
         }
         .story-template thead th.title {
-          background: rgba(var(--sd-color-background-primary-100));
+          background: #e0e0e0;
           text-align: left;
           font-size: 14px;
         }
@@ -523,7 +523,7 @@ export const storybookTemplate = (customElementTag: string) => {
         .story-template tbody tr th[rowspan] {
           text-align: center;
           padding-left: 0;
-          border-right: 1px solid rgba(var(--sd-color-background-primary-100));
+          border-right: 1px solid #e0e0e0;
           font-weight: bold;
         }
 

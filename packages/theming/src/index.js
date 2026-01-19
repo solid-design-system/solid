@@ -1,3 +1,3 @@
-import { calculateColorsAsCss, hexToRgba, rgbaToHex } from './color-calculation';
+import { calculateColorsAsCss } from './color-calculation';
 
-export { calculateColorsAsCss, hexToRgba, rgbaToHex };
+export { calculateColorsAsCss };

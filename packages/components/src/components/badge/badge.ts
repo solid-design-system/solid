@@ -14,17 +14,6 @@ import SolidElement from '../../internal/solid-element';
  *
  * @csspart base - The badge's base wrapper.
  * @csspart content - The badge's main content.
- *
- * @cssproperty --sd-badge--blue--inverted-color-background - The background color for the blue badge in its inverted state.
- * @cssproperty --sd-badge--blue--inverted-color-text - The text color for the blue badge in its inverted state.
- * @cssproperty --sd-badge--green-color--inverted-background - The background color for the green badge in its inverted state.
- * @cssproperty --sd-badge--green-color--inverted-text - The text color for the green badge in its inverted state.
- * @cssproperty --sd-badge--inverted-color-border - The border color used in inverted state.
- * @cssproperty --sd-badge--green-color-background - The background color for the green badge.
- * @cssproperty --sd-badge--red--inverted-background - The background color for the red badge in its inverted state.
- * @cssproperty --sd-badge--red--inverted-text - The text color for the red badge in its inverted state.
- * @cssproperty --sd-badge--red-color-background - The background color for the red badge in its standard state.
- *
  */
 @customElement('sd-badge')
 export default class SdBadge extends SolidElement {
@@ -48,13 +37,9 @@ export default class SdBadge extends SolidElement {
             /* variants */
             blue: !this.inverted
               ? 'text-white bg-primary-500 border-white'
-              : 'sd-badge--blue--inverted-color-text sd-badge--blue--inverted-color-background border-primary',
-            green: !this.inverted
-              ? 'text-white sd-badge--green-color-background border-white'
-              : 'sd-badge--green-color--inverted-text sd-badge--green-color--inverted-background border-primary',
-            red: !this.inverted
-              ? 'text-white sd-badge--red-color-background border-white'
-              : 'sd-badge--red--inverted-text sd-badge--red--inverted-background border-primary'
+              : 'text-primary bg-primary-100 border-primary',
+            green: !this.inverted ? 'text-white bg-success border-white' : 'text-white bg-success border-primary',
+            red: !this.inverted ? 'text-white bg-error border-white' : 'text-white bg-error border-primary'
           }[this.variant]
         )}
       >

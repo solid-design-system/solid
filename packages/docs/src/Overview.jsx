@@ -33,7 +33,7 @@ export const OverviewFormatter = ({ children, story }) => {
           overrides: {
             h1: {
               props: {
-                className: 'sd-headline mb-6'
+                className: 'sd-headline'
               }
             },
             DefaultStory: {

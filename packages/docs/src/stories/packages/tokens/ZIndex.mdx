@@ -1,0 +1,22 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import theme from 'tailwind-theme';
+import cx from 'classix';
+
+<Meta title="Packages/Tokens/Z-Index" />
+
+## Z Index
+
+<table>
+  <tbody>
+    {Object.entries(theme.zIndex).map((token, i) => {
+      return (
+        <tr>
+          <td>
+            <div class="font-bold">sd-z-index-{token[0]}</div>
+            <div>sd-z-index-{token[1]}</div>
+          </td>
+        </tr>
+      );
+    })}
+  </tbody>
+</table>

@@ -35,8 +35,6 @@ import type SdTabPanel from '../tab-panel/tab-panel';
  * @csspart scroll-button--end - The ending scroll button.
  * @csspart scroll-button__base - The scroll button's exported `base` part.
  *
- * @cssproperty --sd-navigable__current-indicator-height: The tab current indicator height.
- * @cssproperty --sd-navigable__current-indicator-border-radius: The tab current indicator border radius value.
  * */
 @customElement('sd-tab-group')
 export default class SdTabGroup extends SolidElement {
@@ -408,7 +406,7 @@ export default class SdTabGroup extends SolidElement {
                 ? html` <div
                     part="active-tab-indicator"
                     id="indicator"
-                    class="absolute h-1 bg-accent bottom-0 transition-[transform,width] duration-medium ease-in-out z-30  navigable__current-indicator-height navigable__current-indicator-border-radius"
+                    class="absolute h-1 bg-accent bottom-0 transition-[transform,width] duration-medium ease-in-out z-30"
                   ></div>`
                 : ''}
               <div part="separation" class="border-neutral-400 absolute w-full h-0.25 bottom-0 border-b z-10"></div>

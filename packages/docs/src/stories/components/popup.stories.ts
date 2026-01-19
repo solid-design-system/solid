@@ -20,11 +20,11 @@ export default {
   title: 'Utilities/sd-popup',
   component: 'sd-popup',
   args: overrideArgs([
-    { type: 'slot', name: 'anchor', value: '<span class="bg-primary-200" slot="anchor">Anchor</span>' },
+    { type: 'slot', name: 'anchor', value: '<span style="background: gray" slot="anchor">Anchor</span>' },
     {
       type: 'slot',
       name: 'default',
-      value: '<span class="bg-primary-300">Popup content</span>'
+      value: '<span style="background: red">Popup content</span>'
     },
     {
       type: 'attribute',

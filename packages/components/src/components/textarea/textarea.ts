@@ -36,9 +36,6 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @csspart base - The component's base wrapper.
  * @csspart border - The base part's absolutely positioned border. Allows for easy adjustment of border thickness without affecting component dimensions.
  * @csspart textarea - The internal `<textarea>` control.
- *
- * @cssproperty --sd-form-control--invalid-color-background - The background color for form controls in invalid state.
- * @cssproperty --sd-form-control-color-text - The text color for form controls.
  */
 @customElement('sd-textarea')
 export default class SdTextarea extends SolidElement implements SolidFormControl {
@@ -370,7 +367,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               <label
                 part="form-control-label"
                 id="label"
-                class=${cx(hasLabel ? 'inline-block form-control-color-text' : 'hidden', textSize)}
+                class=${cx(hasLabel ? 'inline-block' : 'hidden', textSize)}
                 for="input"
                 aria-hidden=${hasLabel ? 'false' : 'true'}
               >
@@ -389,13 +386,13 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               {
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
-                readonly: 'form-control-color-border',
+                readonly: 'border-neutral-800',
                 activeInvalid: 'border-error border-2',
                 activeValid: 'border-success border-2',
                 active: 'border-primary border-2',
                 invalid: 'border-error',
                 valid: 'border-success',
-                default: 'form-control-color-border'
+                default: 'border-neutral-800'
               }[textareaState]
             )}
           ></div>
@@ -410,17 +407,14 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               }[this.size],
               !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
-              textareaState === 'disabled' || textareaState === 'visuallyDisabled'
-                ? 'text-neutral-500'
-                : 'form-control-color-text',
-              ['invalid', 'activeInvalid'].includes(textareaState) && 'form-control--invalid-color-background'
+              textareaState === 'disabled' || textareaState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black'
             )}
           >
             <textarea
               part="textarea"
               id="input"
               class=${cx(
-                'ps-4 flex-grow focus:outline-none bg-transparent placeholder:text-neutral-700 resize-none group-has-[sd-icon]:pe-8',
+                'ps-4 flex-grow focus:outline-none bg-transparent placeholder-neutral-700 resize-none group-has-[sd-icon]:pe-8',
                 {
                   sm: 'py-1',
                   md: 'py-1',

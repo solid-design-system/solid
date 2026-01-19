@@ -159,13 +159,16 @@ export const VisuallyDisabled = {
 export const Inverted = {
   render: () => {
     return html`
-      <div class="flex gap-12 p-12 bg-primary">
+      <div class="flex gap-12">
         <sd-button variant="primary" inverted>Inverted</sd-button>
         <sd-button variant="secondary" inverted>Inverted</sd-button>
         <sd-button variant="tertiary" inverted>Inverted</sd-button>
         <sd-button variant="cta" inverted>Inverted</sd-button>
       </div>
     `;
+  },
+  globals: {
+    backgrounds: { value: 'primary' }
   }
 };
 

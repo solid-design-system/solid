@@ -25,8 +25,6 @@ import SolidElement from '../../internal/solid-element';
  * @csspart motion-wrapper - The container that wraps the motion animation.
  *
  * @cssproperty --map-marker-scaling - Scale the marker size.
- * @cssproperty --sd-map-marker-cluster--hovered-color-icon-fill - The icon fill color for map marker clusters in hovered state.
- * @cssproperty --sd-map-marker-cluster-color-icon-fill - The default icon fill color for map marker clusters.
  */
 @customElement('sd-map-marker')
 export default class SdMapMarker extends SolidElement {
@@ -109,14 +107,12 @@ export default class SdMapMarker extends SolidElement {
           class=${cx(
             'relative inline-flex',
             this.animated && (this.variant === 'main' || this.variant === 'place') && 'animate-bounce-once',
-            this.variant === 'cluster' &&
-              this.state === 'hover' &&
-              'scale-110 sd-map-marker-cluster--hovered-color-icon-fill',
+            this.variant === 'cluster' && this.state === 'hover' && 'scale-110 fill-primary-500',
             this.variant === 'cluster' &&
               !this.notInteractive &&
               'transition-transform duration-fast ease-in-out hover:scale-110',
             {
-              cluster: 'sd-map-marker-cluster-color-icon-fill',
+              cluster: 'fill-primary',
               main: 'fill-accent',
               place: 'fill-white'
             }[this.variant]
@@ -137,7 +133,7 @@ export default class SdMapMarker extends SolidElement {
               <div class=${cx(
                 'min-w-full min-h-full skew-y-[-11deg]',
                 {
-                  cluster: '',
+                  cluster: 'bg-primary-500',
                   main: this.state === 'active' ? 'bg-accent-700' : 'bg-accent-550 group-active:bg-accent-700',
                   place: this.state === 'active' ? 'bg-primary-200' : 'bg-primary-100 group-active:bg-primary-200'
                 }[this.variant]
@@ -211,10 +207,6 @@ export default class SdMapMarker extends SolidElement {
       :host([variant='place']) [part='content'] {
         @apply -mt-2;
         font-size: calc(var(--sd-font-size-3xl, 2rem) * var(--map-marker-scaling, 1));
-      }
-
-      :host([variant='cluster']) [part='motion-wrapper'] > div > div {
-        background-color: rgba(var(--sd-map-marker-cluster--hovered-color-icon-fill));
       }
 
       :host([variant='main']) [part='marker'],
