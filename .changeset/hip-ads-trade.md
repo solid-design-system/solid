@@ -1,5 +1,5 @@
 ---
-'@solid-design-system/docs': major
+'@solid-design-system/docs': minor
 ---
 
 adding template for breadcrumb
