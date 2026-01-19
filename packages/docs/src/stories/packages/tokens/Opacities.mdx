@@ -1,0 +1,41 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import theme from 'tailwind-theme';
+import cx from 'classix';
+
+<Meta title="Packages/Tokens/Opacities" />
+
+## Opacities
+
+<table>
+  <tbody>
+    {Object.entries(theme.opacity).map((token, i) => {
+      return (
+        <tr>
+          <td>
+            <div class="flex flex-col">
+              <div class="font-bold">sd-opacity-{token[0]}</div>
+              <div>sd-opacity-{token[1]}</div>
+            </div>
+          </td>
+          <td>
+            <div class={`relative flex flex-col`}>
+              {[...Array(12)].map((_, rowIndex) => (
+                <div class="flex w-full" key={rowIndex}>
+                  {[...Array(30)].map((_, cellIndex) => (
+                    <div
+                      class={`w-1 h-1 ${rowIndex % 2 === cellIndex % 2 ? 'bg-white' : 'bg-neutral-500'}`}
+                      key={cellIndex}
+                    />
+                  ))}
+                </div>
+              ))}
+
+              <div class={`bg-neutral-800 w-full h-full absolute inset-0 z-10 opacity-${token[0]}`}/>
+            </div>
+          </td>
+        </tr>
+      );
+    })}
+
+  </tbody>
+</table>

@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import theme from 'tailwind-theme';
+import cx from 'classix';
+
+<Meta title="Packages/Tokens/Spacings" />
+
+## Spacings
+
+> "By default, these values are inherited by the padding, margin, width, height, maxHeight, flex-basis, gap, inset, space, translate, scrollMargin, scrollPadding, and textIndent core plugins." [tailwindcss docs](https://tailwindcss.com/docs/theme#spacing)
+
+<table>
+  <tbody>
+    {Object.entries(theme.spacing).map((token, i) => {
+      return (
+        <tr>
+          <td>
+            <div class="flex flex-col">
+              <div class="font-bold">sd-spacing-{token[0]}</div>
+              <div>sd-spacing-{token[1]}</div>
+            </div>
+          </td>
+          <td class="w-[calc(theme('spacing.40')+3rem)]">
+            <div class={`bg-primary flex h-10 w-${token[0]}`}></div>
+          </td>
+        </tr>
+      );
+    })}
+  </tbody>
+</table>

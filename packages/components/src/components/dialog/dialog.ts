@@ -51,8 +51,6 @@ import SolidElement from '../../internal/solid-element';
  * @csspart footer - The dialog's footer.
  *
  * @cssproperty --width - The preferred width of the dialog. Note that the dialog will shrink to accommodate smaller screens.
- * @cssproperty --sd-panel-color-border - The border color of the dialog panel.
- * @cssproperty --sd-overlay-color-background - The background color of the dialog overlay.
  *
  * @animation dialog.show - The animation to use when showing the dialog.
  * @animation dialog.hide - The animation to use when hiding the dialog.
@@ -277,7 +275,7 @@ export default class SdDialog extends SolidElement {
       >
         <div
           part="overlay"
-          class="fixed inset-0 overlay-color-background opacity-90"
+          class="fixed inset-0 bg-primary-800 opacity-90"
           @click=${() => this.requestClose('overlay')}
           tabindex="-1"
         ></div>
@@ -285,7 +283,7 @@ export default class SdDialog extends SolidElement {
         <div
           part="panel"
           class=${cx(
-            'panel-color-border border flex flex-col z-20 bg-white py-4 sm:py-8 relative gap-6 focus-visible:focus-outline-inverted overflow-y-auto',
+            'flex flex-col z-20 bg-white py-4 sm:py-8 relative gap-6 focus-visible:focus-outline-inverted overflow-y-auto',
             this.open && 'flex opacity-100'
           )}
           role="dialog"

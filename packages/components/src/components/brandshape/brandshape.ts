@@ -22,9 +22,6 @@ type Breakpoints = 0 | 414 | 640;
  * @csspart shape-middle - Middle shape.
  * @csspart shape-bottom - Bottom shape.
  * @csspart stylized-container - Container for border and image variant.
- *
- * @cssproperty --sd-brandshape--neutral-100-color-background - The background color using the neutral‑100 variant.
- * @cssproperty --sd-brandshape--white-color-background - The background color using the white variant.
  */
 
 @customElement('sd-brandshape')
@@ -209,7 +206,20 @@ export default class SdBrandshape extends SolidElement {
     const isStylizedVariant = this.variant.startsWith('border-') || this.variant === 'image';
 
     return html`
-      <div class="${cx(isStylizedVariant && 'fill-transparent', 'relative')}" part="base">
+      <div
+        class="${cx(
+          {
+            'neutral-100': 'fill-neutral-100',
+            primary: 'fill-primary',
+            white: 'fill-white',
+            'border-white': 'fill-transparent',
+            'border-primary': 'fill-transparent',
+            image: 'fill-transparent'
+          }[this.variant],
+          'relative'
+        )}"
+        part="base"
+      >
         ${isStylizedVariant ? this.renderStylizedVariant() : ''} ${this.renderShapes()}
       </div>
     `;
@@ -291,35 +301,17 @@ export default class SdBrandshape extends SolidElement {
       /* Stylized border */
 
       :host([variant='border-primary']) {
-        --internal-border-color: rgba(var(--sd-color-border-primary, rgba(var(--sd-color-primary))));
+        --internal-border-color: rgb(var(--sd-color-primary, 0 53 142));
       }
 
       :host([variant='border-white']) {
-        --internal-border-color: rgba(var(--sd-color-border-white, rgba(var(--sd-color-white))));
+        --internal-border-color: var(--sd-color-white, white);
       }
 
       :host([variant^='border-']) [part='stylized-container']::before {
         @apply right-0 border-solid border-2;
         content: '';
         border-color: var(--internal-border-color, black);
-      }
-
-      /**
-       * Dev-note: In some components, css properties need to be assigned
-       * to specific variables so we keep consistency as in Figma.
-       * 
-       * For more details, see the 'Consistency with Figma' section in the **CONTRIBUTING.md**.
-       */
-      :host([variant='neutral-100']) [part='base'] {
-        fill: rgba(var(--sd-brandshape--neutral-100-color-background, rgba(var(--sd-color-neutral-100))));
-      }
-
-      :host([variant='white']) [part='base'] {
-        fill: rgba(var(--sd-color-background-white, rgba(var(--sd-color-white))));
-      }
-
-      :host([variant='primary']) [part='base'] {
-        fill: rgba(var(--sd-color-background-primary, rgba(var(--sd-color-primary))));
       }
     `
   ];

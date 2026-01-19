@@ -140,17 +140,15 @@ export const Ticks = {
 };
 
 /**
- * Use the `tooltip` attribute to define its behaviour:
- * - on-interaction (default)
- * - hidden
- * - always-visible
+ * Use the `no-tooltip` attribute to disable the tooltip when interacting with the knob.
+ * By default, the tooltip appears on click or drag, positioned above the knob for clear visibility.
  */
 export const Tooltip = {
   render: (args: any) => {
     return html` <div class="min-h-20">
       ${generateTemplate({
         args,
-        constants: [{ type: 'attribute', name: 'tooltip', value: 'hidden' }]
+        constants: [{ type: 'attribute', name: 'no-tooltip', value: true }]
       })}
     </div>`;
   }

@@ -32,11 +32,6 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @csspart control--unchecked - Matches the control part when the switch is off.
  * @csspart thumb - The circle that marks the switch's state.
  * @csspart label - The container that wraps the switch's label.
- *
- * @cssproperty --sd-switch--checked--hover-color-background - The background color for the switch in checked hover state.
- * @cssproperty --sd-switch--unchecked-color-border - The border color for the switch in unchecked state.
- * @cssproperty --sd-switch--unchecked__icon-color-background - The icon background color for the switch in unchecked state.
- * @cssproperty --sd-switch-color-text - The text color for the switch label.
  */
 @customElement('sd-switch')
 export default class SdSwitch extends SolidElement implements SolidFormControl {
@@ -210,16 +205,16 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
             peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2
             peer-focus-visible:outline-primary transition-colors ease-in-out duration-medium hover:duration-fast`,
               this.disabled && this.checked
-                ? 'bg-neutral-500'
+                ? 'border-neutral-500 bg-neutral-500'
                 : this.disabled
                   ? 'border-neutral-500'
                   : this.showInvalidStyle
                     ? this.checked
-                      ? 'border-error bg-error hover:bg-error-400 hover:border-error-400 group-hover:border-error-400 group-hover:bg-error-400'
+                      ? 'border-error bg-error hover:bg-error-400 hover:border-error-400 group-hover:bg-error-400'
                       : 'border-error bg-white hover:border-error-400 hover:bg-white group-hover:border-error-400 group-hover:bg-white'
                     : this.checked
-                      ? 'border-accent hover:sd-switch--checked--hover-color-background bg-accent hover:border-accent-550 group-hover:sd-switch--checked--hover-color-background'
-                      : 'sd-switch--unchecked-color-border bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
+                      ? 'border-accent hover:bg-accent-550 bg-accent hover:border-accent-550 group-hover:bg-accent-550'
+                      : 'border-neutral-800 bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
             )}
           >
             <span
@@ -228,16 +223,16 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
               class=${cx(
                 'w-2.5 h-2.5 rounded-full transition[transform,colors] ease-in-out duration-medium',
                 this.disabled && this.checked
-                  ? 'translate-x-2'
+                  ? 'bg-white translate-x-2'
                   : this.disabled
-                    ? '-translate-x-2'
+                    ? '-translate-x-2 bg-neutral-500'
                     : this.showInvalidStyle
                       ? this.checked
-                        ? 'translate-x-2'
+                        ? 'bg-white translate-x-2'
                         : 'bg-error -translate-x-2 hover:bg-error-400 hover:border-error-400 group-hover:border-error-400 group-hover:bg-error-400'
                       : this.checked
-                        ? 'translate-x-2'
-                        : '-translate-x-2 sd-switch--unchecked__icon-color-background'
+                        ? 'bg-white translate-x-2'
+                        : 'bg-neutral-800 -translate-x-2'
               )}
             ></span>
           </span>
@@ -246,7 +241,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
             id="label"
             class=${cx(
               'select-none inline-block ml-2',
-              this.disabled ? 'text-neutral-500' : this.showInvalidStyle ? 'text-error' : 'sd-switch-color-text'
+              this.disabled ? 'text-neutral-500' : this.showInvalidStyle ? 'text-error' : 'text-black'
             )}
           >
             <slot></slot>
@@ -274,24 +269,6 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
 
       :host([required]) #label::after {
         content: ' *';
-      }
-
-      /**
-       * Dev-note: In some components, css properties need to be assigned
-       * to specific variables so we keep consistency as in Figma.
-       * 
-       * For more details, see the 'Consistency with Figma' section in the **CONTRIBUTING.md**.
-       */
-      :host([disabled][checked]) #control {
-        border-color: rgba(var(--sd-color-background-neutral-500, rgba(var(--sd-color-neutral-500))));
-      }
-
-      :host([checked]) [part='thumb'] {
-        background-color: rgba(var(--sd-color-icon-fill-white, rgba(var(--sd-color-white))));
-      }
-
-      :host([disabled]:not([checked])) [part='thumb'] {
-        background-color: rgba(var(--sd-color-icon-fill-neutral-500, rgba(var(--sd-color-neutral-500))));
       }
     `
   ];

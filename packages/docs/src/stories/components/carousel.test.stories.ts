@@ -87,10 +87,7 @@ export const Inverted = {
       },
       args,
       options: {
-        templateBackgrounds: {
-          alternate: 'y',
-          colors: ['rgba(var(--sd-color-primary))', 'rgba(var(--sd-color-white))']
-        },
+        templateBackgrounds: { alternate: 'y', colors: ['rgb(var(--sd-color-primary, 0 53 142))', 'white'] },
         templateRenderer: ({ attributes, slots }) => {
           const attrs = Object.entries(attributes)
             .map(([attr, value]) => `${attr}='${value}'`)

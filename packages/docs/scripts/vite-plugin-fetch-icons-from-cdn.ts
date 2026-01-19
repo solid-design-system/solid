@@ -14,11 +14,7 @@ async function fetchIconsJson() {
     const [contentResponse, systemResponse] = await Promise.all([fetch(contentUrl), fetch(systemUrl)]);
 
     if (!contentResponse.ok || !systemResponse.ok) {
-      console.error('Failed to fetch icon JSON data from CDN – maybe the CDN is unreachable?');
-      return {
-        content: [],
-        system: []
-      };
+      throw new Error('Failed to fetch data');
     }
 
     const contentData = (await contentResponse.json()) as { technicalId: string }[];
@@ -31,10 +27,7 @@ async function fetchIconsJson() {
     return icons;
   } catch (error) {
     console.error('Error fetching icon JSON data:', error);
-    return {
-      content: [],
-      system: []
-    };
+    throw new Error('Failed to fetch icons data');
   }
 }
 

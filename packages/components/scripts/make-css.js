@@ -4,19 +4,43 @@
  * CSS to the `dist` directory and a minified version to the `cdn` directory.
  */
 
+import atImportPlugin from 'postcss-import';
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
 import fs from 'fs/promises';
-import { processTailwind } from './esbuild-plugin-lit-tailwind-and-minify.js';
+import postcss from 'postcss';
+import tailwindcss from 'tailwindcss';
+import tailwindcssNesting from 'tailwindcss/nesting/index.js';
+import theme from './postcss-token-variables.js';
 
 (async () => {
   const lite = process.argv.includes('--lite');
-  const path = './src/solid-components.css';
-  const css = await fs.readFile(path, 'utf8');
+  const css = await fs.readFile('./src/solid-components.css', 'utf8');
 
-  const result = await processTailwind(css);
+  const result = await postcss([
+    atImportPlugin({ allowDuplicates: false }),
+    tailwindcssNesting,
+    tailwindcss,
+    autoprefixer,
+    theme
+  ])
+    .process(css, { from: undefined })
+    .then(result => result.css);
+
   await fs.writeFile('./dist/solid-components.css', result);
 
   if (lite) return;
 
-  const minified = await processTailwind(css, { minify: true });
-  await fs.writeFile('./cdn/solid-components.css', minified);
+  const minifiedResult = await postcss([
+    atImportPlugin({ allowDuplicates: false }),
+    tailwindcssNesting,
+    tailwindcss,
+    autoprefixer,
+    theme,
+    cssnano
+  ])
+    .process(css, { from: undefined })
+    .then(result => result.css);
+
+  await fs.writeFile('./cdn/solid-components.css', minifiedResult);
 })();

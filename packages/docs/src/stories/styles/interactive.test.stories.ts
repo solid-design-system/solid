@@ -141,10 +141,7 @@ export const Inverted = {
       },
       options: {
         templateContent: '<button class="%CLASSES%" title="Action name">%SLOT%</button>',
-        templateBackgrounds: {
-          alternate: 'y',
-          colors: ['rgba(var(--sd-color-white))', 'rgba(var(--sd-color-primary))']
-        }
+        templateBackgrounds: { alternate: 'y', colors: ['white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
       },
       constants: { type: 'attribute', name: 'sd-interactive--inverted', value: true },
       args

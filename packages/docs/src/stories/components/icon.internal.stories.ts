@@ -41,14 +41,7 @@ export const Internal = {
       },
       constants: [{ type: 'attribute', name: 'library', value: '_internal' }],
       options: {
-        templateBackgrounds: {
-          alternate: 'x',
-          colors: [
-            'rgba(var(--sd-color-background-white))',
-            'rgba(var(--sd-color-background-white))',
-            'rgba(var(--sd-color-background-primary))'
-          ]
-        }
+        templateBackgrounds: { alternate: 'x', colors: ['white', 'white', 'rgb(var(--sd-color-primary, 0 53 142))'] }
       },
       args
     })

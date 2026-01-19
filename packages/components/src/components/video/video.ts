@@ -24,9 +24,6 @@ import SolidElement from '../../internal/solid-element';
  * @csspart play-button - The `<button>` element wrapper around the play-icon slot (full screen to field all click events).
  * @csspart play-button-bg - The `<div>` element wrapper around the play-button that defines the circular background.
  * @csspart poster-wrapper - The `<div>` element wrapper around the poster slot.
- *
- * @cssproperty --sd-video--play-button-color-background - The background color for the video play button.
- * @cssproperty --sd-video--play-button-color-icon-fill - The icon fill color for the video play button.
  */
 
 @customElement('sd-video')
@@ -64,7 +61,7 @@ export default class SdVideo extends SolidElement {
     if (!(this.poster instanceof HTMLImageElement)) return;
 
     this.poster.style.opacity = '0';
-    await new Promise(resolve => setTimeout(resolve, this.token('--sd-duration-medium', 300)));
+    await new Promise(resolve => setTimeout(resolve, this.token('sd-duration-medium', 300)));
     this.poster.style.display = 'none';
   }
 
@@ -132,7 +129,7 @@ export default class SdVideo extends SolidElement {
           @keydown=${this.handleKeydown}
           class=${cx(
             this.playing && 'pointer-events-none',
-            'group w-full h-full absolute top-0 left-0 z-30 sd-interactive outline-hidden focus-visible:focus-outline'
+            'group w-full h-full absolute top-0 left-0 z-30 text-primary hover:text-primary-500 sd-interactive sd-interactive--reset focus-visible:focus-outline'
           )}
         >
           <div
@@ -140,7 +137,7 @@ export default class SdVideo extends SolidElement {
             class=${cx(
               this.playing ? 'opacity-0' : 'opacity-100',
               this.isBelowBreakpoint ? 'w-[48px] h-[48px]' : 'w-[96px] h-[96px]',
-              'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-white/75 rounded-full play-pause-transition group-focus-visible:outline-2 group-focus-visible:outline-offset-2'
+              'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-white bg-opacity-75 rounded-full play-pause-transition outline-2 outline-offset-2 group-focus-visible:outline'
             )}
           >
             <slot name="play-icon" part="play-icon" class=${cx(this.isBelowBreakpoint ? 'text-[2rem]' : 'text-[4rem]')}>
@@ -167,7 +164,7 @@ export default class SdVideo extends SolidElement {
 
       ::slotted([slot='poster']),
       .play-pause-transition {
-        @apply transition-[opacity,scale] ease-in-out duration-medium scale-100;
+        @apply transition-[opacity,transform] ease-in-out duration-medium scale-100;
       }
 
       #default-play-icon,
@@ -177,11 +174,6 @@ export default class SdVideo extends SolidElement {
 
       :has([part='play-button']:hover) ::slotted([slot='poster']) {
         @apply !scale-110;
-      }
-
-      [part='play-button-bg'] {
-        color: rgba(var(--sd-video--play-button-color-icon-fill));
-        background-color: rgba(var(--sd-video--play-button-color-background));
       }
     `
   ];

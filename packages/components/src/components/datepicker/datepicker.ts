@@ -54,7 +54,6 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @csspart valid-icon - The icon shown when the input is valid.
  * @csspart form-control-help-text - The help text, displayed below the input.
  *
- * @cssproperty --sd-form-control-color-text - The text color for form controls.
  */
 @customElement('sd-datepicker')
 export default class SdDatepicker extends SolidElement implements SolidFormControl {
@@ -1800,7 +1799,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               <label
                 part="form-control-label"
                 id="label"
-                class=${cx(hasLabel ? 'inline-block form-control-color-text' : 'hidden', textSize)}
+                class=${cx(hasLabel ? 'inline-block' : 'hidden', textSize)}
                 for="input"
                 aria-hidden=${hasLabel ? 'false' : 'true'}
               >
@@ -1856,7 +1855,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 aria-invalid=${this.showInvalidStyle ? 'true' : 'false'}
                 aria-label=${this.range ? 'Select date range' : 'Select a date'}
                 class=${cx(
-                  'min-w-0 flex-grow focus:outline-none bg-transparent hover:cursor-pointer form-control-color-text',
+                  'min-w-0 flex-grow focus:outline-none bg-transparent hover:cursor-pointer',
                   this.visuallyDisabled || this.disabled
                     ? 'placeholder:text-neutral-500 cursor-not-allowed'
                     : 'placeholder:text-neutral-700',

@@ -1,12 +1,17 @@
-import { processTailwind } from '../components/scripts/esbuild-plugin-lit-tailwind-and-minify.js';
 import { replaceCodePlugin as ViteReplaceCodePlugin } from 'vite-plugin-replace';
+import atImportPlugin from 'postcss-import';
+import autoprefixer from 'autoprefixer';
 import componentsPackageJson from '../components/package.json';
 import customElementConfig from '../components/custom-elements-manifest.config.js';
 import placeholdersPackageJson from '../placeholders/package.json';
+import postcssTokenVariables from '../components/scripts/postcss-token-variables.js';
 import stylesPackageJson from '../styles/package.json';
+import tailwindcss from 'tailwindcss';
+import tailwindcssNesting from 'tailwindcss/nesting/index.js';
 import tokensPackageJson from '../tokens/package.json';
 import VitePluginCreateEmptyCemIfNotExisting from './scripts/vite-plugin-create-empty-cem-if-not-existing';
 import VitePluginCustomElementsManifest from 'vite-plugin-cem';
+import vitePluginExtractTailwindTheme from './scripts/vite-plugin-extract-tailwind-theme.js';
 import VitePluginFetchIconsFromCdn from './scripts/vite-plugin-fetch-icons-from-cdn';
 import VitePluginGetPlaywrightVersion from './scripts/vite-plugin-get-playwright-version';
 import VitePluginGetTailwindTheme from './scripts/vite-plugin-get-tailwind-theme';
@@ -32,6 +37,7 @@ export default () => {
       VitePluginGetPlaywrightVersion(),
       VitePluginGetTailwindTheme(),
       VitePluginCreateEmptyCemIfNotExisting(),
+      vitePluginExtractTailwindTheme(),
       VitePluginCustomElementsManifest({
         ...customElementConfig,
         files: ['../components/src/**/!(*.stories|*.spec|*.test|*.style).ts'],
@@ -40,16 +46,6 @@ export default () => {
           ['solid-custom-tags', 'remove-html-members'].includes(plugin.name)
         )
       }),
-      {
-        name: 'docs-css-processor',
-        async transform(code, id) {
-          if (/\.css$/i.test(id)) {
-            code = await processTailwind(code, { storybook: true });
-          }
-
-          return { code };
-        }
-      },
       ViteReplaceCodePlugin({
         // replace %COMPONENTS-VERSION% with version from ../components/package.json
         replacements: [
@@ -81,7 +77,15 @@ export default () => {
       })
     ],
     css: {
-      postcss: {}
+      postcss: {
+        plugins: [
+          atImportPlugin({ allowDuplicates: false }),
+          tailwindcssNesting,
+          tailwindcss,
+          autoprefixer,
+          postcssTokenVariables
+        ]
+      }
     }
   };
 };

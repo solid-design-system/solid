@@ -40,7 +40,7 @@ export const Variants = {
       options: {
         templateBackgrounds: {
           alternate: 'x',
-          colors: ['', 'rgba(var(--sd-color-primary))', 'rgba(var(--sd-color-neutral-100))']
+          colors: ['', 'rgb(var(--sd-color-primary, 0 53 142))', '#F6F6F6']
         }
       },
       args

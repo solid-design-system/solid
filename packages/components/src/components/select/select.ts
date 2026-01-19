@@ -66,8 +66,6 @@ import type SdPopup from '../popup/popup';
  * @csspart expand-icon - The container that wraps the expand icon.
  *
  * @cssproperty --tag-max-width - Set the maximum width of the tags and to show an ellipsis. Defaults to "15ch"
- * @cssproperty --sd-form-control--invalid-color-background - The background color for form controls in invalid state.
- * @cssproperty --sd-form-control-color-text - The text color for form controls.
  */
 @customElement('sd-select')
 export default class SdSelect extends SolidElement implements SolidFormControl {
@@ -931,7 +929,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               <label
                 id="label"
                 part="form-control-label"
-                class=${hasLabel && 'inline-block form-control-color-text'}
+                class=${hasLabel && 'inline-block'}
                 aria-hidden=${hasLabel ? 'false' : 'true'}
                 @click=${this.handleLabelClick}
               >
@@ -944,10 +942,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
         <div
           part="form-control-input"
-          class=${cx(
-            'relative w-full bg-white',
-            selectState === 'disabled' ? 'text-neutral-500' : 'form-control-color-text'
-          )}
+          class=${cx('relative w-full bg-white', selectState === 'disabled' ? 'text-neutral-500' : 'text-black')}
         >
           <div
             part="border"
@@ -956,13 +951,13 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               {
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
-                readonly: 'form-control-color-border',
+                readonly: 'border-neutral-800',
                 activeInvalid: 'border-error border-2',
                 activeValid: 'border-success border-2',
                 active: 'border-primary border-2',
                 invalid: 'border-error',
                 valid: 'border-success',
-                default: 'form-control-color-border'
+                default: 'border-neutral-800'
               }[selectState],
               this.open &&
                 (this.currentPlacement === 'bottom'
@@ -989,8 +984,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             <div
               class=${cx(
                 'relative w-full h-full grid rounded-default transition-colors hover:duration-fast ease-in-out',
-                this.visuallyDisabled || this.disabled ? 'hover:bg-transparent' : 'hover:bg-neutral-200',
-                ['invalid', 'activeInvalid'].includes(selectState) && 'form-control--invalid-color-background'
+                this.visuallyDisabled || this.disabled ? 'hover:bg-transparent' : 'hover:bg-neutral-200'
               )}
               slot="anchor"
             >
@@ -1009,7 +1003,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   form=${this.form}
                   part="display-input"
                   class=${cx(
-                    'top-0 left-0 appearance-none outline-none flex-grow bg-transparent flex-1 placeholder:text-neutral-700',
+                    'top-0 left-0 appearance-none outline-none flex-grow bg-transparent flex-1 placeholder-neutral-700',
                     cursorStyles,
                     this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : ''
                   )}

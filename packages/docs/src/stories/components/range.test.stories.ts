@@ -66,15 +66,6 @@ export const HelpText = {
   }
 };
 
-export const Tooltip = {
-  name: 'Tooltip',
-  render: (args: any) => {
-    return html`<div class="pt-10">
-      ${generateTemplate({ args, constants: [{ type: 'attribute', name: 'tooltip', value: 'always-visible' }] })}
-    </div>`;
-  }
-};
-
 export const Ticks = {
   render: (args: any) => {
     return html` <div class="flex flex-col gap-12">

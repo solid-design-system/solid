@@ -62,8 +62,8 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "wc-storybook-helpers": "patches/wc-storybook-helpers.patch",
-      "tailwindcss": "patches/tailwindcss.patch"
+      "tailwindcss@3.4.17": "patches/tailwindcss@3.4.1.patch",
+      "wc-storybook-helpers": "patches/wc-storybook-helpers.patch"
     }
   }
 }

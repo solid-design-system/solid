@@ -136,13 +136,13 @@ export default class SdOption extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'px-4 flex items-center w-full transition-colors duration-fast ease-in-out text-left text-base relative',
+          'px-4 flex items-center w-full transition-colors duration-fast ease-in-out text-left text-base relative text-black',
           {
             sm: 'text-sm py-1',
             md: 'text-base py-2',
             lg: 'text-base py-3'
           }[this.size],
-          this.disabled ? 'text-neutral-500 cursor-not-allowed' : 'text-black cursor-pointer',
+          this.disabled ? 'text-neutral-700 cursor-not-allowed' : 'cursor-pointer',
           this.hasHover && !this.disabled ? 'bg-neutral-200' : '',
           this.isKeyboardFocus ? 'focus-outline focus-outline-offset' : '',
           this.current && 'bg-neutral-200'
@@ -168,7 +168,7 @@ export default class SdOption extends SolidElement {
                   ? 'border-neutral-500'
                   : this.selected
                     ? 'bg-accent border-accent'
-                    : 'bg-white form-control-color-border'
+                    : 'bg-white border-neutral-800'
               )}
             >
               ${this.selected

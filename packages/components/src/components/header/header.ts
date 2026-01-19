@@ -19,7 +19,6 @@ import type { PropertyValues } from 'lit';
  * @cssproperty --sd-header-inner-width - width of the header content
  * @cssproperty --sd-header-inner-max-width - max-width of the header content
  * @cssproperty --sd-header-padding - padding-left and padding-right of the header content
- * @cssproperty --sd-header-color-background - The background color of the header.
  */
 @customElement('sd-header')
 export default class SdHeader extends SolidElement {
@@ -79,7 +78,7 @@ export default class SdHeader extends SolidElement {
 
   render() {
     return html`
-      <header class="w-full sd-header-color-background relative" role="banner">
+      <header class="w-full bg-white relative" role="banner">
         <div part="main" class="relative mx-auto my-0 box-border">
           <slot></slot>
         </div>

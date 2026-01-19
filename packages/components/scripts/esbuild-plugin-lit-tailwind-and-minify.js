@@ -1,101 +1,18 @@
-import { compile, optimize } from '@tailwindcss/node';
 import { minifyHTMLLiterals } from 'minify-html-literals';
-import { readFile } from 'node:fs/promises';
-import { Scanner } from '@tailwindcss/oxide';
-import autoprefixer from 'autoprefixer';
-import cssnested from 'postcss-nested';
-import postcss from 'postcss';
-import path from 'node:path';
-import tailwindcss from '@tailwindcss/postcss';
-import { fileURLToPath } from 'node:url';
 import atImportPlugin from 'postcss-import';
-
-export function minimizeCss(source) {
-  return optimize(source, { minify: true }).code;
-}
-
-export async function processTailwind(
-  source,
-  options = { standalone: false, minify: false, storybook: false, from: undefined, resolveImports: false }
-) {
-  const base = path.resolve(fileURLToPath(import.meta.url), '../../');
-
-  const prepend = [
-    '@layer theme, base, components, utilities;',
-    `${options.standalone || options.storybook ? '@import' : '@reference'} 'tailwindcss/theme';`,
-    `${options.standalone || options.storybook ? '@import' : '@reference'} 'tailwindcss/utilities';`,
-    `${options.standalone ? '@import' : '@reference'} 'tailwindcss/preflight';`,
-    `${options.standalone ? '@import' : '@reference'} '${path.resolve(base, '../tokens/themes/tailwind.css')}';`,
-    `${options.standalone ? '@import' : '@reference'} '${path.resolve(base, '../tokens/themes/components.css')}';`,
-    `@source '${path.resolve(base, '../components/src')}';`
-  ];
-
-  if (options.storybook) {
-    prepend.push(`@source '${path.resolve(base, '../docs/src')}';`);
-
-    /* Safelist */
-    prepend.push(`@source inline('w-{1.5}');`);
-  }
-
-  let css = `${source}`;
-
-  try {
-    /**
-     * (Optional) Step 1: Resolve all imports on the css before tailwindcss
-     */
-    if (options.resolveImports) {
-      css = await postcss([atImportPlugin])
-        .process(source, { from: options.from ? options.from : base, onDependency: () => {} })
-        .then(r => r.css);
-    }
-
-    /**
-     * Step 2: Compile the css content with tailwindcss
-     */
-    css = `${prepend.join('\n')} ${css}`;
-
-    const compiler = await compile(css, {
-      base: options.from ? options.from : base,
-      onDependency: () => {}
-    });
-
-    let candidates = [];
-    if (compiler.features > 0) {
-      let sources = [...compiler.sources];
-      if (compiler.root === null) {
-        sources.push({ base, pattern: '**/*', negated: false });
-      }
-      let scanner = new Scanner({
-        sources
-      });
-      candidates = scanner.scan();
-    }
-
-    css = compiler.build(candidates);
-
-    /**
-     * Step 3: Use PostCSS to resolve nested CSS, autoprefix and minify
-     */
-    const plugins = [cssnested, tailwindcss, autoprefixer];
-    css = await postcss(plugins)
-      .process(css, { from: undefined })
-      .then(r => r.css);
-
-    if (options.minify) {
-      return minimizeCss(css);
-    }
-
-    return css;
-  } catch (error) {
-    console.error(`PostCSS error: ${error}`);
-    return 'postcss error: ' + error;
-  }
-}
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
+import fs from 'fs/promises';
+import postcss from 'postcss';
+import tailwindcss from 'tailwindcss';
+import tailwindcssNesting from 'tailwindcss/nesting/index.js';
 
 /**
  * Escapes tailwind special characters in a string and wraps it in a CSS template literal.
  *
  * @param source - The source string where the replacement occurs.
+ * @param match - The substring to replace in the source string.
+ * @param content - The string to be escaped and wrapped in a CSS template literal.
  * @returns The updated source string with the replacement applied.
  */
 export async function processCssTags(source) {
@@ -105,15 +22,26 @@ export async function processCssTags(source) {
   while ((match = cssTagRegex.exec(source)) !== null) {
     const [fullMatch, cssContent] = match;
 
-    const result = await processTailwind(cssContent, {
-      standalone: source.includes('default class SolidElement')
-    });
-    source = source.replace(
-      fullMatch,
-      `css\`${result
-        .replaceAll('\\', '\\\\') // Escape backslashes
-        .replaceAll('`', '\\`')}\``
-    );
+    try {
+      const result = await postcss([
+        atImportPlugin({ allowDuplicates: false }),
+        tailwindcssNesting,
+        tailwindcss,
+        autoprefixer,
+        cssnano
+      ])
+        .process(cssContent, { from: undefined })
+        .then(result => result.css);
+
+      source = source.replace(
+        fullMatch,
+        `css\`${result
+          .replaceAll('\\', '\\\\') // Escape backslashes
+          .replaceAll('`', '\\`')}\``
+      );
+    } catch (error) {
+      console.error(`PostCSS error: ${error}`);
+    }
   }
 
   return source;
@@ -128,17 +56,19 @@ export function litTailwindAndMinifyPlugin(options = {}) {
 
   return {
     name: 'lit-tailwind-and-minify',
-    async setup(build) {
-      build.onLoad({ filter: includePattern }, async ({ path }) => {
-        if (excludePattern.test(path)) {
+    setup(build) {
+      build.onLoad({ filter: includePattern }, async args => {
+        if (excludePattern.test(args.path)) {
           return;
         }
 
-        let source = await readFile(path, 'utf8');
+        // Read the file content
+        let source = await fs.readFile(args.path, 'utf8');
 
         /**
          * Step 1: Process CSS in Lit `css` tagged template literals
          */
+
         source = await processCssTags(source);
 
         /**
@@ -193,13 +123,13 @@ export function litTailwindAndMinifyPlugin(options = {}) {
         const preparedCode = replaceDynamicTags(source);
 
         try {
-          const minified = minifyHTMLLiterals(preparedCode, { fileName: path });
+          const minified = minifyHTMLLiterals(preparedCode, { fileName: args.path });
 
           if (minified) {
             source = restoreDynamicTags(minified.code, true);
           }
         } catch (error) {
-          console.error(`Error minifying HTML literals in ${path}: ${error}`);
+          console.error(`Error minifying HTML literals in ${args.path}: ${error}`);
         }
 
         // Return the fully transformed code

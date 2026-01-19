@@ -26,9 +26,6 @@ import type { PropertyValues } from 'lit';
  *
  * @cssproperty --distribution-media - The distribution ratio of the media.
  * @cssproperty --distribution-content - The distribution ratio of the content.
- * @cssproperty --sd-teaser--neutral-100-color-background - The background color for neutral‑100 teasers.
- * @cssproperty --sd-teaser--neutral-400-color-border - The border color for neutral‑400 teasers.
- * @cssproperty --sd-teaser--primary-100-color-background - The background color for primary‑100 teasers.
  */
 
 @customElement('sd-teaser')
@@ -105,10 +102,10 @@ export default class SdTeaser extends SolidElement {
           'flex',
           {
             white: 'bg-white',
-            'white border-neutral-400': 'bg-white border sd-teaser--neutral-400-color-border',
-            'neutral-100': 'sd-teaser--neutral-100-color-background',
+            'white border-neutral-400': 'bg-white border border-neutral-400',
+            'neutral-100': 'bg-neutral-100',
             primary: 'bg-primary text-white',
-            'primary-100': 'sd-teaser--primary-100-color-background'
+            'primary-100': 'bg-primary-100'
           }[this.variant],
           this._orientation === 'vertical' && 'flex-col',
           this._orientation === 'horizontal' && 'flex-row gap-8',

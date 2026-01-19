@@ -1,29 +1,14 @@
+import '../../styles/src/solid-styles.css';
 import './preview.css';
-import '../../tokens/themes/vb/vb.css';
-import '../../tokens/themes/ui-dark/ui-dark.css';
-import '../../tokens/themes/ui-light/ui-light.css';
-import { withThemeByClassName } from './addons/with-theme.js';
-import { storybookUtilities } from '../scripts/storybook/helper.js';
-import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer.js';
-import { themes, allModes, DEFAULT_THEME } from './modes.js';
-
-const theme = withThemeByClassName({
-  defaultTheme: DEFAULT_THEME,
-  themes: themes.reduce((acc, { id, name }) => {
-    acc[name] = id;
-    return acc;
-  }, {})
-});
+import 'normalize.css';
+import { storybookUtilities } from '../scripts/storybook/helper';
+import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer';
 
 export const preview = {
-  decorators: [theme],
+  decorators: [],
   parameters: {
     chromatic: {
-      disableSnapshot: true,
-      modes: themes.reduce((acc, { id }) => {
-        acc[id] = allModes[id];
-        return acc;
-      }, {})
+      disableSnapshot: true
     },
     docs: {
       story: { inline: true },
