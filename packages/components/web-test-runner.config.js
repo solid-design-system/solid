@@ -1,6 +1,14 @@
 import { esbuildPlugin } from '@web/dev-server-esbuild';
+import { fileURLToPath } from 'url';
 import { globbySync } from 'globby';
 import { playwrightLauncher } from '@web/test-runner-playwright';
+import { readFileSync } from 'fs';
+import path from 'path';
+
+const styles = readFileSync(
+  path.join(fileURLToPath(import.meta.url), '../../tokens/themes/ui-light/ui-light.css'),
+  'utf-8'
+);
 
 export default {
   rootDir: '.',
@@ -31,7 +39,11 @@ export default {
   ],
   testRunnerHtml: testFramework => `
     <html lang="en-US">
-      <head></head>
+      <head>
+      <style>
+        ${styles}
+      </style>
+      </head>
       <body>
         <script>
           window.process = {env: { NODE_ENV: "production" }}
@@ -42,11 +54,11 @@ export default {
   `,
   // Create a named group for every test file to enable running single tests. If a test file is `split-panel.test.ts`
   // then you can run `npm run test -- --group split-panel` to run only that component's tests.
-  groups: globbySync('src/**/*.test.ts').map(path => {
-    const groupName = path.match(/^.*\/(?<fileName>.*)\.test\.ts/).groups.fileName;
+  groups: globbySync('src/**/*.test.ts').map(files => {
+    const groupName = files.match(/^.*\/(?<fileName>.*)\.test\.ts/).groups.fileName;
     return {
       name: groupName,
-      files: path
+      files
     };
   })
 };
