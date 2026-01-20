@@ -1126,7 +1126,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                         class=${cx(
                           'select__clear flex justify-center',
                           iconMarginLeft,
-                          this.value.length > 0 ? 'visible' : 'invisible'
+                          this.value.length > 0 ? 'visible' : 'hidden'
                         )}
                         type="button"
                         aria-label=${this.localize.term('clearEntry')}
