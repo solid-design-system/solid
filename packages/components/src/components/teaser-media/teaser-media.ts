@@ -25,6 +25,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart headline - The container that wraps the headline.
  * @csspart expandable - The container that wraps the expandable.
  * @csspart main - The container that wraps the main content.
+ * @csspart toggle - The button that toggles the expandable content.
  *
  * @cssproperty --sd-teaser-media--neutral-100--hover-color-background - The background color for neutral‑100 teaser media in hover state.
  * @cssproperty --sd-teaser-media--neutral-100-color-background - The default background color for neutral‑100 teaser media.
@@ -43,6 +44,9 @@ export default class SdTeaserMedia extends SolidElement {
     | 'gradient-light'
     | 'gradient-dark' = 'white';
 
+  /** Controls whether the expandable content is visible */
+  @property({ type: Boolean, reflect: true }) open = false;
+
   @query('[part="base"]') teaserMedia: HTMLElement;
 
   private readonly hasSlotController = new HasSlotController(
@@ -53,6 +57,10 @@ export default class SdTeaserMedia extends SolidElement {
     'headline',
     'expandable'
   );
+
+  private onToggleClick() {
+    this.open = !this.open;
+  }
 
   render() {
     const slots = {
@@ -73,15 +81,16 @@ export default class SdTeaserMedia extends SolidElement {
               this.variant === 'gradient-dark' && 'bg-gradient-to-t from-primary-800/[.8] to-60%'
             )}
           ></div>
+
           <div class=${cx('relative', ['primary', 'gradient-dark'].includes(this.variant) && 'text-white')}>
             <div
               class=${cx(
-                'absolute inset-0',
+                'absolute inset-0 pointer-events-none',
                 {
                   white: 'bg-white/[.8] group-hover:bg-white/90',
                   'neutral-100':
                     'sd-teaser-media--neutral-100-color-background group-hover:sd-teaser-media--neutral-100--hover-color-background',
-                  primary: 'bg-primary/[.8] text-white group-hover:bg-primary/90',
+                  primary: 'bg-primary/[.8] group-hover:bg-primary/90',
                   'primary-100':
                     'sd-teaser-media--primary-100-color-background group-hover:sd-teaser-media--primary-100--hover-color-background',
                   'gradient-light': 'bg-gradient-to-t from-white/90 to-white/[.8]',
@@ -89,48 +98,53 @@ export default class SdTeaserMedia extends SolidElement {
                 }[this.variant]
               )}
             ></div>
-            <div class="relative flex-col text-left p-4" part="content">
+            <div class="relative flex flex-col text-left p-4" part="content">
               <div class="flex flex-col">
-                <div part="headline" class="text-lg font-bold m-0 order-2 gap-1">
-                  <slot name="headline">
-                    Always insert one semantically correct heading element here (e. g. &lt;h2&gt;)
-                  </slot>
+                <div part="headline" class="text-lg font-bold m-0 order-2">
+                  <slot name="headline"> Always insert one semantically correct heading element here </slot>
                 </div>
-                <div part="meta" class=${cx('gap-2 mb-4 order-1', !slots['teaser-has-meta'] && 'hidden')}>
+                <div part="meta" class=${cx('gap-2 mb-2 order-1', !slots['teaser-has-meta'] && 'hidden')}>
                   <slot name="meta"></slot>
                 </div>
               </div>
 
+              <div part="main" class=${cx(!slots['teaser-has-default'] && 'hidden')}>
+                <slot></slot>
+              </div>
+
               <div
-                class=${cx(
-                  'hidden',
-                  slots['teaser-has-expandable'] &&
-                    'h-[0px] invisible opacity-0 md:[transition:_height_var(--sd-duration-fast)_linear,opacity_var(--sd-duration-fast)_linear_var(--sd-duration-fast)] md:block md:group-hover:h-auto **md:group-hover:my-2** md:group-hover:opacity-[100%] md:group-hover:visible'
-                )}
                 part="expandable"
-                aria-hidden="true"
+                class=${cx(
+                  'mt-3 transition-opacity duration-300',
+                  !this.open && 'hidden',
+                  this.open ? 'opacity-100' : 'opacity-0'
+                )}
+                aria-hidden=${!this.open}
               >
                 <slot name="expandable"></slot>
               </div>
 
               ${slots['teaser-has-expandable']
                 ? html`
-                    <sd-icon
-                      class="inline-block group-hover:hidden transition-transform w-6 h-6"
-                      library="_internal"
-                      name="chevron-down"
-                    ></sd-icon>
-                    <sd-icon
-                      class="hidden group-hover:inline-block transition-transform w-6 h-6"
-                      library="_internal"
-                      name="chevron-up"
-                    ></sd-icon>
+                    <button
+                      part="toggle"
+                      class="sd-interactive sd-interactive--reset inline-flex items-center pointer-events-auto self-center mt-2"
+                      @click=${this.onToggleClick}
+                      aria-expanded=${this.open}
+                      aria-label=${this.open ? 'Collapse content' : 'Expand content'}
+                    >
+                      <sd-icon
+                        class=${cx(
+                          'w-6 h-6 transition-transform',
+                          this.open && 'rotate-180',
+                          ['primary', 'gradient-dark'].includes(this.variant) ? 'text-white' : 'text-primary'
+                        )}
+                        library="_internal"
+                        name="chevron-down"
+                      ></sd-icon>
+                    </button>
                   `
                 : null}
-
-              <div part="main" class=${cx(!slots['teaser-has-default'] && 'hidden')}>
-                <slot></slot>
-              </div>
             </div>
           </div>
         </div>
