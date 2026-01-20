@@ -330,7 +330,11 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             <slot></slot>
           </span>
         </label>
-        <div id="invalid-icon-message" part="invalid-icon-message" class="flex items-center gap-2 mt-2">
+        <div
+          id="invalid-icon-message"
+          part="invalid-icon-message"
+          class=${cx('flex items-center gap-2', this.showInvalidStyle && 'mt-2')}
+        >
           ${this.showInvalidStyle
             ? html` <sd-icon
                 id="invalid-icon"
