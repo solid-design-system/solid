@@ -137,6 +137,7 @@ export default class SdOption extends SolidElement {
     return html`
       <div
         part="base"
+        style="word-break: break-word;"
         class=${cx(
           'px-4 flex items-center w-full transition-colors duration-fast ease-in-out text-left text-base relative',
           {
