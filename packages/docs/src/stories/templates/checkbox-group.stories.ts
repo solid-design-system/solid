@@ -73,7 +73,7 @@ export const RequiredCheckboxGroup = {
             errorMessage.classList.remove('hidden');
             checkboxes.forEach(checkbox => {
               checkbox.setCustomValidity('Please fill in this field');
-              checkbox.shadowRoot.querySelector('#invalid-message').classList.add('sr-only');
+              checkbox.shadowRoot.querySelector('#invalid-icon-message').classList.add('sr-only');
             });
             checkboxGroup.setAttribute('aria-invalid', 'true');
           }
