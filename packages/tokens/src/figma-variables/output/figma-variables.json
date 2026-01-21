@@ -3234,6 +3234,35 @@
           }
         }
       },
+      "sd-header": {
+        "color": {
+          "background": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.background.white.default}"
+          },
+          "_shadow": {
+            "description": "Deprecated?",
+            "type": "color",
+            "value": "rgba(24, 24, 24, 0.40)"
+          }
+        },
+        "padding-bottom": {
+          "type": "float",
+          "value": "0"
+        },
+        "__underline": {
+          "height": {
+            "type": "float",
+            "value": "{ui-light.utilities.sizing.2}"
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        }
+      },
       "sd-tag": {
         "--selected": {
           "--default": {
@@ -3821,14 +3850,6 @@
             }
           }
         },
-        "__timestamp": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.black.default}"
-            }
-          }
-        },
         "__slide-bar": {
           "--inverted": {
             "color": {
@@ -3836,6 +3857,17 @@
                 "description": "Used for inverted dividers",
                 "type": "color",
                 "value": "{ui-light.utilities.color.primary.400}"
+              }
+            }
+          }
+        },
+        "__track-bar": {
+          "--inverted": {
+            "color": {
+              "border": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "{ui-light.utilities.color.white.default}"
               }
             }
           }
@@ -3890,14 +3922,14 @@
       },
       "sd-accordion": {
         "color": {
-          "_shadow": {
-            "description": "Deprecated",
-            "type": "color",
-            "value": "rgba(24, 24, 24, 0.40)"
-          },
           "text": {
             "type": "color",
             "value": "{ui-light.utilities.color.text.primary.default}"
+          },
+          "icon": {
+            "description": "Default icon color ",
+            "type": "color",
+            "value": "{ui-light.utilities.color.primary.default}"
           }
         },
         "__indicator": {
@@ -3912,33 +3944,7 @@
         },
         "border-width": {
           "type": "float",
-          "value": "{core.ui.sizing.px}"
-        },
-        "__chevron": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.default}"
-            }
-          }
-        }
-      },
-      "sd-header": {
-        "padding-bottom": {
-          "type": "float",
-          "value": "0"
-        },
-        "__underline": {
-          "height": {
-            "type": "float",
-            "value": "{ui-light.utilities.sizing.2}"
-          },
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "rgba(255, 255, 255, 0.00)"
-            }
-          }
+          "value": "{ui-light.utilities.sizing.0,25}"
         }
       },
       "navigable": {
@@ -3962,7 +3968,7 @@
         },
         "font-size": {
           "type": "float",
-          "value": "{core.text-base}"
+          "value": "{ui-light.utilities.text.base}"
         },
         "_docs": {
           "description": "Used in: sd-tab, sd-navigation-item and sd-menu",
@@ -4856,7 +4862,7 @@
       "sd-dropdown": {
         "color": {
           "background": {
-            "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
+            "description": "Default background color. Used for sd-chip, sd-flag, sd-container. NOTE: kid value should be reference to kid.white.600, had to be removed due to a bug that blocked fetching tokens in code.",
             "type": "color",
             "value": "{ui-light.utilities.color.white.default}"
           }
@@ -4871,6 +4877,12 @@
               "value": "{ui-light.utilities.color.neutral.500}"
             }
           }
+        }
+      },
+      "sd-accordion-group": {
+        "gap": {
+          "type": "float",
+          "value": "-1"
         }
       }
     }
@@ -6402,6 +6414,35 @@
           }
         }
       },
+      "sd-header": {
+        "color": {
+          "background": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.primary.default}"
+          },
+          "_shadow": {
+            "description": "Deprecated?",
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          }
+        },
+        "padding-bottom": {
+          "type": "float",
+          "value": "0"
+        },
+        "__underline": {
+          "height": {
+            "type": "float",
+            "value": "{ui-dark.utilities.sizing.2}"
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        }
+      },
       "sd-tag": {
         "--selected": {
           "--default": {
@@ -6989,14 +7030,6 @@
             }
           }
         },
-        "__timestamp": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.400}"
-            }
-          }
-        },
         "__slide-bar": {
           "--inverted": {
             "color": {
@@ -7004,6 +7037,17 @@
                 "description": "Used for inverted dividers",
                 "type": "color",
                 "value": "{ui-dark.utilities.color.primary.400}"
+              }
+            }
+          }
+        },
+        "__track-bar": {
+          "--inverted": {
+            "color": {
+              "border": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.white.default}"
               }
             }
           }
@@ -7058,14 +7102,14 @@
       },
       "sd-accordion": {
         "color": {
-          "_shadow": {
-            "description": "Deprecated",
-            "type": "color",
-            "value": "rgba(255, 255, 255, 0.00)"
-          },
           "text": {
             "type": "color",
             "value": "{ui-dark.utilities.color.text.primary.default}"
+          },
+          "icon": {
+            "description": "Default icon color ",
+            "type": "color",
+            "value": "{ui-dark.utilities.color.white.default}"
           }
         },
         "__indicator": {
@@ -7080,33 +7124,7 @@
         },
         "border-width": {
           "type": "float",
-          "value": "{core.ui.sizing.px}"
-        },
-        "__chevron": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.default}"
-            }
-          }
-        }
-      },
-      "sd-header": {
-        "padding-bottom": {
-          "type": "float",
-          "value": "0"
-        },
-        "__underline": {
-          "height": {
-            "type": "float",
-            "value": "{ui-dark.utilities.sizing.2}"
-          },
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "rgba(255, 255, 255, 0.00)"
-            }
-          }
+          "value": "{ui-dark.utilities.sizing.0,25}"
         }
       },
       "navigable": {
@@ -7130,7 +7148,7 @@
         },
         "font-size": {
           "type": "float",
-          "value": "{core.text-base}"
+          "value": "{ui-dark.utilities.text.base}"
         },
         "_docs": {
           "description": "Used in: sd-tab, sd-navigation-item and sd-menu",
@@ -8024,7 +8042,7 @@
       "sd-dropdown": {
         "color": {
           "background": {
-            "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
+            "description": "Default background color. Used for sd-chip, sd-flag, sd-container. NOTE: kid value should be reference to kid.white.600, had to be removed due to a bug that blocked fetching tokens in code.",
             "type": "color",
             "value": "{ui-dark.utilities.color.primary.900}"
           }
@@ -8039,6 +8057,12 @@
               "value": "{ui-dark.utilities.color.neutral.500}"
             }
           }
+        }
+      },
+      "sd-accordion-group": {
+        "gap": {
+          "type": "float",
+          "value": "-1"
         }
       }
     }
@@ -9570,6 +9594,35 @@
           }
         }
       },
+      "sd-header": {
+        "color": {
+          "background": {
+            "type": "color",
+            "value": "{vb.utilities.color.background.white.default}"
+          },
+          "_shadow": {
+            "description": "Deprecated?",
+            "type": "color",
+            "value": "rgba(24, 24, 24, 0.40)"
+          }
+        },
+        "padding-bottom": {
+          "type": "float",
+          "value": "{vb.utilities.spacing.0,5}"
+        },
+        "__underline": {
+          "height": {
+            "type": "float",
+            "value": "{vb.utilities.sizing.0,25}"
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{core.vb.grey.200}"
+            }
+          }
+        }
+      },
       "sd-tag": {
         "--selected": {
           "--default": {
@@ -10157,14 +10210,6 @@
             }
           }
         },
-        "__timestamp": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{vb.utilities.color.text.neutral.700}"
-            }
-          }
-        },
         "__slide-bar": {
           "--inverted": {
             "color": {
@@ -10172,6 +10217,17 @@
                 "description": "Used for inverted dividers",
                 "type": "color",
                 "value": "rgba(255, 255, 255, 0.50)"
+              }
+            }
+          }
+        },
+        "__track-bar": {
+          "--inverted": {
+            "color": {
+              "border": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "{vb.utilities.color.white.default}"
               }
             }
           }
@@ -10226,14 +10282,14 @@
       },
       "sd-accordion": {
         "color": {
-          "_shadow": {
-            "description": "Deprecated",
-            "type": "color",
-            "value": "rgba(24, 24, 24, 0.40)"
-          },
           "text": {
             "type": "color",
             "value": "{vb.utilities.color.text.black.default}"
+          },
+          "icon": {
+            "description": "Default icon color ",
+            "type": "color",
+            "value": "{vb.utilities.color.neutral.700}"
           }
         },
         "__indicator": {
@@ -10248,33 +10304,7 @@
         },
         "border-width": {
           "type": "float",
-          "value": "{core.ui.sizing.0,5}"
-        },
-        "__chevron": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{vb.utilities.color.text.neutral.600}"
-            }
-          }
-        }
-      },
-      "sd-header": {
-        "padding-bottom": {
-          "type": "float",
-          "value": "{vb.utilities.spacing.0,5}"
-        },
-        "__underline": {
-          "height": {
-            "type": "float",
-            "value": "{vb.utilities.sizing.0,25}"
-          },
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{core.vb.grey.200}"
-            }
-          }
+          "value": "{vb.utilities.sizing.0,5}"
         }
       },
       "navigable": {
@@ -10298,7 +10328,7 @@
         },
         "font-size": {
           "type": "float",
-          "value": "{core.text-sm}"
+          "value": "{vb.utilities.text.sm}"
         },
         "_docs": {
           "description": "Used in: sd-tab, sd-navigation-item and sd-menu",
@@ -11192,7 +11222,7 @@
       "sd-dropdown": {
         "color": {
           "background": {
-            "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
+            "description": "Default background color. Used for sd-chip, sd-flag, sd-container. NOTE: kid value should be reference to kid.white.600, had to be removed due to a bug that blocked fetching tokens in code.",
             "type": "color",
             "value": "{vb.utilities.color.white.default}"
           }
@@ -11207,6 +11237,12 @@
               "value": "{vb.utilities.color.background.neutral.400}"
             }
           }
+        }
+      },
+      "sd-accordion-group": {
+        "gap": {
+          "type": "float",
+          "value": "-2"
         }
       }
     }
@@ -12738,6 +12774,35 @@
           }
         }
       },
+      "sd-header": {
+        "color": {
+          "background": {
+            "type": "color",
+            "value": "{kid.utilities.color.background.white.default}"
+          },
+          "_shadow": {
+            "description": "Deprecated?",
+            "type": "color",
+            "value": "rgba(24, 24, 24, 0.40)"
+          }
+        },
+        "padding-bottom": {
+          "type": "float",
+          "value": "{kid.utilities.spacing.0,5}"
+        },
+        "__underline": {
+          "height": {
+            "type": "float",
+            "value": "{kid.utilities.sizing.0,25}"
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        }
+      },
       "sd-tag": {
         "--selected": {
           "--default": {
@@ -13325,14 +13390,6 @@
             }
           }
         },
-        "__timestamp": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.text.black.default}"
-            }
-          }
-        },
         "__slide-bar": {
           "--inverted": {
             "color": {
@@ -13340,6 +13397,17 @@
                 "description": "Used for inverted dividers",
                 "type": "color",
                 "value": "rgba(255, 255, 255, 0.50)"
+              }
+            }
+          }
+        },
+        "__track-bar": {
+          "--inverted": {
+            "color": {
+              "border": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "{kid.utilities.color.white.default}"
               }
             }
           }
@@ -13394,14 +13462,14 @@
       },
       "sd-accordion": {
         "color": {
-          "_shadow": {
-            "description": "Deprecated",
-            "type": "color",
-            "value": "rgba(24, 24, 24, 0.40)"
-          },
           "text": {
             "type": "color",
             "value": "{kid.utilities.color.text.black.default}"
+          },
+          "icon": {
+            "description": "Default icon color ",
+            "type": "color",
+            "value": "{kid.utilities.color.primary.default}"
           }
         },
         "__indicator": {
@@ -13416,33 +13484,7 @@
         },
         "border-width": {
           "type": "float",
-          "value": "{core.ui.sizing.0,5}"
-        },
-        "__chevron": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.text.neutral.600}"
-            }
-          }
-        }
-      },
-      "sd-header": {
-        "padding-bottom": {
-          "type": "float",
-          "value": "{kid.utilities.spacing.0,5}"
-        },
-        "__underline": {
-          "height": {
-            "type": "float",
-            "value": "{kid.utilities.sizing.0,25}"
-          },
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "rgba(255, 255, 255, 0.00)"
-            }
-          }
+          "value": "{kid.utilities.sizing.0,25}"
         }
       },
       "navigable": {
@@ -13466,7 +13508,7 @@
         },
         "font-size": {
           "type": "float",
-          "value": "{core.text-sm}"
+          "value": "{kid.utilities.text.sm}"
         },
         "_docs": {
           "description": "Used in: sd-tab, sd-navigation-item and sd-menu",
@@ -14360,7 +14402,7 @@
       "sd-dropdown": {
         "color": {
           "background": {
-            "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
+            "description": "Default background color. Used for sd-chip, sd-flag, sd-container. NOTE: kid value should be reference to kid.white.600, had to be removed due to a bug that blocked fetching tokens in code.",
             "type": "color",
             "value": "rgba(255, 255, 255, 0.60)"
           }
@@ -14375,6 +14417,12 @@
               "value": "{kid.utilities.color.neutral.400}"
             }
           }
+        }
+      },
+      "sd-accordion-group": {
+        "gap": {
+          "type": "float",
+          "value": "-1"
         }
       }
     }

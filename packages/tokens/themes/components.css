@@ -78,16 +78,20 @@
  border-width: var(--sd-accordion-border-width, var(--sd-spacing-0\.25));
 }
 
+@utility sd-accordion-color-icon {
+  background-color: rgba(var(--sd-accordion-color-icon, rgba(var(--sd-color-primary))));
+}
+
 @utility sd-accordion-color-text {
   color: rgba(var(--sd-accordion-color-text, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-accordion-padding-block {
- padding-block: var(--sd-accordion-padding-block, var(--sd-spacing-3));
+@utility sd-accordion-group-gap {
+ gap: var(--sd-accordion-group-gap, -0.0625rem);
 }
 
-@utility sd-accordion__chevron-color-text {
-  color: rgba(var(--sd-accordion__chevron-color-text, rgba(var(--sd-color-primary))));
+@utility sd-accordion-padding-block {
+ padding-block: var(--sd-accordion-padding-block, var(--sd-spacing-3));
 }
 
 @utility sd-accordion__indicator-color {
@@ -102,8 +106,8 @@
   border-color: rgba(var(--sd-audio__slide-bar--inverted-color-border, rgba(var(--sd-color-primary-400))));
 }
 
-@utility sd-audio__timestamp-color-text {
-  color: rgba(var(--sd-audio__timestamp-color-text, rgba(var(--sd-color-black))));
+@utility sd-audio__track-bar--inverted-color-border {
+  border-color: rgba(var(--sd-audio__track-bar--inverted-color-border, rgba(var(--sd-color-white))));
 }
 
 @utility sd-badge--blue--inverted-color-background {
@@ -532,6 +536,10 @@
 
 @utility sd-footnotes--target--inverted-color-background {
   background-color: rgba(var(--sd-footnotes--target--inverted-color-background, rgba(var(--sd-color-primary-800))));
+}
+
+@utility sd-header-color-background {
+  background-color: rgba(var(--sd-header-color-background, rgba(var(--sd-color-white))));
 }
 
 @utility sd-header-padding-bottom {
