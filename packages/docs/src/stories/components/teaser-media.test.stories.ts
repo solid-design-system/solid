@@ -100,7 +100,7 @@ export const Variant = {
  * Use the 'default', 'media', 'meta', 'expandable' and 'headline' slots to add content to the teaser. Please make sure to use semantically correct headline tags for the `headline` slot to provide accessible content.
  */
 export const Slots = {
-  name: 'Slots',
+  name: 'Expandable',
   render: (args: any) => {
     return html`
       ${['default', 'media', 'meta', 'headline', 'expandable'].map(slot => {
@@ -153,7 +153,7 @@ export const Slots = {
             {
               type: 'slot',
               name: 'expandable',
-              value: `<slot slot='expandable'>Teaser's Expandable content</slot>`
+              value: `<slot slot='expandable'>Expandable text tincidunt laoreet nulla phasellus mauris leo venenatis id commodo. Mauris elementum risus sed massa libero dui adipiscing sagittis. Orci quis cum diam nunc non vel morbi cras eget.</slot>`
             },
             {
               type: 'template',

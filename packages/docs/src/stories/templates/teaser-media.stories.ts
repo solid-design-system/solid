@@ -136,7 +136,7 @@ export const TeaserMediaExpandable = {
         <h3 slot="headline">Retirement planning</h3>
         <img
           slot="media"
-          src="./placeholders/images/senior-coffee.jpg"
+          src="./placeholders/images/senior-coffee.png"
           class="aspect-4/5 object-cover self-stretch h-80"
           alt=""
         />
@@ -150,7 +150,7 @@ export const TeaserMediaExpandable = {
         <h3 slot="headline">Save</h3>
         <img
           slot="media"
-          src="./placeholders/images/couple-moving.jpg"
+          src="./placeholders/images/couple-moving.png"
           class="aspect-4/5 object-cover self-stretch h-80"
           alt=""
         />
@@ -164,7 +164,7 @@ export const TeaserMediaExpandable = {
         <h3 slot="headline">Invest</h3>
         <img
           slot="media"
-          src="./placeholders/images/calculator-work.jpg"
+          src="./placeholders/images/calculator-work.png"
           class="aspect-4/5 object-cover self-stretch h-80"
           alt=""
         />
