@@ -90,6 +90,13 @@ export default class SdTooltip extends SolidElement {
   @property({ type: String, reflect: true }) trigger = 'click focus';
 
   /**
+   * Controls how the tooltip is closed.
+   * Possible options: `click`, `hover`, `focus`, `escape`, `manual`.
+   * Multiple options can be passed with spaces.
+   */
+  @property({ type: String, attribute: 'close-trigger', reflect: true }) closeTrigger = 'click focus escape';
+
+  /**
    * Enable this option to prevent the tooltip from being clipped when the component is placed inside a container with
    * `overflow: auto|hidden|scroll`. Hoisting uses a fixed positioning strategy that works in many, but not all,
    * scenarios.
@@ -106,6 +113,8 @@ export default class SdTooltip extends SolidElement {
     this.handleMouseOut = this.handleMouseOut.bind(this);
     document.addEventListener('mousedown', this.handleMouseInteraction);
     document.addEventListener('keydown', this.handleKeyboardInteraction);
+    this.handleDocumentClick = this.handleDocumentClick.bind(this);
+    document.addEventListener('click', this.handleDocumentClick);
 
     this.updateComplete.then(() => {
       this.addEventListener('blur', this.handleBlur, true);
@@ -138,6 +147,7 @@ export default class SdTooltip extends SolidElement {
     this.removeEventListener('mouseout', this.handleMouseOut);
     document.removeEventListener('mousedown', this.handleMouseInteraction);
     document.removeEventListener('keydown', this.handleKeyboardInteraction);
+    document.removeEventListener('click', this.handleDocumentClick);
   }
 
   private get hasCustomTrigger() {
@@ -166,18 +176,16 @@ export default class SdTooltip extends SolidElement {
   };
 
   private handleBlur() {
-    if (this.hasTrigger('focus')) {
+    if (this.hasCloseTrigger('focus')) {
       this.hide();
     }
   }
 
   private handleClick() {
-    if (this.hasTrigger('click')) {
-      if (this.open) {
-        this.hide();
-      } else {
-        this.show();
-      }
+    if (this.open && this.hasCloseTrigger('click')) {
+      this.hide();
+    } else if (this.hasTrigger('click')) {
+      this.show();
     }
   }
 
@@ -191,14 +199,14 @@ export default class SdTooltip extends SolidElement {
 
   private handleKeyDown(event: KeyboardEvent) {
     // Pressing escape when the target element has focus should dismiss the tooltip
-    if (this.open && event.key === 'Escape') {
+    if (this.open && event.key === 'Escape' && this.hasCloseTrigger('escape')) {
       event.stopPropagation();
       this.hide();
     }
   }
 
   private handleMouseOver() {
-    if (this.hasTrigger('hover')) {
+    if (this.hasCloseTrigger('hover')) {
       const delay = parseDuration(getComputedStyle(this).getPropertyValue('--show-delay'));
       clearTimeout(this.hoverTimeout);
       this.hoverTimeout = window.setTimeout(() => this.show(), delay);
@@ -213,9 +221,24 @@ export default class SdTooltip extends SolidElement {
     }
   }
 
+  private handleDocumentClick(event: MouseEvent) {
+    if (!this.open) return;
+    if (this.interactionType === 'keyboard') return;
+    const path = event.composedPath();
+
+    if (this.hasCloseTrigger('click') && !path.includes(this) && !path.includes(this.popup)) {
+      this.hide();
+    }
+  }
+
   private hasTrigger(triggerType: string) {
     const triggers = this.trigger.split(' ');
     return triggers.includes(triggerType);
+  }
+
+  private hasCloseTrigger(type: string) {
+    const triggers = this.closeTrigger.split(' ');
+    return triggers.includes(type);
   }
 
   @watch('open', { waitUntilFirstUpdate: true })
