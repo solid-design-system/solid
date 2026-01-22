@@ -2,8 +2,8 @@ import '../../../dist/solid-components';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import { sendKeys, sendMouse } from '@web/test-runner-commands';
 import sinon from 'sinon';
+import type { SdButton, SdMenu, SdMenuItem } from 'src/solid-components';
 import type SdDropdown from './dropdown';
-import { SdButton, SdMenu, SdMenuItem } from 'src/solid-components';
 
 describe('<sd-dropdown>', () => {
   it('should be visible with the open attribute', async () => {
