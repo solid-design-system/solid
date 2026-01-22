@@ -115,6 +115,28 @@ export const Disabled = {
   }
 };
 
+export const RemovableAndSelectedAndToggleable = {
+  name: 'RemovablexSelectedxToggleable',
+  render: (args: any) => {
+    return html`
+      ${generateTemplate({
+        axis: {
+          x: { type: 'attribute', name: 'selected' },
+          y: { type: 'attribute', name: 'removable' }
+        },
+        args
+      })}
+      ${generateTemplate({
+        axis: {
+          x: { type: 'attribute', name: 'toggleable' },
+          y: { type: 'attribute', name: 'removable' }
+        },
+        args
+      })}
+    `;
+  }
+};
+
 /**
  * Use the `default` slot to add content to the tag.
  * Use the `removable-indicator` slot to change the removability indicator.
@@ -225,6 +247,7 @@ export const Combination = generateScreenshotStory([
   removableAndSize,
   iconLeft,
   Disabled,
+  RemovableAndSelectedAndToggleable,
   Slots,
   Parts,
   Mouseless
