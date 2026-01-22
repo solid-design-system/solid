@@ -34,7 +34,20 @@ export default class SdMenu extends SolidElement {
   connectedCallback() {
     super.connectedCallback();
     this.setAttribute('role', 'menu');
+
+    document.addEventListener('click', this.handleOutsideClick);
   }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    document.removeEventListener('click', this.handleOutsideClick);
+  }
+
+  private handleOutsideClick = (event: MouseEvent) => {
+    if (!this.contains(event.target as Node)) {
+      this.getAllItems().forEach(item => item.classList.remove('menu-item-focus'));
+    }
+  };
 
   private handleClick(event: MouseEvent) {
     const menuItemTypes = ['menuitem', 'menuitemcheckbox'];
