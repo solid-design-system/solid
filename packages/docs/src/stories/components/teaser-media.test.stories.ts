@@ -100,7 +100,7 @@ export const Variant = {
  * Use the 'default', 'media', 'meta', 'expandable' and 'headline' slots to add content to the teaser. Please make sure to use semantically correct headline tags for the `headline` slot to provide accessible content.
  */
 export const Slots = {
-  name: 'Expandable',
+  name: 'Slots',
   render: (args: any) => {
     return html`
       ${['default', 'media', 'meta', 'headline', 'expandable'].map(slot => {
@@ -165,6 +165,25 @@ export const Slots = {
       })}
     `;
   }
+};
+
+export const Expandable = {
+  name: 'Expandable',
+  render: () => html`
+    <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
+      <h3 slot="headline">Headline Media Teaser</h3>
+      <img
+        slot="media"
+        src="./placeholders/images/architecture.jpg"
+        class="aspect-video object-cover"
+        alt="Generic alt"
+      />
+      <div slot="expandable">
+        Expandable text tincidunt laoreet nulla phasellus mauris leo venenatis id commodo. Mauris elementum risus sed
+        massa libero dui adipiscing sagittis. Orci quis cum diam nunc non vel morbi cras eget.
+      </div>
+    </sd-teaser-media>
+  `
 };
 
 export const Parts = {
@@ -263,4 +282,4 @@ export const Samples = {
   }
 };
 
-export const Combination = generateScreenshotStory([Default, Variant, Slots, Parts, Samples]);
+export const Combination = generateScreenshotStory([Default, Variant, Slots, Expandable, Parts, Samples]);
