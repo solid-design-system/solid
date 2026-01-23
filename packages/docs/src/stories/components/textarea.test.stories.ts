@@ -507,18 +507,16 @@ export const Scrollable = {
     return html`
       <div>
         <sd-textarea id="scrollable-textarea" label="Label" style-on-valid style="max-width: 350px;"></sd-textarea>
-        <div />
-        <br />
-        <div>
-          <sd-textarea
-            id="scrollable-textarea"
-            floating-label
-            label="Label"
-            style-on-valid
-            style="max-width: 350px;"
-          ></sd-textarea>
-          <div />
-        </div>
+      </div>
+      <br />
+      <div>
+        <sd-textarea
+          id="scrollable-textarea"
+          floating-label
+          label="Label"
+          style-on-valid
+          style="max-width: 350px;"
+        ></sd-textarea>
       </div>
     `;
   },

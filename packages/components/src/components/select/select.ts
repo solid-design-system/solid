@@ -977,7 +977,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   class=${cx(
                     'absolute left-4 z-20 pointer-events-none transition-all duration-200',
                     !isFloatingLabelActive
-                      ? 'top-1/2 -translate-y-1/2 text-base'
+                      ? 'top-1/2 -translate-y-1/2'
                       : this.size === 'lg'
                         ? 'top-2 text-xs'
                         : 'top-1 text-xs',
@@ -1097,7 +1097,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 ${this.multiple && this.useTags
                   ? html` <div
                       part="tags"
-                      class=${cx('flex-grow flex flex-wrap items-center gap-1', this.floatingLabel && 'pt-6')}
+                      class=${cx('flex-grow flex flex-wrap items-center gap-1', this.floatingLabel && 'pt-4')}
                     >
                       ${this.tags}
                     </div>`

@@ -388,6 +388,33 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           : null}
 
         <div part="form-control-input" class=${cx('relative h-full w-full', this.disabled && 'cursor-not-allowed')}>
+          ${hasLabel && this.floatingLabel
+            ? html`
+                <label
+                  id="label"
+                  part="form-control-floating-label"
+                  class=${cx(
+                    'absolute left-4 z-20 pointer-events-none transition-all duration-200',
+                    textSize,
+                    !isFloatingLabelActive ? 'top-2.5' : this.size === 'lg' ? 'top-2 text-xs' : 'top-1 text-xs'
+                  )}
+                  for="input"
+                >
+                  <span
+                    class=${cx(
+                      'leading-none',
+                      (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
+                      isFloatingLabelActive &&
+                        !this.visuallyDisabled &&
+                        !this.disabled &&
+                        'form-control--filled__floating-label-color-text'
+                    )}
+                  >
+                    ${this.label}
+                  </span>
+                </label>
+              `
+            : null}
           <div
             part="border"
             class=${cx(
@@ -404,39 +431,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                 default: 'form-control-color-border'
               }[textareaState]
             )}
-          >
-            ${hasLabel && this.floatingLabel
-              ? html`
-                  <label
-                    id="label"
-                    part="form-control-floating-label"
-                    class=${cx(
-                      'absolute left-4 z-20 pointer-events-none transition-all duration-200',
-                      textSize,
-                      !isFloatingLabelActive
-                        ? 'top-2.5 text-base'
-                        : this.size === 'lg'
-                          ? 'top-2 text-xs'
-                          : 'top-1 text-xs'
-                    )}
-                    for="input"
-                  >
-                    <span
-                      class=${cx(
-                        'leading-none',
-                        (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
-                        isFloatingLabelActive &&
-                          !this.visuallyDisabled &&
-                          !this.disabled &&
-                          'form-control--filled__floating-label-color-text'
-                      )}
-                    >
-                      ${this.label}
-                    </span>
-                  </label>
-                `
-              : null}
-          </div>
+          ></div>
           <div
             part="base"
             class=${cx(

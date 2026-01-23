@@ -97,8 +97,12 @@ export default class SdInput extends SolidElement implements SolidFormControl {
    * @internal
    */
   @state() showValidStyle = false;
+
   /** @internal */
   @state() showInvalidStyle = false;
+
+  /** @internal */
+  @state() isClickableIconFocused = false;
 
   /**
    * The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults
@@ -361,6 +365,14 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     this.passwordVisible = !this.passwordVisible;
   }
 
+  private handleClickableIconFocusIn() {
+    this.isClickableIconFocused = true;
+  }
+
+  private handleClickableIconFocusOut() {
+    this.isClickableIconFocused = false;
+  }
+
   private isDecrementDisabled() {
     if (this.disabled || this.readonly) {
       return true;
@@ -520,7 +532,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     const hasTooltip = !!slots['tooltip'];
     const hasIconLeft = slots['left'];
     const hasValue = this.value !== null && String(this.value).length > 0;
-    const isFloatingLabelActive = this.floatingLabel && hasLabel && (this.hasFocus || hasValue);
+    const isFloatingLabelActive =
+      this.floatingLabel && hasLabel && (this.hasFocus || hasValue || this.isClickableIconFocused);
 
     // Hierarchy of input states:
     const inputState = this.disabled
@@ -615,6 +628,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
             part="base"
             class=${cx(
               'px-4 flex flex-row items-center rounded-default transition-colors ease-in-out duration-medium hover:duration-fast',
+              this.floatingLabel && 'has-floating-label',
               // States
               !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
@@ -685,7 +699,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                       hasIconLeft ? floatingLabelHorizontalAlignmentWithIconLeft : 'left-4',
                       !this.readonly && 'transition-all duration-medium ease-out',
                       !isFloatingLabelActive || (!hasValue && (this.readonly || this.visuallyDisabled))
-                        ? 'top-1/2 -translate-y-1/2'
+                        ? textSize
                         : this.size === 'lg'
                           ? 'top-2'
                           : 'top-1'
@@ -741,9 +755,16 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   <button
                     aria-label=${this.localize.term(this.passwordVisible ? 'hidePassword' : 'showPassword')}
                     part="password-toggle-button"
-                    class=${cx('flex items-center sd-interactive', iconMarginLeft)}
+                    class=${cx(
+                      'flex items-center sd-interactive',
+                      iconMarginLeft,
+                      this.floatingLabel && !isFloatingLabelActive && 'hide-password-toggle'
+                    )}
                     type="button"
                     @click=${this.handlePasswordToggle}
+                    @mousedown=${this.handleClickableIconFocusIn}
+                    @focus=${() => this.handleClickableIconFocusIn()}
+                    @blur=${this.handleClickableIconFocusOut}
                   >
                     ${this.passwordVisible
                       ? html`
@@ -831,6 +852,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                       aria-hidden="true"
                       ${longPress({ start: () => this.handleStepDown(), end: () => this.handleChange() })}
                       tabindex="-1"
+                      @mousedown=${this.handleClickableIconFocusIn}
+                      @focus=${() => this.handleClickableIconFocusIn()}
+                      @blur=${this.handleClickableIconFocusOut}
                     >
                       <slot name="decrement-number-stepper">
                         <sd-icon
@@ -939,6 +963,20 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
       .stepper-button[disabled] sd-icon {
         @apply text-neutral-500;
+      }
+
+      .hide-password-toggle {
+        display: none;
+      }
+      .has-floating-label input[type='date']:not(.has-value),
+      .has-floating-label input[type='time']:not(.has-value),
+      .has-floating-label input[type='datetime-local']:not(.has-value) {
+        color: transparent;
+      }
+      .has-floating-label input[type='date']:focus,
+      .has-floating-label input[type='time']:focus,
+      .has-floating-label input[type='datetime-local']:focus {
+        color: inherit;
       }
     `
   ];
