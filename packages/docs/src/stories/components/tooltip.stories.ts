@@ -176,7 +176,7 @@ export const CloseTrigger = {
     html` <div class="h-[100px]">
       <sd-tooltip
         content="Lorem ipsum"
-        placement="top-start"
+        placement="bottom-start"
         size="lg"
         trigger="click"
         open="true"
