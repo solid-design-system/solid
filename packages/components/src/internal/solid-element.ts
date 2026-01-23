@@ -1,4 +1,5 @@
 import { cssVar, parseDuration } from './animate';
+import { CustomAttributesController, customAttributesConverter, type CustomAttributesValue } from './custom-attributes';
 import { LitElement, unsafeCSS } from 'lit';
 import { property } from 'lit/decorators.js';
 
@@ -14,6 +15,29 @@ export default class SolidElement extends LitElement {
 
   /** The element's language. */
   @property() lang: string;
+
+  /**
+   * Custom attributes to reflect to internal elements.
+   * Accepts a JSON object or array of objects with attributes to set.
+   * By default, attributes are applied to the element with `part="base"`.
+   * Use targeted queries to apply attributes to specific elements.
+   *
+   * @example
+   * ```html
+   * <!-- Single attribute -->
+   * <sd-button custom-attributes='{"aria-label": "hello"}'></sd-button>
+   *
+   * <!-- Multiple attributes -->
+   * <sd-button custom-attributes='[{"aria-expanded": "false"}, {"aria-haspopup": "true"}]'></sd-button>
+   *
+   * <!-- Targeted element -->
+   * <sd-details custom-attributes='[{"query": "summary", "attributes": [{"aria-label": "toggle"}]}]'></sd-details>
+   * ```
+   */
+  @property({ attribute: 'custom-attributes', converter: customAttributesConverter })
+  customAttributes: CustomAttributesValue = null;
+
+  private _customAttributesController = new CustomAttributesController(this);
 
   protected onThemeChange?(e: CustomEvent<{ theme: string }>): void;
 
@@ -126,6 +150,29 @@ export default class SolidElement extends LitElement {
 
     const processor = Object.keys(tokenProcessors).find(token => name.startsWith(token));
     return (tokenProcessors[processor ?? name]?.(value) as T) ?? (value as T) ?? fallback;
+  }
+
+  /**
+   * Sets custom attributes programmatically.
+   * This is an alternative to setting the `custom-attributes` attribute directly.
+   *
+   * @example
+   * ```js
+   * const button = document.querySelector('sd-button');
+   * button.setCustomAttributes({ 'aria-label': 'hello' });
+   *
+   * // Or with multiple attributes
+   * button.setCustomAttributes([{ 'aria-expanded': 'false' }, { 'aria-haspopup': 'true' }]);
+   *
+   * // Or with targeted queries
+   * details.setCustomAttributes([
+   *   { 'aria-role': 'switch' },
+   *   { query: 'summary', attributes: [{ 'aria-label': 'toggle' }] }
+   * ]);
+   * ```
+   */
+  setCustomAttributes(value: CustomAttributesValue): void {
+    this.customAttributes = value;
   }
 }
 

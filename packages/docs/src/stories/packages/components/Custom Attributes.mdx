@@ -1,0 +1,146 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Packages/Components/Custom Attributes" />
+
+# Custom Attributes
+
+Solid components support reflecting custom attributes to internal shadow DOM elements. This is particularly useful for accessibility scenarios where you need to set ARIA attributes on the actual interactive element inside a component.
+
+## The Problem
+
+Web components encapsulate their internal structure in shadow DOM. When you set an attribute like `aria-expanded` on a Solid component, it stays on the outer host element rather than the interactive element inside:
+
+```html
+<sd-button aria-expanded="false">Toggle</sd-button>
+<!-- The aria-expanded is on <sd-button>, not on the <button> inside -->
+```
+
+For accessibility tools to work correctly, these attributes often need to be on the actual interactive element (button, link, input, etc.) inside the shadow DOM.
+
+## Solution: custom-attributes
+
+The `custom-attributes` property allows you to specify attributes that should be reflected to internal elements. By default, attributes are applied to the element with `part="base"`, which is typically the main interactive element.
+
+### Single Attribute
+
+Set a single attribute using a JSON object:
+
+```html
+<sd-button custom-attributes='{"aria-label": "Close dialog"}'>×</sd-button>
+```
+
+### Multiple Attributes
+
+Set multiple attributes using either a single object or an array of objects:
+
+```html
+<!-- Single object with multiple attributes -->
+<sd-button custom-attributes='{"aria-expanded": "false", "aria-haspopup": "true"}'> Menu </sd-button>
+
+<!-- Array of objects -->
+<sd-button custom-attributes='[{"aria-expanded": "false"}, {"aria-haspopup": "true"}]'> Menu </sd-button>
+```
+
+### Targeted Elements
+
+For components with multiple interactive elements, you can target specific elements using queries. The query can be either a part name or a CSS selector:
+
+```html
+<!-- Target by part name -->
+<sd-accordion
+  custom-attributes='[
+  {"aria-label": "Section controls"},
+  {"query": "summary", "attributes": [{"aria-label": "Toggle section"}]}
+]'
+>
+  <span slot="summary">Section Title</span>
+  Content goes here...
+</sd-accordion>
+```
+
+In this example:
+
+- `{"aria-label": "Section controls"}` is applied to the base element
+- `{"query": "summary", "attributes": [...]}` is applied to the element with `part="summary"`
+
+## Programmatic API
+
+You can also set custom attributes programmatically using the `setCustomAttributes()` method:
+
+```html
+<sd-button id="menu-button">Menu</sd-button>
+
+<script type="module">
+  const button = document.querySelector('#menu-button');
+
+  // Single attribute
+  button.setCustomAttributes({ 'aria-expanded': 'false' });
+
+  // Multiple attributes
+  button.setCustomAttributes([{ 'aria-expanded': 'false' }, { 'aria-haspopup': 'true' }]);
+
+  // With targeted queries
+  button.setCustomAttributes([
+    { 'aria-label': 'Main action' },
+    { query: 'base', attributes: [{ 'data-testid': 'main-button' }] }
+  ]);
+</script>
+```
+
+## Common Use Cases
+
+### Accessible Toggle Buttons
+
+```html
+<sd-button id="toggle-btn" custom-attributes='{"aria-expanded": "false", "aria-controls": "panel-1"}'>
+  Toggle Panel
+</sd-button>
+<div id="panel-1" hidden>Panel content</div>
+
+<script>
+  const btn = document.querySelector('#toggle-btn');
+  const panel = document.querySelector('#panel-1');
+
+  btn.addEventListener('click', () => {
+    const expanded = panel.hidden;
+    panel.hidden = !expanded;
+    btn.setCustomAttributes({ 'aria-expanded': String(expanded) });
+  });
+</script>
+```
+
+### Links with Descriptive Labels
+
+```html
+<sd-button href="/money" custom-attributes='{"aria-label": "Read more about money management"}'> Read more </sd-button>
+```
+
+### Menu Buttons
+
+```html
+<sd-button custom-attributes='{"aria-haspopup": "menu", "aria-expanded": "false"}'> Options </sd-button>
+```
+
+## Attribute Lifecycle
+
+- When `custom-attributes` changes, previously applied attributes are automatically removed before new ones are applied
+- When `custom-attributes` is removed or set to `null`, all previously applied custom attributes are cleared
+- Invalid JSON is handled gracefully with a console error, and no attributes are applied
+
+## TypeScript Support
+
+Types are exported for use with the programmatic API:
+
+```ts
+import type { CustomAttribute, TargetedCustomAttributes, CustomAttributesValue } from '@solid-design-system/components';
+
+// CustomAttribute: { [key: string]: string }
+// TargetedCustomAttributes: { query: string; attributes: CustomAttribute[] }
+// CustomAttributesValue: CustomAttribute | (CustomAttribute | TargetedCustomAttributes)[] | null
+```
+
+## Notes
+
+- Any attribute can be set, not just ARIA attributes. However, this feature is primarily intended for accessibility attributes.
+- For `aria-hidden`, consider whether it should be on the host element or the internal element based on your use case. Setting `aria-hidden` on the host element hides the entire component from assistive technologies.
+- The default target is the element with `part="base"`. Most Solid components use this convention for their main interactive element.
