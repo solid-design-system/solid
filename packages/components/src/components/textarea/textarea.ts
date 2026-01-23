@@ -396,7 +396,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                   class=${cx(
                     'absolute left-4 z-20 pointer-events-none transition-all duration-200',
                     textSize,
-                    !isFloatingLabelActive ? 'top-2.5' : this.size === 'lg' ? 'top-2 text-xs' : 'top-1 text-xs'
+                    !isFloatingLabelActive ? 'top-2.5' : 'top-2 text-xs'
                   )}
                   for="input"
                 >
@@ -456,9 +456,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               class=${cx(
                 'ps-4 flex-grow focus:outline-none bg-transparent placeholder:text-neutral-700 resize-none group-has-[sd-icon]:pe-8',
                 {
-                  sm: this.floatingLabel ? 'pb-1' : 'py-1',
-                  md: this.floatingLabel ? 'pb-1' : 'py-1',
-                  lg: this.floatingLabel ? 'pb-2' : 'py-2'
+                  sm: isFloatingLabelActive ? 'pb-1' : 'py-2',
+                  md: isFloatingLabelActive ? 'pb-1' : 'py-2',
+                  lg: isFloatingLabelActive ? 'pb-2' : 'py-2'
                 }[this.size],
                 this.disabled && 'cursor-not-allowed',
                 textSize
