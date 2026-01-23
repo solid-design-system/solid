@@ -206,7 +206,7 @@ export default class SdTooltip extends SolidElement {
   }
 
   private handleMouseOver() {
-    if (this.hasCloseTrigger('hover')) {
+    if (this.hasTrigger('hover')) {
       const delay = parseDuration(getComputedStyle(this).getPropertyValue('--show-delay'));
       clearTimeout(this.hoverTimeout);
       this.hoverTimeout = window.setTimeout(() => this.show(), delay);
@@ -214,7 +214,7 @@ export default class SdTooltip extends SolidElement {
   }
 
   private handleMouseOut() {
-    if (this.hasTrigger('hover')) {
+    if (this.hasCloseTrigger('hover')) {
       const delay = parseDuration(getComputedStyle(this).getPropertyValue('--hide-delay'));
       clearTimeout(this.hoverTimeout);
       this.hoverTimeout = window.setTimeout(() => this.hide(), delay);
@@ -226,7 +226,7 @@ export default class SdTooltip extends SolidElement {
     if (this.interactionType === 'keyboard') return;
     const path = event.composedPath();
 
-    if (this.hasCloseTrigger('click') && !path.includes(this) && !path.includes(this.popup)) {
+    if (this.hasCloseTrigger('focus') && !path.includes(this) && !path.includes(this.popup)) {
       this.hide();
     }
   }
