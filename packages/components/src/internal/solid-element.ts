@@ -37,12 +37,12 @@ export default class SolidElement extends LitElement {
   @property({ attribute: 'custom-attributes', converter: customAttributesConverter })
   customAttributes: CustomAttributesValue = null;
 
-  private _customAttributesController = new CustomAttributesController(this);
-
   protected onThemeChange?(e: CustomEvent<{ theme: string }>): void;
 
   connectedCallback(): void {
     super.connectedCallback();
+
+    void new CustomAttributesController(this);
 
     if (!this.onThemeChange) return;
     this.renderRoot.addEventListener('sd-theme-change', this.onThemeChange.bind(this));
