@@ -3860,17 +3860,6 @@
               }
             }
           }
-        },
-        "__track-bar": {
-          "--inverted": {
-            "color": {
-              "border": {
-                "description": "Used for inverted dividers",
-                "type": "color",
-                "value": "{ui-light.utilities.color.white.default}"
-              }
-            }
-          }
         }
       },
       "sd-brandshape": {
@@ -3925,11 +3914,6 @@
           "text": {
             "type": "color",
             "value": "{ui-light.utilities.color.text.primary.default}"
-          },
-          "icon": {
-            "description": "Default icon color ",
-            "type": "color",
-            "value": "{ui-light.utilities.color.primary.default}"
           }
         },
         "__indicator": {
@@ -4877,12 +4861,6 @@
               "value": "{ui-light.utilities.color.neutral.500}"
             }
           }
-        }
-      },
-      "sd-accordion-group": {
-        "gap": {
-          "type": "float",
-          "value": "-1"
         }
       }
     }
@@ -7040,17 +7018,6 @@
               }
             }
           }
-        },
-        "__track-bar": {
-          "--inverted": {
-            "color": {
-              "border": {
-                "description": "Used for inverted dividers",
-                "type": "color",
-                "value": "{ui-dark.utilities.color.white.default}"
-              }
-            }
-          }
         }
       },
       "sd-brandshape": {
@@ -7105,11 +7072,6 @@
           "text": {
             "type": "color",
             "value": "{ui-dark.utilities.color.text.primary.default}"
-          },
-          "icon": {
-            "description": "Default icon color ",
-            "type": "color",
-            "value": "{ui-dark.utilities.color.white.default}"
           }
         },
         "__indicator": {
@@ -8057,12 +8019,6 @@
               "value": "{ui-dark.utilities.color.neutral.500}"
             }
           }
-        }
-      },
-      "sd-accordion-group": {
-        "gap": {
-          "type": "float",
-          "value": "-1"
         }
       }
     }
@@ -10220,17 +10176,6 @@
               }
             }
           }
-        },
-        "__track-bar": {
-          "--inverted": {
-            "color": {
-              "border": {
-                "description": "Used for inverted dividers",
-                "type": "color",
-                "value": "{vb.utilities.color.white.default}"
-              }
-            }
-          }
         }
       },
       "sd-brandshape": {
@@ -10285,11 +10230,6 @@
           "text": {
             "type": "color",
             "value": "{vb.utilities.color.text.black.default}"
-          },
-          "icon": {
-            "description": "Default icon color ",
-            "type": "color",
-            "value": "{vb.utilities.color.neutral.700}"
           }
         },
         "__indicator": {
@@ -11237,12 +11177,6 @@
               "value": "{vb.utilities.color.background.neutral.400}"
             }
           }
-        }
-      },
-      "sd-accordion-group": {
-        "gap": {
-          "type": "float",
-          "value": "-2"
         }
       }
     }
@@ -13400,17 +13334,6 @@
               }
             }
           }
-        },
-        "__track-bar": {
-          "--inverted": {
-            "color": {
-              "border": {
-                "description": "Used for inverted dividers",
-                "type": "color",
-                "value": "{kid.utilities.color.white.default}"
-              }
-            }
-          }
         }
       },
       "sd-brandshape": {
@@ -13465,11 +13388,6 @@
           "text": {
             "type": "color",
             "value": "{kid.utilities.color.text.black.default}"
-          },
-          "icon": {
-            "description": "Default icon color ",
-            "type": "color",
-            "value": "{kid.utilities.color.primary.default}"
           }
         },
         "__indicator": {
@@ -14417,12 +14335,6 @@
               "value": "{kid.utilities.color.neutral.400}"
             }
           }
-        }
-      },
-      "sd-accordion-group": {
-        "gap": {
-          "type": "float",
-          "value": "-1"
         }
       }
     }

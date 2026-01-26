@@ -78,16 +78,8 @@
  border-width: var(--sd-accordion-border-width, var(--sd-spacing-0\.25));
 }
 
-@utility sd-accordion-color-icon {
-  background-color: rgba(var(--sd-accordion-color-icon, rgba(var(--sd-color-primary))));
-}
-
 @utility sd-accordion-color-text {
   color: rgba(var(--sd-accordion-color-text, rgba(var(--sd-color-primary))));
-}
-
-@utility sd-accordion-group-gap {
- gap: var(--sd-accordion-group-gap, -0.0625rem);
 }
 
 @utility sd-accordion-padding-block {
@@ -104,10 +96,6 @@
 
 @utility sd-audio__slide-bar--inverted-color-border {
   border-color: rgba(var(--sd-audio__slide-bar--inverted-color-border, rgba(var(--sd-color-primary-400))));
-}
-
-@utility sd-audio__track-bar--inverted-color-border {
-  border-color: rgba(var(--sd-audio__track-bar--inverted-color-border, rgba(var(--sd-color-white))));
 }
 
 @utility sd-badge--blue--inverted-color-background {

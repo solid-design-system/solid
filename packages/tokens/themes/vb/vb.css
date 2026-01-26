@@ -3,9 +3,7 @@
 
   --sd-theme: 'vb';
   --sd-accordion-border-width: var(--sd-spacing-0\.5);
-  --sd-accordion-color-icon: var(--sd-color-neutral-700);
   --sd-accordion-color-text: var(--sd-color-black);
-  --sd-accordion-group-gap: -0.125rem;
   --sd-accordion-padding-block: var(--sd-spacing-4);
   --sd-accordion__indicator-color: 255, 255, 255, 0;
   --sd-aspect-16\/10: 16 / 10;
@@ -22,7 +20,6 @@
   --sd-aspect-video: 16 / 9;
   --sd-audio--inverted-color-border: var(--sd-color-white);
   --sd-audio__slide-bar--inverted-color-border: 255, 255, 255, 0.5;
-  --sd-audio__track-bar--inverted-color-border: var(--sd-color-white);
   --sd-badge--blue--inverted-color-background: var(--sd-color-white);
   --sd-badge--blue--inverted-color-text: var(--sd-color-info);
   --sd-badge--blue-color-background: var(--sd-color-primary);

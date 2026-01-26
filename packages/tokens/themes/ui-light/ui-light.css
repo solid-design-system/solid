@@ -4,9 +4,7 @@
 
   --sd-theme: 'ui-light';
   --sd-accordion-border-width: var(--sd-spacing-0\.25);
-  --sd-accordion-color-icon: var(--sd-color-primary);
   --sd-accordion-color-text: var(--sd-color-primary);
-  --sd-accordion-group-gap: -0.0625rem;
   --sd-accordion-padding-block: var(--sd-spacing-3);
   --sd-accordion__indicator-color: var(--sd-color-accent);
   --sd-aspect-16\/10: 16 / 10;
@@ -23,7 +21,6 @@
   --sd-aspect-video: 16 / 9;
   --sd-audio--inverted-color-border: var(--sd-color-white);
   --sd-audio__slide-bar--inverted-color-border: var(--sd-color-primary-400);
-  --sd-audio__track-bar--inverted-color-border: var(--sd-color-white);
   --sd-badge--blue--inverted-color-background: var(--sd-color-primary-100);
   --sd-badge--blue--inverted-color-text: var(--sd-color-primary);
   --sd-badge--blue-color-background: var(--sd-color-primary-500);

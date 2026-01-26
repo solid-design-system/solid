@@ -645,7 +645,6 @@
         "VariableID:43979:257",
         "VariableID:43979:258",
         "VariableID:43979:241",
-        "VariableID:50635:19390",
         "VariableID:43979:236",
         "VariableID:43979:237",
         "VariableID:43979:238",
@@ -756,12 +755,10 @@
         "VariableID:45014:30582",
         "VariableID:45293:4199",
         "VariableID:44921:22300",
-        "VariableID:50635:19389",
         "VariableID:44921:22302",
         "VariableID:44921:14810",
         "VariableID:44921:22299",
         "VariableID:46434:306253",
-        "VariableID:50635:23474",
         "VariableID:46961:99748",
         "VariableID:46386:74302",
         "VariableID:46386:74311",
@@ -24907,90 +24904,6 @@
         },
         "47719:0": {
           "id": "VariableID:43979:217",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:43174:55999"
-    },
-    "VariableID:50635:19389": {
-      "codeSyntax": {},
-      "description": "",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:50635:19389",
-      "key": "04bcc01dba012cec970e692da2adc8887d751157",
-      "name": "components/sd-accordion-group/gap",
-      "remote": false,
-      "resolvedType": "FLOAT",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "43174:13": -1,
-        "43174:14": -1,
-        "44883:0": -2,
-        "47719:0": -1
-      },
-      "variableCollectionId": "VariableCollectionId:43174:55999"
-    },
-    "VariableID:50635:19390": {
-      "codeSyntax": {},
-      "description": "Default icon color ",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:50635:19390",
-      "key": "17e0e83f77e49698bdb49c40b726aca11d9be180",
-      "name": "components/sd-accordion/color/icon",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "43174:13": {
-          "id": "VariableID:43979:203",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43174:14": {
-          "id": "VariableID:43979:227",
-          "type": "VARIABLE_ALIAS"
-        },
-        "44883:0": {
-          "id": "VariableID:43979:220",
-          "type": "VARIABLE_ALIAS"
-        },
-        "47719:0": {
-          "id": "VariableID:43979:203",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:43174:55999"
-    },
-    "VariableID:50635:23474": {
-      "codeSyntax": {},
-      "description": "Used for inverted dividers",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:50635:23474",
-      "key": "296c0ff1960cd46537a97a00cc9e6983b666b0ec",
-      "name": "components/sd-audio/__track-bar/--inverted/color/border",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "43174:13": {
-          "id": "VariableID:43979:227",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43174:14": {
-          "id": "VariableID:43979:227",
-          "type": "VARIABLE_ALIAS"
-        },
-        "44883:0": {
-          "id": "VariableID:43979:227",
-          "type": "VARIABLE_ALIAS"
-        },
-        "47719:0": {
-          "id": "VariableID:43979:227",
           "type": "VARIABLE_ALIAS"
         }
       },
