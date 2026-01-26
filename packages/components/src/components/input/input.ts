@@ -699,7 +699,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                       hasIconLeft ? floatingLabelHorizontalAlignmentWithIconLeft : 'left-4',
                       !this.readonly && 'transition-all duration-medium ease-out',
                       !isFloatingLabelActive || (!hasValue && (this.readonly || this.visuallyDisabled))
-                        ? textSize
+                        ? 'top-1/2 -translate-y-1/2'
                         : this.size === 'lg'
                           ? 'top-2'
                           : 'top-1'
@@ -713,7 +713,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                         'pointer-events-none leading-none',
                         !this.readonly && 'transition-all duration-medium ease-out',
                         !isFloatingLabelActive || (!hasValue && (this.readonly || this.visuallyDisabled))
-                          ? 'text-base'
+                          ? textSize
                           : 'text-xs',
                         (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
                         isFloatingLabelActive &&
