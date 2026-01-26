@@ -988,7 +988,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   <span
                     class=${cx(
                       'leading-none',
-                      (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
                       isFloatingLabelActive &&
                         !this.visuallyDisabled &&
                         !this.disabled &&
