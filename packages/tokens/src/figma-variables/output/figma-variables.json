@@ -3220,6 +3220,65 @@
       }
     },
     "components": {
+      "sd-audio": {
+        "__timestamp": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.text.black.default}"
+            }
+          }
+        },
+        "--inverted": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.white.default}"
+            }
+          }
+        },
+        "__slide-bar": {
+          "--inverted": {
+            "color": {
+              "border": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.400}"
+              }
+            }
+          }
+        }
+      },
+      "sd-accordion": {
+        "__chevron": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.text.primary.default}"
+            }
+          }
+        },
+        "color": {
+          "text": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.text.primary.default}"
+          }
+        },
+        "__indicator": {
+          "color": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.border.accent.default}"
+          }
+        },
+        "padding-block": {
+          "type": "float",
+          "value": "{ui-light.utilities.spacing.3}"
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{ui-light.utilities.sizing.0,25}"
+        }
+      },
       "sd-breadcrumb": {
         "__separator": {
           "color": {
@@ -3841,27 +3900,6 @@
           "value": "{ui-light.utilities.text.sm}"
         }
       },
-      "sd-audio": {
-        "--inverted": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.white.default}"
-            }
-          }
-        },
-        "__slide-bar": {
-          "--inverted": {
-            "color": {
-              "border": {
-                "description": "Used for inverted dividers",
-                "type": "color",
-                "value": "{ui-light.utilities.color.primary.400}"
-              }
-            }
-          }
-        }
-      },
       "sd-brandshape": {
         "--white": {
           "color": {
@@ -3907,28 +3945,6 @@
               }
             }
           }
-        }
-      },
-      "sd-accordion": {
-        "color": {
-          "text": {
-            "type": "color",
-            "value": "{ui-light.utilities.color.text.primary.default}"
-          }
-        },
-        "__indicator": {
-          "color": {
-            "type": "color",
-            "value": "{ui-light.utilities.color.border.accent.default}"
-          }
-        },
-        "padding-block": {
-          "type": "float",
-          "value": "{ui-light.utilities.spacing.3}"
-        },
-        "border-width": {
-          "type": "float",
-          "value": "{ui-light.utilities.sizing.0,25}"
         }
       },
       "navigable": {
@@ -6378,6 +6394,65 @@
       }
     },
     "components": {
+      "sd-audio": {
+        "__timestamp": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.text.primary.400}"
+            }
+          }
+        },
+        "--inverted": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            }
+          }
+        },
+        "__slide-bar": {
+          "--inverted": {
+            "color": {
+              "border": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.400}"
+              }
+            }
+          }
+        }
+      },
+      "sd-accordion": {
+        "__chevron": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.text.primary.default}"
+            }
+          }
+        },
+        "color": {
+          "text": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.text.primary.default}"
+          }
+        },
+        "__indicator": {
+          "color": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.border.accent.default}"
+          }
+        },
+        "padding-block": {
+          "type": "float",
+          "value": "{ui-dark.utilities.spacing.3}"
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{ui-dark.utilities.sizing.0,25}"
+        }
+      },
       "sd-breadcrumb": {
         "__separator": {
           "color": {
@@ -6999,27 +7074,6 @@
           "value": "{ui-dark.utilities.text.sm}"
         }
       },
-      "sd-audio": {
-        "--inverted": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.white.default}"
-            }
-          }
-        },
-        "__slide-bar": {
-          "--inverted": {
-            "color": {
-              "border": {
-                "description": "Used for inverted dividers",
-                "type": "color",
-                "value": "{ui-dark.utilities.color.primary.400}"
-              }
-            }
-          }
-        }
-      },
       "sd-brandshape": {
         "--white": {
           "color": {
@@ -7065,28 +7119,6 @@
               }
             }
           }
-        }
-      },
-      "sd-accordion": {
-        "color": {
-          "text": {
-            "type": "color",
-            "value": "{ui-dark.utilities.color.text.primary.default}"
-          }
-        },
-        "__indicator": {
-          "color": {
-            "type": "color",
-            "value": "{ui-dark.utilities.color.border.accent.default}"
-          }
-        },
-        "padding-block": {
-          "type": "float",
-          "value": "{ui-dark.utilities.spacing.3}"
-        },
-        "border-width": {
-          "type": "float",
-          "value": "{ui-dark.utilities.sizing.0,25}"
         }
       },
       "navigable": {
@@ -9536,6 +9568,65 @@
       }
     },
     "components": {
+      "sd-audio": {
+        "__timestamp": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{vb.utilities.color.text.neutral.700}"
+            }
+          }
+        },
+        "--inverted": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{vb.utilities.color.white.default}"
+            }
+          }
+        },
+        "__slide-bar": {
+          "--inverted": {
+            "color": {
+              "border": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.50)"
+              }
+            }
+          }
+        }
+      },
+      "sd-accordion": {
+        "__chevron": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{vb.utilities.color.text.neutral.600}"
+            }
+          }
+        },
+        "color": {
+          "text": {
+            "type": "color",
+            "value": "{vb.utilities.color.text.black.default}"
+          }
+        },
+        "__indicator": {
+          "color": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          }
+        },
+        "padding-block": {
+          "type": "float",
+          "value": "{vb.utilities.spacing.4}"
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{vb.utilities.sizing.0,5}"
+        }
+      },
       "sd-breadcrumb": {
         "__separator": {
           "color": {
@@ -10157,27 +10248,6 @@
           "value": "{vb.utilities.text.sm}"
         }
       },
-      "sd-audio": {
-        "--inverted": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{vb.utilities.color.white.default}"
-            }
-          }
-        },
-        "__slide-bar": {
-          "--inverted": {
-            "color": {
-              "border": {
-                "description": "Used for inverted dividers",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.50)"
-              }
-            }
-          }
-        }
-      },
       "sd-brandshape": {
         "--white": {
           "color": {
@@ -10223,28 +10293,6 @@
               }
             }
           }
-        }
-      },
-      "sd-accordion": {
-        "color": {
-          "text": {
-            "type": "color",
-            "value": "{vb.utilities.color.text.black.default}"
-          }
-        },
-        "__indicator": {
-          "color": {
-            "type": "color",
-            "value": "rgba(255, 255, 255, 0.00)"
-          }
-        },
-        "padding-block": {
-          "type": "float",
-          "value": "{vb.utilities.spacing.4}"
-        },
-        "border-width": {
-          "type": "float",
-          "value": "{vb.utilities.sizing.0,5}"
         }
       },
       "navigable": {
@@ -12694,6 +12742,65 @@
       }
     },
     "components": {
+      "sd-audio": {
+        "__timestamp": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{kid.utilities.color.text.black.default}"
+            }
+          }
+        },
+        "--inverted": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{kid.utilities.color.white.default}"
+            }
+          }
+        },
+        "__slide-bar": {
+          "--inverted": {
+            "color": {
+              "border": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.50)"
+              }
+            }
+          }
+        }
+      },
+      "sd-accordion": {
+        "__chevron": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{kid.utilities.color.text.neutral.600}"
+            }
+          }
+        },
+        "color": {
+          "text": {
+            "type": "color",
+            "value": "{kid.utilities.color.text.black.default}"
+          }
+        },
+        "__indicator": {
+          "color": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          }
+        },
+        "padding-block": {
+          "type": "float",
+          "value": "{kid.utilities.spacing.4}"
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{kid.utilities.sizing.0,25}"
+        }
+      },
       "sd-breadcrumb": {
         "__separator": {
           "color": {
@@ -13315,27 +13422,6 @@
           "value": "{kid.utilities.text.xs}"
         }
       },
-      "sd-audio": {
-        "--inverted": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{kid.utilities.color.white.default}"
-            }
-          }
-        },
-        "__slide-bar": {
-          "--inverted": {
-            "color": {
-              "border": {
-                "description": "Used for inverted dividers",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.50)"
-              }
-            }
-          }
-        }
-      },
       "sd-brandshape": {
         "--white": {
           "color": {
@@ -13381,28 +13467,6 @@
               }
             }
           }
-        }
-      },
-      "sd-accordion": {
-        "color": {
-          "text": {
-            "type": "color",
-            "value": "{kid.utilities.color.text.black.default}"
-          }
-        },
-        "__indicator": {
-          "color": {
-            "type": "color",
-            "value": "rgba(255, 255, 255, 0.00)"
-          }
-        },
-        "padding-block": {
-          "type": "float",
-          "value": "{kid.utilities.spacing.4}"
-        },
-        "border-width": {
-          "type": "float",
-          "value": "{kid.utilities.sizing.0,25}"
         }
       },
       "navigable": {

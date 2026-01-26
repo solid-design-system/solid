@@ -760,7 +760,9 @@
         "VariableID:44921:22299",
         "VariableID:46434:306253",
         "VariableID:46961:99748",
+        "VariableID:44966:31913",
         "VariableID:46386:74302",
+        "VariableID:44650:36286",
         "VariableID:46386:74311",
         "VariableID:46386:74312",
         "VariableID:46386:72148",
@@ -1510,6 +1512,38 @@
       },
       "variableCollectionId": "VariableCollectionId:30640:10055"
     },
+        "VariableID:44650:36286": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:44650:36286",
+      "key": "8e51e986ef00e9ed99bb8fc6646a323f6932b1be",
+      "name": "components/sd-audio/__timestamp/color/text",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "id": "VariableID:43979:275",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43174:14": {
+          "id": "VariableID:43979:269",
+          "type": "VARIABLE_ALIAS"
+        },
+        "44883:0": {
+          "id": "VariableID:43979:278",
+          "type": "VARIABLE_ALIAS"
+        },
+        "47719:0": {
+          "id": "VariableID:43979:275",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
     "VariableID:30640:10073": {
       "codeSyntax": {},
       "description": "",
@@ -1621,6 +1655,38 @@
         }
       },
       "variableCollectionId": "VariableCollectionId:30640:10055"
+    },
+    "VariableID:44966:31913": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:44966:31913",
+      "key": "9d03277945d1def793bea23053cf2644d4ea5532",
+      "name": "components/sd-accordion/__chevron/color/text",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "id": "VariableID:43979:272",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43174:14": {
+          "id": "VariableID:43979:272",
+          "type": "VARIABLE_ALIAS"
+        },
+        "44883:0": {
+          "id": "VariableID:43979:313",
+          "type": "VARIABLE_ALIAS"
+        },
+        "47719:0": {
+          "id": "VariableID:43979:313",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
     },
     "VariableID:30640:10077": {
       "codeSyntax": {},
