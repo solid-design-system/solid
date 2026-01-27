@@ -24,6 +24,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart truncated-dropdown - The truncated dropdown containing the truncated breadcrumbs.
  *
  * @cssproperty --sd-breadcrumb__separator-color - The color of the breadcrumb separators.
+ * @cssproperty --sd-breadcrumb__separator--current-color - The color of the current breadcrumb separators.
  */
 @customElement('sd-breadcrumb')
 export default class SdBreadcrumb extends SolidElement {
@@ -167,7 +168,7 @@ export default class SdBreadcrumb extends SolidElement {
       }
 
       ::slotted(sd-breadcrumb-item:nth-last-child(2))::after {
-        @apply lg:bg-accent;
+        @apply lg:sd-breadcrumb__separator--current-color;
       }
 
       sd-dropdown,
