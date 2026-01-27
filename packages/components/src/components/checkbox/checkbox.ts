@@ -36,6 +36,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  *
  * @cssproperty --sd-checkbox-border-width - The border width of the checkbox.
  * @cssproperty --sd-form-control-color-border - The color border for form controls.
+ * @cssproperty --sd-checkbox--checked--hovered-color-border - The border color of the checkbox when checked and hovered.
  */
 @customElement('sd-checkbox')
 export default class SdCheckbox extends SolidElement implements SolidFormControl {
@@ -249,7 +250,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             ? ' control--indeterminate'
             : ''}"
           class=${cx(
-            'relative flex flex-shrink-0 items-center justify-center border sd-checkbox-border-width rounded-sm h-4 w-4',
+            'relative flex flex-shrink-0 items-center justify-center border sd-checkbox-border-width sd-form-control-color-border rounded-sm h-4 w-4',
             'transition-colors ease-in-out duration-medium group-hover:duration-fast',
             'peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary',
             {
@@ -262,11 +263,11 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
               disabledChecked: 'border-neutral-500 bg-neutral-500',
               disabled: 'border-neutral-500',
               visuallyDisabled: 'border-neutral-500',
-              invalidIndeterminate: 'border-error bg-error group-hover:bg-error-400',
-              invalid: 'border-error group-hover:bg-neutral-200',
+              invalidIndeterminate: 'border-error bg-error group-hover:bg-error-400 group-hover:border-error-400',
+              invalid: 'border-error bg-white group-hover:border-error-400',
               filled:
-                'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent group-hover:bg-accent-550',
-              default: 'form-control-color-border hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
+                'border-accent hover:border-accent-550 group-hover:sd-checkbox--checked--hovered-color-border bg-accent group-hover:bg-accent-550',
+              default: 'hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
             }[checkboxState]
           )}
         >
@@ -285,7 +286,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
                   disabled: '',
                   visuallyDisabled: '',
                   invalidIndeterminate: ' bg-error group-hover:bg-error-400',
-                  invalid: 'group-hover:bg-neutral-200',
+                  invalid: 'group-hover:bg-white',
                   filled: 'bg-accent group-hover:bg-accent-550',
                   default: 'hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
                 }[checkboxState]
@@ -318,11 +319,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           id="label"
           class=${cx(
             'select-none inline-block ml-2',
-            this.disabled || this.visuallyDisabled
-              ? 'text-neutral-500'
-              : this.showInvalidStyle
-                ? 'text-error'
-                : 'text-black'
+            this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-black'
           )}
         >
           <slot></slot>
