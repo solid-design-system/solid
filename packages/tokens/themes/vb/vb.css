@@ -3,9 +3,9 @@
 
   --sd-theme: 'vb';
   --sd-accordion-border-width: var(--sd-spacing-0\.5);
+  --sd-accordion-color-icon-fill: var(--sd-color-neutral-700);
   --sd-accordion-color-text: var(--sd-color-black);
   --sd-accordion-padding-block: var(--sd-spacing-4);
-  --sd-accordion__chevron-color-text: 255, 255, 255, 0.4;
   --sd-accordion__indicator-color: 255, 255, 255, 0;
   --sd-aspect-16\/10: 16 / 10;
   --sd-aspect-21\/9: 21 / 9;
@@ -19,9 +19,8 @@
   --sd-aspect-golden-ratio: 1.6180339887498948482 / 1;
   --sd-aspect-square: 1 / 1;
   --sd-aspect-video: 16 / 9;
-  --sd-audio--inverted-color-border: var(--sd-color-white);
   --sd-audio__slide-bar--inverted-color-border: 255, 255, 255, 0.5;
-  --sd-audio__timestamp-color-text: var(--sd-color-neutral-700);
+  --sd-audio__track-bar--inverted-color-border: var(--sd-color-white);
   --sd-badge--blue--inverted-color-background: var(--sd-color-white);
   --sd-badge--blue--inverted-color-text: var(--sd-color-info);
   --sd-badge--blue-color-background: var(--sd-color-primary);
@@ -225,7 +224,7 @@
   --sd-color-text-white: var(--sd-color-white);
   --sd-color-warning: 243, 94, 1;
   --sd-color-white: 255, 255, 255;
-  --sd-combobox--default-color-icon: var(--sd-color-primary);
+  --sd-combobox--default-color-icon-fill: var(--sd-color-primary);
   --sd-combobox--default-color-text: var(--sd-color-primary);
   --sd-combobox__tag-border-width: var(--sd-spacing-0\.5);
   --sd-datepicker__date-item--current-font-weight: var(--sd-font-weight-bold);
@@ -267,7 +266,8 @@
   --sd-form-control-color-border: var(--sd-color-black);
   --sd-form-control-color-icon-fill: var(--sd-color-neutral-700);
   --sd-form-control-color-text: var(--sd-color-neutral-700);
-  --sd-form-control__tooltip-color-icon: var(--sd-color-black);
+  --sd-form-control__tooltip-color-icon-fill: var(--sd-color-black);
+  --sd-header-color-background: var(--sd-color-white);
   --sd-header-padding-bottom: var(--sd-spacing-0\.5);
   --sd-header__underline-color-background: var(--sd-color-neutral-200);
   --sd-header__underline-height: var(--sd-spacing-0\.25);
@@ -287,16 +287,15 @@
   --sd-map-marker-cluster-color-icon-fill: var(--sd-color-primary);
   --sd-map-marker-font-size: var(--sd-spacing-3);
   --sd-map-marker-main-color-icon-fill: var(--sd-color-primary);
-  --sd-menu--disabled-color-icon: 0, 0, 0, 0.2;
+  --sd-menu--disabled-color-icon-fill: 0, 0, 0, 0.2;
   --sd-menu--disabled-color-text: 0, 0, 0, 0.2;
-  --sd-menu-color-icon: var(--sd-color-black);
+  --sd-menu-color-icon-fill: var(--sd-color-black);
   --sd-menu-color-text: var(--sd-color-black);
   --sd-navigable-border-radius: var(--sd-spacing-0\.5);
   --sd-navigable-font-size: 0.875rem;
   --sd-navigable__current-indicator-border-radius: 624.9375rem;
   --sd-navigable__current-indicator-height: 0.1875rem;
   --sd-navigable__current-indicator-width: 0.1875rem;
-  --sd-navigation-item--current-color-text: var(--sd-color-black);
   --sd-navigation-item-color-text: var(--sd-color-neutral-700);
   --sd-notification--error-color-background: 253, 237, 237;
   --sd-notification--info-color-background: 237, 240, 244;
@@ -324,8 +323,6 @@
   --sd-pagination--inverted-border: var(--sd-color-white);
   --sd-panel-color-border: 255, 255, 255, 0;
   --sd-quickfact--expandable-color-text: var(--sd-color-black);
-  --sd-quickfact__expandable-color-description-default-text: var(--sd-color-neutral-700);
-  --sd-quickfact__expandable-color-title-default-text: var(--sd-color-black);
   --sd-radio--checked--default-color-background: var(--sd-color-primary);
   --sd-radio--checked--default__icon-color-background: var(--sd-color-white);
   --sd-radio--checked--hover-color-background: var(--sd-color-primary-600);

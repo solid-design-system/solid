@@ -26,8 +26,8 @@
   color: rgba(var(--sd-form-control-color-text, rgba(var(--sd-color-black))));
 }
 
-@utility form-control__tooltip-color-icon {
-  background-color: rgba(var(--sd-form-control__tooltip-color-icon, rgba(var(--sd-color-primary))));
+@utility form-control__tooltip-color-icon-fill {
+  fill: rgba(var(--sd-form-control__tooltip-color-icon-fill, rgba(var(--sd-color-primary))));
 }
 
 @utility informational-gradient--primary-800-color-background {
@@ -78,6 +78,10 @@
  border-width: var(--sd-accordion-border-width, var(--sd-spacing-0\.25));
 }
 
+@utility sd-accordion-color-icon-fill {
+  fill: rgba(var(--sd-accordion-color-icon-fill, rgba(var(--sd-color-primary))));
+}
+
 @utility sd-accordion-color-text {
   color: rgba(var(--sd-accordion-color-text, rgba(var(--sd-color-primary))));
 }
@@ -86,24 +90,16 @@
  padding-block: var(--sd-accordion-padding-block, var(--sd-spacing-3));
 }
 
-@utility sd-accordion__chevron-color-text {
-  color: rgba(var(--sd-accordion__chevron-color-text, rgba(var(--sd-color-primary))));
-}
-
 @utility sd-accordion__indicator-color {
   background-color: rgba(var(--sd-accordion__indicator-color, rgba(var(--sd-color-accent))));
-}
-
-@utility sd-audio--inverted-color-border {
-  border-color: rgba(var(--sd-audio--inverted-color-border, rgba(var(--sd-color-white))));
 }
 
 @utility sd-audio__slide-bar--inverted-color-border {
   border-color: rgba(var(--sd-audio__slide-bar--inverted-color-border, rgba(var(--sd-color-primary-400))));
 }
 
-@utility sd-audio__timestamp-color-text {
-  color: rgba(var(--sd-audio__timestamp-color-text, rgba(var(--sd-color-black))));
+@utility sd-audio__track-bar--inverted-color-border {
+  border-color: rgba(var(--sd-audio__track-bar--inverted-color-border, rgba(var(--sd-color-white))));
 }
 
 @utility sd-badge--blue--inverted-color-background {
@@ -426,8 +422,8 @@
   font-weight: var(--sd-chip-font-weight, var(--sd-font-weight-normal));
 }
 
-@utility sd-combobox--default-color-icon {
-  background-color: rgba(var(--sd-combobox--default-color-icon, rgba(var(--sd-color-primary))));
+@utility sd-combobox--default-color-icon-fill {
+  fill: rgba(var(--sd-combobox--default-color-icon-fill, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-combobox--default-color-text {
@@ -534,6 +530,10 @@
   background-color: rgba(var(--sd-footnotes--target--inverted-color-background, rgba(var(--sd-color-primary-800))));
 }
 
+@utility sd-header-color-background {
+  background-color: rgba(var(--sd-header-color-background, rgba(var(--sd-color-white))));
+}
+
 @utility sd-header-padding-bottom {
  padding-bottom: var(--sd-header-padding-bottom, 0);
 }
@@ -594,24 +594,20 @@
   fill: rgba(var(--sd-map-marker-main-color-icon-fill, rgba(var(--sd-color-accent-500))));
 }
 
-@utility sd-menu--disabled-color-icon {
-  background-color: rgba(var(--sd-menu--disabled-color-icon, rgba(var(--sd-color-neutral-500))));
+@utility sd-menu--disabled-color-icon-fill {
+  fill: rgba(var(--sd-menu--disabled-color-icon-fill, rgba(var(--sd-color-neutral-500))));
 }
 
 @utility sd-menu--disabled-color-text {
   color: rgba(var(--sd-menu--disabled-color-text, rgba(var(--sd-color-neutral-500))));
 }
 
-@utility sd-menu-color-icon {
-  background-color: rgba(var(--sd-menu-color-icon, rgba(var(--sd-color-primary))));
+@utility sd-menu-color-icon-fill {
+  fill: rgba(var(--sd-menu-color-icon-fill, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-menu-color-text {
   color: rgba(var(--sd-menu-color-text, rgba(var(--sd-color-primary))));
-}
-
-@utility sd-navigation-item--current-color-text {
-  color: rgba(var(--sd-navigation-item--current-color-text, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-navigation-item-color-text {
@@ -656,14 +652,6 @@
 
 @utility sd-quickfact--expandable-color-text {
   color: rgba(var(--sd-quickfact--expandable-color-text, rgba(var(--sd-color-primary))));
-}
-
-@utility sd-quickfact__expandable-color-description-default-text {
-  color: rgba(var(--sd-quickfact__expandable-color-description-default-text, rgba(var(--sd-color-black))));
-}
-
-@utility sd-quickfact__expandable-color-title-default-text {
-  color: rgba(var(--sd-quickfact__expandable-color-title-default-text, rgba(var(--sd-color-black))));
 }
 
 @utility sd-radio--checked--default-color-background {

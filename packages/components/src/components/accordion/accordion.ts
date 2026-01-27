@@ -41,11 +41,10 @@ import SolidElement from '../../internal/solid-element';
  * @animation accordion.hide - The animation to use when hiding accordion. You can use `height: auto` with this animation.
  *
  * @cssproperty --sd-accordion-border-width - The accordion border width.
- * @cssproperty --sd-accordion-color-background - The accordion background color.
  * @cssproperty --sd-accordion-color-text - The accordion color text.
  * @cssproperty --sd-accordion-padding-block - The accordion vertical padding value.
- * @cssproperty --sd-accordion__chevron-color-text - The accordion chevron color.
  * @cssproperty --sd-accordion__indicator-color - The accordion indicator color.
+ * @cssproperty --sd-accordion-color-icon - The accordion icon color.
  */
 @customElement('sd-accordion')
 export default class SdAccordion extends SolidElement {
@@ -246,7 +245,7 @@ export default class SdAccordion extends SolidElement {
       }
 
       [part='summary-icon'] {
-        color: var(--sd-accordion__chevron-color-text);
+        color: var(--sd-accordion-color-icon);
       }
     `
   ];

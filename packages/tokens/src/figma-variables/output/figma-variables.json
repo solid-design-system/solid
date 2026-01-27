@@ -1014,16 +1014,6 @@
           "description": "16px",
           "type": "float",
           "value": "16"
-        },
-        "3xl": {
-          "description": "32px",
-          "type": "float",
-          "value": "32"
-        },
-        "4xl": {
-          "description": "40px",
-          "type": "float",
-          "value": "40"
         }
       },
       "leading": {
@@ -1051,11 +1041,6 @@
           "description": "Used for text base (size: 16, line-height: 150%)",
           "type": "float",
           "value": "36"
-        },
-        "12": {
-          "description": "Used for text 3xl (size: 32, line-height: 120%)",
-          "type": "float",
-          "value": "48"
         },
         "9,5": {
           "description": "Used for text 3xl, mobile text 4xl (size: 32, line-height: 120%)",
@@ -3234,6 +3219,35 @@
           }
         }
       },
+      "sd-header": {
+        "color": {
+          "background": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.background.white.default}"
+          },
+          "_shadow": {
+            "description": "Deprecated?",
+            "type": "color",
+            "value": "rgba(24, 24, 24, 0.40)"
+          }
+        },
+        "padding-bottom": {
+          "type": "float",
+          "value": "0"
+        },
+        "__underline": {
+          "height": {
+            "type": "float",
+            "value": "{ui-light.utilities.sizing.2}"
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        }
+      },
       "sd-tag": {
         "--selected": {
           "--default": {
@@ -3354,7 +3368,7 @@
         },
         "__tooltip": {
           "color": {
-            "icon": {
+            "icon-fill": {
               "type": "color",
               "value": "{ui-light.utilities.color.icon-fill.primary.default}"
             }
@@ -3812,35 +3826,6 @@
           "value": "{ui-light.utilities.text.sm}"
         }
       },
-      "sd-audio": {
-        "--inverted": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.white.default}"
-            }
-          }
-        },
-        "__timestamp": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.black.default}"
-            }
-          }
-        },
-        "__slide-bar": {
-          "--inverted": {
-            "color": {
-              "border": {
-                "description": "Used for inverted dividers",
-                "type": "color",
-                "value": "{ui-light.utilities.color.primary.400}"
-              }
-            }
-          }
-        }
-      },
       "sd-brandshape": {
         "--white": {
           "color": {
@@ -3890,14 +3875,14 @@
       },
       "sd-accordion": {
         "color": {
-          "_shadow": {
-            "description": "Deprecated",
-            "type": "color",
-            "value": "rgba(24, 24, 24, 0.40)"
-          },
           "text": {
             "type": "color",
             "value": "{ui-light.utilities.color.text.primary.default}"
+          },
+          "icon-fill": {
+            "description": "Default icon color ",
+            "type": "color",
+            "value": "{ui-light.utilities.color.primary.default}"
           }
         },
         "__indicator": {
@@ -3912,33 +3897,7 @@
         },
         "border-width": {
           "type": "float",
-          "value": "{core.ui.sizing.px}"
-        },
-        "__chevron": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.default}"
-            }
-          }
-        }
-      },
-      "sd-header": {
-        "padding-bottom": {
-          "type": "float",
-          "value": "0"
-        },
-        "__underline": {
-          "height": {
-            "type": "float",
-            "value": "{ui-light.utilities.sizing.2}"
-          },
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "rgba(255, 255, 255, 0.00)"
-            }
-          }
+          "value": "{ui-light.utilities.sizing.0,25}"
         }
       },
       "navigable": {
@@ -3962,7 +3921,7 @@
         },
         "font-size": {
           "type": "float",
-          "value": "{core.text-base}"
+          "value": "{ui-light.utilities.text.base}"
         },
         "_docs": {
           "description": "Used in: sd-tab, sd-navigation-item and sd-menu",
@@ -3979,14 +3938,6 @@
           "_icon": {
             "type": "color",
             "value": "{ui-light.utilities.color.text.primary.default}"
-          }
-        },
-        "--current": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.default}"
-            }
           }
         }
       },
@@ -4361,6 +4312,30 @@
           }
         }
       },
+      "sd-audio": {
+        "__slide-bar": {
+          "--inverted": {
+            "color": {
+              "border": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.400}"
+              }
+            }
+          }
+        },
+        "__track-bar": {
+          "--inverted": {
+            "color": {
+              "border": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "{ui-light.utilities.color.white.default}"
+              }
+            }
+          }
+        }
+      },
       "sd-step": {
         "__tail": {
           "border-width": {
@@ -4451,22 +4426,6 @@
         }
       },
       "sd-quickfact": {
-        "__expandable": {
-          "color": {
-            "description-default": {
-              "text": {
-                "type": "color",
-                "value": "{ui-light.utilities.color.text.black.default}"
-              }
-            },
-            "title-default": {
-              "text": {
-                "type": "color",
-                "value": "{ui-light.utilities.color.text.black.default}"
-              }
-            }
-          }
-        },
         "--expandable": {
           "color": {
             "text": {
@@ -4675,14 +4634,14 @@
             "type": "color",
             "value": "{ui-light.utilities.color.text.primary.default}"
           },
-          "icon": {
+          "icon-fill": {
             "type": "color",
             "value": "{ui-light.utilities.color.icon-fill.primary.default}"
           }
         },
         "--disabled": {
           "color": {
-            "icon": {
+            "icon-fill": {
               "type": "color",
               "value": "{ui-light.utilities.color.icon-fill.neutral.500}"
             },
@@ -4809,7 +4768,7 @@
               "type": "color",
               "value": "{ui-light.utilities.color.primary.default}"
             },
-            "icon": {
+            "icon-fill": {
               "type": "color",
               "value": "{ui-light.utilities.color.primary.default}"
             }
@@ -4856,7 +4815,7 @@
       "sd-dropdown": {
         "color": {
           "background": {
-            "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
+            "description": "Default background color. Used for sd-chip, sd-flag, sd-container. NOTE: kid value should be reference to kid.white.600, had to be removed due to a bug that blocked fetching tokens in code.",
             "type": "color",
             "value": "{ui-light.utilities.color.white.default}"
           }
@@ -4871,6 +4830,12 @@
               "value": "{ui-light.utilities.color.neutral.500}"
             }
           }
+        }
+      },
+      "sd-accordion-group": {
+        "_gap": {
+          "type": "float",
+          "value": "-1"
         }
       }
     }
@@ -6402,6 +6367,35 @@
           }
         }
       },
+      "sd-header": {
+        "color": {
+          "background": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.primary.default}"
+          },
+          "_shadow": {
+            "description": "Deprecated?",
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          }
+        },
+        "padding-bottom": {
+          "type": "float",
+          "value": "0"
+        },
+        "__underline": {
+          "height": {
+            "type": "float",
+            "value": "{ui-dark.utilities.sizing.2}"
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        }
+      },
       "sd-tag": {
         "--selected": {
           "--default": {
@@ -6522,7 +6516,7 @@
         },
         "__tooltip": {
           "color": {
-            "icon": {
+            "icon-fill": {
               "type": "color",
               "value": "{ui-dark.utilities.color.icon-fill.primary.default}"
             }
@@ -6980,35 +6974,6 @@
           "value": "{ui-dark.utilities.text.sm}"
         }
       },
-      "sd-audio": {
-        "--inverted": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.white.default}"
-            }
-          }
-        },
-        "__timestamp": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.400}"
-            }
-          }
-        },
-        "__slide-bar": {
-          "--inverted": {
-            "color": {
-              "border": {
-                "description": "Used for inverted dividers",
-                "type": "color",
-                "value": "{ui-dark.utilities.color.primary.400}"
-              }
-            }
-          }
-        }
-      },
       "sd-brandshape": {
         "--white": {
           "color": {
@@ -7058,14 +7023,14 @@
       },
       "sd-accordion": {
         "color": {
-          "_shadow": {
-            "description": "Deprecated",
-            "type": "color",
-            "value": "rgba(255, 255, 255, 0.00)"
-          },
           "text": {
             "type": "color",
             "value": "{ui-dark.utilities.color.text.primary.default}"
+          },
+          "icon-fill": {
+            "description": "Default icon color ",
+            "type": "color",
+            "value": "{ui-dark.utilities.color.white.default}"
           }
         },
         "__indicator": {
@@ -7080,33 +7045,7 @@
         },
         "border-width": {
           "type": "float",
-          "value": "{core.ui.sizing.px}"
-        },
-        "__chevron": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.default}"
-            }
-          }
-        }
-      },
-      "sd-header": {
-        "padding-bottom": {
-          "type": "float",
-          "value": "0"
-        },
-        "__underline": {
-          "height": {
-            "type": "float",
-            "value": "{ui-dark.utilities.sizing.2}"
-          },
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "rgba(255, 255, 255, 0.00)"
-            }
-          }
+          "value": "{ui-dark.utilities.sizing.0,25}"
         }
       },
       "navigable": {
@@ -7130,7 +7069,7 @@
         },
         "font-size": {
           "type": "float",
-          "value": "{core.text-base}"
+          "value": "{ui-dark.utilities.text.base}"
         },
         "_docs": {
           "description": "Used in: sd-tab, sd-navigation-item and sd-menu",
@@ -7147,14 +7086,6 @@
           "_icon": {
             "type": "color",
             "value": "{ui-dark.utilities.color.text.primary.default}"
-          }
-        },
-        "--current": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.default}"
-            }
           }
         }
       },
@@ -7529,6 +7460,30 @@
           }
         }
       },
+      "sd-audio": {
+        "__slide-bar": {
+          "--inverted": {
+            "color": {
+              "border": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.400}"
+              }
+            }
+          }
+        },
+        "__track-bar": {
+          "--inverted": {
+            "color": {
+              "border": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.white.default}"
+              }
+            }
+          }
+        }
+      },
       "sd-step": {
         "__tail": {
           "border-width": {
@@ -7619,22 +7574,6 @@
         }
       },
       "sd-quickfact": {
-        "__expandable": {
-          "color": {
-            "description-default": {
-              "text": {
-                "type": "color",
-                "value": "{ui-dark.utilities.color.text.black.default}"
-              }
-            },
-            "title-default": {
-              "text": {
-                "type": "color",
-                "value": "{ui-dark.utilities.color.text.black.default}"
-              }
-            }
-          }
-        },
         "--expandable": {
           "color": {
             "text": {
@@ -7843,14 +7782,14 @@
             "type": "color",
             "value": "{ui-dark.utilities.color.text.primary.default}"
           },
-          "icon": {
+          "icon-fill": {
             "type": "color",
             "value": "{ui-dark.utilities.color.icon-fill.primary.default}"
           }
         },
         "--disabled": {
           "color": {
-            "icon": {
+            "icon-fill": {
               "type": "color",
               "value": "{ui-dark.utilities.color.icon-fill.neutral.500}"
             },
@@ -7977,7 +7916,7 @@
               "type": "color",
               "value": "{ui-dark.utilities.color.white.default}"
             },
-            "icon": {
+            "icon-fill": {
               "type": "color",
               "value": "{ui-dark.utilities.color.white.default}"
             }
@@ -8024,7 +7963,7 @@
       "sd-dropdown": {
         "color": {
           "background": {
-            "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
+            "description": "Default background color. Used for sd-chip, sd-flag, sd-container. NOTE: kid value should be reference to kid.white.600, had to be removed due to a bug that blocked fetching tokens in code.",
             "type": "color",
             "value": "{ui-dark.utilities.color.primary.900}"
           }
@@ -8039,6 +7978,12 @@
               "value": "{ui-dark.utilities.color.neutral.500}"
             }
           }
+        }
+      },
+      "sd-accordion-group": {
+        "_gap": {
+          "type": "float",
+          "value": "-1"
         }
       }
     }
@@ -8390,17 +8335,17 @@
               "40%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
-                "value": "rgba(24, 24, 24, 0.00)"
+                "value": "rgba(0, 0, 0, 0.00)"
               },
               "0%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
-                "value": "rgba(24, 24, 24, 0.00)"
+                "value": "rgba(0, 0, 0, 0.00)"
               },
               "10%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
-                "value": "rgba(24, 24, 24, 0.10)"
+                "value": "rgba(0, 0, 0, 0.10)"
               }
             }
           }
@@ -9570,6 +9515,35 @@
           }
         }
       },
+      "sd-header": {
+        "color": {
+          "background": {
+            "type": "color",
+            "value": "{vb.utilities.color.background.white.default}"
+          },
+          "_shadow": {
+            "description": "Deprecated?",
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.20)"
+          }
+        },
+        "padding-bottom": {
+          "type": "float",
+          "value": "{vb.utilities.spacing.0,5}"
+        },
+        "__underline": {
+          "height": {
+            "type": "float",
+            "value": "{vb.utilities.sizing.0,25}"
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{core.vb.grey.200}"
+            }
+          }
+        }
+      },
       "sd-tag": {
         "--selected": {
           "--default": {
@@ -9690,7 +9664,7 @@
         },
         "__tooltip": {
           "color": {
-            "icon": {
+            "icon-fill": {
               "type": "color",
               "value": "{vb.utilities.color.black.default}"
             }
@@ -10148,35 +10122,6 @@
           "value": "{vb.utilities.text.sm}"
         }
       },
-      "sd-audio": {
-        "--inverted": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{vb.utilities.color.white.default}"
-            }
-          }
-        },
-        "__timestamp": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{vb.utilities.color.text.neutral.700}"
-            }
-          }
-        },
-        "__slide-bar": {
-          "--inverted": {
-            "color": {
-              "border": {
-                "description": "Used for inverted dividers",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.50)"
-              }
-            }
-          }
-        }
-      },
       "sd-brandshape": {
         "--white": {
           "color": {
@@ -10226,14 +10171,14 @@
       },
       "sd-accordion": {
         "color": {
-          "_shadow": {
-            "description": "Deprecated",
-            "type": "color",
-            "value": "rgba(24, 24, 24, 0.40)"
-          },
           "text": {
             "type": "color",
             "value": "{vb.utilities.color.text.black.default}"
+          },
+          "icon-fill": {
+            "description": "Default icon color ",
+            "type": "color",
+            "value": "{vb.utilities.color.neutral.700}"
           }
         },
         "__indicator": {
@@ -10248,33 +10193,7 @@
         },
         "border-width": {
           "type": "float",
-          "value": "{core.ui.sizing.0,5}"
-        },
-        "__chevron": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{vb.utilities.color.text.neutral.600}"
-            }
-          }
-        }
-      },
-      "sd-header": {
-        "padding-bottom": {
-          "type": "float",
-          "value": "{vb.utilities.spacing.0,5}"
-        },
-        "__underline": {
-          "height": {
-            "type": "float",
-            "value": "{vb.utilities.sizing.0,25}"
-          },
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{core.vb.grey.200}"
-            }
-          }
+          "value": "{vb.utilities.sizing.0,5}"
         }
       },
       "navigable": {
@@ -10298,7 +10217,7 @@
         },
         "font-size": {
           "type": "float",
-          "value": "{core.text-sm}"
+          "value": "{vb.utilities.text.sm}"
         },
         "_docs": {
           "description": "Used in: sd-tab, sd-navigation-item and sd-menu",
@@ -10315,14 +10234,6 @@
           "_icon": {
             "type": "color",
             "value": "{vb.utilities.color.text.black.default}"
-          }
-        },
-        "--current": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{vb.utilities.color.text.black.default}"
-            }
           }
         }
       },
@@ -10697,6 +10608,30 @@
           }
         }
       },
+      "sd-audio": {
+        "__slide-bar": {
+          "--inverted": {
+            "color": {
+              "border": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.50)"
+              }
+            }
+          }
+        },
+        "__track-bar": {
+          "--inverted": {
+            "color": {
+              "border": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "{vb.utilities.color.white.default}"
+              }
+            }
+          }
+        }
+      },
       "sd-step": {
         "__tail": {
           "border-width": {
@@ -10787,22 +10722,6 @@
         }
       },
       "sd-quickfact": {
-        "__expandable": {
-          "color": {
-            "description-default": {
-              "text": {
-                "type": "color",
-                "value": "{core.vb.grey.620}"
-              }
-            },
-            "title-default": {
-              "text": {
-                "type": "color",
-                "value": "{vb.utilities.color.text.black.default}"
-              }
-            }
-          }
-        },
         "--expandable": {
           "color": {
             "text": {
@@ -11011,14 +10930,14 @@
             "type": "color",
             "value": "{vb.utilities.color.text.black.default}"
           },
-          "icon": {
+          "icon-fill": {
             "type": "color",
             "value": "{vb.utilities.color.text.black.default}"
           }
         },
         "--disabled": {
           "color": {
-            "icon": {
+            "icon-fill": {
               "type": "color",
               "value": "rgba(0, 0, 0, 0.20)"
             },
@@ -11145,7 +11064,7 @@
               "type": "color",
               "value": "{vb.utilities.color.primary.500}"
             },
-            "icon": {
+            "icon-fill": {
               "type": "color",
               "value": "{vb.utilities.color.primary.500}"
             }
@@ -11192,7 +11111,7 @@
       "sd-dropdown": {
         "color": {
           "background": {
-            "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
+            "description": "Default background color. Used for sd-chip, sd-flag, sd-container. NOTE: kid value should be reference to kid.white.600, had to be removed due to a bug that blocked fetching tokens in code.",
             "type": "color",
             "value": "{vb.utilities.color.white.default}"
           }
@@ -11207,6 +11126,12 @@
               "value": "{vb.utilities.color.background.neutral.400}"
             }
           }
+        }
+      },
+      "sd-accordion-group": {
+        "_gap": {
+          "type": "float",
+          "value": "-2"
         }
       }
     }
@@ -11558,17 +11483,17 @@
               "40%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
-                "value": "rgba(24, 24, 24, 0.00)"
+                "value": "rgba(5, 21, 48, 0.20)"
               },
               "0%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
-                "value": "rgba(24, 24, 24, 0.00)"
+                "value": "rgba(5, 21, 48, 0.00)"
               },
               "10%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
-                "value": "rgba(24, 24, 24, 0.10)"
+                "value": "rgba(5, 21, 48, 0.10)"
               }
             }
           }
@@ -12738,6 +12663,35 @@
           }
         }
       },
+      "sd-header": {
+        "color": {
+          "background": {
+            "type": "color",
+            "value": "{kid.utilities.color.background.white.default}"
+          },
+          "_shadow": {
+            "description": "Deprecated?",
+            "type": "color",
+            "value": "rgba(5, 21, 48, 0.20)"
+          }
+        },
+        "padding-bottom": {
+          "type": "float",
+          "value": "0"
+        },
+        "__underline": {
+          "height": {
+            "type": "float",
+            "value": "{kid.utilities.sizing.2}"
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        }
+      },
       "sd-tag": {
         "--selected": {
           "--default": {
@@ -12858,7 +12812,7 @@
         },
         "__tooltip": {
           "color": {
-            "icon": {
+            "icon-fill": {
               "type": "color",
               "value": "{kid.utilities.color.black.default}"
             }
@@ -13316,35 +13270,6 @@
           "value": "{kid.utilities.text.xs}"
         }
       },
-      "sd-audio": {
-        "--inverted": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{kid.utilities.color.white.default}"
-            }
-          }
-        },
-        "__timestamp": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.text.black.default}"
-            }
-          }
-        },
-        "__slide-bar": {
-          "--inverted": {
-            "color": {
-              "border": {
-                "description": "Used for inverted dividers",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.50)"
-              }
-            }
-          }
-        }
-      },
       "sd-brandshape": {
         "--white": {
           "color": {
@@ -13394,14 +13319,14 @@
       },
       "sd-accordion": {
         "color": {
-          "_shadow": {
-            "description": "Deprecated",
-            "type": "color",
-            "value": "rgba(24, 24, 24, 0.40)"
-          },
           "text": {
             "type": "color",
             "value": "{kid.utilities.color.text.black.default}"
+          },
+          "icon-fill": {
+            "description": "Default icon color ",
+            "type": "color",
+            "value": "{kid.utilities.color.primary.default}"
           }
         },
         "__indicator": {
@@ -13416,33 +13341,7 @@
         },
         "border-width": {
           "type": "float",
-          "value": "{core.ui.sizing.0,5}"
-        },
-        "__chevron": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.text.neutral.600}"
-            }
-          }
-        }
-      },
-      "sd-header": {
-        "padding-bottom": {
-          "type": "float",
-          "value": "{kid.utilities.spacing.0,5}"
-        },
-        "__underline": {
-          "height": {
-            "type": "float",
-            "value": "{kid.utilities.sizing.0,25}"
-          },
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "rgba(255, 255, 255, 0.00)"
-            }
-          }
+          "value": "{kid.utilities.sizing.0,25}"
         }
       },
       "navigable": {
@@ -13466,7 +13365,7 @@
         },
         "font-size": {
           "type": "float",
-          "value": "{core.text-sm}"
+          "value": "{kid.utilities.text.sm}"
         },
         "_docs": {
           "description": "Used in: sd-tab, sd-navigation-item and sd-menu",
@@ -13483,14 +13382,6 @@
           "_icon": {
             "type": "color",
             "value": "{kid.utilities.color.text.black.default}"
-          }
-        },
-        "--current": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.text.black.default}"
-            }
           }
         }
       },
@@ -13865,6 +13756,30 @@
           }
         }
       },
+      "sd-audio": {
+        "__slide-bar": {
+          "--inverted": {
+            "color": {
+              "border": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.50)"
+              }
+            }
+          }
+        },
+        "__track-bar": {
+          "--inverted": {
+            "color": {
+              "border": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "{kid.utilities.color.white.default}"
+              }
+            }
+          }
+        }
+      },
       "sd-step": {
         "__tail": {
           "border-width": {
@@ -13955,22 +13870,6 @@
         }
       },
       "sd-quickfact": {
-        "__expandable": {
-          "color": {
-            "description-default": {
-              "text": {
-                "type": "color",
-                "value": "{core.vb.grey.620}"
-              }
-            },
-            "title-default": {
-              "text": {
-                "type": "color",
-                "value": "{kid.utilities.color.text.black.default}"
-              }
-            }
-          }
-        },
         "--expandable": {
           "color": {
             "text": {
@@ -14179,14 +14078,14 @@
             "type": "color",
             "value": "{kid.utilities.color.text.black.default}"
           },
-          "icon": {
+          "icon-fill": {
             "type": "color",
             "value": "{kid.utilities.color.text.black.default}"
           }
         },
         "--disabled": {
           "color": {
-            "icon": {
+            "icon-fill": {
               "type": "color",
               "value": "{kid.utilities.color.neutral.500}"
             },
@@ -14313,7 +14212,7 @@
               "type": "color",
               "value": "{core.vb.grey.620}"
             },
-            "icon": {
+            "icon-fill": {
               "type": "color",
               "value": "{core.vb.grey.620}"
             }
@@ -14360,7 +14259,7 @@
       "sd-dropdown": {
         "color": {
           "background": {
-            "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
+            "description": "Default background color. Used for sd-chip, sd-flag, sd-container. NOTE: kid value should be reference to kid.white.600, had to be removed due to a bug that blocked fetching tokens in code.",
             "type": "color",
             "value": "rgba(255, 255, 255, 0.60)"
           }
@@ -14375,6 +14274,12 @@
               "value": "{kid.utilities.color.neutral.400}"
             }
           }
+        }
+      },
+      "sd-accordion-group": {
+        "_gap": {
+          "type": "float",
+          "value": "-1"
         }
       }
     }
