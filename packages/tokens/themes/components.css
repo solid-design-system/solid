@@ -366,6 +366,10 @@
  border-width: var(--sd-carousel__pager-dot-border-width, var(--sd-spacing-0\.25));
 }
 
+@utility sd-checkbox--checked--hovered-color-border {
+  border-color: rgba(var(--sd-checkbox--checked--hovered-color-border, rgba(var(--sd-color-success))));
+}
+
 @utility sd-checkbox-border-width {
  border-width: var(--sd-checkbox-border-width, var(--sd-spacing-0\.25));
 }

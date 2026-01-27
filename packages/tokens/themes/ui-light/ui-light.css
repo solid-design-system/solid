@@ -91,6 +91,7 @@
   --sd-carousel__pager-dot--inverted-border: var(--sd-color-white);
   --sd-carousel__pager-dot-background: var(--sd-color-accent);
   --sd-carousel__pager-dot-border-width: var(--sd-spacing-0\.25);
+  --sd-checkbox--checked--hovered-color-border: var(--sd-color-success);
   --sd-checkbox-border-width: var(--sd-spacing-0\.25);
   --sd-chip--primary-200-color-background: var(--sd-color-primary-200);
   --sd-chip--primary-200-color-border: 255, 255, 255, 0;

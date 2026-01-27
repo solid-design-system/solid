@@ -4563,6 +4563,17 @@
         "border-width": {
           "type": "float",
           "value": "{ui-light.utilities.border-width.default}"
+        },
+        "--checked": {
+          "--hovered": {
+            "color": {
+              "border": {
+                "description": "Used for hover interaction",
+                "type": "color",
+                "value": "{ui-light.utilities.color.accent.550}"
+              }
+            }
+          }
         }
       },
       "color": {
@@ -7711,6 +7722,17 @@
         "border-width": {
           "type": "float",
           "value": "{ui-dark.utilities.border-width.default}"
+        },
+        "--checked": {
+          "--hovered": {
+            "color": {
+              "border": {
+                "description": "Used for hover interaction",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.accent.550}"
+              }
+            }
+          }
         }
       },
       "color": {
@@ -10859,6 +10881,17 @@
         "border-width": {
           "type": "float",
           "value": "{vb.utilities.border-width.2}"
+        },
+        "--checked": {
+          "--hovered": {
+            "color": {
+              "border": {
+                "description": "Used for hover interaction",
+                "type": "color",
+                "value": "{vb.utilities.color.primary.600}"
+              }
+            }
+          }
         }
       },
       "color": {
@@ -14007,6 +14040,17 @@
         "border-width": {
           "type": "float",
           "value": "{kid.utilities.border-width.default}"
+        },
+        "--checked": {
+          "--hovered": {
+            "color": {
+              "border": {
+                "description": "Used for hover interaction",
+                "type": "color",
+                "value": "{kid.utilities.color.neutral.700}"
+              }
+            }
+          }
         }
       },
       "color": {
