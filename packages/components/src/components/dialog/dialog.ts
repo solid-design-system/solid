@@ -277,7 +277,7 @@ export default class SdDialog extends SolidElement {
       >
         <div
           part="overlay"
-          class="fixed inset-0 overlay-color-background opacity-90"
+          class="fixed inset-0 overlay-color-background"
           @click=${() => this.requestClose('overlay')}
           tabindex="-1"
         ></div>
