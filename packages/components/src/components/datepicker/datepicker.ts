@@ -1137,7 +1137,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     this.handleBlur();
   };
 
-  private handleCurrentPlacement = (e: CustomEvent<'top' | 'bottom'>) => {
+  private handleCurrentPlacement = (e: CustomEvent<string>) => {
     const incomingPlacement = e.detail;
 
     if (incomingPlacement) {
@@ -1639,7 +1639,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
         class=${cx(
           'w-[284px] z-50 bg-white py-3 px-4',
           this.open ? 'block' : 'hidden',
-          this.currentPlacement === 'bottom'
+          this.currentPlacement?.startsWith('bottom')
             ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
             : 'border-r-2 border-t-2 border-l-2 rounded-tr-default rounded-tl-default',
           'border-primary'
@@ -1957,7 +1957,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               this.open && this.alignment === 'left' ? 'rounded-bl-none' : '',
               this.open && this.alignment === 'right' ? 'rounded-br-none' : '',
               this.open &&
-                (this.currentPlacement === 'bottom'
+                (this.currentPlacement?.startsWith('bottom')
                   ? 'rounded-bl-none rounded-br-none'
                   : 'rounded-tl-none rounded-tr-none')
             )}
@@ -1998,10 +1998,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
             @sd-current-placement=${this.handleCurrentPlacement}
             class=${cx(
               'inline-flex relative w-full',
-              this.currentPlacement === 'bottom' ? 'origin-top' : 'origin-bottom'
+              this.currentPlacement?.startsWith('bottom') ? 'origin-top' : 'origin-bottom'
             )}
-            sync="width"
-            placement=${this.placement}
+            placement=${this.alignment === 'left' ? `${this.placement}-start` : `${this.placement}-end`}
             flip
             shift
             auto-size="vertical"
