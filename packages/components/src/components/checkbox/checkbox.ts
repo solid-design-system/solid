@@ -209,126 +209,145 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
                     : 'default';
 
     return html`
-      <label
-        part="base"
-        class=${cx(
-          'sd-checkbox group flex items-start text-base leading-normal text-black cursor-pointer',
-          (this.disabled || this.visuallyDisabled) && 'hover:cursor-not-allowed',
-          {
-            /* sizes, fonts */
-            sm: 'text-sm',
-            md: 'text-base',
-            lg: 'text-base'
-          }[this.size]
-        )}
-      >
-        <input
-          class="peer absolute opacity-0 p-0 m-0 pointer-events-none"
-          type="checkbox"
-          title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
-          name=${this.name}
-          value=${ifDefined(this.value)}
-          .indeterminate=${live(this.indeterminate)}
-          .checked=${live(this.checked)}
-          .disabled=${this.disabled}
-          .required=${this.required}
-          aria-checked=${this.indeterminate ? 'mixed' : this.checked}
-          aria-describedby="invalid-message"
-          aria-invalid=${this.showInvalidStyle}
-          aria-disabled=${this.disabled || this.visuallyDisabled ? 'true' : 'false'}
-          @click=${this.handleClick}
-          @input=${this.handleInput}
-          @invalid=${this.handleInvalid}
-          @blur=${this.handleBlur}
-          @focus=${this.handleFocus}
-        />
-
-        <span
-          id="control"
-          part="control ${this.checked ? ' control--checked' : 'control--unchecked'} ${this.indeterminate
-            ? ' control--indeterminate'
-            : ''}"
+      <div class="flex flex-col">
+        <label
+          part="base"
           class=${cx(
-            'relative flex flex-shrink-0 items-center justify-center border sd-checkbox-border-width rounded-sm h-4 w-4',
-            'transition-colors ease-in-out duration-medium group-hover:duration-fast',
-            'peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary',
+            'sd-checkbox group flex items-start text-base leading-normal text-black cursor-pointer',
+            (this.disabled || this.visuallyDisabled) && 'hover:cursor-not-allowed',
             {
-              sm: 'mt-[2px]',
-              md: 'mt-[3px]',
-              lg: 'mt-[3px]'
-            }[this.size],
-            {
-              disabledIndeterminate: 'border-neutral-500 bg-neutral-500',
-              disabledChecked: 'border-neutral-500 bg-neutral-500',
-              disabled: 'border-neutral-500',
-              visuallyDisabled: 'border-neutral-500',
-              invalidIndeterminate: 'border-error bg-error group-hover:bg-error-400',
-              invalid: 'border-error group-hover:bg-neutral-200',
-              filled:
-                'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent group-hover:bg-accent-550',
-              default: 'form-control-color-border hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
-            }[checkboxState]
+              /* sizes, fonts */
+              sm: 'text-sm',
+              md: 'text-base',
+              lg: 'text-base'
+            }[this.size]
           )}
         >
-          <div
+          <input
+            class="peer absolute opacity-0 p-0 m-0 pointer-events-none"
+            type="checkbox"
+            title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
+            name=${this.name}
+            value=${ifDefined(this.value)}
+            .indeterminate=${live(this.indeterminate)}
+            .checked=${live(this.checked)}
+            .disabled=${this.disabled}
+            .required=${this.required}
+            aria-checked=${this.indeterminate ? 'mixed' : this.checked}
+            aria-describedby="invalid-message"
+            aria-invalid=${this.showInvalidStyle}
+            aria-disabled=${this.disabled || this.visuallyDisabled ? 'true' : 'false'}
+            @click=${this.handleClick}
+            @input=${this.handleInput}
+            @invalid=${this.handleInvalid}
+            @blur=${this.handleBlur}
+            @focus=${this.handleFocus}
+          />
+
+          <span
+            id="control"
+            part="control ${this.checked ? ' control--checked' : 'control--unchecked'} ${this.indeterminate
+              ? ' control--indeterminate'
+              : ''}"
             class=${cx(
-              'absolute h-3 transition-[width] right-0 duration-medium',
-              this.checked || this.indeterminate ? 'w-0' : 'w-3'
+              'relative flex flex-shrink-0 items-center justify-center border sd-checkbox-border-width rounded-sm h-4 w-4',
+              'transition-colors ease-in-out duration-medium group-hover:duration-fast',
+              'peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary',
+              {
+                sm: 'mt-[2px]',
+                md: 'mt-[3px]',
+                lg: 'mt-[3px]'
+              }[this.size],
+              {
+                disabledIndeterminate: 'border-neutral-500 bg-neutral-500',
+                disabledChecked: 'border-neutral-500 bg-neutral-500',
+                disabled: 'border-neutral-500',
+                visuallyDisabled: 'border-neutral-500',
+                invalidIndeterminate: 'border-error bg-error group-hover:bg-error-400',
+                invalid: 'border-error group-hover:bg-neutral-200',
+                filled:
+                  'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent group-hover:bg-accent-550',
+                default: 'form-control-color-border hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
+              }[checkboxState]
             )}
           >
             <div
+              part="checkbox"
               class=${cx(
-                'w-full h-full transition-colors duration-medium ease-in-out group-hover:duration-fast',
-                {
-                  disabledIndeterminate: 'bg-neutral-500',
-                  disabledChecked: ' bg-neutral-500',
-                  disabled: '',
-                  visuallyDisabled: '',
-                  invalidIndeterminate: ' bg-error group-hover:bg-error-400',
-                  invalid: 'group-hover:bg-neutral-200',
-                  filled: 'bg-accent group-hover:bg-accent-550',
-                  default: 'hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
-                }[checkboxState]
+                'absolute h-3 transition-[width] right-0 duration-medium',
+                this.checked || this.indeterminate ? 'w-0' : 'w-3'
               )}
-            ></div>
-          </div>
-          ${this.checked
-            ? html`
-                <sd-icon
-                  part="checked-icon"
-                  class="text-white w-3 h-3"
-                  library="sd-status-assets"
-                  name="status-check"
-                ></sd-icon>
-              `
-            : ''}
-          ${!this.checked && this.indeterminate
-            ? html`
-                <sd-icon
-                  part="indeterminate-icon"
-                  class="text-white w-3 h-3"
-                  library="sd-status-assets"
-                  name="status-minus"
-                ></sd-icon>
-              `
-            : ''}
-        </span>
-        <span
-          part="label"
-          id="label"
-          class=${cx(
-            'select-none inline-block ml-2',
-            this.disabled || this.visuallyDisabled
-              ? 'text-neutral-500'
-              : this.showInvalidStyle
-                ? 'text-error'
-                : 'text-black'
-          )}
+            >
+              <div
+                class=${cx(
+                  'w-full h-full transition-colors duration-medium ease-in-out group-hover:duration-fast',
+                  {
+                    disabledIndeterminate: 'bg-neutral-500',
+                    disabledChecked: ' bg-neutral-500',
+                    disabled: '',
+                    visuallyDisabled: '',
+                    invalidIndeterminate: ' bg-error group-hover:bg-error-400',
+                    invalid: 'group-hover:bg-neutral-200',
+                    filled: 'bg-accent group-hover:bg-accent-550',
+                    default: 'hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
+                  }[checkboxState]
+                )}
+              ></div>
+            </div>
+            ${this.checked
+              ? html`
+                  <sd-icon
+                    part="checked-icon"
+                    class="text-white w-3 h-3"
+                    library="sd-status-assets"
+                    name="status-check"
+                  ></sd-icon>
+                `
+              : ''}
+            ${!this.checked && this.indeterminate
+              ? html`
+                  <sd-icon
+                    part="indeterminate-icon"
+                    class="text-white w-3 h-3"
+                    library="sd-status-assets"
+                    name="status-minus"
+                  ></sd-icon>
+                `
+              : ''}
+          </span>
+          <span
+            part="label"
+            id="label"
+            class=${cx(
+              'select-none inline-block ml-2',
+              this.disabled || this.visuallyDisabled
+                ? 'text-neutral-500'
+                : this.showInvalidStyle
+                  ? 'text-error'
+                  : 'text-black'
+            )}
+          >
+            <slot></slot>
+          </span>
+        </label>
+        <div
+          id="invalid-icon-message"
+          part="invalid-icon-message"
+          class=${cx('flex items-center gap-2', this.showInvalidStyle && 'mt-2')}
         >
-          <slot></slot>
-        </span>
-      </label>
-      ${this.formControlController.renderInvalidMessage()}
+          ${this.showInvalidStyle
+            ? html` <sd-icon
+                id="invalid-icon"
+                part="invalid-icon"
+                class=${cx('text-error')}
+                library="_internal"
+                name="risk"
+              >
+              </sd-icon>`
+            : ''}
+          ${this.formControlController.renderInvalidMessage(this.size)}
+        </div>
+      </div>
     `;
   }
 
