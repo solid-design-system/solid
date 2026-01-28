@@ -2062,7 +2062,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
           ${this.helpText}
         </slot>
       </div>
-      ${this.formControlController.renderInvalidMessage()} `;
+      ${this.formControlController.renderInvalidMessage(this.size)} `;
   }
 
   static styles = [
