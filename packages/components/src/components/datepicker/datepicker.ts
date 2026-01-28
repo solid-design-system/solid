@@ -12,6 +12,7 @@ import { watch } from '../../internal/watch';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
+import type SdPopup from '../popup/popup';
 
 /**
  * @summary Used to enter or select a date or a range of dates using a calendar view.
@@ -274,6 +275,8 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   /** The text value shown in the input, synchronized with selection. */
   @state() private inputValue = '';
 
+  @query('sd-popup') popup: SdPopup;
+
   @query('#invalid-message') invalidMessage: HTMLDivElement;
 
   @query('#input') input: HTMLInputElement;
@@ -324,6 +327,13 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
 
   firstUpdated() {
     this.formControlController.updateValidity();
+  }
+
+  @watch('open', { waitUntilFirstUpdate: true })
+  handleOpenChange() {
+    if (this.popup) {
+      this.popup.active = this.open && !this.disabled && !this.visuallyDisabled;
+    }
   }
 
   disconnectedCallback() {
@@ -1127,8 +1137,12 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     this.handleBlur();
   };
 
-  private handleCurrentPlacement = (ev: CustomEvent<{ placement: 'top' | 'bottom' }>) => {
-    this.currentPlacement = ev.detail.placement;
+  private handleCurrentPlacement = (e: CustomEvent<'top' | 'bottom'>) => {
+    const incomingPlacement = e.detail;
+
+    if (incomingPlacement) {
+      this.currentPlacement = incomingPlacement;
+    }
   };
 
   private setMonth(offset: number) {
@@ -1622,9 +1636,14 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     return html`
       <div
         part="datepicker"
-        class="w-[284px] z-50 absolute top-full bg-white border-2 border-t-0 border-primary py-3 px-4 ${this.open
-          ? 'block rounded-bl-default rounded-br-default'
-          : 'hidden'} ${this.alignment === 'left' ? 'left-0' : 'right-0'}"
+        class=${cx(
+          'w-[284px] z-50 bg-white py-3 px-4',
+          this.open ? 'block' : 'hidden',
+          this.currentPlacement === 'bottom'
+            ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
+            : 'border-r-2 border-t-2 border-l-2 rounded-tr-default rounded-tl-default',
+          'border-primary'
+        )}
       >
         <div class="flex flex-row items-center w-full justify-between mb-3" part="header">
           <div class="flex items-center">
@@ -1936,7 +1955,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10 transition-[border] duration-medium ease-in-out',
               borderColor,
               this.open && this.alignment === 'left' ? 'rounded-bl-none' : '',
-              this.open && this.alignment === 'right' ? 'rounded-br-none' : ''
+              this.open && this.alignment === 'right' ? 'rounded-br-none' : '',
+              this.open &&
+                (this.currentPlacement === 'bottom'
+                  ? 'rounded-bl-none rounded-br-none'
+                  : 'rounded-tl-none rounded-tr-none')
             )}
           >
             ${hasLabel && this.floatingLabel
@@ -1973,8 +1996,14 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
           </div>
           <sd-popup
             @sd-current-placement=${this.handleCurrentPlacement}
-            class=${cx('inline-flex relative w-full')}
+            class=${cx(
+              'inline-flex relative w-full',
+              this.currentPlacement === 'bottom' ? 'origin-top' : 'origin-bottom'
+            )}
             sync="width"
+            placement=${this.placement}
+            flip
+            shift
             auto-size="vertical"
             auto-size-padding="10"
             exportparts="popup:popup__content,"
@@ -2047,9 +2076,8 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 name="calendar"
                 @click=${this.show}
               ></sd-icon>
-
-              ${this.renderCalendar()}
             </div>
+            ${this.renderCalendar()}
           </sd-popup>
         </div>
         <slot
