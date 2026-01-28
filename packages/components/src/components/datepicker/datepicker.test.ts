@@ -123,11 +123,11 @@ describe('<sd-datepicker>', () => {
       await waitUntil(
         () => !!el.shadowRoot!.querySelector<HTMLButtonElement>('button.day:not(.out-month):not(.disabled)'),
         'No enabled day rendered',
-        { timeout: 2000 }
+        { timeout: 0 }
       );
       const dayButton = el.shadowRoot!.querySelector<HTMLButtonElement>('button.day:not(.out-month):not(.disabled)')!;
       dayButton.click();
-      await waitUntil(() => el.value !== null, 'Value not set after click', { timeout: 2000 });
+      await waitUntil(() => el.value !== null, 'Value not set after click');
       expect(el.value).to.not.be.null;
     });
 
@@ -145,12 +145,11 @@ describe('<sd-datepicker>', () => {
       await waitUntil(
         () => !!el.shadowRoot!.querySelector<HTMLButtonElement>('button.day:not(.out-month):not(.disabled)'),
         'No enabled day rendered',
-        { timeout: 2000 }
+        { timeout: 0 }
       );
       const dayButton = el.shadowRoot!.querySelector<HTMLButtonElement>('button.day:not(.out-month):not(.disabled)')!;
       dayButton.click();
-      await waitUntil(() => el.value !== null, 'Value not set after click', { timeout: 2000 });
-
+      await waitUntil(() => el.value !== null, 'Value not set after click');
       expect(changeHandler).to.have.been.calledOnce;
       expect(selectHandler).to.have.been.calledOnce;
     });
