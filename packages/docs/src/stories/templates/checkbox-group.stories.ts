@@ -47,7 +47,12 @@ export const RequiredCheckboxGroup = {
         <sd-checkbox value="2">Checkbox 2</sd-checkbox>
         <sd-checkbox value="3">Checkbox 3</sd-checkbox>
       </sd-checkbox-group>
-      <p id="error-text" class="text-base text-error hidden mt-2" aria-live="polite">Please fill in this field.</p>
+      <div id="group-invalid-icon-message" class="flex items-center gap-2 mt-2 hidden">
+        <sd-icon id="invalid-icon" part="invalid-icon" class="text-error" library="_internal" name="risk"></sd-icon>
+        <div id="invalid-message" class="text-error text-left" part="invalid-message" aria-live="polite">
+          Please fill in this field.
+        </div>
+      </div>
       <sd-button type="submit" class="mt-4">Submit</sd-button>
     </form>
     <script type="module">
@@ -56,13 +61,13 @@ export const RequiredCheckboxGroup = {
           const form = document.getElementById('checkbox-group-form');
           const checkboxGroup = form.querySelector('#checkbox-group');
           const checkboxes = checkboxGroup.querySelectorAll('sd-checkbox');
-          const errorMessage = document.getElementById('error-text');
+          const errorMessage = document.getElementById('group-invalid-icon-message');
 
           function handleError() {
             errorMessage.classList.remove('hidden');
             checkboxes.forEach(checkbox => {
               checkbox.setCustomValidity('Please fill in this field');
-              checkbox.shadowRoot.querySelector('#invalid-message').classList.add('sr-only');
+              checkbox.shadowRoot?.querySelector('#invalid-icon-message')?.style.setProperty('display', 'none');
             });
             checkboxGroup.setAttribute('aria-invalid', 'true');
           }
