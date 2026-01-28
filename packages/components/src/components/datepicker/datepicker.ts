@@ -1137,7 +1137,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     this.handleBlur();
   };
 
-  private handleCurrentPlacement = (e: CustomEvent<string>) => {
+  private handleCurrentPlacement = (e: CustomEvent<'top' | 'bottom'>) => {
     const incomingPlacement = e.detail;
 
     if (incomingPlacement) {
