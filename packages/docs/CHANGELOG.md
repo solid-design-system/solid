@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.0.1
+
+### Patch Changes
+
+- Removed unneeded `console-log` from code and update linter rules. _[`#2758`](https://github.com/solid-design-system/solid/pull/2758) [`9294108`](https://github.com/solid-design-system/solid/commit/9294108154126a5b97c5151a1245e84b07e8c244) [@smfonseca](https://github.com/smfonseca)_
+
 ## 2.0.0
 
 ### Major Changes
