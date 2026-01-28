@@ -1,5 +1,21 @@
 # @solid-design-system/docs
 
+## 2.1.0
+
+### Minor Changes
+
+- Adding template for 'sd-breadcrumb' _[`#2746`](https://github.com/solid-design-system/solid/pull/2746) [`71e89ba`](https://github.com/solid-design-system/solid/commit/71e89bae773c91c1e2e3831cd599e809915e424e) [@martascorreia](https://github.com/martascorreia)_
+- Added warning sign to the text error of `sd-checkbox`, `sd-switch` and `sd-radio-group`; _[`#2745`](https://github.com/solid-design-system/solid/pull/2745) [`00dd8f6`](https://github.com/solid-design-system/solid/commit/00dd8f61a92d02319ef95314683aeedafe240187) [@martascorreia](https://github.com/martascorreia)_
+
+  Changed the template for "Checkbox Group" in "Required Checkbox Group" to hide the warning sign under each individual `sd-checkbox`;
+  Added different sizes for the text error message through the form controller, as well as fixed a minor spacing between the component and error message, which affects components `sd-checkbox`, `sd-switch`, `sd-radio-group`, `sd-combobox`, `sd-datepicker`, `sd-input`, `sd-select`, `sd-textarea`.
+
+## 2.0.1
+
+### Patch Changes
+
+- Removed unneeded `console-log` from code and update linter rules. _[`#2758`](https://github.com/solid-design-system/solid/pull/2758) [`9294108`](https://github.com/solid-design-system/solid/commit/9294108154126a5b97c5151a1245e84b07e8c244) [@smfonseca](https://github.com/smfonseca)_
+
 ## 2.0.0
 
 ### Major Changes
