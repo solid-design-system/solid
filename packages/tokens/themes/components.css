@@ -534,6 +534,10 @@
   background-color: rgba(var(--sd-footnotes--target--inverted-color-background, rgba(var(--sd-color-primary-800))));
 }
 
+@utility sd-header-color-background {
+  background-color: rgba(var(--sd-header-color-background, rgba(var(--sd-color-white))));
+}
+
 @utility sd-header-padding-bottom {
  padding-bottom: var(--sd-header-padding-bottom, 0);
 }
