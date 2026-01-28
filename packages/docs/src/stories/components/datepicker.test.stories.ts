@@ -204,6 +204,7 @@ export const Combination = generateScreenshotStory([
   DisabledWeekends,
   DisabledDates,
   MinAndMax,
+  Placement,
   Mouseless,
   LocaleAware
 ]);
