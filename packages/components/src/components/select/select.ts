@@ -811,12 +811,18 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @watch('value', { waitUntilFirstUpdate: true })
   handleValueChange() {
     // run only if the value is updated from outside
-    if (this.selectedOptions.length === (Array.isArray(this.value) ? this.value.length : 1)) return;
+    const incomingValue = this.value;
+    const incomingValues = Array.isArray(incomingValue) ? incomingValue : [incomingValue];
+    const currentValues = this.selectedOptions.map(option => option.value);
+    if (incomingValues.length === currentValues.length && incomingValues.every(value => currentValues.includes(value)))
+      return;
     const allOptions = this.getAllOptions();
     const value = Array.isArray(this.value) ? this.value : [this.value];
 
     // Select only the options that match the new value
     this.setSelectedOptions(allOptions.filter(el => value.includes(el.value)));
+    //Preserve externally provided value shape (e.g. form reset, attribute value)
+    this.value = incomingValue;
   }
 
   /** Shows the listbox. */
