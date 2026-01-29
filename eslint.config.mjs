@@ -86,6 +86,7 @@ export default [
       'default-param-last': 'error',
       eqeqeq: 'error',
       'lit-a11y/click-events-have-key-events': 'off',
+      'no-console': ['warn', { allow: ['error', 'warn', 'info'] }],
       'no-constructor-return': 'error',
       'no-empty-function': 'warn',
       'no-eval': 'error',

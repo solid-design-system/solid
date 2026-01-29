@@ -1,5 +1,27 @@
 # @solid-design-system/components
 
+## 6.2.0
+
+### Minor Changes
+
+- Fixed the resizing of the `sd-select`, including the way the `sd-option` and `sd-tag` resize inside this component _[`#2749`](https://github.com/solid-design-system/solid/pull/2749) [`f85ba6d`](https://github.com/solid-design-system/solid/commit/f85ba6d811d01d1743d942528f222baa70daf085) [@martascorreia](https://github.com/martascorreia)_
+
+## 6.1.0
+
+### Minor Changes
+
+- Added warning sign to the text error of `sd-checkbox`, `sd-switch` and `sd-radio-group`; _[`#2745`](https://github.com/solid-design-system/solid/pull/2745) [`00dd8f6`](https://github.com/solid-design-system/solid/commit/00dd8f61a92d02319ef95314683aeedafe240187) [@martascorreia](https://github.com/martascorreia)_
+
+  Changed the template for "Checkbox Group" in "Required Checkbox Group" to hide the warning sign under each individual `sd-checkbox`;
+  Added different sizes for the text error message through the form controller, as well as fixed a minor spacing between the component and error message, which affects components `sd-checkbox`, `sd-switch`, `sd-radio-group`, `sd-combobox`, `sd-datepicker`, `sd-input`, `sd-select`, `sd-textarea`.
+
+### 📈 Stats
+
+- Uncompressed: 588 KB (+1 KB / +0%)
+- Gzipped: 133 KB (unchanged)
+
+## 6.0.1
+
 ## 6.0.0
 
 ### Major Changes

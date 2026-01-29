@@ -1,5 +1,15 @@
 # @solid-design-system/tokens
 
+## 6.2.0
+
+## 6.1.0
+
+## 6.0.1
+
+### Patch Changes
+
+- Fixed `sd-header` background color by adding a missing CSS custom property to the themes _[`#2756`](https://github.com/solid-design-system/solid/pull/2756) [`d3631e3`](https://github.com/solid-design-system/solid/commit/d3631e39320745c8b79e850f65ff0da8ad292d2b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 6.0.0
 
 ### Major Changes

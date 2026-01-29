@@ -269,6 +269,7 @@
   --sd-form-control-color-icon-fill: var(--sd-color-white);
   --sd-form-control-color-text: var(--sd-color-white);
   --sd-form-control__tooltip-color-icon: var(--sd-color-white);
+  --sd-header-color-background: var(--sd-color-primary);
   --sd-header-padding-bottom: 0;
   --sd-header__underline-color-background: 255, 255, 255, 0;
   --sd-header__underline-height: var(--sd-spacing-2);
