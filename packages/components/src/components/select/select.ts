@@ -819,6 +819,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     this.setSelectedOptions(allOptions.filter(el => value.includes(el.value)));
   }
 
+  @watch(['size', 'floatingLabel'])
+  handleSizeChange() {
+    this.size = this.floatingLabel && this.size === 'sm' ? 'md' : this.size;
+  }
+
   /** Shows the listbox. */
   async show() {
     if (this.open || this.disabled || this.visuallyDisabled) {

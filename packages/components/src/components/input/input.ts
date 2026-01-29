@@ -434,6 +434,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     this.formControlController.updateValidity();
   }
 
+  @watch(['size', 'floatingLabel'])
+  handleSizeChange() {
+    this.size = this.floatingLabel && this.size === 'sm' ? 'md' : this.size;
+  }
+
   /** Sets focus on the input. */
   focus(options?: FocusOptions) {
     this.input.focus(options);

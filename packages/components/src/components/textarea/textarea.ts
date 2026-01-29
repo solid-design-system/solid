@@ -246,6 +246,11 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     this.setTextareaHeight();
   }
 
+  @watch(['size', 'floatingLabel'])
+  handleSizeChange() {
+    this.size = this.floatingLabel && this.size === 'sm' ? 'md' : this.size;
+  }
+
   /** Sets focus on the textarea. */
   focus(options?: FocusOptions) {
     this.textarea.focus(options);

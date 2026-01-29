@@ -416,6 +416,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     }
   }
 
+  @watch(['size', 'floatingLabel'])
+  handleSizeChange() {
+    this.size = this.floatingLabel && this.size === 'sm' ? 'md' : this.size;
+  }
+
   get validity() {
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     const defaultValidity: ValidityState = { valid: true } as ValidityState;

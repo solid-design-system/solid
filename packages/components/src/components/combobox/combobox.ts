@@ -1023,6 +1023,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     this.emit('sd-after-hide');
   }
 
+  @watch(['size', 'floatingLabel'])
+  handleSizeChange() {
+    this.size = this.floatingLabel && this.size === 'sm' ? 'md' : this.size;
+  }
+
   async show() {
     if (this.open || this.disabled || this.visuallyDisabled) {
       this.open = false;
