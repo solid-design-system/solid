@@ -172,7 +172,8 @@ export const SizeMultiple = {
           axis: {
             x: {
               type: 'attribute',
-              name: 'size'
+              name: 'size',
+              values: ['lg', 'md']
             },
             y: {
               type: 'attribute',

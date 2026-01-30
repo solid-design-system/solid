@@ -95,7 +95,7 @@ export const Size = {
             x: {
               type: 'attribute',
               name: 'size',
-              values: ['lg', 'md', 'sm']
+              values: ['lg', 'md']
             }
           },
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],

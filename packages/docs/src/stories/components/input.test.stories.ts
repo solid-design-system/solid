@@ -319,7 +319,7 @@ export const Sizes = {
       <div class="w-[250px]">
         ${generateTemplate({
           axis: {
-            y: { type: 'attribute', name: 'size' }
+            y: { type: 'attribute', name: 'size', values: ['lg', 'md'] }
           },
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
