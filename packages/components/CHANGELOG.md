@@ -1,5 +1,21 @@
 # @solid-design-system/components
 
+## 6.3.0
+
+### Minor Changes
+
+- Fixed `sd-menu` keyboard interaction issue after enabling it with a mouse click. _[`#2747`](https://github.com/solid-design-system/solid/pull/2747) [`5c449ad`](https://github.com/solid-design-system/solid/commit/5c449ad31178e32c19f7df12e4dfc53ae61127ee) [@martascorreia](https://github.com/martascorreia)_
+
+### 📈 Stats
+* Uncompressed: 589 KB (+1 KB / +0%)
+* Gzipped: 133 KB (unchanged)
+
+## 6.2.1
+
+### Patch Changes
+
+- Fixed `sd-select` external value change logic to allow programmatic overwrites _[`#2763`](https://github.com/solid-design-system/solid/pull/2763) [`845f41e`](https://github.com/solid-design-system/solid/commit/845f41e38c1b8386c27b8c3a8d5bd0a2886af9d5) [@EE0A735](https://github.com/EE0A735)_
+
 ## 6.2.0
 
 ### Minor Changes
