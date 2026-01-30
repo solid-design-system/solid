@@ -116,7 +116,7 @@ export const Disabled = {
 };
 
 export const RemovableAndSelectedAndToggleable = {
-  name: 'RemovablexSelectedxToggleable',
+  name: 'Removable x Selected x Toggleable',
   render: (args: any) => {
     return html`
       ${generateTemplate({
