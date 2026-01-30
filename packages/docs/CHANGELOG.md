@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.2.0
+
+### Minor Changes
+
+- Changed `sd-tag`'s attribute `removable` to be disabled if the attributes `selected` or `toggleable` are enabled _[`#2759`](https://github.com/solid-design-system/solid/pull/2759) [`909bef6`](https://github.com/solid-design-system/solid/commit/909bef6d2750643bcf808b8adfec25b2f83340cd) [@martascorreia](https://github.com/martascorreia)_
+
 ## 2.1.0
 
 ### Minor Changes
