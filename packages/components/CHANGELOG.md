@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.2.1
+
+### Patch Changes
+
+- Fixed `sd-select` external value change logic to allow programmatic overwrites _[`#2763`](https://github.com/solid-design-system/solid/pull/2763) [`845f41e`](https://github.com/solid-design-system/solid/commit/845f41e38c1b8386c27b8c3a8d5bd0a2886af9d5) [@EE0A735](https://github.com/EE0A735)_
+
 ## 6.2.0
 
 ### Minor Changes
