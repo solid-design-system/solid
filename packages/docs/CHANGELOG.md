@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.2.1
+
+### Patch Changes
+
+- Added safeguard to prevent `sd-icon` tests from timing out during Playwright testing. _[`#2768`](https://github.com/solid-design-system/solid/pull/2768) [`5fc77a5`](https://github.com/solid-design-system/solid/commit/5fc77a5ced5eeb1d2a6084a878772d4f4f364f28) [@smfonseca](https://github.com/smfonseca)_
+
 ## 2.2.0
 
 ### Minor Changes
