@@ -2,7 +2,7 @@
   color-scheme: light;
 
   --sd-theme: 'kid';
-  --sd-accordion-border-width: var(--sd-spacing-0\.5);
+  --sd-accordion-border-width: var(--sd-spacing-0\.25);
   --sd-accordion-color-text: var(--sd-color-black);
   --sd-accordion-padding-block: var(--sd-spacing-4);
   --sd-accordion__chevron-color-text: var(--sd-color-neutral-600);
@@ -268,6 +268,7 @@
   --sd-form-control-color-icon-fill: var(--sd-color-neutral-800);
   --sd-form-control-color-text: var(--sd-color-black);
   --sd-form-control__tooltip-color-icon: var(--sd-color-black);
+  --sd-header-color-background: var(--sd-color-accent);
   --sd-header-padding-bottom: var(--sd-spacing-0\.5);
   --sd-header__underline-color-background: 255, 255, 255, 0;
   --sd-header__underline-height: var(--sd-spacing-0\.25);
