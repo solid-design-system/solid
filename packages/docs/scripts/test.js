@@ -39,13 +39,13 @@ async function previewAndTest() {
           prefixColor: 'magenta'
         },
         {
-          command: `wait-on -v -t 5s tcp:127.0.0.1:${PORT} && ${testCommand}`,
+          command: `wait-on -v -t 30s tcp:127.0.0.1:${PORT} && ${testCommand}`,
           name: 'Testing',
           prefixColor: 'blue'
         }
       ],
       {
-        killOthers: ['failure', 'success'],
+        killOthersOn: ['failure', 'success'],
         successCondition: 'first',
         raw: true
       }
