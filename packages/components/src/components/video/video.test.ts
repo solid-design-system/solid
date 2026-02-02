@@ -1,6 +1,6 @@
 import '../../../dist/solid-components';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
-import { sendKeys } from '@web/test-runner-commands';
+import { sendKeys, sendMouse } from '@web/test-runner-commands';
 import sinon from 'sinon';
 import type SdVideo from './video';
 
@@ -64,12 +64,15 @@ describe('<sd-video>', () => {
       const el: SdVideo = await fixture(variants.default);
       const playSpy = sinon.spy();
       el.addEventListener('sd-play', playSpy);
+      // Simulate a real user gesture to allow media playback
+      await sendMouse({ type: 'click', position: [0, 0] });
       el.shadowRoot?.querySelector('button')?.click();
       expect(playSpy.calledOnce).to.be.true;
     });
 
     it('toggles playing property', async () => {
       const el: SdVideo = await fixture(variants.default);
+      await sendMouse({ type: 'click', position: [0, 0] });
       el.shadowRoot?.querySelector('button')?.click();
       expect(el.playing).to.be.true;
     });
@@ -81,12 +84,14 @@ describe('<sd-video>', () => {
         const el: SdVideo = await fixture(variants.default);
         const playSpy = sinon.spy();
         el.addEventListener('sd-play', playSpy);
+        await sendMouse({ type: 'click', position: [0, 0] });
         el.shadowRoot?.querySelector('button')?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
         expect(playSpy.calledOnce).to.be.true;
       });
 
       it('toggles playing property', async () => {
         const el: SdVideo = await fixture(variants.default);
+        await sendMouse({ type: 'click', position: [0, 0] });
         el.shadowRoot?.querySelector('button')?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
         expect(el.playing).to.be.true;
       });
@@ -110,6 +115,7 @@ describe('<sd-video>', () => {
     it('video is focusable after played', async () => {
       const el: SdVideo = await fixture(variants.all);
 
+      await sendMouse({ type: 'click', position: [0, 0] });
       el.shadowRoot?.querySelector('button')?.click();
 
       await sendKeys({ press: tabKey });
@@ -130,6 +136,7 @@ describe('<sd-video>', () => {
       return getComputedStyle(imgElement).opacity === '0';
     });
 
+    await sendMouse({ type: 'click', position: [0, 0] });
     el.shadowRoot?.querySelector('button')?.click();
 
     await transitionEndPromise; // Wait for the transitionend event

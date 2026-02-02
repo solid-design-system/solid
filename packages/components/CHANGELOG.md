@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.4.1
+
+### Patch Changes
+
+- Fixes flaky tests on `sd-dropdown`, `sd-audio`, `sd-video` and `sd-carousel`. _[`#2768`](https://github.com/solid-design-system/solid/pull/2768) [`5fc77a5`](https://github.com/solid-design-system/solid/commit/5fc77a5ced5eeb1d2a6084a878772d4f4f364f28) [@smfonseca](https://github.com/smfonseca)_
+
 ## 6.4.0
 
 ### Minor Changes
