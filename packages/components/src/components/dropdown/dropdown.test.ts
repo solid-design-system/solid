@@ -391,7 +391,7 @@ describe('<sd-dropdown>', () => {
     // navigate down
     await sendKeys({ press: 'ArrowDown' });
     await firstItem.updateComplete;
-
+    await waitUntil(() => firstItem.classList.contains('menu-item-focus'));
     expect(firstItem.classList.contains('menu-item-focus')).to.be.true;
   });
 
@@ -425,6 +425,7 @@ describe('<sd-dropdown>', () => {
     await sendKeys({ press: 'ArrowDown' });
     await firstItem.updateComplete;
 
+    await waitUntil(() => firstItem.classList.contains('menu-item-focus'));
     expect(firstItem.classList.contains('menu-item-focus')).to.be.true;
 
     // click outside
@@ -432,6 +433,7 @@ describe('<sd-dropdown>', () => {
     await el.updateComplete;
 
     // check all menu items have lost focus
+    await waitUntil(() => Array.from(items).every(item => !item.classList.contains('menu-item-focus')));
     items.forEach(item => {
       expect(item.classList.contains('menu-item-focus')).to.be.false;
     });
