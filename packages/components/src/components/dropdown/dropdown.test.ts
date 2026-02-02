@@ -2,6 +2,7 @@ import '../../../dist/solid-components';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import { sendKeys, sendMouse } from '@web/test-runner-commands';
 import sinon from 'sinon';
+import type { SdButton, SdMenu, SdMenuItem } from 'src/solid-components';
 import type SdDropdown from './dropdown';
 
 describe('<sd-dropdown>', () => {
@@ -360,6 +361,83 @@ describe('<sd-dropdown>', () => {
       expect(link).to.be.equal(document.activeElement);
     });
   }
+
+  it('adds focus to the first menu item when opened via keyboard', async () => {
+    const el = await fixture<SdDropdown>(html`
+      <sd-dropdown distance="4" rounded>
+        <sd-button variant="secondary" slot="trigger">
+          Menu
+          <sd-icon library="_internal" name="chevron-down" slot="icon-right"></sd-icon>
+        </sd-button>
+
+        <sd-menu>
+          <sd-menu-item>Menu item 1</sd-menu-item>
+          <sd-menu-item>Menu item 2</sd-menu-item>
+          <sd-menu-item>Menu item 3</sd-menu-item>
+        </sd-menu>
+      </sd-dropdown>
+    `);
+
+    const button = el.querySelector<SdButton>('sd-button')!;
+    const menu = el.querySelector<SdMenu>('sd-menu')!;
+    const items = menu.querySelectorAll<SdMenuItem>('sd-menu-item');
+    const firstItem = items[0];
+
+    // click button to open dropdown
+    button.focus();
+    button.click();
+    await el.updateComplete;
+
+    // navigate down
+    await sendKeys({ press: 'ArrowDown' });
+    await firstItem.updateComplete;
+    await waitUntil(() => firstItem.classList.contains('menu-item-focus'));
+    expect(firstItem.classList.contains('menu-item-focus')).to.be.true;
+  });
+
+  it('removes focus from menu items when clicking outside the dropdown', async () => {
+    const el = await fixture<SdDropdown>(html`
+      <sd-dropdown distance="4" rounded>
+        <sd-button variant="secondary" slot="trigger">
+          Menu
+          <sd-icon library="_internal" name="chevron-down" slot="icon-right"></sd-icon>
+        </sd-button>
+
+        <sd-menu>
+          <sd-menu-item>Menu item 1</sd-menu-item>
+          <sd-menu-item>Menu item 2</sd-menu-item>
+          <sd-menu-item>Menu item 3</sd-menu-item>
+        </sd-menu>
+      </sd-dropdown>
+    `);
+
+    const button = el.querySelector<SdButton>('sd-button')!;
+    const menu = el.querySelector<SdMenu>('sd-menu')!;
+    const items = menu.querySelectorAll<SdMenuItem>('sd-menu-item');
+    const firstItem = items[0];
+
+    // click button to open dropdown
+    button.focus();
+    button.click();
+    await el.updateComplete;
+
+    // navigate down
+    await sendKeys({ press: 'ArrowDown' });
+    await firstItem.updateComplete;
+
+    await waitUntil(() => firstItem.classList.contains('menu-item-focus'));
+    expect(firstItem.classList.contains('menu-item-focus')).to.be.true;
+
+    // click outside
+    document.body.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
+    await el.updateComplete;
+
+    // check all menu items have lost focus
+    await waitUntil(() => Array.from(items).every(item => !item.classList.contains('menu-item-focus')));
+    items.forEach(item => {
+      expect(item.classList.contains('menu-item-focus')).to.be.false;
+    });
+  });
 
   // it('should close and stop propagating the keydown event when Escape is pressed and the dropdown is open ', async () => {
   //   const el = await fixture<SdDropdown>(html`

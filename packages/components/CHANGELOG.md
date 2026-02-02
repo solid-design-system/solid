@@ -1,5 +1,28 @@
 # @solid-design-system/components
 
+## 6.4.1
+
+### Patch Changes
+
+- Fixes flaky tests on `sd-dropdown`, `sd-audio`, `sd-video` and `sd-carousel`. _[`#2768`](https://github.com/solid-design-system/solid/pull/2768) [`5fc77a5`](https://github.com/solid-design-system/solid/commit/5fc77a5ced5eeb1d2a6084a878772d4f4f364f28) [@smfonseca](https://github.com/smfonseca)_
+
+## 6.4.0
+
+### Minor Changes
+
+- Changed `sd-tag`'s attribute `removable` to be disabled if the attributes `selected` or `toggleable` are enabled _[`#2759`](https://github.com/solid-design-system/solid/pull/2759) [`909bef6`](https://github.com/solid-design-system/solid/commit/909bef6d2750643bcf808b8adfec25b2f83340cd) [@martascorreia](https://github.com/martascorreia)_
+
+## 6.3.0
+
+### Minor Changes
+
+- Fixed `sd-menu` keyboard interaction issue after enabling it with a mouse click. _[`#2747`](https://github.com/solid-design-system/solid/pull/2747) [`5c449ad`](https://github.com/solid-design-system/solid/commit/5c449ad31178e32c19f7df12e4dfc53ae61127ee) [@martascorreia](https://github.com/martascorreia)_
+
+### 📈 Stats
+
+- Uncompressed: 589 KB (+1 KB / +0%)
+- Gzipped: 133 KB (unchanged)
+
 ## 6.2.1
 
 ### Patch Changes
