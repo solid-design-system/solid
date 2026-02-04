@@ -3,4 +3,8 @@
 '@solid-design-system/docs': patch
 ---
 
-Fixed `sd-datepicker` `placement` attribute to properly render the calendar view on top or bottom of the input element and included screenshot test `Placement`.
+Fixed `sd-datepicker`:
+
+- `placement` attribute properly renders the calendar view on top or bottom of the input element.
+- Included screenshot test `Placement`.
+- Improved `readonly` attribute handling.
