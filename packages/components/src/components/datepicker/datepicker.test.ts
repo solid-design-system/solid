@@ -277,13 +277,13 @@ describe('<sd-datepicker>', () => {
   });
 
   describe('form integration', () => {
-    it('readonly prevents typing but allows calendar open', async () => {
+    it('readonly prevents typing and calendar open', async () => {
       const el = await fixture<SdDatepicker>(html`<sd-datepicker readonly></sd-datepicker>`);
       const input = el.shadowRoot!.querySelector<HTMLInputElement>('#input')!;
       input.focus();
       await el.updateComplete;
 
-      expect(input.ariaExpanded).to.equal('true');
+      expect(input.ariaExpanded).to.equal('false');
       const before = input.value;
       await sendKeys({ type: '15012024' });
       await el.updateComplete;
