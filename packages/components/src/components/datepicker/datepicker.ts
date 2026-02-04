@@ -833,7 +833,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   };
 
   show() {
-    if (this.open || this.disabled || this.visuallyDisabled) {
+    if (this.open || this.disabled || this.visuallyDisabled || this.readonly) {
       this.open = false;
       return;
     }
@@ -861,7 +861,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   };
 
   private handleMouseDown(event: MouseEvent) {
-    if (this.visuallyDisabled || this.disabled) {
+    if (this.visuallyDisabled || this.disabled || this.readonly) {
       event.preventDefault();
       event.stopPropagation();
       return;
@@ -879,14 +879,14 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   private handleFocus() {
     this.hasFocus = true;
 
-    if (!this.open && !this.disabled && !this.visuallyDisabled) {
+    if (!this.open && !this.disabled && !this.visuallyDisabled && !this.readonly) {
       this.show();
     }
     this.emit('sd-focus');
   }
 
   private handleInput = (ev: Event) => {
-    if (this.disabled || this.visuallyDisabled) {
+    if (this.disabled || this.visuallyDisabled || this.readonly) {
       ev.preventDefault?.();
       ev.stopPropagation?.();
       return;
@@ -1230,6 +1230,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     direction: -1 | 1,
     isLastHeaderControl: boolean
   ) => {
+    if (this.disabled || this.visuallyDisabled || this.readonly) {
+      return;
+    }
     // Only the last header control sends focus into the grid on Tab
     if (ev.key === 'Tab' && !ev.shiftKey) {
       if (isLastHeaderControl) {
@@ -1250,6 +1253,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   };
 
   private selectSingleDate(d: Date) {
+    if (this.readonly) return;
     if (this.isDisabled(d)) return;
 
     const localMidnight = DateUtils.startOfDayLocal(d);
@@ -1277,6 +1281,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   }
 
   private selectRangeDate(d: Date) {
+    if (this.readonly) return;
     const day = DateUtils.startOfDayLocal(d);
     const rs = this.rangeStart ? DateUtils.parseLocalISO(this.rangeStart) : null;
     const re = this.rangeEnd ? DateUtils.parseLocalISO(this.rangeEnd) : null;
@@ -1416,12 +1421,13 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   }
 
   private selectDate(d: Date) {
+    if (this.readonly) return;
     if (this.range) this.selectRangeDate(d);
     else this.selectSingleDate(d);
   }
 
   private onKeyDown = (ev: KeyboardEvent) => {
-    if (this.disabled || this.visuallyDisabled) {
+    if (this.disabled || this.visuallyDisabled || this.readonly) {
       ev.preventDefault();
       ev.stopPropagation();
       return;
@@ -1501,7 +1507,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   };
 
   private handleInputKeyDown = (ev: KeyboardEvent) => {
-    if ((this.disabled || this.visuallyDisabled) && ev.key !== 'Tab') {
+    if ((this.disabled || this.visuallyDisabled || this.readonly) && ev.key !== 'Tab') {
       ev.preventDefault();
       ev.stopPropagation();
       return;
@@ -1527,7 +1533,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       return;
     }
 
-    if (ev.key === 'Enter' && !this.open && !this.disabled && !this.visuallyDisabled) {
+    if (ev.key === 'Enter' && !this.open && !this.disabled && !this.visuallyDisabled && !this.readonly) {
       ev.preventDefault();
       this.show();
     }
@@ -1599,7 +1605,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
 
   /** Mouse enter on a day: updates preview end when selecting a range. */
   private onDayMouseEnter(day: Date) {
-    if (!this.range) return;
+    if (!this.range || this.readonly) return;
     const rs = this.rangeStart ? DateUtils.parseLocalISO(this.rangeStart) : null;
     const re = this.rangeEnd ? DateUtils.parseLocalISO(this.rangeEnd) : null;
     if (rs && !re) {
@@ -1833,8 +1839,10 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                       aria-colindex=${colIndex + 1}
                       aria-labelledby=${'col-' + (colIndex + 1)}
                       .tabIndex=${tabIndex}
-                      ?disabled=${disabled || this.disabled}
-                      aria-disabled=${disabled || this.visuallyDisabled || this.disabled ? 'true' : 'false'}
+                      ?disabled=${disabled || this.disabled || this.readonly}
+                      aria-disabled=${disabled || this.visuallyDisabled || this.disabled || this.readonly
+                        ? 'true'
+                        : 'false'}
                       aria-selected=${isSelectedSingle || inSelectedRange || isRangeStart || isRangeEnd
                         ? 'true'
                         : 'false'}
