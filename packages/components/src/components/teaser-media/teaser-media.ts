@@ -124,20 +124,22 @@ export default class SdTeaserMedia extends SolidElement {
                 ? html`
                     <button
                       part="toggle"
-                      class="sd-interactive sd-interactive--reset inline-flex items-center pointer-events-auto self-center mt-2"
+                      class="sd-interactive sd-interactive--reset mt-2"
                       @click=${this.onToggleClick}
                       aria-expanded=${this.open}
                       aria-label=${this.open ? 'Collapse content' : 'Expand content'}
                     >
-                      <sd-icon
-                        class=${cx(
-                          'w-6 h-6 transition-transform',
-                          this.open && 'rotate-180',
-                          ['primary', 'gradient-dark'].includes(this.variant) ? 'text-white' : 'text-primary'
-                        )}
-                        library="_internal"
-                        name="chevron-down"
-                      ></sd-icon>
+                      <div class="h-full justify-start flex items-start">
+                        <sd-icon
+                          class=${cx(
+                            'w-6 h-6 transition-transform',
+                            this.open && 'rotate-180',
+                            ['primary', 'gradient-dark'].includes(this.variant) ? 'text-white' : 'text-primary'
+                          )}
+                          library="_internal"
+                          name="chevron-down"
+                        ></sd-icon>
+                      </div>
                     </button>
                   `
                 : null}

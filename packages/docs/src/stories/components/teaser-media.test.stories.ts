@@ -143,7 +143,7 @@ export const Slots = {
             {
               type: 'slot',
               name: 'default',
-              value: `<slot>Teaser's Main content</slot>`
+              value: ``
             },
             {
               type: 'slot',

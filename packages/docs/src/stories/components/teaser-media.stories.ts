@@ -193,7 +193,7 @@ export const ExpandableSlot = {
         class="aspect-video object-cover"
         alt="Generic alt"
       />
-      <div slot="expandable" class="slot slot--border slot--text slot--inverted h-12">Expandable slot</div>
+      <div slot="expandable">Expandable slot</div>
     </sd-teaser-media>
   `
 };
