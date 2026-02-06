@@ -151,10 +151,10 @@ export const Placeholder = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[400px]">
+      <div class="w-[400px] h-[500px]">
         ${generateTemplate({
           axis: {
-            y: { type: 'attribute', name: 'range', values: [true, false] }
+            x: { type: 'attribute', name: 'range', values: [true, false] }
           },
           args
         })}
@@ -162,10 +162,10 @@ export const Placeholder = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[400px]">
+      <div class="w-[400px] h-[500px]">
         ${generateTemplate({
           axis: {
-            y: { type: 'attribute', name: 'range', values: [true, false] }
+            x: { type: 'attribute', name: 'range', values: [true, false] }
           },
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
@@ -181,10 +181,10 @@ export const Disabled = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[400px]">
+      <div class="w-[400px] h-[500px]">
         ${generateTemplate({
           axis: {
-            y: { type: 'attribute', name: 'disabled', values: [true, false] }
+            x: { type: 'attribute', name: 'disabled', values: [true, false] }
           },
           args
         })}
@@ -192,10 +192,10 @@ export const Disabled = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[400px]">
+      <div class="w-[400px] h-[500px]">
         ${generateTemplate({
           axis: {
-            y: { type: 'attribute', name: 'disabled', values: [true, false] }
+            x: { type: 'attribute', name: 'disabled', values: [true, false] }
           },
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
@@ -210,7 +210,7 @@ export const DisabledWeekends = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        y: { type: 'attribute', name: 'disabled-weekends', values: [true, false] }
+        x: { type: 'attribute', name: 'disabled-weekends', values: [true, false] }
       },
       args
     });
@@ -257,12 +257,10 @@ export const Mouseless = {
     return html`
       <div>Default</div>
       <br />
-      <div class="mouseless w-[250px]">${generateTemplate({ args })}</div>
-      <br />
-      <br />
+      <div class="mouseless w-[250px] h-[400px]">${generateTemplate({ args })}</div>
       <div>Floating Label</div>
       <br />
-      <div class="mouseless w-[250px]">
+      <div class="mouseless w-[250px] h-[400px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
@@ -281,7 +279,7 @@ export const Mouseless = {
 export const LocaleAware = {
   name: 'Locale Aware',
   render: () => {
-    return html`<div class="flex flex-col gap-4 w-[400px]">
+    return html`<div class="flex flex-row gap-4 w-[400px]">
       <sd-datepicker lang="de" locale="de-DE"></sd-datepicker>
       <sd-datepicker lang="de" locale="de-DE" range rangeStart="2025.10.02" rangeEnd="2025.10.12"></sd-datepicker>
     </div>`;
