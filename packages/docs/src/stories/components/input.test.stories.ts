@@ -99,18 +99,24 @@ export const Labels = {
  */
 export const FloatingLabel = {
   name: 'Floating Label',
-  args: overrideArgs([{ type: 'attribute', name: 'floating-label', value: true }]),
+  args: {
+    label: 'Label'
+  },
   render: (args: any) => {
     return html`
       <div class="w-[350px]">
         ${generateTemplate({
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
         })}
       </div>
       <br />
       <div class="w-[350px]">
         ${generateTemplate({
-          constants: [{ type: 'attribute', name: 'value', value: 'Floating Label with value' }],
+          constants: [
+            { type: 'attribute', name: 'value', value: 'Floating Label with value' },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
           args
         })}
       </div>
@@ -399,7 +405,6 @@ export const StyleOnValid = {
           args
         })}
       </div>
-      <br />
       <div>Floating Label</div>
       <br />
       <div class="h-[340px]">

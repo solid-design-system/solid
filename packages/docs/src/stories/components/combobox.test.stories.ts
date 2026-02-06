@@ -144,15 +144,23 @@ export const Labels = {
 export const FloatingLabel = {
   name: 'Floating Label',
   args: {
-    'floating-label': true
+    label: 'Label'
   },
   render: (args: any) => {
     return html`
-      <div class="h-[260px] w-[400px]">${generateTemplate({ args })}</div>
+      <div class="h-[260px] w-[400px]">
+        ${generateTemplate({
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
+          args
+        })}
+      </div>
       <br />
       <div class="h-[260px] w-[400px]">
         ${generateTemplate({
-          constants: [{ type: 'attribute', name: 'value', value: 'option-1' }],
+          constants: [
+            { type: 'attribute', name: 'value', value: 'option-1' },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
           args
         })}
       </div>
@@ -259,7 +267,6 @@ export const DisabledMultiple = {
           args
         })}
       </div>
-      <br />
       <div>Floating Label</div>
       <div class="h-[340px] w-full">
         ${generateTemplate({

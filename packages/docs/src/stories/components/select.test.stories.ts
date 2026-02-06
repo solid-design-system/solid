@@ -122,14 +122,22 @@ export const Labels = {
 export const FloatingLabel = {
   name: 'Floating Label',
   args: {
-    'floating-label': true
+    label: 'Label'
   },
   render: (args: any) => {
-    return html` <div class="h-[260px] w-[420px]">${generateTemplate({ args })}</div>
+    return html` <div class="h-[260px] w-[420px]">
+        ${generateTemplate({
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
+          args
+        })}
+      </div>
       <br />
       <div class="h-[260px] w-[420px]">
         ${generateTemplate({
-          constants: [{ type: 'attribute', name: 'value', value: 'option-1' }],
+          constants: [
+            { type: 'attribute', name: 'value', value: 'option-1' },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
           args
         })}
       </div>`;

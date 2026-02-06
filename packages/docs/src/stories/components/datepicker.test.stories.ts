@@ -65,17 +65,27 @@ export const Labels = {
 export const FloatingLabel = {
   name: 'Floating Label',
   args: {
-    'floating-label': true
+    label: 'Label'
   },
   render: (args: any) => {
-    return html` <div class="w-[400px]">${generateTemplate({ args })}</div>
+    return html`
+      <div class="w-[400px]">
+        ${generateTemplate({
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
+          args
+        })}
+      </div>
       <br />
       <div class="w-[400px]">
         ${generateTemplate({
-          constants: [{ type: 'attribute', name: 'value', value: '2025.11.10' }],
+          constants: [
+            { type: 'attribute', name: 'value', value: '2025.11.10' },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
           args
         })}
-      </div>`;
+      </div>
+    `;
   }
 };
 
@@ -258,6 +268,7 @@ export const Mouseless = {
       <div>Default</div>
       <br />
       <div class="mouseless w-[250px]">${generateTemplate({ args })}</div>
+      <br />
       <div>Floating Label</div>
       <br />
       <div class="mouseless w-[250px]">

@@ -66,15 +66,23 @@ export const Labels = {
 export const FloatingLabel = {
   name: 'Floating Label',
   args: {
-    'floating-label': true
+    label: 'Label'
   },
   render: (args: any) => {
     return html`
-      <div class="w-[250px]">${generateTemplate({ args })}</div>
+      <div class="w-[250px]">
+        ${generateTemplate({
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
+          args
+        })}
+      </div>
       <br />
       <div class="w-[250px]">
         ${generateTemplate({
-          constants: [{ type: 'attribute', name: 'value', value: 'Floating Label with value' }],
+          constants: [
+            { type: 'attribute', name: 'value', value: 'Floating Label with value' },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
           args
         })}
       </div>
@@ -673,7 +681,19 @@ export const Mouseless = {
     { type: 'attribute', name: 'help-text', value: 'Help-text' }
   ]),
   render: (args: any) => {
-    return html`<div class="mouseless w-[250px]">${generateTemplate({ args })}</div>`;
+    return html` <div>Default</div>
+      <br />
+      <div class="mouseless w-[250px]">${generateTemplate({ args })}</div>
+      <br />
+      <br />
+      <div>Floating Label</div>
+      <br />
+      <div class="mouseless w-[250px]">
+        ${generateTemplate({
+          args,
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }]
+        })}
+      </div>`;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
