@@ -209,7 +209,7 @@ export const ValidInvalid = {
     return html`<form class="h-[260px] w-full flex gap-4">
         ${generateTemplate({
           options: {
-            classes: 'w-full [&>tbody>tr>td]:align-top'
+            classes: 'w-full [&>tbody>tr>td]:align-top [&>tbody>tr>td]:w-[50%]'
           },
           axis: {
             y: {
