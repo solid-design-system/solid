@@ -151,9 +151,9 @@ export const Slots = {
               value: `<slot slot='headline'>Teaser's Headline</slot>`
             },
             {
-              type: 'slot',
-              name: 'expandable',
-              value: `<slot slot='expandable'>Expandable text tincidunt laoreet nulla phasellus mauris leo venenatis id commodo. Mauris elementum risus sed massa libero dui adipiscing sagittis. Orci quis cum diam nunc non vel morbi cras eget.</slot>`
+              type: 'attribute',
+              name: 'open',
+              value: true
             },
             {
               type: 'template',
