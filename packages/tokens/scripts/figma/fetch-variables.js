@@ -15,6 +15,7 @@ import { sort } from '@tamtamchik/json-deep-sort';
 const getApiConfig = () => {
   const branchId = process.env.FIGMA_FILE_ID || 'VTztxQ5pWG7ARg8hCX6PfR';
   if (!process.env.FIGMA_FILE_ID) {
+    // eslint-disable-next-line no-console
     console.log('No FIGMA_FILE_ID provided, using default branch ID:', branchId);
   }
 
@@ -92,8 +93,11 @@ const fetchFigmaVariables = async () => {
 
 fetchFigmaVariables()
   .then(() => {
+    // eslint-disable-next-line no-console
     console.log('\n✅ Figma variables fetched successfully!\n');
+    // eslint-disable-next-line no-console
     console.log('💡 Tip: Analyze variable usage with:\n');
+    // eslint-disable-next-line no-console
     console.log('   pnpm analyze:variables\n');
   })
   .catch(console.error);

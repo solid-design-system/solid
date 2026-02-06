@@ -5,7 +5,7 @@
   "author": {
     "name": "Union Investment"
   },
-  "packageManager": "pnpm@10.17.1+sha512.17c560fca4867ae9473a3899ad84a88334914f379be46d455cbf92e5cf4b39d34985d452d2583baf19967fa76cb5c17bc9e245529d0b98745721aa7200ecaf7a",
+  "packageManager": "pnpm@10.28.2+sha512.41872f037ad22f7348e3b1debbaf7e867cfd448f2726d9cf74c08f19507c31d2c8e7a11525b983febc2df640b5438dee6023ebb1f84ed43cc2d654d2bc326264",
   "description": "",
   "publishConfig": {
     "access": "public",
@@ -27,7 +27,7 @@
   "license": "MIT",
   "engines": {
     "node": "^22.0.0",
-    "pnpm": "^10.17.1"
+    "pnpm": "^10.28.2"
   },
   "lint-staged": {
     "*": [

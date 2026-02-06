@@ -207,7 +207,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @property() getTag: (option: SdOption, index: number) => TemplateResult | string | HTMLElement = option => {
     return html`
       <sd-tag
-        class="relative z-10"
+        class="relative z-10 min-w-0 max-w-full"
         ?disabled=${this.disabled}
         part="tag"
         exportparts="
@@ -693,7 +693,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         if (index < this.maxOptionsVisible || this.maxOptionsVisible <= 0) {
           const tag = this.getTag(option, index);
           // Wrap so we can handle the remove
-          return html` <div @sd-remove=${(e: CustomEvent) => this.handleTagRemove(e, option)}>
+          return html` <div @sd-remove=${(e: CustomEvent) => this.handleTagRemove(e, option)} class="max-w-full">
             ${typeof tag === 'string' ? unsafeHTML(tag) : tag}
           </div>`;
         }
@@ -703,7 +703,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       return [
         html`
           <sd-tag
-            class="z-10"
+            class="z-10 min-w-0 max-w-full"
             ?disabled=${this.disabled}
             part="tag"
             exportparts="
@@ -811,12 +811,18 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
   @watch('value', { waitUntilFirstUpdate: true })
   handleValueChange() {
     // run only if the value is updated from outside
-    if (this.selectedOptions.length === (Array.isArray(this.value) ? this.value.length : 1)) return;
+    const incomingValue = this.value;
+    const incomingValues = Array.isArray(incomingValue) ? incomingValue : [incomingValue];
+    const currentValues = this.selectedOptions.map(option => option.value);
+    if (incomingValues.length === currentValues.length && incomingValues.every(value => currentValues.includes(value)))
+      return;
     const allOptions = this.getAllOptions();
     const value = Array.isArray(this.value) ? this.value : [this.value];
 
     // Select only the options that match the new value
     this.setSelectedOptions(allOptions.filter(el => value.includes(el.value)));
+    //Preserve externally provided value shape (e.g. form reset, attribute value)
+    this.value = incomingValue;
   }
 
   /** Shows the listbox. */
@@ -1047,7 +1053,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             >
               <div
                 class=${cx(
-                  'input-container items-center w-full h-full px-4 flex',
+                  'input-container items-center w-full h-full px-4 flex min-w-0',
                   {
                     sm: 'py-1',
                     md: 'py-1',
@@ -1061,7 +1067,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   form=${this.form}
                   part="display-input"
                   class=${cx(
-                    'top-0 left-0 appearance-none outline-none flex-grow bg-transparent flex-1 placeholder:text-neutral-700',
+                    'top-0 left-0 appearance-none outline-none flex-grow bg-transparent flex-1 placeholder:text-neutral-700 min-w-0',
                     cursorStyles,
                     this.multiple && this.useTags && this.value.length > 0 ? 'hidden' : '',
                     this.size === 'sm'
@@ -1094,10 +1100,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   tabindex="-1"
                 />
 
-                ${this.multiple && this.useTags
+                ${this.multiple && this.useTags && this.tags && this.tags.length > 0
                   ? html` <div
                       part="tags"
-                      class=${cx('flex-grow flex flex-wrap items-center gap-1', this.floatingLabel && 'pt-6')}
+                      class=${cx('flex-grow flex flex-wrap items-center gap-1 min-w-0', this.floatingLabel && 'pt-6')}
                     >
                       ${this.tags}
                     </div>`
@@ -1126,7 +1132,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                         class=${cx(
                           'select__clear flex justify-center',
                           iconMarginLeft,
-                          this.value.length > 0 ? 'visible' : 'invisible'
+                          this.value.length > 0 ? 'visible' : 'hidden'
                         )}
                         type="button"
                         aria-label=${this.localize.term('clearEntry')}
@@ -1231,7 +1237,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           <slot name="help-text">${this.helpText}</slot>
         </div>
       </div>
-      ${this.formControlController.renderInvalidMessage()}
+      ${this.formControlController.renderInvalidMessage(this.size)}
     `;
   }
 
