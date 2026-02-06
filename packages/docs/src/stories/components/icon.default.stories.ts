@@ -41,7 +41,11 @@ export const LibraryDefaultContent = {
         y: {
           type: 'attribute',
           name: 'name',
-          values: (iconsFromCdn as { content: string[] }).content.map(icon => `content/${icon}`)
+          values: Array.isArray(iconsFromCdn?.content)
+            ? iconsFromCdn.content
+                .filter((icon: string): icon is string => typeof icon === 'string' && icon.length > 0)
+                .map((icon: string) => `content/${icon}`)
+            : []
         }
       },
       constants: [{ type: 'attribute', name: 'library', value: '' }],
@@ -75,7 +79,11 @@ export const LibraryDefaultSystem = {
         y: {
           type: 'attribute',
           name: 'name',
-          values: (iconsFromCdn as { system: string[] }).system.map(icon => `system/${icon}`)
+          values: Array.isArray(iconsFromCdn?.system)
+            ? iconsFromCdn.system
+                .filter((icon: string): icon is string => typeof icon === 'string' && icon.length > 0)
+                .map((icon: string) => `system/${icon}`)
+            : []
         }
       },
       constants: [{ type: 'attribute', name: 'library', value: '' }],

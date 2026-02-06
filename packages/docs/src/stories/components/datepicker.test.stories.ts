@@ -242,6 +242,15 @@ export const MinAndMax = {
   }
 };
 
+export const Placement = {
+  name: 'Placement',
+  render: () => {
+    return html`<div class="w-[400px] mt-[400px]">
+      <sd-datepicker label="Label" size="lg" placement="top" value="2025-12-10"></sd-datepicker>
+    </div>`;
+  }
+};
+
 export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {
@@ -290,6 +299,7 @@ export const Combination = generateScreenshotStory([
   DisabledWeekends,
   DisabledDates,
   MinAndMax,
+  Placement,
   Mouseless,
   LocaleAware
 ]);
