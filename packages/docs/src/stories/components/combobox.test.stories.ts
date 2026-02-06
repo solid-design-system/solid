@@ -147,7 +147,16 @@ export const FloatingLabel = {
     'floating-label': true
   },
   render: (args: any) => {
-    return html`<div class="h-[260px] w-[400px]">${generateTemplate({ args })}</div>`;
+    return html`
+      <div class="h-[260px] w-[400px]">${generateTemplate({ args })}</div>
+      <br />
+      <div class="h-[260px] w-[400px]">
+        ${generateTemplate({
+          constants: [{ type: 'attribute', name: 'value', value: 'option-1' }],
+          args
+        })}
+      </div>
+    `;
   }
 };
 
@@ -168,7 +177,9 @@ export const SizeMultiple = {
   render: (args: { open?: string }) => {
     delete args['open'];
 
-    return html`<div class="h-[340px] w-[700px]">
+    return html` <div>Default</div>
+      <br />
+      <div class="h-[340px] w-[700px]">
         ${generateTemplate({
           options: {
             classes: 'w-full'
@@ -183,6 +194,8 @@ export const SizeMultiple = {
           args
         })}
       </div>
+      <br />
+      <div>Floating Label</div>
       <br />
       <div class="h-[340px] w-[700px]">
         ${generateTemplate({
@@ -220,7 +233,8 @@ export const DisabledMultiple = {
   },
   render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
-    return html`<div class="h-[340px] w-full">
+    return html` <div>Default</div>
+      <div class="h-[340px] w-full">
         ${generateTemplate({
           options: {
             classes: 'w-full [&>tbody>tr>td]:w-[50%]'
@@ -246,6 +260,7 @@ export const DisabledMultiple = {
         })}
       </div>
       <br />
+      <div>Floating Label</div>
       <div class="h-[340px] w-full">
         ${generateTemplate({
           options: {
@@ -293,7 +308,8 @@ export const ValidInvalid = {
     delete args['getOption-attr'];
 
     return html`
-      <form id="valid-invalid-form" class="h-[260px] w-full flex gap-4">
+      <div>Default</div>
+      <form id="valid-invalid-default" class="h-[260px] w-full flex gap-4">
         ${generateTemplate({
           options: {
             classes: 'w-full [&>tbody>tr>td]:align-top'
@@ -303,11 +319,6 @@ export const ValidInvalid = {
               type: 'attribute',
               name: 'value',
               values: ['option-1 option-2', '']
-            },
-            y: {
-              type: 'attribute',
-              name: 'floating-label',
-              values: [false, true]
             }
           },
           constants: [twoOptionsConstant, labelConstant, multipleConstant],
@@ -315,31 +326,57 @@ export const ValidInvalid = {
         })}
       </form>
 
+      <br />
+      <div>Floating Label</div>
+      <form id="valid-invalid-floating" class="h-[260px] w-full flex gap-4">
+        ${generateTemplate({
+          options: {
+            classes: 'w-full [&>tbody>tr>td]:align-top'
+          },
+          axis: {
+            x: {
+              type: 'attribute',
+              name: 'value',
+              values: ['option-1 option-2', '']
+            }
+          },
+          constants: [
+            twoOptionsConstant,
+            labelConstant,
+            multipleConstant,
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
+          args
+        })}
+      </form>
+
       <script type="module">
         await customElements.whenDefined('sd-combobox');
-        const form = document.getElementById('valid-invalid-form');
 
-        form.addEventListener('invalid', e => e.preventDefault(), { capture: true });
+        // Helper to add validation per form
+        const setupValidation = formId => {
+          const form = document.getElementById(formId);
+          form.addEventListener('invalid', e => e.preventDefault(), { capture: true });
 
-        const comboboxes = form.querySelectorAll('sd-combobox');
-        comboboxes.forEach(combobox => {
-          const isEmpty = !combobox.value || (Array.isArray(combobox.value) && combobox.value.length === 0);
+          const comboboxes = form.querySelectorAll('sd-combobox');
+          comboboxes.forEach(combobox => {
+            const validateCombobox = () => {
+              const isEmpty = !combobox.value || (Array.isArray(combobox.value) && combobox.value.length === 0);
+              combobox.setCustomValidity(isEmpty ? 'Please select an option.' : '');
+              combobox.reportValidity();
+            };
 
-          if (isEmpty) {
-            combobox.setCustomValidity('Please select an option.');
-            combobox.reportValidity();
-          }
+            // Initial validation
+            validateCombobox();
 
-          const validateCombobox = () => {
-            const isEmpty = !combobox.value || (Array.isArray(combobox.value) && combobox.value.length === 0);
+            combobox.addEventListener('sd-change', validateCombobox);
+            combobox.addEventListener('sd-input', validateCombobox);
+          });
+        };
 
-            combobox.setCustomValidity(isEmpty ? 'Please select an option.' : '');
-            combobox.reportValidity();
-          };
-
-          combobox.addEventListener('sd-change', validateCombobox);
-          combobox.addEventListener('sd-input', validateCombobox);
-        });
+        // Apply validation separately to default and floating label forms
+        setupValidation('valid-invalid-default');
+        setupValidation('valid-invalid-floating');
       </script>
     `;
   }
@@ -351,7 +388,9 @@ export const ValidInvalid = {
 export const BorderVisibility = {
   name: 'Border visibility',
   render: () => {
-    return html`<div class="h-[150px] w-[420px]">
+    return html` <div>Default</div>
+      <br />
+      <div class="h-[150px] w-[420px]">
         ${generateTemplate({
           args: overrideArgs([
             twentyOptionsConstant,
@@ -362,6 +401,8 @@ export const BorderVisibility = {
           ])
         })}
       </div>
+      <br />
+      <div>Floating Label</div>
       <br />
       <div class="h-[150px] w-[420px]">
         ${generateTemplate({
@@ -537,6 +578,8 @@ export const Focus = {
     elm?.focus();
   },
   render: () => html`
+    <div>Default</div>
+    <br />
     <div class="h-[260px] w-[400px]">
       <sd-combobox label="Label">
         <sd-option value="option-1">Option 1</sd-option>
@@ -544,6 +587,8 @@ export const Focus = {
         <sd-option value="option-3">Option 3</sd-option>
       </sd-combobox>
     </div>
+    <br />
+    <div>Floating Label</div>
     <br />
     <div class="h-[260px] w-[400px]">
       <sd-combobox label="Label" floating-label>
@@ -572,7 +617,8 @@ export const StyleOnValid = {
     delete args['getOption'];
     delete args['getOption-attr'];
 
-    return html`<div class="h-[340px]">
+    return html` <div>Default</div>
+      <div class="h-[340px]">
         ${generateTemplate({
           options: {
             classes: 'w-full'
@@ -588,6 +634,7 @@ export const StyleOnValid = {
         })}
       </div>
       <br />
+      <div>Floating Label</div>
       <div class="h-[340px]">
         ${generateTemplate({
           options: {
@@ -630,6 +677,8 @@ export const StyleOnValid = {
 export const Tags = {
   name: 'Tags',
   render: () => html`
+    <div>Default</div>
+    <br />
     <div class="h-[260px] w-[400px]">
       <sd-combobox label="Label" multiple value="option-1 option-2">
         <sd-option value="option-1">Option 1</sd-option>
@@ -637,6 +686,8 @@ export const Tags = {
         <sd-option value="option-3">Option 3</sd-option>
       </sd-combobox>
     </div>
+    <br />
+    <div>Floating Label</div>
     <br />
     <div class="h-[260px] w-[400px]">
       <sd-combobox label="Label" floating-label multiple value="option-1 option-2">
@@ -749,7 +800,9 @@ export const Mouseless = {
   render: (args: { 'open-attr'?: string }) => {
     delete args['open-attr'];
 
-    return html`<div class="mouseless h-[260px] w-full flex gap-4">
+    return html` <div>Default</div>
+      <br />
+      <div class="mouseless h-[260px] w-full flex gap-4">
         ${generateTemplate({
           constants: [twoOptionsConstant, { type: 'attribute', name: 'label', value: 'Default' }],
           args
@@ -768,6 +821,8 @@ export const Mouseless = {
           args
         })}
       </div>
+      <div>Floating Label</div>
+      <br />
       <div class="mouseless h-[260px] w-full flex gap-4">
         ${generateTemplate({
           constants: [

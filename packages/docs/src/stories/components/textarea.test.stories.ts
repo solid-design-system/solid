@@ -95,11 +95,16 @@ export const Placeholders = {
   ]),
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[250px]">
         ${generateTemplate({
           args
         })}
       </div>
+      <br />
+      <br />
+      <div>Floating Label</div>
       <br />
       <div class="w-[250px]">
         ${generateTemplate({
@@ -123,6 +128,8 @@ export const Disabled = {
   ]),
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[250px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'disabled', value: true }],
@@ -130,11 +137,15 @@ export const Disabled = {
         })}
       </div>
       <br />
+      <br />
+      <div>Floating Label</div>
+      <br />
       <div class="w-[250px]">
         ${generateTemplate({
           constants: [
             { type: 'attribute', name: 'disabled', value: true },
-            { type: 'attribute', name: 'floating-label', value: true }
+            { type: 'attribute', name: 'floating-label', value: true },
+            { type: 'attribute', name: 'label', value: 'Floating Label' }
           ],
           args
         })}
@@ -155,6 +166,8 @@ export const Readonly = {
   ]),
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[250px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'readonly', value: true }],
@@ -162,11 +175,15 @@ export const Readonly = {
         })}
       </div>
       <br />
+      <br />
+      <div>Floating Label</div>
+      <br />
       <div class="w-[250px]">
         ${generateTemplate({
           constants: [
             { type: 'attribute', name: 'readonly', value: true },
-            { type: 'attribute', name: 'floating-label', value: true }
+            { type: 'attribute', name: 'floating-label', value: true },
+            { type: 'attribute', name: 'label', value: 'Floating Label' }
           ],
           args
         })}
@@ -188,6 +205,8 @@ export const Sizes = {
   ]),
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div>
         ${generateTemplate({
           axis: {
@@ -196,6 +215,8 @@ export const Sizes = {
           args
         })}
       </div>
+      <br />
+      <div>Floating Label</div>
       <br />
       <div>
         ${generateTemplate({
@@ -229,6 +250,8 @@ export const StyleOnValid = {
   ]),
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div>
         ${generateTemplate({
           axis: {
@@ -237,6 +260,8 @@ export const StyleOnValid = {
           args
         })}
       </div>
+      <br />
+      <div>Floating Label</div>
       <br />
       <div>
         ${generateTemplate({
@@ -272,6 +297,8 @@ export const Validation = {
   render: (args: any) => {
     return html`
       <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
+        <div>Default</div>
+        <br />
         <div class="mb-2">
           ${generateTemplate({
             constants: [
@@ -315,6 +342,9 @@ export const Validation = {
             args
           })}
         </div>
+        <br />
+        <br />
+        <div>Floating Label</div>
         <br />
         <div class="mb-2">
           ${generateTemplate({
@@ -505,9 +535,14 @@ export const Scrollable = {
   name: 'Scrollable',
   render: () => {
     return html`
+      <div>Default</div>
+      <br />
       <div>
         <sd-textarea id="scrollable-textarea" label="Label" style-on-valid style="max-width: 350px;"></sd-textarea>
       </div>
+      <br />
+      <br />
+      <div>Floating Label</div>
       <br />
       <div>
         <sd-textarea

@@ -107,6 +107,13 @@ export const FloatingLabel = {
           args
         })}
       </div>
+      <br />
+      <div class="w-[350px]">
+        ${generateTemplate({
+          constants: [{ type: 'attribute', name: 'value', value: 'Floating Label with value' }],
+          args
+        })}
+      </div>
     `;
   }
 };
@@ -123,11 +130,16 @@ export const HelpText = {
   ]),
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[250px]">
         ${generateTemplate({
           args
         })}
       </div>
+      <br />
+      <br />
+      <div>Floating Label</div>
       <br />
       <div class="w-[250px]">
         ${generateTemplate({
@@ -148,11 +160,16 @@ export const Placeholders = {
   args: overrideArgs([{ type: 'attribute', name: 'placeholder', value: 'Type something' }]),
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[250px]">
         ${generateTemplate({
           args
         })}
       </div>
+      <br />
+      <br />
+      <div>Floating Label</div>
       <br />
       <div class="w-[250px]">
         ${generateTemplate({
@@ -173,11 +190,16 @@ export const Clearable = {
   args: overrideArgs([{ type: 'attribute', name: 'clearable', value: true }]),
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[250px]">
         ${generateTemplate({
           args
         })}
       </div>
+      <br />
+      <br />
+      <div>Floating Label</div>
       <br />
       <div class="w-[250px]">
         ${generateTemplate({
@@ -198,6 +220,8 @@ export const TogglePassword = {
   args: overrideArgs([{ type: 'attribute', name: 'type', value: 'password' }]),
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[250px]">
         ${generateTemplate({
           args,
@@ -207,6 +231,9 @@ export const TogglePassword = {
           ]
         })}
       </div>
+      <br />
+      <br />
+      <div>Floating Label</div>
       <br />
       <div class="w-[250px]">
         ${generateTemplate({
@@ -235,12 +262,17 @@ export const Disabled = {
   ]),
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[250px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'disabled', value: true }],
           args
         })}
       </div>
+      <br />
+      <br />
+      <div>Floating Label</div>
       <br />
       <div class="w-[250px]">
         ${generateTemplate({
@@ -268,12 +300,17 @@ export const Readonly = {
   ]),
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[250px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'readonly', value: true }],
           args
         })}
       </div>
+      <br />
+      <br />
+      <div>Floating Label</div>
       <br />
       <div class="w-[250px]">
         ${generateTemplate({
@@ -307,6 +344,8 @@ export const Sizes = {
   ]),
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[250px]">
         ${generateTemplate({
           axis: {
@@ -315,6 +354,8 @@ export const Sizes = {
           args
         })}
       </div>
+      <br />
+      <div>Floating Label</div>
       <br />
       <div class="w-[250px]">
         ${generateTemplate({
@@ -348,6 +389,8 @@ export const StyleOnValid = {
   ]),
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="h-[340px]">
         ${generateTemplate({
           axis: {
@@ -356,6 +399,8 @@ export const StyleOnValid = {
           args
         })}
       </div>
+      <br />
+      <div>Floating Label</div>
       <br />
       <div class="h-[340px]">
         ${generateTemplate({
@@ -391,6 +436,8 @@ export const Types = {
   name: 'Types',
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[370px]">
         <div class="mb-2">
           ${generateTemplate({
@@ -518,6 +565,8 @@ export const Types = {
         </div>
       </div>
       <br />
+      <br />
+      <div>Floating Label</div>
       <br />
       <div class="w-[370px]">
         <div class="mb-2">
@@ -1114,7 +1163,12 @@ export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="mouseless w-[250px]">${generateTemplate({ args })}</div>
+      <br />
+      <br />
+      <div>Floating Label</div>
       <br />
       <div class="mouseless w-[250px]">
         ${generateTemplate({

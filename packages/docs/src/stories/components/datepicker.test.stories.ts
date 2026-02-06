@@ -68,7 +68,14 @@ export const FloatingLabel = {
     'floating-label': true
   },
   render: (args: any) => {
-    return html`<div class="w-[400px]">${generateTemplate({ args })}</div>`;
+    return html` <div class="w-[400px]">${generateTemplate({ args })}</div>
+      <br />
+      <div class="w-[400px]">
+        ${generateTemplate({
+          constants: [{ type: 'attribute', name: 'value', value: '2025.11.10' }],
+          args
+        })}
+      </div>`;
   }
 };
 
@@ -76,6 +83,7 @@ export const Size = {
   name: 'Size',
   render: (args: any) => {
     return html`
+      <div>Default</div>
       <div class="w-[400px]">
         ${generateTemplate({
           axis: {
@@ -89,6 +97,7 @@ export const Size = {
         })}
       </div>
       <br />
+      <div>Floating Label</div>
       <div class="w-[400px]">
         ${generateTemplate({
           axis: {
@@ -110,6 +119,8 @@ export const Required = {
   name: 'Required',
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[400px]">
         ${generateTemplate({
           axis: {
@@ -118,6 +129,8 @@ export const Required = {
           args
         })}
       </div>
+      <br />
+      <div>Floating Label</div>
       <br />
       <div class="w-[400px]">
         ${generateTemplate({
@@ -136,6 +149,8 @@ export const Placeholder = {
   name: 'Placeholder',
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[400px]">
         ${generateTemplate({
           axis: {
@@ -144,6 +159,8 @@ export const Placeholder = {
           args
         })}
       </div>
+      <br />
+      <div>Floating Label</div>
       <br />
       <div class="w-[400px]">
         ${generateTemplate({
@@ -162,6 +179,8 @@ export const Disabled = {
   name: 'Disabled',
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[400px]">
         ${generateTemplate({
           axis: {
@@ -170,6 +189,8 @@ export const Disabled = {
           args
         })}
       </div>
+      <br />
+      <div>Floating Label</div>
       <br />
       <div class="w-[400px]">
         ${generateTemplate({
@@ -225,7 +246,12 @@ export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="mouseless w-[250px]">${generateTemplate({ args })}</div>
+      <br />
+      <br />
+      <div>Floating Label</div>
       <br />
       <div class="mouseless w-[250px]">
         ${generateTemplate({

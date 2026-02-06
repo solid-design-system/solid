@@ -125,7 +125,14 @@ export const FloatingLabel = {
     'floating-label': true
   },
   render: (args: any) => {
-    return html`<div class="h-[260px] w-[420px]">${generateTemplate({ args })}</div>`;
+    return html` <div class="h-[260px] w-[420px]">${generateTemplate({ args })}</div>
+      <br />
+      <div class="h-[260px] w-[420px]">
+        ${generateTemplate({
+          constants: [{ type: 'attribute', name: 'value', value: 'option-1' }],
+          args
+        })}
+      </div>`;
   }
 };
 
@@ -139,6 +146,7 @@ export const SizeMultiple = {
     delete args['open'];
 
     return html`
+      <div>Default</div>
       <div class="h-[340px]">
         ${generateTemplate({
           options: {
@@ -164,6 +172,7 @@ export const SizeMultiple = {
         })}
       </div>
       <br />
+      <div>Floating Label</div>
       <div class="h-[340px]">
         ${generateTemplate({
           options: {
@@ -204,6 +213,7 @@ export const DisabledMultiple = {
     delete args['open-attr'];
 
     return html`
+      <div>Default</div>
       <div class="h-[340px] w-full">
         ${generateTemplate({
           options: {
@@ -235,6 +245,7 @@ export const DisabledMultiple = {
         })}
       </div>
       <br />
+      <div>Floating Label</div>
       <div class="h-[340px] w-full">
         ${generateTemplate({
           options: {
@@ -280,6 +291,7 @@ export const ValidInvalid = {
     delete args['open-attr'];
 
     return html`
+      <div>Default</div>
       <form class="h-[340px] w-full flex gap-4">
         ${generateTemplate({
           options: {
@@ -308,6 +320,9 @@ export const ValidInvalid = {
         <sd-button class="hidden" type="submit">Submit</sd-button>
       </form>
       <br />
+      <br />
+      <br />
+      <div>Floating Label</div>
       <form class="h-[340] w-full flex gap-4">
         ${generateTemplate({
           options: {
@@ -489,6 +504,7 @@ export const StyleOnValid = {
     delete args['open-attr'];
 
     return html`
+      <div>Default</div>
       <div class="h-[340px]">
         ${generateTemplate({
           options: {
@@ -504,7 +520,7 @@ export const StyleOnValid = {
           args
         })}
       </div>
-      <br />
+      <div>Floating Label</div>
       <div class="h-[340px]">
         ${generateTemplate({
           options: {
@@ -552,6 +568,8 @@ export const Mouseless = {
     delete args['open-attr'];
 
     return html`
+      <div>Default</div>
+      <br />
       <div class="mouseless h-[260px] w-full flex gap-4">
         ${generateTemplate({
           constants: [twoOptionsConstant, { type: 'attribute', name: 'label', value: 'Default' }],
@@ -571,6 +589,8 @@ export const Mouseless = {
           args
         })}
       </div>
+      <div>Floating Label</div>
+      <br />
       <div class="mouseless h-[260px] w-full flex gap-4">
         ${generateTemplate({
           constants: [
