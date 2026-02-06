@@ -33,9 +33,9 @@ export const Default = {
 
 /**
  * Use the `size` attribute to change the size:
- * - 'lg' (default)
- * - 'md'
- * - 'sm'
+ * - `lg` (default)
+ * - `md`
+ * - `sm`
  *
  *__Note:__ On the `floating-label` variant “sm” size is not available.
  */
