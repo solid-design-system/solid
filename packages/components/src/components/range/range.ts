@@ -196,6 +196,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       this.moveThumb(thumb, this._rangeValues.get(rangeId)!);
 
       if (this.tooltip === 'always-visible') {
+        (thumb.parentElement as SdTooltip).closeTrigger = 'manual';
         (thumb.parentElement as SdTooltip).show();
       }
     }
