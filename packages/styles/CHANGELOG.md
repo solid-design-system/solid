@@ -1,5 +1,7 @@
 # @solid-design-system/styles
 
+## 6.5.0
+
 ## 6.4.2
 
 ## 6.4.1

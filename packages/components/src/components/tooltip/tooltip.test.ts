@@ -223,7 +223,7 @@ describe('<sd-tooltip>', () => {
     // tooltip is visible after focusing the button
     expect(body.hidden).to.be.false;
 
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab' }));
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', bubbles: true }));
     button.blur();
     await waitUntil(() => body.hidden);
 
@@ -259,5 +259,103 @@ describe('<sd-tooltip>', () => {
     expect(body.hidden).to.be.true;
     expect(button).to.have.focus;
     expect(document.activeElement).to.not.equal(el);
+  });
+
+  it('should not toggle the tooltip when clicking the trigger but not the closing-trigger', async () => {
+    const el = await fixture<SdTooltip>(html`
+      <sd-tooltip content="This is a tooltip" trigger="click" close-trigger="manual">
+        <sd-button>Click Me</sd-button>
+      </sd-tooltip>
+    `);
+
+    const button = el.querySelector('sd-button')!;
+    const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
+
+    // tooltip starts hidden
+    expect(body.hidden).to.be.true;
+
+    // tooltip is visible after clicking the button
+    button.click();
+    await waitUntil(() => !body.hidden);
+    expect(body.hidden).to.be.false;
+
+    // tooltip is still visible after clicking the button a second time
+    button.click();
+    await waitUntil(() => !body.hidden);
+    expect(body.hidden).to.be.false;
+  });
+
+  it('should toggle the tooltip when clicking the trigger and the closing-trigger', async () => {
+    const el = await fixture<SdTooltip>(html`
+      <sd-tooltip content="This is a tooltip">
+        <sd-button>Click Me</sd-button>
+      </sd-tooltip>
+    `);
+
+    const button = el.querySelector('sd-button')!;
+    const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
+
+    // tooltip starts hidden
+    expect(body.hidden).to.be.true;
+
+    // tooltip is visible after clicking the button
+    button.click();
+    await waitUntil(() => !body.hidden);
+    expect(body.hidden).to.be.false;
+
+    // tooltip is hidden again after clicking the button a second time
+    button.click();
+    await waitUntil(() => body.hidden);
+    expect(body.hidden).to.be.true;
+    expect(document.activeElement).to.not.equal(el);
+  });
+
+  it('should toggle the tooltip when clicking the trigger and then clicking outside the element', async () => {
+    const el = await fixture<SdTooltip>(html`
+      <sd-tooltip content="This is a tooltip">
+        <sd-button>Click Me</sd-button>
+      </sd-tooltip>
+    `);
+
+    const button = el.querySelector('sd-button')!;
+    const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
+
+    // tooltip starts hidden
+    expect(body.hidden).to.be.true;
+
+    // tooltip is visible after clicking the button
+    button.click();
+    await waitUntil(() => !body.hidden);
+    expect(body.hidden).to.be.false;
+
+    // tooltip is hidden after losing focus
+    document.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
+    await waitUntil(() => body.hidden);
+    expect(body.hidden).to.be.true;
+    expect(document.activeElement).to.not.equal(el);
+  });
+
+  it('should close the tooltip when clicking the trigger, then clicking outside the element when focus is not a close-trigger', async () => {
+    const el = await fixture<SdTooltip>(html`
+      <sd-tooltip content="This is a tooltip" close-trigger="manual">
+        <sd-button>Click Me</sd-button>
+      </sd-tooltip>
+    `);
+
+    const button = el.querySelector('sd-button')!;
+    const body = el.shadowRoot!.querySelector<HTMLElement>('[part~="body"]')!;
+
+    // tooltip starts hidden
+    expect(body.hidden).to.be.true;
+
+    // tooltip is visible after clicking the button
+    button.click();
+    await waitUntil(() => !body.hidden);
+    expect(body.hidden).to.be.false;
+
+    // tooltip is not hidden after unfocusing
+    document.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
+    await waitUntil(() => !body.hidden);
+    expect(body.hidden).to.be.false;
   });
 });
