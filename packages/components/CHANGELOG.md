@@ -1,5 +1,24 @@
 # @solid-design-system/components
 
+## 6.4.2
+
+### Patch Changes
+
+- Fixed `sd-datepicker`: _[`#2765`](https://github.com/solid-design-system/solid/pull/2765) [`d80b650`](https://github.com/solid-design-system/solid/commit/d80b6504f5b773d1aed35166643b34ce2fed6be0) [@smfonseca](https://github.com/smfonseca)_
+  - `placement` attribute properly renders the calendar view on top or bottom of the input element.
+  - Included screenshot test `Placement`.
+  - Improved `readonly` attribute handling.
+
+### 📈 Stats
+* Uncompressed: 590 KB (+1 KB / +0%)
+* Gzipped: 134 KB (+1 KB / +1%)
+
+## 6.4.1
+
+### Patch Changes
+
+- Fixes flaky tests on `sd-dropdown`, `sd-audio`, `sd-video` and `sd-carousel`. _[`#2768`](https://github.com/solid-design-system/solid/pull/2768) [`5fc77a5`](https://github.com/solid-design-system/solid/commit/5fc77a5ced5eeb1d2a6084a878772d4f4f364f28) [@smfonseca](https://github.com/smfonseca)_
+
 ## 6.4.0
 
 ### Minor Changes

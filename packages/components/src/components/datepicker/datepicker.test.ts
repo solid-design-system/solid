@@ -120,10 +120,14 @@ describe('<sd-datepicker>', () => {
       el.show();
       await el.updateComplete;
 
-      const dayButton = el.shadowRoot!.querySelector('button.day:not(.out-month):not(.disabled)')!;
-      await clickOnElement(dayButton);
-      await el.updateComplete;
-
+      await waitUntil(
+        () => !!el.shadowRoot!.querySelector<HTMLButtonElement>('button.day:not(.out-month):not(.disabled)'),
+        'No enabled day rendered',
+        { timeout: 0 }
+      );
+      const dayButton = el.shadowRoot!.querySelector<HTMLButtonElement>('button.day:not(.out-month):not(.disabled)')!;
+      dayButton.click();
+      await waitUntil(() => el.value !== null, 'Value not set after click');
       expect(el.value).to.not.be.null;
     });
 
@@ -138,10 +142,14 @@ describe('<sd-datepicker>', () => {
       el.show();
       await el.updateComplete;
 
-      const dayButton = el.shadowRoot!.querySelector('button.day:not(.out-month):not(.disabled)')!;
-      await clickOnElement(dayButton);
-      await el.updateComplete;
-
+      await waitUntil(
+        () => !!el.shadowRoot!.querySelector<HTMLButtonElement>('button.day:not(.out-month):not(.disabled)'),
+        'No enabled day rendered',
+        { timeout: 0 }
+      );
+      const dayButton = el.shadowRoot!.querySelector<HTMLButtonElement>('button.day:not(.out-month):not(.disabled)')!;
+      dayButton.click();
+      await waitUntil(() => el.value !== null, 'Value not set after click');
       expect(changeHandler).to.have.been.calledOnce;
       expect(selectHandler).to.have.been.calledOnce;
     });
@@ -269,13 +277,13 @@ describe('<sd-datepicker>', () => {
   });
 
   describe('form integration', () => {
-    it('readonly prevents typing but allows calendar open', async () => {
+    it('readonly prevents typing and calendar open', async () => {
       const el = await fixture<SdDatepicker>(html`<sd-datepicker readonly></sd-datepicker>`);
       const input = el.shadowRoot!.querySelector<HTMLInputElement>('#input')!;
       input.focus();
       await el.updateComplete;
 
-      expect(input.ariaExpanded).to.equal('true');
+      expect(input.ariaExpanded).to.equal('false');
       const before = input.value;
       await sendKeys({ type: '15012024' });
       await el.updateComplete;
@@ -326,18 +334,28 @@ describe('<sd-datepicker>', () => {
   });
 
   describe('calendar alignment and placement', () => {
-    it('applies alignment classes to calendar', async () => {
-      const elLeft = await fixture<SdDatepicker>(html`<sd-datepicker alignment="left"></sd-datepicker>`);
-      elLeft.show();
-      await elLeft.updateComplete;
-      const calLeft = elLeft.shadowRoot!.querySelector('[part~="datepicker"]')!;
-      expect(calLeft.className).to.include('left-0');
+    it('forwards placement to sd-popup (with alignment)', async () => {
+      const elBottom = await fixture<SdDatepicker>(
+        html`<sd-datepicker placement="bottom" alignment="left"></sd-datepicker>`
+      );
+      elBottom.show();
+      await elBottom.updateComplete;
+      const popupBottom = elBottom.shadowRoot!.querySelector('sd-popup')!;
+      expect(popupBottom.getAttribute('placement')).to.equal('bottom-start');
 
-      const elRight = await fixture<SdDatepicker>(html`<sd-datepicker alignment="right"></sd-datepicker>`);
-      elRight.show();
-      await elRight.updateComplete;
-      const calRight = elRight.shadowRoot!.querySelector('[part~="datepicker"]')!;
-      expect(calRight.className).to.include('right-0');
+      const elTop = await fixture<SdDatepicker>(html`<sd-datepicker placement="top" alignment="left"></sd-datepicker>`);
+      elTop.show();
+      await elTop.updateComplete;
+      const popupTop = elTop.shadowRoot!.querySelector('sd-popup')!;
+      expect(popupTop.getAttribute('placement')).to.equal('top-start');
+
+      const elBottomRight = await fixture<SdDatepicker>(
+        html`<sd-datepicker placement="bottom" alignment="right"></sd-datepicker>`
+      );
+      elBottomRight.show();
+      await elBottomRight.updateComplete;
+      const popupBottomRight = elBottomRight.shadowRoot!.querySelector('sd-popup')!;
+      expect(popupBottomRight.getAttribute('placement')).to.equal('bottom-end');
     });
 
     it('updates currentPlacement from sd-popup', async () => {
@@ -345,12 +363,11 @@ describe('<sd-datepicker>', () => {
       el.show();
       await el.updateComplete;
 
-      el.dispatchEvent(
-        new CustomEvent('sd-current-placement', { bubbles: true, composed: true, detail: { placement: 'top' } })
-      );
+      const popup = el.shadowRoot!.querySelector('sd-popup')!;
+      popup.dispatchEvent(new CustomEvent('sd-current-placement', { bubbles: true, composed: true, detail: 'top' }));
       await el.updateComplete;
 
-      expect(el['currentPlacement']).to.equal('bottom');
+      expect(el['currentPlacement']).to.equal('top');
     });
   });
 
