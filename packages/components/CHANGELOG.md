@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.5.0
+
+### Minor Changes
+
+- Implementing a `close-trigger` attribute to better control what triggers closing the `sd-tooltip`. Fixed tooltip not closing outside the element. _[`#2760`](https://github.com/solid-design-system/solid/pull/2760) [`d5a4bda`](https://github.com/solid-design-system/solid/commit/d5a4bda67894195c8898ccf812dcf695a3f81946) [@martascorreia](https://github.com/martascorreia)_
+
 ## 6.4.2
 
 ### Patch Changes
@@ -10,8 +16,9 @@
   - Improved `readonly` attribute handling.
 
 ### 📈 Stats
-* Uncompressed: 590 KB (+1 KB / +0%)
-* Gzipped: 134 KB (+1 KB / +1%)
+
+- Uncompressed: 590 KB (+1 KB / +0%)
+- Gzipped: 134 KB (+1 KB / +1%)
 
 ## 6.4.1
 
