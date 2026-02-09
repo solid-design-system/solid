@@ -23,7 +23,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html`<div class="h-[500px] w-[370px] h-[500px]">${generateTemplate({ args })}</div>`;
+    return html`<div class="h-[500px] w-[370px]">${generateTemplate({ args })}</div>`;
   }
 };
 
