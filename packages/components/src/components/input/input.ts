@@ -951,6 +951,8 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       /* Hides clock icon for time type. */
       input[type='time']::-webkit-calendar-picker-indicator {
         background: none;
+        display: none;
+        -webkit-appearance: none;
       }
 
       details summary::-webkit-details-marker,
@@ -973,6 +975,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       .hide-password-toggle {
         display: none;
       }
+
       .has-floating-label input[type='date']:not(.has-value),
       .has-floating-label input[type='time']:not(.has-value),
       .has-floating-label input[type='datetime-local']:not(.has-value) {
