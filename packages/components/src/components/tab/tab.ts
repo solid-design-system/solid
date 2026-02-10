@@ -29,6 +29,7 @@ let id = 0;
  * @cssproperty --sd-navigable__current-indicator-border-radius: The tab current indicator border radius value.
  * @cssproperty --sd-color-background - The background color when on hover state.
  * @cssproperty --sd-tab-color-border - The border color for the tab.
+ * @cssproperty --sd-tab-font-weight - The font weight for the active tab.
  */
 @customElement('sd-tab')
 export default class SdTab extends SolidElement {
@@ -100,7 +101,7 @@ export default class SdTab extends SolidElement {
             : 'navigable-border-radius',
           this.variant === 'container' && this.active && 'tab--active-container-border bg-white',
           this.disabled || this.visuallyDisabled ? '!cursor-not-allowed' : 'hover:color-background',
-          this.active && 'z-20'
+          this.active && 'sd-tab-font-weight z-20'
         )}
         tabindex=${!this.active || this.disabled ? '-1' : '0'}
       >
