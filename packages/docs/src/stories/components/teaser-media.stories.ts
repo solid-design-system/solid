@@ -178,9 +178,9 @@ export const MetaSlot = {
 };
 
 /**
- * Use the `expandable` slot to add content that only shows up on hover.
+ * Use the `expandable` slot to add content that only shows up on click. This slot should not contain any relevant action since it is only shown on click.
  *
- * **Accessibility Hint:** Expandable teaser parts are only accessible to mouse users. The expandable content cannot be accessed via touch, keyboard, or screen readers. Therefore, please avoid adding important content or action elements in these areas.
+ * **Accessibility Hint:** Avoid placing essential information or actions in expandable teaser areas since they are only visible on click.
  */
 
 export const ExpandableSlot = {
@@ -193,7 +193,7 @@ export const ExpandableSlot = {
         class="aspect-video object-cover"
         alt="Generic alt"
       />
-      <div slot="expandable" class="slot slot--border slot--text h-12">Expandable slot</div>
+      <div slot="expandable">Expandable slot</div>
     </sd-teaser-media>
   `
 };

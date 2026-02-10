@@ -143,7 +143,7 @@ export const Slots = {
             {
               type: 'slot',
               name: 'default',
-              value: `<slot>Teaser's Main content</slot>`
+              value: ``
             },
             {
               type: 'slot',
@@ -151,9 +151,9 @@ export const Slots = {
               value: `<slot slot='headline'>Teaser's Headline</slot>`
             },
             {
-              type: 'slot',
-              name: 'expandable',
-              value: `<slot slot='expandable'>Teaser's Expandable content</slot>`
+              type: 'attribute',
+              name: 'open',
+              value: true
             },
             {
               type: 'template',
@@ -165,6 +165,25 @@ export const Slots = {
       })}
     `;
   }
+};
+
+export const Expandable = {
+  name: 'Expandable',
+  render: () => html`
+    <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
+      <h3 slot="headline">Headline Media Teaser</h3>
+      <img
+        slot="media"
+        src="./placeholders/images/architecture.jpg"
+        class="aspect-video object-cover"
+        alt="Generic alt"
+      />
+      <div slot="expandable">
+        Expandable text tincidunt laoreet nulla phasellus mauris leo venenatis id commodo. Mauris elementum risus sed
+        massa libero dui adipiscing sagittis. Orci quis cum diam nunc non vel morbi cras eget.
+      </div>
+    </sd-teaser-media>
+  `
 };
 
 export const Parts = {
@@ -234,7 +253,7 @@ export const Samples = {
           <div class="flex flex-col gap-4">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             <div class="flex-none">
-              <sd-button href="#" target="_blank" variant="primary" inverted>Link</sd-button>
+              <sd-button href="#" target="_blank" variant="primary" size="lg" inverted>Link</sd-button>
             </div>
           </div>
         </sd-teaser-media>
@@ -257,22 +276,10 @@ export const Samples = {
               labore et dolore magna aliqua.
             </p>
           </div>
-          <div class="flex flex-col gap-4">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.
-            </p>
-            <div class="flex-none">
-              <sd-button href="#" target="_blank" variant="primary">Link</sd-button>
-            </div>
-            <div class="flex-none text-sm">
-              <p>@Copyright Lorem ipsum</p>
-            </div>
-          </div>
         </sd-teaser-media>
       </div>
     `;
   }
 };
 
-export const Combination = generateScreenshotStory([Default, Variant, Slots, Parts, Samples]);
+export const Combination = generateScreenshotStory([Default, Variant, Slots, Expandable, Parts, Samples]);
