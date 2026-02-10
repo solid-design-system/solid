@@ -1,5 +1,7 @@
 # @solid-design-system/components
 
+## 6.5.2
+
 ## 6.5.1
 
 ## 6.5.0

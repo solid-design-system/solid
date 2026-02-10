@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 6.5.2
+
+### Patch Changes
+
+- Changed RGB values in CSS variables to use space seperation instead of comma seperation to be backwards compatible with versions <6 of Solid _[`#2769`](https://github.com/solid-design-system/solid/pull/2769) [`0737f33`](https://github.com/solid-design-system/solid/commit/0737f33a9bc4c055c65f32a8c4dd39658eb2b3f6) [@mariohamann](https://github.com/mariohamann)_
+
 ## 6.5.1
 
 ### Patch Changes
