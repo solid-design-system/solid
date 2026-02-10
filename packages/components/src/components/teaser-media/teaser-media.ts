@@ -197,6 +197,10 @@ export default class SdTeaserMedia extends SolidElement {
           var(--sd-color-primary-800)
         );
       }
+
+      [part='toggle'] {
+        @apply w-fit;
+      }
     `
   ];
 }

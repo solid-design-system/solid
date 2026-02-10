@@ -178,7 +178,7 @@ export const MetaSlot = {
 };
 
 /**
- * Use the `expandable slot` to add content that only shows up on click. This slot should not contain any relevant action since it is only shown on click.
+ * Use the `expandable` slot to add content that only shows up on click. This slot should not contain any relevant action since it is only shown on click.
  *
  * **Accessibility Hint:** Avoid placing essential information or actions in expandable teaser areas since they are only visible on click.
  */
