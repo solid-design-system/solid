@@ -140,7 +140,6 @@
   --sd-color-background-success: var(--sd-color-success);
   --sd-color-background-warning: var(--sd-color-warning);
   --sd-color-background-white: var(--sd-color-primary-900);
-  --sd-color-background: var(--sd-color-primary-700);
   --sd-color-black: 24, 24, 24;
   --sd-color-border-accent-550: var(--sd-color-accent-550);
   --sd-color-border-accent: var(--sd-color-accent);
@@ -232,7 +231,6 @@
   --sd-datepicker__date-item--current-font-weight: var(--sd-font-weight-bold);
   --sd-datepicker__date-item--default-color-text: var(--sd-color-white);
   --sd-datepicker__date-item--default-font-weight: var(--sd-font-weight-normal);
-  --sd-datepicker__date-item--hovered--current-color-text: var(--sd-color-primary-750);
   --sd-datepicker__date-item--hovered--default-color-background: var(--sd-color-primary-100);
   --sd-datepicker__date-item--hovered--default-color-text: var(--sd-color-primary-750);
   --sd-datepicker__date-item--hovered--prev-next-color-background: var(--sd-color-primary-100);
@@ -240,6 +238,7 @@
   --sd-datepicker__date-item--selected-color-text: var(--sd-color-primary);
   --sd-divider--inverted-color-border: var(--sd-color-primary-400);
   --sd-drop-shadow-sm:  0.5px 0.5px 1.5px #515151;
+  --sd-drop-shadow-xs:  0.5px 0.5px 1.5px #515151;
   --sd-drop-shadow:  0px 0px 0px rgba(255, 255, 255, 0);
   --sd-dropdown-color-background: var(--sd-color-primary-900);
   --sd-duration-fast: 150ms;
@@ -289,10 +288,10 @@
   --sd-map-marker-cluster-color-icon-fill: var(--sd-color-primary);
   --sd-map-marker-font-size: var(--sd-spacing-3);
   --sd-map-marker-main-color-icon-fill: var(--sd-color-accent-550);
-  --sd-menu--disabled-color-icon-fill: var(--sd-color-neutral-500);
-  --sd-menu--disabled-color-text: var(--sd-color-neutral-500);
-  --sd-menu-color-icon-fill: var(--sd-color-white);
-  --sd-menu-color-text: var(--sd-color-white);
+  --sd-menu-item--disabled-color-icon-fill: var(--sd-color-neutral-500);
+  --sd-menu-item--disabled-color-text: var(--sd-color-neutral-500);
+  --sd-menu-item-color-icon-fill: var(--sd-color-white);
+  --sd-menu-item-color-text: var(--sd-color-white);
   --sd-navigable-border-radius: 0;
   --sd-navigable-font-size: var(--sd-spacing-4);
   --sd-navigable__current-indicator-border-radius: 0;
@@ -353,6 +352,7 @@
   --sd-range-scale-ticks-color-text: var(--sd-color-white);
   --sd-range__bar-border-width: var(--sd-spacing-1);
   --sd-shadow-sm:  0.5px 0.5px 1.5px 0px #515151;
+  --sd-shadow-xs:  0.5px 0.5px 1.5px 0px #515151;
   --sd-shadow:  0px 0px 0px 0px rgba(255, 255, 255, 0);
   --sd-sizing-0\.25: 0.0625rem;
   --sd-sizing-0\.5: 0.125rem;
@@ -395,6 +395,7 @@
   --sd-switch--unchecked-color-border: var(--sd-color-white);
   --sd-switch--unchecked__icon-color-background: var(--sd-color-white);
   --sd-switch-color-text: var(--sd-color-white);
+  --sd-tab--active-color-background: var(--sd-color-primary-700);
   --sd-tab-color-border: var(--sd-color-primary-400);
   --sd-tab-font-weight: var(--sd-font-weight-normal);
   --sd-tag--default--hover-color-background: 255, 255, 255, 0;

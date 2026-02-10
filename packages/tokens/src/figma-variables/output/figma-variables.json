@@ -2609,6 +2609,29 @@
             "type": "color",
             "value": "{ui-light.utilities.color.neutral.800}"
           }
+        },
+        "xs": {
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "{ui-light.utilities.color.neutral.800}"
+          },
+          "x": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "y": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "blur": {
+            "type": "float",
+            "value": "1.5"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          }
         }
       },
       "opacity": {
@@ -4568,18 +4591,12 @@
           "--hovered": {
             "color": {
               "border": {
-                "description": "Used for hover interaction",
+                "description": "This is for frontend specifically. Created due to bug in frontend. In Figma there&#39;s no border color needed but frontend immediately get the utilities/border/accent/550 for kid it&#39;s neutral 800 instead of neutral 700 so it looks off.",
                 "type": "color",
                 "value": "{ui-light.utilities.color.accent.550}"
               }
             }
           }
-        }
-      },
-      "color": {
-        "background": {
-          "type": "color",
-          "value": "{ui-light.utilities.color.background.neutral.200}"
         }
       },
       "sd-tab": {
@@ -4592,6 +4609,15 @@
         "font-weight": {
           "type": "string",
           "value": "{ui-light.utilities.font-weight.normal}"
+        },
+        "--active": {
+          "color": {
+            "background": {
+              "description": "Used for sd-flag",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.200}"
+            }
+          }
         }
       },
       "sd-switch": {
@@ -4639,7 +4665,7 @@
           }
         }
       },
-      "sd-menu": {
+      "sd-menu-item": {
         "color": {
           "text": {
             "type": "color",
@@ -4731,14 +4757,6 @@
                 "text": {
                   "type": "color",
                   "value": "{ui-light.utilities.color.neutral.700}"
-                }
-              }
-            },
-            "--current": {
-              "color": {
-                "text": {
-                  "type": "color",
-                  "value": "{ui-light.utilities.color.primary.500}"
                 }
               }
             }
@@ -5767,6 +5785,29 @@
             "description": "Used for tooltip",
             "type": "color",
             "value": "{ui-dark.utilities.color.neutral.800}"
+          }
+        },
+        "xs": {
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "{ui-dark.utilities.color.neutral.800}"
+          },
+          "x": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "y": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "blur": {
+            "type": "float",
+            "value": "1.5"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
           }
         }
       },
@@ -7727,18 +7768,12 @@
           "--hovered": {
             "color": {
               "border": {
-                "description": "Used for hover interaction",
+                "description": "This is for frontend specifically. Created due to bug in frontend. In Figma there&#39;s no border color needed but frontend immediately get the utilities/border/accent/550 for kid it&#39;s neutral 800 instead of neutral 700 so it looks off.",
                 "type": "color",
                 "value": "{ui-dark.utilities.color.accent.550}"
               }
             }
           }
-        }
-      },
-      "color": {
-        "background": {
-          "type": "color",
-          "value": "{ui-dark.utilities.color.background.neutral.200}"
         }
       },
       "sd-tab": {
@@ -7751,6 +7786,15 @@
         "font-weight": {
           "type": "string",
           "value": "{ui-dark.utilities.font-weight.normal}"
+        },
+        "--active": {
+          "color": {
+            "background": {
+              "description": "Used for sd-flag",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.700}"
+            }
+          }
         }
       },
       "sd-switch": {
@@ -7798,7 +7842,7 @@
           }
         }
       },
-      "sd-menu": {
+      "sd-menu-item": {
         "color": {
           "text": {
             "type": "color",
@@ -7887,14 +7931,6 @@
                   "type": "color",
                   "value": "{ui-dark.utilities.color.primary.100}"
                 },
-                "text": {
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.primary.750}"
-                }
-              }
-            },
-            "--current": {
-              "color": {
                 "text": {
                   "type": "color",
                   "value": "{ui-dark.utilities.color.primary.750}"
@@ -8926,6 +8962,29 @@
             "description": "Used for tooltip",
             "type": "color",
             "value": "{vb.utilities.color.neutral.800}"
+          }
+        },
+        "xs": {
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "{vb.utilities.color.neutral.800}"
+          },
+          "x": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "y": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "blur": {
+            "type": "float",
+            "value": "1.5"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
           }
         }
       },
@@ -10886,18 +10945,12 @@
           "--hovered": {
             "color": {
               "border": {
-                "description": "Used for hover interaction",
+                "description": "This is for frontend specifically. Created due to bug in frontend. In Figma there&#39;s no border color needed but frontend immediately get the utilities/border/accent/550 for kid it&#39;s neutral 800 instead of neutral 700 so it looks off.",
                 "type": "color",
                 "value": "{vb.utilities.color.primary.600}"
               }
             }
           }
-        }
-      },
-      "color": {
-        "background": {
-          "type": "color",
-          "value": "{core.vb.azure.50}"
         }
       },
       "sd-tab": {
@@ -10910,6 +10963,15 @@
         "font-weight": {
           "type": "string",
           "value": "{vb.utilities.font-weight.bold}"
+        },
+        "--active": {
+          "color": {
+            "background": {
+              "description": "Used for sd-flag",
+              "type": "color",
+              "value": "{core.vb.azure.50}"
+            }
+          }
         }
       },
       "sd-switch": {
@@ -10957,7 +11019,7 @@
           }
         }
       },
-      "sd-menu": {
+      "sd-menu-item": {
         "color": {
           "text": {
             "type": "color",
@@ -11049,14 +11111,6 @@
                 "text": {
                   "type": "color",
                   "value": "{vb.utilities.color.neutral.700}"
-                }
-              }
-            },
-            "--current": {
-              "color": {
-                "text": {
-                  "type": "color",
-                  "value": "{vb.utilities.color.primary.500}"
                 }
               }
             }
@@ -12085,6 +12139,29 @@
             "description": "Used for tooltip",
             "type": "color",
             "value": "rgba(5, 21, 48, 0.25)"
+          }
+        },
+        "xs": {
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "rgba(5, 21, 48, 0.75)"
+          },
+          "x": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "y": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "blur": {
+            "type": "float",
+            "value": "1.5"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
           }
         }
       },
@@ -14045,18 +14122,12 @@
           "--hovered": {
             "color": {
               "border": {
-                "description": "Used for hover interaction",
+                "description": "This is for frontend specifically. Created due to bug in frontend. In Figma there&#39;s no border color needed but frontend immediately get the utilities/border/accent/550 for kid it&#39;s neutral 800 instead of neutral 700 so it looks off.",
                 "type": "color",
                 "value": "{kid.utilities.color.neutral.700}"
               }
             }
           }
-        }
-      },
-      "color": {
-        "background": {
-          "type": "color",
-          "value": "{core.vb.azure.50}"
         }
       },
       "sd-tab": {
@@ -14069,6 +14140,15 @@
         "font-weight": {
           "type": "string",
           "value": "{kid.utilities.font-weight.bold}"
+        },
+        "--active": {
+          "color": {
+            "background": {
+              "description": "Used for sd-flag",
+              "type": "color",
+              "value": "{core.vb.azure.50}"
+            }
+          }
         }
       },
       "sd-switch": {
@@ -14116,7 +14196,7 @@
           }
         }
       },
-      "sd-menu": {
+      "sd-menu-item": {
         "color": {
           "text": {
             "type": "color",
@@ -14205,14 +14285,6 @@
                   "type": "color",
                   "value": "rgba(255, 255, 255, 0.00)"
                 },
-                "text": {
-                  "type": "color",
-                  "value": "{kid.utilities.color.neutral.700}"
-                }
-              }
-            },
-            "--current": {
-              "color": {
                 "text": {
                   "type": "color",
                   "value": "{kid.utilities.color.neutral.700}"

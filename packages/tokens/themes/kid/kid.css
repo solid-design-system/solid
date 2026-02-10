@@ -139,7 +139,6 @@
   --sd-color-background-success: var(--sd-color-success);
   --sd-color-background-warning: var(--sd-color-warning);
   --sd-color-background-white: var(--sd-color-accent);
-  --sd-color-background: 0, 102, 179, 0.05;
   --sd-color-black: 5, 21, 48;
   --sd-color-border-accent-550: var(--sd-color-neutral-800);
   --sd-color-border-accent: var(--sd-color-black);
@@ -231,7 +230,6 @@
   --sd-datepicker__date-item--current-font-weight: var(--sd-font-weight-bold);
   --sd-datepicker__date-item--default-color-text: var(--sd-color-neutral-800);
   --sd-datepicker__date-item--default-font-weight: var(--sd-font-weight-normal);
-  --sd-datepicker__date-item--hovered--current-color-text: var(--sd-color-neutral-700);
   --sd-datepicker__date-item--hovered--default-color-background: 255, 255, 255, 0;
   --sd-datepicker__date-item--hovered--default-color-text: var(--sd-color-neutral-700);
   --sd-datepicker__date-item--hovered--prev-next-color-background: 255, 255, 255, 0;
@@ -239,6 +237,7 @@
   --sd-datepicker__date-item--selected-color-text: var(--sd-color-white);
   --sd-divider--inverted-color-border: 255, 255, 255, 0.4;
   --sd-drop-shadow-sm:  0px 4px 12px rgba(5, 21, 48, 0.25);
+  --sd-drop-shadow-xs:  0.5px 0.5px 1.5px rgba(5, 21, 48, 0.75);
   --sd-drop-shadow:  0px 4px 12px rgba(107, 36, 5, 0.25);
   --sd-dropdown-color-background: 255, 255, 255, 0.6;
   --sd-duration-fast: 150ms;
@@ -288,10 +287,10 @@
   --sd-map-marker-cluster-color-icon-fill: var(--sd-color-black);
   --sd-map-marker-font-size: var(--sd-spacing-3);
   --sd-map-marker-main-color-icon-fill: var(--sd-color-black);
-  --sd-menu--disabled-color-icon-fill: var(--sd-color-neutral-500);
-  --sd-menu--disabled-color-text: var(--sd-color-neutral-500);
-  --sd-menu-color-icon-fill: var(--sd-color-black);
-  --sd-menu-color-text: var(--sd-color-black);
+  --sd-menu-item--disabled-color-icon-fill: var(--sd-color-neutral-500);
+  --sd-menu-item--disabled-color-text: var(--sd-color-neutral-500);
+  --sd-menu-item-color-icon-fill: var(--sd-color-black);
+  --sd-menu-item-color-text: var(--sd-color-black);
   --sd-navigable-border-radius: var(--sd-spacing-0\.5);
   --sd-navigable-font-size: 0.875rem;
   --sd-navigable__current-indicator-border-radius: 624.9375rem;
@@ -352,6 +351,7 @@
   --sd-range-scale-ticks-color-text: 89, 89, 89;
   --sd-range__bar-border-width: var(--sd-spacing-0\.5);
   --sd-shadow-sm:  0px 4px 12px -6px rgba(5, 21, 48, 0.25);
+  --sd-shadow-xs:  0.5px 0.5px 1.5px 0px rgba(5, 21, 48, 0.75);
   --sd-shadow:  0px 4px 12px -6px rgba(107, 36, 5, 0.25);
   --sd-sizing-0\.25: 0.0625rem;
   --sd-sizing-0\.5: 0.125rem;
@@ -394,6 +394,7 @@
   --sd-switch--unchecked-color-border: var(--sd-color-black);
   --sd-switch--unchecked__icon-color-background: var(--sd-color-black);
   --sd-switch-color-text: var(--sd-color-black);
+  --sd-tab--active-color-background: 0, 102, 179, 0.05;
   --sd-tab-color-border: 191, 202, 217;
   --sd-tab-font-weight: var(--sd-font-weight-bold);
   --sd-tag--default--hover-color-background: 255, 255, 255, 0.6;

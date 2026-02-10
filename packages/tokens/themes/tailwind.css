@@ -65,6 +65,7 @@
   --border-width-6: var(--sd-border-width-6);
   --border-width-default: var(--sd-border-width);
   --drop-shadow-sm: var(--sd-drop-shadow-sm);
+  --drop-shadow-xs: var(--sd-drop-shadow-xs);
   --drop-shadow: var(--sd-drop-shadow);
   --fill-accent-550: rgba(var(--sd-color-icon-fill-accent-550));
   --fill-accent: rgba(var(--sd-color-icon-fill-accent));
@@ -113,6 +114,7 @@
   --radius-none: var(--sd-radius-none);
   --radius-sm: var(--sd-radius-sm);
   --shadow-sm: var(--sd-shadow-sm);
+  --shadow-xs: var(--sd-shadow-xs);
   --shadow: var(--sd-shadow);
   --sizing-0\.25: var(--sd-sizing-0\.25);
   --sizing-0\.5: var(--sd-sizing-0\.5);
