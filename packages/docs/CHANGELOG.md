@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.2.3
+
+### Patch Changes
+
+- Emphasized non-usage of \_internal icons _[`#2748`](https://github.com/solid-design-system/solid/pull/2748) [`9e2fce2`](https://github.com/solid-design-system/solid/commit/9e2fce2fedb46850150f94f3053aa9b6336e5ab6) [@mariohamann](https://github.com/mariohamann)_
+
 ## 2.2.2
 
 ### Patch Changes
