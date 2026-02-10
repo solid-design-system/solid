@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.3.0
+
+### Minor Changes
+
+- Implemented expand button on the `sd-teaser-media` and updated the template according to figma. _[`#2781`](https://github.com/solid-design-system/solid/pull/2781) [`1e7231f`](https://github.com/solid-design-system/solid/commit/1e7231f6380725630c032ca78ed0aede9cc588a1) [@balco0110](https://github.com/balco0110)_
+
 ## 2.2.3
 
 ### Patch Changes
