@@ -246,6 +246,11 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
     this.setTextareaHeight();
   }
 
+  @watch(['size', 'floatingLabel'])
+  handleSizeChange() {
+    this.size = this.floatingLabel && this.size === 'sm' ? 'md' : this.size;
+  }
+
   /** Sets focus on the textarea. */
   focus(options?: FocusOptions) {
     this.textarea.focus(options);
@@ -388,6 +393,33 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           : null}
 
         <div part="form-control-input" class=${cx('relative h-full w-full', this.disabled && 'cursor-not-allowed')}>
+          ${hasLabel && this.floatingLabel
+            ? html`
+                <label
+                  id="label"
+                  part="form-control-floating-label"
+                  class=${cx(
+                    'absolute left-4 z-20 pointer-events-none transition-all duration-200',
+                    textSize,
+                    !isFloatingLabelActive ? 'top-2.5' : 'top-2 text-xs'
+                  )}
+                  for="input"
+                >
+                  <span
+                    class=${cx(
+                      'leading-none',
+                      (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
+                      isFloatingLabelActive &&
+                        !this.visuallyDisabled &&
+                        !this.disabled &&
+                        'form-control--filled__floating-label-color-text'
+                    )}
+                  >
+                    ${this.label}
+                  </span>
+                </label>
+              `
+            : null}
           <div
             part="border"
             class=${cx(
@@ -404,39 +436,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                 default: 'form-control-color-border'
               }[textareaState]
             )}
-          >
-            ${hasLabel && this.floatingLabel
-              ? html`
-                  <label
-                    id="label"
-                    part="form-control-floating-label"
-                    class=${cx(
-                      'absolute left-4 z-20 pointer-events-none transition-all duration-200',
-                      textSize,
-                      !isFloatingLabelActive
-                        ? 'top-2.5 text-base'
-                        : this.size === 'lg'
-                          ? 'top-2 text-xs'
-                          : 'top-1 text-xs'
-                    )}
-                    for="input"
-                  >
-                    <span
-                      class=${cx(
-                        'leading-none',
-                        (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
-                        isFloatingLabelActive &&
-                          !this.visuallyDisabled &&
-                          !this.disabled &&
-                          'form-control--filled__floating-label-color-text'
-                      )}
-                    >
-                      ${this.label}
-                    </span>
-                  </label>
-                `
-              : null}
-          </div>
+          ></div>
           <div
             part="base"
             class=${cx(
@@ -461,9 +461,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               class=${cx(
                 'ps-4 flex-grow focus:outline-none bg-transparent placeholder:text-neutral-700 resize-none group-has-[sd-icon]:pe-8',
                 {
-                  sm: this.floatingLabel ? 'pb-1' : 'py-1',
-                  md: this.floatingLabel ? 'pb-1' : 'py-1',
-                  lg: this.floatingLabel ? 'pb-2' : 'py-2'
+                  sm: isFloatingLabelActive ? 'pb-1' : 'py-2',
+                  md: isFloatingLabelActive ? 'pb-1' : 'py-2',
+                  lg: isFloatingLabelActive ? 'pb-2' : 'py-2'
                 }[this.size],
                 this.disabled && 'cursor-not-allowed',
                 textSize

@@ -65,62 +65,153 @@ export const Labels = {
 export const FloatingLabel = {
   name: 'Floating Label',
   args: {
-    'floating-label': true
+    label: 'Label'
   },
   render: (args: any) => {
-    return html`<div class="w-[400px]">${generateTemplate({ args })}</div>`;
+    return html`
+      <div class="w-[400px]">
+        ${generateTemplate({
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
+          args
+        })}
+      </div>
+      <br />
+      <div class="w-[400px]">
+        ${generateTemplate({
+          constants: [
+            { type: 'attribute', name: 'value', value: '2025.11.10' },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
+          args
+        })}
+      </div>
+    `;
   }
 };
 
 export const Size = {
   name: 'Size',
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'size',
-          values: ['lg', 'md', 'sm']
-        }
-      },
-      args
-    });
+    return html`
+      <div>Default</div>
+      <div class="w-[400px]">
+        ${generateTemplate({
+          axis: {
+            x: {
+              type: 'attribute',
+              name: 'size',
+              values: ['lg', 'md', 'sm']
+            }
+          },
+          args
+        })}
+      </div>
+      <br />
+      <div>Floating Label</div>
+      <div class="w-[400px]">
+        ${generateTemplate({
+          axis: {
+            x: {
+              type: 'attribute',
+              name: 'size',
+              values: ['lg', 'md']
+            }
+          },
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
+          args
+        })}
+      </div>
+    `;
   }
 };
 
 export const Required = {
   name: 'Required',
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'required', values: [true, false] }
-      },
-      args
-    });
+    return html`
+      <div>Default</div>
+      <br />
+      <div class="w-[400px]">
+        ${generateTemplate({
+          axis: {
+            y: { type: 'attribute', name: 'required', values: [true, false] }
+          },
+          args
+        })}
+      </div>
+      <br />
+      <div>Floating Label</div>
+      <br />
+      <div class="w-[400px]">
+        ${generateTemplate({
+          axis: {
+            y: { type: 'attribute', name: 'required', values: [true, false] }
+          },
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
+          args
+        })}
+      </div>
+    `;
   }
 };
 
 export const Placeholder = {
   name: 'Placeholder',
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'range', values: [true, false] }
-      },
-      args
-    });
+    return html`
+      <div>Default</div>
+      <br />
+      <div class="w-[400px]">
+        ${generateTemplate({
+          axis: {
+            y: { type: 'attribute', name: 'range', values: [true, false] }
+          },
+          args
+        })}
+      </div>
+      <br />
+      <div>Floating Label</div>
+      <br />
+      <div class="w-[400px]">
+        ${generateTemplate({
+          axis: {
+            y: { type: 'attribute', name: 'range', values: [true, false] }
+          },
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
+          args
+        })}
+      </div>
+    `;
   }
 };
 
 export const Disabled = {
   name: 'Disabled',
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'disabled', values: [true, false] }
-      },
-      args
-    });
+    return html`
+      <div>Default</div>
+      <br />
+      <div class="w-[400px]">
+        ${generateTemplate({
+          axis: {
+            y: { type: 'attribute', name: 'disabled', values: [true, false] }
+          },
+          args
+        })}
+      </div>
+      <br />
+      <div>Floating Label</div>
+      <br />
+      <div class="w-[400px]">
+        ${generateTemplate({
+          axis: {
+            y: { type: 'attribute', name: 'disabled', values: [true, false] }
+          },
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
+          args
+        })}
+      </div>
+    `;
   }
 };
 
@@ -173,7 +264,20 @@ export const Placement = {
 export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {
-    return html`<div class="mouseless w-[250px]">${generateTemplate({ args })}</div>`;
+    return html`
+      <div>Default</div>
+      <br />
+      <div class="mouseless w-[250px]">${generateTemplate({ args })}</div>
+      <br />
+      <div>Floating Label</div>
+      <br />
+      <div class="mouseless w-[250px]">
+        ${generateTemplate({
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
+          args
+        })}
+      </div>
+    `;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {

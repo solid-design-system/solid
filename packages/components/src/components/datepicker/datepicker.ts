@@ -426,6 +426,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     }
   }
 
+  @watch(['size', 'floatingLabel'])
+  handleSizeChange() {
+    this.size = this.floatingLabel && this.size === 'sm' ? 'md' : this.size;
+  }
+
   get validity() {
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     const defaultValidity: ValidityState = { valid: true } as ValidityState;
@@ -1957,6 +1962,37 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
             this.visuallyDisabled && 'cursor-not-allowed'
           )}
         >
+          ${hasLabel && this.floatingLabel
+            ? html`
+                <label
+                  id="label"
+                  part="form-control-floating-label"
+                  class=${cx(
+                    'absolute left-4 z-20 pointer-events-none transition-all duration-200',
+                    !isFloatingLabelActive
+                      ? 'top-1/2 -translate-y-1/2'
+                      : this.size === 'lg'
+                        ? 'top-2 text-xs'
+                        : 'top-1 text-xs',
+                    isFloatingLabelActive && 'mt-1'
+                  )}
+                  for="input"
+                >
+                  <span
+                    class=${cx(
+                      'leading-none',
+                      (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
+                      isFloatingLabelActive &&
+                        !this.visuallyDisabled &&
+                        !this.disabled &&
+                        'form-control--filled__floating-label-color-text'
+                    )}
+                  >
+                    ${this.label}
+                  </span>
+                </label>
+              `
+            : null}
           <div
             part="border"
             class=${cx(
@@ -1969,39 +2005,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                   ? 'rounded-bl-none rounded-br-none'
                   : 'rounded-tl-none rounded-tr-none')
             )}
-          >
-            ${hasLabel && this.floatingLabel
-              ? html`
-                  <label
-                    id="label"
-                    part="form-control-floating-label"
-                    class=${cx(
-                      'absolute left-4 z-20 pointer-events-none transition-all duration-200',
-                      !isFloatingLabelActive
-                        ? 'top-1/2 -translate-y-1/2 text-base'
-                        : this.size === 'lg'
-                          ? 'top-2 text-xs'
-                          : 'top-1 text-xs',
-                      isFloatingLabelActive && 'mt-1'
-                    )}
-                    for="input"
-                  >
-                    <span
-                      class=${cx(
-                        'leading-none',
-                        (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
-                        isFloatingLabelActive &&
-                          !this.visuallyDisabled &&
-                          !this.disabled &&
-                          'form-control--filled__floating-label-color-text'
-                      )}
-                    >
-                      ${this.label}
-                    </span>
-                  </label>
-                `
-              : null}
-          </div>
+          ></div>
           <sd-popup
             @sd-current-placement=${this.handleCurrentPlacement}
             class=${cx(

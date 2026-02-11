@@ -1023,6 +1023,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     this.emit('sd-after-hide');
   }
 
+  @watch(['size', 'floatingLabel'])
+  handleSizeChange() {
+    this.size = this.floatingLabel && this.size === 'sm' ? 'md' : this.size;
+  }
+
   async show() {
     if (this.open || this.disabled || this.visuallyDisabled) {
       this.open = false;
@@ -1240,7 +1245,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                     'absolute left-4 z-20 pointer-events-none transition-all duration-200',
                     hasIconLeft ? floatingLabelHorizontalAlignmentWithIconLeft : 'left-4',
                     !isFloatingLabelActive
-                      ? 'top-1/2 -translate-y-1/2 text-base'
+                      ? 'top-1/2 -translate-y-1/2'
                       : this.size === 'lg'
                         ? 'top-2 text-xs'
                         : 'top-1 text-xs',

@@ -825,6 +825,11 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     this.value = incomingValue;
   }
 
+  @watch(['size', 'floatingLabel'])
+  handleSizeChange() {
+    this.size = this.floatingLabel && this.size === 'sm' ? 'md' : this.size;
+  }
+
   /** Shows the listbox. */
   async show() {
     if (this.open || this.disabled || this.visuallyDisabled) {
@@ -983,7 +988,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   class=${cx(
                     'absolute left-4 z-20 pointer-events-none transition-all duration-200',
                     !isFloatingLabelActive
-                      ? 'top-1/2 -translate-y-1/2 text-base'
+                      ? 'top-1/2 -translate-y-1/2'
                       : this.size === 'lg'
                         ? 'top-2 text-xs'
                         : 'top-1 text-xs',
@@ -994,7 +999,6 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   <span
                     class=${cx(
                       'leading-none',
-                      (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
                       isFloatingLabelActive &&
                         !this.visuallyDisabled &&
                         !this.disabled &&
@@ -1103,7 +1107,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 ${this.multiple && this.useTags && this.tags && this.tags.length > 0
                   ? html` <div
                       part="tags"
-                      class=${cx('flex-grow flex flex-wrap items-center gap-1 min-w-0', this.floatingLabel && 'pt-6')}
+                      class=${cx('flex-grow flex flex-wrap items-center gap-1 min-w-0', this.floatingLabel && 'pt-4')}
                     >
                       ${this.tags}
                     </div>`
