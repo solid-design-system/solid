@@ -1,5 +1,18 @@
 # @solid-design-system/components
 
+## 6.7.0
+
+### Minor Changes
+
+- - Adding more screenshot tests related to the attribute `floating-label` for the components `sd-input`, `sd-select`, `sd-textarea` and `sd-datepicker`. _[`#2762`](https://github.com/solid-design-system/solid/pull/2762) [`55f4626`](https://github.com/solid-design-system/solid/commit/55f46262e92d9b842a1f9ee3cc973704f1e01406) [@martascorreia](https://github.com/martascorreia)_
+
+  - Fixed small styling issues related to text sizing, label placement, and `sd-input` use cases for different types of inputs.
+  - Lastly, removed the 'sm' size when using floating labels, defaulting this size to be the same as 'md' size.
+
+### 📈 Stats
+* Uncompressed: 592 KB (+2 KB / +0%)
+* Gzipped: 134 KB (unchanged)
+
 ## 6.6.0
 
 ### Minor Changes
