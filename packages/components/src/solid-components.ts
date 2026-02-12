@@ -63,3 +63,6 @@ export { default as SdThemeListener } from './components/theme-listener/theme-li
 export * from './utilities/icon-library';
 export * from './utilities/localize';
 export * from './utilities/autocomplete-config';
+
+// Types for custom attributes
+export type { CustomAttribute, TargetedCustomAttributes, CustomAttributesValue } from './internal/custom-attributes';
