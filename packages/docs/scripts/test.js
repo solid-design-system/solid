@@ -6,7 +6,7 @@ const PORT = 6998;
 
 const ci = process.env.CI;
 
-const workers = ci ? '--maxWorkers=1' : '';
+const workers = ci ? '--maxWorkers=4' : '';
 const testCommand = `test-storybook ${workers} --testTimeout=40000 --url http://127.0.0.1:${PORT}`;
 
 function checkPort(port) {
