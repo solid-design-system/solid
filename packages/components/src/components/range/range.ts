@@ -134,6 +134,10 @@ export default class SdRange extends SolidElement implements SolidFormControl {
 
   private _hasFocus = false;
 
+  private _dragStyleElement: HTMLStyleElement | null = null;
+
+  private _preventSelectStart = (e: Event) => e.preventDefault();
+
   get rtl() {
     return this.localize.dir() === 'rtl';
   }
@@ -141,6 +145,11 @@ export default class SdRange extends SolidElement implements SolidFormControl {
   constructor() {
     super();
     this.tooltipFormatter = this.localize.number.bind(this.localize);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this._restoreTextSelection();
   }
 
   firstUpdated() {
@@ -378,6 +387,31 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     this.onClickTrack(event, false);
   }
 
+  /**
+   * Prevents text selection on the entire page during a drag.
+   * Uses an injected <style> with !important to ensure no CSS specificity overrides it,
+   * plus a selectstart event listener as a fallback.
+   */
+  private _preventTextSelection() {
+    if (!this._dragStyleElement) {
+      const style = document.createElement('style');
+      style.setAttribute('data-sd-range-drag', '');
+      style.textContent =
+        '*, *::before, *::after { user-select: none !important; -webkit-user-select: none !important; }';
+      document.head.appendChild(style);
+      this._dragStyleElement = style;
+    }
+    document.addEventListener('selectstart', this._preventSelectStart);
+  }
+
+  private _restoreTextSelection() {
+    if (this._dragStyleElement) {
+      this._dragStyleElement.remove();
+      this._dragStyleElement = null;
+    }
+    document.removeEventListener('selectstart', this._preventSelectStart);
+  }
+
   private async onClickThumb(event: PointerEvent) {
     if (this.disabled || this.visuallyDisabled) return;
 
@@ -394,6 +428,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
 
     thumb.dataset.pointerId = event.pointerId.toString();
     thumb.setPointerCapture(event.pointerId);
+    this._preventTextSelection();
     thumb.classList.add('grabbed');
 
     if (this.tooltip === 'on-interaction') {
@@ -453,6 +488,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
 
     thumb.classList.remove('grabbed');
     thumb.releasePointerCapture(event.pointerId);
+    this._restoreTextSelection();
     delete thumb.dataset.pointerId;
 
     if (arraysDiffer(this._lastChangeValue, this._value)) {
@@ -707,6 +743,8 @@ export default class SdRange extends SolidElement implements SolidFormControl {
         /* Prevent misbehavior in mobile by disabling native touch */
         touch-action: none;
         -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
       }
 
       [part='thumb'] {
