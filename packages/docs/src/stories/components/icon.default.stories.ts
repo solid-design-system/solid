@@ -30,6 +30,7 @@ export default {
  */
 
 export const LibraryDefaultContent = {
+  skip: true,
   name: 'union-investment/content',
   render: (args: any) =>
     generateTemplate({
@@ -68,6 +69,7 @@ export const LibraryDefaultContent = {
  */
 
 export const LibraryDefaultSystem = {
+  skip: true,
   name: 'union-investment/system',
   render: (args: any) =>
     generateTemplate({
