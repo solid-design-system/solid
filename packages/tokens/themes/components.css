@@ -42,6 +42,18 @@
   color: rgba(var(--sd-interactive--default-color-text, rgba(var(--sd-color-primary))));
 }
 
+@utility marker-border-width {
+ border-width: var(--sd-marker-border-width, 0);
+}
+
+@utility marker-font-size {
+ font-size: var(--sd-marker-font-size, 0.875rem);
+}
+
+@utility marker-font-weight {
+  font-weight: var(--sd-marker-font-weight, var(--sd-font-weight-normal));
+}
+
 @utility navigable-border-radius {
  border-radius: var(--sd-navigable-border-radius, 0);
 }
@@ -238,6 +250,10 @@
   background-color: rgba(var(--sd-button--secondary--active-color-background, rgba(var(--sd-color-primary-200))));
 }
 
+@utility sd-button--secondary--active-color-text {
+  color: rgba(var(--sd-button--secondary--active-color-text, rgba(var(--sd-color-primary-800))));
+}
+
 @utility sd-button--secondary--default-color-text {
   color: rgba(var(--sd-button--secondary--default-color-text, rgba(var(--sd-color-primary))));
 }
@@ -254,6 +270,10 @@
   background-color: rgba(var(--sd-button--secondary--inverted--active-color-background, rgba(var(--sd-color-primary-800))));
 }
 
+@utility sd-button--secondary--inverted--active-color-text {
+  color: rgba(var(--sd-button--secondary--inverted--active-color-text, rgba(var(--sd-color-primary-200))));
+}
+
 @utility sd-button--secondary--inverted--hover-color-background {
   background-color: rgba(var(--sd-button--secondary--inverted--hover-color-background, rgba(var(--sd-color-primary-500))));
 }
@@ -264,6 +284,10 @@
 
 @utility sd-button--secondary--inverted-color-border {
   border-color: rgba(var(--sd-button--secondary--inverted-color-border, rgba(var(--sd-color-white))));
+}
+
+@utility sd-button--secondary--inverted-color-text {
+  color: rgba(var(--sd-button--secondary--inverted-color-text, rgba(var(--sd-color-white))));
 }
 
 @utility sd-button--size-lg-border-radius {
@@ -306,6 +330,10 @@
   background-color: rgba(var(--sd-button--tertiary--active-color-background, rgba(var(--sd-color-primary-200))));
 }
 
+@utility sd-button--tertiary--active-color-text {
+  color: rgba(var(--sd-button--tertiary--active-color-text, rgba(var(--sd-color-primary-800))));
+}
+
 @utility sd-button--tertiary--default-color-text {
   color: rgba(var(--sd-button--tertiary--default-color-text, rgba(var(--sd-color-primary))));
 }
@@ -322,12 +350,24 @@
   background-color: rgba(var(--sd-button--tertiary--inverted--active-color-background, rgba(var(--sd-color-primary-800))));
 }
 
+@utility sd-button--tertiary--inverted--active-color-text {
+  color: rgba(var(--sd-button--tertiary--inverted--active-color-text, rgba(var(--sd-color-primary-200))));
+}
+
 @utility sd-button--tertiary--inverted--hover-color-background {
   background-color: rgba(var(--sd-button--tertiary--inverted--hover-color-background, rgba(var(--sd-color-primary-500))));
 }
 
 @utility sd-button--tertiary--inverted--hover-color-text {
   color: rgba(var(--sd-button--tertiary--inverted--hover-color-text, rgba(var(--sd-color-primary-100))));
+}
+
+@utility sd-button--tertiary--inverted-color-text {
+  color: rgba(var(--sd-button--tertiary--inverted-color-text, rgba(var(--sd-color-white))));
+}
+
+@utility sd-button-border-width {
+ border-width: var(--sd-button-border-width, var(--sd-spacing-0\.25));
 }
 
 @utility sd-button-font-weight {
@@ -410,18 +450,6 @@
  border-radius: var(--sd-chip-border-radius, var(--sd-spacing-1));
 }
 
-@utility sd-chip-border-width {
- border-width: var(--sd-chip-border-width, 0);
-}
-
-@utility sd-chip-font-size {
- font-size: var(--sd-chip-font-size, 0.875rem);
-}
-
-@utility sd-chip-font-weight {
-  font-weight: var(--sd-chip-font-weight, var(--sd-font-weight-normal));
-}
-
 @utility sd-combobox--default-color-icon-fill {
   fill: rgba(var(--sd-combobox--default-color-icon-fill, rgba(var(--sd-color-primary))));
 }
@@ -432,6 +460,10 @@
 
 @utility sd-combobox__tag-border-width {
  border-width: var(--sd-combobox__tag-border-width, var(--sd-spacing-0\.25));
+}
+
+@utility sd-container--default-color-background {
+  background-color: rgba(var(--sd-container--default-color-background, rgba(var(--sd-color-neutral-100))));
 }
 
 @utility sd-datepicker__date-item--current-font-weight {
@@ -510,18 +542,6 @@
  border-radius: var(--sd-flag-border-radius, 0);
 }
 
-@utility sd-flag-border-width {
- border-width: var(--sd-flag-border-width, 0);
-}
-
-@utility sd-flag-font-size {
- font-size: var(--sd-flag-font-size, 0.875rem);
-}
-
-@utility sd-flag-font-weight {
-  font-weight: var(--sd-flag-font-weight, var(--sd-font-weight-normal));
-}
-
 @utility sd-footnotes--target--inverted-color-background {
   background-color: rgba(var(--sd-footnotes--target--inverted-color-background, rgba(var(--sd-color-primary-800))));
 }
@@ -542,8 +562,8 @@
  height: var(--sd-header__underline-height, var(--sd-spacing-2));
 }
 
-@utility sd-headline-4xl-and-mobile-4xl-text {
-  color: rgba(var(--sd-headline-4xl-and-mobile-4xl-text, rgba(var(--sd-color-primary))));
+@utility sd-headline--3xl-onwards-color-text {
+  color: rgba(var(--sd-headline--3xl-onwards-color-text, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-link-color--active-text {
@@ -574,20 +594,28 @@
   background-color: rgba(var(--sd-link-color--pressed-icon, rgba(var(--sd-color-primary-800))));
 }
 
-@utility sd-map-marker-cluster--hovered-color-icon-fill {
-  fill: rgba(var(--sd-map-marker-cluster--hovered-color-icon-fill, rgba(var(--sd-color-primary-500))));
+@utility sd-map-marker--cluster--default-color-background {
+  background-color: rgba(var(--sd-map-marker--cluster--default-color-background, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-map-marker-cluster-color-icon-fill {
-  fill: rgba(var(--sd-map-marker-cluster-color-icon-fill, rgba(var(--sd-color-primary))));
+@utility sd-map-marker--cluster--hover-color-background {
+  background-color: rgba(var(--sd-map-marker--cluster--hover-color-background, rgba(var(--sd-color-primary-500))));
 }
 
-@utility sd-map-marker-font-size {
- font-size: var(--sd-map-marker-font-size, var(--sd-spacing-3));
+@utility sd-map-marker--cluster-color-text {
+  color: rgba(var(--sd-map-marker--cluster-color-text, rgba(var(--sd-color-white))));
 }
 
-@utility sd-map-marker-main-color-icon-fill {
-  fill: rgba(var(--sd-map-marker-main-color-icon-fill, rgba(var(--sd-color-accent-500))));
+@utility sd-map-marker--main-color-background {
+  background-color: rgba(var(--sd-map-marker--main-color-background, rgba(var(--sd-color-accent-500))));
+}
+
+@utility sd-map-marker--pin--hover-color-background {
+  background-color: rgba(var(--sd-map-marker--pin--hover-color-background, rgba(var(--sd-color-primary-100))));
+}
+
+@utility sd-map-marker--pin-color-icon-fill {
+  fill: rgba(var(--sd-map-marker--pin-color-icon-fill, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-menu-item--disabled-color-icon-fill {
@@ -770,8 +798,8 @@
   color: rgba(var(--sd-switch-color-text, rgba(var(--sd-color-black))));
 }
 
-@utility sd-tab--active-color-background {
-  background-color: rgba(var(--sd-tab--active-color-background, rgba(var(--sd-color-neutral-200))));
+@utility sd-tab--hover-color-background {
+  background-color: rgba(var(--sd-tab--hover-color-background, rgba(var(--sd-color-neutral-200))));
 }
 
 @utility sd-tab-color-border {
@@ -798,8 +826,8 @@
   color: rgba(var(--sd-tag--default-color-text, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-tag--disabled-color-border {
-  border-color: rgba(var(--sd-tag--disabled-color-border, rgba(var(--sd-color-neutral-500))));
+@utility sd-tag--disabled-color-text {
+  color: rgba(var(--sd-tag--disabled-color-text, rgba(var(--sd-color-neutral-500))));
 }
 
 @utility sd-tag--selected--default-color-background {
@@ -875,27 +903,23 @@
 }
 
 @utility sd-teaser-media--primary-100-color-background {
-  background-color: rgba(var(--sd-teaser-media--primary-100-color-background, rgba(var(--sd-color-primary-100))));
+  background-color: rgba(var(--sd-teaser-media--primary-100-color-background, rgba(236, 240, 249, 0.8)));
 }
 
-@utility sd-tooltip-border-width {
- border-width: var(--sd-tooltip-border-width, var(--sd-spacing-0\.25));
+@utility sd-teaser-media--white--hover-color-background {
+  background-color: rgba(var(--sd-teaser-media--white--hover-color-background, rgba(255, 255, 255, 0.9)));
+}
+
+@utility sd-teaser-media--white-color-background {
+  background-color: rgba(var(--sd-teaser-media--white-color-background, rgba(255, 255, 255, 0.8)));
 }
 
 @utility sd-tooltip-color-background {
   background-color: rgba(var(--sd-tooltip-color-background, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-tooltip-color-border {
-  border-color: rgba(var(--sd-tooltip-color-border, rgba(255, 255, 255, 0)));
-}
-
 @utility sd-tooltip-color-text {
   color: rgba(var(--sd-tooltip-color-text, rgba(var(--sd-color-white))));
-}
-
-@utility sd-video--description-color-text {
-  color: rgba(var(--sd-video--description-color-text, rgba(var(--sd-color-neutral-700))));
 }
 
 @utility sd-video--play-button-color-background {
