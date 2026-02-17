@@ -27,6 +27,7 @@ const translation: Translation = {
   goToSlide: (slide, count) => `Zu Folie ${slide} von ${count} gehen`,
   hidePassword: 'Passwort verbergen',
   invalidDate: 'Ungültiges Datum',
+  invalidNumber: 'Ungültige Zahl',
   loading: 'Wird geladen',
   maximum: 'Höchstwert',
   minimum: 'Minimum',

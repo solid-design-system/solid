@@ -298,7 +298,250 @@ export const Type = {
         name="url field"
         spellcheck
       ></sd-input>
+
+      <sd-input
+        type="formatted-number"
+        label="Formatted Number"
+        value="1234.56"
+        lang="en"
+        help-text="Locale-aware number formatting"
+        spellcheck
+      ></sd-input>
     </div>`
+};
+
+/**
+ * Use the `formatted-number` type for locale-aware number input with Intl.NumberFormat formatting.
+ *
+ * The display value formats according to the component's language, while the raw numeric value is always stored
+ * as a standard number string for form submission. Users can type in their locale's format, and the value
+ * reformat on blur.
+ */
+export const FormattedNumber = {
+  render: () => html`
+    <div class="flex flex-col gap-8 w-[400px]">
+      <div>
+        <h3 class="text-lg font-bold mb-4">English Locale (en-US)</h3>
+        <sd-input
+          type="formatted-number"
+          label="Amount (English)"
+          lang="en"
+          value="1234567.89"
+          help-text="Format: 1,234,567.89"
+          spellcheck
+        ></sd-input>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4">German Locale (de-DE)</h3>
+        <sd-input
+          type="formatted-number"
+          label="Amount (German)"
+          lang="de"
+          value="1234567.89"
+          help-text="Format: 1.234.567,89"
+          spellcheck
+        ></sd-input>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4">French Locale (fr-FR)</h3>
+        <sd-input
+          type="formatted-number"
+          label="Amount (French)"
+          lang="fr"
+          value="1234567.89"
+          help-text="Format: 1 234 567,89"
+          spellcheck
+        ></sd-input>
+      </div>
+    </div>
+  `
+};
+
+/**
+ * Use `number-format-options` to customize how numbers are formatted using Intl.NumberFormatOptions.
+ *
+ * Common options include:
+ * - `minimumFractionDigits` / `maximumFractionDigits` - Control decimal places
+ * - `useGrouping` - Enable/disable thousands separators
+ * - `style` - Format as currency, percent, or unit
+ * - `currency` - Currency code when style is "currency"
+ */
+export const FormattedNumberOptions = {
+  render: () => html`
+    <div class="flex flex-col gap-8 w-[400px]">
+      <div>
+        <h3 class="text-lg font-bold mb-4">Currency Formatting</h3>
+        <sd-input
+          type="formatted-number"
+          label="Price (USD)"
+          lang="en"
+          value="1234.5"
+          number-format-options='{"style": "currency", "currency": "USD"}'
+          help-text="Format as currency"
+          spellcheck
+        ></sd-input>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4">Fixed Decimal Places (2)</h3>
+        <sd-input
+          type="formatted-number"
+          label="Amount"
+          lang="en"
+          value="1234"
+          number-format-options='{"minimumFractionDigits": 2, "maximumFractionDigits": 2}'
+          help-text="Format: 1,234.00"
+          spellcheck
+        ></sd-input>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4">Accounting Format</h3>
+        <sd-input
+          type="formatted-number"
+          label="Amount (German Accounting)"
+          lang="de"
+          value="-1234.5"
+          number-format-options='{"minimumFractionDigits": 2, "maximumFractionDigits": 2}'
+          help-text="Format: -1.234,50"
+          spellcheck
+        ></sd-input>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4">Percentage</h3>
+        <sd-input
+          type="formatted-number"
+          label="Interest Rate"
+          lang="en"
+          value="0.125"
+          number-format-options='{"style": "percent", "minimumFractionDigits": 2}'
+          help-text="Format: 12.50%"
+          spellcheck
+        ></sd-input>
+      </div>
+    </div>
+  `
+};
+
+/**
+ * Use `spin-buttons` with `formatted-number` type to enable increment/decrement controls.
+ * You can also use `min`, `max`, and `step` attributes to control the range and stepping behavior.
+ */
+export const FormattedNumberStepping = {
+  render: () => html`
+    <div class="flex flex-col gap-8 w-[400px]">
+      <div>
+        <h3 class="text-lg font-bold mb-4">With Spin Buttons</h3>
+        <sd-input
+          type="formatted-number"
+          label="Quantity"
+          lang="en"
+          value="10"
+          min="0"
+          max="100"
+          step="5"
+          spin-buttons
+          help-text="Use buttons or arrow keys to adjust"
+          spellcheck
+        ></sd-input>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4">Currency with Stepping</h3>
+        <sd-input
+          type="formatted-number"
+          label="Price"
+          lang="en"
+          value="99.99"
+          min="0"
+          max="1000"
+          step="0.01"
+          spin-buttons
+          number-format-options='{"style": "currency", "currency": "USD"}'
+          help-text="Step by 0.01 (1 cent)"
+          spellcheck
+        ></sd-input>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold mb-4">German Format with Stepping</h3>
+        <sd-input
+          type="formatted-number"
+          label="Amount"
+          lang="de"
+          value="500"
+          min="0"
+          max="10000"
+          step="100"
+          spin-buttons
+          number-format-options='{"minimumFractionDigits": 2}'
+          help-text="Step by 100"
+          spellcheck
+        ></sd-input>
+      </div>
+    </div>
+  `
+};
+
+/**
+ * The `formatted-number` type includes built-in validation for min, max, and step constraints.
+ * Invalid values show appropriate error messages.
+ */
+export const FormattedNumberValidation = {
+  render: () => html`
+    <form id="formatted-number-form">
+      <div class="flex flex-col gap-8 w-[400px]">
+        <div>
+          <h3 class="text-lg font-bold mb-4">With Min/Max Validation</h3>
+          <sd-input
+            type="formatted-number"
+            label="Score (0-100)"
+            lang="en"
+            value="50"
+            min="0"
+            max="100"
+            required
+            style-on-valid
+            help-text="Must be between 0 and 100"
+            spellcheck
+          ></sd-input>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-bold mb-4">With Step Validation</h3>
+          <sd-input
+            type="formatted-number"
+            label="Increments of 0.5"
+            lang="en"
+            value="1.5"
+            step="0.5"
+            required
+            style-on-valid
+            help-text="Value must be a multiple of 0.5"
+            spellcheck
+          ></sd-input>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-bold mb-4">Required with German Format</h3>
+          <sd-input
+            type="formatted-number"
+            label="Invoice Amount"
+            lang="de"
+            min="0.01"
+            required
+            style-on-valid
+            number-format-options='{"minimumFractionDigits": 2}'
+            help-text="Amount is required and must be greater than 0"
+            spellcheck
+          ></sd-input>
+        </div>
+      </div>
+    </form>
+  `
 };
 
 /**

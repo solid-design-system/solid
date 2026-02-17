@@ -694,4 +694,652 @@ describe('<sd-input>', () => {
       expect(formControls.map((fc: HTMLInputElement) => fc.value).join('')).to.equal('12345678910');
     });
   });
+
+  describe('when type="formatted-number"', () => {
+    describe('rendering', () => {
+      it('should render the internal input as type="text"', async () => {
+        const el = await fixture<SdInput>(html` <sd-input type="formatted-number" label="Amount"></sd-input> `);
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        expect(input.type).to.equal('text');
+      });
+
+      it('should set inputmode to "decimal" by default', async () => {
+        const el = await fixture<SdInput>(html` <sd-input type="formatted-number" label="Amount"></sd-input> `);
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        expect(input.inputMode).to.equal('decimal');
+      });
+
+      it('should allow overriding inputmode', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" inputmode="numeric" label="Amount"></sd-input>
+        `);
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        expect(input.inputMode).to.equal('numeric');
+      });
+
+      it('should not set native min/max/step attributes on the internal input', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" min="0" max="100" step="5" label="Amount"></sd-input>
+        `);
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        expect(input.hasAttribute('min')).to.be.false;
+        expect(input.hasAttribute('max')).to.be.false;
+        expect(input.hasAttribute('step')).to.be.false;
+      });
+
+      it('should pass accessibility tests', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" label="Amount" value="1234.56"></sd-input>
+        `);
+        await expect(el).to.be.accessible();
+      });
+    });
+
+    describe('formatting and display', () => {
+      it('should format the value using the resolved locale on initial render', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" lang="de" value="1234.56" label="Amount"></sd-input>
+        `);
+        await el.updateComplete;
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        // German locale uses . for grouping and , for decimal
+        expect(input.value).to.equal('1.234,56');
+      });
+
+      it('should format using English locale', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" lang="en" value="1234.56" label="Amount"></sd-input>
+        `);
+        await el.updateComplete;
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        // English locale uses , for grouping and . for decimal
+        expect(input.value).to.equal('1,234.56');
+      });
+
+      it('should apply numberFormatOptions', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input
+            type="formatted-number"
+            lang="en"
+            value="1234"
+            .numberFormatOptions=${{ minimumFractionDigits: 2, maximumFractionDigits: 2 }}
+            label="Amount"
+          ></sd-input>
+        `);
+        await el.updateComplete;
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        expect(input.value).to.equal('1,234.00');
+      });
+
+      it('should apply numberFormatOptions via JSON attribute', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input
+            type="formatted-number"
+            lang="en"
+            value="1234"
+            number-format-options='{"minimumFractionDigits": 2}'
+            label="Amount"
+          ></sd-input>
+        `);
+        await el.updateComplete;
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        expect(input.value).to.equal('1,234.00');
+      });
+
+      it('should reformat the display value on blur', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" lang="en" label="Amount"></sd-input>
+        `);
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+
+        // Simulate user typing a raw number
+        el.focus();
+        await el.updateComplete;
+        input.value = '1234.56';
+        input.dispatchEvent(new Event('input'));
+        await el.updateComplete;
+
+        // On blur, should commit the value and reformat
+        el.blur();
+        await el.updateComplete;
+
+        expect(el.value).to.equal('1234.56');
+        expect(input.value).to.equal('1,234.56');
+      });
+
+      it('should NOT update value while typing', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" lang="en" value="0" label="Amount"></sd-input>
+        `);
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+
+        el.focus();
+        await el.updateComplete;
+
+        // Type something — value should remain unchanged
+        input.value = '999';
+        input.dispatchEvent(new Event('input'));
+        await el.updateComplete;
+
+        // The raw value should still be the original
+        expect(el.value).to.equal('0');
+        // But the display tracks user input
+        expect(input.value).to.equal('999');
+      });
+
+      it('should commit value on blur after typing', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" lang="en" value="0" label="Amount"></sd-input>
+        `);
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+
+        el.focus();
+        await el.updateComplete;
+
+        input.value = '42.5';
+        input.dispatchEvent(new Event('input'));
+        await el.updateComplete;
+
+        // Not yet committed
+        expect(el.value).to.equal('0');
+
+        // Blur triggers commit
+        el.blur();
+        await el.updateComplete;
+
+        expect(el.value).to.equal('42.5');
+        expect(input.value).to.equal('42.5');
+      });
+
+      it('should display empty string when value is empty', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" lang="en" label="Amount"></sd-input>
+        `);
+        await el.updateComplete;
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        expect(input.value).to.equal('');
+      });
+
+      it('should update display when lang changes', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" lang="en" value="1234.56" label="Amount"></sd-input>
+        `);
+        await el.updateComplete;
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        expect(input.value).to.equal('1,234.56');
+
+        el.lang = 'de';
+        await el.updateComplete;
+
+        expect(input.value).to.equal('1.234,56');
+      });
+
+      it('should update display when numberFormatOptions changes', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" lang="en" value="1234.5" label="Amount"></sd-input>
+        `);
+        await el.updateComplete;
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        expect(input.value).to.equal('1,234.5');
+
+        el.numberFormatOptions = { minimumFractionDigits: 2, maximumFractionDigits: 2 };
+        await el.updateComplete;
+
+        expect(input.value).to.equal('1,234.50');
+      });
+    });
+
+    describe('raw value and form submission', () => {
+      it('should keep the raw numeric string as the value property', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" lang="de" value="1234.56" label="Amount"></sd-input>
+        `);
+        await el.updateComplete;
+        // Internal input shows locale-formatted
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        expect(input.value).to.equal('1.234,56');
+        // But the component value is the raw number
+        expect(el.value).to.equal('1234.56');
+      });
+
+      it('should serialize raw value in FormData', async () => {
+        const form = await fixture<HTMLFormElement>(html`
+          <form>
+            <sd-input type="formatted-number" lang="de" name="amount" value="1234.56"></sd-input>
+          </form>
+        `);
+        const formData = new FormData(form);
+        expect(formData.get('amount')).to.equal('1234.56');
+      });
+    });
+
+    describe('valueAsNumber', () => {
+      it('should return the numeric value', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" value="42.5" label="Amount"></sd-input>
+        `);
+        expect(el.valueAsNumber).to.equal(42.5);
+      });
+
+      it('should return NaN for empty value', async () => {
+        const el = await fixture<SdInput>(html` <sd-input type="formatted-number" label="Amount"></sd-input> `);
+        expect(isNaN(el.valueAsNumber)).to.be.true;
+      });
+
+      it('should set value and update display when setting valueAsNumber', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" lang="en" label="Amount"></sd-input>
+        `);
+        el.valueAsNumber = 9876.54;
+        await el.updateComplete;
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        expect(el.value).to.equal('9876.54');
+        expect(input.value).to.equal('9,876.54');
+      });
+    });
+
+    describe('stepping', () => {
+      it('should increment value with stepUp()', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" value="10" step="5" label="Amount"></sd-input>
+        `);
+        el.stepUp();
+        await el.updateComplete;
+        expect(el.value).to.equal('15');
+      });
+
+      it('should decrement value with stepDown()', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" value="10" step="5" label="Amount"></sd-input>
+        `);
+        el.stepDown();
+        await el.updateComplete;
+        expect(el.value).to.equal('5');
+      });
+
+      it('should default to step=1 when step is not set', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" value="10" label="Amount"></sd-input>
+        `);
+        el.stepUp();
+        await el.updateComplete;
+        expect(el.value).to.equal('11');
+      });
+
+      it('should not exceed max when stepping up', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" value="9" max="10" step="5" label="Amount"></sd-input>
+        `);
+        el.stepUp();
+        await el.updateComplete;
+        expect(el.value).to.equal('10');
+      });
+
+      it('should not go below min when stepping down', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" value="3" min="0" step="5" label="Amount"></sd-input>
+        `);
+        el.stepDown();
+        await el.updateComplete;
+        expect(el.value).to.equal('0');
+      });
+
+      it('should start from 0 when stepping up from empty value', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" step="5" label="Amount"></sd-input>
+        `);
+        el.stepUp();
+        await el.updateComplete;
+        expect(el.value).to.equal('5');
+      });
+
+      it('should show spin buttons when spin-buttons attribute is set', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" spin-buttons label="Amount"></sd-input>
+        `);
+        const decrementButton = el.shadowRoot!.querySelector('button[part^="decrement-number-stepper"]')!;
+        const incrementButton = el.shadowRoot!.querySelector('button[part^="increment-number-stepper"]')!;
+        expect(decrementButton).to.exist;
+        expect(incrementButton).to.exist;
+      });
+
+      it('should add role="spinbutton" and aria attributes when spin-buttons is set', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" spin-buttons min="0" max="100" value="50" label="Amount"></sd-input>
+        `);
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        expect(input.getAttribute('role')).to.equal('spinbutton');
+        expect(input.getAttribute('aria-valuenow')).to.equal('50');
+        expect(input.getAttribute('aria-valuemin')).to.equal('0');
+        expect(input.getAttribute('aria-valuemax')).to.equal('100');
+      });
+
+      it('should update formatted display after stepping', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" lang="en" value="999" step="1" label="Amount"></sd-input>
+        `);
+        el.stepUp();
+        await el.updateComplete;
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        expect(el.value).to.equal('1000');
+        expect(input.value).to.equal('1,000');
+      });
+    });
+
+    describe('validation', () => {
+      it('should be valid when empty and not required', async () => {
+        const el = await fixture<SdInput>(html` <sd-input type="formatted-number" label="Amount"></sd-input> `);
+        expect(el.checkValidity()).to.be.true;
+      });
+
+      it('should be invalid when empty and required', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" required label="Amount"></sd-input>
+        `);
+        expect(el.checkValidity()).to.be.false;
+      });
+
+      it('should be invalid when value is below min', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" value="3" min="5" label="Amount"></sd-input>
+        `);
+        await el.updateComplete;
+        await el.updateComplete;
+        expect(el.checkValidity()).to.be.false;
+      });
+
+      it('should be invalid when value is above max', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" value="15" max="10" label="Amount"></sd-input>
+        `);
+        await el.updateComplete;
+        await el.updateComplete;
+        expect(el.checkValidity()).to.be.false;
+      });
+
+      it('should be valid when value is within min/max range', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" value="7" min="5" max="10" label="Amount"></sd-input>
+        `);
+        await el.updateComplete;
+        expect(el.checkValidity()).to.be.true;
+      });
+
+      it('should be invalid when value does not match step', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" value="1.3" step="0.5" label="Amount"></sd-input>
+        `);
+        await el.updateComplete;
+        await el.updateComplete;
+        expect(el.checkValidity()).to.be.false;
+      });
+
+      it('should be valid when value matches step', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" value="1.5" step="0.5" label="Amount"></sd-input>
+        `);
+        await el.updateComplete;
+        expect(el.checkValidity()).to.be.true;
+      });
+
+      it('should be valid when step is "any"', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" value="1.337" step="any" label="Amount"></sd-input>
+        `);
+        await el.updateComplete;
+        expect(el.checkValidity()).to.be.true;
+      });
+
+      it('should update validity when step changes', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" value="1.5" step="0.5" label="Amount"></sd-input>
+        `);
+        await el.updateComplete;
+        expect(el.checkValidity()).to.be.true;
+
+        el.step = 1;
+        await el.updateComplete;
+        expect(el.checkValidity()).to.be.false;
+      });
+    });
+
+    describe('clear button', () => {
+      it('should clear value and display when clear button is clicked', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" lang="en" value="1234.56" clearable label="Amount"></sd-input>
+        `);
+        await el.updateComplete;
+
+        const clearButton = el.shadowRoot!.querySelector<HTMLButtonElement>('[part~="clear-button"]')!;
+        expect(clearButton).to.exist;
+
+        clearButton.click();
+        await el.updateComplete;
+
+        expect(el.value).to.equal('');
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        expect(input.value).to.equal('');
+      });
+    });
+
+    describe('keyboard stepping', () => {
+      it('should increment on ArrowUp keydown', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" value="10" step="1" label="Amount"></sd-input>
+        `);
+        el.focus();
+        await el.updateComplete;
+
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp', bubbles: true }));
+        await el.updateComplete;
+
+        expect(el.value).to.equal('11');
+      });
+
+      it('should decrement on ArrowDown keydown', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" value="10" step="1" label="Amount"></sd-input>
+        `);
+        el.focus();
+        await el.updateComplete;
+
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }));
+        await el.updateComplete;
+
+        expect(el.value).to.equal('9');
+      });
+
+      it('should not step beyond max on ArrowUp', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" value="10" max="10" step="1" label="Amount"></sd-input>
+        `);
+        el.focus();
+        await el.updateComplete;
+
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp', bubbles: true }));
+        await el.updateComplete;
+
+        expect(el.value).to.equal('10');
+      });
+
+      it('should not step below min on ArrowDown', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" value="0" min="0" step="1" label="Amount"></sd-input>
+        `);
+        el.focus();
+        await el.updateComplete;
+
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }));
+        await el.updateComplete;
+
+        expect(el.value).to.equal('0');
+      });
+    });
+
+    describe('events', () => {
+      it('should emit sd-change when user changes a locale-formatted value', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" lang="en" label="Amount"></sd-input>
+        `);
+        const changeHandler = sinon.spy();
+        el.addEventListener('sd-change', changeHandler);
+
+        el.focus();
+        await el.updateComplete;
+
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+        input.value = '5678.90';
+        input.dispatchEvent(new Event('change'));
+        await el.updateComplete;
+
+        expect(changeHandler).to.have.been.calledOnce;
+        expect(el.value).to.equal('5678.9');
+      });
+
+      it('should emit sd-input while typing', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" lang="en" label="Amount"></sd-input>
+        `);
+        const inputHandler = sinon.spy();
+        el.addEventListener('sd-input', inputHandler);
+
+        el.focus();
+        await sendKeys({ type: '123' });
+        await el.updateComplete;
+
+        expect(inputHandler).to.have.been.calledThrice;
+      });
+
+      it('should emit sd-clear when clear button is clicked', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input type="formatted-number" value="42" clearable label="Amount"></sd-input>
+        `);
+        const clearHandler = sinon.spy();
+        el.addEventListener('sd-clear', clearHandler);
+
+        await el.updateComplete;
+        const clearButton = el.shadowRoot!.querySelector<HTMLButtonElement>('[part~="clear-button"]')!;
+        clearButton.click();
+        await el.updateComplete;
+
+        expect(clearHandler).to.have.been.calledOnce;
+      });
+    });
+
+    describe('currency and percent formatting', () => {
+      it('should strip currency symbols when parsing on blur', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input
+            type="formatted-number"
+            lang="en"
+            value="1234.5"
+            .numberFormatOptions=${{ style: 'currency', currency: 'USD' }}
+            label="Price"
+          ></sd-input>
+        `);
+        await el.updateComplete;
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+
+        // Display should show currency formatted
+        expect(input.value).to.include('$');
+        expect(input.value).to.include('1,234.50');
+
+        // Simulate user editing the formatted value (with $ sign)
+        el.focus();
+        await el.updateComplete;
+        input.value = '$2,500.75';
+        input.dispatchEvent(new Event('input'));
+        el.blur();
+        await el.updateComplete;
+
+        // Should correctly parse stripping the $ sign
+        expect(el.value).to.equal('2500.75');
+      });
+
+      it('should handle percent round-trip correctly', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input
+            type="formatted-number"
+            lang="en"
+            value="0.125"
+            .numberFormatOptions=${{ style: 'percent', minimumFractionDigits: 2 }}
+            label="Rate"
+          ></sd-input>
+        `);
+        await el.updateComplete;
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+
+        // Display should show 12.50%
+        expect(input.value).to.equal('12.50%');
+        // Raw value should remain the fraction
+        expect(el.value).to.equal('0.125');
+
+        // Simulate blur (re-commit the same displayed value)
+        el.focus();
+        await el.updateComplete;
+        el.blur();
+        await el.updateComplete;
+
+        // Should NOT inflate — value should stay 0.125
+        expect(el.value).to.equal('0.125');
+        expect(input.value).to.equal('12.50%');
+      });
+
+      it('should parse user-entered percent value correctly', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input
+            type="formatted-number"
+            lang="en"
+            .numberFormatOptions=${{ style: 'percent', minimumFractionDigits: 1 }}
+            label="Rate"
+          ></sd-input>
+        `);
+        await el.updateComplete;
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+
+        // User types "25%" or "25"
+        el.focus();
+        await el.updateComplete;
+        input.value = '25';
+        input.dispatchEvent(new Event('input'));
+        el.blur();
+        await el.updateComplete;
+
+        // Should divide by 100: raw value is 0.25
+        expect(el.value).to.equal('0.25');
+        expect(input.value).to.equal('25.0%');
+      });
+
+      it('should strip euro symbol in German locale', async () => {
+        const el = await fixture<SdInput>(html`
+          <sd-input
+            type="formatted-number"
+            lang="de"
+            value="1234.5"
+            .numberFormatOptions=${{ style: 'currency', currency: 'EUR' }}
+            label="Betrag"
+          ></sd-input>
+        `);
+        await el.updateComplete;
+        const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="input"]')!;
+
+        // Display should contain € symbol
+        expect(input.value).to.include('€');
+        // Raw value is still numeric
+        expect(el.value).to.equal('1234.5');
+
+        // Blur round-trip should preserve value
+        el.focus();
+        await el.updateComplete;
+        el.blur();
+        await el.updateComplete;
+
+        expect(el.value).to.equal('1234.5');
+      });
+    });
+  });
 });

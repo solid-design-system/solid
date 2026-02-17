@@ -104,6 +104,12 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   /** @internal */
   @state() isClickableIconFocused = false;
 
+  /** @internal - Display value for formatted-number type */
+  @state() _displayValue = '';
+
+  /** @internal - Flag to prevent re-parsing after step operations */
+  private _steppingFormatted = false;
+
   /**
    * The type of input. Works the same as a native `<input>` element, but only a subset of types are supported. Defaults
    * to `text`.
@@ -112,6 +118,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     | 'date'
     | 'datetime-local'
     | 'email'
+    | 'formatted-number'
     | 'number'
     | 'password'
     | 'search'
@@ -215,6 +222,30 @@ export default class SdInput extends SolidElement implements SolidFormControl {
    */
   @property({ reflect: true }) step: number | 'any';
 
+  /**
+   * Options for formatting numbers in the `formatted-number` type using Intl.NumberFormatOptions.
+   * This can be set as a property or as a JSON attribute (number-format-options).
+   * Examples: { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true }
+   */
+  @property({
+    type: Object,
+    converter: {
+      fromAttribute: (value: string) => {
+        try {
+          return value ? (JSON.parse(value) as Intl.NumberFormatOptions) : undefined;
+        } catch {
+          console.error('Invalid number-format-options JSON:', value);
+          return undefined;
+        }
+      },
+      toAttribute: (value: Intl.NumberFormatOptions | undefined) => {
+        return value ? JSON.stringify(value) : null;
+      }
+    },
+    attribute: 'number-format-options'
+  })
+  numberFormatOptions: Intl.NumberFormatOptions | undefined;
+
   /** Controls whether and how text input is automatically capitalized as it is entered by the user. */
   @property({ type: String, reflect: true }) autocapitalize:
     | 'off'
@@ -274,15 +305,23 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   /** Gets or sets the current value as a number. Returns `NaN` if the value can't be converted. */
   get valueAsNumber() {
+    if (this.type === 'formatted-number') {
+      return parseFloat(this.value);
+    }
     return this.input?.valueAsNumber ?? parseFloat(this.value);
   }
 
   set valueAsNumber(newValue: number) {
-    // We use an in-memory input instead of the one in the template because the property can be set before render
-    const input = document.createElement('input');
-    input.type = 'number';
-    input.valueAsNumber = newValue;
-    this.value = input.value;
+    if (this.type === 'formatted-number') {
+      this.value = String(newValue);
+      this.updateFormattedNumberDisplay();
+    } else {
+      // We use an in-memory input instead of the one in the template because the property can be set before render
+      const input = document.createElement('input');
+      input.type = 'number';
+      input.valueAsNumber = newValue;
+      this.value = input.value;
+    }
   }
 
   /** Gets the validity state object */
@@ -290,22 +329,189 @@ export default class SdInput extends SolidElement implements SolidFormControl {
     return this.input.validity;
   }
 
+  // ============================================================================
+  // Number Formatting Utility Methods (for formatted-number type)
+  // ============================================================================
+
+  /** Returns the decimal separator character for the current locale. */
+  private getDecimalSeparator(locale: string): string {
+    const parts = new Intl.NumberFormat(locale).formatToParts(1.1);
+    return parts.find(p => p.type === 'decimal')?.value ?? '.';
+  }
+
+  /** Returns the group (thousands) separator character for the current locale. */
+  private getGroupSeparator(locale: string): string {
+    const parts = new Intl.NumberFormat(locale).formatToParts(11111);
+    return parts.find(p => p.type === 'group')?.value ?? ',';
+  }
+
+  /**
+   * Parses a locale-formatted number string into a numeric value.
+   * Strips all non-numeric characters (currency symbols, percent signs, etc.),
+   * removes group separators, replaces locale decimal separator with '.', then parseFloat.
+   * For percent style: divides by 100 to reverse Intl.NumberFormat's multiplication.
+   */
+  private parseLocalizedNumber(input: string, locale: string): number {
+    if (!input || input.trim() === '') return NaN;
+    const decimalSep = this.getDecimalSeparator(locale);
+    const groupSep = this.getGroupSeparator(locale);
+
+    // Escape special regex characters in separators
+    const escDecimalSep = decimalSep.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const escGroupSep = groupSep.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+    // Strip everything except digits, decimal sep, group sep, minus, and period/comma
+    // This removes currency symbols ($, €, £), percent signs (%), currency codes (USD), etc.
+    const allowedCharsPattern = new RegExp(`[^0-9${escDecimalSep}${escGroupSep}\\-]`, 'g');
+    const stripped = input.replace(allowedCharsPattern, '').trim();
+
+    // Now normalize: remove group separators, replace decimal sep with '.'
+    const normalized = stripped.replace(new RegExp(escGroupSep, 'g'), '').replace(decimalSep, '.');
+    let result = parseFloat(normalized);
+
+    // For percent style, Intl.NumberFormat multiplies by 100 for display.
+    // Reverse that: divide by 100 to get back to the raw fraction.
+    if (!isNaN(result) && this.numberFormatOptions?.style === 'percent') {
+      result /= 100;
+    }
+
+    return result;
+  }
+
+  /** Formats a number using Intl.NumberFormat for the given locale and options. */
+  private formatNumber(value: number, locale: string, options?: Intl.NumberFormatOptions): string {
+    if (isNaN(value)) return '';
+    return new Intl.NumberFormat(locale, options).format(value);
+  }
+
+  /** Updates the display value for formatted-number type by reformatting the raw value. */
+  private updateFormattedNumberDisplay(): void {
+    if (this.type !== 'formatted-number') return;
+    const numValue = parseFloat(this.value);
+    if (this.value === '' || isNaN(numValue)) {
+      this._displayValue = this.value;
+    } else {
+      this._displayValue = this.formatNumber(numValue, this.localize.lang(), this.numberFormatOptions);
+    }
+  }
+
+  /**
+   * Validates the value for formatted-number type against min/max/step constraints.
+   * Sets custom validity messages when validation fails.
+   */
+  private validateFormattedNumber(): void {
+    if (this.type !== 'formatted-number' || !this.input) return;
+
+    // Empty value — let required handle it
+    if (this.value === '') {
+      this.input.setCustomValidity('');
+      return;
+    }
+
+    const numValue = parseFloat(this.value);
+
+    if (isNaN(numValue)) {
+      this.input.setCustomValidity(this.localize.term('invalidNumber'));
+      return;
+    }
+
+    // Min check
+    if (this.min !== undefined && this.min !== null) {
+      const min = typeof this.min === 'string' ? parseFloat(this.min) : this.min;
+      if (numValue < min) {
+        this.input.setCustomValidity(`${this.localize.term('minimum')}: ${min}`);
+        return;
+      }
+    }
+
+    // Max check
+    if (this.max !== undefined && this.max !== null) {
+      const max = typeof this.max === 'string' ? parseFloat(this.max) : this.max;
+      if (numValue > max) {
+        this.input.setCustomValidity(`${this.localize.term('maximum')}: ${max}`);
+        return;
+      }
+    }
+
+    // Step check (with floating-point tolerance)
+    if (this.step && this.step !== 'any') {
+      const step = Number(this.step);
+      const min =
+        this.min !== undefined && this.min !== null
+          ? typeof this.min === 'string'
+            ? parseFloat(this.min)
+            : this.min
+          : 0;
+      const remainder = Math.abs((numValue - min) % step);
+      if (remainder > 1e-10 && Math.abs(remainder - step) > 1e-10) {
+        this.input.setCustomValidity(`Value must be a multiple of ${step}`);
+        return;
+      }
+    }
+
+    this.input.setCustomValidity('');
+  }
+
+  /**
+   * Commits the formatted-number value: parses the current display input,
+   * updates the raw value, reformats the display, and validates.
+   * Called on blur and change events.
+   */
+  private commitFormattedNumberValue(): void {
+    if (this.type !== 'formatted-number') return;
+
+    const displayVal = this.input?.value ?? this._displayValue;
+
+    if (displayVal.trim() === '') {
+      this.value = '';
+      this._displayValue = '';
+    } else {
+      const parsed = this.parseLocalizedNumber(displayVal, this.localize.lang());
+      if (!isNaN(parsed)) {
+        this.value = String(parsed);
+      }
+    }
+    this.updateFormattedNumberDisplay();
+    this.validateFormattedNumber();
+    this.formControlController.updateValidity();
+  }
+
   firstUpdated() {
+    if (this.type === 'formatted-number') {
+      this.updateFormattedNumberDisplay();
+      this.validateFormattedNumber();
+    }
     this.formControlController.updateValidity();
   }
 
   private handleBlur() {
     this.hasFocus = false;
+    if (this.type === 'formatted-number') {
+      // Commit: parse the user's locale input and update the raw value
+      this.commitFormattedNumberValue();
+    }
     this.emit('sd-blur');
   }
 
   private handleChange() {
-    this.value = this.input.value;
+    if (this.type === 'formatted-number') {
+      // After stepping, value is already set — skip re-parsing the stale DOM input
+      if (!this._steppingFormatted) {
+        this.commitFormattedNumberValue();
+      }
+      this._steppingFormatted = false;
+    } else {
+      this.value = this.input.value;
+    }
+    this.formControlController.updateValidity();
     this.emit('sd-change');
   }
 
   private handleClearClick(event: MouseEvent) {
     this.value = '';
+    if (this.type === 'formatted-number') {
+      this._displayValue = '';
+    }
     this.emit('sd-clear');
     this.emit('sd-input');
     this.emit('sd-change');
@@ -326,11 +532,18 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   private handleInput() {
     if (this.visuallyDisabled) {
-      this.input.value = this.value;
+      this.input.value = this.type === 'formatted-number' ? this._displayValue : this.value;
       return;
     }
 
-    this.value = this.input.value;
+    if (this.type === 'formatted-number') {
+      // Only track the display value while the user is typing.
+      // Do NOT update this.value — that happens on blur/change/enter.
+      this._displayValue = this.input.value;
+    } else {
+      this.value = this.input.value;
+    }
+
     this.formControlController.updateValidity();
     this.emit('sd-input');
   }
@@ -343,6 +556,21 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   private handleKeyDown(event: KeyboardEvent) {
     const hasModifier = event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
+
+    // Arrow Up/Down stepping for formatted-number type
+    if (this.type === 'formatted-number' && !hasModifier && (event.key === 'ArrowUp' || event.key === 'ArrowDown')) {
+      event.preventDefault();
+      if (event.key === 'ArrowUp' && !this.isIncrementDisabled()) {
+        this.stepUp();
+      } else if (event.key === 'ArrowDown' && !this.isDecrementDisabled()) {
+        this.stepDown();
+      }
+      this.validateFormattedNumber();
+      this.formControlController.updateValidity();
+      this.emit('sd-input');
+      this.emit('sd-change');
+      return;
+    }
 
     // Pressing enter when focused on an input should submit the form like a native input, but we wait a tick before
     // submitting to allow users to cancel the keydown event if they need to
@@ -400,7 +628,16 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   }
 
   private handleStep() {
-    this.handleInput();
+    if (this.type === 'formatted-number') {
+      // For formatted-number, value is already set by stepUp/stepDown.
+      // Set flag so handleChange (called by longPress end) won't re-parse stale DOM.
+      this._steppingFormatted = true;
+      this.validateFormattedNumber();
+      this.formControlController.updateValidity();
+      this.emit('sd-input');
+    } else {
+      this.handleInput();
+    }
     this.input.focus();
   }
 
@@ -422,6 +659,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   @watch('step', { waitUntilFirstUpdate: true })
   handleStepChange() {
+    if (this.type === 'formatted-number') {
+      this.validateFormattedNumber();
+      this.formControlController.updateValidity();
+      return;
+    }
     // If step changes, the value may become invalid so we need to recheck after the update. We set the new step
     // imperatively so we don't have to wait for the next render to report the updated validity.
     this.input.step = String(this.step);
@@ -431,12 +673,30 @@ export default class SdInput extends SolidElement implements SolidFormControl {
   @watch('value', { waitUntilFirstUpdate: true })
   async handleValueChange() {
     await this.updateComplete;
+    if (this.type === 'formatted-number') {
+      this.validateFormattedNumber();
+      this.updateFormattedNumberDisplay();
+    }
     this.formControlController.updateValidity();
   }
 
   @watch(['size', 'floatingLabel'])
   handleSizeChange() {
     this.size = this.floatingLabel && this.size === 'sm' ? 'md' : this.size;
+  }
+
+  @watch('lang')
+  handleLangChange() {
+    if (this.type === 'formatted-number') {
+      this.updateFormattedNumberDisplay();
+    }
+  }
+
+  @watch('numberFormatOptions')
+  handleNumberFormatOptionsChange() {
+    if (this.type === 'formatted-number') {
+      this.updateFormattedNumberDisplay();
+    }
   }
 
   /** Sets focus on the input. */
@@ -488,17 +748,39 @@ export default class SdInput extends SolidElement implements SolidFormControl {
 
   /** Increments the value of a numeric input type by the value of the step attribute. */
   stepUp() {
-    this.input.stepUp();
-    if (this.value !== this.input.value) {
-      this.value = this.input.value;
+    if (this.type === 'formatted-number') {
+      const step = this.step && this.step !== 'any' ? Number(this.step) : 1;
+      let newValue = (isNaN(this.valueAsNumber) ? 0 : this.valueAsNumber) + step;
+      if (this.max !== undefined && this.max !== null) {
+        const max = typeof this.max === 'string' ? parseFloat(this.max) : this.max;
+        newValue = Math.min(newValue, max);
+      }
+      this.value = String(newValue);
+      this.updateFormattedNumberDisplay();
+    } else {
+      this.input.stepUp();
+      if (this.value !== this.input.value) {
+        this.value = this.input.value;
+      }
     }
   }
 
   /** Decrements the value of a numeric input type by the value of the step attribute. */
   stepDown() {
-    this.input.stepDown();
-    if (this.value !== this.input.value) {
-      this.value = this.input.value;
+    if (this.type === 'formatted-number') {
+      const step = this.step && this.step !== 'any' ? Number(this.step) : 1;
+      let newValue = (isNaN(this.valueAsNumber) ? 0 : this.valueAsNumber) - step;
+      if (this.min !== undefined && this.min !== null) {
+        const min = typeof this.min === 'string' ? parseFloat(this.min) : this.min;
+        newValue = Math.max(newValue, min);
+      }
+      this.value = String(newValue);
+      this.updateFormattedNumberDisplay();
+    } else {
+      this.input.stepDown();
+      if (this.value !== this.input.value) {
+        this.value = this.input.value;
+      }
     }
   }
 
@@ -661,7 +943,11 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                 textSize,
                 isFloatingLabelActive && 'leading-none mt-4'
               )}
-              type=${this.type === 'password' && this.passwordVisible ? 'text' : this.type}
+              type=${this.type === 'password' && this.passwordVisible
+                ? 'text'
+                : this.type === 'formatted-number'
+                  ? 'text'
+                  : this.type}
               title=${this.title /* An empty title prevents browser validation tooltips from appearing on hover */}
               name=${ifDefined(this.name)}
               ?disabled=${this.disabled}
@@ -670,10 +956,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               placeholder=${!this.floatingLabel || isFloatingLabelActive ? ifDefined(this.placeholder) : ''}
               minlength=${ifDefined(this.minlength)}
               maxlength=${ifDefined(this.maxlength)}
-              min=${ifDefined(this.min)}
-              max=${ifDefined(this.max)}
-              step=${ifDefined(this.step as number)}
-              .value=${live(this.value)}
+              min=${ifDefined(this.type === 'formatted-number' ? undefined : this.min)}
+              max=${ifDefined(this.type === 'formatted-number' ? undefined : this.max)}
+              step=${ifDefined(this.type === 'formatted-number' ? undefined : (this.step as number))}
+              .value=${live(this.type === 'formatted-number' ? this._displayValue : this.value)}
               autocapitalize=${ifDefined(this.type === 'password' ? 'off' : this.autocapitalize)}
               autocomplete=${
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -684,10 +970,20 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               spellcheck=${this.spellcheck}
               pattern=${ifDefined(this.pattern)}
               enterkeyhint=${ifDefined(this.enterkeyhint)}
-              inputmode=${ifDefined(this.inputmode)}
+              inputmode=${ifDefined(this.type === 'formatted-number' ? this.inputmode || 'decimal' : this.inputmode)}
               aria-describedby="help-text invalid-message"
               aria-disabled=${this.visuallyDisabled || this.disabled ? 'true' : 'false'}
               aria-invalid=${this.showInvalidStyle}
+              aria-valuenow=${ifDefined(
+                this.type === 'formatted-number' && this.spinButtons && this.value ? this.value : undefined
+              )}
+              aria-valuemin=${ifDefined(
+                this.type === 'formatted-number' && this.spinButtons && this.min !== null ? String(this.min) : undefined
+              )}
+              aria-valuemax=${ifDefined(
+                this.type === 'formatted-number' && this.spinButtons && this.max !== null ? String(this.max) : undefined
+              )}
+              role=${ifDefined(this.type === 'formatted-number' && this.spinButtons ? 'spinbutton' : undefined)}
               @change=${this.handleChange}
               @input=${this.handleInput}
               @invalid=${this.handleInvalid}
@@ -846,7 +1142,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                   class=${cx('inline-flex', iconColor, iconMarginLeft, iconSize)}
                 ></slot>`
               : ''}
-            ${this.type === 'number' && this.spinButtons
+            ${(this.type === 'number' || this.type === 'formatted-number') && this.spinButtons
               ? html`
                   <div part="stepper" class="flex items-center">
                     <button

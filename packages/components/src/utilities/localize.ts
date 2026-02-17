@@ -93,6 +93,7 @@ export interface Translation extends DefaultTranslation {
   goToSlide: (slide: number, count: number) => string;
   hidePassword: string;
   invalidDate: string;
+  invalidNumber: string;
   loading: string;
   maximum: string;
   minimum: string;

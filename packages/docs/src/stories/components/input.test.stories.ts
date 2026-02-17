@@ -1191,6 +1191,153 @@ export const Mouseless = {
   }
 };
 
+/**
+ * Locale-aware number formatting with automatic formatting based on locale.
+ */
+export const FormattedNumberLocales = {
+  name: 'Formatted Number: Locales',
+  render: (_args: any) => {
+    return html`
+      <div class="grid grid-cols-3 gap-8">
+        <div>
+          <h3 class="font-bold mb-2">English</h3>
+          <sd-input type="formatted-number" label="Amount" lang="en" value="1234567.89"></sd-input>
+        </div>
+        <div>
+          <h3 class="font-bold mb-2">German</h3>
+          <sd-input type="formatted-number" label="Amount" lang="de" value="1234567.89"></sd-input>
+        </div>
+        <div>
+          <h3 class="font-bold mb-2">French</h3>
+          <sd-input type="formatted-number" label="Amount" lang="fr" value="1234567.89"></sd-input>
+        </div>
+      </div>
+    `;
+  }
+};
+
+/**
+ * Formatted number with custom format options.
+ */
+export const FormattedNumberOptions = {
+  name: 'Formatted Number: Options',
+  render: (_args: any) => {
+    return html`
+      <div class="grid grid-cols-2 gap-8">
+        <div>
+          <h3 class="font-bold mb-2">Currency (USD)</h3>
+          <sd-input
+            type="formatted-number"
+            label="Price"
+            lang="en"
+            value="1234.5"
+            number-format-options='{"style": "currency", "currency": "USD"}'
+          ></sd-input>
+        </div>
+        <div>
+          <h3 class="font-bold mb-2">Percentage</h3>
+          <sd-input
+            type="formatted-number"
+            label="Interest"
+            lang="en"
+            value="0.125"
+            number-format-options='{"style": "percent", "minimumFractionDigits": 2}'
+          ></sd-input>
+        </div>
+        <div>
+          <h3 class="font-bold mb-2">Fixed 2 Decimals</h3>
+          <sd-input
+            type="formatted-number"
+            label="Amount"
+            lang="en"
+            value="1234"
+            number-format-options='{"minimumFractionDigits": 2, "maximumFractionDigits": 2}'
+          ></sd-input>
+        </div>
+        <div>
+          <h3 class="font-bold mb-2">German Currency</h3>
+          <sd-input
+            type="formatted-number"
+            label="Betrag"
+            lang="de"
+            value="1234.5"
+            number-format-options='{"style": "currency", "currency": "EUR"}'
+          ></sd-input>
+        </div>
+      </div>
+    `;
+  }
+};
+
+/**
+ * Formatted number with stepping controls.
+ */
+export const FormattedNumberStepping = {
+  name: 'Formatted Number: Stepping',
+  render: (_args: any) => {
+    return html`
+      <div class="grid grid-cols-2 gap-8">
+        <div>
+          <h3 class="font-bold mb-2">With Spin Buttons</h3>
+          <sd-input
+            type="formatted-number"
+            label="Quantity"
+            lang="en"
+            value="10"
+            min="0"
+            max="100"
+            step="5"
+            spin-buttons
+          ></sd-input>
+        </div>
+        <div>
+          <h3 class="font-bold mb-2">Currency Stepping</h3>
+          <sd-input
+            type="formatted-number"
+            label="Price"
+            lang="en"
+            value="99.99"
+            min="0"
+            max="1000"
+            step="0.01"
+            spin-buttons
+            number-format-options='{"style": "currency", "currency": "USD"}'
+          ></sd-input>
+        </div>
+      </div>
+    `;
+  }
+};
+
+/**
+ * Formatted number validation with min/max/step constraints.
+ */
+export const FormattedNumberValidation = {
+  name: 'Formatted Number: Validation',
+  render: (_args: any) => {
+    return html`
+      <div class="grid grid-cols-2 gap-8">
+        <div>
+          <h3 class="font-bold mb-2">Valid (0-100)</h3>
+          <sd-input
+            type="formatted-number"
+            label="Score"
+            lang="en"
+            value="50"
+            min="0"
+            max="100"
+            style-on-valid
+          ></sd-input>
+        </div>
+        <div>
+          <h3 class="font-bold mb-2">Step Validation (0.5)</h3>
+          <sd-input type="formatted-number" label="Value" lang="en" value="1.5" step="0.5" style-on-valid></sd-input>
+        </div>
+      </div>
+    `;
+  }
+};
+
 export const Combination = generateScreenshotStory([
   Default,
   Labels,
@@ -1208,5 +1355,9 @@ export const Combination = generateScreenshotStory([
   Slots,
   Parts,
   setCustomValidity,
-  Mouseless
+  Mouseless,
+  FormattedNumberLocales,
+  FormattedNumberOptions,
+  FormattedNumberStepping,
+  FormattedNumberValidation
 ]);
