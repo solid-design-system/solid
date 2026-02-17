@@ -43,13 +43,16 @@ const config: TestRunnerConfig = {
 
     if (!violations.length) return;
 
-    createHtmlReport({
-      results: { violations },
-      options: {
-        outputDirPath: 'axe-reports',
-        reportFileName: `${context.id}.html`
-      }
-    });
+    if (process.env.GENERATE_REPORT === 'true') {
+      createHtmlReport({
+        results: { violations },
+        options: {
+          outputDirPath: 'axe-reports',
+          reportFileName: `${context.id}.html`
+        }
+      });
+      console.log(pc.dim(`HTML report generated: axe-reports/${context.id}.html`));
+    }
 
     const [folder, component, screenshot] = context.title.split('/').map(v => v.toLowerCase());
     const file = `${component.replaceAll(' ', '-').replace('sd-', '')}${screenshot ? '.test' : ''}.stories.ts`;
