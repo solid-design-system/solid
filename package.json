@@ -1,7 +1,6 @@
 {
   "name": "@solid-design-system/root",
   "version": "1.0.0",
-  "type": "module",
   "homepage": "https://solid-design-system.fe.union-investment.de/docs/",
   "author": {
     "name": "Union Investment"
@@ -50,11 +49,10 @@
     "eslint-plugin-chai-expect": "^3.1.0",
     "eslint-plugin-chai-friendly": "^1.1.0",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-lit": "^2.1.1",
+    "eslint-plugin-lit": "^2.2.1",
     "eslint-plugin-lit-a11y": "^5.1.1",
-    "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
     "eslint-plugin-storybook": "^10.2.8",
-    "eslint-plugin-wc": "^3.0.1",
+    "eslint-plugin-wc": "^3.1.0",
     "globals": "^17.3.0",
     "globby": "^16.1.0",
     "husky": "^9.1.7",

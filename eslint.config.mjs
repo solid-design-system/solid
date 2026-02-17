@@ -9,7 +9,6 @@ import js from '@eslint/js';
 import litA11Y from 'eslint-plugin-lit-a11y';
 import path from 'node:path';
 import sds from '@solid-design-system/eslint-plugin';
-import sortImportsEs6Autofix from 'eslint-plugin-sort-imports-es6-autofix';
 import tsParser from '@typescript-eslint/parser';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 
@@ -63,8 +62,7 @@ export default [
       'lit-a11y': litA11Y,
       'chai-expect': chaiExpect,
       'chai-friendly': chaiFriendly,
-      import: fixupPluginRules(_import),
-      'sort-imports-es6-autofix': sortImportsEs6Autofix
+      import: fixupPluginRules(_import)
     },
 
     languageOptions: {
@@ -156,15 +154,6 @@ export default [
       ],
 
       'import/no-duplicates': 'warn',
-
-      'sort-imports-es6-autofix/sort-imports-es6': [
-        2,
-        {
-          ignoreCase: true,
-          ignoreMemberSort: false,
-          memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single']
-        }
-      ],
 
       'wc/guard-super-call': 'off'
     }
