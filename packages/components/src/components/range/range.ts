@@ -1,3 +1,4 @@
+import '../tooltip/tooltip';
 import { arraysDiffer, getNormalizedValueFromClientX, numericSort } from './utils';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
@@ -10,8 +11,8 @@ import { property, query, queryAll } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { PropertyValues } from 'lit';
-import type { SdTooltip } from '../../solid-components';
 import type { SolidFormControl } from '../../internal/solid-element';
+import type SdTooltip from '../tooltip/tooltip';
 
 /**
  * @summary Used to allow users to select a single or multiple values within a defined range using a slider.
