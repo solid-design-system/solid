@@ -385,7 +385,11 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     this.updateTooltip(thumb);
 
     if (thumb.dataset.pointerId) {
-      thumb.releasePointerCapture(+thumb.dataset.pointerId);
+      try {
+        thumb.releasePointerCapture(+thumb.dataset.pointerId);
+      } catch {
+        // Pointer may already be released, ignore
+      }
     }
 
     thumb.dataset.pointerId = event.pointerId.toString();
@@ -587,7 +591,6 @@ export default class SdRange extends SolidElement implements SolidFormControl {
 
       return html`
         <sd-tooltip
-          hoist
           trigger=${this.tooltip === 'on-interaction' ? 'focus' : 'manual'}
           disabled=${ifDefined(this.disabled || this.visuallyDisabled || this.tooltip === 'hidden' ? true : undefined)}
         >
@@ -609,7 +612,6 @@ export default class SdRange extends SolidElement implements SolidFormControl {
             @pointermove=${this.onDragThumb}
             @pointerup=${this.onReleaseThumb}
             @pointercancel=${this.onReleaseThumb}
-            @pointerleave=${this.onReleaseThumb}
             @keydown=${this.onKeyPress}
             @focus=${this.onFocusThumb}
             class=${cx(

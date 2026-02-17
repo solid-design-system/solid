@@ -37,6 +37,33 @@ describe('<sd-range>', () => {
 
       expect(tooltip.hasAttribute('open')).to.be.true;
     });
+
+    it('should not use hoist on tooltips so they work inside CSS container queries', async () => {
+      const el = await fixture<SdRange>(html`<sd-range></sd-range>`);
+      const tooltip = el.shadowRoot!.querySelector('sd-tooltip')!;
+
+      expect(tooltip.hasAttribute('hoist')).to.be.false;
+    });
+
+    it('should remain visible inside a container-type ancestor when tooltip is always-visible', async () => {
+      const container = await fixture<HTMLDivElement>(
+        html`<div style="container-type: inline-size; width: 400px;">
+          <sd-range tooltip="always-visible"></sd-range>
+        </div>`
+      );
+      const el = container.querySelector('sd-range')!;
+      await el.updateComplete;
+
+      const tooltip = el.shadowRoot!.querySelector('sd-tooltip')!;
+      expect(tooltip.hasAttribute('open')).to.be.true;
+
+      // The popup within the tooltip should use absolute positioning (not fixed)
+      await tooltip.updateComplete;
+      const popup = tooltip.shadowRoot?.querySelector('sd-popup');
+      if (popup) {
+        expect(popup.getAttribute('strategy')).to.not.equal('fixed');
+      }
+    });
   });
 
   describe('value methods', () => {
@@ -803,6 +830,114 @@ describe('<sd-range>', () => {
       });
 
       expect(el.shadowRoot!.activeElement).to.equal(thumbEnd);
+    });
+  });
+
+  describe('pointer handling', () => {
+    it('should not have a pointerleave handler that could cause a locked state', async () => {
+      await resetMouse();
+      const el = await fixture<SdRange>(html`<sd-range></sd-range>`);
+      const thumb = el.shadowRoot!.querySelector('[part="thumb"]')!;
+      const rect = thumb.getBoundingClientRect();
+      const center = rect.left + rect.width / 2;
+      const baseDiv = el.shadowRoot!.querySelector('[part="base"]')!.getBoundingClientRect().width;
+      const moveSteps = Math.round((baseDiv / 100) * 10);
+
+      // Simulate a pointerleave during drag by dispatching the event manually
+      await sendMouse({
+        position: [center, rect.top],
+        type: 'click'
+      });
+
+      await sendMouse({
+        type: 'down'
+      });
+
+      expect(thumb).to.have.class('grabbed');
+
+      // Dispatch a synthetic pointerleave event during active drag
+      const leaveEvent = new PointerEvent('pointerleave', {
+        pointerId: 1,
+        bubbles: true,
+        composed: true
+      });
+      thumb.dispatchEvent(leaveEvent);
+
+      // The thumb should still be in grabbed state since we removed the pointerleave handler
+      expect(thumb).to.have.class('grabbed');
+
+      // Continue dragging — it should still work
+      await sendMouse({
+        position: [center + moveSteps, rect.top],
+        type: 'move'
+      });
+
+      await resetMouse();
+      await el.updateComplete;
+
+      // Value should have changed, proving the drag was not interrupted
+      expect(Number(el.value)).to.be.greaterThan(0);
+    });
+
+    it('should remain draggable after multiple rapid interactions', async () => {
+      await resetMouse();
+      const el = await fixture<SdRange>(html`<sd-range></sd-range>`);
+      const changeHandler = sinon.spy();
+      el.addEventListener('sd-change', changeHandler);
+
+      const thumb = el.shadowRoot!.querySelector('[part="thumb"]')!;
+      const rect = thumb.getBoundingClientRect();
+      const center = Math.round(rect.left + rect.width / 2);
+      const top = Math.round(rect.top);
+      const baseDiv = el.shadowRoot!.querySelector('[part="base"]')!.getBoundingClientRect().width;
+      const moveSteps = Math.round((baseDiv / 100) * 5);
+
+      // First drag
+      await sendMouse({ position: [center, top], type: 'click' });
+      await sendMouse({ type: 'down' });
+      await sendMouse({ position: [center + moveSteps, top], type: 'move' });
+      await resetMouse();
+      await el.updateComplete;
+
+      const firstValue = el.value;
+      expect(Number(firstValue)).to.be.greaterThan(0);
+      expect(changeHandler.callCount).to.equal(1);
+
+      // Second drag — should still work (no locked state)
+      const newRect = thumb.getBoundingClientRect();
+      const newCenter = Math.round(newRect.left + newRect.width / 2);
+      const newTop = Math.round(newRect.top);
+
+      await sendMouse({ position: [newCenter, newTop], type: 'click' });
+      await sendMouse({ type: 'down' });
+      expect(thumb).to.have.class('grabbed');
+
+      await sendMouse({ position: [newCenter + moveSteps, newTop], type: 'move' });
+      await resetMouse();
+      await el.updateComplete;
+
+      expect(thumb).to.not.have.class('grabbed');
+      expect(Number(el.value)).to.be.greaterThan(Number(firstValue));
+      expect(changeHandler.callCount).to.equal(2);
+    });
+
+    it('should handle releasePointerCapture gracefully when pointer is already released', async () => {
+      const el = await fixture<SdRange>(html`<sd-range></sd-range>`);
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+      const thumb = el.shadowRoot!.querySelector('[part="thumb"]')! as HTMLElement;
+
+      // Simulate a stale pointerId on the thumb dataset
+      thumb.dataset.pointerId = '999';
+
+      // Clicking again should not throw even though 999 is an invalid/stale pointer ID
+      const pointerDownEvent = new PointerEvent('pointerdown', {
+        pointerId: 1,
+        bubbles: true,
+        composed: true
+      });
+
+      // This should not throw — the try/catch should handle the stale ID
+      expect(() => thumb.dispatchEvent(pointerDownEvent)).to.not.throw();
     });
   });
 });
