@@ -1,5 +1,16 @@
 # @solid-design-system/components
 
+## 6.7.1
+
+### Patch Changes
+
+- Fixed tooltip positioning and pointer capture issues _[`#2788`](https://github.com/solid-design-system/solid/pull/2788) [`2c776ce`](https://github.com/solid-design-system/solid/commit/2c776ced22f62b1e95dac00f5e1c86ada507b5fe) [@mariohamann](https://github.com/mariohamann)_
+- Improved UX by preventing "text-select" while dragging sd-range knob _[`#2788`](https://github.com/solid-design-system/solid/pull/2788) [`2c776ce`](https://github.com/solid-design-system/solid/commit/2c776ced22f62b1e95dac00f5e1c86ada507b5fe) [@mariohamann](https://github.com/mariohamann)_
+
+### 📈 Stats
+* Uncompressed: 593 KB (+1 KB / +0%)
+* Gzipped: 134 KB (unchanged)
+
 ## 6.7.0
 
 ### Minor Changes
@@ -10,8 +21,9 @@
   - Lastly, removed the 'sm' size when using floating labels, defaulting this size to be the same as 'md' size.
 
 ### 📈 Stats
-* Uncompressed: 592 KB (+2 KB / +0%)
-* Gzipped: 134 KB (unchanged)
+
+- Uncompressed: 592 KB (+2 KB / +0%)
+- Gzipped: 134 KB (unchanged)
 
 ## 6.6.0
 
