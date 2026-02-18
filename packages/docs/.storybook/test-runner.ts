@@ -9,19 +9,17 @@ import pc from 'picocolors';
  * to learn more about the test-runner hooks API.
  */
 const config: TestRunnerConfig = {
+  tags: {
+    exclude: ['skip-playwright']
+  },
   async preVisit(page) {
     await injectAxe(page);
   },
   async postVisit(page, context) {
-    const story = await getStoryContext(page, context);
-
-    // Skip stories tagged with 'skip-playwright'
-    if (story.tags?.includes('skip-playwright')) {
-      return;
-    }
-
     // Workaround for https://github.com/dequelabs/axe-core/issues/3426
     await new Promise(resolve => setTimeout(resolve, 200));
+
+    const story = await getStoryContext(page, context);
 
     const ignoredRules =
       story.parameters?.a11y?.config?.rules
