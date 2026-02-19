@@ -34,12 +34,28 @@
   background-color: rgba(var(--sd-informational-gradient--white-color-background, rgba(var(--sd-color-white))));
 }
 
+@utility interactive--active-color-icon {
+  background-color: rgba(var(--sd-interactive--active-color-icon, rgba(var(--sd-color-primary-800))));
+}
+
 @utility interactive--active-color-text {
   color: rgba(var(--sd-interactive--active-color-text, rgba(var(--sd-color-primary-800))));
 }
 
 @utility interactive--default-color-text {
   color: rgba(var(--sd-interactive--default-color-text, rgba(var(--sd-color-primary))));
+}
+
+@utility interactive--disabled--inverted-color-icon {
+  background-color: rgba(var(--sd-interactive--disabled--inverted-color-icon, rgba(var(--sd-color-neutral-600))));
+}
+
+@utility interactive--disabled-color-icon {
+  background-color: rgba(var(--sd-interactive--disabled-color-icon, rgba(var(--sd-color-neutral-500))));
+}
+
+@utility interactive--hover--inverted-color-icon {
+  background-color: rgba(var(--sd-interactive--hover--inverted-color-icon, rgba(var(--sd-color-primary-200))));
 }
 
 @utility marker-border-width {
@@ -290,12 +306,32 @@
   color: rgba(var(--sd-button--secondary--inverted-color-text, rgba(var(--sd-color-white))));
 }
 
-@utility sd-button--size-lg-border-radius {
- border-radius: var(--sd-button--size-lg-border-radius, var(--sd-spacing-1));
+@utility sd-button--secondary--size-lg-padding-block {
+ padding-block: var(--sd-button--secondary--size-lg-padding-block, 0.6875rem);
+}
+
+@utility sd-button--secondary--size-md-padding-block {
+ padding-block: var(--sd-button--secondary--size-md-padding-block, 0.4375rem);
+}
+
+@utility sd-button--secondary--size-sm-padding-block {
+ padding-block: var(--sd-button--secondary--size-sm-padding-block, 0.28125rem);
+}
+
+@utility sd-button--secondary-padding-inline {
+ padding-inline: var(--sd-button--secondary-padding-inline, 0.9375rem);
 }
 
 @utility sd-button--size-lg-font-size {
  font-size: var(--sd-button--size-lg-font-size, var(--sd-spacing-4));
+}
+
+@utility sd-button--size-lg-height {
+ height: var(--sd-button--size-lg-height, var(--sd-spacing-12));
+}
+
+@utility sd-button--size-lg-icon-height {
+ height: var(--sd-button--size-lg-icon-height, var(--sd-spacing-6));
 }
 
 @utility sd-button--size-lg-padding-block {
@@ -308,6 +344,10 @@
 
 @utility sd-button--size-md-font-size {
  font-size: var(--sd-button--size-md-font-size, var(--sd-spacing-4));
+}
+
+@utility sd-button--size-md-height {
+ height: var(--sd-button--size-md-height, var(--sd-spacing-10));
 }
 
 @utility sd-button--size-md-padding-block {
@@ -323,7 +363,7 @@
 }
 
 @utility sd-button--size-sm-padding-block {
- padding-block: var(--sd-button--size-sm-padding-block, var(--sd-spacing-2));
+ padding-block: var(--sd-button--size-sm-padding-block, 0.34375rem);
 }
 
 @utility sd-button--tertiary--active-color-background {
@@ -366,12 +406,20 @@
   color: rgba(var(--sd-button--tertiary--inverted-color-text, rgba(var(--sd-color-white))));
 }
 
+@utility sd-button-border-radius {
+ border-radius: var(--sd-button-border-radius, var(--sd-spacing-1));
+}
+
 @utility sd-button-border-width {
  border-width: var(--sd-button-border-width, var(--sd-spacing-0\.25));
 }
 
 @utility sd-button-font-weight {
   font-weight: var(--sd-button-font-weight, var(--sd-font-weight-normal));
+}
+
+@utility sd-button-padding-inline {
+ padding-inline: var(--sd-button-padding-inline, var(--sd-spacing-4));
 }
 
 @utility sd-carousel--active--inverted-color-border {
@@ -566,24 +614,8 @@
   color: rgba(var(--sd-headline--3xl-onwards-color-text, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-link-color--active-text {
-  color: rgba(var(--sd-link-color--active-text, rgba(var(--sd-color-primary-800))));
-}
-
-@utility sd-link-color--default-text {
-  color: rgba(var(--sd-link-color--default-text, rgba(var(--sd-color-primary))));
-}
-
-@utility sd-link-color--disabled-text {
-  color: rgba(var(--sd-link-color--disabled-text, rgba(var(--sd-color-primary-800))));
-}
-
 @utility sd-link-color--hover-icon {
   background-color: rgba(var(--sd-link-color--hover-icon, rgba(var(--sd-color-primary-500))));
-}
-
-@utility sd-link-color--hover-text {
-  color: rgba(var(--sd-link-color--hover-text, rgba(var(--sd-color-primary-500))));
 }
 
 @utility sd-link-color--none-icon {

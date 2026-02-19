@@ -2853,6 +2853,10 @@
         "1,5": {
           "type": "float",
           "value": "{core.ui.sizing.1,5}"
+        },
+        "2,5": {
+          "type": "float",
+          "value": "{core.ui.sizing.2,5}"
         }
       },
       "rounded": {
@@ -3580,6 +3584,34 @@
                 "value": "{ui-light.utilities.color.neutral.500}"
               }
             }
+          },
+          "--size": {
+            "lg": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "11"
+              }
+            },
+            "md": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "7"
+              }
+            },
+            "sm": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "4.5"
+              }
+            }
+          },
+          "padding-inline": {
+            "description": "dev only!",
+            "type": "float",
+            "value": "15"
           }
         },
         "--tertiary": {
@@ -3662,6 +3694,11 @@
             }
           }
         },
+        "padding-inline": {
+          "description": "sd-button&#39;s left right padding (except for icon-only &amp; loading variant)",
+          "type": "float",
+          "value": "{ui-light.utilities.spacing.4}"
+        },
         "--size": {
           "md": {
             "font-size": {
@@ -3675,11 +3712,15 @@
             "border-radius": {
               "type": "float",
               "value": "{ui-light.utilities.rounded.default}"
+            },
+            "height": {
+              "type": "float",
+              "value": "{ui-light.utilities.sizing.10}"
             }
           },
           "lg": {
             "icon": {
-              "_font-size": {
+              "height": {
                 "type": "float",
                 "value": "{ui-light.utilities.sizing.6}"
               }
@@ -3688,13 +3729,14 @@
               "type": "float",
               "value": "{ui-light.utilities.text.base}"
             },
-            "border-radius": {
-              "type": "float",
-              "value": "{ui-light.utilities.rounded.default}"
-            },
             "padding-block": {
               "type": "float",
               "value": "{ui-light.utilities.spacing.3}"
+            },
+            "height": {
+              "description": "Used for icon-only and loading variant",
+              "type": "float",
+              "value": "{ui-light.utilities.sizing.12}"
             }
           },
           "sm": {
@@ -3708,9 +3750,13 @@
             },
             "padding-block": {
               "type": "float",
-              "value": "{ui-light.utilities.spacing.2}"
+              "value": "5.5"
             }
           }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "{ui-light.utilities.rounded.default}"
         },
         "font-weight": {
           "type": "string",
@@ -3802,7 +3848,12 @@
         "--active": {
           "color": {
             "text": {
-              "description": "Default icon color ",
+              "description": "Used for sd-link &amp; sd-interactive",
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.800}"
+            },
+            "icon": {
+              "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
               "value": "{ui-light.utilities.color.primary.800}"
             }
@@ -3811,9 +3862,38 @@
         "--default": {
           "color": {
             "text": {
-              "description": "Default icon color ",
+              "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.default}"
+              "value": "{ui-light.utilities.color.primary.default}"
+            }
+          }
+        },
+        "--disabled": {
+          "color": {
+            "icon": {
+              "description": "Used for sd-link &amp; sd-interactive",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.500}"
+            }
+          },
+          "--inverted": {
+            "color": {
+              "icon": {
+                "description": "Used for sd-link &amp; sd-interactive",
+                "type": "color",
+                "value": "{ui-light.utilities.color.neutral.600}"
+              }
+            }
+          }
+        },
+        "--hover": {
+          "--inverted": {
+            "color": {
+              "icon": {
+                "description": "Used for sd-link &amp; sd-interactive",
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.200}"
+              }
             }
           }
         }
@@ -4741,19 +4821,9 @@
       "sd-link": {
         "color": {
           "--hover": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.500}"
-            },
             "icon": {
               "type": "color",
               "value": "{ui-light.utilities.color.text.primary.500}"
-            }
-          },
-          "--default": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.default}"
             }
           },
           "--none": {
@@ -4762,20 +4832,8 @@
               "value": "{ui-light.utilities.color.text.primary.default}"
             }
           },
-          "--active": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.800}"
-            }
-          },
           "--pressed": {
             "icon": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.800}"
-            }
-          },
-          "--disabled": {
-            "text": {
               "type": "color",
               "value": "{ui-light.utilities.color.text.primary.800}"
             }
@@ -6106,6 +6164,10 @@
         "1,5": {
           "type": "float",
           "value": "{core.ui.sizing.1,5}"
+        },
+        "2,5": {
+          "type": "float",
+          "value": "{core.ui.sizing.2,5}"
         }
       },
       "rounded": {
@@ -6833,6 +6895,34 @@
                 "value": "{ui-dark.utilities.color.neutral.500}"
               }
             }
+          },
+          "--size": {
+            "lg": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "11"
+              }
+            },
+            "md": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "7"
+              }
+            },
+            "sm": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "4.5"
+              }
+            }
+          },
+          "padding-inline": {
+            "description": "dev only!",
+            "type": "float",
+            "value": "15"
           }
         },
         "--tertiary": {
@@ -6915,6 +7005,11 @@
             }
           }
         },
+        "padding-inline": {
+          "description": "sd-button&#39;s left right padding (except for icon-only &amp; loading variant)",
+          "type": "float",
+          "value": "{ui-dark.utilities.spacing.4}"
+        },
         "--size": {
           "md": {
             "font-size": {
@@ -6928,11 +7023,15 @@
             "border-radius": {
               "type": "float",
               "value": "{ui-dark.utilities.rounded.default}"
+            },
+            "height": {
+              "type": "float",
+              "value": "{ui-dark.utilities.sizing.10}"
             }
           },
           "lg": {
             "icon": {
-              "_font-size": {
+              "height": {
                 "type": "float",
                 "value": "{ui-dark.utilities.sizing.6}"
               }
@@ -6941,13 +7040,14 @@
               "type": "float",
               "value": "{ui-dark.utilities.text.base}"
             },
-            "border-radius": {
-              "type": "float",
-              "value": "{ui-dark.utilities.rounded.default}"
-            },
             "padding-block": {
               "type": "float",
               "value": "{ui-dark.utilities.spacing.3}"
+            },
+            "height": {
+              "description": "Used for icon-only and loading variant",
+              "type": "float",
+              "value": "{ui-dark.utilities.sizing.12}"
             }
           },
           "sm": {
@@ -6961,9 +7061,13 @@
             },
             "padding-block": {
               "type": "float",
-              "value": "{ui-dark.utilities.spacing.2}"
+              "value": "5.5"
             }
           }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "{ui-dark.utilities.rounded.default}"
         },
         "font-weight": {
           "type": "string",
@@ -7055,7 +7159,12 @@
         "--active": {
           "color": {
             "text": {
-              "description": "Default icon color ",
+              "description": "Used for sd-link &amp; sd-interactive",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.400}"
+            },
+            "icon": {
+              "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
               "value": "{ui-dark.utilities.color.primary.400}"
             }
@@ -7064,9 +7173,38 @@
         "--default": {
           "color": {
             "text": {
-              "description": "Default icon color ",
+              "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.default}"
+              "value": "{ui-dark.utilities.color.white.default}"
+            }
+          }
+        },
+        "--disabled": {
+          "color": {
+            "icon": {
+              "description": "Used for sd-link &amp; sd-interactive",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.neutral.500}"
+            }
+          },
+          "--inverted": {
+            "color": {
+              "icon": {
+                "description": "Used for sd-link &amp; sd-interactive",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.neutral.600}"
+              }
+            }
+          }
+        },
+        "--hover": {
+          "--inverted": {
+            "color": {
+              "icon": {
+                "description": "Used for sd-link &amp; sd-interactive",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.200}"
+              }
             }
           }
         }
@@ -7994,19 +8132,9 @@
       "sd-link": {
         "color": {
           "--hover": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.200}"
-            },
             "icon": {
               "type": "color",
               "value": "{ui-dark.utilities.color.text.primary.200}"
-            }
-          },
-          "--default": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.default}"
             }
           },
           "--none": {
@@ -8015,20 +8143,8 @@
               "value": "{ui-dark.utilities.color.text.primary.default}"
             }
           },
-          "--active": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.400}"
-            }
-          },
           "--pressed": {
             "icon": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.400}"
-            }
-          },
-          "--disabled": {
-            "text": {
               "type": "color",
               "value": "{ui-dark.utilities.color.text.primary.400}"
             }
@@ -8825,7 +8941,7 @@
             "500": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{vb.utilities.color.background.neutral.400}"
+              "value": "{vb.utilities.color.neutral.400}"
             },
             "600": {
               "description": "Used for inverted disabled state",
@@ -9359,6 +9475,10 @@
         "1,5": {
           "type": "float",
           "value": "{core.ui.sizing.1,5}"
+        },
+        "2,5": {
+          "type": "float",
+          "value": "{core.ui.sizing.2,5}"
         }
       },
       "rounded": {
@@ -10086,6 +10206,34 @@
                 "value": "{vb.utilities.color.neutral.500}"
               }
             }
+          },
+          "--size": {
+            "lg": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "8"
+              }
+            },
+            "md": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "8"
+              }
+            },
+            "sm": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "3.5"
+              }
+            }
+          },
+          "padding-inline": {
+            "description": "dev only!",
+            "type": "float",
+            "value": "22"
           }
         },
         "--tertiary": {
@@ -10168,6 +10316,11 @@
             }
           }
         },
+        "padding-inline": {
+          "description": "sd-button&#39;s left right padding (except for icon-only &amp; loading variant)",
+          "type": "float",
+          "value": "{vb.utilities.spacing.6}"
+        },
         "--size": {
           "md": {
             "font-size": {
@@ -10176,16 +10329,20 @@
             },
             "padding-block": {
               "type": "float",
-              "value": "{vb.utilities.sizing.2,5}"
+              "value": "{vb.utilities.spacing.2,5}"
             },
             "border-radius": {
               "type": "float",
               "value": "{vb.utilities.rounded.full}"
+            },
+            "height": {
+              "type": "float",
+              "value": "44"
             }
           },
           "lg": {
             "icon": {
-              "_font-size": {
+              "height": {
                 "type": "float",
                 "value": "{vb.utilities.sizing.5}"
               }
@@ -10194,13 +10351,14 @@
               "type": "float",
               "value": "{vb.utilities.text.sm}"
             },
-            "border-radius": {
-              "type": "float",
-              "value": "{vb.utilities.rounded.full}"
-            },
             "padding-block": {
               "type": "float",
-              "value": "{vb.utilities.sizing.2,5}"
+              "value": "{vb.utilities.spacing.2,5}"
+            },
+            "height": {
+              "description": "Used for icon-only and loading variant",
+              "type": "float",
+              "value": "44"
             }
           },
           "sm": {
@@ -10214,9 +10372,13 @@
             },
             "padding-block": {
               "type": "float",
-              "value": "{vb.utilities.sizing.2,5}"
+              "value": "5.5"
             }
           }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "{vb.utilities.rounded.full}"
         },
         "font-weight": {
           "type": "string",
@@ -10273,15 +10435,15 @@
             "color": {
               "border": {
                 "type": "color",
-                "value": "{core.vb.azure.400}"
+                "value": "{vb.utilities.color.primary.400}"
               },
               "text": {
                 "type": "color",
-                "value": "{core.vb.azure.400}"
+                "value": "{vb.utilities.color.primary.400}"
               },
               "background": {
                 "type": "color",
-                "value": "{core.vb.azure.400}"
+                "value": "{vb.utilities.color.primary.400}"
               }
             }
           }
@@ -10308,18 +10470,52 @@
         "--active": {
           "color": {
             "text": {
-              "description": "Default icon color ",
+              "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
-              "value": "{vb.utilities.color.primary.800}"
+              "value": "{vb.utilities.color.primary.500}"
+            },
+            "icon": {
+              "description": "Used for sd-link &amp; sd-interactive",
+              "type": "color",
+              "value": "{vb.utilities.color.primary.500}"
             }
           }
         },
         "--default": {
           "color": {
             "text": {
-              "description": "Default icon color ",
+              "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
-              "value": "{vb.utilities.color.text.primary.500}"
+              "value": "{vb.utilities.color.primary.500}"
+            }
+          }
+        },
+        "--disabled": {
+          "color": {
+            "icon": {
+              "description": "Used for sd-link &amp; sd-interactive",
+              "type": "color",
+              "value": "{core.vb.grey.450}"
+            }
+          },
+          "--inverted": {
+            "color": {
+              "icon": {
+                "description": "Used for sd-link &amp; sd-interactive",
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.40)"
+              }
+            }
+          }
+        },
+        "--hover": {
+          "--inverted": {
+            "color": {
+              "icon": {
+                "description": "Used for sd-link &amp; sd-interactive",
+                "type": "color",
+                "value": "{vb.utilities.color.primary.200}"
+              }
             }
           }
         }
@@ -10447,7 +10643,7 @@
         },
         "padding-block": {
           "type": "float",
-          "value": "{vb.utilities.spacing.4}"
+          "value": "15"
         },
         "border-width": {
           "type": "float",
@@ -11247,17 +11443,7 @@
       "sd-link": {
         "color": {
           "--hover": {
-            "text": {
-              "type": "color",
-              "value": "{core.vb.azure.500}"
-            },
             "icon": {
-              "type": "color",
-              "value": "{core.vb.azure.500}"
-            }
-          },
-          "--default": {
-            "text": {
               "type": "color",
               "value": "{core.vb.azure.500}"
             }
@@ -11268,22 +11454,10 @@
               "value": "{core.vb.azure.500}"
             }
           },
-          "--active": {
-            "text": {
-              "type": "color",
-              "value": "{core.vb.azure.500}"
-            }
-          },
           "--pressed": {
             "icon": {
               "type": "color",
               "value": "{core.vb.azure.500}"
-            }
-          },
-          "--disabled": {
-            "text": {
-              "type": "color",
-              "value": "{core.ui.grey.400}"
             }
           }
         }
@@ -12327,7 +12501,7 @@
           "color": {
             "description": "Used for tooltip",
             "type": "color",
-            "value": "rgba(5, 21, 48, 0.10)"
+            "value": "rgba(5, 21, 48, 0.25)"
           },
           "y": {
             "type": "float",
@@ -12612,6 +12786,10 @@
         "1,5": {
           "type": "float",
           "value": "{core.ui.sizing.1,5}"
+        },
+        "2,5": {
+          "type": "float",
+          "value": "{core.ui.sizing.2,5}"
         }
       },
       "rounded": {
@@ -13339,6 +13517,34 @@
                 "value": "{kid.utilities.color.neutral.400}"
               }
             }
+          },
+          "--size": {
+            "lg": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "7"
+              }
+            },
+            "md": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "7"
+              }
+            },
+            "sm": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "4.5"
+              }
+            }
+          },
+          "padding-inline": {
+            "description": "dev only!",
+            "type": "float",
+            "value": "23"
           }
         },
         "--tertiary": {
@@ -13421,6 +13627,11 @@
             }
           }
         },
+        "padding-inline": {
+          "description": "sd-button&#39;s left right padding (except for icon-only &amp; loading variant)",
+          "type": "float",
+          "value": "{kid.utilities.spacing.6}"
+        },
         "--size": {
           "md": {
             "font-size": {
@@ -13429,16 +13640,20 @@
             },
             "padding-block": {
               "type": "float",
-              "value": "{kid.utilities.sizing.2,5}"
+              "value": "{kid.utilities.spacing.2}"
             },
             "border-radius": {
               "type": "float",
               "value": "{kid.utilities.rounded.full}"
+            },
+            "height": {
+              "type": "float",
+              "value": "40"
             }
           },
           "lg": {
             "icon": {
-              "_font-size": {
+              "height": {
                 "type": "float",
                 "value": "{kid.utilities.sizing.6}"
               }
@@ -13447,13 +13662,14 @@
               "type": "float",
               "value": "{kid.utilities.text.sm}"
             },
-            "border-radius": {
-              "type": "float",
-              "value": "{kid.utilities.rounded.full}"
-            },
             "padding-block": {
               "type": "float",
-              "value": "{kid.utilities.sizing.2,5}"
+              "value": "{kid.utilities.spacing.2}"
+            },
+            "height": {
+              "description": "Used for icon-only and loading variant",
+              "type": "float",
+              "value": "40"
             }
           },
           "sm": {
@@ -13467,9 +13683,13 @@
             },
             "padding-block": {
               "type": "float",
-              "value": "{kid.utilities.sizing.2,5}"
+              "value": "5.5"
             }
           }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "{kid.utilities.rounded.full}"
         },
         "font-weight": {
           "type": "string",
@@ -13561,7 +13781,12 @@
         "--active": {
           "color": {
             "text": {
-              "description": "Default icon color ",
+              "description": "Used for sd-link &amp; sd-interactive",
+              "type": "color",
+              "value": "{kid.utilities.color.neutral.800}"
+            },
+            "icon": {
+              "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
               "value": "{kid.utilities.color.neutral.800}"
             }
@@ -13570,9 +13795,38 @@
         "--default": {
           "color": {
             "text": {
-              "description": "Default icon color ",
+              "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
-              "value": "{kid.utilities.color.icon-fill.primary.default}"
+              "value": "{kid.utilities.color.black.default}"
+            }
+          }
+        },
+        "--disabled": {
+          "color": {
+            "icon": {
+              "description": "Used for sd-link &amp; sd-interactive",
+              "type": "color",
+              "value": "{kid.utilities.color.neutral.500}"
+            }
+          },
+          "--inverted": {
+            "color": {
+              "icon": {
+                "description": "Used for sd-link &amp; sd-interactive",
+                "type": "color",
+                "value": "{kid.utilities.color.neutral.600}"
+              }
+            }
+          }
+        },
+        "--hover": {
+          "--inverted": {
+            "color": {
+              "icon": {
+                "description": "Used for sd-link &amp; sd-interactive",
+                "type": "color",
+                "value": "{kid.utilities.color.accent.100}"
+              }
             }
           }
         }
@@ -14500,17 +14754,7 @@
       "sd-link": {
         "color": {
           "--hover": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.neutral.800}"
-            },
             "icon": {
-              "type": "color",
-              "value": "{kid.utilities.color.text.black.default}"
-            }
-          },
-          "--default": {
-            "text": {
               "type": "color",
               "value": "{kid.utilities.color.text.black.default}"
             }
@@ -14521,22 +14765,10 @@
               "value": "{kid.utilities.color.text.black.default}"
             }
           },
-          "--active": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.neutral.800}"
-            }
-          },
           "--pressed": {
             "icon": {
               "type": "color",
               "value": "{kid.utilities.color.text.black.default}"
-            }
-          },
-          "--disabled": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.neutral.800}"
             }
           }
         }
