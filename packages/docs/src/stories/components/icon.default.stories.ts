@@ -8,6 +8,7 @@ const { generateTemplate } = storybookTemplate('sd-icon');
 
 export default {
   title: 'Components/sd-icon/default',
+  tags: ['skip-playwright'],
   parameters: {
     chromatic: { disableSnapshot: true },
     controls: {

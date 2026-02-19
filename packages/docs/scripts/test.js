@@ -5,8 +5,9 @@ import pc from 'picocolors';
 const PORT = 6998;
 
 const ci = process.env.CI;
+const generateReport = process.argv.includes('--report');
 
-const workers = ci ? '--maxWorkers=1' : '';
+const workers = ci ? '--maxWorkers=4' : '';
 const testCommand = `test-storybook ${workers} --testTimeout=40000 --url http://127.0.0.1:${PORT}`;
 
 function checkPort(port) {
@@ -25,7 +26,8 @@ function build() {
 
 function test() {
   return execSync(testCommand, {
-    stdio: 'inherit'
+    stdio: 'inherit',
+    env: { ...process.env, GENERATE_REPORT: generateReport ? 'true' : 'false' }
   });
 }
 
@@ -39,7 +41,7 @@ async function previewAndTest() {
           prefixColor: 'magenta'
         },
         {
-          command: `wait-on -v -t 10s tcp:127.0.0.1:${PORT} && ${testCommand}`,
+          command: `wait-on -v -t 10s tcp:127.0.0.1:${PORT} && GENERATE_REPORT=${generateReport ? 'true' : 'false'} ${testCommand}`,
           name: 'Testing',
           prefixColor: 'blue'
         }
