@@ -702,13 +702,16 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     const currentOption = this.getCurrentOption();
 
     const currentIndex = filteredOptions.indexOf(currentOption!);
+    // eslint-disable-next-line no-useless-assignment
     let newIndex = Math.max(0, currentIndex);
 
     if (isNext) {
       const nextIndex = currentIndex + 1;
+
       newIndex = nextIndex > filteredOptions.length - 1 ? 0 : nextIndex;
     } else {
       const previousIndex = currentIndex - 1;
+
       newIndex = previousIndex < 0 ? filteredOptions.length - 1 : previousIndex;
     }
     this.setCurrentOption(filteredOptions[newIndex], new KeyboardEvent('keydown'));
