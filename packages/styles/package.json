@@ -46,19 +46,19 @@
   "type": "module",
   "devDependencies": {
     "@solid-design-system/versioning": "workspace:^",
-    "@tailwindcss/postcss": "^4.1.11",
-    "autoprefixer": "^10.4.21",
+    "@tailwindcss/postcss": "^4.1.18",
+    "autoprefixer": "^10.4.24",
     "command-line-args": "^6.0.1",
     "cssnano": "^7.1.1",
     "del": "^8.0.1",
-    "globby": "^15.0.0",
-    "ora": "^9.0.0",
+    "globby": "^16.1.0",
+    "ora": "^9.3.0",
     "picocolors": "^1.1.1",
-    "plop": "^4.0.4",
+    "plop": "^4.0.5",
     "postcss": "^8.5.3",
     "postcss-cli": "^11.0.1",
     "postcss-nested": "^7.0.2",
-    "prettier": "^3.6.2",
-    "tailwindcss": "^4.1.13"
+    "prettier": "^3.8.1",
+    "tailwindcss": "^4.1.18"
   }
 }

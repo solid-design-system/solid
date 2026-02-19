@@ -468,6 +468,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
     const currentValue = this._rangeValues.get(rangeId);
     if (currentValue === undefined) return;
 
+    // eslint-disable-next-line no-useless-assignment
     let value = currentValue;
 
     switch (event.key) {
@@ -567,8 +568,8 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       this._rangeValues.set(rangeId, value);
 
       const id = `thumb-${rangeId}`;
-
       let ariaLabel = '';
+      // eslint-disable-next-line no-useless-assignment
       let ariaLabeledBy = '';
 
       if (!isMultiple) {

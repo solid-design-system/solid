@@ -735,6 +735,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
         this.rangeStart = newStart;
         this.rangeEnd = newEnd;
         this.previewEnd = null;
+        // eslint-disable-next-line no-useless-assignment
         changed = true;
 
         const pivot = rs ?? re ?? this.today;
@@ -1489,7 +1490,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       }
 
       const fd = DateUtils.startOfDayLocal(next);
-      if (!this.focusedDate || fd.getTime() !== this.focusedDate.getTime()) {
+      if (fd.getTime() !== this.focusedDate?.getTime()) {
         this.focusedDate = fd;
       }
 
