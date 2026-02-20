@@ -187,7 +187,7 @@ function buildRiskColors(themeTokens) {
 /**
  * Add warning/risk colors that exist as core tokens but may be missing from semantic palettes
  */
-function enrichPalette(palette, themeTokens, semanticPrefix) {
+function enrichPalette(palette, themeTokens) {
   // Add warning for text, border, fill palettes (background already has it)
   if (!palette.warning) {
     const warningToken = themeTokens.find(t => t.name === 'sd-color-warning');
@@ -206,15 +206,34 @@ function enrichPalette(palette, themeTokens, semanticPrefix) {
 }
 
 /**
- * Build spacing config from theme tokens
+ * Build spacing config from theme tokens.
+ *
+ * CSS-var-backed entries come from the compiled theme tokens (theme.js).
+ * Some spacing values exist in tokens.json but were never exported as CSS
+ * custom properties; for those we fall back to raw values supplied from the
+ * source JSON so the values stay in sync with the design token definitions.
+ * `auto` is a pure CSS keyword and is always appended as-is.
  */
-function buildSpacing(themeTokens) {
+function buildSpacing(themeTokens, rawSpacing = {}) {
   const spacing = {};
 
+  // CSS-var-backed tokens
   for (const token of themeTokens) {
     if (!token.name.startsWith('sd-spacing-')) continue;
     const key = token.name.slice('sd-spacing-'.length);
     spacing[key] = `var(--${token.name})`;
+  }
+
+  // Fill gaps with raw values from tokens.json (not CSS vars, so use the value directly)
+  for (const [key, value] of Object.entries(rawSpacing)) {
+    if (!(key in spacing)) {
+      spacing[key] = value;
+    }
+  }
+
+  // `auto` is not a design token — it is a CSS keyword with no numerical source
+  if (!('auto' in spacing)) {
+    spacing['auto'] = 'auto';
   }
 
   return spacing;
@@ -248,6 +267,22 @@ function buildFontWeight(themeTokens) {
   }
 
   return fontWeight;
+}
+
+/**
+ * Build lineHeight config from raw token values (tokens.json).
+ *
+ * These tokens are not compiled into CSS custom properties, so raw values are
+ * used as fallbacks inside var() calls. Keys are mapped from the token naming
+ * convention ("leading-none" → "none") to Tailwind's convention.
+ */
+function buildLineHeight(rawLineHeight = {}) {
+  const lineHeight = {};
+  for (const [key, value] of Object.entries(rawLineHeight)) {
+    const twKey = key.replace(/^leading-/, '');
+    lineHeight[twKey] = `var(--sd-line-height-${twKey}, ${value})`;
+  }
+  return lineHeight;
 }
 
 /**
@@ -376,13 +411,13 @@ function buildAspectRatio(themeTokens) {
  * @returns {object}
  */
 export function generateTailwindConfig(themejs) {
-  const { theme: themeTokens = [], utilities = [] } = themejs;
+  const { theme: themeTokens = [], utilities = [], rawSpacing = {}, rawLineHeight = {} } = themejs;
 
   // Build semantic color palettes
   const palettes = {};
   for (const [key, prefix] of Object.entries(SEMANTIC_PREFIXES)) {
     const palette = buildSemanticPalette(themeTokens, prefix);
-    enrichPalette(palette, themeTokens, prefix);
+    enrichPalette(palette, themeTokens);
     palettes[key] = { ...palette, ...SPECIAL_COLORS };
   }
 
@@ -399,9 +434,10 @@ export function generateTailwindConfig(themejs) {
   colorCategories['color'] = corePalette;
 
   // Build non-color configs
-  const spacing = buildSpacing(themeTokens);
+  const spacing = buildSpacing(themeTokens, rawSpacing);
   const fontSize = buildFontSize(themeTokens);
   const fontWeight = buildFontWeight(themeTokens);
+  const lineHeight = buildLineHeight(rawLineHeight);
   const borderRadius = buildBorderRadius(themeTokens);
   const borderWidth = buildBorderWidth(themeTokens);
   const opacity = buildOpacity(themeTokens);
@@ -429,7 +465,7 @@ export function generateTailwindConfig(themejs) {
     fontStyle: {},
     fontWeight,
     gradientColorStops: colorCategories.gradientColorStops,
-    lineHeight: {},
+    lineHeight,
     opacity,
     outlineColor: colorCategories.outlineColor,
     placeholderColor: colorCategories.placeholderColor,
