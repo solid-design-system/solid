@@ -3,6 +3,7 @@ import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node
 import { extractComponentsBlock } from './tailwind/index.js';
 import { FigmaClient } from './figma/index.js';
 import { generateScss } from './scss/index.js';
+import { generateTailwindJson } from './json/index.js';
 import { minimizeCss } from '../../components/scripts/esbuild-plugin-lit-tailwind-and-minify.js';
 import path from 'node:path';
 
@@ -112,6 +113,11 @@ async function runBuild() {
   await nextTask('Generating tokens.scss', () => {
     const scss = generateScss(themejs);
     writeFileSync(path.resolve(`./${outdir}`, './tokens.scss'), scss);
+  });
+
+  await nextTask('Generating tokens.tailwind.json', () => {
+    const json = generateTailwindJson(themejs);
+    writeFileSync(path.resolve(`./${outdir}`, './tokens.tailwind.json'), json);
   });
 
   process.exit();
