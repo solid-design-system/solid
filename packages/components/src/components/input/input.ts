@@ -70,7 +70,8 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @cssproperty --sd-form-control-color-text - The text color for form controls.
  * @cssproperty --sd-form-control--filled__floating-label-color-text - The floating label text color when active.
  * @cssproperty --sd-form-control-color-border - The color border for form controls.
- * @cssproperty --sd-form-control-color-icon - The icon color for form controls.
+ * @cssproperty --sd-form-control-color-icon-fill - The icon color for form controls.
+ * @cssproperty --sd-form-control-border-radius - The border radius for form controls.
  */
 
 @customElement('sd-input')
@@ -556,7 +557,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       default: 'form-control-color-border'
     }[inputState];
 
-    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'form-control-color-icon';
+    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'form-control-color-icon-fill';
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
     const iconSize = {
       sm: 'text-base',
@@ -607,18 +608,18 @@ export default class SdInput extends SolidElement implements SolidFormControl {
           <div
             part="border"
             class=${cx(
-              'absolute w-full h-full pointer-events-none border rounded-default transition-[border] ease-in-out duration-medium hover:duration-fast',
+              'absolute w-full h-full pointer-events-none border form-control-border-radius transition-[border] ease-in-out duration-medium hover:duration-fast',
               borderColor
             )}
           ></div>
           <div
             part="base"
             class=${cx(
-              'px-4 flex flex-row items-center rounded-default transition-colors ease-in-out duration-medium hover:duration-fast',
+              'px-4 flex flex-row items-center form-control-border-radius transition-colors ease-in-out duration-medium hover:duration-fast',
               // States
               !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
-              ['disabled', 'visuallyDisabled'].includes(inputState) ? 'text-neutral-500' : 'form-control-color-text',
+              ['disabled', 'visuallyDisabled'].includes(inputState) ? 'text-neutral-500' : 'text-black',
               ['invalid', 'activeInvalid'].includes(inputState) && 'form-control--invalid-color-background',
               verticalPadding
             )}
