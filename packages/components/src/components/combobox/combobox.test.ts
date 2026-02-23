@@ -617,6 +617,106 @@ describe('<sd-combobox>', () => {
 
       expect(el.value).to.deep.equal(['option-2']);
     });
+
+    it('should clear the selected value when Backspace is pressed in a non-required single-select combobox', async () => {
+      const el = await fixture<SdCombobox>(html`
+        <sd-combobox value="option-1">
+          <sd-option value="option-1">Option 1</sd-option>
+          <sd-option value="option-2">Option 2</sd-option>
+          <sd-option value="option-3">Option 3</sd-option>
+        </sd-combobox>
+      `);
+
+      el.focus();
+      await el.updateComplete;
+      await sendKeys({ press: 'Backspace' });
+      await el.updateComplete;
+
+      expect(el.value).to.equal('');
+      expect(el.displayInput.value).to.equal('');
+    });
+
+    it('should clear the selected value when Delete is pressed in a non-required single-select combobox', async () => {
+      const el = await fixture<SdCombobox>(html`
+        <sd-combobox value="option-1">
+          <sd-option value="option-1">Option 1</sd-option>
+          <sd-option value="option-2">Option 2</sd-option>
+          <sd-option value="option-3">Option 3</sd-option>
+        </sd-combobox>
+      `);
+
+      el.focus();
+      await el.updateComplete;
+      await sendKeys({ press: 'Delete' });
+      await el.updateComplete;
+
+      expect(el.value).to.equal('');
+      expect(el.displayInput.value).to.equal('');
+    });
+
+    it('should emit sd-clear, sd-input, and sd-change events when cleared via Backspace', async () => {
+      const el = await fixture<SdCombobox>(html`
+        <sd-combobox value="option-1">
+          <sd-option value="option-1">Option 1</sd-option>
+          <sd-option value="option-2">Option 2</sd-option>
+          <sd-option value="option-3">Option 3</sd-option>
+        </sd-combobox>
+      `);
+      const clearHandler = sinon.spy();
+      const inputHandler = sinon.spy();
+      const changeHandler = sinon.spy();
+
+      el.addEventListener('sd-clear', clearHandler);
+      el.addEventListener('sd-input', inputHandler);
+      el.addEventListener('sd-change', changeHandler);
+
+      el.focus();
+      await el.updateComplete;
+      await sendKeys({ press: 'Backspace' });
+      await el.updateComplete;
+
+      expect(clearHandler).to.have.been.calledOnce;
+      expect(inputHandler).to.have.been.calledOnce;
+      expect(changeHandler).to.have.been.calledOnce;
+    });
+
+    it('should not clear the selected value when Backspace is pressed in a required single-select combobox', async () => {
+      const el = await fixture<SdCombobox>(html`
+        <sd-combobox value="option-1" required>
+          <sd-option value="option-1">Option 1</sd-option>
+          <sd-option value="option-2">Option 2</sd-option>
+          <sd-option value="option-3">Option 3</sd-option>
+        </sd-combobox>
+      `);
+
+      el.focus();
+      await el.updateComplete;
+      await sendKeys({ press: 'Backspace' });
+      await el.updateComplete;
+
+      expect(el.value).to.equal('option-1');
+    });
+
+    it('should not clear the value when Backspace is pressed while the input has text', async () => {
+      const el = await fixture<SdCombobox>(html`
+        <sd-combobox value="option-1">
+          <sd-option value="option-1">Option 1</sd-option>
+          <sd-option value="option-2">Option 2</sd-option>
+          <sd-option value="option-3">Option 3</sd-option>
+        </sd-combobox>
+      `);
+
+      el.focus();
+      await el.updateComplete;
+      // Type something so the input has text
+      await sendKeys({ type: 'Opt' });
+      await el.updateComplete;
+      await sendKeys({ press: 'Backspace' });
+      await el.updateComplete;
+
+      // The selected value should remain since input had text before Backspace
+      expect(el.value).to.equal('option-1');
+    });
   });
   describe('when multiple is set', () => {
     it('should allow multiple options to be selected', async () => {

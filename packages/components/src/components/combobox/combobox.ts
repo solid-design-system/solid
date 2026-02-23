@@ -449,6 +449,18 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       return;
     }
 
+    // Clear single-select value on Backspace/Delete when input is empty and field is not required
+    if (
+      (event.key === 'Backspace' || event.key === 'Delete') &&
+      !this.multiple &&
+      !this.required &&
+      this.displayInput.value === '' &&
+      this.value !== ''
+    ) {
+      this.clearCombobox();
+      return;
+    }
+
     // Handle enter.
     if (event.key === 'Enter') {
       const currentOption = this.getCurrentOption();
