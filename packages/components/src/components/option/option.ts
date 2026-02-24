@@ -25,7 +25,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart left - The container that wraps the left.
  * @csspart right - The container that wraps the right.
  *
- * @cssproperty --sd-option--disabled-color-border - The border color of checkboxes for the disabled options.
+ * @cssproperty --sd-form-control-color-border - The border color of checkboxes for the non-disabled options.
  */
 @customElement('sd-option')
 export default class SdOption extends SolidElement {
@@ -140,7 +140,7 @@ export default class SdOption extends SolidElement {
         class=${cx(
           'px-4 flex items-center w-full transition-colors duration-fast ease-in-out text-left text-base relative',
           {
-            sm: 'text-sm py-1',
+            sm: 'text-base py-1',
             md: 'text-base py-2',
             lg: 'text-base py-3'
           }[this.size],
@@ -167,7 +167,7 @@ export default class SdOption extends SolidElement {
               class=${cx(
                 'relative flex flex-shrink-0 items-center justify-center border rounded-sm h-4 w-4 mr-2',
                 this.disabled
-                  ? 'sd-option--disabled-color-border'
+                  ? 'border-neutral-500'
                   : this.selected
                     ? 'bg-accent border-accent'
                     : 'bg-white form-control-color-border'
