@@ -49,6 +49,9 @@ You can find their respective photographer and source below:
 - [Friends - Chewy](https://unsplash.com/photos/3cAMUE3YAO8)
 - [Skyline - Tobias Reich](https://unsplash.com/photos/FDBy4lkZycM)
 - [Workspace - Dan Dimmock](https://unsplash.com/photos/3mt71MKGjQ0)
+- [Couple Moving 03 - Ketut Subiyanto](https://www.pexels.com/photo/cheerful-diverse-couple-writing-in-notebook-near-boxes-before-relocation-4246197/)
+- [Senior Coffee - MART PRODUCTION](https://www.pexels.com/photo/man-and-woman-holding-white-ceramic-mugs-7330130/)
+- [Calculator work - Mikhail Nilov](https://www.pexels.com/photo/a-person-sitting-a-wooden-table-with-a-notepad-and-laptop-using-a-calculator-6963847/)
 
 ## Videos
 
