@@ -25,7 +25,7 @@
     "./dist/theme.js": "./dist/theme.js",
     "./dist/themes": "./dist/themes",
     "./dist/themes/*": "./dist/themes/*",
-    "./tailwind": "./dist/tokens.tailwind.json"
+    "./dist/tailwind.json": "./dist/tokens.tailwind.json"
   },
   "keywords": [],
   "homepage": "https://solid-design-system.fe.union-investment.de/docs/",
