@@ -1,9 +1,8 @@
 import { buildStylesheet, getFigmaVariables, getStylesheetThemes, nextTask } from './utils.js';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
-import { extractComponentsBlock } from './tailwind/index.js';
+import { extractComponentsBlock, generateTailwindJson } from './tailwind/index.js';
 import { FigmaClient } from './figma/index.js';
 import { generateScss } from './scss/index.js';
-import { generateTailwindJson } from './json/index.js';
 import { minimizeCss } from '../../components/scripts/esbuild-plugin-lit-tailwind-and-minify.js';
 import path from 'node:path';
 
