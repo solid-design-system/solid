@@ -1,3 +1,7 @@
+@utility choice-control-font-weight {
+  font-weight: var(--sd-choice-control-font-weight, var(--sd-font-weight-normal));
+}
+
 @utility form-control--filled__floating-label-color-text {
   color: rgba(var(--sd-form-control--filled__floating-label-color-text, rgba(var(--sd-color-neutral-700))));
 }
@@ -22,10 +26,6 @@
   color: rgba(var(--sd-form-control-color-text, rgba(var(--sd-color-black))));
 }
 
-@utility form-control__tooltip-color-icon-fill {
-  fill: rgba(var(--sd-form-control__tooltip-color-icon-fill, rgba(var(--sd-color-primary))));
-}
-
 @utility informational-gradient--primary-800-color-background {
   background-color: rgba(var(--sd-informational-gradient--primary-800-color-background, rgba(var(--sd-color-primary-800))));
 }
@@ -34,28 +34,12 @@
   background-color: rgba(var(--sd-informational-gradient--white-color-background, rgba(var(--sd-color-white))));
 }
 
-@utility interactive--active-color-icon {
-  background-color: rgba(var(--sd-interactive--active-color-icon, rgba(var(--sd-color-primary-800))));
-}
-
 @utility interactive--active-color-text {
   color: rgba(var(--sd-interactive--active-color-text, rgba(var(--sd-color-primary-800))));
 }
 
 @utility interactive--default-color-text {
   color: rgba(var(--sd-interactive--default-color-text, rgba(var(--sd-color-primary))));
-}
-
-@utility interactive--disabled--inverted-color-icon {
-  background-color: rgba(var(--sd-interactive--disabled--inverted-color-icon, rgba(var(--sd-color-neutral-600))));
-}
-
-@utility interactive--disabled-color-icon {
-  background-color: rgba(var(--sd-interactive--disabled-color-icon, rgba(var(--sd-color-neutral-500))));
-}
-
-@utility interactive--hover--inverted-color-icon {
-  background-color: rgba(var(--sd-interactive--hover--inverted-color-icon, rgba(var(--sd-color-primary-200))));
 }
 
 @utility marker-border-width {
@@ -498,14 +482,6 @@
  border-radius: var(--sd-chip-border-radius, var(--sd-spacing-1));
 }
 
-@utility sd-combobox--default-color-icon-fill {
-  fill: rgba(var(--sd-combobox--default-color-icon-fill, rgba(var(--sd-color-primary))));
-}
-
-@utility sd-combobox--default-color-text {
-  color: rgba(var(--sd-combobox--default-color-text, rgba(var(--sd-color-primary))));
-}
-
 @utility sd-combobox__tag-border-width {
  border-width: var(--sd-combobox__tag-border-width, var(--sd-spacing-0\.25));
 }
@@ -694,8 +670,8 @@
   fill: rgba(var(--sd-notification-color-icon-fill, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-option--disabled-color-border {
-  border-color: rgba(var(--sd-option--disabled-color-border, rgba(var(--sd-color-neutral-500))));
+@utility sd-notification__duration-indicator-color-background {
+  background-color: rgba(var(--sd-notification__duration-indicator-color-background, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-pagination--default-border {
@@ -742,10 +718,6 @@
   background-color: rgba(var(--sd-radio--default--invalid-color-background, rgba(var(--sd-color-white))));
 }
 
-@utility sd-radio--error-color-text {
-  color: rgba(var(--sd-radio--error-color-text, rgba(var(--sd-color-error))));
-}
-
 @utility sd-radio-border-width {
  border-width: var(--sd-radio-border-width, var(--sd-spacing-0\.25));
 }
@@ -754,20 +726,12 @@
   background-color: rgba(var(--sd-radio-button--hover-color-background, rgba(255, 255, 255, 0)));
 }
 
-@utility sd-radio-button--hover-color-icon-fill {
-  fill: rgba(var(--sd-radio-button--hover-color-icon-fill, rgba(var(--sd-color-primary-500))));
-}
-
 @utility sd-radio-button--hover-color-text {
   color: rgba(var(--sd-radio-button--hover-color-text, rgba(var(--sd-color-primary-500))));
 }
 
 @utility sd-radio-button-border-radius {
  border-radius: var(--sd-radio-button-border-radius, 624.9375rem);
-}
-
-@utility sd-radio-button-color-icon-fil {
-  background-color: rgba(var(--sd-radio-button-color-icon-fil, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-radio-button-color-text {
@@ -786,8 +750,8 @@
  padding: var(--sd-radio-button-group-padding, 0);
 }
 
-@utility sd-range-scale-ticks-color-text {
-  color: rgba(var(--sd-range-scale-ticks-color-text, rgba(var(--sd-color-black))));
+@utility sd-range-tick-color-text {
+  color: rgba(var(--sd-range-tick-color-text, rgba(var(--sd-color-black))));
 }
 
 @utility sd-range__bar-border-width {
@@ -836,10 +800,6 @@
 
 @utility sd-tab-color-border {
   border-color: rgba(var(--sd-tab-color-border, rgba(var(--sd-color-neutral-400))));
-}
-
-@utility sd-tab-font-weight {
-  font-weight: var(--sd-tab-font-weight, var(--sd-font-weight-normal));
 }
 
 @utility sd-tag--default--hover-color-background {

@@ -118,6 +118,7 @@
   --sd-chip--white-color-background: var(--sd-color-primary-750);
   --sd-chip--white-color-border: 255, 255, 255, 0;
   --sd-chip-border-radius: var(--sd-spacing-1);
+  --sd-choice-control-font-weight: var(--sd-font-weight-normal);
   --sd-color-accent-100: 182, 223, 170;
   --sd-color-accent-200: 142, 208, 130;
   --sd-color-accent-300: 108, 194, 84;
@@ -237,8 +238,6 @@
   --sd-color-text-white: var(--sd-color-white);
   --sd-color-warning: 187, 141, 32;
   --sd-color-white: 255, 255, 255;
-  --sd-combobox--default-color-icon-fill: var(--sd-color-white);
-  --sd-combobox--default-color-text: var(--sd-color-white);
   --sd-combobox__tag-border-width: var(--sd-spacing-0\.25);
   --sd-container--default-color-background: var(--sd-color-primary-750);
   --sd-datepicker__date-item--current-font-weight: var(--sd-font-weight-bold);
@@ -277,7 +276,6 @@
   --sd-form-control-color-border: var(--sd-color-primary-200);
   --sd-form-control-color-icon-fill: var(--sd-color-white);
   --sd-form-control-color-text: var(--sd-color-white);
-  --sd-form-control__tooltip-color-icon-fill: var(--sd-color-white);
   --sd-header-color-background: var(--sd-color-primary);
   --sd-header-padding-bottom: 0;
   --sd-header__underline-color-background: 255, 255, 255, 0;
@@ -285,12 +283,8 @@
   --sd-headline--3xl-onwards-color-text: var(--sd-color-white);
   --sd-informational-gradient--primary-800-color-background: var(--sd-color-primary-800);
   --sd-informational-gradient--white-color-background: var(--sd-color-primary-800);
-  --sd-interactive--active-color-icon: var(--sd-color-primary-400);
   --sd-interactive--active-color-text: var(--sd-color-primary-400);
   --sd-interactive--default-color-text: var(--sd-color-white);
-  --sd-interactive--disabled--inverted-color-icon: var(--sd-color-neutral-600);
-  --sd-interactive--disabled-color-icon: var(--sd-color-neutral-500);
-  --sd-interactive--hover--inverted-color-icon: var(--sd-color-primary-200);
   --sd-link-color--hover-icon: var(--sd-color-primary-200);
   --sd-link-color--none-icon: var(--sd-color-white);
   --sd-link-color--pressed-icon: var(--sd-color-primary-400);
@@ -319,6 +313,7 @@
   --sd-notification--warning-color-background: var(--sd-color-primary-900);
   --sd-notification-color-border: var(--sd-color-primary-400);
   --sd-notification-color-icon-fill: var(--sd-color-white);
+  --sd-notification__duration-indicator-color-background: var(--sd-color-white);
   --sd-opacity-0: 0%;
   --sd-opacity-100: 100%;
   --sd-opacity-10: 10%;
@@ -333,7 +328,6 @@
   --sd-opacity-80: 80%;
   --sd-opacity-85: 85%;
   --sd-opacity-90: 90%;
-  --sd-option--disabled-color-border: var(--sd-color-neutral-500);
   --sd-overlay-color-background: 5, 21, 48, 0.9;
   --sd-pagination--default-border: var(--sd-color-accent-550);
   --sd-pagination--inverted-border: var(--sd-color-accent-550);
@@ -347,13 +341,10 @@
   --sd-radio--checked--invalid--default__icon-color-background: var(--sd-color-error);
   --sd-radio--checked--invalid--hover__icon-color-background: var(--sd-color-error-400);
   --sd-radio--default--invalid-color-background: var(--sd-color-primary-900);
-  --sd-radio--error-color-text: var(--sd-color-white);
   --sd-radio-border-width: var(--sd-spacing-0\.25);
   --sd-radio-button--hover-color-background: 255, 255, 255, 0;
-  --sd-radio-button--hover-color-icon-fill: var(--sd-color-primary-200);
   --sd-radio-button--hover-color-text: var(--sd-color-primary-200);
   --sd-radio-button-border-radius: 624.9375rem;
-  --sd-radio-button-color-icon-fil: var(--sd-color-white);
   --sd-radio-button-color-text: var(--sd-color-white);
   --sd-radio-button-group-border-radius: 624.9375rem;
   --sd-radio-button-group-border-width: var(--sd-spacing-0\.25);
@@ -364,7 +355,7 @@
   --sd-radius-none: 0;
   --sd-radius-sm: 0.125rem;
   --sd-radius: 0.25rem;
-  --sd-range-scale-ticks-color-text: var(--sd-color-white);
+  --sd-range-tick-color-text: var(--sd-color-white);
   --sd-range__bar-border-width: var(--sd-spacing-1);
   --sd-shadow-sm:  0.5px 0.5px 1.5px 0px #515151;
   --sd-shadow-xs:  0.5px 0.5px 1.5px 0px #515151;
@@ -413,7 +404,6 @@
   --sd-switch-color-text: var(--sd-color-white);
   --sd-tab--hover-color-background: var(--sd-color-primary-700);
   --sd-tab-color-border: var(--sd-color-primary-400);
-  --sd-tab-font-weight: var(--sd-font-weight-normal);
   --sd-tag--default--hover-color-background: 255, 255, 255, 0;
   --sd-tag--default-color-background: 255, 255, 255, 0;
   --sd-tag--default-color-border: var(--sd-color-primary-100);

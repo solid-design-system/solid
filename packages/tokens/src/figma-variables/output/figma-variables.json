@@ -3259,6 +3259,7 @@
           }
         },
         "padding-bottom": {
+          "description": "Is this used in code?",
           "type": "float",
           "value": "0"
         },
@@ -3378,6 +3379,7 @@
             "value": "{ui-light.utilities.color.neutral.800}"
           },
           "text": {
+            "description": "Used for label ",
             "type": "color",
             "value": "{ui-light.utilities.color.text.black.default}"
           },
@@ -3391,14 +3393,6 @@
             "background": {
               "type": "color",
               "value": "{ui-light.utilities.color.white.default}"
-            }
-          }
-        },
-        "__tooltip": {
-          "color": {
-            "icon-fill": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.icon-fill.primary.default}"
             }
           }
         },
@@ -3706,6 +3700,7 @@
               "value": "{ui-light.utilities.text.base}"
             },
             "padding-block": {
+              "description": "Top bottom padding for sd-button md variant",
               "type": "float",
               "value": "{ui-light.utilities.spacing.2}"
             },
@@ -3730,6 +3725,7 @@
               "value": "{ui-light.utilities.text.base}"
             },
             "padding-block": {
+              "description": "Top bottom padding for sd-button lg variant",
               "type": "float",
               "value": "{ui-light.utilities.spacing.3}"
             },
@@ -3851,11 +3847,6 @@
               "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
               "value": "{ui-light.utilities.color.primary.800}"
-            },
-            "icon": {
-              "description": "Used for sd-link &amp; sd-interactive",
-              "type": "color",
-              "value": "{ui-light.utilities.color.primary.800}"
             }
           }
         },
@@ -3865,35 +3856,6 @@
               "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
               "value": "{ui-light.utilities.color.primary.default}"
-            }
-          }
-        },
-        "--disabled": {
-          "color": {
-            "icon": {
-              "description": "Used for sd-link &amp; sd-interactive",
-              "type": "color",
-              "value": "{ui-light.utilities.color.neutral.500}"
-            }
-          },
-          "--inverted": {
-            "color": {
-              "icon": {
-                "description": "Used for sd-link &amp; sd-interactive",
-                "type": "color",
-                "value": "{ui-light.utilities.color.neutral.600}"
-              }
-            }
-          }
-        },
-        "--hover": {
-          "--inverted": {
-            "color": {
-              "icon": {
-                "description": "Used for sd-link &amp; sd-interactive",
-                "type": "color",
-                "value": "{ui-light.utilities.color.primary.200}"
-              }
             }
           }
         }
@@ -4020,12 +3982,18 @@
           }
         },
         "padding-block": {
+          "description": "Top bottom padding for sd-accordion ",
           "type": "float",
           "value": "{ui-light.utilities.spacing.3}"
         },
         "border-width": {
           "type": "float",
           "value": "{ui-light.utilities.sizing.0,25}"
+        },
+        "_panel-padding": {
+          "description": "Used inside panel summary layer of sd-accordion to accommodate the border",
+          "type": "float",
+          "value": "1"
         }
       },
       "navigable": {
@@ -4148,6 +4116,7 @@
           "value": "{ui-light.utilities.rounded.full}"
         },
         "padding": {
+          "description": "Top bottom left right padding for the sd-radio-button-group",
           "type": "float",
           "value": "0"
         }
@@ -4159,12 +4128,7 @@
         },
         "color": {
           "text": {
-            "description": "Primary brand color for text",
-            "type": "color",
-            "value": "{ui-light.utilities.color.primary.default}"
-          },
-          "icon-fil": {
-            "description": "Default icon color ",
+            "description": "Used for text and icon fill",
             "type": "color",
             "value": "{ui-light.utilities.color.primary.default}"
           }
@@ -4176,13 +4140,8 @@
               "type": "color",
               "value": "rgba(255, 255, 255, 0.00)"
             },
-            "icon-fill": {
-              "description": "Used for hover interaction",
-              "type": "color",
-              "value": "{ui-light.utilities.color.primary.500}"
-            },
             "text": {
-              "description": "Used for hover interaction",
+              "description": "Used for text and icon fill",
               "type": "color",
               "value": "{ui-light.utilities.color.primary.500}"
             }
@@ -4249,10 +4208,18 @@
             "type": "color",
             "value": "{ui-light.utilities.color.neutral.400}"
           }
+        },
+        "__duration-indicator": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.default}"
+            }
+          }
         }
       },
       "sd-range": {
-        "scale-ticks": {
+        "tick": {
           "color": {
             "text": {
               "type": "color",
@@ -4411,15 +4378,6 @@
         "border-width": {
           "type": "float",
           "value": "{ui-light.utilities.border-width.default}"
-        },
-        "--error": {
-          "color": {
-            "text": {
-              "description": "Default icon color ",
-              "type": "color",
-              "value": "{ui-light.utilities.color.error.default}"
-            }
-          }
         }
       },
       "sd-audio": {
@@ -4564,16 +4522,6 @@
             "text": {
               "type": "color",
               "value": "{ui-light.utilities.color.text.primary.default}"
-            }
-          }
-        }
-      },
-      "sd-loader": {
-        "color": {
-          "neutral-500": {
-            "_text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.neutral.500}"
             }
           }
         }
@@ -4735,10 +4683,6 @@
             "value": "{ui-light.utilities.color.border.neutral.400}"
           }
         },
-        "font-weight": {
-          "type": "string",
-          "value": "{ui-light.utilities.font-weight.normal}"
-        },
         "--hover": {
           "color": {
             "background": {
@@ -4816,6 +4760,13 @@
               "value": "{ui-light.utilities.color.text.neutral.500}"
             }
           }
+        }
+      },
+      "choice-control": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-tag, sd-tab &amp; sd-radio-button",
+          "type": "string",
+          "value": "{ui-light.utilities.font-weight.normal}"
         }
       },
       "sd-link": {
@@ -4897,26 +4848,6 @@
           }
         }
       },
-      "sd-combobox": {
-        "--default": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.primary.default}"
-            },
-            "icon-fill": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.primary.default}"
-            }
-          }
-        },
-        "__tag": {
-          "border-width": {
-            "type": "float",
-            "value": "{ui-light.utilities.border-width.default}"
-          }
-        }
-      },
       "sd-input": {
         "--size": {
           "_label": {
@@ -4929,7 +4860,7 @@
       },
       "marker": {
         "font-weight": {
-          "description": "Used for sd-chip &amp; sd-flag",
+          "description": "Used for font weight inside sd-chip &amp; sd-flag",
           "type": "string",
           "value": "{ui-light.utilities.font-weight.normal}"
         },
@@ -4942,6 +4873,14 @@
           "description": "Used for sd-chip &amp; sd-flag",
           "type": "float",
           "value": "{ui-light.utilities.text.sm}"
+        }
+      },
+      "sd-combobox": {
+        "__tag": {
+          "border-width": {
+            "type": "float",
+            "value": "{ui-light.utilities.border-width.default}"
+          }
         }
       },
       "sd-skeleton": {
@@ -4971,17 +4910,6 @@
             "description": "Default background color. Used for sd-chip, sd-flag, sd-container. NOTE: kid value should be reference to kid.white.600, had to be removed due to a bug that blocked fetching tokens in code.",
             "type": "color",
             "value": "{ui-light.utilities.color.white.default}"
-          }
-        }
-      },
-      "sd-option": {
-        "--disabled": {
-          "color": {
-            "border": {
-              "description": "Used for disabled state",
-              "type": "color",
-              "value": "{ui-light.utilities.color.neutral.500}"
-            }
           }
         }
       },
@@ -6570,6 +6498,7 @@
           }
         },
         "padding-bottom": {
+          "description": "Is this used in code?",
           "type": "float",
           "value": "0"
         },
@@ -6689,6 +6618,7 @@
             "value": "{ui-dark.utilities.color.primary.200}"
           },
           "text": {
+            "description": "Used for label ",
             "type": "color",
             "value": "{ui-dark.utilities.color.text.black.default}"
           },
@@ -6702,14 +6632,6 @@
             "background": {
               "type": "color",
               "value": "{ui-dark.utilities.color.primary.900}"
-            }
-          }
-        },
-        "__tooltip": {
-          "color": {
-            "icon-fill": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.icon-fill.primary.default}"
             }
           }
         },
@@ -7017,6 +6939,7 @@
               "value": "{ui-dark.utilities.text.base}"
             },
             "padding-block": {
+              "description": "Top bottom padding for sd-button md variant",
               "type": "float",
               "value": "{ui-dark.utilities.spacing.2}"
             },
@@ -7041,6 +6964,7 @@
               "value": "{ui-dark.utilities.text.base}"
             },
             "padding-block": {
+              "description": "Top bottom padding for sd-button lg variant",
               "type": "float",
               "value": "{ui-dark.utilities.spacing.3}"
             },
@@ -7162,11 +7086,6 @@
               "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
               "value": "{ui-dark.utilities.color.primary.400}"
-            },
-            "icon": {
-              "description": "Used for sd-link &amp; sd-interactive",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.primary.400}"
             }
           }
         },
@@ -7176,35 +7095,6 @@
               "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
               "value": "{ui-dark.utilities.color.white.default}"
-            }
-          }
-        },
-        "--disabled": {
-          "color": {
-            "icon": {
-              "description": "Used for sd-link &amp; sd-interactive",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.neutral.500}"
-            }
-          },
-          "--inverted": {
-            "color": {
-              "icon": {
-                "description": "Used for sd-link &amp; sd-interactive",
-                "type": "color",
-                "value": "{ui-dark.utilities.color.neutral.600}"
-              }
-            }
-          }
-        },
-        "--hover": {
-          "--inverted": {
-            "color": {
-              "icon": {
-                "description": "Used for sd-link &amp; sd-interactive",
-                "type": "color",
-                "value": "{ui-dark.utilities.color.primary.200}"
-              }
             }
           }
         }
@@ -7331,12 +7221,18 @@
           }
         },
         "padding-block": {
+          "description": "Top bottom padding for sd-accordion ",
           "type": "float",
           "value": "{ui-dark.utilities.spacing.3}"
         },
         "border-width": {
           "type": "float",
           "value": "{ui-dark.utilities.sizing.0,25}"
+        },
+        "_panel-padding": {
+          "description": "Used inside panel summary layer of sd-accordion to accommodate the border",
+          "type": "float",
+          "value": "1"
         }
       },
       "navigable": {
@@ -7459,6 +7355,7 @@
           "value": "{ui-dark.utilities.rounded.full}"
         },
         "padding": {
+          "description": "Top bottom left right padding for the sd-radio-button-group",
           "type": "float",
           "value": "0"
         }
@@ -7470,12 +7367,7 @@
         },
         "color": {
           "text": {
-            "description": "Primary brand color for text",
-            "type": "color",
-            "value": "{ui-dark.utilities.color.white.default}"
-          },
-          "icon-fil": {
-            "description": "Default icon color ",
+            "description": "Used for text and icon fill",
             "type": "color",
             "value": "{ui-dark.utilities.color.white.default}"
           }
@@ -7487,13 +7379,8 @@
               "type": "color",
               "value": "rgba(255, 255, 255, 0.00)"
             },
-            "icon-fill": {
-              "description": "Used for hover interaction",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.primary.200}"
-            },
             "text": {
-              "description": "Used for hover interaction",
+              "description": "Used for text and icon fill",
               "type": "color",
               "value": "{ui-dark.utilities.color.primary.200}"
             }
@@ -7560,10 +7447,18 @@
             "type": "color",
             "value": "{core.ui.blue.400}"
           }
+        },
+        "__duration-indicator": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            }
+          }
         }
       },
       "sd-range": {
-        "scale-ticks": {
+        "tick": {
           "color": {
             "text": {
               "type": "color",
@@ -7722,15 +7617,6 @@
         "border-width": {
           "type": "float",
           "value": "{ui-dark.utilities.border-width.default}"
-        },
-        "--error": {
-          "color": {
-            "text": {
-              "description": "Default icon color ",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.black.default}"
-            }
-          }
         }
       },
       "sd-audio": {
@@ -7875,16 +7761,6 @@
             "text": {
               "type": "color",
               "value": "{ui-dark.utilities.color.text.primary.default}"
-            }
-          }
-        }
-      },
-      "sd-loader": {
-        "color": {
-          "neutral-500": {
-            "_text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.neutral.500}"
             }
           }
         }
@@ -8046,10 +7922,6 @@
             "value": "{ui-dark.utilities.color.border.neutral.400}"
           }
         },
-        "font-weight": {
-          "type": "string",
-          "value": "{ui-dark.utilities.font-weight.normal}"
-        },
         "--hover": {
           "color": {
             "background": {
@@ -8127,6 +7999,13 @@
               "value": "{ui-dark.utilities.color.text.neutral.500}"
             }
           }
+        }
+      },
+      "choice-control": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-tag, sd-tab &amp; sd-radio-button",
+          "type": "string",
+          "value": "{ui-dark.utilities.font-weight.normal}"
         }
       },
       "sd-link": {
@@ -8208,26 +8087,6 @@
           }
         }
       },
-      "sd-combobox": {
-        "--default": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.white.default}"
-            },
-            "icon-fill": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.white.default}"
-            }
-          }
-        },
-        "__tag": {
-          "border-width": {
-            "type": "float",
-            "value": "{ui-dark.utilities.border-width.default}"
-          }
-        }
-      },
       "sd-input": {
         "--size": {
           "_label": {
@@ -8240,7 +8099,7 @@
       },
       "marker": {
         "font-weight": {
-          "description": "Used for sd-chip &amp; sd-flag",
+          "description": "Used for font weight inside sd-chip &amp; sd-flag",
           "type": "string",
           "value": "{ui-dark.utilities.font-weight.normal}"
         },
@@ -8253,6 +8112,14 @@
           "description": "Used for sd-chip &amp; sd-flag",
           "type": "float",
           "value": "{ui-dark.utilities.text.sm}"
+        }
+      },
+      "sd-combobox": {
+        "__tag": {
+          "border-width": {
+            "type": "float",
+            "value": "{ui-dark.utilities.border-width.default}"
+          }
         }
       },
       "sd-skeleton": {
@@ -8282,17 +8149,6 @@
             "description": "Default background color. Used for sd-chip, sd-flag, sd-container. NOTE: kid value should be reference to kid.white.600, had to be removed due to a bug that blocked fetching tokens in code.",
             "type": "color",
             "value": "{ui-dark.utilities.color.primary.900}"
-          }
-        }
-      },
-      "sd-option": {
-        "--disabled": {
-          "color": {
-            "border": {
-              "description": "Used for disabled state",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.neutral.500}"
-            }
           }
         }
       },
@@ -9881,6 +9737,7 @@
           }
         },
         "padding-bottom": {
+          "description": "Is this used in code?",
           "type": "float",
           "value": "{vb.utilities.spacing.0,5}"
         },
@@ -10000,6 +9857,7 @@
             "value": "{vb.utilities.color.black.default}"
           },
           "text": {
+            "description": "Used for label ",
             "type": "color",
             "value": "{core.vb.grey.620}"
           },
@@ -10013,14 +9871,6 @@
             "background": {
               "type": "color",
               "value": "{core.vb.status.error-bg}"
-            }
-          }
-        },
-        "__tooltip": {
-          "color": {
-            "icon-fill": {
-              "type": "color",
-              "value": "{vb.utilities.color.black.default}"
             }
           }
         },
@@ -10328,6 +10178,7 @@
               "value": "{vb.utilities.text.sm}"
             },
             "padding-block": {
+              "description": "Top bottom padding for sd-button md variant",
               "type": "float",
               "value": "{vb.utilities.spacing.2,5}"
             },
@@ -10352,6 +10203,7 @@
               "value": "{vb.utilities.text.sm}"
             },
             "padding-block": {
+              "description": "Top bottom padding for sd-button lg variant",
               "type": "float",
               "value": "{vb.utilities.spacing.2,5}"
             },
@@ -10473,11 +10325,6 @@
               "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
               "value": "{vb.utilities.color.primary.500}"
-            },
-            "icon": {
-              "description": "Used for sd-link &amp; sd-interactive",
-              "type": "color",
-              "value": "{vb.utilities.color.primary.500}"
             }
           }
         },
@@ -10487,35 +10334,6 @@
               "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
               "value": "{vb.utilities.color.primary.500}"
-            }
-          }
-        },
-        "--disabled": {
-          "color": {
-            "icon": {
-              "description": "Used for sd-link &amp; sd-interactive",
-              "type": "color",
-              "value": "{core.vb.grey.450}"
-            }
-          },
-          "--inverted": {
-            "color": {
-              "icon": {
-                "description": "Used for sd-link &amp; sd-interactive",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.40)"
-              }
-            }
-          }
-        },
-        "--hover": {
-          "--inverted": {
-            "color": {
-              "icon": {
-                "description": "Used for sd-link &amp; sd-interactive",
-                "type": "color",
-                "value": "{vb.utilities.color.primary.200}"
-              }
             }
           }
         }
@@ -10642,12 +10460,18 @@
           }
         },
         "padding-block": {
+          "description": "Top bottom padding for sd-accordion ",
           "type": "float",
           "value": "15"
         },
         "border-width": {
           "type": "float",
           "value": "{vb.utilities.sizing.0,5}"
+        },
+        "_panel-padding": {
+          "description": "Used inside panel summary layer of sd-accordion to accommodate the border",
+          "type": "float",
+          "value": "2"
         }
       },
       "navigable": {
@@ -10770,6 +10594,7 @@
           "value": "{vb.utilities.rounded.lg}"
         },
         "padding": {
+          "description": "Top bottom left right padding for the sd-radio-button-group",
           "type": "float",
           "value": "{vb.utilities.spacing.1}"
         }
@@ -10781,12 +10606,7 @@
         },
         "color": {
           "text": {
-            "description": "Primary brand color for text",
-            "type": "color",
-            "value": "{vb.utilities.color.black.default}"
-          },
-          "icon-fil": {
-            "description": "Default icon color ",
+            "description": "Used for text and icon fill",
             "type": "color",
             "value": "{vb.utilities.color.black.default}"
           }
@@ -10798,13 +10618,8 @@
               "type": "color",
               "value": "{core.vb.azure.50}"
             },
-            "icon-fill": {
-              "description": "Used for hover interaction",
-              "type": "color",
-              "value": "{vb.utilities.color.black.default}"
-            },
             "text": {
-              "description": "Used for hover interaction",
+              "description": "Used for text and icon fill",
               "type": "color",
               "value": "{vb.utilities.color.black.default}"
             }
@@ -10871,10 +10686,18 @@
             "type": "color",
             "value": "{core.vb.azure.800}"
           }
+        },
+        "__duration-indicator": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{vb.utilities.color.primary.default}"
+            }
+          }
         }
       },
       "sd-range": {
-        "scale-ticks": {
+        "tick": {
           "color": {
             "text": {
               "type": "color",
@@ -11033,15 +10856,6 @@
         "border-width": {
           "type": "float",
           "value": "{vb.utilities.border-width.2}"
-        },
-        "--error": {
-          "color": {
-            "text": {
-              "description": "Default icon color ",
-              "type": "color",
-              "value": "{vb.utilities.color.text.black.default}"
-            }
-          }
         }
       },
       "sd-audio": {
@@ -11186,16 +11000,6 @@
             "text": {
               "type": "color",
               "value": "{vb.utilities.color.text.black.default}"
-            }
-          }
-        }
-      },
-      "sd-loader": {
-        "color": {
-          "neutral-500": {
-            "_text": {
-              "type": "color",
-              "value": "rgba(0, 102, 179, 0.40)"
             }
           }
         }
@@ -11357,10 +11161,6 @@
             "value": "{core.vb.grey.400}"
           }
         },
-        "font-weight": {
-          "type": "string",
-          "value": "{vb.utilities.font-weight.bold}"
-        },
         "--hover": {
           "color": {
             "background": {
@@ -11438,6 +11238,13 @@
               "value": "rgba(0, 0, 0, 0.20)"
             }
           }
+        }
+      },
+      "choice-control": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-tag, sd-tab &amp; sd-radio-button",
+          "type": "string",
+          "value": "{vb.utilities.font-weight.bold}"
         }
       },
       "sd-link": {
@@ -11519,26 +11326,6 @@
           }
         }
       },
-      "sd-combobox": {
-        "--default": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{vb.utilities.color.primary.500}"
-            },
-            "icon-fill": {
-              "type": "color",
-              "value": "{vb.utilities.color.primary.500}"
-            }
-          }
-        },
-        "__tag": {
-          "border-width": {
-            "type": "float",
-            "value": "{vb.utilities.border-width.2}"
-          }
-        }
-      },
       "sd-input": {
         "--size": {
           "_label": {
@@ -11551,7 +11338,7 @@
       },
       "marker": {
         "font-weight": {
-          "description": "Used for sd-chip &amp; sd-flag",
+          "description": "Used for font weight inside sd-chip &amp; sd-flag",
           "type": "string",
           "value": "{vb.utilities.font-weight.normal}"
         },
@@ -11564,6 +11351,14 @@
           "description": "Used for sd-chip &amp; sd-flag",
           "type": "float",
           "value": "{vb.utilities.text.sm}"
+        }
+      },
+      "sd-combobox": {
+        "__tag": {
+          "border-width": {
+            "type": "float",
+            "value": "{vb.utilities.border-width.2}"
+          }
         }
       },
       "sd-skeleton": {
@@ -11593,17 +11388,6 @@
             "description": "Default background color. Used for sd-chip, sd-flag, sd-container. NOTE: kid value should be reference to kid.white.600, had to be removed due to a bug that blocked fetching tokens in code.",
             "type": "color",
             "value": "{vb.utilities.color.white.default}"
-          }
-        }
-      },
-      "sd-option": {
-        "--disabled": {
-          "color": {
-            "border": {
-              "description": "Used for disabled state",
-              "type": "color",
-              "value": "{vb.utilities.color.background.neutral.400}"
-            }
           }
         }
       },
@@ -12501,7 +12285,7 @@
           "color": {
             "description": "Used for tooltip",
             "type": "color",
-            "value": "rgba(5, 21, 48, 0.25)"
+            "value": "rgba(5, 21, 48, 0.10)"
           },
           "y": {
             "type": "float",
@@ -13192,6 +12976,7 @@
           }
         },
         "padding-bottom": {
+          "description": "Is this used in code?",
           "type": "float",
           "value": "0"
         },
@@ -13311,6 +13096,7 @@
             "value": "{kid.utilities.color.black.default}"
           },
           "text": {
+            "description": "Used for label ",
             "type": "color",
             "value": "{kid.utilities.color.black.default}"
           },
@@ -13324,14 +13110,6 @@
             "background": {
               "type": "color",
               "value": "{core.kid.status.error-bg}"
-            }
-          }
-        },
-        "__tooltip": {
-          "color": {
-            "icon-fill": {
-              "type": "color",
-              "value": "{kid.utilities.color.black.default}"
             }
           }
         },
@@ -13639,6 +13417,7 @@
               "value": "{kid.utilities.text.sm}"
             },
             "padding-block": {
+              "description": "Top bottom padding for sd-button md variant",
               "type": "float",
               "value": "{kid.utilities.spacing.2}"
             },
@@ -13663,6 +13442,7 @@
               "value": "{kid.utilities.text.sm}"
             },
             "padding-block": {
+              "description": "Top bottom padding for sd-button lg variant",
               "type": "float",
               "value": "{kid.utilities.spacing.2}"
             },
@@ -13784,11 +13564,6 @@
               "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
               "value": "{kid.utilities.color.neutral.800}"
-            },
-            "icon": {
-              "description": "Used for sd-link &amp; sd-interactive",
-              "type": "color",
-              "value": "{kid.utilities.color.neutral.800}"
             }
           }
         },
@@ -13798,35 +13573,6 @@
               "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
               "value": "{kid.utilities.color.black.default}"
-            }
-          }
-        },
-        "--disabled": {
-          "color": {
-            "icon": {
-              "description": "Used for sd-link &amp; sd-interactive",
-              "type": "color",
-              "value": "{kid.utilities.color.neutral.500}"
-            }
-          },
-          "--inverted": {
-            "color": {
-              "icon": {
-                "description": "Used for sd-link &amp; sd-interactive",
-                "type": "color",
-                "value": "{kid.utilities.color.neutral.600}"
-              }
-            }
-          }
-        },
-        "--hover": {
-          "--inverted": {
-            "color": {
-              "icon": {
-                "description": "Used for sd-link &amp; sd-interactive",
-                "type": "color",
-                "value": "{kid.utilities.color.accent.100}"
-              }
             }
           }
         }
@@ -13953,12 +13699,18 @@
           }
         },
         "padding-block": {
+          "description": "Top bottom padding for sd-accordion ",
           "type": "float",
           "value": "{kid.utilities.spacing.4}"
         },
         "border-width": {
           "type": "float",
           "value": "{kid.utilities.sizing.0,25}"
+        },
+        "_panel-padding": {
+          "description": "Used inside panel summary layer of sd-accordion to accommodate the border",
+          "type": "float",
+          "value": "1"
         }
       },
       "navigable": {
@@ -14081,6 +13833,7 @@
           "value": "{kid.utilities.rounded.full}"
         },
         "padding": {
+          "description": "Top bottom left right padding for the sd-radio-button-group",
           "type": "float",
           "value": "0"
         }
@@ -14092,12 +13845,7 @@
         },
         "color": {
           "text": {
-            "description": "Primary brand color for text",
-            "type": "color",
-            "value": "{kid.utilities.color.black.default}"
-          },
-          "icon-fil": {
-            "description": "Default icon color ",
+            "description": "Used for text and icon fill",
             "type": "color",
             "value": "{kid.utilities.color.black.default}"
           }
@@ -14109,13 +13857,8 @@
               "type": "color",
               "value": "{core.vb.azure.50}"
             },
-            "icon-fill": {
-              "description": "Used for hover interaction",
-              "type": "color",
-              "value": "{kid.utilities.color.black.default}"
-            },
             "text": {
-              "description": "Used for hover interaction",
+              "description": "Used for text and icon fill",
               "type": "color",
               "value": "{kid.utilities.color.black.default}"
             }
@@ -14182,10 +13925,18 @@
             "type": "color",
             "value": "{kid.utilities.color.neutral.800}"
           }
+        },
+        "__duration-indicator": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{kid.utilities.color.primary.default}"
+            }
+          }
         }
       },
       "sd-range": {
-        "scale-ticks": {
+        "tick": {
           "color": {
             "text": {
               "type": "color",
@@ -14286,7 +14037,7 @@
                 "background": {
                   "description": "Used for hover interaction",
                   "type": "color",
-                  "value": "{core.kid.neutral.800}"
+                  "value": "{kid.utilities.color.neutral.800}"
                 }
               }
             },
@@ -14344,15 +14095,6 @@
         "border-width": {
           "type": "float",
           "value": "{kid.utilities.border-width.default}"
-        },
-        "--error": {
-          "color": {
-            "text": {
-              "description": "Default icon color ",
-              "type": "color",
-              "value": "{kid.utilities.color.black.default}"
-            }
-          }
         }
       },
       "sd-audio": {
@@ -14497,16 +14239,6 @@
             "text": {
               "type": "color",
               "value": "{kid.utilities.color.text.black.default}"
-            }
-          }
-        }
-      },
-      "sd-loader": {
-        "color": {
-          "neutral-500": {
-            "_text": {
-              "type": "color",
-              "value": "rgba(0, 102, 179, 0.40)"
             }
           }
         }
@@ -14668,10 +14400,6 @@
             "value": "{core.vb.grey.400}"
           }
         },
-        "font-weight": {
-          "type": "string",
-          "value": "{kid.utilities.font-weight.bold}"
-        },
         "--hover": {
           "color": {
             "background": {
@@ -14749,6 +14477,13 @@
               "value": "{kid.utilities.color.neutral.500}"
             }
           }
+        }
+      },
+      "choice-control": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-tag, sd-tab &amp; sd-radio-button",
+          "type": "string",
+          "value": "{kid.utilities.font-weight.bold}"
         }
       },
       "sd-link": {
@@ -14830,26 +14565,6 @@
           }
         }
       },
-      "sd-combobox": {
-        "--default": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{core.vb.grey.620}"
-            },
-            "icon-fill": {
-              "type": "color",
-              "value": "{core.vb.grey.620}"
-            }
-          }
-        },
-        "__tag": {
-          "border-width": {
-            "type": "float",
-            "value": "{kid.utilities.border-width.default}"
-          }
-        }
-      },
       "sd-input": {
         "--size": {
           "_label": {
@@ -14862,7 +14577,7 @@
       },
       "marker": {
         "font-weight": {
-          "description": "Used for sd-chip &amp; sd-flag",
+          "description": "Used for font weight inside sd-chip &amp; sd-flag",
           "type": "string",
           "value": "{kid.utilities.font-weight.bold}"
         },
@@ -14875,6 +14590,14 @@
           "description": "Used for sd-chip &amp; sd-flag",
           "type": "float",
           "value": "{kid.utilities.text.xs}"
+        }
+      },
+      "sd-combobox": {
+        "__tag": {
+          "border-width": {
+            "type": "float",
+            "value": "{kid.utilities.border-width.default}"
+          }
         }
       },
       "sd-skeleton": {
@@ -14904,17 +14627,6 @@
             "description": "Default background color. Used for sd-chip, sd-flag, sd-container. NOTE: kid value should be reference to kid.white.600, had to be removed due to a bug that blocked fetching tokens in code.",
             "type": "color",
             "value": "rgba(255, 255, 255, 0.60)"
-          }
-        }
-      },
-      "sd-option": {
-        "--disabled": {
-          "color": {
-            "border": {
-              "description": "Used for disabled state",
-              "type": "color",
-              "value": "{kid.utilities.color.neutral.400}"
-            }
           }
         }
       },
