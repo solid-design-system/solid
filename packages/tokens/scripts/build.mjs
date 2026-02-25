@@ -116,7 +116,10 @@ async function runBuild() {
   });
 
   await nextTask('Generating tokens.tailwind.json', () => {
-    const json = generateTailwindJson(themejs);
+    const tokensJsonPath = path.resolve('./src/tokens.json');
+    const tokensJson = JSON.parse(readFileSync(tokensJsonPath, { encoding: 'utf-8' }));
+    const uiCore = tokensJson['UI Core'] ?? {};
+    const json = generateTailwindJson(themejs, uiCore);
     writeFileSync(path.resolve(`./${outdir}`, './tokens.tailwind.json'), json);
   });
 
