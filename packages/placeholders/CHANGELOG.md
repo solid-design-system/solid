@@ -1,11 +1,16 @@
 # @solid-design-system/placeholders
 
+## 2.2.0
+
+### Minor Changes
+
+- Updated the links and authors of the new images in the placeholder _[`#2812`](https://github.com/solid-design-system/solid/pull/2812) [`693327e`](https://github.com/solid-design-system/solid/commit/693327ec572ef5c1904542d119b016a2ff133164) [@balco0110](https://github.com/balco0110)_
+
 ## 2.1.3
 
 ### Patch Changes
 
 - Update pnpm to 10.17 _[`#2522`](https://github.com/solid-design-system/solid/pull/2522) [`7cc6bb7`](https://github.com/solid-design-system/solid/commit/7cc6bb7bdfc9ccb26c2ecfa58b27021d15379312) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
-
   - Add minimumReleaseAge to 5 days
   - Update all actions to ensure that they're using the correct version
 
