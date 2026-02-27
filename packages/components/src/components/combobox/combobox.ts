@@ -449,6 +449,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       return;
     }
 
+    if (!this.multiple && (event.key === 'Backspace' || event.key === 'Delete')) {
+      this.clearCombobox();
+      return;
+    }
+
     // Handle enter.
     if (event.key === 'Enter') {
       const currentOption = this.getCurrentOption();
