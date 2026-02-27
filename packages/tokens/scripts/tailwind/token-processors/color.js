@@ -180,6 +180,14 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
 
   #toRgb(color) {
     if (color.startsWith('rgba')) {
+      // Convert "rgba(255, 255, 255, 0.5)" to "255 255 255 / 0.5"
+      const values = color
+        .slice(5, -1)
+        .split(',')
+        .map(v => v.trim());
+      if (values.length === 4) {
+        return `${values[0]} ${values[1]} ${values[2]} / ${values[3]}`;
+      }
       return color.slice(5, -1);
     }
 
@@ -196,6 +204,6 @@ export class ColorTokenProcessor extends BaseTokenProcessor {
     const g = (num >> 8) & 255;
     // eslint-disable-next-line no-bitwise
     const b = num & 255;
-    return [r, g, b].join(', ');
+    return `${r} ${g} ${b}`;
   }
 }

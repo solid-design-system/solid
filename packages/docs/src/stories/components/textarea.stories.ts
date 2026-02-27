@@ -33,9 +33,11 @@ export const Default = {
 
 /**
  * Use the `size` attribute to change the size:
- * - 'lg' (default)
- * - 'md'
- * - 'sm'
+ * - `lg` (default)
+ * - `md`
+ * - `sm`
+ *
+ *__Note:__ On the `floating-label` variant “sm” size is not available.
  */
 
 export const Size = {
@@ -89,7 +91,7 @@ export const Label = {
 /**
  * Use the `floating-label` attribute to enable a floating label on the text-area.
  *
- * __Note:__ Floating labels only work with the `label` attribute. The `label` slot is not supported.
+ * __Note:__ Floating labels only work with the `label` attribute. The `label` slot is not supported. Only the `lg` and `md` sizes are available.
  */
 export const FloatingLabel = {
   render: () => html`

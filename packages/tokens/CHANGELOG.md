@@ -1,5 +1,51 @@
 # @solid-design-system/tokens
 
+## 6.8.0
+
+### Minor Changes
+
+- Add `tokens.tailwind.json` exported as `@solid-design-system/tokens/dist/tailwind.json`. _[`#2799`](https://github.com/solid-design-system/solid/pull/2799) [`52b2329`](https://github.com/solid-design-system/solid/commit/52b232955c7ba746d5c2fa34d41194e43499e971) [@Vahid1919](https://github.com/Vahid1919)_
+
+## 6.7.1
+
+## 6.7.0
+
+## 6.6.0
+
+## 6.5.2
+
+### Patch Changes
+
+- Changed RGB values in CSS variables to use space seperation instead of comma seperation to be backwards compatible with versions <6 of Solid _[`#2769`](https://github.com/solid-design-system/solid/pull/2769) [`0737f33`](https://github.com/solid-design-system/solid/commit/0737f33a9bc4c055c65f32a8c4dd39658eb2b3f6) [@mariohamann](https://github.com/mariohamann)_
+
+## 6.5.1
+
+### Patch Changes
+
+- Removed unneeded \_internal icons to reduce bundle size and confusion _[`#2748`](https://github.com/solid-design-system/solid/pull/2748) [`9e2fce2`](https://github.com/solid-design-system/solid/commit/9e2fce2fedb46850150f94f3053aa9b6336e5ab6) [@mariohamann](https://github.com/mariohamann)_
+
+## 6.5.0
+
+## 6.4.2
+
+## 6.4.1
+
+## 6.4.0
+
+## 6.3.0
+
+## 6.2.1
+
+## 6.2.0
+
+## 6.1.0
+
+## 6.0.1
+
+### Patch Changes
+
+- Fixed `sd-header` background color by adding a missing CSS custom property to the themes _[`#2756`](https://github.com/solid-design-system/solid/pull/2756) [`d3631e3`](https://github.com/solid-design-system/solid/commit/d3631e39320745c8b79e850f65ff0da8ad292d2b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 6.0.0
 
 ### Major Changes

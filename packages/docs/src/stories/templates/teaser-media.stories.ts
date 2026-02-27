@@ -116,36 +116,62 @@ export const TeaserMediaOverrides = {
             alt="Diverse group of individuals in a casual meeting setting, emphasizing gender equality and collaboration."
           />
         </div>
-        <div slot="expandable">
-          <p class="sd-paragraph sd-paragraph--inverted pb-12">We are actively promoting gender equality.</p>
-        </div>
+        <p class="sd-paragraph sd-paragraph--inverted pt-1">We are actively promoting gender equality.</p>
       </sd-teaser-media> `
 };
 
-export const TeaserMediaWithCopyright = {
-  name: 'Teaser Media with Copyright',
+export const TeaserMediaExpandable = {
+  name: 'Teaser Media Expandable',
   render: () => html`
     <style>
-      .sd-copyright::after {
-        padding: 0;
+      .media-overrides::part(content) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
       }
     </style>
-    <div class="flex flex-col gap-12">
-      <sd-teaser-media variant="gradient-dark" class="max-w-[600px]">
-        <h3 slot="headline">Headline Media Teaser</h3>
-        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="" />
-        <div class="flex flex-col sd-copyright" style="--copyright: '© Union Investment 2025'">
-          <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+    <div class="flex flex-row gap-2 media-overrides">
+      <sd-teaser-media variant="gradient-dark" class="media-overrides">
+        <h3 slot="headline">Retirement planning</h3>
+        <img
+          slot="media"
+          src="./placeholders/images/senior-coffee.png"
+          class="aspect-4/5 object-cover self-stretch h-80"
+          alt=""
+        />
+        <div slot="expandable">
+          <p class="sd-paragraph sd-paragraph--inverted text-center">
+            Start today. We take proactive action to strengthen your finances in retirement.
+          </p>
         </div>
       </sd-teaser-media>
-      <sd-teaser-media variant="gradient-light" class="max-w-[600px]">
-        <h3 slot="headline">Headline Media Teaser</h3>
-        <img slot="media" src="./placeholders/images/architecture.jpg" class="aspect-video object-cover" alt="" />
-        <div
-          class="flex flex-col sd-copyright sd-copyright--color-black gradient-white"
-          style="--copyright: '© Union Investment 2025'"
-        >
-          <div slot="default" class="h-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+      <sd-teaser-media variant="gradient-dark" class="media-overrides">
+        <h3 slot="headline">Save</h3>
+        <img
+          slot="media"
+          src="./placeholders/images/couple-moving.png"
+          class="aspect-4/5 object-cover self-stretch h-80"
+          alt=""
+        />
+        <div slot="expandable">
+          <p class="sd-paragraph sd-paragraph--inverted text-center">
+            We build smart saving habits that secure your financial future.
+          </p>
+        </div>
+      </sd-teaser-media>
+      <sd-teaser-media variant="gradient-dark" class="media-overrides">
+        <h3 slot="headline">Invest</h3>
+        <img
+          slot="media"
+          src="./placeholders/images/calculator-work.png"
+          class="aspect-4/5 object-cover self-stretch h-80"
+          alt=""
+        />
+        <div slot="expandable">
+          <p class="sd-paragraph sd-paragraph--inverted text-center">
+            We align your investments with the lifestyle you want after work.
+          </p>
         </div>
       </sd-teaser-media>
     </div>

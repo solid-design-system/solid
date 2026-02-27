@@ -37,7 +37,7 @@ describe('<sd-drawer>', () => {
     el.show();
 
     await waitUntil(() => showHandler.calledOnce);
-    await waitUntil(() => afterShowHandler.calledOnce);
+    await waitUntil(() => afterShowHandler.calledOnce, 'sd-after-show did not fire', { timeout: 3000 });
 
     expect(showHandler).to.have.been.calledOnce;
     expect(afterShowHandler).to.have.been.calledOnce;

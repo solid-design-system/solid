@@ -1,5 +1,5 @@
 import '../../../dist/solid-components';
-import { aTimeout, expect, fixture, html, oneEvent } from '@open-wc/testing';
+import { aTimeout, expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
 import { clickOnElement } from '../../internal/test.js';
 import sinon from 'sinon';
 import type SdCarousel from './carousel';
@@ -598,15 +598,15 @@ describe('<sd-carousel>', () => {
         el.goToSlide(2, 'smooth');
         await oneEvent(el.scrollContainer, 'scroll');
         await el.updateComplete;
+        await waitUntil(() => el.scrollContainer.getAttribute('aria-busy') === 'true');
         // Assert
         expect(el.scrollContainer).to.have.attribute('aria-busy', 'true');
 
         await oneEvent(el.scrollContainer, 'scrollend');
         await el.updateComplete;
-
         // It takes a moment for the scrollend event to be fired.
         await aTimeout(100);
-
+        await waitUntil(() => el.scrollContainer.getAttribute('aria-busy') === 'false');
         expect(el.scrollContainer).to.have.attribute('aria-busy', 'false');
       });
     });

@@ -248,7 +248,60 @@ describe('<sd-select>', () => {
       await el.updateComplete;
     });
   });
+  it('should update selection when value is overwritten programmatically to a different option with same cardinality', async () => {
+    const el = await fixture<SdSelect>(html`
+      <sd-select value="option-1">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+      </sd-select>
+    `);
 
+    expect(el.value).to.deep.equal('option-1');
+
+    el.value = 'option-2';
+    await el.updateComplete;
+
+    expect(el.value).to.equal('option-2');
+  });
+  it('should select multiple options when value is set programmatically', async () => {
+    const el = await fixture<SdSelect>(html`
+      <sd-select multiple value="option 1 option 2">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+      </sd-select>
+    `);
+
+    el.value = ['option-1', 'option-2'];
+    await el.updateComplete;
+
+    expect(el.value).to.deep.equal(['option-1', 'option-2']);
+
+    el.value = ['option-2', 'option-3'];
+    await el.updateComplete;
+
+    expect(el.value).to.deep.equal(['option-2', 'option-3']);
+  });
+  it('should select multiple options when value is overwritten programmatically', async () => {
+    const el = await fixture<SdSelect>(html`
+      <sd-select multiple>
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+      </sd-select>
+    `);
+
+    el.value = ['option-2', 'option-3'];
+    await el.updateComplete;
+
+    expect(el.value).to.deep.equal(['option-2', 'option-3']);
+
+    el.value = ['option-2', 'option-1'];
+    await el.updateComplete;
+
+    expect(el.value).to.deep.equal(['option-2', 'option-1']);
+  });
   it('should open the listbox when any letter key is pressed with sd-select is on focus', async () => {
     const el = await fixture<SdSelect>(html`
       <sd-select>

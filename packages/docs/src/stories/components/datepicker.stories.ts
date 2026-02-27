@@ -23,7 +23,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html`<div class="h-[500px] w-[370px] h-[500px]">${generateTemplate({ args })}</div>`;
+    return html`<div class="h-[500px] w-[370px]">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -33,6 +33,8 @@ export const Default = {
  * - `lg`(default)
  * - `md`
  * - `sm`
+ *
+ *__Note:__ On the `floating-label` variant “sm” size is not available.
  */
 
 export const Size = {
@@ -78,7 +80,7 @@ export const Label = {
 /**
  * Use the `floating-label` attribute to enable a floating label on the datepicker.
  *
- * __Note:__ Floating labels only work with the `label` attribute. The `label` slot is not supported.
+ * __Note:__ Floating labels only work with the `label` attribute. The `label` slot is not supported. Only the `lg` and `md` sizes are available.
  */
 export const FloatingLabel = {
   render: () => html`

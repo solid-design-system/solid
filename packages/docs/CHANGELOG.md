@@ -1,5 +1,63 @@
 # @solid-design-system/docs
 
+## 2.4.0
+
+### Minor Changes
+
+- - Adding more screenshot tests related to the attribute `floating-label` for the components `sd-input`, `sd-select`, `sd-textarea` and `sd-datepicker`. _[`#2762`](https://github.com/solid-design-system/solid/pull/2762) [`55f4626`](https://github.com/solid-design-system/solid/commit/55f46262e92d9b842a1f9ee3cc973704f1e01406) [@martascorreia](https://github.com/martascorreia)_
+
+  - Fixed small styling issues related to text sizing, label placement, and `sd-input` use cases for different types of inputs.
+  - Lastly, removed the 'sm' size when using floating labels, defaulting this size to be the same as 'md' size.
+
+## 2.3.0
+
+### Minor Changes
+
+- Implemented expand button on the `sd-teaser-media` and updated the template according to figma. _[`#2781`](https://github.com/solid-design-system/solid/pull/2781) [`1e7231f`](https://github.com/solid-design-system/solid/commit/1e7231f6380725630c032ca78ed0aede9cc588a1) [@balco0110](https://github.com/balco0110)_
+
+## 2.2.3
+
+### Patch Changes
+
+- Emphasized non-usage of \_internal icons _[`#2748`](https://github.com/solid-design-system/solid/pull/2748) [`9e2fce2`](https://github.com/solid-design-system/solid/commit/9e2fce2fedb46850150f94f3053aa9b6336e5ab6) [@mariohamann](https://github.com/mariohamann)_
+
+## 2.2.2
+
+### Patch Changes
+
+- Fixed `sd-datepicker`: _[`#2765`](https://github.com/solid-design-system/solid/pull/2765) [`d80b650`](https://github.com/solid-design-system/solid/commit/d80b6504f5b773d1aed35166643b34ce2fed6be0) [@smfonseca](https://github.com/smfonseca)_
+  - `placement` attribute properly renders the calendar view on top or bottom of the input element.
+  - Included screenshot test `Placement`.
+  - Improved `readonly` attribute handling.
+
+## 2.2.1
+
+### Patch Changes
+
+- Added safeguard to prevent `sd-icon` tests from timing out during Playwright testing. _[`#2768`](https://github.com/solid-design-system/solid/pull/2768) [`5fc77a5`](https://github.com/solid-design-system/solid/commit/5fc77a5ced5eeb1d2a6084a878772d4f4f364f28) [@smfonseca](https://github.com/smfonseca)_
+
+## 2.2.0
+
+### Minor Changes
+
+- Changed `sd-tag`'s attribute `removable` to be disabled if the attributes `selected` or `toggleable` are enabled _[`#2759`](https://github.com/solid-design-system/solid/pull/2759) [`909bef6`](https://github.com/solid-design-system/solid/commit/909bef6d2750643bcf808b8adfec25b2f83340cd) [@martascorreia](https://github.com/martascorreia)_
+
+## 2.1.0
+
+### Minor Changes
+
+- Adding template for 'sd-breadcrumb' _[`#2746`](https://github.com/solid-design-system/solid/pull/2746) [`71e89ba`](https://github.com/solid-design-system/solid/commit/71e89bae773c91c1e2e3831cd599e809915e424e) [@martascorreia](https://github.com/martascorreia)_
+- Added warning sign to the text error of `sd-checkbox`, `sd-switch` and `sd-radio-group`; _[`#2745`](https://github.com/solid-design-system/solid/pull/2745) [`00dd8f6`](https://github.com/solid-design-system/solid/commit/00dd8f61a92d02319ef95314683aeedafe240187) [@martascorreia](https://github.com/martascorreia)_
+
+  Changed the template for "Checkbox Group" in "Required Checkbox Group" to hide the warning sign under each individual `sd-checkbox`;
+  Added different sizes for the text error message through the form controller, as well as fixed a minor spacing between the component and error message, which affects components `sd-checkbox`, `sd-switch`, `sd-radio-group`, `sd-combobox`, `sd-datepicker`, `sd-input`, `sd-select`, `sd-textarea`.
+
+## 2.0.1
+
+### Patch Changes
+
+- Removed unneeded `console-log` from code and update linter rules. _[`#2758`](https://github.com/solid-design-system/solid/pull/2758) [`9294108`](https://github.com/solid-design-system/solid/commit/9294108154126a5b97c5151a1245e84b07e8c244) [@smfonseca](https://github.com/smfonseca)_
+
 ## 2.0.0
 
 ### Major Changes

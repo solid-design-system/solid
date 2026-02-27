@@ -227,8 +227,6 @@ async function checkThemeAccess(): Promise<void> {
 
 // Initialize theme protection
 function initializeThemeProtection() {
-  console.log('Initializing theme protection');
-
   // Initialize on load
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', checkThemeAccess);
@@ -243,7 +241,6 @@ function initializeThemeProtection() {
     const currentUrl = window.location.href;
     if (currentUrl !== lastUrl) {
       lastUrl = currentUrl;
-      console.log('URL changed to:', currentUrl);
       checkThemeAccess();
     }
   };
@@ -255,25 +252,21 @@ function initializeThemeProtection() {
 
   history.pushState = function (...args) {
     originalPushState(...args);
-    console.log('pushState detected');
     urlChangeHandler();
   };
 
   history.replaceState = function (...args) {
     originalReplaceState(...args);
-    console.log('replaceState detected');
     urlChangeHandler();
   };
 
   // 1. Popstate for back/forward navigation
   window.addEventListener('popstate', () => {
-    console.log('Popstate event');
     urlChangeHandler();
   });
 
   // 2. Hashchange (just in case)
   window.addEventListener('hashchange', () => {
-    console.log('Hash change event');
     urlChangeHandler();
   });
 }

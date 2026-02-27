@@ -23,6 +23,7 @@ async function nextTask(label, action) {
   try {
     await action();
     spinner.stop();
+    // eslint-disable-next-line no-console
     console.log(`${pc.green('✔')} ${label}`);
   } catch (err) {
     spinner.stop();

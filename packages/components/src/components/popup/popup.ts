@@ -425,6 +425,7 @@ export default class SdPopup extends SolidElement {
         let top = '';
         let right = '';
         let bottom = '';
+        // eslint-disable-next-line no-useless-assignment
         let left = '';
 
         if (this.arrowPlacement === 'start') {

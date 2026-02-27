@@ -25,6 +25,7 @@ const colors = {
 };
 
 const log = (text, color = 'reset') => {
+  // eslint-disable-next-line no-console
   console.log(`${colors[color]}${text}${colors.reset}`);
 };
 

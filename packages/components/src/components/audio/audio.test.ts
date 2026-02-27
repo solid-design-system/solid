@@ -1,5 +1,6 @@
 import '../../../dist/solid-components';
 import { expect, fixture, html } from '@open-wc/testing';
+import { sendMouse } from '@web/test-runner-commands';
 import base64Audio from './base64Audio';
 import sinon from 'sinon';
 import type SdAudio from './audio';
@@ -24,6 +25,8 @@ describe('<sd-audio>', () => {
     const spy = sinon.spy();
     el.addEventListener('sd-playback-start', spy);
 
+    // Simulate a real user gesture to allow media playback
+    await sendMouse({ type: 'click', position: [0, 0] });
     (playButton as HTMLElement).click();
 
     expect(spy.calledOnce).to.be.true;

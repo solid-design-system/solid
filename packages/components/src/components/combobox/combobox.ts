@@ -706,13 +706,16 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     const currentOption = this.getCurrentOption();
 
     const currentIndex = filteredOptions.indexOf(currentOption!);
+    // eslint-disable-next-line no-useless-assignment
     let newIndex = Math.max(0, currentIndex);
 
     if (isNext) {
       const nextIndex = currentIndex + 1;
+
       newIndex = nextIndex > filteredOptions.length - 1 ? 0 : nextIndex;
     } else {
       const previousIndex = currentIndex - 1;
+
       newIndex = previousIndex < 0 ? filteredOptions.length - 1 : previousIndex;
     }
     this.setCurrentOption(filteredOptions[newIndex], new KeyboardEvent('keydown'));
@@ -1027,6 +1030,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     this.emit('sd-after-hide');
   }
 
+  @watch(['size', 'floatingLabel'])
+  handleSizeChange() {
+    this.size = this.floatingLabel && this.size === 'sm' ? 'md' : this.size;
+  }
+
   async show() {
     if (this.open || this.disabled || this.visuallyDisabled) {
       this.open = false;
@@ -1244,7 +1252,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                     'absolute left-4 z-20 pointer-events-none transition-all duration-200',
                     hasIconLeft ? floatingLabelHorizontalAlignmentWithIconLeft : 'left-4',
                     !isFloatingLabelActive
-                      ? 'top-1/2 -translate-y-1/2 text-base'
+                      ? 'top-1/2 -translate-y-1/2'
                       : this.size === 'lg'
                         ? 'top-2 text-xs'
                         : 'top-1 text-xs',
@@ -1527,7 +1535,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           ${this.helpText}
         </slot>
       </div>
-      ${this.formControlController.renderInvalidMessage()}
+      ${this.formControlController.renderInvalidMessage(this.size)}
     `;
   }
   static styles = [

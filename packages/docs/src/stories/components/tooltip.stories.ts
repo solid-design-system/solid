@@ -150,7 +150,7 @@ export const Disabled = {
 };
 
 /**
- * Use the `trigger` attribute to control how the tooltip is triggered:
+ * Use the `trigger` attribute to control how the tooltip is triggered to **open**  :
  *
  * - `click`: Displays the tooltip when the trigger element is clicked
  * - `hover`: Displays the tooltip when the trigger element is hovered
@@ -160,6 +160,29 @@ export const Disabled = {
 
 export const Trigger = {
   render: () => html` <sd-tooltip content="Lorem ipsum" placement="top-start" size="lg" trigger="click"></sd-tooltip> `
+};
+
+/**
+ * Use the `close-trigger` attribute to control how the tooltip is triggered to **close**:
+ *
+ * - `click`: Removes the tooltip when the trigger element is clicked
+ * - `hover`: Removes the tooltip when the trigger element is hovered
+ * - `focus`: Removes the tooltip when the trigger element is focused
+ * - `manual`: Removes the tooltip when the `open` attribute is set to `false`
+ */
+
+export const CloseTrigger = {
+  render: () =>
+    html` <div class="h-[100px]">
+      <sd-tooltip
+        content="Lorem ipsum"
+        placement="bottom-start"
+        size="lg"
+        trigger="click"
+        open="true"
+        close-trigger="click"
+      ></sd-tooltip>
+    </div>`
 };
 
 /**

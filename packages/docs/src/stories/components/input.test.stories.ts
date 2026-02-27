@@ -99,11 +99,24 @@ export const Labels = {
  */
 export const FloatingLabel = {
   name: 'Floating Label',
-  args: overrideArgs([{ type: 'attribute', name: 'floating-label', value: true }]),
+  args: {
+    label: 'Label'
+  },
   render: (args: any) => {
     return html`
       <div class="w-[350px]">
         ${generateTemplate({
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
+          args
+        })}
+      </div>
+      <br />
+      <div class="w-[350px]">
+        ${generateTemplate({
+          constants: [
+            { type: 'attribute', name: 'value', value: 'Floating Label with value' },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
           args
         })}
       </div>
@@ -123,9 +136,21 @@ export const HelpText = {
   ]),
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[250px]">
         ${generateTemplate({
           args
+        })}
+      </div>
+      <br />
+      <br />
+      <div>Floating Label</div>
+      <br />
+      <div class="w-[250px]">
+        ${generateTemplate({
+          args,
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }]
         })}
       </div>
     `;
@@ -141,9 +166,21 @@ export const Placeholders = {
   args: overrideArgs([{ type: 'attribute', name: 'placeholder', value: 'Type something' }]),
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[250px]">
         ${generateTemplate({
           args
+        })}
+      </div>
+      <br />
+      <br />
+      <div>Floating Label</div>
+      <br />
+      <div class="w-[250px]">
+        ${generateTemplate({
+          args,
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }]
         })}
       </div>
     `;
@@ -159,9 +196,21 @@ export const Clearable = {
   args: overrideArgs([{ type: 'attribute', name: 'clearable', value: true }]),
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[250px]">
         ${generateTemplate({
           args
+        })}
+      </div>
+      <br />
+      <br />
+      <div>Floating Label</div>
+      <br />
+      <div class="w-[250px]">
+        ${generateTemplate({
+          args,
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }]
         })}
       </div>
     `;
@@ -177,12 +226,28 @@ export const TogglePassword = {
   args: overrideArgs([{ type: 'attribute', name: 'type', value: 'password' }]),
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[250px]">
         ${generateTemplate({
           args,
           constants: [
             { type: 'attribute', name: 'password-toggle', value: true },
             { type: 'attribute', name: 'label', value: 'Password' }
+          ]
+        })}
+      </div>
+      <br />
+      <br />
+      <div>Floating Label</div>
+      <br />
+      <div class="w-[250px]">
+        ${generateTemplate({
+          args,
+          constants: [
+            { type: 'attribute', name: 'password-toggle', value: true },
+            { type: 'attribute', name: 'label', value: 'Password' },
+            { type: 'attribute', name: 'floating-label', value: true }
           ]
         })}
       </div>
@@ -203,9 +268,24 @@ export const Disabled = {
   ]),
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[250px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'disabled', value: true }],
+          args
+        })}
+      </div>
+      <br />
+      <br />
+      <div>Floating Label</div>
+      <br />
+      <div class="w-[250px]">
+        ${generateTemplate({
+          constants: [
+            { type: 'attribute', name: 'disabled', value: true },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
           args
         })}
       </div>
@@ -226,9 +306,24 @@ export const Readonly = {
   ]),
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[250px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'readonly', value: true }],
+          args
+        })}
+      </div>
+      <br />
+      <br />
+      <div>Floating Label</div>
+      <br />
+      <div class="w-[250px]">
+        ${generateTemplate({
+          constants: [
+            { type: 'attribute', name: 'readonly', value: true },
+            { type: 'attribute', name: 'floating-label', value: true }
+          ],
           args
         })}
       </div>
@@ -254,12 +349,30 @@ export const Sizes = {
     }
   ]),
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'size' }
-      },
-      args
-    });
+    return html`
+      <div>Default</div>
+      <br />
+      <div class="w-[250px]">
+        ${generateTemplate({
+          axis: {
+            y: { type: 'attribute', name: 'size' }
+          },
+          args
+        })}
+      </div>
+      <br />
+      <div>Floating Label</div>
+      <br />
+      <div class="w-[250px]">
+        ${generateTemplate({
+          axis: {
+            y: { type: 'attribute', name: 'size', values: ['lg', 'md'] }
+          },
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
+          args
+        })}
+      </div>
+    `;
   }
 };
 
@@ -281,24 +394,42 @@ export const StyleOnValid = {
     }
   ]),
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: { type: 'attribute', name: 'style-on-valid' }
-      },
-      args
-    });
+    return html`
+      <div>Default</div>
+      <br />
+      <div class="h-[340px]">
+        ${generateTemplate({
+          axis: {
+            y: { type: 'attribute', name: 'style-on-valid' }
+          },
+          args
+        })}
+      </div>
+      <div>Floating Label</div>
+      <br />
+      <div class="h-[340px]">
+        ${generateTemplate({
+          axis: {
+            y: { type: 'attribute', name: 'style-on-valid' }
+          },
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }],
+          args
+        })}
+      </div>
+    `;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {
-    const els = canvasElement.querySelectorAll('sd-input');
+    await customElements.whenDefined('sd-input');
+    const inputs = canvasElement.querySelectorAll('sd-input');
 
-    for (const el of els) {
-      await waitUntil(() => el?.shadowRoot?.querySelector('input'));
-      await userEvent.type(el.shadowRoot!.querySelector('input')!, ' ');
+    for (const el of inputs) {
+      await waitUntil(() => el.shadowRoot?.querySelector('input'));
+      const input = el.shadowRoot!.querySelector('input')!;
+      await userEvent.type(input, ' ');
+
+      input.blur();
     }
-
-    // tab to next element to loose focus
-    await userEvent.tab();
   }
 };
 
@@ -310,6 +441,8 @@ export const Types = {
   name: 'Types',
   render: (args: any) => {
     return html`
+      <div>Default</div>
+      <br />
       <div class="w-[370px]">
         <div class="mb-2">
           ${generateTemplate({
@@ -431,6 +564,147 @@ export const Types = {
               { type: 'attribute', name: 'min', value: 0 },
               { type: 'attribute', name: 'max', value: 100 },
               { type: 'attribute', name: 'spin-buttons', value: 'true' }
+            ],
+            args
+          })}
+        </div>
+      </div>
+      <br />
+      <br />
+      <div>Floating Label</div>
+      <br />
+      <div class="w-[370px]">
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'date' },
+              { type: 'attribute', name: 'label', value: 'Date' },
+              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
+              { type: 'attribute', name: 'help-text', value: 'Value is restricted to date format' },
+              { type: 'attribute', name: 'floating-label', value: true }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'datetime-local' },
+              { type: 'attribute', name: 'label', value: 'Date Time' },
+              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
+              { type: 'attribute', name: 'help-text', value: 'Value is restricted to datetime format' },
+              { type: 'attribute', name: 'floating-label', value: true }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'email' },
+              { type: 'attribute', name: 'label', value: 'Email' },
+              { type: 'attribute', name: 'placeholder', value: 'someone@example.com' },
+              { type: 'attribute', name: 'help-text', value: 'Validate with email address format' },
+              { type: 'attribute', name: 'floating-label', value: true }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'number' },
+              { type: 'attribute', name: 'label', value: 'Number' },
+              { type: 'attribute', name: 'placeholder', value: '^d{1,3}$' },
+              { type: 'attribute', name: 'help-text', value: 'Value is restricted to numbers' },
+              { type: 'attribute', name: 'floating-label', value: true }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'password' },
+              { type: 'attribute', name: 'label', value: 'Password' },
+              { type: 'attribute', name: 'password-toggle', value: true },
+              { type: 'attribute', name: 'placeholder', value: '.*' },
+              { type: 'attribute', name: 'help-text', value: 'Use password display format' },
+              { type: 'attribute', name: 'floating-label', value: true }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'search' },
+              { type: 'attribute', name: 'label', value: 'Search' },
+              { type: 'attribute', name: 'placeholder', value: '^d{1,3}$' },
+              { type: 'attribute', name: 'help-text', value: 'Use search format' },
+              { type: 'attribute', name: 'floating-label', value: true }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'tel' },
+              { type: 'attribute', name: 'label', value: 'Tel' },
+              { type: 'attribute', name: 'placeholder', value: '+49 1234 567891' },
+              { type: 'attribute', name: 'help-text', value: 'Shows optimized keyboard on touch devices or similar' },
+              { type: 'attribute', name: 'floating-label', value: true }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'text' },
+              { type: 'attribute', name: 'label', value: 'Text' },
+              { type: 'attribute', name: 'placeholder', value: '.*' },
+              { type: 'attribute', name: 'help-text', value: 'Default type' },
+              { type: 'attribute', name: 'floating-label', value: true }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'time' },
+              { type: 'attribute', name: 'label', value: 'Time' },
+              { type: 'attribute', name: 'placeholder', value: '' },
+              { type: 'attribute', name: 'help-text', value: 'Value is restricted to time format' },
+              { type: 'attribute', name: 'floating-label', value: true }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'url' },
+              { type: 'attribute', name: 'label', value: 'URL' },
+              { type: 'attribute', name: 'name', value: 'url field' },
+              { type: 'attribute', name: 'placeholder', value: 'https://www.union-investment.de/' },
+              { type: 'attribute', name: 'help-text', value: 'Validate with url format' },
+              { type: 'attribute', name: 'floating-label', value: true }
+            ],
+            args
+          })}
+        </div>
+        <div class="mb-2">
+          ${generateTemplate({
+            constants: [
+              { type: 'attribute', name: 'type', value: 'number' },
+              { type: 'attribute', name: 'label', value: 'Spin Buttons' },
+              { type: 'attribute', name: 'min', value: 0 },
+              { type: 'attribute', name: 'max', value: 100 },
+              { type: 'attribute', name: 'spin-buttons', value: 'true' },
+              { type: 'attribute', name: 'floating-label', value: true }
             ],
             args
           })}
@@ -893,7 +1167,21 @@ export const setCustomValidity = {
 export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {
-    return html`<div class="mouseless w-[250px]">${generateTemplate({ args })}</div>`;
+    return html`
+      <div>Default</div>
+      <br />
+      <div class="mouseless w-[250px]">${generateTemplate({ args })}</div>
+      <br />
+      <br />
+      <div>Floating Label</div>
+      <br />
+      <div class="mouseless w-[250px]">
+        ${generateTemplate({
+          args,
+          constants: [{ type: 'attribute', name: 'floating-label', value: true }]
+        })}
+      </div>
+    `;
   },
 
   play: async ({ canvasElement }: { canvasElement: HTMLUnknownElement }) => {

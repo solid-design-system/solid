@@ -40,6 +40,32 @@ describe('<sd-tag>', () => {
     });
   });
 
+  describe('removable attribute behaviour with selected or toggleable', () => {
+    it('should ignore removable when selected', async () => {
+      el = await fixture<SdTag>(html`<sd-tag removable selected>Tag</sd-tag>`);
+      const removable = el.shadowRoot!.querySelector('[part="removable-indicator"]');
+      expect(removable).to.not.exist;
+    });
+
+    it('should ignore removable when toggleable', async () => {
+      el = await fixture<SdTag>(html`<sd-tag removable toggleable>Tag</sd-tag>`);
+      const removable = el.shadowRoot!.querySelector('[part="removable-indicator"]');
+      expect(removable).to.not.exist;
+    });
+
+    it('should ignore removable when both selected and toggleable', async () => {
+      el = await fixture<SdTag>(html`<sd-tag removable selected toggleable>Tag</sd-tag>`);
+      const removable = el.shadowRoot!.querySelector('[part="removable-indicator"]');
+      expect(removable).to.not.exist;
+    });
+
+    it('should show removable when neither selected nor toggleable', async () => {
+      el = await fixture<SdTag>(html`<sd-tag removable>Tag</sd-tag>`);
+      const removable = el.shadowRoot!.querySelector('[part="removable-indicator"]');
+      expect(removable).to.exist;
+    });
+  });
+
   sizes.forEach(size => {
     describe(`when passed a size attribute ${size}`, () => {
       it(`should be accessible when size is "${size}"`, async () => {

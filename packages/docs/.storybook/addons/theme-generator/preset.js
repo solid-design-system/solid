@@ -1,12 +1,14 @@
-function previewAnnotations(entry = []) {
-  return [...entry, require.resolve('./preview')];
+import { fileURLToPath } from 'node:url';
+
+export function previewAnnotations(entry = []) {
+  return [...entry, fileURLToPath(import.meta.resolve('./preview.ts'))];
 }
 
-function managerEntries(entry = []) {
-  return [...entry, require.resolve('../manager')];
+export function managerEntries(entry = []) {
+  return [...entry, fileURLToPath(import.meta.resolve('../manager.ts'))];
 }
 
-module.exports = {
+export default {
   managerEntries,
   previewAnnotations
 };
