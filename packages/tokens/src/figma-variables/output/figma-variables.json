@@ -3382,10 +3382,6 @@
             "description": "Used for label ",
             "type": "color",
             "value": "{ui-light.utilities.color.text.black.default}"
-          },
-          "icon-fill": {
-            "type": "color",
-            "value": "{ui-light.utilities.color.primary.default}"
           }
         },
         "--invalid": {
@@ -4793,7 +4789,7 @@
       },
       "sd-datepicker": {
         "__date-item": {
-          "--hovered": {
+          "--hover": {
             "--default": {
               "color": {
                 "background": {
@@ -4801,6 +4797,10 @@
                   "value": "{ui-light.utilities.color.primary.100}"
                 },
                 "text": {
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.500}"
+                },
+                "border": {
                   "type": "color",
                   "value": "{ui-light.utilities.color.primary.500}"
                 }
@@ -4828,10 +4828,6 @@
             }
           },
           "--default": {
-            "font-weight": {
-              "type": "string",
-              "value": "{ui-light.utilities.font-weight.normal}"
-            },
             "color": {
               "text": {
                 "description": "Default icon color ",
@@ -6621,10 +6617,6 @@
             "description": "Used for label ",
             "type": "color",
             "value": "{ui-dark.utilities.color.text.black.default}"
-          },
-          "icon-fill": {
-            "type": "color",
-            "value": "{ui-dark.utilities.color.white.default}"
           }
         },
         "--invalid": {
@@ -8032,7 +8024,7 @@
       },
       "sd-datepicker": {
         "__date-item": {
-          "--hovered": {
+          "--hover": {
             "--default": {
               "color": {
                 "background": {
@@ -8040,6 +8032,10 @@
                   "value": "{ui-dark.utilities.color.primary.100}"
                 },
                 "text": {
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.750}"
+                },
+                "border": {
                   "type": "color",
                   "value": "{ui-dark.utilities.color.primary.750}"
                 }
@@ -8067,10 +8063,6 @@
             }
           },
           "--default": {
-            "font-weight": {
-              "type": "string",
-              "value": "{ui-dark.utilities.font-weight.normal}"
-            },
             "color": {
               "text": {
                 "description": "Default icon color ",
@@ -9860,10 +9852,6 @@
             "description": "Used for label ",
             "type": "color",
             "value": "{core.vb.grey.620}"
-          },
-          "icon-fill": {
-            "type": "color",
-            "value": "{core.vb.grey.620}"
           }
         },
         "--invalid": {
@@ -11271,7 +11259,7 @@
       },
       "sd-datepicker": {
         "__date-item": {
-          "--hovered": {
+          "--hover": {
             "--default": {
               "color": {
                 "background": {
@@ -11279,6 +11267,10 @@
                   "value": "{vb.utilities.color.primary.100}"
                 },
                 "text": {
+                  "type": "color",
+                  "value": "{vb.utilities.color.black.default}"
+                },
+                "border": {
                   "type": "color",
                   "value": "{vb.utilities.color.black.default}"
                 }
@@ -11306,10 +11298,6 @@
             }
           },
           "--default": {
-            "font-weight": {
-              "type": "string",
-              "value": "{vb.utilities.font-weight.normal}"
-            },
             "color": {
               "text": {
                 "description": "Default icon color ",
@@ -13099,10 +13087,6 @@
             "description": "Used for label ",
             "type": "color",
             "value": "{kid.utilities.color.black.default}"
-          },
-          "icon-fill": {
-            "type": "color",
-            "value": "{kid.utilities.color.neutral.800}"
           }
         },
         "--invalid": {
@@ -14510,7 +14494,7 @@
       },
       "sd-datepicker": {
         "__date-item": {
-          "--hovered": {
+          "--hover": {
             "--default": {
               "color": {
                 "background": {
@@ -14518,6 +14502,10 @@
                   "value": "rgba(255, 255, 255, 0.00)"
                 },
                 "text": {
+                  "type": "color",
+                  "value": "{kid.utilities.color.neutral.700}"
+                },
+                "border": {
                   "type": "color",
                   "value": "{kid.utilities.color.neutral.700}"
                 }
@@ -14545,10 +14533,6 @@
             }
           },
           "--default": {
-            "font-weight": {
-              "type": "string",
-              "value": "{core.kid.font-weight.font-normal}"
-            },
             "color": {
               "text": {
                 "description": "Default icon color ",

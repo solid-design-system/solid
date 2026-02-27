@@ -241,11 +241,11 @@
   --sd-container--default-color-background: var(--sd-color-neutral-100);
   --sd-datepicker__date-item--current-font-weight: var(--sd-font-weight-bold);
   --sd-datepicker__date-item--default-color-text: var(--sd-color-neutral-800);
-  --sd-datepicker__date-item--default-font-weight: var(--sd-font-weight-normal);
-  --sd-datepicker__date-item--hovered--default-color-background: 255, 255, 255, 0;
-  --sd-datepicker__date-item--hovered--default-color-text: var(--sd-color-neutral-700);
-  --sd-datepicker__date-item--hovered--prev-next-color-background: 255, 255, 255, 0;
-  --sd-datepicker__date-item--hovered--prev-next-color-text: var(--sd-color-neutral-700);
+  --sd-datepicker__date-item--hover--default-color-background: 255, 255, 255, 0;
+  --sd-datepicker__date-item--hover--default-color-border: var(--sd-color-neutral-700);
+  --sd-datepicker__date-item--hover--default-color-text: var(--sd-color-neutral-700);
+  --sd-datepicker__date-item--hover--prev-next-color-background: 255, 255, 255, 0;
+  --sd-datepicker__date-item--hover--prev-next-color-text: var(--sd-color-neutral-700);
   --sd-datepicker__date-item--selected-color-text: var(--sd-color-white);
   --sd-divider--inverted-color-border: 255, 255, 255, 0.4;
   --sd-drop-shadow-sm:  0px 4px 12px rgba(5, 21, 48, 0.25);
@@ -273,7 +273,6 @@
   --sd-form-control--invalid-color-background: 253, 232, 230;
   --sd-form-control-border-radius: var(--sd-spacing-2);
   --sd-form-control-color-border: var(--sd-color-black);
-  --sd-form-control-color-icon-fill: var(--sd-color-neutral-800);
   --sd-form-control-color-text: var(--sd-color-black);
   --sd-header-color-background: var(--sd-color-accent);
   --sd-header-padding-bottom: 0;
