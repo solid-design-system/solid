@@ -44,7 +44,7 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-accordion-color-text - The accordion color text.
  * @cssproperty --sd-accordion-padding-block - The accordion vertical padding value.
  * @cssproperty --sd-accordion__indicator-color - The accordion indicator color.
- * @cssproperty --sd-accordion-color-icon - The accordion icon color.
+ * @cssproperty --sd-accordion-color-icon-fill - The accordion icon color.
  */
 @customElement('sd-accordion')
 export default class SdAccordion extends SolidElement {
@@ -245,7 +245,7 @@ export default class SdAccordion extends SolidElement {
       }
 
       [part='summary-icon'] {
-        color: var(--sd-accordion-color-icon);
+        fill: rgb(var(--sd-accordion-color-icon-fill));
       }
     `
   ];
