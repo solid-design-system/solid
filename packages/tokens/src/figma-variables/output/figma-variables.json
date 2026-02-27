@@ -4824,6 +4824,20 @@
               "text": {
                 "type": "color",
                 "value": "{ui-light.utilities.color.white.default}"
+              },
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.default}"
+              }
+            },
+            "--hover": {
+              "color": {
+                "background": {
+                  "description": "Used for hover interaction",
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.500}"
+                }
               }
             }
           },
@@ -4840,6 +4854,21 @@
             "font-weight": {
               "type": "string",
               "value": "{ui-light.utilities.font-weight.bold}"
+            },
+            "color": {
+              "text": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.default}"
+              }
+            }
+          },
+          "--range": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.100}"
+              }
             }
           }
         }
@@ -8059,6 +8088,20 @@
               "text": {
                 "type": "color",
                 "value": "{ui-dark.utilities.color.primary.600}"
+              },
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.white.default}"
+              }
+            },
+            "--hover": {
+              "color": {
+                "background": {
+                  "description": "Used for hover interaction",
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.200}"
+                }
               }
             }
           },
@@ -8075,6 +8118,21 @@
             "font-weight": {
               "type": "string",
               "value": "{ui-dark.utilities.font-weight.bold}"
+            },
+            "color": {
+              "text": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.white.default}"
+              }
+            }
+          },
+          "--range": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.500}"
+              }
             }
           }
         }
@@ -8249,7 +8307,7 @@
             "100": {
               "description": "Form field read only. Used for sd-container",
               "type": "color",
-              "value": "{vb.utilities.color.primary.100}"
+              "value": "{vb.utilities.color.neutral.100}"
             },
             "200": {
               "description": "Used for sd-flag",
@@ -8527,31 +8585,31 @@
         "primary": {
           "100": {
             "type": "color",
-            "value": "{core.vb.azure.100}"
+            "value": "{core.vb.azure.50}"
           },
           "200": {
             "type": "color",
-            "value": "{core.vb.azure.200}"
+            "value": "{core.vb.azure.100}"
           },
           "300": {
             "type": "color",
-            "value": "{core.vb.azure.300}"
+            "value": "{core.vb.azure.200}"
           },
           "400": {
             "type": "color",
-            "value": "{core.vb.azure.400}"
+            "value": "{core.vb.azure.300}"
           },
           "500": {
             "type": "color",
-            "value": "{core.vb.azure.500}"
+            "value": "{core.vb.azure.400}"
           },
           "600": {
             "type": "color",
-            "value": "{core.vb.azure.600}"
+            "value": "{core.vb.azure.500}"
           },
           "700": {
             "type": "color",
-            "value": "{core.vb.azure.750}"
+            "value": "{core.vb.azure.600}"
           },
           "750": {
             "type": "color",
@@ -11294,6 +11352,20 @@
               "text": {
                 "type": "color",
                 "value": "{vb.utilities.color.white.default}"
+              },
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{vb.utilities.color.primary.default}"
+              }
+            },
+            "--hover": {
+              "color": {
+                "background": {
+                  "description": "Used for hover interaction",
+                  "type": "color",
+                  "value": "{vb.utilities.color.primary.500}"
+                }
               }
             }
           },
@@ -11310,6 +11382,21 @@
             "font-weight": {
               "type": "string",
               "value": "{vb.utilities.font-weight.bold}"
+            },
+            "color": {
+              "text": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{vb.utilities.color.primary.default}"
+              }
+            }
+          },
+          "--range": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(0, 102, 179, 0.05)"
+              }
             }
           }
         }
@@ -11782,7 +11869,7 @@
           },
           "600": {
             "type": "color",
-            "value": "{core.kid.primary.600}"
+            "value": "#244faf"
           },
           "700": {
             "type": "color",
@@ -14529,6 +14616,20 @@
               "text": {
                 "type": "color",
                 "value": "{kid.utilities.color.white.default}"
+              },
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{kid.utilities.color.primary.default}"
+              }
+            },
+            "--hover": {
+              "color": {
+                "background": {
+                  "description": "Used for hover interaction",
+                  "type": "color",
+                  "value": "{kid.utilities.color.neutral.800}"
+                }
               }
             }
           },
@@ -14545,6 +14646,21 @@
             "font-weight": {
               "type": "string",
               "value": "{core.kid.font-weight.font-semibold}"
+            },
+            "color": {
+              "text": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{kid.utilities.color.primary.default}"
+              }
+            }
+          },
+          "--range": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{kid.utilities.color.primary.100}"
+              }
             }
           }
         }

@@ -486,6 +486,10 @@
   background-color: rgba(var(--sd-container--default-color-background, rgba(var(--sd-color-neutral-100))));
 }
 
+@utility sd-datepicker__date-item--current-color-text {
+  color: rgba(var(--sd-datepicker__date-item--current-color-text, rgba(var(--sd-color-primary))));
+}
+
 @utility sd-datepicker__date-item--current-font-weight {
   font-weight: var(--sd-datepicker__date-item--current-font-weight, var(--sd-font-weight-bold));
 }
@@ -512,6 +516,18 @@
 
 @utility sd-datepicker__date-item--hover--prev-next-color-text {
   color: rgba(var(--sd-datepicker__date-item--hover--prev-next-color-text, rgba(var(--sd-color-neutral-700))));
+}
+
+@utility sd-datepicker__date-item--range-color-background {
+  background-color: rgba(var(--sd-datepicker__date-item--range-color-background, rgba(var(--sd-color-primary-100))));
+}
+
+@utility sd-datepicker__date-item--selected--hover-color-background {
+  background-color: rgba(var(--sd-datepicker__date-item--selected--hover-color-background, rgba(var(--sd-color-primary-500))));
+}
+
+@utility sd-datepicker__date-item--selected-color-background {
+  background-color: rgba(var(--sd-datepicker__date-item--selected-color-background, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-datepicker__date-item--selected-color-text {

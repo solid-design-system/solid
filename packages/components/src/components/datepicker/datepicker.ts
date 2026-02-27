@@ -55,6 +55,22 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @csspart form-control-help-text - The help text, displayed below the input.
  *
  * @cssproperty --sd-form-control-color-text - The text color for form controls.
+ * @cssproperty --sd-form-control-border-radius - The border radius for form controls.
+ * @cssproperty --sd-form-control-color-border -
+ * @cssproperty --sd-form-control--filled__floating-label-color-text
+ * @cssproperty --sd-form-control--invalid-color-background
+ * @cssproperty --sd-datepicker__date-item--default-color-text
+ * @cssproperty --sd-datepicker__date-item--hover--default-color-background
+ * @cssproperty --sd-datepicker__date-item--hover--default-color-text
+ * @cssproperty --sd-datepicker__date-item--default-color-border
+ * @cssproperty --sd-datepicker__date-item--selected-color-text
+ * @cssproperty --sd-datepicker__date-item--hover--prev-next-color-background
+ * @cssproperty --sd-datepicker__date-item--hover--prev-next-color-text
+ * @cssproperty --sd-datepicker__date-item--current-font-weight
+ * @cssproperty --sd-datepicker__date-item--selected-color-background
+ * @cssproperty --sd-datepicker__date-item--selected--hover-color-background
+ * @cssproperty --sd-datepicker__date-item--range-color-background
+ * @cssproperty --sd-datepicker__date-item--current-color-text
  */
 
 const isoDateConverter = {
@@ -1657,7 +1673,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
           <!-- Month label -->
           <div
             tabindex="-1"
-            class="month-label flex justify-center sd-headline sd-headline--size-base !text-primary"
+            class="month-label flex justify-center sd-headline sd-headline--size-base !sd-color-icon-fill-primary"
             part="month-label"
             aria-live="polite"
           >
@@ -1777,35 +1793,43 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                       type="button"
                       part="day"
                       class=${cx(
-                        'cell day flex items-center justify-center focus-visible:outline focus:outline-2 focus:outline-primary -outline-offset-2 rounded-md w-[36px]',
+                        'cell day flex items-center justify-center focus-visible:outline focus:outline-2 focus:outline-primary -outline-offset-2 rounded w-[36px]',
                         this.size === 'sm' ? 'text-sm h-6' : 'text-base h-8',
                         isRangeStart || isRangeEnd
                           ? 'hover:bg-primary-500'
-                          : 'hover:bg-primary-100 hover:text-primary-500',
+                          : 'hover:sd-datepicker__date-item--hover--default-color-text',
+                        !isRangeStart &&
+                          !isRangeEnd &&
+                          !inSelectedRange &&
+                          'hover:sd-datepicker__date-item--hover--default-color-background',
                         !inMonth
                           ? this.disabledWeekends && isWeekendDay
                             ? 'out-month weekend-day text-neutral-500'
                             : isWeekendDay
                               ? 'out-month weekend-day text-neutral-700'
-                              : 'out-month text-neutral-700'
+                              : 'out-month text-neutral-700 hover:sd-datepicker__date-item--hover--prev-next-color-text hover:sd-datepicker__date-item--hover--prev-next-color-background'
                           : this.isInDisabledDates(day) || !this.inMinMax(day)
                             ? 'out-month text-neutral-500'
                             : this.disabledWeekends && isWeekendDay
                               ? 'weekend-day text-neutral-500'
-                              : 'in-month text-primary',
+                              : 'in-month sd-datepicker__date-item--default-color-text',
                         isSelectedSingle
-                          ? 'selected border-primary bg-primary text-white hover:bg-primary-500 hover:text-white'
+                          ? 'selected border-primary sd-datepicker__date-item--selected-color-background sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected--hover-color-background'
                           : '',
-                        isRangeStart ? 'bg-primary text-white rounded-l-md rounded-r-none' : '',
-                        isRangeEnd ? 'bg-primary text-white range-end rounded-r-md rounded-l-none' : '',
+                        isRangeStart
+                          ? 'sd-datepicker__date-item--selected-color-background sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected--hover-color-background rounded-l-md rounded-r-none'
+                          : '',
+                        isRangeEnd
+                          ? 'sd-datepicker__date-item--selected-color-background sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected--hover-color-background range-end rounded-r-md rounded-l-none'
+                          : '',
                         inSelectedRange && !isRangeStart && !isRangeEnd
-                          ? 'in-range selected bg-primary-100 text-primary-500 rounded-none hover:bg-primary-500 hover:text-white'
+                          ? 'in-range selected sd-datepicker__date-item--range-color-background rounded-none hover:sd-datepicker__date-item--selected--hover-color-background hover:sd-datepicker__date-item--selected-color-text'
                           : '',
                         !inSelectedRange && inPreviewRange && !isRangeStart && !isRangeEnd
                           ? 'in-preview-range bg-primary-100 text-primary-500 rounded-none'
                           : '',
                         isToday && !isSelectedSingle && !isRangeStart && !isRangeEnd && isFocused
-                          ? 'today border-[1px] border-primary font-bold'
+                          ? 'today border-[1px] border-primary sd-datepicker__date-item--current-font-weight'
                           : '',
                         disabled ? 'disabled cursor-not-allowed hover:bg-transparent' : 'cursor-pointer',
                         isFocused && !isToday ? 'focused outline outline-2 outline-primary' : ''
@@ -1894,7 +1918,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       active: 'border-primary border-2',
       invalid: 'border-error',
       valid: 'border-success',
-      default: 'border-neutral-800'
+      default: 'form-control-color-border'
     }[inputState];
 
     const textSize = this.size === 'sm' ? 'text-sm' : 'text-base';
@@ -1933,7 +1957,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
           <div
             part="border"
             class=${cx(
-              'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10 transition-[border] duration-medium ease-in-out',
+              'absolute top-0 w-full h-full pointer-events-none border form-control-border-radius z-10 transition-[border] duration-medium ease-in-out',
               borderColor,
               this.open && this.alignment === 'left' ? 'rounded-bl-none' : '',
               this.open && this.alignment === 'right' ? 'rounded-br-none' : ''
@@ -1958,6 +1982,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                     <span
                       class=${cx(
                         'leading-none',
+                        !isFloatingLabelActive && 'form-control-color-text',
                         (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
                         isFloatingLabelActive &&
                           !this.visuallyDisabled &&
@@ -1985,7 +2010,8 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 'px-4 flex flex-row items-center rounded-default transition-colors ease-in-out duration-medium hover:duration-fast w-full',
                 !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
                 this.readonly ? 'bg-neutral-100' : 'bg-white',
-                inputState === 'disabled' || inputState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black'
+                inputState === 'disabled' || inputState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black',
+                inputState === 'invalid' && 'form-control--invalid-color-background'
               )}
               slot="anchor"
             >
@@ -2000,7 +2026,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 aria-invalid=${this.showInvalidStyle ? 'true' : 'false'}
                 aria-label=${this.range ? 'Select date range' : 'Select a date'}
                 class=${cx(
-                  'min-w-0 flex-grow focus:outline-none bg-transparent hover:cursor-pointer form-control-color-text',
+                  'min-w-0 flex-grow focus:outline-none bg-transparent hover:cursor-pointer text-black',
                   this.visuallyDisabled || this.disabled
                     ? 'placeholder:text-neutral-500 cursor-not-allowed'
                     : 'placeholder:text-neutral-700',
@@ -2078,6 +2104,15 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
 
       :host([visually-disabled]) input {
         caret-color: transparent;
+      }
+
+      .today:hover {
+        @apply sd-datepicker__date-item--hover--default-color-border;
+      }
+
+      .in-range,
+      .today {
+        @apply sd-datepicker__date-item--current-color-text;
       }
     `
   ];
