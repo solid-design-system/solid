@@ -20,11 +20,12 @@
     "cdn"
   ],
   "exports": {
-    "./dist/scss": "./dist/tokens.scss",
+    "./dist/tailwind.json": "./dist/tokens.tailwind.json",
     "./dist/tailwind.css": "./dist/themes/tailwind.css",
-    "./dist/theme.js": "./dist/theme.js",
     "./dist/themes": "./dist/themes",
-    "./dist/themes/*": "./dist/themes/*"
+    "./dist/themes/*": "./dist/themes/*",
+    "./dist/theme.js": "./dist/theme.js",
+    "./dist/scss": "./dist/tokens.scss"
   },
   "keywords": [],
   "homepage": "https://solid-design-system.fe.union-investment.de/docs/",
