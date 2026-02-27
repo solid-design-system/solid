@@ -17,6 +17,7 @@ import SolidElement from '../../internal/solid-element';
  *
  * @cssproperty --sd-badge--blue--inverted-color-background - The background color for the blue badge in its inverted state.
  * @cssproperty --sd-badge--blue--inverted-color-text - The text color for the blue badge in its inverted state.
+ * @cssproperty --sd-badge--blue-color-background - The background color for the blue badge in its standard state.
  * @cssproperty --sd-badge--green-color--inverted-background - The background color for the green badge in its inverted state.
  * @cssproperty --sd-badge--green-color--inverted-text - The text color for the green badge in its inverted state.
  * @cssproperty --sd-badge--inverted-color-border - The border color used in inverted state.
@@ -47,7 +48,7 @@ export default class SdBadge extends SolidElement {
           {
             /* variants */
             blue: !this.inverted
-              ? 'text-white bg-primary-500 border-white'
+              ? 'text-white  sd-badge--blue-color-background border-white'
               : 'sd-badge--blue--inverted-color-text sd-badge--blue--inverted-color-background sd-badge--inverted-color-border',
             green: !this.inverted
               ? 'text-white sd-badge--green-color-background border-white'

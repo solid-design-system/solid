@@ -6,6 +6,7 @@
  * @variant { 3xl | xl | lg | base } sd-headline--size-... The headline's size.
  * @boolean sd-headline--inverted Inverts the headline text.
  * @boolean sd-headline--inline Sets inline behavior. Used exclusively when an sd-icon or other component is present. See usage <a href="#inline">here.</a>
+ * @cssproperty --sd-headline--3xl-onwards-color-text - The text color for 3xl and larger headlines.
  */
 
 .sd-headline,
@@ -18,7 +19,7 @@
 
   &.sd-headline,
   &:is(h1):not(.sd-headline) {
-    @apply text-3xl sm:text-4xl gap-4 leading-tight;
+    @apply text-3xl sm:text-4xl gap-4 leading-tight sd-headline--3xl-onwards-color-text;
 
     sd-icon {
       @apply -mt-1 sm:mt-0;
@@ -27,7 +28,7 @@
 
   &.sd-headline--size-3xl,
   &:is(h2):not(.sd-headline) {
-    @apply text-2xl sm:text-3xl gap-4 leading-tight;
+    @apply text-2xl sm:text-3xl gap-4 leading-tight sd-headline--3xl-onwards-color-text;
 
     sd-icon {
       @apply -mt-1 sm:mt-0;

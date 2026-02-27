@@ -4,6 +4,8 @@
  * @status stable
  * @since 1.0
  * @variant { sucess | warning | error | info } sd-status-badge--...
+ * @cssproperty --sd-badge--green-color-background - background color for success status badge.
+ * @cssproperty --sd-badge--red-color-background - background color for error status badge.
  */
 
 .sd-status-badge {
@@ -15,7 +17,7 @@
 
   &--success {
     sd-icon {
-      @apply bg-success;
+      @apply sd-badge--green-color-background;
     }
   }
 
@@ -27,7 +29,7 @@
 
   &--error {
     sd-icon {
-      @apply bg-error;
+      @apply sd-badge--red-color-background;
     }
   }
 

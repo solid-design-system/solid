@@ -398,7 +398,7 @@ export default class SdDrawer extends SolidElement {
       }
 
       :host [part='panel'] {
-        outline: 1px solid var(--sd-panel-color-border, transparent);
+        outline: 1px solid rgb(var(--sd-panel-color-border, transparent));
       }
     `
   ];
