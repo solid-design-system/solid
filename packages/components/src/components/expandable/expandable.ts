@@ -235,6 +235,7 @@ export default class SdExpandable extends SolidElement {
 
         height: var(--gradient-height);
         background: linear-gradient(180deg, var(--gradient));
+        pointer-events: none;
       }
 
       :host([inverted]) {
