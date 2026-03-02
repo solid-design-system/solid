@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 6.8.0
+
+### Minor Changes
+
+- Add `tokens.tailwind.json` exported as `@solid-design-system/tokens/dist/tailwind.json`. _[`#2799`](https://github.com/solid-design-system/solid/pull/2799) [`52b2329`](https://github.com/solid-design-system/solid/commit/52b232955c7ba746d5c2fa34d41194e43499e971) [@Vahid1919](https://github.com/Vahid1919)_
+
 ## 6.7.1
 
 ## 6.7.0

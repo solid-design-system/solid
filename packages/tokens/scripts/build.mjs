@@ -1,6 +1,6 @@
 import { buildStylesheet, getFigmaVariables, getStylesheetThemes, nextTask } from './utils.js';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
-import { extractComponentsBlock } from './tailwind/index.js';
+import { extractComponentsBlock, generateTailwindJson } from './tailwind/index.js';
 import { FigmaClient } from './figma/index.js';
 import { generateScss } from './scss/index.js';
 import { minimizeCss } from '../../components/scripts/esbuild-plugin-lit-tailwind-and-minify.js';
@@ -112,6 +112,14 @@ async function runBuild() {
   await nextTask('Generating tokens.scss', () => {
     const scss = generateScss(themejs);
     writeFileSync(path.resolve(`./${outdir}`, './tokens.scss'), scss);
+  });
+
+  await nextTask('Generating tokens.tailwind.json', () => {
+    const tokensJsonPath = path.resolve('./src/tokens.json');
+    const tokensJson = JSON.parse(readFileSync(tokensJsonPath, { encoding: 'utf-8' }));
+    const uiCore = tokensJson['UI Core'] ?? {};
+    const json = generateTailwindJson(themejs, uiCore);
+    writeFileSync(path.resolve(`./${outdir}`, './tokens.tailwind.json'), json);
   });
 
   process.exit();

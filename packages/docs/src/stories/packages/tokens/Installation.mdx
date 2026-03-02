@@ -366,14 +366,12 @@ Import the TailwindCSS configuration from `@solid-design-system/tokens` and exte
 
 ```js
 // tailwind.config.js
-import solidTheme from '@solid-design-system/tokens/dist/theme.js';
+import solidTheme from '@solid-design-system/tokens/dist/tailwind.json';
 
 export default {
   theme: {
     extend: {
-      colors: {
-        ...solidTheme.colors
-      }
+      ...solidTheme
     }
   }
 };
