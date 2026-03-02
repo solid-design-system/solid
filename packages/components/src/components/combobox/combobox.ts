@@ -1458,7 +1458,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 ${this.type !== 'search'
                   ? html`<sd-icon
                       class=${cx(
-                        'transition-transform duration-medium ease-in-out sd-icon-fill-primary',
+                        'transition-transform duration-medium ease-in-out',
                         this.open ? 'rotate-180' : 'rotate-0'
                       )}
                       name="chevron-down"
@@ -1601,6 +1601,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
       mark {
         @apply bg-transparent text-inherit font-bold;
+      }
+
+      [part='chevron'] {
+        color: rgb(var(--sd-color-icon-fill-primary));
       }
     `
   ];

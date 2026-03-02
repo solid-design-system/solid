@@ -21,8 +21,6 @@ import SolidElement from '../../internal/solid-element';
  *
  * @dependency sd-icon
  * @dependency sd-accordion
- *
- * @cssproperty --sd-quickfact--expandable-color-text - The text color for expandable quickfact.
  */
 @customElement('sd-quickfact')
 export default class SdQuickfact extends SdAccordion {
@@ -102,7 +100,7 @@ export default class SdQuickfact extends SdAccordion {
       }
 
       [part='summary-icon'] {
-        color: var(--sd-accordion__chevron-color-text);
+        color: rgb(var(--sd-color-icon-fill-primary));
       }
 
       [part='icon'] {

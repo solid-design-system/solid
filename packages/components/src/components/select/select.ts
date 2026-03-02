@@ -975,10 +975,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           : null}
         <div
           part="form-control-input"
-          class=${cx(
-            'relative w-full bg-white',
-            selectState === 'disabled' ? 'text-neutral-500' : 'form-control-color-text'
-          )}
+          class=${cx('relative w-full bg-white', selectState === 'disabled' ? 'text-neutral-500' : 'text-black')}
         >
           ${hasLabel && this.floatingLabel
             ? html`
@@ -1158,7 +1155,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   ? html`
                       <sd-icon
                         part="invalid-icon"
-                        class=${cx(iconMarginLeft, iconSize, 'text-error')}
+                        class=${cx(iconMarginLeft, iconSize)}
                         library="_internal"
                         name="risk"
                       ></sd-icon>
@@ -1180,7 +1177,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   class=${cx(
                     'inline-flex ml-2 items-center transition-transform duration-medium ease-in-out',
                     this.open ? 'rotate-180' : 'rotate-0',
-                    this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary',
+                    this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'icon-color',
                     iconSize
                   )}
                 >
@@ -1255,6 +1252,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
         @apply block relative w-auto;
       }
 
+      [part='invalid-icon'] {
+        color: rgb(var(--sd-color-icon-fill-error, --sd-color-error));
+      }
+
       :host([required]) #label::after {
         content: ' *';
       }
@@ -1293,6 +1294,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
       sd-tag[disabled='false']::part(base):hover {
         @apply bg-primary-100;
+      }
+
+      .icon-color {
+        color: rgb(var(--sd-color-icon-fill-primary));
       }
     `
   ];

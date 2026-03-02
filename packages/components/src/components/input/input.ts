@@ -575,7 +575,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       default: 'form-control-color-border'
     }[inputState];
 
-    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'form-control-color-icon-fill';
+    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'icon-color';
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
     const iconSize = {
       sm: 'text-base',
@@ -986,6 +986,10 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       .has-floating-label input[type='time']:focus,
       .has-floating-label input[type='datetime-local']:focus {
         color: inherit;
+      }
+
+      .icon-color {
+        color: rgb(var(--sd-color-icon-fill-primary));
       }
     `
   ];
