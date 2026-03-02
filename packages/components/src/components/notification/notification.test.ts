@@ -175,6 +175,21 @@ describe('<sd-notification>', () => {
       await afterHide;
       expectNotificationToBeInvisible(notification);
     });
+
+    it('is selectable when closable and not selectable when not closable', async () => {
+      const closableNotification = await fixture<SdNotification>(html`
+        <sd-notification open closable>I am a notification</sd-notification>
+      `);
+      const nonClosableNotification = await fixture<SdNotification>(html`
+        <sd-notification open>I am a notification</sd-notification>
+      `);
+
+      const closableBase = closableNotification.shadowRoot!.querySelector<HTMLElement>('[part="base"]')!;
+      const nonClosableBase = nonClosableNotification.shadowRoot!.querySelector<HTMLElement>('[part="base"]')!;
+
+      expect(closableBase.getAttribute('tabindex')).to.equal('0');
+      expect(nonClosableBase.hasAttribute('tabindex')).to.be.false;
+    });
   });
 
   describe('toast', () => {

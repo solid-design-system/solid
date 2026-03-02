@@ -1,5 +1,18 @@
 # @solid-design-system/components
 
+## 6.9.1
+
+### Patch Changes
+
+- Removed pointer events on ´sd-expandable´ _[`#2822`](https://github.com/solid-design-system/solid/pull/2822) [`adde5ea`](https://github.com/solid-design-system/solid/commit/adde5eab859a5b7f68cd7a905ba5f8d40941ec36) [@balco0110](https://github.com/balco0110)_
+- Removed `tabindex` from `sd-notification` when it's not interactive so that it's only tabbable if there is an interactive element inside it. _[`#2814`](https://github.com/solid-design-system/solid/pull/2814) [`da3dba8`](https://github.com/solid-design-system/solid/commit/da3dba85d7a9d3e9026679f499325e0019c53493) [@smfonseca](https://github.com/smfonseca)_
+
+## 6.9.0
+
+### Minor Changes
+
+- Add clearing of `sd-combobox` on Backspace or Delete key press _[`#2816`](https://github.com/solid-design-system/solid/pull/2816) [`7f5f047`](https://github.com/solid-design-system/solid/commit/7f5f0473da800db746874f1f42e4a24fa16101c3) [@balco0110](https://github.com/balco0110)_
+
 ## 6.8.0
 
 ## 6.7.1
