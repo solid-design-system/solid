@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.9.0
+
+### Minor Changes
+
+- Add clearing of `sd-combobox` on Backspace or Delete key press _[`#2816`](https://github.com/solid-design-system/solid/pull/2816) [`7f5f047`](https://github.com/solid-design-system/solid/commit/7f5f0473da800db746874f1f42e4a24fa16101c3) [@balco0110](https://github.com/balco0110)_
+
 ## 6.8.0
 
 ## 6.7.1
