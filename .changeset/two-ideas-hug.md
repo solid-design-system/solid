@@ -2,4 +2,4 @@
 '@solid-design-system/docs': patch
 ---
 
-Replace accessibility information for teaser media
+Updated accessibility information for `sd-teaser media`
