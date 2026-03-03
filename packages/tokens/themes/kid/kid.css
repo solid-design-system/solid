@@ -252,6 +252,7 @@
   --sd-datepicker__date-item--selected-color-background: var(--sd-color-black);
   --sd-datepicker__date-item--selected-color-text: var(--sd-color-white);
   --sd-divider--inverted-color-border: 255 255 255 / 0.4;
+  --sd-drop-shadow-listbox:  0px 2px 4px rgba(5, 21, 48, 0.1);
   --sd-drop-shadow-sm:  0px 4px 12px rgba(5, 21, 48, 0.25);
   --sd-drop-shadow-xs:  0.5px 0.5px 1.5px rgba(5, 21, 48, 0.75);
   --sd-drop-shadow:  0px 2px 4px rgba(5, 21, 48, 0.1);
@@ -278,6 +279,10 @@
   --sd-form-control-border-radius: var(--sd-spacing-2);
   --sd-form-control-color-border: var(--sd-color-black);
   --sd-form-control-color-text: var(--sd-color-black);
+  --sd-form-control__listbox-border-bottom-left-radius: var(--sd-spacing-2);
+  --sd-form-control__listbox-border-bottom-right-radius: var(--sd-spacing-2);
+  --sd-form-control__listbox-border-top-left-radius: var(--sd-spacing-2);
+  --sd-form-control__listbox-border-top-right-radius: var(--sd-spacing-2);
   --sd-header-color-background: var(--sd-color-accent);
   --sd-header-padding-bottom: 0;
   --sd-header__underline-color-background: 255 255 255 / 0;
@@ -359,6 +364,7 @@
   --sd-radius: 0.25rem;
   --sd-range-tick-color-text: 89 89 89;
   --sd-range__bar-border-width: var(--sd-spacing-0\.5);
+  --sd-shadow-listbox:  0px 2px 4px 0px rgba(5, 21, 48, 0.1);
   --sd-shadow-sm:  0px 4px 12px -6px rgba(5, 21, 48, 0.25);
   --sd-shadow-xs:  0.5px 0.5px 1.5px 0px rgba(5, 21, 48, 0.75);
   --sd-shadow:  0px 2px 4px 0px rgba(5, 21, 48, 0.1);
@@ -404,8 +410,10 @@
   --sd-switch--unchecked-color-border: var(--sd-color-black);
   --sd-switch--unchecked__icon-color-background: var(--sd-color-black);
   --sd-switch-color-text: var(--sd-color-black);
+  --sd-tab--active-color-text: var(--sd-color-black);
   --sd-tab--hover-color-background: 0 102 179 / 0.05;
   --sd-tab-color-border: 191 202 217;
+  --sd-tab-color-text: var(--sd-color-black);
   --sd-tag--default--hover-color-background: 255 255 255 / 0.6;
   --sd-tag--default-color-background: 255 255 255 / 0.6;
   --sd-tag--default-color-border: 255 255 255 / 0.6;

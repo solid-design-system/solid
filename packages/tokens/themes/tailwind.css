@@ -64,6 +64,7 @@
   --border-width-4: var(--sd-border-width-4);
   --border-width-6: var(--sd-border-width-6);
   --border-width-default: var(--sd-border-width);
+  --drop-shadow-listbox: var(--sd-drop-shadow-listbox);
   --drop-shadow-sm: var(--sd-drop-shadow-sm);
   --drop-shadow-xs: var(--sd-drop-shadow-xs);
   --drop-shadow: var(--sd-drop-shadow);
@@ -113,6 +114,7 @@
   --radius-md: var(--sd-radius-md);
   --radius-none: var(--sd-radius-none);
   --radius-sm: var(--sd-radius-sm);
+  --shadow-listbox: var(--sd-shadow-listbox);
   --shadow-sm: var(--sd-shadow-sm);
   --shadow-xs: var(--sd-shadow-xs);
   --shadow: var(--sd-shadow);

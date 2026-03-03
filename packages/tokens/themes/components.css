@@ -22,6 +22,22 @@
   color: rgba(var(--sd-form-control-color-text, rgba(var(--sd-color-black))));
 }
 
+@utility form-control__listbox-border-bottom-left-radius {
+ border-bottom-left-radius: var(--sd-form-control__listbox-border-bottom-left-radius, var(--sd-spacing-1));
+}
+
+@utility form-control__listbox-border-bottom-right-radius {
+ border-bottom-right-radius: var(--sd-form-control__listbox-border-bottom-right-radius, var(--sd-spacing-1));
+}
+
+@utility form-control__listbox-border-top-left-radius {
+ border-top-left-radius: var(--sd-form-control__listbox-border-top-left-radius, var(--sd-spacing-1));
+}
+
+@utility form-control__listbox-border-top-right-radius {
+ border-top-right-radius: var(--sd-form-control__listbox-border-top-right-radius, var(--sd-spacing-1));
+}
+
 @utility informational-gradient--primary-800-color-background {
   background-color: rgba(var(--sd-informational-gradient--primary-800-color-background, rgba(var(--sd-color-primary-800))));
 }
@@ -806,12 +822,20 @@
   color: rgba(var(--sd-switch-color-text, rgba(var(--sd-color-black))));
 }
 
+@utility sd-tab--active-color-text {
+  color: rgba(var(--sd-tab--active-color-text, rgba(var(--sd-color-primary))));
+}
+
 @utility sd-tab--hover-color-background {
   background-color: rgba(var(--sd-tab--hover-color-background, rgba(var(--sd-color-neutral-200))));
 }
 
 @utility sd-tab-color-border {
   border-color: rgba(var(--sd-tab-color-border, rgba(var(--sd-color-neutral-400))));
+}
+
+@utility sd-tab-color-text {
+  color: rgba(var(--sd-tab-color-text, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-tag--default--hover-color-background {

@@ -1361,7 +1361,7 @@
         },
         "100": {
           "type": "color",
-          "value": "#edf0f4"
+          "value": "#f5f7f9"
         },
         "200": {
           "type": "color",
@@ -2632,6 +2632,29 @@
             "type": "float",
             "value": "0"
           }
+        },
+        "listbox": {
+          "x": {
+            "type": "float",
+            "value": "0"
+          },
+          "y": {
+            "type": "float",
+            "value": "1"
+          },
+          "blur": {
+            "type": "float",
+            "value": "3"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          },
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "rgba(81, 81, 81, 0.75)"
+          }
         }
       },
       "opacity": {
@@ -3400,6 +3423,24 @@
                 "value": "{ui-light.utilities.color.text.neutral.700}"
               }
             }
+          }
+        },
+        "__listbox": {
+          "border-bottom-left-radius": {
+            "type": "float",
+            "value": "{ui-light.utilities.rounded.default}"
+          },
+          "border-bottom-right-radius": {
+            "type": "float",
+            "value": "{ui-light.utilities.rounded.default}"
+          },
+          "border-top-left-radius": {
+            "type": "float",
+            "value": "{ui-light.utilities.rounded.default}"
+          },
+          "border-top-right-radius": {
+            "type": "float",
+            "value": "{ui-light.utilities.rounded.default}"
           }
         },
         "border-radius": {
@@ -4677,6 +4718,10 @@
           "border": {
             "type": "color",
             "value": "{ui-light.utilities.color.border.neutral.400}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.primary.default}"
           }
         },
         "--hover": {
@@ -4685,6 +4730,14 @@
               "description": "Used for sd-flag",
               "type": "color",
               "value": "{ui-light.utilities.color.neutral.200}"
+            }
+          }
+        },
+        "--active": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.default}"
             }
           }
         }
@@ -5895,6 +5948,29 @@
             "type": "float",
             "value": "0"
           }
+        },
+        "listbox": {
+          "x": {
+            "type": "float",
+            "value": "0"
+          },
+          "y": {
+            "type": "float",
+            "value": "0"
+          },
+          "blur": {
+            "type": "float",
+            "value": "0"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          },
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          }
         }
       },
       "opacity": {
@@ -6663,6 +6739,24 @@
                 "value": "{ui-dark.utilities.color.text.neutral.700}"
               }
             }
+          }
+        },
+        "__listbox": {
+          "border-bottom-left-radius": {
+            "type": "float",
+            "value": "{ui-dark.utilities.rounded.default}"
+          },
+          "border-bottom-right-radius": {
+            "type": "float",
+            "value": "{ui-dark.utilities.rounded.default}"
+          },
+          "border-top-left-radius": {
+            "type": "float",
+            "value": "{ui-dark.utilities.rounded.default}"
+          },
+          "border-top-right-radius": {
+            "type": "float",
+            "value": "{ui-dark.utilities.rounded.default}"
           }
         },
         "border-radius": {
@@ -7940,6 +8034,10 @@
           "border": {
             "type": "color",
             "value": "{ui-dark.utilities.color.border.neutral.400}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.white.default}"
           }
         },
         "--hover": {
@@ -7948,6 +8046,14 @@
               "description": "Used for sd-flag",
               "type": "color",
               "value": "{ui-dark.utilities.color.primary.700}"
+            }
+          }
+        },
+        "--active": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
             }
           }
         }
@@ -9158,6 +9264,29 @@
             "type": "float",
             "value": "0"
           }
+        },
+        "listbox": {
+          "x": {
+            "type": "float",
+            "value": "0"
+          },
+          "y": {
+            "type": "float",
+            "value": "20"
+          },
+          "blur": {
+            "type": "float",
+            "value": "20"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          },
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.25)"
+          }
         }
       },
       "opacity": {
@@ -9926,6 +10055,24 @@
                 "value": "{core.vb.grey.620}"
               }
             }
+          }
+        },
+        "__listbox": {
+          "border-bottom-left-radius": {
+            "type": "float",
+            "value": "{vb.utilities.rounded.default}"
+          },
+          "border-bottom-right-radius": {
+            "type": "float",
+            "value": "{vb.utilities.rounded.default}"
+          },
+          "border-top-left-radius": {
+            "type": "float",
+            "value": "{vb.utilities.rounded.default}"
+          },
+          "border-top-right-radius": {
+            "type": "float",
+            "value": "{vb.utilities.rounded.default}"
           }
         },
         "border-radius": {
@@ -11203,6 +11350,10 @@
           "border": {
             "type": "color",
             "value": "{core.vb.grey.400}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{vb.utilities.color.neutral.700}"
           }
         },
         "--hover": {
@@ -11211,6 +11362,14 @@
               "description": "Used for sd-flag",
               "type": "color",
               "value": "{core.vb.azure.50}"
+            }
+          }
+        },
+        "--active": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{vb.utilities.color.primary.default}"
             }
           }
         }
@@ -12421,6 +12580,29 @@
             "type": "float",
             "value": "0"
           }
+        },
+        "listbox": {
+          "x": {
+            "type": "float",
+            "value": "0"
+          },
+          "y": {
+            "type": "float",
+            "value": "2"
+          },
+          "blur": {
+            "type": "float",
+            "value": "4"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          },
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "rgba(5, 21, 48, 0.10)"
+          }
         }
       },
       "opacity": {
@@ -13189,6 +13371,24 @@
                 "value": "{core.kid.neutral.800}"
               }
             }
+          }
+        },
+        "__listbox": {
+          "border-bottom-left-radius": {
+            "type": "float",
+            "value": "{kid.utilities.rounded.lg}"
+          },
+          "border-bottom-right-radius": {
+            "type": "float",
+            "value": "{kid.utilities.rounded.lg}"
+          },
+          "border-top-left-radius": {
+            "type": "float",
+            "value": "{kid.utilities.rounded.lg}"
+          },
+          "border-top-right-radius": {
+            "type": "float",
+            "value": "{kid.utilities.rounded.lg}"
           }
         },
         "border-radius": {
@@ -14466,6 +14666,10 @@
           "border": {
             "type": "color",
             "value": "{core.vb.grey.400}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{kid.utilities.color.primary.900}"
           }
         },
         "--hover": {
@@ -14474,6 +14678,14 @@
               "description": "Used for sd-flag",
               "type": "color",
               "value": "{core.vb.azure.50}"
+            }
+          }
+        },
+        "--active": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{kid.utilities.color.primary.default}"
             }
           }
         }

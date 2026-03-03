@@ -253,6 +253,7 @@
   --sd-datepicker__date-item--selected-color-background: var(--sd-color-primary);
   --sd-datepicker__date-item--selected-color-text: var(--sd-color-white);
   --sd-divider--inverted-color-border: var(--sd-color-primary-400);
+  --sd-drop-shadow-listbox:  0px 1px 3px rgba(81, 81, 81, 0.75);
   --sd-drop-shadow-sm:  0.5px 0.5px 1.5px #515151;
   --sd-drop-shadow-xs:  0.5px 0.5px 1.5px #515151;
   --sd-drop-shadow:  0px 1px 3px rgba(81, 81, 81, 0.75);
@@ -279,6 +280,10 @@
   --sd-form-control-border-radius: var(--sd-spacing-1);
   --sd-form-control-color-border: var(--sd-color-neutral-800);
   --sd-form-control-color-text: var(--sd-color-black);
+  --sd-form-control__listbox-border-bottom-left-radius: var(--sd-spacing-1);
+  --sd-form-control__listbox-border-bottom-right-radius: var(--sd-spacing-1);
+  --sd-form-control__listbox-border-top-left-radius: var(--sd-spacing-1);
+  --sd-form-control__listbox-border-top-right-radius: var(--sd-spacing-1);
   --sd-header-color-background: var(--sd-color-white);
   --sd-header-padding-bottom: 0;
   --sd-header__underline-color-background: 255 255 255 / 0;
@@ -360,6 +365,7 @@
   --sd-radius: 0.25rem;
   --sd-range-tick-color-text: var(--sd-color-black);
   --sd-range__bar-border-width: var(--sd-spacing-1);
+  --sd-shadow-listbox:  0px 1px 3px 0px rgba(81, 81, 81, 0.75);
   --sd-shadow-sm:  0.5px 0.5px 1.5px 0px #515151;
   --sd-shadow-xs:  0.5px 0.5px 1.5px 0px #515151;
   --sd-shadow:  0px 1px 3px 0px rgba(81, 81, 81, 0.75);
@@ -405,8 +411,10 @@
   --sd-switch--unchecked-color-border: var(--sd-color-neutral-800);
   --sd-switch--unchecked__icon-color-background: var(--sd-color-neutral-800);
   --sd-switch-color-text: var(--sd-color-black);
+  --sd-tab--active-color-text: var(--sd-color-primary);
   --sd-tab--hover-color-background: var(--sd-color-neutral-200);
   --sd-tab-color-border: var(--sd-color-neutral-400);
+  --sd-tab-color-text: var(--sd-color-primary);
   --sd-tag--default--hover-color-background: 255 255 255 / 0;
   --sd-tag--default-color-background: 255 255 255 / 0;
   --sd-tag--default-color-border: var(--sd-color-primary);

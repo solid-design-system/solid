@@ -117,10 +117,22 @@ export default class SdTab extends SolidElement {
             name="left"
             class=${cx(
               slots.left && 'block pr-2',
-              this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'sd-tab-color-text'
+              this.disabled || this.visuallyDisabled
+                ? 'text-neutral-500'
+                : this.active
+                  ? 'sd-tab--active-color-text'
+                  : 'sd-tab-color-text'
             )}
           ></slot>
-          <slot class=${cx(this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'sd-tab-color-text')}></slot>
+          <slot
+            class=${cx(
+              this.disabled || this.visuallyDisabled
+                ? 'text-neutral-500'
+                : this.active
+                  ? 'sd-tab--active-color-text'
+                  : 'sd-tab-color-text'
+            )}
+          ></slot>
 
           ${this.variant === 'container'
             ? html`
