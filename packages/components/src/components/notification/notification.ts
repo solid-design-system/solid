@@ -5,6 +5,7 @@ import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element.js';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry.js';
 import { kebabToCamelCase, uppercaseFirstLetter } from '../../internal/string';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize.js';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event.js';
@@ -291,7 +292,7 @@ export default class SdNotification extends SolidElement {
         part="base"
         class=${cx('w-full flex items-stretch m-2 focus-visible:focus-outline')}
         id="notification"
-        tabindex="0"
+        tabindex=${ifDefined(this.closable ? '0' : undefined)}
         role="alert"
         aria-labelledby="message"
         aria-hidden=${this.open ? 'false' : 'true'}

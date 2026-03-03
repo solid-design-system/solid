@@ -1,5 +1,9 @@
 # @solid-design-system/tokens
 
+## 6.9.1
+
+## 6.9.0
+
 ## 6.8.0
 
 ### Minor Changes

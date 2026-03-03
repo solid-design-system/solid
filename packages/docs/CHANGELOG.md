@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.4.1
+
+### Patch Changes
+
+- Updated accessibility information for `sd-teaser media` _[`#2798`](https://github.com/solid-design-system/solid/pull/2798) [`228f293`](https://github.com/solid-design-system/solid/commit/228f293a08e6f584853c968aaf76bc81e0a522d2) [@balco0110](https://github.com/balco0110)_
+
 ## 2.4.0
 
 ### Minor Changes
