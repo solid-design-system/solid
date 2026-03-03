@@ -79,6 +79,10 @@ import type SdPopup from '../popup/popup';
  * @cssproperty --sd-form-control-border-radius - The border radius for form controls.
  * @cssproperty --sd-form-control-color-border - The border color for default and readonly form controls.
  * @cssproperty --sd-form-control--filled__floating-label-color-text - The text color for the floating label when the input is filled.
+ * @cssproperty --sd-form-control__listbox-border-bottom-left-radius - The border radius for the bottom left corner of the listbox.
+ * @cssproperty --sd-form-control__listbox-border-bottom-right-radius - The border radius for the bottom right corner of the listbox.
+ * @cssproperty --sd-form-control__listbox-border-top-left-radius - The border radius for the top left corner of the listbox.
+ * @cssproperty --sd-form-control__listbox-border-top-right-radius - The border radius for the top right corner of the listbox.
  * @cssproperty --sd-combobox__tag-border-width - The border width for the tags for multiple options combobox.
  */
 
@@ -1505,10 +1509,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               part="listbox"
               class=${cx(
                 'bg-white px-2 py-3 relative border-primary overflow-y-auto',
-                this.open && 'shadow transition-shadow duration-medium ease-in-out',
+                this.open && 'shadow-listbox transition-shadow duration-medium ease-in-out',
                 this.currentPlacement === 'bottom'
-                  ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
-                  : 'border-r-2 border-t-2 border-l-2 rounded-tr-default rounded-tl-default'
+                  ? 'border-r-2 border-b-2 border-l-2 form-control__listbox-border-bottom-right-radius form-control__listbox-border-bottom-left-radius'
+                  : 'border-r-2 border-t-2 border-l-2 form-control__listbox-border-top-right-radius form-control__listbox-border-top-left-radius'
               )}
               tabindex="-1"
               @mousedown=${this.preventLoosingFocus}
