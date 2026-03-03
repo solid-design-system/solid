@@ -239,6 +239,20 @@ describe('<sd-radio-group>', () => {
   });
 });
 
+describe('when there are no radios', () => {
+  it('should warn but not throw error', async () => {
+    const radioGroup = await fixture<SdRadioGroup>(html` <sd-radio-group></sd-radio-group> `);
+    const warningLog = sinon.stub(console, 'warn');
+
+    radioGroup.focus();
+    await radioGroup.updateComplete;
+
+    expect(warningLog.calledOnceWith('No radios found in the radio group.')).to.be.true;
+
+    warningLog.restore();
+  });
+});
+
 describe('when resetting a form', () => {
   it('should reset the element to its initial value', async () => {
     const form = await fixture<HTMLFormElement>(html`
