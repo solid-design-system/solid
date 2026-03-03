@@ -21,11 +21,9 @@ export default {
     {
       type: 'slot',
       name: 'default',
-      value: `<sd-radio-group name="large-radio-group" size="lg" value="1" label="Group label"> 
-                <sd-radio value="1">Radio 1</sd-radio>
-                <sd-radio value="2">Radio 2</sd-radio>
-                <sd-radio value="3">Radio 3</sd-radio>
-              </sd-radio-group>`
+      value: `<sd-radio value="1">Radio 1</sd-radio>
+              <sd-radio value="2">Radio 2</sd-radio>
+              <sd-radio value="3">Radio 3</sd-radio>`
     },
     { type: 'attribute', name: 'name', value: 'radio-group' },
     { type: 'attribute', name: 'value', value: '1' }
