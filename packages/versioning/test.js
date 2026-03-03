@@ -62,6 +62,16 @@ test('should not replace event names', () => {
   assert.strictEqual(result, fileContent); // No replacements in event names
 });
 
+test('should not replace assumeInteractionOn events', () => {
+  const fileContent = `
+    const controller = new FormControlController(this, {
+      assumeInteractionOn: ['sd-input']
+    });
+  `;
+  const result = replaceComponentName(fileContent, 'input', '3.2.1');
+  assert.strictEqual(result, fileContent); // No replacements in assumeInteractionOn event names
+});
+
 test('should replace multiple occurrences', () => {
   const fileContent = `
     <div class="sd-button"></div>
