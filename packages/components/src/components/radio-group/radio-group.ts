@@ -141,13 +141,22 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   }
 
   private getAllRadios() {
-    return [...this.querySelectorAll<SdRadio | SdRadioButton>('sd-radio, sd-radio-button')];
+    const radios = [...this.querySelectorAll<SdRadio | SdRadioButton>('sd-radio, sd-radio-button')];
+
+    if (radios.length === 0) {
+      console.warn('No radios found in the radio group.');
+    }
+
+    return radios;
   }
 
   private handleRadioClick(event: MouseEvent) {
     const target = (event.target as HTMLElement).closest<SdRadio | SdRadioButton>('sd-radio, sd-radio-button')!;
-    const radios = this.getAllRadios();
     const oldValue = this.value;
+    const radios = this.getAllRadios();
+    if (radios.length === 0) {
+      return;
+    }
 
     if (target.disabled) {
       return;
@@ -168,6 +177,10 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
     }
 
     const radios = this.getAllRadios().filter(radio => !radio.disabled);
+    if (radios.length === 0) {
+      return;
+    }
+
     const checkedRadio = radios.find(radio => radio.checked) ?? radios[0];
     const incr = event.key === ' ' ? 0 : ['ArrowUp', 'ArrowLeft'].includes(event.key) ? -1 : 1;
     const oldValue = this.value;
@@ -210,6 +223,10 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   /** Move focus to the checked radio (or the first one if none are checked) */
   focus() {
     const radios = this.getAllRadios();
+    if (radios.length === 0) {
+      return;
+    }
+
     const checked = radios.find(radio => radio.checked);
     const radioToFocus = checked || radios[0];
 
@@ -226,6 +243,10 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
 
   private async syncRadioElements() {
     const radios = this.getAllRadios();
+    if (radios.length === 0) {
+      this.hasButtonGroup = false;
+      return;
+    }
 
     await Promise.all(
       // Sync the checked state and size
@@ -286,6 +307,10 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
 
   private updateCheckedRadio() {
     const radios = this.getAllRadios();
+    if (radios.length === 0) {
+      return;
+    }
+
     radios.forEach(radio => (radio.checked = radio.value === this.value));
     this.formControlController.setValidity(this.validity.valid);
   }
