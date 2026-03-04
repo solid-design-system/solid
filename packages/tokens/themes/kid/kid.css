@@ -52,6 +52,7 @@
   --sd-button--primary--default-color-background: var(--sd-color-black);
   --sd-button--primary--default-color-text: var(--sd-color-accent);
   --sd-button--primary--hover-color-background: var(--sd-color-neutral-800);
+  --sd-button--primary--hover-color-text: var(--sd-color-accent);
   --sd-button--primary--inverted--active-color-background: var(--sd-color-accent);
   --sd-button--primary--inverted--active-color-text: var(--sd-color-neutral-800);
   --sd-button--primary--inverted--default-color-background: var(--sd-color-accent);

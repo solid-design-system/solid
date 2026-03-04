@@ -234,6 +234,10 @@
   background-color: rgba(var(--sd-button--primary--hover-color-background, rgba(var(--sd-color-primary-500))));
 }
 
+@utility sd-button--primary--hover-color-text {
+  color: rgba(var(--sd-button--primary--hover-color-text, rgba(var(--sd-color-primary-100))));
+}
+
 @utility sd-button--primary--inverted--active-color-background {
   background-color: rgba(var(--sd-button--primary--inverted--active-color-background, rgba(var(--sd-color-primary-200))));
 }

@@ -185,8 +185,8 @@
         "VariableID:43927:5024",
         "VariableID:43927:5025",
         "VariableID:43927:5026",
-        "VariableID:43927:5038",
         "VariableID:43927:5027",
+        "VariableID:43927:5038",
         "VariableID:43979:190",
         "VariableID:44917:19938",
         "VariableID:44917:19939",
@@ -462,18 +462,14 @@
         "VariableID:43979:261",
         "VariableID:43979:262",
         "VariableID:43979:263",
-        "VariableID:43979:299",
         "VariableID:43979:264",
+        "VariableID:43979:299",
         "VariableID:43979:300",
         "VariableID:43979:265",
         "VariableID:43979:301",
         "VariableID:43979:302",
         "VariableID:43373:35301",
         "VariableID:43373:35302",
-        "VariableID:46825:8941",
-        "VariableID:58454:1127",
-        "VariableID:58406:745",
-        "VariableID:51502:42739",
         "VariableID:43373:35303",
         "VariableID:43373:35304",
         "VariableID:43373:35305",
@@ -588,6 +584,7 @@
         "VariableID:43979:286",
         "VariableID:43979:287",
         "VariableID:43979:311",
+        "VariableID:58786:17900",
         "VariableID:43979:268",
         "VariableID:43979:269",
         "VariableID:43979:270",
@@ -652,8 +649,8 @@
         "VariableID:44029:1676",
         "VariableID:44029:1677",
         "VariableID:44029:1678",
-        "VariableID:44029:1684",
         "VariableID:44029:1679",
+        "VariableID:44029:1684",
         "VariableID:44029:1681",
         "VariableID:44029:1682",
         "VariableID:44029:1683",
@@ -735,8 +732,8 @@
         "VariableID:44883:20780",
         "VariableID:44883:24906",
         "VariableID:44883:24608",
-        "VariableID:54634:38691",
         "VariableID:47783:193767",
+        "VariableID:54634:38691",
         "VariableID:47783:193768",
         "VariableID:47783:193769",
         "VariableID:46871:963",
@@ -833,6 +830,10 @@
         "VariableID:46841:9198",
         "VariableID:46841:9202",
         "VariableID:46841:9203",
+        "VariableID:46825:8941",
+        "VariableID:58454:1127",
+        "VariableID:58406:745",
+        "VariableID:51502:42739",
         "VariableID:46396:91135",
         "VariableID:46396:91136",
         "VariableID:46396:101273",
@@ -11876,7 +11877,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "44883:0": {
-          "id": "VariableID:43979:193",
+          "id": "VariableID:43927:5029",
           "type": "VARIABLE_ALIAS"
         },
         "47719:0": {
@@ -11940,7 +11941,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "44883:0": {
-          "id": "VariableID:43979:193",
+          "id": "VariableID:43927:5029",
           "type": "VARIABLE_ALIAS"
         },
         "47719:0": {
@@ -11972,7 +11973,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "44883:0": {
-          "id": "VariableID:43979:259",
+          "id": "VariableID:43927:5029",
           "type": "VARIABLE_ALIAS"
         },
         "47719:0": {
@@ -12037,7 +12038,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "44883:0": {
-          "id": "VariableID:43979:193",
+          "id": "VariableID:43927:5029",
           "type": "VARIABLE_ALIAS"
         },
         "47719:0": {
@@ -12229,7 +12230,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "44883:0": {
-          "id": "VariableID:43979:193",
+          "id": "VariableID:43927:5029",
           "type": "VARIABLE_ALIAS"
         },
         "47719:0": {
@@ -13321,7 +13322,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "44883:0": {
-          "id": "VariableID:43979:198",
+          "id": "VariableID:43979:199",
           "type": "VARIABLE_ALIAS"
         },
         "47719:0": {
@@ -14562,7 +14563,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "44883:0": {
-          "id": "VariableID:43979:220",
+          "id": "VariableID:43979:225",
           "type": "VARIABLE_ALIAS"
         },
         "47719:0": {
@@ -18227,7 +18228,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "44883:0": {
-          "id": "VariableID:43979:193",
+          "id": "VariableID:43927:5029",
           "type": "VARIABLE_ALIAS"
         },
         "47719:0": {
@@ -18531,7 +18532,7 @@
     },
     "VariableID:47208:26542": {
       "codeSyntax": {},
-      "description": "Used for font weight inside sd-tag, sd-tab &amp; sd-radio-button",
+      "description": "Used for font weight inside sd-tag, sd-tab, sd-navigation-item &amp; sd-radio-button",
       "hiddenFromPublishing": false,
       "id": "VariableID:47208:26542",
       "key": "61a7bfd54a2fac700d9ca183c80b86e34e437487",
@@ -18680,7 +18681,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "44883:0": {
-          "id": "VariableID:43979:193",
+          "id": "VariableID:43927:5029",
           "type": "VARIABLE_ALIAS"
         },
         "47719:0": {
@@ -22690,7 +22691,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "44883:0": {
-          "id": "VariableID:43979:193",
+          "id": "VariableID:43927:5029",
           "type": "VARIABLE_ALIAS"
         },
         "47719:0": {
@@ -23449,6 +23450,38 @@
         },
         "47719:0": {
           "id": "VariableID:43979:202",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:58786:17900": {
+      "codeSyntax": {},
+      "description": "Used for inverted hover interaction button label",
+      "hiddenFromPublishing": false,
+      "id": "VariableID:58786:17900",
+      "key": "fbc894c21f65396b9c7734eb70c5156f8dc3467a",
+      "name": "components/sd-button/--primary/--hover/color/text",
+      "remote": false,
+      "resolvedType": "COLOR",
+      "scopes": [
+        "ALL_SCOPES"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "id": "VariableID:43979:193",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43174:14": {
+          "id": "VariableID:43979:197",
+          "type": "VARIABLE_ALIAS"
+        },
+        "44883:0": {
+          "id": "VariableID:43927:5029",
+          "type": "VARIABLE_ALIAS"
+        },
+        "47719:0": {
+          "id": "VariableID:43979:204",
           "type": "VARIABLE_ALIAS"
         }
       },

@@ -3529,6 +3529,11 @@
               "background": {
                 "type": "color",
                 "value": "{ui-light.utilities.color.primary.500}"
+              },
+              "text": {
+                "description": "Used for inverted hover interaction button label",
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.100}"
               }
             }
           }
@@ -4813,7 +4818,7 @@
       },
       "choice-control": {
         "font-weight": {
-          "description": "Used for font weight inside sd-tag, sd-tab &amp; sd-radio-button",
+          "description": "Used for font weight inside sd-tag, sd-tab, sd-navigation-item &amp; sd-radio-button",
           "type": "string",
           "value": "{ui-light.utilities.font-weight.normal}"
         }
@@ -6845,6 +6850,11 @@
               "background": {
                 "type": "color",
                 "value": "{ui-dark.utilities.color.primary.100}"
+              },
+              "text": {
+                "description": "Used for inverted hover interaction button label",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.500}"
               }
             }
           }
@@ -8129,7 +8139,7 @@
       },
       "choice-control": {
         "font-weight": {
-          "description": "Used for font weight inside sd-tag, sd-tab &amp; sd-radio-button",
+          "description": "Used for font weight inside sd-tag, sd-tab, sd-navigation-item &amp; sd-radio-button",
           "type": "string",
           "value": "{ui-dark.utilities.font-weight.normal}"
         }
@@ -10132,7 +10142,7 @@
                 "background": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb.utilities.color.primary.100}"
+                  "value": "{core.vb.azure.100}"
                 },
                 "text": {
                   "description": "Default icon color ",
@@ -10160,7 +10170,12 @@
             "color": {
               "background": {
                 "type": "color",
-                "value": "{vb.utilities.color.primary.600}"
+                "value": "{vb.utilities.color.primary.700}"
+              },
+              "text": {
+                "description": "Used for inverted hover interaction button label",
+                "type": "color",
+                "value": "{core.vb.azure.100}"
               }
             }
           }
@@ -10171,7 +10186,7 @@
               "background": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{vb.utilities.color.primary.100}"
+                "value": "{core.vb.azure.100}"
               },
               "text": {
                 "description": "Used for pressed interaction",
@@ -10185,7 +10200,7 @@
               "background": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{vb.utilities.color.primary.100}"
+                "value": "{core.vb.azure.100}"
               }
             }
           },
@@ -10195,7 +10210,7 @@
                 "text": {
                   "description": "Used for inverted hover interaction button label",
                   "type": "color",
-                  "value": "{vb.utilities.color.primary.100}"
+                  "value": "{core.vb.azure.100}"
                 },
                 "background": {
                   "description": "Used for sd-chip, sd-badge",
@@ -10283,7 +10298,7 @@
               "background": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{vb.utilities.color.background.primary.100}"
+                "value": "{core.vb.azure.100}"
               }
             }
           },
@@ -10293,7 +10308,7 @@
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb.utilities.color.primary.100}"
+                  "value": "{core.vb.azure.100}"
                 },
                 "background": {
                   "description": "Used for sd-chip, sd-badge",
@@ -10329,7 +10344,7 @@
               "background": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{vb.utilities.color.primary.100}"
+                "value": "{core.vb.azure.100}"
               },
               "text": {
                 "description": "Used for pressed interaction",
@@ -10448,7 +10463,7 @@
                 "background": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb.utilities.color.primary.100}"
+                  "value": "{core.vb.azure.100}"
                 },
                 "text": {
                   "description": "Default icon color ",
@@ -10698,7 +10713,7 @@
         "color": {
           "text": {
             "type": "color",
-            "value": "{vb.utilities.color.neutral.700}"
+            "value": "{vb.utilities.color.black.default}"
           },
           "_icon": {
             "type": "color",
@@ -11445,7 +11460,7 @@
       },
       "choice-control": {
         "font-weight": {
-          "description": "Used for font weight inside sd-tag, sd-tab &amp; sd-radio-button",
+          "description": "Used for font weight inside sd-tag, sd-tab, sd-navigation-item &amp; sd-radio-button",
           "type": "string",
           "value": "{vb.utilities.font-weight.bold}"
         }
@@ -13477,6 +13492,11 @@
               "background": {
                 "type": "color",
                 "value": "{kid.utilities.color.neutral.800}"
+              },
+              "text": {
+                "description": "Used for inverted hover interaction button label",
+                "type": "color",
+                "value": "{kid.utilities.color.accent.100}"
               }
             }
           }
@@ -14761,7 +14781,7 @@
       },
       "choice-control": {
         "font-weight": {
-          "description": "Used for font weight inside sd-tag, sd-tab &amp; sd-radio-button",
+          "description": "Used for font weight inside sd-tag, sd-tab, sd-navigation-item &amp; sd-radio-button",
           "type": "string",
           "value": "{kid.utilities.font-weight.bold}"
         }
