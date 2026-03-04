@@ -73,8 +73,34 @@ export function versionComponents({ source, destination, components }) {
 
 export function replaceComponentName(fileContent, componentName, version) {
   const currentVersion = version.replace(/\./g, '-');
+  const pattern = new RegExp(`sd-${componentName}`, 'g');
 
-  // Events, CSS Variables and URLs to Storybook should not be versioned
-  const regex = new RegExp(`(?<!this.emit\\("|-|--)sd-${componentName}`, 'g');
-  return fileContent.replace(regex, `sd-${currentVersion}-${componentName}`);
+  return fileContent.replace(pattern, (match, offset) => {
+    // Extract up to 50 characters before the match.
+    // We clamp the start at 0 to avoid negative indices.
+    const beforeStartIndex = Math.max(0, offset - 50);
+
+    // The text immediately before the match, used to detect patterns like:
+    // - this.emit("sd-…")
+    // - assumeInteractionOn arrays
+    const textBeforeMatch = fileContent.slice(beforeStartIndex, offset);
+
+    // The text immediately after the match (up to 10 chars).
+    // Used to detect Storybook URLs like: sd-button--docs
+    const textAfterMatch = fileContent.slice(offset + match.length, offset + match.length + 10);
+
+    // skips css variables
+    if (fileContent.slice(Math.max(0, offset - 2), offset) === '--') return match;
+
+    // skips storybook urls
+    if (textAfterMatch.startsWith('--docs')) return match;
+
+    // skips event names passed to this.emit
+    if (textBeforeMatch.endsWith('this.emit("')) return match;
+
+    // skips event names in assumeInteractionOn arrays
+    if (textBeforeMatch.includes('assumeInteractionOn')) return match;
+
+    return `sd-${currentVersion}-${componentName}`;
+  });
 }
