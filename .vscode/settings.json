@@ -15,6 +15,7 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "tailwindCSS.experimental.configFile": "packages/tokens/themes/tailwind.css",
   "cSpell.words": ["microfrontends"],
   "cSpell.ignorePaths": ["**/package.json", "**/extensions.json", ".vscode/settings.json", "**/pnpm-lock.yaml"],
   "cSpell.languageSettings": [

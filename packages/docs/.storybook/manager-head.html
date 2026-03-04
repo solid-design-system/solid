@@ -171,6 +171,24 @@
     border-color: var(--sd-color-accent);
   }
 
+  #storybook-explorer-tree .sidebar-item[data-selected='true']:hover button {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  #storybook-explorer-tree .sidebar-item[data-selected='true'] button:hover,
+  #storybook-explorer-tree .sidebar-item[data-selected='true'] button[data-displayed='on'],
+  #storybook-explorer-tree .sidebar-item[data-selected='false'] button[data-displayed='off']:hover {
+    background-color: var(--sd-color-primary);
+    box-shadow: none;
+  }
+
+  #storybook-explorer-tree .sidebar-item[data-selected='true'] button:hover svg,
+  #storybook-explorer-tree .sidebar-item[data-selected='true'] button[data-displayed='on'] svg,
+  #storybook-explorer-tree .sidebar-item[data-selected='false'] button[data-displayed='off']:hover svg {
+    color: white;
+  }
+
   #storybook-explorer-tree .sidebar-item:hover,
   #storybook-explorer-tree .sidebar-item[data-nodetype='group']:hover,
   #storybook-explorer-tree .sidebar-item[data-selected='true']:hover {
