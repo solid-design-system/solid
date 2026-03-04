@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.4.2
+
+### Patch Changes
+
+- Fixed `sd-radio-group` default story markup. _[`#2825`](https://github.com/solid-design-system/solid/pull/2825) [`ecb1e2d`](https://github.com/solid-design-system/solid/commit/ecb1e2d2ffebd69376ee46133b6a2ef4940edfbe) [@smfonseca](https://github.com/smfonseca)_
+
 ## 2.4.1
 
 ### Patch Changes
