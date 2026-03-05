@@ -42,11 +42,11 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-tag--selected--hover-color-border - The border color for selected tags in hover state.
  * @cssproperty --sd-tag--selected--hover-color-text - The text color for selected tags in hover state.
  * @cssproperty --sd-tag--selected-border-width - The border width for selected tags.
- * @cssproperty --sd-tag--disabled-color-border - The border color for disabled tags.
  * @cssproperty --sd-tag-border-radius - The border radius for tags.
  * @cssproperty --sd-tag--size-lg-font-size - The font size for large tags.
  * @cssproperty --sd-tag--size-sm-font-size - The font size for small tags.
- * @cssproperty --sd-tag-font-weight - The font weight for tags.
+ * @cssproperty --sd-choice-control-font-weight - The font weight for tags.
+ * @cssproperty --sd-tag--disabled-color-text - The text color for disabled tags.
  */
 @customElement('sd-tag')
 export default class SdTag extends SolidElement {
@@ -147,8 +147,8 @@ export default class SdTag extends SolidElement {
           'flex border box-border sd-tag-border-radius items-center leading-none whitespace-nowrap transition-colors duration-fast ease-in-out focus-visible:focus-outline',
           {
             /* sizes, fonts */
-            lg: 'h-8 sd-tag-font-weight sd-tag--size-lg-font-size gap-2',
-            sm: 'h-6 sd-tag-font-weight sd-tag--size-sm-font-size gap-1'
+            lg: 'h-8 choice-control-font-weight sd-tag--size-lg-font-size gap-2',
+            sm: 'h-6 choice-control-font-weight sd-tag--size-sm-font-size gap-1'
           }[this.size],
           {
             /* padding */
@@ -156,22 +156,32 @@ export default class SdTag extends SolidElement {
             sm: !isRemovable ? 'px-3 py-[5px]' : 'pl-3 pr-2 py-2'
           }[this.size],
           /* colors */
-          !this.selected
-            ? cx(
-                'sd-tag--default-color-border sd-tag--default-color-text disabled:sd-tag--disabled-color-border disabled:text-neutral-500',
-                !isRemovable
-                  ? 'sd-tag--default-color-background hover:border-primary-500 hover:text-primary-500 hover:sd-tag--default--hover-color-background'
-                  : 'sd-tag--default-color-background has-[button:hover]:border-primary-500 has-[button:hover]:text-primary-500'
+          !this.disabled
+            ? !this.selected
+              ? cx(
+                  'sd-tag--default-color-border sd-tag--default-color-text',
+                  !isRemovable
+                    ? 'sd-tag--default-color-background hover:border-primary-500 hover:text-primary-500 hover:sd-tag--default--hover-color-background'
+                    : 'sd-tag--default-color-background has-[button:hover]:border-primary-500 has-[button:hover]:text-primary-500'
+                )
+              : 'sd-tag--selected-border-width sd-tag--selected--default-color-background sd-tag--selected--default-color-border sd-tag--selected--default-color-text hover:sd-tag--selected--hover-color-background hover:sd-tag--selected--hover-color-border hover:sd-tag--selected--hover-color-text'
+            : cx(
+                !isLink && 'cursor-not-allowed',
+                this.selected && 'bg-neutral-500 text-white',
+                'border-neutral-500 sd-tag--disabled-color-text'
               )
-            : 'sd-tag--selected-border-width sd-tag--selected--default-color-background sd-tag--selected--default-color-border sd-tag--selected--default-color-text hover:sd-tag--selected--hover-color-background hover:sd-tag--selected--hover-color-border hover:sd-tag--selected--hover-color-text disabled:bg-neutral-500 disabled:sd-tag--disabled-color-border',
-          this.disabled && !isLink && 'cursor-not-allowed'
         )}
       >
         <slot name="icon-left" class=${cx('flex-shrink-0', this.size === 'lg' ? 'text-base' : 'text-[0.75rem]')}></slot>
         <slot id="content" part='content'></slot>
         ${
           isRemovable && !isLink
-            ? html` <button class="sd-interactive flex items-center" type="button" @click=${this.handleRemove}>
+            ? html` <button
+                class="sd-interactive flex items-center"
+                type="button"
+                @click=${this.handleRemove}
+                ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
+              >
                 <slot part="removable-indicator" name="removable-indicator">
                   <sd-icon library="_internal" name="close" label=${this.localize.term('remove')}></sd-icon>
                 </slot>
