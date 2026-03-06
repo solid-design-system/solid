@@ -36,6 +36,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  *
  * @cssproperty --sd-checkbox-border-width - The border width of the checkbox.
  * @cssproperty --sd-form-control-color-border - The color border for form controls.
+ * @cssproperty --sd-checkbox--checked--hovered-color-border - The border color of the checkbox when checked and hovered.
  */
 @customElement('sd-checkbox')
 export default class SdCheckbox extends SolidElement implements SolidFormControl {
@@ -264,7 +265,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
                 invalidIndeterminate: 'border-error bg-error group-hover:bg-error-400',
-                invalid: 'border-error group-hover:bg-neutral-200',
+                invalid: 'border-error group-hover:border-error-400 group-hover:bg-transparent',
                 filled:
                   'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent group-hover:bg-accent-550',
                 default: 'form-control-color-border hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
@@ -287,7 +288,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
                     disabled: '',
                     visuallyDisabled: '',
                     invalidIndeterminate: ' bg-error group-hover:bg-error-400',
-                    invalid: 'group-hover:bg-neutral-200',
+                    invalid: '',
                     filled: 'bg-accent group-hover:bg-accent-550',
                     default: 'hover:bg-neutral-200 group-hover:bg-neutral-200 bg-white'
                   }[checkboxState]
@@ -320,11 +321,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             id="label"
             class=${cx(
               'select-none inline-block ml-2',
-              this.disabled || this.visuallyDisabled
-                ? 'text-neutral-500'
-                : this.showInvalidStyle
-                  ? 'text-error'
-                  : 'text-black'
+              this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-black'
             )}
           >
             <slot></slot>
@@ -336,14 +333,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           class=${cx('flex items-center gap-2', this.showInvalidStyle && 'mt-2')}
         >
           ${this.showInvalidStyle
-            ? html` <sd-icon
-                id="invalid-icon"
-                part="invalid-icon"
-                class=${cx('text-error')}
-                library="_internal"
-                name="risk"
-              >
-              </sd-icon>`
+            ? html` <sd-icon id="invalid-icon" part="invalid-icon" library="_internal" name="risk"> </sd-icon>`
             : ''}
           ${this.formControlController.renderInvalidMessage(this.size)}
         </div>
@@ -367,6 +357,10 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
 
       :host([required]) #label::after {
         content: ' *';
+      }
+
+      [part='invalid-icon'] {
+        color: rgb(var(--sd-color-icon-fill-error));
       }
     `
   ];

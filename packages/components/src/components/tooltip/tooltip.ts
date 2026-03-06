@@ -408,10 +408,6 @@ export default class SdTooltip extends SolidElement {
         max-width: var(--auto-size-available-width) !important;
         max-height: var(--auto-size-available-height) !important;
       }
-
-      :host [slot='anchor'] {
-        color: rgba(var(--sd-form-control__tooltip-color-icon));
-      }
     `
   ];
 }

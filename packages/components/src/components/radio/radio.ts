@@ -168,7 +168,7 @@ export default class SdRadio extends SolidElement {
           part="label"
           class=${cx(
             'ml-2 select-none inline-block',
-            this.disabled || this.visuallyDisabled ? 'text-neutral-500' : this.invalid ? 'text-error' : 'text-black'
+            this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-black'
           )}
         >
         </slot>
