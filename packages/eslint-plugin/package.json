@@ -34,13 +34,13 @@
     "postversion": "pnpm build"
   },
   "devDependencies": {
-    "@types/node": "^25.2.3",
-    "@typescript-eslint/rule-tester": "^8.55.0",
-    "@typescript-eslint/utils": "^8.55.0",
+    "@types/node": "^25.3.0",
+    "@typescript-eslint/rule-tester": "^8.56.1",
+    "@typescript-eslint/utils": "^8.56.1",
     "es-html-parser": "^0.3.0",
     "esbuild": "^0.27.3",
-    "eslint": "^10.0.0",
-    "globby": "^16.1.0",
+    "eslint": "^10.0.2",
+    "globby": "^16.1.1",
     "jest": "^30.2.0",
     "plop": "^4.0.5",
     "ts-jest": "^29.4.4",
@@ -48,7 +48,7 @@
     "typescript": "5.8.3"
   },
   "peerDependencies": {
-    "@html-eslint/parser": "^0.54.0",
+    "@html-eslint/parser": "^0.57.0",
     "eslint": "^9.18.0"
   },
   "dependencies": {
