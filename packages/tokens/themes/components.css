@@ -114,12 +114,12 @@
   background-color: rgba(var(--sd-accordion__indicator-color, rgba(var(--sd-color-accent))));
 }
 
-@utility sd-audio__slide-bar--inverted-color-border {
-  border-color: rgba(var(--sd-audio__slide-bar--inverted-color-border, rgba(var(--sd-color-primary-400))));
+@utility sd-audio__slide-bar--inverted-color-background {
+  background-color: rgba(var(--sd-audio__slide-bar--inverted-color-background, rgba(var(--sd-color-primary-400))));
 }
 
-@utility sd-audio__track-bar--inverted-color-border {
-  border-color: rgba(var(--sd-audio__track-bar--inverted-color-border, rgba(var(--sd-color-white))));
+@utility sd-audio__track-bar--inverted-color-background {
+  background-color: rgba(var(--sd-audio__track-bar--inverted-color-background, rgba(var(--sd-color-white))));
 }
 
 @utility sd-badge--blue--inverted-color-background {
@@ -650,12 +650,16 @@
   background-color: rgba(var(--sd-map-marker--main-color-background, rgba(var(--sd-color-accent-500))));
 }
 
+@utility sd-map-marker--pin--default-color-background {
+  background-color: rgba(var(--sd-map-marker--pin--default-color-background, rgba(var(--sd-color-white))));
+}
+
 @utility sd-map-marker--pin--hover-color-background {
   background-color: rgba(var(--sd-map-marker--pin--hover-color-background, rgba(var(--sd-color-primary-100))));
 }
 
-@utility sd-map-marker--pin-color-icon-fill {
-  fill: rgba(var(--sd-map-marker--pin-color-icon-fill, rgba(var(--sd-color-primary))));
+@utility sd-map-marker--pin-color-text {
+  color: rgba(var(--sd-map-marker--pin-color-text, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-menu-item--disabled-color-icon-fill {

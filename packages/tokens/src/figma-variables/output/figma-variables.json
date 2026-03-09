@@ -1679,6 +1679,11 @@
           "description": "opacity 100%",
           "type": "float",
           "value": "100"
+        },
+        "opacity-0": {
+          "description": "opacity 50%",
+          "type": "float",
+          "value": "0"
         }
       }
     },
@@ -4426,7 +4431,7 @@
         "__slide-bar": {
           "--inverted": {
             "color": {
-              "border": {
+              "background": {
                 "description": "Used for inverted dividers",
                 "type": "color",
                 "value": "{ui-light.utilities.color.primary.400}"
@@ -4437,7 +4442,7 @@
         "__track-bar": {
           "--inverted": {
             "color": {
-              "border": {
+              "background": {
                 "description": "Used for inverted dividers",
                 "type": "color",
                 "value": "{ui-light.utilities.color.white.default}"
@@ -4518,9 +4523,18 @@
             }
           },
           "color": {
-            "icon-fill": {
+            "text": {
               "type": "color",
               "value": "{ui-light.utilities.color.background.primary.default}"
+            }
+          },
+          "--default": {
+            "color": {
+              "background": {
+                "description": "Inverted icon color",
+                "type": "color",
+                "value": "{ui-light.utilities.color.white.default}"
+              }
             }
           }
         }
@@ -7747,7 +7761,7 @@
         "__slide-bar": {
           "--inverted": {
             "color": {
-              "border": {
+              "background": {
                 "description": "Used for inverted dividers",
                 "type": "color",
                 "value": "{ui-dark.utilities.color.primary.400}"
@@ -7758,7 +7772,7 @@
         "__track-bar": {
           "--inverted": {
             "color": {
-              "border": {
+              "background": {
                 "description": "Used for inverted dividers",
                 "type": "color",
                 "value": "{ui-dark.utilities.color.white.default}"
@@ -7839,9 +7853,18 @@
             }
           },
           "color": {
-            "icon-fill": {
+            "text": {
               "type": "color",
               "value": "{ui-dark.utilities.color.primary.default}"
+            }
+          },
+          "--default": {
+            "color": {
+              "background": {
+                "description": "Inverted icon color",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.white.default}"
+              }
             }
           }
         }
@@ -11068,7 +11091,7 @@
         "__slide-bar": {
           "--inverted": {
             "color": {
-              "border": {
+              "background": {
                 "description": "Used for inverted dividers",
                 "type": "color",
                 "value": "rgba(255, 255, 255, 0.50)"
@@ -11079,7 +11102,7 @@
         "__track-bar": {
           "--inverted": {
             "color": {
-              "border": {
+              "background": {
                 "description": "Used for inverted dividers",
                 "type": "color",
                 "value": "{vb.utilities.color.white.default}"
@@ -11122,7 +11145,7 @@
             "color": {
               "background": {
                 "type": "color",
-                "value": "{vb.utilities.color.background.accent.500}"
+                "value": "{vb.utilities.color.primary.default}"
               }
             }
           },
@@ -11145,7 +11168,7 @@
           "color": {
             "background": {
               "type": "color",
-              "value": "{vb.utilities.color.background.accent.500}"
+              "value": "{vb.utilities.color.primary.default}"
             }
           }
         },
@@ -11160,9 +11183,18 @@
             }
           },
           "color": {
-            "icon-fill": {
+            "text": {
               "type": "color",
-              "value": "{vb.utilities.color.background.accent.500}"
+              "value": "{vb.utilities.color.primary.default}"
+            }
+          },
+          "--default": {
+            "color": {
+              "background": {
+                "description": "Inverted icon color",
+                "type": "color",
+                "value": "{vb.utilities.color.white.default}"
+              }
             }
           }
         }
@@ -14389,7 +14421,7 @@
         "__slide-bar": {
           "--inverted": {
             "color": {
-              "border": {
+              "background": {
                 "description": "Used for inverted dividers",
                 "type": "color",
                 "value": "rgba(255, 255, 255, 0.50)"
@@ -14400,7 +14432,7 @@
         "__track-bar": {
           "--inverted": {
             "color": {
-              "border": {
+              "background": {
                 "description": "Used for inverted dividers",
                 "type": "color",
                 "value": "{kid.utilities.color.white.default}"
@@ -14481,9 +14513,18 @@
             }
           },
           "color": {
-            "icon-fill": {
+            "text": {
               "type": "color",
               "value": "{kid.utilities.color.background.primary.default}"
+            }
+          },
+          "--default": {
+            "color": {
+              "background": {
+                "description": "Inverted icon color",
+                "type": "color",
+                "value": "{kid.utilities.color.accent.100}"
+              }
             }
           }
         }

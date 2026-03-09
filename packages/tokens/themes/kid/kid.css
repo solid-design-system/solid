@@ -19,8 +19,8 @@
   --sd-aspect-golden-ratio: 1.6180339887498948482 / 1;
   --sd-aspect-square: 1 / 1;
   --sd-aspect-video: 16 / 9;
-  --sd-audio__slide-bar--inverted-color-border: var(--sd-color-neutral-100);
-  --sd-audio__track-bar--inverted-color-border: var(--sd-color-white);
+  --sd-audio__slide-bar--inverted-color-background: var(--sd-color-neutral-100);
+  --sd-audio__track-bar--inverted-color-background: var(--sd-color-white);
   --sd-badge--blue--inverted-color-background: var(--sd-color-white);
   --sd-badge--blue--inverted-color-text: var(--sd-color-primary-800);
   --sd-badge--blue-color-background: var(--sd-color-black);
@@ -300,8 +300,9 @@
   --sd-map-marker--cluster--hover-color-background: var(--sd-color-neutral-800);
   --sd-map-marker--cluster-color-text: var(--sd-color-accent);
   --sd-map-marker--main-color-background: var(--sd-color-black);
+  --sd-map-marker--pin--default-color-background: var(--sd-color-accent);
   --sd-map-marker--pin--hover-color-background: var(--sd-color-neutral-100);
-  --sd-map-marker--pin-color-icon-fill: var(--sd-color-black);
+  --sd-map-marker--pin-color-text: var(--sd-color-black);
   --sd-marker-border-width: var(--sd-spacing-0\.25);
   --sd-marker-font-size: var(--sd-spacing-3);
   --sd-marker-font-weight: var(--sd-font-weight-bold);
