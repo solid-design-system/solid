@@ -27,6 +27,14 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --map-marker-scaling - Scale the marker size.
  * @cssproperty --sd-map-marker-cluster--hovered-color-icon-fill - The icon fill color for map marker clusters in hovered state.
  * @cssproperty --sd-map-marker-cluster-color-icon-fill - The default icon fill color for map marker clusters.
+ * @cssproperty --sd-map-marker-cluster--hovered-color-text - The text color for map marker clusters in hovered state.
+ * @cssproperty --sd-map-marker--cluster--default-color-background - The default background color for map marker clusters.
+ * @cssproperty --sd-map-marker--cluster--hover-color-background - The background color for map marker clusters in hover state.
+ * @cssproperty --sd-map-marker--cluster-color-text - The text color for map marker clusters.
+ * @cssproperty --sd-map-marker--main-color-background - The background color for main map markers.
+ * @cssproperty --sd-map-marker--pin--default-color-background - The default background color for place map markers.
+ * @cssproperty --sd-map-marker--pin--hover-color-background - The background color for place map markers in hover state.
+ * @cssproperty --sd-map-marker--pin-color-text - The text color for place map markers.
  */
 @customElement('sd-map-marker')
 export default class SdMapMarker extends SolidElement {
