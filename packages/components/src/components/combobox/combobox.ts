@@ -1616,8 +1616,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
         color: rgb(var(--sd-color-icon-fill-primary));
       }
 
-      :host([visually-disabled])[part='chevron'],
-      :host([disabled])[part='chevron'] {
+      :host([visually-disabled])::part(chevron),
+      :host([disabled])::part(chevron) {
         @apply text-neutral-500;
       }
     `
