@@ -17,16 +17,15 @@ import '../../../../../components/src/solid-components';
 
 Solid doesn't provide **any fonts**, you have to include them yourself.
 To do this, you can either use a CDN (our recomendation) or self-host the font files.
-Please reach out to brand department if you want to self-host the font.
+Please reach out to the brand department if you want to self-host the font.
 
-#### Using a CDN
+#### **Using a CDN**
 
-The following CSS gives you a jump start on how to set up font using a CDN. Please make sure to change `latest`
-to a concrete package version you want to use.
+The following CSS gives you a jump start on how to set up fonts using a CDN.
 
 <sd-accordion summary="Example CSS for Union Investment">
+Please make sure to change `latest` to a concrete package version you want to use.
 ```css
-/* Union Investment – Frutiger Neue */
 @font-face {
   font-family: 'Frutiger Neue';
   font-style: normal;
@@ -43,7 +42,7 @@ src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-
 
 body {
 font-family:
-'Frutiger Neue', /_ Union Investment _/
+'Frutiger Neue',
 ui-sans-serif,
 system-ui,
 -apple-system,
@@ -61,7 +60,6 @@ sans-serif;
 
 <sd-accordion summary="Example CSS for Volksbank">
 ```css
-/* Volksbank – GenosGFG */
 @font-face {
   font-family: 'GenosGFG';
   font-style: normal;
@@ -71,7 +69,7 @@ sans-serif;
 
 body {
   font-family:
-    'GenosGFG',              /* Volksbank */
+    'GenosGFG',
     ui-sans-serif,
     system-ui,
     -apple-system,
@@ -89,7 +87,6 @@ body {
 
 <sd-accordion summary="Example CSS for Kidstarter">
 ```css
-/* Kidstarter – Bricolage Grotesque from Google Fonts */
 @font-face {
   font-family: 'Bricolage Grotesque';
   font-style: normal;
@@ -106,7 +103,7 @@ src: local('Bricolage Grotesque'), url('https://fonts.googleapis.com/css2?family
 
 body {
 font-family:
-'Bricolage Grotesque', /_ Kidstarter _/
+'Bricolage Grotesque',
 ui-sans-serif,
 system-ui,
 -apple-system,
@@ -122,7 +119,7 @@ sans-serif;
 ````
 </sd-accordion>
 
-#### Self-host Fonts
+#### **Self-host Fonts**
 To self-host fonts, reach out to your brand department to obtain the woff2 files (or woff/ttf).
 Then, add these files to a public folder (e.g. fonts) within your project.
 
@@ -168,7 +165,7 @@ Then, add these files to a public folder (e.g. fonts) within your project.
 
 </sd-accordion>
 
-#### Improve Font Rendering
+#### **Improve Font Rendering**
 
 To improve font rendering, the following CSS has to be added to your project as well:
 
