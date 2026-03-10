@@ -289,7 +289,7 @@
   --sd-header__underline-color-background: var(--sd-color-neutral-200);
   --sd-header__underline-height: var(--sd-spacing-0\.25);
   --sd-headline--3xl-onwards-color-text: var(--sd-color-info);
-  --sd-informational-gradient--primary-800-color-background: var(--sd-color-info);
+  --sd-informational-gradient--primary-800-color-background: 0 0 0;
   --sd-informational-gradient--white-color-background: var(--sd-color-white);
   --sd-interactive--active-color-text: var(--sd-color-primary-500);
   --sd-interactive--default-color-text: var(--sd-color-primary-500);

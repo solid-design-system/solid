@@ -4003,6 +4003,7 @@
           "--primary-800": {
             "color": {
               "background": {
+                "description": "code only",
                 "type": "color",
                 "value": "{ui-light.utilities.color.primary.800}"
               }
@@ -7333,6 +7334,7 @@
           "--primary-800": {
             "color": {
               "background": {
+                "description": "code only",
                 "type": "color",
                 "value": "{ui-dark.utilities.color.primary.800}"
               }
@@ -10663,8 +10665,9 @@
           "--primary-800": {
             "color": {
               "background": {
+                "description": "code only",
                 "type": "color",
-                "value": "{vb.utilities.color.primary.800}"
+                "value": "#000000"
               }
             }
           }
@@ -12655,7 +12658,7 @@
       "opacity": {
         "0": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-0}"
         },
         "5": {
           "type": "float",
@@ -12691,11 +12694,11 @@
         },
         "75": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-75}"
         },
         "80": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-80}"
         },
         "\b85": {
           "type": "float",
@@ -12703,7 +12706,7 @@
         },
         "\b90": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-90}"
         },
         "\b100": {
           "type": "float",
@@ -13993,8 +13996,9 @@
           "--primary-800": {
             "color": {
               "background": {
+                "description": "code only",
                 "type": "color",
-                "value": "{kid.utilities.color.primary.800}"
+                "value": "#000000"
               }
             }
           }

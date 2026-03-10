@@ -365,17 +365,11 @@ export default class SdFlipcard extends SolidElement {
        * 
        * For more details, see the 'Consistency with Figma' section in the **CONTRIBUTING.md**.
        */
-      :host([front-variant='gradient-light']) [part='front-slot-container'] .bg-gradient-to-b,
-      :host([front-variant='gradient-light']) [part='front-secondary-gradient'] {
-        --sd-color-background-white: rgba(
-          var(--sd-informational-gradient--white-color-background, rgba(var(--sd-color-white)))
-        );
-      }
-
-      :host([front-variant='gradient-dark']) [part='front-slot-container'] .bg-gradient-to-b,
-      :host([front-variant='gradient-dark']) [part='front-secondary-gradient'] {
-        --sd-color-background-primary-800: rgba(
-          var(--sd-informational-gradient--primary-800-color-background, rgba(var(--sd-color-primary-800)))
+      .bg-gradient-to-b,
+      .bg-gradient-to-t {
+        --sd-color-background-primary-800: var(
+          --sd-informational-gradient--primary-800-color-background,
+          var(--sd-color-primary-800)
         );
       }
     `

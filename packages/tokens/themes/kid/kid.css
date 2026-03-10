@@ -289,7 +289,7 @@
   --sd-header__underline-color-background: 255 255 255 / 0;
   --sd-header__underline-height: var(--sd-spacing-2);
   --sd-headline--3xl-onwards-color-text: var(--sd-color-black);
-  --sd-informational-gradient--primary-800-color-background: var(--sd-color-primary-800);
+  --sd-informational-gradient--primary-800-color-background: 0 0 0;
   --sd-informational-gradient--white-color-background: var(--sd-color-accent);
   --sd-interactive--active-color-text: var(--sd-color-neutral-800);
   --sd-interactive--default-color-text: var(--sd-color-black);
@@ -333,10 +333,10 @@
   --sd-opacity-5: 0%;
   --sd-opacity-60: 60%;
   --sd-opacity-70: 0%;
-  --sd-opacity-75: 0%;
-  --sd-opacity-80: 0%;
+  --sd-opacity-75: 75%;
+  --sd-opacity-80: 80%;
   --sd-opacity-85: 0%;
-  --sd-opacity-90: 0%;
+  --sd-opacity-90: 90%;
   --sd-overlay-color-background: 0 0 0 / 0.2;
   --sd-pagination--default-border: var(--sd-color-black);
   --sd-pagination--inverted-border: var(--sd-color-white);
