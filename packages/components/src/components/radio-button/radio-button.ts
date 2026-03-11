@@ -175,27 +175,27 @@ export default class SdRadioButton extends SolidElement {
       }
 
       .lg-label {
-        @apply h-12;
+        @apply h-[46px];
       }
 
       .lg-no-label {
-        @apply h-12 px-5;
+        @apply h-[46px] px-5;
       }
 
       .md-label {
-        @apply h-10;
+        @apply h-[38px];
       }
 
       .md-no-label {
-        @apply h-10 px-4;
+        @apply h-[38px] px-4;
       }
 
       .sm-label {
-        @apply h-8;
+        @apply h-[30px];
       }
 
       .sm-no-label {
-        @apply h-8 px-3;
+        @apply h-[30px] px-3;
       }
 
       /* All except the first */
