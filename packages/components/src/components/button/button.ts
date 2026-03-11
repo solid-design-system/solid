@@ -88,6 +88,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @cssproperty --sd-button--size-lg-padding-block - The large button vertical padding value.
  * @cssproperty --sd-button--size-lg-height - The height for large icon-only and loading buttons.
  * @cssproperty --sd-button--size-md-height - The height for medium icon-only and loading buttons.
+ * @cssproperty --sd-button--size-lg-icon-height - The height for icons in large buttons.
  * @cssproperty --sd-button-font-weight - The text font weight for buttons.
  * @cssproperty --sd-button-border-width - The border width for secondary buttons with borders.
  * @cssproperty --sd-button-border-radius - The border radius for buttons.
@@ -330,21 +331,28 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         !this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted',
         this.loading && 'relative cursor-wait',
         (this.disabled || this.visuallyDisabled) && 'cursor-not-allowed',
-        slots['icon-only'] &&
+        {
+          /* sizes, fonts */
+          sm: `varspacing-8 h-8 sd-button--size-sm-font-size sd-button-font-weight sd-button--secondary--size-sm-padding-block sd-button-border-radius`,
+          md: `varspacing-10 sd-button--size-md-height sd-button--size-md-font-size sd-button--secondary--size-md-padding-block sd-button-font-weight sd-button-border-radius`,
+          lg: `varspacing-12 sd-button--size-lg-height sd-button--size-lg-font-size sd-button--secondary--size-lg-padding-block sd-button-font-weight sd-button-border-radius`
+        }[this.size],
+        !slots['icon-only'] &&
           {
-            sm: 'h-8',
-            md: 'sd-button--size-md-height',
-            lg: 'sd-button--size-lg-height'
+            /* sizes, fonts */
+            sm: `${hasBorder ? 'sd-button--secondary-padding-inline' : 'sd-button--size-sm-padding-block sd-button-padding-inline'}`,
+            md: `${hasBorder ? 'sd-button--secondary-padding-inline' : 'sd-button--size-md-padding-block sd-button-padding-inline'}`,
+            lg: `${hasBorder ? 'sd-button--secondary-padding-inline' : 'sd-button--size-lg-padding-block sd-button-padding-inline'}`
           }[this.size],
         /**
          * Anatomy
          * */
-        {
-          /* sizes, fonts */
-          sm: `sd-button--size-sm-font-size sd-button-font-weight sd-button-border-radius varspacing-8 ${hasBorder ? 'sd-button--secondary--size-sm-padding-block sd-button--secondary-padding-inline' : 'sd-button--size-sm-padding-block sd-button-padding-inline'}`,
-          md: `sd-button--size-md-font-size sd-button-font-weight sd-button-border-radius varspacing-10 ${hasBorder ? 'sd-button--secondary--size-md-padding-block sd-button--secondary-padding-inline' : 'sd-button--size-md-padding-block sd-button-padding-inline'}`,
-          lg: `sd-button--size-lg-font-size sd-button-font-weight sd-button-border-radius varspacing-12 ${hasBorder ? 'sd-button--secondary--size-lg-padding-block sd-button--secondary-padding-inline' : 'sd-button--size-lg-padding-block sd-button-padding-inline'}`
-        }[this.size],
+        slots['icon-only'] &&
+          {
+            sm: 'px-0 aspect-square',
+            md: 'px-0 aspect-square',
+            lg: 'px-0 aspect-square'
+          }[this.size],
         {
           /* variants */
           primary: !this.inverted
@@ -525,6 +533,10 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       ::slotted(sd-icon),
       sd-loader {
         font-size: calc(var(--tw-varspacing) / 2);
+      }
+
+      :host([size='lg']) ::slotted(sd-icon) {
+        font-size: var(--sd-button--size-lg-icon-height, var(--sd-spacing-6));
       }
     `
   ];
