@@ -15,18 +15,136 @@ import '../../../../../components/src/solid-components';
 
 ### Fonts
 
-Solid doesn't provide any fonts, you have to include them yourself.
-We recommend using the CDN of `global-resources` by the CMS project.
-(Please reach out to brand department if you want to self-host the font.)
-The following CSS gives you a jump start. Please make sure to change `latest`
-to a concrete package version you want to use.
+Solid doesn't provide **any fonts**, you have to include them yourself.
+To do this, you can either use a CDN (our recomendation) or self-host the font files.
+Please reach out to the brand department if you want to self-host the font.
 
-<sd-accordion summary="Example CSS">
+#### **Using a CDN**
 
+The following CSS gives you a jump start on how to set up fonts using a CDN.
+
+<sd-accordion summary="Example CSS for Union Investment">
+Please make sure to change `latest` to a concrete package version you want to use.
 ```css
+@font-face {
+  font-family: 'Frutiger Neue';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-Bk.woff2') format('woff2');
+}
+
+@font-face {
+font-family: 'Frutiger Neue';
+font-style: italic;
+font-weight: 400;
+src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-BkIt.woff2') format('woff2');
+}
+
+body {
+font-family:
+'Frutiger Neue',
+ui-sans-serif,
+system-ui,
+-apple-system,
+BlinkMacSystemFont,
+'Segoe UI',
+Roboto,
+'Helvetica Neue',
+Arial,
+'Noto Sans',
+sans-serif;
+}
+
+````
+</sd-accordion>
+
+<sd-accordion summary="Example CSS for Volksbank">
+```css
+@font-face {
+  font-family: 'GenosGFG';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://markenwelt.wegfrei-portal.de/fonts/GenosGFG-Regular.woff2') format('woff2');
+}
+
 body {
   font-family:
-    'Frutiger Neue',
+    'GenosGFG',
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    'Noto Sans',
+    sans-serif;
+}
+````
+
+</sd-accordion>
+
+<sd-accordion summary="Example CSS for Kidstarter">
+```css
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Bricolage Grotesque'), url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400&display=swap') format('woff2');
+}
+
+@font-face {
+font-family: 'Bricolage Grotesque';
+font-style: normal;
+font-weight: 600;
+src: local('Bricolage Grotesque'), url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600&display=swap') format('woff2');
+}
+
+body {
+font-family:
+'Bricolage Grotesque',
+ui-sans-serif,
+system-ui,
+-apple-system,
+BlinkMacSystemFont,
+'Segoe UI',
+Roboto,
+'Helvetica Neue',
+Arial,
+'Noto Sans',
+sans-serif;
+}
+
+````
+</sd-accordion>
+
+#### **Self-host Fonts**
+To self-host fonts, reach out to your brand department to obtain the woff2 files (or woff/ttf).
+Then, add these files to a public folder (e.g. fonts) within your project.
+
+<sd-accordion summary="Example CSS for Self-Host Fonts">
+```css
+/** Genos GFG Font Faces for VB Theme **/
+@font-face {
+  font-family: 'Genos GFG';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/geno/GenosGFG-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Genos GFG';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/geno/GenosGFG-Bold.woff2') format('woff2');
+}
+
+.body {
+  font-family:
+    'Genos GFG',
     ui-sans-serif,
     system-ui,
     -apple-system,
@@ -43,40 +161,11 @@ body {
     'Noto Color Emoji';
 }
 
-@font-face {
-  font-family: 'Frutiger Neue';
-  font-style: normal;
-  font-weight: 400;
-  src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-Bk.woff2')
-    format('woff2');
-}
-
-@font-face {
-  font-family: 'Frutiger Neue';
-  font-style: italic;
-  font-weight: 400;
-  src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-BkIt.woff2')
-    format('woff2');
-}
-
-@font-face {
-  font-family: 'Frutiger Neue';
-  font-style: normal;
-  font-weight: 600;
-  src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-Bd.woff2')
-    format('woff2');
-}
-
-@font-face {
-  font-family: 'Frutiger Neue';
-  font-style: italic;
-  font-weight: 600;
-  src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-BdIt.woff2')
-    format('woff2');
-}
-```
+````
 
 </sd-accordion>
+
+#### **Improve Font Rendering**
 
 To improve font rendering, the following CSS has to be added to your project as well:
 
