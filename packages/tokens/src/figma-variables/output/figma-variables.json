@@ -4720,17 +4720,6 @@
         "border-width": {
           "type": "float",
           "value": "{ui-light.utilities.border-width.default}"
-        },
-        "--checked": {
-          "--hovered": {
-            "color": {
-              "border": {
-                "description": "This is for frontend specifically. Created due to bug in frontend. In Figma there&#39;s no border color needed but frontend immediately get the utilities/border/accent/550 for kid it&#39;s neutral 800 instead of neutral 700 so it looks off.",
-                "type": "color",
-                "value": "{ui-light.utilities.color.accent.550}"
-              }
-            }
-          }
         }
       },
       "sd-tab": {
@@ -8051,17 +8040,6 @@
         "border-width": {
           "type": "float",
           "value": "{ui-dark.utilities.border-width.default}"
-        },
-        "--checked": {
-          "--hovered": {
-            "color": {
-              "border": {
-                "description": "This is for frontend specifically. Created due to bug in frontend. In Figma there&#39;s no border color needed but frontend immediately get the utilities/border/accent/550 for kid it&#39;s neutral 800 instead of neutral 700 so it looks off.",
-                "type": "color",
-                "value": "{ui-dark.utilities.color.accent.550}"
-              }
-            }
-          }
         }
       },
       "sd-tab": {
@@ -11382,17 +11360,6 @@
         "border-width": {
           "type": "float",
           "value": "{vb.utilities.border-width.2}"
-        },
-        "--checked": {
-          "--hovered": {
-            "color": {
-              "border": {
-                "description": "This is for frontend specifically. Created due to bug in frontend. In Figma there&#39;s no border color needed but frontend immediately get the utilities/border/accent/550 for kid it&#39;s neutral 800 instead of neutral 700 so it looks off.",
-                "type": "color",
-                "value": "{vb.utilities.color.primary.600}"
-              }
-            }
-          }
         }
       },
       "sd-tab": {
@@ -14713,17 +14680,6 @@
         "border-width": {
           "type": "float",
           "value": "{kid.utilities.border-width.default}"
-        },
-        "--checked": {
-          "--hovered": {
-            "color": {
-              "border": {
-                "description": "This is for frontend specifically. Created due to bug in frontend. In Figma there&#39;s no border color needed but frontend immediately get the utilities/border/accent/550 for kid it&#39;s neutral 800 instead of neutral 700 so it looks off.",
-                "type": "color",
-                "value": "{kid.utilities.color.neutral.700}"
-              }
-            }
-          }
         }
       },
       "sd-tab": {

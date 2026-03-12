@@ -734,8 +734,8 @@
         "VariableID:44883:20780",
         "VariableID:44883:24906",
         "VariableID:44883:24608",
-        "VariableID:47783:193767",
         "VariableID:54634:38691",
+        "VariableID:47783:193767",
         "VariableID:47783:193768",
         "VariableID:47783:193769",
         "VariableID:46871:963",
@@ -746,7 +746,6 @@
         "VariableID:49052:103",
         "VariableID:49052:1122",
         "VariableID:46790:57690",
-        "VariableID:51491:7158",
         "VariableID:46434:259683",
         "VariableID:46434:259677",
         "VariableID:46434:259678",
@@ -21593,6 +21592,7 @@
     },
     "VariableID:49909:7223": {
       "codeSyntax": {},
+      "deletedButReferenced": true,
       "description": "Default icon color ",
       "hiddenFromPublishing": false,
       "id": "VariableID:49909:7223",
@@ -22064,38 +22064,6 @@
         },
         "47719:0": {
           "id": "VariableID:43979:227",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:43174:55999"
-    },
-    "VariableID:51491:7158": {
-      "codeSyntax": {},
-      "description": "This is for frontend specifically. Created due to bug in frontend. In Figma there&#39;s no border color needed but frontend immediately get the utilities/border/accent/550 for kid it&#39;s neutral 800 instead of neutral 700 so it looks off.",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:51491:7158",
-      "key": "b7baea763559537bf7f22f7e09b1370eb40019e9",
-      "name": "components/sd-checkbox/--checked/--hovered/color/border",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "43174:13": {
-          "id": "VariableID:43979:209",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43174:14": {
-          "id": "VariableID:43979:209",
-          "type": "VARIABLE_ALIAS"
-        },
-        "44883:0": {
-          "id": "VariableID:43979:198",
-          "type": "VARIABLE_ALIAS"
-        },
-        "47719:0": {
-          "id": "VariableID:43979:220",
           "type": "VARIABLE_ALIAS"
         }
       },
