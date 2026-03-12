@@ -27,9 +27,9 @@ import SolidElement from '../../internal/solid-element';
  *
  * @cssproperty --submenu-offset - The offset of the submenu from the parent menu item.
  * @cssproperty --sd-navigable-border-radius - The menu-item border radius on hover.
- * @cssproperty --sd-menu-item-color-icon - The default icon color for menu items.
+ * @cssproperty --sd-menu-item-color-icon-fill - The default icon color for menu items.
  * @cssproperty --sd-menu-item-color-text - The default text color for menu items.
- * @cssproperty --sd-menu-item--disabled-color-icon - The icon color for disabled menu items.
+ * @cssproperty --sd-menu-item--disabled-color-icon-fill - The icon color for disabled menu items.
  * @cssproperty --sd-menu-item--disabled-color-text - The text color for disabled menu items.
  */
 @customElement('sd-menu-item')
@@ -244,11 +244,11 @@ export default class SdMenuItem extends SolidElement {
       :host [part='icon-indent'],
       :host [part='checked-icon'],
       :host [part='submenu-icon'] {
-        color: rgba(var(--sd-menu-item-color-icon));
+        color: rgba(var(--sd-menu-item-color-icon-fill));
       }
 
       :host([aria-disabled='true']) [part='icon-indent'] {
-        color: rgba(var(--sd-menu-item--disabled-color-icon));
+        color: rgba(var(--sd-menu-item--disabled-color-icon-fill));
       }
 
       sd-popup::part(popup) {

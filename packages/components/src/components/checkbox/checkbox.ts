@@ -36,7 +36,6 @@ import type { SolidFormControl } from '../../internal/solid-element';
  *
  * @cssproperty --sd-checkbox-border-width - The border width of the checkbox.
  * @cssproperty --sd-form-control-color-border - The color border for form controls.
- * @cssproperty --sd-checkbox--checked--hovered-color-border - The border color of the checkbox when checked and hovered.
  */
 @customElement('sd-checkbox')
 export default class SdCheckbox extends SolidElement implements SolidFormControl {
