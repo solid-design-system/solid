@@ -39,7 +39,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @cssproperty --sd-button--primary--default-color-background - The background color for primary buttons in default state.
  * @cssproperty --sd-button--primary--default-color-text - The text color for primary buttons in default state.
  * @cssproperty --sd-button--primary--hover-color-background - The background color for primary buttons in hover state.
- * @cssproperty --sd-button--primary--hover-text-color - The text color for primary buttons in hover state.
+ * @cssproperty --sd-button--primary--hover-color-text - The text color for primary buttons in hover state.
  * @cssproperty --sd-button--primary--inverted--default-color-background - The background color for inverted primary buttons in default state.
  * @cssproperty --sd-button--primary--inverted--default-color-text - The text color for inverted primary buttons in default state.
  * @cssproperty --sd-button--primary--inverted--hover-color-background - The background color for inverted primary buttons in hover state.
@@ -359,7 +359,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
             ? `${
                 this.visuallyDisabled
                   ? 'bg-neutral-500 border-neutral-500 hover:bg-neutral-500 text-white'
-                  : 'sd-button--primary--default-color-background border-transparent sd-button--primary--default-color-text hover:sd-button--primary--hover-text-color active:sd-button--primary--active-color-text'
+                  : 'sd-button--primary--default-color-background border-transparent sd-button--primary--default-color-text hover:sd-button--primary--hover-color-text active:sd-button--primary--active-color-text'
               }
           disabled:bg-neutral-500 disabled:text-white`
             : `${
