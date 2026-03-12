@@ -34,6 +34,7 @@ import SolidElement from '../../internal/solid-element';
  *
  * @cssproperty --sd-step__circle-border-width - The border width of the step circle.
  * @cssproperty --sd-step__tail-border-width - The border width of the step tail.
+ * @cssproperty --sd-step-color-text - The color text for non-interactive steps.
  */
 @customElement('sd-step')
 export default class SdStep extends SolidElement {
@@ -204,7 +205,7 @@ export default class SdStep extends SolidElement {
                   !this.notInteractive &&
                   !this.waiting &&
                   'text-primary hover:text-primary-500 hover:fill-primary-500',
-                this.notInteractive && 'text-primary'
+                this.notInteractive && 'sd-step-color-text'
               )}
             >
               ${
@@ -354,7 +355,7 @@ export default class SdStep extends SolidElement {
         @apply flex-grow-0;
       }
 
-      :host(:not([current])) slot[name='circle-content'] {
+      :host(:not([current])) (:not([notInteractive])) slot[name='circle-content'] {
         color: rgba(var(--sd-color-text-neutral-700));
       }
 
