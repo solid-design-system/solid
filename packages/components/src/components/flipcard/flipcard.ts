@@ -40,6 +40,7 @@ import SolidElement from '../../internal/solid-element';
  *
  * @cssproperty --name - Description of the flipcard.
  * @cssproperty --height - Use this property to set the height of the flipcard.
+ * @cssproperty --sd-informational-gradient--primary-800-color-background - The color used in the gradient of the flipcard when the `gradient-dark` variant is used. By default, it uses the `--sd-color-primary-800` color.
  */
 
 @customElement('sd-flipcard')
