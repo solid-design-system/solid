@@ -651,8 +651,8 @@
         "VariableID:44029:1676",
         "VariableID:44029:1677",
         "VariableID:44029:1678",
-        "VariableID:44029:1684",
         "VariableID:44029:1679",
+        "VariableID:44029:1684",
         "VariableID:44029:1681",
         "VariableID:44029:1682",
         "VariableID:44029:1683",
@@ -734,8 +734,8 @@
         "VariableID:44883:20780",
         "VariableID:44883:24906",
         "VariableID:44883:24608",
-        "VariableID:54634:38691",
         "VariableID:47783:193767",
+        "VariableID:54634:38691",
         "VariableID:47783:193768",
         "VariableID:47783:193769",
         "VariableID:46871:963",
@@ -757,7 +757,6 @@
         "VariableID:46434:259685",
         "VariableID:46434:259686",
         "VariableID:48602:92347",
-        "VariableID:53700:1817",
         "VariableID:56886:3304",
         "VariableID:50346:24618",
         "VariableID:50348:22930",
@@ -826,7 +825,6 @@
         "VariableID:46547:87699",
         "VariableID:46550:33336",
         "VariableID:46547:89332",
-        "VariableID:46547:89333",
         "VariableID:46841:8934",
         "VariableID:46841:9198",
         "VariableID:46841:9202",
@@ -16934,38 +16932,6 @@
       },
       "variableCollectionId": "VariableCollectionId:43174:55999"
     },
-    "VariableID:46547:89333": {
-      "codeSyntax": {},
-      "description": "",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:46547:89333",
-      "key": "39bd3fbc3e668722c233b9c694e6620338bcfe29",
-      "name": "components/sd-step/hover/color/text",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "43174:13": {
-          "id": "VariableID:43979:270",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43174:14": {
-          "id": "VariableID:43979:270",
-          "type": "VARIABLE_ALIAS"
-        },
-        "44883:0": {
-          "id": "VariableID:43979:278",
-          "type": "VARIABLE_ALIAS"
-        },
-        "47719:0": {
-          "id": "VariableID:43979:278",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:43174:55999"
-    },
     "VariableID:46550:33336": {
       "codeSyntax": {},
       "description": "",
@@ -22456,38 +22422,6 @@
         },
         "47719:0": {
           "a": 0.800000011920929,
-          "b": 1,
-          "g": 1,
-          "r": 1
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:43174:55999"
-    },
-    "VariableID:53700:1817": {
-      "codeSyntax": {},
-      "description": "",
-      "hiddenFromPublishing": true,
-      "id": "VariableID:53700:1817",
-      "key": "4daf68f15c69cb9d6f9bb7699e0c4720832b0472",
-      "name": "components/sd-container/--default/color/background",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [],
-      "valuesByMode": {
-        "43174:13": {
-          "id": "VariableID:43373:35301",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43174:14": {
-          "id": "VariableID:43979:259",
-          "type": "VARIABLE_ALIAS"
-        },
-        "44883:0": {
-          "id": "VariableID:44921:14699",
-          "type": "VARIABLE_ALIAS"
-        },
-        "47719:0": {
-          "a": 0.5,
           "b": 1,
           "g": 1,
           "r": 1

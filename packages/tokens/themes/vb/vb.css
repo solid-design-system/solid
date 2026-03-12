@@ -238,7 +238,6 @@
   --sd-color-warning: 243 94 1;
   --sd-color-white: 255 255 255;
   --sd-combobox__tag-border-width: var(--sd-spacing-0\.5);
-  --sd-container--default-color-background: var(--sd-color-neutral-100);
   --sd-datepicker__date-item--current-color-text: var(--sd-color-primary);
   --sd-datepicker__date-item--current-font-weight: var(--sd-font-weight-bold);
   --sd-datepicker__date-item--default-color-text: var(--sd-color-black);
@@ -404,7 +403,6 @@
   --sd-spacing-6: 1.5rem;
   --sd-spacing-8: 2rem;
   --sd-step-color-text: var(--sd-color-neutral-700);
-  --sd-step-hover-color-text: var(--sd-color-neutral-700);
   --sd-step__circle-border-width: var(--sd-spacing-0\.5);
   --sd-step__tail-border-width: var(--sd-spacing-1);
   --sd-switch--checked--hover-color-background: var(--sd-color-primary);

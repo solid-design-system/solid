@@ -498,10 +498,6 @@
  border-width: var(--sd-combobox__tag-border-width, var(--sd-spacing-0\.25));
 }
 
-@utility sd-container--default-color-background {
-  background-color: rgba(var(--sd-container--default-color-background, rgba(var(--sd-color-neutral-100))));
-}
-
 @utility sd-datepicker__date-item--current-color-text {
   color: rgba(var(--sd-datepicker__date-item--current-color-text, rgba(var(--sd-color-primary))));
 }
@@ -796,10 +792,6 @@
 
 @utility sd-step-color-text {
   color: rgba(var(--sd-step-color-text, rgba(var(--sd-color-primary))));
-}
-
-@utility sd-step-hover-color-text {
-  color: rgba(var(--sd-step-hover-color-text, rgba(var(--sd-color-primary-500))));
 }
 
 @utility sd-step__circle-border-width {

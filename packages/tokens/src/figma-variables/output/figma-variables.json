@@ -4465,14 +4465,6 @@
             "value": "{ui-light.utilities.color.text.primary.default}"
           }
         },
-        "hover": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.500}"
-            }
-          }
-        },
         "__circle": {
           "border-width": {
             "type": "float",
@@ -5003,16 +4995,6 @@
         "_gap": {
           "type": "float",
           "value": "-1"
-        }
-      },
-      "sd-container": {
-        "--default": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.background.neutral.100}"
-            }
-          }
         }
       }
     }
@@ -7785,14 +7767,6 @@
             "value": "{ui-dark.utilities.color.text.primary.default}"
           }
         },
-        "hover": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.500}"
-            }
-          }
-        },
         "__circle": {
           "border-width": {
             "type": "float",
@@ -8323,16 +8297,6 @@
         "_gap": {
           "type": "float",
           "value": "-1"
-        }
-      },
-      "sd-container": {
-        "--default": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.background.primary.100}"
-            }
-          }
         }
       }
     }
@@ -11105,14 +11069,6 @@
             "value": "{vb.utilities.color.text.neutral.700}"
           }
         },
-        "hover": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{vb.utilities.color.text.neutral.700}"
-            }
-          }
-        },
         "__circle": {
           "border-width": {
             "type": "float",
@@ -11643,16 +11599,6 @@
         "_gap": {
           "type": "float",
           "value": "-2"
-        }
-      },
-      "sd-container": {
-        "--default": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{core.vb.grey.50}"
-            }
-          }
         }
       }
     }
@@ -14425,14 +14371,6 @@
             "value": "{kid.utilities.color.text.neutral.700}"
           }
         },
-        "hover": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.text.neutral.700}"
-            }
-          }
-        },
         "__circle": {
           "border-width": {
             "type": "float",
@@ -14963,16 +14901,6 @@
         "_gap": {
           "type": "float",
           "value": "-1"
-        }
-      },
-      "sd-container": {
-        "--default": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "rgba(255, 255, 255, 0.50)"
-            }
-          }
         }
       }
     }
