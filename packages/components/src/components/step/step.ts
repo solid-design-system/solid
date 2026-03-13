@@ -34,6 +34,7 @@ import SolidElement from '../../internal/solid-element';
  *
  * @cssproperty --sd-step__circle-border-width - The border width of the step circle.
  * @cssproperty --sd-step__tail-border-width - The border width of the step tail.
+ * @cssproperty --sd-step-color-text - The color text for non-interactive steps.
  */
 @customElement('sd-step')
 export default class SdStep extends SolidElement {
@@ -134,7 +135,7 @@ export default class SdStep extends SolidElement {
     const isHorizontalInline = this.horizontalInline && this.orientation === 'horizontal';
 
     const circleAndTailContainerClasses = cx(
-      'flex shrink-0 gap-2',
+      'flex shrink-0 gap-2 group',
       this.noTail && !isHorizontalInline && 'w-max',
       this.orientation === 'horizontal' ? 'flex-row' : 'flex-col items-stretch',
       isHorizontalInline && 'items-start',
@@ -204,7 +205,7 @@ export default class SdStep extends SolidElement {
                   !this.notInteractive &&
                   !this.waiting &&
                   'text-primary hover:text-primary-500 hover:fill-primary-500',
-                this.notInteractive && 'text-primary'
+                this.notInteractive && 'sd-step-color-text'
               )}
             >
               ${
@@ -252,7 +253,7 @@ export default class SdStep extends SolidElement {
                               class=${cx(
                                 'border-t flex-1 mr-2 mt-3',
                                 !this.disabled && !this.current && !this.notInteractive && !this.waiting
-                                  ? 'border-primary'
+                                  ? 'border-primary group-hover:border-primary-500'
                                   : 'border-neutral-500'
                               )}
                             ></div>
@@ -285,7 +286,7 @@ export default class SdStep extends SolidElement {
                           ? 'border-t w-full my-auto mr-2'
                           : 'border-l flex-grow flex-shrink-0 basis-auto h-full w-[1px] mx-auto',
                         !this.disabled && !this.current && !this.notInteractive && !this.waiting
-                          ? 'border-primary'
+                          ? 'border-primary group-hover:border-primary-500'
                           : 'border-neutral-400'
                       )}
                     ></div>
@@ -354,7 +355,7 @@ export default class SdStep extends SolidElement {
         @apply flex-grow-0;
       }
 
-      :host(:not([current])) slot[name='circle-content'] {
+      :host(:not([current])) (:not([notInteractive])) slot[name='circle-content'] {
         color: rgba(var(--sd-color-text-neutral-700));
       }
 

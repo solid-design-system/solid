@@ -20,6 +20,9 @@ import type { PropertyValues } from 'lit';
  * @cssproperty --sd-header-inner-max-width - max-width of the header content
  * @cssproperty --sd-header-padding - padding-left and padding-right of the header content
  * @cssproperty --sd-header-color-background - The background color of the header.
+ * @cssproperty --sd-header-padding-bottom - padding bottom of the header content
+ * @cssproperty --sd-header__underline-color-background - the background color of the underlined background
+ * @cssproperty --sd-header__underline-height - height of the underlined header
  */
 @customElement('sd-header')
 export default class SdHeader extends SolidElement {
@@ -79,7 +82,7 @@ export default class SdHeader extends SolidElement {
 
   render() {
     return html`
-      <header class="w-full sd-header-color-background relative" role="banner">
+      <header class="w-full sd-header-color-background sd-header-padding-bottom relative" role="banner">
         <div part="main" class="relative mx-auto my-0 box-border">
           <slot></slot>
         </div>
@@ -102,11 +105,7 @@ export default class SdHeader extends SolidElement {
             @apply fixed w-full left-0 top-0;
 
             &::after {
-              @apply content-[''] absolute left-0 right-0 top-full h-2;
-              background: var(
-                --gradient-vertical-black-40-transparent,
-                linear-gradient(0deg, #18181800 50%, #18181866 100%)
-              );
+              @apply content-[''] absolute left-0 right-0 top-full sd-header__underline-height bg-gradient-to-b from-black/40 to-black/0;
             }
           }
         }
@@ -116,6 +115,12 @@ export default class SdHeader extends SolidElement {
         width: var(--sd-header-inner-width);
         max-width: var(--sd-header-inner-max-width);
         padding: var(--sd-header-padding, 12px 16px);
+      }
+
+      header::before {
+        @apply content-[''] block w-full absolute bottom-0 left-0;
+        background-color: rgb(var(--sd-header__underline-color-background));
+        height: var(--sd-header__underline-height, var(--sd-spacing-2));
       }
     `
   ];
