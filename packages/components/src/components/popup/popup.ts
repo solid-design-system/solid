@@ -469,7 +469,7 @@ export default class SdPopup extends SolidElement {
 
       <div
         part="popup"
-        class=${cx('isolate', this.strategy !== 'fixed' ? 'absolute' : 'fixed', !this.active && 'hidden')}
+        class=${cx('isolate z-20', this.strategy !== 'fixed' ? 'absolute' : 'fixed', !this.active && 'hidden')}
       >
         <slot></slot>
         ${this.arrow ? html`<div part="arrow" class="absolute rotate-45 -z-10" role="presentation"></div>` : ''}

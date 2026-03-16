@@ -2051,7 +2051,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                   id="label"
                   part="form-control-floating-label"
                   class=${cx(
-                    'absolute left-4 z-20 pointer-events-none transition-all duration-200',
+                    'absolute left-4 z-10 pointer-events-none transition-all duration-200',
                     !isFloatingLabelActive
                       ? 'top-1/2 -translate-y-1/2'
                       : this.size === 'lg'
