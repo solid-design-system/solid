@@ -1218,23 +1218,25 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   };
 
   private setMonth(offset: number) {
-    const next = new Date(this.viewMonth.getFullYear(), this.viewMonth.getMonth() + offset, 1);
-    if (next.getMonth() === this.viewMonth.getMonth() && next.getFullYear() === this.viewMonth.getFullYear()) return;
+    const viewMonth = this.viewMonth ?? this.ensureViewMonth();
+    const next = new Date(viewMonth.getFullYear(), viewMonth.getMonth() + offset, 1);
+    if (next.getMonth() === viewMonth.getMonth() && next.getFullYear() === viewMonth.getFullYear()) return;
     this.viewMonth = next;
-    const monthLabel = this.formatMonthYear(this.viewMonth);
+    const monthLabel = this.formatMonthYear(next);
     this.setNavStatus(monthLabel);
-    this.emit('sd-month-change', { detail: { month: this.viewMonth } });
+    this.emit('sd-month-change', { detail: { month: next } });
   }
 
   private setYear(offset: number) {
-    const next = new Date(this.viewMonth.getFullYear() + offset, this.viewMonth.getMonth(), 1);
-    if (next.getFullYear() === this.viewMonth.getFullYear() && next.getMonth() === this.viewMonth.getMonth()) {
+    const viewMonth = this.viewMonth ?? this.ensureViewMonth();
+    const next = new Date(viewMonth.getFullYear() + offset, viewMonth.getMonth(), 1);
+    if (next.getFullYear() === viewMonth.getFullYear() && next.getMonth() === viewMonth.getMonth()) {
       return;
     }
     this.viewMonth = next;
-    const monthLabel = this.formatMonthYear(this.viewMonth);
+    const monthLabel = this.formatMonthYear(next);
     this.setNavStatus(monthLabel);
-    this.emit('sd-month-year', { detail: { month: this.viewMonth } });
+    this.emit('sd-month-year', { detail: { month: next } });
   }
 
   private focusInitialGridDay() {
@@ -1252,29 +1254,27 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       else if (rs) target = DateUtils.startOfDayLocal(rs);
     }
 
+    const viewMonth = this.viewMonth ?? this.ensureViewMonth();
+
     const inViewAndEnabled = (d: Date | null) => {
       if (!d) return false;
-      const sameMonth = d.getFullYear() === this.viewMonth.getFullYear() && d.getMonth() === this.viewMonth.getMonth();
+      const sameMonth = d.getFullYear() === viewMonth.getFullYear() && d.getMonth() === viewMonth.getMonth();
       return sameMonth && !this.isDisabled(d);
     };
 
     if (!inViewAndEnabled(target)) {
-      const { weeks } = this.getMonthMatrix(this.viewMonth);
+      const { weeks } = this.getMonthMatrix(viewMonth);
 
       const todayInView = weeks
         .flat()
         .find(
           day =>
-            day.getMonth() === this.viewMonth.getMonth() &&
-            DateUtils.isSameDay(day, this.today) &&
-            !this.isDisabled(day)
+            day.getMonth() === viewMonth.getMonth() && DateUtils.isSameDay(day, this.today) && !this.isDisabled(day)
         );
       if (todayInView) {
         target = DateUtils.startOfDayLocal(todayInView);
       } else {
-        const firstEnabled = weeks
-          .flat()
-          .find(day => day.getMonth() === this.viewMonth.getMonth() && !this.isDisabled(day));
+        const firstEnabled = weeks.flat().find(day => day.getMonth() === viewMonth.getMonth() && !this.isDisabled(day));
         target = firstEnabled ? DateUtils.startOfDayLocal(firstEnabled) : null;
       }
     }
@@ -1547,11 +1547,12 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
 
     if (handled) {
       ev.preventDefault();
-      const monthChanged =
-        next.getMonth() !== this.viewMonth.getMonth() || next.getFullYear() !== this.viewMonth.getFullYear();
+      const viewMonth = this.viewMonth ?? this.ensureViewMonth();
+      const monthChanged = next.getMonth() !== viewMonth.getMonth() || next.getFullYear() !== viewMonth.getFullYear();
       if (monthChanged) {
-        this.viewMonth = new Date(next.getFullYear(), next.getMonth(), 1);
-        const monthLabel = this.formatMonthYear(this.viewMonth);
+        const nextViewMonth = new Date(next.getFullYear(), next.getMonth(), 1);
+        this.viewMonth = nextViewMonth;
+        const monthLabel = this.formatMonthYear(nextViewMonth);
         this.setNavStatus(monthLabel);
       }
 
@@ -1611,6 +1612,21 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     }
   };
 
+  private ensureViewMonth(): Date {
+    if (this.viewMonth) {
+      return this.viewMonth;
+    }
+
+    const initialSingle = this.value ? DateUtils.parseLocalISO(this.value) : null;
+    const initialRangeStart = this.rangeStart ? DateUtils.parseLocalISO(this.rangeStart) : null;
+    const initialFallback = DateUtils.startOfDayLocal(new Date());
+    const initial = this.range && initialRangeStart ? initialRangeStart : (initialSingle ?? initialFallback);
+
+    const effectiveViewMonth = new Date(initial.getFullYear(), initial.getMonth(), 1);
+    this.viewMonth = effectiveViewMonth;
+    return effectiveViewMonth;
+  }
+
   private getMonthMatrix(monthRef: Date) {
     const fdw = this.firstDayOfWeek ?? 1;
     const firstOfMonth = new Date(monthRef.getFullYear(), monthRef.getMonth(), 1);
@@ -1664,14 +1680,13 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
 
   /** Chooses a tabbable day when tabbing into the grid (today or first enabled). */
   private getTabTargetDayForCurrentView(weeks: Date[][]): Date | null {
+    const viewMonth = this.viewMonth ?? this.ensureViewMonth();
     const inViewToday = weeks
       .flat()
-      .find(
-        d => d.getMonth() === this.viewMonth.getMonth() && DateUtils.isSameDay(d, this.today) && !this.isDisabled(d)
-      );
+      .find(d => d.getMonth() === viewMonth.getMonth() && DateUtils.isSameDay(d, this.today) && !this.isDisabled(d));
     if (inViewToday) return DateUtils.startOfDayLocal(inViewToday);
 
-    const firstEnabled = weeks.flat().find(d => d.getMonth() === this.viewMonth.getMonth() && !this.isDisabled(d));
+    const firstEnabled = weeks.flat().find(d => d.getMonth() === viewMonth.getMonth() && !this.isDisabled(d));
     return firstEnabled ? DateUtils.startOfDayLocal(firstEnabled) : null;
   }
 
@@ -1695,8 +1710,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   }
 
   private renderCalendar() {
-    const { weeks } = this.getMonthMatrix(this.viewMonth);
-    const monthLabel = this.formatMonthYear(this.viewMonth);
+    const viewMonth = this.viewMonth ?? this.ensureViewMonth();
+    const { weeks } = this.getMonthMatrix(viewMonth);
+    const monthLabel = this.formatMonthYear(viewMonth);
     const weekdays = this.weekdayLabels();
 
     const selectedSingle = this.value ? this.parseISO(this.value) : null;
@@ -1754,7 +1770,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
           <!-- Month label -->
           <div
             tabindex="-1"
-            class="month-label flex justify-center sd-headline sd-headline--size-base !text-primary"
+            class="month-label flex justify-center sd-headline sd-headline--size-base text-primary!"
             part="month-label"
             aria-live="polite"
           >
@@ -1834,7 +1850,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 aria-rowindex=${rowIndex + 2}
               >
                 ${week.map((day, colIndex) => {
-                  const inMonth = day.getMonth() === this.viewMonth.getMonth();
+                  const inMonth = day.getMonth() === viewMonth.getMonth();
                   const disabled = this.isDisabled(day) || !this.inMinMax(day);
                   const isFocused = DateUtils.isSameDay(day, this.focusedDate);
                   const isToday = DateUtils.isSameDay(day, this.today);
@@ -2107,7 +2123,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 aria-invalid=${this.showInvalidStyle ? 'true' : 'false'}
                 aria-label=${this.range ? 'Select date range' : 'Select a date'}
                 class=${cx(
-                  'min-w-0 flex-grow focus:outline-none bg-transparent hover:cursor-pointer form-control-color-text',
+                  'min-w-0 grow focus:outline-none bg-transparent hover:cursor-pointer form-control-color-text',
                   this.visuallyDisabled || this.disabled
                     ? 'placeholder:text-neutral-500 cursor-not-allowed'
                     : 'placeholder:text-neutral-700',
@@ -2141,7 +2157,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 : ''}
               ${this.showValidStyle && this.styleOnValid
                 ? html`<sd-icon
-                    class=${cx('text-success flex-shrink-0', iconMarginLeft, iconSize)}
+                    class=${cx('text-success shrink-0', iconMarginLeft, iconSize)}
                     library="_internal"
                     name="confirm-circle"
                     part="valid-icon"
