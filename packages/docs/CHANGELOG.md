@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.4.4
+
+### Patch Changes
+
+- Fixed Storybook layout issue in older versions of Firefox. _[`#2855`](https://github.com/solid-design-system/solid/pull/2855) [`7e3fa0a`](https://github.com/solid-design-system/solid/commit/7e3fa0a0dd0d17069dc4364799f92bd0ecd1151d) [@smfonseca](https://github.com/smfonseca)_
+
 ## 2.4.3
 
 ### Patch Changes

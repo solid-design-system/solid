@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.10.0
+
+### Minor Changes
+
+- Fixed the overlaping issue of the sd-popup being under the sd-datepicker's input form. _[`#2853`](https://github.com/solid-design-system/solid/pull/2853) [`498af3c`](https://github.com/solid-design-system/solid/commit/498af3c3721fa04ee160916f897582de5a15c570) [@martascorreia](https://github.com/martascorreia)_
+
 ## 6.9.2
 
 ### Patch Changes
