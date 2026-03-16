@@ -613,6 +613,21 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   private handleComboboxKeyDown(event: KeyboardEvent) {
     if (event.key === 'Tab') {
+      const inputValue = this.displayInput.value.trim();
+
+      // Check if inputValue matches any option
+      const matchedOption = this.getSlottedOptions().some(option => {
+        const optionLabel = option.getTextLabel().toLowerCase();
+        return optionLabel === inputValue.toLowerCase();
+      });
+
+      // If no match, clear the input
+      if (!matchedOption) {
+        this.displayInputValue = '';
+        // Optionally, you may want to update the input element's value immediately
+        this.displayInput.value = '';
+      }
+
       return;
     }
 
