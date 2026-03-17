@@ -2162,6 +2162,10 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       .icon-color {
         color: rgb(var(--sd-color-icon-fill-primary));
       }
+
+      .month-label {
+        color: rgb(var(--sd-color-border-primary)) !important;
+      }
     `
   ];
 }
