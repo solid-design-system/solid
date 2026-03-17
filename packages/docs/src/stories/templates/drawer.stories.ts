@@ -14,7 +14,7 @@ export default {
   decorators: [
     (story: any) =>
       html` <style>
-          #anchor--templates-drawer--default .innerZoomElementWrapper {
+          #anchor--primary--templates-drawer--default .innerZoomElementWrapper {
             background-color: #ecf0f9;
             min-height: 1000px;
           }
