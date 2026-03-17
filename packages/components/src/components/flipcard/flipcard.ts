@@ -357,7 +357,7 @@ export default class SdFlipcard extends SolidElement {
       }
 
       .flip-card__gradient {
-        flex: 0.4 1 0;
+        flex: 0.2 1 0;
       }
 
       /**
