@@ -349,7 +349,7 @@
   --sd-radio--checked--invalid--hover__icon-color-background: var(--sd-color-error);
   --sd-radio--default--invalid-color-background: 253 232 230;
   --sd-radio-border-width: var(--sd-spacing-0\.25);
-  --sd-radio-button--hover-color-background: 0 102 179 / 0.05;
+  --sd-radio-button--hover-color-background: 242 247 251;
   --sd-radio-button--hover-color-text: var(--sd-color-black);
   --sd-radio-button-border-radius: 624.9375rem;
   --sd-radio-button-color-text: var(--sd-color-black);
@@ -410,7 +410,7 @@
   --sd-switch--unchecked__icon-color-background: var(--sd-color-black);
   --sd-switch-color-text: var(--sd-color-black);
   --sd-tab--active-color-text: var(--sd-color-black);
-  --sd-tab--hover-color-background: 0 102 179 / 0.05;
+  --sd-tab--hover-color-background: 242 247 251;
   --sd-tab-color-border: 191 202 217;
   --sd-tab-color-text: var(--sd-color-black);
   --sd-tag--default--hover-color-background: 255 255 255 / 0.6;

@@ -1185,7 +1185,7 @@
       "azure": {
         "50": {
           "type": "color",
-          "value": "rgba(0, 102, 179, 0.05)"
+          "value": "#f2f7fb"
         },
         "100": {
           "description": "color has same luminance as step 100",
@@ -1210,7 +1210,7 @@
         "400": {
           "description": "color has same luminance as step 100",
           "type": "color",
-          "value": "#6681a4"
+          "value": "#4d94ca"
         },
         "500": {
           "type": "color",
@@ -9968,7 +9968,7 @@
             },
             "border": {
               "type": "color",
-              "value": "{vb.utilities.color.border.primary.500}"
+              "value": "{vb.utilities.color.border.primary.default}"
             }
           }
         },
@@ -10497,7 +10497,7 @@
             "text": {
               "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
-              "value": "{vb.utilities.color.primary.500}"
+              "value": "{vb.utilities.color.primary.default}"
             }
           }
         },
@@ -10506,7 +10506,7 @@
             "text": {
               "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
-              "value": "{vb.utilities.color.primary.500}"
+              "value": "{vb.utilities.color.primary.default}"
             }
           }
         }

@@ -204,11 +204,11 @@
   --sd-color-neutral-600: 89 89 89;
   --sd-color-neutral-700: 0 0 0 / 0.62;
   --sd-color-neutral-800: 0 0 0 / 0.65;
-  --sd-color-primary-100: 0 102 179 / 0.05;
+  --sd-color-primary-100: 242 247 251;
   --sd-color-primary-200: 224 237 246;
   --sd-color-primary-300: 229 240 247;
   --sd-color-primary-400: 153 194 225;
-  --sd-color-primary-500: 102 129 164;
+  --sd-color-primary-500: 77 148 202;
   --sd-color-primary-600: 0 102 179;
   --sd-color-primary-700: 0 87 152;
   --sd-color-primary-750: 26 66 118;
@@ -246,7 +246,7 @@
   --sd-datepicker__date-item--hover--default-color-text: var(--sd-color-black);
   --sd-datepicker__date-item--hover--prev-next-color-background: var(--sd-color-primary-100);
   --sd-datepicker__date-item--hover--prev-next-color-text: var(--sd-color-neutral-700);
-  --sd-datepicker__date-item--range-color-background: var(--sd-color-primary-100);
+  --sd-datepicker__date-item--range-color-background: 0 102 179 / 0.05;
   --sd-datepicker__date-item--selected--hover-color-background: var(--sd-color-primary-500);
   --sd-datepicker__date-item--selected-color-background: var(--sd-color-primary);
   --sd-datepicker__date-item--selected-color-text: var(--sd-color-white);
@@ -289,8 +289,8 @@
   --sd-headline--3xl-onwards-color-text: var(--sd-color-info);
   --sd-informational-gradient--primary-800-color-background: 0 0 0;
   --sd-informational-gradient--white-color-background: var(--sd-color-white);
-  --sd-interactive--active-color-text: var(--sd-color-primary-500);
-  --sd-interactive--default-color-text: var(--sd-color-primary-500);
+  --sd-interactive--active-color-text: var(--sd-color-primary);
+  --sd-interactive--default-color-text: var(--sd-color-primary);
   --sd-link-color--hover-icon: var(--sd-color-primary);
   --sd-link-color--none-icon: var(--sd-color-primary);
   --sd-link-color--pressed-icon: var(--sd-color-primary);
@@ -415,7 +415,7 @@
   --sd-tab-color-text: var(--sd-color-neutral-700);
   --sd-tag--default--hover-color-background: var(--sd-color-primary-100);
   --sd-tag--default-color-background: 255 255 255 / 0;
-  --sd-tag--default-color-border: var(--sd-color-primary-500);
+  --sd-tag--default-color-border: var(--sd-color-primary);
   --sd-tag--default-color-text: var(--sd-color-primary);
   --sd-tag--disabled-color-text: var(--sd-color-neutral-500);
   --sd-tag--selected--default-color-background: var(--sd-color-primary-200);
