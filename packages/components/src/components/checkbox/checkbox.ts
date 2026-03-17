@@ -263,7 +263,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
                 disabledChecked: 'border-neutral-500 bg-neutral-500',
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
-                invalidIndeterminate: 'border-error bg-error group-hover:bg-error-400',
+                invalidIndeterminate: 'border-error bg-error group-hover:bg-error-400 group-hover:border-error-400',
                 invalid: 'border-error group-hover:border-error-400 group-hover:bg-transparent',
                 filled:
                   'border-accent hover:border-accent-550 group-hover:border-accent-550 bg-accent group-hover:bg-accent-550',
