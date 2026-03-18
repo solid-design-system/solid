@@ -300,16 +300,8 @@ export default class SdCarousel extends SolidElement {
     this.requestUpdate();
   };
 
-  private handleFocus() {
-    if (this.autoplay) {
-      this.scrollContainer.setAttribute('aria-live', 'polite');
-    }
-  }
-
-  private handleBlur() {
-    if (this.autoplay) {
-      this.scrollContainer.setAttribute('aria-live', 'off');
-    }
+  private get isAutoPlaying(): boolean {
+    return this.autoplay && !this.pausedAutoplay && !this.autoplayController.paused;
   }
 
   private unblockAutoplay = (e: MouseEvent, button: HTMLButtonElement) => {
@@ -620,17 +612,16 @@ export default class SdCarousel extends SolidElement {
               : `grid overflow-auto overscroll-x-contain grid-flow-col auto-rows-[100%] snap-x snap-mandatory overflow-y-hidden`
           )}"
           style="--slides-per-page: ${this.slidesPerPage};"
+          role="group"
           aria-busy="${scrollController.scrolling ? 'true' : 'false'}"
           aria-label="${this.localize.term(
             'carouselContainer',
             Array.from(this.slides).filter(el => !el.hasAttribute('data-clone')).length
           )}"
-          aria-live=${this.autoplay ? 'off' : 'polite'}
+          aria-live=${this.isAutoPlaying ? 'off' : 'polite'}
           tabindex="0"
           @keydown=${this.handleKeyDown}
           @scrollend=${this.handleScrollEnd}
-          @focus=${this.handleFocus}
-          @blur=${this.handleBlur}
         >
           <slot></slot>
         </div>
@@ -649,8 +640,6 @@ export default class SdCarousel extends SolidElement {
               aria-label="${this.localize.term('previousSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${prevEnabled ? 'false' : 'true'}"
-              @focus=${this.handleFocus}
-              @blur=${this.handleBlur}
               @click=${prevEnabled
                 ? (e: MouseEvent) => {
                     this.previous();
@@ -754,8 +743,6 @@ export default class SdCarousel extends SolidElement {
               aria-label="${this.localize.term('nextSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${nextEnabled ? 'false' : 'true'}"
-              @focus=${this.handleFocus}
-              @blur=${this.handleBlur}
               @click=${nextEnabled
                 ? (e: MouseEvent) => {
                     this.next();
