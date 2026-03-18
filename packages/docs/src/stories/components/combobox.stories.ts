@@ -85,7 +85,7 @@ export const Default = {
     delete args['getOption'];
     delete args['getOption-attr'];
 
-    return html`<div class="h-[260px] w-[400px]">${generateTemplate({ args })}</div>`;
+    return html`<div class="h-[260px] w-full max-w-[400px]">${generateTemplate({ args })}</div>`;
   }
 };
 
