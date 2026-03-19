@@ -225,7 +225,7 @@
   --sd-color-text-accent: var(--sd-color-accent);
   --sd-color-text-black: var(--sd-color-white);
   --sd-color-text-error: var(--sd-color-error-250);
-  --sd-color-text-neutral-500: var(--sd-color-neutral-500);
+  --sd-color-text-neutral-500: var(--sd-color-neutral-600);
   --sd-color-text-neutral-600: var(--sd-color-neutral-600);
   --sd-color-text-neutral-700: var(--sd-color-primary-400);
   --sd-color-text-primary-100: var(--sd-color-primary-500);
@@ -306,7 +306,7 @@
   --sd-marker-font-size: 0.875rem;
   --sd-marker-font-weight: var(--sd-font-weight-normal);
   --sd-menu-item--disabled-color-icon-fill: var(--sd-color-neutral-500);
-  --sd-menu-item--disabled-color-text: var(--sd-color-neutral-500);
+  --sd-menu-item--disabled-color-text: var(--sd-color-neutral-600);
   --sd-menu-item-color-icon-fill: var(--sd-color-white);
   --sd-menu-item-color-text: var(--sd-color-white);
   --sd-navigable-border-radius: 0;

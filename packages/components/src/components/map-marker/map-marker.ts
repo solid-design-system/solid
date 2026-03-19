@@ -117,6 +117,7 @@ export default class SdMapMarker extends SolidElement {
           class=${cx(
             'relative inline-flex',
             this.animated && (this.variant === 'main' || this.variant === 'place') && 'animate-bounce-once',
+            this.variant === 'cluster' && this.state === 'hover' && 'scale-110',
             this.variant === 'cluster' &&
               !this.notInteractive &&
               'transition-transform duration-fast ease-in-out hover:scale-110',
@@ -133,7 +134,8 @@ export default class SdMapMarker extends SolidElement {
             class=${cx(
               'absolute inset-0 overflow-hidden pointer-events-none',
               {
-                cluster: 'sd-map-marker--cluster--default-color-background',
+                cluster:
+                  'sd-map-marker--cluster--default-color-background group-hover:sd-map-marker--cluster--hover-color-background',
                 main: 'sd-map-marker--main-color-background',
                 place: 'sd-map-marker--pin--default-color-background'
               }[this.variant]
@@ -155,7 +157,7 @@ export default class SdMapMarker extends SolidElement {
                       ? 'bg-accent-700'
                       : this.state === 'hover'
                         ? 'bg-accent-550'
-                        : 'group-hover:bg-accent-500 group-active:bg-accent-700',
+                        : 'group-hover:bg-accent-550 group-active:bg-accent-700',
                   place:
                     this.state === 'active' || this.state === 'hover'
                       ? 'sd-map-marker--pin--hover-color-background'
@@ -163,18 +165,18 @@ export default class SdMapMarker extends SolidElement {
                 }[this.variant]
               )}></div>
             </div>
-
-            ${this.variant === 'main' ? html`<div id="marker-circle" class="absolute rounded-full bg-white"></div>` : ''}
+ 
+            ${this.variant === 'main' ? html`<div id="marker-circle" class="absolute rounded-full"></div>` : ''}
           </div>
-
+ 
           ${marker}
-
+ 
             ${
               this.variant === 'cluster'
                 ? html`<div
                     id="cluster-border"
                     class=${cx(
-                      'absolute inset-0 sd-map-marker--cluster--default-color-background rounded-full',
+                      'absolute inset-0 sd-map-marker--cluster--default-color-background rounded-full opacity-30',
                       this.state === 'hover' && 'sd-map-marker--cluster--hover-color-background'
                     )}
                   ></div>`
@@ -238,7 +240,7 @@ export default class SdMapMarker extends SolidElement {
       }
 
       :host([variant='cluster']) [part='motion-wrapper'] > div > div {
-        background-color: rgba(var(--sd-map-marker-cluster--hovered-color-text));
+        background-color: rgba(var(--sd-map-marker--cluster--hover-color-background));
       }
 
       :host([variant='main']) [part='marker'],
@@ -252,6 +254,10 @@ export default class SdMapMarker extends SolidElement {
         left: calc(var(--sd-spacing-4, 1rem) * var(--map-marker-scaling, 1));
         right: calc(var(--sd-spacing-4, 1rem) * var(--map-marker-scaling, 1));
         top: calc(var(--sd-spacing-4, 1rem) * var(--map-marker-scaling, 1));
+      }
+
+      #marker-circle {
+        background-color: rgba(var(--sd-color-icon-fill-white, rgba(var(--sd-color-white))));
       }
     `
   ];

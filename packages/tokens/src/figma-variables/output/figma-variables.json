@@ -5834,7 +5834,7 @@
             "500": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{ui-dark.utilities.color.neutral.500}"
+              "value": "{ui-dark.utilities.color.neutral.600}"
             },
             "600": {
               "description": "Used for inverted disabled state",
@@ -10013,7 +10013,7 @@
           "text": {
             "description": "Used for label ",
             "type": "color",
-            "value": "{core.vb.grey.620}"
+            "value": "{vb.utilities.color.neutral.700}"
           }
         },
         "--invalid": {
