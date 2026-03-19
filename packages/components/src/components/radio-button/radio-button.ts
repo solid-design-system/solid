@@ -116,7 +116,7 @@ export default class SdRadioButton extends SolidElement {
             'relative text-center sd-radio-button-border-radius transition-all ease-in-out duration-100 items-center justify-center focus-visible:focus-outline choice-control-font-weight',
             this.size === 'sm' ? 'text-sm' : 'text-base',
             this.checked && !this.disabled && !this.visuallyDisabled
-              ? 'sd-button--primary--default-color-background sd-button--primary--default-color-text hover:sd-button--primary--hover-color-background'
+              ? 'sd-button--primary--default-color-background sd-button--primary--default-color-text hover:sd-button--primary--hover-color-background hover:text-primary-100'
               : !this.checked && (this.disabled || this.visuallyDisabled)
                 ? 'text-neutral-500 hover:cursor-not-allowed'
                 : this.checked && (this.disabled || this.visuallyDisabled)

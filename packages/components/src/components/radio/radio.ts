@@ -149,7 +149,7 @@ export default class SdRadio extends SolidElement {
           <span
             part="checked"
             class=${cx(
-              'rounded-full inline-flex text-white sd-radio--checked--default__icon-color-background h-2.5 w-2.5 transition-[transform, colors] duration-medium ease-in-out',
+              'rounded-full inline-flex text-white h-2.5 w-2.5 transition-[transform, colors] duration-medium ease-in-out',
               this.checked ? 'scale-100' : 'scale-0',
               this.disabled
                 ? 'bg-neutral-500'

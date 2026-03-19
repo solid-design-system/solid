@@ -346,7 +346,7 @@
   --sd-radio--checked--hover-color-background: var(--sd-color-primary-900);
   --sd-radio--checked--hover__icon-color-background: var(--sd-color-accent-550);
   --sd-radio--checked--invalid--default-color-background: var(--sd-color-primary-900);
-  --sd-radio--checked--invalid--default__icon-color-background: var(--sd-color-error);
+  --sd-radio--checked--invalid--default__icon-color-background: var(--sd-color-error-250);
   --sd-radio--checked--invalid--hover__icon-color-background: var(--sd-color-error-400);
   --sd-radio--default--invalid-color-background: var(--sd-color-primary-900);
   --sd-radio-border-width: var(--sd-spacing-0\.25);

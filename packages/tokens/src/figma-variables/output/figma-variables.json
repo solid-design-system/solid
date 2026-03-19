@@ -7696,7 +7696,7 @@
                   "background": {
                     "description": "Used for error messages, invalid states",
                     "type": "color",
-                    "value": "{ui-dark.utilities.color.error.300}"
+                    "value": "{ui-dark.utilities.color.error.250}"
                   }
                 }
               }
