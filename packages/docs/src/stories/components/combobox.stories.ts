@@ -421,7 +421,7 @@ export const Search = {
 
 export const Multiple = {
   render: () => html`
-    <div class="h-[400px] min-w-[200px] md:min-w-0 max-w-[400px] md:max-w-[700px]">
+    <div class="h-[400px] min-w-[200px] md:min-w-0 max-w-[700px]">
       <sd-combobox
         size="lg"
         label="Funds name"
