@@ -26,6 +26,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart right - The container that wraps the right.
  *
  * @cssproperty --sd-form-control-color-border - The border color of checkboxes for the non-disabled options.
+ * @cssproperty --sd-checkbox-border-width - The border width of the checkboxes.
  */
 @customElement('sd-option')
 export default class SdOption extends SolidElement {
@@ -166,7 +167,7 @@ export default class SdOption extends SolidElement {
               id="control"
               part="control ${this.selected ? ' control--checked' : 'control--unchecked'}"
               class=${cx(
-                'relative flex flex-shrink-0 items-center justify-center border rounded-sm h-4 w-4 mr-2',
+                'relative flex flex-shrink-0 items-center justify-center border sd-checkbox-border-width rounded-sm h-4 w-4 mr-2',
                 {
                   sm: 'mt-0.5',
                   md: 'mt-1',
