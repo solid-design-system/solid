@@ -2024,7 +2024,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               part="base"
               class=${cx(
                 'px-4 flex flex-row items-center rounded-default transition-colors ease-in-out duration-medium hover:duration-fast w-full',
-                !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
+                !this.disabled && !this.readonly && !this.visuallyDisabled
+                  ? 'hover:[@media(hover:hover)]:bg-neutral-200'
+                  : '',
                 this.readonly ? 'bg-neutral-100' : 'bg-white',
                 inputState === 'disabled' || inputState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black'
               )}
