@@ -1319,7 +1319,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               part="combobox"
               class=${cx(
                 'relative w-full px-4 flex flex-row items-center rounded-default transition-colors hover:duration-fast ease-in-out',
-                !this.disabled && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
+                this.visuallyDisabled || this.disabled
+                  ? 'hover:bg-transparent'
+                  : 'hover:[@media(hover:hover)]:bg-neutral-200',
                 this.open && 'shadow transition-shadow duration-medium ease-in-out',
                 ['invalid', 'activeInvalid'].includes(selectState) && 'form-control--invalid-color-background',
                 {
