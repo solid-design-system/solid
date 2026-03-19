@@ -100,30 +100,34 @@ export const Default = {
 
 export const Size = {
   render: () => html`
-    <div class="flex gap-12 h-[500px]">
-      <sd-combobox size="lg" label="Label" placeholder="Large" placement="bottom" value="" class="test">
-        <sd-option value="option-1" size="lg">Option 1</sd-option>
-        <sd-option value="option-2" size="lg">Option 2</sd-option>
-        <sd-option value="option-3" size="lg">Option 3</sd-option>
-        <sd-option value="option-4" size="lg">Option 4</sd-option>
-        <sd-option value="option-5" size="lg">Option 5</sd-option>
-      </sd-combobox>
-
-      <sd-combobox size="md" label="Label" placeholder="Medium" placement="bottom" value="" class="test">
-        <sd-option value="option-1" size="md">Option 1</sd-option>
-        <sd-option value="option-2" size="md">Option 2</sd-option>
-        <sd-option value="option-3" size="md">Option 3</sd-option>
-        <sd-option value="option-4" size="md">Option 4</sd-option>
-        <sd-option value="option-5" size="md">Option 5</sd-option>
-      </sd-combobox>
-
-      <sd-combobox size="sm" label="Label" placeholder="Small" placement="bottom" value="">
-        <sd-option value="option-1" size="sm">Option 1</sd-option>
-        <sd-option value="option-2" size="sm">Option 2</sd-option>
-        <sd-option value="option-3" size="sm">Option 3</sd-option>
-        <sd-option value="option-4" size="sm">Option 4</sd-option>
-        <sd-option value="option-5" size="sm">Option 5</sd-option>
-      </sd-combobox>
+    <div class="flex flex-wrap md:flex-nowrap gap-12 h-[400px]">
+      <div class="flex-1 min-w-[200px] md:min-w-0 max-w-[400px]">
+        <sd-combobox size="lg" label="Label" placeholder="Large" placement="bottom" value="" class="test">
+          <sd-option value="option-1" size="lg">Option 1</sd-option>
+          <sd-option value="option-2" size="lg">Option 2</sd-option>
+          <sd-option value="option-3" size="lg">Option 3</sd-option>
+          <sd-option value="option-4" size="lg">Option 4</sd-option>
+          <sd-option value="option-5" size="lg">Option 5</sd-option>
+        </sd-combobox>
+      </div>
+      <div class="flex-1 min-w-[200px] md:min-w-0 max-w-[400px]">
+        <sd-combobox size="md" label="Label" placeholder="Medium" placement="bottom" value="" class="test">
+          <sd-option value="option-1" size="md">Option 1</sd-option>
+          <sd-option value="option-2" size="md">Option 2</sd-option>
+          <sd-option value="option-3" size="md">Option 3</sd-option>
+          <sd-option value="option-4" size="md">Option 4</sd-option>
+          <sd-option value="option-5" size="md">Option 5</sd-option>
+        </sd-combobox>
+      </div>
+      <div class="flex-1 min-w-[200px] md:min-w-0 max-w-[400px]">
+        <sd-combobox size="sm" label="Label" placeholder="Small" placement="bottom" value="">
+          <sd-option value="option-1" size="sm">Option 1</sd-option>
+          <sd-option value="option-2" size="sm">Option 2</sd-option>
+          <sd-option value="option-3" size="sm">Option 3</sd-option>
+          <sd-option value="option-4" size="sm">Option 4</sd-option>
+          <sd-option value="option-5" size="sm">Option 5</sd-option>
+        </sd-combobox>
+      </div>
     </div>
   `
 };
@@ -135,16 +139,21 @@ export const Size = {
  */
 export const Placement = {
   render: () => html`
-    <div class="flex items-center gap-12 h-[500px]">
-      <sd-combobox class="self-baseline" size="lg" label="Label" placement="bottom" value="">
+    <div class="flex flex-wrap md:flex-nowrap items-center gap-12 h-[400px]">
+      <sd-combobox
+        class="self-baseline min-w-[200px] md:min-w-0 max-w-[400px]"
+        size="lg"
+        label="Label"
+        placement="bottom"
+        value=""
+      >
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
         <sd-option value="option-4">Option 4</sd-option>
         <sd-option value="option-5">Option 5</sd-option>
       </sd-combobox>
-
-      <sd-combobox size="lg" label="Label" placement="top" value="">
+      <sd-combobox class="min-w-[200px] md:min-w-0 max-w-[400px]" size="lg" label="Label" placement="top" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -162,23 +171,26 @@ export const Placement = {
  */
 export const Label = {
   render: () => html`
-    <div class="flex gap-12 h-[500px]">
-      <sd-combobox size="lg" label="Label attribute" placement="bottom" value="">
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
-      </sd-combobox>
-
-      <sd-combobox size="lg" placement="bottom" value="">
-        <div slot="label" class="text-lg">Label slot</div>
-        <sd-option value="option-1">Option 1</sd-option>
-        <sd-option value="option-2">Option 2</sd-option>
-        <sd-option value="option-3">Option 3</sd-option>
-        <sd-option value="option-4">Option 4</sd-option>
-        <sd-option value="option-5">Option 5</sd-option>
-      </sd-combobox>
+    <div class="flex flex-wrap md:flex-nowrap gap-6">
+      <div class="flex-1 min-w-[200px] md:min-w-0 max-w-[400px] h-[350px]">
+        <sd-combobox size="lg" label="Label" placement="bottom" value="" class="w-full">
+          <sd-option value="option-1">Option 1</sd-option>
+          <sd-option value="option-2">Option 2</sd-option>
+          <sd-option value="option-3">Option 3</sd-option>
+          <sd-option value="option-4">Option 4</sd-option>
+          <sd-option value="option-5">Option 5</sd-option>
+        </sd-combobox>
+      </div>
+      <div class="flex-1 min-w-[200px] md:min-w-0 max-w-[400px] h-[350px]">
+        <sd-combobox size="lg" placement="bottom" value="" class="w-full">
+          <div slot="label" class="text-lg">Label slot</div>
+          <sd-option value="option-1">Option 1</sd-option>
+          <sd-option value="option-2">Option 2</sd-option>
+          <sd-option value="option-3">Option 3</sd-option>
+          <sd-option value="option-4">Option 4</sd-option>
+          <sd-option value="option-5">Option 5</sd-option>
+        </sd-combobox>
+      </div>
     </div>
   `
 };
@@ -190,7 +202,7 @@ export const Label = {
  */
 export const FloatingLabel = {
   render: () => html`
-    <div class="flex gap-12 h-[500px] w-[400px]">
+    <div class="flex gap-12 h-[400px] min-w-[200px] md:min-w-0 max-w-[400px]">
       <sd-combobox size="lg" label="Floating Label" floating-label placement="bottom" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -207,7 +219,7 @@ export const FloatingLabel = {
  */
 export const Placeholder = {
   render: () => html`
-    <div class="w-[400px] h-[500px]">
+    <div class="h-[400px] min-w-[200px] md:min-w-0 max-w-[400px]">
       <sd-combobox size="lg" label="Label" placeholder="Placeholder example" placement="bottom" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -224,7 +236,7 @@ export const Placeholder = {
  */
 export const Disabled = {
   render: () => html`
-    <div class="w-[400px]">
+    <div class="min-w-[200px] md:min-w-0 max-w-[400px]">
       <sd-combobox size="lg" label="Label" placeholder="Disabled" placement="bottom" value="" disabled>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -245,7 +257,7 @@ export const Disabled = {
  */
 export const VisuallyDisabled = {
   render: () => html`
-    <div class="w-[400px] h-[200px] pt-12">
+    <div class="h-[200px] pt-12 min-w-[200px] md:min-w-0 max-w-[400px]">
       <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">
         <sd-combobox
           size="lg"
@@ -273,8 +285,15 @@ export const VisuallyDisabled = {
  */
 export const HelpText = {
   render: () => html`
-    <div class="flex gap-12 h-[500px]">
-      <sd-combobox size="lg" label="Label" placement="bottom" value="" help-text="Help text attribute">
+    <div class="flex flex-wrap md:flex-nowrap gap-12 h-[400px]">
+      <sd-combobox
+        class="flex-1 min-w-[200px] md:min-w-0 max-w-[400px]"
+        size="lg"
+        label="Label"
+        placement="bottom"
+        value=""
+        help-text="Help text attribute"
+      >
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -282,7 +301,13 @@ export const HelpText = {
         <sd-option value="option-5">Option 5</sd-option>
       </sd-combobox>
 
-      <sd-combobox size="lg" label="Label" placement="bottom" value="">
+      <sd-combobox
+        class="flex-1 min-w-[200px] md:min-w-0 max-w-[400px]"
+        size="lg"
+        label="Label"
+        placement="bottom"
+        value=""
+      >
         <div slot="help-text" class="text-lg">Help text slot</div>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -303,7 +328,7 @@ export const Focus = {
     elm?.focus();
   },
   render: () => html`
-    <div class="h-[260px] w-[400px]">
+    <div class="h-[260px] min-w-[200px] md:min-w-0 max-w-[400px]">
       <sd-combobox label="Label">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -318,7 +343,7 @@ export const Focus = {
  */
 export const SuggestionContainerHeight = {
   render: () => html`
-    <div class="h-[260px] w-[400px]">
+    <div class="h-[260px] min-w-[200px] md:min-w-0 max-w-[400px]">
       <style>
         #max-height::part(listbox) {
           max-height: 100px;
@@ -335,7 +360,7 @@ export const SuggestionContainerHeight = {
 
 export const Clearable = {
   render: () => html`
-    <div class="w-[400px] h-[500px]">
+    <div class="h-[400px] min-w-[200px] md:min-w-0 max-w-[400px]">
       <sd-combobox size="lg" label="Label" placement="bottom" clearable value="option-1">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -356,7 +381,7 @@ export const Clearable = {
  */
 export const Icons = {
   render: () => html`
-    <div class="w-[400px] h-[400px]">
+    <div class="h-[400px] min-w-[200px] md:min-w-0 max-w-[400px]">
       <sd-combobox size="lg" clearable label="Label">
         <sd-icon slot="left" name="system/image" aria-hidden="true" color="currentColor"></sd-icon>
         ${createColorOptionsHtml()}
@@ -373,7 +398,7 @@ export const Icons = {
  */
 export const Search = {
   render: () => html`
-    <div class="w-[400px] h-[500px]">
+    <div class="h-[400px] min-w-[200px] md:min-w-0 max-w-[400px]">
       <sd-combobox size="lg" label="Label" placement="bottom" type="search" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -396,13 +421,14 @@ export const Search = {
 
 export const Multiple = {
   render: () => html`
-    <div class="w-[700px] h-[400px]">
+    <div class="h-[400px] min-w-[200px] md:min-w-0 max-w-[400px] md:max-w-[700px]">
       <sd-combobox
         size="lg"
         label="Funds name"
         placement="bottom"
         multiple
         value="BBBank_Dynamik_Union BBBank_Kontinuität_Union"
+        style="--tag-max-width: 100px"
       >
         <sd-option value="BBBank_Dynamik_Union" checkbox>BBBank Dynamik Union</sd-option>
         <sd-option value="BBBank_Kontinuität_Union" checkbox>BBBank Kontinuität Union</sd-option>
@@ -423,7 +449,7 @@ export const Multiple = {
  */
 export const MaxOptionsVisible = {
   render: () => html`
-    <div class="w-[700px] h-[400px]">
+    <div class="h-[400px] min-w-[200px] md:min-w-0 max-w-[700px]">
       <sd-combobox
         size="lg"
         label="Funds name"
@@ -448,7 +474,7 @@ export const MaxOptionsVisible = {
 
 export const Required = {
   render: () => html`
-    <div class="w-[400px] h-[400px]">
+    <div class="h-[400px] min-w-[200px] md:min-w-0 max-w-[400px]">
       <sd-combobox
         size="lg"
         label="Required"
@@ -475,7 +501,7 @@ export const Required = {
 
 export const Valid = {
   render: () => html`
-    <div class="w-[400px] h-[400px]">
+    <div class="h-[400px] min-w-[200px] md:min-w-0 max-w-[400px]">
       <sd-combobox
         size="lg"
         placement="bottom"
@@ -508,7 +534,7 @@ export const Valid = {
 
 export const Invalid = {
   render: () => html`
-    <div class="w-[400px] h-[300px]">
+    <div class="h-[300px] min-w-[200px] md:min-w-0 max-w-[400px]">
       <sd-combobox
         size="lg"
         placement="bottom"
@@ -541,7 +567,7 @@ export const Invalid = {
  */
 export const AsyncOptions = {
   render: () => html`
-    <div class="w-[400px] h-[500px]">
+    <div class="h-[400px] min-w-[200px] md:min-w-0 max-w-[400px]">
       <sd-combobox label="Async options" class="async-combobox">
         <sd-option class="option" value="option-1">Option 1</sd-option>
         <sd-option class="option" value="option-2">Option 2</sd-option>
@@ -572,7 +598,7 @@ export const AsyncOptions = {
  */
 export const CustomFilter = {
   render: () => html`
-    <div class="w-[400px] h-[500px]">
+    <div class="h-[400px] min-w-[200px] md:min-w-0 max-w-[400px]">
       <sd-combobox label="Custom filter" class="filter-combobox"> ${createColorOptionsHtml()} </sd-combobox>
     </div>
     <script type="module">
