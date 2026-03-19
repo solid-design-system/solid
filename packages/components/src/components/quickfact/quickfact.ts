@@ -100,11 +100,12 @@ export default class SdQuickfact extends SdAccordion {
       }
 
       [part='summary-icon'] {
-        color: rgb(var(--sd-color-icon-fill-primary));
+        color: rgba(var(--sd-color-icon-fill-primary, rgba(var(--sd-color-primary))));
       }
 
       [part='icon'] {
         font-size: var(--sd-spacing-12, 3rem);
+        color: rgba(var(--sd-color-icon-fill-primary, rgba(var(--sd-color-primary))));
       }
 
       @media (min-width: 640px) {
