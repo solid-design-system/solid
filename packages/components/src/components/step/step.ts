@@ -364,6 +364,11 @@ export default class SdStep extends SolidElement {
         color: rgba(var(--sd-color-icon-fill-primary));
       }
 
+      [part='circle']:hover slot[name='circle-content'] sd-icon,
+      [part='circle']:hover slot[name='circle-content']::slotted(sd-icon) {
+        color: rgba(var(--sd-color-icon-fill-primary-500));
+      }
+
       :host([horizontal-inline]):has([part='description']) {
         @apply flex-1 min-w-0;
       }
