@@ -811,7 +811,9 @@ export default class SdCarousel extends SolidElement {
               !this.autoplay && '!hidden'
             )}
             part="autoplay-controls"
-            aria-label="${this.localize.term('autoplay')}"
+            aria-label="${this.pausedAutoplay
+              ? this.localize.term('startAutoplay')
+              : this.localize.term('stopAutoplay')}"
             aria-pressed="true"
             @click=${(e: MouseEvent) => {
               this.pausedAutoplay = !this.pausedAutoplay;

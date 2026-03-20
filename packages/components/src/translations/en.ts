@@ -69,6 +69,7 @@ const translation: Translation = {
   showPassword: 'Show password',
   slideNum: (slide, count) => `Slide ${slide} of ${count}`,
   startDateSelected: 'Start date selected',
+  stopAutoplay: 'Stop Automatic Slide Show',
   tagsSelected: 'Options selected',
   toggleColorFormat: 'Toggle color format',
   transcriptIsOpen: 'Transcript is open',
