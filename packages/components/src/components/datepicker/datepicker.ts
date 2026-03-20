@@ -1921,20 +1921,19 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                           !isRangeEnd &&
                           !inSelectedRange &&
                           'hover:sd-datepicker__date-item--hover--default-color-background',
-                        !inMonth
-                          ? this.disabledWeekends && isWeekendDay
-                            ? 'out-month weekend-day text-neutral-500'
-                            : isWeekendDay
-                              ? 'out-month weekend-day text-neutral-700'
-                              : 'out-month text-neutral-700 hover:sd-datepicker__date-item--hover--prev-next-color-text hover:sd-datepicker__date-item--hover--prev-next-color-background'
-                          : this.isInDisabledDates(day) || !this.inMinMax(day)
-                            ? 'out-month text-neutral-500'
-                            : this.disabledWeekends && isWeekendDay
-                              ? 'weekend-day text-neutral-500'
-                              : 'in-month sd-datepicker__date-item--default-color-text',
                         isSelectedSingle
                           ? 'selected outline-none border-primary sd-datepicker__date-item--selected-color-background sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected--hover-color-background'
-                          : '',
+                          : !inMonth
+                            ? this.disabledWeekends && isWeekendDay
+                              ? 'out-month weekend-day text-neutral-500'
+                              : isWeekendDay
+                                ? 'out-month weekend-day text-neutral-700'
+                                : 'out-month text-neutral-700 hover:sd-datepicker__date-item--hover--prev-next-color-text hover:sd-datepicker__date-item--hover--prev-next-color-background'
+                            : this.isInDisabledDates(day) || !this.inMinMax(day)
+                              ? 'out-month text-neutral-500'
+                              : this.disabledWeekends && isWeekendDay
+                                ? 'weekend-day text-neutral-500'
+                                : 'in-month sd-datepicker__date-item--default-color-text',
                         isRangeStart ? 'rounded-l-md rounded-r-none' : '',
                         isRangeEnd ? 'range-end rounded-r-md rounded-l-none' : '',
                         inSelectedRange && !isRangeStart && !isRangeEnd
