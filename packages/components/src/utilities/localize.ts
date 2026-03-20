@@ -131,7 +131,9 @@ export interface Translation extends DefaultTranslation {
   showMore: string;
   showPassword: string;
   slideNum: (slide: number, count: number) => string;
+  startAutoplay: string;
   startDateSelected: string;
+  stopAutoplay: string;
   tagsSelected: string;
   toggleColorFormat: string;
   transcriptIsOpen: string;
