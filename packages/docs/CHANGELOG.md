@@ -1,5 +1,13 @@
 # @solid-design-system/docs
 
+## 2.5.0
+
+### Minor Changes
+
+- Added new `view-month` attribute in `sd-datepicker` to allow users to set the initially visible month in the calendar popup. _[`#2858`](https://github.com/solid-design-system/solid/pull/2858) [`7797079`](https://github.com/solid-design-system/solid/commit/7797079ed8f8eaadd456384badddaa8f2f092339) [@smfonseca](https://github.com/smfonseca)_
+
+  Setting `view-month="2026-08"` will make August 2026 the starting month.
+
 ## 2.4.4
 
 ### Patch Changes
