@@ -80,18 +80,19 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @cssproperty --sd-button--inverted--disabled-color-background - The background color for inverted buttons in disabled state.
  * @cssproperty --sd-button--inverted--disabled-color-border - The border color for inverted buttons in disabled state.
  * @cssproperty --sd-button--inverted--disabled-color-text - The text color for inverted buttons in disabled state.
- * @cssproperty --sd-button--size-sm-font-size - The small button border radius.
- * @cssproperty --sd-button--size-md-font-size - The medium button text font size.
  * @cssproperty --sd-button--size-lg-font-size - The large button text font size.
- * @cssproperty --sd-button--size-sm-padding-block - The small button vertical padding value.
- * @cssproperty --sd-button--size-md-padding-block - The medium button vertical padding value.
- * @cssproperty --sd-button--size-lg-padding-block - The large button vertical padding value.
  * @cssproperty --sd-button--size-lg-height - The height for large icon-only and loading buttons.
- * @cssproperty --sd-button--size-md-height - The height for medium icon-only and loading buttons.
  * @cssproperty --sd-button--size-lg-icon-height - The height for icons in large buttons.
- * @cssproperty --sd-button-font-weight - The text font weight for buttons.
- * @cssproperty --sd-button-border-width - The border width for secondary buttons with borders.
+ * @cssproperty --sd-button--size-lg-padding-block - The large button vertical padding value.
+ * @cssproperty --sd-button--size-md--icon-only-padding-inline - The medium button horizontal padding value for icon-only buttons.
+ * @cssproperty --sd-button--size-md-font-size - The medium button text font size.
+ * @cssproperty --sd-button--size-md-height - The height for medium icon-only and loading buttons.
+ * @cssproperty --sd-button--size-md-padding-block - The medium button vertical padding value.
+ * @cssproperty --sd-button--size-sm-font-size - The small button font size.
+ * @cssproperty --sd-button--size-sm-padding-block - The small button vertical padding value.
  * @cssproperty --sd-button-border-radius - The border radius for buttons.
+ * @cssproperty --sd-button-border-width - The border width for secondary buttons with borders.
+ * @cssproperty --sd-button-font-weight - The text font weight for buttons.
  * @cssproperty --sd-button-padding-inline - The horizontal padding for buttons.
  */
 @customElement('sd-button')
@@ -333,7 +334,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         (this.disabled || this.visuallyDisabled) && 'cursor-not-allowed',
         {
           /* sizes, fonts */
-          sm: `varspacing-8 h-8 sd-button--size-sm-font-size sd-button-font-weight sd-button--secondary--size-sm-padding-block sd-button-border-radius`,
+          sm: `varspacing-8 min-h-8 sd-button--size-sm-font-size sd-button-font-weight sd-button--secondary--size-sm-padding-block sd-button-border-radius`,
           md: `varspacing-10 sd-button--size-md-height sd-button--size-md-font-size sd-button--secondary--size-md-padding-block sd-button-font-weight sd-button-border-radius`,
           lg: `varspacing-12 sd-button--size-lg-height sd-button--size-lg-font-size sd-button--secondary--size-lg-padding-block sd-button-font-weight sd-button-border-radius`
         }[this.size],
@@ -349,9 +350,9 @@ export default class SdButton extends SolidElement implements SolidFormControl {
          * */
         slots['icon-only'] &&
           {
-            sm: 'px-0 aspect-square',
-            md: 'px-0 aspect-square',
-            lg: 'px-0 aspect-square'
+            sm: 'px-1 aspect-square',
+            md: 'sd-button--size-md--icon-only-padding-inline aspect-square',
+            lg: 'px-[12px] aspect-square'
           }[this.size],
         {
           /* variants */
@@ -477,6 +478,11 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         )}></slot>
         <slot part="label" id="content" class=${cx(
           'inline-flex items-center justify-center',
+          {
+            sm: 'leading-5',
+            md: 'leading-6',
+            lg: 'leading-6'
+          }[this.size],
           slots['icon-only'] && 'pointer-events-none',
           this.loading && 'invisible'
         )}
