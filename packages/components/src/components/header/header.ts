@@ -23,6 +23,7 @@ import type { PropertyValues } from 'lit';
  * @cssproperty --sd-header-padding-bottom - padding bottom of the header content
  * @cssproperty --sd-header__underline-color-background - the background color of the underlined background
  * @cssproperty --sd-header__underline-height - height of the underlined header
+ * @cssproperty --sd-header__shadow-height - height of the shadow when the header is fixed
  */
 @customElement('sd-header')
 export default class SdHeader extends SolidElement {
@@ -105,7 +106,7 @@ export default class SdHeader extends SolidElement {
             @apply fixed w-full left-0 top-0;
 
             &::after {
-              @apply content-[''] absolute left-0 right-0 top-full sd-header__underline-height bg-gradient-to-b from-black/40 to-black/0;
+              @apply content-[''] absolute left-0 right-0 top-full sd-header__shadow-height bg-gradient-to-b from-black/40 to-black/0;
             }
           }
         }
