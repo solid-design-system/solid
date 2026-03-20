@@ -47,6 +47,9 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-tag--size-sm-font-size - The font size for small tags.
  * @cssproperty --sd-choice-control-font-weight - The font weight for tags.
  * @cssproperty --sd-tag--disabled-color-text - The text color for disabled tags.
+ *
+ * @cssproperty --sd-tag--disabled-color-border - The old border color for disabled tags.
+ * @cssproperty --sd-tag-font-weight - The old variable for font weight for tags. Defaults to the value of --sd-choice-control-font-weight.
  */
 @customElement('sd-tag')
 export default class SdTag extends SolidElement {
@@ -147,8 +150,8 @@ export default class SdTag extends SolidElement {
           'flex border box-border sd-tag-border-radius items-center leading-none whitespace-nowrap transition-colors duration-fast ease-in-out focus-visible:focus-outline',
           {
             /* sizes, fonts */
-            lg: 'h-8 choice-control-font-weight sd-tag--size-lg-font-size gap-2',
-            sm: 'h-6 choice-control-font-weight sd-tag--size-sm-font-size gap-1'
+            lg: 'h-8 sd-tag-font-weight sd-tag--size-lg-font-size gap-2',
+            sm: 'h-6 sd-tag-font-weight sd-tag--size-sm-font-size gap-1'
           }[this.size],
           {
             /* padding */
@@ -168,7 +171,7 @@ export default class SdTag extends SolidElement {
             : cx(
                 !isLink && 'cursor-not-allowed',
                 this.selected && 'bg-neutral-500 text-white',
-                'border-neutral-500 sd-tag--disabled-color-text'
+                'sd-tag--disabled-color-border sd-tag--disabled-color-text'
               )
         )}
       >
@@ -207,6 +210,18 @@ export default class SdTag extends SolidElement {
 
       :host([size='sm'])::part(removable-indicator) {
         @apply text-[0.75rem];
+      }
+
+      //TODO clean sd-tag--disabled-color-border and replace this class with border-neutral-500 in line 173 once ticket #2764 is done
+      .sd-tag--disabled-color-border {
+        --sd-tag--disabled-color-border: var(--sd-color-border-neutral-500);
+        border-color: rgb(var(--sd-tag--disabled-color-border));
+      }
+
+      //TODO clean sd-tag-font-weight and replace this class with choice-control-font-weight in lines 153 and 154 once ticket #2764 is done
+      .sd-tag-font-weight {
+        --sd-tag-font-weight: var(--sd-choice-control-font-weight);
+        font-weight: var(--sd-tag-font-weight);
       }
     `
   ];

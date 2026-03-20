@@ -1,5 +1,5 @@
 ---
-'@solid-design-system/tokens': patch
+'@solid-design-system/tokens': minor
 ---
 
 Updated design tokens to align with design specifications and improve multi-theming robustness:
@@ -148,8 +148,7 @@ Updated design tokens to align with design specifications and improve multi-them
 
 Removed variables
 - `--sd-tag--disabled-color-border`
-- `--sd-form-control__tooltip-color-icon`
-- `--sd-accordion-color-background`
 - `--sd-navigation-item--current-color-text`
 - `--sd-option--disabled-color-border`
 - `--sd-range-scale-ticks-color-text`
+- `--sd-form-control__tooltip-color-icon`

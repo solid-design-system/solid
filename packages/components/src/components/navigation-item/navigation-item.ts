@@ -38,6 +38,7 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-navigable__current-indicator-border-radius - The navigation-item current indicator border radius value.
  * @cssproperty --sd-navigable__current-indicator-height - The horizontal navigation-item current indicator height.
  * @cssproperty --sd-navigable__current-indicator-width - The vertical navigation-item current indicator width.
+ * @cssproperty --sd-navigation-item--current-color-text - The old variable for current navigation-item text color. Defaults to the sd-navigation-item-color-text.
  *
  */
 @customElement('sd-navigation-item')
@@ -206,7 +207,7 @@ export default class SdNavigationItem extends SolidElement {
           'flex items-center cursor-pointer relative focus-visible:focus-outline group hover:bg-neutral-200 transition-colors duration-fast ease-in-out min-h-[48px] navigable-border-radius',
           { md: 'navigable-font-size', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
           this.disabled ? 'text-neutral-500 pointer-events-none' : 'sd-navigation-item-color-text',
-          this.current && 'font-bold',
+          this.current && 'font-bold sd-navigation-item--current-color-text',
           !isAccordion && 'w-full',
           this.divider && this.vertical && 'mt-0.25',
           !this.vertical && 'inline-flex items-center',
@@ -348,6 +349,12 @@ export default class SdNavigationItem extends SolidElement {
 
       :host([vertical]) {
         @apply block;
+      }
+
+      //TODO clean sd-navigation-item--current-color-text and delete this class from line 210 once ticket #2764 is done
+      .sd-navigation-item--current-color-text {
+        --sd-navigation-item--current-color-text: var(--sd-navigation-item-color-text);
+        color: rgb(var(--sd-navigation-item--current-color-text, var(--sd-navigation-item-color-text)));
       }
 
       details summary::-webkit-details-marker {

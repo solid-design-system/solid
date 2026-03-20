@@ -1,5 +1,5 @@
 ---
-'@solid-design-system/styles': patch
+'@solid-design-system/styles': minor
 ---
 
 Fixes and improvements for multi-theming:

@@ -45,6 +45,7 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-accordion-padding-block - The accordion vertical padding value.
  * @cssproperty --sd-accordion__indicator-color - The accordion indicator color.
  * @cssproperty --sd-accordion-color-icon-fill - The accordion icon color.
+ * @cssproperty --sd-accordion__chevron-color-text - Old variable for accordion chevron color. Defaults to the accordion icon color.
  */
 @customElement('sd-accordion')
 export default class SdAccordion extends SolidElement {
@@ -192,7 +193,7 @@ export default class SdAccordion extends SolidElement {
           part="header"
           id="header"
           class=${cx(
-            'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 sd-accordion-padding-block focus-visible:focus-outline focus-visible:z-10 sd-accordion-color-text relative group transition-colors ease-in-out duration-fast hover:bg-neutral-200'
+            'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 sd-accordion-padding-block focus-visible:focus-outline focus-visible:z-10 relative group transition-colors ease-in-out duration-fast hover:bg-neutral-200'
           )}
           aria-expanded=${this.open ? 'true' : 'false'}
           aria-controls="content"
@@ -207,7 +208,9 @@ export default class SdAccordion extends SolidElement {
               'w-1 sd-accordion__indicator-color absolute left-0 transition-height duration-fast ease-in-out h-[calc(100%-16px)] group-hover:h-full'
             )}
           ></div>
-          <slot name="summary" part="summary" class="flex flex-auto items-center text-left">${this.summary}</slot>
+          <slot name="summary" part="summary" class="flex flex-auto items-center text-left sd-accordion-color-text"
+            >${this.summary}</slot
+          >
           <span
             part="summary-icon"
             class=${cx(
@@ -244,8 +247,13 @@ export default class SdAccordion extends SolidElement {
         border-block-width: var(--sd-accordion-border-width);
       }
 
+      //TODO clean sd-accordion__chevron-color-text variable and replace with sd-accordion-color-icon-fill once ticket #2764 is done
       [part='summary-icon'] {
-        fill: rgb(var(--sd-accordion-color-icon-fill));
+        --sd-accordion__chevron-color-text: rgb(var(--sd-accordion-color-icon-fill, var(--sd-color-icon-fill-primary)));
+      }
+
+      [part='summary-icon'] sd-icon {
+        color: rgb(var(--sd-accordion__chevron-color-text, var(--sd-accordion-color-icon-fill)));
       }
     `
   ];
