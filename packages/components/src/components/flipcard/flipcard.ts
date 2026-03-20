@@ -156,7 +156,7 @@ export default class SdFlipcard extends SolidElement {
           >
             <div
               class=${cx(
-                'absolute inset-0',
+                'absolute inset-0 pointer-events-none -z-10',
                 {
                   primary: '',
                   'primary-100': '',
@@ -171,7 +171,7 @@ export default class SdFlipcard extends SolidElement {
                 }[this.frontVariant]
               )}
             ></div>
-            <slot name="front"></slot>
+            <slot name="front" class="relative z-10"></slot>
           </div>
 
           <div
@@ -243,7 +243,7 @@ export default class SdFlipcard extends SolidElement {
           <div
             part="back-slot-container"
             class=${cx(
-              'flex',
+              'flex relative',
               {
                 primary: 'text-white',
                 'primary-100': 'text-black',
@@ -264,7 +264,7 @@ export default class SdFlipcard extends SolidElement {
               }[this.backVariant]
             )}
           >
-            <slot name="back"></slot>
+            <slot name="back" class="relative z-10"></slot>
           </div>
 
           <div
@@ -358,6 +358,7 @@ export default class SdFlipcard extends SolidElement {
 
       .flip-card__gradient {
         flex: 0.2 1 0;
+        pointer-events: none;
       }
 
       /**
