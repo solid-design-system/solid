@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.5.1
+
+### Patch Changes
+
+- Updated stories in docs to reference the new JPG placeholder images instead of the previous PNG files. _[`#2856`](https://github.com/solid-design-system/solid/pull/2856) [`a195ef8`](https://github.com/solid-design-system/solid/commit/a195ef8f25dbdf8d9baae3a0073c135802455aaa) [@balco0110](https://github.com/balco0110)_
+
 ## 2.5.0
 
 ### Minor Changes
