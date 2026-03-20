@@ -76,12 +76,13 @@
   --sd-button--secondary--size-sm-padding-block: 0.28125rem;
   --sd-button--secondary-padding-inline: 0.9375rem;
   --sd-button--size-lg-font-size: var(--sd-spacing-4);
-  --sd-button--size-lg-height: var(--sd-spacing-12);
   --sd-button--size-lg-icon-height: var(--sd-spacing-6);
+  --sd-button--size-lg-min-height: var(--sd-spacing-12);
   --sd-button--size-lg-padding-block: var(--sd-spacing-3);
+  --sd-button--size-md--icon-only-padding-inline: var(--sd-spacing-2\.5);
   --sd-button--size-md-border-radius: var(--sd-spacing-1);
   --sd-button--size-md-font-size: var(--sd-spacing-4);
-  --sd-button--size-md-height: var(--sd-spacing-10);
+  --sd-button--size-md-min-height: var(--sd-spacing-10);
   --sd-button--size-md-padding-block: var(--sd-spacing-2);
   --sd-button--size-sm-border-radius: var(--sd-spacing-1);
   --sd-button--size-sm-font-size: 0.875rem;
@@ -285,6 +286,7 @@
   --sd-form-control__listbox-border-top-right-radius: var(--sd-spacing-1);
   --sd-header-color-background: var(--sd-color-white);
   --sd-header-padding-bottom: 0;
+  --sd-header__shadow-height: var(--sd-spacing-1);
   --sd-header__underline-color-background: 255 255 255 / 0;
   --sd-header__underline-height: var(--sd-spacing-2);
   --sd-headline--3xl-onwards-color-text: var(--sd-color-primary);
@@ -369,6 +371,7 @@
   --sd-shadow-sm:  0.5px 0.5px 1.5px 0px #515151;
   --sd-shadow-xs:  0.5px 0.5px 1.5px 0px #515151;
   --sd-shadow:  0px 1px 3px 0px rgba(81, 81, 81, 0.75);
+  --sd-sizing-0: 0;
   --sd-sizing-0\.25: 0.0625rem;
   --sd-sizing-0\.5: 0.125rem;
   --sd-sizing-10: 2.5rem;

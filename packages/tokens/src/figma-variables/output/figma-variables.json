@@ -2721,6 +2721,11 @@
         }
       },
       "sizing": {
+        "0": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.0}"
+        },
         "1": {
           "description": "8px",
           "type": "float",
@@ -3302,6 +3307,12 @@
               "value": "rgba(255, 255, 255, 0.00)"
             }
           }
+        },
+        "__shadow": {
+          "height": {
+            "type": "float",
+            "value": "{ui-light.utilities.sizing.1}"
+          }
         }
       },
       "sd-tag": {
@@ -3755,9 +3766,17 @@
               "type": "float",
               "value": "{ui-light.utilities.rounded.default}"
             },
-            "height": {
+            "min-height": {
               "type": "float",
               "value": "{ui-light.utilities.sizing.10}"
+            },
+            "--icon": {
+              "only": {
+                "padding-inline": {
+                  "type": "float",
+                  "value": "{ui-light.utilities.sizing.2,5}"
+                }
+              }
             }
           },
           "lg": {
@@ -3776,7 +3795,7 @@
               "type": "float",
               "value": "{ui-light.utilities.spacing.3}"
             },
-            "height": {
+            "min-height": {
               "description": "Used for icon-only and loading variant",
               "type": "float",
               "value": "{ui-light.utilities.sizing.12}"
@@ -6023,6 +6042,11 @@
         }
       },
       "sizing": {
+        "0": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.0}"
+        },
         "1": {
           "description": "8px",
           "type": "float",
@@ -6604,6 +6628,12 @@
               "value": "rgba(255, 255, 255, 0.00)"
             }
           }
+        },
+        "__shadow": {
+          "height": {
+            "type": "float",
+            "value": "{ui-dark.utilities.sizing.1}"
+          }
         }
       },
       "sd-tag": {
@@ -7057,9 +7087,17 @@
               "type": "float",
               "value": "{ui-dark.utilities.rounded.default}"
             },
-            "height": {
+            "min-height": {
               "type": "float",
               "value": "{ui-dark.utilities.sizing.10}"
+            },
+            "--icon": {
+              "only": {
+                "padding-inline": {
+                  "type": "float",
+                  "value": "{ui-dark.utilities.sizing.2,5}"
+                }
+              }
             }
           },
           "lg": {
@@ -7078,7 +7116,7 @@
               "type": "float",
               "value": "{ui-dark.utilities.spacing.3}"
             },
-            "height": {
+            "min-height": {
               "description": "Used for icon-only and loading variant",
               "type": "float",
               "value": "{ui-dark.utilities.sizing.12}"
@@ -9325,6 +9363,11 @@
         }
       },
       "sizing": {
+        "0": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.0}"
+        },
         "1": {
           "description": "8px",
           "type": "float",
@@ -9906,6 +9949,12 @@
               "value": "{core.vb.grey.200}"
             }
           }
+        },
+        "__shadow": {
+          "height": {
+            "type": "float",
+            "value": "{vb.utilities.sizing.0}"
+          }
         }
       },
       "sd-tag": {
@@ -10359,9 +10408,17 @@
               "type": "float",
               "value": "{vb.utilities.rounded.full}"
             },
-            "height": {
+            "min-height": {
               "type": "float",
               "value": "44"
+            },
+            "--icon": {
+              "only": {
+                "padding-inline": {
+                  "type": "float",
+                  "value": "{vb.utilities.sizing.3}"
+                }
+              }
             }
           },
           "lg": {
@@ -10380,7 +10437,7 @@
               "type": "float",
               "value": "{vb.utilities.spacing.2,5}"
             },
-            "height": {
+            "min-height": {
               "description": "Used for icon-only and loading variant",
               "type": "float",
               "value": "44"
@@ -12627,6 +12684,11 @@
         }
       },
       "sizing": {
+        "0": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.0}"
+        },
         "1": {
           "description": "8px",
           "type": "float",
@@ -13208,6 +13270,12 @@
               "value": "rgba(255, 255, 255, 0.00)"
             }
           }
+        },
+        "__shadow": {
+          "height": {
+            "type": "float",
+            "value": "{kid.utilities.sizing.1}"
+          }
         }
       },
       "sd-tag": {
@@ -13661,9 +13729,17 @@
               "type": "float",
               "value": "{kid.utilities.rounded.full}"
             },
-            "height": {
+            "min-height": {
               "type": "float",
               "value": "40"
+            },
+            "--icon": {
+              "only": {
+                "padding-inline": {
+                  "type": "float",
+                  "value": "{kid.utilities.sizing.2,5}"
+                }
+              }
             }
           },
           "lg": {
@@ -13682,7 +13758,7 @@
               "type": "float",
               "value": "{kid.utilities.spacing.2}"
             },
-            "height": {
+            "min-height": {
               "description": "Used for icon-only and loading variant",
               "type": "float",
               "value": "40"

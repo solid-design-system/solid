@@ -118,6 +118,7 @@
   --shadow-sm: var(--sd-shadow-sm);
   --shadow-xs: var(--sd-shadow-xs);
   --shadow: var(--sd-shadow);
+  --sizing-0: var(--sd-sizing-0);
   --sizing-0\.25: var(--sd-sizing-0\.25);
   --sizing-0\.5: var(--sd-sizing-0\.5);
   --sizing-10: var(--sd-sizing-10);

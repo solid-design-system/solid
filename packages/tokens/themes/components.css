@@ -326,16 +326,20 @@
  font-size: var(--sd-button--size-lg-font-size, var(--sd-spacing-4));
 }
 
-@utility sd-button--size-lg-height {
- height: var(--sd-button--size-lg-height, var(--sd-spacing-12));
-}
-
 @utility sd-button--size-lg-icon-height {
  height: var(--sd-button--size-lg-icon-height, var(--sd-spacing-6));
 }
 
+@utility sd-button--size-lg-min-height {
+ min-height: var(--sd-button--size-lg-min-height, var(--sd-spacing-12));
+}
+
 @utility sd-button--size-lg-padding-block {
  padding-block: var(--sd-button--size-lg-padding-block, var(--sd-spacing-3));
+}
+
+@utility sd-button--size-md--icon-only-padding-inline {
+ padding-inline: var(--sd-button--size-md--icon-only-padding-inline, var(--sd-spacing-2\.5));
 }
 
 @utility sd-button--size-md-border-radius {
@@ -346,8 +350,8 @@
  font-size: var(--sd-button--size-md-font-size, var(--sd-spacing-4));
 }
 
-@utility sd-button--size-md-height {
- height: var(--sd-button--size-md-height, var(--sd-spacing-10));
+@utility sd-button--size-md-min-height {
+ min-height: var(--sd-button--size-md-min-height, var(--sd-spacing-10));
 }
 
 @utility sd-button--size-md-padding-block {
@@ -600,6 +604,10 @@
 
 @utility sd-header-padding-bottom {
  padding-bottom: var(--sd-header-padding-bottom, 0);
+}
+
+@utility sd-header__shadow-height {
+ height: var(--sd-header__shadow-height, var(--sd-spacing-1));
 }
 
 @utility sd-header__underline-color-background {
