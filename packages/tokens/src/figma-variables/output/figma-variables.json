@@ -4267,7 +4267,7 @@
         }
       },
       "sd-range": {
-        "tick": {
+        "scale-ticks": {
           "color": {
             "text": {
               "type": "color",
@@ -7569,7 +7569,7 @@
         }
       },
       "sd-range": {
-        "tick": {
+        "scale-ticks": {
           "color": {
             "text": {
               "type": "color",
@@ -8774,7 +8774,7 @@
           },
           "600": {
             "type": "color",
-            "value": "{core.vb.grey.600}"
+            "value": "{core.vb.grey.500}"
           },
           "700": {
             "type": "color",
@@ -10871,7 +10871,7 @@
         }
       },
       "sd-range": {
-        "tick": {
+        "scale-ticks": {
           "color": {
             "text": {
               "type": "color",
@@ -14173,7 +14173,7 @@
         }
       },
       "sd-range": {
-        "tick": {
+        "scale-ticks": {
           "color": {
             "text": {
               "type": "color",

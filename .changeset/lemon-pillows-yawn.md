@@ -95,8 +95,6 @@ Updated design tokens to align with design specifications and improve multi-them
 - `sd-radio-button`:  
   --sd-radio-button--hover-color-background,  
   --sd-choice-control-font-weight
-- `sd-range-tick`:  
-  --sd-range-tick-color-text
 - `sd-select`:  
   --sd-form-control-border-radius,  
   --sd-form-control__listbox-border-bottom-left-radius,  
@@ -151,6 +149,5 @@ Removed the following variables:
 - --sd-accordion__chevron-color-text
 - --sd-navigation-item--current-color-text
 - --sd-option--disabled-color-border
-- --sd-range-scale-ticks-color-text
 - --sd-button--size-lg-border-radius
 - --sd-button--size-md-border-radius

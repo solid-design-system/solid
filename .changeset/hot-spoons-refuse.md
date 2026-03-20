@@ -150,5 +150,4 @@ Removed variables
 - `--sd-tag--disabled-color-border`
 - `--sd-navigation-item--current-color-text`
 - `--sd-option--disabled-color-border`
-- `--sd-range-scale-ticks-color-text`
 - `--sd-form-control__tooltip-color-icon`

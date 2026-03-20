@@ -362,7 +362,7 @@
   --sd-radius-none: 0;
   --sd-radius-sm: 0.125rem;
   --sd-radius: 0.25rem;
-  --sd-range-tick-color-text: 89 89 89;
+  --sd-range-scale-ticks-color-text: 89 89 89;
   --sd-range__bar-border-width: var(--sd-spacing-0\.5);
   --sd-shadow-listbox:  0px 2px 4px 0px rgba(5, 21, 48, 0.1);
   --sd-shadow-sm:  0px 4px 12px -6px rgba(5, 21, 48, 0.25);

@@ -778,8 +778,8 @@
  padding: var(--sd-radio-button-group-padding, 0);
 }
 
-@utility sd-range-tick-color-text {
-  color: rgba(var(--sd-range-tick-color-text, rgba(var(--sd-color-black))));
+@utility sd-range-scale-ticks-color-text {
+  color: rgba(var(--sd-range-scale-ticks-color-text, rgba(var(--sd-color-black))));
 }
 
 @utility sd-range__bar-border-width {
