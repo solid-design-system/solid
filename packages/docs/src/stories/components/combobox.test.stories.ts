@@ -547,8 +547,7 @@ export const Parts = {
           values: partsArr.map(part => {
             return {
               title: part,
-              value: `
-              <style>#part-${part} sd-combobox{width:550px; box-sizing:border-box} 
+              value: `<style>#part-${part} sd-combobox{width:550px; box-sizing:border-box} 
               #part-${part} sd-combobox::part(${part}){outline: solid 2px red; outline-offset: 2px} 
               ::part(popup__content){overflow-y: visible} 
               ::part(tag__content){display: block}</style>
