@@ -324,7 +324,7 @@ export default class SdCarousel extends SolidElement {
   };
 
   /**
-   * Pause the autoplay.
+   * Pause the autoplay
    */
   public pause() {
     this.pausedAutoplay = true;
