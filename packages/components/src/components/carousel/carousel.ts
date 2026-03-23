@@ -300,6 +300,18 @@ export default class SdCarousel extends SolidElement {
     this.requestUpdate();
   };
 
+  private handleFocus() {
+    if (this.autoplay) {
+      this.scrollContainer.setAttribute('aria-live', 'polite');
+    }
+  }
+
+  private handleBlur() {
+    if (this.autoplay) {
+      this.scrollContainer.setAttribute('aria-live', 'off');
+    }
+  }
+
   private get isAutoPlaying(): boolean {
     return this.autoplay && !this.pausedAutoplay && !this.autoplayController.paused;
   }
@@ -622,6 +634,8 @@ export default class SdCarousel extends SolidElement {
           tabindex="0"
           @keydown=${this.handleKeyDown}
           @scrollend=${this.handleScrollEnd}
+          @focus=${this.handleFocus}
+          @blur=${this.handleBlur}
         >
           <slot></slot>
         </div>
@@ -640,6 +654,8 @@ export default class SdCarousel extends SolidElement {
               aria-label="${this.localize.term('previousSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${prevEnabled ? 'false' : 'true'}"
+              @focus=${this.handleFocus}
+              @blur=${this.handleBlur}
               @click=${prevEnabled
                 ? (e: MouseEvent) => {
                     this.previous();
@@ -743,6 +759,8 @@ export default class SdCarousel extends SolidElement {
               aria-label="${this.localize.term('nextSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${nextEnabled ? 'false' : 'true'}"
+              @focus=${this.handleFocus}
+              @blur=${this.handleBlur}
               @click=${nextEnabled
                 ? (e: MouseEvent) => {
                     this.next();
