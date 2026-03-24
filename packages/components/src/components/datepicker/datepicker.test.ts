@@ -403,4 +403,42 @@ describe('<sd-datepicker>', () => {
       expect(input.getAttribute('aria-invalid')).to.equal('true');
     });
   });
+
+  describe('set initial month displayed with viewMonth attribute', () => {
+    it('accepts view-month attribute in MM-YYYY form', async () => {
+      const el = await fixture<SdDatepicker>(html`<sd-datepicker view-month="12-2026"></sd-datepicker>`);
+
+      await el.updateComplete;
+
+      expect(el.viewMonth).to.not.be.null;
+      if (el.viewMonth) {
+        expect(el.viewMonth.getFullYear()).to.equal(2026);
+        expect(el.viewMonth.getMonth()).to.equal(11);
+      }
+    });
+
+    it('accepts view-month attribute in YYYY-MM form', async () => {
+      const el = await fixture<SdDatepicker>(html`<sd-datepicker view-month="2026-12"></sd-datepicker>`);
+
+      await el.updateComplete;
+
+      expect(el.viewMonth).to.not.be.null;
+      if (el.viewMonth) {
+        expect(el.viewMonth.getFullYear()).to.equal(2026);
+        expect(el.viewMonth.getMonth()).to.equal(11);
+      }
+    });
+
+    it('accepts view-month attribute with dot separator', async () => {
+      const el = await fixture<SdDatepicker>(html`<sd-datepicker view-month="12.2026"></sd-datepicker>`);
+
+      await el.updateComplete;
+
+      expect(el.viewMonth).to.not.be.null;
+      if (el.viewMonth) {
+        expect(el.viewMonth.getFullYear()).to.equal(2026);
+        expect(el.viewMonth.getMonth()).to.equal(11);
+      }
+    });
+  });
 });
