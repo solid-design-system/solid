@@ -321,6 +321,36 @@ export const SampleNotInteractive = {
   }
 };
 
+/**
+ * This sample shows how to manually manage step states by setting active-step to -1.
+ * States are controlled manually on the sd-step elements.
+ */
+
+export const ManualStateManagement = {
+  name: 'Manual Step State Management',
+  render: () => {
+    return html`
+      <sd-step-group size="lg" orientation="horizontal" active-step="-1">
+        <sd-step>
+          <p slot="label">Default</p>
+        </sd-step>
+
+        <sd-step current>
+          <p slot="label">Current</p>
+        </sd-step>
+
+        <sd-step disabled>
+          <p slot="label">Disabled</p>
+        </sd-step>
+
+        <sd-step waiting>
+          <p slot="label">Waiting</p>
+        </sd-step>
+      </sd-step-group>
+    `;
+  }
+};
+
 export const Combination = generateScreenshotStory([
   Default,
   Orientation,

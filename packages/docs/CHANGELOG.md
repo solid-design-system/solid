@@ -1,5 +1,34 @@
 # @solid-design-system/docs
 
+## 2.7.0
+
+### Minor Changes
+
+- Adding examples in the documentation for integrating Theme specific fonts. _[`#2854`](https://github.com/solid-design-system/solid/pull/2854) [`8fe3213`](https://github.com/solid-design-system/solid/commit/8fe32131e2778937efe450cbc154cc6fef2b3883) [@martascorreia](https://github.com/martascorreia)_
+
+## 2.6.0
+
+### Minor Changes
+
+- - Added a new manual management functionality to the `sd-step-group` activated by setting the `active-step` attribute to -1. This disables the current automatic behavior of the `sd-step-group`, like changing every step after the `current` to `waiting`, and allows the user to set manage these states freely. _[`#2859`](https://github.com/solid-design-system/solid/pull/2859) [`d2e3426`](https://github.com/solid-design-system/solid/commit/d2e3426c8e6fbf145b85731ad5598270b803b167) [@martascorreia](https://github.com/martascorreia)_
+
+  - Added a new story "Manual Step state" to the documentation and tests for this use case.
+  - Fixed the default story in documentation since it was wasn't chaging the `current` step when the attribute `active-step` was changed to 0.
+
+## 2.5.1
+
+### Patch Changes
+
+- Updated stories in docs to reference the new JPG placeholder images instead of the previous PNG files. _[`#2856`](https://github.com/solid-design-system/solid/pull/2856) [`a195ef8`](https://github.com/solid-design-system/solid/commit/a195ef8f25dbdf8d9baae3a0073c135802455aaa) [@balco0110](https://github.com/balco0110)_
+
+## 2.5.0
+
+### Minor Changes
+
+- Added new `view-month` attribute in `sd-datepicker` to allow users to set the initially visible month in the calendar popup. _[`#2858`](https://github.com/solid-design-system/solid/pull/2858) [`7797079`](https://github.com/solid-design-system/solid/commit/7797079ed8f8eaadd456384badddaa8f2f092339) [@smfonseca](https://github.com/smfonseca)_
+
+  Setting `view-month="2026-08"` will make August 2026 the starting month.
+
 ## 2.4.4
 
 ### Patch Changes
