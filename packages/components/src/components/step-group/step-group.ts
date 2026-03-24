@@ -30,7 +30,7 @@ export default class SdStepGroup extends SolidElement {
   /** Determines the orientation of the step-group. */
   @property({ type: String, reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
 
-  /** The active step in the step-group. */
+  /** The active step in the step-group. If set to -1, steps have to be managed manually.*/
   @property({ type: Number, reflect: true, attribute: 'active-step' }) activeStep = 0;
 
   /** Determines if the step-group is not interactive. */
@@ -68,8 +68,17 @@ export default class SdStepGroup extends SolidElement {
         }
       });
 
-      this.setActiveStep(activeStep || this.activeStep);
+      if (this.activeStep !== -1) {
+        this.setActiveStep(activeStep || this.activeStep);
+      }
     });
+  }
+
+  @watch('activeStep', { waitUntilFirstUpdate: true })
+  handleActiveStepChange() {
+    const index = Number(this.activeStep);
+    if (Number.isNaN(index)) return;
+    this.setActiveStep(index);
   }
 
   @watch('size', { waitUntilFirstUpdate: true })
@@ -103,8 +112,10 @@ export default class SdStepGroup extends SolidElement {
           step.current = true;
         } else if (i > index) {
           step.waiting = true;
+          step.current = false;
         } else {
           step.current = false;
+          step.waiting = false;
         }
       });
     }
