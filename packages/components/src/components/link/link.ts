@@ -25,7 +25,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart icon-right - The container that wraps the right icon area.
  *
  * @cssproperty --sd-interactive--active-color-text - The link's text color when active.
- * @cssproperty --interactive--default-color-text - The default link's text color.
+ * @cssproperty --sd-interactive--default-color-text - The default link's text color.
  */
 @customElement('sd-link')
 export default class SdLink extends SolidElement {

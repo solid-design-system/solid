@@ -3,13 +3,14 @@
 ---
 
 Updated design tokens to align with design specifications and improve multi-theming robustness:
+- sd-accordion:
+    - `--sd-accordion-border-width`
+    - `--sd-accordion-color-icon-fill`
 - sd-audio
     - `--sd-audio__slide-bar--inverted-color-background`
     - `--sd-audio__track-bar--inverted-color-background`
 - sd-badge
     - `--sd-badge--blue-color-background`
-    - `--sd-badge--green-color-background`
-    - `--sd-badge--red-color-background`
 - sd-brandshape
     - `--sd-brandshape--neutral-100-color-background`
     - `--sd-brandshape--white-color-background`
@@ -19,7 +20,6 @@ Updated design tokens to align with design specifications and improve multi-them
     - `--sd-button--primary--hover-color-text`
     - `--sd-button--primary--inverted--active-color-background`
     - `--sd-button--secondary--active-color-text`
-    - `--sd-button--secondary--inverted-color-border`
     - `--sd-button--secondary--inverted-color-text`
     - `--sd-button--secondary--inverted--hover-color-background`
     - `--sd-button--secondary--inverted--active-color-text`
@@ -44,6 +44,12 @@ Updated design tokens to align with design specifications and improve multi-them
 
     **Fixed**
     - `--sd-button--secondary--inverted--color-border` →  `--sd-button--secondary--inverted-color-border`
+- sd-chip:
+
+    **Renamed**
+    - `--sd-chip-font-size` → `--sd-marker-font-size`
+    - `--sd-chip-border-width` → `--sd-marker-border-width`
+    - `--sd-chip-font-weight` → `--sd-marker-font-weight`
 - sd-combobox
     - `--sd-form-control-border-radius`
     - `--sd-form-control-color-border`
@@ -59,6 +65,10 @@ Updated design tokens to align with design specifications and improve multi-them
     - `--sd-form-control-color-border`
     - `--sd-form-control--filled__floating-label-color-text`
     - `--sd-form-control--invalid-color-background`
+    - `--sd-form-control__listbox-border-bottom-left-radius`
+    - `--sd-form-control__listbox-border-bottom-right-radius`
+    - `--sd-form-control__listbox-border-top-left-radius`
+    - `--sd-form-control__listbox-border-top-right-radius`
     - `--sd-datepicker__date-item--default-color-text`
     - `--sd-datepicker__date-item--hover--default-color-background`
     - `--sd-datepicker__date-item--hover--default-color-text`
@@ -70,36 +80,27 @@ Updated design tokens to align with design specifications and improve multi-them
     - `--sd-datepicker__date-item--selected--hover-color-background`
     - `--sd-datepicker__date-item--range-color-background`
     - `--sd-datepicker__date-item--current-color-text`
-- sd-chip
-
-    **Renamed**
-    - `--sd-chip-font-size` → `--sd-marker-font-size`
-    - `--sd-chip-border-width` → `--sd-marker-border-width`
-    - `--sd-chip-font-weight` → `--sd-marker-font-weight`
+    - `--sd-datepicker__date-item--current-font-weight`
+- sd-dropdown:  
+    - `--sd-dropdown-color-background`
 - sd-flag
+    - `--sd-marker-font-weight`
+    - `--sd-marker-font-size`
 
     **Renamed**
     - `--sd-flag-border-width` → `--sd-marker-border-width`
-- sd-tag
-    - `--sd-choice-control-font-weight`
-    - `--sd-tag--disabled-color-text`
-
-    **Renamed**
-    - `--sd-tag-font-weight` → `--sd-choice-control-font-weight`
-- sd-accordion
-
-    **Renamed**
-    - `--sd-accordion__chevron-color-text` → `--sd-accordion-color-icon-fill`
-- sd-input
-
-    **Fixed**
-    - `--sd-form-control-color-icon` → `--sd-form-control-color-icon-fill`
-- sd-dropdown
-    - `--sd-dropdown-color-background`
 - sd-header
     - `--sd-header-padding-bottom`
     - `--sd-header__underline-color-background`
     - `--sd-header__underline-height`
+    - `--sd-header__shadow-height`
+- sd-headline
+    - `--sd-headline--3xl-onwards-color-text`
+- sd-input
+    - `--sd-form-control-border-radius`
+
+    **Fixed**
+    - `--sd-form-control-color-icon` → `--sd-form-control-color-icon-fill`
 - sd-link
     - `--interactive--default-color-text`
 - sd-map-marker
@@ -112,19 +113,22 @@ Updated design tokens to align with design specifications and improve multi-them
     - `--sd-map-marker--pin--hover-color-background`
     - `--sd-map-marker--pin-color-text`
 - sd-menu-item
-    - `--sd-menu-item-color-icon-fill`
-    - `--sd-menu-item-color-text`
-    - `--sd-menu-item--disabled-color-icon-fill`
-    - `--sd-menu-item--disabled-color-text`
+
+    **Renamed**
+    - `--sd-menu-color-icon` → `--sd-menu-item-color-icon-fill`
+    - `--sd-menu-color-text` → `--sd-menu-item-color-text`
+    - `--sd-menu--disabled-color-icon` → `--sd-menu-item--disabled-color-icon-fill`
+    - `--sd-menu--disabled-color-text` → `--sd-menu-item--disabled-color-text`
 - sd-notification
     - `--sd-notification__duration-indicator-color-background`
 - sd-option
     - `--sd-form-control-color-border`
+- sd-pagination
+    - `--sd-pagination--default-border`
+    - `--sd-pagination--inverted-border`
 - sd-radio-button
     - `--sd-radio-button--hover-color-background`
     - `--sd-choice-control-font-weight`
-- sd-range-tick
-    - `--sd-range-tick-color-text`
 - sd-select
     - `--sd-form-control-border-radius`
     - `--sd-form-control__listbox-border-bottom-left-radius`
@@ -135,6 +139,12 @@ Updated design tokens to align with design specifications and improve multi-them
     - `--sd-skeleton-color`
 - sd-step
     - `--sd-step-color-text`
+- sd-tag
+    - `--sd-choice-control-font-weight`
+    - `--sd-tag--disabled-color-text`
+
+    **Renamed**
+    - `--sd-tag-font-weight` → `--sd-choice-control-font-weight`
 - sd-tab
     - `--sd-tab--hover-color-background`
     - `--sd-choice-control-font-weight`
@@ -148,13 +158,12 @@ Updated design tokens to align with design specifications and improve multi-them
 - sd-textarea
     - `--sd-form-control-border-radius`
     - `--sd-form-control--filled__floating-label-color-text`
-- sd-headline
-    - `--sd-headline--3xl-onwards-color-text`
-- sd-pagination
-    - `--sd-pagination--default-border`
-    - `--sd-pagination--inverted-border`
+
 
 Removed variables
 - `--sd-tag--disabled-color-border`
 - `--sd-navigation-item--current-color-text`
 - `--sd-option--disabled-color-border`
+
+**Important**: To avoid breaking changes, all variables marked as `renamed` or `deleted` **are still available** under their previous names. Only variables marked as `fixed` have been completely removed. However, this should not be considered a breaking change, as these variables were not functioning correctly.
+If you need assistance, please reach out to the support channel.
