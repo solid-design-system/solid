@@ -78,7 +78,7 @@
   --sd-button--size-lg-icon-height: var(--sd-spacing-6);
   --sd-button--size-lg-min-height: var(--sd-spacing-10);
   --sd-button--size-lg-padding-block: var(--sd-spacing-2);
-  --sd-button--size-md--icon-only-padding-inline: var(--sd-spacing-2\.5);
+  --sd-button--size-md--icon-only-padding-inline: var(--sd-spacing-3);
   --sd-button--size-md-border-radius: 624.9375rem;
   --sd-button--size-md-font-size: 0.875rem;
   --sd-button--size-md-min-height: var(--sd-spacing-10);
@@ -247,7 +247,7 @@
   --sd-datepicker__date-item--hover--default-color-text: var(--sd-color-neutral-700);
   --sd-datepicker__date-item--hover--prev-next-color-background: 255 255 255 / 0;
   --sd-datepicker__date-item--hover--prev-next-color-text: var(--sd-color-neutral-700);
-  --sd-datepicker__date-item--range-color-background: var(--sd-color-primary-100);
+  --sd-datepicker__date-item--range-color-background: var(--sd-color-neutral-100);
   --sd-datepicker__date-item--selected--hover-color-background: var(--sd-color-neutral-800);
   --sd-datepicker__date-item--selected-color-background: var(--sd-color-black);
   --sd-datepicker__date-item--selected-color-text: var(--sd-color-white);

@@ -711,11 +711,11 @@
 }
 
 @utility sd-pagination--default-border {
-  border-color: rgba(var(--sd-pagination--default-border, rgba(var(--sd-color-success))));
+  border-color: rgba(var(--sd-pagination--default-border, rgba(var(--sd-color-accent))));
 }
 
 @utility sd-pagination--inverted-border {
-  border-color: rgba(var(--sd-pagination--inverted-border, rgba(var(--sd-color-success))));
+  border-color: rgba(var(--sd-pagination--inverted-border, rgba(var(--sd-color-accent))));
 }
 
 @utility sd-quickfact--expandable-color-text {

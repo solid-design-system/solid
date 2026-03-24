@@ -247,8 +247,8 @@
   --sd-datepicker__date-item--hover--default-color-text: var(--sd-color-black);
   --sd-datepicker__date-item--hover--prev-next-color-background: var(--sd-color-primary-100);
   --sd-datepicker__date-item--hover--prev-next-color-text: var(--sd-color-neutral-700);
-  --sd-datepicker__date-item--range-color-background: 0 102 179 / 0.05;
-  --sd-datepicker__date-item--selected--hover-color-background: var(--sd-color-primary-500);
+  --sd-datepicker__date-item--range-color-background: var(--sd-color-primary-100);
+  --sd-datepicker__date-item--selected--hover-color-background: var(--sd-color-primary-700);
   --sd-datepicker__date-item--selected-color-background: var(--sd-color-primary);
   --sd-datepicker__date-item--selected-color-text: var(--sd-color-white);
   --sd-divider--inverted-color-border: 255 255 255 / 0.4;

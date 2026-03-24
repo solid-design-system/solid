@@ -4991,13 +4991,13 @@
         "--inverted": {
           "border": {
             "type": "color",
-            "value": "{ui-light.utilities.color.accent.550}"
+            "value": "{ui-light.utilities.color.accent.default}"
           }
         },
         "--default": {
           "border": {
             "type": "color",
-            "value": "{ui-light.utilities.color.accent.550}"
+            "value": "{ui-light.utilities.color.accent.default}"
           }
         }
       },
@@ -5149,7 +5149,7 @@
             "400": {
               "description": "Used for hover interaction invalid form elements",
               "type": "color",
-              "value": "{ui-dark.utilities.color.error.400}"
+              "value": "{ui-dark.utilities.color.error.300}"
             },
             "default": {
               "description": "Used for notification, status-badge",
@@ -5669,7 +5669,7 @@
             "400": {
               "description": "Used for hover interaction invalid form elements\n",
               "type": "color",
-              "value": "{ui-dark.utilities.color.error.400}"
+              "value": "{ui-dark.utilities.color.error.300}"
             },
             "default": {
               "description": "Used for error messages, invalid states",
@@ -5783,7 +5783,7 @@
             "400": {
               "description": "Used for hover interaction invalid form elements",
               "type": "color",
-              "value": "{ui-dark.utilities.color.error.400}"
+              "value": "{ui-dark.utilities.color.error.300}"
             },
             "default": {
               "description": "Used for invalid form fields",
@@ -7708,7 +7708,7 @@
                 "background": {
                   "description": "Used for hover interaction",
                   "type": "color",
-                  "value": "{ui-dark.utilities.color.accent.550}"
+                  "value": "{ui-dark.utilities.color.accent.default}"
                 }
               }
             },
@@ -7745,7 +7745,7 @@
                   "background": {
                     "description": "Used for hover interaction invalid form elements\n",
                     "type": "color",
-                    "value": "{ui-dark.utilities.color.error.400}"
+                    "value": "{ui-dark.utilities.color.error.300}"
                   }
                 }
               }
@@ -8111,7 +8111,7 @@
             "color": {
               "background": {
                 "type": "color",
-                "value": "{ui-dark.utilities.color.accent.550}"
+                "value": "{ui-dark.utilities.color.accent.default}"
               }
             }
           }
@@ -8217,11 +8217,11 @@
             "color": {
               "text": {
                 "type": "color",
-                "value": "{ui-dark.utilities.color.primary.600}"
+                "value": "{ui-dark.utilities.color.black.default}"
               },
               "background": {
                 "type": "color",
-                "value": "{ui-dark.utilities.color.white.default}"
+                "value": "{ui-dark.utilities.color.primary.default}"
               }
             },
             "--hover": {
@@ -8260,7 +8260,7 @@
             "color": {
               "background": {
                 "type": "color",
-                "value": "{ui-dark.utilities.color.primary.500}"
+                "value": "{ui-dark.utilities.color.primary.750}"
               }
             }
           }
@@ -8312,13 +8312,13 @@
         "--inverted": {
           "border": {
             "type": "color",
-            "value": "{ui-dark.utilities.color.accent.550}"
+            "value": "{ui-dark.utilities.color.accent.default}"
           }
         },
         "--default": {
           "border": {
             "type": "color",
-            "value": "{ui-dark.utilities.color.accent.550}"
+            "value": "{ui-dark.utilities.color.accent.default}"
           }
         }
       },
@@ -11550,7 +11550,7 @@
                 "background": {
                   "description": "Used for hover interaction",
                   "type": "color",
-                  "value": "{vb.utilities.color.primary.500}"
+                  "value": "{vb.utilities.color.primary.700}"
                 }
               }
             }
@@ -11581,7 +11581,7 @@
             "color": {
               "background": {
                 "type": "color",
-                "value": "rgba(0, 102, 179, 0.05)"
+                "value": "{vb.utilities.color.primary.100}"
               }
             }
           }
@@ -13737,7 +13737,7 @@
               "only": {
                 "padding-inline": {
                   "type": "float",
-                  "value": "{kid.utilities.sizing.2,5}"
+                  "value": "{kid.utilities.sizing.3}"
                 }
               }
             }
@@ -14902,7 +14902,7 @@
             "color": {
               "background": {
                 "type": "color",
-                "value": "{kid.utilities.color.primary.100}"
+                "value": "{kid.utilities.color.neutral.100}"
               }
             }
           }
