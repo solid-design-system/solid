@@ -59,7 +59,8 @@ import SolidElement from '../../internal/solid-element.js';
 @customElement('sd-carousel')
 export default class SdCarousel extends SolidElement {
   @query('[part~="autoplay-controls"]') autoplayControls: HTMLElement;
-  @query('[part~="navigation-button--previous"]') previousButton: HTMLButtonElement;
+  @query('[part~="navigation-button--previous"]')
+  previousButton: HTMLButtonElement;
   @query('[part~="navigation-button--next"]') nextButton: HTMLButtonElement;
   @queryAll('[part~="pagination-item"]') paginationItems: HTMLButtonElement[];
 
@@ -78,7 +79,8 @@ export default class SdCarousel extends SolidElement {
   @property({ type: Boolean, reflect: true }) fade = false;
 
   /** Specifies how many slides should be shown at a given time.  */
-  @property({ type: Number, attribute: 'slides-per-page', reflect: true }) slidesPerPage = 1;
+  @property({ type: Number, attribute: 'slides-per-page', reflect: true })
+  slidesPerPage = 1;
 
   /**
    * Use `slides-per-move` to set how many slides the carousel advances when scrolling. This is useful when specifying a `slides-per-page` greater than one. By setting `slides-per-move` to the same value as `slides-per-page`, the carousel will advance by one page at a time.<br>
@@ -86,7 +88,8 @@ export default class SdCarousel extends SolidElement {
    * <li> The number of slides should be divisible by the number of `slides-per-page` to maintain consistent scroll behavior.</li>
    * <li>Variations between `slides-per-move` and `slides-per-page` can lead to unexpected scrolling behavior. Keep your intended UX in mind when adjusting these values.</li>
    */
-  @property({ type: Number, attribute: 'slides-per-move', reflect: true }) slidesPerMove = 1;
+  @property({ type: Number, attribute: 'slides-per-move', reflect: true })
+  slidesPerMove = 1;
 
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
   @query('.carousel__slides') scrollContainer: HTMLElement;
@@ -300,8 +303,22 @@ export default class SdCarousel extends SolidElement {
     this.requestUpdate();
   };
 
+  private handleFocusIn() {
+    if (this.autoplay && !this.pausedAutoplay) {
+      this.autoplayController.stop();
+    }
+  }
+
+  private handleFocusOut(event: FocusEvent) {
+    const relatedTarget = event.relatedTarget as Node | null;
+    if (this.contains(relatedTarget)) return;
+    if (this.autoplay && !this.pausedAutoplay) {
+      this.autoplayController.start(3000);
+    }
+  }
+
   private handleFocus() {
-    if (this.autoplay) {
+    if (!this.autoplay) {
       this.scrollContainer.setAttribute('aria-live', 'polite');
     }
   }
@@ -312,10 +329,6 @@ export default class SdCarousel extends SolidElement {
     }
   }
 
-  private get isAutoPlaying(): boolean {
-    return this.autoplay && !this.pausedAutoplay && !this.autoplayController.paused;
-  }
-
   private unblockAutoplay = (e: MouseEvent, button: HTMLButtonElement) => {
     // When the button is clicked with a mouse, blur the button to resume autoplay.
     if (e.detail) {
@@ -324,7 +337,7 @@ export default class SdCarousel extends SolidElement {
   };
 
   /**
-   * Pause the autoplay
+   * Pause the autoplay.
    */
   public pause() {
     this.pausedAutoplay = true;
@@ -561,9 +574,6 @@ export default class SdCarousel extends SolidElement {
     const slides = this.getSlides();
     const slidesWithClones = this.getSlides({ excludeClones: false });
 
-    // Sets the next index without taking into account clones, if any.
-    // Inconsistencies may arise when scrolling from the last slide if slidesPerMove is not divisible by the slide count.
-    // This is most apparent with slidesPerPage set to one, but we won't provide a fix as it's not a recommended use case anyways.
     const newActiveSlide = (index + slides.length) % slides.length;
     this.activeSlide = newActiveSlide;
 
@@ -571,8 +581,6 @@ export default class SdCarousel extends SolidElement {
       return;
     }
 
-    // Get the index of the next slide. For looping carousel it adds `slidesPerPage`
-    // to normalize the starting index in order to ignore the first nth clones.
     const nextSlideIndex = clamp(index + (loop ? slidesPerPage : 0), 0, slidesWithClones.length + 1);
     const nextSlide = slidesWithClones[nextSlideIndex];
 
@@ -612,7 +620,12 @@ export default class SdCarousel extends SolidElement {
     const isLtr = this.localize.dir() === 'ltr';
 
     return html`
-      <div part="base" class=${cx(`carousel h-full w-full`)}>
+      <div
+        part="base"
+        class=${cx(`carousel h-full w-full`)}
+        @focusin=${this.handleFocusIn}
+        @focusout=${this.handleFocusOut}
+      >
         <div
           id="scroll-container"
           part="scroll-container"
@@ -630,7 +643,7 @@ export default class SdCarousel extends SolidElement {
             'carouselContainer',
             Array.from(this.slides).filter(el => !el.hasAttribute('data-clone')).length
           )}"
-          aria-live=${this.isAutoPlaying ? 'off' : 'polite'}
+          aria-live=${this.autoplay ? 'off' : 'polite'}
           tabindex="0"
           @keydown=${this.handleKeyDown}
           @scrollend=${this.handleScrollEnd}
@@ -653,6 +666,7 @@ export default class SdCarousel extends SolidElement {
               )}
               aria-label="${this.localize.term('previousSlide')}"
               aria-controls="scroll-container"
+              aria-disabled="${prevEnabled ? 'false' : 'true'}"
               @focus=${this.handleFocus}
               @blur=${this.handleBlur}
               @click=${prevEnabled

@@ -579,6 +579,95 @@ describe('<sd-carousel>', () => {
       });
     });
 
+    describe('live region behavior', () => {
+      it('should have aria-live="polite" when autoplay is off', async () => {
+        // Arrange
+        const el = await fixture<SdCarousel>(html`
+          <sd-carousel>
+            <sd-carousel-item>Node 1</sd-carousel-item>
+            <sd-carousel-item>Node 2</sd-carousel-item>
+            <sd-carousel-item>Node 3</sd-carousel-item>
+          </sd-carousel>
+        `);
+        await el.updateComplete;
+
+        // Assert
+        expect(el.scrollContainer).to.have.attribute('aria-live', 'polite');
+      });
+
+      it('should have aria-live="off" when autoplay is on', async () => {
+        // Arrange
+        const el = await fixture<SdCarousel>(html`
+          <sd-carousel autoplay>
+            <sd-carousel-item>Node 1</sd-carousel-item>
+            <sd-carousel-item>Node 2</sd-carousel-item>
+            <sd-carousel-item>Node 3</sd-carousel-item>
+          </sd-carousel>
+        `);
+        await el.updateComplete;
+
+        // Assert
+        expect(el.scrollContainer).to.have.attribute('aria-live', 'off');
+      });
+
+      it('should keep aria-live="off" when autoplay is on but paused', async () => {
+        // Arrange
+        const el = await fixture<SdCarousel>(html`
+          <sd-carousel autoplay>
+            <sd-carousel-item>Node 1</sd-carousel-item>
+            <sd-carousel-item>Node 2</sd-carousel-item>
+            <sd-carousel-item>Node 3</sd-carousel-item>
+          </sd-carousel>
+        `);
+        await el.updateComplete;
+
+        // Act — pause autoplay
+        el.autoplayControls.click();
+        await el.updateComplete;
+
+        // Assert — should remain off even while paused, to avoid live region flooding
+        expect(el.scrollContainer).to.have.attribute('aria-live', 'off');
+      });
+
+      it('should set aria-live="polite" on focus when autoplay is off', async () => {
+        // Arrange
+        const el = await fixture<SdCarousel>(html`
+          <sd-carousel>
+            <sd-carousel-item>Node 1</sd-carousel-item>
+            <sd-carousel-item>Node 2</sd-carousel-item>
+            <sd-carousel-item>Node 3</sd-carousel-item>
+          </sd-carousel>
+        `);
+        await el.updateComplete;
+
+        // Act
+        el.scrollContainer.dispatchEvent(new Event('focus'));
+        await el.updateComplete;
+
+        // Assert
+        expect(el.scrollContainer).to.have.attribute('aria-live', 'polite');
+      });
+
+      it('should not change aria-live on focus when autoplay is on', async () => {
+        // Arrange
+        const el = await fixture<SdCarousel>(html`
+          <sd-carousel autoplay>
+            <sd-carousel-item>Node 1</sd-carousel-item>
+            <sd-carousel-item>Node 2</sd-carousel-item>
+            <sd-carousel-item>Node 3</sd-carousel-item>
+          </sd-carousel>
+        `);
+        await el.updateComplete;
+
+        // Act
+        el.scrollContainer.dispatchEvent(new Event('focus'));
+        await el.updateComplete;
+
+        // Assert — focus should not flip aria-live back to polite when autoplay is on
+        expect(el.scrollContainer).to.have.attribute('aria-live', 'off');
+      });
+    });
+
     describe('when scrolling', () => {
       it('should update aria-busy attribute', async () => {
         // Arrange
