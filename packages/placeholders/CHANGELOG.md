@@ -1,5 +1,18 @@
 # @solid-design-system/placeholders
 
+## 3.0.0
+
+### Major Changes
+
+- Replaced several PNG placeholder images: _[`#2856`](https://github.com/solid-design-system/solid/pull/2856) [`a195ef8`](https://github.com/solid-design-system/solid/commit/a195ef8f25dbdf8d9baae3a0073c135802455aaa) [@balco0110](https://github.com/balco0110)_
+
+                    - calculator-work.png -> calculator-work.jpg
+                    - couple-moving.png -> couple-moving-03.jpg
+                    - senior-coffee.png -> senior-coffee.jpg
+
+  Added new images to the placeholders folder.
+  Updated the README to document the expanded image set and its usage.
+
 ## 2.2.0
 
 ### Minor Changes
