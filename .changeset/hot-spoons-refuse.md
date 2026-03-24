@@ -17,25 +17,33 @@ Updated design tokens to align with design specifications and improve multi-them
     - `--sd-breadcrumb__separator--current-color`
 - sd-button
     - `--sd-button--primary--hover-color-text`
+    - `--sd-button--primary--inverted--active-color-background`
     - `--sd-button--secondary--active-color-text`
-    - `--sd-button--secondary--inverted--active-color-text`
+    - `--sd-button--secondary--inverted-color-border`
     - `--sd-button--secondary--inverted-color-text`
-    - `--sd-button--secondary--size-lg-padding-block`
-    - `--sd-button--secondary--size-md-padding-block`
+    - `--sd-button--secondary--inverted--hover-color-background`
+    - `--sd-button--secondary--inverted--active-color-text`
     - `--sd-button--secondary--size-sm-padding-block`
+    - `--sd-button--secondary--size-md-padding-block`
+    - `--sd-button--secondary--size-lg-padding-block`
     - `--sd-button--secondary-padding-inline`
+    - `--sd-button--tertiary--active-color-text`
+    - `--sd-button--tertiary--inverted-color-text`
+    - `--sd-button--tertiary--inverted--active-color-text`
     - `--sd-button--size-lg-height`
     - `--sd-button--size-lg-icon-height`
+    - `--sd-button--size-md--icon-only-padding-inline`
     - `--sd-button--size-md-height`
-    - `--sd-button--tertiary--active-color-text`
-    - `--sd-button--tertiary--inverted--active-color-text`
-    - `--sd-button--tertiary--inverted-color-text`
     - `--sd-button-border-width`
     - `--sd-button-padding-inline`
 
     **Renamed**
     - `--sd-button--size-lg-border-radius` → `--sd-button-border-radius`
     - `--sd-button--size-md-border-radius` → `--sd-button-border-radius`
+    - `--sd-button--size-sm-border-radius` → `--sd-button-border-radius`
+
+    **Fixed**
+    - `--sd-button--secondary--inverted--color-border` →  `--sd-button--secondary--inverted-color-border`
 - sd-combobox
     - `--sd-form-control-border-radius`
     - `--sd-form-control-color-border`
@@ -84,7 +92,7 @@ Updated design tokens to align with design specifications and improve multi-them
     - `--sd-accordion__chevron-color-text` → `--sd-accordion-color-icon-fill`
 - sd-input
 
-    **Renamed**
+    **Fixed**
     - `--sd-form-control-color-icon` → `--sd-form-control-color-icon-fill`
 - sd-dropdown
     - `--sd-dropdown-color-background`
@@ -150,4 +158,3 @@ Removed variables
 - `--sd-tag--disabled-color-border`
 - `--sd-navigation-item--current-color-text`
 - `--sd-option--disabled-color-border`
-- `--sd-form-control__tooltip-color-icon`

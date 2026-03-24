@@ -94,6 +94,9 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @cssproperty --sd-button-border-width - The border width for secondary buttons with borders.
  * @cssproperty --sd-button-font-weight - The text font weight for buttons.
  * @cssproperty --sd-button-padding-inline - The horizontal padding for buttons.
+ * @cssproperty --sd-button--size-sm-border-radius - The border radius for small buttons. Default to --sd-button-border-radius.
+ * @cssproperty --sd-button--size-md-border-radius - The border radius for medium buttons. Default to --sd-button-border-radius.
+ * @cssproperty --sd-button--size-lg-border-radius - The border radius for large buttons. Default to --sd-button-border-radius.
  */
 @customElement('sd-button')
 export default class SdButton extends SolidElement implements SolidFormControl {
@@ -334,9 +337,9 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         (this.disabled || this.visuallyDisabled) && 'cursor-not-allowed',
         {
           /* sizes, fonts */
-          sm: `varspacing-8 min-h-8 sd-button--size-sm-font-size sd-button-font-weight sd-button--secondary--size-sm-padding-block sd-button-border-radius`,
-          md: `varspacing-10 sd-button--size-md-height sd-button--size-md-font-size sd-button--secondary--size-md-padding-block sd-button-font-weight sd-button-border-radius`,
-          lg: `varspacing-12 sd-button--size-lg-height sd-button--size-lg-font-size sd-button--secondary--size-lg-padding-block sd-button-font-weight sd-button-border-radius`
+          sm: `varspacing-8 min-h-8 sd-button--size-sm-font-size sd-button-font-weight sd-button--secondary--size-sm-padding-block sd-button--size-sm-border-radius`,
+          md: `varspacing-10 sd-button--size-md-height sd-button--size-md-font-size sd-button--secondary--size-md-padding-block sd-button-font-weight sd-button--size-md-border-radius`,
+          lg: `varspacing-12 sd-button--size-lg-height sd-button--size-lg-font-size sd-button--secondary--size-lg-padding-block sd-button-font-weight sd-button--size-lg-border-radius`
         }[this.size],
         !slots['icon-only'] &&
           {
@@ -543,6 +546,27 @@ export default class SdButton extends SolidElement implements SolidFormControl {
 
       :host([size='lg']) ::slotted(sd-icon) {
         font-size: var(--sd-button--size-lg-icon-height, var(--sd-spacing-6));
+      }
+
+      //TODO clean up border-radius variables replacing with --sd-button-border-radius once ticket #2764 is done
+      .sd-button--size-sm-border-radius,
+      .sd-button--size-md-border-radius,
+      .sd-button--size-lg-border-radius {
+        --sd-button--size-sm-border-radius: var(--sd-button-border-radius);
+        --sd-button--size-md-border-radius: var(--sd-button-border-radius);
+        --sd-button--size-lg-border-radius: var(--sd-button-border-radius);
+      }
+
+      :host([size='sm']) .sd-button--size-sm-border-radius {
+        border-radius: var(--sd-button--size-sm-border-radius, var(--sd-button-border-radius));
+      }
+
+      :host([size='md']) .sd-button--size-md-border-radius {
+        border-radius: var(--sd-button--size-md-border-radius, var(--sd-button-border-radius));
+      }
+
+      :host([size='lg']) .sd-button--size-lg-border-radius {
+        border-radius: var(--sd-button--size-lg-border-radius, var(--sd-button-border-radius));
       }
     `
   ];
