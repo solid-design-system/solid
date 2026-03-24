@@ -1,5 +1,7 @@
 # @solid-design-system/tokens
 
+## 6.11.0
+
 ## 6.10.0
 
 ## 6.9.2
