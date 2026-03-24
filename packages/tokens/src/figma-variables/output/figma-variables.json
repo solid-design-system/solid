@@ -8217,7 +8217,7 @@
             "color": {
               "text": {
                 "type": "color",
-                "value": "{ui-dark.utilities.color.black.default}"
+                "value": "{ui-dark.utilities.color.white.default}"
               },
               "background": {
                 "type": "color",

@@ -251,7 +251,7 @@
   --sd-datepicker__date-item--range-color-background: var(--sd-color-primary-750);
   --sd-datepicker__date-item--selected--hover-color-background: var(--sd-color-primary-200);
   --sd-datepicker__date-item--selected-color-background: var(--sd-color-primary);
-  --sd-datepicker__date-item--selected-color-text: var(--sd-color-black);
+  --sd-datepicker__date-item--selected-color-text: var(--sd-color-white);
   --sd-divider--inverted-color-border: var(--sd-color-primary-400);
   --sd-drop-shadow-listbox:  0px 0px 0px rgba(255, 255, 255, 0);
   --sd-drop-shadow-sm:  0.5px 0.5px 1.5px #515151;
