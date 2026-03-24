@@ -50,6 +50,13 @@
     --sd-color-neutral-200: #e9e9e9;
   }
 
+  /** Firefox specific styles to fix Storybook layout issue on past versions */
+  @supports (-moz-appearance: none) {
+    main > div {
+      height: 100%;
+    }
+  }
+
   /* Native dialog styles for theme protection */
   #theme-protection-dialog {
     border: none;
