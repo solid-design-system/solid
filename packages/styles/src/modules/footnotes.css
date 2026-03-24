@@ -36,10 +36,6 @@
           content: none;
         }
 
-        &::before {
-          @apply text-primary;
-        }
-
         .sd-footnotes--marker {
           @apply inline-block;
           counter-increment: footnotes-multiple;
