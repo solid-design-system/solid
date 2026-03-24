@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.7.0
+
+### Minor Changes
+
+- Adding examples in the documentation for integrating Theme specific fonts. _[`#2854`](https://github.com/solid-design-system/solid/pull/2854) [`8fe3213`](https://github.com/solid-design-system/solid/commit/8fe32131e2778937efe450cbc154cc6fef2b3883) [@martascorreia](https://github.com/martascorreia)_
+
 ## 2.6.0
 
 ### Minor Changes
