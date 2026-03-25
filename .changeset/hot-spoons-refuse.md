@@ -167,4 +167,7 @@ Removed variables
 - `--sd-audio__timestamp-color-text`
 
 **Important**: To avoid breaking changes, all variables marked as `renamed` or `deleted` **are still available** under their previous names. Only variables marked as `fixed` have been completely removed. However, this should not be considered a breaking change, as these variables were not functioning correctly.
+
+If you are using any of the `renamed`, `deleted` or `fixed`css variables manually overriding these in custom themes might lead to problems in future versions of Solid. Use the actual used value instead. Example: Instead of --sd-chip-border-width use --sd-marker-border-width--sd-marker-border-width for your overrides.
+
 If you need assistance, please reach out to the support channel.
