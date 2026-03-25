@@ -164,6 +164,7 @@ Removed variables
 - `--sd-tag--disabled-color-border`
 - `--sd-navigation-item--current-color-text`
 - `--sd-option--disabled-color-border`
+- `--sd-audio__timestamp-color-text`
 
 **Important**: To avoid breaking changes, all variables marked as `renamed` or `deleted` **are still available** under their previous names. Only variables marked as `fixed` have been completely removed. However, this should not be considered a breaking change, as these variables were not functioning correctly.
 If you need assistance, please reach out to the support channel.
