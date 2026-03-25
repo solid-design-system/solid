@@ -18,9 +18,9 @@
  * @cssproperty --sd-marker-font-size - The font size for chips.
  * @cssproperty --sd-marker-border-width - The border width for chips.
  * @cssproperty --sd-marker-font-weight - The font weight for chips.
- * @cssproperty --sd-chip-font-size - The old variable for font size for chips. Currently maps to --sd-marker-font-size.
- * @cssproperty --sd-chip-border-width - The old variable for border width for chips. Currently maps to --sd-marker-border-width.
- * @cssproperty --sd-chip-font-weight - The old variable for font weight for chips. Currently maps to --sd-marker-font-weight.
+ * @cssproperty --sd-chip-font-size - This variable is deprecated please use --sd-marker-font-size.
+ * @cssproperty --sd-chip-border-width - This variable is deprecated please use --sd-marker-border-width.
+ * @cssproperty --sd-chip-font-weight - This variable is deprecated please use --sd-marker-font-weight.
  */
 
 .sd-chip {
@@ -38,10 +38,7 @@
     @apply sd-chip--white-color-background sd-chip--white-color-border;
   }
 
-  /* TODO clean this up and add the classes marker-font-size, marker-border-width and marker-font-weight once ticket #2764 is done */
-  --sd-chip-font-size: var(--sd-marker-font-size);
-  --sd-chip-border-width: var(--sd-marker-border-width);
-  --sd-chip-font-weight: var(--sd-marker-font-weight);
+  /* TODO clean this up and add the classes marker-font-size, marker-border-width and marker-font-weight (breaking change) */
   font-size: var(--sd-chip-font-size);
   border-width: var(--sd-chip-border-width);
   font-weight: var(--sd-chip-font-weight);

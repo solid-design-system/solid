@@ -38,7 +38,7 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-navigable__current-indicator-border-radius - The navigation-item current indicator border radius value.
  * @cssproperty --sd-navigable__current-indicator-height - The horizontal navigation-item current indicator height.
  * @cssproperty --sd-navigable__current-indicator-width - The vertical navigation-item current indicator width.
- * @cssproperty --sd-navigation-item--current-color-text - The old variable for current navigation-item text color. Defaults to the sd-navigation-item-color-text.
+ * @cssproperty --sd-navigation-item--current-color-text - This variable is deprecated please use --sd-navigation-item-color-text.
  *
  */
 @customElement('sd-navigation-item')
@@ -351,9 +351,8 @@ export default class SdNavigationItem extends SolidElement {
         @apply block;
       }
 
-      //TODO clean sd-navigation-item--current-color-text and delete this class from line 210 once ticket #2764 is done
+      /* TODO clean sd-navigation-item--current-color-text and delete this class from line 210 (breaking change) */
       .sd-navigation-item--current-color-text {
-        --sd-navigation-item--current-color-text: var(--sd-navigation-item-color-text);
         color: rgb(var(--sd-navigation-item--current-color-text, var(--sd-navigation-item-color-text)));
       }
 

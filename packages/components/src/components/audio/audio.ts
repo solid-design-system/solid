@@ -44,7 +44,7 @@ import type SdRange from '../range/range';
  *
  * @cssproperty --sd-audio__slide-bar--inverted-color-background - The background color for the progress slider when the component is inverted.
  * @cssproperty --sd-audio__track-bar--inverted-color-background - The background color for the active part of the progress slider when the component is inverted.
- * @cssproperty --sd-audio__timestamp-color-text - The old variable for text color for the timestamps. Defaults to text-neutral-700.
+ * @cssproperty --sd-audio__timestamp-color-text - This variable is deprecated please use --sd-color-text-neutral-700.
  */
 @customElement('sd-audio')
 export default class SdAudio extends SolidElement {
@@ -577,10 +577,9 @@ export default class SdAudio extends SolidElement {
         background-color: rgba(var(--sd-audio__track-bar--inverted-color-background, rgba(var(--sd-color-white))));
       }
 
-      //TODO clean sd-audio__timestamp-color-text variable and replace with text-neutral-700 in lines 491 and 496 once ticket #2764 is done
+      /* TODO clean sd-audio__timestamp-color-text variable and replace with text-neutral-700 in lines 491 and 496 (breaking change) */
       .sd-audio__timestamp-color-text {
-        --sd-audio__timestamp-color-text: var(--sd-color-text-neutral-700);
-        color: rgba(var(--sd-audio__timestamp-color-text, var(--sd-color-text-neutral-700)));
+        color: rgb(var(--sd-audio__timestamp-color-text, var(--sd-color-text-neutral-700)));
       }
     `
   ];

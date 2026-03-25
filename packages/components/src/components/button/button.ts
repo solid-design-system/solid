@@ -94,9 +94,9 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @cssproperty --sd-button-border-width - The border width for secondary buttons with borders.
  * @cssproperty --sd-button-font-weight - The text font weight for buttons.
  * @cssproperty --sd-button-padding-inline - The horizontal padding for buttons.
- * @cssproperty --sd-button--size-sm-border-radius - The border radius for small buttons. Default to --sd-button-border-radius.
- * @cssproperty --sd-button--size-md-border-radius - The border radius for medium buttons. Default to --sd-button-border-radius.
- * @cssproperty --sd-button--size-lg-border-radius - The border radius for large buttons. Default to --sd-button-border-radius.
+ * @cssproperty --sd-button--size-sm-border-radius - This variable is deprecated please use --sd-button-border-radius.
+ * @cssproperty --sd-button--size-md-border-radius - This variable is deprecated please use --sd-button-border-radius.
+ * @cssproperty --sd-button--size-lg-border-radius - This variable is deprecated please use --sd-button-border-radius.
  */
 @customElement('sd-button')
 export default class SdButton extends SolidElement implements SolidFormControl {
@@ -548,15 +548,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         font-size: var(--sd-button--size-lg-icon-height, var(--sd-spacing-6));
       }
 
-      //TODO clean up border-radius variables replacing with --sd-button-border-radius once ticket #2764 is done
-      .sd-button--size-sm-border-radius,
-      .sd-button--size-md-border-radius,
-      .sd-button--size-lg-border-radius {
-        --sd-button--size-sm-border-radius: var(--sd-button-border-radius);
-        --sd-button--size-md-border-radius: var(--sd-button-border-radius);
-        --sd-button--size-lg-border-radius: var(--sd-button-border-radius);
-      }
-
+      /* TODO clean up border-radius variables replacing with --sd-button-border-radius (breaking change) */
       :host([size='sm']) .sd-button--size-sm-border-radius {
         border-radius: var(--sd-button--size-sm-border-radius, var(--sd-button-border-radius));
       }

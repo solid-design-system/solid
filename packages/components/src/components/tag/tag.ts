@@ -47,9 +47,8 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-tag--size-sm-font-size - The font size for small tags.
  * @cssproperty --sd-choice-control-font-weight - The font weight for tags.
  * @cssproperty --sd-tag--disabled-color-text - The text color for disabled tags.
- *
- * @cssproperty --sd-tag--disabled-color-border - The old border color for disabled tags.
- * @cssproperty --sd-tag-font-weight - The old variable for font weight for tags. Defaults to the value of --sd-choice-control-font-weight.
+ * @cssproperty --sd-tag--disabled-color-border - This variable is deprecated please use --sd-color-border-neutral-500.
+ * @cssproperty --sd-tag-font-weight - This variable is deprecated please use --sd-choice-control-font-weight.
  */
 @customElement('sd-tag')
 export default class SdTag extends SolidElement {
@@ -212,15 +211,13 @@ export default class SdTag extends SolidElement {
         @apply text-[0.75rem];
       }
 
-      //TODO clean sd-tag--disabled-color-border and replace this class with border-neutral-500 in line 173 once ticket #2764 is done
+      /* TODO clean sd-tag--disabled-color-border and replace this class with border-neutral-500 in line 173 (breaking change) */
       .sd-tag--disabled-color-border {
-        --sd-tag--disabled-color-border: var(--sd-color-border-neutral-500);
         border-color: rgb(var(--sd-tag--disabled-color-border));
       }
 
-      //TODO clean sd-tag-font-weight and replace this class with choice-control-font-weight in lines 153 and 154 once ticket #2764 is done
+      /* TODO clean sd-tag-font-weight and replace this class with choice-control-font-weight in lines 153 and 154 (breaking change) */
       .sd-tag-font-weight {
-        --sd-tag-font-weight: var(--sd-choice-control-font-weight);
         font-weight: var(--sd-tag-font-weight);
       }
     `

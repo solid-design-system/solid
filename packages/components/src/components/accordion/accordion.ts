@@ -45,7 +45,7 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-accordion-padding-block - The accordion vertical padding value.
  * @cssproperty --sd-accordion__indicator-color - The accordion indicator color.
  * @cssproperty --sd-accordion-color-icon-fill - The accordion icon color.
- * @cssproperty --sd-accordion__chevron-color-text - Old variable for accordion chevron color. Defaults to the accordion icon color.
+ * @cssproperty --sd-accordion__chevron-color-text - This variable is deprecated please use --sd-accordion-color-icon-fill.
  */
 @customElement('sd-accordion')
 export default class SdAccordion extends SolidElement {
@@ -247,11 +247,7 @@ export default class SdAccordion extends SolidElement {
         border-block-width: var(--sd-accordion-border-width);
       }
 
-      //TODO clean sd-accordion__chevron-color-text variable and replace with sd-accordion-color-icon-fill once ticket #2764 is done
-      [part='summary-icon'] {
-        --sd-accordion__chevron-color-text: rgb(var(--sd-accordion-color-icon-fill, var(--sd-color-icon-fill-primary)));
-      }
-
+      /* TODO clean sd-accordion__chevron-color-text variable and replace with sd-accordion-color-icon-fill (breaking change) */
       [part='summary-icon'] sd-icon {
         color: rgb(var(--sd-accordion__chevron-color-text, var(--sd-accordion-color-icon-fill)));
       }

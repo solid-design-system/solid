@@ -490,6 +490,28 @@
 }
 
 :root, .sd-theme-vb {
-  --sd-chip-border-width: var(--sd-marker-border-width);
+  /*
+   * Deprecated variables – manually overriding these in custom themes might lead to problems in future versions of Solid.
+   * Use the actual used value instead. Example:
+   * Instead of --sd-chip-border-width use --sd-marker-border-width for your overrides.
+   */
+  --sd-button--size-lg-border-radius: var(--sd-button-border-radius);
+  --sd-button--size-md-border-radius: var(--sd-button-border-radius);
+  --sd-button--size-sm-border-radius: var(--sd-button-border-radius);
+  --sd-button--secondary--inverted--color-border: var(--sd-button-secondary-inverted-color-border);
   --sd-chip-font-size: var(--sd-marker-font-size);
+  --sd-chip-border-width: var(--sd-marker-border-width);
+  --sd-chip-font-weight: var(--sd-marker-font-weight);
+  --sd-flag-border-width: var(--sd-marker-border-width);
+  --sd-form-control-color-icon: var(--sd-form-control-color-icon-fill);
+  --sd-menu-color-icon: var(--sd-menu-item-color-icon-fill);
+  --sd-menu-color-text: var(--sd-menu-item-color-text);
+  --sd-menu--disabled-color-icon: var(--sd-menu-item--disabled-color-icon-fill);
+  --sd-menu--disabled-color-text: var(--sd-menu-item--disabled-color-text);
+  --sd-tag-font-weight: var(--sd-choice-control-font-weight);
+  --sd-tag--disabled-color-border: var(--sd-color-border-neutral-500);
+  --sd-navigation-item--current-color-text: var(--sd-navigation-item-color-text);
+  --sd-option--disabled-color-border: var(--sd-color-border-neutral-500);
+  --sd-audio__timestamp-color-text: var(--sd-color-text-neutral-700);
+  --sd-accordion__chevron-color-text: var(--sd-accordion-color-icon-fill, var(--sd-color-icon-fill-primary));
 }

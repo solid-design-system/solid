@@ -32,10 +32,10 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-menu-item--disabled-color-icon-fill - The icon color for disabled menu items.
  * @cssproperty --sd-menu-item--disabled-color-text - The text color for disabled menu items.
  *
- * @cssproperty --sd-menu-color-icon - The old variable for the default icon color for menu items. Currently maps to --sd-menu-item-color-icon-fill.
- * @cssproperty --sd-menu-color-text - The old variable for the default text color for menu items. Currently maps to --sd-menu-item-color-text.
- * @cssproperty --sd-menu--disabled-color-icon - The old variable for the icon color for disabled menu items. Currently maps to --sd-menu-item--disabled-color-icon-fill.
- * @cssproperty --sd-menu--disabled-color-text - The old variable for the text color for disabled menu items. Currently maps to --sd-menu-item--disabled-color-text.
+ * @cssproperty --sd-menu-color-icon - This variable is deprecated please use --sd-menu-item-color-icon-fill.
+ * @cssproperty --sd-menu-color-text - This variable is deprecated please use --sd-menu-item-color-text.
+ * @cssproperty --sd-menu--disabled-color-icon - This variable is deprecated please use --sd-menu-item--disabled-color-icon-fill.
+ * @cssproperty --sd-menu--disabled-color-text - This variable is deprecated please use --sd-menu-item--disabled-color-text.
  */
 @customElement('sd-menu-item')
 export default class SdMenuItem extends SolidElement {
@@ -245,16 +245,15 @@ export default class SdMenuItem extends SolidElement {
       :host(:hover) [part='base'] {
         @apply outline-none;
       }
-
+      //TODO clean up sd-menu-color-icon variable replacing with sd-menu-item-color-icon-fill (breaking change)
       :host [part='icon-indent'],
       :host [part='checked-icon'],
       :host [part='submenu-icon'] {
-        --sd-menu-color-icon: var(--sd-menu-item-color-icon-fill);
         color: rgba(var(--sd-menu-color-icon, var(--sd-menu-item-color-icon-fill)));
       }
 
+      //TODO clean up sd-menu--disabled-color-icon variable replacing with sd-menu-item--disabled-color-icon-fill (breaking change)
       :host([aria-disabled='true']) [part='icon-indent'] {
-        --sd-menu--disabled-color-icon: var(--sd-menu-item--disabled-color-icon-fill);
         color: rgba(var(--sd-menu--disabled-color-icon, var(--sd-menu-item--disabled-color-icon-fill)));
       }
 
@@ -268,13 +267,13 @@ export default class SdMenuItem extends SolidElement {
         max-height: var(--auto-size-available-height) !important;
       }
 
+      /* TODO clean up sd-menu-color-text variable replacing with sd-menu-item-color-text (breaking change) */
       .sd-menu-color-text {
-        --sd-menu-color-text: var(--sd-menu-item-color-text);
         color: rgba(var(--sd-menu-color-text, var(--sd-menu-item-color-text)));
       }
 
+      /* TODO clean up sd-menu--disabled-color-text variable replacing with sd-menu-item--disabled-color-text (breaking change) */
       .sd-menu--disabled-color-text {
-        --sd-menu--disabled-color-text: var(--sd-menu-item--disabled-color-text);
         color: rgba(var(--sd-menu--disabled-color-text, var(--sd-menu-item--disabled-color-text)));
       }
     `
