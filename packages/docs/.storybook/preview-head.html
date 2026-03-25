@@ -64,6 +64,48 @@
     box-shadow: var(--sd-shadow-sm);
   }
 
+  /* Theme-aware logos */
+  :root,
+  .sd-theme-ui-light {
+    --sd-logo-lg: url('images/logo-unioninvestment-lg.svg');
+    --sd-logo-lg-ratio: 170 / 56;
+    --sd-logo-sm: url('images/logo-unioninvestment-sm.svg');
+    --sd-logo-sm-ratio: 26 / 30;
+  }
+
+  .sd-theme-ui-dark {
+    --sd-logo-lg: url('images/logo-unioninvestment-inverted-lg.svg');
+    --sd-logo-lg-ratio: 170 / 52;
+    --sd-logo-sm: url('images/logo-unioninvestment-inverted-sm.svg');
+    --sd-logo-sm-ratio: 130 / 40;
+  }
+
+  .sd-theme-vb {
+    --sd-logo-lg: url('images/logo-VB-lg.svg');
+    --sd-logo-lg-ratio: 171 / 52;
+    --sd-logo-sm: url('images/logo-VB-sm.svg');
+    --sd-logo-sm-ratio: 130 / 40;
+  }
+
+  .sd-theme-kid {
+    --sd-logo-lg: url('images/logo-kidstarter-lg.svg');
+    --sd-logo-lg-ratio: 171 / 52;
+    --sd-logo-sm: url('images/logo-kidstarter-sm.svg');
+    --sd-logo-sm-ratio: 130 / 40;
+  }
+
+  .logo-lg {
+    display: inline-block;
+    aspect-ratio: var(--sd-logo-lg-ratio);
+    background: var(--sd-logo-lg) no-repeat center / contain;
+  }
+
+  .logo-sm {
+    display: inline-block;
+    aspect-ratio: var(--sd-logo-sm-ratio);
+    background: var(--sd-logo-sm) no-repeat center / contain;
+  }
+
   @font-face {
     font-family: 'Frutiger Neue';
     font-style: normal;
@@ -120,17 +162,9 @@
   @font-face {
     font-family: 'Bricolage Grotesque';
     font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url('./fonts/bricolage/BricolageGrotesque-Medium.woff2') format('woff2');
-  }
-
-  @font-face {
-    font-family: 'Bricolage Grotesque';
-    font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url('./fonts/bricolage/BricolageGrotesque-SemiBold.woff2') format('woff2');
+    src: url('./fonts/bricolage/BricolageGrotesque-Bold.woff2') format('woff2');
   }
 
   /**

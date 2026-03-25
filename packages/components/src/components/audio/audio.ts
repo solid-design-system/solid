@@ -41,6 +41,10 @@ import type SdRange from '../range/range';
  * @csspart volume - The volume button.
  * @csspart progress-slider - The audio progress slider.
  * @csspart timestamps - The audio timestamps.
+ *
+ * @cssproperty --sd-audio__slide-bar--inverted-color-background - The background color for the progress slider when the component is inverted.
+ * @cssproperty --sd-audio__track-bar--inverted-color-background - The background color for the active part of the progress slider when the component is inverted.
+ * @cssproperty --sd-audio__timestamp-color-text - This variable is deprecated please use --sd-color-text-neutral-700.
  */
 @customElement('sd-audio')
 export default class SdAudio extends SolidElement {
@@ -556,7 +560,7 @@ export default class SdAudio extends SolidElement {
       :host([inverted]) sd-range::part(thumb) {
         @apply outline-white;
 
-        background-color: rgba(var(--sd-color-border-white, rgba(var(--sd-color-white))));
+        background-color: rgba(var(--sd-color-icon-fill-white, rgba(var(--sd-color-white))));
       }
 
       :host([animated]) sd-range::part(track) {
@@ -564,11 +568,18 @@ export default class SdAudio extends SolidElement {
       }
 
       :host([inverted]:not([animated])) sd-range::part(track) {
-        background-color: rgba(var(--sd-color-border-primary-400, rgba(var(--sd-color-primary-400))));
+        background-color: rgba(
+          var(--sd-audio__slide-bar--inverted-color-background, rgba(var(--sd-color-primary-400)))
+        );
       }
 
       :host([inverted]:not([animated])) sd-range::part(active-track) {
-        background-color: rgba(var(--sd-color-border-white, rgba(var(--sd-color-white))));
+        background-color: rgba(var(--sd-audio__track-bar--inverted-color-background, rgba(var(--sd-color-white))));
+      }
+
+      /* TODO clean sd-audio__timestamp-color-text variable and replace with text-neutral-700 in lines 491 and 496 (breaking change) */
+      .sd-audio__timestamp-color-text {
+        color: rgb(var(--sd-audio__timestamp-color-text, var(--sd-color-text-neutral-700)));
       }
     `
   ];

@@ -76,6 +76,14 @@ import type SdPopup from '../popup/popup';
  * @cssproperty --tag-max-width - Set the maximum width of the tags and to show an ellipsis. Defaults to "15ch"
  * @cssproperty --sd-form-control--invalid-color-background - The background color for form controls in invalid state.
  * @cssproperty --sd-form-control-color-text - The text color for form controls.
+ * @cssproperty --sd-form-control-border-radius - The border radius for form controls.
+ * @cssproperty --sd-form-control-color-border - The border color for default and readonly form controls.
+ * @cssproperty --sd-form-control--filled__floating-label-color-text - The text color for the floating label when the input is filled.
+ * @cssproperty --sd-form-control__listbox-border-bottom-left-radius - The border radius for the bottom left corner of the listbox.
+ * @cssproperty --sd-form-control__listbox-border-bottom-right-radius - The border radius for the bottom right corner of the listbox.
+ * @cssproperty --sd-form-control__listbox-border-top-left-radius - The border radius for the top left corner of the listbox.
+ * @cssproperty --sd-form-control__listbox-border-top-right-radius - The border radius for the top right corner of the listbox.
+ * @cssproperty --sd-combobox__tag-border-width - The border width for the tags for multiple options combobox.
  */
 
 @customElement('sd-combobox')
@@ -1196,7 +1204,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
     // Conditional Styles
     const cursorStyles = this.disabled || this.visuallyDisabled ? 'cursor-not-allowed' : 'cursor-pointer';
-    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary';
+    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'sd-icon-fill-primary';
     const iconMarginLeft = { sm: 'ml-1', md: 'ml-2', lg: 'ml-2' }[this.size];
     const iconMarginRight = { sm: 'mr-1', md: 'mr-2', lg: 'mr-2' }[this.size];
     const iconSize = {
@@ -1281,7 +1289,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           <div
             part="border"
             class=${cx(
-              'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10 transition-[border] duration-medium ease-in-out',
+              'absolute top-0 w-full h-full pointer-events-none border form-control-border-radius z-10 transition-[border] duration-medium ease-in-out',
               {
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
@@ -1319,7 +1327,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
             <div
               part="combobox"
               class=${cx(
-                'relative w-full px-4 flex flex-row items-center rounded-default transition-colors hover:duration-fast ease-in-out',
+                'relative w-full px-4 flex flex-row items-center form-control-border-radius transition-colors hover:duration-fast ease-in-out',
                 this.visuallyDisabled || this.disabled ? 'hover:bg-transparent' : 'hover:bg-neutral-200',
                 this.open && 'shadow transition-shadow duration-medium ease-in-out',
                 ['invalid', 'activeInvalid'].includes(selectState) && 'form-control--invalid-color-background',
@@ -1357,9 +1365,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 class=${cx(
                   'appearance-none outline-none bg-transparent flex-auto min-w-0',
                   cursorStyles,
-                  this.selectedTextLabel && !this.multiple
-                    ? 'placeholder:form-control-color-text'
-                    : 'placeholder:text-neutral-700',
+                  this.selectedTextLabel && !this.multiple ? 'placeholder:text-black' : 'placeholder:text-neutral-700',
                   this.size === 'sm' ? (isFloatingLabelActive ? 'h-4' : 'h-6') : isFloatingLabelActive ? 'h-6' : 'h-8',
                   isFloatingLabelActive && 'leading-none mt-4'
                 )}
@@ -1455,7 +1461,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 part="right"
                 class=${cx(
                   'inline-flex ml-2 leading-[0]',
-                  this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary',
+                  this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'sd-icon-fill-primary',
                   iconSize
                 )}
               >
@@ -1486,7 +1492,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                   `
                 : html`
                     <button
-                      class="sd-interactive combobox-button absolute top-2"
+                      class="sd-interactive combobox-button absolute top-2 sd-icon-fill-primary"
                       @keydown=${this.handleComboboxMouseDown}
                       type="button"
                     >
@@ -1504,10 +1510,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               part="listbox"
               class=${cx(
                 'bg-white px-2 py-3 relative border-primary overflow-y-auto',
-                this.open && 'shadow transition-shadow duration-medium ease-in-out',
+                this.open && 'shadow-listbox transition-shadow duration-medium ease-in-out',
                 this.currentPlacement === 'bottom'
-                  ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
-                  : 'border-r-2 border-t-2 border-l-2 rounded-tr-default rounded-tl-default'
+                  ? 'border-r-2 border-b-2 border-l-2 form-control__listbox-border-bottom-right-radius form-control__listbox-border-bottom-left-radius'
+                  : 'border-r-2 border-t-2 border-l-2 form-control__listbox-border-top-right-radius form-control__listbox-border-top-left-radius'
               )}
               tabindex="-1"
               @mousedown=${this.preventLoosingFocus}
@@ -1583,7 +1589,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       }
 
       sd-tag::part(base) {
-        @apply rounded-default px-1;
+        @apply rounded-default px-1 sd-combobox__tag-border-width;
       }
 
       sd-tag::part(content) {
@@ -1605,6 +1611,15 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
       mark {
         @apply bg-transparent text-inherit font-bold;
+      }
+
+      [part='chevron'] {
+        color: rgb(var(--sd-color-icon-fill-primary));
+      }
+
+      :host([visually-disabled])::part(chevron),
+      :host([disabled])::part(chevron) {
+        color: rgba(var(--sd-color-icon-fill-neutral-500, --sd-color-neutral-500));
       }
     `
   ];

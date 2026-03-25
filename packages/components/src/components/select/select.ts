@@ -68,6 +68,11 @@ import type SdPopup from '../popup/popup';
  * @cssproperty --tag-max-width - Set the maximum width of the tags and to show an ellipsis. Defaults to "15ch"
  * @cssproperty --sd-form-control--invalid-color-background - The background color for form controls in invalid state.
  * @cssproperty --sd-form-control-color-text - The text color for form controls.
+ * @cssproperty --sd-form-control-border-radius - The border radius for the select's input.
+ * @cssproperty --sd-form-control__listbox-border-bottom-left-radius - The border radius for the bottom left corner of the listbox.
+ * @cssproperty --sd-form-control__listbox-border-bottom-right-radius - The border radius for the bottom right corner of the listbox.
+ * @cssproperty --sd-form-control__listbox-border-top-left-radius - The border radius for the top left corner of the listbox.
+ * @cssproperty --sd-form-control__listbox-border-top-right-radius - The border radius for the top right corner of the listbox.
  */
 @customElement('sd-select')
 export default class SdSelect extends SolidElement implements SolidFormControl {
@@ -975,10 +980,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           : null}
         <div
           part="form-control-input"
-          class=${cx(
-            'relative w-full bg-white',
-            selectState === 'disabled' ? 'text-neutral-500' : 'form-control-color-text'
-          )}
+          class=${cx('relative w-full bg-white', selectState === 'disabled' ? 'text-neutral-500' : 'text-black')}
         >
           ${hasLabel && this.floatingLabel
             ? html`
@@ -1013,7 +1015,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
           <div
             part="border"
             class=${cx(
-              'absolute top-0 w-full h-full pointer-events-none border rounded-default z-10 transition-[border] duration-medium ease-in-out',
+              'absolute top-0 w-full h-full pointer-events-none border form-control-border-radius z-10 transition-[border] duration-medium ease-in-out',
               {
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
@@ -1158,7 +1160,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   ? html`
                       <sd-icon
                         part="invalid-icon"
-                        class=${cx(iconMarginLeft, iconSize, 'text-error')}
+                        class=${cx(iconMarginLeft, iconSize)}
                         library="_internal"
                         name="risk"
                       ></sd-icon>
@@ -1180,7 +1182,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   class=${cx(
                     'inline-flex ml-2 items-center transition-transform duration-medium ease-in-out',
                     this.open ? 'rotate-180' : 'rotate-0',
-                    this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary',
+                    this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'icon-color',
                     iconSize
                   )}
                 >
@@ -1218,10 +1220,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
               part="listbox"
               class=${cx(
                 'bg-white px-2 py-3 relative border-primary overflow-y-auto',
-                this.open && 'shadow transition-shadow duration-medium ease-in-out',
+                this.open && 'shadow-listbox transition-shadow duration-medium ease-in-out',
                 this.currentPlacement === 'bottom'
-                  ? 'border-r-2 border-b-2 border-l-2 rounded-br-default rounded-bl-default'
-                  : 'border-r-2 border-t-2 border-l-2 rounded-tr-default rounded-tl-default'
+                  ? 'border-r-2 border-b-2 border-l-2 form-control__listbox-border-bottom-right-radius form-control__listbox-border-bottom-left-radius'
+                  : 'border-r-2 border-t-2 border-l-2 form-control__listbox-border-top-right-radius form-control__listbox-border-top-left-radius'
               )}
               tabindex="-1"
               @mouseup=${this.handleOptionClick}
@@ -1253,6 +1255,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
     css`
       :host {
         @apply block relative w-auto;
+      }
+
+      [part='invalid-icon'] {
+        color: rgb(var(--sd-color-icon-fill-error, --sd-color-error));
       }
 
       :host([required]) #label::after {
@@ -1293,6 +1299,10 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
 
       sd-tag[disabled='false']::part(base):hover {
         @apply bg-primary-100;
+      }
+
+      .icon-color {
+        color: rgb(var(--sd-color-icon-fill-primary));
       }
     `
   ];

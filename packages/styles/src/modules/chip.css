@@ -15,13 +15,16 @@
  * @cssproperty --sd-chip--white-color-background - The background color for white chips.
  * @cssproperty --sd-chip--white-color-border - The border color for white chips.
  * @cssproperty --sd-chip-border-radius - The border radius for chips.
- * @cssproperty --sd-chip-font-size - The font size for chips.
- * @cssproperty --sd-chip-border-width - The border width for chips.
- * @cssproperty --sd-chip-font-weight - The font weight for chips.
+ * @cssproperty --sd-marker-font-size - The font size for chips.
+ * @cssproperty --sd-marker-border-width - The border width for chips.
+ * @cssproperty --sd-marker-font-weight - The font weight for chips.
+ * @cssproperty --sd-chip-font-size - This variable is deprecated please use --sd-marker-font-size.
+ * @cssproperty --sd-chip-border-width - This variable is deprecated please use --sd-marker-border-width.
+ * @cssproperty --sd-chip-font-weight - This variable is deprecated please use --sd-marker-font-weight.
  */
 
 .sd-chip {
-  @apply border h-6 sd-chip-font-weight sd-chip-border-width sd-chip--primary-200-color-background sd-chip-border-radius sd-chip--primary-200-color-border text-black sd-chip-font-size inline-flex items-center whitespace-nowrap px-2 overflow-hidden;
+  @apply border h-6 sd-chip--primary-200-color-background sd-chip-border-radius sd-chip--primary-200-color-border text-black inline-flex items-center whitespace-nowrap px-2 overflow-hidden;
 
   &--primary-500 {
     @apply sd-chip--primary-500-color-background sd-chip--primary-500-color-border sd-chip--primary-500-color-text;
@@ -34,6 +37,11 @@
   &--white {
     @apply sd-chip--white-color-background sd-chip--white-color-border;
   }
+
+  /* TODO clean this up and add the classes marker-font-size, marker-border-width and marker-font-weight (breaking change) */
+  font-size: var(--sd-chip-font-size);
+  border-width: var(--sd-chip-border-width);
+  font-weight: var(--sd-chip-font-weight);
 }
 
 .sd-theme-kid .sd-chip {

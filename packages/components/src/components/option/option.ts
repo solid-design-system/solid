@@ -25,7 +25,9 @@ import SolidElement from '../../internal/solid-element';
  * @csspart left - The container that wraps the left.
  * @csspart right - The container that wraps the right.
  *
- * @cssproperty --sd-option--disabled-color-border - The border color of checkboxes for the disabled options.
+ * @cssproperty --sd-form-control-color-border - The border color of checkboxes for the non-disabled options.
+ * @cssproperty --sd-checkbox-border-width - The border width of the checkboxes.
+ * @cssproperty --sd-option--disabled-color-border - This variable is deprecated please use --sd-color-border-neutral-500.
  */
 @customElement('sd-option')
 export default class SdOption extends SolidElement {
@@ -141,7 +143,7 @@ export default class SdOption extends SolidElement {
         class=${cx(
           'px-4 flex items-start w-full transition-colors duration-fast ease-in-out text-left text-base relative',
           {
-            sm: 'text-sm py-1',
+            sm: 'text-base py-1',
             md: 'text-base py-2',
             lg: 'text-base py-3'
           }[this.size],
@@ -166,7 +168,7 @@ export default class SdOption extends SolidElement {
               id="control"
               part="control ${this.selected ? ' control--checked' : 'control--unchecked'}"
               class=${cx(
-                'relative flex flex-shrink-0 items-center justify-center border rounded-sm h-4 w-4 mr-2',
+                'relative flex flex-shrink-0 items-center justify-center border sd-checkbox-border-width rounded-sm h-4 w-4 mr-2',
                 {
                   sm: 'mt-0.5',
                   md: 'mt-1',
@@ -210,6 +212,11 @@ export default class SdOption extends SolidElement {
 
       .focus-outline-offset {
         outline-offset: -2px;
+      }
+
+      /* TODO clean sd-option--disabled-color-border and replace this class with border-neutral-500 in line 176 (breaking change) */
+      .sd-option--disabled-color-border {
+        border-color: rgb(var(--sd-option--disabled-color-border));
       }
     `
   ];

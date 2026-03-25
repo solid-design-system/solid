@@ -41,3 +41,9 @@ The script:
 - Shows usage statistics and lists unused variables
 
 This helps identify dead variables that can be removed from the design system.
+
+### Deleting and Renaming variables from figma
+
+To avoid breaking changes and maintain compatibility with older versions of Solid, variables must never be completely removed from themes.
+
+In cases where a variable is renamed or removed in Figma but already exists in the codebase, it must be preserved in `legacy-variables.css`. The legacy variable should reference the new variable or value to ensure backward compatibility.

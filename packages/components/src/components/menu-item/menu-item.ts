@@ -27,6 +27,15 @@ import SolidElement from '../../internal/solid-element';
  *
  * @cssproperty --submenu-offset - The offset of the submenu from the parent menu item.
  * @cssproperty --sd-navigable-border-radius - The menu-item border radius on hover.
+ * @cssproperty --sd-menu-item-color-icon-fill - The default icon color for menu items.
+ * @cssproperty --sd-menu-item-color-text - The default text color for menu items.
+ * @cssproperty --sd-menu-item--disabled-color-icon-fill - The icon color for disabled menu items.
+ * @cssproperty --sd-menu-item--disabled-color-text - The text color for disabled menu items.
+ *
+ * @cssproperty --sd-menu-color-icon - This variable is deprecated please use --sd-menu-item-color-icon-fill.
+ * @cssproperty --sd-menu-color-text - This variable is deprecated please use --sd-menu-item-color-text.
+ * @cssproperty --sd-menu--disabled-color-icon - This variable is deprecated please use --sd-menu-item--disabled-color-icon-fill.
+ * @cssproperty --sd-menu--disabled-color-text - This variable is deprecated please use --sd-menu-item--disabled-color-text.
  */
 @customElement('sd-menu-item')
 export default class SdMenuItem extends SolidElement {
@@ -236,15 +245,16 @@ export default class SdMenuItem extends SolidElement {
       :host(:hover) [part='base'] {
         @apply outline-none;
       }
-
+      //TODO clean up sd-menu-color-icon variable replacing with sd-menu-item-color-icon-fill (breaking change)
       :host [part='icon-indent'],
       :host [part='checked-icon'],
       :host [part='submenu-icon'] {
-        color: rgba(var(--sd-menu-color-icon));
+        color: rgba(var(--sd-menu-color-icon, var(--sd-menu-item-color-icon-fill)));
       }
 
+      //TODO clean up sd-menu--disabled-color-icon variable replacing with sd-menu-item--disabled-color-icon-fill (breaking change)
       :host([aria-disabled='true']) [part='icon-indent'] {
-        color: rgba(var(--sd-menu--disabled-color-icon));
+        color: rgba(var(--sd-menu--disabled-color-icon, var(--sd-menu-item--disabled-color-icon-fill)));
       }
 
       sd-popup::part(popup) {
@@ -255,6 +265,16 @@ export default class SdMenuItem extends SolidElement {
       ::slotted(sd-menu) {
         max-width: var(--auto-size-available-width) !important;
         max-height: var(--auto-size-available-height) !important;
+      }
+
+      /* TODO clean up sd-menu-color-text variable replacing with sd-menu-item-color-text (breaking change) */
+      .sd-menu-color-text {
+        color: rgba(var(--sd-menu-color-text, var(--sd-menu-item-color-text)));
+      }
+
+      /* TODO clean up sd-menu--disabled-color-text variable replacing with sd-menu-item--disabled-color-text (breaking change) */
+      .sd-menu--disabled-color-text {
+        color: rgba(var(--sd-menu--disabled-color-text, var(--sd-menu-item--disabled-color-text)));
       }
     `
   ];
