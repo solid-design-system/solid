@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.12.1
+
+### Patch Changes
+
+- Fixed `sd-combobox` input value handling when pressing `tab` if there is no matching option in the selection list. _[`#2860`](https://github.com/solid-design-system/solid/pull/2860) [`e6b5dd4`](https://github.com/solid-design-system/solid/commit/e6b5dd4e2065a5b70762805e77816de996f3abe8) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 6.12.0
 
 ### Minor Changes
