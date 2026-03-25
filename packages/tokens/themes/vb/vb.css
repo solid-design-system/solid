@@ -488,3 +488,8 @@
   --sd-icon--volume: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.5 3.1a1 1 0 0 1 1.5.7V20a1 1 0 0 1-1.4 1v-.1L6.3 17H3a1 1 0 0 1-1-.8V8q0-.9.9-1h3.5zm6.3 2.3Q22 8.7 22 12a12 12 0 0 1-2.2 6.6 1 1 0 1 1-1.6-1A10 10 0 0 0 20 12q0-2.7-1.8-5.4a1 1 0 1 1 1.6-1.2m-6.8.3L7.1 8.9h-.3l-.1.1H4v6h3l.1.1 5.9 3.2zm4.8 2.7A6 6 0 0 1 19 12q0 1.8-1.2 3.6a1 1 0 0 1-1.6-1.2q.8-1.2.8-2.4t-.8-2.4a1 1 0 0 1 1.6-1.2" clip-rule="evenodd"/></svg>';
   --sd-icon--warning: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.9 19.5A1 1 0 0 1 21 21H3a1 1 0 0 1-.9-1.5l9-16a1 1 0 0 1 1.8 0zM12 6 4.7 19h14.6zm-1 4a1 1 0 1 1 2 0v4a1 1 0 0 1-2 0zm0 7a1 1 0 1 1 2 0 1 1 0 0 1-2 0" clip-rule="evenodd"/></svg>';
 }
+
+:root, .sd-theme-vb {
+  --sd-chip-border-width: var(--sd-marker-border-width);
+  --sd-chip-font-size: var(--sd-marker-font-size);
+}

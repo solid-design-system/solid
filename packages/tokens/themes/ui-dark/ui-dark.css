@@ -1,4 +1,3 @@
-
 :root, .sd-theme-ui-dark {
   color-scheme: dark;
 
@@ -455,4 +454,9 @@
   --sd-tooltip-color-text: var(--sd-color-white);
   --sd-video--play-button-color-background: 0 53 142 / 0.8;
   --sd-video--play-button-color-icon-fill: var(--sd-color-white);
+}
+
+:root, .sd-theme-ui-dark {
+  --sd-chip-border-width: var(--sd-marker-border-width);
+  --sd-chip-font-size: var(--sd-marker-font-size);
 }
