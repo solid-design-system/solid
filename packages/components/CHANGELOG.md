@@ -1,5 +1,20 @@
 # @solid-design-system/components
 
+## 6.12.1
+
+### Patch Changes
+
+- Fixed `sd-combobox` input value handling when pressing `tab` if there is no matching option in the selection list. _[`#2860`](https://github.com/solid-design-system/solid/pull/2860) [`e6b5dd4`](https://github.com/solid-design-system/solid/commit/e6b5dd4e2065a5b70762805e77816de996f3abe8) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 6.12.0
+
+### Minor Changes
+
+- - Added a new manual management functionality to the `sd-step-group` activated by setting the `active-step` attribute to -1. This disables the current automatic behavior of the `sd-step-group`, like changing every step after the `current` to `waiting`, and allows the user to set manage these states freely. _[`#2859`](https://github.com/solid-design-system/solid/pull/2859) [`d2e3426`](https://github.com/solid-design-system/solid/commit/d2e3426c8e6fbf145b85731ad5598270b803b167) [@martascorreia](https://github.com/martascorreia)_
+
+  - Added a new story "Manual Step state" to the documentation and tests for this use case.
+  - Fixed the default story in documentation since it was wasn't chaging the `current` step when the attribute `active-step` was changed to 0.
+
 ## 6.11.0
 
 ### Minor Changes
@@ -9,8 +24,9 @@
   Setting `view-month="2026-08"` will make August 2026 the starting month.
 
 ### 📈 Stats
-* Uncompressed: 595 KB (+2 KB / +0%)
-* Gzipped: 135 KB (+1 KB / +1%)
+
+- Uncompressed: 595 KB (+2 KB / +0%)
+- Gzipped: 135 KB (+1 KB / +1%)
 
 ## 6.10.0
 
