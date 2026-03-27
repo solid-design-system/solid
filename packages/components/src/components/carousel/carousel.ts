@@ -59,8 +59,7 @@ import SolidElement from '../../internal/solid-element.js';
 @customElement('sd-carousel')
 export default class SdCarousel extends SolidElement {
   @query('[part~="autoplay-controls"]') autoplayControls: HTMLElement;
-  @query('[part~="navigation-button--previous"]')
-  previousButton: HTMLButtonElement;
+  @query('[part~="navigation-button--previous"]') previousButton: HTMLButtonElement;
   @query('[part~="navigation-button--next"]') nextButton: HTMLButtonElement;
   @queryAll('[part~="pagination-item"]') paginationItems: HTMLButtonElement[];
 
@@ -79,8 +78,7 @@ export default class SdCarousel extends SolidElement {
   @property({ type: Boolean, reflect: true }) fade = false;
 
   /** Specifies how many slides should be shown at a given time.  */
-  @property({ type: Number, attribute: 'slides-per-page', reflect: true })
-  slidesPerPage = 1;
+  @property({ type: Number, attribute: 'slides-per-page', reflect: true }) slidesPerPage = 1;
 
   /**
    * Use `slides-per-move` to set how many slides the carousel advances when scrolling. This is useful when specifying a `slides-per-page` greater than one. By setting `slides-per-move` to the same value as `slides-per-page`, the carousel will advance by one page at a time.<br>
@@ -88,12 +86,12 @@ export default class SdCarousel extends SolidElement {
    * <li> The number of slides should be divisible by the number of `slides-per-page` to maintain consistent scroll behavior.</li>
    * <li>Variations between `slides-per-move` and `slides-per-page` can lead to unexpected scrolling behavior. Keep your intended UX in mind when adjusting these values.</li>
    */
-  @property({ type: Number, attribute: 'slides-per-move', reflect: true })
-  slidesPerMove = 1;
+  @property({ type: Number, attribute: 'slides-per-move', reflect: true }) slidesPerMove = 1;
 
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
   @query('.carousel__slides') scrollContainer: HTMLElement;
   @query('.carousel__pagination') paginationContainer: HTMLElement;
+  @query('.carousel__announcement') announcementRegion: HTMLElement;
 
   /**
    * The index of the active slide
@@ -112,6 +110,12 @@ export default class SdCarousel extends SolidElement {
    * @internal
    */
   @state() pausedAutoplay = false;
+
+  /**
+   * Boolean keeping track of whether the carousel has focus
+   * @internal
+   */
+  @state() private isFocused = false;
 
   private autoplayController = new AutoplayController(this, () => this.next());
   private scrollController = new ScrollController(this);
@@ -303,30 +307,28 @@ export default class SdCarousel extends SolidElement {
     this.requestUpdate();
   };
 
-  private handleFocusIn() {
-    if (this.autoplay && !this.pausedAutoplay) {
-      this.autoplayController.stop();
-    }
-  }
-
-  private handleFocusOut(event: FocusEvent) {
-    const relatedTarget = event.relatedTarget as Node | null;
-    if (this.contains(relatedTarget)) return;
-    if (this.autoplay && !this.pausedAutoplay) {
-      this.autoplayController.start(3000);
-    }
-  }
-
   private handleFocus() {
-    if (!this.autoplay) {
-      this.scrollContainer.setAttribute('aria-live', 'polite');
-    }
+    this.isFocused = true;
   }
 
   private handleBlur() {
-    if (this.autoplay) {
-      this.scrollContainer.setAttribute('aria-live', 'off');
+    this.isFocused = false;
+  }
+
+  private getSlideText(slide: SdCarouselItem): string {
+    const parts: string[] = [];
+    const walker = document.createTreeWalker(slide, NodeFilter.SHOW_ALL);
+    let node: Node | null = walker.nextNode();
+    while (node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const text = node.textContent?.trim();
+        if (text) parts.push(text);
+      } else if (node instanceof HTMLImageElement && node.alt) {
+        parts.push(node.alt);
+      }
+      node = walker.nextNode();
     }
+    return parts.join(' ');
   }
 
   private unblockAutoplay = (e: MouseEvent, button: HTMLButtonElement) => {
@@ -453,6 +455,14 @@ export default class SdCarousel extends SolidElement {
           slide: slides[this.activeSlide]
         }
       });
+
+      if (this.announcementRegion) {
+        const text = this.getSlideText(slides[this.activeSlide]);
+        const position = this.localize.term('slideNum', this.activeSlide + 1, slides.length);
+        requestAnimationFrame(() => {
+          this.announcementRegion.textContent = text ? `${text} ${position}` : position;
+        });
+      }
     }
 
     // Check page count after all other updates
@@ -620,12 +630,12 @@ export default class SdCarousel extends SolidElement {
     const isLtr = this.localize.dir() === 'ltr';
 
     return html`
-      <div
-        part="base"
-        class=${cx(`carousel h-full w-full`)}
-        @focusin=${this.handleFocusIn}
-        @focusout=${this.handleFocusOut}
-      >
+      <div part="base" class=${cx(`carousel h-full w-full`)}>
+        <div
+          class="carousel__announcement sr-only"
+          aria-live=${!this.autoplay || this.pausedAutoplay || this.isFocused ? 'polite' : 'off'}
+          aria-atomic="true"
+        ></div>
         <div
           id="scroll-container"
           part="scroll-container"
@@ -637,13 +647,11 @@ export default class SdCarousel extends SolidElement {
               : `grid overflow-auto overscroll-x-contain grid-flow-col auto-rows-[100%] snap-x snap-mandatory overflow-y-hidden`
           )}"
           style="--slides-per-page: ${this.slidesPerPage};"
-          role="group"
           aria-busy="${scrollController.scrolling ? 'true' : 'false'}"
           aria-label="${this.localize.term(
             'carouselContainer',
             Array.from(this.slides).filter(el => !el.hasAttribute('data-clone')).length
           )}"
-          aria-live=${this.autoplay ? 'off' : 'polite'}
           tabindex="0"
           @keydown=${this.handleKeyDown}
           @scrollend=${this.handleScrollEnd}

@@ -579,8 +579,8 @@ describe('<sd-carousel>', () => {
       });
     });
 
-    describe('live region behavior', () => {
-      it('should have aria-live="polite" when autoplay is off', async () => {
+    describe('live region', () => {
+      it('should have an announcement region with aria-live="polite" when autoplay is off', async () => {
         // Arrange
         const el = await fixture<SdCarousel>(html`
           <sd-carousel>
@@ -592,10 +592,13 @@ describe('<sd-carousel>', () => {
         await el.updateComplete;
 
         // Assert
-        expect(el.scrollContainer).to.have.attribute('aria-live', 'polite');
+        const announcementRegion = el.shadowRoot!.querySelector('.carousel__announcement')!;
+        expect(announcementRegion).to.exist;
+        expect(announcementRegion).to.have.attribute('aria-live', 'polite');
+        expect(announcementRegion).to.have.attribute('aria-atomic', 'true');
       });
 
-      it('should have aria-live="off" when autoplay is on', async () => {
+      it('should have aria-live="off" on the announcement region when autoplay is on', async () => {
         // Arrange
         const el = await fixture<SdCarousel>(html`
           <sd-carousel autoplay>
@@ -607,32 +610,14 @@ describe('<sd-carousel>', () => {
         await el.updateComplete;
 
         // Assert
-        expect(el.scrollContainer).to.have.attribute('aria-live', 'off');
+        const announcementRegion = el.shadowRoot!.querySelector('.carousel__announcement')!;
+        expect(announcementRegion).to.have.attribute('aria-live', 'off');
       });
 
-      it('should keep aria-live="off" when autoplay is on but paused', async () => {
+      it('should have aria-live="polite" when autoplay is on but paused', async () => {
         // Arrange
         const el = await fixture<SdCarousel>(html`
           <sd-carousel autoplay>
-            <sd-carousel-item>Node 1</sd-carousel-item>
-            <sd-carousel-item>Node 2</sd-carousel-item>
-            <sd-carousel-item>Node 3</sd-carousel-item>
-          </sd-carousel>
-        `);
-        await el.updateComplete;
-
-        // Act — pause autoplay
-        el.autoplayControls.click();
-        await el.updateComplete;
-
-        // Assert — should remain off even while paused, to avoid live region flooding
-        expect(el.scrollContainer).to.have.attribute('aria-live', 'off');
-      });
-
-      it('should set aria-live="polite" on focus when autoplay is off', async () => {
-        // Arrange
-        const el = await fixture<SdCarousel>(html`
-          <sd-carousel>
             <sd-carousel-item>Node 1</sd-carousel-item>
             <sd-carousel-item>Node 2</sd-carousel-item>
             <sd-carousel-item>Node 3</sd-carousel-item>
@@ -641,14 +626,15 @@ describe('<sd-carousel>', () => {
         await el.updateComplete;
 
         // Act
-        el.scrollContainer.dispatchEvent(new Event('focus'));
+        el.pause();
         await el.updateComplete;
 
         // Assert
-        expect(el.scrollContainer).to.have.attribute('aria-live', 'polite');
+        const announcementRegion = el.shadowRoot!.querySelector('.carousel__announcement')!;
+        expect(announcementRegion).to.have.attribute('aria-live', 'polite');
       });
 
-      it('should not change aria-live on focus when autoplay is on', async () => {
+      it('should have aria-live="polite" when autoplay is on and the carousel is focused', async () => {
         // Arrange
         const el = await fixture<SdCarousel>(html`
           <sd-carousel autoplay>
@@ -663,8 +649,74 @@ describe('<sd-carousel>', () => {
         el.scrollContainer.dispatchEvent(new Event('focus'));
         await el.updateComplete;
 
-        // Assert — focus should not flip aria-live back to polite when autoplay is on
-        expect(el.scrollContainer).to.have.attribute('aria-live', 'off');
+        // Assert
+        const announcementRegion = el.shadowRoot!.querySelector('.carousel__announcement')!;
+        expect(announcementRegion).to.have.attribute('aria-live', 'polite');
+      });
+
+      it('should have aria-live="off" when autoplay is on and the carousel loses focus', async () => {
+        // Arrange
+        const el = await fixture<SdCarousel>(html`
+          <sd-carousel autoplay>
+            <sd-carousel-item>Node 1</sd-carousel-item>
+            <sd-carousel-item>Node 2</sd-carousel-item>
+            <sd-carousel-item>Node 3</sd-carousel-item>
+          </sd-carousel>
+        `);
+        await el.updateComplete;
+
+        // Act
+        el.scrollContainer.dispatchEvent(new Event('focus'));
+        await el.updateComplete;
+        el.scrollContainer.dispatchEvent(new Event('blur'));
+        await el.updateComplete;
+
+        // Assert
+        const announcementRegion = el.shadowRoot!.querySelector('.carousel__announcement')!;
+        expect(announcementRegion).to.have.attribute('aria-live', 'off');
+      });
+
+      it('should announce slide text and position when navigating', async () => {
+        // Arrange
+        const el = await fixture<SdCarousel>(html`
+          <sd-carousel>
+            <sd-carousel-item>Node 1</sd-carousel-item>
+            <sd-carousel-item>Node 2</sd-carousel-item>
+            <sd-carousel-item>Node 3</sd-carousel-item>
+          </sd-carousel>
+        `);
+        await el.updateComplete;
+
+        // Act
+        el.goToSlide(1);
+        await el.updateComplete;
+        await aTimeout(0); // wait for requestAnimationFrame
+
+        // Assert
+        const announcementRegion = el.shadowRoot!.querySelector('.carousel__announcement')!;
+        expect(announcementRegion.textContent).to.include('Node 2');
+        expect(announcementRegion.textContent).to.match(/2.*3|slide 2/i);
+      });
+
+      it('should announce image alt text when navigating', async () => {
+        // Arrange
+        const el = await fixture<SdCarousel>(html`
+          <sd-carousel>
+            <sd-carousel-item><img alt="A dog on the beach" /></sd-carousel-item>
+            <sd-carousel-item><img alt="A cat on a chair" /></sd-carousel-item>
+            <sd-carousel-item><img alt="A bird in a tree" /></sd-carousel-item>
+          </sd-carousel>
+        `);
+        await el.updateComplete;
+
+        // Act
+        el.goToSlide(1);
+        await el.updateComplete;
+        await aTimeout(0);
+
+        // Assert
+        const announcementRegion = el.shadowRoot!.querySelector('.carousel__announcement')!;
+        expect(announcementRegion.textContent).to.include('A cat on a chair');
       });
     });
 
