@@ -91,6 +91,7 @@ export default class SdCarousel extends SolidElement {
   @query('slot:not([name])') defaultSlot: HTMLSlotElement;
   @query('.carousel__slides') scrollContainer: HTMLElement;
   @query('.carousel__pagination') paginationContainer: HTMLElement;
+  @query('.carousel__announcement') announcementRegion: HTMLElement;
 
   /**
    * The index of the active slide
@@ -109,6 +110,12 @@ export default class SdCarousel extends SolidElement {
    * @internal
    */
   @state() pausedAutoplay = false;
+
+  /**
+   * Boolean keeping track of whether the carousel has focus
+   * @internal
+   */
+  @state() private isFocused = false;
 
   private autoplayController = new AutoplayController(this, () => this.next());
   private scrollController = new ScrollController(this);
@@ -301,15 +308,27 @@ export default class SdCarousel extends SolidElement {
   };
 
   private handleFocus() {
-    if (this.autoplay) {
-      this.scrollContainer.setAttribute('aria-live', 'polite');
-    }
+    this.isFocused = true;
   }
 
   private handleBlur() {
-    if (this.autoplay) {
-      this.scrollContainer.setAttribute('aria-live', 'off');
+    this.isFocused = false;
+  }
+
+  private getSlideText(slide: SdCarouselItem): string {
+    const parts: string[] = [];
+    const walker = document.createTreeWalker(slide, NodeFilter.SHOW_ALL);
+    let node: Node | null = walker.nextNode();
+    while (node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const text = node.textContent?.trim();
+        if (text) parts.push(text);
+      } else if (node instanceof HTMLImageElement && node.alt) {
+        parts.push(node.alt);
+      }
+      node = walker.nextNode();
     }
+    return parts.join(' ');
   }
 
   private unblockAutoplay = (e: MouseEvent, button: HTMLButtonElement) => {
@@ -436,6 +455,14 @@ export default class SdCarousel extends SolidElement {
           slide: slides[this.activeSlide]
         }
       });
+
+      if (this.announcementRegion) {
+        const text = this.getSlideText(slides[this.activeSlide]);
+        const position = this.localize.term('slideNum', this.activeSlide + 1, slides.length);
+        requestAnimationFrame(() => {
+          this.announcementRegion.textContent = text ? `${text} ${position}` : position;
+        });
+      }
     }
 
     // Check page count after all other updates
@@ -557,9 +584,6 @@ export default class SdCarousel extends SolidElement {
     const slides = this.getSlides();
     const slidesWithClones = this.getSlides({ excludeClones: false });
 
-    // Sets the next index without taking into account clones, if any.
-    // Inconsistencies may arise when scrolling from the last slide if slidesPerMove is not divisible by the slide count.
-    // This is most apparent with slidesPerPage set to one, but we won't provide a fix as it's not a recommended use case anyways.
     const newActiveSlide = (index + slides.length) % slides.length;
     this.activeSlide = newActiveSlide;
 
@@ -567,8 +591,6 @@ export default class SdCarousel extends SolidElement {
       return;
     }
 
-    // Get the index of the next slide. For looping carousel it adds `slidesPerPage`
-    // to normalize the starting index in order to ignore the first nth clones.
     const nextSlideIndex = clamp(index + (loop ? slidesPerPage : 0), 0, slidesWithClones.length + 1);
     const nextSlide = slidesWithClones[nextSlideIndex];
 
@@ -610,6 +632,11 @@ export default class SdCarousel extends SolidElement {
     return html`
       <div part="base" class=${cx(`carousel h-full w-full`)}>
         <div
+          class="carousel__announcement sr-only"
+          aria-live=${!this.autoplay || this.pausedAutoplay || this.isFocused ? 'polite' : 'off'}
+          aria-atomic="true"
+        ></div>
+        <div
           id="scroll-container"
           part="scroll-container"
           class="${cx(
@@ -625,7 +652,6 @@ export default class SdCarousel extends SolidElement {
             'carouselContainer',
             Array.from(this.slides).filter(el => !el.hasAttribute('data-clone')).length
           )}"
-          aria-live=${this.autoplay ? 'off' : 'polite'}
           tabindex="0"
           @keydown=${this.handleKeyDown}
           @scrollend=${this.handleScrollEnd}
