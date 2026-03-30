@@ -1345,16 +1345,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                     class="${cx('inline-flex', iconMarginRight, iconColor, iconSize)}"
                   ></slot>`
                 : ''}
-              <div class="flex flex-wrap items-center gap-1 w-full min-w-0 relative">
+              <div
+                class=${cx('flex flex-wrap items-center gap-1 w-full min-w-0 relative', this.floatingLabel && 'mt-4')}
+              >
                 ${this.multiple && this.useTags && this.tags && this.tags.length > 0
-                  ? html`<div
-                      part="tags"
-                      class="${cx(
-                        'flex flex-wrap items-center gap-1 min-w-0',
-                        iconMarginRight,
-                        this.floatingLabel && 'mt-4'
-                      )}"
-                    >
+                  ? html`<div part="tags" class="${cx('flex flex-wrap items-center gap-1 min-w-0', iconMarginRight)}">
                       ${this.tags}
                     </div>`
                   : null}
@@ -1369,14 +1364,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                     this.selectedTextLabel && !this.multiple
                       ? 'placeholder:form-control-color-text'
                       : 'placeholder:text-neutral-700',
-                    this.size === 'sm'
-                      ? isFloatingLabelActive
-                        ? 'h-4'
-                        : 'h-6'
-                      : isFloatingLabelActive
-                        ? 'h-6'
-                        : 'h-8',
-                    isFloatingLabelActive && 'leading-none mt-4'
+                    this.size === 'sm' ? (isFloatingLabelActive ? 'h-4' : 'h-6') : isFloatingLabelActive ? 'h-6' : 'h-8'
                   )}
                   type="text"
                   placeholder=${!this.floatingLabel || isFloatingLabelActive
