@@ -641,7 +641,35 @@ export default class SdCarousel extends SolidElement {
     const isLtr = this.localize.dir() === 'ltr';
 
     return html`
-      <div part="base" class=${cx(`carousel h-full w-full`)}>
+      <div part="base" class=${cx(`carousel h-full w-full relative`)}>
+        <button
+          class=${cx(
+            'ml-6 !rounded-sm',
+            '!absolute !bottom-0 !right-0 sd-interactive',
+            this.inverted ? 'sd-interactive--inverted' : 'sd-interactive--reset',
+            !this.autoplay && '!hidden'
+          )}
+          part="autoplay-controls"
+          aria-label="${this.pausedAutoplay
+            ? this.localize.term('startAutoplay')
+            : this.localize.term('stopAutoplay')}"
+          aria-pressed="true"
+          @click=${(e: MouseEvent) => {
+            this.pausedAutoplay = !this.pausedAutoplay;
+            if (e.detail) {
+              this.autoplayControls.blur();
+            }
+          }}
+        >
+          <slot name="autoplay-start" class=${cx(!this.pausedAutoplay ? 'hidden' : '')}>
+            <sd-icon class="h-6 w-6 grid place-items-center" library="_internal" name="start"></sd-icon>
+          </slot>
+
+          <slot name="autoplay-pause" class=${cx(this.pausedAutoplay ? 'hidden' : '')}>
+            <sd-icon class="h-6 w-6 grid place-items-center" library="_internal" name="pause"></sd-icon>
+          </slot>
+        </button>
+
         <div
           class="carousel__announcement sr-only"
           aria-live=${!this.autoplay || this.pausedAutoplay || this.isFocused ? 'polite' : 'off'}
@@ -670,34 +698,6 @@ export default class SdCarousel extends SolidElement {
         </div>
 
         <div part="controls" class=${cx('w-full flex items-center justify-center relative')}>
-          <button
-            class=${cx(
-              'ml-6 !rounded-sm',
-              '!absolute !right-0 sd-interactive',
-              this.inverted ? 'sd-interactive--inverted' : 'sd-interactive--reset',
-              !this.autoplay && '!hidden'
-            )}
-            part="autoplay-controls"
-            aria-label="${this.pausedAutoplay
-              ? this.localize.term('startAutoplay')
-              : this.localize.term('stopAutoplay')}"
-            aria-pressed="true"
-            @click=${(e: MouseEvent) => {
-              this.pausedAutoplay = !this.pausedAutoplay;
-              if (e.detail) {
-                this.autoplayControls.blur();
-              }
-            }}
-          >
-            <slot name="autoplay-start" class=${cx(!this.pausedAutoplay ? 'hidden' : '')}>
-              <sd-icon class="h-6 w-6 grid place-items-center" library="_internal" name="start"></sd-icon>
-            </slot>
-
-            <slot name="autoplay-pause" class=${cx(this.pausedAutoplay ? 'hidden' : '')}>
-              <sd-icon class="h-6 w-6 grid place-items-center" library="_internal" name="pause"></sd-icon>
-            </slot>
-          </button>
-
           <div part="navigation" class=${cx('carousel__navigation flex items-center justify-center')}>
             <button
               part="navigation-button navigation-button--previous"
