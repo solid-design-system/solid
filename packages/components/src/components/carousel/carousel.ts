@@ -117,7 +117,9 @@ export default class SdCarousel extends SolidElement {
    */
   @state() private isFocused = false;
 
-  private autoplayController = new AutoplayController(this, () => this.next());
+  private autoplayController = new AutoplayController(this, () => {
+    if (!this.isFocused) this.next();
+  });
   private scrollController = new ScrollController(this);
   private readonly slides = this.getElementsByTagName('sd-carousel-item');
   private intersectionObserver: IntersectionObserver; // determines which slide is displayed
@@ -131,6 +133,9 @@ export default class SdCarousel extends SolidElement {
   connectedCallback(): void {
     super.connectedCallback();
     ['click', 'keydown'].forEach(event => this.addEventListener(event, this.handleUserInteraction));
+    this.addEventListener('focusin', this.handleFocus);
+    this.addEventListener('focusout', this.handleBlur);
+    this.addEventListener('keydown', this.handleKeyDown);
 
     const intersectionObserver = new IntersectionObserver(
       (entries: IntersectionObserverEntry[]) => {
@@ -162,6 +167,9 @@ export default class SdCarousel extends SolidElement {
     this.intersectionObserver.disconnect();
     this.mutationObserver.disconnect();
     ['click', 'keydown'].forEach(event => this.removeEventListener(event, this.handleUserInteraction));
+    this.removeEventListener('focusin', this.handleFocus);
+    this.removeEventListener('focusout', this.handleBlur);
+    this.removeEventListener('keydown', this.handleKeyDown);
 
     if (this.fade) {
       this.fadeController.disable();
@@ -653,10 +661,7 @@ export default class SdCarousel extends SolidElement {
             Array.from(this.slides).filter(el => !el.hasAttribute('data-clone')).length
           )}"
           tabindex="0"
-          @keydown=${this.handleKeyDown}
           @scrollend=${this.handleScrollEnd}
-          @focus=${this.handleFocus}
-          @blur=${this.handleBlur}
         >
           <slot></slot>
         </div>
@@ -675,8 +680,6 @@ export default class SdCarousel extends SolidElement {
               aria-label="${this.localize.term('previousSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${prevEnabled ? 'false' : 'true'}"
-              @focus=${this.handleFocus}
-              @blur=${this.handleBlur}
               @click=${prevEnabled
                 ? (e: MouseEvent) => {
                     this.previous();
@@ -720,7 +723,6 @@ export default class SdCarousel extends SolidElement {
                             this.goToSlide(index * slidesPerMove);
                             this.unblockAutoplay(e, this.paginationItems[index]);
                           }}"
-                          @keydown=${this.handleKeyDown}
                         >
                           <span
                             class=${cx(
@@ -780,8 +782,6 @@ export default class SdCarousel extends SolidElement {
               aria-label="${this.localize.term('nextSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${nextEnabled ? 'false' : 'true'}"
-              @focus=${this.handleFocus}
-              @blur=${this.handleBlur}
               @click=${nextEnabled
                 ? (e: MouseEvent) => {
                     this.next();
