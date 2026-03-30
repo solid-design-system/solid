@@ -646,7 +646,7 @@ describe('<sd-carousel>', () => {
         await el.updateComplete;
 
         // Act
-        el.scrollContainer.dispatchEvent(new Event('focus'));
+        el.dispatchEvent(new Event('focusin', { bubbles: true }));
         await el.updateComplete;
 
         // Assert
@@ -666,9 +666,9 @@ describe('<sd-carousel>', () => {
         await el.updateComplete;
 
         // Act
-        el.scrollContainer.dispatchEvent(new Event('focus'));
+        el.dispatchEvent(new Event('focusin', { bubbles: true }));
         await el.updateComplete;
-        el.scrollContainer.dispatchEvent(new Event('blur'));
+        el.dispatchEvent(new Event('focusout', { bubbles: true }));
         await el.updateComplete;
 
         // Assert
