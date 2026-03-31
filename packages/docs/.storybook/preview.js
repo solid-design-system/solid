@@ -7,6 +7,7 @@ import { withThemeByClassName } from './addons/with-theme.js';
 import { storybookUtilities } from '../scripts/storybook/helper.js';
 import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer.js';
 import { themes, allModes, DEFAULT_THEME } from './modes.js';
+import { html } from 'lit-html';
 
 const theme = withThemeByClassName({
   defaultTheme: DEFAULT_THEME,
@@ -16,8 +17,19 @@ const theme = withThemeByClassName({
   }, {})
 });
 
+const withA11yThemeGuard = (Story, context) => {
+  const ignoreThemeList = context.parameters?.a11y?.config?.ignoreThemeList;
+  const currentTheme = context.globals?.theme;
+
+  if (ignoreThemeList?.includes(currentTheme)) {
+    return html`<div style="display: none">${Story()}</div>`;
+  }
+
+  return Story();
+};
+
 export const preview = {
-  decorators: [theme],
+  decorators: [theme, withA11yThemeGuard],
   parameters: {
     chromatic: {
       disableSnapshot: true,

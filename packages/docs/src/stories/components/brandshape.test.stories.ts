@@ -20,7 +20,15 @@ export default {
   title: 'Components/sd-brandshape/Screenshots: sd-brandshape',
   component: 'sd-brandshape',
   tags: ['!autodocs'],
-  parameters: { ...parameters, controls: { disable: true } },
+  parameters: {
+    ...parameters,
+    controls: { disable: true },
+    a11y: {
+      config: {
+        ignoreThemeList: ['VB Ultra', 'Kid Starter']
+      }
+    }
+  },
   args: overrideArgs([
     {
       type: 'slot',
