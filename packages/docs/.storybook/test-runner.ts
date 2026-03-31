@@ -1,5 +1,4 @@
 import { getStoryContext, type TestRunnerConfig } from '@storybook/test-runner';
-import { SkipTestError } from '@storybook/test-runner';
 import { createHtmlReport } from 'axe-html-reporter';
 import { injectAxe, getViolations, configureAxe } from 'axe-playwright';
 import assert from 'assert';
@@ -30,7 +29,7 @@ const config: TestRunnerConfig = {
     const currentTheme = themes.find(theme => theme.id === currentThemeClass);
 
     if (ignoredThemes?.includes(currentTheme?.name || '')) {
-      throw new SkipTestError(`Theme "${currentTheme?.name}" is ignored for accessibility tests`);
+      throw new Error(`SKIP Theme "${currentTheme?.name}" ignored for a11y tests`);
     }
 
     const ignoredRules =
