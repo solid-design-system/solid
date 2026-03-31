@@ -23,7 +23,8 @@ const config: TestRunnerConfig = {
     const story = await getStoryContext(page, context);
     const ignoredThemes = story.parameters?.a11y?.config?.ignoreThemeList as string[] | undefined;
     const currentThemeClass = await page.evaluate(() => {
-      return Array.from(document.body.classList).find(cls => cls.startsWith('sd-theme-'));
+      const el = document.querySelector('.sb-show-main') ?? document.body;
+      return Array.from(el.classList).find(cls => cls.startsWith('sd-theme-'));
     });
     const currentTheme = themes.find(theme => theme.id === currentThemeClass);
 
