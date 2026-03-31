@@ -20,6 +20,12 @@ const config: TestRunnerConfig = {
     await new Promise(resolve => setTimeout(resolve, 200));
 
     const story = await getStoryContext(page, context);
+    const ignoredThemes = story.parameters?.a11y?.config?.ignoreThemeList as string[] | undefined;
+    const currentTheme = story.parameters?.theme;
+
+    if (ignoredThemes?.includes(currentTheme || '')) {
+      return;
+    }
 
     const ignoredRules =
       story.parameters?.a11y?.config?.rules
