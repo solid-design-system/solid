@@ -3,7 +3,7 @@ import { createHtmlReport } from 'axe-html-reporter';
 import { injectAxe, getViolations, configureAxe } from 'axe-playwright';
 import assert from 'assert';
 import pc from 'picocolors';
-import { themes } from './modes';
+import { themes } from './modes.js';
 
 /*
  * See https://storybook.js.org/docs/writing-tests/test-runner#test-hook-api
@@ -25,9 +25,9 @@ const config: TestRunnerConfig = {
     const currentThemeClass = await page.evaluate(() => {
       return Array.from(document.body.classList).find(cls => cls.startsWith('sd-theme-'));
     });
-    const currentTheme = themes.find(theme => theme.id === currentThemeClass)?.name;
+    const currentTheme = themes.find(theme => theme.id === currentThemeClass);
 
-    if (ignoredThemes?.includes(currentTheme ?? '')) {
+    if (ignoredThemes?.includes(currentTheme?.name || '')) {
       return;
     }
 
