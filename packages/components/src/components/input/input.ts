@@ -635,7 +635,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               'px-4 flex flex-row items-center rounded-default transition-colors ease-in-out duration-medium hover:duration-fast',
               this.floatingLabel && 'has-floating-label',
               // States
-              !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
+              !this.disabled && !this.readonly && !this.visuallyDisabled
+                ? 'hover:[@media(hover:hover)]:bg-neutral-200'
+                : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
               ['disabled', 'visuallyDisabled'].includes(inputState) ? 'text-neutral-500' : 'form-control-color-text',
               ['invalid', 'activeInvalid'].includes(inputState) && 'form-control--invalid-color-background',
