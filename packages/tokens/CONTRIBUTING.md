@@ -42,7 +42,7 @@ The script:
 
 This helps identify dead variables that can be removed from the design system.
 
-### Deleting and Renaming variables from figma
+### Deleting and Renaming variables from Figma
 
 To avoid breaking changes and maintain compatibility with older versions of Solid, variables must never be completely removed from themes.
 
