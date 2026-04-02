@@ -14,11 +14,14 @@
  * @cssproperty --sd-flag--white-color-background - The background color for white flags.
  * @cssproperty --sd-flag--white-color-border - The border color for white flags.
  * @cssproperty --sd-flag-border-radius - The border radius for flags.
- * @cssproperty --sd-flag-border-width - The border width for flags.
+ * @cssproperty --sd-marker-border-width - The border width for flags.
+ * @cssproperty --sd-marker-font-weight - The font weight for flags.
+ * @cssproperty --sd-marker-font-size - The font size for flags.
+ * @cssproperty --sd-flag-border-width - This custom property is deprecated. Use `--sd-marker-border-width` instead.
  */
 
 .sd-flag {
-  @apply border h-8 sd-flag--neutral-200-color-background sd-flag--neutral-200-color-border sd-flag-border-radius sd-flag-border-width text-black text-sm inline-flex items-center px-3 whitespace-nowrap overflow-hidden;
+  @apply border h-8 sd-flag--neutral-200-color-background sd-flag--neutral-200-color-border sd-flag-border-radius text-black marker-font-weight marker-font-size inline-flex items-center px-3 whitespace-nowrap overflow-hidden;
 
   &--neutral-500 {
     @apply sd-flag--neutral-500-color-background sd-flag--neutral-500-color-border text-black;
@@ -31,4 +34,7 @@
   &--white {
     @apply sd-flag--white-color-background sd-flag--white-color-border;
   }
+
+  /* TODO clean this up and add the class marker-border-width (breaking change) */
+  border-width: var(--sd-flag-border-width);
 }

@@ -19,7 +19,7 @@
   &:not(:focus-within):not(.sd-hidden-links--debug) {
     @apply sr-only;
   }
-  @apply absolute top-6 left-6;
+  @apply absolute top-6 left-6 panel-color-border border;
   &--multiple {
     @apply bg-white shadow flex flex-col px-2 py-4;
     &:before {

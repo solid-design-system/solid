@@ -26,6 +26,8 @@ import SolidElement from '../../internal/solid-element';
  * @csspart main - The container that wraps the main content.
  * @csspart toggle - The button that toggles the expandable content.
  *
+ * @cssproperty --sd-teaser-media--white--hover-color-background - The background color for white teaser media in hover state.
+ * @cssproperty --sd-teaser-media--white-color-background - The default background color for white teaser media.
  * @cssproperty --sd-teaser-media--neutral-100--hover-color-background - The background color for neutral‑100 teaser media in hover state.
  * @cssproperty --sd-teaser-media--neutral-100-color-background - The default background color for neutral‑100 teaser media.
  * @cssproperty --sd-teaser-media--primary-100--hover-color-background - The background color for primary‑100 teaser media in hover state.
@@ -76,8 +78,8 @@ export default class SdTeaserMedia extends SolidElement {
           <div
             class=${cx(
               'flex-1',
-              this.variant === 'gradient-light' && 'bg-gradient-to-t from-white/[.8] to-60%',
-              this.variant === 'gradient-dark' && 'bg-gradient-to-t from-primary-800/[.8] to-60%'
+              this.variant === 'gradient-light' && 'bg-gradient-to-t from-white/60 to-white/0',
+              this.variant === 'gradient-dark' && 'bg-gradient-to-t from-primary-800/60 to-primary-800/0'
             )}
           ></div>
           <div class=${cx('relative', ['primary', 'gradient-dark'].includes(this.variant) && 'text-white')}>
@@ -85,14 +87,15 @@ export default class SdTeaserMedia extends SolidElement {
               class=${cx(
                 'absolute inset-0 pointer-events-none',
                 {
-                  white: 'bg-white/[.8] group-hover:bg-white/90',
+                  white:
+                    'sd-teaser-media--white-color-background group-hover:sd-teaser-media--white--hover-color-background ',
                   'neutral-100':
                     'sd-teaser-media--neutral-100-color-background group-hover:sd-teaser-media--neutral-100--hover-color-background',
                   primary: 'bg-primary/[.8] text-white group-hover:bg-primary/90',
                   'primary-100':
                     'sd-teaser-media--primary-100-color-background group-hover:sd-teaser-media--primary-100--hover-color-background',
-                  'gradient-light': 'bg-gradient-to-t from-white/90 to-white/[.8]',
-                  'gradient-dark': 'bg-gradient-to-t from-primary-800/90 to-primary-800/[.8]'
+                  'gradient-light': 'bg-gradient-to-t from-white/75 to-white/60',
+                  'gradient-dark': 'bg-gradient-to-t from-primary-800/75 to-primary-800/60'
                 }[this.variant]
               )}
             ></div>

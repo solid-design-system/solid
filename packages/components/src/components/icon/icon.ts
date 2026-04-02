@@ -153,7 +153,7 @@ export default class SdIcon extends SolidElement {
       }
 
       :host([color='primary']) svg {
-        @apply text-primary;
+        color: var(--sd-icon-fill-primary, var(--sd-color-primary));
       }
 
       :host([color='white']) svg {

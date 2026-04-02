@@ -5,7 +5,7 @@
  * @since 3.0.0
  * @boolean sd-footnotes--inverted Inverts the footnote text.
  *
- * @cssproperty --sd-footnotes--target--inverted-color-background Used as background color for the `inverted` variant when the footnote is targeted.
+ * @cssproperty --sd-footnotes--target--inverted-color-background - Used as background color for the `inverted` variant when the footnote is targeted.
  */
 
 .sd-footnotes {
@@ -83,6 +83,15 @@
         @apply sd-footnotes--target--inverted-color-background;
       }
     }
+
+    &:is(ol) {
+      li {
+        .sd-footnotes--marker::before,
+        &::before {
+          @apply !text-white;
+        }
+      }
+    }
   }
 
   &--marker {
@@ -120,10 +129,6 @@
 
       &:focus-visible {
         @apply outline outline-2 outline-offset-2 outline-primary rounded-default;
-      }
-
-      &:link {
-        @apply text-primary;
       }
     }
 

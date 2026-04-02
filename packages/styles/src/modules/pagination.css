@@ -5,6 +5,8 @@
  * @since 1.3
  * @variant { simple } sd-pagination--... The pagination format.
  * @boolean sd-pagination--inverted Inverts the pagination style.
+ * @cssproperty --sd-pagination--default-border - The default border color for current item.
+ * @cssproperty --sd-pagination--inverted-border - The border color for current item when inverted.
  */
 
 .sd-pagination {
@@ -55,7 +57,7 @@
           @apply w-full h-full border-b-2 border-b-transparent;
 
           &[aria-current] {
-            @apply border-b-accent;
+            @apply sd-pagination--default-border;
           }
         }
       }
@@ -187,7 +189,7 @@
   &--simple {
     ul {
       li:nth-child(2) {
-        @apply relative w-8 border-b-2 border-b-accent me-5 after:content-['/'] after:absolute after:-right-[18px] after:scale-y-[1.5];
+        @apply relative w-8 border-b-2 sd-pagination--default-border me-5 after:content-['/'] after:absolute after:-right-[18px] after:scale-y-[1.5];
 
         border-bottom-style: solid;
       }
@@ -219,10 +221,23 @@
           @apply outline-white;
         }
       }
+
+      &:not(:first-child):not(:last-child) {
+        a,
+        button {
+          &[aria-current] {
+            @apply sd-pagination--inverted-border;
+          }
+        }
+      }
     }
 
     &.sd-pagination--simple ul li {
       @apply text-white after:text-white;
+
+      &:nth-child(2) {
+        @apply sd-pagination--inverted-border;
+      }
     }
   }
 }

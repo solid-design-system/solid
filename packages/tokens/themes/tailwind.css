@@ -64,7 +64,9 @@
   --border-width-4: var(--sd-border-width-4);
   --border-width-6: var(--sd-border-width-6);
   --border-width-default: var(--sd-border-width);
+  --drop-shadow-listbox: var(--sd-drop-shadow-listbox);
   --drop-shadow-sm: var(--sd-drop-shadow-sm);
+  --drop-shadow-xs: var(--sd-drop-shadow-xs);
   --drop-shadow: var(--sd-drop-shadow);
   --fill-accent-550: rgba(var(--sd-color-icon-fill-accent-550));
   --fill-accent: rgba(var(--sd-color-icon-fill-accent));
@@ -112,8 +114,11 @@
   --radius-md: var(--sd-radius-md);
   --radius-none: var(--sd-radius-none);
   --radius-sm: var(--sd-radius-sm);
+  --shadow-listbox: var(--sd-shadow-listbox);
   --shadow-sm: var(--sd-shadow-sm);
+  --shadow-xs: var(--sd-shadow-xs);
   --shadow: var(--sd-shadow);
+  --sizing-0: var(--sd-sizing-0);
   --sizing-0\.25: var(--sd-sizing-0\.25);
   --sizing-0\.5: var(--sd-sizing-0\.5);
   --sizing-10: var(--sd-sizing-10);
@@ -141,6 +146,7 @@
   --spacing-20: var(--sd-spacing-20);
   --spacing-24: var(--sd-spacing-24);
   --spacing-2: var(--sd-spacing-2);
+  --spacing-2\.5: var(--sd-spacing-2\.5);
   --spacing-32: var(--sd-spacing-32);
   --spacing-3: var(--sd-spacing-3);
   --spacing-40: var(--sd-spacing-40);
