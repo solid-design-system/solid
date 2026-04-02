@@ -3,7 +3,6 @@ import { createHtmlReport } from 'axe-html-reporter';
 import { injectAxe, getViolations, configureAxe } from 'axe-playwright';
 import assert from 'assert';
 import pc from 'picocolors';
-import { themes } from './modes.js';
 
 /*
  * See https://storybook.js.org/docs/writing-tests/test-runner#test-hook-api
@@ -21,16 +20,6 @@ const config: TestRunnerConfig = {
     await new Promise(resolve => setTimeout(resolve, 200));
 
     const story = await getStoryContext(page, context);
-    const ignoredThemes = story.parameters?.a11y?.config?.ignoreThemeList as string[] | undefined;
-    const currentThemeClass = await page.evaluate(() => {
-      const el = document.querySelector('.sb-show-main') ?? document.body;
-      return Array.from(el.classList).find(cls => cls.startsWith('sd-theme-'));
-    });
-    const currentTheme = themes.find(theme => theme.id === currentThemeClass);
-
-    if (ignoredThemes?.includes(currentTheme?.name || '')) {
-      throw new Error(`SKIP Theme "${currentTheme?.name}" ignored for a11y tests`);
-    }
 
     const ignoredRules =
       story.parameters?.a11y?.config?.rules
