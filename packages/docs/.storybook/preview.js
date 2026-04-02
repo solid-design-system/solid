@@ -17,25 +17,19 @@ const theme = withThemeByClassName({
   }, {})
 });
 
-const withA11yGuard = (StoryFn, context) => {
-  const ignoredThemes = context.parameters?.a11y?.config?.ignoreThemeList;
+const withA11yThemeGuard = (Story, context) => {
+  const ignoreThemeList = context.parameters?.a11y?.config?.ignoreThemeList;
   const currentTheme = context.globals?.theme;
 
-  const isIgnored = ignoredThemes?.includes(currentTheme);
-
-  if (isIgnored) {
-    // Add tag so the test runner skips this story entirely
-    context.tags = [...(context.tags || []), 'skip-playwright'];
-
-    // Hide the story in Storybook UI (optional)
-    return html`<div style="display: none">${StoryFn()}</div>`;
+  if (ignoreThemeList?.includes(currentTheme)) {
+    return html`<div style="display: none">${Story()}</div>`;
   }
 
-  return StoryFn();
+  return Story();
 };
 
 export const preview = {
-  decorators: [theme, withA11yGuard],
+  decorators: [theme, withA11yThemeGuard],
   parameters: {
     chromatic: {
       disableSnapshot: true,

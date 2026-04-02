@@ -12,7 +12,16 @@ const config: TestRunnerConfig = {
   tags: {
     exclude: ['skip-playwright']
   },
-  async preVisit(page) {
+  async preVisit(page, context) {
+    const story = await getStoryContext(page, context);
+    const ignored = story.parameters?.a11y?.config?.ignoreThemeList;
+    const currentTheme = context.globals?.theme;
+
+    if (ignored?.includes(currentTheme)) {
+      context.tags = [...(context.tags || []), 'skip-playwright'];
+      return;
+    }
+
     await injectAxe(page);
   },
   async postVisit(page, context) {
