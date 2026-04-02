@@ -25,6 +25,12 @@ function getShapeCombinations(arr: string[]) {
 
 const shapes = getShapeCombinations(JSON.parse(argTypes['shapes'].defaultValue.replace(/'/g, '"')));
 
+/**
+ *
+ * <sd-notification variant="info" open class="mb-4">Please notice that this component is only available for themes UI Light and UI Dark</sd-notification>
+ *
+ */
+
 export default {
   title: 'Components/sd-brandshape',
   tags: ['!dev', 'autodocs'],
@@ -55,7 +61,21 @@ export default {
       ...argTypes['shapes'],
       options: shapes
     }
-  }
+  },
+  decorators: [
+    (story: () => typeof html) => html`
+      <style>
+        body:not(:has(.sd-theme-ui-light, .sd-theme-ui-dark)) .slot {
+          display: none;
+        }
+
+        body:not(:has(.sd-theme-ui-light, .sd-theme-ui-dark)) .inverted-wrapper {
+          background-color: white !important;
+        }
+      </style>
+      ${story()}
+    `
+  ]
 };
 
 export const Default = {
@@ -98,7 +118,7 @@ export const Variant = {
         <img slot="image" src="./placeholders/images/generic.jpg" alt="" />
       </sd-brandshape>
 
-      <div class="bg-primary">
+      <div class="bg-primary inverted-wrapper">
         <sd-brandshape variant="white">
           <div class="slot slot--border slot--text h-8 w-full">Default slot</div>
         </sd-brandshape>

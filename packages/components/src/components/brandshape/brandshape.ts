@@ -148,9 +148,9 @@ export default class SdBrandshape extends SolidElement {
           part="shape-middle"
           class=${cx(
             {
-              'neutral-100': 'bg-neutral-100',
-              primary: 'bg-primary',
-              white: 'bg-white',
+              'neutral-100': 'sd-brandshape--neutral-100-color-background',
+              primary: 'sd-brandshape--primary-color-background',
+              white: 'sd-brandshape--white-color-background',
               'border-white': 'bg-transparent',
               'border-primary': 'bg-transparent',
               'primary|80': 'bg-primary/80',
@@ -180,9 +180,9 @@ export default class SdBrandshape extends SolidElement {
     return html` <div
       class=${cx(
         {
-          'neutral-100': 'bg-neutral-100',
-          primary: 'bg-primary',
-          white: 'bg-white',
+          'neutral-100': 'sd-brandshape--neutral-100-color-background',
+          primary: 'sd-brandshape--primary-color-background',
+          white: 'sd-brandshape--white-color-background',
           'border-white': 'bg-transparent',
           'border-primary': 'bg-transparent',
           'primary|80': 'bg-primary/80',
@@ -298,11 +298,11 @@ export default class SdBrandshape extends SolidElement {
       /* Stylized border */
 
       :host([variant='border-primary']) {
-        --internal-border-color: rgba(var(--sd-color-border-primary, rgba(var(--sd-color-primary))));
+        --internal-border-color: rgba(var(--sd-brandshape--primary-color-border, rgba(var(--sd-color-primary))));
       }
 
       :host([variant='border-white']) {
-        --internal-border-color: rgba(var(--sd-color-border-white, rgba(var(--sd-color-white))));
+        --internal-border-color: rgba(var(--sd-brandshape-color-border-white, rgba(var(--sd-color-white))));
       }
 
       :host([variant^='border-']) [part='stylized-container']::before {
@@ -322,11 +322,11 @@ export default class SdBrandshape extends SolidElement {
       }
 
       :host([variant='white']) [part='base'] {
-        fill: rgba(var(--sd-color-background-white, rgba(var(--sd-color-white))));
+        fill: rgba(var(--sd-brandshape--white-color-background, rgba(var(--sd-color-white))));
       }
 
       :host([variant='primary']) [part='base'] {
-        fill: rgba(var(--sd-color-background-primary, rgba(var(--sd-color-primary))));
+        fill: rgba(var(--sd-brandshape--primary-color-background, rgba(var(--sd-color-primary))));
       }
 
       :host([variant='primary|80']) [part='base'] {
