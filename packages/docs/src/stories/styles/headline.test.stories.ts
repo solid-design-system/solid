@@ -197,8 +197,8 @@ export const Samples = {
         div:not(:first-of-type).headline {
           margin-top: 72px;
         }
-        .sd-theme-kid .sd-headline--inverted .sd-mark {
-          color: var(--sd-color-white);
+        .sd-theme-kid .sd-mark {
+          color: currentColor;
         }
       </style>
       <div class="story-wrapper">

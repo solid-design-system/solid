@@ -141,22 +141,12 @@ export const Gradient = {
   render: () => html`
     <div>
       <style>
-        .neutral-100,
-        .sd-theme-kid .neutral-100,
-        .sd-theme-kid .primary-100 {
-          --gradient-color-start: transparent;
-          --gradient-color-end: rgba(var(--sd-color-neutral-100));
+        .neutral-100 {
+          --gradient-color-end: rgba(var(--sd-color-background-neutral-100));
         }
 
         .primary-100 {
-          --gradient-color-start: transparent;
-          --gradient-color-end: rgba(var(--sd-color-primary-100));
-        }
-
-        .sd-theme-ui-dark .neutral-100,
-        .sd-theme-ui-dark .primary-100 {
-          --gradient-color-start: transparent;
-          --gradient-color-end: rgba(var(--sd-color-primary-750));
+          --gradient-color-end: rgba(var(--sd-color-background-primary-100));
         }
       </style>
       <div class="flex flex-col gap-4">
