@@ -613,9 +613,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
 
   private handleComboboxKeyDown(event: KeyboardEvent) {
     if (event.key === 'Tab') {
+      this.displayInputValue = '';
+      this.displayInput.value = '';
       return;
     }
-
     this.handleDocumentKeyDown(event);
   }
 

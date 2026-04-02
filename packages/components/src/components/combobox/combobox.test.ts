@@ -1375,4 +1375,32 @@ describe('<sd-combobox>', () => {
 
     expect(tags.textContent).to.equal('4 Optionen ausgewählt');
   });
+
+  it('should clear the input field when pressing Tab key', async () => {
+    const el = await fixture<SdCombobox>(html`
+      <sd-combobox>
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+        <sd-option value="option-3">Option 3</sd-option>
+      </sd-combobox>
+    `);
+
+    const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="display-input"]')!;
+
+    // Set initial values to simulate user input
+    el.displayInputValue = 'test value';
+    input.value = 'test value';
+    await el.updateComplete;
+
+    // Focus the input before sending keys
+    input.focus();
+
+    // Send the Tab key press event
+    await sendKeys({ press: 'Tab' });
+    await el.updateComplete;
+
+    // Expect the internal state and input value to be cleared
+    expect(el.displayInputValue).to.equal('');
+    expect(input.value).to.equal('');
+  });
 });
