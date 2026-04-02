@@ -22,17 +22,7 @@ export default {
   tags: ['!autodocs'],
   parameters: {
     ...parameters,
-    controls: { disable: true },
-    a11y: {
-      config: {
-        rules: [
-          {
-            id: 'color-contrast',
-            enabled: false
-          }
-        ]
-      }
-    }
+    controls: { disable: true }
   },
   args: overrideArgs([
     {
@@ -54,7 +44,17 @@ export default {
       ...argTypes['shapes-attr'],
       control: 'text'
     }
-  }
+  },
+  decorators: [
+    (story: () => typeof html) => html`
+      <style>
+        .sb-show-main:not(.sd-theme-ui-light):not(.sd-theme-ui-dark) .slot {
+          display: none;
+        }
+      </style>
+      ${story()}
+    `
+  ]
 };
 
 const increaseColumnWidth = (): ConstantDefinition => {
