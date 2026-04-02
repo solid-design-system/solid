@@ -21,12 +21,6 @@ const config: TestRunnerConfig = {
 
     const story = await getStoryContext(page, context);
 
-    const ignored = story.parameters?.a11y?.config?.ignoreThemeList;
-    const currentTheme = context.globals?.theme;
-    if (ignored?.includes(currentTheme)) {
-      return;
-    }
-
     const ignoredRules =
       story.parameters?.a11y?.config?.rules
         ?.filter(rule => rule.enabled === false)

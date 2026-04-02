@@ -25,7 +25,12 @@ export default {
     controls: { disable: true },
     a11y: {
       config: {
-        ignoreThemeList: ['VB Ultra', 'Kid Starter']
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: false
+          }
+        ]
       }
     }
   },

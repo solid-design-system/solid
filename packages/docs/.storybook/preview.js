@@ -17,19 +17,8 @@ const theme = withThemeByClassName({
   }, {})
 });
 
-const withA11yThemeGuard = (Story, context) => {
-  const ignoreThemeList = context.parameters?.a11y?.config?.ignoreThemeList;
-  const currentTheme = context.globals?.theme;
-
-  if (ignoreThemeList?.includes(currentTheme)) {
-    return html`<div style="display: none">${Story()}</div>`;
-  }
-
-  return Story();
-};
-
 export const preview = {
-  decorators: [theme, withA11yThemeGuard],
+  decorators: [theme],
   parameters: {
     chromatic: {
       disableSnapshot: true,
