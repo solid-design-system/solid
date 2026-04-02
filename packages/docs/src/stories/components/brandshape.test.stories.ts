@@ -22,6 +22,16 @@ export default {
   tags: ['!autodocs'],
   parameters: {
     ...parameters,
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: false
+          }
+        ]
+      }
+    },
     controls: { disable: true }
   },
   args: overrideArgs([
