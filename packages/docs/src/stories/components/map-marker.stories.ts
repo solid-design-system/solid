@@ -41,7 +41,7 @@ export const Variant = {
         <span class="sr-only">Pinned Location</span>
       </sd-map-marker>
       <sd-map-marker variant="place">
-        <sd-icon name="content/image" color="currentColor"></sd-icon>
+        <sd-icon name="content/image" color="primary"></sd-icon>
         <span class="sr-only">Pinned Place</span>
       </sd-map-marker>
       <sd-map-marker variant="cluster">
@@ -76,15 +76,15 @@ export const State = {
 
       <div class="flex flex-col space-y-5">
         <sd-map-marker state="default" variant="place">
-          <sd-icon name="content/image" color="currentColor"></sd-icon>
+          <sd-icon name="content/image" color="primary"></sd-icon>
           <span class="sr-only">Pinned place with default state</span>
         </sd-map-marker>
         <sd-map-marker state="hover" variant="place">
-          <sd-icon name="content/image" color="currentColor"></sd-icon>
+          <sd-icon name="content/image" color="primary"></sd-icon>
           <span class="sr-only">Pinned place with hover state</span>
         </sd-map-marker>
         <sd-map-marker state="active" variant="place">
-          <sd-icon name="content/image" color="currentColor"></sd-icon>
+          <sd-icon name="content/image" color="primary"></sd-icon>
           <span class="sr-only">Pinned place with active state</span>
         </sd-map-marker>
       </div>
@@ -146,7 +146,7 @@ export const NotInteractive = {
     <div class="flex items-center gap-12">
       <sd-map-marker not-interactive></sd-map-marker>
       <sd-map-marker variant="place" not-interactive>
-        <sd-icon name="content/image" color="currentColor"></sd-icon>
+        <sd-icon name="content/image" color="primary"></sd-icon>
       </sd-map-marker>
       <sd-map-marker variant="cluster" not-interactive> 88 </sd-map-marker>
     </div>

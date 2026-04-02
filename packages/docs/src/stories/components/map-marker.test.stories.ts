@@ -112,7 +112,7 @@ export const VariantPlace = {
         {
           type: 'slot',
           name: 'default',
-          value: '<sd-icon name="content/image" color="currentColor"></sd-icon>'
+          value: '<sd-icon name="content/image" color="primary"></sd-icon>'
         },
         {
           type: 'attribute',
@@ -134,7 +134,7 @@ export const Slots = {
       <div class="flex gap-4 items-center">
         <sd-map-marker variant="place" label="Label">
           <span class="slot slot--border slot--background">
-            <sd-icon name="content/image" color="currentColor"></sd-icon>
+            <sd-icon name="content/image" color="primary"></sd-icon>
           </span>
         </sd-map-marker>
         <sd-map-marker variant="place" label="Label">
@@ -177,7 +177,7 @@ export const Scale = {
         {
           type: 'slot',
           name: 'default',
-          value: '<sd-icon name="content/image" color="currentColor"></sd-icon>'
+          value: '<sd-icon name="content/image" color="primary"></sd-icon>'
         },
         {
           type: 'attribute',
