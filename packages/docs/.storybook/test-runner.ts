@@ -12,16 +12,7 @@ const config: TestRunnerConfig = {
   tags: {
     exclude: ['skip-playwright']
   },
-  async preVisit(page, context) {
-    const story = await getStoryContext(page, context);
-    const ignored = story.parameters?.a11y?.config?.ignoreThemeList;
-    const currentTheme = context.globals?.theme;
-
-    if (ignored?.includes(currentTheme)) {
-      context.tags = [...(context.tags || []), 'skip-playwright'];
-      return;
-    }
-
+  async preVisit(page) {
     await injectAxe(page);
   },
   async postVisit(page, context) {
@@ -29,6 +20,12 @@ const config: TestRunnerConfig = {
     await new Promise(resolve => setTimeout(resolve, 200));
 
     const story = await getStoryContext(page, context);
+
+    const ignored = story.parameters?.a11y?.config?.ignoreThemeList;
+    const currentTheme = context.globals?.theme;
+    if (ignored?.includes(currentTheme)) {
+      return;
+    }
 
     const ignoredRules =
       story.parameters?.a11y?.config?.rules
