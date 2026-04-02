@@ -43,7 +43,3 @@
   border-width: var(--sd-chip-border-width);
   font-weight: var(--sd-chip-font-weight);
 }
-
-.sd-theme-kid .sd-chip {
-  box-shadow: var(--sd-shadow-sm);
-}

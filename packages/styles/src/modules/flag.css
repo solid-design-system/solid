@@ -38,7 +38,3 @@
   /* TODO clean this up and add the class marker-border-width (breaking change) */
   border-width: var(--sd-flag-border-width);
 }
-
-.sd-theme-kid .sd-flag {
-  box-shadow: var(--sd-shadow-sm);
-}
