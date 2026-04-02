@@ -17,7 +17,7 @@
  * @cssproperty --sd-marker-border-width - The border width for flags.
  * @cssproperty --sd-marker-font-weight - The font weight for flags.
  * @cssproperty --sd-marker-font-size - The font size for flags.
- * @cssproperty --sd-flag-border-width - This variable is deprecated please use --sd-marker-border-width.
+ * @cssproperty --sd-flag-border-width - This custom property is deprecated. Use `--sd-marker-border-width` instead.
  */
 
 .sd-flag {

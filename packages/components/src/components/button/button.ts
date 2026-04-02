@@ -94,9 +94,9 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @cssproperty --sd-button-border-width - The border width for secondary buttons with borders.
  * @cssproperty --sd-button-font-weight - The text font weight for buttons.
  * @cssproperty --sd-button-padding-inline - The horizontal padding for buttons.
- * @cssproperty --sd-button--size-sm-border-radius - This variable is deprecated please use --sd-button-border-radius.
- * @cssproperty --sd-button--size-md-border-radius - This variable is deprecated please use --sd-button-border-radius.
- * @cssproperty --sd-button--size-lg-border-radius - This variable is deprecated please use --sd-button-border-radius.
+ * @cssproperty --sd-button--size-sm-border-radius - This custom property is deprecated. Use `--sd-button-border-radius` instead.
+ * @cssproperty --sd-button--size-md-border-radius - This custom property is deprecated. Use `--sd-button-border-radius` instead.
+ * @cssproperty --sd-button--size-lg-border-radius - This custom property is deprecated. Use `--sd-button-border-radius` instead.
  */
 @customElement('sd-button')
 export default class SdButton extends SolidElement implements SolidFormControl {

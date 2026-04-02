@@ -27,7 +27,7 @@ import SolidElement from '../../internal/solid-element';
  *
  * @cssproperty --sd-form-control-color-border - The border color of checkboxes for the non-disabled options.
  * @cssproperty --sd-checkbox-border-width - The border width of the checkboxes.
- * @cssproperty --sd-option--disabled-color-border - This variable is deprecated please use --sd-color-border-neutral-500.
+ * @cssproperty --sd-option--disabled-color-border - This custom property is deprecated. Use `--sd-color-border-neutral-500` instead.
  */
 @customElement('sd-option')
 export default class SdOption extends SolidElement {

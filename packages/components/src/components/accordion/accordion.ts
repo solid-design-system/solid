@@ -45,7 +45,7 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-accordion-padding-block - The accordion vertical padding value.
  * @cssproperty --sd-accordion__indicator-color - The accordion indicator color.
  * @cssproperty --sd-accordion-color-icon-fill - The accordion icon color.
- * @cssproperty --sd-accordion__chevron-color-text - This variable is deprecated please use --sd-accordion-color-icon-fill.
+ * @cssproperty --sd-accordion__chevron-color-text - This custom property is deprecated. Use `--sd-accordion-color-icon-fill`instead.
  */
 @customElement('sd-accordion')
 export default class SdAccordion extends SolidElement {

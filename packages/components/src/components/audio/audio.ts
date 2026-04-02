@@ -44,7 +44,7 @@ import type SdRange from '../range/range';
  *
  * @cssproperty --sd-audio__slide-bar--inverted-color-background - The background color for the progress slider when the component is inverted.
  * @cssproperty --sd-audio__track-bar--inverted-color-background - The background color for the active part of the progress slider when the component is inverted.
- * @cssproperty --sd-audio__timestamp-color-text - This variable is deprecated please use --sd-color-text-neutral-700.
+ * @cssproperty --sd-audio__timestamp-color-text - This custom property is deprecated. Use `--sd-color-text-neutral-700` instead.
  */
 @customElement('sd-audio')
 export default class SdAudio extends SolidElement {

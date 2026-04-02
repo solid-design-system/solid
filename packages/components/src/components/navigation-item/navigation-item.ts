@@ -38,7 +38,7 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-navigable__current-indicator-border-radius - The navigation-item current indicator border radius value.
  * @cssproperty --sd-navigable__current-indicator-height - The horizontal navigation-item current indicator height.
  * @cssproperty --sd-navigable__current-indicator-width - The vertical navigation-item current indicator width.
- * @cssproperty --sd-navigation-item--current-color-text - This variable is deprecated please use --sd-navigation-item-color-text.
+ * @cssproperty --sd-navigation-item--current-color-text - This custom property is deprecated. Use `--sd-navigation-item-color-text` instead.
  *
  */
 @customElement('sd-navigation-item')

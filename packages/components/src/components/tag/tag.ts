@@ -47,8 +47,8 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-tag--size-sm-font-size - The font size for small tags.
  * @cssproperty --sd-choice-control-font-weight - The font weight for tags.
  * @cssproperty --sd-tag--disabled-color-text - The text color for disabled tags.
- * @cssproperty --sd-tag--disabled-color-border - This variable is deprecated please use --sd-color-border-neutral-500.
- * @cssproperty --sd-tag-font-weight - This variable is deprecated please use --sd-choice-control-font-weight.
+ * @cssproperty --sd-tag--disabled-color-border - This custom property is deprecated. Use `--sd-color-border-neutral-500` instead.
+ * @cssproperty --sd-tag-font-weight - This custom property is deprecated. Use `--sd-choice-control-font-weight` instead.
  */
 @customElement('sd-tag')
 export default class SdTag extends SolidElement {
