@@ -7,7 +7,6 @@ import { withThemeByClassName } from './addons/with-theme.js';
 import { storybookUtilities } from '../scripts/storybook/helper.js';
 import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer.js';
 import { themes, allModes, DEFAULT_THEME } from './modes.js';
-import { html } from 'lit-html';
 
 const theme = withThemeByClassName({
   defaultTheme: DEFAULT_THEME,
