@@ -1,5 +1,15 @@
 # @solid-design-system/docs
 
+## 2.8.0
+
+### Minor Changes
+
+- Extended `sd-brandshape` with new transparent variants to be used on image backgrounds: _[`#2874`](https://github.com/solid-design-system/solid/pull/2874) [`80fa069`](https://github.com/solid-design-system/solid/commit/80fa0693fea2956922d000c83b29be9d191eb961) [@smfonseca](https://github.com/smfonseca)_
+  - `primary|80`
+  - `white|80`
+
+  Added new templates showcasing usage of transparent variant `primary|80` and variant `image` together with `sd-copyright`.
+
 ## 2.7.0
 
 ### Minor Changes
