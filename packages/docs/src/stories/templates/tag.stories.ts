@@ -15,91 +15,136 @@ export default {
 
 export const filterTagGroup = {
   render: () => html`
-    <sd-tag toggleable selected>All</sd-tag>
-    <sd-tag toggleable>Extended Reality</sd-tag>
-    <sd-tag toggleable>Internet of things</sd-tag>
+    <div>
+      <p class="sd-paragraph sd-paragraph--size-lg font-bold mb-4">26 Results</p>
+      <div class="flex gap-4">
+        <sd-tag toggleable selected>All (26)</sd-tag>
+        <sd-tag toggleable>Funds (16)</sd-tag>
+        <sd-tag toggleable>Sustainability (5)</sd-tag>
+        <sd-tag toggleable>Retirement planing (2)</sd-tag>
+        <sd-tag toggleable>Documents (3)</sd-tag>
+      </div>
+    </div>
   `
 };
 
 export const filterTagGroupMorningstarRating = {
   name: 'Filter Tag Group with Morningstar Rating',
   render: () => html`
-    <sd-tag toggleable selected>
-      <label class="sr-only">5 stars</label>
-      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-    </sd-tag>
-    <sd-tag toggleable>
-      <label class="sr-only">4 stars</label>
-      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-    </sd-tag>
-    <sd-tag toggleable>
-      <label class="sr-only">3 stars</label>
-      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-    </sd-tag>
-    <sd-tag toggleable>
-      <label class="sr-only">2 stars</label>
-      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-    </sd-tag>
-    <sd-tag toggleable>
-      <label class="sr-only">1 star</label>
-      <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
-    </sd-tag>
+    <div>
+      <p class="sd-paragraph sd-paragraph--size-lg font-bold mb-4">
+        Find Top-Rated Investments with Morningstar Ratings:
+      </p>
+      <div class="flex gap-2">
+        <sd-tag toggleable selected>
+          <label class="sr-only">5 stars</label>
+          <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+          <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+          <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+          <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+          <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+        </sd-tag>
+        <sd-tag toggleable>
+          <label class="sr-only">4 stars</label>
+          <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+          <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+          <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+          <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+        </sd-tag>
+        <sd-tag toggleable>
+          <label class="sr-only">3 stars</label>
+          <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+          <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+          <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+        </sd-tag>
+        <sd-tag toggleable>
+          <label class="sr-only">2 stars</label>
+          <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+          <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+        </sd-tag>
+        <sd-tag toggleable>
+          <label class="sr-only">1 star</label>
+          <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
+        </sd-tag>
+      </div>
+    </div>
   `
 };
 
 export const filterTagGroupRisk = {
   name: 'Filter Tag Group with Risk',
-  render: () =>
-    html`<sd-tag toggleable selected>
-        <div class="h-4 w-4 bg-risk-veryhigh border-primary-800 border-[1px]"></div>
-        Very High Risk
-      </sd-tag>
-      <sd-tag toggleable>
-        <div class="h-4 w-4 bg-risk-high border-primary-800 border-[1px]"></div>
-        High Risk
-      </sd-tag>
-      <sd-tag toggleable>
-        <div class="h-4 w-4 bg-risk-increased border-primary-800 border-[1px]"></div>
-        Increased Risk
-      </sd-tag>
-      <sd-tag toggleable>
-        <div class="h-4 w-4 bg-risk-moderate border-primary-800 border-[1px]"></div>
-        Moderated Risk
-      </sd-tag>
-      <sd-tag toggleable>
-        <div class="h-4 w-4 bg-risk-low border-primary-800 border-[1px]"></div>
-        Low Risk
-      </sd-tag>`
+  render: () => html`
+    <div>
+      <p class="sd-paragraph sd-paragraph--size-lg font-bold mb-4">Risk level:</p>
+      <div class="flex gap-2">
+        <sd-tag toggleable selected>
+          <div
+            class="h-4 w-4 border-primary-800 border-[1px]"
+            style="background-color: var(--fill-risk-veryhigh);"
+          ></div>
+          Very High Risk
+        </sd-tag>
+
+        <sd-tag toggleable>
+          <div class="h-4 w-4 border-primary-800 border-[1px]" style="background-color: var(--fill-risk-high);"></div>
+          High Risk
+        </sd-tag>
+
+        <sd-tag toggleable>
+          <div
+            class="h-4 w-4 border-primary-800 border-[1px]"
+            style="background-color: var(--fill-risk-increased);"
+          ></div>
+          Increased Risk
+        </sd-tag>
+
+        <sd-tag toggleable>
+          <div
+            class="h-4 w-4 border-primary-800 border-[1px]"
+            style="background-color: var(--fill-risk-moderate);"
+          ></div>
+          Moderated Risk
+        </sd-tag>
+
+        <sd-tag toggleable>
+          <div class="h-4 w-4 border-primary-800 border-[1px]" style="background-color: var(--fill-risk-low);"></div>
+          Low Risk
+        </sd-tag>
+      </div>
+    </div>
+  `
 };
 
 export const removableFilterTagGroup = {
   render: () => html`
-    <div id="removable-tag-filters">
-      <sd-tag removable>Filter 1</sd-tag>
-      <sd-tag removable>Filter 2</sd-tag>
-      <sd-tag removable>Filter 3</sd-tag>
-      <sd-tag removable>Filter 4</sd-tag>
+    <div>
+      <p class="sd-paragraph sd-paragraph--size-lg font-bold mb-4">Active filters:</p>
+
+      <div id="removable-tag-filters" class="flex gap-2">
+        <sd-tag removable>Stocks</sd-tag>
+        <sd-tag removable>Bonds</sd-tag>
+        <sd-tag removable>Mutual funds</sd-tag>
+        <sd-tag removable>ETFs</sd-tag>
+
+        <sd-link id="remove-filters-link" href="#">
+          <sd-icon name="system/trash" slot="icon-left"></sd-icon>
+          Remove filters
+        </sd-link>
+      </div>
     </div>
+
     <script type="module">
       const filters = document.querySelector('#removable-tag-filters');
+      const removeFiltersLink = document.querySelector('#remove-filters-link');
 
-      filters.querySelectorAll('sd-tag').forEach(tag => tag.addEventListener('sd-remove', () => tag.hide()));
-      filters.addEventListener('sd-after-hide', event => {
+      filters.querySelectorAll('sd-tag').forEach(tag => {
+        tag.addEventListener('sd-remove', () => tag.hide());
+      });
+
+      filters.addEventListener('sd-after-hide', () => {
         const tags = Array.from(filters.querySelectorAll('sd-tag'));
 
-        if (tags.some(tag => !tag.hidden)) {
-          return;
-        }
+        if (tags.some(tag => !tag.hidden)) return;
 
         setTimeout(() => {
           tags.forEach(tag => {
@@ -108,6 +153,12 @@ export const removableFilterTagGroup = {
           });
         }, 1000);
       });
+
+      removeFiltersLink.addEventListener('click', event => {
+        event.preventDefault();
+        const tags = filters.querySelectorAll('sd-tag');
+        tags.forEach(tag => tag.hide());
+      });
     </script>
   `
 };
@@ -115,9 +166,15 @@ export const removableFilterTagGroup = {
 export const tagGroupLinks = {
   name: 'Tag Group with Links',
   render: () => html`
-    <sd-tag href="#" target="_blank">Topic 1</sd-tag>
-    <sd-tag href="#" target="_blank">Topic 2</sd-tag>
-    <sd-tag href="#" target="_blank">Topic 3</sd-tag>
+    <div>
+      <p class="sd-paragraph sd-paragraph--size-lg font-bold mb-4">Additional topics:</p>
+      <div class="gap-2 inline-flex flex-col">
+        <sd-tag href="#" target="_blank">Commercial real estate</sd-tag>
+        <sd-tag href="#" target="_blank">Savings plan rate</sd-tag>
+        <sd-tag href="#" target="_blank">Open-ended real estate funds</sd-tag>
+        <sd-tag href="#" target="_blank">Retirement planning</sd-tag>
+      </div>
+    </div>
   `
 };
 
