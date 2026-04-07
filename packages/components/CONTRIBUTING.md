@@ -92,7 +92,7 @@ We rely a lot on inline docs to communicate to the library users (developers). W
 - `@slot` decorators appear in the Storybook "SLOTS" section
 - `@csspart` decorators appear in the Storybook "CSS SHADOW PARTS" section
 - `@dependency` decorators appear in the Storybook "PROPERTIES" section under "dependencies".
-- `@state` decorators appear in the Storybook "PROPERTIES" section. These should generally be be marked with the JSDoc annotation `/** @internal */` so they do not appear in the docs.
+- `@state` decorators appear in the Storybook "PROPERTIES" section. These should generally be marked with the JSDoc annotation `/** @internal */` so they do not appear in the docs.
 - `@event` decorators appear in the Storybook "EVENTS" section
 
 ## Testing
