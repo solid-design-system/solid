@@ -613,12 +613,23 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     });
   }
 
-  private handleComboboxKeyDown(event: KeyboardEvent) {
+  private async handleComboboxKeyDown(event: KeyboardEvent) {
     if (event.key === 'Tab') {
       this.displayInputValue = '';
       this.displayInput.value = '';
+      if (this.open && this.shadowRoot?.activeElement === this.displayInput) {
+        event.preventDefault();
+
+        this.open = false;
+        await this.updateComplete;
+
+        this.displayInput.focus();
+
+        return;
+      }
       return;
     }
+
     this.handleDocumentKeyDown(event);
   }
 
@@ -1490,6 +1501,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                   `
                 : html`
                     <button
+                      tabindex="-1"
+                      aria-hidden="true"
                       class="sd-interactive combobox-button absolute top-2"
                       @keydown=${this.handleComboboxMouseDown}
                       type="button"
