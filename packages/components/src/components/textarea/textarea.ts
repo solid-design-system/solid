@@ -399,7 +399,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                   id="label"
                   part="form-control-floating-label"
                   class=${cx(
-                    'absolute left-4 z-20 pointer-events-none transition-all duration-200',
+                    'absolute left-4 z-20 transition-all duration-200 cursor-text',
                     textSize,
                     !isFloatingLabelActive ? 'top-2.5' : 'top-2 text-xs'
                   )}
