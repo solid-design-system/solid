@@ -82,12 +82,12 @@ export const filterTagGroupRisk = {
             class="h-4 w-4 border-primary-800 border-[1px]"
             style="background-color: var(--fill-risk-veryhigh);"
           ></div>
-          Very High Risk
+          Very High
         </sd-tag>
 
         <sd-tag toggleable>
           <div class="h-4 w-4 border-primary-800 border-[1px]" style="background-color: var(--fill-risk-high);"></div>
-          High Risk
+          High
         </sd-tag>
 
         <sd-tag toggleable>
@@ -95,7 +95,7 @@ export const filterTagGroupRisk = {
             class="h-4 w-4 border-primary-800 border-[1px]"
             style="background-color: var(--fill-risk-increased);"
           ></div>
-          Increased Risk
+          Increased
         </sd-tag>
 
         <sd-tag toggleable>
@@ -103,12 +103,12 @@ export const filterTagGroupRisk = {
             class="h-4 w-4 border-primary-800 border-[1px]"
             style="background-color: var(--fill-risk-moderate);"
           ></div>
-          Moderated Risk
+          Moderate
         </sd-tag>
 
         <sd-tag toggleable>
           <div class="h-4 w-4 border-primary-800 border-[1px]" style="background-color: var(--fill-risk-low);"></div>
-          Low Risk
+          Low
         </sd-tag>
       </div>
     </div>
@@ -120,13 +120,12 @@ export const removableFilterTagGroup = {
     <div>
       <p class="sd-paragraph sd-paragraph--size-lg font-bold mb-4">Active filters:</p>
 
-      <div id="removable-tag-filters" class="flex gap-2">
+      <div id="removable-tag-filters" class="flex items-center gap-2 flex-nowrap">
         <sd-tag removable>Stocks</sd-tag>
         <sd-tag removable>Bonds</sd-tag>
         <sd-tag removable>Mutual funds</sd-tag>
         <sd-tag removable>ETFs</sd-tag>
-
-        <sd-link id="remove-filters-link" href="#">
+        <sd-link href="https://solid-design-system.fe.union-investment.de/docs/" class="ml-4" standalone>
           <sd-icon name="system/trash" slot="icon-left"></sd-icon>
           Remove filters
         </sd-link>
@@ -168,11 +167,11 @@ export const tagGroupLinks = {
   render: () => html`
     <div>
       <p class="sd-paragraph sd-paragraph--size-lg font-bold mb-4">Additional topics:</p>
-      <div class="gap-2 inline-flex flex-col">
-        <sd-tag href="#" target="_blank">Commercial real estate</sd-tag>
-        <sd-tag href="#" target="_blank">Savings plan rate</sd-tag>
-        <sd-tag href="#" target="_blank">Open-ended real estate funds</sd-tag>
-        <sd-tag href="#" target="_blank">Retirement planning</sd-tag>
+      <div class="gap-2 flex flex-col">
+        <sd-tag class="inline-flex w-auto" href="#" target="_blank">Commercial real estate</sd-tag>
+        <sd-tag class="inline-flex w-auto" href="#" target="_blank">Savings plan rate</sd-tag>
+        <sd-tag class="inline-flex w-auto" href="#" target="_blank">Open-ended real estate funds</sd-tag>
+        <sd-tag class="inline-flex w-auto" href="#" target="_blank">Retirement planning</sd-tag>
       </div>
     </div>
   `
