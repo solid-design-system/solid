@@ -342,3 +342,50 @@ That's it — you're ready to build. Head over to the <sd-link href="?path=/docs
 
   </sd-tab-panel>
 </sd-tab-group>
+
+## ⚠️ Upcoming breaking changes
+
+Breaking changes will be introduced in a future release (date to be announced).
+
+### CSS Variables
+
+Some CSS variables used for custom theming will be removed.
+
+- Deprecated variables are still functional for now
+- All deprecated variables are clearly marked in the documentation
+- Recommended replacements are already provided
+
+** 🔍 Where to find deprecated variables **: You can find this information directly on each component’s documentation page.
+
+Deprecated variables:
+
+- `--sd-button--size-lg-border-radius` replace with `--sd-button-border-radius`
+- `--sd-button--size-md-border-radius` replace with `--sd-button-border-radius`
+- `--sd-button--size-sm-border-radius` replace with `--sd-button-border-radius`
+- `--sd-button--secondary--inverted--color-border` replace with `--sd-button-secondary-inverted-color-border`
+- `--sd-chip-font-size` replace with `--sd-marker-font-size`
+- `--sd-chip-border-width` replace with `--sd-marker-border-width`
+- `--sd-chip-font-weight` replace with `--sd-marker-font-weight`
+- `--sd-flag-border-width` replace with `--sd-marker-border-width`
+- `--sd-form-control-color-icon` replace with `--sd-form-control-color-icon-fill`
+- `--sd-menu-color-icon` replace with `--sd-menu-item-color-icon-fill`
+- `--sd-menu-color-text` replace with `--sd-menu-item-color-text`
+- `--sd-menu--disabled-color-icon` replace with `--sd-menu-item--disabled-color-icon-fill`
+- `--sd-menu--disabled-color-text` replace with `--sd-menu-item--disabled-color-text`
+- `--sd-tag-font-weight` replace with `--sd-choice-control-font-weight`
+- `--sd-tag--disabled-color-border` replace with `--sd-color-border-neutral-500`
+- `--sd-navigation-item--current-color-text` replace with `--sd-navigation-item-color-text`
+- `--sd-option--disabled-color-border` replace with `--sd-color-border-neutral-500`
+- `--sd-audio__timestamp-color-text` replace with `--sd-color-text-neutral-700`
+- `--sd-accordion__chevron-color-text` replace with `--sd-accordion-color-icon-fill`
+
+---
+
+### Minimum dependency requirement
+
+Currently, any version of the **components** and **styles** packages is compatible with any version of the **tokens** package. In a future release:
+
+- A **minimum dependency requirement** will be introduced
+- The **tokens package version must be equal to or higher than** the components and styles versions
+
+We recommend reviewing your setup now to ensure that your tokens package is **aligned with (or ahead of)** your components and styles. This will help you avoid compatibility issues once the new requirement is enforced.
