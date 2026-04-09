@@ -1050,7 +1050,9 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
             <div
               class=${cx(
                 'relative w-full h-full grid rounded-default transition-colors hover:duration-fast ease-in-out',
-                this.visuallyDisabled || this.disabled ? 'hover:bg-transparent' : 'hover:bg-neutral-200',
+                this.visuallyDisabled || this.disabled
+                  ? 'hover:bg-transparent'
+                  : 'hover:[@media(hover:hover)]:bg-neutral-200',
                 ['invalid', 'activeInvalid'].includes(selectState) && 'form-control--invalid-color-background'
               )}
               slot="anchor"
