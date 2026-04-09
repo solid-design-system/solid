@@ -267,6 +267,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   @property() getTag: (option: SdOption, index: number) => TemplateResult | string | HTMLElement = option => {
     return html`
       <sd-tag
+        class="min-w-0 max-w-full"
         ?disabled=${this.disabled}
         part="tag"
         exportparts="
@@ -349,6 +350,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       return [
         html`
           <sd-tag
+            class="min-w-0 max-w-full"
             ?disabled=${this.disabled}
             part="tag"
             exportparts="
@@ -611,12 +613,23 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
     });
   }
 
-  private handleComboboxKeyDown(event: KeyboardEvent) {
+  private async handleComboboxKeyDown(event: KeyboardEvent) {
     if (event.key === 'Tab') {
       this.displayInputValue = '';
       this.displayInput.value = '';
+      if (this.open && this.shadowRoot?.activeElement === this.displayInput) {
+        event.preventDefault();
+
+        this.open = false;
+        await this.updateComplete;
+
+        this.displayInput.focus();
+
+        return;
+      }
       return;
     }
+
     this.handleDocumentKeyDown(event);
   }
 
@@ -1320,7 +1333,9 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               part="combobox"
               class=${cx(
                 'relative w-full px-4 flex flex-row items-center rounded-default transition-colors hover:duration-fast ease-in-out',
-                this.visuallyDisabled || this.disabled ? 'hover:bg-transparent' : 'hover:bg-neutral-200',
+                this.visuallyDisabled || this.disabled
+                  ? 'hover:bg-transparent'
+                  : 'hover:[@media(hover:hover)]:bg-neutral-200',
                 this.open && 'shadow transition-shadow duration-medium ease-in-out',
                 ['invalid', 'activeInvalid'].includes(selectState) && 'form-control--invalid-color-background',
                 {
@@ -1341,55 +1356,55 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                     class="${cx('inline-flex', iconMarginRight, iconColor, iconSize)}"
                   ></slot>`
                 : ''}
-              ${this.multiple && this.useTags && this.tags.length > 0
-                ? html`<div
-                    part="tags"
-                    class="${cx('flex items-center gap-1', iconMarginRight, this.floatingLabel && 'mt-4')}"
-                  >
-                    ${this.tags}
-                  </div>`
-                : null}
-              <input
-                id="display-input"
-                name=${this.name}
-                form=${this.form}
-                part="display-input"
-                class=${cx(
-                  'appearance-none outline-none bg-transparent flex-auto min-w-0',
-                  cursorStyles,
-                  this.selectedTextLabel && !this.multiple
-                    ? 'placeholder:form-control-color-text'
-                    : 'placeholder:text-neutral-700',
-                  this.size === 'sm' ? (isFloatingLabelActive ? 'h-4' : 'h-6') : isFloatingLabelActive ? 'h-6' : 'h-8',
-                  isFloatingLabelActive && 'leading-none mt-4'
-                )}
-                type="text"
-                placeholder=${!this.floatingLabel || isFloatingLabelActive
-                  ? this.selectedTextLabel && !this.multiple
-                    ? this.selectedTextLabel
-                    : this.placeholder || this.localize.term('comboboxDefaultPlaceholder')
-                  : ''}
-                .disabled=${this.disabled}
-                .value=${this.displayInputValue}
-                autocomplete="off"
-                spellcheck="false"
-                autocapitalize="off"
-                aria-controls="listbox"
-                aria-expanded=${this.open}
-                aria-haspopup="listbox"
-                aria-labelledby="label"
-                aria-disabled=${this.disabled || this.visuallyDisabled}
-                aria-describedby="help-text invalid-message"
-                aria-invalid="${this.showInvalidStyle}"
-                role="combobox"
-                tabindex="0"
-                @focus=${this.handleFocus}
-                @blur=${this.handleBlur}
-                aria-autocomplete="list"
-                aria-owns="listbox"
-                @input=${this.handleInput}
-                @change=${this.handleChange}
-              />
+              <div
+                class=${cx('flex flex-wrap items-center gap-1 w-full min-w-0 relative', this.floatingLabel && 'mt-4')}
+              >
+                ${this.multiple && this.useTags && this.tags && this.tags.length > 0
+                  ? html`<div part="tags" class="${cx('flex flex-wrap items-center gap-1 min-w-0', iconMarginRight)}">
+                      ${this.tags}
+                    </div>`
+                  : null}
+                <input
+                  id="display-input"
+                  name=${this.name}
+                  form=${this.form}
+                  part="display-input"
+                  class=${cx(
+                    'appearance-none outline-none bg-transparent flex-auto min-w-0',
+                    cursorStyles,
+                    this.selectedTextLabel && !this.multiple
+                      ? 'placeholder:form-control-color-text'
+                      : 'placeholder:text-neutral-700',
+                    this.size === 'sm' ? (isFloatingLabelActive ? 'h-4' : 'h-6') : isFloatingLabelActive ? 'h-6' : 'h-8'
+                  )}
+                  type="text"
+                  placeholder=${!this.floatingLabel || isFloatingLabelActive
+                    ? this.selectedTextLabel && !this.multiple
+                      ? this.selectedTextLabel
+                      : this.placeholder || this.localize.term('comboboxDefaultPlaceholder')
+                    : ''}
+                  .disabled=${this.disabled}
+                  .value=${this.displayInputValue}
+                  autocomplete="off"
+                  spellcheck="false"
+                  autocapitalize="off"
+                  aria-controls="listbox"
+                  aria-expanded=${this.open}
+                  aria-haspopup="listbox"
+                  aria-labelledby="label"
+                  aria-disabled=${this.disabled || this.visuallyDisabled}
+                  aria-describedby="help-text invalid-message"
+                  aria-invalid="${this.showInvalidStyle}"
+                  role="combobox"
+                  tabindex="0"
+                  @focus=${this.handleFocus}
+                  @blur=${this.handleBlur}
+                  aria-autocomplete="list"
+                  aria-owns="listbox"
+                  @input=${this.handleInput}
+                  @change=${this.handleChange}
+                />
+              </div>
               <div aria-live="polite" id="control-value" class="absolute top-0 left-0 opacity-0 -z-10">
                 ${this.selectedOptions.map(option => option?.getTextLabel()).join(', ')}
               </div>
@@ -1486,6 +1501,8 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                   `
                 : html`
                     <button
+                      tabindex="-1"
+                      aria-hidden="true"
                       class="sd-interactive combobox-button absolute top-2"
                       @keydown=${this.handleComboboxMouseDown}
                       type="button"

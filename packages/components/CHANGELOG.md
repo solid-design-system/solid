@@ -1,5 +1,20 @@
 # @solid-design-system/components
 
+## 6.13.1
+
+### Patch Changes
+
+- - Fixed the mobile view responsiveness of `sd-combobox` when using multiple tags. _[`#2867`](https://github.com/solid-design-system/solid/pull/2867) [`9e4f31d`](https://github.com/solid-design-system/solid/commit/9e4f31da1d5479a45e54c8adec929b7410bdb87a) [@martascorreia](https://github.com/martascorreia)_
+
+  - Fixed the mobile clipping for the `sd-combobox` stories in the Documentation.
+  - Fixed the mobile background when focused for the components `sd-combobox`, `sd-input`, `sd-select`, `sd-datepicker` and `sd-textarea`.
+
+- Improved `sd-combobox` keyboard handling by correctly managing focus to fix accessibility issues. _[`#2880`](https://github.com/solid-design-system/solid/pull/2880) [`8862167`](https://github.com/solid-design-system/solid/commit/8862167338777f565d8dd0aac4a07979ca733441) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+### 📈 Stats
+* Uncompressed: 596 KB (+1 KB / +0%)
+* Gzipped: 135 KB (unchanged)
+
 ## 6.13.0
 
 ### Minor Changes
