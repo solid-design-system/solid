@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.14.1
+
+### Patch Changes
+
+- Fixed `sd-textarea` textarea focus handling when clicking the floating label. _[`#2892`](https://github.com/solid-design-system/solid/pull/2892) [`b8af9d9`](https://github.com/solid-design-system/solid/commit/b8af9d9059369175577cecffd0354af33e345ab9) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 6.14.0
 
 ### Patch Changes
@@ -24,8 +30,9 @@
   - Add `deprecated`attribute to indicate deprecated css variables
 
 ### 📈 Stats
-* Uncompressed: 610 KB (+14 KB / +2%)
-* Gzipped: 137 KB (+2 KB / +1%)
+
+- Uncompressed: 610 KB (+14 KB / +2%)
+- Gzipped: 137 KB (+2 KB / +1%)
 
 ## 6.13.1
 
