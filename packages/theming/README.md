@@ -5,4 +5,4 @@
 
 # @solid-design-system/theming
 
-The Solid Design System Theming package provides a color calculation service.
+The Solid Design System Theming package provides a color calculation service. If you want to use themes in your project, have a look at the [Tokens package](?path=/docs/packages-tokens--docs).

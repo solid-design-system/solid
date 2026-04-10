@@ -13,6 +13,8 @@ import SolidElement from '../../internal/solid-element';
  * @slot - The skeleton's content. When provided, adapts to the content's dimensions. When empty, displays according to the variant property.
  *
  * @csspart base - The component's base wrapper.
+ *
+ * @cssproperty --sd-skeleton-color - The color of the skeleton.
  */
 @customElement('sd-skeleton')
 export default class SdSkeleton extends SolidElement {
@@ -25,7 +27,7 @@ export default class SdSkeleton extends SolidElement {
         part="base"
         aria-hidden="true"
         class=${cx(
-          'bg-neutral-200 w-full h-full animate-pulse',
+          'sd-skeleton-color w-full h-full animate-pulse',
           {
             rectangular: 'rounded-sm',
             circular: 'rounded-full inline-block'

@@ -6,6 +6,7 @@ import '../../tokens/themes/ui-light/ui-light.css';
 import { withThemeByClassName } from './addons/with-theme.js';
 import { storybookUtilities } from '../scripts/storybook/helper.js';
 import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer.js';
+import { initDeprecatedBadgeEnhancer } from '../scripts/storybook/deprecated-badge-enhancer.js';
 import { themes, allModes, DEFAULT_THEME } from './modes.js';
 
 const theme = withThemeByClassName({
@@ -16,8 +17,13 @@ const theme = withThemeByClassName({
   }, {})
 });
 
+const deprecatedBadgeDecorator = Story => {
+  initDeprecatedBadgeEnhancer();
+  return Story();
+};
+
 export const preview = {
-  decorators: [theme],
+  decorators: [theme, deprecatedBadgeDecorator],
   parameters: {
     chromatic: {
       disableSnapshot: true,

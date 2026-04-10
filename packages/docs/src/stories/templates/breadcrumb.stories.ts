@@ -31,7 +31,7 @@ export const Default = {
       <sd-header id="horizontal" fixed>
         <div class="flex justify-between items-center my-0 lg:my-3">
           <a class="inline-flex sd-interactive" href="#">
-            <img class="h-8 md:h-12 lg:h-14" src="images/logo-unioninvestment-lg.svg" alt="Union Investment Homepage" />
+            <div class="h-8 md:h-12 lg:h-14 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
           </a>
 
           <sd-navigation-item id="open-menu-navigation" class="flex lg:hidden">
