@@ -109,3 +109,7 @@ sd-notification#versioning-info::part(base) {
   margin-left: 0;
   margin-bottom: 2rem;
 }
+
+.sbdocs .sd-deprecated-badge {
+  @apply inline-flex items-center rounded-sm bg-warning px-1 py-0.5 text-[10px] font-bold uppercase leading-none text-black;
+}

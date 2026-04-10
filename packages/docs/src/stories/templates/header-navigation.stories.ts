@@ -39,7 +39,7 @@ export const Horizontal = {
       <sd-header id="horizontal" fixed>
         <div class="flex justify-between items-center my-0 lg:my-3">
           <a class="inline-flex sd-interactive" href="#">
-            <img class="h-8 md:h-12 lg:h-14" src="images/logo-unioninvestment-lg.svg" alt="Union Investment Homepage" />
+            <div class="h-8 md:h-12 lg:h-14 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
           </a>
 
           <sd-navigation-item id="open-menu-navigation" class="flex lg:hidden">
@@ -771,7 +771,7 @@ export const SampleA = {
       <div class="flex justify-between items-center">
         <!-- top-left-area start !-->
         <a class="flex flex-shrink" href="#">
-          <img class="h-8 md:h-12 lg:h-14" src="images/logo-unioninvestment-lg.svg" alt="Union Investment Homepage" />
+          <div class="h-8 md:h-12 lg:h-14 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
         </a>
         <!-- top-left-area end !-->
         <!-- top-right-area start !-->
@@ -934,7 +934,7 @@ export const Vertical = {
         <sd-header id="vertical" fixed class="col-span-2">
           <div class="flex justify-between items-center">
             <a class="inline-flex sd-interactive" href="#">
-              <img class="h-8 md:h-12" src="images/logo-unioninvestment-lg.svg" alt="Union Investment Homepage" />
+              <div class="h-8 md:h-12 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
             </a>
 
             <sd-navigation-item id="open-menu-navigation-vertical" class="lg:hidden">
@@ -1220,7 +1220,7 @@ export const SampleA02 = {
       <div class="flex justify-between items-center">
         <!-- top-left-area start !-->
         <a class="flex flex-shrink" href="#">
-          <img class="h-8 md:h-12 lg:h-14" src="images/logo-unioninvestment-lg.svg" alt="Union Investment Homepage" />
+          <div class="h-8 md:h-12 lg:h-14 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
         </a>
         <!-- top-left-area end !-->
         <!-- top-right-area start !-->
@@ -1370,12 +1370,8 @@ export const SampleB = {
       <div class="flex justify-between items-center">
         <!-- top-left-area start !-->
         <a class="flex flex-shrink" href="#">
-          <img
-            class="sm:h-12 lg:h-14 hidden sm:flex"
-            src="images/logo-unioninvestment-lg.svg"
-            alt="Union Investment Homepage"
-          />
-          <img class="h-8 sm:hidden" src="images/logo-unioninvestment-sm.svg" alt="Union Investment Homepage" />
+          <div class="sm:h-12 lg:h-14 hidden sm:flex logo-lg" role="img" aria-label="Union Investment Homepage"></div>
+          <div class="h-8 sm:hidden logo-sm" role="img" aria-label="Union Investment Homepage"></div>
         </a>
         <!-- top-left-area end !-->
         <!-- top-right-area start !-->

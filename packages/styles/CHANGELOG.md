@@ -1,5 +1,16 @@
 # @solid-design-system/styles
 
+## 6.14.0
+
+### Patch Changes
+
+- Fixes and improvements for multi-theming: _[`#2751`](https://github.com/solid-design-system/solid/pull/2751) [`ec67aa4`](https://github.com/solid-design-system/solid/commit/ec67aa41e64a0eaa44063922272a900d93d33f73) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - `sd-container`: fixed the triangle variable for multi-theming
+  - `sd-copyright`: fixed shadow styling
+  - `sd-footnotes`: fixed text colors
+  - Add `css properties` section to docs table
+  - Add `deprecated` attribute to indicate deprecated css variables
+
 ## 6.13.1
 
 ## 6.13.0

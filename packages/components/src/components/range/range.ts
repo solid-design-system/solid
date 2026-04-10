@@ -762,7 +762,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       }
 
       [part='thumb'][data-disabled] {
-        background-color: rgba(var(--sd-color-icon-fill-neutral-500, rgba(var(--sd-color-neutral-500))));
+        background-color: rgba(var(--sd-color-background-neutral-500, rgba(var(--sd-color-neutral-500))));
       }
 
       [part='track'] {
@@ -778,7 +778,7 @@ export default class SdRange extends SolidElement implements SolidFormControl {
       }
 
       [part='active-track'][data-disabled] {
-        background-color: rgba(var(--sd-color-icon-fill-neutral-500, rgba(var(--sd-color-neutral-500))));
+        background-color: rgba(var(--sd-color-background-neutral-500, rgba(var(--sd-color-neutral-500))));
       }
     `
   ];

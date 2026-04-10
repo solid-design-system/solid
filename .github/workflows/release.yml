@@ -3,8 +3,8 @@ name: Release
 on:
   push:
     branches:
-      - 'main'
-      - 'next'
+      - "main"
+      - "next"
   workflow_dispatch:
 
 permissions:
@@ -30,6 +30,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+
+      - name: Setup npm
+        run: npm i -g npm@10.9.7
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -58,8 +61,13 @@ jobs:
         with:
           node-version: 22
 
+      - name: Setup npm
+        run: npm i -g npm@10.9.7
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.0
 
       - name: Install dependencies
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
