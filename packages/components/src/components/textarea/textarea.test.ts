@@ -369,4 +369,23 @@ describe('<sd-textarea>', () => {
       expect(textarea.spellcheck).to.be.false;
     });
   });
+
+  it('should focus the textarea when clicking on the floating label or its span', async () => {
+    const el = await fixture<SdTextarea>(html` <sd-textarea label="Name" floating-label></sd-textarea> `);
+    await el.updateComplete;
+
+    const label = el.shadowRoot!.querySelector('label[part="form-control-floating-label"]')! as HTMLElement;
+    const textarea = el.shadowRoot!.querySelector('textarea')!;
+
+    const focusSpy = sinon.spy();
+    textarea.addEventListener('focus', focusSpy);
+
+    // Click on the label itself
+    label.click();
+    await waitUntil(() => focusSpy.calledOnce, 'textarea did not focus on label click');
+    expect(focusSpy).to.have.been.calledOnce;
+    expect(textarea).to.equal(el.shadowRoot!.activeElement);
+
+    focusSpy.resetHistory();
+  });
 });
