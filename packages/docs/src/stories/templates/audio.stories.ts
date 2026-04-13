@@ -192,7 +192,7 @@ export const AudioAnimated = {
         </div>
       </sd-audio>
 
-      <p class="text-center sd-leadtext mt-8">“SDS Song: Harmony in the System”</p>
+      <div class="sd-display sd-display--size-xl mt-8 text-center">“SDS Song: Harmony in the System”</div>
     </div>
   `
 };
