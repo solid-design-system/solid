@@ -126,7 +126,7 @@ export const AudioAnimated = {
   name: 'Audio with Display',
   render: () => html`
     <div class="py-12">
-      <p class="text-center sd-display text-primary mb-8">Harmony in the System</p>
+      <div class="sd-display sd-display--size-3xl text-primary mb-8 text-center">Harmony in the System</div>
 
       <sd-audio reversed-layout hide-timestamps>
         <audio src="./placeholders/audio/sds-song.mp3" preload="metadata"></audio>
