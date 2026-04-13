@@ -1,27 +1,40 @@
 ---
-name: get-project-items-by-status
+name: get-project-items-by-query
 description: "Retrieve GitHub project board items filtered by status column. Use for: listing items in a specific status, refinement overview, backlog review, sprint column inspection. Input: a status value to filter by. Returns structured item data from the Solid Design System Project Board via gh-projects MCP."
 ---
 
-# Get Project Items by Status
+# Get Project Items by Query
 
 ## When to Use
 
-- An agent needs to retrieve issues/PRs from a specific project board column
-- Listing items in a status like "⚙️ To be refined", "🔖 Ready", "🏗 In progress", etc.
+- An agent needs to retrieve issues/PRs from a specific project board column, assignee or label for review, reporting, or to feed into another process.
 - Input to downstream skills or agents that need structured project item data
 
 ## Input
 
+### Status Value
+
 The calling agent provides `{STATUS_VALUE}` — one of:
 
 - `📋 Backlog`
-- `🛠️ To be pre-refined`
+- `🛠️ To be pre-refined` (which is not for the Refinement!)
 - `⚙️ To be refined`
 - `🔖 Ready`
 - `🏗 In progress`
 - `👀 In review`
 - `✅ Done`
+
+### Label Value
+
+The calling agent provides `{LABEL_VALUE}` — these are the most important labels, but the agent can specify any label used in the project:
+
+- `BLOCKED`
+- `BREAKING CHANGE`
+- `Design`
+- `Development`
+- `Documentation`
+- `Epic`
+- `Subtask` (which are always tasks of Epics)
 
 ## Known Field IDs
 
@@ -43,63 +56,116 @@ Call `mcp_gh-projects` → `projects_list` with:
 - **owner**: `solid-design-system`
 - **owner_type**: `org`
 - **project_number**: `1`
-- **query**: `status:"{STATUS_VALUE}"`
+- **query**: `status:"{STATUS_VALUE}"` or `assignee:unassigned` or `label:"{LABEL_VALUE}"`
 - **fields**: `[37973307, 37973308, 37973309, 37973310, 37973463, 64953433]`
 - **per_page**: `50`
 
-If a pagination cursor is returned, repeat with `after` until all items are collected.
+If a pagination cursor is returned and there are more items, **stop and ask the user** whether they want to load more before continuing. Only paginate if the user explicitly confirms.
 
-### 2. Parse the response with an inline Node.js scriptlet
+### 2. Parse the response
 
-#### Response JSON Schema
+The MCP tool writes the response JSON to a file. The schema is documented in [`response-schema.json`](response-schema.json).
 
-The MCP tool writes large JSON to a file with the following schema:
-[`response-schema.json`](response-schema.json)
+Use an inline Node.js one-liner to read and process the file. Adapt the script to match the columns and summary information relevant to the user's request — only include fields that are useful for the current context.
 
-Run the following Node.js one-liner, replacing `<JSON_FILE_PATH>` with the actual path:
+Key data paths to use in scripts:
+- `item.content.number` / `item.content.html_url` — issue number and link
+- `item.content.title` — issue title
+- `item.content.assignees[].login` — assignee logins
+- `item.content.labels[].name` — label names
+- `item.fields` — array of project fields; use `fields.find(f => f.name === "<FieldName>")?.value` to read a field value
+
+**Do NOT create additional helper scripts.** Keep processing inline.
+
+### 3. Return results as a markdown table
+
+The script outputs a ready-to-use markdown table with a summary line. **Present the output directly to the user — do not reformat or paraphrase it.**
+
+**Default to a compact table** — use only the columns most relevant to the query. Fewer columns keep the output readable and cheap. Only include Priority, Iteration, Labels, or Assignees when they add clear value for the user's request. After presenting the table, ask the user if they want a more detailed view with additional columns.
+
+Minimum required columns:
+- **Issue**: link format `[#number](html_url)`
+- **Title**: issue title
+
+Optional columns (add only when clearly useful):
+- **Assignees**: comma-separated logins, or `—`
+- **Labels**: comma-separated names, or `—`
+- **Status**: current project board status
+- **Priority / Iteration**: value or `—` if unset
+
+Always end with a brief summary line (e.g. total count, number of unassigned items, any notable labels like `BLOCKED`). Then ask: _"Want more detail or additional columns?"_
+
+## Examples
+
+### Example 1 — Sprint planning view (status + priority + iteration)
+
+Query: `status:"🔖 Ready"`
 
 ```sh
 node -e '
 const data = JSON.parse(require("fs").readFileSync("<JSON_FILE_PATH>", "utf8"));
 const getField = (fields, name) => fields.find(f => f.name === name);
-console.log("| # | Issue | Title | Assignees | Labels | Priority | Iteration |");
-console.log("|---|-------|-------|-----------|--------|----------|-----------|");
+console.log("| # | Issue | Title | Assignees | Priority | Iteration |");
+console.log("|---|-------|-------|-----------|----------|-----------|");
 let unassigned = 0;
-const notable = new Set();
 data.items.forEach((item, i) => {
   const c = item.content;
   const assignees = (c.assignees || []).map(a => a.login).join(", ") || "—";
-  const labels = (c.labels || []).map(l => l.name).join(", ") || "—";
-  (c.labels || []).forEach(l => { if (["BLOCKED","Critical-A11y-Issue"].includes(l.name)) notable.add(l.name); });
   if ((c.assignees || []).length === 0) unassigned++;
   const priority = getField(item.fields, "Priority")?.value?.name?.raw || "—";
   const iteration = getField(item.fields, "Iteration")?.value?.title?.raw || "—";
   const issue = c.html_url ? "[#" + c.number + "](" + c.html_url + ")" : "#" + c.number;
-  console.log("| " + [i+1, issue, c.title, assignees, labels, priority, iteration].join(" | ") + " |");
+  console.log("| " + [i+1, issue, c.title, assignees, priority, iteration].join(" | ") + " |");
 });
-const parts = ["**" + data.items.length + "** items total"];
-if (unassigned) parts.push("**" + unassigned + "** unassigned");
-if (notable.size) parts.push("notable labels: " + [...notable].sort().join(", "));
-console.log("_" + parts.join("; ") + "_");
+console.log("_**" + data.items.length + "** items total; **" + unassigned + "** unassigned_");
 '
 ```
 
-This outputs a ready-to-use markdown table with a summary line. Present the output directly to the user.
+### Example 2 — Blocked items overview (label filter)
 
-### 3. Return results as a markdown table
+Query: `label:"BLOCKED"`
 
-| # | Issue | Title | Assignees | Labels | Priority | Iteration |
-|---|-------|-------|-----------|--------|----------|-----------|
+```sh
+node -e '
+const data = JSON.parse(require("fs").readFileSync("<JSON_FILE_PATH>", "utf8"));
+const getField = (fields, name) => fields.find(f => f.name === name);
+console.log("| # | Issue | Title | Assignees | Status | Labels |");
+console.log("|---|-------|-------|-----------|--------|--------|");
+data.items.forEach((item, i) => {
+  const c = item.content;
+  const assignees = (c.assignees || []).map(a => a.login).join(", ") || "—";
+  const labels = (c.labels || []).map(l => l.name).join(", ") || "—";
+  const status = getField(item.fields, "Status")?.value?.name?.raw || "—";
+  const issue = c.html_url ? "[#" + c.number + "](" + c.html_url + ")" : "#" + c.number;
+  console.log("| " + [i+1, issue, c.title, assignees, status, labels].join(" | ") + " |");
+});
+console.log("_**" + data.items.length + "** blocked items_");
+'
+```
 
-- **Issue**: link format `[#number](html_url)`
-- **Assignees**: comma-separated logins, or `—`
-- **Labels**: comma-separated names, or `—`
-- **Priority / Iteration**: value or `—` if unset
+### Example 3 — Unassigned work triage (minimal view)
 
-End with a summary line: total count, how many unassigned, any notable labels (e.g. BLOCKED).
+Query: `assignee:unassigned`
+
+```sh
+node -e '
+const data = JSON.parse(require("fs").readFileSync("<JSON_FILE_PATH>", "utf8"));
+const getField = (fields, name) => fields.find(f => f.name === name);
+console.log("| # | Issue | Title | Status | Labels |");
+console.log("|---|-------|-------|--------|--------|");
+data.items.forEach((item, i) => {
+  const c = item.content;
+  const labels = (c.labels || []).map(l => l.name).join(", ") || "—";
+  const status = getField(item.fields, "Status")?.value?.name?.raw || "—";
+  const issue = c.html_url ? "[#" + c.number + "](" + c.html_url + ")" : "#" + c.number;
+  console.log("| " + [i+1, issue, c.title, status, labels].join(" | ") + " |");
+});
+console.log("_**" + data.items.length + "** unassigned items_");
+'
+```
 
 ## Constraints
 
 - Use the field IDs from the Known Field IDs table.
-- Parse JSON using the inline Node.js scriptlet above. **Do NOT create additional helper scripts.**
 - Filter server-side using the `query` parameter.
+- **Do NOT create additional helper scripts.** Keep all processing inline.
