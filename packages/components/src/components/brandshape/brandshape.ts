@@ -153,8 +153,8 @@ export default class SdBrandshape extends SolidElement {
               white: 'sd-brandshape--white-color-background',
               'border-white': 'bg-transparent',
               'border-primary': 'bg-transparent',
-              'primary|80': 'bg-primary/80',
-              'white|80': 'bg-white/80',
+              'primary|80': 'sd-brandshape--primary-80-color-background',
+              'white|80': 'sd-brandshape--white-80-color-background',
               image: 'bg-transparent'
             }[this.variant],
             'w-full block absolute h-full top-0 left-0 z-0'
@@ -185,8 +185,8 @@ export default class SdBrandshape extends SolidElement {
           white: 'sd-brandshape--white-color-background',
           'border-white': 'bg-transparent',
           'border-primary': 'bg-transparent',
-          'primary|80': 'bg-primary/80',
-          'white|80': 'bg-white/80',
+          'primary|80': 'sd-brandshape--primary-80-color-background',
+          'white|80': 'sd-brandshape--white-80-color-background',
           image: 'bg-transparent'
         }[this.variant],
         { top: 'bottom-0', bottom: 'top-0' }[position],
@@ -330,11 +330,11 @@ export default class SdBrandshape extends SolidElement {
       }
 
       :host([variant='primary|80']) [part='base'] {
-        fill: rgba(var(--sd-color-background-primary, rgba(var(--sd-color-primary))) / 0.8);
+        fill: rgba(var(--sd-brandshape--primary-80-color-background, rgba(var(--sd-color-primary))));
       }
 
       :host([variant='white|80']) [part='base'] {
-        fill: rgba(var(--sd-color-background-white, rgba(var(--sd-color-white))) / 0.8);
+        fill: rgba(var(--sd-brandshape--white-80-color-background, rgba(var(--sd-color-white))));
       }
     `
   ];
