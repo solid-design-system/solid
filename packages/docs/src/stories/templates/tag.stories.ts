@@ -78,36 +78,27 @@ export const filterTagGroupRisk = {
       <p class="sd-paragraph sd-paragraph--size-lg font-bold mb-4">Risk level:</p>
       <div class="flex gap-2">
         <sd-tag toggleable selected>
-          <div
-            class="h-4 w-4 border-primary-800 border-[1px]"
-            style="background-color: var(--fill-risk-veryhigh);"
-          ></div>
+          <div class="h-4 w-4 border-primary-800 border-[1px] bg-[var(--fill-risk-veryhigh)]"></div>
           Very High
         </sd-tag>
 
         <sd-tag toggleable>
-          <div class="h-4 w-4 border-primary-800 border-[1px]" style="background-color: var(--fill-risk-high);"></div>
+          <div class="h-4 w-4 border-primary-800 border-[1px] bg-[var(--fill-risk-high)]"></div>
           High
         </sd-tag>
 
         <sd-tag toggleable>
-          <div
-            class="h-4 w-4 border-primary-800 border-[1px]"
-            style="background-color: var(--fill-risk-increased);"
-          ></div>
+          <div class="h-4 w-4 border-primary-800 border-[1px] bg-[var(--fill-risk-increased)]"></div>
           Increased
         </sd-tag>
 
         <sd-tag toggleable>
-          <div
-            class="h-4 w-4 border-primary-800 border-[1px]"
-            style="background-color: var(--fill-risk-moderate);"
-          ></div>
+          <div class="h-4 w-4 border-primary-800 border-[1px] bg-[var(--fill-risk-moderate)]"></div>
           Moderate
         </sd-tag>
 
         <sd-tag toggleable>
-          <div class="h-4 w-4 border-primary-800 border-[1px]" style="background-color: var(--fill-risk-low);"></div>
+          <div class="h-4 w-4 border-primary-800 border-[1px] bg-[var(--fill-risk-low)]"></div>
           Low
         </sd-tag>
       </div>
@@ -125,7 +116,12 @@ export const removableFilterTagGroup = {
         <sd-tag removable>Bonds</sd-tag>
         <sd-tag removable>Mutual funds</sd-tag>
         <sd-tag removable>ETFs</sd-tag>
-        <sd-link href="https://solid-design-system.fe.union-investment.de/docs/" class="ml-4" standalone>
+        <sd-link
+          id="remove-filters-link"
+          href="https://solid-design-system.fe.union-investment.de/docs/"
+          class="ml-4"
+          standalone
+        >
           <sd-icon name="system/trash" slot="icon-left"></sd-icon>
           Remove filters
         </sd-link>
@@ -168,10 +164,30 @@ export const tagGroupLinks = {
     <div>
       <p class="sd-paragraph sd-paragraph--size-lg font-bold mb-4">Additional topics:</p>
       <div class="gap-2 flex flex-col">
-        <sd-tag class="inline-flex w-auto" href="#" target="_blank">Commercial real estate</sd-tag>
-        <sd-tag class="inline-flex w-auto" href="#" target="_blank">Savings plan rate</sd-tag>
-        <sd-tag class="inline-flex w-auto" href="#" target="_blank">Open-ended real estate funds</sd-tag>
-        <sd-tag class="inline-flex w-auto" href="#" target="_blank">Retirement planning</sd-tag>
+        <sd-tag
+          class="inline-flex w-auto"
+          href="https://solid-design-system.fe.union-investment.de/docs/"
+          target="_blank"
+          >Commercial real estate</sd-tag
+        >
+        <sd-tag
+          class="inline-flex w-auto"
+          href="https://solid-design-system.fe.union-investment.de/docs/"
+          target="_blank"
+          >Savings plan rate</sd-tag
+        >
+        <sd-tag
+          class="inline-flex w-auto"
+          href="https://solid-design-system.fe.union-investment.de/docs/"
+          target="_blank"
+          >Open-ended real estate funds</sd-tag
+        >
+        <sd-tag
+          class="inline-flex w-auto"
+          href="https://solid-design-system.fe.union-investment.de/docs/"
+          target="_blank"
+          >Retirement planning</sd-tag
+        >
       </div>
     </div>
   `
