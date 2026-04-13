@@ -35,8 +35,13 @@
   --sd-border-width-4: 0.25rem;
   --sd-border-width-6: 0.375rem;
   --sd-border-width: 0.0625rem;
-  --sd-brandshape--neutral-100-color-background: var(--sd-color-neutral-100);
-  --sd-brandshape--white-color-background: var(--sd-color-white);
+  --sd-brandshape--neutral-100-color-background: 255 255 255 / 0;
+  --sd-brandshape--primary-80-color-background: 255 255 255 / 0;
+  --sd-brandshape--primary-color-background: 255 255 255 / 0;
+  --sd-brandshape--primary-color-border: 255 255 255 / 0;
+  --sd-brandshape--white-80-color-background: 255 255 255 / 0;
+  --sd-brandshape--white-color-background: 255 255 255 / 0;
+  --sd-brandshape-color-border-white: 255 255 255 / 0;
   --sd-breadcrumb__separator--current-color: var(--sd-color-warning);
   --sd-breadcrumb__separator-color: var(--sd-color-neutral-200);
   --sd-button--cta--inverted--active-color-background: var(--sd-color-white);
