@@ -1,29 +1,69 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import '../../../../../components/src/solid-components';
+import RolesInfo from './_RolesInfo.mdx';
 
 <Meta title="Packages/Tokens/Installation" />
 
 # Installation
 
-<sd-notification type="info" open id="versioning-info">
-  The `components`, `styles`, and `tokens` packages now always share the same version. We use fixed versioning to keep
-  them fully in sync, so every release updates all three packages, even if only one of them changed. Make sure to
-  install or update them using the same version number.
+This page guides you through installing and setting up the `@solid-design-system/tokens` package to use themes and/or design tokens in your project.
+
+<sd-notification type="info" open>
+  The `components`, `styles`, and `tokens` packages always share the same version. We use fixed versioning to keep them
+  fully in sync, so every release updates all three packages, even if only one of them changed. Make sure to install or
+  update them using the same version number.
 </sd-notification>
 
-## Prerequisites
+<RolesInfo />
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="host">Theme Host</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="consumer">Theme Consumer</sd-tab>
+
+  <sd-tab-panel name="host">
+## Install the package
+
+```bash
+npm install @solid-design-system/tokens
+```
+
+## Import a theme
+
+Load at least one theme — either via NPM import or a CDN `<link>` tag. This only needs to be done **once per document**. Every component and embedded consumer on the page will automatically inherit the theme.
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="npm" variant="container">NPM</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="cdn" variant="container">CDN</sd-tab>
+  <sd-tab-panel name="npm">
+```js
+import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
+```
+
+  </sd-tab-panel>
+  <sd-tab-panel name="cdn">
+```html
+<link
+  rel="stylesheet"
+  href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css"
+/>
+```
+
+  </sd-tab-panel>
+</sd-tab-group>
+
+## Next steps
+
+Depending on the theme, make sure the following page-level concerns are covered.
 
 ### Fonts
 
-Solid doesn't provide **any fonts**, you have to include them yourself.
-To do this, you can either use a CDN (our recomendation) or self-host the font files.
-Please reach out to the brand department if you want to self-host the font.
+Solid doesn't provide **any fonts** — you have to include them yourself, either via a CDN (recommended) or by self-hosting the font files. Reach out to your brand department if you want to self-host.
 
-#### **Using a CDN**
-
-The following CSS gives you a jump start on how to set up fonts using a CDN.
-
-<sd-accordion summary="Example CSS for Union Investment">
+<sd-accordion summary="Example CSS for Union Investment (CDN)">
 
 Please make sure to change `latest` to a concrete package version you want to use.
 
@@ -62,8 +102,7 @@ body {
 
 </sd-accordion>
 
-<sd-accordion summary="Example CSS for Volksbank">
-
+<sd-accordion summary="Example CSS for Volksbank (CDN)">
 ```css
 @font-face {
   font-family: 'GenosGFG';
@@ -73,25 +112,25 @@ body {
 }
 
 body {
-  font-family:
-    'GenosGFG',
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    'Noto Sans',
-    sans-serif;
+font-family:
+'GenosGFG',
+ui-sans-serif,
+system-ui,
+-apple-system,
+BlinkMacSystemFont,
+'Segoe UI',
+Roboto,
+'Helvetica Neue',
+Arial,
+'Noto Sans',
+sans-serif;
 }
-```
+
+````
 
 </sd-accordion>
 
-<sd-accordion summary="Example CSS for Kidstarter">
-
+<sd-accordion summary="Example CSS for Kidstarter (CDN)">
 ```css
 @font-face {
   font-family: 'Bricolage Grotesque';
@@ -125,19 +164,12 @@ body {
     'Noto Sans',
     sans-serif;
 }
-```
+````
 
 </sd-accordion>
 
-#### **Self-host Fonts**
-
-To self-host fonts, reach out to your brand department to obtain the woff2 files (or woff/ttf).
-Then, add these files to a public folder (e.g. fonts) within your project.
-
-<sd-accordion summary="Example CSS for Self-Host Fonts">
-
+<sd-accordion summary="Example CSS for self-hosted fonts">
 ```css
-/** Genos GFG Font Faces for VB Theme **/
 @font-face {
   font-family: 'Genos GFG';
   font-style: normal;
@@ -147,46 +179,40 @@ Then, add these files to a public folder (e.g. fonts) within your project.
 }
 
 @font-face {
-  font-family: 'Genos GFG';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/geno/GenosGFG-Bold.woff2') format('woff2');
+font-family: 'Genos GFG';
+font-style: normal;
+font-weight: 700;
+font-display: swap;
+src: url('/fonts/geno/GenosGFG-Bold.woff2') format('woff2');
 }
 
-.body {
-  font-family:
-    'Genos GFG',
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    'Noto Sans',
-    sans-serif,
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol',
-    'Noto Color Emoji';
+body {
+font-family:
+'Genos GFG',
+ui-sans-serif,
+system-ui,
+-apple-system,
+BlinkMacSystemFont,
+'Segoe UI',
+Roboto,
+'Helvetica Neue',
+Arial,
+'Noto Sans',
+sans-serif,
+'Apple Color Emoji',
+'Segoe UI Emoji',
+'Segoe UI Symbol',
+'Noto Color Emoji';
 }
-```
+
+````
 
 </sd-accordion>
 
-#### **Improve Font Rendering**
+### Font rendering
 
-To improve font rendering, the following CSS has to be added to your project as well:
-
-<sd-accordion summary="Example CSS">
-
+To improve font rendering, add the following CSS to your project:
 ```css
-/**
-  * Render font correctly.
-  */
-
 :root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -196,26 +222,14 @@ To improve font rendering, the following CSS has to be added to your project as 
   line-height: 1.5;
   font-size: 16px;
 }
-```
-
-</sd-accordion>
+````
 
 ### Normalizing browser styles
 
-We recommend using [normalize.css](https://necolas.github.io/normalize.css/) or similar.
-This will handle cross-browser inconsistencies and set furthermore some improvements,
-e. g. regarding improved line-heights for `<sub>` and `<sup>` elements.
-If you don't want to use normalize.css, you should at least reset
-the line-heights for `<sub>` and `<sup>` elements, as shown below.
+We recommend using [normalize.css](https://necolas.github.io/normalize.css/) or similar to handle cross-browser inconsistencies. If you prefer not to use normalize.css, at least reset line-heights for `<sub>` and `<sup>` elements:
 
-<sd-accordion summary="Example CSS">
-
+<sd-accordion summary="Minimal reset CSS">
 ```css
-/**
-  * Prevent `sub` and `sup` elements from affecting the line height in
-  * all browsers.
-  */
-
 sub,
 sup {
   font-size: 75%;
@@ -225,245 +239,89 @@ sup {
 }
 
 sub {
-  bottom: -0.25em;
+bottom: -0.25em;
 }
 
 sup {
-  top: -0.5em;
+top: -0.5em;
 }
-```
+
+````
+
+That's it — your page is now themed. Head over to the <sd-link href="?path=/docs/packages-tokens-usage--docs">Usage page</sd-link> to learn how to switch themes, customize tokens, and create your own theme.
 
 </sd-accordion>
 
-## Themes
+  </sd-tab-panel>
 
-Themes allow you to easily switch between predefined themes (such as light or dark mode, or brand-specific) and even create your own custom themes by overriding CSS variables.
+  <sd-tab-panel name="consumer">
 
-### Importing themes
+<sd-notification variant="warning" open>
+  **Do not import or bundle theme CSS.** The Theme Host already provides the theme for the entire page. Bundling it
+  yourself leads to unnecessary bundle size, potential conflicts, and version mismatches.
+</sd-notification>
 
-> This only has to be done once per document, every application and component using Solid Components/Styles on that page can then automatically use the included themes.
+Your components will automatically inherit whichever theme the host has set — including light/dark switching — without any extra work on your end.
 
-Each theme is defined in a CSS file containing variables.
-You must import at least one theme to use Solid Components or Styles.
+## Install the package
+
+Even though you don't load a theme, you still install `@solid-design-system/tokens` to access token utilities (CSS variables, SCSS variables, Tailwind config) for your own custom styling.
+```bash
+npm install @solid-design-system/tokens
+````
+
+## Use tokens in your code
+
+Pick the format that fits your stack:
 
 <sd-tab-group>
   {/* prettier-ignore */}
-  <sd-tab slot="nav" panel="npm" variant="container"> NPM </sd-tab>
+  <sd-tab slot="nav" panel="css" variant="container">CSS</sd-tab>
   {/* prettier-ignore */}
-  <sd-tab slot="nav" panel="cdn" variant="container"> CDN </sd-tab>
-  <sd-tab-panel name="npm">
-    ```bash
-    npm install @solid-design-system/tokens
-    ```
+  <sd-tab slot="nav" panel="scss" variant="container">SCSS</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="tw4" variant="container">Tailwind v4</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="tw3" variant="container">Tailwind v3</sd-tab>
 
-    ```js
-    import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
-    ```
+  <sd-tab-panel name="css">
 
-  </sd-tab-panel>
-  <sd-tab-panel name="cdn">
-    ```html
-    <link
-      rel="stylesheet"
-      href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css"
-    />
-    ```
-  </sd-tab-panel>
-</sd-tab-group>
-
-### Switching a theme
-
-#### User Setting (Light/Dark Mode)
-
-If you just want to respect the user's system preference for light or dark mode, you can adaptively load the appropriate theme based on the `prefers-color-scheme` media query.
-
-```html
-<link
-  rel="stylesheet"
-  href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css"
-  media="(prefers-color-scheme: light)"
-/>
-<link
-  rel="stylesheet"
-  href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-dark/ui-dark.css"
-  media="(prefers-color-scheme: dark)"
-/>
-```
-
-For further information how to make this more dynamic check out [this article](https://pepelsbey.dev/articles/native-light-dark/).
-
-#### Class-based theming (Light, Dark, Other Brands)
-
-For finer granularity use the theme's class name and set it on the body or the desired element.
-
-> After importing it, `ui-light` is automatically applied, if no other theme is specified.
-
-Each theme class follows this pattern: `sd-theme-[name]`.
-
-Example for `ui-dark`:
-
-```html
-<body class="sd-theme-ui-dark">
-  <!-- Your website -->
-</body>
-```
-
-This will apply the UI Dark theme globally on your website. This makes it easy to switch between themes, for example when toggling between light and dark mode.
-
-### Creating your own theme
-
-You can create your own theme by overriding CSS variables.
-There are two main types of variables (tokens):
-
-#### **1 - Primitive tokens**
-
-Primitive variables define the base values used across all components.
-They act as fallbacks for all other variables.
-
-Changing the primary color globally:
+The theme loaded by the host exposes CSS variables you can use directly — no additional import needed.
 
 ```css
---sd-color-primary: 255 0 85;
-```
-
-This change will affect every component that uses the primary color.
-
-#### **2 - Semantic tokens**
-
-Semantic tokens are divided into general and component-specific variables.
-
-##### **2.1 - General semantic tokens**
-
-These let you target specific use cases without interfering with other parts that use the same primitive variable (e.g., primary background color without affecting all primary color usages).
-
-Example:
-
-```css
---background-color-primary: 255 230 238;
-```
-
-This overrides only the “primary background” usages, falling back to the primitive tokens otherwise.
-
-##### **2.2 - Component-specific semantic tokens**
-
-If you want to customize variables for a specific component only, you can override its semantic tokens.
-Example, changing only the primary background color of the `sd-button` component:
-
-```css
---sd-button--primary--default--default-color-background: 255 0 85;
-```
-
-<blockquote>The list of available component variables is documented on each component’s `docs` page.</blockquote>
-
-Currently, component-specific theming is available for:
-
-- [sd-accordion](./?path=/docs/components-sd-accordion--docs)
-- [sd-audio](./?path=/docs/components-sd-audio--docs)
-- [sd-badge](./?path=/docs/components-sd-badge--docs)
-- [sd-brandshape](./?path=/docs/components-sd-brandshape--docs)
-- [sd-breadcrumb](./?path=/docs/components-sd-breadcrumb--docs)
-- [sd-button](./?path=/docs/components-sd-button--docs)
-- [sd-carousel](./?path=/docs/components-sd-carousel--docs)
-- [sd-checkbox](./?path=/docs/components-sd-checkbox--docs)
-- [sd-chip](./?path=/docs/styles-sd-chip--docs)
-- [sd-combobox](./?path=/docs/components-sd-combobox--docs)
-- [sd-container](./?path=/docs/components-sd-container--docs)
-- [sd-date-picker](./?path=/docs/components-sd-date-picker--docs)
-- [sd-divider](./?path=/docs/components-sd-divider--docs)
-- [sd-flag](./?path=/docs/styles-sd-flag--docs)
-- [sd-footnotes](./?path=/docs/components-sd-footnotes--docs)
-- [sd-header](./?path=/docs/components-sd-header--docs)
-- [sd-input](./?path=/docs/components-sd-input--docs)
-- [sd-interactive](./?path=/docs/styles-sd-interactive--docs)
-- [sd-loader](./?path=/docs/components-sd-loader--docs)
-- [sd-map-marker](./?path=/docs/components-sd-map-marker--docs)
-- [sd-menu-item](./?path=/docs/components-sd-menu-item--docs)
-- [sd-navigation-item](./?path=/docs/components-sd-navigation-item--docs)
-- [sd-notification](./?path=/docs/components-sd-notification--docs)
-- [sd-quick-fact](./?path=/docs/components-sd-quick-fact--docs)
-- [sd-radio](./?path=/docs/components-sd-radio--docs)
-- [sd-radio-button](./?path=/docs/components-sd-radio-button--docs)
-- [sd-radio-group](./?path=/docs/components-sd-radio-group--docs)
-- [sd-range-tick](./?path=/docs/components-sd-range-tick--docs)
-- [sd-select](./?path=/docs/components-sd-select--docs)
-- [sd-step](./?path=/docs/components-sd-step--docs)
-- [sd-switch](./?path=/docs/components-sd-switch--docs)
-- [sd-tab](./?path=/docs/components-sd-tab--docs)
-- [sd-tag](./?path=/docs/components-sd-tag--docs)
-- [sd-teaser](./?path=/docs/components-sd-teaser--docs)
-- [sd-teaser-media](./?path=/docs/components-sd-teaser-media--docs)
-- [sd-textarea](./?path=/docs/components-sd-textarea--docs)
-- [sd-tooltip](./?path=/docs/components-sd-tooltip--docs)
-- [sd-video](./?path=/docs/components-sd-video--docs)
-
-**Note:** Even if a component doesn’t yet have full semantic variable support, you can still apply overrides within the component’s scope using general semantic tokens.
-
-Example:
-
-```css
-sd-button {
-  --background-color-primary: 255 0 85;
-}
-```
-
-This will only affect the primary background color inside `sd-button` components.
-
-## Tokens
-
-You can use design tokens to build own components and websites. The following solutions are provided:
-
-- Vanilla CSS (via the provided CSS variables)
-- SCSS
-- TailwindCSS (v3)
-- TailwindCSS (v4)
-
-> This is still Work in Progress.
-
-### Vanilla CSS
-
-Import a theme as described above and use the CSS variables in your own styles.
-
-Example:
-
-```css
-.my-special-element {
+.my-element {
   background-color: rgba(var(--sd-color-background-primary-100));
   color: rgba(var(--sd-color-text-black));
 }
 ```
 
-### SCSS
+  </sd-tab-panel>
+  <sd-tab-panel name="scss">
 
-Import the SCSS files from `@solid-design-system/tokens` and use the SCSS variables in your own styles.
+Import the SCSS file to access all tokens as SCSS variables.
 
 ```scss
 @import '@solid-design-system/tokens/dist/scss';
 ```
 
-Example:
-
 ```scss
-.my-special-element {
+.my-element {
   background-color: rgba($sd-color-background-primary-100);
   color: rgba($sd-color-text-black);
 }
 ```
 
-### TailwindCSS (v4)
-
-Import the TailwindCSS configuration from `@solid-design-system/tokens` and extend your own Tailwind configuration with it.
-
+  </sd-tab-panel>
+  <sd-tab-panel name="tw4">
 ```css
 @import 'tailwindcss';
 @import '@solid-design-system/tokens/dist/themes/tailwind.css';
 ```
 
-This will automatically include all Solid Design System tokens into your Tailwind setup and make them available as classes.
+This automatically makes all Solid Design System tokens available as Tailwind utility classes.
 
-### TailwindCSS (v3)
-
-Import the TailwindCSS configuration from `@solid-design-system/tokens` and extend your own Tailwind configuration with it.
-
+  </sd-tab-panel>
+  <sd-tab-panel name="tw3">
 ```js
 // tailwind.config.js
 import solidTheme from '@solid-design-system/tokens/dist/tailwind.json';
@@ -476,3 +334,58 @@ export default {
   }
 };
 ```
+
+  </sd-tab-panel>
+</sd-tab-group>
+
+That's it — you're ready to build. Head over to the <sd-link href="?path=/docs/packages-tokens-usage--docs">Usage page</sd-link> to learn about local development, standalone fallbacks, and versioning coordination.
+
+  </sd-tab-panel>
+</sd-tab-group>
+
+## ⚠️ Upcoming breaking changes
+
+Breaking changes will be introduced in a future release (date to be announced).
+
+### CSS Variables
+
+Some CSS variables used for custom theming will be removed.
+
+- Deprecated variables are still functional for now
+- All deprecated variables are clearly marked in the documentation
+- Recommended replacements are already provided
+
+**Where to find deprecated variables**: You can find this information directly on each component’s documentation page.
+
+Deprecated variables:
+
+- `--sd-button--size-lg-border-radius` replace with `--sd-button-border-radius`
+- `--sd-button--size-md-border-radius` replace with `--sd-button-border-radius`
+- `--sd-button--size-sm-border-radius` replace with `--sd-button-border-radius`
+- `--sd-button--secondary--inverted--color-border` replace with `--sd-button-secondary-inverted-color-border`
+- `--sd-chip-font-size` replace with `--sd-marker-font-size`
+- `--sd-chip-border-width` replace with `--sd-marker-border-width`
+- `--sd-chip-font-weight` replace with `--sd-marker-font-weight`
+- `--sd-flag-border-width` replace with `--sd-marker-border-width`
+- `--sd-form-control-color-icon` replace with `--sd-form-control-color-icon-fill`
+- `--sd-menu-color-icon` replace with `--sd-menu-item-color-icon-fill`
+- `--sd-menu-color-text` replace with `--sd-menu-item-color-text`
+- `--sd-menu--disabled-color-icon` replace with `--sd-menu-item--disabled-color-icon-fill`
+- `--sd-menu--disabled-color-text` replace with `--sd-menu-item--disabled-color-text`
+- `--sd-tag-font-weight` replace with `--sd-choice-control-font-weight`
+- `--sd-tag--disabled-color-border` replace with `--sd-color-border-neutral-500`
+- `--sd-navigation-item--current-color-text` replace with `--sd-navigation-item-color-text`
+- `--sd-option--disabled-color-border` replace with `--sd-color-border-neutral-500`
+- `--sd-audio__timestamp-color-text` replace with `--sd-color-text-neutral-700`
+- `--sd-accordion__chevron-color-text` replace with `--sd-accordion-color-icon-fill`
+
+---
+
+### Minimum dependency requirement
+
+Currently, any version of the **components** and **styles** packages is compatible with any version of the **tokens** package. In a future release:
+
+- A **minimum dependency requirement** will be introduced
+- The **tokens package version must be equal to or higher than** the components and styles versions
+
+We recommend reviewing your setup now to ensure that your tokens package is **aligned with (or ahead of)** your components and styles. This will help you avoid compatibility issues once the new requirement is enforced.

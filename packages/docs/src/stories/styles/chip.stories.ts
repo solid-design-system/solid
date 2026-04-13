@@ -6,6 +6,12 @@ const { argTypes, parameters } = storybookDefaults('sd-chip');
 const { overrideArgs } = storybookHelpers('sd-chip');
 const { generateTemplate } = storybookTemplate('sd-chip');
 
+/**
+ *
+ * <sd-notification variant="info" open class="only-theme-kid mb-4">Add "shadow-sm" manually with css property box-shadow.</sd-notification>
+ *
+ */
+
 export default {
   title: 'Styles/sd-chip',
   component: 'sd-chip',

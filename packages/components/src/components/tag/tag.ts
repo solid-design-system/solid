@@ -42,11 +42,13 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-tag--selected--hover-color-border - The border color for selected tags in hover state.
  * @cssproperty --sd-tag--selected--hover-color-text - The text color for selected tags in hover state.
  * @cssproperty --sd-tag--selected-border-width - The border width for selected tags.
- * @cssproperty --sd-tag--disabled-color-border - The border color for disabled tags.
  * @cssproperty --sd-tag-border-radius - The border radius for tags.
  * @cssproperty --sd-tag--size-lg-font-size - The font size for large tags.
  * @cssproperty --sd-tag--size-sm-font-size - The font size for small tags.
- * @cssproperty --sd-tag-font-weight - The font weight for tags.
+ * @cssproperty --sd-choice-control-font-weight - The font weight for tags.
+ * @cssproperty --sd-tag--disabled-color-text - The text color for disabled tags.
+ * @cssproperty --sd-tag--disabled-color-border - This custom property is deprecated. Use `--sd-color-border-neutral-500` instead.
+ * @cssproperty --sd-tag-font-weight - This custom property is deprecated. Use `--sd-choice-control-font-weight` instead.
  */
 @customElement('sd-tag')
 export default class SdTag extends SolidElement {
@@ -156,22 +158,32 @@ export default class SdTag extends SolidElement {
             sm: !isRemovable ? 'px-3 py-[5px]' : 'pl-3 pr-2 py-2'
           }[this.size],
           /* colors */
-          !this.selected
-            ? cx(
-                'sd-tag--default-color-border sd-tag--default-color-text disabled:sd-tag--disabled-color-border disabled:text-neutral-500',
-                !isRemovable
-                  ? 'sd-tag--default-color-background hover:border-primary-500 hover:text-primary-500 hover:sd-tag--default--hover-color-background'
-                  : 'sd-tag--default-color-background has-[button:hover]:border-primary-500 has-[button:hover]:text-primary-500'
+          !this.disabled
+            ? !this.selected
+              ? cx(
+                  'sd-tag--default-color-border sd-tag--default-color-text',
+                  !isRemovable
+                    ? 'sd-tag--default-color-background hover:border-primary-500 hover:text-primary-500 hover:sd-tag--default--hover-color-background'
+                    : 'sd-tag--default-color-background has-[button:hover]:border-primary-500 has-[button:hover]:text-primary-500'
+                )
+              : 'sd-tag--selected-border-width sd-tag--selected--default-color-background sd-tag--selected--default-color-border sd-tag--selected--default-color-text hover:sd-tag--selected--hover-color-background hover:sd-tag--selected--hover-color-border hover:sd-tag--selected--hover-color-text'
+            : cx(
+                !isLink && 'cursor-not-allowed',
+                this.selected && 'bg-neutral-500 text-white',
+                'sd-tag--disabled-color-border sd-tag--disabled-color-text'
               )
-            : 'sd-tag--selected-border-width sd-tag--selected--default-color-background sd-tag--selected--default-color-border sd-tag--selected--default-color-text hover:sd-tag--selected--hover-color-background hover:sd-tag--selected--hover-color-border hover:sd-tag--selected--hover-color-text disabled:bg-neutral-500 disabled:sd-tag--disabled-color-border',
-          this.disabled && !isLink && 'cursor-not-allowed'
         )}
       >
         <slot name="icon-left" class=${cx('flex-shrink-0', this.size === 'lg' ? 'text-base' : 'text-[0.75rem]')}></slot>
         <slot id="content" part='content'></slot>
         ${
           isRemovable && !isLink
-            ? html` <button class="sd-interactive flex items-center" type="button" @click=${this.handleRemove}>
+            ? html` <button
+                class="sd-interactive flex items-center"
+                type="button"
+                @click=${this.handleRemove}
+                ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
+              >
                 <slot part="removable-indicator" name="removable-indicator">
                   <sd-icon library="_internal" name="close" label=${this.localize.term('remove')}></sd-icon>
                 </slot>
@@ -197,6 +209,16 @@ export default class SdTag extends SolidElement {
 
       :host([size='sm'])::part(removable-indicator) {
         @apply text-[0.75rem];
+      }
+
+      /* TODO clean sd-tag--disabled-color-border and replace this class with border-neutral-500 in line 173 (breaking change) */
+      .sd-tag--disabled-color-border {
+        border-color: rgb(var(--sd-tag--disabled-color-border));
+      }
+
+      /* TODO clean sd-tag-font-weight and replace this class with choice-control-font-weight in lines 153 and 154 (breaking change) */
+      .sd-tag-font-weight {
+        font-weight: var(--sd-tag-font-weight);
       }
     `
   ];

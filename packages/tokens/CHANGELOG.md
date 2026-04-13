@@ -1,5 +1,186 @@
 # @solid-design-system/tokens
 
+## 6.14.1
+
+## 6.14.0
+
+### Minor Changes
+
+- Updated design tokens to align with design specifications and improve multi-theming robustness: _[`#2751`](https://github.com/solid-design-system/solid/pull/2751) [`ec67aa4`](https://github.com/solid-design-system/solid/commit/ec67aa41e64a0eaa44063922272a900d93d33f73) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - sd-accordion:
+    - `--sd-accordion-border-width`
+    - `--sd-accordion-color-icon-fill`
+  - sd-audio
+    - `--sd-audio__slide-bar--inverted-color-background`
+    - `--sd-audio__track-bar--inverted-color-background`
+  - sd-badge
+    - `--sd-badge--blue-color-background`
+  - sd-brandshape
+    - `--sd-brandshape--neutral-100-color-background`
+    - `--sd-brandshape--white-color-background`
+  - sd-breadcrumb
+    - `--sd-breadcrumb__separator--current-color`
+  - sd-button
+    - `--sd-button--primary--hover-color-text`
+    - `--sd-button--primary--inverted--active-color-background`
+    - `--sd-button--secondary--active-color-text`
+    - `--sd-button--secondary--inverted-color-text`
+    - `--sd-button--secondary--inverted--hover-color-background`
+    - `--sd-button--secondary--inverted--active-color-text`
+    - `--sd-button--secondary--size-sm-padding-block`
+    - `--sd-button--secondary--size-md-padding-block`
+    - `--sd-button--secondary--size-lg-padding-block`
+    - `--sd-button--secondary-padding-inline`
+    - `--sd-button--tertiary--active-color-text`
+    - `--sd-button--tertiary--inverted-color-text`
+    - `--sd-button--tertiary--inverted--active-color-text`
+    - `--sd-button--size-lg-height`
+    - `--sd-button--size-lg-icon-height`
+    - `--sd-button--size-md--icon-only-padding-inline`
+    - `--sd-button--size-md-height`
+    - `--sd-button-border-width`
+    - `--sd-button-padding-inline`
+
+    **Renamed**
+    - `--sd-button--size-lg-border-radius` → `--sd-button-border-radius`
+    - `--sd-button--size-md-border-radius` → `--sd-button-border-radius`
+    - `--sd-button--size-sm-border-radius` → `--sd-button-border-radius`
+
+    **Fixed**
+    - `--sd-button--secondary--inverted--color-border` → `--sd-button--secondary--inverted-color-border`
+
+  - sd-chip:
+
+    **Renamed**
+    - `--sd-chip-font-size` → `--sd-marker-font-size`
+    - `--sd-chip-border-width` → `--sd-marker-border-width`
+    - `--sd-chip-font-weight` → `--sd-marker-font-weight`
+
+  - sd-combobox
+    - `--sd-form-control-border-radius`
+    - `--sd-form-control-color-border`
+    - `--sd-form-control--filled__floating-label-color-text`
+    - `--sd-form-control__listbox-border-bottom-left-radius`
+    - `--sd-form-control__listbox-border-bottom-right-radius`
+    - `--sd-form-control__listbox-border-top-left-radius`
+    - `--sd-form-control__listbox-border-top-right-radius`
+    - `--sd-combobox__tag-border-width`
+  - sd-datepicker
+    - `--sd-form-control-color-text`
+    - `--sd-form-control-border-radius`
+    - `--sd-form-control-color-border`
+    - `--sd-form-control--filled__floating-label-color-text`
+    - `--sd-form-control--invalid-color-background`
+    - `--sd-form-control__listbox-border-bottom-left-radius`
+    - `--sd-form-control__listbox-border-bottom-right-radius`
+    - `--sd-form-control__listbox-border-top-left-radius`
+    - `--sd-form-control__listbox-border-top-right-radius`
+    - `--sd-datepicker__date-item--default-color-text`
+    - `--sd-datepicker__date-item--hover--default-color-background`
+    - `--sd-datepicker__date-item--hover--default-color-text`
+    - `--sd-datepicker__date-item--default-color-border`
+    - `--sd-datepicker__date-item--selected-color-text`
+    - `--sd-datepicker__date-item--hover--prev-next-color-background`
+    - `--sd-datepicker__date-item--hover--prev-next-color-text`
+    - `--sd-datepicker__date-item--selected-color-background`
+    - `--sd-datepicker__date-item--selected--hover-color-background`
+    - `--sd-datepicker__date-item--range-color-background`
+    - `--sd-datepicker__date-item--current-color-text`
+    - `--sd-datepicker__date-item--current-font-weight`
+  - sd-dropdown:
+    - `--sd-dropdown-color-background`
+  - sd-flag
+    - `--sd-marker-font-weight`
+    - `--sd-marker-font-size`
+
+    **Renamed**
+    - `--sd-flag-border-width` → `--sd-marker-border-width`
+
+  - sd-header
+    - `--sd-header-padding-bottom`
+    - `--sd-header__underline-color-background`
+    - `--sd-header__underline-height`
+    - `--sd-header__shadow-height`
+  - sd-headline
+    - `--sd-headline--3xl-onwards-color-text`
+  - sd-input
+    - `--sd-form-control-border-radius`
+
+    **Fixed**
+    - `--sd-form-control-color-icon` → `--sd-form-control-color-icon-fill`
+
+  - sd-link
+    - `--interactive--default-color-text`
+  - sd-map-marker
+    - `--sd-map-marker-cluster--hovered-color-text`
+    - `--sd-map-marker--cluster--default-color-background`
+    - `--sd-map-marker--cluster--hover-color-background`
+    - `--sd-map-marker--cluster-color-text`
+    - `--sd-map-marker--main-color-background`
+    - `--sd-map-marker--pin--default-color-background`
+    - `--sd-map-marker--pin--hover-color-background`
+    - `--sd-map-marker--pin-color-text`
+  - sd-menu-item
+
+    **Renamed**
+    - `--sd-menu-color-icon` → `--sd-menu-item-color-icon-fill`
+    - `--sd-menu-color-text` → `--sd-menu-item-color-text`
+    - `--sd-menu--disabled-color-icon` → `--sd-menu-item--disabled-color-icon-fill`
+    - `--sd-menu--disabled-color-text` → `--sd-menu-item--disabled-color-text`
+
+  - sd-notification
+    - `--sd-notification__duration-indicator-color-background`
+  - sd-option
+    - `--sd-form-control-color-border`
+  - sd-pagination
+    - `--sd-pagination--default-border`
+    - `--sd-pagination--inverted-border`
+  - sd-radio-button
+    - `--sd-radio-button--hover-color-background`
+    - `--sd-choice-control-font-weight`
+  - sd-select
+    - `--sd-form-control-border-radius`
+    - `--sd-form-control__listbox-border-bottom-left-radius`
+    - `--sd-form-control__listbox-border-bottom-right-radius`
+    - `--sd-form-control__listbox-border-top-left-radius`
+    - `--sd-form-control__listbox-border-top-right-radius`
+  - sd-skeleton
+    - `--sd-skeleton-color`
+  - sd-step
+    - `--sd-step-color-text`
+  - sd-tag
+    - `--sd-choice-control-font-weight`
+    - `--sd-tag--disabled-color-text`
+
+    **Renamed**
+    - `--sd-tag-font-weight` → `--sd-choice-control-font-weight`
+
+  - sd-tab
+    - `--sd-tab--hover-color-background`
+    - `--sd-choice-control-font-weight`
+    - `--sd-tab--active-color-text`
+    - `--sd-tab-color-text`
+  - sd-teaser-media
+    - `--sd-teaser-media--white--hover-color-background`
+    - `--sd-teaser-media--white-color-background`
+  - sd-teaser
+    - `--sd-teaser-border-radius`
+  - sd-textarea
+    - `--sd-form-control-border-radius`
+    - `--sd-form-control--filled__floating-label-color-text`
+
+  Removed variables
+  - `--sd-tag--disabled-color-border`
+  - `--sd-navigation-item--current-color-text`
+  - `--sd-option--disabled-color-border`
+  - `--sd-audio__timestamp-color-text`
+
+  **Important**: To avoid breaking changes, all variables marked as `renamed` or `deleted` **are still available** under their previous names. Only variables marked as `fixed` have been completely removed. However, this should not be considered a breaking change, as these variables were not functioning correctly.
+
+  If you are using any of the `renamed`, `deleted` or `fixed`css variables manually overriding these in custom themes might lead to problems in future versions of Solid. Use the actual used value instead. Example: Instead of --sd-chip-border-width use --sd-marker-border-width--sd-marker-border-width for your overrides.
+
+  If you need assistance, please reach out to the support channel.
+
 ## 6.13.1
 
 ## 6.13.0

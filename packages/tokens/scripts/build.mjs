@@ -46,7 +46,15 @@ async function runBuild() {
   });
 
   await nextTask('Extracting themes', () => {
-    const toAppend = [{ name: 'icons.css' }, { name: 'overrides.css' }];
+    const toAppend = [
+      { name: 'icons.css' },
+      { name: 'overrides.css' },
+      {
+        name: 'legacy-variables.css',
+        shared: true,
+        process: (css, theme) => `:root, .sd-theme-${theme.name} {\n${css}\n}`
+      }
+    ];
 
     themes = getStylesheetThemes(stylesheet, config);
     themes.forEach(theme => {
@@ -57,10 +65,13 @@ async function runBuild() {
         .trim();
 
       for (const append of toAppend) {
-        const filepath = `${config.buildPath}/${theme.name}/${append.name}`;
+        const filepath = append.shared
+          ? `${config.buildPath}/${append.name}`
+          : `${config.buildPath}/${theme.name}/${append.name}`;
         if (!existsSync(filepath)) continue;
 
-        const css = readFileSync(filepath, { encoding: 'utf-8' }).trim();
+        const cssContent = readFileSync(filepath, { encoding: 'utf-8' });
+        const css = append.shared ? cssContent.trimEnd() : cssContent.trim();
         theme.content = `${theme.content.trim()}\n\n${append.process?.(css, theme) ?? css}`;
       }
 

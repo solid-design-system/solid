@@ -1,0 +1,347 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import '../../../../../components/src/solid-components';
+import '../../../../../components/src/solid-components';
+import RolesInfo from './_RolesInfo.mdx';
+
+<Meta title="Packages/Tokens/Usage" />
+
+# Usage
+
+This page covers advanced usage patterns for `@solid-design-system/tokens`. Make sure you've completed the <sd-link href="?path=/docs/packages-tokens-installation--docs">Installation</sd-link> first.
+
+<RolesInfo />
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="host">Theme Host</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="consumer">Theme Consumer</sd-tab>
+
+  <sd-tab-panel name="host">
+
+## Switching themes
+
+### System preference (Light/Dark Mode)
+
+To automatically respect the user's OS-level preference, use the `prefers-color-scheme` media query on your `<link>` tags:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-light/ui-light.css"
+  media="(prefers-color-scheme: light)"
+/>
+<link
+  rel="stylesheet"
+  href="https://solid-design-system.fe.union-investment.de/tokens/%TOKENS-VERSION%/cdn/themes/ui-dark/ui-dark.css"
+  media="(prefers-color-scheme: dark)"
+/>
+```
+
+For further information on how to make this more dynamic, check out [this article](https://pepelsbey.dev/articles/native-light-dark/).
+
+### Manual control (Class-based theming)
+
+For finer granularity, apply a theme class on `<body>` or any wrapper element. Each theme class follows the pattern `sd-theme-[name]`.
+
+<sd-notification variant="info" open>
+  After importing, `ui-light` is automatically applied if no other theme class is set on `<body>`.
+</sd-notification>
+```html
+<body class="sd-theme-ui-dark">
+  <!-- Your website -->
+</body>
+```
+
+This makes it easy to toggle between themes programmatically, for example when the user switches between light and dark mode.
+
+## Creating your own theme
+
+You can create your own theme by overriding CSS variables. There are two main types of tokens you can customize:
+
+### Primitive tokens
+
+Primitive variables define the base values used across all components. They act as fallbacks for all other variables.
+
+Example — changing the primary color globally:
+
+```css
+--sd-color-primary: 255 0 85;
+```
+
+This change will affect every component that uses the primary color.
+
+### Semantic tokens
+
+Semantic tokens are divided into general and component-specific variables.
+
+#### General semantic tokens
+
+These let you target specific use cases without interfering with other parts that use the same primitive variable.
+
+Example — overriding only the primary background color:
+
+```css
+--background-color-primary: 255 230 238;
+```
+
+This overrides only "primary background" usages while everything else falls back to the primitive tokens.
+
+#### Component-specific semantic tokens
+
+If you want to customize variables for a single component, override its semantic tokens.
+
+Example — changing only the primary background color of `sd-button`:
+
+```css
+--sd-button--primary--default--default-color-background: 255 0 85;
+```
+
+<sd-notification variant="info" open>
+  The full list of available component-specific variables is documented on each component's `docs` page.
+</sd-notification>
+
+Even if a component doesn't yet have full semantic variable support, you can still apply overrides within the component's scope using general semantic tokens:
+
+```css
+sd-button {
+  --background-color-primary: 255 0 85;
+}
+```
+
+This will only affect the primary background color inside `sd-button` components.
+
+## Versioning & migration
+
+<sd-notification variant="warning" open>
+  Make sure the **theme you load** (from `@solid-design-system/tokens`) is at a version **equal to or higher than** the
+  highest `@solid-design-system/components` and `@solid-design-system/styles` version used anywhere on the page —
+  including by any embedded consumers. This will become a hard requirement in a future release — aligning now avoids
+  breakage later.
+</sd-notification>
+
+### Deprecated CSS variables
+
+The following CSS variables are deprecated and will be removed in a future release. Update your custom styles to use the recommended replacements.
+
+<table>
+  <tr>
+    <th>Deprecated variable</th>
+    <th>Replacement</th>
+  </tr>
+  <tr>
+    <td>`--sd-button--size-lg-border-radius`</td>
+    <td>`--sd-button-border-radius`</td>
+  </tr>
+  <tr>
+    <td>`--sd-button--size-md-border-radius`</td>
+    <td>`--sd-button-border-radius`</td>
+  </tr>
+  <tr>
+    <td>`--sd-button--size-sm-border-radius`</td>
+    <td>`--sd-button-border-radius`</td>
+  </tr>
+  <tr>
+    <td>`--sd-button--secondary--inverted--color-border`</td>
+    <td>`--sd-button-secondary-inverted-color-border`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip-font-size`</td>
+    <td>`--sd-marker-font-size`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip-border-width`</td>
+    <td>`--sd-marker-border-width`</td>
+  </tr>
+  <tr>
+    <td>`--sd-chip-font-weight`</td>
+    <td>`--sd-marker-font-weight`</td>
+  </tr>
+  <tr>
+    <td>`--sd-flag-border-width`</td>
+    <td>`--sd-marker-border-width`</td>
+  </tr>
+  <tr>
+    <td>`--sd-form-control-color-icon`</td>
+    <td>`--sd-form-control-color-icon-fill`</td>
+  </tr>
+  <tr>
+    <td>`--sd-menu-color-icon`</td>
+    <td>`--sd-menu-item-color-icon-fill`</td>
+  </tr>
+  <tr>
+    <td>`--sd-menu-color-text`</td>
+    <td>`--sd-menu-item-color-text`</td>
+  </tr>
+  <tr>
+    <td>`--sd-menu--disabled-color-icon`</td>
+    <td>`--sd-menu-item--disabled-color-icon-fill`</td>
+  </tr>
+  <tr>
+    <td>`--sd-menu--disabled-color-text`</td>
+    <td>`--sd-menu-item--disabled-color-text`</td>
+  </tr>
+  <tr>
+    <td>`--sd-tag-font-weight`</td>
+    <td>`--sd-choice-control-font-weight`</td>
+  </tr>
+  <tr>
+    <td>`--sd-tag--disabled-color-border`</td>
+    <td>`--sd-color-border-neutral-500`</td>
+  </tr>
+  <tr>
+    <td>`--sd-navigation-item--current-color-text`</td>
+    <td>`--sd-navigation-item-color-text`</td>
+  </tr>
+  <tr>
+    <td>`--sd-option--disabled-color-border`</td>
+    <td>`--sd-color-border-neutral-500`</td>
+  </tr>
+  <tr>
+    <td>`--sd-audio__timestamp-color-text`</td>
+    <td>`--sd-color-text-neutral-700`</td>
+  </tr>
+  <tr>
+    <td>`--sd-accordion__chevron-color-text`</td>
+    <td>`--sd-accordion-color-icon-fill`</td>
+  </tr>
+</table>
+
+You can also find deprecated variables directly on each component's documentation page.
+
+  </sd-tab-panel>
+
+  <sd-tab-panel name="consumer">
+
+## Using tokens
+
+As a Theme Consumer, you use design tokens (CSS variables, SCSS variables, or Tailwind utilities) to style your custom components. The theme — and therefore the resolved values of these tokens — is provided by the Theme Host.
+
+For setup instructions per format (CSS, SCSS, Tailwind), see the <sd-link href="?path=/docs/packages-tokens-installation--docs">Installation page</sd-link>.
+
+### Key principles
+
+- **Never import or bundle a theme CSS file.** The host provides the theme. Your components inherit it automatically.
+- **Use tokens instead of hard-coded values.** This keeps your styles in sync with the design system and ensures your app looks correct in any theme the host applies (light, dark, brand variants).
+- **Avoid deprecated CSS variables** in your custom styling — check each component's documentation for current replacements. Deprecated variables will be removed in a future release.
+
+## Primitive tokens
+
+Primitive tokens define the base values of the design system — colors, spacing, typography scales, etc. They are theme-independent raw values and act as the foundation for all other tokens.
+
+Use primitive tokens when no semantic token exists for your use case, or when you intentionally want to reference a fixed raw value regardless of context. This is not possible in TailwindCSS, which only exposes semantic tokens.
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="css" variant="container">CSS</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="scss" variant="container">SCSS</sd-tab>
+
+  <sd-tab-panel name="css">
+```css
+.my-element {
+  background-color: rgba(var(--sd-color-primary));
+  color: rgba(var(--sd-color-white));
+}
+```
+  </sd-tab-panel>
+  <sd-tab-panel name="scss">
+```scss
+@import '@solid-design-system/tokens/dist/scss';
+
+.my-element {
+background-color: rgba($sd-color-primary);
+  color: rgba($sd-color-white);
+}
+
+````
+  </sd-tab-panel>
+</sd-tab-group>
+
+## Semantic tokens
+
+Semantic tokens give meaning to raw values — they describe the *intent* (e.g. "primary background", "error text") rather than the actual value. They resolve to primitive tokens under the hood, but can vary per theme.
+
+Prefer semantic tokens over primitive tokens in your custom components. This ensures your styles adapt automatically when the Theme Host switches themes (e.g. light → dark, brand variants).
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="css" variant="container">CSS</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="scss" variant="container">SCSS</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="tw" variant="container">TailwindCSS</sd-tab>
+
+  <sd-tab-panel name="css">
+```css
+.my-element {
+  background-color: rgba(var(--sd-color-background-primary-100));
+  color: rgba(var(--sd-color-text-black));
+}
+````
+
+  </sd-tab-panel>
+  <sd-tab-panel name="scss">
+```scss
+@import '@solid-design-system/tokens/dist/scss';
+
+.my-element {
+background-color: rgba($sd-color-background-primary-100);
+  color: rgba($sd-color-text-black);
+}
+
+````
+  </sd-tab-panel>
+  <sd-tab-panel name="tw">
+```html
+<div class="bg-primary-100 text-black">...</div>
+````
+
+  </sd-tab-panel>
+</sd-tab-group>
+
+## Local development
+
+When developing in isolation (e.g. Storybook, local dev server), no Theme Host is present — so you need to import a theme yourself for testing purposes.
+
+<sd-notification variant="warning" open>
+  Make sure this dev-only theme import does **not** end up in your production bundle. Use a dev-only entry point,
+  Storybook-specific configuration, or a build-time condition that strips the import for production.
+</sd-notification>
+
+Example for Storybook's `preview.js`:
+
+```js
+import '@solid-design-system/tokens/dist/themes/ui-light/ui-light.css';
+```
+
+## Optional: Standalone fallback
+
+If your app should be able to run standalone, you may add a runtime fallback that loads a theme.
+
+You can load the theme however fits your setup — including lazy loading via a dynamically injected `<link>` tag. What matters is **scoping**: the fallback theme must never leak into the host's document.
+
+<sd-notification variant="warning" open>
+  **Always scope the fallback theme to your own subtree.** Never inject unscoped theme variables into the host's
+  document. Options include:
+
+- Wrapping the theme's CSS variables inside a selector targeting your app's root element (e.g. `#my-app { ... }`)
+- Injecting the theme `<link>` inside a Shadow DOM boundary
+
+Injecting global, unscoped theme variables can silently override the host's theme and cause hard-to-debug styling
+issues across the entire page.
+</sd-notification>
+
+## Versioning coordination
+
+Coordinate with the Theme Host team on versioning:
+
+- The **theme the host loads** must be from a `@solid-design-system/tokens` version **equal to or higher than** the `@solid-design-system/components` and `@solid-design-system/styles` versions you deploy.
+- If you upgrade your components or styles, notify the host so they can upgrade their theme accordingly.
+- This will become a hard requirement in a future release — aligning now avoids breakage later.
+
+{/*  */}
+
+  </sd-tab-panel>
+
+</sd-tab-group>

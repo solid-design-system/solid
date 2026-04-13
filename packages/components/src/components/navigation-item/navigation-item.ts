@@ -32,13 +32,13 @@ import SolidElement from '../../internal/solid-element';
  * @csspart description - The component's description area below its main content.
  * @csspart divider - The component's optional top divider.
  *
- * @cssproperty --sd-navigation-item--current-color-text - The navigation-item text color when current state.
  * @cssproperty --sd-navigation-item-color-text - The navigation-item text color.
  * @cssproperty --sd-navigable-border-radius - The navigation-item border radius on hover and active state.
  * @cssproperty --sd-navigable-font-size - The navigation-item font size.
  * @cssproperty --sd-navigable__current-indicator-border-radius - The navigation-item current indicator border radius value.
  * @cssproperty --sd-navigable__current-indicator-height - The horizontal navigation-item current indicator height.
  * @cssproperty --sd-navigable__current-indicator-width - The vertical navigation-item current indicator width.
+ * @cssproperty --sd-navigation-item--current-color-text - This custom property is deprecated. Use `--sd-navigation-item-color-text` instead.
  *
  */
 @customElement('sd-navigation-item')
@@ -349,6 +349,11 @@ export default class SdNavigationItem extends SolidElement {
 
       :host([vertical]) {
         @apply block;
+      }
+
+      /* TODO clean sd-navigation-item--current-color-text and delete this class from line 210 (breaking change) */
+      .sd-navigation-item--current-color-text {
+        color: rgb(var(--sd-navigation-item--current-color-text, var(--sd-navigation-item-color-text)));
       }
 
       details summary::-webkit-details-marker {
