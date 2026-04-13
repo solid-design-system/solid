@@ -1,0 +1,261 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "items",
+    "pageInfo"
+  ],
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "content",
+          "content_type",
+          "fields",
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "content_type": {
+            "type": "string",
+            "enum": [
+              "Issue",
+              "PullRequest"
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "content": {
+            "type": "object",
+            "required": [
+              "number",
+              "title",
+              "html_url"
+            ],
+            "properties": {
+              "number": {
+                "type": "integer"
+              },
+              "title": {
+                "type": "string"
+              },
+              "html_url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "state": {
+                "type": "string",
+                "enum": [
+                  "open",
+                  "closed"
+                ]
+              },
+              "body": {
+                "type": "string"
+              },
+              "assignees": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "login"
+                  ],
+                  "properties": {
+                    "login": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "labels": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "color": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "fields": {
+            "type": "array",
+            "description": "Project fields requested via the 'fields' parameter. Key is 'name', not 'field_name'.",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "data_type",
+                "value"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Field display name, e.g. 'Title', 'Status', 'Priority', 'Iteration'."
+                },
+                "data_type": {
+                  "type": "string",
+                  "enum": [
+                    "title",
+                    "assignees",
+                    "single_select",
+                    "labels",
+                    "iteration"
+                  ]
+                },
+                "value": {
+                  "description": "Shape depends on data_type.",
+                  "oneOf": [
+                    {
+                      "description": "data_type: title",
+                      "type": "object",
+                      "properties": {
+                        "html": {
+                          "type": "string"
+                        },
+                        "raw": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    {
+                      "description": "data_type: assignees",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "login": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "description": "data_type: single_select (Status, Priority)",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "object",
+                          "properties": {
+                            "html": {
+                              "type": "string"
+                            },
+                            "raw": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "description": {
+                          "type": "object",
+                          "properties": {
+                            "html": {
+                              "type": "string"
+                            },
+                            "raw": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "description": "data_type: labels",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "color": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "description": "data_type: iteration",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "completed": {
+                          "type": "boolean"
+                        },
+                        "duration": {
+                          "type": "integer"
+                        },
+                        "start_date": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "title": {
+                          "type": "object",
+                          "properties": {
+                            "html": {
+                              "type": "string"
+                            },
+                            "raw": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "pageInfo": {
+      "type": "object",
+      "required": [
+        "hasNextPage",
+        "hasPreviousPage"
+      ],
+      "properties": {
+        "hasNextPage": {
+          "type": "boolean"
+        },
+        "hasPreviousPage": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}
