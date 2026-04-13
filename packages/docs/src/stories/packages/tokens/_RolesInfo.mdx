@@ -1,0 +1,34 @@
+There are two roles when working with tokens: **Theme Host** and **Theme Consumer**. Your role depends on whether you own the page or are embedded inside someone else's page.
+If you build a standalone page with your own components, you fulfill both roles — you load a theme as a Host and use tokens in your components as a Consumer.
+
+<sd-accordion summary="Theme Host vs. Theme Consumer – what's the difference?">
+
+<table class="sd-table sb-unstyled">
+  <thead>
+    <tr>
+      <th class="sd-table-cell sd-table-cell--bg-primary-100"></th>
+      <th class="sd-table-cell sd-table-cell--bg-primary-100">Theme Host</th>
+      <th class="sd-table-cell sd-table-cell--bg-primary-100">Theme Consumer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="sd-table-cell"><strong>You own</strong></td>
+      <td class="sd-table-cell">The <code>&lt;body&gt;</code> element of the page</td>
+      <td class="sd-table-cell">A widget, micro-frontend, or app embedded inside a host page</td>
+    </tr>
+    <tr>
+      <td class="sd-table-cell"><strong>Examples</strong></td>
+      <td class="sd-table-cell">CMS platforms, landing pages, shell apps, portal pages</td>
+      <td class="sd-table-cell">Microservices, widgets, apps built by other teams</td>
+    </tr>
+    <tr>
+      <td class="sd-table-cell"><strong>Your job</strong></td>
+      <td class="sd-table-cell">Load a theme <strong>once</strong> for the whole page — every component inherits it automatically</td>
+      <td class="sd-table-cell">Use design tokens for custom styling — <strong>never actively load a theme yourself</strong></td>
+    </tr>
+  </tbody>
+</table>
+</sd-accordion>
+
+Use the tabs below to see the specific setup instructions for each role.

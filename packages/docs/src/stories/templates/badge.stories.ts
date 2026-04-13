@@ -98,7 +98,7 @@ export const NavigationItemWithBadge = {
       <sd-header class="max-w-[650px]" fixed>
         <div class="flex justify-between items-center">
           <a class="flex flex-shrink" href="#">
-            <img class="h-8" src="images/logo-unioninvestment-lg.svg" alt="Logo" />
+            <div class="h-8 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
           </a>
           <div class="flex">
             <sd-navigation-item class="relative">

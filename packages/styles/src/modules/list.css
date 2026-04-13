@@ -128,7 +128,8 @@
 
     > sd-icon:first-of-type,
     > .sd-list--icon__icon:first-of-type {
-      @apply absolute left-0 text-3xl text-primary;
+      @apply absolute left-0 text-3xl;
+      color: rgb(var(--sd-color-icon-fill-primary));
     }
   }
 

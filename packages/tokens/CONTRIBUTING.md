@@ -41,3 +41,12 @@ The script:
 - Shows usage statistics and lists unused variables
 
 This helps identify dead variables that can be removed from the design system.
+
+### Deleting and Renaming Variables from Figma
+
+Variables must not be removed from themes.
+
+If a variable is renamed or deleted in Figma but already exists in the codebase, it must stay in `legacy-variables.css` and reference the new variable or value.
+This ensures that newer tokens packages remain compatible with older versions of the components and styles packages.
+
+Removing customizable CSS variables is a breaking change, so a transition period may be required. During this period, a fallback must be added in the components to ensure the old variable continues to work. Deprecated variables must be documented in the component documentation pages using the standard sentence: <i>This custom property is deprecated. Use `NEW VARIABLE` instead.</i> The `deprecated` tag is styled automatically.

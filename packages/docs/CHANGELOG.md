@@ -1,5 +1,24 @@
 # @solid-design-system/docs
 
+## 2.8.2
+
+### Patch Changes
+
+- Fixes and improvements for multi-theming: _[`#2751`](https://github.com/solid-design-system/solid/pull/2751) [`ec67aa4`](https://github.com/solid-design-system/solid/commit/ec67aa41e64a0eaa44063922272a900d93d33f73) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - Added themed logos to the following templates: `sd-header`, `sd-badge`, `sd-breadcrumb`, `sd-header-navigation`
+  - Fixed accessibility tests for `sd-headline` when used with `sd-mark`
+  - Fixed gradient styling in `sd-expandable` for multi-theming
+  - Fixed icon colors in `sd-map-marker`
+
+## 2.8.1
+
+### Patch Changes
+
+- - Fixed the mobile view responsiveness of `sd-combobox` when using multiple tags. _[`#2867`](https://github.com/solid-design-system/solid/pull/2867) [`9e4f31d`](https://github.com/solid-design-system/solid/commit/9e4f31da1d5479a45e54c8adec929b7410bdb87a) [@martascorreia](https://github.com/martascorreia)_
+
+  - Fixed the mobile clipping for the `sd-combobox` stories in the Documentation.
+  - Fixed the mobile background when focused for the components `sd-combobox`, `sd-input`, `sd-select`, `sd-datepicker` and `sd-textarea`.
+
 ## 2.8.0
 
 ### Minor Changes

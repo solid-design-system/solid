@@ -244,10 +244,7 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
           <span
             part="label"
             id="label"
-            class=${cx(
-              'select-none inline-block ml-2',
-              this.disabled ? 'text-neutral-500' : this.showInvalidStyle ? 'text-error' : 'sd-switch-color-text'
-            )}
+            class=${cx('select-none inline-block ml-2', this.disabled ? 'text-neutral-500' : 'sd-switch-color-text')}
           >
             <slot></slot>
           </span>
