@@ -164,6 +164,32 @@ console.log("_**" + data.items.length + "** unassigned items_");
 '
 ```
 
+## Issue Type Mapping
+
+Issue type can be derived from **labels** and **title prefix** — both already available in query results. This is useful for downstream skills (e.g. `check-issue-dor`) that need to apply type-specific evaluation criteria.
+
+**Detection priority**: Check labels first (more reliable), then fall back to title prefix.
+
+| Labels | Title Prefix | Resolved Type | Template File |
+|--------|-------------|---------------|---------------|
+| `🙌 Epic` + `style-components` | `feat:` | New Style Component (Epic) | `new-style-component-issue-template.md` |
+| `🙌 Epic` | `feat:` | Epic | `new-component-issue-template.md` or `feature-issue-template.md` |
+| `🎨 figma` + `Subtask` | `feat[design]:` | Design Subtask | `subtask-template-design.md` |
+| `🔧 code` + `Subtask` | `feat[dev]:` | Dev Subtask | `subtask-template-dev.md` |
+| `Subtask` + `documentation` | `docs:` | Release Notes Subtask | `release-notes-subtask-template.md` |
+| `🎨 figma` (no `Subtask`) | `feat[design]:` | Simple Design Feature | `simple-design-feature-issue-template.md` |
+| `🔧 code` (no `Subtask`) | `feat[dev]:` | Simple Dev Feature | `simple-dev-feature-template.md` |
+| — | `fix:` | Bugfix | `fix-issue-template.md` |
+| — | `docs:` | Documentation | `docs-issue-template.md` |
+| — | `perf:` | Performance | `performance-issue-template.md` |
+| — | `test:` | Test | `test-issue-template.md` |
+| — | `ci:` | CI | `ci-issue-template.md` |
+| — | `chore:` | Chore | `chore-issue-template.md` |
+
+All template files are in `.github/ISSUE_TEMPLATE/`. To get the current DoR/DoD sections and expected structure for a type, **read the template file directly** rather than hardcoding — this keeps the mapping current when templates are updated.
+
+**Type** is an optional output column. When included, derive it using the mapping above in the inline Node.js script.
+
 ## Constraints
 
 - Use the field IDs from the Known Field IDs table.
