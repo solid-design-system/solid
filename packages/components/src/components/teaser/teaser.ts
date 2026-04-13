@@ -29,6 +29,7 @@ import type { PropertyValues } from 'lit';
  * @cssproperty --sd-teaser--neutral-100-color-background - The background color for neutral‑100 teasers.
  * @cssproperty --sd-teaser--neutral-400-color-border - The border color for neutral‑400 teasers.
  * @cssproperty --sd-teaser--primary-100-color-background - The background color for primary‑100 teasers.
+ * @cssproperty --sd-teaser-border-radius - The border radius for teasers.
  */
 
 @customElement('sd-teaser')
@@ -102,7 +103,7 @@ export default class SdTeaser extends SolidElement {
     return html`
       <div
         class=${cx(
-          'flex',
+          'flex sd-teaser-border-radius',
           {
             white: 'bg-white',
             'white border-neutral-400': 'bg-white border sd-teaser--neutral-400-color-border',

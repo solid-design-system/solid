@@ -39,6 +39,8 @@ import type { SolidFormControl } from '../../internal/solid-element';
  *
  * @cssproperty --sd-form-control--invalid-color-background - The background color for form controls in invalid state.
  * @cssproperty --sd-form-control-color-text - The text color for form controls.
+ * @cssproperty --sd-form-control-border-radius - The border radius for form controls.
+ * @cssproperty --sd-form-control--filled__floating-label-color-text - The floating label text color.
  */
 @customElement('sd-textarea')
 export default class SdTextarea extends SolidElement implements SolidFormControl {
@@ -399,7 +401,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                   id="label"
                   part="form-control-floating-label"
                   class=${cx(
-                    'absolute left-4 z-20 pointer-events-none transition-all duration-200',
+                    'absolute left-4 z-20 transition-all duration-200 cursor-text',
                     textSize,
                     !isFloatingLabelActive ? 'top-2.5' : 'top-2 text-xs'
                   )}
@@ -423,7 +425,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           <div
             part="border"
             class=${cx(
-              'absolute w-full h-full pointer-events-none border rounded-default transition-[border] duration-medium ease-in-out',
+              'absolute w-full h-full pointer-events-none border form-control-border-radius transition-[border] duration-medium ease-in-out',
               {
                 disabled: 'border-neutral-500',
                 visuallyDisabled: 'border-neutral-500',
@@ -440,18 +442,18 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           <div
             part="base"
             class=${cx(
-              'textarea h-full flex items-top rounded-default group transition-colors duration-medium hover:duration-fast ease-in-out',
+              'textarea h-full flex items-top form-control-border-radius group transition-colors duration-medium hover:duration-fast ease-in-out',
               this.floatingLabel && 'pt-6',
               {
                 sm: 'textarea-sm',
                 md: 'textarea-md',
                 lg: 'textarea-lg'
               }[this.size],
-              !this.disabled && !this.readonly && !this.visuallyDisabled ? 'hover:bg-neutral-200' : '',
+              !this.disabled && !this.readonly && !this.visuallyDisabled
+                ? 'hover:[@media(hover:hover)]:bg-neutral-200'
+                : '',
               this.readonly ? 'bg-neutral-100' : 'bg-white',
-              textareaState === 'disabled' || textareaState === 'visuallyDisabled'
-                ? 'text-neutral-500'
-                : 'form-control-color-text',
+              textareaState === 'disabled' || textareaState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black',
               ['invalid', 'activeInvalid'].includes(textareaState) && 'form-control--invalid-color-background'
             )}
           >

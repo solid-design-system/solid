@@ -27,8 +27,11 @@ let id = 0;
  * @cssproperty --sd-navigable-border-radius: The tab border radius on hover.
  * @cssproperty --sd-navigable__current-indicator-height: The tab current indicator height.
  * @cssproperty --sd-navigable__current-indicator-border-radius: The tab current indicator border radius value.
- * @cssproperty --sd-color-background - The background color when on hover state.
+ * @cssproperty --sd-tab--hover-color-background - The background color when on hover state.
  * @cssproperty --sd-tab-color-border - The border color for the tab.
+ * @cssproperty --sd-choice-control-font-weight - The font weight for the active tab.
+ * @cssproperty --sd-tab--active-color-text - The text color for the active tab.
+ * @cssproperty --sd-tab-color-text - The text color for the tabs.
  */
 @customElement('sd-tab')
 export default class SdTab extends SolidElement {
@@ -93,14 +96,14 @@ export default class SdTab extends SolidElement {
       <div
         part="base"
         class=${cx(
-          'inline-flex justify-center min-w-max items-center h-12 px-3 leading-none select-none cursor-pointer group relative',
+          'inline-flex justify-center min-w-max items-center h-12 px-3 leading-none select-none cursor-pointer group relative choice-control-font-weight',
           'outline-hidden focus-visible:focus-outline outline-2 !-outline-offset-2 transition-all duration-fast ease-in-out',
           this.variant === 'container'
             ? 'tab-container-border bg-white rounded-[4px_4px_0_0]'
             : 'navigable-border-radius',
           this.variant === 'container' && this.active && 'tab--active-container-border bg-white',
-          this.disabled || this.visuallyDisabled ? '!cursor-not-allowed' : 'hover:color-background',
-          this.active && 'z-20'
+          this.disabled || this.visuallyDisabled ? '!cursor-not-allowed' : 'hover:sd-tab--hover-color-background',
+          this.active && 'z-20 sd-tab--active-color-text'
         )}
         tabindex=${!this.active || this.disabled ? '-1' : '0'}
       >
@@ -114,10 +117,22 @@ export default class SdTab extends SolidElement {
             name="left"
             class=${cx(
               slots.left && 'block pr-2',
-              this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary'
+              this.disabled || this.visuallyDisabled
+                ? 'text-neutral-500'
+                : this.active
+                  ? 'sd-tab--active-color-text'
+                  : 'sd-tab-color-text'
             )}
           ></slot>
-          <slot class=${cx(this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-primary')}></slot>
+          <slot
+            class=${cx(
+              this.disabled || this.visuallyDisabled
+                ? 'text-neutral-500'
+                : this.active
+                  ? 'sd-tab--active-color-text'
+                  : 'sd-tab-color-text'
+            )}
+          ></slot>
 
           ${this.variant === 'container'
             ? html`

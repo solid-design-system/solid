@@ -1,5 +1,71 @@
 # @solid-design-system/components
 
+## 6.14.1
+
+### Patch Changes
+
+- Fixed `sd-textarea` textarea focus handling when clicking the floating label. _[`#2892`](https://github.com/solid-design-system/solid/pull/2892) [`b8af9d9`](https://github.com/solid-design-system/solid/commit/b8af9d9059369175577cecffd0354af33e345ab9) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 6.14.0
+
+### Patch Changes
+
+- Small fixes and improvements: _[`#2751`](https://github.com/solid-design-system/solid/pull/2751) [`ec67aa4`](https://github.com/solid-design-system/solid/commit/ec67aa41e64a0eaa44063922272a900d93d33f73) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - Improved the `bold` font weight for the kid theme
+  - Fixed inverted thumb color in `sd-audio`
+  - Corrected `sd-button` size definitions
+  - Fixed invalid state colors in `sd-checkbox`
+  - Fixed listbox shadow in `sd-combobox` and `sd-select`
+  - Removed white border from the selected day in `sd-datepicker`
+  - Removed overlay opacity from `sd-dialog`
+  - Fixed outline color in `sd-drawer`
+  - Fixed gradient colors for `sd-expandable` in multi-theming
+  - Fixed gradient variants for `sd-flipcard` and `sd-teaser-media` in multi-theming
+  - Fixed current text color in `sd-navigation-item`
+  - Fixed text size for `sd-option` in `sm` size
+  - Corrected `sd-radio-button` heights when used inside `sd-radio-group`
+  - Fixed error message text color in `sd-radio` and `sd-switch`
+  - Fixed `sd-step` tail color on hover
+  - Fixed gradient variant opacities in `sd-teaser-media`
+  - Add `deprecated`attribute to indicate deprecated css variables
+
+### 📈 Stats
+
+- Uncompressed: 610 KB (+14 KB / +2%)
+- Gzipped: 137 KB (+2 KB / +1%)
+
+## 6.13.1
+
+### Patch Changes
+
+- - Fixed the mobile view responsiveness of `sd-combobox` when using multiple tags. _[`#2867`](https://github.com/solid-design-system/solid/pull/2867) [`9e4f31d`](https://github.com/solid-design-system/solid/commit/9e4f31da1d5479a45e54c8adec929b7410bdb87a) [@martascorreia](https://github.com/martascorreia)_
+
+  - Fixed the mobile clipping for the `sd-combobox` stories in the Documentation.
+  - Fixed the mobile background when focused for the components `sd-combobox`, `sd-input`, `sd-select`, `sd-datepicker` and `sd-textarea`.
+
+- Improved `sd-combobox` keyboard handling by correctly managing focus to fix accessibility issues. _[`#2880`](https://github.com/solid-design-system/solid/pull/2880) [`8862167`](https://github.com/solid-design-system/solid/commit/8862167338777f565d8dd0aac4a07979ca733441) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+### 📈 Stats
+
+- Uncompressed: 596 KB (+1 KB / +0%)
+- Gzipped: 135 KB (unchanged)
+
+## 6.13.0
+
+### Minor Changes
+
+- Extended `sd-brandshape` with new transparent variants to be used on image backgrounds: _[`#2874`](https://github.com/solid-design-system/solid/pull/2874) [`80fa069`](https://github.com/solid-design-system/solid/commit/80fa0693fea2956922d000c83b29be9d191eb961) [@smfonseca](https://github.com/smfonseca)_
+  - `primary|80`
+  - `white|80`
+
+  Added new templates showcasing usage of transparent variant `primary|80` and variant `image` together with `sd-copyright`.
+
+## 6.12.1
+
+### Patch Changes
+
+- Fixed `sd-combobox` input value handling when pressing `tab` if there is no matching option in the selection list. _[`#2860`](https://github.com/solid-design-system/solid/pull/2860) [`e6b5dd4`](https://github.com/solid-design-system/solid/commit/e6b5dd4e2065a5b70762805e77816de996f3abe8) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 6.12.0
 
 ### Minor Changes

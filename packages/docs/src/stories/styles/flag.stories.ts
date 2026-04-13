@@ -6,6 +6,12 @@ const { argTypes, parameters } = storybookDefaults('sd-flag');
 const { overrideArgs } = storybookHelpers('sd-flag');
 const { generateTemplate } = storybookTemplate('sd-flag');
 
+/**
+ *
+ * <sd-notification variant="info" open class="only-theme-kid mb-4">Add "shadow-sm" manually with css property box-shadow.</sd-notification>
+ *
+ */
+
 export default {
   title: 'Styles/sd-flag',
   tags: ['!dev', 'autodocs'],

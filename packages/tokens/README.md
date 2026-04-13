@@ -5,8 +5,9 @@
 
 # @solid-design-system/tokens
 
-The Solid Design System Tokens package provides a collection of themes, design tokens for colors, typography and spacing. It ensures design consistency and collaboration between our designers and developers when building components for the Solid Design System.
+The `@solid-design-system/tokens` package is the foundation of the Solid Design System. It ships **Design Tokens** — the raw values (colors, spacing, typography, etc.) that power every component and style. It ensures design consistency and collaboration between our designers and developers when building components for the Solid Design System.
 
-Themes can be used for different purposes such as dark and light mode or to align with a specific brand. For further information on how to work with themes go to [Multi theming documentation](./?path=/docs/packages-tokens-installation--docs).
+These tokens are exposed in two forms:
 
-Check out the [full documentation](https://solid-design-system.fe.union-investment.de/docs/) for detailed information.
+- **Themes** — pre-built CSS files that resolve tokens into a visual style (e.g. `ui-light`, `ui-dark`, brand themes). Themes are loaded once per page and inherited by all components automatically.
+- **Token utilities** — CSS variables, SCSS variables, and Tailwind configuration that let you consume tokens directly when building custom components or layouts.

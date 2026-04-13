@@ -1014,16 +1014,6 @@
           "description": "16px",
           "type": "float",
           "value": "16"
-        },
-        "3xl": {
-          "description": "32px",
-          "type": "float",
-          "value": "32"
-        },
-        "4xl": {
-          "description": "40px",
-          "type": "float",
-          "value": "40"
         }
       },
       "leading": {
@@ -1051,11 +1041,6 @@
           "description": "Used for text base (size: 16, line-height: 150%)",
           "type": "float",
           "value": "36"
-        },
-        "12": {
-          "description": "Used for text 3xl (size: 32, line-height: 120%)",
-          "type": "float",
-          "value": "48"
         },
         "9,5": {
           "description": "Used for text 3xl, mobile text 4xl (size: 32, line-height: 120%)",
@@ -1200,7 +1185,7 @@
       "azure": {
         "50": {
           "type": "color",
-          "value": "rgba(0, 102, 179, 0.05)"
+          "value": "#f2f7fb"
         },
         "100": {
           "description": "color has same luminance as step 100",
@@ -1225,7 +1210,7 @@
         "400": {
           "description": "color has same luminance as step 100",
           "type": "color",
-          "value": "#6681a4"
+          "value": "#4d94ca"
         },
         "500": {
           "type": "color",
@@ -1376,7 +1361,7 @@
         },
         "100": {
           "type": "color",
-          "value": "#edf0f4"
+          "value": "#f5f7f9"
         },
         "200": {
           "type": "color",
@@ -1694,6 +1679,11 @@
           "description": "opacity 100%",
           "type": "float",
           "value": "100"
+        },
+        "opacity-0": {
+          "description": "opacity 50%",
+          "type": "float",
+          "value": "0"
         }
       }
     },
@@ -2624,6 +2614,52 @@
             "type": "color",
             "value": "{ui-light.utilities.color.neutral.800}"
           }
+        },
+        "xs": {
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "{ui-light.utilities.color.neutral.800}"
+          },
+          "x": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "y": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "blur": {
+            "type": "float",
+            "value": "1.5"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "listbox": {
+          "x": {
+            "type": "float",
+            "value": "0"
+          },
+          "y": {
+            "type": "float",
+            "value": "1"
+          },
+          "blur": {
+            "type": "float",
+            "value": "3"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          },
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "rgba(81, 81, 81, 0.75)"
+          }
         }
       },
       "opacity": {
@@ -2685,6 +2721,11 @@
         }
       },
       "sizing": {
+        "0": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.0}"
+        },
         "1": {
           "description": "8px",
           "type": "float",
@@ -2845,6 +2886,10 @@
         "1,5": {
           "type": "float",
           "value": "{core.ui.sizing.1,5}"
+        },
+        "2,5": {
+          "type": "float",
+          "value": "{core.ui.sizing.2,5}"
         }
       },
       "rounded": {
@@ -3220,65 +3265,6 @@
       }
     },
     "components": {
-      "sd-audio": {
-        "__timestamp": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.black.default}"
-            }
-          }
-        },
-        "--inverted": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.white.default}"
-            }
-          }
-        },
-        "__slide-bar": {
-          "--inverted": {
-            "color": {
-              "border": {
-                "description": "Used for inverted dividers",
-                "type": "color",
-                "value": "{ui-light.utilities.color.primary.400}"
-              }
-            }
-          }
-        }
-      },
-      "sd-accordion": {
-        "__chevron": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.default}"
-            }
-          }
-        },
-        "color": {
-          "text": {
-            "type": "color",
-            "value": "{ui-light.utilities.color.text.primary.default}"
-          }
-        },
-        "__indicator": {
-          "color": {
-            "type": "color",
-            "value": "{ui-light.utilities.color.border.accent.default}"
-          }
-        },
-        "padding-block": {
-          "type": "float",
-          "value": "{ui-light.utilities.spacing.3}"
-        },
-        "border-width": {
-          "type": "float",
-          "value": "{ui-light.utilities.sizing.0,25}"
-        }
-      },
       "sd-breadcrumb": {
         "__separator": {
           "color": {
@@ -3306,6 +3292,7 @@
           }
         },
         "padding-bottom": {
+          "description": "Is this used in code?",
           "type": "float",
           "value": "0"
         },
@@ -3319,6 +3306,12 @@
               "type": "color",
               "value": "rgba(255, 255, 255, 0.00)"
             }
+          }
+        },
+        "__shadow": {
+          "height": {
+            "type": "float",
+            "value": "{ui-light.utilities.sizing.1}"
           }
         }
       },
@@ -3394,14 +3387,6 @@
           "type": "string",
           "value": "{ui-light.utilities.font-weight.normal}"
         },
-        "--disabled": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.neutral.500}"
-            }
-          }
-        },
         "--size": {
           "lg": {
             "font-size": {
@@ -3415,6 +3400,15 @@
               "value": "{ui-light.utilities.text.sm}"
             }
           }
+        },
+        "--disabled": {
+          "color": {
+            "text": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.500}"
+            }
+          }
         }
       },
       "form-control": {
@@ -3424,12 +3418,9 @@
             "value": "{ui-light.utilities.color.neutral.800}"
           },
           "text": {
+            "description": "Used for label ",
             "type": "color",
             "value": "{ui-light.utilities.color.text.black.default}"
-          },
-          "icon-fill": {
-            "type": "color",
-            "value": "{ui-light.utilities.color.primary.default}"
           }
         },
         "--invalid": {
@@ -3437,14 +3428,6 @@
             "background": {
               "type": "color",
               "value": "{ui-light.utilities.color.white.default}"
-            }
-          }
-        },
-        "__tooltip": {
-          "color": {
-            "icon": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.icon-fill.primary.default}"
             }
           }
         },
@@ -3456,6 +3439,24 @@
                 "value": "{ui-light.utilities.color.text.neutral.700}"
               }
             }
+          }
+        },
+        "__listbox": {
+          "border-bottom-left-radius": {
+            "type": "float",
+            "value": "{ui-light.utilities.rounded.default}"
+          },
+          "border-bottom-right-radius": {
+            "type": "float",
+            "value": "{ui-light.utilities.rounded.default}"
+          },
+          "border-top-left-radius": {
+            "type": "float",
+            "value": "{ui-light.utilities.rounded.default}"
+          },
+          "border-top-right-radius": {
+            "type": "float",
+            "value": "{ui-light.utilities.rounded.default}"
           }
         },
         "border-radius": {
@@ -3544,6 +3545,11 @@
               "background": {
                 "type": "color",
                 "value": "{ui-light.utilities.color.primary.500}"
+              },
+              "text": {
+                "description": "Used for inverted hover interaction button label",
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.100}"
               }
             }
           }
@@ -3555,6 +3561,11 @@
                 "description": "Default icon color ",
                 "type": "color",
                 "value": "{ui-light.utilities.color.primary.200}"
+              },
+              "text": {
+                "description": "Used for pressed interaction",
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.800}"
               }
             }
           },
@@ -3571,7 +3582,7 @@
             "--hover": {
               "color": {
                 "text": {
-                  "description": "Default icon color ",
+                  "description": "Used for inverted hover interaction button label",
                   "type": "color",
                   "value": "{ui-light.utilities.color.primary.100}"
                 },
@@ -3587,12 +3598,22 @@
                 "background": {
                   "type": "color",
                   "value": "{ui-light.utilities.color.primary.800}"
+                },
+                "text": {
+                  "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.200}"
                 }
               }
             },
             "color": {
               "border": {
                 "description": "Used for buttons, inverted focus state",
+                "type": "color",
+                "value": "{ui-light.utilities.color.white.default}"
+              },
+              "text": {
+                "description": "Inverted icon color",
                 "type": "color",
                 "value": "{ui-light.utilities.color.white.default}"
               }
@@ -3615,6 +3636,34 @@
                 "value": "{ui-light.utilities.color.neutral.500}"
               }
             }
+          },
+          "--size": {
+            "lg": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "11"
+              }
+            },
+            "md": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "7"
+              }
+            },
+            "sm": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "4.5"
+              }
+            }
+          },
+          "padding-inline": {
+            "description": "dev only!",
+            "type": "float",
+            "value": "15"
           }
         },
         "--tertiary": {
@@ -3648,7 +3697,19 @@
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{ui-light.utilities.color.primary.800}"
+                },
+                "text": {
+                  "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.200}"
                 }
+              }
+            },
+            "color": {
+              "text": {
+                "description": "Inverted icon color",
+                "type": "color",
+                "value": "{ui-light.utilities.color.white.default}"
               }
             }
           },
@@ -3658,6 +3719,11 @@
                 "description": "Default icon color ",
                 "type": "color",
                 "value": "{ui-light.utilities.color.primary.200}"
+              },
+              "text": {
+                "description": "Used for pressed interaction",
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.800}"
               }
             }
           },
@@ -3680,6 +3746,11 @@
             }
           }
         },
+        "padding-inline": {
+          "description": "sd-button&#39;s left right padding (except for icon-only &amp; loading variant)",
+          "type": "float",
+          "value": "{ui-light.utilities.spacing.4}"
+        },
         "--size": {
           "md": {
             "font-size": {
@@ -3687,17 +3758,30 @@
               "value": "{ui-light.utilities.text.base}"
             },
             "padding-block": {
+              "description": "Top bottom padding for sd-button md variant",
               "type": "float",
               "value": "{ui-light.utilities.spacing.2}"
             },
             "border-radius": {
               "type": "float",
               "value": "{ui-light.utilities.rounded.default}"
+            },
+            "min-height": {
+              "type": "float",
+              "value": "{ui-light.utilities.sizing.10}"
+            },
+            "--icon": {
+              "only": {
+                "padding-inline": {
+                  "type": "float",
+                  "value": "{ui-light.utilities.sizing.2,5}"
+                }
+              }
             }
           },
           "lg": {
             "icon": {
-              "_font-size": {
+              "height": {
                 "type": "float",
                 "value": "{ui-light.utilities.sizing.6}"
               }
@@ -3706,13 +3790,15 @@
               "type": "float",
               "value": "{ui-light.utilities.text.base}"
             },
-            "border-radius": {
-              "type": "float",
-              "value": "{ui-light.utilities.rounded.default}"
-            },
             "padding-block": {
+              "description": "Top bottom padding for sd-button lg variant",
               "type": "float",
               "value": "{ui-light.utilities.spacing.3}"
+            },
+            "min-height": {
+              "description": "Used for icon-only and loading variant",
+              "type": "float",
+              "value": "{ui-light.utilities.sizing.12}"
             }
           },
           "sm": {
@@ -3726,9 +3812,13 @@
             },
             "padding-block": {
               "type": "float",
-              "value": "{ui-light.utilities.spacing.2}"
+              "value": "5.5"
             }
           }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "{ui-light.utilities.rounded.default}"
         },
         "font-weight": {
           "type": "string",
@@ -3797,6 +3887,10 @@
               }
             }
           }
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{ui-light.utilities.border-width.default}"
         }
       },
       "sd-footnotes": {
@@ -3816,7 +3910,7 @@
         "--active": {
           "color": {
             "text": {
-              "description": "Default icon color ",
+              "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
               "value": "{ui-light.utilities.color.primary.800}"
             }
@@ -3825,9 +3919,9 @@
         "--default": {
           "color": {
             "text": {
-              "description": "Default icon color ",
+              "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.default}"
+              "value": "{ui-light.utilities.color.primary.default}"
             }
           }
         }
@@ -3862,10 +3956,6 @@
           "type": "float",
           "value": "{ui-light.utilities.rounded.none}"
         },
-        "border-width": {
-          "type": "float",
-          "value": "0"
-        },
         "--neutral-300": {
           "color": {
             "background": {
@@ -3890,14 +3980,6 @@
               "value": "rgba(255, 255, 255, 0.00)"
             }
           }
-        },
-        "font-weight": {
-          "type": "string",
-          "value": "{ui-light.utilities.font-weight.normal}"
-        },
-        "font-size": {
-          "type": "float",
-          "value": "{ui-light.utilities.text.sm}"
         }
       },
       "sd-brandshape": {
@@ -3940,11 +4022,45 @@
           "--primary-800": {
             "color": {
               "background": {
+                "description": "code only",
                 "type": "color",
                 "value": "{ui-light.utilities.color.primary.800}"
               }
             }
           }
+        }
+      },
+      "sd-accordion": {
+        "color": {
+          "text": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.text.primary.default}"
+          },
+          "icon-fill": {
+            "description": "Default icon color ",
+            "type": "color",
+            "value": "{ui-light.utilities.color.primary.default}"
+          }
+        },
+        "__indicator": {
+          "color": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.border.accent.default}"
+          }
+        },
+        "padding-block": {
+          "description": "Top bottom padding for sd-accordion ",
+          "type": "float",
+          "value": "{ui-light.utilities.spacing.3}"
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{ui-light.utilities.sizing.0,25}"
+        },
+        "_panel-padding": {
+          "description": "Used inside panel summary layer of sd-accordion to accommodate the border",
+          "type": "float",
+          "value": "1"
         }
       },
       "navigable": {
@@ -3986,14 +4102,6 @@
             "type": "color",
             "value": "{ui-light.utilities.color.text.primary.default}"
           }
-        },
-        "--current": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.default}"
-            }
-          }
         }
       },
       "sd-badge": {
@@ -4020,6 +4128,7 @@
         "--red": {
           "color": {
             "background": {
+              "description": "Used in both sd-badge and sd-status-badge",
               "type": "color",
               "value": "{ui-light.utilities.color.error.default}"
             }
@@ -4038,6 +4147,7 @@
         "--green": {
           "color": {
             "background": {
+              "description": "Used in both sd-badge and sd-status-badge",
               "type": "color",
               "value": "{ui-light.utilities.color.accent.550}"
             },
@@ -4073,6 +4183,7 @@
           "value": "{ui-light.utilities.rounded.full}"
         },
         "padding": {
+          "description": "Top bottom left right padding for the sd-radio-button-group",
           "type": "float",
           "value": "0"
         }
@@ -4084,12 +4195,7 @@
         },
         "color": {
           "text": {
-            "description": "Primary brand color for text",
-            "type": "color",
-            "value": "{ui-light.utilities.color.primary.default}"
-          },
-          "icon-fil": {
-            "description": "Default icon color ",
+            "description": "Used for text and icon fill",
             "type": "color",
             "value": "{ui-light.utilities.color.primary.default}"
           }
@@ -4101,13 +4207,8 @@
               "type": "color",
               "value": "rgba(255, 255, 255, 0.00)"
             },
-            "icon-fill": {
-              "description": "Used for hover interaction",
-              "type": "color",
-              "value": "{ui-light.utilities.color.primary.500}"
-            },
             "text": {
-              "description": "Used for hover interaction",
+              "description": "Used for text and icon fill",
               "type": "color",
               "value": "{ui-light.utilities.color.primary.500}"
             }
@@ -4123,15 +4224,7 @@
           "text": {
             "type": "color",
             "value": "{ui-light.utilities.color.white.default}"
-          },
-          "border": {
-            "type": "color",
-            "value": "rgba(255, 255, 255, 0.00)"
           }
-        },
-        "border-width": {
-          "type": "float",
-          "value": "{ui-light.utilities.border-width.default}"
         }
       },
       "sd-notification": {
@@ -4181,6 +4274,14 @@
             "description": "Default icon color ",
             "type": "color",
             "value": "{ui-light.utilities.color.neutral.400}"
+          }
+        },
+        "__duration-indicator": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.default}"
+            }
           }
         }
       },
@@ -4258,18 +4359,6 @@
               "value": "rgba(255, 255, 255, 0.00)"
             }
           }
-        },
-        "font-weight": {
-          "type": "string",
-          "value": "{ui-light.utilities.font-weight.normal}"
-        },
-        "border-width": {
-          "type": "float",
-          "value": "0"
-        },
-        "font-size": {
-          "type": "float",
-          "value": "{ui-light.utilities.text.sm}"
         }
       },
       "sd-radio": {
@@ -4356,13 +4445,28 @@
         "border-width": {
           "type": "float",
           "value": "{ui-light.utilities.border-width.default}"
+        }
+      },
+      "sd-audio": {
+        "__slide-bar": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.400}"
+              }
+            }
+          }
         },
-        "--error": {
-          "color": {
-            "text": {
-              "description": "Default icon color ",
-              "type": "color",
-              "value": "{ui-light.utilities.color.error.default}"
+        "__track-bar": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "{ui-light.utilities.color.white.default}"
+              }
             }
           }
         }
@@ -4380,14 +4484,6 @@
             "value": "{ui-light.utilities.color.text.primary.default}"
           }
         },
-        "hover": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.500}"
-            }
-          }
-        },
         "__circle": {
           "border-width": {
             "type": "float",
@@ -4396,40 +4492,72 @@
         }
       },
       "sd-map-marker": {
-        "cluster": {
-          "color": {
-            "icon-fill": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.background.primary.default}"
+        "--cluster": {
+          "--default": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.background.primary.default}"
+              }
             }
           },
-          "--hovered": {
+          "--hover": {
             "color": {
-              "icon-fill": {
+              "background": {
                 "type": "color",
                 "value": "{ui-light.utilities.color.background.primary.500}"
               }
             }
+          },
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.white.default}"
+            }
           }
         },
-        "font-size": {
-          "type": "float",
-          "value": "{ui-light.utilities.text.xs}"
-        },
-        "main": {
+        "--main": {
           "color": {
-            "icon-fill": {
+            "background": {
               "type": "color",
               "value": "{ui-light.utilities.color.background.accent.500}"
+            }
+          }
+        },
+        "--pin": {
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.100}"
+              }
+            }
+          },
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.background.primary.default}"
+            }
+          },
+          "--default": {
+            "color": {
+              "background": {
+                "description": "Inverted icon color",
+                "type": "color",
+                "value": "{ui-light.utilities.color.white.default}"
+              }
             }
           }
         }
       },
       "sd-headline": {
-        "4xl-and-mobile-4xl": {
-          "text": {
-            "type": "color",
-            "value": "{ui-light.utilities.color.text.primary.default}"
+        "--3xl-onwards": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.text.primary.default}"
+            }
           }
         }
       },
@@ -4447,7 +4575,7 @@
             }
           }
         },
-        "--description": {
+        "_description": {
           "color": {
             "text": {
               "type": "color",
@@ -4457,22 +4585,6 @@
         }
       },
       "sd-quickfact": {
-        "__expandable": {
-          "color": {
-            "description-default": {
-              "text": {
-                "type": "color",
-                "value": "{ui-light.utilities.color.text.black.default}"
-              }
-            },
-            "title-default": {
-              "text": {
-                "type": "color",
-                "value": "{ui-light.utilities.color.text.black.default}"
-              }
-            }
-          }
-        },
         "--expandable": {
           "color": {
             "text": {
@@ -4482,30 +4594,21 @@
           }
         }
       },
-      "sd-loader": {
-        "color": {
-          "neutral-500": {
-            "_text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.neutral.500}"
-            }
-          }
-        }
-      },
       "sd-teaser-media": {
         "--primary-100": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.background.primary.100}"
-            }
-          },
           "--hover": {
             "color": {
               "background": {
                 "type": "color",
                 "value": "{ui-light.utilities.color.background.primary.100}"
               }
+            }
+          },
+          "color": {
+            "background": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(236, 240, 249, 0.80)"
             }
           }
         },
@@ -4522,6 +4625,24 @@
                 "type": "color",
                 "value": "{ui-light.utilities.color.background.neutral.100}"
               }
+            }
+          }
+        },
+        "--white": {
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Used for teaser, audio (wave animation)\n",
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.90)"
+              }
+            }
+          },
+          "color": {
+            "background": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.80)"
             }
           }
         }
@@ -4612,22 +4733,33 @@
           "value": "{ui-light.utilities.border-width.default}"
         }
       },
-      "color": {
-        "background": {
-          "type": "color",
-          "value": "{ui-light.utilities.color.background.neutral.200}"
-        }
-      },
       "sd-tab": {
         "color": {
           "border": {
             "type": "color",
             "value": "{ui-light.utilities.color.border.neutral.400}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.primary.default}"
           }
         },
-        "font-weight": {
-          "type": "string",
-          "value": "{ui-light.utilities.font-weight.normal}"
+        "--hover": {
+          "color": {
+            "background": {
+              "description": "Used for sd-flag",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.200}"
+            }
+          }
+        },
+        "--active": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.default}"
+            }
+          }
         }
       },
       "sd-switch": {
@@ -4675,20 +4807,20 @@
           }
         }
       },
-      "sd-menu": {
+      "sd-menu-item": {
         "color": {
           "text": {
             "type": "color",
             "value": "{ui-light.utilities.color.text.primary.default}"
           },
-          "icon": {
+          "icon-fill": {
             "type": "color",
             "value": "{ui-light.utilities.color.icon-fill.primary.default}"
           }
         },
         "--disabled": {
           "color": {
-            "icon": {
+            "icon-fill": {
               "type": "color",
               "value": "{ui-light.utilities.color.icon-fill.neutral.500}"
             },
@@ -4699,22 +4831,19 @@
           }
         }
       },
+      "choice-control": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-tag, sd-tab, sd-navigation-item &amp; sd-radio-button",
+          "type": "string",
+          "value": "{ui-light.utilities.font-weight.normal}"
+        }
+      },
       "sd-link": {
         "color": {
           "--hover": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.500}"
-            },
             "icon": {
               "type": "color",
               "value": "{ui-light.utilities.color.text.primary.500}"
-            }
-          },
-          "--default": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.default}"
             }
           },
           "--none": {
@@ -4723,20 +4852,8 @@
               "value": "{ui-light.utilities.color.text.primary.default}"
             }
           },
-          "--active": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.800}"
-            }
-          },
           "--pressed": {
             "icon": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.text.primary.800}"
-            }
-          },
-          "--disabled": {
-            "text": {
               "type": "color",
               "value": "{ui-light.utilities.color.text.primary.800}"
             }
@@ -4745,7 +4862,7 @@
       },
       "sd-datepicker": {
         "__date-item": {
-          "--hovered": {
+          "--hover": {
             "--default": {
               "color": {
                 "background": {
@@ -4753,6 +4870,10 @@
                   "value": "{ui-light.utilities.color.primary.100}"
                 },
                 "text": {
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.500}"
+                },
+                "border": {
                   "type": "color",
                   "value": "{ui-light.utilities.color.primary.500}"
                 }
@@ -4769,14 +4890,6 @@
                   "value": "{ui-light.utilities.color.neutral.700}"
                 }
               }
-            },
-            "--current": {
-              "color": {
-                "text": {
-                  "type": "color",
-                  "value": "{ui-light.utilities.color.primary.500}"
-                }
-              }
             }
           },
           "--selected": {
@@ -4784,14 +4897,23 @@
               "text": {
                 "type": "color",
                 "value": "{ui-light.utilities.color.white.default}"
+              },
+              "background": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.default}"
+              }
+            },
+            "--hover": {
+              "color": {
+                "background": {
+                  "description": "Used for hover interaction",
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.primary.500}"
+                }
               }
             }
           },
           "--default": {
-            "font-weight": {
-              "type": "string",
-              "value": "{ui-light.utilities.font-weight.normal}"
-            },
             "color": {
               "text": {
                 "description": "Default icon color ",
@@ -4804,27 +4926,22 @@
             "font-weight": {
               "type": "string",
               "value": "{ui-light.utilities.font-weight.bold}"
-            }
-          }
-        }
-      },
-      "sd-combobox": {
-        "--default": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.primary.default}"
             },
-            "icon": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.primary.default}"
+            "color": {
+              "text": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.default}"
+              }
             }
-          }
-        },
-        "__tag": {
-          "border-width": {
-            "type": "float",
-            "value": "{ui-light.utilities.border-width.default}"
+          },
+          "--range": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.100}"
+              }
+            }
           }
         }
       },
@@ -4835,6 +4952,31 @@
               "type": "float",
               "value": "{ui-light.utilities.text.base}"
             }
+          }
+        }
+      },
+      "marker": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-chip &amp; sd-flag",
+          "type": "string",
+          "value": "{ui-light.utilities.font-weight.normal}"
+        },
+        "border-width": {
+          "description": "Used for sd-chip &amp; sd-flag",
+          "type": "float",
+          "value": "0"
+        },
+        "font-size": {
+          "description": "Used for sd-chip &amp; sd-flag",
+          "type": "float",
+          "value": "{ui-light.utilities.text.sm}"
+        }
+      },
+      "sd-combobox": {
+        "__tag": {
+          "border-width": {
+            "type": "float",
+            "value": "{ui-light.utilities.border-width.default}"
           }
         }
       },
@@ -4849,13 +4991,13 @@
         "--inverted": {
           "border": {
             "type": "color",
-            "value": "{ui-light.utilities.color.accent.550}"
+            "value": "{ui-light.utilities.color.accent.default}"
           }
         },
         "--default": {
           "border": {
             "type": "color",
-            "value": "{ui-light.utilities.color.accent.550}"
+            "value": "{ui-light.utilities.color.accent.default}"
           }
         }
       },
@@ -4868,15 +5010,10 @@
           }
         }
       },
-      "sd-option": {
-        "--disabled": {
-          "color": {
-            "border": {
-              "description": "Used for disabled state",
-              "type": "color",
-              "value": "{ui-light.utilities.color.neutral.500}"
-            }
-          }
+      "sd-accordion-group": {
+        "_gap": {
+          "type": "float",
+          "value": "-1"
         }
       }
     }
@@ -5012,7 +5149,7 @@
             "400": {
               "description": "Used for hover interaction invalid form elements",
               "type": "color",
-              "value": "{ui-dark.utilities.color.error.400}"
+              "value": "{ui-dark.utilities.color.error.300}"
             },
             "default": {
               "description": "Used for notification, status-badge",
@@ -5059,7 +5196,7 @@
             "primary|30": {
               "description": "Used for map-marker",
               "type": "color",
-              "value": "rgba(0, 53, 142, 0.30)"
+              "value": "rgba(255, 255, 255, 0.30)"
             },
             "primary|80": {
               "description": "Used for teaser",
@@ -5532,7 +5669,7 @@
             "400": {
               "description": "Used for hover interaction invalid form elements\n",
               "type": "color",
-              "value": "{ui-dark.utilities.color.error.400}"
+              "value": "{ui-dark.utilities.color.error.300}"
             },
             "default": {
               "description": "Used for error messages, invalid states",
@@ -5646,7 +5783,7 @@
             "400": {
               "description": "Used for hover interaction invalid form elements",
               "type": "color",
-              "value": "{ui-dark.utilities.color.error.400}"
+              "value": "{ui-dark.utilities.color.error.300}"
             },
             "default": {
               "description": "Used for invalid form fields",
@@ -5716,7 +5853,7 @@
             "500": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{ui-dark.utilities.color.neutral.500}"
+              "value": "{ui-dark.utilities.color.neutral.600}"
             },
             "600": {
               "description": "Used for inverted disabled state",
@@ -5798,6 +5935,52 @@
             "type": "color",
             "value": "{ui-dark.utilities.color.neutral.800}"
           }
+        },
+        "xs": {
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "{ui-dark.utilities.color.neutral.800}"
+          },
+          "x": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "y": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "blur": {
+            "type": "float",
+            "value": "1.5"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "listbox": {
+          "x": {
+            "type": "float",
+            "value": "0"
+          },
+          "y": {
+            "type": "float",
+            "value": "0"
+          },
+          "blur": {
+            "type": "float",
+            "value": "0"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          },
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          }
         }
       },
       "opacity": {
@@ -5859,6 +6042,11 @@
         }
       },
       "sizing": {
+        "0": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.0}"
+        },
         "1": {
           "description": "8px",
           "type": "float",
@@ -6019,6 +6207,10 @@
         "1,5": {
           "type": "float",
           "value": "{core.ui.sizing.1,5}"
+        },
+        "2,5": {
+          "type": "float",
+          "value": "{core.ui.sizing.2,5}"
         }
       },
       "rounded": {
@@ -6394,65 +6586,6 @@
       }
     },
     "components": {
-      "sd-audio": {
-        "__timestamp": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.400}"
-            }
-          }
-        },
-        "--inverted": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.white.default}"
-            }
-          }
-        },
-        "__slide-bar": {
-          "--inverted": {
-            "color": {
-              "border": {
-                "description": "Used for inverted dividers",
-                "type": "color",
-                "value": "{ui-dark.utilities.color.primary.400}"
-              }
-            }
-          }
-        }
-      },
-      "sd-accordion": {
-        "__chevron": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.default}"
-            }
-          }
-        },
-        "color": {
-          "text": {
-            "type": "color",
-            "value": "{ui-dark.utilities.color.text.primary.default}"
-          }
-        },
-        "__indicator": {
-          "color": {
-            "type": "color",
-            "value": "{ui-dark.utilities.color.border.accent.default}"
-          }
-        },
-        "padding-block": {
-          "type": "float",
-          "value": "{ui-dark.utilities.spacing.3}"
-        },
-        "border-width": {
-          "type": "float",
-          "value": "{ui-dark.utilities.sizing.0,25}"
-        }
-      },
       "sd-breadcrumb": {
         "__separator": {
           "color": {
@@ -6480,6 +6613,7 @@
           }
         },
         "padding-bottom": {
+          "description": "Is this used in code?",
           "type": "float",
           "value": "0"
         },
@@ -6493,6 +6627,12 @@
               "type": "color",
               "value": "rgba(255, 255, 255, 0.00)"
             }
+          }
+        },
+        "__shadow": {
+          "height": {
+            "type": "float",
+            "value": "{ui-dark.utilities.sizing.1}"
           }
         }
       },
@@ -6568,14 +6708,6 @@
           "type": "string",
           "value": "{ui-dark.utilities.font-weight.normal}"
         },
-        "--disabled": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.neutral.500}"
-            }
-          }
-        },
         "--size": {
           "lg": {
             "font-size": {
@@ -6589,6 +6721,15 @@
               "value": "{ui-dark.utilities.text.sm}"
             }
           }
+        },
+        "--disabled": {
+          "color": {
+            "text": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.neutral.600}"
+            }
+          }
         }
       },
       "form-control": {
@@ -6598,12 +6739,9 @@
             "value": "{ui-dark.utilities.color.primary.200}"
           },
           "text": {
+            "description": "Used for label ",
             "type": "color",
             "value": "{ui-dark.utilities.color.text.black.default}"
-          },
-          "icon-fill": {
-            "type": "color",
-            "value": "{ui-dark.utilities.color.white.default}"
           }
         },
         "--invalid": {
@@ -6611,14 +6749,6 @@
             "background": {
               "type": "color",
               "value": "{ui-dark.utilities.color.primary.900}"
-            }
-          }
-        },
-        "__tooltip": {
-          "color": {
-            "icon": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.icon-fill.primary.default}"
             }
           }
         },
@@ -6630,6 +6760,24 @@
                 "value": "{ui-dark.utilities.color.text.neutral.700}"
               }
             }
+          }
+        },
+        "__listbox": {
+          "border-bottom-left-radius": {
+            "type": "float",
+            "value": "{ui-dark.utilities.rounded.default}"
+          },
+          "border-bottom-right-radius": {
+            "type": "float",
+            "value": "{ui-dark.utilities.rounded.default}"
+          },
+          "border-top-left-radius": {
+            "type": "float",
+            "value": "{ui-dark.utilities.rounded.default}"
+          },
+          "border-top-right-radius": {
+            "type": "float",
+            "value": "{ui-dark.utilities.rounded.default}"
           }
         },
         "border-radius": {
@@ -6718,6 +6866,11 @@
               "background": {
                 "type": "color",
                 "value": "{ui-dark.utilities.color.primary.100}"
+              },
+              "text": {
+                "description": "Used for inverted hover interaction button label",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.500}"
               }
             }
           }
@@ -6729,6 +6882,11 @@
                 "description": "Default icon color ",
                 "type": "color",
                 "value": "{ui-dark.utilities.color.primary.500}"
+              },
+              "text": {
+                "description": "Used for pressed interaction",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.200}"
               }
             }
           },
@@ -6745,7 +6903,7 @@
             "--hover": {
               "color": {
                 "text": {
-                  "description": "Default icon color ",
+                  "description": "Used for inverted hover interaction button label",
                   "type": "color",
                   "value": "{ui-dark.utilities.color.primary.100}"
                 },
@@ -6761,12 +6919,22 @@
                 "background": {
                   "type": "color",
                   "value": "{ui-dark.utilities.color.primary.800}"
+                },
+                "text": {
+                  "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.200}"
                 }
               }
             },
             "color": {
               "border": {
                 "description": "Used for buttons, inverted focus state",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.white.default}"
+              },
+              "text": {
+                "description": "Inverted icon color",
                 "type": "color",
                 "value": "{ui-dark.utilities.color.white.default}"
               }
@@ -6789,6 +6957,34 @@
                 "value": "{ui-dark.utilities.color.neutral.500}"
               }
             }
+          },
+          "--size": {
+            "lg": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "11"
+              }
+            },
+            "md": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "7"
+              }
+            },
+            "sm": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "4.5"
+              }
+            }
+          },
+          "padding-inline": {
+            "description": "dev only!",
+            "type": "float",
+            "value": "15"
           }
         },
         "--tertiary": {
@@ -6822,7 +7018,19 @@
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{ui-dark.utilities.color.primary.800}"
+                },
+                "text": {
+                  "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.200}"
                 }
+              }
+            },
+            "color": {
+              "text": {
+                "description": "Inverted icon color",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.white.default}"
               }
             }
           },
@@ -6832,6 +7040,11 @@
                 "description": "Default icon color ",
                 "type": "color",
                 "value": "{ui-dark.utilities.color.primary.500}"
+              },
+              "text": {
+                "description": "Used for pressed interaction",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.200}"
               }
             }
           },
@@ -6854,6 +7067,11 @@
             }
           }
         },
+        "padding-inline": {
+          "description": "sd-button&#39;s left right padding (except for icon-only &amp; loading variant)",
+          "type": "float",
+          "value": "{ui-dark.utilities.spacing.4}"
+        },
         "--size": {
           "md": {
             "font-size": {
@@ -6861,17 +7079,30 @@
               "value": "{ui-dark.utilities.text.base}"
             },
             "padding-block": {
+              "description": "Top bottom padding for sd-button md variant",
               "type": "float",
               "value": "{ui-dark.utilities.spacing.2}"
             },
             "border-radius": {
               "type": "float",
               "value": "{ui-dark.utilities.rounded.default}"
+            },
+            "min-height": {
+              "type": "float",
+              "value": "{ui-dark.utilities.sizing.10}"
+            },
+            "--icon": {
+              "only": {
+                "padding-inline": {
+                  "type": "float",
+                  "value": "{ui-dark.utilities.sizing.2,5}"
+                }
+              }
             }
           },
           "lg": {
             "icon": {
-              "_font-size": {
+              "height": {
                 "type": "float",
                 "value": "{ui-dark.utilities.sizing.6}"
               }
@@ -6880,13 +7111,15 @@
               "type": "float",
               "value": "{ui-dark.utilities.text.base}"
             },
-            "border-radius": {
-              "type": "float",
-              "value": "{ui-dark.utilities.rounded.default}"
-            },
             "padding-block": {
+              "description": "Top bottom padding for sd-button lg variant",
               "type": "float",
               "value": "{ui-dark.utilities.spacing.3}"
+            },
+            "min-height": {
+              "description": "Used for icon-only and loading variant",
+              "type": "float",
+              "value": "{ui-dark.utilities.sizing.12}"
             }
           },
           "sm": {
@@ -6900,9 +7133,13 @@
             },
             "padding-block": {
               "type": "float",
-              "value": "{ui-dark.utilities.spacing.2}"
+              "value": "5.5"
             }
           }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "{ui-dark.utilities.rounded.default}"
         },
         "font-weight": {
           "type": "string",
@@ -6971,6 +7208,10 @@
               }
             }
           }
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{ui-dark.utilities.border-width.default}"
         }
       },
       "sd-footnotes": {
@@ -6990,7 +7231,7 @@
         "--active": {
           "color": {
             "text": {
-              "description": "Default icon color ",
+              "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
               "value": "{ui-dark.utilities.color.primary.400}"
             }
@@ -6999,9 +7240,9 @@
         "--default": {
           "color": {
             "text": {
-              "description": "Default icon color ",
+              "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.default}"
+              "value": "{ui-dark.utilities.color.white.default}"
             }
           }
         }
@@ -7036,10 +7277,6 @@
           "type": "float",
           "value": "{ui-dark.utilities.rounded.none}"
         },
-        "border-width": {
-          "type": "float",
-          "value": "0"
-        },
         "--neutral-300": {
           "color": {
             "background": {
@@ -7064,14 +7301,6 @@
               "value": "rgba(255, 255, 255, 0.00)"
             }
           }
-        },
-        "font-weight": {
-          "type": "string",
-          "value": "{ui-dark.utilities.font-weight.normal}"
-        },
-        "font-size": {
-          "type": "float",
-          "value": "{ui-dark.utilities.text.sm}"
         }
       },
       "sd-brandshape": {
@@ -7114,11 +7343,45 @@
           "--primary-800": {
             "color": {
               "background": {
+                "description": "code only",
                 "type": "color",
                 "value": "{ui-dark.utilities.color.primary.800}"
               }
             }
           }
+        }
+      },
+      "sd-accordion": {
+        "color": {
+          "text": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.text.primary.default}"
+          },
+          "icon-fill": {
+            "description": "Default icon color ",
+            "type": "color",
+            "value": "{ui-dark.utilities.color.white.default}"
+          }
+        },
+        "__indicator": {
+          "color": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.border.accent.default}"
+          }
+        },
+        "padding-block": {
+          "description": "Top bottom padding for sd-accordion ",
+          "type": "float",
+          "value": "{ui-dark.utilities.spacing.3}"
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{ui-dark.utilities.sizing.0,25}"
+        },
+        "_panel-padding": {
+          "description": "Used inside panel summary layer of sd-accordion to accommodate the border",
+          "type": "float",
+          "value": "1"
         }
       },
       "navigable": {
@@ -7160,14 +7423,6 @@
             "type": "color",
             "value": "{ui-dark.utilities.color.text.primary.default}"
           }
-        },
-        "--current": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.default}"
-            }
-          }
         }
       },
       "sd-badge": {
@@ -7194,6 +7449,7 @@
         "--red": {
           "color": {
             "background": {
+              "description": "Used in both sd-badge and sd-status-badge",
               "type": "color",
               "value": "{ui-dark.utilities.color.error.300}"
             }
@@ -7212,6 +7468,7 @@
         "--green": {
           "color": {
             "background": {
+              "description": "Used in both sd-badge and sd-status-badge",
               "type": "color",
               "value": "{ui-dark.utilities.color.accent.550}"
             },
@@ -7247,6 +7504,7 @@
           "value": "{ui-dark.utilities.rounded.full}"
         },
         "padding": {
+          "description": "Top bottom left right padding for the sd-radio-button-group",
           "type": "float",
           "value": "0"
         }
@@ -7258,12 +7516,7 @@
         },
         "color": {
           "text": {
-            "description": "Primary brand color for text",
-            "type": "color",
-            "value": "{ui-dark.utilities.color.white.default}"
-          },
-          "icon-fil": {
-            "description": "Default icon color ",
+            "description": "Used for text and icon fill",
             "type": "color",
             "value": "{ui-dark.utilities.color.white.default}"
           }
@@ -7275,13 +7528,8 @@
               "type": "color",
               "value": "rgba(255, 255, 255, 0.00)"
             },
-            "icon-fill": {
-              "description": "Used for hover interaction",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.primary.200}"
-            },
             "text": {
-              "description": "Used for hover interaction",
+              "description": "Used for text and icon fill",
               "type": "color",
               "value": "{ui-dark.utilities.color.primary.200}"
             }
@@ -7297,15 +7545,7 @@
           "text": {
             "type": "color",
             "value": "{ui-dark.utilities.color.white.default}"
-          },
-          "border": {
-            "type": "color",
-            "value": "rgba(255, 255, 255, 0.00)"
           }
-        },
-        "border-width": {
-          "type": "float",
-          "value": "{ui-dark.utilities.border-width.default}"
         }
       },
       "sd-notification": {
@@ -7355,6 +7595,14 @@
             "description": "Default icon color ",
             "type": "color",
             "value": "{core.ui.blue.400}"
+          }
+        },
+        "__duration-indicator": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            }
           }
         }
       },
@@ -7432,18 +7680,6 @@
               "value": "rgba(255, 255, 255, 0.00)"
             }
           }
-        },
-        "font-weight": {
-          "type": "string",
-          "value": "{ui-dark.utilities.font-weight.normal}"
-        },
-        "border-width": {
-          "type": "float",
-          "value": "0"
-        },
-        "font-size": {
-          "type": "float",
-          "value": "{ui-dark.utilities.text.sm}"
         }
       },
       "sd-radio": {
@@ -7472,7 +7708,7 @@
                 "background": {
                   "description": "Used for hover interaction",
                   "type": "color",
-                  "value": "{ui-dark.utilities.color.accent.550}"
+                  "value": "{ui-dark.utilities.color.accent.default}"
                 }
               }
             },
@@ -7498,7 +7734,7 @@
                   "background": {
                     "description": "Used for error messages, invalid states",
                     "type": "color",
-                    "value": "{ui-dark.utilities.color.error.300}"
+                    "value": "{ui-dark.utilities.color.error.250}"
                   }
                 }
               }
@@ -7509,7 +7745,7 @@
                   "background": {
                     "description": "Used for hover interaction invalid form elements\n",
                     "type": "color",
-                    "value": "{ui-dark.utilities.color.error.400}"
+                    "value": "{ui-dark.utilities.color.error.300}"
                   }
                 }
               }
@@ -7530,13 +7766,28 @@
         "border-width": {
           "type": "float",
           "value": "{ui-dark.utilities.border-width.default}"
+        }
+      },
+      "sd-audio": {
+        "__slide-bar": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.400}"
+              }
+            }
+          }
         },
-        "--error": {
-          "color": {
-            "text": {
-              "description": "Default icon color ",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.black.default}"
+        "__track-bar": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.white.default}"
+              }
             }
           }
         }
@@ -7554,14 +7805,6 @@
             "value": "{ui-dark.utilities.color.text.primary.default}"
           }
         },
-        "hover": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.500}"
-            }
-          }
-        },
         "__circle": {
           "border-width": {
             "type": "float",
@@ -7570,40 +7813,72 @@
         }
       },
       "sd-map-marker": {
-        "cluster": {
-          "color": {
-            "icon-fill": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.background.primary.default}"
+        "--cluster": {
+          "--default": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.white.default}"
+              }
             }
           },
-          "--hovered": {
+          "--hover": {
             "color": {
-              "icon-fill": {
+              "background": {
                 "type": "color",
-                "value": "{ui-dark.utilities.color.background.primary.500}"
+                "value": "{ui-dark.utilities.color.primary.100}"
               }
+            }
+          },
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.default}"
             }
           }
         },
-        "font-size": {
-          "type": "float",
-          "value": "{ui-dark.utilities.text.xs}"
-        },
-        "main": {
+        "--main": {
           "color": {
-            "icon-fill": {
+            "background": {
               "type": "color",
               "value": "{ui-dark.utilities.color.background.accent.500}"
+            }
+          }
+        },
+        "--pin": {
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.100}"
+              }
+            }
+          },
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.default}"
+            }
+          },
+          "--default": {
+            "color": {
+              "background": {
+                "description": "Inverted icon color",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.white.default}"
+              }
             }
           }
         }
       },
       "sd-headline": {
-        "4xl-and-mobile-4xl": {
-          "text": {
-            "type": "color",
-            "value": "{ui-dark.utilities.color.text.primary.default}"
+        "--3xl-onwards": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.text.primary.default}"
+            }
           }
         }
       },
@@ -7621,7 +7896,7 @@
             }
           }
         },
-        "--description": {
+        "_description": {
           "color": {
             "text": {
               "type": "color",
@@ -7631,22 +7906,6 @@
         }
       },
       "sd-quickfact": {
-        "__expandable": {
-          "color": {
-            "description-default": {
-              "text": {
-                "type": "color",
-                "value": "{ui-dark.utilities.color.text.black.default}"
-              }
-            },
-            "title-default": {
-              "text": {
-                "type": "color",
-                "value": "{ui-dark.utilities.color.text.black.default}"
-              }
-            }
-          }
-        },
         "--expandable": {
           "color": {
             "text": {
@@ -7656,30 +7915,21 @@
           }
         }
       },
-      "sd-loader": {
-        "color": {
-          "neutral-500": {
-            "_text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.neutral.500}"
-            }
-          }
-        }
-      },
       "sd-teaser-media": {
         "--primary-100": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.background.primary.100}"
-            }
-          },
           "--hover": {
             "color": {
               "background": {
                 "type": "color",
                 "value": "{ui-dark.utilities.color.background.primary.100}"
               }
+            }
+          },
+          "color": {
+            "background": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(10, 32, 74, 0.80)"
             }
           }
         },
@@ -7696,6 +7946,24 @@
                 "type": "color",
                 "value": "{ui-dark.utilities.color.background.neutral.100}"
               }
+            }
+          }
+        },
+        "--white": {
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Used for teaser, audio (wave animation)\n",
+                "type": "color",
+                "value": "rgba(0, 53, 142, 0.90)"
+              }
+            }
+          },
+          "color": {
+            "background": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(0, 53, 142, 0.80)"
             }
           }
         }
@@ -7786,22 +8054,33 @@
           "value": "{ui-dark.utilities.border-width.default}"
         }
       },
-      "color": {
-        "background": {
-          "type": "color",
-          "value": "{ui-dark.utilities.color.background.neutral.200}"
-        }
-      },
       "sd-tab": {
         "color": {
           "border": {
             "type": "color",
             "value": "{ui-dark.utilities.color.border.neutral.400}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.white.default}"
           }
         },
-        "font-weight": {
-          "type": "string",
-          "value": "{ui-dark.utilities.font-weight.normal}"
+        "--hover": {
+          "color": {
+            "background": {
+              "description": "Used for sd-flag",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.700}"
+            }
+          }
+        },
+        "--active": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            }
+          }
         }
       },
       "sd-switch": {
@@ -7832,7 +8111,7 @@
             "color": {
               "background": {
                 "type": "color",
-                "value": "{ui-dark.utilities.color.accent.550}"
+                "value": "{ui-dark.utilities.color.accent.default}"
               }
             }
           }
@@ -7849,20 +8128,20 @@
           }
         }
       },
-      "sd-menu": {
+      "sd-menu-item": {
         "color": {
           "text": {
             "type": "color",
             "value": "{ui-dark.utilities.color.text.primary.default}"
           },
-          "icon": {
+          "icon-fill": {
             "type": "color",
             "value": "{ui-dark.utilities.color.icon-fill.primary.default}"
           }
         },
         "--disabled": {
           "color": {
-            "icon": {
+            "icon-fill": {
               "type": "color",
               "value": "{ui-dark.utilities.color.icon-fill.neutral.500}"
             },
@@ -7873,22 +8152,19 @@
           }
         }
       },
+      "choice-control": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-tag, sd-tab, sd-navigation-item &amp; sd-radio-button",
+          "type": "string",
+          "value": "{ui-dark.utilities.font-weight.normal}"
+        }
+      },
       "sd-link": {
         "color": {
           "--hover": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.200}"
-            },
             "icon": {
               "type": "color",
               "value": "{ui-dark.utilities.color.text.primary.200}"
-            }
-          },
-          "--default": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.default}"
             }
           },
           "--none": {
@@ -7897,20 +8173,8 @@
               "value": "{ui-dark.utilities.color.text.primary.default}"
             }
           },
-          "--active": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.400}"
-            }
-          },
           "--pressed": {
             "icon": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.text.primary.400}"
-            }
-          },
-          "--disabled": {
-            "text": {
               "type": "color",
               "value": "{ui-dark.utilities.color.text.primary.400}"
             }
@@ -7919,7 +8183,7 @@
       },
       "sd-datepicker": {
         "__date-item": {
-          "--hovered": {
+          "--hover": {
             "--default": {
               "color": {
                 "background": {
@@ -7927,6 +8191,10 @@
                   "value": "{ui-dark.utilities.color.primary.100}"
                 },
                 "text": {
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.750}"
+                },
+                "border": {
                   "type": "color",
                   "value": "{ui-dark.utilities.color.primary.750}"
                 }
@@ -7943,29 +8211,30 @@
                   "value": "{ui-dark.utilities.color.primary.750}"
                 }
               }
-            },
-            "--current": {
-              "color": {
-                "text": {
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.primary.750}"
-                }
-              }
             }
           },
           "--selected": {
             "color": {
               "text": {
                 "type": "color",
-                "value": "{ui-dark.utilities.color.primary.600}"
+                "value": "{ui-dark.utilities.color.white.default}"
+              },
+              "background": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.default}"
+              }
+            },
+            "--hover": {
+              "color": {
+                "background": {
+                  "description": "Used for hover interaction",
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.200}"
+                }
               }
             }
           },
           "--default": {
-            "font-weight": {
-              "type": "string",
-              "value": "{ui-dark.utilities.font-weight.normal}"
-            },
             "color": {
               "text": {
                 "description": "Default icon color ",
@@ -7978,27 +8247,22 @@
             "font-weight": {
               "type": "string",
               "value": "{ui-dark.utilities.font-weight.bold}"
-            }
-          }
-        }
-      },
-      "sd-combobox": {
-        "--default": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.white.default}"
             },
-            "icon": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.white.default}"
+            "color": {
+              "text": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.white.default}"
+              }
             }
-          }
-        },
-        "__tag": {
-          "border-width": {
-            "type": "float",
-            "value": "{ui-dark.utilities.border-width.default}"
+          },
+          "--range": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.750}"
+              }
+            }
           }
         }
       },
@@ -8009,6 +8273,31 @@
               "type": "float",
               "value": "{ui-dark.utilities.text.base}"
             }
+          }
+        }
+      },
+      "marker": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-chip &amp; sd-flag",
+          "type": "string",
+          "value": "{ui-dark.utilities.font-weight.normal}"
+        },
+        "border-width": {
+          "description": "Used for sd-chip &amp; sd-flag",
+          "type": "float",
+          "value": "0"
+        },
+        "font-size": {
+          "description": "Used for sd-chip &amp; sd-flag",
+          "type": "float",
+          "value": "{ui-dark.utilities.text.sm}"
+        }
+      },
+      "sd-combobox": {
+        "__tag": {
+          "border-width": {
+            "type": "float",
+            "value": "{ui-dark.utilities.border-width.default}"
           }
         }
       },
@@ -8023,13 +8312,13 @@
         "--inverted": {
           "border": {
             "type": "color",
-            "value": "{ui-dark.utilities.color.accent.550}"
+            "value": "{ui-dark.utilities.color.accent.default}"
           }
         },
         "--default": {
           "border": {
             "type": "color",
-            "value": "{ui-dark.utilities.color.accent.550}"
+            "value": "{ui-dark.utilities.color.accent.default}"
           }
         }
       },
@@ -8042,15 +8331,10 @@
           }
         }
       },
-      "sd-option": {
-        "--disabled": {
-          "color": {
-            "border": {
-              "description": "Used for disabled state",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.neutral.500}"
-            }
-          }
+      "sd-accordion-group": {
+        "_gap": {
+          "type": "float",
+          "value": "-1"
         }
       }
     }
@@ -8142,7 +8426,7 @@
             "100": {
               "description": "Form field read only. Used for sd-container",
               "type": "color",
-              "value": "{vb.utilities.color.primary.100}"
+              "value": "{vb.utilities.color.neutral.100}"
             },
             "200": {
               "description": "Used for sd-flag",
@@ -8402,17 +8686,17 @@
               "40%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
-                "value": "rgba(24, 24, 24, 0.00)"
+                "value": "rgba(0, 0, 0, 0.00)"
               },
               "0%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
-                "value": "rgba(24, 24, 24, 0.00)"
+                "value": "rgba(0, 0, 0, 0.00)"
               },
               "10%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
-                "value": "rgba(24, 24, 24, 0.10)"
+                "value": "rgba(0, 0, 0, 0.10)"
               }
             }
           }
@@ -8420,31 +8704,31 @@
         "primary": {
           "100": {
             "type": "color",
-            "value": "{core.vb.azure.100}"
+            "value": "{core.vb.azure.50}"
           },
           "200": {
             "type": "color",
-            "value": "{core.vb.azure.200}"
+            "value": "{core.vb.azure.100}"
           },
           "300": {
             "type": "color",
-            "value": "{core.vb.azure.300}"
+            "value": "{core.vb.azure.200}"
           },
           "400": {
             "type": "color",
-            "value": "{core.vb.azure.400}"
+            "value": "{core.vb.azure.300}"
           },
           "500": {
             "type": "color",
-            "value": "{core.vb.azure.500}"
+            "value": "{core.vb.azure.400}"
           },
           "600": {
             "type": "color",
-            "value": "{core.vb.azure.600}"
+            "value": "{core.vb.azure.500}"
           },
           "700": {
             "type": "color",
-            "value": "{core.vb.azure.750}"
+            "value": "{core.vb.azure.600}"
           },
           "750": {
             "type": "color",
@@ -8528,7 +8812,7 @@
           },
           "600": {
             "type": "color",
-            "value": "{core.vb.grey.600}"
+            "value": "{core.vb.grey.500}"
           },
           "700": {
             "type": "color",
@@ -8682,7 +8966,7 @@
             "500": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{vb.utilities.color.background.neutral.400}"
+              "value": "{vb.utilities.color.neutral.400}"
             },
             "600": {
               "description": "Used for inverted disabled state",
@@ -8972,6 +9256,52 @@
             "type": "color",
             "value": "{vb.utilities.color.neutral.800}"
           }
+        },
+        "xs": {
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "{vb.utilities.color.neutral.800}"
+          },
+          "x": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "y": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "blur": {
+            "type": "float",
+            "value": "1.5"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "listbox": {
+          "x": {
+            "type": "float",
+            "value": "0"
+          },
+          "y": {
+            "type": "float",
+            "value": "20"
+          },
+          "blur": {
+            "type": "float",
+            "value": "20"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          },
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.25)"
+          }
         }
       },
       "opacity": {
@@ -9033,6 +9363,11 @@
         }
       },
       "sizing": {
+        "0": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.0}"
+        },
         "1": {
           "description": "8px",
           "type": "float",
@@ -9193,6 +9528,10 @@
         "1,5": {
           "type": "float",
           "value": "{core.ui.sizing.1,5}"
+        },
+        "2,5": {
+          "type": "float",
+          "value": "{core.ui.sizing.2,5}"
         }
       },
       "rounded": {
@@ -9568,65 +9907,6 @@
       }
     },
     "components": {
-      "sd-audio": {
-        "__timestamp": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{vb.utilities.color.text.neutral.700}"
-            }
-          }
-        },
-        "--inverted": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{vb.utilities.color.white.default}"
-            }
-          }
-        },
-        "__slide-bar": {
-          "--inverted": {
-            "color": {
-              "border": {
-                "description": "Used for inverted dividers",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.50)"
-              }
-            }
-          }
-        }
-      },
-      "sd-accordion": {
-        "__chevron": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{vb.utilities.color.text.neutral.600}"
-            }
-          }
-        },
-        "color": {
-          "text": {
-            "type": "color",
-            "value": "{vb.utilities.color.text.black.default}"
-          }
-        },
-        "__indicator": {
-          "color": {
-            "type": "color",
-            "value": "rgba(255, 255, 255, 0.00)"
-          }
-        },
-        "padding-block": {
-          "type": "float",
-          "value": "{vb.utilities.spacing.4}"
-        },
-        "border-width": {
-          "type": "float",
-          "value": "{vb.utilities.sizing.0,5}"
-        }
-      },
       "sd-breadcrumb": {
         "__separator": {
           "color": {
@@ -9650,10 +9930,11 @@
           "_shadow": {
             "description": "Deprecated?",
             "type": "color",
-            "value": "rgba(24, 24, 24, 0.40)"
+            "value": "rgba(0, 0, 0, 0.20)"
           }
         },
         "padding-bottom": {
+          "description": "Is this used in code?",
           "type": "float",
           "value": "{vb.utilities.spacing.0,5}"
         },
@@ -9667,6 +9948,12 @@
               "type": "color",
               "value": "{core.vb.grey.200}"
             }
+          }
+        },
+        "__shadow": {
+          "height": {
+            "type": "float",
+            "value": "{vb.utilities.sizing.0}"
           }
         }
       },
@@ -9730,7 +10017,7 @@
             },
             "border": {
               "type": "color",
-              "value": "{vb.utilities.color.border.primary.500}"
+              "value": "{vb.utilities.color.border.primary.default}"
             }
           }
         },
@@ -9741,14 +10028,6 @@
         "font-weight": {
           "type": "string",
           "value": "{vb.utilities.font-weight.bold}"
-        },
-        "--disabled": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{core.vb.azure.400}"
-            }
-          }
         },
         "--size": {
           "lg": {
@@ -9763,6 +10042,15 @@
               "value": "{vb.utilities.text.sm}"
             }
           }
+        },
+        "--disabled": {
+          "color": {
+            "text": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.400}"
+            }
+          }
         }
       },
       "form-control": {
@@ -9772,12 +10060,9 @@
             "value": "{vb.utilities.color.black.default}"
           },
           "text": {
+            "description": "Used for label ",
             "type": "color",
-            "value": "{core.vb.grey.620}"
-          },
-          "icon-fill": {
-            "type": "color",
-            "value": "{core.vb.grey.620}"
+            "value": "{vb.utilities.color.neutral.700}"
           }
         },
         "--invalid": {
@@ -9785,14 +10070,6 @@
             "background": {
               "type": "color",
               "value": "{core.vb.status.error-bg}"
-            }
-          }
-        },
-        "__tooltip": {
-          "color": {
-            "icon": {
-              "type": "color",
-              "value": "{vb.utilities.color.black.default}"
             }
           }
         },
@@ -9804,6 +10081,24 @@
                 "value": "{core.vb.grey.620}"
               }
             }
+          }
+        },
+        "__listbox": {
+          "border-bottom-left-radius": {
+            "type": "float",
+            "value": "{vb.utilities.rounded.default}"
+          },
+          "border-bottom-right-radius": {
+            "type": "float",
+            "value": "{vb.utilities.rounded.default}"
+          },
+          "border-top-left-radius": {
+            "type": "float",
+            "value": "{vb.utilities.rounded.default}"
+          },
+          "border-top-right-radius": {
+            "type": "float",
+            "value": "{vb.utilities.rounded.default}"
           }
         },
         "border-radius": {
@@ -9863,7 +10158,7 @@
                 "background": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb.utilities.color.primary.100}"
+                  "value": "{core.vb.azure.100}"
                 },
                 "text": {
                   "description": "Default icon color ",
@@ -9891,7 +10186,12 @@
             "color": {
               "background": {
                 "type": "color",
-                "value": "{vb.utilities.color.primary.600}"
+                "value": "{vb.utilities.color.primary.700}"
+              },
+              "text": {
+                "description": "Used for inverted hover interaction button label",
+                "type": "color",
+                "value": "{core.vb.azure.100}"
               }
             }
           }
@@ -9902,7 +10202,12 @@
               "background": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{vb.utilities.color.primary.100}"
+                "value": "{core.vb.azure.100}"
+              },
+              "text": {
+                "description": "Used for pressed interaction",
+                "type": "color",
+                "value": "{vb.utilities.color.primary.800}"
               }
             }
           },
@@ -9911,7 +10216,7 @@
               "background": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{vb.utilities.color.primary.100}"
+                "value": "{core.vb.azure.100}"
               }
             }
           },
@@ -9919,14 +10224,14 @@
             "--hover": {
               "color": {
                 "text": {
-                  "description": "Default icon color ",
+                  "description": "Used for inverted hover interaction button label",
                   "type": "color",
-                  "value": "{vb.utilities.color.primary.100}"
+                  "value": "{core.vb.azure.100}"
                 },
                 "background": {
                   "description": "Used for sd-chip, sd-badge",
                   "type": "color",
-                  "value": "{core.vb.azure.750}"
+                  "value": "{vb.utilities.color.primary.750}"
                 }
               }
             },
@@ -9934,13 +10239,23 @@
               "color": {
                 "background": {
                   "type": "color",
-                  "value": "{core.vb.azure.650}"
+                  "value": "{vb.utilities.color.primary.750}"
+                },
+                "text": {
+                  "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+                  "type": "color",
+                  "value": "{vb.utilities.color.primary.200}"
                 }
               }
             },
             "color": {
               "border": {
                 "description": "Used for buttons, inverted focus state",
+                "type": "color",
+                "value": "{vb.utilities.color.white.default}"
+              },
+              "text": {
+                "description": "Inverted icon color",
                 "type": "color",
                 "value": "{vb.utilities.color.white.default}"
               }
@@ -9963,6 +10278,34 @@
                 "value": "{vb.utilities.color.neutral.500}"
               }
             }
+          },
+          "--size": {
+            "lg": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "8"
+              }
+            },
+            "md": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "8"
+              }
+            },
+            "sm": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "3.5"
+              }
+            }
+          },
+          "padding-inline": {
+            "description": "dev only!",
+            "type": "float",
+            "value": "22"
           }
         },
         "--tertiary": {
@@ -9971,7 +10314,7 @@
               "background": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{vb.utilities.color.background.primary.100}"
+                "value": "{core.vb.azure.100}"
               }
             }
           },
@@ -9981,12 +10324,12 @@
                 "text": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb.utilities.color.primary.100}"
+                  "value": "{core.vb.azure.100}"
                 },
                 "background": {
                   "description": "Used for sd-chip, sd-badge",
                   "type": "color",
-                  "value": "{core.vb.azure.750}"
+                  "value": "{vb.utilities.color.primary.750}"
                 }
               }
             },
@@ -9996,7 +10339,19 @@
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{core.vb.azure.650}"
+                },
+                "text": {
+                  "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+                  "type": "color",
+                  "value": "{vb.utilities.color.primary.200}"
                 }
+              }
+            },
+            "color": {
+              "text": {
+                "description": "Inverted icon color",
+                "type": "color",
+                "value": "{vb.utilities.color.white.default}"
               }
             }
           },
@@ -10005,7 +10360,12 @@
               "background": {
                 "description": "Default icon color ",
                 "type": "color",
-                "value": "{vb.utilities.color.primary.100}"
+                "value": "{core.vb.azure.100}"
+              },
+              "text": {
+                "description": "Used for pressed interaction",
+                "type": "color",
+                "value": "{vb.utilities.color.primary.800}"
               }
             }
           },
@@ -10028,6 +10388,11 @@
             }
           }
         },
+        "padding-inline": {
+          "description": "sd-button&#39;s left right padding (except for icon-only &amp; loading variant)",
+          "type": "float",
+          "value": "{vb.utilities.spacing.6}"
+        },
         "--size": {
           "md": {
             "font-size": {
@@ -10035,17 +10400,30 @@
               "value": "{vb.utilities.text.sm}"
             },
             "padding-block": {
+              "description": "Top bottom padding for sd-button md variant",
               "type": "float",
-              "value": "{vb.utilities.sizing.2,5}"
+              "value": "{vb.utilities.spacing.2,5}"
             },
             "border-radius": {
               "type": "float",
               "value": "{vb.utilities.rounded.full}"
+            },
+            "min-height": {
+              "type": "float",
+              "value": "44"
+            },
+            "--icon": {
+              "only": {
+                "padding-inline": {
+                  "type": "float",
+                  "value": "{vb.utilities.sizing.3}"
+                }
+              }
             }
           },
           "lg": {
             "icon": {
-              "_font-size": {
+              "height": {
                 "type": "float",
                 "value": "{vb.utilities.sizing.5}"
               }
@@ -10054,13 +10432,15 @@
               "type": "float",
               "value": "{vb.utilities.text.sm}"
             },
-            "border-radius": {
-              "type": "float",
-              "value": "{vb.utilities.rounded.full}"
-            },
             "padding-block": {
+              "description": "Top bottom padding for sd-button lg variant",
               "type": "float",
-              "value": "{vb.utilities.sizing.2,5}"
+              "value": "{vb.utilities.spacing.2,5}"
+            },
+            "min-height": {
+              "description": "Used for icon-only and loading variant",
+              "type": "float",
+              "value": "44"
             }
           },
           "sm": {
@@ -10074,9 +10454,13 @@
             },
             "padding-block": {
               "type": "float",
-              "value": "{vb.utilities.sizing.2,5}"
+              "value": "5.5"
             }
           }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "{vb.utilities.rounded.full}"
         },
         "font-weight": {
           "type": "string",
@@ -10103,7 +10487,7 @@
                 "background": {
                   "description": "Default icon color ",
                   "type": "color",
-                  "value": "{vb.utilities.color.primary.100}"
+                  "value": "{core.vb.azure.100}"
                 },
                 "text": {
                   "description": "Default icon color ",
@@ -10133,18 +10517,22 @@
             "color": {
               "border": {
                 "type": "color",
-                "value": "{core.vb.azure.400}"
+                "value": "{vb.utilities.color.primary.400}"
               },
               "text": {
                 "type": "color",
-                "value": "{core.vb.azure.400}"
+                "value": "{vb.utilities.color.primary.400}"
               },
               "background": {
                 "type": "color",
-                "value": "{core.vb.azure.400}"
+                "value": "{vb.utilities.color.primary.400}"
               }
             }
           }
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{vb.utilities.border-width.2}"
         }
       },
       "sd-footnotes": {
@@ -10164,18 +10552,18 @@
         "--active": {
           "color": {
             "text": {
-              "description": "Default icon color ",
+              "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
-              "value": "{vb.utilities.color.primary.800}"
+              "value": "{vb.utilities.color.primary.default}"
             }
           }
         },
         "--default": {
           "color": {
             "text": {
-              "description": "Default icon color ",
+              "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
-              "value": "{vb.utilities.color.text.primary.500}"
+              "value": "{vb.utilities.color.primary.default}"
             }
           }
         }
@@ -10210,10 +10598,6 @@
           "type": "float",
           "value": "{vb.utilities.rounded.default}"
         },
-        "border-width": {
-          "type": "float",
-          "value": "{vb.utilities.border-width.default}"
-        },
         "--neutral-300": {
           "color": {
             "background": {
@@ -10238,14 +10622,6 @@
               "value": "{vb.utilities.color.primary.900}"
             }
           }
-        },
-        "font-weight": {
-          "type": "string",
-          "value": "{vb.utilities.font-weight.normal}"
-        },
-        "font-size": {
-          "type": "float",
-          "value": "{vb.utilities.text.sm}"
         }
       },
       "sd-brandshape": {
@@ -10288,11 +10664,45 @@
           "--primary-800": {
             "color": {
               "background": {
+                "description": "code only",
                 "type": "color",
-                "value": "{vb.utilities.color.primary.800}"
+                "value": "#000000"
               }
             }
           }
+        }
+      },
+      "sd-accordion": {
+        "color": {
+          "text": {
+            "type": "color",
+            "value": "{vb.utilities.color.text.black.default}"
+          },
+          "icon-fill": {
+            "description": "Default icon color ",
+            "type": "color",
+            "value": "{vb.utilities.color.neutral.700}"
+          }
+        },
+        "__indicator": {
+          "color": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          }
+        },
+        "padding-block": {
+          "description": "Top bottom padding for sd-accordion ",
+          "type": "float",
+          "value": "15"
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{vb.utilities.sizing.0,5}"
+        },
+        "_panel-padding": {
+          "description": "Used inside panel summary layer of sd-accordion to accommodate the border",
+          "type": "float",
+          "value": "2"
         }
       },
       "navigable": {
@@ -10328,19 +10738,11 @@
         "color": {
           "text": {
             "type": "color",
-            "value": "{vb.utilities.color.neutral.700}"
+            "value": "{vb.utilities.color.black.default}"
           },
           "_icon": {
             "type": "color",
             "value": "{vb.utilities.color.text.black.default}"
-          }
-        },
-        "--current": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{vb.utilities.color.text.black.default}"
-            }
           }
         }
       },
@@ -10368,6 +10770,7 @@
         "--red": {
           "color": {
             "background": {
+              "description": "Used in both sd-badge and sd-status-badge",
               "type": "color",
               "value": "{vb.utilities.color.error.default}"
             }
@@ -10386,6 +10789,7 @@
         "--green": {
           "color": {
             "background": {
+              "description": "Used in both sd-badge and sd-status-badge",
               "type": "color",
               "value": "{vb.utilities.color.background.success.default}"
             },
@@ -10421,6 +10825,7 @@
           "value": "{vb.utilities.rounded.lg}"
         },
         "padding": {
+          "description": "Top bottom left right padding for the sd-radio-button-group",
           "type": "float",
           "value": "{vb.utilities.spacing.1}"
         }
@@ -10432,12 +10837,7 @@
         },
         "color": {
           "text": {
-            "description": "Primary brand color for text",
-            "type": "color",
-            "value": "{vb.utilities.color.black.default}"
-          },
-          "icon-fil": {
-            "description": "Default icon color ",
+            "description": "Used for text and icon fill",
             "type": "color",
             "value": "{vb.utilities.color.black.default}"
           }
@@ -10449,13 +10849,8 @@
               "type": "color",
               "value": "{core.vb.azure.50}"
             },
-            "icon-fill": {
-              "description": "Used for hover interaction",
-              "type": "color",
-              "value": "{vb.utilities.color.black.default}"
-            },
             "text": {
-              "description": "Used for hover interaction",
+              "description": "Used for text and icon fill",
               "type": "color",
               "value": "{vb.utilities.color.black.default}"
             }
@@ -10471,15 +10866,7 @@
           "text": {
             "type": "color",
             "value": "{core.vb.grey.600}"
-          },
-          "border": {
-            "type": "color",
-            "value": "{core.vb.grey.400}"
           }
-        },
-        "border-width": {
-          "type": "float",
-          "value": "{vb.utilities.border-width.default}"
         }
       },
       "sd-notification": {
@@ -10529,6 +10916,14 @@
             "description": "Default icon color ",
             "type": "color",
             "value": "{core.vb.azure.800}"
+          }
+        },
+        "__duration-indicator": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{vb.utilities.color.primary.default}"
+            }
           }
         }
       },
@@ -10606,18 +11001,6 @@
               "value": "{vb.utilities.color.primary.900}"
             }
           }
-        },
-        "font-weight": {
-          "type": "string",
-          "value": "{vb.utilities.font-weight.normal}"
-        },
-        "border-width": {
-          "type": "float",
-          "value": "{vb.utilities.border-width.default}"
-        },
-        "font-size": {
-          "type": "float",
-          "value": "{vb.utilities.text.sm}"
         }
       },
       "sd-radio": {
@@ -10704,13 +11087,28 @@
         "border-width": {
           "type": "float",
           "value": "{vb.utilities.border-width.2}"
+        }
+      },
+      "sd-audio": {
+        "__slide-bar": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.50)"
+              }
+            }
+          }
         },
-        "--error": {
-          "color": {
-            "text": {
-              "description": "Default icon color ",
-              "type": "color",
-              "value": "{vb.utilities.color.text.black.default}"
+        "__track-bar": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "{vb.utilities.color.white.default}"
+              }
             }
           }
         }
@@ -10728,14 +11126,6 @@
             "value": "{vb.utilities.color.text.neutral.700}"
           }
         },
-        "hover": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{vb.utilities.color.text.neutral.700}"
-            }
-          }
-        },
         "__circle": {
           "border-width": {
             "type": "float",
@@ -10744,40 +11134,72 @@
         }
       },
       "sd-map-marker": {
-        "cluster": {
-          "color": {
-            "icon-fill": {
-              "type": "color",
-              "value": "{vb.utilities.color.background.accent.500}"
+        "--cluster": {
+          "--default": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{vb.utilities.color.primary.default}"
+              }
             }
           },
-          "--hovered": {
+          "--hover": {
             "color": {
-              "icon-fill": {
+              "background": {
                 "type": "color",
                 "value": "{vb.utilities.color.background.accent.550}"
               }
             }
+          },
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{vb.utilities.color.white.default}"
+            }
           }
         },
-        "font-size": {
-          "type": "float",
-          "value": "{vb.utilities.text.xs}"
-        },
-        "main": {
+        "--main": {
           "color": {
-            "icon-fill": {
+            "background": {
               "type": "color",
-              "value": "{vb.utilities.color.background.accent.500}"
+              "value": "{vb.utilities.color.primary.default}"
+            }
+          }
+        },
+        "--pin": {
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{vb.utilities.color.background.primary.100}"
+              }
+            }
+          },
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{vb.utilities.color.primary.default}"
+            }
+          },
+          "--default": {
+            "color": {
+              "background": {
+                "description": "Inverted icon color",
+                "type": "color",
+                "value": "{vb.utilities.color.white.default}"
+              }
             }
           }
         }
       },
       "sd-headline": {
-        "4xl-and-mobile-4xl": {
-          "text": {
-            "type": "color",
-            "value": "{vb.utilities.color.primary.800}"
+        "--3xl-onwards": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{vb.utilities.color.primary.800}"
+            }
           }
         }
       },
@@ -10795,7 +11217,7 @@
             }
           }
         },
-        "--description": {
+        "_description": {
           "color": {
             "text": {
               "type": "color",
@@ -10805,22 +11227,6 @@
         }
       },
       "sd-quickfact": {
-        "__expandable": {
-          "color": {
-            "description-default": {
-              "text": {
-                "type": "color",
-                "value": "{core.vb.grey.620}"
-              }
-            },
-            "title-default": {
-              "text": {
-                "type": "color",
-                "value": "{vb.utilities.color.text.black.default}"
-              }
-            }
-          }
-        },
         "--expandable": {
           "color": {
             "text": {
@@ -10830,30 +11236,21 @@
           }
         }
       },
-      "sd-loader": {
-        "color": {
-          "neutral-500": {
-            "_text": {
-              "type": "color",
-              "value": "rgba(0, 102, 179, 0.40)"
-            }
-          }
-        }
-      },
       "sd-teaser-media": {
         "--primary-100": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "rgba(245, 247, 249, 0.80)"
-            }
-          },
           "--hover": {
             "color": {
               "background": {
                 "type": "color",
                 "value": "rgba(245, 247, 249, 0.90)"
               }
+            }
+          },
+          "color": {
+            "background": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(236, 240, 249, 0.80)"
             }
           }
         },
@@ -10870,6 +11267,24 @@
                 "type": "color",
                 "value": "rgba(245, 247, 249, 0.90)"
               }
+            }
+          }
+        },
+        "--white": {
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Used for teaser, audio (wave animation)\n",
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.90)"
+              }
+            }
+          },
+          "color": {
+            "background": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.80)"
             }
           }
         }
@@ -10960,22 +11375,33 @@
           "value": "{vb.utilities.border-width.2}"
         }
       },
-      "color": {
-        "background": {
-          "type": "color",
-          "value": "{core.vb.azure.50}"
-        }
-      },
       "sd-tab": {
         "color": {
           "border": {
             "type": "color",
             "value": "{core.vb.grey.400}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{vb.utilities.color.neutral.700}"
           }
         },
-        "font-weight": {
-          "type": "string",
-          "value": "{vb.utilities.font-weight.bold}"
+        "--hover": {
+          "color": {
+            "background": {
+              "description": "Used for sd-flag",
+              "type": "color",
+              "value": "{core.vb.azure.50}"
+            }
+          }
+        },
+        "--active": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{vb.utilities.color.primary.default}"
+            }
+          }
         }
       },
       "sd-switch": {
@@ -11023,20 +11449,20 @@
           }
         }
       },
-      "sd-menu": {
+      "sd-menu-item": {
         "color": {
           "text": {
             "type": "color",
             "value": "{vb.utilities.color.text.black.default}"
           },
-          "icon": {
+          "icon-fill": {
             "type": "color",
             "value": "{vb.utilities.color.text.black.default}"
           }
         },
         "--disabled": {
           "color": {
-            "icon": {
+            "icon-fill": {
               "type": "color",
               "value": "rgba(0, 0, 0, 0.20)"
             },
@@ -11047,20 +11473,17 @@
           }
         }
       },
+      "choice-control": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-tag, sd-tab, sd-navigation-item &amp; sd-radio-button",
+          "type": "string",
+          "value": "{vb.utilities.font-weight.bold}"
+        }
+      },
       "sd-link": {
         "color": {
           "--hover": {
-            "text": {
-              "type": "color",
-              "value": "{core.vb.azure.500}"
-            },
             "icon": {
-              "type": "color",
-              "value": "{core.vb.azure.500}"
-            }
-          },
-          "--default": {
-            "text": {
               "type": "color",
               "value": "{core.vb.azure.500}"
             }
@@ -11071,29 +11494,17 @@
               "value": "{core.vb.azure.500}"
             }
           },
-          "--active": {
-            "text": {
-              "type": "color",
-              "value": "{core.vb.azure.500}"
-            }
-          },
           "--pressed": {
             "icon": {
               "type": "color",
               "value": "{core.vb.azure.500}"
-            }
-          },
-          "--disabled": {
-            "text": {
-              "type": "color",
-              "value": "{core.ui.grey.400}"
             }
           }
         }
       },
       "sd-datepicker": {
         "__date-item": {
-          "--hovered": {
+          "--hover": {
             "--default": {
               "color": {
                 "background": {
@@ -11101,6 +11512,10 @@
                   "value": "{vb.utilities.color.primary.100}"
                 },
                 "text": {
+                  "type": "color",
+                  "value": "{vb.utilities.color.black.default}"
+                },
+                "border": {
                   "type": "color",
                   "value": "{vb.utilities.color.black.default}"
                 }
@@ -11117,14 +11532,6 @@
                   "value": "{vb.utilities.color.neutral.700}"
                 }
               }
-            },
-            "--current": {
-              "color": {
-                "text": {
-                  "type": "color",
-                  "value": "{vb.utilities.color.primary.500}"
-                }
-              }
             }
           },
           "--selected": {
@@ -11132,14 +11539,23 @@
               "text": {
                 "type": "color",
                 "value": "{vb.utilities.color.white.default}"
+              },
+              "background": {
+                "type": "color",
+                "value": "{vb.utilities.color.primary.default}"
+              }
+            },
+            "--hover": {
+              "color": {
+                "background": {
+                  "description": "Used for hover interaction",
+                  "type": "color",
+                  "value": "{vb.utilities.color.primary.700}"
+                }
               }
             }
           },
           "--default": {
-            "font-weight": {
-              "type": "string",
-              "value": "{vb.utilities.font-weight.normal}"
-            },
             "color": {
               "text": {
                 "description": "Default icon color ",
@@ -11152,27 +11568,22 @@
             "font-weight": {
               "type": "string",
               "value": "{vb.utilities.font-weight.bold}"
-            }
-          }
-        }
-      },
-      "sd-combobox": {
-        "--default": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{vb.utilities.color.primary.500}"
             },
-            "icon": {
-              "type": "color",
-              "value": "{vb.utilities.color.primary.500}"
+            "color": {
+              "text": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{vb.utilities.color.primary.default}"
+              }
             }
-          }
-        },
-        "__tag": {
-          "border-width": {
-            "type": "float",
-            "value": "{vb.utilities.border-width.2}"
+          },
+          "--range": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{vb.utilities.color.primary.100}"
+              }
+            }
           }
         }
       },
@@ -11183,6 +11594,31 @@
               "type": "float",
               "value": "{vb.utilities.text.base}"
             }
+          }
+        }
+      },
+      "marker": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-chip &amp; sd-flag",
+          "type": "string",
+          "value": "{vb.utilities.font-weight.normal}"
+        },
+        "border-width": {
+          "description": "Used for sd-chip &amp; sd-flag",
+          "type": "float",
+          "value": "{vb.utilities.border-width.default}"
+        },
+        "font-size": {
+          "description": "Used for sd-chip &amp; sd-flag",
+          "type": "float",
+          "value": "{vb.utilities.text.sm}"
+        }
+      },
+      "sd-combobox": {
+        "__tag": {
+          "border-width": {
+            "type": "float",
+            "value": "{vb.utilities.border-width.2}"
           }
         }
       },
@@ -11216,15 +11652,10 @@
           }
         }
       },
-      "sd-option": {
-        "--disabled": {
-          "color": {
-            "border": {
-              "description": "Used for disabled state",
-              "type": "color",
-              "value": "{vb.utilities.color.background.neutral.400}"
-            }
-          }
+      "sd-accordion-group": {
+        "_gap": {
+          "type": "float",
+          "value": "-2"
         }
       }
     }
@@ -11576,17 +12007,17 @@
               "40%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
-                "value": "rgba(24, 24, 24, 0.00)"
+                "value": "rgba(5, 21, 48, 0.20)"
               },
               "0%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
-                "value": "rgba(24, 24, 24, 0.00)"
+                "value": "rgba(5, 21, 48, 0.00)"
               },
               "10%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
-                "value": "rgba(24, 24, 24, 0.10)"
+                "value": "rgba(5, 21, 48, 0.10)"
               }
             }
           }
@@ -11614,7 +12045,7 @@
           },
           "600": {
             "type": "color",
-            "value": "{core.kid.primary.600}"
+            "value": "#244faf"
           },
           "700": {
             "type": "color",
@@ -12105,15 +12536,15 @@
           "color": {
             "description": "Used for tooltip",
             "type": "color",
-            "value": "rgba(107, 36, 5, 0.25)"
+            "value": "rgba(5, 21, 48, 0.10)"
           },
           "y": {
             "type": "float",
-            "value": "4"
+            "value": "2"
           },
           "blur": {
             "type": "float",
-            "value": "12"
+            "value": "4"
           },
           "x": {
             "type": "float",
@@ -12121,7 +12552,7 @@
           },
           "spread": {
             "type": "float",
-            "value": "-6"
+            "value": "0"
           }
         },
         "sm": {
@@ -12146,12 +12577,58 @@
             "type": "color",
             "value": "rgba(5, 21, 48, 0.25)"
           }
+        },
+        "xs": {
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "rgba(5, 21, 48, 0.75)"
+          },
+          "x": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "y": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "blur": {
+            "type": "float",
+            "value": "1.5"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "listbox": {
+          "x": {
+            "type": "float",
+            "value": "0"
+          },
+          "y": {
+            "type": "float",
+            "value": "2"
+          },
+          "blur": {
+            "type": "float",
+            "value": "4"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          },
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "rgba(5, 21, 48, 0.10)"
+          }
         }
       },
       "opacity": {
         "0": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-0}"
         },
         "5": {
           "type": "float",
@@ -12187,11 +12664,11 @@
         },
         "75": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-75}"
         },
         "80": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-80}"
         },
         "\b85": {
           "type": "float",
@@ -12199,7 +12676,7 @@
         },
         "\b90": {
           "type": "float",
-          "value": "0"
+          "value": "{core.ui.opacity.opacity-90}"
         },
         "\b100": {
           "type": "float",
@@ -12207,6 +12684,11 @@
         }
       },
       "sizing": {
+        "0": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.0}"
+        },
         "1": {
           "description": "8px",
           "type": "float",
@@ -12367,6 +12849,10 @@
         "1,5": {
           "type": "float",
           "value": "{core.ui.sizing.1,5}"
+        },
+        "2,5": {
+          "type": "float",
+          "value": "{core.ui.sizing.2,5}"
         }
       },
       "rounded": {
@@ -12742,65 +13228,6 @@
       }
     },
     "components": {
-      "sd-audio": {
-        "__timestamp": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.text.black.default}"
-            }
-          }
-        },
-        "--inverted": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{kid.utilities.color.white.default}"
-            }
-          }
-        },
-        "__slide-bar": {
-          "--inverted": {
-            "color": {
-              "border": {
-                "description": "Used for inverted dividers",
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.50)"
-              }
-            }
-          }
-        }
-      },
-      "sd-accordion": {
-        "__chevron": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.text.neutral.600}"
-            }
-          }
-        },
-        "color": {
-          "text": {
-            "type": "color",
-            "value": "{kid.utilities.color.text.black.default}"
-          }
-        },
-        "__indicator": {
-          "color": {
-            "type": "color",
-            "value": "rgba(255, 255, 255, 0.00)"
-          }
-        },
-        "padding-block": {
-          "type": "float",
-          "value": "{kid.utilities.spacing.4}"
-        },
-        "border-width": {
-          "type": "float",
-          "value": "{kid.utilities.sizing.0,25}"
-        }
-      },
       "sd-breadcrumb": {
         "__separator": {
           "color": {
@@ -12824,23 +13251,30 @@
           "_shadow": {
             "description": "Deprecated?",
             "type": "color",
-            "value": "rgba(24, 24, 24, 0.40)"
+            "value": "rgba(5, 21, 48, 0.20)"
           }
         },
         "padding-bottom": {
+          "description": "Is this used in code?",
           "type": "float",
-          "value": "{kid.utilities.spacing.0,5}"
+          "value": "0"
         },
         "__underline": {
           "height": {
             "type": "float",
-            "value": "{kid.utilities.sizing.0,25}"
+            "value": "{kid.utilities.sizing.2}"
           },
           "color": {
             "background": {
               "type": "color",
               "value": "rgba(255, 255, 255, 0.00)"
             }
+          }
+        },
+        "__shadow": {
+          "height": {
+            "type": "float",
+            "value": "{kid.utilities.sizing.1}"
           }
         }
       },
@@ -12916,14 +13350,6 @@
           "type": "string",
           "value": "{kid.utilities.font-weight.bold}"
         },
-        "--disabled": {
-          "color": {
-            "border": {
-              "type": "color",
-              "value": "{kid.utilities.color.neutral.500}"
-            }
-          }
-        },
         "--size": {
           "lg": {
             "font-size": {
@@ -12937,6 +13363,15 @@
               "value": "{kid.utilities.text.xs}"
             }
           }
+        },
+        "--disabled": {
+          "color": {
+            "text": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{kid.utilities.color.neutral.400}"
+            }
+          }
         }
       },
       "form-control": {
@@ -12946,12 +13381,9 @@
             "value": "{kid.utilities.color.black.default}"
           },
           "text": {
+            "description": "Used for label ",
             "type": "color",
             "value": "{kid.utilities.color.black.default}"
-          },
-          "icon-fill": {
-            "type": "color",
-            "value": "{kid.utilities.color.neutral.800}"
           }
         },
         "--invalid": {
@@ -12959,14 +13391,6 @@
             "background": {
               "type": "color",
               "value": "{core.kid.status.error-bg}"
-            }
-          }
-        },
-        "__tooltip": {
-          "color": {
-            "icon": {
-              "type": "color",
-              "value": "{kid.utilities.color.black.default}"
             }
           }
         },
@@ -12978,6 +13402,24 @@
                 "value": "{core.kid.neutral.800}"
               }
             }
+          }
+        },
+        "__listbox": {
+          "border-bottom-left-radius": {
+            "type": "float",
+            "value": "{kid.utilities.rounded.lg}"
+          },
+          "border-bottom-right-radius": {
+            "type": "float",
+            "value": "{kid.utilities.rounded.lg}"
+          },
+          "border-top-left-radius": {
+            "type": "float",
+            "value": "{kid.utilities.rounded.lg}"
+          },
+          "border-top-right-radius": {
+            "type": "float",
+            "value": "{kid.utilities.rounded.lg}"
           }
         },
         "border-radius": {
@@ -13066,6 +13508,11 @@
               "background": {
                 "type": "color",
                 "value": "{kid.utilities.color.neutral.800}"
+              },
+              "text": {
+                "description": "Used for inverted hover interaction button label",
+                "type": "color",
+                "value": "{kid.utilities.color.accent.100}"
               }
             }
           }
@@ -13077,6 +13524,11 @@
                 "description": "Default icon color ",
                 "type": "color",
                 "value": "{kid.utilities.color.background._gradient.components.informational.gradient.--white.background.color.0%}"
+              },
+              "text": {
+                "description": "Used for pressed interaction",
+                "type": "color",
+                "value": "{kid.utilities.color.neutral.800}"
               }
             }
           },
@@ -13093,7 +13545,7 @@
             "--hover": {
               "color": {
                 "text": {
-                  "description": "Default icon color ",
+                  "description": "Used for inverted hover interaction button label",
                   "type": "color",
                   "value": "{kid.utilities.color.accent.100}"
                 },
@@ -13109,12 +13561,22 @@
                 "background": {
                   "type": "color",
                   "value": "{kid.utilities.color.background._gradient.components.informational.gradient.--white.background.color.0%}"
+                },
+                "text": {
+                  "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+                  "type": "color",
+                  "value": "{kid.utilities.color.accent.100}"
                 }
               }
             },
             "color": {
               "border": {
                 "description": "Used for buttons, inverted focus state",
+                "type": "color",
+                "value": "{kid.utilities.color.accent.100}"
+              },
+              "text": {
+                "description": "Inverted icon color",
                 "type": "color",
                 "value": "{kid.utilities.color.accent.100}"
               }
@@ -13134,9 +13596,37 @@
               "text": {
                 "description": "Used for buttons, select field, focus state",
                 "type": "color",
-                "value": "{kid.utilities.color.neutral.500}"
+                "value": "{kid.utilities.color.neutral.400}"
               }
             }
+          },
+          "--size": {
+            "lg": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "7"
+              }
+            },
+            "md": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "7"
+              }
+            },
+            "sm": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "4.5"
+              }
+            }
+          },
+          "padding-inline": {
+            "description": "dev only!",
+            "type": "float",
+            "value": "23"
           }
         },
         "--tertiary": {
@@ -13170,7 +13660,19 @@
                   "description": "Default icon color ",
                   "type": "color",
                   "value": "{kid.utilities.color.background._gradient.components.informational.gradient.--white.background.color.0%}"
+                },
+                "text": {
+                  "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+                  "type": "color",
+                  "value": "{kid.utilities.color.accent.100}"
                 }
+              }
+            },
+            "color": {
+              "text": {
+                "description": "Inverted icon color",
+                "type": "color",
+                "value": "{kid.utilities.color.accent.100}"
               }
             }
           },
@@ -13180,6 +13682,11 @@
                 "description": "Default icon color ",
                 "type": "color",
                 "value": "{kid.utilities.color.background._gradient.components.informational.gradient.--white.background.color.0%}"
+              },
+              "text": {
+                "description": "Used for pressed interaction",
+                "type": "color",
+                "value": "{kid.utilities.color.neutral.800}"
               }
             }
           },
@@ -13197,10 +13704,15 @@
               "text": {
                 "description": "Used for buttons, select field, focus state",
                 "type": "color",
-                "value": "{kid.utilities.color.neutral.500}"
+                "value": "{kid.utilities.color.neutral.400}"
               }
             }
           }
+        },
+        "padding-inline": {
+          "description": "sd-button&#39;s left right padding (except for icon-only &amp; loading variant)",
+          "type": "float",
+          "value": "{kid.utilities.spacing.6}"
         },
         "--size": {
           "md": {
@@ -13209,17 +13721,30 @@
               "value": "{kid.utilities.text.sm}"
             },
             "padding-block": {
+              "description": "Top bottom padding for sd-button md variant",
               "type": "float",
-              "value": "{kid.utilities.sizing.2,5}"
+              "value": "{kid.utilities.spacing.2}"
             },
             "border-radius": {
               "type": "float",
               "value": "{kid.utilities.rounded.full}"
+            },
+            "min-height": {
+              "type": "float",
+              "value": "40"
+            },
+            "--icon": {
+              "only": {
+                "padding-inline": {
+                  "type": "float",
+                  "value": "{kid.utilities.sizing.3}"
+                }
+              }
             }
           },
           "lg": {
             "icon": {
-              "_font-size": {
+              "height": {
                 "type": "float",
                 "value": "{kid.utilities.sizing.6}"
               }
@@ -13228,13 +13753,15 @@
               "type": "float",
               "value": "{kid.utilities.text.sm}"
             },
-            "border-radius": {
-              "type": "float",
-              "value": "{kid.utilities.rounded.full}"
-            },
             "padding-block": {
+              "description": "Top bottom padding for sd-button lg variant",
               "type": "float",
-              "value": "{kid.utilities.sizing.2,5}"
+              "value": "{kid.utilities.spacing.2}"
+            },
+            "min-height": {
+              "description": "Used for icon-only and loading variant",
+              "type": "float",
+              "value": "40"
             }
           },
           "sm": {
@@ -13248,9 +13775,13 @@
             },
             "padding-block": {
               "type": "float",
-              "value": "{kid.utilities.sizing.2,5}"
+              "value": "5.5"
             }
           }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "{kid.utilities.rounded.full}"
         },
         "font-weight": {
           "type": "string",
@@ -13319,6 +13850,10 @@
               }
             }
           }
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{kid.utilities.border-width.default}"
         }
       },
       "sd-footnotes": {
@@ -13338,7 +13873,7 @@
         "--active": {
           "color": {
             "text": {
-              "description": "Default icon color ",
+              "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
               "value": "{kid.utilities.color.neutral.800}"
             }
@@ -13347,9 +13882,9 @@
         "--default": {
           "color": {
             "text": {
-              "description": "Default icon color ",
+              "description": "Used for sd-link &amp; sd-interactive",
               "type": "color",
-              "value": "{kid.utilities.color.icon-fill.primary.default}"
+              "value": "{kid.utilities.color.black.default}"
             }
           }
         }
@@ -13384,10 +13919,6 @@
           "type": "float",
           "value": "{kid.utilities.rounded.full}"
         },
-        "border-width": {
-          "type": "float",
-          "value": "{kid.utilities.border-width.default}"
-        },
         "--neutral-300": {
           "color": {
             "background": {
@@ -13412,14 +13943,6 @@
               "value": "rgba(255, 255, 255, 0.60)"
             }
           }
-        },
-        "font-weight": {
-          "type": "string",
-          "value": "{kid.utilities.font-weight.bold}"
-        },
-        "font-size": {
-          "type": "float",
-          "value": "{kid.utilities.text.xs}"
         }
       },
       "sd-brandshape": {
@@ -13462,11 +13985,45 @@
           "--primary-800": {
             "color": {
               "background": {
+                "description": "code only",
                 "type": "color",
-                "value": "{kid.utilities.color.primary.800}"
+                "value": "#000000"
               }
             }
           }
+        }
+      },
+      "sd-accordion": {
+        "color": {
+          "text": {
+            "type": "color",
+            "value": "{kid.utilities.color.text.black.default}"
+          },
+          "icon-fill": {
+            "description": "Default icon color ",
+            "type": "color",
+            "value": "{kid.utilities.color.primary.default}"
+          }
+        },
+        "__indicator": {
+          "color": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          }
+        },
+        "padding-block": {
+          "description": "Top bottom padding for sd-accordion ",
+          "type": "float",
+          "value": "{kid.utilities.spacing.4}"
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{kid.utilities.sizing.0,25}"
+        },
+        "_panel-padding": {
+          "description": "Used inside panel summary layer of sd-accordion to accommodate the border",
+          "type": "float",
+          "value": "1"
         }
       },
       "navigable": {
@@ -13508,14 +14065,6 @@
             "type": "color",
             "value": "{kid.utilities.color.text.black.default}"
           }
-        },
-        "--current": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.text.black.default}"
-            }
-          }
         }
       },
       "sd-badge": {
@@ -13542,6 +14091,7 @@
         "--red": {
           "color": {
             "background": {
+              "description": "Used in both sd-badge and sd-status-badge",
               "type": "color",
               "value": "{kid.utilities.color.background.error.default}"
             }
@@ -13560,6 +14110,7 @@
         "--green": {
           "color": {
             "background": {
+              "description": "Used in both sd-badge and sd-status-badge",
               "type": "color",
               "value": "{kid.utilities.color.background.success.default}"
             },
@@ -13595,6 +14146,7 @@
           "value": "{kid.utilities.rounded.full}"
         },
         "padding": {
+          "description": "Top bottom left right padding for the sd-radio-button-group",
           "type": "float",
           "value": "0"
         }
@@ -13606,12 +14158,7 @@
         },
         "color": {
           "text": {
-            "description": "Primary brand color for text",
-            "type": "color",
-            "value": "{kid.utilities.color.black.default}"
-          },
-          "icon-fil": {
-            "description": "Default icon color ",
+            "description": "Used for text and icon fill",
             "type": "color",
             "value": "{kid.utilities.color.black.default}"
           }
@@ -13623,13 +14170,8 @@
               "type": "color",
               "value": "{core.vb.azure.50}"
             },
-            "icon-fill": {
-              "description": "Used for hover interaction",
-              "type": "color",
-              "value": "{kid.utilities.color.black.default}"
-            },
             "text": {
-              "description": "Used for hover interaction",
+              "description": "Used for text and icon fill",
               "type": "color",
               "value": "{kid.utilities.color.black.default}"
             }
@@ -13645,15 +14187,7 @@
           "text": {
             "type": "color",
             "value": "{core.vb.grey.600}"
-          },
-          "border": {
-            "type": "color",
-            "value": "rgba(255, 255, 255, 0.00)"
           }
-        },
-        "border-width": {
-          "type": "float",
-          "value": "{kid.utilities.border-width.default}"
         }
       },
       "sd-notification": {
@@ -13703,6 +14237,14 @@
             "description": "Default icon color ",
             "type": "color",
             "value": "{kid.utilities.color.neutral.800}"
+          }
+        },
+        "__duration-indicator": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{kid.utilities.color.primary.default}"
+            }
           }
         }
       },
@@ -13780,18 +14322,6 @@
               "value": "rgba(255, 255, 255, 0.60)"
             }
           }
-        },
-        "font-weight": {
-          "type": "string",
-          "value": "{kid.utilities.font-weight.bold}"
-        },
-        "border-width": {
-          "type": "float",
-          "value": "{kid.utilities.border-width.default}"
-        },
-        "font-size": {
-          "type": "float",
-          "value": "{kid.utilities.text.xs}"
         }
       },
       "sd-radio": {
@@ -13820,7 +14350,7 @@
                 "background": {
                   "description": "Used for hover interaction",
                   "type": "color",
-                  "value": "{core.kid.neutral.800}"
+                  "value": "{kid.utilities.color.neutral.800}"
                 }
               }
             },
@@ -13878,13 +14408,28 @@
         "border-width": {
           "type": "float",
           "value": "{kid.utilities.border-width.default}"
+        }
+      },
+      "sd-audio": {
+        "__slide-bar": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.50)"
+              }
+            }
+          }
         },
-        "--error": {
-          "color": {
-            "text": {
-              "description": "Default icon color ",
-              "type": "color",
-              "value": "{kid.utilities.color.black.default}"
+        "__track-bar": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "{kid.utilities.color.white.default}"
+              }
             }
           }
         }
@@ -13902,14 +14447,6 @@
             "value": "{kid.utilities.color.text.neutral.700}"
           }
         },
-        "hover": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.text.neutral.700}"
-            }
-          }
-        },
         "__circle": {
           "border-width": {
             "type": "float",
@@ -13918,40 +14455,72 @@
         }
       },
       "sd-map-marker": {
-        "cluster": {
-          "color": {
-            "icon-fill": {
-              "type": "color",
-              "value": "{kid.utilities.color.background.primary.default}"
-            }
-          },
-          "--hovered": {
+        "--cluster": {
+          "--default": {
             "color": {
-              "icon-fill": {
+              "background": {
                 "type": "color",
                 "value": "{kid.utilities.color.background.primary.default}"
               }
             }
+          },
+          "--hover": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{kid.utilities.color.neutral.800}"
+              }
+            }
+          },
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{kid.utilities.color.text.white.default}"
+            }
           }
         },
-        "font-size": {
-          "type": "float",
-          "value": "{kid.utilities.text.xs}"
-        },
-        "main": {
+        "--main": {
           "color": {
-            "icon-fill": {
+            "background": {
               "type": "color",
               "value": "{kid.utilities.color.background.primary.default}"
+            }
+          }
+        },
+        "--pin": {
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{kid.utilities.color.background.primary.100}"
+              }
+            }
+          },
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{kid.utilities.color.background.primary.default}"
+            }
+          },
+          "--default": {
+            "color": {
+              "background": {
+                "description": "Inverted icon color",
+                "type": "color",
+                "value": "{kid.utilities.color.accent.100}"
+              }
             }
           }
         }
       },
       "sd-headline": {
-        "4xl-and-mobile-4xl": {
-          "text": {
-            "type": "color",
-            "value": "{core.kid.black}"
+        "--3xl-onwards": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{core.kid.black}"
+            }
           }
         }
       },
@@ -13969,7 +14538,7 @@
             }
           }
         },
-        "--description": {
+        "_description": {
           "color": {
             "text": {
               "type": "color",
@@ -13979,22 +14548,6 @@
         }
       },
       "sd-quickfact": {
-        "__expandable": {
-          "color": {
-            "description-default": {
-              "text": {
-                "type": "color",
-                "value": "{core.vb.grey.620}"
-              }
-            },
-            "title-default": {
-              "text": {
-                "type": "color",
-                "value": "{kid.utilities.color.text.black.default}"
-              }
-            }
-          }
-        },
         "--expandable": {
           "color": {
             "text": {
@@ -14004,30 +14557,21 @@
           }
         }
       },
-      "sd-loader": {
-        "color": {
-          "neutral-500": {
-            "_text": {
-              "type": "color",
-              "value": "rgba(0, 102, 179, 0.40)"
-            }
-          }
-        }
-      },
       "sd-teaser-media": {
         "--primary-100": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "rgba(245, 247, 249, 0.80)"
-            }
-          },
           "--hover": {
             "color": {
               "background": {
                 "type": "color",
                 "value": "rgba(255, 255, 255, 0.90)"
               }
+            }
+          },
+          "color": {
+            "background": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.80)"
             }
           }
         },
@@ -14044,6 +14588,24 @@
                 "type": "color",
                 "value": "rgba(255, 255, 255, 0.90)"
               }
+            }
+          }
+        },
+        "--white": {
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Used for teaser, audio (wave animation)\n",
+                "type": "color",
+                "value": "rgba(247, 242, 236, 0.90)"
+              }
+            }
+          },
+          "color": {
+            "background": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(247, 242, 236, 0.80)"
             }
           }
         }
@@ -14122,7 +14684,7 @@
               "border": {
                 "description": "Used for active / selected elements",
                 "type": "color",
-                "value": "{kid.utilities.color.white.default}"
+                "value": "{kid.utilities.color.text.white.default}"
               }
             }
           }
@@ -14134,22 +14696,33 @@
           "value": "{kid.utilities.border-width.default}"
         }
       },
-      "color": {
-        "background": {
-          "type": "color",
-          "value": "{core.vb.azure.50}"
-        }
-      },
       "sd-tab": {
         "color": {
           "border": {
             "type": "color",
             "value": "{core.vb.grey.400}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{kid.utilities.color.primary.900}"
           }
         },
-        "font-weight": {
-          "type": "string",
-          "value": "{kid.utilities.font-weight.bold}"
+        "--hover": {
+          "color": {
+            "background": {
+              "description": "Used for sd-flag",
+              "type": "color",
+              "value": "{core.vb.azure.50}"
+            }
+          }
+        },
+        "--active": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{kid.utilities.color.primary.default}"
+            }
+          }
         }
       },
       "sd-switch": {
@@ -14197,20 +14770,20 @@
           }
         }
       },
-      "sd-menu": {
+      "sd-menu-item": {
         "color": {
           "text": {
             "type": "color",
             "value": "{kid.utilities.color.text.black.default}"
           },
-          "icon": {
+          "icon-fill": {
             "type": "color",
             "value": "{kid.utilities.color.text.black.default}"
           }
         },
         "--disabled": {
           "color": {
-            "icon": {
+            "icon-fill": {
               "type": "color",
               "value": "{kid.utilities.color.neutral.500}"
             },
@@ -14221,20 +14794,17 @@
           }
         }
       },
+      "choice-control": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-tag, sd-tab, sd-navigation-item &amp; sd-radio-button",
+          "type": "string",
+          "value": "{kid.utilities.font-weight.bold}"
+        }
+      },
       "sd-link": {
         "color": {
           "--hover": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.neutral.800}"
-            },
             "icon": {
-              "type": "color",
-              "value": "{kid.utilities.color.text.black.default}"
-            }
-          },
-          "--default": {
-            "text": {
               "type": "color",
               "value": "{kid.utilities.color.text.black.default}"
             }
@@ -14245,29 +14815,17 @@
               "value": "{kid.utilities.color.text.black.default}"
             }
           },
-          "--active": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.neutral.800}"
-            }
-          },
           "--pressed": {
             "icon": {
               "type": "color",
               "value": "{kid.utilities.color.text.black.default}"
-            }
-          },
-          "--disabled": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.neutral.800}"
             }
           }
         }
       },
       "sd-datepicker": {
         "__date-item": {
-          "--hovered": {
+          "--hover": {
             "--default": {
               "color": {
                 "background": {
@@ -14275,6 +14833,10 @@
                   "value": "rgba(255, 255, 255, 0.00)"
                 },
                 "text": {
+                  "type": "color",
+                  "value": "{kid.utilities.color.neutral.700}"
+                },
+                "border": {
                   "type": "color",
                   "value": "{kid.utilities.color.neutral.700}"
                 }
@@ -14291,14 +14853,6 @@
                   "value": "{kid.utilities.color.neutral.700}"
                 }
               }
-            },
-            "--current": {
-              "color": {
-                "text": {
-                  "type": "color",
-                  "value": "{kid.utilities.color.neutral.700}"
-                }
-              }
             }
           },
           "--selected": {
@@ -14306,14 +14860,23 @@
               "text": {
                 "type": "color",
                 "value": "{kid.utilities.color.white.default}"
+              },
+              "background": {
+                "type": "color",
+                "value": "{kid.utilities.color.primary.default}"
+              }
+            },
+            "--hover": {
+              "color": {
+                "background": {
+                  "description": "Used for hover interaction",
+                  "type": "color",
+                  "value": "{kid.utilities.color.neutral.800}"
+                }
               }
             }
           },
           "--default": {
-            "font-weight": {
-              "type": "string",
-              "value": "{core.kid.font-weight.font-normal}"
-            },
             "color": {
               "text": {
                 "description": "Default icon color ",
@@ -14326,27 +14889,22 @@
             "font-weight": {
               "type": "string",
               "value": "{core.kid.font-weight.font-semibold}"
-            }
-          }
-        }
-      },
-      "sd-combobox": {
-        "--default": {
-          "color": {
-            "text": {
-              "type": "color",
-              "value": "{core.vb.grey.620}"
             },
-            "icon": {
-              "type": "color",
-              "value": "{core.vb.grey.620}"
+            "color": {
+              "text": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{kid.utilities.color.primary.default}"
+              }
             }
-          }
-        },
-        "__tag": {
-          "border-width": {
-            "type": "float",
-            "value": "{kid.utilities.border-width.default}"
+          },
+          "--range": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{kid.utilities.color.neutral.100}"
+              }
+            }
           }
         }
       },
@@ -14357,6 +14915,31 @@
               "type": "float",
               "value": "{kid.utilities.text.sm}"
             }
+          }
+        }
+      },
+      "marker": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-chip &amp; sd-flag",
+          "type": "string",
+          "value": "{kid.utilities.font-weight.bold}"
+        },
+        "border-width": {
+          "description": "Used for sd-chip &amp; sd-flag",
+          "type": "float",
+          "value": "{kid.utilities.border-width.default}"
+        },
+        "font-size": {
+          "description": "Used for sd-chip &amp; sd-flag",
+          "type": "float",
+          "value": "{kid.utilities.text.xs}"
+        }
+      },
+      "sd-combobox": {
+        "__tag": {
+          "border-width": {
+            "type": "float",
+            "value": "{kid.utilities.border-width.default}"
           }
         }
       },
@@ -14390,15 +14973,10 @@
           }
         }
       },
-      "sd-option": {
-        "--disabled": {
-          "color": {
-            "border": {
-              "description": "Used for disabled state",
-              "type": "color",
-              "value": "{kid.utilities.color.neutral.400}"
-            }
-          }
+      "sd-accordion-group": {
+        "_gap": {
+          "type": "float",
+          "value": "-1"
         }
       }
     }

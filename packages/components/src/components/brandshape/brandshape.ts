@@ -38,6 +38,8 @@ export default class SdBrandshape extends SolidElement {
     | 'white'
     | 'border-primary'
     | 'border-white'
+    | 'primary|80'
+    | 'white|80'
     | 'image' = 'primary';
 
   /** Defines which shapes of the brandshape should be displayed. */
@@ -146,11 +148,13 @@ export default class SdBrandshape extends SolidElement {
           part="shape-middle"
           class=${cx(
             {
-              'neutral-100': 'bg-neutral-100',
+              'neutral-100': 'sd-brandshape--neutral-100-color-background',
               primary: 'bg-primary',
-              white: 'bg-white',
+              white: 'sd-brandshape--white-color-background',
               'border-white': 'bg-transparent',
               'border-primary': 'bg-transparent',
+              'primary|80': 'bg-primary/80',
+              'white|80': 'bg-white/80',
               image: 'bg-transparent'
             }[this.variant],
             'w-full block absolute h-full top-0 left-0 z-0'
@@ -176,15 +180,18 @@ export default class SdBrandshape extends SolidElement {
     return html` <div
       class=${cx(
         {
-          'neutral-100': 'bg-neutral-100',
+          'neutral-100': 'sd-brandshape--neutral-100-color-background',
           primary: 'bg-primary',
-          white: 'bg-white',
+          white: 'sd-brandshape--white-color-background',
           'border-white': 'bg-transparent',
           'border-primary': 'bg-transparent',
+          'primary|80': 'bg-primary/80',
+          'white|80': 'bg-white/80',
           image: 'bg-transparent'
         }[this.variant],
         { top: 'bottom-0', bottom: 'top-0' }[position],
-        'block absolute left-0 w-full h-[1px]'
+        'block absolute left-0 w-full',
+        this.variant !== 'primary|80' && this.variant !== 'white|80' ? 'h-[1px]' : ''
       )}
     ></div>`;
   }
@@ -307,7 +314,7 @@ export default class SdBrandshape extends SolidElement {
       /**
        * Dev-note: In some components, css properties need to be assigned
        * to specific variables so we keep consistency as in Figma.
-       * 
+       *
        * For more details, see the 'Consistency with Figma' section in the **CONTRIBUTING.md**.
        */
       :host([variant='neutral-100']) [part='base'] {
@@ -320,6 +327,14 @@ export default class SdBrandshape extends SolidElement {
 
       :host([variant='primary']) [part='base'] {
         fill: rgba(var(--sd-color-background-primary, rgba(var(--sd-color-primary))));
+      }
+
+      :host([variant='primary|80']) [part='base'] {
+        fill: rgba(var(--sd-color-background-primary, rgba(var(--sd-color-primary))) / 0.8);
+      }
+
+      :host([variant='white|80']) [part='base'] {
+        fill: rgba(var(--sd-color-background-white, rgba(var(--sd-color-white))) / 0.8);
       }
     `
   ];

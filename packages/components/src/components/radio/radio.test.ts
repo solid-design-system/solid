@@ -49,7 +49,7 @@ describe('<sd-radio>', () => {
 
   it('should display as invalid when marked as invalid', async () => {
     const radio = await fixture<SdRadio>(html`<sd-radio invalid></sd-radio>`);
-    expect(radio.shadowRoot?.querySelector('.text-error')).to.exist;
+    expect(radio.shadowRoot?.querySelector('.border-error')).to.exist;
   });
 
   it('should handle custom values correctly', async () => {
