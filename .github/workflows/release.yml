@@ -31,9 +31,6 @@ jobs:
         with:
           node-version: 24.14.1
 
-      - name: Setup npm
-        run: npm i -g npm@10.9.7
-
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
 
@@ -60,9 +57,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24.14.1
-
-      - name: Setup npm
-        run: npm i -g npm@10.9.7
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
