@@ -70,7 +70,7 @@ export default {
         }
 
         body:not(:has(.sd-theme-ui-light, .sd-theme-ui-dark)) .inverted-wrapper {
-          background-color: white !important;
+          background-color: transparent;
         }
       </style>
       ${story()}
