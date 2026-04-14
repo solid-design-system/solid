@@ -68,7 +68,7 @@ export const componentsTool = (server: McpServer) => {
       },
       title: 'Components'
     },
-    async ({ component, story, doc }) => {
+    async ({ component, example: story, doc }) => {
       // --- package-level doc ---
       if (doc) {
         const content = await readIfExists(join(componentPackageDocsPath, `${doc}.md`));

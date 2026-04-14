@@ -55,7 +55,8 @@ export const iconSearchTool = (server: McpServer) => {
         'Pass multiple keywords — English and/or German synonyms — to get the best possible list of candidates. ' +
         'The tool deduplicates results and shows which keyword(s) each icon matched. ' +
         'Returns icon names in the exact format for <sd-icon name="...">, e.g. "system/download". ' +
-        'Always search with several synonyms (EN + DE) to maximise recall.',
+        'Always search with several synonyms (EN + DE) to maximise recall.' + 
+        'Use icon tool with topic arg to understand the difference between "system" and "content" icons and when to use which category. ',
       inputSchema: {
         keywords: z
           .array(z.string().min(1))
