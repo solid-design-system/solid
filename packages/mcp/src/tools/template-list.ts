@@ -25,8 +25,8 @@ export const templateList = (server: McpServer) => {
       let entries: string[];
       try {
         entries = (await fs.readdir(templatesPackagePath, { withFileTypes: true }))
-          .filter(d => d.isDirectory())
-          .map(d => d.name);
+          .filter(d => d.isFile() && d.name.endsWith('.md'))
+          .map(d => d.name.replace(/\.md$/, ''));
       } catch {
         return {
           content: [{ type: 'text', text: 'Template metadata not yet built. Run build:metadata first.' }]
@@ -39,9 +39,13 @@ export const templateList = (server: McpServer) => {
         await Promise.all(
           entries.map(async name => {
             try {
-              const raw = await fs.readFile(join(templatesPackagePath, name, 'components.json'), 'utf-8');
-              const comps: string[] = JSON.parse(raw);
-              if (comps.includes(component)) filtered.push(name);
+              const raw = await fs.readFile(join(templatesPackagePath, `${name}.md`), 'utf-8');
+              // Parse components array from YAML frontmatter
+              const yamlMatch = raw.match(/^---\n([\s\S]*?)\n---/);
+              if (yamlMatch) {
+                const comps = [...yamlMatch[1].matchAll(/^  - (sd-[\w-]+)$/gm)].map(m => m[1]);
+                if (comps.includes(component)) filtered.push(name);
+              }
             } catch {
               /* skip missing */
             }

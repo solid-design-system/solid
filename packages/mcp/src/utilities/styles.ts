@@ -10,7 +10,7 @@ export const getAvailableStyles = async () => {
   try {
     const entries = await fs.readdir(stylesPath, { withFileTypes: true });
     return entries
-      .filter(d => d.isDirectory())
+      .filter(d => d.isDirectory() && d.name.startsWith('sd-'))
       .map(d => d.name)
       .sort();
   } catch {

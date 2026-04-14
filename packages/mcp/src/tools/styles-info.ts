@@ -38,14 +38,9 @@ export const stylesInfoTool = (server: McpServer) => {
     async ({ style }) => {
       // Normalise: accept both "chip" and "sd-chip"
       const name = style.startsWith('sd-') ? style : `sd-${style}`;
-      const styleDir = join(stylesPath, name);
+      const infoMd = await readIfExists(join(stylesPath, name, 'info.md'));
 
-      const [docs, classesRaw] = await Promise.all([
-        readIfExists(join(styleDir, 'docs.md')),
-        readIfExists(join(styleDir, 'classes.txt'))
-      ]);
-
-      if (!docs && !classesRaw) {
+      if (!infoMd) {
         return {
           content: [
             {
@@ -56,19 +51,8 @@ export const stylesInfoTool = (server: McpServer) => {
         };
       }
 
-      const parts: string[] = [
-        '> IMPORTANT: Only use CSS classes listed in the Classes section below.\n> Never invent class names not present in this specification.'
-      ];
-
-      if (docs) parts.push(docs);
-
-      if (classesRaw) {
-        const classes = classesRaw.split('\n').filter(Boolean);
-        parts.push(`\n## Available CSS Classes\n${classes.map(c => `- \`${c}\``).join('\n')}`);
-      }
-
       return {
-        content: [{ type: 'text', text: parts.join('\n\n') }]
+        content: [{ type: 'text', text: infoMd }]
       };
     }
   );

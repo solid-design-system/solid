@@ -11,60 +11,180 @@ type Manifest = Module[];
 /** Absolute path to the docs stories/components directory */
 const DOCS_COMPONENTS_DIR = join(dirname(fileURLToPath(import.meta.url)), '../../../docs/src/stories/components');
 
-/**
- * Extracts the prose content from an MDX file.
- * Strips JSX placeholder tags (<DefaultStory />, <DocumentationLinks .../>)
- * so only the human-readable markdown remains.
- */
-const extractMdxContent = async (mdxPath: string): Promise<string | null> => {
+interface MdxExtract {
+  docs: string | null;
+  relatedComponents: string[];
+}
+
+const extractMdxContent = async (mdxPath: string): Promise<MdxExtract> => {
   try {
     const raw = await fs.readFile(mdxPath, 'utf-8');
     const match = raw.match(/export const content = `([\s\S]*?)`;/);
-    if (!match) return null;
-    return match[1]
+    if (!match) return { docs: null, relatedComponents: [] };
+
+    const full = match[1]
       .split('\n')
       .filter(
-        line => !line.trimStart().startsWith('<DefaultStory') && !line.trimStart().startsWith('<DocumentationLinks')
+        line =>
+          !line.trimStart().startsWith('<DefaultStory') && !line.trimStart().startsWith('<DocumentationLinks')
       )
       .join('\n')
       .trim();
+
+    const relCompBlock = full.match(/####\s+Related Components\n+([\s\S]*?)(?=\n####|\n###|$)/);
+    const relatedComponents: string[] = [];
+    if (relCompBlock) {
+      const tagMatches = [...relCompBlock[1].matchAll(/\[(sd-[\w-]+)\]/g)];
+      relatedComponents.push(...tagMatches.map(m => m[1]));
+    }
+
+    let docs = full.replace(/####\s+Related (?:Components|Templates)\n+((?:.*\n)*?)(?=\n####|\n###|$)/g, '');
+    docs = docs.replace(/^\[.*?\]\(\.\/?path=.*?\)\n?/gm, '');
+    docs = docs.replace(/\nVisit <sd-link[\s\S]*$/, '');
+    docs = docs.trim();
+
+    return { docs: docs || null, relatedComponents };
   } catch {
-    return null;
+    return { docs: null, relatedComponents: [] };
   }
 };
 
-/**
- * Extracts a compact, LLM-friendly API summary from a CustomElementDeclaration.
- * Only includes public fields, events, slots, and CSS parts.
- */
-const extractApi = (decl: CustomElementDeclaration) => ({
-  tagName: decl.tagName,
-  summary: (decl as any).summary ?? '',
-  properties: ((decl.members ?? []) as any[])
-    .filter((m: any) => m.kind === 'field' && !m.privacy)
-    .map((m: any) => ({
-      name: m.name,
-      type: m.type?.text ?? '',
-      default: m.default ?? '',
-      description: m.description ?? ''
-    })),
-  events: (decl.events ?? []).map(e => ({ name: e.name, description: e.description ?? '' })),
-  slots: (decl.slots ?? []).map(s => ({ name: s.name || '(default)', description: s.description ?? '' })),
-  cssParts: (decl.cssParts ?? []).map(p => ({ name: p.name, description: p.description ?? '' }))
-});
+export interface Story {
+  /** kebab-case slug used as the filename, e.g. "no-shadow" */
+  slug: string;
+  /** JSDoc description extracted from the comment above the export */
+  description: string;
+  /** Rendered HTML content */
+  html: string;
+}
 
 /**
- * Builds component metadata from the MDX docs and custom-elements manifest.
- * For each sd-* component writes:
- *   docs.md      — usage prose from the Storybook MDX docs
- *   api.json     — compact API (properties, events, slots, cssParts)
- *   templates.json — cross-reference populated later by buildTemplates
+ * Extracts the content of a lit-html template literal starting at `startIndex`
+ * (immediately after the opening backtick of `html\``).
  */
+const extractHtmlLiteral = (source: string, startIndex: number): string => {
+  let i = startIndex;
+  let depth = 0;
+  while (i < source.length) {
+    const c = source[i];
+    if (depth === 0 && c === '`') return source.slice(startIndex, i);
+    if (c === '$' && source[i + 1] === '{') { depth++; i += 2; continue; }
+    if (depth > 0) { if (c === '{') depth++; else if (c === '}') depth--; }
+    i++;
+  }
+  return source.slice(startIndex);
+};
+
+const dedent = (str: string): string => {
+  const lines = str.split('\n');
+  while (lines.length && !lines[0].trim()) lines.shift();
+  while (lines.length && !lines[lines.length - 1].trim()) lines.pop();
+  if (!lines.length) return '';
+  const indent = Math.min(...lines.filter(l => l.trim()).map(l => l.match(/^(\s*)/)?.[1].length ?? 0));
+  return lines.map(l => l.slice(indent)).join('\n');
+};
+
+/** Converts PascalCase/camelCase to kebab-case. e.g. "NoShadow" → "no-shadow" */
+const toKebab = (s: string): string =>
+  s.replace(/([A-Z])/g, (_, c, i) => (i === 0 ? c.toLowerCase() : `-${c.toLowerCase()}`));
+
+/**
+ * Extracts stories from a component .stories.ts file.
+ * Only stories with a JSDoc comment AND a direct html` literal are included.
+ * Default/generateTemplate stories are skipped.
+ */
+const extractStories = async (storiesPath: string): Promise<Story[]> => {
+  let source: string;
+  try {
+    source = await fs.readFile(storiesPath, 'utf-8');
+  } catch {
+    return [];
+  }
+
+  const stories: Story[] = [];
+  // Match: optional JSDoc, then `export const ExportName = {`
+  const pattern = /(\/\*\*([\s\S]*?)\*\/\s*)?^export const (\w+) = \{/gm;
+  let match: RegExpExecArray | null;
+
+  while ((match = pattern.exec(source)) !== null) {
+    const exportName = match[3];
+    if (exportName === 'default') continue;
+
+    const jsdocRaw = match[2] ?? '';
+    // Clean up JSDoc: remove leading " * " on each line
+    const description = jsdocRaw
+      .split('\n')
+      .map(l => l.replace(/^\s*\*\s?/, '').trim())
+      .filter(Boolean)
+      .join('\n')
+      .trim();
+
+    // Find `html`` directly inside the render function (not inside generateTemplate)
+    const blockStart = match.index + match[0].length;
+    const blockSlice = source.slice(blockStart);
+
+    // Skip if this story uses generateTemplate
+    const nextExportIdx = blockSlice.search(/\nexport const /);
+    const block = nextExportIdx === -1 ? blockSlice : blockSlice.slice(0, nextExportIdx);
+    if (block.includes('generateTemplate(')) continue;
+
+    const htmlIdx = block.indexOf('html`');
+    if (htmlIdx === -1) continue;
+
+    const rawHtml = extractHtmlLiteral(block, htmlIdx + 5);
+    const html = dedent(rawHtml);
+    if (!html) continue;
+
+    stories.push({ slug: toKebab(exportName), description, html });
+  }
+
+  return stories;
+};
+
+const formatPropMeta = (type: string, defaultVal: string): string => {
+  const parts: string[] = [];
+  if (type) parts.push(type.replace(/\s*\|\s*/g, '|'));
+  if (defaultVal !== '' && defaultVal !== undefined) parts.push(`default=${defaultVal}`);
+  return parts.join(', ');
+};
+
+interface ApiSections {
+  tagName: string;
+  summary: string;
+  props: string;
+  events: string;
+  slots: string;
+  parts: string;
+}
+
+const extractApiSections = (decl: CustomElementDeclaration): ApiSections => {
+  const tagName = decl.tagName ?? '';
+  const summary = (decl as any).summary ?? '';
+
+  const propsLines = ((decl.members ?? []) as any[])
+    .filter((m: any) => m.kind === 'field' && !m.privacy && m.description)
+    .map((m: any) => {
+      const meta = formatPropMeta(m.type?.text ?? '', m.default ?? '');
+      const attrSuffix = m.attribute && m.attribute !== m.name ? ` [attr: ${m.attribute as string}]` : '';
+      return `- prop.${m.name as string}${attrSuffix}: ${meta}${m.description ? ` \u2014 ${m.description as string}` : ''}`;
+    });
+
+  const eventLines = (decl.events ?? []).map(e => `- event.${e.name}: ${e.description ?? ''}`);
+  const slotLines = (decl.slots ?? []).map(s => `- slot.${s.name || 'default'}: ${s.description ?? ''}`);
+  const partLines = (decl.cssParts ?? []).map(p => `- part.${p.name}: ${p.description ?? ''}`);
+
+  return {
+    tagName,
+    summary,
+    props: propsLines.join('\n'),
+    events: eventLines.join('\n'),
+    slots: slotLines.join('\n'),
+    parts: partLines.join('\n')
+  };
+};
+
 export const buildComponents = async () => {
-  const spinner = ora({
-    prefixText: 'Components:',
-    text: 'Generating static metadata...'
-  }).start();
+  const spinner = ora({ prefixText: 'Components:', text: 'Generating static metadata...' }).start();
 
   try {
     const manifestImport = await import('@solid-design-system/components/dist/custom-elements.json', {
@@ -87,18 +207,22 @@ export const buildComponents = async () => {
       components.map(async comp => {
         const tagName = comp.tagName!;
         const name = tagName.replace(/^sd-/, '');
-        const compDir = join(componentPath, tagName);
-        mkdirSync(compDir, { recursive: true });
+        const api = extractApiSections(comp);
 
-        const [docs] = await Promise.all([extractMdxContent(join(DOCS_COMPONENTS_DIR, `${name}.mdx`))]);
+        const [{ docs, relatedComponents }, stories] = await Promise.all([
+          extractMdxContent(join(DOCS_COMPONENTS_DIR, `${name}.mdx`)),
+          extractStories(join(DOCS_COMPONENTS_DIR, `${name}.stories.ts`))
+        ]);
 
-        const writes: Promise<void>[] = [
-          fs.writeFile(join(compDir, 'api.json'), JSON.stringify(extractApi(comp), null, 2)),
-          fs.writeFile(join(compDir, 'templates.json'), '[]')
-        ];
-        if (docs) writes.push(fs.writeFile(join(compDir, 'docs.md'), docs));
-
-        await Promise.all(writes);
+        // Store intermediate JSON — buildTemplates will finalise into info.md + story files
+        const intermediate = {
+          api,
+          docs,
+          relatedComponents,
+          stories,
+          templates: [] as string[]
+        };
+        await fs.writeFile(join(componentPath, `${tagName}.json`), JSON.stringify(intermediate));
       })
     );
 

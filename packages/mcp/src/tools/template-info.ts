@@ -17,8 +17,8 @@ const readIfExists = async (filePath: string): Promise<string | null> => {
 
 /**
  * Tool: template-info
- * Returns the full Storybook story code for a template plus the list of
- * Solid components it uses. Use template-list to discover template names.
+ * Returns the SKILL.md for a template, which contains the HTML for all template
+ * variants and lists the Solid components it uses. Use template-list to discover template names.
  */
 export const templateInfoTool = (server: McpServer) => {
   server.registerTool(
@@ -33,14 +33,9 @@ export const templateInfoTool = (server: McpServer) => {
       title: 'Template info'
     },
     async ({ template }) => {
-      const templateDir = join(templatesPackagePath, template);
+      const skillMd = await readIfExists(join(templatesPackagePath, `${template}.md`));
 
-      const [stories, componentsRaw] = await Promise.all([
-        readIfExists(join(templateDir, 'stories.ts')),
-        readIfExists(join(templateDir, 'components.json'))
-      ]);
-
-      if (!stories) {
+      if (!skillMd) {
         return {
           content: [
             {
@@ -51,17 +46,8 @@ export const templateInfoTool = (server: McpServer) => {
         };
       }
 
-      const parts: string[] = [];
-
-      if (componentsRaw) {
-        const components: string[] = JSON.parse(componentsRaw);
-        parts.push(`## Components used in this template\n${components.map(c => `- ${c}`).join('\n')}`);
-      }
-
-      parts.push(`## Template source\n\`\`\`typescript\n${stories}\n\`\`\``);
-
       return {
-        content: [{ type: 'text', text: parts.join('\n\n') }]
+        content: [{ type: 'text', text: skillMd }]
       };
     }
   );

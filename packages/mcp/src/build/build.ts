@@ -15,9 +15,9 @@ const build = async () => {
   spinner.start();
   // components must run before templates (templates writes into component dirs)
   await buildComponents();
+  await buildStyles();
   await buildTemplates();
   await buildTokens();
-  await buildStyles();
   await buildIcons();
 
   // Should be run last as we will copy files where we see fit and paths must exist

@@ -38,71 +38,26 @@ export const componentInfoTool = (server: McpServer) => {
       title: 'Component docs'
     },
     async ({ component }) => {
-      const compDir = join(componentPath, component);
+      const infoMd = await readIfExists(join(componentPath, component, 'info.md'));
 
-      const [docs, apiRaw, templatesRaw] = await Promise.all([
-        readIfExists(join(compDir, 'docs.md')),
-        readIfExists(join(compDir, 'api.json')),
-        readIfExists(join(compDir, 'templates.json'))
-      ]);
-
-      if (!docs && !apiRaw) {
+      if (!infoMd) {
         return {
           content: [
             {
               type: 'text',
               text: `No metadata found for component "${component}". Use the component-list tool to see all available components.`
+
             }
           ]
         };
       }
 
-      const parts: string[] = [
-        '> IMPORTANT: Only use properties, events and slots listed in the API below.\n> Never invent attributes not present in this specification.'
-      ];
-
-      if (docs) parts.push(docs);
-
-      if (apiRaw) {
-        try {
-          const api = JSON.parse(apiRaw);
-          const lines: string[] = ['\n## API'];
-
-          if (api.properties?.length) {
-            lines.push('\n### Properties');
-            for (const p of api.properties) {
-              lines.push(
-                `- **${p.name}** \`${p.type}\`${p.default ? ` (default: \`${p.default}\`)` : ''}${p.description ? ` — ${p.description}` : ''}`
-              );
-            }
-          }
-          if (api.events?.length) {
-            lines.push('\n### Events');
-            for (const e of api.events) lines.push(`- **${e.name}**${e.description ? ` — ${e.description}` : ''}`);
-          }
-          if (api.slots?.length) {
-            lines.push('\n### Slots');
-            for (const s of api.slots) lines.push(`- **${s.name}**${s.description ? ` — ${s.description}` : ''}`);
-          }
-          if (api.cssParts?.length) {
-            lines.push('\n### CSS Parts');
-            for (const p of api.cssParts) lines.push(`- **${p.name}**${p.description ? ` — ${p.description}` : ''}`);
-          }
-          parts.push(lines.join('\n'));
-        } catch {
-          /* malformed JSON, skip */
-        }
-      }
-
-      const templates: string[] = templatesRaw ? JSON.parse(templatesRaw) : [];
-      if (templates.length) {
-        parts.push(
-          `\n## Related Templates\n${templates.map(t => `- ${t}`).join('\n')}\n\nUse the template-info tool to retrieve the full code for any of these templates.`
-        );
-      }
+      const text =
+        '> IMPORTANT: Only use properties, events and slots listed in the API below.\n> Never invent attributes not present in this specification.\n\n' +
+        infoMd;
 
       return {
-        content: [{ type: 'text', text: parts.join('\n\n') }]
+        content: [{ type: 'text', text }]
       };
     }
   );
