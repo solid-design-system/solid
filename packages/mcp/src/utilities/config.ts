@@ -14,11 +14,17 @@ export const metaDataPath = join(currentDirname, '../../metadata');
  */
 export const componentPath = join(currentDirname, '../../metadata/packages/components');
 
+/** Package-level docs for the components package (Installation, Localization, etc.) */
+export const componentPackageDocsPath = join(currentDirname, '../../metadata/packages/components/docs');
+
 /**
  * Styles package metadata — one sub-directory per style utility (e.g. sd-chip).
  * Each style dir contains: docs.md, classes.txt
  */
 export const stylesPath = join(currentDirname, '../../metadata/packages/styles');
+
+/** Package-level docs for the styles package (Installation, Usage, etc.) */
+export const stylePackageDocsPath = join(currentDirname, '../../metadata/packages/styles/docs');
 
 /**
  * Templates package metadata — one sub-directory per template (e.g. button, forms).
