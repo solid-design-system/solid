@@ -13,72 +13,54 @@ description: "Evaluate a provided list of GitHub issues against the project's De
 
 ## Input
 
-A list of issues with their metadata:
-- **Required**: title, body, SP, Priority, Labels, linked parents, comments count
-- **Required**: detected issue type and corresponding template file name (see the Issue Type Mapping in `get-project-items-by-query` skill)
+A list of issues with their metadata (title, body, SP, Priority, Type, linked parents, comments count). The caller is responsible for fetching this data before invoking this skill.
 
-The caller is responsible for fetching this data and detecting the issue type before invoking this skill.
+## Definition of Ready (DoR)
 
-## Issue Type–Aware Evaluation
+Every issue must satisfy these criteria before it can be considered "ready":
 
-Different issue types have different DoR criteria. The applicable template file determines what to check.
-
-### Detecting what to check
-
-1. Use the detected issue type (from labels + title prefix) to identify the template file in `.github/ISSUE_TEMPLATE/`.
-2. **Read the template file** to extract the current:
-   - **DoR section** — which checklist items are expected
-   - **Open Questions section** — whether the template includes one
-3. Evaluate the issue body against these template-defined expectations.
-
-### DoR criteria by type
-
-**Standard issues** (Bugfix, Simple Design/Dev Feature, Documentation, Performance, Test, CI, Chore, Epic) — **4 DoR criteria**:
-
-1. **Business value** — The issue clearly states *why* it matters
-2. **Estimated by the team** — SP field is set (number > 0)
-3. **Clear and well-defined** — Description is specific and actionable
-4. **Dependencies identified** — Linked parent issues or explicit "no dependencies"
+1. **Business value** — The issue clearly states *why* it matters (user story, business justification, or impact description)
+2. **Estimated by the team** — Story Points (SP) field is set (number > 0)
+3. **Clear and well-defined** — Description is specific and actionable: expected behavior, acceptance criteria or DoD checklist, no unresolved placeholder open questions (e.g. "Question1 / Question2")
+4. **Dependencies identified** — Linked parent issues, cross-references, or an explicit "no dependencies" statement
 
 **Subtasks** (Design Subtask, Dev Subtask, Design Publish Subtask, Release Notes Subtask) — **2 DoR criteria**:
 
 1. **Estimated by the team** — SP field is set (number > 0)
 2. **Dependencies identified** — Dependencies documented
 
-### Additional checks (type-dependent)
-
-**Open Questions** — If the template defines an Open Questions section (Design Subtask, Dev Subtask, Design Publish Subtask, New Component, New Style Component), flag any unresolved placeholder questions (e.g. "Question1 / Question2") as a refinement gap.
-
 ## Procedure
 
-1. **For each issue, read the matching template** at `.github/ISSUE_TEMPLATE/<template-file>.md` to determine the expected DoR items and whether Open Questions apply.
-
-2. **Extract refinement signals:**
+1. **For each issue, extract refinement signals:**
    - SP field set? (number > 0)
    - Priority field set?
-   - DoR checkboxes in issue body: how many checked (`- [x]`) vs unchecked (`- [ ]`)?
+   - Type field set?
+   - DoR checkboxes: how many checked (`- [x]`) vs unchecked (`- [ ]`)?
    - Open Questions section present? Are questions still placeholders?
+   - Acceptance criteria / DoD section present and filled in?
    - Body length and detail level
    - Comments count (indicates discussion / clarification)
 
 3. **Score each issue** against the applicable DoR criteria:
 
-   | Signal | Positive | Negative |
-   |--------|----------|----------|
-   | SP field | Set to a number > 0 | Missing or 0 |
-   | Priority | Set | Missing |
-   | Description | Specific current/expected behavior, concrete solution proposal, screenshots/references | Vague, template-only text, very short body |
-   | Open Questions | Resolved or absent | Placeholder "Question1/Question2" still present |
-   | Dependencies | Parent issue linked or explicitly stated | No mention |
+   | Signal | Positive | Negative                                      |
+   |--------|----------|-----------------------------------------------|
+   | SP field | Set to a number > 0 | Missing or 0                                  |
+   | Priority | Set | Missing                                       |
+   | Description | Specific current/expected behavior, concrete solution proposal, screenshots/references | Vague, template-only text, very short body    |
+   | Open Questions | Resolved or absent | Not resolved or placeholder questions present |
+   | DoD/Acceptance | Present with real items | Missing or only template defaults             |
+   | Dependencies | Parent issue linked or explicitly stated | No mention                                    |
 
 4. **Classify** issues into:
-   - **Mostly ready** — All or all-but-one DoR criteria met; minor gaps only
-   - **Needs refinement** — Two or more DoR criteria unmet; significant gaps
+   - **Ready** — All DoR criteria met, well-defined description
+   - **Mostly ready** — All-but-one DoR criteria met; minor gaps only (e.g. just needs SP estimate)
+   - **Needs refinement** — <= 50% of DoR criteria met; significant gaps
 
 5. **Report** findings with per-issue evidence and specific actions needed to reach Ready. Include:
-   - The detected issue type
-   - Which DoR criteria apply (2 or 4) and which are met/unmet
-   - Open Questions status (if applicable): resolved / unresolved / not applicable
+   - DoR: eg. "3/4, not yet estimated", "0/4", "4/4" or "2/2"
+   - Questions: resolved / unresolved / not applicable / missing
+   - Ready state: "Ready", "Mostly ready" or "Needs refinement"
 
 ## Examples of Well-Refined Issues
 

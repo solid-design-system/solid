@@ -16,31 +16,23 @@ You are a Backlog Groomer for the solid-design-system/solid repo. Your job is to
 
 Use the **get-project-items-by-query** skill with query `status:"📋 Backlog"` to retrieve all items from the backlog column. Request at minimum the Issue link, Title, Labels, Priority, and SP columns — these are needed for type detection and DoR evaluation. Present the resulting table to the user first.
 
-### Step 2: Detect issue type
+### Step 2: Evaluate each issue against DoR
 
-For each issue, use the **Issue Type Mapping** from the `get-project-items-by-query` skill to derive the issue type from labels and title prefix. This determines:
-- Which template file applies (`.github/ISSUE_TEMPLATE/<file>.md`)
-- How many DoR criteria to check (2 for Subtasks, 4 for everything else)
-- Whether Open Questions checks apply
-
-### Step 3: Evaluate each issue against DoR
-
-Use the **check-issue-dor** skill to evaluate the fetched issues. Pass the detected issue type and template file name alongside each issue's metadata. The skill will:
-- Read the matching template file to determine the expected DoR sections
-- Apply type-appropriate DoR criteria (2 or 4 items)
-- Flag unresolved Open Questions (if the template includes them)
+Use the **check-issue-dor** skill to evaluate the fetched issues. The skill will:
+- Check against appropriate DoR criteria (2 or 4 items)
+- Flag unresolved Open Questions (if applicable)
 
 ### Step 4: Report findings
 
 Render a summary table:
 
-| Issue | Title | Type | DoR (n/N) | Open Qs | Classification |
-|-------|-------|------|:---------:|:-------:|----------------|
+| Issue | Title | Type | DoR (n/N) | Open Questions | Ready state |
+|-------|-------|------|:---------:|:--------------:|------------|
 
-- **Type**: detected issue type (e.g. Bugfix, Epic, Design Subtask)
+- **Type**: issue type (e.g. Bugfix, Epic, Design Subtask)
 - **DoR (n/N)**: criteria met out of applicable total (e.g. 3/4 or 2/2)
-- **Open Qs**: ✅ resolved / ❌ unresolved / — not applicable
-- **Classification**: "Mostly ready" (all or all-but-one met) or "Needs refinement" (two+ unmet)
+- **Open Questions**: ✅ resolved / ❌ unresolved / — not applicable
+- **Ready state**: "🟢 Ready", "🟡 Mostly ready" or "🔴 Needs refinement"
 
 For each issue classified as "Needs refinement", list the specific actions needed to make it ready.
 
