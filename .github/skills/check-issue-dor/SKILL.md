@@ -31,13 +31,15 @@ Subtasks which have the label "Subtask" only have to meet 2 DoR criteria**:
 
 ## Procedure
 
-1. Execute the **DoR Evaluation Scriptlet** below. It scores the **mechanical** criteria (Estimated, Dependencies, Open Questions) and produces two outputs:
-   - A **mechanical scores table** with per-issue results. Subtask issues are fully scored here (2/2). Non-subtask issues show only their mechanical sub-score with content criteria marked as *"⏳ description review pending"*.
-   - **Issue bodies for description review** — For each non-subtask issue, the scriptlet prints the issue body so you can evaluate it in step 2.
+**Before starting**, generate a `<TIMESTAMP>` value once using `Date.now()` (e.g. `1718371200000`). Use this same value for all file paths throughout this skill invocation to prevent race conditions between concurrent agents.
+
+1. Execute the **DoR Evaluation Scriptlet** below. It scores the **basic** criteria (Estimated, Dependencies, Open Questions) and produces two outputs:
+   - A **basic scores JSON file** (`/tmp/eval-dor-<TIMESTAMP>-scores.json`) with per-issue results. Subtask issues are fully scored here (2/2). Non-subtask issues show only their basic sub-score with ready state *"⏳ description review pending"*.
+   - **Issue bodies for description review** — printed to stdout for each non-subtask issue, so you can evaluate them in step 2.
 
 2. **Content evaluation** — For each **non-subtask** issue, read the issue body from the scriptlet output and evaluate the two content-based DoR criteria using the **Content Evaluation** below. Record a verdict (✅ met / ❌ not met) and a one-sentence rationale for each criterion.
 
-3. **Produce the final report** — Merge the mechanical scores (step 1) with your content assessments (step 2) into a single table. Include:
+3. **Produce the final report** — Read `/tmp/eval-dor-<TIMESTAMP>-scores.json` and merge the basic scores (step 1) with your content assessments (step 2) into a single table. Include:
    - DoR: e.g. "3/4, not yet estimated", "0/4", "4/4" or "2/2"
    - Questions: resolved / unresolved / not applicable / missing
    - Ready state: all criteria met → 🟢 Ready, all−1 → 🟡 Mostly ready, else → 🔴 Needs refinement
@@ -92,13 +94,13 @@ Check with: `(item.content.labels || []).some(l => l.name === "Subtask")`
 
 ## DoR Evaluation Scriptlet
 
-The following script scores the **mechanical** DoR criteria (Estimated, Dependencies, Open Questions) for all items from **get-project-items-by-query**. Content-based criteria (Business value, Clear & well-defined) are evaluated by the description review in step 2.
+The following script scores the **basic** DoR criteria (Estimated, Dependencies, Open Questions) for all items from **get-project-items-by-query**. Content-based criteria (Business value, Clear & well-defined) are evaluated by the description review in step 2.
 
-Write it to a temp file, replace `<JSON_FILE_PATH>`, then run with `node`.
+Write it to a temp file, replace `<JSON_FILE_PATH>` and `<TIMESTAMP>`, then run with `node`.
 
 ```sh
-cat << 'SCRIPT' > /tmp/eval-dor.mjs
-import { readFileSync } from "fs";
+cat << 'SCRIPT' > /tmp/eval-dor-<TIMESTAMP>.mjs
+import { readFileSync, writeFileSync } from "fs";
 const data = JSON.parse(readFileSync("<JSON_FILE_PATH>", "utf8"));
 
 // --- helpers (from get-project-items-by-query) ---
@@ -124,7 +126,7 @@ function evaluateDoR(item) {
   const subtask = isSubtask(item);
   const sp = getFieldValue(item.fields, "SP");
 
-  // --- body parsing (mechanical signals only) ---
+  // --- body parsing (basic signals only) ---
   const dorSection = body.match(/## DoR[\s\S]*?(?=\n## |$)/)?.[0] || "";
   const dorEstimated = /- \[x\].*estimated/i.test(dorSection);
   const dorDeps = /- \[x\].*dependenc/i.test(dorSection);
@@ -139,22 +141,22 @@ function evaluateDoR(item) {
   else if (hasUnresolved) oqStatus = "❌ unresolved";
 
   // --- scoring ---
-  const mechanical = [];
-  mechanical.push({ name: "Estimated", met: dorEstimated || (sp != null && sp > 0) });
-  mechanical.push({ name: "Dependencies", met: dorDeps });
+  const basic = [];
+  basic.push({ name: "Estimated", met: dorEstimated || (sp != null && sp > 0) });
+  basic.push({ name: "Dependencies", met: dorDeps });
 
-  const mechMet = mechanical.filter(c => c.met).length;
-  const mechMissing = mechanical.filter(c => !c.met).map(c => c.name);
-  if (hasUnresolved) mechMissing.push("Resolve Open Questions");
+  const basicScoresMet = basic.filter(c => c.met).length;
+  const basicScoresMissing = basic.filter(c => !c.met).map(c => c.name);
+  if (hasUnresolved) basicScoresMissing.push("Resolve Open Questions");
 
-  // Subtasks: fully scored (2 mechanical criteria)
-  // Non-subtasks: 2 mechanical + 2 content-based (evaluated by content)
+  // Subtasks: fully scored (2 basic criteria)
+  // Non-subtasks: 2 basic + 2 content-based (evaluated by content)
   const total = subtask ? 2 : 4;
 
   let readyState;
   if (subtask) {
-    if (mechMet === total) readyState = "🟢 Ready";
-    else if (mechMet >= total - 1) readyState = "🟡 Mostly ready";
+    if (basicScoresMet === total) readyState = "🟢 Ready";
+    else if (basicScoresMet >= total - 1) readyState = "🟡 Mostly ready";
     else readyState = "🔴 Needs refinement";
   } else {
     readyState = "⏳ description review pending";
@@ -166,11 +168,11 @@ function evaluateDoR(item) {
     title: item.content.title,
     body,
     subtask,
-    mechScore: `${mechMet}/2`,
+    basicScores: `${basicScoresMet}/2`,
     dorTotal: total,
     oqStatus,
     readyState,
-    mechMissing,
+    basicScoresMissing,
   };
 }
 
@@ -179,27 +181,10 @@ const results = data.items.map(evaluateDoR);
 const subtasks = results.filter(r => r.subtask);
 const nonSubtasks = results.filter(r => !r.subtask);
 
-// Part 1: Mechanical scores table
-console.log("## Mechanical Scores\n");
-console.log("| Issue | Title | Type | Estimated | Dependencies | Open Questions | Mechanical | Ready state |");
-console.log("|-------|-------|------|:---------:|:------------:|:--------------:|:----------:|-------------|");
-for (const r of results) {
-  const issue = `[#${r.num}](${r.url})`;
-  const type = r.subtask ? "Subtask" : "Issue";
-  const est = r.mechMissing.includes("Estimated") ? "❌" : "✅";
-  const deps = r.mechMissing.includes("Dependencies") ? "❌" : "✅";
-  console.log(`| ${issue} | ${r.title} | ${type} | ${est} | ${deps} | ${r.oqStatus} | ${r.mechScore} | ${r.readyState} |`);
-}
-
-if (subtasks.length > 0) {
-  const ready = subtasks.filter(r => r.readyState === "🟢 Ready").length;
-  const mostly = subtasks.filter(r => r.readyState === "🟡 Mostly ready").length;
-  const needs = subtasks.filter(r => r.readyState === "🔴 Needs refinement").length;
-  console.log(`\n**Subtasks (${subtasks.length}):** ${ready} ready, ${mostly} mostly ready, ${needs} need refinement`);
-}
-if (nonSubtasks.length > 0) {
-  console.log(`\n**Non-subtask issues (${nonSubtasks.length}):** mechanical scores above — proceed to content evaluation (step 2).`);
-}
+// Part 1: Write basic scores to JSON file (no body — kept lean for merging)
+const scoresForFile = results.map(({ body, ...rest }) => rest);
+writeFileSync("/tmp/eval-dor-<TIMESTAMP>-scores.json", JSON.stringify(scoresForFile, null, 2));
+console.log(`Wrote ${results.length} scores to /tmp/eval-dor-<TIMESTAMP>-scores.json (${subtasks.length} subtasks, ${nonSubtasks.length} issues)`);
 
 // Part 2: Issue bodies for description review (non-subtasks only)
 if (nonSubtasks.length > 0) {
@@ -213,5 +198,5 @@ if (nonSubtasks.length > 0) {
   }
 }
 SCRIPT
-node /tmp/eval-dor.mjs
+node /tmp/eval-dor-<TIMESTAMP>.mjs
 ```

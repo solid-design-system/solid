@@ -49,6 +49,8 @@ The calling agent provides `{LABEL_VALUE}` — these are the most important labe
 
 ## Procedure
 
+**Before starting**, generate a `<TIMESTAMP>` value once using `Date.now()` (e.g. `1718371200000`). Use this same value for all temp file paths throughout this skill invocation to prevent collisions between concurrent agents.
+
 ### 1. Fetch items (single API call)
 
 Call `mcp_gh-projects` → `projects_list` with:
@@ -98,12 +100,12 @@ Usage: `getFieldValue(item.fields, "Priority")` → `"🏝 Low"` or `null`.
 **Always write scripts to a temp `.mjs` file and run with `node`** — never use `node -e`. Even short scripts break when the shell interprets regex, `${}`, quotes, or parentheses as shell syntax.
 
 ```sh
-cat << 'SCRIPT' > /tmp/process.mjs
+cat << 'SCRIPT' > /tmp/project-query-<TIMESTAMP>.mjs
 import { readFileSync } from "fs";
 const data = JSON.parse(readFileSync("<JSON_FILE_PATH>", "utf8"));
 // ... processing ...
 SCRIPT
-node /tmp/process.mjs
+node /tmp/project-query-<TIMESTAMP>.mjs
 ```
 
 Replace `<JSON_FILE_PATH>` with the actual path returned by the MCP tool.
@@ -133,7 +135,7 @@ Always end with a brief summary line (e.g. total count, number of unassigned ite
 Query: `status:"🔖 Ready"`
 
 ```sh
-cat << 'SCRIPT' > /tmp/project-query.mjs
+cat << 'SCRIPT' > /tmp/project-query-<TIMESTAMP>.mjs
 import { readFileSync } from "fs";
 const data = JSON.parse(readFileSync("<JSON_FILE_PATH>", "utf8"));
 function getFieldValue(fields, name) {
@@ -162,7 +164,7 @@ data.items.forEach((item, i) => {
 });
 console.log(`_**${data.items.length}** items total; **${unassigned}** unassigned_`);
 SCRIPT
-node /tmp/project-query.mjs
+node /tmp/project-query-<TIMESTAMP>.mjs
 ```
 
 ### Example 2 — Blocked items overview (label filter)
@@ -170,7 +172,7 @@ node /tmp/project-query.mjs
 Query: `label:"BLOCKED"`
 
 ```sh
-cat << 'SCRIPT' > /tmp/project-query.mjs
+cat << 'SCRIPT' > /tmp/project-query-<TIMESTAMP>.mjs
 import { readFileSync } from "fs";
 const data = JSON.parse(readFileSync("<JSON_FILE_PATH>", "utf8"));
 function getFieldValue(fields, name) {
@@ -197,7 +199,7 @@ data.items.forEach((item, i) => {
 });
 console.log(`_**${data.items.length}** blocked items_`);
 SCRIPT
-node /tmp/project-query.mjs
+node /tmp/project-query-<TIMESTAMP>.mjs
 ```
 
 ### Example 3 — Unassigned work triage (minimal view)
@@ -205,7 +207,7 @@ node /tmp/project-query.mjs
 Query: `assignee:unassigned`
 
 ```sh
-cat << 'SCRIPT' > /tmp/project-query.mjs
+cat << 'SCRIPT' > /tmp/project-query-<TIMESTAMP>.mjs
 import { readFileSync } from "fs";
 const data = JSON.parse(readFileSync("<JSON_FILE_PATH>", "utf8"));
 function getFieldValue(fields, name) {
@@ -231,7 +233,7 @@ data.items.forEach((item, i) => {
 });
 console.log(`_**${data.items.length}** unassigned items_`);
 SCRIPT
-node /tmp/project-query.mjs
+node /tmp/project-query-<TIMESTAMP>.mjs
 ```
 
 ## Constraints
