@@ -1,3 +1,4 @@
+export * from './cd-toolbox.js';
 export * from './component-info.js';
 export * from './component-list.js';
 export * from './component-api-examples.js';

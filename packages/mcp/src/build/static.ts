@@ -1,8 +1,8 @@
 import { existsSync } from 'node:fs';
-import { copyFile } from 'node:fs/promises';
+import { copyFile, readdir, mkdir } from 'node:fs/promises';
 import { basename, join } from 'node:path';
 import ora from 'ora';
-import { componentPath, createPath, getAbsolutePath } from '../utilities/index.js';
+import { cdToolboxPath, componentPath, createPath, getAbsolutePath } from '../utilities/index.js';
 
 /**
  * List of static files that should be copied to the static metadata directory.
@@ -25,6 +25,14 @@ export const buildStaticFiles = async () => {
     // Create the wanted directories if they don't exist
     const createAllPaths = Promise.all(staticFilesToCopy.map(([, target]) => createPath(target)));
     await createAllPaths;
+
+    // Copy cd-toolbox markdown files
+    const cdToolboxSrc = getAbsolutePath('../../src/data/cd-toolbox');
+    await mkdir(cdToolboxPath, { recursive: true });
+    const cdToolboxFiles = await readdir(cdToolboxSrc);
+    await Promise.all(
+      cdToolboxFiles.filter(f => f.endsWith('.md')).map(f => copyFile(join(cdToolboxSrc, f), join(cdToolboxPath, f)))
+    );
 
     const staticFiles = staticFilesToCopy
       .filter(file => existsSync(file.at(0)!))

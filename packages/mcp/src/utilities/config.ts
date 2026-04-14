@@ -32,6 +32,9 @@ export const tokensPath = join(currentDirname, '../../metadata/packages/tokens')
 /** Icons package metadata */
 export const iconsPath = join(currentDirname, '../../metadata/packages/icons');
 
+/** CD Toolbox guidelines */
+export const cdToolboxPath = join(currentDirname, '../../metadata/cd-toolbox');
+
 /** Root of all static AI-rule markdown files */
 export const staticPath = join(currentDirname, '../../metadata/static');
 
