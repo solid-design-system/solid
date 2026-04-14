@@ -12,19 +12,30 @@ export default {
     }
   }
 };
-
 export const filterTagGroup = {
   render: () => html`
     <div>
       <p class="sd-paragraph sd-paragraph--size-lg font-bold mb-4">26 Results</p>
-      <div class="flex gap-4">
-        <sd-tag toggleable selected>All (26)</sd-tag>
+      <div id="filter-tag-group" class="flex gap-4 filter-tag-group">
+        <sd-tag toggleable selected> All (26)</sd-tag>
         <sd-tag toggleable>Funds (16)</sd-tag>
         <sd-tag toggleable>Sustainability (5)</sd-tag>
         <sd-tag toggleable>Retirement planing (2)</sd-tag>
         <sd-tag toggleable>Documents (3)</sd-tag>
       </div>
     </div>
+
+    <script type="module">
+      const group = document.querySelector('.filter-tag-group');
+      const tags = group.querySelectorAll('sd-tag');
+
+      tags.forEach(tag => {
+        tag.addEventListener('click', () => {
+          tags.forEach(t => t.removeAttribute('selected'));
+          tag.setAttribute('selected', '');
+        });
+      });
+    </script>
   `
 };
 
@@ -35,7 +46,7 @@ export const filterTagGroupMorningstarRating = {
       <p class="sd-paragraph sd-paragraph--size-lg font-bold mb-4">
         Find Top-Rated Investments with Morningstar Ratings:
       </p>
-      <div class="flex gap-2">
+      <div class="morningstar-tag-group flex gap-2">
         <sd-tag toggleable selected>
           <label class="sr-only">5 stars</label>
           <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
@@ -68,6 +79,18 @@ export const filterTagGroupMorningstarRating = {
         </sd-tag>
       </div>
     </div>
+
+    <script type="module">
+      const group = document.querySelector('.morningstar-tag-group');
+      const tags = group.querySelectorAll('sd-tag');
+
+      tags.forEach(tag => {
+        tag.addEventListener('click', () => {
+          tags.forEach(t => t.removeAttribute('selected'));
+          tag.setAttribute('selected', '');
+        });
+      });
+    </script>
   `
 };
 
@@ -76,7 +99,7 @@ export const filterTagGroupRisk = {
   render: () => html`
     <div>
       <p class="sd-paragraph sd-paragraph--size-lg font-bold mb-4">Risk level:</p>
-      <div class="flex gap-2">
+      <div class="risk-tag-group flex gap-2">
         <sd-tag toggleable selected>
           <div class="h-4 w-4 border-primary-800 border-[1px] bg-[var(--fill-risk-veryhigh)]"></div>
           Very High
@@ -103,6 +126,18 @@ export const filterTagGroupRisk = {
         </sd-tag>
       </div>
     </div>
+
+    <script type="module">
+      const group = document.querySelector('.risk-tag-group');
+      const tags = group.querySelectorAll('sd-tag');
+
+      tags.forEach(tag => {
+        tag.addEventListener('click', () => {
+          tags.forEach(t => t.removeAttribute('selected'));
+          tag.setAttribute('selected', '');
+        });
+      });
+    </script>
   `
 };
 
