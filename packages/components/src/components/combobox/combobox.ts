@@ -1509,7 +1509,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                   `
                 : html`
                     <button
-                      class="sd-interactive combobox-button absolute top-2 sd-icon-fill-primary"
+                      class="sd-interactive combobox-button absolute top-2 sd-color-icon-fill-primary"
                       tabindex="-1"
                       aria-hidden="true"
                       @keydown=${this.handleComboboxMouseDown}
