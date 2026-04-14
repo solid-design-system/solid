@@ -37,7 +37,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24.14.1
 
       - uses: pnpm/action-setup@v4
         name: Install pnpm
@@ -93,7 +93,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'deployment'
+          path: "deployment"
 
       - name: Deploy to GitHub Pages
         id: deployment
@@ -104,8 +104,8 @@ jobs:
         id: fc
         with:
           issue-number: ${{ github.event.pull_request.number || github.run_id }}
-          comment-author: 'github-actions[bot]'
-          body-includes: 'Storybook has been deployed for'
+          comment-author: "github-actions[bot]"
+          body-includes: "Storybook has been deployed for"
         if: github.event_name == 'pull_request'
 
       - name: Create or update comment

@@ -1,5 +1,7 @@
 # @solid-design-system/tokens
 
+## 6.14.1
+
 ## 6.14.0
 
 ### Minor Changes
