@@ -7,81 +7,81 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
-    quality-gate:
-        name: Verify
-        runs-on: ubuntu-latest
-        if: github.event.pull_request.draft == false
-        container:
-            image: mcr.microsoft.com/playwright:v1.58.2-noble
-        strategy:
-          matrix:
-            package:
-              - packages/components
-              - packages/docs
-              - packages/placeholders
-              - packages/styles
-              - packages/theming
-              - packages/tokens
-              - packages/eslint-plugin
+  quality-gate:
+    name: Verify
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
+    strategy:
+      matrix:
+        package:
+          - packages/components
+          - packages/docs
+          - packages/placeholders
+          - packages/styles
+          - packages/theming
+          - packages/tokens
+          - packages/eslint-plugin
 
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-            - name: Install Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 22
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.14.1
 
-            - uses: pnpm/action-setup@v4
-              name: Install pnpm
-              id: pnpm-install
-              with:
-                  run_install: false
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          run_install: false
 
-            - name: Install dependencies
-              run: pnpm i
+      - name: Install dependencies
+        run: pnpm i
 
-            - name: Verify package
-              run: |
-                echo "Running pnpm verify in ${{ matrix.package }}"
-                cd ${{ matrix.package }}
-                pnpm verify
+      - name: Verify package
+        run: |
+          echo "Running pnpm verify in ${{ matrix.package }}"
+          cd ${{ matrix.package }}
+          pnpm verify
 
-    # Check Chromatic for visual changes after all other checks have passed
-    chromatic-deployment-pr:
-      name: Verify Chromatic
-      needs: [quality-gate]
-      if: ${{!contains(github.event.pull_request.title, '[skip chromatic]') && !startsWith(github.event.pull_request.title, 'chore(security deps):')}}
-      runs-on: ubuntu-latest
-      steps:
-          # 👇 Version 2 of the action
-        - name: Checkout repository
-          uses: actions/checkout@v4
-          with:
-            fetch-depth: 0 # 👈 Required to retrieve git history
-        - name: Install Node.js
-          uses: actions/setup-node@v4
-          with:
-              node-version: 22
+  # Check Chromatic for visual changes after all other checks have passed
+  chromatic-deployment-pr:
+    name: Verify Chromatic
+    needs: [quality-gate]
+    if: ${{!contains(github.event.pull_request.title, '[skip chromatic]') && !startsWith(github.event.pull_request.title, 'chore(security deps):')}}
+    runs-on: ubuntu-latest
+    steps:
+      # 👇 Version 2 of the action
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 👈 Required to retrieve git history
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.14.1
 
-        - uses: pnpm/action-setup@v4
-        # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
-        - name: Install dependencies
-          run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
-        # 👇 Build storybook with pnpm
-        - name: Build storybook
-          run: cd packages/docs && pnpm run build.chromatic
-        # 👇 Adds Chromatic as a step in the workflow
-        - name: Publish to Chromatic
-          uses: chromaui/action@latest
-          # Options required to the GitHub Chromatic Action
-          with:
-            # 👇 Chromatic projectToken, refer to the manage page to obtain it.
-            projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-            # Speedup the build by not waiting until everything is sent to Chromatic
-            exitOnceUploaded: true
-            # TurboSnap is an advanced Chromatic feature that speeds up builds for faster UI testing and review using Git and Webpack’s dependency graph
-            onlyChanged: false
-            # We need to manually build storybook with pnpm
-            storybookBuildDir: packages/docs/dist/storybook
+      - uses: pnpm/action-setup@v4
+      # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
+      - name: Install dependencies
+        run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
+      # 👇 Build storybook with pnpm
+      - name: Build storybook
+        run: cd packages/docs && pnpm run build.chromatic
+      # 👇 Adds Chromatic as a step in the workflow
+      - name: Publish to Chromatic
+        uses: chromaui/action@latest
+        # Options required to the GitHub Chromatic Action
+        with:
+          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          # Speedup the build by not waiting until everything is sent to Chromatic
+          exitOnceUploaded: true
+          # TurboSnap is an advanced Chromatic feature that speeds up builds for faster UI testing and review using Git and Webpack’s dependency graph
+          onlyChanged: false
+          # We need to manually build storybook with pnpm
+          storybookBuildDir: packages/docs/dist/storybook

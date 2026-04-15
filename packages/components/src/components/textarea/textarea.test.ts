@@ -374,7 +374,7 @@ describe('<sd-textarea>', () => {
     const el = await fixture<SdTextarea>(html` <sd-textarea label="Name" floating-label></sd-textarea> `);
     await el.updateComplete;
 
-    const label = el.shadowRoot!.querySelector('label[part="form-control-floating-label"]')! as HTMLElement;
+    const label = el.shadowRoot!.querySelector<HTMLLabelElement>('label[part="form-control-floating-label"]')!;
     const textarea = el.shadowRoot!.querySelector('textarea')!;
 
     const focusSpy = sinon.spy();
