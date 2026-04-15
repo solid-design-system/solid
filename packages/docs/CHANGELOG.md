@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.9.0
+
+### Minor Changes
+
+- Added realistic template for ´sd-audio´ _[`#2897`](https://github.com/solid-design-system/solid/pull/2897) [`19f9f86`](https://github.com/solid-design-system/solid/commit/19f9f867667791969b9e17e72da6501a1c8a8c5c) [@balco0110](https://github.com/balco0110)_
+
 ## 2.8.2
 
 ### Patch Changes
