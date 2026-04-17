@@ -175,10 +175,10 @@ importers:
         version: 7.1.4(postcss@8.5.9)
       custom-element-jet-brains-integration:
         specifier: ^1.7.0
-        version: 1.7.0(prettier@3.8.1)
+        version: 1.7.0(prettier@3.8.2)
       custom-element-vs-code-integration:
         specifier: ^1.5.0
-        version: 1.5.0(prettier@3.8.1)
+        version: 1.5.0(prettier@3.8.2)
       del:
         specifier: ^8.0.1
         version: 8.0.1
@@ -232,7 +232,7 @@ importers:
         version: 7.0.2(postcss@8.5.9)
       prettier:
         specifier: ^3.8.1
-        version: 3.8.1
+        version: 3.8.2
       recursive-copy:
         specifier: ^2.0.14
         version: 2.0.14
@@ -6447,6 +6447,11 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
+  prettier@3.8.2:
+    resolution: {integrity: sha512-8c3mgTe0ASwWAJK+78dpviD+A8EqhndQPUBpNUIPt6+xWlIigCwfN01lWr9MAede4uqXGTEKeQWTvzb3vjia0Q==}
+    engines: {node: '>=14'}
+    hasBin: true
+
   pretty-format@27.5.1:
     resolution: {integrity: sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
@@ -8984,10 +8989,10 @@ snapshots:
     dependencies:
       playwright: 1.59.1
 
-  '@prettier/sync@0.5.5(prettier@3.8.1)':
+  '@prettier/sync@0.5.5(prettier@3.8.2)':
     dependencies:
       make-synchronized: 0.4.2
-      prettier: 3.8.1
+      prettier: 3.8.2
 
   '@puppeteer/browsers@2.11.0':
     dependencies:
@@ -11146,15 +11151,15 @@ snapshots:
 
   csstype@3.2.3: {}
 
-  custom-element-jet-brains-integration@1.7.0(prettier@3.8.1):
+  custom-element-jet-brains-integration@1.7.0(prettier@3.8.2):
     dependencies:
-      '@prettier/sync': 0.5.5(prettier@3.8.1)
+      '@prettier/sync': 0.5.5(prettier@3.8.2)
     transitivePeerDependencies:
       - prettier
 
-  custom-element-vs-code-integration@1.5.0(prettier@3.8.1):
+  custom-element-vs-code-integration@1.5.0(prettier@3.8.2):
     dependencies:
-      '@prettier/sync': 0.5.5(prettier@3.8.1)
+      '@prettier/sync': 0.5.5(prettier@3.8.2)
     transitivePeerDependencies:
       - prettier
 
@@ -14337,6 +14342,8 @@ snapshots:
 
   prettier@3.8.1: {}
 
+  prettier@3.8.2: {}
+
   pretty-format@27.5.1:
     dependencies:
       ansi-regex: 5.0.1
@@ -14987,7 +14994,7 @@ snapshots:
       is-plain-obj: 4.1.0
       json5: 2.2.3
       path-unified: 0.2.0
-      prettier: 3.8.1
+      prettier: 3.8.2
       tinycolor2: 1.6.0
 
   style-observer@0.1.2: {}
