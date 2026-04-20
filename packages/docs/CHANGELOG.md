@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.9.1
+
+### Patch Changes
+
+- Fixed the alignment of the `close` icon of `sd-tag`s inside the `sd-combobox`'s "Parts" screenshot test. _[`#2873`](https://github.com/solid-design-system/solid/pull/2873) [`70a25e6`](https://github.com/solid-design-system/solid/commit/70a25e61bfc445add091581f2ec40b1f894206e5) [@martascorreia](https://github.com/martascorreia)_
+
 ## 2.9.0
 
 ### Minor Changes
