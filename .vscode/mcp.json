@@ -4,7 +4,7 @@
       "type": "http",
       "url": "https://api.githubcopilot.com/mcp/",
       "headers": {
-        "X-MCP-Toolsets": "default,projects"
+        "X-MCP-Toolsets": "default,projects,labels"
       }
     }
   }
