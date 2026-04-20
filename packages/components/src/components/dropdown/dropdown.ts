@@ -44,6 +44,7 @@ import type SdPopup from '../popup/popup';
  * @animation dropdown.hide - The animation to use when hiding the dropdown.
  *
  * @cssproperty --sd-panel-color-border - The border color of the dropdown panel.
+ * @cssproperty --sd-dropdown-color-background - The background color of the dropdown panel.
  */
 @customElement('sd-dropdown')
 export default class SdDropdown extends SolidElement {
@@ -460,7 +461,7 @@ export default class SdDropdown extends SolidElement {
         <slot
           part="panel"
           class=${cx(
-            'panel-color-border border shadow bg-white block',
+            'panel-color-border border shadow sd-dropdown-color-background block',
             this.open ? 'pointer-events-auto' : 'pointer-events-none',
             this.rounded && 'rounded-md'
           )}

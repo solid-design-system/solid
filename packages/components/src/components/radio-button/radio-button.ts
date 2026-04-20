@@ -30,7 +30,8 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-button--primary--hover-color-background - The background color of radio-button on hover when checked.
  * @cssproperty --sd-radio-button-border-radius - The border radius of the radio-button.
  * @cssproperty --sd-radio-button-color-text - The text color of the radio-button.
-
+ * @cssproperty --sd-radio-button--hover-color-background - The background color of the radio-button on hover.
+ * @cssproperty --sd-choice-control-font-weight - The font weight for the radio button.
  */
 @customElement('sd-radio-button')
 export default class SdRadioButton extends SolidElement {
@@ -112,15 +113,15 @@ export default class SdRadioButton extends SolidElement {
           role="radio"
           aria-checked="${this.checked}"
           class="${cx(
-            'relative text-center sd-radio-button-border-radius transition-all ease-in-out duration-100 items-center justify-center focus-visible:focus-outline',
+            'relative text-center sd-radio-button-border-radius transition-all ease-in-out duration-100 items-center justify-center focus-visible:focus-outline choice-control-font-weight',
             this.size === 'sm' ? 'text-sm' : 'text-base',
             this.checked && !this.disabled && !this.visuallyDisabled
-              ? 'sd-button--primary--default-color-background sd-button--primary--default-color-text hover:sd-button--primary--hover-color-background'
+              ? 'sd-button--primary--default-color-background sd-button--primary--default-color-text hover:sd-button--primary--hover-color-background hover:text-primary-100'
               : !this.checked && (this.disabled || this.visuallyDisabled)
                 ? 'text-neutral-500 hover:cursor-not-allowed'
                 : this.checked && (this.disabled || this.visuallyDisabled)
                   ? 'bg-neutral-400 text-white hover:cursor-not-allowed '
-                  : 'bg-transparent sd-radio-button-color-text border-primary hover:text-primary-500 cursor-pointer',
+                  : 'bg-transparent sd-radio-button-color-text border-primary cursor-pointer hover:sd-radio-button--hover-color-background hover:sd-radio-button--hover-color-text',
             hasDefaultSlot &&
               {
                 sm: 'px-3',
@@ -174,27 +175,27 @@ export default class SdRadioButton extends SolidElement {
       }
 
       .lg-label {
-        @apply h-12;
+        @apply h-[46px];
       }
 
       .lg-no-label {
-        @apply h-12 px-5;
+        @apply h-[46px] px-5;
       }
 
       .md-label {
-        @apply h-10;
+        @apply h-[38px];
       }
 
       .md-no-label {
-        @apply h-10 px-4;
+        @apply h-[38px] px-4;
       }
 
       .sm-label {
-        @apply h-8;
+        @apply h-[30px];
       }
 
       .sm-no-label {
-        @apply h-8 px-3;
+        @apply h-[30px] px-3;
       }
 
       /* All except the first */

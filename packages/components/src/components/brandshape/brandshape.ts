@@ -148,9 +148,9 @@ export default class SdBrandshape extends SolidElement {
           part="shape-middle"
           class=${cx(
             {
-              'neutral-100': 'bg-neutral-100',
+              'neutral-100': 'sd-brandshape--neutral-100-color-background',
               primary: 'bg-primary',
-              white: 'bg-white',
+              white: 'sd-brandshape--white-color-background',
               'border-white': 'bg-transparent',
               'border-primary': 'bg-transparent',
               'primary|80': 'bg-primary/80',
@@ -180,9 +180,9 @@ export default class SdBrandshape extends SolidElement {
     return html` <div
       class=${cx(
         {
-          'neutral-100': 'bg-neutral-100',
+          'neutral-100': 'sd-brandshape--neutral-100-color-background',
           primary: 'bg-primary',
-          white: 'bg-white',
+          white: 'sd-brandshape--white-color-background',
           'border-white': 'bg-transparent',
           'border-primary': 'bg-transparent',
           'primary|80': 'bg-primary/80',

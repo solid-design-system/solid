@@ -3,8 +3,8 @@ name: Release
 on:
   push:
     branches:
-      - 'main'
-      - 'next'
+      - "main"
+      - "next"
   workflow_dispatch:
 
 permissions:
@@ -29,10 +29,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-
-      - name: Upgrade npm to latest
-        run: npm i -g npm@latest
+          node-version: 24.14.1
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -59,10 +56,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-
-      - name: Upgrade npm to latest
-        run: npm i -g npm@latest
+          node-version: 24.14.1
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4

@@ -1403,4 +1403,49 @@ describe('<sd-combobox>', () => {
     expect(el.displayInputValue).to.equal('');
     expect(input.value).to.equal('');
   });
+
+  it('should close the dropdown when Tab is pressed and dropdown is open', async () => {
+    const el = await fixture<SdCombobox>(html`
+      <sd-combobox>
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+      </sd-combobox>
+    `);
+
+    // Open dropdown
+    await el.show();
+    await el.updateComplete;
+
+    expect(el.open).to.be.true;
+
+    const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="display-input"]')!;
+    input.focus();
+    await el.updateComplete;
+
+    // Simulate Tab key press (keydown) on input
+    input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true }));
+    await el.updateComplete;
+
+    // Dropdown should be closed
+    expect(el.open).to.be.false;
+  });
+
+  it('should lose focus on the combobox input when Tab is pressed and dropdown is closed', async () => {
+    const el = await fixture<SdCombobox>(html`
+      <sd-combobox>
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+      </sd-combobox>
+    `);
+
+    const input = el.shadowRoot!.querySelector<HTMLInputElement>('[part~="display-input"]')!;
+
+    // Dispatch Tab keydown event on input
+    input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true }));
+    await el.updateComplete;
+    await aTimeout(100); // wait for focus to settle
+
+    // Expect input to lose focus (activeElement in shadow root is not the input)
+    expect(el.shadowRoot!.activeElement).to.not.equal(input);
+  });
 });
