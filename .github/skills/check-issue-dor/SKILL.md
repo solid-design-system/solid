@@ -31,23 +31,22 @@ Subtasks which have the label "Subtask" only have to meet 2 DoR criteria**:
 
 ## Procedure
 
-**Before starting**, generate a `<TIMESTAMP>` value once using `Date.now()` (e.g. `1718371200000`). Use this same value for all file paths throughout this skill invocation to prevent race conditions between concurrent agents.
+1. Execute the **DoR Evaluation Script** below. It scores the **basic** criteria (Estimated, Dependencies, Open Questions) and writes a single file `$TMPDIR/dor-results.json`. The schema is documented in [`dor-results-schema.json`](dor-results-schema.json). The script also prints a short summary to stdout (~5–10 lines). Don't present the summary to the user yet, only use it for processing in Step 2.
 
-1. Execute the **DoR Evaluation Scriptlet** below. It scores the **basic** criteria (Estimated, Dependencies, Open Questions) and produces two outputs:
-   - A **basic scores JSON file** (`/tmp/eval-dor-<TIMESTAMP>-scores.json`) with per-issue results. Subtask issues are fully scored here (2/2). Non-subtask issues show only their basic sub-score with ready state *"⏳ description review pending"*.
-   - **Issue bodies for description review** — printed to stdout for each non-subtask issue, so you can evaluate them in step 2.
+2. **Content Evaluation** — For each **non-subtask** issue, read its `body` from `$TMPDIR/dor-results.json` (items where `subtask` is `false`) and evaluate the two content-based DoR criteria using the **Content Evaluation** below. Record a verdict (✅ met / ❌ not met) and a one-sentence rationale for each criterion.
+Don't present the Content Evaluation to the user yet, only use them for processing in Step 3.
 
-2. **Content evaluation** — For each **non-subtask** issue, read the issue body from the scriptlet output and evaluate the two content-based DoR criteria using the **Content Evaluation** below. Record a verdict (✅ met / ❌ not met) and a one-sentence rationale for each criterion.
+**Important**: Use the `read_file` tool to read `$TMPDIR/dor-results.json` — do **not** use `cat` in the terminal. The file can be large and terminal output may be truncated, causing incomplete data. Read the entire file in a single call using a large `endLine` (e.g. `endLine: 9999`).
 
-3. **Produce the final report** — Read `/tmp/eval-dor-<TIMESTAMP>-scores.json` and merge the basic scores (step 1) with your content assessments (step 2) into a single table. Include:
+3. **Produce the final report** — Use the scores from `$TMPDIR/dor-results.json` and merge with your content assessments (step 2) into a single table. Include:
    - DoR: e.g. "3/4, not yet estimated", "0/4", "4/4" or "2/2"
-   - Questions: resolved / unresolved / not applicable / missing
+   - Open Questions: resolved / unresolved / not applicable / missing
    - Ready state: all criteria met → 🟢 Ready, all−1 → 🟡 Mostly ready, else → 🔴 Needs refinement
-   - Required Actions: list missing criteria and one-sentence rationale from step 2
+   - Required Actions: list missing criteria and the one-sentence rationale from step 2.
 
 ## Content Evaluation
 
-Applies only to **non-subtask** issues (subtasks are fully scored by the scriptlet).
+Applies only to **non-subtask** issues (subtasks are fully scored by the script).
 
 For each issue, evaluate these two criteria by reading the issue body:
 
@@ -92,16 +91,20 @@ Only one label distinction matters for DoR: whether the issue has the **`Subtask
 
 Check with: `(item.content.labels || []).some(l => l.name === "Subtask")`
 
-## DoR Evaluation Scriptlet
+## DoR Evaluation Script
 
-The following script scores the **basic** DoR criteria (Estimated, Dependencies, Open Questions) for all items from **get-project-items-by-query**. Content-based criteria (Business value, Clear & well-defined) are evaluated by the description review in step 2.
+The following script scores the **basic** DoR criteria (Estimated, Dependencies, Open Questions) for all items from **get-project-items-by-query**. Content-based criteria (Business value, Clear & well-defined) are evaluated by the Content Evaluation in step 2.
 
-Write it to a temp file, replace `<JSON_FILE_PATH>` and `<TIMESTAMP>`, then run with `node`.
+Write the script to a temp file, then run with `node`, passing the JSON file path and the output file path as arguments.
 
 ```sh
-cat << 'SCRIPT' > /tmp/eval-dor-<TIMESTAMP>.mjs
+TMPDIR=$(mktemp -d /tmp/github-copilot-skill-eval-dor-XXXXXX)
+cat << 'SCRIPT' > "$TMPDIR/script.mjs"
 import { readFileSync, writeFileSync } from "fs";
-const data = JSON.parse(readFileSync("<JSON_FILE_PATH>", "utf8"));
+
+const jsonPath = process.argv[2];
+const outPath = process.argv[3];
+const data = JSON.parse(readFileSync(jsonPath, "utf8"));
 
 // --- helpers (from get-project-items-by-query) ---
 function getFieldValue(fields, name) {
@@ -136,67 +139,83 @@ function evaluateDoR(item) {
   const isPlaceholder = /Question1|Question2/.test(oqSection);
   const hasUnresolved = hasOQ && (isPlaceholder || /- \[ \]/.test(oqSection));
 
-  let oqStatus = "—";
-  if (hasOQ && !hasUnresolved) oqStatus = "✅ resolved";
-  else if (hasUnresolved) oqStatus = "❌ unresolved";
+  let oqStatus = "n/a";
+  if (hasOQ && !hasUnresolved) oqStatus = "resolved";
+  else if (hasUnresolved) oqStatus = "unresolved";
 
-  // --- scoring ---
-  const basic = [];
-  basic.push({ name: "Estimated", met: dorEstimated || (sp != null && sp > 0) });
-  basic.push({ name: "Dependencies", met: dorDeps });
+  // --- scoring DoR ---
+  const estimated = dorEstimated || (sp != null && sp > 0);
+  const dependencies = dorDeps;
+  const basicMet = [estimated, dependencies].filter(Boolean).length;
+  const missing = [];
+  if (!estimated) missing.push("Estimated");
+  if (!dependencies) missing.push("Dependencies");
+  if (hasUnresolved) missing.push("Resolve Open Questions");
 
-  const basicScoresMet = basic.filter(c => c.met).length;
-  const basicScoresMissing = basic.filter(c => !c.met).map(c => c.name);
-  if (hasUnresolved) basicScoresMissing.push("Resolve Open Questions");
-
-  // Subtasks: fully scored (2 basic criteria)
-  // Non-subtasks: 2 basic + 2 content-based (evaluated by content)
   const total = subtask ? 2 : 4;
 
   let readyState;
   if (subtask) {
-    if (basicScoresMet === total) readyState = "🟢 Ready";
-    else if (basicScoresMet >= total - 1) readyState = "🟡 Mostly ready";
-    else readyState = "🔴 Needs refinement";
+    if (basicMet === total) readyState = "ready";
+    else if (basicMet >= total - 1) readyState = "mostly-ready";
+    else readyState = "needs-refinement";
   } else {
-    readyState = "⏳ description review pending";
+    readyState = "pending-content-review";
   }
 
-  return {
+  const result = {
     num: item.content.number,
     url: item.content.html_url,
     title: item.content.title,
-    body,
     subtask,
-    basicScores: `${basicScoresMet}/2`,
-    dorTotal: total,
+    estimated,
+    dependencies,
     oqStatus,
+    basicMet,
+    dorTotal: total,
     readyState,
-    basicScoresMissing,
+    missing,
   };
+
+  // Include body only for non-subtasks (needed for content evaluation)
+  if (!subtask) {
+    result.body = body.length > 3000 ? body.slice(0, 3000) + "\n\n[... truncated]" : body;
+  }
+
+  return result;
 }
 
 // --- run ---
-const results = data.items.map(evaluateDoR);
-const subtasks = results.filter(r => r.subtask);
-const nonSubtasks = results.filter(r => !r.subtask);
+const items = data.items.map(evaluateDoR);
+const subtasks = items.filter(r => r.subtask);
+const nonSubtasks = items.filter(r => !r.subtask);
 
-// Part 1: Write basic scores to JSON file (no body — kept lean for merging)
-const scoresForFile = results.map(({ body, ...rest }) => rest);
-writeFileSync("/tmp/eval-dor-<TIMESTAMP>-scores.json", JSON.stringify(scoresForFile, null, 2));
-console.log(`Wrote ${results.length} scores to /tmp/eval-dor-<TIMESTAMP>-scores.json (${subtasks.length} subtasks, ${nonSubtasks.length} issues)`);
+const output = {
+  summary: {
+    total: items.length,
+    subtaskCount: subtasks.length,
+    issueCount: nonSubtasks.length,
+    subtaskReady: subtasks.filter(r => r.readyState === "ready").length,
+    subtaskMostlyReady: subtasks.filter(r => r.readyState === "mostly-ready").length,
+    subtaskNeedsRefinement: subtasks.filter(r => r.readyState === "needs-refinement").length,
+    issuesPendingContentReview: nonSubtasks.length,
+  },
+  items,
+};
 
-// Part 2: Issue bodies for description review (non-subtasks only)
-if (nonSubtasks.length > 0) {
-  console.log("\n---\n");
-  console.log("## Issue Bodies for description review\n");
-  for (const r of nonSubtasks) {
-    console.log(`### #${r.num} — ${r.title}\n`);
-    const truncated = r.body.length > 3000 ? r.body.slice(0, 3000) + "\n\n[... truncated]" : r.body;
-    console.log(truncated);
-    console.log("\n---\n");
-  }
+writeFileSync(outPath, JSON.stringify(output, null, 2));
+
+// --- stdout: short summary only ---
+const s = output.summary;
+console.log("DoR evaluation complete.");
+console.log(`Total: ${s.total} items (${s.subtaskCount} subtasks, ${s.issueCount} issues)`);
+if (s.subtaskCount > 0) {
+  console.log(`Subtasks: ${s.subtaskReady} ready, ${s.subtaskMostlyReady} mostly ready, ${s.subtaskNeedsRefinement} needs refinement`);
 }
+if (s.issueCount > 0) {
+  console.log(`Issues: ${s.issuesPendingContentReview} pending content review`);
+}
+console.log(`Output: ${outPath}`);
 SCRIPT
-node /tmp/eval-dor-<TIMESTAMP>.mjs
+node "$TMPDIR/script.mjs" "<JSON_FILE_PATH>" "$TMPDIR/dor-results.json"
 ```

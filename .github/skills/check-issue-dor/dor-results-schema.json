@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["summary", "items"],
+  "properties": {
+    "summary": {
+      "type": "object",
+      "required": [
+        "total",
+        "subtaskCount",
+        "issueCount",
+        "subtaskReady",
+        "subtaskMostlyReady",
+        "subtaskNeedsRefinement",
+        "issuesPendingContentReview"
+      ],
+      "properties": {
+        "total": {
+          "type": "integer",
+          "description": "Total number of evaluated items"
+        },
+        "subtaskCount": {
+          "type": "integer",
+          "description": "Items with label 'Subtask'"
+        },
+        "issueCount": {
+          "type": "integer",
+          "description": "Non-subtask items"
+        },
+        "subtaskReady": {
+          "type": "integer",
+          "description": "Subtasks scoring 2/2"
+        },
+        "subtaskMostlyReady": {
+          "type": "integer",
+          "description": "Subtasks scoring 1/2"
+        },
+        "subtaskNeedsRefinement": {
+          "type": "integer",
+          "description": "Subtasks scoring 0/2"
+        },
+        "issuesPendingContentReview": {
+          "type": "integer",
+          "description": "Non-subtask issues awaiting content evaluation"
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "num",
+          "url",
+          "title",
+          "subtask",
+          "estimated",
+          "dependencies",
+          "oqStatus",
+          "basicMet",
+          "dorTotal",
+          "readyState",
+          "missing"
+        ],
+        "properties": {
+          "num": {
+            "type": "integer",
+            "description": "GitHub issue number"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Issue HTML URL"
+          },
+          "title": {
+            "type": "string",
+            "description": "Issue title"
+          },
+          "subtask": {
+            "type": "boolean",
+            "description": "true if issue has 'Subtask' label"
+          },
+          "estimated": {
+            "type": "boolean",
+            "description": "DoR: SP field set or DoR checkbox checked"
+          },
+          "dependencies": {
+            "type": "boolean",
+            "description": "DoR: dependencies checkbox checked"
+          },
+          "oqStatus": {
+            "type": "string",
+            "enum": ["resolved", "unresolved", "n/a"],
+            "description": "Open Questions status"
+          },
+          "basicMet": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2,
+            "description": "Number of basic DoR criteria met (Estimated + Dependencies)"
+          },
+          "dorTotal": {
+            "type": "integer",
+            "enum": [2, 4],
+            "description": "Total DoR criteria: 2 for subtasks, 4 for issues"
+          },
+          "readyState": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "mostly-ready",
+              "needs-refinement",
+              "pending-content-review"
+            ],
+            "description": "Ready state — subtasks are final, issues need content review"
+          },
+          "missing": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of unmet basic criteria"
+          },
+          "body": {
+            "type": "string",
+            "description": "Issue body markdown (only present for non-subtask items, truncated at 3000 chars)"
+          }
+        }
+      }
+    }
+  }
+}

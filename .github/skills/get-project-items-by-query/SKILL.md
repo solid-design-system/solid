@@ -49,9 +49,11 @@ The calling agent provides `{LABEL_VALUE}` — these are the most important labe
 
 ## Procedure
 
-**Before starting**, generate a `<TIMESTAMP>` value once using `Date.now()` (e.g. `1718371200000`). Use this same value for all temp file paths throughout this skill invocation to prevent collisions between concurrent agents.
-
 ### 1. Fetch items (single API call)
+
+> **Important**: 
+> Filter server-side using the `query` parameter. Do not fetch all items and filter client-side.
+> Use the field IDs from the Known Field IDs table for the `fields`parameter in the MCP call below.
 
 Call `mcp_gh-projects` → `projects_list` with:
 - **method**: `list_project_items`
@@ -62,13 +64,71 @@ Call `mcp_gh-projects` → `projects_list` with:
 - **fields**: `[37973307, 37973308, 37973309, 37973463, 64953433, 88431758]`
 - **per_page**: `50`
 
-If a pagination cursor is returned and there are more items, **stop and ask the user** whether they want to load more before continuing. Only paginate if the user explicitly confirms.
+#### Pagination check
 
-### 2. Parse the response
+If the caller did not specify a specific number of items or a number greater than 50, after each MCP call, write a small script to `$TMPDIR` to check the response for `hasNextPage: true` and a `nextCursor`:
+
+```sh
+cat << 'SCRIPT' > "$TMPDIR/check-pagination.mjs"
+import { readFileSync } from "fs";
+const d = JSON.parse(readFileSync(process.argv[2], "utf8"));
+const p = d.pageInfo || {};
+console.log("Items: " + d.items.length + " | hasNextPage: " + !!p.hasNextPage + " | nextCursor: " + (p.nextCursor || "null"));
+SCRIPT
+node "$TMPDIR/check-pagination.mjs" "<JSON_FILE_PATH>"
+```
+
+Replace `<JSON_FILE_PATH>` with the actual file path returned by the MCP tool.
+
+If `hasNextPage: true`: repeat the MCP call with `after` set to the `nextCursor` value until all pages are loaded. 
+
+#### Multi-page merging
+
+When multiple pages have been loaded, merge them into a single JSON file **before** running the processing script. Write a merge script to `$TMPDIR/merge.mjs` and output the merged data to `$TMPDIR/all-items.json`. Then use `$TMPDIR/all-items.json` as `<JSON_FILE_PATH>` in the processing script.
+
+```sh
+cat << 'MERGE' > "$TMPDIR/merge.mjs"
+import { readFileSync, writeFileSync } from "fs";
+const files = process.argv.slice(2, -1);
+const outPath = process.argv[process.argv.length - 1];
+const merged = { items: [] };
+for (const f of files) {
+  const data = JSON.parse(readFileSync(f, "utf8"));
+  merged.items.push(...data.items);
+}
+writeFileSync(outPath, JSON.stringify(merged, null, 2));
+console.log(`Merged ${merged.items.length} items from ${files.length} pages into ${outPath}`);
+MERGE
+node "$TMPDIR/merge.mjs" "<PAGE1_JSON>" "<PAGE2_JSON>" "$TMPDIR/all-items.json"
+```
+
+Replace `<PAGE1_JSON>`, `<PAGE2_JSON>`, etc. with the actual file paths returned by each MCP call.
+
+### 2. Parse the response with a Node.js script
 
 The MCP tool writes the response JSON to a file. The schema is documented in [`response-schema.json`](response-schema.json).
 
-Write a Node.js script to a temp `.mjs` file, then run it. Adapt the script to match the columns and summary information relevant to the user's request — only include fields that are useful for the current context.
+**Important**: 
+- In all script examples below, a dynamic **temp directory** is created via `mktemp -d`. Refer to this directory where needed via `$TMPDIR`. 
+- **Always write script files** like `script.mjs` to this temp directory — DO NOT execute script code inline like `node -e` or `node --eval`. Also DO NOT use other inline execution methods like `node << 'EOF'`. Reason: Scripts will break when the shell interprets parts of regex, `${}`, quotes, or parentheses as shell syntax.
+- **Always follow the pattern** like in the scriptlet below: 1. create a temp directory 2. print the temp directory path 3. write the script to the temp directory 4. execute the script with `node`.
+
+```sh
+TMPDIR=$(mktemp -d /tmp/github-copilot-skill-project-query-XXXXXX)
+echo "TMPDIR=$TMPDIR"
+cat << 'SCRIPT' > "$TMPDIR/script.mjs"
+import { readFileSync } from "fs";
+const data = JSON.parse(readFileSync("<JSON_FILE_PATH>", "utf8"));
+const lines = [];
+// ... push to lines array and output markdown table ...
+console.log(lines.join("\n"));
+SCRIPT
+node "$TMPDIR/script.mjs"
+```
+
+Similar to the script examples in the "Examples" section below, create a Node.js script to match the columns and summary information relevant to the user's request — only include fields that are useful for the current context.
+
+
 
 Key data paths to use in scripts:
 - `item.content.number` / `item.content.html_url` — issue number and link
@@ -97,20 +157,9 @@ function getFieldValue(fields, name) {
 
 Usage: `getFieldValue(item.fields, "Priority")` → `"🏝 Low"` or `null`.
 
-**Always write scripts to a temp `.mjs` file and run with `node`** — never use `node -e`. Even short scripts break when the shell interprets regex, `${}`, quotes, or parentheses as shell syntax.
-
-```sh
-cat << 'SCRIPT' > /tmp/project-query-<TIMESTAMP>.mjs
-import { readFileSync } from "fs";
-const data = JSON.parse(readFileSync("<JSON_FILE_PATH>", "utf8"));
-// ... processing ...
-SCRIPT
-node /tmp/project-query-<TIMESTAMP>.mjs
-```
-
 Replace `<JSON_FILE_PATH>` with the actual path returned by the MCP tool.
 
-### 3. Return results as a markdown table
+### 3. Read output and present to user
 
 The script outputs a ready-to-use markdown table with a summary line. **Present the output directly to the user — do not reformat or paraphrase it.**
 
@@ -135,7 +184,9 @@ Always end with a brief summary line (e.g. total count, number of unassigned ite
 Query: `status:"🔖 Ready"`
 
 ```sh
-cat << 'SCRIPT' > /tmp/project-query-<TIMESTAMP>.mjs
+TMPDIR=$(mktemp -d /tmp/github-copilot-skill-project-query-XXXXXX)
+echo "TMPDIR=$TMPDIR"
+cat << 'SCRIPT' > "$TMPDIR/script.mjs"
 import { readFileSync } from "fs";
 const data = JSON.parse(readFileSync("<JSON_FILE_PATH>", "utf8"));
 function getFieldValue(fields, name) {
@@ -150,8 +201,9 @@ function getFieldValue(fields, name) {
     default:              return f.value;
   }
 }
-console.log("| # | Issue | Title | Assignees | Priority | Iteration |");
-console.log("|---|-------|-------|-----------|----------|-----------|" );
+const lines = [];
+lines.push("| # | Issue | Title | Assignees | Priority | Iteration |");
+lines.push("|---|-------|-------|-----------|----------|-----------|" );
 let unassigned = 0;
 data.items.forEach((item, i) => {
   const c = item.content;
@@ -160,11 +212,12 @@ data.items.forEach((item, i) => {
   const priority = getFieldValue(item.fields, "Priority") || "—";
   const iteration = getFieldValue(item.fields, "Iteration") || "—";
   const issue = c.html_url ? `[#${c.number}](${c.html_url})` : `#${c.number}`;
-  console.log(`| ${[i+1, issue, c.title, assignees, priority, iteration].join(" | ")} |`);
+  lines.push(`| ${[i+1, issue, c.title, assignees, priority, iteration].join(" | ")} |`);
 });
-console.log(`_**${data.items.length}** items total; **${unassigned}** unassigned_`);
+lines.push(`_**${data.items.length}** items total; **${unassigned}** unassigned_`);
+console.log(lines.join("\n"));
 SCRIPT
-node /tmp/project-query-<TIMESTAMP>.mjs
+node "$TMPDIR/script.mjs"
 ```
 
 ### Example 2 — Blocked items overview (label filter)
@@ -172,7 +225,9 @@ node /tmp/project-query-<TIMESTAMP>.mjs
 Query: `label:"BLOCKED"`
 
 ```sh
-cat << 'SCRIPT' > /tmp/project-query-<TIMESTAMP>.mjs
+TMPDIR=$(mktemp -d /tmp/github-copilot-skill-project-query-XXXXXX)
+echo "TMPDIR=$TMPDIR"
+cat << 'SCRIPT' > "$TMPDIR/script.mjs"
 import { readFileSync } from "fs";
 const data = JSON.parse(readFileSync("<JSON_FILE_PATH>", "utf8"));
 function getFieldValue(fields, name) {
@@ -187,19 +242,21 @@ function getFieldValue(fields, name) {
     default:              return f.value;
   }
 }
-console.log("| # | Issue | Title | Assignees | Status | Labels |");
-console.log("|---|-------|-------|-----------|--------|--------|" );
+const lines = [];
+lines.push("| # | Issue | Title | Assignees | Status | Labels |");
+lines.push("|---|-------|-------|-----------|--------|--------|" );
 data.items.forEach((item, i) => {
   const c = item.content;
   const assignees = (c.assignees || []).map(a => a.login).join(", ") || "—";
   const labels = (c.labels || []).map(l => l.name).join(", ") || "—";
   const status = getFieldValue(item.fields, "Status") || "—";
   const issue = c.html_url ? `[#${c.number}](${c.html_url})` : `#${c.number}`;
-  console.log(`| ${[i+1, issue, c.title, assignees, status, labels].join(" | ")} |`);
+  lines.push(`| ${[i+1, issue, c.title, assignees, status, labels].join(" | ")} |`);
 });
-console.log(`_**${data.items.length}** blocked items_`);
+lines.push(`_**${data.items.length}** blocked items_`);
+console.log(lines.join("\n"));
 SCRIPT
-node /tmp/project-query-<TIMESTAMP>.mjs
+node "$TMPDIR/script.mjs"
 ```
 
 ### Example 3 — Unassigned work triage (minimal view)
@@ -207,7 +264,9 @@ node /tmp/project-query-<TIMESTAMP>.mjs
 Query: `assignee:unassigned`
 
 ```sh
-cat << 'SCRIPT' > /tmp/project-query-<TIMESTAMP>.mjs
+TMPDIR=$(mktemp -d /tmp/github-copilot-skill-project-query-XXXXXX)
+echo "TMPDIR=$TMPDIR"
+cat << 'SCRIPT' > "$TMPDIR/script.mjs"
 import { readFileSync } from "fs";
 const data = JSON.parse(readFileSync("<JSON_FILE_PATH>", "utf8"));
 function getFieldValue(fields, name) {
@@ -222,22 +281,18 @@ function getFieldValue(fields, name) {
     default:              return f.value;
   }
 }
-console.log("| # | Issue | Title | Status | Labels |");
-console.log("|---|-------|-------|--------|--------|" );
+const lines = [];
+lines.push("| # | Issue | Title | Status | Labels |");
+lines.push("|---|-------|-------|--------|--------|" );
 data.items.forEach((item, i) => {
   const c = item.content;
   const labels = (c.labels || []).map(l => l.name).join(", ") || "—";
   const status = getFieldValue(item.fields, "Status") || "—";
   const issue = c.html_url ? `[#${c.number}](${c.html_url})` : `#${c.number}`;
-  console.log(`| ${[i+1, issue, c.title, status, labels].join(" | ")} |`);
+  lines.push(`| ${[i+1, issue, c.title, status, labels].join(" | ")} |`);
 });
-console.log(`_**${data.items.length}** unassigned items_`);
+lines.push(`_**${data.items.length}** unassigned items_`);
+console.log(lines.join("\n"));
 SCRIPT
-node /tmp/project-query-<TIMESTAMP>.mjs
+node "$TMPDIR/script.mjs"
 ```
-
-## Constraints
-
-- Use the field IDs from the Known Field IDs table.
-- Filter server-side using the `query` parameter.
-- **Always write scripts to a temp `.mjs` file** — never use `node -e` (shell quoting breaks regex, `${}`, and parentheses).

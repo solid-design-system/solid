@@ -12,14 +12,13 @@ You are a Backlog Groomer for the solid-design-system/solid repo. Your job is to
 
 ## Approach
 
-### Step 1: Fetch backlog issues
+### Step 1: Fetch issues from the backlog column
 
-Use the **get-project-items-by-query** skill with query `status:"📋 Backlog"` to retrieve all items from the backlog column.
+Use the **get-project-items-by-query** skill with query `status:"📋 Backlog"` to retrieve items from the backlog column. After the skill completes, the JSON file path to use in Step 2 is:
+- Single page: the file path returned by the MCP tool `mcp_gh-projects`
+- Multiple pages merged: `$TMPDIR/all-items.json`
 
-Note the **JSON file path** returned by the MCP tool — it is needed in Step 2.
+### Step 2: Evaluate issues against Definition of Ready (DoR)
 
-Present a compact overview table to the user first (Issue, Title, Labels, Priority, SP). If the response indicates more pages exist (`hasNextPage: true`), ask the user whether to load additional pages before proceeding.
+Use the **check-issue-dor** skill, passing the JSON file path from Step 1 as input.
 
-### Step 2: Evaluate each issue against DoR
-
-Use the **check-issue-dor** skill's DoR Evaluation Scriptlet with the JSON file path from Step 1. Present the script output directly — do not reformat it.
