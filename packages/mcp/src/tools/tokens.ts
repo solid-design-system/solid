@@ -31,7 +31,8 @@ export const tokenInfoTool = (server: McpServer) => {
   server.registerTool(
     'token-info',
     {
-      description: 'Get information about design tokens available in the Solid Design System',
+      description:
+        'Get design tokens (CSS variables and TailwindCSS utility classes) available in the Solid Design System. Use this to look up correct Tailwind class names and CSS custom properties for colors, spacing, typography, and more.',
       inputSchema: {},
       title: 'Token info'
     },
@@ -40,7 +41,26 @@ export const tokenInfoTool = (server: McpServer) => {
       return {
         content: [
           {
-            text: `The following are CSS custom properties (CSS variables) available inside @theme inline in tailwind.css.\nUse them in CSS as var(--property-name) or leverage the Tailwind utility mappings below.\n\n${TAILWIND_MAPPING}\n\nAvailable CSS variables:\n${tokenNames.join('\n')}`,
+            text: [
+              `These are the design tokens of the Solid Design System. Each token is available both as a CSS custom property (CSS variable) and as a TailwindCSS utility class.`,
+              ``,
+              `## How to use`,
+              ``,
+              `### TailwindCSS (preferred)`,
+              `Use the semantic Tailwind utility classes directly. Do NOT use arbitrary value syntax like \`bg-[rgb(var(--sd-color-neutral-100))]\` or \`bg-[var(--sd-color-neutral-100)]\`.`,
+              `Instead, always use the mapped Tailwind class, e.g. \`bg-neutral-100\`.`,
+              ``,
+              `### CSS`,
+              `Use the CSS custom properties via \`var(--property-name)\`, e.g. \`background-color: var(--sd-color-neutral-100)\`.`,
+              ``,
+              `## CSS variable → Tailwind utility mapping`,
+              ``,
+              TAILWIND_MAPPING,
+              ``,
+              `## Available tokens (CSS variable names)`,
+              ``,
+              tokenNames.join('\n')
+            ].join('\n'),
             type: 'text'
           }
         ]

@@ -1,43 +1,35 @@
-# @synergy-design-system/mcp
+# @solid-design-system/mcp
 
-Synergy MCP Server – Multi-Framework Component Metadata & Tooling
+Solid Design System MCP Server – Component, Style, and Design Metadata
 
----
-
-The `@synergy-design-system/mcp` package provides a Model Context Protocol (MCP) server for the Synergy Design System. It enables AI assistants and development tools to access structured information about Synergy components, design tokens, icons, and migration guides across multiple frameworks (Angular, React, Vue, and vanilla Web Components).
+The `@solid-design-system/mcp` package provides a Model Context Protocol (MCP) server enabling AI assistants and development tools to access structured information about Solid Design System components, styles, templates, design tokens, icons, and the CD Toolbox.
 
 ## Quick Start
 
 ### Installation
 
 ```bash
-npm install --save-dev @synergy-design-system/mcp
+npm install --save-dev @solid-design-system/mcp
 ```
 
 ### Running the Server
 
-The MCP server can be started using the `syn-mcp` binary:
-
 ```bash
-# Run directly
-npx @synergy-design-system/mcp
-
-# Or if installed globally
-syn-mcp
+npx @solid-design-system/mcp
 ```
 
 ### VS Code Integration
 
-To integrate with VS Code and AI assistants, add this configuration to your VS Code `settings.json` under the `mcp.servers` section:
+Add to your VS Code `settings.json`:
 
 ```jsonc
 {
   "mcp": {
     "servers": {
-      "synergy": {
+      "solid": {
         "type": "stdio",
         "command": "npx",
-        "args": ["@synergy-design-system/mcp"]
+        "args": ["@solid-design-system/mcp"]
       }
     }
   }
@@ -46,14 +38,14 @@ To integrate with VS Code and AI assistants, add this configuration to your VS C
 
 ### Claude Desktop Integration
 
-For Claude Desktop, add this to your `claude_desktop_config.json`:
+Add to `claude_desktop_config.json`:
 
 ```json
 {
   "mcpServers": {
-    "synergy": {
+    "solid": {
       "command": "npx",
-      "args": ["@synergy-design-system/mcp"]
+      "args": ["@solid-design-system/mcp"]
     }
   }
 }
@@ -61,239 +53,160 @@ For Claude Desktop, add this to your `claude_desktop_config.json`:
 
 ## Features
 
-- **Component Information**: Get detailed usage information for Synergy components across frameworks
-- **Icon Assets**: Search and discover available icons from multiple icon sets
-- **Design Tokens**: Access CSS and JavaScript design tokens
-- **Style Utilities**: Information about available CSS utility classes
-- **Templates**: Access static templates built with the Synergy Design System
-- **Migration Guides**: DaVinci to Synergy component migration assistance and Synergy version migrations
-- **Framework Support**: Specific documentation for Angular, React, Vue, and vanilla Web Components
-- **Version Information**: Get version and metadata about the MCP server
-- **MCP Protocol**: Standard Model Context Protocol interface for AI assistant integration
+- **Unified Component Tool**: List all components, view full specs, retrieve HTML examples, and access package-level guides
+- **Unified Styles Tool**: List all CSS utilities, view full specs, retrieve HTML examples, and access package-level guides
+- **Templates**: List, filter by component/style, and retrieve template source code
+- **CD Toolbox**: Access Corporate Design guidelines by topic
+- **Icons**: Search the Solid Design System icon library
+- **Design Tokens**: Get design token information
+- **Version Info**: Check MCP server version and metadata
 
 ## Available Tools
 
-The MCP server provides the following tools that can be invoked by AI assistants:
+### 1. `components`
 
-### 1. `component-list`
+**Unified entry point for all component-related queries.**
 
-**Description:** Outputs a list of all available components in the Synergy Design System.
+**Behavior:**
 
-**Parameters:** None
-
-**Example prompts:**
-
-- "Show me all available Synergy components"
-- "What components are available in the Synergy Design System?"
-- "List all syn-\* components"
-
-### 2. `component-info`
-
-**Description:** Get detailed information about the usage of a specific component in the Synergy Design System.
+- **No arguments** → Lists all available `sd-*` components + available package doc topics
+- **`component` arg** (e.g. `sd-button`) → Returns full component spec: usage guidelines, API (properties, events, slots, CSS parts), related components and templates
+- **`component` + `story` args** → Returns HTML code example for a specific usage pattern (e.g. `sd-button` + `inverted`)
+- **`doc` arg** (e.g. `"localization"`, `"installation"`, `"customization"`) → Returns package-level guide
 
 **Parameters:**
 
-- `component` (string, required): The name of the component (must start with `syn-`, e.g., `syn-button`)
-- `framework` (string, optional): The framework (`react`, `vue`, `angular`, `vanilla`). Defaults to `vanilla`
+- `component` (string, optional): sd-\* component tag name, e.g. `"sd-button"`
+- `story` (string, optional): Story slug for HTML example, e.g. `"inverted"` or `"no-shadow"` (requires `component`)
+- `doc` (string, optional): Package doc slug, e.g. `"localization"` or `"installation"`
 
 **Example prompts:**
 
-- "How do I use the syn-button component in React?"
-- "Show me the syn-input component documentation"
-- "What props does syn-dialog support in Vue?"
-- "Give me an example of syn-card in Angular"
+- "Show me all available Solid components"
+- "What is the sd-button component?"
+- "Show me an inverted sd-button example"
+- "How do I localize components?"
+- "Tell me about component customization"
 
-### 3. `asset-list`
+---
 
-**Description:** Get the available iconsets in the Synergy Design System.
+### 2. `styles`
 
-**Parameters:** None
+**Unified entry point for all CSS style utilities.**
 
-**Example prompts:**
+**Behavior:**
 
-- "What iconsets are available?"
-- "Show me all available icon libraries"
-- "List all iconsets in Synergy"
-
-### 4. `asset-info`
-
-**Description:** Get information about available icons in the Synergy Design System.
+- **No arguments** → Lists all available style utilities + available package doc topics
+- **`style` arg** (e.g. `sd-chip` or `chip`) → Returns full style spec: usage guidelines, available CSS class names, related components/templates
+- **`style` + `example` args** → Returns HTML code example for a specific usage pattern (e.g. `sd-chip` + `inverted`)
+- **`doc` arg** (e.g. `"installation"` or `"usage"`) → Returns package-level guide
 
 **Parameters:**
 
-- `filter` (string, optional): Filter icon names by substring match
-- `iconset` (string, optional): Icon set to search (`current`, `legacy`, `v2`, `synergy2018`, `brand2018`, `brand2025`, `synergy2025`, `new`, `next`). Defaults to `current`
-- `limit` (number, optional): Maximum number of icons to return. Defaults to 5
+- `style` (string, optional): Style name with or without `sd-` prefix, e.g. `"chip"` or `"sd-chip"`
+- `example` (string, optional): Story slug for HTML example, e.g. `"inverted"` or `"size"` (requires `style`)
+- `doc` (string, optional): Package doc slug, e.g. `"installation"` or `"usage"`
 
 **Example prompts:**
 
-- "Show me icons with 'add' in the name"
-- "What icons are available for cancel actions?"
-- "List 10 icons from the new iconset"
-- "Find icons related to 'close' in the current iconset"
+- "Show me all available Solid styles"
+- "What is the sd-chip style?"
+- "Show me a size variant of sd-chip"
+- "How do I install the styles package?"
+- "Tell me about using Solid styles"
 
-### 5. `token-info`
+---
 
-**Description:** Get information about design tokens available in the Synergy Design System.
+### 3. `templates`
+
+**Access real-world compositions of Solid components.**
+
+**Behavior:**
+
+- **No arguments** → Lists all available templates
+- **`template` arg** (e.g. `"forms"` or `"button-group"`) → Returns template source code and component inventory
+- **`component` arg** (e.g. `"sd-button"`) → Filters list to templates that use that component
+- **`style` arg** (e.g. `"sd-chip"` or `"chip"`) → Filters list to templates that use that style
 
 **Parameters:**
 
-- `type` (string, optional): Token type (`javascript` or `css`). Defaults to `css`
+- `template` (string, optional): Template name, e.g. `"forms"`
+- `component` (string, optional): sd-\* component to filter by, e.g. `"sd-button"`
+- `style` (string, optional): Style name (with or without `sd-` prefix) to filter by, e.g. `"sd-chip"`
+
+**Example prompts:**
+
+- "Show me all available templates"
+- "What is the forms template?"
+- "Show me templates that use sd-button"
+- "Which templates use the sd-chip style?"
+
+---
+
+### 4. `cd-toolbox`
+
+**Corporate Design guidelines for Union Investment digital products.**
+
+**Behavior:**
+
+- **No arguments** → Lists all available CD Toolbox topics with short descriptions
+- **`topic` arg** (e.g. `"icons"` or `"ux-principles"`) → Returns full guidelines for that topic
+
+**Parameters:**
+
+- `topic` (string, optional): Topic ID, e.g. `"icons"` or `"ux-principles"`
+
+**Example prompts:**
+
+- "What CD Toolbox topics are available?"
+- "Show me the icons guidelines"
+- "Tell me about UX principles"
+
+---
+
+### 5. `icon-search`
+
+**Search the Solid Design System icon library.**
+
+**Parameters:**
+
+- `keywords` (array of strings, required): English and/or German synonyms to search for, e.g. `["download", "save"]`
+
+**Example prompts:**
+
+- "Search for a download icon"
+- "Find icons related to 'close' or 'dismiss'"
+- "Show me icons for user or profile"
+
+---
+
+### 6. `tokens`
+
+**Access design tokens from the Solid Design System.**
+
+**Parameters:**
+
+- `type` (string, optional): Token type (`css` or `javascript`). Defaults to `css`
 
 **Example prompts:**
 
 - "Show me the available CSS design tokens"
-- "What JavaScript design tokens are available?"
-- "List all design tokens for styling"
+- "List all JavaScript tokens"
 
-### 6. `styles-list`
+---
 
-**Description:** Outputs a list of available styles in the Synergy Design System.
+### 7. `version`
 
-**Parameters:** None
-
-**Example prompts:**
-
-- "What styles are available in Synergy?"
-- "Show me all available CSS utility classes"
-- "List all style modules"
-
-### 7. `styles-info`
-
-**Description:** Get information about CSS utilities available in the Synergy Design System.
+**Get version and metadata about the Solid Design System MCP Server.**
 
 **Parameters:** None
 
 **Example prompts:**
 
-- "Show me information about Synergy CSS utilities"
-- "What CSS utilities does Synergy provide?"
-- "Tell me about the styles package"
+- "What version of the Solid MCP server is running?"
+- "Show me server information"
 
-### 8. `template-list`
-
-**Description:** Outputs a list of available static templates built with the Synergy Design System.
-
-**Parameters:** None
-
-**Example prompts:**
-
-- "What templates are available in Synergy?"
-- "Show me all available static templates"
-- "List all templates"
-
-### 9. `template-info`
-
-**Description:** Get a specific template in the Synergy Design System.
-
-**Parameters:**
-
-- `template` (string, required): The name of the template to get information about.
-
-**Example prompts:**
-
-- "Show me the form template"
-- "Give me information about the dashboard template"
-- "How do I use the form template?"
-
-### 10. `davinci-migrate-list`
-
-**Description:** Get a list of all components that have migration information from DaVinci to Synergy.
-
-**Parameters:** None
-
-**Example prompts:**
-
-- "What DaVinci components can be migrated to Synergy?"
-- "Show me all available migration guides"
-- "List components with migration information"
-
-### 11. `davinci-migrate-component`
-
-**Description:** Get information about the migration of a specific component from DaVinci to Synergy.
-
-**Parameters:**
-
-- `component` (string, required): Name of the DaVinci component (must start with `davinci-`, e.g., `davinci-button`)
-
-**Example prompts:**
-
-- "How do I migrate from davinci-button to Synergy?"
-- "Show me the migration guide for davinci-input"
-- "What's the Synergy equivalent of davinci-auto-suggest?"
-
-### 12. `framework-info`
-
-**Description:** Get information about a specific framework package that the Synergy Design System supports.
-
-**Parameters:**
-
-- `framework` (string, optional): Framework name (`react`, `vue`, `angular`, `vanilla`). Defaults to `vanilla`
-- `setupInstructions` (boolean, optional): Adds additional context to include setup instructions for all synergy applications. Defaults to `false`
-
-**Example prompts:**
-
-- "How do I set up Synergy with React?"
-- "Show me the Angular integration guide"
-- "What's needed to use Synergy with Vue?"
-- "How do I install Synergy for vanilla JavaScript?"
-
-### 13. `migration-list`
-
-**Description:** List available migration documents for a specific Synergy package in a compact, token‑efficient format.
-
-**Parameters:**
-
-- `synergyPackage` (string, optional): The package to list migration documents for (`assets`, `components`, `styles`, `tokens`). Defaults to `components`.
-
-**Notes:**
-
-- For the `components` package this returns an index of:
-  - High‑level overview docs (e.g. migration overview)
-  - Path‑specific guides (e.g. v2‑2018 → v3‑2018)
-  - Package‑level docs (e.g. `BREAKING_CHANGES.md`, `CHANGELOG.md`)
-- Each entry contains at least the filename and package name. For component paths, additional metadata such as `from`, `to`, `fromTheme`, `toTheme`, and a short `summary` is included where possible.
-
-**Example prompts:**
-
-- "List all Synergy component migration guides"
-- "Show me available migration docs for tokens"
-- "What migration paths exist from Synergy 2 to Synergy 3?"
-
-### 14. `migration-info`
-
-**Description:** Get detailed migration documentation for a Synergy package. Use this together with `migration-list` to fetch only the documents you need.
-
-**Parameters:**
-
-- `filename` (string, optional): Specific migration document filename to return. Strongly recommended for the `components` package to avoid fetching all path guides at once.
-- `synergyPackage` (string, optional): The package to get migration information about (`assets`, `components`, `styles`, `tokens`). Defaults to `components`.
-
-**Behavior:**
-
-- For `components`:
-  - With `filename`: returns exactly that migration document (e.g. a specific v2‑to‑v3 path guide).
-  - Without `filename`: returns only the migration overview and high‑level package docs (such as `BREAKING_CHANGES` and `CHANGELOG`), **not** every path‑specific guide.
-- For other packages (`assets`, `styles`, `tokens`):
-  - Returns all migration‑related documents for the selected package (typically `BREAKING_CHANGES` and `CHANGELOG`).
-
-**Example prompts:**
-
-- "List the available Synergy component migrations" (first call `migration-list`)
-- "Show me the migration guide from Synergy 2 (SICK 2018) to Synergy 3 (SICK 2018)"
-- "Give me the breaking changes for the tokens package between major versions"
-
-### 15. `version`
-
-**Description:** Get version and basic information about the Synergy Design System MCP Server.
-
-**Parameters:** None
-
-**Example prompts:**
-
-- "What version of the MCP server is running?"
-- "Show me information about this Synergy MCP server"
-- "What's the current version?"
+---
 
 ## Developer Documentation
 
@@ -302,269 +215,158 @@ The MCP server provides the following tools that can be invoked by AI assistants
 ```
 src/
 ├── bin/
-│   └── start.ts          # CLI entry point (syn-mcp command)
-├── build/                # Build scripts for metadata generation
-│   ├── assets.ts         # Asset metadata builder
-│   ├── build.ts          # Main build orchestrator
-│   ├── components.ts     # Component metadata builder
-│   ├── frameworks.ts     # Framework info builder
-│   ├── static.ts         # Static content builder
-│   ├── styles.ts         # Styles metadata builder
-│   └── tokens.ts         # Token metadata builder
-├── scripts/              # Build and utility scripts
-│   └── generate-checksum.ts # TypeScript checksum generator (replaces shell scripts)
-├── server.ts             # MCP server setup and tool registration
-├── tools/                # MCP tool implementations
-│   ├── asset-info.ts     # Icon search and information
-│   ├── asset-list.ts     # Available iconsets
-│   ├── component-info.ts # Individual component details
-│   ├── component-list.ts # List all components
-│   ├── davinci-migration.ts # Migration guides
-│   ├── font-info.ts      # Font and prerequisites information
-│   ├── framework-info.ts # Framework-specific information
-│   ├── migration-info.ts # Package migration documentation
-│   ├── migration-list.ts # Package migration index (filenames + metadata)
-│   ├── styles-info.ts    # CSS utilities information
-│   ├── styles-list.ts    # List all styles
-│   ├── template-info.ts  # Template details
-│   ├── template-list.ts  # List all templates
-│   ├── tokens.ts         # Design tokens
-│   ├── version.ts        # MCP server version info
-│   └── index.ts          # Tool exports
-└── utilities/            # Helper functions and metadata loaders
-    ├── assets.ts         # Asset utilities
-    ├── checksum.ts       # Folder checksum utilities (replaces shell scripts)
-    ├── components.ts     # Component utilities
-    ├── config.ts         # Configuration management
-    ├── file.ts           # File system utilities
-    ├── metadata.ts       # Metadata loading utilities
-    ├── stdio.ts          # Standard I/O utilities
-    ├── styles.ts         # Style utilities
-    ├── templates.ts      # Template utilities
-    ├── tokens.ts         # Token utilities
-    ├── version.ts        # Version utilities
-    ├── storybook/        # Storybook documentation utilities
-    └── index.ts          # Utility exports
-metadata/                 # Generated and static metadata files
-├── checksum.txt          # Metadata integrity checksum
-├── davinci-migration/    # DaVinci to Synergy migration guides
-├── packages/             # Synergy package specific information
-└── static/               # Static metadata for tools
+│   └── index.ts              # CLI entry point
+├── build/                    # Metadata generation
+│   ├── build.ts              # Main orchestrator
+│   ├── components.ts         # Component metadata
+│   ├── icons.ts              # Icon metadata
+│   ├── package-docs.ts       # Package-level docs (Installation, Localization, etc.)
+│   ├── static.ts             # Static content
+│   ├── styles.ts             # Styles metadata
+│   ├── templates.ts          # Templates metadata
+│   └── tokens.ts             # Tokens metadata
+├── server.ts                 # MCP server setup
+├── tools/                    # Tool implementations
+│   ├── cd-toolbox.ts         # CD Toolbox access
+│   ├── components.ts         # Unified components tool
+│   ├── icon-search.ts        # Icon search
+│   ├── styles.ts             # Unified styles tool
+│   ├── templates.ts          # Unified templates tool
+│   ├── tokens.ts             # Token information
+│   ├── version.ts            # Version information
+│   └── index.ts              # Tool exports
+└── utilities/                # Helper functions
+    ├── checksum.ts           # Metadata checksums
+    ├── components.ts         # Component utilities
+    ├── config.ts             # Configuration paths
+    ├── file.ts               # File utilities
+    ├── metadata.ts           # Metadata loading
+    ├── stdio.ts              # I/O utilities
+    ├── styles.ts             # Style utilities
+    ├── templates.ts          # Template utilities
+    ├── tokens.ts             # Token utilities
+    ├── version.ts            # Version utilities
+    └── index.ts              # Utility exports
+
+metadata/                    # Generated and static metadata
+├── checksum.txt
+├── cd-toolbox/              # CD Toolbox topics (.md files)
+├── packages/
+│   ├── components/          # Component metadata
+│   │   ├── sd-*/            # Per-component dirs
+│   │   │   ├── info.md      # Full spec (API, guidelines, examples list)
+│   │   │   └── stories/     # HTML examples
+│   │   │       └── *.md
+│   │   └── docs/            # Package-level docs
+│   │       ├── installation.md
+│   │       ├── localization.md
+│   │       ├── customization.md
+│   │       └── *.md
+│   ├── styles/              # Style metadata
+│   │   ├── sd-*/
+│   │   │   ├── info.md
+│   │   │   └── stories/
+│   │   └── docs/            # Package-level docs
+│   │       ├── installation.md
+│   │       └── *.md
+│   ├── templates/           # Template metadata (.md files)
+│   ├── icons/               # Icon library metadata
+│   └── tokens/              # Token definitions
+└── static/                  # Static AI-rule files
 ```
 
-### Available Scripts
+### Key Changes in v2.6.0
 
-The following npm scripts are available for development:
+**Tool Consolidation:** Reduced from 10 tools to 5 unified tools:
+
+| Old Tools                                                    | New Tool     | Key Difference                                        |
+| ------------------------------------------------------------ | ------------ | ----------------------------------------------------- |
+| `component-list`, `component-docs`, `component-api-examples` | `components` | Single tool handles list, spec, and examples via args |
+| `styles-list`, `styles-info`, `style-api-examples`           | `styles`     | Single tool handles list, spec, and examples via args |
+| `template-list`, `template-info`                             | `templates`  | Single tool with optional filtering                   |
+| `cd-toolbox`                                                 | `cd-toolbox` | No change (already optional args pattern)             |
+
+**Package Documentation:** Added package-level guides (Installation, Localization, Customization, Usage) extracted from MDX files in `packages/docs/src/stories/packages/`:
+
+- `components` tool with `doc` arg accesses these
+- `styles` tool with `doc` arg accesses these
+- Automatically built from source during `build:metadata`
+
+### Building
 
 ```bash
-# Build the entire project (TypeScript + metadata + Storybook docs)
+# Build TypeScript and metadata
 pnpm build
 
-# Build only TypeScript files
-pnpm build:ts
-
-# Build metadata from source packages
-pnpm build:metadata
-
-# Generate metadata integrity checksum (uses TypeScript instead of shell script)
-pnpm build:hash
-
-# Build Storybook documentation
-pnpm build:storybook
-
-# Run linting
-pnpm lint
-pnpm lint:js
-
-# Run tests with coverage
-pnpm test
+# Or separately:
+pnpm build:ts          # Compile TypeScript only
+pnpm build:metadata    # Generate metadata from source
+pnpm build:hash        # Generate integrity checksum
 ```
 
-### Development Workflow
+### Metadata Generation
 
-1. **Setup**: Install dependencies with `pnpm install`
-2. **Build**: Run `pnpm build` to compile TypeScript and generate metadata
-   - `pnpm build:ts` compiles TypeScript files
-   - `pnpm build:metadata` generates metadata from source packages
-   - `pnpm build:hash` creates integrity checksum for metadata using TypeScript utilities
-3. **Test**: Use `pnpm test` to run the test suite with coverage
-4. **Lint**: Run `pnpm lint` to check code quality
-5. **Run**: Start the server with `npx syn-mcp` or `node dist/bin/start.js`
+The `build:metadata` script runs all builders in sequence:
 
-The metadata build process runs multiple specialized builders in sequence:
+1. **Components** — Extracts from Storybook custom-elements.json
+2. **Styles** — Extracts from Storybook
+3. **Template metadata finalization** — Converts JSON to subdirs with info.md + stories/
+4. **Icons** — Generates icon library index
+5. **Package docs** — Extracts MDX files from `packages/docs/src/stories/packages/` and converts to plain markdown
+6. **Tokens** — Generates token definitions
+7. **Static files** — Copies static content
 
-1. Assets (icons and iconsets)
-2. Components (from package manifests)
-3. Framework information (setup guides)
-4. Design tokens (CSS and JS tokens)
-5. Styles (utility classes)
-6. Static files (hand-written documentation)
+### Adding a New Tool
 
-### Adding New Tools
+1. Create `src/tools/my-tool.ts`:
 
-To add a new tool:
+   ```typescript
+   import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+   import { z } from 'zod';
 
-1. Create a new file in `src/tools/` (e.g., `my-tool.ts`)
-2. Implement the tool following the MCP SDK patterns
-3. Export the tool from `src/tools/index.ts`
-4. Your tool will automatically be registered into the server.
+   export const myTool = (server: McpServer) => {
+     server.registerTool(
+       'my-tool',
+       {
+         description: 'What this tool does',
+         inputSchema: {
+           param: z.string().describe('A parameter')
+         },
+         title: 'My Tool'
+       },
+       async ({ param }) => {
+         return { content: [{ type: 'text', text: 'Result' }] };
+       }
+     );
+   };
+   ```
 
-Example tool structure:
+2. Export from `src/tools/index.ts`:
 
-```typescript
-import { z } from 'zod';
-import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+   ```typescript
+   export * from './my-tool.js';
+   ```
 
-export const myTool = (server: McpServer) => {
-  server.registerTool(
-    'my-tool',
-    {
-      description: 'Description of what the tool does',
-      inputSchema: {
-        param: z.string().describe('Parameter description')
-      },
-      title: 'My Tool'
-    },
-    async ({ param }) => {
-      // Tool implementation
-      return {
-        content: [
-          {
-            text: `Result for ${param}`,
-            type: 'text'
-          }
-        ]
-      };
-    }
-  );
-};
-```
+3. Register in `src/server.ts` (via `tools/index.ts` exports)
 
-### Metadata Management
-
-Metadata is stored in the `metadata/` directory and is built during the build process:
-
-- **Static metadata**: Hand-written files in `metadata/static/`
-- **Component metadata**: Generated from Synergy packages in `metadata/packages/`
-- **Migration guides**: DaVinci migration information in `metadata/davinci-migration/`
-- **Checksum validation**: `metadata/checksum.txt` ensures metadata integrity
-
-The `pnpm build:metadata` script processes source packages and generates structured metadata files using specialized builders:
-
-- `build/assets.ts` - Processes icon and asset information
-- `build/components.ts` - Extracts component metadata from packages
-- `build/frameworks.ts` - Generates framework-specific documentation
-- `build/static.ts` - Processes static content files
-- `build/styles.ts` - Extracts CSS utility information
-- `build/tokens.ts` - Processes design token data
-- `build/build.ts` - Orchestrates the entire build process
-
-### Checksum Utilities
-
-The project includes TypeScript utilities for generating and verifying folder checksums, replacing shell scripts for cross-platform compatibility:
-
-**Key Features:**
-
-- **Cross-platform**: Works on Windows, macOS, and Linux
-- **Configurable**: Support for custom exclude patterns and hash algorithms (MD5, SHA1, SHA256)
-- **TypeScript native**: Full type safety and IDE support
-- **Shell script replacement**: Replaces `find | sort | xargs | md5` commands
-
-**Available Functions:**
-
-- `createFolderChecksum(path, options?)` - Generate checksum and optionally write to file
-- `verifyFolderChecksum(path, options?)` - Verify current contents match stored checksum
-- `getFolderChecksum(path, options?)` - Get checksum without writing to file
-
-**Usage Example:**
-
-```typescript
-import { createFolderChecksum, verifyFolderChecksum } from './utilities/checksum.js';
-
-// Generate checksum (equivalent to shell script)
-await createFolderChecksum('./metadata', {
-  excludePatterns: ['.*', 'checksum.txt'],
-  algorithm: 'md5',
-  outputFile: 'checksum.txt'
-});
-
-// Verify integrity
-const isValid = await verifyFolderChecksum('./metadata');
-```
-
-The build process uses `scripts/generate-checksum.ts` instead of shell commands for better cross-platform support and maintainability.
-
-### Binary Distribution
-
-The package includes a `syn-mcp` binary that starts the MCP server via stdio transport. This is defined in `package.json`:
-
-```json
-{
-  "bin": {
-    "syn-mcp": "./dist/bin/start.js"
-  }
-}
-```
-
-## Usage Examples
-
-### Command Line Interface
+### Testing the Server
 
 ```bash
-# Start the MCP server
-syn-mcp
+# Start the server
+npx @solid-design-system/mcp
 
-# The server will communicate via stdio and wait for MCP protocol messages
+# In another terminal, you can test tool invocation
+# (requires MCP client or integration with Claude/VS Code)
 ```
 
-### Programmatic Usage
+## Related Packages
 
-```typescript
-import { createServer } from '@synergy-design-system/mcp';
-import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-
-// Create and start the server
-const server = createServer();
-const transport = new StdioServerTransport();
-await server.connect(transport);
-```
-
-### AI Assistant Integration
-
-Once configured with an AI assistant, you can use natural language prompts like:
-
-```
-"Show me how to use syn-button in React"
-"What icons are available for navigation?"
-"How do I migrate from davinci-textarea to Synergy?"
-"How do I migrate from Synergy v1 to v2?"
-"List all available Synergy components"
-"What CSS utilities does Synergy provide?"
-```
-
-The MCP server will interpret these prompts and call the appropriate tools to provide structured responses.
-
-## Architecture
-
-The MCP server is built using the Model Context Protocol SDK and provides a standardized interface for AI assistants to access Synergy Design System information.
-
-### Core Components
-
-- **Server**: MCP server instance that manages tool registration and request handling
-- **Tools**: Individual tool implementations that provide specific functionality
-- **Utilities**: Helper functions for metadata loading and processing
-- **Metadata**: Static and generated metadata files containing component and framework information
-
-### Data Flow
-
-1. AI assistant sends MCP request to the server
-2. Server routes request to appropriate tool
-3. Tool processes request and loads relevant metadata
-4. Tool returns structured response to AI assistant
-5. AI assistant processes response and provides user-friendly output
+- `@solid-design-system/components` — Web Components library
+- `@solid-design-system/styles` — CSS utility classes
+- `@solid-design-system/tokens` — Design token definitions
+- `@solid-design-system/icons` — Icon library
+- `@solid-design-system/theming` — Theme management
 
 ## License
 
-MIT
-
----
+See [LICENSE.md](../../LICENSE.md)

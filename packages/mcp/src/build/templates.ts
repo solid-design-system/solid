@@ -20,8 +20,15 @@ const extractTemplateLiteralContent = (source: string, startIndex: number): stri
   while (i < source.length) {
     const c = source[i];
     if (depth === 0 && c === '`') return source.slice(startIndex, i);
-    if (c === '$' && source[i + 1] === '{') { depth++; i += 2; continue; }
-    if (depth > 0) { if (c === '{') depth++; else if (c === '}') depth--; }
+    if (c === '$' && source[i + 1] === '{') {
+      depth++;
+      i += 2;
+      continue;
+    }
+    if (depth > 0) {
+      if (c === '{') depth++;
+      else if (c === '}') depth--;
+    }
     i++;
   }
   return source.slice(startIndex);
@@ -32,12 +39,11 @@ const dedent = (str: string): string => {
   while (lines.length && !lines[0].trim()) lines.shift();
   while (lines.length && !lines[lines.length - 1].trim()) lines.pop();
   if (!lines.length) return '';
-  const indent = Math.min(...lines.filter(l => l.trim()).map(l => (l.match(/^(\s*)/)?.[1].length ?? 0)));
+  const indent = Math.min(...lines.filter(l => l.trim()).map(l => l.match(/^(\s*)/)?.[1].length ?? 0));
   return lines.map(l => l.slice(indent)).join('\n');
 };
 
-const exportNameToTitle = (name: string): string =>
-  name.replace(/([A-Z])/g, ' $1').trim();
+const exportNameToTitle = (name: string): string => name.replace(/([A-Z])/g, ' $1').trim();
 
 const extractDefaultTitle = (source: string): string | null => {
   const match = source.match(/title:\s*['"]Templates\/([^'"]+)['"]/);
@@ -70,8 +76,7 @@ const extractSection = (docs: string, heading: string): string => {
   return m ? m[1].trim() : '';
 };
 
-const promoteSubheadings = (block: string): string =>
-  block.replace(/^####\s+/gm, '### ');
+const promoteSubheadings = (block: string): string => block.replace(/^####\s+/gm, '### ');
 
 export const buildTemplates = async () => {
   const spinner = ora({ prefixText: 'Templates:', text: 'Generating static metadata...' }).start();
@@ -105,7 +110,10 @@ export const buildTemplates = async () => {
           '---'
         ].join('\n');
 
-        const content = [frontmatter, ...stories.map(s => `## Template: ${s.name}\n\n\`\`\`html\n${s.html}\n\`\`\``)].join('\n\n');
+        const content = [
+          frontmatter,
+          ...stories.map(s => `## Template: ${s.name}\n\n\`\`\`html\n${s.html}\n\`\`\``)
+        ].join('\n\n');
         await fs.writeFile(join(templatesPackagePath, `${name}.md`), content);
 
         for (const tag of components) {
@@ -166,7 +174,10 @@ export const buildTemplates = async () => {
 
         // CSS parts — names only, no descriptions
         const partNames = api.parts
-          ? api.parts.split('\n').map(line => line.replace(/^part\.([\w-]+):.*/, 'part.$1')).filter(Boolean)
+          ? api.parts
+              .split('\n')
+              .map(line => line.replace(/^part\.([\w-]+):.*/, 'part.$1'))
+              .filter(Boolean)
           : [];
 
         // Build info.md sections
@@ -180,7 +191,7 @@ export const buildTemplates = async () => {
 
         if (storySlugList.length) {
           apiSubSections.push(
-            `### Examples\n\nUse the component-api-examples tool to retrieve the HTML for any of these examples on how to use the component and its API:\n\n${storySlugList.map(s => `- ${tagName}/${s}`).join('\n')}`
+            `### Examples\n\nUse the components tool (with \`component\` + \`story\` args) to retrieve the HTML for any of these examples:\n\n${storySlugList.map(s => `- ${tagName}/${s}`).join('\n')}`
           );
         }
         if (api.props) apiSubSections.push(`### Key Properties\n\n${api.props}`);
@@ -205,7 +216,7 @@ export const buildTemplates = async () => {
         // Related Templates
         if (templates.length) {
           sections.push(
-            `### Related Templates\n\n${templates.map(t => `- ${t}`).join('\n')}\n\nUse the template-info tool to retrieve the full code for any of these templates.`
+            `### Related Templates\n\n${templates.map(t => `- ${t}`).join('\n')}\n\nUse the templates tool (with \`template\` arg) to retrieve the full code for any of these templates.`
           );
         }
 
@@ -216,7 +227,7 @@ export const buildTemplates = async () => {
             return desc ? `- ${c}: ${desc}` : `- ${c}`;
           });
           sections.push(
-            `### Related Components\n\n${lines.join('\n')}\n\nUse the component-info tool to retrieve the full code for any of these components.`
+            `### Related Components\n\n${lines.join('\n')}\n\nUse the components tool (with \`component\` arg) to retrieve the full spec for any of these components.`
           );
         }
 
@@ -274,7 +285,7 @@ export const buildTemplates = async () => {
 
         if (storySlugList.length) {
           apiSubSections.push(
-            `### Examples\n\nUse the style-api-examples tool to retrieve the HTML for any of these examples on how to use the style:\n\n${storySlugList.map(s => `- ${styleName}/${s}`).join('\n')}`
+            `### Examples\n\nUse the styles tool (with \`style\` + \`example\` args) to retrieve the HTML for any of these examples:\n\n${storySlugList.map(s => `- ${styleName}/${s}`).join('\n')}`
           );
         }
 
@@ -295,7 +306,7 @@ export const buildTemplates = async () => {
         // Related Templates
         if (relatedTemplates.length) {
           sections.push(
-            `### Related Templates\n\n${relatedTemplates.map(t => `- ${t}`).join('\n')}\n\nUse the template-info tool to retrieve the full code for any of these templates.`
+            `### Related Templates\n\n${relatedTemplates.map(t => `- ${t}`).join('\n')}\n\nUse the templates tool (with \`template\` arg) to retrieve the full code for any of these templates.`
           );
         }
 
