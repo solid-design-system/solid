@@ -35,7 +35,7 @@ export const radioGroupWithErrorText = {
   name: 'Radio Group with Error text',
   render: () => html`
     <sd-radio-group
-      class="radio-group-error"
+      id="radio-group-error"
       name="role"
       label="What is your role/function?"
       orientation="vertical"
