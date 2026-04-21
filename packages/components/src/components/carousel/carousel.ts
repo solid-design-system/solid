@@ -592,6 +592,9 @@ export default class SdCarousel extends SolidElement {
     const slides = this.getSlides();
     const slidesWithClones = this.getSlides({ excludeClones: false });
 
+    // Sets the next index without taking into account clones, if any.
+    // Inconsistencies may arise when scrolling from the last slide if slidesPerMove is not divisible by the slide count.
+    // This is most apparent with slidesPerPage set to one, but we won't provide a fix as it's not a recommended use case anyways.
     const newActiveSlide = (index + slides.length) % slides.length;
     this.activeSlide = newActiveSlide;
 
@@ -599,6 +602,8 @@ export default class SdCarousel extends SolidElement {
       return;
     }
 
+    // Get the index of the next slide. For looping carousel it adds `slidesPerPage`
+    // to normalize the starting index in order to ignore the first nth clones.
     const nextSlideIndex = clamp(index + (loop ? slidesPerPage : 0), 0, slidesWithClones.length + 1);
     const nextSlide = slidesWithClones[nextSlideIndex];
 
