@@ -2,5 +2,5 @@
 '@solid-design-system/docs': minor
 ---
 
-Created `sd-radio-group` template and test
+Created `sd-radio-group` templates with `help-text` and `invalid` state.
 
