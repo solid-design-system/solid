@@ -51,7 +51,7 @@ export const radioGroupWithErrorText = {
     <script type="module">
       await customElements.whenDefined('sd-radio-group');
 
-      const radioGroup = document.querySelector('.radio-group-error');
+      const radioGroup = document.querySelector('#radio-group-error');
       radioGroup.setCustomValidity('Select an option to proceed.');
       radioGroup.reportValidity();
     </script>
