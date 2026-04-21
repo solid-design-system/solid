@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 6.15.0
+
+### Minor Changes
+
+- Added new `sd-brandshape` tokens. _[`#2881`](https://github.com/solid-design-system/solid/pull/2881) [`ae94911`](https://github.com/solid-design-system/solid/commit/ae94911fbafa32cf6ffa6b50bd4ad6f769a6a30a) [@smfonseca](https://github.com/smfonseca)_
+
 ## 6.14.1
 
 ## 6.14.0
