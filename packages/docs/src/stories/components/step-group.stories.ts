@@ -90,7 +90,7 @@ export const Size = {
       </sd-step-group>
 
       <div class="h-[20em] pl-[56px]">
-        <sd-step-group size="xs" orientation="vertical" active-step="1">
+        <sd-step-group size="xs" orientation="vertical" active-step="1" label="Extra Small">
           <sd-step size="xs" orientation="vertical">
             <p slot="label">Step 1</p>
           </sd-step>
