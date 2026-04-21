@@ -1,4 +1,4 @@
-import type { Attribute, ClassMember, Package } from 'custom-elements-manifest/schema.d.ts';
+import type { Attribute, ClassMember, CssCustomProperty, Package } from 'custom-elements-manifest/schema.d.ts';
 import type { Structure, StyleClassMember, StyleModule, Tag } from './types.js';
 
 /**
@@ -36,6 +36,13 @@ const getTypeForTag = (tag: Tag) => {
  * @returns True if the tag is allowed to be included
  */
 const tagIsAllowedToBeIncluded = (tag: Tag): boolean => ['variant', 'boolean'].includes(tag.tag);
+
+/**
+ * Check if a tag contains css custom property metadata
+ * @param tag The tag to check
+ * @returns True if the tag defines a css custom property
+ */
+const tagIsCssProperty = (tag: Tag): boolean => ['cssproperty', 'cssprop'].includes(tag.tag);
 
 /**
  * Check if a tag is a boolean type
@@ -130,6 +137,30 @@ const getMembersForTag = (tag: Tag): StyleClassMember | null => {
 const getMembersForTags = (tags: Tag[]): ClassMember[] => tags.map(getMembersForTag).filter(Boolean) as ClassMember[];
 
 /**
+ * Convert a tag to a css custom property
+ * @param tag The tag to convert
+ * @returns CssCustomProperty or null if the tag is not a css property tag
+ */
+const getCssPropertiesForTag = (tag: Tag): CssCustomProperty | null => {
+  if (!tagIsCssProperty(tag)) {
+    return null;
+  }
+
+  return {
+    description: tag.description,
+    name: tag.name
+  };
+};
+
+/**
+ * Get the css custom properties for a list of tags
+ * @param tags The tags to get css custom properties for
+ * @returns List of css custom properties
+ */
+const getCssPropertiesForTags = (tags: Tag[]): CssCustomProperty[] =>
+  tags.map(getCssPropertiesForTag).filter(Boolean) as CssCustomProperty[];
+
+/**
  * Converts a list of tags to a schema module
  * @param tags The tags to convert
  * @returns module The schema module
@@ -138,6 +169,7 @@ const tagsToSchemaModule = (tags: Tag[]): StyleModule => {
   const [name, status, since] = tags;
   const attributes = getAttributesForTags(tags);
   const members = getMembersForTags(tags);
+  const cssProperties = getCssPropertiesForTags(tags);
 
   const tagNameWithoutPrefix = name.name.includes('-') ? name.name.split('-').slice(1).join('-') : name.name;
 
@@ -157,6 +189,7 @@ const tagsToSchemaModule = (tags: Tag[]): StyleModule => {
             name: ''
           }
         ],
+        cssProperties,
         tagName: name.name,
         tagNameWithoutPrefix
       }

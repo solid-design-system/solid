@@ -1,5 +1,33 @@
 # @solid-design-system/docs
 
+## 2.10.0
+
+### Minor Changes
+
+- Created `sd-radio-group` templates with `help-text` and `invalid` state. _[`#2911`](https://github.com/solid-design-system/solid/pull/2911) [`a4b037c`](https://github.com/solid-design-system/solid/commit/a4b037cafa6ba84103954e2f6d72570f3ca41539) [@balco0110](https://github.com/balco0110)_
+
+## 2.9.1
+
+### Patch Changes
+
+- Fixed the alignment of the `close` icon of `sd-tag`s inside the `sd-combobox`'s "Parts" screenshot test. _[`#2873`](https://github.com/solid-design-system/solid/pull/2873) [`70a25e6`](https://github.com/solid-design-system/solid/commit/70a25e61bfc445add091581f2ec40b1f894206e5) [@martascorreia](https://github.com/martascorreia)_
+
+## 2.9.0
+
+### Minor Changes
+
+- Added realistic template for ´sd-audio´ _[`#2897`](https://github.com/solid-design-system/solid/pull/2897) [`19f9f86`](https://github.com/solid-design-system/solid/commit/19f9f867667791969b9e17e72da6501a1c8a8c5c) [@balco0110](https://github.com/balco0110)_
+
+## 2.8.2
+
+### Patch Changes
+
+- Fixes and improvements for multi-theming: _[`#2751`](https://github.com/solid-design-system/solid/pull/2751) [`ec67aa4`](https://github.com/solid-design-system/solid/commit/ec67aa41e64a0eaa44063922272a900d93d33f73) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - Added themed logos to the following templates: `sd-header`, `sd-badge`, `sd-breadcrumb`, `sd-header-navigation`
+  - Fixed accessibility tests for `sd-headline` when used with `sd-mark`
+  - Fixed gradient styling in `sd-expandable` for multi-theming
+  - Fixed icon colors in `sd-map-marker`
+
 ## 2.8.1
 
 ### Patch Changes

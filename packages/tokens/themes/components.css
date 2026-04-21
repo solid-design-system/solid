@@ -1,5 +1,5 @@
-@utility color-background {
-  background-color: rgba(var(--sd-color-background, rgba(var(--sd-color-neutral-200))));
+@utility choice-control-font-weight {
+  font-weight: var(--sd-choice-control-font-weight, var(--sd-font-weight-normal));
 }
 
 @utility form-control--filled__floating-label-color-text {
@@ -18,16 +18,24 @@
   border-color: rgba(var(--sd-form-control-color-border, rgba(var(--sd-color-neutral-800))));
 }
 
-@utility form-control-color-icon-fill {
-  fill: rgba(var(--sd-form-control-color-icon-fill, rgba(var(--sd-color-primary))));
-}
-
 @utility form-control-color-text {
   color: rgba(var(--sd-form-control-color-text, rgba(var(--sd-color-black))));
 }
 
-@utility form-control__tooltip-color-icon {
-  background-color: rgba(var(--sd-form-control__tooltip-color-icon, rgba(var(--sd-color-primary))));
+@utility form-control__listbox-border-bottom-left-radius {
+ border-bottom-left-radius: var(--sd-form-control__listbox-border-bottom-left-radius, var(--sd-spacing-1));
+}
+
+@utility form-control__listbox-border-bottom-right-radius {
+ border-bottom-right-radius: var(--sd-form-control__listbox-border-bottom-right-radius, var(--sd-spacing-1));
+}
+
+@utility form-control__listbox-border-top-left-radius {
+ border-top-left-radius: var(--sd-form-control__listbox-border-top-left-radius, var(--sd-spacing-1));
+}
+
+@utility form-control__listbox-border-top-right-radius {
+ border-top-right-radius: var(--sd-form-control__listbox-border-top-right-radius, var(--sd-spacing-1));
 }
 
 @utility informational-gradient--primary-800-color-background {
@@ -44,6 +52,18 @@
 
 @utility interactive--default-color-text {
   color: rgba(var(--sd-interactive--default-color-text, rgba(var(--sd-color-primary))));
+}
+
+@utility marker-border-width {
+ border-width: var(--sd-marker-border-width, 0);
+}
+
+@utility marker-font-size {
+ font-size: var(--sd-marker-font-size, 0.875rem);
+}
+
+@utility marker-font-weight {
+  font-weight: var(--sd-marker-font-weight, var(--sd-font-weight-normal));
 }
 
 @utility navigable-border-radius {
@@ -78,6 +98,10 @@
  border-width: var(--sd-accordion-border-width, var(--sd-spacing-0\.25));
 }
 
+@utility sd-accordion-color-icon-fill {
+  fill: rgba(var(--sd-accordion-color-icon-fill, rgba(var(--sd-color-primary))));
+}
+
 @utility sd-accordion-color-text {
   color: rgba(var(--sd-accordion-color-text, rgba(var(--sd-color-primary))));
 }
@@ -86,24 +110,16 @@
  padding-block: var(--sd-accordion-padding-block, var(--sd-spacing-3));
 }
 
-@utility sd-accordion__chevron-color-text {
-  color: rgba(var(--sd-accordion__chevron-color-text, rgba(var(--sd-color-primary))));
-}
-
 @utility sd-accordion__indicator-color {
   background-color: rgba(var(--sd-accordion__indicator-color, rgba(var(--sd-color-accent))));
 }
 
-@utility sd-audio--inverted-color-border {
-  border-color: rgba(var(--sd-audio--inverted-color-border, rgba(var(--sd-color-white))));
+@utility sd-audio__slide-bar--inverted-color-background {
+  background-color: rgba(var(--sd-audio__slide-bar--inverted-color-background, rgba(var(--sd-color-primary-400))));
 }
 
-@utility sd-audio__slide-bar--inverted-color-border {
-  border-color: rgba(var(--sd-audio__slide-bar--inverted-color-border, rgba(var(--sd-color-primary-400))));
-}
-
-@utility sd-audio__timestamp-color-text {
-  color: rgba(var(--sd-audio__timestamp-color-text, rgba(var(--sd-color-black))));
+@utility sd-audio__track-bar--inverted-color-background {
+  background-color: rgba(var(--sd-audio__track-bar--inverted-color-background, rgba(var(--sd-color-white))));
 }
 
 @utility sd-badge--blue--inverted-color-background {
@@ -154,8 +170,28 @@
   fill: rgba(var(--sd-brandshape--neutral-100-color-background, rgba(var(--sd-color-neutral-100))));
 }
 
+@utility sd-brandshape--primary-80-color-background {
+  background-color: rgba(var(--sd-brandshape--primary-80-color-background, rgba(0, 53, 142, 0.8)));
+}
+
+@utility sd-brandshape--primary-color-background {
+  background-color: rgba(var(--sd-brandshape--primary-color-background, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-brandshape--primary-color-border {
+  border-color: rgba(var(--sd-brandshape--primary-color-border, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-brandshape--white-80-color-background {
+  background-color: rgba(var(--sd-brandshape--white-80-color-background, rgba(255, 255, 255, 0.8)));
+}
+
 @utility sd-brandshape--white-color-background {
   background-color: rgba(var(--sd-brandshape--white-color-background, rgba(var(--sd-color-white))));
+}
+
+@utility sd-brandshape-color-border-white-default {
+  border-color: rgba(var(--sd-brandshape-color-border-white, rgba(var(--sd-color-white))));
 }
 
 @utility sd-breadcrumb__separator--current-color {
@@ -218,6 +254,10 @@
   background-color: rgba(var(--sd-button--primary--hover-color-background, rgba(var(--sd-color-primary-500))));
 }
 
+@utility sd-button--primary--hover-color-text {
+  color: rgba(var(--sd-button--primary--hover-color-text, rgba(var(--sd-color-primary-100))));
+}
+
 @utility sd-button--primary--inverted--active-color-background {
   background-color: rgba(var(--sd-button--primary--inverted--active-color-background, rgba(var(--sd-color-primary-200))));
 }
@@ -246,6 +286,10 @@
   background-color: rgba(var(--sd-button--secondary--active-color-background, rgba(var(--sd-color-primary-200))));
 }
 
+@utility sd-button--secondary--active-color-text {
+  color: rgba(var(--sd-button--secondary--active-color-text, rgba(var(--sd-color-primary-800))));
+}
+
 @utility sd-button--secondary--default-color-text {
   color: rgba(var(--sd-button--secondary--default-color-text, rgba(var(--sd-color-primary))));
 }
@@ -262,6 +306,10 @@
   background-color: rgba(var(--sd-button--secondary--inverted--active-color-background, rgba(var(--sd-color-primary-800))));
 }
 
+@utility sd-button--secondary--inverted--active-color-text {
+  color: rgba(var(--sd-button--secondary--inverted--active-color-text, rgba(var(--sd-color-primary-200))));
+}
+
 @utility sd-button--secondary--inverted--hover-color-background {
   background-color: rgba(var(--sd-button--secondary--inverted--hover-color-background, rgba(var(--sd-color-primary-500))));
 }
@@ -274,16 +322,44 @@
   border-color: rgba(var(--sd-button--secondary--inverted-color-border, rgba(var(--sd-color-white))));
 }
 
-@utility sd-button--size-lg-border-radius {
- border-radius: var(--sd-button--size-lg-border-radius, var(--sd-spacing-1));
+@utility sd-button--secondary--inverted-color-text {
+  color: rgba(var(--sd-button--secondary--inverted-color-text, rgba(var(--sd-color-white))));
+}
+
+@utility sd-button--secondary--size-lg-padding-block {
+ padding-block: var(--sd-button--secondary--size-lg-padding-block, 0.6875rem);
+}
+
+@utility sd-button--secondary--size-md-padding-block {
+ padding-block: var(--sd-button--secondary--size-md-padding-block, 0.4375rem);
+}
+
+@utility sd-button--secondary--size-sm-padding-block {
+ padding-block: var(--sd-button--secondary--size-sm-padding-block, 0.28125rem);
+}
+
+@utility sd-button--secondary-padding-inline {
+ padding-inline: var(--sd-button--secondary-padding-inline, 0.9375rem);
 }
 
 @utility sd-button--size-lg-font-size {
  font-size: var(--sd-button--size-lg-font-size, var(--sd-spacing-4));
 }
 
+@utility sd-button--size-lg-icon-height {
+ height: var(--sd-button--size-lg-icon-height, var(--sd-spacing-6));
+}
+
+@utility sd-button--size-lg-min-height {
+ min-height: var(--sd-button--size-lg-min-height, var(--sd-spacing-12));
+}
+
 @utility sd-button--size-lg-padding-block {
  padding-block: var(--sd-button--size-lg-padding-block, var(--sd-spacing-3));
+}
+
+@utility sd-button--size-md--icon-only-padding-inline {
+ padding-inline: var(--sd-button--size-md--icon-only-padding-inline, var(--sd-spacing-2\.5));
 }
 
 @utility sd-button--size-md-border-radius {
@@ -292,6 +368,10 @@
 
 @utility sd-button--size-md-font-size {
  font-size: var(--sd-button--size-md-font-size, var(--sd-spacing-4));
+}
+
+@utility sd-button--size-md-min-height {
+ min-height: var(--sd-button--size-md-min-height, var(--sd-spacing-10));
 }
 
 @utility sd-button--size-md-padding-block {
@@ -307,11 +387,15 @@
 }
 
 @utility sd-button--size-sm-padding-block {
- padding-block: var(--sd-button--size-sm-padding-block, var(--sd-spacing-2));
+ padding-block: var(--sd-button--size-sm-padding-block, 0.34375rem);
 }
 
 @utility sd-button--tertiary--active-color-background {
   background-color: rgba(var(--sd-button--tertiary--active-color-background, rgba(var(--sd-color-primary-200))));
+}
+
+@utility sd-button--tertiary--active-color-text {
+  color: rgba(var(--sd-button--tertiary--active-color-text, rgba(var(--sd-color-primary-800))));
 }
 
 @utility sd-button--tertiary--default-color-text {
@@ -330,6 +414,10 @@
   background-color: rgba(var(--sd-button--tertiary--inverted--active-color-background, rgba(var(--sd-color-primary-800))));
 }
 
+@utility sd-button--tertiary--inverted--active-color-text {
+  color: rgba(var(--sd-button--tertiary--inverted--active-color-text, rgba(var(--sd-color-primary-200))));
+}
+
 @utility sd-button--tertiary--inverted--hover-color-background {
   background-color: rgba(var(--sd-button--tertiary--inverted--hover-color-background, rgba(var(--sd-color-primary-500))));
 }
@@ -338,8 +426,24 @@
   color: rgba(var(--sd-button--tertiary--inverted--hover-color-text, rgba(var(--sd-color-primary-100))));
 }
 
+@utility sd-button--tertiary--inverted-color-text {
+  color: rgba(var(--sd-button--tertiary--inverted-color-text, rgba(var(--sd-color-white))));
+}
+
+@utility sd-button-border-radius {
+ border-radius: var(--sd-button-border-radius, var(--sd-spacing-1));
+}
+
+@utility sd-button-border-width {
+ border-width: var(--sd-button-border-width, var(--sd-spacing-0\.25));
+}
+
 @utility sd-button-font-weight {
   font-weight: var(--sd-button-font-weight, var(--sd-font-weight-normal));
+}
+
+@utility sd-button-padding-inline {
+ padding-inline: var(--sd-button-padding-inline, var(--sd-spacing-4));
 }
 
 @utility sd-carousel--active--inverted-color-border {
@@ -414,28 +518,12 @@
  border-radius: var(--sd-chip-border-radius, var(--sd-spacing-1));
 }
 
-@utility sd-chip-border-width {
- border-width: var(--sd-chip-border-width, 0);
-}
-
-@utility sd-chip-font-size {
- font-size: var(--sd-chip-font-size, 0.875rem);
-}
-
-@utility sd-chip-font-weight {
-  font-weight: var(--sd-chip-font-weight, var(--sd-font-weight-normal));
-}
-
-@utility sd-combobox--default-color-icon {
-  background-color: rgba(var(--sd-combobox--default-color-icon, rgba(var(--sd-color-primary))));
-}
-
-@utility sd-combobox--default-color-text {
-  color: rgba(var(--sd-combobox--default-color-text, rgba(var(--sd-color-primary))));
-}
-
 @utility sd-combobox__tag-border-width {
  border-width: var(--sd-combobox__tag-border-width, var(--sd-spacing-0\.25));
+}
+
+@utility sd-datepicker__date-item--current-color-text {
+  color: rgba(var(--sd-datepicker__date-item--current-color-text, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-datepicker__date-item--current-font-weight {
@@ -446,28 +534,36 @@
   color: rgba(var(--sd-datepicker__date-item--default-color-text, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-datepicker__date-item--default-font-weight {
-  font-weight: var(--sd-datepicker__date-item--default-font-weight, var(--sd-font-weight-normal));
+@utility sd-datepicker__date-item--hover--default-color-background {
+  background-color: rgba(var(--sd-datepicker__date-item--hover--default-color-background, rgba(var(--sd-color-primary-100))));
 }
 
-@utility sd-datepicker__date-item--hovered--current-color-text {
-  color: rgba(var(--sd-datepicker__date-item--hovered--current-color-text, rgba(var(--sd-color-primary-500))));
+@utility sd-datepicker__date-item--hover--default-color-border {
+  border-color: rgba(var(--sd-datepicker__date-item--hover--default-color-border, rgba(var(--sd-color-primary-500))));
 }
 
-@utility sd-datepicker__date-item--hovered--default-color-background {
-  background-color: rgba(var(--sd-datepicker__date-item--hovered--default-color-background, rgba(var(--sd-color-primary-100))));
+@utility sd-datepicker__date-item--hover--default-color-text {
+  color: rgba(var(--sd-datepicker__date-item--hover--default-color-text, rgba(var(--sd-color-primary-500))));
 }
 
-@utility sd-datepicker__date-item--hovered--default-color-text {
-  color: rgba(var(--sd-datepicker__date-item--hovered--default-color-text, rgba(var(--sd-color-primary-500))));
+@utility sd-datepicker__date-item--hover--prev-next-color-background {
+  background-color: rgba(var(--sd-datepicker__date-item--hover--prev-next-color-background, rgba(var(--sd-color-primary-100))));
 }
 
-@utility sd-datepicker__date-item--hovered--prev-next-color-background {
-  background-color: rgba(var(--sd-datepicker__date-item--hovered--prev-next-color-background, rgba(var(--sd-color-primary-100))));
+@utility sd-datepicker__date-item--hover--prev-next-color-text {
+  color: rgba(var(--sd-datepicker__date-item--hover--prev-next-color-text, rgba(var(--sd-color-neutral-700))));
 }
 
-@utility sd-datepicker__date-item--hovered--prev-next-color-text {
-  color: rgba(var(--sd-datepicker__date-item--hovered--prev-next-color-text, rgba(var(--sd-color-neutral-700))));
+@utility sd-datepicker__date-item--range-color-background {
+  background-color: rgba(var(--sd-datepicker__date-item--range-color-background, rgba(var(--sd-color-primary-100))));
+}
+
+@utility sd-datepicker__date-item--selected--hover-color-background {
+  background-color: rgba(var(--sd-datepicker__date-item--selected--hover-color-background, rgba(var(--sd-color-primary-500))));
+}
+
+@utility sd-datepicker__date-item--selected-color-background {
+  background-color: rgba(var(--sd-datepicker__date-item--selected-color-background, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-datepicker__date-item--selected-color-text {
@@ -518,18 +614,6 @@
  border-radius: var(--sd-flag-border-radius, 0);
 }
 
-@utility sd-flag-border-width {
- border-width: var(--sd-flag-border-width, 0);
-}
-
-@utility sd-flag-font-size {
- font-size: var(--sd-flag-font-size, 0.875rem);
-}
-
-@utility sd-flag-font-weight {
-  font-weight: var(--sd-flag-font-weight, var(--sd-font-weight-normal));
-}
-
 @utility sd-footnotes--target--inverted-color-background {
   background-color: rgba(var(--sd-footnotes--target--inverted-color-background, rgba(var(--sd-color-primary-800))));
 }
@@ -542,6 +626,10 @@
  padding-bottom: var(--sd-header-padding-bottom, 0);
 }
 
+@utility sd-header__shadow-height {
+ height: var(--sd-header__shadow-height, var(--sd-spacing-1));
+}
+
 @utility sd-header__underline-color-background {
   background-color: rgba(var(--sd-header__underline-color-background, rgba(255, 255, 255, 0)));
 }
@@ -550,28 +638,12 @@
  height: var(--sd-header__underline-height, var(--sd-spacing-2));
 }
 
-@utility sd-headline-4xl-and-mobile-4xl-text {
-  color: rgba(var(--sd-headline-4xl-and-mobile-4xl-text, rgba(var(--sd-color-primary))));
-}
-
-@utility sd-link-color--active-text {
-  color: rgba(var(--sd-link-color--active-text, rgba(var(--sd-color-primary-800))));
-}
-
-@utility sd-link-color--default-text {
-  color: rgba(var(--sd-link-color--default-text, rgba(var(--sd-color-primary))));
-}
-
-@utility sd-link-color--disabled-text {
-  color: rgba(var(--sd-link-color--disabled-text, rgba(var(--sd-color-primary-800))));
+@utility sd-headline--3xl-onwards-color-text {
+  color: rgba(var(--sd-headline--3xl-onwards-color-text, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-link-color--hover-icon {
   background-color: rgba(var(--sd-link-color--hover-icon, rgba(var(--sd-color-primary-500))));
-}
-
-@utility sd-link-color--hover-text {
-  color: rgba(var(--sd-link-color--hover-text, rgba(var(--sd-color-primary-500))));
 }
 
 @utility sd-link-color--none-icon {
@@ -582,40 +654,48 @@
   background-color: rgba(var(--sd-link-color--pressed-icon, rgba(var(--sd-color-primary-800))));
 }
 
-@utility sd-map-marker-cluster--hovered-color-icon-fill {
-  fill: rgba(var(--sd-map-marker-cluster--hovered-color-icon-fill, rgba(var(--sd-color-primary-500))));
+@utility sd-map-marker--cluster--default-color-background {
+  background-color: rgba(var(--sd-map-marker--cluster--default-color-background, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-map-marker-cluster-color-icon-fill {
-  fill: rgba(var(--sd-map-marker-cluster-color-icon-fill, rgba(var(--sd-color-primary))));
+@utility sd-map-marker--cluster--hover-color-background {
+  background-color: rgba(var(--sd-map-marker--cluster--hover-color-background, rgba(var(--sd-color-primary-500))));
 }
 
-@utility sd-map-marker-font-size {
- font-size: var(--sd-map-marker-font-size, var(--sd-spacing-3));
+@utility sd-map-marker--cluster-color-text {
+  color: rgba(var(--sd-map-marker--cluster-color-text, rgba(var(--sd-color-white))));
 }
 
-@utility sd-map-marker-main-color-icon-fill {
-  fill: rgba(var(--sd-map-marker-main-color-icon-fill, rgba(var(--sd-color-accent-500))));
+@utility sd-map-marker--main-color-background {
+  background-color: rgba(var(--sd-map-marker--main-color-background, rgba(var(--sd-color-accent-500))));
 }
 
-@utility sd-menu--disabled-color-icon {
-  background-color: rgba(var(--sd-menu--disabled-color-icon, rgba(var(--sd-color-neutral-500))));
+@utility sd-map-marker--pin--default-color-background {
+  background-color: rgba(var(--sd-map-marker--pin--default-color-background, rgba(var(--sd-color-white))));
 }
 
-@utility sd-menu--disabled-color-text {
-  color: rgba(var(--sd-menu--disabled-color-text, rgba(var(--sd-color-neutral-500))));
+@utility sd-map-marker--pin--hover-color-background {
+  background-color: rgba(var(--sd-map-marker--pin--hover-color-background, rgba(var(--sd-color-primary-100))));
 }
 
-@utility sd-menu-color-icon {
-  background-color: rgba(var(--sd-menu-color-icon, rgba(var(--sd-color-primary))));
+@utility sd-map-marker--pin-color-text {
+  color: rgba(var(--sd-map-marker--pin-color-text, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-menu-color-text {
-  color: rgba(var(--sd-menu-color-text, rgba(var(--sd-color-primary))));
+@utility sd-menu-item--disabled-color-icon-fill {
+  fill: rgba(var(--sd-menu-item--disabled-color-icon-fill, rgba(var(--sd-color-neutral-500))));
 }
 
-@utility sd-navigation-item--current-color-text {
-  color: rgba(var(--sd-navigation-item--current-color-text, rgba(var(--sd-color-primary))));
+@utility sd-menu-item--disabled-color-text {
+  color: rgba(var(--sd-menu-item--disabled-color-text, rgba(var(--sd-color-neutral-500))));
+}
+
+@utility sd-menu-item-color-icon-fill {
+  fill: rgba(var(--sd-menu-item-color-icon-fill, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-menu-item-color-text {
+  color: rgba(var(--sd-menu-item-color-text, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-navigation-item-color-text {
@@ -646,28 +726,20 @@
   fill: rgba(var(--sd-notification-color-icon-fill, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-option--disabled-color-border {
-  border-color: rgba(var(--sd-option--disabled-color-border, rgba(var(--sd-color-neutral-500))));
+@utility sd-notification__duration-indicator-color-background {
+  background-color: rgba(var(--sd-notification__duration-indicator-color-background, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-pagination--default-border {
-  border-color: rgba(var(--sd-pagination--default-border, rgba(var(--sd-color-success))));
+  border-color: rgba(var(--sd-pagination--default-border, rgba(var(--sd-color-accent))));
 }
 
 @utility sd-pagination--inverted-border {
-  border-color: rgba(var(--sd-pagination--inverted-border, rgba(var(--sd-color-success))));
+  border-color: rgba(var(--sd-pagination--inverted-border, rgba(var(--sd-color-accent))));
 }
 
 @utility sd-quickfact--expandable-color-text {
   color: rgba(var(--sd-quickfact--expandable-color-text, rgba(var(--sd-color-primary))));
-}
-
-@utility sd-quickfact__expandable-color-description-default-text {
-  color: rgba(var(--sd-quickfact__expandable-color-description-default-text, rgba(var(--sd-color-black))));
-}
-
-@utility sd-quickfact__expandable-color-title-default-text {
-  color: rgba(var(--sd-quickfact__expandable-color-title-default-text, rgba(var(--sd-color-black))));
 }
 
 @utility sd-radio--checked--default-color-background {
@@ -702,10 +774,6 @@
   background-color: rgba(var(--sd-radio--default--invalid-color-background, rgba(var(--sd-color-white))));
 }
 
-@utility sd-radio--error-color-text {
-  color: rgba(var(--sd-radio--error-color-text, rgba(var(--sd-color-error))));
-}
-
 @utility sd-radio-border-width {
  border-width: var(--sd-radio-border-width, var(--sd-spacing-0\.25));
 }
@@ -714,20 +782,12 @@
   background-color: rgba(var(--sd-radio-button--hover-color-background, rgba(255, 255, 255, 0)));
 }
 
-@utility sd-radio-button--hover-color-icon-fill {
-  fill: rgba(var(--sd-radio-button--hover-color-icon-fill, rgba(var(--sd-color-primary-500))));
-}
-
 @utility sd-radio-button--hover-color-text {
   color: rgba(var(--sd-radio-button--hover-color-text, rgba(var(--sd-color-primary-500))));
 }
 
 @utility sd-radio-button-border-radius {
  border-radius: var(--sd-radio-button-border-radius, 624.9375rem);
-}
-
-@utility sd-radio-button-color-icon-fil {
-  background-color: rgba(var(--sd-radio-button-color-icon-fil, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-radio-button-color-text {
@@ -762,10 +822,6 @@
   color: rgba(var(--sd-step-color-text, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-step-hover-color-text {
-  color: rgba(var(--sd-step-hover-color-text, rgba(var(--sd-color-primary-500))));
-}
-
 @utility sd-step__circle-border-width {
  border-width: var(--sd-step__circle-border-width, var(--sd-spacing-0\.25));
 }
@@ -790,12 +846,20 @@
   color: rgba(var(--sd-switch-color-text, rgba(var(--sd-color-black))));
 }
 
+@utility sd-tab--active-color-text {
+  color: rgba(var(--sd-tab--active-color-text, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-tab--hover-color-background {
+  background-color: rgba(var(--sd-tab--hover-color-background, rgba(var(--sd-color-neutral-200))));
+}
+
 @utility sd-tab-color-border {
   border-color: rgba(var(--sd-tab-color-border, rgba(var(--sd-color-neutral-400))));
 }
 
-@utility sd-tab-font-weight {
-  font-weight: var(--sd-tab-font-weight, var(--sd-font-weight-normal));
+@utility sd-tab-color-text {
+  color: rgba(var(--sd-tab-color-text, rgba(var(--sd-color-primary))));
 }
 
 @utility sd-tag--default--hover-color-background {
@@ -814,8 +878,8 @@
   color: rgba(var(--sd-tag--default-color-text, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-tag--disabled-color-border {
-  border-color: rgba(var(--sd-tag--disabled-color-border, rgba(var(--sd-color-neutral-500))));
+@utility sd-tag--disabled-color-text {
+  color: rgba(var(--sd-tag--disabled-color-text, rgba(var(--sd-color-neutral-500))));
 }
 
 @utility sd-tag--selected--default-color-background {
@@ -891,27 +955,23 @@
 }
 
 @utility sd-teaser-media--primary-100-color-background {
-  background-color: rgba(var(--sd-teaser-media--primary-100-color-background, rgba(var(--sd-color-primary-100))));
+  background-color: rgba(var(--sd-teaser-media--primary-100-color-background, rgba(236, 240, 249, 0.8)));
 }
 
-@utility sd-tooltip-border-width {
- border-width: var(--sd-tooltip-border-width, var(--sd-spacing-0\.25));
+@utility sd-teaser-media--white--hover-color-background {
+  background-color: rgba(var(--sd-teaser-media--white--hover-color-background, rgba(255, 255, 255, 0.9)));
+}
+
+@utility sd-teaser-media--white-color-background {
+  background-color: rgba(var(--sd-teaser-media--white-color-background, rgba(255, 255, 255, 0.8)));
 }
 
 @utility sd-tooltip-color-background {
   background-color: rgba(var(--sd-tooltip-color-background, rgba(var(--sd-color-primary))));
 }
 
-@utility sd-tooltip-color-border {
-  border-color: rgba(var(--sd-tooltip-color-border, rgba(255, 255, 255, 0)));
-}
-
 @utility sd-tooltip-color-text {
   color: rgba(var(--sd-tooltip-color-text, rgba(var(--sd-color-white))));
-}
-
-@utility sd-video--description-color-text {
-  color: rgba(var(--sd-video--description-color-text, rgba(var(--sd-color-neutral-700))));
 }
 
 @utility sd-video--play-button-color-background {

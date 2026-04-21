@@ -15,6 +15,8 @@ import SolidElement from '../../internal/solid-element';
  * @slot - The default slot where `<sd-accordion>` elements are placed.
  *
  * @csspart base - The component's base wrapper.
+ *
+ * @cssproperty --sd-accordion-border-width - The accordion border width.
  */
 @customElement('sd-accordion-group')
 export default class SdAccordionGroup extends SolidElement {
