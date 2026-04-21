@@ -5,6 +5,7 @@ test('Filter Tag Group', async ({ page }) => {
   await expect(page.locator('body')).toMatchAriaSnapshot(`
       - region "Top right notifications"
       - region "Bottom center notifications"
+      - radiogroup "Filter results":
       - button "All" [pressed]
       - button "Extended Reality"
       - button "Internet of things"
@@ -18,6 +19,7 @@ test('Filter Tag Group with Morningstar Rating', async ({ page }) => {
   await expect(page.locator('body')).toMatchAriaSnapshot(`
       - region "Top right notifications"
       - region "Bottom center notifications"
+      - radiogroup "Filter by morningstar rating":
       - button "5 stars" [pressed]
       - button "4 stars"
       - button "3 stars"
@@ -33,6 +35,7 @@ test('Filter Tag Group with Risk', async ({ page }) => {
   await expect(page.locator('body')).toMatchAriaSnapshot(`
       - region "Top right notifications"
       - region "Bottom center notifications"
+      - radiogroup "Filter by risk level":
       - button "Very High Risk" [pressed]
       - button "High Risk"
       - button "Increased Risk"
