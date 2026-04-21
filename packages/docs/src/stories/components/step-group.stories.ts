@@ -55,6 +55,7 @@ export const Default = {
  *
  * - `lg`(default)
  * - `sm`
+ * - `xs` (only available with vertical orientation)
  */
 export const Size = {
   name: 'Size',
@@ -87,6 +88,22 @@ export const Size = {
           <p slot="label">Step 3</p>
         </sd-step>
       </sd-step-group>
+
+      <div class="h-[20em] pl-[56px]">
+        <sd-step-group size="xs" orientation="vertical" active-step="1">
+          <sd-step size="xs" orientation="vertical">
+            <p slot="label">Step 1</p>
+          </sd-step>
+
+          <sd-step size="xs" orientation="vertical" current>
+            <p slot="label">Step 2</p>
+          </sd-step>
+
+          <sd-step size="xs" orientation="vertical" waiting>
+            <p slot="label">Step 3</p>
+          </sd-step>
+        </sd-step-group>
+      </div>
     </div>
   `
 };
