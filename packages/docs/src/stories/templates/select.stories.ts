@@ -43,3 +43,32 @@ export const Default = {
       </sd-select>
     </div>`
 };
+
+export const SelectWithOptionAndCheckbox = {
+  name: 'Select with Option and Checkbox',
+  render: () => html`
+    <div class="w-[400px] h-[500px]">
+      <sd-select
+        id="select-with-checkbox"
+        size="lg"
+        placement="bottom"
+        multiple
+        placeholder="Fund selection"
+        value="option-1 option-3"
+      >
+        <div slot="label" class="font-bold">Choose Fund Category</div>
+
+        <sd-option value="option-1">Union Investment funds</sd-option>
+        <sd-option value="option-2">Institutional retail funds</sd-option>
+        <sd-option value="option-3">Bank-specific funds </sd-option>
+        <sd-option value="option-4">Corporate client fund</sd-option>
+      </sd-select>
+    </div>
+    <script type="module">
+      const selectElement = document.querySelector('#select-with-checkbox');
+      selectElement.localize.setCustomLocalization({
+        numOptionsSelected: num => (num === 0 ? '' : 'Funds selected (' + num + ')')
+      });
+    </script>
+  `
+};
