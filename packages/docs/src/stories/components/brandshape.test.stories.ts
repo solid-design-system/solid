@@ -20,7 +20,20 @@ export default {
   title: 'Components/sd-brandshape/Screenshots: sd-brandshape',
   component: 'sd-brandshape',
   tags: ['!autodocs'],
-  parameters: { ...parameters, controls: { disable: true } },
+  parameters: {
+    ...parameters,
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: false
+          }
+        ]
+      }
+    },
+    controls: { disable: true }
+  },
   args: overrideArgs([
     {
       type: 'slot',
@@ -41,7 +54,17 @@ export default {
       ...argTypes['shapes-attr'],
       control: 'text'
     }
-  }
+  },
+  decorators: [
+    (story: () => typeof html) => html`
+      <style>
+        .sb-show-main:not(.sd-theme-ui-light):not(.sd-theme-ui-dark) .slot {
+          display: none;
+        }
+      </style>
+      ${story()}
+    `
+  ]
 };
 
 const increaseColumnWidth = (): ConstantDefinition => {

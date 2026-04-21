@@ -1,5 +1,13 @@
 # @solid-design-system/components
 
+## 6.15.0
+
+### Minor Changes
+
+- Restrict `sd-brandshape` to `ui-light` and `ui-dark` themes. When used in other themes, it will not be displayed. _[`#2881`](https://github.com/solid-design-system/solid/pull/2881) [`ae94911`](https://github.com/solid-design-system/solid/commit/ae94911fbafa32cf6ffa6b50bd4ad6f769a6a30a) [@smfonseca](https://github.com/smfonseca)_
+
+  Use new variables to also restrict `transparent variants`.
+
 ## 6.14.1
 
 ### Patch Changes
