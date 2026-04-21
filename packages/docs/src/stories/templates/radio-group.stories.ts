@@ -54,6 +54,11 @@ export const radioGroupWithErrorText = {
       const radioGroup = document.querySelector('#radio-group-error');
       radioGroup.setCustomValidity('Select an option to proceed.');
       radioGroup.reportValidity();
+
+      radioGroup.addEventListener('sd-change', () => {
+        radioGroup.setCustomValidity('');
+        radioGroup.reportValidity();
+      });
     </script>
   `
 };
