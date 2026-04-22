@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.16.1
+
+### Patch Changes
+
+- Added accessible names for `start`/`stop` autoplay button in `sd-carousel` _[`#2869`](https://github.com/solid-design-system/solid/pull/2869) [`82059a8`](https://github.com/solid-design-system/solid/commit/82059a867d4bb962d03b09f420d4807ee6991ebe) [@balco0110](https://github.com/balco0110)_
+
 ## 6.16.0
 
 ## 6.15.1
