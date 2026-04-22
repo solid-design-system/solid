@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 6.15.1
+
+### Patch Changes
+
+- Fixed `sd-carousel` live region behavior for screen readers and focus not preventing auto scroll _[`#2865`](https://github.com/solid-design-system/solid/pull/2865) [`ec25018`](https://github.com/solid-design-system/solid/commit/ec25018d89e0ef47fa6a3382c3aa0e6f80c36b72) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+* Uncompressed: 611 KB (+1 KB / +0%)
+* Gzipped: 137 KB (unchanged)
+
 ## 6.15.0
 
 ### Minor Changes
