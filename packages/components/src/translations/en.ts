@@ -67,7 +67,7 @@ const translation: Translation = {
   showLess: 'Show less',
   showMore: 'Show more',
   showPassword: 'Show password',
-  slideNum: num => `Slide ${num}`,
+  slideNum: (slide, count) => `Slide ${slide} of ${count}`,
   startDateSelected: 'Start date selected',
   tagsSelected: 'Options selected',
   toggleColorFormat: 'Toggle color format',
