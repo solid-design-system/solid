@@ -1,0 +1,2257 @@
+[
+  {
+    "technicalId": "website",
+    "displayNameDe": "Webseite",
+    "tags": ["Internetseite", "Homepage", "Internet"]
+  },
+  {
+    "technicalId": "websites",
+    "displayNameDe": "Webseiten",
+    "tags": ["zwei", "URL kopieren", "doppelt", "kopieren"]
+  },
+  {
+    "technicalId": "thumbs-down",
+    "displayNameDe": "Daumen runter",
+    "tags": ["unzufrieden", "mangelhaft", "nicht ausreichend"]
+  },
+  {
+    "technicalId": "thumbs-up",
+    "displayNameDe": "Daumen hoch",
+    "tags": ["akzeptieren", "geprüft", "positiv"]
+  },
+  {
+    "technicalId": "water-drop",
+    "displayNameDe": "Wassertropfen",
+    "tags": ["Nachhaltigkeit", "Regen", "Wasser"]
+  },
+  {
+    "technicalId": "scale-question-answer",
+    "displayNameDe": "Waage Frage/Antwort",
+    "tags": ["Kurs", "Währung"]
+  },
+  {
+    "technicalId": "hot-water-bottle",
+    "displayNameDe": "Wärmflasche",
+    "tags": ["warm", "Krankheit", "Flasche"]
+  },
+  {
+    "technicalId": "vodcast",
+    "displayNameDe": "Vodcast",
+    "tags": ["Datei", "Video", "Filmbeitrag"]
+  },
+  {
+    "technicalId": "bird",
+    "displayNameDe": "Vogel",
+    "tags": ["fliegen", "Höhenflug", "Kurse steigen"]
+  },
+  {
+    "technicalId": "video",
+    "displayNameDe": "Video",
+    "tags": ["Kamera", "Videokamera", "Dreh"]
+  },
+  {
+    "technicalId": "clock-round",
+    "displayNameDe": "Uhr rund",
+    "tags": ["Termin", "Kreis", "Uhrzeit"]
+  },
+  {
+    "technicalId": "circuit-euro",
+    "displayNameDe": "Kreislauf Euro",
+    "tags": ["Geldfluss", "Finanzen", "Euro", "Kreislauf"]
+  },
+  {
+    "technicalId": "lesson",
+    "displayNameDe": "Unterricht",
+    "tags": ["Mitarbeiter", "Präsenzveranstaltung", "Vorträge", "Berater", "Anleger"]
+  },
+  {
+    "technicalId": "circuit-24",
+    "displayNameDe": "Kreislauf 24",
+    "tags": ["Kreis", "Vierundzwanzig", "24 hours", "durchgehend geöffnet"]
+  },
+  {
+    "technicalId": "circle-chart-percent",
+    "displayNameDe": "Kreisdiagramm Prozent",
+    "tags": ["Prozent", "Anteil am Immobilienvermögen in Prozent", "Diagramm", "Kreis"]
+  },
+  {
+    "technicalId": "circle-chart",
+    "displayNameDe": "Kreisdiagramm",
+    "tags": ["Kreis", "Diagramm", "Verteilung", "Mischung Anlageklassen"]
+  },
+  {
+    "technicalId": "clock-angular",
+    "displayNameDe": "Uhr eckig",
+    "tags": ["Zeit", "Uhrzeit", "Termin"]
+  },
+  {
+    "technicalId": "circle-plus",
+    "displayNameDe": "Kreis Plus",
+    "tags": ["addieren", "berechnen", "Kreuz", "Rechenzeichen"]
+  },
+  {
+    "technicalId": "ticket",
+    "displayNameDe": "Ticket",
+    "tags": ["Fahrticket", "Fahrtkostenzuschuss", "Jobticket", "persönlich"]
+  },
+  {
+    "technicalId": "circle-hook",
+    "displayNameDe": "Kreis Haken",
+    "tags": ["erledigt", "Auftragsbestätigung", "Haken"]
+  },
+  {
+    "technicalId": "tennis",
+    "displayNameDe": "Tennis\n",
+    "tags": ["Sport", "Freizeit", "Ball"]
+  },
+  {
+    "technicalId": "thermometer",
+    "displayNameDe": "Thermometer\n",
+    "tags": ["Klima", "Temperatur", "kalt", "heiß"]
+  },
+  {
+    "technicalId": "circle-minus",
+    "displayNameDe": "Kreis Minus",
+    "tags": ["Rechenzeichen", "Strich", "Linie", "substrahieren"]
+  },
+  {
+    "technicalId": "ethereum",
+    "displayNameDe": "Ethereum",
+    "tags": ["Plattform", "Währung", "Kryptowährung", "Krypto", "Blockchain"]
+  },
+  {
+    "technicalId": "water-dispenser",
+    "displayNameDe": "Wasserspender",
+    "tags": ["Kohlensäure", "Trinkwasser", "Teeküche", "CO2"]
+  },
+  {
+    "technicalId": "crane",
+    "displayNameDe": "Kran",
+    "tags": ["bauen", "errichten", "Umbau"]
+  },
+  {
+    "technicalId": "plate-cutlery",
+    "displayNameDe": "Teller Besteck\n",
+    "tags": ["Mittagessen", "Abendessen", "Teller", "Besteck"]
+  },
+  {
+    "technicalId": "compass",
+    "displayNameDe": "Kompass",
+    "tags": ["Zukunft", "navigieren", "Richtung"]
+  },
+  {
+    "technicalId": "phone-receiver",
+    "displayNameDe": "Telefonhörer",
+    "tags": ["Anruf", "Hörer", "Rückruf"]
+  },
+  {
+    "technicalId": "clipboard",
+    "displayNameDe": "Klemmbrett",
+    "tags": ["Schreibunterlagen", "Fondsmaterialien", "Notizen"]
+  },
+  {
+    "technicalId": "phone",
+    "displayNameDe": "Telefon\n",
+    "tags": ["Rückruf", "Anruf", "Telefonapparat"]
+  },
+  {
+    "technicalId": "tape",
+    "displayNameDe": "Klebeband",
+    "tags": ["verbinden", "Band", "Reparatur"]
+  },
+  {
+    "technicalId": "taxi",
+    "displayNameDe": "Taxi\n",
+    "tags": ["Auto", "Uber"]
+  },
+  {
+    "technicalId": "locker",
+    "displayNameDe": "Spind",
+    "tags": ["Schließfach", "Spindsystem"]
+  },
+  {
+    "technicalId": "coffee-machine",
+    "displayNameDe": "Kaffeemaschine",
+    "tags": ["Kaffeeautomat", "Teeküche"]
+  },
+  {
+    "technicalId": "church-cross",
+    "displayNameDe": "Kirche Kreuz",
+    "tags": ["Religion", "christlich", "Kapelle"]
+  },
+  {
+    "technicalId": "children",
+    "displayNameDe": "Kinder",
+    "tags": ["Freunde", "Geschwister", "Mädchen", "Junge"]
+  },
+  {
+    "technicalId": "stroller",
+    "displayNameDe": "Kinderwagen",
+    "tags": ["Geburt", "Vater", "Baby", "Mutter", "Elternzeit"]
+  },
+  {
+    "technicalId": "tap",
+    "displayNameDe": "tippen",
+    "tags": ["antippen", "drücken", "berühren"]
+  },
+  {
+    "technicalId": "card",
+    "displayNameDe": "Karte",
+    "tags": ["Unterstützung", "Verkaufshilfe", "Beratung", "HIlfe"]
+  },
+  {
+    "technicalId": "card-hand",
+    "displayNameDe": "Karte Hand",
+    "tags": ["Karte", "vorstellen", "moderieren", "Moderationskarte"]
+  },
+  {
+    "technicalId": "calendar-stock",
+    "displayNameDe": "Kalender Wertpapier",
+    "tags": ["Anlage", "Dokument", "Datum", "Termin"]
+  },
+  {
+    "technicalId": "camera",
+    "displayNameDe": "Kamera",
+    "tags": ["Galerie", "Fotografie", "Fotoapparat", "Kamera"]
+  },
+  {
+    "technicalId": "calendar",
+    "displayNameDe": "Kalender",
+    "tags": ["Zeit", "Termin", "Erwerbsjahr", "Datum"]
+  },
+  {
+    "technicalId": "calendar-piggy-bank",
+    "displayNameDe": "Kalender Sparschwein",
+    "tags": ["Zeitraum", "Termin", "Sparplan", "sparen"]
+  },
+  {
+    "technicalId": "squares-connected",
+    "displayNameDe": "Quadrate verbunden",
+    "tags": ["Kette", "Blockchain", "Würfel", "Datensätze"]
+  },
+  {
+    "technicalId": "calendar-day",
+    "displayNameDe": "Kalender Tag",
+    "tags": ["Datum", "Kalender", "Termin"]
+  },
+  {
+    "technicalId": "qr-code",
+    "displayNameDe": "QR-Code\n",
+    "tags": ["Scannen", "fotografieren", "einscannen"]
+  },
+  {
+    "technicalId": "squares",
+    "displayNameDe": "Quadrate",
+    "tags": ["Viereck", "Geometrie", "Würfel"]
+  },
+  {
+    "technicalId": "puzzle",
+    "displayNameDe": "Puzzel",
+    "tags": ["Teile", "Zielbild"]
+  },
+  {
+    "technicalId": "coffee-mug",
+    "displayNameDe": "Kaffeetasse",
+    "tags": ["trinken", "Kaffee", "Tasse"]
+  },
+  {
+    "technicalId": "calendar-euro",
+    "displayNameDe": "Kalender Euro",
+    "tags": ["Datum", "Kalender", "Gehalt", "EInkommen"]
+  },
+  {
+    "technicalId": "boy",
+    "displayNameDe": "Junge",
+    "tags": ["Person", "Mitarbeiter", "Mensch"]
+  },
+  {
+    "technicalId": "dots",
+    "displayNameDe": "Punkte",
+    "tags": ["Klebepunkte", "Abstimmung", "Bewertung"]
+  },
+  {
+    "technicalId": "audience-plus-minus",
+    "displayNameDe": "Publikum Plus/Minus",
+    "tags": ["Training", "Präsentation", "Vorstellung", "Trainer Demonstration"]
+  },
+  {
+    "technicalId": "audience",
+    "displayNameDe": "Publikum",
+    "tags": ["Zuhörer", "Vorstellung", "Gäste"]
+  },
+  {
+    "technicalId": "audience-mask",
+    "displayNameDe": "Publikum Maske",
+    "tags": ["Trainer", "Zuhörer"]
+  },
+  {
+    "technicalId": "statue-of-liberty",
+    "displayNameDe": "Freiheitsstatue",
+    "tags": ["USA", "Amerika"]
+  },
+  {
+    "technicalId": "audience-chart",
+    "displayNameDe": "Publikum Kurs",
+    "tags": ["Meeting", "Bildung", "Schulungspräsentation", "Vorstellung"]
+  },
+  {
+    "technicalId": "percentage-rate",
+    "displayNameDe": "Prozent Rate",
+    "tags": ["voraussichtliche Partizipationsrate", "Prozent", "Beteiligung"]
+  },
+  {
+    "technicalId": "hurdler",
+    "displayNameDe": "Hürdenläufer",
+    "tags": ["Schwierigkeiten überwinden", "Probleme bewältigen", "Herausforderungen meistern"]
+  },
+  {
+    "technicalId": "percentage-sign",
+    "displayNameDe": "Prozentzeichen",
+    "tags": ["Anteil", "Zeichen", "Symbol"]
+  },
+  {
+    "technicalId": "presentation-technique",
+    "displayNameDe": "Präsentationstechnik",
+    "tags": ["Vorstellung", "AV-Präsentationstechnik", "Vortrag", "Präsentation"]
+  },
+  {
+    "technicalId": "file-hand",
+    "displayNameDe": "Dokument Hand",
+    "tags": ["Call to action", "Dokument", "HIlfe"]
+  },
+  {
+    "technicalId": "presentation",
+    "displayNameDe": "Präsentation",
+    "tags": ["Weiterbildung", "Bildung", "Austausch", "Kommunikation"]
+  },
+  {
+    "technicalId": "diamond",
+    "displayNameDe": "Diamant",
+    "tags": ["hart", "Edelstein", "wertvoll"]
+  },
+  {
+    "technicalId": "head",
+    "displayNameDe": "Kopf",
+    "tags": ["Anstrengung", "Befragung", "Test", "Schädel"]
+  },
+  {
+    "technicalId": "screenplay",
+    "displayNameDe": "Drehbuch",
+    "tags": ["Buch", "Storybook", "Regie"]
+  },
+  {
+    "technicalId": "mailbox",
+    "displayNameDe": "Postkasten",
+    "tags": ["Mail", "Post", "Inbox", "Job Abo"]
+  },
+  {
+    "technicalId": "face-frame",
+    "displayNameDe": "Gesicht Rahmen",
+    "tags": ["Face-ID", "UDO App"]
+  },
+  {
+    "technicalId": "fingerprint-frame",
+    "displayNameDe": "Fingerabdruck Rahmen",
+    "tags": ["Touch-ID", "UDO App"]
+  },
+  {
+    "technicalId": "files",
+    "displayNameDe": "Dokumente",
+    "tags": ["Datei", "Unterlagen", "Ordner"]
+  },
+  {
+    "technicalId": "post-it",
+    "displayNameDe": "Post-it",
+    "tags": ["Notizen", "Klebezettel", "Haftnotiz"]
+  },
+  {
+    "technicalId": "bell-number",
+    "displayNameDe": "Glocke Zahl",
+    "tags": ["Push-Nachrichten", "UDO App"]
+  },
+  {
+    "technicalId": "trophy",
+    "displayNameDe": "Pokal",
+    "tags": ["Gewinner", "Sieg", "Erfolg", "Auszeichnung"]
+  },
+  {
+    "technicalId": "pizza",
+    "displayNameDe": "Pizza",
+    "tags": ["Mischfond", "Mischung", "Komponenten"]
+  },
+  {
+    "technicalId": "file-magnifying-glass",
+    "displayNameDe": "Dokument Lupe",
+    "tags": ["Bewerbungsstatus", "Dokument suchen", "Dokument", "persönlich"]
+  },
+  {
+    "technicalId": "podcast",
+    "displayNameDe": "Podcast\n",
+    "tags": ["Musik", "iPod", "Gerät"]
+  },
+  {
+    "technicalId": "file",
+    "displayNameDe": "Dokument",
+    "tags": ["Doc", "Notiz", "schreiben"]
+  },
+  {
+    "technicalId": "file-information",
+    "displayNameDe": "Dokument Information",
+    "tags": ["Lupe", "Dokument", "Information", "Suche"]
+  },
+  {
+    "technicalId": "arrows-directions",
+    "displayNameDe": "Pfeile Richtung",
+    "tags": ["Pfeile", "Flexibilität", "Richtungen", "Alternativen"]
+  },
+  {
+    "technicalId": "file-hook",
+    "displayNameDe": "Dokument Haken",
+    "tags": ["Depotkorrespondenz", "abgehakt", "erledigt", "Brief"]
+  },
+  {
+    "technicalId": "plant",
+    "displayNameDe": "Pflanze",
+    "tags": ["Natur", "Umwelt", "grün"]
+  },
+  {
+    "technicalId": "arrows-process",
+    "displayNameDe": "Pfeile Prozess",
+    "tags": ["Scrum", "Sprint", "agiles Arbeiten"]
+  },
+  {
+    "technicalId": "people",
+    "displayNameDe": "Personen",
+    "tags": ["Kontakt", "Meeting", "Partizipationsrate", "Treffen", "Besprechung"]
+  },
+  {
+    "technicalId": "doctor-hat-at-sign",
+    "displayNameDe": "Doktorhut At-Zeichen",
+    "tags": ["Diplom", "Web Based Training", "online lernen", "E-Learing"]
+  },
+  {
+    "technicalId": "tablet",
+    "displayNameDe": "Tablet\n",
+    "tags": ["surfen", "mobil", "Rechner"]
+  },
+  {
+    "technicalId": "arrows-circle",
+    "displayNameDe": "Pfeile Kreis",
+    "tags": ["Bewegung", "Agilität", "Flexibilität", "Prozess"]
+  },
+  {
+    "technicalId": "doctor-hat",
+    "displayNameDe": "Doktorhut",
+    "tags": ["Hochschule", "Studie", "Bildung", "Universität"]
+  },
+  {
+    "technicalId": "cup",
+    "displayNameDe": "Tasse\n",
+    "tags": ["Teetasse", "Tee", "trinken"]
+  },
+  {
+    "technicalId": "surfer",
+    "displayNameDe": "Surfer\n",
+    "tags": ["Sport", "browsen", "Windsurfen", "surfen"]
+  },
+  {
+    "technicalId": "people-match",
+    "displayNameDe": "Personen Übereinstimmung",
+    "tags": ["Kontakt", "Konversation Übereinstimmung", "Übereinstimmung", "Bildung"]
+  },
+  {
+    "technicalId": "stop-watch",
+    "displayNameDe": "Stoppuhr\n",
+    "tags": ["Uhr", "Zeitanzeige", "Zeitdruck"]
+  },
+  {
+    "technicalId": "people-speech-bubble",
+    "displayNameDe": "Personen Sprechblase",
+    "tags": ["Bildung", "Konversation", "Lehrgespräch", "Kontakt"]
+  },
+  {
+    "technicalId": "electricity",
+    "displayNameDe": "Strom\n",
+    "tags": ["Batterie", "Steckdose", "Anschluss", "Stecker"]
+  },
+  {
+    "technicalId": "thumbs-neutral",
+    "displayNameDe": "Daumen neutral",
+    "tags": ["verbesserungswürdig", "verbesserungsfähig", "mittelmäßig"]
+  },
+  {
+    "technicalId": "japan",
+    "displayNameDe": "Japan",
+    "tags": ["Tempel", "Asien"]
+  },
+  {
+    "technicalId": "data-supply-online",
+    "displayNameDe": "Datenversorgung Online",
+    "tags": ["online", "Versorgung", "Dateien"]
+  },
+  {
+    "technicalId": "pen-tip",
+    "displayNameDe": "Stiftspitze\n",
+    "tags": ["schreiben", "Spitze", "zeichnen"]
+  },
+  {
+    "technicalId": "pen",
+    "displayNameDe": "Stift\n",
+    "tags": ["kreativ", "anzeichnen", "schreiben"]
+  },
+  {
+    "technicalId": "computer",
+    "displayNameDe": "Computer",
+    "tags": ["Bildschirm", "Digitalisierung", "Hardware", "Technik", "Software"]
+  },
+  {
+    "technicalId": "database",
+    "displayNameDe": "Datenbank",
+    "tags": ["speichern", "Sammlung", "Daten"]
+  },
+  {
+    "technicalId": "pens",
+    "displayNameDe": "Stifte\n",
+    "tags": ["zeichnen", "malen", "schreiben"]
+  },
+  {
+    "technicalId": "scale-euro-dollar",
+    "displayNameDe": "Waage Euro Dollar",
+    "tags": ["Kurs", "Währung"]
+  },
+  {
+    "technicalId": "co2-cloud",
+    "displayNameDe": "CO2 Wolke",
+    "tags": ["Klimaschutz", "Emission", "Ausstoß", "Luft"]
+  },
+  {
+    "technicalId": "latte-macchiato",
+    "displayNameDe": "Latte Macchiato",
+    "tags": ["Schaum", "Getränk", "Kaffee"]
+  },
+  {
+    "technicalId": "bull",
+    "displayNameDe": "Stier\n",
+    "tags": ["Börse", "Kurs", "Bulle"]
+  },
+  {
+    "technicalId": "chemistry",
+    "displayNameDe": "Chemie",
+    "tags": ["experimentieren", "Wissenschaft", "Chemikalien"]
+  },
+  {
+    "technicalId": "pen-paper",
+    "displayNameDe": "Stift Blatt",
+    "tags": ["schreiben", "Unterlagen", "Text", "Dokument"]
+  },
+  {
+    "technicalId": "bus",
+    "displayNameDe": "Bus",
+    "tags": ["Fahrzeug", "Verkehrsmittel", "öffentlich"]
+  },
+  {
+    "technicalId": "stethoscope",
+    "displayNameDe": "Stethoskop",
+    "tags": ["Wohlergehen", "Unfall", "Betriebsarzt", "Gesundheitsangebote", "Gesundheit"]
+  },
+  {
+    "technicalId": "stars",
+    "displayNameDe": "Sterne",
+    "tags": ["Ziel", "Himmel", "Stern"]
+  },
+  {
+    "technicalId": "bus-stop",
+    "displayNameDe": "Bus Haltestelle",
+    "tags": ["Logistik", "Verkehr", "gute Anbindung Verkehrsmittel", "Verbindung"]
+  },
+  {
+    "technicalId": "shooting-star",
+    "displayNameDe": "Sternschnuppe",
+    "tags": ["Bewertung", "Rating", "Stern", "Qualität"]
+  },
+  {
+    "technicalId": "statue",
+    "displayNameDe": "Statue",
+    "tags": ["Kunstwerk", "Kunst"]
+  },
+  {
+    "technicalId": "office-chair",
+    "displayNameDe": "Bürostuhl",
+    "tags": ["Möbel", "Ausstattung", "Schreibtischstuhl", "Büro"]
+  },
+  {
+    "technicalId": "heart",
+    "displayNameDe": "Herz",
+    "tags": ["Liebe", "glücklich"]
+  },
+  {
+    "technicalId": "office",
+    "displayNameDe": "Büro",
+    "tags": ["Büroimmobilie", "Institution", "Gebäude", "Immobilie"]
+  },
+  {
+    "technicalId": "city-apartment",
+    "displayNameDe": "Stadtwohnung",
+    "tags": ["Apartment", "Stadt", "CityQuartier", "Unterkunft"]
+  },
+  {
+    "technicalId": "paper-clip",
+    "displayNameDe": "Büroklammer",
+    "tags": ["Büro", "Klammer", "hinzufügen", "anhängen"]
+  },
+  {
+    "technicalId": "speech-bubbles-question-answer",
+    "displayNameDe": "Sprechblasen Frage/Antwort",
+    "tags": ["Fragen", "Antworten", "Frage", "Antwort", "FAQ"]
+  },
+  {
+    "technicalId": "office-euro",
+    "displayNameDe": "Büro Euro",
+    "tags": ["Währung", "Wert", "Immobilienvermögen Büro", "Arbeit"]
+  },
+  {
+    "technicalId": "speech-bubbles",
+    "displayNameDe": "Sprechblasen",
+    "tags": ["Kontakt", "Dialog", "Interaktion", "Kommunikation"]
+  },
+  {
+    "technicalId": "speech-bubble",
+    "displayNameDe": "Sprechblase",
+    "tags": ["Kommunikation", "Chat Feedback", "Gespräch", "Kontakt"]
+  },
+  {
+    "technicalId": "book",
+    "displayNameDe": "Buch",
+    "tags": ["Bildung", "Wissen", "Freizeit"]
+  },
+  {
+    "technicalId": "speech-bubble-face",
+    "displayNameDe": "Sprechblase Gesicht",
+    "tags": ["Sprache", "Chatbot", "Dialog", "Assistent"]
+  },
+  {
+    "technicalId": "playground",
+    "displayNameDe": "Spielplatz",
+    "tags": ["Kinder", "spielen", "klettern"]
+  },
+  {
+    "technicalId": "piggy-bank",
+    "displayNameDe": "Sparschwein",
+    "tags": ["Vermögen", "sparen", "vermögenswirksame Leistung", "Geld"]
+  },
+  {
+    "technicalId": "game-controller",
+    "displayNameDe": "Spiel Controller",
+    "tags": ["Rollenspiel", "Joystsick", "Maus", "Gerät"]
+  },
+  {
+    "technicalId": "piggy-bank-euro",
+    "displayNameDe": "Sparschwein Euro",
+    "tags": ["Sparpläne", "sparen", "Zeitraum", "Termin"]
+  },
+  {
+    "technicalId": "sun-clouds",
+    "displayNameDe": "Sonne/Wolken",
+    "tags": ["mäßig", "trübe", "wolkig", "Wetter"]
+  },
+  {
+    "technicalId": "umbrella-chairs",
+    "displayNameDe": "Sonnenschirm Stühle",
+    "tags": ["Terrasse", "Sommer", "Sonne"]
+  },
+  {
+    "technicalId": "train",
+    "displayNameDe": "Zug",
+    "tags": ["Bahn", "Anreise", "Dienstreise", "Reisen"]
+  },
+  {
+    "technicalId": "certificate",
+    "displayNameDe": "Zertifikat",
+    "tags": ["Auszeichnung", "Zertifikat", "Profil", "Talent-Profil"]
+  },
+  {
+    "technicalId": "bricks",
+    "displayNameDe": "Ziegelsteine",
+    "tags": ["bauen", "Mauer", "Baujahr"]
+  },
+  {
+    "technicalId": "target",
+    "displayNameDe": "Zielscheibe",
+    "tags": ["Challenge", "Herausforderung", "Ziel", "Dart"]
+  },
+  {
+    "technicalId": "traffic-light",
+    "displayNameDe": "Ampel",
+    "tags": ["Stopp", "Rot", "Verkehrszeichen", "Grün"]
+  },
+  {
+    "technicalId": "circle-info",
+    "displayNameDe": "Kreis Information",
+    "tags": ["Wissen", "wichtig", "Info"]
+  },
+  {
+    "technicalId": "gears-circle",
+    "displayNameDe": "Zahnräder Kreis",
+    "tags": ["Update", "Prozess", "Aktualisierung", "Neu"]
+  },
+  {
+    "technicalId": "certificate-rolled",
+    "displayNameDe": "Zertifikat gerollt",
+    "tags": ["Auszeichnung", "Garantie", "Zertifikat", "Garantieniveau"]
+  },
+  {
+    "technicalId": "dragon",
+    "displayNameDe": "Drache",
+    "tags": ["Asien", "China", "Drachenkopf"]
+  },
+  {
+    "technicalId": "gears-arrow",
+    "displayNameDe": "Zahnräder Pfeil",
+    "tags": ["Zahnrad", "Prozess", "Ablauf", "Abfolge"]
+  },
+  {
+    "technicalId": "magazine",
+    "displayNameDe": "Magazin",
+    "tags": ["Zeitschrift", "Zeitung", "Illustrierte"]
+  },
+  {
+    "technicalId": "rocket-cloud",
+    "displayNameDe": "Rakete Wolke",
+    "tags": ["Rakete", "Journey2Cloud", "Wolke"]
+  },
+  {
+    "technicalId": "toothbrushes",
+    "displayNameDe": "Zahnbürsten",
+    "tags": ["Hygiene", "Zahnpflege", "Mundhygiene"]
+  },
+  {
+    "technicalId": "magnet",
+    "displayNameDe": "Magnet",
+    "tags": ["Kundenbindung", "Anziehung", "Kraft", "magnetisch"]
+  },
+  {
+    "technicalId": "note-box",
+    "displayNameDe": "Zettel Box",
+    "tags": ["Wahl", "Zettelbox", "Wahlen", "wählen"]
+  },
+  {
+    "technicalId": "cubes",
+    "displayNameDe": "Würfel",
+    "tags": ["Trainingsprogramme", "Buchstaben", "Alphabet", "Bauklotz"]
+  },
+  {
+    "technicalId": "yin-yang",
+    "displayNameDe": "Yin Yang",
+    "tags": ["China", "Feng Shui", "Esoterik"]
+  },
+  {
+    "technicalId": "magnifying-glass",
+    "displayNameDe": "Lupe",
+    "tags": ["Betrachtung", "Analyse", "Detail"]
+  },
+  {
+    "technicalId": "cube-hexagon",
+    "displayNameDe": "Würfel Sechseck",
+    "tags": ["Hexagon", "UniPort", "Cube", "integriert"]
+  },
+  {
+    "technicalId": "girl",
+    "displayNameDe": "Mädchen",
+    "tags": ["Kontakt", "Person", "Mitarbeiterin"]
+  },
+  {
+    "technicalId": "circuit-stop-watch",
+    "displayNameDe": "Kreislauf Stoppuhr",
+    "tags": ["schnelle Zyklen", "Kreislauf", "Sprint"]
+  },
+  {
+    "technicalId": "magnifying-glass-person",
+    "displayNameDe": "Lupe Mensch",
+    "tags": ["Rekrutierung", "E-Recruiting", "Bewerbung", "Profil Suche"]
+  },
+  {
+    "technicalId": "chip",
+    "displayNameDe": "Chip",
+    "tags": ["Elektronik", "digitale Transformation"]
+  },
+  {
+    "technicalId": "cloud",
+    "displayNameDe": "Wolke",
+    "tags": ["Wetter", "Wasser", "Niederschlag", "bewölkt"]
+  },
+  {
+    "technicalId": "wlan-crossed-out",
+    "displayNameDe": "WLAN durchgestrichen",
+    "tags": ["keine Verbindung", "kein Internet", "Verbindungsproblem", "kein Empfang"]
+  },
+  {
+    "technicalId": "link",
+    "displayNameDe": "Link",
+    "tags": ["Verlinkung", "Hinweis", "Verknüpfung"]
+  },
+  {
+    "technicalId": "cloud-arrows",
+    "displayNameDe": "Wolke Pfeile",
+    "tags": ["Upload", "Cloud", "Download"]
+  },
+  {
+    "technicalId": "magnifying-glass-question-mark",
+    "displayNameDe": "Lupe Fragezeichen",
+    "tags": ["Suche", "Lupe", "suchen", "Fragezeichen"]
+  },
+  {
+    "technicalId": "arrow-top",
+    "displayNameDe": "Pfeil oben",
+    "tags": ["Backlog", "Priorisierung"]
+  },
+  {
+    "technicalId": "swipe",
+    "displayNameDe": "wischen",
+    "tags": ["blättern", "schieben", "ziehen"]
+  },
+  {
+    "technicalId": "encyclopedia",
+    "displayNameDe": "Lexikon",
+    "tags": ["Buch", "Web-Recherche", "FAQ", "Lupe"]
+  },
+  {
+    "technicalId": "canvas",
+    "displayNameDe": "Leinwand",
+    "tags": ["Projektion", "Präsentation", "Vorstellung"]
+  },
+  {
+    "technicalId": "waving",
+    "displayNameDe": "winken",
+    "tags": ["Auf Wiedersehen", "Willkommen", "Hallo", "Begrüßung"]
+  },
+  {
+    "technicalId": "steering-wheel",
+    "displayNameDe": "Lenkrad",
+    "tags": ["Rad", "Steuerung", "lenken"]
+  },
+  {
+    "technicalId": "person-wlan",
+    "displayNameDe": "Person WLAN",
+    "tags": ["Digitaler Botschafter", "WLAN", "Person"]
+  },
+  {
+    "technicalId": "food",
+    "displayNameDe": "Lebensmittel",
+    "tags": ["Mensa", "Kantine", "Gemüse", "Ernährung", "Obst"]
+  },
+  {
+    "technicalId": "stock",
+    "displayNameDe": "Wertpapier",
+    "tags": ["beglaubigt", "Anteilsschein", "Wertpapiere", "Dokument"]
+  },
+  {
+    "technicalId": "wind-energy",
+    "displayNameDe": "Windenergie",
+    "tags": ["Wetter", "Energie", "Nachhaltigkeit"]
+  },
+  {
+    "technicalId": "truck",
+    "displayNameDe": "Laster",
+    "tags": ["Fahrzeug", "Logistikimmobilie", "LKW"]
+  },
+  {
+    "technicalId": "volume",
+    "displayNameDe": "Lautstärke",
+    "tags": ["Ton", "Lautsprecher", "Geräusch", "Box"]
+  },
+  {
+    "technicalId": "truck-euro",
+    "displayNameDe": "Laster Euro",
+    "tags": ["Immobilienvermögen Logistik", "Fahrzeug", "Währung", "Logistik"]
+  },
+  {
+    "technicalId": "laptop-gear",
+    "displayNameDe": "Laptop Zahnrad",
+    "tags": ["Computer", "IT", "Technologie", "Informationstechnologie"]
+  },
+  {
+    "technicalId": "laptop",
+    "displayNameDe": "Laptop",
+    "tags": ["Rechner", "mobil"]
+  },
+  {
+    "technicalId": "laptop-keyboard",
+    "displayNameDe": "Laptop Tastatur",
+    "tags": ["Tastatur", "Rechner", "mobil"]
+  },
+  {
+    "technicalId": "share-price-coins",
+    "displayNameDe": "Kurs Münzen",
+    "tags": ["Anlage", "Finanzen", "Anlage mit höheren Renditechancen", "Profitabilität"]
+  },
+  {
+    "technicalId": "warehouse",
+    "displayNameDe": "Lagerhalle",
+    "tags": ["Halle", "Scheune", "Landwirtschaft", "Lager"]
+  },
+  {
+    "technicalId": "share-price-binocluars",
+    "displayNameDe": "Kurs Fernglas",
+    "tags": ["beobachten", "Entwicklung", "Kursverlauf"]
+  },
+  {
+    "technicalId": "binoculars",
+    "displayNameDe": "Fernglas",
+    "tags": ["sehen", "vorausschauend", "aktives Vermögensmanagement"]
+  },
+  {
+    "technicalId": "share-price-chart-person",
+    "displayNameDe": "Kurs Chart Person",
+    "tags": ["Person", "Anstieg", "Wachstum"]
+  },
+  {
+    "technicalId": "share-price-chart",
+    "displayNameDe": "Kurs Chart",
+    "tags": ["Entwicklung", "Wachstum", "Anstieg"]
+  },
+  {
+    "technicalId": "share-price-analysis",
+    "displayNameDe": "Kurs Analyse",
+    "tags": ["Wertschwankungen kontrollieren", "Recherche", "Kontrolle", "Aufmerksamkeit"]
+  },
+  {
+    "technicalId": "circuit-coins",
+    "displayNameDe": "Kreislauf Münzen",
+    "tags": ["Kreislauf", "Finanzen", "laufende Kosten"]
+  },
+  {
+    "technicalId": "share-price",
+    "displayNameDe": "Kurs Aktien",
+    "tags": ["Kurs", "Fonds", "Aktienmärkte", "Aktien"]
+  },
+  {
+    "technicalId": "woman",
+    "displayNameDe": "Frau",
+    "tags": ["Profil", "Mitarbeiterin", "Person"]
+  },
+  {
+    "technicalId": "quotation-marks",
+    "displayNameDe": "Anführungszeichen",
+    "tags": ["Kommunikation", "Zitat", "Zitatzeichen"]
+  },
+  {
+    "technicalId": "skyscraper-magnifying-glass",
+    "displayNameDe": "Hochhaus Lupe",
+    "tags": ["Lupe", "Gebäude", "Suche", "Baum"]
+  },
+  {
+    "technicalId": "feather",
+    "displayNameDe": "Feder",
+    "tags": ["schreiben", "Vogel"]
+  },
+  {
+    "technicalId": "fax",
+    "displayNameDe": "Fax",
+    "tags": ["faxen", "Dokument", "senden"]
+  },
+  {
+    "technicalId": "tube-euro",
+    "displayNameDe": "Rohr Euro",
+    "tags": ["Geld", "Gewinn", "Ausschüttung"]
+  },
+  {
+    "technicalId": "life-belt",
+    "displayNameDe": "Rettungsring",
+    "tags": ["Ring", "HIlfe", "Rettung"]
+  },
+  {
+    "technicalId": "robot-arm",
+    "displayNameDe": "Roboterarm",
+    "tags": ["Automation", "Arm", "Roboter"]
+  },
+  {
+    "technicalId": "bicycle",
+    "displayNameDe": "Fahrrad",
+    "tags": ["Rad", "Sport", "Aktivitäten", "Fahrzeug"]
+  },
+  {
+    "technicalId": "factory",
+    "displayNameDe": "Fabrik",
+    "tags": ["Gewerbe", "Produktion", "Gewerbefläche", "Herstellung"]
+  },
+  {
+    "technicalId": "euro",
+    "displayNameDe": "Euro",
+    "tags": ["Eurozeichen", "Symbol", "Währung"]
+  },
+  {
+    "technicalId": "umbrella",
+    "displayNameDe": "Regenschirm",
+    "tags": ["schützen", "Regen"]
+  },
+  {
+    "technicalId": "europe-stars",
+    "displayNameDe": "Europa Sterne",
+    "tags": ["EU", "Europäische Union", "Fahne", "Flagge"]
+  },
+  {
+    "technicalId": "rain-cloud",
+    "displayNameDe": "Regenwolke",
+    "tags": ["schlechtes Wetter", "Regen", "Wolke"]
+  },
+  {
+    "technicalId": "box",
+    "displayNameDe": "Paket",
+    "tags": ["Produkt", "Schachtel", "Box"]
+  },
+  {
+    "technicalId": "euro-hand",
+    "displayNameDe": "Euro Hand",
+    "tags": ["Währung", "Symbol", "Hand"]
+  },
+  {
+    "technicalId": "calculator",
+    "displayNameDe": "Rechner",
+    "tags": ["Ausgaben", "Einnahmen", "Taschenrechner"]
+  },
+  {
+    "technicalId": "city-hall",
+    "displayNameDe": "Rathaus",
+    "tags": ["Gebäude", "Immobilie", "Verwaltung"]
+  },
+  {
+    "technicalId": "tag-percent",
+    "displayNameDe": "Etikett Prozent",
+    "tags": ["Mitarbeiterrabatte", "Rabatt", "Zuschüsse", "Ermäßigung"]
+  },
+  {
+    "technicalId": "caterpillar-butterfly",
+    "displayNameDe": "Raupe Schmetterling",
+    "tags": ["Nachhaltigkeit", "Retterling", "Transformation", "Wandel"]
+  },
+  {
+    "technicalId": "owl",
+    "displayNameDe": "Eule",
+    "tags": ["Achtung", "Bildung", "Natur", "aufmerksam"]
+  },
+  {
+    "technicalId": "tag-coins",
+    "displayNameDe": "Etikett Münzen",
+    "tags": ["Fondsbezeichnung", "Fondsart", "Fondsklasse", "Fondskennzeichnung"]
+  },
+  {
+    "technicalId": "rocket",
+    "displayNameDe": "Rakete",
+    "tags": ["abheben", "erforschen", "Start"]
+  },
+  {
+    "technicalId": "esg-criteria",
+    "displayNameDe": "ESG Kriterien",
+    "tags": ["Enviromental Social Governance", "Klemmbrett"]
+  },
+  {
+    "technicalId": "esg-gear",
+    "displayNameDe": "ESG Zahnrad",
+    "tags": ["Investmentprozess", "Zahnräder", "Integration von ESG"]
+  },
+  {
+    "technicalId": "radar",
+    "displayNameDe": "Radar",
+    "tags": ["Ortung", "erfassen", "erkunden"]
+  },
+  {
+    "technicalId": "cow",
+    "displayNameDe": "Kuh",
+    "tags": ["UniQ"]
+  },
+  {
+    "technicalId": "electric-car",
+    "displayNameDe": "Elektroauto",
+    "tags": ["Strom", "Kraftfahrzeug", "Verkehr", "Auto"]
+  },
+  {
+    "technicalId": "elbphilharmonie",
+    "displayNameDe": "Elbphilharmonie",
+    "tags": ["Wahrzeichen", "Hamburg", "Hafencity", "Deutschland"]
+  },
+  {
+    "technicalId": "office-chart-euro-steering-wheel",
+    "displayNameDe": "Büro Diagramm Euro Steuerrad",
+    "tags": ["Drittmandate"]
+  },
+  {
+    "technicalId": "orange",
+    "displayNameDe": "Orange",
+    "tags": ["QuickAccess", "Frucht"]
+  },
+  {
+    "technicalId": "cloud-bars",
+    "displayNameDe": "Wolke Balken",
+    "tags": ["Wolke", "Balken", "UnionCloudPlattform"]
+  },
+  {
+    "technicalId": "shopping-cart",
+    "displayNameDe": "Einkaufswagen",
+    "tags": ["Einkauf", "Onlineshop", "Erwerb", "Warenkorb"]
+  },
+  {
+    "technicalId": "screen-chart",
+    "displayNameDe": "Bildschirm Grafik",
+    "tags": ["Data Business Warehouse", "Bildschirm", "Grafik"]
+  },
+  {
+    "technicalId": "shopping-bag",
+    "displayNameDe": "Einkaufstasche",
+    "tags": ["Shop", "Tasche", "Einzelhandelsimmobilie", "Immobilien"]
+  },
+  {
+    "technicalId": "unicorn",
+    "displayNameDe": "Einhorn",
+    "tags": ["Tier", "Fabelwesen", "Unicorn", "Pferd"]
+  },
+  {
+    "technicalId": "shopping-bag-euro",
+    "displayNameDe": "Einkaufstasche Euro",
+    "tags": ["kaufen", "Shop", "Immobilie", "verkaufen", "Immobilienvermögen Einzelhandel"]
+  },
+  {
+    "technicalId": "bucket",
+    "displayNameDe": "Eimer",
+    "tags": ["Sonstiges", "putzen", "Müll", "Abfall"]
+  },
+  {
+    "technicalId": "eiffel-tower",
+    "displayNameDe": "Eiffelturm",
+    "tags": ["Frankreich", "Wahrzeichen", "Paris"]
+  },
+  {
+    "technicalId": "wedding-ring",
+    "displayNameDe": "Eheringe",
+    "tags": ["Liebe", "persönlich", "Heirat", "Romantik"]
+  },
+  {
+    "technicalId": "triangle-euro",
+    "displayNameDe": "Dreieck Euro",
+    "tags": ["Währung", "Magisches Dreieck", "Euro", "Dreieck"]
+  },
+  {
+    "technicalId": "average",
+    "displayNameDe": "Durchschnitt",
+    "tags": ["Mittelwert", "mittleres Ergebnis", "Durchschnittswert"]
+  },
+  {
+    "technicalId": "triangle-exclamation-mark",
+    "displayNameDe": "Dreieck Ausrufezeichen",
+    "tags": ["Warnung", "Achtung", "Vorsicht"]
+  },
+  {
+    "technicalId": "circles-concentric",
+    "displayNameDe": "Kreise konzentrisch",
+    "tags": ["Satellit", "Planeten"]
+  },
+  {
+    "technicalId": "otter",
+    "displayNameDe": "Otter",
+    "tags": ["UniKidStarter", "Frühstart-Rente", "JuniorDepot", "Kinder"]
+  },
+  {
+    "technicalId": "world-globe",
+    "displayNameDe": "Weltkugel",
+    "tags": ["Welt", "Globus", "Erde"]
+  },
+  {
+    "technicalId": "signpost",
+    "displayNameDe": "Wegweiser",
+    "tags": ["Kompass", "Schild", "Richtung"]
+  },
+  {
+    "technicalId": "world-globe-percent",
+    "displayNameDe": "Weltkugel Prozent",
+    "tags": ["Anteil am Immobilienvermögen", "Globus", "Prozent", "Anteil"]
+  },
+  {
+    "technicalId": "alarm-clock",
+    "displayNameDe": "Wecker",
+    "tags": ["Uhr", "Deadline", "dringend", "Alarm", "Eile"]
+  },
+  {
+    "technicalId": "commen-ground",
+    "displayNameDe": "Schnittmenge",
+    "tags": ["Übereinstimmung", "Gemeinsamkeit", "Überschneidung"]
+  },
+  {
+    "technicalId": "violin",
+    "displayNameDe": "Geige",
+    "tags": ["Musik", "Rhythmus"]
+  },
+  {
+    "technicalId": "oil",
+    "displayNameDe": "Öl",
+    "tags": ["Verkehr", "Quelle", "Rohstoff"]
+  },
+  {
+    "technicalId": "newsletter",
+    "displayNameDe": "Newsletter\n",
+    "tags": ["Dokument", "online", "E-Mail"]
+  },
+  {
+    "technicalId": "upper-limit",
+    "displayNameDe": "Obergrenze",
+    "tags": ["Maximum", "Cap", "Wertgrenze"]
+  },
+  {
+    "technicalId": "music",
+    "displayNameDe": "Musik",
+    "tags": ["Freizeit", "Töne", "Noten", "Entspannung"]
+  },
+  {
+    "technicalId": "navigation",
+    "displayNameDe": "Navigation\n",
+    "tags": ["Ortung", "Location", "Standort"]
+  },
+  {
+    "technicalId": "website-globe",
+    "displayNameDe": "Webseite Weltkugel",
+    "tags": ["Internet Access Service", "Internet", "Internetseite"]
+  },
+  {
+    "technicalId": "coins",
+    "displayNameDe": "Münzen",
+    "tags": ["Vermögensstruktur", "Vermögen", "Entwicklung", "Investment"]
+  },
+  {
+    "technicalId": "network",
+    "displayNameDe": "Netzwerk",
+    "tags": ["Verbindung", "Vernetzung", "Datennetz"]
+  },
+  {
+    "technicalId": "coins-arrow-right",
+    "displayNameDe": "Münzen Pfeil rechts",
+    "tags": ["Geld", "Aufschlag", "rechts", "Ausgabeaufschlag"]
+  },
+  {
+    "technicalId": "coins-arrow-bottom-right",
+    "displayNameDe": "Münzen Pfeil rechts unten",
+    "tags": ["Fall", "Anteilsverkauf", "Senkung", "diagonal"]
+  },
+  {
+    "technicalId": "protective-shield-lock",
+    "displayNameDe": "Schutzschild Schloss",
+    "tags": ["Schild", "Security Services", "Schutz", "Schloss"]
+  },
+  {
+    "technicalId": "coins-arrow-top-right",
+    "displayNameDe": "Münzen Pfeil rechts oben",
+    "tags": ["diagonal", "Anteilskauf", "Wachstum", "Steigung"]
+  },
+  {
+    "technicalId": "coins-arrow-left",
+    "displayNameDe": "Münzen Pfeil links",
+    "tags": ["links", "Rücknahmeabschlag", "Abschlag", "Geld"]
+  },
+  {
+    "technicalId": "trash",
+    "displayNameDe": "Mülleimer",
+    "tags": ["löschen", "Abfall", "Papierkorb", "entfernen"]
+  },
+  {
+    "technicalId": "coins-hand",
+    "displayNameDe": "Münzen Hand",
+    "tags": ["Vergütungsmanagement", "Euro", "Geld", "Vergütung", "Wert"]
+  },
+  {
+    "technicalId": "possibilities",
+    "displayNameDe": "Möglichkeiten",
+    "tags": ["Eventualität", "Alternativen", "Wege"]
+  },
+  {
+    "technicalId": "eye",
+    "displayNameDe": "Auge",
+    "tags": ["Sicht", "Vision", "Überblick"]
+  },
+  {
+    "technicalId": "statement",
+    "displayNameDe": "Aussage",
+    "tags": ["Kontakt", "Meeting", "treffen", "Mitarbeiterbeteiligung"]
+  },
+  {
+    "technicalId": "mobile-phone-gear",
+    "displayNameDe": "Mobiltelefon Zahnrad",
+    "tags": ["Wartung", "Handy", "Einstellungen"]
+  },
+  {
+    "technicalId": "gears",
+    "displayNameDe": "Zahnräder",
+    "tags": ["Prozess", "Ablauf", "APIM", "Abfolge"]
+  },
+  {
+    "technicalId": "printer",
+    "displayNameDe": "Drucker",
+    "tags": ["Druck", "drucken", "ausdrucken"]
+  },
+  {
+    "technicalId": "elevator",
+    "displayNameDe": "Aufzug",
+    "tags": ["Lift", "Hotel", "Transport"]
+  },
+  {
+    "technicalId": "mobile-phone-vr",
+    "displayNameDe": "Mobiltelefon VR\n",
+    "tags": ["mobil", "Kommunikation", "Apps der VR-FinanzGruppe"]
+  },
+  {
+    "technicalId": "headset",
+    "displayNameDe": "Headset",
+    "tags": ["Kopfhörer", "telefonieren"]
+  },
+  {
+    "technicalId": "mobile-phone-square-scan",
+    "displayNameDe": "Mobiltelefon Quadrat Scan",
+    "tags": ["Augmented Reality", "Technologie", "erweiterte Realität", "virtuell"]
+  },
+  {
+    "technicalId": "aquarium",
+    "displayNameDe": "Aquarium",
+    "tags": ["Fisch", "schwimmen"]
+  },
+  {
+    "technicalId": "mobile-phone",
+    "displayNameDe": "Mobiltelefon",
+    "tags": ["Handy", "Digitalisierung", "Technik", "Smartphone"]
+  },
+  {
+    "technicalId": "alarm",
+    "displayNameDe": "Alarm",
+    "tags": ["Eile", "Notfall", "Deadline", "Uhr", "dringend"]
+  },
+  {
+    "technicalId": "yen",
+    "displayNameDe": "Yen",
+    "tags": ["Japan", "Geld", "Symbol", "Währung"]
+  },
+  {
+    "technicalId": "checkbox",
+    "displayNameDe": "Checkbox",
+    "tags": ["fertig", "erledigt", "Haken", "abhaken"]
+  },
+  {
+    "technicalId": "badge",
+    "displayNameDe": "Abzeichen",
+    "tags": ["Auszeichnung", "Badge", "Diplom", "Zertifizierung"]
+  },
+  {
+    "technicalId": "microphone",
+    "displayNameDe": "Mikrofon",
+    "tags": ["Musik", "Veranstaltung", "Konzert", "Event"]
+  },
+  {
+    "technicalId": "eagle",
+    "displayNameDe": "Adler",
+    "tags": ["Amt", "Anleihen", "Behörde", "Staat"]
+  },
+  {
+    "technicalId": "mobile-phone-crossed-out",
+    "displayNameDe": "Mobiltelefon durchgestrichen",
+    "tags": ["kein Onlinebanking", "Onlinebanking nicht möglich", "Onlinebanking unmöglich"]
+  },
+  {
+    "technicalId": "metaplan-wall-person",
+    "displayNameDe": "Metaplanwand Person",
+    "tags": ["anschreiben", "anmalen", "anzeichnen"]
+  },
+  {
+    "technicalId": "mouse",
+    "displayNameDe": "Maus",
+    "tags": ["Computer", "Klick", "Computermaus"]
+  },
+  {
+    "technicalId": "megaphone",
+    "displayNameDe": "Megafon\n",
+    "tags": ["Durchsage", "UnionVoice", "Lautsprecher", "Sirene"]
+  },
+  {
+    "technicalId": "wall",
+    "displayNameDe": "Mauer",
+    "tags": ["Steine", "Barriere", "Wand"]
+  },
+  {
+    "technicalId": "man",
+    "displayNameDe": "Mann",
+    "tags": ["Person", "Mitarbeiter", "Profil"]
+  },
+  {
+    "technicalId": "masks",
+    "displayNameDe": "Masken",
+    "tags": ["Theater", "Unterhaltung", "Show", "Unterhaltungsangebot Rollenspiele"]
+  },
+  {
+    "technicalId": "big-ben",
+    "displayNameDe": "Big Ben",
+    "tags": ["England", "Großbritannien", "London"]
+  },
+  {
+    "technicalId": "weight-euro-arrow-left",
+    "displayNameDe": "Gewicht Euro Pfeil links",
+    "tags": ["verkaufen", "Durchschnitt", "Geld", "durchschnittliches Ankaufsvolumen"]
+  },
+  {
+    "technicalId": "weight-euro-arrow-right",
+    "displayNameDe": "Gewicht Euro Pfeil rechts",
+    "tags": ["durchschnittliches Verkaufsvolumen", "Durchschnitt", "Geld", "verkaufen"]
+  },
+  {
+    "technicalId": "drum",
+    "displayNameDe": "Trommel",
+    "tags": ["Rhythmus", "Musik"]
+  },
+  {
+    "technicalId": "businesswoman",
+    "displayNameDe": "Geschäftsfrau",
+    "tags": ["Person", "Frau", "beruflich", "Mitarbeiterin"]
+  },
+  {
+    "technicalId": "businessman",
+    "displayNameDe": "Geschäftsmann",
+    "tags": ["Mann", "Person", "Mitarbeiter", "Mensch"]
+  },
+  {
+    "technicalId": "gift",
+    "displayNameDe": "Geschenk",
+    "tags": ["Feier", "Geburtstag", "Paket", "geldwerte Vorteil"]
+  },
+  {
+    "technicalId": "piano",
+    "displayNameDe": "Piano",
+    "tags": ["Musik", "Rhythmus"]
+  },
+  {
+    "technicalId": "face-happy",
+    "displayNameDe": "Gesicht glücklich",
+    "tags": ["positiv", "zufrieden", "happy"]
+  },
+  {
+    "technicalId": "flag-position",
+    "displayNameDe": "Fahne Position",
+    "tags": ["Etappe"]
+  },
+  {
+    "technicalId": "hands-baton",
+    "displayNameDe": "Hände Staffelstab",
+    "tags": ["Wechsel", "Übergabe"]
+  },
+  {
+    "technicalId": "singing",
+    "displayNameDe": "Gesang",
+    "tags": ["Lied", "Ton", "singen"]
+  },
+  {
+    "technicalId": "saxophone",
+    "displayNameDe": "Saxophon",
+    "tags": ["Musik", "Rhythmus"]
+  },
+  {
+    "technicalId": "business",
+    "displayNameDe": "Geschäft",
+    "tags": ["verkaufen", "Angebote", "kaufen", "Produkt"]
+  },
+  {
+    "technicalId": "face-sad",
+    "displayNameDe": "Gesicht traurig",
+    "tags": ["unzufrieden", "unglücklich", "negativ", "sad"]
+  },
+  {
+    "technicalId": "rotate-device",
+    "displayNameDe": "Gerät drehen",
+    "tags": ["Handy", "umdrehen", "Device", "kippen"]
+  },
+  {
+    "technicalId": "face-neutral",
+    "displayNameDe": "Gesicht neutral",
+    "tags": ["neutral", "unentschieden", "nicht festgelegt"]
+  },
+  {
+    "technicalId": "banknote",
+    "displayNameDe": "Geldschein",
+    "tags": ["Währung", "Finanzen", "Euro"]
+  },
+  {
+    "technicalId": "guitar",
+    "displayNameDe": "Gitarre",
+    "tags": ["Rhythmus", "Musik"]
+  },
+  {
+    "technicalId": "banknotes",
+    "displayNameDe": "Geldscheine",
+    "tags": ["Wert", "Kapital", "Kosten", "Euro"]
+  },
+  {
+    "technicalId": "jam",
+    "displayNameDe": "Marmelade",
+    "tags": ["Gelee", "Konfitüre"]
+  },
+  {
+    "technicalId": "banknote-hand",
+    "displayNameDe": "Geldschein Hand",
+    "tags": ["Banknote", "Kapitalabrufe", "Währung", "Zahlung"]
+  },
+  {
+    "technicalId": "money-bag",
+    "displayNameDe": "Geldsack",
+    "tags": ["Fonds", "Euro", "Anlage", "Wert"]
+  },
+  {
+    "technicalId": "walking",
+    "displayNameDe": "gehen",
+    "tags": ["Wege", "Transfer", "Standortwechsel", "Strecke"]
+  },
+  {
+    "technicalId": "ship-sailboat-water",
+    "displayNameDe": "Schiff (Segelboot) Wasser",
+    "tags": ["Boot", "Fluss", "Reise", "Meer"]
+  },
+  {
+    "technicalId": "football",
+    "displayNameDe": "Fußball",
+    "tags": ["Mannschaft", "Betriebssport", "Sportförderung", "Freizeit", "Team"]
+  },
+  {
+    "technicalId": "lightning",
+    "displayNameDe": "Blitz",
+    "tags": ["blitzen", "Achtung", "Vorsicht", "Warnung"]
+  },
+  {
+    "technicalId": "forklift",
+    "displayNameDe": "Gabelstapler",
+    "tags": ["Fahrzeug", "bauen"]
+  },
+  {
+    "technicalId": "ship-speedboat-water",
+    "displayNameDe": "Schiff (Speedboot) Wasser",
+    "tags": ["Boot", "Fluss", "Reise", "Meer"]
+  },
+  {
+    "technicalId": "casual-clothes",
+    "displayNameDe": "Freizeitkleidung",
+    "tags": ["Kleidung", "privat", "Entspannung"]
+  },
+  {
+    "technicalId": "flipchart-paper",
+    "displayNameDe": "Flipchartpapier",
+    "tags": ["Papierblock", "Vorstellung", "Notizen"]
+  },
+  {
+    "technicalId": "beaver",
+    "displayNameDe": "Biber",
+    "tags": []
+  },
+  {
+    "technicalId": "airplane",
+    "displayNameDe": "Flugzeug",
+    "tags": ["Reisen", "Anreise", "Transport", "Dienstreise"]
+  },
+  {
+    "technicalId": "flipchart",
+    "displayNameDe": "Flipchart",
+    "tags": ["Vorstellung", "Notizen", "Präsentation"]
+  },
+  {
+    "technicalId": "fingerprint",
+    "displayNameDe": "Fingerabdruck",
+    "tags": ["Sicherheit", "Abdruck", "persönlich"]
+  },
+  {
+    "technicalId": "bottle-glass",
+    "displayNameDe": "Flasche Glas",
+    "tags": ["Gastronomie", "Gaststätte", "trinken", "Nahrung", "essen"]
+  },
+  {
+    "technicalId": "financial-house",
+    "displayNameDe": "Finanzhaus",
+    "tags": ["Gebäude", "Finanzen"]
+  },
+  {
+    "technicalId": "window",
+    "displayNameDe": "Fenster",
+    "tags": ["Haus", "Fensterscheibe", "Auslage"]
+  },
+  {
+    "technicalId": "ruble",
+    "displayNameDe": "Rubel",
+    "tags": ["Geld", "Symbol", "Währung", "Russland"]
+  },
+  {
+    "technicalId": "dollar",
+    "displayNameDe": "Dollar",
+    "tags": ["Symbol", "Währung", "USA", "Geld"]
+  },
+  {
+    "technicalId": "island",
+    "displayNameDe": "Insel",
+    "tags": ["Strand", "Sommer", "Urlaub", "Palme"]
+  },
+  {
+    "technicalId": "hotel-bellboy",
+    "displayNameDe": "Hotel Page",
+    "tags": ["Unterkunft", "Service", "Information", "Hotel"]
+  },
+  {
+    "technicalId": "hotel",
+    "displayNameDe": "Hotel",
+    "tags": ["Unterkunft", "Gebäude", "übernachten"]
+  },
+  {
+    "technicalId": "hotel-bellboy-euro",
+    "displayNameDe": "Hotel Page Euro",
+    "tags": ["Währung", "Immobilienvermögen Hotel", "Unterkunft", "Hotel"]
+  },
+  {
+    "technicalId": "honey",
+    "displayNameDe": "Honig",
+    "tags": ["Natur", "Bienen", "Honigertrag Bienenvölker", "Honig"]
+  },
+  {
+    "technicalId": "trousers",
+    "displayNameDe": "Hose",
+    "tags": ["Bekleidung", "Jeans", "Kleidung"]
+  },
+  {
+    "technicalId": "skyscraper-world-globe",
+    "displayNameDe": "Hochhaus Weltkugel",
+    "tags": ["Hochhaus", "Anteil Immobilien weltweit", "Globus", "Gebäude"]
+  },
+  {
+    "technicalId": "skyscraper-sun-bench",
+    "displayNameDe": "Hochhaus Sonne Bank",
+    "tags": ["Quality of Stay", "Haus", "Hotel"]
+  },
+  {
+    "technicalId": "skyscraper",
+    "displayNameDe": "Hochhaus",
+    "tags": ["Gebäude", "Objekt", "Art des Objektes"]
+  },
+  {
+    "technicalId": "bull-bear",
+    "displayNameDe": "Bulle/Bär",
+    "tags": ["Baisse", "Kurse", "Hausse", "Aktien"]
+  },
+  {
+    "technicalId": "skyscraper-measures",
+    "displayNameDe": "Hochhaus Maße",
+    "tags": ["Anzahl Projektentwicklungen", "Hochhaus", "Projekt", "Gebäude"]
+  },
+  {
+    "technicalId": "skyscraper-percent",
+    "displayNameDe": "Hochhaus Prozent",
+    "tags": ["Unterkunft", "Eintrag", "mieten", "Vermietungsquote"]
+  },
+  {
+    "technicalId": "skyscraper-curve",
+    "displayNameDe": "Hochhaus Kurve",
+    "tags": ["Steigung", "Wachstum", "wachsende Unternehmen"]
+  },
+  {
+    "technicalId": "skyscraper-euro",
+    "displayNameDe": "Hochhaus Euro",
+    "tags": ["Währung", "Wert", "Immobilienvermögen", "Immobilie"]
+  },
+  {
+    "technicalId": "skyscrapers",
+    "displayNameDe": "Hochhäuser",
+    "tags": ["Anzahl Objekte", "Gebäude", "Objekte"]
+  },
+  {
+    "technicalId": "skyscraper-badge",
+    "displayNameDe": "Hochhaus Abzeichen",
+    "tags": ["ausgezeichnetes Unternehmen", "Hochhaus Badge", "Unternehmen", "Haus"]
+  },
+  {
+    "technicalId": "heart-curve",
+    "displayNameDe": "Herz Kurve",
+    "tags": ["Gesundheit", "Versicherung", "Leben", "Herz"]
+  },
+  {
+    "technicalId": "shirt",
+    "displayNameDe": "Hemd",
+    "tags": ["Bekleidung", "Beruf", "formell", "Arbeitskleidung"]
+  },
+  {
+    "technicalId": "house",
+    "displayNameDe": "Haus",
+    "tags": ["Gebäude", "Immobilie"]
+  },
+  {
+    "technicalId": "hands",
+    "displayNameDe": "Hände",
+    "tags": ["Gruppe", "Team", "Vier"]
+  },
+  {
+    "technicalId": "light-bulb-brain",
+    "displayNameDe": "Glühbirne Gehirn",
+    "tags": ["Idee", "Künstliche Intelligenz", "Intelligenz", "Licht"]
+  },
+  {
+    "technicalId": "people-speech-bubble-card",
+    "displayNameDe": "Personen Sprechblase Karte",
+    "tags": ["Bildung", "Konversation Karte", "Lehrgespräch mit Kartenabfrage", "Kontakt"]
+  },
+  {
+    "technicalId": "house-star",
+    "displayNameDe": "Haus Stern",
+    "tags": ["Besonderheiten des Gebäudes", "Auszeichnung", "Gebäude", "Stern"]
+  },
+  {
+    "technicalId": "people-file",
+    "displayNameDe": "Personen Dokument",
+    "tags": ["Partnerschaft", "Unterlagen", "Partnerarbeit"]
+  },
+  {
+    "technicalId": "petrol-pump",
+    "displayNameDe": "Zapfsäule",
+    "tags": ["Sprit", "Tankstelle", "Diesel", "Benzin"]
+  },
+  {
+    "technicalId": "people-files",
+    "displayNameDe": "Personen Dokumente",
+    "tags": ["strukturierte Partnerarbeit", "Struktur", "Dokument", "Partner"]
+  },
+  {
+    "technicalId": "organizational-chart",
+    "displayNameDe": "Organigramm",
+    "tags": ["Struktur", "Hierachien", "Organisation", "Position"]
+  },
+  {
+    "technicalId": "house-speech-bubble",
+    "displayNameDe": "Haus Sprechblase",
+    "tags": ["Repräsentant", "Hausmeinungsverantwortliche", "Meinung", "Kommunikation"]
+  },
+  {
+    "technicalId": "flowchart",
+    "displayNameDe": "Flussdiagramm",
+    "tags": ["Ablauf", "Prozess", "Projekt"]
+  },
+  {
+    "technicalId": "house-percent",
+    "displayNameDe": "Haus Prozent",
+    "tags": ["Immobilien", "Quoten", "mieten", "Vermietungsquote"]
+  },
+  {
+    "technicalId": "person-newspaper",
+    "displayNameDe": "Person Zeitung",
+    "tags": ["Neuigkeiten", "News", "Magazin", "Zeitung"]
+  },
+  {
+    "technicalId": "house-protective-shield",
+    "displayNameDe": "Haus Schutzschild",
+    "tags": ["Gebäude", "Immobilie", "Versicherungen", "Haus"]
+  },
+  {
+    "technicalId": "person-vr-glasses",
+    "displayNameDe": "Person VR-Brille",
+    "tags": ["Virtual Reality", "Display", "Virtuelle Realität", "Simulation"]
+  },
+  {
+    "technicalId": "house-arrow-down",
+    "displayNameDe": "Haus Pfeil unten",
+    "tags": ["Haus", "senken", "Pfeil unten"]
+  },
+  {
+    "technicalId": "robot",
+    "displayNameDe": "Roboter",
+    "tags": ["Maschine", "Apparat", "Bot"]
+  },
+  {
+    "technicalId": "fuel-tap",
+    "displayNameDe": "Zapfhahn",
+    "tags": ["Benzin", "Diesel", "tanken"]
+  },
+  {
+    "technicalId": "person",
+    "displayNameDe": "Person",
+    "tags": ["Mitarbeiter", "Login", "Kontakt", "Mensch"]
+  },
+  {
+    "technicalId": "person-steering-wheel-euro",
+    "displayNameDe": "Person Steuerrad Euro",
+    "tags": ["Banksteuerer", "Kapitän", "Lenker", "Leiter"]
+  },
+  {
+    "technicalId": "person-steering-wheel",
+    "displayNameDe": "Person Steuerrad",
+    "tags": ["Kapitän", "Lenker", "Leiter"]
+  },
+  {
+    "technicalId": "euro-lock",
+    "displayNameDe": "Euro Schloss",
+    "tags": ["Fixed Income", "EInkommen", "Festzins", "festverzinslich", "Zinsen"]
+  },
+  {
+    "technicalId": "person-cross-legged-seat",
+    "displayNameDe": "Person Schneidersitz",
+    "tags": ["Mensch", "Wellness", "Entspannung", "Yoga"]
+  },
+  {
+    "technicalId": "person-euro",
+    "displayNameDe": "Person Euro",
+    "tags": ["Gehalt", "Personalkosten"]
+  },
+  {
+    "technicalId": "person-file",
+    "displayNameDe": "Person Dokument",
+    "tags": ["Bewerbung", "Auswahl", "Einstellung", "Unterlagen"]
+  },
+  {
+    "technicalId": "person-entrance",
+    "displayNameDe": "Person Eingang",
+    "tags": ["Entrance", "Zutritt", "Tür"]
+  },
+  {
+    "technicalId": "person-glasses",
+    "displayNameDe": "Person Brille",
+    "tags": ["Brille", "Mensch", "sehen", "Brillenträger"]
+  },
+  {
+    "technicalId": "parking-lot",
+    "displayNameDe": "Parkplatz",
+    "tags": ["Stellplatz", "öffentlicher Parkplatz", "Parkhaus", "Auto"]
+  },
+  {
+    "technicalId": "book-open",
+    "displayNameDe": "Buch offen",
+    "tags": ["lesen", "Buch", "offen"]
+  },
+  {
+    "technicalId": "person-belly-star",
+    "displayNameDe": "Person Bauch Stern",
+    "tags": ["Mensch", "Bauchgefühl"]
+  },
+  {
+    "technicalId": "fountain",
+    "displayNameDe": "Brunnen",
+    "tags": ["Fontäne", "Wasser"]
+  },
+  {
+    "technicalId": "book-bookmark",
+    "displayNameDe": "Buch Lesezeichen",
+    "tags": ["Markierung", "Lesezeichen", "später lesen"]
+  },
+  {
+    "technicalId": "letter",
+    "displayNameDe": "Brief",
+    "tags": ["Umschlag", "schreiben", "Kommunikation", "Nachricht"]
+  },
+  {
+    "technicalId": "paragraph",
+    "displayNameDe": "Paragraph\n",
+    "tags": ["Bedingungen", "Anspruch", "Recht"]
+  },
+  {
+    "technicalId": "buttons-tap",
+    "displayNameDe": "Schaltflächen tippen",
+    "tags": ["antippen", "wählen", "UI-Portal"]
+  },
+  {
+    "technicalId": "parking",
+    "displayNameDe": "parken",
+    "tags": ["Parkplatz", "Auto", "Anfahrt", "Parkhaus"]
+  },
+  {
+    "technicalId": "gas-flame",
+    "displayNameDe": "Gasflamme",
+    "tags": ["Gas", "heizen", "Rohstoff", "verbrennen"]
+  },
+  {
+    "technicalId": "letter-sent",
+    "displayNameDe": "Brief senden",
+    "tags": ["Kommunikation", "Brief", "E-Mail"]
+  },
+  {
+    "technicalId": "paragraph-euro",
+    "displayNameDe": "Paragraph Euro",
+    "tags": ["Anspruch", "Gesetz", "gesetzliche Zahlungen", "Recht"]
+  },
+  {
+    "technicalId": "brain",
+    "displayNameDe": "Gehirn",
+    "tags": ["Artifical Intelligence", "Synapsen", "KI", "Künstliche Intelligenz", "AI"]
+  },
+  {
+    "technicalId": "couple",
+    "displayNameDe": "Paar",
+    "tags": ["Freizeit", "Ehe", "Familien"]
+  },
+  {
+    "technicalId": "blog",
+    "displayNameDe": "Blog",
+    "tags": ["Weblog", "Internettagebuch"]
+  },
+  {
+    "technicalId": "candy",
+    "displayNameDe": "Bonbon",
+    "tags": ["Freizeit", "Süßigkeit", "Snack", "Essen"]
+  },
+  {
+    "technicalId": "couple-running",
+    "displayNameDe": "Paar laufen",
+    "tags": ["Chase Lauf", "Personen", "Menschen", "Sport"]
+  },
+  {
+    "technicalId": "billiard-ball",
+    "displayNameDe": "Billardkugel",
+    "tags": ["Billard", "Freizeit", "Spiel", "Entspannung"]
+  },
+  {
+    "technicalId": "sun",
+    "displayNameDe": "Sonne",
+    "tags": ["sonnig", "hell", "schönes Wetter"]
+  },
+  {
+    "technicalId": "location-street",
+    "displayNameDe": "Ort Straße",
+    "tags": ["gute Infrastruktur", "zentrale Lage", "Location", "zentrale Lage Straße", "Infrastruktur"]
+  },
+  {
+    "technicalId": "sun-water",
+    "displayNameDe": "Sonne Wasser",
+    "tags": ["Water view", "Wetter", "Sonnenuntergang"]
+  },
+  {
+    "technicalId": "bitcoin",
+    "displayNameDe": "Bitcoin",
+    "tags": ["Geld", "Wert", "Währung", "Kryptowährung"]
+  },
+  {
+    "technicalId": "location",
+    "displayNameDe": "Ort",
+    "tags": ["Fokus", "zentrale Lage", "Karte", "Location"]
+  },
+  {
+    "technicalId": "solar-energy",
+    "displayNameDe": "Solarenergie",
+    "tags": ["Strom", "Sonne", "Nachhaltigkeit"]
+  },
+  {
+    "technicalId": "armchair",
+    "displayNameDe": "Sessel",
+    "tags": ["Haushalt", "Freitzeit", "Ausstattung", "Möbel"]
+  },
+  {
+    "technicalId": "screen-person",
+    "displayNameDe": "Bildschirm Person",
+    "tags": ["Laptop", "Screen", "Person"]
+  },
+  {
+    "technicalId": "folder-book-leaned",
+    "displayNameDe": "Ordnerbuch angelehnt",
+    "tags": ["Akten", "Ordnerbuch", "Bildung", "Ordner"]
+  },
+  {
+    "technicalId": "skier",
+    "displayNameDe": "Skifahrer",
+    "tags": ["Talfahrt", "Piste", "Kurs", "Urlaub"]
+  },
+  {
+    "technicalId": "screen",
+    "displayNameDe": "Bildschirm",
+    "tags": ["Laptop", "Technik", "Screen"]
+  },
+  {
+    "technicalId": "folder-book",
+    "displayNameDe": "Ordnerbuch",
+    "tags": ["Ansammlung", "Reihe", "Ordner"]
+  },
+  {
+    "technicalId": "sparkling-wine",
+    "displayNameDe": "Sekt",
+    "tags": ["trinken", "Empfang", "Getränke", "Glas"]
+  },
+  {
+    "technicalId": "image",
+    "displayNameDe": "Bild",
+    "tags": ["Dokument Image", "Abbildung", "Porträt"]
+  },
+  {
+    "technicalId": "mountain-goal",
+    "displayNameDe": "Berg/Ziel",
+    "tags": ["Berg", "Gipfel", "Plan", "Mission"]
+  },
+  {
+    "technicalId": "sdg-circle",
+    "displayNameDe": "SDG Kreis",
+    "tags": ["Development", "Goals", "Ziele der UN", "Sustainable"]
+  },
+  {
+    "technicalId": "cutlery-euro",
+    "displayNameDe": "Besteck Euro",
+    "tags": ["Gastronomie", "Essen", "Euro", "bezuschusstes Mittagessen"]
+  },
+  {
+    "technicalId": "fluctuation-range",
+    "displayNameDe": "Schwankungsbereich",
+    "tags": ["Schwankung", "wechselhaft", "definierter Schwankungsbereich"]
+  },
+  {
+    "technicalId": "magnifying-glass-curve",
+    "displayNameDe": "Lupe Kurve",
+    "tags": ["Energiemonitoring", "Verbrauch", "Energie"]
+  },
+  {
+    "technicalId": "skyscraper-arrow",
+    "displayNameDe": "Hochhaus Pfeil",
+    "tags": ["Energieeinsparung", "Senkung", "Energie"]
+  },
+  {
+    "technicalId": "clothing",
+    "displayNameDe": "Bekleidung",
+    "tags": ["Dresscode", "T-Shirt"]
+  },
+  {
+    "technicalId": "tree-fruits",
+    "displayNameDe": "Baum Früchte",
+    "tags": ["Baum", "Ernte", "Natur"]
+  },
+  {
+    "technicalId": "protective-shield-plus",
+    "displayNameDe": "Schutzschild Plus",
+    "tags": ["Planung", "Vorsorge", "Plus"]
+  },
+  {
+    "technicalId": "tree",
+    "displayNameDe": "Baum",
+    "tags": ["Nachhaltigkeit", "Umwelt", "ökologisch"]
+  },
+  {
+    "technicalId": "fluctuating-rate",
+    "displayNameDe": "schwankender Kurs",
+    "tags": ["Kurs", "pendelnd", "wechselhaft"]
+  },
+  {
+    "technicalId": "bank-card",
+    "displayNameDe": "Bankkarte",
+    "tags": ["Ertragsverwendung", "Kapital", "Karte"]
+  },
+  {
+    "technicalId": "protective-shield-hook",
+    "displayNameDe": "Schutzschild Haken",
+    "tags": ["Schutzschild bestätigen", "Schild", "garantierter Mindestanteilswert", "Sicherheit"]
+  },
+  {
+    "technicalId": "bank",
+    "displayNameDe": "Bank\n",
+    "tags": ["Zentralbank", "Institution", "Behörde"]
+  },
+  {
+    "technicalId": "server",
+    "displayNameDe": "Server",
+    "tags": ["Rechner", "Datenbank", "Netzwerk", "Schrank"]
+  },
+  {
+    "technicalId": "protective-shield-euro",
+    "displayNameDe": "Schutzschild Euro",
+    "tags": ["Währung", "Schutzschild", "Sicherheit", "Euro"]
+  },
+  {
+    "technicalId": "share-price-negativ-person",
+    "displayNameDe": "Kurs Chart negativ Person",
+    "tags": ["Kursverlust", "Verlust", "Person"]
+  },
+  {
+    "technicalId": "snowflake",
+    "displayNameDe": "Schneeflocke",
+    "tags": ["Winter", "kalt", "Schnee"]
+  },
+  {
+    "technicalId": "baby",
+    "displayNameDe": "Baby",
+    "tags": ["Betreuung", "Zukunft", "Kinder"]
+  },
+  {
+    "technicalId": "house-cross",
+    "displayNameDe": "Haus Kreuz",
+    "tags": ["Haus", "Gebäude", "geschlossene Fonds", "abbrechen"]
+  },
+  {
+    "technicalId": "sign-forbidden",
+    "displayNameDe": "Schild Verboten",
+    "tags": ["Stopp", "No Go", "Nein", "Ausschlusskriterium"]
+  },
+  {
+    "technicalId": "award-second",
+    "displayNameDe": "Auszeichnung Zweiter",
+    "tags": ["Konkurrenz", "Badge", "Zertifikat"]
+  },
+  {
+    "technicalId": "house-measures",
+    "displayNameDe": "Haus Maße",
+    "tags": ["Größe", "Fläche", "Quadratmeter"]
+  },
+  {
+    "technicalId": "car",
+    "displayNameDe": "Auto",
+    "tags": ["Fahrzeug", "Dienstfahrzeug", "Dienstwagen", "beruflich"]
+  },
+  {
+    "technicalId": "award-first",
+    "displayNameDe": "Auszeichnung Erster",
+    "tags": ["Zertifikat", "Badge", "Konkurrenz"]
+  },
+  {
+    "technicalId": "ship-water",
+    "displayNameDe": "Schiff Wasser",
+    "tags": ["Reise", "Fluss", "Boot", "Meer"]
+  },
+  {
+    "technicalId": "house-euro",
+    "displayNameDe": "Haus Euro",
+    "tags": ["Kaufpreis", "Miete", "Kauf", "Mietpreis"]
+  },
+  {
+    "technicalId": "house-hook",
+    "displayNameDe": "Haus Haken",
+    "tags": ["Haus bestätigen", "offene Fonds", "Haus", "Gebäude"]
+  },
+  {
+    "technicalId": "award-third",
+    "displayNameDe": "Auszeichnung Dritter",
+    "tags": ["Zertifikat", "Badge", "Konkurrenz"]
+  },
+  {
+    "technicalId": "slider",
+    "displayNameDe": "Schieberegler",
+    "tags": ["einstellen", "Abakus", "verschieben"]
+  },
+  {
+    "technicalId": "house-skyscraper",
+    "displayNameDe": "Haus Hochhaus",
+    "tags": ["Immobilien", "Hochhaus", "Haus", "Gebäude"]
+  },
+  {
+    "technicalId": "laptop-code",
+    "displayNameDe": "Laptop Code",
+    "tags": ["Programmierung", "Software-Entwicklung"]
+  },
+  {
+    "technicalId": "chess-piece",
+    "displayNameDe": "Schachfigur",
+    "tags": ["Strategie", "Springer", "Pferd"]
+  },
+  {
+    "technicalId": "rocking-horse",
+    "displayNameDe": "Schaukelpferd",
+    "tags": ["Kinder", "Freizeit", "Spielzeug", "Kinderbetreuung"]
+  },
+  {
+    "technicalId": "person-code",
+    "displayNameDe": "Person Code",
+    "tags": ["Software-Entwickler", "Programmierer"]
+  },
+  {
+    "technicalId": "dumbbell",
+    "displayNameDe": "Hantel",
+    "tags": ["Gewicht", "Hand", "Kraft"]
+  },
+  {
+    "technicalId": "saw",
+    "displayNameDe": "Säge",
+    "tags": ["Schwankung", "Handwerk", "aufwärts", "Sägezahn"]
+  },
+  {
+    "technicalId": "house-bed",
+    "displayNameDe": "Haus Bett",
+    "tags": ["Bett", "Gebäude", "Anzahl Zimmer", "Unterkunft"]
+  },
+  {
+    "technicalId": "hourglass",
+    "displayNameDe": "Sanduhr",
+    "tags": ["Zeitfrist", "Laufzeitende"]
+  },
+  {
+    "technicalId": "dumbbell-weigth",
+    "displayNameDe": "Hantel Gewicht",
+    "tags": ["Gewicht", "Kraft", "Sport"]
+  },
+  {
+    "technicalId": "hand-plant",
+    "displayNameDe": "Hand Pflanze",
+    "tags": ["Nachhaltigkeit", "Spross", "alternative Anlagen", "Wachstum"]
+  },
+  {
+    "technicalId": "handshake",
+    "displayNameDe": "Handschlag",
+    "tags": ["partnerschaftliches Unternehmen", "Vertragsabschluss", "Partnerschaft", "Partner"]
+  },
+  {
+    "technicalId": "group-presentation",
+    "displayNameDe": "Gruppe Vorstellung",
+    "tags": ["Präsentation", "Vorstellung", "Vorstellungsrunde", "Vortrag"]
+  },
+  {
+    "technicalId": "group-speech-bubble",
+    "displayNameDe": "Gruppe Sprechblase",
+    "tags": ["Feedbackrunde", "Feedback", "Gruppe", "Rückmeldung"]
+  },
+  {
+    "technicalId": "group-file",
+    "displayNameDe": "Gruppe Dokument",
+    "tags": ["Besprechung", "Kontakt", "Person", "Gruppenarbeit"]
+  },
+  {
+    "technicalId": "group-mask",
+    "displayNameDe": "Gruppe Maske",
+    "tags": ["Gruppenspiele", "Theater", "Show", "Unterhaltung"]
+  },
+  {
+    "technicalId": "plot-world-globe",
+    "displayNameDe": "Grundstück Weltkugel",
+    "tags": ["Grundstück", "weltweit", "Fläche"]
+  },
+  {
+    "technicalId": "plot-useable-area",
+    "displayNameDe": "Grundstück Nutzfläche",
+    "tags": ["Nutzfläche", "Nutzung", "Immobilien", "Fläche"]
+  },
+  {
+    "technicalId": "plot-rental-area",
+    "displayNameDe": "Grundstück Mietfläche",
+    "tags": ["Immobilien", "Fläche", "Mietfläche", "mieten"]
+  },
+  {
+    "technicalId": "arrows-compare",
+    "displayNameDe": "Pfeile Vergleich",
+    "tags": ["vergleichen", "gegenüberstellen", "wechseln", "tauschen"]
+  },
+  {
+    "technicalId": "plot-size",
+    "displayNameDe": "Grundstück Größe",
+    "tags": ["Grundstücksgröße", "Grundstück", "Immobilien", "Fläche"]
+  },
+  {
+    "technicalId": "grandmother",
+    "displayNameDe": "Großmutter",
+    "tags": ["Oma", "Rente", "Altersvorsorge"]
+  },
+  {
+    "technicalId": "grandfather-coins",
+    "displayNameDe": "Großvater Münzen",
+    "tags": ["Vorsorge", "Opa", "Riester-Rente", "Rente"]
+  },
+  {
+    "technicalId": "gold-bar",
+    "displayNameDe": "Goldbarren",
+    "tags": ["Anlage", "investieren", "Gold", "Wert"]
+  },
+  {
+    "technicalId": "grandmother-euro",
+    "displayNameDe": "Großmutter Euro",
+    "tags": ["Rente", "Vorsorge", "sparen"]
+  },
+  {
+    "technicalId": "light-bulb",
+    "displayNameDe": "Glühbirne",
+    "tags": ["Idee", "Wissen", "eigene Ideen", "Licht"]
+  },
+  {
+    "technicalId": "globe",
+    "displayNameDe": "Globus",
+    "tags": ["Kugel", "global", "Welt"]
+  },
+  {
+    "technicalId": "weight-euro",
+    "displayNameDe": "Gewicht Euro",
+    "tags": ["Gewicht", "Fonds", "Fondsvolumen", "Euro"]
+  }
+]

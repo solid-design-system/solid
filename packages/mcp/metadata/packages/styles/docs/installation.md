@@ -1,0 +1,283 @@
+# Installation
+
+You can load Solid via CDN or by installing it locally.
+
+<sd-notification type="info" open id="versioning-info">
+  The `components`, `styles`, and `tokens` packages now always share the same version. We use fixed versioning to keep
+  them fully in sync, so every release updates all three packages, even if only one of them changed. Make sure to
+  install or update them using the same version number.
+</sd-notification>
+
+## Prerequisites
+
+### Theme
+
+Solid Styles come without any theme or font by default. Ensure to follow the installation guidelines from [@solid-design-system/tokens](?path=/docs/packages-tokens-installation--docs) to include a fitting theme in your project.
+
+### Fonts
+
+Solid Styles don't provide any fonts, you have to include them yourself.
+We recommend using the CDN of `global-resources` by the CMS project.
+(Please reach out to brand department if you want to self-host the font.)
+The following CSS gives you a jump start. Please make sure to change `latest`
+to a concrete package version you want to use.
+
+<sd-accordion summary="Example CSS">
+
+```css
+body {
+  font-family:
+    'Frutiger Neue',
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    'Noto Sans',
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji';
+}
+
+@font-face {
+  font-family: 'Frutiger Neue';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-Bk.woff2')
+    format('woff2');
+}
+
+@font-face {
+  font-family: 'Frutiger Neue';
+  font-style: italic;
+  font-weight: 400;
+  src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-BkIt.woff2')
+    format('woff2');
+}
+
+@font-face {
+  font-family: 'Frutiger Neue';
+  font-style: normal;
+  font-weight: 600;
+  src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-Bd.woff2')
+    format('woff2');
+}
+
+@font-face {
+  font-family: 'Frutiger Neue';
+  font-style: italic;
+  font-weight: 600;
+  src: url('https://global-resources.fe.union-investment.de/latest/fonts/frutiger-neue/FrutigerNeuefuerUIWebW05-BdIt.woff2')
+    format('woff2');
+}
+```
+
+</sd-accordion>
+
+To improve font rendering, the following CSS has to be added to your project as well:
+
+<sd-accordion summary="Example CSS">
+
+```css
+/**
+  * Render Neue Frutiger correctly.
+  */
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  font-size: 16px;
+}
+```
+
+</sd-accordion>
+
+### Normalizing browser styles
+
+We recommend using [normalize.css](https://necolas.github.io/normalize.css/) or similar.
+This will handle cross-browser inconsistencies and set furthermore some improvements,
+e. g. regarding improved line-heights for `<sub>` and `<sup>` elements.
+If you don't want to use normalize.css, you should at least reset
+the line-heights for `<sub>` and `<sup>` elements, as shown below.
+
+<sd-accordion summary="Example CSS">
+
+```css
+/**
+  * Prevent `sub` and `sup` elements from affecting the line height in
+  * all browsers.
+  */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+```
+
+</sd-accordion>
+
+### Versioned vs. unversioned styles
+
+When using styles from Solid Design System in microfrontends, versioned components can be used. While their are strongly recommended for `@solid-design-system/styles`,
+versioning is less important for `@solid-design-system/styles` due to the lightweight approach and given encapsulation in ShadowDOMs.
+Including version numbers in component names provides more control over updates and prevents collisions when different versions of the same component are used simultaneously.
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="unversioned"> Unversioned </sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="versioned"> Versioned </sd-tab>
+  <sd-tab-panel name="unversioned">
+    ```html
+    <mark class="sd-mark">Lorem ipsum</mark>
+    ```
+  </sd-tab-panel>
+  <sd-tab-panel name="versioned">
+    ```html
+    <mark class="sd-%DASHED-STYLES-VERSION%-mark">Lorem ipsum</mark>
+    ```
+  </sd-tab-panel>
+</sd-tab-group>
+
+## CDN Installation
+
+### Bundle
+
+The CDN Bundle registers all Solid elements up front. Note that, if you're only using a handful of components, it could be more efficient [cherry pick](#cherry-picking) components if you want to load specific ones up front.
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="unversioned">Unversioned</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="versioned">Versioned</sd-tab>
+  <sd-tab-panel name="unversioned">
+    ```html
+    <link
+      rel="stylesheet"
+      href="https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%/cdn/solid-styles.css"
+    />
+    ```
+  </sd-tab-panel>
+  <sd-tab-panel name="versioned">
+    ```html
+    <link
+      rel="stylesheet"
+      href="https://solid-design-system.fe.union-investment.de/styles/%STYLES-VERSION%/cdn-versioned/solid-styles.css"
+    />
+    ```
+  </sd-tab-panel>
+</sd-tab-group>
+
+## npm installation
+
+If you don't want to use the CDN, you can install Solid Styles from npm with the following command.
+
+```bash
+npm install @solid-design-system/styles
+```
+
+It's up to you to make the source files available to your app. One way to do this is to create a route in your app called `/solid` that serves static files from `node_modules/@solid-design-system/styles`.
+
+Once you've done that, add the following tags to your page. Make sure to update `href` and `src` so they point to the route you created.
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="unversioned">Unversioned</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="versioned">Versioned</sd-tab>
+  <sd-tab-panel name="unversioned">
+    ```html
+    <link rel="stylesheet" href="/solid/dist/solid-styles.css" />
+    ```
+  </sd-tab-panel>
+  <sd-tab-panel name="versioned">
+    ```html
+    <link rel="stylesheet" href="/solid/dist-versioned/solid-styles.css" />
+    ```
+  </sd-tab-panel>
+</sd-tab-group>
+
+Alternatively, you can use a bundler.
+
+## Cherry Picking
+
+Cherry picking can be done from [the CDN](#cdn-installation) or from [npm](#npm-installation). This approach will load only the styles you need up front, while limiting the number of files the browser has to download. The disadvantage is that you need to import each individual style.
+
+Here's an example that loads only the mark style that would work in Vite.
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="unversioned">Unversioned</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="versioned">Versioned</sd-tab>
+  <sd-tab-panel name="unversioned">
+  ```html
+  <script type="module">
+    import '@solid-design-system/styles/dist/modules/mark.css';
+
+    // .sd-mark is ready to use!
+
+  </script>
+  ```
+  </sd-tab-panel>
+  <sd-tab-panel name="versioned">
+  ```html
+  <script type="module">
+
+    import '@solid-design-system/styles/dist-versioned/modules/mark.css';
+
+    // .sd-%DASHED-COMPONENTS-VERSION%-mark is ready to use!
+
+  </script>
+  ```
+  </sd-tab-panel>
+</sd-tab-group>
+
+### Prose
+
+tbd.
+
+## The difference between CDN and npm
+
+CDN links all start with `/cdn/<path>` and npm imports use `/dist/<path>`. The `/cdn` files are already minified, while `npm` can be easily patched.
+
+TL;DR:
+
+<sd-tab-group>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="unversioned">Unversioned</sd-tab>
+  {/* prettier-ignore */}
+  <sd-tab slot="nav" panel="versioned">Versioned</sd-tab>
+  <sd-tab-panel name="unversioned">
+
+    - `@solid-design-system/styles/cdn` is for CDN users
+    - `@solid-design-system/styles/dist` is for npm users
+
+  </sd-tab-panel>
+  <sd-tab-panel name="versioned">
+
+    - `@solid-design-system/styles/cdn-versioned` is for CDN users
+    - `@solid-design-system/styles/dist-versioned` is for npm users
+
+  </sd-tab-panel>
+</sd-tab-group>
