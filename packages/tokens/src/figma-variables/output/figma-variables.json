@@ -3984,6 +3984,14 @@
       },
       "sd-brandshape": {
         "--white": {
+          "80": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.80)"
+              }
+            }
+          },
           "color": {
             "background": {
               "type": "color",
@@ -3997,6 +4005,58 @@
               "type": "color",
               "value": "{ui-light.utilities.color.background.neutral.100}"
             }
+          }
+        },
+        "color": {
+          "background": {
+            "_transparent": {
+              "white|80": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.80)"
+              },
+              "primary|80": {
+                "type": "color",
+                "value": "rgba(0, 53, 142, 0.80)"
+              }
+            }
+          },
+          "border": {
+            "white": {
+              "default": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.white.default}"
+              }
+            }
+          }
+        },
+        "--primary": {
+          "80": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(0, 53, 142, 0.80)"
+              }
+            }
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.default}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.default}"
+            }
+          }
+        },
+        "_internal": {
+          "slot": {
+            "type": "color",
+            "value": "#62359b"
+          },
+          "slot-inverted": {
+            "type": "color",
+            "value": "#ccb6f1"
           }
         }
       },
@@ -7305,6 +7365,14 @@
       },
       "sd-brandshape": {
         "--white": {
+          "80": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(0, 53, 142, 0.80)"
+              }
+            }
+          },
           "color": {
             "background": {
               "type": "color",
@@ -7318,6 +7386,58 @@
               "type": "color",
               "value": "{ui-dark.utilities.color.background.neutral.100}"
             }
+          }
+        },
+        "color": {
+          "background": {
+            "_transparent": {
+              "white|80": {
+                "type": "color",
+                "value": "rgba(0, 53, 142, 0.80)"
+              },
+              "primary|80": {
+                "type": "color",
+                "value": "rgba(0, 53, 142, 0.80)"
+              }
+            }
+          },
+          "border": {
+            "white": {
+              "default": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.900}"
+              }
+            }
+          }
+        },
+        "--primary": {
+          "80": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(0, 53, 142, 0.80)"
+              }
+            }
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.default}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            }
+          }
+        },
+        "_internal": {
+          "slot": {
+            "type": "color",
+            "value": "#ccb6f1"
+          },
+          "slot-inverted": {
+            "type": "color",
+            "value": "#ccb6f1"
           }
         }
       },
@@ -10626,10 +10746,18 @@
       },
       "sd-brandshape": {
         "--white": {
+          "80": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              }
+            }
+          },
           "color": {
             "background": {
               "type": "color",
-              "value": "{vb.utilities.color.background.white.default}"
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           }
         },
@@ -10637,8 +10765,60 @@
           "color": {
             "background": {
               "type": "color",
-              "value": "{vb.utilities.color.background.neutral.100}"
+              "value": "rgba(255, 255, 255, 0.00)"
             }
+          }
+        },
+        "color": {
+          "background": {
+            "_transparent": {
+              "white|80": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              },
+              "primary|80": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              }
+            }
+          },
+          "border": {
+            "white": {
+              "default": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              }
+            }
+          }
+        },
+        "--primary": {
+          "80": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              }
+            }
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "_internal": {
+          "slot": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          },
+          "slot-inverted": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
           }
         }
       },
@@ -13947,10 +14127,18 @@
       },
       "sd-brandshape": {
         "--white": {
+          "80": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              }
+            }
+          },
           "color": {
             "background": {
               "type": "color",
-              "value": "{kid.utilities.color.background.white.default}"
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           }
         },
@@ -13958,8 +14146,60 @@
           "color": {
             "background": {
               "type": "color",
-              "value": "{kid.utilities.color.background.neutral.100}"
+              "value": "rgba(255, 255, 255, 0.00)"
             }
+          }
+        },
+        "color": {
+          "background": {
+            "_transparent": {
+              "white|80": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              },
+              "primary|80": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              }
+            }
+          },
+          "border": {
+            "white": {
+              "default": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              }
+            }
+          }
+        },
+        "--primary": {
+          "80": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              }
+            }
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "_internal": {
+          "slot": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          },
+          "slot-inverted": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
           }
         }
       },

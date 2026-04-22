@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.10.0
+
+### Minor Changes
+
+- Created `sd-radio-group` templates with `help-text` and `invalid` state. _[`#2911`](https://github.com/solid-design-system/solid/pull/2911) [`a4b037c`](https://github.com/solid-design-system/solid/commit/a4b037cafa6ba84103954e2f6d72570f3ca41539) [@balco0110](https://github.com/balco0110)_
+
 ## 2.9.1
 
 ### Patch Changes

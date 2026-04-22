@@ -1,5 +1,32 @@
 # @solid-design-system/components
 
+## 6.16.1
+
+### Patch Changes
+
+- Added accessible names for `start`/`stop` autoplay button in `sd-carousel` _[`#2869`](https://github.com/solid-design-system/solid/pull/2869) [`82059a8`](https://github.com/solid-design-system/solid/commit/82059a867d4bb962d03b09f420d4807ee6991ebe) [@balco0110](https://github.com/balco0110)_
+
+## 6.16.0
+
+## 6.15.1
+
+### Patch Changes
+
+- Fixed `sd-carousel` live region behavior for screen readers and focus not preventing auto scroll _[`#2865`](https://github.com/solid-design-system/solid/pull/2865) [`ec25018`](https://github.com/solid-design-system/solid/commit/ec25018d89e0ef47fa6a3382c3aa0e6f80c36b72) [@balco0110](https://github.com/balco0110)_
+
+### 📈 Stats
+
+- Uncompressed: 611 KB (+1 KB / +0%)
+- Gzipped: 137 KB (unchanged)
+
+## 6.15.0
+
+### Minor Changes
+
+- Restrict `sd-brandshape` to `ui-light` and `ui-dark` themes. When used in other themes, it will not be displayed. _[`#2881`](https://github.com/solid-design-system/solid/pull/2881) [`ae94911`](https://github.com/solid-design-system/solid/commit/ae94911fbafa32cf6ffa6b50bd4ad6f769a6a30a) [@smfonseca](https://github.com/smfonseca)_
+
+  Use new variables to also restrict `transparent variants`.
+
 ## 6.14.1
 
 ### Patch Changes
