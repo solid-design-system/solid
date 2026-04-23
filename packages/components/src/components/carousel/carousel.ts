@@ -364,10 +364,8 @@ export default class SdCarousel extends SolidElement {
   handlePausedAutoplay() {
     if (this.pausedAutoplay) {
       this.autoplayController.stop();
-      this.autoplayControls?.setAttribute('aria-pressed', 'false');
     } else if (this.autoplay) {
       this.autoplayController.start(3000);
-      this.autoplayControls?.setAttribute('aria-pressed', 'true');
     }
   }
 
@@ -652,9 +650,7 @@ export default class SdCarousel extends SolidElement {
             !this.autoplay && '!hidden'
           )}
           part="autoplay-controls"
-          aria-label="${this.pausedAutoplay
-            ? this.localize.term('startAutoplay')
-            : this.localize.term('stopAutoplay')}"
+          aria-label="${this.pausedAutoplay ? this.localize.term('startAutoplay') : this.localize.term('stopAutoplay')}"
           aria-pressed="true"
           @click=${(e: MouseEvent) => {
             this.pausedAutoplay = !this.pausedAutoplay;
