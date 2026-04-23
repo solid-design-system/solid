@@ -9,6 +9,7 @@
     "build": "node scripts/build.js",
     "verify": "pnpm build",
     "plop": "plop --plopfile scripts/plop/plopfile.js",
+    "test": "pnpm build && node --test scripts/test.js",
     "postversion": "pnpm build"
   },
   "publishConfig": {
