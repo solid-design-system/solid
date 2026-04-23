@@ -26,6 +26,7 @@
       - [Feature-Check-In Meeting to Prepare Pull Requests](#feature-check-in-meeting-to-prepare-pull-requests)
       - [Assignees and Reviewers](#assignees-and-reviewers)
       - [Review Comments](#review-comments)
+      - [Pull Request Status](#pull-request-status)
       - [Changesets](#changesets)
       - [Special commands/suffixes](#special-commandssuffixes)
       - [Squash and Merge Your Changes](#squash-and-merge-your-changes)
@@ -240,9 +241,78 @@ To create a changeset you should navigate to the root of the project and execute
 
 Once this is done, a temporary changeset file is created on the `.changeset` folder. You can edit this file to include more detailed information about the work done. Afterwards, this file should be committed together with the remaining changes. When the pull request is created, the changesets bot will analyse the files and inform if a changeset is included or not. If you forgot to include one, you can do it and the bot will pick it up.
 
-In case your changes are not meant to trigger a release or version bump, you can commit an empty changeset, created with the command `pnpm changeset --empty`.
+In case your changes are not meant to trigger a release or version bump, you can commit an empty changeset, created with the command `pnpm changeset --empty`. They are automatically created in `.changeset`, get a random name like `happy-trees-fall.md` and will be removed automatically after merging to `main`.
 
-Please make sure to always provide detailed information in the changeset since this will be present in the package changelog.
+Please make sure to always provide useful information in the changeset since this will be present in the package changelog.
+
+Changesets should always focus the value for consumers of the Design System, less how things were done. For example, instead of writing "Added a new function to handle the click event", you should write "Added a click event to the button component". This way, the changeset is more focused on the value for the consumer and less on the technical details of how it was implemented.
+
+**Don't:**
+
+```md
+---
+'@solid-design-system/styles': patch
+---
+
+Fixes and improvements for multi-theming:
+
+- `sd-container`: fixed the triangle variable by changing the selector to target the correct element for multi-theming
+- `sd-copyright`: fixed shadow styling by switching from `box-shadow` to `text-shadow` and adjusting the values
+- `sd-footnotes`: fixed text colors by removing an unnecessary selector and adjusting the color values
+```
+
+**Do:**
+
+```md
+---
+'@solid-design-system/styles': patch
+---
+
+Fixes and improvements for multi-theming:
+
+- `sd-container`: fixed the triangle variable for multi-theming
+- `sd-copyright`: fixed shadow styling
+- `sd-footnotes`: fixed text colors
+```
+
+Split changesets into multiple files if there are multiple changes that are not related to each other.
+
+**Don't:**
+
+```md
+---
+'@solid-design-system/components': minor
+'@solid-design-system/docs': minor
+---
+
+Extended `sd-brandshape` with new transparent variants to be used on image backgrounds:
+
+- `primary|80`
+- `white|80`
+
+Added new templates showcasing usage of transparent variant `primary|80` and variant `image` together with `sd-copyright`.
+```
+
+**Do:**
+
+```md
+---
+'@solid-design-system/components': minor
+---
+
+Extended `sd-brandshape` with new transparent variants to be used on image backgrounds:
+
+- `primary|80`
+- `white|80`
+```
+
+```md
+---
+'@solid-design-system/docs': minor
+---
+
+Added new templates showcasing usage of transparent variant `primary|80` and variant `image` together with `sd-copyright`.
+```
 
 #### Special commands/suffixes
 
