@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.10.1
+
+### Patch Changes
+
+- Updated wording of primary buttons in form templates. _[`#2938`](https://github.com/solid-design-system/solid/pull/2938) [`1eb9331`](https://github.com/solid-design-system/solid/commit/1eb9331f581ab751e2614bd97df23449b1b2fa37) [@smfonseca](https://github.com/smfonseca)_
+
 ## 2.10.0
 
 ### Minor Changes
