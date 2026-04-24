@@ -1,5 +1,17 @@
 # @solid-design-system/docs
 
+## 2.10.2
+
+### Patch Changes
+
+- Updating the `sd-combobox` and `sd-select` documentation about limiting the height of the dropdown display. _[`#2946`](https://github.com/solid-design-system/solid/pull/2946) [`25ad9d4`](https://github.com/solid-design-system/solid/commit/25ad9d4389a06adabb202e312637d56558046766) [@martascorreia](https://github.com/martascorreia)_
+
+## 2.10.1
+
+### Patch Changes
+
+- Updated wording of primary buttons in form templates. _[`#2938`](https://github.com/solid-design-system/solid/pull/2938) [`1eb9331`](https://github.com/solid-design-system/solid/commit/1eb9331f581ab751e2614bd97df23449b1b2fa37) [@smfonseca](https://github.com/smfonseca)_
+
 ## 2.10.0
 
 ### Minor Changes
