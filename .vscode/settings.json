@@ -24,5 +24,6 @@
       "ignoreRegExpList": ["/package\\.json$/", "/extensions\\.json$/", "/settings\\.json$/"]
     },
     { "languageId": "yaml", "ignoreRegExpList": ["/pnpm-lock\\.yaml$/"] }
-  ]
+  ],
+  "github.copilot.chat.agentDebugLog.fileLogging.enabled": true
 }
