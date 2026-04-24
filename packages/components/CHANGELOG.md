@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.16.2
+
+### Patch Changes
+
+- Moved autoplay button in `sd-carousel` before navigation in DOM order for correct screen reader focus sequence _[`#2868`](https://github.com/solid-design-system/solid/pull/2868) [`6e80707`](https://github.com/solid-design-system/solid/commit/6e807071c898ff04644311b7b8798b0e35d26d2b) [@balco0110](https://github.com/balco0110)_
+
 ## 6.16.1
 
 ### Patch Changes
