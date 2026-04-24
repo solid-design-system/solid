@@ -16,12 +16,12 @@ export const filterTagGroup = {
   render: () => html`
     <div>
       <p class="sd-paragraph sd-paragraph--size-lg font-bold mb-4">26 Results</p>
-      <div class="sr-only">Multiple options can be selected to filter the results.</div>
+      <div class="sr-only">Select one or more options to filter the results.</div>
       <div
         id="tag-group"
         class="flex gap-4"
         role="group"
-        aria-label="Filter by tag group. (Multiple options can be selected to filter the results.)"
+        aria-label="Filter by tag group. (Select one or more options to filter the results.)"
       >
         <sd-tag toggleable selected> All (26)</sd-tag>
         <sd-tag toggleable>Funds (16)</sd-tag>
@@ -53,7 +53,7 @@ export const filterTagGroupMorningstarRating = {
         id="morningstar-tag-group"
         class="flex gap-2"
         role="group"
-        aria-label="Filter by morningstar rating. (Multiple options can be selected to filter the results.)"
+        aria-label="Filter by morningstar rating. (Select one or more options to filter the results.)"
       >
         <sd-tag toggleable selected>
           <span class="sr-only">5 stars</span>
@@ -108,7 +108,7 @@ export const filterTagGroupRisk = {
         id="risk-tag-group"
         class="flex gap-2"
         role="group"
-        aria-label="Filter by risk. (Multiple options can be selected to filter the results.)"
+        aria-label="Filter by risk. (Select one or more options to filter the results.)"
       >
         <sd-tag toggleable selected>
           <div class="h-4 w-4 border-primary-800 border-[1px] bg-(--fill-risk-veryhigh)"></div>
