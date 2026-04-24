@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.11.0
+
+### Minor Changes
+
+- Added realistic `sd-tag` template _[`#2889`](https://github.com/solid-design-system/solid/pull/2889) [`fcefc52`](https://github.com/solid-design-system/solid/commit/fcefc527acee96c23b67dc1d3e662166a01836c2) [@balco0110](https://github.com/balco0110)_
+
 ## 2.10.2
 
 ### Patch Changes
