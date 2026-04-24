@@ -91,13 +91,13 @@ jobs:
           echo "</ul></body></html>" >> deployment/index.html
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v6
+        uses: actions/upload-pages-artifact@v5
         with:
           path: "deployment"
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v6
+        uses: actions/deploy-pages@v5
 
       - name: Find existing comment
         uses: peter-evans/find-comment@v3
