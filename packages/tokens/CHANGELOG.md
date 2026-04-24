@@ -1,5 +1,15 @@
 # @solid-design-system/tokens
 
+## 6.16.1
+
+## 6.16.0
+
+### Minor Changes
+
+- Fixed missing `spacing-5` and `spacing-2.5` tokens by merging sizing tokens into spacing tokens. _[`#2846`](https://github.com/solid-design-system/solid/pull/2846) [`d7ca63e`](https://github.com/solid-design-system/solid/commit/d7ca63e738f8f8e54dc84a61523562a23c78f03c) [@Vahid1919](https://github.com/Vahid1919)_
+
+## 6.15.1
+
 ## 6.15.0
 
 ### Minor Changes
