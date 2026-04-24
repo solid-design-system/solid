@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.11.1
+
+### Patch Changes
+
+- Updated dependencies. See details in the Pull Request _[`#2912`](https://github.com/solid-design-system/solid/pull/2912) [`2f04cb8`](https://github.com/solid-design-system/solid/commit/2f04cb83148274dce3979751b3ef9ca7adc87707) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 2.11.0
 
 ### Minor Changes
