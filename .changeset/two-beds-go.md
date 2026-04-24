@@ -6,4 +6,4 @@
 '@solid-design-system/docs': patch
 ---
 
-update dependencies
+Updated dependencies. See details in the Pull Request
