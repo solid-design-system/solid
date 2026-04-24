@@ -16,7 +16,13 @@ export const filterTagGroup = {
   render: () => html`
     <div>
       <p class="sd-paragraph sd-paragraph--size-lg font-bold mb-4">26 Results</p>
-      <div id="tag-group" class="flex gap-4">
+      <div class="sr-only">Only one option can be selected at a time</div>
+      <div
+        id="tag-group"
+        class="flex gap-4"
+        role="group"
+        aria-label="Filter by tag group. (Only one option can be selected at a time)"
+      >
         <sd-tag toggleable selected> All (26)</sd-tag>
         <sd-tag toggleable>Funds (16)</sd-tag>
         <sd-tag toggleable>Sustainability (5)</sd-tag>
@@ -27,14 +33,11 @@ export const filterTagGroup = {
 
     <script type="module">
       const group = document.querySelector('#tag-group');
-
-      group.addEventListener('click', e => {
+      group.onclick = e => {
         const tag = e.target.closest('sd-tag');
         if (!tag) return;
-
-        group.querySelectorAll('sd-tag').forEach(t => t.removeAttribute('selected'));
-        tag.setAttribute('selected', '');
-      });
+        tag.selected = !tag.selected;
+      };
     </script>
   `
 };
@@ -46,35 +49,40 @@ export const filterTagGroupMorningstarRating = {
       <p class="sd-paragraph sd-paragraph--size-lg font-bold mb-4">
         Find Top-Rated Investments with Morningstar Ratings:
       </p>
-      <div id="morningstar-tag-group" class="flex gap-2" role="group" aria-label="Filter by morningstar rating">
-        <sd-tag aria-checked="true" toggleable selected>
-          <label class="sr-only">5 stars</label>
+      <div
+        id="morningstar-tag-group"
+        class="flex gap-2"
+        role="group"
+        aria-label="Filter by morningstar rating. (Only one option can be selected at a time)"
+      >
+        <sd-tag toggleable selected>
+          <span class="sr-only">5 stars</span>
           <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
           <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
           <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
           <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
           <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
         </sd-tag>
-        <sd-tag aria-checked="false" toggleable>
-          <label class="sr-only">4 stars</label>
+        <sd-tag toggleable>
+          <span class="sr-only">4 stars</span>
           <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
           <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
           <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
           <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
         </sd-tag>
-        <sd-tag aria-checked="false" toggleable>
-          <label class="sr-only">3 stars</label>
+        <sd-tag toggleable>
+          <span class="sr-only">3 stars</span>
           <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
           <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
           <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
         </sd-tag>
-        <sd-tag aria-checked="false" toggleable>
-          <label class="sr-only">2 stars</label>
+        <sd-tag toggleable>
+          <span class="sr-only">2 stars</span>
           <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
           <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
         </sd-tag>
-        <sd-tag aria-checked="false" toggleable>
-          <label class="sr-only">1 star</label>
+        <sd-tag toggleable>
+          <span class="sr-only">1 star</span>
           <sd-icon name="system/star-filled" color="currentColor"></sd-icon>
         </sd-tag>
       </div>
@@ -82,14 +90,11 @@ export const filterTagGroupMorningstarRating = {
 
     <script type="module">
       const group = document.querySelector('#morningstar-tag-group');
-
-      group.addEventListener('click', e => {
+      group.onclick = e => {
         const tag = e.target.closest('sd-tag');
         if (!tag) return;
-
-        group.querySelectorAll('sd-tag').forEach(t => t.removeAttribute('selected'));
-        tag.setAttribute('selected', '');
-      });
+        tag.selected = !tag.selected;
+      };
     </script>
   `
 };
@@ -99,29 +104,34 @@ export const filterTagGroupRisk = {
   render: () => html`
     <div>
       <p class="sd-paragraph sd-paragraph--size-lg font-bold mb-4">Risk level:</p>
-      <div id="risk-tag-group" class="flex gap-2">
+      <div
+        id="risk-tag-group"
+        class="flex gap-2"
+        role="group"
+        aria-label="Filter by risk. (Only one option can be selected at a time)"
+      >
         <sd-tag toggleable selected>
-          <div class="h-4 w-4 border-primary-800 border-[1px] bg-[var(--fill-risk-veryhigh)]"></div>
+          <div class="h-4 w-4 border-primary-800 border-[1px] bg-(--fill-risk-veryhigh)"></div>
           Very High
         </sd-tag>
 
         <sd-tag toggleable>
-          <div class="h-4 w-4 border-primary-800 border-[1px] bg-[var(--fill-risk-high)]"></div>
+          <div class="h-4 w-4 border-primary-800 border-[1px] bg-(--fill-risk-high)"></div>
           High
         </sd-tag>
 
         <sd-tag toggleable>
-          <div class="h-4 w-4 border-primary-800 border-[1px] bg-[var(--fill-risk-increased)]"></div>
+          <div class="h-4 w-4 border-primary-800 border-[1px] bg-(--fill-risk-increased)"></div>
           Increased
         </sd-tag>
 
         <sd-tag toggleable>
-          <div class="h-4 w-4 border-primary-800 border-[1px] bg-[var(--fill-risk-moderate)]"></div>
+          <div class="h-4 w-4 border-primary-800 border-[1px] bg-(--fill-risk-moderate)"></div>
           Moderate
         </sd-tag>
 
         <sd-tag toggleable>
-          <div class="h-4 w-4 border-primary-800 border-[1px] bg-[var(--fill-risk-low)]"></div>
+          <div class="h-4 w-4 border-primary-800 border-[1px] bg-(--fill-risk-low)"></div>
           Low
         </sd-tag>
       </div>
@@ -129,14 +139,11 @@ export const filterTagGroupRisk = {
 
     <script type="module">
       const group = document.querySelector('#risk-tag-group');
-
-      group.addEventListener('click', e => {
+      group.onclick = e => {
         const tag = e.target.closest('sd-tag');
         if (!tag) return;
-
-        group.querySelectorAll('sd-tag').forEach(t => t.removeAttribute('selected'));
-        tag.setAttribute('selected', '');
-      });
+        tag.selected = !tag.selected;
+      };
     </script>
   `
 };
@@ -151,21 +158,16 @@ export const removableFilterTagGroup = {
         <sd-tag removable>Bonds</sd-tag>
         <sd-tag removable>Mutual funds</sd-tag>
         <sd-tag removable>ETFs</sd-tag>
-        <sd-link
-          id="remove-filters-link"
-          href="https://solid-design-system.fe.union-investment.de/docs/"
-          class="ml-4"
-          standalone
-        >
+        <sd-button id="remove-filters-button" variant="tertiary" class="ml-4">
           <sd-icon name="system/trash" slot="icon-left"></sd-icon>
           Remove filters
-        </sd-link>
+        </sd-button>
       </div>
     </div>
 
     <script type="module">
       const filters = document.querySelector('#removable-tag-filters');
-      const removeFiltersLink = document.querySelector('#remove-filters-link');
+      const removeFiltersButton = document.querySelector('#remove-filters-button');
 
       filters.querySelectorAll('sd-tag').forEach(tag => {
         tag.addEventListener('sd-remove', () => tag.hide());
@@ -184,8 +186,7 @@ export const removableFilterTagGroup = {
         }, 1000);
       });
 
-      removeFiltersLink.addEventListener('click', event => {
-        event.preventDefault();
+      removeFiltersButton.addEventListener('click', () => {
         const tags = filters.querySelectorAll('sd-tag');
         tags.forEach(tag => tag.hide());
       });
