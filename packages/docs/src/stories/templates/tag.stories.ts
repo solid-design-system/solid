@@ -16,7 +16,6 @@ export const filterTagGroup = {
   render: () => html`
     <div>
       <p class="sd-paragraph sd-paragraph--size-lg font-bold mb-4">26 Results</p>
-      <div class="sr-only">Select one or more options to filter the results.</div>
       <div
         id="tag-group"
         class="flex gap-4"
