@@ -33,7 +33,7 @@ jobs:
         with:
           node-version: 24.14.1
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v5
         name: Install pnpm
         id: pnpm-install
         with:
@@ -65,7 +65,7 @@ jobs:
         with:
           node-version: 24.14.1
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v5
       # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
       - name: Install dependencies
         run: PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=true pnpm i
