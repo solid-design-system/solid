@@ -247,6 +247,8 @@ Please make sure to always provide useful information in the changeset since thi
 
 Changesets should always focus the value for consumers of the Design System, less how things were done. For example, instead of writing "Added a new function to handle the click event", you should write "Added a click event to the button component". This way, the changeset is more focused on the value for the consumer and less on the technical details of how it was implemented.
 
+When the changeset corresponds to a **dependency update** task, the entry should consist of a single line: "Dependencies updated. For further details, please refer to the associated Pull Request".
+
 **Don't:**
 
 ```md
