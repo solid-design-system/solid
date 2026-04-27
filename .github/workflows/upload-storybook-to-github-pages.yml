@@ -30,16 +30,16 @@ jobs:
         run: echo "GITHUB_SAFE_BRANCH=$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}} | tr '/' '_')" >> $GITHUB_ENV
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Install Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 24.14.1
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v5
         name: Install pnpm
         id: pnpm-install
         with:
@@ -91,13 +91,13 @@ jobs:
           echo "</ul></body></html>" >> deployment/index.html
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: "deployment"
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
       - name: Find existing comment
         uses: peter-evans/find-comment@v3
@@ -109,7 +109,7 @@ jobs:
         if: github.event_name == 'pull_request'
 
       - name: Create or update comment
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@v5
         with:
           issue-number: ${{ github.event.pull_request.number || github.run_id }}
           comment-id: ${{ steps.fc.outputs.comment-id }}
