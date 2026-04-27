@@ -12,6 +12,7 @@ import { range } from 'lit/directives/range.js';
 import { ScrollController } from './scroll-controller.js';
 import { watch } from '../../internal/watch.js';
 import cx from 'classix';
+import { interactiveStyles } from '../../internal/shared-styles';
 import SdCarouselItem from '../carousel-item/carousel-item.js';
 import SolidElement from '../../internal/solid-element.js';
 
@@ -834,6 +835,7 @@ export default class SdCarousel extends SolidElement {
 
   static styles = [
     ...SolidElement.styles,
+    interactiveStyles,
     css`
       :host {
         --slide-gap: var(--sl-spacing-medium, 1rem);

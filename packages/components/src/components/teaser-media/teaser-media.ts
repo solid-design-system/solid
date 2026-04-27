@@ -3,6 +3,7 @@ import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { property, query } from 'lit/decorators.js';
 import cx from 'classix';
+import { interactiveStyles } from '../../internal/shared-styles';
 import SolidElement from '../../internal/solid-element';
 /**
  * @summary Teasers group information into flexible containers so users can browse a collection of related items and actions.
@@ -159,6 +160,7 @@ export default class SdTeaserMedia extends SolidElement {
 
   static styles = [
     ...SolidElement.styles,
+    interactiveStyles,
     css`
       :host {
         @apply block;

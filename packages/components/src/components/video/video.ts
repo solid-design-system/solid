@@ -5,6 +5,8 @@ import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
 import cx from 'classix';
+import { interactiveStyles } from '../../internal/shared-styles';
+import { token } from '../../internal/token';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -64,7 +66,7 @@ export default class SdVideo extends SolidElement {
     if (!(this.poster instanceof HTMLImageElement)) return;
 
     this.poster.style.opacity = '0';
-    await new Promise(resolve => setTimeout(resolve, this.token('--sd-duration-medium', 300)));
+    await new Promise(resolve => setTimeout(resolve, token(this, '--sd-duration-medium', 300)));
     this.poster.style.display = 'none';
   }
 
@@ -160,6 +162,7 @@ export default class SdVideo extends SolidElement {
 
   static styles = [
     ...SolidElement.styles,
+    interactiveStyles,
     css`
       :host {
         @apply relative inline-block overflow-hidden;

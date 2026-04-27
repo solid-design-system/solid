@@ -10,6 +10,7 @@ import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
+import { headlineStyles, interactiveStyles } from '../../internal/shared-styles';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 import type SdPopup from '../popup/popup';
@@ -2220,6 +2221,8 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
 
   static styles = [
     ...SolidElement.styles,
+    headlineStyles,
+    interactiveStyles,
     css`
       :host {
         @apply inline-block relative outline-none w-full;

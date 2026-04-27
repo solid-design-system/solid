@@ -8,6 +8,8 @@ import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
 import { Wave } from './wave';
 import cx from 'classix';
+import { interactiveStyles } from '../../internal/shared-styles';
+import { token } from '../../internal/token';
 import SolidElement from '../../internal/solid-element';
 import type SdDrawer from '../drawer/drawer';
 import type SdRange from '../range/range';
@@ -49,6 +51,18 @@ import type SdRange from '../range/range';
 @customElement('sd-audio')
 export default class SdAudio extends SolidElement {
   private readonly localize = new LocalizeController(this);
+
+  private readonly _boundThemeChange = () => this.onThemeChange();
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.renderRoot.addEventListener('sd-theme-change', this._boundThemeChange);
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.renderRoot.removeEventListener('sd-theme-change', this._boundThemeChange);
+  }
 
   private readonly hasSlotController = new HasSlotController(this, 'transcript');
 
@@ -314,9 +328,9 @@ export default class SdAudio extends SolidElement {
     return null;
   }
 
-  onThemeChange(): void {
+  private onThemeChange(): void {
     this.clear();
-    setTimeout(this.initAnimation.bind(this), this.token('--sd-duration-fast', 150));
+    setTimeout(this.initAnimation.bind(this), token(this, '--sd-duration-fast', 150));
   }
 
   private initAnimation() {
@@ -540,6 +554,7 @@ export default class SdAudio extends SolidElement {
 
   static styles = [
     ...SolidElement.styles,
+    interactiveStyles,
     css`
       sd-button::part(base) {
         @apply rounded-full h-12 w-12 flex items-center justify-center;
