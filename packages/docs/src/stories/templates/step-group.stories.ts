@@ -126,7 +126,7 @@ export const NonInteractiveStepGroupWithIcon = {
 };
 
 export const StepGroupForExtraSmallVariant = {
-  name: 'Step Group for Extra Small Variant',
+  name: 'Step Group for extra small variant',
   render: () => html`
     <div class="w-[340px]">
       <sd-step-group id="step-group-xs" size="xs" orientation="vertical" not-interactive>

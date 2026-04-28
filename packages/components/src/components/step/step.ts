@@ -326,7 +326,7 @@ export default class SdStep extends SolidElement {
                     this.orientation === 'horizontal' ? 'text-center w-40' : 'text-left',
                     this.disabled && 'text-neutral-500',
                     this.waiting && 'text-neutral-700',
-                    this.notInteractive ? 'ml-2' : 'mr-4'
+                    this.notInteractive ? (this.size === 'xs' ? 'ml-0' : 'ml-2') : 'mr-4'
                   )}
                 >
                   <div
