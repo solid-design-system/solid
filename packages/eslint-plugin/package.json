@@ -6,6 +6,11 @@
   "author": {
     "name": "Union Investment"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solid-design-system/solid.git",
+    "directory": "packages/eslint-plugin"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
