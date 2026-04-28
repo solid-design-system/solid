@@ -560,8 +560,24 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
   }
 
   private inMinMax(d: Date): boolean {
-    const min = this.min === null ? null : this.parseISO(String(this.min));
-    const max = this.max === null ? null : this.parseISO(String(this.max));
+    const normalizeBound = (value: string | number | Date | undefined | null): Date | null => {
+      if (value === undefined || value === null) return null;
+      if (value instanceof Date) {
+        return DateUtils.startOfDayLocal(value);
+      }
+      if (typeof value === 'number') {
+        return DateUtils.startOfDayLocal(new Date(value));
+      }
+      if (typeof value === 'string') {
+        // Allow both attribute-style strings and programmatic assignment.
+        const parsed = this.parseISO(value);
+        return parsed ? DateUtils.startOfDayLocal(parsed) : null;
+      }
+      return null;
+    };
+
+    const min = normalizeBound(this.min as string | number | Date | undefined | null);
+    const max = normalizeBound(this.max as string | number | Date | undefined | null);
 
     if (min && d < min) return false;
     if (max && d > max) return false;
