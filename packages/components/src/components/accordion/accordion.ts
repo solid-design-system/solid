@@ -45,6 +45,11 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-accordion-padding-block - The accordion vertical padding value.
  * @cssproperty --sd-accordion__indicator-color - The accordion indicator color.
  * @cssproperty --sd-accordion-color-icon-fill - The accordion icon color.
+ * @cssproperty --sd-accordion--hover-color-background - The accordion hover background color.
+ * @cssproperty --sd-accordion--open-color-text - The accordion color text when open.
+ * @cssproperty --sd-accordion-color-border - The accordion color border.
+ *
+ *
  * @cssproperty --sd-accordion__chevron-color-text - This custom property is deprecated. Use `--sd-accordion-color-icon-fill`instead.
  */
 @customElement('sd-accordion')
@@ -188,12 +193,12 @@ export default class SdAccordion extends SolidElement {
 
   render() {
     return html`
-      <details part="base" class="border-neutral-400">
+      <details part="base" class="sd-accordion-color-border">
         <summary
           part="header"
           id="header"
           class=${cx(
-            'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 sd-accordion-padding-block focus-visible:focus-outline focus-visible:z-10 relative group transition-colors ease-in-out duration-fast hover:bg-neutral-200'
+            'flex text-base gap-4 font-bold items-center cursor-pointer select-none px-4 sd-accordion-padding-block focus-visible:focus-outline focus-visible:z-10 relative group transition-colors ease-in-out duration-fast hover:sd-accordion--hover-color-background'
           )}
           aria-expanded=${this.open ? 'true' : 'false'}
           aria-controls="content"
@@ -208,7 +213,13 @@ export default class SdAccordion extends SolidElement {
               'w-1 sd-accordion__indicator-color absolute left-0 transition-height duration-fast ease-in-out h-[calc(100%-16px)] group-hover:h-full'
             )}
           ></div>
-          <slot name="summary" part="summary" class="flex flex-auto items-center text-left sd-accordion-color-text"
+          <slot
+            name="summary"
+            part="summary"
+            class=${cx(
+              this.open ? 'sd-accordion--open-color-text' : 'sd-accordion-color-text',
+              'flex flex-auto items-center text-left'
+            )}
             >${this.summary}</slot
           >
           <span
