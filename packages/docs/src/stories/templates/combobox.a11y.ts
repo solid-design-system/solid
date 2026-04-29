@@ -1,5 +1,19 @@
 import { test, expect } from '@playwright/test';
 
+test('Combobox With Visually Hidden Label', async ({ page }) => {
+  await page.goto(
+    'http://127.0.0.1:6998/iframe.html?globals=&args=&id=templates-combobox--combobox-with-visually-hidden-label&viewMode=story'
+  );
+  await expect(page.locator('body')).toMatchAriaSnapshot(`
+      - region "Top right notifications"
+      - region "Bottom center notifications"
+      - combobox "Search"
+      - img "Open":
+        - img
+      - button "Open"
+    `);
+});
+
 test('Simple Suggests', async ({ page }) => {
   await page.goto(
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=templates-combobox--simple-suggests&viewMode=story'
