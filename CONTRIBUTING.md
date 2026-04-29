@@ -313,7 +313,7 @@ Extended `sd-brandshape` with new transparent variants to be used on image backg
 '@solid-design-system/docs': minor
 ---
 
-Added new templates showcasing usage of transparent variant `primary|80` and variant `image` together with `sd-copyright`.
+Added new templates showcasing usage new variants of `sd-brandshape` together with images and `sd-copyright`.
 ```
 
 #### Special commands/suffixes
