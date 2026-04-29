@@ -1,5 +1,11 @@
 # @solid-design-system/eslint-plugin
 
+## 1.0.4
+
+### Patch Changes
+
+- Added correct repository metadata for NPM provenance validation during publish. _[`#2959`](https://github.com/solid-design-system/solid/pull/2959) [`8d9a50e`](https://github.com/solid-design-system/solid/commit/8d9a50ec5298d088c007e0a9b58458cedd46a270) [@smfonseca](https://github.com/smfonseca)_
+
 ## 1.0.3
 
 ### Patch Changes
