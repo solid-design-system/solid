@@ -1,5 +1,29 @@
 # @solid-design-system/docs
 
+## 2.12.0
+
+### Minor Changes
+
+- Added realistic `sd-select` template with option and checkbox, updated the a11y test and added related template links _[`#2941`](https://github.com/solid-design-system/solid/pull/2941) [`6269985`](https://github.com/solid-design-system/solid/commit/62699858167a26c1b49879faa67cabb1f7f1cb56) [@balco0110](https://github.com/balco0110)_
+
+## 2.11.1
+
+### Patch Changes
+
+- Updated dependencies. See details in the Pull Request _[`#2912`](https://github.com/solid-design-system/solid/pull/2912) [`2f04cb8`](https://github.com/solid-design-system/solid/commit/2f04cb83148274dce3979751b3ef9ca7adc87707) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 2.11.0
+
+### Minor Changes
+
+- Added realistic `sd-tag` template _[`#2889`](https://github.com/solid-design-system/solid/pull/2889) [`fcefc52`](https://github.com/solid-design-system/solid/commit/fcefc527acee96c23b67dc1d3e662166a01836c2) [@balco0110](https://github.com/balco0110)_
+
+## 2.10.2
+
+### Patch Changes
+
+- Updating the `sd-combobox` and `sd-select` documentation about limiting the height of the dropdown display. _[`#2946`](https://github.com/solid-design-system/solid/pull/2946) [`25ad9d4`](https://github.com/solid-design-system/solid/commit/25ad9d4389a06adabb202e312637d56558046766) [@martascorreia](https://github.com/martascorreia)_
+
 ## 2.10.1
 
 ### Patch Changes

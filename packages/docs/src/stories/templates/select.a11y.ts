@@ -13,3 +13,16 @@ test('Grouping Options', async ({ page }) => {
       - button "Country"
     `);
 });
+
+test('Select with Option and Checkbox', async ({ page }) => {
+  await page.goto(
+    'http://127.0.0.1:6998/iframe.html?globals=&args=&id=templates-select--select-with-option-and-checkbox&viewMode=story'
+  );
+  await expect(page.locator('body')).toMatchAriaSnapshot(`
+      - region "Top right notifications"
+      - region "Bottom center notifications"
+      - text: Choose Fund Category
+      - combobox "Choose Fund Category"
+      - button "Choose Fund Category"
+    `);
+});
