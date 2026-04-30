@@ -37,20 +37,12 @@ export default {
   parameters: { ...parameters, controls: { disable: true } }
 };
 
-/**
- * This shows sd-teaser-media in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
 };
-
-/**
- * Teaser-Media in all possible `variant`.
- */
 
 export const Variant = {
   name: 'Variant',
@@ -96,9 +88,6 @@ export const Variant = {
   }
 };
 
-/**
- * Use the 'default', 'media', 'meta', 'expandable' and 'headline' slots to add content to the teaser. Please make sure to use semantically correct headline tags for the `headline` slot to provide accessible content.
- */
 export const Slots = {
   name: 'Slots',
   render: (args: any) => {

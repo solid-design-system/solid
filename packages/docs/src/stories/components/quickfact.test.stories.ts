@@ -18,12 +18,6 @@ const { overrideArgs } = storybookHelpers('sd-quickfact');
 const { generateTemplate } = storybookTemplate('sd-quickfact');
 const { generateScreenshotStory } = storybookUtilities;
 
-/**
- *
- *  **Disclaimer:** Due to a bug with Storybook Controls, the `expandable` attribute controls might not behave as expected. Please refresh the page if you wish to reset the controls.
- *
- *  You can follow this issue here: https://github.com/storybookjs/storybook/issues/28634
- */
 export default {
   title: 'Components/sd-quickfact/Screenshots: sd-quickfact',
   tags: ['!autodocs'],
@@ -62,9 +56,6 @@ export const Default = {
   }
 };
 
-/**
- * A quickfact item can either be collapsed or open.
- */
 export const States = {
   name: 'States',
   render: (args: any) => {
@@ -81,9 +72,6 @@ export const States = {
   }
 };
 
-/**
- * A quickfact item can either be collapsed or open.
- */
 export const Expandable = {
   name: 'Expandable',
   render: (args: any) => {
@@ -96,11 +84,6 @@ export const Expandable = {
     });
   }
 };
-
-/**
- * This shows sd-quickfact in a mobile view. **Please navigate to the `Mobile` story** (you are now on the `Docs` page) to accurately view this behavior.
-
- */
 
 export const Mobile = {
   name: 'Mobile',
@@ -120,9 +103,6 @@ export const Mobile = {
   }
 };
 
-/**
- * The summary can have multiple lines.
- */
 export const SummaryLength = {
   name: 'Summary Length',
   render: (args: any) => {
@@ -149,17 +129,6 @@ export const SummaryLength = {
     });
   }
 };
-
-/**
- * Use the expand-icon and collapse-icon slots to change the expand and collapse icons, respectively.
- * To disable the animation, override the rotate property on the summary-icon part as shown below:
- *
- * ```
- * sd-quickfact.custom-icons::part(summary-icon) {
- *   rotate: none;
- * }
- * ```
- */
 
 export const Slots = {
   name: 'Slots',
@@ -228,10 +197,6 @@ export const Parts = {
   }
 };
 
-/**
- * sd-quickfacts are fully accessibile via keyboard.
- */
-
 export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {
@@ -247,9 +212,6 @@ export const Mouseless = {
   }
 };
 
-/**
- * This is a sample of how to group sd-quickfacts in a grid layout. Additional JavaScript is used to enable closing all other quickfacts when one is opened and to equalize the height of all summaries in a row. Open the "Show code" section to see the detailed implementation.
- */
 export const Sample = {
   name: 'Sample: Grouping',
   parameters: { ...parameters, docs: { story: { inline: false, height: '800px' } } },

@@ -46,10 +46,6 @@ export default {
   ]
 };
 
-/**
- * This shows sd-notification in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -58,10 +54,6 @@ export const Default = {
     });
   }
 };
-
-/**
- * Use the `variant` attribute to change the theme of the notification.
- */
 
 export const Variants = {
   name: 'Variants',
@@ -76,10 +68,6 @@ export const Variants = {
   }
 };
 
-/**
- * Use the `closable` attribute to toggle a close button.
- */
-
 export const Closable = {
   name: 'Closable',
   render: (args: any) => {
@@ -93,10 +81,6 @@ export const Closable = {
   }
 };
 
-/**
- * Use the `duration` attribute to set the duration (in milliseconds) of the notification.
- */
-
 export const Duration = {
   name: 'Duration',
   render: (args: any) => {
@@ -109,10 +93,6 @@ export const Duration = {
     });
   }
 };
-
-/**
- * Use the `duration-indicator` attribute to enable an animation that visualizes the duration of a notification.
- */
 
 export const DurationIndicator = {
   name: 'Duration Indicator',
@@ -130,9 +110,6 @@ export const DurationIndicator = {
   }
 };
 
-/**
- * Display a toast notification at the top-right of the screen by using the `toast` method. Click on the **Show code** button to see the JavaScript code responsible for generating the toast notification. The default position is `top-right`.
- */
 export const ToastNotification = {
   name: 'Toast Notification (Default)',
   render: (_args: Record<string, any>) => {
@@ -199,9 +176,6 @@ export const ToastNotification = {
   }
 };
 
-/**
- * Display a toast notification positioned at the bottom-center of the screen by setting the `toastStack` attribute to `bottom-center`. Click on the **Show code** button to see the JavaScript code responsible for generating the toast notification.
- */
 export const ToastBottomCenter = {
   name: 'Toast Notification (Bottom Center)',
   render: (_args: Record<string, any>) => {
@@ -271,10 +245,6 @@ export const ToastBottomCenter = {
   }
 };
 
-/**
- * Use the `base`, `icon`, `content`, `message`, `duration-indicator__elapsed`, `duration-indicator__total` and `close-button`, part selectors to customize the notification.
- */
-
 export const Parts = {
   name: 'Parts',
   render: (args: any) => {
@@ -309,10 +279,6 @@ export const Parts = {
     });
   }
 };
-
-/**
- * sd-notifications are fully accessibile via keyboard.
- */
 
 export const Mouseless = {
   name: 'Mouseless',

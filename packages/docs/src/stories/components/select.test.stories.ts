@@ -92,10 +92,6 @@ export default {
   }
 };
 
-/**
- * This shows sd-select in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -103,9 +99,6 @@ export const Default = {
   }
 };
 
-/**
- * Use the `label` attribute to give the combobox an accessible label. For labels that contain HTML, use the `label` slot instead.
- */
 export const Labels = {
   name: 'Label',
   args: {
@@ -116,9 +109,6 @@ export const Labels = {
   }
 };
 
-/**
- * Use the `floating-label` attribute to enable a floating label on the combobox.
- */
 export const FloatingLabel = {
   name: 'Floating Label',
   args: {
@@ -143,10 +133,6 @@ export const FloatingLabel = {
       </div>`;
   }
 };
-
-/**
- * Use the `size` attribute to change a select’s size. It will cascade to slotted `sd-option` elements.
- */
 
 export const SizeMultiple = {
   name: 'Size x Multiple',
@@ -210,10 +196,6 @@ export const SizeMultiple = {
     `;
   }
 };
-
-/**
- * To allow multiple options to be selected, use the `multiple` attribute. It’s a good practice to use `clearable` when this option is enabled. To use the checkbox with tags variant, set the `useTags` variant to `true`.  To set multiple values at once, set value to a space-delimited list of values.  The preferred placement of the select’s listbox can be set with the `placement` attribute. Note that the actual position may vary to ensure the panel remains in the viewport. Valid placements are `top` and `bottom`.
- */
 
 export const DisabledMultiple = {
   name: 'Disabled x Multiple',
@@ -288,10 +270,6 @@ export const DisabledMultiple = {
     `;
   }
 };
-
-/**
- * `sd-select` with valid and invalid styles.
- */
 
 export const ValidInvalid = {
   name: 'Valid x Invalid',
@@ -372,10 +350,6 @@ export const ValidInvalid = {
   }
 };
 
-/**
- * This shows sd-select has the borders visible even when there is limited vertical space.
- */
-
 export const BorderVisibility = {
   name: 'Border visibility',
   render: () => {
@@ -391,10 +365,6 @@ export const BorderVisibility = {
     </div>`;
   }
 };
-
-/**
- * Shows available slots. The `label` and `help-text` slots will overwrite their corresponding attributes.
- */
 
 export const Slots = {
   name: 'Slots',
@@ -435,23 +405,6 @@ export const Slots = {
     `;
   }
 };
-
-/**
- * Use the `form-control`,
-  `form-control-label`,
-  `form-control-input`,
-  `form-control-help-text`,
-  `combobox`,
-  `display-input`,
-  `listbox`,
-  `tags`,
-  `tag`,
-  `tag__base`,
-  `tag__content`,
-  `tag__removable-indicator`,
-  `clear-button`, and
-  `expand-icon` part selectors to customize the select component.
- */
 
 const partsArr = [
   'form-control',
@@ -501,10 +454,6 @@ export const Parts = {
     });
   }
 };
-
-/**
- * Per default the select will indicate an error state when the input is invalid. Use the `style-on-valid` attribute to indicate a valid state as well.
- */
 
 export const StyleOnValid = {
   name: 'Style on valid',
@@ -565,10 +514,6 @@ export const StyleOnValid = {
     }
   }
 };
-
-/**
- * `sd-select` is fully accessibile via keyboard.
- */
 
 export const Mouseless = {
   name: 'Mouseless',
@@ -638,10 +583,6 @@ export const Mouseless = {
   }
 };
 
-/**
- * Use `<sl-divider>` to group listbox items visually. You can also use `<small>` to provide labels, but they won’t be announced by most assistive devices.
- */
-
 export const SampleGroupingOptions = {
   name: 'Sample: Grouping options',
   render: (args: any) => {
@@ -660,10 +601,6 @@ export const SampleGroupingOptions = {
     </div>`;
   }
 };
-
-/**
- * Demonstrates the form behavior with validation styles when the `required` attribute is set to `true`.
- */
 
 export const SampleForm = {
   name: 'Sample: Form',
@@ -778,12 +715,6 @@ export const SampleForm = {
   }
 };
 
-/**
- * 1. You can use the `setCustomValidity` method to set a custom validation message. This will override any native validation messages.
- * 2. Set an empty string to clear the custom validity and make the input valid.
- * 3. To show the validation message, call the `reportValidity` method. Originally this would show a native validation bubble, but we show the error messages inline.
- */
-
 export const setCustomValidity = {
   name: 'setCustomValidity',
   parameters: {
@@ -844,10 +775,6 @@ export const setCustomValidity = {
     `;
   }
 };
-
-/**
- * Demonstrates a form containing all existing Solid form elements.
- */
 
 export const SolidForm = {
   name: 'Sample: Solid form',

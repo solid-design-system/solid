@@ -32,9 +32,6 @@ export default {
   }
 };
 
-/**
- * This shows sd-textarea in its default state.
- */
 export const Default = {
   name: 'Default',
   args: overrideArgs([
@@ -47,9 +44,6 @@ export const Default = {
   }
 };
 
-/**
- * Use the `label` attribute to give the textarea an accessible label. For labels that contain HTML, use the `label` slot instead.
- */
 export const Labels = {
   name: 'Label',
   args: {
@@ -60,9 +54,6 @@ export const Labels = {
   }
 };
 
-/**
- * Use the `floating-label` attribute to enable a floating label on the textarea.
- */
 export const FloatingLabel = {
   name: 'Floating Label',
   args: {
@@ -89,10 +80,6 @@ export const FloatingLabel = {
     `;
   }
 };
-
-/**
- * Use the `placeholder` attribute to add a placeholder.
- */
 
 export const Placeholders = {
   name: 'Placeholders',
@@ -124,9 +111,6 @@ export const Placeholders = {
   }
 };
 
-/**
- * Use the disabled attribute to disable a textarea. All interaction is disabled and no events will be fired.
- */
 export const Disabled = {
   name: 'Disabled',
   args: overrideArgs([
@@ -162,9 +146,6 @@ export const Disabled = {
   }
 };
 
-/**
- * Use the readonly attribute to render a textarea as readonly.  Interaction is enabled, but the textarea cannot be edited.  Events will be fired.
- */
 export const Readonly = {
   name: 'Readonly',
   args: overrideArgs([
@@ -200,10 +181,6 @@ export const Readonly = {
   }
 };
 
-/**
- * This shows sd-textarea in its various sizes.
- */
-
 export const Sizes = {
   name: 'Sizes',
   args: overrideArgs([
@@ -238,10 +215,6 @@ export const Sizes = {
     `;
   }
 };
-
-/**
- * Per default the input will indicate an error state when the input is invalid. Use the `style-on-valid` attribute to opt-in the automatic indication of a valid state as well.
- */
 
 export const StyleOnValid = {
   name: 'Style on valid',
@@ -295,10 +268,6 @@ export const StyleOnValid = {
     await userEvent.tab();
   }
 };
-
-/**
- * Demonstrates the various validation options extended from the native textarea element in addition to error and success styles.
- */
 
 export const Validation = {
   name: 'Validation',
@@ -478,12 +447,6 @@ export const Validation = {
   }
 };
 
-/**
- * 1. You can use the `setCustomValidity` method to set a custom validation message. This will override any native validation messages.
- * 2. Set an empty string to clear the custom validity and make the input valid.
- * 3. To show the validation message, call the `reportValidity` method. Originally this would show a native validation bubble, but we show the error messages inline.
- */
-
 export const setCustomValidity = {
   name: 'setCustomValidity',
   parameters: {
@@ -578,9 +541,6 @@ export const Scrollable = {
   }
 };
 
-/**
- * This shows sd-textarea takes the full height of the parent container.
- */
 export const ResponsiveHeight = {
   name: 'Responsive Height',
   args: overrideArgs([
@@ -592,10 +552,6 @@ export const ResponsiveHeight = {
     return html`<div class="w-[250px] h-[300px]">${generateTemplate({ args })}</div> `;
   }
 };
-
-/**
- * Shows available slots. The `label` and `help-text` slots will overwrite their corresponding attributes.
- */
 
 export const Slots = {
   name: 'Slots',
@@ -631,10 +587,6 @@ export const Slots = {
   }
 };
 
-/**
- * Use the `form-control`, `form-control-label`, `form-control-input`, `form-control-help-text`, `base`, `border`, and `textarea` part selectors to customize the input.
- */
-
 export const Parts = {
   name: 'Parts',
   render: (args: any) => {
@@ -668,10 +620,6 @@ export const Parts = {
     });
   }
 };
-
-/**
- * `sd-textarea` is fully accessibile via keyboard.
- */
 
 export const Mouseless = {
   name: 'Mouseless',

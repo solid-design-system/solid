@@ -63,10 +63,6 @@ export default {
   ]
 };
 
-/**
- * Default: This shows sd-tab-group in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -74,9 +70,6 @@ export const Default = {
   }
 };
 
-/**
- * The sd-tab-group shows an alternative style when tabs are of the `container` variant.
- */
 export const TabVariants = {
   name: 'Tab Variants',
   render: (args: any) => {
@@ -98,10 +91,6 @@ export const TabVariants = {
     `;
   }
 };
-
-/**
- * The sd-tab-group becomes scrollable when there are more tabs than horizontal space allows.
- */
 
 export const Scrollable = {
   name: 'Scrollable',
@@ -171,10 +160,6 @@ export const Parts = {
   }
 };
 
-/**
- * `sd-tab-group` is fully accessibile via keyboard.
- */
-
 export const Mouseless = {
   name: 'Mouseless',
   args: overrideArgs({
@@ -194,18 +179,6 @@ export const Mouseless = {
     await userEvent.type(el!.shadowRoot!.querySelector('button')!, '{return}', { pointerEventsCheck: 0 });
   }
 };
-
-/**
- * As an option, users can justify the `sd-tab-group` to the center. To implement this sample, adjust the `tabs` CSS part as follows:
- *
- * ```css
- *
- *   sd-tab-group::part(tabs) {
-          justify-content: center;
-        }
-
-  * ```
- */
 
 export const SampleCentered = {
   name: 'Sample: Centered',
@@ -249,27 +222,6 @@ export const SampleCentered = {
   }
 };
 
-/**
- * As an option, users can remove the line separating the tablist and the `sd-panel`. To implement this sample, apply the following adjustments to the `separation`, `base`, `scroll-button--start` and `scroll-button--end` CSS parts:
- *
- * ```css
- *
- * sd-tab-group::part(separation) {
-          display: none;
-        }
-
-        sd-tab-group::part(scroll-button--start),
-        sd-tab-group::part(scroll-button--end) {
-          border-bottom: none;
-        }
-
-         sd-tab::part(bottom-border) {
-          border-bottom: none;
-        }
-
-  * ```
- */
-
 export const SampleNoLine = {
   name: 'Sample: No Line',
   parameters: { ...parameters, docs: { story: { inline: false, height: '250px' } } },
@@ -300,16 +252,6 @@ export const SampleNoLine = {
     `;
   }
 };
-
-/**
- * Text can be bolded according to the users needs. To implement this sample, adjust the `base` CSS part as follows:
- *
- * ```css
-        sd-tab::part(base) {
-          font-weight: bold;
-        }
- * ```
- */
 
 export const SampleBold = {
   name: 'Sample: Bold',
@@ -355,10 +297,6 @@ export const SampleBold = {
     `;
   }
 };
-
-/**
- * Users can set-up buttons to open a specific tab from outside the `sd-tab-group`.
- */
 
 export const SampleDeepLink = {
   name: 'Sample: Deep Link',

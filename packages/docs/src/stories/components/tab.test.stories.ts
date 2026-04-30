@@ -40,20 +40,12 @@ export default {
   }
 };
 
-/**
- * Default: This shows sd-tab in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
     return html`${generateTemplate({ args })}`;
   }
 };
-
-/**
- * Use the variant attribute to alternate between the `default` and `container` styles.
- */
 
 export const ContainerActive = {
   name: 'Container x Active',
@@ -68,10 +60,6 @@ export const ContainerActive = {
     });
   }
 };
-
-/**
- * Use the `disabled` attribute to toggle the disabled state.
- */
 
 export const Disabled = {
   name: 'Disabled',
@@ -124,9 +112,6 @@ export const Parts = {
     `;
   }
 };
-/**
- * Use the `left` slot to optionally include an element (eg. icon) positioned to the left of the label.
- */
 
 export const Sample = {
   name: 'Sample: Icon',

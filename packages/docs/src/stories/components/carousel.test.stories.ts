@@ -43,11 +43,6 @@ export default {
     `
   ]
 };
-
-/**
- * This shows sd-carousel in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -56,10 +51,6 @@ export const Default = {
     });
   }
 };
-
-/**
- * Use the `variant` attribute to select the pagination format.
- */
 
 export const Variant = {
   name: 'Variant',
@@ -72,10 +63,6 @@ export const Variant = {
     });
   }
 };
-
-/**
- * Use the `inverted` attribute when displayed on primary background.
- */
 
 export const Inverted = {
   name: 'Inverted',
@@ -107,10 +94,6 @@ export const Inverted = {
   }
 };
 
-/**
- * Use the `loop` attribute to enable/disable the looping of your slides.
- */
-
 export const Loop = {
   name: 'Loop',
   render: (args: any) => {
@@ -122,10 +105,6 @@ export const Loop = {
     });
   }
 };
-
-/**
- * Use the `slides-per-page` attribute to set the number of slides that would be shown at a given time.
- */
 
 export const SlidesPerPage = {
   name: 'Slides Per Page',
@@ -139,13 +118,6 @@ export const SlidesPerPage = {
     });
   }
 };
-
-/**
- * Use `slides-per-move` to set how many slides the carousel advances when scrolling. This is useful when specifying a `slides-per-page` greater than one. By setting `slides-per-move` to the same value as `slides-per-page`, the carousel will advance by one page at a time.<br>
- * <b>Note:</b><br>
- * <li> The number of slides should be divisible by the number of `slides-per-page` to maintain consistent scroll behavior.</li>
- * <li>Variations between `slides-per-move` and `slides-per-page` can lead to unexpected scrolling behavior. Keep your intended UX in mind when adjusting these values.</li>
- */
 
 export const SlidesPerMove = {
   name: 'Slides Per Move',
@@ -210,10 +182,6 @@ export const Parts = {
   }
 };
 
-/**
- * sd-carousel are fully accessibile via keyboard.
- */
-
 export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {
@@ -227,10 +195,6 @@ export const Mouseless = {
     el?.shadowRoot?.querySelector<HTMLElement>('#scroll-container')!.focus();
   }
 };
-
-/**
- * Use the `autoplay` attribute to toggle autoplay.
- */
 
 export const Autoplay = {
   name: 'Autoplay',
@@ -247,10 +211,6 @@ export const Autoplay = {
     });
   }
 };
-
-/**
- * Use the `fade` attribute to toggle fade effect.
- */
 
 export const Fade = {
   name: 'Fade',
