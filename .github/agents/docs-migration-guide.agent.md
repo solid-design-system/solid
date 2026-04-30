@@ -1,5 +1,5 @@
 ---
-name: "Docs: Migration Guide"
+name: "Docs: Migration Guide Writer"
 description: "Use when generating a migration guide from an old ui-* component to a new sd-* component by comparing APIs. Use for: migration documentation, component replacement guides, breaking change documentation."
 tools: [execute/runInTerminal, read/readFile, edit/editFiles]
 ---

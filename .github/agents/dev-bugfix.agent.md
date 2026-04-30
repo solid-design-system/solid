@@ -1,5 +1,5 @@
 ---
-name: "Dev: Bugfix"
+name: "Dev: Bugfix Developer"
 description: "Use when implementing a bug fix from a GitHub issue. Reads the bug issue, implements a TDD fix, adds comprehensive tests, and creates a changeset. Use for: bug fixes, regression fixes, component patches, fix: issues."
 tools: [github/issue_read, edit/editFiles , edit/createFile, edit/createDirectory, search, agent]
 ---

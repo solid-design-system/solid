@@ -1,5 +1,5 @@
 ---
-name: "Dev: Component"
+name: "Dev: Component Developer"
 description: "Use when implementing a new component from a GitHub issue. Scaffolds, implements, tests, documents, and prepares a changeset for a new sd-* web component. Use for: new component implementation, feat: ✨ add sd-* issues, Epic component issues."
 tools: [github/issue_read, edit/editFiles , edit/createFile, edit/createDirectory, search, agent]
 ---

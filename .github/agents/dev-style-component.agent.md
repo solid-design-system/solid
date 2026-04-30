@@ -1,5 +1,5 @@
 ---
-name: "Dev: Style Component"
+name: "Dev: Style Component Developer"
 description: "Use when implementing a new CSS-based style component from a GitHub issue. Scaffolds, implements, creates stories, and prepares a changeset for a new sd-* style module. Use for: new style component, feat: ✨ add sd-* CSS style issues, Epic style-components issues."
 tools: [github/issue_read, read/readFile, edit/editFiles , edit/createFile, edit/createDirectory, search, agent]
 ---
