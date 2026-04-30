@@ -16,6 +16,13 @@
 }
 
 .sd-table-cell {
+  /* Bug fix: gradient variables are undefined in production without Tailwind (#2057) */
+  --tw-gradient-from: #0000;
+  --tw-gradient-to: #0000;
+  --tw-gradient-from-position: 0%;
+  --tw-gradient-via-position: 50%;
+  --tw-gradient-to-position: 100%;
+
   &--divider {
     @apply border-r-[1px];
   }

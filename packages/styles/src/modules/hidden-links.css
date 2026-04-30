@@ -21,6 +21,12 @@
   }
   @apply absolute top-6 left-6 panel-color-border border;
   &--multiple {
+    /* Bug fix: shadow variables are undefined in production without Tailwind (#2057) */
+    --tw-shadow: 0 0 #0000;
+    --tw-inset-shadow: 0 0 #0000;
+    --tw-inset-ring-shadow: 0 0 #0000;
+    --tw-ring-offset-shadow: 0 0 #0000;
+    --tw-ring-shadow: 0 0 #0000;
     @apply bg-white shadow flex flex-col px-2 py-4;
     &:before {
       @apply font-bold px-4 py-2;
