@@ -29,16 +29,6 @@ You are an issue implementation orchestrator for the solid-design-system/solid r
 
 Use the **read-issue-from-github** skill with the provided issue number. This returns the issue with its detected type, labels, title, parsed body, comments, and comment signals.
 
-### Step 1.5: Check for existing plan
-
-After fetching the issue, check if `/memories/session/plan.md` exists. If it does:
-
-1. Read the plan
-2. Extract the issue number mentioned in the plan
-3. **Compare it to the current issue number**
-   - If they **match**: a valid plan exists — **skip directly to Step 4** (routing), carrying the plan forward.
-   - If they **don't match**: ignore the plan (it belongs to a different issue) and continue normally.
-
 ### Step 2: Check for agent eligibility
 
 Before routing, verify the issue has the label **`🤖 good for agent`**.
@@ -64,22 +54,8 @@ After presenting the summary, inform the user:
 
 ### Step 4: Route to the correct agent
 
-Based on the detected issue type, tell the user exactly which agent to switch to and what to say:
+If the user asks to proceed without planning, route directly to the correct implementation agent.
 
-| Detected type | Labels / Signals | Agent Name to switch to |
-|---------------|------------------|----------------------------|
-| New Component | Label `🙌 Epic`, title `feat: ✨ add sd-*`, no `style-components` label | **Dev: Component Developer** |
-| New Style Component | Label `🙌 Epic`, label `style-components` | **Dev: Style Component Developer** |
-| Bugfix | Title starts with `fix:` | **Dev: Bugfix Developer** |
-| Documentation | Title starts with `docs:` | **Agent** mode |
-| Maintenance | Title starts with `chore:` or `ci:` | **Agent** mode |
-| Dev Feature | Label `🔧 code`, title `feat[dev]:` | **Agent** mode |
-| Dev Subtask | Label `Subtask`, label `🔧 code` | **Agent** mode |
-| Design Feature/Subtask | Label `🎨 figma` | Not an implementation task — inform user this is a design issue |
-
-End your response with:
-> Switch to the **[agent name]** and say: "Implement issue #[number]"
-
-For **Agent** mode, also include the issue summary, spec data, and plan path (`/memories/session/plan.md`) in the suggested prompt so the agent has full context.
+Use the `agent-routing` instructions to resolve the detected issue type against the routing table and tell the user which agent to switch to.
 
 **Your job ends here.** Do not implement anything yourself.

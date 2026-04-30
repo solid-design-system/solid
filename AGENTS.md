@@ -4,11 +4,14 @@ These instructions apply to all AI agents working in this workspace.
 
 ## Implementing GitHub Issues
 
-When asked to implement a GitHub issue (e.g. "implement issue #1234", "fix #456"), always use the **Github Issue Implementer** agent. Do not attempt to implement issues directly — the Issue Implementer reads the issue, detects its type, and delegates to the correct specialized agent.
+When asked to implement a GitHub issue (e.g. "implement issue #1234", "fix #456"), use the **Dev: Github Issue Implementation Planner** agent. Do not attempt to implement issues directly — the **Dev: Github Issue Implementation Planner** reads the issue, prepares a summary, and either:
+
+1. Delegates to the **Plan** agent for interactive planning (which then routes to the correct implementation agent), or
+2. Routes directly to the correct implementation agent if the user chooses to skip planning.
 
 ## When Planning a GitHub Issue Implementation
 
-When asked to _plan_ the implementation of a GitHub issue, use the **Plan** agent. The issue data is provided in the conversation from the **Github Issue Implementer** agent handoff. The Plan agent will automatically load the pre-implementation checklist and plan structure from the `implementation-plan-checklist` instructions.
+When asked to _plan_ the implementation of a GitHub issue, use the **Plan** agent. The issue data is provided in the conversation from the **Dev: Github Issue Implementation Planner** agent handoff. The Plan agent will automatically load the pre-implementation checklist and plan structure from the `implementation-plan-checklist` instructions, and after planning, route to the correct implementation agent using the `agent-routing` instructions.
 
 ## Repository Context
 
