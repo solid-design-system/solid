@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.16.5
+
+### Patch Changes
+
+- Improved handling of `min` and `max` attributes in `sd-datepicker` and enhanced internal `parseLocalISO` date utility to accept slash-separated dates (`YYYY/MM/DD`) in addition to hyphen and dot separators. _[`#2967`](https://github.com/solid-design-system/solid/pull/2967) [`23ebfd7`](https://github.com/solid-design-system/solid/commit/23ebfd7fd37c4737347e39cb6cb5189f39c1e9a9) [@smfonseca](https://github.com/smfonseca)_
+
 ## 6.16.4
 
 ## 6.16.3
