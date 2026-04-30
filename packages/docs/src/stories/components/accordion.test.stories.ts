@@ -37,9 +37,6 @@ export const Default = {
   }
 };
 
-/**
- * An accordion item can either be collapsed or open.
- */
 export const States = {
   name: 'States',
   render: (args: any) => {
@@ -53,9 +50,6 @@ export const States = {
   }
 };
 
-/**
- * The summary can have multiple lines.
- */
 export const SummaryLength = {
   name: 'Summary Length',
   render: (args: any) => {
@@ -79,17 +73,6 @@ export const SummaryLength = {
     });
   }
 };
-
-/**
- * Use the expand-icon and collapse-icon slots to change the expand and collapse icons, respectively.
- * To disable the animation, override the rotate property on the summary-icon part as shown below:
- *
- * ```
- * sd-accordion.custom-icons::part(summary-icon) {
- *   rotate: none;
- * }
- * ```
- */
 
 export const Slots = {
   name: 'Slots',
@@ -155,10 +138,6 @@ export const Parts = {
     });
   }
 };
-
-/**
- * sd-accordions are fully accessibile via keyboard.
- */
 
 export const Mouseless = {
   name: 'Mouseless',

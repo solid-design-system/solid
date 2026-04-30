@@ -27,10 +27,6 @@ export default {
   argTypes
 };
 
-/**
- * This shows the badge in its default state and variant.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -38,9 +34,6 @@ export const Default = {
   }
 };
 
-/**
- * The marker in its 'Cluster' variant in all possible states.
- */
 export const VariantCluster = {
   name: 'Variant Cluster',
   render: (args: any) => {
@@ -70,9 +63,6 @@ export const VariantCluster = {
   }
 };
 
-/**
- * The marker in its 'Main' variant in all possible states.
- */
 export const VariantMain = {
   name: 'Variant Main',
   render: (args: any) => {
@@ -97,9 +87,6 @@ export const VariantMain = {
   }
 };
 
-/**
- * The marker in its 'Place' variant in all possible states.
- */
 export const VariantPlace = {
   name: 'Variant Place',
   render: (args: any) => {
@@ -124,9 +111,6 @@ export const VariantPlace = {
   }
 };
 
-/**
- * Use the 'default' slot to add content to the marker.
- */
 export const Slots = {
   name: 'Slots',
   render: () => {
@@ -150,9 +134,6 @@ export const Slots = {
   }
 };
 
-/**
- * Use the '--map-marker-scaling' css variable to scale the marker to your needs.
- */
 export const Scale = {
   name: 'Scale',
   render: (args: any) => {

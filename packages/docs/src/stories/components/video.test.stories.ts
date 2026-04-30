@@ -36,10 +36,6 @@ export default {
   parameters: { ...parameters, controls: { disable: true } }
 };
 
-/**
- * The `sd-video` component can be used to wrap external video elements in order to provide basic styling for Union Investment.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -54,10 +50,6 @@ export const Default = {
     });
   }
 };
-
-/**
- * Utility script used in next 2 stories. You can use similar logic to wire up video elements in your project.
- */
 
 const videoElementScript = html`<script>
   /**
@@ -152,11 +144,6 @@ const videoElementScript = html`<script>
   window.onhashchange = runScriptOnPathChange;
 </script>`;
 
-/**
- * Use in combination with a viewer component (e. g. from Moving Image) or a bare `<video>`-Tag. <br/>
- * Here we wrap a `video` element that includes setting an image to the `poster` slot.
- */
-
 export const VideoElement = {
   name: 'Video Element',
   render: (args: any) => {
@@ -171,10 +158,6 @@ export const VideoElement = {
     `;
   }
 };
-
-/**
- * Duplicates the previous story with default focus on the play button.
- */
 
 export const Mouseless = {
   name: 'Mouseless',

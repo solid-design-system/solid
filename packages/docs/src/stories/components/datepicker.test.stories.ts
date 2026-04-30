@@ -46,9 +46,6 @@ export const Default = {
   }
 };
 
-/**
- * Use the `label` attribute to give the datepicker an accessible label. For labels that contain HTML, use the `label` slot instead.
- */
 export const Labels = {
   name: 'Label',
   args: {
@@ -59,9 +56,6 @@ export const Labels = {
   }
 };
 
-/**
- * Use the `floating-label` attribute to enable a floating label on the datepicker.
- */
 export const FloatingLabel = {
   name: 'Floating Label',
   args: {

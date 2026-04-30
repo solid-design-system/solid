@@ -75,9 +75,6 @@ const increaseColumnWidth = (): ConstantDefinition => {
   };
 };
 
-/**
- * Default: This shows sd-brandshape in its default state.
- */
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -85,9 +82,6 @@ export const Default = {
   }
 };
 
-/**
- *  The different shapes of the brandshape.
- */
 export const Shapes = {
   name: 'Shapes',
   render: (args: any) => {
@@ -105,9 +99,6 @@ export const Shapes = {
   }
 };
 
-/**
- *  The different variants of the brandshape.
- */
 export const Variants = {
   name: 'Variants',
   render: (args: any) => {
@@ -153,9 +144,6 @@ export const Variants = {
   }
 };
 
-/**
- * The different breakpoints of the brandshape.
- */
 export const Breakpoints = {
   name: 'Breakpoints',
   render: (args: any) => {
@@ -185,9 +173,6 @@ export const Breakpoints = {
   }
 };
 
-/**
- * Use the `base`, `content`, `shape-top`, `shape-middle` or `shape-bottom` part selectors to customize the brandshape.
- */
 export const Parts = {
   name: 'Parts',
   render: (args: any) => {
@@ -210,9 +195,6 @@ export const Parts = {
   }
 };
 
-/**
- * When using the 'image' variant, use the transform property to adjust the image position. In this example, the image is moved up and skewed to fit the brandshape.
- */
 export const Sample = {
   name: 'Sample: Positioning Image Variant',
   render: () => {

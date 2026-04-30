@@ -45,9 +45,6 @@ export default {
     `
   ]
 };
-/**
- * This shows sd-divider in its default state.
- */
 
 export const Default = {
   name: 'Default',
@@ -55,10 +52,6 @@ export const Default = {
     return generateTemplate({ args });
   }
 };
-
-/**
- * Use the orientation attribute to set the axis of a divider.
- */
 
 export const Orientation = {
   name: 'Orientation',
@@ -71,10 +64,6 @@ export const Orientation = {
     });
   }
 };
-
-/**
- * Use the inverted attribute to make a divider with inverted colors.
- */
 
 export const Inverted = {
   name: 'Inverted',
@@ -93,10 +82,6 @@ export const Inverted = {
     });
   }
 };
-
-/**
- * You can set the component's size with `width` (horizontal) or `height` (vertical) via CSS or inline-styles.
- */
 
 export const Sizes = {
   name: 'Sizes',
@@ -130,10 +115,6 @@ export const Sizes = {
     });
   }
 };
-
-/**
- * Use the `main` part selector to customize the divider.
- */
 
 export const Parts = {
   name: 'Parts',

@@ -40,10 +40,6 @@ export default {
   }
 };
 
-/**
- * This shows sd-teaser in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -176,10 +172,6 @@ export const NoMeta = {
   }
 };
 
-/**
- * Teaser with different `media` and `content` distribution values. In case there's a requirement to have a fixed value for the `media`, you can override the `sd-teaser::part(media)` selector by applying a `flex-shrink: 0;` style. Same can be done for the `content` part.
- */
-
 export const DistributionRatio = {
   name: 'Media and Content Distribution',
   render: (args: any) => {
@@ -223,10 +215,6 @@ export const DistributionRatio = {
   }
 };
 
-/**
- * Breakpoint where the teaser switches from `vertical` to `horizontal`, `0` is always `horizontal`, `9999` is always `vertical`. When responsive, teaser changes its orientation from `horizontal` to `vertical` at a component's width of 448px.
- */
-
 export const Breakpoint = {
   name: 'Breakpoint',
   render: (args: any) => {
@@ -250,10 +238,6 @@ export const Breakpoint = {
     });
   }
 };
-
-/**
- * Different `headline` sizes. It is also possible to use `sd-link` inside the `<h>` tag in the headline slot.
- */
 
 export const Headline = {
   name: 'Headline',
@@ -333,10 +317,6 @@ export const ReversedLayoutAndOrientation = {
     });
   }
 };
-
-/**
- * Use the 'default', 'media', 'meta' and 'headline' slots to add content to the teaser. Please use h1-h6 tags for the headline slot.
- */
 
 export const Slots = {
   name: 'Slots',

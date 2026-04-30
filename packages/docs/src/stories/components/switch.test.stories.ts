@@ -28,20 +28,12 @@ export default {
   }
 };
 
-/**
- * Default: This shows sd-switch in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
 };
-
-/**
- * Use the disabled attribute to disable an input switch. Clicks will be suppressed until the disabled state is removed
- */
 
 export const Disabled = {
   name: 'Disabled',
@@ -60,10 +52,6 @@ export const Disabled = {
   }
 };
 
-/**
- * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
- */
-
 export const Required = {
   name: 'Required',
   render: (args: any) => {
@@ -75,10 +63,6 @@ export const Required = {
     });
   }
 };
-
-/**
- * Use the checked attribute to activate the switch.
- */
 
 export const Checked = {
   name: 'Checked',
@@ -97,10 +81,6 @@ export const Checked = {
   }
 };
 
-/**
- * Test checked and disabled states.
- */
-
 export const CheckedAndDisabled = {
   name: 'Checked and Disabled',
   render: (args: any) => {
@@ -114,9 +94,6 @@ export const CheckedAndDisabled = {
   }
 };
 
-/**
- * Test invalid state inside a form.
- */
 export const Invalid = {
   name: 'Invalid',
   render: (args: any) => {
@@ -147,10 +124,6 @@ export const Invalid = {
     `;
   }
 };
-
-/**
- * Use the `base`, `control--unchecked`, `control--checked`, `checked` and `label` part selectors to customize the switch.
- */
 
 export const Parts = {
   name: 'Parts',

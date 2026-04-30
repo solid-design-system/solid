@@ -114,19 +114,12 @@ export default {
   }
 };
 
-/**
- * This shows sd-combobox in its default state.
- */
 export const Default = {
   name: 'Default',
   render: (args: any) => {
     return html`<div class="h-[260px] w-full max-w-[400px]">${generateTemplate({ args })}</div>`;
   }
 };
-
-/**
- * Use the `label` attribute to give the combobox an accessible label. For labels that contain HTML, use the `label` slot instead.
- */
 
 export const Labels = {
   name: 'Label',
@@ -138,9 +131,6 @@ export const Labels = {
   }
 };
 
-/**
- * Use the `floating-label` attribute to enable a floating label on the combobox.
- */
 export const FloatingLabel = {
   name: 'Floating Label',
   args: {
@@ -167,13 +157,6 @@ export const FloatingLabel = {
     `;
   }
 };
-
-/**
- * Use the `size` attribute to change the size. It will cascade to slotted `sd-option` elements:
- * - `lg` (default)
- * - `md`
- * - `sm`
- */
 
 export const SizeMultiple = {
   name: 'Size x Multiple',
@@ -227,10 +210,6 @@ export const SizeMultiple = {
       </div>`;
   }
 };
-
-/**
- * To allow multiple options to be selected, use the `multiple` attribute. It’s a good practice to use `clearable` when this option is enabled. To use the checkbox with tags variant, set the `useTags` variant to `true`.  To set multiple values at once, set value to a space-delimited list of values.  The preferred placement of the combobox’s listbox can be set with the `placement` attribute. Note that the actual position may vary to ensure the panel remains in the viewport. Valid placements are `top` and `bottom`.
- */
 
 export const DisabledMultiple = {
   name: 'Disabled x Multiple',
@@ -296,10 +275,6 @@ export const DisabledMultiple = {
       </div>`;
   }
 };
-
-/**
- * `sd-combobox` with valid and invalid styles.
- */
 
 export const ValidInvalid = {
   name: 'Valid x Invalid',
@@ -389,9 +364,6 @@ export const ValidInvalid = {
   }
 };
 
-/**
- * This shows sd-combobox has the borders visible even when there is limited vertical space.
- */
 export const BorderVisibility = {
   name: 'Border visibility',
   render: () => {
@@ -426,9 +398,6 @@ export const BorderVisibility = {
   }
 };
 
-/**
- * Shows available slots. The `label` and `help-text` slots will overwrite their corresponding attributes.
- */
 export const Slots = {
   name: 'Slots',
   parameters: {
@@ -474,23 +443,6 @@ export const Slots = {
     `;
   }
 };
-
-/**
- * Use the `form-control`,
- `form-control-label`,
- `form-control-input`,
- `form-control-help-text`,
- `combobox`,
- `display-input`,
- `listbox`,
- `tags`,
- `tag`,
- `tag__base`,
- `tag__content`,
- `tag__removable-indicator`,
- `clear-button`, and
- `expand-icon` part selectors to customize the combobox component.
- */
 
 const partsArr = [
   'form-control',
@@ -579,9 +531,6 @@ export const Parts = {
   }
 };
 
-/**
- * The focus attribute provides feedback to the users, informing them that the combobox component is ready for use.
- */
 export const Focus = {
   name: 'Focus',
   play: ({ canvasElement }: { canvasElement: HTMLElement }) => {
@@ -610,10 +559,6 @@ export const Focus = {
     </div>
   `
 };
-
-/**
- * Per default the combobox will indicate an error state when the input is invalid. Use the `style-on-valid` attribute to indicate a valid state as well.
- */
 
 export const StyleOnValid = {
   name: 'Style on valid',
@@ -710,9 +655,6 @@ export const Tags = {
   `
 };
 
-/**
- * A simple suggestions list shows the user a filtered list.
- */
 export const SimpleSuggests = {
   name: 'Simple suggests',
   render: (args: { 'open-attr'?: string }) => {
@@ -734,9 +676,6 @@ export const SimpleSuggests = {
   }
 };
 
-/**
- * A message is shown if no results are found.
- */
 export const NotFoundMessage = {
   name: 'Not found message',
   render: (args: { 'open-attr'?: string }) => {
@@ -758,11 +697,6 @@ export const NotFoundMessage = {
   }
 };
 
-/**
- * The filtered options shown in the list can be customized by passing a function to the getOption property. Your function can return a string of HTML, a Lit Template, or an HTMLElement. The getOption() function will be called for each option. The first argument is an element and the second argument is the query string.
- * Remember that the options are rendered in a shadow root. To style them, you can use the style attribute in your template or you can add your own parts and target them with the ::part() selector.
- * Note: Be sure you trust the content you are outputting! Passing unsanitized user input to getOption() can result in XSS vulnerabilities.
- */
 export const HighlightQuery = {
   name: 'Highlight Query',
   render: () => {
@@ -796,10 +730,6 @@ export const HighlightQuery = {
     );
   }
 };
-
-/**
- * `sd-combobox` is fully accessibile via keyboard.
- */
 
 export const Mouseless = {
   name: 'Mouseless',
@@ -872,10 +802,6 @@ export const Mouseless = {
   }
 };
 
-/**
- * Use `<sd-optgroup>` to group listbox items visually.
- */
-
 export const SampleGroupingOptions = {
   name: 'Sample: Grouping options and sizes',
   render: (args: any) => {
@@ -901,10 +827,6 @@ export const SampleGroupingOptions = {
     });
   }
 };
-
-/**
- * Demonstrates the form behavior with validation styles when the `required` attribute is set to `true`.
- */
 
 export const SampleForm = {
   name: 'Sample: Form',
@@ -1029,10 +951,6 @@ export const SampleForm = {
   }
 };
 
-/**
- * Demonstrates a form containing all existing Solid form elements.
- */
-
 export const SolidForm = {
   name: 'Sample: Solid form',
   parameters: {
@@ -1087,12 +1005,6 @@ export const SolidForm = {
     `;
   }
 };
-
-/**
- * 1. You can use the `setCustomValidity` method to set a custom validation message. This will override any native validation messages.
- * 2. Set an empty string to clear the custom validity and make the input valid.
- * 3. To show the validation message, call the `reportValidity` method. Originally this would show a native validation bubble, but we show the error messages inline.
- */
 
 export const setCustomValidity = {
   name: 'Set custom validity',
