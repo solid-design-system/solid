@@ -200,7 +200,7 @@ export default class SdFlipcard extends SolidElement {
               'primary-100': 'tertiary',
               'gradient-light': 'primary',
               'gradient-dark': 'primary'
-            }[this.frontVariant] as 'primary' | 'secondary' | 'tertiary' | 'cta'}
+            }[this.frontVariant]}
             ?inverted=${{
               primary: true,
               'primary-100': false,
@@ -293,7 +293,7 @@ export default class SdFlipcard extends SolidElement {
               'primary-100': 'tertiary',
               'gradient-light': 'primary',
               'gradient-dark': 'primary'
-            }[this.backVariant] as 'primary' | 'secondary' | 'tertiary' | 'cta'}
+            }[this.backVariant]}
             ?inverted=${{
               primary: true,
               'primary-100': false,

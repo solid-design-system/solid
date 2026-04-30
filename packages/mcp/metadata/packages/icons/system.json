@@ -1,0 +1,1112 @@
+[
+  {
+    "technicalId": "scroll",
+    "displayNameDe": "scrollen",
+    "tags": ["weiterblättern", "Bildschirminhalte verschieben", "durchblättern"]
+  },
+  {
+    "technicalId": "calendar",
+    "displayNameDe": "Kalender",
+    "tags": ["Zeitpunkt", "Termin", "Datum"]
+  },
+  {
+    "technicalId": "info-circle",
+    "displayNameDe": "Infozeichen Kreis",
+    "tags": ["Information", "Ergänzung", "Erläuterung"]
+  },
+  {
+    "technicalId": "price-chart",
+    "displayNameDe": "Kurs Diagramm",
+    "tags": ["Anstieg", "Wachstum", "Entwicklung"]
+  },
+  {
+    "technicalId": "shopping-cart-crossed-out",
+    "displayNameDe": "Einkaufswagen durchgestrichen",
+    "tags": ["kein Direkterwerb"]
+  },
+  {
+    "technicalId": "sun",
+    "displayNameDe": "Sonne",
+    "tags": ["sonnig", "hell", "schönes Wetter"]
+  },
+  {
+    "technicalId": "settings",
+    "displayNameDe": "Einstellungen",
+    "tags": ["anpassen", "Bearbeitung", "Zahnrad"]
+  },
+  {
+    "technicalId": "volume",
+    "displayNameDe": "Lautstärke",
+    "tags": ["Ton", "Pegel", "Geräuschpegel"]
+  },
+  {
+    "technicalId": "hand",
+    "displayNameDe": "Hand",
+    "tags": ["aufzeigen", "Fehler", "Stopp"]
+  },
+  {
+    "technicalId": "heart",
+    "displayNameDe": "Herz",
+    "tags": ["Favoriten", "Wunschliste", "merken"]
+  },
+  {
+    "technicalId": "",
+    "displayNameDe": "",
+    "tags": []
+  },
+  {
+    "technicalId": "list",
+    "displayNameDe": "Liste",
+    "tags": ["Übersicht", "Verzeichnis", "Auflistung"]
+  },
+  {
+    "technicalId": "sun-clouds",
+    "displayNameDe": "Sonne/Wolken",
+    "tags": ["Wolken", "trübe", "Sonne", "wolkig"]
+  },
+  {
+    "technicalId": "on-off",
+    "displayNameDe": "On/Off",
+    "tags": ["anschalten", "Power Button", "ausschalten"]
+  },
+  {
+    "technicalId": "flash-off",
+    "displayNameDe": "Blitz aus",
+    "tags": ["Foto", "Taschenlampe aus"]
+  },
+  {
+    "technicalId": "heart-filled",
+    "displayNameDe": "Herz voll",
+    "tags": ["Favoriten", "gespeichert", "gemerkt"]
+  },
+  {
+    "technicalId": "flash-on",
+    "displayNameDe": "Blitz an",
+    "tags": ["Taschenlampe an", "Foto"]
+  },
+  {
+    "technicalId": "battery-full",
+    "displayNameDe": "Batterie voll\n",
+    "tags": ["voll", "Akku", "Ladestatus"]
+  },
+  {
+    "technicalId": "sort-down",
+    "displayNameDe": "sortieren absteigend",
+    "tags": ["absteigend", "Pfeil nach unten", "Dreieck"]
+  },
+  {
+    "technicalId": "magnifying-glass",
+    "displayNameDe": "Lupe",
+    "tags": ["Detail", "Betrachtung", "Analyse"]
+  },
+  {
+    "technicalId": "battery-half-full",
+    "displayNameDe": "Batterie halbvoll",
+    "tags": ["Akku", "halbvoll", "Ladestatus"]
+  },
+  {
+    "technicalId": "calender-add",
+    "displayNameDe": "Kalender hinzufügen",
+    "tags": ["abonnieren", "planen", "erstellen"]
+  },
+  {
+    "technicalId": "battery-empty",
+    "displayNameDe": "Batterie leer",
+    "tags": ["Ladestatus", "leer", "Akku"]
+  },
+  {
+    "technicalId": "sort-up",
+    "displayNameDe": "sortieren aufsteigend",
+    "tags": ["Dreieck", "aufsteigend", "Pfeil nach oben"]
+  },
+  {
+    "technicalId": "save",
+    "displayNameDe": "speichern",
+    "tags": ["sichern", "Diskette"]
+  },
+  {
+    "technicalId": "more-functions",
+    "displayNameDe": "mehr Funktionen",
+    "tags": ["weitere Funktionen", "extra Optionen"]
+  },
+  {
+    "technicalId": "confirm-circle",
+    "displayNameDe": "bestätigen Kreis",
+    "tags": ["Bestätigung", "richtig", "akzeptieren"]
+  },
+  {
+    "technicalId": "confirm",
+    "displayNameDe": "bestätigen",
+    "tags": ["richtig", "akzeptieren", "Haken"]
+  },
+  {
+    "technicalId": "menu",
+    "displayNameDe": "Menü",
+    "tags": ["Zeilen", "Agenda", "Inhalt", "mobiles Menü"]
+  },
+  {
+    "technicalId": "list-sort-ascending",
+    "displayNameDe": "Liste sortieren aufsteigend",
+    "tags": ["aufsteigend", "anordnen", "ordnen", "filtern"]
+  },
+  {
+    "technicalId": "list-sort-descending",
+    "displayNameDe": "Liste sortieren absteigend",
+    "tags": ["absteigend", "ordnen", "filtern", "anordnen"]
+  },
+  {
+    "technicalId": "speech-bubble",
+    "displayNameDe": "Sprechblase",
+    "tags": ["Chat", "Kommunikation", "Gespräch", "Kontakt"]
+  },
+  {
+    "technicalId": "anchor-link",
+    "displayNameDe": "Sprungmarke",
+    "tags": ["Pfeil", "Anker", "Bezugspunkt"]
+  },
+  {
+    "technicalId": "cursor-click",
+    "displayNameDe": "Mauszeiger Klick",
+    "tags": ["klicken", "auswählen", "antippen"]
+  },
+  {
+    "technicalId": "image",
+    "displayNameDe": "Bild",
+    "tags": ["Dokument Image", "Abbildung", "Porträt"]
+  },
+  {
+    "technicalId": "folder-open",
+    "displayNameDe": "Ordner geöffnet",
+    "tags": ["Verzeichnis", "Dokumente", "Dateien"]
+  },
+  {
+    "technicalId": "leaf",
+    "displayNameDe": "Blatt",
+    "tags": ["nachhaltig", "Natur", "Nachhaltigkeit"]
+  },
+  {
+    "technicalId": "start",
+    "displayNameDe": "Start",
+    "tags": ["Dreieck", "Play", "aktivieren"]
+  },
+  {
+    "technicalId": "grid-cards",
+    "displayNameDe": "Raster Karten",
+    "tags": ["Raster", "Layout", "Kacheln"]
+  },
+  {
+    "technicalId": "new-window",
+    "displayNameDe": "neues Fenster",
+    "tags": ["weiteres Fenster", "Browser"]
+  },
+  {
+    "technicalId": "globe",
+    "displayNameDe": "Weltkugel",
+    "tags": ["Erde", "Globus", "Welt"]
+  },
+  {
+    "technicalId": "new-link",
+    "displayNameDe": "neuer Link",
+    "tags": ["Link", "Kette", "Hyperlink"]
+  },
+  {
+    "technicalId": "tool",
+    "displayNameDe": "Werkzeug",
+    "tags": ["Tool", "Bearbeitung", "Einstellung", "Toolbox"]
+  },
+  {
+    "technicalId": "swipe",
+    "displayNameDe": "wischen",
+    "tags": ["blättern", "schieben", "ziehen"]
+  },
+  {
+    "technicalId": "planet",
+    "displayNameDe": "Planet",
+    "tags": ["Global", "online", "Globus", "weltweit"]
+  },
+  {
+    "technicalId": "wlan",
+    "displayNameDe": "WLAN",
+    "tags": ["Internet", "Verbindung", "Internet WLAN"]
+  },
+  {
+    "technicalId": "folder",
+    "displayNameDe": "Ordner",
+    "tags": ["Ordnerbuch", "Datei", "Dokument", "Unterlage"]
+  },
+  {
+    "technicalId": "equal",
+    "displayNameDe": "Gleichheitszeichen",
+    "tags": ["Rechenzeichen", "Mathematik", "Striche"]
+  },
+  {
+    "technicalId": "equal-circle",
+    "displayNameDe": "Gleichheitszeichen Kreis",
+    "tags": ["Kreis", "Rechenzeichen", "Mathematik"]
+  },
+  {
+    "technicalId": "to-the-end",
+    "displayNameDe": "zum Ende",
+    "tags": ["Pfeil", "Schluss"]
+  },
+  {
+    "technicalId": "to-the-start",
+    "displayNameDe": "zum Start",
+    "tags": ["Start", "Anfang", "Pfeil"]
+  },
+  {
+    "technicalId": "slider",
+    "displayNameDe": "Schieberegler",
+    "tags": ["einstellen", "Abakus", "verschieben"]
+  },
+  {
+    "technicalId": "bell",
+    "displayNameDe": "Glocke",
+    "tags": ["Ton", "Benachrichtigung", "Erinnerung"]
+  },
+  {
+    "technicalId": "close-circle",
+    "displayNameDe": "schließen Kreis",
+    "tags": ["abgelehnt", "Kreuz", "Kreis"]
+  },
+  {
+    "technicalId": "close",
+    "displayNameDe": "schließen",
+    "tags": ["abgelehnt", "Fehler", "Kreuz"]
+  },
+  {
+    "technicalId": "face-happy",
+    "displayNameDe": "Gesicht glücklich",
+    "tags": ["begeistert", "zufrieden", "Happy", "positiv"]
+  },
+  {
+    "technicalId": "gps",
+    "displayNameDe": "GPS",
+    "tags": ["Standort", "Ziel", "Standorterfassung"]
+  },
+  {
+    "technicalId": "collapse-top",
+    "displayNameDe": "einklappen oben",
+    "tags": ["verstecken", "komprimieren", "Seitenleiste"]
+  },
+  {
+    "technicalId": "lock-locked",
+    "displayNameDe": "Schloss geschlossen",
+    "tags": ["Schloss", "geschützt", "gesichert", "Sicherheit"]
+  },
+  {
+    "technicalId": "collapse-right",
+    "displayNameDe": "einklappen rechts",
+    "tags": ["verstecken", "komprimieren", "Seitenleiste"]
+  },
+  {
+    "technicalId": "high-low-chart",
+    "displayNameDe": "Hoch-Tief-Diagramm",
+    "tags": ["Diagramm", "Entwicklung", "Aktie", "Kurs"]
+  },
+  {
+    "technicalId": "lock-open",
+    "displayNameDe": "Schloss offen",
+    "tags": ["offen", "ungeschützt", "geöffnet"]
+  },
+  {
+    "technicalId": "collapse-bottom",
+    "displayNameDe": "einklappen unten",
+    "tags": ["verstecken", "komprimieren", "Seitenleiste"]
+  },
+  {
+    "technicalId": "bug",
+    "displayNameDe": "Fehler",
+    "tags": ["Mangel", "Problem"]
+  },
+  {
+    "technicalId": "shopping-cart",
+    "displayNameDe": "Einkaufswagen",
+    "tags": ["Onlineshop", "Warenkorb", "Erwerb", "Einkauf"]
+  },
+  {
+    "technicalId": "eraser",
+    "displayNameDe": "Radiergummi",
+    "tags": ["radieren", "korrigieren", "ändern", "entfernen"]
+  },
+  {
+    "technicalId": "light-bulb",
+    "displayNameDe": "Glühbirne",
+    "tags": ["Idee", "Hinweise", "Licht"]
+  },
+  {
+    "technicalId": "employees",
+    "displayNameDe": "Mitarbeitende",
+    "tags": ["Zwei", "Mensch", "Person"]
+  },
+  {
+    "technicalId": "overview",
+    "displayNameDe": "Übersicht",
+    "tags": ["strukturiert", "Zusammenfassung", "geordnet"]
+  },
+  {
+    "technicalId": "minus",
+    "displayNameDe": "Minus",
+    "tags": ["Strich", "Linie", "Rechenzeichen"]
+  },
+  {
+    "technicalId": "clock",
+    "displayNameDe": "Uhr",
+    "tags": ["Termin", "Zeit", "Uhrzeit"]
+  },
+  {
+    "technicalId": "minus-circle",
+    "displayNameDe": "Minus Kreis",
+    "tags": ["Zeichen", "Kreis", "Mathematik"]
+  },
+  {
+    "technicalId": "enlarge",
+    "displayNameDe": "vergrößern",
+    "tags": ["Pfeil", "Richtung", "außen"]
+  },
+  {
+    "technicalId": "upload",
+    "displayNameDe": "Upload",
+    "tags": ["abspeichern", "hochladen", "speichern"]
+  },
+  {
+    "technicalId": "moon",
+    "displayNameDe": "Mond",
+    "tags": ["Nacht", "Himmel"]
+  },
+  {
+    "technicalId": "shrink",
+    "displayNameDe": "verkleinern",
+    "tags": ["innen", "Pfeil", "Richtung"]
+  },
+  {
+    "technicalId": "trash",
+    "displayNameDe": "Mülleimer",
+    "tags": ["Papierkorb", "Abfall", "entfernen"]
+  },
+  {
+    "technicalId": "laptop",
+    "displayNameDe": "Laptop",
+    "tags": ["Computer", "IT-Shop"]
+  },
+  {
+    "technicalId": "undo",
+    "displayNameDe": "rückgängig machen",
+    "tags": ["zurücknehmen", "rückgängig machen", "löschen"]
+  },
+  {
+    "technicalId": "move",
+    "displayNameDe": "verschieben",
+    "tags": ["verschieben"]
+  },
+  {
+    "technicalId": "website",
+    "displayNameDe": "Webseite",
+    "tags": ["Homepage", "Internetseite", "Internet"]
+  },
+  {
+    "technicalId": "reload",
+    "displayNameDe": "neu laden",
+    "tags": ["wiederholen", "aktualisieren"]
+  },
+  {
+    "technicalId": "plus-circle",
+    "displayNameDe": "Plus Kreis",
+    "tags": ["hinzufügen", "Zusatzsymbol", "positiv"]
+  },
+  {
+    "technicalId": "position",
+    "displayNameDe": "Position",
+    "tags": ["Standort", "Koordinatenpunkt", "Ortung", "GPS"]
+  },
+  {
+    "technicalId": "postbox",
+    "displayNameDe": "Postbox",
+    "tags": ["Kasten", "Nachricht", "Briefkasten"]
+  },
+  {
+    "technicalId": "postbox-download",
+    "displayNameDe": "Postbox Download",
+    "tags": ["Briefkasten", "runterladen", "Nachricht"]
+  },
+  {
+    "technicalId": "user",
+    "displayNameDe": "Nutzer",
+    "tags": ["anmelden", "Login", "Account", "Profil"]
+  },
+  {
+    "technicalId": "file-wid",
+    "displayNameDe": "Dokument WID",
+    "tags": ["Business Objects", "Datei"]
+  },
+  {
+    "technicalId": "home",
+    "displayNameDe": "Startseite",
+    "tags": ["Home", "Anfang", "Haus"]
+  },
+  {
+    "technicalId": "stop-watch",
+    "displayNameDe": "Stoppuhr",
+    "tags": ["Uhr", "Zeitnehmer", "Monitoring", "Zeitmesser"]
+  },
+  {
+    "technicalId": "center",
+    "displayNameDe": "zentrieren",
+    "tags": ["Zentrum", "mittig", "verschieben"]
+  },
+  {
+    "technicalId": "files",
+    "displayNameDe": "Dokumente",
+    "tags": ["Dateien", "Dokumente", "Datenlieferung"]
+  },
+  {
+    "technicalId": "face-sad",
+    "displayNameDe": "Gesicht traurig",
+    "tags": ["Sad", "unzufrieden", "enttäuscht", "mangelhaft"]
+  },
+  {
+    "technicalId": "",
+    "displayNameDe": "",
+    "tags": []
+  },
+  {
+    "technicalId": "",
+    "displayNameDe": "",
+    "tags": []
+  },
+  {
+    "technicalId": "",
+    "displayNameDe": "",
+    "tags": []
+  },
+  {
+    "technicalId": "",
+    "displayNameDe": "",
+    "tags": []
+  },
+  {
+    "technicalId": "chevron-small-top",
+    "displayNameDe": "Pfeilspitze klein oben",
+    "tags": ["einklappen", "zuklappen"]
+  },
+  {
+    "technicalId": "chevron-small-bottom",
+    "displayNameDe": "Pfeilspitze klein unten",
+    "tags": ["aufklappen", "ausklappen"]
+  },
+  {
+    "technicalId": "camera",
+    "displayNameDe": "Kamera",
+    "tags": ["Foto", "Aufnahme"]
+  },
+  {
+    "technicalId": "euro",
+    "displayNameDe": "Euro",
+    "tags": ["Symbol", "Eurozeichen", "Währung"]
+  },
+  {
+    "technicalId": "columns",
+    "displayNameDe": "Spalten",
+    "tags": ["vergleichen", "mehrspaltig"]
+  },
+  {
+    "technicalId": "directory",
+    "displayNameDe": "Verzeichnis",
+    "tags": ["Navigation", "Pfad", "Verzeichnis", "Struktur"]
+  },
+  {
+    "technicalId": "grid-list",
+    "displayNameDe": "Raster Liste",
+    "tags": ["Layout", "Aufzählung", "Einträge"]
+  },
+  {
+    "technicalId": "fullscreen",
+    "displayNameDe": "Vollbild",
+    "tags": ["Ansicht", "vergrößern", "Bildschirm maximieren"]
+  },
+  {
+    "technicalId": "artboard",
+    "displayNameDe": "Zeichenfläche",
+    "tags": ["Arbeitsbereich", "Arbeitsfläche"]
+  },
+  {
+    "technicalId": "chevrons-small-right",
+    "displayNameDe": "Pfeilspitzen klein rechts",
+    "tags": []
+  },
+  {
+    "technicalId": "chevrons-small-left",
+    "displayNameDe": "Pfeilspitzen klein links",
+    "tags": []
+  },
+  {
+    "technicalId": "subtitle",
+    "displayNameDe": "Untertitel",
+    "tags": ["Barrierefreiheit", "Video", "closed caption", "CC"]
+  },
+  {
+    "technicalId": "transcript",
+    "displayNameDe": "Transkript",
+    "tags": ["Verschriftlichung", "Barrierefreiheit", "Audio"]
+  },
+  {
+    "technicalId": "shopping-bag",
+    "displayNameDe": "Einkaufstasche",
+    "tags": ["einkaufen", "Gutschein", "Gutscheinshop"]
+  },
+  {
+    "technicalId": "chevron-small-right",
+    "displayNameDe": "Pfeilspitze klein rechts",
+    "tags": []
+  },
+  {
+    "technicalId": "chevron-small-left",
+    "displayNameDe": "Pfeilspitze klein links",
+    "tags": []
+  },
+  {
+    "technicalId": "eye-crossed-out",
+    "displayNameDe": "Auge offen",
+    "tags": ["Passwort ausblenden", "Passwort verstecken"]
+  },
+  {
+    "technicalId": "file-move-",
+    "displayNameDe": "Dokument verschieben",
+    "tags": ["Ordner", "verschieben", "Dokument", "Bericht"]
+  },
+  {
+    "technicalId": "eye-open",
+    "displayNameDe": "Auge offen",
+    "tags": ["Passwort anzeigen"]
+  },
+  {
+    "technicalId": "clock-delete",
+    "displayNameDe": "Uhr entfernen",
+    "tags": ["Kündigung", "deaktivieren", "beenden", "löschen"]
+  },
+  {
+    "technicalId": "clock-edit",
+    "displayNameDe": "Uhr bearbeiten",
+    "tags": ["Stift", "Wecker", "Abonnement"]
+  },
+  {
+    "technicalId": "sort-up-filled",
+    "displayNameDe": "sortieren aufsteigend voll",
+    "tags": ["Pfeil", "nach oben", "Dreieck", "voll"]
+  },
+  {
+    "technicalId": "star-delete",
+    "displayNameDe": "Stern entfernen",
+    "tags": ["löschen", "Favorit"]
+  },
+  {
+    "technicalId": "flashlight",
+    "displayNameDe": "Blitzlicht",
+    "tags": ["Schnelligkeit", "Blitz", "schnelle Aktion"]
+  },
+  {
+    "technicalId": "bank",
+    "displayNameDe": "Bank",
+    "tags": ["Kreditinstitut", "Bank"]
+  },
+  {
+    "technicalId": "screen-cursor",
+    "displayNameDe": "Bildschirm Cursor",
+    "tags": ["klicken", "auswählen"]
+  },
+  {
+    "technicalId": "layers",
+    "displayNameDe": "Ebenen",
+    "tags": ["gruppieren", "Stapel", "mehrere Folien erzeugen"]
+  },
+  {
+    "technicalId": "file-read-out",
+    "displayNameDe": "Dokument vorlesen",
+    "tags": ["vorlesen", "Audio", "Lautstärke"]
+  },
+  {
+    "technicalId": "collapse-left",
+    "displayNameDe": "einklappen links",
+    "tags": ["komprimieren", "verstecken", "Seitenleiste"]
+  },
+  {
+    "technicalId": "file-wai",
+    "displayNameDe": "Dokument wAI",
+    "tags": ["Dokument", "Datei", "wAI"]
+  },
+  {
+    "technicalId": "download",
+    "displayNameDe": "Download",
+    "tags": ["runterladen", "abspeichern"]
+  },
+  {
+    "technicalId": "tag-delete",
+    "displayNameDe": "Tag entfernen",
+    "tags": ["Markierung", "Etikett", "löschen"]
+  },
+  {
+    "technicalId": "file-xls",
+    "displayNameDe": "Dokument XLS",
+    "tags": ["Datei", "XLS", "Dokument"]
+  },
+  {
+    "technicalId": "tag-add",
+    "displayNameDe": "Tag hinzufügen",
+    "tags": ["Markierung", "Etikett", "hinzufügen", "addieren"]
+  },
+  {
+    "technicalId": "duplicate",
+    "displayNameDe": "duplizieren",
+    "tags": ["kopieren", "vervielfältigen"]
+  },
+  {
+    "technicalId": "print",
+    "displayNameDe": "drucken",
+    "tags": ["Blatt", "reproduzieren", "Drucker"]
+  },
+  {
+    "technicalId": "tag-edit",
+    "displayNameDe": "Tag bearbeiten",
+    "tags": ["Markierung", "Etikett", "Stift"]
+  },
+  {
+    "technicalId": "e-mail-rejected",
+    "displayNameDe": "E-Mail abgelehnt",
+    "tags": ["nicht zugestellt", "Kommunikation", "Nachricht"]
+  },
+  {
+    "technicalId": "e-mail-open",
+    "displayNameDe": "E-Mail offen",
+    "tags": ["offen", "versendet", "Nachricht"]
+  },
+  {
+    "technicalId": "file-zip",
+    "displayNameDe": "Dokument ZIP",
+    "tags": ["Datei", "verkleinern", "packen", "ZIP"]
+  },
+  {
+    "technicalId": "task-representation",
+    "displayNameDe": "Aufgabenvertretung",
+    "tags": ["Kreislauf", "Pfeile", "Wechsel"]
+  },
+  {
+    "technicalId": "at",
+    "displayNameDe": "At-Zeichen",
+    "tags": ["Symbol", "E-Mail-Adresse", "At"]
+  },
+  {
+    "technicalId": "circle-chart",
+    "displayNameDe": "Kreisdiagramm",
+    "tags": ["Grafik", "Prozent", "Anteil"]
+  },
+  {
+    "technicalId": "exclamation-circle",
+    "displayNameDe": "Ausrufezeichen Kreis",
+    "tags": ["Vorsicht", "Aufmerksamkeit", "Wichtig"]
+  },
+  {
+    "technicalId": "exclamation",
+    "displayNameDe": "Ausrufezeichen",
+    "tags": ["Warnung", "Achtung", "Erinnerung"]
+  },
+  {
+    "technicalId": "sort-down-filled",
+    "displayNameDe": "sortieren absteigend voll",
+    "tags": ["Dreieck", "voll", "nach unten", "Pfeil"]
+  },
+  {
+    "technicalId": "arrow-top-bottom",
+    "displayNameDe": "Pfeil oben/unten",
+    "tags": ["Einzahlung", "UDO App", "Auszahlung"]
+  },
+  {
+    "technicalId": "file-change",
+    "displayNameDe": "Dokument ändern",
+    "tags": ["Randbemerkung", "Dokument", "ändern", "Notiz"]
+  },
+  {
+    "technicalId": "file-confirm",
+    "displayNameDe": "Dokument bestätigen",
+    "tags": ["akzeptiert", "Checkliste", "schreiben", "Haken"]
+  },
+  {
+    "technicalId": "file-bib",
+    "displayNameDe": "Dokument BIB",
+    "tags": ["Dokument", "Datei", "BIB"]
+  },
+  {
+    "technicalId": "file-csv",
+    "displayNameDe": "Dokument CSV",
+    "tags": ["CSV", "Datei", "Dokument"]
+  },
+  {
+    "technicalId": "file-doc",
+    "displayNameDe": "Dokument DOC",
+    "tags": ["DOC", "Datei", "Dokument"]
+  },
+  {
+    "technicalId": "file-mb",
+    "displayNameDe": "Dokument MB",
+    "tags": ["Monatsbericht", "Datei", "Zusammenfassung"]
+  },
+  {
+    "technicalId": "file-pdf",
+    "displayNameDe": "Dokument PDF",
+    "tags": ["Datei", "PDF", "Dokument"]
+  },
+  {
+    "technicalId": "file-pif",
+    "displayNameDe": "Dokument PIF",
+    "tags": ["Dokument", "PIF", "Datei"]
+  },
+  {
+    "technicalId": "file-ppt",
+    "displayNameDe": "Dokument PPT",
+    "tags": ["Dokument", "PPT", "Datei"]
+  },
+  {
+    "technicalId": "code",
+    "displayNameDe": "Code",
+    "tags": ["HTML Dokument", "Quellcode", "Dokument"]
+  },
+  {
+    "technicalId": "dashboard",
+    "displayNameDe": "Dashboard",
+    "tags": ["Programm", "Armaturenbrett", "Benutzeroberfläche"]
+  },
+  {
+    "technicalId": "thumbs-up",
+    "displayNameDe": "Daumen hoch",
+    "tags": ["positiv", "akzeptiet", "geprüft"]
+  },
+  {
+    "technicalId": "mobilephone",
+    "displayNameDe": "Mobiltelefon",
+    "tags": ["Handy", "telefonieren", "Smartphone"]
+  },
+  {
+    "technicalId": "thumbs-neutral",
+    "displayNameDe": "Daumen neutral",
+    "tags": ["mittelmäßig", "verbesserungswürdig", "verbesserungsfähig"]
+  },
+  {
+    "technicalId": "thumbs-down",
+    "displayNameDe": "Daumen runter",
+    "tags": ["nicht ausreichend", "mangelhaft", "unzufrieden"]
+  },
+  {
+    "technicalId": "dialog",
+    "displayNameDe": "Dialog",
+    "tags": ["Kommunikation", "Interaktion", "alle Kontaktoptionen", "Kontakt"]
+  },
+  {
+    "technicalId": "chart",
+    "displayNameDe": "Diagramm",
+    "tags": ["Säulendiagramm", "Effizienz", "Netto", "Brutto-Netto-Grafik"]
+  },
+  {
+    "technicalId": "log-out",
+    "displayNameDe": "Log-out",
+    "tags": ["Abmelden", "Ausloggen", "Logout"]
+  },
+  {
+    "technicalId": "diamond",
+    "displayNameDe": "Diamant",
+    "tags": ["Edelstein", "hart", "wertvoll"]
+  },
+  {
+    "technicalId": "divide",
+    "displayNameDe": "dividieren",
+    "tags": ["Rechenzeichen", "teilen"]
+  },
+  {
+    "technicalId": "divide-circle",
+    "displayNameDe": "dividieren Kreis",
+    "tags": ["teilen", "Kreis", "Rechenzeichen"]
+  },
+  {
+    "technicalId": "piggy-bank",
+    "displayNameDe": "Sparschwein",
+    "tags": ["Sparen", "Sparplan", "Vorsorge"]
+  },
+  {
+    "technicalId": "file-reject",
+    "displayNameDe": "Dokument ablehnen",
+    "tags": ["abgelehnt", "verwerfen", "nicht akzeptiert"]
+  },
+  {
+    "technicalId": "file",
+    "displayNameDe": "Dokument",
+    "tags": ["Notiz", "Doc", "schreiben"]
+  },
+  {
+    "technicalId": "bookmark",
+    "displayNameDe": "Lesezeichen",
+    "tags": ["merken", "Markierung", "markiert", "Favoriten"]
+  },
+  {
+    "technicalId": "arrow-right",
+    "displayNameDe": "Pfeil rechts",
+    "tags": ["Pfeil", "vorwärts", "weiter"]
+  },
+  {
+    "technicalId": "flash",
+    "displayNameDe": "Blitz",
+    "tags": ["Pfeil", "Fehler", "falsch"]
+  },
+  {
+    "technicalId": "arrow-top",
+    "displayNameDe": "Pfeil oben",
+    "tags": ["Pfeil", "steigend", "Anzeige"]
+  },
+  {
+    "technicalId": "fax",
+    "displayNameDe": "Fax",
+    "tags": ["faxen", "senden", "Dokument", "schreiben"]
+  },
+  {
+    "technicalId": "faq",
+    "displayNameDe": "FAQ",
+    "tags": ["Frage", "Antwort", "Fragen", "Antworten"]
+  },
+  {
+    "technicalId": "arrow-top-right",
+    "displayNameDe": "Pfeil rechts oben",
+    "tags": ["oben", "vorwärts", "weiter"]
+  },
+  {
+    "technicalId": "arrow-bottom-right",
+    "displayNameDe": "Pfeil rechts unten",
+    "tags": ["unten", "vorwärts", "weiter"]
+  },
+  {
+    "technicalId": "filter-empty",
+    "displayNameDe": "Filter leer",
+    "tags": ["Filterfunktion", "deaktiviert"]
+  },
+  {
+    "technicalId": "arrow-bottom",
+    "displayNameDe": "Pfeil unten",
+    "tags": ["fallend", "Anzeige", "Pfeil"]
+  },
+  {
+    "technicalId": "filter-filled",
+    "displayNameDe": "Filter voll",
+    "tags": ["Filter", "Filterfunktion", "aktiviert"]
+  },
+  {
+    "technicalId": "question",
+    "displayNameDe": "Fragezeichen",
+    "tags": ["Satzzeichen", "unvollständig", "FAQ", "HIlfe"]
+  },
+  {
+    "technicalId": "chevron-left",
+    "displayNameDe": "Pfeilspitze links",
+    "tags": ["Pfeilspitze", "Klammer", "rückwärts"]
+  },
+  {
+    "technicalId": "chevron-top",
+    "displayNameDe": "Pfeilspitze oben",
+    "tags": ["steigend", "Pfeilspitze", "Anzeige"]
+  },
+  {
+    "technicalId": "question-circle",
+    "displayNameDe": "Fragezeichen Kreis",
+    "tags": ["Satzzeichen", "FAQ", "Symbol"]
+  },
+  {
+    "technicalId": "chevron-bottom",
+    "displayNameDe": "Pfeilspitze unten",
+    "tags": ["fallend", "Pfeilspitze", "Anzeige"]
+  },
+  {
+    "technicalId": "checkbox",
+    "displayNameDe": "Checkbox",
+    "tags": ["Markierungsfeld", "Kontrollkästchen", "Auswahlkasten"]
+  },
+  {
+    "technicalId": "chevron-right",
+    "displayNameDe": "Pfeilspitze rechts",
+    "tags": ["vorwärts", "Pfeilspitze", "Klammer"]
+  },
+  {
+    "technicalId": "cloud-download",
+    "displayNameDe": "Cloud Download",
+    "tags": ["runterladen", "Internet", "online"]
+  },
+  {
+    "technicalId": "chatbot",
+    "displayNameDe": "Chatbot",
+    "tags": ["Dialog", "Gesicht", "Sprechblase", "Assistent"]
+  },
+  {
+    "technicalId": "plus",
+    "displayNameDe": "Plus",
+    "tags": ["hinzufügen", "addieren", "positiv"]
+  },
+  {
+    "technicalId": "pin",
+    "displayNameDe": "Pin",
+    "tags": ["merken", "anpinnen", "markiert", "Job merken"]
+  },
+  {
+    "technicalId": "cloud-upload",
+    "displayNameDe": "Cloud Upload",
+    "tags": ["online", "hochladen", "Internet"]
+  },
+  {
+    "technicalId": "star-empty",
+    "displayNameDe": "Stern leer",
+    "tags": ["Bewertung", "Qualität", "Stern", "Bewertung offen"]
+  },
+  {
+    "technicalId": "mailbox-empty",
+    "displayNameDe": "Briefkasten leer",
+    "tags": ["Nachricht", "Brief", "Kasten"]
+  },
+  {
+    "technicalId": "mailbox-full",
+    "displayNameDe": "Briefkasten voll",
+    "tags": ["Postbox", "Neuigkeit", "Nachricht", "Brief"]
+  },
+  {
+    "technicalId": "star-filled",
+    "displayNameDe": "Stern voll",
+    "tags": ["Qualität", "Rating", "Bewertung", "bewertet"]
+  },
+  {
+    "technicalId": "paper-clip",
+    "displayNameDe": "Büroklammer",
+    "tags": ["Klammer", "Büro", "anhängen", "hinzufügen"]
+  },
+  {
+    "technicalId": "pen",
+    "displayNameDe": "Stift",
+    "tags": ["schreiben", "unterschreiben", "zeichnen", "Text"]
+  },
+  {
+    "technicalId": "warning",
+    "displayNameDe": "Warnung",
+    "tags": ["Achtung", "unsicher", "Risiko"]
+  },
+  {
+    "technicalId": "rain-cloud",
+    "displayNameDe": "Regenwolke",
+    "tags": ["Wolke", "schlechtes Wetter", "Regen"]
+  },
+  {
+    "technicalId": "play",
+    "displayNameDe": "abspielen",
+    "tags": ["Datei abspielen", "Beginn", "Pfeil"]
+  },
+  {
+    "technicalId": "stop",
+    "displayNameDe": "Stopp",
+    "tags": ["anhalten", "pausieren", "Quadrat"]
+  },
+  {
+    "technicalId": "alarm",
+    "displayNameDe": "Alarm",
+    "tags": ["Uhr", "Deadline", "dringend", "Notfall"]
+  },
+  {
+    "technicalId": "mute",
+    "displayNameDe": "stummschalten",
+    "tags": ["Ton aus", "lautlos"]
+  },
+  {
+    "technicalId": "refresh",
+    "displayNameDe": "aktualisieren",
+    "tags": ["Kreis", "neu laden", "Pfeile"]
+  },
+  {
+    "technicalId": "pause",
+    "displayNameDe": "Pause",
+    "tags": ["unterbrechen", "Stopp", "warten"]
+  },
+  {
+    "technicalId": "table",
+    "displayNameDe": "Tabelle",
+    "tags": ["Wertentwicklungstabelle", "Wachstum", "Rendite", "Wertentwicklung"]
+  },
+  {
+    "technicalId": "rss",
+    "displayNameDe": "RSS",
+    "tags": ["RSS-Feed", "Web-Feed", "abonnieren"]
+  },
+  {
+    "technicalId": "e-mail",
+    "displayNameDe": "E-Mail",
+    "tags": ["Nachricht", "Kommunikation", "schreiben", "Umschlag"]
+  },
+  {
+    "technicalId": "reply",
+    "displayNameDe": "antworten",
+    "tags": ["Rückmeldung", "Nachricht", "Kommunikation"]
+  },
+  {
+    "technicalId": "password",
+    "displayNameDe": "Passwort",
+    "tags": ["sicherheitsgeschützt", "privat", "verschlüsselt"]
+  },
+  {
+    "technicalId": "e-mail-send",
+    "displayNameDe": "E-Mail abschicken",
+    "tags": ["Brief", "E-Mail", "Kommunikation"]
+  },
+  {
+    "technicalId": "e-mail-exclamation",
+    "displayNameDe": "E-Mail Ausrufezeichen",
+    "tags": ["Achtung", "Brief"]
+  },
+  {
+    "technicalId": "tag",
+    "displayNameDe": "Preisschild",
+    "tags": ["Tag", "tagging", "markieren", "Markierung"]
+  },
+  {
+    "technicalId": "share",
+    "displayNameDe": "teilen",
+    "tags": ["weiterleiten", "senden", "abschicken"]
+  },
+  {
+    "technicalId": "phone",
+    "displayNameDe": "Telefon",
+    "tags": ["Anruf", "Rückruf", "Hörer"]
+  },
+  {
+    "technicalId": "arrow-left",
+    "displayNameDe": "Pfeil links",
+    "tags": ["rückwärts", "Pfeil", "zurück"]
+  },
+  {
+    "technicalId": "highlighter",
+    "displayNameDe": "Textmarker",
+    "tags": ["hervorheben", "malen", "farbig", "wichtig"]
+  },
+  {
+    "technicalId": "arrow-top-left",
+    "displayNameDe": "Pfeil links oben",
+    "tags": ["zurück", "oben", "rückwärts"]
+  },
+  {
+    "technicalId": "e-mail-forward",
+    "displayNameDe": "E-Mail weiterleiten",
+    "tags": ["Pfeil", "weiterleiten", "Brief"]
+  },
+  {
+    "technicalId": "external-link",
+    "displayNameDe": "externer Link",
+    "tags": ["Link", "Verlinkung", "Pfeil"]
+  },
+  {
+    "technicalId": "tap",
+    "displayNameDe": "tippen",
+    "tags": ["antippen", "berühren", "drücken"]
+  },
+  {
+    "technicalId": "arrow-bottom-left",
+    "displayNameDe": "Pfeil links unten",
+    "tags": ["rückwärts", "zurück", "unten"]
+  }
+]

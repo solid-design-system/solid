@@ -1,0 +1,339 @@
+---
+description: >
+  Use when a user needs information about the guidelines for incorporating the Union Investment logo and related visual elements in the user interface of digital products. This includes best practices for logo placement, handling multiple brand elements, image usage in key visual areas, and ensuring accessibility in visual design.
+---
+
+## Inhalte und Bilder aufbereiten
+
+### Logoeinbindung
+
+Das Logo ist das zentrale visuelle Element der Marke Union Investment. In der Regel sollte es links oben platziert werden und so als klarer Absender des Angebots deutlich werden. Das Logo beinhaltet in seiner Darstellung immer die Kombination von Wort- und Bildmarke.
+
+#### **Do**
+
+- Das Logo ist fester Bestandteil des Headers überhalb der Navigation. Dadurch wird es auch in seiner Größe fixiert.
+- Für kleine Bildschirmgrößen gibt es eine verkleinerte Variante des Headers in dem auch die Größe des Logos reduziert wurde. Dies gilt auch als Richtlinie für interne Anwendungen oder für White-Label-Tools, die für die Marke Union Investment angepasst werden.
+- Information zum Favicon für interne Anwendungen und externe Seiten finden Sie hier.
+- Das Logo wird mit einem aussagekräftigen Alternativtext eingebunden.
+- Das Logo muss ausreichenden Kontrast zum Hintergrund haben (mind. 3:1 bei großen Logos gemäß WCAG 2.2).
+- Bei responsiven Layouts muss die Lesbarkeit der Wortmarke auch bei kleineren Logo-Größen erhalten bleiben.
+- Information zur Verwendung von Signets für interne Anwendungen finden Sie im Bereich “Signets und Auszeichnungen” und hier auf der Seite im Abschnitt Signets.
+
+#### **Don't**
+
+- Die Bildmarke darf nicht ohne die Wortmarke stehen.
+- Der Absender muss immer deutlich sein.
+- Das Logo darf nicht dekorativ und ohne Alternativtext eingebunden werden.
+- Keine Platzierung des Logos auf unruhigem Bildhintergrund oder ohne ausreichenden Kontrast.
+
+### Umgang mit mehreren Absendern und Signets
+
+Neben dem UI-Logo kann auch ein zweiter Absender zum Bestandteil des Headers werden. Grundsätzlich gilt das Union Investment-Logo als primärer Absender. Als zweiter Absender gelten andere Logos oder Signets im Fall von internen Anwendungen. Signets werden im Stil der Content-Icons umgesetzt. Mehr zu Signets erfahren Sie hier.   
+Um Unklarheit in der Absenderschaft zu vermeiden, sollte der zweite Absender nicht direkt neben dem UI-Logo platziert werden, sondern der erste Absender links und der zweiter Absender rechts.   
+Im Kontext von schmale Header, wenn nicht genügend Platz vorhanden ist, können beide Absender nebeneinander platziert werden. Dann werden die beiden Elemente durch ausreichend Platz und eine senkrechte Linie (Grau, #C3C3C3) voneinander getrennt.  
+Für kleine Bildschirmgrößen gibt es eine verkleinerte Variante des Headers. Darin ist aufgrund der Höhe die Größe der Absender reduziert. Da sie auch hier direkt nebeneinander stehen, werden sie auch hier durch ausreichend Platz und eine senkrechte Linie (Grau, #C3C3C3) voneinander getrennt.
+
+#### **Do**
+
+- Standard: Primärer Absender links, zweiter Absender rechts.
+- Zweiten Absender nicht direkt angrenzend zum primären Absender platzieren, sondern mit klarer räumlicher Trennung.
+- Bei schmalen Headern oder mobilen Varianten die beiden Absender nebeneinander mit ausreichend Abstand und einer senkrechten Trennlinie in Grau (#C3C3C3) einsetzen.
+- Für kleine Bildschirmgrößen eine reduzierte Header-Variante mit proportional verkleinerten Absendern verwenden.
+- Absender sollten mit Alternativtexte versehen werden.
+- Kontrast von Logo, Signet und Trennlinie zum Hintergrund sicherstellen.
+
+#### **Don't**
+
+- UI-Logo und zweiten Absender nur in Ausnahmefällen (schmaler Header, mobile Variante) direkt nebeneinander platzieren. Dann mit ausreichend Platz und einer senkrechten Trennlinie in Grau (#C3C3C3) voneinander trennen.
+- Keine klare Hierarchie zwischen Logo und zweitem Absender.
+- Der zweite Absender darf auch im Falle von internen Anwendungen nicht allein als Absender stehen. Selbst wenn es sich um ein Signet handelt.
+
+### Bildeinsatz in Bühne
+
+#### Do
+
+- Die Bühne bietet drei Skalierungsgrößen (S, M und L) mit unterschiedlichen Platzierungen von Text und Markenform an.
+- Achten Sie auf das Bildmotiv, es sollte der Union Investment Bildwelt entsprechen: reale Motive, in möglichst natürlichem Licht.
+- Achten Sie darauf, dass das Hauptmotiv im Bild nicht verdeckt oder ungünstig angeschnitten wird.
+- Texte innerhalb der Bühne können zur besseren Erfassbarkeit in Überschrift und Einleitungstext gegliedert werden.
+- Liegt der HTML-Text direkt auf dem Bild, muss auf ausreichend hohe Farbkontraste zwischen Text und Bildhintergrund (mind. 4,5:1 für Fließtext, 3:1 für große Texte) geachtet werden. Der Text muss immer lesbar sein, auch bei responsiver Skalierung.
+- Bilder in der Bühne sollten mit einem sinnvollen Alternativtext versehen sein.
+
+#### Don't
+
+- Bitte verwenden Sie keine konstruierten und unnatürlichen Bildmotive.
+- Vermeiden Sie es, Texte direkt im Bild zu verankern. Diese können SEO-technisch nicht ausgewertet und insbesondere auf kleineren Geräten unlesbar werden. Zudem sind diese nicht für Screenreader erfassbar und damit nicht barrierefrei.
+- Kein Text auf unruhigen oder kontrastarmen Bildbereichen – dies erschwert die Lesbarkeit erheblich, insbesondere für Menschen mit Sehbeeinträchtigung.
+
+Testen Sie ihr Bild für den Einsatz auf der Bühne mit Hilfe des Bildertesters.
+
+Weitere Informationen zur Bildauswahl finden Sie im Kapitel Bildwelt.
+
+## Umgang mit der Markenform
+
+Die Markenform ist auch in Digitalmedien das visuelle Erkennungsmerkmal von Union Investment und soll deshalb in ihrer typischen Stilistik im ersten Viewport (sichtbarer Bereich einer Anwendung ohne gescrollt zu haben) gezeigt werden. Dies kann als Animation oder statisches Element in der Bühne oder Splashscreen oder sogar als funktionales Element, wie beispielsweise ein Menü, sein.
+
+#### Do
+
+- Die Markenform kann als Bildmaske oder Container verwendet werden. Bei den Containervarianten wiederum als Farbfläche (UI-Blau, Grau200, Weiß) oder als Kontur (UI-Blau, UI-Grün, Weiß).
+- Es ist möglich mehr als eine Markenform pro Seite zu verwenden. Wird sie als Kontur verwendet, achten Sie auf eine Konturstärke von 2 px.
+- Setzen Sie die Markenform gezielt ein, um Aufmerksamkeit zu erzielen und auf wichtige Inhalte hinzuweisen.
+
+ 
+
+#### Don't
+
+- UI-Grün als Fläche ist für die Markenform nicht zulässig.
+- Nutzen Sie markenprägende Elemente wie die Markenform mit Bedacht und akzentuiert.
+- Reduzieren Sie die textlichen Inhalte auf der Markenform auf das Wesentliche. Durch die Steigung und Rundung kann insbesondere in großen Formen viel Leerraum entstehen und die Markenform als solche nicht mehr erkennbar sein.
+- Verwenden Sie bei viel Text und häufiger Verwendung besser die rechteckigen Container.
+- Wird Text auf der Markenform platziert, muss im Rahmen der Umsetzung der Barrierefreiheitsrichtlinien auf das geforderte Kontrastverhältnis von Text zu Hintergrund geachtet werden.
+
+ 
+
+Mehr zu Markenform, Container
+
+## Farbverwendung
+
+Generelle Informationen zum Primär- und Sekundärfarbspektrum von Union Investment finden Sie hier. Für die Anwendung im digitalen Bereich gilt es zusätzlich die Richtlinien des Barrierefreiheitsgesetzes einzuhalten. Die Komponenten des Solid Design Systems legt neben den Textfarben zusätzlich fest, welche Farben auf den zulässigen Hintergründen verwendet werden können.
+
+#### Do
+
+- Neben den Farben für Texte und Hintergründe sind auch die Farben für funktionale Elemente festgelegt.
+- Notifikationen können mit Farben aus dem Union Investment Farbspektrum optisch hervorgehoben werden. Hinweise/Information in Hellblau (#1582D5), Erfolg in Grün (#367B28) , Fehler in Rot (#CC1937) und Warnung in Gelb (#BB8D20).
+- Für eine bessere Lesbarkeit auf Bildern ist es möglich, Fotos händisch mit einem Farbverlauf abzudunkeln (Blau800 #051530) oder aufzuhellen (#FFFFFF).
+- Für die Nutzung anderer Farbkombinationen, wie beispielsweise bei Diagrammen oder Grafiken, liegt die Verantwortung für die Einhaltung der WCAG Standards beim Gestalter.
+- Möchten Sie ein neues graphisches Element in Sekundärfarben einführen, sprechen Sie bitte mit unserem CD Team.
+
+#### Don't
+
+- Schatten sind grundsätzlich im Corporate Design von Union Investment nicht zulässig. Lediglich Schatten mit einem funktionalen Charakter sind eingeschränkt nutzbar (Beispiel Navigations-Header zum Seiteninhalt).
+- Die Primärfarben UI-Blau und UI-Grün in Volltonfarben prägen den Auftritt von Union Investment. Zu bunte Verwendung von Sekundärfarben gilt es zu vermeiden.
+- Sekundärfarben (außer Grau) sind nicht als Hintergrundfarben zulässig.
+
+## Iconverwendung
+
+Unsere Icons prägen durch ihre charakteristische Formensprache das Erscheinungsbild von Union Investment mit. Wir unterscheiden Content- und System-Icons.   
+**Content-Icons** sind zweifarbig gestaltet und bebildern markenrelevante Inhalte. Sie fungieren als Bildersatz und sind daher mit einem hohen Detailgrad ausgestattet.   
+**System-Icons** sind Navigationselemente mit einer Funktion. Sie sind einfarbig und in ihrer Gestaltung auf das Wesentliche reduziert, um möglichst schnell erfassbar zu sein.
+
+#### Do
+
+- Content-Icons werden als Bildersatz verwendet und zeigen markenrelevante Inhalte wie Produkte, Leistungen und Sachverhalte. Daneben können sie auch in Auflistungen verwendet werden.
+- System-Icons verdeutlichen Funktionen und sind daher klickbar. Sie können in Links, Buttons oder Menüs verwendet werden, aber auch alleine stehen.
+- Content-Icons, die Inhalte visuell vermitteln (z. B. „Nachhaltigkeit“ oder „Beratung“), benötigen einen Alternativtext oder eine begleitende Textbeschreibung, um barrierefrei verständlich zu sein.
+- Achten Sie beim Einsatz von Icons auf ausreichenden Farbkontrast zum Hintergrund (mind. 3:1).
+
+#### Don't
+
+- Content-Icons sind detailreich und sollten daher nicht zu klein verwendet werden.
+- System-Icons sind immer in Zusammenhang mit Funktionen zu verwenden und haben in der Regel immer eine bestimmte Größe. Sie sollten nicht zu groß verwendet werden.
+- System-Icons werden in der Regel nur in UI-Blau oder Weiß verwendet.
+- Content-Icons sind auf hellen Hintergründen nur in UI-Blau und UI-Grün zu verwenden oder in Weiß und UI-Grün auf dunklen Hintergründen.
+- Wichtige Informationen dürfen nicht ausschließlich über ein Icon vermittelt werden.
+- Icons sollten nicht allein durch Farbe ihre Bedeutung vermitteln (z. B. selbes Icon in grün = aktiv, in rot = fehlerhaft). Es bedarf einer redundanten visuellen Markierung (z. B. anderes Icon und Text) , um eine eindeutige Zuordnung im Sinne der Barrierefreiheit zu gewährleisten.
+
+## Inhalte auf Bildern
+
+#### Do
+
+- Achten Sie bei der Platzierung von Text auf Bild auf eine gute Sicht- und Lesbarkeit. Um den Richtlinien der Barrierefreiheit zu entsprechen, bedeutet das einen Farbkontrast zwischen Text und Hintergrund von mind. 4,5:1 bei Fließtext, 3:1 bei großen Texten.
+- Platzieren Sie Text nicht ausschließlich im Bild, wenn er zentrale Informationen enthält – wichtige Inhalte sollten zusätzlich als HTML-Text außerhalb des Bildes vorhanden sein.
+- Nutzen Sie Bilder mit viel "ruhigen" Flächen um Inhalte gezielt zu platzieren und einen klarer Fokus, der frei von Text ist.
+- Partiell abgedunkelte bzw. aufgehellte Stellen, können auch bei unruhigen Bereichen die Lesbarkeit verbessern.
+- Um ein Bild in den Hintergrund zu rücken und den Text in den Fokus, kann ein Overlay oder ein Verlauf in UI-Blau800 (#051530) oder Weiß (#FFFFFF) genutzt werden.
+
+ 
+
+#### Don't
+
+- Ist das Bild im Hintergrund des Textbereichs zu unruhig, ist keine gute Lesbarkeit gegeben.
+- Bilder nicht zu dunkel/zu hell überlagern, da sonst vom Bildinhalt nicht mehr viel sichtbar ist. Verzichten Sie in einem solchen Fall komplett auf das Bild und nutzen Sie einen farbigen Hintergrund.
+- Vermeiden Sie zu lange Texte in der Bühne.
+- Keine Texte nur visuell fest im Bild einbetten – z. B. Slogans, Calls-to-Action oder Textgrafiken.
+
+ 
+
+Mehr zur Bildwelt
+
+## Teaservielfalt (Teaser, Flashcard, Infobox, Superzahl)
+
+#### Do
+
+- Komponenten wie Teaser, Flashcards, Infoboxen vereinen zusammengehörige Informationen (Buttons, Links, Metadaten und Kurzbeschreibungen) als visuelle Einheit.
+- Teaser schaffen einen Absprung zu anderen Inhaltsseiten mit ausführlicher Information.
+- Ordnen Sie ähnliche Inhalte in eine Teaser Reihe an.
+- Achten Sie auf aussagekräftige Überschriften und Linktexte, z. B. „Mehr zu Fonds mit Nachhaltigkeitsfokus“ statt „Mehr erfahren“.
+
+
+#### Don't
+
+- Mischen Sie keine Teaser Varianten in einer Reihe.
+- Verschachteln Sie keine Teaser Reihen innerhalb einer Spalte (bspw. in 2/3 Layout 4 Teaser). Dadurch werden Teaser zu schmal. Als Faustregel gilt, dass mindestens 3-4 Wörter in eine Zeile passen sollten, da Spalten bei kleineren Screens erstmal schmaler skaliert werden (insbesondere in kleineren Screens (1024px - 651px) testen).
+- Vermeiden Sie mehrere Links im selben Teaser ohne klaren Kontext.
+
+ 
+
+Mehr zu Teaser, Flashcards, Infoboxen, Superzahl
+
+ 
+
+## Grundregeln für barrierefreie Inhalte
+
+Ein barrierefreier Inhalt ist nicht nur für Menschen mit Einschränkungen hilfreich, sondern verbessert allgemein die Nutzerfreundlichkeit, Lesbarkeit, SEO und mobile Nutzung. Barrierefreiheit bedeutet, dass alle Menschen Inhalte nutzen, verstehen und bedienen können. Dabei spielt die redaktionelle Arbeit eine Schlüsselrolle. Magnolia stellt barrierefreie Komponenten bereit, aber auch der Content muss gewisse Dinge erfüllen um barrierefrei zu sein.
+
+### Text
+
+#### Do
+
+- Klare, einfache Sprache verwenden.
+- Kurze Sätze, aktive Sprache, Fachbegriffe meiden, erklären oder verlinken.
+- Auf jeder Seite nur eine H1 Überschrift verwenden.
+- Inhalte logisch strukturieren und Hierarchien festlegen.
+- Überschriften müssen logisch gegliedert sein und sollten keine Ebene überspringen (H1-H5).
+- Echte Überschriften mit Tags verwenden (H1, H2, H3), nicht nur fett formatieren.
+- Überschriften sollten aussagekräftig sein, also so formuliert, dass sie den überschriebenen Inhalt zusammenfassen.
+- Für Aufzählungen/Listen die Listen-Komponente verwenden.
+
+ 
+
+#### Don't
+
+- Keine Textwüsten ohne Absätze oder Gliederung.
+- Keine unstrukturierten Überschriften wie „Absatz fett + größer“.
+- Keine Leerzeichen zur Formatierung von Text benutzen.
+- Keine Leerzeilen (enter) oder leeren Komponenten verwenden zur Erzeugung von Abständen.
+- Keine Bindestriche zur Erzeugung von Trennlinien nutzen.
+- Keine Bindestriche für Listen oder Aufzählungen.
+- Texte von Hinweisen, Aufforderungen und Alternativtexte dürfen sich nicht auf rein sensorische (z. B. Formen, Farben) Merkmale beziehen (“Klicken Sie auf den grünen Kreis, um …”, “Unter dem Bild finden Sie...”).
+
+ 
+
+### Bilder
+
+#### Do
+
+- Bilder, die Informationen übermitteln benötigen einen Alternativtext (Alt-Text). Dieser muss den gezeigten Inhalt des Bildes beschreiben (z. B. „Berater sitzt mit Kundin am Tisch. Gemeinsam schauen sie auf ein Tablet. Im Hintergrund sind Büroräumlichkeiten zu sehen“).
+- Für rein dekorative Bilder: Alt-Text leer lassen (alt="").
+- Komplexe Bilder und Grafiken müssen im Fließtext akkurat beschrieben werden.
+- Der Kontrast zwischen der eingefügten Grafik und dem angrenzenden Inhalt muss 3:1 sein.
+- Wenn HTML-Text auf Bild verwendet wird, muss der Kontrast zur hellsten und zur dunkelsten Farbe im Hintergrund hoch genug ist (mind. 4,5:1).
+
+ 
+
+#### Don't
+
+- Keine Dateinamen wie „IMG\_123.jpg“ als Beschreibung verwenden.
+- Kein Bild ohne Alt-Text, wenn es Informationen vermittelt.
+- Schrift nicht auf Bild fest eingebetten.
+
+ 
+
+### Video
+
+Bei der Einbindung von Videos ist zu beachten, dass Union Investment einen barrierefreien Videoplayer bereitstellt. Dennoch sind für das Video selbst einige Dinge zu beachten.
+
+#### Do
+
+- Aus dem inhaltlichen Kontext klar machen, dass ein Video da ist.
+- Videos müssen mit einem synchron laufenden Untertitel versehen sein oder mit Transkript verlinkt sein.
+- Audiodeskription, falls visuelle Informationen ohne Ton nicht verständlich sind.
+
+ 
+
+#### Don't
+
+- Videos dürfen keinen festeingebetteten Text beinhalten.
+- Kein Video ohne Tonverständnis-Alternative.
+- Innerhalb des Videos sollte auf Flackern verzichtet werden (mind. 4-maliger Farb- oder Musterwechsel pro Sekunde).
+- Automatisch abspielende Videos/Audios vermeiden.
+
+ 
+
+### PDFs und Downloads
+
+#### Do
+
+- Wenn möglich: Inhalte direkt auf der Seite darstellen (statt PDF).
+- PDF selbst muss barrierefrei bereitgestellt werden.
+- Klarer, aussagekräftiger Linktext mit Angabe von Dateityp und die Größe („Produktbroschüre Fonds XY (PDF, 2 MB)“).
+
+ 
+
+#### Don't
+
+- Keine gescannten PDFs ohne Texterkennung (OCR).
+
+ 
+
+### Akkordeon und Tabs
+
+#### Do
+
+- Akkordeon: Überschriften sinnvoll wählen (Frage oder klarer Titel).
+- Tab: Überschriften möglichst kurz und prägnant wählen.
+- Inhalte sinnvoll gliedern und strukturieren (Reihenfolge beachten).
+
+ 
+
+#### Don't
+
+- Keine langen verschachtelten Akkordeons oder Tabs.
+- Keine zentralen Inhalte ausschließlich dort verstecken.
+
+ 
+
+### Tabellen
+
+#### Do
+
+- Tabelle nur nutzen, wenn sie wirklich nötig sind. Gegenüberstellungen lassen sich oftmals einfacher verständlich über Listen darstellen.
+- Sinnvolle und einfache Struktur verwenden.
+- Vergabe von sinnvollen Zeilen- und Spaltenüberschriften.
+- Informative Beschreibung zum Aufbau/der Struktur der Tabelle, so dass sie aus dem Kontext heraus verstanden werden kann.
+- Ist die Tabelle eine alternative Darstellung zu einer komplexen Grafik, muss es in deren Kontext einen Hinweis auf die Tabelle geben.
+
+ 
+
+#### Don't
+
+- Keine verschachtelten Tabellen erstellen.
+
+ 
+
+### Verlinkungen und Buttons
+
+#### Do
+
+- Linktexte müssen aussagekräftige sein und Ziel oder Zweck des Links beinhalten.
+- Der Buttonstext sollte die ausgelöste Aktion beinhalten.
+- Linktexte oder -zweck klar und aussagekräftig formulieren („Jetzt informieren über XY“ statt „hier klicken“).
+- Kontext erkennbar machen: Wohin führt der Link? Was erwartet die Nutzer?.
+
+ 
+
+#### Don't
+
+- Keine sensorischen Begriffe (Farben, Formen) in Links und Buttons.
+- Auf generischen Linktexte wie „hier“, „mehr“, „weiter“ verzichten.
+- Keine gleichen Linktexte für unterschiedlichen Zielen.
+
+ 
+
+### Formulare
+
+#### Do
+
+- Jedes Formularelementen benötigt eine Beschriftung und diese muss klar, sinnvoll und eindeutig sein (Ausnahme: Einfaches Suchfeld mit Feld + Button).
+- Pflichtfelder mit * markieren. Die Bedeutung muss zu Beginn des Formulars platziert werden.
+- Fehlerhaft ausgefüllte Eingabefelder müssen ausgezeichnet werden.
+- Fehlermeldungen sollten direkt beim Feld angezeigt werden und möglichst präzise sagen, wie der Fehler behoben werden kann.
+- Hilfetexte und Hinweise nutzen, um bei Bedarf zu erklären, was erwartet wird (z. B. Format bei Telefonnummern oder Passwörtern).
+
+ 
+
+#### Don't
+
+- Keine leeren oder kryptischen Eingabefeldbeschriftungen.
+- Keine allgemeinen Fehlermeldungen wie „Formular konnte nicht gesendet werden“.
+- Keine rein visuelle Fehlermarkierung (z. B. rotes Feld ohne Text).

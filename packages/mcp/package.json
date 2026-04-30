@@ -1,0 +1,69 @@
+{
+  "author": {
+    "name": "Union Investment"
+  },
+  "bin": {
+    "solid-mcp": "./dist/bin/start.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "globby": "^16.1.1",
+    "zod": "^4.3.6"
+  },
+  "description": "MCP Server for the Solid Design System",
+  "devDependencies": {
+    "@solid-design-system/components": "workspace:*",
+    "@solid-design-system/styles": "workspace:*",
+    "@solid-design-system/tokens": "workspace:*",
+    "@types/node": "^24.10.13",
+    "change-case": "^5.4.4",
+    "custom-elements-manifest": "^2.1.0",
+    "eslint": "^9.39.2",
+    "ora": "^9.3.0",
+    "prettier": "^3.8.1",
+    "tsx": "^4.0.0",
+    "typescript": "^5.9.3"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/server.js",
+      "types": "./dist/server.d.ts"
+    },
+    "./server.js": "./dist/server.js",
+    "./tools/*": "./dist/tools/*"
+  },
+  "files": [
+    "README.md",
+    "CHANGELOG.md",
+    "dist",
+    "metadata"
+  ],
+  "homepage": "https://github.com/solid-design-system/solid/tree/main/packages/mcp",
+  "keywords": [
+    "SDS",
+    "Solid Design System",
+    "Union Investment",
+    "UI",
+    "UI MCP Server",
+    "Solid MCP Server"
+  ],
+  "license": "MIT",
+  "name": "@solid-design-system/mcp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/solid-design-system/solid.git",
+    "directory": "packages/mcp"
+  },
+  "scripts": {
+    "build": "pnpm run build:ts && pnpm run build:metadata && pnpm build:hash",
+    "build:all": "pnpm run build && pnpm run build:storybook",
+    "build:ts": "node --input-type=module -e \"import{rmSync}from'node:fs';rmSync('dist',{recursive:true,force:true})\" && tsc",
+    "build:metadata": "node dist/build/build.js",
+    "build:hash": "node ./dist/bin/create-checksum.js",
+    "lint:js": "eslint src",
+    "lint": "pnpm run /^lint:.*/",
+    "test": "node --import tsx/esm --test \"test/**/*.spec.ts\""
+  },
+  "type": "module",
+  "version": "2.6.0"
+}
