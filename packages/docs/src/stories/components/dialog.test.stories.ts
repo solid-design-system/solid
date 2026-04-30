@@ -1,17 +1,11 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
-import {
-  storybookDefaults,
-  storybookHelpers,
-  storybookTemplate,
-  storybookUtilities
-} from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 import { waitUntil } from '@open-wc/testing-helpers';
 
 const { overrideArgs } = storybookHelpers('sd-dialog');
 const { argTypes, parameters } = storybookDefaults('sd-dialog');
 const { generateTemplate } = storybookTemplate('sd-dialog');
-const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Components/sd-dialog/Screenshots: sd-dialog',
@@ -160,11 +154,4 @@ export const Mouseless = {
   }
 };
 
-export const Combination = generateScreenshotStory([
-  Default,
-  NoCloseButton,
-  Scrolling,
-  ExtendedFooter,
-  SmallHeadline,
-  Mouseless
-]);
+// TODO: add combination of all features
