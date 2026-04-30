@@ -1,5 +1,5 @@
 ---
-name: "Backlog Groomer"
+name: "PM: Backlog Groomer"
 description: "Use when reviewing backlog issues for refinement readiness. Fetches all issues from the 📋 Backlog column and evaluates each against the Definition of Ready (DoR). Use for: backlog grooming, refinement prep, DoR validation, identifying issues that need more detail before they can move forward."
 tools: [gh-projects/projects_get, gh-projects/projects_list, execute/runInTerminal, read/readFile]
 ---

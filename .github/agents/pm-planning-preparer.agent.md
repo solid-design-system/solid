@@ -1,5 +1,5 @@
 ---
-name: "Planning Preparer"
+name: "PM: Planning Preparer"
 description: "Use when preparing for sprint planning or checking if issues in the 🔖 Ready column are properly refined. Evaluates each issue against the Definition of Ready (DoR): business value, story points, clarity, and dependencies. Use for: sprint readiness, planning prep, DoR validation."
 tools: [gh-projects/projects_get, gh-projects/projects_list, execute/runInTerminal, read/readFile]
 ---

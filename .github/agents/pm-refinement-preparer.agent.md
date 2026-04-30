@@ -1,5 +1,5 @@
 ---
-name: "Refinement Preparer"
+name: "PM: Refinement Preparer"
 description: "Use when preparing for refinement sessions. Fetches issues from the '🛠️ To be pre-refined' and '⚙️ To be refined' columns and analyzes each for unclear requirements, missing technical information, and missing business cases. Produces open questions per issue to guide the refinement discussion."
 tools: [gh-projects/projects_get, gh-projects/projects_list, execute/runInTerminal, read/readFile]
 ---
