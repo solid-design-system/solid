@@ -8,7 +8,8 @@
       }
     },
     "solid-design-system": {
-      "command": "./packages/mcp/dist/bin/start.js"
+      "command": "node",
+      "args": ["./packages/mcp/dist/bin/start.js"]
     }
   }
 }
