@@ -1,11 +1,11 @@
 import { css, html } from 'lit';
-import { customElement } from '../../internal/register-custom-element';
-import { getIconLibrary, unwatchIcon, watchIcon } from './library';
 import { property, state } from 'lit/decorators.js';
-import { requestIcon } from './request';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
-import { watch } from '../../internal/watch';
+import { customElement } from '../../internal/register-custom-element';
 import SolidElement from '../../internal/solid-element';
+import { watch } from '../../internal/watch';
+import { getIconLibrary, unwatchIcon, watchIcon } from './library';
+import { requestIcon } from './request';
 
 let parser: DOMParser;
 
@@ -48,9 +48,12 @@ export default class SdIcon extends SolidElement {
    */
   @property({ reflect: true }) color: 'currentColor' | 'primary' | 'white' = 'currentColor';
 
+  private readonly _boundThemeChange = () => this.setIcon();
+
   connectedCallback() {
     super.connectedCallback();
     watchIcon(this);
+    this.renderRoot.addEventListener('sd-theme-change', this._boundThemeChange);
   }
 
   firstUpdated() {
@@ -60,10 +63,7 @@ export default class SdIcon extends SolidElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     unwatchIcon(this);
-  }
-
-  protected onThemeChange(): void {
-    this.setIcon();
+    this.renderRoot.removeEventListener('sd-theme-change', this._boundThemeChange);
   }
 
   private getUrl() {

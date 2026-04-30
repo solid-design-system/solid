@@ -1,12 +1,12 @@
-import { processTailwind } from '../components/scripts/esbuild-plugin-lit-tailwind-and-minify.js';
+import VitePluginCustomElementsManifest from 'vite-plugin-cem';
 import { replaceCodePlugin as ViteReplaceCodePlugin } from 'vite-plugin-replace';
-import componentsPackageJson from '../components/package.json';
 import customElementConfig from '../components/custom-elements-manifest.config.js';
+import componentsPackageJson from '../components/package.json';
+import { processTailwind } from '../components/scripts/esbuild-plugin-lit-tailwind-and-minify.js';
 import placeholdersPackageJson from '../placeholders/package.json';
 import stylesPackageJson from '../styles/package.json';
 import tokensPackageJson from '../tokens/package.json';
 import VitePluginCreateEmptyCemIfNotExisting from './scripts/vite-plugin-create-empty-cem-if-not-existing';
-import VitePluginCustomElementsManifest from 'vite-plugin-cem';
 import VitePluginFetchIconsFromCdn from './scripts/vite-plugin-fetch-icons-from-cdn';
 import VitePluginGetPlaywrightVersion from './scripts/vite-plugin-get-playwright-version';
 import VitePluginGetTailwindTheme from './scripts/vite-plugin-get-tailwind-theme';
@@ -21,6 +21,7 @@ export default () => {
       VitePluginLitTailwind({
         include: [
           /src\/internal\/solid-element.ts/,
+          /src\/internal\/shared-styles.ts/,
           /src\/components\/.*\.ts$/,
           /src\/utilities\/autocomplete-config.ts/
         ],
