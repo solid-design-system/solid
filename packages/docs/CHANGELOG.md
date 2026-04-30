@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.13.1
+
+### Patch Changes
+
+- Removed all descriptions from the screenshot tests. _[`#2974`](https://github.com/solid-design-system/solid/pull/2974) [`a79fbf8`](https://github.com/solid-design-system/solid/commit/a79fbf8f41caee8e1cfbd90e2b4e79093be99335) [@martascorreia](https://github.com/martascorreia)_
+
 ## 2.13.0
 
 ### Minor Changes
