@@ -26,26 +26,19 @@ export const DateUtils = {
   parseLocalISO: (iso: string | null): Date | null => {
     if (!iso) return null;
 
-    let y: number;
-    let m: number;
-    let d: number;
+    const trimmed = iso.trim();
+    if (!trimmed) return null;
 
-    // support ISO
-    if (/^\d{4}-\d{2}-\d{2}$/.test(iso)) {
-      const parts = iso.split('-');
-      y = Number(parts[0]);
-      m = Number(parts[1]) - 1;
-      d = Number(parts[2]);
-    }
-    // support date with dots "YYYY.MM.DD"
-    else if (/^\d{4}\.\d{2}\.\d{2}$/.test(iso)) {
-      const parts = iso.split('.');
-      y = Number(parts[0]);
-      m = Number(parts[1]) - 1;
-      d = Number(parts[2]);
-    } else {
-      return null;
-    }
+    // Normalize dots and slashes to hyphens so we support
+    // YYYY-MM-DD, YYYY.MM.DD and YYYY/MM/DD uniformly.
+    const normalized = trimmed.replace(/[./]/g, '-');
+
+    const match = normalized.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) return null;
+
+    const y = Number(match[1]);
+    const m = Number(match[2]) - 1;
+    const d = Number(match[3]);
 
     const date = new Date(y, m, d);
     return Number.isNaN(date.getTime()) ? null : date;
