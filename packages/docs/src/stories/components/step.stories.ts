@@ -64,17 +64,21 @@ export const Default = {
  *
  * - `lg`(default)
  * - `sm`
+ * - `xs` (only available with vertical orientation)
  */
 
 export const Size = {
   name: 'Size',
   render: () => html`
-    <div class="flex gap-12 w-min">
+    <div class="flex gap-12 w-min-content">
       <sd-step size="lg">
         <span slot="label">Large</span>
       </sd-step>
       <sd-step size="sm">
         <span slot="label">Small</span>
+      </sd-step>
+      <sd-step size="xs" orientation="vertical" class="pl-16">
+        <span slot="label">Extra Small</span>
       </sd-step>
     </div>
   `
@@ -252,8 +256,14 @@ export const Description = {
         <p class="sd-paragraph">Description lorem ipsum sic semper</p>
       </sd-step>
     </div>
-    <div class="w-[293px]">
+    <div class="mb-8 w-[293px]">
       <sd-step orientation="horizontal">
+        <span slot="label">Step name</span>
+        <p class="sd-paragraph">Description lorem ipsum sic semper</p>
+      </sd-step>
+    </div>
+    <div class="mb-8 h-[7em]">
+      <sd-step size="xs" orientation="vertical" class="pl-8">
         <span slot="label">Step name</span>
         <p class="sd-paragraph">Description lorem ipsum sic semper</p>
       </sd-step>

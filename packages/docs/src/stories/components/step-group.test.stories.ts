@@ -106,7 +106,7 @@ export const notInteractive = {
     return generateTemplate({
       axis: {
         x: { type: 'attribute', name: 'not-interactive' },
-        y: { type: 'attribute', name: 'size' }
+        y: { type: 'attribute', name: 'size', values: ['lg', 'sm', 'xs'] }
       },
       args,
       options: {
@@ -114,6 +114,21 @@ export const notInteractive = {
           const attrs = Object.entries(attributes)
             .map(([attr, value]) => `${attr}='${value}'`)
             .join(' ');
+
+          if (attributes.size === 'xs') {
+            const xsSlots = `
+              <sd-step size="xs" orientation="vertical">
+                <p slot="label">Lorem ipsum dolor sit</p>
+              </sd-step>
+              <sd-step size="xs" orientation="vertical" current>
+                <p slot="label">Exercitation ullamco laboris</p>
+              </sd-step>
+              <sd-step size="xs" orientation="vertical" waiting>
+                <p slot="label">Reprehenderit qui in e name</p>
+              </sd-step>`;
+
+            return `<div class="h-[20em]"><sd-step-group orientation="vertical" ${attrs} label="${attributes.size}-${attributes['not-interactive']}">${xsSlots}</sd-step-group></div>`;
+          }
 
           const slotted = Object.entries(slots ?? {})
             .map(([, slot]) => slot)
@@ -128,7 +143,7 @@ export const notInteractive = {
     (story: () => typeof html) => html`
       <style>
         td.template {
-          width: 100%;
+          width: fit-content;
         }
       </style>
       ${story()}
