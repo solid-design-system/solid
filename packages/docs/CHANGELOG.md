@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.13.0
+
+### Minor Changes
+
+- Added new documentation for `xs` size variant in `sd-step` and `sd-step-group`, including new template for `sd-step-group` using `xs` size variant. _[`#2943`](https://github.com/solid-design-system/solid/pull/2943) [`d3d44f6`](https://github.com/solid-design-system/solid/commit/d3d44f6e520a32c50b3466a89ba1c2bc2db88f06) [@smfonseca](https://github.com/smfonseca)_
+
 ## 2.12.0
 
 ### Minor Changes

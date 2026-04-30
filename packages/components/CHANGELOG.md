@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 6.17.0
+
+### Minor Changes
+
+- Added new `xs` size variant for `sd-step` and `sd-step-group`. This variant is only available with vertical `orientation` and if this attribute is not set, the component will not be rendered. _[`#2943`](https://github.com/solid-design-system/solid/pull/2943) [`d3d44f6`](https://github.com/solid-design-system/solid/commit/d3d44f6e520a32c50b3466a89ba1c2bc2db88f06) [@smfonseca](https://github.com/smfonseca)_
+
+### 📈 Stats
+* Uncompressed: 612 KB (+1 KB / +0%)
+* Gzipped: 138 KB (+1 KB / +1%)
+
 ## 6.16.5
 
 ### Patch Changes
