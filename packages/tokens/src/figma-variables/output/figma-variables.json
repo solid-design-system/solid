@@ -2445,6 +2445,11 @@
               "type": "color",
               "value": "{ui-light.utilities.color.neutral.600}"
             },
+            "700": {
+              "description": "Used for step group xs",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.700}"
+            },
             "800": {
               "description": "Used for form fields, switch, radio, checkbox",
               "type": "color",
@@ -4008,18 +4013,6 @@
           }
         },
         "color": {
-          "background": {
-            "_transparent": {
-              "white|80": {
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.80)"
-              },
-              "primary|80": {
-                "type": "color",
-                "value": "rgba(0, 53, 142, 0.80)"
-              }
-            }
-          },
           "border": {
             "white": {
               "default": {
@@ -5826,6 +5819,11 @@
               "type": "color",
               "value": "{ui-dark.utilities.color.neutral.600}"
             },
+            "700": {
+              "description": "Used for step group xs",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.400}"
+            },
             "800": {
               "description": "Used for form fields, switch, radio, checkbox",
               "type": "color",
@@ -7389,18 +7387,6 @@
           }
         },
         "color": {
-          "background": {
-            "_transparent": {
-              "white|80": {
-                "type": "color",
-                "value": "rgba(0, 53, 142, 0.80)"
-              },
-              "primary|80": {
-                "type": "color",
-                "value": "rgba(0, 53, 142, 0.80)"
-              }
-            }
-          },
           "border": {
             "white": {
               "default": {
@@ -9207,6 +9193,11 @@
               "type": "color",
               "value": "{vb.utilities.color.neutral.600}"
             },
+            "700": {
+              "description": "Used for step group xs",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.700}"
+            },
             "800": {
               "description": "Used for form fields, switch, radio, checkbox",
               "type": "color",
@@ -10770,18 +10761,6 @@
           }
         },
         "color": {
-          "background": {
-            "_transparent": {
-              "white|80": {
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.00)"
-              },
-              "primary|80": {
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.00)"
-              }
-            }
-          },
           "border": {
             "white": {
               "default": {
@@ -12588,6 +12567,11 @@
               "type": "color",
               "value": "{kid.utilities.color.neutral.600}"
             },
+            "700": {
+              "description": "Used for step group xs",
+              "type": "color",
+              "value": "{kid.utilities.color.neutral.700}"
+            },
             "800": {
               "description": "Used for form fields, switch, radio, checkbox",
               "type": "color",
@@ -14151,18 +14135,6 @@
           }
         },
         "color": {
-          "background": {
-            "_transparent": {
-              "white|80": {
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.00)"
-              },
-              "primary|80": {
-                "type": "color",
-                "value": "rgba(255, 255, 255, 0.00)"
-              }
-            }
-          },
           "border": {
             "white": {
               "default": {
