@@ -20,7 +20,7 @@ describe('when using version tool', () => {
     registeredTools = [];
     mockServer = {
       registerTool: (name: string, definition: unknown, handler: () => Promise<ToolResult>) => {
-        registeredTools.push({ definition, handler, name });
+        registeredTools.push({ definition: definition as ToolDefinition, handler, name });
       }
     };
     versionTool(mockServer as unknown as McpServer);

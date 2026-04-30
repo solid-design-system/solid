@@ -11,6 +11,6 @@
     "isolatedModules": true,
     "types": ["node"]
   },
-  "include": ["src", "test"],
-  "exclude": ["node_modules", "dist", "metadata"]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", "metadata", "test"]
 }

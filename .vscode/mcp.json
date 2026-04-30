@@ -6,6 +6,9 @@
       "headers": {
         "X-MCP-Toolsets": "default,projects,labels"
       }
+    },
+    "solid-design-system": {
+      "command": "./packages/mcp/dist/bin/start.js"
     }
   }
 }

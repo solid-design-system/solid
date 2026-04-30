@@ -55,7 +55,7 @@
     "directory": "packages/mcp"
   },
   "scripts": {
-    "build": "pnpm run build:ts && pnpm run build:metadata && pnpm build:hash",
+    "build": "pnpm run build:ts && pnpm run build:metadata && pnpm build:hash && cd ../.. && pnpm format.fix",
     "build:all": "pnpm run build && pnpm run build:storybook",
     "build:ts": "node --input-type=module -e \"import{rmSync}from'node:fs';rmSync('dist',{recursive:true,force:true})\" && tsc",
     "build:metadata": "node dist/build/build.js",

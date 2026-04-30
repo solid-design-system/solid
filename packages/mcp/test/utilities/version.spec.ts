@@ -11,6 +11,7 @@ describe('when using the version utilities', () => {
       assert.notStrictEqual(packageInfo.version, undefined);
       assert.strictEqual(packageInfo.description, 'MCP Server for the Solid Design System');
       assert.notStrictEqual(packageInfo.author, undefined);
+      assert.ok(packageInfo.author !== undefined);
       assert.strictEqual(packageInfo.author.name, 'Union Investment');
     });
 
