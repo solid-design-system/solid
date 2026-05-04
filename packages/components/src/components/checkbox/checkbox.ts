@@ -252,7 +252,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             class=${cx(
               'relative flex flex-shrink-0 items-center justify-center border sd-checkbox-border-width rounded-sm h-4 w-4',
               'transition-colors ease-in-out duration-medium group-hover:duration-fast',
-              'peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary',
+              'peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary outline-transparent',
               {
                 sm: 'mt-[2px]',
                 md: 'mt-[3px]',

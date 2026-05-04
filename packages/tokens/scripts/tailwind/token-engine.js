@@ -67,8 +67,9 @@ export class TokenProcessingEngine {
       baseVars: [
         '--sizing-varspacing: var(--tw-varspacing);',
         '--spacing-varspacing: var(--tw-varspacing);',
-        '--outline-color-primary: var(--sd-color-border-primary, var(--sd-color-primary));',
-        '--outline-color-error: var(--sd-color-border-error, var(--sd-color-error));',
+        '--outline-color-primary: rgba(var(--sd-color-border-primary, var(--sd-color-primary)));',
+        '--outline-color-error: rgba(var(--sd-color-border-error, var(--sd-color-error)));',
+        '--outline-color-white: rgba(var(--sd-color-border-white, var(--sd-color-white)));',
         '--drop-shadow-sm: var(--sd-drop-shadow-sm);',
         '--drop-shadow: var(--sd-drop-shadow);',
         '--shadow-sm: var(--sd-shadow-sm);',
