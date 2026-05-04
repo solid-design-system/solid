@@ -1500,3 +1500,182 @@ export const SampleB = {
     </script>
   `
 };
+
+export const SampleC = {
+  name: 'Header Sample C',
+  render: () => html`
+    <style>
+      #anchor--templates-header-navigation--sample-a .innerZoomElementWrapper,
+      #anchor--templates-header-navigation--sample-a-02 .innerZoomElementWrapper,
+      #anchor--templates-header-navigation--sample-b .innerZoomElementWrapper {
+        height: 900px;
+      }
+    </style>
+    <sd-header id="sample-c-header" fixed class="h-[1000px]">
+      <div class="grid grid-cols-[1fr_auto_1fr] sm:flex sm:justify-between items-center">
+        <!-- top-left-area start !-->
+        <!-- Back arrow: mobile only (0–639px) -->
+        <div class="flex sm:hidden items-center">
+          <sd-navigation-item id="back-button-sample-c" href="javascript:void(0)">
+            <sd-icon name="system/arrow-left" label="Go back" class="text-xl"></sd-icon>
+          </sd-navigation-item>
+        </div>
+        <!-- Logo: centered on mobile, left-aligned on sm+ -->
+        <a class="flex flex-shrink" href="#">
+          <div
+            class="h-8 w-[104px] sm:w-auto md:h-12 lg:h-14 logo-lg"
+            role="img"
+            aria-label="Union Investment Homepage"
+          ></div>
+        </a>
+        <!-- top-left-area end !-->
+        <!-- top-right-area start !-->
+        <div class="flex justify-end lg:hidden">
+          <sd-navigation-item id="open-menu-sample-c">
+            <sd-icon name="system/menu" label="Open navigation" class="text-xl"></sd-icon>
+          </sd-navigation-item>
+        </div>
+        <!-- top-right-area end !-->
+      </div>
+      <div class="hidden lg:flex items-end pt-3 justify-between">
+        <!-- bottom-left-area start !-->
+        <div class="-ml-4">
+          <sd-navigation-item href="javascript:void(0)" class="font-bold">About Us</sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)" class="font-bold">Markets</sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)" class="font-bold">Press Service</sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)" class="font-bold">Sustainability</sd-navigation-item>
+        </div>
+        <!-- bottom-left-area end !-->
+        <!-- bottom-right-area start !-->
+        <div class="-mr-4 flex items-center">
+          <sd-navigation-item href="javascript:void(0)" size="sm">
+            <sd-icon name="system/website" label="News" class="text-xl"></sd-icon>
+          </sd-navigation-item>
+          <sd-navigation-item onclick="alert('This could open a search bar')" size="sm">
+            <sd-icon name="system/magnifying-glass" label="Search" class="text-xl"></sd-icon>
+          </sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)">
+            <sd-icon name="system/user" class="text-xl mr-2"></sd-icon><span>My account</span>
+          </sd-navigation-item>
+          <sd-navigation-item href="javascript:void(0)">
+            <sd-icon name="system/lock-locked" class="text-xl mr-2"></sd-icon><span>My application</span>
+          </sd-navigation-item>
+          <!-- bottom-right-area end !-->
+        </div>
+      </div>
+    </sd-header>
+    <sd-drawer id="sample-c-drawer" placement="end" class="relative block">
+      <nav aria-label="Main" class="-mx-4">
+        <sd-navigation-item vertical current href="javascript:void(0)"> Home </sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">About Us</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Markets</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Press Service</sd-navigation-item>
+        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Sustainability</sd-navigation-item>
+      </nav>
+      <nav aria-label="Service" slot="footer" class="bg-neutral-100 -m-4">
+        <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
+          <sd-icon name="system/user" class="text-xl mr-2"></sd-icon>
+          My account
+        </sd-navigation-item>
+        <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
+          <sd-icon name="system/lock-locked" class="text-xl mr-2"></sd-icon>
+          My application
+        </sd-navigation-item>
+        <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
+          <sd-icon name="system/website" class="text-xl mr-2"></sd-icon>
+          Our further appearances
+        </sd-navigation-item>
+      </nav>
+    </sd-drawer>
+
+    <style>
+      sd-header#sample-c-header {
+        --sd-header-padding: 8px 16px;
+      }
+
+      @media (min-width: 376px) {
+        sd-header#sample-c-header {
+          --sd-header-padding: 24px;
+        }
+      }
+
+      @media (min-width: 1025px) {
+        sd-header#sample-c-header {
+          --sd-header-padding: 24px 32px 0 32px;
+        }
+      }
+
+      @media (min-width: 1440px) {
+        sd-header#sample-c-header {
+          --sd-header-padding: 24px 48px 0 48px;
+        }
+      }
+    </style>
+
+    <script type="module">
+      await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
+        const header = document.getElementById('sample-c-header');
+        const drawer = document.getElementById('sample-c-drawer');
+        const navigationItems = [
+          ...header.querySelectorAll('sd-navigation-item'),
+          ...drawer.querySelectorAll('sd-navigation-item')
+        ];
+
+        const handleNavigationItemClick = e => {
+          navigationItems.forEach(item => item.removeAttribute('current'));
+
+          const target = e.target.closest('sd-navigation-item');
+          target.setAttribute('current', '');
+        };
+
+        navigationItems.forEach(item => {
+          if (!item.hasAttribute('href')) return;
+
+          item.addEventListener('click', handleNavigationItemClick);
+        });
+      });
+    </script>
+    <script type="module">
+      await Promise.all([
+        customElements.whenDefined('sd-navigation-item'),
+        customElements.whenDefined('sd-drawer')
+      ]).then(() => {
+        const drawerSampleC = document.getElementById('sample-c-drawer');
+        const navigationItemSampleC = document.getElementById('open-menu-sample-c');
+        const buttonInNavigationItemSampleC = navigationItemSampleC.shadowRoot.querySelector('button');
+
+        buttonInNavigationItemSampleC.setAttribute('aria-controls', 'sample-c-drawer');
+        //Add the necessary ARIA attributes to prevent only being added after action
+        buttonInNavigationItemSampleC.setAttribute('aria-expanded', 'false');
+        drawerSampleC.addEventListener('sd-hide', () =>
+          buttonInNavigationItemSampleC.setAttribute('aria-expanded', 'false')
+        );
+
+        navigationItemSampleC.addEventListener('click', () => {
+          drawerSampleC.show();
+          buttonInNavigationItemSampleC.setAttribute('aria-expanded', 'true');
+        });
+      });
+    </script>
+    <script type="module">
+      await customElements.whenDefined('sd-notification').then(() => {
+        const backButton = document.getElementById('back-button-sample-c');
+
+        backButton.addEventListener('click', () => {
+          const notification = Object.assign(document.createElement('sd-notification'), {
+            closable: true,
+            variant: 'info',
+            toastStack: 'bottom-center',
+            duration: Infinity,
+            innerHTML: 'Event deleted'
+          });
+
+          notification.style.width = '250px';
+
+          document.body.append(notification);
+          notification.toast();
+        });
+      });
+    </script>
+  `
+};
