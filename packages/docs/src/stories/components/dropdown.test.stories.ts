@@ -86,10 +86,6 @@ export default {
   ] as unknown
 };
 
-/**
- * Default: This shows sd-dropdown in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -105,10 +101,6 @@ export const Default = {
     </div>`;
   }
 };
-
-/**
- * For round triggers (like e. g. default `sd-buttons`), set the `rounded` attribute. This sets a rounding on the dropdown and automatically adds a minimal distance of 1px between the trigger and the panel.
- */
 
 export const Rounded = {
   name: 'Rounded',
@@ -128,11 +120,6 @@ export const Rounded = {
       args
     })
 };
-
-/**
- * The dropdown automatically adjusts its size to fit the screen. The content gets scrollable then. To disable this behavior, set the `no-auto-size` attribute.
- * Note: `no-flip` is activated here.
- */
 
 export const NoAutoSize = {
   name: 'No Auto Size',
@@ -161,10 +148,6 @@ export const NoAutoSize = {
     })
 };
 
-/**
- * The dropdown automatically flips its position to stay most visible in the viewport. To disable this behavior, set the `no-flip` attribute.
- */
-
 export const NoFlip = {
   name: 'No Flip',
   render: (args: any) =>
@@ -183,11 +166,6 @@ export const NoFlip = {
       args
     })
 };
-
-/**
- * The preferred placement of the dropdown can be set with the `placement` attribute.
- * Note that the actual position may vary to ensure the panel remains in the viewport.
- */
 
 export const Placement = {
   name: 'Placement',
@@ -221,11 +199,6 @@ export const Placement = {
   }
 };
 
-/**
- * The distance from the panel to the trigger can be customized using the `distance` attribute. This value is specified in pixels.
- * Have in mind, that the default distance depends on whether the dropdown is rounded or not.
- */
-
 export const Distance = {
   name: 'Distance',
   render: (args: any) => {
@@ -258,10 +231,6 @@ export const Distance = {
   }
 };
 
-/**
- * The offset of the panel along the trigger can be customized using the `skidding` attribute. This value is specified in pixels.
- */
-
 export const Skidding = {
   name: 'Skidding',
   render: (args: any) => {
@@ -283,10 +252,6 @@ export const Skidding = {
   }
 };
 
-/**
- * Use the `default` slot to place the content of the dropdown.
- * Use the `trigger` slot to place a trigger like e. g. a button.
- */
 export const Slots = {
   name: 'Slots',
   decorators: [
@@ -321,10 +286,6 @@ export const Slots = {
     });
   }
 };
-
-/**
- * sd-dropdowns and their content are fully accessibile via keyboard.
- */
 
 export const Mouseless = {
   name: 'Mouseless',

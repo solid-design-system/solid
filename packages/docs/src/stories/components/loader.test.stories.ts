@@ -27,20 +27,12 @@ export default {
   parameters: { ...parameters, controls: { disable: true } }
 };
 
-/**
- * Default: This shows sd-loader in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
 };
-
-/**
- * Use the `color` attribute to change the color of the loader and correspond (currentColor) with the parents color.
- */
 
 export const Variants = {
   name: 'Variants',
@@ -62,10 +54,6 @@ export const Variants = {
     });
   }
 };
-
-/**
- * Use the font-size in css to scale the loader.
- */
 
 export const Size = {
   name: 'Size',

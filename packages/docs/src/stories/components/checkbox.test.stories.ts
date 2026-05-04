@@ -31,20 +31,12 @@ export default {
   }
 };
 
-/**
- * Default: This shows sd-checkbox in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
 };
-
-/**
- * Use the disabled attribute to disable an input checkbox. Clicks will be suppressed until the disabled state is removed
- */
 
 export const DisabledAndSize = {
   name: 'Disabled × Size',
@@ -69,10 +61,6 @@ export const DisabledAndSize = {
     });
   }
 };
-
-/**
- * Use the `size` attribute to change the size of the input checkbox. This attribute affects the font-size within the element, while the element itself remains the same size.
- */
 
 export const Size = {
   name: 'Size',
@@ -105,10 +93,6 @@ export const MultipleLines = {
     });
   }
 };
-
-/**
- * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
- */
 
 export const Required = {
   name: 'Required',
@@ -171,10 +155,6 @@ export const Indeterminate = {
   }
 };
 
-/**
- * Test invalid state inside a form.
- */
-
 export const Invalid = {
   name: 'Invalid',
   render: (args: any) => {
@@ -218,9 +198,6 @@ export const IndeterminateInvalid = {
   }
 };
 
-/**
- * Use the `base`, `control--unchecked`, `control--checked`, `checked` and `label` part selectors to customize the checkbox.
- */
 export const Parts = {
   name: 'Parts',
   render: (args: any) => {
@@ -274,12 +251,6 @@ const checkboxTemplate = (part: string) => {
       return `<sd-checkbox>Default slot</sd-checkbox>`;
   }
 };
-
-/**
- * 1. You can use the `setCustomValidity` method to set a custom validation message. This will override any native validation messages.
- * 2. Set an empty string to clear the custom validity and make the input valid.
- * 3. To show the validation message, call the `reportValidity` method. Originally this would show a native validation bubble, but we show the error messages inline.
- */
 
 export const setCustomValidity = {
   name: 'setCustomValidity',
