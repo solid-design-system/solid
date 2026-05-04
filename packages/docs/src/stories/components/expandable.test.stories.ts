@@ -26,9 +26,6 @@ export default {
   parameters: { ...parameters, controls: { disable: true } }
 };
 
-/**
- * Used to show a brief summary and expands to show additional content
- */
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -38,9 +35,6 @@ export const Default = {
   }
 };
 
-/**
- * Use the inverted attribute to make an expandable with inverted colors.
- */
 export const Inverted = {
   name: 'Inverted',
   render: (args: any) => {
@@ -73,9 +67,6 @@ export const Inverted = {
   }
 };
 
-/**
- * Use the `default`, `toggle-open` and `toggle-closed` slots to add content to the expandable.
- */
 export const Slots = {
   name: 'Slots',
   render: (args: any) => {
@@ -105,9 +96,6 @@ export const Slots = {
   }
 };
 
-/**
- * Use the `base`, `content`, `toggle`, `toggle-icon`, `summary` and `details` parts to style the expandable.
- */
 export const Parts = {
   name: 'Parts',
   render: (args: any) => {
@@ -129,10 +117,6 @@ export const Parts = {
   }
 };
 
-/**
- * sd-expandable is fully accessibile via keyboard.
- */
-
 export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {
@@ -146,11 +130,6 @@ export const Mouseless = {
   }
 };
 
-/**
- * Expandable can be used with background options of white, neutral-100 and primary-100. When using these options, use the `--gradient-color-start` and `--gradient-color-end` CSS variables to align the gradient colors.
- *
- * The inverted attribute can be used when the background is primary. The default slot can be used with 2 variants for alternate expandable experiences: lead text and paragraph.
- */
 export const Samples = {
   name: 'Samples',
   render: (args: any) => {

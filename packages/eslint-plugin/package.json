@@ -1,10 +1,15 @@
 {
   "name": "@solid-design-system/eslint-plugin",
   "description": "ESLint custom rules for the Solid Design System component library",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "author": {
     "name": "Union Investment"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solid-design-system/solid.git",
+    "directory": "packages/eslint-plugin"
   },
   "publishConfig": {
     "access": "public",

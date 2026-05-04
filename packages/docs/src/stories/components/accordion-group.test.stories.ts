@@ -22,20 +22,12 @@ export default {
   parameters: { ...parameters, controls: { disable: true } }
 };
 
-/**
- * Vertical stack of sd-accordions.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
 };
-
-/**
- * Set 'close-others' to only have one accordion open.
- */
 
 export const CloseOthers = {
   name: 'One accordion open at a time',
@@ -49,10 +41,6 @@ export const CloseOthers = {
     });
   }
 };
-
-/**
- * Part of sd-accordion-group
- */
 
 export const Parts = {
   name: 'Parts',
@@ -76,10 +64,6 @@ export const Parts = {
   }
 };
 
-/**
- * sd-accordions inside a group are fully accessibile via keyboard.
- */
-
 export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {
@@ -93,10 +77,6 @@ export const Mouseless = {
     });
   }
 };
-
-/**
- * Accordion group can be used with background options of white, neutral-100 and primary-100.
- */
 
 export const Samples = {
   name: 'Samples',

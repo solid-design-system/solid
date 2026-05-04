@@ -42,10 +42,6 @@ export default {
   }
 };
 
-/**
- * Use <sd-optgroup> to group listbox items visually.
- */
-
 export const Default = {
   name: 'Default',
   parameters: {
@@ -66,10 +62,6 @@ export const Default = {
   `
 };
 
-/**
- * Use the disabled attribute in the <syn-optgroup> to disable the Section and prevent it from being selected.
- */
-
 export const Disabled = {
   name: 'Disabled',
   render: () => html`
@@ -85,9 +77,6 @@ export const Disabled = {
   `
 };
 
-/**
- * Shows available slots. The `label` and `help-text` slots will overwrite their corresponding attributes.
- */
 export const Slots = {
   name: 'Slots',
   parameters: {
@@ -126,23 +115,6 @@ export const Slots = {
     `;
   }
 };
-
-/**
- * Use the `form-control`,
- `form-control-label`,
- `form-control-input`,
- `form-control-help-text`,
- `combobox`,
- `display-input`,
- `listbox`,
- `tags`,
- `tag`,
- `tag__base`,
- `tag__content`,
- `tag__removable-indicator`,
- `clear-button`, and
- `expand-icon` part selectors to customize the combobox component.
- */
 
 const partsArr = ['base', 'label-container', 'divider', 'options'];
 
