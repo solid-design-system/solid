@@ -210,3 +210,4 @@ After creating the changeset:
 1. Check that the `.changeset/` directory contains your new file
 2. The Changesets GitHub bot will automatically detect it in your PR
 3. Review the changeset content — it will appear in the CHANGELOG.md upon release
+4. If you need to edit the changeset, you can modify the markdown file directly in the `.changeset/` directory before merging the PR.
