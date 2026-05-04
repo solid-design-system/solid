@@ -124,7 +124,8 @@ Follow [semantic versioning](https://semver.org/):
 - **Breaking change**: Must also include a migration guide (see `write-migration-guide` skill). Use `major` bump.
 - **Docs-only deployment**: Add a changeset with `@solid-design-system/docs` as `patch`. This triggers the `docs` deployment type on Azure CDN (see CONTRIBUTING.md Release Process).
 - **Multiple packages affected**: Include all affected packages in one changeset.
-- **Dependency dashboard PRs**: If the PR is for the dependency dashboard ticket, the changeset summary must be exactly: `Updated dependencies. See details in the Pull Request`.
+- **Dependency dashboard PRs**: If the PR is for the dependency dashboard ticket, the changeset summary must be exactly: `Dependencies updated. For further details, please refer to the associated Pull Request`.
+- **Unrelated changes**: Split into separate changeset files when changes across packages are not related to each other. For example, a component change and a docs-only change should be in two separate changeset files, each listing only the package it affects.
 
 ## Changeset Content Guidelines
 
@@ -158,35 +159,79 @@ Write changesets in the same style that appears in package changelogs (`componen
 - Include internal implementation details
 - Reference internal ticket numbers without context
 - Start the summary with conventional commit prefixes or emojis (avoid `feat: ✨`, `fix: 🤔`, etc.)
-- Rewrite the dependency dashboard summary line; keep it exactly as required.
+- Rewrite the dependency dashboard summary line; keep it exactly as stated above.
+- Include internal implementation details in bullet points (e.g. which CSS property was changed, which selector was adjusted) — describe the outcome, not the mechanism.
+- Combine unrelated package changes (e.g. `components` and `docs`) into one changeset; use separate files instead.
 
 ### Examples
 
-**New component:**
+**Patch fix — Don't (too much implementation detail in bullets):**
+```markdown
+---
+'@solid-design-system/styles': patch
+---
+
+Fixes and improvements for multi-theming:
+
+- `sd-container`: fixed the triangle variable by changing the selector to target the correct element for multi-theming
+- `sd-copyright`: fixed shadow styling by switching from `box-shadow` to `text-shadow` and adjusting the values
+- `sd-footnotes`: fixed text colors by removing an unnecessary selector and adjusting the color values
+```
+
+**Patch fix — Do (outcome-focused, concise bullets):**
+```markdown
+---
+'@solid-design-system/styles': patch
+---
+
+Fixes and improvements for multi-theming:
+
+- `sd-container`: fixed the triangle variable for multi-theming
+- `sd-copyright`: fixed shadow styling
+- `sd-footnotes`: fixed text colors
+```
+
+---
+
+**Components + docs change — Don't (combined into one changeset):**
+```markdown
+---
+'@solid-design-system/components': minor
+'@solid-design-system/docs': minor
+---
+
+Extended `sd-brandshape` with new transparent variants to be used on image backgrounds:
+
+- `primary|80`
+- `white|80`
+
+Added new templates showcasing usage of transparent variant `primary|80` and variant `image` together with `sd-copyright`.
+```
+
+**Components + docs change — Do (split into separate changesets):**
+
+File 1 — component change:
 ```markdown
 ---
 '@solid-design-system/components': minor
 ---
 
-Added `sd-datepicker` with calendar-based date selection.
+Extended `sd-brandshape` with new transparent variants to be used on image backgrounds:
 
-Supported features include:
-- Date selection via calendar popup
-- Min/max date constraints
-- Keyboard navigation
-- Form integration with validation
+- `primary|80`
+- `white|80`
 ```
 
-**Bug fix:**
+File 2 — docs change:
 ```markdown
 ---
-'@solid-design-system/components': patch
+'@solid-design-system/docs': minor
 ---
 
-Fixed `sd-button` so disabled submit buttons no longer submit parent forms.
-
-Previously, clicking a disabled `sd-button` with `type="submit"` would still submit the parent form. The button now correctly prevents form submission in the disabled state.
+Added new templates showcasing usage of new `sd-brandshape` variants together with images and `sd-copyright`.
 ```
+
+---
 
 **Breaking change:**
 ```markdown
@@ -201,6 +246,17 @@ BREAKING CHANGE: The `variant` attribute values for `sd-teaser` have changed:
 - `primary-100` → `primary`
 
 See the migration guide for details.
+```
+
+---
+
+**Dependency dashboard PR:**
+```markdown
+---
+'@solid-design-system/components': patch
+---
+
+Dependencies updated. For further details, please refer to the associated Pull Request.
 ```
 
 ## Verification
