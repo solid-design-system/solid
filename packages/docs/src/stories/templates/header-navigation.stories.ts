@@ -1516,7 +1516,7 @@ export const SampleC = {
         <!-- top-left-area start !-->
         <!-- Back arrow: mobile only (0–639px) -->
         <div class="flex sm:hidden items-center">
-          <sd-navigation-item href="javascript:void(0)">
+          <sd-navigation-item id="back-button-sample-c" href="javascript:void(0)">
             <sd-icon name="system/arrow-left" label="Go back" class="text-xl"></sd-icon>
           </sd-navigation-item>
         </div>
@@ -1654,6 +1654,26 @@ export const SampleC = {
         navigationItemSampleC.addEventListener('click', () => {
           drawerSampleC.show();
           buttonInNavigationItemSampleC.setAttribute('aria-expanded', 'true');
+        });
+      });
+    </script>
+    <script type="module">
+      await customElements.whenDefined('sd-notification').then(() => {
+        const backButton = document.getElementById('back-button-sample-c');
+
+        backButton.addEventListener('click', () => {
+          const notification = Object.assign(document.createElement('sd-notification'), {
+            closable: true,
+            variant: 'info',
+            toastStack: 'bottom-center',
+            duration: Infinity,
+            innerHTML: 'Event deleted'
+          });
+
+          notification.style.width = '250px';
+
+          document.body.append(notification);
+          notification.toast();
         });
       });
     </script>
