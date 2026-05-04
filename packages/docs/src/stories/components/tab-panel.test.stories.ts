@@ -30,10 +30,6 @@ export default {
   parameters: { ...parameters, controls: { disable: true } }
 };
 
-/**
- * Default: This shows sd-tab-panel in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {

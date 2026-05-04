@@ -1,5 +1,31 @@
 # @solid-design-system/styles
 
+## 6.17.0
+
+## 6.16.5
+
+## 6.16.4
+
+### Patch Changes
+
+- Fixed `sd-icon` not being versioned when used as a descendant selector inside style components (e.g. `sd-status-badge`). _[`#2945`](https://github.com/solid-design-system/solid/pull/2945) [`d379fed`](https://github.com/solid-design-system/solid/commit/d379fed7f415b0ab9a0ed7ac3ef5e51afa26b2b4) [@mariohamann](https://github.com/mariohamann)_
+
+## 6.16.3
+
+### Patch Changes
+
+- Updated dependencies. See details in the Pull Request _[`#2912`](https://github.com/solid-design-system/solid/pull/2912) [`2f04cb8`](https://github.com/solid-design-system/solid/commit/2f04cb83148274dce3979751b3ef9ca7adc87707) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 6.16.2
+
+## 6.16.1
+
+## 6.16.0
+
+## 6.15.1
+
+## 6.15.0
+
 ## 6.14.1
 
 ## 6.14.0

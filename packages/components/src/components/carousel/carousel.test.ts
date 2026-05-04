@@ -579,6 +579,147 @@ describe('<sd-carousel>', () => {
       });
     });
 
+    describe('live region', () => {
+      it('should have an announcement region with aria-live="polite" when autoplay is off', async () => {
+        // Arrange
+        const el = await fixture<SdCarousel>(html`
+          <sd-carousel>
+            <sd-carousel-item>Node 1</sd-carousel-item>
+            <sd-carousel-item>Node 2</sd-carousel-item>
+            <sd-carousel-item>Node 3</sd-carousel-item>
+          </sd-carousel>
+        `);
+        await el.updateComplete;
+
+        // Assert
+        const announcementRegion = el.shadowRoot!.querySelector('.carousel__announcement')!;
+        expect(announcementRegion).to.exist;
+        expect(announcementRegion).to.have.attribute('aria-live', 'polite');
+        expect(announcementRegion).to.have.attribute('aria-atomic', 'true');
+      });
+
+      it('should have aria-live="off" on the announcement region when autoplay is on', async () => {
+        // Arrange
+        const el = await fixture<SdCarousel>(html`
+          <sd-carousel autoplay>
+            <sd-carousel-item>Node 1</sd-carousel-item>
+            <sd-carousel-item>Node 2</sd-carousel-item>
+            <sd-carousel-item>Node 3</sd-carousel-item>
+          </sd-carousel>
+        `);
+        await el.updateComplete;
+
+        // Assert
+        const announcementRegion = el.shadowRoot!.querySelector('.carousel__announcement')!;
+        expect(announcementRegion).to.have.attribute('aria-live', 'off');
+      });
+
+      it('should have aria-live="polite" when autoplay is on but paused', async () => {
+        // Arrange
+        const el = await fixture<SdCarousel>(html`
+          <sd-carousel autoplay>
+            <sd-carousel-item>Node 1</sd-carousel-item>
+            <sd-carousel-item>Node 2</sd-carousel-item>
+            <sd-carousel-item>Node 3</sd-carousel-item>
+          </sd-carousel>
+        `);
+        await el.updateComplete;
+
+        // Act
+        el.pause();
+        await el.updateComplete;
+
+        // Assert
+        const announcementRegion = el.shadowRoot!.querySelector('.carousel__announcement')!;
+        expect(announcementRegion).to.have.attribute('aria-live', 'polite');
+      });
+
+      it('should have aria-live="polite" when autoplay is on and the carousel is focused', async () => {
+        // Arrange
+        const el = await fixture<SdCarousel>(html`
+          <sd-carousel autoplay>
+            <sd-carousel-item>Node 1</sd-carousel-item>
+            <sd-carousel-item>Node 2</sd-carousel-item>
+            <sd-carousel-item>Node 3</sd-carousel-item>
+          </sd-carousel>
+        `);
+        await el.updateComplete;
+
+        // Act
+        el.dispatchEvent(new Event('focusin', { bubbles: true }));
+        await el.updateComplete;
+
+        // Assert
+        const announcementRegion = el.shadowRoot!.querySelector('.carousel__announcement')!;
+        expect(announcementRegion).to.have.attribute('aria-live', 'polite');
+      });
+
+      it('should have aria-live="off" when autoplay is on and the carousel loses focus', async () => {
+        // Arrange
+        const el = await fixture<SdCarousel>(html`
+          <sd-carousel autoplay>
+            <sd-carousel-item>Node 1</sd-carousel-item>
+            <sd-carousel-item>Node 2</sd-carousel-item>
+            <sd-carousel-item>Node 3</sd-carousel-item>
+          </sd-carousel>
+        `);
+        await el.updateComplete;
+
+        // Act
+        el.dispatchEvent(new Event('focusin', { bubbles: true }));
+        await el.updateComplete;
+        el.dispatchEvent(new Event('focusout', { bubbles: true }));
+        await el.updateComplete;
+
+        // Assert
+        const announcementRegion = el.shadowRoot!.querySelector('.carousel__announcement')!;
+        expect(announcementRegion).to.have.attribute('aria-live', 'off');
+      });
+
+      it('should announce slide text and position when navigating', async () => {
+        // Arrange
+        const el = await fixture<SdCarousel>(html`
+          <sd-carousel>
+            <sd-carousel-item>Node 1</sd-carousel-item>
+            <sd-carousel-item>Node 2</sd-carousel-item>
+            <sd-carousel-item>Node 3</sd-carousel-item>
+          </sd-carousel>
+        `);
+        await el.updateComplete;
+
+        // Act
+        el.goToSlide(1);
+        await el.updateComplete;
+        await aTimeout(0); // wait for requestAnimationFrame
+
+        // Assert
+        const announcementRegion = el.shadowRoot!.querySelector('.carousel__announcement')!;
+        expect(announcementRegion.textContent).to.include('Node 2');
+        expect(announcementRegion.textContent).to.match(/2.*3|slide 2/i);
+      });
+
+      it('should announce image alt text when navigating', async () => {
+        // Arrange
+        const el = await fixture<SdCarousel>(html`
+          <sd-carousel>
+            <sd-carousel-item><img alt="A dog on the beach" /></sd-carousel-item>
+            <sd-carousel-item><img alt="A cat on a chair" /></sd-carousel-item>
+            <sd-carousel-item><img alt="A bird in a tree" /></sd-carousel-item>
+          </sd-carousel>
+        `);
+        await el.updateComplete;
+
+        // Act
+        el.goToSlide(1);
+        await el.updateComplete;
+        await aTimeout(0);
+
+        // Assert
+        const announcementRegion = el.shadowRoot!.querySelector('.carousel__announcement')!;
+        expect(announcementRegion.textContent).to.include('A cat on a chair');
+      });
+    });
+
     describe('when scrolling', () => {
       it('should update aria-busy attribute', async () => {
         // Arrange

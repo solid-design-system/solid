@@ -15,20 +15,12 @@ export default {
   parameters: { ...parameters, controls: { disable: true } }
 };
 
-/**
- * Default: This shows sd-spinner in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
 };
-
-/**
- * Use the `color` attribute to change the color of the spinner and correspond (currentColor) with the parents color.
- */
 
 export const Variants = {
   name: 'Variants',
@@ -47,10 +39,6 @@ export const Variants = {
     });
   }
 };
-
-/**
- * Use the font-size in css to scale the spinner.
- */
 
 export const Size = {
   name: 'Size',

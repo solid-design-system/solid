@@ -56,10 +56,6 @@ export default {
   ] as unknown
 };
 
-/**
- * Default: This shows sd-tooltip in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {

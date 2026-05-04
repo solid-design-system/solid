@@ -1,5 +1,39 @@
 # @solid-design-system/tokens
 
+## 6.17.0
+
+### Minor Changes
+
+- Added new ` --sd-color-border-neutral-700` variable. _[`#2943`](https://github.com/solid-design-system/solid/pull/2943) [`d3d44f6`](https://github.com/solid-design-system/solid/commit/d3d44f6e520a32c50b3466a89ba1c2bc2db88f06) [@smfonseca](https://github.com/smfonseca)_
+
+## 6.16.5
+
+## 6.16.4
+
+## 6.16.3
+
+### Patch Changes
+
+- Updated dependencies. See details in the Pull Request _[`#2912`](https://github.com/solid-design-system/solid/pull/2912) [`2f04cb8`](https://github.com/solid-design-system/solid/commit/2f04cb83148274dce3979751b3ef9ca7adc87707) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 6.16.2
+
+## 6.16.1
+
+## 6.16.0
+
+### Minor Changes
+
+- Fixed missing `spacing-5` and `spacing-2.5` tokens by merging sizing tokens into spacing tokens. _[`#2846`](https://github.com/solid-design-system/solid/pull/2846) [`d7ca63e`](https://github.com/solid-design-system/solid/commit/d7ca63e738f8f8e54dc84a61523562a23c78f03c) [@Vahid1919](https://github.com/Vahid1919)_
+
+## 6.15.1
+
+## 6.15.0
+
+### Minor Changes
+
+- Added new `sd-brandshape` tokens. _[`#2881`](https://github.com/solid-design-system/solid/pull/2881) [`ae94911`](https://github.com/solid-design-system/solid/commit/ae94911fbafa32cf6ffa6b50bd4ad6f769a6a30a) [@smfonseca](https://github.com/smfonseca)_
+
 ## 6.14.1
 
 ## 6.14.0

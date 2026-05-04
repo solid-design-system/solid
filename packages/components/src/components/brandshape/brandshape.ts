@@ -149,12 +149,12 @@ export default class SdBrandshape extends SolidElement {
           class=${cx(
             {
               'neutral-100': 'sd-brandshape--neutral-100-color-background',
-              primary: 'bg-primary',
+              primary: 'sd-brandshape--primary-color-background',
               white: 'sd-brandshape--white-color-background',
               'border-white': 'bg-transparent',
               'border-primary': 'bg-transparent',
-              'primary|80': 'bg-primary/80',
-              'white|80': 'bg-white/80',
+              'primary|80': 'sd-brandshape--primary-80-color-background',
+              'white|80': 'sd-brandshape--white-80-color-background',
               image: 'bg-transparent'
             }[this.variant],
             'w-full block absolute h-full top-0 left-0 z-0'
@@ -181,12 +181,12 @@ export default class SdBrandshape extends SolidElement {
       class=${cx(
         {
           'neutral-100': 'sd-brandshape--neutral-100-color-background',
-          primary: 'bg-primary',
+          primary: 'sd-brandshape--primary-color-background',
           white: 'sd-brandshape--white-color-background',
           'border-white': 'bg-transparent',
           'border-primary': 'bg-transparent',
-          'primary|80': 'bg-primary/80',
-          'white|80': 'bg-white/80',
+          'primary|80': 'sd-brandshape--primary-80-color-background',
+          'white|80': 'sd-brandshape--white-80-color-background',
           image: 'bg-transparent'
         }[this.variant],
         { top: 'bottom-0', bottom: 'top-0' }[position],
@@ -298,11 +298,11 @@ export default class SdBrandshape extends SolidElement {
       /* Stylized border */
 
       :host([variant='border-primary']) {
-        --internal-border-color: rgba(var(--sd-color-border-primary, rgba(var(--sd-color-primary))));
+        --internal-border-color: rgba(var(--sd-brandshape--primary-color-border, rgba(var(--sd-color-primary))));
       }
 
       :host([variant='border-white']) {
-        --internal-border-color: rgba(var(--sd-color-border-white, rgba(var(--sd-color-white))));
+        --internal-border-color: rgba(var(--sd-brandshape-color-border-white, rgba(var(--sd-color-white))));
       }
 
       :host([variant^='border-']) [part='stylized-container']::before {
@@ -322,19 +322,19 @@ export default class SdBrandshape extends SolidElement {
       }
 
       :host([variant='white']) [part='base'] {
-        fill: rgba(var(--sd-color-background-white, rgba(var(--sd-color-white))));
+        fill: rgba(var(--sd-brandshape--white-color-background, rgba(var(--sd-color-white))));
       }
 
       :host([variant='primary']) [part='base'] {
-        fill: rgba(var(--sd-color-background-primary, rgba(var(--sd-color-primary))));
+        fill: rgba(var(--sd-brandshape--primary-color-background, rgba(var(--sd-color-primary))));
       }
 
       :host([variant='primary|80']) [part='base'] {
-        fill: rgba(var(--sd-color-background-primary, rgba(var(--sd-color-primary))) / 0.8);
+        fill: rgba(var(--sd-brandshape--primary-80-color-background, rgba(var(--sd-color-primary))));
       }
 
       :host([variant='white|80']) [part='base'] {
-        fill: rgba(var(--sd-color-background-white, rgba(var(--sd-color-white))) / 0.8);
+        fill: rgba(var(--sd-brandshape--white-80-color-background, rgba(var(--sd-color-white))));
       }
     `
   ];

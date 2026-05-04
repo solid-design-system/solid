@@ -107,7 +107,7 @@ export const ContactForm = {
         <span class="sd-meta sd-meta--size-sm">* Required fields</span>
       </div>
       <div class="flex flex-col gap-4 md:flex-row md:justify-end">
-        <sd-button class="md:order-2" type="submit">Submit registration</sd-button>
+        <sd-button class="md:order-2" type="submit">Send</sd-button>
         <sd-button variant="secondary" class="md:order-1" onclick="alert('Cancelled process')">Cancel</sd-button>
       </div>
     </form>
@@ -185,7 +185,7 @@ export const FormWithVisuallyDisabledElements = {
           size="sm"
           class="button-tooltip"
         >
-          <sd-button class="md:order-2 submit-button" type="submit" visually-disabled>Submit registration</sd-button>
+          <sd-button class="md:order-2 submit-button" type="submit" visually-disabled>Send</sd-button>
         </sd-tooltip>
         <sd-button variant="secondary" class="md:order-1" onclick="alert('Cancelled process')">Cancel</sd-button>
       </div>

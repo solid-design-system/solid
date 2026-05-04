@@ -68,10 +68,6 @@ export default {
   ] as unknown
 };
 
-/**
- * Default: This shows sd-header in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
