@@ -320,7 +320,7 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
             id="label"
             class=${cx(
               'select-none inline-block ml-2',
-              this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'text-black'
+              this.disabled || this.visuallyDisabled ? 'form-control--disabled-color-text' : 'text-black'
             )}
           >
             <slot></slot>
