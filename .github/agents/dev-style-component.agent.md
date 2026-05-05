@@ -49,8 +49,8 @@ Use the **create-style-component** skill with the extracted spec. This will:
 
 ### Step 3: Write documentation and visual regression stories
 
-Use the **write-component-stories** skill (adapted for styles) to create:
-- Documentation stories (`{name}.stories.ts`) in `packages/docs/src/stories/styles/`
+Use the **write-component-stories** skill to create:
+- Styles documentation stories (`{name}.stories.ts`) in `packages/docs/src/stories/styles/`
 - Visual regression test stories (`{name}.test.stories.ts`) covering all variant combinations
 
 ### Step 4: Create a changeset

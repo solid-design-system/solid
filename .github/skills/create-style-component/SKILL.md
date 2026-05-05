@@ -135,7 +135,7 @@ Many style modules support an `sd-icon` child element for icon decoration.
 
 Documentation stories (`packages/docs/src/stories/styles/{name}.stories.ts`) and test stories (`{name}.test.stories.ts`) must be created for the new style.
 
-Use the **write-component-stories** skill, adapted for styles:
+Use the **write-component-stories** skill (which covers both components and styles):
 - Stories title: `'Styles/sd-{name}'` (not `'Components/...'`)
 - Import path: `'../../../../styles/src/modules/{name}.css'` is NOT needed — styles are globally available
 - Use raw HTML in stories since styles are CSS-only (no Lit component)
