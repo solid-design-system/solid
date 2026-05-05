@@ -190,6 +190,11 @@ export default class SdRadio extends SolidElement {
         @apply outline-none;
       }
 
+      [part='control--checked'],
+      [part='control--unchecked'] {
+        @apply outline-transparent;
+      }
+
       /* Checked + focus */
       :host(:focus-visible) [part='control--checked'],
       :host(:focus-visible) [part='control--unchecked'] {
