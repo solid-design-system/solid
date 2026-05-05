@@ -51,6 +51,39 @@ The release pipeline checks the last commit message to determine deployment:
 
 ## Procedure
 
+### Step 0: Inspect the branch changes first
+
+Before creating a changeset, run the following command to see what files changed on the current branch compared to `main`:
+
+```sh
+git diff --name-only main
+```
+
+Use the output to determine:
+
+1. **Which package(s) are affected** — map changed file paths to package names using this table:
+
+   | Changed path prefix | Affected package |
+   |---------------------|-----------------|
+   | `packages/components/src/` | `@solid-design-system/components` |
+   | `packages/styles/src/` | `@solid-design-system/styles` |
+   | `packages/tokens/src/` | `@solid-design-system/tokens` |
+   | `packages/docs/src/` | `@solid-design-system/docs` |
+   | `packages/placeholders/src/` | `@solid-design-system/placeholders` |
+   | `packages/theming/src/` | `@solid-design-system/theming` |
+   | `packages/eslint-plugin/src/` | `@solid-design-system/eslint-plugin` |
+   | `packages/versioning/` | `@solid-design-system/versioning` |
+
+   Remember: `components`, `styles`, and `tokens` are version-locked — a change to any one should include all three in the changeset.
+
+2. **What bump type is appropriate** — infer from the nature of the changes:
+   - New files or new exported API surface → `minor`
+   - Modified existing behaviour or bug fix → `patch`
+   - Removed or renamed public API → `major`
+   - Only story/doc files under `packages/docs/` → `patch` on `@solid-design-system/docs` only
+
+3. **What the summary should say** — read the diff of the changed source files (not tests or stories) to understand what changed from a user perspective, then write the summary following the Writing Style rules below.
+
 ### Option A: Interactive (recommended for complex changes)
 
 Run the interactive changeset command from the repository root:
@@ -65,24 +98,7 @@ pnpm changeset
 
 A file will be created in `.changeset/` (e.g., `.changeset/happy-dogs-dance.md`).
 
-### Option B: Manual file creation
-
-Create a markdown file in `.changeset/` with a random name (adjective-noun-verb pattern):
-
-```markdown
----
-'@solid-design-system/components': minor
----
-
-feat: ✨ add sd-new-component
-
-Added the new sd-new-component with support for:
-- Variants: primary, secondary
-- Sizes: lg, md, sm
-- Inverted mode for dark backgrounds
-```
-
-### Option C: Empty changeset (no release)
+### Option B: Empty changeset (no release)
 
 For changes that should NOT trigger a version bump (CI, docs-only without deployment, refactors):
 
@@ -108,52 +124,114 @@ Follow [semantic versioning](https://semver.org/):
 - **Breaking change**: Must also include a migration guide (see `write-migration-guide` skill). Use `major` bump.
 - **Docs-only deployment**: Add a changeset with `@solid-design-system/docs` as `patch`. This triggers the `docs` deployment type on Azure CDN (see CONTRIBUTING.md Release Process).
 - **Multiple packages affected**: Include all affected packages in one changeset.
+- **Dependency dashboard PRs**: If the PR is for the dependency dashboard ticket, the changeset summary must be exactly: `Dependencies updated. For further details, please refer to the associated Pull Request`.
+- **Unrelated changes**: Split into separate changeset files when changes across packages are not related to each other. For example, a component change and a docs-only change should be in two separate changeset files, each listing only the package it affects.
 
 ## Changeset Content Guidelines
 
 The changeset summary ends up in the CHANGELOG.md. Write it to be useful for consumers:
 
+### Writing Style (based on existing CHANGELOGs)
+
+Write changesets in the same style that appears in package changelogs (`components`, `docs`, `styles`, `tokens`, `theming`, `placeholders`, `eslint-plugin`, `versioning`):
+
+- Use short, user-facing, sentence-case summaries in past tense
+- Start with clear verbs like `Added`, `Fixed`, `Improved`, `Updated`, `Removed`, `Replaced`
+- Keep the first line focused on the main outcome
+- Add follow-up bullets only when details are needed
+- Name affected components, attributes, tokens, CSS variables, or APIs explicitly
+- Use a colon before grouped details, then list specific items
+- Keep internal implementation details out unless they affect consumers
+- For simple fixes, prefer one concise sentence
+- For larger changes, use one summary line plus compact detail bullets
+- For breaking changes, add a dedicated `BREAKING CHANGE:` line with exact migration guidance and old-to-new mappings
+
 ### Do
 
-- Start with the conventional commit prefix: `feat:`, `fix:`, `perf:`, `docs:`, `chore:`
-- Add an emoji after the prefix matching the issue template convention (e.g., `feat: ✨`, `fix: 🤔`)
 - Describe **what** changed and **why** from the user's perspective
 - List affected features, properties, or components
 - Mention breaking changes explicitly
+- Keep wording release-note friendly (human-readable, not commit-message style)
 
 ### Don't
 
 - Write vague summaries like "various fixes" or "updates"
 - Include internal implementation details
 - Reference internal ticket numbers without context
+- Start the summary with conventional commit prefixes or emojis (avoid `feat: ✨`, `fix: 🤔`, etc.)
+- Rewrite the dependency dashboard summary line; keep it exactly as stated above.
+- Include internal implementation details in bullet points (e.g. which CSS property was changed, which selector was adjusted) — describe the outcome, not the mechanism.
+- Combine unrelated package changes (e.g. `components` and `docs`) into one changeset; use separate files instead.
 
 ### Examples
 
-**New component:**
+**Patch fix — Don't (too much implementation detail in bullets):**
+```markdown
+---
+'@solid-design-system/styles': patch
+---
+
+Fixes and improvements for multi-theming:
+
+- `sd-container`: fixed the triangle variable by changing the selector to target the correct element for multi-theming
+- `sd-copyright`: fixed shadow styling by switching from `box-shadow` to `text-shadow` and adjusting the values
+- `sd-footnotes`: fixed text colors by removing an unnecessary selector and adjusting the color values
+```
+
+**Patch fix — Do (outcome-focused, concise bullets):**
+```markdown
+---
+'@solid-design-system/styles': patch
+---
+
+Fixes and improvements for multi-theming:
+
+- `sd-container`: fixed the triangle variable for multi-theming
+- `sd-copyright`: fixed shadow styling
+- `sd-footnotes`: fixed text colors
+```
+
+---
+
+**Components + docs change — Don't (combined into one changeset):**
+```markdown
+---
+'@solid-design-system/components': minor
+'@solid-design-system/docs': minor
+---
+
+Extended `sd-brandshape` with new transparent variants to be used on image backgrounds:
+
+- `primary|80`
+- `white|80`
+
+Added new templates showcasing usage of transparent variant `primary|80` and variant `image` together with `sd-copyright`.
+```
+
+**Components + docs change — Do (split into separate changesets):**
+
+File 1 — component change:
 ```markdown
 ---
 '@solid-design-system/components': minor
 ---
 
-feat: ✨ add sd-datepicker
+Extended `sd-brandshape` with new transparent variants to be used on image backgrounds:
 
-Added the new `sd-datepicker` component with support for:
-- Date selection via calendar popup
-- Min/max date constraints
-- Keyboard navigation
-- Form integration with validation
+- `primary|80`
+- `white|80`
 ```
 
-**Bug fix:**
+File 2 — docs change:
 ```markdown
 ---
-'@solid-design-system/components': patch
+'@solid-design-system/docs': minor
 ---
 
-fix: 🤔 sd-button no longer triggers form submit when disabled
-
-Previously, clicking a disabled `sd-button` with `type="submit"` would still submit the parent form. The button now correctly prevents form submission in the disabled state.
+Added new templates showcasing usage of new `sd-brandshape` variants together with images and `sd-copyright`.
 ```
+
+---
 
 **Breaking change:**
 ```markdown
@@ -161,13 +239,24 @@ Previously, clicking a disabled `sd-button` with `type="submit"` would still sub
 '@solid-design-system/components': major
 ---
 
-feat: ✨ rename sd-teaser `variant` values
+Updated `sd-teaser` variant values.
 
 BREAKING CHANGE: The `variant` attribute values for `sd-teaser` have changed:
 - `white` → `default`
 - `primary-100` → `primary`
 
 See the migration guide for details.
+```
+
+---
+
+**Dependency dashboard PR:**
+```markdown
+---
+'@solid-design-system/components': patch
+---
+
+Dependencies updated. For further details, please refer to the associated Pull Request.
 ```
 
 ## Verification
@@ -177,3 +266,4 @@ After creating the changeset:
 1. Check that the `.changeset/` directory contains your new file
 2. The Changesets GitHub bot will automatically detect it in your PR
 3. Review the changeset content — it will appear in the CHANGELOG.md upon release
+4. If you need to edit the changeset, you can modify the markdown file directly in the `.changeset/` directory before merging the PR.
