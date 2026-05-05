@@ -193,7 +193,7 @@ export default class SdAccordion extends SolidElement {
 
   render() {
     return html`
-      <details part="base" class="sd-accordion-color-border">
+      <details part="base">
         <summary
           part="header"
           id="header"
@@ -255,6 +255,7 @@ export default class SdAccordion extends SolidElement {
       }
 
       [part='base'] {
+        border-color: rgba(var(--sd-accordion-color-border, var(--sd-accordion-color-text)));
         border-block-width: var(--sd-accordion-border-width);
       }
 
