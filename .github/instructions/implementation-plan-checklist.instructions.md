@@ -73,5 +73,4 @@ After all checklist gaps are resolved (or explicitly deferred by the user), prod
 When the plan is finalized:
 
 1. Save the plan to session memory at `/memories/session/plan.md`.
-2. Route to the correct implementation agent using the `agent-routing` instructions. Resolve the detected issue type against the routing table and tell the user which agent to switch to.
-3. End with the routing output format specified in the `agent-routing` instructions.
+2. Follow the `agent-routing` instructions to route the user to the correct implementation agent.
