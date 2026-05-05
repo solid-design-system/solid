@@ -1516,7 +1516,7 @@ export const SampleC = {
         <!-- top-left-area start !-->
         <!-- Back arrow: mobile only (0–639px) -->
         <div class="flex sm:hidden items-center">
-          <sd-navigation-item id="back-button-sample-c" href="javascript:void(0)">
+          <sd-navigation-item id="back-button-sample-c">
             <sd-icon name="system/arrow-left" label="Go back" class="text-xl"></sd-icon>
           </sd-navigation-item>
         </div>
@@ -1610,6 +1610,12 @@ export const SampleC = {
           --sd-header-padding: 24px 48px 0 48px;
         }
       }
+
+      @media (max-width: 639px) {
+        sd-navigation-item#back-button-sample-c::part(content) {
+          border-bottom: 0;
+        }
+      }
     </style>
 
     <script type="module">
@@ -1667,7 +1673,7 @@ export const SampleC = {
             variant: 'info',
             toastStack: 'bottom-center',
             duration: Infinity,
-            innerHTML: 'Event deleted'
+            innerHTML: 'This is a template preview. No navigation is assigned'
           });
 
           notification.style.width = '250px';
