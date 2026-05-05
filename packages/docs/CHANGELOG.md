@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.13.2
+
+### Patch Changes
+
+- Updating Accessibility documentation to match Figma. _[`#2976`](https://github.com/solid-design-system/solid/pull/2976) [`3b2d930`](https://github.com/solid-design-system/solid/commit/3b2d9306725542af2d5483463ae40126adfa3777) [@martascorreia](https://github.com/martascorreia)_
+
 ## 2.13.1
 
 ### Patch Changes
