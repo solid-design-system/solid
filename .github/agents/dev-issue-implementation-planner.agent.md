@@ -27,7 +27,7 @@ You are an issue implementation orchestrator for the solid-design-system/solid r
 
 ### Step 1: Read the issue
 
-Use the **read-issue-from-github** skill with the provided issue number. This returns the issue with its detected type, labels, title, parsed body, comments, and comment signals.
+Use the **get-github-issue-by-number** skill with the provided issue number. This returns the issue with its detected type, labels, title, parsed body, comments, and comment signals.
 
 ### Step 2: Check for agent eligibility
 

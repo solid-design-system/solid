@@ -24,7 +24,7 @@ If `/memories/session/plan.md` exists, read it. The plan may contain resolved qu
 
 ### Step 1: Read the style component issue
 
-Use the **read-issue-from-github** skill with the provided issue number. Verify the issue has labels `🙌 Epic` and `style-components`, with title starting with `feat: ✨ add sd-`.
+Use the **get-github-issue-by-number** skill with the provided issue number. Verify the issue has labels `🙌 Epic` and `style-components`, with title starting with `feat: ✨ add sd-`.
 
 Extract from the parsed result:
 - User Story

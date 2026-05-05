@@ -1,6 +1,6 @@
 ---
 name: get-project-items-by-query
-description: "Retrieve GitHub project board items filtered by status column. Use for: listing items in a specific status, refinement overview, backlog review, sprint column inspection. Input: a status value to filter by. Returns structured item data from the Solid Design System Project Board via gh-projects MCP."
+description: "Retrieve GitHub project board items filtered by status column. Use for: listing items in a specific status, refinement overview, backlog review, sprint column inspection. Input: a status value to filter by. Returns structured item data from the Solid Design System Project Board via github MCP."
 ---
 
 # Get Project Items by Query
@@ -55,7 +55,7 @@ The calling agent provides `{LABEL_VALUE}` — these are the most important labe
 > Filter server-side using the `query` parameter. Do not fetch all items and filter client-side.
 > Use the field IDs from the Known Field IDs table for the `fields`parameter in the MCP call below.
 
-Call `gh-projects/projects_list` with:
+Call `mcp_github_projects_list` with:
 - **method**: `list_project_items`
 - **owner**: `solid-design-system`
 - **owner_type**: `org`

@@ -14,7 +14,7 @@ description: "Implement a bug fix for an existing Solid Design System component 
 
 ## Prerequisites
 
-- The bug issue has been read and parsed (via the **read-issue-from-github** skill or provided directly by the caller)
+- The bug issue has been read and parsed (via **get-github-issue-by-number** skill or provided directly by the caller)
 - The parsed issue data includes: current behavior, expected behavior, steps to reproduce
 - The affected component has been identified (e.g., `sd-button` → component name is `button`)
 

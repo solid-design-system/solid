@@ -1,5 +1,5 @@
 ---
-name: read-issue-from-github
+name: get-github-issue-by-number
 description: "Fetch a single GitHub issue by number with full metadata (body, comments, labels, project fields, assignees). Use for: reading issue details before implementation, getting issue spec for development, fetching bug report details, retrieving component requirements from an issue."
 ---
 
@@ -22,7 +22,7 @@ The caller provides `{ISSUE_NUMBER}` — the GitHub issue number (e.g. `123`).
 
 > **IMPORTANT**: Do NOT use terminal commands, `gh` CLI, or any other fallback to fetch issue data. Only use the MCP tool.
 
-Call the `mcp_github_issue_read` with:
+Call `mcp_github_issue_read` with:
 - **method**: `get`
 - **owner**: `solid-design-system`
 - **repo**: `solid`

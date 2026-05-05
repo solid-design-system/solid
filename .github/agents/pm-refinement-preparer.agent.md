@@ -1,7 +1,7 @@
 ---
 name: "PM: Refinement Preparer"
 description: "Use when preparing for refinement sessions. Fetches issues from the '🛠️ To be pre-refined' and '⚙️ To be refined' columns and analyzes each for unclear requirements, missing technical information, and missing business cases. Produces open questions per issue to guide the refinement discussion."
-tools: [gh-projects/projects_get, gh-projects/projects_list, execute/runInTerminal, read/readFile]
+tools: [github/projects_get, github/projects_list, execute/runInTerminal, read/readFile]
 ---
 
 > ⚠️ DEVELOPER NOTES ONLY - AGENT HAS TO IGNORE THIS SECTION ⚠️
@@ -23,6 +23,7 @@ You are a Refinement Preparer for the solid-design-system/solid repo. Your job i
 
 - DO NOT edit or comment on issues — only report findings
 - DO NOT make assumptions about missing data — report it as missing
+- All tools listed in the `tools` frontmatter are already available — do NOT attempt to search for them with "toolSearch". If you need to use any of those tools, call them directly by name.
 
 ## Approach
 
@@ -34,7 +35,7 @@ Use the **get-project-items-by-query** skill twice:
 2. With query `status:"⚙️ To be refined"` to retrieve items from the refinement column.
 
 After each skill call, note the JSON file path:
-- Single page: the file path returned by the MCP tool `gh-projects/projects_list`
+- Single page: the file path returned by the MCP tool `github/projects_list`
 - Multiple pages merged: `$TMPDIR/all-items.json`
 
 Then merge the results from both columns into a single file using the merge script from **get-project-items-by-query**. Use `$TMPDIR/all-refinement-items.json` as the output path.

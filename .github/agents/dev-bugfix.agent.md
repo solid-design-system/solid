@@ -23,7 +23,7 @@ If `/memories/session/plan.md` exists, read it. The plan may contain resolved qu
 
 ### Step 1: Read the bug issue
 
-Use the **read-issue-from-github** skill with the provided issue number. Verify the issue type is "Bugfix" (title starts with `fix:`).
+Use the **get-github-issue-by-number** skill with the provided issue number. Verify the issue type is "Bugfix" (title starts with `fix:`).
 
 Extract from the parsed result:
 - Current behavior
