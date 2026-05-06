@@ -135,12 +135,14 @@ Many style modules support an `sd-icon` child element for icon decoration.
 
 Documentation stories (`packages/docs/src/stories/styles/{name}.stories.ts`) and test stories (`{name}.test.stories.ts`) must be created for the new style.
 
-Use the **write-component-stories** skill (which covers both components and styles):
+Use the **write-documentation-stories** skill to create documentation stories:
 - Stories title: `'Styles/sd-{name}'` (not `'Components/...'`)
 - Import path: `'../../../../styles/src/modules/{name}.css'` is NOT needed — styles are globally available
 - Use raw HTML in stories since styles are CSS-only (no Lit component)
 
-Test stories should cover all visual variant combinations for Chromatic visual regression.
+Use the **write-test-stories** skill to create visual regression test stories covering all variant combinations for Chromatic.
+
+Use the **write-overview-pages** skill to create the overview MDX page.
 
 ### Step 5: Create changeset
 

@@ -64,9 +64,13 @@ Use the **write-component-tests** skill to create tests covering:
 
 ### Step 4: Write documentation and visual regression stories
 
-Use the **write-component-stories** skill to create:
+Use the **write-documentation-stories** skill to create:
 - Documentation stories (`{name}.stories.ts`) with interactive samples for each prop, slot, and variant
+
+Use the **write-test-stories** skill to create:
 - Visual regression test stories (`{name}.test.stories.ts`) covering all visual state combinations
+
+Use the **write-overview-pages** skill to create:
 - Overview MDX page (`{name}.mdx`)
 
 ### Step 5: Create a changeset

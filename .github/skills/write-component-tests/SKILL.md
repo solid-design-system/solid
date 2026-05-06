@@ -38,7 +38,7 @@ cd packages/components && pnpm test.watch
 - **Test runner**: Web Test Runner with `@open-wc/testing`
 - **Philosophy**: "Test the behavior, not the implementation." Verify components meet expected requirements from the user's perspective. Don't test internal technical details.
 - **Mandatory coverage**: Accessibility per variant, default property values, child content rendering
-- **Visual regression**: Handled by Chromatic via test stories (see **write-component-stories** skill), not unit tests
+- **Visual regression**: Handled by Chromatic via test stories (see **write-test-stories** skill), not unit tests
 - **E2E tests**: Playwright for complex interactions (separate from unit tests)
 
 ### What to test

@@ -262,7 +262,9 @@ Use the **write-component-tests** skill to create comprehensive tests.
 
 ### Step 5: Implement stories
 
-Use the **write-component-stories** skill to create documentation stories and visual regression test stories.
+Use the **write-documentation-stories** skill to create documentation stories.
+Use the **write-test-stories** skill to create visual regression test stories.
+Use the **write-overview-pages** skill to create the overview MDX page.
 
 ### Step 6: Create changeset
 
