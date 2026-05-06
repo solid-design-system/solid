@@ -8,6 +8,7 @@ import {
   valueMissingValidityState
 } from '../../internal/form';
 import { HasSlotController } from '../../internal/slot';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
@@ -385,6 +386,9 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
     const hasHelpText = this.helpText ? true : !!hasHelpTextSlot;
     const hasTooltipSlot = this.hasSlotController.test('tooltip');
 
+    const describedBy =
+      [hasHelpText && 'help-text', this.showInvalidStyle && 'invalid-message'].filter(Boolean).join(' ') || undefined;
+
     const defaultSlot = html`
       <slot @slotchange=${this.syncRadios} @click=${this.handleRadioClick} @keydown=${this.handleKeyDown}></slot>
     `;
@@ -402,7 +406,8 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
           }[this.size]
         )}
         role="radiogroup"
-        aria-describedby="invalid-message"
+        aria-describedby=${ifDefined(describedBy)}
+        aria-invalid=${this.showInvalidStyle ? 'true' : 'false'}
         aria-labelledby="label"
       >
         ${hasLabel || hasTooltipSlot
