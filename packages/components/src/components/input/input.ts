@@ -11,6 +11,7 @@ import { longPress } from '../../internal/longpress.js';
 import { property, query, state } from 'lit/decorators.js';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
+import { interactiveStyles } from '../../internal/shared-styles';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 
@@ -917,6 +918,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
    */
   static styles = [
     ...SolidElement.styles,
+    interactiveStyles,
     css`
       :host {
         @apply box-border relative inline-block text-left w-full;

@@ -10,6 +10,7 @@ import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
+import { interactiveStyles } from '../../internal/shared-styles';
 import SolidElement from '../../internal/solid-element';
 import type SdPopup from '../popup/popup';
 
@@ -369,6 +370,7 @@ export default class SdTooltip extends SolidElement {
   }
   static styles = [
     ...SolidElement.styles,
+    interactiveStyles,
     css`
       :host {
         --hide-delay: 0ms;

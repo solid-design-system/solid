@@ -18,6 +18,7 @@ import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { waitForEvent } from '../../internal/event.js';
 import { watch } from '../../internal/watch.js';
 import cx from 'classix';
+import { interactiveStyles } from '../../internal/shared-styles';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 import type SdOptgroup from '../optgroup/optgroup.js';
@@ -1569,6 +1570,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   }
   static styles = [
     ...SolidElement.styles,
+    interactiveStyles,
     css`
       :host {
         @apply block relative w-full;

@@ -6,6 +6,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { property, query } from 'lit/decorators.js';
 import cx from 'classix';
+import { interactiveStyles } from '../../internal/shared-styles';
+import { token } from '../../internal/token';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -116,7 +118,7 @@ export default class SdTag extends SolidElement {
     this.emit('sd-hide');
 
     this.style.opacity = '0';
-    await new Promise(resolve => setTimeout(resolve, this.token('--sd-duration-fast', 150)));
+    await new Promise(resolve => setTimeout(resolve, token(this, '--sd-duration-fast', 150)));
     this.hidden = true;
 
     this.emit('sd-after-hide');
@@ -198,6 +200,7 @@ export default class SdTag extends SolidElement {
 
   static styles = [
     ...SolidElement.styles,
+    interactiveStyles,
     css`
       :host {
         @apply inline-block transition-opacity duration-fast ease-in-out;
