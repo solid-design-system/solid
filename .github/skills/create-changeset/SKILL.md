@@ -14,7 +14,7 @@ description: "Create a properly formatted changeset for a Solid Design System pu
 
 ## Changeset Configuration
 
-The project uses [Changesets](https://changesets-docs.vercel.app/en) for versioning and changelogs. Each changeset is a markdown file in `.changeset/` that describes what changed, which package(s) are affected, and what version bump to apply.
+The project uses [Changesets](https://changesets-docs.vercel.app) for versioning and changelogs. Each changeset is a markdown file in `.changeset/` that describes what changed, which package(s) are affected, and what version bump to apply.
 
 ### Fixed packages (version-locked)
 
@@ -43,21 +43,13 @@ The release pipeline checks the last commit message to determine deployment:
 - **`docs`**: commit starts with `chore(release):` (includes `docs` package) → deploys only Storybook
 - **`none`**: anything else → skips CDN deployment
 
-### PR title and CI
-
-- PR title prefixes: `feat`, `fix`, `perf`, `docs`, `chore`, `ci` — these don't influence versioning (changesets do)
-- `[skip ci]`: prevents CI build (use sparingly, only for non-code changes)
-- `[skip chromatic]`: skips Chromatic visual testing (only for non-visual changes)
-
 ## Procedure
 
-### Step 0: Inspect the branch changes first
+### Inspect the branch changes first
 
-Before creating a changeset, run the following command to see what files changed on the current branch compared to `main`:
+Before creating a changeset, use the `get_changed_files` tool to see what files changed on the current branch. Load it first via `tool_search` with the query `"get_changed_files"`, then call it with no arguments to get all staged and unstaged changes.
 
-```sh
-git diff --name-only main
-```
+### Determine affected package(s)
 
 Use the output to determine:
 
