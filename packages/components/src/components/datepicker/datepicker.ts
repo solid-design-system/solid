@@ -65,6 +65,7 @@ import type SdPopup from '../popup/popup';
  * @cssproperty --sd-form-control__listbox-border-top-left-radius - The border radius for the top left corner of the datepicker.
  * @cssproperty --sd-form-control__listbox-border-top-right-radius - The border radius for the top right corner of the datepicker.
  * @cssproperty --sd-form-control--hover-color-background - The background color for form controls on hover.
+ * @cssproperty --sd-form-control--read-only-color-background - The background color for read-only form controls.
  * @cssproperty --sd-datepicker__date-item--default-color-text - The default text color for date items.
  * @cssproperty --sd-datepicker__date-item--hover--default-color-background - The background color for date items in hover state.
  * @cssproperty --sd-datepicker__date-item--hover--default-color-text - The text color for date items in hover state.
@@ -2137,7 +2138,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 !this.disabled && !this.readonly && !this.visuallyDisabled
                   ? 'hover:[@media(hover:hover)]:form-control--hover-color-background'
                   : '',
-                this.readonly ? 'bg-neutral-100' : 'bg-white',
+                this.readonly ? 'form-control--read-only-color-background' : 'bg-white',
                 inputState === 'disabled' || inputState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black',
                 inputState === 'invalid' && 'form-control--invalid-color-background',
                 inputState === 'active' && 'shadow'
