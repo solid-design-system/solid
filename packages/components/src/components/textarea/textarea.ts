@@ -41,6 +41,8 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @cssproperty --sd-form-control-color-text - The text color for form controls.
  * @cssproperty --sd-form-control-border-radius - The border radius for form controls.
  * @cssproperty --sd-form-control--filled__floating-label-color-text - The floating label text color.
+ * @cssproperty --sd-form-control--hover-color-background - The background color for form controls on hover.
+ * @cssproperty --sd-form-control--read-only-color-background - The background color for read-only form controls.
  */
 @customElement('sd-textarea')
 export default class SdTextarea extends SolidElement implements SolidFormControl {
@@ -403,7 +405,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                   class=${cx(
                     'absolute left-4 z-20 transition-all duration-200 cursor-text',
                     textSize,
-                    !isFloatingLabelActive ? 'top-2.5' : 'top-2 text-xs'
+                    !isFloatingLabelActive ? 'top-2.5 form-control-color-text' : 'top-2 text-xs'
                   )}
                   for="input"
                 >
@@ -450,9 +452,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                 lg: 'textarea-lg'
               }[this.size],
               !this.disabled && !this.readonly && !this.visuallyDisabled
-                ? 'hover:[@media(hover:hover)]:bg-neutral-200'
+                ? 'hover:[@media(hover:hover)]:form-control--hover-color-background'
                 : '',
-              this.readonly ? 'bg-neutral-100' : 'bg-white',
+              this.readonly ? 'form-control--read-only-color-background' : 'bg-white',
               textareaState === 'disabled' || textareaState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black',
               ['invalid', 'activeInvalid'].includes(textareaState) && 'form-control--invalid-color-background'
             )}
