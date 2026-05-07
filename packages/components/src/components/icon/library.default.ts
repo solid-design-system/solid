@@ -30,11 +30,11 @@ const defaultLibrary: IconLibrary = {
     });
 
     recoloredElements.greenFills.forEach(filledElement => {
-      filledElement.setAttribute('fill', 'rgb(var(--sd-color-accent, 45 157 0))');
+      filledElement.setAttribute('fill', 'rgb(var(--sd-color-icon-fill-accent, 45 157 0))');
     });
 
     recoloredElements.greenStrokes.forEach(strokedElement => {
-      strokedElement.setAttribute('stroke', 'rgb(var(--sd-color-accent, 45 157 0))');
+      strokedElement.setAttribute('stroke', 'rgb(var(--sd-color-icon-fill-accent, 45 157 0))');
     });
     return svg;
   }
