@@ -139,6 +139,23 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
 
   firstUpdated() {
     this.formControlController.updateValidity();
+    this.syncRadioDescription();
+  }
+
+  // Mirrors help-text and the current validation message onto each radio's
+  // aria-description, because Firefox+VoiceOver on macOS does not announce
+  // aria-describedby set on the role="radiogroup" fieldset.
+  private syncRadioDescription() {
+    const errorMessage = this.showInvalidStyle ? this.validationMessage : '';
+    const description = [this.helpText, errorMessage].filter(Boolean).join('. ');
+
+    for (const radio of this.getAllRadios()) {
+      if (description) {
+        radio.setAttribute('aria-description', description);
+      } else {
+        radio.removeAttribute('aria-description');
+      }
+    }
   }
 
   private getAllRadios() {
@@ -240,6 +257,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
     this.formControlController.setValidity(false);
     this.formControlController.emitInvalidEvent(event);
     this.invalidMessage.textContent = (event.target as HTMLInputElement).validationMessage;
+    this.syncRadioDescription();
   }
 
   private async syncRadioElements() {
@@ -284,6 +302,8 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         buttonGroup.disableRole = true;
       }
     }
+
+    this.syncRadioDescription();
   }
 
   private syncRadios() {
@@ -324,6 +344,12 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   @watch('showInvalidStyle', { waitUntilFirstUpdate: true })
   handleInvalidChange() {
     this.syncRadios();
+    this.syncRadioDescription();
+  }
+
+  @watch('helpText', { waitUntilFirstUpdate: true })
+  handleHelpTextChange() {
+    this.syncRadioDescription();
   }
 
   @watch('value')
@@ -407,6 +433,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         )}
         role="radiogroup"
         aria-describedby=${ifDefined(describedBy)}
+        aria-errormessage=${ifDefined(this.showInvalidStyle ? 'invalid-message' : undefined)}
         aria-invalid=${this.showInvalidStyle ? 'true' : 'false'}
         aria-labelledby="label"
       >
