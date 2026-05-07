@@ -8,7 +8,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Flipcard allows for the addition of content/information on both "sides" of the card, through means of a flip animation. Used  to add dynamism and interactivity to a page.
+ * @summary Used to display content on one side and reveal additional information when flipped.
  * @documentation https://solid.union-investment.com/[storybook-link]/flipcard
  * @status stable
  * @since 3.8.0

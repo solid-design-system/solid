@@ -1,6 +1,6 @@
 ## Overview
 
-`sd-hidden-links` style utility
+`sd-hidden-links` – Used to show links only for keyboard users.
 
 ## API
 

@@ -1,6 +1,6 @@
 ## Overview
 
-`sd-container` style utility
+`sd-container` – Used to enclose and highlight specific parts of content on a page.
 
 ## API
 

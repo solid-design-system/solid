@@ -1,6 +1,6 @@
 ## Overview
 
-`sd-leadtext` style utility
+`sd-leadtext` – Used for text that should be highlighted and a focal point of the page.
 
 ## API
 

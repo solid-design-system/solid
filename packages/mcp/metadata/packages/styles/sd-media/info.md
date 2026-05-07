@@ -1,6 +1,6 @@
 ## Overview
 
-`sd-media` style utility
+`sd-media` – Used to display an image or video preview.
 
 ## API
 

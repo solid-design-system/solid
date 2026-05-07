@@ -1,6 +1,6 @@
 ## Overview
 
-`sd-mark` style utility
+`sd-mark` – Used to highlight text sections in the accent color.
 
 ## Guidelines
 

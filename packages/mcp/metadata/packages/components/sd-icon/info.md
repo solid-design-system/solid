@@ -35,6 +35,7 @@ Use the components tool (with `component` + `story` args) to retrieve the HTML f
 
 ### Related Templates
 
+- audio
 - badge
 - breadcrumb
 - button

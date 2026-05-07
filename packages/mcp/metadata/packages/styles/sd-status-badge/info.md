@@ -1,6 +1,6 @@
 ## Overview
 
-`sd-status-badge` style utility
+`sd-status-badge` – Used as a visual, non-interactive indicator of a status related to a particular element.
 
 ## API
 

@@ -50,4 +50,7 @@ export const staticStylesPath = join(currentDirname, '../../metadata/static/styl
 /** Static AI rules for templates */
 export const templatesPath = join(currentDirname, '../../metadata/static/templates');
 
+/** Figma Make condensed output — flat, merged files for AI/Figma Make consumption */
+export const figmaMakePath = join(currentDirname, '../../dist/figma-make');
+
 export type Framework = 'vanilla';

@@ -1,5 +1,6 @@
 import ora from 'ora';
 import { buildComponents } from './components.js';
+import { buildFigmaMake } from './figma-make.js';
 import { buildIcons } from './icons.js';
 import { buildPackageDocs } from './package-docs.js';
 import { buildStaticFiles } from './static.js';
@@ -24,6 +25,9 @@ const build = async () => {
 
   // Should be run last as we will copy files where we see fit and paths must exist
   await buildStaticFiles();
+
+  // Second build step: generate condensed Figma Make output from already-built metadata
+  await buildFigmaMake();
 };
 
 build()

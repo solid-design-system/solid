@@ -1,6 +1,6 @@
 ## Overview
 
-`sd-interactive` style utility
+`sd-interactive` – Used in interactive elements as a "quartery" button that has no paddings and no background.
 
 ## API
 

@@ -1,5 +1,6 @@
 /**
  * Container lets users delimit and highlight a piece of content. The user has no interaction with it, it is merely a visual element that influences the flow of the page.
+ * @summary Used to enclose and highlight specific parts of content on a page.
  * @name sd-container
  * @status stable
  * @since 1.30.0

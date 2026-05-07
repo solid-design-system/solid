@@ -1,6 +1,6 @@
 ## Overview
 
-`sd-chip` style utility
+`sd-chip` – Used as a small, non-interactive label that represents a status, property or meta-data.
 
 ## API
 

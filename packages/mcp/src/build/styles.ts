@@ -8,6 +8,22 @@ import { createPath, stylesPath } from '../utilities/index.js';
 /** Absolute path to the docs stories/styles directory */
 const DOCS_STYLES_DIR = join(dirname(fileURLToPath(import.meta.url)), '../../../docs/src/stories/styles');
 
+/** Absolute path to the styles CSS modules directory */
+const STYLES_MODULES_DIR = join(dirname(fileURLToPath(import.meta.url)), '../../../styles/src/modules');
+
+/**
+ * Extracts the `@summary` tag value from a CSS module file's JSDoc comment.
+ */
+const extractCssSummary = async (cssPath: string): Promise<string | null> => {
+  try {
+    const raw = await fs.readFile(cssPath, 'utf-8');
+    const match = raw.match(/\*\s+@summary\s+(.+)/);
+    return match ? match[1].trim() : null;
+  } catch {
+    return null;
+  }
+};
+
 interface MdxExtract {
   docs: string | null;
   relatedTemplates: string[];
@@ -163,7 +179,7 @@ export const buildStyles = async () => {
     const styleNames = new Set<string>();
 
     for (const file of docsDir) {
-      if (file.endsWith('.mdx') && !file.startsWith('list.') && !file.startsWith('meta.')) {
+      if (file.endsWith('.mdx')) {
         // Extract style name from filename: "display.mdx" → "display"
         const name = file.replace('.mdx', '');
         styleNames.add(name);
@@ -174,13 +190,15 @@ export const buildStyles = async () => {
 
     await Promise.all(
       Array.from(styleNames).map(async name => {
-        const [{ docs, relatedTemplates }, stories] = await Promise.all([
+        const [{ docs, relatedTemplates }, stories, summary] = await Promise.all([
           extractMdxContent(join(DOCS_STYLES_DIR, `${name}.mdx`)),
-          extractStories(join(DOCS_STYLES_DIR, `${name}.stories.ts`))
+          extractStories(join(DOCS_STYLES_DIR, `${name}.stories.ts`)),
+          extractCssSummary(join(STYLES_MODULES_DIR, `${name}.css`))
         ]);
 
         // Store intermediate JSON — buildTemplates will finalise into info.md + story files
         const intermediate = {
+          summary,
           docs,
           relatedTemplates,
           stories,

@@ -8,7 +8,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Options define the selectable items within various form controls such as [select](/components/select).
+ * @summary Used to define selectable items within various form controls such as select.
  * @documentation https://solid.union-investment.com/[storybook-link]/option
  * @status stable
  * @since 1.30.0

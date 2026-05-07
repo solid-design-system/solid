@@ -251,7 +251,8 @@ export const buildTemplates = async () => {
         const raw = await fs.readFile(join(stylesPath, file), 'utf-8').catch(() => null);
         if (!raw) return;
 
-        const { docs, relatedTemplates, stories } = JSON.parse(raw) as {
+        const { summary, docs, relatedTemplates, stories } = JSON.parse(raw) as {
+          summary: string | null;
           docs: string | null;
           relatedTemplates: string[];
           stories: Story[];
@@ -278,7 +279,7 @@ export const buildTemplates = async () => {
         const sections: string[] = [];
 
         // Overview
-        sections.push(`## Overview\n\n\`${styleName}\` style utility`);
+        sections.push(`## Overview\n\n\`${styleName}\`${summary ? ` – ${summary}` : ' style utility'}`);
 
         // API section with sub-headings
         const apiSubSections: string[] = [];

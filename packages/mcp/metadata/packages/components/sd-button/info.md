@@ -135,6 +135,7 @@ Use the components tool (with `component` + `story` args) to retrieve the HTML f
 - notification
 - status-badge
 - table
+- tag
 - teaser
 - teaser-media
 

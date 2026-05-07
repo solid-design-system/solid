@@ -17,7 +17,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
 import type SdRadioButton from '../../components/radio-button/radio-button';
 
 /**
- * @summary Radio groups are used to group multiple [radios](/components/radio) or [radio buttons](/components/radio-button) so they function as a single form control.
+ * @summary Used to group multiple input radio or radio buttons so they function as a single form control.
  * @documentation https://solid.union-investment.com/[storybook-link]/radio-group
  * @status stable
  * @since 1.20.0

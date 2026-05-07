@@ -6,7 +6,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Ticks visually improve positioning on range sliders.
+ * @summary Used to represent a tick within a sd-range.
  * @status experimental
  * @since 5.9
  *

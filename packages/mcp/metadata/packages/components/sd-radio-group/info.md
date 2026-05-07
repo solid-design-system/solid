@@ -94,6 +94,7 @@ Use the components tool (with `component` + `story` args) to retrieve the HTML f
 
 - forms
 - radio-button-group
+- radio-group
 - tooltip
 
 Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

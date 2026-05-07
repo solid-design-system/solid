@@ -6,7 +6,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary A radio allows to select only one value from a set of options. Clicking on an unchecked radio will deselect the other one(s).
+ * @summary Used to allow the user to select a single option from a group.
  * @documentation https://solid.union-investment.com/[storybook-link]/radio
  * @status stable
  * @since 1.20.0

@@ -1,6 +1,6 @@
 ## Overview
 
-`sd-display` style utility
+`sd-display` – Used to provide larger text sizes that are not used as headlines.
 
 ## API
 

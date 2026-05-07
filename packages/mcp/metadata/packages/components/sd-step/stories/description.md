@@ -13,8 +13,14 @@ Use the ”default” slot to add a description to the step. Alternatively, yo
     <p class="sd-paragraph">Description lorem ipsum sic semper</p>
   </sd-step>
 </div>
-<div class="w-[293px]">
+<div class="mb-8 w-[293px]">
   <sd-step orientation="horizontal">
+    <span slot="label">Step name</span>
+    <p class="sd-paragraph">Description lorem ipsum sic semper</p>
+  </sd-step>
+</div>
+<div class="mb-8 h-[7em]">
+  <sd-step size="xs" orientation="vertical" class="pl-8">
     <span slot="label">Step name</span>
     <p class="sd-paragraph">Description lorem ipsum sic semper</p>
   </sd-step>

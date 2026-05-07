@@ -8,7 +8,7 @@ import { watch } from '../../internal/watch';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary An individual breadcrumb item for use exclusively within the `sd-breadcrumb`.
+ * @summary Used to visualize a page's location within the site's hierarchy and provide easy navigation to previous sections.
  * @status experimental
  * @since 5.8
  *

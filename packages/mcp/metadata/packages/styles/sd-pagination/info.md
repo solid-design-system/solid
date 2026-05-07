@@ -1,6 +1,6 @@
 ## Overview
 
-`sd-pagination` style utility
+`sd-pagination` – Used to split large content into several pages, allowing users to navigate between them instead of displaying all information on a single page.
 
 ## API
 

@@ -1,6 +1,6 @@
 ## Overview
 
-`sd-paragraph` style utility
+`sd-paragraph` – Used to display blocks of text. It uses the base font size and can contain bold and/or link styles.
 
 ## API
 

@@ -1,6 +1,6 @@
 ## Overview
 
-`sd-headline` style utility
+`sd-headline` – Used to display primary or section titles, highlighting key messages to create clear visual hierarchy.
 
 ## API
 

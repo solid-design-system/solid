@@ -1,6 +1,6 @@
 ## Overview
 
-`sd-flag` style utility
+`sd-flag` – Used as a small, non-interactive label that represents a category.
 
 ## API
 

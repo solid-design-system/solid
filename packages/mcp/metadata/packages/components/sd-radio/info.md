@@ -49,6 +49,7 @@ Use the components tool (with `component` + `story` args) to retrieve the HTML f
 ### Related Templates
 
 - forms
+- radio-group
 - tooltip
 
 Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

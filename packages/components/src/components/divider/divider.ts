@@ -5,7 +5,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Dividers are used to visually separate or group elements.
+ * @summary Used to separate content or sections from each other and make the content easier to read for the user.
  * @documentation https://solid.union-investment.com/[storybook-link]/divider
  * @status stable
  * @since 1.0

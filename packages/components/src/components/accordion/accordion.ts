@@ -12,7 +12,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Accordion shows a brief summary and expands to show additional content.
+ * @summary Used to show a brief summary and expands to display additional content.
  * @documentation https://solid.union-investment.com/[storybook-link]/accordion
  * @status stable
  * @since 1.1

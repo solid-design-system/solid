@@ -1,6 +1,6 @@
 ## Overview
 
-`sd-footnotes` style utility
+`sd-footnotes` – Used to add additional information/sources related to the content.
 
 ## API
 

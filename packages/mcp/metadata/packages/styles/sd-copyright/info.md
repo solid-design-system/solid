@@ -1,6 +1,6 @@
 ## Overview
 
-`sd-copyright` style utility
+`sd-copyright` – Used to display copyright information for a media element.
 
 ## API
 

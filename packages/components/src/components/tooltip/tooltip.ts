@@ -14,7 +14,7 @@ import SolidElement from '../../internal/solid-element';
 import type SdPopup from '../popup/popup';
 
 /**
- * @summary Tooltips display additional information based on a specific action.
+ * @summary Used as a floating and non-actionable text label that explains an element or function of the user interface.
  * @documentation https://solid.union-investment.com/[storybook-link]/tooltip
  * @status stable
  * @since 1.23.0

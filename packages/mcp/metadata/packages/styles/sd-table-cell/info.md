@@ -1,6 +1,6 @@
 ## Overview
 
-`sd-table-cell` style utility
+`sd-table-cell` – Used to organize and structure content, scanning, comparing, and analyzing the data, it is designed to be used inside the "sd-table" component.
 
 ## API
 

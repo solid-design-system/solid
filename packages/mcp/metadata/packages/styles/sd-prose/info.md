@@ -1,6 +1,6 @@
 ## Overview
 
-`sd-prose` style utility
+`sd-prose` – Used as a set of "prose" classes to choose from in a richtext-editor.
 
 ## API
 
