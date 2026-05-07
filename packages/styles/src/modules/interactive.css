@@ -9,6 +9,7 @@
  *
  * @cssproperty --sd-interactive--active-color-text - The text color for interactive elements in active state.
  * @cssproperty --sd-interactive--default-color-text - The default text color for interactive elements.
+ * @cssproperty --sd-form-control--disabled-color-text - The text color for interactive elements in disabled state.
  */
 
 .sd-prose a,
@@ -27,7 +28,7 @@
   &--disabled,
   &[disabled],
   &[href=''] {
-    @apply cursor-not-allowed text-neutral-500 hover:text-neutral-500 active:text-neutral-500;
+    @apply cursor-not-allowed form-control--disabled-color-text hover:form-control--disabled-color-text active:form-control--disabled-color-text;
 
     &.sd-interactive--inverted {
       @apply text-neutral-600 hover:text-neutral-600 active:text-neutral-600;
