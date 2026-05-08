@@ -74,8 +74,8 @@ export default class SdCarousel extends SolidElement {
   /** When set, the slides will scroll automatically when the user is not interacting with them.  */
   @property({ type: Boolean, reflect: true }) autoplay = false;
 
-  /** Time (in seconds) that the slides will scroll automatically when the user is not interacting with them.  */
-  @property({ type: Number, attribute: 'autoplay-delay', reflect: true }) autoplayDelay = 3;
+  /** Time (in seconds) between automatic slide transitions. */
+  @property({ type: Number, attribute: 'autoplay-interval', reflect: true }) autoplayInterval = 5;
 
   /** When set, slides will fade between each other instead of scrolling. */
   @property({ type: Boolean, reflect: true }) fade = false;
@@ -368,7 +368,7 @@ export default class SdCarousel extends SolidElement {
     if (this.pausedAutoplay) {
       this.autoplayController.stop();
     } else if (this.autoplay) {
-      this.autoplayController.start(this.autoplayDelay * 1000);
+      this.autoplayController.start(this.autoplayInterval * 1000);
     }
   }
 
@@ -507,16 +507,16 @@ export default class SdCarousel extends SolidElement {
   handleAutoplayChange() {
     this.autoplayController.stop();
     if (this.autoplay && !this.pausedAutoplay) {
-      this.autoplayController.start(this.autoplayDelay * 1000);
+      this.autoplayController.start(this.autoplayInterval * 1000);
     }
   }
 
-  @watch('autoplayDelay')
-  handleAutoplayDelayChange() {
+  @watch('autoplayInterval')
+  handleautoplayIntervalChange() {
     if (!this.autoplay || this.pausedAutoplay) return;
 
     this.autoplayController.stop();
-    this.autoplayController.start(this.autoplayDelay * 1000);
+    this.autoplayController.start(this.autoplayInterval * 1000);
   }
 
   /**

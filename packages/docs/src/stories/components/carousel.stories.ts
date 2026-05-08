@@ -162,6 +162,51 @@ export const Autoplay = {
 };
 
 /**
+ * Use the `autoplay-interval` attribute to control how long the carousel waits
+ * between slide transitions before automatically moving to the next slide.
+ * This value is **measured in seconds** and does not affect how long the slide animation itself lasts.
+ *
+ * Recommended values:
+ * - `5` — Fast
+ * - `7` — Medium
+ * - `10` — Slow
+ * - `12` — Very slow
+ *
+ * **Disclaimer**: Press the play button to start autoplay. It’s paused in Storybook to prevent screen reader confusion from multiple carousels on the page.
+ */
+
+export const AutoplayInterval = {
+  name: 'Autoplay Interval',
+  render: () => html`
+    <div class="flex flex-col gap-8">
+      <sd-carousel class="autoplay-pause" autoplay autoplay-interval="5" loop>
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Fast (5s)</div></sd-carousel-item>
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Fast (5s)</div></sd-carousel-item>
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Fast (5s)</div></sd-carousel-item>
+      </sd-carousel>
+
+      <sd-carousel class="autoplay-pause" autoplay autoplay-interval="7" loop>
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Medium (7s)</div></sd-carousel-item>
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Medium (7s)</div></sd-carousel-item>
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Medium (7s)</div></sd-carousel-item>
+      </sd-carousel>
+
+      <sd-carousel class="autoplay-pause" autoplay autoplay-interval="10" loop>
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Slow (10s)</div></sd-carousel-item>
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Slow (10s)</div></sd-carousel-item>
+        <sd-carousel-item><div class="slot slot--border slot--text h-16">Slow (10s)</div></sd-carousel-item>
+      </sd-carousel>
+    </div>
+
+    <script type="module">
+      document.querySelectorAll('.autoplay-pause').forEach(carrousel => {
+        carrousel.pause();
+      });
+    </script>
+  `
+};
+
+/**
  * Use the `slides-per-page` attribute to set the number of slides displayed at once.
  */
 

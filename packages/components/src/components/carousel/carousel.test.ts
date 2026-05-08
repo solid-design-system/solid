@@ -122,7 +122,7 @@ describe('<sd-carousel>', () => {
 
     it('should respect autoplay delay between slide transitions', async () => {
       const el = await fixture<SdCarousel>(html`
-        <sd-carousel autoplay autoplay-delay="5">
+        <sd-carousel autoplay autoplay-interval="5">
           <sd-carousel-item>Node 1</sd-carousel-item>
           <sd-carousel-item>Node 2</sd-carousel-item>
           <sd-carousel-item>Node 3</sd-carousel-item>
