@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 6.17.1
+
+### Patch Changes
+
+- Fixed `outline-primary`, `outline-error` and `outline-white` Tailwind utilities producing invalid color values in TailwindCSS. They now render the correct theme color in all themes. _[`#2960`](https://github.com/solid-design-system/solid/pull/2960) [`f9b53cc`](https://github.com/solid-design-system/solid/commit/f9b53cc5608c5fd82c3374581044a3b23e832250) [@balco0110](https://github.com/balco0110)_
+
 ## 6.17.0
 
 ### Minor Changes

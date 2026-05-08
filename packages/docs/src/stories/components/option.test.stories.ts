@@ -12,10 +12,6 @@ const { generateTemplate } = storybookTemplate('sd-option');
 const { overrideArgs } = storybookHelpers('sd-option');
 const { generateScreenshotStory } = storybookUtilities;
 
-/**
- * Options define the selectable items within various form controls such as `sd-select`
- */
-
 export default {
   title: 'Components/sd-option/Screenshots: sd-option',
   tags: ['!autodocs'],
@@ -38,10 +34,6 @@ export default {
   }
 };
 
-/**
- * Default: This shows sd-option in its default state.
- */
-
 export const Default = {
   name: 'Default',
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Option' }),
@@ -51,10 +43,6 @@ export const Default = {
     });
   }
 };
-
-/**
- * Use the `disabled` attribute to disable an option. Clicks will be suppressed until the disabled state is removed. Use the `checkbox` attribute to prefix a styled checkbox. Enabled automatically when using `sd-select` with attribute `checklist` set to `true`.
- */
 
 export const DisabledCheckbox = {
   name: 'Disabled x Checkbox',
@@ -78,10 +66,6 @@ export const DisabledCheckbox = {
   }
 };
 
-/**
- * Use the `size` attribute to change a select’s size. This will be inherited automatically from the `size` attribute of the parent `sd-select`.
- */
-
 export const SizeCheckbox = {
   name: 'Size x Checkbox',
   render: (args: any) => {
@@ -102,10 +86,6 @@ export const SizeCheckbox = {
     });
   }
 };
-
-/**
- * Shows available slots.
- */
 
 export const Slots = {
   name: 'Slots',
@@ -149,10 +129,6 @@ export const Slots = {
     `;
   }
 };
-
-/**
- * Use the `base`, `label`, `left`, `right` part selectors to customize the option.
- */
 
 export const Parts = {
   name: 'Parts',

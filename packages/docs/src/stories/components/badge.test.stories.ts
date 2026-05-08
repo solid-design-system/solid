@@ -29,20 +29,12 @@ export default {
   argTypes
 };
 
-/**
- * This shows the badge in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
 };
-
-/**
- * The badge in all possible combinations of `variant` and `size`.
- */
 
 export const VariantAndSize = {
   name: 'Variant × Size',
@@ -56,10 +48,6 @@ export const VariantAndSize = {
     });
   }
 };
-
-/**
- * The badge in all possible combinations of `variant` and `inverted`.
- */
 
 export const VariantAndInverted = {
   name: 'Variant × Inverted',
@@ -80,11 +68,6 @@ export const VariantAndInverted = {
   }
 };
 
-/**
- * Use the `default` slot to add content to the badge.
- *
- * If you add icons to the slot, please make sure to account for accessibility by providing an alt-text.
- */
 export const Slots = {
   name: 'Slots',
   render: (args: any) => {
@@ -107,10 +90,6 @@ export const Slots = {
     });
   }
 };
-
-/**
- * Use the `base` and `content` part selectors to customize the badge.
- */
 
 export const Parts = {
   name: 'Parts',
