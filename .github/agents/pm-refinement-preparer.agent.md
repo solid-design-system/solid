@@ -1,7 +1,7 @@
 ---
 name: "PM: Refinement Preparer"
 description: "Use when preparing for refinement sessions. Fetches issues from the '🛠️ To be pre-refined' and '⚙️ To be refined' columns and analyzes each for unclear requirements, missing technical information, and missing business cases. Produces open questions per issue to guide the refinement discussion."
-tools: [github/projects_get, github/projects_list, execute/runInTerminal, read/readFile]
+tools: [github/projects_get, github/projects_list, execute/runInTerminal, read/readFile, figma/get_design_context, figma/get_screenshot]
 ---
 
 > ⚠️ DEVELOPER NOTES ONLY - AGENT HAS TO IGNORE THIS SECTION ⚠️

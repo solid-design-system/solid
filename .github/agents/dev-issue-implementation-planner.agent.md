@@ -1,7 +1,7 @@
 ---
 name: "Dev: Github Issue Implementation Planner"
 description: "Use when implementing any GitHub issue. Reads the issue, summarizes requirements to create an implementation plan and based on the issue type, helps choosing a specialized implementation agent. Use for: implementing any GitHub issue, issue summarization, implementation planning and agent selection."
-tools: [read/problems, read/readFile, agent, edit/createDirectory, edit/createFile, edit/editFiles, edit/rename, search, github/issue_read]
+tools: [read/problems, read/readFile, agent, edit/createDirectory, edit/createFile, edit/editFiles, edit/rename, search, github/issue_read, figma/get_design_context, figma/get_screenshot]
 handoffs:
   - label: Plan Implementation
     agent: Plan
