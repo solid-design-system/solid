@@ -102,6 +102,8 @@ export const Open = {
  *
  * - `start`: The drawer will be positioned on the left side of the screen.
  * - `end`: The drawer will be positioned on the right side of the screen.
+ * - `top`: The drawer will be positioned at the top of the screen.
+ * - `bottom`: The drawer will be positioned at the bottom of the screen.
  */
 export const Placement = {
   name: 'Placement',

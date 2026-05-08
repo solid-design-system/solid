@@ -48,15 +48,21 @@ import SolidElement from '../../internal/solid-element';
  * @csspart body - The drawer's body.
  * @csspart footer - The drawer's footer.
  *
- * @cssproperty --width - The preferred width of the drawer.
- *   depending on its `placement`. Note that the drawer will shrink to accommodate smaller screens.
+ * @cssproperty --width - The preferred width of the drawer. Only applies to `start` and `end` placements.
+ *   Note that the drawer will shrink to accommodate smaller screens.
+ * @cssproperty --height - The preferred height of the drawer. Only applies to `top` and `bottom` placements.
+ *   Note that the drawer will shrink to accommodate smaller screens.
  * @cssproperty --sd-panel-color-border - The border color of the drawer panel.
  * @cssproperty --sd-overlay-color-background - The background color of the drawer overlay.
  *
  * @animation drawer.showEnd - The animation to use when showing a drawer with `end` placement.
  * @animation drawer.showStart - The animation to use when showing a drawer with `start` placement.
+ * @animation drawer.showTop - The animation to use when showing a drawer with `top` placement.
+ * @animation drawer.showBottom - The animation to use when showing a drawer with `bottom` placement.
  * @animation drawer.hideEnd - The animation to use when hiding a drawer with `end` placement.
  * @animation drawer.hideStart - The animation to use when hiding a drawer with `start` placement.
+ * @animation drawer.hideTop - The animation to use when hiding a drawer with `top` placement.
+ * @animation drawer.hideBottom - The animation to use when hiding a drawer with `bottom` placement.
  * @animation drawer.denyClose - The animation to use when a request to close the drawer is denied.
  * @animation drawer.overlay.show - The animation to use when showing the drawer's overlay.
  * @animation drawer.overlay.hide - The animation to use when hiding the drawer's overlay.
@@ -86,7 +92,7 @@ export default class SdDrawer extends SolidElement {
   @property({ type: String, attribute: 'label', reflect: true }) label = '';
 
   /** The direction from which the drawer will open. */
-  @property({ type: String, reflect: true }) placement: 'end' | 'start' = 'end';
+  @property({ type: String, reflect: true }) placement: 'end' | 'start' | 'top' | 'bottom' = 'end';
 
   /**
    * By default, the drawer slides out of its containing block (the viewport). Contained is a hidden feature used only for testing purposes. Please do not use it in production as it will likely change.
@@ -322,7 +328,9 @@ export default class SdDrawer extends SolidElement {
             'absolute flex flex-col gap-4 z-10 max-w-full max-h-full bg-white shadow-lg overflow-auto pointer-events-auto focus:outline-none',
             {
               end: 'top-0 end-0 bottom-auto start-auto w-[var(--width)] h-full',
-              start: 'top-0 end-auto bottom-auto start-0 w-[var(--width)] h-full'
+              start: 'top-0 end-auto bottom-auto start-0 w-[var(--width)] h-full',
+              top: 'top-0 start-0 end-0 bottom-auto w-full h-[var(--height)]',
+              bottom: 'bottom-0 start-0 end-0 top-auto w-full h-[var(--height)]'
             }[this.placement]
           )}
           role="dialog"
@@ -377,6 +385,7 @@ export default class SdDrawer extends SolidElement {
     css`
       :host {
         --width: 25rem;
+        --height: 25rem;
         @apply contents;
       }
 
@@ -450,6 +459,40 @@ setDefaultAnimation('drawer.hideEnd', {
   rtlKeyframes: [
     { opacity: 1, translate: '0' },
     { opacity: 0, translate: '-100%' }
+  ],
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
+});
+
+// Top
+setDefaultAnimation('drawer.showTop', {
+  keyframes: [
+    { opacity: 0, translate: '0 -100%' },
+    { opacity: 1, translate: '0 0' }
+  ],
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
+});
+
+setDefaultAnimation('drawer.hideTop', {
+  keyframes: [
+    { opacity: 1, translate: '0 0' },
+    { opacity: 0, translate: '0 -100%' }
+  ],
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
+});
+
+// Bottom
+setDefaultAnimation('drawer.showBottom', {
+  keyframes: [
+    { opacity: 0, translate: '0 100%' },
+    { opacity: 1, translate: '0 0' }
+  ],
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
+});
+
+setDefaultAnimation('drawer.hideBottom', {
+  keyframes: [
+    { opacity: 1, translate: '0 0' },
+    { opacity: 0, translate: '0 100%' }
   ],
   options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out' }
 });
