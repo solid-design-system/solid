@@ -12,10 +12,6 @@ const { overrideArgs } = storybookHelpers('sd-radio-button');
 const { generateTemplate } = storybookTemplate('sd-radio-button');
 const { generateScreenshotStory } = storybookUtilities;
 
-/**
- * The `sd-radio-button` is a type of a radio-group-item similar to `sd-radio` which can be slotted insde of an `sd-radio-group`.  Radio button provides a button-style control for users to select one option from a group. Unlike `sd-radio`, `sd-radio-button` does not have an invalid state and should always have a pre-selected option (default value).
- */
-
 export default {
   title: 'Components/sd-radio-button/Screenshots: sd-radio-button',
   tags: ['!autodocs'],
@@ -36,20 +32,12 @@ export default {
   parameters: { ...parameters, controls: { disable: true } }
 };
 
-/**
- * Default: This shows sd-radio-button in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
 };
-
-/**
- * Use the `size` attribute to change the size of the input radio. This attribute affects the font-size within the element, while the element itself remains the same size.
- */
 
 export const Size = {
   name: 'Size',
@@ -62,10 +50,6 @@ export const Size = {
     });
   }
 };
-
-/**
- * Use the show-label attribute to show the label of the radio button.
- */
 
 export const LabelAndSize = {
   name: 'Label × Size',
@@ -83,10 +67,6 @@ export const LabelAndSize = {
     });
   }
 };
-
-/**
- * Label only
- */
 
 export const LabelOnly = {
   name: 'Label only',
@@ -111,10 +91,6 @@ export const LabelOnly = {
     });
   }
 };
-
-/**
- * Use the disabled attribute to disable an input radio. Clicks will be suppressed until the disabled state is removed. `Checked` is an "internal" attribute but is shown here as an example of all possible combinations.
- */
 
 export const DisabledAndChecked = {
   name: 'Disabled × Checked',
@@ -142,9 +118,6 @@ export const DisabledAndChecked = {
   }
 };
 
-/**
- * Use the `base`, `button`, `button--checked`, `icon` and `label` part selectors to customize the radio-button.
- */
 export const Parts = {
   name: 'Parts',
   render: (args: any) => {

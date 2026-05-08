@@ -45,20 +45,12 @@ export default {
   parameters: { ...parameters, controls: { disable: true } }
 };
 
-/**
- * The `sd-navigation-item` in its default state as a horizontally oriented button.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
 };
-
-/**
- * The `sd-navigation-item` in the current state and different variants
- */
 
 export const Current = {
   name: 'Variant x Current',
@@ -71,10 +63,6 @@ export const Current = {
       }
     })
 };
-
-/**
- * There are 3 variants determined by the `href` and `vertical` properties in addition to the `children` slot.  Each variant has 3 size options to define text size.
- */
 
 export const Variants = {
   name: 'Variant × Size',
@@ -122,10 +110,6 @@ export const Variants = {
   }
 };
 
-/**
- * The navigation element when `disabled` is true.
- */
-
 export const Disabled = {
   name: 'Disabled',
   render: (args: any) => {
@@ -163,11 +147,6 @@ export const Disabled = {
   }
 };
 
-/**
- * When `vertical` is false, `sd-navigation-item` will render as a `<button>` or link `<a>` if given an `href`.
- * Horizontal variants have a reduced API and ignore the excluded properties.
- */
-
 export const VerticalAndCurrent = {
   name: 'Vertical × Current',
   render: (args: any) => {
@@ -183,10 +162,6 @@ export const VerticalAndCurrent = {
   }
 };
 
-/**
- * `href` can be used to create a link.
- */
-
 export const VerticalAndLink = {
   name: 'Vertical × Link',
   render: (args: any) => {
@@ -201,10 +176,6 @@ export const VerticalAndLink = {
     `;
   }
 };
-
-/**
- * Displays chevron property behaviors.  Vertical Button / Link variants show right facing chevron dependent on property.  Accordion variant always show up / down chevron to reflect open state.
- */
 
 export const Chevron = {
   name: 'Chevron',
@@ -273,10 +244,6 @@ export const Separated = {
   }
 };
 
-/**
- * When `indented` is true, padding is added to the left side.  When `relaxed` is true, padding is added to both sides.
- */
-
 export const IndentedRelaxed = {
   name: 'Indented × Relaxed',
   render: (args: any) => {
@@ -297,10 +264,6 @@ export const IndentedRelaxed = {
     `;
   }
 };
-
-/**
- * Shows available slots.  `description`is only used when `vertical`is true.
- */
 
 export const Slots = {
   name: 'Slots',
@@ -349,10 +312,6 @@ export const Slots = {
     `;
   }
 };
-
-/**
- * Use the `base`, `content`, `chevron`, and `description` part selectors to customize the navigation item.
- */
 
 export const Parts = {
   name: 'Parts',
@@ -422,10 +381,6 @@ export const Parts = {
     });
   }
 };
-
-/**
- * `sd-navigation-item` is fully accessibile via keyboard in all variants. Tab through the story to try each variant.
- */
 
 export const Mouseless = {
   name: 'Mouseless',

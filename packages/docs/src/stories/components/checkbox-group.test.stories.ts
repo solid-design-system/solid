@@ -39,20 +39,12 @@ export default {
   }
 };
 
-/**
- * Default: This shows sd-checkbox-group in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
 };
-
-/**
- * The sd-checkbox in all possible combinations of `orientation` and `size`.
- */
 
 export const Orientation = {
   name: 'Orientation',
@@ -66,10 +58,6 @@ export const Orientation = {
     });
   }
 };
-
-/**
- * Use the disabled attribute to disable an input checkbox. Clicks will be suppressed until the disabled state is removed
- */
 
 export const Disabled = {
   name: 'Disabled x Size',
@@ -102,9 +90,6 @@ export const Disabled = {
   }
 };
 
-/**
- * Use the `form-control`, `form-control-label` and `form-control-input` part selectors to customize the checkbox-group.
- */
 export const Parts = {
   name: 'Parts',
   render: (args: any) => {
@@ -127,9 +112,6 @@ export const Parts = {
   }
 };
 
-/**
- * sd-checkbox-group is fully accessibile via keyboard.
- */
 export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {

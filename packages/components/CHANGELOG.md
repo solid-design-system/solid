@@ -1,5 +1,42 @@
 # @solid-design-system/components
 
+## 6.17.1
+
+### Patch Changes
+
+- `sd-checkbox`, `sd-switch` and `sd-radio` now render the focus outline in the theme primary color. _[`#2960`](https://github.com/solid-design-system/solid/pull/2960) [`f9b53cc`](https://github.com/solid-design-system/solid/commit/f9b53cc5608c5fd82c3374581044a3b23e832250) [@balco0110](https://github.com/balco0110)_
+
+## 6.17.0
+
+### Minor Changes
+
+- Added new `xs` size variant for `sd-step` and `sd-step-group`. This variant is only available with vertical `orientation` and if this attribute is not set, the component will not be rendered. _[`#2943`](https://github.com/solid-design-system/solid/pull/2943) [`d3d44f6`](https://github.com/solid-design-system/solid/commit/d3d44f6e520a32c50b3466a89ba1c2bc2db88f06) [@smfonseca](https://github.com/smfonseca)_
+
+### 📈 Stats
+
+- Uncompressed: 612 KB (+1 KB / +0%)
+- Gzipped: 138 KB (+1 KB / +1%)
+
+## 6.16.5
+
+### Patch Changes
+
+- Improved handling of `min` and `max` attributes in `sd-datepicker` and enhanced internal `parseLocalISO` date utility to accept slash-separated dates (`YYYY/MM/DD`) in addition to hyphen and dot separators. _[`#2967`](https://github.com/solid-design-system/solid/pull/2967) [`23ebfd7`](https://github.com/solid-design-system/solid/commit/23ebfd7fd37c4737347e39cb6cb5189f39c1e9a9) [@smfonseca](https://github.com/smfonseca)_
+
+## 6.16.4
+
+## 6.16.3
+
+### Patch Changes
+
+- Updated dependencies. See details in the Pull Request _[`#2912`](https://github.com/solid-design-system/solid/pull/2912) [`2f04cb8`](https://github.com/solid-design-system/solid/commit/2f04cb83148274dce3979751b3ef9ca7adc87707) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 6.16.2
+
+### Patch Changes
+
+- Moved autoplay button in `sd-carousel` before navigation in DOM order for correct screen reader focus sequence _[`#2868`](https://github.com/solid-design-system/solid/pull/2868) [`6e80707`](https://github.com/solid-design-system/solid/commit/6e807071c898ff04644311b7b8798b0e35d26d2b) [@balco0110](https://github.com/balco0110)_
+
 ## 6.16.1
 
 ### Patch Changes

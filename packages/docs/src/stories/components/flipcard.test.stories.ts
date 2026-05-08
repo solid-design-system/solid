@@ -42,9 +42,6 @@ export default {
   argTypes,
   parameters: { ...parameters, controls: { disable: true } }
 };
-/**
- * This shows sd-flipcard in its default state.
- */
 
 export const Default = {
   name: 'Default',
@@ -66,10 +63,6 @@ export const Default = {
     });
   }
 };
-
-/**
- * The sd-flipcard can be displayed in several ways using the `front-variant` and `back-variant` attributes. This example shows the usage `front-variant` attribute.
- */
 
 export const Variants = {
   name: 'Variants',
@@ -116,10 +109,6 @@ export const Variants = {
     })
 };
 
-/**
- * Use the `flip-direction` attribute to determine the direction of the flipcard. There are two options: `horizontal` and `vertical`.
- */
-
 export const flipDirection = {
   name: 'Flip Direction',
   render: (args: any) =>
@@ -151,9 +140,6 @@ export const flipDirection = {
     })
 };
 
-/**
- * Use the `front`, `back`, `front-media` and `back-media` slots to add content to the flipcard.
- */
 export const Slots = {
   name: 'Slots',
   render: (args: any) => {
@@ -207,9 +193,6 @@ export const Slots = {
   }
 };
 
-/**
- * Use the `base`, `front`, `back`, `front-button`, `back-button`,  `front-interactive-container`, `back-interactive-container`, `front-slot-container`, `back-slot-container`, `front-media`, `back-media`, `front-secondary-gradient` and `back-secondary-gradient` parts to style the flipcard.
- */
 export const Parts = {
   name: 'Parts',
   parameters: {
@@ -289,10 +272,6 @@ export const Parts = {
   }
 };
 
-/**
- * `sd-flipcard` is fully accessibile via keyboard.
- */
-
 export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {
@@ -323,10 +302,6 @@ export const Mouseless = {
     el?.shadowRoot?.querySelector<HTMLElement>('.flip-card__side--front')!.focus();
   }
 };
-
-/**
- * Here is a sample of the `sd-flipcard` with custom content in the `front` and `back` slots. The activation is set to `click-only` in order allow the user to click on links/buttons inside the flipcard.
- */
 
 export const Sample = {
   name: 'Sample: Custom Content',
@@ -360,10 +335,6 @@ export const Sample = {
     `;
   }
 };
-
-/**
- * You can set a custom aspect ratio (eg: 16:9) for the `sd-flipcard` using plain CSS.
- */
 
 export const AspectRatio = {
   name: 'Sample: Aspect Ratio',

@@ -1,5 +1,47 @@
 # @solid-design-system/docs
 
+## 2.13.2
+
+### Patch Changes
+
+- Updating Accessibility documentation to match Figma. _[`#2976`](https://github.com/solid-design-system/solid/pull/2976) [`3b2d930`](https://github.com/solid-design-system/solid/commit/3b2d9306725542af2d5483463ae40126adfa3777) [@martascorreia](https://github.com/martascorreia)_
+
+## 2.13.1
+
+### Patch Changes
+
+- Removed all descriptions from the screenshot tests. _[`#2974`](https://github.com/solid-design-system/solid/pull/2974) [`a79fbf8`](https://github.com/solid-design-system/solid/commit/a79fbf8f41caee8e1cfbd90e2b4e79093be99335) [@martascorreia](https://github.com/martascorreia)_
+
+## 2.13.0
+
+### Minor Changes
+
+- Added new documentation for `xs` size variant in `sd-step` and `sd-step-group`, including new template for `sd-step-group` using `xs` size variant. _[`#2943`](https://github.com/solid-design-system/solid/pull/2943) [`d3d44f6`](https://github.com/solid-design-system/solid/commit/d3d44f6e520a32c50b3466a89ba1c2bc2db88f06) [@smfonseca](https://github.com/smfonseca)_
+
+## 2.12.0
+
+### Minor Changes
+
+- Added realistic `sd-select` template with option and checkbox, updated the a11y test and added related template links _[`#2941`](https://github.com/solid-design-system/solid/pull/2941) [`6269985`](https://github.com/solid-design-system/solid/commit/62699858167a26c1b49879faa67cabb1f7f1cb56) [@balco0110](https://github.com/balco0110)_
+
+## 2.11.1
+
+### Patch Changes
+
+- Updated dependencies. See details in the Pull Request _[`#2912`](https://github.com/solid-design-system/solid/pull/2912) [`2f04cb8`](https://github.com/solid-design-system/solid/commit/2f04cb83148274dce3979751b3ef9ca7adc87707) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 2.11.0
+
+### Minor Changes
+
+- Added realistic `sd-tag` template _[`#2889`](https://github.com/solid-design-system/solid/pull/2889) [`fcefc52`](https://github.com/solid-design-system/solid/commit/fcefc527acee96c23b67dc1d3e662166a01836c2) [@balco0110](https://github.com/balco0110)_
+
+## 2.10.2
+
+### Patch Changes
+
+- Updating the `sd-combobox` and `sd-select` documentation about limiting the height of the dropdown display. _[`#2946`](https://github.com/solid-design-system/solid/pull/2946) [`25ad9d4`](https://github.com/solid-design-system/solid/commit/25ad9d4389a06adabb202e312637d56558046766) [@martascorreia](https://github.com/martascorreia)_
+
 ## 2.10.1
 
 ### Patch Changes
