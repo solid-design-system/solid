@@ -1505,13 +1505,13 @@ export const SampleC = {
   name: 'Header Sample C',
   render: () => html`
     <style>
-      #anchor--templates-header-navigation--sample-a .innerZoomElementWrapper,
-      #anchor--templates-header-navigation--sample-a-02 .innerZoomElementWrapper,
-      #anchor--templates-header-navigation--sample-b .innerZoomElementWrapper {
+      #anchor--templates-header-navigation--sample-c .innerZoomElementWrapper,
+      #anchor--templates-header-navigation--sample-c .innerZoomElementWrapper,
+      #anchor--templates-header-navigation--sample-c .innerZoomElementWrapper {
         height: 900px;
       }
     </style>
-    <sd-header id="sample-c-header" fixed class="h-[1000px]">
+    <sd-header id="sample-c-header" fixed>
       <div class="grid grid-cols-[1fr_auto_1fr] sm:flex sm:justify-between items-center">
         <!-- top-left-area start !-->
         <!-- Back arrow: mobile only (0–639px) -->
@@ -1522,11 +1522,7 @@ export const SampleC = {
         </div>
         <!-- Logo: centered on mobile, left-aligned on sm+ -->
         <a class="flex flex-shrink" href="#">
-          <div
-            class="h-8 w-[104px] sm:w-auto md:h-12 lg:h-14 logo-lg"
-            role="img"
-            aria-label="Union Investment Homepage"
-          ></div>
+          <div class="h-8 sm:w-auto md:h-12 lg:h-14 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
         </a>
         <!-- top-left-area end !-->
         <!-- top-right-area start !-->
