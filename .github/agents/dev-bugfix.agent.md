@@ -39,13 +39,6 @@ If the issue type is not "Bugfix", inform the user and stop.
 
 Use the **implement-bugfix** skill with the parsed issue data and identified component.
 
-This will:
-1. Read the affected component source and tests
-2. Write a failing regression test
-3. Fix the component code
-4. Verify the fix passes
-5. Update test stories if the fix is visual
-
 ### Step 3: Add comprehensive test coverage
 
 Use the **write-component-tests** skill to review and extend test coverage for the affected component. Focus on:

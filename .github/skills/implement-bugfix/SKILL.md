@@ -105,14 +105,7 @@ The test should **fail** — confirming it correctly captures the bug.
 
 Edit `packages/components/src/components/{name}/{name}.ts` to fix the root cause.
 
-#### Component code conventions
-
-- **CSS**: Use Tailwind classes via `@apply`. Do NOT use arbitrary values like `mt-[var(--spacing-xxl)]` in `@apply` — add custom values as plain CSS outside `@apply`
-- **Properties**: Reflect to attributes (`reflect: true`) unless they are rich data (Array/Object) or frequently updated
-- **Imports**: Use `import { customElement } from '../../internal/register-custom-element'` — never Lit's built-in `@customElement`
-- **Component imports**: Use direct paths (`import '../icon/icon'`), add `@dependency` JSDoc tag
-- **Internal state**: Mark with `/** @internal */` and `@state()`
-- **Accessibility**: Maintain or improve ARIA attributes, keyboard navigation, semantic HTML
+For authoring rules (CSS, properties, imports, accessibility), refer to the **component-conventions** skill.
 
 Keep the fix **minimal** — only change what is necessary to resolve the bug. Do not refactor surrounding code.
 

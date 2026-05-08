@@ -11,7 +11,9 @@ Use this table to determine which implementation agent to recommend based on the
 | Detected type | Labels / Signals | Route to |
 |---------------|------------------|----------|
 | New Component | Label `🙌 Epic`, title `feat: ✨ add sd-*`, no `style-components` label | **Dev: Component Developer** |
+| Feature: existing component | Title `feat:`, no `🙌 Epic` label, targets an existing `sd-*` component | **Dev: Component Developer** |
 | New Style Component | Label `🙌 Epic`, label `style-components` | **Dev: Style Component Developer** |
+| Feature: existing style | Title `feat:`, no `🙌 Epic` label, targets an existing style module | **Dev: Style Component Developer** |
 | Bugfix | Title starts with `fix:` | **Dev: Bugfix Developer** |
 | Documentation | Title starts with `docs:` | **Agent** mode |
 | Maintenance | Title starts with `chore:` or `ci:` | **Agent** mode |

@@ -1,19 +1,22 @@
 ---
 name: create-style-component
-description: "Scaffold and implement a CSS-based style component for the Solid Design System. Use for: new style component implementation, style scaffolding, implementing a style from a GitHub issue spec, adding a new sd-* CSS style module."
+description: "Scaffold and implement a brand-new CSS-based style component for the Solid Design System from scratch. Use for: new style component implementation, style scaffolding, implementing a new sd-* CSS style module from a GitHub issue spec. NOT for adding variants/modifiers to an existing style — use modify-style-component for that."
 ---
 
 # Create Style Component
 
 ## When to Use
 
-- Implementing a new CSS-based style component from a GitHub issue (New Style Component Issue Template)
+- Implementing a **brand-new** CSS-based style module from a GitHub issue (New Style Component Issue Template, labels `🙌 Epic` and `style-components`)
 - Scaffolding a new `sd-*` style module with all required files
-- Adding a style to the Solid Design System styles package
+- The style does **not yet exist** in `packages/styles/src/modules/`
+
+> For adding variants, modifiers, or other extensions to an **existing** style module, use the **modify-style-component** skill instead.
 
 ## Prerequisites
 
 - The style name must start with `sd-` (e.g., `sd-headline`, `sd-mark`)
+- The style module does not yet exist — verified by checking `packages/styles/src/modules/`
 - A GitHub issue should exist with the style spec (Props/variants, Stories)
 - The issue has label `🙌 Epic` and label `style-components`
 
@@ -51,93 +54,20 @@ Where `{name}` is the style name without the `sd-` prefix (e.g., `headline` for 
 
 ### Step 2: Implement the CSS module
 
-Edit `packages/styles/src/modules/{name}.css` following these conventions:
+Read the **style-conventions** skill — it covers all authoring rules: JSDoc comment block, BEM naming, Tailwind `@apply`, Mobile First, CSS nesting, Figma variable mapping, and icon integration.
 
-#### JSDoc-like comment block
-
-Add a documentation comment at the top of the file. This auto-generates Storybook controls:
-
-```css
-/**
- * Description of the style module. Starts with a noun or description of purpose.
- * @name sd-{name}
- * @status experimental | stable
- * @since {version}
- * @variant { value1 | value2 } sd-{name}--... Description of the variant.
- * @variant { sm | lg } sd-{name}--size-... Description of the size variant.
- * @boolean sd-{name}--inverted Inverts the style.
- * @cssproperty --sd-{name}--property - Description of the CSS custom property.
- */
-```
-
-Tag reference:
-- `@variant { options } sd-{name}--prefix` → generates BEM modifier classes (e.g., `sd-headline--size-xl`)
-- `@boolean sd-{name}--modifier` → generates a boolean BEM modifier class
-- `@cssproperty --sd-{name}--prop` → documents a CSS custom property
-
-#### BEM class naming
-
-Use [BEM methodology](https://getbem.com) for all class names:
-- **Block**: `sd-{name}` (the base class)
-- **Modifier**: `sd-{name}--{modifier}` (variant, size, state)
-- **Element**: `sd-{name}__{element}` (child elements, rare in styles)
-
-#### Tailwind `@apply` usage
-
-Use Tailwind's `@apply` directive for all styling connected to design tokens:
-
-```css
-.sd-{name} {
-  @apply text-primary font-bold leading-tight;
-}
-
-.sd-{name}--size-xl {
-  @apply text-xl sm:text-2xl;
-}
-
-.sd-{name}--inverted {
-  @apply text-white;
-}
-```
-
-Rules:
-- **Mobile First**: Always use the mobile token as the unsuffixed default, override with desktop at the breakpoint (e.g., `text-3xl sm:text-4xl`)
-- **No arbitrary values in `@apply`**: Do NOT use `@apply mt-[var(--spacing-xxl)]` — add custom values as plain CSS outside `@apply`
-- **Nesting**: Use CSS nesting for variant and state selectors within the base class
-
-#### Figma consistency
-
-When a Figma variable name differs from the CSS property, directly assign the CSS variable:
-
-```css
-background-color: var(--sd-color-icon-fill-neutral-800, var(--sd-color-neutral-800));
-```
+Edit `packages/styles/src/modules/{name}.css` and implement the full variant/modifier spec from the issue.
 
 ### Step 3: Check — does this style need `sd-icon` integration?
 
-Many style modules support an `sd-icon` child element for icon decoration.
+If the spec includes icon support, follow the icon integration pattern from the **style-conventions** skill.
 
-**If the spec does NOT include icons** — skip to Step 4.
-
-**If the spec includes icon support** — add `sd-icon` styling nested inside the base class:
-
-```css
-.sd-{name} {
-  @apply flex font-bold text-primary;
-
-  sd-icon {
-    @apply text-[3rem] text-primary shrink-0;
-  }
-}
-```
+If the spec does NOT include icons — skip to Step 4.
 
 ### Step 4: Implement stories
 
-Documentation stories (`packages/docs/src/stories/styles/{name}.stories.ts`) and test stories (`{name}.test.stories.ts`) must be created for the new style.
-
 Use the **write-documentation-stories** skill to create documentation stories:
 - Stories title: `'Styles/sd-{name}'` (not `'Components/...'`)
-- Import path: `'../../../../styles/src/modules/{name}.css'` is NOT needed — styles are globally available
 - Use raw HTML in stories since styles are CSS-only (no Lit component)
 
 Use the **write-test-stories** skill to create visual regression test stories covering all variant combinations for Chromatic.
@@ -158,5 +88,3 @@ Run from the repository root:
 ```sh
 pnpm verify
 ```
-
-This runs linting, tests, and builds across all packages.

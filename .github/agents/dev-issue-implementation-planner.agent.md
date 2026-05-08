@@ -29,15 +29,7 @@ You are an issue implementation orchestrator for the solid-design-system/solid r
 
 Use the **get-github-issue-by-number** skill with the provided issue number. This returns the issue with its detected type, labels, title, parsed body, comments, and comment signals.
 
-### Step 2: Check for agent eligibility
-
-Before routing, verify the issue has the label **`🤖 good for agent`**.
-
-- If the label is **present**: continue to step 3.
-- If the label is **absent**: stop immediately and inform the user:
-  > "This issue does not have the `🤖 good for agent` label and is not marked for automated implementation. Please add the label if you want this issue to be handled by an agent."
-
-### Step 3: Summarize findings for planning
+### Step 2: Summarize findings for planning
 
 Present a structured summary to the user:
 
@@ -52,7 +44,7 @@ Present a structured summary to the user:
 After presenting the summary, inform the user:
 > You can click **"Plan Implementation"** to interactively plan this issue with the Plan agent before implementation, or proceed directly to implementation by asking to proceed — I will then tell you exactly which agent to use for implementation.
 
-### Step 4: Route to the correct agent
+### Step 3: Route to the correct agent
 
 If the user asks to proceed without planning, route directly to the correct implementation agent.
 

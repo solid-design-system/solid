@@ -73,6 +73,8 @@ Every test story file must cover:
 | Slots | Visual slot content using `.slot` utility classes |
 | Pseudo-states | Hover / focus (if component is interactive) |
 
+> **Avoid redundant stories.** If an attribute or state combination is already fully captured in an existing axis matrix story, do **not** add a separate story for it. Each story must add unique visual coverage that is not already present in the x/y axis combinations.
+
 ---
 
 ## Axis Matrices — the Variant Multiplier
