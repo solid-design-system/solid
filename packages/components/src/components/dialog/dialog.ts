@@ -4,16 +4,13 @@ import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
-import { getDeepActiveElement } from '../../internal/deep-active-element';
 import { HasSlotController } from '../../internal/slot';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
-import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { property, query } from 'lit/decorators.js';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
-import Modal from '../../internal/modal';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -64,12 +61,10 @@ import SolidElement from '../../internal/solid-element';
 export default class SdDialog extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, 'footer');
   public localize = new LocalizeController(this);
-  private modal: Modal;
-  private originalTrigger: HTMLElement | null;
 
-  @query('[part="base"]') dialog: HTMLElement;
-  @query('[part="panel"]') panel: HTMLElement;
+  @query('[part="base"]') dialog: HTMLDialogElement;
   @query('[part="overlay"]') overlay: HTMLElement;
+  @query('[part="panel"]') panel: HTMLElement;
 
   /**
    * Indicates whether or not the dialog is open. You can toggle this attribute to show and hide the dialog, or you can
@@ -87,25 +82,15 @@ export default class SdDialog extends SolidElement {
    */
   @property({ attribute: 'no-close-button', type: Boolean, reflect: true }) noCloseButton = false;
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.handleDocumentKeyDown = this.handleDocumentKeyDown.bind(this);
-    this.modal = new Modal(this);
-  }
-
   firstUpdated() {
-    this.dialog.hidden = !this.open;
+    this.dialog.addEventListener('cancel', (event: Event) => {
+      event.preventDefault();
+      this.requestClose('keyboard');
+    });
 
     if (this.open) {
-      this.addOpenListeners();
-      this.modal.activate();
-      lockBodyScrolling(this);
+      this.dialog.showModal();
     }
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    unlockBodyScrolling(this);
   }
 
   private get prefersReducedMotion() {
@@ -127,31 +112,11 @@ export default class SdDialog extends SolidElement {
     this.hide();
   }
 
-  private addOpenListeners() {
-    document.addEventListener('keydown', this.handleDocumentKeyDown);
-  }
-
-  private removeOpenListeners() {
-    document.removeEventListener('keydown', this.handleDocumentKeyDown);
-  }
-
-  private handleDocumentKeyDown(event: KeyboardEvent) {
-    if (this.open && event.key === 'Escape') {
-      event.stopPropagation();
-      this.requestClose('keyboard');
-    }
-  }
-
   @watch('open', { waitUntilFirstUpdate: true })
   async handleOpenChange() {
     if (this.open) {
       // Show
       this.emit('sd-show');
-      this.addOpenListeners();
-      this.originalTrigger = getDeepActiveElement();
-      this.modal.activate();
-
-      lockBodyScrolling(this);
 
       // When the dialog is shown, Safari will attempt to set focus on whatever element has autofocus. This can cause
       // the dialogs's animation to jitter (if it starts offscreen), so we'll temporarily remove the attribute, call
@@ -164,8 +129,11 @@ export default class SdDialog extends SolidElement {
         autoFocusTarget.removeAttribute('autofocus');
       }
 
-      await Promise.all([stopAnimations(this.dialog), stopAnimations(this.overlay)]);
-      this.dialog.hidden = false;
+      await stopAnimations(this.dialog);
+      this.dialog.showModal();
+
+      const overlayShowAnimation = getAnimation(this, 'dialog.overlay.show', { dir: this.localize.dir() });
+      animateTo(this.overlay, overlayShowAnimation.keyframes, overlayShowAnimation.options);
 
       // Set initial focus
       requestAnimationFrame(() => {
@@ -189,57 +157,23 @@ export default class SdDialog extends SolidElement {
       const panelAnimation = this.prefersReducedMotion
         ? getAnimation(this, 'dialog.showReducedMotion', { dir: this.localize.dir() })
         : getAnimation(this, 'dialog.show', { dir: this.localize.dir() });
-      const overlayAnimation = getAnimation(this, 'dialog.overlay.show', { dir: this.localize.dir() });
-      await Promise.all([
-        animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options),
-        animateTo(this.overlay, overlayAnimation.keyframes, overlayAnimation.options)
-      ]);
+      await animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options);
 
       this.emit('sd-after-show');
     } else {
       // Hide
       this.emit('sd-hide');
-      this.removeOpenListeners();
-      this.modal.deactivate();
 
-      await Promise.all([stopAnimations(this.dialog), stopAnimations(this.overlay)]);
+      await stopAnimations(this.dialog);
+      const overlayHideAnimation = getAnimation(this, 'dialog.overlay.hide', { dir: this.localize.dir() });
+      animateTo(this.overlay, overlayHideAnimation.keyframes, overlayHideAnimation.options);
+
       const panelAnimation = this.prefersReducedMotion
         ? getAnimation(this, 'dialog.hideReducedMotion', { dir: this.localize.dir() })
         : getAnimation(this, 'dialog.hide', { dir: this.localize.dir() });
-      const overlayAnimation = getAnimation(this, 'dialog.overlay.hide', { dir: this.localize.dir() });
 
-      // Animate the overlay and the panel at the same time. Because animation durations might be different, we need to
-      // hide each one individually when the animation finishes, otherwise the first one that finishes will reappear
-      // unexpectedly. We'll unhide them after all animations have completed.
-      await Promise.all([
-        animateTo(this.overlay, overlayAnimation.keyframes, overlayAnimation.options).then(() => {
-          this.overlay.hidden = true;
-        }),
-        animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options).then(() => {
-          this.panel.hidden = true;
-        })
-      ]);
-
-      this.dialog.hidden = true;
-
-      // Now that the dialog is hidden, restore the overlay and panel for next time
-      this.overlay.hidden = false;
-      this.panel.hidden = false;
-
-      unlockBodyScrolling(this);
-
-      // Restore focus to the original trigger
-      const trigger = this.originalTrigger;
-      if (typeof trigger?.focus === 'function' && trigger.isConnected) {
-        setTimeout(() => {
-          try {
-            trigger.focus({ preventScroll: true });
-          } catch {
-            trigger.focus();
-          }
-          this.originalTrigger = null;
-        });
-      }
+      await animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options);
+      this.dialog.close();
 
       this.emit('sd-after-hide');
     }
@@ -268,29 +202,20 @@ export default class SdDialog extends SolidElement {
   render() {
     /* eslint-disable lit-a11y/click-events-have-key-events */
     return html`
-      <div
+      <dialog
         part="base"
         class=${cx(
-          'flex items-center justify-center fixed inset-0 z-dialog',
+          'flex items-center justify-center p-0 m-auto bg-transparent border-none overflow-visible',
           this.hasSlotController.test('footer') && 'dialog--has-footer'
         )}
       >
-        <div
-          part="overlay"
-          class="fixed inset-0 overlay-color-background"
-          @click=${() => this.requestClose('overlay')}
-          tabindex="-1"
-        ></div>
-
+        <div part="overlay" class="fixed inset-0" @click=${() => this.requestClose('overlay')}></div>
         <div
           part="panel"
           class=${cx(
             'panel-color-border border flex flex-col z-20 bg-white py-4 sm:py-8 relative gap-6 focus-visible:focus-outline-inverted overflow-y-auto',
             this.open && 'flex opacity-100'
           )}
-          role="dialog"
-          aria-modal="true"
-          aria-hidden=${this.open ? 'false' : 'true'}
           aria-label=${ifDefined(this.headline ? this.headline : undefined)}
           aria-labelledby=${ifDefined(!this.headline ? 'title' : undefined)}
           tabindex="0"
@@ -331,7 +256,7 @@ export default class SdDialog extends SolidElement {
             <slot name="footer"></slot>
           </footer>
         </div>
-      </div>
+      </dialog>
     `;
     /* eslint-enable lit-a11y/click-events-have-key-events */
   }
@@ -341,6 +266,11 @@ export default class SdDialog extends SolidElement {
     css`
       :host {
         --width: 662px;
+        @apply contents;
+      }
+
+      :host(:not([open])) {
+        display: none;
       }
 
       [part='panel'] {
@@ -350,6 +280,14 @@ export default class SdDialog extends SolidElement {
 
       [part='body'] {
         -webkit-overflow-scrolling: touch;
+      }
+
+      ::backdrop {
+        display: none;
+      }
+
+      [part='overlay'] {
+        background-color: rgb(var(--sd-overlay-color-background, 5 21 48 / 0.9));
       }
 
       @media (max-width: 414px) {
@@ -402,12 +340,12 @@ setDefaultAnimation('dialog.denyClose', {
 
 setDefaultAnimation('dialog.overlay.show', {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out', reducedMotion: 'allow' }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'linear', reducedMotion: 'allow' }
 });
 
 setDefaultAnimation('dialog.overlay.hide', {
   keyframes: [{ opacity: 1 }, { opacity: 0 }],
-  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'ease-in-out', reducedMotion: 'allow' }
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'linear', reducedMotion: 'allow' }
 });
 
 declare global {

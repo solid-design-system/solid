@@ -11,18 +11,18 @@ describe('<sd-dialog>', () => {
       <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
     `);
 
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
 
-    expect(base.hidden).to.be.false;
+    expect(base.open).to.be.true;
   });
 
   it('should not be visible without the open attribute', async () => {
     const el = await fixture<SdDialog>(html`
       <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
     `);
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
 
-    expect(base.hidden).to.be.true;
+    expect(base.open).to.be.false;
   });
 
   it('should include a close button by default', async () => {
@@ -47,7 +47,7 @@ describe('<sd-dialog>', () => {
     const el = await fixture<SdDialog>(html`
       <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
     `);
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
     const showHandler = sinon.spy();
     const afterShowHandler = sinon.spy();
 
@@ -60,14 +60,14 @@ describe('<sd-dialog>', () => {
 
     expect(showHandler).to.have.been.calledOnce;
     expect(afterShowHandler).to.have.been.calledOnce;
-    expect(base.hidden).to.be.false;
+    expect(base.open).to.be.true;
   });
 
   it('should emit sd-hide and sd-after-hide when calling hide()', async () => {
     const el = await fixture<SdDialog>(html`
       <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
     `);
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
     const hideHandler = sinon.spy();
     const afterHideHandler = sinon.spy();
 
@@ -80,14 +80,14 @@ describe('<sd-dialog>', () => {
 
     expect(hideHandler).to.have.been.calledOnce;
     expect(afterHideHandler).to.have.been.calledOnce;
-    expect(base.hidden).to.be.true;
+    expect(base.open).to.be.false;
   });
 
   it('should emit sd-show and sd-after-show when setting open = true', async () => {
     const el = await fixture<SdDialog>(html`
       <sd-dialog>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
     `);
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
     const showHandler = sinon.spy();
     const afterShowHandler = sinon.spy();
 
@@ -100,14 +100,14 @@ describe('<sd-dialog>', () => {
 
     expect(showHandler).to.have.been.calledOnce;
     expect(afterShowHandler).to.have.been.calledOnce;
-    expect(base.hidden).to.be.false;
+    expect(base.open).to.be.true;
   });
 
   it('should emit sd-hide and sd-after-hide when setting open = false', async () => {
     const el = await fixture<SdDialog>(html`
       <sd-dialog open>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</sd-dialog>
     `);
-    const base = el.shadowRoot!.querySelector<HTMLElement>('[part~="base"]')!;
+    const base = el.shadowRoot!.querySelector<HTMLDialogElement>('[part~="base"]')!;
     const hideHandler = sinon.spy();
     const afterHideHandler = sinon.spy();
 
@@ -120,7 +120,7 @@ describe('<sd-dialog>', () => {
 
     expect(hideHandler).to.have.been.calledOnce;
     expect(afterHideHandler).to.have.been.calledOnce;
-    expect(base.hidden).to.be.true;
+    expect(base.open).to.be.false;
   });
 
   it('should not close when sd-request-close is prevented', async () => {
