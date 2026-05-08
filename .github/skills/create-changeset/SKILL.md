@@ -121,7 +121,16 @@ Follow [semantic versioning](https://semver.org/):
 
 ## Changeset Content Guidelines
 
-The changeset summary ends up in the CHANGELOG.md. Write it to be useful for consumers:
+The changeset summary ends up in the CHANGELOG.md. Write it to be useful for **Design System consumers** — developers integrating `sd-*` components into their apps. They don't care about how the internals work; they care about what they can now do, what broke, or what was fixed.
+
+### Golden Rule: Write for the end user, not the implementer
+
+Ask yourself: *"If I'm a developer using this component, does this bullet tell me something actionable?"*
+
+- ✅ `sd-dialog now uses the native <dialog> element, improving screen reader support and z-index stacking`
+- ❌ `Removed Modal class and replaced lockBodyScrolling calls with showModal()`
+
+Internal details (class names, CSS selectors changed, removed imports, implementation refactors) belong in the PR description — **not** in the changeset.
 
 ### Writing Style (based on existing CHANGELOGs)
 
@@ -148,11 +157,11 @@ Write changesets in the same style that appears in package changelogs (`componen
 ### Don't
 
 - Write vague summaries like "various fixes" or "updates"
-- Include internal implementation details
+- Include internal implementation details — e.g. which class was removed, which CSS property changed, which import was added. Describe the **outcome**, not the mechanism.
+- List refactoring steps that have no visible effect on component behavior or API
 - Reference internal ticket numbers without context
 - Start the summary with conventional commit prefixes or emojis (avoid `feat: ✨`, `fix: 🤔`, etc.)
 - Rewrite the dependency dashboard summary line; keep it exactly as stated above.
-- Include internal implementation details in bullet points (e.g. which CSS property was changed, which selector was adjusted) — describe the outcome, not the mechanism.
 - Combine unrelated package changes (e.g. `components` and `docs`) into one changeset; use separate files instead.
 
 ### Examples
