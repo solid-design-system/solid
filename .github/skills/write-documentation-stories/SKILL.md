@@ -233,8 +233,8 @@ export const Closable = {
   name: 'Closable',
   render: () => html`
     <sd-notification id="closable-example" open closable>Content</sd-notification>
-    <script>
-      var el = document.querySelector('#closable-example');
+    <script type="module">
+      const el = document.querySelector('#closable-example');
       el.addEventListener('sd-after-hide', () => setTimeout(() => { el.open = true; }, 3000));
     </script>
   `
