@@ -180,29 +180,29 @@ test('Header Sample B', async ({ page }) => {
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=templates-header-navigation--sample-b&viewMode=story'
   );
   await expect(page.locator('body')).toMatchAriaSnapshot(`
-     - region "Top right notifications"
-     - region "Bottom center notifications"
-     - banner:
-       - link "Union Investment Homepage":
-         - /url: "#"
-         - img "Union Investment Homepage"
-       - text: Partnerlogo
-       - link "Home":
-         - /url: javascript:void(0)
-       - link "Perspective":
-         - /url: javascript:void(0)
-       - link "To the point":
-         - /url: javascript:void(0)
-       - link "Meeting point":
-         - /url: javascript:void(0)
-       - link "News":
-         - /url: javascript:void(0)
-         - img "News":
-           - img
-       - button "Search":
-         - img "Search":
-           - img
-   `);
+   - region "Top right notifications"
+   - region "Bottom center notifications"
+   - banner:
+     - link "Union Investment Homepage":
+       - /url: "#"
+       - img "Union Investment Homepage"
+     - text: Partnerlogo
+     - link "Home":
+       - /url: javascript:void(0)
+     - link "Perspective":
+       - /url: javascript:void(0)
+     - link "To the point":
+       - /url: javascript:void(0)
+     - link "Meeting point":
+       - /url: javascript:void(0)
+     - link "News":
+       - /url: javascript:void(0)
+       - img "News":
+         - img
+     - button "Search":
+       - img "Search":
+         - img
+ `);
 });
 
 test('Header Sample C', async ({ page }) => {
@@ -210,30 +210,30 @@ test('Header Sample C', async ({ page }) => {
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=templates-header-navigation--sample-c&viewMode=story'
   );
   await expect(page.locator('body')).toMatchAriaSnapshot(`
-     - region "Top right notifications"
-     - region "Bottom center notifications"
-     - banner:
-       - link "Union Investment Homepage":
-         - /url: "#"
-         - img "Union Investment Homepage"
-       - link "About Us":
-         - /url: javascript:void(0)
-       - link "Markets":
-         - /url: javascript:void(0)
-       - link "Press Service":
-         - /url: javascript:void(0)
-       - link "Sustainability":
-         - /url: javascript:void(0)
-       - link "News":
-         - /url: javascript:void(0)
-         - img "News":
-           - img
-       - button "Search":
-         - img "Search":
-           - img
-       - link "My account":
-         - /url: javascript:void(0)
-       - link "My application":
-         - /url: javascript:void(0)
-   `);
+    - region "Top right notifications"
+    - region "Bottom center notifications"
+    - banner:
+      - link "Union Investment Homepage":
+        - /url: "#"
+        - img "Union Investment Homepage"
+      - link "About Us":
+        - /url: javascript:void(0)
+      - link "Markets":
+        - /url: javascript:void(0)
+      - link "Press Service":
+        - /url: javascript:void(0)
+      - link "Sustainability":
+        - /url: javascript:void(0)
+      - link "News":
+        - /url: javascript:void(0)
+        - img "News":
+          - img
+      - button "Search":
+        - img "Search":
+          - img
+      - link "My account":
+        - /url: javascript:void(0)
+      - link "My application":
+        - /url: javascript:void(0)
+  `);
 });
