@@ -6,6 +6,7 @@ import {
   storybookTemplate,
   storybookUtilities
 } from '../../../scripts/storybook/helper';
+import { html } from 'lit-html';
 
 const { argTypes, parameters } = storybookDefaults('sd-table-cell');
 const { overrideArgs } = storybookHelpers('sd-table-cell');
@@ -48,4 +49,55 @@ export const Default = {
   }
 };
 
-export const Combination = generateScreenshotStory([Default]);
+/**
+ * This shows the gradient shadow overlay for sd-table-cell--shadow-* when active.
+ * Verifies that --tw-gradient-* variables are properly defined so the shadow gradient
+ * renders correctly in production environments without Tailwind loaded (fixes #2057).
+ */
+export const Shadow = {
+  name: 'Shadow',
+  render: () => {
+    return html`
+      <div class="flex flex-col gap-8">
+        <table class="sd-table">
+          <tbody>
+            <tr>
+              <td class="sd-table-cell sd-table-cell--shadow-right sd-table-cell--shadow-active relative">
+                shadow-right
+              </td>
+              <td class="sd-table-cell">Cell content</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="sd-table">
+          <tbody>
+            <tr>
+              <td class="sd-table-cell">Cell content</td>
+              <td class="sd-table-cell sd-table-cell--shadow-left sd-table-cell--shadow-active relative">
+                shadow-left
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="sd-table">
+          <tbody>
+            <tr>
+              <td class="sd-table-cell sd-table-cell--shadow-bottom sd-table-cell--shadow-active relative">
+                shadow-bottom
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="sd-table">
+          <tbody>
+            <tr>
+              <td class="sd-table-cell sd-table-cell--shadow-top sd-table-cell--shadow-active relative">shadow-top</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+};
+
+export const Combination = generateScreenshotStory([Default, Shadow]);
