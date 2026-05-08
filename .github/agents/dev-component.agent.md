@@ -1,7 +1,7 @@
 ---
 name: "Dev: Component Developer"
 description: "Use when implementing or modifying a Lit web component from a GitHub issue. Handles both new components (feat: ✨ add sd-*) and adding features to existing ones. Scaffolds, implements, tests, documents, and prepares a changeset."
-tools: [github/issue_read, edit/editFiles, edit/createFile, edit/createDirectory, search, agent, figma/get_design_context, figma/get_screenshot]
+tools: [github/issue_read, edit/editFiles, edit/createFile, edit/createDirectory, search, agent]
 ---
 
 ## Role

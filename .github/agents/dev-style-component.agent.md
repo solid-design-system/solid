@@ -1,7 +1,7 @@
 ---
 name: "Dev: Style Component Developer"
 description: "Use when implementing or modifying a CSS style module from a GitHub issue. Handles both new styles (feat: ✨ add sd-*) and adding variants/modifiers to existing ones. Scaffolds, implements, creates stories, and prepares a changeset."
-tools: [github/issue_read, read/readFile, edit/editFiles , edit/createFile, edit/createDirectory, search, agent, figma/get_design_context, figma/get_screenshot]
+tools: [github/issue_read, read/readFile, edit/editFiles , edit/createFile, edit/createDirectory, search, agent]
 ---
 
 ## Role
