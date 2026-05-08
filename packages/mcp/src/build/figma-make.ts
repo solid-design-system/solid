@@ -95,7 +95,7 @@ async function buildIconsMd(outputDir: string): Promise<void> {
   const contentJson = join(iconsPath, 'content.json');
   const systemJson = join(iconsPath, 'system.json');
 
-  const lines: string[] = ['# Icons\n'];
+  const lines: string[] = ['# Icons\n', 'German keywords (tags) are used for icon search.\n'];
 
   for (const jsonPath of [contentJson, systemJson]) {
     try {

@@ -6,9 +6,9 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-display');
-const { overrideArgs } = storybookHelpers('sd-display');
-const { generateTemplate } = storybookTemplate('sd-display');
+const { argTypes, parameters } = storybookDefaults('.sd-display');
+const { overrideArgs } = storybookHelpers('.sd-display');
+const { generateTemplate } = storybookTemplate('.sd-display');
 const { generateScreenshotStory } = storybookUtilities;
 
 /**
@@ -23,7 +23,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Styles/sd-display/Screenshots: sd-display',
   tags: ['!autodocs'],
-  component: 'sd-display',
+  component: '.sd-display',
   parameters: {
     ...parameters,
     controls: { disable: true },

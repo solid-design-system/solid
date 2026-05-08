@@ -7,9 +7,9 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-footnotes');
-const { overrideArgs } = storybookHelpers('sd-footnotes');
-const { generateTemplate } = storybookTemplate('sd-footnotes');
+const { argTypes, parameters } = storybookDefaults('.sd-footnotes');
+const { overrideArgs } = storybookHelpers('.sd-footnotes');
+const { generateTemplate } = storybookTemplate('.sd-footnotes');
 const { generateScreenshotStory } = storybookUtilities;
 
 /**
@@ -19,7 +19,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Styles/sd-footnotes/Screenshots: sd-footnotes',
   tags: ['!autodocs'],
-  component: 'sd-footnotes',
+  component: '.sd-footnotes',
   parameters: {
     ...parameters,
     controls: { disable: true },

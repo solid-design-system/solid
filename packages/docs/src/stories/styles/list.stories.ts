@@ -2,14 +2,14 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-list');
-const { overrideArgs } = storybookHelpers('sd-list');
-const { generateTemplate } = storybookTemplate('sd-list');
+const { argTypes, parameters } = storybookDefaults('.sd-list');
+const { overrideArgs } = storybookHelpers('.sd-list');
+const { generateTemplate } = storybookTemplate('.sd-list');
 
 export default {
   title: 'Styles/sd-list',
   tags: ['!dev', 'autodocs'],
-  component: 'sd-list',
+  component: '.sd-list',
   parameters: {
     ...parameters,
     design: {

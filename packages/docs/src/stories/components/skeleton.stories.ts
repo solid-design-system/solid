@@ -7,7 +7,7 @@ const { overrideArgs } = storybookHelpers('sd-skeleton');
 const { generateTemplate } = storybookTemplate('sd-skeleton');
 
 export default {
-  tags: ['!dev', 'autodocs'],
+  tags: ['!dev', 'autodocs', 'deprecated'],
   title: 'Components/sd-skeleton',
   component: 'sd-skeleton',
   parameters: {
@@ -15,7 +15,8 @@ export default {
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs'
-    }
+    },
+    badges: ['deprecated']
   },
   args: overrideArgs([{ type: 'attribute', name: 'variant', value: 'rectangular' }]),
   argTypes: {

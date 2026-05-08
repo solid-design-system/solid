@@ -1,9 +1,9 @@
 import '../../../../components/src/solid-components';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-table');
-const { overrideArgs } = storybookHelpers('sd-table');
-const { generateTemplate } = storybookTemplate('sd-table');
+const { argTypes, parameters } = storybookDefaults('.sd-table');
+const { overrideArgs } = storybookHelpers('.sd-table');
+const { generateTemplate } = storybookTemplate('.sd-table');
 
 /**
  * The `sd-table` component resets the styles of a table to predefined values. To style table cells use the `sd-table-cell` component.
@@ -12,7 +12,7 @@ const { generateTemplate } = storybookTemplate('sd-table');
 export default {
   title: 'Styles/sd-table/Screenshot: sd-table',
   tags: ['!autodocs'],
-  component: 'sd-table',
+  component: '.sd-table',
   parameters: {
     ...parameters,
     controls: { disable: true }

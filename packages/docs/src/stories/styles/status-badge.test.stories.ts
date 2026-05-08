@@ -6,9 +6,9 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-status-badge');
-const { overrideArgs } = storybookHelpers('sd-status-badge');
-const { generateTemplate } = storybookTemplate('sd-status-badge');
+const { argTypes, parameters } = storybookDefaults('.sd-status-badge');
+const { overrideArgs } = storybookHelpers('.sd-status-badge');
+const { generateTemplate } = storybookTemplate('.sd-status-badge');
 const { generateScreenshotStory } = storybookUtilities;
 
 /**
@@ -20,7 +20,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Styles/sd-status-badge/Screenshots: sd-status-badge',
   tags: ['!autodocs'],
-  component: 'sd-status-badge',
+  component: '.sd-status-badge',
   parameters: {
     ...parameters,
     controls: { disable: true },
