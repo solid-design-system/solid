@@ -876,6 +876,10 @@ export default class SdCarousel extends SolidElement {
         }
       }
 
+      [part='autoplay-controls'] {
+        z-index: 1;
+      }
+
       :host([fade]) {
         --carousel-height: auto;
       }
