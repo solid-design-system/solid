@@ -1673,7 +1673,7 @@ export const SampleC = {
             variant: 'info',
             toastStack: 'bottom-center',
             duration: Infinity,
-            innerHTML: 'This is a template preview. No navigation is assigned'
+            innerHTML: 'This is a template preview.<br>No navigation is assigned'
           });
 
           notification.style.width = '250px';
