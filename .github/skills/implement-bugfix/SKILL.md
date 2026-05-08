@@ -96,7 +96,7 @@ Include the issue number in the test description for traceability.
 #### Confirm the test fails
 
 ```sh
-cd packages/components && pnpm test.single {name}
+cd packages/components && pnpm test.single.ci {name}
 ```
 
 The test should **fail** — confirming it correctly captures the bug.
@@ -114,16 +114,20 @@ Keep the fix **minimal** — only change what is necessary to resolve the bug. D
 Run the regression test to confirm it passes:
 
 ```sh
-cd packages/components && pnpm test.single {name}
+cd packages/components && pnpm test.single.ci {name}
 ```
 
 If the test still fails, revisit the fix in Step 3. If it passes, run the full component test suite to check for regressions:
 
 ```sh
-cd packages/components && pnpm test.single {name}
+cd packages/components && pnpm test.single.ci {name}
 ```
 
-All existing tests must continue to pass.
+All existing tests must continue to pass and should be run in the very end:
+
+```sh
+cd packages/components && pnpm test
+```
 
 ### Step 5: Check — is this a visual change?
 

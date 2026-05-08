@@ -27,7 +27,7 @@ Where `{name}` is the component tag without the `sd-` prefix (e.g., `button` for
 cd packages/components && pnpm test
 
 # Run tests for a specific component
-cd packages/components && pnpm test.single {name}
+cd packages/components && pnpm test.single.ci {name}
 
 # Run tests in watch mode
 cd packages/components && pnpm test.watch

@@ -44,7 +44,7 @@ Use the **write-component-tests** skill to add tests for the new functionality.
 Run the tests to confirm they pass:
 
 ```sh
-cd packages/components && pnpm test.single {name}
+cd packages/components && pnpm test.single.ci {name}
 ```
 
 ### Step 4: Update stories

@@ -62,7 +62,7 @@ After all checklist gaps are resolved (or explicitly deferred by the user), prod
 1. **Issue reference** — Issue number (e.g. `#1234`) and title. This is required so downstream agents can match the plan to the correct issue.
 2. **Summary** — One paragraph describing what will be implemented and why
 3. **Affected files** — List of files that will be created or modified
-4. **Implementation steps** — Ordered list of concrete steps
+4. **Implementation steps** — Ordered list of concrete steps. **For bugfixes, steps MUST follow TDD order**: (1) write a failing regression test first, (2) confirm it fails, (3) implement the fix, (4) confirm the test passes, (5) run the full suite. The **implement-bugfix** skill handles this workflow — always reference it for `fix:` issues.
 5. **Testing strategy** — What tests need to be written or updated
 6. **Stories / documentation** — What Storybook stories or docs need to be created
 7. **Changeset** — Package name, bump type (major/minor/patch), and summary line
