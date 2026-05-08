@@ -65,7 +65,7 @@ After all checklist gaps are resolved (or explicitly deferred by the user), prod
 4. **Implementation steps** — Ordered list of concrete steps. **For bugfixes, steps MUST follow TDD order**: (1) write a failing regression test first, (2) confirm it fails, (3) implement the fix, (4) confirm the test passes, (5) run the full suite. The **implement-bugfix** skill handles this workflow — always reference it for `fix:` issues.
 5. **Testing strategy** — What tests need to be written or updated
 6. **Stories / documentation** — What Storybook stories or docs need to be created
-7. **Changeset** — Package name, bump type (major/minor/patch), and summary line
+7. **Changeset** — Package name, bump type (major/minor/patch), and summary line. Bug fixes always use `patch`. This step is **required** for all implementation types.
 8. **Verification** — How to verify the implementation is correct
 
 ## 3. After Planning is Complete

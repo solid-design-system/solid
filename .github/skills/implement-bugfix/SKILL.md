@@ -142,3 +142,7 @@ Determine whether the fix alters the component's visual appearance (layout, colo
 3. If the fixed state is not captured, add a test story that renders the corrected visual
 
 Do NOT modify documentation stories (`{name}.stories.ts`) unless the fix changes documented behavior (e.g., a property's described default was wrong).
+
+### Step 6: Create a changeset
+
+Every bug fix requires a changeset. Use the **create-changeset** skill to create one. The bump type for a bug fix is always `patch`.
