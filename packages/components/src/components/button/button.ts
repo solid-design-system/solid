@@ -87,7 +87,7 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @cssproperty --sd-button--cta--inverted--active-color-background - The background color for inverted CTA buttons in active state.
  * @cssproperty --sd-button--inverted--disabled-color-background - The background color for inverted buttons in disabled state.
  * @cssproperty --sd-button--inverted--disabled-color-border - The border color for inverted buttons in disabled state.
- * @cssproperty --sd-button--inverted--disabled-color-text - The text color for inverted buttons in disabled state. 
+ * @cssproperty --sd-button--inverted--disabled-color-text - The text color for inverted buttons in disabled state.
  * @cssproperty --sd-button--size-lg-font-size - The large button text font size.
  * @cssproperty --sd-button--size-lg-height - The height for large icon-only and loading buttons.
  * @cssproperty --sd-button--size-lg-icon-height - The height for icons in large buttons.
