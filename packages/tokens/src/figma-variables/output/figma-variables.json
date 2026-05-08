@@ -6100,11 +6100,6 @@
               "type": "color",
               "value": "{ui-dark.utilities.color.neutral.600}"
             },
-            "700": {
-              "description": "Used for step group xs",
-              "type": "color",
-              "value": "{ui-light.utilities.color.neutral.700}"
-            },
             "800": {
               "description": "Used for form fields, switch, radio, checkbox",
               "type": "color",
@@ -9602,11 +9597,6 @@
               "type": "color",
               "value": "{vb.utilities.color.neutral.600}"
             },
-            "700": {
-              "description": "Used for step group xs",
-              "type": "color",
-              "value": "{ui-dark.utilities.color.primary.400}"
-            },
             "800": {
               "description": "Used for form fields, switch, radio, checkbox",
               "type": "color",
@@ -12283,7 +12273,7 @@
         "__tag": {
           "border-width": {
             "type": "float",
-            "value": "{vb.utilities.border-width.2}"
+            "value": "{vb.utilities.border-width.default}"
           }
         }
       },
@@ -13105,11 +13095,6 @@
               "description": "Used for inverted disabled state",
               "type": "color",
               "value": "{bb.utilities.color.neutral.600}"
-            },
-            "700": {
-              "description": "Used for step group xs",
-              "type": "color",
-              "value": "{vb.utilities.color.neutral.700}"
             },
             "800": {
               "description": "Used for form fields, switch, radio, checkbox",
@@ -15787,7 +15772,7 @@
         "__tag": {
           "border-width": {
             "type": "float",
-            "value": "{bb.utilities.border-width.2}"
+            "value": "{bb.utilities.border-width.default}"
           }
         }
       },
@@ -16609,11 +16594,6 @@
               "description": "Used for inverted disabled state",
               "type": "color",
               "value": "{kid.utilities.color.neutral.600}"
-            },
-            "700": {
-              "description": "Used for step group xs",
-              "type": "color",
-              "value": "{kid.utilities.color.neutral.700}"
             },
             "800": {
               "description": "Used for form fields, switch, radio, checkbox",
