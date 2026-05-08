@@ -2,14 +2,14 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-footnotes');
-const { overrideArgs } = storybookHelpers('sd-footnotes');
-const { generateTemplate } = storybookTemplate('sd-footnotes');
+const { argTypes, parameters } = storybookDefaults('.sd-footnotes');
+const { overrideArgs } = storybookHelpers('.sd-footnotes');
+const { generateTemplate } = storybookTemplate('.sd-footnotes');
 
 export default {
   title: 'Styles/sd-footnotes',
   tags: ['!dev', 'autodocs'],
-  component: 'sd-footnotes',
+  component: '.sd-footnotes',
   parameters: {
     ...parameters,
     a11y: {

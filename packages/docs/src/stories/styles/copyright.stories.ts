@@ -2,14 +2,14 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-copyright');
-const { overrideArgs } = storybookHelpers('sd-copyright');
-const { generateTemplate } = storybookTemplate('sd-copyright');
+const { argTypes, parameters } = storybookDefaults('.sd-copyright');
+const { overrideArgs } = storybookHelpers('.sd-copyright');
+const { generateTemplate } = storybookTemplate('.sd-copyright');
 
 export default {
   title: 'Styles/sd-copyright',
   tags: ['!dev', 'autodocs'],
-  component: 'sd-copyright',
+  component: '.sd-copyright',
   parameters: {
     ...parameters,
     design: {

@@ -2,14 +2,14 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-paragraph');
-const { overrideArgs } = storybookHelpers('sd-paragraph');
-const { generateTemplate } = storybookTemplate('sd-paragraph');
+const { argTypes, parameters } = storybookDefaults('.sd-paragraph');
+const { overrideArgs } = storybookHelpers('.sd-paragraph');
+const { generateTemplate } = storybookTemplate('.sd-paragraph');
 
 export default {
   tags: ['!dev', 'autodocs'],
   title: 'Styles/sd-paragraph',
-  component: 'sd-paragraph',
+  component: '.sd-paragraph',
   parameters: {
     ...parameters,
     design: {

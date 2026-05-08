@@ -1,0 +1,72 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { OverviewFormatter } from '../../Overview.jsx';
+
+import * as SdSkeletonStories from './skeleton.stories';
+
+export const links = {
+  'storybook-docs': './?path=/docs/styles-sd-skeleton--docs',
+  'figma-library': '',
+  'figma-docs': ''
+};
+
+export const content = `
+# Skeleton
+
+Used as a placeholder preview of content before data loads to reduce load-time frustration.
+
+<DefaultStory />
+
+<DocumentationLinks links=${JSON.stringify(links, null, 2)} />
+
+#### Related Components
+
+[sd-skeleton (Component)](./?path=/docs/components-sd-skeleton--docs)
+
+### Common Use Cases
+
+- Display skeleton placeholders while data is loading.
+- Replace headings, paragraphs, or any block element with a loading state.
+- Toggle the class to reveal real content once loaded.
+
+### Usage Guidelines
+
+#### Applying the Style
+
+- Apply \`sd-skeleton\` directly to any standard HTML element (e.g. \`<p class="sd-skeleton">text</p>\`) — the skeleton overlays the element using \`::before\`.
+- The skeleton automatically matches the element's dimensions.
+- Remove the \`sd-skeleton\` class (and \`inert\`/\`aria-busy\`/\`aria-label\` from the container) to reveal the real content — no additional markup needed.
+- The \`::before\` overlay inherits \`border-radius\` from the element, so rounded elements (e.g. avatars) stay rounded.
+- For web components using shadow DOM (e.g. \`sd-button\`), wrap the component in a \`<div class="sd-skeleton">\`, since \`::before\` cannot paint over shadow DOM content.
+
+#### Animation
+
+- By default the skeleton is static.
+- Add \`sd-skeleton--animated\` to enable the pulse animation when loading state needs to be communicated clearly.
+
+#### CSS Custom Property
+
+- Use \`--sd-skeleton-color\` to override the skeleton background color if needed.
+
+### Accessibility Information
+
+- Wrap all skeleton elements in a container with \`inert\`, \`aria-busy="true"\`, and a descriptive \`aria-label\` (e.g. \`"Loading user profile"\`). \`inert\` removes all descendants from the tab order and hides them from assistive technologies; \`aria-busy\` signals an active update.
+- Remove all three attributes — along with the \`sd-skeleton\` classes — once content has loaded.
+
+\`\`\`html
+
+<!-- Loading state -->
+
+<div aria-busy="true" aria-label="Loading" inert>
+  <h2 class="sd-skeleton">Placeholder</h2>
+</div>
+
+<!-- Revealed state -->
+
+<div>
+  <h2>Real content</h2>
+</div>
+\`\`\``;
+
+<Meta title="Styles/sd-skeleton/Overview" />
+
+<OverviewFormatter story={SdSkeletonStories.Default}>{content}</OverviewFormatter>

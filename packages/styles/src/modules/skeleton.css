@@ -1,0 +1,33 @@
+/**
+ * Used as a placeholder preview of content before data loads to reduce load-time frustration.
+ * @name sd-skeleton
+ * @status experimental
+ * @since 6.x
+ * @boolean sd-skeleton--animated Enables the pulse animation.
+ * @cssproperty --sd-skeleton-color - The color of the skeleton.
+ */
+
+.sd-skeleton {
+  @apply relative select-none overflow-hidden;
+  color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+  text-decoration: none !important;
+  background: transparent !important;
+
+  *,
+  &::part(base) {
+    visibility: hidden !important;
+  }
+
+  &::before {
+    @apply absolute inset-0 sd-skeleton-color rounded-sm;
+    content: '';
+    z-index: 10;
+  }
+
+  &--animated::before {
+    @apply animate-pulse;
+  }
+}

@@ -2,9 +2,9 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-chip');
-const { overrideArgs } = storybookHelpers('sd-chip');
-const { generateTemplate } = storybookTemplate('sd-chip');
+const { argTypes, parameters } = storybookDefaults('.sd-chip');
+const { overrideArgs } = storybookHelpers('.sd-chip');
+const { generateTemplate } = storybookTemplate('.sd-chip');
 
 /**
  *
@@ -14,7 +14,7 @@ const { generateTemplate } = storybookTemplate('sd-chip');
 
 export default {
   title: 'Styles/sd-chip',
-  component: 'sd-chip',
+  component: '.sd-chip',
   tags: ['!dev', 'autodocs'],
   args: overrideArgs({ type: 'slot', name: 'default', value: 'Chip' }),
   parameters: {

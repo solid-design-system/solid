@@ -2,14 +2,14 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-table-cell');
-const { overrideArgs } = storybookHelpers('sd-table-cell');
-const { generateTemplate } = storybookTemplate('sd-table-cell');
+const { argTypes, parameters } = storybookDefaults('.sd-table-cell');
+const { overrideArgs } = storybookHelpers('.sd-table-cell');
+const { generateTemplate } = storybookTemplate('.sd-table-cell');
 
 export default {
   title: 'Styles/sd-table-cell',
   tags: ['!dev', 'autodocs'],
-  component: 'sd-table-cell',
+  component: '.sd-table-cell',
   parameters: {
     ...parameters,
     design: {
