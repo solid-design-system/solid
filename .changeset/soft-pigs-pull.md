@@ -2,4 +2,4 @@
 '@solid-design-system/docs': patch
 ---
 
-Added a new variant C to the `header-navigation`.
+Add Variant C to the `header-navigation` template.
