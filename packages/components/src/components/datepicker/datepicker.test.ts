@@ -402,6 +402,22 @@ describe('<sd-datepicker>', () => {
       expect(el.checkValidity()).to.be.false;
       expect(input.getAttribute('aria-invalid')).to.equal('true');
     });
+
+    it('should respect min and max when set programmatically as Date objects', async () => {
+      const el = await fixture<SdDatepicker>(html`<sd-datepicker value="2025-12-10"></sd-datepicker>`);
+
+      el.min = new Date(2025, 11, 9); // 2025-12-09
+      el.max = new Date(2025, 11, 12); // 2025-12-12
+      await el.updateComplete;
+
+      el.show();
+      await el.updateComplete;
+
+      const dayButtons = Array.from(el.shadowRoot!.querySelectorAll('button.day'));
+      const enabledDays = dayButtons.filter(btn => !btn.classList.contains('disabled'));
+
+      expect(enabledDays.length).to.equal(4);
+    });
   });
 
   describe('set initial month displayed with viewMonth attribute', () => {

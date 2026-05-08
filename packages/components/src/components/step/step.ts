@@ -1,5 +1,5 @@
 import '../icon/icon';
-import { css } from 'lit';
+import { css, nothing } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { HasSlotController } from '../../internal/slot';
 import { html, literal } from 'lit/static-html.js';
@@ -41,7 +41,7 @@ export default class SdStep extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, 'label', '[default]');
 
   /** The step's size. */
-  @property({ type: String, reflect: true }) size: 'lg' | 'sm' = 'lg';
+  @property({ type: String, reflect: true }) size: 'lg' | 'sm' | 'xs' = 'lg';
 
   /** Determines the orientation of the step. */
   @property({ type: String, reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
@@ -126,6 +126,11 @@ export default class SdStep extends SolidElement {
   }
 
   render() {
+    if (this.size === 'xs' && this.orientation !== 'vertical') {
+      console.warn('Size "xs" is only supported when orientation is "vertical". The element will not be rendered.');
+      return nothing;
+    }
+
     const isLink = this.isLink();
     const tag = this.notInteractive || this.waiting ? literal`div` : isLink ? literal`a` : literal`button`;
     const hasLabelSlot = this.hasSlotController.test('label');
@@ -143,7 +148,7 @@ export default class SdStep extends SolidElement {
         ? this.size === 'lg'
           ? 'translateLg'
           : 'translateSm'
-        : this.size === 'lg'
+        : this.size === 'lg' || this.size === 'xs'
           ? 'mt-1'
           : 'mt-3'
     );
@@ -155,17 +160,30 @@ export default class SdStep extends SolidElement {
         : !this.notInteractive && !this.waiting
           ? 'focus-visible:focus-outline hover:cursor-pointer'
           : '',
-      this.notInteractive ? (this.size === 'lg' ? 'not-interactive-lg' : 'w-12') : this.size === 'lg' ? 'w-12' : 'w-8',
+      this.notInteractive
+        ? this.size === 'lg'
+          ? 'not-interactive-lg'
+          : this.size === 'xs'
+            ? 'w-2'
+            : 'w-12'
+        : this.size === 'lg'
+          ? 'w-12'
+          : this.size === 'xs'
+            ? 'w-2'
+            : 'w-8',
       this.disabled && 'border-neutral-500 text-neutral-500',
       this.waiting && 'border-neutral-400 text-neutral-700',
+      this.waiting && this.size === 'xs' && 'border-neutral-700',
       !this.disabled &&
         !this.current &&
         !this.notInteractive &&
         !this.waiting &&
         'border-primary hover:bg-primary-100 hover:border-primary-500',
-      this.notInteractive && 'border-neutral-400',
+      this.notInteractive && (this.size === 'xs' ? 'border-primary' : 'border-neutral-400'),
       this.current && 'bg-accent border-none text-white'
     );
+
+    const listItemClasses = 'flex-row items-stretch h-full w-full overflow-hidden';
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
@@ -177,7 +195,9 @@ export default class SdStep extends SolidElement {
           'flex pt-1',
           this.orientation === 'horizontal'
             ? 'flex-col w-full'
-            : 'flex-row gap-4 items-stretch h-full w-full overflow-hidden',
+            : this.size === 'xs'
+              ? `${listItemClasses} gap-2`
+              : `${listItemClasses} gap-4`,
           !this.disabled && !this.current && !this.notInteractive && !this.waiting && 'group'
         )}
         @focus=${this.handleFocus}
@@ -209,13 +229,15 @@ export default class SdStep extends SolidElement {
               )}
             >
               ${
-                !this.disabled && !this.current && !this.notInteractive && !this.waiting
+                !this.disabled && !this.current && !this.notInteractive && !this.waiting && this.size !== 'xs'
                   ? html` <sd-icon
                       name="status-check"
                       library="_internal"
                       class="${cx(this.size === 'sm' && 'text-sm')}"
                     ></sd-icon>`
-                  : html`${this.index}`
+                  : this.size === 'xs'
+                    ? ''
+                    : html`${this.index}`
               }
             </slot>
           </${tag}>
@@ -265,7 +287,7 @@ export default class SdStep extends SolidElement {
                           part="description"
                           id="description"
                           class=${cx(
-                            'sd-paragraph sd-paragraph--size-sm break-words',
+                            'sd-paragraph sd-paragraph--size-sm wrap-break-word',
                             hasDescription ? 'flex-1' : 'w-0 h-0 overflow-hidden',
                             hasDescription && !this.noTail && 'pr-4',
                             (this.disabled || this.waiting) && '!text-neutral-700'
@@ -284,7 +306,7 @@ export default class SdStep extends SolidElement {
                       class=${cx(
                         this.orientation === 'horizontal'
                           ? 'border-t w-full my-auto mr-2'
-                          : 'border-l flex-grow flex-shrink-0 basis-auto h-full w-[1px] mx-auto',
+                          : 'border-l grow shrink-0 basis-auto h-full w-[1px] mx-auto',
                         !this.disabled && !this.current && !this.notInteractive && !this.waiting
                           ? 'border-primary group-hover:border-primary-500'
                           : 'border-neutral-400'
@@ -299,11 +321,12 @@ export default class SdStep extends SolidElement {
                 <div
                   part="text-container"
                   class=${cx(
-                    'mt-4 break-words flex flex-col gap-2',
+                    'wrap-break-word flex flex-col gap-2',
+                    this.size === 'xs' ? '-mt-1 mb-4' : 'mt-4',
                     this.orientation === 'horizontal' ? 'text-center w-40' : 'text-left',
                     this.disabled && 'text-neutral-500',
                     this.waiting && 'text-neutral-700',
-                    this.notInteractive ? 'ml-2' : 'mr-4'
+                    this.notInteractive ? (this.size === 'xs' ? 'ml-0' : 'ml-2') : 'mr-4'
                   )}
                 >
                   <div
@@ -352,7 +375,7 @@ export default class SdStep extends SolidElement {
       }
 
       :host([no-tail]) {
-        @apply flex-grow-0;
+        @apply grow-0;
       }
 
       :host(:not([current])) (:not([notInteractive])) slot[name='circle-content'] {

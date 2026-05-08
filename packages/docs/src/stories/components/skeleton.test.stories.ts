@@ -37,9 +37,6 @@ export default {
   ]
 };
 
-/**
- * This shows the skeleton in its default state.
- */
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -47,9 +44,6 @@ export const Default = {
   }
 };
 
-/**
- * The skeleton in all possible `variant` values.
- */
 export const Variant = {
   name: 'Variant',
   render: (args: any) => {
@@ -63,9 +57,6 @@ export const Variant = {
   }
 };
 
-/**
- * The skeleton wrapping various content types to show dimension adaptation.
- */
 export const WrappingContent = {
   name: 'Wrapping Content',
   render: () => html`

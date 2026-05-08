@@ -43,20 +43,12 @@ export default {
   argTypes
 };
 
-/**
- * Default: This shows sd-radio-group in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
 };
-
-/**
- * The sd-radio in all possible combinations of `orientation` and `size`.
- */
 
 export const Orientation = {
   name: 'Orientation',
@@ -70,10 +62,6 @@ export const Orientation = {
     });
   }
 };
-
-/**
- * Use the disabled attribute to disable a input radio. Clicks will be suppressed until the disabled state is removed
- */
 
 export const Disabled = {
   name: 'Disabled x Size',
@@ -106,10 +94,6 @@ export const Disabled = {
   }
 };
 
-/**
- * Use the `invalid` attribute to mark the element is not in a format or a value the application will accept.
- */
-
 export const Invalid = {
   name: 'Invalid',
   render: (args: any) => {
@@ -139,9 +123,6 @@ export const Invalid = {
   }
 };
 
-/**
- * Use the `form-control`, `form-control-label` and `form-control-input` part selectors to customize the radio-group.
- */
 export const Parts = {
   name: 'Parts',
   render: (args: any) => {
@@ -164,9 +145,6 @@ export const Parts = {
   }
 };
 
-/**
- * sd-radio-group are fully accessibile via keyboard.
- */
 export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {
@@ -185,10 +163,6 @@ export const Mouseless = {
     }
   }
 };
-
-/**
- * This shows `sd-radio-group` using multiple `sd-radio-buttons` in it's default state.
- */
 
 export const RadioButtons = {
   name: 'Radio Buttons',
@@ -211,10 +185,6 @@ export const RadioButtons = {
     });
   }
 };
-
-/**
- * `sd-radio-group` with multiple `sd-radio-buttons` is fully accessibile via keyboard.
- */
 
 export const MouselessWithRadioButtons = {
   name: 'Mouseless with Radio Buttons',

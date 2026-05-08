@@ -23,20 +23,12 @@ export default {
   parameters: { ...parameters, controls: { disable: true } }
 };
 
-/**
- * Default: This shows sd-tag in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
     return generateTemplate({ args });
   }
 };
-
-/**
- * The tag in all possible combinations of `selected` and `size`.
- */
 
 export const selectedAndSize = {
   name: 'Selected × Size',
@@ -50,10 +42,6 @@ export const selectedAndSize = {
     });
   }
 };
-
-/**
- * The tag in all possible combinations of `removable` and `size`.
- */
 
 export const removableAndSize = {
   name: 'Removable × Size',
@@ -87,13 +75,6 @@ export const iconLeft = {
     });
   }
 };
-/**
- * Use the `disabled` attribute to disable a tag. Clicks will be suppressed until the disabled state is removed.
- *
- * __Hint:__ If the href attribute is set i.e. the tag is rendered as a link (`<a>`),
- * the disabled attribute is ignored, as links may not be disabled.
- * To disable the tag in this case the href attribute has to be removed as well.
- */
 
 export const Disabled = {
   name: 'Disabled',
@@ -137,13 +118,6 @@ export const RemovableAndSelectedAndToggleable = {
   }
 };
 
-/**
- * Use the `default` slot to add content to the tag.
- * Use the `removable-indicator` slot to change the removability indicator.
- *
- * If you add icons to the slot, please make sure to account for accessibility by providing an alt-text.
- */
-
 export const Slots = {
   name: 'Slots',
   render: (args: any) => {
@@ -176,10 +150,6 @@ export const Slots = {
     `;
   }
 };
-
-/**
- * Use the `base`, `content` and `removable-indicator` part selectors to customize the button.
- */
 
 export const Parts = {
   name: 'Parts',
@@ -217,10 +187,6 @@ export const Parts = {
     });
   }
 };
-
-/**
- * sd-tags are fully accessibile via keyboard.
- */
 
 export const Mouseless = {
   name: 'Mouseless',

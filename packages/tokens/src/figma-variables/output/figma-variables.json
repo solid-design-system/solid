@@ -6100,6 +6100,11 @@
               "type": "color",
               "value": "{ui-dark.utilities.color.neutral.600}"
             },
+            "700": {
+              "description": "Used for step group xs",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.700}"
+            },
             "800": {
               "description": "Used for form fields, switch, radio, checkbox",
               "type": "color",
@@ -9596,6 +9601,11 @@
               "description": "Used for inverted disabled state",
               "type": "color",
               "value": "{vb.utilities.color.neutral.600}"
+            },
+            "700": {
+              "description": "Used for step group xs",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.400}"
             },
             "800": {
               "description": "Used for form fields, switch, radio, checkbox",
@@ -13096,6 +13106,11 @@
               "type": "color",
               "value": "{bb.utilities.color.neutral.600}"
             },
+            "700": {
+              "description": "Used for step group xs",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.700}"
+            },
             "800": {
               "description": "Used for form fields, switch, radio, checkbox",
               "type": "color",
@@ -16594,6 +16609,11 @@
               "description": "Used for inverted disabled state",
               "type": "color",
               "value": "{kid.utilities.color.neutral.600}"
+            },
+            "700": {
+              "description": "Used for step group xs",
+              "type": "color",
+              "value": "{kid.utilities.color.neutral.700}"
             },
             "800": {
               "description": "Used for form fields, switch, radio, checkbox",
