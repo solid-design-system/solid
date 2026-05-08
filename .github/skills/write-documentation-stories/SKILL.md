@@ -161,6 +161,7 @@ Use the `{attribute}` attribute to {describe what it does}:
 - Show all values of an attribute side-by-side
 - Use placeholder images from `./placeholders/images/` for media slots
 - Never use generic filler ("Click me", "Default") or external image URLs
+- Never use `sd-icon` with `library="_internal"`
 
 ---
 
@@ -255,3 +256,4 @@ Add `tags: ['skip-playwright']` if the story relies on timing or interaction tha
 - [ ] Inverted stories have `bg-primary` wrapper
 - [ ] `tags: ['!dev', 'autodocs']` set in default export
 - [ ] No duplicate demonstrations across stories
+- [ ] No `sd-icon` with `library="_internal"` in stories
