@@ -392,4 +392,31 @@ describe('when the value changes', () => {
     radioGroup.value = '2';
     await radioGroup.updateComplete;
   });
+
+  describe('regression tests', () => {
+    it('should not schedule a second update after submitting a form (fixes #2548)', async () => {
+      const form = await fixture<HTMLFormElement>(html`
+        <form>
+          <sd-radio-group required>
+            <sd-radio value="1">Option 1</sd-radio>
+            <sd-radio value="2">Option 2</sd-radio>
+          </sd-radio-group>
+          <button type="submit">Submit</button>
+        </form>
+      `);
+      const el = form.querySelector<SdRadioGroup>('sd-radio-group')!;
+      await el.updateComplete;
+
+      const requestUpdateSpy = sinon.spy(el, 'requestUpdate');
+
+      form.requestSubmit();
+      await el.updateComplete;
+
+      // requestUpdate may be called once to mark user-interacted, but must not be
+      // called again as a side-effect of the first update completing
+      await aTimeout(50);
+      const callCount = requestUpdateSpy.callCount;
+      expect(callCount).to.be.lessThan(2, `requestUpdate was called ${callCount} times — indicates a cascading update`);
+    });
+  });
 });
