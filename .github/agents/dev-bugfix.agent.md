@@ -53,7 +53,6 @@ Do not duplicate the regression test — it already exists from Step 2.
 Use the **create-changeset** skill with:
 - **Package**: `@solid-design-system/components`
 - **Bump type**: `patch`
-- **Summary**: Use the issue title (e.g., `fix: sd-button does not emit click when disabled is toggled`)
 
 ### Step 5: Final verification
 

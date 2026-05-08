@@ -70,7 +70,7 @@ Use the output to determine:
 
 2. **What bump type is appropriate** — infer from the nature of the changes:
    - New files or new exported API surface → `minor`
-   - Modified existing behaviour or bug fix → `patch`
+   - Bug fix → `patch`
    - Removed or renamed public API → `major`
    - Only story/doc files under `packages/docs/` → `patch` on `@solid-design-system/docs` only
 
