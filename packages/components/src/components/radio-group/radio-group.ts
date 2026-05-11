@@ -62,7 +62,10 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
   @state() defaultValue = '';
 
   /**
-   * Indicates whether or not the user input is valid after the user has interacted with the component. These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component via the form controller. They are different than the native input validity state which is always either `true` or `false`.
+   * Indicates whether or not the user input is valid after the user has interacted with the component.
+   * These states are activated when the attribute "data-user-valid" or "data-user-invalid" are set on the component
+   * via the form controller. They are different than the native input validity state which is always either `true`
+   * or `false`.
    * @internal
    */
   @state() showInvalidStyle = false;
@@ -141,22 +144,6 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
     this.syncRadioDescription();
   }
 
-  // Mirrors help-text and the current validation message onto each radio's
-  // aria-description, because Firefox+VoiceOver on macOS does not announce
-  // aria-describedby set on the role="radiogroup" fieldset.
-  private syncRadioDescription() {
-    const errorMessage = this.showInvalidStyle ? this.validationMessage : '';
-    const description = [this.helpText, errorMessage].filter(Boolean).join('. ');
-
-    for (const radio of this.getAllRadios()) {
-      if (description) {
-        radio.setAttribute('aria-description', description);
-      } else {
-        radio.removeAttribute('aria-description');
-      }
-    }
-  }
-
   private getAllRadios() {
     const radios = [...this.querySelectorAll<SdRadio | SdRadioButton>('sd-radio, sd-radio-button')];
 
@@ -165,6 +152,165 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
     }
 
     return radios;
+  }
+
+  /**
+   * Returns the text we want VoiceOver on macOS to announce when entering the group.
+   *
+   * We keep `aria-describedby` on the radiogroup for correct semantics and Windows/browser support.
+   * This description is only a fallback/workaround for macOS VoiceOver in Chromium/Firefox.
+   */
+  private getRadioDescription() {
+    const errorMessage = this.showInvalidStyle ? this.validationMessage : '';
+    return [this.helpText, errorMessage].filter(Boolean).join('. ');
+  }
+
+  /**
+   * Removes the macOS VoiceOver workaround description from all radios.
+   *
+   * This is important because putting the same `aria-description` on every radio causes VoiceOver
+   * to announce the error message after every single option.
+   */
+  private clearRadioDescriptions() {
+    for (const radio of this.getAllRadios()) {
+      radio.removeAttribute('aria-description');
+    }
+  }
+
+  /**
+   * Returns true when the target is inside this radio group, also handling nested shadow DOM.
+   */
+  private isTargetInsideGroup(target: EventTarget | null) {
+    if (!(target instanceof Node)) {
+      return false;
+    }
+
+    let node: Node | null = target;
+
+    while (node) {
+      if (node === this || this.contains(node)) {
+        return true;
+      }
+
+      const root = node.getRootNode();
+
+      if (root instanceof ShadowRoot) {
+        node = root.host;
+      } else {
+        node = node.parentNode;
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * Finds the radio involved in a composed focus event.
+   * This is more reliable with custom elements and shadow DOM than only using event.target.
+   */
+  private getRadioFromEvent(event: Event) {
+    return (
+      event
+        .composedPath()
+        .find(
+          (element): element is SdRadio | SdRadioButton =>
+            element instanceof HTMLElement && ['sd-radio', 'sd-radio-button'].includes(element.tagName.toLowerCase())
+        ) ?? null
+    );
+  }
+
+  /**
+   * Returns the currently focused radio, if focus is inside one of the slotted radio components.
+   */
+  private getFocusedRadio() {
+    return this.querySelector<SdRadio | SdRadioButton>('sd-radio:focus-within, sd-radio-button:focus-within');
+  }
+
+  /**
+   * Selects the best radio to receive the temporary macOS VoiceOver description.
+   */
+  private getDescriptionTargetRadio(event?: Event) {
+    const radios = this.getAllRadios();
+
+    return (
+      (event ? this.getRadioFromEvent(event) : null) ??
+      this.getFocusedRadio() ??
+      radios.find(radio => radio.checked && !radio.disabled) ??
+      radios.find(radio => !radio.disabled) ??
+      radios[0] ??
+      null
+    );
+  }
+
+  /**
+   * Mirrors help-text and the current validation message onto only one radio.
+   *
+   * Why?
+   * - `aria-describedby` on the radiogroup works on Windows.
+   * - On macOS VoiceOver with Chromium/Firefox, the group description/error is often not announced.
+   * - Adding the same description to every radio fixes the announcement, but causes the error to be repeated
+   *   after every radio.
+   *
+   * So this method only applies `aria-description` to the currently focused radio, if there is one.
+   * When there is no focus inside the group, we do not leave the description on any radio.
+   */
+  private syncRadioDescription() {
+    const description = this.getRadioDescription();
+
+    this.clearRadioDescriptions();
+
+    if (!description) {
+      return;
+    }
+
+    const focusedRadio = this.getFocusedRadio();
+
+    if (focusedRadio) {
+      focusedRadio.setAttribute('aria-description', description);
+    }
+  }
+
+  /**
+   * Adds `aria-description` only when focus enters the radio group from outside.
+   *
+   * This gives macOS VoiceOver a description/error to announce when entering the group, without repeating
+   * the same message while navigating between radios.
+   */
+  private handleFocusIn(event: FocusEvent) {
+    const previousFocusedElement = event.relatedTarget;
+
+    this.clearRadioDescriptions();
+
+    // If focus moved from one radio inside the group to another radio inside the group,
+    // do not add the description again. This prevents repeated announcements.
+    if (this.isTargetInsideGroup(previousFocusedElement)) {
+      return;
+    }
+
+    const description = this.getRadioDescription();
+
+    if (!description) {
+      return;
+    }
+
+    const targetRadio = this.getDescriptionTargetRadio(event);
+
+    targetRadio?.setAttribute('aria-description', description);
+  }
+
+  /**
+   * Clears the workaround description when focus leaves the group.
+   */
+  private handleFocusOut(event: FocusEvent) {
+    const nextFocusedElement = event.relatedTarget;
+
+    // If focus remains inside the group, do nothing here.
+    // `handleFocusIn` will clear descriptions for internal navigation.
+    if (this.isTargetInsideGroup(nextFocusedElement)) {
+      return;
+    }
+
+    this.clearRadioDescriptions();
   }
 
   private handleRadioClick(event: MouseEvent) {
@@ -457,6 +603,8 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
               horizontal: 'flex-row'
             }[this.orientation]
           )}
+          @focusin=${this.handleFocusIn}
+          @focusout=${this.handleFocusOut}
         >
           <div class="sr-only">
             <label>
