@@ -21,6 +21,9 @@ Use this table to determine which implementation agent to recommend based on the
 | Dev Subtask | Label `Subtask`, label `🔧 code` | **Agent** mode |
 | Design Feature/Subtask | Label `🎨 figma` | Not an implementation task — inform user this is a design issue |
 
+If the issue type is ambiguous, ask the user to clarify before suggesting an implementation agent. 
+If still no target agent can be selected, suggest implementation with generic **Agent** mode.
+
 ## Output Format
 
 After resolving the target agent, tell the user:
