@@ -21,20 +21,20 @@ Template stories live in `packages/docs/src/stories/templates/` and demonstrate 
 
 ### 1. Get the Figma Design
 
-Use the **Figma MCP** (`mcp_figma_get_design_context`) to retrieve the design for the template.
+Use the **Figma MCP** (`figma/get_design_context`) to retrieve the design for the template.
 
 - Extract layout structure, spacing, colours, and which components are used
 - Identify the Figma node URL — it will be embedded in the story's `design` parameter
-- Match Tailwind tokens from the design (use `mcp_solid-design-_token-info` for the correct class names)
+- Match Tailwind tokens from the design (use `solid-design-system/token-info` for the correct class names)
 
 ### 2. Discover Available Components & Styles
 
 Use the **Solid MCP** tools to understand what is available:
 
-- `mcp_solid-design-system_components` — list all `sd-*` components; call with a specific component name to get its full API (properties, slots, events, CSS parts)
-- `mcp_solid-design-system_styles` — list all `sd-*` CSS styles; call with a specific style name to see class names
-- `mcp_solid-design-system_templates` — browse existing template compositions for inspiration and to avoid duplication
-- `mcp_solid-design-system_icon-search` — find the correct icon name for `<sd-icon name="...">` — always search with EN + DE synonyms
+- `solid-design-system/components` — list all `sd-*` components; call with a specific component name to get its full API (properties, slots, events, CSS parts)
+- `solid-design-system/styles` — list all `sd-*` CSS styles; call with a specific style name to see class names
+- `solid-design-system/templates` — browse existing template compositions for inspiration and to avoid duplication
+- `solid-design-system/icon-search` — find the correct icon name for `<sd-icon name="...">` — always search with EN + DE synonyms
 
 ### 3. Read Reference Examples
 
@@ -98,7 +98,7 @@ Templates must look like production UIs:
 - Use real, domain-appropriate label text (e.g., "Email address", "Amount in EUR", not "Label" or "Placeholder")
 - Use realistic values for inputs, options, and text (e.g., "John Smith", "€ 12,500", "Submit application")
 - Use placeholder images from `./placeholders/images/` for image slots
-- Use `sd-icon` with names from `mcp_solid-design-_icon-search` — never `library="_internal"`
+- Use `sd-icon` with names from `solid-design-system/icon-search` — never `library="_internal"`
 - Apply appropriate layout with Tailwind utility classes matching the Figma design
 
 ### Combine Components Meaningfully
@@ -228,10 +228,10 @@ export const ProductCardWithRating = {
 ## Checklist
 
 - [ ] Figma design retrieved via Figma MCP; `design.url` set in default export
-- [ ] Component APIs verified via `mcp_solid-design-_components` before use
-- [ ] Icons resolved via `mcp_solid-design-_icon-search` (never `library="_internal"`)
-- [ ] Tailwind tokens verified via `mcp_solid-design-_token-info`
-- [ ] Existing templates checked via `mcp_solid-design-_templates` to avoid duplication
+- [ ] Component APIs verified via `solid-design-system/components` before use
+- [ ] Icons resolved via `solid-design-system/icon-search` (never `library="_internal"`)
+- [ ] Tailwind tokens verified via `solid-design-system/token-info`
+- [ ] Existing templates checked via `solid-design-system/templates` to avoid duplication
 - [ ] Every `id` attribute is unique and story-prefixed
 - [ ] `<script type="module">` used for all inline scripts (`const`/`let` are safe in module scope)
 - [ ] `<script>` blocks use story-prefixed `getElementById` selectors

@@ -1,7 +1,7 @@
 ---
 name: "Docs: Templates Specialist"
 description: "Use when creating or improving Storybook template stories that showcase real-world UI compositions using multiple sd-* components. Retrieves Figma designs, queries the Solid MCP for component APIs and icons, then writes self-contained, production-realistic template stories. Use for: writing template stories, real-world usage examples, multi-component compositions, template documentation."
-tools: [edit/editFiles, edit/createFile, search, agent, mcp_figma_get_design_context, mcp_figma_get_screenshot, mcp_solid-design-_components, mcp_solid-design-_styles, mcp_solid-design-_templates, mcp_solid-design-_icon-search, mcp_solid-design-_token-info]
+tools: [edit/editFiles, edit/createFile, search, agent, figma/get_design_context, figma/get_screenshot, solid-design-system/components, solid-design-system/styles, solid-design-system/templates, solid-design-system/icon-search, solid-design-system/token-info]
 ---
 
 ## Role
@@ -28,7 +28,7 @@ Determine what template scenario needs to be built. Extract:
 ### Step 2: Gather Design Context
 
 Use the **Figma MCP** to get the design:
-- Call `mcp_figma_get_design_context` with the Figma node ID/URL
+- Call `figma/get_design_context` with the Figma node ID/URL
 - Extract layout, spacing, colors, and component usage
 - Capture the Figma URL for the story's `design.url` parameter
 
@@ -37,11 +37,11 @@ If no Figma link is provided, ask the user or proceed with best judgment using t
 ### Step 3: Query the Solid MCP
 
 Before writing any code:
-1. `mcp_solid-design-_components` — verify component APIs (properties, slots, events) for every `sd-*` component you plan to use
-2. `mcp_solid-design-_styles` — check relevant CSS style utilities
-3. `mcp_solid-design-_templates` — browse existing templates to avoid duplication and find structural inspiration
-4. `mcp_solid-design-_icon-search` — resolve correct icon names (always provide EN + DE synonyms)
-5. `mcp_solid-design-_token-info` — confirm correct Tailwind class names for spacing, colors, and typography
+1. `solid-design-system/components` — verify component APIs (properties, slots, events) for every `sd-*` component you plan to use
+2. `solid-design-system/styles` — check relevant CSS style utilities
+3. `solid-design-system/templates` — browse existing templates to avoid duplication and find structural inspiration
+4. `solid-design-system/icon-search` — resolve correct icon names (always provide EN + DE synonyms)
+5. `solid-design-system/token-info` — confirm correct Tailwind class names for spacing, colors, and typography
 
 ### Step 4: Read Reference Examples
 

@@ -55,7 +55,7 @@ export const Default = {
       <sd-dropdown distance="4" rounded open>
         <sd-button variant="secondary" slot="trigger">
           Menu
-          <sd-icon library="_internal" name="chevron-down" slot="icon-right"></sd-icon>
+          <sd-icon name="system/chevron-down" slot="icon-right"></sd-icon>
         </sd-button>
         ${generateTemplate({
           args
@@ -110,12 +110,15 @@ export const Checkmark = {
 };
 
 /**
- * To create a submenu, nest an `<sd-menu slot="submenu">` in any menu item.
+ * Use the `submenu` slot to nest an `<sd-menu>` inside any menu item to create a submenu.
  */
 export const Submenu = {
   render: () => html`
     <sd-dropdown distance="4" rounded>
-      <sd-navigation-item slot="trigger" vertical>Menu</sd-navigation-item>
+      <sd-button variant="secondary" slot="trigger">
+        Menu
+        <sd-icon name="system/chevron-down" slot="icon-right"></sd-icon>
+      </sd-button>
       <sd-menu>
         <sd-menu-item>Menu item 1</sd-menu-item>
         <sd-menu-item>Menu item 2</sd-menu-item>
@@ -139,7 +142,7 @@ export const Grouping = {
     <sd-dropdown distance="4" rounded>
       <sd-button variant="secondary" slot="trigger">
         Menu
-        <sd-icon library="_internal" name="chevron-down" slot="icon-right"></sd-icon>
+        <sd-icon name="system/chevron-down" slot="icon-right"></sd-icon>
       </sd-button>
       <sd-menu>
         <sd-menu-item>Menu item 1</sd-menu-item>

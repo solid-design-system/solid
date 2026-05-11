@@ -161,7 +161,7 @@ Use the `{attribute}` attribute to {describe what it does}:
 - Show all values of an attribute side-by-side
 - Use placeholder images from `./placeholders/images/` for media slots
 - Never use generic filler ("Click me", "Default") or external image URLs
-- Never use `sd-icon` with `library="_internal"`, use names from `mcp_solid-design-_icon-search` instead
+- Never use `sd-icon` with `library="_internal"`, use names from `solid-design-system/icon-search` instead
 
 ---
 
