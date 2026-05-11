@@ -49,7 +49,6 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-accordion--open-color-text - The accordion color text when open.
  * @cssproperty --sd-accordion-color-border - The accordion color border.
  *
- *
  * @cssproperty --sd-accordion__chevron-color-text - This custom property is deprecated. Use `--sd-accordion-color-icon-fill`instead.
  */
 @customElement('sd-accordion')
