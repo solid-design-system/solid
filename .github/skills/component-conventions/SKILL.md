@@ -103,6 +103,8 @@ JSDoc tag → Storybook mapping:
 | `@event` | EVENTS |
 | `@state` + `/** @internal */` | Hidden from docs |
 
+> **Do NOT add `@property` tags to the class-level JSDoc block.** Properties are auto-documented by the custom elements manifest analyzer from the `@property` decorator and inline JSDoc comment on each property. Adding manual `@property` entries in the class JSDoc is redundant and will cause duplicate documentation.
+
 CSS property naming convention: `--sd-{component}--{variant}--{state}-{css-property}`
 
 ---
