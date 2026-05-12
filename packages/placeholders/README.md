@@ -49,7 +49,7 @@ You can find their respective photographer and source below:
 - [Business woman working - Tima Miroshnichenko](https://www.pexels.com/photo/woman-in-gray-blazer-sitting-by-the-table-5717512/)
   — ALT (EN): "A young woman in business attire sits in front of a large window and works on her laptop."
   — ALT (DE): "Eine junge Frau im Business-Outfit sitzt vor einem großen Fenster und arbeitet am Laptop."
-- [Calculator work - Mikhail Nilov](https://www.pexels.com/photo/a-person-sitting-a-wooden-table-with-a-notepad-and-laptop-using-a-calculator-6963847/)  
+- [Calculator work - Mikhail Nilov](https://www.pexels.com/photo/a-person-sitting-a-wooden-table-with-a-notepad-and-laptop-using-a-calculator-6963847/)
   — ALT (EN): "A woman is sitting at a table doing calculations with a calculator, notebook, and laptop."
   — ALT (DE): "Eine Frau sitzt an einem Tisch und rechnet mit einem Taschenrechner, Notizbuch und Laptop."
 - [City day 01 - Ricky Esquivel ](https://www.pexels.com/pt-br/foto/foto-da-cidade-1604141/)
