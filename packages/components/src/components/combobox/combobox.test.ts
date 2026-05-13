@@ -1448,4 +1448,50 @@ describe('<sd-combobox>', () => {
     // Expect input to lose focus (activeElement in shadow root is not the input)
     expect(el.shadowRoot!.activeElement).to.not.equal(input);
   });
+
+  describe('inputValue', () => {
+    it('should default to an empty string', async () => {
+      const combobox = await fixture<SdCombobox>(html`
+        <sd-combobox>
+          <sd-option value="option-1">Option 1</sd-option>
+        </sd-combobox>
+      `);
+      expect(combobox.inputValue).to.equal('');
+    });
+
+    it('should reflect inputValue as an attribute', async () => {
+      const combobox = await fixture<SdCombobox>(html`
+        <sd-combobox input-value="test">
+          <sd-option value="option-1">Option 1</sd-option>
+        </sd-combobox>
+      `);
+      expect(combobox.inputValue).to.equal('test');
+      expect(combobox.getAttribute('input-value')).to.equal('test');
+    });
+
+    it('should update the display input when inputValue is set programmatically', async () => {
+      const combobox = await fixture<SdCombobox>(html`
+        <sd-combobox>
+          <sd-option value="option-1">Option 1</sd-option>
+        </sd-combobox>
+      `);
+      combobox.inputValue = 'hello';
+      await combobox.updateComplete;
+      const displayInput = combobox.shadowRoot!.querySelector<HTMLInputElement>('[part~="display-input"]')!;
+      expect(displayInput.value).to.equal('hello');
+    });
+
+    it('should update inputValue when the user types', async () => {
+      const combobox = await fixture<SdCombobox>(html`
+        <sd-combobox>
+          <sd-option value="option-1">Option 1</sd-option>
+        </sd-combobox>
+      `);
+      const displayInput = combobox.shadowRoot!.querySelector<HTMLInputElement>('[part~="display-input"]')!;
+      displayInput.focus();
+      await sendKeys({ type: 'opt' });
+      await combobox.updateComplete;
+      expect(combobox.inputValue).to.equal('opt');
+    });
+  });
 });
