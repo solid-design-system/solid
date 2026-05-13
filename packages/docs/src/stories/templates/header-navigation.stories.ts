@@ -1563,12 +1563,7 @@ export const SampleD02 = {
         <a class="flex justify-center flex-shrink" href="#">
           <div class="h-8 md:h-12 lg:h-14 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
         </a>
-        <!-- Menu icon: all breakpoints -->
-        <div class="flex justify-end">
-          <sd-navigation-item id="open-menu-sample-d-02">
-            <sd-icon name="system/menu" label="Open navigation" class="text-xl"></sd-icon>
-          </sd-navigation-item>
-        </div>
+        <div class="flex justify-end" aria-hidden="true"></div>
       </div>
     </sd-header>
     <sd-drawer id="sample-d-02-drawer" placement="end" class="relative block">
@@ -1623,28 +1618,6 @@ export const SampleD02 = {
       }
     </style>
 
-    <script type="module">
-      await Promise.all([
-        customElements.whenDefined('sd-navigation-item'),
-        customElements.whenDefined('sd-drawer')
-      ]).then(() => {
-        const drawerSampleD = document.getElementById('sample-d-02-drawer');
-        const navigationItemSampleD = document.getElementById('open-menu-sample-d-02');
-        const buttonInNavigationItemSampleD = navigationItemSampleD.shadowRoot.querySelector('button');
-
-        buttonInNavigationItemSampleD.setAttribute('aria-controls', 'sample-d-02-drawer');
-        //Add the necessary ARIA attributes to prevent only being added after action
-        buttonInNavigationItemSampleD.setAttribute('aria-expanded', 'false');
-        drawerSampleD.addEventListener('sd-hide', () =>
-          buttonInNavigationItemSampleD.setAttribute('aria-expanded', 'false')
-        );
-
-        navigationItemSampleD.addEventListener('click', () => {
-          drawerSampleD.show();
-          buttonInNavigationItemSampleD.setAttribute('aria-expanded', 'true');
-        });
-      });
-    </script>
     <script type="module">
       await customElements.whenDefined('sd-notification').then(() => {
         const backButton = document.getElementById('back-button-sample-d-02');
