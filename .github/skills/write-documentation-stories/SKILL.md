@@ -162,6 +162,7 @@ Use the `{attribute}` attribute to {describe what it does}:
 - Use placeholder images from `./placeholders/images/` for media slots
 - Never use generic filler ("Click me", "Default") or external image URLs
 - Never use `sd-icon` with `library="_internal"`, use names from `mcp_solid-design-_icon-search` instead
+- Always use HTML attributes instead of Lit property bindings in stories,  e.g. `number-format-options='{"key": "value"}'` not `.numberFormatOptions=${{ key: 'value' }}`. Object/array properties that accept JSON should be set as JSON string attributes.
 
 ---
 
