@@ -302,7 +302,85 @@ export const Type = {
 };
 
 /**
- * Use the `required` attribute to mark the element as required. This can be used for form validation purposes.
+ * Use `type="formatted-number"` to auto-format numeric values using `Intl.NumberFormat`. The raw numeric value is
+ * stored in `value` while a formatted version is shown to the user. On focus, the raw value is restored for editing;
+ * on blur, the value is formatted again.
+ *
+ * Use the `number-format-options` property to pass `Intl.NumberFormatOptions` for custom formatting (e.g. currency,
+ * decimal precision, grouping).
+ *
+ * __Note:__ The locale is resolved from the element's `lang` attribute, or inherited from `document.documentElement.lang`
+ * when none is set. Setting `lang` explicitly on the element is recommended for predictable formatting.
+ *
+ * __Note:__ Values are stored as JavaScript `number` (IEEE 754 double, ~15–16 significant digits). Numbers with more
+ * than 15 significant digits will lose precision silently.
+ *
+ * __Note:__ The following `Intl.NumberFormatOptions` are **not** compatible because they apply a numeric transform
+ * that breaks the raw↔display round-trip:
+ * - `style: "percent"` — multiplies by 100 on format; use a plain decimal input with a `%` suffix slot instead.
+ * - `notation: "compact"` / `"scientific"` / `"engineering"` — appends a suffix/exponent that is stripped on parse.
+ * - `currencySign: "accounting"` — wraps negatives in parentheses; parentheses are stripped without restoring the sign.
+ */
+export const FormattedNumber = {
+  render: () => html`
+    <div class="grid grid-cols-2 gap-12 content-end">
+      <sd-input
+        type="formatted-number"
+        label="Default (English)"
+        value="1234567.89"
+        lang="en"
+        help-text="Formatted with English locale grouping"
+      ></sd-input>
+
+      <sd-input
+        type="formatted-number"
+        label="Default (German)"
+        value="1234567.89"
+        lang="de"
+        help-text="Formatted with German locale grouping"
+      ></sd-input>
+
+      <sd-input
+        type="formatted-number"
+        label="Currency EUR (English)"
+        value="9999.99"
+        lang="en"
+        number-format-options='{"style": "currency", "currency": "EUR"}'
+        help-text="Euro currency, English locale"
+      ></sd-input>
+
+      <sd-input
+        type="formatted-number"
+        label="Währung EUR (Deutsch)"
+        value="9999.99"
+        lang="de"
+        number-format-options='{"style": "currency", "currency": "EUR"}'
+        help-text="Euro-Währung, deutsches Format"
+      ></sd-input>
+
+      <sd-input
+        type="formatted-number"
+        label="Decimal precision (English)"
+        value="3.14159"
+        lang="en"
+        number-format-options='{"minimumFractionDigits": 2, "maximumFractionDigits": 2}'
+        help-text="Rounded to 2 decimal places"
+      ></sd-input>
+
+      <sd-input
+        type="formatted-number"
+        label="Dezimalstellen (Deutsch)"
+        value="3.14159"
+        lang="de"
+        number-format-options='{"minimumFractionDigits": 2, "maximumFractionDigits": 2}'
+        help-text="Auf 2 Dezimalstellen gerundet"
+      ></sd-input>
+    </div>
+  `
+};
+
+/**
+ * Use `required` attribute to mark the element as required. This can be used for form validation purposes.
  */
 
 export const Required = {
@@ -411,18 +489,33 @@ export const Max = {
 };
 
 /**
- * Use the `spin-buttons` attribute display custom spin buttons for number inputs.
+ * Use the `spin-buttons` attribute to display custom spin buttons for number inputs.
+ * Spin buttons also work with `type="formatted-number"` — the value is incremented/decremented
+ * by `step` and the display is automatically reformatted on each step.
  */
 export const SpinButtons = {
   render: () => html`
-    <div class="w-[250px]">
+    <div class="flex gap-12">
       <sd-input
-        label="Spin buttons"
+        label="Spin buttons (number)"
         type="number"
         min="0"
         max="100"
-        help-text="Min value is 0 and Max value is 100"
+        help-text="Min 0 · Max 100"
         spin-buttons
+      ></sd-input>
+
+      <sd-input
+        label="Spin buttons (formatted number)"
+        type="formatted-number"
+        lang="de"
+        value="1000"
+        step="1000"
+        min="0"
+        max="10000"
+        spin-buttons
+        number-format-options='{"style": "currency", "currency": "EUR"}'
+        help-text="Min 0 € · Max 10.000 €"
       ></sd-input>
     </div>
   `
