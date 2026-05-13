@@ -1631,7 +1631,7 @@ export const SampleD02 = {
             innerHTML: 'This is a template preview.<br>No navigation is assigned.'
           });
 
-          notification.style.width = '250px';
+          //notification.style.width = '250px';
 
           document.body.append(notification);
           notification.toast();
