@@ -8,5 +8,6 @@
 @import './modules/meta.css';
 @import './modules/pagination.css';
 @import './modules/status-badge.css';
+@import url('./modules/skeleton.css');
 /* plop:style */
 @import './modules/prose.css';

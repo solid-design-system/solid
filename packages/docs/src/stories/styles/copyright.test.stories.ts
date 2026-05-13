@@ -6,9 +6,9 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-copyright');
-const { overrideArgs } = storybookHelpers('sd-copyright');
-const { generateTemplate } = storybookTemplate('sd-copyright');
+const { argTypes, parameters } = storybookDefaults('.sd-copyright');
+const { overrideArgs } = storybookHelpers('.sd-copyright');
+const { generateTemplate } = storybookTemplate('.sd-copyright');
 const { generateScreenshotStory } = storybookUtilities;
 
 /**
@@ -17,7 +17,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Styles/sd-copyright/Screenshots: sd-copyright',
   tags: ['!autodocs'],
-  component: 'sd-copyright',
+  component: '.sd-copyright',
   parameters: {
     ...parameters,
     controls: { disable: true }

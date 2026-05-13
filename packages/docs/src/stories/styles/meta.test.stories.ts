@@ -6,9 +6,9 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-meta');
-const { overrideArgs } = storybookHelpers('sd-meta');
-const { generateTemplate } = storybookTemplate('sd-meta');
+const { argTypes, parameters } = storybookDefaults('.sd-meta');
+const { overrideArgs } = storybookHelpers('.sd-meta');
+const { generateTemplate } = storybookTemplate('.sd-meta');
 const { generateScreenshotStory } = storybookUtilities;
 
 /**
@@ -22,7 +22,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Styles/sd-meta/Screenshots: sd-meta',
   tags: ['!autodocs'],
-  component: 'sd-meta',
+  component: '.sd-meta',
   parameters: {
     ...parameters,
     controls: { disable: true },

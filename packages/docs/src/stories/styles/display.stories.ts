@@ -2,14 +2,14 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-display');
-const { overrideArgs } = storybookHelpers('sd-display');
-const { generateTemplate } = storybookTemplate('sd-display');
+const { argTypes, parameters } = storybookDefaults('.sd-display');
+const { overrideArgs } = storybookHelpers('.sd-display');
+const { generateTemplate } = storybookTemplate('.sd-display');
 
 export default {
   title: 'Styles/sd-display',
   tags: ['!dev', 'autodocs'],
-  component: 'sd-display',
+  component: '.sd-display',
   parameters: {
     ...parameters,
     design: {

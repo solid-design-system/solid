@@ -7,9 +7,9 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-headline');
-const { overrideArgs } = storybookHelpers('sd-headline');
-const { generateTemplate } = storybookTemplate('sd-headline');
+const { argTypes, parameters } = storybookDefaults('.sd-headline');
+const { overrideArgs } = storybookHelpers('.sd-headline');
+const { generateTemplate } = storybookTemplate('.sd-headline');
 const { generateScreenshotStory } = storybookUtilities;
 
 /**
@@ -26,7 +26,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Styles/sd-headline/Screenshots: sd-headline',
   tags: ['!autodocs'],
-  component: 'sd-headline',
+  component: '.sd-headline',
   parameters: {
     ...parameters,
     a11y: {

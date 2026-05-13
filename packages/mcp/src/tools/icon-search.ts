@@ -53,6 +53,7 @@ export const iconSearchTool = (server: McpServer) => {
       description:
         'Search the Solid Design System icon library. ' +
         'Pass multiple keywords — English and/or German synonyms — to get the best possible list of candidates. ' +
+        'German keywords (tags) are used for icon search. ' +
         'The tool deduplicates results and shows which keyword(s) each icon matched. ' +
         'Returns icon names in the exact format for <sd-icon name="...">, e.g. "system/download". ' +
         'Always search with several synonyms (EN + DE) to maximise recall.' +

@@ -2,14 +2,14 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-headline');
-const { overrideArgs } = storybookHelpers('sd-headline');
-const { generateTemplate } = storybookTemplate('sd-headline');
+const { argTypes, parameters } = storybookDefaults('.sd-headline');
+const { overrideArgs } = storybookHelpers('.sd-headline');
+const { generateTemplate } = storybookTemplate('.sd-headline');
 
 export default {
   title: 'Styles/sd-headline',
   tags: ['!dev', 'autodocs'],
-  component: 'sd-headline',
+  component: '.sd-headline',
   parameters: {
     ...parameters,
     design: {

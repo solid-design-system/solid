@@ -8,9 +8,9 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-interactive');
-const { overrideArgs } = storybookHelpers('sd-interactive');
-const { generateTemplate } = storybookTemplate('sd-interactive');
+const { argTypes, parameters } = storybookDefaults('.sd-interactive');
+const { overrideArgs } = storybookHelpers('.sd-interactive');
+const { generateTemplate } = storybookTemplate('.sd-interactive');
 const { generateScreenshotStory } = storybookUtilities;
 
 /**
@@ -21,7 +21,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Styles/sd-interactive/Screenshots: sd-interactive',
   tags: ['!autodocs'],
-  component: 'sd-interactive',
+  component: '.sd-interactive',
   parameters: {
     ...parameters,
     a11y: {
