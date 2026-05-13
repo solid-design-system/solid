@@ -104,8 +104,8 @@ You can find their respective photographer and source below:
   — ALT (EN): "A young woman is lying in bed with a girl, and they are reading a book together."
   — ALT (DE): "Eine junge Frau liegt mit einem Mädchen in einem Bett und sie lesen gemeinsam in ein Buch."
 - [Finance meeting - Artem Podrez](https://www.pexels.com/photo/businessman-person-woman-space-6779716/)
-  — ALT (EN): "Zwei Frauen werten Diagramme und Tabellen aus."
-  — ALT (DE): "Two women evaluate charts and tables."
+  — ALT (EN): "Two women evaluate charts and tables."
+  — ALT (DE): "Zwei Frauen werten Diagramme und Tabellen aus."
 - [Friends - Chewy](https://unsplash.com/photos/3cAMUE3YAO8)
   — ALT (EN): "Two women sit on a bed, laughing and playing with two dogs in a bright bedroom."
   — ALT (DE): "Zwei Frauen sitzen auf einem Bett, lachen und spielen mit zwei Hunden in einem hellen Schlafzimmer."
