@@ -256,8 +256,9 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         radio.checked = radio.value === this.value;
         radio.size = this.size;
 
-        if (radio instanceof SdRadio) {
-          radio.invalid = this.showInvalidStyle;
+        if (radio.tagName.toLowerCase() === 'sd-radio') {
+          (radio as SdRadio).invalid = this.showInvalidStyle;
+          radio.setAttribute('aria-describedby', 'invalid-message');
         }
       })
     );
