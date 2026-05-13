@@ -232,4 +232,54 @@ describe('<sd-drawer>', () => {
     const activeElementInsideTestElement = testElement.shadowRoot!.activeElement;
     expect(activeElementInsideTestElement).to.equal(trigger);
   });
+
+  it('should render panel at the top with placement="top"', async () => {
+    const el = await fixture<SdDrawer>(html` <sd-drawer open placement="top">Lorem ipsum dolor sit amet.</sd-drawer> `);
+    const panel = el.shadowRoot!.querySelector<HTMLElement>('[part~="panel"]')!;
+
+    expect(panel.classList.contains('top-0')).to.be.true;
+    expect(panel.classList.contains('bottom-0')).to.be.false;
+  });
+
+  it('should render panel at the bottom with placement="bottom"', async () => {
+    const el = await fixture<SdDrawer>(html`
+      <sd-drawer open placement="bottom">Lorem ipsum dolor sit amet.</sd-drawer>
+    `);
+    const panel = el.shadowRoot!.querySelector<HTMLElement>('[part~="panel"]')!;
+
+    expect(panel.classList.contains('bottom-0')).to.be.true;
+    expect(panel.classList.contains('top-0')).to.be.false;
+  });
+
+  it('should emit sd-show and sd-after-show when opening with placement="top"', async () => {
+    const el = await fixture<SdDrawer>(html` <sd-drawer placement="top">Lorem ipsum dolor sit amet.</sd-drawer> `);
+    const showHandler = sinon.spy();
+    const afterShowHandler = sinon.spy();
+
+    el.addEventListener('sd-show', showHandler);
+    el.addEventListener('sd-after-show', afterShowHandler);
+    el.show();
+
+    await waitUntil(() => showHandler.calledOnce);
+    await waitUntil(() => afterShowHandler.calledOnce, 'sd-after-show did not fire', { timeout: 3000 });
+
+    expect(showHandler).to.have.been.calledOnce;
+    expect(afterShowHandler).to.have.been.calledOnce;
+  });
+
+  it('should emit sd-show and sd-after-show when opening with placement="bottom"', async () => {
+    const el = await fixture<SdDrawer>(html` <sd-drawer placement="bottom">Lorem ipsum dolor sit amet.</sd-drawer> `);
+    const showHandler = sinon.spy();
+    const afterShowHandler = sinon.spy();
+
+    el.addEventListener('sd-show', showHandler);
+    el.addEventListener('sd-after-show', afterShowHandler);
+    el.show();
+
+    await waitUntil(() => showHandler.calledOnce);
+    await waitUntil(() => afterShowHandler.calledOnce, 'sd-after-show did not fire', { timeout: 3000 });
+
+    expect(showHandler).to.have.been.calledOnce;
+    expect(afterShowHandler).to.have.been.calledOnce;
+  });
 });
