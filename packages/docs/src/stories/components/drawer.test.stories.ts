@@ -31,7 +31,6 @@ export default {
       value: `<div slot='footer' class="slot slot--border slot--text h-12">Footer slot</div>`
     },
     { type: 'attribute', name: 'open', value: true },
-    { type: 'attribute', name: 'contained', value: true },
     { type: 'attribute', name: 'label', value: 'Label' }
   ]),
   argTypes,

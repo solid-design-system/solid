@@ -25,15 +25,12 @@ export default {
       name: 'footer',
       value: `<div slot='footer' class="slot slot--border slot--text h-12">Footer slot</div>`
     },
-    { type: 'attribute', name: 'open', value: true },
-    { type: 'attribute', name: 'contained', value: true },
     { type: 'attribute', name: 'label', value: 'Label' },
     { type: 'attribute', name: 'id', value: 'default-drawer' }
   ]),
   argTypes,
   parameters: {
     ...parameters,
-    controls: { exclude: ['contained'] },
     design: {
       type: 'figma',
       url: 'https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Component-Docs?node-id=2223-8225&node-type=section&t=5PpAC3TA3kYF7ufX-0'
@@ -74,6 +71,7 @@ export const Default = {
  */
 export const Open = {
   name: 'Open',
+  parameters: { docs: { story: { inline: false, height: '600px' } } },
   render: () => html`
     <sd-button id="openButton">Open Drawer</sd-button>
     <div style="width: auto; height: 40vh; position: relative;">
@@ -105,6 +103,7 @@ export const Open = {
  */
 export const Placement = {
   name: 'Placement',
+  parameters: { docs: { story: { inline: false, height: '600px' } } },
   render: () => html`
     <sd-button id="placementButton">Open Drawer</sd-button>
     <div style="width: auto; height: 40vh; position: relative;">
@@ -130,6 +129,7 @@ export const Placement = {
  */
 export const NoHeader = {
   name: 'No Header',
+  parameters: { docs: { story: { inline: false, height: '600px' } } },
   render: () => html`
     <sd-button id="noHeaderButton">Open Drawer</sd-button>
     <div style="width: auto; height: 40vh; position: relative;">
