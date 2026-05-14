@@ -119,6 +119,28 @@ describe('<sd-carousel>', () => {
       // Assert
       expect(el.next).not.to.have.been.called;
     });
+
+    it('should respect autoplay delay between slide transitions', async () => {
+      const el = await fixture<SdCarousel>(html`
+        <sd-carousel autoplay autoplay-interval="5">
+          <sd-carousel-item>Node 1</sd-carousel-item>
+          <sd-carousel-item>Node 2</sd-carousel-item>
+          <sd-carousel-item>Node 3</sd-carousel-item>
+        </sd-carousel>
+      `);
+
+      await el.updateComplete;
+
+      clock.tick(5000);
+      await el.updateComplete;
+      expect(el.activeSlide).to.equal(1);
+
+      clock.tick(5000);
+      await el.updateComplete;
+      expect(el.activeSlide).to.equal(2);
+
+      clock.restore();
+    });
   });
 
   describe('when `loop` attribute is provided', () => {
