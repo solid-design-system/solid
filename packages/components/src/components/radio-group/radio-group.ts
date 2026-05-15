@@ -140,6 +140,19 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
     this.formControlController.updateValidity();
   }
 
+  updated(changedProperties: Map<string, unknown>) {
+    super.updated(changedProperties);
+    // Workaround for macOS VoiceOver in Chromium/Firefox not announcing
+    // aria-describedby on role="radiogroup". aria-description is global per ARIA 1.3
+    // but is set imperatively here so static a11y linters do not reject role="radiogroup".
+    const fieldset = this.shadowRoot?.querySelector('fieldset');
+    if (this.showInvalidStyle && this.validationMessage) {
+      fieldset?.setAttribute('aria-description', this.validationMessage);
+    } else {
+      fieldset?.removeAttribute('aria-description');
+    }
+  }
+
   private getAllRadios() {
     const radios = [...this.querySelectorAll<SdRadio | SdRadioButton>('sd-radio, sd-radio-button')];
 
@@ -256,9 +269,8 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         radio.checked = radio.value === this.value;
         radio.size = this.size;
 
-        if (radio.tagName.toLowerCase() === 'sd-radio') {
-          (radio as SdRadio).invalid = this.showInvalidStyle;
-          radio.setAttribute('aria-describedby', 'invalid-message');
+        if (radio instanceof SdRadio) {
+          radio.invalid = this.showInvalidStyle;
         }
       })
     );
