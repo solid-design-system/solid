@@ -39,6 +39,10 @@ Present a structured summary to the user:
 3. **Comment signals**: any decisions, resolved questions, or scope changes found in comments
 4. **Detected gaps**: missing or incomplete sections (e.g. no Figma link, empty Props table, unresolved Open Questions, missing SP estimate)
 
+Do not assume accessibility checks are required by default for template/story planning.
+For component implementation planning, still require component tests based on the component testing skill.
+Include accessibility work only if it is explicitly requested in the issue scope or by the user.
+
 After presenting the summary, inform the user:
 > You can click **"Plan Implementation"** to interactively plan this issue with the Plan agent before implementation, or proceed directly to implementation by asking to proceed — I will then tell you exactly which agent to use for implementation.
 

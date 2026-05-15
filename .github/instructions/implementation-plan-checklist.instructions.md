@@ -68,6 +68,10 @@ After all checklist gaps are resolved (or explicitly deferred by the user), prod
 7. **Changeset** — Package name, bump type (major/minor/patch), and summary line. Bug fixes always use `patch`. This step is **required** for all implementation types.
 8. **Verification** — How to verify the implementation is correct
 
+Do not require accessibility checks by default in plans for template/story tasks.
+For component implementation tasks, continue to plan component tests according to the component testing guidance.
+Add accessibility-specific testing only if it is explicitly requested by the issue scope or by the user.
+
 ## 3. After Planning is Complete
 
 When the plan is finalized:

@@ -1,6 +1,6 @@
 ---
 name: write-component-tests
-description: "Write or extend unit tests for a Solid Design System web component. Use for: creating component tests, adding test coverage, writing accessibility tests, testing component behavior, regression tests for bug fixes."
+description: "Write or extend unit tests for a Solid Design System web component. Use for: creating component tests, adding test coverage, testing component behavior, regression tests for bug fixes."
 ---
 
 # Write Component Tests
@@ -9,8 +9,9 @@ description: "Write or extend unit tests for a Solid Design System web component
 
 - Creating tests for a new component
 - Adding test coverage for new properties, events, or behavior
-- Writing accessibility tests for component variants
 - Writing regression tests for bug fixes (failing test first)
+
+This skill applies to component test files only. Template story tasks follow their own planning policy and are not required to add accessibility checks by default.
 
 ## Test File Location
 
@@ -37,18 +38,17 @@ cd packages/components && pnpm test.watch
 
 - **Test runner**: Web Test Runner with `@open-wc/testing`
 - **Philosophy**: "Test the behavior, not the implementation." Verify components meet expected requirements from the user's perspective. Don't test internal technical details.
-- **Mandatory coverage**: Accessibility per variant, default property values, child content rendering
+- **Mandatory coverage**: Default property values, child content rendering, and user-visible behavior
 - **Visual regression**: Handled by Chromatic via test stories (see **write-test-stories** skill), not unit tests
 - **E2E tests**: Playwright for complex interactions (separate from unit tests)
 
 ### What to test
 - Default property values
-- Accessibility for every variant combination
 - User-visible behavior (clicks, focus, form submission)
 - Event emission and propagation
 - Slot content rendering
 - Disabled/loading state behavior
-- ARIA attributes
+- ARIA attributes when they are part of the behavior under test
 
 ### What NOT to test
 - Internal implementation details
@@ -95,36 +95,12 @@ describe('<sd-component-name>', () => {
 
 Organize tests in nested `describe` blocks by category. Include these sections as applicable:
 
-#### 1. Accessibility tests (required for every component)
-
-Test accessibility for **every variant combination**:
-
-```typescript
-describe('accessibility tests', () => {
-  const variants = ['primary', 'secondary', 'tertiary'];
-
-  variants.forEach(variant => {
-    it(`should be accessible when variant is "${variant}"`, async () => {
-      const el = await fixture<SdButton>(
-        html`<sd-button variant="${variant}">Label</sd-button>`
-      );
-      await expect(el).to.be.accessible();
-    });
-  });
-});
-```
-
-#### 2. Default property tests
+#### 1. Default property tests
 
 Verify default values match the component spec:
 
 ```typescript
 describe('when provided no parameters', () => {
-  it('passes accessibility test', async () => {
-    const el = await fixture<SdBadge>(html`<sd-badge>Content</sd-badge>`);
-    await expect(el).to.be.accessible();
-  });
-
   it('should have default values set correctly', async () => {
     const el = await fixture<SdBadge>(html`<sd-badge>Content</sd-badge>`);
     expect(el.variant).to.equal('blue');
@@ -139,19 +115,12 @@ describe('when provided no parameters', () => {
 });
 ```
 
-#### 3. Property/attribute tests
+#### 2. Property/attribute tests
 
 Test each property's effect on the component:
 
 ```typescript
 describe('when disabled', () => {
-  it('passes accessibility test', async () => {
-    const el = await fixture<SdButton>(
-      html`<sd-button disabled>Label</sd-button>`
-    );
-    await expect(el).to.be.accessible();
-  });
-
   it('should disable the native element', async () => {
     const el = await fixture<SdButton>(
       html`<sd-button disabled>Label</sd-button>`
@@ -161,7 +130,7 @@ describe('when disabled', () => {
 });
 ```
 
-#### 4. Event tests
+#### 3. Event tests
 
 Test that events fire correctly:
 
@@ -194,7 +163,7 @@ it('should not bubble up clicks when disabled', async () => {
 });
 ```
 
-#### 5. Slot tests
+#### 4. Slot tests
 
 Test slot content rendering:
 
@@ -212,7 +181,7 @@ it('should render slot content', async () => {
 });
 ```
 
-#### 6. Form interaction tests (for form controls)
+#### 5. Form interaction tests (for form controls)
 
 ```typescript
 describe('when submitting a form', () => {
@@ -233,7 +202,7 @@ describe('when submitting a form', () => {
 });
 ```
 
-#### 7. Shadow DOM queries
+#### 6. Shadow DOM queries
 
 Always use `shadowRoot!` with `querySelector` to access internal elements:
 
