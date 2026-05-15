@@ -54,7 +54,7 @@ You can find their respective photographer and source below:
   — ALT (DE): "Eine Frau sitzt an einem Tisch und rechnet mit einem Taschenrechner, Notizbuch und Laptop."
 - [City day 01 - Ricky Esquivel ](https://www.pexels.com/pt-br/foto/foto-da-cidade-1604141/)
   — ALT (EN): "Car-free streets of Chicago with scattered people."
-  — ALT (DE): "Autofreie Straßen von Chiacgo mit vereinzelten Menschen."
+  — ALT (DE): "Autofreie Straßen von Chicago mit vereinzelten Menschen."
 - [City day 02 - Zhang Kaiyv](https://www.pexels.com/pt-br/foto/arranha-ceus-1139556/)
   — ALT (EN): "Skyline of Beijing at sunset."
   — ALT (DE): "Skyline von Peking in untergehender Sonne."
