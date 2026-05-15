@@ -1563,7 +1563,6 @@ export const SampleD02 = {
         <a class="flex justify-center flex-shrink" href="#">
           <div class="h-8 md:h-12 lg:h-14 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
         </a>
-        <div class="flex justify-end" aria-hidden="true"></div>
       </div>
     </sd-header>
     <sd-drawer id="sample-d-02-drawer" placement="end" class="relative block">
@@ -1630,8 +1629,6 @@ export const SampleD02 = {
             duration: Infinity,
             innerHTML: 'This is a template preview.<br>No navigation is assigned.'
           });
-
-          //notification.style.width = '250px';
 
           document.body.append(notification);
           notification.toast();
