@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.14.0
+
+### Minor Changes
+
+- Added documentation for the new `autoplay-interval` attribute in `sd-carousel`, including recommended timing values. _[`#3001`](https://github.com/solid-design-system/solid/pull/3001) [`687f7e6`](https://github.com/solid-design-system/solid/commit/687f7e6b896b8b54ac76f31f2d275cf8064a4300) [@martascorreia](https://github.com/martascorreia)_
+
 ## 2.13.2
 
 ### Patch Changes
