@@ -1,5 +1,5 @@
 ---
-'@solid-design-system/placeholders': minor
+'@solid-design-system/placeholders': patch
 ---
 
 Added Alt text to placeholder images
