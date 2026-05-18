@@ -1500,3 +1500,114 @@ export const SampleB = {
     </script>
   `
 };
+
+export const SampleD01 = {
+  name: 'Header Sample D-01',
+  render: () => html`
+    <style>
+      #anchor--templates-header-navigation--sample-d-01 .innerZoomElementWrapper {
+        height: 900px;
+      }
+    </style>
+    <sd-header id="sample-d-01-header" fixed>
+      <div class="flex justify-center items-center">
+        <a class="flex flex-shrink" href="#">
+          <div class="h-8 md:h-12 lg:h-14 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
+        </a>
+      </div>
+    </sd-header>
+
+    <style>
+      sd-header#sample-d-01-header {
+        --sd-header-padding: 8px 16px;
+      }
+
+      @media (min-width: 376px) {
+        sd-header#sample-d-01-header {
+          --sd-header-padding: 24px;
+        }
+      }
+
+      @media (min-width: 1025px) {
+        sd-header#sample-d-01-header {
+          --sd-header-padding: 24px 32px;
+        }
+      }
+
+      @media (min-width: 1440px) {
+        sd-header#sample-d-01-header {
+          --sd-header-padding: 24px 48px;
+        }
+      }
+    </style>
+  `
+};
+
+export const SampleD02 = {
+  name: 'Header Sample D-02',
+  render: () => html`
+    <sd-header id="sample-d-02-header" fixed>
+      <div class="grid grid-cols-[1fr_auto_1fr] items-center">
+        <div class="flex items-center">
+          <sd-navigation-item id="back-button-sample-d-02">
+            <sd-icon name="system/arrow-left" label="Go back" class="text-xl"></sd-icon>
+          </sd-navigation-item>
+        </div>
+        <a class="flex justify-center flex-shrink" href="#">
+          <div class="h-8 md:h-12 lg:h-14 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
+        </a>
+      </div>
+    </sd-header>
+
+    <style>
+      #anchor--templates-header-navigation--sample-d-02 .innerZoomElementWrapper {
+        height: 900px;
+      }
+
+      sd-header#sample-d-02-header {
+        --sd-header-padding: 8px 16px;
+      }
+
+      @media (min-width: 376px) {
+        sd-header#sample-d-02-header {
+          --sd-header-padding: 24px;
+        }
+      }
+
+      @media (min-width: 1025px) {
+        sd-header#sample-d-02-header {
+          --sd-header-padding: 24px 32px;
+        }
+      }
+
+      @media (min-width: 1440px) {
+        sd-header#sample-d-02-header {
+          --sd-header-padding: 24px 48px;
+        }
+      }
+
+      sd-navigation-item#back-button-sample-d-02::part(content) {
+        border-bottom: 0;
+      }
+    </style>
+
+    <script type="module">
+      await customElements.whenDefined('sd-notification').then(() => {
+        const backButton = document.getElementById('back-button-sample-d-02');
+
+        backButton.addEventListener('click', () => {
+          const notification = Object.assign(document.createElement('sd-notification'), {
+            closable: true,
+            variant: 'info',
+            toastStack: 'bottom-center',
+            duration: Infinity,
+            innerHTML: 'This is a template preview.<br>No navigation is assigned.'
+          });
+
+          document.body.append(notification);
+          notification.toast();
+        });
+      });
+    </script>
+  `
+};
