@@ -73,6 +73,7 @@ import type SdPopup from '../popup/popup';
  * @cssproperty --sd-form-control__listbox-border-bottom-right-radius - The border radius for the bottom right corner of the listbox.
  * @cssproperty --sd-form-control__listbox-border-top-left-radius - The border radius for the top left corner of the listbox.
  * @cssproperty --sd-form-control__listbox-border-top-right-radius - The border radius for the top right corner of the listbox.
+ * @cssproperty --sd-form-control--hover-color-background - The background color for form controls on hover.
  */
 @customElement('sd-select')
 export default class SdSelect extends SolidElement implements SolidFormControl {
@@ -990,7 +991,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                   class=${cx(
                     'absolute left-4 z-20 pointer-events-none transition-all duration-200',
                     !isFloatingLabelActive
-                      ? 'top-1/2 -translate-y-1/2'
+                      ? 'top-1/2 -translate-y-1/2 form-control-color-text'
                       : this.size === 'lg'
                         ? 'top-2 text-xs'
                         : 'top-1 text-xs',
@@ -1054,7 +1055,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
                 'relative w-full h-full grid rounded-default transition-colors hover:duration-fast ease-in-out',
                 this.visuallyDisabled || this.disabled
                   ? 'hover:bg-transparent'
-                  : 'hover:[@media(hover:hover)]:bg-neutral-200',
+                  : 'hover:[@media(hover:hover)]:form-control--hover-color-background',
                 ['invalid', 'activeInvalid'].includes(selectState) && 'form-control--invalid-color-background'
               )}
               slot="anchor"

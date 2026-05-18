@@ -18,6 +18,7 @@
  * @cssproperty --sd-marker-font-size - The font size for chips.
  * @cssproperty --sd-marker-border-width - The border width for chips.
  * @cssproperty --sd-marker-font-weight - The font weight for chips.
+ *
  * @cssproperty --sd-chip-font-size - This custom property is deprecated. Use `--sd-marker-font-size` instead.
  * @cssproperty --sd-chip-border-width - This custom property is deprecated. Use `--sd-marker-border-width` instead.
  * @cssproperty --sd-chip-font-weight - This custom property is deprecated. Use `--sd-marker-font-weight` instead.

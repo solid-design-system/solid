@@ -72,6 +72,8 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @cssproperty --sd-form-control-color-border - The color border for form controls.
  * @cssproperty --sd-form-control-color-icon-fill - The icon color for form controls.
  * @cssproperty --sd-form-control-border-radius - The border radius for form controls.
+ * @cssproperty --sd-form-control--hover-color-background - The background color for form controls on hover.
+ * @cssproperty --sd-form-control--read-only-color-background - The background color read-only for form controls.
  */
 
 @customElement('sd-input')
@@ -637,9 +639,9 @@ export default class SdInput extends SolidElement implements SolidFormControl {
               this.floatingLabel && 'has-floating-label',
               // States
               !this.disabled && !this.readonly && !this.visuallyDisabled
-                ? 'hover:[@media(hover:hover)]:bg-neutral-200'
+                ? 'hover:[@media(hover:hover)]:form-control--hover-color-background'
                 : '',
-              this.readonly ? 'bg-neutral-100' : 'bg-white',
+              this.readonly ? 'form-control--read-only-color-background' : 'bg-white',
               ['disabled', 'visuallyDisabled'].includes(inputState) ? 'text-neutral-500' : 'text-black',
               ['invalid', 'activeInvalid'].includes(inputState) && 'form-control--invalid-color-background',
               verticalPadding
@@ -707,7 +709,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
                       hasIconLeft ? floatingLabelHorizontalAlignmentWithIconLeft : 'left-4',
                       !this.readonly && 'transition-all duration-medium ease-out',
                       !isFloatingLabelActive || (!hasValue && (this.readonly || this.visuallyDisabled))
-                        ? 'top-1/2 -translate-y-1/2'
+                        ? 'top-1/2 -translate-y-1/2 form-control-color-text'
                         : this.size === 'lg'
                           ? 'top-2'
                           : 'top-1'
