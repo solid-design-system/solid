@@ -2445,6 +2445,11 @@
               "type": "color",
               "value": "{ui-light.utilities.color.neutral.600}"
             },
+            "700": {
+              "description": "Used for step group xs",
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.700}"
+            },
             "800": {
               "description": "Used for form fields, switch, radio, checkbox",
               "type": "color",
@@ -3984,6 +3989,14 @@
       },
       "sd-brandshape": {
         "--white": {
+          "80": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.80)"
+              }
+            }
+          },
           "color": {
             "background": {
               "type": "color",
@@ -3997,6 +4010,46 @@
               "type": "color",
               "value": "{ui-light.utilities.color.background.neutral.100}"
             }
+          }
+        },
+        "color": {
+          "border": {
+            "white": {
+              "default": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.white.default}"
+              }
+            }
+          }
+        },
+        "--primary": {
+          "80": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(0, 53, 142, 0.80)"
+              }
+            }
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.default}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.default}"
+            }
+          }
+        },
+        "_internal": {
+          "slot": {
+            "type": "color",
+            "value": "#62359b"
+          },
+          "slot-inverted": {
+            "type": "color",
+            "value": "#ccb6f1"
           }
         }
       },
@@ -5766,6 +5819,11 @@
               "type": "color",
               "value": "{ui-dark.utilities.color.neutral.600}"
             },
+            "700": {
+              "description": "Used for step group xs",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.400}"
+            },
             "800": {
               "description": "Used for form fields, switch, radio, checkbox",
               "type": "color",
@@ -7305,6 +7363,14 @@
       },
       "sd-brandshape": {
         "--white": {
+          "80": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(0, 53, 142, 0.80)"
+              }
+            }
+          },
           "color": {
             "background": {
               "type": "color",
@@ -7318,6 +7384,46 @@
               "type": "color",
               "value": "{ui-dark.utilities.color.background.neutral.100}"
             }
+          }
+        },
+        "color": {
+          "border": {
+            "white": {
+              "default": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.900}"
+              }
+            }
+          }
+        },
+        "--primary": {
+          "80": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(0, 53, 142, 0.80)"
+              }
+            }
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.default}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.white.default}"
+            }
+          }
+        },
+        "_internal": {
+          "slot": {
+            "type": "color",
+            "value": "#ccb6f1"
+          },
+          "slot-inverted": {
+            "type": "color",
+            "value": "#ccb6f1"
           }
         }
       },
@@ -9087,6 +9193,11 @@
               "type": "color",
               "value": "{vb.utilities.color.neutral.600}"
             },
+            "700": {
+              "description": "Used for step group xs",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.700}"
+            },
             "800": {
               "description": "Used for form fields, switch, radio, checkbox",
               "type": "color",
@@ -10626,10 +10737,18 @@
       },
       "sd-brandshape": {
         "--white": {
+          "80": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              }
+            }
+          },
           "color": {
             "background": {
               "type": "color",
-              "value": "{vb.utilities.color.background.white.default}"
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           }
         },
@@ -10637,8 +10756,48 @@
           "color": {
             "background": {
               "type": "color",
-              "value": "{vb.utilities.color.background.neutral.100}"
+              "value": "rgba(255, 255, 255, 0.00)"
             }
+          }
+        },
+        "color": {
+          "border": {
+            "white": {
+              "default": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              }
+            }
+          }
+        },
+        "--primary": {
+          "80": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              }
+            }
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "_internal": {
+          "slot": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          },
+          "slot-inverted": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
           }
         }
       },
@@ -12408,6 +12567,11 @@
               "type": "color",
               "value": "{kid.utilities.color.neutral.600}"
             },
+            "700": {
+              "description": "Used for step group xs",
+              "type": "color",
+              "value": "{kid.utilities.color.neutral.700}"
+            },
             "800": {
               "description": "Used for form fields, switch, radio, checkbox",
               "type": "color",
@@ -13947,10 +14111,18 @@
       },
       "sd-brandshape": {
         "--white": {
+          "80": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              }
+            }
+          },
           "color": {
             "background": {
               "type": "color",
-              "value": "{kid.utilities.color.background.white.default}"
+              "value": "rgba(255, 255, 255, 0.00)"
             }
           }
         },
@@ -13958,8 +14130,48 @@
           "color": {
             "background": {
               "type": "color",
-              "value": "{kid.utilities.color.background.neutral.100}"
+              "value": "rgba(255, 255, 255, 0.00)"
             }
+          }
+        },
+        "color": {
+          "border": {
+            "white": {
+              "default": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              }
+            }
+          }
+        },
+        "--primary": {
+          "80": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              }
+            }
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "_internal": {
+          "slot": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          },
+          "slot-inverted": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
           }
         }
       },

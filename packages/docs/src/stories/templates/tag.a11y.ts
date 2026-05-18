@@ -5,9 +5,11 @@ test('Filter Tag Group', async ({ page }) => {
   await expect(page.locator('body')).toMatchAriaSnapshot(`
       - region "Top right notifications"
       - region "Bottom center notifications"
-      - button "All" [pressed]
-      - button "Extended Reality"
-      - button "Internet of things"
+      - button "All (26)" [pressed]
+      - button "Funds (16)"
+      - button "Sustainability (5)"
+      - button "Retirement planing (2)"
+      - button "Documents (3)"
     `);
 });
 
@@ -16,14 +18,16 @@ test('Filter Tag Group with Morningstar Rating', async ({ page }) => {
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=templates-tag--filter-tag-group-morningstar-rating&viewMode=story'
   );
   await expect(page.locator('body')).toMatchAriaSnapshot(`
-      - region "Top right notifications"
-      - region "Bottom center notifications"
+    - region "Top right notifications"
+    - region "Bottom center notifications"
+    - paragraph: "Find Top-Rated Investments with Morningstar Ratings:"
+    - group "Filter by morningstar rating":
       - button "5 stars" [pressed]
       - button "4 stars"
       - button "3 stars"
       - button "2 stars"
       - button "1 star"
-    `);
+  `);
 });
 
 test('Filter Tag Group with Risk', async ({ page }) => {
@@ -33,11 +37,11 @@ test('Filter Tag Group with Risk', async ({ page }) => {
   await expect(page.locator('body')).toMatchAriaSnapshot(`
       - region "Top right notifications"
       - region "Bottom center notifications"
-      - button "Very High Risk" [pressed]
-      - button "High Risk"
-      - button "Increased Risk"
-      - button "Moderated Risk"
-      - button "Low Risk"
+      - button "Very High" [pressed]
+      - button "High"
+      - button "Increased"
+      - button "Moderate"
+      - button "Low"
     `);
 });
 
@@ -46,25 +50,27 @@ test('Removable Filter Tag Group', async ({ page }) => {
     'http://127.0.0.1:6998/iframe.html?globals=&args=&id=templates-tag--removable-filter-tag-group&viewMode=story'
   );
   await expect(page.locator('body')).toMatchAriaSnapshot(`
-      - region "Top right notifications"
-      - region "Bottom center notifications"
-      - text: Filter 1
-      - button "Remove":
-        - img "Remove":
-          - img
-      - text: Filter 2
-      - button "Remove":
-        - img "Remove":
-          - img
-      - text: Filter 3
-      - button "Remove":
-        - img "Remove":
-          - img
-      - text: Filter 4
-      - button "Remove":
-        - img "Remove":
-          - img
-    `);
+    - region "Top right notifications"
+    - region "Bottom center notifications"
+    - paragraph: "Active filters:"
+    - text: Stocks
+    - button "Remove":
+      - img "Remove":
+        - img
+    - text: Bonds
+    - button "Remove":
+      - img "Remove":
+        - img
+    - text: Mutual funds
+    - button "Remove":
+      - img "Remove":
+        - img
+    - text: ETFs
+    - button "Remove":
+      - img "Remove":
+        - img
+    - button "Remove filters"
+  `);
 });
 
 test('Tag Group with Links', async ({ page }) => {
@@ -72,12 +78,14 @@ test('Tag Group with Links', async ({ page }) => {
   await expect(page.locator('body')).toMatchAriaSnapshot(`
       - region "Top right notifications"
       - region "Bottom center notifications"
-      - link "Topic 1":
-        - /url: "#"
-      - link "Topic 2":
-        - /url: "#"
-      - link "Topic 3":
-        - /url: "#"
+      - link "Commercial real estate":
+        - /url: https://solid-design-system.fe.union-investment.de/docs/
+      - link "Savings plan rate":
+        - /url: https://solid-design-system.fe.union-investment.de/docs/
+      - link "Open-ended real estate funds":
+        - /url: https://solid-design-system.fe.union-investment.de/docs/
+      - link "Retirement planning":
+        - /url: https://solid-design-system.fe.union-investment.de/docs/
     `);
 });
 

@@ -255,6 +255,15 @@ function buildSpacing(themeTokens, rawSpacing = {}) {
     spacing[key] = `var(--${token.name})`;
   }
 
+  // Merge sizing tokens — sizing and spacing share the same numeric scale
+  for (const token of themeTokens) {
+    if (!token.name.startsWith('sd-sizing-')) continue;
+    const key = token.name.slice('sd-sizing-'.length);
+    if (!(key in spacing)) {
+      spacing[key] = `var(--${token.name})`;
+    }
+  }
+
   // Fill gaps with raw values from tokens.json (not CSS vars, so use the value directly)
   for (const [key, value] of Object.entries(rawSpacing)) {
     if (!(key in spacing)) {

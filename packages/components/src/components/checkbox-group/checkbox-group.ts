@@ -9,7 +9,7 @@ import SolidElement from '../../internal/solid-element';
 import type SdCheckbox from '../checkbox/checkbox';
 
 /**
- * @summary Checkbox groups are used to group multiple [checkbox](/components/checkbox). It provides only presentational functionality.
+ * @summary Used to select multiple options from a list of options.
  * @documentation https://solid.union-investment.com/[storybook-link]/checkbox-group
  * @status stable
  * @since 1.22.0

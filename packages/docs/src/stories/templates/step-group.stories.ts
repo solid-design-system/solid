@@ -124,3 +124,43 @@ export const NonInteractiveStepGroupWithIcon = {
     </sd-step-group>
   `
 };
+
+export const StepGroupForExtraSmallVariant = {
+  name: 'Step Group for extra small variant',
+  render: () => html`
+    <div class="w-[340px]">
+      <sd-step-group id="step-group-xs" size="xs" orientation="vertical" not-interactive>
+        <sd-step size="xs" orientation="vertical" label="Login">
+          <p class="step-text">Log in to your bank's online banking using your access credentials.</p>
+        </sd-step>
+
+        <sd-step size="xs" orientation="vertical" label="Personal Data">
+          <p class="step-text">
+            Enter your personal data along with your tax identification number in the online banking portal or the
+            Banking App.
+          </p>
+        </sd-step>
+
+        <sd-step size="xs" orientation="vertical" label="Select a product">
+          <p class="step-text">
+            The product finder helps you find an investment solution that matches your preferences. Immediately after
+            making your selection, you can configure your first transaction.
+          </p>
+        </sd-step>
+
+        <sd-step size="xs" orientation="vertical" label="Check details">
+          <p class="step-text">
+            Check your entered data, confirm the legal documents, and approve everything using the VR SecureGo plus app.
+          </p>
+        </sd-step>
+
+        <sd-step size="xs" orientation="vertical" label="Complete identification">
+          <p class="step-text">
+            Identify yourself via Video-Ident or the eID service. After successful completion, you will receive a
+            confirmation and access to your securities account (depot).
+          </p>
+        </sd-step>
+      </sd-step-group>
+    </div>
+  `
+};

@@ -65,20 +65,12 @@ export default {
   }
 };
 
-/**
- * This shows sd-input in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
     return html`<div class="w-[250px]">${generateTemplate({ args })}</div> `;
   }
 };
-
-/**
- * Use the `label` attribute to give the input an accessible label. For labels that contain HTML, use the `label` slot instead.
- */
 
 export const Labels = {
   name: 'Label',
@@ -94,9 +86,6 @@ export const Labels = {
   }
 };
 
-/**
- * Use the `floating-label` attribute to enable a floating label on the input.
- */
 export const FloatingLabel = {
   name: 'Floating Label',
   args: {
@@ -123,10 +112,6 @@ export const FloatingLabel = {
     `;
   }
 };
-
-/**
- * Add descriptive help text to an input with the `help-text` attribute. For help texts that contain HTML, use the `help-text` slot instead.
- */
 
 export const HelpText = {
   name: 'Help Text',
@@ -157,10 +142,6 @@ export const HelpText = {
   }
 };
 
-/**
- * Use the `placeholder` attribute to add a placeholder.
- */
-
 export const Placeholders = {
   name: 'Placeholders',
   args: overrideArgs([{ type: 'attribute', name: 'placeholder', value: 'Type something' }]),
@@ -187,10 +168,6 @@ export const Placeholders = {
   }
 };
 
-/**
- * Add the `clearable` attribute to add a clear button when the input has content.
- */
-
 export const Clearable = {
   name: 'Clearable',
   args: overrideArgs([{ type: 'attribute', name: 'clearable', value: true }]),
@@ -216,10 +193,6 @@ export const Clearable = {
     `;
   }
 };
-
-/**
- * Add the `password-toggle` attribute to add a toggle button that will show the password when activated. Only works with `type="password"`.
- */
 
 export const TogglePassword = {
   name: 'Toggle password',
@@ -255,10 +228,6 @@ export const TogglePassword = {
   }
 };
 
-/**
- * Use the disabled attribute to disable an input. All interaction is disabled and no events will be fired.
- */
-
 export const Disabled = {
   name: 'Disabled',
   args: overrideArgs([
@@ -293,10 +262,6 @@ export const Disabled = {
   }
 };
 
-/**
- * Use the readonly attribute to render an input as readonly.  Interaction is enabled, but the input cannot be edited.  Events will be fired.
- */
-
 export const Readonly = {
   name: 'Readonly',
   args: overrideArgs([
@@ -330,10 +295,6 @@ export const Readonly = {
     `;
   }
 };
-
-/**
- * This shows sd-input in its various sizes.
- */
 
 export const Sizes = {
   name: 'Sizes',
@@ -375,10 +336,6 @@ export const Sizes = {
     `;
   }
 };
-
-/**
- * Per default the input will indicate an error state when the input is invalid. Use the `style-on-valid` attribute to indicate a valid state as well.
- */
 
 export const StyleOnValid = {
   name: 'Style on valid',
@@ -432,10 +389,6 @@ export const StyleOnValid = {
     }
   }
 };
-
-/**
- * Demonstrates the allowed input types.
- */
 
 export const Types = {
   name: 'Types',
@@ -713,10 +666,6 @@ export const Types = {
     `;
   }
 };
-
-/**
- * Demonstrates the various validation options extended from the native input element in addition to error and success styles.
- */
 
 export const Validation = {
   name: 'Validation',
@@ -997,10 +946,6 @@ export const Validation = {
   }
 };
 
-/**
- * Shows available slots. The `label` and `help-text` slots will overwrite their corresponding attributes.
- */
-
 export const Slots = {
   name: 'Slots',
   render: (args: any) => {
@@ -1046,10 +991,6 @@ export const Slots = {
     `;
   }
 };
-
-/**
- * Use the `form-control`, `form-control-label`, `form-control-input`, `form-control-help-text`, `base`, `border`, `input`, `left`, `clear-button`, and `right` part selectors to customize the input.
- */
 
 export const Parts = {
   name: 'Parts',
@@ -1098,12 +1039,6 @@ export const Parts = {
     });
   }
 };
-
-/**
- * 1. You can use the `setCustomValidity` method to set a custom validation message. This will override any native validation messages.
- * 2. Set an empty string to clear the custom validity and make the input valid.
- * 3. To show the validation message, call the `reportValidity` method. Originally this would show a native validation bubble, but we show the error messages inline.
- */
 
 export const setCustomValidity = {
   name: 'setCustomValidity',
@@ -1159,10 +1094,6 @@ export const setCustomValidity = {
     `;
   }
 };
-
-/**
- * `sd-input` is fully accessibile via keyboard.
- */
 
 export const Mouseless = {
   name: 'Mouseless',

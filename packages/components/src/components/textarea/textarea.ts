@@ -13,7 +13,7 @@ import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 
 /**
- * @summary Textareas collect data from the user and allow multiple lines of text.
+ * @summary Used to allow users to input and edit multiple lines of text.
  * @status stable
  * @since 1.31.0
  *

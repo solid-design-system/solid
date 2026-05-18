@@ -19,10 +19,6 @@ export default {
   parameters: { ...parameters, controls: { disable: true } }
 };
 
-/**
- * This shows sd-carousel-item in its default state.
- */
-
 export const Default = {
   render: (args: any) => {
     return generateTemplate({

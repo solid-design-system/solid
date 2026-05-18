@@ -170,8 +170,28 @@
   fill: rgba(var(--sd-brandshape--neutral-100-color-background, rgba(var(--sd-color-neutral-100))));
 }
 
+@utility sd-brandshape--primary-80-color-background {
+  background-color: rgba(var(--sd-brandshape--primary-80-color-background, rgba(0, 53, 142, 0.8)));
+}
+
+@utility sd-brandshape--primary-color-background {
+  background-color: rgba(var(--sd-brandshape--primary-color-background, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-brandshape--primary-color-border {
+  border-color: rgba(var(--sd-brandshape--primary-color-border, rgba(var(--sd-color-primary))));
+}
+
+@utility sd-brandshape--white-80-color-background {
+  background-color: rgba(var(--sd-brandshape--white-80-color-background, rgba(255, 255, 255, 0.8)));
+}
+
 @utility sd-brandshape--white-color-background {
   background-color: rgba(var(--sd-brandshape--white-color-background, rgba(var(--sd-color-white))));
+}
+
+@utility sd-brandshape-color-border-white-default {
+  border-color: rgba(var(--sd-brandshape-color-border-white, rgba(var(--sd-color-white))));
 }
 
 @utility sd-breadcrumb__separator--current-color {

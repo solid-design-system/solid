@@ -1,4 +1,4 @@
-import { css, html } from 'lit';
+import { css, html, nothing } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { property, query } from 'lit/decorators.js';
 import { watch } from '../../internal/watch.js';
@@ -25,7 +25,7 @@ export default class SdStepGroup extends SolidElement {
   @query('[part=body]') body: HTMLSlotElement;
 
   /** The step-groups's size. */
-  @property({ type: String, reflect: true }) size: 'lg' | 'sm' = 'lg';
+  @property({ type: String, reflect: true }) size: 'lg' | 'sm' | 'xs' = 'lg';
 
   /** Determines the orientation of the step-group. */
   @property({ type: String, reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
@@ -133,6 +133,11 @@ export default class SdStepGroup extends SolidElement {
   }
 
   render() {
+    if (this.size === 'xs' && this.orientation !== 'vertical') {
+      console.warn('Size "xs" is only supported when orientation is "vertical". The element will not be rendered.');
+      return nothing;
+    }
+
     return html`
       <div role="${!this.notInteractive ? 'navigation' : 'group'}" class="h-full" aria-label="${this.label}">
         <div role="list" part="base" class=${cx('flex', this.orientation === 'vertical' && 'flex-col h-full')}>

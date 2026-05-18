@@ -8,7 +8,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Radio buttons allow the user to select a single option from a group using a button-like control.
+ * @summary Used to switch between different options or views by selecting one option from a group.
  * @documentation https://solid.union-investment.com/[storybook-link]/radio-button
  * @status stable
  * @since 1.36.0

@@ -79,6 +79,47 @@ export const Orientation = {
   ]
 };
 
+export const Sizes = {
+  name: 'Sizes',
+  render: () => {
+    return generateTemplate({
+      axis: {
+        y: {
+          type: 'attribute',
+          name: 'size',
+          values: ['lg', 'sm', 'xs'].map(size => {
+            return { title: size, value: size };
+          })
+        }
+      },
+      args: overrideArgs([
+        {
+          type: 'slot',
+          name: 'label',
+          value: `<span slot="label">Step name</span>`
+        }
+      ]),
+      options: {
+        templateRenderer: ({ attributes, slots }) => {
+          const attrs = Object.entries(attributes)
+            .map(([attr, value]) => `${attr}='${value}'`)
+            .join(' ');
+
+          if (attributes.size === 'xs') {
+            return `<div class="h-[5em]"><sd-step ${attrs} orientation="vertical"><span slot="label">Step name</span></sd-step></div>`;
+          }
+
+          const slotted = Object.entries(slots ?? {})
+            .map(([, slot]) => slot)
+            .join('\n');
+
+          return `<sd-step ${attrs}>${slotted}</sd-step>`;
+        }
+      }
+    });
+  }
+};
+
 export const HorizontalInline = {
   name: 'Horizontal Inline',
   render: () => {
@@ -325,6 +366,7 @@ export const Mouseless = {
 export const Combination = generateScreenshotStory([
   Default,
   Orientation,
+  Sizes,
   HorizontalInline,
   Waiting,
   Disabled,

@@ -57,20 +57,12 @@ export default {
   }
 };
 
-/**
- * Default: This shows sd-step-group in its default state.
- */
-
 export const Default = {
   name: 'Default',
   render: (args: any) => {
     return html`<div style="height:250px">${generateTemplate({ args })}</div>`;
   }
 };
-
-/**
- * Use the orientation attribute to set the axis of a step-group.
- */
 
 export const Orientation = {
   name: 'Orientation',
@@ -108,17 +100,13 @@ export const Orientation = {
   ]
 };
 
-/**
- * Use the not-interactive attribute to create a non-interactive step group.
- */
-
 export const notInteractive = {
   name: 'Not Interactive X Size',
   render: (args: any) => {
     return generateTemplate({
       axis: {
         x: { type: 'attribute', name: 'not-interactive' },
-        y: { type: 'attribute', name: 'size' }
+        y: { type: 'attribute', name: 'size', values: ['lg', 'sm', 'xs'] }
       },
       args,
       options: {
@@ -126,6 +114,21 @@ export const notInteractive = {
           const attrs = Object.entries(attributes)
             .map(([attr, value]) => `${attr}='${value}'`)
             .join(' ');
+
+          if (attributes.size === 'xs') {
+            const xsSlots = `
+              <sd-step size="xs" orientation="vertical">
+                <p slot="label">Lorem ipsum dolor sit</p>
+              </sd-step>
+              <sd-step size="xs" orientation="vertical" current>
+                <p slot="label">Exercitation ullamco laboris</p>
+              </sd-step>
+              <sd-step size="xs" orientation="vertical" waiting>
+                <p slot="label">Reprehenderit qui in e name</p>
+              </sd-step>`;
+
+            return `<div class="h-[20em]"><sd-step-group orientation="vertical" ${attrs} label="${attributes.size}-${attributes['not-interactive']}">${xsSlots}</sd-step-group></div>`;
+          }
 
           const slotted = Object.entries(slots ?? {})
             .map(([, slot]) => slot)
@@ -140,7 +143,7 @@ export const notInteractive = {
     (story: () => typeof html) => html`
       <style>
         td.template {
-          width: 100%;
+          width: fit-content;
         }
       </style>
       ${story()}
@@ -148,9 +151,6 @@ export const notInteractive = {
   ]
 };
 
-/**
- * Use the 'base' and 'body' parts to style the step-group.
- */
 export const Parts = {
   name: 'Parts',
   render: () => {
@@ -198,10 +198,6 @@ export const Parts = {
   }
 };
 
-/**
- * sd-steps are fully accessibile via keyboard.
- */
-
 export const Mouseless = {
   name: 'Mouseless',
   render: (args: any) => {
@@ -219,10 +215,6 @@ export const Mouseless = {
     el?.querySelector('sd-step')?.shadowRoot?.querySelector('button')!.focus();
   }
 };
-
-/**
- * This sample shows how to set the active step programmatically.
- */
 
 export const SetActiveStep = {
   name: 'Sample: Set Active Step',
@@ -262,11 +254,6 @@ export const SetActiveStep = {
     `;
   }
 };
-
-/**
- * This sample shows how to use the not-interactive attribute with content icons. The border-radius of an sd-step is larger when the not-interactive attribute is set to `true`.
- * The size of the icon is recommended to be 48px for the 'lg' size and 32px for the 'sm' size. The size can be set using font-size.
- */
 
 export const SampleNotInteractive = {
   name: 'Sample: Not Interactive',
@@ -320,11 +307,6 @@ export const SampleNotInteractive = {
     `;
   }
 };
-
-/**
- * This sample shows how to manually manage step states by setting active-step to -1.
- * States are controlled manually on the sd-step elements.
- */
 
 export const ManualStateManagement = {
   name: 'Manual Step State Management',

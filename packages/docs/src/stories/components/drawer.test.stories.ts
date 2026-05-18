@@ -52,9 +52,6 @@ export default {
   }
 };
 
-/**
- * Default: This shows sd-drawer in its default state.
- */
 export const Default = {
   name: 'Default',
   render: (args: any) => {
@@ -66,9 +63,6 @@ export const Default = {
   }
 };
 
-/**
- * Drawer with a tertiary button in the header. In case there's a requirement not to have left-padding in the header, as it's the case with the tertiary button in the `header` slot, you can override the `sd-drawer::part(header)` selector by applying a `left-padding: 0;` style.
- */
 export const ButtonInHeader = {
   name: 'Button in Header',
   render: (args: any) => {
@@ -92,9 +86,6 @@ export const ButtonInHeader = {
   }
 };
 
-/**
- * If you do not need a header, you can remove it by applying the `no-header` attribute.
- */
 export const NoHeader = {
   name: 'No Header',
   render: (args: any) => {
@@ -113,9 +104,6 @@ export const NoHeader = {
   }
 };
 
-/**
- * If you do not need a footer, you can remove it by omitting the footer slot.
- */
 export const NoFooter = {
   name: 'No Footer',
   render: (args: any) => {
@@ -134,9 +122,6 @@ export const NoFooter = {
   }
 };
 
-/**
- * In case it is neccessary the padding in header, body and footer can be removed by overriding the `sd-drawer::part(header)`, `sd-drawer::part(body)`,`sd-drawer::part(footer)` selectors by applying a `left-padding: 0;` style, or adjusted with other values that fit the requirements.
- */
 export const Padding = {
   name: 'Padding',
   render: (args: any) => {
@@ -177,9 +162,6 @@ export const Padding = {
   }
 };
 
-/**
- * The drawer placement can be start or end.
- */
 export const Placement = {
   name: 'Placement',
   render: (args: any) => {
@@ -208,9 +190,6 @@ export const Placement = {
   }
 };
 
-/**
- *By default, the drawer’s panel will gain focus when opened. This allows a subsequent tab press to focus on the first tabbable element in the drawer. If you want a different element to have focus, add the autofocus attribute to it
- */
 export const Autofocus = {
   name: 'Autofocus',
   render: (args: any) => {

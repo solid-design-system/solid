@@ -5,7 +5,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Badges are used to draw attention and display statuses or counts.
+ * @summary Used to visual indicate a quantity related to a particular element. Often displayed next to an icon or label.
  * @documentation https://solid.union-investment.com/[storybook-link]/badge
  * @status stable
  * @since 1.6.0

@@ -48,7 +48,7 @@ test('Contact Form', async ({ page }) => {
         - checkbox "I would like to receive marketing emails."
         - text: I would like to receive marketing emails.
       - text: "* Required fields"
-      - button "Submit registration"
+      - button "Send"
       - button "Cancel"
     `);
 });
@@ -74,7 +74,7 @@ test('Form With Visually Disabled Elements', async ({ page }) => {
         - checkbox "I would like to receive marketing emails." [disabled]
         - text: I would like to receive marketing emails.
       - text: "* Required fields"
-      - button "Submit registration" [disabled]
+      - button "Send" [disabled]
       - button "Cancel"
     `);
 });

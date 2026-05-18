@@ -8,7 +8,7 @@ import SolidElement from '../../internal/solid-element';
 let id = 0;
 
 /**
- * @summary Tab panels are used inside [tab groups](/components/tab-group) to display tabbed content.
+ * @summary Used inside sd-tab-group to display tabbed content.
  * @documentation https://solid.union-investment.com/[storybook-link]/tab-panel
  * @status stable
  * @since 2.6.0

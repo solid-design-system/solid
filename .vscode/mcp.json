@@ -6,6 +6,14 @@
       "headers": {
         "X-MCP-Toolsets": "default,projects,labels"
       }
+    },
+    "solid-design-system": {
+      "command": "node",
+      "args": ["./packages/mcp/dist/bin/start.js"]
+    },
+    "figma": {
+      "url": "http://127.0.0.1:3845/mcp",
+      "type": "http"
     }
   }
 }
