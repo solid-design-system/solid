@@ -1546,50 +1546,24 @@ export const SampleD01 = {
 export const SampleD02 = {
   name: 'Header Sample D-02',
   render: () => html`
-    <style>
-      #anchor--templates-header-navigation--sample-d-02 .innerZoomElementWrapper {
-        height: 900px;
-      }
-    </style>
     <sd-header id="sample-d-02-header" fixed>
       <div class="grid grid-cols-[1fr_auto_1fr] items-center">
-        <!-- Back arrow: all breakpoints -->
         <div class="flex items-center">
           <sd-navigation-item id="back-button-sample-d-02">
             <sd-icon name="system/arrow-left" label="Go back" class="text-xl"></sd-icon>
           </sd-navigation-item>
         </div>
-        <!-- Logo: centered -->
         <a class="flex justify-center flex-shrink" href="#">
           <div class="h-8 md:h-12 lg:h-14 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
         </a>
       </div>
     </sd-header>
-    <sd-drawer id="sample-d-02-drawer" placement="end" class="relative block">
-      <nav aria-label="Main" class="-mx-4">
-        <sd-navigation-item vertical current href="javascript:void(0)"> Home </sd-navigation-item>
-        <sd-navigation-item vertical chevron divider href="javascript:void(0)">About Us</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Markets</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Press Service</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Sustainability</sd-navigation-item>
-      </nav>
-      <nav aria-label="Service" slot="footer" class="bg-neutral-100 -m-4">
-        <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/user" class="text-xl mr-2"></sd-icon>
-          My account
-        </sd-navigation-item>
-        <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/lock-locked" class="text-xl mr-2"></sd-icon>
-          My application
-        </sd-navigation-item>
-        <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-          <sd-icon name="system/website" class="text-xl mr-2"></sd-icon>
-          Our further appearances
-        </sd-navigation-item>
-      </nav>
-    </sd-drawer>
 
     <style>
+      #anchor--templates-header-navigation--sample-d-02 .innerZoomElementWrapper {
+        height: 900px;
+      }
+
       sd-header#sample-d-02-header {
         --sd-header-padding: 8px 16px;
       }
