@@ -1,7 +1,7 @@
 ---
 name: Bugfix Issue
 about: Bugfix Issue Template
-title: 'fix: 🤔 [BUG_DESCRIPTION]'
+title: 'fix: [BUG_DESCRIPTION]'
 labels: ''
 assignees: ''
 
