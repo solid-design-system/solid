@@ -1,8 +1,8 @@
 ---
 name: New Style Component Issue
 about: New Style Component Issue Template
-title: 'feat: ✨ add sd-[COMPONENT_NAME] - CSS style'
-labels: '🙌 Epic, style-components'
+title: 'feat: add sd-[COMPONENT_NAME] - CSS style'
+labels: 'Epic, style-components'
 assignees: 'yoezlem'
 
 ---
