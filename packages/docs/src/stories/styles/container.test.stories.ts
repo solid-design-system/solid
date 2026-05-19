@@ -207,7 +207,7 @@ export const TriangleColor = {
       <div class="bg-primary p-4">
         <div
           class=${`sd-container sd-container--variant-white sd-container--triangle-top sd-container--padding-${paddingAttr}`}
-          style="--triangle-background: var(--sd-color-primary);"
+          style="--triangle-background: rgba(var(--sd-color-background-primary));"
         >
           <div class="slot slot--border slot--text h-12">Default slot</div>
         </div>

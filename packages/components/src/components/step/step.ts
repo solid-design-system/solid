@@ -309,7 +309,7 @@ export default class SdStep extends SolidElement {
                           : 'border-l grow shrink-0 basis-auto h-full w-[1px] mx-auto',
                         !this.disabled && !this.current && !this.notInteractive && !this.waiting
                           ? 'border-primary group-hover:border-primary-500'
-                          : 'border-neutral-400'
+                          : 'border-neutral-500'
                       )}
                     ></div>
                   `

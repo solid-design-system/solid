@@ -2070,7 +2070,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               <label
                 part="form-control-label"
                 id="label"
-                class=${cx(hasLabel ? 'inline-block form-control-color-text' : 'hidden', textSize)}
+                class=${cx(
+                  hasLabel ? 'inline-block' : 'hidden',
+                  this.visuallyDisabled || this.disabled ? 'text-neutral-500' : 'form-control-color-text',
+                  textSize
+                )}
                 for="input"
                 aria-hidden=${hasLabel ? 'false' : 'true'}
               >
@@ -2227,7 +2231,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
           name="help-text"
           part="form-control-help-text"
           id="help-text"
-          class=${cx('text-sm text-neutral-700 mt-1', hasHelpText ? 'block' : 'hidden')}
+          class=${cx(
+            'text-sm mt-1',
+            hasHelpText ? 'block' : 'hidden',
+            this.visuallyDisabled || this.disabled ? 'text-neutral-500' : 'text-neutral-700'
+          )}
           aria-hidden=${!hasHelpText}
         >
           ${this.helpText}

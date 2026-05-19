@@ -102,7 +102,7 @@
   --sd-button--tertiary--active-color-background: var(--sd-color-primary-500);
   --sd-button--tertiary--active-color-text: var(--sd-color-primary-200);
   --sd-button--tertiary--default-color-text: var(--sd-color-white);
-  --sd-button--tertiary--disabled-color-text: var(--sd-color-neutral-500);
+  --sd-button--tertiary--disabled-color-text: var(--sd-color-neutral-600);
   --sd-button--tertiary--hover-color-background: var(--sd-color-primary-700);
   --sd-button--tertiary--hover-color-text: var(--sd-color-primary-200);
   --sd-button--tertiary--inverted--active-color-background: var(--sd-color-primary-800);
@@ -194,7 +194,7 @@
   --sd-color-icon-fill-error-400: var(--sd-color-error);
   --sd-color-icon-fill-error: var(--sd-color-error-250);
   --sd-color-icon-fill-neutral-400: var(--sd-color-neutral-400);
-  --sd-color-icon-fill-neutral-500: var(--sd-color-neutral-500);
+  --sd-color-icon-fill-neutral-500: var(--sd-color-neutral-600);
   --sd-color-icon-fill-neutral-600: var(--sd-color-neutral-600);
   --sd-color-icon-fill-neutral-800: var(--sd-color-white);
   --sd-color-icon-fill-primary-100: var(--sd-color-primary-500);
@@ -239,7 +239,7 @@
   --sd-color-text-accent: var(--sd-color-accent);
   --sd-color-text-black: var(--sd-color-white);
   --sd-color-text-error: var(--sd-color-error-250);
-  --sd-color-text-neutral-500: var(--sd-color-neutral-500);
+  --sd-color-text-neutral-500: var(--sd-color-neutral-600);
   --sd-color-text-neutral-600: var(--sd-color-neutral-600);
   --sd-color-text-neutral-700: var(--sd-color-primary-400);
   --sd-color-text-primary-100: var(--sd-color-primary-500);
@@ -288,9 +288,9 @@
   --sd-font-weight-bold: 600;
   --sd-font-weight-normal: 400;
   --sd-footnotes--target--inverted-color-background: var(--sd-color-primary-800);
-  --sd-form-control--disabled-color-text: var(--sd-color-neutral-500);
+  --sd-form-control--disabled-color-text: var(--sd-color-neutral-600);
   --sd-form-control--filled__floating-label-color-text: var(--sd-color-primary-400);
-  --sd-form-control--hover-color-background: var(--sd-color-neutral-700);
+  --sd-form-control--hover-color-background: var(--sd-color-primary-700);
   --sd-form-control--invalid-color-background: var(--sd-color-primary-900);
   --sd-form-control--read-only-color-background: var(--sd-color-neutral-700);
   --sd-form-control-border-radius: var(--sd-spacing-1);
@@ -302,7 +302,7 @@
   --sd-form-control__listbox-border-top-right-radius: var(--sd-spacing-1);
   --sd-header-color-background: var(--sd-color-primary);
   --sd-header-padding-bottom: 0;
-  --sd-header__shadow-height: var(--sd-spacing-1);
+  --sd-header__shadow-height: 0;
   --sd-header__underline-color-background: 255 255 255 / 0;
   --sd-header__underline-height: var(--sd-spacing-2);
   --sd-headline--3xl-onwards-color-text: var(--sd-color-white);
@@ -320,8 +320,8 @@
   --sd-marker-border-width: 0;
   --sd-marker-font-size: 0.875rem;
   --sd-marker-font-weight: var(--sd-font-weight-normal);
-  --sd-menu-item--disabled-color-icon-fill: var(--sd-color-neutral-500);
-  --sd-menu-item--disabled-color-text: var(--sd-color-neutral-500);
+  --sd-menu-item--disabled-color-icon-fill: var(--sd-color-neutral-600);
+  --sd-menu-item--disabled-color-text: var(--sd-color-neutral-600);
   --sd-menu-item-color-icon-fill: var(--sd-color-white);
   --sd-menu-item-color-text: var(--sd-color-white);
   --sd-navigable-border-radius: 0;
@@ -353,8 +353,6 @@
   --sd-overlay-color-background: 5 21 48 / 0.9;
   --sd-pagination--default-border: var(--sd-color-accent);
   --sd-pagination--inverted-border: var(--sd-color-accent);
-  --sd-pagination__chevron--default-text: var(--sd-color-neutral-500);
-  --sd-pagination__chevron--inverted-text: var(--sd-color-neutral-600);
   --sd-panel-color-border: var(--sd-color-primary-400);
   --sd-quickfact--expandable-color-text: var(--sd-color-white);
   --sd-radio--checked--default-color-background: var(--sd-color-primary-900);

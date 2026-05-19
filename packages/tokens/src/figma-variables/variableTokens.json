@@ -212,8 +212,8 @@
         "VariableID:44921:14706",
         "VariableID:44921:14707",
         "VariableID:44917:20154",
-        "VariableID:46172:9194",
         "VariableID:44917:20144",
+        "VariableID:46172:9194",
         "VariableID:43927:5029",
         "VariableID:48719:123821",
         "VariableID:46396:101311",
@@ -524,8 +524,8 @@
         "VariableID:43979:261",
         "VariableID:43979:262",
         "VariableID:43979:263",
-        "VariableID:43979:264",
         "VariableID:43979:299",
+        "VariableID:43979:264",
         "VariableID:43979:300",
         "VariableID:43979:265",
         "VariableID:43979:301",
@@ -572,7 +572,6 @@
         "VariableID:45014:30944",
         "VariableID:56149:47181",
         "VariableID:44271:64020",
-        "VariableID:62625:4690",
         "VariableID:44625:20357",
         "VariableID:58990:4429",
         "VariableID:44762:16901",
@@ -641,16 +640,6 @@
         "VariableID:43979:257",
         "VariableID:43979:258",
         "VariableID:43979:241",
-        "VariableID:47735:23880",
-        "VariableID:50346:24618",
-        "VariableID:56342:50645",
-        "VariableID:50348:22930",
-        "VariableID:56886:3305",
-        "VariableID:47735:23876",
-        "VariableID:47735:23879",
-        "VariableID:47737:23882",
-        "VariableID:47735:23878",
-        "VariableID:56886:2865",
         "VariableID:50635:19390",
         "VariableID:58163:56932",
         "VariableID:58163:56933",
@@ -678,7 +667,6 @@
         "VariableID:43979:268",
         "VariableID:43979:269",
         "VariableID:43979:270",
-        "VariableID:56886:3301",
         "VariableID:43979:271",
         "VariableID:43979:272",
         "VariableID:43979:312",
@@ -853,6 +841,17 @@
         "VariableID:46434:259685",
         "VariableID:46434:259686",
         "VariableID:48602:92347",
+        "VariableID:47735:23880",
+        "VariableID:56342:50645",
+        "VariableID:47735:23876",
+        "VariableID:47737:23882",
+        "VariableID:47735:23878",
+        "VariableID:50346:24618",
+        "VariableID:50348:22930",
+        "VariableID:56886:3305",
+        "VariableID:47735:23879",
+        "VariableID:56886:2865",
+        "VariableID:56886:3301",
         "VariableID:56886:3304",
         "VariableID:46871:10801",
         "VariableID:50243:25341",
@@ -880,6 +879,7 @@
         "VariableID:46550:34530",
         "VariableID:46552:34531",
         "VariableID:46893:49686",
+        "VariableID:62625:4690",
         "VariableID:46893:50283",
         "VariableID:46893:50285",
         "VariableID:46893:50284",
@@ -897,8 +897,6 @@
         "VariableID:46841:9203",
         "VariableID:56989:207",
         "VariableID:49844:13867",
-        "VariableID:56599:386",
-        "VariableID:56599:388",
         "VariableID:49844:13952",
         "VariableID:46741:3641",
         "VariableID:46434:310776",
@@ -2421,7 +2419,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "56479:0": {
-          "id": "VariableID:43979:217",
+          "id": "VariableID:43979:218",
           "type": "VARIABLE_ALIAS"
         }
       },
@@ -6412,7 +6410,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "47719:0": {
-          "id": "VariableID:43979:213",
+          "id": "VariableID:43979:241",
           "type": "VARIABLE_ALIAS"
         },
         "56479:0": {
@@ -6440,7 +6438,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "43174:14": {
-          "id": "VariableID:43979:218",
+          "id": "VariableID:43979:219",
           "type": "VARIABLE_ALIAS"
         },
         "44883:0": {
@@ -6452,7 +6450,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "56479:0": {
-          "id": "VariableID:43979:217",
+          "id": "VariableID:43979:218",
           "type": "VARIABLE_ALIAS"
         }
       },
@@ -7458,7 +7456,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "43174:14": {
-          "id": "VariableID:43979:218",
+          "id": "VariableID:43979:219",
           "type": "VARIABLE_ALIAS"
         },
         "44883:0": {
@@ -8046,7 +8044,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "56479:0": {
-          "id": "VariableID:43979:217",
+          "id": "VariableID:43979:218",
           "type": "VARIABLE_ALIAS"
         }
       },
@@ -12744,7 +12742,7 @@
           "r": 0.0941176488995552
         },
         "43174:14": {
-          "a": 0.4000000059604645,
+          "a": 0,
           "b": 0.0941176488995552,
           "g": 0.0941176488995552,
           "r": 0.0941176488995552
@@ -13486,7 +13484,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "47719:0": {
-          "id": "VariableID:43979:201",
+          "id": "VariableID:43979:225",
           "type": "VARIABLE_ALIAS"
         },
         "56479:0": {
@@ -18207,7 +18205,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "43174:14": {
-          "id": "VariableID:43979:246",
+          "id": "VariableID:43979:247",
           "type": "VARIABLE_ALIAS"
         },
         "44883:0": {
@@ -18247,7 +18245,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "43174:14": {
-          "id": "VariableID:43979:277",
+          "id": "VariableID:43979:313",
           "type": "VARIABLE_ALIAS"
         },
         "44883:0": {
@@ -22363,7 +22361,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "43174:14": {
-          "id": "VariableID:43979:218",
+          "id": "VariableID:43979:219",
           "type": "VARIABLE_ALIAS"
         },
         "44883:0": {
@@ -23785,10 +23783,10 @@
       "scopes": [],
       "valuesByMode": {
         "43138:0": {
-          "a": 0.3799999952316284,
-          "b": 0,
-          "g": 0,
-          "r": 0
+          "a": 1,
+          "b": 0.6196078658103943,
+          "g": 0.6196078658103943,
+          "r": 0.6196078658103943
         }
       },
       "variableCollectionId": "VariableCollectionId:42952:95"
@@ -24574,82 +24572,6 @@
       },
       "variableCollectionId": "VariableCollectionId:43174:55999"
     },
-    "VariableID:56599:386": {
-      "codeSyntax": {},
-      "description": "",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:56599:386",
-      "key": "72bc5ce1002fdf01068bdc34701cbc40074b483a",
-      "name": "components/sd-pagination/__chevron/--default/text",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "43174:13": {
-          "id": "VariableID:43979:218",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43174:14": {
-          "id": "VariableID:43979:218",
-          "type": "VARIABLE_ALIAS"
-        },
-        "44883:0": {
-          "id": "VariableID:43979:218",
-          "type": "VARIABLE_ALIAS"
-        },
-        "47719:0": {
-          "id": "VariableID:43979:217",
-          "type": "VARIABLE_ALIAS"
-        },
-        "56479:0": {
-          "id": "VariableID:43979:195",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:43174:55999"
-    },
-    "VariableID:56599:388": {
-      "codeSyntax": {},
-      "description": "",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:56599:388",
-      "key": "3e7fdc24ce01c95661fa208cdb93db0821186b97",
-      "name": "components/sd-pagination/__chevron/--inverted/text",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "43174:13": {
-          "id": "VariableID:43979:219",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43174:14": {
-          "id": "VariableID:43979:219",
-          "type": "VARIABLE_ALIAS"
-        },
-        "44883:0": {
-          "a": 0.4000000059604645,
-          "b": 1,
-          "g": 1,
-          "r": 1
-        },
-        "47719:0": {
-          "id": "VariableID:43979:219",
-          "type": "VARIABLE_ALIAS"
-        },
-        "56479:0": {
-          "a": 0.4000000059604645,
-          "b": 1,
-          "g": 1,
-          "r": 1
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:43174:55999"
-    },
     "VariableID:56886:2865": {
       "codeSyntax": {},
       "description": "",
@@ -25124,9 +25046,9 @@
       "valuesByMode": {
         "43174:13": 1,
         "43174:14": 0,
-        "44883:0": 2,
-        "47719:0": 2,
-        "56479:0": 0
+        "44883:0": 10,
+        "47719:0": 10,
+        "56479:0": 10
       },
       "variableCollectionId": "VariableCollectionId:43174:55999"
     },
@@ -25452,7 +25374,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "43174:14": {
-          "id": "VariableID:43979:220",
+          "id": "VariableID:43373:35302",
           "type": "VARIABLE_ALIAS"
         },
         "44883:0": {
@@ -26166,7 +26088,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "56479:0": {
-          "id": "VariableID:43979:217",
+          "id": "VariableID:43979:218",
           "type": "VARIABLE_ALIAS"
         }
       },
@@ -26202,7 +26124,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "56479:0": {
-          "id": "VariableID:43979:217",
+          "id": "VariableID:43979:218",
           "type": "VARIABLE_ALIAS"
         }
       },
@@ -26262,7 +26184,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "43174:14": {
-          "id": "VariableID:47226:13297",
+          "id": "VariableID:61415:3587",
           "type": "VARIABLE_ALIAS"
         },
         "44883:0": {
@@ -26698,7 +26620,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "43174:14": {
-          "id": "VariableID:43979:218",
+          "id": "VariableID:43979:219",
           "type": "VARIABLE_ALIAS"
         },
         "44883:0": {

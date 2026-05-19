@@ -267,7 +267,7 @@
   --sd-datepicker__date-item--selected-color-background: var(--sd-color-primary);
   --sd-datepicker__date-item--selected-color-text: var(--sd-color-white);
   --sd-divider--inverted-color-border: 255 255 255 / 0.4;
-  --sd-drop-shadow-listbox:  0px 2px 20px rgba(0, 0, 0, 0.25);
+  --sd-drop-shadow-listbox:  0px 10px 20px rgba(0, 0, 0, 0.25);
   --sd-drop-shadow-sm:  0.5px 0.5px 1.5px rgba(0, 0, 0, 0.65);
   --sd-drop-shadow-xs:  0.5px 0.5px 1.5px rgba(0, 0, 0, 0.65);
   --sd-drop-shadow:  0px 0px 20px rgba(0, 0, 0, 0.25);
@@ -354,8 +354,6 @@
   --sd-overlay-color-background: 0 0 0 / 0.2;
   --sd-pagination--default-border: var(--sd-color-primary-500);
   --sd-pagination--inverted-border: var(--sd-color-white);
-  --sd-pagination__chevron--default-text: var(--sd-color-neutral-500);
-  --sd-pagination__chevron--inverted-text: 255 255 255 / 0.4;
   --sd-panel-color-border: 255 255 255 / 0;
   --sd-quickfact--expandable-color-text: var(--sd-color-black);
   --sd-radio--checked--default-color-background: var(--sd-color-primary);
@@ -384,7 +382,7 @@
   --sd-radius-sm: 0.125rem;
   --sd-radius: 0.25rem;
   --sd-range-scale-ticks-color-text: var(--sd-color-neutral-600);
-  --sd-shadow-listbox:  0px 2px 20px 0px rgba(0, 0, 0, 0.25);
+  --sd-shadow-listbox:  0px 10px 20px 0px rgba(0, 0, 0, 0.25);
   --sd-shadow-sm:  0.5px 0.5px 1.5px 0px rgba(0, 0, 0, 0.65);
   --sd-shadow-xs:  0.5px 0.5px 1.5px 0px rgba(0, 0, 0, 0.65);
   --sd-shadow:  0px 0px 20px 0px rgba(0, 0, 0, 0.25);

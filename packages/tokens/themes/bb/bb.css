@@ -156,7 +156,7 @@
   --sd-color-background-neutral-200: var(--sd-color-neutral-100);
   --sd-color-background-neutral-300: var(--sd-color-neutral-200);
   --sd-color-background-neutral-400: var(--sd-color-neutral-300);
-  --sd-color-background-neutral-500: var(--sd-color-neutral-400);
+  --sd-color-background-neutral-500: var(--sd-color-neutral-500);
   --sd-color-background-neutral-600: var(--sd-color-neutral-600);
   --sd-color-background-neutral-800: var(--sd-color-black);
   --sd-color-background-primary-100: var(--sd-color-primary-100);
@@ -174,7 +174,7 @@
   --sd-color-border-error-400: var(--sd-color-error);
   --sd-color-border-error: var(--sd-color-error);
   --sd-color-border-neutral-400: var(--sd-color-neutral-400);
-  --sd-color-border-neutral-500: var(--sd-color-neutral-400);
+  --sd-color-border-neutral-500: var(--sd-color-neutral-500);
   --sd-color-border-neutral-600: var(--sd-color-neutral-600);
   --sd-color-border-neutral-800: var(--sd-color-black);
   --sd-color-border-primary-100: var(--sd-color-primary-100);
@@ -195,7 +195,7 @@
   --sd-color-icon-fill-error-400: var(--sd-color-error);
   --sd-color-icon-fill-error: var(--sd-color-error);
   --sd-color-icon-fill-neutral-400: var(--sd-color-neutral-200);
-  --sd-color-icon-fill-neutral-500: var(--sd-color-neutral-400);
+  --sd-color-icon-fill-neutral-500: var(--sd-color-neutral-500);
   --sd-color-icon-fill-neutral-600: 255 255 255 / 0.4;
   --sd-color-icon-fill-neutral-800: var(--sd-color-black);
   --sd-color-icon-fill-primary-100: var(--sd-color-primary-100);
@@ -216,7 +216,7 @@
   --sd-color-neutral-200: 229 229 229;
   --sd-color-neutral-300: 219 219 219;
   --sd-color-neutral-400: 204 204 204;
-  --sd-color-neutral-500: 0 0 0 / 0.38;
+  --sd-color-neutral-500: 158 158 158;
   --sd-color-neutral-600: 0 0 0 / 0.62;
   --sd-color-neutral-700: 0 0 0 / 0.65;
   --sd-color-neutral-800: 0 0 0 / 0.86;
@@ -267,7 +267,7 @@
   --sd-datepicker__date-item--selected-color-background: var(--sd-color-info);
   --sd-datepicker__date-item--selected-color-text: var(--sd-color-white);
   --sd-divider--inverted-color-border: 255 255 255 / 0.4;
-  --sd-drop-shadow-listbox:  0px 0px 20px rgba(0, 0, 0, 0.25);
+  --sd-drop-shadow-listbox:  0px 10px 20px rgba(0, 0, 0, 0.25);
   --sd-drop-shadow-sm:  0.5px 0.5px 1.5px rgba(0, 0, 0, 0.86);
   --sd-drop-shadow-xs:  0.5px 0.5px 1.5px rgba(0, 0, 0, 0.86);
   --sd-drop-shadow:  0px 0px 20px rgba(0, 0, 0, 0.25);
@@ -354,8 +354,6 @@
   --sd-overlay-color-background: 0 0 0 / 0.2;
   --sd-pagination--default-border: var(--sd-color-primary-500);
   --sd-pagination--inverted-border: var(--sd-color-white);
-  --sd-pagination__chevron--default-text: var(--sd-color-primary-300);
-  --sd-pagination__chevron--inverted-text: 255 255 255 / 0.4;
   --sd-panel-color-border: 255 255 255 / 0;
   --sd-quickfact--expandable-color-text: var(--sd-color-black);
   --sd-radio--checked--default-color-background: var(--sd-color-info);
@@ -384,7 +382,7 @@
   --sd-radius-sm: 0.125rem;
   --sd-radius: 0.25rem;
   --sd-range-scale-ticks-color-text: var(--sd-color-neutral-600);
-  --sd-shadow-listbox:  0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+  --sd-shadow-listbox:  0px 10px 20px 0px rgba(0, 0, 0, 0.25);
   --sd-shadow-sm:  0.5px 0.5px 1.5px 0px rgba(0, 0, 0, 0.86);
   --sd-shadow-xs:  0.5px 0.5px 1.5px 0px rgba(0, 0, 0, 0.86);
   --sd-shadow:  0px 0px 20px 0px rgba(0, 0, 0, 0.25);

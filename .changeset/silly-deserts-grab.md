@@ -18,8 +18,6 @@ New tokens added:
     - --sd-form-control--disabled-color-text
     - --sd-form-control--hover-color-background
     - --sd-form-control--read-only-color-background
-    - --sd-pagination__chevron--default-text
-    - --sd-pagination__chevron--inverted-text
     - --sd-radio__checked-height
     - --sd-radio__checked-width
     - --sd-radio--checked--disabled__icon-color-background

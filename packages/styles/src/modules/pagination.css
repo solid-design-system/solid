@@ -7,8 +7,6 @@
  * @boolean sd-pagination--inverted Inverts the pagination style.
  * @cssproperty --sd-pagination--default-border - The default border color for current item.
  * @cssproperty --sd-pagination--inverted-border - The border color for current item when inverted.
- * @cssproperty --sd-pagination__chevron--default-text - The color for previous and next chevron when it has no href.
- * @cssproperty --sd-pagination__chevron--inverted-text - The color for previous and next chevron when it has no href and pagination is inverted.
  */
 
 .sd-pagination {
@@ -75,7 +73,7 @@
     li:last-child:has(a:not([href])) a,
     li:first-child:has(button[disabled]) button,
     li:last-child:has(button[disabled]) button {
-      @apply cursor-not-allowed sd-pagination__chevron--default-text hover:sd-pagination__chevron--default-text;
+      @apply cursor-not-allowed form-control--disabled-color-text;
     }
   }
 
@@ -210,7 +208,7 @@
       &:last-child:has(a:not([href])) a,
       &:first-child:has(button[disabled]) button,
       &:last-child:has(button[disabled]) button {
-        @apply sd-pagination__chevron--inverted-text hover:sd-pagination__chevron--inverted-text;
+        @apply text-neutral-600 hover:text-neutral-600;
       }
 
       a,

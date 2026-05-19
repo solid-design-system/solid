@@ -1716,7 +1716,7 @@
         "500": {
           "description": "disabled",
           "type": "color",
-          "value": "rgba(0, 0, 0, 0.38)"
+          "value": "#9e9e9e"
         },
         "600": {
           "description": "foreground-secondary-text",
@@ -5300,20 +5300,6 @@
             "type": "color",
             "value": "{ui-light.utilities.color.accent.default}"
           }
-        },
-        "__chevron": {
-          "--default": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.neutral.500}"
-            }
-          },
-          "--inverted": {
-            "text": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.neutral.600}"
-            }
-          }
         }
       },
       "sd-dropdown": {
@@ -5699,7 +5685,7 @@
               "40%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
                 "type": "color",
-                "value": "rgba(24, 24, 24, 0.40)"
+                "value": "rgba(24, 24, 24, 0.00)"
               },
               "0%": {
                 "description": "Used to add border that is only visible in dark mode:\n-dropdown",
@@ -5979,7 +5965,7 @@
             "500": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{ui-dark.utilities.color.neutral.500}"
+              "value": "{ui-dark.utilities.color.neutral.600}"
             },
             "600": {
               "description": "Used for inverted disabled state",
@@ -6184,7 +6170,7 @@
             "500": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{ui-dark.utilities.color.neutral.500}"
+              "value": "{ui-dark.utilities.color.neutral.600}"
             },
             "600": {
               "description": "Used for inverted disabled state",
@@ -6971,7 +6957,7 @@
         "__shadow": {
           "height": {
             "type": "float",
-            "value": "{ui-dark.utilities.sizing.1}"
+            "value": "{ui-dark.utilities.sizing.0}"
           }
         }
       },
@@ -7124,7 +7110,7 @@
             "background": {
               "description": "Used for label ",
               "type": "color",
-              "value": "{ui-dark.utilities.color.neutral.700}"
+              "value": "{ui-dark.utilities.color.background.neutral.200}"
             }
           }
         },
@@ -7133,7 +7119,7 @@
             "text": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{ui-dark.utilities.color.neutral.500}"
+              "value": "{ui-dark.utilities.color.neutral.600}"
             }
           }
         },
@@ -7465,7 +7451,7 @@
               "text": {
                 "description": "Used for buttons, select field, focus state",
                 "type": "color",
-                "value": "{ui-dark.utilities.color.neutral.500}"
+                "value": "{ui-dark.utilities.color.neutral.600}"
               }
             }
           }
@@ -8642,11 +8628,11 @@
           "color": {
             "icon-fill": {
               "type": "color",
-              "value": "{ui-dark.utilities.color.icon-fill.neutral.500}"
+              "value": "{ui-dark.utilities.color.icon-fill.neutral.600}"
             },
             "text": {
               "type": "color",
-              "value": "{ui-dark.utilities.color.text.neutral.500}"
+              "value": "{ui-dark.utilities.color.text.neutral.600}"
             }
           }
         }
@@ -8796,20 +8782,6 @@
           "border": {
             "type": "color",
             "value": "{ui-dark.utilities.color.accent.default}"
-          }
-        },
-        "__chevron": {
-          "--default": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.neutral.500}"
-            }
-          },
-          "--inverted": {
-            "text": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.neutral.600}"
-            }
           }
         }
       },
@@ -9794,7 +9766,7 @@
           },
           "y": {
             "type": "float",
-            "value": "2"
+            "value": "10"
           },
           "blur": {
             "type": "float",
@@ -12296,20 +12268,6 @@
             "type": "color",
             "value": "{vb.utilities.color.primary.500}"
           }
-        },
-        "__chevron": {
-          "--default": {
-            "text": {
-              "type": "color",
-              "value": "{vb.utilities.color.neutral.500}"
-            }
-          },
-          "--inverted": {
-            "text": {
-              "type": "color",
-              "value": "rgba(255, 255, 255, 0.40)"
-            }
-          }
         }
       },
       "sd-dropdown": {
@@ -12455,7 +12413,7 @@
             "500": {
               "description": "Used for disabled state ",
               "type": "color",
-              "value": "{bb.utilities.color.neutral.400}"
+              "value": "{bb.utilities.color.neutral.500}"
             },
             "600": {
               "description": "Used for inverted disabled state ",
@@ -12975,7 +12933,7 @@
             "500": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{bb.utilities.color.neutral.400}"
+              "value": "{bb.utilities.color.neutral.500}"
             },
             "600": {
               "description": "Used for inverted disabled state",
@@ -13089,7 +13047,7 @@
             "500": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{bb.utilities.color.neutral.400}"
+              "value": "{bb.utilities.color.neutral.500}"
             },
             "600": {
               "description": "Used for inverted disabled state",
@@ -13293,7 +13251,7 @@
           },
           "y": {
             "type": "float",
-            "value": "0"
+            "value": "10"
           },
           "blur": {
             "type": "float",
@@ -15224,7 +15182,7 @@
                 "_border": {
                   "description": "Used for hover interaction",
                   "type": "color",
-                  "value": "{bb.utilities.color.neutral.400}"
+                  "value": "{bb.utilities.color.neutral.500}"
                 }
               }
             },
@@ -15232,7 +15190,7 @@
               "_background": {
                 "description": "Used for active / selected elements",
                 "type": "color",
-                "value": "{bb.utilities.color.neutral.400}"
+                "value": "{bb.utilities.color.neutral.500}"
               }
             }
           }
@@ -15794,20 +15752,6 @@
           "border": {
             "type": "color",
             "value": "{bb.utilities.color.primary.500}"
-          }
-        },
-        "__chevron": {
-          "--default": {
-            "text": {
-              "type": "color",
-              "value": "{bb.utilities.color.primary.300}"
-            }
-          },
-          "--inverted": {
-            "text": {
-              "type": "color",
-              "value": "rgba(255, 255, 255, 0.40)"
-            }
           }
         }
       },
@@ -16462,7 +16406,7 @@
             "default": {
               "description": "Used for active / selected elements",
               "type": "color",
-              "value": "{kid.utilities.color.accent.default}"
+              "value": "{kid.utilities.color.icon-fill.primary.default}"
             }
           },
           "neutral": {
@@ -16792,7 +16736,7 @@
           },
           "y": {
             "type": "float",
-            "value": "2"
+            "value": "10"
           },
           "blur": {
             "type": "float",
@@ -18287,7 +18231,7 @@
               "background": {
                 "description": "code only",
                 "type": "color",
-                "value": "{kid.utilities.color.primary.800}"
+                "value": "{kid.utilities.color.black.default}"
               }
             }
           }
@@ -19293,20 +19237,6 @@
           "border": {
             "type": "color",
             "value": "{kid.utilities.color.primary.900}"
-          }
-        },
-        "__chevron": {
-          "--default": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.neutral.400}"
-            }
-          },
-          "--inverted": {
-            "text": {
-              "type": "color",
-              "value": "{kid.utilities.color.neutral.600}"
-            }
           }
         }
       },

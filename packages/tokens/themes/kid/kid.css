@@ -191,7 +191,7 @@
   --sd-color-error-500: 204 0 0;
   --sd-color-error: 204 0 0;
   --sd-color-icon-fill-accent-550: var(--sd-color-accent-550);
-  --sd-color-icon-fill-accent: var(--sd-color-accent);
+  --sd-color-icon-fill-accent: var(--sd-color-black);
   --sd-color-icon-fill-error-400: var(--sd-color-error);
   --sd-color-icon-fill-error: var(--sd-color-error);
   --sd-color-icon-fill-neutral-400: var(--sd-color-neutral-200);
@@ -267,7 +267,7 @@
   --sd-datepicker__date-item--selected-color-background: var(--sd-color-black);
   --sd-datepicker__date-item--selected-color-text: var(--sd-color-white);
   --sd-divider--inverted-color-border: 255 255 255 / 0.4;
-  --sd-drop-shadow-listbox:  0px 2px 4px rgba(5, 21, 48, 0.1);
+  --sd-drop-shadow-listbox:  0px 10px 4px rgba(5, 21, 48, 0.1);
   --sd-drop-shadow-sm:  0px 4px 12px rgba(5, 21, 48, 0.25);
   --sd-drop-shadow-xs:  0.5px 0.5px 1.5px rgba(5, 21, 48, 0.75);
   --sd-drop-shadow:  0px 2px 4px rgba(5, 21, 48, 0.1);
@@ -307,7 +307,7 @@
   --sd-header__underline-color-background: 255 255 255 / 0;
   --sd-header__underline-height: var(--sd-spacing-2);
   --sd-headline--3xl-onwards-color-text: var(--sd-color-black);
-  --sd-informational-gradient--primary-800-color-background: var(--sd-color-primary-800);
+  --sd-informational-gradient--primary-800-color-background: var(--sd-color-black);
   --sd-informational-gradient--white-color-background: var(--sd-color-accent);
   --sd-interactive--active-color-text: var(--sd-color-neutral-800);
   --sd-interactive--default-color-text: var(--sd-color-black);
@@ -354,8 +354,6 @@
   --sd-overlay-color-background: 0 0 0 / 0.2;
   --sd-pagination--default-border: var(--sd-color-black);
   --sd-pagination--inverted-border: var(--sd-color-white);
-  --sd-pagination__chevron--default-text: var(--sd-color-neutral-400);
-  --sd-pagination__chevron--inverted-text: var(--sd-color-neutral-600);
   --sd-panel-color-border: 255 255 255 / 0;
   --sd-quickfact--expandable-color-text: var(--sd-color-black);
   --sd-radio--checked--default-color-background: 247 242 236 / 0;
@@ -384,7 +382,7 @@
   --sd-radius-sm: 0.125rem;
   --sd-radius: 0.25rem;
   --sd-range-scale-ticks-color-text: var(--sd-color-neutral-600);
-  --sd-shadow-listbox:  0px 2px 4px 0px rgba(5, 21, 48, 0.1);
+  --sd-shadow-listbox:  0px 10px 4px 0px rgba(5, 21, 48, 0.1);
   --sd-shadow-sm:  0px 4px 12px -6px rgba(5, 21, 48, 0.25);
   --sd-shadow-xs:  0.5px 0.5px 1.5px 0px rgba(5, 21, 48, 0.75);
   --sd-shadow:  0px 2px 4px 0px rgba(5, 21, 48, 0.1);

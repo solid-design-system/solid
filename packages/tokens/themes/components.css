@@ -774,14 +774,6 @@
   border-color: rgba(var(--sd-pagination--inverted-border, rgba(var(--sd-color-accent))));
 }
 
-@utility sd-pagination__chevron--default-text {
-  color: rgba(var(--sd-pagination__chevron--default-text, rgba(var(--sd-color-neutral-500))));
-}
-
-@utility sd-pagination__chevron--inverted-text {
-  color: rgba(var(--sd-pagination__chevron--inverted-text, rgba(var(--sd-color-neutral-600))));
-}
-
 @utility sd-quickfact--expandable-color-text {
   color: rgba(var(--sd-quickfact--expandable-color-text, rgba(var(--sd-color-primary))));
 }

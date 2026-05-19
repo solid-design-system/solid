@@ -354,8 +354,6 @@
   --sd-overlay-color-background: 5 21 48 / 0.9;
   --sd-pagination--default-border: var(--sd-color-accent);
   --sd-pagination--inverted-border: var(--sd-color-accent);
-  --sd-pagination__chevron--default-text: var(--sd-color-neutral-500);
-  --sd-pagination__chevron--inverted-text: var(--sd-color-neutral-600);
   --sd-panel-color-border: 255 255 255 / 0;
   --sd-quickfact--expandable-color-text: var(--sd-color-primary);
   --sd-radio--checked--default-color-background: var(--sd-color-white);
