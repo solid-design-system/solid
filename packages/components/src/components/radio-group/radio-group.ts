@@ -462,11 +462,7 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         name="help-text"
         part="form-control-help-text"
         id="help-text"
-        class=${cx(
-          'text-sm mt-2',
-          hasHelpText ? 'block' : 'hidden',
-          this.visuallyDisabled || this.disabled ? 'text-neutral-500' : 'text-neutral-700'
-        )}
+        class=${cx('text-sm text-neutral-700 mt-2', hasHelpText ? 'block' : 'hidden')}
         aria-hidden=${!hasHelpText}
       >
         ${this.helpText}
