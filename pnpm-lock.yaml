@@ -400,8 +400,8 @@ importers:
   packages/eslint-plugin:
     dependencies:
       '@html-eslint/parser':
-        specifier: ^0.59.0
-        version: 0.59.0
+        specifier: ^0.60.0
+        version: 0.60.0
     devDependencies:
       '@types/node':
         specifier: ^25.8.0
@@ -1245,14 +1245,14 @@ packages:
   '@hapi/topo@6.0.2':
     resolution: {integrity: sha512-KR3rD5inZbGMrHmgPxsJ9dbi6zEK+C3ZwUwTa+eMwWLz7oijWUTWD2pMSNNYJAU6Qq+65NkxXjqHr/7LM2Xkqg==}
 
-  '@html-eslint/parser@0.59.0':
-    resolution: {integrity: sha512-dsUdpOkFrq0HmPyy8kuw2uN98LIzEepdI/Xj6QimgPQ4GOmjDRocuOCcuBI1K+F9O+NYXdaKMtZ3SzI1V/jB4g==}
+  '@html-eslint/parser@0.60.0':
+    resolution: {integrity: sha512-1ok6+L8uFktdS1BD5d9SuZ0BbI0uOmkv39HNWpkvpa4989ooGMDK0T+wEeqoLtiGtpnUMwlzx0849yO777g6vw==}
 
-  '@html-eslint/template-syntax-parser@0.59.0':
-    resolution: {integrity: sha512-CMPPLP0EcgoJyU3k6girTPtxuXssHTh3/eFO8S2LagnBCXtJfMu5F3IahXamwMCMVbzaCDzIhg1doXL5Rw7vUQ==}
+  '@html-eslint/template-syntax-parser@0.60.0':
+    resolution: {integrity: sha512-jw4eDxDtMfXZNPrms+QleG/NEu5uWtPXAr7uEmqAxwT5hhbFM+txwqqRtCdoBz/skUbKxcPnAQPotuJmXcRQzg==}
 
-  '@html-eslint/types@0.59.0':
-    resolution: {integrity: sha512-YwNaTUQW5ObFFUohbGe1X0az2biDOH/6e6GR9VympbFUObUoWlXasGqRRMKi7IbxGPOZ8ucZK89ZWeAFm56Pwg==}
+  '@html-eslint/types@0.60.0':
+    resolution: {integrity: sha512-3PJaoNKK/xSTnRLPMz/6ZEr0Snr4GRjYIQJrw+nDMek1K0HstQ7KIqI7XswzT/S1kXT7B16gwXanCTjIPybjmw==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -8908,18 +8908,18 @@ snapshots:
     dependencies:
       '@hapi/hoek': 11.0.7
 
-  '@html-eslint/parser@0.59.0':
+  '@html-eslint/parser@0.60.0':
     dependencies:
-      '@html-eslint/template-syntax-parser': 0.59.0
-      '@html-eslint/types': 0.59.0
+      '@html-eslint/template-syntax-parser': 0.60.0
+      '@html-eslint/types': 0.60.0
       css-tree: 3.2.1
       es-html-parser: 0.3.1
 
-  '@html-eslint/template-syntax-parser@0.59.0':
+  '@html-eslint/template-syntax-parser@0.60.0':
     dependencies:
-      '@html-eslint/types': 0.59.0
+      '@html-eslint/types': 0.60.0
 
-  '@html-eslint/types@0.59.0':
+  '@html-eslint/types@0.60.0':
     dependencies:
       '@types/css-tree': 2.3.11
       '@types/estree': 1.0.9
