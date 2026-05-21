@@ -331,8 +331,8 @@ importers:
         specifier: ^2.10.0
         version: 2.10.0
       cssnano:
-        specifier: ^7.1.9
-        version: 7.1.9(postcss@8.5.14)
+        specifier: ^8.0.1
+        version: 8.0.1(postcss@8.5.14)
       globby:
         specifier: ^16.2.0
         version: 16.2.0

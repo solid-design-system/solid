@@ -67,7 +67,7 @@
     "comment-parser": "^1.4.6",
     "concurrently": "^9.2.1",
     "countup.js": "^2.10.0",
-    "cssnano": "^7.1.9",
+    "cssnano": "^8.0.1",
     "globby": "^16.2.0",
     "http-server": "^14.1.1",
     "lit-html": "^3.3.3",
