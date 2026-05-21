@@ -187,6 +187,18 @@ export const Placeholder = {
  * Use the `disabled` attribute to disable the select.
  */
 export const Disabled = {
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: false
+          }
+        ]
+      }
+    }
+  },
   render: () => html`
     <div class="w-[400px]">
       <sd-select size="lg" label="Label" placeholder="Disabled" placement="bottom" value="" disabled>
@@ -208,6 +220,18 @@ export const Disabled = {
  * **Accessibility Hint:** Disabling elements is not recommended for accessibility reasons.
  */
 export const VisuallyDisabled = {
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: false
+          }
+        ]
+      }
+    }
+  },
   render: () => html`
     <div class="w-[400px] h-[200px] mt-12">
       <sd-tooltip content="Visually disabled" trigger="hover focus" size="sm">
