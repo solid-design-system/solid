@@ -766,8 +766,10 @@ export const SampleA = {
       #anchor--templates-header-navigation--sample-b .innerZoomElementWrapper,
       #anchor--templates-header-navigation--sample-b-01 .innerZoomElementWrapper,
       #anchor--templates-header-navigation--sample-b-02 .innerZoomElementWrapper,
-      #anchor--templates-header-navigation--compact-c-01 .innerZoomElementWrapper,
-      #anchor--templates-header-navigation--compact-c-02 .innerZoomElementWrapper {
+      #anchor--templates-header-navigation--sample-c-01 .innerZoomElementWrapper,
+      #anchor--templates-header-navigation--sample-c-02 .innerZoomElementWrapper,
+      #anchor--templates-header-navigation--sample-d-01 .innerZoomElementWrapper,
+      #anchor--templates-header-navigation--sample-d-02 .innerZoomElementWrapper {
         height: 900px;
       }
     </style>
@@ -1761,116 +1763,78 @@ export const SampleB02 = {
   `
 };
 
-const sampleC01 = () => html`
-  <sd-header id="compact-c-01-header" fixed>
-    <div class="flex justify-between items-center">
-      <div class="flex sm:hidden items-center">
-        <a class="flex flex-shrink" href="#">
-          <div class="h-8 w-[104px] flex logo-lg" role="img" aria-label="Union Investment Homepage"></div>
-        </a>
-        <div class="w-px h-8 bg-neutral-300 mx-3 self-center"></div>
-        <div class="h-8 w-[90px] items-center justify-center bg-neutral-200 text-primary font-semibold text-sm flex">
-          2nd Sender
-        </div>
-      </div>
-      <div class="hidden sm:flex lg:hidden items-center justify-between w-full gap-3">
-        <div class="flex items-center flex-shrink-0">
+export const sampleC01 = {
+  name: 'Header Variant C-01 Compact',
+  render: () => html`
+    <sd-header id="compact-c-01-header">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center w-fit">
           <a class="flex flex-shrink" href="#">
-            <div class="h-8 w-[104px] flex logo-lg" role="img" aria-label="Union Investment Homepage"></div>
+            <div class="h-8 flex logo-lg" role="img" aria-label="Union Investment Homepage"></div>
           </a>
-          <div class="w-px h-10 bg-neutral-300 mx-4 self-center"></div>
-          <div
-            class="h-10 w-[100px] items-center justify-center bg-neutral-200 text-primary font-semibold text-sm flex"
-          >
-            2nd Sender
+          <sd-divider orientation="vertical" class="h-8 mx-4"></sd-divider>
+          <div class="flex px-2 py-4 items-center justify-center bg-neutral-100 text-primary text-sm">2nd Sender</div>
+        </div>
+        <div class="hidden md:flex items-center justify-end w-fit">
+          <div class="flex items-center">
+            <sd-navigation-item class="font-bold" href="javascript:void(0)">Home</sd-navigation-item>
+            <sd-navigation-item class="font-bold" href="javascript:void(0)">Perspective</sd-navigation-item>
+            <sd-navigation-item class="font-bold" href="javascript:void(0)">To the point</sd-navigation-item>
           </div>
         </div>
-
-        <div class="flex items-center min-w-0 ml-2">
-          <sd-navigation-item size="sm" class="font-bold" href="javascript:void(0)">Perspective</sd-navigation-item>
-          <sd-navigation-item size="sm" class="font-bold" href="javascript:void(0)">To the point</sd-navigation-item>
-          <sd-navigation-item size="sm" class="font-bold" href="javascript:void(0)">Meeting Point</sd-navigation-item>
-        </div>
-      </div>
-      <div class="hidden lg:flex items-center justify-between w-full">
-        <div class="flex items-center">
-          <a class="flex flex-shrink" href="#">
-            <div class="h-8 w-[104px] flex logo-lg" role="img" aria-label="Union Investment Homepage"></div>
-          </a>
-          <div class="w-px h-12 bg-neutral-300 mx-4 self-center"></div>
-          <div
-            class="h-12 w-[120px] items-center justify-center bg-neutral-200 text-primary font-semibold text-sm flex"
-          >
-            2nd Sender
-          </div>
-        </div>
-
-        <div class="flex items-center">
-          <sd-navigation-item class="font-bold" href="javascript:void(0)">Perspective</sd-navigation-item>
-          <sd-navigation-item class="font-bold" href="javascript:void(0)">To the point</sd-navigation-item>
-          <sd-navigation-item class="font-bold" href="javascript:void(0)">Meeting Point</sd-navigation-item>
-        </div>
-      </div>
-      <div class="flex gap-2 sm:gap-6 items-center">
-        <div class="flex sm:hidden lg:hidden">
+        <div class="flex md:hidden">
           <sd-navigation-item id="open-menu-compact-c-01">
             <sd-icon name="system/menu" label="Open navigation" class="text-xl"></sd-icon>
           </sd-navigation-item>
         </div>
       </div>
-    </div>
-  </sd-header>
+    </sd-header>
 
-  <sd-drawer id="compact-c-01-drawer" placement="end" class="relative block">
-    <nav aria-label="Main" class="-mx-4">
-      <sd-navigation-item vertical current href="javascript:void(0)">Perspective</sd-navigation-item>
-      <sd-navigation-item vertical chevron divider href="javascript:void(0)">To the point</sd-navigation-item>
-      <sd-navigation-item vertical chevron divider href="javascript:void(0)">Meeting Point</sd-navigation-item>
-    </nav>
-    <nav aria-label="Footer" slot="footer" class="bg-neutral-100 -m-4">
-      <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
-        <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
-        My account
-      </sd-navigation-item>
-      <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-        <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
-        My application
-      </sd-navigation-item>
-    </nav>
-  </sd-drawer>
+    <sd-drawer id="compact-c-01-drawer" placement="end" class="relative block">
+      <nav aria-label="Main" class="-mx-4">
+        <sd-navigation-item vertical current href="javascript:void(0)">Home</sd-navigation-item>
+        <sd-navigation-item vertical divider href="javascript:void(0)">Perspective</sd-navigation-item>
+        <sd-navigation-item vertical divider href="javascript:void(0)">To the point</sd-navigation-item>
+      </nav>
+      <nav aria-label="Footer" slot="footer" class="bg-neutral-100 -m-4">
+        <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
+          <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
+          My account
+        </sd-navigation-item>
+        <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
+          <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
+          My application
+        </sd-navigation-item>
+      </nav>
+    </sd-drawer>
 
-  <script type="module">
-    await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
-      const header = document.getElementById('compact-c-01-header');
-      const drawer = document.getElementById('compact-c-01-drawer');
-      const navigationItems = [
-        ...header.querySelectorAll('sd-navigation-item'),
-        ...drawer.querySelectorAll('sd-navigation-item')
-      ];
+    <script type="module">
+      await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
+        const header = document.getElementById('compact-c-01-header');
+        const drawer = document.getElementById('compact-c-01-drawer');
+        const navigationItems = [
+          ...header.querySelectorAll('sd-navigation-item'),
+          ...drawer.querySelectorAll('sd-navigation-item')
+        ];
 
-      const handleNavigationItemClick = e => {
-        navigationItems.forEach(item => item.removeAttribute('current'));
-        const target = e.target.closest('sd-navigation-item');
-        target.setAttribute('current', '');
-      };
+        const handleNavigationItemClick = e => {
+          navigationItems.forEach(item => item.removeAttribute('current'));
+          const target = e.target.closest('sd-navigation-item');
+          target.setAttribute('current', '');
+        };
 
-      navigationItems.forEach(item => {
-        if (!item.hasAttribute('href')) return;
-        item.addEventListener('click', handleNavigationItemClick);
+        navigationItems.forEach(item => {
+          if (!item.hasAttribute('href')) return;
+          item.addEventListener('click', handleNavigationItemClick);
+        });
       });
-    });
-  </script>
+    </script>
 
-  <style>
-    sd-header#compact-c-01-header {
-      --sd-header__underline-height: 0;
-      --sd-header__shadow-height: 0;
-    }
-  </style>
-
-  <script type="module">
-    await Promise.all([customElements.whenDefined('sd-navigation-item'), customElements.whenDefined('sd-drawer')]).then(
-      () => {
+    <script type="module">
+      await Promise.all([
+        customElements.whenDefined('sd-navigation-item'),
+        customElements.whenDefined('sd-drawer')
+      ]).then(() => {
         const drawer = document.getElementById('compact-c-01-drawer');
         const triggerNavigationItem = document.getElementById('open-menu-compact-c-01');
         const triggerButton = triggerNavigationItem.shadowRoot.querySelector('button');
@@ -1883,125 +1847,83 @@ const sampleC01 = () => html`
           drawer.show();
           triggerButton.setAttribute('aria-expanded', 'true');
         });
-      }
-    );
-  </script>
-`;
+      });
+    </script>
+  `
+};
 
-const sampleC02 = () => html`
-  <sd-header id="compact-c-02-header" fixed>
-    <div class="flex justify-between items-center">
-      <div class="flex sm:hidden items-center">
-        <div class="h-8 w-[90px] items-center justify-center bg-neutral-200 text-primary font-semibold text-sm flex">
-          2nd Sender
-        </div>
-        <div class="w-px h-8 bg-neutral-300 mx-3 self-center"></div>
-        <a class="flex flex-shrink" href="#">
-          <div class="h-8 w-[104px]flex logo-lg" role="img" aria-label="Union Investment Homepage"></div>
-        </a>
-      </div>
-      <div class="hidden sm:flex lg:hidden items-center justify-between w-full gap-3">
-        <div class="flex items-center flex-shrink-0">
-          <div
-            class="h-10 w-[100px] items-center justify-center bg-neutral-200 text-primary font-semibold text-sm flex"
-          >
-            2nd Sender
-          </div>
-          <div class="w-px h-10 bg-neutral-300 mx-4 self-center"></div>
+export const sampleC02 = {
+  name: 'Header Variant C-02 Compact',
+  render: () => html`
+    <sd-header id="compact-c-02-header">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center w-fit">
+          <div class="flex px-2 py-4 items-center justify-center bg-neutral-100 text-primary text-sm">2nd Sender</div>
+          <sd-divider orientation="vertical" class="h-8 mx-4"></sd-divider>
           <a class="flex flex-shrink" href="#">
-            <div class="h-8 w-[104px] flex logo-lg" role="img" aria-label="Union Investment Homepage"></div>
+            <div class="h-8 flex logo-lg" role="img" aria-label="Union Investment Homepage"></div>
           </a>
         </div>
-
-        <div class="flex items-center min-w-0 ml-2">
-          <sd-navigation-item size="sm" class="font-bold" href="javascript:void(0)">Perspective</sd-navigation-item>
-          <sd-navigation-item size="sm" class="font-bold" href="javascript:void(0)">To the point</sd-navigation-item>
-          <sd-navigation-item size="sm" class="font-bold" href="javascript:void(0)">Meeting Point</sd-navigation-item>
-        </div>
-      </div>
-      <div class="hidden lg:flex items-center justify-between w-full">
-        <div class="flex items-center">
-          <div
-            class="h-12 w-[120px] items-center justify-center bg-neutral-200 text-primary font-semibold text-sm flex"
-          >
-            2nd Sender
+        <div class="hidden md:flex items-center justify-end w-fit">
+          <div class="flex items-center">
+            <sd-navigation-item class="font-bold" href="javascript:void(0)">Home</sd-navigation-item>
+            <sd-navigation-item class="font-bold" href="javascript:void(0)">Perspective</sd-navigation-item>
+            <sd-navigation-item class="font-bold" href="javascript:void(0)">To the point</sd-navigation-item>
           </div>
-          <div class="w-px h-12 bg-neutral-300 mx-4 self-center"></div>
-          <a class="flex flex-shrink" href="#">
-            <div class="h-8 w-[104px] flex logo-lg" role="img" aria-label="Union Investment Homepage"></div>
-          </a>
         </div>
-
-        <div class="flex items-center">
-          <sd-navigation-item class="font-bold" href="javascript:void(0)">Perspective</sd-navigation-item>
-          <sd-navigation-item class="font-bold" href="javascript:void(0)">To the point</sd-navigation-item>
-          <sd-navigation-item class="font-bold" href="javascript:void(0)">Meeting Point</sd-navigation-item>
-        </div>
-      </div>
-      <div class="flex gap-2 sm:gap-6 items-center">
-        <div class="flex sm:hidden lg:hidden">
+        <div class="flex md:hidden">
           <sd-navigation-item id="open-menu-compact-c-02">
             <sd-icon name="system/menu" label="Open navigation" class="text-xl"></sd-icon>
           </sd-navigation-item>
         </div>
       </div>
-    </div>
-  </sd-header>
+    </sd-header>
 
-  <sd-drawer id="compact-c-02-drawer" placement="end" class="relative block">
-    <nav aria-label="Main" class="-mx-4">
-      <sd-navigation-item vertical current href="javascript:void(0)">Perspective</sd-navigation-item>
-      <sd-navigation-item vertical chevron divider href="javascript:void(0)">To the point</sd-navigation-item>
-      <sd-navigation-item vertical chevron divider href="javascript:void(0)">Meeting Point</sd-navigation-item>
-    </nav>
-    <nav aria-label="Footer" slot="footer" class="bg-neutral-100 -m-4">
-      <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
-        <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
-        Sign in
-      </sd-navigation-item>
-      <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-        <sd-icon name="system/globe" class="h-6 w-6 mr-2"></sd-icon>
-        Language
-      </sd-navigation-item>
-      <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
-        <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
-        Our further appearances
-      </sd-navigation-item>
-    </nav>
-  </sd-drawer>
+    <sd-drawer id="compact-c-02-drawer" placement="end" class="relative block">
+      <nav aria-label="Main" class="-mx-4">
+        <sd-navigation-item vertical current href="javascript:void(0)">Home</sd-navigation-item>
+        <sd-navigation-item vertical divider href="javascript:void(0)">Perspective</sd-navigation-item>
+        <sd-navigation-item vertical divider href="javascript:void(0)">To the point</sd-navigation-item>
+      </nav>
+      <nav aria-label="Footer" slot="footer" class="bg-neutral-100 -m-4">
+        <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
+          <sd-icon name="system/user" class="h-6 w-6 mr-2"></sd-icon>
+          My account
+        </sd-navigation-item>
+        <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
+          <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
+          My application
+        </sd-navigation-item>
+      </nav>
+    </sd-drawer>
 
-  <style>
-    sd-header#compact-c-02-header {
-      --sd-header__underline-height: 0;
-      --sd-header__shadow-height: 0;
-    }
-  </style>
+    <script type="module">
+      await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
+        const header = document.getElementById('compact-c-02-header');
+        const drawer = document.getElementById('compact-c-02-drawer');
+        const navigationItems = [
+          ...header.querySelectorAll('sd-navigation-item'),
+          ...drawer.querySelectorAll('sd-navigation-item')
+        ];
 
-  <script type="module">
-    await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
-      const header = document.getElementById('compact-c-02-header');
-      const drawer = document.getElementById('compact-c-02-drawer');
-      const navigationItems = [
-        ...header.querySelectorAll('sd-navigation-item'),
-        ...drawer.querySelectorAll('sd-navigation-item')
-      ];
+        const handleNavigationItemClick = e => {
+          navigationItems.forEach(item => item.removeAttribute('current'));
+          const target = e.target.closest('sd-navigation-item');
+          target.setAttribute('current', '');
+        };
 
-      const handleNavigationItemClick = e => {
-        navigationItems.forEach(item => item.removeAttribute('current'));
-        const target = e.target.closest('sd-navigation-item');
-        target.setAttribute('current', '');
-      };
-
-      navigationItems.forEach(item => {
-        if (!item.hasAttribute('href')) return;
-        item.addEventListener('click', handleNavigationItemClick);
+        navigationItems.forEach(item => {
+          if (!item.hasAttribute('href')) return;
+          item.addEventListener('click', handleNavigationItemClick);
+        });
       });
-    });
-  </script>
+    </script>
 
-  <script type="module">
-    await Promise.all([customElements.whenDefined('sd-navigation-item'), customElements.whenDefined('sd-drawer')]).then(
-      () => {
+    <script type="module">
+      await Promise.all([
+        customElements.whenDefined('sd-navigation-item'),
+        customElements.whenDefined('sd-drawer')
+      ]).then(() => {
         const drawer = document.getElementById('compact-c-02-drawer');
         const triggerNavigationItem = document.getElementById('open-menu-compact-c-02');
         const triggerButton = triggerNavigationItem.shadowRoot.querySelector('button');
@@ -2014,67 +1936,28 @@ const sampleC02 = () => html`
           drawer.show();
           triggerButton.setAttribute('aria-expanded', 'true');
         });
-      }
-    );
-  </script>
-`;
-
-export const CompactC01 = {
-  name: 'Header Variant C-01 Compact',
-  render: sampleC01
-};
-
-export const CompactC02 = {
-  name: 'Header Variant C-02 Compact',
-  render: sampleC02
+      });
+    </script>
+  `
 };
 
 export const SampleD01 = {
   name: 'Header Sample D-01',
   render: () => html`
-    <style>
-      #anchor--templates-header-navigation--sample-d-01 .innerZoomElementWrapper {
-        height: 900px;
-      }
-    </style>
-    <sd-header id="sample-d-01-header" fixed>
+    <sd-header id="sample-d-01-header">
       <div class="flex justify-center items-center">
         <a class="flex flex-shrink" href="#">
           <div class="h-8 md:h-12 lg:h-14 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
         </a>
       </div>
     </sd-header>
-
-    <style>
-      sd-header#sample-d-01-header {
-        --sd-header-padding: 8px 16px;
-      }
-
-      @media (min-width: 376px) {
-        sd-header#sample-d-01-header {
-          --sd-header-padding: 24px;
-        }
-      }
-
-      @media (min-width: 1025px) {
-        sd-header#sample-d-01-header {
-          --sd-header-padding: 24px 32px;
-        }
-      }
-
-      @media (min-width: 1440px) {
-        sd-header#sample-d-01-header {
-          --sd-header-padding: 24px 48px;
-        }
-      }
-    </style>
   `
 };
 
 export const SampleD02 = {
   name: 'Header Sample D-02',
   render: () => html`
-    <sd-header id="sample-d-02-header" fixed>
+    <sd-header id="sample-d-02-header">
       <div class="grid grid-cols-[1fr_auto_1fr] items-center">
         <div class="flex items-center">
           <sd-navigation-item id="back-button-sample-d-02">
@@ -2088,32 +1971,6 @@ export const SampleD02 = {
     </sd-header>
 
     <style>
-      #anchor--templates-header-navigation--sample-d-02 .innerZoomElementWrapper {
-        height: 900px;
-      }
-
-      sd-header#sample-d-02-header {
-        --sd-header-padding: 8px 16px;
-      }
-
-      @media (min-width: 376px) {
-        sd-header#sample-d-02-header {
-          --sd-header-padding: 24px;
-        }
-      }
-
-      @media (min-width: 1025px) {
-        sd-header#sample-d-02-header {
-          --sd-header-padding: 24px 32px;
-        }
-      }
-
-      @media (min-width: 1440px) {
-        sd-header#sample-d-02-header {
-          --sd-header-padding: 24px 48px;
-        }
-      }
-
       sd-navigation-item#back-button-sample-d-02::part(content) {
         border-bottom: 0;
       }
