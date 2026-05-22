@@ -1,7 +1,7 @@
 ---
 name: Performance Issue
 about: Performance Issue Template
-title: 'perf: 🚀 [TASK_DESCRIPTION]'
+title: 'perf: [TASK_DESCRIPTION]'
 labels: ''
 assignees: ''
 
