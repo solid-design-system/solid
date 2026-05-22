@@ -765,7 +765,7 @@ export const SampleA = {
       #anchor--templates-header-navigation--sample-a-02 .innerZoomElementWrapper,
       #anchor--templates-header-navigation--sample-b .innerZoomElementWrapper,
       #anchor--templates-header-navigation--sample-b-01 .innerZoomElementWrapper,
-      #anchor--templates-header-navigation--compact-b-02 .innerZoomElementWrapper,
+      #anchor--templates-header-navigation--sample-b-02 .innerZoomElementWrapper,
       #anchor--templates-header-navigation--compact-c-01 .innerZoomElementWrapper,
       #anchor--templates-header-navigation--compact-c-02 .innerZoomElementWrapper {
         height: 900px;
@@ -1548,9 +1548,9 @@ export const SampleB01 = {
     <sd-drawer id="compact-b-01-drawer" placement="end" class="relative block">
       <nav aria-label="Main" class="-mx-4">
         <sd-navigation-item vertical current href="javascript:void(0)">Home</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Perspective</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider href="javascript:void(0)">To the point</sd-navigation-item>
-        <sd-navigation-item vertical chevron divider href="javascript:void(0)">Meeting Point</sd-navigation-item>
+        <sd-navigation-item vertical divider href="javascript:void(0)">Perspective</sd-navigation-item>
+        <sd-navigation-item vertical divider href="javascript:void(0)">To the point</sd-navigation-item>
+        <sd-navigation-item vertical divider href="javascript:void(0)">Meeting Point</sd-navigation-item>
       </nav>
       <nav aria-label="Footer" slot="footer" class="bg-neutral-100 -m-4">
         <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
@@ -1633,128 +1633,117 @@ export const SampleB01 = {
   `
 };
 
-const sampleB02 = () => html`
-  <sd-header id="compact-b-02-header" fixed>
-    <div class="flex justify-between items-center">
-      <!-- mobile: partner logo + divider + logo on left -->
-      <div class="flex sm:hidden items-center">
-        <div class="h-8 w-[90px] items-center justify-center bg-neutral-200 text-primary font-semibold text-sm flex">
-          2nd Sender
+export const SampleB02 = {
+  name: 'Header Variant B-02 Compact',
+  render: () => html`
+    <sd-header id="compact-b-02-header" fixed>
+      <div class="flex justify-between items-center">
+        <!-- top-left-area: logo + partner logo inline on tablet -->
+        <div class="flex items-center lg:justify-between lg:w-full">
+          <div class="flex px-2 py-4 items-center justify-center bg-neutral-100 text-primary text-sm">2nd Sender</div>
+          <sd-divider orientation="vertical" class="lg:hidden h-8 md:h-12 lg:h-14 mx-4"></sd-divider>
+          <a class="flex flex-shrink" href="#">
+            <div class="h-8 md:h-12 lg:h-14 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
+          </a>
         </div>
-        <div class="w-px h-8 bg-neutral-300 mx-3 self-center"></div>
-        <a class="flex flex-shrink" href="#">
-          <div class="w-[165px] h-[52px] shrink-0 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
-        </a>
-      </div>
-
-      <!-- tablet: partner logo + divider + logo on left -->
-      <div class="hidden sm:flex lg:hidden items-center">
-        <div class="h-12 w-[120px] items-center justify-center bg-neutral-200 text-primary font-semibold text-sm flex">
-          2nd Sender
+        <!-- hamburger: mobile and tablet only -->
+        <div class="flex lg:hidden">
+          <sd-navigation-item id="open-menu-compact-b-02">
+            <sd-icon name="system/menu" label="Open navigation" class="text-xl"></sd-icon>
+          </sd-navigation-item>
         </div>
-        <div class="w-px h-12 bg-neutral-300 mx-4 self-center"></div>
-        <a class="flex flex-shrink" href="#">
-          <div class="w-[165px] h-[52px] shrink-0 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
-        </a>
       </div>
 
-      <!-- desktop top row: logos only -->
-      <div class="hidden lg:flex items-center justify-between w-full">
-        <div
-          class="h-12 w-[120px] items-center justify-center bg-neutral-200 text-primary font-semibold flex flex-shrink-0"
-        >
-          2nd Sender
+      <div class="hidden lg:flex items-end pt-4 justify-between">
+        <div class="-ml-4">
+          <sd-navigation-item class="font-bold" href="javascript:void(0)">Home</sd-navigation-item>
+          <sd-navigation-item class="font-bold" href="javascript:void(0)">Perspective</sd-navigation-item>
+          <sd-navigation-item class="font-bold" href="javascript:void(0)">To the point</sd-navigation-item>
+          <sd-navigation-item class="font-bold" href="javascript:void(0)">Meeting Point</sd-navigation-item>
         </div>
-        <a class="flex flex-shrink-0" href="#">
-          <div class="w-[165px] h-[52px] shrink-0 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
-        </a>
-      </div>
 
-      <!-- hamburger: mobile and tablet only -->
-      <div class="flex lg:hidden">
-        <sd-navigation-item id="open-menu-compact-b-02">
-          <sd-icon name="system/menu" label="Open navigation" class="text-xl"></sd-icon>
+        <div class="-mr-4 flex items-center">
+          <sd-navigation-item href="javascript:void(0)">
+            <sd-icon name="system/website" label="Info" class="text-xl"></sd-icon>
+          </sd-navigation-item>
+          <sd-navigation-item onclick="alert('This could open a search bar')">
+            <sd-icon name="system/magnifying-glass" label="Search" class="text-xl"></sd-icon>
+          </sd-navigation-item>
+        </div>
+      </div>
+    </sd-header>
+
+    <sd-drawer id="compact-b-02-drawer" placement="end" class="relative block">
+      <nav aria-label="Main" class="-mx-4">
+        <sd-navigation-item vertical current href="javascript:void(0)">Home</sd-navigation-item>
+        <sd-navigation-item vertical divider href="javascript:void(0)">Perspective</sd-navigation-item>
+        <sd-navigation-item vertical divider href="javascript:void(0)">To the point</sd-navigation-item>
+        <sd-navigation-item vertical divider href="javascript:void(0)">Meeting Point</sd-navigation-item>
+      </nav>
+      <nav aria-label="Footer" slot="footer" class="bg-neutral-100 -m-4">
+        <sd-navigation-item vertical class="flex align-center" href="javascript:void(0)">
+          <sd-icon name="system/lock-locked" class="h-6 w-6 mr-2"></sd-icon>
+          My application
         </sd-navigation-item>
-      </div>
-    </div>
-
-    <!-- desktop bottom row: navigation + icons -->
-    <div class="hidden lg:flex items-end pt-4 justify-between">
-      <div class="-ml-4">
-        <sd-navigation-item class="font-bold" href="javascript:void(0)">Home</sd-navigation-item>
-        <sd-navigation-item class="font-bold" href="javascript:void(0)">Perspective</sd-navigation-item>
-        <sd-navigation-item class="font-bold" href="javascript:void(0)">To the point</sd-navigation-item>
-        <sd-navigation-item class="font-bold" href="javascript:void(0)">Meeting Point</sd-navigation-item>
-      </div>
-      <div class="flex items-center gap-2">
-        <sd-navigation-item href="javascript:void(0)" size="sm">
-          <sd-icon name="system/calendar" label="Calendar" class="text-xl"></sd-icon>
+        <sd-navigation-item vertical divider class="flex align-center" href="javascript:void(0)">
+          <sd-icon name="system/website" class="h-6 w-6 mr-2"></sd-icon>
+          Our further appearances
         </sd-navigation-item>
-        <sd-navigation-item onclick="alert('This could open a search bar')" size="sm">
-          <sd-icon name="system/magnifying-glass" label="Search" class="text-xl"></sd-icon>
-        </sd-navigation-item>
-      </div>
-    </div>
-  </sd-header>
+      </nav>
+    </sd-drawer>
 
-  <sd-drawer id="compact-b-02-drawer" placement="end" class="relative block">
-    <nav aria-label="Main" class="-mx-4">
-      <sd-navigation-item vertical current href="javascript:void(0)">Home</sd-navigation-item>
-      <sd-navigation-item vertical chevron divider href="javascript:void(0)">Perspective</sd-navigation-item>
-      <sd-navigation-item vertical chevron divider href="javascript:void(0)">To the point</sd-navigation-item>
-      <sd-navigation-item vertical chevron divider href="javascript:void(0)">Meeting Point</sd-navigation-item>
-    </nav>
-  </sd-drawer>
-
-  <style>
-    sd-header#compact-b-02-header {
-      --sd-header-padding: 8px 16px;
-    }
-
-    @media (min-width: 376px) {
+    <style>
       sd-header#compact-b-02-header {
-        --sd-header-padding: 16px 24px;
+        --sd-header-padding: 8px 16px;
+        background-color: var(--sd-color-neutral-100);
       }
-    }
 
-    @media (min-width: 1025px) {
-      sd-header#compact-b-02-header {
-        --sd-header-padding: 16px 24px 0 24px;
+      @media (min-width: 376px) {
+        sd-header#compact-b-02-header {
+          --sd-header-padding: 16px 24px;
+        }
       }
-    }
 
-    @media (min-width: 1440px) {
-      sd-header#compact-b-02-header {
-        --sd-header-padding: 16px 32px 0 32px;
+      @media (min-width: 1025px) {
+        sd-header#compact-b-02-header {
+          --sd-header-padding: 16px 24px 0 24px;
+        }
       }
-    }
-  </style>
 
-  <script type="module">
-    await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
-      const header = document.getElementById('compact-b-02-header');
-      const drawer = document.getElementById('compact-b-02-drawer');
-      const navigationItems = [
-        ...header.querySelectorAll('sd-navigation-item'),
-        ...drawer.querySelectorAll('sd-navigation-item')
-      ];
+      @media (min-width: 1440px) {
+        sd-header#compact-b-02-header {
+          --sd-header-padding: 16px 32px 0 32px;
+        }
+      }
+    </style>
 
-      const handleNavigationItemClick = e => {
-        navigationItems.forEach(item => item.removeAttribute('current'));
-        const target = e.target.closest('sd-navigation-item');
-        target.setAttribute('current', '');
-      };
+    <script type="module">
+      await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
+        const header = document.getElementById('compact-b-02-header');
+        const drawer = document.getElementById('compact-b-02-drawer');
+        const navigationItems = [
+          ...header.querySelectorAll('sd-navigation-item'),
+          ...drawer.querySelectorAll('sd-navigation-item')
+        ];
 
-      navigationItems.forEach(item => {
-        if (!item.hasAttribute('href')) return;
-        item.addEventListener('click', handleNavigationItemClick);
+        const handleNavigationItemClick = e => {
+          navigationItems.forEach(item => item.removeAttribute('current'));
+          const target = e.target.closest('sd-navigation-item');
+          target.setAttribute('current', '');
+        };
+
+        navigationItems.forEach(item => {
+          if (!item.hasAttribute('href')) return;
+          item.addEventListener('click', handleNavigationItemClick);
+        });
       });
-    });
-  </script>
+    </script>
 
-  <script type="module">
-    await Promise.all([customElements.whenDefined('sd-navigation-item'), customElements.whenDefined('sd-drawer')]).then(
-      () => {
+    <script type="module">
+      await Promise.all([
+        customElements.whenDefined('sd-navigation-item'),
+        customElements.whenDefined('sd-drawer')
+      ]).then(() => {
         const drawer = document.getElementById('compact-b-02-drawer');
         const triggerNavigationItem = document.getElementById('open-menu-compact-b-02');
         const triggerButton = triggerNavigationItem.shadowRoot.querySelector('button');
@@ -1767,10 +1756,10 @@ const sampleB02 = () => html`
           drawer.show();
           triggerButton.setAttribute('aria-expanded', 'true');
         });
-      }
-    );
-  </script>
-`;
+      });
+    </script>
+  `
+};
 
 const sampleC01 = () => html`
   <sd-header id="compact-c-01-header" fixed>
@@ -2029,11 +2018,6 @@ const sampleC02 = () => html`
     );
   </script>
 `;
-
-export const CompactB02 = {
-  name: 'Header Variant B-02 Compact',
-  render: sampleB02
-};
 
 export const CompactC01 = {
   name: 'Header Variant C-01 Compact',
