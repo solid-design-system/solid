@@ -142,12 +142,15 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
 
   updated(changedProperties: Map<string, unknown>) {
     super.updated(changedProperties);
-    // Workaround for macOS VoiceOver in Chromium/Firefox not announcing
-    // aria-describedby on role="radiogroup". aria-description is global per ARIA 1.3
-    // but is set imperatively here so static a11y linters do not reject role="radiogroup".
+    this.syncAriaDescription();
+  }
+
+  // Set aria-description imperatively as a VoiceOver workaround here so static a11y linters do not reject role="radiogroup".
+  private syncAriaDescription() {
     const fieldset = this.shadowRoot?.querySelector('fieldset');
-    if (this.showInvalidStyle && this.validationMessage) {
-      fieldset?.setAttribute('aria-description', this.validationMessage);
+    const message = this.showInvalidStyle ? this.validationMessage : '';
+    if (message) {
+      fieldset?.setAttribute('aria-description', message);
     } else {
       fieldset?.removeAttribute('aria-description');
     }
