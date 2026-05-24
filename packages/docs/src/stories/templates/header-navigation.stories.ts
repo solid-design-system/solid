@@ -760,6 +760,7 @@ export const Horizontal = {
 export const SampleA = {
   name: 'Header Sample A-01',
   render: () => html`
+    <!-- Storybook specific styles - DO NOT COPY -->
     <style>
       #anchor--templates-header-navigation--sample-a .innerZoomElementWrapper,
       #anchor--templates-header-navigation--sample-a-02 .innerZoomElementWrapper,
@@ -1508,11 +1509,11 @@ export const SampleB = {
 };
 
 export const SampleB01 = {
-  name: 'Header Variant B-01 Compact',
+  name: 'Header Variant B-01',
   render: () => html`
-    <sd-header id="compact-b-01-header" fixed>
+    <sd-header id="sample-b-01-header" fixed>
       <div class="flex justify-between items-center">
-        <!-- top-left-area: logo + partner logo inline on tablet -->
+        <!-- top-left-area: logo + 2nd sender -->
         <div class="flex items-center lg:justify-between lg:w-full">
           <a class="flex flex-shrink" href="#">
             <div class="h-8 md:h-12 lg:h-14 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
@@ -1522,12 +1523,12 @@ export const SampleB01 = {
         </div>
         <!-- hamburger: mobile and tablet only -->
         <div class="flex lg:hidden">
-          <sd-navigation-item id="open-menu-compact-b-01">
+          <sd-navigation-item id="open-menu-sample-b-01">
             <sd-icon name="system/menu" label="Open navigation" class="text-xl"></sd-icon>
           </sd-navigation-item>
         </div>
       </div>
-
+      <!-- hamburger: mobile and tablet only -->
       <div class="hidden lg:flex items-end pt-4 justify-between">
         <div class="-ml-4">
           <sd-navigation-item class="font-bold" href="javascript:void(0)">Home</sd-navigation-item>
@@ -1547,7 +1548,7 @@ export const SampleB01 = {
       </div>
     </sd-header>
 
-    <sd-drawer id="compact-b-01-drawer" placement="end" class="relative block">
+    <sd-drawer id="sample-b-01-drawer" placement="end" class="relative block">
       <nav aria-label="Main" class="-mx-4">
         <sd-navigation-item vertical current href="javascript:void(0)">Home</sd-navigation-item>
         <sd-navigation-item vertical divider href="javascript:void(0)">Perspective</sd-navigation-item>
@@ -1567,25 +1568,24 @@ export const SampleB01 = {
     </sd-drawer>
 
     <style>
-      sd-header#compact-b-01-header {
+      sd-header#sample-b-01-header {
         --sd-header-padding: 8px 16px;
-        background-color: var(--sd-color-neutral-100);
       }
 
       @media (min-width: 376px) {
-        sd-header#compact-b-01-header {
+        sd-header#sample-b-01-header {
           --sd-header-padding: 16px 24px;
         }
       }
 
       @media (min-width: 1025px) {
-        sd-header#compact-b-01-header {
+        sd-header#sample-b-01-header {
           --sd-header-padding: 16px 24px 0 24px;
         }
       }
 
       @media (min-width: 1440px) {
-        sd-header#compact-b-01-header {
+        sd-header#sample-b-01-header {
           --sd-header-padding: 16px 32px 0 32px;
         }
       }
@@ -1593,8 +1593,8 @@ export const SampleB01 = {
 
     <script type="module">
       await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
-        const header = document.getElementById('compact-b-01-header');
-        const drawer = document.getElementById('compact-b-01-drawer');
+        const header = document.getElementById('sample-b-01-header');
+        const drawer = document.getElementById('sample-b-01-drawer');
         const navigationItems = [
           ...header.querySelectorAll('sd-navigation-item'),
           ...drawer.querySelectorAll('sd-navigation-item')
@@ -1618,11 +1618,11 @@ export const SampleB01 = {
         customElements.whenDefined('sd-navigation-item'),
         customElements.whenDefined('sd-drawer')
       ]).then(() => {
-        const drawer = document.getElementById('compact-b-01-drawer');
-        const triggerNavigationItem = document.getElementById('open-menu-compact-b-01');
+        const drawer = document.getElementById('sample-b-01-drawer');
+        const triggerNavigationItem = document.getElementById('open-menu-sample-b-01');
         const triggerButton = triggerNavigationItem.shadowRoot.querySelector('button');
 
-        triggerButton.setAttribute('aria-controls', 'compact-b-01-drawer');
+        triggerButton.setAttribute('aria-controls', 'sample-b-01-drawer');
         triggerButton.setAttribute('aria-expanded', 'false');
         drawer.addEventListener('sd-hide', () => triggerButton.setAttribute('aria-expanded', 'false'));
 
@@ -1636,11 +1636,10 @@ export const SampleB01 = {
 };
 
 export const SampleB02 = {
-  name: 'Header Variant B-02 Compact',
+  name: 'Header Variant B-02',
   render: () => html`
-    <sd-header id="compact-b-02-header" fixed>
+    <sd-header id="sample-b-02-header" fixed>
       <div class="flex justify-between items-center">
-        <!-- top-left-area: logo + partner logo inline on tablet -->
         <div class="flex items-center lg:justify-between lg:w-full">
           <div class="flex px-2 py-4 items-center justify-center bg-neutral-100 text-primary text-sm">2nd Sender</div>
           <sd-divider orientation="vertical" class="lg:hidden h-8 md:h-12 lg:h-14 mx-4"></sd-divider>
@@ -1648,9 +1647,8 @@ export const SampleB02 = {
             <div class="h-8 md:h-12 lg:h-14 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
           </a>
         </div>
-        <!-- hamburger: mobile and tablet only -->
         <div class="flex lg:hidden">
-          <sd-navigation-item id="open-menu-compact-b-02">
+          <sd-navigation-item id="open-menu-sample-b-02">
             <sd-icon name="system/menu" label="Open navigation" class="text-xl"></sd-icon>
           </sd-navigation-item>
         </div>
@@ -1663,7 +1661,6 @@ export const SampleB02 = {
           <sd-navigation-item class="font-bold" href="javascript:void(0)">To the point</sd-navigation-item>
           <sd-navigation-item class="font-bold" href="javascript:void(0)">Meeting Point</sd-navigation-item>
         </div>
-
         <div class="-mr-4 flex items-center">
           <sd-navigation-item href="javascript:void(0)">
             <sd-icon name="system/website" label="Info" class="text-xl"></sd-icon>
@@ -1675,7 +1672,7 @@ export const SampleB02 = {
       </div>
     </sd-header>
 
-    <sd-drawer id="compact-b-02-drawer" placement="end" class="relative block">
+    <sd-drawer id="sample-b-02-drawer" placement="end" class="relative block">
       <nav aria-label="Main" class="-mx-4">
         <sd-navigation-item vertical current href="javascript:void(0)">Home</sd-navigation-item>
         <sd-navigation-item vertical divider href="javascript:void(0)">Perspective</sd-navigation-item>
@@ -1695,25 +1692,25 @@ export const SampleB02 = {
     </sd-drawer>
 
     <style>
-      sd-header#compact-b-02-header {
+      sd-header#sample-b-02-header {
         --sd-header-padding: 8px 16px;
         background-color: var(--sd-color-neutral-100);
       }
 
       @media (min-width: 376px) {
-        sd-header#compact-b-02-header {
+        sd-header#sample-b-02-header {
           --sd-header-padding: 16px 24px;
         }
       }
 
       @media (min-width: 1025px) {
-        sd-header#compact-b-02-header {
+        sd-header#sample-b-02-header {
           --sd-header-padding: 16px 24px 0 24px;
         }
       }
 
       @media (min-width: 1440px) {
-        sd-header#compact-b-02-header {
+        sd-header#sample-b-02-header {
           --sd-header-padding: 16px 32px 0 32px;
         }
       }
@@ -1721,8 +1718,8 @@ export const SampleB02 = {
 
     <script type="module">
       await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
-        const header = document.getElementById('compact-b-02-header');
-        const drawer = document.getElementById('compact-b-02-drawer');
+        const header = document.getElementById('sample-b-02-header');
+        const drawer = document.getElementById('sample-b-02-drawer');
         const navigationItems = [
           ...header.querySelectorAll('sd-navigation-item'),
           ...drawer.querySelectorAll('sd-navigation-item')
@@ -1746,11 +1743,11 @@ export const SampleB02 = {
         customElements.whenDefined('sd-navigation-item'),
         customElements.whenDefined('sd-drawer')
       ]).then(() => {
-        const drawer = document.getElementById('compact-b-02-drawer');
-        const triggerNavigationItem = document.getElementById('open-menu-compact-b-02');
+        const drawer = document.getElementById('sample-b-02-drawer');
+        const triggerNavigationItem = document.getElementById('open-menu-sample-b-02');
         const triggerButton = triggerNavigationItem.shadowRoot.querySelector('button');
 
-        triggerButton.setAttribute('aria-controls', 'compact-b-02-drawer');
+        triggerButton.setAttribute('aria-controls', 'sample-b-02-drawer');
         triggerButton.setAttribute('aria-expanded', 'false');
         drawer.addEventListener('sd-hide', () => triggerButton.setAttribute('aria-expanded', 'false'));
 
@@ -1764,9 +1761,9 @@ export const SampleB02 = {
 };
 
 export const sampleC01 = {
-  name: 'Header Variant C-01 Compact',
+  name: 'Header Variant C-01',
   render: () => html`
-    <sd-header id="compact-c-01-header">
+    <sd-header id="sample-c-01-header">
       <div class="flex justify-between items-center">
         <div class="flex items-center w-fit">
           <a class="flex flex-shrink" href="#">
@@ -1783,14 +1780,14 @@ export const sampleC01 = {
           </div>
         </div>
         <div class="flex md:hidden">
-          <sd-navigation-item id="open-menu-compact-c-01">
+          <sd-navigation-item id="open-menu-sample-c-01">
             <sd-icon name="system/menu" label="Open navigation" class="text-xl"></sd-icon>
           </sd-navigation-item>
         </div>
       </div>
     </sd-header>
 
-    <sd-drawer id="compact-c-01-drawer" placement="end" class="relative block">
+    <sd-drawer id="sample-c-01-drawer" placement="end" class="relative block">
       <nav aria-label="Main" class="-mx-4">
         <sd-navigation-item vertical current href="javascript:void(0)">Home</sd-navigation-item>
         <sd-navigation-item vertical divider href="javascript:void(0)">Perspective</sd-navigation-item>
@@ -1808,10 +1805,34 @@ export const sampleC01 = {
       </nav>
     </sd-drawer>
 
+    <style>
+      sd-header#sample-c-01-header {
+        --sd-header-padding: 8px 16px;
+      }
+
+      @media (min-width: 376px) {
+        sd-header#sample-c-01-header {
+          --sd-header-padding: 16px 24px;
+        }
+      }
+
+      @media (min-width: 1025px) {
+        sd-header#sample-c-01-header {
+          --sd-header-padding: 16px 24px 0 24px;
+        }
+      }
+
+      @media (min-width: 1440px) {
+        sd-header#sample-c-01-header {
+          --sd-header-padding: 16px 32px 0 32px;
+        }
+      }
+    </style>
+
     <script type="module">
       await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
-        const header = document.getElementById('compact-c-01-header');
-        const drawer = document.getElementById('compact-c-01-drawer');
+        const header = document.getElementById('sample-c-01-header');
+        const drawer = document.getElementById('sample-c-01-drawer');
         const navigationItems = [
           ...header.querySelectorAll('sd-navigation-item'),
           ...drawer.querySelectorAll('sd-navigation-item')
@@ -1835,11 +1856,11 @@ export const sampleC01 = {
         customElements.whenDefined('sd-navigation-item'),
         customElements.whenDefined('sd-drawer')
       ]).then(() => {
-        const drawer = document.getElementById('compact-c-01-drawer');
-        const triggerNavigationItem = document.getElementById('open-menu-compact-c-01');
+        const drawer = document.getElementById('sample-c-01-drawer');
+        const triggerNavigationItem = document.getElementById('open-menu-sample-c-01');
         const triggerButton = triggerNavigationItem.shadowRoot.querySelector('button');
 
-        triggerButton.setAttribute('aria-controls', 'compact-c-01-drawer');
+        triggerButton.setAttribute('aria-controls', 'sample-c-01-drawer');
         triggerButton.setAttribute('aria-expanded', 'false');
         drawer.addEventListener('sd-hide', () => triggerButton.setAttribute('aria-expanded', 'false'));
 
@@ -1853,9 +1874,9 @@ export const sampleC01 = {
 };
 
 export const sampleC02 = {
-  name: 'Header Variant C-02 Compact',
+  name: 'Header Variant C-02',
   render: () => html`
-    <sd-header id="compact-c-02-header">
+    <sd-header id="sample-c-02-header">
       <div class="flex justify-between items-center">
         <div class="flex items-center w-fit">
           <div class="flex px-2 py-4 items-center justify-center bg-neutral-100 text-primary text-sm">2nd Sender</div>
@@ -1872,14 +1893,14 @@ export const sampleC02 = {
           </div>
         </div>
         <div class="flex md:hidden">
-          <sd-navigation-item id="open-menu-compact-c-02">
+          <sd-navigation-item id="open-menu-sample-c-02">
             <sd-icon name="system/menu" label="Open navigation" class="text-xl"></sd-icon>
           </sd-navigation-item>
         </div>
       </div>
     </sd-header>
 
-    <sd-drawer id="compact-c-02-drawer" placement="end" class="relative block">
+    <sd-drawer id="sample-c-02-drawer" placement="end" class="relative block">
       <nav aria-label="Main" class="-mx-4">
         <sd-navigation-item vertical current href="javascript:void(0)">Home</sd-navigation-item>
         <sd-navigation-item vertical divider href="javascript:void(0)">Perspective</sd-navigation-item>
@@ -1899,8 +1920,8 @@ export const sampleC02 = {
 
     <script type="module">
       await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {
-        const header = document.getElementById('compact-c-02-header');
-        const drawer = document.getElementById('compact-c-02-drawer');
+        const header = document.getElementById('sample-c-02-header');
+        const drawer = document.getElementById('sample-c-02-drawer');
         const navigationItems = [
           ...header.querySelectorAll('sd-navigation-item'),
           ...drawer.querySelectorAll('sd-navigation-item')
@@ -1924,11 +1945,11 @@ export const sampleC02 = {
         customElements.whenDefined('sd-navigation-item'),
         customElements.whenDefined('sd-drawer')
       ]).then(() => {
-        const drawer = document.getElementById('compact-c-02-drawer');
-        const triggerNavigationItem = document.getElementById('open-menu-compact-c-02');
+        const drawer = document.getElementById('sample-c-02-drawer');
+        const triggerNavigationItem = document.getElementById('open-menu-sample-c-02');
         const triggerButton = triggerNavigationItem.shadowRoot.querySelector('button');
 
-        triggerButton.setAttribute('aria-controls', 'compact-c-02-drawer');
+        triggerButton.setAttribute('aria-controls', 'sample-c-02-drawer');
         triggerButton.setAttribute('aria-expanded', 'false');
         drawer.addEventListener('sd-hide', () => triggerButton.setAttribute('aria-expanded', 'false'));
 
@@ -1947,10 +1968,16 @@ export const SampleD01 = {
     <sd-header id="sample-d-01-header">
       <div class="flex justify-center items-center">
         <a class="flex flex-shrink" href="#">
-          <div class="h-8 md:h-12 lg:h-14 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
+          <div class="h-8 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
         </a>
       </div>
     </sd-header>
+
+    <style>
+      sd-header#sample-d-01-header {
+        --sd-header-padding: 8px 16px;
+      }
+    </style>
   `
 };
 
@@ -1965,7 +1992,7 @@ export const SampleD02 = {
           </sd-navigation-item>
         </div>
         <a class="flex justify-center flex-shrink" href="#">
-          <div class="h-8 md:h-12 lg:h-14 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
+          <div class="h-8 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
         </a>
       </div>
     </sd-header>
@@ -1973,6 +2000,10 @@ export const SampleD02 = {
     <style>
       sd-navigation-item#back-button-sample-d-02::part(content) {
         border-bottom: 0;
+      }
+
+      sd-header#sample-d-02-header {
+        --sd-header-padding: 8px 16px;
       }
     </style>
 
