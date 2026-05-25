@@ -1,7 +1,7 @@
 ---
 name: Test Issue
 about: Test Issue Template
-title: 'test: 🧪 [TASK_DESCRIPTION]'
+title: 'test: [TASK_DESCRIPTION]'
 labels: ''
 assignees: ''
 
