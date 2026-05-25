@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.14.2
+
+### Patch Changes
+
+- Added `Variant B-01`, `Variant B-02`, `Variant C-01`, `Variant C-02` to the `Header Navigation` template. _[`#3038`](https://github.com/solid-design-system/solid/pull/3038) [`deb6ff5`](https://github.com/solid-design-system/solid/commit/deb6ff5fde3b1d577fe8e3a9926f93e583bfc5d9) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 2.14.1
 
 ### Patch Changes
