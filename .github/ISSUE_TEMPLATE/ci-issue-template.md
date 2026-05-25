@@ -1,7 +1,7 @@
 ---
 name: CI Issue
 about: CI Issue Template
-title: 'ci: 👷 [TASK_DESCRIPTION]'
+title: 'ci: [TASK_DESCRIPTION]'
 labels: ''
 assignees: ''
 

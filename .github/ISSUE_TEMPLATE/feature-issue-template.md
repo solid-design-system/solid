@@ -1,8 +1,8 @@
 ---
 name: Feature Issue
 about: Feature Issue Template
-title: 'feat: ✨ [FEATURE_NAME]'
-labels: '🙌 Epic'
+title: 'feat: [FEATURE_NAME]'
+labels: 'Epic'
 assignees: 'yoezlem'
 
 ---

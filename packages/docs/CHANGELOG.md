@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.14.1
+
+### Patch Changes
+
+- Add Variant D-01 & D-02 to the `header-navigation` template. _[`#2975`](https://github.com/solid-design-system/solid/pull/2975) [`b41cbc4`](https://github.com/solid-design-system/solid/commit/b41cbc4e2bdb3cea807218544f0ce4d900f568ac) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 2.14.0
 
 ### Minor Changes
