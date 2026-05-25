@@ -25,6 +25,13 @@ export const themeAttributes = {
     logoSm: 'https://solid-design-system.fe.union-investment.de/docs/images/logo-kidstarter-sm.svg',
     alt: 'Kidstarter Homepage',
     css: 'kid/kid.css'
+  },
+
+  'sd-theme-bb': {
+    logoLg: 'https://solid-design-system.fe.union-investment.de/docs/images/logo-bbbank-lg.svg',
+    logoSm: 'https://solid-design-system.fe.union-investment.de/docs/images/logo-bbbank-sm.svg',
+    alt: 'BB Bank Homepage',
+    css: 'bb/bb.css'
   }
 };
 
