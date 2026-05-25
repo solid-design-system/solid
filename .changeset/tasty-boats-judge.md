@@ -2,4 +2,4 @@
 '@solid-design-system/docs': patch
 ---
 
-Added compact Header Navigation template variants B-01, B-02, C-01, and C-02 for responsive documentation coverage.
+Added `Variant B-01`, `Variant B-02`, `Variant C-01`, `Variant C-02` to the `Header Navigation` template.
