@@ -17,7 +17,7 @@ importers:
   .:
     devDependencies:
       '@changesets/cli':
-        specifier: ^2.31.0
+        specifier: ^2.30.0
         version: 2.31.0(@types/node@25.8.0)
       '@eslint/compat':
         specifier: ^2.1.0
