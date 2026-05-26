@@ -1,5 +1,21 @@
 # @solid-design-system/components
 
+## 6.18.1
+
+### Patch Changes
+
+- Fixing the overlaping of `sd-radio-button`'s in a group. _[`#3040`](https://github.com/solid-design-system/solid/pull/3040) [`8b50afa`](https://github.com/solid-design-system/solid/commit/8b50afad9dd698a77def4b4d048efcc2549f2a9c) [@martascorreia](https://github.com/martascorreia)_
+
+## 6.18.0
+
+### Minor Changes
+
+- Added `autoplay-interval` attribute to `sd-carousel` to manage the time in seconds between automatic slide transitions. _[`#3001`](https://github.com/solid-design-system/solid/pull/3001) [`687f7e6`](https://github.com/solid-design-system/solid/commit/687f7e6b896b8b54ac76f31f2d275cf8064a4300) [@martascorreia](https://github.com/martascorreia)_
+
+### Patch Changes
+
+- Fixed the `sd-carousel` play button not being clickable issue. _[`#3001`](https://github.com/solid-design-system/solid/pull/3001) [`687f7e6`](https://github.com/solid-design-system/solid/commit/687f7e6b896b8b54ac76f31f2d275cf8064a4300) [@martascorreia](https://github.com/martascorreia)_
+
 ## 6.17.1
 
 ### Patch Changes

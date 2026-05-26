@@ -1,5 +1,11 @@
 # @solid-design-system/placeholders
 
+## 3.0.1
+
+### Patch Changes
+
+- Added Alt text to placeholder images _[`#3006`](https://github.com/solid-design-system/solid/pull/3006) [`ba6e026`](https://github.com/solid-design-system/solid/commit/ba6e0260cdae9df7838ff242b6d373480cf5c91c) [@balco0110](https://github.com/balco0110)_
+
 ## 3.0.0
 
 ### Major Changes

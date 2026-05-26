@@ -1,7 +1,7 @@
 ---
 name: Documentation Issue
 about: Documentation Issue Template
-title: 'docs: 📚 [DOCS_DESCRIPTION]'
+title: 'docs: [DOCS_DESCRIPTION]'
 labels: ''
 assignees: ''
 
