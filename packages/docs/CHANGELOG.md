@@ -1,5 +1,12 @@
 # @solid-design-system/docs
 
+## 2.15.0
+
+### Minor Changes
+
+- Add BBBank theme. _[`#2994`](https://github.com/solid-design-system/solid/pull/2994) [`44ec315`](https://github.com/solid-design-system/solid/commit/44ec315cea54149c08783c069a05fdc4c93ed4fd) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - Fix `sd-map-marker` icon color.
+
 ## 2.14.3
 
 ### Patch Changes
