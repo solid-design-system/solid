@@ -13,8 +13,8 @@ addons.setConfig({
 // Theme Protection System
 const PROTECTED_THEMES: Record<string, { id: string; password: string }> = {
   BBBank: { id: 'sd-theme-bb', password: 'iGnJgoyi9vo1jMrUa29PmiRAdHgWQLL5LniY62wg' },
-  'Kid Starter': { id: 'sd-theme-kid', password: 'd7be651c2073ccb8a9897f1bc8bfa2cb7811f693' },
-  'VB Ultra': { id: 'sd-theme-vb', password: '381a5cca78c0e498082cf82a5e20c95f' }
+  KidStarter: { id: 'sd-theme-kid', password: 'd7be651c2073ccb8a9897f1bc8bfa2cb7811f693' },
+  VB: { id: 'sd-theme-vb', password: '381a5cca78c0e498082cf82a5e20c95f' }
 };
 
 // Utility: SHA-256 hash function
