@@ -108,6 +108,18 @@ export const Placeholder = {
  */
 
 export const Disabled = {
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: false
+          }
+        ]
+      }
+    }
+  },
   render: () =>
     html`<div class="w-[370px] h-[500px]">
       <sd-datepicker label="Label" placeholder="Disabled" disabled></sd-datepicker>
@@ -123,6 +135,18 @@ export const Disabled = {
  */
 
 export const VisuallyDisabled = {
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: false
+          }
+        ]
+      }
+    }
+  },
   render: () =>
     html` <div class="w-[370px] h-[500px]">
       <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">

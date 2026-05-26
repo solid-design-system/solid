@@ -1,5 +1,39 @@
 # @solid-design-system/tokens
 
+## 6.19.0
+
+### Minor Changes
+
+- New tokens added: _[`#2994`](https://github.com/solid-design-system/solid/pull/2994) [`44ec315`](https://github.com/solid-design-system/solid/commit/44ec315cea54149c08783c069a05fdc4c93ed4fd) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+      - --sd-accordion--hover-color-background
+      - --sd-accordion--open-color-text
+      - --sd-accordion-color-border
+      - --sd-breadcrumb--current-color-text
+      - --sd-button--primary--active-color-background
+      - --sd-button--primary--disabled-color-background
+      - --sd-button--secondary--active-color-border
+      - --sd-button--secondary--default-color-border
+      - --sd-button--secondary--disabled-color-border
+      - --sd-button--secondary--hover-color-border
+      - --sd-button--secondary--hover-color-text
+      - --sd-button--tertiary--hover-color-text
+      - --sd-form-control--disabled-color-text
+      - --sd-form-control--hover-color-background
+      - --sd-form-control--read-only-color-background
+      - --sd-radio__checked-height
+      - --sd-radio__checked-width
+      - --sd-radio--checked--disabled__icon-color-background
+      - --sd-switch--unchecked--hover-color-background
+      - --sd-switch-border-width
+      - --sd-tab--disabled-color-text
+
+## 6.18.2
+
+### Patch Changes
+
+- Dependencies updated. For further details, please refer to the associated Pull Request _[`#3039`](https://github.com/solid-design-system/solid/pull/3039) [`693bce5`](https://github.com/solid-design-system/solid/commit/693bce5a3a3973130ccfde7def824d539f1b62e4) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 6.18.1
 
 ## 6.18.0
