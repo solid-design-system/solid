@@ -1,8 +1,8 @@
 ---
 name: Design Publish Subtask
 about: Design Publish Subtask Template
-title: 'feat[design]: ✨ [SUBTASK_DESCRIPTION]'
-labels: '🎨 figma, Subtask'
+title: 'feat[design]: [SUBTASK_DESCRIPTION]'
+labels: 'Design, Subtask'
 assignees: ''
 
 ---

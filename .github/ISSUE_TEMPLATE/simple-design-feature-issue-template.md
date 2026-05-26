@@ -1,8 +1,8 @@
 ---
 name: Simple Design Feature Issue
 about: Simple Feature Issue Template for Design
-title: 'feat[design]: ✨ [FEATURE_NAME]'
-labels: '🎨 figma'
+title: 'feat[design]: [FEATURE_NAME]'
+labels: 'Design'
 assignees: ''
 
 ---

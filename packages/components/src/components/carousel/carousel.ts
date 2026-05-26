@@ -902,30 +902,9 @@ export default class SdCarousel extends SolidElement {
       sd-button::part(label) {
         @apply flex flex-auto items-center pointer-events-none;
       }
-
-      #carousel__navigation-button--next,
-      #carousel__navigation-button--previous {
-        color: rgba(var(--sd-color-icon-fill-primary));
-
-        &:disabled {
-          color: rgba(var(--sd-color-icon-fill-neutral-500));
-        }
-      }
-
-      :host([inverted]) {
-        #carousel__navigation-button--next,
-        #carousel__navigation-button--previous {
-          color: rgba(var(--sd-color-icon-fill-white));
-
-          &:disabled {
-            color: rgba(var(--sd-color-icon-fill-neutral-600));
-          }
-        }
-      }
     `
   ];
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     'sd-carousel': SdCarousel;

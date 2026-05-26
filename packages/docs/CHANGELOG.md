@@ -1,5 +1,30 @@
 # @solid-design-system/docs
 
+## 2.15.0
+
+### Minor Changes
+
+- Add BBBank theme. _[`#2994`](https://github.com/solid-design-system/solid/pull/2994) [`44ec315`](https://github.com/solid-design-system/solid/commit/44ec315cea54149c08783c069a05fdc4c93ed4fd) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - Fix `sd-map-marker` icon color.
+
+## 2.14.3
+
+### Patch Changes
+
+- Dependencies updated. For further details, please refer to the associated Pull Request _[`#3039`](https://github.com/solid-design-system/solid/pull/3039) [`693bce5`](https://github.com/solid-design-system/solid/commit/693bce5a3a3973130ccfde7def824d539f1b62e4) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 2.14.2
+
+### Patch Changes
+
+- Added `Variant B-01`, `Variant B-02`, `Variant C-01`, `Variant C-02` to the `Header Navigation` template. _[`#3038`](https://github.com/solid-design-system/solid/pull/3038) [`deb6ff5`](https://github.com/solid-design-system/solid/commit/deb6ff5fde3b1d577fe8e3a9926f93e583bfc5d9) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 2.14.1
+
+### Patch Changes
+
+- Add Variant D-01 & D-02 to the `header-navigation` template. _[`#2975`](https://github.com/solid-design-system/solid/pull/2975) [`b41cbc4`](https://github.com/solid-design-system/solid/commit/b41cbc4e2bdb3cea807218544f0ce4d900f568ac) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
 ## 2.14.0
 
 ### Minor Changes

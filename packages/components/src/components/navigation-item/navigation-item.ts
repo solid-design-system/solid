@@ -38,8 +38,9 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-navigable__current-indicator-border-radius - The navigation-item current indicator border radius value.
  * @cssproperty --sd-navigable__current-indicator-height - The horizontal navigation-item current indicator height.
  * @cssproperty --sd-navigable__current-indicator-width - The vertical navigation-item current indicator width.
- * @cssproperty --sd-navigation-item--current-color-text - This custom property is deprecated. Use `--sd-navigation-item-color-text` instead.
+ * @cssproperty --sd-choice-control-font-weight - The navigation-item default font weight.
  *
+ * @cssproperty --sd-navigation-item--current-color-text - This custom property is deprecated. Use `--sd-navigation-item-color-text` instead.
  */
 @customElement('sd-navigation-item')
 export default class SdNavigationItem extends SolidElement {
@@ -207,7 +208,7 @@ export default class SdNavigationItem extends SolidElement {
           'flex items-center cursor-pointer relative focus-visible:focus-outline group hover:bg-neutral-200 transition-colors duration-fast ease-in-out min-h-[48px] navigable-border-radius',
           { md: 'navigable-font-size', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
           this.disabled ? 'text-neutral-500 pointer-events-none' : 'sd-navigation-item-color-text',
-          this.current && 'font-bold sd-navigation-item--current-color-text',
+          this.current ? 'font-bold sd-navigation-item--current-color-text' : 'choice-control-font-weight',
           !isAccordion && 'w-full',
           this.divider && this.vertical && 'mt-0.25',
           !this.vertical && 'inline-flex items-center',

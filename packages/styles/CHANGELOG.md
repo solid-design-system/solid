@@ -1,5 +1,20 @@
 # @solid-design-system/styles
 
+## 6.19.0
+
+### Minor Changes
+
+- Add BBBank theme. _[`#2994`](https://github.com/solid-design-system/solid/pull/2994) [`44ec315`](https://github.com/solid-design-system/solid/commit/44ec315cea54149c08783c069a05fdc4c93ed4fd) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - New token `--sd-form-control--disabled-color-text` in `sd-interactive` allows you to change the text color when disabled.
+
+## 6.18.2
+
+### Patch Changes
+
+- Dependencies updated. For further details, please refer to the associated Pull Request _[`#3039`](https://github.com/solid-design-system/solid/pull/3039) [`693bce5`](https://github.com/solid-design-system/solid/commit/693bce5a3a3973130ccfde7def824d539f1b62e4) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.18.1
+
 ## 6.18.0
 
 ## 6.17.1

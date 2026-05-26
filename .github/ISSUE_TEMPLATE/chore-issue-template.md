@@ -1,7 +1,7 @@
 ---
 name: Chore Issue
 about: Chore Issue Template
-title: 'chore: 🔧 [TASK_DESCRIPTION]'
+title: 'chore: [TASK_DESCRIPTION]'
 labels: ''
 assignees: ''
 

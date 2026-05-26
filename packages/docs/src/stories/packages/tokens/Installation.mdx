@@ -168,6 +168,37 @@ body {
 
 </sd-accordion>
 
+<sd-accordion summary="Example CSS for BBBank (CDN)">
+```css
+@font-face {
+  font-family: 'BBBank Type TT';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/path/to/font.woff2') format('woff2');
+}
+
+body {
+font-family:
+'BBBank Type TT',
+ui-sans-serif,
+system-ui,
+-apple-system,
+BlinkMacSystemFont,
+'Segoe UI',
+Roboto,
+'Helvetica Neue',
+Arial,
+'Noto Sans',
+sans-serif;
+}
+
+````
+
+<sd-notification open>
+Replace  with the path where you saved the font. We are not allowed to share it, please reach out to the provider directly to request it; for more information, visit: <sd-link href="https://marken-portal.bbbank.de/schrift/">BBBank Marken Portal</sd-link>
+</sd-notification>
+</sd-accordion>
+
 <sd-accordion summary="Example CSS for self-hosted fonts">
 ```css
 @font-face {
@@ -212,6 +243,7 @@ sans-serif,
 ### Font rendering
 
 To improve font rendering, add the following CSS to your project:
+
 ```css
 :root {
   font-synthesis: none;
@@ -222,7 +254,7 @@ To improve font rendering, add the following CSS to your project:
   line-height: 1.5;
   font-size: 16px;
 }
-````
+```
 
 ### Normalizing browser styles
 
