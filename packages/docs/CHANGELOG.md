@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.14.3
+
+### Patch Changes
+
+- Dependencies updated. For further details, please refer to the associated Pull Request _[`#3039`](https://github.com/solid-design-system/solid/pull/3039) [`693bce5`](https://github.com/solid-design-system/solid/commit/693bce5a3a3973130ccfde7def824d539f1b62e4) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 2.14.2
 
 ### Patch Changes
