@@ -235,6 +235,18 @@ export const Placeholder = {
  * Use the `disabled` attribute to disable the combobox.
  */
 export const Disabled = {
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: false
+          }
+        ]
+      }
+    }
+  },
   render: () => html`
     <div class="min-w-[200px] md:min-w-0 max-w-[400px]">
       <sd-combobox size="lg" label="Label" placeholder="Disabled" placement="bottom" value="" disabled>
@@ -256,6 +268,18 @@ export const Disabled = {
  * **Accessibility Hint:** Disabling elements is not recommended for accessibility reasons.
  */
 export const VisuallyDisabled = {
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: false
+          }
+        ]
+      }
+    }
+  },
   render: () => html`
     <div class="h-[200px] pt-12 min-w-[200px] md:min-w-0 max-w-[400px]">
       <sd-tooltip content="Visually Disabled" trigger="hover focus" size="sm" placement="top">

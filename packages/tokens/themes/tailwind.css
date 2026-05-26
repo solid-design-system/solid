@@ -51,7 +51,6 @@
   --border-color-neutral-400: rgba(var(--sd-color-border-neutral-400));
   --border-color-neutral-500: rgba(var(--sd-color-border-neutral-500));
   --border-color-neutral-600: rgba(var(--sd-color-border-neutral-600));
-  --border-color-neutral-700: rgba(var(--sd-color-border-neutral-700));
   --border-color-neutral-800: rgba(var(--sd-color-border-neutral-800));
   --border-color-primary-100: rgba(var(--sd-color-border-primary-100));
   --border-color-primary-200: rgba(var(--sd-color-border-primary-200));
@@ -127,6 +126,7 @@
   --sizing-12: var(--sd-sizing-12);
   --sizing-16: var(--sd-sizing-16);
   --sizing-1: var(--sd-sizing-1);
+  --sizing-1\.5: var(--sd-sizing-1\.5);
   --sizing-20: var(--sd-sizing-20);
   --sizing-24: var(--sd-sizing-24);
   --sizing-2: var(--sd-sizing-2);

@@ -47,6 +47,7 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-tag--size-sm-font-size - The font size for small tags.
  * @cssproperty --sd-choice-control-font-weight - The font weight for tags.
  * @cssproperty --sd-tag--disabled-color-text - The text color for disabled tags.
+ *
  * @cssproperty --sd-tag--disabled-color-border - This custom property is deprecated. Use `--sd-color-border-neutral-500` instead.
  * @cssproperty --sd-tag-font-weight - This custom property is deprecated. Use `--sd-choice-control-font-weight` instead.
  */
@@ -184,7 +185,11 @@ export default class SdTag extends SolidElement {
                 @click=${this.handleRemove}
                 ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
               >
-                <slot part="removable-indicator" name="removable-indicator">
+                <slot
+                  part="removable-indicator"
+                  name="removable-indicator"
+                  class=${cx(this.disabled && 'sd-tag--disabled-color-text')}
+                >
                   <sd-icon library="_internal" name="close" label=${this.localize.term('remove')}></sd-icon>
                 </slot>
               </button>`

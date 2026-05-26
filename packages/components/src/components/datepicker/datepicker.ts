@@ -64,6 +64,8 @@ import type SdPopup from '../popup/popup';
  * @cssproperty --sd-form-control__listbox-border-bottom-right-radius - The border radius for the bottom right corner of the datepicker.
  * @cssproperty --sd-form-control__listbox-border-top-left-radius - The border radius for the top left corner of the datepicker.
  * @cssproperty --sd-form-control__listbox-border-top-right-radius - The border radius for the top right corner of the datepicker.
+ * @cssproperty --sd-form-control--hover-color-background - The background color for form controls on hover.
+ * @cssproperty --sd-form-control--read-only-color-background - The background color for read-only form controls.
  * @cssproperty --sd-datepicker__date-item--default-color-text - The default text color for date items.
  * @cssproperty --sd-datepicker__date-item--hover--default-color-background - The background color for date items in hover state.
  * @cssproperty --sd-datepicker__date-item--hover--default-color-text - The text color for date items in hover state.
@@ -2068,7 +2070,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               <label
                 part="form-control-label"
                 id="label"
-                class=${cx(hasLabel ? 'inline-block form-control-color-text' : 'hidden', textSize)}
+                class=${cx(
+                  hasLabel ? 'inline-block' : 'hidden',
+                  this.visuallyDisabled || this.disabled ? 'text-neutral-500' : 'form-control-color-text',
+                  textSize
+                )}
                 for="input"
                 aria-hidden=${hasLabel ? 'false' : 'true'}
               >
@@ -2094,7 +2100,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                   class=${cx(
                     'absolute left-4 z-20 pointer-events-none transition-all duration-200 form-control--filled__floating-label-color-text',
                     !isFloatingLabelActive
-                      ? 'top-1/2 -translate-y-1/2'
+                      ? 'top-1/2 -translate-y-1/2 form-control-color-text'
                       : this.size === 'lg'
                         ? 'top-2 text-xs'
                         : 'top-1 text-xs',
@@ -2150,9 +2156,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               class=${cx(
                 'px-4 flex flex-row items-center rounded-default transition-colors ease-in-out duration-medium hover:duration-fast w-full',
                 !this.disabled && !this.readonly && !this.visuallyDisabled
-                  ? 'hover:[@media(hover:hover)]:bg-neutral-200'
+                  ? 'hover:[@media(hover:hover)]:form-control--hover-color-background'
                   : '',
-                this.readonly ? 'bg-neutral-100' : 'bg-white',
+                this.readonly ? 'form-control--read-only-color-background' : 'bg-white',
                 inputState === 'disabled' || inputState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black',
                 inputState === 'invalid' && 'form-control--invalid-color-background',
                 inputState === 'active' && 'shadow'
@@ -2225,7 +2231,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
           name="help-text"
           part="form-control-help-text"
           id="help-text"
-          class=${cx('text-sm text-neutral-700 mt-1', hasHelpText ? 'block' : 'hidden')}
+          class=${cx(
+            'text-sm mt-1',
+            hasHelpText ? 'block' : 'hidden',
+            this.visuallyDisabled || this.disabled ? 'text-neutral-500' : 'text-neutral-700'
+          )}
           aria-hidden=${!hasHelpText}
         >
           ${this.helpText}

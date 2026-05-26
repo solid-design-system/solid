@@ -60,6 +60,25 @@
       'Noto Color Emoji' !important;
   }
 
+  .sd-theme-bb *:not(pre *, code) {
+    font-family:
+      'BBBank Type TT',
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      'Noto Sans',
+      sans-serif,
+      'Apple Color Emoji',
+      'Segoe UI Emoji',
+      'Segoe UI Symbol',
+      'Noto Color Emoji' !important;
+  }
+
   .sd-theme-kid sd-tag::part(base) {
     box-shadow: var(--sd-shadow-sm);
   }
@@ -165,6 +184,22 @@
     font-weight: 700;
     font-display: swap;
     src: url('./fonts/bricolage/BricolageGrotesque-Bold.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'BBBank Type TT';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('./fonts/bbbank/BBBankTypeTT-Regular.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'BBBank Type TT';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('./fonts/bbbank/BBBankTypeTT-Bold.woff2') format('woff2');
   }
 
   /**

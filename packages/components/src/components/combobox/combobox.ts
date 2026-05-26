@@ -83,6 +83,7 @@ import type SdPopup from '../popup/popup';
  * @cssproperty --sd-form-control__listbox-border-bottom-right-radius - The border radius for the bottom right corner of the listbox.
  * @cssproperty --sd-form-control__listbox-border-top-left-radius - The border radius for the top left corner of the listbox.
  * @cssproperty --sd-form-control__listbox-border-top-right-radius - The border radius for the top right corner of the listbox.
+ * @cssproperty --sd-form-control--hover-color-background - The background color for form controls on hover.
  * @cssproperty --sd-combobox__tag-border-width - The border width for the tags for multiple options combobox.
  */
 
@@ -1255,7 +1256,10 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               <label
                 id="label"
                 part="form-control-label"
-                class=${hasLabel && 'inline-block form-control-color-text'}
+                class=${cx(
+                  hasLabel && 'inline-block',
+                  hasLabel && (this.visuallyDisabled || this.disabled) ? 'text-neutral-500' : 'form-control-color-text'
+                )}
                 aria-hidden=${hasLabel ? 'false' : 'true'}
                 @click=${this.handleLabelClick}
               >
@@ -1275,7 +1279,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                     'absolute left-4 z-20 pointer-events-none transition-all duration-200',
                     hasIconLeft ? floatingLabelHorizontalAlignmentWithIconLeft : 'left-4',
                     !isFloatingLabelActive
-                      ? 'top-1/2 -translate-y-1/2'
+                      ? 'top-1/2 -translate-y-1/2 form-control-color-text'
                       : this.size === 'lg'
                         ? 'top-2 text-xs'
                         : 'top-1 text-xs',
@@ -1343,7 +1347,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 'relative w-full px-4 flex flex-row items-center form-control-border-radius transition-colors hover:duration-fast ease-in-out',
                 this.visuallyDisabled || this.disabled
                   ? 'hover:bg-transparent'
-                  : 'hover:[@media(hover:hover)]:bg-neutral-200',
+                  : 'hover:[@media(hover:hover)]:form-control--hover-color-background',
                 this.open && 'shadow transition-shadow duration-medium ease-in-out',
                 ['invalid', 'activeInvalid'].includes(selectState) && 'form-control--invalid-color-background',
                 {
@@ -1558,7 +1562,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           name="help-text"
           part="form-control-help-text"
           id="help-text"
-          class=${cx('text-sm text-neutral-700 mt-1', hasHelpText ? 'block' : 'hidden')}
+          class=${cx(
+            'text-sm mt-1',
+            hasHelpText ? 'block' : 'hidden',
+            this.visuallyDisabled || this.disabled ? 'text-neutral-500' : 'text-neutral-700'
+          )}
           aria-hidden=${!hasHelpText}
         >
           ${this.helpText}
