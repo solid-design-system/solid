@@ -122,7 +122,55 @@ export class TokenProcessingEngine {
     }
 
     processors.forEach(processor => processor.reset());
+
+    // Add ui-light fallbacks to baseVars
+    this.addFallbacks(result, options.defaultTheme);
+
     return this.sortTokens(result);
+  }
+
+  /**
+   * Add fallback values from the default theme to baseVars entries.
+   * This ensures Tailwind utility classes work even without a theme CSS loaded.
+   */
+  addFallbacks(result, defaultTheme) {
+    const themeEntries = result[defaultTheme];
+    if (!themeEntries || !Array.isArray(themeEntries)) return;
+
+    // Build lookup: --sd-var-name → resolved value
+    const themeMap = new Map();
+    for (const entry of themeEntries) {
+      const match = entry.match(/^(--sd-[^:]+):\s*(.+);$/);
+      if (match) {
+        themeMap.set(match[1], match[2]);
+      }
+    }
+
+    // Recursively resolve var() references within the theme map
+    const resolve = (value, depth = 0) => {
+      if (depth > 10) return value;
+      return value.replace(/var\((--sd-[^,)]+)\)/g, (_, varName) => {
+        const resolved = themeMap.get(varName);
+        if (resolved && !resolved.includes('var(')) return resolved;
+        if (resolved) return resolve(resolved, depth + 1);
+        return `var(${varName})`;
+      });
+    };
+
+    const resolvedMap = new Map();
+    for (const [key, value] of themeMap) {
+      resolvedMap.set(key, resolve(value));
+    }
+
+    // Inject fallbacks into baseVars
+    result.baseVars = result.baseVars.map(entry => {
+      // Replace var(--sd-X) with var(--sd-X, <fallback>) where no fallback exists yet
+      return entry.replace(/var\((--sd-[^,)]+)\)/g, (original, varName) => {
+        const fallback = resolvedMap.get(varName);
+        if (fallback) return `var(${varName}, ${fallback})`;
+        return original;
+      });
+    });
   }
 
   /**
