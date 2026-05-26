@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.18.1
+
+### Patch Changes
+
+- Fixing the overlaping of `sd-radio-button`'s in a group. _[`#3040`](https://github.com/solid-design-system/solid/pull/3040) [`8b50afa`](https://github.com/solid-design-system/solid/commit/8b50afad9dd698a77def4b4d048efcc2549f2a9c) [@martascorreia](https://github.com/martascorreia)_
+
 ## 6.18.0
 
 ### Minor Changes

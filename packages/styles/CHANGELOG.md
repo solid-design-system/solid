@@ -1,5 +1,7 @@
 # @solid-design-system/styles
 
+## 6.18.1
+
 ## 6.18.0
 
 ## 6.17.1
