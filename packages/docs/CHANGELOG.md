@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.15.1
+
+### Patch Changes
+
+- Make theme naming more clear _[`#3043`](https://github.com/solid-design-system/solid/pull/3043) [`5367c02`](https://github.com/solid-design-system/solid/commit/5367c024463443ab9aebcb230611ab0a91040948) [@mariohamann](https://github.com/mariohamann)_
+
 ## 2.15.0
 
 ### Minor Changes
