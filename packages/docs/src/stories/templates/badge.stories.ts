@@ -101,11 +101,7 @@ export const NavigationItemWithBadge = {
       <sd-header class="max-w-[650px]" fixed>
         <div class="flex justify-between items-center">
           <a class="flex flex-shrink" href="#">
-            <img
-              style="height: 2rem; width: auto; object-fit: contain;"
-              src=${currentTheme.logoLg}
-              alt=${currentTheme.alt}
-            />
+            <img class="h-8 w-auto object-contain" src=${currentTheme.logoLg} alt=${currentTheme.alt} />
           </a>
           <div class="flex">
             <sd-navigation-item class="relative">
