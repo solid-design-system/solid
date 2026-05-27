@@ -31,7 +31,7 @@ export const themeAttributes = {
     logoLg: '/images/logo-bbbank-lg.svg',
     logoMd: '/images/logo-bbbank-md.svg',
     logoSm: '/images/logo-bbbank-sm.svg',
-    alt: 'BB Bank Homepage',
+    alt: 'BBBank Homepage',
     css: 'bb/bb.css'
   }
 };
