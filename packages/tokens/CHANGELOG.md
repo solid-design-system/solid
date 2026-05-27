@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 6.20.0
+
+### Minor Changes
+
+- Added `sd-datepicker__date-item--selected--hover-color-text` token. _[`#3049`](https://github.com/solid-design-system/solid/pull/3049) [`c2d5f70`](https://github.com/solid-design-system/solid/commit/c2d5f70f9babcadecea73b626a2261ebb1b87d2b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 6.19.1
 
 ## 6.19.0
