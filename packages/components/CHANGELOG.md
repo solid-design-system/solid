@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.19.1
+
+### Patch Changes
+
+- Fixed `sd-radio-group` error messages so they are announced by screen readers. _[`#2985`](https://github.com/solid-design-system/solid/pull/2985) [`73ed3cb`](https://github.com/solid-design-system/solid/commit/73ed3cbe6aa0cc8aeced6a659525edb440acd6dc) [@balco0110](https://github.com/balco0110)_
+
 ## 6.19.0
 
 ### Minor Changes
@@ -31,8 +37,9 @@
   - Fix icon accent color in the BBBank theme.
 
 ### 📈 Stats
-* Uncompressed: 615 KB (+3 KB / +0%)
-* Gzipped: 138 KB (unchanged)
+
+- Uncompressed: 615 KB (+3 KB / +0%)
+- Gzipped: 138 KB (unchanged)
 
 ## 6.18.2
 
