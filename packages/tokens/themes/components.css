@@ -574,6 +574,10 @@
  border-width: var(--sd-combobox__tag-border-width, var(--sd-spacing-0\.25));
 }
 
+@utility sd-container--primary-800-color-background {
+  background-color: rgba(var(--sd-container--primary-800-color-background, rgba(var(--sd-color-primary-800))));
+}
+
 @utility sd-datepicker__date-item--current-color-text {
   color: rgba(var(--sd-datepicker__date-item--current-color-text, rgba(var(--sd-color-primary))));
 }
@@ -612,10 +616,6 @@
 
 @utility sd-datepicker__date-item--selected--hover-color-background {
   background-color: rgba(var(--sd-datepicker__date-item--selected--hover-color-background, rgba(var(--sd-color-primary-500))));
-}
-
-@utility sd-datepicker__date-item--selected--hover-color-text {
-  color: rgba(var(--sd-datepicker__date-item--selected--hover-color-text, rgba(var(--sd-color-white))));
 }
 
 @utility sd-datepicker__date-item--selected-color-background {

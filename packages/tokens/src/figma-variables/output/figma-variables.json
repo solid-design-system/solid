@@ -5270,10 +5270,6 @@
                   "description": "Used for hover interaction",
                   "type": "color",
                   "value": "{ui-light.utilities.color.primary.500}"
-                },
-                "text": {
-                  "type": "color",
-                  "value": "{ui-light.utilities.color.white.default}"
                 }
               }
             }
@@ -5397,6 +5393,16 @@
             "description": "Default icon color ",
             "type": "color",
             "value": "{ui-light.utilities.color.text.primary.default}"
+          }
+        }
+      },
+      "sd-container": {
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.800}"
+            }
           }
         }
       }
@@ -8762,10 +8768,6 @@
                   "description": "Used for hover interaction",
                   "type": "color",
                   "value": "{ui-dark.utilities.color.primary.200}"
-                },
-                "text": {
-                  "type": "color",
-                  "value": "{ui-dark.utilities.color.primary.900}"
                 }
               }
             }
@@ -8889,6 +8891,16 @@
             "description": "Default icon color ",
             "type": "color",
             "value": "{ui-dark.utilities.color.text.primary.default}"
+          }
+        }
+      },
+      "sd-container": {
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.600}"
+            }
           }
         }
       }
@@ -12256,10 +12268,6 @@
                   "description": "Used for hover interaction",
                   "type": "color",
                   "value": "{vb.utilities.color.primary.700}"
-                },
-                "text": {
-                  "type": "color",
-                  "value": "{vb.utilities.color.white.default}"
                 }
               }
             }
@@ -12383,6 +12391,16 @@
             "description": "Default icon color ",
             "type": "color",
             "value": "{vb.utilities.color.black.default}"
+          }
+        }
+      },
+      "sd-container": {
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{vb.utilities.color.primary.800}"
+            }
           }
         }
       }
@@ -15750,10 +15768,6 @@
                   "description": "Used for hover interaction",
                   "type": "color",
                   "value": "{bb.utilities.color.primary.700}"
-                },
-                "text": {
-                  "type": "color",
-                  "value": "{bb.utilities.color.white.default}"
                 }
               }
             }
@@ -15877,6 +15891,16 @@
             "description": "Default icon color ",
             "type": "color",
             "value": "{bb.utilities.color.black.default}"
+          }
+        }
+      },
+      "sd-container": {
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{bb.utilities.color.primary.default}"
+            }
           }
         }
       }
@@ -19244,10 +19268,6 @@
                   "description": "Used for hover interaction",
                   "type": "color",
                   "value": "{kid.utilities.color.neutral.800}"
-                },
-                "text": {
-                  "type": "color",
-                  "value": "{kid.utilities.color.accent.100}"
                 }
               }
             }
@@ -19371,6 +19391,16 @@
             "description": "Default icon color ",
             "type": "color",
             "value": "{kid.utilities.color.primary.900}"
+          }
+        }
+      },
+      "sd-container": {
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{kid.utilities.color.background.primary.default}"
+            }
           }
         }
       }
