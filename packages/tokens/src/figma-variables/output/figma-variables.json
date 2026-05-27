@@ -418,6 +418,61 @@
       "type": "float",
       "value": "12"
     },
+    "leading-9,5": {
+      "description": "Used for text 3xl, mobile text 4xl (size: 32, line-height: 120%)",
+      "type": "float",
+      "value": "38.400001525878906"
+    },
+    "leading-8": {
+      "description": "Used for mobile text lg (size: 20, line-height: 150%)",
+      "type": "float",
+      "value": "30"
+    },
+    "leading-9": {
+      "description": "Used for text base (size: 16, line-height: 150%)",
+      "type": "float",
+      "value": "36"
+    },
+    "leading-12": {
+      "description": "Used for text 3xl (size: 32, line-height: 120%)",
+      "type": "float",
+      "value": "48"
+    },
+    "leading-7": {
+      "description": "Used for text xl (size: 24, line-height: 120%)",
+      "type": "float",
+      "value": "28.799999237060547"
+    },
+    "leading-6": {
+      "description": "Used for text base (size: 16, line-height: 150%)",
+      "type": "float",
+      "value": "24"
+    },
+    "leading-5": {
+      "description": "Used for text sm (size: 14, line-height: 150%)",
+      "type": "float",
+      "value": "21"
+    },
+    "leading-4": {
+      "description": "Used for text base compact (size: 16, line-height: 100%)",
+      "type": "float",
+      "value": "16"
+    },
+    "leading-8,5": {
+      "description": "Used for text xl, mobile text 3xl (size: 28, line-height: 120%)",
+      "type": "float",
+      "value": "33.599998474121094"
+    },
+    "leading-3": {
+      "description": "Used for text sm compact (size: 14, line-height: 100%)",
+      "type": "float",
+      "value": "14"
+    },
+    "leading-15": {
+      "description": "Used for text 4xl (size: 40, line-height: 120%)",
+      "type": "float",
+      "value": "60"
+    },
     "letter-spacing-none": {
       "type": "float",
       "value": "0"
@@ -3450,6 +3505,11 @@
           "background": {
             "type": "color",
             "value": "{ui-light.utilities.color.background.white.default}"
+          },
+          "_shadow": {
+            "description": "Deprecated?",
+            "type": "color",
+            "value": "rgba(24, 24, 24, 0.40)"
           }
         },
         "padding-bottom": {
@@ -5210,6 +5270,10 @@
                   "description": "Used for hover interaction",
                   "type": "color",
                   "value": "{ui-light.utilities.color.primary.500}"
+                },
+                "text": {
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.white.default}"
                 }
               }
             }
@@ -6935,6 +6999,11 @@
           "background": {
             "type": "color",
             "value": "{ui-dark.utilities.color.primary.default}"
+          },
+          "_shadow": {
+            "description": "Deprecated?",
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
           }
         },
         "padding-bottom": {
@@ -8693,6 +8762,10 @@
                   "description": "Used for hover interaction",
                   "type": "color",
                   "value": "{ui-dark.utilities.color.primary.200}"
+                },
+                "text": {
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.900}"
                 }
               }
             }
@@ -10418,6 +10491,11 @@
           "background": {
             "type": "color",
             "value": "{vb.utilities.color.background.white.default}"
+          },
+          "_shadow": {
+            "description": "Deprecated?",
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.20)"
           }
         },
         "padding-bottom": {
@@ -12178,6 +12256,10 @@
                   "description": "Used for hover interaction",
                   "type": "color",
                   "value": "{vb.utilities.color.primary.700}"
+                },
+                "text": {
+                  "type": "color",
+                  "value": "{vb.utilities.color.white.default}"
                 }
               }
             }
@@ -13903,6 +13985,11 @@
           "background": {
             "type": "color",
             "value": "{bb.utilities.color.background.white.default}"
+          },
+          "_shadow": {
+            "description": "Deprecated?",
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.20)"
           }
         },
         "padding-bottom": {
@@ -15663,6 +15750,10 @@
                   "description": "Used for hover interaction",
                   "type": "color",
                   "value": "{bb.utilities.color.primary.700}"
+                },
+                "text": {
+                  "type": "color",
+                  "value": "{bb.utilities.color.white.default}"
                 }
               }
             }
@@ -17388,6 +17479,11 @@
           "background": {
             "type": "color",
             "value": "{kid.utilities.color.background.white.default}"
+          },
+          "_shadow": {
+            "description": "Deprecated?",
+            "type": "color",
+            "value": "rgba(5, 21, 48, 0.20)"
           }
         },
         "padding-bottom": {
@@ -19148,6 +19244,10 @@
                   "description": "Used for hover interaction",
                   "type": "color",
                   "value": "{kid.utilities.color.neutral.800}"
+                },
+                "text": {
+                  "type": "color",
+                  "value": "{kid.utilities.color.accent.100}"
                 }
               }
             }

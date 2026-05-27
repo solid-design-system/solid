@@ -78,6 +78,7 @@ import type SdPopup from '../popup/popup';
  * @cssproperty --sd-datepicker__date-item--selected--hover-color-background - The background color for selected date items in hover state.
  * @cssproperty --sd-datepicker__date-item--range-color-background - The background color for date items that are within the selected range.
  * @cssproperty --sd-datepicker__date-item--current-color-text - The text color for the current date item.
+ * @cssproperty --sd-datepicker__date-item--selected--hover-color-text - The text color for selected date items in hover state.
  */
 
 const isoDateConverter = {
@@ -1932,15 +1933,15 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                         this.size === 'sm' ? 'text-sm h-6' : 'text-base h-8',
                         isRangeStart || isRangeEnd
                           ? !isFocused
-                            ? 'outline-none sd-datepicker__date-item--selected-color-background sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected--hover-color-background'
-                            : 'outline-none sd-datepicker__date-item--selected--hover-color-background sd-datepicker__date-item--selected-color-text'
+                            ? 'outline-none sd-datepicker__date-item--selected-color-background sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected--hover-color-background hover:sd-datepicker__date-item--selected--hover-color-text'
+                            : 'outline-none sd-datepicker__date-item--selected--hover-color-background sd-datepicker__date-item--selected--hover-color-text'
                           : 'hover:sd-datepicker__date-item--hover--default-color-text',
                         !isRangeStart &&
                           !isRangeEnd &&
                           !inSelectedRange &&
                           'hover:sd-datepicker__date-item--hover--default-color-background',
                         isSelectedSingle
-                          ? 'selected outline-none border-primary sd-datepicker__date-item--selected-color-background sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected--hover-color-background'
+                          ? 'selected outline-none border-primary sd-datepicker__date-item--selected-color-background sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected--hover-color-text hover:sd-datepicker__date-item--selected--hover-color-background'
                           : !inMonth
                             ? this.disabledWeekends && isWeekendDay
                               ? 'out-month weekend-day text-neutral-500'
@@ -1955,7 +1956,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                         isRangeStart ? 'rounded-l-md rounded-r-none' : '',
                         isRangeEnd ? 'range-end rounded-r-md rounded-l-none' : '',
                         inSelectedRange && !isRangeStart && !isRangeEnd
-                          ? 'in-range selected sd-datepicker__date-item--range-color-background rounded-none hover:sd-datepicker__date-item--selected--hover-color-background hover:sd-datepicker__date-item--selected-color-text'
+                          ? 'in-range selected sd-datepicker__date-item--range-color-background rounded-none hover:sd-datepicker__date-item--selected--hover-color-background hover:sd-datepicker__date-item--selected--hover-color-text'
                           : '',
                         !inSelectedRange && inPreviewRange && !isRangeStart && !isRangeEnd
                           ? 'in-preview-range bg-primary-100 text-primary-500 rounded-none'
