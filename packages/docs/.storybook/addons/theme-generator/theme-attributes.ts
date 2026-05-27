@@ -1,36 +1,36 @@
 export const themeAttributes = {
   'sd-theme-ui-light': {
-    logoLg: '/images/logo-unioninvestment-lg.svg',
-    logoSm: '/images/logo-unioninvestment-sm.svg',
+    logoLg: 'images/logo-unioninvestment-lg.svg',
+    logoSm: 'images/logo-unioninvestment-sm.svg',
     alt: 'Union Investment Homepage',
     css: 'ui-light/ui-light.css'
   },
 
   'sd-theme-ui-dark': {
-    logoLg: '/images/logo-unioninvestment-inverted-lg.svg',
-    logoSm: '/images/logo-unioninvestment-inverted-sm.svg',
+    logoLg: 'images/logo-unioninvestment-inverted-lg.svg',
+    logoSm: 'images/logo-unioninvestment-inverted-sm.svg',
     alt: 'Union Investment Homepage',
     css: 'ui-dark/ui-dark.css'
   },
 
   'sd-theme-vb': {
-    logoLg: '/images/logo-VB-lg.svg',
-    logoSm: '/images/logo-VB-sm.svg',
+    logoLg: 'images/logo-VB-lg.svg',
+    logoSm: 'images/logo-VB-sm.svg',
     alt: 'Volksbanken Homepage',
     css: 'vb/vb.css'
   },
 
   'sd-theme-kid': {
-    logoLg: '/images/logo-kidstarter-lg.svg',
-    logoSm: '/images/logo-kidstarter-sm.svg',
+    logoLg: 'images/logo-kidstarter-lg.svg',
+    logoSm: 'images/logo-kidstarter-sm.svg',
     alt: 'Kidstarter Homepage',
     css: 'kid/kid.css'
   },
 
   'sd-theme-bb': {
-    logoLg: '/images/logo-bbbank-lg.svg',
-    logoMd: '/images/logo-bbbank-md.svg',
-    logoSm: '/images/logo-bbbank-sm.svg',
+    logoLg: 'images/logo-bbbank-lg.svg',
+    logoMd: 'images/logo-bbbank-md.svg',
+    logoSm: 'images/logo-bbbank-sm.svg',
     alt: 'BBBank Homepage',
     css: 'bb/bb.css'
   }
