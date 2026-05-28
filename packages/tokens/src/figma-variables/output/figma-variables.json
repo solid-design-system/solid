@@ -5270,6 +5270,10 @@
                   "description": "Used for hover interaction",
                   "type": "color",
                   "value": "{ui-light.utilities.color.primary.500}"
+                },
+                "text": {
+                  "type": "color",
+                  "value": "{ui-light.utilities.color.white.default}"
                 }
               }
             }
@@ -8768,6 +8772,10 @@
                   "description": "Used for hover interaction",
                   "type": "color",
                   "value": "{ui-dark.utilities.color.primary.200}"
+                },
+                "text": {
+                  "type": "color",
+                  "value": "{ui-dark.utilities.color.primary.900}"
                 }
               }
             }
@@ -12268,6 +12276,10 @@
                   "description": "Used for hover interaction",
                   "type": "color",
                   "value": "{vb.utilities.color.primary.700}"
+                },
+                "text": {
+                  "type": "color",
+                  "value": "{vb.utilities.color.white.default}"
                 }
               }
             }
@@ -15768,6 +15780,10 @@
                   "description": "Used for hover interaction",
                   "type": "color",
                   "value": "{bb.utilities.color.primary.700}"
+                },
+                "text": {
+                  "type": "color",
+                  "value": "{bb.utilities.color.white.default}"
                 }
               }
             }
@@ -19268,6 +19284,10 @@
                   "description": "Used for hover interaction",
                   "type": "color",
                   "value": "{kid.utilities.color.neutral.800}"
+                },
+                "text": {
+                  "type": "color",
+                  "value": "{kid.utilities.color.accent.100}"
                 }
               }
             }
