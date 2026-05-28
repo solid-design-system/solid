@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 6.21.0
+
+### Minor Changes
+
+- Added new token `sd-container--primary-800-color-background`. _[`#3054`](https://github.com/solid-design-system/solid/pull/3054) [`bb9e339`](https://github.com/solid-design-system/solid/commit/bb9e339a217102acb411c05e11c169e6f8b1635e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 6.20.1
 
 ## 6.20.0

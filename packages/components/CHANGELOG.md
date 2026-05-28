@@ -1,5 +1,7 @@
 # @solid-design-system/components
 
+## 6.21.0
+
 ## 6.20.1
 
 ### Patch Changes
