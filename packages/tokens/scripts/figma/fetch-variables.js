@@ -42,7 +42,7 @@ const filterHiddenCollections = (variableCollections, variables) => {
 
   // Filter out variables that are hidden from publishing or marked as deleted but referenced
   Object.entries(variables).forEach(([variableId, variable]) => {
-    if (variable.hiddenFromPublishing === true || variable.deletedButReferenced === true) {
+    if (variable.deletedButReferenced === true) {
       delete variables[variableId];
     }
   });

@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 6.20.0
+
+### Minor Changes
+
+- Added token `sd-datepicker__date-item--selected--hover-color-text` to `sd-datepicker` to allow customization of the date item text color when selected and hovered. _[`#3049`](https://github.com/solid-design-system/solid/pull/3049) [`c2d5f70`](https://github.com/solid-design-system/solid/commit/c2d5f70f9babcadecea73b626a2261ebb1b87d2b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+### 📈 Stats
+* Uncompressed: 616 KB (+1 KB / +0%)
+* Gzipped: 138 KB (unchanged)
+
 ## 6.19.1
 
 ### Patch Changes

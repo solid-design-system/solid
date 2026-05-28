@@ -11,7 +11,10 @@ export const withThemeByClassName = options => {
     });
 
     const result = decorator(Story, context);
+
     const theme = options.themes[context.globals.theme];
+
+    document.documentElement.dataset.sdTheme = theme;
 
     ['.docs-story', '.sb-show-main'].forEach(selector => {
       document.querySelectorAll(selector).forEach(el => {

@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.15.2
+
+### Patch Changes
+
+- Adding explicit examples of branding logos and alternative text to Templates. _[`#3045`](https://github.com/solid-design-system/solid/pull/3045) [`66ae0b7`](https://github.com/solid-design-system/solid/commit/66ae0b77d4503facf2352b0af4355360e5a0d84c) [@martascorreia](https://github.com/martascorreia)_
+
 ## 2.15.1
 
 ### Patch Changes
