@@ -18,7 +18,7 @@
   }
 
   &--variant-primary-800 {
-    @apply bg-primary-800;
+    @apply sd-container--primary-800-color-background;
   }
 
   &--variant-primary {
