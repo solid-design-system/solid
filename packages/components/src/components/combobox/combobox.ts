@@ -48,6 +48,7 @@ import type SdPopup from '../popup/popup';
  * @event sd-change - Emitted when the control's value changes.
  * @event sd-clear - Emitted when the control's value is cleared.
  * @event sd-input - Emitted when the control receives input.
+ * @event sd-search - Emitted when the search button is activated.
  * @event sd-focus - Emitted when the control gains focus.
  * @event sd-blur - Emitted when the control loses focus.
  * @event sd-show - Emitted when the combobox's menu opens.
@@ -645,6 +646,14 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   private handleClearClick(event: MouseEvent) {
     event.stopPropagation();
     this.clearCombobox();
+  }
+
+  private handleSearchClick(event: MouseEvent) {
+    event.stopPropagation();
+    if (this.disabled || this.visuallyDisabled) {
+      return;
+    }
+    this.emit('sd-search');
   }
 
   private handleNoResultsClick(event: MouseEvent) {
@@ -1502,7 +1511,12 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               </slot>
               ${this.type === 'search'
                 ? html`
-                    <button class=${cx('flex items-center sd-interactive', iconMarginLeft)} type="button">
+                    <button
+                      class=${cx('flex items-center sd-interactive', iconMarginLeft)}
+                      type="button"
+                      @mousedown=${this.preventLoosingFocus}
+                      @click=${this.handleSearchClick}
+                    >
                       <sd-icon
                         class=${cx(iconColor, iconSize)}
                         library="_internal"
