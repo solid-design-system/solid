@@ -5399,6 +5399,16 @@
             "value": "{ui-light.utilities.color.text.primary.default}"
           }
         }
+      },
+      "sd-container": {
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.primary.800}"
+            }
+          }
+        }
       }
     }
   },
@@ -8889,6 +8899,16 @@
             "description": "Default icon color ",
             "type": "color",
             "value": "{ui-dark.utilities.color.text.primary.default}"
+          }
+        }
+      },
+      "sd-container": {
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.600}"
+            }
           }
         }
       }
@@ -12385,6 +12405,16 @@
             "value": "{vb.utilities.color.black.default}"
           }
         }
+      },
+      "sd-container": {
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{vb.utilities.color.primary.800}"
+            }
+          }
+        }
       }
     }
   },
@@ -15879,6 +15909,16 @@
             "value": "{bb.utilities.color.black.default}"
           }
         }
+      },
+      "sd-container": {
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{bb.utilities.color.primary.default}"
+            }
+          }
+        }
       }
     }
   },
@@ -19371,6 +19411,16 @@
             "description": "Default icon color ",
             "type": "color",
             "value": "{kid.utilities.color.primary.900}"
+          }
+        }
+      },
+      "sd-container": {
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{kid.utilities.color.background.primary.default}"
+            }
           }
         }
       }

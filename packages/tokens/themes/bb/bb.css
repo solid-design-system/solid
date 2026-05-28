@@ -254,6 +254,7 @@
   --sd-color-warning: 243 94 1;
   --sd-color-white: 255 255 255;
   --sd-combobox__tag-border-width: var(--sd-spacing-0\.25);
+  --sd-container--primary-800-color-background: var(--sd-color-info);
   --sd-datepicker__date-item--current-color-text: var(--sd-color-info);
   --sd-datepicker__date-item--current-font-weight: var(--sd-font-weight-bold);
   --sd-datepicker__date-item--default-color-text: var(--sd-color-black);
