@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- _[`#3060`](https://github.com/solid-design-system/solid/pull/3060) [`e9e7797`](https://github.com/solid-design-system/solid/commit/e9e77979aed7cf704f2be190054d28ff61459e62) [@martascorreia](https://github.com/martascorreia)_
+- _[`#3060`](https://github.com/solid-design-system/solid/pull/3060) [`0150aa7`](https://github.com/solid-design-system/solid/commit/0150aa789d04101ab8673ed126079f1a42d0f652) [@martascorreia](https://github.com/martascorreia)_
 
 ## 2.16.0
 
