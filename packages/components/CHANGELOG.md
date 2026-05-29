@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.21.1
+
+### Patch Changes
+
+- _[`#3060`](https://github.com/solid-design-system/solid/pull/3060) [`e9e7797`](https://github.com/solid-design-system/solid/commit/e9e77979aed7cf704f2be190054d28ff61459e62) [@martascorreia](https://github.com/martascorreia)_
+
 ## 6.21.0
 
 ## 6.20.1
