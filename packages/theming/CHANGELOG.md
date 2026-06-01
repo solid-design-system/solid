@@ -1,5 +1,11 @@
 # @solid-design-system/theming
 
+## 1.2.1
+
+### Patch Changes
+
+- _[`#3060`](https://github.com/solid-design-system/solid/pull/3060) [`0150aa7`](https://github.com/solid-design-system/solid/commit/0150aa789d04101ab8673ed126079f1a42d0f652) [@martascorreia](https://github.com/martascorreia)_
+
 ## 1.2.0
 
 ### Minor Changes
