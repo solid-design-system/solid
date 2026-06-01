@@ -113,3 +113,16 @@ sd-notification#versioning-info::part(base) {
 .sbdocs .sd-deprecated-badge {
   @apply inline-flex items-center rounded-sm bg-warning px-1 py-0.5 text-[10px] font-bold uppercase leading-none text-black;
 }
+
+.template-global-footer {
+  @apply m-0 box-border w-full bg-neutral-100 px-32 py-20 flex flex-col items-start gap-12;
+}
+
+.template-global-footer__inner {
+  @apply w-full flex flex-col items-start gap-12;
+  max-width: 100%;
+}
+
+.template-global-footer__links {
+  @apply flex flex-col gap-2;
+}
