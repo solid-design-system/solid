@@ -54,6 +54,23 @@ export const Orientation = {
 };
 
 /**
+ * TO DO
+ */
+
+export const Icon = {
+  render: () => html`
+    <sd-navigation-item vertical current>
+      <sd-icon name="system/image"></sd-icon>
+      <span>Navigation</span>
+    </sd-navigation-item>
+    <sd-navigation-item current>
+      <sd-icon name="system/image"></sd-icon>
+      <span> Navigation</span>
+    </sd-navigation-item>
+  `
+};
+
+/**
  * - Use the `href`attribute to change the navigation item to a link. Allows to set the URL to navigate to.
  * - Use the `target` attribute to specify where to open the link. Can assume the values `_blank`, `_parent`, `_self`, or `_top`.
  * - Use the `download` attribute to tell the browser to download the linked file as this filename.

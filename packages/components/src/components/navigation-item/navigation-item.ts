@@ -254,8 +254,22 @@ export default class SdNavigationItem extends SolidElement {
                   ></sd-divider>`
                 : ''
             }
-            <span id="content" part="content-container" class="inline-flex items-center flex-auto">
-              <slot part="content" class="inline-flex text-start"></slot>
+           <span
+              id="content"
+              part="content-container"
+              class=${cx(
+                'inline-flex flex-auto',
+                this.vertical ? 'items-center gap-2' : 'flex-col items-center justify-center gap-1 text-center'
+              )}
+            >
+              <slot
+                part="content"
+                class=${cx(
+                  this.vertical
+                    ? 'inline-flex items-center gap-2'
+                    : 'inline-flex flex-col items-center justify-center gap-1 text-center'
+                )}
+              ></slot>
             </span>
             ${
               this.chevron || (slots['children'] && this.vertical && !this.separated)
@@ -350,6 +364,10 @@ export default class SdNavigationItem extends SolidElement {
 
       :host([vertical]) {
         @apply block;
+      }
+
+      ::slotted(sd-icon) {
+        @apply w-6 h-6;
       }
 
       /* TODO clean sd-navigation-item--current-color-text and delete this class from line 210 (breaking change) */
