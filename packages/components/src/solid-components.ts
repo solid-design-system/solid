@@ -34,6 +34,7 @@ export { default as SdNotification } from './components/notification/notificatio
 export { default as SdOptgroup } from './components/optgroup/optgroup.js';
 export { default as SdOption } from './components/option/option.js';
 export { default as SdPopup } from './components/popup/popup.js';
+export { default as SdProgressBar } from './components/progress-bar/progress-bar.js';
 export { default as SdQuickfact } from './components/quickfact/quickfact.js';
 export { default as SdRadio } from './components/radio/radio.js';
 export { default as SdRadioButton } from './components/radio-button/radio-button.js';
