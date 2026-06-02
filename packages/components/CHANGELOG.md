@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.21.2
+
+### Patch Changes
+
+- Fixed the focus ring on the `sd-teaser-media` expandable toggle so it is clearly visible across all variants _[`#3063`](https://github.com/solid-design-system/solid/pull/3063) [`7a56f0e`](https://github.com/solid-design-system/solid/commit/7a56f0e7b54c67fb6c047c1f29970fa89a88f4e3) [@balco0110](https://github.com/balco0110)_
+
 ## 6.21.1
 
 ### Patch Changes
