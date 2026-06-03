@@ -71,6 +71,9 @@ export default class SdNavigationItem extends SolidElement {
   /** Disables the navigation item. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  /** Stacks the navigation-item in a vertical layout. Only used if `vertical` is false. */
+  @property({ type: Boolean, reflect: true }) stacked = false;
+
   /** Appends a chevron to the right side of a navigation item. Only used if `vertical` is true. */
   @property({ type: Boolean, reflect: true }) chevron = false;
 
@@ -120,6 +123,10 @@ export default class SdNavigationItem extends SolidElement {
         return false;
       })
     );
+  }
+
+  private get isStackedHorizontal(): boolean {
+    return !this.vertical && this.stacked;
   }
 
   private handleClickButton(event: MouseEvent) {
@@ -197,7 +204,7 @@ export default class SdNavigationItem extends SolidElement {
       children: this.hasSlotController.test('children')
     };
 
-    const horizontalPadding = this.vertical ? 'py-3' : 'py-2';
+    const horizontalPadding = this.vertical ? 'py-3' : this.isStackedHorizontal ? 'py-1' : 'py-2';
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
@@ -206,12 +213,19 @@ export default class SdNavigationItem extends SolidElement {
         part="base"
         class=${cx(
           'flex items-center cursor-pointer relative focus-visible:focus-outline group hover:bg-neutral-200 transition-colors duration-fast ease-in-out min-h-[48px] navigable-border-radius',
-          { md: 'navigable-font-size', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
+          this.isStackedHorizontal
+            ? 'text-xs leading-4.5'
+            : { md: 'navigable-font-size', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
           this.disabled ? 'text-neutral-500 pointer-events-none' : 'sd-navigation-item-color-text',
-          this.current ? 'font-bold sd-navigation-item--current-color-text' : 'choice-control-font-weight',
+          this.current && this.isStackedHorizontal
+            ? 'font-bold sd-navigation-item--current-color-text'
+            : 'choice-control-font-weight',
           !isAccordion && 'w-full',
           this.divider && this.vertical && 'mt-0.25',
-          !this.vertical && 'inline-flex items-center',
+          !this.vertical &&
+            (this.isStackedHorizontal
+              ? 'inline-flex flex-col items-center justify-center text-center min-w-[96px]'
+              : 'inline-flex items-center'),
           !this.separated && 'hover:bg-neutral-200 group transition-colors duration-fast ease-in-out min-h-[48px]',
           isIconOnly ? 'justify-center aspect-square p-3' : 'px-4'
         )}
@@ -233,15 +247,25 @@ export default class SdNavigationItem extends SolidElement {
           'absolute bg-accent left-0 pointer-events-none navigable__current-indicator-border-radius',
           this.vertical
             ? 'navigable__current-indicator-width h-[calc(100%-16px)] top-2 group-hover:h-full group-hover:top-0'
-            : 'navigable__current-indicator-height w-[calc(100%-16px)] bottom-0 left-2 group-hover:w-full group-hover:left-0 transition-all',
+            : cx(
+                'bottom-0 group-hover:w-full group-hover:left-0 transition-all',
+                this.isStackedHorizontal
+                  ? 'h-[2px] w-16 left-4'
+                  : 'navigable__current-indicator-height w-[calc(100%-16px)] left-2'
+              ),
           this.disabled && 'bg-neutral-500'
         )}></div>
-        <div class='inline-flex flex-col justify-center gap-1 w-full h-full'>
+        <div 
+          class=${cx(
+            'inline-flex justify-center gap-1 w-full h-full',
+            this.isStackedHorizontal ? 'flex-col items-center' : 'flex-col'
+          )}>
           <span
           part="content-area"
           class=${cx(
             'relative inline-flex justify-between items-center',
             isAccordion ? 'grow' : 'w-full',
+            this.isStackedHorizontal && 'justify-center',
             slots['description'] && 'pt-3',
             !slots['description'] && !this.separated && horizontalPadding,
             this.calculatePaddingX
@@ -254,12 +278,15 @@ export default class SdNavigationItem extends SolidElement {
                   ></sd-divider>`
                 : ''
             }
-           <span
+            <span
               id="content"
               part="content-container"
               class=${cx(
-                'inline-flex flex-auto',
-                this.vertical ? 'items-center gap-2' : 'flex-col items-center justify-center gap-1 text-center'
+                this.vertical
+                  ? 'inline-flex flex-auto items-center gap-2'
+                  : this.isStackedHorizontal
+                    ? 'inline-flex items-center text-center'
+                    : 'inline-flex flex-auto flex-col items-center justify-center gap-1 text-center'
               )}
             >
               <slot
@@ -366,8 +393,9 @@ export default class SdNavigationItem extends SolidElement {
         @apply block;
       }
 
-      ::slotted(sd-icon) {
-        @apply w-6 h-6;
+      :host([stacked]::not([vertical])) ::slotted(sd-icon) {
+        width: 24px;
+        height: 24px;
       }
 
       /* TODO clean sd-navigation-item--current-color-text and delete this class from line 210 (breaking change) */

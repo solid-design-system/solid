@@ -147,6 +147,42 @@ export const Disabled = {
   }
 };
 
+export const Stacked = {
+  name: 'Stacked',
+  render: (args: any) => {
+    return html`
+      ${generateTemplate({
+        axis: {
+          x: { type: 'attribute', name: 'current', values: [false, true] },
+          y: [{ type: 'attribute', name: 'stacked', values: [false, true] }]
+        },
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value: '<sd-icon name="system/image"></sd-icon><span>Navigation</span>'
+          }
+        ],
+        args
+      })}
+      ${generateTemplate({
+        axis: {
+          x: { type: 'attribute', name: 'vertical', values: [false, true] },
+          y: [{ type: 'attribute', name: 'stacked', values: [false, true] }]
+        },
+        constants: [
+          {
+            type: 'slot',
+            name: 'default',
+            value: '<sd-icon name="system/image"></sd-icon><span>Navigation</span>'
+          }
+        ],
+        args
+      })}
+    `;
+  }
+};
+
 export const VerticalAndCurrent = {
   name: 'Vertical × Current',
   render: (args: any) => {
@@ -156,6 +192,14 @@ export const VerticalAndCurrent = {
           x: { type: 'attribute', name: 'vertical' },
           y: { type: 'attribute', name: 'current' }
         },
+        constants: [
+          { type: 'attribute', name: 'stacked', value: true },
+          {
+            type: 'slot',
+            name: 'default',
+            value: '<sd-icon name="system/image"></sd-icon><span>Navigation</span>'
+          }
+        ],
         args
       })}
     `;
@@ -423,6 +467,7 @@ export const Combination = generateScreenshotStory([
   Current,
   Variants,
   Disabled,
+  Stacked,
   Parts,
   Chevron,
   IndentedRelaxed,

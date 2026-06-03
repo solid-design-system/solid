@@ -54,23 +54,6 @@ export const Orientation = {
 };
 
 /**
- * TO DO
- */
-
-export const Icon = {
-  render: () => html`
-    <sd-navigation-item vertical current>
-      <sd-icon name="system/image"></sd-icon>
-      <span>Navigation</span>
-    </sd-navigation-item>
-    <sd-navigation-item current>
-      <sd-icon name="system/image"></sd-icon>
-      <span> Navigation</span>
-    </sd-navigation-item>
-  `
-};
-
-/**
  * - Use the `href`attribute to change the navigation item to a link. Allows to set the URL to navigate to.
  * - Use the `target` attribute to specify where to open the link. Can assume the values `_blank`, `_parent`, `_self`, or `_top`.
  * - Use the `download` attribute to tell the browser to download the linked file as this filename.
@@ -99,6 +82,31 @@ export const Current = {
 
 export const Disabled = {
   render: () => html` <sd-navigation-item disabled>Disabled Navigation</sd-navigation-item> `
+};
+
+/**
+ * Use the ”stacked” attribute to create a stacked layout of the navigation item with icon.
+ */
+
+export const Stacked = {
+  render: () => html`
+    <sd-navigation-item stacked>
+      <sd-icon name="system/image"></sd-icon>
+      <span>Navigation</span>
+    </sd-navigation-item>
+    <sd-navigation-item stacked disabled>
+      <sd-icon name="system/image"></sd-icon>
+      <span>Navigation</span>
+    </sd-navigation-item>
+    <sd-navigation-item stacked current>
+      <sd-icon name="system/image"></sd-icon>
+      <span>Navigation</span>
+    </sd-navigation-item>
+    <sd-navigation-item stacked current disabled>
+      <sd-icon name="system/image"></sd-icon>
+      <span>Navigation</span>
+    </sd-navigation-item>
+  `
 };
 
 /**
