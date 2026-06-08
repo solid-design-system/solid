@@ -204,7 +204,7 @@ export default class SdNavigationItem extends SolidElement {
       children: this.hasSlotController.test('children')
     };
 
-    const horizontalPadding = this.vertical ? 'py-3' : this.isStackedHorizontal ? 'py-1' : 'py-2';
+    const horizontalPadding = this.vertical ? 'py-3' : this.isStackedHorizontal ? 'pt-1 pb-1.5' : 'py-2';
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
@@ -217,17 +217,17 @@ export default class SdNavigationItem extends SolidElement {
             ? 'text-xs leading-4.5'
             : { md: 'navigable-font-size', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
           this.disabled ? 'text-neutral-500 pointer-events-none' : 'sd-navigation-item-color-text',
-          this.current && this.isStackedHorizontal
-            ? 'font-bold sd-navigation-item--current-color-text'
-            : 'choice-control-font-weight',
+          this.current && 'sd-navigation-item--current-color-text',
+          this.current && !this.isStackedHorizontal && 'font-bold',
+          !this.current && !this.isStackedHorizontal && 'choice-control-font-weight',
           !isAccordion && 'w-full',
           this.divider && this.vertical && 'mt-0.25',
           !this.vertical &&
             (this.isStackedHorizontal
-              ? 'inline-flex flex-col items-center justify-center text-center min-w-[96px]'
+              ? 'inline-flex flex-col items-center justify-center text-center min-w-[125px] rounded-full'
               : 'inline-flex items-center'),
           !this.separated && 'hover:bg-neutral-200 group transition-colors duration-fast ease-in-out min-h-[48px]',
-          isIconOnly ? 'justify-center aspect-square p-3' : 'px-4'
+          isIconOnly ? 'justify-center aspect-square p-3' : this.isStackedHorizontal ? 'px-8' : 'px-4'
         )}
         aria-current=${ifDefined(this.current ? 'page' : undefined)}
         aria-disabled=${this.disabled}
@@ -244,15 +244,12 @@ export default class SdNavigationItem extends SolidElement {
         <div
         part="current-indicator"
         class=${cx(
-          'absolute bg-accent left-0 pointer-events-none navigable__current-indicator-border-radius',
+          'absolute bg-accent pointer-events-none navigable__current-indicator-border-radius',
           this.vertical
-            ? 'navigable__current-indicator-width h-[calc(100%-16px)] top-2 group-hover:h-full group-hover:top-0'
-            : cx(
-                'bottom-0 group-hover:w-full group-hover:left-0 transition-all',
-                this.isStackedHorizontal
-                  ? 'h-[2px] w-16 left-4'
-                  : 'navigable__current-indicator-height w-[calc(100%-16px)] left-2'
-              ),
+            ? 'navigable__current-indicator-width h-[calc(100%-16px)] top-2 left-0 group-hover:h-full group-hover:top-0'
+            : this.isStackedHorizontal
+              ? 'h-[2px] w-16 left-1/2 -translate-x-1/2 bottom-0'
+              : 'navigable__current-indicator-height w-[calc(100%-16px)] left-2 bottom-0 group-hover:w-full group-hover:left-0 transition-all',
           this.disabled && 'bg-neutral-500'
         )}></div>
         <div 
@@ -393,9 +390,8 @@ export default class SdNavigationItem extends SolidElement {
         @apply block;
       }
 
-      :host([stacked]::not([vertical])) ::slotted(sd-icon) {
-        width: 24px;
-        height: 24px;
+      :host([stacked]:not([vertical])) ::slotted(sd-icon) {
+        @apply w-6 h-6;
       }
 
       /* TODO clean sd-navigation-item--current-color-text and delete this class from line 210 (breaking change) */
