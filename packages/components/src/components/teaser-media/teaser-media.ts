@@ -203,6 +203,12 @@ export default class SdTeaserMedia extends SolidElement {
 
       [part='toggle'] {
         @apply w-fit;
+        @apply outline-transparent;
+      }
+
+      :host([variant='primary']) [part='toggle']:focus-visible,
+      :host([variant='gradient-dark']) [part='toggle']:focus-visible {
+        outline-color: rgba(var(--sd-color-text-white));
       }
     `
   ];
