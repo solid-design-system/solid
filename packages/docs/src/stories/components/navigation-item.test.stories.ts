@@ -192,14 +192,6 @@ export const VerticalAndCurrent = {
           x: { type: 'attribute', name: 'vertical' },
           y: { type: 'attribute', name: 'current' }
         },
-        constants: [
-          { type: 'attribute', name: 'stacked', value: true },
-          {
-            type: 'slot',
-            name: 'default',
-            value: '<sd-icon name="system/image"></sd-icon><span>Navigation</span>'
-          }
-        ],
         args
       })}
     `;
