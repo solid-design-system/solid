@@ -94,18 +94,6 @@ export const Stacked = {
       <sd-icon name="system/image"></sd-icon>
       <span>Navigation</span>
     </sd-navigation-item>
-    <sd-navigation-item stacked disabled>
-      <sd-icon name="system/image"></sd-icon>
-      <span>Navigation</span>
-    </sd-navigation-item>
-    <sd-navigation-item stacked current>
-      <sd-icon name="system/image"></sd-icon>
-      <span>Navigation</span>
-    </sd-navigation-item>
-    <sd-navigation-item stacked current disabled>
-      <sd-icon name="system/image"></sd-icon>
-      <span>Navigation</span>
-    </sd-navigation-item>
   `
 };
 
