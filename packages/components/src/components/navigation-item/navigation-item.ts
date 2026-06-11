@@ -224,7 +224,7 @@ export default class SdNavigationItem extends SolidElement {
           this.divider && this.vertical && 'mt-0.25',
           !this.vertical &&
             (this.isStackedHorizontal
-              ? 'inline-flex flex-col items-center justify-center text-center min-w-[125px] rounded-full'
+              ? 'inline-flex flex-col items-center justify-center text-center rounded-full wrap'
               : 'inline-flex items-center'),
           !this.separated && 'hover:bg-neutral-200 group transition-colors duration-fast ease-in-out min-h-[48px]',
           isIconOnly ? 'justify-center aspect-square p-3' : this.isStackedHorizontal ? 'px-8' : 'px-4'
@@ -248,7 +248,7 @@ export default class SdNavigationItem extends SolidElement {
           this.vertical
             ? 'navigable__current-indicator-width h-[calc(100%-16px)] top-2 left-0 group-hover:h-full group-hover:top-0'
             : this.isStackedHorizontal
-              ? 'h-[2px] w-16 left-1/2 -translate-x-1/2 bottom-0'
+              ? 'h-[2px] left-6 right-6 bottom-0'
               : 'navigable__current-indicator-height w-[calc(100%-16px)] left-2 bottom-0 group-hover:w-full group-hover:left-0 transition-all',
           this.disabled && 'bg-neutral-500'
         )}></div>
