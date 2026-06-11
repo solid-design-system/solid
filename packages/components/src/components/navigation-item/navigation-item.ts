@@ -204,7 +204,7 @@ export default class SdNavigationItem extends SolidElement {
       children: this.hasSlotController.test('children')
     };
 
-    const horizontalPadding = this.vertical ? 'py-3' : this.isStackedHorizontal ? 'pt-1 pb-1.5' : 'py-2';
+    const horizontalPadding = this.vertical ? 'py-3' : this.isStackedHorizontal ? 'pt-1 pb-1' : 'py-2';
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
@@ -217,7 +217,7 @@ export default class SdNavigationItem extends SolidElement {
             ? 'text-xs leading-4.5'
             : { md: 'navigable-font-size', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
           this.disabled ? 'text-neutral-500 pointer-events-none' : 'sd-navigation-item-color-text',
-          this.current && 'sd-navigation-item--current-color-text',
+          this.current && !this.disabled && 'sd-navigation-item--current-color-text',
           this.current && !this.isStackedHorizontal && 'font-bold',
           !this.current && !this.isStackedHorizontal && 'choice-control-font-weight',
           !isAccordion && 'w-full',
