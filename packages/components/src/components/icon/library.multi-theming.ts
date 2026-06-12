@@ -1,30 +1,19 @@
 import type { IconLibrary } from './library';
 
-const themes: Record<string, Record<string, string>> = {
-  UI: {
-    close: `<svg viewBox="0 0 24 24"><path d="..."/></svg>`
-  },
-  KID: {
-    close: `<svg viewBox="0 0 24 24"><path d="..."/></svg>`
-  },
-  VB: {},
-  BB: {}
-};
+const ICON_BASE_PATH = '/figma-icons';
 
 const multiThemingLibrary: IconLibrary = {
   name: 'multi-theming',
 
-  resolver: (name, element) => {
+  resolver: (name: string, element?: HTMLElement) => {
     const theme = element?.getAttribute('data-theme') || 'UI';
 
-    const svg = themes?.[theme]?.[name];
-
-    if (!svg) return '';
-
-    return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+    return `${ICON_BASE_PATH}/${theme}/${name}.svg`;
   },
 
-  mutator: svg => svg.setAttribute('fill', 'currentColor')
+  mutator: svg => {
+    svg.setAttribute('fill', 'currentColor');
+  }
 };
 
 export default multiThemingLibrary;
