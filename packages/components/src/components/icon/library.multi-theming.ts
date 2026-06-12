@@ -1,18 +1,18 @@
 import type { IconLibrary } from './library';
 
-const ICON_BASE_PATH = '/figma-icons';
-
 const multiThemingLibrary: IconLibrary = {
   name: 'multi-theming',
 
-  resolver: (name: string, element?: HTMLElement) => {
-    const theme = element?.getAttribute('data-theme') || 'UI';
-
-    return `${ICON_BASE_PATH}/${theme}/${name}.svg`;
+  resolver: (name: string) => {
+    const theme = document.documentElement.dataset.sdTheme?.replace('sd-theme-', '').split('-')[0] || 'ui-light';
+    return `/figma-icons/${theme}/${name}.svg`;
   },
 
   mutator: svg => {
     svg.setAttribute('fill', 'currentColor');
+    svg.querySelectorAll('[fill]').forEach(el => {
+      el.setAttribute('fill', 'currentColor');
+    });
   }
 };
 
