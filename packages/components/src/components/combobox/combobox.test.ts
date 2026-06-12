@@ -77,6 +77,66 @@ describe('<sd-combobox>', () => {
     expect(el.valueInput.disabled).to.be.true;
   });
 
+  it('should emit sd-search when the user clicks the search button', async () => {
+    const el = await fixture<SdCombobox>(html`
+      <sd-combobox type="search">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+      </sd-combobox>
+    `);
+    const searchHandler = sinon.spy();
+    const searchButton = el.shadowRoot!.querySelector('button')!;
+
+    el.addEventListener('sd-search', searchHandler);
+
+    searchButton.click();
+    await waitUntil(() => searchHandler.calledOnce);
+
+    expect(searchHandler).to.have.been.calledOnce;
+  });
+
+  it('should not toggle the listbox when the search button is clicked', async () => {
+    const el = await fixture<SdCombobox>(html`
+      <sd-combobox type="search">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+      </sd-combobox>
+    `);
+    const displayInput = el.shadowRoot!.querySelector<HTMLInputElement>('#display-input')!;
+    const searchButton = el.shadowRoot!.querySelector('button')!;
+
+    displayInput.focus();
+    await el.updateComplete;
+
+    searchButton.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, composed: true }));
+    searchButton.click();
+    await el.updateComplete;
+
+    expect(el.open).to.be.false;
+    expect(displayInput).to.equal(el.shadowRoot!.activeElement);
+  });
+
+  it('should keep the listbox open when the search button is clicked while open', async () => {
+    const el = await fixture<SdCombobox>(html`
+      <sd-combobox type="search">
+        <sd-option value="option-1">Option 1</sd-option>
+        <sd-option value="option-2">Option 2</sd-option>
+      </sd-combobox>
+    `);
+    const searchButton = el.shadowRoot!.querySelector('button')!;
+
+    await el.show();
+    await el.updateComplete;
+
+    expect(el.open).to.be.true;
+
+    searchButton.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, composed: true }));
+    searchButton.click();
+    await el.updateComplete;
+
+    expect(el.open).to.be.true;
+  });
+
   it('should have aria-disabled when visually-disabled', async () => {
     const el = await fixture<SdCombobox>(html`
       <sd-combobox visually-disabled>

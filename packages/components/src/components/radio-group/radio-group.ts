@@ -140,6 +140,22 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
     this.formControlController.updateValidity();
   }
 
+  updated(changedProperties: Map<string, unknown>) {
+    super.updated(changedProperties);
+    this.syncAriaDescription();
+  }
+
+  // Set aria-description imperatively as a VoiceOver workaround here so static a11y linters do not reject role="radiogroup".
+  private syncAriaDescription() {
+    const fieldset = this.shadowRoot?.querySelector('fieldset');
+    const message = this.showInvalidStyle ? this.validationMessage : '';
+    if (message) {
+      fieldset?.setAttribute('aria-description', message);
+    } else {
+      fieldset?.removeAttribute('aria-description');
+    }
+  }
+
   private getAllRadios() {
     const radios = [...this.querySelectorAll<SdRadio | SdRadioButton>('sd-radio, sd-radio-button')];
 

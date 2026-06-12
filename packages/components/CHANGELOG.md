@@ -1,5 +1,87 @@
 # @solid-design-system/components
 
+## 6.22.0
+
+### Minor Changes
+
+- Added a new attribute `stacked` to the `sd-navigation-item` component that enables a new vertical stacked variant to the horizontal layout. _[`#3071`](https://github.com/solid-design-system/solid/pull/3071) [`d0163ae`](https://github.com/solid-design-system/solid/commit/d0163ae24c92f1e00cec751b5f30e416b4ba898e) [@martascorreia](https://github.com/martascorreia)_
+
+### 📈 Stats
+* Uncompressed: 617 KB (+1 KB / +0%)
+* Gzipped: 138 KB (unchanged)
+
+## 6.21.2
+
+### Patch Changes
+
+- Fixed the focus ring on the `sd-teaser-media` expandable toggle so it is clearly visible across all variants _[`#3063`](https://github.com/solid-design-system/solid/pull/3063) [`7a56f0e`](https://github.com/solid-design-system/solid/commit/7a56f0e7b54c67fb6c047c1f29970fa89a88f4e3) [@balco0110](https://github.com/balco0110)_
+
+## 6.21.1
+
+### Patch Changes
+
+- _[`#3060`](https://github.com/solid-design-system/solid/pull/3060) [`0150aa7`](https://github.com/solid-design-system/solid/commit/0150aa789d04101ab8673ed126079f1a42d0f652) [@martascorreia](https://github.com/martascorreia)_
+
+## 6.21.0
+
+## 6.20.1
+
+### Patch Changes
+
+- Added search functionality to the `sd-combobox` component. _[`#3047`](https://github.com/solid-design-system/solid/pull/3047) [`0dfaf63`](https://github.com/solid-design-system/solid/commit/0dfaf630ceea1ce392f36c744356784120dbbf47) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 6.20.0
+
+### Minor Changes
+
+- Added token `sd-datepicker__date-item--selected--hover-color-text` to `sd-datepicker` to allow customization of the date item text color when selected and hovered. _[`#3049`](https://github.com/solid-design-system/solid/pull/3049) [`c2d5f70`](https://github.com/solid-design-system/solid/commit/c2d5f70f9babcadecea73b626a2261ebb1b87d2b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+### 📈 Stats
+
+- Uncompressed: 616 KB (+1 KB / +0%)
+- Gzipped: 138 KB (unchanged)
+
+## 6.19.1
+
+### Patch Changes
+
+- Fixed `sd-radio-group` error messages so they are announced by screen readers. _[`#2985`](https://github.com/solid-design-system/solid/pull/2985) [`73ed3cb`](https://github.com/solid-design-system/solid/commit/73ed3cbe6aa0cc8aeced6a659525edb440acd6dc) [@balco0110](https://github.com/balco0110)_
+
+## 6.19.0
+
+### Minor Changes
+
+- Add BBBank theme. _[`#2994`](https://github.com/solid-design-system/solid/pull/2994) [`44ec315`](https://github.com/solid-design-system/solid/commit/44ec315cea54149c08783c069a05fdc4c93ed4fd) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - New token `--sd-accordion--hover-color-background` in `sd-accordion` allows you to change the accordion background color on hover.
+  - New token `--sd-accordion--open-color-text` in `sd-accordion` allows you to change the accordion summary text color when the accordion is open.
+  - New token `--sd-accordion-color-border` in `sd-accordion` allows you to change the accordion item divider color.
+  - New token `--sd-breadcrumb--current-color-text` in `sd-breadcrumb-item` allows you to change the `current` breadcrumb text color.
+  - New token `--sd-button--primary--active-color-background` in `sd-button` allows you to change the background color of primary buttons when active.
+  - New token `--sd-button--primary--disabled-color-background` in `sd-button` allows you to change the background color of disabled primary buttons.
+  - New token `--sd-button--secondary--default-color-border` in `sd-button` allows you to change the border color of secondary buttons.
+  - New token `--sd-button--secondary--hover-color-border` in `sd-button` allows you to change the border color of secondary buttons on hover.
+  - New token `--sd-button--secondary--hover-color-text` in `sd-button` allows you to change the text color of secondary buttons on hover.
+  - New token `--sd-button--secondary--active-color-border` in `sd-button` allows you to change the border color of secondary buttons when active.
+  - New token `--sd-button--secondary--disabled-color-border` in `sd-button` allows you to change the border color of secondary buttons when disabled.
+  - New token `--sd-button--tertiary--hover-color-text` in `sd-button` allows you to change the text color of tertiary buttons on hover.
+  - New token `--sd-form-control--hover-color-background` in `sd-combobox`, `sd-datepicker`, `sd-input`, `sd-select`, and `sd-textarea` allows you to change the component background color on hover.
+  - New token `--sd-form-control--read-only-color-background` in `sd-datepicker`, `sd-input`, and `sd-textarea` allows you to change the component background color when using the `read-only` property.
+  - New token `--sd-radio__checked-height` and `--sd-radio__checked-width` in `sd-radio` allow you to change the height or width, respectively, of the radio checked indicator.
+  - New token `--sd-radio--checked--disabled__icon-color-background` in `sd-radio` allows you to change the radio indicator background color when disabled.
+  - New token `--sd-switch--unchecked--hover-color-background` in `sd-switch` allows you to change the switch background color on hover when unchecked.
+  - New token `--sd-switch-border-width` in `sd-switch` allows you to change the switch border width.
+  - New token `--sd-tab--disabled-color-text` in `sd-tab` allows you to change the disabled tab text color.
+  - Fix `sd-carousel` chevron color.
+  - Fix `sd-tag` disabled text color.
+  - Fix `floating-label` text color in `sd-checkbox`, `sd-combobox`, `sd-datepicker`, `sd-input`, `sd-select`, and `sd-textarea`.
+  - Add `--sd-choice-control-font-weight` to `sd-navigation-item`, allowing you to change the default font weight.
+  - Fix icon accent color in the BBBank theme.
+
+### 📈 Stats
+
+- Uncompressed: 615 KB (+3 KB / +0%)
+- Gzipped: 138 KB (unchanged)
+
 ## 6.18.2
 
 ### Patch Changes

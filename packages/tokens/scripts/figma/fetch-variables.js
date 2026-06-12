@@ -40,6 +40,13 @@ const filterHiddenCollections = (variableCollections, variables) => {
     }
   });
 
+  // Filter out variables that are hidden from publishing or marked as deleted but referenced
+  Object.entries(variables).forEach(([variableId, variable]) => {
+    if (variable.deletedButReferenced === true) {
+      delete variables[variableId];
+    }
+  });
+
   // Filter out variables that used collections that are hidden from publishing
   Object.entries(variables).forEach(([variableId, variable]) => {
     if (variableCollections[variable.variableCollectionId] === undefined) {

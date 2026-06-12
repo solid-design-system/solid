@@ -1,5 +1,44 @@
 # @solid-design-system/docs
 
+## 2.17.0
+
+### Minor Changes
+
+- Added documentation for the new `stacked` attribute for the `sd-navigation-item` component. _[`#3071`](https://github.com/solid-design-system/solid/pull/3071) [`d0163ae`](https://github.com/solid-design-system/solid/commit/d0163ae24c92f1e00cec751b5f30e416b4ba898e) [@martascorreia](https://github.com/martascorreia)_
+
+## 2.16.1
+
+### Patch Changes
+
+- _[`#3060`](https://github.com/solid-design-system/solid/pull/3060) [`0150aa7`](https://github.com/solid-design-system/solid/commit/0150aa789d04101ab8673ed126079f1a42d0f652) [@martascorreia](https://github.com/martascorreia)_
+
+## 2.16.0
+
+### Minor Changes
+
+- Added `sd-container--variant-primary-800` variant to `sd-container`. _[`#3054`](https://github.com/solid-design-system/solid/pull/3054) [`bb9e339`](https://github.com/solid-design-system/solid/commit/bb9e339a217102acb411c05e11c169e6f8b1635e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  New token `sd-container--primary-800-color-background` allows you to change `sd-container--variant-primary-800` background color.
+
+## 2.15.2
+
+### Patch Changes
+
+- Adding explicit examples of branding logos and alternative text to Templates. _[`#3045`](https://github.com/solid-design-system/solid/pull/3045) [`66ae0b7`](https://github.com/solid-design-system/solid/commit/66ae0b77d4503facf2352b0af4355360e5a0d84c) [@martascorreia](https://github.com/martascorreia)_
+
+## 2.15.1
+
+### Patch Changes
+
+- Make theme naming more clear _[`#3043`](https://github.com/solid-design-system/solid/pull/3043) [`5367c02`](https://github.com/solid-design-system/solid/commit/5367c024463443ab9aebcb230611ab0a91040948) [@mariohamann](https://github.com/mariohamann)_
+
+## 2.15.0
+
+### Minor Changes
+
+- Add BBBank theme. _[`#2994`](https://github.com/solid-design-system/solid/pull/2994) [`44ec315`](https://github.com/solid-design-system/solid/commit/44ec315cea54149c08783c069a05fdc4c93ed4fd) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - Fix `sd-map-marker` icon color.
+
 ## 2.14.3
 
 ### Patch Changes

@@ -1,5 +1,59 @@
 # @solid-design-system/tokens
 
+## 6.22.0
+
+## 6.21.2
+
+## 6.21.1
+
+### Patch Changes
+
+- _[`#3060`](https://github.com/solid-design-system/solid/pull/3060) [`0150aa7`](https://github.com/solid-design-system/solid/commit/0150aa789d04101ab8673ed126079f1a42d0f652) [@martascorreia](https://github.com/martascorreia)_
+
+## 6.21.0
+
+### Minor Changes
+
+- Added new token `sd-container--primary-800-color-background`. _[`#3054`](https://github.com/solid-design-system/solid/pull/3054) [`bb9e339`](https://github.com/solid-design-system/solid/commit/bb9e339a217102acb411c05e11c169e6f8b1635e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.20.1
+
+## 6.20.0
+
+### Minor Changes
+
+- Added `sd-datepicker__date-item--selected--hover-color-text` token. _[`#3049`](https://github.com/solid-design-system/solid/pull/3049) [`c2d5f70`](https://github.com/solid-design-system/solid/commit/c2d5f70f9babcadecea73b626a2261ebb1b87d2b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.19.1
+
+## 6.19.0
+
+### Minor Changes
+
+- New tokens added: _[`#2994`](https://github.com/solid-design-system/solid/pull/2994) [`44ec315`](https://github.com/solid-design-system/solid/commit/44ec315cea54149c08783c069a05fdc4c93ed4fd) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+      - --sd-accordion--hover-color-background
+      - --sd-accordion--open-color-text
+      - --sd-accordion-color-border
+      - --sd-breadcrumb--current-color-text
+      - --sd-button--primary--active-color-background
+      - --sd-button--primary--disabled-color-background
+      - --sd-button--secondary--active-color-border
+      - --sd-button--secondary--default-color-border
+      - --sd-button--secondary--disabled-color-border
+      - --sd-button--secondary--hover-color-border
+      - --sd-button--secondary--hover-color-text
+      - --sd-button--tertiary--hover-color-text
+      - --sd-form-control--disabled-color-text
+      - --sd-form-control--hover-color-background
+      - --sd-form-control--read-only-color-background
+      - --sd-radio__checked-height
+      - --sd-radio__checked-width
+      - --sd-radio--checked--disabled__icon-color-background
+      - --sd-switch--unchecked--hover-color-background
+      - --sd-switch-border-width
+      - --sd-tab--disabled-color-text
+
 ## 6.18.2
 
 ### Patch Changes

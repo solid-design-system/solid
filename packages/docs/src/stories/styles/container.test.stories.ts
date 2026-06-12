@@ -77,6 +77,7 @@ export const Variants = {
               'default',
               'sd-container--variant-primary-100',
               'sd-container--variant-primary',
+              'sd-container--variant-primary-800',
               'sd-container--variant-border-neutral-400',
               'sd-container--variant-white'
             ]
@@ -85,14 +86,21 @@ export const Variants = {
       },
       options: {
         templateRenderer: ({ attributes }) => {
-          const inverted = ['sd-container--variant-primary'].some(variant =>
+          const inverted = ['sd-container--variant-primary', 'sd-container--variant-primary-800'].some(variant =>
             attributes.classes?.split(' ').some(c => c === variant)
           );
           return `<div class="${attributes.classes}"><div class="slot slot--border slot--text ${inverted ? 'slot--inverted' : ''} h-12">Default slot</div></div>`;
         },
         templateBackgrounds: {
           alternate: 'y',
-          colors: ['transparent', 'transparent', 'transparent', 'transparent', 'rgba(var(--sd-color-primary))']
+          colors: [
+            'transparent',
+            'transparent',
+            'transparent',
+            'transparent',
+            'transparent',
+            'rgba(var(--sd-color-primary))'
+          ]
         }
       },
       args
@@ -207,7 +215,7 @@ export const TriangleColor = {
       <div class="bg-primary p-4">
         <div
           class=${`sd-container sd-container--variant-white sd-container--triangle-top sd-container--padding-${paddingAttr}`}
-          style="--triangle-background: var(--sd-color-primary);"
+          style="--triangle-background: rgba(var(--sd-color-background-primary));"
         >
           <div class="slot slot--border slot--text h-12">Default slot</div>
         </div>

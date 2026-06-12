@@ -1,5 +1,36 @@
 # @solid-design-system/styles
 
+## 6.22.0
+
+## 6.21.2
+
+## 6.21.1
+
+### Patch Changes
+
+- _[`#3060`](https://github.com/solid-design-system/solid/pull/3060) [`0150aa7`](https://github.com/solid-design-system/solid/commit/0150aa789d04101ab8673ed126079f1a42d0f652) [@martascorreia](https://github.com/martascorreia)_
+
+## 6.21.0
+
+### Minor Changes
+
+- Added `sd-container--variant-primary-800` variant to `sd-container`. _[`#3054`](https://github.com/solid-design-system/solid/pull/3054) [`bb9e339`](https://github.com/solid-design-system/solid/commit/bb9e339a217102acb411c05e11c169e6f8b1635e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  New token `sd-container--primary-800-color-background` allows you to change `sd-container--variant-primary-800` background color.
+
+## 6.20.1
+
+## 6.20.0
+
+## 6.19.1
+
+## 6.19.0
+
+### Minor Changes
+
+- Add BBBank theme. _[`#2994`](https://github.com/solid-design-system/solid/pull/2994) [`44ec315`](https://github.com/solid-design-system/solid/commit/44ec315cea54149c08783c069a05fdc4c93ed4fd) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - New token `--sd-form-control--disabled-color-text` in `sd-interactive` allows you to change the text color when disabled.
+
 ## 6.18.2
 
 ### Patch Changes

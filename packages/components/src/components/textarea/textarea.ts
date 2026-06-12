@@ -41,6 +41,8 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @cssproperty --sd-form-control-color-text - The text color for form controls.
  * @cssproperty --sd-form-control-border-radius - The border radius for form controls.
  * @cssproperty --sd-form-control--filled__floating-label-color-text - The floating label text color.
+ * @cssproperty --sd-form-control--hover-color-background - The background color for form controls on hover.
+ * @cssproperty --sd-form-control--read-only-color-background - The background color for read-only form controls.
  */
 @customElement('sd-textarea')
 export default class SdTextarea extends SolidElement implements SolidFormControl {
@@ -383,7 +385,11 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
               <label
                 part="form-control-label"
                 id="label"
-                class=${cx(hasLabel ? 'inline-block form-control-color-text' : 'hidden', textSize)}
+                class=${cx(
+                  hasLabel ? 'inline-block' : 'hidden',
+                  textSize,
+                  this.visuallyDisabled || this.disabled ? 'text-neutral-500' : ' form-control-color-text'
+                )}
                 for="input"
                 aria-hidden=${hasLabel ? 'false' : 'true'}
               >
@@ -403,7 +409,7 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                   class=${cx(
                     'absolute left-4 z-20 transition-all duration-200 cursor-text',
                     textSize,
-                    !isFloatingLabelActive ? 'top-2.5' : 'top-2 text-xs'
+                    !isFloatingLabelActive ? 'top-2.5 form-control-color-text' : 'top-2 text-xs'
                   )}
                   for="input"
                 >
@@ -450,9 +456,9 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
                 lg: 'textarea-lg'
               }[this.size],
               !this.disabled && !this.readonly && !this.visuallyDisabled
-                ? 'hover:[@media(hover:hover)]:bg-neutral-200'
+                ? 'hover:[@media(hover:hover)]:form-control--hover-color-background'
                 : '',
-              this.readonly ? 'bg-neutral-100' : 'bg-white',
+              this.readonly ? 'form-control--read-only-color-background' : 'bg-white',
               textareaState === 'disabled' || textareaState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black',
               ['invalid', 'activeInvalid'].includes(textareaState) && 'form-control--invalid-color-background'
             )}
@@ -522,7 +528,11 @@ export default class SdTextarea extends SolidElement implements SolidFormControl
           name="help-text"
           part="form-control-help-text"
           id="help-text"
-          class=${cx('text-sm text-neutral-700 mt-1', hasHelpText && !this.showInvalidStyle ? 'block' : 'hidden')}
+          class=${cx(
+            'text-sm mt-1',
+            hasHelpText && !this.showInvalidStyle ? 'block' : 'hidden',
+            this.visuallyDisabled || this.disabled ? 'text-neutral-500' : 'text-neutral-700'
+          )}
           aria-hidden=${!hasHelpText || this.showInvalidStyle}
         >
           ${this.helpText}

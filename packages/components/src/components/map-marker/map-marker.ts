@@ -176,7 +176,7 @@ export default class SdMapMarker extends SolidElement {
                 ? html`<div
                     id="cluster-border"
                     class=${cx(
-                      'absolute inset-0 sd-map-marker--cluster--default-color-background rounded-full opacity-30',
+                      'absolute inset-0 sd-map-marker--cluster--default-color-background rounded-full opacity-30 hover:sd-map-marker--cluster--hover-color-background',
                       this.state === 'hover' && 'sd-map-marker--cluster--hover-color-background'
                     )}
                   ></div>`

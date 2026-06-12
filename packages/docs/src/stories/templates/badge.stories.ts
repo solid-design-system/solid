@@ -1,4 +1,5 @@
 import '../../../../components/src/solid-components';
+import { getThemeAttributes } from '../../../.storybook/addons/theme-generator/theme-attributes';
 import { html } from 'lit-html';
 
 export default {
@@ -84,36 +85,42 @@ export const ButtonWithBadge = {
   `
 };
 
-/**
- * Example of sd-navigation-item working with sd-badge:
- */
 export const NavigationItemWithBadge = {
   name: 'Navigation Item with Badge',
-  render: () =>
-    html` <style>
+
+  render: () => {
+    const currentTheme = getThemeAttributes();
+
+    return html`
+      <style>
         #anchor--templates-badge--navigation-item-with-badge .innerZoomElementWrapper {
           height: 100px;
         }
       </style>
+
       <sd-header class="max-w-[650px]" fixed>
         <div class="flex justify-between items-center">
           <a class="flex flex-shrink" href="#">
-            <div class="h-8 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
+            <img class="h-8 w-auto object-contain" src=${currentTheme.logoLg} alt=${currentTheme.alt} />
           </a>
           <div class="flex">
             <sd-navigation-item class="relative">
               <sd-icon name="system/bell" class="text-xl" label="Open Notifications"></sd-icon>
+
               <sd-badge class="absolute -top-2 -right-5" size="md">
                 +99
                 <span class="sr-only">Notifications</span>
               </sd-badge>
             </sd-navigation-item>
+
             <sd-navigation-item>
               <sd-icon name="system/menu" class="text-xl" label="Open menu"></sd-icon>
             </sd-navigation-item>
           </div>
         </div>
-      </sd-header>`
+      </sd-header>
+    `;
+  }
 };
 
 export const InteractiveIncrement = {
