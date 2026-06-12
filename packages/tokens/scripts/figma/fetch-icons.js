@@ -97,8 +97,6 @@ const fetchIcons = async () => {
   const grouped = groupByTheme(exporter.assets);
 
   for (const [theme, themeAssets] of Object.entries(grouped)) {
-    console.log(`Exporting theme: ${theme}`);
-
     const themeExporter = new FigmaExporter({
       figmaPersonalToken: process.env.FIGMA_TOKEN,
       fileId: process.env.FIGMA_ICONS_FILE_ID,
