@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.17.0
+
+### Minor Changes
+
+- Added documentation for the new `stacked` attribute for the `sd-navigation-item` component. _[`#3071`](https://github.com/solid-design-system/solid/pull/3071) [`d0163ae`](https://github.com/solid-design-system/solid/commit/d0163ae24c92f1e00cec751b5f30e416b4ba898e) [@martascorreia](https://github.com/martascorreia)_
+
 ## 2.16.1
 
 ### Patch Changes
