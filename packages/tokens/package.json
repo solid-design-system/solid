@@ -13,6 +13,7 @@
     "verify": "pnpm build && echo '✅ Build verified'",
     "postversion": "pnpm build",
     "fetch:figma": "node ./scripts/figma/fetch-variables.js && pnpm build",
+    "fetch:icons": "node ./scripts/figma/fetch-icons.js && pnpm build",
     "analyze:variables": "node scripts/analyze-variables.mjs"
   },
   "files": [
