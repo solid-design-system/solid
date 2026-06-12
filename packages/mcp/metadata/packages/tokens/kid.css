@@ -36,8 +36,13 @@
   --sd-border-width-4: 0.25rem;
   --sd-border-width-6: 0.375rem;
   --sd-border-width: 0.0625rem;
-  --sd-brandshape--neutral-100-color-background: var(--sd-color-neutral-100);
-  --sd-brandshape--white-color-background: var(--sd-color-accent);
+  --sd-brandshape--neutral-100-color-background: 255 255 255 / 0;
+  --sd-brandshape--primary-80-color-background: 255 255 255 / 0;
+  --sd-brandshape--primary-color-background: 255 255 255 / 0;
+  --sd-brandshape--primary-color-border: 255 255 255 / 0;
+  --sd-brandshape--white-80-color-background: 255 255 255 / 0;
+  --sd-brandshape--white-color-background: 255 255 255 / 0;
+  --sd-brandshape-color-border-white: 255 255 255 / 0;
   --sd-breadcrumb__separator--current-color: var(--sd-color-neutral-800);
   --sd-breadcrumb__separator-color: var(--sd-color-neutral-200);
   --sd-button--cta--inverted--active-color-background: var(--sd-color-accent);
@@ -162,6 +167,7 @@
   --sd-color-border-neutral-400: var(--sd-color-neutral-400);
   --sd-color-border-neutral-500: var(--sd-color-neutral-400);
   --sd-color-border-neutral-600: var(--sd-color-neutral-600);
+  --sd-color-border-neutral-700: var(--sd-color-neutral-700);
   --sd-color-border-neutral-800: var(--sd-color-neutral-800);
   --sd-color-border-primary-100: var(--sd-color-neutral-100);
   --sd-color-border-primary-200: var(--sd-color-neutral-200);

@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-accordion-group>` — Short summary of the component's intended use.
+`<sd-accordion-group>` — Used to group multiple accordions together.
 
 ## API
 
@@ -78,6 +78,6 @@ Use the templates tool (with `template` arg) to retrieve the full code for any o
 
 ### Related Components
 
-- sd-accordion: Accordion shows a brief summary and expands to show additional content.
+- sd-accordion: Used to show a brief summary and expands to display additional content.
 
 Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

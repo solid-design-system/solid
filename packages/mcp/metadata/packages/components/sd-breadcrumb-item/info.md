@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-breadcrumb-item>` — An individual breadcrumb item for use exclusively within the `sd-breadcrumb`.
+`<sd-breadcrumb-item>` — Used to visualize a page's location within the site's hierarchy and provide easy navigation to previous sections.
 
 ## API
 
@@ -49,7 +49,6 @@ Use the templates tool (with `template` arg) to retrieve the full code for any o
 
 ### Related Components
 
-- sd-breadcrumb: A responsive breadcrumb navigation component used to visualize a page's location
-  within the site's hierarchy and provide easy navigation to previous sections.
+- sd-breadcrumb: Used to visualize a page's location within the site's hierarchy and provide easy navigation to previous sections.
 
 Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

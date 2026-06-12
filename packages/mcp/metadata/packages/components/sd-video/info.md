@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-video>` — Used to wrap external video elements (e. g. from Moving Image or bare <video>-Tags) and provide some basic styling for Union Investment.
+`<sd-video>` — Used to embed and control videos.
 
 ## API
 

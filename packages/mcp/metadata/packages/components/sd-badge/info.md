@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-badge>` — Badges are used to draw attention and display statuses or counts.
+`<sd-badge>` — Used to visual indicate a quantity related to a particular element. Often displayed next to an icon or label.
 
 ## API
 

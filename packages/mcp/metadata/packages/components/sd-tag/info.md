@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-tag>` — Tags are used as labels to organize things or to indicate a selection.
+`<sd-tag>` — Used to categorise or label content. Can also be used to filter or search for content.
 
 ## API
 

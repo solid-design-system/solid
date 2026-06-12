@@ -2245,6 +2245,11 @@
     "tags": ["Rente", "Vorsorge", "sparen"]
   },
   {
+    "technicalId": "berries",
+    "displayNameDe": "Beeren",
+    "tags": ["Früchte", "Ernte", "Gewinn"]
+  },
+  {
     "technicalId": "light-bulb",
     "displayNameDe": "Glühbirne",
     "tags": ["Idee", "Wissen", "eigene Ideen", "Licht"]

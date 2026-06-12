@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-loader>` — Loaders are used to show the progress of an indeterminate operation.
+`<sd-loader>` — Used as a visual indicator with an animation that shows loading is in process.
 
 ## API
 
@@ -55,6 +55,6 @@ Use the components tool (with `component` + `story` args) to retrieve the HTML f
 
 ### Related Components
 
-- sd-button: Buttons represent actions that are available to the user.
+- sd-button: Used to allow users to perform actions with a single click.
 
 Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

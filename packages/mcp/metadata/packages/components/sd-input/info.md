@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-input>` — Inputs collect data from the user.
+`<sd-input>` — Used to allow users to enter text. It can be displayed in several ways, depending on the type.
 
 ## API
 

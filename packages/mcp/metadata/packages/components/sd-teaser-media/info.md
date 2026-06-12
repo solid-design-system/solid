@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-teaser-media>` — Teasers group information into flexible containers so users can browse a collection of related items and actions.
+`<sd-teaser-media>` — Used as a flexible container that groups related items and links them to further content.
 
 ## API
 
@@ -93,6 +93,6 @@ Use the templates tool (with `template` arg) to retrieve the full code for any o
 
 ### Related Components
 
-- sd-teaser: Teasers group information into flexible containers so users can browse a collection of related items and actions.
+- sd-teaser: Used to group related subjects in a container, providing a preview of information and linking to further content.
 
 Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

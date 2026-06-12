@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-divider>` — Dividers are used to visually separate or group elements.
+`<sd-divider>` — Used to separate content or sections from each other and make the content easier to read for the user.
 
 ## API
 

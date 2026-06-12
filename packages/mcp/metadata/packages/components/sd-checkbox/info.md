@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-checkbox>` — Checkboxes allow the user to toggle an option on or off.
+`<sd-checkbox>` — Used to toggle an option on or off.
 
 ## API
 
@@ -98,6 +98,6 @@ Use the templates tool (with `template` arg) to retrieve the full code for any o
 
 ### Related Components
 
-- sd-checkbox-group: Checkbox groups are used to group multiple [checkbox](/components/checkbox). It provides only presentational functionality.
+- sd-checkbox-group: Used to select multiple options from a list of options.
 
 Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

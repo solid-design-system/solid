@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-expandable>` — Expandable shows a brief summary and expands to show additional content.
+`<sd-expandable>` — Used to display a brief summary that expands to reveal additional content.
 
 ## API
 

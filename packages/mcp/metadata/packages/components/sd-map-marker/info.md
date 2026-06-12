@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-map-marker>` — A marker identifies a location on google map
+`<sd-map-marker>` — Used to show a location or a cluster of locations on a map.
 
 ## API
 

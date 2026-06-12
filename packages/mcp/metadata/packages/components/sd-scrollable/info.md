@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-scrollable>` — Scrollable is used to indicate there is hidden content to be scrolled.
+`<sd-scrollable>` — Used as a container to create scrollable sections within the user interface.
 
 ## API
 

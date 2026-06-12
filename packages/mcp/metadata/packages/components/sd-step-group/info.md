@@ -18,7 +18,7 @@ Use the components tool (with `component` + `story` args) to retrieve the HTML f
 
 ### Key Properties
 
-- prop.size: 'lg'|'sm', default='lg' — The step-groups's size.
+- prop.size: 'lg'|'sm'|'xs', default='lg' — The step-groups's size.
 - prop.orientation: 'horizontal'|'vertical', default='horizontal' — Determines the orientation of the step-group.
 - prop.activeStep [attr: active-step]: number, default=0 — The active step in the step-group. If set to -1, steps have to be managed manually.
 - prop.notInteractive [attr: not-interactive]: boolean, default=false — Determines if the step-group is not interactive.
@@ -81,6 +81,6 @@ Use the templates tool (with `template` arg) to retrieve the full code for any o
 
 ### Related Components
 
-- sd-step: Steps are used inside [step groups](/components/step-group) to guide users through the steps of a process or task..
+- sd-step: Used to determine a step in a process or task.
 
 Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

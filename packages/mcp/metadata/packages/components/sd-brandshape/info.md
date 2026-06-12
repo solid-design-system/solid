@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-brandshape>` — The Brandshape highlights a piece of content.
+`<sd-brandshape>` — Used as a container with brand character that visually emphasizes the content.
 
 ## API
 

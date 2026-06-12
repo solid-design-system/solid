@@ -75,7 +75,7 @@ Use the templates tool (with `template` arg) to retrieve the full code for any o
 
 ### Related Components
 
-- sd-menu-item: Menu items provide options for the user to pick from in a menu.
-- sd-dropdown: Dropdowns expose additional content that "drops down" in a panel.
+- sd-menu-item: Used to provide options for the user to pick from a menu.
+- sd-dropdown: Used to display a list of actions or options in a panel when activated.
 
 Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

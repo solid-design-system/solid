@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-button>` — Buttons represent actions that are available to the user.
+`<sd-button>` — Used to allow users to perform actions with a single click.
 
 ## API
 

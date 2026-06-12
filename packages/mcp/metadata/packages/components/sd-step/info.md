@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-step>` — Steps are used inside [step groups](/components/step-group) to guide users through the steps of a process or task..
+`<sd-step>` — Used to determine a step in a process or task.
 
 ## API
 
@@ -24,7 +24,7 @@ Use the components tool (with `component` + `story` args) to retrieve the HTML f
 
 ### Key Properties
 
-- prop.size: 'lg'|'sm', default='lg' — The step's size.
+- prop.size: 'lg'|'sm'|'xs', default='lg' — The step's size.
 - prop.orientation: 'horizontal'|'vertical', default='horizontal' — Determines the orientation of the step.
 - prop.horizontalInline [attr: horizontal-inline]: boolean, default=false — Enables the horizontal inline variant for more compact layout.
 - prop.waiting: boolean, default=false — Sets the step to a waiting state.

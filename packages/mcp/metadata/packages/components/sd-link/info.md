@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-link>` — A link component.
+`<sd-link>` — Used to allow users to navigate to another location or perform actions like downloading files.
 
 ## API
 

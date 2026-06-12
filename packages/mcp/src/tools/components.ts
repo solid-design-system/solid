@@ -131,7 +131,7 @@ export const componentsTool = (server: McpServer) => {
         'These are the ONLY valid sd-* components — never invent components not in this list.',
         'Use `component` to get the full spec for any specific component.',
         '',
-        components.map(c => `- ${c}`).join('\n'),
+        components.map(c => (c.description ? `- ${c.name} – ${c.description}` : `- ${c.name}`)).join('\n'),
         '',
         '## Package Docs',
         '',

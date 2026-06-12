@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-dropdown>` — Dropdowns expose additional content that "drops down" in a panel.
+`<sd-dropdown>` — Used to display a list of actions or options in a panel when activated.
 
 ## API
 

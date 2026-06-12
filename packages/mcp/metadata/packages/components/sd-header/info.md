@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-header>` — Header
+`<sd-header>` — Used as a container for the main navigation of a website.
 
 ## API
 
@@ -70,6 +70,6 @@ Use the templates tool (with `template` arg) to retrieve the full code for any o
 
 ### Related Components
 
-- sd-navigation-item: Flexible button / link component that can be used to quickly build navigations. Takes one of 3 forms: link (overrides all other if 'href' is provided), button (default), or accordion (if 'children' slot defined).
+- sd-navigation-item: Used to facilitate seamless page transitions and help users orient themselves within the application.
 
 Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

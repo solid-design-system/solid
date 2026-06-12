@@ -8,8 +8,9 @@ import { createPath, tokensPath } from '../utilities/index.js';
 
 /**
  * List of relative paths to files that should be copied to the static metadata directory.
+ * Includes both the built dist output and the source themes as a fallback.
  */
-const filesToCopy = ['README.md', 'CHANGELOG.md', 'dist/theme.js', 'dist/themes/**/*.css'];
+const filesToCopy = ['README.md', 'CHANGELOG.md', 'dist/theme.js', 'dist/themes/**/*.css', 'themes/**/*.css'];
 
 /**
  * Sets up all wanted data from the tokens package and adds it to the static metadata.

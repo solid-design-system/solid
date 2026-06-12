@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-skeleton>` — Skeleton loaders are used as placeholder previews of content before data gets loaded.
+`<sd-skeleton>` — Used as a placeholder preview of the content before the data gets loaded to reduce load-time frustration.
 
 ## API
 

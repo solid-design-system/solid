@@ -102,6 +102,6 @@ Use the templates tool (with `template` arg) to retrieve the full code for any o
 
 ### Related Components
 
-- sd-range-tick: Ticks visually improve positioning on range sliders.
+- sd-range-tick: Used to represent a tick within a sd-range.
 
 Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

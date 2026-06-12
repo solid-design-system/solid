@@ -176,7 +176,7 @@ Use the templates tool (with `template` arg) to retrieve the full code for any o
 
 ### Related Components
 
-- sd-option: Options define the selectable items within various form controls such as [select](/components/select).
-- sd-optgroup: The <sd-optgroup> element creates a grouping for <sd-option>s within a <sd-combobox>.
+- sd-option: Used to define selectable items within various form controls such as select.
+- sd-optgroup: Used to group selectable items within various form controls such as select.
 
 Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-tab-panel>` — Tab panels are used inside [tab groups](/components/tab-group) to display tabbed content.
+`<sd-tab-panel>` — Used inside sd-tab-group to display tabbed content.
 
 ## API
 
@@ -33,7 +33,7 @@ Use the templates tool (with `template` arg) to retrieve the full code for any o
 
 ### Related Components
 
-- sd-tab: Tabs are used inside [tab groups](/components/tab-group) to represent and activate [tab panels](/components/tab-panel).
-- sd-tab-group: Tab groups organize content into a container that shows one section at a time.
+- sd-tab: Used inside sd-tab-group to represent and activate tab panels.
+- sd-tab-group: Used to organise content into a container that shows one section at a time.
 
 Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

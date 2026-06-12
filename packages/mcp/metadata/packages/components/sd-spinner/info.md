@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-spinner>` — Spinners are used to show the progress of an indeterminate operation.
+`<sd-spinner>` — Used as a visual indicator with a looping animation that shows loading is in process.
 
 ## API
 

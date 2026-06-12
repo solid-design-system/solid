@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-radio-button>` — Radio buttons allow the user to select a single option from a group using a button-like control.
+`<sd-radio-button>` — Used to switch between different options or views by selecting one option from a group.
 
 ## API
 
@@ -88,7 +88,7 @@ Use the templates tool (with `template` arg) to retrieve the full code for any o
 
 ### Related Components
 
-- sd-radio: A radio allows to select only one value from a set of options. Clicking on an unchecked radio will deselect the other one(s).
-- sd-radio-group: Radio groups are used to group multiple [radios](/components/radio) or [radio buttons](/components/radio-button) so they function as a single form control.
+- sd-radio: Used to allow the user to select a single option from a group.
+- sd-radio-group: Used to group multiple input radio or radio buttons so they function as a single form control.
 
 Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

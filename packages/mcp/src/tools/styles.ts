@@ -124,7 +124,7 @@ export const stylesTool = (server: McpServer) => {
         '',
         'Use `style` to get the full spec for any specific style utility.',
         '',
-        styles.map(s => `- ${s}`).join('\n'),
+        styles.map(s => (s.description ? `- ${s.name} – ${s.description}` : `- ${s.name}`)).join('\n'),
         '',
         '## Package Docs',
         '',

@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-menu-item>` — Menu items provide options for the user to pick from in a menu.
+`<sd-menu-item>` — Used to provide options for the user to pick from a menu.
 
 ## API
 

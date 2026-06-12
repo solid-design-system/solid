@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-quickfact>` — Accordion shows a brief summary and expands to show additional content.
+`<sd-quickfact>` — Used to present information in an expandable and more dynamic way.
 
 ## API
 

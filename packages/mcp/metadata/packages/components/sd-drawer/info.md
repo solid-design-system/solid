@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-drawer>` — Drawers slide in from a container to expose additional options and information.
+`<sd-drawer>` — Used as a panel that slides out from the side of the screen which contains a set of information or actions.
 
 ## API
 

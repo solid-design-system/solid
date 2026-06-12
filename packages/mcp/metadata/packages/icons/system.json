@@ -30,14 +30,14 @@
     "tags": ["sonnig", "hell", "schönes Wetter"]
   },
   {
-    "technicalId": "settings",
-    "displayNameDe": "Einstellungen",
-    "tags": ["anpassen", "Bearbeitung", "Zahnrad"]
-  },
-  {
     "technicalId": "volume",
     "displayNameDe": "Lautstärke",
     "tags": ["Ton", "Pegel", "Geräuschpegel"]
+  },
+  {
+    "technicalId": "settings",
+    "displayNameDe": "Einstellungen",
+    "tags": ["anpassen", "Bearbeitung", "Zahnrad"]
   },
   {
     "technicalId": "hand",
@@ -315,14 +315,14 @@
     "tags": ["verstecken", "komprimieren", "Seitenleiste"]
   },
   {
-    "technicalId": "shopping-cart",
-    "displayNameDe": "Einkaufswagen",
-    "tags": ["Onlineshop", "Warenkorb", "Erwerb", "Einkauf"]
-  },
-  {
     "technicalId": "bug",
     "displayNameDe": "Fehler",
     "tags": ["Mangel", "Problem"]
+  },
+  {
+    "technicalId": "shopping-cart",
+    "displayNameDe": "Einkaufswagen",
+    "tags": ["Onlineshop", "Warenkorb", "Erwerb", "Einkauf"]
   },
   {
     "technicalId": "eraser",
@@ -465,24 +465,24 @@
     "tags": ["Sad", "unzufrieden", "enttäuscht", "mangelhaft"]
   },
   {
-    "technicalId": "",
-    "displayNameDe": "",
-    "tags": []
+    "technicalId": "expand-up",
+    "displayNameDe": "ausklappen oben",
+    "tags": ["Seitenleiste", "anzeigen"]
   },
   {
-    "technicalId": "",
-    "displayNameDe": "",
-    "tags": []
+    "technicalId": "collapse-left",
+    "displayNameDe": "ausklappen links",
+    "tags": ["Seitenleiste", "anzeigen"]
   },
   {
-    "technicalId": "",
-    "displayNameDe": "",
-    "tags": []
+    "technicalId": "expand-right",
+    "displayNameDe": "ausklappen rechts",
+    "tags": ["Seitenleiste", "anzeigen"]
   },
   {
-    "technicalId": "",
-    "displayNameDe": "",
-    "tags": []
+    "technicalId": "expand-bottom",
+    "displayNameDe": "anzeigen unten",
+    "tags": ["anzeigen", "Seitenleiste"]
   },
   {
     "technicalId": "chevron-small-top",
@@ -615,24 +615,24 @@
     "tags": ["klicken", "auswählen"]
   },
   {
-    "technicalId": "file-read-out",
-    "displayNameDe": "Dokument vorlesen",
-    "tags": ["vorlesen", "Audio", "Lautstärke"]
-  },
-  {
     "technicalId": "layers",
     "displayNameDe": "Ebenen",
     "tags": ["gruppieren", "Stapel", "mehrere Folien erzeugen"]
   },
   {
-    "technicalId": "file-wai",
-    "displayNameDe": "Dokument wAI",
-    "tags": ["Dokument", "Datei", "wAI"]
+    "technicalId": "file-read-out",
+    "displayNameDe": "Dokument vorlesen",
+    "tags": ["vorlesen", "Audio", "Lautstärke"]
   },
   {
     "technicalId": "collapse-left",
     "displayNameDe": "einklappen links",
     "tags": ["komprimieren", "verstecken", "Seitenleiste"]
+  },
+  {
+    "technicalId": "file-wai",
+    "displayNameDe": "Dokument wAI",
+    "tags": ["Dokument", "Datei", "wAI"]
   },
   {
     "technicalId": "download",
@@ -1045,14 +1045,14 @@
     "tags": ["Rückmeldung", "Nachricht", "Kommunikation"]
   },
   {
-    "technicalId": "e-mail-send",
-    "displayNameDe": "E-Mail abschicken",
-    "tags": ["Brief", "E-Mail", "Kommunikation"]
-  },
-  {
     "technicalId": "password",
     "displayNameDe": "Passwort",
     "tags": ["sicherheitsgeschützt", "privat", "verschlüsselt"]
+  },
+  {
+    "technicalId": "e-mail-send",
+    "displayNameDe": "E-Mail abschicken",
+    "tags": ["Brief", "E-Mail", "Kommunikation"]
   },
   {
     "technicalId": "e-mail-exclamation",

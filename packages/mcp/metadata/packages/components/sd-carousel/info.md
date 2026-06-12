@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-carousel>` — Carousels display an arbitrary number of content slides along a horizontal axis.
+`<sd-carousel>` — Used to display an arbitrary number of content slides along a horizontal axis.
 
 ## API
 
@@ -104,6 +104,6 @@ Use the templates tool (with `template` arg) to retrieve the full code for any o
 
 ### Related Components
 
-- sd-carousel-item: A carousel item represent a slide within a [carousel](/components/carousel).
+- sd-carousel-item: Used within sd-carousel to represent a slide.
 
 Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

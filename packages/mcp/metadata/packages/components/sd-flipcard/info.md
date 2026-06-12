@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-flipcard>` — Flipcard allows for the addition of content/information on both "sides" of the card, through means of a flip animation. Used to add dynamism and interactivity to a page.
+`<sd-flipcard>` — Used to display content on one side and reveal additional information when flipped.
 
 ## API
 

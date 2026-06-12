@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-dialog>` — Dialogs, sometimes called "modals", appear above the page and require the user's immediate attention.
+`<sd-dialog>` — Used over other content. It requires an interaction from the user before they can return to whatever is underneath.
 
 ## API
 

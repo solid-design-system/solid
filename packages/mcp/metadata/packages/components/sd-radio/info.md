@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-radio>` — A radio allows to select only one value from a set of options. Clicking on an unchecked radio will deselect the other one(s).
+`<sd-radio>` — Used to allow the user to select a single option from a group.
 
 ## API
 

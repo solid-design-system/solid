@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-optgroup>` — The <sd-optgroup> element creates a grouping for <sd-option>s within a <sd-combobox>.
+`<sd-optgroup>` — Used to group selectable items within various form controls such as select.
 
 ## API
 
@@ -62,7 +62,7 @@ Use the templates tool (with `template` arg) to retrieve the full code for any o
 
 ### Related Components
 
-- sd-select: Selects allow you to choose items from a menu of predefined options.
+- sd-select: Used to choose items from a menu of predefined options.
 - sd-combobox: Comboboxes allow you to choose items from a menu of predefined options.
 
 Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

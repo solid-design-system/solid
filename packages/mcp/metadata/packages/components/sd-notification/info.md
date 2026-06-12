@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-notification>` — Alerts are used to display important messages inline or as toast notifications.
+`<sd-notification>` — Used to communicate information or status to users, notifications can be displayed inline or as toast messages, either individually or in stacks.
 
 ## API
 

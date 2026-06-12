@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-tooltip>` — Tooltips display additional information based on a specific action.
+`<sd-tooltip>` — Used as a floating and non-actionable text label that explains an element or function of the user interface.
 
 ## API
 

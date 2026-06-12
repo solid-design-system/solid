@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-range-tick>` — Ticks visually improve positioning on range sliders.
+`<sd-range-tick>` — Used to represent a tick within a sd-range.
 
 ## API
 

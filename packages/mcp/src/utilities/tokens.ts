@@ -6,7 +6,12 @@ import { getStructuredMetaData } from './metadata.js';
 
 export const getTailwindThemeTokenNames = (): string[] => {
   const tailwindCssPath = join(tokensPath, 'tailwind.css');
-  const content = readFileSync(tailwindCssPath, 'utf-8');
+  let content: string;
+  try {
+    content = readFileSync(tailwindCssPath, 'utf-8');
+  } catch {
+    return [];
+  }
 
   // Extract content inside @theme inline { ... }
   const themeMatch = content.match(/@theme\s+inline\s*\{([\s\S]*?)\n\}/);
