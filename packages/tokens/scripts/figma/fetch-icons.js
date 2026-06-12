@@ -13,14 +13,25 @@ const normalizeIconName = name => {
     .replace(/[^a-z0-9-/]/g, '');
 };
 
-const parseIcon = name => {
-  const match = name.match(/theming\/icons\/([^/]+)\/set=([^/]+)/);
+const normalizeCategory = category => {
+  return category.toLowerCase().replace(/-icons$/, '');
+};
 
-  if (!match) return null;
+const parseIcon = name => {
+  const match = name.match(/^theming\/([^/]+)\/([^/]+)(?:\/.*)?set=([^/]+)$/);
+
+  if (!match) {
+    return null;
+  }
+
+  const category = normalizeCategory(match[1]);
+  const rawIcon = match[2];
+  const theme = match[3].toLowerCase();
 
   return {
-    icon: match[1],
-    theme: match[2]
+    category,
+    icon: rawIcon,
+    theme
   };
 };
 
@@ -70,15 +81,17 @@ const groupByTheme = assets => {
     const parsed = parseIcon(asset.name);
     if (!parsed) continue;
 
-    const { icon, theme } = parsed;
+    const { icon, theme, category } = parsed;
 
-    if (!grouped[theme]) grouped[theme] = [];
+    if (!grouped[theme]) grouped[theme] = {};
+    if (!grouped[theme][category]) grouped[theme][category] = [];
 
-    grouped[theme].push({
+    grouped[theme][category].push({
       ...asset,
       name: normalizeIconName(icon)
     });
   }
+
   return grouped;
 };
 
@@ -96,19 +109,21 @@ const fetchIcons = async () => {
 
   const grouped = groupByTheme(exporter.assets);
 
-  for (const [theme, themeAssets] of Object.entries(grouped)) {
-    const themeExporter = new FigmaExporter({
-      figmaPersonalToken: process.env.FIGMA_TOKEN,
-      fileId: process.env.FIGMA_ICONS_FILE_ID,
-      page: FIGMA_ICONS_PAGE,
-      exportVariants: true,
-      assetsPath: `${FIGMA_ICONS_DIR}/${theme}`,
-      format: 'svg'
-    });
+  for (const [theme, categories] of Object.entries(grouped)) {
+    for (const [category, themeAssets] of Object.entries(categories)) {
+      const themeExporter = new FigmaExporter({
+        figmaPersonalToken: process.env.FIGMA_TOKEN,
+        fileId: process.env.FIGMA_ICONS_FILE_ID,
+        page: FIGMA_ICONS_PAGE,
+        exportVariants: true,
+        assetsPath: `${FIGMA_ICONS_DIR}/${theme}/${category}`,
+        format: 'svg'
+      });
 
-    await themeExporter.setAssets();
+      await themeExporter.setAssets();
 
-    await themeExporter.createAssets(() => themeAssets);
+      await themeExporter.createAssets(() => themeAssets);
+    }
   }
 
   walkAndOptimize(FIGMA_ICONS_DIR);
