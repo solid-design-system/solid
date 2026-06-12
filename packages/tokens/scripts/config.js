@@ -22,4 +22,7 @@ export const OUTPUT_DIR = `${FIGMA_VARIABLES_DIR}/output`;
  */
 export const FIGMA_ICONS_DIR = './src/figma-icons';
 
+/**
+ * Figma page that contains all exportable icons.
+ */
 export const FIGMA_ICONS_PAGE = 'Theming Icons and Assets';
