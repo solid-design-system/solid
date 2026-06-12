@@ -1,0 +1,31 @@
+/**
+ * @summary Used as a placeholder preview of the content before the data gets loaded to reduce load-time frustration.
+ * @name sd-skeleton
+ * @status stable
+ * @since 6.17.0
+ * @boolean sd-skeleton--circular Makes the skeleton appear circular.
+ *
+ * @cssproperty --sd-skeleton-color - The color of the skeleton.
+ */
+
+.sd-skeleton {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  pointer-events: none;
+  @apply animate-pulse;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    @apply sd-skeleton-color rounded-sm;
+    z-index: 11;
+  }
+
+  &--circular {
+    &::after {
+      @apply rounded-full;
+    }
+  }
+}
