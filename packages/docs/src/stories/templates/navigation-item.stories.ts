@@ -112,7 +112,7 @@ export const BottomBarNavigation = {
                       class="sd-interactive flex flex-col gap-2 break-words rounded border border-neutral-400 p-4"
                     >
                       <sd-icon name="content/video" class="text-2xl text-primary"></sd-icon>
-                      <p class="sd-paragraph font-bold">Kleine Beträge, große Wirkung</p>
+                      <p class="sd-paragraph font-bold">Kleine Beiträge, große Wirkung</p>
                       <p class="sd-paragraph">Warum jeder Euro für dein Kind wichtig ist</p>
                     </a>
                     <a
@@ -133,7 +133,7 @@ export const BottomBarNavigation = {
                       </p>
                       <p class="sd-paragraph">
                         Beim Familienportal des Bundes gibt es eine ganze Reihe praktischer Rechner und Tools, die
-                        werdende Eltern bei Grundsatzentscheidungen unterstützen.
+                        werdende Eltern bei wichtigen Grundsatzentscheidungen unterstützen.
                       </p>
                     </a>
                   </div>
