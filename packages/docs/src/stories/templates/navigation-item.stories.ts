@@ -3,7 +3,7 @@ import { html } from 'lit-html';
 
 export default {
   tags: ['!dev', 'autodocs'],
-  title: 'Templates/Navigation Item',
+  title: 'Templates/Bottom Bar Navigation',
   parameters: {
     chromatic: { disableSnapshot: true }
   }
@@ -54,11 +54,11 @@ export const BottomBarNavigation = {
 
               <section class="flex flex-col gap-2">
                 <h2 class="sd-headline sd-headline--size-lg">Dein nächster Schritte</h2>
-                <sd-teaser variant="white border-neutral-400" breakpoint="9999" inset class="flex flex-col">
+                <sd-teaser variant="white border-neutral-400" breakpoint="9999" inset>
                   <div slot="media">
                     <img
                       class="aspect-video object-cover"
-                      src="./placeholders/images/family-reading.jpg"
+                      src="./placeholders/images/family-play-02.jpg"
                       alt="A parent and child reading a book together on the couch."
                     />
                   </div>
@@ -74,73 +74,79 @@ export const BottomBarNavigation = {
 
               <section class="flex flex-col gap-2">
                 <h2 class="sd-headline sd-headline--size-lg">Für dich empfohlen</h2>
-                <div class="grid grid-cols-2 gap-4">
-                  <a
-                    href="javascript:void(0)"
-                    class="sd-interactive flex flex-col gap-2 break-words rounded border border-neutral-400 p-4"
-                  >
-                    <sd-icon name="content/piggy-bank" class="text-2xl text-primary"></sd-icon>
-                    <p class="sd-paragraph font-bold">Je früher, desto besser!</p>
-                    <p class="sd-paragraph">Warum Eltern jetzt an später denken sollten</p>
-                  </a>
-                  <a
-                    href="javascript:void(0)"
-                    class="sd-interactive flex flex-col gap-2 break-words rounded border border-neutral-400 p-4"
-                  >
-                    <sd-icon name="content/coins" class="text-2xl text-primary"></sd-icon>
-                    <p class="sd-paragraph font-bold">Kleine Beträge, große Wirkung</p>
-                    <p class="sd-paragraph">Warum jeder Euro für dein Kind wichtig ist</p>
-                  </a>
-                  <a
-                    href="javascript:void(0)"
-                    class="sd-interactive flex flex-col gap-2 break-words rounded border border-neutral-400 p-4"
-                  >
-                    <sd-icon name="content/files" class="text-2xl text-primary"></sd-icon>
-                    <p class="sd-paragraph font-bold">Förderkompass Familie</p>
-                    <p class="sd-paragraph">Alle wichtigen Unterstützungen für Eltern &amp; Kinder auf einen Blick.</p>
-                  </a>
-                  <a
-                    href="javascript:void(0)"
-                    class="sd-interactive flex flex-col gap-2 break-words rounded border border-neutral-400 p-4"
-                  >
-                    <sd-icon name="content/book" class="text-2xl text-primary"></sd-icon>
-                    <p class="sd-paragraph font-bold">Baby on Board:</p>
-                    <p class="sd-paragraph">Dein Guide für Anmeldungen &amp; Anträge</p>
-                  </a>
-                  <a
-                    href="javascript:void(0)"
-                    class="sd-interactive flex flex-col gap-2 break-words rounded border border-neutral-400 p-4"
-                  >
-                    <sd-icon name="content/letter" class="text-2xl text-primary"></sd-icon>
-                    <p class="sd-paragraph font-bold">Kindergeld – Was Eltern wissen sollten</p>
-                    <p class="sd-paragraph">
-                      Kindergeld ist eine wichtige staatliche Unterstützung für Familien und hilft, die Kosten für
-                      Kinder zu stemmen.
-                    </p>
-                  </a>
-                  <a
-                    href="javascript:void(0)"
-                    class="sd-interactive flex flex-col gap-2 break-words rounded border border-neutral-400 p-4"
-                  >
-                    <sd-icon name="content/calculator" class="text-2xl text-primary"></sd-icon>
-                    <p class="sd-paragraph font-bold">
-                      Digitale Helfer für werdende Eltern: Diese Tools vom Familienportal lohnen sich
-                    </p>
-                    <p class="sd-paragraph">
-                      Beim Familienportal des Bundes gibt es eine ganze Reihe praktischer Rechner und Tools, die
-                      werdende Eltern bei Grundsatzentscheidungen unterstützen.
-                    </p>
-                  </a>
+                <div class="flex items-start gap-4">
+                  <div class="flex min-w-0 flex-1 flex-col gap-4">
+                    <a
+                      href="javascript:void(0)"
+                      class="sd-interactive flex flex-col gap-2 break-words rounded border border-neutral-400 p-4"
+                    >
+                      <sd-icon name="content/piggy-bank" class="text-2xl text-primary"></sd-icon>
+                      <p class="sd-paragraph font-bold">Je früher, desto besser!</p>
+                      <p class="sd-paragraph">Warum Eltern jetzt an später denken sollten</p>
+                    </a>
+                    <a
+                      href="javascript:void(0)"
+                      class="sd-interactive flex flex-col gap-2 break-words rounded border border-neutral-400 p-4"
+                    >
+                      <sd-icon name="content/video" class="text-2xl text-primary"></sd-icon>
+                      <p class="sd-paragraph font-bold">Förderkompass Familie</p>
+                      <p class="sd-paragraph">
+                        Alle wichtigen Unterstützungen für Eltern &amp; Kinder auf einen Blick.
+                      </p>
+                    </a>
+                    <a
+                      href="javascript:void(0)"
+                      class="sd-interactive flex flex-col gap-2 break-words rounded border border-neutral-400 p-4"
+                    >
+                      <sd-icon name="content/person-newspaper" class="text-2xl text-primary"></sd-icon>
+                      <p class="sd-paragraph font-bold">Kindergeld – Was Eltern wissen sollten</p>
+                      <p class="sd-paragraph">
+                        Kindergeld ist eine wichtige staatliche Unterstützung für Familien und hilft, die Kosten für
+                        Kinder zu stemmen.
+                      </p>
+                    </a>
+                  </div>
+                  <div class="flex min-w-0 flex-1 flex-col gap-4">
+                    <a
+                      href="javascript:void(0)"
+                      class="sd-interactive flex flex-col gap-2 break-words rounded border border-neutral-400 p-4"
+                    >
+                      <sd-icon name="content/video" class="text-2xl text-primary"></sd-icon>
+                      <p class="sd-paragraph font-bold">Kleine Beträge, große Wirkung</p>
+                      <p class="sd-paragraph">Warum jeder Euro für dein Kind wichtig ist</p>
+                    </a>
+                    <a
+                      href="javascript:void(0)"
+                      class="sd-interactive flex flex-col gap-2 break-words rounded border border-neutral-400 p-4"
+                    >
+                      <sd-icon name="content/person-newspaper" class="text-2xl text-primary"></sd-icon>
+                      <p class="sd-paragraph font-bold">Baby on Board:</p>
+                      <p class="sd-paragraph">Dein Guide für Anmeldungen &amp; Anträge</p>
+                    </a>
+                    <a
+                      href="javascript:void(0)"
+                      class="sd-interactive flex flex-col gap-2 break-words rounded border border-neutral-400 p-4"
+                    >
+                      <sd-icon name="content/calculator" class="text-2xl text-primary"></sd-icon>
+                      <p class="sd-paragraph font-bold">
+                        Digitale Helfer für werdende Eltern: Diese Tools vom Familienportal lohnen sich
+                      </p>
+                      <p class="sd-paragraph">
+                        Beim Familienportal des Bundes gibt es eine ganze Reihe praktischer Rechner und Tools, die
+                        werdende Eltern bei Grundsatzentscheidungen unterstützen.
+                      </p>
+                    </a>
+                  </div>
                 </div>
               </section>
 
-              <div aria-hidden="true" class="h-20"></div>
+              <div aria-hidden="true" class="h-24"></div>
             </main>
           </div>
 
-          <nav id="bottom-bar-navigation" aria-label="Main" class="absolute inset-x-4 bottom-4">
+          <nav id="bottom-bar-navigation" aria-label="Main" class="absolute bottom-4 left-1/2 -translate-x-1/2">
             <ul
-              class="flex items-center justify-around rounded-full px-2 py-1 shadow backdrop-blur-lg bg-[rgb(var(--sd-header-color-background))]/80"
+              class="flex h-20 items-center justify-center rounded-full backdrop-blur-lg bg-[rgb(var(--sd-header-color-background))]/80"
             >
               <li>
                 <sd-navigation-item stacked current href="javascript:void(0)">
@@ -150,7 +156,7 @@ export const BottomBarNavigation = {
               </li>
               <li>
                 <sd-navigation-item stacked href="javascript:void(0)">
-                  <sd-icon name="system/file"></sd-icon>
+                  <sd-icon name="system/website"></sd-icon>
                   <span>Inhalte</span>
                 </sd-navigation-item>
               </li>
