@@ -44,20 +44,24 @@ export const Default = {
   render: (args: any) => generateTemplate({ args })
 };
 
-export const Label = {
-  name: 'Label',
-  args: overrideArgs([{ type: 'attribute', name: 'label', value: 'Label' }]),
-  render: (args: any) => {
-    return html`
-      ${generateTemplate({
-        args
-      })}
-    `;
-  }
+export const LabelValuePosition = {
+  name: 'Label & Value Positions',
+  render: (args: any) =>
+    generateTemplate({
+      axis: {
+        x: [
+          { type: 'attribute', name: 'value-position', values: ['right'] },
+          { type: 'attribute', name: 'value-position', values: ['bottom'] },
+          { type: 'attribute', name: 'show-label', values: [true] }
+        ]
+      },
+      constants: [{ type: 'attribute', name: 'label', value: ['Label'] }],
+      args
+    })
 };
 
 export const ValueMax = {
-  name: 'Value and Max',
+  name: 'Value x Max',
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -76,18 +80,6 @@ export const ValueMax = {
     })
 };
 
-export const ValueRight = {
-  name: 'Value Right',
-  args: overrideArgs([{ type: 'attribute', name: 'value-right', value: true }]),
-  render: (args: any) => generateTemplate({ args })
-};
-
-export const ValueBottom = {
-  name: 'Value Bottom',
-  args: overrideArgs([{ type: 'attribute', name: 'value-bottom', value: true }]),
-  render: (args: any) => generateTemplate({ args })
-};
-
 export const Loading = {
   name: 'Loading',
   render: (args: any) =>
@@ -96,11 +88,27 @@ export const Loading = {
         y: {
           type: 'attribute',
           name: 'value',
-          values: ['50']
+          values: ['Without value', '35']
+        }
+      },
+      constants: [{ type: 'attribute', name: 'max', value: '100' }],
+      args
+    })
+};
+
+export const Complete = {
+  name: 'Complete x Value',
+  render: (args: any) =>
+    generateTemplate({
+      axis: {
+        y: {
+          type: 'attribute',
+          name: 'value',
+          values: ['100', '35']
         },
         x: {
           type: 'attribute',
-          name: 'loading',
+          name: 'complete',
           values: [true, false]
         }
       },
@@ -115,13 +123,17 @@ export const Inverted = {
     generateTemplate({
       axis: {
         x: [
-          { type: 'attribute', name: 'value-right', values: [true] },
-          { type: 'attribute', name: 'value-bottom', values: [true] },
-          { type: 'attribute', name: 'label', values: ['Label'] },
-          { type: 'attribute', name: 'indeterminate', values: [true] }
+          { type: 'attribute', name: 'value-position', values: ['right'] },
+          { type: 'attribute', name: 'value-position', values: ['bottom'] },
+          { type: 'attribute', name: 'show-label', values: [true] },
+          { type: 'attribute', name: 'value', values: ['Loading'] },
+          { type: 'attribute', name: 'complete', values: [true] }
         ]
       },
-      constants: { type: 'attribute', name: 'inverted', value: true },
+      constants: [
+        { type: 'attribute', name: 'inverted', value: true },
+        { type: 'attribute', name: 'label', value: ['Label'] }
+      ],
       options: { templateBackground: 'rgba(var(--sd-color-background-primary))' },
       args
     })
@@ -140,51 +152,74 @@ export const Slots = {
             values: [
               {
                 title: 'label',
-                value: `<span slot="label" class="slot slot--border slot--background px-2">Label</span>`
+                value: `<span slot="label" class="slot slot--border slot--background h-5"></span>`
               }
             ]
           }
         },
+        constants: [{ type: 'attribute', name: 'show-label', value: true }],
         args
       })}
     `;
   }
 };
 
-const parts = ['base', 'label', 'value-right', 'value-bottom'];
+const parts = ['base', 'label', 'bar', 'track', 'indicator'];
+const valueParts = ['value-right', 'value-bottom'];
 
 export const Parts = {
   name: 'Parts',
   render: (args: any) => {
-    return generateTemplate({
-      axis: {
-        y: {
-          type: 'template',
-          name: 'sd-progress-bar::part(...){outline: solid 2px red}',
-          values: parts.map(part => {
-            return {
+    return html`
+      ${generateTemplate({
+        axis: {
+          y: {
+            type: 'template',
+            name: 'sd-progress-bar::part(...){outline: solid 2px red}',
+            values: parts.map(part => ({
               title: part,
               value: `<style>#part-${part} sd-progress-bar::part(${part}){outline: solid 2px red; outline-offset: 2px}</style><div id="part-${part}">%TEMPLATE%</div>`
-            };
-          })
-        }
-      },
-      constants: [
-        { type: 'attribute', name: 'label', value: 'Label' },
-        { type: 'attribute', name: 'value-right', value: true },
-        { type: 'attribute', name: 'value-bottom', value: true }
-      ],
-      args
-    });
+            }))
+          }
+        },
+        constants: [
+          { type: 'attribute', name: 'label', value: 'Label' },
+          { type: 'attribute', name: 'show-label', value: true }
+        ],
+        args
+      })}
+      ${generateTemplate({
+        axis: {
+          x: {
+            type: 'attribute',
+            name: 'value-position',
+            values: ['right', 'bottom']
+          },
+          y: {
+            type: 'template',
+            name: 'sd-progress-bar::part(...){outline: solid 2px red}',
+            values: valueParts.map(part => ({
+              title: part,
+              value: `<style>#part-${part} sd-progress-bar::part(${part}){outline: solid 2px red; outline-offset: 2px}</style><div id="part-${part}">%TEMPLATE%</div>`
+            }))
+          }
+        },
+        constants: [
+          { type: 'attribute', name: 'label', value: 'Label' },
+          { type: 'attribute', name: 'show-label', value: true }
+        ],
+        args
+      })}
+    `;
   }
 };
 
 export const Combination = generateScreenshotStory([
   Default,
+  LabelValuePosition,
   ValueMax,
-  ValueRight,
-  ValueBottom,
   Loading,
+  Complete,
   Inverted,
   Slots,
   Parts

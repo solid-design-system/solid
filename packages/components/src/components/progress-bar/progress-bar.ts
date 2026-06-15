@@ -47,6 +47,8 @@ export default class SdProgressBar extends SolidElement {
 
   @property({ type: Boolean, reflect: true, attribute: 'show-label' }) showLabel = false;
 
+  @property({ type: Boolean, reflect: true }) complete = false;
+
   /**
    * A function used to format the progress-bar's value.
    * The value of the progress-bar is passed as the only argument.
@@ -61,7 +63,7 @@ export default class SdProgressBar extends SolidElement {
   }
 
   private get clampedValue() {
-    return Math.min(Math.max(this.value ?? 0, 0), this.safeMax);
+    return this.complete ? this.safeMax : Math.min(Math.max(this.value ?? 0, 0), this.safeMax);
   }
 
   private get percentage() {
@@ -86,32 +88,30 @@ export default class SdProgressBar extends SolidElement {
     const hasLabel = this.label ? true : !!slots['label'];
 
     return html`
-      <div part="base">
+      <div part="base" class="text-start">
         ${hasLabel && this.showLabel
-          ? html`<div
+          ? html`<label
               part="label"
               id="label"
-              class=${cx(this.inverted ? 'text-white' : 'text-black', 'text-base text-start')}
+              class=${cx('text-base', this.inverted ? 'text-white' : 'text-black')}
               aria-hidden=${hasLabel ? 'false' : 'true'}
             >
               <slot name="label">${this.label}</slot>
-            </div>`
+            </label>`
           : nothing}
         <div
           class=${cx(
             this.valuePosition === 'right'
-              ? 'flex flex-row items-center gap-2'
+              ? 'flex flex-row items-center gap-2 -mt-1'
               : this.valuePosition === 'bottom'
-                ? 'flex flex-col gap-1'
-                : ''
+                ? 'flex flex-col gap-1 mt-1'
+                : 'mt-1'
           )}
         >
           <div
             part="bar"
             id="bar"
-            class=${cx(
-              this.isLoading ? 'relative w-full h-[var(--height,0.125rem)]' : 'flex w-full h-[var(--height,0.125rem)]'
-            )}
+            class=${cx('w-full h-[var(--height,0.125rem)]', this.isLoading ? 'relative ' : 'flex')}
             role="progressbar"
             aria-valuemin="0"
             aria-valuemax=${this.safeMax}
@@ -176,9 +176,10 @@ export default class SdProgressBar extends SolidElement {
           ${this.showValue
             ? html`<span
                 class=${cx(
-                  'text-neutral-700 text-xs',
+                  'text-neutral-700 text-xs w-shrink-0',
                   this.inverted ? 'text-white' : 'text-neutral-700',
-                  this.valuePosition === 'bottom' ? 'text-start' : 'text-center'
+                  this.valuePosition === 'bottom' ? 'text-start' : 'text-center',
+                  this.valuePosition === 'right' && 'whitespace-nowrap'
                 )}
                 part="value-${this.valuePosition}"
                 >${this.valueFormatter(this.clampedValue)}</span
