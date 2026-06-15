@@ -145,9 +145,7 @@ export const BottomBarNavigation = {
           </div>
 
           <nav id="bottom-bar-navigation" aria-label="Main" class="absolute bottom-4 left-1/2 -translate-x-1/2">
-            <ul
-              class="flex h-20 items-center justify-center rounded-full backdrop-blur-lg bg-[rgb(var(--sd-header-color-background))]/80"
-            >
+            <ul class="flex h-20 items-center justify-center rounded-full bg-white/80">
               <li>
                 <sd-navigation-item stacked current href="javascript:void(0)">
                   <sd-icon name="system/home"></sd-icon>
