@@ -29,15 +29,24 @@ Used to visually represent the progression of an activity.
 
 #### Behavior
 
-- Always reflect the actual progress accurately — avoid fake animations when real progress data is available.
-- Avoid using a progress bar for binary states — use a status indicator instead.
+- Always reflect the actual progress accurately and avoid fake animations when real progress data is available.
+- Avoid using a progress bar for binary states and use a status indicator instead.
 - Pair the progress bar with a label or percentage to give users a clear sense of progress.
+
+#### Value
+
+- If displaying a value with a long copy prefer the bottom value-position.
 
 #### Background
 
 - Use light background options like white, neutral-100, primary-100, or use a primary background when inverted.
 
 ### Accessibility Information
+
+- Never omit label on functional progress bars (file uploads, form steps, loading states).
+- The aria-hidden pattern is only appropriate when the progress information is either redundant or meaningless to screen reader users – for example, a visual scroll position tracker on a blog page.
+- The label attribute is required in code. It provides an accessible name for the progress bar and must always be set, even when not visually displayed. For decorative uses (e.g. a blog article scroll indicator), add aria-hidden="true" to remove it from the accessibility tree entirely. In this case label can be omitted.
+- Set a value for the label attribute to ensure aria-label and aria-description are set. Without it, the component defaults to aria-hidden="true", only appropriate for decorative progress bars (such as a scroll indicator).
 
 Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=38262-58412&t=1qhfYXrbNhSCYCzZ-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
 
