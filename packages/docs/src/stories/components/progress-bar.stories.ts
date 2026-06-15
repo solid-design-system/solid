@@ -29,16 +29,23 @@ export const Default = {
 };
 
 /**
- * Use the `label` attribute to add a label to the progress bar.
+ * Use the `label` attribute to add a label to the progress bar for accessibility reasons. Use the `showLabel` attibute to show the label.
  *
  * For labels that contain HTML, use the `label` slot instead.
  */
 export const Label = {
   render: () => {
     return html`
+      <style>
+        sd-progress-bar {
+          height: 100%;
+        }
+      </style>
       <div class="flex flex-row gap-4 items-baseline">
-        <sd-progress-bar value="35" max="100" label="Label"></sd-progress-bar>
-        <sd-progress-bar value="35" max="100"><div slot="label" class="text-lg">Label slot</div></sd-progress-bar>
+        <sd-progress-bar value="35" max="100" label="Label" show-label></sd-progress-bar>
+        <sd-progress-bar value="35" max="100" show-label
+          ><div slot="label" class="text-lg">Label slot</div></sd-progress-bar
+        >
       </div>
     `;
   }
@@ -57,33 +64,26 @@ export const ValueMax = {
 };
 
 /**
- * Use the `value-right` attribute to add a value on the right side of the progress bar.
- */
-export const ValueRight = {
-  name: 'Value right',
-  render: () => {
-    return html` <div class="w-[300px]"><sd-progress-bar value="35" max="100" value-right></sd-progress-bar></div> `;
-  }
-};
-
-/**
- * Use the `value-bottom` attribute to add a value on the bottom of the progress bar.
- */
-export const ValueBottom = {
-  name: 'Value bottom',
-  render: () => {
-    return html` <div class="w-[300px]"><sd-progress-bar value="35" max="100" value-bottom></sd-progress-bar></div> `;
-  }
-};
-
-/**
- * Use the `loading` attribute to add a loading state to the progress bar.
+ * Use the `value-position` attribute to set the position of the value on the progress bar.
  *
- * __Note:__ The value will be ignored when the `loading` attribute is set.
+ * - `right` (default)
+ * - `bottom`
+ */
+export const ValuePosition = {
+  render: () => {
+    return html` <div class="flex flex-row gap-4">
+      <sd-progress-bar value="35" max="100" value-position="bottom"></sd-progress-bar
+      ><sd-progress-bar value="35" max="100" value-position="right"></sd-progress-bar>
+    </div>`;
+  }
+};
+
+/**
+ * The progress bar will display an indeterminate animation automatically when no value is provided, or if is set to `null`, `undefined` or `NaN`.
  */
 export const Loading = {
   render: () => {
-    return html`<div class="w-[300px]"><sd-progress-bar loading max="100"></sd-progress-bar></div> `;
+    return html`<div class="w-[300px]"><sd-progress-bar max="100"></sd-progress-bar></div> `;
   }
 };
 
@@ -94,34 +94,7 @@ export const CustomHeight = {
   name: 'Custom height',
   render: () => {
     return html`
-      <style>
-        .custom-height {
-          --height: 12px;
-        }
-      </style>
-      <div class="w-[300px]"><sd-progress-bar class="custom-height" value="35" max="100"></sd-progress-bar></div>
-    `;
-  }
-};
-
-/**
- * Use the CSS property `--gap-color` to adjust the gap color of the progress bar.
- */
-export const GapColor = {
-  name: 'Gap color',
-  render: () => {
-    return html`
-      <style>
-        .background {
-          background-color: rgba(var(--sd-color-neutral-100));
-        }
-        .custom-gap-color {
-          --gap-color: rgba(var(--sd-color-neutral-100));
-        }
-      </style>
-      <div class="background p-4">
-        <sd-progress-bar class="custom-gap-color w-[300px]" value="35" max="100"></sd-progress-bar>
-      </div>
+      <div class="w-[300px]"><sd-progress-bar style="--height: 12px" value="35" max="100"></sd-progress-bar></div>
     `;
   }
 };
@@ -130,6 +103,20 @@ export const GapColor = {
  * Use the `inverted` attribute when displayed on primary background.
  */
 export const Inverted = {
+  render: () => {
+    return html`
+      <div class="p-4 bg-primary">
+        <sd-progress-bar inverted value="35" max="100" class="w-[300px]"></sd-progress-bar>
+      </div>
+    `;
+  }
+};
+
+/**
+ * Use the `inverted` attribute when displayed on primary background.
+ */
+export const valueFormatter = {
+  name: 'Value Formatter',
   render: () => {
     return html`
       <div class="p-4 bg-primary">
