@@ -47,10 +47,6 @@ export default {
     {
       from: '../node_modules/@tarekraafat/autocomplete.js/dist',
       to: '/autocomplete'
-    },
-    {
-      from: '../../tokens/src/figma-icons',
-      to: '/figma-icons'
     }
   ].concat(
     process.env.NODE_ENV === 'production'
