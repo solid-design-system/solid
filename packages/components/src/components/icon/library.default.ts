@@ -1,10 +1,17 @@
 import type { IconLibrary } from './library';
 
+function getTheme() {
+  const el = document.body;
+
+  const cssTheme = getComputedStyle(el).getPropertyValue('--sd-theme').trim().replace(/['"]/g, '');
+
+  return cssTheme || 'ui';
+}
+
 const defaultLibrary: IconLibrary = {
   name: 'default',
   resolver: name => {
-    const sdTheme = document.documentElement.dataset.sdTheme;
-    const theme = sdTheme && sdTheme !== 'undefined' ? sdTheme.replace('sd-theme-', '') : 'ui';
+    const theme = getTheme();
     const themedName = theme.includes('ui') ? name : `${theme}/${name}`;
     const path = name.split('/');
 
