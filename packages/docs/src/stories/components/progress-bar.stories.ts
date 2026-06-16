@@ -76,9 +76,9 @@ export const ValueMax = {
 export const ValuePosition = {
   name: 'Value position',
   render: () => {
-    return html` <div class="flex flex-col md:flex-row gap-4">
-      <sd-progress-bar value="35" max="100" value-position="right"></sd-progress-bar>
-      <sd-progress-bar value="35" max="100" value-position="bottom"></sd-progress-bar>
+    return html` <div class="flex flex-col gap-4">
+      <sd-progress-bar class="max-w-[300px]" value="35" max="100" value-position="right"></sd-progress-bar>
+      <sd-progress-bar class="max-w-[300px]" value="35" max="100" value-position="bottom"></sd-progress-bar>
     </div>`;
   }
 };
