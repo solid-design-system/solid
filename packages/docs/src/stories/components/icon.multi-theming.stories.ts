@@ -1,0 +1,70 @@
+import '../../../../components/src/solid-components';
+import { html } from 'lit';
+import { storybookTemplate } from '../../../scripts/storybook/helper';
+// @ts-expect-error – dynamically loaded via Vite
+import iconsFromCdn from 'icons-from-cdn/multi-theming';
+
+const { generateTemplate } = storybookTemplate('sd-icon');
+
+export default {
+  title: 'Components/sd-icon/multi-theming',
+  parameters: {
+    chromatic: { disableSnapshot: true },
+    controls: {
+      disable: true
+    }
+  },
+  // decorator to add <styles> to the story
+  decorators: [
+    (story: any) =>
+      html`${story()}<style>
+          sd-icon {
+            font-size: 1.5rem;
+          }
+        </style>`
+  ]
+};
+
+export const LibraryMultiTheming = {
+  name: 'multi-theming',
+  render: (args: any) => {
+    const theme = document.documentElement.dataset.sdTheme || 'ui';
+
+    const icons = iconsFromCdn[theme] ?? iconsFromCdn.ui;
+
+    return generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'color'
+        },
+        y: {
+          type: 'attribute',
+          name: 'name',
+          values: [
+            ...icons.content.map((icon: string) => `content/${icon}`),
+            ...icons.system.map((icon: string) => `system/${icon}`)
+          ]
+        }
+      },
+      constants: [
+        {
+          type: 'attribute',
+          name: 'library',
+          value: ''
+        }
+      ],
+      options: {
+        templateBackgrounds: {
+          alternate: 'x',
+          colors: [
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-primary))'
+          ]
+        }
+      },
+      args
+    });
+  }
+};

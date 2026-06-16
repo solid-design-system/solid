@@ -119,3 +119,44 @@ export const StatusLibrary = {
       args
     })
 };
+
+export const MultiThemingLibrary = {
+  name: 'Library: multi-theming',
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  },
+  render: (args: any) => {
+    const theme = document.documentElement.dataset.sdTheme || 'ui';
+
+    return generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'color'
+        },
+        y: {
+          type: 'attribute',
+          name: 'name',
+          values: [
+            'content/image',
+            `union-investment/${theme}/content/image`,
+            'system/image',
+            `union-investment/${theme}/system/image`
+          ]
+        }
+      },
+      constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
+      options: {
+        templateBackgrounds: {
+          alternate: 'x',
+          colors: [
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-primary))'
+          ]
+        }
+      },
+      args
+    });
+  }
+};

@@ -3,7 +3,6 @@ import type { IconLibrary } from './library';
 function getTheme(element?: HTMLElement) {
   const el = element ?? document.body;
   const cssTheme = getComputedStyle(el).getPropertyValue('--sd-theme').trim().replace(/['"]/g, '');
-  console.log('Detected theme:', cssTheme);
   return cssTheme || 'ui';
 }
 
@@ -14,7 +13,7 @@ const multiThemingLibrary: IconLibrary = {
     const path = name.split('/');
 
     if (path[0] === 'content' || path[0] === 'system' || path[0] === 'status' || path[0] === 'brand-logo') {
-      name = 'union-investment/' + `${theme}/${name}`;
+      name = 'union-investment/' + theme + '/' + name;
     }
 
     return `https://celum-icons.fe.union-investment.de/${name}.svg`;
