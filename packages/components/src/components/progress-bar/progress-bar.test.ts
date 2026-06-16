@@ -60,15 +60,6 @@ describe('<sd-progress-bar>', () => {
       expect(progressBar.getAttribute('aria-labelledby')).to.equal('label');
       expect(progressBar.getAttribute('aria-label')).to.equal(null);
     });
-
-    it('should not render label element when show-label is false', async () => {
-      el = await fixture<SdProgressBar>(html`<sd-progress-bar label="Hidden label"></sd-progress-bar>`);
-
-      const label = el.shadowRoot!.querySelector('[part="label"]');
-      const base = el.shadowRoot!.querySelector('[part="base"]')!;
-      expect(label).to.not.exist;
-      expect(base.getAttribute('aria-hidden')).to.equal('false');
-    });
   });
 
   describe('value display', () => {

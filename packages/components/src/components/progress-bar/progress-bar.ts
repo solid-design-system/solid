@@ -89,11 +89,11 @@ export default class SdProgressBar extends SolidElement {
 
     return html`
       <div part="base" class="text-start" aria-hidden=${!hasLabel}>
-        ${hasLabel && this.showLabel
+        ${hasLabel
           ? html`<label
               part="label"
               id="label"
-              class=${cx('text-base', this.inverted ? 'text-white' : 'text-black')}
+              class=${cx('text-base', !this.showLabel && 'sr-only', this.inverted ? 'text-white' : 'text-black')}
               aria-hidden=${hasLabel ? 'false' : 'true'}
             >
               <slot name="label">${this.label}</slot>

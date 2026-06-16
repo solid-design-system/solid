@@ -18,7 +18,8 @@ export default {
   tags: ['!autodocs'],
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: '35' },
-    { type: 'attribute', name: 'max', value: '100' }
+    { type: 'attribute', name: 'max', value: '100' },
+    { type: 'attribute', name: 'label', value: 'Label' }
   ]),
   argTypes,
   parameters: { ...parameters, controls: { disable: true } },
@@ -152,7 +153,7 @@ export const Slots = {
             values: [
               {
                 title: 'label',
-                value: `<span slot="label" class="slot slot--border slot--background h-5"></span>`
+                value: `<span slot="label" class="slot slot--border slot--background h-5">Label slot</span>`
               }
             ]
           }
