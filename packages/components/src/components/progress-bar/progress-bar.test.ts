@@ -23,7 +23,6 @@ describe('<sd-progress-bar>', () => {
       expect(el.valuePosition).to.equal(null);
       expect(el.inverted).to.equal(false);
       expect(el.showLabel).to.equal(false);
-      expect(el.complete).to.equal(false);
       expect(base.getAttribute('aria-hidden')).to.equal('true');
     });
   });
@@ -100,19 +99,6 @@ describe('<sd-progress-bar>', () => {
 
       expect(progressBar.getAttribute('aria-valuenow')).to.equal('0');
       expect(valueBottom!.textContent!.trim()).to.equal('0');
-    });
-
-    it('should use max value when complete is true', async () => {
-      el = await fixture<SdProgressBar>(
-        html`<sd-progress-bar value="10" max="80" complete value-position="right"></sd-progress-bar>`
-      );
-
-      const progressBar = getProgressBar(el);
-      const valueRight = el.shadowRoot!.querySelector('[part="value-right"]');
-
-      expect(progressBar.getAttribute('aria-valuemax')).to.equal('80');
-      expect(progressBar.getAttribute('aria-valuenow')).to.equal('80');
-      expect(valueRight!.textContent!.trim()).to.equal('80');
     });
 
     it('should use custom value formatter for displayed and aria values', async () => {

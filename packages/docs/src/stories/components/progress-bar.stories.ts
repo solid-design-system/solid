@@ -30,9 +30,9 @@ export const Default = {
 };
 
 /**
- * Use the `label` attribute to add an accessible label to the progress bar. To display it, use the `show-label` attribute.
+ * Use the `label` attribute to add an accessible label to the progress bar. For labels that contain HTML, use the `label` slot instead.
  *
- * For labels that contain HTML, use the `label` slot instead.
+ * This label is visually hidden by default, to display it, use the `show-label` attribute.
  *
  * __Hint__: If no label is set the component receives an aria-hidden attribute of `true`.
  */
@@ -89,24 +89,6 @@ export const ValuePosition = {
 export const Loading = {
   render: () => {
     return html`<div class="max-w-[300px]"><sd-progress-bar max="100"></sd-progress-bar></div> `;
-  }
-};
-
-/**
- * Use the `complete` attribute to display a completed progress bar. If the `value` is equal to the `max`, the progress bar will also be displayed as completed automatically.
- *
- * __Note__: ​Do not combine with "loading" - "complete" is a terminal state.
- */
-export const Complete = {
-  render: () => {
-    return html`<div class="max-w-[300px] complete-story">
-        <sd-progress-bar value="35" max="100" complete value-position="right"></sd-progress-bar>
-      </div>
-      <script>
-        Promise.all([customElements.whenDefined('sd-progress-bar')]).then(() => {
-          document.querySelector('.complete-story sd-progress-bar').valueFormatter = value => value + '%';
-        });
-      </script>`;
   }
 };
 

@@ -97,27 +97,6 @@ export const Loading = {
     })
 };
 
-export const Complete = {
-  name: 'Complete x Value',
-  render: (args: any) =>
-    generateTemplate({
-      axis: {
-        y: {
-          type: 'attribute',
-          name: 'value',
-          values: ['100', '35']
-        },
-        x: {
-          type: 'attribute',
-          name: 'complete',
-          values: [true, false]
-        }
-      },
-      constants: [{ type: 'attribute', name: 'max', value: '100' }],
-      args
-    })
-};
-
 export const Inverted = {
   name: 'Inverted',
   render: (args: any) =>
@@ -127,8 +106,7 @@ export const Inverted = {
           { type: 'attribute', name: 'value-position', values: ['right'] },
           { type: 'attribute', name: 'value-position', values: ['bottom'] },
           { type: 'attribute', name: 'show-label', values: [true] },
-          { type: 'attribute', name: 'value', values: ['Loading'] },
-          { type: 'attribute', name: 'complete', values: [true] }
+          { type: 'attribute', name: 'value', values: ['Loading'] }
         ]
       },
       constants: [
@@ -220,7 +198,6 @@ export const Combination = generateScreenshotStory([
   LabelValuePosition,
   ValueMax,
   Loading,
-  Complete,
   Inverted,
   Slots,
   Parts

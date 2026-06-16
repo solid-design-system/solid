@@ -45,9 +45,8 @@ export default class SdProgressBar extends SolidElement {
   /** Inverts the progress bar's colors. */
   @property({ type: Boolean, reflect: true }) inverted = false;
 
+  /** Shows the label visually. */
   @property({ type: Boolean, reflect: true, attribute: 'show-label' }) showLabel = false;
-
-  @property({ type: Boolean, reflect: true }) complete = false;
 
   /**
    * A function used to format the progress-bar's value.
@@ -63,7 +62,7 @@ export default class SdProgressBar extends SolidElement {
   }
 
   private get clampedValue() {
-    return this.complete ? this.safeMax : Math.min(Math.max(this.value ?? 0, 0), this.safeMax);
+    return Math.min(Math.max(this.value ?? 0, 0), this.safeMax);
   }
 
   private get percentage() {
