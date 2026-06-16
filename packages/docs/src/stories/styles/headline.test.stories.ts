@@ -156,18 +156,11 @@ export const SizeXInverted = {
             }
           ]
         },
-        constants: [
-          {
-            type: 'attribute',
-            name: 'sd-headline--inline',
-            value: true
-          },
-          {
-            type: 'slot',
-            name: 'default',
-            value: headline.constant
-          }
-        ],
+        constants: {
+          type: 'slot',
+          name: 'default',
+          value: headline.constant
+        },
         options: {
           templateContent: '<h4 class="%CLASSES%">%SLOT%</h4>',
           templateBackgrounds: { alternate: 'x', colors: ['transparent', 'rgba(var(--sd-color-background-primary))'] },

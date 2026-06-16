@@ -31,7 +31,7 @@
     @apply text-2xl sm:text-3xl gap-4 leading-tight sd-headline--3xl-onwards-color-text;
 
     sd-icon {
-      @apply -mt-1 sm:mt-0;
+      @apply -mt-1 sm:-mt-1;
     }
   }
 
@@ -51,7 +51,7 @@
     @apply text-xl;
 
     sd-icon {
-      @apply mt-0.5 sm:mt-0.5;
+      @apply -mt-0.5 sm:-mt-0.5;
     }
   }
 
@@ -66,7 +66,7 @@
     @apply text-lg;
 
     sd-icon {
-      @apply mt-0 sm:mt-0;
+      @apply -mt-0.5 sm:-mt-0.5;
     }
   }
 
@@ -87,8 +87,11 @@
 .sd-headline--inline {
   @apply inline-block;
 
-  sd-icon {
-    @apply align-middle mr-2 -mt-1;
+  &.sd-headline,
+  &:is(h1):not(.sd-headline) {
+    sd-icon {
+      @apply align-middle mr-2 -mt-2;
+    }
   }
 
   &:is(.sd-headline--size-xl, .sd-headline--size-lg, .sd-headline--size-base) {
@@ -97,9 +100,15 @@
     }
   }
 
-  &:is(.sd-headline--size-3xl, .sd-headline--size-xl, .sd-headline--size-lg) {
+  &:is(.sd-headline--size-3xl, .sd-headline--size-xl) {
     sd-icon {
       @apply -mt-2;
+    }
+  }
+
+  &:is(.sd-headline--size-lg) {
+    sd-icon {
+      @apply -mt-1;
     }
   }
 }
