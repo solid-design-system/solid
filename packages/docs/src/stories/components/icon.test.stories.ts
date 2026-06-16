@@ -46,7 +46,7 @@ export const LibraryDefault = {
           colors: [
             'rgba(var(--sd-color-background-white))',
             'rgba(var(--sd-color-background-white))',
-            'rgba(var(--sd-color-primary))'
+            'rgba(var(--sd-color-background-primary))'
           ]
         }
       },
@@ -79,7 +79,7 @@ export const LibraryInternal = {
           colors: [
             'rgba(var(--sd-color-background-white))',
             'rgba(var(--sd-color-background-white))',
-            'rgba(var(--sd-color-primary))'
+            'rgba(var(--sd-color-background-primary))'
           ]
         }
       },
@@ -112,7 +112,7 @@ export const StatusLibrary = {
           colors: [
             'rgba(var(--sd-color-background-white))',
             'rgba(var(--sd-color-background-white))',
-            'rgba(var(--sd-color-primary))'
+            'rgba(var(--sd-color-background-primary))'
           ]
         }
       },
