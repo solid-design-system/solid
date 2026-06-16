@@ -3,4 +3,4 @@
 '@solid-design-system/docs': patch
 ---
 
-Fix sd-headline anf sd-icon vertical alignment.
+Fix `sd-headline` and `sd-icon` vertical alignment.
