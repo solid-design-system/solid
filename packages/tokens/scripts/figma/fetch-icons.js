@@ -28,9 +28,20 @@ const parseIcon = name => {
   const rawIcon = match[2];
   const theme = match[3].toLowerCase();
 
+  // brand-logos
+  const hasSize = name.match(new RegExp(`size=([^-/]+)`));
+  const size = hasSize?.[1] ?? 'null';
+  const isLogo = name.includes('brand-logo');
+  const icon = isLogo ? `${theme}-logo-${size}` : rawIcon;
+
+  // ignore inverted icons
+  const invertedMatch = name.match(/inverted=(true|false)/);
+  const inverted = invertedMatch?.[1] === 'true';
+  if (inverted) return null;
+
   return {
     category,
-    icon: rawIcon,
+    icon: icon,
     theme
   };
 };

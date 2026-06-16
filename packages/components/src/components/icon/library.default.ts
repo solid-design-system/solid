@@ -3,10 +3,15 @@ import type { IconLibrary } from './library';
 const defaultLibrary: IconLibrary = {
   name: 'default',
   resolver: name => {
+    const sdTheme = document.documentElement.dataset.sdTheme;
+    const theme = sdTheme && sdTheme !== 'undefined' ? sdTheme.replace('sd-theme-', '') : 'ui';
+    const themedName = theme.includes('ui') ? name : `${theme}/${name}`;
     const path = name.split('/');
+
     if (path[0] === 'content' || path[0] === 'system') {
-      name = 'union-investment/' + name;
+      name = 'union-investment/' + themedName;
     }
+
     return `https://celum-icons.fe.union-investment.de/${name}.svg`;
   },
   mutator: svg => {
