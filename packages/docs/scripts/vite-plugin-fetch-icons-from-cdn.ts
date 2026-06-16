@@ -40,30 +40,41 @@ async function fetchDefaultIconsJson() {
 
 async function fetchMultiThemingIconsJson(theme?: string) {
   try {
+    void theme;
+
     const contentUrl = `https://celum-icons.fe.union-investment.de/union-investment/${theme}/content.json`;
     const systemUrl = `https://celum-icons.fe.union-investment.de/union-investment/${theme}/system.json`;
     const statusUrl = `https://celum-icons.fe.union-investment.de/union-investment/${theme}/status.json`;
     const brandLogosUrl = `https://celum-icons.fe.union-investment.de/union-investment/${theme}/brand-logos.json`;
 
-    const [contentResponse, systemResponse, statusResponse, brandLogosResponse] = await Promise.all([
-      fetch(contentUrl),
-      fetch(systemUrl),
-      fetch(statusUrl),
-      fetch(brandLogosUrl)
-    ]);
+    const [contentResponse, systemResponse] = await Promise.all([fetch(contentUrl), fetch(systemUrl)]);
 
-    if (!contentResponse.ok || !systemResponse.ok || !statusResponse.ok || !brandLogosResponse.ok) {
-      console.error('Failed to fetch icon JSON data from CDN – maybe the CDN is unreachable?');
+    if (!contentResponse.ok || !systemResponse.ok) {
+      console.error('Failed to fetch required icon JSON data from CDN – maybe the CDN is unreachable?');
       return {
         content: [],
-        system: []
+        system: [],
+        status: [],
+        brandLogos: []
       };
     }
 
+    const [statusResponse, brandLogosResponse] = await Promise.all([fetch(statusUrl), fetch(brandLogosUrl)]);
+
     const contentData = (await contentResponse.json()) as { technicalId: string }[];
     const systemData = (await systemResponse.json()) as { technicalId: string }[];
-    const statusData = (await statusResponse.json()) as { technicalId: string }[];
-    const brandLogosData = (await brandLogosResponse.json()) as { technicalId: string }[];
+    const statusData = statusResponse.ok ? (((await statusResponse.json()) as { technicalId: string }[]) ?? []) : [];
+    const brandLogosData = brandLogosResponse.ok
+      ? (((await brandLogosResponse.json()) as { technicalId: string }[]) ?? [])
+      : [];
+
+    if (!statusResponse.ok || !brandLogosResponse.ok) {
+      console.warn(
+        `Optional icon JSON endpoints unavailable for multi-theming (status: ${statusResponse.status}, brand-logos: ${
+          brandLogosResponse.status
+        })`
+      );
+    }
 
     const icons = {
       content: contentData.map(icon => icon.technicalId),
@@ -76,7 +87,9 @@ async function fetchMultiThemingIconsJson(theme?: string) {
     console.error('Error fetching icon JSON data:', error);
     return {
       content: [],
-      system: []
+      system: [],
+      status: [],
+      brandLogos: []
     };
   }
 }
@@ -93,6 +106,7 @@ function viteFetchIconsFromCDN(): Plugin {
       return null;
     },
     async buildStart() {
+      console.log('Fetching icons from CDN...'); // Debug log to indicate when fetching starts
       const defaultIcons = await fetchDefaultIconsJson();
       const defaultData = JSON.stringify(defaultIcons);
 

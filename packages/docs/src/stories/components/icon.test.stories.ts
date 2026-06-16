@@ -126,7 +126,8 @@ export const MultiThemingLibrary = {
     chromatic: { disableSnapshot: true }
   },
   render: (args: any) => {
-    const theme = document.documentElement.dataset.sdTheme || 'ui';
+    const sdTheme = document.documentElement.dataset.sdTheme;
+    const theme = sdTheme && sdTheme !== 'undefined' ? sdTheme.replace('sd-theme-', '') : 'ui';
 
     return generateTemplate({
       axis: {

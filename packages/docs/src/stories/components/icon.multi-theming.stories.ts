@@ -6,6 +6,12 @@ import iconsFromCdn from 'icons-from-cdn/multi-theming';
 
 const { generateTemplate } = storybookTemplate('sd-icon');
 
+function getIconsByTheme() {
+  const sdTheme = document.documentElement.dataset.sdTheme;
+  const theme = sdTheme && sdTheme !== 'undefined' ? sdTheme.replace('sd-theme-', '') : 'ui';
+  return iconsFromCdn[theme];
+}
+
 export default {
   title: 'Components/sd-icon/multi-theming',
   parameters: {
@@ -25,12 +31,12 @@ export default {
   ]
 };
 
-export const LibraryMultiTheming = {
-  name: 'multi-theming',
+export const LibraryMultiThemingContent = {
+  name: 'multi-theming/content',
   render: (args: any) => {
-    const theme = document.documentElement.dataset.sdTheme || 'ui';
-
-    const icons = iconsFromCdn[theme] ?? iconsFromCdn.ui;
+    const sdTheme = document.documentElement.dataset.sdTheme;
+    const theme = sdTheme && sdTheme !== 'undefined' ? sdTheme.replace('sd-theme-', '') : 'ui';
+    const icons = iconsFromCdn[theme];
 
     return generateTemplate({
       axis: {
@@ -41,10 +47,124 @@ export const LibraryMultiTheming = {
         y: {
           type: 'attribute',
           name: 'name',
-          values: [
-            ...icons.content.map((icon: string) => `content/${icon}`),
-            ...icons.system.map((icon: string) => `system/${icon}`)
+          values: [...icons.content.map((icon: string) => `content/${icon}`)]
+        }
+      },
+      constants: [
+        {
+          type: 'attribute',
+          name: 'library',
+          value: ''
+        }
+      ],
+      options: {
+        templateBackgrounds: {
+          alternate: 'x',
+          colors: [
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-primary))'
           ]
+        }
+      },
+      args
+    });
+  }
+};
+
+export const LibraryMultiThemingSystem = {
+  name: 'multi-theming/system',
+  render: (args: any) => {
+    const icons = getIconsByTheme();
+
+    return generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'color'
+        },
+        y: {
+          type: 'attribute',
+          name: 'name',
+          values: [...icons.system.map((icon: string) => `system/${icon}`)]
+        }
+      },
+      constants: [
+        {
+          type: 'attribute',
+          name: 'library',
+          value: ''
+        }
+      ],
+      options: {
+        templateBackgrounds: {
+          alternate: 'x',
+          colors: [
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-primary))'
+          ]
+        }
+      },
+      args
+    });
+  }
+};
+
+export const LibraryMultiThemingStatus = {
+  name: 'multi-theming/status',
+  render: (args: any) => {
+    const icons = getIconsByTheme();
+
+    return generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'color'
+        },
+        y: {
+          type: 'attribute',
+          name: 'name',
+          values: [...icons.status.map((icon: string) => `status/${icon}`)]
+        }
+      },
+      constants: [
+        {
+          type: 'attribute',
+          name: 'library',
+          value: ''
+        }
+      ],
+      options: {
+        templateBackgrounds: {
+          alternate: 'x',
+          colors: [
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-primary))'
+          ]
+        }
+      },
+      args
+    });
+  }
+};
+
+export const LibraryMultiThemingBrandLogos = {
+  name: 'multi-theming/brand-logos',
+  render: (args: any) => {
+    const icons = getIconsByTheme();
+
+    return generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'color'
+        },
+        y: {
+          type: 'attribute',
+          name: 'name',
+          values: [...icons.brandLogos.map((icon: string) => `brand-logos/${icon}`)]
         }
       },
       constants: [
