@@ -505,10 +505,6 @@ importers:
         version: 5.8.3
 
   packages/tokens:
-    dependencies:
-      figma-export-assets:
-        specifier: ^2.1.0
-        version: 2.1.0
     devDependencies:
       '@figma-export/types':
         specifier: ^6.4.0
@@ -525,6 +521,9 @@ importers:
       dotenv:
         specifier: ^17.4.2
         version: 17.4.2
+      figma-export-assets:
+        specifier: ^2.1.0
+        version: 2.1.0
       ora:
         specifier: ^9.4.0
         version: 9.4.0

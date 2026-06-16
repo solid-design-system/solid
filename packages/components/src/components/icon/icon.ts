@@ -69,7 +69,7 @@ export default class SdIcon extends SolidElement {
   private getUrl() {
     const library = getIconLibrary(this.library);
     if (this.name && library) {
-      if (library.name === '_internal') {
+      if (library.name === '_internal' || library.name === 'multi-theming') {
         return library.resolver(this.name, this);
       }
 

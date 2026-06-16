@@ -50,10 +50,8 @@
     "style-dictionary": "^5.4.0",
     "svgo": "^4.0.1",
     "tailwindcss": "^4.3.0",
-    "tailwindcss-export-config": "^4.1.0"
-  },
-  "readme": "README.md",
-  "dependencies": {
+    "tailwindcss-export-config": "^4.1.0",
     "figma-export-assets": "^2.1.0"
-  }
+  },
+  "readme": "README.md"
 }
