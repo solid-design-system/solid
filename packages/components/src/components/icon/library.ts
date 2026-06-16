@@ -1,7 +1,6 @@
 import defaultLibrary from './library.default';
 import internalLibrary from './library.internal';
 import statusLibrary from './library.status';
-import multiThemingLibrary from './library.multi-theming';
 import type SdIcon from '../icon/icon';
 
 export type IconLibraryResolver = (name: string, element?: HTMLElement) => string;
@@ -12,7 +11,7 @@ export interface IconLibrary {
   mutator?: IconLibraryMutator;
 }
 
-let registry: IconLibrary[] = [internalLibrary, defaultLibrary, statusLibrary, multiThemingLibrary];
+let registry: IconLibrary[] = [internalLibrary, defaultLibrary, statusLibrary];
 let watchedIcons: SdIcon[] = [];
 
 /** Adds an icon to the list of watched icons. */
