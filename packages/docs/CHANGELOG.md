@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.17.1
+
+### Patch Changes
+
+- Fixed background color for inverted screenshot tests. _[`#3072`](https://github.com/solid-design-system/solid/pull/3072) [`7622bb1`](https://github.com/solid-design-system/solid/commit/7622bb1466d554f53253afef1357ced08d2b8f51) [@martascorreia](https://github.com/martascorreia)_
+
 ## 2.17.0
 
 ### Minor Changes
