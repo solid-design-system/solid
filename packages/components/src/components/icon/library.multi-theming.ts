@@ -1,12 +1,24 @@
 import type { IconLibrary } from './library';
 
+function getTheme() {
+  const el = document.body;
+
+  const cssTheme = getComputedStyle(el).getPropertyValue('--sd-theme').trim().replace(/['"]/g, '');
+
+  return cssTheme || 'ui';
+}
+
 const defaultLibrary: IconLibrary = {
   name: 'default',
   resolver: name => {
+    const theme = getTheme();
+    const themedName = theme.includes('ui') ? name : `${theme}/${name}`;
     const path = name.split('/');
+
     if (path[0] === 'content' || path[0] === 'system') {
-      name = 'union-investment/' + name;
+      name = 'union-investment/' + themedName;
     }
+
     return `https://celum-icons.fe.union-investment.de/${name}.svg`;
   },
   mutator: svg => {
