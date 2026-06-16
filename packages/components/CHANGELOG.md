@@ -1,5 +1,22 @@
 # @solid-design-system/components
 
+## 6.22.1
+
+### Patch Changes
+
+- Fixed the `sd-datepicker` css properties not showing in Storybook. _[`#3058`](https://github.com/solid-design-system/solid/pull/3058) [`ea1bea6`](https://github.com/solid-design-system/solid/commit/ea1bea6b0289aaf02482ef057cf7a9107d7cc210) [@martascorreia](https://github.com/martascorreia)_
+
+## 6.22.0
+
+### Minor Changes
+
+- Added a new attribute `stacked` to the `sd-navigation-item` component that enables a new vertical stacked variant to the horizontal layout. _[`#3071`](https://github.com/solid-design-system/solid/pull/3071) [`d0163ae`](https://github.com/solid-design-system/solid/commit/d0163ae24c92f1e00cec751b5f30e416b4ba898e) [@martascorreia](https://github.com/martascorreia)_
+
+### 📈 Stats
+
+- Uncompressed: 617 KB (+1 KB / +0%)
+- Gzipped: 138 KB (unchanged)
+
 ## 6.21.2
 
 ### Patch Changes
