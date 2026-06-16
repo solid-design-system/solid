@@ -88,7 +88,7 @@ export default class SdProgressBar extends SolidElement {
     const hasLabel = this.label ? true : !!slots['label'];
 
     return html`
-      <div part="base" class="text-start">
+      <div part="base" class="text-start" aria-hidden=${!hasLabel}>
         ${hasLabel && this.showLabel
           ? html`<label
               part="label"

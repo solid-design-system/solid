@@ -12,7 +12,8 @@ export default {
   component: 'sd-progress-bar',
   args: overrideArgs([
     { type: 'attribute', name: 'value', value: '35' },
-    { type: 'attribute', name: 'max', value: '100' }
+    { type: 'attribute', name: 'max', value: '100' },
+    { type: 'attribute', name: 'label', value: 'Label' }
   ]),
   argTypes,
   parameters: {
