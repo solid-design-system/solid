@@ -82,7 +82,7 @@ export const LightAndInverted = {
       options: {
         templateBackgrounds: {
           alternate: 'y',
-          colors: ['transparent', 'rgba(var(--sd-color-primary))']
+          colors: ['transparent', 'rgba(var(--sd-color-background-primary))']
         }
       }
     });
@@ -103,7 +103,7 @@ export const Pipe = {
       },
       constants: { type: 'attribute', name: 'sd-meta--pipe', value: true },
       options: {
-        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'rgba(var(--sd-color-primary))'] }
+        templateBackgrounds: { alternate: 'y', colors: ['transparent', 'rgba(var(--sd-color-background-primary))'] }
       },
       args
     });

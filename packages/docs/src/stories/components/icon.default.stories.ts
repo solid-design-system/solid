@@ -56,7 +56,7 @@ export const LibraryDefaultContent = {
           colors: [
             'rgba(var(--sd-color-background-white))',
             'rgba(var(--sd-color-background-white))',
-            'rgba(var(--sd-color-primary))'
+            'rgba(var(--sd-color-background-primary))'
           ]
         }
       },
@@ -94,7 +94,7 @@ export const LibraryDefaultSystem = {
           colors: [
             'rgba(var(--sd-color-background-white))',
             'rgba(var(--sd-color-background-white))',
-            'rgba(var(--sd-color-primary))'
+            'rgba(var(--sd-color-background-primary))'
           ]
         }
       },
