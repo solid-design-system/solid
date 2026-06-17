@@ -68,14 +68,6 @@ async function fetchMultiThemingIconsJson(theme?: string) {
       ? (((await brandLogosResponse.json()) as { technicalId: string }[]) ?? [])
       : [];
 
-    if (!statusResponse.ok || !brandLogosResponse.ok) {
-      console.warn(
-        `Optional icon JSON endpoints unavailable for multi-theming (status: ${statusResponse.status}, brand-logos: ${
-          brandLogosResponse.status
-        })`
-      );
-    }
-
     const icons = {
       content: contentData.map(icon => icon.technicalId),
       system: systemData.map(icon => icon.technicalId),
@@ -106,7 +98,6 @@ function viteFetchIconsFromCDN(): Plugin {
       return null;
     },
     async buildStart() {
-      console.log('Fetching icons from CDN...'); // Debug log to indicate when fetching starts
       const defaultIcons = await fetchDefaultIconsJson();
       const defaultData = JSON.stringify(defaultIcons);
 
