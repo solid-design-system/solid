@@ -10,7 +10,7 @@ import SolidElement from '../../internal/solid-element';
 /**
  * @summary Progress bars are used to visualize the completion state of a process.
  * @status stable
- * @since 6.20
+ * @since 6.23
  *
  * @slot label - The input's label. Alternatively, you can use the `label` attribute.
  *
