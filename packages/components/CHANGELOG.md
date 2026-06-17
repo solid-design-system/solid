@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.22.2
+
+### 📈 Stats
+* Uncompressed: 618 KB (+1 KB / +0%)
+* Gzipped: 138 KB (unchanged)
+
 ## 6.22.1
 
 ### Patch Changes

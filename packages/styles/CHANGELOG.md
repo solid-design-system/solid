@@ -1,5 +1,11 @@
 # @solid-design-system/styles
 
+## 6.22.2
+
+### Patch Changes
+
+- Fix `sd-headline` and `sd-icon` vertical alignment. _[`#3092`](https://github.com/solid-design-system/solid/pull/3092) [`33ac5c0`](https://github.com/solid-design-system/solid/commit/33ac5c0e24b4b1a6169a0b7fc15cfae1e7f7e75b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 6.22.1
 
 ## 6.22.0
