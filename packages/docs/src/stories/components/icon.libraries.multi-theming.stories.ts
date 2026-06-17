@@ -1,9 +1,11 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit';
-import { storybookTemplate } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 // @ts-expect-error – dynamically loaded via Vite
 import iconsFromCdn from 'icons-from-cdn/multi-theming';
 
+const { args, parameters } = storybookDefaults('sd-icon');
+const { overrideArgs } = storybookHelpers('sd-icon');
 const { generateTemplate } = storybookTemplate('sd-icon');
 
 function getCommonIconsByCategory(category: 'content' | 'system') {
@@ -19,14 +21,10 @@ function getCommonIconsByCategory(category: 'content' | 'system') {
 }
 
 export default {
-  title: 'Components/sd-icon/multi-theming',
-  parameters: {
-    chromatic: { disableSnapshot: true },
-    controls: {
-      disable: true
-    }
-  },
-  // decorator to add <styles> to the story
+  title: 'Components/sd-icon/Libraries/Library: multi-theming',
+  component: 'sd-icon',
+  args: overrideArgs([{ name: 'name', type: 'attribute', value: 'content/image' }], args),
+  parameters: { ...parameters, controls: { disable: true } },
   decorators: [
     (story: any) =>
       html`${story()}<style>
@@ -37,10 +35,13 @@ export default {
   ]
 };
 
-export const LibraryMultiThemingContent = {
-  name: 'multi-theming/content',
+export const Content = {
+  name: 'content',
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  },
   render: (args: any) => {
-    const icons = getCommonIconsByCategory('content');
+    const iconsList = getCommonIconsByCategory('content');
 
     return generateTemplate({
       axis: {
@@ -51,16 +52,10 @@ export const LibraryMultiThemingContent = {
         y: {
           type: 'attribute',
           name: 'name',
-          values: icons.map((icon: string) => `content/${icon}`)
+          values: iconsList.map((icon: string) => `content/${icon}`)
         }
       },
-      constants: [
-        {
-          type: 'attribute',
-          name: 'library',
-          value: 'multi-theming'
-        }
-      ],
+      constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
       options: {
         templateBackgrounds: {
           alternate: 'x',
@@ -76,10 +71,13 @@ export const LibraryMultiThemingContent = {
   }
 };
 
-export const LibraryMultiThemingSystem = {
-  name: 'multi-theming/system',
+export const System = {
+  name: 'system',
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  },
   render: (args: any) => {
-    const icons = getCommonIconsByCategory('system');
+    const iconsList = getCommonIconsByCategory('system');
 
     return generateTemplate({
       axis: {
@@ -90,16 +88,10 @@ export const LibraryMultiThemingSystem = {
         y: {
           type: 'attribute',
           name: 'name',
-          values: icons.map((icon: string) => `system/${icon}`)
+          values: iconsList.map((icon: string) => `system/${icon}`)
         }
       },
-      constants: [
-        {
-          type: 'attribute',
-          name: 'library',
-          value: 'multi-theming'
-        }
-      ],
+      constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
       options: {
         templateBackgrounds: {
           alternate: 'x',

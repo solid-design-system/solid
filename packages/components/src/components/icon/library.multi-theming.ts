@@ -11,7 +11,7 @@ const themeMap: Record<string, string> = {
 function getTheme(element?: HTMLElement) {
   const el = element ?? document.body;
   const cssTheme = getComputedStyle(el).getPropertyValue('--sd-theme').trim().replace(/['"]/g, '');
-  return themeMap[cssTheme] ?? 'ui';
+  return themeMap[cssTheme];
 }
 
 const multiThemingLibrary: IconLibrary = {
