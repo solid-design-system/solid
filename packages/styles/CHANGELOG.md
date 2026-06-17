@@ -1,5 +1,7 @@
 # @solid-design-system/styles
 
+## 6.23.0
+
 ## 6.22.2
 
 ### Patch Changes
