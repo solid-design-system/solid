@@ -125,28 +125,24 @@ export const MultiThemingLibrary = {
   parameters: {
     chromatic: { disableSnapshot: true }
   },
-  render: (args: any) => {
-    const sdTheme = document.documentElement.dataset.sdTheme;
-    const theme = sdTheme && sdTheme !== 'undefined' ? sdTheme.replace('sd-theme-', '') : 'ui';
-
-    return generateTemplate({
+  render: (args: any) =>
+    generateTemplate({
       axis: {
         x: {
           type: 'attribute',
-          name: 'color'
+          name: 'library',
+          values: [
+            { value: '', title: 'default' },
+            { value: 'multi-theming', title: 'multi-theming' }
+          ]
         },
         y: {
           type: 'attribute',
           name: 'name',
-          values: [
-            'content/image',
-            `union-investment/${theme}/content/image`,
-            'system/image',
-            `union-investment/${theme}/system/image`
-          ]
+          values: ['content/image', 'system/image']
         }
       },
-      constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
+      constants: [],
       options: {
         templateBackgrounds: {
           alternate: 'x',
@@ -158,6 +154,5 @@ export const MultiThemingLibrary = {
         }
       },
       args
-    });
-  }
+    })
 };

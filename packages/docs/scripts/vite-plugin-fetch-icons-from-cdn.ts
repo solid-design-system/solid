@@ -5,6 +5,7 @@
  */
 
 import type { Plugin } from 'vite';
+import { themeAttributes } from '../.storybook/addons/theme-generator/theme-attributes';
 
 async function fetchDefaultIconsJson() {
   try {
@@ -38,14 +39,20 @@ async function fetchDefaultIconsJson() {
   }
 }
 
-async function fetchMultiThemingIconsJson(theme?: string) {
-  try {
-    void theme;
+const themeFolderMap = Object.entries(themeAttributes).reduce(
+  (acc, [themeId, attrs]) => {
+    const themeKey = themeId.replace('sd-theme-', '');
+    acc[themeKey] = attrs.cdnIconFolder || null;
+    return acc;
+  },
+  {} as Record<string, string | null>
+);
 
-    const contentUrl = `https://celum-icons.fe.union-investment.de/union-investment/${theme}/content.json`;
-    const systemUrl = `https://celum-icons.fe.union-investment.de/union-investment/${theme}/system.json`;
-    const statusUrl = `https://celum-icons.fe.union-investment.de/union-investment/${theme}/status.json`;
-    const brandLogosUrl = `https://celum-icons.fe.union-investment.de/union-investment/${theme}/brand-logos.json`;
+async function fetchMultiThemingIconsJson(folder: string | null) {
+  try {
+    const baseUrl = `https://celum-icons.fe.union-investment.de/${folder}`;
+    const contentUrl = `${baseUrl}/content.json`;
+    const systemUrl = `${baseUrl}/system.json`;
 
     const [contentResponse, systemResponse] = await Promise.all([fetch(contentUrl), fetch(systemUrl)]);
 
@@ -53,35 +60,23 @@ async function fetchMultiThemingIconsJson(theme?: string) {
       console.error('Failed to fetch required icon JSON data from CDN – maybe the CDN is unreachable?');
       return {
         content: [],
-        system: [],
-        status: [],
-        brandLogos: []
+        system: []
       };
     }
 
-    const [statusResponse, brandLogosResponse] = await Promise.all([fetch(statusUrl), fetch(brandLogosUrl)]);
-
     const contentData = (await contentResponse.json()) as { technicalId: string }[];
     const systemData = (await systemResponse.json()) as { technicalId: string }[];
-    const statusData = statusResponse.ok ? (((await statusResponse.json()) as { technicalId: string }[]) ?? []) : [];
-    const brandLogosData = brandLogosResponse.ok
-      ? (((await brandLogosResponse.json()) as { technicalId: string }[]) ?? [])
-      : [];
 
     const icons = {
       content: contentData.map(icon => icon.technicalId),
-      system: systemData.map(icon => icon.technicalId),
-      status: statusData.map(icon => icon.technicalId),
-      brandLogos: brandLogosData.map(icon => icon.technicalId)
+      system: systemData.map(icon => icon.technicalId)
     };
     return icons;
   } catch (error) {
     console.error('Error fetching icon JSON data:', error);
     return {
       content: [],
-      system: [],
-      status: [],
-      brandLogos: []
+      system: []
     };
   }
 }
@@ -102,8 +97,8 @@ function viteFetchIconsFromCDN(): Plugin {
       const defaultData = JSON.stringify(defaultIcons);
 
       const multiThemingData: Record<string, any> = {};
-      for (const theme of ['ui', 'vb', 'bb', 'kid']) {
-        multiThemingData[theme] = await fetchMultiThemingIconsJson(theme);
+      for (const [themeKey, folder] of Object.entries(themeFolderMap)) {
+        multiThemingData[themeKey] = await fetchMultiThemingIconsJson(folder);
       }
 
       const data = {

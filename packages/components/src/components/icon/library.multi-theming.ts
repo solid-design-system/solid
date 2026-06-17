@@ -1,9 +1,17 @@
 import type { IconLibrary } from './library';
 
+const themeMap: Record<string, string> = {
+  'ui-light': 'union-investment',
+  'ui-dark': 'union-investment',
+  vb: 'vb',
+  bb: 'bbbank',
+  kid: 'kidstarter'
+};
+
 function getTheme(element?: HTMLElement) {
   const el = element ?? document.body;
   const cssTheme = getComputedStyle(el).getPropertyValue('--sd-theme').trim().replace(/['"]/g, '');
-  return cssTheme || 'ui';
+  return themeMap[cssTheme] ?? 'ui';
 }
 
 const multiThemingLibrary: IconLibrary = {
@@ -11,9 +19,10 @@ const multiThemingLibrary: IconLibrary = {
   resolver: (name, element) => {
     const theme = getTheme(element);
     const path = name.split('/');
+    const finalPath = `${theme}/${name}`;
 
-    if (path[0] === 'content' || path[0] === 'system' || path[0] === 'status' || path[0] === 'brand-logo') {
-      name = 'union-investment/' + theme + '/' + name;
+    if (path[0] === 'content' || path[0] === 'system') {
+      name = finalPath;
     }
 
     return `https://celum-icons.fe.union-investment.de/${name}.svg`;
