@@ -24,11 +24,17 @@ export default {
   parameters: { ...parameters, controls: { disable: true } },
   decorators: [
     (story: any) =>
-      html`${story()}<style>
+      html` ${story()}
+        <style>
           sd-icon {
             font-size: 1.5rem;
           }
-          .sb-show-main:not(.sd-theme-ui-light):not(.sd-theme-ui-dark) .slot {
+          .sb-show-main.sd-theme-ui-light table,
+          .sb-show-main.sd-theme-ui-dark table {
+            display: none;
+          }
+
+          .sb-show-main:not(.sd-theme-ui-light):not(.sd-theme-ui-dark) sd-notification {
             display: none;
           }
         </style>`
@@ -50,31 +56,34 @@ export const Content = {
   render: (args: any) => {
     const iconsList = getIconsByCategory('content');
 
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'color'
+    return html` <sd-notification variant="info" open class="mb-4"
+        >Please notice that this library is not available for themes UI-Light and UI-dark</sd-notification
+      >
+      ${generateTemplate({
+        axis: {
+          x: {
+            type: 'attribute',
+            name: 'color'
+          },
+          y: {
+            type: 'attribute',
+            name: 'name',
+            values: iconsList.map((icon: string) => `content/${icon}`)
+          }
         },
-        y: {
-          type: 'attribute',
-          name: 'name',
-          values: iconsList.map((icon: string) => `content/${icon}`)
-        }
-      },
-      constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
-      options: {
-        templateBackgrounds: {
-          alternate: 'x',
-          colors: [
-            'rgba(var(--sd-color-background-white))',
-            'rgba(var(--sd-color-background-white))',
-            'rgba(var(--sd-color-primary))'
-          ]
-        }
-      },
-      args
-    });
+        constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
+        options: {
+          templateBackgrounds: {
+            alternate: 'x',
+            colors: [
+              'rgba(var(--sd-color-background-white))',
+              'rgba(var(--sd-color-background-white))',
+              'rgba(var(--sd-color-primary))'
+            ]
+          }
+        },
+        args
+      })}`;
   }
 };
 
@@ -93,30 +102,33 @@ export const System = {
   render: (args: any) => {
     const iconsList = getIconsByCategory('system');
 
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'color'
+    return html` <sd-notification variant="info" open class="mb-4"
+        >Please notice that this library is not available for themes UI-Light and UI-dark</sd-notification
+      >
+      ${generateTemplate({
+        axis: {
+          x: {
+            type: 'attribute',
+            name: 'color'
+          },
+          y: {
+            type: 'attribute',
+            name: 'name',
+            values: iconsList.map((icon: string) => `system/${icon}`)
+          }
         },
-        y: {
-          type: 'attribute',
-          name: 'name',
-          values: iconsList.map((icon: string) => `system/${icon}`)
-        }
-      },
-      constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
-      options: {
-        templateBackgrounds: {
-          alternate: 'x',
-          colors: [
-            'rgba(var(--sd-color-background-white))',
-            'rgba(var(--sd-color-background-white))',
-            'rgba(var(--sd-color-primary))'
-          ]
-        }
-      },
-      args
-    });
+        constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
+        options: {
+          templateBackgrounds: {
+            alternate: 'x',
+            colors: [
+              'rgba(var(--sd-color-background-white))',
+              'rgba(var(--sd-color-background-white))',
+              'rgba(var(--sd-color-primary))'
+            ]
+          }
+        },
+        args
+      })}`;
   }
 };

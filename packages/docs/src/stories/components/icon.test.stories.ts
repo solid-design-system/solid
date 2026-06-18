@@ -9,6 +9,7 @@ import {
 } from '../../../scripts/storybook/helper';
 // @ts-expect-error – dynamically loaded via Vite
 import iconsFromCdn from 'icons-from-cdn/multi-theming';
+import { html } from 'lit';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-icon');
 const { overrideArgs } = storybookHelpers('sd-icon');
@@ -143,34 +144,54 @@ export const MultiThemingLibrary = {
       }
     }
   },
+  decorators: [
+    (story: any) => html`
+      ${story()}
+      <style>
+        .sb-show-main.sd-theme-ui-light table,
+        .sb-show-main.sd-theme-ui-dark table {
+          display: none;
+        }
+
+        .sb-show-main:not(.sd-theme-ui-light):not(.sd-theme-ui-dark) sd-notification {
+          display: none;
+        }
+      </style>
+    `
+  ],
   render: (args: any) => {
     const contentIcons = getIconsByCategory('content').map((icon: string) => `content/${icon}`);
     const systemIcons = getIconsByCategory('system').map((icon: string) => `system/${icon}`);
 
-    return generateTemplate({
-      axis: {
-        x: {
-          type: 'attribute',
-          name: 'color'
+    return html`
+      <sd-notification variant="info" open class="mb-4"
+        >Please notice that this library is not available for themes UI-Light and UI-dark</sd-notification
+      >
+      ${generateTemplate({
+        axis: {
+          x: {
+            type: 'attribute',
+            name: 'color'
+          },
+          y: {
+            type: 'attribute',
+            name: 'name',
+            values: [...contentIcons, ...systemIcons]
+          }
         },
-        y: {
-          type: 'attribute',
-          name: 'name',
-          values: [...contentIcons, ...systemIcons]
-        }
-      },
-      constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
-      options: {
-        templateBackgrounds: {
-          alternate: 'x',
-          colors: [
-            'rgba(var(--sd-color-background-white))',
-            'rgba(var(--sd-color-background-white))',
-            'rgba(var(--sd-color-primary))'
-          ]
-        }
-      },
-      args
-    });
+        constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
+        options: {
+          templateBackgrounds: {
+            alternate: 'x',
+            colors: [
+              'rgba(var(--sd-color-background-white))',
+              'rgba(var(--sd-color-background-white))',
+              'rgba(var(--sd-color-primary))'
+            ]
+          }
+        },
+        args
+      })}
+    `;
   }
 };
