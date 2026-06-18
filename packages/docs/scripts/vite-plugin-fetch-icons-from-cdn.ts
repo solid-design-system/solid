@@ -89,6 +89,7 @@ function viteFetchIconsFromCDN(): Plugin {
       // multi-theming library
       const multiThemingData: Record<string, any> = {};
       for (const [themeKey, folder] of Object.entries(getThemeIconFolders)) {
+        if (themeKey.includes('ui')) continue;
         multiThemingData[themeKey] = await fetchMultiThemingIconsJson(folder);
       }
 

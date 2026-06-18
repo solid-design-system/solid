@@ -1,8 +1,6 @@
 import type { IconLibrary } from './library';
 
 const themeMap: Record<string, string> = {
-  'ui-light': 'union-investment',
-  'ui-dark': 'union-investment',
   vb: 'vb',
   bb: 'bbbank',
   kid: 'kidstarter'
@@ -18,6 +16,8 @@ const multiThemingLibrary: IconLibrary = {
   name: 'multi-theming',
   resolver: (name, element) => {
     const theme = getTheme(element);
+    if (!theme) return '';
+
     const path = name.split('/');
     const finalPath = `${theme}/${name}`;
 
