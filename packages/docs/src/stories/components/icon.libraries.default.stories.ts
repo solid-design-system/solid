@@ -10,9 +10,16 @@ const { generateTemplate } = storybookTemplate('sd-icon');
 
 export default {
   title: 'Components/sd-icon/Libraries/default',
-  component: 'sd-icon',
+  tags: ['skip-playwright'],
+  parameters: {
+    ...parameters,
+    chromatic: { disableSnapshot: true },
+    controls: {
+      disable: true
+    }
+  },
   args: overrideArgs([{ name: 'name', type: 'attribute', value: 'content/image' }], args),
-  parameters: { ...parameters, controls: { disable: true } },
+  // decorator to add <styles> to the story
   decorators: [
     (story: any) =>
       html`${story()}<style>
@@ -23,11 +30,12 @@ export default {
   ]
 };
 
+/**
+ * > Important: This list is only updated when Storybook is updated.
+ */
+
 export const Content = {
   name: 'content',
-  parameters: {
-    chromatic: { disableSnapshot: true }
-  },
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -60,11 +68,12 @@ export const Content = {
     })
 };
 
+/**
+ * > Important: This list is only updated when Storybook is updated.
+ */
+
 export const System = {
   name: 'system',
-  parameters: {
-    chromatic: { disableSnapshot: true }
-  },
   render: (args: any) =>
     generateTemplate({
       axis: {
