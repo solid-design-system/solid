@@ -1,6 +1,11 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit';
-import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import {
+  storybookDefaults,
+  storybookHelpers,
+  storybookTemplate,
+  getIconsByCategory
+} from '../../../scripts/storybook/helper';
 // @ts-expect-error – dynamically loaded via Vite
 import iconsFromCdn from 'icons-from-cdn/multi-theming';
 
@@ -8,20 +13,12 @@ const { args, parameters } = storybookDefaults('sd-icon');
 const { overrideArgs } = storybookHelpers('sd-icon');
 const { generateTemplate } = storybookTemplate('sd-icon');
 
-function getCommonIconsByCategory(category: 'content' | 'system') {
-  const themes = Object.values(iconsFromCdn) as Array<{ content: string[]; system: string[] }>;
-
-  if (!themes.length) return [] as string[];
-
-  const commonIcons = themes
-    .map(theme => theme?.[category] || [])
-    .reduce((acc, current) => acc.filter(icon => current.includes(icon)));
-
-  return commonIcons.length ? commonIcons : themes[0][category] || [];
+if (typeof globalThis !== 'undefined') {
+  (globalThis as any).iconsFromCdn = iconsFromCdn;
 }
 
 export default {
-  title: 'Components/sd-icon/Libraries/Library: multi-theming',
+  title: 'Components/sd-icon/Libraries/multi-theming',
   component: 'sd-icon',
   args: overrideArgs([{ name: 'name', type: 'attribute', value: 'content/image' }], args),
   parameters: { ...parameters, controls: { disable: true } },
@@ -31,6 +28,9 @@ export default {
           sd-icon {
             font-size: 1.5rem;
           }
+          .sb-show-main:not(.sd-theme-ui-light):not(.sd-theme-ui-dark) .slot {
+            display: none;
+          }
         </style>`
   ]
 };
@@ -38,10 +38,17 @@ export default {
 export const Content = {
   name: 'content',
   parameters: {
-    chromatic: { disableSnapshot: true }
+    chromatic: {
+      disableSnapshot: true,
+      modes: {
+        'sd-theme-vb': { theme: 'VB' },
+        'sd-theme-bb': { theme: 'BBBank' },
+        'sd-theme-kid': { theme: 'KidStarter' }
+      }
+    }
   },
   render: (args: any) => {
-    const iconsList = getCommonIconsByCategory('content');
+    const iconsList = getIconsByCategory('content');
 
     return generateTemplate({
       axis: {
@@ -74,10 +81,17 @@ export const Content = {
 export const System = {
   name: 'system',
   parameters: {
-    chromatic: { disableSnapshot: true }
+    chromatic: {
+      disableSnapshot: true,
+      modes: {
+        'sd-theme-vb': { theme: 'VB' },
+        'sd-theme-bb': { theme: 'BBBank' },
+        'sd-theme-kid': { theme: 'KidStarter' }
+      }
+    }
   },
   render: (args: any) => {
-    const iconsList = getCommonIconsByCategory('system');
+    const iconsList = getIconsByCategory('system');
 
     return generateTemplate({
       axis: {

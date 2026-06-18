@@ -5,13 +5,12 @@
  */
 
 import type { Plugin } from 'vite';
-import { themeAttributes } from '../.storybook/addons/theme-generator/theme-attributes';
+import { getThemeIconFolders } from '../.storybook/addons/theme-generator/theme-attributes';
 
 async function fetchDefaultIconsJson() {
   try {
     const contentUrl = 'https://celum-icons.fe.union-investment.de/union-investment/content.json';
     const systemUrl = 'https://celum-icons.fe.union-investment.de/union-investment/system.json';
-
     const [contentResponse, systemResponse] = await Promise.all([fetch(contentUrl), fetch(systemUrl)]);
 
     if (!contentResponse.ok || !systemResponse.ok) {
@@ -38,15 +37,6 @@ async function fetchDefaultIconsJson() {
     };
   }
 }
-
-const themeFolderMap = Object.entries(themeAttributes).reduce(
-  (acc, [themeId, attrs]) => {
-    const themeKey = themeId.replace('sd-theme-', '');
-    acc[themeKey] = attrs.cdnIconFolder || null;
-    return acc;
-  },
-  {} as Record<string, string | null>
-);
 
 async function fetchMultiThemingIconsJson(folder: string | null) {
   try {
@@ -93,11 +83,12 @@ function viteFetchIconsFromCDN(): Plugin {
       return null;
     },
     async buildStart() {
-      const defaultIcons = await fetchDefaultIconsJson();
-      const defaultData = JSON.stringify(defaultIcons);
+      // default library
+      const defaultData = await fetchDefaultIconsJson();
 
+      // multi-theming library
       const multiThemingData: Record<string, any> = {};
-      for (const [themeKey, folder] of Object.entries(themeFolderMap)) {
+      for (const [themeKey, folder] of Object.entries(getThemeIconFolders)) {
         multiThemingData[themeKey] = await fetchMultiThemingIconsJson(folder);
       }
 

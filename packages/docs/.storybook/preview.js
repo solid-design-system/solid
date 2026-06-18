@@ -26,6 +26,24 @@ const deprecatedBadgeDecorator = Story => {
 export const preview = {
   decorators: [theme, deprecatedBadgeDecorator],
   parameters: {
+    options: {
+      storySort: (a, b) => {
+        const titleA = a?.title || '';
+        const titleB = b?.title || '';
+        const isSdIconA = titleA.startsWith('Components/sd-icon');
+        const isSdIconB = titleB.startsWith('Components/sd-icon');
+
+        if (isSdIconA && isSdIconB) {
+          const rank = title => (title.includes('/Libraries/') ? 2 : title.includes('/Screenshots:') ? 1 : 0);
+          const rankA = rank(titleA);
+          const rankB = rank(titleB);
+          if (rankA !== rankB) return rankA - rankB;
+          return titleA.localeCompare(titleB, undefined, { numeric: true });
+        }
+
+        return 0;
+      }
+    },
     chromatic: {
       disableSnapshot: true,
       modes: themes.reduce((acc, { id }) => {
@@ -74,6 +92,26 @@ export const preview = {
 export default preview;
 
 export const parameters = {
+  options: {
+    storySort: (a, b) => {
+      const titleA = a?.title || '';
+      const titleB = b?.title || '';
+      const isSdIconA = titleA.startsWith('Components/sd-icon');
+      const isSdIconB = titleB.startsWith('Components/sd-icon');
+
+      if (isSdIconA && isSdIconB) {
+        const rank = title => (title.includes('/Libraries/') ? 2 : title.includes('/Screenshots:') ? 1 : 0);
+        const rankA = rank(titleA);
+        const rankB = rank(titleB);
+
+        if (rankA !== rankB) return rankA - rankB;
+
+        return titleA.localeCompare(titleB, undefined, { numeric: true });
+      }
+
+      return 0;
+    }
+  },
   docs: {
     story: { inline: true },
     toc: true,

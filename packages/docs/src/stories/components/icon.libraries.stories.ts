@@ -25,7 +25,7 @@ export default {
 };
 
 export const LibraryInternal = {
-  name: 'Library: _internal',
+  name: '_internal',
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -55,7 +55,7 @@ export const LibraryInternal = {
 };
 
 export const StatusLibrary = {
-  name: 'Library: status assets',
+  name: 'status assets',
   render: (args: any) =>
     generateTemplate({
       axis: {

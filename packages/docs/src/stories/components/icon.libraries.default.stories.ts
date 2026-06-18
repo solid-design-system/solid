@@ -9,7 +9,7 @@ const { overrideArgs } = storybookHelpers('sd-icon');
 const { generateTemplate } = storybookTemplate('sd-icon');
 
 export default {
-  title: 'Components/sd-icon/Libraries/Library: default',
+  title: 'Components/sd-icon/Libraries/default',
   component: 'sd-icon',
   args: overrideArgs([{ name: 'name', type: 'attribute', value: 'content/image' }], args),
   parameters: { ...parameters, controls: { disable: true } },

@@ -1,11 +1,22 @@
 import '../../../../components/src/solid-components';
 import { icons } from '../../../../components/src/components/icon/library.internal';
 import { icons as statusIcons } from '../../../../components/src/components/icon/library.status';
-import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+import {
+  storybookDefaults,
+  storybookHelpers,
+  storybookTemplate,
+  getIconsByCategory
+} from '../../../scripts/storybook/helper';
+// @ts-expect-error – dynamically loaded via Vite
+import iconsFromCdn from 'icons-from-cdn/multi-theming';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-icon');
 const { overrideArgs } = storybookHelpers('sd-icon');
 const { generateTemplate } = storybookTemplate('sd-icon');
+
+if (typeof globalThis !== 'undefined') {
+  (globalThis as any).iconsFromCdn = iconsFromCdn;
+}
 
 export default {
   title: 'Components/sd-icon/Screenshots: sd-icon',
@@ -55,7 +66,7 @@ export const LibraryDefault = {
 };
 
 export const LibraryInternal = {
-  name: 'Library: internal',
+  name: 'Library: _internal',
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -123,26 +134,32 @@ export const StatusLibrary = {
 export const MultiThemingLibrary = {
   name: 'Library: multi-theming',
   parameters: {
-    chromatic: { disableSnapshot: true }
+    chromatic: {
+      disableSnapshot: true,
+      modes: {
+        'sd-theme-vb': { theme: 'VB' },
+        'sd-theme-bb': { theme: 'BBBank' },
+        'sd-theme-kid': { theme: 'KidStarter' }
+      }
+    }
   },
-  render: (args: any) =>
-    generateTemplate({
+  render: (args: any) => {
+    const contentIcons = getIconsByCategory('content').map((icon: string) => `content/${icon}`);
+    const systemIcons = getIconsByCategory('system').map((icon: string) => `system/${icon}`);
+
+    return generateTemplate({
       axis: {
         x: {
           type: 'attribute',
-          name: 'library',
-          values: [
-            { value: '', title: 'default' },
-            { value: 'multi-theming', title: 'multi-theming' }
-          ]
+          name: 'color'
         },
         y: {
           type: 'attribute',
           name: 'name',
-          values: ['content/image', 'system/image']
+          values: [...contentIcons, ...systemIcons]
         }
       },
-      constants: [],
+      constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
       options: {
         templateBackgrounds: {
           alternate: 'x',
@@ -154,5 +171,6 @@ export const MultiThemingLibrary = {
         }
       },
       args
-    })
+    });
+  }
 };

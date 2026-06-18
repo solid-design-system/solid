@@ -796,3 +796,29 @@ export const storybookUtilities = {
     };
   }
 };
+
+/**
+ * Gets icons by category from multi-theming CDN source.
+ * Returns icons shared across all multi-theming variants.
+ * @param category - 'content' or 'system'
+ * @returns Sorted array of icon names
+ */
+export const getIconsByCategory = (category: 'content' | 'system'): string[] => {
+  const multiThemingIcons = (globalThis as any).iconsFromCdn as
+    | Record<string, { content: string[]; system: string[] }>
+    | undefined;
+  if (!multiThemingIcons) return [];
+
+  const iconSets = Object.values(multiThemingIcons)
+    .map(theme => theme?.[category] || [])
+    .filter(set => set.length > 0);
+
+  if (iconSets.length === 0) return [];
+
+  const [firstSet, ...remainingSets] = iconSets;
+  const remainingSetsAsLookup = remainingSets.map(set => new Set(set));
+
+  return [...new Set(firstSet.filter(icon => remainingSetsAsLookup.every(set => set.has(icon))))].sort((a, b) =>
+    a.localeCompare(b)
+  );
+};

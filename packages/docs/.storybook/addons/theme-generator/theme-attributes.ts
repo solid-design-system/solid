@@ -41,6 +41,15 @@ export const themeAttributes = {
   }
 };
 
+export const getThemeIconFolders = Object.entries(themeAttributes).reduce(
+  (acc, [themeId, attrs]) => {
+    const themeKey = themeId.replace('sd-theme-', '');
+    acc[themeKey] = attrs.cdnIconFolder || null;
+    return acc;
+  },
+  {} as Record<string, string | null>
+);
+
 export const getThemeAttributes = () => {
   const theme = document.documentElement.dataset.sdTheme as string;
 
