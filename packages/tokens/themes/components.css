@@ -782,6 +782,18 @@
   border-color: rgba(var(--sd-pagination--inverted-border, rgba(var(--sd-color-accent))));
 }
 
+@utility sd-progress-bar--active--inverted-color-background {
+  background-color: rgba(var(--sd-progress-bar--active--inverted-color-background, rgba(var(--sd-color-accent))));
+}
+
+@utility sd-progress-bar__slide-bar--inverted-color-background {
+  background-color: rgba(var(--sd-progress-bar__slide-bar--inverted-color-background, rgba(var(--sd-color-primary-400))));
+}
+
+@utility sd-progress-bar__slide-bar-color-background {
+  background-color: rgba(var(--sd-progress-bar__slide-bar-color-background, rgba(var(--sd-color-neutral-400))));
+}
+
 @utility sd-quickfact--expandable-color-text {
   color: rgba(var(--sd-quickfact--expandable-color-text, rgba(var(--sd-color-primary))));
 }

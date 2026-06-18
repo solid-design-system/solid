@@ -1,10 +1,21 @@
 # @solid-design-system/components
 
+## 6.23.0
+
+### Minor Changes
+
+- Added `sd-progress-bar`. _[`#3065`](https://github.com/solid-design-system/solid/pull/3065) [`e8de4cc`](https://github.com/solid-design-system/solid/commit/e8de4cccc9b405984cba761233c3d878bb3ea154) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+### 📈 Stats
+* Uncompressed: 622 KB (+4 KB / +1%)
+* Gzipped: 139 KB (+1 KB / +1%)
+
 ## 6.22.2
 
 ### 📈 Stats
-* Uncompressed: 618 KB (+1 KB / +0%)
-* Gzipped: 138 KB (unchanged)
+
+- Uncompressed: 618 KB (+1 KB / +0%)
+- Gzipped: 138 KB (unchanged)
 
 ## 6.22.1
 
