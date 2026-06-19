@@ -1,5 +1,15 @@
 # @solid-design-system/components
 
+## 6.24.0
+
+### Minor Changes
+
+- Added `sd-multi-theming` as a new `sd-icon` library. _[`#3091`](https://github.com/solid-design-system/solid/pull/3091) [`b191a40`](https://github.com/solid-design-system/solid/commit/b191a4003bd024437f7f1c3493e6b2dd5d706d51) [@martascorreia](https://github.com/martascorreia)_
+
+### 📈 Stats
+* Uncompressed: 624 KB (+2 KB / +0%)
+* Gzipped: 140 KB (+1 KB / +1%)
+
 ## 6.23.0
 
 ### Minor Changes
@@ -7,8 +17,9 @@
 - Added `sd-progress-bar`. _[`#3065`](https://github.com/solid-design-system/solid/pull/3065) [`e8de4cc`](https://github.com/solid-design-system/solid/commit/e8de4cccc9b405984cba761233c3d878bb3ea154) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
 
 ### 📈 Stats
-* Uncompressed: 622 KB (+4 KB / +1%)
-* Gzipped: 139 KB (+1 KB / +1%)
+
+- Uncompressed: 622 KB (+4 KB / +1%)
+- Gzipped: 139 KB (+1 KB / +1%)
 
 ## 6.22.2
 

@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.19.0
+
+### Minor Changes
+
+- Added documentation and screenshot tests for the new `sd-icon` library `sd-multi-theming` _[`#3091`](https://github.com/solid-design-system/solid/pull/3091) [`b191a40`](https://github.com/solid-design-system/solid/commit/b191a4003bd024437f7f1c3493e6b2dd5d706d51) [@martascorreia](https://github.com/martascorreia)_
+
 ## 2.18.0
 
 ### Minor Changes
