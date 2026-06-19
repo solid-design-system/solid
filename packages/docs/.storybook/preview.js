@@ -33,15 +33,51 @@ export const preview = {
         const isSdIconA = titleA.startsWith('Components/sd-icon');
         const isSdIconB = titleB.startsWith('Components/sd-icon');
 
-        if (isSdIconA && isSdIconB) {
-          const rank = title => (title.includes('/Libraries/') ? 2 : title.includes('/Screenshots:') ? 1 : 0);
-          const rankA = rank(titleA);
-          const rankB = rank(titleB);
-          if (rankA !== rankB) return rankA - rankB;
-          return titleA.localeCompare(titleB, undefined, { numeric: true });
+        if (!(isSdIconA && isSdIconB)) {
+          return 0;
         }
 
-        return 0;
+        const rank = title =>
+          title.includes('/Libraries/') || title === 'Components/sd-icon/Libraries'
+            ? 2
+            : title.includes('/Screenshots:')
+              ? 1
+              : 0;
+        const rankA = rank(titleA);
+        const rankB = rank(titleB);
+
+        if (rankA !== rankB) {
+          return rankA - rankB;
+        }
+
+        if (rankA === 2 && rankB === 2) {
+          const getLabel = story => {
+            const title = story?.title || '';
+            const name = story?.name || '';
+
+            if (title === 'Components/sd-icon/Libraries') {
+              return name;
+            }
+
+            if (title.startsWith('Components/sd-icon/Libraries/')) {
+              return title.replace('Components/sd-icon/Libraries/', '').split('/')[0] || name;
+            }
+
+            return title;
+          };
+
+          const labelA = getLabel(a).toLowerCase().replace(/^_+/, '');
+          const labelB = getLabel(b).toLowerCase().replace(/^_+/, '');
+          const byLabel = labelA.localeCompare(labelB, undefined, { numeric: true });
+
+          if (byLabel !== 0) {
+            return byLabel;
+          }
+
+          return (a?.name || '').localeCompare(b?.name || '', undefined, { numeric: true });
+        }
+
+        return titleA.localeCompare(titleB, undefined, { numeric: true });
       }
     },
     chromatic: {
@@ -99,17 +135,51 @@ export const parameters = {
       const isSdIconA = titleA.startsWith('Components/sd-icon');
       const isSdIconB = titleB.startsWith('Components/sd-icon');
 
-      if (isSdIconA && isSdIconB) {
-        const rank = title => (title.includes('/Libraries/') ? 2 : title.includes('/Screenshots:') ? 1 : 0);
-        const rankA = rank(titleA);
-        const rankB = rank(titleB);
-
-        if (rankA !== rankB) return rankA - rankB;
-
-        return titleA.localeCompare(titleB, undefined, { numeric: true });
+      if (!(isSdIconA && isSdIconB)) {
+        return 0;
       }
 
-      return 0;
+      const rank = title =>
+        title.includes('/Libraries/') || title === 'Components/sd-icon/Libraries'
+          ? 2
+          : title.includes('/Screenshots:')
+            ? 1
+            : 0;
+      const rankA = rank(titleA);
+      const rankB = rank(titleB);
+
+      if (rankA !== rankB) {
+        return rankA - rankB;
+      }
+
+      if (rankA === 2 && rankB === 2) {
+        const getLabel = story => {
+          const title = story?.title || '';
+          const name = story?.name || '';
+
+          if (title === 'Components/sd-icon/Libraries') {
+            return name;
+          }
+
+          if (title.startsWith('Components/sd-icon/Libraries/')) {
+            return title.replace('Components/sd-icon/Libraries/', '').split('/')[0] || name;
+          }
+
+          return title;
+        };
+
+        const labelA = getLabel(a).toLowerCase().replace(/^_+/, '');
+        const labelB = getLabel(b).toLowerCase().replace(/^_+/, '');
+        const byLabel = labelA.localeCompare(labelB, undefined, { numeric: true });
+
+        if (byLabel !== 0) {
+          return byLabel;
+        }
+
+        return (a?.name || '').localeCompare(b?.name || '', undefined, { numeric: true });
+      }
+
+      return titleA.localeCompare(titleB, undefined, { numeric: true });
     }
   },
   docs: {
