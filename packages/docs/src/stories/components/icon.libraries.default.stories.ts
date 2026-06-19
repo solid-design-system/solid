@@ -22,11 +22,11 @@ export default {
   // decorator to add <styles> to the story
   decorators: [
     (story: any) =>
-      html`${story()}<style>
+      html`<style>
           sd-icon {
             font-size: 1.5rem;
-          }
-        </style>`
+          }</style
+        >${story()}`
   ]
 };
 
