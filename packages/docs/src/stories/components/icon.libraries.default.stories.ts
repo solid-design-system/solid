@@ -1,28 +1,35 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit';
-import { storybookTemplate } from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 // @ts-expect-error – dynamically loaded via Vite
 import iconsFromCdn from 'icons-from-cdn';
 
+const { args, parameters } = storybookDefaults('sd-icon');
+const { overrideArgs } = storybookHelpers('sd-icon');
 const { generateTemplate } = storybookTemplate('sd-icon');
 
 export default {
-  title: 'Components/sd-icon/default',
+  title: 'Components/sd-icon/Libraries/default',
   tags: ['skip-playwright'],
   parameters: {
+    ...parameters,
     chromatic: { disableSnapshot: true },
     controls: {
       disable: true
     }
   },
+  args: overrideArgs([{ name: 'name', type: 'attribute', value: 'content/image' }], args),
   // decorator to add <styles> to the story
   decorators: [
     (story: any) =>
-      html`${story()}<style>
+      html`<style>
           sd-icon {
             font-size: 1.5rem;
           }
-        </style>`
+          sd-icon[name*='content/'] {
+            font-size: 48px;
+          }</style
+        >${story()}`
   ]
 };
 
@@ -30,8 +37,8 @@ export default {
  * > Important: This list is only updated when Storybook is updated.
  */
 
-export const LibraryDefaultContent = {
-  name: 'union-investment/content',
+export const Content = {
+  name: 'content',
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -68,8 +75,8 @@ export const LibraryDefaultContent = {
  * > Important: This list is only updated when Storybook is updated.
  */
 
-export const LibraryDefaultSystem = {
-  name: 'union-investment/system',
+export const System = {
+  name: 'system',
   render: (args: any) =>
     generateTemplate({
       axis: {
