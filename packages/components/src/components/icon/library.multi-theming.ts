@@ -38,10 +38,20 @@ const multiThemingLibrary: IconLibrary = {
       greenFills: [] as unknown as NodeListOf<SVGElement>,
       greenStrokes: [] as unknown as NodeListOf<SVGElement>
     };
-    recoloredElements['currentColorFills'] = svg.querySelectorAll('[fill="#00358e" i]');
-    recoloredElements['currentColorStrokes'] = svg.querySelectorAll('[stroke="#00358e" i]');
-    recoloredElements['greenFills'] = svg.querySelectorAll('[fill="#2d9d00" i]');
-    recoloredElements['greenStrokes'] = svg.querySelectorAll('[stroke="#2d9d00" i]');
+
+    const currentColors = ['#00358e', '#002d67', '#005ca9', '#051530'];
+    const greenColor = ['#2d9d00', '#f35e01'];
+
+    recoloredElements['currentColorFills'] = svg.querySelectorAll(
+      currentColors.map(color => `[fill="${color}" i]`).join(', ')
+    );
+    recoloredElements['currentColorStrokes'] = svg.querySelectorAll(
+      currentColors.map(color => `[stroke="${color}" i]`).join(', ')
+    );
+    recoloredElements['greenFills'] = svg.querySelectorAll(greenColor.map(color => `[fill="${color}" i]`).join(', '));
+    recoloredElements['greenStrokes'] = svg.querySelectorAll(
+      greenColor.map(color => `[stroke="${color}" i]`).join(', ')
+    );
 
     recoloredElements.currentColorFills.forEach(filledElement => {
       filledElement.setAttribute('fill', 'currentColor');
