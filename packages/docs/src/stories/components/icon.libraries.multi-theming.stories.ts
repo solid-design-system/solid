@@ -24,8 +24,7 @@ export default {
   parameters: { ...parameters, controls: { disable: true } },
   decorators: [
     (story: any) =>
-      html` ${story()}
-        <style>
+      html` <style>
           sd-icon {
             font-size: 1.5rem;
           }
@@ -37,7 +36,8 @@ export default {
           .sb-show-main:not(.sd-theme-ui-light):not(.sd-theme-ui-dark) sd-notification {
             display: none;
           }
-        </style>`
+        </style>
+        ${story()}`
   ]
 };
 

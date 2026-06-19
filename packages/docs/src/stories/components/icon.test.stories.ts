@@ -146,7 +146,6 @@ export const MultiThemingLibrary = {
   },
   decorators: [
     (story: any) => html`
-      ${story()}
       <style>
         .sb-show-main.sd-theme-ui-light table,
         .sb-show-main.sd-theme-ui-dark table {
@@ -157,6 +156,7 @@ export const MultiThemingLibrary = {
           display: none;
         }
       </style>
+      ${story()}
     `
   ],
   render: (args: any) => {
