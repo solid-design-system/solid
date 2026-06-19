@@ -7,47 +7,14 @@
 import type { Plugin } from 'vite';
 import { getThemeIconFolders } from '../.storybook/addons/theme-generator/theme-attributes';
 
-async function fetchDefaultIconsJson() {
+async function fetchIconsJson(baseUrl: string) {
   try {
-    const contentUrl = 'https://celum-icons.fe.union-investment.de/union-investment/content.json';
-    const systemUrl = 'https://celum-icons.fe.union-investment.de/union-investment/system.json';
+    const contentUrl = `${baseUrl}/content.json`;
+    const systemUrl = `${baseUrl}/system.json`;
     const [contentResponse, systemResponse] = await Promise.all([fetch(contentUrl), fetch(systemUrl)]);
 
     if (!contentResponse.ok || !systemResponse.ok) {
       console.error('Failed to fetch icon JSON data from CDN – maybe the CDN is unreachable?');
-      return {
-        content: [],
-        system: []
-      };
-    }
-
-    const contentData = (await contentResponse.json()) as { technicalId: string }[];
-    const systemData = (await systemResponse.json()) as { technicalId: string }[];
-
-    const icons = {
-      content: contentData.map(icon => icon.technicalId),
-      system: systemData.map(icon => icon.technicalId)
-    };
-    return icons;
-  } catch (error) {
-    console.error('Error fetching icon JSON data:', error);
-    return {
-      content: [],
-      system: []
-    };
-  }
-}
-
-async function fetchMultiThemingIconsJson(folder: string | null) {
-  try {
-    const baseUrl = `https://celum-icons.fe.union-investment.de/${folder}`;
-    const contentUrl = `${baseUrl}/content.json`;
-    const systemUrl = `${baseUrl}/system.json`;
-
-    const [contentResponse, systemResponse] = await Promise.all([fetch(contentUrl), fetch(systemUrl)]);
-
-    if (!contentResponse.ok || !systemResponse.ok) {
-      console.error('Failed to fetch required icon JSON data from CDN – maybe the CDN is unreachable?');
       return {
         content: [],
         system: []
@@ -84,14 +51,17 @@ function viteFetchIconsFromCDN(): Plugin {
     },
     async buildStart() {
       // default library
-      const defaultData = await fetchDefaultIconsJson();
+      const defaultData = await fetchIconsJson('https://celum-icons.fe.union-investment.de/union-investment');
 
-      // multi-theming library
-      const multiThemingData: Record<string, any> = {};
-      for (const [themeKey, folder] of Object.entries(getThemeIconFolders)) {
-        if (themeKey.includes('ui')) continue;
-        multiThemingData[themeKey] = await fetchMultiThemingIconsJson(folder);
-      }
+      // multi-theming library - keep a single themed dataset for the docs stories
+      // only include icons that are also available in the default library
+      const vbRaw = await fetchIconsJson(`https://celum-icons.fe.union-investment.de/${getThemeIconFolders.vb}`);
+      const multiThemingData = {
+        vb: {
+          content: vbRaw.content.filter(id => defaultData.content.includes(id)),
+          system: vbRaw.system.filter(id => defaultData.system.includes(id))
+        }
+      };
 
       const data = {
         defaultData,

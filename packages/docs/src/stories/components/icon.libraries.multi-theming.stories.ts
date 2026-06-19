@@ -1,11 +1,6 @@
 import '../../../../components/src/solid-components';
 import { html } from 'lit';
-import {
-  storybookDefaults,
-  storybookHelpers,
-  storybookTemplate,
-  getIconsByCategory
-} from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 // @ts-expect-error – dynamically loaded via Vite
 import iconsFromCdn from 'icons-from-cdn/multi-theming';
 
@@ -17,6 +12,14 @@ if (typeof globalThis !== 'undefined') {
   (globalThis as any).iconsFromCdn = iconsFromCdn;
 }
 
+type IconSet = {
+  content: string[];
+  system: string[];
+};
+
+const multiThemingIcons = iconsFromCdn as Record<string, IconSet>;
+const vbIcons = multiThemingIcons.vb;
+
 export default {
   title: 'Components/sd-icon/Libraries/multi-theming',
   component: 'sd-icon',
@@ -27,14 +30,6 @@ export default {
       html` <style>
           sd-icon {
             font-size: 1.5rem;
-          }
-          .sb-show-main.sd-theme-ui-light table,
-          .sb-show-main.sd-theme-ui-dark table {
-            display: none;
-          }
-
-          .sb-show-main:not(.sd-theme-ui-light):not(.sd-theme-ui-dark) sd-notification {
-            display: none;
           }
         </style>
         ${story()}`
@@ -54,36 +49,31 @@ export const Content = {
     }
   },
   render: (args: any) => {
-    const iconsList = getIconsByCategory('content');
-
-    return html` <sd-notification variant="info" open class="mb-4"
-        >Please notice that this library is not available for themes UI-Light and UI-dark</sd-notification
-      >
-      ${generateTemplate({
-        axis: {
-          x: {
-            type: 'attribute',
-            name: 'color'
-          },
-          y: {
-            type: 'attribute',
-            name: 'name',
-            values: iconsList.map((icon: string) => `content/${icon}`)
-          }
+    return html`${generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'color'
         },
-        constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
-        options: {
-          templateBackgrounds: {
-            alternate: 'x',
-            colors: [
-              'rgba(var(--sd-color-background-white))',
-              'rgba(var(--sd-color-background-white))',
-              'rgba(var(--sd-color-primary))'
-            ]
-          }
-        },
-        args
-      })}`;
+        y: {
+          type: 'attribute',
+          name: 'name',
+          values: vbIcons.content.map((icon: string) => `content/${icon}`)
+        }
+      },
+      constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
+      options: {
+        templateBackgrounds: {
+          alternate: 'x',
+          colors: [
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-primary))'
+          ]
+        }
+      },
+      args
+    })}`;
   }
 };
 
@@ -100,35 +90,30 @@ export const System = {
     }
   },
   render: (args: any) => {
-    const iconsList = getIconsByCategory('system');
-
-    return html` <sd-notification variant="info" open class="mb-4"
-        >Please notice that this library is not available for themes UI-Light and UI-dark</sd-notification
-      >
-      ${generateTemplate({
-        axis: {
-          x: {
-            type: 'attribute',
-            name: 'color'
-          },
-          y: {
-            type: 'attribute',
-            name: 'name',
-            values: iconsList.map((icon: string) => `system/${icon}`)
-          }
+    return html`${generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'color'
         },
-        constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
-        options: {
-          templateBackgrounds: {
-            alternate: 'x',
-            colors: [
-              'rgba(var(--sd-color-background-white))',
-              'rgba(var(--sd-color-background-white))',
-              'rgba(var(--sd-color-primary))'
-            ]
-          }
-        },
-        args
-      })}`;
+        y: {
+          type: 'attribute',
+          name: 'name',
+          values: vbIcons.system.map((icon: string) => `system/${icon}`)
+        }
+      },
+      constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
+      options: {
+        templateBackgrounds: {
+          alternate: 'x',
+          colors: [
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-primary))'
+          ]
+        }
+      },
+      args
+    })}`;
   }
 };

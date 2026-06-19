@@ -1,6 +1,8 @@
 import type { IconLibrary } from './library';
 
 const themeMap: Record<string, string> = {
+  'ui-light': 'union-investment',
+  'ui-dark': 'union-investment',
   vb: 'vb',
   bb: 'bbbank',
   kid: 'kidstarter'

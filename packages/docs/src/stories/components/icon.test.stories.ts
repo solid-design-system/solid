@@ -1,12 +1,7 @@
 import '../../../../components/src/solid-components';
 import { icons } from '../../../../components/src/components/icon/library.internal';
 import { icons as statusIcons } from '../../../../components/src/components/icon/library.status';
-import {
-  storybookDefaults,
-  storybookHelpers,
-  storybookTemplate,
-  getIconsByCategory
-} from '../../../scripts/storybook/helper';
+import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 // @ts-expect-error – dynamically loaded via Vite
 import iconsFromCdn from 'icons-from-cdn/multi-theming';
 import { html } from 'lit';
@@ -18,6 +13,14 @@ const { generateTemplate } = storybookTemplate('sd-icon');
 if (typeof globalThis !== 'undefined') {
   (globalThis as any).iconsFromCdn = iconsFromCdn;
 }
+
+type IconSet = {
+  content: string[];
+  system: string[];
+};
+
+const multiThemingIcons = iconsFromCdn as Record<string, IconSet>;
+const vbIcons = multiThemingIcons.vb;
 
 export default {
   title: 'Components/sd-icon/Screenshots: sd-icon',
@@ -160,38 +163,33 @@ export const MultiThemingLibrary = {
     `
   ],
   render: (args: any) => {
-    const contentIcons = getIconsByCategory('content').map((icon: string) => `content/${icon}`);
-    const systemIcons = getIconsByCategory('system').map((icon: string) => `system/${icon}`);
-
-    return html`
-      <sd-notification variant="info" open class="mb-4"
-        >Please notice that this library is not available for themes UI-Light and UI-dark</sd-notification
-      >
-      ${generateTemplate({
-        axis: {
-          x: {
-            type: 'attribute',
-            name: 'color'
-          },
-          y: {
-            type: 'attribute',
-            name: 'name',
-            values: [...contentIcons, ...systemIcons]
-          }
+    return html`${generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'color'
         },
-        constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
-        options: {
-          templateBackgrounds: {
-            alternate: 'x',
-            colors: [
-              'rgba(var(--sd-color-background-white))',
-              'rgba(var(--sd-color-background-white))',
-              'rgba(var(--sd-color-primary))'
-            ]
-          }
-        },
-        args
-      })}
-    `;
+        y: {
+          type: 'attribute',
+          name: 'name',
+          values: [
+            ...vbIcons.content.map((icon: string) => `content/${icon}`),
+            ...vbIcons.system.map((icon: string) => `system/${icon}`)
+          ]
+        }
+      },
+      constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
+      options: {
+        templateBackgrounds: {
+          alternate: 'x',
+          colors: [
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-primary))'
+          ]
+        }
+      },
+      args
+    })}`;
   }
 };
