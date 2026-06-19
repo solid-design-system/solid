@@ -124,7 +124,6 @@ export const Size = {
  * - `_internal`: These icons are an integrated library of the Solid Components to ensure they're always available. They are a subset of Union Investment's official icons and are themed for consistency. As names and visuals may change over time, internal icons should NOT be used directly!
  * - `multi-theming`: Icons and assets provided for themed environments, these will automatically display the correct variant when the theme changes.
  * Theming icons are multi-theming compatible icons that go beyond what is consumed in Solid, also covering icons used in brand-specific designs and requested by the teams.
- * Please notice that this library is not available for themes UI-Light and UI-dark.
  *
  * To register an additional icon library, use the `registerIconLibrary()` function that's exported from `utilities/icon-library.js`. At a minimum, you must provide a name and a resolver function. The resolver function translates an icon name to a URL where the corresponding SVG file exists. Refer to the examples below to better understand how it works.
  *
