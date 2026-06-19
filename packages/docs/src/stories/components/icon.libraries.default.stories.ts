@@ -25,6 +25,9 @@ export default {
       html`<style>
           sd-icon {
             font-size: 1.5rem;
+          }
+          sd-icon[name*='content/'] {
+            font-size: 48px;
           }</style
         >${story()}`
   ]
