@@ -1,5 +1,39 @@
 # @solid-design-system/components
 
+## 6.24.0
+
+### Minor Changes
+
+- Added `sd-multi-theming` as a new `sd-icon` library. _[`#3091`](https://github.com/solid-design-system/solid/pull/3091) [`b191a40`](https://github.com/solid-design-system/solid/commit/b191a4003bd024437f7f1c3493e6b2dd5d706d51) [@martascorreia](https://github.com/martascorreia)_
+
+### 📈 Stats
+* Uncompressed: 624 KB (+2 KB / +0%)
+* Gzipped: 140 KB (+1 KB / +1%)
+
+## 6.23.0
+
+### Minor Changes
+
+- Added `sd-progress-bar`. _[`#3065`](https://github.com/solid-design-system/solid/pull/3065) [`e8de4cc`](https://github.com/solid-design-system/solid/commit/e8de4cccc9b405984cba761233c3d878bb3ea154) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+### 📈 Stats
+
+- Uncompressed: 622 KB (+4 KB / +1%)
+- Gzipped: 139 KB (+1 KB / +1%)
+
+## 6.22.2
+
+### 📈 Stats
+
+- Uncompressed: 618 KB (+1 KB / +0%)
+- Gzipped: 138 KB (unchanged)
+
+## 6.22.1
+
+### Patch Changes
+
+- Fixed the `sd-datepicker` css properties not showing in Storybook. _[`#3058`](https://github.com/solid-design-system/solid/pull/3058) [`ea1bea6`](https://github.com/solid-design-system/solid/commit/ea1bea6b0289aaf02482ef057cf7a9107d7cc210) [@martascorreia](https://github.com/martascorreia)_
+
 ## 6.22.0
 
 ### Minor Changes
@@ -7,8 +41,9 @@
 - Added a new attribute `stacked` to the `sd-navigation-item` component that enables a new vertical stacked variant to the horizontal layout. _[`#3071`](https://github.com/solid-design-system/solid/pull/3071) [`d0163ae`](https://github.com/solid-design-system/solid/commit/d0163ae24c92f1e00cec751b5f30e416b4ba898e) [@martascorreia](https://github.com/martascorreia)_
 
 ### 📈 Stats
-* Uncompressed: 617 KB (+1 KB / +0%)
-* Gzipped: 138 KB (unchanged)
+
+- Uncompressed: 617 KB (+1 KB / +0%)
+- Gzipped: 138 KB (unchanged)
 
 ## 6.21.2
 

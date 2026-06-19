@@ -2,10 +2,25 @@ import '../../../../components/src/solid-components';
 import { icons } from '../../../../components/src/components/icon/library.internal';
 import { icons as statusIcons } from '../../../../components/src/components/icon/library.status';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
+// @ts-expect-error – dynamically loaded via Vite
+import iconsFromCdn from 'icons-from-cdn/multi-theming';
+import { html } from 'lit';
 
 const { argTypes, args, parameters } = storybookDefaults('sd-icon');
 const { overrideArgs } = storybookHelpers('sd-icon');
 const { generateTemplate } = storybookTemplate('sd-icon');
+
+if (typeof globalThis !== 'undefined') {
+  (globalThis as any).iconsFromCdn = iconsFromCdn;
+}
+
+type IconSet = {
+  content: string[];
+  system: string[];
+};
+
+const multiThemingIcons = iconsFromCdn as Record<string, IconSet>;
+const vbIcons = multiThemingIcons.vb;
 
 export default {
   title: 'Components/sd-icon/Screenshots: sd-icon',
@@ -46,7 +61,7 @@ export const LibraryDefault = {
           colors: [
             'rgba(var(--sd-color-background-white))',
             'rgba(var(--sd-color-background-white))',
-            'rgba(var(--sd-color-primary))'
+            'rgba(var(--sd-color-background-primary))'
           ]
         }
       },
@@ -55,7 +70,7 @@ export const LibraryDefault = {
 };
 
 export const LibraryInternal = {
-  name: 'Library: internal',
+  name: 'Library: _internal',
   render: (args: any) =>
     generateTemplate({
       axis: {
@@ -79,7 +94,7 @@ export const LibraryInternal = {
           colors: [
             'rgba(var(--sd-color-background-white))',
             'rgba(var(--sd-color-background-white))',
-            'rgba(var(--sd-color-primary))'
+            'rgba(var(--sd-color-background-primary))'
           ]
         }
       },
@@ -112,10 +127,54 @@ export const StatusLibrary = {
           colors: [
             'rgba(var(--sd-color-background-white))',
             'rgba(var(--sd-color-background-white))',
-            'rgba(var(--sd-color-primary))'
+            'rgba(var(--sd-color-background-primary))'
           ]
         }
       },
       args
     })
+};
+
+export const MultiThemingLibrary = {
+  name: 'Library: sd-multi-theming',
+  parameters: {
+    chromatic: {
+      disableSnapshot: true,
+      modes: {
+        'sd-theme-vb': { theme: 'VB' },
+        'sd-theme-bb': { theme: 'BBBank' },
+        'sd-theme-kid': { theme: 'KidStarter' }
+      }
+    }
+  },
+  render: (args: any) => {
+    return html`${generateTemplate({
+      axis: {
+        x: {
+          type: 'attribute',
+          name: 'color'
+        },
+        y: {
+          type: 'attribute',
+          name: 'name',
+          values: [
+            ...vbIcons.content.map((icon: string) => `content/${icon}`),
+            ...vbIcons.system.map((icon: string) => `system/${icon}`)
+          ]
+        }
+      },
+      constants: [{ type: 'attribute', name: 'library', value: 'sd-multi-theming' }],
+      options: {
+        templateBackgrounds: {
+          alternate: 'x',
+          colors: [
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-background-white))',
+            'rgba(var(--sd-color-primary))'
+          ]
+        }
+      },
+      args
+    })}`;
+  }
 };

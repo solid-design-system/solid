@@ -5409,6 +5409,34 @@
             }
           }
         }
+      },
+      "sd-progress-bar": {
+        "__slide-bar": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.neutral.400}"
+            }
+          },
+          "--inverted": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.400}"
+              }
+            }
+          }
+        },
+        "--active": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{ui-light.utilities.color.accent.default}"
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -8908,6 +8936,34 @@
             "background": {
               "type": "color",
               "value": "{ui-dark.utilities.color.primary.600}"
+            }
+          }
+        }
+      },
+      "sd-progress-bar": {
+        "__slide-bar": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.primary.400}"
+            }
+          },
+          "--inverted": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.primary.400}"
+              }
+            }
+          }
+        },
+        "--active": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{ui-dark.utilities.color.accent.default}"
+              }
             }
           }
         }
@@ -12415,6 +12471,34 @@
             }
           }
         }
+      },
+      "sd-progress-bar": {
+        "__slide-bar": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.400}"
+            }
+          },
+          "--inverted": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.50)"
+              }
+            }
+          }
+        },
+        "--active": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{vb.utilities.color.white.default}"
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -15919,6 +16003,34 @@
             }
           }
         }
+      },
+      "sd-progress-bar": {
+        "__slide-bar": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{bb.utilities.color.neutral.400}"
+            }
+          },
+          "--inverted": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.50)"
+              }
+            }
+          }
+        },
+        "--active": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{bb.utilities.color.white.default}"
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -19420,6 +19532,34 @@
             "background": {
               "type": "color",
               "value": "{kid.utilities.color.background.primary.default}"
+            }
+          }
+        }
+      },
+      "sd-progress-bar": {
+        "__slide-bar": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{kid.utilities.color.neutral.400}"
+            }
+          },
+          "--inverted": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.50)"
+              }
+            }
+          }
+        },
+        "--active": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{kid.utilities.color.text.white.default}"
+              }
             }
           }
         }

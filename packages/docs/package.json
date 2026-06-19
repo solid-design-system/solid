@@ -2,7 +2,7 @@
   "name": "@solid-design-system/docs",
   "description": "This package provides the documentation for the Solid Design System.",
   "homepage": "https://solid-design-system.fe.union-investment.de/docs/",
-  "version": "2.17.0",
+  "version": "2.19.0",
   "author": {
     "name": "Union Investment"
   },
@@ -29,7 +29,6 @@
     "verify": "pnpm ts.verify && pnpm build && echo '✅ Build verified' && pnpm test && echo '✅ Tests verified' && vite-node ./scripts/node-optimize-chromatic.cjs && echo '✅ Chromatic optimization verified'",
     "ts.verify": "tsc --noEmit --project ./tsconfig.json && echo '✅ TypeScript verified'",
     "test": "node ./scripts/test.js",
-    "test.a11y": "vite-node scripts/node-generate-a11y.js && npx playwright test --update-snapshots --update-source-method=overwrite",
     "build.chromatic": "pnpm build && node ./scripts/node-optimize-chromatic.cjs",
     "chromatic": "npx chromatic -b build.chromatic",
     "build": "pnpm build/components && pnpm build/styles && storybook build --output-dir dist/storybook && vite-node scripts/node-optimize-storybook.js",

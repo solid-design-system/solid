@@ -1,5 +1,29 @@
 # @solid-design-system/docs
 
+## 2.19.0
+
+### Minor Changes
+
+- Added documentation and screenshot tests for the new `sd-icon` library `sd-multi-theming` _[`#3091`](https://github.com/solid-design-system/solid/pull/3091) [`b191a40`](https://github.com/solid-design-system/solid/commit/b191a4003bd024437f7f1c3493e6b2dd5d706d51) [@martascorreia](https://github.com/martascorreia)_
+
+## 2.18.0
+
+### Minor Changes
+
+- Added `sd-progress-bar`. _[`#3065`](https://github.com/solid-design-system/solid/pull/3065) [`e8de4cc`](https://github.com/solid-design-system/solid/commit/e8de4cccc9b405984cba761233c3d878bb3ea154) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 2.17.2
+
+### Patch Changes
+
+- Fix `sd-headline` and `sd-icon` vertical alignment. _[`#3092`](https://github.com/solid-design-system/solid/pull/3092) [`33ac5c0`](https://github.com/solid-design-system/solid/commit/33ac5c0e24b4b1a6169a0b7fc15cfae1e7f7e75b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 2.17.1
+
+### Patch Changes
+
+- Fixed background color for inverted screenshot tests. _[`#3072`](https://github.com/solid-design-system/solid/pull/3072) [`7622bb1`](https://github.com/solid-design-system/solid/commit/7622bb1466d554f53253afef1357ced08d2b8f51) [@martascorreia](https://github.com/martascorreia)_
+
 ## 2.17.0
 
 ### Minor Changes
