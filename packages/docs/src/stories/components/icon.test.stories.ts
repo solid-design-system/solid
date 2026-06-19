@@ -136,7 +136,7 @@ export const StatusLibrary = {
 };
 
 export const MultiThemingLibrary = {
-  name: 'Library: multi-theming',
+  name: 'Library: sd-multi-theming',
   parameters: {
     chromatic: {
       disableSnapshot: true,
@@ -163,7 +163,7 @@ export const MultiThemingLibrary = {
           ]
         }
       },
-      constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
+      constants: [{ type: 'attribute', name: 'library', value: 'sd-multi-theming' }],
       options: {
         templateBackgrounds: {
           alternate: 'x',

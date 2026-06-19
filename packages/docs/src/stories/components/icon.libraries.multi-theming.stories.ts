@@ -61,7 +61,7 @@ export const Content = {
           values: vbIcons.content.map((icon: string) => `content/${icon}`)
         }
       },
-      constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
+      constants: [{ type: 'attribute', name: 'library', value: 'sd-multi-theming' }],
       options: {
         templateBackgrounds: {
           alternate: 'x',
@@ -102,7 +102,7 @@ export const System = {
           values: vbIcons.system.map((icon: string) => `system/${icon}`)
         }
       },
-      constants: [{ type: 'attribute', name: 'library', value: 'multi-theming' }],
+      constants: [{ type: 'attribute', name: 'library', value: 'sd-multi-theming' }],
       options: {
         templateBackgrounds: {
           alternate: 'x',

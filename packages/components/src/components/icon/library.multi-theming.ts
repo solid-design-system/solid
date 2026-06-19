@@ -17,7 +17,7 @@ function getTheme(element?: HTMLElement) {
 }
 
 const multiThemingLibrary: IconLibrary = {
-  name: 'multi-theming',
+  name: 'sd-multi-theming',
   resolver: (name, element) => {
     const theme = getTheme(element);
     if (!theme) return '';
