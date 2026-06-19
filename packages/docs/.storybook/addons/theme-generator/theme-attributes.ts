@@ -23,6 +23,14 @@ export const themeAttributes = {
     cdnIconFolder: 'vb'
   },
 
+  'sd-theme-sparda': {
+    logoLg: 'images/logo-sparda-lg.svg',
+    logoSm: 'images/logo-sparda-sm.svg',
+    alt: 'Logo Sparda Homepage',
+    css: 'spa/spa.css',
+    cdnIconFolder: 'sparda'
+  },
+
   'sd-theme-kid': {
     logoLg: 'images/logo-kidstarter-lg.svg',
     logoSm: 'images/logo-kidstarter-sm.svg',
