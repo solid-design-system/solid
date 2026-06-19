@@ -147,21 +147,6 @@ export const MultiThemingLibrary = {
       }
     }
   },
-  decorators: [
-    (story: any) => html`
-      <style>
-        .sb-show-main.sd-theme-ui-light table,
-        .sb-show-main.sd-theme-ui-dark table {
-          display: none;
-        }
-
-        .sb-show-main:not(.sd-theme-ui-light):not(.sd-theme-ui-dark) sd-notification {
-          display: none;
-        }
-      </style>
-      ${story()}
-    `
-  ],
   render: (args: any) => {
     return html`${generateTemplate({
       axis: {
