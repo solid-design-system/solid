@@ -254,8 +254,8 @@ export default class SdNavigationItem extends SolidElement {
         )}></div>
         <div 
           class=${cx(
-            'inline-flex justify-center gap-1 w-full h-full',
-            this.isStackedHorizontal ? 'flex-col items-center' : 'flex-col'
+            'inline-flex flex-col justify-center gap-1 w-full h-full',
+            this.isStackedHorizontal && 'flex-col items-center'
           )}>
           <span
           part="content-area"
@@ -279,19 +279,23 @@ export default class SdNavigationItem extends SolidElement {
               id="content"
               part="content-container"
               class=${cx(
+                'inline-flex items-center',
                 this.vertical
-                  ? 'inline-flex flex-auto items-center gap-2'
+                  ? 'flex-auto gap-2'
                   : this.isStackedHorizontal
-                    ? 'inline-flex items-center text-center'
-                    : 'inline-flex flex-auto flex-col items-center justify-center gap-1 text-center'
+                    ? 'text-center'
+                    : 'flex-auto flex-col justify-center gap-1 text-center'
               )}
             >
               <slot
                 part="content"
                 class=${cx(
+                  'inline-flex items-center',
                   this.vertical
-                    ? 'inline-flex items-center gap-2'
-                    : 'inline-flex flex-col items-center justify-center gap-1 text-center'
+                    ? 'gap-2'
+                    : this.isStackedHorizontal
+                      ? 'flex-col justify-center gap-1 text-center'
+                      : 'justify-center gap-1 text-center'
                 )}
               ></slot>
             </span>
