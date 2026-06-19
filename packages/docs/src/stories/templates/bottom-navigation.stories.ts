@@ -18,16 +18,29 @@ export const BottomBarNavigation = {
         #anchor--templates-navigation-item--bottom-bar-navigation .innerZoomElementWrapper {
           min-height: 820px;
         }
+
+        .mobile-scroll {
+          scrollbar-width: thin;
+        }
+
+        .mobile-scroll::-webkit-scrollbar {
+          width: 6px;
+        }
       </style>
 
-      <div class="mx-auto w-[390px]">
-        <div class="relative h-[760px] overflow-hidden rounded-xl border border-neutral-400 bg-white">
-          <div class="h-full overflow-y-auto">
+      <div class="mx-auto w-[380px]">
+        <div class="relative h-[760px] overflow-hidden border border-neutral-400 bg-white">
+          <div class="mobile-scroll h-full overflow-y-auto">
             <div class="sticky top-0 z-10">
               <sd-header>
                 <div class="relative flex min-h-10 items-center justify-center">
                   <sd-navigation-item href="javascript:void(0)" class="absolute left-0 top-1/2 -translate-y-1/2">
-                    <sd-icon name="system/arrow-left" label="Go back" class="text-xl"></sd-icon>
+                    <sd-icon
+                      library="sd-multi-theming"
+                      name="system/arrow-left"
+                      label="Go back"
+                      class="text-xl"
+                    ></sd-icon>
                   </sd-navigation-item>
                   <img
                     class="h-5 w-auto object-contain [.sd-theme-ui-dark_&]:hidden"
@@ -65,7 +78,7 @@ export const BottomBarNavigation = {
                   <h3 slot="headline" class="sd-headline sd-headline--size-base">
                     Steuerliche und rechtliche Basics beim Sparen fürs Kind
                   </h3>
-                  <p class="sd-paragraph mt-2">
+                  <p class="sd-paragraph">
                     Beim Sparen fürs Kind gibt es neben der Finanzplanung auch wichtige steuerliche und rechtliche
                     Punkte zu beachten.
                   </p>
@@ -78,29 +91,29 @@ export const BottomBarNavigation = {
                   <div class="flex min-w-0 flex-1 flex-col gap-4">
                     <a
                       href="javascript:void(0)"
-                      class="sd-interactive flex flex-col gap-2 break-words rounded border border-neutral-400 p-4"
+                      class="sd-interactive flex flex-col gap-2 break-words border border-neutral-400 p-4"
                     >
-                      <sd-icon name="content/piggy-bank" class="text-2xl text-primary"></sd-icon>
-                      <p class="sd-paragraph font-bold">Je früher, desto besser!</p>
-                      <p class="sd-paragraph">Warum Eltern jetzt an später denken sollten</p>
+                      <sd-icon library="sd-multi-theming" name="content/person-newspaper" class="text-3xl"></sd-icon>
+                      <p class="sd-paragraph font-bold text-sm">Sparen – Je früher, desto besser!</p>
+                      <p class="sd-paragraph text-sm">Warum Eltern jetzt an später denken sollten</p>
                     </a>
                     <a
                       href="javascript:void(0)"
-                      class="sd-interactive flex flex-col gap-2 break-words rounded border border-neutral-400 p-4"
+                      class="sd-interactive flex flex-col gap-2 break-words border border-neutral-400 p-4"
                     >
-                      <sd-icon name="content/video" class="text-2xl text-primary"></sd-icon>
-                      <p class="sd-paragraph font-bold">Förderkompass Familie</p>
-                      <p class="sd-paragraph">
+                      <sd-icon library="sd-multi-theming" name="content/video" class="text-2xl"></sd-icon>
+                      <p class="sd-paragraph font-bold text-sm">Förderkompass Familie</p>
+                      <p class="sd-paragraph text-sm">
                         Alle wichtigen Unterstützungen für Eltern &amp; Kinder auf einen Blick.
                       </p>
                     </a>
                     <a
                       href="javascript:void(0)"
-                      class="sd-interactive flex flex-col gap-2 break-words rounded border border-neutral-400 p-4"
+                      class="sd-interactive flex flex-col gap-2 break-words border border-neutral-400 p-4"
                     >
-                      <sd-icon name="content/person-newspaper" class="text-2xl text-primary"></sd-icon>
-                      <p class="sd-paragraph font-bold">Kindergeld – Was Eltern wissen sollten</p>
-                      <p class="sd-paragraph">
+                      <sd-icon library="sd-multi-theming" name="content/person-newspaper" class="text-xl"></sd-icon>
+                      <p class="sd-paragraph font-bold text-sm">Kindergeld – Was Eltern wissen sollten</p>
+                      <p class="sd-paragraph text-sm">
                         Kindergeld ist eine wichtige staatliche Unterstützung für Familien und hilft, die Kosten für
                         Kinder zu stemmen.
                       </p>
@@ -109,29 +122,29 @@ export const BottomBarNavigation = {
                   <div class="flex min-w-0 flex-1 flex-col gap-4">
                     <a
                       href="javascript:void(0)"
-                      class="sd-interactive flex flex-col gap-2 break-words rounded border border-neutral-400 p-4"
+                      class="sd-interactive flex flex-col gap-2 break-words border border-neutral-400 p-4"
                     >
-                      <sd-icon name="content/video" class="text-2xl text-primary"></sd-icon>
-                      <p class="sd-paragraph font-bold">Kleine Beiträge, große Wirkung</p>
-                      <p class="sd-paragraph">Warum jeder Euro für dein Kind wichtig ist</p>
+                      <sd-icon library="sd-multi-theming" name="content/video" class="text-2xl"></sd-icon>
+                      <p class="sd-paragraph font-bold text-sm">Kleine Beiträge, große Wirkung</p>
+                      <p class="sd-paragraph text-sm">Warum jeder Euro für dein Kind wichtig ist</p>
                     </a>
                     <a
                       href="javascript:void(0)"
-                      class="sd-interactive flex flex-col gap-2 break-words rounded border border-neutral-400 p-4"
+                      class="sd-interactive flex flex-col gap-2 break-words border border-neutral-400 p-4"
                     >
-                      <sd-icon name="content/person-newspaper" class="text-2xl text-primary"></sd-icon>
-                      <p class="sd-paragraph font-bold">Baby on Board:</p>
-                      <p class="sd-paragraph">Dein Guide für Anmeldungen &amp; Anträge</p>
+                      <sd-icon library="sd-multi-theming" name="content/person-newspaper" class="text-3xl"></sd-icon>
+                      <p class="sd-paragraph font-bold text-sm">Baby on Board:</p>
+                      <p class="sd-paragraph text-sm">Dein Guide für Anmeldungen &amp; Anträge</p>
                     </a>
                     <a
                       href="javascript:void(0)"
-                      class="sd-interactive flex flex-col gap-2 break-words rounded border border-neutral-400 p-4"
+                      class="sd-interactive flex flex-col gap-2 break-words border border-neutral-400 p-4"
                     >
-                      <sd-icon name="content/calculator" class="text-2xl text-primary"></sd-icon>
-                      <p class="sd-paragraph font-bold">
+                      <sd-icon library="sd-multi-theming" name="content/calculator" class="text-xl"></sd-icon>
+                      <p class="sd-paragraph font-bold text-sm">
                         Digitale Helfer für werdende Eltern: Diese Tools vom Familienportal lohnen sich
                       </p>
-                      <p class="sd-paragraph">
+                      <p class="sd-paragraph text-sm">
                         Beim Familienportal des Bundes gibt es eine ganze Reihe praktischer Rechner und Tools, die
                         werdende Eltern bei wichtigen Grundsatzentscheidungen unterstützen.
                       </p>
@@ -145,22 +158,22 @@ export const BottomBarNavigation = {
           </div>
 
           <nav id="bottom-bar-navigation" aria-label="Main" class="absolute bottom-4 left-1/2 -translate-x-1/2">
-            <ul class="flex h-20 items-center justify-center rounded-full bg-white/80">
+            <ul class="flex h-20 items-center justify-center rounded-full bg-white/80 backdrop-blur-lg px-3">
               <li>
                 <sd-navigation-item stacked current href="javascript:void(0)">
-                  <sd-icon name="system/home"></sd-icon>
+                  <sd-icon library="sd-multi-theming" name="system/home"></sd-icon>
                   <span>Home</span>
                 </sd-navigation-item>
               </li>
               <li>
                 <sd-navigation-item stacked href="javascript:void(0)">
-                  <sd-icon name="system/website"></sd-icon>
+                  <sd-icon library="sd-multi-theming" name="system/website"></sd-icon>
                   <span>Inhalte</span>
                 </sd-navigation-item>
               </li>
               <li>
                 <sd-navigation-item stacked href="javascript:void(0)">
-                  <sd-icon name="system/user"></sd-icon>
+                  <sd-icon library="sd-multi-theming" name="system/user"></sd-icon>
                   <span>Profil</span>
                 </sd-navigation-item>
               </li>
