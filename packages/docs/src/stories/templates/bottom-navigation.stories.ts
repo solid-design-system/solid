@@ -15,16 +15,15 @@ export const BottomBarNavigation = {
     return html`
       <!-- Storybook specific styles - DO NOT COPY -->
       <style>
-        #anchor--templates-navigation-item--bottom-bar-navigation .innerZoomElementWrapper {
-          min-height: 820px;
-        }
-
         .mobile-scroll {
-          scrollbar-width: thin;
+          scrollbar-width: none;
+        }
+        .mobile-scroll::-webkit-scrollbar {
+          display: none;
         }
 
-        .mobile-scroll::-webkit-scrollbar {
-          width: 6px;
+        .bottom-bar-navigation-teaser::part(content) {
+          gap: 0.5rem;
         }
       </style>
 
@@ -66,8 +65,14 @@ export const BottomBarNavigation = {
               </div>
 
               <section class="flex flex-col gap-2">
-                <h2 class="sd-headline sd-headline--size-lg">Dein nächster Schritte</h2>
-                <sd-teaser variant="white border-neutral-400" breakpoint="9999" inset>
+                <h2 class="sd-headline sd-headline--size-lg">Dein nächster Schritt</h2>
+                <sd-teaser
+                  class="bottom-bar-navigation-teaser"
+                  variant="white border-neutral-400"
+                  style="
+                  --sd-text-lg: var(--sd-text-base); 
+                  --text-lg--line-height: var(--text-base--line-height);"
+                >
                   <div slot="media">
                     <img
                       class="aspect-video object-cover"
@@ -94,7 +99,7 @@ export const BottomBarNavigation = {
                       class="sd-interactive flex flex-col gap-2 break-words border border-neutral-400 p-4"
                     >
                       <sd-icon library="sd-multi-theming" name="content/person-newspaper" class="text-3xl"></sd-icon>
-                      <p class="sd-paragraph font-bold text-sm">Sparen – Je früher, desto besser!</p>
+                      <h3 class="sd-paragraph font-bold text-sm">Sparen – Je früher, desto besser!</h3>
                       <p class="sd-paragraph text-sm">Warum Eltern jetzt an später denken sollten</p>
                     </a>
                     <a
@@ -102,7 +107,7 @@ export const BottomBarNavigation = {
                       class="sd-interactive flex flex-col gap-2 break-words border border-neutral-400 p-4"
                     >
                       <sd-icon library="sd-multi-theming" name="content/video" class="text-2xl"></sd-icon>
-                      <p class="sd-paragraph font-bold text-sm">Förderkompass Familie</p>
+                      <h3 class="sd-paragraph font-bold text-sm">Förderkompass Familie</h3>
                       <p class="sd-paragraph text-sm">
                         Alle wichtigen Unterstützungen für Eltern &amp; Kinder auf einen Blick.
                       </p>
@@ -112,7 +117,7 @@ export const BottomBarNavigation = {
                       class="sd-interactive flex flex-col gap-2 break-words border border-neutral-400 p-4"
                     >
                       <sd-icon library="sd-multi-theming" name="content/person-newspaper" class="text-xl"></sd-icon>
-                      <p class="sd-paragraph font-bold text-sm">Kindergeld – Was Eltern wissen sollten</p>
+                      <h3 class="sd-paragraph font-bold text-sm">Kindergeld – Was Eltern wissen sollten</h3>
                       <p class="sd-paragraph text-sm">
                         Kindergeld ist eine wichtige staatliche Unterstützung für Familien und hilft, die Kosten für
                         Kinder zu stemmen.
@@ -125,7 +130,7 @@ export const BottomBarNavigation = {
                       class="sd-interactive flex flex-col gap-2 break-words border border-neutral-400 p-4"
                     >
                       <sd-icon library="sd-multi-theming" name="content/video" class="text-2xl"></sd-icon>
-                      <p class="sd-paragraph font-bold text-sm">Kleine Beiträge, große Wirkung</p>
+                      <h3 class="sd-paragraph font-bold text-sm">Kleine Beiträge, große Wirkung</h3>
                       <p class="sd-paragraph text-sm">Warum jeder Euro für dein Kind wichtig ist</p>
                     </a>
                     <a
@@ -133,7 +138,7 @@ export const BottomBarNavigation = {
                       class="sd-interactive flex flex-col gap-2 break-words border border-neutral-400 p-4"
                     >
                       <sd-icon library="sd-multi-theming" name="content/person-newspaper" class="text-3xl"></sd-icon>
-                      <p class="sd-paragraph font-bold text-sm">Baby on Board:</p>
+                      <h3 class="sd-paragraph font-bold text-sm">Baby on Board:</h3>
                       <p class="sd-paragraph text-sm">Dein Guide für Anmeldungen &amp; Anträge</p>
                     </a>
                     <a
@@ -141,9 +146,9 @@ export const BottomBarNavigation = {
                       class="sd-interactive flex flex-col gap-2 break-words border border-neutral-400 p-4"
                     >
                       <sd-icon library="sd-multi-theming" name="content/calculator" class="text-xl"></sd-icon>
-                      <p class="sd-paragraph font-bold text-sm">
+                      <h3 class="sd-paragraph font-bold text-sm">
                         Digitale Helfer für werdende Eltern: Diese Tools vom Familienportal lohnen sich
-                      </p>
+                      </h3>
                       <p class="sd-paragraph text-sm">
                         Beim Familienportal des Bundes gibt es eine ganze Reihe praktischer Rechner und Tools, die
                         werdende Eltern bei wichtigen Grundsatzentscheidungen unterstützen.
