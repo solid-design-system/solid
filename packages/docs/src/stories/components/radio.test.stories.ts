@@ -1,4 +1,5 @@
 import '../../../../components/src/solid-components';
+import { html } from 'lit';
 import {
   storybookDefaults,
   storybookHelpers,
@@ -95,16 +96,21 @@ export const Invalid = {
 
 export const LongLabelWithWrapping = {
   name: 'Long Label with Wrapping',
-  render: () => {
-    return `
-      <style>#long-label sd-radio-group{width: 200px}</style>
-      <div id="long-label">
-        <sd-radio-group value="1">
-          <sd-radio value="1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit auctor dui, sed efficitur ipsum.</sd-radio>
-        </sd-radio-group>
-      </div>
-    `;
-  }
+  render: () => html`
+    <style>
+      #long-label sd-radio-group {
+        width: 200px;
+      }
+    </style>
+    <div id="long-label">
+      <sd-radio-group value="1">
+        <sd-radio value="1"
+          >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit auctor dui, sed efficitur
+          ipsum.</sd-radio
+        >
+      </sd-radio-group>
+    </div>
+  `
 };
 
 /**
