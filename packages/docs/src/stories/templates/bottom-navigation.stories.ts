@@ -25,6 +25,11 @@ export const BottomBarNavigation = {
         .bottom-bar-navigation-teaser::part(content) {
           gap: 0.5rem;
         }
+
+        .bottom-bar-navigation-teaser {
+          --sd-text-lg: var(--sd-text-base);
+          --text-lg--line-height: var(--text-base--line-height);
+        }
       </style>
 
       <div class="mx-auto w-[380px]">
@@ -66,13 +71,7 @@ export const BottomBarNavigation = {
 
               <section class="flex flex-col gap-2">
                 <h2 class="sd-headline sd-headline--size-lg">Dein nächster Schritt</h2>
-                <sd-teaser
-                  class="bottom-bar-navigation-teaser"
-                  variant="white border-neutral-400"
-                  style="
-                  --sd-text-lg: var(--sd-text-base); 
-                  --text-lg--line-height: var(--text-base--line-height);"
-                >
+                <sd-teaser class="bottom-bar-navigation-teaser" variant="white border-neutral-400">
                   <div slot="media">
                     <img
                       class="aspect-video object-cover"
