@@ -26,11 +26,8 @@ export const BottomBarNavigation = {
           gap: 0.5rem;
         }
 
-        svg [fill='#00358e'] {
+        .sd-theme-ui-dark svg [fill='#00358e'] {
           fill: rgba(var(--sd-color-icon-fill-primary));
-        }
-        svg [fill='#2d9d00'] {
-          fill: rgba(var(--sd-color-icon-fill-accent));
         }
 
         .bottom-bar-navigation-icon-teasers sd-icon {
