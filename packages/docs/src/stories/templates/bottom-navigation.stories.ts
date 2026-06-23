@@ -30,6 +30,14 @@ export const BottomBarNavigation = {
           --sd-text-lg: var(--sd-text-base);
           --text-lg--line-height: var(--text-base--line-height);
         }
+
+        .bottom-bar-navigation-icon-teasers sd-icon {
+          color: rgba(var(--sd-headline--3xl-onwards-color-text, rgba(var(--sd-color-primary))));
+        }
+
+        .bottom-bar-navigation {
+          background-color: rgba(var(--sd-header-color-background) / 0.8);
+        }
       </style>
 
       <div class="mx-auto w-[380px]">
@@ -89,7 +97,7 @@ export const BottomBarNavigation = {
                 </sd-teaser>
               </section>
 
-              <section class="flex flex-col gap-2">
+              <section class="flex flex-col gap-2 bottom-bar-navigation-icon-teasers">
                 <h2 class="sd-headline sd-headline--size-lg">Für dich empfohlen</h2>
                 <div class="flex items-start gap-4">
                   <div class="flex min-w-0 flex-1 flex-col gap-4">
@@ -105,7 +113,7 @@ export const BottomBarNavigation = {
                       href="javascript:void(0)"
                       class="sd-interactive flex flex-col gap-2 break-words border border-neutral-400 p-4"
                     >
-                      <sd-icon library="sd-multi-theming" name="content/video" class="text-2xl"></sd-icon>
+                      <sd-icon library="sd-multi-theming" name="content/video" class="text-3xl"></sd-icon>
                       <h3 class="sd-paragraph font-bold text-sm">Förderkompass Familie</h3>
                       <p class="sd-paragraph text-sm">
                         Alle wichtigen Unterstützungen für Eltern &amp; Kinder auf einen Blick.
@@ -115,7 +123,7 @@ export const BottomBarNavigation = {
                       href="javascript:void(0)"
                       class="sd-interactive flex flex-col gap-2 break-words border border-neutral-400 p-4"
                     >
-                      <sd-icon library="sd-multi-theming" name="content/person-newspaper" class="text-xl"></sd-icon>
+                      <sd-icon library="sd-multi-theming" name="content/person-newspaper" class="text-3xl"></sd-icon>
                       <h3 class="sd-paragraph font-bold text-sm">Kindergeld – Was Eltern wissen sollten</h3>
                       <p class="sd-paragraph text-sm">
                         Kindergeld ist eine wichtige staatliche Unterstützung für Familien und hilft, die Kosten für
@@ -128,7 +136,7 @@ export const BottomBarNavigation = {
                       href="javascript:void(0)"
                       class="sd-interactive flex flex-col gap-2 break-words border border-neutral-400 p-4"
                     >
-                      <sd-icon library="sd-multi-theming" name="content/video" class="text-2xl"></sd-icon>
+                      <sd-icon library="sd-multi-theming" name="content/video" class="text-3xl"></sd-icon>
                       <h3 class="sd-paragraph font-bold text-sm">Kleine Beiträge, große Wirkung</h3>
                       <p class="sd-paragraph text-sm">Warum jeder Euro für dein Kind wichtig ist</p>
                     </a>
@@ -144,7 +152,7 @@ export const BottomBarNavigation = {
                       href="javascript:void(0)"
                       class="sd-interactive flex flex-col gap-2 break-words border border-neutral-400 p-4"
                     >
-                      <sd-icon library="sd-multi-theming" name="content/calculator" class="text-xl"></sd-icon>
+                      <sd-icon library="sd-multi-theming" name="content/calculator" class="text-3xl"></sd-icon>
                       <h3 class="sd-paragraph font-bold text-sm">
                         Digitale Helfer für werdende Eltern: Diese Tools vom Familienportal lohnen sich
                       </h3>
@@ -161,8 +169,12 @@ export const BottomBarNavigation = {
             </main>
           </div>
 
-          <nav id="bottom-bar-navigation" aria-label="Main" class="absolute bottom-4 left-1/2 -translate-x-1/2">
-            <ul class="flex h-20 items-center justify-center rounded-full bg-white/80 backdrop-blur-lg px-3">
+          <nav
+            id="bottom-bar-navigation"
+            aria-label="Main"
+            class="bottom-bar-navigation absolute bottom-4 left-1/2 -translate-x-1/2 backdrop-blur-lg rounded-full px-3"
+          >
+            <ul class="flex h-20 items-center justify-center">
               <li>
                 <sd-navigation-item stacked current href="javascript:void(0)">
                   <sd-icon library="sd-multi-theming" name="system/home"></sd-icon>
