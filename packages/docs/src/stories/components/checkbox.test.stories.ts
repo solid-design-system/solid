@@ -335,5 +335,6 @@ export const Combination = generateScreenshotStory([
   Invalid,
   IndeterminateInvalid,
   Parts,
+  LongLabelWithWrapping,
   setCustomValidity
 ]);
