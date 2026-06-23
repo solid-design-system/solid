@@ -27,10 +27,10 @@ export const BottomBarNavigation = {
         }
 
         svg [fill='#00358e'] {
-          fill: rgba(var(--sd-color-text-primary));
+          fill: rgba(var(--sd-color-icon-fill-primary));
         }
         svg [fill='#2d9d00'] {
-          fill: rgba(var(--sd-color-text-accent));
+          fill: rgba(var(--sd-color-icon-fill-accent));
         }
       </style>
 
