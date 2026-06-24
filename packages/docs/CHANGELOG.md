@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.20.0
+
+### Minor Changes
+
+- Added bottom bar navigation template demonstrating the stacked variant in a mobile bottom bar layout. _[`#3078`](https://github.com/solid-design-system/solid/pull/3078) [`b62a9f4`](https://github.com/solid-design-system/solid/commit/b62a9f476f35656c4c671ccb3dae66d99dd82e4d) [@balco0110](https://github.com/balco0110)_
+
 ## 2.19.0
 
 ### Minor Changes
