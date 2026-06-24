@@ -252,6 +252,23 @@ const checkboxTemplate = (part: string) => {
   }
 };
 
+export const LongLabelWithWrapping = {
+  name: 'Long Label with Wrapping',
+  render: () => html`
+    <style>
+      #long-label sd-checkbox {
+        width: 200px;
+      }
+    </style>
+    <div id="long-label">
+      <sd-checkbox value="1"
+        >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit auctor dui, sed efficitur
+        ipsum.</sd-checkbox
+      >
+    </div>
+  `
+};
+
 export const setCustomValidity = {
   name: 'setCustomValidity',
   parameters: {
@@ -318,5 +335,6 @@ export const Combination = generateScreenshotStory([
   Invalid,
   IndeterminateInvalid,
   Parts,
+  LongLabelWithWrapping,
   setCustomValidity
 ]);
