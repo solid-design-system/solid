@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.24.1
+
+### Patch Changes
+
+- Fixed text wrapping in `sd-radio` _[`#3106`](https://github.com/solid-design-system/solid/pull/3106) [`f43f6bf`](https://github.com/solid-design-system/solid/commit/f43f6bf5581275f6aa24584d90f5329521766954) [@mariohamann](https://github.com/mariohamann)_
+
 ## 6.24.0
 
 ### Minor Changes
@@ -7,8 +13,9 @@
 - Added `sd-multi-theming` as a new `sd-icon` library. _[`#3091`](https://github.com/solid-design-system/solid/pull/3091) [`b191a40`](https://github.com/solid-design-system/solid/commit/b191a4003bd024437f7f1c3493e6b2dd5d706d51) [@martascorreia](https://github.com/martascorreia)_
 
 ### 📈 Stats
-* Uncompressed: 624 KB (+2 KB / +0%)
-* Gzipped: 140 KB (+1 KB / +1%)
+
+- Uncompressed: 624 KB (+2 KB / +0%)
+- Gzipped: 140 KB (+1 KB / +1%)
 
 ## 6.23.0
 
