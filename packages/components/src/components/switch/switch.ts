@@ -36,7 +36,9 @@ import type { SolidFormControl } from '../../internal/solid-element';
  * @cssproperty --sd-switch--checked--hover-color-background - The background color for the switch in checked hover state.
  * @cssproperty --sd-switch--unchecked-color-border - The border color for the switch in unchecked state.
  * @cssproperty --sd-switch--unchecked__icon-color-background - The icon background color for the switch in unchecked state.
+ * @cssproperty --sd-switch--unchecked--hover-color-background - The background color for the switch in unchecked hover state.
  * @cssproperty --sd-switch-color-text - The text color for the switch label.
+ * @cssproperty --sd-switch-border-width - The border width for the switch.
  */
 @customElement('sd-switch')
 export default class SdSwitch extends SolidElement implements SolidFormControl {
@@ -206,9 +208,9 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
             id="control"
             part="control ${this.checked ? ' control--checked' : 'control--unchecked'}"
             class=${cx(
-              `relative flex flex-initial items-center justify-center border rounded-full h-4 w-8 transition-colors ease duration-100
+              `relative flex flex-initial items-center justify-center sd-switch-border-width rounded-full h-4 w-8 transition-colors ease duration-100
             peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2
-            peer-focus-visible:outline-primary transition-colors ease-in-out duration-medium hover:duration-fast`,
+            peer-focus-visible:outline-primary outline-transparent transition-colors ease-in-out duration-medium hover:duration-fast`,
               this.disabled && this.checked
                 ? 'bg-neutral-500'
                 : this.disabled
@@ -218,8 +220,8 @@ export default class SdSwitch extends SolidElement implements SolidFormControl {
                       ? 'border-error bg-error hover:bg-error-400 hover:border-error-400 group-hover:border-error-400 group-hover:bg-error-400'
                       : 'border-error bg-white hover:border-error-400 hover:bg-white group-hover:border-error-400 group-hover:bg-white'
                     : this.checked
-                      ? 'border-accent hover:sd-switch--checked--hover-color-background bg-accent hover:border-accent-550 group-hover:sd-switch--checked--hover-color-background'
-                      : 'sd-switch--unchecked-color-border bg-white hover:bg-neutral-200 group-hover:bg-neutral-200'
+                      ? 'border-accent hover:sd-switch--checked--hover-color-background bg-accent hover:border-accent-550 group-hover:border-accent-550 group-hover:sd-switch--checked--hover-color-background'
+                      : 'sd-switch--unchecked-color-border bg-white hover:sd-switch--unchecked--hover-color-background group-hover:sd-switch--unchecked--hover-color-background'
             )}
           >
             <span

@@ -74,7 +74,7 @@
     li:last-child:has(a:not([href])) a,
     li:first-child:has(button[disabled]) button,
     li:last-child:has(button[disabled]) button {
-      @apply cursor-not-allowed text-neutral-500 hover:text-neutral-500;
+      @apply cursor-not-allowed form-control--disabled-color-text;
     }
   }
 

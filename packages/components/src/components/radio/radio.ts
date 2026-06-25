@@ -22,15 +22,18 @@ import SolidElement from '../../internal/solid-element';
  * @csspart checked - The dot inside the radio component when the radio is checked.
  * @csspart label - The container that wraps the radio's label.
  *
- * @cssproperty --sd-radio--checked--default-color-background - The background color for checked radios in default state.
  * @cssproperty --sd-radio--checked--default__icon-color-background - The icon background color for checked radios in default state.
- * @cssproperty --sd-radio--checked--hover-color-background - The background color for checked radios in hover state.
+ * @cssproperty --sd-radio--checked--default-color-background - The background color for checked radios in default state.
  * @cssproperty --sd-radio--checked--hover__icon-color-background - The icon background color for checked radios in hover state.
- * @cssproperty --sd-radio--checked--invalid--default-color-background - The background color for checked invalid radios in default state.
+ * @cssproperty --sd-radio--checked--hover-color-background - The background color for checked radios in hover state.
  * @cssproperty --sd-radio--checked--invalid--default__icon-color-background - The icon background color for checked invalid radios in default state.
+ * @cssproperty --sd-radio--checked--invalid--default-color-background - The background color for checked invalid radios in default state.
  * @cssproperty --sd-radio--checked--invalid--hover__icon-color-background - The icon background color for checked invalid radios in hover state.
  * @cssproperty --sd-radio--default--invalid-color-background - The background color for invalid radios in default state.
+ * @cssproperty --sd-radio--checked--disabled__icon-color-background - The icon background color for checked disabled radios.
  * @cssproperty --sd-radio-border-width - The border width for the radio.
+ * @cssproperty --sd-radio__checked-height - The height of the checked state icon.
+ * @cssproperty --sd-radio__checked-width - The width of the checked state icon.
  */
 @customElement('sd-radio')
 export default class SdRadio extends SolidElement {
@@ -118,7 +121,7 @@ export default class SdRadio extends SolidElement {
       <span
         part="base"
         class=${cx(
-          'sd-radio group flex items-center text-base leading-normal text-black cursor-pointer',
+          'sd-radio group flex items-start text-base leading-normal text-black cursor-pointer',
           (this.disabled || this.visuallyDisabled) && 'hover:cursor-not-allowed',
           {
             /* sizes, fonts */
@@ -149,10 +152,10 @@ export default class SdRadio extends SolidElement {
           <span
             part="checked"
             class=${cx(
-              'rounded-full inline-flex text-white h-2.5 w-2.5 transition-[transform, colors] duration-medium ease-in-out',
+              'rounded-full inline-flex text-white sd-radio__checked-height sd-radio__checked-width transition-[transform, colors] duration-medium ease-in-out',
               this.checked ? 'scale-100' : 'scale-0',
               this.disabled
-                ? 'bg-neutral-500'
+                ? 'sd-radio--checked--disabled__icon-color-background'
                 : this.visuallyDisabled
                   ? 'bg-white'
                   : this.invalid
@@ -183,17 +186,32 @@ export default class SdRadio extends SolidElement {
     ...SolidElement.styles,
     css`
       :host {
-        @apply block w-max;
+        @apply block;
       }
 
       :host(:focus-visible) {
         @apply outline-none;
       }
 
+      [part='control--checked'],
+      [part='control--unchecked'] {
+        @apply outline-transparent;
+      }
+
       /* Checked + focus */
       :host(:focus-visible) [part='control--checked'],
       :host(:focus-visible) [part='control--unchecked'] {
         @apply outline outline-2 outline-primary outline-offset-2;
+      }
+
+      /* Margins for circle to center it with the label text */
+      [part='control--unchecked'],
+      [part='control--checked'] {
+        margin-top: 0.23em;
+      }
+      :host([size='sm']) [part='control--unchecked'],
+      :host([size='sm']) [part='control--checked'] {
+        margin-top: 0.15em;
       }
     `
   ];

@@ -32,6 +32,7 @@ let id = 0;
  * @cssproperty --sd-choice-control-font-weight - The font weight for the active tab.
  * @cssproperty --sd-tab--active-color-text - The text color for the active tab.
  * @cssproperty --sd-tab-color-text - The text color for the tabs.
+ * @cssproperty --sd-tab--disabled-color-text - The text color for disabled tabs.
  */
 @customElement('sd-tab')
 export default class SdTab extends SolidElement {
@@ -107,18 +108,13 @@ export default class SdTab extends SolidElement {
         )}
         tabindex=${!this.active || this.disabled ? '-1' : '0'}
       >
-        <div
-          class="${cx(
-            'flex h-full items-center justify-center whitespace-nowrap',
-            this.disabled || (this.visuallyDisabled && 'opacity-50 ')
-          )}"
-        >
+        <div class="${cx('flex h-full items-center justify-center whitespace-nowrap')}">
           <slot
             name="left"
             class=${cx(
               slots.left && 'block pr-2',
               this.disabled || this.visuallyDisabled
-                ? 'text-neutral-500'
+                ? 'sd-tab--disabled-color-text'
                 : this.active
                   ? 'sd-tab--active-color-text'
                   : 'sd-tab-color-text'
@@ -127,7 +123,7 @@ export default class SdTab extends SolidElement {
           <slot
             class=${cx(
               this.disabled || this.visuallyDisabled
-                ? 'text-neutral-500'
+                ? 'sd-tab--disabled-color-text'
                 : this.active
                   ? 'sd-tab--active-color-text'
                   : 'sd-tab-color-text'

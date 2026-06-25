@@ -1,5 +1,6 @@
 import './preview.css';
 import '../../tokens/themes/kid/kid.css';
+import '../../tokens/themes/bb/bb.css';
 import '../../tokens/themes/vb/vb.css';
 import '../../tokens/themes/ui-dark/ui-dark.css';
 import '../../tokens/themes/ui-light/ui-light.css';
@@ -25,6 +26,60 @@ const deprecatedBadgeDecorator = Story => {
 export const preview = {
   decorators: [theme, deprecatedBadgeDecorator],
   parameters: {
+    options: {
+      storySort: (a, b) => {
+        const titleA = a?.title || '';
+        const titleB = b?.title || '';
+        const isSdIconA = titleA.startsWith('Components/sd-icon');
+        const isSdIconB = titleB.startsWith('Components/sd-icon');
+
+        if (!(isSdIconA && isSdIconB)) {
+          return 0;
+        }
+
+        const rank = title =>
+          title.includes('/Libraries/') || title === 'Components/sd-icon/Libraries'
+            ? 2
+            : title.includes('/Screenshots:')
+              ? 1
+              : 0;
+        const rankA = rank(titleA);
+        const rankB = rank(titleB);
+
+        if (rankA !== rankB) {
+          return rankA - rankB;
+        }
+
+        if (rankA === 2 && rankB === 2) {
+          const getLabel = story => {
+            const title = story?.title || '';
+            const name = story?.name || '';
+
+            if (title === 'Components/sd-icon/Libraries') {
+              return name;
+            }
+
+            if (title.startsWith('Components/sd-icon/Libraries/')) {
+              return title.replace('Components/sd-icon/Libraries/', '').split('/')[0] || name;
+            }
+
+            return title;
+          };
+
+          const labelA = getLabel(a).toLowerCase().replace(/^_+/, '');
+          const labelB = getLabel(b).toLowerCase().replace(/^_+/, '');
+          const byLabel = labelA.localeCompare(labelB, undefined, { numeric: true });
+
+          if (byLabel !== 0) {
+            return byLabel;
+          }
+
+          return (a?.name || '').localeCompare(b?.name || '', undefined, { numeric: true });
+        }
+
+        return titleA.localeCompare(titleB, undefined, { numeric: true });
+      }
+    },
     chromatic: {
       disableSnapshot: true,
       modes: themes.reduce((acc, { id }) => {
@@ -73,6 +128,60 @@ export const preview = {
 export default preview;
 
 export const parameters = {
+  options: {
+    storySort: (a, b) => {
+      const titleA = a?.title || '';
+      const titleB = b?.title || '';
+      const isSdIconA = titleA.startsWith('Components/sd-icon');
+      const isSdIconB = titleB.startsWith('Components/sd-icon');
+
+      if (!(isSdIconA && isSdIconB)) {
+        return 0;
+      }
+
+      const rank = title =>
+        title.includes('/Libraries/') || title === 'Components/sd-icon/Libraries'
+          ? 2
+          : title.includes('/Screenshots:')
+            ? 1
+            : 0;
+      const rankA = rank(titleA);
+      const rankB = rank(titleB);
+
+      if (rankA !== rankB) {
+        return rankA - rankB;
+      }
+
+      if (rankA === 2 && rankB === 2) {
+        const getLabel = story => {
+          const title = story?.title || '';
+          const name = story?.name || '';
+
+          if (title === 'Components/sd-icon/Libraries') {
+            return name;
+          }
+
+          if (title.startsWith('Components/sd-icon/Libraries/')) {
+            return title.replace('Components/sd-icon/Libraries/', '').split('/')[0] || name;
+          }
+
+          return title;
+        };
+
+        const labelA = getLabel(a).toLowerCase().replace(/^_+/, '');
+        const labelB = getLabel(b).toLowerCase().replace(/^_+/, '');
+        const byLabel = labelA.localeCompare(labelB, undefined, { numeric: true });
+
+        if (byLabel !== 0) {
+          return byLabel;
+        }
+
+        return (a?.name || '').localeCompare(b?.name || '', undefined, { numeric: true });
+      }
+
+      return titleA.localeCompare(titleB, undefined, { numeric: true });
+    }
+  },
   docs: {
     story: { inline: true },
     toc: true,

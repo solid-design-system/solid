@@ -1,5 +1,4 @@
 import '../../../dist/solid-components';
-import { clickOnElement } from '../../internal/test.js';
 import { expect, fixture, html, waitUntil } from '@open-wc/testing';
 import { sendKeys } from '@web/test-runner-commands';
 import sinon from 'sinon';
@@ -176,9 +175,9 @@ describe('<sd-datepicker>', () => {
       await el.updateComplete;
 
       const dayButtons = el.shadowRoot!.querySelectorAll('button.day:not(.out-month):not(.disabled)');
-      await clickOnElement(dayButtons[5]);
+      (dayButtons[5] as HTMLButtonElement).click();
       await el.updateComplete;
-      await clickOnElement(dayButtons[10]);
+      (dayButtons[10] as HTMLButtonElement).click();
       await el.updateComplete;
 
       expect(el.rangeStart).to.not.be.null;
@@ -195,7 +194,7 @@ describe('<sd-datepicker>', () => {
       await el.updateComplete;
 
       const dayButtons = el.shadowRoot!.querySelectorAll('button.day:not(.out-month):not(.disabled)');
-      await clickOnElement(dayButtons[5]);
+      (dayButtons[5] as HTMLButtonElement).click();
       await el.updateComplete;
 
       expect(rangeSelectHandler).to.have.been.calledOnce;
@@ -208,9 +207,9 @@ describe('<sd-datepicker>', () => {
       await el.updateComplete;
 
       const dayButtons = el.shadowRoot!.querySelectorAll('button.day:not(.out-month):not(.disabled)');
-      await clickOnElement(dayButtons[10]);
+      (dayButtons[10] as HTMLButtonElement).click();
       await el.updateComplete;
-      await clickOnElement(dayButtons[5]);
+      (dayButtons[5] as HTMLButtonElement).click();
       await el.updateComplete;
 
       expect(el.rangeStart).to.not.be.null;

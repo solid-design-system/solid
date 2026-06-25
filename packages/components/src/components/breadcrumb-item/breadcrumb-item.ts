@@ -18,6 +18,8 @@ import SolidElement from '../../internal/solid-element';
  *
  * @csspart base - The component's base wrapper.
  *
+ * @cssproperty --sd-breadcrumb--current-color-text - The text color for the current breadcrumb.
+ *
  */
 @customElement('sd-breadcrumb-item')
 export default class SdBreadcrumbItem extends SolidElement {
@@ -80,7 +82,7 @@ export default class SdBreadcrumbItem extends SolidElement {
       }
 
       :host([current]) sd-link::part(base) {
-        @apply text-neutral-700;
+        @apply sd-breadcrumb--current-color-text;
       }
 
       :host([current]) sd-link::part(label) {

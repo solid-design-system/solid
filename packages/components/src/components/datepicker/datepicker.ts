@@ -13,6 +13,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 import type SdPopup from '../popup/popup';
+import { isoDateConverter, viewMonthConverter, disabledDatesConverter } from './datepicker-converters';
 
 /**
  * @summary Used to enter or select a date or a range of dates using a calendar view.
@@ -64,6 +65,8 @@ import type SdPopup from '../popup/popup';
  * @cssproperty --sd-form-control__listbox-border-bottom-right-radius - The border radius for the bottom right corner of the datepicker.
  * @cssproperty --sd-form-control__listbox-border-top-left-radius - The border radius for the top left corner of the datepicker.
  * @cssproperty --sd-form-control__listbox-border-top-right-radius - The border radius for the top right corner of the datepicker.
+ * @cssproperty --sd-form-control--hover-color-background - The background color for form controls on hover.
+ * @cssproperty --sd-form-control--read-only-color-background - The background color for read-only form controls.
  * @cssproperty --sd-datepicker__date-item--default-color-text - The default text color for date items.
  * @cssproperty --sd-datepicker__date-item--hover--default-color-background - The background color for date items in hover state.
  * @cssproperty --sd-datepicker__date-item--hover--default-color-text - The text color for date items in hover state.
@@ -76,123 +79,8 @@ import type SdPopup from '../popup/popup';
  * @cssproperty --sd-datepicker__date-item--selected--hover-color-background - The background color for selected date items in hover state.
  * @cssproperty --sd-datepicker__date-item--range-color-background - The background color for date items that are within the selected range.
  * @cssproperty --sd-datepicker__date-item--current-color-text - The text color for the current date item.
+ * @cssproperty --sd-datepicker__date-item--selected--hover-color-text - The text color for selected date items in hover state.
  */
-
-const isoDateConverter = {
-  fromAttribute(value: string | null): string | null {
-    if (!value) return null;
-
-    // normalize all separators to hyphens
-    const cleaned = value.trim().replace(/[./]/g, '-');
-
-    // acccept YYYY-MM-DD only
-    const match = cleaned.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-    if (!match) return null;
-
-    const iso = `${match[1]}-${match[2]}-${match[3]}`;
-
-    // validate date
-    const d = new Date(+match[1], +match[2] - 1, +match[3]);
-    if (d.getFullYear() !== +match[1] || d.getMonth() !== +match[2] - 1 || d.getDate() !== +match[3]) {
-      return null;
-    }
-
-    return iso;
-  },
-
-  toAttribute(value: string | null): string {
-    return value ?? '';
-  }
-};
-
-const viewMonthConverter = {
-  fromAttribute(value: string | null): Date | null {
-    if (!value) return null;
-
-    const cleaned = value.trim().replace(/[./]/g, '-');
-    let m: RegExpMatchArray | null = cleaned.match(/^(\d{2})-(\d{4})$/);
-    let month: number;
-    let year: number;
-
-    if (m) {
-      month = Number(m[1]);
-      year = Number(m[2]);
-    } else {
-      m = cleaned.match(/^(\d{4})-(\d{2})$/);
-      if (!m) return null;
-      year = Number(m[1]);
-      month = Number(m[2]);
-    }
-
-    if (!year || !month || month < 1 || month > 12) return null;
-
-    return new Date(year, month - 1, 1);
-  },
-
-  toAttribute(value: Date | null): string {
-    if (!value) return '';
-    const year = value.getFullYear();
-    const month = String(value.getMonth() + 1).padStart(2, '0');
-    return `${year}-${month}`;
-  }
-};
-
-const disabledDatesConverter = {
-  fromAttribute(value: string | null): string[] {
-    if (!value) return [];
-
-    let rawList: string[] = [];
-
-    const trimmed = value.trim();
-
-    // arrays
-    if (trimmed.startsWith('[')) {
-      try {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        const parsed = JSON.parse(trimmed);
-        if (Array.isArray(parsed)) {
-          rawList = parsed.map(String);
-        }
-      } catch {
-        return [];
-      }
-    } else {
-      // space separated
-      rawList = trimmed
-        .split(/[\s,]+/)
-        .map(v => v.trim())
-        .filter(Boolean);
-    }
-
-    const result: string[] = [];
-
-    for (const raw of rawList) {
-      // replace all separators with dots
-      const cleaned = raw.replace(/[-/]/g, '.');
-      const parts = cleaned.split('.');
-
-      if (parts.length !== 3) continue;
-      const [yyyy, mm, dd] = parts.map(Number);
-
-      if (!yyyy || !mm || !dd) continue;
-
-      // validate date
-      const date = new Date(yyyy, mm - 1, dd);
-      if (date.getFullYear() !== yyyy || date.getMonth() !== mm - 1 || date.getDate() !== dd) continue;
-
-      const iso = `${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}`;
-
-      result.push(iso);
-    }
-
-    return result;
-  },
-
-  toAttribute(value: string[] | null): string {
-    return value ? value.join(',') : '';
-  }
-};
-
 @customElement('sd-datepicker')
 export default class SdDatepicker extends SolidElement implements SolidFormControl {
   /** Localize controller used to fetch localized terms/labels. */
@@ -1930,15 +1818,15 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                         this.size === 'sm' ? 'text-sm h-6' : 'text-base h-8',
                         isRangeStart || isRangeEnd
                           ? !isFocused
-                            ? 'outline-none sd-datepicker__date-item--selected-color-background sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected--hover-color-background'
-                            : 'outline-none sd-datepicker__date-item--selected--hover-color-background sd-datepicker__date-item--selected-color-text'
+                            ? 'outline-none sd-datepicker__date-item--selected-color-background sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected--hover-color-background hover:sd-datepicker__date-item--selected--hover-color-text'
+                            : 'outline-none sd-datepicker__date-item--selected--hover-color-background sd-datepicker__date-item--selected--hover-color-text'
                           : 'hover:sd-datepicker__date-item--hover--default-color-text',
                         !isRangeStart &&
                           !isRangeEnd &&
                           !inSelectedRange &&
                           'hover:sd-datepicker__date-item--hover--default-color-background',
                         isSelectedSingle
-                          ? 'selected outline-none border-primary sd-datepicker__date-item--selected-color-background sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected--hover-color-background'
+                          ? 'selected outline-none border-primary sd-datepicker__date-item--selected-color-background sd-datepicker__date-item--selected-color-text hover:sd-datepicker__date-item--selected--hover-color-text hover:sd-datepicker__date-item--selected--hover-color-background'
                           : !inMonth
                             ? this.disabledWeekends && isWeekendDay
                               ? 'out-month weekend-day text-neutral-500'
@@ -1953,7 +1841,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                         isRangeStart ? 'rounded-l-md rounded-r-none' : '',
                         isRangeEnd ? 'range-end rounded-r-md rounded-l-none' : '',
                         inSelectedRange && !isRangeStart && !isRangeEnd
-                          ? 'in-range selected sd-datepicker__date-item--range-color-background rounded-none hover:sd-datepicker__date-item--selected--hover-color-background hover:sd-datepicker__date-item--selected-color-text'
+                          ? 'in-range selected sd-datepicker__date-item--range-color-background rounded-none hover:sd-datepicker__date-item--selected--hover-color-background hover:sd-datepicker__date-item--selected--hover-color-text'
                           : '',
                         !inSelectedRange && inPreviewRange && !isRangeStart && !isRangeEnd
                           ? 'in-preview-range bg-primary-100 text-primary-500 rounded-none'
@@ -2068,7 +1956,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               <label
                 part="form-control-label"
                 id="label"
-                class=${cx(hasLabel ? 'inline-block form-control-color-text' : 'hidden', textSize)}
+                class=${cx(
+                  hasLabel ? 'inline-block' : 'hidden',
+                  this.visuallyDisabled || this.disabled ? 'text-neutral-500' : 'form-control-color-text',
+                  textSize
+                )}
                 for="input"
                 aria-hidden=${hasLabel ? 'false' : 'true'}
               >
@@ -2094,7 +1986,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                   class=${cx(
                     'absolute left-4 z-20 pointer-events-none transition-all duration-200 form-control--filled__floating-label-color-text',
                     !isFloatingLabelActive
-                      ? 'top-1/2 -translate-y-1/2'
+                      ? 'top-1/2 -translate-y-1/2 form-control-color-text'
                       : this.size === 'lg'
                         ? 'top-2 text-xs'
                         : 'top-1 text-xs',
@@ -2150,9 +2042,9 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
               class=${cx(
                 'px-4 flex flex-row items-center rounded-default transition-colors ease-in-out duration-medium hover:duration-fast w-full',
                 !this.disabled && !this.readonly && !this.visuallyDisabled
-                  ? 'hover:[@media(hover:hover)]:bg-neutral-200'
+                  ? 'hover:[@media(hover:hover)]:form-control--hover-color-background'
                   : '',
-                this.readonly ? 'bg-neutral-100' : 'bg-white',
+                this.readonly ? 'form-control--read-only-color-background' : 'bg-white',
                 inputState === 'disabled' || inputState === 'visuallyDisabled' ? 'text-neutral-500' : 'text-black',
                 inputState === 'invalid' && 'form-control--invalid-color-background',
                 inputState === 'active' && 'shadow'
@@ -2225,7 +2117,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
           name="help-text"
           part="form-control-help-text"
           id="help-text"
-          class=${cx('text-sm text-neutral-700 mt-1', hasHelpText ? 'block' : 'hidden')}
+          class=${cx(
+            'text-sm mt-1',
+            hasHelpText ? 'block' : 'hidden',
+            this.visuallyDisabled || this.disabled ? 'text-neutral-500' : 'text-neutral-700'
+          )}
           aria-hidden=${!hasHelpText}
         >
           ${this.helpText}

@@ -1,5 +1,17 @@
 # @solid-design-system/eslint-plugin
 
+## 1.0.6
+
+### Patch Changes
+
+- _[`#3060`](https://github.com/solid-design-system/solid/pull/3060) [`0150aa7`](https://github.com/solid-design-system/solid/commit/0150aa789d04101ab8673ed126079f1a42d0f652) [@martascorreia](https://github.com/martascorreia)_
+
+## 1.0.5
+
+### Patch Changes
+
+- Dependencies updated. For further details, please refer to the associated Pull Request _[`#3039`](https://github.com/solid-design-system/solid/pull/3039) [`693bce5`](https://github.com/solid-design-system/solid/commit/693bce5a3a3973130ccfde7def824d539f1b62e4) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 1.0.4
 
 ### Patch Changes

@@ -1,4 +1,5 @@
 import '../../../../components/src/solid-components';
+import { html } from 'lit';
 import {
   storybookDefaults,
   storybookHelpers,
@@ -93,6 +94,25 @@ export const Invalid = {
   }
 };
 
+export const LongLabelWithWrapping = {
+  name: 'Long Label with Wrapping',
+  render: () => html`
+    <style>
+      #long-label sd-radio-group {
+        width: 200px;
+      }
+    </style>
+    <div id="long-label">
+      <sd-radio-group value="1">
+        <sd-radio value="1"
+          >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit auctor dui, sed efficitur
+          ipsum.</sd-radio
+        >
+      </sd-radio-group>
+    </div>
+  `
+};
+
 /**
  * Use the `base`, `control--unchecked`, `control--checked`, `checked` and `label` part selectors to customize the radio.
  */
@@ -127,4 +147,11 @@ export const Parts = {
   }
 };
 
-export const Combination = generateScreenshotStory([Default, DisabledAndSize, Size, Invalid, Parts]);
+export const Combination = generateScreenshotStory([
+  Default,
+  DisabledAndSize,
+  Size,
+  Invalid,
+  LongLabelWithWrapping,
+  Parts
+]);

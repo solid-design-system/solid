@@ -1,8 +1,8 @@
 ---
 name: New Component Issue
 about: New Component Issue Template
-title: 'feat: ✨ add sd-[COMPONENT_NAME]'
-labels: '🙌 Epic'
+title: 'feat: add sd-[COMPONENT_NAME]'
+labels: 'Epic'
 assignees: 'yoezlem'
 
 ---

@@ -52,20 +52,33 @@ export const Default = {
   }
 };
 
-export const Current = {
-  name: 'Variant x Current',
-  render: (args: any) =>
-    generateTemplate({
-      args,
-      axis: {
-        x: { type: 'attribute', name: 'vertical' },
-        y: { type: 'attribute', name: 'current' }
-      }
-    })
+export const OrientationAndCurrent = {
+  name: 'Orientation x Current',
+  render: (args: any) => {
+    return html`
+      ${generateTemplate({
+        args,
+        axis: {
+          x: { type: 'attribute', name: 'vertical' },
+          y: { type: 'attribute', name: 'current' }
+        }
+      })}
+      ${generateTemplate({
+        axis: {
+          y: { type: 'attribute', name: 'current' }
+        },
+        constants: [
+          { type: 'attribute', name: 'stacked', value: true },
+          { type: 'slot', name: 'default', value: '<sd-icon name="system/image"></sd-icon><span>Navigation</span>' }
+        ],
+        args
+      })}
+    `;
+  }
 };
 
-export const Variants = {
-  name: 'Variant × Size',
+export const OrientationAndSize = {
+  name: 'Orientation × Size',
   render: (args: any) => {
     return html`
       ${generateTemplate({
@@ -110,6 +123,31 @@ export const Variants = {
   }
 };
 
+export const OrientationAndLink = {
+  name: 'Orientation × Link',
+  render: (args: any) => {
+    return html`
+      ${generateTemplate({
+        axis: {
+          x: { type: 'attribute', name: 'href', values: ['', '#'] },
+          y: { type: 'attribute', name: 'vertical' }
+        },
+        args
+      })}
+      ${generateTemplate({
+        axis: {
+          y: { type: 'attribute', name: 'href', values: ['', '#'] }
+        },
+        constants: [
+          { type: 'attribute', name: 'stacked', value: true },
+          { type: 'slot', name: 'default', value: '<sd-icon name="system/image"></sd-icon><span>Navigation</span>' }
+        ],
+        args
+      })}
+    `;
+  }
+};
+
 export const Disabled = {
   name: 'Disabled',
   render: (args: any) => {
@@ -143,36 +181,64 @@ export const Disabled = {
         ],
         args
       })}
-    `;
-  }
-};
-
-export const VerticalAndCurrent = {
-  name: 'Vertical × Current',
-  render: (args: any) => {
-    return html`
       ${generateTemplate({
         axis: {
-          x: { type: 'attribute', name: 'vertical' },
           y: { type: 'attribute', name: 'current' }
         },
+        options: {
+          title: 'Stacked (Horizontal)'
+        },
+        constants: [
+          { type: 'attribute', name: 'disabled', value: true },
+          { type: 'attribute', name: 'stacked', value: true },
+          { type: 'slot', name: 'default', value: '<sd-icon name="system/image"></sd-icon><span>Navigation</span>' }
+        ],
         args
       })}
     `;
   }
 };
 
-export const VerticalAndLink = {
-  name: 'Vertical × Link',
+export const Stacked = {
+  name: 'Stacked',
   render: (args: any) => {
+    const cases = [
+      {
+        title: 'Default',
+        slot: '<sd-icon name="system/image"></sd-icon><span>Navigation</span>'
+      },
+      {
+        title: 'Short Navigation',
+        slot: '<sd-icon name="system/image"></sd-icon><span>Nav</span>'
+      },
+      {
+        title: 'Large Navigation',
+        slot: '<sd-icon name="system/image"></sd-icon><span>Large Navigation</span>'
+      }
+    ];
+
     return html`
-      ${generateTemplate({
-        axis: {
-          x: { type: 'attribute', name: 'href', values: ['', '#'] },
-          y: { type: 'attribute', name: 'vertical' }
-        },
-        args
-      })}
+      ${cases.map(
+        c => html`
+          ${generateTemplate({
+            axis: {
+              y: { type: 'attribute', name: 'current' }
+            },
+            options: {
+              title: c.title
+            },
+            constants: [
+              { type: 'attribute', name: 'stacked', value: true },
+              {
+                type: 'slot',
+                name: 'default',
+                value: c.slot
+              }
+            ],
+            args
+          })}
+        `
+      )}
     `;
   }
 };
@@ -420,14 +486,14 @@ export const Mouseless = {
 
 export const Combination = generateScreenshotStory([
   Default,
-  Current,
-  Variants,
+  OrientationAndCurrent,
+  OrientationAndSize,
+  OrientationAndLink,
   Disabled,
+  Stacked,
   Parts,
   Chevron,
   IndentedRelaxed,
-  VerticalAndCurrent,
-  VerticalAndLink,
   Separated,
   Slots,
   Mouseless

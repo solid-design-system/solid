@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign */
+import { getThemeAttributes } from '.storybook/addons/theme-generator/theme-attributes';
 import type { StoryContext } from '@storybook/web-components';
 // import TailwindConfiguration from '../../.storybook/solid-tw-configuration.json';
 
@@ -108,13 +109,16 @@ export default function docsCodepenEnhancer(code: string, storyContext: StoryCon
         form.method = 'POST';
         form.target = '_blank';
 
+        // Theming
+        const themePath = getThemeAttributes().css;
+
         // Docs: https://blog.codepen.io/documentation/prefill/
         const data = {
           css: `/* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-components-installation--docs */
 @import url("${urls().components}/solid-components.css");
 
 /* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-tokens-installation--docs */
-@import url("${urls().tokens}/themes/ui-light/ui-light.css");
+@import url("${urls().tokens}/themes/${themePath}");
 
 /* See https://solid-design-system.fe.union-investment.de/docs/?path=/docs/packages-styles-installation--docs */
 @import url("${urls().styles}/solid-styles.css");

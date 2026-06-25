@@ -91,7 +91,7 @@ export default class SdTeaserMedia extends SolidElement {
                     'sd-teaser-media--white-color-background group-hover:sd-teaser-media--white--hover-color-background ',
                   'neutral-100':
                     'sd-teaser-media--neutral-100-color-background group-hover:sd-teaser-media--neutral-100--hover-color-background',
-                  primary: 'bg-primary/[.8] text-white group-hover:bg-primary/90',
+                  primary: 'bg-primary/80 text-white group-hover:bg-primary/90',
                   'primary-100':
                     'sd-teaser-media--primary-100-color-background group-hover:sd-teaser-media--primary-100--hover-color-background',
                   'gradient-light': 'bg-gradient-to-t from-white/75 to-white/60',
@@ -203,6 +203,12 @@ export default class SdTeaserMedia extends SolidElement {
 
       [part='toggle'] {
         @apply w-fit;
+        @apply outline-transparent;
+      }
+
+      :host([variant='primary']) [part='toggle']:focus-visible,
+      :host([variant='gradient-dark']) [part='toggle']:focus-visible {
+        outline-color: rgba(var(--sd-color-text-white));
       }
     `
   ];

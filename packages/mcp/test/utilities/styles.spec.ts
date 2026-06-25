@@ -2,18 +2,20 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { getAvailableStyles, getStyleInfo } from '../../src/utilities/styles.js';
 
+type StyleEntry = { name: string; description: string };
+
 describe('when using the styles metadata utilities', () => {
   describe('getAvailableStyles', () => {
     it('should return a list of available styles', async () => {
-      const styles = await getAvailableStyles();
+      const styles = (await getAvailableStyles()) as StyleEntry[];
       assert.ok(styles.length > 0);
-      assert.ok(styles.includes('sd-headline'));
-      assert.ok(styles.includes('sd-chip'));
+      assert.ok(styles.some(style => style.name === 'sd-headline'));
+      assert.ok(styles.some(style => style.name === 'sd-chip'));
     });
 
     it('should return style names with the sd- prefix', async () => {
-      const styles = await getAvailableStyles();
-      assert.ok(styles.every(s => s.startsWith('sd-')));
+      const styles = (await getAvailableStyles()) as StyleEntry[];
+      assert.ok(styles.every(style => style.name.startsWith('sd-')));
     });
   });
 

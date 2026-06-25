@@ -76,7 +76,7 @@ export const Inverted = {
       options: {
         templateBackgrounds: {
           alternate: 'y',
-          colors: ['rgba(var(--sd-color-primary))', 'transparent']
+          colors: ['rgba(var(--sd-color-background-primary))', 'transparent']
         },
         templateRenderer: ({ attributes, slots }) => {
           const attrs = Object.entries(attributes)
@@ -204,6 +204,23 @@ export const Autoplay = {
         y: { type: 'attribute', name: 'autoplay' }
       },
       constants: [
+        { type: 'attribute', name: 'variant', value: 'dot' },
+        { type: 'attribute', name: 'loop', value: 'true' }
+      ],
+      args
+    });
+  }
+};
+
+export const AutoplayInterval = {
+  name: 'Autoplay Interval',
+  render: (args: any) => {
+    return generateTemplate({
+      axis: {
+        y: { type: 'attribute', name: 'autoplay-interval', values: [5, 7, 10, 12] }
+      },
+      constants: [
+        { type: 'attribute', name: 'autoplay', value: 'true' },
         { type: 'attribute', name: 'variant', value: 'dot' },
         { type: 'attribute', name: 'loop', value: 'true' }
       ],

@@ -36,6 +36,7 @@ export const Default = {
  * - neutral-100 is the default appearance
  * - `sd-container--variant-primary-100`
  * - `sd-container--variant-primary`
+ * - `sd-container--variant-primary-800`
  * - `sd-container--variant-border-neutral-400`
  * - `sd-container--variant-white`
  */
@@ -52,6 +53,10 @@ export const Variants = {
       </div>
 
       <div class="sd-container sd-container--variant-primary">
+        <div class="slot slot--border slot--text slot--inverted h-12">Default slot</div>
+      </div>
+
+      <div class="sd-container sd-container--variant-primary-800">
         <div class="slot slot--border slot--text slot--inverted h-12">Default slot</div>
       </div>
 

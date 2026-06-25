@@ -1,5 +1,104 @@
 # @solid-design-system/docs
 
+## 2.20.0
+
+### Minor Changes
+
+- Added bottom bar navigation template demonstrating the stacked variant in a mobile bottom bar layout. _[`#3078`](https://github.com/solid-design-system/solid/pull/3078) [`b62a9f4`](https://github.com/solid-design-system/solid/commit/b62a9f476f35656c4c671ccb3dae66d99dd82e4d) [@balco0110](https://github.com/balco0110)_
+
+## 2.19.0
+
+### Minor Changes
+
+- Added documentation and screenshot tests for the new `sd-icon` library `sd-multi-theming` _[`#3091`](https://github.com/solid-design-system/solid/pull/3091) [`b191a40`](https://github.com/solid-design-system/solid/commit/b191a4003bd024437f7f1c3493e6b2dd5d706d51) [@martascorreia](https://github.com/martascorreia)_
+
+## 2.18.0
+
+### Minor Changes
+
+- Added `sd-progress-bar`. _[`#3065`](https://github.com/solid-design-system/solid/pull/3065) [`e8de4cc`](https://github.com/solid-design-system/solid/commit/e8de4cccc9b405984cba761233c3d878bb3ea154) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 2.17.2
+
+### Patch Changes
+
+- Fix `sd-headline` and `sd-icon` vertical alignment. _[`#3092`](https://github.com/solid-design-system/solid/pull/3092) [`33ac5c0`](https://github.com/solid-design-system/solid/commit/33ac5c0e24b4b1a6169a0b7fc15cfae1e7f7e75b) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 2.17.1
+
+### Patch Changes
+
+- Fixed background color for inverted screenshot tests. _[`#3072`](https://github.com/solid-design-system/solid/pull/3072) [`7622bb1`](https://github.com/solid-design-system/solid/commit/7622bb1466d554f53253afef1357ced08d2b8f51) [@martascorreia](https://github.com/martascorreia)_
+
+## 2.17.0
+
+### Minor Changes
+
+- Added documentation for the new `stacked` attribute for the `sd-navigation-item` component. _[`#3071`](https://github.com/solid-design-system/solid/pull/3071) [`d0163ae`](https://github.com/solid-design-system/solid/commit/d0163ae24c92f1e00cec751b5f30e416b4ba898e) [@martascorreia](https://github.com/martascorreia)_
+
+## 2.16.1
+
+### Patch Changes
+
+- _[`#3060`](https://github.com/solid-design-system/solid/pull/3060) [`0150aa7`](https://github.com/solid-design-system/solid/commit/0150aa789d04101ab8673ed126079f1a42d0f652) [@martascorreia](https://github.com/martascorreia)_
+
+## 2.16.0
+
+### Minor Changes
+
+- Added `sd-container--variant-primary-800` variant to `sd-container`. _[`#3054`](https://github.com/solid-design-system/solid/pull/3054) [`bb9e339`](https://github.com/solid-design-system/solid/commit/bb9e339a217102acb411c05e11c169e6f8b1635e) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+  New token `sd-container--primary-800-color-background` allows you to change `sd-container--variant-primary-800` background color.
+
+## 2.15.2
+
+### Patch Changes
+
+- Adding explicit examples of branding logos and alternative text to Templates. _[`#3045`](https://github.com/solid-design-system/solid/pull/3045) [`66ae0b7`](https://github.com/solid-design-system/solid/commit/66ae0b77d4503facf2352b0af4355360e5a0d84c) [@martascorreia](https://github.com/martascorreia)_
+
+## 2.15.1
+
+### Patch Changes
+
+- Make theme naming more clear _[`#3043`](https://github.com/solid-design-system/solid/pull/3043) [`5367c02`](https://github.com/solid-design-system/solid/commit/5367c024463443ab9aebcb230611ab0a91040948) [@mariohamann](https://github.com/mariohamann)_
+
+## 2.15.0
+
+### Minor Changes
+
+- Add BBBank theme. _[`#2994`](https://github.com/solid-design-system/solid/pull/2994) [`44ec315`](https://github.com/solid-design-system/solid/commit/44ec315cea54149c08783c069a05fdc4c93ed4fd) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - Fix `sd-map-marker` icon color.
+
+## 2.14.3
+
+### Patch Changes
+
+- Dependencies updated. For further details, please refer to the associated Pull Request _[`#3039`](https://github.com/solid-design-system/solid/pull/3039) [`693bce5`](https://github.com/solid-design-system/solid/commit/693bce5a3a3973130ccfde7def824d539f1b62e4) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 2.14.2
+
+### Patch Changes
+
+- Added `Variant B-01`, `Variant B-02`, `Variant C-01`, `Variant C-02` to the `Header Navigation` template. _[`#3038`](https://github.com/solid-design-system/solid/pull/3038) [`deb6ff5`](https://github.com/solid-design-system/solid/commit/deb6ff5fde3b1d577fe8e3a9926f93e583bfc5d9) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 2.14.1
+
+### Patch Changes
+
+- Add Variant D-01 & D-02 to the `header-navigation` template. _[`#2975`](https://github.com/solid-design-system/solid/pull/2975) [`b41cbc4`](https://github.com/solid-design-system/solid/commit/b41cbc4e2bdb3cea807218544f0ce4d900f568ac) [@rahulsuvarna18](https://github.com/rahulsuvarna18)_
+
+## 2.14.0
+
+### Minor Changes
+
+- Added documentation for the new `autoplay-interval` attribute in `sd-carousel`, including recommended timing values. _[`#3001`](https://github.com/solid-design-system/solid/pull/3001) [`687f7e6`](https://github.com/solid-design-system/solid/commit/687f7e6b896b8b54ac76f31f2d275cf8064a4300) [@martascorreia](https://github.com/martascorreia)_
+
+## 2.13.2
+
+### Patch Changes
+
+- Updating Accessibility documentation to match Figma. _[`#2976`](https://github.com/solid-design-system/solid/pull/2976) [`3b2d930`](https://github.com/solid-design-system/solid/commit/3b2d9306725542af2d5483463ae40126adfa3777) [@martascorreia](https://github.com/martascorreia)_
+
 ## 2.13.1
 
 ### Patch Changes

@@ -85,6 +85,19 @@ export const Disabled = {
 };
 
 /**
+ * Use the ”stacked” attribute to create a stacked layout of the navigation item with icon.
+ */
+
+export const Stacked = {
+  render: () => html`
+    <sd-navigation-item stacked>
+      <sd-icon name="system/image"></sd-icon>
+      <span>Navigation</span>
+    </sd-navigation-item>
+  `
+};
+
+/**
  * Use the `divider` attribute to add a divider above the navigation item.
  *
  * __Hint:__ Only works with `vertical` attribute.

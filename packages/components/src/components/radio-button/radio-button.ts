@@ -217,9 +217,12 @@ export default class SdRadioButton extends SolidElement {
         @apply z-20;
       }
 
-      :host(.sd-button-group__button--focus),
+      :host(.sd-button-group__button--focus) {
+        @apply z-30;
+      }
+
       :host(.sd-button-group__button[checked]) {
-        @apply z-10;
+        @apply z-40;
       }
     `
   ];

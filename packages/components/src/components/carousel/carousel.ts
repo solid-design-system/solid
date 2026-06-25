@@ -74,6 +74,9 @@ export default class SdCarousel extends SolidElement {
   /** When set, the slides will scroll automatically when the user is not interacting with them.  */
   @property({ type: Boolean, reflect: true }) autoplay = false;
 
+  /** Time (in seconds) between automatic slide transitions. */
+  @property({ type: Number, attribute: 'autoplay-interval', reflect: true }) autoplayInterval = 5;
+
   /** When set, slides will fade between each other instead of scrolling. */
   @property({ type: Boolean, reflect: true }) fade = false;
 
@@ -365,7 +368,7 @@ export default class SdCarousel extends SolidElement {
     if (this.pausedAutoplay) {
       this.autoplayController.stop();
     } else if (this.autoplay) {
-      this.autoplayController.start(3000);
+      this.autoplayController.start(this.autoplayInterval * 1000);
     }
   }
 
@@ -504,8 +507,16 @@ export default class SdCarousel extends SolidElement {
   handleAutoplayChange() {
     this.autoplayController.stop();
     if (this.autoplay && !this.pausedAutoplay) {
-      this.autoplayController.start(3000);
+      this.autoplayController.start(this.autoplayInterval * 1000);
     }
+  }
+
+  @watch('autoplayInterval')
+  handleautoplayIntervalChange() {
+    if (!this.autoplay || this.pausedAutoplay) return;
+
+    this.autoplayController.stop();
+    this.autoplayController.start(this.autoplayInterval * 1000);
   }
 
   /**
@@ -865,6 +876,10 @@ export default class SdCarousel extends SolidElement {
         }
       }
 
+      [part='autoplay-controls'] {
+        z-index: 1;
+      }
+
       :host([fade]) {
         --carousel-height: auto;
       }
@@ -887,30 +902,9 @@ export default class SdCarousel extends SolidElement {
       sd-button::part(label) {
         @apply flex flex-auto items-center pointer-events-none;
       }
-
-      #carousel__navigation-button--next,
-      #carousel__navigation-button--previous {
-        color: rgba(var(--sd-color-icon-fill-primary));
-
-        &:disabled {
-          color: rgba(var(--sd-color-icon-fill-neutral-500));
-        }
-      }
-
-      :host([inverted]) {
-        #carousel__navigation-button--next,
-        #carousel__navigation-button--previous {
-          color: rgba(var(--sd-color-icon-fill-white));
-
-          &:disabled {
-            color: rgba(var(--sd-color-icon-fill-neutral-600));
-          }
-        }
-      }
     `
   ];
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     'sd-carousel': SdCarousel;

@@ -63,11 +63,15 @@ async function main() {
     console.log('Set origin with PAT...');
     execSync(`git remote set-url origin https://${GH_TOKEN}@github.com/solid-design-system/solid.git`);
 
+    console.log('Syncing with remote main...');
+    execSync('git fetch origin main', { stdio: 'inherit' });
+    execSync('git rebase origin/main', { stdio: 'inherit' });
+
     console.log('Pushing changes to main...');
     execSync('git push origin main', { stdio: 'inherit' });
 
     console.log('Publishing to NPM...');
-    execSync('pnpm changeset publish -r', { stdio: 'inherit' });
+    execSync('pnpm changeset publish', { stdio: 'inherit' });
 
     console.log('Pushing tags...');
     execSync('git push --tags', { stdio: 'inherit' });
