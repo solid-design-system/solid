@@ -4,16 +4,13 @@ import { animateTo, stopAnimations } from '../../internal/animate';
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { getAnimation, setDefaultAnimation } from '../../utilities/animation-registry';
-import { getDeepActiveElement } from '../../internal/deep-active-element';
 import { HasSlotController } from '../../internal/slot';
 import { LocalizeController } from '../../utilities/localize';
-import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { property, query } from 'lit/decorators.js';
 import { uppercaseFirstLetter } from '../../internal/string';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
-import Modal from '../../internal/modal';
 import SolidElement from '../../internal/solid-element';
 
 /**
@@ -40,7 +37,6 @@ import SolidElement from '../../internal/solid-element';
  *   destructive behavior such as data loss.
  *
  * @csspart base - The component's base wrapper.
- * @csspart overlay - The overlay that covers the screen behind the drawer.
  * @csspart panel - The drawer's panel (where the drawer and its content are rendered).
  * @csspart header - The drawer's header. This element wraps the title and the close-button.
  * @csspart title - The drawer's title.
@@ -52,6 +48,8 @@ import SolidElement from '../../internal/solid-element';
  *   depending on its `placement`. Note that the drawer will shrink to accommodate smaller screens.
  * @cssproperty --sd-panel-color-border - The border color of the drawer panel.
  * @cssproperty --sd-overlay-color-background - The background color of the drawer overlay.
+ *
+ * @csspart overlay - The overlay that covers the screen behind the drawer.
  *
  * @animation drawer.showEnd - The animation to use when showing a drawer with `end` placement.
  * @animation drawer.showStart - The animation to use when showing a drawer with `start` placement.
@@ -65,12 +63,10 @@ import SolidElement from '../../internal/solid-element';
 export default class SdDrawer extends SolidElement {
   private readonly hasSlotController = new HasSlotController(this, 'footer');
   public localize = new LocalizeController(this);
-  private modal = new Modal(this);
-  private originalTrigger: HTMLElement | null;
 
-  @query('[part=base]') drawer: HTMLElement;
-  @query('[part=panel]') panel: HTMLElement;
+  @query('[part=base]') drawer: HTMLDialogElement;
   @query('[part=overlay]') overlay: HTMLElement;
+  @query('[part=panel]') panel: HTMLElement;
   @query('[part=close-button]') closeButton: HTMLElement;
 
   /**
@@ -89,31 +85,19 @@ export default class SdDrawer extends SolidElement {
   @property({ type: String, reflect: true }) placement: 'end' | 'start' = 'end';
 
   /**
-   * By default, the drawer slides out of its containing block (the viewport). Contained is a hidden feature used only for testing purposes. Please do not use it in production as it will likely change.
-   */
-  @property({ type: Boolean, reflect: true }) contained = false;
-
-  /**
    * Removes the header. This will also remove the default close button, so please ensure you provide an easy, accessible way for users to dismiss the drawer.
    */
   @property({ attribute: 'no-header', type: Boolean, reflect: true }) noHeader = false;
 
   firstUpdated() {
-    this.drawer.hidden = !this.open;
+    this.drawer.addEventListener('cancel', (event: Event) => {
+      event.preventDefault();
+      this.requestClose('keyboard');
+    });
 
     if (this.open) {
-      this.addOpenListeners();
-
-      if (!this.contained) {
-        this.modal.activate();
-        lockBodyScrolling(this);
-      }
+      this.drawer.showModal();
     }
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    unlockBodyScrolling(this);
   }
 
   private requestClose(source: 'close-button' | 'keyboard' | 'overlay') {
@@ -131,21 +115,6 @@ export default class SdDrawer extends SolidElement {
     this.hide();
   }
 
-  private addOpenListeners() {
-    document.addEventListener('keydown', this.handleDocumentKeyDown);
-  }
-
-  private removeOpenListeners() {
-    document.removeEventListener('keydown', this.handleDocumentKeyDown);
-  }
-
-  private handleDocumentKeyDown = (event: KeyboardEvent) => {
-    if (this.open && event.key === 'Escape') {
-      event.stopPropagation();
-      this.requestClose('keyboard');
-    }
-  };
-
   @watch('open', { waitUntilFirstUpdate: true })
   async handleOpenChange() {
     const closeButtonBase = this.closeButton.shadowRoot?.querySelector('[part="base"]');
@@ -153,16 +122,6 @@ export default class SdDrawer extends SolidElement {
     if (this.open) {
       // Show
       this.emit('sd-show');
-      this.addOpenListeners();
-
-      // Check if the original trigger is inside the drawer
-      this.originalTrigger = getDeepActiveElement();
-
-      // Lock body scrolling only if the drawer isn't contained
-      if (!this.contained) {
-        this.modal.activate();
-        lockBodyScrolling(this);
-      }
 
       // When the drawer is shown, Safari will attempt to set focus on whatever element has autofocus. This causes the
       // drawer's animation to jitter, so we'll temporarily remove the attribute, call `focus({ preventScroll: true })`
@@ -175,18 +134,17 @@ export default class SdDrawer extends SolidElement {
         autoFocusTarget.removeAttribute('autofocus');
       }
 
-      await Promise.all([stopAnimations(this.drawer), stopAnimations(this.overlay)]);
-      this.drawer.hidden = false;
+      await stopAnimations(this.drawer);
+      this.drawer.showModal();
       this.drawer.removeAttribute('inert');
+
+      const overlayShowAnimation = getAnimation(this, 'drawer.overlay.show', { dir: this.localize.dir() });
+      animateTo(this.overlay, overlayShowAnimation.keyframes, overlayShowAnimation.options);
 
       const panelAnimation = getAnimation(this, `drawer.show${uppercaseFirstLetter(this.placement)}`, {
         dir: this.localize.dir()
       });
-      const overlayAnimation = getAnimation(this, 'drawer.overlay.show', { dir: this.localize.dir() });
-      await Promise.all([
-        animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options),
-        animateTo(this.overlay, overlayAnimation.keyframes, overlayAnimation.options)
-      ]);
+      await animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options);
 
       //Update ARIA attributes to close button
       closeButtonBase?.setAttribute('aria-controls', 'drawer');
@@ -217,61 +175,23 @@ export default class SdDrawer extends SolidElement {
     } else {
       // Hide
       this.emit('sd-hide');
-      this.removeOpenListeners();
 
-      if (!this.contained) {
-        this.modal.deactivate();
-        unlockBodyScrolling(this);
-      }
+      await stopAnimations(this.drawer);
+      const overlayHideAnimation = getAnimation(this, 'drawer.overlay.hide', { dir: this.localize.dir() });
+      animateTo(this.overlay, overlayHideAnimation.keyframes, overlayHideAnimation.options);
 
-      await Promise.all([stopAnimations(this.drawer), stopAnimations(this.overlay)]);
       const panelAnimation = getAnimation(this, `drawer.hide${uppercaseFirstLetter(this.placement)}`, {
         dir: this.localize.dir()
       });
-      const overlayAnimation = getAnimation(this, 'drawer.overlay.hide', { dir: this.localize.dir() });
 
-      // Animate the overlay and the panel at the same time. Because animation durations might be different, we need to
-      // hide each one individually when the animation finishes, otherwise the first one that finishes will reappear
-      // unexpectedly. We'll unhide them after all animations have completed.
-      await Promise.all([
-        animateTo(this.overlay, overlayAnimation.keyframes, overlayAnimation.options).then(() => {
-          this.overlay.hidden = true;
-        }),
-        animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options).then(() => {
-          this.panel.hidden = true;
-        })
-      ]);
-
-      this.drawer.hidden = true;
+      await animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options);
+      this.drawer.close();
       this.drawer.setAttribute('inert', '');
-
-      // Now that the dialog is hidden, restore the overlay and panel for next time
-      this.overlay.hidden = false;
-      this.panel.hidden = false;
-
-      // Restore focus to the original trigger
-      const trigger = this.originalTrigger;
-      if (typeof trigger?.focus === 'function') {
-        setTimeout(() => trigger.focus());
-      }
 
       //Add a11y attributes to close button
       closeButtonBase?.setAttribute('aria-expanded', 'false');
 
       this.emit('sd-after-hide');
-    }
-  }
-
-  @watch('contained', { waitUntilFirstUpdate: true })
-  handleNoModalChange() {
-    if (this.open && !this.contained) {
-      this.modal.activate();
-      lockBodyScrolling(this);
-    }
-
-    if (this.open && this.contained) {
-      this.modal.deactivate();
-      unlockBodyScrolling(this);
     }
   }
 
@@ -298,24 +218,13 @@ export default class SdDrawer extends SolidElement {
   render() {
     /* eslint-disable lit-a11y/click-events-have-key-events */
     return html`
-      <section
+      <dialog
         id="drawer"
         part="base"
-        class=${cx(
-          'top-0 start-0 w-full h-full pointer-events-none overflow-hidden',
-          this.contained ? 'absolute' : 'fixed'
-        )}
+        class="top-0 start-0 w-full h-full p-0 bg-transparent border-none max-w-none max-h-none"
         aria-label=${this.label}
       >
-        <div
-          part="overlay"
-          class=${cx(
-            'block top-0 left-0 right-0 bottom-0 overlay-color-background pointer-events-auto',
-            this.contained ? 'absolute' : 'fixed'
-          )}
-          @click=${() => this.requestClose('overlay')}
-        ></div>
-
+        <div part="overlay" class="fixed inset-0" @click=${() => this.requestClose('overlay')}></div>
         <div
           part="panel"
           class=${cx(
@@ -325,8 +234,6 @@ export default class SdDrawer extends SolidElement {
               start: 'top-0 end-auto bottom-auto start-0 w-[var(--width)] h-full'
             }[this.placement]
           )}
-          role="dialog"
-          aria-modal="true"
           aria-label=${this.label}
           tabindex="0"
         >
@@ -367,7 +274,7 @@ export default class SdDrawer extends SolidElement {
             <slot name="footer"></slot>
           </footer>
         </div>
-      </section>
+      </dialog>
     `;
     /* eslint-enable lit-a11y/click-events-have-key-events */
   }
@@ -378,14 +285,6 @@ export default class SdDrawer extends SolidElement {
       :host {
         --width: 25rem;
         @apply contents;
-      }
-
-      :host([contained]) {
-        z-index: initial;
-      }
-
-      :host(:not([contained])) {
-        @apply z-drawer;
       }
 
       [part='body'] {
@@ -399,6 +298,14 @@ export default class SdDrawer extends SolidElement {
 
       :host [part='panel'] {
         outline: 1px solid rgb(var(--sd-panel-color-border, transparent));
+      }
+
+      ::backdrop {
+        display: none;
+      }
+
+      [part='overlay'] {
+        background-color: rgb(var(--sd-overlay-color-background, 5 21 48 / 0.9));
       }
     `
   ];
@@ -463,12 +370,12 @@ setDefaultAnimation('drawer.denyClose', {
 // Overlay
 setDefaultAnimation('drawer.overlay.show', {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
+  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'linear' }
 });
 
 setDefaultAnimation('drawer.overlay.hide', {
   keyframes: [{ opacity: 1 }, { opacity: 0 }],
-  options: { duration: 'var(--sd-duration-medium, 300)', easing: 'ease-in-out' }
+  options: { duration: 'var(--sd-duration-fast, 150)', easing: 'linear' }
 });
 
 declare global {
