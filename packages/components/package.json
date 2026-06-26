@@ -68,6 +68,7 @@
     "test": "pnpm build --lite && web-test-runner --group default",
     "test.verify": "pnpm build --lite && web-test-runner --group default",
     "test.single": "concurrently -P --raw \"pnpm watch --lite\" \"web-test-runner --watch --group {1}\" --",
+    "test.single.ci": "pnpm build --lite && web-test-runner --group",
     "test.watch": "pnpm test.single default",
     "postversion": "pnpm build && node scripts/node-write-sizes.mjs"
   },

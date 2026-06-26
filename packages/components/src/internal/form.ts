@@ -278,6 +278,7 @@ export class FormControlController implements ReactiveController {
   }
 
   private setUserInteracted(el: SolidFormControl, hasInteracted: boolean) {
+    if (userInteractedControls.get(el) === hasInteracted) return;
     userInteractedControls.set(el, hasInteracted);
     el.requestUpdate();
   }
