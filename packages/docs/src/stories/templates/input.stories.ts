@@ -33,3 +33,32 @@ export const InputWithCurrencyStepper = {
         });
       </script> `
 };
+
+/**
+ * ### Search Input with Visually Hidden Label
+ *
+ * Use this pattern when a search input should not show a visible label but still needs to be accessible to screen readers.
+ * The label is visually hidden via `::part(form-control-label)` while remaining available in the accessibility tree.
+ *
+ * __Warning:__ Visually hidden labels are only permitted for search inputs (WCAG Success Criterion 1.3.1). Do not use this pattern for other input types.
+ */
+export const InputWithVisuallyHiddenLabel = {
+  render: () => html`
+    <style>
+      .input-visually-hidden-label::part(form-control-label) {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+    </style>
+    <div class="w-[250px]">
+      <sd-input class="input-visually-hidden-label" type="search" label="Search" placeholder="Search..."></sd-input>
+    </div>
+  `
+};
