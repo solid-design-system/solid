@@ -6,6 +6,10 @@ const { argTypes, parameters } = storybookDefaults('sd-skeleton');
 const { overrideArgs } = storybookHelpers('sd-skeleton');
 const { generateTemplate } = storybookTemplate('sd-skeleton');
 
+/**
+ * @deprecated `sd-skeleton` component is deprecated. Use the `sd-skeleton` CSS class instead.
+ * See [Styles/sd-skeleton](./?path=/docs/styles-sd-skeleton--docs).
+ */
 export default {
   tags: ['!dev', 'autodocs'],
   title: 'Components/sd-skeleton',

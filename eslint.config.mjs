@@ -286,7 +286,7 @@ export default [
     files: ['**/*.test.ts']
   })),
   {
-    files: ['**/*.test.ts'],
+    files: ['**/*.test.ts', '**/*.spec.ts'],
 
     rules: {
       '@typescript-eslint/no-unsafe-call': 'off',
