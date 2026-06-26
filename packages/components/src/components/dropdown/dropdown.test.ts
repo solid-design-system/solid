@@ -461,4 +461,45 @@ describe('<sd-dropdown>', () => {
   //   expect(el.open).to.be.false;
   //   expect(hideHandler).to.not.have.been.called;
   // });
+
+  it('should open and close correctly when nested in a double shadow root (regression #648)', async () => {
+    // Declarative shadow DOM isn't processed by innerHTML/lit-html, so attach shadow roots imperatively
+    const outerHost = await fixture<HTMLDivElement>(html`<div></div>`);
+    const outerShadow = outerHost.attachShadow({ mode: 'open' });
+
+    const innerHost = document.createElement('div');
+    outerShadow.appendChild(innerHost);
+    const innerShadow = innerHost.attachShadow({ mode: 'open' });
+
+    innerShadow.innerHTML = `
+      <sd-dropdown>
+        <sd-button slot="trigger" caret>Toggle</sd-button>
+        <sd-menu>
+          <sd-menu-item>Item 1</sd-menu-item>
+          <sd-menu-item>Item 2</sd-menu-item>
+          <sd-menu-item>Item 3</sd-menu-item>
+        </sd-menu>
+      </sd-dropdown>
+    `;
+
+    const el = innerShadow.querySelector<SdDropdown>('sd-dropdown')!;
+    await el.updateComplete;
+    const panel = el.shadowRoot!.querySelector<HTMLElement>('[part~="panel"]')!;
+
+    // Wait for the component to fully settle after innerHTML upgrade
+    await waitUntil(() => panel.hidden);
+
+    const afterShowHandler = sinon.spy();
+    const afterHideHandler = sinon.spy();
+    el.addEventListener('sd-after-show', afterShowHandler);
+    el.addEventListener('sd-after-hide', afterHideHandler);
+
+    el.show();
+    await waitUntil(() => afterShowHandler.calledOnce);
+    expect(panel.hidden).to.be.false;
+
+    el.hide();
+    await waitUntil(() => afterHideHandler.calledOnce);
+    expect(panel.hidden).to.be.true;
+  });
 });
