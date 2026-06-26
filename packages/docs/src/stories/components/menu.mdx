@@ -14,7 +14,7 @@ export const links = {
 export const content = `
 # Menu
 
-Used as a list of choices to the user, such as a set of actions or functions.
+Used as a system menu that presents a list of actions or options for the user to choose from.
 
 <DefaultStory />
 
@@ -32,8 +32,8 @@ Used as a list of choices to the user, such as a set of actions or functions.
 
 ### Common Use Cases
 
-- Navigate between different sections or pages.
-- Access various functions or features quickly.
+- Trigger actions or commands (e.g., "Save", "Delete", "Copy").
+- Access various functions or features quickly (e.g., context menus, action menus).
 - Switch between user account settings or preferences.
 - Provide shortcuts for frequently used tasks.
 
@@ -47,9 +47,9 @@ Used as a list of choices to the user, such as a set of actions or functions.
 
 #### Structure and Organization
 
-- Organize menu items in a logical, hierarchical order to enhance navigation.
+- Organize menu items in a logical order to reflect the actions available.
 - Prioritize frequently used functions at the top of the menu for quicker access.
-- Don’t use multiple menus with similar content on the same screen. Keep the navigation consistent and clear.
+- Don't use multiple menus with similar content on the same screen. Keep the structure consistent and clear.
 
 #### Behavior
 
@@ -57,18 +57,23 @@ Used as a list of choices to the user, such as a set of actions or functions.
 - Provide visual feedback (e.g., hover, active state) to indicate interactivity.
 - Ensure the menu is responsive and adapts well to different screen sizes and devices.
 
+#### Do Not Use for Site Navigation
+
+- \`sd-menu\` follows the [WAI-ARIA Menu Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/) and is intended for system menus (action menus, context menus), **not** for navigating between pages or sections of a site.
+- For site navigation, use \`sd-navigation-item\` or similar navigation components instead.
+
 ### Accessibility Information
 
-- Keyboard Navigation: Ensure the menu can be opened, navigated, and closed using keyboard shortcuts (e.g., arrow keys to move between items, Enter to select, Esc to close).
-- Screen Reader Compatibility: Use appropriate ARIA roles, such as role="menu" for the menu container, role="menuitem" for each item, and aria-haspopup="true" for any submenu trigger. Provide descriptive, concise labels for each menu item.
-- Focus Management: Ensure that focus is automatically directed to the first menu item when the menu is opened. When the menu is closed, focus should return to the element that triggered the menu (e.g., button or link).
-- Visible Focus Indicators: Ensure all interactive menu items have visible focus states for keyboard and screen reader users. This could be through a color change, outline, or other visual indicators.
-- Limit Nested Menus: Avoid deep nesting of menus. Restrict the depth of nested menus to improve usability for screen readers and keyboard navigation.
-  Avoid Truncated Labels: Ensure that menu item labels are fully visible and not truncated. If the text is too long, consider using ellipses (...) and providing a tooltip or accessible description to display the full label.
-- Accessible Shortcuts: If the menu includes keyboard shortcuts or accelerators, ensure these are clearly communicated in the UI (e.g., with tooltips or labels like “Ctrl + S” for save) and accessible to screen readers.
-- Descriptive State Announcements: For dynamic menu behaviors (e.g., opening/closing or item selection), ensure that screen readers announce changes in state, such as "Menu opened" or "Option selected." Use ARIA live regions or alerts as needed.
+- Keyboard Interaction: The menu follows the [WAI-ARIA Menu Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/). Users can open, navigate, and close the menu using keyboard shortcuts (e.g., arrow keys to move between items, Enter or Space to select, Esc to close).
+- Screen Reader Compatibility: The component uses appropriate ARIA roles — \`role="menu"\` for the menu container and \`role="menuitem"\` for each item. Provide descriptive, concise labels for each menu item.
+- Focus Management: Focus is automatically directed to the first menu item when the menu opens. When the menu closes, focus returns to the element that triggered it.
+- Visible Focus Indicators: Ensure all interactive menu items have visible focus states for keyboard and screen reader users.
+- Limit Nested Menus: Avoid deep nesting of submenus to improve usability for screen readers and keyboard users.
+- Avoid Truncated Labels: Ensure that menu item labels are fully visible and not truncated. If the text is too long, consider using ellipses (...) and providing a tooltip or accessible description to display the full label.
+- Accessible Shortcuts: If the menu includes keyboard shortcuts or accelerators, ensure these are clearly communicated in the UI and accessible to screen readers.
+- Descriptive State Announcements: For dynamic menu behaviors (e.g., opening/closing or item selection), ensure that screen readers announce changes in state. Use ARIA live regions or alerts as needed.
 
-Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=38262-58412&t=1qhfYXrbNhSCYCzZ-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.`;
+Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-DS-%E2%80%93-Component-Library?node-id=38262-58412&t=1qhfYXrbNhSCYCzZ-4" target="_blank">Solid DS Best Practices for WCAG Compliance</sd-link> to learn more about our accessibility standards.\`;
 
 <Meta title="Components/sd-menu/Overview" />
 
