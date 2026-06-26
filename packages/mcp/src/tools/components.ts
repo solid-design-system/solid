@@ -32,7 +32,7 @@ const getAvailablePackageDocs = async (): Promise<string[]> => {
  *
  * - No args → list all sd-* components + list all package docs topics
  * - `component` only → full spec (usage guidelines + API)
- * - `component` + `story` → HTML example for that story
+ * - `component` + `example` → HTML example for that example
  * - `doc` → package-level guide (Installation, Localization, Customization, …)
  */
 export const componentsTool = (server: McpServer) => {
@@ -42,8 +42,8 @@ export const componentsTool = (server: McpServer) => {
       description:
         'Solid Design System components. ' +
         'Call without arguments to list all sd-* components and available package docs. ' +
-        'Pass `component` (e.g. "sd-button") to get the full spec (API, events, slots, guidelines). ' +
-        'Pass `component` + `story` to get the HTML example for a specific usage pattern. ' +
+        'Pass `component` (e.g. "sd-button") to get the full specifications (API, examples, events, slots, guidelines). ' +
+        'Pass `component` and `example` (e.g. "sd-button" and "inverted") to get the HTML example for a specific usage pattern. ' +
         'Pass `doc` (e.g. "localization") to get a package-level guide.',
       inputSchema: {
         component: z
@@ -56,7 +56,7 @@ export const componentsTool = (server: McpServer) => {
           .optional()
           .describe(
             'Slug for an HTML usage example, e.g. "inverted" or "no-shadow". ' +
-              'Requires `component`. Use component alone first to see available story slugs.'
+              'Requires `component`. Use component alone first to see available example slugs.'
           ),
         doc: z
           .string()
@@ -68,7 +68,7 @@ export const componentsTool = (server: McpServer) => {
       },
       title: 'Components'
     },
-    async ({ component, example: story, doc }) => {
+    async ({ component, example, doc }) => {
       // --- package-level doc ---
       if (doc) {
         const content = await readIfExists(join(componentPackageDocsPath, `${doc}.md`));
@@ -86,20 +86,20 @@ export const componentsTool = (server: McpServer) => {
         return { content: [{ type: 'text', text: content }] };
       }
 
-      // --- specific component story (HTML example) ---
-      if (component && story) {
-        const storyMd = await readIfExists(join(componentPath, component, 'stories', `${story}.md`));
-        if (!storyMd) {
+      // --- specific component example (HTML example) ---
+      if (component && example) {
+        const exampleMd = await readIfExists(join(componentPath, component, 'stories', `${example}.md`));
+        if (!exampleMd) {
           return {
             content: [
               {
                 type: 'text',
-                text: `No story "${story}" found for "${component}". Use \`component\` alone to see available stories.`
+                text: `No example "${example}" found for "${component}". Use \`component\` alone to see available examples.`
               }
             ]
           };
         }
-        return { content: [{ type: 'text', text: storyMd }] };
+        return { content: [{ type: 'text', text: exampleMd }] };
       }
 
       // --- specific component spec ---

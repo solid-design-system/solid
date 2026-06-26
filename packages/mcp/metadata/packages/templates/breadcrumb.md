@@ -34,9 +34,8 @@ version: 1.0.0
 <sd-header id="horizontal" fixed>
   <div class="flex justify-between items-center my-0 lg:my-3">
     <a class="inline-flex sd-interactive" href="#">
-      <div class="h-8 md:h-12 lg:h-14 logo-lg" role="img" aria-label="Union Investment Homepage"></div>
+      <img class="h-8 md:h-12 lg:h-14 w-auto object-contain" src="${currentTheme.logoLg}" alt="${currentTheme.alt}" />
     </a>
-
     <sd-navigation-item id="open-menu-navigation" class="flex lg:hidden">
       <sd-icon name="system/menu" label="Open navigation" class="text-xl"></sd-icon>
     </sd-navigation-item>

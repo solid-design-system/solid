@@ -10,7 +10,7 @@ Use the `variant` attribute to change the appearance of the marker:
     <span class="sr-only">Pinned Location</span>
   </sd-map-marker>
   <sd-map-marker variant="place">
-    <sd-icon name="content/image" color="primary"></sd-icon>
+    <sd-icon name="content/image"></sd-icon>
     <span class="sr-only">Pinned Place</span>
   </sd-map-marker>
   <sd-map-marker variant="cluster">

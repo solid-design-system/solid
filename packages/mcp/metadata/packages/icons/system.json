@@ -30,14 +30,14 @@
     "tags": ["sonnig", "hell", "schönes Wetter"]
   },
   {
-    "technicalId": "volume",
-    "displayNameDe": "Lautstärke",
-    "tags": ["Ton", "Pegel", "Geräuschpegel"]
-  },
-  {
     "technicalId": "settings",
     "displayNameDe": "Einstellungen",
     "tags": ["anpassen", "Bearbeitung", "Zahnrad"]
+  },
+  {
+    "technicalId": "volume",
+    "displayNameDe": "Lautstärke",
+    "tags": ["Ton", "Pegel", "Geräuschpegel"]
   },
   {
     "technicalId": "hand",
@@ -615,24 +615,24 @@
     "tags": ["klicken", "auswählen"]
   },
   {
-    "technicalId": "layers",
-    "displayNameDe": "Ebenen",
-    "tags": ["gruppieren", "Stapel", "mehrere Folien erzeugen"]
-  },
-  {
     "technicalId": "file-read-out",
     "displayNameDe": "Dokument vorlesen",
     "tags": ["vorlesen", "Audio", "Lautstärke"]
   },
   {
-    "technicalId": "collapse-left",
-    "displayNameDe": "einklappen links",
-    "tags": ["komprimieren", "verstecken", "Seitenleiste"]
+    "technicalId": "layers",
+    "displayNameDe": "Ebenen",
+    "tags": ["gruppieren", "Stapel", "mehrere Folien erzeugen"]
   },
   {
     "technicalId": "file-wai",
     "displayNameDe": "Dokument wAI",
     "tags": ["Dokument", "Datei", "wAI"]
+  },
+  {
+    "technicalId": "collapse-left",
+    "displayNameDe": "einklappen links",
+    "tags": ["komprimieren", "verstecken", "Seitenleiste"]
   },
   {
     "technicalId": "download",
@@ -885,14 +885,14 @@
     "tags": ["Filterfunktion", "deaktiviert"]
   },
   {
-    "technicalId": "arrow-bottom",
-    "displayNameDe": "Pfeil unten",
-    "tags": ["fallend", "Anzeige", "Pfeil"]
-  },
-  {
     "technicalId": "filter-filled",
     "displayNameDe": "Filter voll",
     "tags": ["Filter", "Filterfunktion", "aktiviert"]
+  },
+  {
+    "technicalId": "arrow-bottom",
+    "displayNameDe": "Pfeil unten",
+    "tags": ["fallend", "Anzeige", "Pfeil"]
   },
   {
     "technicalId": "question",
@@ -1045,14 +1045,14 @@
     "tags": ["Rückmeldung", "Nachricht", "Kommunikation"]
   },
   {
-    "technicalId": "password",
-    "displayNameDe": "Passwort",
-    "tags": ["sicherheitsgeschützt", "privat", "verschlüsselt"]
-  },
-  {
     "technicalId": "e-mail-send",
     "displayNameDe": "E-Mail abschicken",
     "tags": ["Brief", "E-Mail", "Kommunikation"]
+  },
+  {
+    "technicalId": "password",
+    "displayNameDe": "Passwort",
+    "tags": ["sicherheitsgeschützt", "privat", "verschlüsselt"]
   },
   {
     "technicalId": "e-mail-exclamation",

@@ -165,7 +165,6 @@ Mehr zur Bildwelt
 - Ordnen Sie ähnliche Inhalte in eine Teaser Reihe an.
 - Achten Sie auf aussagekräftige Überschriften und Linktexte, z. B. „Mehr zu Fonds mit Nachhaltigkeitsfokus“ statt „Mehr erfahren“.
 
-
 #### Don't
 
 - Mischen Sie keine Teaser Varianten in einer Reihe.
@@ -223,7 +222,7 @@ Ein barrierefreier Inhalt ist nicht nur für Menschen mit Einschränkungen hilfr
 
 #### Don't
 
-- Keine Dateinamen wie „IMG\_123.jpg“ als Beschreibung verwenden.
+- Keine Dateinamen wie „IMG_123.jpg“ als Beschreibung verwenden.
 - Kein Bild ohne Alt-Text, wenn es Informationen vermittelt.
 - Schrift nicht auf Bild fest eingebetten.
 
@@ -325,7 +324,7 @@ Bei der Einbindung von Videos ist zu beachten, dass Union Investment einen barri
 #### Do
 
 - Jedes Formularelementen benötigt eine Beschriftung und diese muss klar, sinnvoll und eindeutig sein (Ausnahme: Einfaches Suchfeld mit Feld + Button).
-- Pflichtfelder mit * markieren. Die Bedeutung muss zu Beginn des Formulars platziert werden.
+- Pflichtfelder mit \* markieren. Die Bedeutung muss zu Beginn des Formulars platziert werden.
 - Fehlerhaft ausgefüllte Eingabefelder müssen ausgezeichnet werden.
 - Fehlermeldungen sollten direkt beim Feld angezeigt werden und möglichst präzise sagen, wie der Fehler behoben werden kann.
 - Hilfetexte und Hinweise nutzen, um bei Bedarf zu erklären, was erwartet wird (z. B. Format bei Telefonnummern oder Passwörtern).

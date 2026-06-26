@@ -6,11 +6,11 @@ Icons can be used to indicate an action or to represent content.
   /
   export default {
   title: 'Components/sd-icon',
-  tags: ['autodocs', 'skip-playwright'],
+  tags: ['!dev', 'autodocs', 'skip-playwright'],
   component: 'sd-icon',
   args: overrideArgs([{ name: 'name', type: 'attribute', value: 'union-investment/content/image' }], args),
   argTypes,
-  parameters: { ...parameters }
+  parameters: { ...parameters, docsOnly: true }
   };
   export const Default = {
   render: (args: any) => {

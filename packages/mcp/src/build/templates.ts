@@ -191,7 +191,7 @@ export const buildTemplates = async () => {
 
         if (storySlugList.length) {
           apiSubSections.push(
-            `### Examples\n\nUse the components tool (with \`component\` + \`story\` args) to retrieve the HTML for any of these examples:\n\n${storySlugList.map(s => `- ${tagName}/${s}`).join('\n')}`
+            `### Examples\n\nUse the components tool by passing the args \`component\` and \`example\` for any of these combinations:\n\n${storySlugList.map(s => `- component: ${tagName}, example: ${s}`).join('\n')}`
           );
         }
         if (api.props) apiSubSections.push(`### Key Properties\n\n${api.props}`);

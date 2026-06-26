@@ -18,20 +18,21 @@ version: 1.0.0
     min-height: 500px;
   }
 </style>
-
-<sd-dropdown id="dropdown" open>
-  <sd-navigation-item slot="trigger" vertical>
-    <sd-icon name="system/globe" class="h-6 w-6" label="Select a country"></sd-icon>
-  </sd-navigation-item>
-  <div class="flex flex-col p-2">
-    <h4 class="sd-headline sd-headline--size-base p-4">Please select a country</h4>
-    <sd-navigation-item current vertical href="javascript:void(0)"> Austria </sd-navigation-item>
-    <sd-navigation-item vertical href="javascript:void(0)"> Denmark </sd-navigation-item>
-    <sd-navigation-item vertical href="javascript:void(0)"> Finland </sd-navigation-item>
-    <sd-navigation-item vertical href="javascript:void(0)"> France </sd-navigation-item>
-    <sd-navigation-item vertical href="javascript:void(0)"> Germany </sd-navigation-item>
-  </div>
-</sd-dropdown>
+<div class="min-h-[400px] w-[380px]">
+  <sd-dropdown id="dropdown" open>
+    <sd-navigation-item slot="trigger" vertical>
+      <sd-icon name="system/globe" class="h-6 w-6" label="Select a country"></sd-icon>
+    </sd-navigation-item>
+    <div class="flex flex-col p-2">
+      <h4 class="sd-headline sd-headline--size-base p-4">Please select a country</h4>
+      <sd-navigation-item current vertical href="javascript:void(0)"> Austria </sd-navigation-item>
+      <sd-navigation-item vertical href="javascript:void(0)"> Denmark </sd-navigation-item>
+      <sd-navigation-item vertical href="javascript:void(0)"> Finland </sd-navigation-item>
+      <sd-navigation-item vertical href="javascript:void(0)"> France </sd-navigation-item>
+      <sd-navigation-item vertical href="javascript:void(0)"> Germany </sd-navigation-item>
+    </div>
+  </sd-dropdown>
+</div>
 
 <script type="module">
   await Promise.all([customElements.whenDefined('sd-navigation-item')]).then(() => {

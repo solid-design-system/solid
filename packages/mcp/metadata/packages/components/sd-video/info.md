@@ -6,10 +6,10 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components toolto retrieve the HTML by passing args `component` and `example` for any of these combinations:
 
-- sd-video/video-element-with-poster-slot
-- sd-video/playing
+- component: sd-video, example: video-element-with-poster-slot
+- component: sd-video, example: playing
 
 ### Key Properties
 

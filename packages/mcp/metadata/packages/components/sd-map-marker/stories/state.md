@@ -20,15 +20,15 @@ Use the `state` attribute to change the appearance of the marker:
 
   <div class="flex flex-col space-y-5">
     <sd-map-marker state="default" variant="place">
-      <sd-icon name="content/image" color="primary"></sd-icon>
+      <sd-icon name="content/image"></sd-icon>
       <span class="sr-only">Pinned place with default state</span>
     </sd-map-marker>
     <sd-map-marker state="hover" variant="place">
-      <sd-icon name="content/image" color="primary"></sd-icon>
+      <sd-icon name="content/image"></sd-icon>
       <span class="sr-only">Pinned place with hover state</span>
     </sd-map-marker>
     <sd-map-marker state="active" variant="place">
-      <sd-icon name="content/image" color="primary"></sd-icon>
+      <sd-icon name="content/image"></sd-icon>
       <span class="sr-only">Pinned place with active state</span>
     </sd-map-marker>
   </div>
