@@ -39,12 +39,11 @@ export const componentsTool = (server: McpServer) => {
   server.registerTool(
     'components',
     {
-      description:
-        'Solid Design System components. ' +
-        'Call without arguments to list all sd-* components and available package docs. ' +
-        'Pass `component` (e.g. "sd-button") to get the full specifications (API, examples, events, slots, guidelines). ' +
-        'Pass `component` and `example` (e.g. "sd-button" and "inverted") to get the HTML example for a specific usage pattern. ' +
-        'Pass `doc` (e.g. "localization") to get a package-level guide.',
+      description: ` Solid Design System components. Usage modes:
+        - No arguments: list all sd-* components and available package docs.
+        - \`component\` only: get the full specification for one component, including API, examples, events, slots, and guidelines.
+        - \`component\` + \`example\`: get the HTML example for one specific usage pattern (e.g. component="sd-button", example="inverted").
+        - \`doc\` only: get a package-level guide such as "localization". Do not combine \`doc\` with \`component\` or \`example\`.`,
       inputSchema: {
         component: z
           .string()
@@ -69,6 +68,29 @@ export const componentsTool = (server: McpServer) => {
       title: 'Components'
     },
     async ({ component, example, doc }) => {
+      // Validate if doc is combined with component/example - not allowed
+      if (doc && (component || example)) {
+        return {
+          content: [
+            {
+              type: 'text',
+              text: 'Invalid arguments: `doc` cannot be combined with `component` or `example`. Use either `doc` alone or a component query.'
+            }
+          ]
+        };
+      }
+      // Validate if `example` is provided without `component` - not allowed
+      if (example && !component) {
+        return {
+          content: [
+            {
+              type: 'text',
+              text: 'Invalid arguments: `example` requires `component`. Use both together, e.g. component="sd-button", example="inverted".'
+            }
+          ]
+        };
+      }
+
       // --- package-level doc ---
       if (doc) {
         const content = await readIfExists(join(componentPackageDocsPath, `${doc}.md`));

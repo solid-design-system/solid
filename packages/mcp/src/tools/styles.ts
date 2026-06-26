@@ -39,12 +39,11 @@ export const stylesTool = (server: McpServer) => {
   server.registerTool(
     'styles',
     {
-      description:
-        'Solid Design System CSS style utilities. ' +
-        'Call without arguments to list all style utilities and available package docs. ' +
-        'Pass `style` (e.g. "sd-chip" or "chip") to get the full spec (guidelines, class names). ' +
-        'Pass `style` + `example` to get the HTML example for a specific usage pattern. ' +
-        'Pass `doc` (e.g. "installation") to get a package-level guide.',
+      description: ` Solid Design System CSS style utilities. Usage modes:
+        - No arguments: list all style utilities and available package docs.
+        - \`style\` only: get the full specification for one style utility, including guidelines and class names.
+        - \`style\` + \`example\`: get the HTML example for one specific usage pattern (e.g. style="sd-chip", example="inverted").
+        - \`doc\` only: get a package-level guide such as "installation". Do not combine \`doc\` with \`style\` or \`example\`.`,
       inputSchema: {
         style: z
           .string()

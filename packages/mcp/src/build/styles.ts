@@ -4,7 +4,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import ora from 'ora';
 import { createPath, stylesPath } from '../utilities/index.js';
-import { Example } from './components.js';
+import type { Example } from './components.js';
 
 /** Absolute path to the docs stories/styles directory */
 const DOCS_STYLES_DIR = join(dirname(fileURLToPath(import.meta.url)), '../../../docs/src/stories/styles');

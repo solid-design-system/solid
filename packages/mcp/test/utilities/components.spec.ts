@@ -2,7 +2,10 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { getAvailableComponents } from '../../src/utilities/components.js';
 
-type ComponentEntry = { name: string; description: string };
+interface ComponentEntry {
+  name: string;
+  description: string;
+}
 
 describe('when using the components metadata utilities', () => {
   describe('getAvailableComponents', () => {

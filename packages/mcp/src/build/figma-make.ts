@@ -92,8 +92,8 @@ async function buildPackage(sourcePath: string, outputDir: string): Promise<Pack
 
 /** Build icons.md — one line per icon */
 async function buildIconsMd(outputDir: string): Promise<void> {
-  const contentJson = join(iconsPath, 'content.json');
-  const systemJson = join(iconsPath, 'system.json');
+  const contentJson = join(iconsPath, 'default', 'content.json');
+  const systemJson = join(iconsPath, 'default', 'system.json');
 
   const lines: string[] = ['# Icons\n'];
 

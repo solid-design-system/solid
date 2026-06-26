@@ -10,20 +10,39 @@ interface CompactIcon {
   tags: string[];
 }
 
-type Category = 'content' | 'system' | 'all';
+type Library = 'default' | 'sd-multi-theming' | 'sd-status-assets';
+type IconCategory = 'content' | 'system' | 'status';
+type Category = IconCategory | 'all';
 
-const loadIcons = async (category: Category): Promise<{ name: string; icon: CompactIcon }[]> => {
-  const load = async (cat: 'content' | 'system') => {
-    const raw = await fs.readFile(join(iconsPath, `${cat}.json`), 'utf-8');
-    const icons = JSON.parse(raw) as CompactIcon[];
-    return icons.map(icon => ({ name: `${cat}/${icon.technicalId}`, icon }));
+const categoriesByLibrary: Record<Library, IconCategory[]> = {
+  default: ['content', 'system'],
+  'sd-multi-theming': ['content', 'system'],
+  'sd-status-assets': ['status']
+};
+
+const loadIcons = async (library: Library, category: Category): Promise<{ name: string; icon: CompactIcon }[]> => {
+  const load = async (cat: IconCategory) => {
+    try {
+      const filePath = join(iconsPath, library, `${cat}.json`);
+      const raw = await fs.readFile(filePath, 'utf-8');
+      const icons = JSON.parse(raw) as CompactIcon[];
+      return icons.map(icon => ({ name: `${cat}/${icon.technicalId}`, icon }));
+    } catch {
+      return [];
+    }
   };
 
+  const cats = categoriesByLibrary[library];
   if (category === 'all') {
-    const [content, system] = await Promise.all([load('content'), load('system')]);
-    return [...content, ...system];
+    const loaded = await Promise.all(cats.map(load));
+    return loaded.flat();
   }
-  return load(category);
+
+  if (!cats.includes(category as IconCategory)) {
+    return [];
+  }
+
+  return load(category as IconCategory);
 };
 
 /**
@@ -50,43 +69,87 @@ export const iconSearchTool = (server: McpServer) => {
   server.registerTool(
     'icon-search',
     {
-      description:
-        'Search the Solid Design System icon library. ' +
-        'Pass multiple keywords — English and/or German synonyms — to get the best possible list of candidates. ' +
-        'The tool deduplicates results and shows which keyword(s) each icon matched. ' +
-        'Returns icon names in the exact format for <sd-icon name="...">, e.g. "system/download". ' +
-        'Always search with several synonyms (EN + DE) to maximise recall.' +
-        'Use icon tool with topic arg to understand the difference between "system" and "content" icons and when to use which category. ',
+      description: `Search Solid Design System icon libraries by meaning.
+        - Pass multiple keywords, English and/or German synonyms, to find icons.
+        - Returns icon names in the exact format for <sd-icon name="...">, e.g. "system/download".
+        - Choose a library: \`default\` (default library), \`sd-status-assets\`, or \`sd-multi-theming\`.
+        - Choose a category, where applicable: \`content\` (illustrative), \`system\` (UI/navigation), \`status\` (status indicators), or \`all\`.
+        - Use the icon documentation tool if you need guidance on when to use each library or category.`,
       inputSchema: {
         keywords: z
           .array(z.string().min(1))
-          .min(1)
+          .default([])
           .describe(
             'One or more search keywords in English and/or German. ' +
               'Example: ["download", "herunterladen", "save", "speichern"]. ' +
-              'Use both languages and multiple synonyms for best results.'
+              'Prefer 3-6 synonyms across both languages for best results.'
+          ),
+        library: z
+          .enum(['default', 'sd-status-assets', 'sd-multi-theming'])
+          .default('default')
+          .describe(
+            'Icon library to search: "default" (default library), "sd-status-assets" (status indicators for components like sd-status-badge), or "sd-multi-theming" (multi-theme compatible icons).'
           ),
         category: z
-          .enum(['content', 'system', 'all'])
+          .enum(['content', 'system', 'status', 'all'])
           .default('all')
           .describe(
-            '"system" for UI/navigation icons (arrows, controls, status), ' +
-              '"content" for illustrative/thematic icons, ' +
-              '"all" to search both (default).'
+            `Search scope within the selected library:
+            - \`default\`: \`content\` or \`system\`
+            - \`sd-multi-theming\`: \`content\` or \`system\`
+            - \`sd-status-assets\`: \`status\`
+            - \`all\` searches all categories available for the selected library.`
           )
       },
       title: 'Icon search'
     },
-    async ({ keywords, category = 'all' }) => {
+    async ({ keywords, library = 'default', category = 'all' }) => {
+      if (!keywords.length) {
+        return {
+          content: [
+            {
+              type: 'text',
+              text: 'Please provide at least one keyword to search for icons.'
+            }
+          ]
+        };
+      }
+
+      const selectedLibrary = library as Library;
+      const allowedCategories = categoriesByLibrary[selectedLibrary];
+      if (category !== 'all' && !allowedCategories.includes(category as IconCategory)) {
+        return {
+          content: [
+            {
+              type: 'text',
+              text:
+                `Invalid category "${category}" for library "${library}". ` +
+                `Allowed categories: ${allowedCategories.map(c => `"${c}"`).join(', ')} or "all".`
+            }
+          ]
+        };
+      }
+
       let all: { name: string; icon: CompactIcon }[];
       try {
-        all = await loadIcons(category);
+        all = await loadIcons(selectedLibrary, category);
       } catch {
         return {
           content: [
             {
               type: 'text',
-              text: 'Icon metadata not yet built. Run build:metadata first.'
+              text: `Unable to load icons from library "${library}". Try library="default" or use the icons documentation tool.`
+            }
+          ]
+        };
+      }
+
+      if (!all.length) {
+        return {
+          content: [
+            {
+              type: 'text',
+              text: `No icons found in library "${library}"${category !== 'all' ? ` category "${category}"` : ''}. The library may be empty or icon metadata may not be populated yet.`
             }
           ]
         };

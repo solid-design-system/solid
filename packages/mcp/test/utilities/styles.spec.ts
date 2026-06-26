@@ -2,7 +2,10 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { getAvailableStyles, getStyleInfo } from '../../src/utilities/styles.js';
 
-type StyleEntry = { name: string; description: string };
+interface StyleEntry {
+  name: string;
+  description: string;
+}
 
 describe('when using the styles metadata utilities', () => {
   describe('getAvailableStyles', () => {
