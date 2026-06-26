@@ -38,11 +38,11 @@ const loadIcons = async (library: Library, category: Category): Promise<{ name: 
     return loaded.flat();
   }
 
-  if (!cats.includes(category as IconCategory)) {
+  if (!cats.includes(category)) {
     return [];
   }
 
-  return load(category as IconCategory);
+  return load(category);
 };
 
 /**
