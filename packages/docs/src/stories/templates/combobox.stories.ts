@@ -135,6 +135,18 @@ export const GroupingQuery = {
  * __Warning:__ Visually hidden labels are only permitted for search inputs (WCAG Success Criterion 1.3.1). Do not use this pattern for other input types.
  */
 export const ComboboxWithVisuallyHiddenLabel = {
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'label-title-only',
+            enabled: false
+          }
+        ]
+      }
+    }
+  },
   render: () => html`
     <style>
       .combobox-visually-hidden-label::part(form-control-label) {
