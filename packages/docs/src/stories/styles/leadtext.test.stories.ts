@@ -7,9 +7,9 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-leadtext');
-const { overrideArgs } = storybookHelpers('sd-leadtext');
-const { generateTemplate } = storybookTemplate('sd-leadtext');
+const { argTypes, parameters } = storybookDefaults('.sd-leadtext');
+const { overrideArgs } = storybookHelpers('.sd-leadtext');
+const { generateTemplate } = storybookTemplate('.sd-leadtext');
 const { generateScreenshotStory } = storybookUtilities;
 
 /**
@@ -23,7 +23,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Styles/sd-leadtext/Screenshots: sd-leadtext',
   tags: ['!autodocs'],
-  component: 'sd-leadtext',
+  component: '.sd-leadtext',
   parameters: {
     ...parameters,
     controls: { disable: true },

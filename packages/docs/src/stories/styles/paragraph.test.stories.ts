@@ -6,9 +6,9 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-paragraph');
-const { overrideArgs } = storybookHelpers('sd-paragraph');
-const { generateTemplate } = storybookTemplate('sd-paragraph');
+const { argTypes, parameters } = storybookDefaults('.sd-paragraph');
+const { overrideArgs } = storybookHelpers('.sd-paragraph');
+const { generateTemplate } = storybookTemplate('.sd-paragraph');
 const { generateScreenshotStory } = storybookUtilities;
 
 /**
@@ -22,7 +22,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Styles/sd-paragraph/Screenshots: sd-paragraph',
   tags: ['!autodocs'],
-  component: 'sd-paragraph',
+  component: '.sd-paragraph',
   parameters: {
     ...parameters,
     controls: { disable: true },

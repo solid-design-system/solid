@@ -3,14 +3,14 @@ import { html } from 'lit';
 
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-interactive');
-const { overrideArgs } = storybookHelpers('sd-interactive');
-const { generateTemplate } = storybookTemplate('sd-interactive');
+const { argTypes, parameters } = storybookDefaults('.sd-interactive');
+const { overrideArgs } = storybookHelpers('.sd-interactive');
+const { generateTemplate } = storybookTemplate('.sd-interactive');
 
 export default {
   title: 'Styles/sd-interactive',
   tags: ['!dev', 'autodocs'],
-  component: 'sd-interactive',
+  component: '.sd-interactive',
   parameters: {
     ...parameters,
     a11y: {

@@ -2,9 +2,9 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-flag');
-const { overrideArgs } = storybookHelpers('sd-flag');
-const { generateTemplate } = storybookTemplate('sd-flag');
+const { argTypes, parameters } = storybookDefaults('.sd-flag');
+const { overrideArgs } = storybookHelpers('.sd-flag');
+const { generateTemplate } = storybookTemplate('.sd-flag');
 
 /**
  *
@@ -15,7 +15,7 @@ const { generateTemplate } = storybookTemplate('sd-flag');
 export default {
   title: 'Styles/sd-flag',
   tags: ['!dev', 'autodocs'],
-  component: 'sd-flag',
+  component: '.sd-flag',
   parameters: {
     ...parameters,
     design: {

@@ -190,7 +190,7 @@ const tagsToSchemaModule = (tags: Tag[]): StyleModule => {
           }
         ],
         cssProperties,
-        tagName: name.name,
+        tagName: `.${name.name}`,
         tagNameWithoutPrefix
       }
     ],

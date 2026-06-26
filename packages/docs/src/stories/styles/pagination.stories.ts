@@ -1,16 +1,16 @@
 import '../../../../components/src/solid-components';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-pagination');
-const { overrideArgs } = storybookHelpers('sd-pagination');
-const { generateTemplate } = storybookTemplate('sd-pagination');
+const { argTypes, parameters } = storybookDefaults('.sd-pagination');
+const { overrideArgs } = storybookHelpers('.sd-pagination');
+const { generateTemplate } = storybookTemplate('.sd-pagination');
 
 const html = String.raw;
 
 export default {
   tags: ['!dev', 'autodocs'],
   title: 'Styles/sd-pagination',
-  component: 'sd-pagination',
+  component: '.sd-pagination',
   argTypes,
   parameters: {
     ...parameters,

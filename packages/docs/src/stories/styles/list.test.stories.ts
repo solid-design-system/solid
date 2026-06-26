@@ -7,9 +7,9 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-list');
-const { overrideArgs } = storybookHelpers('sd-list');
-const { generateTemplate } = storybookTemplate('sd-list');
+const { argTypes, parameters } = storybookDefaults('.sd-list');
+const { overrideArgs } = storybookHelpers('.sd-list');
+const { generateTemplate } = storybookTemplate('.sd-list');
 const { generateScreenshotStory } = storybookUtilities;
 
 // HTML helper to get syntax highlighting and formatting in the template string
@@ -28,7 +28,7 @@ const html = String.raw;
 export default {
   title: 'Styles/sd-list/Screenshots: sd-list',
   tags: ['!autodocs'],
-  component: 'sd-list',
+  component: '.sd-list',
   parameters: {
     ...parameters,
     controls: { disable: true },

@@ -1,9 +1,9 @@
 import '../../../../components/src/solid-components';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-prose');
-const { overrideArgs } = storybookHelpers('sd-prose');
-const { generateTemplate } = storybookTemplate('sd-prose');
+const { argTypes, parameters } = storybookDefaults('.sd-prose');
+const { overrideArgs } = storybookHelpers('.sd-prose');
+const { generateTemplate } = storybookTemplate('.sd-prose');
 
 // HTML helper to get syntax highlighting and formatting in the template string
 const html = String.raw;
@@ -11,7 +11,7 @@ const html = String.raw;
 export default {
   title: 'Styles/sd-prose',
   tags: ['!dev', 'autodocs'],
-  component: 'sd-prose',
+  component: '.sd-prose',
   parameters: {
     ...parameters,
     design: {

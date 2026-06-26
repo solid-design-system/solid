@@ -2,14 +2,14 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-container');
-const { overrideArgs } = storybookHelpers('sd-container');
-const { generateTemplate } = storybookTemplate('sd-container');
+const { argTypes, parameters } = storybookDefaults('.sd-container');
+const { overrideArgs } = storybookHelpers('.sd-container');
+const { generateTemplate } = storybookTemplate('.sd-container');
 
 export default {
   title: 'Styles/sd-container',
   tags: ['!dev', 'autodocs'],
-  component: 'sd-container',
+  component: '.sd-container',
   args: overrideArgs({
     type: 'slot',
     name: 'default',

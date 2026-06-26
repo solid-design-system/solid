@@ -7,9 +7,9 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-media');
-const { overrideArgs } = storybookHelpers('sd-media');
-const { generateTemplate } = storybookTemplate('sd-media');
+const { argTypes, parameters } = storybookDefaults('.sd-media');
+const { overrideArgs } = storybookHelpers('.sd-media');
+const { generateTemplate } = storybookTemplate('.sd-media');
 const { generateScreenshotStory } = storybookUtilities;
 
 /**
@@ -18,7 +18,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Styles/sd-media/Screenshots: sd-media',
   tags: ['!autodocs'],
-  component: 'sd-media',
+  component: '.sd-media',
   parameters: {
     ...parameters,
     controls: { disable: true }

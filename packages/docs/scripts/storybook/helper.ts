@@ -93,7 +93,7 @@ export const storybookDefaults = (customElementTag: string): any => {
     // Get the properties that are not defined as attributes
     const getProperties = () => {
       // Only for Web Components
-      if (manifest.name.startsWith('Sd')) {
+      if (manifest?.name?.startsWith('Sd')) {
         const fieldMembers = (manifest?.members as member[])?.filter(member => member.kind === 'field');
         const attributeNames = new Set(manifest?.attributes?.map((attr: { fieldName: string }) => attr.fieldName));
         const result = fieldMembers?.filter(
@@ -406,7 +406,9 @@ export const storybookTemplate = (customElementTag: string) => {
         );
 
       // Compute the classes object
-      const classes = { [customElementTag]: true, ...classesObj };
+      // Strip leading dot — style component tagNames use ".sd-*" to avoid collision with web components
+      const baseClass = customElementTag.startsWith('.') ? customElementTag.slice(1) : customElementTag;
+      const classes = { [baseClass]: true, ...classesObj };
 
       // Convert classes object to a space-separated string of class names
       const classesAsString = Object.keys(classes)
