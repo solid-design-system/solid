@@ -6,12 +6,12 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-checkbox-group/size
-- sd-checkbox-group/orientation
-- sd-checkbox-group/label
-- sd-checkbox-group/help-text
+- component: sd-checkbox-group, example: size
+- component: sd-checkbox-group, example: orientation
+- component: sd-checkbox-group, example: label
+- component: sd-checkbox-group, example: help-text
 
 ### Key Properties
 

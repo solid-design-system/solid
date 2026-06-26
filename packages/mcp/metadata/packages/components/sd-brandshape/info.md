@@ -6,12 +6,12 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-brandshape/variant
-- sd-brandshape/transparent-variants
-- sd-brandshape/shapes
-- sd-brandshape/image-translate-y
+- component: sd-brandshape, example: variant
+- component: sd-brandshape, example: transparent-variants
+- component: sd-brandshape, example: shapes
+- component: sd-brandshape, example: image-translate-y
 
 ### Key Properties
 

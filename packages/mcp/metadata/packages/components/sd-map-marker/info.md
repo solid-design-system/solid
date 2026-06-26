@@ -6,14 +6,14 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-map-marker/variant
-- sd-map-marker/state
-- sd-map-marker/animated
-- sd-map-marker/slot
-- sd-map-marker/not-interactive
-- sd-map-marker/as-link
+- component: sd-map-marker, example: variant
+- component: sd-map-marker, example: state
+- component: sd-map-marker, example: animated
+- component: sd-map-marker, example: slot
+- component: sd-map-marker, example: not-interactive
+- component: sd-map-marker, example: as-link
 
 ### Key Properties
 

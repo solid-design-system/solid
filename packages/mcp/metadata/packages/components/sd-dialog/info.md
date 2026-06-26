@@ -6,11 +6,11 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-dialog/open
-- sd-dialog/headline
-- sd-dialog/no-close-button
+- component: sd-dialog, example: open
+- component: sd-dialog, example: headline
+- component: sd-dialog, example: no-close-button
 
 ### Key Properties
 

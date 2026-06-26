@@ -6,11 +6,11 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-menu-item/icon-indent
-- sd-menu-item/checkmark
-- sd-menu-item/disabled
+- component: sd-menu-item, example: icon-indent
+- component: sd-menu-item, example: checkmark
+- component: sd-menu-item, example: disabled
 
 ### Key Properties
 

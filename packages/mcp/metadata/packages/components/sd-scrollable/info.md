@@ -6,14 +6,14 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-scrollable/orientation
-- sd-scrollable/scrollbar
-- sd-scrollable/buttons
-- sd-scrollable/shadows
-- sd-scrollable/inset
-- sd-scrollable/step
+- component: sd-scrollable, example: orientation
+- component: sd-scrollable, example: scrollbar
+- component: sd-scrollable, example: buttons
+- component: sd-scrollable, example: shadows
+- component: sd-scrollable, example: inset
+- component: sd-scrollable, example: step
 
 ### Key Properties
 

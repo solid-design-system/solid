@@ -6,22 +6,22 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-textarea/size
-- sd-textarea/rows
-- sd-textarea/label
-- sd-textarea/floating-label
-- sd-textarea/placeholder
-- sd-textarea/disabled
-- sd-textarea/visually-disabled
-- sd-textarea/readonly
-- sd-textarea/help-text
-- sd-textarea/required
-- sd-textarea/valid
-- sd-textarea/invalid
-- sd-textarea/min-length
-- sd-textarea/max-length
+- component: sd-textarea, example: size
+- component: sd-textarea, example: rows
+- component: sd-textarea, example: label
+- component: sd-textarea, example: floating-label
+- component: sd-textarea, example: placeholder
+- component: sd-textarea, example: disabled
+- component: sd-textarea, example: visually-disabled
+- component: sd-textarea, example: readonly
+- component: sd-textarea, example: help-text
+- component: sd-textarea, example: required
+- component: sd-textarea, example: valid
+- component: sd-textarea, example: invalid
+- component: sd-textarea, example: min-length
+- component: sd-textarea, example: max-length
 
 ### Key Properties
 

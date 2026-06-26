@@ -1,28 +1,28 @@
 ## Overview
 
-`<sd-datepicker>` —
+`<sd-datepicker>` — Used to enter or select a date or a range of dates using a calendar view.
 
 ## API
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-datepicker/size
-- sd-datepicker/alignment
-- sd-datepicker/label
-- sd-datepicker/floating-label
-- sd-datepicker/placeholder
-- sd-datepicker/disabled
-- sd-datepicker/visually-disabled
-- sd-datepicker/help-text
-- sd-datepicker/required
-- sd-datepicker/valid
-- sd-datepicker/invalid
-- sd-datepicker/disabled-weekends
-- sd-datepicker/disabled-dates
-- sd-datepicker/range
-- sd-datepicker/visible-month
+- component: sd-datepicker, example: size
+- component: sd-datepicker, example: alignment
+- component: sd-datepicker, example: label
+- component: sd-datepicker, example: floating-label
+- component: sd-datepicker, example: placeholder
+- component: sd-datepicker, example: disabled
+- component: sd-datepicker, example: visually-disabled
+- component: sd-datepicker, example: help-text
+- component: sd-datepicker, example: required
+- component: sd-datepicker, example: valid
+- component: sd-datepicker, example: invalid
+- component: sd-datepicker, example: disabled-weekends
+- component: sd-datepicker, example: disabled-dates
+- component: sd-datepicker, example: range
+- component: sd-datepicker, example: visible-month
 
 ### Key Properties
 
@@ -68,6 +68,44 @@ Use the components tool (with `component` + `story` args) to retrieve the HTML f
 - prop.currentPlacement: — Actual placement currently used by the flyout.
 - prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
 - prop.lang: string — The element's language.
+
+### Events
+
+- event.sd-change: Emitted when the date selection changes.
+- event.sd-range-select: Emitted when the date range selection changes.
+- event.sd-select: Emitted when the date selection changes.
+- event.sd-datepicker-close: Emitted when the datepicker is closed.
+- event.sd-focus: Emitted when the datepicker is focused.
+- event.sd-blur: Emitted when the datepicker is blurred.
+- event.sd-month-change: Emitted when the month is changed.
+- event.sd-month-year: Emitted when the year is changed.
+
+### Slots
+
+- slot.default: The default slot.
+- slot.label: The label for the date input.
+- slot.help-text: The help text, displayed below the input.
+- slot.tooltip: The tooltip icon and content.
+
+### CSS Parts
+
+- part.datepicker: The component's base wrapper.
+- part.header: The header containing the month/year and navigation buttons.
+- part.prev-year-button: The button to go to the previous year.
+- part.prev-month-button: The button to go to the previous month.
+- part.month-label: The month and year label.
+- part.next-month-button: The button to go to the next month.
+- part.next-year-button: The button to go to the next year.
+- part.grid: The calendar grid container.
+- part.weekday: Each weekday label in the calendar header.
+- part.day: Each day button in the calendar grid.
+- part.form-control: The form control wrapper around the input.
+- part.form-control-label: The label for the input.
+- part.form-control-input: The input element.
+- part.border: The border around the input.
+- part.invalid-icon: The icon shown when the input is invalid.
+- part.valid-icon: The icon shown when the input is valid.
+- part.form-control-help-text: The help text, displayed below the input.
 
 ## Guidelines
 

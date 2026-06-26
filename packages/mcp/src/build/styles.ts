@@ -4,6 +4,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import ora from 'ora';
 import { createPath, stylesPath } from '../utilities/index.js';
+import { Example } from './components.js';
 
 /** Absolute path to the docs stories/styles directory */
 const DOCS_STYLES_DIR = join(dirname(fileURLToPath(import.meta.url)), '../../../docs/src/stories/styles');
@@ -112,7 +113,7 @@ const toKebab = (s: string): string =>
  * Only stories with a JSDoc comment AND a direct html` literal are included.
  * Default/generateTemplate stories are skipped.
  */
-const extractStories = async (storiesPath: string): Promise<Story[]> => {
+const extractStories = async (storiesPath: string): Promise<Example[]> => {
   let source: string;
   try {
     source = await fs.readFile(storiesPath, 'utf-8');
@@ -120,7 +121,7 @@ const extractStories = async (storiesPath: string): Promise<Story[]> => {
     return [];
   }
 
-  const stories: Story[] = [];
+  const stories: Example[] = [];
   // Match: optional JSDoc, then `export const ExportName = {`
   const pattern = /(\/\*\*([\s\S]*?)\*\/\s*)?^export const (\w+) = \{/gm;
   let match: RegExpExecArray | null;

@@ -6,7 +6,7 @@
 
 ### Examples
 
-Use the components toolto retrieve the HTML by passing args `component` and `example` for any of these combinations:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
 - component: sd-video, example: video-element-with-poster-slot
 - component: sd-video, example: playing

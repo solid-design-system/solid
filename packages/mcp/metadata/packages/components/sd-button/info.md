@@ -6,16 +6,16 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-button/variants
-- sd-button/size
-- sd-button/as-link
-- sd-button/loading
-- sd-button/disabled
-- sd-button/visually-disabled
-- sd-button/inverted
-- sd-button/icon
+- component: sd-button, example: variants
+- component: sd-button, example: size
+- component: sd-button, example: as-link
+- component: sd-button, example: loading
+- component: sd-button, example: disabled
+- component: sd-button, example: visually-disabled
+- component: sd-button, example: inverted
+- component: sd-button, example: icon
 
 ### Key Properties
 

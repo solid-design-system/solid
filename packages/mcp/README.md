@@ -71,13 +71,13 @@ Add to `claude_desktop_config.json`:
 
 - **No arguments** → Lists all available `sd-*` components + available package doc topics
 - **`component` arg** (e.g. `sd-button`) → Returns full component spec: usage guidelines, API (properties, events, slots, CSS parts), related components and templates
-- **`component` + `story` args** → Returns HTML code example for a specific usage pattern (e.g. `sd-button` + `inverted`)
+- **`component` + `example` args** → Returns HTML code example for a specific usage pattern (e.g. `sd-button` + `inverted`)
 - **`doc` arg** (e.g. `"localization"`, `"installation"`, `"customization"`) → Returns package-level guide
 
 **Parameters:**
 
 - `component` (string, optional): sd-\* component tag name, e.g. `"sd-button"`
-- `story` (string, optional): Story slug for HTML example, e.g. `"inverted"` or `"no-shadow"` (requires `component`)
+- `example` (string, optional): Example slug for HTML example, e.g. `"inverted"` or `"no-shadow"` (requires `component`)
 - `doc` (string, optional): Package doc slug, e.g. `"localization"` or `"installation"`
 
 **Example prompts:**

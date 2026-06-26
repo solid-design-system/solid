@@ -6,15 +6,15 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-radio-group/size
-- sd-radio-group/label
-- sd-radio-group/orientation
-- sd-radio-group/required
-- sd-radio-group/help-text
-- sd-radio-group/disabled
-- sd-radio-group/invalid
+- component: sd-radio-group, example: size
+- component: sd-radio-group, example: label
+- component: sd-radio-group, example: orientation
+- component: sd-radio-group, example: required
+- component: sd-radio-group, example: help-text
+- component: sd-radio-group, example: disabled
+- component: sd-radio-group, example: invalid
 
 ### Key Properties
 

@@ -6,23 +6,23 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-select/size
-- sd-select/placement
-- sd-select/label
-- sd-select/floating-label
-- sd-select/placeholder
-- sd-select/disabled
-- sd-select/visually-disabled
-- sd-select/help-text
-- sd-select/clearable
-- sd-select/multiple
-- sd-select/use-tags
-- sd-select/max-options-visible
-- sd-select/required
-- sd-select/valid
-- sd-select/invalid
+- component: sd-select, example: size
+- component: sd-select, example: placement
+- component: sd-select, example: label
+- component: sd-select, example: floating-label
+- component: sd-select, example: placeholder
+- component: sd-select, example: disabled
+- component: sd-select, example: visually-disabled
+- component: sd-select, example: help-text
+- component: sd-select, example: clearable
+- component: sd-select, example: multiple
+- component: sd-select, example: use-tags
+- component: sd-select, example: max-options-visible
+- component: sd-select, example: required
+- component: sd-select, example: valid
+- component: sd-select, example: invalid
 
 ### Key Properties
 

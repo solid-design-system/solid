@@ -6,15 +6,16 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-carousel/variant
-- sd-carousel/inverted
-- sd-carousel/loop
-- sd-carousel/autoplay
-- sd-carousel/slides-per-page
-- sd-carousel/slides-per-move
-- sd-carousel/fade
+- component: sd-carousel, example: variant
+- component: sd-carousel, example: inverted
+- component: sd-carousel, example: loop
+- component: sd-carousel, example: autoplay
+- component: sd-carousel, example: autoplay-interval
+- component: sd-carousel, example: slides-per-page
+- component: sd-carousel, example: slides-per-move
+- component: sd-carousel, example: fade
 
 ### Key Properties
 
@@ -22,6 +23,7 @@ Use the components tool (with `component` + `story` args) to retrieve the HTML f
 - prop.inverted: boolean, default=false — Inverts the carousel
 - prop.loop: boolean, default=false — When set, allows the user to navigate the carousel in the same direction indefinitely.
 - prop.autoplay: boolean, default=false — When set, the slides will scroll automatically when the user is not interacting with them.
+- prop.autoplayInterval [attr: autoplay-interval]: number, default=5 — Time (in seconds) between automatic slide transitions.
 - prop.fade: boolean, default=false — When set, slides will fade between each other instead of scrolling.
 - prop.slidesPerPage [attr: slides-per-page]: number, default=1 — Specifies how many slides should be shown at a given time.
 - prop.slidesPerMove [attr: slides-per-move]: number, default=1 — Use `slides-per-move` to set how many slides the carousel advances when scrolling. This is useful when specifying a `slides-per-page` greater than one. By setting `slides-per-move` to the same value as `slides-per-page`, the carousel will advance by one page at a time.<br>

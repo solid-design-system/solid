@@ -6,13 +6,14 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-icon/name
-- sd-icon/label
-- sd-icon/color
-- sd-icon/size
-- sd-icon/icon-libraries
+- component: sd-icon, example: name
+- component: sd-icon, example: label
+- component: sd-icon, example: color
+- component: sd-icon, example: size
+- component: sd-icon, example: libraries
+- component: sd-icon, example: custom-libraries
 
 ### Key Properties
 
@@ -37,6 +38,7 @@ Use the components tool (with `component` + `story` args) to retrieve the HTML f
 
 - audio
 - badge
+- bottom-navigation
 - breadcrumb
 - button
 - checkbox-group

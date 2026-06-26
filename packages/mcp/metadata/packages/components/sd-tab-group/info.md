@@ -6,10 +6,10 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-tab-group/activation
-- sd-tab-group/scrollable
+- component: sd-tab-group, example: activation
+- component: sd-tab-group, example: scrollable
 
 ### Key Properties
 

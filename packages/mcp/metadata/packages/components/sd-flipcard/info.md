@@ -6,12 +6,12 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-flipcard/variants
-- sd-flipcard/aspect-ratios
-- sd-flipcard/placement
-- sd-flipcard/flip-direction
+- component: sd-flipcard, example: variants
+- component: sd-flipcard, example: aspect-ratios
+- component: sd-flipcard, example: placement
+- component: sd-flipcard, example: flip-direction
 
 ### Key Properties
 

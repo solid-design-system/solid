@@ -6,17 +6,17 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-dropdown/open
-- sd-dropdown/rounded
-- sd-dropdown/placement
-- sd-dropdown/stay-open
-- sd-dropdown/disabled
-- sd-dropdown/distance
-- sd-dropdown/skidding
-- sd-dropdown/no-auto-size
-- sd-dropdown/no-flip
+- component: sd-dropdown, example: open
+- component: sd-dropdown, example: rounded
+- component: sd-dropdown, example: placement
+- component: sd-dropdown, example: stay-open
+- component: sd-dropdown, example: disabled
+- component: sd-dropdown, example: distance
+- component: sd-dropdown, example: skidding
+- component: sd-dropdown, example: no-auto-size
+- component: sd-dropdown, example: no-flip
 
 ### Key Properties
 

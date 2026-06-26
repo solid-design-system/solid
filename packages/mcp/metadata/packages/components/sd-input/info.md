@@ -6,30 +6,30 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-input/size
-- sd-input/label
-- sd-input/floating-label
-- sd-input/placeholder
-- sd-input/value
-- sd-input/disabled
-- sd-input/visually-disabled
-- sd-input/read-only
-- sd-input/help-text
-- sd-input/clearable
-- sd-input/icon
-- sd-input/toggle-password
-- sd-input/type
-- sd-input/required
-- sd-input/valid
-- sd-input/invalid
-- sd-input/pattern
-- sd-input/min-length
-- sd-input/max-length
-- sd-input/min
-- sd-input/max
-- sd-input/spin-buttons
+- component: sd-input, example: size
+- component: sd-input, example: label
+- component: sd-input, example: floating-label
+- component: sd-input, example: placeholder
+- component: sd-input, example: value
+- component: sd-input, example: disabled
+- component: sd-input, example: visually-disabled
+- component: sd-input, example: read-only
+- component: sd-input, example: help-text
+- component: sd-input, example: clearable
+- component: sd-input, example: icon
+- component: sd-input, example: toggle-password
+- component: sd-input, example: type
+- component: sd-input, example: required
+- component: sd-input, example: valid
+- component: sd-input, example: invalid
+- component: sd-input, example: pattern
+- component: sd-input, example: min-length
+- component: sd-input, example: max-length
+- component: sd-input, example: min
+- component: sd-input, example: max
+- component: sd-input, example: spin-buttons
 
 ### Key Properties
 

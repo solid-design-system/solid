@@ -6,10 +6,10 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-spinner/variants
-- sd-spinner/size
+- component: sd-spinner, example: variants
+- component: sd-spinner, example: size
 
 ### Key Properties
 

@@ -48,7 +48,8 @@ const extractMdxContent = async (mdxPath: string): Promise<MdxExtract> => {
   }
 };
 
-export interface Story {
+// Represents a single Story extracted from a component's .stories.ts file
+export interface Example {
   /** kebab-case slug used as the filename, e.g. "no-shadow" */
   slug: string;
   /** JSDoc description extracted from the comment above the export */
@@ -99,7 +100,7 @@ const toKebab = (s: string): string =>
  * Only stories with a JSDoc comment AND a direct html` literal are included.
  * Default/generateTemplate stories are skipped.
  */
-const extractStories = async (storiesPath: string): Promise<Story[]> => {
+const extractStories = async (storiesPath: string): Promise<Example[]> => {
   let source: string;
   try {
     source = await fs.readFile(storiesPath, 'utf-8');
@@ -107,7 +108,7 @@ const extractStories = async (storiesPath: string): Promise<Story[]> => {
     return [];
   }
 
-  const stories: Story[] = [];
+  const stories: Example[] = [];
   // Match: optional JSDoc, then `export const ExportName = {`
   const pattern = /(\/\*\*([\s\S]*?)\*\/\s*)?^export const (\w+) = \{/gm;
   let match: RegExpExecArray | null;

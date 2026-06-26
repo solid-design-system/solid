@@ -6,12 +6,12 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-badge/variant
-- sd-badge/size
-- sd-badge/inverted
-- sd-badge/overflow
+- component: sd-badge, example: variant
+- component: sd-badge, example: size
+- component: sd-badge, example: inverted
+- component: sd-badge, example: overflow
 
 ### Key Properties
 

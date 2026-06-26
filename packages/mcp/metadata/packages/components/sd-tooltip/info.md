@@ -6,15 +6,15 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-tooltip/size
-- sd-tooltip/placement
-- sd-tooltip/disabled
-- sd-tooltip/trigger
-- sd-tooltip/close-trigger
-- sd-tooltip/hoist
-- sd-tooltip/custom-trigger
+- component: sd-tooltip, example: size
+- component: sd-tooltip, example: placement
+- component: sd-tooltip, example: disabled
+- component: sd-tooltip, example: trigger
+- component: sd-tooltip, example: close-trigger
+- component: sd-tooltip, example: hoist
+- component: sd-tooltip, example: custom-trigger
 
 ### Key Properties
 

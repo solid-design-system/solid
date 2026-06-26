@@ -6,11 +6,11 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-drawer/open
-- sd-drawer/placement
-- sd-drawer/no-header
+- component: sd-drawer, example: open
+- component: sd-drawer, example: placement
+- component: sd-drawer, example: no-header
 
 ### Key Properties
 

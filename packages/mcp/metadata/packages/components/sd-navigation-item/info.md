@@ -6,20 +6,21 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-navigation-item/size
-- sd-navigation-item/orientation
-- sd-navigation-item/as-link
-- sd-navigation-item/current
-- sd-navigation-item/disabled
-- sd-navigation-item/divider
-- sd-navigation-item/chevron
-- sd-navigation-item/accordion
-- sd-navigation-item/separated
-- sd-navigation-item/description
-- sd-navigation-item/indented
-- sd-navigation-item/relaxed
+- component: sd-navigation-item, example: size
+- component: sd-navigation-item, example: orientation
+- component: sd-navigation-item, example: as-link
+- component: sd-navigation-item, example: current
+- component: sd-navigation-item, example: disabled
+- component: sd-navigation-item, example: stacked
+- component: sd-navigation-item, example: divider
+- component: sd-navigation-item, example: chevron
+- component: sd-navigation-item, example: accordion
+- component: sd-navigation-item, example: separated
+- component: sd-navigation-item, example: description
+- component: sd-navigation-item, example: indented
+- component: sd-navigation-item, example: relaxed
 
 ### Key Properties
 
@@ -30,6 +31,7 @@ Use the components tool (with `component` + `story` args) to retrieve the HTML f
 - prop.download: string|undefined — Tells the browser to download the linked file as this filename. Only used when `href` is defined.
 - prop.current: boolean, default=false — Indicates that the navigation item is currently selected. The aria-current attribute is set to "page" on the host if true.
 - prop.disabled: boolean, default=false — Disables the navigation item.
+- prop.stacked: boolean, default=false — Stacks the navigation-item in a vertical layout. Only used if `vertical` is false.
 - prop.chevron: boolean, default=false — Appends a chevron to the right side of a navigation item. Only used if `vertical` is true.
 - prop.relaxed: boolean, default=false — Adds additional padding to navigation item's left and right sides. Only used if `vertical` is true.
 - prop.divider: boolean, default=false — Adds additional padding to navigation item's left and right sides. Only used if `vertical` is true.
@@ -64,6 +66,7 @@ Use the components tool (with `component` + `story` args) to retrieve the HTML f
 
 - Populate an [sd-header](./?path=/docs/components-sd-header--docs) navigation bar at the top of a page, helping users easily access different sections.
 - Implement navigation items in a sidebar for a more detailed and hierarchical navigation structure.
+- Add stacked navigation items to a bottom bar used in mobile or web apps.
 
 ### Rules
 
@@ -97,6 +100,7 @@ Use the components tool (with `component` + `story` args) to retrieve the HTML f
 ### Related Templates
 
 - badge
+- bottom-navigation
 - breadcrumb
 - drawer
 - dropdown

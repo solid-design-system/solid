@@ -6,15 +6,15 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-step-group/size
-- sd-step-group/orientation
-- sd-step-group/horizontal-inline
-- sd-step-group/active-step
-- sd-step-group/not-interactive
-- sd-step-group/icon
-- sd-step-group/manual-state
+- component: sd-step-group, example: size
+- component: sd-step-group, example: orientation
+- component: sd-step-group, example: horizontal-inline
+- component: sd-step-group, example: active-step
+- component: sd-step-group, example: not-interactive
+- component: sd-step-group, example: icon
+- component: sd-step-group, example: manual-state
 
 ### Key Properties
 

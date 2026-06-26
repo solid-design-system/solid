@@ -6,12 +6,12 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-switch/checked
-- sd-switch/disabled
-- sd-switch/required
-- sd-switch/invalid
+- component: sd-switch, example: checked
+- component: sd-switch, example: disabled
+- component: sd-switch, example: required
+- component: sd-switch, example: invalid
 
 ### Key Properties
 

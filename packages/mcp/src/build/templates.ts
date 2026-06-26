@@ -4,7 +4,7 @@ import { dirname, join, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import ora from 'ora';
 import { componentPath, createPath, templatesPackagePath, stylesPath } from '../utilities/index.js';
-import type { Story } from './components.js';
+import type { Example } from './components.js';
 
 /** Absolute path to the docs stories/templates directory */
 const DOCS_TEMPLATES_DIR = join(dirname(fileURLToPath(import.meta.url)), '../../../docs/src/stories/templates');
@@ -50,24 +50,24 @@ const extractDefaultTitle = (source: string): string | null => {
   return match ? match[1] : null;
 };
 
-const extractStories = (source: string): { name: string; html: string }[] => {
-  const stories: { name: string; html: string }[] = [];
+const extractExamples = (source: string): { name: string; html: string }[] => {
+  const examples: { name: string; html: string }[] = [];
   const exportPattern = /^export const (\w+) = \{/gm;
   let match: RegExpExecArray | null;
   while ((match = exportPattern.exec(source)) !== null) {
     const exportName = match[1];
     const blockStart = match.index + match[0].length;
     const nameMatch = source.slice(blockStart, blockStart + 500).match(/name:\s*['"]([^'"]+)['"]/);
-    const storyName = nameMatch ? nameMatch[1] : exportNameToTitle(exportName);
+    const exampleName = nameMatch ? nameMatch[1] : exportNameToTitle(exportName);
     const blockSlice = source.slice(blockStart);
     const htmlIdx = blockSlice.indexOf('html`');
     if (htmlIdx === -1) continue;
     const rawHtml = extractTemplateLiteralContent(source, blockStart + htmlIdx + 5);
     const html = dedent(rawHtml);
     if (!html) continue;
-    stories.push({ name: storyName, html });
+    examples.push({ name: exampleName, html });
   }
-  return stories;
+  return examples;
 };
 
 const extractSection = (docs: string, heading: string): string => {
@@ -97,7 +97,7 @@ export const buildTemplates = async () => {
         const name = basename(file, '.stories.ts');
         const source = await fs.readFile(join(DOCS_TEMPLATES_DIR, file), 'utf-8');
         const components = extractComponents(source);
-        const stories = extractStories(source);
+        const examples = extractExamples(source);
         const title = extractDefaultTitle(source) ?? name;
 
         const frontmatter = [
@@ -112,7 +112,7 @@ export const buildTemplates = async () => {
 
         const content = [
           frontmatter,
-          ...stories.map(s => `## Template: ${s.name}\n\n\`\`\`html\n${s.html}\n\`\`\``)
+          ...examples.map(example => `## Template: ${example.name}\n\n\`\`\`html\n${example.html}\n\`\`\``)
         ].join('\n\n');
         await fs.writeFile(join(templatesPackagePath, `${name}.md`), content);
 
@@ -147,15 +147,20 @@ export const buildTemplates = async () => {
         const raw = await fs.readFile(join(componentPath, file), 'utf-8').catch(() => null);
         if (!raw) return;
 
-        const { api, docs, relatedComponents, stories } = JSON.parse(raw) as {
+        const {
+          api,
+          docs,
+          relatedComponents,
+          stories: examples
+        } = JSON.parse(raw) as {
           api: { tagName: string; summary: string; props: string; events: string; slots: string; parts: string };
           docs: string | null;
           relatedComponents: string[];
-          stories: Story[];
+          stories: Example[];
         };
 
         const templates = (componentToTemplates.get(tagName) ?? []).sort();
-        const storySlugList = stories.map(s => s.slug);
+        const exampleSlugList = examples.map(example => example.slug);
 
         // Create component subdirectory and stories subfolder
         const compDir = join(componentPath, tagName);
@@ -164,11 +169,11 @@ export const buildTemplates = async () => {
 
         // Write per-story files into stories/ subfolder
         await Promise.all(
-          stories.map(story => {
+          examples.map(example => {
             const lines: string[] = [];
-            if (story.description) lines.push(story.description, '');
-            lines.push('```html', story.html, '```');
-            return fs.writeFile(join(storiesDir, `${story.slug}.md`), lines.join('\n'));
+            if (example.description) lines.push(example.description, '');
+            lines.push('```html', example.html, '```');
+            return fs.writeFile(join(storiesDir, `${example.slug}.md`), lines.join('\n'));
           })
         );
 
@@ -189,9 +194,9 @@ export const buildTemplates = async () => {
         // API section with sub-headings
         const apiSubSections: string[] = [];
 
-        if (storySlugList.length) {
+        if (exampleSlugList.length) {
           apiSubSections.push(
-            `### Examples\n\nUse the components tool by passing the args \`component\` and \`example\` for any of these combinations:\n\n${storySlugList.map(s => `- component: ${tagName}, example: ${s}`).join('\n')}`
+            `### Examples\n\nUse the components tool by passing the args \`component\` and \`example\` for any of these combinations:\n\n${exampleSlugList.map(example => `- component: ${tagName}, example: ${example}`).join('\n')}`
           );
         }
         if (api.props) apiSubSections.push(`### Key Properties\n\n${api.props}`);
@@ -251,14 +256,19 @@ export const buildTemplates = async () => {
         const raw = await fs.readFile(join(stylesPath, file), 'utf-8').catch(() => null);
         if (!raw) return;
 
-        const { summary, docs, relatedTemplates, stories } = JSON.parse(raw) as {
+        const {
+          summary,
+          docs,
+          relatedTemplates,
+          stories: examples
+        } = JSON.parse(raw) as {
           summary: string | null;
           docs: string | null;
           relatedTemplates: string[];
-          stories: Story[];
+          stories: Example[];
         };
 
-        const storySlugList = stories.map(s => s.slug);
+        const exampleSlugList = examples.map(example => example.slug);
 
         // Create style subdirectory and stories subfolder
         const styleDir = join(stylesPath, styleName);
@@ -267,11 +277,11 @@ export const buildTemplates = async () => {
 
         // Write per-story files into stories/ subfolder
         await Promise.all(
-          stories.map(story => {
+          examples.map(example => {
             const lines: string[] = [];
-            if (story.description) lines.push(story.description, '');
-            lines.push('```html', story.html, '```');
-            return fs.writeFile(join(storiesDir, `${story.slug}.md`), lines.join('\n'));
+            if (example.description) lines.push(example.description, '');
+            lines.push('```html', example.html, '```');
+            return fs.writeFile(join(storiesDir, `${example.slug}.md`), lines.join('\n'));
           })
         );
 
@@ -284,9 +294,9 @@ export const buildTemplates = async () => {
         // API section with sub-headings
         const apiSubSections: string[] = [];
 
-        if (storySlugList.length) {
+        if (exampleSlugList.length) {
           apiSubSections.push(
-            `### Examples\n\nUse the styles tool (with \`style\` + \`example\` args) to retrieve the HTML for any of these examples:\n\n${storySlugList.map(s => `- ${styleName}/${s}`).join('\n')}`
+            `### Examples\n\nUse the styles tool (with \`style\` + \`example\` args) to retrieve the HTML for any of these examples:\n\n${exampleSlugList.map(example => `- ${styleName}/${example}`).join('\n')}`
           );
         }
 

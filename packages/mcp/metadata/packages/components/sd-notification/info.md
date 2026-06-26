@@ -6,15 +6,15 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-notification/variants
-- sd-notification/open
-- sd-notification/closable
-- sd-notification/duration
-- sd-notification/duration-indicator
-- sd-notification/toast-notification
-- sd-notification/toast-bottom-center
+- component: sd-notification, example: variants
+- component: sd-notification, example: open
+- component: sd-notification, example: closable
+- component: sd-notification, example: duration
+- component: sd-notification, example: duration-indicator
+- component: sd-notification, example: toast-notification
+- component: sd-notification, example: toast-bottom-center
 
 ### Key Properties
 
@@ -136,6 +136,7 @@ Provide brief, unobtrusive messages to users through toast notifications that ov
 
 ### Related Templates
 
+- header-navigation
 - notification
 - range
 

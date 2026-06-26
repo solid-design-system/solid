@@ -6,28 +6,28 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-combobox/size
-- sd-combobox/placement
-- sd-combobox/label
-- sd-combobox/floating-label
-- sd-combobox/placeholder
-- sd-combobox/disabled
-- sd-combobox/visually-disabled
-- sd-combobox/help-text
-- sd-combobox/focus
-- sd-combobox/suggestion-container-height
-- sd-combobox/clearable
-- sd-combobox/icons
-- sd-combobox/search
-- sd-combobox/multiple
-- sd-combobox/max-options-visible
-- sd-combobox/required
-- sd-combobox/valid
-- sd-combobox/invalid
-- sd-combobox/async-options
-- sd-combobox/custom-filter
+- component: sd-combobox, example: size
+- component: sd-combobox, example: placement
+- component: sd-combobox, example: label
+- component: sd-combobox, example: floating-label
+- component: sd-combobox, example: placeholder
+- component: sd-combobox, example: disabled
+- component: sd-combobox, example: visually-disabled
+- component: sd-combobox, example: help-text
+- component: sd-combobox, example: focus
+- component: sd-combobox, example: suggestion-container-height
+- component: sd-combobox, example: clearable
+- component: sd-combobox, example: icons
+- component: sd-combobox, example: search
+- component: sd-combobox, example: multiple
+- component: sd-combobox, example: max-options-visible
+- component: sd-combobox, example: required
+- component: sd-combobox, example: valid
+- component: sd-combobox, example: invalid
+- component: sd-combobox, example: async-options
+- component: sd-combobox, example: custom-filter
 
 ### Key Properties
 
@@ -80,6 +80,7 @@ Use the components tool (with `component` + `story` args) to retrieve the HTML f
 - event.sd-change: Emitted when the control's value changes.
 - event.sd-clear: Emitted when the control's value is cleared.
 - event.sd-input: Emitted when the control receives input.
+- event.sd-search: Emitted when the search button is activated.
 - event.sd-focus: Emitted when the control gains focus.
 - event.sd-blur: Emitted when the control loses focus.
 - event.sd-show: Emitted when the combobox's menu opens.

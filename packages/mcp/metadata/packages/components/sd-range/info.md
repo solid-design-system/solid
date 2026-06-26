@@ -4,6 +4,12 @@
 
 ## API
 
+### Examples
+
+Use the components tool by passing the args `component` and `example` for any of these combinations:
+
+- component: sd-range, example: tooltip-formatter
+
 ### Key Properties
 
 - prop.tooltipFormatter: (value: number) => string — A function used to format the tooltip's value.

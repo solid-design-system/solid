@@ -6,11 +6,11 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-divider/size
-- sd-divider/orientation
-- sd-divider/inverted
+- component: sd-divider, example: size
+- component: sd-divider, example: orientation
+- component: sd-divider, example: inverted
 
 ### Key Properties
 

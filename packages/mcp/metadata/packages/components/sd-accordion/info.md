@@ -6,10 +6,10 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-accordion/open
-- sd-accordion/summary
+- component: sd-accordion, example: open
+- component: sd-accordion, example: summary
 
 ### Key Properties
 

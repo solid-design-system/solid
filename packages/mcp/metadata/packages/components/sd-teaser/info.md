@@ -6,16 +6,16 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-teaser/variant
-- sd-teaser/default-and-headline-slot
-- sd-teaser/media-slot
-- sd-teaser/meta-slot
-- sd-teaser/inset
-- sd-teaser/breakpoint
-- sd-teaser/reverse
-- sd-teaser/distribution
+- component: sd-teaser, example: variant
+- component: sd-teaser, example: default-and-headline-slot
+- component: sd-teaser, example: media-slot
+- component: sd-teaser, example: meta-slot
+- component: sd-teaser, example: inset
+- component: sd-teaser, example: breakpoint
+- component: sd-teaser, example: reverse
+- component: sd-teaser, example: distribution
 
 ### Key Properties
 
@@ -87,6 +87,7 @@ Use the components tool (with `component` + `story` args) to retrieve the HTML f
 ### Related Templates
 
 - audio
+- bottom-navigation
 - headline
 - teaser
 

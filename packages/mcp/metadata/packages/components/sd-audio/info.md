@@ -6,14 +6,14 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-audio/animated
-- sd-audio/inverted
-- sd-audio/reverse
-- sd-audio/speed
-- sd-audio/no-timestamps
-- sd-audio/transcript
+- component: sd-audio, example: animated
+- component: sd-audio, example: inverted
+- component: sd-audio, example: reverse
+- component: sd-audio, example: speed
+- component: sd-audio, example: no-timestamps
+- component: sd-audio, example: transcript
 
 ### Key Properties
 

@@ -6,15 +6,15 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-checkbox/size
-- sd-checkbox/disabled
-- sd-checkbox/visually-disabled
-- sd-checkbox/checked
-- sd-checkbox/indeterminate
-- sd-checkbox/required
-- sd-checkbox/invalid
+- component: sd-checkbox, example: size
+- component: sd-checkbox, example: disabled
+- component: sd-checkbox, example: visually-disabled
+- component: sd-checkbox, example: checked
+- component: sd-checkbox, example: indeterminate
+- component: sd-checkbox, example: required
+- component: sd-checkbox, example: invalid
 
 ### Key Properties
 

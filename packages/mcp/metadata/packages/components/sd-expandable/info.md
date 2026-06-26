@@ -6,11 +6,11 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-expandable/open
-- sd-expandable/inverted
-- sd-expandable/gradient
+- component: sd-expandable, example: open
+- component: sd-expandable, example: inverted
+- component: sd-expandable, example: gradient
 
 ### Key Properties
 

@@ -6,14 +6,14 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-radio-button/size
-- sd-radio-button/checked
-- sd-radio-button/label
-- sd-radio-button/icon
-- sd-radio-button/disabled
-- sd-radio-button/visually-disabled
+- component: sd-radio-button, example: size
+- component: sd-radio-button, example: checked
+- component: sd-radio-button, example: label
+- component: sd-radio-button, example: icon
+- component: sd-radio-button, example: disabled
+- component: sd-radio-button, example: visually-disabled
 
 ### Key Properties
 

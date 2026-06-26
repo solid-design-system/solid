@@ -6,21 +6,21 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-step/size
-- sd-step/orientation
-- sd-step/horizontal-inline
-- sd-step/current
-- sd-step/waiting
-- sd-step/disabled
-- sd-step/as-link
-- sd-step/no-tail
-- sd-step/not-interactive
-- sd-step/icon
-- sd-step/label
-- sd-step/description
-- sd-step/description-and-label-using-attributes
+- component: sd-step, example: size
+- component: sd-step, example: orientation
+- component: sd-step, example: horizontal-inline
+- component: sd-step, example: current
+- component: sd-step, example: waiting
+- component: sd-step, example: disabled
+- component: sd-step, example: as-link
+- component: sd-step, example: no-tail
+- component: sd-step, example: not-interactive
+- component: sd-step, example: icon
+- component: sd-step, example: label
+- component: sd-step, example: description
+- component: sd-step, example: description-and-label-using-attributes
 
 ### Key Properties
 

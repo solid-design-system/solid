@@ -6,15 +6,15 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-link/size
-- sd-link/as-link
-- sd-link/icon
-- sd-link/standalone
-- sd-link/disabled
-- sd-link/visually-disabled
-- sd-link/inverted
+- component: sd-link, example: size
+- component: sd-link, example: as-link
+- component: sd-link, example: icon
+- component: sd-link, example: standalone
+- component: sd-link, example: disabled
+- component: sd-link, example: visually-disabled
+- component: sd-link, example: inverted
 
 ### Key Properties
 

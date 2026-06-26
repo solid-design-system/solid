@@ -6,12 +6,12 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-radio/size
-- sd-radio/disabled
-- sd-radio/visually-disabled
-- sd-radio/invalid
+- component: sd-radio, example: size
+- component: sd-radio, example: disabled
+- component: sd-radio, example: visually-disabled
+- component: sd-radio, example: invalid
 
 ### Key Properties
 

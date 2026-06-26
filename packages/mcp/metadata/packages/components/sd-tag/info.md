@@ -6,14 +6,14 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-tag/size
-- sd-tag/selected
-- sd-tag/removable
-- sd-tag/as-link
-- sd-tag/disabled
-- sd-tag/icon
+- component: sd-tag, example: size
+- component: sd-tag, example: selected
+- component: sd-tag, example: removable
+- component: sd-tag, example: as-link
+- component: sd-tag, example: disabled
+- component: sd-tag, example: icon
 
 ### Key Properties
 

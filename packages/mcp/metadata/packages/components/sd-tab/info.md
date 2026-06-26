@@ -6,13 +6,13 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-tab/variant
-- sd-tab/active
-- sd-tab/disabled
-- sd-tab/visually-disabled
-- sd-tab/icon
+- component: sd-tab, example: variant
+- component: sd-tab, example: active
+- component: sd-tab, example: disabled
+- component: sd-tab, example: visually-disabled
+- component: sd-tab, example: icon
 
 ### Key Properties
 

@@ -6,13 +6,13 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-menu/icon
-- sd-menu/checkmark
-- sd-menu/submenu
-- sd-menu/grouping
-- sd-menu/disabled
+- component: sd-menu, example: icon
+- component: sd-menu, example: checkmark
+- component: sd-menu, example: submenu
+- component: sd-menu, example: grouping
+- component: sd-menu, example: disabled
 
 ### Key Properties
 

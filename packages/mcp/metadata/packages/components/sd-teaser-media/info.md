@@ -6,12 +6,12 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-teaser-media/variant
-- sd-teaser-media/default-media-and-headline-slot
-- sd-teaser-media/meta-slot
-- sd-teaser-media/expandable-slot
+- component: sd-teaser-media, example: variant
+- component: sd-teaser-media, example: default-media-and-headline-slot
+- component: sd-teaser-media, example: meta-slot
+- component: sd-teaser-media, example: expandable-slot
 
 ### Key Properties
 

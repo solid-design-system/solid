@@ -6,12 +6,12 @@
 
 ### Examples
 
-Use the components tool (with `component` + `story` args) to retrieve the HTML for any of these examples:
+Use the components tool by passing the args `component` and `example` for any of these combinations:
 
-- sd-option/size
-- sd-option/checkbox
-- sd-option/selected
-- sd-option/disabled
+- component: sd-option, example: size
+- component: sd-option, example: checkbox
+- component: sd-option, example: selected
+- component: sd-option, example: disabled
 
 ### Key Properties
 
