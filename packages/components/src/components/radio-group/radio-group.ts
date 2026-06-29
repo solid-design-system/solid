@@ -278,7 +278,10 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
       })
     );
 
-    this.hasButtonGroup = radios.some(radio => radio.tagName.toLowerCase() === 'sd-radio-button');
+    const newHasButtonGroup = radios.some(radio => radio.tagName.toLowerCase() === 'sd-radio-button');
+    if (this.hasButtonGroup !== newHasButtonGroup) {
+      this.hasButtonGroup = newHasButtonGroup;
+    }
 
     if (!radios.some(radio => radio.checked)) {
       if (this.hasButtonGroup) {

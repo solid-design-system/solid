@@ -407,7 +407,7 @@ describe('when the value changes', () => {
       const el = form.querySelector<SdRadioGroup>('sd-radio-group')!;
       await el.updateComplete;
 
-      const requestUpdateSpy = sinon.spy(el, 'requestUpdate');
+      const spy = sinon.spy(el, 'requestUpdate');
 
       form.requestSubmit();
       await el.updateComplete;
@@ -415,8 +415,10 @@ describe('when the value changes', () => {
       // requestUpdate may be called once to mark user-interacted, but must not be
       // called again as a side-effect of the first update completing
       await aTimeout(50);
-      const callCount = requestUpdateSpy.callCount;
-      expect(callCount).to.be.lessThan(2, `requestUpdate was called ${callCount} times — indicates a cascading update`);
+      expect(spy.callCount).to.be.lessThan(
+        2,
+        `requestUpdate was called ${spy.callCount} times — indicates a cascading update`
+      );
     });
   });
 });
