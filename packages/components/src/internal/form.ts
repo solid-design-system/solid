@@ -328,12 +328,10 @@ export class FormControlController implements ReactiveController {
       if (this.host.showValidStyle !== undefined && !this.host.showValidStyle) this.host.showValidStyle = true;
       if (this.host.showInvalidStyle) this.host.showInvalidStyle = false;
     } else if (this.host.hasAttribute('data-user-invalid') && !this.host.checkValidity()) {
-      if (this.host.showValidStyle !== undefined && this.host.showValidStyle !== false)
-        this.host.showValidStyle = false;
+      if (this.host.showValidStyle !== undefined && this.host.showValidStyle) this.host.showValidStyle = false;
       if (!this.host.showInvalidStyle) this.host.showInvalidStyle = true;
     } else {
-      if (this.host.showValidStyle !== undefined && this.host.showValidStyle !== false)
-        this.host.showValidStyle = false;
+      if (this.host.showValidStyle !== undefined && this.host.showValidStyle) this.host.showValidStyle = false;
       if (this.host.showInvalidStyle) this.host.showInvalidStyle = false;
     }
   }
