@@ -4,7 +4,10 @@ import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import { docsSourceStoriesPath } from '../utilities/index.js';
 
-type DocEntry = { slug: string; filePath: string };
+interface DocEntry {
+  slug: string;
+  filePath: string;
+}
 
 const QUICKSTART_DOCS: DocEntry[] = [
   { slug: 'Quickstart', filePath: join(docsSourceStoriesPath, 'packages', 'Quickstart.mdx') },
