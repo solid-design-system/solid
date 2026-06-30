@@ -41,6 +41,15 @@ export const iconsPath = join(currentDirname, '../../metadata/packages/icons');
 /** CD Toolbox guidelines */
 export const cdToolboxPath = join(currentDirname, '../../metadata/cd-toolbox');
 
+/** Docs package source stories (MD/MDX) */
+export const docsSourceStoriesPath = join(currentDirname, '../../../docs/src/stories');
+
+/** Docs package generated markdown metadata */
+export const docsPackagePath = join(currentDirname, '../../metadata/packages/docs');
+
+/** Token package docs (generated markdown from docs package) */
+export const tokenPackageDocsPath = join(currentDirname, '../../metadata/packages/docs/packages/tokens');
+
 /** Root of all static AI-rule markdown files */
 export const staticPath = join(currentDirname, '../../metadata/static');
 

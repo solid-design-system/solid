@@ -1,4 +1,5 @@
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { z } from 'zod';
 import { getTailwindThemeTokenNames } from '../utilities/index.js';
 
 const TAILWIND_MAPPING = `
@@ -22,6 +23,17 @@ CSS variable prefix → Tailwind utility
 --animate-*           →  animate-*
 `.trim();
 
+const scoreMatch = (keyword: string, token: string): number => {
+  const q = keyword.toLowerCase();
+  const t = token.toLowerCase();
+  const normalized = t.replace(/^--/, '');
+
+  if (t === q || normalized === q) return 100;
+  if (normalized.startsWith(q) || t.startsWith(q)) return 80;
+  if (normalized.includes(q) || t.includes(q)) return 60;
+  return 0;
+};
+
 /**
  * Simple tool to list all available tokens in the Solid Design System.
  * This tool fetches the token data from the Solid package and formats it for display.
@@ -32,12 +44,66 @@ export const tokenInfoTool = (server: McpServer) => {
     'token-info',
     {
       description:
-        'Get design tokens (CSS variables and TailwindCSS utility classes) available in the Solid Design System. Use this to look up correct Tailwind class names and CSS custom properties for colors, spacing, typography, and more.',
-      inputSchema: {},
-      title: 'Token info'
+        `Solid Design System tokens. ` +
+        `Call without arguments to list all tokens and usage guidance. ` +
+        `Pass \`token\` (e.g. "--background-color-neutral-100" or "background") to search matching tokens.`,
+      inputSchema: {
+        token: z
+          .string()
+          .optional()
+          .describe('Token name or partial token text, e.g. "--background-color-neutral-100" or "spacing".')
+      },
+      title: 'Tokens'
     },
-    () => {
+    ({ token }) => {
       const tokenNames = getTailwindThemeTokenNames();
+
+      if (!tokenNames.length) {
+        return {
+          content: [
+            {
+              text: 'No design tokens found. Token metadata may not be built yet.',
+              type: 'text'
+            }
+          ]
+        };
+      }
+
+      if (token) {
+        const sorted = tokenNames
+          .map(name => ({ token: name, score: scoreMatch(token, name) }))
+          .filter(item => item.score > 0)
+          .sort((a, b) => b.score - a.score || a.token.localeCompare(b.token));
+
+        if (!sorted.length) {
+          return {
+            content: [
+              {
+                type: 'text',
+                text: `No tokens found matching "${token}".`
+              }
+            ]
+          };
+        }
+
+        const lines = sorted.map(({ token: tokenName }) => `- \`${tokenName}\``);
+
+        return {
+          content: [
+            {
+              text: [
+                `Found ${sorted.length} token(s) matching "${token}":`,
+                '',
+                lines.join('\n'),
+                '',
+                'Use Tailwind utility classes directly where available; use CSS variables via `var(--token-name)` in CSS.'
+              ].join('\n'),
+              type: 'text'
+            }
+          ]
+        };
+      }
+
       return {
         content: [
           {

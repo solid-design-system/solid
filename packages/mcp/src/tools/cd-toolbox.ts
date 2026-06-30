@@ -43,10 +43,9 @@ export const cdToolboxTool = (server: McpServer) => {
   server.registerTool(
     'cd-toolbox',
     {
-      description:
-        'Access Corporate Design (CD) Toolbox guidelines for Union Investment digital products. ' +
-        'Call without a topic to list all available topics with short descriptions. ' +
-        'Call with a topic ID to get the full guidelines for that topic.',
+      description: `Access Corporate Design (CD) Toolbox guidelines for Union Investment digital products. 
+        - Call without a topic to list all available topics with short descriptions. 
+        - Call with a topic ID to get the full guidelines for that topic.`,
       inputSchema: {
         topic: z
           .string()

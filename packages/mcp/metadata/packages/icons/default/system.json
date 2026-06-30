@@ -30,14 +30,14 @@
     "tags": ["sonnig", "hell", "schönes Wetter"]
   },
   {
-    "technicalId": "settings",
-    "displayNameDe": "Einstellungen",
-    "tags": ["anpassen", "Bearbeitung", "Zahnrad"]
-  },
-  {
     "technicalId": "volume",
     "displayNameDe": "Lautstärke",
     "tags": ["Ton", "Pegel", "Geräuschpegel"]
+  },
+  {
+    "technicalId": "settings",
+    "displayNameDe": "Einstellungen",
+    "tags": ["anpassen", "Bearbeitung", "Zahnrad"]
   },
   {
     "technicalId": "hand",
@@ -80,14 +80,14 @@
     "tags": ["Favoriten", "gespeichert", "gemerkt"]
   },
   {
-    "technicalId": "flash-on",
-    "displayNameDe": "Blitz an",
-    "tags": ["Taschenlampe an", "Foto"]
-  },
-  {
     "technicalId": "battery-full",
     "displayNameDe": "Batterie voll\n",
     "tags": ["voll", "Akku", "Ladestatus"]
+  },
+  {
+    "technicalId": "flash-on",
+    "displayNameDe": "Blitz an",
+    "tags": ["Taschenlampe an", "Foto"]
   },
   {
     "technicalId": "sort-down",
@@ -615,24 +615,24 @@
     "tags": ["klicken", "auswählen"]
   },
   {
-    "technicalId": "file-read-out",
-    "displayNameDe": "Dokument vorlesen",
-    "tags": ["vorlesen", "Audio", "Lautstärke"]
-  },
-  {
     "technicalId": "layers",
     "displayNameDe": "Ebenen",
     "tags": ["gruppieren", "Stapel", "mehrere Folien erzeugen"]
   },
   {
-    "technicalId": "file-wai",
-    "displayNameDe": "Dokument wAI",
-    "tags": ["Dokument", "Datei", "wAI"]
+    "technicalId": "file-read-out",
+    "displayNameDe": "Dokument vorlesen",
+    "tags": ["vorlesen", "Audio", "Lautstärke"]
   },
   {
     "technicalId": "collapse-left",
     "displayNameDe": "einklappen links",
     "tags": ["komprimieren", "verstecken", "Seitenleiste"]
+  },
+  {
+    "technicalId": "file-wai",
+    "displayNameDe": "Dokument wAI",
+    "tags": ["Dokument", "Datei", "wAI"]
   },
   {
     "technicalId": "download",
@@ -885,14 +885,14 @@
     "tags": ["Filterfunktion", "deaktiviert"]
   },
   {
-    "technicalId": "filter-filled",
-    "displayNameDe": "Filter voll",
-    "tags": ["Filter", "Filterfunktion", "aktiviert"]
-  },
-  {
     "technicalId": "arrow-bottom",
     "displayNameDe": "Pfeil unten",
     "tags": ["fallend", "Anzeige", "Pfeil"]
+  },
+  {
+    "technicalId": "filter-filled",
+    "displayNameDe": "Filter voll",
+    "tags": ["Filter", "Filterfunktion", "aktiviert"]
   },
   {
     "technicalId": "question",
@@ -1045,14 +1045,14 @@
     "tags": ["Rückmeldung", "Nachricht", "Kommunikation"]
   },
   {
-    "technicalId": "e-mail-send",
-    "displayNameDe": "E-Mail abschicken",
-    "tags": ["Brief", "E-Mail", "Kommunikation"]
-  },
-  {
     "technicalId": "password",
     "displayNameDe": "Passwort",
     "tags": ["sicherheitsgeschützt", "privat", "verschlüsselt"]
+  },
+  {
+    "technicalId": "e-mail-send",
+    "displayNameDe": "E-Mail abschicken",
+    "tags": ["Brief", "E-Mail", "Kommunikation"]
   },
   {
     "technicalId": "e-mail-exclamation",

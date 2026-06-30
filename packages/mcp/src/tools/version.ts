@@ -10,7 +10,7 @@ export const versionTool = (server: McpServer) => {
   server.registerTool(
     'version',
     {
-      description: 'Get version and basic information about the Solid Design System MCP Server',
+      description: 'Get version and basic information about the Solid Design System MCP Server.',
       inputSchema: {},
       title: 'Solid MCP Version Information'
     },
@@ -31,23 +31,22 @@ export const versionTool = (server: McpServer) => {
         content: [
           {
             text: `Solid Design System MCP Server Information:
+              **Version:** ${versionInfo.version}
+              **Name:** ${versionInfo.name}
+              **Description:** ${versionInfo.description}
 
-**Version:** ${versionInfo.version}
-**Name:** ${versionInfo.name}
-**Description:** ${versionInfo.description}
+              **Author:** ${versionInfo.author?.name || 'N/A'}
+              **License:** ${versionInfo.license || 'N/A'}
+              **Repository:** ${versionInfo.repository?.url || 'N/A'}
+              **Homepage:** ${versionInfo.homepage || 'N/A'}
 
-**Author:** ${versionInfo.author?.name || 'N/A'}
-**License:** ${versionInfo.license || 'N/A'}
-**Repository:** ${versionInfo.repository?.url || 'N/A'}
-**Homepage:** ${versionInfo.homepage || 'N/A'}
+              This MCP server provides tools to interact with the Solid Design System, including:
+              - Component information and documentation
+              - Design tokens and styling information
+              - CSS utility styles information
+              - Template and pattern information
 
-This MCP server provides tools to interact with the Solid Design System, including:
-- Component information and documentation
-- Design tokens and styling information
-- CSS utility styles information
-- Template and pattern information
-
-For more information about available tools, you can explore the other MCP tools provided by this server.`,
+              For more information about available tools, you can explore the other MCP tools provided by this server.`,
             type: 'text'
           }
         ]

@@ -39,11 +39,12 @@ export const stylesTool = (server: McpServer) => {
   server.registerTool(
     'styles',
     {
-      description: ` Solid Design System CSS style utilities. Usage modes:
-        - No arguments: list all style utilities and available package docs.
-        - \`style\` only: get the full specification for one style utility, including guidelines and class names.
-        - \`style\` + \`example\`: get the HTML example for one specific usage pattern (e.g. style="sd-chip", example="inverted").
-        - \`doc\` only: get a package-level guide such as "installation". Do not combine \`doc\` with \`style\` or \`example\`.`,
+      description: `Solid Design System CSS style utilities. 
+        - Call without arguments to list all style utilities and available package docs. 
+        - Pass \`style\` (e.g. "sd-chip" or "chip") to get the full specification, including guidelines and class names. 
+        - Pass \`style\` + \`example\` (e.g. style="sd-chip", example="inverted") to get one HTML usage example. 
+        - Pass \`doc\` (e.g. "installation") to get a package-level guide. 
+        - Do not combine \`doc\` with \`style\` or \`example\`.`,
       inputSchema: {
         style: z
           .string()
@@ -64,6 +65,30 @@ export const stylesTool = (server: McpServer) => {
       title: 'Styles'
     },
     async ({ style, example, doc }) => {
+      // Validate if doc is combined with style/example - not allowed
+      if (doc && (style || example)) {
+        return {
+          content: [
+            {
+              type: 'text',
+              text: 'Invalid arguments: `doc` cannot be combined with `style` or `example`. Use either `doc` alone or a style query.'
+            }
+          ]
+        };
+      }
+
+      // Validate if `example` is provided without `style` - not allowed
+      if (example && !style) {
+        return {
+          content: [
+            {
+              type: 'text',
+              text: 'Invalid arguments: `example` requires `style`. Use both together, e.g. style="sd-chip", example="inverted".'
+            }
+          ]
+        };
+      }
+
       // --- package-level doc ---
       if (doc) {
         const content = await readIfExists(join(stylePackageDocsPath, `${doc}.md`));

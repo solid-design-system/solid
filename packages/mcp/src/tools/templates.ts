@@ -36,11 +36,12 @@ export const templatesTool = (server: McpServer) => {
   server.registerTool(
     'templates',
     {
-      description:
-        'Solid Design System templates — real-world compositions of multiple sd-* components. ' +
-        'Call without arguments to list all templates. ' +
-        'Pass `template` to get the source code and component inventory. ' +
-        'Pass `component` or `style` to filter the list to templates that use that component/style.',
+      description: `Solid Design System templates — real-world compositions of multiple sd-* components. 
+        - Call without arguments to list all templates. 
+        - Pass \`template\` (e.g. "forms") to get the source code and component inventory for one template. 
+        - Pass \`component\` (e.g. "sd-button") or \`style\` (e.g. "sd-chip" or "chip") to list templates that use that tag. 
+        - Use either \`component\` or \`style\` for filtering, not both together. 
+        - Do not combine \`template\` with \`component\` or \`style\`.`,
       inputSchema: {
         template: z
           .string()
@@ -58,6 +59,30 @@ export const templatesTool = (server: McpServer) => {
       title: 'Templates'
     },
     async ({ template, component, style }) => {
+      // Validate if `template` is combined with `component`/`style` - not allowed
+      if (template && (component || style)) {
+        return {
+          content: [
+            {
+              type: 'text',
+              text: 'Invalid arguments: `template` cannot be combined with `component` or `style`. Use either `template` alone or a filter query.'
+            }
+          ]
+        };
+      }
+
+      // Validate if both `component` and `style` are provided - not allowed
+      if (component && style) {
+        return {
+          content: [
+            {
+              type: 'text',
+              text: 'Invalid arguments: `component` and `style` cannot be combined. Use one filter at a time.'
+            }
+          ]
+        };
+      }
+
       // --- specific template ---
       if (template) {
         const content = await readIfExists(join(templatesPackagePath, `${template}.md`));

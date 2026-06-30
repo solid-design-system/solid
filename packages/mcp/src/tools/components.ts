@@ -39,11 +39,12 @@ export const componentsTool = (server: McpServer) => {
   server.registerTool(
     'components',
     {
-      description: ` Solid Design System components. Usage modes:
-        - No arguments: list all sd-* components and available package docs.
-        - \`component\` only: get the full specification for one component, including API, examples, events, slots, and guidelines.
-        - \`component\` + \`example\`: get the HTML example for one specific usage pattern (e.g. component="sd-button", example="inverted").
-        - \`doc\` only: get a package-level guide such as "localization". Do not combine \`doc\` with \`component\` or \`example\`.`,
+      description: `Solid Design System components. 
+        - Call without arguments to list all sd-* components and available package docs. 
+        - Pass \`component\` (e.g. "sd-button") to get the full component specification, including API, events, slots, examples, and guidelines. 
+        - Pass \`component\` + \`example\` (e.g. component="sd-button", example="inverted") to get one HTML usage example. 
+        - Pass \`doc\` (e.g. "localization") to get a package-level guide. 
+        - Do not combine \`doc\` with \`component\` or \`example\`.`,
       inputSchema: {
         component: z
           .string()

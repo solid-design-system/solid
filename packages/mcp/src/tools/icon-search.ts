@@ -69,7 +69,7 @@ export const iconSearchTool = (server: McpServer) => {
   server.registerTool(
     'icon-search',
     {
-      description: `Search Solid Design System icon libraries by meaning.
+      description: `Solid Design System icon libraries search by keywords.
         - Pass multiple keywords, English and/or German synonyms, to find icons.
         - Returns icon names in the exact format for <sd-icon name="...">, e.g. "system/download".
         - Choose a library: \`default\` (default library), \`sd-status-assets\`, or \`sd-multi-theming\`.
