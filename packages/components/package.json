@@ -19,6 +19,7 @@
       "types": "./dist/solid-components.d.ts",
       "import": "./dist/solid-components.js"
     },
+    "./package.json": "./package.json",
     "./dist/custom-elements.json": "./dist/custom-elements.json",
     "./dist/solid-components.js": "./dist/solid-components.js",
     "./dist/solid-components.css": "./dist/solid-components.css",
