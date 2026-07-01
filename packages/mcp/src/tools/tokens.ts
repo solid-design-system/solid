@@ -51,7 +51,7 @@ export const tokenInfoTool = (server: McpServer) => {
         token: z
           .string()
           .optional()
-          .describe('Token name or partial token text, e.g. "--background-color-neutral-100" or "spacing".')
+          .describe('Token name or partial token text (e.g. "--background-color-neutral-100" or "spacing").')
       },
       title: 'Tokens'
     },
@@ -114,10 +114,10 @@ export const tokenInfoTool = (server: McpServer) => {
               ``,
               `### TailwindCSS (preferred)`,
               `Use the semantic Tailwind utility classes directly. Do NOT use arbitrary value syntax like \`bg-[rgb(var(--sd-color-neutral-100))]\` or \`bg-[var(--sd-color-neutral-100)]\`.`,
-              `Instead, always use the mapped Tailwind class, e.g. \`bg-neutral-100\`.`,
+              `Instead, always use the mapped Tailwind class (e.g. \`bg-neutral-100\`).`,
               ``,
               `### CSS`,
-              `Use the CSS custom properties via \`var(--property-name)\`, e.g. \`background-color: var(--sd-color-neutral-100)\`.`,
+              `Use the CSS custom properties via \`var(--property-name)\` (e.g. \`background-color: var(--sd-color-neutral-100)\`).`,
               ``,
               `## CSS variable → Tailwind utility mapping`,
               ``,

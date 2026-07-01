@@ -46,15 +46,15 @@ export const templatesTool = (server: McpServer) => {
         template: z
           .string()
           .optional()
-          .describe('Template name as returned by the list, e.g. "forms" or "button". Omit to list all.'),
+          .describe('Template name as returned by the list (e.g. "forms" or "button"). Omit to list all.'),
         component: z
           .string()
           .optional()
-          .describe('Optional sd-* component tag name to filter the template list, e.g. "sd-button".'),
+          .describe('Optional sd-* component tag name to filter the template list (e.g. "sd-button").'),
         style: z
           .string()
           .optional()
-          .describe('Optional style name (with or without "sd-" prefix) to filter the template list, e.g. "sd-chip".')
+          .describe('Optional style name (with or without "sd-" prefix) to filter the template list (e.g. "sd-chip").')
       },
       title: 'Templates'
     },

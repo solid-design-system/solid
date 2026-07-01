@@ -71,7 +71,7 @@ export const iconSearchTool = (server: McpServer) => {
     {
       description: `Solid Design System icon libraries search by keywords.
         - Pass multiple keywords, English and/or German synonyms, to find icons.
-        - Returns icon names in the exact format for <sd-icon name="...">, e.g. "system/download".
+        - Returns icon names in the exact format for <sd-icon name="..."> (e.g. "system/download").
         - Choose a library: \`default\` (default library), \`sd-status-assets\`, or \`sd-multi-theming\`.
         - Choose a category, where applicable: \`content\` (illustrative), \`system\` (UI/navigation), \`status\` (status indicators), or \`all\`.
         - Use the icon documentation tool if you need guidance on when to use each library or category.`,

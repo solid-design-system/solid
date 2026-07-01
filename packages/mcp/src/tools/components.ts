@@ -50,19 +50,19 @@ export const componentsTool = (server: McpServer) => {
           .string()
           .startsWith('sd-')
           .optional()
-          .describe('Component tag name, e.g. "sd-button". Omit to see the full list.'),
+          .describe('Component tag name (e.g. "sd-button"). Omit to see the full list.'),
         example: z
           .string()
           .optional()
           .describe(
-            'Slug for an HTML usage example, e.g. "inverted" or "no-shadow". ' +
+            'Slug for an HTML usage example (e.g. "inverted" or "no-shadow"). ' +
               'Requires `component`. Use component alone first to see available example slugs.'
           ),
         doc: z
           .string()
           .optional()
           .describe(
-            'Package-level guide slug, e.g. "localization", "installation", "customization". ' +
+            'Package-level guide slug (e.g. "localization", "installation", "customization"). ' +
               'Omit to see all available topics.'
           )
       },

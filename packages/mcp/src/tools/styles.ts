@@ -49,18 +49,18 @@ export const stylesTool = (server: McpServer) => {
         style: z
           .string()
           .optional()
-          .describe('Style name with or without the "sd-" prefix, e.g. "chip" or "sd-chip". Omit to see all.'),
+          .describe('Style name with or without the "sd-" prefix (e.g. "chip" or "sd-chip"). Omit to see all.'),
         example: z
           .string()
           .optional()
           .describe(
-            'Example slug for an HTML usage example, e.g. "inverted" or "size". ' +
+            'Example slug for an HTML usage example (e.g. "inverted" or "size"). ' +
               'Requires `style`. Use `style` alone first to see available slugs.'
           ),
         doc: z
           .string()
           .optional()
-          .describe('Package-level guide slug, e.g. "installation", "usage". Omit to see all available topics.')
+          .describe('Package-level guide slug (e.g. "installation", "usage"). Omit to see all available topics.')
       },
       title: 'Styles'
     },
