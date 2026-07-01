@@ -1239,9 +1239,7 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
       this.size === 'lg'
         ? !this.floatingLabel
           ? 'py-2'
-          : isFloatingLabelActive
-            ? 'py-3'
-            : 'py-4'
+          : 'py-3'
         : !this.floatingLabel
           ? 'py-1'
           : isFloatingLabelActive
@@ -1378,7 +1376,11 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                   ></slot>`
                 : ''}
               <div
-                class=${cx('flex flex-wrap items-center gap-1 w-full min-w-0 relative', this.floatingLabel && 'mt-4')}
+                class=${cx(
+                  'flex flex-wrap items-center gap-1 w-full min-w-0 relative',
+                  this.floatingLabel && isFloatingLabelActive && 'mt-4',
+                  this.floatingLabel && !isFloatingLabelActive && this.size === 'lg' && 'mt-2'
+                )}
               >
                 ${this.multiple && this.useTags && this.tags && this.tags.length > 0
                   ? html`<div part="tags" class="${cx('flex flex-wrap items-center gap-1 min-w-0', iconMarginRight)}">
