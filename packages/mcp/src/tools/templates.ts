@@ -39,7 +39,7 @@ export const templatesTool = (server: McpServer) => {
       description: `Solid Design System templates — real-world compositions of multiple sd-* components. 
         - Call without arguments to list all templates. 
         - Pass \`template\` (e.g. "forms") to get the source code and component inventory for one template. 
-        - Pass \`component\` (e.g. "sd-button") or \`style\` (e.g. "sd-chip" or "chip") to list templates that use that tag. 
+        - Pass \`component\` (e.g. "sd-button" or "button") or \`style\` (e.g. "sd-chip" or "chip") to list templates that use that tag. 
         - Use either \`component\` or \`style\` for filtering, not both together. 
         - Do not combine \`template\` with \`component\` or \`style\`.`,
       inputSchema: {
@@ -50,11 +50,13 @@ export const templatesTool = (server: McpServer) => {
         component: z
           .string()
           .optional()
-          .describe('Optional sd-* component tag name to filter the template list (e.g. "sd-button").'),
+          .describe('Optional component tag name with or without "sd-" prefix (e.g. "sd-button" or "button").'),
         style: z
           .string()
           .optional()
-          .describe('Optional style name (with or without "sd-" prefix) to filter the template list (e.g. "sd-chip").')
+          .describe(
+            'Optional style name (with or without "sd-" prefix) to filter the template list (e.g. "sd-chip" or "chip").'
+          )
       },
       title: 'Templates'
     },
@@ -107,7 +109,17 @@ export const templatesTool = (server: McpServer) => {
         };
       }
 
-      const filterTag = component ?? (style ? (style.startsWith('sd-') ? style : `sd-${style}`) : undefined);
+      const filterTag = component
+        ? (() => {
+            component = component.trim().toLowerCase();
+            return component.startsWith('sd-') ? component : `sd-${component}`;
+          })()
+        : style
+          ? (() => {
+              style = style.trim().toLowerCase();
+              return style.startsWith('sd-') ? style : `sd-${style}`;
+            })()
+          : undefined;
 
       let entries = allNames;
       if (filterTag) {

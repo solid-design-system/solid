@@ -41,16 +41,17 @@ export const componentsTool = (server: McpServer) => {
     {
       description: `Solid Design System components. 
         - Call without arguments to list all sd-* components and available package docs. 
-        - Pass \`component\` (e.g. "sd-button") to get the full component specification, including API, events, slots, examples, and guidelines. 
+        - Pass \`component\` (e.g. "sd-button" or "button") to get the full component specification, including API, events, slots, examples, and guidelines. 
         - Pass \`component\` + \`example\` (e.g. component="sd-button", example="inverted") to get one HTML usage example. 
         - Pass \`doc\` (e.g. "localization") to get a package-level guide. 
         - Do not combine \`doc\` with \`component\` or \`example\`.`,
       inputSchema: {
         component: z
           .string()
-          .startsWith('sd-')
           .optional()
-          .describe('Component tag name (e.g. "sd-button"). Omit to see the full list.'),
+          .describe(
+            'Component tag name with or without the "sd-" prefix (e.g. "sd-button" or "button"). Omit to see the full list.'
+          ),
         example: z
           .string()
           .optional()
@@ -111,6 +112,8 @@ export const componentsTool = (server: McpServer) => {
 
       // --- specific component example (HTML example) ---
       if (component && example) {
+        component = component.trim().toLowerCase();
+        component = component.startsWith('sd-') ? component : `sd-${component}`;
         const exampleMd = await readIfExists(join(componentPath, component, 'stories', `${example}.md`));
         if (!exampleMd) {
           return {
@@ -127,6 +130,8 @@ export const componentsTool = (server: McpServer) => {
 
       // --- specific component spec ---
       if (component) {
+        component = component.trim().toLowerCase();
+        component = component.startsWith('sd-') ? component : `sd-${component}`;
         const infoMd = await readIfExists(join(componentPath, component, 'info.md'));
         if (!infoMd) {
           return {

@@ -49,7 +49,7 @@ export const stylesTool = (server: McpServer) => {
         style: z
           .string()
           .optional()
-          .describe('Style name with or without the "sd-" prefix (e.g. "chip" or "sd-chip"). Omit to see all.'),
+          .describe('Style name with or without the "sd-" prefix (e.g. "sd-chip" or "chip"). Omit to see all.'),
         example: z
           .string()
           .optional()
@@ -108,14 +108,15 @@ export const stylesTool = (server: McpServer) => {
 
       // --- specific style story (HTML example) ---
       if (style && example) {
-        const name = style.startsWith('sd-') ? style : `sd-${style}`;
-        const storyMd = await readIfExists(join(stylesPath, name, 'stories', `${example}.md`));
+        style = style.trim().toLowerCase();
+        style = style.startsWith('sd-') ? style : `sd-${style}`;
+        const storyMd = await readIfExists(join(stylesPath, style, 'stories', `${example}.md`));
         if (!storyMd) {
           return {
             content: [
               {
                 type: 'text',
-                text: `No example "${example}" found for "${name}". Use \`style\` alone to see available examples.`
+                text: `No example "${example}" found for "${style}". Use \`style\` alone to see available examples.`
               }
             ]
           };
@@ -125,8 +126,9 @@ export const stylesTool = (server: McpServer) => {
 
       // --- specific style spec ---
       if (style) {
-        const name = style.startsWith('sd-') ? style : `sd-${style}`;
-        const infoMd = await readIfExists(join(stylesPath, name, 'info.md'));
+        style = style.trim().toLowerCase();
+        style = style.startsWith('sd-') ? style : `sd-${style}`;
+        const infoMd = await readIfExists(join(stylesPath, style, 'info.md'));
         if (!infoMd) {
           return {
             content: [
