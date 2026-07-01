@@ -56,7 +56,7 @@ describe('when using components tool', () => {
     const tool = registeredTools[0];
     const result = await tool.handler({ component: 'sd-button', doc: 'installation' });
     assert.strictEqual(result.content[0].type, 'text');
-    assert.ok(result.content[0].text.includes('`doc` is package-level and cannot be combined'));
+    assert.ok(result.content[0].text.includes('`doc` cannot be combined with `component` or `example`'));
   });
 
   it('should return component spec when only component is provided', async () => {
