@@ -53,32 +53,54 @@ Add to `claude_desktop_config.json`:
 
 ## Features
 
+- **Quick Start Tool**: List and retrieve package-level quick-start docs
 - **Unified Component Tool**: List all components, view full specs, retrieve HTML examples, and access package-level guides
 - **Unified Styles Tool**: List all CSS utilities, view full specs, retrieve HTML examples, and access package-level guides
 - **Templates**: List, filter by component/style, and retrieve template source code
 - **CD Toolbox**: Access Corporate Design guidelines by topic
-- **Icons**: Search the Solid Design System icon library
-- **Design Tokens**: Get design token information
+- **Icons**: Search icon libraries across keywords, category, and library
+- **Design Tokens**: Get design token information and guidance
 - **Version Info**: Check MCP server version and metadata
 
 ## Available Tools
 
-### 1. `components`
+### 1. `quickstart`
+
+**Quick-start package documentation across Solid packages.**
+
+**Behavior:**
+
+- **No arguments** → Lists available quick-start docs
+- **`doc` arg** (e.g. `"Quickstart"`, `"components/Installation"`) → Returns full doc content
+
+**Parameters:**
+
+- `doc` (string, optional): Quick-start doc slug
+
+**Example prompts:**
+
+- "Show me all quickstart docs"
+- "Show me components installation quickstart"
+- "Get the tokens usage quickstart"
+
+---
+
+### 2. `components`
 
 **Unified entry point for all component-related queries.**
 
 **Behavior:**
 
 - **No arguments** → Lists all available `sd-*` components + available package doc topics
-- **`component` arg** (e.g. `sd-button`) → Returns full component spec: usage guidelines, API (properties, events, slots, CSS parts), related components and templates
-- **`component` + `example` args** → Returns HTML code example for a specific usage pattern (e.g. `sd-button` + `inverted`)
+- **`component` arg** (e.g. `"sd-button"` or `"button"`) → Returns full component spec: usage guidelines, API (properties, events, slots, CSS parts), related components and templates
+- **`component` + `example` args** → Returns HTML code example for a specific usage pattern (e.g. `"sd-button"` + `"inverted"`)
 - **`doc` arg** (e.g. `"localization"`, `"installation"`, `"customization"`) → Returns package-level guide
 
 **Parameters:**
 
-- `component` (string, optional): sd-\* component tag name, e.g. `"sd-button"`
-- `example` (string, optional): Example slug for HTML example, e.g. `"inverted"` or `"no-shadow"` (requires `component`)
-- `doc` (string, optional): Package doc slug, e.g. `"localization"` or `"installation"`
+- `component` (string, optional): component tag name (e.g. `"sd-button"` or `"button"`)
+- `example` (string, optional): Example slug for HTML example (e.g. `"inverted"` or `"no-shadow"`) (requires `component`)
+- `doc` (string, optional): Package doc slug (e.g. `"localization"` or `"installation"`)
 
 **Example prompts:**
 
@@ -90,15 +112,15 @@ Add to `claude_desktop_config.json`:
 
 ---
 
-### 2. `styles`
+### 3. `styles`
 
 **Unified entry point for all CSS style utilities.**
 
 **Behavior:**
 
 - **No arguments** → Lists all available style utilities + available package doc topics
-- **`style` arg** (e.g. `sd-chip` or `chip`) → Returns full style spec: usage guidelines, available CSS class names, related components/templates
-- **`style` + `example` args** → Returns HTML code example for a specific usage pattern (e.g. `sd-chip` + `inverted`)
+- **`style` arg** (e.g. `"sd-chip"` or `"chip"`) → Returns full style spec: usage guidelines, available CSS class names, related components/templates
+- **`style` + `example` args** → Returns HTML code example for a specific usage pattern (e.g. `"sd-chip"` + `"inverted"`)
 - **`doc` arg** (e.g. `"installation"` or `"usage"`) → Returns package-level guide
 
 **Parameters:**
@@ -117,7 +139,7 @@ Add to `claude_desktop_config.json`:
 
 ---
 
-### 3. `templates`
+### 4. `templates`
 
 **Access real-world compositions of Solid components.**
 
@@ -125,14 +147,14 @@ Add to `claude_desktop_config.json`:
 
 - **No arguments** → Lists all available templates
 - **`template` arg** (e.g. `"forms"` or `"button-group"`) → Returns template source code and component inventory
-- **`component` arg** (e.g. `"sd-button"`) → Filters list to templates that use that component
+- **`component` arg** (e.g. `"sd-button"` or `"button"`) → Filters list to templates that use that component
 - **`style` arg** (e.g. `"sd-chip"` or `"chip"`) → Filters list to templates that use that style
 
 **Parameters:**
 
 - `template` (string, optional): Template name, e.g. `"forms"`
-- `component` (string, optional): sd-\* component to filter by, e.g. `"sd-button"`
-- `style` (string, optional): Style name (with or without `sd-` prefix) to filter by, e.g. `"sd-chip"`
+- `component` (string, optional): Component tag to filter by (e.g. `"sd-button"` or `"button"`)
+- `style` (string, optional): Style name to filter by (e.g. `"sd-chip"` or `"chip"`)
 
 **Example prompts:**
 
@@ -143,7 +165,7 @@ Add to `claude_desktop_config.json`:
 
 ---
 
-### 4. `cd-toolbox`
+### 5. `cd-toolbox`
 
 **Corporate Design guidelines for Union Investment digital products.**
 
@@ -164,38 +186,45 @@ Add to `claude_desktop_config.json`:
 
 ---
 
-### 5. `icon-search`
+### 6. `icon-search`
 
-**Search the Solid Design System icon library.**
+**Search the Solid Design System icon libraries.**
 
 **Parameters:**
 
 - `keywords` (array of strings, required): English and/or German synonyms to search for, e.g. `["download", "save"]`
+- `library` (string, optional): One of `"default"`, `"sd-status-assets"`, `"sd-multi-theming"`
+- `category` (string, optional): One of `"content"`, `"system"`, `"status"`, `"all"`
 
 **Example prompts:**
 
 - "Search for a download icon"
-- "Find icons related to 'close' or 'dismiss'"
+- "Find icons related to close or dismiss"
 - "Show me icons for user or profile"
 
 ---
 
-### 6. `tokens`
+### 7. `tokens`
 
 **Access design tokens from the Solid Design System.**
 
+**Behavior:**
+
+- **No arguments** → Returns all available tokens with Tailwind and CSS usage guidance
+- **`token` arg** (e.g. `"spacing"`) → Returns matching token names
+
 **Parameters:**
 
-- `type` (string, optional): Token type (`css` or `javascript`). Defaults to `css`
+- `token` (string, optional): Full or partial token query
 
 **Example prompts:**
 
 - "Show me the available CSS design tokens"
-- "List all JavaScript tokens"
+- "List tokens for background"
 
 ---
 
-### 7. `version`
+### 8. `version`
 
 **Get version and metadata about the Solid Design System MCP Server.**
 
@@ -207,6 +236,37 @@ Add to `claude_desktop_config.json`:
 - "Show me server information"
 
 ---
+
+### MCP Caller Cheat Sheet
+
+Use these argument shapes for MCP tool calls:
+
+```json
+{ "tool": "quickstart", "arguments": {} }
+{ "tool": "quickstart", "arguments": { "doc": "components/Installation" } }
+
+{ "tool": "components", "arguments": { "component": "button" } }
+{ "tool": "components", "arguments": { "component": "sd-button", "example": "inverted" } }
+{ "tool": "components", "arguments": { "doc": "installation" } }
+
+{ "tool": "styles", "arguments": { "style": "chip" } }
+{ "tool": "styles", "arguments": { "style": "sd-chip", "example": "size" } }
+{ "tool": "styles", "arguments": { "doc": "usage" } }
+
+{ "tool": "templates", "arguments": { "component": "button" } }
+{ "tool": "templates", "arguments": { "style": "chip" } }
+{ "tool": "templates", "arguments": { "template": "forms" } }
+
+{ "tool": "cd-toolbox", "arguments": {} }
+{ "tool": "cd-toolbox", "arguments": { "topic": "icons" } }
+
+{ "tool": "icon-search", "arguments": { "keywords": ["download", "herunterladen"], "library": "default", "category": "all" } }
+
+{ "tool": "token-info", "arguments": {} }
+{ "tool": "token-info", "arguments": { "token": "background" } }
+
+{ "tool": "version", "arguments": {} }
+```
 
 ## Developer Documentation
 
@@ -228,11 +288,12 @@ src/
 ├── server.ts                 # MCP server setup
 ├── tools/                    # Tool implementations
 │   ├── cd-toolbox.ts         # CD Toolbox access
+│   ├── quickstart.ts         # Package quick-start docs
 │   ├── components.ts         # Unified components tool
 │   ├── icon-search.ts        # Icon search
 │   ├── styles.ts             # Unified styles tool
 │   ├── templates.ts          # Unified templates tool
-│   ├── tokens.ts             # Token information
+│   ├── tokens.ts             # token-info tool
 │   ├── version.ts            # Version information
 │   └── index.ts              # Tool exports
 └── utilities/                # Helper functions
@@ -271,7 +332,8 @@ metadata/                    # Generated and static metadata
 │   │       └── *.md
 │   ├── templates/           # Template metadata (.md files)
 │   ├── icons/               # Icon library metadata
-│   └── tokens/              # Token definitions
+│   ├── quickstart/          # Quickstart docs metadata
+│   └── tokens/              # Tokens metada
 └── static/                  # Static AI-rule files
 ```
 
@@ -306,15 +368,16 @@ pnpm build:hash        # Generate integrity checksum
 
 ### Metadata Generation
 
-The `build:metadata` script runs all builders in sequence:
+The `build:metadata` script currently runs builders in this sequence:
 
-1. **Components** — Extracts from Storybook custom-elements.json
-2. **Styles** — Extracts from Storybook
-3. **Template metadata finalization** — Converts JSON to subdirs with info.md + stories/
-4. **Icons** — Generates icon library index
-5. **Package docs** — Extracts MDX files from `packages/docs/src/stories/packages/` and converts to plain markdown
-6. **Tokens** — Generates token definitions
-7. **Static files** — Copies static content
+1. **Components** — Extracts component metadata
+2. **Styles** — Extracts style metadata
+3. **Templates** — Finalizes template metadata and relationships
+4. **Tokens** — Generates token definitions
+5. **Icons** — Generates icon indexes by library/category
+6. **Package docs** — Converts package MDX docs to build-time markdown
+7. **Static files** — Copies static guidance content
+8. **Figma Make output** — Generates condensed dist output for Figma Make use
 
 ### Adding a New Tool
 
