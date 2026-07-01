@@ -68,7 +68,7 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return html`<div class="w-[250px]">${generateTemplate({ args })}</div> `;
+    return html`<div class="w-full max-w-[250px]">${generateTemplate({ args })}</div> `;
   }
 };
 
@@ -77,7 +77,7 @@ export const Labels = {
   args: overrideArgs([{ type: 'attribute', name: 'label', value: 'Label' }]),
   render: (args: any) => {
     return html`
-      <div class="w-[250px]">
+      <div class="w-full max-w-[250px]">
         ${generateTemplate({
           args
         })}
@@ -93,14 +93,14 @@ export const FloatingLabel = {
   },
   render: (args: any) => {
     return html`
-      <div class="w-[350px]">
+      <div class="w-full max-w-[350px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
         })}
       </div>
       <br />
-      <div class="w-[350px]">
+      <div class="w-full max-w-[350px]">
         ${generateTemplate({
           constants: [
             { type: 'attribute', name: 'value', value: 'Floating Label with value' },
@@ -123,7 +123,7 @@ export const HelpText = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[250px]">
+      <div class="w-full max-w-[250px]">
         ${generateTemplate({
           args
         })}
@@ -132,7 +132,7 @@ export const HelpText = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[250px]">
+      <div class="w-full max-w-[250px]">
         ${generateTemplate({
           args,
           constants: [{ type: 'attribute', name: 'floating-label', value: true }]
@@ -149,7 +149,7 @@ export const Placeholders = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[250px]">
+      <div class="w-full max-w-[250px]">
         ${generateTemplate({
           args
         })}
@@ -158,7 +158,7 @@ export const Placeholders = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[250px]">
+      <div class="w-full max-w-[250px]">
         ${generateTemplate({
           args,
           constants: [{ type: 'attribute', name: 'floating-label', value: true }]
@@ -175,7 +175,7 @@ export const Clearable = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[250px]">
+      <div class="w-full max-w-[250px]">
         ${generateTemplate({
           args
         })}
@@ -184,7 +184,7 @@ export const Clearable = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[250px]">
+      <div class="w-full max-w-[250px]">
         ${generateTemplate({
           args,
           constants: [{ type: 'attribute', name: 'floating-label', value: true }]
@@ -201,7 +201,7 @@ export const TogglePassword = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[250px]">
+      <div class="w-full max-w-[250px]">
         ${generateTemplate({
           args,
           constants: [
@@ -214,7 +214,7 @@ export const TogglePassword = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[250px]">
+      <div class="w-full max-w-[250px]">
         ${generateTemplate({
           args,
           constants: [
@@ -239,7 +239,7 @@ export const Disabled = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[250px]">
+      <div class="w-full max-w-[250px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'disabled', value: true }],
           args
@@ -249,7 +249,7 @@ export const Disabled = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[250px]">
+      <div class="w-full max-w-[250px]">
         ${generateTemplate({
           constants: [
             { type: 'attribute', name: 'disabled', value: true },
@@ -273,7 +273,7 @@ export const Readonly = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[250px]">
+      <div class="w-full max-w-[250px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'readonly', value: true }],
           args
@@ -283,7 +283,7 @@ export const Readonly = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[250px]">
+      <div class="w-full max-w-[250px]">
         ${generateTemplate({
           constants: [
             { type: 'attribute', name: 'readonly', value: true },
@@ -313,7 +313,7 @@ export const Sizes = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[250px]">
+      <div class="w-full max-w-[250px]">
         ${generateTemplate({
           axis: {
             y: { type: 'attribute', name: 'size' }
@@ -324,7 +324,7 @@ export const Sizes = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[250px]">
+      <div class="w-full max-w-[250px]">
         ${generateTemplate({
           axis: {
             y: { type: 'attribute', name: 'size', values: ['lg', 'md'] }
@@ -396,7 +396,7 @@ export const Types = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[370px]">
+      <div class="w-full max-w-[370px]">
         <div class="mb-2">
           ${generateTemplate({
             constants: [
@@ -526,7 +526,7 @@ export const Types = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[370px]">
+      <div class="w-full max-w-[370px]">
         <div class="mb-2">
           ${generateTemplate({
             constants: [
@@ -1101,12 +1101,12 @@ export const Mouseless = {
     return html`
       <div>Default</div>
       <br />
-      <div class="mouseless w-[250px]">${generateTemplate({ args })}</div>
+      <div class="mouseless w-full max-w-[250px]">${generateTemplate({ args })}</div>
       <br />
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="mouseless w-[250px]">
+      <div class="mouseless w-full max-w-[250px]">
         ${generateTemplate({
           args,
           constants: [{ type: 'attribute', name: 'floating-label', value: true }]

@@ -42,7 +42,7 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return html`<div class="w-[400px]">${generateTemplate({ args })}</div>`;
+    return html`<div class="w-full max-w-[400px]">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -52,7 +52,7 @@ export const Labels = {
     label: 'Label'
   },
   render: (args: any) => {
-    return html`<div class="w-[400px]">${generateTemplate({ args })}</div>`;
+    return html`<div class="w-full max-w-[400px]">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -63,14 +63,14 @@ export const FloatingLabel = {
   },
   render: (args: any) => {
     return html`
-      <div class="w-[400px]">
+      <div class="w-full max-w-[400px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
         })}
       </div>
       <br />
-      <div class="w-[400px]">
+      <div class="w-full max-w-[400px]">
         ${generateTemplate({
           constants: [
             { type: 'attribute', name: 'value', value: '2025.11.10' },
@@ -88,7 +88,7 @@ export const Size = {
   render: (args: any) => {
     return html`
       <div>Default</div>
-      <div class="w-[400px]">
+      <div class="w-full max-w-[400px]">
         ${generateTemplate({
           axis: {
             x: {
@@ -102,7 +102,7 @@ export const Size = {
       </div>
       <br />
       <div>Floating Label</div>
-      <div class="w-[400px]">
+      <div class="w-full max-w-[400px]">
         ${generateTemplate({
           axis: {
             x: {
@@ -125,7 +125,7 @@ export const Required = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[400px]">
+      <div class="w-full max-w-[400px]">
         ${generateTemplate({
           axis: {
             y: { type: 'attribute', name: 'required', values: [true, false] }
@@ -136,7 +136,7 @@ export const Required = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[400px]">
+      <div class="w-full max-w-[400px]">
         ${generateTemplate({
           axis: {
             y: { type: 'attribute', name: 'required', values: [true, false] }
@@ -155,7 +155,7 @@ export const Placeholder = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[400px]">
+      <div class="w-full max-w-[400px]">
         ${generateTemplate({
           axis: {
             y: { type: 'attribute', name: 'range', values: [true, false] }
@@ -166,7 +166,7 @@ export const Placeholder = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[400px]">
+      <div class="w-full max-w-[400px]">
         ${generateTemplate({
           axis: {
             y: { type: 'attribute', name: 'range', values: [true, false] }
@@ -185,7 +185,7 @@ export const Disabled = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-[400px]">
+      <div class="w-full max-w-[400px]">
         ${generateTemplate({
           axis: {
             y: { type: 'attribute', name: 'disabled', values: [true, false] }
@@ -196,7 +196,7 @@ export const Disabled = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-[400px]">
+      <div class="w-full max-w-[400px]">
         ${generateTemplate({
           axis: {
             y: { type: 'attribute', name: 'disabled', values: [true, false] }
@@ -240,7 +240,7 @@ export const DisabledDates = {
 export const MinAndMax = {
   name: 'Min and Max',
   render: () => {
-    return html`<div class="w-[370px] h-[500px]">
+    return html`<div class="w-full max-w-[370px] h-[500px]">
       <sd-datepicker label="Label" value="2025-12-10" min="2025-12-02" max="2025-12-12"></sd-datepicker>
     </div>`;
   }
@@ -249,7 +249,7 @@ export const MinAndMax = {
 export const Placement = {
   name: 'Placement',
   render: () => {
-    return html`<div class="w-[400px] mt-[400px]">
+    return html`<div class="w-full max-w-[400px] mt-[400px]">
       <sd-datepicker label="Label" size="lg" placement="top" value="2025-12-10"></sd-datepicker>
     </div>`;
   }
@@ -261,11 +261,11 @@ export const Mouseless = {
     return html`
       <div>Default</div>
       <br />
-      <div class="mouseless w-[250px]">${generateTemplate({ args })}</div>
+      <div class="mouseless w-full max-w-[250px]">${generateTemplate({ args })}</div>
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="mouseless w-[250px]">
+      <div class="mouseless w-full max-w-[250px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
@@ -284,7 +284,7 @@ export const Mouseless = {
 export const LocaleAware = {
   name: 'Locale Aware',
   render: () => {
-    return html`<div class="flex flex-col gap-4 w-[400px]">
+    return html`<div class="flex flex-col gap-4 w-full max-w-[400px]">
       <sd-datepicker lang="de" locale="de-DE"></sd-datepicker>
       <sd-datepicker lang="de" locale="de-DE" range rangeStart="2025.10.02" rangeEnd="2025.10.12"></sd-datepicker>
     </div>`;

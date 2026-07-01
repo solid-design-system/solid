@@ -95,7 +95,7 @@ export default {
 export const Default = {
   name: 'Default',
   render: (args: any) => {
-    return html`<div class="h-[260px] w-[420px]">${generateTemplate({ args })}</div>`;
+    return html`<div class="h-[260px] w-full max-w-[420px]">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -105,7 +105,7 @@ export const Labels = {
     label: 'Label'
   },
   render: (args: any) => {
-    return html`<div class="h-[260px] w-[420px]">${generateTemplate({ args })}</div>`;
+    return html`<div class="h-[260px] w-full max-w-[420px]">${generateTemplate({ args })}</div>`;
   }
 };
 
@@ -115,14 +115,14 @@ export const FloatingLabel = {
     label: 'Label'
   },
   render: (args: any) => {
-    return html` <div class="h-[260px] w-[420px]">
+    return html` <div class="h-[260px] w-full max-w-[420px]">
         ${generateTemplate({
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
         })}
       </div>
       <br />
-      <div class="h-[260px] w-[420px]">
+      <div class="h-[260px] w-full max-w-[420px]">
         ${generateTemplate({
           constants: [
             { type: 'attribute', name: 'value', value: 'option-1' },
@@ -207,7 +207,7 @@ export const DisabledMultiple = {
       <div class="h-[340px] w-full">
         ${generateTemplate({
           options: {
-            classes: 'w-full [&>tbody>tr>td]:w-[50%]'
+            classes: 'w-full [&>tbody>tr>td]:w-[50%] [&_*]:min-w-0'
           },
           axis: {
             y: {
@@ -239,7 +239,7 @@ export const DisabledMultiple = {
       <div class="h-[340px] w-full">
         ${generateTemplate({
           options: {
-            classes: 'w-full [&>tbody>tr>td]:w-[50%]'
+            classes: 'w-full [&>tbody>tr>td]:w-[50%] [&_*]:min-w-0'
           },
           axis: {
             y: {
@@ -281,7 +281,7 @@ export const ValidInvalid = {
       <form class="h-[340px] w-full flex gap-4">
         ${generateTemplate({
           options: {
-            classes: 'w-full [&>tbody>tr>td]:align-top [&>tbody>tr>td]:w-[50%]'
+            classes: 'w-full [&>tbody>tr>td]:align-top [&>tbody>tr>td]:w-[50%] [&_*]:min-w-0'
           },
           axis: {
             y: {
@@ -353,7 +353,7 @@ export const ValidInvalid = {
 export const BorderVisibility = {
   name: 'Border visibility',
   render: () => {
-    return html`<div class="h-[150px] w-[420px]">
+    return html`<div class="h-[150px] w-full max-w-[420px]">
       ${generateTemplate({
         args: overrideArgs([
           twentyOptionsConstant,
@@ -586,7 +586,7 @@ export const Mouseless = {
 export const SampleGroupingOptions = {
   name: 'Sample: Grouping options',
   render: (args: any) => {
-    return html`<div class="h-[290px] w-[420px]">
+    return html`<div class="h-[290px] w-full max-w-[420px]">
       ${generateTemplate({
         constants: [
           {
