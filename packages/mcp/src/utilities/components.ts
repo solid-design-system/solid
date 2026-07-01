@@ -15,7 +15,7 @@ function extractDescription(infoContent: string): string {
 export const getAvailableComponents = async (): Promise<{ name: string; description: string }[]> => {
   const entries = await fs.readdir(componentPath, { withFileTypes: true });
   const dirs = entries
-    .filter(d => d.isDirectory())
+    .filter(d => d.isDirectory() && d.name.startsWith('sd-'))
     .map(d => d.name)
     .sort();
   return Promise.all(

@@ -2,31 +2,43 @@ import fs from 'node:fs/promises';
 import { join } from 'node:path';
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
-import { docsSourceStoriesPath } from '../utilities/index.js';
+import {
+  componentPackageDocsPath,
+  quickstartPackageDocsPath,
+  stylePackageDocsPath,
+  tokenPackageDocsPath
+} from '../utilities/index.js';
 
 interface DocEntry {
   slug: string;
   filePath: string;
+  description: string;
 }
 
-const QUICKSTART_DOCS: DocEntry[] = [
-  { slug: 'Quickstart', filePath: join(docsSourceStoriesPath, 'packages', 'Quickstart.mdx') },
-  {
-    slug: 'components/Installation',
-    filePath: join(docsSourceStoriesPath, 'packages', 'components', 'Installation.mdx')
-  },
-  { slug: 'components/usage', filePath: join(docsSourceStoriesPath, 'packages', 'components', 'Usage.mdx') },
-  { slug: 'styles/Installation', filePath: join(docsSourceStoriesPath, 'packages', 'styles', 'Installation.mdx') },
-  { slug: 'styles/usage', filePath: join(docsSourceStoriesPath, 'packages', 'styles', 'Usage.mdx') },
-  { slug: 'tokens/Installation', filePath: join(docsSourceStoriesPath, 'packages', 'tokens', 'Installation.mdx') },
-  { slug: 'tokens/usage', filePath: join(docsSourceStoriesPath, 'packages', 'tokens', 'Usage.mdx') }
+interface DocSource {
+  slug: string;
+  filePath: string;
+}
+
+const QUICKSTART_DOCS: DocSource[] = [
+  { slug: 'Quickstart', filePath: join(quickstartPackageDocsPath, 'quickstart.md') },
+  { slug: 'components/Installation', filePath: join(componentPackageDocsPath, 'installation.md') },
+  { slug: 'components/Usage', filePath: join(componentPackageDocsPath, 'usage.md') },
+  { slug: 'styles/Installation', filePath: join(stylePackageDocsPath, 'installation.md') },
+  { slug: 'styles/Usage', filePath: join(stylePackageDocsPath, 'usage.md') },
+  { slug: 'tokens/Installation', filePath: join(tokenPackageDocsPath, 'installation.md') },
+  { slug: 'tokens/Usage', filePath: join(tokenPackageDocsPath, 'usage.md') }
 ];
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
 
 const trimSlashes = (value: string) => value.replace(/^\/+|\/+$/g, '');
 
 const isSafePath = (value: string): boolean => {
   const parts = value.split('/').filter(Boolean);
-  return parts.length > 0 && parts.every(part => part !== '.' && part !== '..');
+  return parts.length > 0 && parts.every(part => part !== '.' && part !== '..' && !part.includes('\0'));
 };
 
 const readIfExists = async (filePath: string): Promise<string | null> => {
@@ -37,74 +49,84 @@ const readIfExists = async (filePath: string): Promise<string | null> => {
   }
 };
 
-const cleanMdx = (raw: string): string =>
-  raw
-    .replace(/^import\s+.*\n/gm, '')
-    .replace(/<Meta\s[^>]*\/>/gs, '')
-    .replace(/```html:preview/g, '```html')
-    .replace(/<[A-Z][A-Za-z]*\s[^>]*\/>/gs, '')
-    .replace(/\n{3,}/g, '\n\n')
-    .trim();
+/** Extract the first H1 heading from raw MDX, falling back to the slug basename. */
+const extractHeading = (raw: string, fallback: string): string => {
+  const match = raw.match(/^#\s+(.+)$/m);
+  return match ? match[1].trim() : fallback;
+};
+
+async function discoverDocs(): Promise<DocEntry[]> {
+  const entries: DocEntry[] = [];
+
+  for (const source of QUICKSTART_DOCS) {
+    const content = await readIfExists(source.filePath);
+    if (!content) continue;
+
+    entries.push({
+      slug: source.slug,
+      filePath: source.filePath,
+      description: extractHeading(content, source.slug)
+    });
+  }
+
+  return entries;
+}
+
+// ---------------------------------------------------------------------------
+// Tool registration
+// ---------------------------------------------------------------------------
 
 export const quickstartTool = (server: McpServer) => {
   server.registerTool(
     'quickstart',
     {
-      description:
-        'Solid Design System quick start documentation across packages. ' +
-        'Call without arguments to list the supported quick start docs. ' +
-        'Pass `doc` to retrieve one quick start page.',
+      title: 'Quick Start',
+      description: `Solid Design System quick-start documentation. 
+        - Call without arguments to list available docs. 
+        - Pass \`doc\` to retrieve one quick-start page.`,
       inputSchema: {
-        doc: z
-          .string()
-          .optional()
-          .describe(
-            'Documentation slug: "Quickstart", "components/Installation", "components/usage", "styles/Installation", "styles/usage", "tokens/Installation", or "tokens/usage".'
-          )
-      },
-      title: 'Quick Start'
+        doc: z.string().optional().describe('Documentation name. Omit to see the full list.')
+      }
     },
     async ({ doc }) => {
-      const availableDocs = QUICKSTART_DOCS;
+      const docs = await discoverDocs();
 
       if (!doc) {
-        return {
-          content: [
-            {
-              type: 'text',
-              text: [
-                '## Quick Start Docs',
-                '',
-                availableDocs.length
-                  ? availableDocs.map(item => `- ${item.slug}`).join('\n')
-                  : 'No quick-start docs found.'
-              ].join('\n')
-            }
-          ]
-        };
+        if (docs.length === 0) {
+          return { content: [{ type: 'text', text: 'No quick-start docs found.' }] };
+        }
+
+        const lines = ['## Available Quick Start Docs', ''];
+        for (const item of docs) {
+          lines.push(`- ${item.slug}`);
+        }
+
+        return { content: [{ type: 'text', text: lines.join('\n') }] };
       }
 
       const normalizedDoc = trimSlashes(doc);
-      if (!isSafePath(normalizedDoc)) {
+
+      if (!normalizedDoc) {
         return {
-          content: [
-            {
-              type: 'text',
-              text: 'Invalid `doc` path. Use one of the supported quick start doc slugs.'
-            }
-          ]
+          content: [{ type: 'text', text: '`doc` must not be empty. Omit it to list available slugs.' }]
         };
       }
 
-      const selectedDoc = availableDocs.find(item => item.slug.toLowerCase() === normalizedDoc.toLowerCase());
+      if (!isSafePath(normalizedDoc)) {
+        return {
+          content: [{ type: 'text', text: '`doc` contains an invalid path. Use a listed slug.' }]
+        };
+      }
+
+      const selectedDoc = docs.find(item => item.slug.toLowerCase() === normalizedDoc.toLowerCase());
       if (!selectedDoc) {
         return {
           content: [
             {
               type: 'text',
               text:
-                `No documentation found for "${doc}". Available docs:\n` +
-                availableDocs.map(item => `- ${item.slug}`).join('\n')
+                `No documentation found for "${doc}". Available slugs:\n` +
+                docs.map(item => `- ${item.slug}`).join('\n')
             }
           ]
         };
@@ -117,9 +139,7 @@ export const quickstartTool = (server: McpServer) => {
         };
       }
 
-      return {
-        content: [{ type: 'text', text: cleanMdx(content) }]
-      };
+      return { content: [{ type: 'text', text: content }] };
     }
   );
 };

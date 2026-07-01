@@ -3,9 +3,14 @@ import { mkdirSync } from 'node:fs';
 import { dirname, join, basename, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import ora from 'ora';
-import { componentPackageDocsPath, stylePackageDocsPath } from '../utilities/index.js';
+import {
+  componentPackageDocsPath,
+  quickstartPackageDocsPath,
+  stylePackageDocsPath,
+  tokenPackageDocsPath
+} from '../utilities/index.js';
 
-const SKIP = new Set(['changelog', 'contributing', 'migration', 'index']);
+const SKIP = new Set(['changelog', 'contributing', 'migration', 'index', '_rolesinfo']);
 
 /** Absolute path to the docs stories/packages directory */
 const DOCS_PACKAGES_DIR = join(dirname(fileURLToPath(import.meta.url)), '../../../docs/src/stories/packages');
@@ -57,7 +62,26 @@ const buildDocsForPackage = async (sourceDir: string, outputDir: string, label: 
   spinner.succeed(`${label} package docs: ${mdxFiles.length} file(s) written to ${outputDir}`);
 };
 
+const buildSingleDoc = async (sourceFile: string, outputFile: string, label: string): Promise<void> => {
+  const spinner = ora({ prefixText: 'MCP:', text: `Building ${label}...` }).start();
+
+  try {
+    const raw = await fs.readFile(sourceFile, 'utf-8');
+    mkdirSync(dirname(outputFile), { recursive: true });
+    await fs.writeFile(outputFile, cleanMdx(raw), 'utf-8');
+    spinner.succeed(`${label}: written to ${outputFile}`);
+  } catch {
+    spinner.warn(`${label} source file not found: ${sourceFile}`);
+  }
+};
+
 export const buildPackageDocs = async (): Promise<void> => {
+  await buildSingleDoc(
+    join(DOCS_PACKAGES_DIR, 'Quickstart.mdx'),
+    join(quickstartPackageDocsPath, 'quickstart.md'),
+    'Quickstart doc'
+  );
   await buildDocsForPackage(join(DOCS_PACKAGES_DIR, 'components'), componentPackageDocsPath, 'Components');
   await buildDocsForPackage(join(DOCS_PACKAGES_DIR, 'styles'), stylePackageDocsPath, 'Styles');
+  await buildDocsForPackage(join(DOCS_PACKAGES_DIR, 'tokens'), tokenPackageDocsPath, 'Tokens');
 };

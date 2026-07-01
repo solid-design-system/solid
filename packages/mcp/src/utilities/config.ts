@@ -26,6 +26,9 @@ export const stylesPath = join(currentDirname, '../../metadata/packages/styles')
 /** Package-level docs for the styles package (Installation, Usage, etc.) */
 export const stylePackageDocsPath = join(currentDirname, '../../metadata/packages/styles/docs');
 
+/** Package-level docs for quickstart entrypoint */
+export const quickstartPackageDocsPath = join(currentDirname, '../../metadata/packages/quickstart/docs');
+
 /**
  * Templates package metadata — one sub-directory per template (e.g. button, forms).
  * Each template dir contains: stories.ts, components.json
@@ -47,8 +50,8 @@ export const docsSourceStoriesPath = join(currentDirname, '../../../docs/src/sto
 /** Docs package generated markdown metadata */
 export const docsPackagePath = join(currentDirname, '../../metadata/packages/docs');
 
-/** Token package docs (generated markdown from docs package) */
-export const tokenPackageDocsPath = join(currentDirname, '../../metadata/packages/docs/packages/tokens');
+/** Package-level docs for the tokens package (Installation, Usage, etc.) */
+export const tokenPackageDocsPath = join(currentDirname, '../../metadata/packages/tokens/docs');
 
 /** Root of all static AI-rule markdown files */
 export const staticPath = join(currentDirname, '../../metadata/static');
