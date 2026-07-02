@@ -212,10 +212,12 @@ Add to `claude_desktop_config.json`:
 
 - **No arguments** → Returns all available tokens with Tailwind and CSS usage guidance
 - **`token` arg** (e.g. `"spacing"`) → Returns matching token names
+- **`doc` arg** (e.g. "installation" or "usage") → Returns package-level guide
 
 **Parameters:**
 
 - `token` (string, optional): Full or partial token query
+- `doc` (string, optional): Package doc slug (e.g. `"installation"`, `"usage"`)
 
 **Example prompts:**
 
@@ -264,6 +266,7 @@ Use these argument shapes for MCP tool calls:
 
 { "tool": "token-info", "arguments": {} }
 { "tool": "token-info", "arguments": { "token": "background" } }
+{ "tool": "token-info", "arguments": { "doc": "installation" } }
 
 { "tool": "version", "arguments": {} }
 ```

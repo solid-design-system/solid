@@ -1,6 +1,8 @@
+import fs from 'node:fs/promises';
+import { join, basename, extname } from 'node:path';
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
-import { getTailwindThemeTokenNames } from '../utilities/index.js';
+import { getTailwindThemeTokenNames, tokenPackageDocsPath } from '../utilities/index.js';
 
 const TAILWIND_MAPPING = `
 CSS variable prefix → Tailwind utility
@@ -34,6 +36,27 @@ const scoreMatch = (keyword: string, token: string): number => {
   return 0;
 };
 
+const readIfExists = async (filePath: string): Promise<string | null> => {
+  try {
+    return await fs.readFile(filePath, 'utf-8');
+  } catch {
+    return null;
+  }
+};
+
+/** Lists all package-level token doc slugs (e.g. "installation", "usage"). */
+const getAvailablePackageDocs = async (): Promise<string[]> => {
+  try {
+    const entries = await fs.readdir(tokenPackageDocsPath, { withFileTypes: true });
+    return entries
+      .filter(d => d.isFile() && extname(d.name) === '.md')
+      .map(d => basename(d.name, '.md'))
+      .sort();
+  } catch {
+    return [];
+  }
+};
+
 /**
  * Simple tool to list all available tokens in the Solid Design System.
  * This tool fetches the token data from the Solid package and formats it for display.
@@ -45,18 +68,52 @@ export const tokenInfoTool = (server: McpServer) => {
     {
       description:
         `Solid Design System tokens. ` +
-        `Call without arguments to list all tokens and usage guidance. ` +
-        `Pass \`token\` (e.g. "--background-color-neutral-100" or "background") to search matching tokens.`,
+        `Call without arguments to list all tokens, usage guidance, and package docs. ` +
+        `Pass \`token\` (e.g. "--background-color-neutral-100" or "background") to search matching tokens. ` +
+        `Pass \`doc\` (e.g. "installation" or "usage") to get a package-level guide. ` +
+        `Do not combine \`doc\` with \`token\`.`,
       inputSchema: {
         token: z
           .string()
           .optional()
-          .describe('Token name or partial token text (e.g. "--background-color-neutral-100" or "spacing").')
+          .describe('Token name or partial token text (e.g. "--background-color-neutral-100" or "spacing").'),
+        doc: z
+          .string()
+          .optional()
+          .describe('Package-level guide slug (e.g. "installation", "usage"). Omit to see available topics.')
       },
       title: 'Tokens'
     },
-    ({ token }) => {
+    async ({ token, doc }) => {
+      if (doc && token) {
+        return {
+          content: [
+            {
+              type: 'text',
+              text: 'Invalid arguments: `doc` cannot be combined with `token`. Use either `doc` alone or a token query.'
+            }
+          ]
+        };
+      }
+
+      if (doc) {
+        const content = await readIfExists(join(tokenPackageDocsPath, `${doc}.md`));
+        if (!content) {
+          const available = await getAvailablePackageDocs();
+          return {
+            content: [
+              {
+                type: 'text',
+                text: `No package doc found for "${doc}". Available docs:\n` + available.map(d => `- ${d}`).join('\n')
+              }
+            ]
+          };
+        }
+        return { content: [{ type: 'text', text: content }] };
+      }
+
       const tokenNames = getTailwindThemeTokenNames();
+      const packageDocs = await getAvailablePackageDocs();
 
       if (!tokenNames.length) {
         return {
@@ -125,7 +182,13 @@ export const tokenInfoTool = (server: McpServer) => {
               ``,
               `## Available tokens (CSS variable names)`,
               ``,
-              tokenNames.join('\n')
+              tokenNames.join('\n'),
+              ``,
+              `## Package Docs`,
+              ``,
+              `Use \`doc\` to retrieve any of the following guides:`,
+              ``,
+              packageDocs.map(d => `- ${d}`).join('\n')
             ].join('\n'),
             type: 'text'
           }
