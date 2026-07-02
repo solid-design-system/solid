@@ -36,7 +36,7 @@ describe('<sd-progress-bar>', () => {
       const base = el.shadowRoot!.querySelector('[part="base"]')!;
 
       expect(label).to.exist;
-      expect(label!.textContent.trim()).to.equal('Label');
+      expect(label?.textContent?.trim() ?? '').to.equal('Label');
       expect(base.getAttribute('aria-hidden')).to.equal('false');
       expect(progressBar.getAttribute('aria-labelledby')).to.equal('label');
       expect(progressBar.getAttribute('aria-label')).to.equal(null);
@@ -54,7 +54,7 @@ describe('<sd-progress-bar>', () => {
       const base = el.shadowRoot!.querySelector('[part="base"]')!;
 
       expect(labelSlot).to.exist;
-      expect(labelSlot!.assignedElements()[0].textContent.trim()).to.equal('Label slot');
+      expect(labelSlot?.assignedElements?.()[0]?.textContent?.trim() ?? '').to.equal('Label slot');
       expect(base.getAttribute('aria-hidden')).to.equal('false');
       expect(progressBar.getAttribute('aria-labelledby')).to.equal('label');
       expect(progressBar.getAttribute('aria-label')).to.equal(null);
@@ -67,7 +67,7 @@ describe('<sd-progress-bar>', () => {
 
       const valueRight = el.shadowRoot!.querySelector('[part="value-right"]');
       expect(valueRight).to.exist;
-      expect(valueRight!.textContent.trim()).to.equal('25');
+      expect(valueRight?.textContent?.trim() ?? '').to.equal('25');
     });
 
     it('should render value at the bottom', async () => {
@@ -75,7 +75,7 @@ describe('<sd-progress-bar>', () => {
 
       const valueBottom = el.shadowRoot!.querySelector('[part="value-bottom"]');
       expect(valueBottom).to.exist;
-      expect(valueBottom!.textContent.trim()).to.equal('40');
+      expect(valueBottom?.textContent?.trim() ?? '').to.equal('40');
     });
 
     it('should clamp value to max and fallback safe max when max is invalid', async () => {
@@ -88,7 +88,7 @@ describe('<sd-progress-bar>', () => {
 
       expect(progressBar.getAttribute('aria-valuemax')).to.equal('100');
       expect(progressBar.getAttribute('aria-valuenow')).to.equal('100');
-      expect(valueRight!.textContent.trim()).to.equal('100');
+      expect(valueRight?.textContent?.trim() ?? '').to.equal('100');
     });
 
     it('should clamp negative values to 0', async () => {
@@ -98,7 +98,7 @@ describe('<sd-progress-bar>', () => {
       const valueBottom = el.shadowRoot!.querySelector('[part="value-bottom"]');
 
       expect(progressBar.getAttribute('aria-valuenow')).to.equal('0');
-      expect(valueBottom!.textContent.trim()).to.equal('0');
+      expect(valueBottom?.textContent?.trim() ?? '').to.equal('0');
     });
 
     it('should use custom value formatter for displayed and aria values', async () => {
@@ -111,7 +111,7 @@ describe('<sd-progress-bar>', () => {
 
       expect(progressBar.getAttribute('aria-valuenow')).to.equal('15 items');
       expect(progressBar.getAttribute('aria-valuetext')).to.equal('15 items');
-      expect(valueRight!.textContent.trim()).to.equal('15 items');
+      expect(valueRight?.textContent?.trim() ?? '').to.equal('15 items');
     });
   });
 
