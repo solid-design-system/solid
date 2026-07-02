@@ -49,9 +49,7 @@ export const componentsTool = (server: McpServer) => {
         component: z
           .string()
           .optional()
-          .describe(
-            'Component tag name with or without the "sd-" prefix (e.g. "sd-button" or "button"). Omit to see the full list.'
-          ),
+          .describe('Component tag name (e.g. "sd-button" or "button"). Omit to see the full list.'),
         example: z
           .string()
           .optional()

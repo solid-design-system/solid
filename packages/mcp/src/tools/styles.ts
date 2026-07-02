@@ -46,10 +46,7 @@ export const stylesTool = (server: McpServer) => {
         - Pass \`doc\` (e.g. "installation") to get a package-level guide. 
         - Do not combine \`doc\` with \`style\` or \`example\`.`,
       inputSchema: {
-        style: z
-          .string()
-          .optional()
-          .describe('Style name with or without the "sd-" prefix (e.g. "sd-chip" or "chip"). Omit to see all.'),
+        style: z.string().optional().describe('Style name (e.g. "sd-chip" or "chip"). Omit to see all.'),
         example: z
           .string()
           .optional()
