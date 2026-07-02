@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.24.2
+
+### Patch Changes
+
+- Fix height of large combobox with floating label. _[`#3116`](https://github.com/solid-design-system/solid/pull/3116) [`14dc4af`](https://github.com/solid-design-system/solid/commit/14dc4af7fbd5f5f6f80d77b45774e92f072e4a23) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 6.24.1
 
 ### Patch Changes
