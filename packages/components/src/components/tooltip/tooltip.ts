@@ -42,8 +42,6 @@ import type SdPopup from '../popup/popup';
  * @cssproperty --sd-tooltip-color-background - The background color for the tooltip.
  * @cssproperty --sd-tooltip-color-text - The text color for the tooltip.
  *
- * @cssproperty --sd-form-control__tooltip-color-icon - This custom property is deprecated. Use the anchor slot to custom styles instead.
- *
  * @animation tooltip.show - The animation to use when showing the tooltip.
  * @animation tooltip.hide - The animation to use when hiding the tooltip.
  */
@@ -407,11 +405,6 @@ export default class SdTooltip extends SolidElement {
         @apply overflow-auto;
         max-width: var(--auto-size-available-width) !important;
         max-height: var(--auto-size-available-height) !important;
-      }
-
-      /* TODO delete sd-form-control__tooltip-color-icon variable as the class 'sd-interactive' from line 344 replaces the need of it (breaking change) */
-      :host:not([disabled]) [slot='anchor'] {
-        color: rgba(var(--sd-form-control__tooltip-color-icon, var(--sd-interactive--default-color-text)));
       }
     `
   ];
