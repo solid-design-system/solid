@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Packages/MCP/Usage" />
+
+# Usage
+
+After the MCP server is configured in your client, call the tools directly with structured arguments.
+
+## Typical Workflow
+
+1. List available resources.
+2. Fetch a specific component/style/template specification.
+3. Retrieve an example snippet.
+4. Apply the result in your implementation.
+
+## Example Tool Calls
+
+```json
+{ "tool": "components", "arguments": {} }
+{ "tool": "components", "arguments": { "component": "sd-button" } }
+{ "tool": "components", "arguments": { "component": "sd-button", "example": "inverted" } }
+
+{ "tool": "styles", "arguments": { "style": "sd-chip" } }
+{ "tool": "templates", "arguments": { "component": "sd-button" } }
+
+{ "tool": "token-info", "arguments": {} }
+{ "tool": "icon-search", "arguments": { "keywords": ["download", "herunterladen"], "category": "all" } }
+
+{ "tool": "cd-toolbox", "arguments": { "topic": "icons" } }
+{ "tool": "version", "arguments": {} }
+```
+
+## Best Practices
+
+- Start broad, then narrow (`components` list first, then specific `component`).
+- Use multiple synonyms (EN and DE) for icon search.
+- Prefer explicit slugs returned by list calls for docs and examples.
+- Keep component, styles, and tokens package versions aligned in your project.
