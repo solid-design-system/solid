@@ -1,5 +1,21 @@
 # @solid-design-system/tokens
 
+## 6.25.1
+
+### Patch Changes
+
+- Add `--sd-form-control__tooltip-color-icon` to legacy variables. _[`#3122`](https://github.com/solid-design-system/solid/pull/3122) [`d86bfbf`](https://github.com/solid-design-system/solid/commit/d86bfbff9500cbe012d6d26c4dd2a78ad1ad8ac0) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.25.0
+
+### Minor Changes
+
+- Expose `./package.json` in the package exports so you can read the installed version programmatically, for example `import pkg from '@solid-design-system/components/package.json' with { type: 'json' }` or `require.resolve('@solid-design-system/components/package.json')`. _[`#3119`](https://github.com/solid-design-system/solid/pull/3119) [`7973bf9`](https://github.com/solid-design-system/solid/commit/7973bf97cc5c2961831452e078b92f08be1089e4) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.24.2
+
+## 6.24.1
+
 ## 6.24.0
 
 ## 6.23.0

@@ -121,7 +121,7 @@ export default class SdRadio extends SolidElement {
       <span
         part="base"
         class=${cx(
-          'sd-radio group flex items-center text-base leading-normal text-black cursor-pointer',
+          'sd-radio group flex items-start text-base leading-normal text-black cursor-pointer',
           (this.disabled || this.visuallyDisabled) && 'hover:cursor-not-allowed',
           {
             /* sizes, fonts */
@@ -186,7 +186,7 @@ export default class SdRadio extends SolidElement {
     ...SolidElement.styles,
     css`
       :host {
-        @apply block w-max;
+        @apply block;
       }
 
       :host(:focus-visible) {
@@ -202,6 +202,16 @@ export default class SdRadio extends SolidElement {
       :host(:focus-visible) [part='control--checked'],
       :host(:focus-visible) [part='control--unchecked'] {
         @apply outline outline-2 outline-primary outline-offset-2;
+      }
+
+      /* Margins for circle to center it with the label text */
+      [part='control--unchecked'],
+      [part='control--checked'] {
+        margin-top: 0.23em;
+      }
+      :host([size='sm']) [part='control--unchecked'],
+      :host([size='sm']) [part='control--checked'] {
+        margin-top: 0.15em;
       }
     `
   ];
