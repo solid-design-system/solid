@@ -7,7 +7,7 @@ interface ToolResult {
   content: { text: string; type: string }[];
 }
 
-describe('when using token-info tool', () => {
+describe('when using tokens tool', () => {
   let registeredTools: { handler: (args: { token?: string; doc?: string }) => Promise<ToolResult>; name: string }[];
 
   beforeEach(() => {
@@ -24,9 +24,9 @@ describe('when using token-info tool', () => {
     tokenInfoTool(mockServer as unknown as McpServer);
   });
 
-  it('should register a tool named "token-info"', () => {
+  it('should register a tool named "tokens"', () => {
     assert.strictEqual(registeredTools.length, 1);
-    assert.strictEqual(registeredTools[0].name, 'token-info');
+    assert.strictEqual(registeredTools[0].name, 'tokens');
   });
 
   it('should return token guidance on no args', async () => {

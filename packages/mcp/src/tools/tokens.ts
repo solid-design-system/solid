@@ -65,7 +65,7 @@ const getAvailablePackageDocs = async (): Promise<string[]> => {
  */
 export const tokenInfoTool = (server: McpServer) => {
   server.registerTool(
-    'token-info',
+    'tokens',
     {
       description:
         `Solid Design System tokens. ` +

@@ -264,9 +264,9 @@ Use these argument shapes for MCP tool calls:
 
 { "tool": "icon-search", "arguments": { "keywords": ["download", "herunterladen"], "library": "default", "category": "all" } }
 
-{ "tool": "token-info", "arguments": {} }
-{ "tool": "token-info", "arguments": { "token": "background" } }
-{ "tool": "token-info", "arguments": { "doc": "installation" } }
+{ "tool": "tokens", "arguments": {} }
+{ "tool": "tokens", "arguments": { "token": "background" } }
+{ "tool": "tokens", "arguments": { "doc": "installation" } }
 
 { "tool": "version", "arguments": {} }
 ```
@@ -296,7 +296,7 @@ src/
 │   ├── icon-search.ts        # Icon search
 │   ├── styles.ts             # Unified styles tool
 │   ├── templates.ts          # Unified templates tool
-│   ├── tokens.ts             # token-info tool
+│   ├── tokens.ts             # tokens tool
 │   ├── version.ts            # Version information
 │   └── index.ts              # Tool exports
 └── utilities/                # Helper functions

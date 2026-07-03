@@ -4,35 +4,93 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Usage
 
-After the MCP server is configured in your client, call the tools directly with structured arguments.
+After the MCP server is configured in your client, call tools with structured arguments to get results for each topic.
 
-## Typical Workflow
+### Tools
 
-1. List available resources.
-2. Fetch a specific component/style/template specification.
-3. Retrieve an example snippet.
-4. Apply the result in your implementation.
+- `quickstart`: list docs or fetch one quickstart doc by `doc`.
+- `components`: list components, fetch component spec, fetch example, or fetch package docs.
+- `styles`: list styles, fetch style spec, fetch example, or fetch package docs.
+- `templates`: list templates, fetch one template, or filter by component/style.
+- `cd-toolbox`: list topics or fetch one topic by `topic`.
+- `icon-search`: keyword-based icon lookup across category/library options.
+- `tokens`: full token guidance, token search, or package docs.
+- `version`: server version and package metadata.
 
-## Example Tool Calls
+### Best practices
+
+- Start broad, then narrow (e.g. `components` list first, then specific `component`).
+- Use multiple synonyms (EN and DE) for icon search.
+- Use the exact slugs returned by list calls when requesting docs and examples.
+- Do not combine mutually exclusive arguments (`doc` with `component`, `template` with filters, etc.).
+
+## MCP Caller Cheat Sheet
 
 ```json
-{ "tool": "components", "arguments": {} }
-{ "tool": "components", "arguments": { "component": "sd-button" } }
+{ "tool": "quickstart", "arguments": {} }
+{ "tool": "quickstart", "arguments": { "doc": "components/Installation" } }
+
+{ "tool": "components", "arguments": { "component": "button" } }
 { "tool": "components", "arguments": { "component": "sd-button", "example": "inverted" } }
+{ "tool": "components", "arguments": { "doc": "installation" } }
 
-{ "tool": "styles", "arguments": { "style": "sd-chip" } }
-{ "tool": "templates", "arguments": { "component": "sd-button" } }
+{ "tool": "styles", "arguments": { "style": "chip" } }
+{ "tool": "styles", "arguments": { "style": "sd-chip", "example": "size" } }
+{ "tool": "styles", "arguments": { "doc": "usage" } }
 
-{ "tool": "token-info", "arguments": {} }
+{ "tool": "templates", "arguments": { "template": "forms" } }
+{ "tool": "templates", "arguments": { "component": "button" } }
+{ "tool": "templates", "arguments": { "style": "chip" } }
+
+{ "tool": "cd-toolbox", "arguments": {} }
+{ "tool": "cd-toolbox", "arguments": { "topic": "icons" } }
+
 { "tool": "icon-search", "arguments": { "keywords": ["download", "herunterladen"], "category": "all" } }
 
-{ "tool": "cd-toolbox", "arguments": { "topic": "icons" } }
+{ "tool": "tokens", "arguments": {} }
+{ "tool": "tokens", "arguments": { "token": "background" } }
+{ "tool": "tokens", "arguments": { "doc": "installation" } }
+
 { "tool": "version", "arguments": {} }
 ```
 
-## Best Practices
+## Common Queries
 
-- Start broad, then narrow (`components` list first, then specific `component`).
-- Use multiple synonyms (EN and DE) for icon search.
-- Prefer explicit slugs returned by list calls for docs and examples.
-- Keep component, styles, and tokens package versions aligned in your project.
+### Build a component
+
+Use `components` to move from discovery to implementation details.
+Start by listing available tags, then open one full spec and finally fetch a concrete example snippet.
+
+1. `components` without arguments to discover available tags
+2. `components` with `component` (e.g. component="sd-button")
+3. `components` with `component` + `example` (e.g. component="sd-button", example="inverted")
+
+### Build a template
+
+Use `templates` to find composition patterns that combine multiple components/styles.
+Start with the full list, open one complete template, then optionally filter by a specific component or style.
+
+1. `templates` without arguments to discover available template names
+2. `templates` with `template` to fetch one full template (e.g. template="forms")
+3. Optionally use filters to narrow candidates before opening one template:
+   - `templates` with `component` (e.g. component="sd-button")
+   - `templates` with `style` (e.g. style="sd-chip")
+
+### Find icons
+
+Use `icon-search` with multiple synonyms (English and German) to find icons:
+
+```json
+{
+  "tool": "icon-search",
+  "arguments": { "keywords": ["download", "herunterladen", "save", "speichern"], "category": "all" }
+}
+```
+
+### Find tokens
+
+Use `tokens` with keywords to find specific tokens:
+
+```json
+{ "tool": "tokens", "arguments": { "token": "background" } }
+```

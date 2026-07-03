@@ -25,7 +25,7 @@ Use the **Figma MCP** (`mcp_figma_get_design_context`) to retrieve the design fo
 
 - Extract layout structure, spacing, colours, and which components are used
 - Identify the Figma node URL — it will be embedded in the story's `design` parameter
-- Match Tailwind tokens from the design (use `mcp_solid-design-_token-info` for the correct class names)
+- Match Tailwind tokens from the design (use `mcp_solid-design-_tokens` for the correct class names)
 
 ### 2. Discover Available Components & Styles
 
@@ -230,7 +230,7 @@ export const ProductCardWithRating = {
 - [ ] Figma design retrieved via Figma MCP; `design.url` set in default export
 - [ ] Component APIs verified via `mcp_solid-design-_components` before use
 - [ ] Icons resolved via `mcp_solid-design-_icon-search` (never `library="_internal"`)
-- [ ] Tailwind tokens verified via `mcp_solid-design-_token-info`
+- [ ] Tailwind tokens verified via `mcp_solid-design-_tokens`
 - [ ] Existing templates checked via `mcp_solid-design-_templates` to avoid duplication
 - [ ] Every `id` attribute is unique and story-prefixed
 - [ ] `<script type="module">` used for all inline scripts (`const`/`let` are safe in module scope)
