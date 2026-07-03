@@ -25,6 +25,7 @@ export const themeAttributes = {
 
   'sd-theme-sp': {
     logoLg: 'images/logo-sparda-lg.svg',
+    logoMd: 'images/logo-sparda-md.svg',
     logoSm: 'images/logo-sparda-sm.svg',
     alt: 'Logo Sparda Homepage',
     css: 'sp/sp.css',
