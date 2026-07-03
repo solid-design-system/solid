@@ -1,6 +1,7 @@
 import { css, html } from 'lit';
 import { customElement } from '../../internal/register-custom-element';
 import { getIconLibrary, unwatchIcon, watchIcon } from './library';
+import type { IconType } from './library';
 import { property, state } from 'lit/decorators.js';
 import { requestIcon } from './request';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
@@ -78,6 +79,14 @@ export default class SdIcon extends SolidElement {
     return this.src;
   }
 
+  private getIconType(): IconType {
+    const [type] = this.name?.split('/') ?? [];
+    if (type === 'system' || type === 'content' || type === 'status') {
+      return type;
+    }
+    return 'unknown';
+  }
+
   @watch('label')
   handleLabelChange() {
     const hasLabel = typeof this.label === 'string' && this.label.length > 0;
@@ -114,7 +123,7 @@ export default class SdIcon extends SolidElement {
           const svgEl = doc.body.querySelector('svg');
 
           if (svgEl !== null) {
-            library?.mutator?.(svgEl);
+            library?.mutator?.(svgEl, this.getIconType());
             this.svg = svgEl.outerHTML;
             this.emit('sd-load');
           } else {

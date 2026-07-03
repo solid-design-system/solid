@@ -31,13 +31,17 @@ const multiThemingLibrary: IconLibrary = {
 
     return `https://celum-icons.fe.union-investment.de/${name}.svg`;
   },
-  mutator: svg => {
+  mutator: (svg, type) => {
     const recoloredElements = {
       currentColorFills: [] as unknown as NodeListOf<SVGElement>,
       currentColorStrokes: [] as unknown as NodeListOf<SVGElement>,
       greenFills: [] as unknown as NodeListOf<SVGElement>,
       greenStrokes: [] as unknown as NodeListOf<SVGElement>
     };
+
+    if (type === 'content') {
+      // something something
+    }
 
     const currentColors = ['#00358e', '#002d67', '#005ca9', '#051530'];
     const greenColor = ['#2d9d00', '#f35e01'];

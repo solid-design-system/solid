@@ -5,7 +5,8 @@ import multiThemingLibrary from './library.multi-theming';
 import type SdIcon from '../icon/icon';
 
 export type IconLibraryResolver = (name: string, element?: HTMLElement) => string;
-export type IconLibraryMutator = (svg: SVGElement) => void;
+export type IconType = 'system' | 'content' | 'status' | 'unknown';
+export type IconLibraryMutator = (svg: SVGElement, type: IconType) => void;
 export interface IconLibrary {
   name: string;
   resolver: IconLibraryResolver;
