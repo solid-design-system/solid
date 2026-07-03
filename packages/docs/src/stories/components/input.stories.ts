@@ -42,10 +42,10 @@ export const Default = {
  */
 export const Size = {
   render: () => html`
-    <div class="grid grid-cols-2 gap-12 content-end">
-      <sd-input size="lg" label="Label" placeholder="Large"></sd-input>
-      <sd-input size="md" label="Label" placeholder="Medium"></sd-input>
-      <sd-input size="sm" label="Label" placeholder="Small"></sd-input>
+    <div class="flex flex-wrap md:flex-nowrap gap-12">
+      <sd-input size="lg" label="Label" placeholder="Large" class="min-w-[200px] md:min-w-0 max-w-[300px]"></sd-input>
+      <sd-input size="md" label="Label" placeholder="Medium" class="min-w-[200px] md:min-w-0 max-w-[300px]"></sd-input>
+      <sd-input size="sm" label="Label" placeholder="Small" class="min-w-[200px] md:min-w-0 max-w-[300px]"></sd-input>
     </div>
   `
 };
@@ -57,9 +57,9 @@ export const Size = {
  */
 export const Label = {
   render: () => html`
-    <div class="flex flex-row gap-12 items-baseline">
-      <sd-input label="Label attribute" spellcheck></sd-input>
-      <sd-input spellcheck>
+    <div class="flex flex-wrap md:flex-nowrap gap-12 items-baseline">
+      <sd-input label="Label attribute" spellcheck class="w-full min-w-[200px] md:min-w-0"></sd-input>
+      <sd-input spellcheck class="w-full min-w-[200px] md:min-w-0">
         <div slot="label" class="text-lg">Label slot</div>
       </sd-input>
     </div>
@@ -120,7 +120,7 @@ export const Disabled = {
  */
 export const VisuallyDisabled = {
   render: () =>
-    html`<div class="w-[250px] h-[200px] pt-12">
+    html`<div class="w-full max-w-[250px] h-[200px] pt-12">
       <sd-tooltip content="Visually disabled" trigger="hover focus" size="sm" placement="top">
         <sd-input label="Label" value="Visually disabled" visually-disabled></sd-input>
       </sd-tooltip>
@@ -148,9 +148,9 @@ export const ReadOnly = {
 export const HelpText = {
   render: () => {
     return html`
-      <div class="flex flex-rows gap-12">
-        <sd-input label="Label" help-text="Help text attribute"></sd-input>
-        <sd-input label="Label">
+      <div class="flex flex-wrap md:flex-nowrap gap-12">
+        <sd-input label="Label" help-text="Help text attribute" class="w-full min-w-[200px] md:min-w-0"></sd-input>
+        <sd-input label="Label" class="w-full min-w-[200px] md:min-w-0">
           <div slot="help-text" class="text-lg">Help text slot</div>
         </sd-input>
       </div>
@@ -175,12 +175,12 @@ export const Clearable = {
 
 export const Icon = {
   render: () =>
-    html`<div class="flex flex-rows gap-12">
-      <sd-input label="Label" spellcheck>
+    html`<div class="flex flex-wrap md:flex-nowrap gap-12">
+      <sd-input label="Label" spellcheck class="w-full min-w-[200px] md:min-w-0">
         <sd-icon label="landscape" name="system/image" slot="left"></sd-icon>
       </sd-input>
 
-      <sd-input label="Label" spellcheck>
+      <sd-input label="Label" spellcheck class="w-full min-w-[200px] md:min-w-0">
         <sd-icon label="landscape" name="system/image" slot="right"></sd-icon>
       </sd-input>
     </div>`
@@ -205,7 +205,7 @@ export const TogglePassword = {
 
 export const Type = {
   render: () =>
-    html` <div class="grid grid-cols-2 gap-12 content-end">
+    html` <div class="grid grid-cols-1 md:grid-cols-2 gap-12 content-end">
       <sd-input
         type="text"
         placeholder="Lorem ipsum"
