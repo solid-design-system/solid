@@ -3,6 +3,7 @@ import { join, basename, extname } from 'node:path';
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
 import { getTailwindThemeTokenNames, tokenPackageDocsPath } from '../utilities/index.js';
+import { normalizeSafeSlug } from '../utilities/input.js';
 
 const TAILWIND_MAPPING = `
 CSS variable prefix → Tailwind utility
@@ -97,14 +98,24 @@ export const tokenInfoTool = (server: McpServer) => {
       }
 
       if (doc) {
-        const content = await readIfExists(join(tokenPackageDocsPath, `${doc}.md`));
+        const safeDoc = normalizeSafeSlug(doc);
+        if (!safeDoc) {
+          return {
+            content: [
+              { type: 'text', text: 'Invalid arguments: `doc` contains an invalid path. Use a listed doc slug.' }
+            ]
+          };
+        }
+
+        const content = await readIfExists(join(tokenPackageDocsPath, `${safeDoc}.md`));
         if (!content) {
           const available = await getAvailablePackageDocs();
           return {
             content: [
               {
                 type: 'text',
-                text: `No package doc found for "${doc}". Available docs:\n` + available.map(d => `- ${d}`).join('\n')
+                text:
+                  `No package doc found for "${safeDoc}". Available docs:\n` + available.map(d => `- ${d}`).join('\n')
               }
             ]
           };

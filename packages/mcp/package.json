@@ -60,9 +60,10 @@
     "build:ts": "node --input-type=module -e \"import{rmSync}from'node:fs';rmSync('dist',{recursive:true,force:true})\" && tsc",
     "build:metadata": "node dist/build/build.js",
     "build:hash": "node ./dist/bin/create-checksum.js",
-    "lint:js": "eslint src",
+    "lint:js": "cd ../.. && pnpm exec eslint packages/mcp/src",
     "lint": "pnpm run /^lint:.*/",
-    "test": "node --import tsx/esm --test \"test/**/*.spec.ts\""
+    "test": "node --import tsx/esm --test \"test/**/*.spec.ts\"",
+    "verify": "pnpm lint && pnpm test"
   },
   "type": "module",
   "version": "2.6.0"

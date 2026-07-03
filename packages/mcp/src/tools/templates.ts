@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import { z } from 'zod';
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { templatesPackagePath } from '../utilities/index.js';
+import { normalizeSafeSlug } from '../utilities/input.js';
 
 const readIfExists = async (filePath: string): Promise<string | null> => {
   try {
@@ -82,13 +83,25 @@ export const templatesTool = (server: McpServer) => {
 
       // --- specific template ---
       if (template) {
-        const content = await readIfExists(join(templatesPackagePath, `${template}.md`));
+        const safeTemplate = normalizeSafeSlug(template);
+        if (!safeTemplate) {
+          return {
+            content: [
+              {
+                type: 'text',
+                text: 'Invalid arguments: `template` contains an invalid path. Use a listed template slug.'
+              }
+            ]
+          };
+        }
+
+        const content = await readIfExists(join(templatesPackagePath, `${safeTemplate}.md`));
         if (!content) {
           return {
             content: [
               {
                 type: 'text',
-                text: `No template found named "${template}". Call \`templates\` without arguments to see all available templates.`
+                text: `No template found named "${safeTemplate}". Call \`templates\` without arguments to see all available templates.`
               }
             ]
           };

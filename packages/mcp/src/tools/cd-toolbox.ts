@@ -3,6 +3,7 @@ import { join, basename, extname } from 'node:path';
 import { z } from 'zod';
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { cdToolboxPath } from '../utilities/index.js';
+import { normalizeSafeSlug } from '../utilities/input.js';
 
 /**
  * Extracts the `description` value from YAML frontmatter.
@@ -74,7 +75,14 @@ export const cdToolboxTool = (server: McpServer) => {
         }
       }
 
-      const filePath = join(cdToolboxPath, `${topic}.md`);
+      const safeTopic = normalizeSafeSlug(topic);
+      if (!safeTopic) {
+        return {
+          content: [{ type: 'text', text: 'Invalid topic path. Use one of the listed topic IDs.' }]
+        };
+      }
+
+      const filePath = join(cdToolboxPath, `${safeTopic}.md`);
       try {
         const content = await fs.readFile(filePath, 'utf-8');
         // Strip frontmatter before returning
@@ -90,13 +98,13 @@ export const cdToolboxTool = (server: McpServer) => {
             content: [
               {
                 type: 'text',
-                text: `Topic "${topic}" not found. Available topics:\n${list}`
+                text: `Topic "${safeTopic}" not found. Available topics:\n${list}`
               }
             ]
           };
         } catch {
           return {
-            content: [{ type: 'text', text: `Topic "${topic}" not found.` }]
+            content: [{ type: 'text', text: `Topic "${safeTopic}" not found.` }]
           };
         }
       }

@@ -38,10 +38,16 @@ export const getStyleInfo = async (name: string) => {
   const dirName = name.startsWith('sd-') ? name : `sd-${name}`;
   const styleDir = join(stylesPath, dirName);
 
-  const [docs, classesRaw] = await Promise.all([
+  const [infoMd, docsMd, classesRaw] = await Promise.all([
+    fs.readFile(join(styleDir, 'info.md'), 'utf-8').catch(() => null),
     fs.readFile(join(styleDir, 'docs.md'), 'utf-8').catch(() => null),
     fs.readFile(join(styleDir, 'classes.txt'), 'utf-8').catch(() => null)
   ]);
 
-  return { docs, classes: classesRaw?.split('\n').filter(Boolean) ?? [] };
+  const extractedClasses = !classesRaw ? [...new Set((infoMd ?? '').match(/\bsd-[a-z0-9-]+\b/g) ?? [])] : [];
+
+  return {
+    docs: infoMd ?? docsMd,
+    classes: classesRaw?.split('\n').filter(Boolean) ?? extractedClasses
+  };
 };

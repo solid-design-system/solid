@@ -3,6 +3,7 @@ import { join, basename, extname } from 'node:path';
 import { z } from 'zod';
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { stylesPath, stylePackageDocsPath, getAvailableStyles } from '../utilities/index.js';
+import { normalizeSafeSlug } from '../utilities/input.js';
 
 const readIfExists = async (filePath: string): Promise<string | null> => {
   try {
@@ -88,14 +89,24 @@ export const stylesTool = (server: McpServer) => {
 
       // --- package-level doc ---
       if (doc) {
-        const content = await readIfExists(join(stylePackageDocsPath, `${doc}.md`));
+        const safeDoc = normalizeSafeSlug(doc);
+        if (!safeDoc) {
+          return {
+            content: [
+              { type: 'text', text: 'Invalid arguments: `doc` contains an invalid path. Use a listed doc slug.' }
+            ]
+          };
+        }
+
+        const content = await readIfExists(join(stylePackageDocsPath, `${safeDoc}.md`));
         if (!content) {
           const available = await getAvailablePackageDocs();
           return {
             content: [
               {
                 type: 'text',
-                text: `No package doc found for "${doc}". Available docs:\n` + available.map(d => `- ${d}`).join('\n')
+                text:
+                  `No package doc found for "${safeDoc}". Available docs:\n` + available.map(d => `- ${d}`).join('\n')
               }
             ]
           };
@@ -107,13 +118,25 @@ export const stylesTool = (server: McpServer) => {
       if (style && example) {
         style = style.trim().toLowerCase();
         style = style.startsWith('sd-') ? style : `sd-${style}`;
-        const storyMd = await readIfExists(join(stylesPath, style, 'stories', `${example}.md`));
+        const safeExample = normalizeSafeSlug(example);
+        if (!safeExample) {
+          return {
+            content: [
+              {
+                type: 'text',
+                text: 'Invalid arguments: `example` contains an invalid path. Use a listed example slug.'
+              }
+            ]
+          };
+        }
+
+        const storyMd = await readIfExists(join(stylesPath, style, 'stories', `${safeExample}.md`));
         if (!storyMd) {
           return {
             content: [
               {
                 type: 'text',
-                text: `No example "${example}" found for "${style}". Use \`style\` alone to see available examples.`
+                text: `No example "${safeExample}" found for "${style}". Use \`style\` alone to see available examples.`
               }
             ]
           };

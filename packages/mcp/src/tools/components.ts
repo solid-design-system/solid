@@ -3,6 +3,7 @@ import { join, basename, extname } from 'node:path';
 import { z } from 'zod';
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { componentPath, componentPackageDocsPath, getAvailableComponents } from '../utilities/index.js';
+import { normalizeSafeSlug } from '../utilities/input.js';
 
 const readIfExists = async (filePath: string): Promise<string | null> => {
   try {
@@ -93,14 +94,24 @@ export const componentsTool = (server: McpServer) => {
 
       // --- package-level doc ---
       if (doc) {
-        const content = await readIfExists(join(componentPackageDocsPath, `${doc}.md`));
+        const safeDoc = normalizeSafeSlug(doc);
+        if (!safeDoc) {
+          return {
+            content: [
+              { type: 'text', text: 'Invalid arguments: `doc` contains an invalid path. Use a listed doc slug.' }
+            ]
+          };
+        }
+
+        const content = await readIfExists(join(componentPackageDocsPath, `${safeDoc}.md`));
         if (!content) {
           const available = await getAvailablePackageDocs();
           return {
             content: [
               {
                 type: 'text',
-                text: `No package doc found for "${doc}". Available docs:\n` + available.map(d => `- ${d}`).join('\n')
+                text:
+                  `No package doc found for "${safeDoc}". Available docs:\n` + available.map(d => `- ${d}`).join('\n')
               }
             ]
           };
@@ -112,13 +123,25 @@ export const componentsTool = (server: McpServer) => {
       if (component && example) {
         component = component.trim().toLowerCase();
         component = component.startsWith('sd-') ? component : `sd-${component}`;
-        const exampleMd = await readIfExists(join(componentPath, component, 'stories', `${example}.md`));
+        const safeExample = normalizeSafeSlug(example);
+        if (!safeExample) {
+          return {
+            content: [
+              {
+                type: 'text',
+                text: 'Invalid arguments: `example` contains an invalid path. Use a listed example slug.'
+              }
+            ]
+          };
+        }
+
+        const exampleMd = await readIfExists(join(componentPath, component, 'stories', `${safeExample}.md`));
         if (!exampleMd) {
           return {
             content: [
               {
                 type: 'text',
-                text: `No example "${example}" found for "${component}". Use \`component\` alone to see available examples.`
+                text: `No example "${safeExample}" found for "${component}". Use \`component\` alone to see available examples.`
               }
             ]
           };
