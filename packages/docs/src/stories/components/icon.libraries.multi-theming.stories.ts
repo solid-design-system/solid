@@ -47,7 +47,7 @@ export const Content = {
       modes: {
         'sd-theme-vb': { theme: 'VB' },
         'sd-theme-bb': { theme: 'BBBank' },
-        'sd-theme-sparda': { theme: 'Sparda' },
+        'sd-theme-sp': { theme: 'Sparda' },
         'sd-theme-kid': { theme: 'KidStarter' }
       }
     }
@@ -89,7 +89,7 @@ export const System = {
       modes: {
         'sd-theme-vb': { theme: 'VB' },
         'sd-theme-bb': { theme: 'BBBank' },
-        'sd-theme-sparda': { theme: 'Sparda' },
+        'sd-theme-sp': { theme: 'Sparda' },
         'sd-theme-kid': { theme: 'KidStarter' }
       }
     }
