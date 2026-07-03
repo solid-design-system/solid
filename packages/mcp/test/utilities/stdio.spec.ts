@@ -1,5 +1,6 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
+import process from 'node:process';
 import { parseCommandLineArgs } from '../../src/utilities/stdio.js';
 
 describe('when using parseCommandLineArgs', () => {

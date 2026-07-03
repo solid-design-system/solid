@@ -27,7 +27,7 @@ describe('when using the styles metadata utilities', () => {
       const info = await getStyleInfo('sd-chip');
       assert.ok(info.docs && info.docs.length > 0);
       assert.ok(info.classes.length > 0);
-      assert.ok(info.classes.some(c => c.startsWith('sd-chip')));
+      assert.ok(info.classes.some((c: string) => c.startsWith('sd-chip')));
     });
 
     it('should accept style name without sd- prefix', async () => {

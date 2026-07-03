@@ -12,7 +12,7 @@ describe('when using the version utilities', () => {
       assert.strictEqual(packageInfo.description, 'MCP Server for the Solid Design System');
       assert.notStrictEqual(packageInfo.author, undefined);
       assert.ok(packageInfo.author !== undefined);
-      assert.strictEqual(packageInfo.author.name, 'Union Investment');
+      assert.strictEqual(packageInfo.author!.name, 'Union Investment');
     });
 
     it('should have required package.json fields', () => {
