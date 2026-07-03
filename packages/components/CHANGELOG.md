@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.25.0
+
+### Minor Changes
+
+- Expose `./package.json` in the package exports so you can read the installed version programmatically, for example `import pkg from '@solid-design-system/components/package.json' with { type: 'json' }` or `require.resolve('@solid-design-system/components/package.json')`. _[`#3119`](https://github.com/solid-design-system/solid/pull/3119) [`7973bf9`](https://github.com/solid-design-system/solid/commit/7973bf97cc5c2961831452e078b92f08be1089e4) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 6.24.2
 
 ### Patch Changes
