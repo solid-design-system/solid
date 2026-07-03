@@ -5,7 +5,7 @@ const themeMap: Record<string, string> = {
   'ui-dark': 'union-investment',
   vb: 'vb',
   bb: 'bbbank',
-  sparda: 'sparda',
+  sp: 'sp',
   kid: 'kidstarter'
 };
 
