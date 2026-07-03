@@ -23,7 +23,7 @@ const getFirstTextContent = (content: unknown): TextContent => {
   assert.ok(Array.isArray(content));
   assert.ok(content.length > 0);
 
-  const firstItem = content[0];
+  const firstItem: unknown = content[0];
   assert.ok(isRecord(firstItem));
   assert.strictEqual(firstItem.type, 'text');
   assert.ok(typeof firstItem.text === 'string');
