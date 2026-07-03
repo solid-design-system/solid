@@ -1,5 +1,11 @@
 # @solid-design-system/tokens
 
+## 6.25.1
+
+### Patch Changes
+
+- Add `--sd-form-control__tooltip-color-icon` to legacy variables. _[`#3122`](https://github.com/solid-design-system/solid/pull/3122) [`d86bfbf`](https://github.com/solid-design-system/solid/commit/d86bfbff9500cbe012d6d26c4dd2a78ad1ad8ac0) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 6.25.0
 
 ### Minor Changes

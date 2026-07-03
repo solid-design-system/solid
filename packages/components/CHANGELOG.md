@@ -1,5 +1,7 @@
 # @solid-design-system/components
 
+## 6.25.1
+
 ## 6.25.0
 
 ### Minor Changes
