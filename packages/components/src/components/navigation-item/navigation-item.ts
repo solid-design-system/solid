@@ -204,7 +204,7 @@ export default class SdNavigationItem extends SolidElement {
       children: this.hasSlotController.test('children')
     };
 
-    const horizontalPadding = this.vertical ? 'py-3' : this.isStackedHorizontal ? 'py-1' : 'py-2';
+    const horizontalPadding = this.vertical ? 'py-3' : this.isStackedHorizontal ? 'pt-1 pb-0' : 'py-2';
 
     /* eslint-disable lit/no-invalid-html */
     /* eslint-disable lit/binding-positions */
@@ -245,11 +245,10 @@ export default class SdNavigationItem extends SolidElement {
         part="current-indicator"
         class=${cx(
           'absolute bg-accent pointer-events-none navigable__current-indicator-border-radius',
+          this.isStackedHorizontal && 'hidden',
           this.vertical
             ? 'navigable__current-indicator-width h-[calc(100%-16px)] top-2 left-0 group-hover:h-full group-hover:top-0'
-            : this.isStackedHorizontal
-              ? 'h-[2px] left-6 right-6 bottom-0'
-              : 'navigable__current-indicator-height w-[calc(100%-16px)] left-2 bottom-0 group-hover:w-full group-hover:left-0 transition-all',
+            : 'navigable__current-indicator-height w-[calc(100%-16px)] left-2 bottom-0 group-hover:w-full group-hover:left-0 transition-all',
           this.disabled && 'bg-neutral-500'
         )}></div>
         <div 
@@ -280,10 +279,11 @@ export default class SdNavigationItem extends SolidElement {
               part="content-container"
               class=${cx(
                 'inline-flex items-center',
+                this.isStackedHorizontal && 'relative',
                 this.vertical
                   ? 'flex-auto gap-2'
                   : this.isStackedHorizontal
-                    ? 'text-center'
+                    ? 'text-center pb-1'
                     : 'flex-auto flex-col justify-center gap-1 text-center'
               )}
             >
@@ -298,6 +298,18 @@ export default class SdNavigationItem extends SolidElement {
                       : 'justify-center gap-1 text-center'
                 )}
               ></slot>
+              ${
+                this.isStackedHorizontal
+                  ? html`<span
+                      part="current-indicator"
+                      aria-hidden="true"
+                      class=${cx(
+                        'absolute left-0 right-0 bottom-0 h-[2px] pointer-events-none bg-accent navigable__current-indicator-border-radius',
+                        this.disabled && 'bg-neutral-500'
+                      )}
+                    ></span>`
+                  : ''
+              }
             </span>
             ${
               this.chevron || (slots['children'] && this.vertical && !this.separated)
