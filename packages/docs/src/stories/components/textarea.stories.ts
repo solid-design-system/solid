@@ -50,7 +50,7 @@ export const Size = {
         label="Label"
         rows="4"
         spellcheck
-        class="min-w-[200px] md:min-w-0 max-w-[400px]"
+        class="w-full min-w-[200px] md:min-w-0 max-w-[500px]"
       ></sd-textarea>
 
       <sd-textarea
@@ -59,7 +59,7 @@ export const Size = {
         label="Label"
         rows="4"
         spellcheck
-        class="min-w-[200px] md:min-w-0 max-w-[400px]"
+        class="w-full min-w-[200px] md:min-w-0 max-w-[500px]"
       ></sd-textarea>
 
       <sd-textarea
@@ -68,7 +68,7 @@ export const Size = {
         label="Label"
         rows="4"
         spellcheck
-        class="min-w-[200px] md:min-w-0 max-w-[400px]"
+        class="w-full min-w-[200px] md:min-w-0 max-w-[500px]"
       ></sd-textarea>
     </div>
   `
@@ -87,7 +87,7 @@ export const Rows = {
         label="Label"
         rows="4"
         spellcheck
-        class="min-w-[200px] md:min-w-0 max-w-[400px]"
+        class="w-full min-w-[200px] md:min-w-0 max-w-[500px]"
       ></sd-textarea>
 
       <sd-textarea
@@ -95,7 +95,7 @@ export const Rows = {
         label="Label"
         rows="8"
         spellcheck
-        class="min-w-[200px] md:min-w-0 max-w-[400px]"
+        class="w-full min-w-[200px] md:min-w-0 max-w-[500px]"
       ></sd-textarea>
 
       <sd-textarea
@@ -103,7 +103,7 @@ export const Rows = {
         label="Label"
         rows="12"
         spellcheck
-        class="min-w-[200px] md:min-w-0 max-w-[400px]"
+        class="w-full min-w-[200px] md:min-w-0 max-w-[500px]"
       ></sd-textarea>
     </div>
   `
@@ -124,9 +124,9 @@ export const Label = {
         label="Label attribute"
         rows="4"
         spellcheck
-        class="w-full min-w-[200px] md:min-w-0"
+        class="w-full min-w-[200px] md:min-w-0 max-w-[500px]"
       ></sd-textarea>
-      <sd-textarea size="lg" rows="4" spellcheck class="w-full min-w-[200px] md:min-w-0">
+      <sd-textarea size="lg" rows="4" spellcheck class="w-full min-w-[200px] md:min-w-0 max-w-[500px]">
         <div slot="label" class="text-lg">Label slot</div>
       </sd-textarea>
     </div>
@@ -147,7 +147,7 @@ export const FloatingLabel = {
         floating-label
         rows="4"
         spellcheck
-        class="w-full min-w-[200px] md:min-w-0"
+        class="w-full min-w-[200px] md:min-w-0 max-w-[500px]"
       ></sd-textarea>
     </div>
   `
@@ -240,9 +240,9 @@ export const HelpText = {
         label="Label"
         help-text="Help text attribute"
         rows="4"
-        class="w-full min-w-[200px] md:min-w-0"
+        class="w-full min-w-[200px] md:min-w-0 max-w-[500px]"
       ></sd-textarea>
-      <sd-textarea size="lg" label="Label" rows="4" spellcheck class="w-full min-w-[200px] md:min-w-0">
+      <sd-textarea size="lg" label="Label" rows="4" spellcheck class="w-full min-w-[200px] md:min-w-0 max-w-[500px]">
         <div slot="help-text" class="text-lg">Help text slot</div>
       </sd-textarea>
     </div>

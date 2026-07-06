@@ -27,7 +27,7 @@ export default {
 
 export const Default = {
   render: (args: any) => {
-    return html`<div class="w-full max-w-[300px]">${generateTemplate({ args })}</div> `;
+    return html`<div class="w-full max-w-[250px]">${generateTemplate({ args })}</div> `;
   }
 };
 
@@ -43,9 +43,24 @@ export const Default = {
 export const Size = {
   render: () => html`
     <div class="flex flex-wrap md:flex-nowrap gap-12">
-      <sd-input size="lg" label="Label" placeholder="Large" class="min-w-[200px] md:min-w-0 max-w-[300px]"></sd-input>
-      <sd-input size="md" label="Label" placeholder="Medium" class="min-w-[200px] md:min-w-0 max-w-[300px]"></sd-input>
-      <sd-input size="sm" label="Label" placeholder="Small" class="min-w-[200px] md:min-w-0 max-w-[300px]"></sd-input>
+      <sd-input
+        size="lg"
+        label="Label"
+        placeholder="Large"
+        class="w-full min-w-[200px] md:min-w-0 max-w-[250px]"
+      ></sd-input>
+      <sd-input
+        size="md"
+        label="Label"
+        placeholder="Medium"
+        class="w-full min-w-[200px] md:min-w-0 max-w-[250px]"
+      ></sd-input>
+      <sd-input
+        size="sm"
+        label="Label"
+        placeholder="Small"
+        class="w-full min-w-[200px] md:min-w-0 max-w-[250px]"
+      ></sd-input>
     </div>
   `
 };
@@ -58,8 +73,8 @@ export const Size = {
 export const Label = {
   render: () => html`
     <div class="flex flex-wrap md:flex-nowrap gap-12 items-baseline">
-      <sd-input label="Label attribute" spellcheck class="w-full min-w-[200px] md:min-w-0"></sd-input>
-      <sd-input spellcheck class="w-full min-w-[200px] md:min-w-0">
+      <sd-input label="Label attribute" spellcheck class="w-full min-w-[200px] md:min-w-0 max-w-[250px]"></sd-input>
+      <sd-input spellcheck class="w-full min-w-[200px] md:min-w-0 max-w-[250px]">
         <div slot="label" class="text-lg">Label slot</div>
       </sd-input>
     </div>
@@ -73,7 +88,7 @@ export const Label = {
  */
 export const FloatingLabel = {
   render: () => html`
-    <div class="w-full max-w-[350px]">
+    <div class="w-full max-w-[250px]">
       <sd-input label="Floating Label" floating-label></sd-input>
     </div>
   `
@@ -149,8 +164,12 @@ export const HelpText = {
   render: () => {
     return html`
       <div class="flex flex-wrap md:flex-nowrap gap-12">
-        <sd-input label="Label" help-text="Help text attribute" class="w-full min-w-[200px] md:min-w-0"></sd-input>
-        <sd-input label="Label" class="w-full min-w-[200px] md:min-w-0">
+        <sd-input
+          label="Label"
+          help-text="Help text attribute"
+          class="w-full min-w-[200px] md:min-w-0 max-w-[250px]"
+        ></sd-input>
+        <sd-input label="Label" class="w-full min-w-[200px] md:min-w-0 max-w-[250px]">
           <div slot="help-text" class="text-lg">Help text slot</div>
         </sd-input>
       </div>
@@ -176,11 +195,11 @@ export const Clearable = {
 export const Icon = {
   render: () =>
     html`<div class="flex flex-wrap md:flex-nowrap gap-12">
-      <sd-input label="Label" spellcheck class="w-full min-w-[200px] md:min-w-0">
+      <sd-input label="Label" spellcheck class="w-full min-w-[200px] md:min-w-0 max-w-[250px]">
         <sd-icon label="landscape" name="system/image" slot="left"></sd-icon>
       </sd-input>
 
-      <sd-input label="Label" spellcheck class="w-full min-w-[200px] md:min-w-0">
+      <sd-input label="Label" spellcheck class="w-full min-w-[200px] md:min-w-0 max-w-[250px]">
         <sd-icon label="landscape" name="system/image" slot="right"></sd-icon>
       </sd-input>
     </div>`
