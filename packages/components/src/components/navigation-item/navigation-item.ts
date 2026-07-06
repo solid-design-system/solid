@@ -279,11 +279,10 @@ export default class SdNavigationItem extends SolidElement {
               part="content-container"
               class=${cx(
                 'inline-flex items-center',
-                this.isStackedHorizontal && 'relative',
                 this.vertical
                   ? 'flex-auto gap-2'
                   : this.isStackedHorizontal
-                    ? 'text-center pb-1'
+                    ? 'relative text-center pb-1'
                     : 'flex-auto flex-col justify-center gap-1 text-center'
               )}
             >
