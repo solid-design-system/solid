@@ -1,5 +1,54 @@
 # @solid-design-system/components
 
+## 6.25.1
+
+## 6.25.0
+
+### Minor Changes
+
+- Expose `./package.json` in the package exports so you can read the installed version programmatically, for example `import pkg from '@solid-design-system/components/package.json' with { type: 'json' }` or `require.resolve('@solid-design-system/components/package.json')`. _[`#3119`](https://github.com/solid-design-system/solid/pull/3119) [`7973bf9`](https://github.com/solid-design-system/solid/commit/7973bf97cc5c2961831452e078b92f08be1089e4) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.24.2
+
+### Patch Changes
+
+- Fix height of large combobox with floating label. _[`#3116`](https://github.com/solid-design-system/solid/pull/3116) [`14dc4af`](https://github.com/solid-design-system/solid/commit/14dc4af7fbd5f5f6f80d77b45774e92f072e4a23) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+## 6.24.1
+
+### Patch Changes
+
+- Fixed text wrapping in `sd-radio` _[`#3106`](https://github.com/solid-design-system/solid/pull/3106) [`f43f6bf`](https://github.com/solid-design-system/solid/commit/f43f6bf5581275f6aa24584d90f5329521766954) [@mariohamann](https://github.com/mariohamann)_
+
+## 6.24.0
+
+### Minor Changes
+
+- Added `sd-multi-theming` as a new `sd-icon` library. _[`#3091`](https://github.com/solid-design-system/solid/pull/3091) [`b191a40`](https://github.com/solid-design-system/solid/commit/b191a4003bd024437f7f1c3493e6b2dd5d706d51) [@martascorreia](https://github.com/martascorreia)_
+
+### 📈 Stats
+
+- Uncompressed: 624 KB (+2 KB / +0%)
+- Gzipped: 140 KB (+1 KB / +1%)
+
+## 6.23.0
+
+### Minor Changes
+
+- Added `sd-progress-bar`. _[`#3065`](https://github.com/solid-design-system/solid/pull/3065) [`e8de4cc`](https://github.com/solid-design-system/solid/commit/e8de4cccc9b405984cba761233c3d878bb3ea154) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
+### 📈 Stats
+
+- Uncompressed: 622 KB (+4 KB / +1%)
+- Gzipped: 139 KB (+1 KB / +1%)
+
+## 6.22.2
+
+### 📈 Stats
+
+- Uncompressed: 618 KB (+1 KB / +0%)
+- Gzipped: 138 KB (unchanged)
+
 ## 6.22.1
 
 ### Patch Changes

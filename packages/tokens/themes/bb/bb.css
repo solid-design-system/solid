@@ -357,6 +357,9 @@
   --sd-pagination--default-border: var(--sd-color-primary-500);
   --sd-pagination--inverted-border: var(--sd-color-white);
   --sd-panel-color-border: 255 255 255 / 0;
+  --sd-progress-bar--active--inverted-color-background: var(--sd-color-white);
+  --sd-progress-bar__slide-bar--inverted-color-background: 255 255 255 / 0.5;
+  --sd-progress-bar__slide-bar-color-background: var(--sd-color-neutral-400);
   --sd-quickfact--expandable-color-text: var(--sd-color-black);
   --sd-radio--checked--default-color-background: var(--sd-color-info);
   --sd-radio--checked--default__icon-color-background: var(--sd-color-white);
@@ -535,4 +538,5 @@
   --sd-option--disabled-color-border: var(--sd-color-border-neutral-500);
   --sd-audio__timestamp-color-text: var(--sd-color-text-neutral-700);
   --sd-accordion__chevron-color-text: var(--sd-accordion-color-icon-fill, var(--sd-color-icon-fill-primary));
+  --sd-form-control__tooltip-color-icon: var(--sd-interactive--default-color-text);
 }

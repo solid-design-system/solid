@@ -47,7 +47,7 @@ export const Variants = {
         },
         templateBackgrounds: {
           alternate: 'y',
-          colors: ['', 'rgba(var(--sd-color-primary))', 'transparent']
+          colors: ['', 'rgba(var(--sd-color-background-primary))', 'transparent']
         }
       },
       args

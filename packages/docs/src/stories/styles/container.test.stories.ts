@@ -99,7 +99,7 @@ export const Variants = {
             'transparent',
             'transparent',
             'transparent',
-            'rgba(var(--sd-color-primary))'
+            'rgba(var(--sd-color-background-primary))'
           ]
         }
       },
@@ -200,9 +200,9 @@ export const TriangleBorder = {
 };
 
 /**
- * You can set the color of the triangle cut-out using the `--triangle-background` CSS property. CSS variables can be set either with an inline style: `style="--triangle-background: var(--sd-color-primary);"` or a custom class:
+ * You can set the color of the triangle cut-out using the `--triangle-background` CSS property. CSS variables can be set either with an inline style: `style="--triangle-background: var(--sd-color-background-primary);"` or a custom class:
  * `.custom-sd-container {
-    --triangle-background: var(--sd-color-primary);
+    --triangle-background: var(--sd-color-background-primary);
   }`
  */
 

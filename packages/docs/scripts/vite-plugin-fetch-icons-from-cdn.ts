@@ -5,12 +5,12 @@
  */
 
 import type { Plugin } from 'vite';
+import { getThemeIconFolders } from '../.storybook/addons/theme-generator/theme-attributes';
 
-async function fetchIconsJson() {
+async function fetchIconsJson(baseUrl: string) {
   try {
-    const contentUrl = 'https://celum-icons.fe.union-investment.de/union-investment/content.json';
-    const systemUrl = 'https://celum-icons.fe.union-investment.de/union-investment/system.json';
-
+    const contentUrl = `${baseUrl}/content.json`;
+    const systemUrl = `${baseUrl}/system.json`;
     const [contentResponse, systemResponse] = await Promise.all([fetch(contentUrl), fetch(systemUrl)]);
 
     if (!contentResponse.ok || !systemResponse.ok) {
@@ -45,21 +45,40 @@ function viteFetchIconsFromCDN(): Plugin {
     name: 'vite-fetch-icons-from-cdn',
 
     resolveId(id: unknown) {
-      if (id === 'icons-from-cdn') {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-        return id;
-      }
+      if (id === 'icons-from-cdn') return id;
+      if (id === 'icons-from-cdn/multi-theming') return id;
       return null;
     },
     async buildStart() {
-      const iconsObject = await fetchIconsJson();
-      iconsData = JSON.stringify(iconsObject);
-    },
+      // default library
+      const defaultData = await fetchIconsJson('https://celum-icons.fe.union-investment.de/union-investment');
 
+      // multi-theming library - keep a single themed dataset for the docs stories
+      // only include icons that are also available in the default library
+      const vbRaw = await fetchIconsJson(`https://celum-icons.fe.union-investment.de/${getThemeIconFolders.vb}`);
+      const multiThemingData = {
+        vb: {
+          content: vbRaw.content.filter(id => defaultData.content.includes(id)),
+          system: vbRaw.system.filter(id => defaultData.system.includes(id))
+        }
+      };
+
+      const data = {
+        defaultData,
+        multiThemingData
+      };
+
+      iconsData = JSON.stringify(data);
+    },
     load(id: unknown) {
       if (id === 'icons-from-cdn') {
-        return `export default ${iconsData};`;
+        return `export default ${JSON.stringify(JSON.parse(iconsData!).defaultData)};`;
       }
+
+      if (id === 'icons-from-cdn/multi-theming') {
+        return `export default ${JSON.stringify(JSON.parse(iconsData!).multiThemingData)};`;
+      }
+
       return null;
     }
   };

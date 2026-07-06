@@ -76,7 +76,7 @@ export const Inverted = {
       options: {
         templateBackgrounds: {
           alternate: 'y',
-          colors: ['rgba(var(--sd-color-primary))', 'transparent']
+          colors: ['rgba(var(--sd-color-background-primary))', 'transparent']
         },
         templateRenderer: ({ attributes, slots }) => {
           const attrs = Object.entries(attributes)

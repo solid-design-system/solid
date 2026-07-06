@@ -87,7 +87,9 @@ export const Horizontal = {
             <ul class="flex -ms-4">
               <li>
                 <sd-dropdown no-flip>
-                  <sd-navigation-item slot="trigger" class="font-bold"> Funds & Depot </sd-navigation-item>
+                  <sd-navigation-item slot="trigger">
+                    <span class="font-bold">Funds & Depot</span>
+                  </sd-navigation-item>
 
                   <ul class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
                     <li>
@@ -150,7 +152,9 @@ export const Horizontal = {
               </li>
               <li>
                 <sd-dropdown no-flip>
-                  <sd-navigation-item slot="trigger" class="font-bold"> About Us </sd-navigation-item>
+                  <sd-navigation-item slot="trigger">
+                    <span class="font-bold">About Us</span>
+                  </sd-navigation-item>
 
                   <ul class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
                     <li>
@@ -243,11 +247,15 @@ export const Horizontal = {
                 </sd-dropdown>
               </li>
               <li>
-                <sd-navigation-item href="javascript:void(0)" class="font-bold">Savings</sd-navigation-item>
+                <sd-navigation-item href="javascript:void(0)">
+                  <span class="font-bold">Saving</span>
+                </sd-navigation-item>
               </li>
               <li>
                 <sd-dropdown no-flip>
-                  <sd-navigation-item slot="trigger" class="font-bold"> Investing </sd-navigation-item>
+                  <sd-navigation-item slot="trigger">
+                    <span class="font-bold">Investing</span>
+                  </sd-navigation-item>
                   <ul class="grid grid-cols-4 justify-between gap-6 px-6 py-8">
                     <li>
                       <sd-navigation-item vertical href="javascript:void(0)">
@@ -310,47 +318,49 @@ export const Horizontal = {
               </li>
               <li>
                 <sd-dropdown no-flip>
-                  <sd-navigation-item class="font-bold" slot="trigger"> Our Services </sd-navigation-item>
+                  <sd-navigation-item slot="trigger">
+                    <span class="font-bold">Our Services</span>
+                  </sd-navigation-item>
                   <ul class="grid grid-cols-4 justify-between gap-x-6 px-6 py-8">
                     <li>
-                      <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                        Services at a glance
-                      </sd-navigation-item>
+                      <sd-navigation-item vertical href="javascript:void(0)"
+                        ><span class="font-bold"> Services at a glance </span></sd-navigation-item
+                      >
                     </li>
                     <li>
-                      <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                        Current news
-                      </sd-navigation-item>
+                      <sd-navigation-item vertical href="javascript:void(0)"
+                        ><span class="font-bold"> Current news </span></sd-navigation-item
+                      >
                     </li>
                     <li>
-                      <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                        Subscription
-                      </sd-navigation-item>
+                      <sd-navigation-item vertical href="javascript:void(0)"
+                        ><span class="font-bold"> Subscription </span></sd-navigation-item
+                      >
                     </li>
                     <li>
-                      <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                        Our calculators
-                      </sd-navigation-item>
+                      <sd-navigation-item vertical href="javascript:void(0)"
+                        ><span class="font-bold"> Our calculators </span></sd-navigation-item
+                      >
                     </li>
                     <li>
-                      <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                        Contact
-                      </sd-navigation-item>
+                      <sd-navigation-item vertical href="javascript:void(0)"
+                        ><span class="font-bold"> Contact </span></sd-navigation-item
+                      >
                     </li>
                     <li>
-                      <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                        Forms and Downloads
-                      </sd-navigation-item>
+                      <sd-navigation-item vertical href="javascript:void(0)"
+                        ><span class="font-bold"> Forms and Downloads </span></sd-navigation-item
+                      >
                     </li>
                     <li>
-                      <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                        Media
-                      </sd-navigation-item>
+                      <sd-navigation-item vertical href="javascript:void(0)"
+                        ><span class="font-bold"> Media </span></sd-navigation-item
+                      >
                     </li>
                     <li>
-                      <sd-navigation-item vertical href="javascript:void(0)" class="font-bold">
-                        Frequently asked questions
-                      </sd-navigation-item>
+                      <sd-navigation-item vertical href="javascript:void(0)"
+                        ><span class="font-bold"> Frequently asked questions </span></sd-navigation-item
+                      >
                     </li>
                   </ul>
                 </sd-dropdown>
@@ -816,10 +826,18 @@ export const SampleA = {
         <div class="hidden lg:flex items-end pt-3 justify-between">
           <!-- bottom-left-area start !-->
           <div class="-ml-4">
-            <sd-navigation-item href="javascript:void(0)" class="font-bold">About Us</sd-navigation-item>
-            <sd-navigation-item href="javascript:void(0)" class="font-bold">Markets</sd-navigation-item>
-            <sd-navigation-item href="javascript:void(0)" class="font-bold">Press Service</sd-navigation-item>
-            <sd-navigation-item href="javascript:void(0)" class="font-bold">Sustainability</sd-navigation-item>
+            <sd-navigation-item href="javascript:void(0)">
+              <span class="font-bold">About Us</span>
+            </sd-navigation-item>
+            <sd-navigation-item href="javascript:void(0)">
+              <span class="font-bold">Markets</span>
+            </sd-navigation-item>
+            <sd-navigation-item href="javascript:void(0)">
+              <span class="font-bold">Press Service</span>
+            </sd-navigation-item>
+            <sd-navigation-item href="javascript:void(0)">
+              <span class="font-bold">Sustainability</span>
+            </sd-navigation-item>
           </div>
           <!-- bottom-left-area end !-->
           <!-- bottom-right-area start !-->
@@ -978,12 +996,24 @@ export const SampleA02 = {
         <div class="hidden lg:flex items-end pt-3 justify-between">
           <!-- bottom-left-area start !-->
           <div class="-ml-4">
-            <sd-navigation-item href="javascript:void(0)" class="font-bold">Competencies</sd-navigation-item>
-            <sd-navigation-item href="javascript:void(0)" class="font-bold">Capital Market</sd-navigation-item>
-            <sd-navigation-item href="javascript:void(0)" class="font-bold">Our products</sd-navigation-item>
-            <sd-navigation-item href="javascript:void(0)" class="font-bold">Reporting</sd-navigation-item>
-            <sd-navigation-item href="javascript:void(0)" class="font-bold">About us</sd-navigation-item>
-            <sd-navigation-item href="javascript:void(0)" class="font-bold">Personal area</sd-navigation-item>
+            <sd-navigation-item href="javascript:void(0)">
+              <span class="font-bold">Competencies</span>
+            </sd-navigation-item>
+            <sd-navigation-item href="javascript:void(0)">
+              <span class="font-bold">Capital Market</span>
+            </sd-navigation-item>
+            <sd-navigation-item href="javascript:void(0)">
+              <span class="font-bold">Our products</span>
+            </sd-navigation-item>
+            <sd-navigation-item href="javascript:void(0)">
+              <span class="font-bold">Reporting</span>
+            </sd-navigation-item>
+            <sd-navigation-item href="javascript:void(0)">
+              <span class="font-bold">About us</span>
+            </sd-navigation-item>
+            <sd-navigation-item href="javascript:void(0)">
+              <span class="font-bold">Personal area</span>
+            </sd-navigation-item>
           </div>
           <!-- bottom-left-area end !-->
           <!-- bottom-right-area start !-->
@@ -1424,10 +1454,18 @@ export const SampleB01 = {
         <div class="hidden lg:flex items-end pt-3 justify-between">
           <!-- bottom-right-area start !-->
           <div class="-ml-4">
-            <sd-navigation-item class="font-bold" href="javascript:void(0)">Home</sd-navigation-item>
-            <sd-navigation-item class="font-bold" href="javascript:void(0)">Perspective</sd-navigation-item>
-            <sd-navigation-item class="font-bold" href="javascript:void(0)">To the point</sd-navigation-item>
-            <sd-navigation-item class="font-bold" href="javascript:void(0)">Meeting point</sd-navigation-item>
+            <sd-navigation-item href="javascript:void(0)">
+              <span class="font-bold">Home</span>
+            </sd-navigation-item>
+            <sd-navigation-item href="javascript:void(0)">
+              <span class="font-bold">Perspective</span>
+            </sd-navigation-item>
+            <sd-navigation-item href="javascript:void(0)">
+              <span class="font-bold">To the point</span>
+            </sd-navigation-item>
+            <sd-navigation-item href="javascript:void(0)">
+              <span class="font-bold">Meeting point</span>
+            </sd-navigation-item>
           </div>
           <!-- bottom-right-area end !-->
           <!-- bottom-left-area start !-->
@@ -1560,10 +1598,18 @@ export const SampleB02 = {
         <div class="hidden lg:flex items-end pt-3 justify-between">
           <!-- bottom-left-area start !-->
           <div class="-ml-4">
-            <sd-navigation-item class="font-bold" href="javascript:void(0)">Home</sd-navigation-item>
-            <sd-navigation-item class="font-bold" href="javascript:void(0)">Perspective</sd-navigation-item>
-            <sd-navigation-item class="font-bold" href="javascript:void(0)">To the point</sd-navigation-item>
-            <sd-navigation-item class="font-bold" href="javascript:void(0)">Meeting point</sd-navigation-item>
+            <sd-navigation-item href="javascript:void(0)">
+              <span class="font-bold">Home</span>
+            </sd-navigation-item>
+            <sd-navigation-item href="javascript:void(0)">
+              <span class="font-bold">Perspective</span>
+            </sd-navigation-item>
+            <sd-navigation-item href="javascript:void(0)">
+              <span class="font-bold">To the point</span>
+            </sd-navigation-item>
+            <sd-navigation-item href="javascript:void(0)">
+              <span class="font-bold">Meeting point</span>
+            </sd-navigation-item>
           </div>
           <!-- bottom-left-area end !-->
           <!-- bottom-right-area start !-->
@@ -1684,9 +1730,15 @@ export const SampleC01 = {
           </div>
           <div class="hidden md:flex items-center justify-end w-fit">
             <div class="flex items-center">
-              <sd-navigation-item class="font-bold" href="javascript:void(0)">Home</sd-navigation-item>
-              <sd-navigation-item class="font-bold" href="javascript:void(0)">Perspective</sd-navigation-item>
-              <sd-navigation-item class="font-bold" href="javascript:void(0)">To the point</sd-navigation-item>
+              <sd-navigation-item href="javascript:void(0)">
+                <span class="font-bold">Home</span>
+              </sd-navigation-item>
+              <sd-navigation-item href="javascript:void(0)">
+                <span class="font-bold">Perspective</span>
+              </sd-navigation-item>
+              <sd-navigation-item href="javascript:void(0)">
+                <span class="font-bold">To the point</span>
+              </sd-navigation-item>
             </div>
           </div>
           <div class="flex md:hidden">
@@ -1789,9 +1841,15 @@ export const SampleC02 = {
           </div>
           <div class="hidden md:flex items-center justify-end w-fit">
             <div class="flex items-center">
-              <sd-navigation-item class="font-bold" href="javascript:void(0)">Home</sd-navigation-item>
-              <sd-navigation-item class="font-bold" href="javascript:void(0)">Perspective</sd-navigation-item>
-              <sd-navigation-item class="font-bold" href="javascript:void(0)">To the point</sd-navigation-item>
+              <sd-navigation-item href="javascript:void(0)">
+                <span class="font-bold">Home</span>
+              </sd-navigation-item>
+              <sd-navigation-item href="javascript:void(0)">
+                <span class="font-bold">Perspective</span>
+              </sd-navigation-item>
+              <sd-navigation-item href="javascript:void(0)">
+                <span class="font-bold">To the point</span>
+              </sd-navigation-item>
             </div>
           </div>
           <div class="flex md:hidden">
