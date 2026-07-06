@@ -11,6 +11,35 @@ type Manifest = Module[];
 /** Absolute path to the docs stories/components directory */
 const DOCS_COMPONENTS_DIR = join(dirname(fileURLToPath(import.meta.url)), '../../../docs/src/stories/components');
 
+const loadManifestModules = async (): Promise<Manifest> => {
+  try {
+    const manifestPath = '@solid-design-system/components/dist/custom-elements.json';
+    const manifestImport = (await import(manifestPath, { with: { type: 'json' } })) as {
+      default: { modules: Manifest };
+    };
+    return manifestImport.default?.modules ?? [];
+  } catch {
+    const localCandidates = [
+      '../components/dist/custom-elements.json',
+      '../components/cdn/custom-elements.json',
+      '../components/custom-elements.json'
+    ];
+
+    for (const relPath of localCandidates) {
+      const absPath = join(process.cwd(), relPath);
+      try {
+        const raw = await fs.readFile(absPath, 'utf-8');
+        const parsed = JSON.parse(raw) as { modules?: Manifest };
+        if (parsed.modules) return parsed.modules;
+      } catch {
+        // Try next candidate path
+      }
+    }
+
+    throw new Error('Cannot load custom-elements manifest from package import or local components build output.');
+  }
+};
+
 interface MdxExtract {
   docs: string | null;
   relatedComponents: string[];
@@ -205,10 +234,7 @@ export const buildComponents = async () => {
   const spinner = ora({ prefixText: 'Components:', text: 'Generating static metadata...' }).start();
 
   try {
-    const manifestImport = (await import('@solid-design-system/components/dist/custom-elements.json', {
-      with: { type: 'json' }
-    })) as { default: { modules: Manifest } };
-    const modules = manifestImport.default?.modules;
+    const modules = await loadManifestModules();
 
     spinner.text = 'Cleaning up old metadata...';
     rmSync(componentPath, { recursive: true, force: true });

@@ -48,13 +48,13 @@ export const buildTokens = async () => {
       onlyFiles: true
     });
 
-    // Write the files to the tokens directory into a flat structure
-    const copies = contents.map(file => {
+    // Write files sequentially because multiple theme files share the same basename
+    // (e.g. `icons.css`), and parallel copy operations can corrupt output.
+    for (const file of contents) {
       const sourcePath = path.join(moduleDir, file);
       const destPath = path.join(tokensPath, path.basename(file));
-      return fs.copyFile(sourcePath, destPath);
-    });
-    await Promise.all(copies);
+      await fs.copyFile(sourcePath, destPath);
+    }
 
     spinner.succeed('Tokens metadata generated successfully.');
   } catch (error) {

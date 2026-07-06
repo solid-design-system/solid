@@ -540,4 +540,5 @@
   --sd-option--disabled-color-border: var(--sd-color-border-neutral-500);
   --sd-audio__timestamp-color-text: var(--sd-color-text-neutral-700);
   --sd-accordion__chevron-color-text: var(--sd-accordion-color-icon-fill, var(--sd-color-icon-fill-primary));
+  --sd-form-control__tooltip-color-icon: var(--sd-interactive--default-color-text);
 }

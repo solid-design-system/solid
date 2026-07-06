@@ -30,14 +30,14 @@
     "tags": ["sonnig", "hell", "schönes Wetter"]
   },
   {
-    "technicalId": "volume",
-    "displayNameDe": "Lautstärke",
-    "tags": ["Ton", "Pegel", "Geräuschpegel"]
-  },
-  {
     "technicalId": "settings",
     "displayNameDe": "Einstellungen",
     "tags": ["anpassen", "Bearbeitung", "Zahnrad"]
+  },
+  {
+    "technicalId": "volume",
+    "displayNameDe": "Lautstärke",
+    "tags": ["Ton", "Pegel", "Geräuschpegel"]
   },
   {
     "technicalId": "hand",
@@ -80,14 +80,14 @@
     "tags": ["Favoriten", "gespeichert", "gemerkt"]
   },
   {
-    "technicalId": "battery-full",
-    "displayNameDe": "Batterie voll\n",
-    "tags": ["voll", "Akku", "Ladestatus"]
-  },
-  {
     "technicalId": "flash-on",
     "displayNameDe": "Blitz an",
     "tags": ["Taschenlampe an", "Foto"]
+  },
+  {
+    "technicalId": "battery-full",
+    "displayNameDe": "Batterie voll\n",
+    "tags": ["voll", "Akku", "Ladestatus"]
   },
   {
     "technicalId": "sort-down",
@@ -1045,14 +1045,14 @@
     "tags": ["Rückmeldung", "Nachricht", "Kommunikation"]
   },
   {
-    "technicalId": "password",
-    "displayNameDe": "Passwort",
-    "tags": ["sicherheitsgeschützt", "privat", "verschlüsselt"]
-  },
-  {
     "technicalId": "e-mail-send",
     "displayNameDe": "E-Mail abschicken",
     "tags": ["Brief", "E-Mail", "Kommunikation"]
+  },
+  {
+    "technicalId": "password",
+    "displayNameDe": "Passwort",
+    "tags": ["sicherheitsgeschützt", "privat", "verschlüsselt"]
   },
   {
     "technicalId": "e-mail-exclamation",
@@ -1085,14 +1085,14 @@
     "tags": ["hervorheben", "malen", "farbig", "wichtig"]
   },
   {
-    "technicalId": "arrow-top-left",
-    "displayNameDe": "Pfeil links oben",
-    "tags": ["zurück", "oben", "rückwärts"]
-  },
-  {
     "technicalId": "e-mail-forward",
     "displayNameDe": "E-Mail weiterleiten",
     "tags": ["Pfeil", "weiterleiten", "Brief"]
+  },
+  {
+    "technicalId": "arrow-top-left",
+    "displayNameDe": "Pfeil links oben",
+    "tags": ["zurück", "oben", "rückwärts"]
   },
   {
     "technicalId": "external-link",
