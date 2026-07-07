@@ -27,6 +27,17 @@ export const getTailwindThemeTokenNames = (): string[] => {
   return propertyNames;
 };
 
+export const getAvailableTokenThemes = (): string[] => {
+  const themesPath = join(tokensPath, 'themes.json');
+  try {
+    const raw = readFileSync(themesPath, 'utf-8');
+    const parsed = JSON.parse(raw) as { themes?: string[] };
+    return Array.isArray(parsed.themes) ? parsed.themes : [];
+  } catch {
+    return [];
+  }
+};
+
 export const getTokensMetaData = async (type: 'css' | 'javascript' = 'css') => {
   const fileList = ['README.md', 'CHANGELOG.md'];
 

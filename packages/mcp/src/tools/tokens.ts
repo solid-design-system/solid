@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import { join, basename, extname } from 'node:path';
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { z } from 'zod';
-import { getTailwindThemeTokenNames, tokenPackageDocsPath } from '../utilities/index.js';
+import { getAvailableTokenThemes, getTailwindThemeTokenNames, tokenPackageDocsPath } from '../utilities/index.js';
 import { normalizeSafeSlug } from '../utilities/input.js';
 
 const TAILWIND_MAPPING = `
@@ -124,6 +124,7 @@ export const tokenInfoTool = (server: McpServer) => {
       }
 
       const tokenNames = getTailwindThemeTokenNames();
+      const themes = getAvailableTokenThemes();
       const packageDocs = await getAvailablePackageDocs();
 
       if (!tokenNames.length) {
@@ -194,6 +195,10 @@ export const tokenInfoTool = (server: McpServer) => {
               `## Available tokens (CSS variable names)`,
               ``,
               tokenNames.join('\n'),
+              ``,
+              `## Available Themes`,
+              ``,
+              themes.length ? themes.map(theme => `- ${theme}`).join('\n') : '- none found',
               ``,
               `## Package Docs`,
               ``,
