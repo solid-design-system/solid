@@ -67,6 +67,7 @@ import { isoDateConverter, viewMonthConverter, disabledDatesConverter } from './
  * @cssproperty --sd-form-control__listbox-border-top-right-radius - The border radius for the top right corner of the datepicker.
  * @cssproperty --sd-form-control--hover-color-background - The background color for form controls on hover.
  * @cssproperty --sd-form-control--read-only-color-background - The background color for read-only form controls.
+ * @cssproperty --sd-form-control-color-icon-fill - The color for form control icons.
  * @cssproperty --sd-datepicker__date-item--default-color-text - The default text color for date items.
  * @cssproperty --sd-datepicker__date-item--hover--default-color-background - The background color for date items in hover state.
  * @cssproperty --sd-datepicker__date-item--hover--default-color-text - The text color for date items in hover state.
@@ -1650,6 +1651,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
     };
 
     const tabTarget = this.getTabTargetDayForCurrentView(weeks);
+    const iconColor = this.disabled || this.visuallyDisabled ? 'text-neutral-500' : 'icon-color';
 
     return html`
       <div
@@ -1669,7 +1671,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
             <button
               type="button"
               tabindex="0"
-              class="nav prev w-6 h-6 hover:cursor-pointer sd-interactive"
+              class=${cx('nav prev w-6 h-6 hover:cursor-pointer', iconColor)}
               part="prev-year-button"
               @click=${() => this.setYear(-1)}
               @keydown=${(ev: KeyboardEvent) => this.handleHeaderKeyDown(ev, 'year', -1, false)}
@@ -1681,7 +1683,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
             <button
               type="button"
               tabindex="0"
-              class="nav prev w-6 h-6 hover:cursor-pointer sd-interactive"
+              class=${cx('nav prev w-6 h-6 hover:cursor-pointer', iconColor)}
               part="prev-month-button"
               @click=${() => this.setMonth(-1)}
               @keydown=${(ev: KeyboardEvent) => this.handleHeaderKeyDown(ev, 'month', -1, false)}
@@ -1706,7 +1708,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
             <button
               type="button"
               tabindex="0"
-              class="nav next w-6 h-6 hover:cursor-pointer sd-interactive"
+              class=${cx('nav next w-6 h-6 hover:cursor-pointer', iconColor)}
               part="next-month-button"
               @click=${() => this.setMonth(1)}
               @keydown=${(ev: KeyboardEvent) => this.handleHeaderKeyDown(ev, 'month', 1, false)}
@@ -1718,7 +1720,7 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
             <button
               type="button"
               tabindex="0"
-              class="nav next w-6 h-6 hover:cursor-pointer sd-interactive"
+              class=${cx('nav next w-6 h-6 hover:cursor-pointer', iconColor)}
               part="next-year-button"
               @click=${() => this.setYear(1)}
               @keydown=${(ev: KeyboardEvent) => this.handleHeaderKeyDown(ev, 'year', 1, true)}
@@ -2155,11 +2157,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       }
 
       .icon-color {
-        color: rgb(var(--sd-color-icon-fill-primary));
+        color: rgba(var(--sd-form-control-color-icon-fill));
       }
 
       .month-label {
-        color: rgb(var(--sd-color-border-primary)) !important;
+        color: rgba(var(--sd-color-border-primary)) !important;
       }
     `
   ];
