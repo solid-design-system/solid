@@ -1,44 +1,12 @@
 import { rmSync } from 'node:fs';
 import fs from 'node:fs/promises';
-import { dirname, join } from 'node:path';
+import { basename, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import ora from 'ora';
-import type { CustomElementDeclaration, Module } from 'custom-elements-manifest/schema.d.ts';
 import { componentPath, createPath } from '../utilities/index.js';
-
-type Manifest = Module[];
 
 /** Absolute path to the docs stories/components directory */
 const DOCS_COMPONENTS_DIR = join(dirname(fileURLToPath(import.meta.url)), '../../../docs/src/stories/components');
-
-const loadManifestModules = async (): Promise<Manifest> => {
-  try {
-    const manifestPath = '@solid-design-system/components/dist/custom-elements.json';
-    const manifestImport = (await import(manifestPath, { with: { type: 'json' } })) as {
-      default: { modules: Manifest };
-    };
-    return manifestImport.default?.modules ?? [];
-  } catch {
-    const localCandidates = [
-      '../components/dist/custom-elements.json',
-      '../components/cdn/custom-elements.json',
-      '../components/custom-elements.json'
-    ];
-
-    for (const relPath of localCandidates) {
-      const absPath = join(process.cwd(), relPath);
-      try {
-        const raw = await fs.readFile(absPath, 'utf-8');
-        const parsed = JSON.parse(raw) as { modules?: Manifest };
-        if (parsed.modules) return parsed.modules;
-      } catch {
-        // Try next candidate path
-      }
-    }
-
-    throw new Error('Cannot load custom-elements manifest from package import or local components build output.');
-  }
-};
 
 interface MdxExtract {
   docs: string | null;
@@ -177,13 +145,6 @@ const extractStories = async (storiesPath: string): Promise<Example[]> => {
   return stories;
 };
 
-const formatPropMeta = (type: string, defaultVal: string): string => {
-  const parts: string[] = [];
-  if (type) parts.push(type.replace(/\s*\|\s*/g, '|'));
-  if (defaultVal !== '' && defaultVal !== undefined) parts.push(`default=${defaultVal}`);
-  return parts.join(', ');
-};
-
 interface ApiSections {
   tagName: string;
   summary: string;
@@ -193,48 +154,55 @@ interface ApiSections {
   parts: string;
 }
 
-interface ClassMemberField {
-  kind: string;
-  privacy?: string;
-  description?: string;
-  type?: { text: string };
-  default?: string;
-  attribute?: string;
-  name: string;
-}
+const extractSummaryFromDocs = (docs: string | null): string => {
+  if (!docs) return '';
+  const lines = docs
+    .split('\n')
+    .map(line => line.trim())
+    .filter(Boolean);
 
-const extractApiSections = (decl: CustomElementDeclaration): ApiSections => {
-  const tagName = decl.tagName ?? '';
-  const summary = (decl as CustomElementDeclaration & { summary?: string }).summary ?? '';
+  for (const line of lines) {
+    if (line.startsWith('#')) continue;
+    if (line.startsWith('<')) continue;
+    if (line.startsWith('[')) continue;
+    if (line.startsWith('####') || line.startsWith('###')) break;
+    return line;
+  }
 
-  const members = (decl.members ?? []) as ClassMemberField[];
-  const propsLines = members
-    .filter(m => m.kind === 'field' && !m.privacy && m.description)
-    .map(m => {
-      const meta = formatPropMeta(m.type?.text ?? '', m.default ?? '');
-      const attrSuffix = m.attribute && m.attribute !== m.name ? ` [attr: ${m.attribute}]` : '';
-      return `- prop.${m.name}${attrSuffix}: ${meta}${m.description ? ` \u2014 ${m.description}` : ''}`;
-    });
+  return '';
+};
 
-  const eventLines = (decl.events ?? []).map(e => `- event.${e.name}: ${e.description ?? ''}`);
-  const slotLines = (decl.slots ?? []).map(s => `- slot.${s.name || 'default'}: ${s.description ?? ''}`);
-  const partLines = (decl.cssParts ?? []).map(p => `- part.${p.name}: ${p.description ?? ''}`);
+const extractSummaryFromStories = async (storiesPath: string): Promise<string> => {
+  try {
+    const raw = await fs.readFile(storiesPath, 'utf-8');
+    const block = raw.match(/\/\*\*([\s\S]*?)\*\//);
+    if (!block) return '';
+    const text = block[1]
+      .split('\n')
+      .map(line => line.replace(/^\s*\*\s?/, '').trim())
+      .filter(Boolean)
+      .map(line => line.replace(/\*\*/g, ''));
+    return text[0] ?? '';
+  } catch {
+    return '';
+  }
+};
 
-  return {
-    tagName,
-    summary,
-    props: propsLines.join('\n'),
-    events: eventLines.join('\n'),
-    slots: slotLines.join('\n'),
-    parts: partLines.join('\n')
-  };
+const getComponentNames = async (): Promise<string[]> => {
+  const files = await fs.readdir(DOCS_COMPONENTS_DIR);
+  const mdxNames = files.filter(file => file.endsWith('.mdx')).map(file => basename(file, '.mdx'));
+  const storyNames = files
+    .filter(file => /^[a-z0-9-]+\.stories\.ts$/.test(file))
+    .map(file => basename(file, '.stories.ts'));
+
+  return [...new Set([...mdxNames, ...storyNames])].sort();
 };
 
 export const buildComponents = async () => {
   const spinner = ora({ prefixText: 'Components:', text: 'Generating static metadata...' }).start();
 
   try {
-    const modules = await loadManifestModules();
+    const componentNames = await getComponentNames();
 
     spinner.text = 'Cleaning up old metadata...';
     rmSync(componentPath, { recursive: true, force: true });
@@ -243,20 +211,24 @@ export const buildComponents = async () => {
     await createPath(componentPath);
     spinner.text = 'Generating components metadata...';
 
-    const components = modules
-      .filter(m => m.declarations?.some(d => (d as CustomElementDeclaration).tagName))
-      .map(m => m.declarations![0] as CustomElementDeclaration);
-
     await Promise.all(
-      components.map(async comp => {
-        const tagName = comp.tagName!;
-        const name = tagName.replace(/^sd-/, '');
-        const api = extractApiSections(comp);
+      componentNames.map(async name => {
+        const tagName = `sd-${name}`;
 
         const [{ docs, relatedComponents }, stories] = await Promise.all([
           extractMdxContent(join(DOCS_COMPONENTS_DIR, `${name}.mdx`)),
           extractStories(join(DOCS_COMPONENTS_DIR, `${name}.stories.ts`))
         ]);
+
+        const fallbackSummary = await extractSummaryFromStories(join(DOCS_COMPONENTS_DIR, `${name}.stories.ts`));
+        const api: ApiSections = {
+          tagName,
+          summary: extractSummaryFromDocs(docs) || fallbackSummary,
+          props: '',
+          events: '',
+          slots: '',
+          parts: ''
+        };
 
         // Store intermediate JSON — buildTemplates will finalise into info.md + story files
         const intermediate = {
