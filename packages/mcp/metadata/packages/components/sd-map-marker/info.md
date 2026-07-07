@@ -72,9 +72,3 @@ Use the components tool by passing the args `component` and `example` for any of
 - If interactive, provide an accessible name by adding a descriptive text to the ”default” slot and visually hide it if needed.
 - Offer alternative interactions or text-based listings of markers for users who cannot easily manipulate or see the map.
 - For purely decorative images, ALT-tags should be left empty so that screen readers can bypass them and concentrate on conveying meaningful content.
-
-### Related Templates
-
-- map-marker
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

@@ -24,16 +24,3 @@ Use the components tool by passing the args `component` and `example` for any of
 ### CSS Parts
 
 - part.base: The component's base wrapper.
-
-### Related Templates
-
-- tab-group
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.
-
-### Related Components
-
-- sd-tab: Used inside sd-tab-group to represent and activate tab panels.
-- sd-tab-group: Used to organise content into a container that shows one section at a time.
-
-Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

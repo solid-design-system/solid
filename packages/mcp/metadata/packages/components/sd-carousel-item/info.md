@@ -24,15 +24,3 @@
 ### Content and Style
 
 - Ensure consistency in content and style across slides by following a similar layout and type of information.
-
-### Related Templates
-
-- carousel
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.
-
-### Related Components
-
-- sd-carousel: Used to display an arbitrary number of content slides along a horizontal axis.
-
-Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

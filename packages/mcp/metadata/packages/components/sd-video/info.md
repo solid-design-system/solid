@@ -68,9 +68,3 @@ Use the components tool by passing the args `component` and `example` for any of
 - Provide captions or subtitles for video content to support users who are deaf or hard of hearing.
 - Offer a transcript (text version) if the video contains spoken dialogue or other critical audio elements.
 - Make status announcements (e.g., “Video paused,” “Video started”) if needed, via aria-live or a similar approach.
-
-### Related Templates
-
-- video
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

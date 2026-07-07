@@ -52,9 +52,3 @@ Use the components tool by passing the args `component` and `example` for any of
 
 - Assign role="status" or use a live region (e.g., aria-live="polite") to inform screen reader users of ongoing loading.
 - A loader shouldn’t itself be focusable or interactive, nor prevent from navigating to other parts of the page while loading continues.
-
-### Related Components
-
-- sd-button: Used to allow users to perform actions with a single click.
-
-Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

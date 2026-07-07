@@ -82,9 +82,3 @@ Use the components tool by passing the args `component` and `example` for any of
 ### Accessibility
 
 - Ensure that the summaries are short, concise and unique as they’re used as the label for the button.
-
-### Related Templates
-
-- quickfact
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

@@ -64,9 +64,3 @@
 
 - part.arrow: The arrow's container. Avoid setting `top|bottom|left|right` properties, as these values are assigned dynamically as the popup moves. This is most useful for applying a background color to match the popup, and maybe a border or box shadow.
 - part.popup: The popup's container. Useful for setting a background color, box shadow, etc.
-
-### Related Templates
-
-- autocomplete
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

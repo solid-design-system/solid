@@ -133,11 +133,3 @@ Provide brief, unobtrusive messages to users through toast notifications that ov
 <sd-notification variant="warning" open>
   **Known screen readers issues:** Due to inconsistency between screen readers when announcing the toast notification we recommend using inline notification
 </sd-notification><br>
-
-### Related Templates
-
-- header-navigation
-- notification
-- range
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

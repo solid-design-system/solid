@@ -82,9 +82,3 @@ Use the components tool by passing the args `component` and `example` for any of
 - Use only for non-critical information. Hiding content can become a potential barrier, making it more challenging for users to access information.
 - Keep the flip button to make sure the flipping can be accessed over keyboard navigation.
 - For purely decorative images, ALT-tags should be left empty so that screen readers can bypass them and concentrate on conveying meaningful content.
-
-### Related Templates
-
-- flipcard
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

@@ -84,12 +84,3 @@ Use the components tool by passing the args `component` and `example` for any of
 ### Accessibility
 
 - Ensure that when the menu is triggered via keyboard, the first item receives focus.
-
-### Related Templates
-
-- breadcrumb
-- dropdown
-- header-navigation
-- menu
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

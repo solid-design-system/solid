@@ -40,16 +40,3 @@ Use the components tool by passing the args `component` and `example` for any of
 ### Accessibility
 
 - Use the "visually disabled" attribute to keep disabled elements focusable, hoverable, and able to show tooltips, as they’re otherwise removed from the tab order and inaccessible to screen readers.
-
-### Related Templates
-
-- tab-group
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.
-
-### Related Components
-
-- sd-tab-group: Used to organise content into a container that shows one section at a time.
-- sd-tab-panel: Used inside sd-tab-group to display tabbed content.
-
-Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

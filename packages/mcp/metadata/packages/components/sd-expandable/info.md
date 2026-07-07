@@ -77,9 +77,3 @@ Use the components tool by passing the args `component` and `example` for any of
 
 - Expandables are designed for text blocks, ensuring no interactive elements appear upon expansion. This keeps the focus on the expandable trigger, whether open or closed, with labels adjusted for each state.
 - The expandable component should only hide non-critical content, to ensure users can access essential information without unnecessary interaction.
-
-### Related Templates
-
-- expandable
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

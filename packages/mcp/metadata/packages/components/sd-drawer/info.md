@@ -87,11 +87,3 @@ Use the components tool by passing the args `component` and `example` for any of
 
 - Always provide a label for the drawer so that screenreaders correctly announce the component.
 - Make sure that the close button is always visible to ensure users are able to close the drawer.
-
-### Related Templates
-
-- breadcrumb
-- drawer
-- header-navigation
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

@@ -80,16 +80,3 @@ Use the components tool by passing the args `component` and `example` for any of
 
 - Use only for non-critical information. Hiding content can become a potential barrier, making content more challenging to discover.
 - For purely decorative images, ALT-tags should be left empty so that screen readers can bypass them and concentrate on conveying meaningful content.
-
-### Related Templates
-
-- accordion-group
-- skeleton
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.
-
-### Related Components
-
-- sd-accordion-group: Used to group multiple accordions together.
-
-Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

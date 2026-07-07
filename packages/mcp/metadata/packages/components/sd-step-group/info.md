@@ -72,15 +72,3 @@ Use the components tool by passing the args `component` and `example` for any of
 ### Background
 
 - Use light background options such as white, neutral-100, or primary-100.
-
-### Related Templates
-
-- step-group
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.
-
-### Related Components
-
-- sd-step: Used to determine a step in a process or task.
-
-Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

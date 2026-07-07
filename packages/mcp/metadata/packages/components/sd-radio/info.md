@@ -45,11 +45,3 @@ Use the components tool by passing the args `component` and `example` for any of
 ### Accessibility
 
 - Use the "visually disabled" attribute to keep disabled elements focusable, hoverable, and able to show tooltips, as they’re otherwise removed from the tab order and inaccessible to screen readers.
-
-### Related Templates
-
-- forms
-- radio-group
-- tooltip
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

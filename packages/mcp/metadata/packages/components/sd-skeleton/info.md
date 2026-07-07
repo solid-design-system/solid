@@ -55,9 +55,3 @@ Use the components tool by passing the args `component` and `example` for any of
 
 - Use aria-hidden="true" on skeleton placeholders so screenreaders skip them.
 - Provide a meaningful status update while skeletons are visible (e.g., “Loading…” or a live region announcing updates) to inform assistive technology users that content is still being retrieved.
-
-### Related Templates
-
-- skeleton
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

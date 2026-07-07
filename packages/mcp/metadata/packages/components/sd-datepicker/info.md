@@ -157,15 +157,3 @@ Do not mix the two variants (default / floating label) within the same product, 
 ### Background
 
 - Place on light backgrounds (white, neutral-100, or primary-100) for clarity and readability.
-
-### Related Templates
-
-- datepicker
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.
-
-### Related Components
-
-- sd-popup: Popup is a utility that lets you declaratively anchor "popup" containers to another element.
-
-Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

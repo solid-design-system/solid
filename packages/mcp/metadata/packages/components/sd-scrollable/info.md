@@ -85,9 +85,3 @@ Use the components tool by passing the args `component` and `example` for any of
 
 - Ensure keyboard users can access and scroll within the container making the container focusable (tabindex="0") and allow arrow keys to navigate through the content.
 - Verify that any interactive elements within the scrollable container receive a proper focus highlight and move into the visible frame.
-
-### Related Templates
-
-- dialog
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

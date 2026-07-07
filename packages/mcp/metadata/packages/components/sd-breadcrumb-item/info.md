@@ -40,15 +40,3 @@
 
 - Dynamically update breadcrumbs and announce changes with aria-live for screen readers.
 - Provide clear labels for breadcrumb items to ensure screen readers convey the navigation path effectively.
-
-### Related Templates
-
-- breadcrumb
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.
-
-### Related Components
-
-- sd-breadcrumb: Used to visualize a page's location within the site's hierarchy and provide easy navigation to previous sections.
-
-Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

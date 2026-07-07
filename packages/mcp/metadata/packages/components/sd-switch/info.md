@@ -77,9 +77,3 @@ Use the components tool by passing the args `component` and `example` for any of
 
 - Consider alternatives to switches, as many users may find them confusing.
 - If the switch triggers dynamic changes (e.g., loading new content), provide a corresponding announcement.
-
-### Related Templates
-
-- switch
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

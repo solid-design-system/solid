@@ -49,12 +49,3 @@ Use the components tool by passing the args `component` and `example` for any of
 
 - Verify that dividers are visible and distinct in high contrast mode settings, which are often used by users with visual impairments.
 - Use to provide clear separation between sections, helping users understand content flow. Screen readers announce dividers, offering context about transitions between sections.
-
-### Related Templates
-
-- autocomplete
-- header-navigation
-- menu
-- select
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

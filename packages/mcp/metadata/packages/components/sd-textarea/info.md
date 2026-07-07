@@ -130,11 +130,3 @@ Use the “floating-label” variant to conserve vertical space and streamline s
 ### Accessibility
 
 - Use the "visually disabled" attribute to keep disabled elements focusable, hoverable, and able to show tooltips, as they’re otherwise removed from the tab order and inaccessible to screen readers.
-
-### Related Templates
-
-- button
-- forms
-- tooltip
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

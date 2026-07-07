@@ -73,9 +73,3 @@ Use the components tool by passing the args `component` and `example` for any of
 ### Interactivity
 
 - Tags are interactive elements which trigger an action; to label or categorise items without any interaction use [sd-chip](./?path=/docs/styles-sd-chip--docs) or [sd-flag](./?path=/docs/styles-sd-flag--docs) instead.
-
-### Related Templates
-
-- tag
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

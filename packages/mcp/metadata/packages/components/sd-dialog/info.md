@@ -87,9 +87,3 @@ Use the components tool by passing the args `component` and `example` for any of
 
 - Always provide a headline for the dialog.
 - Always include a visible and easily accessible close button within the modal.
-
-### Related Templates
-
-- dialog
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.

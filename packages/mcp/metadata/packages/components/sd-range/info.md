@@ -99,15 +99,3 @@ Use the components tool by passing the args `component` and `example` for any of
 
 - Always provide a label for the range so that screenreaders correctly announce the component.
 - Provide alternative input methods like numeric input fields or a stepper, allowing users who struggle with dragging to manually set values.
-
-### Related Templates
-
-- range
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.
-
-### Related Components
-
-- sd-range-tick: Used to represent a tick within a sd-range.
-
-Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

@@ -3,21 +3,23 @@ import fs from 'node:fs/promises';
 import { basename, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import ora from 'ora';
+import type { CustomElementDeclaration, Module } from 'custom-elements-manifest/schema.d.ts';
 import { componentPath, createPath } from '../utilities/index.js';
+
+type Manifest = Module[];
 
 /** Absolute path to the docs stories/components directory */
 const DOCS_COMPONENTS_DIR = join(dirname(fileURLToPath(import.meta.url)), '../../../docs/src/stories/components');
 
 interface MdxExtract {
   docs: string | null;
-  relatedComponents: string[];
 }
 
 const extractMdxContent = async (mdxPath: string): Promise<MdxExtract> => {
   try {
     const raw = await fs.readFile(mdxPath, 'utf-8');
     const match = raw.match(/export const content = `([\s\S]*?)`;/);
-    if (!match) return { docs: null, relatedComponents: [] };
+    if (!match) return { docs: null };
 
     const full = match[1]
       .split('\n')
@@ -27,21 +29,14 @@ const extractMdxContent = async (mdxPath: string): Promise<MdxExtract> => {
       .join('\n')
       .trim();
 
-    const relCompBlock = full.match(/####\s+Related Components\n+([\s\S]*?)(?=\n####|\n###|$)/);
-    const relatedComponents: string[] = [];
-    if (relCompBlock) {
-      const tagMatches = [...relCompBlock[1].matchAll(/\[(sd-[\w-]+)\]/g)];
-      relatedComponents.push(...tagMatches.map(m => m[1]));
-    }
-
     let docs = full.replace(/####\s+Related (?:Components|Templates)\n+((?:.*\n)*?)(?=\n####|\n###|$)/g, '');
     docs = docs.replace(/^\[.*?\]\(\.\/?path=.*?\)\n?/gm, '');
     docs = docs.replace(/\nVisit <sd-link[\s\S]*$/, '');
     docs = docs.trim();
 
-    return { docs: docs || null, relatedComponents };
+    return { docs: docs || null };
   } catch {
-    return { docs: null, relatedComponents: [] };
+    return { docs: null };
   }
 };
 
@@ -154,6 +149,100 @@ interface ApiSections {
   parts: string;
 }
 
+interface ClassMemberField {
+  kind: string;
+  privacy?: string;
+  description?: string;
+  type?: { text: string };
+  default?: string;
+  attribute?: string;
+  name: string;
+}
+
+const normalizeVersionedTagNames = (text: string): string => text.replace(/\bsd-\d+(?:-\d+){2}-/g, 'sd-');
+
+const formatPropMeta = (type: string, defaultVal: string): string => {
+  const parts: string[] = [];
+  if (type) parts.push(type.replace(/\s*\|\s*/g, '|'));
+  if (defaultVal !== '' && defaultVal !== undefined) parts.push(`default=${defaultVal}`);
+  return parts.join(', ');
+};
+
+const extractApiSections = (decl: CustomElementDeclaration): ApiSections => {
+  const tagName = decl.tagName ?? '';
+  const summary = normalizeVersionedTagNames((decl as CustomElementDeclaration & { summary?: string }).summary ?? '');
+
+  const members = (decl.members ?? []) as ClassMemberField[];
+  const propsLines = members
+    .filter(m => m.kind === 'field' && !m.privacy && m.description)
+    .map(m => {
+      const meta = normalizeVersionedTagNames(formatPropMeta(m.type?.text ?? '', m.default ?? ''));
+      const attrSuffix = m.attribute && m.attribute !== m.name ? ` [attr: ${m.attribute}]` : '';
+      const description = m.description ? normalizeVersionedTagNames(m.description) : '';
+      return `- prop.${m.name}${attrSuffix}: ${meta}${description ? ` — ${description}` : ''}`;
+    });
+
+  const eventLines = (decl.events ?? []).map(e => {
+    const name = normalizeVersionedTagNames(e.name);
+    const description = normalizeVersionedTagNames(e.description ?? '');
+    return `- event.${name}: ${description}`;
+  });
+  const slotLines = (decl.slots ?? []).map(s => {
+    const description = normalizeVersionedTagNames(s.description ?? '');
+    return `- slot.${s.name || 'default'}: ${description}`;
+  });
+  const partLines = (decl.cssParts ?? []).map(p => {
+    const description = normalizeVersionedTagNames(p.description ?? '');
+    return `- part.${p.name}: ${description}`;
+  });
+
+  return {
+    tagName,
+    summary,
+    props: propsLines.join('\n'),
+    events: eventLines.join('\n'),
+    slots: slotLines.join('\n'),
+    parts: partLines.join('\n')
+  };
+};
+
+const loadManifestApiMap = async (): Promise<Map<string, ApiSections>> => {
+  const candidates = [
+    '../components/dist/custom-elements.json',
+    '../components/dist-versioned/custom-elements.json',
+    '../components/cdn/custom-elements.json'
+  ];
+
+  for (const relPath of candidates) {
+    const absPath = join(process.cwd(), relPath);
+    try {
+      const raw = await fs.readFile(absPath, 'utf-8');
+      const parsed = JSON.parse(raw) as { modules?: Manifest };
+      const modules = parsed.modules ?? [];
+      const map = new Map<string, ApiSections>();
+
+      const declarations = modules
+        .filter(module => module.declarations?.some(declaration => (declaration as CustomElementDeclaration).tagName))
+        .map(module => module.declarations?.find(declaration => (declaration as CustomElementDeclaration).tagName))
+        .filter(Boolean) as CustomElementDeclaration[];
+
+      for (const declaration of declarations) {
+        const api = extractApiSections(declaration);
+        if (!api.tagName) continue;
+
+        const normalizedTagName = api.tagName.replace(/^sd-\d+-\d+-\d+-/, 'sd-');
+        map.set(normalizedTagName, { ...api, tagName: normalizedTagName });
+      }
+
+      return map;
+    } catch {
+      // Try next candidate path.
+    }
+  }
+
+  return new Map<string, ApiSections>();
+};
+
 const extractSummaryFromDocs = (docs: string | null): string => {
   if (!docs) return '';
   const lines = docs
@@ -203,6 +292,7 @@ export const buildComponents = async () => {
 
   try {
     const componentNames = await getComponentNames();
+    const apiMap = await loadManifestApiMap();
 
     spinner.text = 'Cleaning up old metadata...';
     rmSync(componentPath, { recursive: true, force: true });
@@ -215,26 +305,29 @@ export const buildComponents = async () => {
       componentNames.map(async name => {
         const tagName = `sd-${name}`;
 
-        const [{ docs, relatedComponents }, stories] = await Promise.all([
+        const [{ docs }, stories] = await Promise.all([
           extractMdxContent(join(DOCS_COMPONENTS_DIR, `${name}.mdx`)),
           extractStories(join(DOCS_COMPONENTS_DIR, `${name}.stories.ts`))
         ]);
 
         const fallbackSummary = await extractSummaryFromStories(join(DOCS_COMPONENTS_DIR, `${name}.stories.ts`));
-        const api: ApiSections = {
-          tagName,
-          summary: extractSummaryFromDocs(docs) || fallbackSummary,
-          props: '',
-          events: '',
-          slots: '',
-          parts: ''
-        };
+        const summary = extractSummaryFromDocs(docs) || fallbackSummary;
+        const manifestApi = apiMap.get(tagName);
+        const api: ApiSections = manifestApi
+          ? { ...manifestApi, summary: manifestApi.summary || summary }
+          : {
+              tagName,
+              summary,
+              props: '',
+              events: '',
+              slots: '',
+              parts: ''
+            };
 
         // Store intermediate JSON — buildTemplates will finalise into info.md + story files
         const intermediate = {
           api,
           docs,
-          relatedComponents,
           stories,
           templates: [] as string[]
         };

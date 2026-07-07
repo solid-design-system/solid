@@ -53,16 +53,3 @@ Use the components tool by passing the args `component` and `example` for any of
 ### Accessibility
 
 - Ensure that the group label is short and concise as it may be read out when users enter the group.
-
-### Related Templates
-
-- combobox
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.
-
-### Related Components
-
-- sd-select: Used to choose items from a menu of predefined options.
-- sd-combobox: Comboboxes allow you to choose items from a menu of predefined options.
-
-Use the components tool (with `component` arg) to retrieve the full spec for any of these components.

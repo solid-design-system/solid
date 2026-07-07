@@ -90,7 +90,6 @@ export const buildTemplates = async () => {
     spinner.text = 'Generating templates metadata...';
 
     const storyFiles = (await fs.readdir(DOCS_TEMPLATES_DIR)).filter(f => f.endsWith('.stories.ts'));
-    const componentToTemplates = new Map<string, string[]>();
 
     await Promise.all(
       storyFiles.map(async file => {
@@ -115,12 +114,6 @@ export const buildTemplates = async () => {
           ...examples.map(example => `## Template: ${example.name}\n\n\`\`\`html\n${example.html}\n\`\`\``)
         ].join('\n\n');
         await fs.writeFile(join(templatesPackagePath, `${name}.md`), content);
-
-        for (const tag of components) {
-          const list = componentToTemplates.get(tag) ?? [];
-          list.push(name);
-          componentToTemplates.set(tag, list);
-        }
       })
     );
 
@@ -129,18 +122,7 @@ export const buildTemplates = async () => {
 
     const compFiles = (await fs.readdir(componentPath)).filter(f => f.endsWith('.json'));
 
-    // First pass: build a tagName → summary map for related component descriptions
-    const summaryMap = new Map<string, string>();
-    await Promise.all(
-      compFiles.map(async file => {
-        const raw = await fs.readFile(join(componentPath, file), 'utf-8').catch(() => null);
-        if (!raw) return;
-        const { api } = JSON.parse(raw) as { api: { tagName: string; summary: string } };
-        if (api?.tagName) summaryMap.set(api.tagName, api.summary ?? '');
-      })
-    );
-
-    // Second pass: write final metadata
+    // Write final metadata
     await Promise.all(
       compFiles.map(async file => {
         const tagName = basename(file, '.json');
@@ -150,16 +132,13 @@ export const buildTemplates = async () => {
         const {
           api,
           docs,
-          relatedComponents,
           stories: examples
         } = JSON.parse(raw) as {
           api: { tagName: string; summary: string; props: string; events: string; slots: string; parts: string };
           docs: string | null;
-          relatedComponents: string[];
           stories: Example[];
         };
 
-        const templates = (componentToTemplates.get(tagName) ?? []).sort();
         const exampleSlugList = examples.map(example => example.slug);
 
         // Create component subdirectory and stories subfolder
@@ -216,24 +195,6 @@ export const buildTemplates = async () => {
           const accessibility = extractSection(docs, 'Accessibility Information');
           if (accessibility) guideSubSections.push(`### Accessibility\n\n${accessibility}`);
           if (guideSubSections.length) sections.push(`## Guidelines\n\n${guideSubSections.join('\n\n')}`);
-        }
-
-        // Related Templates
-        if (templates.length) {
-          sections.push(
-            `### Related Templates\n\n${templates.map(t => `- ${t}`).join('\n')}\n\nUse the templates tool (with \`template\` arg) to retrieve the full code for any of these templates.`
-          );
-        }
-
-        // Related Components (with summary descriptions)
-        if (relatedComponents.length) {
-          const lines = relatedComponents.map(c => {
-            const desc = summaryMap.get(c);
-            return desc ? `- ${c}: ${desc}` : `- ${c}`;
-          });
-          sections.push(
-            `### Related Components\n\n${lines.join('\n')}\n\nUse the components tool (with \`component\` arg) to retrieve the full spec for any of these components.`
-          );
         }
 
         await fs.writeFile(join(compDir, 'info.md'), sections.join('\n\n'));

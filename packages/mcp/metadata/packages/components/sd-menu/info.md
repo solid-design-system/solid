@@ -66,16 +66,3 @@ Use the components tool by passing the args `component` and `example` for any of
   Avoid Truncated Labels: Ensure that menu item labels are fully visible and not truncated. If the text is too long, consider using ellipses (...) and providing a tooltip or accessible description to display the full label.
 - Accessible Shortcuts: If the menu includes keyboard shortcuts or accelerators, ensure these are clearly communicated in the UI (e.g., with tooltips or labels like “Ctrl + S” for save) and accessible to screen readers.
 - Descriptive State Announcements: For dynamic menu behaviors (e.g., opening/closing or item selection), ensure that screen readers announce changes in state, such as "Menu opened" or "Option selected." Use ARIA live regions or alerts as needed.
-
-### Related Templates
-
-- menu
-
-Use the templates tool (with `template` arg) to retrieve the full code for any of these templates.
-
-### Related Components
-
-- sd-menu-item: Used to provide options for the user to pick from a menu.
-- sd-dropdown: Used to display a list of actions or options in a panel when activated.
-
-Use the components tool (with `component` arg) to retrieve the full spec for any of these components.
