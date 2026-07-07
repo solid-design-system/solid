@@ -47,6 +47,8 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-tag--size-sm-font-size - The font size for small tags.
  * @cssproperty --sd-choice-control-font-weight - The font weight for tags.
  * @cssproperty --sd-tag--disabled-color-text - The text color for disabled tags.
+ * @cssproperty --sd-tag--size-lg-padding-block - The padding block for large tags.
+ * @cssproperty --sd-tag--size-sm-padding-block - The padding block for small tags.
  *
  * @cssproperty --sd-tag--disabled-color-border - This custom property is deprecated. Use `--sd-color-border-neutral-500` instead.
  * @cssproperty --sd-tag-font-weight - This custom property is deprecated. Use `--sd-choice-control-font-weight` instead.
@@ -155,8 +157,8 @@ export default class SdTag extends SolidElement {
           }[this.size],
           {
             /* padding */
-            lg: !isRemovable ? 'px-4 py-2' : 'pl-4 pr-3 py-2',
-            sm: !isRemovable ? 'px-3 py-[5px]' : 'pl-3 pr-2 py-2'
+            lg: !isRemovable ? 'px-4 sd-tag--size-lg-padding-block' : 'pl-4 pr-3 sd-tag--size-lg-padding-block',
+            sm: !isRemovable ? 'px-3 sd-tag--size-sm-padding-block' : 'pl-3 pr-2 sd-tag--size-sm-padding-block'
           }[this.size],
           /* colors */
           !this.disabled
