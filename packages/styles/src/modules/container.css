@@ -8,13 +8,14 @@
  * @variant { top | right | bottom | left } sd-container--triangle-... Defines an optional triangle cut-out for sd-container. This allows for an indentation resembling an arrow on any side of the container. CSS Property `triangle-background` defines the background color of the cut-out.
  * 
  * @cssproperty --sd-container--primary-800-color-background - The background color for primary-800 variant.
+ * @cssproperty --sd-container--primary-100-color-background - The background color for primary-100 variant.
  */
 
 .sd-container {
   @apply bg-neutral-100 px-10 py-8 relative;
 
   &--variant-primary-100 {
-    @apply bg-primary-100;
+    @apply sd-container--primary-100-color-background;
   }
 
   &--variant-primary-800 {
