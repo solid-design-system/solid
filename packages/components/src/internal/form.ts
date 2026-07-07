@@ -278,8 +278,19 @@ export class FormControlController implements ReactiveController {
   }
 
   private setUserInteracted(el: SolidFormControl, hasInteracted: boolean) {
+    if (userInteractedControls.get(el) === hasInteracted) return;
     userInteractedControls.set(el, hasInteracted);
-    el.requestUpdate();
+    if (el === this.host) {
+      // Proactively update validity state synchronously to avoid a cascading
+      // second render triggered by showInvalidStyle changing during hostUpdated().
+      // updateValidityStyle() will call requestUpdate() via @state() if
+      // showInvalidStyle changes. Data attributes and aria-invalid update
+      // immediately without needing an explicit requestUpdate().
+      this.setValidity(this.host.validity?.valid ?? true);
+      this.updateValidityStyle();
+    } else {
+      el.requestUpdate();
+    }
   }
 
   private doAction(type: 'submit' | 'reset', invoker?: HTMLInputElement | SdButton) {
@@ -314,15 +325,14 @@ export class FormControlController implements ReactiveController {
   /** Checks for the presence of the attributes 'data-user-valid' or 'data-user-invalid' on the host form element and updates its corresponding style state. */
   updateValidityStyle() {
     if (this.host.hasAttribute('data-user-valid') && this.host.checkValidity()) {
-      // check for presence of showValidStyle attribute before mutating
-      if (this.host.showValidStyle !== undefined) this.host.showValidStyle = true;
-      this.host.showInvalidStyle = false;
+      if (this.host.showValidStyle !== undefined && !this.host.showValidStyle) this.host.showValidStyle = true;
+      if (this.host.showInvalidStyle) this.host.showInvalidStyle = false;
     } else if (this.host.hasAttribute('data-user-invalid') && !this.host.checkValidity()) {
-      if (this.host.showValidStyle !== undefined) this.host.showValidStyle = false;
-      this.host.showInvalidStyle = true;
+      if (this.host.showValidStyle !== undefined && this.host.showValidStyle) this.host.showValidStyle = false;
+      if (!this.host.showInvalidStyle) this.host.showInvalidStyle = true;
     } else {
-      if (this.host.showValidStyle !== undefined) this.host.showValidStyle = false;
-      this.host.showInvalidStyle = false;
+      if (this.host.showValidStyle !== undefined && this.host.showValidStyle) this.host.showValidStyle = false;
+      if (this.host.showInvalidStyle) this.host.showInvalidStyle = false;
     }
   }
 
@@ -402,6 +412,7 @@ export class FormControlController implements ReactiveController {
   updateValidity() {
     const host = this.host;
     this.setValidity(host?.validity!.valid);
+    this.updateValidityStyle();
   }
 
   /**

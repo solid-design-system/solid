@@ -789,4 +789,31 @@ describe('<sd-select>', () => {
 
     expect(tags.textContent).to.equal('4 Optionen ausgewählt');
   });
+
+  describe('regression tests', () => {
+    it('should not schedule a second update after submitting a form (fixes #2548)', async () => {
+      const form = await fixture<HTMLFormElement>(html`
+        <form>
+          <sd-select required>
+            <sd-option value="option-1">Option 1</sd-option>
+          </sd-select>
+          <button type="submit">Submit</button>
+        </form>
+      `);
+      const el = form.querySelector<SdSelect>('sd-select')!;
+      await el.updateComplete;
+
+      const requestUpdateSpy = sinon.spy(el, 'requestUpdate');
+
+      form.requestSubmit();
+      await el.updateComplete;
+
+      // requestUpdate may be called up to twice synchronously (once for showInvalidStyle,
+      // once for hasFocus when the invalid element is focused), but must not be called
+      // again as a side-effect of the first update completing (cascading update)
+      await aTimeout(50);
+      const callCount = requestUpdateSpy.callCount;
+      expect(callCount).to.be.lessThan(3, `requestUpdate was called ${callCount} times — indicates a cascading update`);
+    });
+  });
 });
