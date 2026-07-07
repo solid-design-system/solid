@@ -351,7 +351,6 @@ The `build:metadata` script currently runs builders in this sequence:
 5. **Icons** — Generates icon indexes by library/category
 6. **Package docs** — Converts package MDX docs to build-time markdown
 7. **Static files** — Copies static guidance content
-8. **Figma Make output** — Generates condensed dist output for Figma Make use
 
 ### Adding a New Tool
 
