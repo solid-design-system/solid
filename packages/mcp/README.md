@@ -287,7 +287,6 @@ src/
     └── index.ts              # Utility exports
 
 metadata/                    # Generated and static metadata
-├── checksum.txt
 ├── packages/
 │   ├── components/          # Component metadata
 │   │   ├── sd-*/            # Per-component dirs
