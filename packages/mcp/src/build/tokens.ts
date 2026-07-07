@@ -48,6 +48,22 @@ const getAvailableThemes = async (moduleDir: string): Promise<string[]> => {
   return [];
 };
 
+const readTailwindThemeFile = async (moduleDir: string): Promise<string> => {
+  const candidates = ['dist/themes/tailwind.css', 'themes/tailwind.css', 'dist/tailwind.css', 'tailwind.css'];
+
+  for (const relPath of candidates) {
+    try {
+      return await fs.readFile(path.join(moduleDir, relPath), 'utf-8');
+    } catch {
+      // Try next candidate path.
+    }
+  }
+
+  throw new Error(
+    `Could not find tailwind.css in tokens package. Checked: ${candidates.map(candidate => `'${candidate}'`).join(', ')}`
+  );
+};
+
 /**
  * Sets up all wanted data from the tokens package and adds it to the static metadata.
  */
@@ -93,8 +109,7 @@ export const buildTokens = async () => {
     }
 
     // Persist a compact token index instead of shipping full Tailwind metadata file.
-    const tailwindPath = path.join(moduleDir, 'dist/themes/tailwind.css');
-    const tailwindContent = await fs.readFile(tailwindPath, 'utf-8');
+    const tailwindContent = await readTailwindThemeFile(moduleDir);
     const tokens = extractTokenNamesFromTailwind(tailwindContent);
     await fs.writeFile(path.join(tokensPath, 'tokens.json'), JSON.stringify({ tokens }, null, 2));
 
