@@ -74,7 +74,6 @@ describe('when creating the MCP server', () => {
     assert.ok(toolNames.includes('templates'));
     assert.ok(toolNames.includes('tokens'));
     assert.ok(toolNames.includes('icon-search'));
-    assert.ok(toolNames.includes('cd-toolbox'));
     assert.ok(toolNames.includes('version'));
   });
 

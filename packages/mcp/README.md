@@ -2,7 +2,7 @@
 
 Solid Design System MCP Server – Component, Style, and Design Metadata
 
-The `@solid-design-system/mcp` package provides a Model Context Protocol (MCP) server enabling AI assistants and development tools to access structured information about Solid Design System components, styles, templates, design tokens, icons, and the CD Toolbox.
+The `@solid-design-system/mcp` package provides a Model Context Protocol (MCP) server enabling AI assistants and development tools to access structured information about Solid Design System components, styles, templates, design tokens, and icons.
 
 ## Quick Start
 
@@ -57,7 +57,6 @@ Add to `claude_desktop_config.json`:
 - **Unified Component Tool**: List all components, view full specs, retrieve HTML examples, and access package-level guides
 - **Unified Styles Tool**: List all CSS utilities, view full specs, retrieve HTML examples, and access package-level guides
 - **Templates**: List, filter by component/style, and retrieve template source code
-- **CD Toolbox**: Access Corporate Design guidelines by topic
 - **Icons**: Search icon libraries across keywords, category, and library
 - **Design Tokens**: Get design token information and guidance
 - **Version Info**: Check MCP server version and metadata
@@ -165,28 +164,7 @@ Add to `claude_desktop_config.json`:
 
 ---
 
-### 5. `cd-toolbox`
-
-**Corporate Design guidelines for Union Investment digital products.**
-
-**Behavior:**
-
-- **No arguments** → Lists all available CD Toolbox topics with short descriptions
-- **`topic` arg** (e.g. `"icons"` or `"ux-principles"`) → Returns full guidelines for that topic
-
-**Parameters:**
-
-- `topic` (string, optional): Topic ID, e.g. `"icons"` or `"ux-principles"`
-
-**Example prompts:**
-
-- "What CD Toolbox topics are available?"
-- "Show me the icons guidelines"
-- "Tell me about UX principles"
-
----
-
-### 6. `icon-search`
+### 5. `icon-search`
 
 **Search the Solid Design System icon libraries.**
 
@@ -204,7 +182,7 @@ Add to `claude_desktop_config.json`:
 
 ---
 
-### 7. `tokens`
+### 6. `tokens`
 
 **Access design tokens from the Solid Design System.**
 
@@ -226,7 +204,7 @@ Add to `claude_desktop_config.json`:
 
 ---
 
-### 8. `version`
+### 7. `version`
 
 **Get version and metadata about the Solid Design System MCP Server.**
 
@@ -259,9 +237,6 @@ Use these argument shapes for MCP tool calls:
 { "tool": "templates", "arguments": { "style": "chip" } }
 { "tool": "templates", "arguments": { "template": "forms" } }
 
-{ "tool": "cd-toolbox", "arguments": {} }
-{ "tool": "cd-toolbox", "arguments": { "topic": "icons" } }
-
 { "tool": "icon-search", "arguments": { "keywords": ["download", "herunterladen"], "library": "default", "category": "all" } }
 
 { "tool": "tokens", "arguments": {} }
@@ -290,7 +265,6 @@ src/
 │   └── tokens.ts             # Tokens metadata
 ├── server.ts                 # MCP server setup
 ├── tools/                    # Tool implementations
-│   ├── cd-toolbox.ts         # CD Toolbox access
 │   ├── quickstart.ts         # Package quick-start docs
 │   ├── components.ts         # Unified components tool
 │   ├── icon-search.ts        # Icon search
@@ -314,7 +288,6 @@ src/
 
 metadata/                    # Generated and static metadata
 ├── checksum.txt
-├── cd-toolbox/              # CD Toolbox topics (.md files)
 ├── packages/
 │   ├── components/          # Component metadata
 │   │   ├── sd-*/            # Per-component dirs
@@ -349,7 +322,6 @@ metadata/                    # Generated and static metadata
 | `component-list`, `component-docs`, `component-api-examples` | `components` | Single tool handles list, spec, and examples via args |
 | `styles-list`, `styles-info`, `style-api-examples`           | `styles`     | Single tool handles list, spec, and examples via args |
 | `template-list`, `template-info`                             | `templates`  | Single tool with optional filtering                   |
-| `cd-toolbox`                                                 | `cd-toolbox` | No change (already optional args pattern)             |
 
 **Package Documentation:** Added package-level guides (Installation, Localization, Customization, Usage) extracted from MDX files in `packages/docs/src/stories/packages/`:
 
