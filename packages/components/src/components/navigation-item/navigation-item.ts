@@ -216,7 +216,9 @@ export default class SdNavigationItem extends SolidElement {
           this.isStackedHorizontal
             ? 'text-xs leading-4.5'
             : { md: 'navigable-font-size', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
-          this.disabled ? 'text-neutral-500 pointer-events-none' : 'sd-navigation-item-color-text',
+          this.disabled
+            ? 'text-neutral-500 pointer-events-none'
+            : 'sd-navigation-item--default-color-text hover:sd-navigation-item-color-text',
           this.current && !this.disabled && 'sd-navigation-item--current-color-text',
           this.current && !this.isStackedHorizontal && 'font-bold',
           !this.current && !this.isStackedHorizontal && 'choice-control-font-weight',
