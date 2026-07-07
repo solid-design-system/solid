@@ -5,26 +5,14 @@ import { tokensPath } from './config.js';
 import { getStructuredMetaData } from './metadata.js';
 
 export const getTailwindThemeTokenNames = (): string[] => {
-  const tailwindCssPath = join(tokensPath, 'tailwind.css');
-  let content: string;
+  const tokensIndexPath = join(tokensPath, 'tokens.json');
   try {
-    content = readFileSync(tailwindCssPath, 'utf-8');
+    const raw = readFileSync(tokensIndexPath, 'utf-8');
+    const parsed = JSON.parse(raw) as { tokens?: string[] };
+    return Array.isArray(parsed.tokens) ? parsed.tokens : [];
   } catch {
     return [];
   }
-
-  // Extract content inside @theme inline { ... }
-  const themeMatch = content.match(/@theme\s+inline\s*\{([\s\S]*?)\n\}/);
-  if (!themeMatch) return [];
-
-  const themeBlock = themeMatch[1];
-  const propertyNames: string[] = [];
-  const propRegex = /^\s*(--[\w\\/.-]+)\s*:/gm;
-  let match;
-  while ((match = propRegex.exec(themeBlock)) !== null) {
-    propertyNames.push(match[1]);
-  }
-  return propertyNames;
 };
 
 export const getAvailableTokenThemes = (): string[] => {

@@ -8,9 +8,24 @@ import { createPath, tokensPath } from '../utilities/index.js';
 
 /**
  * Minimal list of token metadata files to copy.
- * We keep one canonical token source plus package docs/changelog.
+ * We keep package docs/changelog; token/theme indexes are generated as compact JSON.
  */
-const filesToCopy = ['README.md', 'CHANGELOG.md', 'dist/theme.js', 'dist/themes/tailwind.css'];
+const filesToCopy = ['README.md', 'CHANGELOG.md'];
+
+const extractTokenNamesFromTailwind = (content: string): string[] => {
+  const themeMatch = content.match(/@theme\s+inline\s*\{([\s\S]*?)\n\}/);
+  if (!themeMatch) return [];
+
+  const themeBlock = themeMatch[1];
+  const propertyNames: string[] = [];
+  const propRegex = /^\s*(--[\w\\/.-]+)\s*:/gm;
+  let match;
+  while ((match = propRegex.exec(themeBlock)) !== null) {
+    propertyNames.push(match[1]);
+  }
+
+  return propertyNames;
+};
 
 const getAvailableThemes = async (moduleDir: string): Promise<string[]> => {
   const candidates = ['dist/themes', 'themes'];
@@ -76,6 +91,12 @@ export const buildTokens = async () => {
       const destPath = path.join(tokensPath, path.basename(file));
       await fs.copyFile(sourcePath, destPath);
     }
+
+    // Persist a compact token index instead of shipping full Tailwind metadata file.
+    const tailwindPath = path.join(moduleDir, 'dist/themes/tailwind.css');
+    const tailwindContent = await fs.readFile(tailwindPath, 'utf-8');
+    const tokens = extractTokenNamesFromTailwind(tailwindContent);
+    await fs.writeFile(path.join(tokensPath, 'tokens.json'), JSON.stringify({ tokens }, null, 2));
 
     // Persist an explicit list of available themes without copying every theme CSS file.
     const themes = await getAvailableThemes(moduleDir);
