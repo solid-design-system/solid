@@ -10,7 +10,7 @@ import SolidElement from '../../internal/solid-element';
 import type SdOption from '../option/option';
 
 /**
- * @summary Used to group selectable items within various form controls such as select.
+ * @summary Used to group `sd-option`components within an `sd-combobox`.
  * @documentation https://solid.union-investment.com/[storybook-link]/components-sd-optgroup
  * @status experimental
  * @since 3.23.0

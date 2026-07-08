@@ -3,7 +3,7 @@ import { customElement } from '../../internal/register-custom-element';
 import SolidElement from '../../internal/solid-element.js';
 
 /**
- * @summary Used within sd-carousel to represent a slide.
+ * @summary Used within `sd-carousel` to represent a slide.
  * @documentation https://solid.union-investment.com/[storybook-link]/carousel
  *
  * @since 1.12.0

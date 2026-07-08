@@ -6,7 +6,7 @@ const { overrideArgs } = storybookHelpers('sd-breadcrumb-item');
 const { generateTemplate } = storybookTemplate('sd-breadcrumb-item');
 
 /**
- * Used to visualize a page's location within the site's hierarchy and provide easy navigation to previous sections.
+ * Used within `sd-breadcrumb` as individual item.
  */
 export default {
   tags: ['!dev', 'autodocs'],
