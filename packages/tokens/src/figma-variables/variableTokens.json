@@ -185,8 +185,8 @@
         "VariableID:43927:5024",
         "VariableID:43927:5025",
         "VariableID:43927:5026",
-        "VariableID:43927:5038",
         "VariableID:43927:5027",
+        "VariableID:43927:5038",
         "VariableID:43979:190",
         "VariableID:44917:19938",
         "VariableID:44917:19939",
@@ -212,8 +212,8 @@
         "VariableID:44921:14706",
         "VariableID:44921:14707",
         "VariableID:44917:20154",
-        "VariableID:46172:9194",
         "VariableID:44917:20144",
+        "VariableID:46172:9194",
         "VariableID:43927:5029",
         "VariableID:48719:123821",
         "VariableID:46396:101311",
@@ -890,7 +890,13 @@
         "VariableID:44921:4593",
         "VariableID:44921:4594",
         "VariableID:67821:83529",
+        "VariableID:68066:134043",
+        "VariableID:68066:134044",
         "VariableID:67822:52111",
+        "VariableID:68083:4991",
+        "VariableID:68083:4990",
+        "VariableID:68066:134045",
+        "VariableID:68066:134046",
         "VariableID:54634:38690",
         "VariableID:44921:10563",
         "VariableID:44883:20780",
@@ -921,7 +927,6 @@
         "VariableID:46434:259686",
         "VariableID:48602:92347",
         "VariableID:64600:86",
-        "VariableID:67176:3640",
         "VariableID:47735:23880",
         "VariableID:56342:50645",
         "VariableID:47735:23876",
@@ -30655,46 +30660,6 @@
       },
       "variableCollectionId": "VariableCollectionId:43174:55999"
     },
-    "VariableID:67176:3640": {
-      "codeSyntax": {},
-      "description": "",
-      "hiddenFromPublishing": false,
-      "id": "VariableID:67176:3640",
-      "key": "81f2117368534b5e819b8e12f8278f7a634df057",
-      "name": "components/sd-container/--primary-100/color/background",
-      "remote": false,
-      "resolvedType": "COLOR",
-      "scopes": [
-        "ALL_SCOPES"
-      ],
-      "valuesByMode": {
-        "43174:13": {
-          "id": "VariableID:43979:193",
-          "type": "VARIABLE_ALIAS"
-        },
-        "43174:14": {
-          "id": "VariableID:43979:200",
-          "type": "VARIABLE_ALIAS"
-        },
-        "44883:0": {
-          "id": "VariableID:46172:9194",
-          "type": "VARIABLE_ALIAS"
-        },
-        "47719:0": {
-          "id": "VariableID:43979:214",
-          "type": "VARIABLE_ALIAS"
-        },
-        "56479:0": {
-          "id": "VariableID:58163:600",
-          "type": "VARIABLE_ALIAS"
-        },
-        "66194:0": {
-          "id": "VariableID:66194:2512",
-          "type": "VARIABLE_ALIAS"
-        }
-      },
-      "variableCollectionId": "VariableCollectionId:43174:55999"
-    },
     "VariableID:67176:41138": {
       "codeSyntax": {},
       "description": "",
@@ -30857,11 +30822,53 @@
     },
     "VariableID:67821:83529": {
       "codeSyntax": {},
-      "description": "",
+      "description": "Code only",
       "hiddenFromPublishing": true,
       "id": "VariableID:67821:83529",
       "key": "80d79f8949e940d1610c801dedce64162bf663b5",
-      "name": "components/sd-tag/--size/lg/padding-block",
+      "name": "components/sd-tag/--size/lg/padding-inline",
+      "remote": false,
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "TEXT_CONTENT",
+        "WIDTH_HEIGHT",
+        "GAP"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "id": "VariableID:44029:1660",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43174:14": {
+          "id": "VariableID:44029:1660",
+          "type": "VARIABLE_ALIAS"
+        },
+        "44883:0": {
+          "id": "VariableID:44029:1660",
+          "type": "VARIABLE_ALIAS"
+        },
+        "47719:0": {
+          "id": "VariableID:44029:1660",
+          "type": "VARIABLE_ALIAS"
+        },
+        "56479:0": {
+          "id": "VariableID:44029:1660",
+          "type": "VARIABLE_ALIAS"
+        },
+        "66194:0": {
+          "id": "VariableID:44029:1660",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:67822:52111": {
+      "codeSyntax": {},
+      "description": "Code only",
+      "hiddenFromPublishing": true,
+      "id": "VariableID:67822:52111",
+      "key": "641985065b6b6366853ae3bf10976f596d2fd326",
+      "name": "components/sd-tag/--size/sm/padding-inline",
       "remote": false,
       "resolvedType": "FLOAT",
       "scopes": [
@@ -30883,7 +30890,7 @@
           "type": "VARIABLE_ALIAS"
         },
         "47719:0": {
-          "id": "VariableID:44029:1659",
+          "id": "VariableID:44029:1660",
           "type": "VARIABLE_ALIAS"
         },
         "56479:0": {
@@ -30897,13 +30904,97 @@
       },
       "variableCollectionId": "VariableCollectionId:43174:55999"
     },
-    "VariableID:67822:52111": {
+    "VariableID:68066:134043": {
       "codeSyntax": {},
-      "description": "",
+      "description": "Code only",
       "hiddenFromPublishing": true,
-      "id": "VariableID:67822:52111",
-      "key": "641985065b6b6366853ae3bf10976f596d2fd326",
-      "name": "components/sd-tag/--size/sm/padding-block",
+      "id": "VariableID:68066:134043",
+      "key": "78d48b56bc3dab2b5ebd88db97f3a4668b13014d",
+      "name": "components/sd-tag/--removable/--size/lg/padding-right",
+      "remote": false,
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "TEXT_CONTENT",
+        "WIDTH_HEIGHT",
+        "GAP"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "id": "VariableID:44029:1660",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43174:14": {
+          "id": "VariableID:44029:1660",
+          "type": "VARIABLE_ALIAS"
+        },
+        "44883:0": {
+          "id": "VariableID:44029:1659",
+          "type": "VARIABLE_ALIAS"
+        },
+        "47719:0": {
+          "id": "VariableID:44029:1660",
+          "type": "VARIABLE_ALIAS"
+        },
+        "56479:0": {
+          "id": "VariableID:44029:1659",
+          "type": "VARIABLE_ALIAS"
+        },
+        "66194:0": {
+          "id": "VariableID:44029:1659",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:68066:134044": {
+      "codeSyntax": {},
+      "description": "Code only",
+      "hiddenFromPublishing": true,
+      "id": "VariableID:68066:134044",
+      "key": "303c2a1ab63e4e462353cca7dd6a2f75d0b365b5",
+      "name": "components/sd-tag/--removable/--size/lg/padding-left",
+      "remote": false,
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "TEXT_CONTENT",
+        "WIDTH_HEIGHT",
+        "GAP"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "id": "VariableID:44029:1661",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43174:14": {
+          "id": "VariableID:44029:1661",
+          "type": "VARIABLE_ALIAS"
+        },
+        "44883:0": {
+          "id": "VariableID:44029:1660",
+          "type": "VARIABLE_ALIAS"
+        },
+        "47719:0": {
+          "id": "VariableID:44029:1661",
+          "type": "VARIABLE_ALIAS"
+        },
+        "56479:0": {
+          "id": "VariableID:44029:1660",
+          "type": "VARIABLE_ALIAS"
+        },
+        "66194:0": {
+          "id": "VariableID:44029:1660",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:68066:134045": {
+      "codeSyntax": {},
+      "description": "Code only",
+      "hiddenFromPublishing": true,
+      "id": "VariableID:68066:134045",
+      "key": "4336ed6393b589aeebfbc7b87b05c4ac63a90929",
+      "name": "components/sd-tag/--removable/--size/sm/padding-right",
       "remote": false,
       "resolvedType": "FLOAT",
       "scopes": [
@@ -30925,7 +31016,133 @@
           "type": "VARIABLE_ALIAS"
         },
         "47719:0": {
+          "id": "VariableID:44029:1659",
+          "type": "VARIABLE_ALIAS"
+        },
+        "56479:0": {
           "id": "VariableID:44029:1658",
+          "type": "VARIABLE_ALIAS"
+        },
+        "66194:0": {
+          "id": "VariableID:44029:1658",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:68066:134046": {
+      "codeSyntax": {},
+      "description": "Code only",
+      "hiddenFromPublishing": true,
+      "id": "VariableID:68066:134046",
+      "key": "474fed1c65c4a34c4944ae7baf39aa48800a5502",
+      "name": "components/sd-tag/--removable/--size/sm/padding-left",
+      "remote": false,
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "TEXT_CONTENT",
+        "WIDTH_HEIGHT",
+        "GAP"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "id": "VariableID:44029:1660",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43174:14": {
+          "id": "VariableID:44029:1660",
+          "type": "VARIABLE_ALIAS"
+        },
+        "44883:0": {
+          "id": "VariableID:44029:1659",
+          "type": "VARIABLE_ALIAS"
+        },
+        "47719:0": {
+          "id": "VariableID:44029:1660",
+          "type": "VARIABLE_ALIAS"
+        },
+        "56479:0": {
+          "id": "VariableID:44029:1659",
+          "type": "VARIABLE_ALIAS"
+        },
+        "66194:0": {
+          "id": "VariableID:44029:1659",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:68083:4990": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": true,
+      "id": "VariableID:68083:4990",
+      "key": "8337303bda58838d16834aaf7942e03c0c2204db",
+      "name": "components/sd-tag/--size/lg/_internal/padding-inline",
+      "remote": false,
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "TEXT_CONTENT",
+        "WIDTH_HEIGHT",
+        "GAP"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "id": "VariableID:44029:1660",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43174:14": {
+          "id": "VariableID:44029:1660",
+          "type": "VARIABLE_ALIAS"
+        },
+        "44883:0": {
+          "id": "VariableID:44029:1659",
+          "type": "VARIABLE_ALIAS"
+        },
+        "47719:0": {
+          "id": "VariableID:44029:1660",
+          "type": "VARIABLE_ALIAS"
+        },
+        "56479:0": {
+          "id": "VariableID:44029:1659",
+          "type": "VARIABLE_ALIAS"
+        },
+        "66194:0": {
+          "id": "VariableID:44029:1659",
+          "type": "VARIABLE_ALIAS"
+        }
+      },
+      "variableCollectionId": "VariableCollectionId:43174:55999"
+    },
+    "VariableID:68083:4991": {
+      "codeSyntax": {},
+      "description": "",
+      "hiddenFromPublishing": true,
+      "id": "VariableID:68083:4991",
+      "key": "e460db22c23f33539b101abfc4580f96cfead822",
+      "name": "components/sd-tag/--size/sm/_internal/padding-inline",
+      "remote": false,
+      "resolvedType": "FLOAT",
+      "scopes": [
+        "TEXT_CONTENT",
+        "WIDTH_HEIGHT",
+        "GAP"
+      ],
+      "valuesByMode": {
+        "43174:13": {
+          "id": "VariableID:44029:1659",
+          "type": "VARIABLE_ALIAS"
+        },
+        "43174:14": {
+          "id": "VariableID:44029:1659",
+          "type": "VARIABLE_ALIAS"
+        },
+        "44883:0": {
+          "id": "VariableID:44029:1658",
+          "type": "VARIABLE_ALIAS"
+        },
+        "47719:0": {
+          "id": "VariableID:44029:1659",
           "type": "VARIABLE_ALIAS"
         },
         "56479:0": {

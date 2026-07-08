@@ -255,7 +255,6 @@
   --sd-color-warning: 187 141 32;
   --sd-color-white: 255 255 255;
   --sd-combobox__tag-border-width: var(--sd-spacing-0\.25);
-  --sd-container--primary-100-color-background: var(--sd-color-primary-750);
   --sd-container--primary-800-color-background: var(--sd-color-primary);
   --sd-datepicker__date-item--current-color-text: var(--sd-color-white);
   --sd-datepicker__date-item--current-font-weight: var(--sd-font-weight-bold);
@@ -450,6 +449,10 @@
   --sd-tag--default-color-border: var(--sd-color-primary-100);
   --sd-tag--default-color-text: var(--sd-color-white);
   --sd-tag--disabled-color-text: var(--sd-color-neutral-600);
+  --sd-tag--removable--size-lg-padding-left: var(--sd-spacing-4);
+  --sd-tag--removable--size-lg-padding-right: var(--sd-spacing-3);
+  --sd-tag--removable--size-sm-padding-left: var(--sd-spacing-3);
+  --sd-tag--removable--size-sm-padding-right: var(--sd-spacing-2);
   --sd-tag--selected--default-color-background: var(--sd-color-white);
   --sd-tag--selected--default-color-border: 255 255 255 / 0;
   --sd-tag--selected--default-color-text: var(--sd-color-primary);
@@ -458,9 +461,9 @@
   --sd-tag--selected--hover-color-text: var(--sd-color-white);
   --sd-tag--selected-border-width: 0;
   --sd-tag--size-lg-font-size: var(--sd-spacing-4);
-  --sd-tag--size-lg-padding-block: var(--sd-spacing-3);
+  --sd-tag--size-lg-padding-inline: var(--sd-spacing-3);
   --sd-tag--size-sm-font-size: 0.875rem;
-  --sd-tag--size-sm-padding-block: var(--sd-spacing-2);
+  --sd-tag--size-sm-padding-inline: var(--sd-spacing-3);
   --sd-tag-border-radius: 624.9375rem;
   --sd-teaser--neutral-100-color-background: var(--sd-color-primary-700);
   --sd-teaser--neutral-400-color-border: var(--sd-color-primary-400);

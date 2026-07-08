@@ -3916,9 +3916,16 @@
               "type": "float",
               "value": "{ui-light.utilities.text.base}"
             },
-            "padding-block": {
+            "padding-inline": {
+              "description": "Code only",
               "type": "float",
               "value": "{ui-light.utilities.spacing.3}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{ui-light.utilities.spacing.3}"
+              }
             }
           },
           "sm": {
@@ -3926,9 +3933,16 @@
               "type": "float",
               "value": "{ui-light.utilities.text.sm}"
             },
-            "padding-block": {
+            "padding-inline": {
+              "description": "Code only",
               "type": "float",
-              "value": "{ui-light.utilities.spacing.2}"
+              "value": "{ui-light.utilities.spacing.3}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{ui-light.utilities.spacing.2}"
+              }
             }
           }
         },
@@ -3938,6 +3952,34 @@
               "description": "Used for disabled state",
               "type": "color",
               "value": "{ui-light.utilities.color.neutral.500}"
+            }
+          }
+        },
+        "--removable": {
+          "--size": {
+            "lg": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{ui-light.utilities.spacing.3}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{ui-light.utilities.spacing.4}"
+              }
+            },
+            "sm": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{ui-light.utilities.spacing.2}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{ui-light.utilities.spacing.3}"
+              }
             }
           }
         }
@@ -5749,14 +5791,6 @@
               "value": "{ui-light.utilities.color.primary.800}"
             }
           }
-        },
-        "--primary-100": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{ui-light.utilities.color.primary.100}"
-            }
-          }
         }
       },
       "sd-progress-bar": {
@@ -7500,9 +7534,16 @@
               "type": "float",
               "value": "{ui-dark.utilities.text.base}"
             },
-            "padding-block": {
+            "padding-inline": {
+              "description": "Code only",
               "type": "float",
               "value": "{ui-dark.utilities.spacing.3}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{ui-dark.utilities.spacing.3}"
+              }
             }
           },
           "sm": {
@@ -7510,9 +7551,16 @@
               "type": "float",
               "value": "{ui-dark.utilities.text.sm}"
             },
-            "padding-block": {
+            "padding-inline": {
+              "description": "Code only",
               "type": "float",
-              "value": "{ui-dark.utilities.spacing.2}"
+              "value": "{ui-dark.utilities.spacing.3}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{ui-dark.utilities.spacing.2}"
+              }
             }
           }
         },
@@ -7522,6 +7570,34 @@
               "description": "Used for disabled state",
               "type": "color",
               "value": "{ui-dark.utilities.color.neutral.600}"
+            }
+          }
+        },
+        "--removable": {
+          "--size": {
+            "lg": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{ui-dark.utilities.spacing.3}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{ui-dark.utilities.spacing.4}"
+              }
+            },
+            "sm": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{ui-dark.utilities.spacing.2}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{ui-dark.utilities.spacing.3}"
+              }
             }
           }
         }
@@ -9331,14 +9407,6 @@
               "value": "{ui-dark.utilities.color.primary.600}"
             }
           }
-        },
-        "--primary-100": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{ui-dark.utilities.color.primary.750}"
-            }
-          }
         }
       },
       "sd-progress-bar": {
@@ -11082,9 +11150,16 @@
               "type": "float",
               "value": "{vb.utilities.text.base}"
             },
-            "padding-block": {
+            "padding-inline": {
+              "description": "Code only",
               "type": "float",
-              "value": "{vb.utilities.spacing.2}"
+              "value": "{vb.utilities.spacing.3}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{vb.utilities.spacing.2}"
+              }
             }
           },
           "sm": {
@@ -11092,9 +11167,16 @@
               "type": "float",
               "value": "{vb.utilities.text.sm}"
             },
-            "padding-block": {
+            "padding-inline": {
+              "description": "Code only",
               "type": "float",
-              "value": "{vb.utilities.spacing.1}"
+              "value": "{vb.utilities.spacing.2}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{vb.utilities.spacing.1}"
+              }
             }
           }
         },
@@ -11104,6 +11186,34 @@
               "description": "Used for disabled state",
               "type": "color",
               "value": "{vb.utilities.color.neutral.400}"
+            }
+          }
+        },
+        "--removable": {
+          "--size": {
+            "lg": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{vb.utilities.spacing.2}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{vb.utilities.spacing.3}"
+              }
+            },
+            "sm": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{vb.utilities.spacing.1}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{vb.utilities.spacing.2}"
+              }
             }
           }
         }
@@ -12915,14 +13025,6 @@
               "value": "{vb.utilities.color.primary.800}"
             }
           }
-        },
-        "--primary-100": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{core.vb.azure.50}"
-            }
-          }
         }
       },
       "sd-progress-bar": {
@@ -14666,9 +14768,16 @@
               "type": "float",
               "value": "{sp.utilities.text.base}"
             },
-            "padding-block": {
+            "padding-inline": {
+              "description": "Code only",
               "type": "float",
-              "value": "{sp.utilities.spacing.2}"
+              "value": "{sp.utilities.spacing.3}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{sp.utilities.spacing.2}"
+              }
             }
           },
           "sm": {
@@ -14676,9 +14785,16 @@
               "type": "float",
               "value": "{sp.utilities.text.sm}"
             },
-            "padding-block": {
+            "padding-inline": {
+              "description": "Code only",
               "type": "float",
-              "value": "{sp.utilities.spacing.1}"
+              "value": "{sp.utilities.spacing.2}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{sp.utilities.spacing.1}"
+              }
             }
           }
         },
@@ -14688,6 +14804,34 @@
               "description": "Used for disabled state",
               "type": "color",
               "value": "{sp.utilities.color.neutral.400}"
+            }
+          }
+        },
+        "--removable": {
+          "--size": {
+            "lg": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{sp.utilities.spacing.2}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{sp.utilities.spacing.3}"
+              }
+            },
+            "sm": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{sp.utilities.spacing.1}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{sp.utilities.spacing.2}"
+              }
             }
           }
         }
@@ -16499,14 +16643,6 @@
               "value": "{sp.utilities.color.primary.default}"
             }
           }
-        },
-        "--primary-100": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{core.sp.blue.50}"
-            }
-          }
         }
       },
       "sd-progress-bar": {
@@ -18250,9 +18386,16 @@
               "type": "float",
               "value": "{bb.utilities.text.base}"
             },
-            "padding-block": {
+            "padding-inline": {
+              "description": "Code only",
               "type": "float",
-              "value": "{bb.utilities.spacing.2}"
+              "value": "{bb.utilities.spacing.3}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{bb.utilities.spacing.2}"
+              }
             }
           },
           "sm": {
@@ -18260,9 +18403,16 @@
               "type": "float",
               "value": "{bb.utilities.text.sm}"
             },
-            "padding-block": {
+            "padding-inline": {
+              "description": "Code only",
               "type": "float",
-              "value": "{bb.utilities.spacing.1}"
+              "value": "{bb.utilities.spacing.2}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{bb.utilities.spacing.1}"
+              }
             }
           }
         },
@@ -18272,6 +18422,34 @@
               "description": "Used for disabled state",
               "type": "color",
               "value": "{bb.utilities.color.neutral.500}"
+            }
+          }
+        },
+        "--removable": {
+          "--size": {
+            "lg": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{bb.utilities.spacing.2}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{bb.utilities.spacing.3}"
+              }
+            },
+            "sm": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{bb.utilities.spacing.1}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{bb.utilities.spacing.2}"
+              }
             }
           }
         }
@@ -20083,14 +20261,6 @@
               "value": "{bb.utilities.color.primary.default}"
             }
           }
-        },
-        "--primary-100": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{core.bb.blue.50}"
-            }
-          }
         }
       },
       "sd-progress-bar": {
@@ -21834,9 +22004,16 @@
               "type": "float",
               "value": "{kid.utilities.text.xs}"
             },
-            "padding-block": {
+            "padding-inline": {
+              "description": "Code only",
               "type": "float",
-              "value": "{kid.utilities.spacing.2}"
+              "value": "{kid.utilities.spacing.3}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{kid.utilities.spacing.3}"
+              }
             }
           },
           "sm": {
@@ -21844,9 +22021,16 @@
               "type": "float",
               "value": "{kid.utilities.text.xs}"
             },
-            "padding-block": {
+            "padding-inline": {
+              "description": "Code only",
               "type": "float",
-              "value": "{kid.utilities.spacing.1}"
+              "value": "{kid.utilities.spacing.3}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{kid.utilities.spacing.2}"
+              }
             }
           }
         },
@@ -21856,6 +22040,34 @@
               "description": "Used for disabled state",
               "type": "color",
               "value": "{kid.utilities.color.neutral.400}"
+            }
+          }
+        },
+        "--removable": {
+          "--size": {
+            "lg": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{kid.utilities.spacing.3}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{kid.utilities.spacing.4}"
+              }
+            },
+            "sm": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{kid.utilities.spacing.2}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{kid.utilities.spacing.3}"
+              }
             }
           }
         }
@@ -23665,14 +23877,6 @@
             "background": {
               "type": "color",
               "value": "{kid.utilities.color.background.primary.default}"
-            }
-          }
-        },
-        "--primary-100": {
-          "color": {
-            "background": {
-              "type": "color",
-              "value": "{kid.utilities.color.neutral.100}"
             }
           }
         }

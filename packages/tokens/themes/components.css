@@ -582,10 +582,6 @@
  border-width: var(--sd-combobox__tag-border-width, var(--sd-spacing-0\.25));
 }
 
-@utility sd-container--primary-100-color-background {
-  background-color: rgba(var(--sd-container--primary-100-color-background, rgba(var(--sd-color-primary-100))));
-}
-
 @utility sd-container--primary-800-color-background {
   background-color: rgba(var(--sd-container--primary-800-color-background, rgba(var(--sd-color-primary-800))));
 }
@@ -974,6 +970,22 @@
   color: rgba(var(--sd-tag--disabled-color-text, rgba(var(--sd-color-neutral-500))));
 }
 
+@utility sd-tag--removable--size-lg-padding-left {
+ padding-left: var(--sd-tag--removable--size-lg-padding-left, var(--sd-spacing-4));
+}
+
+@utility sd-tag--removable--size-lg-padding-right {
+ padding-right: var(--sd-tag--removable--size-lg-padding-right, var(--sd-spacing-3));
+}
+
+@utility sd-tag--removable--size-sm-padding-left {
+ padding-left: var(--sd-tag--removable--size-sm-padding-left, var(--sd-spacing-3));
+}
+
+@utility sd-tag--removable--size-sm-padding-right {
+ padding-right: var(--sd-tag--removable--size-sm-padding-right, var(--sd-spacing-2));
+}
+
 @utility sd-tag--selected--default-color-background {
   background-color: rgba(var(--sd-tag--selected--default-color-background, rgba(var(--sd-color-primary))));
 }
@@ -1006,16 +1018,16 @@
  font-size: var(--sd-tag--size-lg-font-size, var(--sd-spacing-4));
 }
 
-@utility sd-tag--size-lg-padding-block {
- padding-block: var(--sd-tag--size-lg-padding-block, var(--sd-spacing-3));
+@utility sd-tag--size-lg-padding-inline {
+ padding-inline: var(--sd-tag--size-lg-padding-inline, var(--sd-spacing-3));
 }
 
 @utility sd-tag--size-sm-font-size {
  font-size: var(--sd-tag--size-sm-font-size, 0.875rem);
 }
 
-@utility sd-tag--size-sm-padding-block {
- padding-block: var(--sd-tag--size-sm-padding-block, var(--sd-spacing-2));
+@utility sd-tag--size-sm-padding-inline {
+ padding-inline: var(--sd-tag--size-sm-padding-inline, var(--sd-spacing-3));
 }
 
 @utility sd-tag-border-radius {
