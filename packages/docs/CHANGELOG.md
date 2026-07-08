@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.20.1
+
+### Patch Changes
+
+- Added a multi-theming explanation to the tokens package overview to clarify how it differs from a white-label approach _[`#3130`](https://github.com/solid-design-system/solid/pull/3130) [`5276028`](https://github.com/solid-design-system/solid/commit/5276028b631bd7eba364fe7fa4c4fb832de8cfa8) [@balco0110](https://github.com/balco0110)_
+
 ## 2.20.0
 
 ### Minor Changes
