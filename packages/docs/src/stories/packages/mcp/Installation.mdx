@@ -38,7 +38,20 @@ Add the MCP server to your VS Code settings:
 
 ### Claude Desktop
 
-Add the MCP server to `claude_desktop_config.json`:
+For project-level setup (recommended), add the MCP server to `.claude/mcp.json` in your repository:
+
+```json
+{
+  "mcpServers": {
+    "solid": {
+      "command": "npx",
+      "args": ["@solid-design-system/mcp"]
+    }
+  }
+}
+```
+
+Alternatively, add the same server to your global `claude_desktop_config.json`:
 
 ```json
 {

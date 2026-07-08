@@ -62,7 +62,8 @@
     "lint:js": "cd ../.. && pnpm exec eslint packages/mcp/src",
     "lint": "pnpm run /^lint:.*/",
     "test": "node --import tsx/esm --test \"test/**/*.spec.ts\"",
-    "verify": "pnpm build && echo '✅ Build verified' && pnpm test && echo '✅ Test verified'"
+    "verify": "pnpm build && echo '✅ Build verified' && pnpm test && echo '✅ Test verified'",
+    "mcp:inspector": "cd packages/mcp && npx @modelcontextprotocol/inspector node dist/bin/start.js"
   },
   "type": "module",
   "version": "2.6.0"

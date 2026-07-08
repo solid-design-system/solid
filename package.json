@@ -20,8 +20,7 @@
     "lint.verify": "cd packages/eslint-plugin && pnpm build && cd ../.. && eslint packages --max-warnings 0 && echo '✅ Linting verified'",
     "format.verify": "prettier --check --log-level warn . && echo '✅ Formatting verified'",
     "format.fix": "prettier --write --log-level warn .",
-    "changeset": "changeset",
-    "mcp:inspector": "cd packages/mcp && npx @modelcontextprotocol/inspector node dist/bin/start.js"
+    "changeset": "changeset"
   },
   "lib": "es2022",
   "keywords": [],
