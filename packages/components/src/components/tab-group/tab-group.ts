@@ -7,6 +7,7 @@ import { LocalizeController } from '../../utilities/localize';
 import { property, query, state } from 'lit/decorators.js';
 import { scrollIntoView } from '../../internal/scroll';
 import cx from 'classix';
+import { interactiveStyles } from '../../internal/shared-styles';
 import SolidElement from '../../internal/solid-element';
 import type SdTab from '../tab/tab';
 import type SdTabPanel from '../tab-panel/tab-panel';
@@ -452,6 +453,7 @@ export default class SdTabGroup extends SolidElement {
 
   static styles = [
     ...SolidElement.styles,
+    interactiveStyles,
     css`
       :host {
         @apply block box-border;
