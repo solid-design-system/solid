@@ -47,8 +47,12 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-tag--size-sm-font-size - The font size for small tags.
  * @cssproperty --sd-choice-control-font-weight - The font weight for tags.
  * @cssproperty --sd-tag--disabled-color-text - The text color for disabled tags.
- * @cssproperty --sd-tag--size-lg-padding-block - The padding block for large tags.
- * @cssproperty --sd-tag--size-sm-padding-block - The padding block for small tags.
+ * @cssproperty --sd-tag--size-lg-padding-inline - The padding inline for large tags.
+ * @cssproperty --sd-tag--size-sm-padding-inline - The padding inline for small tags.
+ * @cssproperty --sd-tag--removable--size-lg-padding-right - The padding right for large removable tags.
+ * @cssproperty --sd-tag--removable--size-lg-padding-left - The padding left for large removable tags.
+ * @cssproperty --sd-tag--removable--size-sm-padding-right - The padding right for small removable tags.
+ * @cssproperty --sd-tag--removable--size-sm-padding-left - The padding left for small removable tags.
  *
  * @cssproperty --sd-tag--disabled-color-border - This custom property is deprecated. Use `--sd-color-border-neutral-500` instead.
  * @cssproperty --sd-tag-font-weight - This custom property is deprecated. Use `--sd-choice-control-font-weight` instead.

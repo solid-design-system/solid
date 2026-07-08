@@ -157,7 +157,7 @@ export default class SdIcon extends SolidElement {
       }
 
       :host([name='content/'][color='primary']) svg {
-        color: rgba(var(--sd-color-icon-fill-primary, var(--sd-color-primary)));
+        color: rgba(var(--sd-color-icon-fill-content-icons-primary, var(--sd-color-primary)));
       }
 
       :host([color='white']) svg {

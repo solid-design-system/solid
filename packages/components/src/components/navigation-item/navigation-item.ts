@@ -33,6 +33,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart divider - The component's optional top divider.
  *
  * @cssproperty --sd-navigation-item-color-text - The navigation-item text color.
+ * @cssproperty --sd-navigation-item--default-color-text - The default navigation-items text color.
  * @cssproperty --sd-navigable-border-radius - The navigation-item border radius on hover and active state.
  * @cssproperty --sd-navigable-font-size - The navigation-item font size.
  * @cssproperty --sd-navigable__current-indicator-border-radius - The navigation-item current indicator border radius value.
