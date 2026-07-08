@@ -2,14 +2,14 @@ import { html } from 'lit-html';
 import '../../../../components/src/solid-components';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-status-badge');
-const { overrideArgs } = storybookHelpers('sd-status-badge');
-const { generateTemplate } = storybookTemplate('sd-status-badge');
+const { argTypes, parameters } = storybookDefaults('.sd-status-badge');
+const { overrideArgs } = storybookHelpers('.sd-status-badge');
+const { generateTemplate } = storybookTemplate('.sd-status-badge');
 
 export default {
   title: 'Styles/sd-status-badge',
   tags: ['!dev', 'autodocs'],
-  component: 'sd-status-badge',
+  component: '.sd-status-badge',
   args: overrideArgs([
     {
       type: 'slot',

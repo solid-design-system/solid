@@ -7,9 +7,9 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-mark');
-const { overrideArgs } = storybookHelpers('sd-mark');
-const { generateTemplate } = storybookTemplate('sd-mark');
+const { argTypes, parameters } = storybookDefaults('.sd-mark');
+const { overrideArgs } = storybookHelpers('.sd-mark');
+const { generateTemplate } = storybookTemplate('.sd-mark');
 const { generateScreenshotStory } = storybookUtilities;
 
 /**
@@ -19,7 +19,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Styles/sd-mark/Screenshots: sd-mark',
   tags: ['!autodocs'],
-  component: 'sd-mark',
+  component: '.sd-mark',
   parameters: {
     ...parameters,
     controls: { disable: true },

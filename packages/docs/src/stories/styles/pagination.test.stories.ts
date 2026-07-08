@@ -6,9 +6,9 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-pagination');
-const { overrideArgs } = storybookHelpers('sd-pagination');
-const { generateTemplate } = storybookTemplate('sd-pagination');
+const { argTypes, parameters } = storybookDefaults('.sd-pagination');
+const { overrideArgs } = storybookHelpers('.sd-pagination');
+const { generateTemplate } = storybookTemplate('.sd-pagination');
 const { generateScreenshotStory } = storybookUtilities;
 
 const html = String.raw;
@@ -20,7 +20,7 @@ const html = String.raw;
 
 export default {
   title: 'Styles/sd-pagination/Screenshots: sd-pagination',
-  component: 'sd-pagination',
+  component: '.sd-pagination',
   tags: ['!autodocs'],
   parameters: {
     ...parameters,

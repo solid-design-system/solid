@@ -7,9 +7,9 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-table-cell');
-const { overrideArgs } = storybookHelpers('sd-table-cell');
-const { generateTemplate } = storybookTemplate('sd-table-cell');
+const { argTypes, parameters } = storybookDefaults('.sd-table-cell');
+const { overrideArgs } = storybookHelpers('.sd-table-cell');
+const { generateTemplate } = storybookTemplate('.sd-table-cell');
 const { generateScreenshotStory } = storybookUtilities;
 
 /**
@@ -20,7 +20,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Styles/sd-table-cell/Screenshots: sd-table-cell',
   tags: ['!autodocs'],
-  component: 'sd-table-cell',
+  component: '.sd-table-cell',
   parameters: {
     ...parameters,
     controls: { disable: true }

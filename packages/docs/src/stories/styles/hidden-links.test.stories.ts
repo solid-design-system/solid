@@ -6,9 +6,9 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-hidden-links');
-const { overrideArgs } = storybookHelpers('sd-hidden-links');
-const { generateTemplate } = storybookTemplate('sd-hidden-links');
+const { argTypes, parameters } = storybookDefaults('.sd-hidden-links');
+const { overrideArgs } = storybookHelpers('.sd-hidden-links');
+const { generateTemplate } = storybookTemplate('.sd-hidden-links');
 const { generateScreenshotStory } = storybookUtilities;
 
 // HTML helper to get syntax highlighting and formatting in the template string
@@ -22,7 +22,7 @@ const html = String.raw;
 
 export default {
   title: 'Styles/sd-hidden-links/Screenshots: sd-hidden-links',
-  component: 'sd-hidden-links',
+  component: '.sd-hidden-links',
   tags: ['!autodocs'],
   argTypes,
   parameters: {

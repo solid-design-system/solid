@@ -9,6 +9,7 @@ import SolidElement from '../../internal/solid-element';
  * @documentation https://solid.union-investment.com/[storybook-link]/skeleton
  * @status stable
  * @since 5.17.0
+ * @deprecated Use the `sd-skeleton` CSS style instead. Apply the `sd-skeleton` class directly to your content element (e.g. `<p class="sd-skeleton">text</p>`) and remove it once loading is complete. See: https://solid.union-investment.com/[storybook-link]/styles-sd-skeleton--docs
  *
  * @slot - The skeleton's content. When provided, adapts to the content's dimensions. When empty, displays according to the variant property.
  *

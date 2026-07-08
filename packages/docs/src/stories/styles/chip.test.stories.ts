@@ -8,9 +8,9 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-chip');
-const { overrideArgs } = storybookHelpers('sd-chip');
-const { generateTemplate } = storybookTemplate('sd-chip');
+const { argTypes, parameters } = storybookDefaults('.sd-chip');
+const { overrideArgs } = storybookHelpers('.sd-chip');
+const { generateTemplate } = storybookTemplate('.sd-chip');
 const { generateScreenshotStory } = storybookUtilities;
 
 /**
@@ -26,7 +26,7 @@ const { generateScreenshotStory } = storybookUtilities;
 export default {
   title: 'Styles/sd-chip/Screenshots: sd-chip',
   tags: ['!autodocs'],
-  component: 'sd-chip',
+  component: '.sd-chip',
   parameters: {
     ...parameters,
     controls: { disable: true },

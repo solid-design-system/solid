@@ -2,14 +2,14 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-media');
-const { overrideArgs } = storybookHelpers('sd-media');
-const { generateTemplate } = storybookTemplate('sd-media');
+const { argTypes, parameters } = storybookDefaults('.sd-media');
+const { overrideArgs } = storybookHelpers('.sd-media');
+const { generateTemplate } = storybookTemplate('.sd-media');
 
 export default {
   title: 'Styles/sd-media',
   tags: ['!dev', 'autodocs'],
-  component: 'sd-media',
+  component: '.sd-media',
   parameters: {
     ...parameters,
     design: {

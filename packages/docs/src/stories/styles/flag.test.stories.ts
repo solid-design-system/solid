@@ -7,15 +7,15 @@ import {
   storybookUtilities
 } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-flag');
-const { overrideArgs } = storybookHelpers('sd-flag');
-const { generateTemplate } = storybookTemplate('sd-flag');
+const { argTypes, parameters } = storybookDefaults('.sd-flag');
+const { overrideArgs } = storybookHelpers('.sd-flag');
+const { generateTemplate } = storybookTemplate('.sd-flag');
 const { generateScreenshotStory } = storybookUtilities;
 
 export default {
   title: 'Styles/sd-flag/Screenshots: sd-flag',
   tags: ['!autodocs'],
-  component: 'sd-flag',
+  component: '.sd-flag',
   parameters: {
     ...parameters,
     controls: { disable: true },

@@ -2,16 +2,16 @@ import '../../../../components/src/solid-components';
 
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-hidden-links');
-const { overrideArgs } = storybookHelpers('sd-hidden-links');
-const { generateTemplate } = storybookTemplate('sd-hidden-links');
+const { argTypes, parameters } = storybookDefaults('.sd-hidden-links');
+const { overrideArgs } = storybookHelpers('.sd-hidden-links');
+const { generateTemplate } = storybookTemplate('.sd-hidden-links');
 
 // HTML helper to get syntax highlighting and formatting in the template string
 const html = String.raw;
 
 export default {
   title: 'Styles/sd-hidden-links',
-  component: 'sd-hidden-links',
+  component: '.sd-hidden-links',
   tags: ['!dev', 'autodocs'],
   parameters: {
     ...parameters,

@@ -2,14 +2,14 @@ import '../../../../components/src/solid-components';
 import { html } from 'lit-html';
 import { storybookDefaults, storybookHelpers, storybookTemplate } from '../../../scripts/storybook/helper';
 
-const { argTypes, parameters } = storybookDefaults('sd-meta');
-const { overrideArgs } = storybookHelpers('sd-meta');
-const { generateTemplate } = storybookTemplate('sd-meta');
+const { argTypes, parameters } = storybookDefaults('.sd-meta');
+const { overrideArgs } = storybookHelpers('.sd-meta');
+const { generateTemplate } = storybookTemplate('.sd-meta');
 
 export default {
   title: 'Styles/sd-meta',
   tags: ['!dev', 'autodocs'],
-  component: 'sd-meta',
+  component: '.sd-meta',
   parameters: {
     ...parameters,
     design: {
