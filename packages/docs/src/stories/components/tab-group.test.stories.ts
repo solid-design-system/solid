@@ -20,9 +20,11 @@ function generateTabsAndPanels(
 ): string {
   let result = '';
   for (let i = startIndex; i <= endIndex; i++) {
+    const isInitiallyActive = i === startIndex;
+
     result += `
-      <sd-tab slot="nav" panel="tab-${i}" variant=${variant}>Tab ${i}</sd-tab>
-      <sd-tab-panel name="tab-${i}"><div class="slot slot--text slot--border"> Tab panel ${i}</div></sd-tab-panel>`;
+      <sd-tab slot="nav" panel="tab-${i}" variant=${variant} ${isInitiallyActive ? 'active' : ''}>Tab ${i}</sd-tab>
+      <sd-tab-panel name="tab-${i}" ${isInitiallyActive ? 'active' : ''}><div class="slot slot--text slot--border"> Tab panel ${i}</div></sd-tab-panel>`;
   }
   return result;
 }
@@ -65,8 +67,29 @@ export default {
 
 export const Default = {
   name: 'Default',
-  render: (args: any) => {
-    return generateTemplate({ args });
+  render: () => {
+    return html`
+      <style>
+        sd-tab-group::part(active-tab-indicator),
+        sd-tab::part(active-tab-indicator) {
+          transition: none !important;
+        }
+      </style>
+
+      <sd-tab-group>
+        <sd-tab slot="nav" panel="tab-1" active>Tab 1</sd-tab>
+        <sd-tab slot="nav" panel="tab-2">Tab 2</sd-tab>
+        <sd-tab slot="nav" panel="tab-3">Tab 3</sd-tab>
+        <sd-tab slot="nav" panel="tab-4">Tab 4</sd-tab>
+        <sd-tab slot="nav" panel="tab-5">Tab 5</sd-tab>
+
+        <sd-tab-panel name="tab-1" active><div class="slot slot--text slot--border">Tab panel 1</div></sd-tab-panel>
+        <sd-tab-panel name="tab-2"><div class="slot slot--text slot--border">Tab panel 2</div></sd-tab-panel>
+        <sd-tab-panel name="tab-3"><div class="slot slot--text slot--border">Tab panel 3</div></sd-tab-panel>
+        <sd-tab-panel name="tab-4"><div class="slot slot--text slot--border">Tab panel 4</div></sd-tab-panel>
+        <sd-tab-panel name="tab-5"><div class="slot slot--text slot--border">Tab panel 5</div></sd-tab-panel>
+      </sd-tab-group>
+    `;
   }
 };
 
