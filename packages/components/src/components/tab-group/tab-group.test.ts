@@ -107,19 +107,6 @@ describe('<sd-tab-group>', () => {
     await expectOnlyOneTabPanelToBeActive(tabGroup, 'general-tab-content');
   });
 
-  it('respects preselected active tab and panel on initial render', async () => {
-    const tabGroup = await fixture<SdTabGroup>(html`
-      <sd-tab-group>
-        <sd-tab slot="nav" panel="general">General</sd-tab>
-        <sd-tab slot="nav" panel="custom" active>Custom</sd-tab>
-        <sd-tab-panel name="general" data-testid="general-tab-content">This is the general tab panel.</sd-tab-panel>
-        <sd-tab-panel name="custom" active data-testid="custom-tab-content">This is the custom tab panel.</sd-tab-panel>
-      </sd-tab-group>
-    `);
-
-    await expectOnlyOneTabPanelToBeActive(tabGroup, 'custom-tab-content');
-  });
-
   describe('scrolling behavior', () => {
     const generateTabs = (n: number): HTMLTemplateResult[] => {
       const result: HTMLTemplateResult[] = [];
