@@ -401,5 +401,18 @@ export const SampleWithLinks = {
 
 export const Combination = generateScreenshotStory(
   [Default, TabVariants, Scrollable, Parts, Mouseless, SampleCentered, SampleNoLine, SampleBold, SampleDeepLink],
-  { additionalChromaticOptions: { delay: 500 } }
+  {
+    afterRender: html`
+      <style>
+        sd-tab-group::part(active-tab-indicator),
+        sd-tab::part(active-tab-indicator),
+        sd-tab::part(base),
+        sd-tab-group::part(scroll-button__base) {
+          transition: none !important;
+          animation: none !important;
+        }
+      </style>
+    `,
+    additionalChromaticOptions: { delay: 1200 }
+  }
 );
