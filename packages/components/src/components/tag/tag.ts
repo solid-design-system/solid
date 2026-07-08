@@ -157,8 +157,12 @@ export default class SdTag extends SolidElement {
           }[this.size],
           {
             /* padding */
-            lg: !isRemovable ? 'px-4 sd-tag--size-lg-padding-block' : 'pl-4 pr-3 sd-tag--size-lg-padding-block',
-            sm: !isRemovable ? 'px-3 sd-tag--size-sm-padding-block' : 'pl-3 pr-2 sd-tag--size-sm-padding-block'
+            lg: !isRemovable
+              ? 'py-2 sd-tag--size-lg-padding-inline'
+              : 'sd-tag--removable--size-lg-padding-right sd-tag--removable--size-lg-padding-left py-3',
+            sm: !isRemovable
+              ? 'py-1 sd-tag--size-sm-padding-inline'
+              : 'sd-tag--removable--size-sm-padding-right sd-tag--removable--size-sm-padding-left py-2'
           }[this.size],
           /* colors */
           !this.disabled
