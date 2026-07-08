@@ -317,6 +317,20 @@ export default class SdTabGroup extends SolidElement {
   private syncTabsAndPanels() {
     this.tabs = this.getAllTabs({ includeDisabled: false });
     this.panels = this.getAllPanels();
+
+    // Respect preselected active state from light DOM before the initial fallback selects the first tab.
+    // This makes externally defined active tabs/panels deterministic on first render.
+    const preselectedTab = this.tabs.find(tab => tab.active);
+    const preselectedPanel = this.panels.find(panel => panel.active);
+    const panelMatchedTab = preselectedPanel ? this.tabs.find(tab => tab.panel === preselectedPanel.name) : undefined;
+    const selectedTab = preselectedTab ?? panelMatchedTab;
+
+    if (selectedTab && !selectedTab.disabled && !selectedTab.visuallyDisabled) {
+      this.activeTab = selectedTab;
+      this.tabs.map(el => (el.active = el === this.activeTab));
+      this.panels.map(el => (el.active = el.name === this.activeTab?.panel));
+    }
+
     this.repositionIndicator();
 
     this.panels.forEach(panel => {
