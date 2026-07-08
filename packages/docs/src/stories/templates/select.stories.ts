@@ -21,8 +21,15 @@ export default {
 export const Default = {
   name: 'Grouping Options',
   render: () =>
-    html`<div class="h-[500px] flex gap-12">
-      <sd-select size="lg" placement="bottom" label="City/Region" placeholder="Please select" max-options-visible="3">
+    html`<div class="h-[500px] flex flex-wrap md:flex-nowrap gap-12">
+      <sd-select
+        size="lg"
+        placement="bottom"
+        label="City/Region"
+        placeholder="Please select"
+        max-options-visible="3"
+        class="min-w-[200px] md:min-w-0 max-w-[400px]"
+      >
         <div class="text-black px-4 font-bold">Australia</div>
         <sd-option value="option-1">Brisbane (Queensland)</sd-option>
         <sd-option value="option-2">Sydney (Victoria)</sd-option>
@@ -32,7 +39,14 @@ export const Default = {
         <sd-option value="option-4">Hartberg (Styria)</sd-option>
       </sd-select>
 
-      <sd-select size="lg" placement="bottom" label="Country" placeholder="Please select" max-options-visible="3">
+      <sd-select
+        size="lg"
+        placement="bottom"
+        label="Country"
+        placeholder="Please select"
+        max-options-visible="3"
+        class="min-w-[200px] md:min-w-0 max-w-[400px]"
+      >
         <div class="text-black px-4 font-bold">Asia</div>
         <sd-option value="option-1">Japan</sd-option>
         <sd-option value="option-2">South Korea</sd-option>
@@ -47,7 +61,7 @@ export const Default = {
 export const SelectWithOptionAndCheckbox = {
   name: 'Select with Option and Checkbox',
   render: () => html`
-    <div class="w-[400px] h-[500px]">
+    <div class="w-full max-w-[400px] h-[500px]">
       <sd-select
         id="select-with-checkbox"
         size="lg"

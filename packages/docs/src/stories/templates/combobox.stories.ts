@@ -34,7 +34,7 @@ export default {
  */
 export const SimpleSuggests = {
   render: () => html`
-    <div class="h-[260px] w-[400px]">
+    <div class="h-[260px] w-full max-w-[400px]">
       <sd-combobox label="Funds"> ${createFondsOptionsHtml()} </sd-combobox>
     </div>
   `
@@ -49,7 +49,7 @@ export const HighlightQuery = {
   render: () => {
     const optionRenderer = highlightOptionRenderer;
     return html`
-      <div class="h-[260px] w-[400px]">
+      <div class="h-[260px] w-full max-w-[400px]">
         <sd-combobox label="Funds" class="highlight-combobox" value="g"> ${createFondsOptionsHtml()} </sd-combobox>
       </div>
       <script type="module">
@@ -71,7 +71,7 @@ export const HighlightQuery = {
 
 export const MultipleHighlightQuery = {
   render: () => html`
-    <div class="h-[260px] w-[400px]">
+    <div class="h-[260px] w-full max-w-[400px]">
       <sd-combobox label="Funds" class="multiple-highlight-combobox"> ${createFondsOptionsHtml()} </sd-combobox>
     </div>
     <script type="module">
@@ -114,7 +114,7 @@ export const MultipleHighlightQuery = {
  */
 export const GroupingQuery = {
   render: () => html`
-    <div class="h-[260px] w-[400px]">
+    <div class="h-[260px] w-full max-w-[400px]">
       <sd-combobox label="Group elements" value="g">
         <sd-optgroup label="Funds"> ${createFondsOptionsHtml()} </sd-optgroup>
         <sd-optgroup label="Search Suggestions">
