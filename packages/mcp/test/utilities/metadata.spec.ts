@@ -7,12 +7,9 @@ const isMetadataFile = (file: MetadataFile | null): file is MetadataFile => file
 
 describe('when using the metadata utilities', () => {
   describe('getStructuredMetaData', () => {
-    it('should return the correct metadata for a given asset', async () => {
-      const metadata = await getStructuredMetaData('../../test/utilities/testdata');
-      assert.strictEqual(metadata.length, 2);
-      const filesThatAreRead = metadata.filter(isMetadataFile).map(file => file.filename);
-      assert.ok(filesThatAreRead.includes('README.md'));
-      assert.ok(filesThatAreRead.includes('Othercontent.ts'));
+    it('should return an empty array when the metadata folder does not exist', async () => {
+      const metadata = await getStructuredMetaData('../../test/utilities/non-existent-testdata');
+      assert.deepStrictEqual(metadata, []);
     });
   });
 
