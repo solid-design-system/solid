@@ -8,9 +8,9 @@ import { createPath, tokensPath } from '../utilities/index.js';
 
 /**
  * Minimal list of token metadata files to copy.
- * We keep package docs/changelog; token/theme indexes are generated as compact JSON.
+ * Keep only essential docs; token/theme indexes are generated as compact JSON.
  */
-const filesToCopy = ['README.md', 'CHANGELOG.md'];
+const filesToCopy = ['README.md'];
 
 const extractTokenNamesFromTailwind = (content: string): string[] => {
   const themeMatch = content.match(/@theme\s+inline\s*\{([\s\S]*?)\n\}/);
