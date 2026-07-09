@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-tab-panel>` — Used inside sd-tab-group to display tabbed content.
+`<sd-tab-panel>` — Used inside sd-tab-group to display tabbed content.
 
 ## API
 

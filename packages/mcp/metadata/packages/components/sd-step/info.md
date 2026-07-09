@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-step>` — Used to determine a step in a process or task.
+`<sd-step>` — Used to determine a step in a process or task inside `sd-step-group`.inside `sd-step-group`.
 
 ## API
 

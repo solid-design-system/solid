@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-range-tick>` — Used to represent a tick within a sd-range.
+`<sd-range-tick>` — Used to represent a tick within `sd-range`.
 
 ## API
 

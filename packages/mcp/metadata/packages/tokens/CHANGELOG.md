@@ -1,5 +1,7 @@
 # @solid-design-system/tokens
 
+## 6.25.2
+
 ## 6.25.1
 
 ### Patch Changes

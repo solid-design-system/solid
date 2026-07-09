@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-divider>` — Used to separate content or sections from each other and make the content easier to read for the user.
+`<sd-divider>` — Used to separate content or sections from each other.
 
 ## API
 

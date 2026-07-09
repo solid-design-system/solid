@@ -314,7 +314,7 @@ export const buildComponents = async () => {
         const summary = extractSummaryFromDocs(docs) || fallbackSummary;
         const manifestApi = apiMap.get(tagName);
         const api: ApiSections = manifestApi
-          ? { ...manifestApi, summary: manifestApi.summary || summary }
+          ? { ...manifestApi, summary: summary || manifestApi.summary }
           : {
               tagName,
               summary,

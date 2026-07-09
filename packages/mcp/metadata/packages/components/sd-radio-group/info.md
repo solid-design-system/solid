@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-radio-group>` — Used to group multiple input radio or radio buttons so they function as a single form control.
+`<sd-radio-group>` — Used to group multiple `sd-radio` or `sd-radio-button` components so they function as a single form control.
 
 ## API
 

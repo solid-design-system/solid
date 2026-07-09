@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-video>` — Used to embed and control videos.
+`<sd-video>` — Used to wrap videos to provide basic styling.
 
 ## API
 

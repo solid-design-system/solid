@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-quickfact>` — Used to present information in an expandable and more dynamic way.
+`<sd-quickfact>` — Used to present brief information and expand to show additional content.
 
 ## API
 

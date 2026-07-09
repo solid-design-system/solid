@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-carousel-item>` — Used within sd-carousel to represent a slide.
+`<sd-carousel-item>` — Used within `sd-carousel` to represent a slide.
 
 ## API
 

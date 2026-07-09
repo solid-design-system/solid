@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-checkbox-group>` — Used to select multiple options from a list of options.
+`<sd-checkbox-group>` — Used to group multiple options from a list of options. Presentational only.
 
 ## API
 

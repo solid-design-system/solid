@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-dialog>` — Used over other content. It requires an interaction from the user before they can return to whatever is underneath.
+`<sd-dialog>` — Used over other content. It requires an interaction from the user before they can return to what is underneath.
 
 ## API
 

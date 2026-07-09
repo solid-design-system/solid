@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-include>` — Includes give you the power to embed external HTML files into the page.
+`<sd-include>` — _Includes give you the power to embed external HTML files into the page._
 
 ## API
 

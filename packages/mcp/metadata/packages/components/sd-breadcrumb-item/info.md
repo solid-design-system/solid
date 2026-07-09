@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-breadcrumb-item>` — Used to visualize a page's location within the site's hierarchy and provide easy navigation to previous sections.
+`<sd-breadcrumb-item>` — Used within `sd-breadcrumb` as individual item.
 
 ## API
 

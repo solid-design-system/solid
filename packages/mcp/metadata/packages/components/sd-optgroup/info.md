@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-optgroup>` — Used to group selectable items within various form controls such as select.
+`<sd-optgroup>` — Used to group `sd-option`components within an `sd-combobox`.
 
 ## API
 

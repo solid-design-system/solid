@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-flipcard>` — Used to display content on one side and reveal additional information when flipped.
+`<sd-flipcard>` — Used to display content on both sides of a card by presenting information on one side and revealing additional information when flipped.
 
 ## API
 

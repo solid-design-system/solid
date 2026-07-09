@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-progress-bar>` — Progress bars are used to visualize the completion state of a process.
+`<sd-progress-bar>` — Used to visually represent the progression of an activity.
 
 ## API
 

@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-combobox>` — Comboboxes allow you to choose items from a menu of predefined options.
+`<sd-combobox>` — Used to select one or multiple options from a list of options or to enter a search string and choose from a list of suggestions.
 
 ## API
 

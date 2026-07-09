@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-switch>` — Used to give control over a feature or option that can be turned on or off.
+`<sd-switch>` — Used to give control over an option that can be toggled on or off.
 
 ## API
 

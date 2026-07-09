@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-radio-button>` — Used to switch between different options or views by selecting one option from a group.
+`<sd-radio-button>` — Used to switch between different options by selecting a single option from a group.
 
 ## API
 
