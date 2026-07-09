@@ -27,7 +27,7 @@ export const getAvailableTokenThemes = (): string[] => {
 };
 
 export const getTokensMetaData = async (type: 'css' | 'javascript' = 'css') => {
-  const fileList = ['README.md', 'CHANGELOG.md'];
+  const fileList: string[] = [];
 
   if (type === 'javascript') {
     fileList.push('*.js');
