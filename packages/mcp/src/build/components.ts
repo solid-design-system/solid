@@ -15,6 +15,8 @@ interface MdxExtract {
   docs: string | null;
 }
 
+const normalizeMdxTemplateEscapes = (text: string): string => text.replace(/\\`/g, '`');
+
 const extractMdxContent = async (mdxPath: string): Promise<MdxExtract> => {
   try {
     const raw = await fs.readFile(mdxPath, 'utf-8');
@@ -32,7 +34,7 @@ const extractMdxContent = async (mdxPath: string): Promise<MdxExtract> => {
     let docs = full.replace(/####\s+Related (?:Components|Templates)\n+((?:.*\n)*?)(?=\n####|\n###|$)/g, '');
     docs = docs.replace(/^\[.*?\]\(\.\/?path=.*?\)\n?/gm, '');
     docs = docs.replace(/\nVisit <sd-link[\s\S]*$/, '');
-    docs = docs.trim();
+    docs = normalizeMdxTemplateEscapes(docs.trim());
 
     return { docs: docs || null };
   } catch {
@@ -271,7 +273,7 @@ const extractSummaryFromStories = async (storiesPath: string): Promise<string> =
       .map(line => line.replace(/^\s*\*\s?/, '').trim())
       .filter(Boolean)
       .map(line => line.replace(/\*\*/g, ''));
-    return text[0] ?? '';
+    return normalizeMdxTemplateEscapes(text[0] ?? '');
   } catch {
     return '';
   }
