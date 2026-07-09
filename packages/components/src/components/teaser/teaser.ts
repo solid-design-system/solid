@@ -6,7 +6,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 import type { PropertyValues } from 'lit';
 /**
- * @summary Used to group related subjects in a container, providing a preview of information and linking to further content.
+ * @summary Used to group related subjects in a container with an image, providing a preview of information and linking to further content.
  * @documentation https://solid.union-investment.com/[storybook-link]/teaser
  *
  * @status stable

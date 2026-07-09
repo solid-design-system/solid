@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-teaser-media>` — Used as a flexible container that groups related items and links them to further content.
+`<sd-teaser-media>` — Used to group related subjects in a container with an image, providing a preview of information and linking to further content.
 
 ## API
 

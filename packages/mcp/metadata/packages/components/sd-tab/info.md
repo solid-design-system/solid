@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-tab>` — Used inside sd-tab-group to represent and activate tab panels.
+`<sd-tab>` — Used inside `sd-tab-group` to represent and activate `sd-tab-panel`.
 
 ## API
 

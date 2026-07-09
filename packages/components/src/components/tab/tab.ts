@@ -10,7 +10,7 @@ import SolidElement from '../../internal/solid-element';
 let id = 0;
 
 /**
- * @summary Used inside sd-tab-group to represent and activate tab panels.
+ * @summary Used inside `sd-tab-group` to represent and activate `sd-tab-panel`.
  * @documentation https://solid.union-investment.com/[storybook-link]/tab
  * @status stable
  * @since 2.6.0
