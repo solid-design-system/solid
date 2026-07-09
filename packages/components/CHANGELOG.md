@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.25.2
+
+### Patch Changes
+
+- Making the current indicator the same size as text in the stacked layout of the `sd-navigation-item` component. _[`#3128`](https://github.com/solid-design-system/solid/pull/3128) [`60ec4dd`](https://github.com/solid-design-system/solid/commit/60ec4dd3e5332e688984f9c75a5401617932cb5b) [@martascorreia](https://github.com/martascorreia)_
+
 ## 6.25.1
 
 ## 6.25.0
