@@ -74,6 +74,7 @@ import type SdPopup from '../popup/popup';
  * @cssproperty --sd-form-control__listbox-border-top-left-radius - The border radius for the top left corner of the listbox.
  * @cssproperty --sd-form-control__listbox-border-top-right-radius - The border radius for the top right corner of the listbox.
  * @cssproperty --sd-form-control--hover-color-background - The background color for form controls on hover.
+ * @cssproperty --sd-form-control-color-icon-fill - The color for form control icons.
  */
 @customElement('sd-select')
 export default class SdSelect extends SolidElement implements SolidFormControl {
@@ -1308,7 +1309,7 @@ export default class SdSelect extends SolidElement implements SolidFormControl {
       }
 
       .icon-color {
-        color: rgb(var(--sd-color-icon-fill-primary));
+        color: rgb(var(--sd-form-control-color-icon-fill));
       }
     `
   ];

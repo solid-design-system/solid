@@ -25,6 +25,47 @@ Create new variables in Variables.
    ```
 6. Enjoy.
 
+#### Setting up a new theme in Storybook
+
+To register a new theme in Storybook:
+
+1. Add the theme to both `themes` and `allModes` in `.storybook/modes`.
+2. Import the theme in `.storybook/preview.js`.
+
+#### Adding internal icons
+
+1. Create an `icons.css` file inside `themes/<your-theme>/`.
+2. Define the icon SVGs as CSS custom properties.
+3. Build the `tokens` package. The build process will automatically include the icons in the generated theme CSS files.
+
+#### Adding system and content icons
+
+1. Ensure the icons are available in the CDN.
+2. Add the CDN folder name to `ThemeMap` using the same key that references the theme throughout the project.
+3. Update `icon.libraries.multi-theming.stories` by adding the new theme to both the **Content** and **System** modes.
+4. Add a new example section for the theme in the **Multi-theming Library** story.
+
+#### Adding font families
+
+1. Add the font files to a new folder under `packages/docs/.storybook/fonts/`.
+2. Register the fonts in `.storybook/preview-head.html`.
+3. Update `packages/tokens/tailwind/token-processors/typography.js` with the typography configuration for the new theme.
+
+#### Adding logos
+
+1. Add the logo SVGs to `packages/docs/.storybook/assets/images/`.
+2. Add a new entry to `theme-attributes.js` using the key `sd-theme-<your-theme>`.
+3. Configure the following properties:
+   - `logoLg`
+   - `logoMd`
+   - `logoSm`
+
+   Each property should point to the corresponding SVG file and include appropriate alt text.
+
+   This configuration object also defines:
+   - the path to the theme CSS file (`<your-theme>/<your-theme>.css`); and
+   - the CDN folder used to load the theme's icons.
+
 ### Analyzing Variable Usage
 
 To analyze CSS variable usage across the monorepo:

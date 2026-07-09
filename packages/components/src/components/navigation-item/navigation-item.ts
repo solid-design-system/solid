@@ -33,6 +33,7 @@ import SolidElement from '../../internal/solid-element';
  * @csspart divider - The component's optional top divider.
  *
  * @cssproperty --sd-navigation-item-color-text - The navigation-item text color.
+ * @cssproperty --sd-navigation-item--default-color-text - The default navigation-items text color.
  * @cssproperty --sd-navigable-border-radius - The navigation-item border radius on hover and active state.
  * @cssproperty --sd-navigable-font-size - The navigation-item font size.
  * @cssproperty --sd-navigable__current-indicator-border-radius - The navigation-item current indicator border radius value.
@@ -216,7 +217,7 @@ export default class SdNavigationItem extends SolidElement {
           this.isStackedHorizontal
             ? 'text-xs leading-4.5'
             : { md: 'navigable-font-size', lg: 'text-lg', sm: 'text-[14px]' }[this.size],
-          this.disabled ? 'text-neutral-500 pointer-events-none' : 'sd-navigation-item-color-text',
+          this.disabled ? 'text-neutral-500 pointer-events-none' : 'sd-navigation-item--default-color-text',
           this.current && !this.disabled && 'sd-navigation-item--current-color-text',
           this.current && !this.isStackedHorizontal && 'font-bold',
           !this.current && !this.isStackedHorizontal && 'choice-control-font-weight',
