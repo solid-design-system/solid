@@ -6,7 +6,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Used to represent a tick within a sd-range.
+ * @summary Used to represent a tick within `sd-range`.
  * @status experimental
  * @since 5.9
  *

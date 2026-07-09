@@ -12,7 +12,7 @@ import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 
 /**
- * @summary Used to give control over a feature or option that can be turned on or off.
+ * @summary Used to give control over an option that can be toggled on or off.
  * @documentation https://solid.union-investment.com/[storybook-link]/switch
  * @status stable
  * @since 1.26.0

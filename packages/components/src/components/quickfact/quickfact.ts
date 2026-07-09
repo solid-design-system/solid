@@ -10,7 +10,7 @@ import SdAccordion from '../accordion/accordion';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Used to present information in an expandable and more dynamic way.
+ * @summary Used to present brief information and expand to show additional content.
  * @documentation https://solid.union-investment.com/[storybook-link]/quickfact
  * @status stable
  * @since 3.12.0
