@@ -1,6 +1,6 @@
 ## Overview
 
-`sd-table` – Used to reset the styles of a table to predefined values. To style table cells use the sd-table-cell component.
+`sd-table` – Used to reset the styles of a table to predefined values. To style table cells use the `sd-table-cell` component.t.
 
 ## API
 
