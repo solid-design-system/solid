@@ -109,6 +109,8 @@ import type { SolidFormControl } from '../../internal/solid-element';
  */
 @customElement('sd-button')
 export default class SdButton extends SolidElement implements SolidFormControl {
+  private readonly themeClassObserver = new MutationObserver(() => this.updateMotionTheme());
+
   private readonly formControlController = new FormControlController(this, {
     form: input => {
       // Buttons support a form attribute that points to an arbitrary form, so if this attribute it set we need to query
@@ -130,6 +132,8 @@ export default class SdButton extends SolidElement implements SolidFormControl {
 
   /** @internal */
   @state() protected invalid = false;
+
+  @state() private hasUiMotion = false;
 
   /**
    * The `title` attribute specifies extra information about an element most often as a default browser tooltip text when the mouse moves over the element.
@@ -221,10 +225,29 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     return '';
   }
 
+  connectedCallback(): void {
+    super.connectedCallback();
+    this.updateMotionTheme();
+    this.themeClassObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+      subtree: true
+    });
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.themeClassObserver.disconnect();
+  }
+
   firstUpdated() {
     if (this.isButton()) {
       this.formControlController.updateValidity();
     }
+  }
+
+  private updateMotionTheme(): void {
+    this.hasUiMotion = Boolean(this.closest('.sd-theme-ui, .sd-theme-dark, .sd-theme-ui-light, .sd-theme-ui-dark'));
   }
 
   private handleBlur() {
@@ -341,6 +364,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
         w-full align-middle inline-flex items-stretch justify-center
         transition-colors duration-fast ease-in-out
         select-none cursor-[inherit]`,
+        !this.hasUiMotion && 'sd-button--simple-motion',
         !this.inverted ? 'focus-visible:focus-outline' : 'focus-visible:focus-outline-inverted',
         this.loading && 'relative cursor-wait',
         (this.disabled || this.visuallyDisabled) && 'cursor-not-allowed',
@@ -431,7 +455,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
       >
         <div part="motion-wrapper" class=${cx(
           'absolute inset-0 -z-10 overflow-hidden pointer-events-none ',
-          (this.disabled || this.visuallyDisabled) && 'hidden',
+          (!this.hasUiMotion || this.disabled || this.visuallyDisabled) && 'hidden',
           {
             /* sizes, fonts */
             sm: `sd-button-border-radius`,
@@ -535,6 +559,14 @@ export default class SdButton extends SolidElement implements SolidFormControl {
     css`
       :host {
         @apply z-[0] inline-block cursor-pointer w-auto relative;
+      }
+
+      .sd-button--simple-motion {
+        transition:
+          background-color 150ms ease,
+          color 150ms ease,
+          border-color 150ms ease,
+          box-shadow 150ms ease;
       }
 
       /*
