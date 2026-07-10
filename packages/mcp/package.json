@@ -55,8 +55,9 @@
     "directory": "packages/mcp"
   },
   "scripts": {
-    "build": "pnpm run build:components && pnpm run build:ts && pnpm run build:metadata && cd ../.. && pnpm exec prettier --write --log-level warn packages/mcp/metadata",
+    "build": "pnpm run build:components && pnpm run build:tokens && pnpm run build:ts && pnpm run build:metadata && cd ../.. && pnpm exec prettier --write --log-level warn packages/mcp/metadata",
     "build:components": "cd ../components && pnpm exec node scripts/make-metadata.js --outdir dist",
+    "build:tokens": "cd ../tokens && pnpm run build",
     "build:ts": "node --input-type=module -e \"import{rmSync}from'node:fs';rmSync('dist',{recursive:true,force:true})\" && tsc",
     "build:metadata": "node dist/build/build.js",
     "lint:js": "cd ../.. && pnpm exec eslint packages/mcp/src",
