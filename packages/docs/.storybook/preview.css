@@ -105,7 +105,9 @@ div[data-radix-scroll-area-viewport]:focus-visible {
 }
 
 sd-notification#license-hint::part(base),
-sd-notification#versioning-info::part(base) {
+sd-notification#versioning-info::part(base),
+sd-notification#font-path-hint::part(base),
+sd-notification#theme-host-warning::part(base) {
   margin-left: 0;
   margin-bottom: 2rem;
 }
