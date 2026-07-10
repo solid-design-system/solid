@@ -49,6 +49,10 @@
   ],
   "license": "MIT",
   "name": "@solid-design-system/mcp",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/solid-design-system/solid.git",
