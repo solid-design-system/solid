@@ -32,6 +32,7 @@ import SolidElement from '../../internal/solid-element';
  * @cssproperty --sd-teaser-media--neutral-100-color-background - The default background color for neutral‑100 teaser media.
  * @cssproperty --sd-teaser-media--primary-100--hover-color-background - The background color for primary‑100 teaser media in hover state.
  * @cssproperty --sd-teaser-media--primary-100-color-background - The default background color for primary‑100 teaser media.
+ * @cssproperty --sd-teaser-media-color-icon-fill - The default color for the icon in the toggle button.
  */
 
 @customElement('sd-teaser-media')
@@ -127,18 +128,19 @@ export default class SdTeaserMedia extends SolidElement {
                 ? html`
                     <button
                       part="toggle"
-                      class="sd-interactive sd-interactive--reset mt-2"
+                      class=${cx(
+                        'mt-2',
+                        ['primary', 'gradient-dark'].includes(this.variant)
+                          ? 'text-white'
+                          : 'sd-teaser-media-color-icon-fill'
+                      )}
                       @click=${this.onToggleClick}
                       aria-expanded=${this.open}
                       aria-label=${this.open ? 'Collapse content' : 'Expand content'}
                     >
                       <div class="h-full justify-start flex items-start">
                         <sd-icon
-                          class=${cx(
-                            'w-6 h-6 transition-transform',
-                            this.open && 'rotate-180',
-                            ['primary', 'gradient-dark'].includes(this.variant) ? 'text-white' : 'text-primary'
-                          )}
+                          class=${cx('w-6 h-6 transition-transform', this.open && 'rotate-180')}
                           library="_internal"
                           name="chevron-down"
                         ></sd-icon>

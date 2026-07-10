@@ -1357,7 +1357,7 @@
         "800": {
           "description": "foreground-text",
           "type": "color",
-          "value": "rgba(0, 0, 0, 0.65)"
+          "value": "rgba(0, 0, 0, 0.86)"
         }
       },
       "white": {
@@ -1904,6 +1904,303 @@
         "default": {
           "type": "color",
           "value": "{core.bb.turquoise.500}"
+        }
+      }
+    },
+    "sp": {
+      "blue": {
+        "50": {
+          "type": "color",
+          "value": "#f2f7fb"
+        },
+        "100": {
+          "description": "color has same luminance as step 100",
+          "type": "color",
+          "value": "#ebf2f8"
+        },
+        "200": {
+          "description": "color has same luminance as step 100",
+          "type": "color",
+          "value": "#b3cee6"
+        },
+        "250": {
+          "description": "selected hover state",
+          "type": "color",
+          "value": "#80add5"
+        },
+        "300": {
+          "description": "used for tag selected hover",
+          "type": "color",
+          "value": "#4d8cc4"
+        },
+        "400": {
+          "description": "color has same luminance as step 100",
+          "type": "color",
+          "value": "#2673b7"
+        },
+        "500": {
+          "type": "color",
+          "value": "#005aaa"
+        },
+        "550": {
+          "type": "color",
+          "value": "#005aaa"
+        },
+        "600": {
+          "type": "color",
+          "value": "#005199"
+        },
+        "650": {
+          "type": "color",
+          "value": "#005199"
+        },
+        "700": {
+          "type": "color",
+          "value": "#005199"
+        },
+        "800": {
+          "type": "color",
+          "value": "#003f90"
+        },
+        "900": {
+          "type": "color",
+          "value": "#002e7f"
+        },
+        "default": {
+          "type": "color",
+          "value": "{core.sp.blue.500}"
+        }
+      },
+      "orange": {
+        "50": {
+          "type": "color",
+          "value": "#fef3eb"
+        },
+        "100": {
+          "type": "color",
+          "value": "#fdb1b3"
+        },
+        "200": {
+          "type": "color",
+          "value": "#f8b280"
+        },
+        "300": {
+          "type": "color",
+          "value": "#f5934d"
+        },
+        "400": {
+          "type": "color",
+          "value": "#f27b26"
+        },
+        "500": {
+          "description": "Generated with https://www.tints.dev/palette/v1:cnVieXxGMzVFMDF8NTAwfHB8NXwtNHwxM3w5Mnxt",
+          "type": "color",
+          "value": "#f06400"
+        },
+        "550": {
+          "type": "color",
+          "value": "#f06400"
+        },
+        "600": {
+          "type": "color",
+          "value": "#ee5c00"
+        },
+        "700": {
+          "type": "color",
+          "value": "#d85a00"
+        },
+        "800": {
+          "type": "color",
+          "value": "#e94800"
+        },
+        "900": {
+          "type": "color",
+          "value": "#e53600"
+        },
+        "950": {
+          "type": "color",
+          "value": "#e53600"
+        },
+        "default": {
+          "description": "green-default",
+          "type": "color",
+          "value": "{core.sp.orange.500}"
+        }
+      },
+      "grey": {
+        "50": {
+          "description": "F5F7F9 100%",
+          "type": "color",
+          "value": "#f5f7f9"
+        },
+        "70": {
+          "type": "color",
+          "value": "#f3f7fa"
+        },
+        "100": {
+          "type": "color",
+          "value": "#edf0f4"
+        },
+        "200": {
+          "type": "color",
+          "value": "#d9e0e8"
+        },
+        "300": {
+          "type": "color",
+          "value": "#ccd5e1"
+        },
+        "400": {
+          "type": "color",
+          "value": "#bfcad9"
+        },
+        "450": {
+          "description": "disabled",
+          "type": "color",
+          "value": "rgba(0, 0, 0, 0.38)"
+        },
+        "500": {
+          "description": "disabled",
+          "type": "color",
+          "value": "rgba(0, 0, 0, 0.38)"
+        },
+        "600": {
+          "description": "foreground-secondary-text",
+          "type": "color",
+          "value": "rgba(0, 0, 0, 0.62)"
+        },
+        "620": {
+          "type": "color",
+          "value": "rgba(0, 0, 0, 0.62)"
+        },
+        "700": {
+          "type": "color",
+          "value": "rgba(0, 0, 0, 0.65)"
+        },
+        "800": {
+          "description": "foreground-text",
+          "type": "color",
+          "value": "rgba(0, 0, 0, 0.86)"
+        }
+      },
+      "white": {
+        "default": {
+          "type": "color",
+          "value": "#ffffff"
+        }
+      },
+      "black": {
+        "type": "color",
+        "value": "rgba(0, 0, 0, 0.86)"
+      },
+      "status": {
+        "success": {
+          "type": "color",
+          "value": "#0c7336"
+        },
+        "success-bg": {
+          "type": "color",
+          "value": "#eef6f2"
+        },
+        "success-bg-alternative": {
+          "type": "color",
+          "value": "#d9e0e8"
+        },
+        "error": {
+          "type": "color",
+          "value": "#d20000"
+        },
+        "error-bg": {
+          "type": "color",
+          "value": "#fdeded"
+        },
+        "warning": {
+          "type": "color",
+          "value": "#f45e02"
+        },
+        "warning-bg": {
+          "type": "color",
+          "value": "#fff5ed"
+        },
+        "neutral-blue": {
+          "type": "color",
+          "value": "#0079a8"
+        },
+        "neutral-blue-bg": {
+          "type": "color",
+          "value": "#edf8fd"
+        },
+        "neutral-grey-bg": {
+          "type": "color",
+          "value": "#fafafa"
+        }
+      },
+      "font-family": {
+        "font-family-primary": {
+          "type": "string",
+          "value": "GenosGFG"
+        }
+      },
+      "font-weight": {
+        "font-normal": {
+          "type": "string",
+          "value": "Regular"
+        },
+        "font-bold": {
+          "type": "string",
+          "value": "Bold"
+        }
+      },
+      "warn": {
+        "50": {
+          "type": "color",
+          "value": "#fbebeb"
+        },
+        "100": {
+          "type": "color",
+          "value": "#f2b3b3"
+        },
+        "200": {
+          "type": "color",
+          "value": "#e98080"
+        },
+        "300": {
+          "type": "color",
+          "value": "#e04d4d"
+        },
+        "400": {
+          "type": "color",
+          "value": "#d92626"
+        },
+        "500": {
+          "description": "Generated with https://www.tints.dev/palette/v1:cnVieXxGMzVFMDF8NTAwfHB8NXwtNHwxM3w5Mnxt",
+          "type": "color",
+          "value": "#d20000"
+        },
+        "600": {
+          "type": "color",
+          "value": "#cd0000"
+        },
+        "700": {
+          "type": "color",
+          "value": "#bd0000"
+        },
+        "800": {
+          "type": "color",
+          "value": "#c10000"
+        },
+        "900": {
+          "type": "color",
+          "value": "#b60000"
+        },
+        "default": {
+          "description": "green-default",
+          "type": "color",
+          "value": "{core.sp.warn.500}"
+        },
+        "default 2": {
+          "description": "green-default",
+          "type": "color",
+          "value": "{core.sp.warn.500}"
         }
       }
     }
@@ -2592,6 +2889,15 @@
               "description": "Exclusively for marking fonds",
               "type": "color",
               "value": "{ui-light.utilities.color.risk.veryhigh}"
+            }
+          },
+          "content-icons": {
+            "primary": {
+              "default": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-light.utilities.color.primary.default}"
+              }
             }
           }
         },
@@ -3609,12 +3915,34 @@
             "font-size": {
               "type": "float",
               "value": "{ui-light.utilities.text.base}"
+            },
+            "padding-inline": {
+              "description": "Code only",
+              "type": "float",
+              "value": "{ui-light.utilities.spacing.3}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{ui-light.utilities.spacing.3}"
+              }
             }
           },
           "sm": {
             "font-size": {
               "type": "float",
               "value": "{ui-light.utilities.text.sm}"
+            },
+            "padding-inline": {
+              "description": "Code only",
+              "type": "float",
+              "value": "{ui-light.utilities.spacing.3}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{ui-light.utilities.spacing.2}"
+              }
             }
           }
         },
@@ -3624,6 +3952,34 @@
               "description": "Used for disabled state",
               "type": "color",
               "value": "{ui-light.utilities.color.neutral.500}"
+            }
+          }
+        },
+        "--removable": {
+          "--size": {
+            "lg": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{ui-light.utilities.spacing.3}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{ui-light.utilities.spacing.4}"
+              }
+            },
+            "sm": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{ui-light.utilities.spacing.2}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{ui-light.utilities.spacing.3}"
+              }
             }
           }
         }
@@ -3638,6 +3994,10 @@
             "description": "Used for label ",
             "type": "color",
             "value": "{ui-light.utilities.color.text.black.default}"
+          },
+          "icon-fill": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.primary.default}"
           }
         },
         "--invalid": {
@@ -5007,6 +5367,12 @@
               "value": "{ui-light.utilities.color.background._transparent.white|80}"
             }
           }
+        },
+        "color": {
+          "icon-fill": {
+            "type": "color",
+            "value": "{ui-light.utilities.color.primary.default}"
+          }
         }
       },
       "sd-teaser": {
@@ -5093,6 +5459,14 @@
         "border-width": {
           "type": "float",
           "value": "{ui-light.utilities.border-width.default}"
+        },
+        "--invalid": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-light.utilities.color.background.white.default}"
+            }
+          }
         }
       },
       "sd-tab": {
@@ -5392,6 +5766,15 @@
         }
       },
       "sd-navigation-item": {
+        "-default": {
+          "color": {
+            "text": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{ui-light.utilities.color.text.primary.default}"
+            }
+          }
+        },
         "color": {
           "text": {
             "description": "Default icon color ",
@@ -6124,6 +6507,15 @@
               "description": "Exclusively for marking fonds",
               "type": "color",
               "value": "{ui-dark.utilities.color.risk.veryhigh}"
+            }
+          },
+          "content-icons": {
+            "primary": {
+              "default": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{ui-dark.utilities.color.white.default}"
+              }
             }
           }
         },
@@ -7141,12 +7533,34 @@
             "font-size": {
               "type": "float",
               "value": "{ui-dark.utilities.text.base}"
+            },
+            "padding-inline": {
+              "description": "Code only",
+              "type": "float",
+              "value": "{ui-dark.utilities.spacing.3}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{ui-dark.utilities.spacing.3}"
+              }
             }
           },
           "sm": {
             "font-size": {
               "type": "float",
               "value": "{ui-dark.utilities.text.sm}"
+            },
+            "padding-inline": {
+              "description": "Code only",
+              "type": "float",
+              "value": "{ui-dark.utilities.spacing.3}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{ui-dark.utilities.spacing.2}"
+              }
             }
           }
         },
@@ -7156,6 +7570,34 @@
               "description": "Used for disabled state",
               "type": "color",
               "value": "{ui-dark.utilities.color.neutral.600}"
+            }
+          }
+        },
+        "--removable": {
+          "--size": {
+            "lg": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{ui-dark.utilities.spacing.3}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{ui-dark.utilities.spacing.4}"
+              }
+            },
+            "sm": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{ui-dark.utilities.spacing.2}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{ui-dark.utilities.spacing.3}"
+              }
             }
           }
         }
@@ -7170,6 +7612,10 @@
             "description": "Used for label ",
             "type": "color",
             "value": "{ui-dark.utilities.color.text.black.default}"
+          },
+          "icon-fill": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.white.default}"
           }
         },
         "--invalid": {
@@ -7926,7 +8372,7 @@
           "border": {
             "description": "Default icon color ",
             "type": "color",
-            "value": "{ui-dark.utilities.color.neutral.400}"
+            "value": "{ui-dark.utilities.color.primary.400}"
           }
         },
         "_panel-padding": {
@@ -7939,7 +8385,7 @@
             "background": {
               "description": "Default icon color ",
               "type": "color",
-              "value": "{ui-dark.utilities.color.neutral.700}"
+              "value": "{ui-dark.utilities.color.background.neutral.100}"
             }
           }
         }
@@ -8537,6 +8983,12 @@
               "value": "{ui-dark.utilities.color.background._transparent.white|80}"
             }
           }
+        },
+        "color": {
+          "icon-fill": {
+            "type": "color",
+            "value": "{ui-dark.utilities.color.white.default}"
+          }
         }
       },
       "sd-teaser": {
@@ -8623,6 +9075,14 @@
         "border-width": {
           "type": "float",
           "value": "{ui-dark.utilities.border-width.default}"
+        },
+        "--invalid": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{ui-dark.utilities.color.background.white.default}"
+            }
+          }
         }
       },
       "sd-tab": {
@@ -8922,6 +9382,15 @@
         }
       },
       "sd-navigation-item": {
+        "-default": {
+          "color": {
+            "text": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{ui-dark.utilities.color.text.primary.default}"
+            }
+          }
+        },
         "color": {
           "text": {
             "description": "Default icon color ",
@@ -9654,6 +10123,15 @@
               "description": "Exclusively for marking fonds",
               "type": "color",
               "value": "{vb.utilities.color.risk.veryhigh}"
+            }
+          },
+          "content-icons": {
+            "primary": {
+              "default": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{vb.utilities.color.primary.900}"
+              }
             }
           }
         },
@@ -10671,12 +11149,34 @@
             "font-size": {
               "type": "float",
               "value": "{vb.utilities.text.base}"
+            },
+            "padding-inline": {
+              "description": "Code only",
+              "type": "float",
+              "value": "{vb.utilities.spacing.3}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{vb.utilities.spacing.2}"
+              }
             }
           },
           "sm": {
             "font-size": {
               "type": "float",
               "value": "{vb.utilities.text.sm}"
+            },
+            "padding-inline": {
+              "description": "Code only",
+              "type": "float",
+              "value": "{vb.utilities.spacing.2}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{vb.utilities.spacing.1}"
+              }
             }
           }
         },
@@ -10686,6 +11186,34 @@
               "description": "Used for disabled state",
               "type": "color",
               "value": "{vb.utilities.color.neutral.400}"
+            }
+          }
+        },
+        "--removable": {
+          "--size": {
+            "lg": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{vb.utilities.spacing.2}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{vb.utilities.spacing.3}"
+              }
+            },
+            "sm": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{vb.utilities.spacing.1}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{vb.utilities.spacing.2}"
+              }
             }
           }
         }
@@ -10700,6 +11228,10 @@
             "description": "Used for label ",
             "type": "color",
             "value": "{vb.utilities.color.neutral.700}"
+          },
+          "icon-fill": {
+            "type": "color",
+            "value": "{vb.utilities.color.neutral.600}"
           }
         },
         "--invalid": {
@@ -11453,7 +11985,7 @@
           },
           "text": {
             "type": "color",
-            "value": "{core.vb.azure.default}"
+            "value": "{vb.utilities.color.text.black.default}"
           },
           "border": {
             "description": "Default icon color ",
@@ -11669,7 +12201,7 @@
           "border": {
             "description": "Default icon color ",
             "type": "color",
-            "value": "{vb.utilities.color.primary.800}"
+            "value": "{vb.utilities.color.neutral.400}"
           }
         },
         "__duration-indicator": {
@@ -12069,6 +12601,12 @@
               "value": "rgba(255, 255, 255, 0.80)"
             }
           }
+        },
+        "color": {
+          "icon-fill": {
+            "type": "color",
+            "value": "{vb.utilities.color.neutral.600}"
+          }
         }
       },
       "sd-teaser": {
@@ -12155,6 +12693,14 @@
         "border-width": {
           "type": "float",
           "value": "{vb.utilities.border-width.2}"
+        },
+        "--invalid": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{core.vb.status.error-bg}"
+            }
+          }
         }
       },
       "sd-tab": {
@@ -12454,6 +13000,15 @@
         }
       },
       "sd-navigation-item": {
+        "-default": {
+          "color": {
+            "text": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{vb.utilities.color.neutral.700}"
+            }
+          }
+        },
         "color": {
           "text": {
             "description": "Default icon color ",
@@ -12495,6 +13050,3624 @@
               "background": {
                 "type": "color",
                 "value": "{vb.utilities.color.white.default}"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sp": {
+    "duration": {
+      "fast": {
+        "value": "{core.duration.150}",
+        "type": "duration",
+        "description": "Component State\nAnimation of states like hover or pressed\nMicrointeractions\nSmooth transitions eg. for buttons or dropdowns"
+      },
+      "medium": {
+        "value": "{core.duration.300}",
+        "type": "duration",
+        "description": "Component State\nAnimation of states like hover or pressed\nMicrointeractions\nSmooth transitions eg. for buttons or dropdowns"
+      },
+      "slow": {
+        "value": "{core.duration.500}",
+        "type": "duration",
+        "description": "Component State\nAnimation of states like hover or pressed\nMicrointeractions\nSmooth transitions eg. for buttons or dropdowns"
+      },
+      "x-slow": {
+        "value": "{core.duration.750}",
+        "type": "duration",
+        "description": "Page and component transitions\nTransitions between screens, building animations for bigger components. (eg. image-text, super-teaser)"
+      }
+    },
+    "utilities": {
+      "aspect": {
+        "video": {
+          "value": "16 / 9",
+          "type": "spacing"
+        },
+        "square": {
+          "value": "1 / 1",
+          "type": "spacing"
+        },
+        "6/5": {
+          "value": "6 / 5",
+          "type": "spacing"
+        },
+        "5/4": {
+          "value": "5 / 4",
+          "type": "spacing"
+        },
+        "4/3": {
+          "value": "4 / 3",
+          "type": "spacing"
+        },
+        "3/2": {
+          "value": "3 / 2",
+          "type": "spacing"
+        },
+        "16/10": {
+          "value": "16 / 10",
+          "type": "spacing"
+        },
+        "golden-ratio": {
+          "value": "1.6180339887498948482 / 1",
+          "type": "spacing"
+        },
+        "2/1": {
+          "value": "2 / 1",
+          "type": "spacing"
+        },
+        "21/9": {
+          "value": "21 / 9",
+          "type": "spacing"
+        },
+        "3/4": {
+          "value": "3 / 4",
+          "type": "spacing"
+        },
+        "4/5": {
+          "value": "4 / 5",
+          "type": "spacing"
+        }
+      },
+      "color": {
+        "background": {
+          "white": {
+            "default": {
+              "description": "Default background color. Used for sd-chip, sd-flag, sd-container",
+              "type": "color",
+              "value": "{sp.utilities.color.white.default}"
+            }
+          },
+          "neutral": {
+            "100": {
+              "description": "Form field read only. Used for sd-container",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.100}"
+            },
+            "200": {
+              "description": "Used for sd-flag",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.100}"
+            },
+            "300": {
+              "description": "Used for sd-flag ",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.200}"
+            },
+            "400": {
+              "description": "Used for sd-flag ",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.300}"
+            },
+            "500": {
+              "description": "Used for disabled state ",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.400}"
+            },
+            "600": {
+              "description": "Used for inverted disabled state ",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.600}"
+            },
+            "800": {
+              "description": "Used for badge",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.800}"
+            }
+          },
+          "success": {
+            "default": {
+              "description": "Used for notification, status-badge",
+              "type": "color",
+              "value": "{sp.utilities.color.success.default}"
+            }
+          },
+          "error": {
+            "400": {
+              "description": "Used for hover interaction invalid form elements",
+              "type": "color",
+              "value": "{sp.utilities.color.error.400}"
+            },
+            "default": {
+              "description": "Used for notification, status-badge",
+              "type": "color",
+              "value": "{sp.utilities.color.error.300}"
+            }
+          },
+          "_transparent": {
+            "primary-100|80": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(242, 247, 251, 0.80)"
+            },
+            "primary-100|90": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(242, 247, 251, 0.90)"
+            },
+            "neutral-100|80": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(242, 247, 251, 0.80)"
+            },
+            "neutral-100|90": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(246, 246, 246, 0.90)"
+            },
+            "white|90": {
+              "description": "Used for teaser, audio (wave animation)\n",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.90)"
+            },
+            "white|80": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.80)"
+            },
+            "primary|10": {
+              "description": "Used for audio (wave animation)",
+              "type": "color",
+              "value": "rgba(0, 90, 170, 0.10)"
+            },
+            "primary|30": {
+              "description": "Used for map-marker",
+              "type": "color",
+              "value": "rgba(0, 90, 170, 0.30)"
+            },
+            "primary|80": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(0, 90, 170, 0.80)"
+            },
+            "primary|90": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(0, 90, 170, 0.90)"
+            },
+            "white|20": {
+              "description": "Used for audio (wave animation inverted)",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.20)"
+            },
+            "primary-800|90": {
+              "description": "Used for overlays",
+              "type": "color",
+              "value": "rgba(0, 90, 170, 0.90)"
+            }
+          },
+          "primary": {
+            "100": {
+              "description": "Used for sd-container",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.100}"
+            },
+            "200": {
+              "description": "Used for sd-chip",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.200}"
+            },
+            "300": {
+              "description": "Used for sd-chip",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.300}"
+            },
+            "500": {
+              "description": "Used for sd-chip, sd-badge",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.500}"
+            },
+            "800": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.800}"
+            },
+            "default": {
+              "description": "Inverted background color (light mode)\nUsed for button",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.600}"
+            }
+          },
+          "accent": {
+            "300": {
+              "description": "Used for inverted hover interaction",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.400}"
+            },
+            "500": {
+              "description": "Used for cta background",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.700}"
+            },
+            "550": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.600}"
+            },
+            "700": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.800}"
+            },
+            "default": {
+              "description": "Used for checkbox, switch",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
+            }
+          },
+          "info": {
+            "default": {
+              "description": "Used for notification, status-badge",
+              "type": "color",
+              "value": "{sp.utilities.color.info.default}"
+            }
+          },
+          "warning": {
+            "default": {
+              "description": "Used for notification, status-badge",
+              "type": "color",
+              "value": "{sp.utilities.color.warning.default}"
+            }
+          },
+          "_gradient": {
+            "components": {
+              "informational": {
+                "gradient": {
+                  "--white": {
+                    "background": {
+                      "color": {
+                        "0%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.00)"
+                        },
+                        "60%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.60)"
+                        },
+                        "5%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.05)"
+                        },
+                        "75%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.75)"
+                        },
+                        "80%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.80)"
+                        },
+                        "20%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.20)"
+                        },
+                        "50%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(255, 255, 255, 0.50)"
+                        }
+                      }
+                    }
+                  },
+                  "--primary-800": {
+                    "background": {
+                      "color": {
+                        "60%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(0, 0, 0, 0.54)"
+                        },
+                        "75%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(0, 0, 0, 0.54)"
+                        },
+                        "0%": {
+                          "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                          "type": "color",
+                          "value": "rgba(0, 0, 0, 0.00)"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "neutral-800": {
+              "40%": {
+                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                "type": "color",
+                "value": "rgba(0, 0, 0, 0.00)"
+              },
+              "0%": {
+                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                "type": "color",
+                "value": "rgba(0, 0, 0, 0.00)"
+              },
+              "10%": {
+                "description": "Used to add border that is only visible in dark mode:\n-dropdown",
+                "type": "color",
+                "value": "rgba(0, 0, 0, 0.10)"
+              }
+            }
+          }
+        },
+        "primary": {
+          "100": {
+            "type": "color",
+            "value": "{core.sp.blue.50}"
+          },
+          "200": {
+            "type": "color",
+            "value": "{core.sp.blue.100}"
+          },
+          "300": {
+            "type": "color",
+            "value": "{core.sp.blue.200}"
+          },
+          "400": {
+            "type": "color",
+            "value": "{core.sp.blue.300}"
+          },
+          "500": {
+            "type": "color",
+            "value": "{core.sp.blue.400}"
+          },
+          "600": {
+            "type": "color",
+            "value": "{core.sp.blue.500}"
+          },
+          "700": {
+            "type": "color",
+            "value": "{core.sp.blue.600}"
+          },
+          "750": {
+            "type": "color",
+            "value": "{core.sp.blue.650}"
+          },
+          "800": {
+            "type": "color",
+            "value": "{core.sp.blue.800}"
+          },
+          "900": {
+            "type": "color",
+            "value": "{core.sp.blue.900}"
+          },
+          "default": {
+            "type": "color",
+            "value": "{core.sp.blue.default}"
+          }
+        },
+        "accent": {
+          "100": {
+            "type": "color",
+            "value": "{core.sp.orange.100}"
+          },
+          "200": {
+            "type": "color",
+            "value": "{core.sp.orange.200}"
+          },
+          "300": {
+            "type": "color",
+            "value": "{core.sp.orange.300}"
+          },
+          "400": {
+            "type": "color",
+            "value": "{core.sp.orange.400}"
+          },
+          "500": {
+            "type": "color",
+            "value": "{core.sp.orange.500}"
+          },
+          "550": {
+            "type": "color",
+            "value": "{core.sp.orange.550}"
+          },
+          "600": {
+            "type": "color",
+            "value": "{core.sp.orange.600}"
+          },
+          "700": {
+            "type": "color",
+            "value": "{core.sp.orange.700}"
+          },
+          "800": {
+            "type": "color",
+            "value": "{core.sp.orange.800}"
+          },
+          "default": {
+            "type": "color",
+            "value": "{core.sp.orange.default}"
+          }
+        },
+        "neutral": {
+          "100": {
+            "type": "color",
+            "value": "{core.sp.grey.50}"
+          },
+          "200": {
+            "type": "color",
+            "value": "{core.sp.grey.200}"
+          },
+          "300": {
+            "type": "color",
+            "value": "{core.sp.grey.300}"
+          },
+          "400": {
+            "type": "color",
+            "value": "{core.sp.grey.400}"
+          },
+          "500": {
+            "type": "color",
+            "value": "{core.sp.grey.400}"
+          },
+          "600": {
+            "type": "color",
+            "value": "{core.sp.grey.600}"
+          },
+          "700": {
+            "type": "color",
+            "value": "{core.sp.grey.620}"
+          },
+          "800": {
+            "type": "color",
+            "value": "{core.sp.grey.800}"
+          }
+        },
+        "error": {
+          "250": {
+            "type": "color",
+            "value": "{core.sp.status.error}"
+          },
+          "300": {
+            "type": "color",
+            "value": "{core.sp.status.error}"
+          },
+          "400": {
+            "type": "color",
+            "value": "{core.sp.status.error}"
+          },
+          "500": {
+            "type": "color",
+            "value": "{core.sp.status.error}"
+          },
+          "default": {
+            "description": "Used for error messages, invalid states",
+            "type": "color",
+            "value": "{core.sp.status.error}"
+          }
+        },
+        "success": {
+          "default": {
+            "type": "color",
+            "value": "{core.sp.status.success}"
+          }
+        },
+        "black": {
+          "default": {
+            "type": "color",
+            "value": "{core.sp.black}"
+          }
+        },
+        "white": {
+          "default": {
+            "type": "color",
+            "value": "{core.ui.white}"
+          }
+        },
+        "risk": {
+          "low": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.cerulean}"
+          },
+          "moderate": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.emerald}"
+          },
+          "increased": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.lemon}"
+          },
+          "high": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.orange}"
+          },
+          "veryhigh": {
+            "description": "Exclusively for marking fonds",
+            "type": "color",
+            "value": "{core.ui.brightred}"
+          }
+        },
+        "info": {
+          "default": {
+            "description": "Used for notification, status-badge",
+            "type": "color",
+            "value": "{core.sp.blue.default}"
+          }
+        },
+        "warning": {
+          "default": {
+            "description": "Used for notification, status-badge",
+            "type": "color",
+            "value": "{core.sp.status.warning}"
+          }
+        },
+        "icon-fill": {
+          "primary": {
+            "100": {
+              "description": "Used for inverted hover interaction",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.100}"
+            },
+            "200": {
+              "description": "Used for inverted pressed interaction",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.200}"
+            },
+            "400": {
+              "description": "Used for inverted pressed interaction in text link",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.84)"
+            },
+            "500": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
+            },
+            "800": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.800}"
+            },
+            "default": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
+            }
+          },
+          "white": {
+            "default": {
+              "description": "Inverted icon color",
+              "type": "color",
+              "value": "{sp.utilities.color.white.default}"
+            }
+          },
+          "accent": {
+            "550": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{sp.utilities.color.accent.550}"
+            },
+            "default": {
+              "description": "Used for active / selected elements",
+              "type": "color",
+              "value": "{sp.utilities.color.accent.300}"
+            }
+          },
+          "neutral": {
+            "400": {
+              "description": "Used for disabled state breadcrumb",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.200}"
+            },
+            "500": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.400}"
+            },
+            "600": {
+              "description": "Used for inverted disabled state",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.40)"
+            },
+            "800": {
+              "description": "Used for switch, clearable",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.800}"
+            }
+          },
+          "success": {
+            "default": {
+              "description": "Used for success messages, valid states",
+              "type": "color",
+              "value": "{sp.utilities.color.success.default}"
+            }
+          },
+          "error": {
+            "400": {
+              "description": "Used for hover interaction invalid form elements\n",
+              "type": "color",
+              "value": "{sp.utilities.color.error.400}"
+            },
+            "default": {
+              "description": "Used for error messages, invalid states",
+              "type": "color",
+              "value": "{sp.utilities.color.error.300}"
+            }
+          },
+          "risk": {
+            "low": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{sp.utilities.color.risk.low}"
+            },
+            "moderate": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{sp.utilities.color.risk.moderate}"
+            },
+            "increased": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{sp.utilities.color.risk.increased}"
+            },
+            "high": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{sp.utilities.color.risk.high}"
+            },
+            "veryhigh": {
+              "description": "Exclusively for marking fonds",
+              "type": "color",
+              "value": "{sp.utilities.color.risk.veryhigh}"
+            }
+          },
+          "content-icons": {
+            "primary": {
+              "default": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.default}"
+              }
+            }
+          }
+        },
+        "border": {
+          "primary": {
+            "100": {
+              "description": "Used for inverted hover interaction",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.100}"
+            },
+            "200": {
+              "description": "Used for inverted pressed interaction",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.200}"
+            },
+            "400": {
+              "description": "Used for inverted dividers",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.400}"
+            },
+            "500": {
+              "description": "Used for hover interaction (dark mode)",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
+            },
+            "800": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.800}"
+            },
+            "default": {
+              "description": "Used for buttons, select field, focus state",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
+            }
+          },
+          "accent": {
+            "550": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.600}"
+            },
+            "default": {
+              "description": "Used to highlight active/selected elements\n",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
+            }
+          },
+          "neutral": {
+            "400": {
+              "description": "Default border color. \nUsed for sd-divider, teaser, table cell, ... sd-container,",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.300}"
+            },
+            "500": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.400}"
+            },
+            "600": {
+              "description": "Used for inverted disabled state",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.600}"
+            },
+            "800": {
+              "description": "Used for form fields, switch, radio, checkbox",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.800}"
+            }
+          },
+          "success": {
+            "default": {
+              "description": "Used for valid form fields\n",
+              "type": "color",
+              "value": "{sp.utilities.color.success.default}"
+            }
+          },
+          "error": {
+            "400": {
+              "description": "Used for hover interaction invalid form elements",
+              "type": "color",
+              "value": "{sp.utilities.color.error.400}"
+            },
+            "default": {
+              "description": "Used for invalid form fields",
+              "type": "color",
+              "value": "{sp.utilities.color.error.300}"
+            }
+          },
+          "white": {
+            "default": {
+              "description": "Used for buttons, inverted focus state",
+              "type": "color",
+              "value": "{sp.utilities.color.white.default}"
+            }
+          }
+        },
+        "text": {
+          "primary": {
+            "100": {
+              "description": "Used for inverted hover interaction button label",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.100}"
+            },
+            "200": {
+              "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+              "type": "color",
+              "value": "{sp.utilities.color.white.default}"
+            },
+            "400": {
+              "description": "Additional text inverted color",
+              "type": "color",
+              "value": "{sp.utilities.color.white.default}"
+            },
+            "500": {
+              "description": "Used for hover interaction",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.600}"
+            },
+            "800": {
+              "description": "Used for pressed interaction",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.800}"
+            },
+            "default": {
+              "description": "Primary brand color for text",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
+            }
+          },
+          "white": {
+            "default": {
+              "description": "Inverted text color",
+              "type": "color",
+              "value": "{sp.utilities.color.white.default}"
+            }
+          },
+          "black": {
+            "default": {
+              "description": "Default text color",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.800}"
+            }
+          },
+          "neutral": {
+            "500": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.500}"
+            },
+            "600": {
+              "description": "Used for inverted disabled state",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.40)"
+            },
+            "700": {
+              "description": "Additional text color, Breadcrumb item current and Video descriotion #100, 62%",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.600}"
+            }
+          },
+          "error": {
+            "default": {
+              "description": "Used to display negative performance values",
+              "type": "color",
+              "value": "{sp.utilities.color.error.300}"
+            }
+          },
+          "success": {
+            "default": {
+              "description": "Used to display positive performance values",
+              "type": "color",
+              "value": "{sp.utilities.color.success.default}"
+            }
+          },
+          "accent": {
+            "default": {
+              "description": "Used for inverted hover interaction button label",
+              "type": "color",
+              "value": "{sp.utilities.color.accent.default}"
+            }
+          }
+        }
+      },
+      "shadow": {
+        "default": {
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.25)"
+          },
+          "y": {
+            "type": "float",
+            "value": "0"
+          },
+          "blur": {
+            "type": "float",
+            "value": "20"
+          },
+          "x": {
+            "type": "float",
+            "value": "0"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "sm": {
+          "y": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          },
+          "x": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "blur": {
+            "type": "float",
+            "value": "1.5"
+          },
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "{sp.utilities.color.neutral.800}"
+          }
+        },
+        "xs": {
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "{sp.utilities.color.neutral.800}"
+          },
+          "x": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "y": {
+            "type": "float",
+            "value": "0.5"
+          },
+          "blur": {
+            "type": "float",
+            "value": "1.5"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          }
+        },
+        "listbox": {
+          "x": {
+            "type": "float",
+            "value": "0"
+          },
+          "y": {
+            "type": "float",
+            "value": "10"
+          },
+          "blur": {
+            "type": "float",
+            "value": "20"
+          },
+          "spread": {
+            "type": "float",
+            "value": "0"
+          },
+          "color": {
+            "description": "Used for tooltip",
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.25)"
+          }
+        }
+      },
+      "opacity": {
+        "0": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-0}"
+        },
+        "5": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-5}"
+        },
+        "10": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-10}"
+        },
+        "20": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-20}"
+        },
+        "30": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-30}"
+        },
+        "50": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-50}"
+        },
+        "55": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-55}"
+        },
+        "60": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-60}"
+        },
+        "70": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-70}"
+        },
+        "75": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-75}"
+        },
+        "80": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-80}"
+        },
+        "\b85": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-85}"
+        },
+        "\b90": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-90}"
+        },
+        "\b100": {
+          "type": "float",
+          "value": "{core.ui.opacity.opacity-100}"
+        }
+      },
+      "sizing": {
+        "0": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.0}"
+        },
+        "1": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.1}"
+        },
+        "2": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.2}"
+        },
+        "3": {
+          "description": "12px",
+          "type": "float",
+          "value": "{core.ui.sizing.3}"
+        },
+        "4": {
+          "description": "16px",
+          "type": "float",
+          "value": "{core.ui.sizing.4}"
+        },
+        "5": {
+          "description": "20px",
+          "type": "float",
+          "value": "{core.ui.sizing.5}"
+        },
+        "6": {
+          "description": "24px",
+          "type": "float",
+          "value": "{core.ui.sizing.6}"
+        },
+        "8": {
+          "description": "32px",
+          "type": "float",
+          "value": "{core.ui.sizing.8}"
+        },
+        "10": {
+          "description": "40px",
+          "type": "float",
+          "value": "{core.ui.sizing.10}"
+        },
+        "12": {
+          "description": "48px",
+          "type": "float",
+          "value": "{core.ui.sizing.12}"
+        },
+        "16": {
+          "description": "64px",
+          "type": "float",
+          "value": "{core.ui.sizing.16}"
+        },
+        "20": {
+          "description": "64px",
+          "type": "float",
+          "value": "{core.ui.sizing.20}"
+        },
+        "24": {
+          "description": "96px",
+          "type": "float",
+          "value": "{core.ui.sizing.24}"
+        },
+        "2,5": {
+          "description": "10px",
+          "type": "float",
+          "value": "{core.ui.sizing.2,5}"
+        },
+        "0,5": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.0,5}"
+        },
+        "0,25": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.px}"
+        },
+        "1,5": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.1,5}"
+        }
+      },
+      "spacing": {
+        "1": {
+          "description": "4px",
+          "type": "float",
+          "value": "{core.ui.sizing.1}"
+        },
+        "2": {
+          "description": "8px",
+          "type": "float",
+          "value": "{core.ui.sizing.2}"
+        },
+        "3": {
+          "description": "12px",
+          "type": "float",
+          "value": "{core.ui.sizing.3}"
+        },
+        "4": {
+          "description": "16px",
+          "type": "float",
+          "value": "{core.ui.sizing.4}"
+        },
+        "6": {
+          "description": "24px",
+          "type": "float",
+          "value": "{core.ui.sizing.6}"
+        },
+        "8": {
+          "description": "32px",
+          "type": "float",
+          "value": "{core.ui.sizing.8}"
+        },
+        "10": {
+          "description": "40px",
+          "type": "float",
+          "value": "{core.ui.sizing.10}"
+        },
+        "12": {
+          "description": "48px",
+          "type": "float",
+          "value": "{core.ui.sizing.12}"
+        },
+        "14": {
+          "description": "48px",
+          "type": "float",
+          "value": "{core.ui.sizing.14}"
+        },
+        "16": {
+          "description": "64px",
+          "type": "float",
+          "value": "{core.ui.sizing.16}"
+        },
+        "20": {
+          "description": "80px",
+          "type": "float",
+          "value": "{core.ui.sizing.20}"
+        },
+        "24": {
+          "description": "96px",
+          "type": "float",
+          "value": "{core.ui.sizing.24}"
+        },
+        "32": {
+          "description": "128px",
+          "type": "float",
+          "value": "{core.ui.sizing.32}"
+        },
+        "40": {
+          "description": "160px",
+          "type": "float",
+          "value": "{core.ui.sizing.40}"
+        },
+        "0,5": {
+          "description": "2px",
+          "type": "float",
+          "value": "{core.ui.sizing.0,5}"
+        },
+        "0,25": {
+          "description": "1px",
+          "type": "float",
+          "value": "{core.ui.sizing.px}"
+        },
+        "1,5": {
+          "type": "float",
+          "value": "{core.ui.sizing.1,5}"
+        },
+        "2,5": {
+          "type": "float",
+          "value": "{core.ui.sizing.2,5}"
+        }
+      },
+      "rounded": {
+        "default": {
+          "description": "4px Default radius for buttons",
+          "type": "float",
+          "value": "{core.ui.rounded.default}"
+        },
+        "sm": {
+          "description": "2px",
+          "type": "float",
+          "value": "{core.ui.rounded.sm}"
+        },
+        "md": {
+          "description": "6px Inner focus outline",
+          "type": "float",
+          "value": "{core.ui.rounded.md}"
+        },
+        "lg": {
+          "description": "8px Outer focus outline",
+          "type": "float",
+          "value": "{core.ui.rounded.\blg}"
+        },
+        "full": {
+          "description": "Radius for pill shape buttons",
+          "type": "float",
+          "value": "{core.ui.rounded.full}"
+        },
+        "none": {
+          "type": "float",
+          "value": "{core.ui.rounded.none}"
+        }
+      },
+      "border-width": {
+        "2": {
+          "type": "float",
+          "value": "{core.ui.border.border-2}"
+        },
+        "4": {
+          "type": "float",
+          "value": "{core.ui.border.border-4}"
+        },
+        "6": {
+          "type": "float",
+          "value": "{core.ui.border.border-6}"
+        },
+        "default": {
+          "type": "float",
+          "value": "{core.ui.border.border}"
+        }
+      },
+      "font-family": {
+        "primary": {
+          "type": "string",
+          "value": "{core.vb.font-family.font-family-primary}"
+        }
+      },
+      "font-weight": {
+        "normal": {
+          "type": "string",
+          "value": "{core.vb.font-weight.font-normal}"
+        },
+        "bold": {
+          "type": "string",
+          "value": "{core.vb.font-weight.font-bold}"
+        }
+      },
+      "text": {
+        "xs": {
+          "type": "float",
+          "value": "12"
+        },
+        "sm": {
+          "type": "float",
+          "value": "14"
+        },
+        "base": {
+          "type": "float",
+          "value": "16"
+        },
+        "lg": {
+          "type": "float",
+          "value": "20"
+        },
+        "xl": {
+          "type": "float",
+          "value": "24"
+        },
+        "2xl": {
+          "type": "float",
+          "value": "28"
+        },
+        "3xl": {
+          "type": "float",
+          "value": "32"
+        },
+        "4xl": {
+          "type": "float",
+          "value": "38"
+        }
+      },
+      "leading": {
+        "3": {
+          "type": "float",
+          "value": "14"
+        },
+        "4": {
+          "type": "float",
+          "value": "16"
+        },
+        "5": {
+          "type": "float",
+          "value": "21"
+        },
+        "6": {
+          "type": "float",
+          "value": "24"
+        },
+        "7": {
+          "type": "float",
+          "value": "28.799999237060547"
+        },
+        "8": {
+          "type": "float",
+          "value": "30"
+        },
+        "9": {
+          "type": "float",
+          "value": "36"
+        },
+        "12": {
+          "type": "float",
+          "value": "48"
+        },
+        "15": {
+          "type": "float",
+          "value": "60"
+        },
+        "8,5": {
+          "type": "float",
+          "value": "33.599998474121094"
+        },
+        "9,5": {
+          "type": "float",
+          "value": "38.400001525878906"
+        },
+        "4,5": {
+          "type": "float",
+          "value": "18"
+        }
+      }
+    },
+    "font-size": {
+      "text-sm": {
+        "value": "0.875rem",
+        "type": "fontSizes",
+        "description": "14px"
+      },
+      "text-base": {
+        "value": "1rem",
+        "type": "fontSizes",
+        "description": "16px"
+      },
+      "text-lg": {
+        "value": "1.25rem",
+        "type": "fontSizes",
+        "description": "20px"
+      },
+      "text-xl": {
+        "value": "1.5rem",
+        "type": "fontSizes",
+        "description": "24px"
+      },
+      "text-2xl": {
+        "value": "1.75rem",
+        "type": "fontSizes",
+        "description": "28px"
+      },
+      "text-3xl": {
+        "value": "2rem",
+        "type": "fontSizes",
+        "description": "32px"
+      },
+      "text-4xl": {
+        "value": "2.5rem",
+        "type": "fontSizes",
+        "description": "40px"
+      }
+    },
+    "spacing": {
+      "0": {
+        "value": "0px",
+        "type": "spacing",
+        "description": "No spacing (manually added)"
+      },
+      "auto": {
+        "value": "auto",
+        "type": "spacing",
+        "description": "Automatic spacing (manually added)"
+      }
+    },
+    "z-": {
+      "10": {
+        "value": "10",
+        "type": "utility"
+      },
+      "20": {
+        "value": "20",
+        "type": "utility"
+      },
+      "30": {
+        "value": "30",
+        "type": "utility"
+      },
+      "40": {
+        "value": "40",
+        "type": "utility"
+      },
+      "50": {
+        "value": "50",
+        "type": "utility"
+      },
+      "auto": {
+        "value": "auto",
+        "type": "utility"
+      },
+      "header": {
+        "value": "var(--sd-z-index-header, 600)",
+        "type": "utility"
+      },
+      "drawer": {
+        "value": "var(--sd-z-index-drawer, 700)",
+        "type": "utility"
+      },
+      "dialog": {
+        "value": "var(--sd-z-index-dialog, 800)",
+        "type": "utility"
+      },
+      "dropdown": {
+        "value": "var(--sd-z-index-dropdown, 900)",
+        "type": "utility"
+      },
+      "alert-group": {
+        "value": "var(--sd-z-index-alert-group, 950)",
+        "type": "utility"
+      },
+      "tooltip": {
+        "value": "var(--sd-z-index-tooltip, 1000)",
+        "type": "utility"
+      }
+    },
+    "risk": {
+      "low": {
+        "value": "rgb(1 125 195)",
+        "type": "color",
+        "description": "Exclusively for marking fonds"
+      },
+      "moderate": {
+        "value": "rgb(0 165 147)",
+        "type": "color",
+        "description": "Exclusively for marking fonds"
+      },
+      "increased": {
+        "value": "rgb(255 240 0)",
+        "type": "color",
+        "description": "Exclusively for marking fonds"
+      },
+      "high": {
+        "value": "rgb(250 155 30)",
+        "type": "color",
+        "description": "Exclusively for marking fonds"
+      },
+      "veryhigh": {
+        "value": "rgb(255 0 0)",
+        "type": "color",
+        "description": "Exclusively for marking fonds"
+      }
+    },
+    "keyframes": {
+      "bounce-once": {
+        "type": "keyframes",
+        "value": {
+          "0%": {
+            "transform": "translateY(0)"
+          },
+          "50%": {
+            "transform": "translateY(-18px)"
+          },
+          "100%": {
+            "transform": "translateY(0)"
+          }
+        }
+      },
+      "grow": {
+        "type": "keyframes",
+        "value": {
+          "0%": {
+            "width": "0%"
+          },
+          "100%": {
+            "width": "100%"
+          }
+        }
+      },
+      "loader-color-primary": {
+        "type": "keyframes",
+        "value": {
+          "0%, 100%": {
+            "color": "rgba(var(--sd-color-icon-fill-primary, rgba(var(--sd-color-primary))))"
+          },
+          "50%": {
+            "color": "rgba(var(--sd-color-icon-fill-primary, rgba(var(--sd-color-primary))))",
+            "opacity": "20%"
+          }
+        }
+      },
+      "loader-color-white": {
+        "type": "keyframes",
+        "value": {
+          "0%, 100%": {
+            "color": "rgba(var(--sd-color-icon-fill-white, rgba(var(--sd-color-white))))"
+          },
+          "50%": {
+            "color": "rgba(var(--sd-color-icon-fill-white, rgba(var(--sd-color-white))))",
+            "opacity": "20%"
+          }
+        }
+      },
+      "loader-color-current": {
+        "type": "keyframes",
+        "value": {
+          "0%, 100%": {
+            "color": "currentColor"
+          },
+          "50%": {
+            "color": "currentColor",
+            "opacity": "20%"
+          }
+        }
+      },
+      "wave": {
+        "type": "keyframes",
+        "value": {
+          "0%, 40%, 100%": {
+            "transform": "initial"
+          },
+          "20%": {
+            "transform": "translateY(-4px)"
+          }
+        }
+      }
+    },
+    "animation": {
+      "bounce-once": {
+        "type": "animation",
+        "value": "bounce-once var(--sd-duration-medium, 300ms) ease-in-out"
+      },
+      "grow": {
+        "type": "animation",
+        "value": "grow linear"
+      },
+      "loader-primary": {
+        "type": "animation",
+        "value": "wave 1.3s infinite, loader-color-primary 2.6s infinite"
+      },
+      "loader-white": {
+        "type": "animation",
+        "value": "wave 1.3s infinite, loader-color-white 2.6s infinite"
+      },
+      "loader-current": {
+        "type": "animation",
+        "value": "wave 1.3s infinite, loader-color-current 2.6s infinite"
+      }
+    },
+    "components": {
+      "sd-breadcrumb": {
+        "__separator": {
+          "color": {
+            "type": "color",
+            "value": "{sp.utilities.color.icon-fill.neutral.500}"
+          },
+          "--current": {
+            "color": {
+              "type": "color",
+              "value": "{sp.utilities.color.accent.default}"
+            }
+          }
+        },
+        "--current": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.700}"
+            }
+          }
+        }
+      },
+      "sd-header": {
+        "color": {
+          "background": {
+            "type": "color",
+            "value": "{sp.utilities.color.background.white.default}"
+          },
+          "_shadow": {
+            "description": "Deprecated?",
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.20)"
+          }
+        },
+        "padding-bottom": {
+          "description": "Is this used in code?",
+          "type": "float",
+          "value": "{sp.utilities.spacing.0,5}"
+        },
+        "__underline": {
+          "height": {
+            "type": "float",
+            "value": "{sp.utilities.sizing.0,25}"
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.200}"
+            }
+          }
+        },
+        "__shadow": {
+          "height": {
+            "type": "float",
+            "value": "{sp.utilities.sizing.0}"
+          }
+        }
+      },
+      "sd-tag": {
+        "--selected": {
+          "--default": {
+            "color": {
+              "text": {
+                "type": "color",
+                "value": "{sp.utilities.color.primary.800}"
+              },
+              "background": {
+                "type": "color",
+                "value": "{sp.utilities.color.primary.100}"
+              },
+              "border": {
+                "type": "color",
+                "value": "{sp.utilities.color.primary.800}"
+              }
+            }
+          },
+          "border-width": {
+            "type": "float",
+            "value": "{sp.utilities.border-width.default}"
+          },
+          "--hover": {
+            "color": {
+              "text": {
+                "type": "color",
+                "value": "{sp.utilities.color.primary.800}"
+              },
+              "background": {
+                "type": "color",
+                "value": "{sp.utilities.color.primary.100}"
+              },
+              "border": {
+                "type": "color",
+                "value": "{sp.utilities.color.primary.800}"
+              }
+            }
+          }
+        },
+        "--default": {
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.100}"
+              }
+            }
+          },
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
+            },
+            "background": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "border": {
+              "type": "color",
+              "value": "{sp.utilities.color.border.primary.default}"
+            }
+          }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "{sp.utilities.rounded.lg}"
+        },
+        "--size": {
+          "lg": {
+            "font-size": {
+              "type": "float",
+              "value": "{sp.utilities.text.base}"
+            },
+            "padding-inline": {
+              "description": "Code only",
+              "type": "float",
+              "value": "{sp.utilities.spacing.3}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{sp.utilities.spacing.2}"
+              }
+            }
+          },
+          "sm": {
+            "font-size": {
+              "type": "float",
+              "value": "{sp.utilities.text.sm}"
+            },
+            "padding-inline": {
+              "description": "Code only",
+              "type": "float",
+              "value": "{sp.utilities.spacing.2}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{sp.utilities.spacing.1}"
+              }
+            }
+          }
+        },
+        "--disabled": {
+          "color": {
+            "text": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.400}"
+            }
+          }
+        },
+        "--removable": {
+          "--size": {
+            "lg": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{sp.utilities.spacing.2}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{sp.utilities.spacing.3}"
+              }
+            },
+            "sm": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{sp.utilities.spacing.1}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{sp.utilities.spacing.2}"
+              }
+            }
+          }
+        }
+      },
+      "form-control": {
+        "color": {
+          "border": {
+            "type": "color",
+            "value": "{sp.utilities.color.black.default}"
+          },
+          "text": {
+            "description": "Used for label ",
+            "type": "color",
+            "value": "{sp.utilities.color.neutral.700}"
+          },
+          "icon-fill": {
+            "type": "color",
+            "value": "{sp.utilities.color.neutral.600}"
+          }
+        },
+        "--invalid": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{core.sp.status.error-bg}"
+            }
+          }
+        },
+        "--filled": {
+          "__floating-label": {
+            "color": {
+              "text": {
+                "type": "color",
+                "value": "{sp.utilities.color.neutral.600}"
+              }
+            }
+          }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "{sp.utilities.rounded.default}"
+        },
+        "__listbox": {
+          "border-bottom-left-radius": {
+            "type": "float",
+            "value": "{sp.utilities.rounded.default}"
+          },
+          "border-top-right-radius": {
+            "type": "float",
+            "value": "{sp.utilities.rounded.default}"
+          },
+          "border-bottom-right-radius": {
+            "type": "float",
+            "value": "{sp.utilities.rounded.default}"
+          },
+          "border-top-left-radius": {
+            "type": "float",
+            "value": "{sp.utilities.rounded.default}"
+          }
+        },
+        "--hover": {
+          "color": {
+            "background": {
+              "description": "Used for label ",
+              "type": "color",
+              "value": "{core.sp.grey.70}"
+            }
+          }
+        },
+        "--disabled": {
+          "color": {
+            "text": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.300}"
+            }
+          }
+        },
+        "--read-only": {
+          "color": {
+            "background": {
+              "description": "Used for label ",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.100}"
+            }
+          }
+        }
+      },
+      "panel": {
+        "color": {
+          "border": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          }
+        }
+      },
+      "sd-button": {
+        "--primary": {
+          "--default": {
+            "color": {
+              "text": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{sp.utilities.color.white.default}"
+              },
+              "background": {
+                "type": "color",
+                "value": "{sp.utilities.color.primary.default}"
+              }
+            }
+          },
+          "--active": {
+            "color": {
+              "text": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.100}"
+              },
+              "background": {
+                "type": "color",
+                "value": "{sp.utilities.color.primary.800}"
+              }
+            }
+          },
+          "--inverted": {
+            "--default": {
+              "color": {
+                "background": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{sp.utilities.color.white.default}"
+                },
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.default}"
+                }
+              }
+            },
+            "--hover": {
+              "color": {
+                "background": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.100}"
+                },
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.800}"
+                }
+              }
+            },
+            "--active": {
+              "color": {
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.800}"
+                },
+                "background": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.100}"
+                }
+              }
+            }
+          },
+          "--hover": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{sp.utilities.color.primary.700}"
+              },
+              "text": {
+                "description": "Used for inverted hover interaction button label",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.100}"
+              }
+            }
+          },
+          "--disabled": {
+            "color": {
+              "background": {
+                "description": "Also being used on secondary button",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.300}"
+              }
+            }
+          }
+        },
+        "--secondary": {
+          "--active": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.100}"
+              },
+              "text": {
+                "description": "Used for pressed interaction",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.800}"
+              },
+              "border": {
+                "description": "Used for buttons, select field, focus state",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.800}"
+              }
+            }
+          },
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.100}"
+              },
+              "border": {
+                "description": "Used for buttons, select field, focus state",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.default}"
+              },
+              "text": {
+                "description": "Used for buttons, select field, focus state",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.default}"
+              }
+            }
+          },
+          "--inverted": {
+            "--active": {
+              "color": {
+                "background": {
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.750}"
+                },
+                "text": {
+                  "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.200}"
+                }
+              }
+            },
+            "--hover": {
+              "color": {
+                "background": {
+                  "description": "Used for sd-chip, sd-badge",
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.750}"
+                },
+                "text": {
+                  "description": "Used for inverted hover interaction button label",
+                  "type": "color",
+                  "value": "{sp.utilities.color.white.default}"
+                }
+              }
+            },
+            "color": {
+              "border": {
+                "description": "Used for buttons, inverted focus state",
+                "type": "color",
+                "value": "{sp.utilities.color.white.default}"
+              },
+              "text": {
+                "description": "Inverted icon color",
+                "type": "color",
+                "value": "{sp.utilities.color.white.default}"
+              }
+            }
+          },
+          "--default": {
+            "color": {
+              "text": {
+                "description": "Used for buttons, select field, focus state",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.default}"
+              },
+              "border": {
+                "description": "Used for buttons, select field, focus state",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.default}"
+              }
+            }
+          },
+          "--disabled": {
+            "color": {
+              "text": {
+                "description": "Used for buttons, select field, focus state",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.300}"
+              },
+              "border": {
+                "description": "Used for buttons, select field, focus state.",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.300}"
+              }
+            }
+          },
+          "--size": {
+            "lg": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "8"
+              }
+            },
+            "md": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "8"
+              }
+            },
+            "sm": {
+              "padding-block": {
+                "description": "dev only!",
+                "type": "float",
+                "value": "3.5"
+              }
+            }
+          },
+          "padding-inline": {
+            "description": "dev only!",
+            "type": "float",
+            "value": "22"
+          }
+        },
+        "--tertiary": {
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{sp.utilities.color.background.primary.100}"
+              },
+              "text": {
+                "description": "Used for buttons, select field, focus state",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.default}"
+              }
+            }
+          },
+          "--inverted": {
+            "--hover": {
+              "color": {
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.200}"
+                },
+                "background": {
+                  "description": "Used for sd-chip, sd-badge",
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.750}"
+                }
+              }
+            },
+            "--active": {
+              "color": {
+                "background": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.750}"
+                },
+                "text": {
+                  "description": "Used for inverted hover interaction text link and inverted pressed interaction button label",
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.200}"
+                }
+              }
+            },
+            "color": {
+              "text": {
+                "description": "Inverted icon color",
+                "type": "color",
+                "value": "{sp.utilities.color.white.default}"
+              }
+            }
+          },
+          "--active": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.100}"
+              },
+              "text": {
+                "description": "Used for pressed interaction",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.800}"
+              }
+            }
+          },
+          "--default": {
+            "color": {
+              "text": {
+                "description": "Used for buttons, select field, focus state",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.default}"
+              }
+            }
+          },
+          "--disabled": {
+            "color": {
+              "text": {
+                "description": "Used for buttons, select field, focus state",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.300}"
+              }
+            }
+          }
+        },
+        "padding-inline": {
+          "description": "sd-button&#39;s left right padding (except for icon-only &amp; loading variant)",
+          "type": "float",
+          "value": "{sp.utilities.spacing.6}"
+        },
+        "--size": {
+          "md": {
+            "font-size": {
+              "type": "float",
+              "value": "{sp.utilities.text.sm}"
+            },
+            "padding-block": {
+              "description": "Top bottom padding for sd-button md variant",
+              "type": "float",
+              "value": "{sp.utilities.spacing.2,5}"
+            },
+            "min-height": {
+              "type": "float",
+              "value": "44"
+            },
+            "--icon": {
+              "only": {
+                "padding-inline": {
+                  "description": "Code only: Top bottom left right padding for the sd-radio-button-group",
+                  "type": "float",
+                  "value": "{sp.utilities.sizing.3}"
+                }
+              }
+            }
+          },
+          "lg": {
+            "icon": {
+              "height": {
+                "type": "float",
+                "value": "{sp.utilities.sizing.5}"
+              }
+            },
+            "font-size": {
+              "type": "float",
+              "value": "{sp.utilities.text.sm}"
+            },
+            "padding-block": {
+              "description": "Top bottom padding for sd-button lg variant",
+              "type": "float",
+              "value": "{sp.utilities.spacing.2,5}"
+            },
+            "min-height": {
+              "description": "Used for icon-only and loading variant",
+              "type": "float",
+              "value": "44"
+            }
+          },
+          "sm": {
+            "font-size": {
+              "type": "float",
+              "value": "{sp.utilities.text.sm}"
+            },
+            "padding-block": {
+              "type": "float",
+              "value": "5.5"
+            }
+          }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "{sp.utilities.rounded.full}"
+        },
+        "font-weight": {
+          "type": "string",
+          "value": "{sp.utilities.font-weight.bold}"
+        },
+        "--cta": {
+          "--inverted": {
+            "--default": {
+              "color": {
+                "background": {
+                  "description": "Used for checkbox, switch",
+                  "type": "color",
+                  "value": "{sp.utilities.color.white.default}"
+                },
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.default}"
+                }
+              }
+            },
+            "--hover": {
+              "color": {
+                "background": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.100}"
+                },
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.800}"
+                }
+              }
+            },
+            "--active": {
+              "color": {
+                "background": {
+                  "description": "Used for pressed interaction",
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.100}"
+                },
+                "text": {
+                  "description": "Default icon color ",
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.800}"
+                }
+              }
+            }
+          }
+        },
+        "--inverted": {
+          "--disabled": {
+            "color": {
+              "border": {
+                "type": "color",
+                "value": "{sp.utilities.color.primary.300}"
+              },
+              "text": {
+                "type": "color",
+                "value": "{sp.utilities.color.primary.300}"
+              },
+              "background": {
+                "type": "color",
+                "value": "{sp.utilities.color.primary.300}"
+              }
+            }
+          }
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{sp.utilities.border-width.2}"
+        }
+      },
+      "sd-footnotes": {
+        "--target": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.750}"
+              }
+            }
+          }
+        }
+      },
+      "interactive": {
+        "--active": {
+          "color": {
+            "text": {
+              "description": "Used for sd-link &amp; sd-interactive",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
+            }
+          }
+        },
+        "--default": {
+          "color": {
+            "text": {
+              "description": "Used for sd-link &amp; sd-interactive",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
+            }
+          }
+        }
+      },
+      "sd-flag": {
+        "--neutral-500": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{core.sp.status.neutral-blue-bg}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{core.sp.status.neutral-blue}"
+            }
+          }
+        },
+        "--neutral-200": {
+          "color": {
+            "background": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{core.sp.status.neutral-grey-bg}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{sp.utilities.color.primary.900}"
+            }
+          }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "{sp.utilities.rounded.default}"
+        },
+        "--neutral-300": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{core.sp.status.neutral-blue-bg}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{core.sp.status.neutral-blue}"
+            }
+          }
+        },
+        "--white": {
+          "color": {
+            "background": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{core.sp.status.neutral-grey-bg}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{sp.utilities.color.primary.900}"
+            }
+          }
+        }
+      },
+      "sd-brandshape": {
+        "--white": {
+          "80": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              }
+            }
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--neutral-100": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "--primary": {
+          "80": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              }
+            }
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            },
+            "border": {
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.00)"
+            }
+          }
+        },
+        "color": {
+          "border": {
+            "white": {
+              "default": {
+                "description": "Used for buttons, inverted focus state",
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.00)"
+              }
+            }
+          }
+        },
+        "_internal": {
+          "slot": {
+            "type": "color",
+            "value": "rgba(204, 182, 241, 0.00)"
+          },
+          "slot-inverted": {
+            "type": "color",
+            "value": "rgba(204, 182, 241, 0.00)"
+          }
+        }
+      },
+      "overlay": {
+        "color": {
+          "background": {
+            "description": "Used for overlays",
+            "type": "color",
+            "value": "rgba(0, 0, 0, 0.20)"
+          }
+        }
+      },
+      "informational": {
+        "gradient": {
+          "--white": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{sp.utilities.color.background.white.default}"
+              }
+            }
+          },
+          "--primary-800": {
+            "color": {
+              "background": {
+                "description": "code only",
+                "type": "color",
+                "value": "{sp.utilities.color.black.default}"
+              }
+            }
+          }
+        }
+      },
+      "sd-accordion": {
+        "--open": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{sp.utilities.color.text.black.default}"
+            }
+          }
+        },
+        "__indicator": {
+          "color": {
+            "type": "color",
+            "value": "rgba(255, 255, 255, 0.00)"
+          }
+        },
+        "padding-block": {
+          "description": "Top bottom padding for sd-accordion ",
+          "type": "float",
+          "value": "15"
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{sp.utilities.sizing.0,5}"
+        },
+        "color": {
+          "icon-fill": {
+            "description": "Default icon color ",
+            "type": "color",
+            "value": "{sp.utilities.color.neutral.700}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{core.sp.black}"
+          },
+          "border": {
+            "description": "Default icon color ",
+            "type": "color",
+            "value": "{sp.utilities.color.neutral.400}"
+          }
+        },
+        "_panel-padding": {
+          "description": "Used inside panel summary layer of sd-accordion to accommodate the border",
+          "type": "float",
+          "value": "2"
+        },
+        "--hover": {
+          "color": {
+            "background": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.100}"
+            }
+          }
+        }
+      },
+      "navigable": {
+        "__current-indicator": {
+          "border-radius": {
+            "type": "float",
+            "value": "{sp.utilities.rounded.full}"
+          },
+          "height": {
+            "type": "float",
+            "value": "3"
+          },
+          "width": {
+            "type": "float",
+            "value": "3"
+          }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "{sp.utilities.rounded.sm}"
+        },
+        "font-size": {
+          "type": "float",
+          "value": "{sp.utilities.text.sm}"
+        },
+        "_docs": {
+          "description": "Used in: sd-tab, sd-navigation-item and sd-menu",
+          "type": "string",
+          "value": "-"
+        }
+      },
+      "sd-badge": {
+        "--blue": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{sp.utilities.color.white.default}"
+              },
+              "text": {
+                "type": "color",
+                "value": "{sp.utilities.color.primary.default}"
+              }
+            }
+          },
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
+            }
+          }
+        },
+        "--red": {
+          "color": {
+            "background": {
+              "description": "Used in both sd-badge and sd-status-badge",
+              "type": "color",
+              "value": "{sp.utilities.color.error.default}"
+            }
+          },
+          "--inverted": {
+            "background": {
+              "type": "color",
+              "value": "{sp.utilities.color.error.default}"
+            },
+            "text": {
+              "type": "color",
+              "value": "{sp.utilities.color.white.default}"
+            }
+          }
+        },
+        "--green": {
+          "color": {
+            "background": {
+              "description": "Used in both sd-badge and sd-status-badge",
+              "type": "color",
+              "value": "{sp.utilities.color.background.success.default}"
+            },
+            "--inverted": {
+              "background": {
+                "type": "color",
+                "value": "{sp.utilities.color.background.success.default}"
+              },
+              "text": {
+                "type": "color",
+                "value": "{sp.utilities.color.white.default}"
+              }
+            }
+          }
+        },
+        "--inverted": {
+          "color": {
+            "border": {
+              "description": "Used for buttons, select field, focus state",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
+            }
+          }
+        }
+      },
+      "sd-radio-button-group": {
+        "border-width": {
+          "type": "float",
+          "value": "{sp.utilities.border-width.2}"
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "{sp.utilities.rounded.lg}"
+        },
+        "padding": {
+          "description": "Top bottom left right padding for the sd-radio-button-group",
+          "type": "float",
+          "value": "{sp.utilities.spacing.1}"
+        }
+      },
+      "sd-radio-button": {
+        "border-radius": {
+          "type": "float",
+          "value": "{sp.utilities.rounded.default}"
+        },
+        "color": {
+          "text": {
+            "description": "Used for text and icon fill",
+            "type": "color",
+            "value": "{sp.utilities.color.black.default}"
+          }
+        },
+        "--hover": {
+          "color": {
+            "background": {
+              "description": "Primary brand color for text",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.100}"
+            },
+            "text": {
+              "description": "Used for text and icon fill",
+              "type": "color",
+              "value": "{sp.utilities.color.black.default}"
+            }
+          }
+        }
+      },
+      "sd-tooltip": {
+        "color": {
+          "background": {
+            "type": "color",
+            "value": "{sp.utilities.color.white.default}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{sp.utilities.color.neutral.700}"
+          }
+        }
+      },
+      "sd-notification": {
+        "--error": {
+          "color": {
+            "background": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{core.sp.status.error-bg}"
+            }
+          }
+        },
+        "--warning": {
+          "color": {
+            "background": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{core.sp.status.warning-bg}"
+            }
+          }
+        },
+        "--success": {
+          "color": {
+            "background": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{core.sp.status.success-bg}"
+            }
+          }
+        },
+        "--info": {
+          "color": {
+            "background": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{core.sp.status.neutral-grey-bg}"
+            }
+          }
+        },
+        "color": {
+          "border": {
+            "description": "Default icon color ",
+            "type": "color",
+            "value": "{sp.utilities.color.neutral.300}"
+          }
+        },
+        "__duration-indicator": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
+            }
+          }
+        }
+      },
+      "sd-range": {
+        "scale-ticks": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.600}"
+            }
+          }
+        }
+      },
+      "sd-chip": {
+        "--primary-200": {
+          "color": {
+            "background": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{core.vb.status.neutral-grey-bg}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{sp.utilities.color.primary.900}"
+            }
+          }
+        },
+        "--primary-300": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{core.vb.status.neutral-blue-bg}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{core.vb.status.neutral-blue}"
+            }
+          }
+        },
+        "--primary-500": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{core.sp.status.neutral-blue-bg}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{core.sp.status.neutral-blue}"
+            },
+            "text": {
+              "type": "color",
+              "value": "{sp.utilities.color.black.default}"
+            }
+          }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "{sp.utilities.rounded.default}"
+        },
+        "--white": {
+          "color": {
+            "background": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{core.sp.status.neutral-grey-bg}"
+            },
+            "border": {
+              "type": "color",
+              "value": "{sp.utilities.color.primary.900}"
+            }
+          }
+        }
+      },
+      "sd-radio": {
+        "--checked": {
+          "--default": {
+            "__icon": {
+              "color": {
+                "background": {
+                  "description": "Used for active / selected elements",
+                  "type": "color",
+                  "value": "{sp.utilities.color.white.default}"
+                },
+                "_border": {
+                  "description": "Used for active / selected elements",
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.default}"
+                }
+              }
+            },
+            "color": {
+              "background": {
+                "description": "Used for active / selected elements",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.default}"
+              }
+            }
+          },
+          "--hover": {
+            "__icon": {
+              "color": {
+                "background": {
+                  "description": "Used for hover interaction",
+                  "type": "color",
+                  "value": "{sp.utilities.color.white.default}"
+                },
+                "_border": {
+                  "description": "Used for hover interaction",
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.default}"
+                }
+              }
+            },
+            "color": {
+              "background": {
+                "description": "Used for active / selected elements",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.600}"
+              }
+            }
+          },
+          "--invalid": {
+            "--default": {
+              "color": {
+                "background": {
+                  "description": "Used for active / selected elements",
+                  "type": "color",
+                  "value": "{sp.utilities.color.error.default}"
+                }
+              },
+              "__icon": {
+                "color": {
+                  "background": {
+                    "description": "Used for error messages, invalid states",
+                    "type": "color",
+                    "value": "{sp.utilities.color.white.default}"
+                  },
+                  "_border": {
+                    "description": "Used for error messages, invalid states",
+                    "type": "color",
+                    "value": "{sp.utilities.color.error.default}"
+                  }
+                }
+              }
+            },
+            "--hover": {
+              "__icon": {
+                "color": {
+                  "background": {
+                    "description": "Used for hover interaction invalid form elements\n",
+                    "type": "color",
+                    "value": "{sp.utilities.color.white.default}"
+                  },
+                  "_border": {
+                    "description": "Used for hover interaction invalid form elements\n",
+                    "type": "color",
+                    "value": "{sp.utilities.color.error.default}"
+                  }
+                }
+              }
+            }
+          },
+          "--disabled": {
+            "__icon": {
+              "color": {
+                "background": {
+                  "description": "Used for hover interaction",
+                  "type": "color",
+                  "value": "{sp.utilities.color.white.default}"
+                },
+                "_border": {
+                  "description": "Used for hover interaction",
+                  "type": "color",
+                  "value": "{sp.utilities.color.neutral.500}"
+                }
+              }
+            },
+            "color": {
+              "_background": {
+                "description": "Used for active / selected elements",
+                "type": "color",
+                "value": "{sp.utilities.color.neutral.500}"
+              }
+            }
+          }
+        },
+        "--default": {
+          "--invalid": {
+            "color": {
+              "background": {
+                "description": "Used for hover interaction",
+                "type": "color",
+                "value": "{core.sp.status.error-bg}"
+              }
+            }
+          }
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{sp.utilities.border-width.2}"
+        },
+        "__checked": {
+          "width": {
+            "type": "float",
+            "value": "{sp.utilities.sizing.1,5}"
+          },
+          "height": {
+            "type": "float",
+            "value": "{sp.utilities.sizing.1,5}"
+          }
+        }
+      },
+      "sd-audio": {
+        "__slide-bar": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.50)"
+              }
+            }
+          }
+        },
+        "__track-bar": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "description": "Used for inverted dividers",
+                "type": "color",
+                "value": "{sp.utilities.color.white.default}"
+              }
+            }
+          }
+        }
+      },
+      "sd-step": {
+        "__tail": {
+          "border-width": {
+            "type": "float",
+            "value": "{sp.utilities.border-width.4}"
+          }
+        },
+        "color": {
+          "text": {
+            "type": "color",
+            "value": "{sp.utilities.color.text.neutral.700}"
+          }
+        },
+        "__circle": {
+          "border-width": {
+            "type": "float",
+            "value": "{sp.utilities.border-width.2}"
+          }
+        }
+      },
+      "sd-map-marker": {
+        "--cluster": {
+          "--default": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{sp.utilities.color.background.accent.default}"
+              }
+            }
+          },
+          "--hover": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{sp.utilities.color.background.accent.700}"
+              }
+            }
+          },
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{sp.utilities.color.white.default}"
+            }
+          }
+        },
+        "--main": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{sp.utilities.color.background.accent.default}"
+            }
+          }
+        },
+        "--pin": {
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{sp.utilities.color.background.primary.100}"
+              }
+            }
+          },
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{sp.utilities.color.background.accent.default}"
+            }
+          },
+          "--default": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{sp.utilities.color.white.default}"
+              }
+            }
+          }
+        }
+      },
+      "sd-video": {
+        "--play-button": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{sp.utilities.color.white.default}"
+            },
+            "icon-fill": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
+            }
+          }
+        }
+      },
+      "sd-quickfact": {
+        "--expandable": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{sp.utilities.color.text.black.default}"
+            }
+          }
+        }
+      },
+      "sd-teaser-media": {
+        "--primary-100": {
+          "--hover": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(245, 247, 249, 0.90)"
+              }
+            }
+          },
+          "color": {
+            "background": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(245, 247, 249, 0.80)"
+            }
+          }
+        },
+        "--neutral-100": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "rgba(245, 247, 249, 0.80)"
+            }
+          },
+          "--hover": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(245, 247, 249, 0.90)"
+              }
+            }
+          }
+        },
+        "--white": {
+          "--hover": {
+            "color": {
+              "background": {
+                "description": "Used for teaser, audio (wave animation)\n",
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.90)"
+              }
+            }
+          },
+          "color": {
+            "background": {
+              "description": "Used for teaser",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.80)"
+            }
+          }
+        },
+        "color": {
+          "icon-fill": {
+            "type": "color",
+            "value": "{sp.utilities.color.neutral.600}"
+          }
+        }
+      },
+      "sd-teaser": {
+        "--neutral-100": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{sp.utilities.color.background.neutral.100}"
+            }
+          }
+        },
+        "--primary-100": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{sp.utilities.color.primary.100}"
+            }
+          }
+        },
+        "--neutral-400": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{sp.utilities.color.border.neutral.400}"
+            }
+          }
+        },
+        "border-radius": {
+          "type": "float",
+          "value": "0"
+        }
+      },
+      "sd-carousel": {
+        "__pager-dot": {
+          "border-width": {
+            "type": "float",
+            "value": "{sp.utilities.border-width.2}"
+          },
+          "--inverted": {
+            "background": {
+              "description": "Used for active / selected elements",
+              "type": "color",
+              "value": "{sp.utilities.color.white.default}"
+            },
+            "border": {
+              "description": "Used for active / selected elements",
+              "type": "color",
+              "value": "{sp.utilities.color.white.default}"
+            },
+            "--hovered": {
+              "background": {
+                "description": "Used for active / selected elements",
+                "type": "color",
+                "value": "{sp.utilities.color.white.default}"
+              }
+            }
+          },
+          "background": {
+            "description": "Used for active / selected elements",
+            "type": "color",
+            "value": "{sp.utilities.color.primary.default}"
+          }
+        },
+        "--active": {
+          "color": {
+            "border": {
+              "description": "Used for active / selected elements",
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
+            }
+          },
+          "--inverted": {
+            "color": {
+              "border": {
+                "description": "Used for active / selected elements",
+                "type": "color",
+                "value": "{sp.utilities.color.white.default}"
+              }
+            }
+          }
+        }
+      },
+      "sd-checkbox": {
+        "border-width": {
+          "type": "float",
+          "value": "{sp.utilities.border-width.2}"
+        },
+        "--invalid": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{core.sp.status.error-bg}"
+            }
+          }
+        }
+      },
+      "sd-tab": {
+        "color": {
+          "border": {
+            "type": "color",
+            "value": "{sp.utilities.color.neutral.400}"
+          },
+          "text": {
+            "type": "color",
+            "value": "{sp.utilities.color.neutral.700}"
+          }
+        },
+        "--hover": {
+          "color": {
+            "background": {
+              "description": "Used for sd-flag",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.100}"
+            }
+          }
+        },
+        "--active": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
+            }
+          }
+        },
+        "--disabled": {
+          "color": {
+            "text": {
+              "description": "Used for disabled state",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.400}"
+            }
+          }
+        }
+      },
+      "sd-switch": {
+        "color": {
+          "text": {
+            "type": "color",
+            "value": "{sp.utilities.color.text.black.default}"
+          }
+        },
+        "--unchecked": {
+          "color": {
+            "border": {
+              "type": "color",
+              "value": "{sp.utilities.color.text.black.default}"
+            }
+          },
+          "__icon": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{sp.utilities.color.text.black.default}"
+              }
+            }
+          },
+          "--hover": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{sp.utilities.color.neutral.100}"
+              }
+            }
+          }
+        },
+        "--checked": {
+          "--hover": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{sp.utilities.color.primary.600}"
+              }
+            }
+          }
+        },
+        "border-width": {
+          "type": "float",
+          "value": "{sp.utilities.border-width.2}"
+        }
+      },
+      "sd-divider": {
+        "--inverted": {
+          "color": {
+            "border": {
+              "description": "Used for inverted dividers",
+              "type": "color",
+              "value": "rgba(255, 255, 255, 0.40)"
+            }
+          }
+        }
+      },
+      "sd-menu-item": {
+        "color": {
+          "text": {
+            "type": "color",
+            "value": "{sp.utilities.color.text.black.default}"
+          },
+          "icon-fill": {
+            "type": "color",
+            "value": "{sp.utilities.color.text.black.default}"
+          }
+        },
+        "--disabled": {
+          "color": {
+            "icon-fill": {
+              "type": "color",
+              "value": "rgba(0, 0, 0, 0.20)"
+            },
+            "text": {
+              "type": "color",
+              "value": "rgba(0, 0, 0, 0.20)"
+            }
+          }
+        }
+      },
+      "choice-control": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-tag, sd-tab, sd-navigation-item &amp; sd-radio-button",
+          "type": "string",
+          "value": "{sp.utilities.font-weight.bold}"
+        }
+      },
+      "sd-datepicker": {
+        "__date-item": {
+          "--hover": {
+            "--default": {
+              "color": {
+                "background": {
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.100}"
+                },
+                "text": {
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.700}"
+                },
+                "border": {
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.700}"
+                }
+              }
+            },
+            "--prev-next": {
+              "color": {
+                "background": {
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.100}"
+                },
+                "text": {
+                  "type": "color",
+                  "value": "{sp.utilities.color.neutral.700}"
+                }
+              }
+            }
+          },
+          "--selected": {
+            "color": {
+              "text": {
+                "type": "color",
+                "value": "{sp.utilities.color.white.default}"
+              },
+              "background": {
+                "type": "color",
+                "value": "{sp.utilities.color.primary.default}"
+              }
+            },
+            "--hover": {
+              "color": {
+                "background": {
+                  "description": "Used for hover interaction",
+                  "type": "color",
+                  "value": "{sp.utilities.color.primary.700}"
+                },
+                "text": {
+                  "type": "color",
+                  "value": "{sp.utilities.color.white.default}"
+                }
+              }
+            }
+          },
+          "--default": {
+            "color": {
+              "text": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{sp.utilities.color.black.default}"
+              }
+            }
+          },
+          "--current": {
+            "font-weight": {
+              "type": "string",
+              "value": "{sp.utilities.font-weight.bold}"
+            },
+            "color": {
+              "text": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{sp.utilities.color.primary.default}"
+              }
+            }
+          },
+          "--range": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{sp.utilities.color.primary.100}"
+              }
+            }
+          }
+        }
+      },
+      "sd-input": {
+        "--size": {
+          "_label": {
+            "font-size": {
+              "type": "float",
+              "value": "{sp.utilities.text.base}"
+            }
+          }
+        }
+      },
+      "marker": {
+        "font-weight": {
+          "description": "Used for font weight inside sd-chip &amp; sd-flag",
+          "type": "string",
+          "value": "{sp.utilities.font-weight.normal}"
+        },
+        "border-width": {
+          "description": "Used for sd-chip &amp; sd-flag",
+          "type": "float",
+          "value": "{sp.utilities.border-width.default}"
+        },
+        "font-size": {
+          "description": "Used for sd-chip &amp; sd-flag",
+          "type": "float",
+          "value": "{sp.utilities.text.sm}"
+        }
+      },
+      "sd-combobox": {
+        "__tag": {
+          "border-width": {
+            "type": "float",
+            "value": "{sp.utilities.border-width.default}"
+          }
+        }
+      },
+      "sd-skeleton": {
+        "color": {
+          "description": "Default icon color ",
+          "type": "color",
+          "value": "{sp.utilities.color.neutral.100}"
+        }
+      },
+      "sd-pagination": {
+        "--inverted": {
+          "border": {
+            "type": "color",
+            "value": "{sp.utilities.color.white.default}"
+          }
+        },
+        "--default": {
+          "border": {
+            "type": "color",
+            "value": "{sp.utilities.color.primary.500}"
+          }
+        }
+      },
+      "sd-dropdown": {
+        "color": {
+          "background": {
+            "description": "Default background color. Used for sd-chip, sd-flag, sd-container. NOTE: kid value should be reference to kid.white.600, had to be removed due to a bug that blocked fetching tokens in code.",
+            "type": "color",
+            "value": "{sp.utilities.color.white.default}"
+          }
+        }
+      },
+      "sd-accordion-group": {
+        "_gap": {
+          "type": "float",
+          "value": "-2"
+        }
+      },
+      "sd-headline": {
+        "--3xl-onwards": {
+          "color": {
+            "text": {
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
+            }
+          }
+        }
+      },
+      "sd-navigation-item": {
+        "-default": {
+          "color": {
+            "text": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.700}"
+            }
+          }
+        },
+        "color": {
+          "text": {
+            "description": "Default icon color ",
+            "type": "color",
+            "value": "{sp.utilities.color.black.default}"
+          }
+        }
+      },
+      "sd-container": {
+        "--primary-800": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{sp.utilities.color.primary.default}"
+            }
+          }
+        }
+      },
+      "sd-progress-bar": {
+        "__slide-bar": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{sp.utilities.color.neutral.400}"
+            }
+          },
+          "--inverted": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "rgba(255, 255, 255, 0.50)"
+              }
+            }
+          }
+        },
+        "--active": {
+          "--inverted": {
+            "color": {
+              "background": {
+                "type": "color",
+                "value": "{sp.utilities.color.white.default}"
               }
             }
           }
@@ -13187,6 +17360,15 @@
               "type": "color",
               "value": "{bb.utilities.color.risk.veryhigh}"
             }
+          },
+          "content-icons": {
+            "primary": {
+              "default": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{bb.utilities.color.primary.default}"
+              }
+            }
           }
         },
         "border": {
@@ -13298,7 +17480,7 @@
             "400": {
               "description": "Additional text inverted color",
               "type": "color",
-              "value": "rgba(255, 255, 255, 0.84)"
+              "value": "{bb.utilities.color.white.default}"
             },
             "500": {
               "description": "Used for hover interaction",
@@ -14203,12 +18385,34 @@
             "font-size": {
               "type": "float",
               "value": "{bb.utilities.text.base}"
+            },
+            "padding-inline": {
+              "description": "Code only",
+              "type": "float",
+              "value": "{bb.utilities.spacing.3}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{bb.utilities.spacing.2}"
+              }
             }
           },
           "sm": {
             "font-size": {
               "type": "float",
               "value": "{bb.utilities.text.sm}"
+            },
+            "padding-inline": {
+              "description": "Code only",
+              "type": "float",
+              "value": "{bb.utilities.spacing.2}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{bb.utilities.spacing.1}"
+              }
             }
           }
         },
@@ -14217,7 +18421,35 @@
             "text": {
               "description": "Used for disabled state",
               "type": "color",
-              "value": "{bb.utilities.color.neutral.400}"
+              "value": "{bb.utilities.color.neutral.500}"
+            }
+          }
+        },
+        "--removable": {
+          "--size": {
+            "lg": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{bb.utilities.spacing.2}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{bb.utilities.spacing.3}"
+              }
+            },
+            "sm": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{bb.utilities.spacing.1}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{bb.utilities.spacing.2}"
+              }
             }
           }
         }
@@ -14232,6 +18464,10 @@
             "description": "Used for label ",
             "type": "color",
             "value": "{bb.utilities.color.neutral.600}"
+          },
+          "icon-fill": {
+            "type": "color",
+            "value": "{bb.utilities.color.primary.default}"
           }
         },
         "--invalid": {
@@ -14539,7 +18775,7 @@
           "padding-inline": {
             "description": "dev only!",
             "type": "float",
-            "value": "22"
+            "value": "14"
           }
         },
         "--tertiary": {
@@ -14630,7 +18866,7 @@
         "padding-inline": {
           "description": "sd-button&#39;s left right padding (except for icon-only &amp; loading variant)",
           "type": "float",
-          "value": "{bb.utilities.spacing.6}"
+          "value": "{bb.utilities.spacing.4}"
         },
         "--size": {
           "md": {
@@ -15201,7 +19437,7 @@
           "border": {
             "description": "Default icon color ",
             "type": "color",
-            "value": "{bb.utilities.color.primary.800}"
+            "value": "{bb.utilities.color.neutral.400}"
           }
         },
         "__duration-indicator": {
@@ -15601,6 +19837,12 @@
               "value": "rgba(255, 255, 255, 0.80)"
             }
           }
+        },
+        "color": {
+          "icon-fill": {
+            "type": "color",
+            "value": "{bb.utilities.color.primary.default}"
+          }
         }
       },
       "sd-teaser": {
@@ -15687,6 +19929,14 @@
         "border-width": {
           "type": "float",
           "value": "{bb.utilities.border-width.2}"
+        },
+        "--invalid": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{bb.utilities.color.background.white.default}"
+            }
+          }
         }
       },
       "sd-tab": {
@@ -15986,6 +20236,15 @@
         }
       },
       "sd-navigation-item": {
+        "-default": {
+          "color": {
+            "text": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{bb.utilities.color.black.default}"
+            }
+          }
+        },
         "color": {
           "text": {
             "description": "Default icon color ",
@@ -16718,6 +20977,15 @@
               "description": "Exclusively for marking fonds",
               "type": "color",
               "value": "{kid.utilities.color.risk.veryhigh}"
+            }
+          },
+          "content-icons": {
+            "primary": {
+              "default": {
+                "description": "Default icon color ",
+                "type": "color",
+                "value": "{kid.utilities.color.primary.default}"
+              }
             }
           }
         },
@@ -17735,12 +22003,34 @@
             "font-size": {
               "type": "float",
               "value": "{kid.utilities.text.xs}"
+            },
+            "padding-inline": {
+              "description": "Code only",
+              "type": "float",
+              "value": "{kid.utilities.spacing.3}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{kid.utilities.spacing.3}"
+              }
             }
           },
           "sm": {
             "font-size": {
               "type": "float",
               "value": "{kid.utilities.text.xs}"
+            },
+            "padding-inline": {
+              "description": "Code only",
+              "type": "float",
+              "value": "{kid.utilities.spacing.3}"
+            },
+            "_internal": {
+              "padding-inline": {
+                "type": "float",
+                "value": "{kid.utilities.spacing.2}"
+              }
             }
           }
         },
@@ -17750,6 +22040,34 @@
               "description": "Used for disabled state",
               "type": "color",
               "value": "{kid.utilities.color.neutral.400}"
+            }
+          }
+        },
+        "--removable": {
+          "--size": {
+            "lg": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{kid.utilities.spacing.3}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{kid.utilities.spacing.4}"
+              }
+            },
+            "sm": {
+              "padding-right": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{kid.utilities.spacing.2}"
+              },
+              "padding-left": {
+                "description": "Code only",
+                "type": "float",
+                "value": "{kid.utilities.spacing.3}"
+              }
             }
           }
         }
@@ -17764,6 +22082,10 @@
             "description": "Used for label ",
             "type": "color",
             "value": "{kid.utilities.color.black.default}"
+          },
+          "icon-fill": {
+            "type": "color",
+            "value": "{kid.utilities.color.primary.default}"
           }
         },
         "--invalid": {
@@ -19133,6 +23455,12 @@
               "value": "rgba(247, 242, 236, 0.80)"
             }
           }
+        },
+        "color": {
+          "icon-fill": {
+            "type": "color",
+            "value": "{kid.utilities.color.primary.default}"
+          }
         }
       },
       "sd-teaser": {
@@ -19219,6 +23547,14 @@
         "border-width": {
           "type": "float",
           "value": "{kid.utilities.border-width.default}"
+        },
+        "--invalid": {
+          "color": {
+            "background": {
+              "type": "color",
+              "value": "{kid.utilities.color.background.white.default}"
+            }
+          }
         }
       },
       "sd-tab": {
@@ -19518,6 +23854,15 @@
         }
       },
       "sd-navigation-item": {
+        "-default": {
+          "color": {
+            "text": {
+              "description": "Default icon color ",
+              "type": "color",
+              "value": "{kid.utilities.color.primary.900}"
+            }
+          }
+        },
         "color": {
           "text": {
             "description": "Default icon color ",

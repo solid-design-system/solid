@@ -152,6 +152,7 @@ export const Libraries = {
             <sd-icon color="primary" library="sd-multi-theming" name="system/image"></sd-icon>
             <sd-icon class="sd-theme-bb" color="primary" library="sd-multi-theming" name="system/image"></sd-icon>
             <sd-icon class="sd-theme-vb" color="primary" library="sd-multi-theming" name="system/image"></sd-icon>
+            <sd-icon class="sd-theme-sp" color="primary" library="sd-multi-theming" name="system/image"></sd-icon>
             <sd-icon class="sd-theme-kid" color="primary" library="sd-multi-theming" name="system/image"></sd-icon>
           </div>
         </div>

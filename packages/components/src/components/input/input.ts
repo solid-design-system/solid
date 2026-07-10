@@ -74,6 +74,7 @@ const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
  * @cssproperty --sd-form-control-border-radius - The border radius for form controls.
  * @cssproperty --sd-form-control--hover-color-background - The background color for form controls on hover.
  * @cssproperty --sd-form-control--read-only-color-background - The background color read-only for form controls.
+ * @cssproperty --sd-form-control-color-icon-fill - The color for form control icons.
  */
 
 @customElement('sd-input')
@@ -1001,7 +1002,7 @@ export default class SdInput extends SolidElement implements SolidFormControl {
       }
 
       .icon-color {
-        color: rgb(var(--sd-color-icon-fill-primary));
+        color: rgba(var(--sd-form-control-color-icon-fill));
       }
     `
   ];
