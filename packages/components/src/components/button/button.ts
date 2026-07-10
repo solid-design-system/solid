@@ -247,7 +247,7 @@ export default class SdButton extends SolidElement implements SolidFormControl {
   }
 
   private updateMotionTheme(): void {
-    this.hasUiMotion = Boolean(this.closest('.sd-theme-ui, .sd-theme-dark, .sd-theme-ui-light, .sd-theme-ui-dark'));
+    this.hasUiMotion = Boolean(this.closest('.sd-theme-ui-light, .sd-theme-ui-dark'));
   }
 
   private handleBlur() {
