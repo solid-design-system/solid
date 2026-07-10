@@ -5,7 +5,7 @@ import { property, queryAssignedElements } from 'lit/decorators.js';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Short summary of the component's intended use.
+ * @summary Used to group multiple accordions together.
  * @documentation https://solid.union-investment.com/[storybook-link]/accordion-group
  * @status stable
  * @since 1.1

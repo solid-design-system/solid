@@ -19,10 +19,16 @@ const config: TestRunnerConfig = {
     // Workaround for https://github.com/dequelabs/axe-core/issues/3426
     await new Promise(resolve => setTimeout(resolve, 200));
 
-    const story = await getStoryContext(page, context);
+    let story;
+
+    try {
+      story = await getStoryContext(page, context);
+    } catch (error) {
+      console.warn(`Could not get story context for ${context.id}:`, error);
+    }
 
     const ignoredRules =
-      story.parameters?.a11y?.config?.rules
+      story?.parameters?.a11y?.config?.rules
         ?.filter(rule => rule.enabled === false)
         ?.reduce((acc, rule) => {
           acc[rule.id] = { enabled: false };

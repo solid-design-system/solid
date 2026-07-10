@@ -227,7 +227,7 @@ In cases a pull request is open but it still is being worked on, the pull reques
 
 #### Changesets
 
-We use [Changesets](https://changesets-docs.vercel.app/en) in our release process, so the pull request title has no influence in the versioning. Still, we recommend following these guidelines when writing them to keep consistency. Therefore use one of the following prefixes in your commit messages (`feat`, `fix`, `perf`, `docs`, `chore`, `ci`).
+We use [Changesets](https://changesets-docs.vercel.app) in our release process, so the pull request title has no influence in the versioning. Still, we recommend following these guidelines when writing them to keep consistency. Therefore use one of the following prefixes in your commit messages (`feat`, `fix`, `perf`, `docs`, `chore`, `ci`).
 
 A changeset should always be included in the pull request to describe the goal of the changes performed. This will also define what type of version bump will be triggered, following [semantic versioning](https://semver.org/):
 

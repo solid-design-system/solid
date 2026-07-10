@@ -23,7 +23,7 @@ import type SdOption from '../option/option';
 import type SdPopup from '../popup/popup';
 
 /**
- * @summary Selects allow you to choose items from a menu of predefined options.
+ * @summary Used to choose items from a menu of predefined options.
  * @status stable
  * @since 1.30.0
  *

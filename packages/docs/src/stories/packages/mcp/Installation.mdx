@@ -1,0 +1,65 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Packages/MCP/Installation" />
+
+# Installation
+
+Install the MCP server package from npm:
+
+```bash
+npm install --save-dev @solid-design-system/mcp
+```
+
+Run it directly with `npx`:
+
+```bash
+npx @solid-design-system/mcp
+```
+
+## Recommended Client Setup
+
+### VS Code
+
+Add the MCP server to your VS Code settings:
+
+```json
+{
+  "mcp": {
+    "servers": {
+      "solid": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["@solid-design-system/mcp"]
+      }
+    }
+  }
+}
+```
+
+### Claude Desktop
+
+For project-level setup (recommended), add the MCP server to `.claude/mcp.json` in your repository:
+
+```json
+{
+  "mcpServers": {
+    "solid": {
+      "command": "npx",
+      "args": ["@solid-design-system/mcp"]
+    }
+  }
+}
+```
+
+Alternatively, add the same server to your global `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "solid": {
+      "command": "npx",
+      "args": ["@solid-design-system/mcp"]
+    }
+  }
+}
+```

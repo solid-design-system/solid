@@ -11,7 +11,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Flexible button / link component that can be used to quickly build navigations. Takes one of 3 forms: link (overrides all other if 'href' is provided), button (default), or accordion (if 'children' slot defined).
+ * @summary Used to facilitate seamless page transitions and help users orient themselves within the application.
  * @status stable
  * @since 1.15.0
  *

@@ -5,7 +5,7 @@ import { property, query } from 'lit/decorators.js';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 /**
- * @summary Teasers group information into flexible containers so users can browse a collection of related items and actions.
+ * @summary Used as a flexible container with image that groups related items and links them to further content.
  * @documentation https://solid-design-system.fe.union-investment.de/docs/?path=/docs/components-sd-teaser-media--docs
  *
  * @status stable

@@ -7,7 +7,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary A link component.
+ * @summary Used to allow users to navigate to another location or perform actions like downloading files.
  * @documentation https://solid.union-investment.com/[storybook-link]/link
  * @status stable
  * @since 1.0.0

@@ -5,6 +5,7 @@ import '../../tokens/themes/vb/vb.css';
 import '../../tokens/themes/sp/sp.css';
 import '../../tokens/themes/ui-dark/ui-dark.css';
 import '../../tokens/themes/ui-light/ui-light.css';
+import { getWcStorybookHelpers } from 'wc-storybook-helpers';
 import { withThemeByClassName } from './addons/with-theme.js';
 import { storybookUtilities } from '../scripts/storybook/helper.js';
 import docsCodepenEnhancer from '../scripts/storybook/docs-codepen-enhancer.js';
@@ -91,6 +92,16 @@ export const preview = {
     docs: {
       story: { inline: true },
       toc: true,
+      // `@summary` JSDoc (already the single source of truth for the custom "Overview" page and
+      // the mcp metadata) is used for the autodocs description too, instead of a separate hand-written
+      // JSDoc comment above each story file's default export.
+      extractComponentDescription: tagName => {
+        try {
+          return getWcStorybookHelpers(tagName)?.manifest?.summary ?? '';
+        } catch {
+          return '';
+        }
+      },
       source: {
         transform: (code, storyContent) => {
           let output = code;
