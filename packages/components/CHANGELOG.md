@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.27.2
+
+### Patch Changes
+
+- Fix `sd-step` so that the sm horizontal variant renders fully rounded. _[`#3140`](https://github.com/solid-design-system/solid/pull/3140) [`31b8bf1`](https://github.com/solid-design-system/solid/commit/31b8bf1acfcea56ae3c5fa90c0a2612f11d77179) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 6.27.1
 
 ## 6.27.0
