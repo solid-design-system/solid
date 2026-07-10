@@ -170,7 +170,7 @@ export default class SdStep extends SolidElement {
           ? 'w-12'
           : this.size === 'xs'
             ? 'w-2'
-            : 'w-8',
+            : 'w-8 h-8',
       this.disabled && 'border-neutral-500 text-neutral-500',
       this.waiting && 'border-neutral-400 text-neutral-700',
       this.waiting && this.size === 'xs' && 'border-neutral-700',
