@@ -55,14 +55,15 @@
     "directory": "packages/mcp"
   },
   "scripts": {
-    "build": "pnpm run build:ts && pnpm run build:metadata && cd ../.. && pnpm format.fix",
-    "build:all": "pnpm run build && pnpm run build:storybook",
+    "build": "pnpm run build:components && pnpm run build:ts && pnpm run build:metadata && cd ../.. && pnpm format.fix",
+    "build:components": "node scripts/ensure-components-built.mjs",
     "build:ts": "node --input-type=module -e \"import{rmSync}from'node:fs';rmSync('dist',{recursive:true,force:true})\" && tsc",
     "build:metadata": "node dist/build/build.js",
     "lint:js": "cd ../.. && pnpm exec eslint packages/mcp/src",
     "lint": "pnpm run /^lint:.*/",
     "test": "node --import tsx/esm --test \"test/**/*.spec.ts\"",
-    "verify": "pnpm build && echo '✅ Build verified' && pnpm test && echo '✅ Test verified'",
+    "verify:metadata": "git diff --exit-code -- metadata || (echo '❌ Generated metadata is out of sync with source. Run \"pnpm build\" in packages/mcp and commit the resulting changes in metadata/.' && exit 1)",
+    "verify": "pnpm build && echo '✅ Build verified' && pnpm run verify:metadata && echo '✅ Metadata verified' && pnpm test && echo '✅ Test verified'",
     "mcp:inspector": "cd packages/mcp && npx @modelcontextprotocol/inspector node dist/bin/start.js"
   },
   "type": "module",
