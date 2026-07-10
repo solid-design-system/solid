@@ -29,6 +29,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Configure git safe directory
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
       - name: Install Node.js
         uses: actions/setup-node@v6
         with:
