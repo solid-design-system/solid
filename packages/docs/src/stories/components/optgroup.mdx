@@ -13,8 +13,6 @@ export const links = {
 export const content = `
 # Option Group
 
-Used to group \`sd-option\`components within an \`sd-combobox\`.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -56,4 +54,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-optgroup/Overview" />
 
-<OverviewFormatter story={SdOptGroupStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdOptGroupStories.Default} tag="sd-optgroup">
+  {content}
+</OverviewFormatter>

@@ -1,6 +1,6 @@
 ## Overview
 
-`<sd-teaser>` — Used to group related subjects in a container, providing a preview of information and linking to further content.
+`<sd-teaser>` — Used to group related subjects in a container with an image, providing a preview of information and linking to further content.
 
 ## API
 

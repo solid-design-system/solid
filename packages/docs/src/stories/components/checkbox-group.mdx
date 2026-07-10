@@ -13,8 +13,6 @@ export const links = {
 export const content = `
 # Checkbox Group
 
-Used to group multiple options from a list of options. Presentational only.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -70,4 +68,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-checkbox-group/Overview" />
 
-<OverviewFormatter story={CheckboxGroupStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={CheckboxGroupStories.Default} tag="sd-checkbox-group">
+  {content}
+</OverviewFormatter>

@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Step
 
-Used to determine a step in a process or task inside \`sd-step-group\`.
-
 The following sections cover the use of the standalone component. See [sd-step-group](./?path=/docs/components-sd-step-group--docs) for group usage guidelines.
 
 <DefaultStory />
@@ -53,4 +51,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-step/Overview" />
 
-<OverviewFormatter story={SdStepStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdStepStories.Default} tag="sd-step">
+  {content}
+</OverviewFormatter>

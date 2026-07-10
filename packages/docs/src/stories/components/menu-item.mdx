@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Menu Item
 
-Used to provide options for the user to pick from a menu.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -34,4 +32,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-menu-item/Overview" />
 
-<OverviewFormatter story={SdMenuItemStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdMenuItemStories.Default} tag="sd-menu-item">
+  {content}
+</OverviewFormatter>

@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Radio Button
 
-Used to switch between different options by selecting a single option from a group.
-
 Similar to ”sd-radio”, it has to be slotted inside of an ”sd-radio-group”. It does not have an invalid state and should always have a pre-selected option (default value).
 
 <DefaultStory />
@@ -72,4 +70,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-radio-button/Overview" />
 
-<OverviewFormatter story={SdRadioButtonStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdRadioButtonStories.Default} tag="sd-radio-button">
+  {content}
+</OverviewFormatter>

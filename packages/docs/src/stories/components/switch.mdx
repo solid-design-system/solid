@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Switch
 
-Used to give control over an option that can be toggled on or off.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -54,4 +52,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-switch/Overview" />
 
-<OverviewFormatter story={SdSwitchStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdSwitchStories.Default} tag="sd-switch">
+  {content}
+</OverviewFormatter>

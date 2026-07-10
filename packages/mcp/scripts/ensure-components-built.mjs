@@ -31,9 +31,9 @@ const isManifestStale = () => {
 };
 
 if (isManifestStale()) {
-  console.log('Components manifest missing or stale, building packages/components...');
+  console.info('Components manifest missing or stale, building packages/components...');
   const result = spawnSync('pnpm', ['run', 'build'], { cwd: componentsDir, stdio: 'inherit' });
   if (result.status !== 0) process.exit(result.status ?? 1);
 } else {
-  console.log('Components manifest is up to date, skipping build.');
+  console.info('Components manifest is up to date, skipping build.');
 }

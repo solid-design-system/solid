@@ -8,7 +8,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Progress bars are used to visualize the completion state of a process.
+ * @summary Used to visually represent the progression of an activity.
  * @status stable
  * @since 6.23
  *

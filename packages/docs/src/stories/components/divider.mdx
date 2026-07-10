@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Divider
 
-Used to separate content or sections from each other.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -49,4 +47,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-divider/Overview" />
 
-<OverviewFormatter story={SdDividerStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdDividerStories.Default} tag="sd-divider">
+  {content}
+</OverviewFormatter>

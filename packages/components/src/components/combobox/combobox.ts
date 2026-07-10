@@ -25,7 +25,7 @@ import type SdOption from '../option/option';
 import type SdPopup from '../popup/popup';
 
 /**
- * @summary Comboboxes allow you to choose items from a menu of predefined options.
+ * @summary Used to select one or multiple options from a list of options or to enter a search string and choose from a list of suggestions.
  * @documentation https://solid.union-investment.com/[storybook-link]/combobox
  * @status experimental
  * @since 3.23.0

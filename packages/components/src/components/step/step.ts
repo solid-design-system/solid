@@ -9,7 +9,7 @@ import { watch } from '../../internal/watch';
 import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 /**
- * @summary Used to determine a step in a process or task inside `sd-step-group`.inside `sd-step-group`.inside `sd-step-group`.
+ * @summary Used to determine a step in a process or task inside `sd-step-group`.
  * @documentation https://solid.union-investment.com/[storybook-link]/step
  * @status stable
  * @since 3.2.0

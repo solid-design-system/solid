@@ -313,10 +313,10 @@ export const buildComponents = async () => {
         ]);
 
         const fallbackSummary = await extractSummaryFromStories(join(DOCS_COMPONENTS_DIR, `${name}.stories.ts`));
-        const summary = extractSummaryFromDocs(docs) || fallbackSummary;
         const manifestApi = apiMap.get(tagName);
+        const summary = manifestApi?.summary || extractSummaryFromDocs(docs) || fallbackSummary;
         const api: ApiSections = manifestApi
-          ? { ...manifestApi, summary: summary || manifestApi.summary }
+          ? { ...manifestApi, summary }
           : {
               tagName,
               summary,
