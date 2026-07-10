@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Select
 
-Used to choose items from a menu of predefined options.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -89,4 +87,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-select/Overview" />
 
-<OverviewFormatter story={SdSelectStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdSelectStories.Default} tag="sd-select">
+  {content}
+</OverviewFormatter>

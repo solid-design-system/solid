@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Container
 
-Used to enclose and highlight specific parts of content on a page.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -45,4 +43,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Styles/sd-container/Overview" />
 
-<OverviewFormatter story={SdContainerStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdContainerStories.Default} tag="sd-container">
+  {content}
+</OverviewFormatter>

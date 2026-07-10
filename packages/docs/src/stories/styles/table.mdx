@@ -13,8 +13,6 @@ export const links = {
 export const content = `
 # Table
 
-Used to reset the styles of a table to predefined values. To style table cells use the sd-table-cell component.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -55,4 +53,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Styles/sd-table/Overview" />
 
-<OverviewFormatter story={SdTableStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdTableStories.Default} tag="sd-table">
+  {content}
+</OverviewFormatter>

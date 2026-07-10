@@ -1,0 +1,37 @@
+[
+  {
+    "technicalId": "status-check",
+    "displayNameDe": "Check",
+    "tags": []
+  },
+  {
+    "technicalId": "status-exclamation",
+    "displayNameDe": "Exclamation",
+    "tags": []
+  },
+  {
+    "technicalId": "status-close",
+    "displayNameDe": "Close",
+    "tags": []
+  },
+  {
+    "technicalId": "status-info",
+    "displayNameDe": "Info",
+    "tags": []
+  },
+  {
+    "technicalId": "status-clock",
+    "displayNameDe": "Clock",
+    "tags": []
+  },
+  {
+    "technicalId": "status-minus",
+    "displayNameDe": "Minus",
+    "tags": []
+  },
+  {
+    "technicalId": "status-questionmark",
+    "displayNameDe": "Questionmark",
+    "tags": []
+  }
+]

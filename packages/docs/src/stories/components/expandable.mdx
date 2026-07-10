@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Expandable
 
-Used to display a brief summary that expands to reveal additional content.
-
 Use the ”default” slot to add content.
 
 <DefaultStory />
@@ -63,4 +61,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-expandable/Overview" />
 
-<OverviewFormatter story={SdExpandableStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdExpandableStories.Default} tag="sd-expandable">
+  {content}
+</OverviewFormatter>

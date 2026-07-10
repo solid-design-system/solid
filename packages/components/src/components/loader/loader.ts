@@ -6,7 +6,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Loaders are used to show the progress of an indeterminate operation.
+ * @summary Used as a visual indicator with an animation that shows loading is in process.
  * @documentation https://solid.union-investment.com/[storybook-link]/loader
  * @status stable
  * @since 5.12

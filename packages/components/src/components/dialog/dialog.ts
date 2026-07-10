@@ -17,7 +17,7 @@ import Modal from '../../internal/modal';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Dialogs, sometimes called "modals", appear above the page and require the user's immediate attention.
+ * @summary Used over other content. It requires an interaction from the user before they can return to what is underneath.
  * @documentation https://solid.union-investment.com/[storybook-link]/dialog
  * @status stable
  * @since 1.40.0

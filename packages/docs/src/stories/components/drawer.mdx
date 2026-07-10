@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Drawer
 
-Used as a panel that slides out from the side of the screen which contains a set of information or actions.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -66,4 +64,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-drawer/Overview" />
 
-<OverviewFormatter story={SdDrawerStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdDrawerStories.Default} tag="sd-drawer">
+  {content}
+</OverviewFormatter>

@@ -93,7 +93,7 @@ export const storybookDefaults = (customElementTag: string): any => {
     // Get the properties that are not defined as attributes
     const getProperties = () => {
       // Only for Web Components
-      if (manifest.name.startsWith('Sd')) {
+      if (manifest?.name?.startsWith('Sd')) {
         const fieldMembers = (manifest?.members as member[])?.filter(member => member.kind === 'field');
         const attributeNames = new Set(manifest?.attributes?.map((attr: { fieldName: string }) => attr.fieldName));
         const result = fieldMembers?.filter(
@@ -174,7 +174,7 @@ export const storybookHelpers = (customElementTag: string) => {
       if (argTypes[attribute]?.control?.type === 'boolean') {
         return [true, false];
       } else {
-        return argTypes[attribute].options;
+        return argTypes[attribute]?.options || [];
       }
     },
 
@@ -302,7 +302,7 @@ export const storybookTemplate = (customElementTag: string) => {
       // a) Web Components
       const slotContent = args['default-slot'] || '';
 
-      if (manifest?.name.startsWith('Sd')) {
+      if (manifest?.name?.startsWith('Sd')) {
         if (options?.templateRenderer) {
           const attributes = Object.fromEntries(
             Object.entries(args)

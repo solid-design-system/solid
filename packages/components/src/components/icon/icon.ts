@@ -10,7 +10,7 @@ import SolidElement from '../../internal/solid-element';
 let parser: DOMParser;
 
 /**
- * @summary Icons are symbols that can be used to represent various options within an application.
+ * @summary Used to display icons.
  * @status stable
  * @since 1.0
  *
