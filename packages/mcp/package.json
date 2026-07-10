@@ -72,5 +72,5 @@
     "mcp:inspector": "npx @modelcontextprotocol/inspector node dist/bin/start.js"
   },
   "type": "module",
-  "version": "0.0.1"
+  "version": "6.27.0"
 }
