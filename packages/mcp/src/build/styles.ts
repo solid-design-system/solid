@@ -165,15 +165,10 @@ export const buildStyles = async () => {
   const spinner = ora();
   try {
     spinner.start('Generating styles metadata...');
-    createPath(stylesPath);
 
     // Remove existing metadata
-    try {
-      rmSync(stylesPath, { recursive: true });
-    } catch {
-      // Ignore if directory doesn't exist
-    }
-    createPath(stylesPath);
+    rmSync(stylesPath, { recursive: true, force: true });
+    await createPath(stylesPath);
 
     // List all .mdx files in the styles docs directory to get style names
     const docsDir = await fs.readdir(DOCS_STYLES_DIR);
