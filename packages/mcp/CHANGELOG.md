@@ -1,5 +1,7 @@
 # Changelog
 
+## 6.27.2
+
 ## 6.27.1
 
 ### Patch Changes
