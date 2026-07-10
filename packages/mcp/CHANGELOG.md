@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.27.1
+
+### Patch Changes
+
+- Add bin for MCP _[`0e89f8e`](https://github.com/solid-design-system/solid/commit/0e89f8eb5f745fd1114d65c5fad9c190c1081145) [@mariohamann](https://github.com/mariohamann)_
+
 ## 6.27.0
 
 ### Minor Changes
