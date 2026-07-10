@@ -68,5 +68,5 @@
     "mcp:inspector": "cd packages/mcp && npx @modelcontextprotocol/inspector node dist/bin/start.js"
   },
   "type": "module",
-  "version": "2.6.0"
+  "version": "0.0.1"
 }
