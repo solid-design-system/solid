@@ -89,7 +89,7 @@
   --sd-button--secondary--size-lg-padding-block: var(--sd-spacing-2);
   --sd-button--secondary--size-md-padding-block: var(--sd-spacing-2);
   --sd-button--secondary--size-sm-padding-block: 0.21875rem;
-  --sd-button--secondary-padding-inline: 1.375rem;
+  --sd-button--secondary-padding-inline: 0.875rem;
   --sd-button--size-lg-font-size: 0.875rem;
   --sd-button--size-lg-icon-height: 1.25rem;
   --sd-button--size-lg-min-height: 2.75rem;
@@ -114,7 +114,7 @@
   --sd-button-border-radius: 0;
   --sd-button-border-width: var(--sd-spacing-0\.5);
   --sd-button-font-weight: var(--sd-font-weight-bold);
-  --sd-button-padding-inline: var(--sd-spacing-6);
+  --sd-button-padding-inline: var(--sd-spacing-4);
   --sd-carousel--active--inverted-color-border: var(--sd-color-white);
   --sd-carousel--active-color-border: var(--sd-color-info);
   --sd-carousel__pager-dot--inverted--hovered-background: var(--sd-color-white);
@@ -122,6 +122,7 @@
   --sd-carousel__pager-dot--inverted-border: var(--sd-color-white);
   --sd-carousel__pager-dot-background: var(--sd-color-info);
   --sd-carousel__pager-dot-border-width: var(--sd-spacing-0\.5);
+  --sd-checkbox--invalid-color-background: var(--sd-color-white);
   --sd-checkbox-border-width: var(--sd-spacing-0\.5);
   --sd-chip--primary-200-color-background: var(--sd-color-neutral-100);
   --sd-chip--primary-200-color-border: var(--sd-color-primary-900);
@@ -192,6 +193,7 @@
   --sd-color-error: 210 0 0;
   --sd-color-icon-fill-accent-550: 134 205 210;
   --sd-color-icon-fill-accent: 134 205 210;
+  --sd-color-icon-fill-content-icons-primary: var(--sd-color-info);
   --sd-color-icon-fill-error-400: var(--sd-color-error);
   --sd-color-icon-fill-error: var(--sd-color-error);
   --sd-color-icon-fill-neutral-400: var(--sd-color-neutral-200);
@@ -245,7 +247,7 @@
   --sd-color-text-neutral-700: var(--sd-color-neutral-700);
   --sd-color-text-primary-100: var(--sd-color-primary-100);
   --sd-color-text-primary-200: var(--sd-color-primary-200);
-  --sd-color-text-primary-400: 255 255 255 / 0.84;
+  --sd-color-text-primary-400: var(--sd-color-white);
   --sd-color-text-primary-500: var(--sd-color-info);
   --sd-color-text-primary-800: var(--sd-color-primary-800);
   --sd-color-text-primary: var(--sd-color-info);
@@ -298,6 +300,7 @@
   --sd-form-control--read-only-color-background: var(--sd-color-primary-100);
   --sd-form-control-border-radius: var(--sd-spacing-1);
   --sd-form-control-color-border: var(--sd-color-black);
+  --sd-form-control-color-icon-fill: var(--sd-color-info);
   --sd-form-control-color-text: var(--sd-color-neutral-600);
   --sd-form-control__listbox-border-bottom-left-radius: var(--sd-spacing-1);
   --sd-form-control__listbox-border-bottom-right-radius: var(--sd-spacing-1);
@@ -332,12 +335,13 @@
   --sd-navigable__current-indicator-border-radius: 624.9375rem;
   --sd-navigable__current-indicator-height: 0.1875rem;
   --sd-navigable__current-indicator-width: 0.1875rem;
+  --sd-navigation-item--default-color-text: var(--sd-color-black);
   --sd-navigation-item-color-text: var(--sd-color-black);
   --sd-notification--error-color-background: 253 237 237;
   --sd-notification--info-color-background: var(--sd-color-neutral-100);
   --sd-notification--success-color-background: 238 246 242;
   --sd-notification--warning-color-background: 255 245 224;
-  --sd-notification-color-border: var(--sd-color-primary-800);
+  --sd-notification-color-border: var(--sd-color-neutral-400);
   --sd-notification__duration-indicator-color-background: var(--sd-color-info);
   --sd-opacity-0: 0%;
   --sd-opacity-100: 100%;
@@ -445,7 +449,11 @@
   --sd-tag--default-color-background: 255 255 255 / 0;
   --sd-tag--default-color-border: var(--sd-color-info);
   --sd-tag--default-color-text: var(--sd-color-info);
-  --sd-tag--disabled-color-text: var(--sd-color-neutral-400);
+  --sd-tag--disabled-color-text: var(--sd-color-neutral-500);
+  --sd-tag--removable--size-lg-padding-left: var(--sd-spacing-3);
+  --sd-tag--removable--size-lg-padding-right: var(--sd-spacing-2);
+  --sd-tag--removable--size-sm-padding-left: var(--sd-spacing-2);
+  --sd-tag--removable--size-sm-padding-right: var(--sd-spacing-1);
   --sd-tag--selected--default-color-background: var(--sd-color-primary-100);
   --sd-tag--selected--default-color-border: var(--sd-color-primary-800);
   --sd-tag--selected--default-color-text: var(--sd-color-primary-800);
@@ -454,7 +462,9 @@
   --sd-tag--selected--hover-color-text: var(--sd-color-primary-800);
   --sd-tag--selected-border-width: var(--sd-spacing-0\.25);
   --sd-tag--size-lg-font-size: var(--sd-spacing-4);
+  --sd-tag--size-lg-padding-inline: var(--sd-spacing-3);
   --sd-tag--size-sm-font-size: 0.875rem;
+  --sd-tag--size-sm-padding-inline: var(--sd-spacing-2);
   --sd-tag-border-radius: 0;
   --sd-teaser--neutral-100-color-background: var(--sd-color-neutral-100);
   --sd-teaser--neutral-400-color-border: var(--sd-color-neutral-400);
@@ -466,6 +476,7 @@
   --sd-teaser-media--primary-100-color-background: 235 242 248 / 0.8;
   --sd-teaser-media--white--hover-color-background: 255 255 255 / 0.9;
   --sd-teaser-media--white-color-background: 255 255 255 / 0.8;
+  --sd-teaser-media-color-icon-fill: var(--sd-color-info);
   --sd-text-2xl: 1.75rem;
   --sd-text-3xl: 2rem;
   --sd-text-4xl: 2.375rem;

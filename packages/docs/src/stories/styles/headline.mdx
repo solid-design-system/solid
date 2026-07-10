@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Headline
 
-Used to display primary or section titles, highlighting key messages to create clear visual hierarchy.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -63,4 +61,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Styles/sd-headline/Overview" />
 
-<OverviewFormatter story={SdHeadlineStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdHeadlineStories.Default} tag="sd-headline">
+  {content}
+</OverviewFormatter>

@@ -12,7 +12,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Expandable shows a brief summary and expands to show additional content.
+ * @summary Used to display a brief summary that expands to reveal additional content.
  * @documentation https://solid.union-investment.com/[storybook-link]/expandable
  * @status stable
  * @since 3.11.0

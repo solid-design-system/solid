@@ -6,7 +6,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Spinners are used to show the progress of an indeterminate operation.
+ * @summary Used as a visual indicator with a looping animation that shows loading is in process.
  * @documentation https://solid.union-investment.com/[storybook-link]/spinner
  * @status stable
  * @since 1.0

@@ -6,7 +6,7 @@ import SolidElement from '../../internal/solid-element';
 import type { PropertyValues } from 'lit';
 
 /**
- * @summary Header
+ * @summary Used as a container for the main navigation of a website.
  * @documentation https://solid.union-investment.com/[storybook-link]/header
  *
  * @status stable

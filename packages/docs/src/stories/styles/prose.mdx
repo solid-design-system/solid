@@ -13,8 +13,6 @@ export const links = {
 export const content = `
 # Prose
 
-Used as a set of ”prose” classes to choose from in a richtext-editor.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -57,4 +55,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Styles/sd-prose/Overview" />
 
-<OverviewFormatter story={SdProseStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdProseStories.Default} tag="sd-prose">
+  {content}
+</OverviewFormatter>

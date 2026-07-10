@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Datepicker
 
-Used to enter or select a date or a range of dates using a calendar view.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -83,4 +81,6 @@ Visit <sd-link href="https://www.figma.com/design/YDktJcseQIIQbsuCpoKS4V/Compone
 
 <Meta title="Components/sd-datepicker/Overview" />
 
-<OverviewFormatter story={SdDatepickerStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdDatepickerStories.Default} tag="sd-datepicker">
+  {content}
+</OverviewFormatter>

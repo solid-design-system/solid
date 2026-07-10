@@ -5,6 +5,7 @@ const themeMap: Record<string, string> = {
   'ui-dark': 'union-investment',
   vb: 'vb',
   bb: 'bbbank',
+  sp: 'sp',
   kid: 'kidstarter'
 };
 
@@ -39,7 +40,7 @@ const multiThemingLibrary: IconLibrary = {
       greenStrokes: [] as unknown as NodeListOf<SVGElement>
     };
 
-    const currentColors = ['#00358e', '#002d67', '#005ca9', '#051530'];
+    const currentColors = ['#00358e', '#002d67', '#005ca9', '#005AAA', '#051530'];
     const greenColor = ['#2d9d00', '#f35e01'];
 
     recoloredElements['currentColorFills'] = svg.querySelectorAll(

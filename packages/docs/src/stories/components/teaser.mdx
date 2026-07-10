@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Teaser
 
-Used to group related subjects in a container, providing a preview of information and linking to further content.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -74,4 +72,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-teaser/Overview" />
 
-<OverviewFormatter story={SdTeaserStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdTeaserStories.Default} tag="sd-teaser">
+  {content}
+</OverviewFormatter>

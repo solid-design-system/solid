@@ -1,5 +1,28 @@
 # @solid-design-system/tokens
 
+## 6.27.1
+
+## 6.27.0
+
+## 6.26.0
+
+### Minor Changes
+
+- Add sparda theme. _[`#3124`](https://github.com/solid-design-system/solid/pull/3124) [`0812ec8`](https://github.com/solid-design-system/solid/commit/0812ec83a8430a7573d31e7f8902f63aaa0f1528) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+  - Add new tokens:
+    - --sd-checkbox--invalid-color-background
+    - --sd-form-control-color-icon-fill
+    - --sd-color-icon-fill-content-icons-primary
+    - --sd-navigation-item--default-color-text
+    - --sd-tag--size-lg-padding-inline
+    - --sd-tag--size-sm-padding-inline
+    - --sd-tag--removable--size-lg-padding-right
+    - --sd-tag--removable--size-lg-padding-left
+    - --sd-tag--removable--size-sm-padding-right
+    - --sd-tag--removable--size-sm-padding-left
+
+## 6.25.2
+
 ## 6.25.1
 
 ### Patch Changes

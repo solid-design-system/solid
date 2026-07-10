@@ -58,8 +58,15 @@ export const LightAndSize = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'sd-meta--light' },
-        y: { type: 'attribute', name: 'sd-meta--size-...' }
+        x: { type: 'attribute', name: 'sd-meta--light', values: [false, true] },
+        y: {
+          type: 'attribute',
+          name: 'sd-meta--size-...',
+          values: [
+            { value: '', title: 'Default' },
+            { value: 'sm', title: 'Small' }
+          ]
+        }
       },
       args
     });
@@ -75,7 +82,7 @@ export const LightAndInverted = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'sd-meta--light' },
+        x: { type: 'attribute', name: 'sd-meta--light', values: [false, true] },
         y: { type: 'attribute', name: 'sd-meta--inverted', values: [false, true] }
       },
       args,
@@ -98,7 +105,7 @@ export const Pipe = {
   render: (args: any) => {
     return generateTemplate({
       axis: {
-        x: { type: 'attribute', name: 'sd-meta--light' },
+        x: { type: 'attribute', name: 'sd-meta--light', values: [false, true] },
         y: { type: 'attribute', name: 'sd-meta--inverted', values: [false, true] }
       },
       constants: { type: 'attribute', name: 'sd-meta--pipe', value: true },
