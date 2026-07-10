@@ -263,22 +263,6 @@ const extractSummaryFromDocs = (docs: string | null): string => {
   return '';
 };
 
-const extractSummaryFromStories = async (storiesPath: string): Promise<string> => {
-  try {
-    const raw = await fs.readFile(storiesPath, 'utf-8');
-    const block = raw.match(/\/\*\*([\s\S]*?)\*\//);
-    if (!block) return '';
-    const text = block[1]
-      .split('\n')
-      .map(line => line.replace(/^\s*\*\s?/, '').trim())
-      .filter(Boolean)
-      .map(line => line.replace(/\*\*/g, ''));
-    return normalizeMdxTemplateEscapes(text[0] ?? '');
-  } catch {
-    return '';
-  }
-};
-
 const getComponentNames = async (): Promise<string[]> => {
   const files = await fs.readdir(DOCS_COMPONENTS_DIR);
   const mdxNames = files.filter(file => file.endsWith('.mdx')).map(file => basename(file, '.mdx'));
@@ -312,9 +296,8 @@ export const buildComponents = async () => {
           extractStories(join(DOCS_COMPONENTS_DIR, `${name}.stories.ts`))
         ]);
 
-        const fallbackSummary = await extractSummaryFromStories(join(DOCS_COMPONENTS_DIR, `${name}.stories.ts`));
         const manifestApi = apiMap.get(tagName);
-        const summary = manifestApi?.summary || extractSummaryFromDocs(docs) || fallbackSummary;
+        const summary = manifestApi?.summary || extractSummaryFromDocs(docs);
         const api: ApiSections = manifestApi
           ? { ...manifestApi, summary }
           : {

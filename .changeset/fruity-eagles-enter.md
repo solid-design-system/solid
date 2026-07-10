@@ -1,5 +1,5 @@
 ---
-'@solid-design-system/mcp': major
+'@solid-design-system/mcp': minor
 ---
 
 Introduction of the new Solid Design System MCP package, which includes:
