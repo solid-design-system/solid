@@ -65,7 +65,7 @@
     "test": "node --import tsx/esm --test \"test/**/*.spec.ts\"",
     "verify:metadata": "git diff --exit-code -- metadata ':!metadata/packages/icons' || (echo '❌ Generated metadata is out of sync with source. Run \"pnpm build\" in packages/mcp and commit the resulting changes in metadata/.' && exit 1)",
     "verify": "pnpm build && echo '✅ Build verified' && pnpm run verify:metadata && echo '✅ Metadata verified' && pnpm test && echo '✅ Test verified'",
-    "mcp:inspector": "cd packages/mcp && npx @modelcontextprotocol/inspector node dist/bin/start.js"
+    "mcp:inspector": "npx @modelcontextprotocol/inspector node dist/bin/start.js"
   },
   "type": "module",
   "version": "2.6.0"
