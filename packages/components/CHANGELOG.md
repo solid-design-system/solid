@@ -1,5 +1,9 @@
 # @solid-design-system/components
 
+## 6.27.1
+
+## 6.27.0
+
 ## 6.26.0
 
 ### Minor Changes
@@ -21,8 +25,9 @@
   - Fix `sd-notification` border color for VB theme.
 
 ### 📈 Stats
-* Uncompressed: 626 KB (+2 KB / +0%)
-* Gzipped: 140 KB (unchanged)
+
+- Uncompressed: 626 KB (+2 KB / +0%)
+- Gzipped: 140 KB (unchanged)
 
 ## 6.25.2
 

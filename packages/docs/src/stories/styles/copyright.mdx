@@ -13,8 +13,6 @@ export const links = {
 export const content = `
 # Copyright
 
-Used to display copyright information for a media element.
-
 Use the "--copyright" CSS property and the class "sd-copyright" in the parent of any element to set a copyright text.
 
 <DefaultStory />
@@ -48,4 +46,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Styles/sd-copyright/Overview" />
 
-<OverviewFormatter story={SdCopyrightStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdCopyrightStories.Default} tag="sd-copyright">
+  {content}
+</OverviewFormatter>

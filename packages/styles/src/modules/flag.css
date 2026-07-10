@@ -1,5 +1,6 @@
 /**
  * Generates basic styles for flag elements.
+ * @summary Used as a small, non-interactive label that represents a category.
  * @name sd-flag
  * @status stable
  * @since 1.34.0

@@ -12,7 +12,7 @@ import type SdTab from '../tab/tab';
 import type SdTabPanel from '../tab-panel/tab-panel';
 
 /**
- * @summary Tab groups organize content into a container that shows one section at a time.
+ * @summary Used to organise content into a container that shows one section at a time.
  * @documentation https://solid.union-investment.com/[storybook-link]/tab-group
  * @status stable
  * @since 2.6.0

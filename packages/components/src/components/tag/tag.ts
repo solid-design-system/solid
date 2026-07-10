@@ -9,7 +9,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Tags are used as labels to organize things or to indicate a selection.
+ * @summary Used to categorise or label content. Can also be used to filter or search for content.
  * @documentation https://solid.union-investment.com/[storybook-link]/tag
  * @status stable
  * @since 1.10

@@ -1,0 +1,66 @@
+---
+name: flipcard
+title: Flipcard
+components:
+  - sd-flipcard
+  - sd-headline
+  - sd-headline--inverted
+  - sd-headline--size-4xl
+  - sd-headline--size-lg
+  - sd-link
+  - sd-paragraph
+  - sd-paragraph--inverted
+  - sd-prose
+version: 1.0.0
+---
+
+## Template: Default
+
+```html
+<sd-flipcard
+  flip-direction="horizontal"
+  front-variant="gradient-dark"
+  back-variant="primary-100"
+  placement="top"
+  class="mb-12"
+>
+  <h5 slot="front" class="sd-headline sd-headline--inverted sd-headline--size-lg p-5">
+    We are invested in over USD 6 Billion of Assets under Management
+  </h5>
+  <div slot="back" class="w-full sd-prose p-5">
+    <h3 class="sd-headline sd-headline--size-lg">Our quality portfolio</h3>
+    <p class="sd-paragraph">
+      Together with our local partners we manage a real estate portfolio of approx. USD 6 billion, which represents
+      about 15% of the total global portfolio and spans over more than 35 properties. In the US, we have properties in
+      New York, San Francisco, Washington D.C., Chicago and other major US cities. In Latin America we are currently
+      invested in office buildings in Mexico-City.
+    </p>
+    <sd-link href="javascript:void(0)" class="block">Link</sd-link>
+  </div>
+  <img
+    slot="media-front"
+    class="object-cover h-full w-full"
+    src="./placeholders/images/skyline.jpg"
+    alt="A vibrant city skyline at dusk, symbolizing economic growth and investment opportunities in urban hubs."
+  />
+</sd-flipcard>
+<sd-flipcard flip-direction="horizontal" front-variant="gradient-light" back-variant="primary" placement="bottom">
+  <h2 slot="front" class="sd-headline sd-headline--size-4xl p-5">We promote diversity</h2>
+  <div slot="back" class="w-full p-5">
+    <h3 class="sd-headline sd-headline--size-lg sd-headline--inverted">
+      We provide room for creative solutions and ensure that we are equipped for the future. 
+    </h3>
+    <p class="sd-paragraph sd-paragraph--inverted mt-2">
+      Our approach is based around interacting with each other, our customers and our partners on an equal footing. Our
+      actions are defined by values such as respect, professionalism and collaboration. In the true spirit of the
+      cooperative principles, we channel a wide range of strengths in order to be stronger together.
+    </p>
+  </div>
+  <img
+    slot="media-front"
+    class="object-cover h-full w-full"
+    src="./placeholders/images/coffeeshop.jpg"
+    alt="Colleagues in a casual office meeting, smiling and interacting, symbolizing collaboration and the value of office spaces."
+  />
+</sd-flipcard>
+```

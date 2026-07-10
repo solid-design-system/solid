@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Carousel
 
-Used to display an arbitrary number of content slides along a horizontal axis.
-
 On touch devices, the slides can be moved by swiping.
 
 <DefaultStory />
@@ -196,4 +194,6 @@ In the table below we identified the following issues:
 
 <Meta title="Components/sd-carousel/Overview" />
 
-<OverviewFormatter story={SdCarouselStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdCarouselStories.Default} tag="sd-carousel">
+  {content}
+</OverviewFormatter>

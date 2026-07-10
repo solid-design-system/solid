@@ -13,7 +13,7 @@ import SolidElement from '../../internal/solid-element';
 import type { SolidFormControl } from '../../internal/solid-element';
 
 /**
- * @summary Buttons represent actions that are available to the user.
+ * @summary Used to allow users to perform actions with a single click.
  * @documentation https://solid.union-investment.com/[storybook-link]/button
  * @status stable
  * @since 1.0

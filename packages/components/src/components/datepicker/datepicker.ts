@@ -465,8 +465,8 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       return null;
     };
 
-    const min = normalizeBound(this.min as string | number | Date | undefined | null);
-    const max = normalizeBound(this.max as string | number | Date | undefined | null);
+    const min = normalizeBound(this.min);
+    const max = normalizeBound(this.max);
 
     if (min && d < min) return false;
     if (max && d > max) return false;

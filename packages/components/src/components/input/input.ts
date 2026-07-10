@@ -27,7 +27,7 @@ const isChromium = navigator.userAgentData?.brands.some(b => b.brand.includes('C
 const isFirefox = isChromium ? false : navigator.userAgent.includes('Firefox');
 
 /**
- * @summary Inputs collect data from the user.
+ * @summary Used to allow users to enter an input. It can be displayed in several ways, depending on the type.
  * @documentation https://solid.union-investment.com/[storybook-link]/input
  * @status stable
  * @since 1.24.0

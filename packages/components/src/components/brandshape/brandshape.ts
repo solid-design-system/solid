@@ -8,7 +8,7 @@ import type { TemplateResult } from 'lit';
 type Breakpoints = 0 | 414 | 640;
 
 /**
- * @summary The Brandshape highlights a piece of content.
+ * @summary Used as a container with brand character that visually emphasizes the content.
  * @documentation https://solid.union-investment.com/[storybook-brandshape]/brandshape
  * @status stable
  * @since 1.4

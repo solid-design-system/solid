@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Quickfact
 
-Used to present information in an expandable and more dynamic way.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -62,4 +60,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-quickfact/Overview" />
 
-<OverviewFormatter story={SdQuickfactStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdQuickfactStories.Default} tag="sd-quickfact">
+  {content}
+</OverviewFormatter>
