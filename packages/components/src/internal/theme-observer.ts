@@ -2,6 +2,22 @@ import StyleObserver from 'style-observer';
 import type { LitElement, ReactiveController, ReactiveControllerHost } from 'lit';
 
 const uiMotionThemeSelector = '.sd-theme-ui-light, .sd-theme-ui-dark';
+const uiMotionDataThemes = new Set(['sd-theme-ui-light', 'sd-theme-ui-dark']);
+
+/**
+ * Like `Element.closest()` but traverses up through Shadow DOM boundaries by
+ * jumping to the shadow root's host when the light-DOM tree is exhausted.
+ */
+function closestThroughShadow(start: Element, selector: string): Element | null {
+  let node: Element | null = start;
+  while (node) {
+    const match = node.closest?.(selector);
+    if (match) return match;
+    const root = node.getRootNode() as ShadowRoot | Document;
+    node = (root as ShadowRoot).host ?? null;
+  }
+  return null;
+}
 
 export class UiMotionController implements ReactiveController {
   host: ReactiveControllerHost & Element;
@@ -16,8 +32,9 @@ export class UiMotionController implements ReactiveController {
     this.updateMotionTheme();
     this.observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ['class'],
-      subtree: true
+      attributeFilter: ['class', 'data-sd-theme'],
+      subtree: true,
+      childList: true
     });
   }
 
@@ -26,7 +43,9 @@ export class UiMotionController implements ReactiveController {
   }
 
   private updateMotionTheme(): void {
-    const hasUiMotion = Boolean(this.host.closest(uiMotionThemeSelector));
+    const hasThemeAncestor = Boolean(closestThroughShadow(this.host, uiMotionThemeSelector));
+    const documentTheme = document.documentElement.dataset.sdTheme;
+    const hasUiMotion = hasThemeAncestor || (!!documentTheme && uiMotionDataThemes.has(documentTheme));
 
     if (hasUiMotion !== this.hasUiMotion) {
       this.hasUiMotion = hasUiMotion;
