@@ -291,7 +291,7 @@ export default class SdNotification extends SolidElement {
     return html`
       <div
         part="base"
-        class=${cx('w-full flex items-stretch m-2 focus-visible:focus-outline')}
+        class=${cx('w-full flex items-stretch focus-visible:focus-outline')}
         id="notification"
         tabindex=${ifDefined(this.closable ? '0' : undefined)}
         role="alert"
