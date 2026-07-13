@@ -214,7 +214,7 @@ sans-serif;
 
 ````
 
-<sd-notification open id="font-path-hint">
+<sd-notification open>
 Replace  with the path where you saved the font. We are not allowed to share it, please reach out to the provider directly to request it; for more information, visit: <sd-link href="https://marken-portal.bbbank.de/schrift/">BBBank Marken Portal</sd-link>
 </sd-notification>
 </sd-accordion>
@@ -308,9 +308,9 @@ That's it — your page is now themed. Head over to the <sd-link href="?path=/do
 
   <sd-tab-panel name="consumer">
 
-<sd-notification variant="warning" open id="theme-host-warning">
-  **Do not import or bundle theme CSS.** The Theme Host already provides the theme for the entire page. Bundling it
-  yourself leads to unnecessary bundle size, potential conflicts, and version mismatches.
+<sd-notification variant="warning" open>
+**Do not import or bundle theme CSS.** The Theme Host already provides the theme for the entire page. Bundling it
+yourself leads to unnecessary bundle size, potential conflicts, and version mismatches.
 </sd-notification>
 
 Your components will automatically inherit whichever theme the host has set — including light/dark switching — without any extra work on your end.
