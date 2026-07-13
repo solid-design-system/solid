@@ -2,7 +2,7 @@
 
 This page guides you through installing and setting up the `@solid-design-system/tokens` package to use themes and/or design tokens in your project.
 
-<sd-notification type="info" open id="versioning-info">
+<sd-notification type="info" open>
   The `components`, `styles`, and `tokens` packages always share the same version. We use fixed versioning to keep them
   fully in sync, so every release updates all three packages, even if only one of them changed. Make sure to install or
   update them using the same version number.
@@ -309,8 +309,8 @@ That's it — your page is now themed. Head over to the <sd-link href="?path=/do
   <sd-tab-panel name="consumer">
 
 <sd-notification variant="warning" open>
-**Do not import or bundle theme CSS.** The Theme Host already provides the theme for the entire page. Bundling it
-yourself leads to unnecessary bundle size, potential conflicts, and version mismatches.
+  **Do not import or bundle theme CSS.** The Theme Host already provides the theme for the entire page. Bundling it
+  yourself leads to unnecessary bundle size, potential conflicts, and version mismatches.
 </sd-notification>
 
 Your components will automatically inherit whichever theme the host has set — including light/dark switching — without any extra work on your end.
