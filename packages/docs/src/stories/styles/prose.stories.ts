@@ -69,23 +69,23 @@ export const Default = {
 export const StylingOptions = {
   render: () => html`
     <div class="sd-prose sd-prose--full-width flex flex-col gap-8">
-      <h1 class="sd-headline">H1 - Nisi eu excepteur anim esse</h1>
-      <h2 class="sd-headline sd-headline--size-3xl">H2 - Nisi eu excepteur anim esse</h2>
+      <h1>H1 - Nisi eu excepteur anim esse</h1>
+      <h2>H2 - Nisi eu excepteur anim esse</h2>
       <sd-divider></sd-divider>
-      <h3 class="sd-headline sd-headline--size-xl">H3 - Nisi eu excepteur anim esse</h3>
-      <h4 class="sd-headline sd-headline--size-lg">H4 - Nisi eu excepteur anim esse</h4>
-      <h5 class="sd-headline sd-headline--size-base">H5 - Nisi eu excepteur anim esse</h5>
-      <p class="sd-paragraph">
+      <h3>H3 - Nisi eu excepteur anim esse</h3>
+      <h4>H4 - Nisi eu excepteur anim esse</h4>
+      <h5>H5 - Nisi eu excepteur anim esse</h5>
+      <p>
         Paragraph - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
         phasellus dui vel id.
       </p>
-      <p class="sd-paragraph">
+      <p>
         <strong>
           Paragraph Bold - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor
           molestie phasellus dui vel id.
         </strong>
       </p>
-      <p class="sd-leadtext">
+      <p>
         Leadtext - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
         phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
         Facilisis commodo integer hendrerit tortor.
@@ -109,7 +109,7 @@ export const StylingOptions = {
         <li>Unordered list level 1</li>
         <li>Unordered list level 1</li>
       </ul>
-      <figure class="sd-media p-4">
+      <figure>
         <img
           src="./placeholders/images/generic.jpg"
           alt="A generic placeholder jpg"
@@ -119,40 +119,40 @@ export const StylingOptions = {
           Figcaption - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula
         </figcaption>
       </figure>
-      <table class="sd-table">
+      <table>
         <thead>
           <tr>
-            <th class="sd-table-cell">Header</th>
-            <th class="sd-table-cell">Header</th>
-            <th class="sd-table-cell">Header</th>
+            <th>Header</th>
+            <th>Header</th>
+            <th>Header</th>
           </tr>
         </thead>
 
         <tbody>
           <tr>
-            <td class="sd-table-cell">Cell Content</td>
-            <td class="sd-table-cell">Cell Content</td>
-            <td class="sd-table-cell">Cell Content</td>
+            <td>Cell Content</td>
+            <td>Cell Content</td>
+            <td>Cell Content</td>
           </tr>
           <tr>
-            <td class="sd-table-cell">Cell Content</td>
-            <td class="sd-table-cell">Cell Content</td>
-            <td class="sd-table-cell">Cell Content</td>
+            <td>Cell Content</td>
+            <td>Cell Content</td>
+            <td>Cell Content</td>
           </tr>
           <tr>
-            <td class="sd-table-cell">Cell Content</td>
-            <td class="sd-table-cell">Cell Content</td>
-            <td class="sd-table-cell">Cell Content</td>
+            <td>Cell Content</td>
+            <td>Cell Content</td>
+            <td>Cell Content</td>
           </tr>
           <tr>
-            <td class="sd-table-cell">Cell Content</td>
-            <td class="sd-table-cell">Cell Content</td>
-            <td class="sd-table-cell">Cell Content</td>
+            <td>Cell Content</td>
+            <td>Cell Content</td>
+            <td>Cell Content</td>
           </tr>
           <tr>
-            <td class="sd-table-cell">Cell Content</td>
-            <td class="sd-table-cell">Cell Content</td>
-            <td class="sd-table-cell">Cell Content</td>
+            <td>Cell Content</td>
+            <td>Cell Content</td>
+            <td>Cell Content</td>
           </tr>
         </tbody>
       </table>
@@ -168,7 +168,7 @@ export const FullWidth = {
     html` <div class="flex flex-col space-y-8">
       <div class="sd-prose">
         <h4>Default width</h4>
-        <p class="sd-paragraph">
+        <p>
           Large Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
           phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
           Facilisis commodo integer hendrerit tortor.
@@ -176,7 +176,7 @@ export const FullWidth = {
       </div>
       <div class="sd-prose sd-prose--full-width">
         <h4>Full width</h4>
-        <p class="sd-paragraph">
+        <p>
           Large Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
           phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
           Facilisis commodo integer hendrerit tortor.
@@ -191,7 +191,7 @@ export const FullWidth = {
 export const Inverted = {
   render: () => html`
     <div class="bg-primary p-4 sd-prose sd-prose--inverted">
-      <p class="sd-paragraph">
+      <p>
         Large Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh justo ullamcorper odio tempor molestie
         phasellus dui vel id. Velit in sed non orci pellentesque vivamus nunc. At non tortor, sit neque tristique.
         Facilisis commodo integer hendrerit tortor.
