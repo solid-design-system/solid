@@ -255,6 +255,24 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
   @property({ type: Boolean, reflect: true, attribute: 'style-on-valid' }) styleOnValid = false;
 
   /**
+   * The current value of the combobox's internal text input. Setting this property will update the
+   * displayed text in the input field without selecting an option. This is useful for pre-filling
+   * the search input or reading the current query string.
+   */
+  @property({ type: String, reflect: true, attribute: 'input-value' })
+  get inputValue() {
+    return this.displayInputValue;
+  }
+  set inputValue(value: string) {
+    this.displayInputValue = value;
+    this.updateComplete.then(() => {
+      if (this.displayInput) {
+        this.displayInput.value = value;
+      }
+    });
+  }
+
+  /**
    * A function used to filter options in the combobox component.
    * The default filter method is a case- and diacritic-insensitive string comparison.
    *
