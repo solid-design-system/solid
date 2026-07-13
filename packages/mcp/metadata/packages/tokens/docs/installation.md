@@ -2,7 +2,7 @@
 
 This page guides you through installing and setting up the `@solid-design-system/tokens` package to use themes and/or design tokens in your project.
 
-<sd-notification type="info" open>
+<sd-notification type="info" open id="versioning-info">
   The `components`, `styles`, and `tokens` packages always share the same version. We use fixed versioning to keep them
   fully in sync, so every release updates all three packages, even if only one of them changed. Make sure to install or
   update them using the same version number.
@@ -214,7 +214,7 @@ sans-serif;
 
 ````
 
-<sd-notification open>
+<sd-notification open id="font-path-hint">
 Replace  with the path where you saved the font. We are not allowed to share it, please reach out to the provider directly to request it; for more information, visit: <sd-link href="https://marken-portal.bbbank.de/schrift/">BBBank Marken Portal</sd-link>
 </sd-notification>
 </sd-accordion>
@@ -308,7 +308,7 @@ That's it — your page is now themed. Head over to the <sd-link href="?path=/do
 
   <sd-tab-panel name="consumer">
 
-<sd-notification variant="warning" open>
+<sd-notification variant="warning" open id="theme-host-warning">
   **Do not import or bundle theme CSS.** The Theme Host already provides the theme for the entire page. Bundling it
   yourself leads to unnecessary bundle size, potential conflicts, and version mismatches.
 </sd-notification>
