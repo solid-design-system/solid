@@ -10,7 +10,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { LocalizeController } from '../../utilities/localize';
 import { lockBodyScrolling, unlockBodyScrolling } from '../../internal/scroll';
 import { property, query } from 'lit/decorators.js';
-import { UiMotionController } from '../../internal/theme-observer';
 import { waitForEvent } from '../../internal/event';
 import { watch } from '../../internal/watch';
 import cx from 'classix';
@@ -63,11 +62,12 @@ import SolidElement from '../../internal/solid-element';
  */
 @customElement('sd-dialog')
 export default class SdDialog extends SolidElement {
+  private readonly themeClassObserver = new MutationObserver(() => this.updateMotionTheme());
   private readonly hasSlotController = new HasSlotController(this, 'footer');
-  private readonly uiMotionController = new UiMotionController(this);
   public localize = new LocalizeController(this);
   private modal: Modal;
   private originalTrigger: HTMLElement | null;
+  private hasUiMotion = false;
 
   @query('[part="base"]') dialog: HTMLElement;
   @query('[part="panel"]') panel: HTMLElement;
@@ -91,6 +91,12 @@ export default class SdDialog extends SolidElement {
 
   connectedCallback() {
     super.connectedCallback();
+    this.updateMotionTheme();
+    this.themeClassObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+      subtree: true
+    });
     this.handleDocumentKeyDown = this.handleDocumentKeyDown.bind(this);
     this.modal = new Modal(this);
   }
@@ -107,7 +113,12 @@ export default class SdDialog extends SolidElement {
 
   disconnectedCallback() {
     super.disconnectedCallback();
+    this.themeClassObserver.disconnect();
     unlockBodyScrolling(this);
+  }
+
+  private updateMotionTheme(): void {
+    this.hasUiMotion = Boolean(this.closest('.sd-theme-ui-light, .sd-theme-ui-dark'));
   }
 
   private get prefersReducedMotion() {
@@ -121,13 +132,9 @@ export default class SdDialog extends SolidElement {
     });
 
     if (sdRequestClose.defaultPrevented) {
-      const animation = getAnimation(
-        this,
-        this.uiMotionController.hasUiMotion ? 'dialog.denyClose' : 'dialog.denyCloseSimple',
-        {
-          dir: this.localize.dir()
-        }
-      );
+      const animation = getAnimation(this, this.hasUiMotion ? 'dialog.denyClose' : 'dialog.denyCloseSimple', {
+        dir: this.localize.dir()
+      });
       animateTo(this.panel, animation.keyframes, animation.options);
       return;
     }
@@ -194,13 +201,11 @@ export default class SdDialog extends SolidElement {
         }
       });
 
-      const showAnimation = this.uiMotionController.hasUiMotion ? 'dialog.show' : 'dialog.showSimple';
+      const showAnimation = this.hasUiMotion ? 'dialog.show' : 'dialog.showSimple';
       const panelAnimation = this.prefersReducedMotion
         ? getAnimation(this, 'dialog.showReducedMotion', { dir: this.localize.dir() })
         : getAnimation(this, showAnimation, { dir: this.localize.dir() });
-      const overlayShowAnimation = this.uiMotionController.hasUiMotion
-        ? 'dialog.overlay.show'
-        : 'dialog.overlay.showSimple';
+      const overlayShowAnimation = this.hasUiMotion ? 'dialog.overlay.show' : 'dialog.overlay.showSimple';
       const overlayAnimation = getAnimation(this, overlayShowAnimation, { dir: this.localize.dir() });
       await Promise.all([
         animateTo(this.panel, panelAnimation.keyframes, panelAnimation.options),
@@ -215,13 +220,11 @@ export default class SdDialog extends SolidElement {
       this.modal.deactivate();
 
       await Promise.all([stopAnimations(this.dialog), stopAnimations(this.overlay)]);
-      const hideAnimation = this.uiMotionController.hasUiMotion ? 'dialog.hide' : 'dialog.hideSimple';
+      const hideAnimation = this.hasUiMotion ? 'dialog.hide' : 'dialog.hideSimple';
       const panelAnimation = this.prefersReducedMotion
         ? getAnimation(this, 'dialog.hideReducedMotion', { dir: this.localize.dir() })
         : getAnimation(this, hideAnimation, { dir: this.localize.dir() });
-      const overlayHideAnimation = this.uiMotionController.hasUiMotion
-        ? 'dialog.overlay.hide'
-        : 'dialog.overlay.hideSimple';
+      const overlayHideAnimation = this.hasUiMotion ? 'dialog.overlay.hide' : 'dialog.overlay.hideSimple';
       const overlayAnimation = getAnimation(this, overlayHideAnimation, { dir: this.localize.dir() });
 
       // Animate the overlay and the panel at the same time. Because animation durations might be different, we need to
