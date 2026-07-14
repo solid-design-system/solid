@@ -50,9 +50,9 @@
     "tags": ["Favoriten", "Wunschliste", "merken"]
   },
   {
-    "technicalId": "",
-    "displayNameDe": "",
-    "tags": []
+    "technicalId": "slide",
+    "displayNameDe": "Folie",
+    "tags": ["Folien", "Folie"]
   },
   {
     "technicalId": "list",
@@ -481,7 +481,7 @@
   },
   {
     "technicalId": "expand-bottom",
-    "displayNameDe": "anzeigen unten",
+    "displayNameDe": "ausklappen unten",
     "tags": ["anzeigen", "Seitenleiste"]
   },
   {
@@ -1085,14 +1085,14 @@
     "tags": ["hervorheben", "malen", "farbig", "wichtig"]
   },
   {
-    "technicalId": "e-mail-forward",
-    "displayNameDe": "E-Mail weiterleiten",
-    "tags": ["Pfeil", "weiterleiten", "Brief"]
-  },
-  {
     "technicalId": "arrow-top-left",
     "displayNameDe": "Pfeil links oben",
     "tags": ["zurück", "oben", "rückwärts"]
+  },
+  {
+    "technicalId": "e-mail-forward",
+    "displayNameDe": "E-Mail weiterleiten",
+    "tags": ["Pfeil", "weiterleiten", "Brief"]
   },
   {
     "technicalId": "external-link",

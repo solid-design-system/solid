@@ -245,6 +245,11 @@
     "tags": ["Viereck", "Geometrie", "Würfel"]
   },
   {
+    "technicalId": "speech-bubble-question",
+    "displayNameDe": "Sprechblase Frage",
+    "tags": ["Fragen", "Frage", "FAQ"]
+  },
+  {
     "technicalId": "puzzle",
     "displayNameDe": "Puzzel",
     "tags": ["Teile", "Zielbild"]
@@ -1537,7 +1542,7 @@
   {
     "technicalId": "beaver",
     "displayNameDe": "Biber",
-    "tags": []
+    "tags": ["Gemeinschaftssinn", "kreative Gestaltungskraft", "Fleiß"]
   },
   {
     "technicalId": "airplane",
@@ -1628,6 +1633,11 @@
     "technicalId": "bull-bear",
     "displayNameDe": "Bulle/Bär",
     "tags": ["Baisse", "Kurse", "Hausse", "Aktien"]
+  },
+  {
+    "technicalId": "circles-concentric-2",
+    "displayNameDe": "Kreise konzentrisch 2",
+    "tags": ["Zukunftsschmiede", "Entwicklungsraum", "ZS-Campus"]
   },
   {
     "technicalId": "skyscraper-measures",
@@ -2178,6 +2188,11 @@
     "technicalId": "handshake",
     "displayNameDe": "Handschlag",
     "tags": ["partnerschaftliches Unternehmen", "Vertragsabschluss", "Partnerschaft", "Partner"]
+  },
+  {
+    "technicalId": "person-mountain-goal",
+    "displayNameDe": "Person Berg/Ziel",
+    "tags": ["ZS-Campus", "Zukunftsschmiede", "Persönliche Wirksamkeit"]
   },
   {
     "technicalId": "group-presentation",

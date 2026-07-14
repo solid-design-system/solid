@@ -1,5 +1,11 @@
 # @solid-design-system/components
 
+## 6.28.0
+
+### Minor Changes
+
+- Add Sparda theme icons to the multi-theming icon library. _[`#3143`](https://github.com/solid-design-system/solid/pull/3143) [`2fd4696`](https://github.com/solid-design-system/solid/commit/2fd469668f4b95a88c0459ba24a51f5ce0a9e816) [@auroraVasconcelos](https://github.com/auroraVasconcelos)_
+
 ## 6.27.2
 
 ### Patch Changes
