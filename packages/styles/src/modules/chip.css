@@ -1,5 +1,6 @@
 /**
  * Generates basic styles for chip elements.
+ * @summary Used as a small, non-interactive label that represents a status, property or meta-data.
  * @name sd-chip
  * @status stable
  * @since 1.30.0

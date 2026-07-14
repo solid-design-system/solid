@@ -8,7 +8,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Flipcard allows for the addition of content/information on both "sides" of the card, through means of a flip animation. Used  to add dynamism and interactivity to a page.
+ * @summary Used to display content on both sides of a card by presenting information on one side and revealing additional information when flipped.
  * @documentation https://solid.union-investment.com/[storybook-link]/flipcard
  * @status stable
  * @since 3.8.0
@@ -200,7 +200,7 @@ export default class SdFlipcard extends SolidElement {
               'primary-100': 'tertiary',
               'gradient-light': 'primary',
               'gradient-dark': 'primary'
-            }[this.frontVariant] as 'primary' | 'secondary' | 'tertiary' | 'cta'}
+            }[this.frontVariant]}
             ?inverted=${{
               primary: true,
               'primary-100': false,
@@ -293,7 +293,7 @@ export default class SdFlipcard extends SolidElement {
               'primary-100': 'tertiary',
               'gradient-light': 'primary',
               'gradient-dark': 'primary'
-            }[this.backVariant] as 'primary' | 'secondary' | 'tertiary' | 'cta'}
+            }[this.backVariant]}
             ?inverted=${{
               primary: true,
               'primary-100': false,
