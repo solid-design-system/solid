@@ -8,7 +8,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Used to wrap external video elements (e. g. from Moving Image or bare <video>-Tags) and provide some basic styling for Union Investment.
+ * @summary Used to wrap videos to provide basic styling.
  * @status stable
  * @since 1.19.0
  *

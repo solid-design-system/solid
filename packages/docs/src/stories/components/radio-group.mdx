@@ -13,8 +13,6 @@ export const links = {
 export const content = `
 # Radio Group
 
-Used to group multiple input radio or radio buttons so they function as a single form control.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -66,4 +64,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-radio-group/Overview" />
 
-<OverviewFormatter story={SdRadioGroupStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdRadioGroupStories.Default} tag="sd-radio-group">
+  {content}
+</OverviewFormatter>

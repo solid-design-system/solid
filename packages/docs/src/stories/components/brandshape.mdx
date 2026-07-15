@@ -16,8 +16,6 @@ export const content = `
 
 <sd-notification variant="info" open class="mb-4">Please notice that this component is only available for themes UI Light and UI Dark</sd-notification>
 
-Used as a container with brand character that visually emphasizes the content.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -58,4 +56,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-brandshape/Overview" />
 
-<OverviewFormatter story={SdBrandshapeStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdBrandshapeStories.Default} tag="sd-brandshape">
+  {content}
+</OverviewFormatter>

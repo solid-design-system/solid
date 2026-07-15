@@ -14,8 +14,6 @@ export const links = {
 export const content = `
 # Navigation Item
 
-Used to facilitate seamless page transitions and help users orient themselves within the application.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -75,4 +73,6 @@ Visit <sd-link href="https://www.figma.com/design/VTztxQ5pWG7ARg8hCX6PfR/Solid-D
 
 <Meta title="Components/sd-navigation-item/Overview" />
 
-<OverviewFormatter story={SdNavigationItemStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdNavigationItemStories.Default} tag="sd-navigation-item">
+  {content}
+</OverviewFormatter>

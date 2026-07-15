@@ -7,7 +7,7 @@
   --sd-accordion-border-width: var(--sd-spacing-0\.5);
   --sd-accordion-color-border: var(--sd-color-neutral-500);
   --sd-accordion-color-icon-fill: var(--sd-color-neutral-700);
-  --sd-accordion-color-text: var(--sd-color-primary);
+  --sd-accordion-color-text: var(--sd-color-black);
   --sd-accordion-padding-block: 0.9375rem;
   --sd-accordion__indicator-color: 255 255 255 / 0;
   --sd-aspect-16\/10: 16 / 10;
@@ -122,6 +122,7 @@
   --sd-carousel__pager-dot--inverted-border: var(--sd-color-white);
   --sd-carousel__pager-dot-background: var(--sd-color-primary);
   --sd-carousel__pager-dot-border-width: var(--sd-spacing-0\.5);
+  --sd-checkbox--invalid-color-background: 253 237 237;
   --sd-checkbox-border-width: var(--sd-spacing-0\.5);
   --sd-chip--primary-200-color-background: 237 240 244;
   --sd-chip--primary-200-color-border: var(--sd-color-info);
@@ -158,7 +159,7 @@
   --sd-color-background-neutral-400: var(--sd-color-neutral-300);
   --sd-color-background-neutral-500: var(--sd-color-neutral-500);
   --sd-color-background-neutral-600: var(--sd-color-neutral-600);
-  --sd-color-background-neutral-800: var(--sd-color-neutral-800);
+  --sd-color-background-neutral-800: var(--sd-color-black);
   --sd-color-background-primary-100: var(--sd-color-primary-100);
   --sd-color-background-primary-200: var(--sd-color-primary-200);
   --sd-color-background-primary-300: var(--sd-color-primary-300);
@@ -176,7 +177,7 @@
   --sd-color-border-neutral-400: var(--sd-color-neutral-500);
   --sd-color-border-neutral-500: var(--sd-color-neutral-500);
   --sd-color-border-neutral-600: var(--sd-color-neutral-600);
-  --sd-color-border-neutral-800: var(--sd-color-neutral-800);
+  --sd-color-border-neutral-800: var(--sd-color-black);
   --sd-color-border-primary-100: var(--sd-color-primary-100);
   --sd-color-border-primary-200: var(--sd-color-primary-200);
   --sd-color-border-primary-400: var(--sd-color-primary-400);
@@ -192,12 +193,13 @@
   --sd-color-error: 210 0 0;
   --sd-color-icon-fill-accent-550: var(--sd-color-accent-550);
   --sd-color-icon-fill-accent: var(--sd-color-warning);
+  --sd-color-icon-fill-content-icons-primary: var(--sd-color-info);
   --sd-color-icon-fill-error-400: var(--sd-color-error);
   --sd-color-icon-fill-error: var(--sd-color-error);
   --sd-color-icon-fill-neutral-400: var(--sd-color-neutral-200);
   --sd-color-icon-fill-neutral-500: var(--sd-color-neutral-500);
   --sd-color-icon-fill-neutral-600: 255 255 255 / 0.4;
-  --sd-color-icon-fill-neutral-800: var(--sd-color-neutral-800);
+  --sd-color-icon-fill-neutral-800: var(--sd-color-black);
   --sd-color-icon-fill-primary-100: var(--sd-color-primary-100);
   --sd-color-icon-fill-primary-200: var(--sd-color-primary-200);
   --sd-color-icon-fill-primary-400: 255 255 255 / 0.84;
@@ -219,7 +221,7 @@
   --sd-color-neutral-500: 191 202 217;
   --sd-color-neutral-600: 89 89 89;
   --sd-color-neutral-700: 0 0 0 / 0.62;
-  --sd-color-neutral-800: 0 0 0 / 0.65;
+  --sd-color-neutral-800: 0 0 0 / 0.86;
   --sd-color-primary-100: 242 247 251;
   --sd-color-primary-200: 224 237 246;
   --sd-color-primary-300: 229 240 247;
@@ -270,8 +272,8 @@
   --sd-datepicker__date-item--selected-color-text: var(--sd-color-white);
   --sd-divider--inverted-color-border: 255 255 255 / 0.4;
   --sd-drop-shadow-listbox:  0px 10px 20px rgba(0, 0, 0, 0.25);
-  --sd-drop-shadow-sm:  0.5px 0.5px 1.5px rgba(0, 0, 0, 0.65);
-  --sd-drop-shadow-xs:  0.5px 0.5px 1.5px rgba(0, 0, 0, 0.65);
+  --sd-drop-shadow-sm:  0.5px 0.5px 1.5px rgba(0, 0, 0, 0.86);
+  --sd-drop-shadow-xs:  0.5px 0.5px 1.5px rgba(0, 0, 0, 0.86);
   --sd-drop-shadow:  0px 0px 20px rgba(0, 0, 0, 0.25);
   --sd-dropdown-color-background: var(--sd-color-white);
   --sd-duration-fast: 150ms;
@@ -298,6 +300,7 @@
   --sd-form-control--read-only-color-background: var(--sd-color-neutral-100);
   --sd-form-control-border-radius: var(--sd-spacing-1);
   --sd-form-control-color-border: var(--sd-color-black);
+  --sd-form-control-color-icon-fill: var(--sd-color-neutral-600);
   --sd-form-control-color-text: var(--sd-color-neutral-700);
   --sd-form-control__listbox-border-bottom-left-radius: var(--sd-spacing-1);
   --sd-form-control__listbox-border-bottom-right-radius: var(--sd-spacing-1);
@@ -332,12 +335,13 @@
   --sd-navigable__current-indicator-border-radius: 624.9375rem;
   --sd-navigable__current-indicator-height: 0.1875rem;
   --sd-navigable__current-indicator-width: 0.1875rem;
+  --sd-navigation-item--default-color-text: var(--sd-color-neutral-700);
   --sd-navigation-item-color-text: var(--sd-color-black);
   --sd-notification--error-color-background: 253 237 237;
   --sd-notification--info-color-background: 237 240 244;
   --sd-notification--success-color-background: 238 246 242;
   --sd-notification--warning-color-background: 255 245 224;
-  --sd-notification-color-border: var(--sd-color-info);
+  --sd-notification-color-border: var(--sd-color-neutral-500);
   --sd-notification__duration-indicator-color-background: var(--sd-color-primary);
   --sd-opacity-0: 0%;
   --sd-opacity-100: 100%;
@@ -388,8 +392,8 @@
   --sd-radius: 0.25rem;
   --sd-range-scale-ticks-color-text: var(--sd-color-neutral-600);
   --sd-shadow-listbox:  0px 10px 20px 0px rgba(0, 0, 0, 0.25);
-  --sd-shadow-sm:  0.5px 0.5px 1.5px 0px rgba(0, 0, 0, 0.65);
-  --sd-shadow-xs:  0.5px 0.5px 1.5px 0px rgba(0, 0, 0, 0.65);
+  --sd-shadow-sm:  0.5px 0.5px 1.5px 0px rgba(0, 0, 0, 0.86);
+  --sd-shadow-xs:  0.5px 0.5px 1.5px 0px rgba(0, 0, 0, 0.86);
   --sd-shadow:  0px 0px 20px 0px rgba(0, 0, 0, 0.25);
   --sd-sizing-0: 0;
   --sd-sizing-0\.25: 0.0625rem;
@@ -446,6 +450,10 @@
   --sd-tag--default-color-border: var(--sd-color-primary);
   --sd-tag--default-color-text: var(--sd-color-primary);
   --sd-tag--disabled-color-text: var(--sd-color-neutral-500);
+  --sd-tag--removable--size-lg-padding-left: var(--sd-spacing-3);
+  --sd-tag--removable--size-lg-padding-right: var(--sd-spacing-2);
+  --sd-tag--removable--size-sm-padding-left: var(--sd-spacing-2);
+  --sd-tag--removable--size-sm-padding-right: var(--sd-spacing-1);
   --sd-tag--selected--default-color-background: var(--sd-color-primary-100);
   --sd-tag--selected--default-color-border: var(--sd-color-info);
   --sd-tag--selected--default-color-text: var(--sd-color-info);
@@ -454,7 +462,9 @@
   --sd-tag--selected--hover-color-text: var(--sd-color-info);
   --sd-tag--selected-border-width: var(--sd-spacing-0\.25);
   --sd-tag--size-lg-font-size: var(--sd-spacing-4);
+  --sd-tag--size-lg-padding-inline: var(--sd-spacing-3);
   --sd-tag--size-sm-font-size: 0.875rem;
+  --sd-tag--size-sm-padding-inline: var(--sd-spacing-2);
   --sd-tag-border-radius: var(--sd-spacing-2);
   --sd-teaser--neutral-100-color-background: var(--sd-color-neutral-100);
   --sd-teaser--neutral-400-color-border: var(--sd-color-neutral-500);
@@ -466,6 +476,7 @@
   --sd-teaser-media--primary-100-color-background: 245 247 249 / 0.8;
   --sd-teaser-media--white--hover-color-background: 255 255 255 / 0.9;
   --sd-teaser-media--white-color-background: 255 255 255 / 0.8;
+  --sd-teaser-media-color-icon-fill: var(--sd-color-neutral-600);
   --sd-text-2xl: 1.75rem;
   --sd-text-3xl: 2rem;
   --sd-text-4xl: 2.375rem;

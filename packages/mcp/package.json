@@ -1,0 +1,77 @@
+{
+  "author": {
+    "name": "Union Investment"
+  },
+  "bin": {
+    "solid-mcp": "./dist/bin/start.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "globby": "^16.1.1",
+    "zod": "^4.3.6"
+  },
+  "description": "MCP Server for the Solid Design System",
+  "devDependencies": {
+    "@solid-design-system/components": "workspace:*",
+    "@solid-design-system/styles": "workspace:*",
+    "@solid-design-system/tokens": "workspace:*",
+    "@types/node": "^24.10.13",
+    "change-case": "^5.4.4",
+    "custom-elements-manifest": "^2.1.0",
+    "eslint": "^9.39.2",
+    "ora": "^9.3.0",
+    "prettier": "^3.8.1",
+    "tsx": "^4.0.0",
+    "typescript": "^5.9.3"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/server.js",
+      "types": "./dist/server.d.ts"
+    },
+    "./server.js": "./dist/server.js",
+    "./tools/*": "./dist/tools/*"
+  },
+  "files": [
+    "README.md",
+    "CHANGELOG.md",
+    "dist",
+    "metadata"
+  ],
+  "homepage": "https://github.com/solid-design-system/solid/tree/main/packages/mcp",
+  "keywords": [
+    "SDS",
+    "Solid Design System",
+    "Union Investment",
+    "UI",
+    "UI MCP Server",
+    "Solid MCP Server"
+  ],
+  "license": "MIT",
+  "name": "@solid-design-system/mcp",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/solid-design-system/solid.git",
+    "directory": "packages/mcp"
+  },
+  "scripts": {
+    "build": "pnpm run build:components && pnpm run build:tokens && pnpm run build:ts && pnpm run build:metadata && cd ../.. && pnpm exec prettier --write --log-level warn packages/mcp/metadata",
+    "build:components": "cd ../components && pnpm exec node scripts/make-metadata.js --outdir dist",
+    "build:tokens": "cd ../tokens && pnpm run build",
+    "build:ts": "node --input-type=module -e \"import{rmSync}from'node:fs';rmSync('dist',{recursive:true,force:true})\" && tsc",
+    "build:metadata": "node dist/build/build.js",
+    "lint:js": "cd ../.. && pnpm exec eslint packages/mcp/src",
+    "lint": "pnpm run /^lint:.*/",
+    "test": "node --import tsx/esm --test \"test/**/*.spec.ts\"",
+    "verify:metadata": "git diff --exit-code -- metadata ':!metadata/packages/icons' || (echo '❌ Generated metadata is out of sync with source. Run \"pnpm build\" in packages/mcp and commit the resulting changes in metadata/.' && exit 1)",
+    "verify": "pnpm build && echo '✅ Build verified' && pnpm run verify:metadata && echo '✅ Metadata verified' && pnpm test && echo '✅ Test verified'",
+    "mcp:inspector": "npx @modelcontextprotocol/inspector node dist/bin/start.js",
+    "postversion": "pnpm build"
+  },
+  "type": "module",
+  "version": "6.28.0"
+}
