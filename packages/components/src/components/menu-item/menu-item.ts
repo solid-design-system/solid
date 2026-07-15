@@ -8,7 +8,7 @@ import cx from 'classix';
 import SolidElement from '../../internal/solid-element';
 
 /**
- * @summary Menu items provide options for the user to pick from in a menu.
+ * @summary Used to provide options for the user to pick from a menu.
  * @status experimental
  * @since 5.9.0
  *

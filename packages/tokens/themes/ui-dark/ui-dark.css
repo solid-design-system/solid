@@ -2,10 +2,10 @@
   color-scheme: dark;
 
   --sd-theme: 'ui-dark';
-  --sd-accordion--hover-color-background: var(--sd-color-neutral-700);
+  --sd-accordion--hover-color-background: var(--sd-color-primary-750);
   --sd-accordion--open-color-text: var(--sd-color-white);
   --sd-accordion-border-width: var(--sd-spacing-0\.25);
-  --sd-accordion-color-border: var(--sd-color-neutral-400);
+  --sd-accordion-color-border: var(--sd-color-primary-400);
   --sd-accordion-color-icon-fill: var(--sd-color-white);
   --sd-accordion-color-text: var(--sd-color-white);
   --sd-accordion-padding-block: var(--sd-spacing-3);
@@ -121,6 +121,7 @@
   --sd-carousel__pager-dot--inverted-border: var(--sd-color-white);
   --sd-carousel__pager-dot-background: var(--sd-color-accent);
   --sd-carousel__pager-dot-border-width: var(--sd-spacing-0\.25);
+  --sd-checkbox--invalid-color-background: var(--sd-color-primary-900);
   --sd-checkbox-border-width: var(--sd-spacing-0\.25);
   --sd-chip--primary-200-color-background: var(--sd-color-primary-750);
   --sd-chip--primary-200-color-border: 255 255 255 / 0;
@@ -191,6 +192,7 @@
   --sd-color-error: 204 25 55;
   --sd-color-icon-fill-accent-550: var(--sd-color-accent-550);
   --sd-color-icon-fill-accent: var(--sd-color-accent);
+  --sd-color-icon-fill-content-icons-primary: var(--sd-color-white);
   --sd-color-icon-fill-error-400: var(--sd-color-error);
   --sd-color-icon-fill-error: var(--sd-color-error-250);
   --sd-color-icon-fill-neutral-400: var(--sd-color-neutral-400);
@@ -297,6 +299,7 @@
   --sd-form-control--read-only-color-background: var(--sd-color-neutral-700);
   --sd-form-control-border-radius: var(--sd-spacing-1);
   --sd-form-control-color-border: var(--sd-color-primary-200);
+  --sd-form-control-color-icon-fill: var(--sd-color-white);
   --sd-form-control-color-text: var(--sd-color-white);
   --sd-form-control__listbox-border-bottom-left-radius: var(--sd-spacing-1);
   --sd-form-control__listbox-border-bottom-right-radius: var(--sd-spacing-1);
@@ -331,6 +334,7 @@
   --sd-navigable__current-indicator-border-radius: 0;
   --sd-navigable__current-indicator-height: var(--sd-spacing-1);
   --sd-navigable__current-indicator-width: var(--sd-spacing-1);
+  --sd-navigation-item--default-color-text: var(--sd-color-white);
   --sd-navigation-item-color-text: var(--sd-color-white);
   --sd-notification--error-color-background: var(--sd-color-primary-900);
   --sd-notification--info-color-background: var(--sd-color-primary-900);
@@ -445,6 +449,10 @@
   --sd-tag--default-color-border: var(--sd-color-primary-100);
   --sd-tag--default-color-text: var(--sd-color-white);
   --sd-tag--disabled-color-text: var(--sd-color-neutral-600);
+  --sd-tag--removable--size-lg-padding-left: var(--sd-spacing-4);
+  --sd-tag--removable--size-lg-padding-right: var(--sd-spacing-3);
+  --sd-tag--removable--size-sm-padding-left: var(--sd-spacing-3);
+  --sd-tag--removable--size-sm-padding-right: var(--sd-spacing-2);
   --sd-tag--selected--default-color-background: var(--sd-color-white);
   --sd-tag--selected--default-color-border: 255 255 255 / 0;
   --sd-tag--selected--default-color-text: var(--sd-color-primary);
@@ -453,7 +461,9 @@
   --sd-tag--selected--hover-color-text: var(--sd-color-white);
   --sd-tag--selected-border-width: 0;
   --sd-tag--size-lg-font-size: var(--sd-spacing-4);
+  --sd-tag--size-lg-padding-inline: var(--sd-spacing-3);
   --sd-tag--size-sm-font-size: 0.875rem;
+  --sd-tag--size-sm-padding-inline: var(--sd-spacing-3);
   --sd-tag-border-radius: 624.9375rem;
   --sd-teaser--neutral-100-color-background: var(--sd-color-primary-700);
   --sd-teaser--neutral-400-color-border: var(--sd-color-primary-400);
@@ -465,6 +475,7 @@
   --sd-teaser-media--primary-100-color-background: 10 32 74 / 0.8;
   --sd-teaser-media--white--hover-color-background: 0 53 142 / 0.9;
   --sd-teaser-media--white-color-background: 0 53 142 / 0.8;
+  --sd-teaser-media-color-icon-fill: var(--sd-color-white);
   --sd-text-2xl: 1.75rem;
   --sd-text-3xl: 2rem;
   --sd-text-4xl: 2.5rem;
@@ -504,4 +515,5 @@
   --sd-option--disabled-color-border: var(--sd-color-border-neutral-500);
   --sd-audio__timestamp-color-text: var(--sd-color-text-neutral-700);
   --sd-accordion__chevron-color-text: var(--sd-accordion-color-icon-fill, var(--sd-color-icon-fill-primary));
+  --sd-form-control__tooltip-color-icon: var(--sd-interactive--default-color-text);
 }

@@ -12,8 +12,6 @@ export const links = {
 export const content = `
 # Pagination
 
-Used to split large content into several pages, allowing users to navigate between them instead of displaying all information on a single page.
-
 <DefaultStory />
 
 <DocumentationLinks links=${JSON.stringify(links, null, 2)} />
@@ -68,4 +66,6 @@ Please check our templates to see the interactive component in context.`;
 
 <Meta title="Styles/sd-pagination/Overview" />
 
-<OverviewFormatter story={SdPaginationStories.Default}>{content}</OverviewFormatter>
+<OverviewFormatter story={SdPaginationStories.Default} tag="sd-pagination">
+  {content}
+</OverviewFormatter>

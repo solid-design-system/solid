@@ -1,6 +1,6 @@
 {
   "name": "@solid-design-system/tokens",
-  "version": "6.24.2",
+  "version": "6.28.0",
   "description": "Solid Design System: Tokens",
   "publishConfig": {
     "access": "public",
@@ -21,6 +21,7 @@
     "cdn"
   ],
   "exports": {
+    "./package.json": "./package.json",
     "./dist/tailwind.json": "./dist/tokens.tailwind.json",
     "./dist/tailwind.css": "./dist/themes/tailwind.css",
     "./dist/themes": "./dist/themes",

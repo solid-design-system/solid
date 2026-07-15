@@ -22,7 +22,17 @@ export class TypographyTokenProcessor extends BaseTokenProcessor {
         Semibold: '600',
         Bold: '700'
       },
+      BB: {
+        Regular: '400',
+        Semibold: '600',
+        Bold: '700'
+      },
       KID: {
+        Regular: '400',
+        Semibold: '600',
+        Bold: '700'
+      },
+      SP: {
         Regular: '400',
         Semibold: '600',
         Bold: '700'

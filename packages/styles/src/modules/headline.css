@@ -1,5 +1,6 @@
 /**
  * Headlines are vital for displaying content hierarchy and to improve accessibility. A headline can be additionally accompanied by an icon. The icon can be displayed on the left side or inline.
+ * @summary Used to display primary or section titles, highlighting key messages to create clear visual hierarchy.
  * @name sd-headline
  * @status stable
  * @since 1.16

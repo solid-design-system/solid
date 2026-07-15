@@ -1,7 +1,7 @@
 {
   "name": "@solid-design-system/components",
   "description": "Solid Design System: Components",
-  "version": "6.24.2",
+  "version": "6.28.0",
   "homepage": "https://solid-design-system.fe.union-investment.de/docs/",
   "author": "Union Investment",
   "license": "MIT",
@@ -19,6 +19,7 @@
       "types": "./dist/solid-components.d.ts",
       "import": "./dist/solid-components.js"
     },
+    "./package.json": "./package.json",
     "./dist/custom-elements.json": "./dist/custom-elements.json",
     "./dist/solid-components.js": "./dist/solid-components.js",
     "./dist/solid-components.css": "./dist/solid-components.css",
@@ -68,6 +69,7 @@
     "test": "pnpm build --lite && web-test-runner --group default",
     "test.verify": "pnpm build --lite && web-test-runner --group default",
     "test.single": "concurrently -P --raw \"pnpm watch --lite\" \"web-test-runner --watch --group {1}\" --",
+    "test.single.ci": "pnpm build --lite && web-test-runner --group",
     "test.watch": "pnpm test.single default",
     "postversion": "pnpm build && node scripts/node-write-sizes.mjs"
   },
@@ -131,7 +133,7 @@
   "readme": "README.md",
   "meta": {
     "bundleSizeInKb": {
-      "uncompressed": 624,
+      "uncompressed": 626,
       "gzip": 140
     }
   }
