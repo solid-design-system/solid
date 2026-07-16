@@ -40,14 +40,14 @@
   "license": "MIT",
   "devDependencies": {
     "@figma-export/types": "^6.4.0",
-    "@figma/rest-api-spec": "^0.38.0",
+    "@figma/rest-api-spec": "^0.41.0",
     "@tamtamchik/json-deep-sort": "^1.5.0",
     "@tokens-studio/sd-transforms": "^2.0.3",
     "dotenv": "^17.4.2",
-    "ora": "^9.4.0",
+    "ora": "^9.4.1",
     "picocolors": "^1.1.1",
-    "style-dictionary": "^5.4.0",
-    "tailwindcss": "^4.3.0",
+    "style-dictionary": "^5.5.0",
+    "tailwindcss": "^4.3.2",
     "tailwindcss-export-config": "^4.1.0"
   },
   "readme": "README.md"
