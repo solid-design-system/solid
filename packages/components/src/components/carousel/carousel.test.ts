@@ -1,5 +1,5 @@
 import '../../../dist/solid-components';
-import { aTimeout, expect, fixture, html, oneEvent, waitUntil } from '@open-wc/testing';
+import { aTimeout, expect, fixture, html, nextFrame, oneEvent, waitUntil } from '@open-wc/testing';
 import { clickOnElement } from '../../internal/test.js';
 import sinon from 'sinon';
 import type SdCarousel from './carousel';
@@ -712,7 +712,7 @@ describe('<sd-carousel>', () => {
         // Act
         el.goToSlide(1);
         await el.updateComplete;
-        await aTimeout(0); // wait for requestAnimationFrame
+        await nextFrame(); // wait for requestAnimationFrame
 
         // Assert
         const announcementRegion = el.shadowRoot!.querySelector('.carousel__announcement')!;
@@ -734,7 +734,7 @@ describe('<sd-carousel>', () => {
         // Act
         el.goToSlide(1);
         await el.updateComplete;
-        await aTimeout(0);
+        await nextFrame();
 
         // Assert
         const announcementRegion = el.shadowRoot!.querySelector('.carousel__announcement')!;
