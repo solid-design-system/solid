@@ -167,24 +167,28 @@ export default class SdMenuItem extends SolidElement {
       ?aria-haspopup="${this.isSubmenu()}"
       ?aria-expanded="${isSubmenuExpanded ? true : false}"
     >
-      ${this.type === 'checkbox'
-        ? html` <span
-            part="checked-icon"
-            class=${cx(
-              'flex items-center justify-center grow-0 shrink-0 basis-auto',
-              this.checked ? 'visible' : 'invisible'
-            )}
-          >
-            <sd-icon name="status-check" library="sd-status-assets" aria-hidden="true"></sd-icon>
-          </span>`
-        : ''}
-      ${slots.iconIndent
-        ? html`<slot
-            name="icon-indent"
-            part="icon-indent"
-            class="flex items-center grow-0 shrink-0 basis-auto mr-2"
-          ></slot>`
-        : ''}
+      ${
+        this.type === 'checkbox'
+          ? html` <span
+              part="checked-icon"
+              class=${cx(
+                'flex items-center justify-center grow-0 shrink-0 basis-auto',
+                this.checked ? 'visible' : 'invisible'
+              )}
+            >
+              <sd-icon name="status-check" library="sd-status-assets" aria-hidden="true"></sd-icon>
+            </span>`
+          : ''
+      }
+      ${
+        slots.iconIndent
+          ? html`<slot
+              name="icon-indent"
+              part="icon-indent"
+              class="flex items-center grow-0 shrink-0 basis-auto mr-2"
+            ></slot>`
+          : ''
+      }
 
       <slot
         part="label"
@@ -192,11 +196,13 @@ export default class SdMenuItem extends SolidElement {
         @slotchange=${this.handleDefaultSlotChange}
       ></slot>
 
-      ${this.chevron || this.isSubmenu()
-        ? html`<span part="submenu-icon" class="flex items-center justify-center grow-0 shrink-0 basis-auto ml-3">
-            <sd-icon name="chevron-right" library="_internal" aria-hidden="true" class="h-6 w-6"></sd-icon>
-          </span>`
-        : ''}
+      ${
+        this.chevron || this.isSubmenu()
+          ? html`<span part="submenu-icon" class="flex items-center justify-center grow-0 shrink-0 basis-auto ml-3">
+              <sd-icon name="chevron-right" library="_internal" aria-hidden="true" class="h-6 w-6"></sd-icon>
+            </span>`
+          : ''
+      }
       ${this.submenuController.renderSubmenu()}
     </div>`;
   }

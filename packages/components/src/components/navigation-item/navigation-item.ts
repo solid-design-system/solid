@@ -296,27 +296,31 @@ export default class SdNavigationItem extends SolidElement {
       return html`<div part="details" id="navigation-item-details" class="relative flex flex-col">
         <div class="flex items-start">
           ${root}
-          ${slots['children'] && this.vertical
-            ? html`<button
-                type="button"
-                title=${this.open
-                  ? this.localize.term('collapseNavigationItem')
-                  : this.localize.term('expandNavigationItem')}
-                class="sd-interactive sd-interactive--reset -mt-1"
-                @click=${this.handleClickSummary}
-              >
-                <sd-icon
-                  name="chevron-down"
-                  part="chevron"
-                  library="_internal"
-                  color="currentColor"
-                  class=${cx(
-                    'm-4 h-6 w-6 transition-all',
-                    isAccordion || this.separated ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]'
-                  )}
-                ></sd-icon>
-              </button>`
-            : ''}
+          ${
+            slots['children'] && this.vertical
+              ? html`<button
+                  type="button"
+                  title=${
+                    this.open
+                      ? this.localize.term('collapseNavigationItem')
+                      : this.localize.term('expandNavigationItem')
+                  }
+                  class="sd-interactive sd-interactive--reset -mt-1"
+                  @click=${this.handleClickSummary}
+                >
+                  <sd-icon
+                    name="chevron-down"
+                    part="chevron"
+                    library="_internal"
+                    color="currentColor"
+                    class=${cx(
+                      'm-4 h-6 w-6 transition-all',
+                      isAccordion || this.separated ? (this.open ? 'rotate-180' : 'rotate-0') : 'rotate-[270deg]'
+                    )}
+                  ></sd-icon>
+                </button>`
+              : ''
+          }
         </div>
         ${this.open ? html`<slot name="children"></slot>` : ''}
       </div>`;

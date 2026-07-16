@@ -448,25 +448,29 @@ export default class SdAudio extends SolidElement {
         title="${this.isPlaying ? this.localize.term('pauseAudio') : this.localize.term('playAudio')}"
         class="mb-4"
       >
-        ${this.isPlaying
-          ? html` <slot name="pause-icon"><sd-icon class="text-xl" name="pause" library="_internal"></sd-icon></slot>`
-          : html` <slot name="play-icon"><sd-icon class="text-xl" name="start" library="_internal"></sd-icon></slot>`}
+        ${
+          this.isPlaying
+            ? html` <slot name="pause-icon"><sd-icon class="text-xl" name="pause" library="_internal"></sd-icon></slot>`
+            : html` <slot name="play-icon"><sd-icon class="text-xl" name="start" library="_internal"></sd-icon></slot>`
+        }
       </sd-button>
 
       <div class="flex items-center gap-6 justify-self-end">
-        ${this.hasSlotController.test('transcript')
-          ? html`<button
-              class=${cx('w-6 h-6 hover:cursor-pointer sd-interactive', this.inverted && 'sd-interactive--inverted')}
-              aria-label=${this.isTranscriptOpen
-                ? this.localize.term('transcriptIsOpen')
-                : this.localize.term('openTranscript')}
-              @click=${this.showTranscript}
-              @keydown=${this.showTranscriptKeydown}
-              part="transcript"
-            >
-              <sd-icon class="w-6 h-6" name="transcript" library="_internal"></sd-icon>
-            </button>`
-          : null}
+        ${
+          this.hasSlotController.test('transcript')
+            ? html`<button
+                class=${cx('w-6 h-6 hover:cursor-pointer sd-interactive', this.inverted && 'sd-interactive--inverted')}
+                aria-label=${
+                  this.isTranscriptOpen ? this.localize.term('transcriptIsOpen') : this.localize.term('openTranscript')
+                }
+                @click=${this.showTranscript}
+                @keydown=${this.showTranscriptKeydown}
+                part="transcript"
+              >
+                <sd-icon class="w-6 h-6" name="transcript" library="_internal"></sd-icon>
+              </button>`
+            : null
+        }
 
         <button
           class=${cx('w-6 h-6 hover:cursor-pointer sd-interactive', this.inverted && 'sd-interactive--inverted')}
@@ -527,11 +531,13 @@ export default class SdAudio extends SolidElement {
           ></sd-range>
         </div>
 
-        ${this.hasSlotController.test('transcript')
-          ? html`<sd-drawer>
-              <slot name="transcript"></slot>
-            </sd-drawer>`
-          : null}
+        ${
+          this.hasSlotController.test('transcript')
+            ? html`<sd-drawer>
+                <slot name="transcript"></slot>
+              </sd-drawer>`
+            : null
+        }
         ${!this.hideTimestamps && (!this.animated || !this.reversedLayout) ? renderTimestamps : null}
       </div>
       <sd-theme-listener></sd-theme-listener>

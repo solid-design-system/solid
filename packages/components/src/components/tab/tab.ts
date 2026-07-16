@@ -134,16 +134,18 @@ export default class SdTab extends SolidElement {
             )}
           ></slot>
 
-          ${this.variant === 'container'
-            ? html`
-                <div
-                  part="active-tab-indicator"
-                  class=${cx(
-                    'absolute bottom-0 h-1 bg-accent w-3/4 bottom-0 group-hover:w-[calc(100%-2px)] navigable__current-indicator-height navigable__current-indicator-border-radius'
-                  )}
-                ></div>
-              `
-            : ''}
+          ${
+            this.variant === 'container'
+              ? html`
+                  <div
+                    part="active-tab-indicator"
+                    class=${cx(
+                      'absolute bottom-0 h-1 bg-accent w-3/4 bottom-0 group-hover:w-[calc(100%-2px)] navigable__current-indicator-height navigable__current-indicator-border-radius'
+                    )}
+                  ></div>
+                `
+              : ''
+          }
           <div
             part="hover-bottom-border"
             class=${cx(

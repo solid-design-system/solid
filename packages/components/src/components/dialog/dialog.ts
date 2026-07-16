@@ -297,31 +297,35 @@ export default class SdDialog extends SolidElement {
         >
           <header part="header" class="flex flex-grow-0 flex-shrink-0 basis-auto px-6 sm:px-10">
             <h2 part="title" class="flex-auto m-0" id="title">
-              ${this.headline.length > 0
-                ? html`<span class="sd-headline sd-headline--size-3xl leading-tight">${this.headline}</span>`
-                : html`<slot name="headline"> </slot>`}
+              ${
+                this.headline.length > 0
+                  ? html`<span class="sd-headline sd-headline--size-3xl leading-tight">${this.headline}</span>`
+                  : html`<slot name="headline"> </slot>`
+              }
             </h2>
 
-            ${!this.noCloseButton
-              ? html`
-                  <sd-button
-                    part="close-button"
-                    variant="tertiary"
-                    exportparts="base:close-button__base"
-                    class=${cx('absolute top-2 right-2')}
-                    name="x-lg"
-                    @click="${() => this.requestClose('close-button')}"
-                    type="button"
-                  >
-                    <sd-icon
-                      label=${this.localize.term('close')}
-                      name="close"
-                      library="_internal"
-                      color="currentColor"
-                    ></sd-icon>
-                  </sd-button>
-                `
-              : ''}
+            ${
+              !this.noCloseButton
+                ? html`
+                    <sd-button
+                      part="close-button"
+                      variant="tertiary"
+                      exportparts="base:close-button__base"
+                      class=${cx('absolute top-2 right-2')}
+                      name="x-lg"
+                      @click="${() => this.requestClose('close-button')}"
+                      type="button"
+                    >
+                      <sd-icon
+                        label=${this.localize.term('close')}
+                        name="close"
+                        library="_internal"
+                        color="currentColor"
+                      ></sd-icon>
+                    </sd-button>
+                  `
+                : ''
+            }
           </header>
 
           <main part="body" class="flex flex-auto overflow-auto w-full px-6 sm:px-10">

@@ -1250,54 +1250,58 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
           this.open && 'z-50'
         )}
       >
-        ${hasLabel && !this.floatingLabel
-          ? html`<div class="flex items-center gap-1 mb-2">
-              <label
-                id="label"
-                part="form-control-label"
-                class=${hasLabel && 'inline-block form-control-color-text'}
-                aria-hidden=${hasLabel ? 'false' : 'true'}
-                @click=${this.handleLabelClick}
-              >
-                <slot name="label">${this.label}</slot>
-              </label>
-            </div>`
-          : null}
+        ${
+          hasLabel && !this.floatingLabel
+            ? html`<div class="flex items-center gap-1 mb-2">
+                <label
+                  id="label"
+                  part="form-control-label"
+                  class=${hasLabel && 'inline-block form-control-color-text'}
+                  aria-hidden=${hasLabel ? 'false' : 'true'}
+                  @click=${this.handleLabelClick}
+                >
+                  <slot name="label">${this.label}</slot>
+                </label>
+              </div>`
+            : null
+        }
         <span aria-live="polite" class="sr-only">${this.deletedTagLabel}</span>
 
         <div part="form-control-input" class="relative w-full bg-white text-black">
-          ${hasLabel && this.floatingLabel
-            ? html`
-                <label
-                  id="label"
-                  part="form-control-floating-label"
-                  class=${cx(
-                    'absolute left-4 z-20 pointer-events-none transition-all duration-200',
-                    hasIconLeft ? floatingLabelHorizontalAlignmentWithIconLeft : 'left-4',
-                    !isFloatingLabelActive
-                      ? 'top-1/2 -translate-y-1/2'
-                      : this.size === 'lg'
-                        ? 'top-2 text-xs'
-                        : 'top-1 text-xs',
-                    isFloatingLabelActive && 'mt-1'
-                  )}
-                  for="input"
-                >
-                  <span
+          ${
+            hasLabel && this.floatingLabel
+              ? html`
+                  <label
+                    id="label"
+                    part="form-control-floating-label"
                     class=${cx(
-                      'leading-none',
-                      (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
-                      isFloatingLabelActive &&
-                        !this.visuallyDisabled &&
-                        !this.disabled &&
-                        'form-control--filled__floating-label-color-text'
+                      'absolute left-4 z-20 pointer-events-none transition-all duration-200',
+                      hasIconLeft ? floatingLabelHorizontalAlignmentWithIconLeft : 'left-4',
+                      !isFloatingLabelActive
+                        ? 'top-1/2 -translate-y-1/2'
+                        : this.size === 'lg'
+                          ? 'top-2 text-xs'
+                          : 'top-1 text-xs',
+                      isFloatingLabelActive && 'mt-1'
                     )}
+                    for="input"
                   >
-                    ${this.label}
-                  </span>
-                </label>
-              `
-            : null}
+                    <span
+                      class=${cx(
+                        'leading-none',
+                        (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
+                        isFloatingLabelActive &&
+                          !this.visuallyDisabled &&
+                          !this.disabled &&
+                          'form-control--filled__floating-label-color-text'
+                      )}
+                    >
+                      ${this.label}
+                    </span>
+                  </label>
+                `
+              : null
+          }
 
           <div
             part="border"
@@ -1357,21 +1361,25 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               @keydown=${this.handleComboboxKeyDown}
               @mousedown=${this.handleComboboxMouseDown}
             >
-              ${slots['left']
-                ? html`<slot
-                    part="left"
-                    name="left"
-                    class="${cx('inline-flex', iconMarginRight, iconColor, iconSize)}"
-                  ></slot>`
-                : ''}
+              ${
+                slots['left']
+                  ? html`<slot
+                      part="left"
+                      name="left"
+                      class="${cx('inline-flex', iconMarginRight, iconColor, iconSize)}"
+                    ></slot>`
+                  : ''
+              }
               <div
                 class=${cx('flex flex-wrap items-center gap-1 w-full min-w-0 relative', this.floatingLabel && 'mt-4')}
               >
-                ${this.multiple && this.useTags && this.tags && this.tags.length > 0
-                  ? html`<div part="tags" class="${cx('flex flex-wrap items-center gap-1 min-w-0', iconMarginRight)}">
-                      ${this.tags}
-                    </div>`
-                  : null}
+                ${
+                  this.multiple && this.useTags && this.tags && this.tags.length > 0
+                    ? html`<div part="tags" class="${cx('flex flex-wrap items-center gap-1 min-w-0', iconMarginRight)}">
+                        ${this.tags}
+                      </div>`
+                    : null
+                }
                 <input
                   id="display-input"
                   name=${this.name}
@@ -1386,11 +1394,13 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                     this.size === 'sm' ? (isFloatingLabelActive ? 'h-4' : 'h-6') : isFloatingLabelActive ? 'h-6' : 'h-8'
                   )}
                   type="text"
-                  placeholder=${!this.floatingLabel || isFloatingLabelActive
-                    ? this.selectedTextLabel && !this.multiple
-                      ? this.selectedTextLabel
-                      : this.placeholder || this.localize.term('comboboxDefaultPlaceholder')
-                    : ''}
+                  placeholder=${
+                    !this.floatingLabel || isFloatingLabelActive
+                      ? this.selectedTextLabel && !this.multiple
+                        ? this.selectedTextLabel
+                        : this.placeholder || this.localize.term('comboboxDefaultPlaceholder')
+                      : ''
+                  }
                   .disabled=${this.disabled}
                   .value=${this.displayInputValue}
                   autocomplete="off"
@@ -1428,51 +1438,57 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                 @focus=${() => this.focus()}
                 @invalid=${this.handleInvalid}
               />
-              ${hasClearIcon
-                ? html`
-                    <button
-                      part="clear-button"
-                      class=${cx(
-                        'flex justify-center',
-                        iconMarginLeft,
-                        this.value.length > 0 ? 'visible' : 'invisible'
-                      )}
-                      type="button"
-                      aria-label=${this.localize.term('clearEntry')}
-                      @mousedown=${this.preventLoosingFocus}
-                      @click=${this.handleClearClick}
-                      tabindex="-1"
-                    >
-                      <slot name="clear-icon">
-                        <sd-icon
-                          class=${cx('text-neutral-700', iconSize)}
-                          name="closing-round"
-                          library="_internal"
-                        ></sd-icon>
-                      </slot>
-                    </button>
-                  `
-                : ''}
-              ${this.showInvalidStyle
-                ? html`
-                    <sd-icon
-                      part="invalid-icon"
-                      class=${cx(iconMarginLeft, iconSize, 'text-error')}
-                      library="_internal"
-                      name="risk"
-                    ></sd-icon>
-                  `
-                : ''}
-              ${this.styleOnValid && this.showValidStyle
-                ? html`
-                    <sd-icon
-                      part="valid-icon"
-                      class=${cx('flex-shrink-0 text-success', iconMarginLeft, iconSize)}
-                      library="_internal"
-                      name="confirm-circle"
-                    ></sd-icon>
-                  `
-                : ''}
+              ${
+                hasClearIcon
+                  ? html`
+                      <button
+                        part="clear-button"
+                        class=${cx(
+                          'flex justify-center',
+                          iconMarginLeft,
+                          this.value.length > 0 ? 'visible' : 'invisible'
+                        )}
+                        type="button"
+                        aria-label=${this.localize.term('clearEntry')}
+                        @mousedown=${this.preventLoosingFocus}
+                        @click=${this.handleClearClick}
+                        tabindex="-1"
+                      >
+                        <slot name="clear-icon">
+                          <sd-icon
+                            class=${cx('text-neutral-700', iconSize)}
+                            name="closing-round"
+                            library="_internal"
+                          ></sd-icon>
+                        </slot>
+                      </button>
+                    `
+                  : ''
+              }
+              ${
+                this.showInvalidStyle
+                  ? html`
+                      <sd-icon
+                        part="invalid-icon"
+                        class=${cx(iconMarginLeft, iconSize, 'text-error')}
+                        library="_internal"
+                        name="risk"
+                      ></sd-icon>
+                    `
+                  : ''
+              }
+              ${
+                this.styleOnValid && this.showValidStyle
+                  ? html`
+                      <sd-icon
+                        part="valid-icon"
+                        class=${cx('flex-shrink-0 text-success', iconMarginLeft, iconSize)}
+                        library="_internal"
+                        name="confirm-circle"
+                      ></sd-icon>
+                    `
+                  : ''
+              }
               <slot
                 name="right"
                 part="right"
@@ -1482,42 +1498,46 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
                   iconSize
                 )}
               >
-                ${this.type !== 'search'
-                  ? html`<sd-icon
-                      class=${cx(
-                        'transition-transform duration-medium ease-in-out',
-                        this.open ? 'rotate-180' : 'rotate-0'
-                      )}
-                      name="chevron-down"
-                      part="chevron"
-                      library="_internal"
-                      color="currentColor"
-                      label=${this.localize.term('open')}
-                    ></sd-icon>`
-                  : ''}
-              </slot>
-              ${this.type === 'search'
-                ? html`
-                    <button class=${cx('flex items-center sd-interactive', iconMarginLeft)} type="button">
-                      <sd-icon
-                        class=${cx(iconColor, iconSize)}
+                ${
+                  this.type !== 'search'
+                    ? html`<sd-icon
+                        class=${cx(
+                          'transition-transform duration-medium ease-in-out',
+                          this.open ? 'rotate-180' : 'rotate-0'
+                        )}
+                        name="chevron-down"
+                        part="chevron"
                         library="_internal"
-                        name="magnifying-glass"
-                        label=${this.localize.term('search')}
-                      ></sd-icon>
-                    </button>
-                  `
-                : html`
-                    <button
-                      class="sd-interactive combobox-button absolute top-2 sd-color-icon-fill-primary"
-                      tabindex="-1"
-                      aria-hidden="true"
-                      @keydown=${this.handleComboboxMouseDown}
-                      type="button"
-                    >
-                      <span class="sr-only">${this.localize.term('open')}</span>
-                    </button>
-                  `}
+                        color="currentColor"
+                        label=${this.localize.term('open')}
+                      ></sd-icon>`
+                    : ''
+                }
+              </slot>
+              ${
+                this.type === 'search'
+                  ? html`
+                      <button class=${cx('flex items-center sd-interactive', iconMarginLeft)} type="button">
+                        <sd-icon
+                          class=${cx(iconColor, iconSize)}
+                          library="_internal"
+                          name="magnifying-glass"
+                          label=${this.localize.term('search')}
+                        ></sd-icon>
+                      </button>
+                    `
+                  : html`
+                      <button
+                        class="sd-interactive combobox-button absolute top-2 sd-color-icon-fill-primary"
+                        tabindex="-1"
+                        aria-hidden="true"
+                        @keydown=${this.handleComboboxMouseDown}
+                        type="button"
+                      >
+                        <span class="sr-only">${this.localize.term('open')}</span>
+                      </button>
+                    `
+              }
             </div>
 
             <div
@@ -1539,15 +1559,17 @@ export default class SdCombobox extends SolidElement implements SolidFormControl
               @mouseup=${this.handleOptionClick}
             >
               <div part="filtered-listbox">
-                ${this.filteredOptions.length === 0
-                  ? html`<span
-                      id="noResults"
-                      class="px-4 flex items-center w-full transition-all text-left text-base relative text-black py-3"
-                      aria-hidden="true"
-                      @click="${this.handleNoResultsClick}"
-                      >${this.localize.term('noResults')}</span
-                    >`
-                  : this.options}
+                ${
+                  this.filteredOptions.length === 0
+                    ? html`<span
+                        id="noResults"
+                        class="px-4 flex items-center w-full transition-all text-left text-base relative text-black py-3"
+                        aria-hidden="true"
+                        @click="${this.handleNoResultsClick}"
+                        >${this.localize.term('noResults')}</span
+                      >`
+                    : this.options
+                }
               </div>
               <slot id="defaultOptionsSlot" class="hidden" @slotchange=${this.handleDefaultSlotChange}></slot>
             </div>

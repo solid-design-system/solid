@@ -69,12 +69,7 @@ export default class SdTooltip extends SolidElement {
    * inside of the viewport.
    */
   @property({ type: String, reflect: true }) placement:
-    | 'top'
-    | 'top-start'
-    | 'top-end'
-    | 'bottom'
-    | 'bottom-start'
-    | 'bottom-end' = 'top';
+    'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' = 'top';
 
   /** Disables the tooltip so it won't show when triggered. */
   @property({ type: Boolean, reflect: true }) disabled = false;
@@ -326,8 +321,10 @@ export default class SdTooltip extends SolidElement {
         class=${cx(this.open && 'tooltip--open')}
         placement=${this.placement}
         distance="10"
-        skidding=${{ start: 2, end: -2, default: 0 }[isStart ? 'start' : isEnd ? 'end' : 'default'] *
-        (this.size === 'sm' ? -1 : 1)}
+        skidding=${
+          { start: 2, end: -2, default: 0 }[isStart ? 'start' : isEnd ? 'end' : 'default'] *
+          (this.size === 'sm' ? -1 : 1)
+        }
         strategy=${this.hoist ? 'fixed' : 'absolute'}
         flip
         shift
@@ -336,23 +333,25 @@ export default class SdTooltip extends SolidElement {
         arrow-padding="0"
       >
         <!-- Dev note: This condition addresses a Safari limitation where VoiceOver ignores the tooltip if its trigger is placed inside a slot. -->
-        ${this.hasCustomTrigger
-          ? html` <slot slot="anchor"></slot>`
-          : html`<button
-              slot="anchor"
-              aria-describedby="tooltip"
-              class=${cx('flex sd-interactive rounded-full', this.size === 'lg' ? 'text-xl' : 'text-base')}
-              ?disabled=${this.disabled}
-              aria-expanded=${this.open}
-              aria-controls="tooltip"
-            >
-              <sd-icon
-                library="_internal"
-                name="info-circle"
-                label="Tooltip"
-                class=${cx(this.disabled && 'sd-interactive--disabled')}
-              ></sd-icon>
-            </button>`}
+        ${
+          this.hasCustomTrigger
+            ? html` <slot slot="anchor"></slot>`
+            : html`<button
+                slot="anchor"
+                aria-describedby="tooltip"
+                class=${cx('flex sd-interactive rounded-full', this.size === 'lg' ? 'text-xl' : 'text-base')}
+                ?disabled=${this.disabled}
+                aria-expanded=${this.open}
+                aria-controls="tooltip"
+              >
+                <sd-icon
+                  library="_internal"
+                  name="info-circle"
+                  label="Tooltip"
+                  class=${cx(this.disabled && 'sd-interactive--disabled')}
+                ></sd-icon>
+              </button>`
+        }
         <slot
           name="content"
           part="body"

@@ -405,21 +405,23 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         aria-describedby="invalid-message"
         aria-labelledby="label"
       >
-        ${hasLabel || hasTooltipSlot
-          ? html`<div class="flex items-center gap-1 mb-2">
-              <legend
-                part="form-control-label"
-                id="label"
-                class=${cx('p-0 font-bold leading-normal text-black text-left', hasLabel ? 'inline-block' : 'hidden')}
-                @click=${this.focus}
-                aria-hidden=${hasLabel ? 'false' : 'true'}
-              >
-                <slot name="label">${this.label}</slot>
-              </legend>
+        ${
+          hasLabel || hasTooltipSlot
+            ? html`<div class="flex items-center gap-1 mb-2">
+                <legend
+                  part="form-control-label"
+                  id="label"
+                  class=${cx('p-0 font-bold leading-normal text-black text-left', hasLabel ? 'inline-block' : 'hidden')}
+                  @click=${this.focus}
+                  aria-hidden=${hasLabel ? 'false' : 'true'}
+                >
+                  <slot name="label">${this.label}</slot>
+                </legend>
 
-              ${hasTooltipSlot ? html`<slot name="tooltip"></slot>` : ''}
-            </div>`
-          : null}
+                ${hasTooltipSlot ? html`<slot name="tooltip"></slot>` : ''}
+              </div>`
+            : null
+        }
 
         <div
           part="form-control-input"
@@ -444,18 +446,20 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
               />
             </label>
           </div>
-          ${this.hasButtonGroup
-            ? html`
-                <sd-button-group
-                  class="border border-primary sd-radio-button-group-border-radius sd-radio-button-group-border-width sd-radio-button-group-padding"
-                  part="button-group"
-                  exportparts="base:button-group__base"
-                  role="presentation"
-                >
-                  ${defaultSlot}
-                </sd-button-group>
-              `
-            : defaultSlot}
+          ${
+            this.hasButtonGroup
+              ? html`
+                  <sd-button-group
+                    class="border border-primary sd-radio-button-group-border-radius sd-radio-button-group-border-width sd-radio-button-group-padding"
+                    part="button-group"
+                    exportparts="base:button-group__base"
+                    role="presentation"
+                  >
+                    ${defaultSlot}
+                  </sd-button-group>
+                `
+              : defaultSlot
+          }
         </div>
       </fieldset>
       <slot
@@ -468,9 +472,11 @@ export default class SdRadioGroup extends SolidElement implements SolidFormContr
         ${this.helpText}
       </slot>
       <div part="invalid-icon-message" class="flex items-center gap-2 mt-2">
-        ${this.showInvalidStyle
-          ? html` <sd-icon part="invalid-icon" class=${cx('text-error')} library="_internal" name="risk"></sd-icon> `
-          : ''}
+        ${
+          this.showInvalidStyle
+            ? html` <sd-icon part="invalid-icon" class=${cx('text-error')} library="_internal" name="risk"></sd-icon> `
+            : ''
+        }
         ${this.formControlController.renderInvalidMessage(this.size)}
       </div>
     `;

@@ -576,8 +576,8 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
       return null;
     };
 
-    const min = normalizeBound(this.min as string | number | Date | undefined | null);
-    const max = normalizeBound(this.max as string | number | Date | undefined | null);
+    const min = normalizeBound(this.min);
+    const max = normalizeBound(this.max);
 
     if (min && d < min) return false;
     if (max && d > max) return false;
@@ -1969,12 +1969,12 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                       aria-labelledby=${'col-' + (colIndex + 1)}
                       .tabIndex=${tabIndex}
                       ?disabled=${disabled || this.disabled || this.readonly}
-                      aria-disabled=${disabled || this.visuallyDisabled || this.disabled || this.readonly
-                        ? 'true'
-                        : 'false'}
-                      aria-selected=${isSelectedSingle || inSelectedRange || isRangeStart || isRangeEnd
-                        ? 'true'
-                        : 'false'}
+                      aria-disabled=${
+                        disabled || this.visuallyDisabled || this.disabled || this.readonly ? 'true' : 'false'
+                      }
+                      aria-selected=${
+                        isSelectedSingle || inSelectedRange || isRangeStart || isRangeEnd ? 'true' : 'false'
+                      }
                       aria-current=${isToday ? 'date' : nothing}
                       aria-label=${label}
                       aria-roledescription=${roleDesc ?? nothing}
@@ -2063,20 +2063,22 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
           (this.disabled || this.visuallyDisabled) && 'cursor-not-allowed'
         )}
       >
-        ${(hasLabel && !this.floatingLabel) || hasTooltip
-          ? html`<div class="flex items-center gap-1 mb-2">
-              <label
-                part="form-control-label"
-                id="label"
-                class=${cx(hasLabel ? 'inline-block form-control-color-text' : 'hidden', textSize)}
-                for="input"
-                aria-hidden=${hasLabel ? 'false' : 'true'}
-              >
-                <slot name="label">${this.label}</slot>
-              </label>
-              ${slots['tooltip'] ? html`<slot name="tooltip"></slot>` : ''}
-            </div>`
-          : null}
+        ${
+          (hasLabel && !this.floatingLabel) || hasTooltip
+            ? html`<div class="flex items-center gap-1 mb-2">
+                <label
+                  part="form-control-label"
+                  id="label"
+                  class=${cx(hasLabel ? 'inline-block form-control-color-text' : 'hidden', textSize)}
+                  for="input"
+                  aria-hidden=${hasLabel ? 'false' : 'true'}
+                >
+                  <slot name="label">${this.label}</slot>
+                </label>
+                ${slots['tooltip'] ? html`<slot name="tooltip"></slot>` : ''}
+              </div>`
+            : null
+        }
 
         <div
           part="form-control-input"
@@ -2086,37 +2088,39 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
             this.visuallyDisabled && 'cursor-not-allowed'
           )}
         >
-          ${hasLabel && this.floatingLabel
-            ? html`
-                <label
-                  id="label"
-                  part="form-control-floating-label"
-                  class=${cx(
-                    'absolute left-4 z-20 pointer-events-none transition-all duration-200 form-control--filled__floating-label-color-text',
-                    !isFloatingLabelActive
-                      ? 'top-1/2 -translate-y-1/2'
-                      : this.size === 'lg'
-                        ? 'top-2 text-xs'
-                        : 'top-1 text-xs',
-                    isFloatingLabelActive && 'mt-1'
-                  )}
-                  for="input"
-                >
-                  <span
+          ${
+            hasLabel && this.floatingLabel
+              ? html`
+                  <label
+                    id="label"
+                    part="form-control-floating-label"
                     class=${cx(
-                      'leading-none',
-                      (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
-                      isFloatingLabelActive &&
-                        !this.visuallyDisabled &&
-                        !this.disabled &&
-                        'form-control--filled__floating-label-color-text'
+                      'absolute left-4 z-20 pointer-events-none transition-all duration-200 form-control--filled__floating-label-color-text',
+                      !isFloatingLabelActive
+                        ? 'top-1/2 -translate-y-1/2'
+                        : this.size === 'lg'
+                          ? 'top-2 text-xs'
+                          : 'top-1 text-xs',
+                      isFloatingLabelActive && 'mt-1'
                     )}
+                    for="input"
                   >
-                    ${this.label}
-                  </span>
-                </label>
-              `
-            : null}
+                    <span
+                      class=${cx(
+                        'leading-none',
+                        (this.visuallyDisabled || this.disabled) && 'text-neutral-500',
+                        isFloatingLabelActive &&
+                          !this.visuallyDisabled &&
+                          !this.disabled &&
+                          'form-control--filled__floating-label-color-text'
+                      )}
+                    >
+                      ${this.label}
+                    </span>
+                  </label>
+                `
+              : null
+          }
           <div
             part="border"
             class=${cx(
@@ -2180,9 +2184,11 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 )}
                 autocomplete="off"
                 spellcheck="false"
-                placeholder=${!this.floatingLabel || isFloatingLabelActive
-                  ? this.placeholder || this.localize.term(this.range ? 'dateRangePlaceholder' : 'datePlaceholder')
-                  : ''}
+                placeholder=${
+                  !this.floatingLabel || isFloatingLabelActive
+                    ? this.placeholder || this.localize.term(this.range ? 'dateRangePlaceholder' : 'datePlaceholder')
+                    : ''
+                }
                 ?disabled=${this.disabled}
                 ?required=${this.required}
                 ?readonly=${this.readonly || this.visuallyDisabled}
@@ -2194,22 +2200,26 @@ export default class SdDatepicker extends SolidElement implements SolidFormContr
                 @invalid=${this.handleInvalid}
               />
 
-              ${this.showInvalidStyle
-                ? html`<sd-icon
-                    part="invalid-icon"
-                    class=${cx('text-error', iconMarginLeft, iconSize)}
-                    library="_internal"
-                    name="risk"
-                  ></sd-icon>`
-                : ''}
-              ${this.showValidStyle && this.styleOnValid
-                ? html`<sd-icon
-                    class=${cx('text-success shrink-0', iconMarginLeft, iconSize)}
-                    library="_internal"
-                    name="confirm-circle"
-                    part="valid-icon"
-                  ></sd-icon>`
-                : ''}
+              ${
+                this.showInvalidStyle
+                  ? html`<sd-icon
+                      part="invalid-icon"
+                      class=${cx('text-error', iconMarginLeft, iconSize)}
+                      library="_internal"
+                      name="risk"
+                    ></sd-icon>`
+                  : ''
+              }
+              ${
+                this.showValidStyle && this.styleOnValid
+                  ? html`<sd-icon
+                      class=${cx('text-success shrink-0', iconMarginLeft, iconSize)}
+                      library="_internal"
+                      name="confirm-circle"
+                      part="valid-icon"
+                    ></sd-icon>`
+                  : ''
+              }
 
               <sd-icon
                 class=${cx(iconColor, iconMarginLeft, iconSize, 'hover:cursor-pointer')}

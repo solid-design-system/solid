@@ -246,9 +246,9 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
 
           <span
             id="control"
-            part="control ${this.checked ? ' control--checked' : 'control--unchecked'} ${this.indeterminate
-              ? ' control--indeterminate'
-              : ''}"
+            part="control ${this.checked ? ' control--checked' : 'control--unchecked'} ${
+              this.indeterminate ? ' control--indeterminate' : ''
+            }"
             class=${cx(
               'relative flex flex-shrink-0 items-center justify-center border sd-checkbox-border-width rounded-sm h-4 w-4',
               'transition-colors ease-in-out duration-medium group-hover:duration-fast',
@@ -294,26 +294,30 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
                 )}
               ></div>
             </div>
-            ${this.checked
-              ? html`
-                  <sd-icon
-                    part="checked-icon"
-                    class="text-white w-3 h-3"
-                    library="sd-status-assets"
-                    name="status-check"
-                  ></sd-icon>
-                `
-              : ''}
-            ${!this.checked && this.indeterminate
-              ? html`
-                  <sd-icon
-                    part="indeterminate-icon"
-                    class="text-white w-3 h-3"
-                    library="sd-status-assets"
-                    name="status-minus"
-                  ></sd-icon>
-                `
-              : ''}
+            ${
+              this.checked
+                ? html`
+                    <sd-icon
+                      part="checked-icon"
+                      class="text-white w-3 h-3"
+                      library="sd-status-assets"
+                      name="status-check"
+                    ></sd-icon>
+                  `
+                : ''
+            }
+            ${
+              !this.checked && this.indeterminate
+                ? html`
+                    <sd-icon
+                      part="indeterminate-icon"
+                      class="text-white w-3 h-3"
+                      library="sd-status-assets"
+                      name="status-minus"
+                    ></sd-icon>
+                  `
+                : ''
+            }
           </span>
           <span
             part="label"
@@ -331,9 +335,11 @@ export default class SdCheckbox extends SolidElement implements SolidFormControl
           part="invalid-icon-message"
           class=${cx('flex items-center gap-2', this.showInvalidStyle && 'mt-2')}
         >
-          ${this.showInvalidStyle
-            ? html` <sd-icon id="invalid-icon" part="invalid-icon" library="_internal" name="risk"> </sd-icon>`
-            : ''}
+          ${
+            this.showInvalidStyle
+              ? html` <sd-icon id="invalid-icon" part="invalid-icon" library="_internal" name="risk"> </sd-icon>`
+              : ''
+          }
           ${this.formControlController.renderInvalidMessage(this.size)}
         </div>
       </div>
