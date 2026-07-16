@@ -313,13 +313,14 @@ export const Sizes = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-full max-w-[370px]">
+      <div class="w-full max-w-[400px]">
         ${generateTemplate({
           axis: {
             y: { type: 'attribute', name: 'size' }
           },
           options: {
-            classes: 'w-full table-fixed [&_td.template]:w-[75%]'
+            classes:
+              'w-full table-fixed [&_td.template]:w-[75%] [&_td.template]:px-2 [&_tbody_th]:px-1 [&_th[rowspan]]:w-6!'
           },
           args
         })}
@@ -327,13 +328,14 @@ export const Sizes = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-full max-w-[370px]">
+      <div class="w-full max-w-[400px]">
         ${generateTemplate({
           axis: {
             y: { type: 'attribute', name: 'size', values: ['lg', 'md'] }
           },
           options: {
-            classes: 'w-full table-fixed [&_td.template]:w-[75%]'
+            classes:
+              'w-full table-fixed [&_td.template]:w-[75%] [&_td.template]:px-2 [&_tbody_th]:px-1 [&_th[rowspan]]:w-6!'
           },
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
@@ -360,26 +362,28 @@ export const StyleOnValid = {
     return html`
       <div>Default</div>
       <br />
-      <div class="h-[340px] w-full max-w-[370px]">
+      <div class="h-[340px] w-full max-w-[400px]">
         ${generateTemplate({
           axis: {
             y: { type: 'attribute', name: 'style-on-valid' }
           },
           options: {
-            classes: 'w-full table-fixed [&_td.template]:w-[75%]'
+            classes:
+              'w-full table-fixed [&_td.template]:w-[75%] [&_td.template]:px-2 [&_tbody_th]:px-1 [&_th[rowspan]]:w-6!'
           },
           args
         })}
       </div>
       <div>Floating Label</div>
       <br />
-      <div class="h-[340px] w-full max-w-[370px]">
+      <div class="h-[340px] w-full max-w-[400px]">
         ${generateTemplate({
           axis: {
             y: { type: 'attribute', name: 'style-on-valid' }
           },
           options: {
-            classes: 'w-full table-fixed [&_td.template]:w-[75%]'
+            classes:
+              'w-full table-fixed [&_td.template]:w-[75%] [&_td.template]:px-2 [&_tbody_th]:px-1 [&_th[rowspan]]:w-6!'
           },
           constants: [{ type: 'attribute', name: 'floating-label', value: true }],
           args
@@ -408,7 +412,7 @@ export const Types = {
     return html`
       <div>Default</div>
       <br />
-      <div class="w-full max-w-[370px]">
+      <div class="w-full max-w-[400px]">
         <div class="mb-2">
           ${generateTemplate({
             constants: [
@@ -538,7 +542,7 @@ export const Types = {
       <br />
       <div>Floating Label</div>
       <br />
-      <div class="w-full max-w-[370px]">
+      <div class="w-full max-w-[400px]">
         <div class="mb-2">
           ${generateTemplate({
             constants: [
@@ -683,7 +687,7 @@ export const Validation = {
   name: 'Validation',
   render: (args: any) => {
     return html`
-      <form action="" method="get" id="testForm" name="testForm" class="w-full max-w-[370px]">
+      <form action="" method="get" id="testForm" name="testForm" class="w-full max-w-[400px]">
         <div class="mb-2">
           ${generateTemplate({
             constants: [
@@ -981,10 +985,10 @@ export const Slots = {
             }
           },
           options: {
-            classes: 'w-full max-w-[500px] table-fixed [&_thead>tr:first-child>td:first-child]:w-8'
+            classes: 'w-full max-w-[500px] table-fixed [&_thead>tr:first-child>td:first-child]:w-8 [&_td.template]:px-2'
           },
           constants: [
-            { type: 'template', name: 'width', value: '<div style="width: 100%; max-width: 300px">%TEMPLATE%</div>' },
+            { type: 'template', name: 'width', value: '<div style="width: 100%; max-width: 400px">%TEMPLATE%</div>' },
             { type: 'attribute', name: 'clearable', value: true },
             { type: 'attribute', name: 'value', value: 'Value' },
             { type: 'attribute', name: 'label', value: 'Label' },
@@ -1066,7 +1070,7 @@ export const setCustomValidity = {
   render: () => {
     return html`
       <!-- block submit and show alert instead -->
-      <form id="validationForm" class="flex flex-col gap-2 w-full max-w-[370px]">
+      <form id="validationForm" class="flex flex-col gap-2 w-full max-w-[400px]">
         <sd-input id="custom-input" label="Input" style-on-valid></sd-input>
         <div>
           <sd-button type="submit">Submit</sd-button>

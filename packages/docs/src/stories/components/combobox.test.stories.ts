@@ -224,10 +224,10 @@ export const DisabledMultiple = {
       <div class="min-h-[340px] w-full">
         ${generateTemplate({
           options: {
-            classes: 'w-full [&>tbody>tr>td]:w-[50%] [&_*]:min-w-0'
+            classes: 'w-full [&_*]:min-w-0'
           },
           axis: {
-            x: {
+            y: {
               type: 'attribute',
               name: 'disabled',
               values: [false, true]
@@ -250,10 +250,10 @@ export const DisabledMultiple = {
       <div class="min-h-[340px] w-full">
         ${generateTemplate({
           options: {
-            classes: 'w-full [&>tbody>tr>td]:w-[50%] [&_*]:min-w-0'
+            classes: 'w-full [&_*]:min-w-0'
           },
           axis: {
-            x: {
+            y: {
               type: 'attribute',
               name: 'disabled',
               values: [false, true]
@@ -291,16 +291,19 @@ export const ValidInvalid = {
 
     return html`
       <div>Default</div>
-      <form id="valid-invalid-default" class="h-[260px] w-full flex gap-4">
+      <form id="valid-invalid-default" class="w-full">
         ${generateTemplate({
           options: {
             classes: 'w-full [&>tbody>tr>td]:align-top'
           },
           axis: {
-            x: {
+            y: {
               type: 'attribute',
               name: 'value',
-              values: ['option-1 option-2', '']
+              values: [
+                { value: 'option-1 option-2', title: 'valid' },
+                { value: '', title: 'invalid' }
+              ]
             }
           },
           constants: [twoOptionsConstant, labelConstant, multipleConstant],
@@ -310,16 +313,19 @@ export const ValidInvalid = {
 
       <br />
       <div>Floating Label</div>
-      <form id="valid-invalid-floating" class="h-[260px] w-full flex gap-4">
+      <form id="valid-invalid-floating" class="w-full">
         ${generateTemplate({
           options: {
             classes: 'w-full [&>tbody>tr>td]:align-top'
           },
           axis: {
-            x: {
+            y: {
               type: 'attribute',
               name: 'value',
-              values: ['option-1 option-2', '']
+              values: [
+                { value: 'option-1 option-2', title: 'valid' },
+                { value: '', title: 'invalid' }
+              ]
             }
           },
           constants: [
