@@ -1,5 +1,11 @@
 # @solid-design-system/docs
 
+## 2.21.1
+
+### Patch Changes
+
+- Reworked the General "Introduction" page: added a Union Investment introduction with logo, restructured the content under "Introduction" and "Solid Design System" headings, updated the vision statement and fixed the "tested Browser versions" link color. _[`#3131`](https://github.com/solid-design-system/solid/pull/3131) [`321e5c9`](https://github.com/solid-design-system/solid/commit/321e5c9fa8a76b3ae1bb36d8b5497ca686eb8756) [@balco0110](https://github.com/balco0110)_
+
 ## 2.21.0
 
 ### Minor Changes
