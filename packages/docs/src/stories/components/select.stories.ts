@@ -71,7 +71,7 @@ export const Size = {
         placeholder="Large"
         placement="bottom"
         value=""
-        class="test min-w-[200px] md:min-w-0 max-w-[400px]"
+        class="test w-full min-w-[200px] md:min-w-0 max-w-[400px]"
       >
         <sd-option value="option-1" size="lg">Option 1</sd-option>
         <sd-option value="option-2" size="lg">Option 2</sd-option>
@@ -86,7 +86,7 @@ export const Size = {
         placeholder="Medium"
         placement="bottom"
         value=""
-        class="test min-w-[200px] md:min-w-0 max-w-[400px]"
+        class="test w-full min-w-[200px] md:min-w-0 max-w-[400px]"
       >
         <sd-option value="option-1" size="md">Option 1</sd-option>
         <sd-option value="option-2" size="md">Option 2</sd-option>
@@ -101,7 +101,7 @@ export const Size = {
         placeholder="Small"
         placement="bottom"
         value=""
-        class="min-w-[200px] md:min-w-0 max-w-[400px]"
+        class="w-full min-w-[200px] md:min-w-0 max-w-[400px]"
       >
         <sd-option value="option-1" size="sm">Option 1</sd-option>
         <sd-option value="option-2" size="sm">Option 2</sd-option>
@@ -122,7 +122,7 @@ export const Placement = {
   render: () => html`
     <div class="flex flex-wrap md:flex-nowrap items-center gap-12 h-[500px]">
       <sd-select
-        class="self-baseline min-w-[200px] md:min-w-0 max-w-[400px]"
+        class="self-baseline w-full min-w-[200px] md:min-w-0 max-w-[400px]"
         size="lg"
         label="Label"
         placement="bottom"
@@ -135,7 +135,7 @@ export const Placement = {
         <sd-option value="option-5">Option 5</sd-option>
       </sd-select>
 
-      <sd-select size="lg" label="Label" placement="top" value="" class="min-w-[200px] md:min-w-0 max-w-[400px]">
+      <sd-select size="lg" label="Label" placement="top" value="" class="w-full min-w-[200px] md:min-w-0 max-w-[400px]">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
         <sd-option value="option-3">Option 3</sd-option>
@@ -159,7 +159,7 @@ export const Label = {
         label="Label attribute"
         placement="bottom"
         value=""
-        class="min-w-[200px] md:min-w-0 max-w-[400px]"
+        class="w-full min-w-[200px] md:min-w-0 max-w-[400px]"
       >
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -168,7 +168,7 @@ export const Label = {
         <sd-option value="option-5">Option 5</sd-option>
       </sd-select>
 
-      <sd-select size="lg" placement="bottom" value="" class="min-w-[200px] md:min-w-0 max-w-[400px]">
+      <sd-select size="lg" placement="bottom" value="" class="w-full min-w-[200px] md:min-w-0 max-w-[400px]">
         <div slot="label" class="text-lg">Label slot</div>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -187,7 +187,7 @@ export const Label = {
  */
 export const FloatingLabel = {
   render: () => html`
-    <div class="flex gap-12 w-full max-w-[400px] h-[500px]">
+    <div class="w-full max-w-[400px] h-[500px]">
       <sd-select size="lg" label="Floating Label" floating-label placement="bottom" value="">
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -301,7 +301,7 @@ export const HelpText = {
         placement="bottom"
         value=""
         help-text="Help text attribute"
-        class="min-w-[200px] md:min-w-0 max-w-[400px]"
+        class="w-full min-w-[200px] md:min-w-0 max-w-[400px]"
       >
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>
@@ -310,7 +310,13 @@ export const HelpText = {
         <sd-option value="option-5">Option 5</sd-option>
       </sd-select>
 
-      <sd-select size="lg" label="Label" placement="bottom" value="" class="min-w-[200px] md:min-w-0 max-w-[400px]">
+      <sd-select
+        size="lg"
+        label="Label"
+        placement="bottom"
+        value=""
+        class="w-full min-w-[200px] md:min-w-0 max-w-[400px]"
+      >
         <div slot="help-text" class="text-lg">Help text slot</div>
         <sd-option value="option-1">Option 1</sd-option>
         <sd-option value="option-2">Option 2</sd-option>

@@ -780,7 +780,7 @@ export const storybookUtilities = {
         ${Object.entries(stories).map(([storyName, story]) => {
           const name = story.name ?? sentenceCase(storyName);
           return html`
-            <div style="height: ${height}; margin: 4rem">
+            <div style="height: ${height};" class="my-16 mx-4 md:mx-16">
               <h3
                 data-chromatic="ignore"
                 style="margin-top: 6rem; margin-bottom: 1rem; font-size: 1.25rem; font-weight: bold; ${additionalStylesHeading}"

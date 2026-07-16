@@ -431,7 +431,7 @@ export const Slots = {
             }
           },
           constants: [
-            { type: 'template', name: 'width', value: '<div style="width: 300px">%TEMPLATE%</div>' },
+            { type: 'template', name: 'width', value: '<div style="width: 100%; max-width: 300px">%TEMPLATE%</div>' },
             clearableConstant,
             labelConstant,
             helpTextConstant,
@@ -845,7 +845,7 @@ export const SampleForm = {
     ];
 
     return html`
-      <form action="" method="get" id="testForm" name="testForm" class="w-[370px]">
+      <form action="" method="get" id="testForm" name="testForm" class="w-full max-w-[370px]">
         <div class="mb-6 w-full max-w-[400px]">
           ${generateTemplate({
             constants: [

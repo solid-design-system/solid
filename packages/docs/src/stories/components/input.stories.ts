@@ -231,6 +231,7 @@ export const Type = {
         label="Text (default)"
         help-text="Default type"
         spellcheck
+        class="w-full max-w-[250px]"
       ></sd-input>
 
       <sd-input
@@ -239,6 +240,7 @@ export const Type = {
         label="Search"
         help-text="Use search format"
         spellcheck
+        class="w-full max-w-[250px]"
       ></sd-input>
 
       <sd-input
@@ -247,6 +249,7 @@ export const Type = {
         value="2025-03-01"
         help-text="Value is restricted to date format"
         spellcheck
+        class="w-full max-w-[250px]"
       ></sd-input>
 
       <sd-input
@@ -255,6 +258,7 @@ export const Type = {
         value="2025-03-01T10:30"
         help-text="Value is restricted to datetime format"
         spellcheck
+        class="w-full max-w-[250px]"
       ></sd-input>
 
       <sd-input
@@ -263,6 +267,7 @@ export const Type = {
         value="10:30"
         help-text="Value is restricted to time format"
         spellcheck
+        class="w-full max-w-[250px]"
       ></sd-input>
 
       <sd-input
@@ -272,6 +277,7 @@ export const Type = {
         help-text="Value is restricted to numbers"
         spin-buttons
         spellcheck
+        class="w-full max-w-[250px]"
       ></sd-input>
 
       <sd-input
@@ -280,6 +286,7 @@ export const Type = {
         label="Email"
         help-text="Validate with email address format"
         spellcheck
+        class="w-full max-w-[250px]"
       ></sd-input>
 
       <sd-input
@@ -288,6 +295,7 @@ export const Type = {
         label="Tel"
         help-text="Shows optimized keyboard on touch devices or similar"
         spellcheck
+        class="w-full max-w-[250px]"
       ></sd-input>
 
       <sd-input
@@ -297,6 +305,7 @@ export const Type = {
         help-text="Use password display format"
         password-toggle
         spellcheck
+        class="w-full max-w-[250px]"
       ></sd-input>
 
       <sd-input
@@ -307,6 +316,7 @@ export const Type = {
         password-toggle
         password-visible
         spellcheck
+        class="w-full max-w-[250px]"
       ></sd-input>
 
       <sd-input
@@ -316,6 +326,7 @@ export const Type = {
         help-text="Validate with url format"
         name="url field"
         spellcheck
+        class="w-full max-w-[250px]"
       ></sd-input>
     </div>`
 };
