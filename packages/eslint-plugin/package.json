@@ -39,24 +39,24 @@
     "postversion": "pnpm build"
   },
   "devDependencies": {
-    "@types/node": "^25.8.0",
-    "@typescript-eslint/rule-tester": "^8.59.3",
-    "@typescript-eslint/utils": "^8.59.3",
+    "@types/node": "^26.1.1",
+    "@typescript-eslint/rule-tester": "^8.63.0",
+    "@typescript-eslint/utils": "^8.63.0",
     "es-html-parser": "^0.3.1",
-    "esbuild": "^0.28.0",
-    "eslint": "^10.4.0",
-    "globby": "^16.2.0",
+    "esbuild": "^0.28.1",
+    "eslint": "^10.7.0",
+    "globby": "^16.2.1",
     "jest": "^30.4.2",
     "plop": "^4.0.5",
-    "ts-jest": "^29.4.9",
+    "ts-jest": "^29.4.11",
     "ts-node": "^10.9.2",
     "typescript": "5.8.3"
   },
   "peerDependencies": {
-    "@html-eslint/parser": "^0.60.0",
+    "@html-eslint/parser": "^0.64.0",
     "eslint": "^9.18.0"
   },
   "dependencies": {
-    "@html-eslint/parser": "^0.60.0"
+    "@html-eslint/parser": "^0.64.0"
   }
 }
