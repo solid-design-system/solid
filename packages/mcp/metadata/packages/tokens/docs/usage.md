@@ -331,7 +331,7 @@ Coordinate with the Theme Host team on versioning:
 - If you upgrade your components or styles, notify the host so they can upgrade their theme accordingly.
 - This will become a hard requirement in a future release — aligning now avoids breakage later.
 
-{/\* \*/}
+{/* */}
 
   </sd-tab-panel>
 

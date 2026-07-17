@@ -720,12 +720,14 @@ export default class SdCarousel extends SolidElement {
               aria-label="${this.localize.term('previousSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${prevEnabled ? 'false' : 'true'}"
-              @click=${prevEnabled
-                ? (e: MouseEvent) => {
-                    this.previous();
-                    this.unblockAutoplay(e, this.previousButton);
-                  }
-                : null}
+              @click=${
+                prevEnabled
+                  ? (e: MouseEvent) => {
+                      this.previous();
+                      this.unblockAutoplay(e, this.previousButton);
+                    }
+                  : null
+              }
             >
               <slot name="previous-icon">
                 <sd-icon
@@ -736,79 +738,81 @@ export default class SdCarousel extends SolidElement {
               </slot>
             </button>
 
-            ${this.variant === 'dot'
-              ? html`
-                  <div
-                    part="pagination-dot"
-                    role="tablist"
-                    class="${cx('carousel__pagination dot flex wrap items-center gap-2')}"
+            ${
+              this.variant === 'dot'
+                ? html`
+                    <div
+                      part="pagination-dot"
+                      role="tablist"
+                      class="${cx('carousel__pagination dot flex wrap items-center gap-2')}"
+                      aria-controls="scroll-container"
+                    >
+                      ${map(range(pagesCount), index => {
+                        const isActive = index + 1 === currentPage;
+                        return html`
+                          <button
+                            part="pagination-item ${isActive ? 'pagination-item--active' : ''}"
+                            class="${cx(
+                              'carousel__pagination-item',
+                              'block cursor-pointer bg-none border-0 rounded-full',
+                              isActive ? 'bg-accent' : '',
+                              this.inverted ? 'focus-within:focus-outline-inverted' : 'focus-within:focus-outline'
+                            )}"
+                            role="tab"
+                            tabindex="0"
+                            aria-selected="${isActive ? 'true' : 'false'}"
+                            aria-label="${this.localize.term('goToSlide', index + 1, pagesCount)}"
+                            @click="${(e: MouseEvent) => {
+                              this.goToSlide(index * slidesPerMove);
+                              this.unblockAutoplay(e, this.paginationItems[index]);
+                            }}"
+                          >
+                            <span
+                              class=${cx(
+                                'h-4 w-4 block border sd-carousel__pager-dot-border-width rounded-full transition-colors duration-slow hover:duration-fast ease-in-out',
+                                this.inverted
+                                  ? 'sd-carousel__pager-dot--inverted-border hover:border-primary-200'
+                                  : 'border-primary hover:border-primary-500',
+                                isActive && 'border-none',
+                                isActive
+                                  ? this.inverted
+                                    ? 'sd-carousel__pager-dot--inverted-background hover:sd-carousel__pager-dot--inverted--hovered-background'
+                                    : 'sd-carousel__pager-dot-background hover:bg-accent-550'
+                                  : ''
+                              )}
+                            ></span>
+                          </button>
+                        `;
+                      })}
+                    </div>
+                  `
+                : html` <span
+                    part="pagination-number"
+                    class="carousel__pagination number flex gap-0.5 cursor-default select-none"
                     aria-controls="scroll-container"
                   >
-                    ${map(range(pagesCount), index => {
-                      const isActive = index + 1 === currentPage;
-                      return html`
-                        <button
-                          part="pagination-item ${isActive ? 'pagination-item--active' : ''}"
-                          class="${cx(
-                            'carousel__pagination-item',
-                            'block cursor-pointer bg-none border-0 rounded-full',
-                            isActive ? 'bg-accent' : '',
-                            this.inverted ? 'focus-within:focus-outline-inverted' : 'focus-within:focus-outline'
-                          )}"
-                          role="tab"
-                          tabindex="0"
-                          aria-selected="${isActive ? 'true' : 'false'}"
-                          aria-label="${this.localize.term('goToSlide', index + 1, pagesCount)}"
-                          @click="${(e: MouseEvent) => {
-                            this.goToSlide(index * slidesPerMove);
-                            this.unblockAutoplay(e, this.paginationItems[index]);
-                          }}"
-                        >
-                          <span
-                            class=${cx(
-                              'h-4 w-4 block border sd-carousel__pager-dot-border-width rounded-full transition-colors duration-slow hover:duration-fast ease-in-out',
-                              this.inverted
-                                ? 'sd-carousel__pager-dot--inverted-border hover:border-primary-200'
-                                : 'border-primary hover:border-primary-500',
-                              isActive && 'border-none',
-                              isActive
-                                ? this.inverted
-                                  ? 'sd-carousel__pager-dot--inverted-background hover:sd-carousel__pager-dot--inverted--hovered-background'
-                                  : 'sd-carousel__pager-dot-background hover:bg-accent-550'
-                                : ''
-                            )}
-                          ></span>
-                        </button>
-                      `;
-                    })}
-                  </div>
-                `
-              : html` <span
-                  part="pagination-number"
-                  class="carousel__pagination number flex gap-0.5 cursor-default select-none"
-                  aria-controls="scroll-container"
-                >
-                  <span
-                    part="pagination-item"
-                    class=${cx(
-                      'w-5 text-center border-b-2',
-                      this.inverted
-                        ? 'text-white sd-carousel--active--inverted-color-border'
-                        : 'text-black sd-carousel--active-color-border'
-                    )}
-                    >${currentPage}</span
-                  >
-                  <span
-                    part="pagination-divider"
-                    class=${cx('scale-y-[1.5]', 'text-center', this.inverted ? 'text-white' : 'text-black')}
-                    >/</span
-                  >
-                  <span
-                    part="pagination-item"
-                    class=${cx('w-5 text-center', this.inverted ? 'text-white' : 'text-black')}
-                    >${pagesCount}</span
-                  >
-                </span>`}
+                    <span
+                      part="pagination-item"
+                      class=${cx(
+                        'w-5 text-center border-b-2',
+                        this.inverted
+                          ? 'text-white sd-carousel--active--inverted-color-border'
+                          : 'text-black sd-carousel--active-color-border'
+                      )}
+                      >${currentPage}</span
+                    >
+                    <span
+                      part="pagination-divider"
+                      class=${cx('scale-y-[1.5]', 'text-center', this.inverted ? 'text-white' : 'text-black')}
+                      >/</span
+                    >
+                    <span
+                      part="pagination-item"
+                      class=${cx('w-5 text-center', this.inverted ? 'text-white' : 'text-black')}
+                      >${pagesCount}</span
+                    >
+                  </span>`
+            }
 
             <button
               part="navigation-button navigation-button--next"
@@ -822,12 +826,14 @@ export default class SdCarousel extends SolidElement {
               aria-label="${this.localize.term('nextSlide')}"
               aria-controls="scroll-container"
               aria-disabled="${nextEnabled ? 'false' : 'true'}"
-              @click=${nextEnabled
-                ? (e: MouseEvent) => {
-                    this.next();
-                    this.unblockAutoplay(e, this.nextButton);
-                  }
-                : null}
+              @click=${
+                nextEnabled
+                  ? (e: MouseEvent) => {
+                      this.next();
+                      this.unblockAutoplay(e, this.nextButton);
+                    }
+                  : null
+              }
             >
               <slot name="next-icon">
                 <sd-icon

@@ -39,12 +39,7 @@ import SolidElement from '../../internal/solid-element';
 export default class SdTeaserMedia extends SolidElement {
   /** Variant of the teaser */
   @property({ type: String, reflect: true }) variant:
-    | 'white'
-    | 'neutral-100'
-    | 'primary'
-    | 'primary-100'
-    | 'gradient-light'
-    | 'gradient-dark' = 'white';
+    'white' | 'neutral-100' | 'primary' | 'primary-100' | 'gradient-light' | 'gradient-dark' = 'white';
 
   /** Controls whether the expandable content is visible */
   @property({ type: Boolean, reflect: true }) open = false;
@@ -124,30 +119,32 @@ export default class SdTeaserMedia extends SolidElement {
               >
                 <slot name="expandable"></slot>
               </div>
-              ${slots['teaser-has-expandable']
-                ? html`
-                    <button
-                      part="toggle"
-                      class=${cx(
-                        'mt-2',
-                        ['primary', 'gradient-dark'].includes(this.variant)
-                          ? 'text-white'
-                          : 'sd-teaser-media-color-icon-fill'
-                      )}
-                      @click=${this.onToggleClick}
-                      aria-expanded=${this.open}
-                      aria-label=${this.open ? 'Collapse content' : 'Expand content'}
-                    >
-                      <div class="h-full justify-start flex items-start">
-                        <sd-icon
-                          class=${cx('w-6 h-6 transition-transform', this.open && 'rotate-180')}
-                          library="_internal"
-                          name="chevron-down"
-                        ></sd-icon>
-                      </div>
-                    </button>
-                  `
-                : null}
+              ${
+                slots['teaser-has-expandable']
+                  ? html`
+                      <button
+                        part="toggle"
+                        class=${cx(
+                          'mt-2',
+                          ['primary', 'gradient-dark'].includes(this.variant)
+                            ? 'text-white'
+                            : 'sd-teaser-media-color-icon-fill'
+                        )}
+                        @click=${this.onToggleClick}
+                        aria-expanded=${this.open}
+                        aria-label=${this.open ? 'Collapse content' : 'Expand content'}
+                      >
+                        <div class="h-full justify-start flex items-start">
+                          <sd-icon
+                            class=${cx('w-6 h-6 transition-transform', this.open && 'rotate-180')}
+                            library="_internal"
+                            name="chevron-down"
+                          ></sd-icon>
+                        </div>
+                      </button>
+                    `
+                  : null
+              }
             </div>
           </div>
         </div>

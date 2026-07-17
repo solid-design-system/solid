@@ -22,7 +22,7 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.animated: boolean, default=false — The map-marker's is animated when displayed.
 - prop.notInteractive [attr: not-interactive]: boolean, default=false — Determines if the map-marker is interactive.
 - prop.href: string, default='' — When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
-- prop.target: '\_blank'|'\_parent'|'\_self'|'\_top' — Tells the browser where to open the link. Only used when `href` is present.
+- prop.target: '_blank'|'_parent'|'_self'|'_top' — Tells the browser where to open the link. Only used when `href` is present.
 - prop.label: string, default='' — Only relevant when map-marker is interactive.
   When set, it will be used to announce the name of the map-marker to screenreaders,
   otherwise, screenreaders will announce the content inside the default slot.

@@ -24,7 +24,7 @@
   return generateTemplate({ args });
   }
   };
-  /\*\*
+  /**
   Use the `variant` attribute to set the badge’s variant:
 - `blue`
 - `green`
