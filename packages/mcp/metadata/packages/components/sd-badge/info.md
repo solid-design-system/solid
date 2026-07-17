@@ -18,6 +18,8 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.size: 'lg'|'md'|'sm', default='lg' — The badge's size.
 - prop.variant: 'blue'|'green'|'red', default='blue' — The badge's variant.
 - prop.inverted: boolean, default=false — Inverts the badge.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Slots
 

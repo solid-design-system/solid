@@ -44,7 +44,7 @@
     "@typescript-eslint/eslint-plugin": "^8.63.0",
     "@typescript-eslint/parser": "^8.63.0",
     "changesets-changelog-clean": "^1.4.0",
-    "eslint": "^10.4.0",
+    "eslint": "^10.7.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-chai-expect": "^4.1.0",
     "eslint-plugin-chai-friendly": "^1.2.1",

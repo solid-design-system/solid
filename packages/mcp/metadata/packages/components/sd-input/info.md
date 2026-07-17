@@ -74,6 +74,8 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.valueAsDate: — Gets or sets the current value as a `Date` object. Returns `null` if the value can't be converted.
 - prop.valueAsNumber: — Gets or sets the current value as a number. Returns `NaN` if the value can't be converted.
 - prop.validity: — Gets the validity state object
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Events
 

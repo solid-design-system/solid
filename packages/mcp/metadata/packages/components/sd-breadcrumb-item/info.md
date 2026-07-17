@@ -9,6 +9,8 @@
 - prop.href: string, default='' — When not set, the breadcrumb will render as disabled.
 - prop.target: '_blank'|'_parent'|'_self'|'_top' — Tells the browser where to open the link. Only used when `href` is present.
 - prop.current: boolean, default=false — When set, the attribute `aria-current="page"` will be applied.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Slots
 

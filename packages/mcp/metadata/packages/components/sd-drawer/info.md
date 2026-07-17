@@ -21,6 +21,8 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.placement: 'end'|'start', default='end' — The direction from which the drawer will open.
 - prop.contained: boolean, default=false — By default, the drawer slides out of its containing block (the viewport). Contained is a hidden feature used only for testing purposes. Please do not use it in production as it will likely change.
 - prop.noHeader [attr: no-header]: boolean, default=false — Removes the header. This will also remove the default close button, so please ensure you provide an easy, accessible way for users to dismiss the drawer.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Events
 

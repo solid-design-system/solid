@@ -18,6 +18,8 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.open: boolean, default=false — Indicates whether or not the accordion is open. You can toggle this attribute to show and hide the accordion, or you
   can use the `show()` and `hide()` methods and this attribute will reflect the accordion' open state.
 - prop.summary: string — The summary to show in the header. If you need to display HTML, use the `summary` slot instead.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Events
 

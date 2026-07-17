@@ -15,6 +15,8 @@ Use the components tool by passing the args `component` and `example` for any of
 
 - prop.activation: 'auto'|'manual', default='auto' — When set to auto, navigating tabs with the arrow keys will instantly show the corresponding tab panel. When set to
   manual, the tab will receive focus but will not show until the user presses spacebar or enter.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Events
 

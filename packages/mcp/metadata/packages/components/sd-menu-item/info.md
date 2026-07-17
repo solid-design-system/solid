@@ -18,6 +18,8 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.checked: boolean, default=false — Draws the item in a checked state.
 - prop.disabled: boolean, default=false — Draws the menu item in a disabled state, preventing selection.
 - prop.value: string, default='' — A unique value to store in the menu item. This can be used as a way to identify menu items when selected.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Slots
 

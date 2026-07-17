@@ -13,6 +13,8 @@ Use the components tool by passing the args `component` and `example` for any of
 ### Key Properties
 
 - prop.fixed: boolean, default=false — Determines whether the header is fixed or not. If the header is fixed at the top of the page, a shadow is shown underneath.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Slots
 

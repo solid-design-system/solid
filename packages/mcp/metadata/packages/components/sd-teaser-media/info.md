@@ -17,6 +17,8 @@ Use the components tool by passing the args `component` and `example` for any of
 
 - prop.variant: 'white'|'neutral-100'|'primary'|'primary-100'|'gradient-light'|'gradient-dark', default='white' — Variant of the teaser
 - prop.open: boolean, default=false — Controls whether the expandable content is visible
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Slots
 

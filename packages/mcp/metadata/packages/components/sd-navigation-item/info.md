@@ -37,6 +37,8 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.divider: boolean, default=false — Adds additional padding to navigation item's left and right sides. Only used if `vertical` is true.
 - prop.indented: boolean, default=false — Adds additional padding to navigation item's left side. Only used if `vertical` is true.
 - prop.open: boolean, default=false — Reflects HTML details element state and allows control from parent. Only used if `vertical` is true, no `href`is undefined, and `children` is defined.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Events
 

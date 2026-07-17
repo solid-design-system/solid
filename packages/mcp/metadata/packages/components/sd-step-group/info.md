@@ -24,6 +24,8 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.notInteractive [attr: not-interactive]: boolean, default=false — Determines if the step-group is not interactive.
 - prop.label: string, default='' — A label to use in the step-group. This won't be displayed on the screen, but it will be announced by assistive
   devices when interacting with the control and is strongly recommended.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Slots
 

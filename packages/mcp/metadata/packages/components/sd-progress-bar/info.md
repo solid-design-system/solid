@@ -27,6 +27,8 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.valueFormatter: (value: number) => string — A function used to format the progress-bar's value.
   The value of the progress-bar is passed as the only argument.
   The function should return a string to display in the value-position part.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Slots
 

@@ -14,6 +14,8 @@ Use the components tool by passing the args `component` and `example` for any of
 
 - prop.name: string, default='' — The tab panel's name.
 - prop.active: boolean, default=false — When true, the tab panel will be shown.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Slots
 

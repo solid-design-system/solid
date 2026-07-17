@@ -17,6 +17,8 @@ Use the components tool by passing the args `component` and `example` for any of
 
 - prop.variant: 'neutral-100'|'primary'|'white'|'border-primary'|'border-white'|'primary|80'|'white|80'|'image', default='primary' — The brandshape's theme variant.
 - prop.shapes: ('top'|'middle'|'bottom')[], default=['top', 'middle', 'bottom'] — Defines which shapes of the brandshape should be displayed.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Slots
 

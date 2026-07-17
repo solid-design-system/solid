@@ -18,6 +18,8 @@ Use the components tool by passing the args `component` and `example` for any of
   use the `show()` and `hide()` methods and this attribute will reflect the dialog's open state.
 - prop.headline: string, default='' — The dialog's headline as displayed in the header. If you need to display HTML, use the `headline` slot instead.
 - prop.noCloseButton [attr: no-close-button]: boolean, default=false — This will remove the default close button. Please ensure you provide an easy, accessible way for users to dismiss the dialog.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Events
 

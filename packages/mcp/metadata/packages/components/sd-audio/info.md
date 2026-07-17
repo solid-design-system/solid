@@ -22,6 +22,8 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.animated: boolean, default=false — Enables the wave animation
 - prop.inverted: boolean, default=false — Inverts the colors of the component
 - prop.speed: number, default=1 — Sets value of the audio element playback rate
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Events
 

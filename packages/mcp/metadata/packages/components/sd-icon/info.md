@@ -26,6 +26,8 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.library: string, default='default' — The name of a registered custom icon library.
 - prop.color: 'currentColor'|'primary'|'white', default='currentColor' — The color of the icon.
   "current" refers to currentColor and makes it possible to easily style the icon from outside without any CSS variables.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Events
 

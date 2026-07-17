@@ -23,6 +23,8 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.shadows: boolean, default=false — Activates a shadow as optional visual scroll indicator
 - prop.inset: boolean, default=false — Adds inset padding
 - prop.step: number, default=150 — The amount in px to be scrolled when clicking the buttons.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Events
 

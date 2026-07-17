@@ -20,6 +20,8 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.visuallyDisabled [attr: visually-disabled]: boolean, default=false — A Boolean attribute which, if present, disables the radio.
 - prop.value: string — The radio's value. When selected, the radio group will receive this value.
 - prop.invalid: boolean, default=false — A Boolean attribute which, if present, marks the radio Button valid or invalid
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Events
 

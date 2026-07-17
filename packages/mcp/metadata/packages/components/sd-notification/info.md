@@ -28,6 +28,8 @@ Use the components tool by passing the args `component` and `example` for any of
   the notification will not close on its own.
 - prop.durationIndicator [attr: duration-indicator]: boolean, default=false — Enables an animation that visualizes the duration of a notification.
 - prop.toastStack [attr: toast-stack]: 'top-right'|'bottom-center', default='top-right' — The position of the toasted sd-notification.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Events
 

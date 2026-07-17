@@ -31,6 +31,8 @@ Use the components tool by passing the args `component` and `example` for any of
 
 <li> The number of slides should be divisible by the number of `slides-per-page` to maintain consistent scroll behavior.</li>
 <li>Variations between `slides-per-move` and `slides-per-page` can lead to unexpected scrolling behavior. Keep your intended UX in mind when adjusting these values.</li>
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Events
 

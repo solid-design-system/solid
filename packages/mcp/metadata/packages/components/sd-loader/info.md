@@ -15,6 +15,8 @@ Use the components tool by passing the args `component` and `example` for any of
 ### Key Properties
 
 - prop.color: 'primary'|'white'|'currentColor', default='currentColor' — The color of the loader.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ## Guidelines
 

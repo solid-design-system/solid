@@ -16,6 +16,8 @@ Use the components tool by passing the args `component` and `example` for any of
 
 - prop.orientation: 'horizontal'|'vertical', default='horizontal' — Determines the orientation of the divider.
 - prop.inverted: boolean, default=false — This inverts the divider.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### CSS Parts
 

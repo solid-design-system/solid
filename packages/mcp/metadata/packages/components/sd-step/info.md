@@ -36,6 +36,8 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.description: string, default='' — The step's description overwriting the `description` slot. Use the `description` slot for complex description content.
 - prop.index: number, default=1 — The step's number in a step-group
 - prop.href: string, default='' — When set, the underlying button will be rendered as an `<a>` with this `href` instead of a `<button>`.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Events
 

@@ -34,6 +34,8 @@ Use the components tool by passing the args `component` and `example` for any of
   the same document or shadow root for this to work.
 - prop.validity: — Gets the validity state object
 - prop.validationMessage: — Gets the validation message
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Events
 

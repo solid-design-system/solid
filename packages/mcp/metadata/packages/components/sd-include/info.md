@@ -11,6 +11,8 @@
 - prop.mode: 'cors'|'no-cors'|'same-origin', default='cors' — The fetch mode to use.
 - prop.allowScripts [attr: allow-scripts]: boolean, default=false — Allows included scripts to be executed. Be sure you trust the content you are including as it will be executed as
   code and can result in XSS attacks.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Events
 

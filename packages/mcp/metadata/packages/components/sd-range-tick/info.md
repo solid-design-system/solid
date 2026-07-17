@@ -7,6 +7,8 @@
 ### Key Properties
 
 - prop.subtick: boolean, default=false — Whether the tick should be shown as a subtick.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Slots
 

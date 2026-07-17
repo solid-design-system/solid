@@ -66,6 +66,8 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.showValidStyle: boolean, default=false — Whether to show the valid styling state.
 - prop.showInvalidStyle: boolean, default=false — Whether to show the invalid styling state.
 - prop.currentPlacement: — Actual placement currently used by the flyout.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Events
 

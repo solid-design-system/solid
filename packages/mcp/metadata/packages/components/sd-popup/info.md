@@ -47,6 +47,8 @@
   default, the boundary includes overflow ancestors that will cause the element to be clipped. If needed, you can
   change the boundary by passing a reference to one or more elements to this property.
 - prop.autoSizePadding [attr: auto-size-padding]: number, default=0 — The amount of padding, in pixels, to exceed before the auto-size behavior will occur.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Events
 

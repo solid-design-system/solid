@@ -15,6 +15,8 @@ Use the components tool by passing the args `component` and `example` for any of
 
 - prop.playing: boolean, default=false — Set to `true` to hide the play icon.
 - prop.isBelowBreakpoint: boolean, default=false — Reactive property to trigger breakpoint re-renders.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Events
 

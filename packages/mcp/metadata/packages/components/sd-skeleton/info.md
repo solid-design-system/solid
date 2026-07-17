@@ -13,6 +13,8 @@ Use the components tool by passing the args `component` and `example` for any of
 ### Key Properties
 
 - prop.variant: 'rectangular'|'circular', default='rectangular' — The shape variant when used without slotted content.
+- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
+- prop.lang: string — The element's language.
 
 ### Slots
 
