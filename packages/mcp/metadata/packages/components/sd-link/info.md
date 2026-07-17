@@ -25,8 +25,6 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.visuallyDisabled [attr: visually-disabled]: boolean, default=false — Styles the link as if it was disabled and enables aria-disabled
 - prop.target: '_blank'|'_parent'|'_self'|'_top' — Tells the browser where to open the link. Only used when `href` is present.
 - prop.download: string|undefined — Tells the browser to download the linked file as this filename. Only used when `href` is present.
-- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
-- prop.lang: string — The element's language.
 
 ### Events
 

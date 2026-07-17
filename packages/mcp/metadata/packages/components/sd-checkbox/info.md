@@ -33,8 +33,6 @@ Use the components tool by passing the args `component` and `example` for any of
   the same document or shadow root for this to work.
 - prop.required: boolean, default=false — Makes the checkbox a required field.
 - prop.validity: — Gets the validity state object
-- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
-- prop.lang: string — The element's language.
 
 ### Events
 

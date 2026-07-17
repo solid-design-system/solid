@@ -57,8 +57,6 @@ Use the components tool by passing the args `component` and `example` for any of
   `overflow: auto|scroll`. Hoisting uses a fixed positioning strategy that works in many, but not all, scenarios.
 - prop.validity: — Gets the validity state object
 - prop.validationMessage: — Gets the validation message
-- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
-- prop.lang: string — The element's language.
 
 ### Events
 

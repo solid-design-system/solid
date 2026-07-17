@@ -21,8 +21,6 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.disabled: boolean, default=false — Disables the tab and prevents selection.
 - prop.visuallyDisabled [attr: visually-disabled]: boolean, default=false — Styles the tab as if it was disabled and enables aria-disabled
 - prop.panel: string, default='' — The name of the tab panel this tab is associated with. The panel must be located in the same tab group.
-- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
-- prop.lang: string — The element's language.
 
 ### Slots
 

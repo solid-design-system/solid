@@ -44,8 +44,6 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.formTarget [attr: formtarget]: '_self'|'_blank'|'_parent'|'_top' — Used to override the form owner's `target` attribute.
 - prop.validity: — Gets the validity state object
 - prop.validationMessage: — Gets the validation message
-- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
-- prop.lang: string — The element's language.
 
 ### Events
 

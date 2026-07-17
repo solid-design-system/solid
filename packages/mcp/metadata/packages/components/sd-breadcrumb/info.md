@@ -7,8 +7,6 @@
 ### Key Properties
 
 - prop.label: string, default='' — The breadcrumbs' label. Required for proper accessibility.
-- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
-- prop.lang: string — The element's language.
 
 ### Slots
 

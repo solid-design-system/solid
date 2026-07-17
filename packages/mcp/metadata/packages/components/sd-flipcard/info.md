@@ -19,8 +19,6 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.placement: 'top'|'bottom', default='top' — Determines the placement of the contents of the flipcard.
 - prop.frontVariant [attr: front-variant]: 'primary'|'primary-100'|'gradient-light'|'gradient-dark', default='primary' — Determines the variant of the front face of the flipcard.
 - prop.backVariant [attr: back-variant]: 'primary'|'primary-100'|'gradient-light'|'gradient-dark', default='primary' — Determines the variant of the back face of the flipcard.
-- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
-- prop.lang: string — The element's language.
 
 ### Events
 

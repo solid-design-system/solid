@@ -23,8 +23,6 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.label: string, default='' — The checkbox group's label. Required for proper accessibility. If you need to display HTML, use the `label` slot
   instead.
 - prop.helpText [attr: help-text]: string, default='' — The element help text. If you need to display HTML, use the `help-text` slot instead.
-- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
-- prop.lang: string — The element's language.
 
 ### Slots
 

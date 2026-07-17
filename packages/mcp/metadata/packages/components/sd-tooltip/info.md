@@ -33,8 +33,6 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.hoist: boolean, default=false — Enable this option to prevent the tooltip from being clipped when the component is placed inside a container with
   `overflow: auto|hidden|scroll`. Hoisting uses a fixed positioning strategy that works in many, but not all,
   scenarios.
-- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
-- prop.lang: string — The element's language.
 
 ### Events
 

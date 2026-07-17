@@ -23,8 +23,6 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.breakpoint: number, default=448 — Breakpoint where the teaser switches from `vertical` to `horizontal`. `0` is always `horizontal`, `9999` is always `vertical`.
 - prop.inset: boolean, default=false — The teaser's inner padding. This is always set in `white border-neutral-400`.
 - prop.reversedLayout [attr: reversed-layout]: boolean, default=false — Reverses the layout in horizontal variant
-- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
-- prop.lang: string — The element's language.
 
 ### Slots
 

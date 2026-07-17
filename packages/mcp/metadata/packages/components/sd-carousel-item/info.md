@@ -4,11 +4,6 @@
 
 ## API
 
-### Key Properties
-
-- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
-- prop.lang: string — The element's language.
-
 ### Slots
 
 - slot.default: The carousel item's content.

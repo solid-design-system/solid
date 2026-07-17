@@ -16,8 +16,6 @@ Use the components tool by passing the args `component` and `example` for any of
 
 - prop.open: boolean, default=false — Used to check whether the component is expanded or not.
 - prop.inverted: boolean, default=false — Inverts the expandable and sets the color of the gradient to primary.
-- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
-- prop.lang: string — The element's language.
 
 ### Events
 

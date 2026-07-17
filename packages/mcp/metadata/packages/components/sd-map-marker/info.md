@@ -26,8 +26,6 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.label: string, default='' — Only relevant when map-marker is interactive.
   When set, it will be used to announce the name of the map-marker to screenreaders,
   otherwise, screenreaders will announce the content inside the default slot.
-- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
-- prop.lang: string — The element's language.
 
 ### Events
 

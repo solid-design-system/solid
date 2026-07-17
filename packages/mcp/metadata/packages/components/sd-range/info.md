@@ -29,8 +29,6 @@ Use the components tool by passing the args `component` and `example` for any of
 - prop.value: — The current values of the input (in ascending order) as a string of space separated values
 - prop.valueAsArray: — Gets or sets the current values of the range as an array of numbers
 - prop.validity: — Gets the validity state object
-- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
-- prop.lang: string — The element's language.
 
 ### Events
 

@@ -14,8 +14,6 @@ Use the components tool by passing the args `component` and `example` for any of
 
 - prop.disabled: boolean, default=false — Disables all options in the optgroup.
 - prop.label: string, default='' — The optgroups label. If you need to display HTML, use the `label` slot instead.
-- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
-- prop.lang: string — The element's language.
 
 ### Slots
 

@@ -14,11 +14,6 @@ Use the components tool by passing the args `component` and `example` for any of
 - component: sd-menu, example: grouping
 - component: sd-menu, example: disabled
 
-### Key Properties
-
-- prop.dir: 'ltr'|'rtl'|'auto' — The element's directionality.
-- prop.lang: string — The element's language.
-
 ### Events
 
 - event.sd-select: Emitted when a menu item is selected.
