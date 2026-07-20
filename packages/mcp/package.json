@@ -6,22 +6,22 @@
     "solid-mcp": "./dist/bin/start.js"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.26.0",
-    "globby": "^16.1.1",
-    "zod": "^4.3.6"
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "globby": "^16.2.1",
+    "zod": "^4.4.3"
   },
   "description": "MCP Server for the Solid Design System",
   "devDependencies": {
     "@solid-design-system/components": "workspace:*",
     "@solid-design-system/styles": "workspace:*",
     "@solid-design-system/tokens": "workspace:*",
-    "@types/node": "^24.10.13",
+    "@types/node": "^26.1.1",
     "change-case": "^5.4.4",
     "custom-elements-manifest": "^2.1.0",
-    "eslint": "^9.39.2",
-    "ora": "^9.3.0",
-    "prettier": "^3.8.1",
-    "tsx": "^4.0.0",
+    "eslint": "^10.7.0",
+    "ora": "^9.4.1",
+    "prettier": "^3.9.5",
+    "tsx": "^4.23.1",
     "typescript": "^5.9.3"
   },
   "exports": {
