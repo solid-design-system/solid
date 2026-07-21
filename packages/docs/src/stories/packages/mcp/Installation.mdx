@@ -63,3 +63,18 @@ Alternatively, add the same server to your global `claude_desktop_config.json`:
   }
 }
 ```
+
+### GitLab Duo
+
+Add the MCP server to your project-level `.gitlab/duo/mcp_servers.json`:
+
+```json
+{
+  "mcpServers": {
+    "solid": {
+      "command": "npx",
+      "args": ["@solid-design-system/mcp"]
+    }
+  }
+}
+```
